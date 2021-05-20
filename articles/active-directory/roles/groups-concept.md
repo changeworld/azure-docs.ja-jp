@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 05/05/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236606bea3ff4edcd6786828f4cb2379251a77f8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c8a3015fa2c078232ca9c37c2b0ce0ded313c859
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203327"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480835"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)
 
@@ -39,8 +39,7 @@ Azure Active Directory (Azure AD) には、Azure AD の組み込みロールに�
 
 グループにロールが割り当てられている場合、グループ メンバーシップを管理できるすべての IT 管理者は、そのロールのメンバーシップを間接的に管理することもできます。 たとえば、グループ Contoso_User_Administrators がユーザー アカウント管理者ロールに割り当てられているとします。 グループ メンバーシップを変更できる Exchange 管理者は、自身を Contoso_User_Administrators グループに追加して、この方法でユーザー アカウント管理者になることができます。このように、管理者は、あなたが意図しない方法で特権を昇格させることができます。
 
-Azure AD を使用すると、グループに対して isAssignableToRole という新しいプロパティを使用して、ロールに割り当てられたグループを保護することができます。 作成時に isAssignableToRole プロパティが "true" に設定されていたクラウド グループのみをロールに割り当てることができます。 このプロパティは変更できません。このプロパティを "true" に設定してグループを作成した後は、それを変更できません。 既存のグループにこのプロパティを設定することはできません。
-そのような潜在的な違反が発生しないようにするために、グループをロールに割り当てる方法が設計されています。
+Azure AD を使用すると、グループに対して isAssignableToRole という新しいプロパティを使用して、ロールに割り当てられたグループを保護することができます。 作成時に isAssignableToRole プロパティが "true" に設定されていたクラウド グループのみをロールに割り当てることができます。 このプロパティは変更できません。このプロパティを "true" に設定してグループを作成した後は、それを変更できません。 既存のグループにこのプロパティを設定することはできません。 潜在的な違反が発生しないようにするために、グループをロールに割り当てる方法が設計されています。
 
 - グローバル管理者と特権ロール管理者のみが、("isAssignableToRole" プロパティを有効にして) ロール割り当て可能なグループを作成できます。
 - Azure AD 動的グループにすることはできません。つまり、メンバーシップの種類が "割り当て済み" である必要があります。 動的なグループの自動作成により、不要なアカウントがグループに追加され、そのロールに割り当てられる可能性があります。
@@ -63,7 +62,7 @@ Azure AD を使用すると、グループに対して isAssignableToRole とい
 - グループ メンバーシップによるロールの割り当てには、新しい [Exchange 管理センター](https://admin.exchange.microsoft.com/)を使用してください。 以前の Exchange 管理センターでは、この機能はまだサポートされていません。 Exchange PowerShell コマンドレットは想定どおりに動作します。
 - Azure Information Protection ポータル (クラシック ポータル) では、グループを介したロール メンバーシップがまだ認識されません。 [統合型の秘密度ラベル付けプラットフォームに移行](/azure/information-protection/configure-policy-migrate-labels)してから、Office 365 Security & Compliance センターを使用して、グループの割り当てを使用してロールを管理することができます。
 - [アプリ管理センター](https://config.office.com/)では、この機能はまだサポートされていません。 ユーザーに直接 Office アプリ管理者ロールを割り当てます。
-- [M365 コンプライアンス センター](https://compliance.microsoft.com/)では、この機能はまだサポートされていません。 このポータルを使用するには、適切な Azure AD ロールに直接ユーザーを割り当てます。
+- [Microsoft 365 コンプライアンス センター](https://compliance.microsoft.com/)では、この機能はまだサポートされていません。 このポータルを使用するには、適切な Azure AD ロールに直接ユーザーを割り当てます。
 
 これらの問題は現在修正中です。
 

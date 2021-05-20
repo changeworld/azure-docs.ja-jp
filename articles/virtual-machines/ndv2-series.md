@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e335f015d784b3f3849c3646d16da9ad8999030c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 07b76f565aa9eda4db885b6ec37a42a21b2d25bc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309834"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744373"
 ---
 # <a name="updated-ndv2-series"></a>更新された NDv2 シリーズ
 
@@ -35,12 +35,12 @@ NDv2 インスタンスは、CUDA GPU 最適化計算カーネルと、GPU ア�
 
 [Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
-[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスについては、[詳細をご覧ください](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)) <br>
+[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md): サポートされています ([プレビュー段階](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
 InfiniBand: サポートされています<br>
 Nvidia NVLink Interconnect:サポートされています<br>
 <br>

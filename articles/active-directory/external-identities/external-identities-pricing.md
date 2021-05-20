@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 05/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2083df29754a8791848fd125136b04d1d7a06fb3
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92442067"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713218"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD External Identities の課金モデル
 
@@ -38,8 +38,8 @@ MAU の課金を利用するには、Azure AD テナントを Azure サブスク
 ## <a name="about-monthly-active-users-mau-billing"></a>月間アクティブ ユーザー (MAU) の課金の概要
 
 Azure AD テナントでは、ゲスト ユーザーの共同作業の使用量は、1 か月間の認証アクティビティを使用した一意のゲスト ユーザー数に基づいて課金されます。 このモデルは、テナントの Azure AD Premium ライセンスごとに最大 5 人のゲスト ユーザーが許可されていた 1:5 の比率の課金モデルに代わるものです。 テナントがサブスクリプションにリンクされており、External Identities 機能を使用してゲスト ユーザーと共同作業する場合、MAU ベースの課金モデルを使用して自動的に課金されます。
-  
-ゲスト ユーザーに適用される価格レベルは、Azure AD テナントに割り当てられている最も高い価格レベルに基づいて決まります。 たとえば、テナントの最も高い価格レベルが Azure AD Premium P1 である場合、Premium P1 の価格レベルがゲスト ユーザーにも適用されます。 最も高い価格が Azure AD Free である場合、ゲスト ユーザーに Premium 機能を使用しようとすると、Premium 価格レベルにアップグレードするように求められます。
+
+ゲスト ユーザーに適用される価格レベルは、Azure AD テナントに割り当てられている最も高い価格レベルに基づいて決まります。 詳細については、「[Azure Active Directory External Identities の価格](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/)」を参照してください。
 
 ## <a name="link-your-azure-ad-tenant-to-a-subscription"></a>Azure AD テナントをサブスクリプションにリンクする
 

@@ -3,12 +3,12 @@ title: Azure Security Center 統合を使用して Azure VMware Solution VM を�
 description: Azure Security Center のダッシュボードから Azure のネイティブ セキュリティ ツールを使用して Azure VMware Solution VM を保護します。
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: d2917fbc5d93447dcdde6385576a2a404e95d250
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 3012da2f9d5254b581a4ce53ef51503dfb048e98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205857"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769527"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
 
@@ -244,4 +244,4 @@ Azure VMware Solution VM を保護する方法について説明したので、�
 
 - [Azure Defender ダッシュボード](../security-center/azure-defender-dashboard.md)の使用
 - [Azure Sentinel の高度なマルチステージ攻撃の検出](../azure-monitor/logs/quick-create-workspace.md)
-- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [Azure VMware Solution VM の監視と管理](lifecycle-management-of-azure-vmware-solution-vms.md)

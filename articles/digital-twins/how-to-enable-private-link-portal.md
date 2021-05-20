@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff1589eb496cbc4482aaf93dfd4f0faeeda5e9cd
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 68c76c92f37ae424bd7e8bc85557e6c204ba742e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208871"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734203"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>Private Link を使用してプライベート アクセスを有効にする (プレビュー):Azure portal
 
@@ -63,7 +63,7 @@ Private Link のオプションは、インスタンスのセットアップの 
 
 1. 最後に、 **[プライベート DNS ゾーンと統合する]** かどうかを選択します。 既定の **[はい]** をそのまま使用できます。または、このオプションの詳細については、ポータルのリンクに従って、[プライベート DNS 統合の詳細を確認](../private-link/private-endpoint-overview.md#dns-configuration)してください。
 
-構成オプションを設定した後、 **[OK]** をクリックして完了します。
+構成オプションを設定した後、 **[OK]** を選択して完了します。
 
 これにより、Azure Digital Twins インスタンスのセットアップの **[ネットワーク]** タブに戻ります。そこの [プライベート エンドポイント接続] の下に、新しいエンドポイントが表示されているはずです。
 

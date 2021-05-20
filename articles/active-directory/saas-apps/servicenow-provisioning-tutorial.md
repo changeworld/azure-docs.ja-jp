@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2019
+ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: b3b62e7c16106fd9d94d4a3438331dab4ce8b6e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afad903734fded062681f18683cb74492993fe1c
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539045"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684219"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する
 
@@ -162,6 +162,8 @@ Azure AD で ServiceNow の自動ユーザー プロビジョニングを構成�
   引き続き問題が解決しない場合は、ServiceNow サポートに連絡し、トラブルシューティングに役立てるために SOAP デバッグを有効にするように依頼してください。 
 
 * 現在、Azure AD プロビジョニング サービスは特定の [IP 範囲](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges)で動作します。 必要に応じて、他の IP 範囲を制限し、これらの特定の IP 範囲をアプリケーションの許可リストに追加できます。 この手法により、Azure AD プロビジョニング サービスからアプリケーションへのトラフィック フローが可能になります。
+
+* セルフホステッド ServiceNow インスタンスはサポートされていません。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

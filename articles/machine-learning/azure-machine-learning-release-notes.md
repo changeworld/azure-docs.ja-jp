@@ -9,18 +9,51 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 1bdc439bc281338fc3df95f7d82784a5eebf7a4a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 55522324dc69fe0a433f012d28cbbde077b5ef04
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288546"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754175"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro) のリファレンス ページを参照してください。
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-05-10"></a>2021-05-10
+
+### <a name="azure-machine-learning-sdk-for-python-v1280"></a>Azure Machine Learning SDK for Python v1.28.0
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + 機能強化を処理する、Designer 仕様に準拠した AutoML スコアリング スクリプトのバージョン 2 のサポートが追加されました。
+  + **azureml-automl-runtime**
+    + 機能強化を処理する、Designer 仕様に準拠した AutoML スコアリング スクリプトのバージョン 2 のサポートが追加されました。
+  + **azureml-contrib-automl-dnn-forecasting**
+    + 機能強化を処理する、Designer 仕様に準拠した AutoML スコアリング スクリプトのバージョン 2 のサポートが追加されました。
+  + **azureml-contrib-dataset**
+    + ドキュメントの説明が更新され、mount の使用時に libfuse をインストールする必要があることが示されました。
+  + **azureml-core**
+    +  既定の CPU イメージが mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04 に更新されました。既定の GPU イメージが mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.2-cudnn8-ubuntu18.04 に更新されました。
+    + Run.fail() が非推奨になりました。Run.tag() を使用して実行に失敗のマークを付けるか、Run.cancel() を使用して実行に取り消し済みのマークを付けてください。
+    + ドキュメントの説明が更新され、mount の使用時に libfuse をインストールする必要があることが示されました。
+    + MSI 認証で対象ユーザーが使用可能になりました。
+    +  試験的な register_dask_dataframe() のサポートが表形式データセットに追加されました。
+    + 入力/出力として Azure Blob/ADL-S を使用する DatabricksStep がサポートされ、パラメーター permit_cluster_restart が公開されました。これにより、顧客は、I/O アクセス構成をクラスターに追加する必要がある場合に、AML でクラスターを再起動できるかどうかを判断できます。
+  + **azureml-dataprep**
+    + azureml-dataset-runtime で、バージョン 4.0.0 未満の pyarrow がサポートされるようになりました。
+  + **azureml-dataset-runtime**
+    + azureml-dataset-runtime で、バージョン 4.0.0 未満の pyarrow がサポートされるようになりました。
+  + **azureml-mlflow**
+    + MLFlow プラグインを使用して AzureML にデプロイするためのサポートが追加されました。
+  + **azureml-pipeline-steps**
+    + 入力/出力として Azure Blob/ADL-S を使用する DatabricksStep がサポートされ、パラメーター permit_cluster_restart が公開されました。これにより、顧客は、I/O アクセス構成をクラスターに追加する必要がある場合に、AML でクラスターを再起動できるかどうかを判断できます。
+  + **azureml-synapse**
+    + MSI 認証で対象ユーザーが使用可能になりました。
+  + **azureml-train-automl-client**
+    + コンピューティング ターゲット ドキュメントの変更済みリンクが追加されました。
 
 
 ## <a name="2021-04-19"></a>2021-04-19

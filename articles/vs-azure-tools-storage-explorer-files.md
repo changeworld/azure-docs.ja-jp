@@ -1,5 +1,5 @@
 ---
-title: Azure File Storage での Storage Explorer の使用 | Microsoft Docs
+title: Azure Files での Storage Explorer の使用 | Microsoft Docs
 description: Storage Explorer を使用してファイル共有やファイルを操作する方法について説明します。
 services: storage
 documentationcenter: na
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0387aaecd45a2f09acc8d9ad7af230a62da6ed1
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96488393"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109628502"
 ---
-# <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage での Storage Explorer の使用
+# <a name="using-storage-explorer-with-azure-files"></a>Azure Files での Storage Explorer の使用
 
-Azure File Storage は、標準のサーバー メッセージ ブロック (SMB) プロトコルを使用してクラウドでファイル共有を提供するサービスです。 SMB 2.1 と SMB 3.0 の両方がサポートされます。 Azure File Storage を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。 File Storage を使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、Storage Explorer を使用してファイル共有とファイルを操作する方法について説明します。
+Azure Files は、標準のサーバー メッセージ ブロック (SMB) プロトコルを使用してクラウドでファイル共有を提供するサービスです。 SMB 2.1 と SMB 3.0 の両方がサポートされます。 Azure Files を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。 File Storage を使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、Storage Explorer を使用してファイル共有とファイルを操作する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,13 +33,13 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 - [Azure ストレージ アカウントまたはサービスに接続する](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
-## <a name="create-a-file-share"></a>ファイル共有の作成
+## <a name="create-a-file-share"></a>ファイル共有を作成する
 
 すべてのファイルは、ファイル共有 (ファイルをわかりやすく論理的にまとめたもの) に存在している必要があります。 アカウントに含めることができるファイル共有の数には制限がなく、各共有に格納できるファイルの数にも制限はありません。
 
 次の手順では、Storage Explorer 内にファイル共有を作成する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、ファイル共有を作成するストレージ アカウントを展開します。
 
@@ -61,7 +61,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer 内でファイル共有の内容を表示する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、表示するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -81,7 +81,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer からファイル共有を削除する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、表示するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -101,7 +101,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントにファイル共有をコピーする方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、コピーするファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -121,7 +121,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有の SAS を作成する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、SAS を取得するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -145,9 +145,9 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 ## <a name="manage-access-policies-for-a-file-share"></a>ファイル共有のアクセス ポリシー管理
 
-次の手順では、ファイル共有のアクセス ポリシーを管理 (追加と削除) する方法を説明します。 アクセス ポリシーは、決められた期間、ストレージ ファイル リソースにアクセスするために利用者が使用する SAS URL の作成に使用されます。
+次の手順では、ファイル共有のアクセス ポリシーを管理 (追加と削除) する方法を説明します。 アクセス ポリシーは、決められた期間、Azure Files リソースにアクセスするために利用者が使用する SAS URL の作成に使用されます。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 
 1. 左側のウィンドウで、アクセス ポリシーを管理するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -181,7 +181,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有内のファイル (とフォルダー) を管理する方法を説明します。
 
-1.  ストレージ エクスプローラーを開きます。
+1.  Storage Explorer を開きます。
 
 1.  左側のウィンドウで、管理するファイル共有が含まれているストレージ アカウントを展開します。
 

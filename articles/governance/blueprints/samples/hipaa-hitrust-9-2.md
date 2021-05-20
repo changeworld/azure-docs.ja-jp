@@ -3,16 +3,17 @@ title: HIPAA HITRUST 9.2 ブループリント サンプルの概要
 description: HIPAA HITRUST 9.2 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の HIPAA HITRUST 9.2 コントロールを評価するのに役立ちます。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 168946319c11f31ee41594d82d9ff186dea232cd
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: eda98807a48a43132b9bbf6c7f9b6293aefdbacb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386586"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757153"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>HIPAA HITRUST 9.2 ブループリント サンプル
 
-HIPAA HITRUST 9.2 ブループリント サンプルでは、特定の HIPAA HITRUST 9.2 コントロールの評価に役立つ、[Azure Policy](../../policy/overview.md) を使用したガバナンス ガードレールが提供されます。 このブループリントは、HIPAA HITRUST 9.2 コントロールを実装する必要がある Azure でデプロイされたアーキテクチャのために、お客様が一連の主要なポリシーをデプロイするのに役立ちます。
+HIPAA HITRUST 9.2 ブループリント サンプルでは、特定の HIPAA HITRUST 9.2 コントロールの評価に役立つ、[Azure Policy](../../policy/overview.md) を使用したガバナンス ガードレールが提供されます。
+このブループリントは、HIPAA HITRUST 9.2 コントロールを実装する必要がある Azure でデプロイされたアーキテクチャのために、お客様が一連の主要なポリシーをデプロイするのに役立ちます。
 
 ## <a name="control-mapping"></a>コントロール マッピング
 

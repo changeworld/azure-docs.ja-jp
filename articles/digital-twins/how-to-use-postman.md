@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: cacf298fe5f8d6d36bfa6a963e3f3d9a2c996778
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 13f8e12944349bea667110585af71ea078ef7656
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207737"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784109"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Postman を使用して Azure Digital Twins API に要求を送信する方法
 
-[Postman](https://www.getpostman.com/) は、デスクトップとプラグイン ベースの GUI に重要な HTTP 要求機能を提供する REST テスト ツールです。 これを使用して HTTP 要求を作成し、[Azure Digital Twins REST API](how-to-use-apis-sdks.md) に送信できます。
+[Postman](https://www.getpostman.com/) は、デスクトップとプラグイン ベースの GUI に重要な HTTP 要求機能を提供する REST テスト ツールです。 これを使用して HTTP 要求を作成し、[Azure Digital Twins REST API](concepts-apis-sdks.md) に送信できます。
 
 この記事では、Azure Digital Twins API を操作するために、次の手順に従って [Postman REST クライアント](https://www.getpostman.com/)を構成する方法について説明します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "108207737"
     1. 独自のコレクションを最初から  [[作成]](#create-your-own-collection)  します。
 1. 構成されたコレクションに  [[要求の追加]](#add-an-individual-request)  を行い、Azure Digital Twins API に送信します。
 
-Azure Digital Twins には、**データ プレーン** と **コントロール プレーン** で使用できる 2 つの API セットがあります。 これらの API セットの相違点の詳細については、「[方法: Azure Digital Twins の API および SDK を使用する](how-to-use-apis-sdks.md)」を参照してください。 この記事には、両方の API セットに関する情報が含まれています。
+Azure Digital Twins には、**データ プレーン** と **コントロール プレーン** で使用できる 2 つの API セットがあります。 これらの API セットの相違点について詳しくは、[Azure Digital Twins の API および SDK の概念](concepts-apis-sdks.md)に関するページをご覧ください。 この記事には、両方の API セットに関する情報が含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,7 +58,7 @@ Azure CLI が[ローカルにインストールされている](/cli/azure/insta
 
 2. 次に、[az account get-access-token](/cli/azure/account#az_account_get_access_token) コマンドを使用して、Azure Digital Twins サービスにアクセスできるベアラー トークンを取得します。 このコマンドでは、Azure Digital Twins リソースにアクセスできるアクセス トークンを取得するために、Azure Digital Twins サービス エンドポイントのリソース ID を渡します。 
 
-    トークンに必要なコンテキストは、使用している API のセットによって異なります。そのため、次のタブを使用して、[データ プレーン](how-to-use-apis-sdks.md#overview-data-plane-apis)と[コントロール プレーン](how-to-use-apis-sdks.md#overview-control-plane-apis)の API を選択します。
+    トークンに必要なコンテキストは、使用している API のセットによって異なります。そのため、次のタブを使用して、[データ プレーン](concepts-apis-sdks.md#overview-data-plane-apis)と[コントロール プレーン](concepts-apis-sdks.md#overview-control-plane-apis)の API を選択します。
 
     # <a name="data-plane"></a>[データ プレーン](#tab/data-plane)
     
@@ -128,7 +128,7 @@ API セットをインポートするための最初の手順は、コレクシ�
 1. **[Raw]\(未加工\)** ボタンを選択して、ファイルの未加工のテキストを開きます。
     :::image type="content" source="media/how-to-use-postman/swagger-raw.png" alt-text="GitHub 内のデータ プレーン digitaltwins.json ファイルのスクリーンショット。[Raw]\(未加工\) ボタンの周辺が強調表示されています。" lightbox="media/how-to-use-postman/swagger-raw.png":::
 1. ウィンドウからテキストをコピーして、コンピューター上の新しいファイルに貼り付けます。
-1. ファイルに *.json* という拡張子を付けて保存します (ファイル名は、後でファイルを見つけられる限り、どのような名前にしてもかまいません)。
+1. ファイルに .json という拡張子を付けて保存します (ファイル名は、後でファイルを見つけられる限り、どのような名前にしてもかまいません)。
 
 ### <a name="import-the-collection"></a>コレクションをインポートする
 
@@ -168,7 +168,7 @@ API セットをインポートするための最初の手順は、コレクシ�
 
 # <a name="data-plane"></a>[データ プレーン](#tab/data-plane)
 
-[データ プレーン](how-to-use-apis-sdks.md#overview-data-plane-apis) コレクションを作成している場合は、コレクションに用意されているいくつかの **変数** を設定すると、コレクションを Azure Digital Twins リソースに簡単に接続させることができます。 コレクション内の多くの要求に同じ値 (Azure Digital Twins インスタンスのホスト名など) が必要な場合は、コレクション内のすべての要求に適用される変数に値を格納できます。 Azure Digital Twins の両方のダウンロード可能なコレクションには、コレクション レベルで設定できる事前に作成された変数が付属しています。
+[データ プレーン](concepts-apis-sdks.md#overview-data-plane-apis) コレクションを作成している場合は、コレクションに用意されているいくつかの **変数** を設定すると、コレクションを Azure Digital Twins リソースに簡単に接続させることができます。 コレクション内の多くの要求に同じ値 (Azure Digital Twins インスタンスのホスト名など) が必要な場合は、コレクション内のすべての要求に適用される変数に値を格納できます。 Azure Digital Twins の両方のダウンロード可能なコレクションには、コレクション レベルで設定できる事前に作成された変数が付属しています。
 
 1. コレクションの編集ダイアログで、 **[変数]** タブに移動します。
 
@@ -182,7 +182,7 @@ API セットをインポートするための最初の手順は、コレクシ�
 
 # <a name="control-plane"></a>[コントロール プレーン](#tab/control-plane)
 
-[コントロール プレーン](how-to-use-apis-sdks.md#overview-control-plane-apis) コレクションを作成している場合は、これでコレクションを構成するために必要なすべての処理が完了しました。 必要に応じてコレクションの編集タブを閉じ、次のセクションに進みます。
+[コントロール プレーン](concepts-apis-sdks.md#overview-control-plane-apis) コレクションを作成している場合は、これでコレクションを構成するために必要なすべての処理が完了しました。 必要に応じてコレクションの編集タブを閉じ、次のセクションに進みます。
 
 --- 
 
@@ -276,7 +276,7 @@ Azure Digital Twins API のいずれかに対する Postman 要求を行うに�
 
 クエリの例に進み、この記事ではクエリ API (およびその[リファレンス ドキュメント](/rest/api/digital-twins/dataplane/query/querytwins)) を使用して、インスタンス内のすべてのデジタル ツインを照会します。
 
-1. リファレンス ドキュメントから要求 URL と種類を取得します。 クエリ API の場合、現在これは *POST `https://digitaltwins-hostname/query?api-version=2020-10-31`* です。
+1. リファレンス ドキュメントから要求 URL と種類を取得します。 クエリ API の場合、現在これは *POST* `https://digitaltwins-host-name/query?api-version=2020-10-31` です。
 1. Postman で要求の種類を設定し、要求 URL を入力します。必要に応じて URL のプレースホルダーに入力します。 ここでは、「[前提条件](#prerequisites)」セクションにあるインスタンスの **ホスト名** を使用します。
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Postman の新しい要求の詳細のスクリーンショット。リファレンス ドキュメントからのクエリ URL が要求 URL のボックスに入力されています。" lightbox="media/how-to-use-postman/postman-request-url.png":::
@@ -302,4 +302,4 @@ Azure Digital Twins API のいずれかに対する Postman 要求を行うに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Digital Twins API の詳細については、「[方法: Azure Digital Twins API と SDK を使用する](how-to-use-apis-sdks.md)」を参照するか、[REST API のリファレンス ドキュメント](/rest/api/azure-digitaltwins/)を参照してください。
+Digital Twins API について詳しくは、[Azure Digital Twins の API および SDK の概念](concepts-apis-sdks.md)に関するページをご覧になるか、[REST API のリファレンス ドキュメント](/rest/api/azure-digitaltwins/)をご覧ください。

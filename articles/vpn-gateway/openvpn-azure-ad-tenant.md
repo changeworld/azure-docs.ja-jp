@@ -1,25 +1,25 @@
 ---
 title: 'P2S VPN 接続用の Azure AD テナントを作成する: Azure AD 認証'
 titleSuffix: Azure VPN Gateway
-description: P2S Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
+description: P2S Azure AD 認証 - OpenVPN プロトコル用に Azure AD テナントを設定する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 05/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: c0d3aa376f11ca6b05a8fcbd10562ff2fed83258
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: f2f20580bc8396f6d7336d50bbe7fb55c94725de
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228660"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109712894"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 
-VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 この記事では、P2S Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
+ポイント対サイトを使用して VNet に接続する場合は、使用するプロトコルを選択できます。 使用するプロトコルによって、使用できる認証オプションが決まります。 OpenVPN プロトコルを使用する場合、Azure Active Directory 認証を使用できます。 この記事は、Azure AD テナントを設定するのに役立ちます。 ポイント対サイト プロトコルと認証の詳細については、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
 
-[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
+[!INCLUDE [OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="1-verify-azure-ad-tenant"></a><a name="tenant"></a>1.Azure AD テナントを確認する
 
@@ -97,7 +97,13 @@ Azure AD テナントには、全体管理者アカウントとマスター ユ�
 
    * **Tenant:** Azure AD テナントの TenantID```https://login.microsoftonline.com/{AzureAD TenantID}/```
 
-   * **Audience:** "Azure VPN" Azure AD Enterprise アプリの ApplicationID ```{AppID of the "Azure VPN" AD Enterprise app}```
+   * **Audience:** "Azure VPN" Azure AD Enterprise アプリのアプリケーション ID
+
+       * Azure Public の場合、「41b23e61-6c1e-4545-b367-cd054e0ed4b4」と入力します
+       * Azure Government の場合、「51bb15d4-3a4f-4ebf-9dca-40096fe32426」と入力します
+       * Azure Germany の場合、「538ee9e6-310a-468d-afef-ea97365856a9」と入力します
+       * Azure China 21Vianet の場合、「49f817b6-84ae-4cc0-928c-73f27289b3aa」と入力します
+
 
    * **発行者**:セキュリティ トークン サービスの URL ```https://sts.windows.net/{AzureAD TenantID}/```
 

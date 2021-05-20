@@ -1,17 +1,17 @@
 ---
 title: Azure Percept DK のデータシート
 description: 詳細なデバイス仕様については、Azure Percept DK のデータシートを確認してください
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 0c9f848827db452710b4bca355aae0db99a2c95c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a8e06e99730388a25f4d00b016f90cd74c336fbe
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027365"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742447"
 ---
 # <a name="azure-percept-dk-datasheet"></a>Azure Percept DK のデータシート
 
@@ -30,11 +30,11 @@ ms.locfileid: "105027365"
 |センサーと視覚インジケーター   |6P レンズ搭載 Sony IMX219 カメラセンサー<br>解像度: 8MP (30 FPS)、距離: 50 cm ～無限大<br>視界: 120° 斜め、色: ワイド ダイナミック レンジ、固定焦点、ローリング シャッター|
 |セキュリティ                        |TPM 2.0 Nuvoton NCPT750 |
 |接続                    |Realtek RTL882CE のシングルチップ コントローラーによる Wi-Fi と Bluetooth     |
-|ストレージ                         |16GB     |
+|ストレージ                         |16 GB     |
 |メモリ                          |4 GB     |
 |ポート                           |1 x イーサネット <br> 2 x USB-A 3.0 <br> 1 x USB-C     |
 |動作温度           |0 ～ 35°C     |
 |非動作温度       |-40 ～ 85°C     |
 |相対湿度               |10% ～ 95%    |
 |認定                   |FCC <br> IC <br> RoHS <br> REACH <br> UL   |
-|電源                    |3\.42 A の 19VDC (65 W) |
+|電源                    |3\.42A (65 W) で 19 VDC |

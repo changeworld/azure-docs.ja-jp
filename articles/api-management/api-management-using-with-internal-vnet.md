@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 35d813b6dfedbd7f76a88713757ce83c2644ff95
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: e901f73f3a1751e0f2af7e0788a7b4846452225e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813148"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783943"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。
@@ -50,7 +50,7 @@ API Management を内部モードで使用することにより、次のシナ�
 
 [!INCLUDE [api-management-public-ip-for-vnet](../../includes/api-management-public-ip-for-vnet.md)]
 
-API Management サービスが仮想ネットワークにデプロイされている場合は、[ポートの一覧](./api-management-using-with-vnet.md#required-ports)が使用され、開く必要があります。 
+API Management サービスが仮想ネットワークにデプロイされている場合は、[ポートの一覧](./api-management-using-with-vnet.md#required-ports)が使用され、開く必要があります。
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>内部仮想ネットワークでの API Management の作成
 内部仮想ネットワークの API Management サービスは、そのサービスがクライアント API バージョン2020-12-01 で作成されている場合、内部ロード バランサー Basic SKU の内側でホストされます。 API バージョン 2021-01-01-preview を保持し、顧客のサブスクリプションからのパブリック IP アドレスを持つクライアントで作成されたサービスの場合、これは内部ロードバランサー Standard SKU の内側でホストされます。 詳細については、「[Azure Load Balancer の SKU](../load-balancer/skus.md)」を参照してください。
@@ -79,9 +79,9 @@ API Management サービスが仮想ネットワークにデプロイされて�
 
 ### <a name="api-version-2020-12-01"></a>API バージョン 2020-12-01
 
-* Azure Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-internal-vnet)
+* Azure Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.apimanagement/api-management-create-with-internal-vnet)
 
-     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
+     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.apimanagement%2Fapi-management-create-with-internal-vnet%2Fazuredeploy.json)
 
 * Azure PowerShell コマンドレット - 仮想ネットワーク内の API Management インスタンスを[作成](/powershell/module/az.apimanagement/new-azapimanagement)または[更新](/powershell/module/az.apimanagement/update-azapimanagementregion)する
 
@@ -141,9 +141,9 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 * [Virtual Network に関する FAQ](../virtual-network/virtual-networks-faq.md)
 * [DNS でのレコードの作成](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))
 
-[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
-[api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png
-[api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/api-management-custom-domain-name.png
+[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/updated-api-management-using-with-internal-vnet.png
+[api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/updated-api-management-internal-vnet-dashboard.png
+[api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/updated-api-management-custom-domain-name.png
 
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues

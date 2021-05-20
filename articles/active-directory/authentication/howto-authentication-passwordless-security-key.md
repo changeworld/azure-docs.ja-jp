@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 05/04/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88bb7904143f69a0eea84ea291c65e3244c70a1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c164b52682d6f4aef2db70a5724f3f74db68c53f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765865"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746452"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>パスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -32,6 +32,7 @@ ms.locfileid: "107765865"
 - WebAuthN requires Windows 10 バージョン 1903 以降**
 
 Web アプリやサービスへのログインにセキュリティ キーを使用するには、WebAuthN プロトコルをサポートするブラウザーが必要です。 これには、Microsoft Edge、Chrome、Firefox、Safari などが含まれます。
+
 
 ## <a name="prepare-devices"></a>デバイスを準備する
 
@@ -53,6 +54,22 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
    1. **有効にする** - [はい] または [いいえ]
    1. **ターゲット** - [すべてのユーザー] または [ユーザーの選択]
 1. 構成を **保存** します。
+
+
+### <a name="fido-security-key-optional-settings"></a>FIDO セキュリティ キーのオプションの設定 
+
+テナントごとにセキュリティ キーを管理するためのオプションの設定がいくつかあります。  
+
+![FIDO2 セキュリティ キー オプションのスクリーンショット](media/howto-authentication-passwordless-security-key/optional-settings.png) 
+
+**全般**
+
+- **[セルフサービス セットアップを許可する]** を **[はい]** に設定したままにしてください。 [いいえ] に設定すると、認証方法ポリシーによって有効になっている場合でも、MySecurityInfo ポータルを使用して FIDO キーを登録できなくなります。  
+- **[Enforce attestation]** \(構成証明の強制\) を **[はい]** に設定するには、FIDO セキュリティ キーのメタデータを FIDO アライアンス メタデータ サービスで公開および検証する必要があります。また、マイクロソフトのその他の検証テスト セットにも合格する必要があります。 詳細については、[「Microsoft と互換性のあるセキュリティ キーとは?」](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)を参照してください。
+
+**キーの制限ポリシー**
+
+- **[Enforce key restrictions]** \(キー制限の強制\) は、組織が特定の FIDO セキュリティキー (AAGuids によって識別される) のみを許可または禁止する場合にのみ、 **[はい]** に設定してください。 自分のデバイスの AAGuids を確認するには、セキュリティ キー プロバイダーと協力してください。 キーが既に登録されている場合は、ユーザーごとのキーの認証方法の詳細を表示することで、AAGUID も検索できます。 
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 セキュリティ キーのユーザー登録と管理
 

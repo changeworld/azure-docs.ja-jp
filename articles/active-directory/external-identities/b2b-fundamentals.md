@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddb2a002969b031f25dae2511d679cc520928ff6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100365635"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737785"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B のベスト プラクティス
 この記事には、Azure Active Directory (Azure AD) での企業間 (B2B) コラボレーションに関する推奨事項とベストプラクティスが含まれています。
@@ -29,7 +29,7 @@ ms.locfileid: "100365635"
 ## <a name="b2b-recommendations"></a>B2B の推奨事項
 | 推奨 | 説明 |
 | --- | --- |
-| 最適なサインイン エクスペリエンスを実現するには、ID プロバイダーとフェデレーションする | 可能な限り、ID プロバイダーと直接フェデレーションすることで、招待されたユーザーが Microsoft アカウント (MSA) または Azure AD アカウントを作成しなくても共有のアプリやリソースにサインインできるようにします。 [Google フェデレーション機能](google-federation.md)を使用すると、B2B ゲスト ユーザーが自分の Google アカウントでサインインできるようにすることができます。 また、任意の組織の ID プロバイダー (IdP) が SAML 2.0 または WS-Fed プロトコルをサポートしていれば、[直接フェデレーション (プレビュー) 機能](direct-federation.md)を使用して、その組織との直接フェデレーションを設定することもできます。 |
+| 最適なサインイン エクスペリエンスを実現するには、ID プロバイダーとフェデレーションする | 可能な限り、ID プロバイダーと直接フェデレーションすることで、招待されたユーザーが Microsoft アカウント (MSA) または Azure AD アカウントを作成しなくても共有のアプリやリソースにサインインできるようにします。 [Google フェデレーション機能](google-federation.md)を使用すると、B2B ゲスト ユーザーが自分の Google アカウントでサインインできるようにすることができます。 または、[SAML/WS-Fed ID プロバイダー (プレビュー) 機能](direct-federation.md)を使用してSAML 2.0 または WS-Fed プロトコルが、ID プロバイダー (IdP) によってサポートされている組織とのフェデレーションを設定することもできます。 |
 | 他の手段で認証できない B2B ゲストに電子メール ワンタイム パスコード機能を使用する | [電子メール ワンタイム パスコード](one-time-passcode.md)機能では、B2B ゲスト ユーザーが Azure AD、Microsoft アカウント (MSA)、Google フェデレーションなどの他の手段を使用して認証できないときに、ユーザーの認証が行われます。 ゲスト ユーザーは、招待に応じるか、共有リソースにアクセスするときに、自分のメール アドレスに送信される一時的なコードを要求することができます。 その後は、このコードを入力してサインインを続けます。 |
 | サインイン ページに会社のブランドを追加する | B2B ゲスト ユーザー向けに、より直感的になるようにサインイン ページをカスタマイズできます。 [サインイン ページとアクセス パネル ページに会社のブランドを追加する](../fundamentals/customize-branding.md)方法に関するページを参照してください。 |
 | B2B ゲスト ユーザーの利用エクスペリエンスにプライバシーに関する声明を追加する | 組織のプライバシーに関する声明の URL を最初の招待の利用プロセスに追加することができます。これにより、招待されたユーザーは続行するために、プライバシー条項に同意する必要があります。 [Azure Active Directory に組織のプライバシー情報を追加する方法](../fundamentals/active-directory-properties-area.md)に関するページを参照してください。 |

@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: b3f81b9c6855522718f69f76adfd5fe9a3c6059c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 152ea453e63164f2e784c573170c001ced63df85
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136249"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769797"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>移行の概要: SQL Server から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -77,7 +77,10 @@ VM 上の SQL Server の適切なインストールと構成にも考慮する�
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM ストレージの制限](../../../index.yml) |  既存の SQL Server がそのまま、Azure VM 上の SQL Server のインスタンスに移動されます。 移行のワークロードは最大 35,000 VM にスケーリングできます。 <br /><br /> サーバー データの同期中、ソース サーバーがオンラインのままで要求に対応するので、ダウンタイムが最小限に抑えられます。 <br /><br /> **自動化とスクリプト**:[Azure Site Recovery のスクリプト](../../../migrate/how-to-migrate-at-scale.md)と [ Azure のスケーリングされた移行と計画の例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>移行  
+> [!NOTE]
+> これで Azure Migrate を使用して、[フェールオーバー クラスター インスタンス](sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)と[可用性グループ](sql-server-availability-group-to-sql-on-azure-vm.md)のソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 
+
+## <a name="migrate"></a>Migrate  
 
 設定が容易なため、ネイティブな SQL Server の[バックアップ](/sql/t-sql/statements/backup-transact-sql)をローカルで行ってからそのファイルを Azure にコピーすることが、移行アプローチとして推奨されます。 この方法でサポートされるのは、SQL Server のバージョンが 2008 以降のいずれかである大規模なデータベース (1 TB 超) と、大規模なデータベース バックアップ (1 TB 超) です。 ただし、1 TB 未満で Azure との接続性が高い SQL Server 2014 以降のデータベースでは、[URL への SQL Server バックアップ](/sql/relational-databases/backup-restore/sql-server-backup-to-url)の方が、より優れたアプローチになります。 
 
@@ -99,8 +102,8 @@ SQL Server データベースを Azure VM 上の SQL Server のインスタン�
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
  
 > [!TIP]
-> ネットワークのオプションが制限されていたり、なかったりする場合の大規模なデータ転送については、[接続に制限がある場合の大規模なデータ転送](../../../storage/common/storage-solution-large-dataset-low-network.md)に関するページを参照してください。
-> 
+> - ネットワークのオプションが制限されていたり、なかったりする場合の大規模なデータ転送については、[接続に制限がある場合の大規模なデータ転送](../../../storage/common/storage-solution-large-dataset-low-network.md)に関するページを参照してください。
+> - これで Azure Migrate を使用して、[フェールオーバー クラスター インスタンス](sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)と[可用性グループ](sql-server-availability-group-to-sql-on-azure-vm.md)のソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 
 
 ### <a name="considerations"></a>考慮事項
 

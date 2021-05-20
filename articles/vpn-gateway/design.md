@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: ce2bf657b54ae824410fe4607e1c37bdfd84ac54
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 49969f4f404670961cf0ba35765c149fee134d62
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205883"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802668"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway の設計
 

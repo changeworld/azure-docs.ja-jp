@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/29/2021
+ms.date: 05/03/2021
 ms.author: memildin
-ms.openlocfilehash: f9f8078bbd3410a3dac5eb3a6a8aeb3a8fe82b54
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 485140be1e28c645da056d9a0ee2d38aaa4659af
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278886"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755083"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -24,6 +24,44 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 > [!TIP]
 > 6 か月以上前の項目を探す場合は、「[Azure Security Center の最新情報のアーカイブ](release-notes-archive.md)」をご覧ください。
+
+
+## <a name="may-2021"></a>2021 年 5 月
+
+5 月の更新プログラムには次のものが含まれます。
+
+- [SQL データ分類の推奨事項の重要度を変更](#sql-data-classification-recommendation-severity-changed)
+- [Assessments API を 2 つの新しいフィールドで拡張](#assessments-api-expanded-with-two-new-fields)
+
+### <a name="sql-data-classification-recommendation-severity-changed"></a>SQL データ分類の推奨事項の重要度を変更
+
+推奨事項 "**SQL データベースの機密データを分類する必要がある**" の重要度が **高** から **低** に変更されました。
+
+これは、「[SQL データ分類の推奨事項を改善](upcoming-changes.md#enhancements-to-sql-data-classification-recommendation)」で発表された、この推奨事項に対する継続的な変更の一環として行われたものです。 
+
+
+### <a name="assessments-api-expanded-with-two-new-fields"></a>Assessments API を 2 つの新しいフィールドで拡張
+
+[Assessments REST API](https://docs.microsoft.com/rest/api/securitycenter/assessments) に次の 2 つのフィールドを追加しました。
+
+- **FirstEvaluationDate** - 推奨事項が作成されて最初に評価された日時。 ISO 8601 形式の UTC 時刻として返されます。
+- **StatusChangeDate** –推奨事項の状態が最後に変更された日時。 ISO 8601 形式の UTC 時刻として返されます。
+
+これらのフィールドに使用される初期の既定値は、すべての推奨事項で `2021-03-14T00:00:00+0000000Z` です。
+
+この情報には、次の表に示したいずれかの方法でアクセスできます。
+
+| ツール                 | 詳細                                                                                                                                                                |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| REST API の呼び出し        | GET https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Security/assessments?api-version=2019-01-01-preview& $expand=statusEvaluationDates |
+| Azure Resource Graph | `securityresources`<br>`where type == "microsoft.security/assessments"`                                                                                                |
+| ワークフローの自動化  | Log Analytics ワークスペース データで、2 つの専用フィールドが利用できるようになります                                                                                                       |
+| [CSV エクスポート](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations) | CSV ファイルには、2 つのフィールドが含まれています                                                        |
+|                      |                                                                                                                                                                        |
+
+
+[Assessments REST API](https://docs.microsoft.com/rest/api/securitycenter/assessments) の詳細をご覧ください。
+
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -640,7 +678,7 @@ Security Center のデータを表示するアクセス許可がないユーザ�
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>フィルター処理された推奨事項一覧の CSV エクスポート 
 
-2020 年 11 月には、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)」を参照してください)。 12 月には、それらのフィルターを拡張しました (「[環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)」を参照してください)。 
+2020 年 11 月には、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](release-notes-archive.md#recommendations-list-now-includes-filters)」を参照してください)。 12 月には、それらのフィルターを拡張しました (「[環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)」を参照してください)。 
 
 今回は、フィルター処理された一覧に表示されている推奨事項のみが CSV エクスポートの対象となるよう、 **[Download to CSV]\(CSV にダウンロード\)** ボタンの動作を変更しています。 
 
@@ -802,9 +840,9 @@ Web アプリが証明書を要求するようにすることで、確実にセ�
 
 Azure Security Center では、接続されているすべてのリソースを監視し、セキュリティの推奨事項を生成します。 これらの推奨事項を使用して、ハイブリッド クラウドの体制を強化し、組織、業界、および国に関連するポリシーと標準へのコンプライアンス状況を追跡します。
 
-Security Center のカバレッジと機能が拡張されるにつれて、セキュリティに関する推奨事項の一覧が毎月増えていきます。 たとえば、「[Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)」を参照してください。
+Security Center のカバレッジと機能が拡張されるにつれて、セキュリティに関する推奨事項の一覧が毎月増えていきます。 たとえば、「[Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項](release-notes-archive.md#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)」を参照してください。
 
-一覧が増加するのに伴い、最も関心のあるものを見つけることができるように、フィルターを使用して推奨事項を絞り込む機能が求められるようになりました。 11 月に、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)」を参照してください)。
+一覧が増加するのに伴い、最も関心のあるものを見つけることができるように、フィルターを使用して推奨事項を絞り込む機能が求められるようになりました。 11 月に、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](release-notes-archive.md#recommendations-list-now-includes-filters)」を参照してください)。
 
 この月に追加されたフィルターには、次の条件で推奨事項の一覧を絞り込むためのオプションがあります。
 
@@ -840,119 +878,3 @@ Azure Security Center の連続エクスポート ツールを使用すると、
 - **規制コンプライアンス評価データの追加 (プレビュー)。** 任意のカスタム イニシアティブを含め、規制コンプライアンス評価の更新を Log Analytics ワークスペースまたはイベント ハブに連続的にエクスポートできるようになりました。 この機能は、各国のクラウドまたはソブリン クラウドでは使用できません。
 
     :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="連続エクスポート データに規制コンプライアンス評価情報を含めるためのオプション。":::
-
-
-## <a name="november-2020"></a>2020 年 11 月
-
-11 月の更新プログラムには次のものが含まれます。
-
-- [Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
-- [Security Center の法令遵守ダッシュボードに追加された NIST SP 800 171 R2](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
-- [推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)
-- [自動プロビジョニング エクスペリエンスの向上と拡張](#auto-provisioning-experience-improved-and-expanded)
-- [連続エクスポートでセキュア スコアが利用可能に (プレビュー)](#secure-score-is-now-available-in-continuous-export-preview)
-- ["システム更新プログラムをマシンにインストールする必要がある" 推奨事項にサブ推奨事項を追加](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations)
-- [Azure portal のポリシー管理ページに、既定のポリシー割り当ての状態を表示](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
-
-### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項
-
-Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 [Azure セキュリティ ベンチマークの詳細を確認してください](/security/benchmark/azure/introduction)。
-
-ベンチマークのカバレッジを拡大するために、次の 29 個のプレビュー推奨事項が Security Center に追加されています。
-
-プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
-
-| セキュリティ コントロール                     | 新しい推奨事項                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 転送中のデータを暗号化する              | - PostgreSQL データベース サーバーでは [SSL 接続を強制する] が有効でなければならない<br>- MySQL データベース サーバーでは [SSL 接続を強制する] が有効でなければならない<br>- API アプリに対して TLS を最新バージョンに更新する必要がある<br>- 関数アプリに対して TLS を最新バージョンに更新する必要がある<br>- Web アプリに対して TLS を最新バージョンに更新する必要がある<br>- API アプリでは FTPS を必須とする<br>- 関数アプリでは FTPS を必須とする<br>- Web アプリでは FTPS を必須とする                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| アクセスおよびアクセス許可の管理        | - Web アプリではすべての受信要求に対して SSL 証明書を要求する必要がある<br>- API アプリではマネージド ID を使用する必要がある<br>- 関数アプリではマネージド ID を使用する必要がある<br>- Web アプリではマネージド ID を使用する必要がある                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| 承認されていないネットワーク アクセスの制限 | - PostgreSQL サーバーに対してプライベート エンドポイントを有効にする必要がある<br>- MariaDB サーバーに対してプライベート エンドポイントを有効にする必要がある<br>- MySQL サーバーに対してプライベート エンドポイントを有効にする必要がある                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 監査とログ記録を有効にする          | - App Services の診断ログを有効にする必要があります                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| セキュリティのベストプラクティスを実装する    | - 仮想マシンに対して Azure Backup を有効にする必要がある<br>- Azure Database for MariaDB の geo 冗長バックアップを有効にする必要がある<br>- Azure Database for MySQL の geo 冗長バックアップを有効にする必要がある<br>- Azure Database for PostgreSQL の geo 冗長バックアップを有効にする必要がある<br>- API アプリに対して PHP を最新バージョンに更新する必要がある<br>- Web アプリに対して PHP を最新バージョンに更新する必要がある<br>- API アプリに対して Java を最新バージョンに更新する必要がある<br>- 関数アプリに対して Java を最新バージョンに更新する必要がある<br>- Web アプリに対して Java を最新バージョンに更新する必要がある<br>- API アプリに対して Python を最新バージョンに更新する必要がある<br>- 関数アプリに対して Python を最新バージョンに更新する必要がある<br>- Web アプリに対して Python を最新バージョンに更新する必要がある<br>- SQL サーバーの監査のリテンション期間は少なくとも 90 日に設定する必要がある |
-|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-
-関連リンク:
-
-- [Azure セキュリティ ベンチマークについての詳細情報](/security/benchmark/azure/introduction)
-- [Azure API アプリについての詳細情報](../app-service/app-service-web-tutorial-rest-api.md)
-- [Azure 関数アプリについての詳細情報](../azure-functions/functions-overview.md)
-- [Azure Web アプリについての詳細情報](../app-service/overview.md)
-- [Azure Database for MariaDB についての詳細情報](../mariadb/overview.md)
-- [Azure Database for MySQL についての詳細情報](../mysql/overview.md)
-- [Azure Database for PostgreSQL についての詳細情報](../postgresql/overview.md)
-
-
-### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>Security Center の法令遵守ダッシュボードに追加された NIST SP 800 171 R2
-
-NIST SP 800-171 R2 標準が、Azure Security Center の法令遵守ダッシュボードで使用するための組み込みイニシアティブとして使用できるようになりました。 コントロールのマッピングの詳細については、「[NIST SP 800-171 R2 規制コンプライアンスの組み込みイニシアチブの詳細](../governance/policy/samples/nist-sp-800-171-r2.md)」を参照してください。 
-
-標準をサブスクリプションに適用し、コンプライアンス状態を継続的に監視するには、「[規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ](update-regulatory-compliance-packages.md)」の手順を使用します。
-
-:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="Security Center の法令遵守ダッシュボードでの NIST SP 800 171 R2 標準":::
-
-このコンプライアンス標準の詳細については、[NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final) に関するページを参照してください。
-
-
-### <a name="recommendations-list-now-includes-filters"></a>推奨事項の一覧にフィルターを追加
-
-さまざまな条件に従って、セキュリティに関する推奨事項の一覧をフィルター処理できるようになりました。 次の例では、以下の条件を満たす推奨事項を表示するように、推奨事項の一覧がフィルター処理されています。
-
-- **一般提供** されている (つまり、プレビューではない)
-- **ストレージ アカウント** を対象とする
-- **クイック修正** による修復をサポートしている
-
-:::image type="content" source="media/release-notes/recommendations-filters.png" alt-text="推奨事項の一覧のフィルター":::
-
-
-### <a name="auto-provisioning-experience-improved-and-expanded"></a>自動プロビジョニング エクスペリエンスの向上と拡張
-
-自動プロビジョニング機能は、Security Center の保護によるメリットが得られるように、必要な拡張機能を新規および既存の Azure VM にインストールすることで管理オーバーヘッドの削減を支援します。 
-
-Azure Security Center の拡大に伴って、より多くの拡張機能が開発されています。Security Center では、リソースの種類の大規模な一覧を監視できます。 Azure Policy の機能を活用することで、自動プロビジョニング ツールが拡張され、他の拡張機能とリソースの種類がサポートされるようになりました。
-
-次の自動プロビジョニングを構成できるようになりました。
-
-- Log Analytics エージェント
-- (新) Kubernetes 用の Azure Policy アドオン
-- (新) Microsoft Dependency Agent
-
-詳細については、「[Azure Security Center からのエージェントと拡張機能の自動プロビジョニング](security-center-enable-data-collection.md)」をご覧ください。
-
-
-### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>連続エクスポートでセキュア スコアが利用可能に (プレビュー)
-
-セキュア スコアの連続エクスポートを使用すると、スコアの変更を Azure Event Hubs または Log Analytics ワークスペースにリアルタイムでストリーム配信することができます。 この機能を使用すると、次のことができます。
-
-- 動的レポートを使用し、一定期間にわたってセキュア スコアを追跡する
-- Azure Sentinel (または他の SIEM) にセキュア スコア データをエクスポートする
-- そのデータを、組織内でセキュア スコアを監視する目的で既に使用しているプロセスに統合する
-
-[Security Center のデータを連続的にエクスポートする](continuous-export.md)方法についての詳しい情報をご覧ください。
-
-
-### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations"></a>"システム更新プログラムをマシンにインストールする必要がある" 推奨事項にサブ推奨事項を追加
-
-**システム更新プログラムをマシンにインストールする必要がある** 推奨事項が強化されています。 新しいバージョンには、不足している更新プログラムごとのサブ推奨事項が含まれているほか、次の点が改善されています。
-
-- Azure portal の Azure Security Center ページでの再設計されたエクスペリエンス。 "**システム更新プログラムをマシンにインストールする必要がある**" に関する推奨事項の詳細ページには、次に示すような結果の一覧が表示されます。 1 つの結果を選択すると、詳細ウィンドウが開き、修復情報および影響を受けるリソースの一覧へのリンクが表示されます。
-
-    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="更新された推奨事項のポータル エクスペリエンスで、サブ推奨事項のいずれかを開く":::
-
-- Azure Resource Graph (ARG) からの推奨事項用に強化されたデータ。 ARG は、効率的なリソース探索を実現するように設計されている Azure のサービスです。 ARG を使用すると、特定のサブスクリプション セットの大規模なクエリを実行し、環境を効果的に管理できます。 
-
-    Azure Security Center では、ARG および [Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/) を使用して、幅広いセキュリティ態勢データに対してクエリを実行できます。
-
-    以前は、この推奨事項を ARG で照会した場合、取得できるのは、マシン上でその推奨事項を修復する必要があるという情報のみでした。 次に示す強化されたバージョンのクエリを実行すると、不足している各システム更新プログラムがマシン別にグループ化されて返されます。
-
-    ```kusto
-    securityresources
-    | where type =~ "microsoft.security/assessments/subassessments"
-    | where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
-    | where properties.status.code == "Unhealthy"
-    ```
-
-### <a name="policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments"></a>Azure portal のポリシー管理ページに、既定のポリシー割り当ての状態を表示
-
-サブスクリプションに既定の Security Center ポリシーが割り当てられているかどうかを確認できます。これは、Azure portal の Security Center の **[セキュリティ ポリシー]** ページに表示されます。
-
-:::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="既定のポリシー割り当てを示す Azure Security Center の [ポリシー管理] ページ":::

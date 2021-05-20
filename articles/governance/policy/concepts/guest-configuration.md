@@ -3,15 +3,14 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 863f85c1eeeed381eda12a066a247c2605a1d68f
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 6ca5990306dd77e59298c7df6a64f463b36be93b
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326131"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804108"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
-
 
 Azure Policy では、Azure 内で実行するマシンと [Arc に接続されたマシン](../../../azure-arc/servers/overview.md)の両方に対して、マシン内の設定を監査できます。 検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
 
@@ -38,7 +37,7 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 
 > [!IMPORTANT]
 > Azure の仮想マシンを監査するには、ゲスト構成拡張機能とマネージド ID が必要です。 拡張機能を大規模にデプロイするには、次のポリシー イニシアチブを割り当てます。
-> 
+>
 > `Deploy prerequisites to enable Guest Configuration policies on virtual machines`
 
 ### <a name="limits-set-on-the-extension"></a>拡張機能に設定されている制限
@@ -54,11 +53,12 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 |オペレーティング システム|検証ツール|Notes|
 |-|-|-|
 |Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| Azure Policy でのみ使用されるフォルダーにサイドローディングされます。 Windows PowerShell DSC と競合しません。 PowerShell Core はシステム パスに追加されません。|
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Chef InSpec バージョン 2.2.61 が既定の場所にインストールされ、システム パスに追加されます。 Ruby と Python を含む InSpec パッケージの依存関係もインストールされます。 |
+|Linux|[Chef InSpec](https://www.chef.io/inspec/) | Chef InSpec バージョン 2.2.61 が既定の場所にインストールされ、システム パスに追加されます。 Ruby と Python を含む InSpec パッケージの依存関係もインストールされます。 |
 
 ### <a name="validation-frequency"></a>検証の頻度
 
-ゲスト構成クライアントは、ゲスト割り当てに新しいものや更新されたものがないか 5 分ごとにチェックします。 ゲスト割り当てを受信すると、その構成の設定が 15 分間隔でチェックされます。 監査が完了すると、結果がゲスト構成リソース プロバイダーに送信されます。 ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。 この更新により、Azure Policy によって Azure Resource Manager のプロパティが評価されます。 オンデマンドの Azure Policy 評価により、ゲスト構成リソース プロバイダーから最新の値が取得されます。 ただし、マシン内の構成の新しい監査はトリガーされません。 状態は Azure Resource Graph に同時に書き込まれます。
+ゲスト構成クライアントは、ゲスト割り当てに新しいものや更新されたものがないか 5 分ごとにチェックします。 ゲスト割り当てを受信すると、その構成の設定が 15 分間隔でチェックされます。 監査が完了すると、結果がゲスト構成リソース プロバイダーに送信されます。
+ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。 この更新により、Azure Policy によって Azure Resource Manager のプロパティが評価されます。 オンデマンドの Azure Policy 評価により、ゲスト構成リソース プロバイダーから最新の値が取得されます。 ただし、マシン内の構成の新しい監査はトリガーされません。 状態は Azure Resource Graph に同時に書き込まれます。
 
 ## <a name="supported-client-types"></a>サポートされているクライアントの種類
 
@@ -72,7 +72,7 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 |Microsoft|Windows クライアント|Windows 10|
 |OpenLogic|CentOS|7.3 -8|
 |Red Hat|Red Hat Enterprise Linux|7.4 - 8|
-|Suse|SLES|12 SP3-SP5、15|
+|SUSE|SLES|12 SP3-SP5、15|
 
 カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシー定義でサポートされます。
 
@@ -120,9 +120,8 @@ Azure Arc によって接続されている Azure の外部にあるノードで
 
 ### <a name="what-is-a-guest-assignment"></a>ゲストの割り当てとは
 
-Azure Policy が割り当てられている場合で、それが "Guest Configuration" カテゴリに属している場合は、ゲスト割り当てを記述するために含められたメタデータが存在します。
-ゲスト割り当ては、コンピューターと Azure Policy シナリオとの間のリンクだと考えてください。
-たとえば、次のスニペットでは、Azure Windows ベースライン構成が、最小バージョンを `1.0.0` として、ポリシーのスコープ内のすべてのコンピューターに関連付けられています。 既定では、ゲスト割り当てはコンピューターの監査のみを実行します。
+Azure Policy が割り当てられている場合で、それが "Guest Configuration" カテゴリに属している場合は、ゲスト割り当てを記述するために含められたメタデータが存在します。 ゲスト割り当ては、コンピューターと Azure Policy シナリオとの間のリンクだと考えてください。 たとえば、次のスニペットでは、Azure Windows ベースライン構成が、最小バージョンを `1.0.0` として、ポリシーのスコープ内のすべてのコンピューターに関連付けられています。
+既定では、ゲスト割り当てはコンピューターの監査のみを実行します。
 
 ```json
 "metadata": {
@@ -134,8 +133,7 @@ Azure Policy が割り当てられている場合で、それが "Guest Configur
 //additional metadata properties exist
 ```
 
-ゲスト割り当ては、ゲスト構成サービスによってマシンごとに自動で作成されます。 リソースの種類は `Microsoft.GuestConfiguration/guestConfigurationAssignments` です。
-Azure Policy は、ゲスト割り当てリソースの **complianceStatus** プロパティを使用して、コンプライアンスの状態を報告します。 詳細については、[コンプライアンス データを取得する](../how-to/get-compliance-data.md)を参照してください。
+ゲスト割り当ては、ゲスト構成サービスによってマシンごとに自動で作成されます。 リソースの種類は `Microsoft.GuestConfiguration/guestConfigurationAssignments` です。 Azure Policy は、ゲスト割り当てリソースの **complianceStatus** プロパティを使用して、コンプライアンスの状態を報告します。 詳細については、[コンプライアンス データを取得する](../how-to/get-compliance-data.md)を参照してください。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>業界の基準に従ってオペレーティング システムの設定を監査する
 
@@ -160,6 +158,14 @@ _[構成]_ で始まる定義を割り当てるとき、 _[前提条件を展開
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Azure 外部のコンピューターにポリシーを割り当てる
 
 ゲスト構成に使用できる監査ポリシー定義には、**Microsoft.HybridCompute/machines** リソースの種類が含まれます。 ポリシー割り当てのスコープ内にある[サーバー向け Azure Arc](../../../azure-arc/servers/overview.md) にオンボードされているすべてのマシンが自動的に追加されます。
+
+## <a name="availability"></a>可用性
+
+ゲスト割り当ては Azure のマシン リソースの拡張機能であるため、高可用性ソリューションを設計しているお客様は、[仮想マシン](../../../virtual-machines/availability.md)の冗長性計画の要件を検討する必要があります。 物理リージョンが Azure で使用できなくなった場合、リージョンが復元されるまで、ゲスト割り当ての履歴レポートを表示することはできません。
+
+高可用性アプリケーションのアーキテクチャを検討する場合 (特に、高可用性を提供するためにロード バランサーソリューションの背後にある[可用性セット](../../../virtual-machines/availability.md#availability-sets)に仮想マシンがプロビジョニングされている場合)、ソリューション内のすべてのマシンに、同じパラメーターを含む同じポリシー定義を割り当てるのがベスト プラクティスです。 可能であれば、すべてのマシンにまたがる単一のポリシー割り当てを採用することにより、管理オーバーヘッドが最小限に抑えられます。
+
+[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) によって保護されているマシンの場合は、プライマリ サイト内のマシンと同じパラメーター値を使用した同じ定義の Azure Policy 割り当てのスコープ内にセカンダリ サイト内のマシンを入れるようにします。
 
 ## <a name="troubleshooting-guest-configuration"></a>ゲスト構成のトラブルシューティング
 
@@ -200,7 +206,7 @@ Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensit
 
 [Azure VM の実行コマンド](../../../virtual-machines/linux/run-command.md)を使用して、ログ ファイルから情報をキャプチャします。次の Bash スクリプトの例が役立ちます。
 
-```Bash
+```bash
 linesToIncludeBeforeMatch=0
 linesToIncludeAfterMatch=10
 logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log

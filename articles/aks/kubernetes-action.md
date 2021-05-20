@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3d0b6030cc63d0d7f4eac2c72c3545cf315b1fd3
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 2539591b7c425750263653d137f904758982ca62
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832389"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751889"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes Service にデプロイするための GitHub アクション
 
@@ -98,14 +98,14 @@ jobs:
     steps:
     - uses: actions/checkout@main
     
-    # Connect to Azure Container registry (ACR)
+    # Connect to Azure Container Registry (ACR)
     - uses: azure/docker-login@v1
       with:
         login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }} 
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
-    # Container build and push to a Azure Container registry (ACR)
+    # Container build and push to a Azure Container Registry (ACR)
     - run: |
         docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
@@ -124,6 +124,8 @@ AKS にコンテナー イメージをデプロイするには、`Azure/k8s-depl
 | **imagepullsecrets** | (省略可能) クラスター内に既に設定されている docker-registry シークレットの名前。 これらの各シークレット名は、入力マニフェスト ファイルにあるワークロードの imagePullSecrets フィールドの下に追加されます |
 | **kubectl-version** | (省略可能) 特定のバージョンの kubectl バイナリをインストールします |
 
+> [!NOTE]
+> マニフェスト ファイルは手動で作成する必要があります。 現在、このようなファイルを自動的に生成するツールはありません。詳細については、[マニフェスト ファイルの例を含むこのサンプル リポジトリ](https://github.com/MicrosoftDocs/mslearn-aks-deploy-container-app/tree/master/kubernetes)を参照してください。
 
 AKS にデプロイする前に、ターゲットの Kubernetes 名前空間を設定し、イメージのプル シークレットを作成する必要があります。 イメージのプルのしくみの詳細については、「[Azure コンテナー レジストリから Kubernetes クラスターにイメージをプルする](../container-registry/container-registry-auth-kubernetes.md)」を参照してください。 
 
@@ -165,14 +167,14 @@ jobs:
     steps:
     - uses: actions/checkout@main
     
-    # Connect to Azure Container registry (ACR)
+    # Connect to Azure Container Registry (ACR)
     - uses: azure/docker-login@v1
       with:
         login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }} 
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
-    # Container build and push to a Azure Container registry (ACR)
+    # Container build and push to a Azure Container Registry (ACR)
     - run: |
         docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
@@ -219,6 +221,9 @@ Kubernetes クラスター、コンテナー レジストリ、およびリポ�
 
 > [!div class="nextstepaction"]
 > [Azure Kubernetes Service について学習する](/azure/architecture/reference-architectures/containers/aks-start-here)
+
+> [!div class="nextstepaction"]
+> [AKS を使用して GitHub Actions で複数のパイプラインを作成する方法を学習する](https://docs.microsoft.com/learn/modules/aks-deployment-pipeline-github-actions)
 
 ### <a name="more-kubernetes-github-actions"></a>その他の Kubernetes GitHub Actions
 

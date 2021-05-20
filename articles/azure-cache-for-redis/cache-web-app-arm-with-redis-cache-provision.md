@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 089d7d7990f0f94135f629a5cd7a461700aa3433
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: d8f4f98f666bcf2fd703e2f9484c0ed122550e33
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830774"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739927"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>テンプレートを使用して Web アプリと Azure Cache for Redis を作成する
 
@@ -81,7 +81,7 @@ Web アプリで使用される Azure Cache for Redis を作成します。 キ�
 ```
 
 
-### <a name="web-app"></a>Web アプリ
+### <a name="web-app-azure-cache-for-redis"></a>Web アプリ (Azure Cache for Redis)
 **webSiteName** 変数で指定された名前で Web アプリを作成します。
 
 Azure Cache for Redis との連動を可能にするアプリ設定プロパティで Web アプリが構成されることに注意してください。 これらのアプリ設定はデプロイ時に指定された値に基づいて動的に作成されます。
@@ -93,8 +93,7 @@ Azure Cache for Redis との連動を可能にするアプリ設定プロパテ�
   "type": "Microsoft.Web/sites",
   "location": "[resourceGroup().location]",
   "dependsOn": [
-    "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
-    "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
+    "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]"
   ],
   "tags": {
     "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
@@ -114,7 +113,45 @@ Azure Cache for Redis との連動を可能にするアプリ設定プロパテ�
         "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
       ],
       "properties": {
-       "CacheConnection": "[concat(variables('cacheName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', variables('cacheName')), '2015-08-01').primaryKey)]"
+       "CacheConnection": "[concat(variables('cacheHostName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', variables('cacheName')), '2015-08-01').primaryKey)]"
+      }
+    }
+  ]
+}
+```
+
+
+### <a name="web-app-redisenterprise"></a>Web アプリ (RedisEnterprise)
+RedisEnterprise の場合、リソースの種類は少し異なるので、**listKeys** を行なう方法は違います。
+
+```json
+{
+  "apiVersion": "2015-08-01",
+  "name": "[variables('webSiteName')]",
+  "type": "Microsoft.Web/sites",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]"
+  ],
+  "tags": {
+    "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
+    "displayName": "Website"
+  },
+  "properties": {
+    "name": "[variables('webSiteName')]",
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-08-01",
+      "type": "config",
+      "name": "appsettings",
+      "dependsOn": [
+        "[concat('Microsoft.Web/Sites/', variables('webSiteName'))]",
+        "[concat('Microsoft.Cache/RedisEnterprise/databases/', variables('cacheName'), "/default")]",
+      ],
+      "properties": {
+       "CacheConnection": "[concat(variables('cacheHostName'),abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/RedisEnterprise', variables('cacheName'), 'default'), '2020-03-01').primaryKey)]"
       }
     }
   ]

@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 05/10/2021
 ms.author: alkohli
-ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d98141c52acc3cd0628943d17a89ec9822299d48
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147936"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738142"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box と Azure Data Box Heavy のインポート注文の追跡とイベント ログ記録
 
 Data Box または Data Box Heavy のインポート注文は、注文、設定、データのコピー、返却、Azure へのアップロードと確認、およびデータ消去の段階をたどります。 注文の各段階に対応して、注文へのアクセスの制御、イベントの監査、注文の追跡、生成されるさまざまなログの解釈のための、さまざまなアクションを実行できます。
 
-次の表で、Data Box または Data Box Heavy のインポート注文の段階と、各段階で注文の追跡と監査に使用できるツールの概要を示します。
+次の表に、インポート注文を処理する各手順の概要と、手順の実行中に注文を追跡および監査するために使用できるツールを示します。
 
-| Data Box インポート注文の段階       | 追跡と監査のためのツール                                                                        |
-|----------------------------|------------------------------------------------------------------------------------------------|
+| Data Box インポート注文の段階| 追跡と監査のためのツール|
+|----------------------------|------------------------|
 | 注文の作成               | [Azure RBAC を使用して注文へのアクセス制御を設定する](#set-up-access-control-on-the-order)                                                    |
 | 処理された注文            | 以下を通じて[注文を追跡する](#track-the-order) <ul><li> Azure portal </li><li> 運送業者の Web サイト </li><li>メール通知</ul> |
 | デバイスを設定する              | [アクティビティ ログ](#query-activity-logs-during-setup)に記録されたデバイスの資格情報へのアクセス                                              |
@@ -79,7 +79,7 @@ Data Box または Azure Data Box Heavy へのデータのコピー中に、コ�
 コピー ジョブがエラーなしで完了したことを確認してください。 コピー プロセス中にエラーがある場合は、 **[接続とコピー]** ページからログをダウンロードします。
 
 - 512 バイトにアラインされていないファイルを Data Box のマネージド ディスク フォルダーにコピーした場合、そのファイルはステージング用のストレージ アカウントにページ BLOB としてアップロードされません。 ログにエラーが表示されます。 そのファイルを削除し、512 バイトにアラインされているファイルをコピーします。
-- VHDX、動的 VHD、または差分 VHD (これらのファイルはサポートされていません) をコピーした場合は、ログにエラーが表示されます。
+- VHDX、動的 VHD、または差分 VHD (これらの種類のファイルはサポートされていません) をコピーした場合は、ログにエラーが表示されます。
 
 マネージド ディスクにコピーする際のさまざまなエラーの *error.xml* のサンプルは、次のとおりです。
 
@@ -161,7 +161,7 @@ Azure Files にコピーする際のさまざまなエラーの *error.xml* の�
 
 ### <a name="bom-or-manifest-file"></a>BOM またはマニフェスト ファイル
 
-BOM または マニフェスト ファイルには、Data Box デバイスにコピーされたすべてのファイルの一覧が含まれています。 BOM ファイルには、ファイル名と対応するサイズ、およびチェックサムが含まれています。 ブロック BLOB、ページ BLOB、Azure Files 用、REST API を使用したコピー用、および Data Box 上のマネージド ディスクへのコピー用に、別個の BOM ファイルが作成されます。 BOM ファイルは、発送準備中にデバイスのローカル Web UI からダウンロードできます。
+BOM または マニフェスト ファイルには、Data Box デバイスにコピーされたすべてのファイルの一覧が含まれています。 BOM ファイルには、ファイル名、ファイル サイズ、チェックサムがあります。 ブロック BLOB、ページ BLOB、Azure Files 用、REST API を使用したコピー用、および Data Box 上のマネージド ディスクへのコピー用に、別個の BOM ファイルが作成されます。 BOM ファイルは、発送準備中にデバイスのローカル Web UI からダウンロードできます。
 
 これらのファイルは Data Box デバイス上にも存在していて、Azure データセンター内の関連付けられているストレージ アカウントにアップロードされます。
 
@@ -211,7 +211,7 @@ Data Box サービスでは、処理される注文ごとに、関連付けら�
 
 ![完了時に [概要] ブレードに表示されているコピー ログへのパス](media/data-box-logs/copy-log-path-1.png)
 
-### <a name="upload-completed-successfully"></a>アップロードが正常に完了した 
+### <a name="upload-completed-successfully"></a>アップロードが正常に完了した
 
 次のサンプルは、正常に完了した Data Box のアップロード用のコピー ログの一般的な形式を示しています。
 
@@ -224,40 +224,15 @@ Data Box サービスでは、処理される注文ごとに、関連付けら�
 </CopyLog>
 ```
 
-### <a name="upload-completed-with-errors"></a>アップロードがエラーで完了した 
-
-Azure へのアップロードも、エラーで完了する場合があります。
-
-![エラーで完了したときに [概要] ブレードに表示されているコピー ログへのパス](media/data-box-logs/copy-log-path-2.png)
-
-次に、アップロードがエラーで完了した場合のコピー ログの例を示します。
-
-```xml
-<ErroredEntity Path="iso\samsungssd.iso">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>409</ErrorCode>
-  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity Path="iso\iSCSI_Software_Target_33.iso">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>409</ErrorCode>
-  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><CopyLog Summary="Summary">
-  <Status>Failed</Status>
-  <TotalFiles_Blobs>72</TotalFiles_Blobs>
-  <FilesErrored>2</FilesErrored>
-</CopyLog>
-```
 ### <a name="upload-completed-with-warnings"></a>アップロードが警告で完了した
 
-Azure へのアップロードが警告で完了するのは、Azure の名前付け規則に準拠していないコンテナー/BLOB/ファイルの名前がデータに含まれており、Azure にデータをアップロードするために名前が変更された場合です。
+Azure へのアップロードが警告で完了するのは、Azure の名前付け規則に準拠していないコンテナー、BLOB、またはファイルの名前がデータに含まれており、Azure にデータをアップロードするために名前が変更された場合です。
 
 ![警告で完了したときに [概要] ブレードに表示されているコピー ログへのパス](media/data-box-logs/copy-log-path-3.png)
 
 次に、Azure の名前付け規則に準拠していないコンテナーが、Azure へのデータ アップロード中に名前変更された場合のコピー ログの例を示します。
 
-コンテナーの新しい固有名は `DataBox-GUID` という形式で、コンテナーのデータは、名前が変更された新しいコンテナーに配置されます。 このコピー ログでは、コンテナーの古い名前と新しい名前が指定されています。
+新しいコンテナーの一意の名前は、`DataBox-GUID` 形式です。 元のコンテナーのデータは、名前が変更された新しいコンテナーに配置されます。 このコピー ログでは、コンテナーの古い名前と新しい名前が指定されています。
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -268,7 +243,7 @@ Azure へのアップロードが警告で完了するのは、Azure の名前�
 </ErroredEntity>
 ```
 
-次に、Azure の名前付け規則に準拠していない BLOB またはファイルが、Azure へのデータ アップロード中に名前変更された場合のコピー ログの例を示します。 新しい BLOB 名またはファイル名は、コンテナーへの相対パスの SHA256 ダイジェストに変換され、宛先の種類に基づいてパスにアップロードされます。 宛先として、ブロック BLOB、ページ BLOB、または Azure Files を指定できます。
+次に、Azure の名前付け規則に準拠していない BLOB またはファイルが、Azure へのデータ アップロード中に名前変更された場合のコピー ログの例を示します。 新しい BLOB またはファイルの名前は、コンテナーへの相対パスの SHA256 ダイジェストに変換され、宛先の種類に基づいたパスにアップロードされます。 宛先として、ブロック BLOB、ページ BLOB、または Azure Files を指定できます。
 
 この `copylog` では、BLOB またはファイルの古い名前と新しい名前、および Azure でのパスが指定されています。
 
@@ -289,6 +264,35 @@ Azure へのアップロードが警告で完了するのは、Azure の名前�
   <ErrorMessage>The original container/share/blob has been renamed to: BlockBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
   <Type>File</Type>
 </ErroredEntity>
+```
+
+
+### <a name="upload-completed-with-errors"></a>アップロードがエラーで完了した
+
+Azure へのアップロードも、エラーで完了する場合があります。
+
+![エラーで完了したときに [概要] ブレードに表示されているコピー ログへのパス](media/data-box-logs/copy-log-path-2.png)
+
+場合によっては、再試行できないエラーが発生し、それがファイルがアップロードされない原因となります。 この場合、通知を受け取ります。 この通知をフォローアップする方法について詳しくは、[Azure Data Box および Azure Data Box Heavy デバイスからのデータ アップロードでのコピー エラーの確認](data-box-troubleshoot-data-upload.md)に関する記事を参照してください。
+
+次に、アップロードがエラーで完了した場合のコピー ログの例を示します。
+
+```xml
+<ErroredEntity Path="iso\samsungssd.iso">
+  <Category>UploadErrorCloudHttp</Category>
+  <ErrorCode>409</ErrorCode>
+  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="iso\iSCSI_Software_Target_33.iso">
+  <Category>UploadErrorCloudHttp</Category>
+  <ErrorCode>409</ErrorCode>
+  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><CopyLog Summary="Summary">
+  <Status>Failed</Status>
+  <TotalFiles_Blobs>72</TotalFiles_Blobs>
+  <FilesErrored>2</FilesErrored>
+</CopyLog>
 ```
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>データの消去後に生産物流管理ログを取得する

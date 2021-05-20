@@ -2,24 +2,24 @@
 title: 論理的な組織化のためにリソース、リソース グループ、サブスクリプションにタグを付ける
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 05/05/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0ee2274dcd13af0bcbfe342039681ecc7b949a7b
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: ef9e94203987374bebb461989fd1763cf1b0bf80
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330965"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803280"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
-Azure リソース、リソース グループ、サブスクリプションにタグを適用して、論理的な分類に整理できます。 各タグは、名前と値のペアで構成されます。 たとえば、運用環境のすべてのリソースには名前 "環境" と値 "運用" を適用できます。
+Azure リソース、リソース グループ、サブスクリプションにタグを適用して、論理的な分類に整理できます。 各タグは、名前と値のペアで構成されます。 たとえば、運用環境のすべてのリソースに、_環境_ という名前と _運用_ という値を適用できます。
 
 タグ付け戦略の実装方法に関する推奨事項については、「[リソースの名前付けとタグ付けの意思決定ガイド](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)」を参照してください。
 
 > [!IMPORTANT]
 > 操作のタグの名前は大文字と小文字が区別されません。 大文字と小文字の区別に関係なく、タグ名を持つタグが更新または取得されます。 ただし、リソース プロバイダーでは、タグ名に指定した大文字と小文字がそのまま保持される可能性があります。 コスト レポートにはその大文字と小文字で表示されます。
-> 
+>
 > タグの値は大文字と小文字が区別されます。
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
@@ -28,7 +28,7 @@ Azure リソース、リソース グループ、サブスクリプションに�
 
 タグ リソースへの必要なアクセスを取得するには、2 つの方法があります。
 
-- **Microsoft.Resources/tags** リソースの種類に対する書き込みアクセス権を持つこと。 このアクセス権により、リソース自体にアクセスできない場合でも、任意のリソースにタグを付けることができます。 [タグ共同作成者](../../role-based-access-control/built-in-roles.md#tag-contributor)ロールでは、このアクセス権が付与されます。 現時点では、タグの共同作成者ロールでは、ポータルからリソースまたはリソース グループにタグを適用することはできません。 ポータルを使用したサブスクリプションへのタグの適用は可能です。 PowerShell と REST API によるすべてのタグ操作がサポートされます。  
+- `Microsoft.Resources/tags` リソースの種類に対する書き込みアクセス権を持つこと。 このアクセス権により、リソース自体にアクセスできない場合でも、任意のリソースにタグを付けることができます。 [タグ共同作成者](../../role-based-access-control/built-in-roles.md#tag-contributor)ロールでは、このアクセス権が付与されます。 現時点では、タグの共同作成者ロールでは、ポータルからリソースまたはリソース グループにタグを適用することはできません。 ポータルを使用したサブスクリプションへのタグの適用は可能です。 PowerShell と REST API によるすべてのタグ操作がサポートされます。
 
 - リソース自体に対する書き込みアクセス権を持つこと。 [共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールでは、任意のエンティティにタグを適用するために必要なアクセス権が付与されます。 1 つのリソースの種類だけにタグを適用するには、そのリソースの共同作成者ロールを使用します。 たとえば、仮想マシンにタグを適用するには、[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)を使用します。
 
@@ -36,9 +36,9 @@ Azure リソース、リソース グループ、サブスクリプションに�
 
 ### <a name="apply-tags"></a>タグを適用する
 
-Azure PowerShell には、タグを適用するために、[New-AzTag](/powershell/module/az.resources/new-aztag) と [Update-AzTag](/powershell/module/az.resources/update-aztag) の 2 つのコマンドが用意されています。 Az.Resources モジュール 1.12.0 以降が必要です。 `Get-Module Az.Resources` を使用して、お使いのバージョンを確認できます。 そのモジュールをインストールすることも、[Azure PowerShell をインストール](/powershell/azure/install-az-ps) (3.6.1 以降) することもできます。
+Azure PowerShell には、タグを適用するために、[New-AzTag](/powershell/module/az.resources/new-aztag) と [Update-AzTag](/powershell/module/az.resources/update-aztag) という 2 つのコマンドが用意されています。 `Az.Resources` モジュール 1.12.0 以降が必要です。 `Get-InstalledModule -Name Az.Resources` を使用して、お使いのバージョンを確認できます。 そのモジュールをインストールすることも、[Azure PowerShell をインストール](/powershell/azure/install-az-ps) (3.6.1 以降) することもできます。
 
-**New-AzTag** では、リソース、リソース グループ、またはサブスクリプションのすべてのタグが置き換えられます。 コマンドを呼び出すときに、タグを付けるエンティティのリソース ID を渡します。
+`New-AzTag` では、リソース、リソース グループ、またはサブスクリプションのすべてのタグが置き換えられます。 コマンドを呼び出すときに、タグを付けるエンティティのリソース ID を渡します。
 
 次の例では、一連のタグがストレージ アカウントに適用されます。
 
@@ -73,7 +73,7 @@ Properties :
         Team         Compliance
 ```
 
-既にタグがあるリソースにタグを追加するには、**Update-AzTag** を使用します。 **-Operation** パラメーターを **Merge** に設定します。
+既にタグがあるリソースにタグを追加するには、`Update-AzTag` を使用します。 `-Operation` パラメーターを `Merge` に設定します。
 
 ```azurepowershell-interactive
 $tags = @{"Dept"="Finance"; "Status"="Normal"}
@@ -92,7 +92,7 @@ Properties :
         Environment  Production
 ```
 
-各タグ名に対して設定できる値は 1 つだけです。 タグに新しい値を指定すると、マージ操作を使用した場合でも、古い値が置き換えられます。 次の例では、Status タグを Normal から Green に変更します。
+各タグ名に対して設定できる値は 1 つだけです。 タグに新しい値を指定すると、マージ操作を使用した場合でも、古い値が置き換えられます。 次の例では、`Status` タグを _Normal_ から _Green_ に変更します。
 
 ```azurepowershell-interactive
 $tags = @{"Status"="Green"}
@@ -109,7 +109,7 @@ Properties :
         Environment  Production
 ```
 
-**-Operation** パラメーターを **Replace** に設定すると、既存のタグが新しいタグのセットに置き換えられます。
+`-Operation` パラメーターを `Replace` に設定すると、既存のタグが新しいタグのセットに置き換えられます。
 
 ```azurepowershell-interactive
 $tags = @{"Project"="ECommerce"; "CostCenter"="00123"; "Team"="Web"}
@@ -215,7 +215,7 @@ Get-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="remove-tags"></a>タグを削除する
 
-特定のタグを削除するには、**Update-AzTag** を使用し、 **-Operation** を **Delete** に設定します。 削除するタグを渡します。
+特定のタグを削除するには、`Update-AzTag` を使用し、 `-Operation` を `Delete` に設定します。 削除するタグを渡します。
 
 ```azurepowershell-interactive
 $removeTags = @{"Project"="ECommerce"; "Team"="Web"}
@@ -242,9 +242,9 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="apply-tags"></a>タグを適用する
 
-Azure CLI には、タグを適用するための 2 つのコマンドが用意されています。[az tag create](/cli/azure/tag#az_tag_create) と [az tag update](/cli/azure/tag#az_tag_update) です。 Azure CLI 2.10.0 以降である必要があります。 `az version` を使用して、お使いのバージョンを確認できます。 更新またはインストールする方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+Azure CLI には、タグを適用するために、[az tag create](/cli/azure/tag#az_tag_create) と [az tag update](/cli/azure/tag#az_tag_update) という 2 つのコマンドが用意されています。 Azure CLI 2.10.0 以降である必要があります。 `az version` を使用して、お使いのバージョンを確認できます。 更新またはインストールする方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-**az tag create** を実行すると、リソース、リソース グループ、またはサブスクリプションのすべてのタグが置き換えられます。 コマンドを呼び出すときに、タグを付けるエンティティのリソース ID を渡します。
+`az tag create` では、リソース、リソース グループ、またはサブスクリプションのすべてのタグが置き換えられます。 コマンドを呼び出すときに、タグを付けるエンティティのリソース ID を渡します。
 
 次の例では、一連のタグがストレージ アカウントに適用されます。
 
@@ -298,7 +298,7 @@ az tag update --resource-id $resource --operation Merge --tags Dept=Finance Stat
 },
 ```
 
-各タグ名に対して設定できる値は 1 つだけです。 タグに新しい値を指定すると、マージ操作を使用した場合でも、古い値が置き換えられます。 次の例では、Status タグを Normal から Green に変更します。
+各タグ名に対して設定できる値は 1 つだけです。 タグに新しい値を指定すると、マージ操作を使用した場合でも、古い値が置き換えられます。 次の例では、`Status` タグを _Normal_ から _Green_ に変更します。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Status=Green
@@ -443,186 +443,298 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 Azure Resource Manager テンプレート (ARM テンプレート) を使用したデプロイ時に、リソース、リソース グループ、サブスクリプションにタグを付けることができます。
 
 > [!NOTE]
-> ARM テンプレートを使用して適用したタグによって既存のタグが上書きされます。
+> ARM テンプレートまたは Bicep ファイルを使用して適用したタグによって、既存のタグが上書きされます。
 
 ### <a name="apply-values"></a>値を適用する
 
 次の例では、3 つのタグが適用されたストレージ アカウントがデプロイされます。 2 つのタグ (`Dept` と `Environment`) にはリテラル値が設定されます。 1 つのタグ (`LastDeployed`) には、現在の日付が既定値のパラメーターが設定されます。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "utcShort": {
+      "type": "string",
+      "defaultValue": "[utcNow('d')]"
     },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "Dept": "Finance",
-                "Environment": "Production",
-                "LastDeployed": "[parameters('utcShort')]"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "Dept": "Finance",
+        "Environment": "Production",
+        "LastDeployed": "[parameters('utcShort')]"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+param utcShort string = utcNow('d')
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    Dept: 'Finance'
+    Environment: 'Production'
+    LastDeployed: utcShort
+  }
+}
+```
+
+---
 
 ### <a name="apply-an-object"></a>オブジェクトを適用する
 
 複数のタグを格納するオブジェクト パラメーターを定義し、そのオブジェクトをタグ要素に適用できます。 この方法では、オブジェクトは異なるプロパティを持つことができるため、前の例より柔軟性が高くなります。 オブジェクト内の各プロパティがリソースの個々のタグになります。 次の例は、タグ要素に適用される `tagValues` という名前のパラメーターを示しています。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        },
-        "tagValues": {
-            "type": "object",
-            "defaultValue": {
-                "Dept": "Finance",
-                "Environment": "Production"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
     },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": "[parameters('tagValues')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+    "tagValues": {
+      "type": "object",
+      "defaultValue": {
+        "Dept": "Finance",
+        "Environment": "Production"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": "[parameters('tagValues')]",
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+param tagValues object = {
+  Dept: 'Finance'
+  Environment: 'Production'
+}
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: tagValues
+}
+```
+
+---
 
 ### <a name="apply-a-json-string"></a>JSON 文字列を適用する
 
-1 つのタグに複数の値を格納するには、値を表す JSON 文字列を適用します。 JSON 文字列全体は、1 つのタグとして格納されます。256 文字以下にする必要があります。 次の例は、JSON 文字列で複数の値を格納する `CostCenter` という名前の 1 つのタグを示しています。  
+1 つのタグに複数の値を格納するには、値を表す JSON 文字列を適用します。 JSON 文字列全体は、1 つのタグとして格納されます。256 文字以下にする必要があります。 次の例は、JSON 文字列で複数の値を格納する `CostCenter` という名前の 1 つのタグを示しています。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    CostCenter: '{"Dept":"Finance","Environment":"Production"}'
+  }
+}
+```
+
+---
 
 ### <a name="apply-tags-from-resource-group"></a>リソース グループからタグを適用する
 
 リソース グループからリソースにタグを適用するには、[resourceGroup()](../templates/template-functions-resource.md#resourcegroup) 関数を使います。 タグの値を取得するときは、`tags.tag-name` 構文ではなく `tags[tag-name]` 構文を使います。これは、ドット表記では一部の文字が正しく解析されないためです。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "Dept": "[resourceGroup().tags['Dept']]",
-                "Environment": "[resourceGroup().tags['Environment']]"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "Dept": "[resourceGroup().tags['Dept']]",
+        "Environment": "[resourceGroup().tags['Environment']]"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    Dept: resourceGroup().tags['Dept']
+    Environment: resourceGroup().tags['Environment']
+  }
+}
+```
+
+---
 
 ### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>リソース グループまたはサブスクリプションにタグを適用する
 
-リソースの種類 **Microsoft.Resources/tags** をデプロイすることにより、リソース グループまたはサブスクリプションにタグを追加できます。 タグは、デプロイのターゲット リソース グループまたはサブスクリプションに適用されます。 テンプレートをデプロイするたびに、以前に適用したタグがすべて置き換えられます。
+リソースの種類 `Microsoft.Resources/tags` をデプロイすることにより、リソース グループまたはサブスクリプションにタグを追加できます。 タグは、デプロイのターゲット リソース グループまたはサブスクリプションに適用されます。 テンプレートをデプロイするたびに、以前に適用したタグがすべて置き換えられます。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "tagName": {
-            "type": "string",
-            "defaultValue": "TeamName"
-        },
-        "tagValue": {
-            "type": "string",
-            "defaultValue": "AppTeam1"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tagName": {
+      "type": "string",
+      "defaultValue": "TeamName"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/tags",
-            "name": "default",
-            "apiVersion": "2019-10-01",
-            "dependsOn": [],
-            "properties": {
-                "tags": {
-                    "[parameters('tagName')]": "[parameters('tagValue')]"
-                }
-            }
+    "tagValue": {
+      "type": "string",
+      "defaultValue": "AppTeam1"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/tags",
+      "name": "default",
+      "apiVersion": "2021-04-01",
+      "properties": {
+        "tags": {
+          "[parameters('tagName')]": "[parameters('tagValue')]"
         }
-    ]
+      }
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param tagName string = 'TeamName'
+param tagValue string = 'AppTeam1'
+
+resource applyTags 'Microsoft.Resources/tags@2021-04-01' = {
+  name: 'default'
+  properties: {
+    tags: {
+      '${tagName}': tagValue
+    }
+  }
+}
+```
+
+---
 
 リソース グループにタグを適用するには、PowerShell または Azure CLI を使用します。 タグを付けるリソース グループにデプロイします。
 
@@ -648,33 +760,55 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 次のテンプレートでは、オブジェクトからリソース グループまたはサブスクリプションにタグが追加されます。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
-"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "tags": {
-            "type": "object",
-            "defaultValue": {
-                "TeamName": "AppTeam1",
-                "Dept": "Finance",
-                "Environment": "Production"
-            }
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/tags",
-            "name": "default",
-            "apiVersion": "2019-10-01",
-            "dependsOn": [],
-            "properties": {
-                "tags": "[parameters('tags')]"
-            }
-        }
-    ]
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tags": {
+      "type": "object",
+      "defaultValue": {
+        "TeamName": "AppTeam1",
+        "Dept": "Finance",
+        "Environment": "Production"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/tags",
+      "apiVersion": "2021-04-01",
+      "name": "default",
+      "properties": {
+        "tags": "[parameters('tags')]"
+      }
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+targetScope = 'subscription'
+
+param tagObject object = {
+  TeamName: 'AppTeam1'
+  Dept: 'Finance'
+  Environment: 'Production'
+}
+
+resource applyTags 'Microsoft.Resources/tags@2021-04-01' = {
+  name: 'default'
+  properties: {
+    tags: tagObject
+  }
+}
+```
+
+---
 
 ## <a name="portal"></a>ポータル
 

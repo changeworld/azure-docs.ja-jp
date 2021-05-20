@@ -1,24 +1,24 @@
 ---
-title: Azure AD でのアプリケーション プロビジョニングの既知の問題
-description: Azure AD で自動アプリケーション プロビジョニングを使用する場合の既知の問題について説明します。
+title: Azure Active Directory でのアプリケーション プロビジョニングの既知の問題
+description: Azure Active Directory で自動アプリケーション プロビジョニングを使用する場合の既知の問題について説明します。
 author: kenwith
 ms.author: kenwith
-manager: daveba
+manager: mtillman
 services: active-directory
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 05/11/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 9eba671f6c824c8c88388f2b9d61512dfb1d122f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d45c64a75da4acb0be3efacc73ebf51d3fec2b3e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256645"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782831"
 ---
-# <a name="known-issues-application-provisioning"></a>既知の問題:アプリケーションのプロビジョニング
+# <a name="known-issues-for-application-provisioning-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション プロビジョニングの既知の問題
 アプリのプロビジョニングを使用するときに注意する必要がある既知の問題。 UserVoice のアプリケーション プロビジョニング サービスに関するフィードバックを提供することができます。[Azure AD のアプリケーションのプロビジョニングの UserVoice](https://aka.ms/appprovisioningfeaturerequest) ページを参照してください。 Microsoft では、サービスを改善するために UserVoice を注意深く確認しています。 
 
 > [!NOTE]

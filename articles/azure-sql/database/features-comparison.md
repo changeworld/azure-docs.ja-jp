@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 03/08/2021
-ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a6b6bb8551f9d67b8ec5b1f546a6499fa913021
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489771"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736489"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -181,7 +181,7 @@ Azure SQL Database と Azure SQL Managed Instance では、データの管理に
 
 | **ソース** | **Azure SQL Database** | **Azure SQL Managed Instance** |
 | --- | --- | --- |
-| SQL Server (オンプレミス、AzureVM、Amazon RDS) | **オンライン:** [データ移行サービス (DMS)](/sql/dma/dma-overview)、[トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) <br/> **オフライン:** [BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **オンライン:** [データ移行サービス (DMS)](/sql/dma/dma-overview)、[トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) <br/> **オフライン:** ネイティブ バックアップ/復元、[BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[スナップショット レプリケーション](../managed-instance/replication-transactional-overview.md) |
+| SQL Server (オンプレミス、AzureVM、Amazon RDS) | **オンライン:** [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) <br/> **オフライン:** [データ移行サービス (DMS)](/sql/dma/dma-overview)、 [BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **オンライン:** [データ移行サービス (DMS)](/sql/dma/dma-overview)、[トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) <br/> **オフライン:** ネイティブ バックアップ/復元、[BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[スナップショット レプリケーション](../managed-instance/replication-transactional-overview.md) |
 | 単一データベース | **オフライン:** [BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **オフライン:** [BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP |
 | SQL Managed Instance | **オンライン:** [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) <br/> **オフライン:** [BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[スナップショット レプリケーション](../managed-instance/replication-transactional-overview.md) | **オンライン:** [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) <br/> **オフライン:** クロス インスタンスのポイントインタイム リストア ([Azure PowerShell](/powershell/module/az.sql/restore-azsqlinstancedatabase#examples) または [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208))、[ネイティブ バックアップ/復元](../managed-instance/restore-sample-database-quickstart.md)、[BACPAC ファイル (インポート)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[スナップショット レプリケーション](../managed-instance/replication-transactional-overview.md) |
 

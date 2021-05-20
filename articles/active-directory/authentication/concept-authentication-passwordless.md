@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 05/07/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d939207af195abf117645e17f4ff189b163244f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2b3ce98a55057b90f26cdc91d52a514fe4bb3c9e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305533"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517696"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -26,7 +26,7 @@ ms.locfileid: "107305533"
 | --- | --- | --- |
 | パスワードレス | Windows 10 デバイス、電話、またはセキュリティ キー | 生体認証または PIN |
 
-認証については、組織ごとにさまざまなニーズがあります。 Microsoft では、Azure Active Directory (Azure AD) と統合された次の 3 つのパスワードレス認証オプションを提供しています。
+認証については、組織ごとにさまざまなニーズがあります。 Microsoft グローバル Azure および Azure Government には、Azure Active Directory (Azure AD) と統合する次の 3 つのパスワードレス認証オプションが用意されています。
 
 - Windows Hello for Business
 - Microsoft Authenticator アプリ
@@ -156,12 +156,20 @@ FIDO2 セキュリティ キーの使用を開始するには、方法に関す�
 
 次の考慮事項が適用されます。
 
-- 管理者は、テナントに対してパスワードレスの認証方法を有効にすることができます
-- 管理者は、すべてのユーザーをターゲットにすることも、方法ごとにテナント内のユーザー/グループを選ぶこともできます
-- エンド ユーザーは、アカウント ポータルでこれらのパスワードレスの認証方法を登録して管理することができます
-- エンド ユーザーは、これらのパスワードレスの認証方法でサインインすることができます
+- 管理者は、テナントに対してパスワードレス認証方法を有効にできます。
+
+- 管理者は、すべてのユーザーを対象にすることも、方法ごとにテナント内のユーザーまたはグループを選択することもできます。
+
+- ユーザーは、アカウント ポータルでこれらのパスワードレス認証方法を登録して管理できます。
+
+- ユーザーは、これらのパスワードレス認証方法を使用してサインインできます。
    - Microsoft Authenticator アプリ: すべてのブラウザー間で、Windows 10 のセットアップ時に、また、オペレーティング システム上の統合されたモバイル アプリでなど、Azure AD 認証が使用されるシナリオで動作します。
    - セキュリティ キー:Windows 10 のロック画面、および Microsoft Edge (従来のものと新しい Edge の両方) などのサポートされているブラウザーの Web で動作します。
+
+- ユーザーはパスワードレス資格情報を使用して、自分がゲストであるテナント内のリソースにアクセスできますが、そのリソース テナント内で MFA の実行を要求される場合があります。 詳細については、「[多要素認証重複の可能性](https://docs.microsoft.com/azure/active-directory/external-identities/current-limitations#possible-double-multi-factor-authentication)」を参照してください。  
+
+- ユーザーは、自分がゲストであるテナント内でパスワードレス資格情報を登録できません。これは、そのテナント内で管理されているパスワードを持っていないことと同様です。  
+
 
 ## <a name="choose-a-passwordless-method"></a>パスワードレスの方法を選択する
 

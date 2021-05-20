@@ -5,19 +5,19 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 4db9503ea84ae13148a89a03048c73399413e5cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 7a01d2d17a4c98656588530f5b288c6a69b8a206
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710194"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734166"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>マッピング データ フローでの変換を解析する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-変換解析を使用して、データ内のドキュメント形式の列を解析します。 現在サポートされている解析可能な埋め込みドキュメントの種類は、JSON と区切りテキストです。
+変換解析を使用して、データ内のドキュメント形式の列を解析します。 現在サポートされている解析可能な埋め込みドキュメントの種類は、JSON、XML、区切りテキストです。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWykdO]
 
@@ -29,11 +29,22 @@ ms.locfileid: "101710194"
 
 ### <a name="column"></a>列
 
-派生列や集計と同様に、ここで、ドロップダウン ピッカーから選択して既存の列を変更できます。 または、ここに新しい列の名前を入力することもできます。 ADF により、解析されたソース データがこの列に格納されます。
+派生列や集計と同様に、ここで、ドロップダウン ピッカーから選択して既存の列を変更できます。 または、ここに新しい列の名前を入力することもできます。 ADF により、解析されたソース データがこの列に格納されます。 ほとんどの場合は、受信する埋め込みドキュメント フィールドを解析する新しい列を定義します。
 
 ### <a name="expression"></a>Expression
 
 式ビルダーを使用して、解析対象のソースを設定します。 これは、解析する自己完結型データが含まれたソース列を選択するだけで簡単に行うことができます。または、解析するための複雑な式を作成することもできます。
+
+#### <a name="example-expressions"></a>式の例
+
+* ソース文字列データ: ```chrome|steel|plastic```
+  * 式: ```(desc1 as string, desc2 as string, desc3 as string)```
+
+* ソース JSON データ: ```{"ts":1409318650332,"userId":"309","sessionId":1879,"page":"NextSong","auth":"Logged In","method":"PUT","status":200,"level":"free","itemInSession":2,"registration":1384448}```
+  * 式: ```(level as string, registration as long)```
+
+* ソース XML データ: ```<Customers><Customer>122</Customer><CompanyName>Great Lakes Food Market</CompanyName></Customers>```
+  * 式: ```(Customers as (Customer as integer, CompanyName as string))```
 
 ### <a name="output-column-type"></a>出力列の種類
 
@@ -105,7 +116,7 @@ ParseCsv select(mapColumn(
 ```
 parse(json = jsonString ? (trade as boolean,
                                 customers as string[]),
-                format: 'json',
+                format: 'json|XML|delimited',
                 documentForm: 'singleDocument') ~> ParseJson
 
 parse(csv = csvString ? (id as integer,

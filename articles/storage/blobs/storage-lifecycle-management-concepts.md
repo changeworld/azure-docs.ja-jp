@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 76ea6b916cc52292e8b56523d91d92ebfc957a94
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 03688ea659d3bd06040b6821bd213b65870e5c6e
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946112"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632765"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob Storage アクセス層の自動化によるコストの最適化
 
@@ -75,7 +75,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 1. Azure portal で、自分のストレージ アカウントを検索して選択します。
 
-1. **[Blob service]** で、 **[ライフサイクル管理]** を選択してルールを表示または変更します。
+1. **[データ管理]** で、 **[ライフサイクル管理]** を選択してルールを表示または変更します。
 
 1. **[リスト ビュー]** タブを選択します。
 

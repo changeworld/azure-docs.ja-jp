@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a41696ba92757550f9cbaa08ccf78d9a5da528d2
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: ab99d4aec732d2bc6b42576d30b59b0f8c0067c3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718901"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772043"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>カスタム セキュリティ イニシアチブとポリシーを作成する
 
@@ -37,9 +37,7 @@ ms.locfileid: "107718901"
     [![カスタム ポリシーを作成するサブスクリプションの選択](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Security Center でカスタム標準を評価および表示するためには、サブスクリプション レベル (またはそれ以上) でカスタム標準を追加する必要があります。 
-    >
-    > カスタム標準を追加すると、そのスコープに "*イニシアティブ*" が割り当てられます。 そのため、その割り当てに必要な最も広いスコープを選択することをお勧めします。
+    > Security Center でカスタム イニシアティブを評価および表示するためには、サブスクリプション レベル (またはそれ以上) で追加する必要があります。 使用可能な最も広いスコープを選択することをお勧めします。
 
 1. [セキュリティ ポリシー] ページの [Your custom initiatives]\(カスタム イニシアティブ\) で、 **[カスタム イニシアティブの追加]** をクリックします。
 
@@ -90,7 +88,7 @@ Azure Policy で重要な概念:
 
 - **割り当て** は、特定のスコープ (管理グループ、サブスクリプションなど) にイニシアティブまたはポリシーを適用することです 
 
-Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアチブ ([Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)) があります。 Azure リソースに対する Security Center のポリシーを評価するには、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。
+Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアチブ ([Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)) があります。 Azure リソースに対する Security Center のポリシーを評価するには、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。
 
 組み込みイニシアティブでは、既定で Security Center のポリシーがすべて有効になっています。 組み込みのイニシアチブから特定のポリシーを無効にすることもできます。 たとえば、**Web アプリケーション ファイアウォール** を除くすべての Security Center のポリシーを適用するには、ポリシーの effect パラメーターの値を **Disabled** に変更します。
 

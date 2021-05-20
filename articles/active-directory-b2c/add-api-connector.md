@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 05/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62de5eff098c467f048ae33cd38e7c730af863bc
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 1913b6cf14aaf31d610adcf446dbe91326e02ff1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174616"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742915"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API コネクタをサインアップ ユーザー フローに追加する
 
@@ -24,7 +24,7 @@ ms.locfileid: "108174616"
 
 ::: zone pivot="b2c-user-flow"
 
-このシナリオでは、REST API によって、メール アドレスのドメインが fabrikam.com であるか、fabricam.com であるか検証されます。 ユーザーが指定したジョブのタイトルが 5 文字を超えています。 
+このシナリオでは、REST API によって、メール アドレスのドメインが fabrikam.com であるか、fabricam.com であるか検証されます。 ユーザーが指定した表示名が 5 文字を超えています。 次に、静的な値を含む役職を返します。 
 
 > [!IMPORTANT]
 > サインアップ用の API コネクタは、Azure AD B2C のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。

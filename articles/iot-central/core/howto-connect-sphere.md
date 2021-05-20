@@ -8,16 +8,14 @@ ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
-ms.openlocfilehash: 770f6e56a669ab2d9b425a7a2879eeef5d37377b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0527834c71a2f2932b566608a16c2c1577ac68cf
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92123425"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756559"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere デバイスを Azure IoT Central アプリケーションに接続する
-
-"*この記事は、デバイス開発者を対象としています。* "
 
 この記事では、Azure Sphere (DevKit) デバイスを Azure IoT Central アプリケーションに接続する方法を説明します。
 
@@ -61,7 +59,7 @@ Azure Sphere DevKit デバイスを IoT Central に接続するには、[デバ�
 
 ## <a name="connect-the-device"></a>デバイスを接続する
 
-サンプルを IoT Central に接続できるようにするには、[Azure IoT Central アプリケーションを構成してから、サンプルのアプリケーション マニフェストを変更する](https://aka.ms/iotcentral-sphere-git-readme)必要があります。
+サンプルを IoT Central に接続できるようにするには、[Azure IoT Central アプリケーションを構成してから、サンプルのアプリケーション マニフェストを変更する](https://github.com/Azure/azure-sphere-samples/blob/master/Samples/AzureIoT/READMEStartWithIoTCentral.md)必要があります。
 
 ## <a name="view-the-telemetry-from-the-device"></a>デバイスからのテレメトリを表示する
 
@@ -83,7 +81,7 @@ Azure Sphere DevKit デバイスを IoT Central に接続するには、[デバ�
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次の手順は以下です。
+推奨される次のステップは以下のとおりです。
 
 - [Azure IoT Central のデバイス接続](./concepts-get-connected.md)について確認する
 - [Azure CLI を使用してデバイスの接続性を監視する](./howto-monitor-devices-azure-cli.md)方法を確認する

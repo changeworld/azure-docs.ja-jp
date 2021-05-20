@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 6cf70a6cfa4b1bf0f8d065872698d16977b4cb59
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 50ae89aefda00f21d07a19051c9aaa6e85726f8a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127751"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741385"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -171,7 +171,7 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>ExpressRoute に接続されている仮想ネットワークで高可用性を確保する方法
 
-同じピアリング場所にある最大 16 個の ExpressRoute 回線を仮想ネットワークに接続するか、別のピアリング場所 (例: Singapore、Singapore2) にある ExpressRoute 回線を仮想ネットワークに接続することで、高可用性を実現できます。 1 つの ExpressRoute サイトがダウンした場合、接続は別の ExpressRoute サイトにフェールオーバーされます。 仮想ネットワークを離れるトラフィックは、既定で Equal Cost Multi-path Routing (ECMP) に基づいてルーティングされます。 接続の重みを使用して、ある回線を別の回線よりも優先することができます。 詳細については、「[ExpressRoute ルーティングの最適化](expressroute-optimize-routing.md)」を参照してください。
+同じピアリング場所にある最大 4 つの ExpressRoute 回線を仮想ネットワークに接続するか、異なるピアリング場所 (例: Singapore、Singapore2) にある最大 16 の ExpressRoute 回線を仮想ネットワークに接続することで、高可用性を実現できます。 1 つの ExpressRoute サイトがダウンした場合、接続は別の ExpressRoute サイトにフェールオーバーされます。 仮想ネットワークを離れるトラフィックは、既定で Equal Cost Multi-path Routing (ECMP) に基づいてルーティングされます。 接続の重みを使用して、ある回線を別の回線よりも優先することができます。 詳細については、「[ExpressRoute ルーティングの最適化](expressroute-optimize-routing.md)」を参照してください。
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Microsoft ピアリングまたはパブリック ピアリングで Azure Storage や Azure SQL などの Azure パブリック サービス宛てのトラフィックが、ExpressRoute パスで確実に優先されるようにするにはどうしたらよいですか?
 

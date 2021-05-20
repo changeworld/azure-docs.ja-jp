@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 05/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 15a9a2becea9751903e99f6ef1d55bc6f7b65ca8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e19ab526df864bba7bd164a15c11185439d35d7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95998619"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742861"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-allyio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Ally.io の統合
 
@@ -64,7 +64,6 @@ Ally.io で Azure AD SSO を構成してテストするには、次の構成要�
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Ally.io の SSO の構成](#configure-allyio-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Ally.io のテスト ユーザーの作成](#create-allyio-test-user)** - Ally.io で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -92,7 +91,7 @@ Ally.io で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. Ally.io アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/default-attributes.png)
+    ![既定の属性一覧を示しているスクリーンショット。](common/default-attributes.png)
 
 1. その他に、Ally.io アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
@@ -142,11 +141,24 @@ Ally.io で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-allyio-sso"></a>Ally.io の SSO の構成
 
-**Ally.io** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Ally.io サポート チーム](mailto:contact@ally.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+Ally.io 側でシングル サインオンを構成するには、証明書 (Base64) と適切な URL を Azure portal からコピーして、Ally.io に追加する必要があります。
 
-### <a name="create-allyio-test-user"></a>Ally.io のテスト ユーザーの作成
+1. 管理者アカウントを使用して Ally.io にサインインします。
+1. 画面の左側にあるナビゲーション バーを使用して、 **[Admin]\(管理\)**  >  **[統合]** を選択します。
+1. スクロールして **[認証]** セクションに移動し、 **[シングル サインオン]** を選択します。 その後、 **[有効化]** を選択します。
 
-このセクションでは、B. Simon というユーザーを Ally.io に作成します。 Ally.io では、Just-In-Time プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Ally.io に存在しない場合は、Ally.io にアクセスしようとしたときに新しいユーザーが作成されます。
+    ![Ally I O の [有効化] ボタンを示すスクリーンショット。](./media/ally-tutorial/ally-enable.png)
+
+    **[SSO Configuration]\(SSO 構成\)** ページが開き、Azure portal からコピーした URL と証明書を構成できます。
+
+    ![Ally I O の [S S O configuration]\(S S O 構成\) ペインを示すスクリーンショット。](./media/ally-tutorial/ally-single-sign-on-configuration.png)
+
+1. **[SSO Configuration]\(SSO 構成\)** で、次の設定を入力または選択します。 
+
+    * **[Ally]** : Azure AD
+    * **[SAML 2.0 Endpoint URL]\(SAML 2.0 エンドポイントの URL\)** : ログイン URL
+    * **[Identity Provider Issuer URL]\(ID プロバイダーの発行者 URL\)** : Azure AD 識別子
+    * **[Public(X.509) Certificate]\(公開 (X.509) 証明書\)** : 証明書 (base 64)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -154,11 +166,13 @@ Ally.io で Azure AD SSO を構成してテストするには、次の構成要�
 
 アクセス パネル上で [Ally.io] タイルをクリックすると、SSO を設定した Ally.io に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
+B. Simon というユーザーを Ally.io に作成します。 Ally.io では、Just-In-Time プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Ally.io に存在しない場合は、Ally.io にアクセスしようとしたときに新しいユーザーが作成されます。
+
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 

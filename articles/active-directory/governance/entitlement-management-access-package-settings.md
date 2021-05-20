@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32973d063c36a45eee79db0b4da4e7419cb70013
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25cbef009f73ac788da36d60f2313dcfe9b49ebe
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798548"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713560"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求するリンクを共有する
 
@@ -31,7 +31,7 @@ ms.locfileid: "87798548"
 
 ## <a name="share-link-to-request-an-access-package"></a>リンクを共有してアクセス パッケージを要求する
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**前提条件ロール:** グローバル管理者、ID ガバナンス管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネジャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 

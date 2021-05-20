@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d146be642050c169dabf009352a34ad595fab84
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646386"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746425"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD でのハイブリッド FIDO2 セキュリティ キーのデプロイに関してよく寄せられる質問 (FAQ) 
 
@@ -65,6 +65,10 @@ FIDO2 セキュリティ キーを登録して使用する方法の詳細につ�
 ### <a name="is-there-a-way-for-admins-to-provision-the-keys-for-the-users-directly"></a>管理者がユーザーのキーを直接プロビジョニングする方法はありますか。
 
 現時点ではできません。
+
+### <a name="why-i-am-getting-notallowederror-in-the-browser-when-registering-fido2-keys"></a>FIDO2 キーを登録するときに、ブラウザーに「NotAllowedError」が表示されるのはなぜですか?
+
+Fido2 キー登録ページから「NotAllowedError」を受信します。 これは通常、ユーザーがプライベート (Incognito) ウィンドウまたはリモート デスクトップを使用していて、FIDO2 の秘密キーへのアクセスができない場合に発生します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -231,7 +235,7 @@ HTTP 要求は、標準のプライマリ更新トークン (PRT) 要求です�
 
 Azure AD は、暗号化されたクライアント キーとメッセージ バッファーを、追加のプロパティとして PRT 応答に結合します。 ペイロードは、Azure AD デバイス セッション キーを使用して暗号化されます。
 
-| フィールド              | Type   | 説明  |
+| フィールド              | 型   | 説明  |
 |--------------------|--------|--------------|
 | tgt_client_key     | string | Base64 でエンコードされたクライアント キー (シークレット)。 このキーは、TGT を保護するために使用されるクライアント シークレットです。 このパスワードレスのシナリオでは、クライアント シークレットはサーバーによって各 TGT 要求の一部として生成され、応答でクライアントに返されます。 |
 | tgt_key_type       | INT    | クライアント キーと KERB_MESSAGE_BUFFER に含まれる Kerberos セッション キーの両方に使用される、オンプレミスの AD DS キーの種類。 |

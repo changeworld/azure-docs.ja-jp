@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 04/26/2021
+ms.date: 05/11/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: f2b7fac28d1da7f74091e78808eef7604e6c74f1
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 7187599a269b37c1eb2b305bbcd8346a53bfb2e2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001908"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784286"
 ---
-このカテゴリには **51 個** の推奨事項があります。
+このカテゴリには **50 個** の推奨事項があります。
 
 |推奨 |Description |重大度 |
 |---|---|---|
@@ -48,7 +48,6 @@ ms.locfileid: "108001908"
 |仮想マシンの管理ポートは、Just-In-Time のネットワーク アクセス制御で保護する必要がある |管理ポートについて、ネットワーク セキュリティ グループの一部の受信規則による制限が緩すぎることが、Azure Security Center によって確認されました。 Just-In-Time のアクセス制御を有効にして、インターネットベースのブルートフォース攻撃から VM を保護します。 <a href="https://docs.microsoft.com/azure/security-center/security-center-just-in-time">詳細情報。</a><br />(関連ポリシー:[仮想マシンの管理ポートは、Just-In-Time のネットワーク アクセス制御で保護する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb0f33259-77d7-4c9e-aac6-3aabcfae693c)) |高 |
 |ネットワーク トラフィック データ収集エージェントを、Linux 仮想マシンにインストールする必要がある |Security Center では Microsoft Dependency Agent を使用して Azure 仮想マシンからネットワーク トラフィック データを収集し、ネットワーク マップでのトラフィックの視覚化、ネットワーク強化の推奨事項、特定のネットワークの脅威などの高度なネットワーク保護機能を有効にします。<br />(関連ポリシー:[ネットワーク トラフィック データ収集エージェントを Linux 仮想マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f04c4380f-3fae-46e8-96c9-30193528f602)) |中 |
 |ネットワーク トラフィック データ収集エージェントを、Windows 仮想マシンにインストールする必要がある |Security Center では Microsoft Dependency Agent を使用して Azure 仮想マシンからネットワーク トラフィック データを収集し、ネットワーク マップでのトラフィックの視覚化、ネットワーク強化の推奨事項、特定のネットワークの脅威などの高度なネットワーク保護機能を有効にします。<br />(関連ポリシー:[ネットワーク トラフィック データ収集エージェントを Windows 仮想マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2f2ee1de-44aa-4762-b6bd-0893fc3f306d)) |中 |
-|クラウド サービス ロールの OS バージョンを更新する必要があります |クラウド サービス ロール用のオペレーティング システム (OS) バージョンを、使用中の OS ファミリで利用可能な最新バージョンに更新します。<br />(関連ポリシー:[クラウド サービス ロールに対して最新バージョンのオペレーティング システムを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5a913c68-0590-402c-a531-e57e19379da3)) |高 |
 |Kubernetes Services では、ポッドのセキュリティ ポリシーを定義する必要がある (非推奨) |(非推奨) ポッドのセキュリティ ポリシーを定義し、不要なアプリケーション特権を削除して攻撃ベクトルを減らします。 許可されていないリソースを要求するポッドは AKS クラスターで実行できないようにポッドのセキュリティ ポリシーを構成することをお勧めします。<br />(関連ポリシーはありません) |高 |
 |Linux 仮想マシンでセキュア ブートを有効にする必要がある |仮想マシンでセキュア ブートを有効にすると、ブート チェーンに対する悪意のある変更や許可されていない変更を減らすことができます。 有効にすると、署名済みコードだけが VM またはサーバー上での実行を許可されます。<br />(関連ポリシーはありません) |低 |
 |Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある |Service Fabric では、プライマリ クラスターの証明書を使用して、ノード間通信に 3 つのレベルの保護 (None、Sign、EncryptAndSign) が提供されます。 すべてのノード間メッセージが暗号化され、デジタル署名されるように保護レベルを設定します。<br />(関連ポリシー:[Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f617c02be-7f02-4efd-8836-3180d47b6c68)) |高 |

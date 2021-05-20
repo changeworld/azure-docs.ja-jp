@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/9/2020
-ms.openlocfilehash: 1aaeed1973ebd15af312b722ab61938aa4271947
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 91005835a407cd097d7c5de3de02a48959b4cbfd
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97696254"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750773"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Azure Cosmos Database (SQL API) の登録とスキャン
 
@@ -42,7 +42,7 @@ Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけで
 1. "*キー*" をコピーし、次の手順のためにどこかに保存します
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
-1. **[+ 生成/インポート]** を選択し、 **[名前]** と *[値]* にストレージ アカウントの **キー** を入力します
+1. **[+ 生成/インポート]** を選択し、Azure Cosmos DB アカウントの "*キー*" として、 **[名前]** と **[値]** を入力します。
 1. **[作成]** を選択して完了します。
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
@@ -62,10 +62,11 @@ Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけで
 **[ソースの登録 (Azure Cosmos DB (SQL API))]** 画面で、次の手順を実行します。
 
 1. データ ソースがカタログに表示される際の **[名前]** を入力します。
-1. 目的のストレージ アカウントを指し示す方法を選択します。
-   1. **[Azure サブスクリプションから]** を選択して、 **[Azure サブスクリプション]** ドロップ ダウン ボックスから適切なサブスクリプションを選択し、 **[Cosmos DB アカウント名]** ドロップ ダウン ボックスから適切な cosmosDB アカウントを選択します。
-   1. または、 **[手動で入力]** を選択して、サービス エンドポイント (URL) を入力することもできます。
-1. **[完了]** を選択して、データ ソースを登録します。
+2. お使いの Azure サブスクリプションを選択して、Azure Cosmos DB をフィルター処理します。
+3. 該当する Cosmos DB アカウント名を選択します。
+4. コレクションを選択するか、新しいものを作成します (省略可能)。
+5. **[登録]** を選択してデータ ソースを登録します。
+
 
 :::image type="content" source="media/register-scan-azure-cosmos-database/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 

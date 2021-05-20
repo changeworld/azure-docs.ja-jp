@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbd3d9c3607a0326e7ad9403c8e69d20dafc952a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607524"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740305"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure のブート診断
 
@@ -102,7 +102,7 @@ API バージョン 2020-06-01 以降はすべて、マネージド ブート診
 ```
 
 ## <a name="limitations"></a>制限事項
-- ブート診断は、Azure Resource Manager VM でのみ使用できます。
+- マネージド ブート診断は、Azure Resource Manager VM でのみ使用できます。 
 - マネージド ブート診断は、アンマネージド OS ディスクを使用する VM をサポートしていません。
 - ブート診断は、Premium Storage アカウントをサポートしていません。ブート診断に Premium Storage アカウントを使用すると、ユーザーは VM の起動時に `StorageAccountTypeNotSupported` エラーを受け取ります。 
 - マネージド ストレージ アカウントは、Resource Manager API バージョン "2020-06-01" 以降でサポートされています。

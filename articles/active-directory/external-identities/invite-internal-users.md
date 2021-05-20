@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 802307a21873d15242c2e387ec0defe35f50bb20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa2356cf45c1b1a04fac14bff2888d031ca5a423
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99576432"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750989"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>内部ユーザーを B2B コラボレーションに招待する
 
@@ -31,9 +31,12 @@ Azure AD B2B コラボレーションが利用できるようになる前は、�
 
 - **招待は一方向**:B2B コラボレーションを使用するように内部ユーザーを招待することはできますが、B2B 資格情報を追加した後に削除することはできません。 ユーザーを内部専用ユーザーに戻すよう変更するには、ユーザー オブジェクトを削除して、新しいものを作成する必要があります。
 
-- **Teams**:ユーザーが外部資格情報を使用して Teams にアクセスしたとき、初期状態では Teams テナント ピッカーでそのテナントを使用できません。 ユーザーは、テナント コンテキストを含む URL (例: `https://team.microsoft.com/?tenantId=<TenantId>`) を使用して Teams にアクセスできます。 その後は、Teams テナント ピッカーでテナントを使用できるようになります。
+- **Teams**:ユーザーが外部資格情報を使用して Teams にアクセスしたとき、初期状態では Teams テナント ピッカーでそのテナントを使用できません。 ユーザーは、テナント コンテキストを含む URL (例: `https://teams.microsoft.com/?tenantId=<TenantId>`) を使用して Teams にアクセスできます。 その後は、Teams テナント ピッカーでテナントを使用できるようになります。
 
 - **オンプレミスの同期されたユーザー**:オンプレミスとクラウドの間で同期されたユーザー アカウントの場合、B2B コラボレーションを使用するように招待された後も、オンプレミス ディレクトリが引き続き権限ソースとなります。 アカウントの無効化や削除を含む、オンプレミスのアカウントに対して行ったすべての変更は、クラウド アカウントに同期されます。 そのため、単にオンプレミスのアカウントを削除するだけでは、ユーザーがクラウド アカウントを維持しながらオンプレミスのアカウントにサインインできないようにすることはできません。 その代わりに、オンプレミスのアカウントのパスワードをランダムな GUID またはその他の不明な値に設定することができます。
+
+> [!NOTE]
+> Azure AD Connect クラウド同期を使用する場合、ユーザーに対して OnPremUserPrincipalName を書き込む既定のルールがあります。 内部から外部ユーザーに変換するユーザーに対して、このプロパティが書き込まれないようにするために、このルールを変更する必要があります。
 
 ## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>B2B コラボレーションに内部ユーザーを招待する方法
 

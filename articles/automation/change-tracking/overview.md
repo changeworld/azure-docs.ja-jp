@@ -3,14 +3,14 @@ title: Azure Automation の変更履歴とインベントリの概要
 description: この記事では、環境内のソフトウェアや Microsoft サービスの変更を特定するのに役立つ、Change Tracking とインベントリの機能について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/22/2021
+ms.date: 05/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed29def305bfa33a0a947a331775de89275e5f7f
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 062e4cdeae9560bc5be58d8245390d4a538f5722
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220868"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783911"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -41,7 +41,7 @@ Log Analytics ワークスペースに接続されているマシンでは、[Lo
 > [!NOTE]
 > Change Tracking とインベントリでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[Azure でのワークスペースのマッピング](../how-to/region-mappings.md)に関する記事をご覧ください。 リージョン マッピングは、Automation アカウントとは別のリージョンの VM を管理する機能には影響しません。
 
-サービス プロバイダーは、[Azure Lighthouse](../../lighthouse/overview.md) に複数の顧客テナントをオンボードしている場合があります。 Azure Lighthouse を使用すると、一度に複数の Azure Active Directory (Azure AD) テナントを対象にして大規模に操作を実行できるため、自分が担当するテナントに対して変更履歴とインベントリなどの管理タスクをより効率的に実行できます。 変更履歴とインベントリを使用すると、同じテナント内や、[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を使用して複数のテナント内の、複数のサブスクリプションのマシンを管理できます。
+サービス プロバイダーは、[Azure Lighthouse](../../lighthouse/overview.md) に複数の顧客テナントをオンボードしている場合があります。 Azure Lighthouse を使用すると、一度に複数の Azure Active Directory (Azure AD) テナントを対象にして大規模に操作を実行できるため、自分が担当するテナントに対して変更履歴とインベントリなどの管理タスクをより効率的に実行できます。 変更履歴とインベントリを使用すると、同じテナント内や、[Azure の委任されたリソース管理](../../lighthouse/concepts/architecture.md)を使用して複数のテナント内の、複数のサブスクリプションのマシンを管理できます。
 
 ## <a name="current-limitations"></a>現在の制限
 
@@ -52,11 +52,16 @@ Log Analytics ワークスペースに接続されているマシンでは、[Lo
 - さまざまなインストール方法
 - Windows に格納されている * **.exe** ファイル
 - **[最大ファイル サイズ]** 列と値は現在の実装では使用されません。
+- ファイルの変更を追跡する場合は、ファイル サイズは 5 MB 以下に制限されます。 
 - 30 分間の収集サイクルで 2500 を超えるファイルを収集しようとすると、変更履歴とインベントリのパフォーマンスが低下する可能性があります。
 - ネットワーク トラフィックが高い場合は、変更レコードが表示されるまでに最大 6 時間かかることがあります。
 - マシンやサーバーのシャットダウン中に構成を変更した場合は、以前の構成に対応する変更が送信される可能性があります。
 - Windows Server 2016 Core RS3 マシンで修正プログラムの更新を収集する。
 - Linux デーモンでは、変更が発生していなくても、変更された状態が表示される場合があります。 この問題は、Azure Monitor [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) テーブルに `SvcRunLevels` データが書き込まれる方法が原因で発生します。
+
+## <a name="limits"></a>制限
+
+変更履歴とインベントリに適用される制限については、「[Azure Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#change-tracking-and-inventory)」を参照してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 

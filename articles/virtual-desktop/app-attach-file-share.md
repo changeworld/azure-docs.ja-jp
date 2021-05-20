@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a2d4ebee02d85d10d5db8ec2de0bb1be334770dc
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 59f2ac4021a4f3ae7d2121d9e96bac96c658485c
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717659"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516940"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>MSIX アプリのアタッチ用にファイル共有を設定する
 
@@ -21,7 +21,7 @@ MSIX アプリのアタッチは、ファイル共有が使用する記憶域フ
 
 ## <a name="performance-requirements"></a>パフォーマンス要件
 
-システムに応じた MSIX アプリのアタッチ イメージ サイズの限度は、VHD または VHDx ファイルの格納に使用しているストレージの種類と、VHD、VHSD または CIM ファイルとファイル システムのサイズ限度によって異なります。
+システムに応じた MSIX アプリのアタッチ イメージ サイズの限度は、VHD または VHDx ファイルの格納に使用しているストレージの種類と、VHD、VHDX、CIM のいずれかのファイルとファイル システムのサイズ限度によって異なります。
 
 次の表に、内部に 1 つの MSIX アプリを含む単一の 1 GB MSIX イメージが VM ごとに必要とするリソース数に関する例を示します。
 

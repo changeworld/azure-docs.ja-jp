@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - 汎用のクライアント アプリを Azure IoT Central に接続する | Microsoft Docs
-description: このチュートリアルでは、デバイス開発者を対象に、C、C#、Java、JavaScript、Python のいずれかのクライアント アプリが実行されているデバイスを Azure IoT Central アプリケーションに接続する方法を説明します。 自動的に生成されるデバイス テンプレートに変更を加え、接続されているデバイスをオペレーターが対話的に操作できるビューを追加します。
+description: このチュートリアルでは、C、C#、Java、JavaScript、Python のいずれかのクライアント アプリが実行されているデバイスを Azure IoT Central アプリケーションに接続する方法を説明します。 自動的に生成されるデバイス テンプレートに変更を加え、接続されているデバイスをオペレーターが対話的に操作できるビューを追加します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/24/2020
@@ -11,18 +11,16 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 479c12ca00614b2d34bd08f41e3451826a253035
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 0e6f4ac3cd95873c8b735a1843438499f2405bef
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001820"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750025"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する
 
-"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
-
-このチュートリアルでは、デバイス開発者を対象に、クライアント アプリケーションを Azure IoT Central アプリケーションに接続する方法を説明します。 このアプリケーションは、温度コントローラー デバイスの動作をシミュレートします。 このアプリケーションは、IoT Central に接続するときに、温度コントローラー デバイス モデルのモデル ID を送信します。 IoT Central は、このモデル ID を使用してデバイス モデルを取得し、自動的にデバイス テンプレートを作成します。 デバイス テンプレートにカスタマイズとビューを追加して、オペレーターがデバイスと対話できるようにしてみましょう。
+このチュートリアルでは、クライアント アプリケーションを Azure IoT Central アプリケーションに接続する方法を説明します。 このアプリケーションは、温度コントローラー デバイスの動作をシミュレートします。 このアプリケーションは、IoT Central に接続するときに、温度コントローラー デバイス モデルのモデル ID を送信します。 IoT Central は、このモデル ID を使用してデバイス モデルを取得し、自動的にデバイス テンプレートを作成します。 デバイス テンプレートにカスタマイズとビューを追加して、オペレーターがデバイスと対話できるようにしてみましょう。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -66,7 +64,7 @@ ms.locfileid: "108001820"
 
 ## <a name="view-raw-data"></a>生データを表示する
 
-デバイス開発者は、 **[生データ]** ビューを使用して、デバイスから IoT Central に送信されている生データを調べることができます。
+**[生データ]** ビューを使用して、デバイスから IoT Central に送信されている生データを調べることができます。
 
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="[生データ] ビュー":::
 
@@ -82,10 +80,3 @@ ms.locfileid: "108001820"
 
 > [!div class="nextstepaction"]
 > [ゲートウェイ デバイス テンプレートを作成する](./tutorial-define-gateway-device-type.md)
-
-デバイス開発者として、デバイスを作成する方法の基本を学習しました。推奨される次のステップは以下のとおりです。
-
-* デバイス コードを実装する際のデバイス テンプレートの役割について詳しくは、「[デバイス テンプレートとは](./concepts-device-templates.md)」をご覧ください。
-* IoT Central にデバイスを登録する方法と IoT Central でデバイスの接続を保護する方法の詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
-* デバイスと IoT Central との間で交換されるデータについて詳しくは、「[テレメトリ、プロパティ、およびコマンドのペイロード](concepts-telemetry-properties-commands.md)」を参照してください。
-* 「[IoT プラグ アンド プレイ デバイス開発者ガイド](../../iot-pnp/concepts-developer-guide-device.md)」を参照してください。

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 05/03/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63d4c39c2c48312ca68adc501710ee23fb3bbf73
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466254"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754489"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -81,6 +81,8 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 
 ### <a name="azure-ad-global-admin-credentials"></a>Azure AD 全体管理者の資格情報
 これらの資格情報を使用するのはインストール中のみであり、インストールの完了後には使用しません。 この資格情報は、Azure AD への変更の同期に使用される Azure AD コネクタ アカウントを作成するために使用します。 また、このアカウントにより、同期が Azure AD の機能として有効化されます。
+
+全体管理者アカウントの詳細については、「[全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator)」を参照してください。
 
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS コネクタ アカウントの必須のアクセス許可 (簡単設定の場合)
 AD DS コネクタ アカウントは、Windows Server AD の読み取りと書き込みを目的に作成され、簡単設定によって作成された場合、以下のアクセス許可を持ちます。

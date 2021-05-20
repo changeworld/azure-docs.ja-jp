@@ -3,12 +3,12 @@ title: 個々のセンサーの管理
 description: アクティブ化ファイルの管理、バックアップの実行、スタンドアロン センサーの更新など、個々のセンサーを管理する方法について説明します。
 ms.date: 02/02/2021
 ms.topic: how-to
-ms.openlocfilehash: df1d1dd6ca2085fb3ab12c104723c63e32249403
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8dd46552216e166fcfbf4126b1854681911225fb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781961"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734911"
 ---
 # <a name="manage-individual-sensors"></a>個々のセンサーの管理
 
@@ -522,7 +522,7 @@ CLI コマンドを使用する場合:
 
 6. **[バージョンのアップグレード]** ペインで、 **[アップグレード]** を選択します。
 
-    :::image type="content" source="media/how-to-manage-individual-sensors/upgrade-pane-v2.png" alt-text="アップグレード ペインのスクリーンショット。":::
+    :::image type="content" source="media/how-to-manage-individual-sensors/upgrade-pane-v2.png" alt-text="[更新プログラム] ペインのスクリーンショット。":::
 
 7. Defender for IoT の **[更新プログラム]** ページからダウンロードしたファイルを選択します。
 

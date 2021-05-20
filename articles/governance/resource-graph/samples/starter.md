@@ -3,12 +3,12 @@ title: 初歩的なクエリのサンプル
 description: Azure Resource Graph を使用して、リソースのカウント、リソースの並べ替え、特定のタグによるクエリなど、いくつかの初歩的なクエリを実行します。
 ms.date: 05/01/2021
 ms.topic: sample
-ms.openlocfilehash: 52744c3d1e83874d4ac469a93eef86ae12155b5a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ddb4b57a9f2bae8298de8dad74e99edc19353e42
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326005"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751501"
 ---
 # <a name="starter-resource-graph-query-samples"></a>Resource Graph の初歩的なクエリのサンプル
 
@@ -17,7 +17,7 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 次のスターター クエリを説明します。
 
 - [Azure リソースの数](#count-resources)
-- [キー コンテナー リソースの数](#count-keyvaults)
+- [Key Vault リソースの数](#count-keyvaults)
 - [名前で並べ替えられたリソースの一覧表示](#list-resources)
 - [降順の名前で順序付けられたすべての仮想マシンの表示](#show-vms)
 - [名前とその OS の種類による最初の 5 つの仮想マシンの表示](#show-sorted)
@@ -69,7 +69,7 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 ---
 
-## <a name="count-key-vault-resources"></a><a name="count-keyvaults"></a>キー コンテナー リソースの数
+## <a name="count-key-vault-resources"></a><a name="count-keyvaults"></a>Key Vault リソースの数
 
 このクエリでは、`summarize` ではなく `count` を使用して、返されるレコードの数をカウントします。 カウントに含まれるのは、キー コンテナーだけです。
 
@@ -468,7 +468,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 クエリでは、まず、タグが `isnotempty()` であるリソースに制限し、`project` 内の _tags_ のみを含めることで、含まれるフィールドを制限します。さらに、`mvexpand` および `extend` でプロパティ バッグからペアのデータを取得します。 次に、`union` を使用して、_ResourceContainers_ の結果を _Resources_ からの同じ結果に結合します。これにより、タグのフェッチに幅広く対応できます。 最後に、結果を `distinct` でペアのデータに制限し、システムの非表示タグを除外します。
 
 ```kusto
-ResourceContainers 
+ResourceContainers
 | where isnotempty(tags)
 | project tags
 | mvexpand tags
@@ -555,7 +555,7 @@ advisorresources
     solution = tostring(properties.shortDescription.solution),
     currency = tostring(properties.extendedProperties.savingsCurrency)
 | summarize
-    dcount(resources), 
+    dcount(resources),
     bin(sum(savings), 0.01)
     by solution, currency
 | project solution, dcount_resources, sum_savings, currency

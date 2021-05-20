@@ -6,15 +6,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 05/05/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: dc34d0f12430838be29897ccc5cbeee382ecaa2b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a1d66e1a28717feb66bc223d10ae44e8d5457728
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107485637"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747865"
 ---
 # <a name="manage-tenants-in-your-microsoft-customer-agreement-billing-account"></a>Microsoft 顧客契約の課金アカウントでテナントを管理する
 
@@ -43,6 +43,24 @@ Microsoft 顧客契約 (課金アカウント) を使用して、コストの追
 
 - 他のテナントのサブスクリプションを Microsoft 顧客契約の課金アカウントにリンクできます。 サブスクリプションの課金所有権を取得しても、請求の処理が変更されるだけです。 サービス テナントや Azure RBAC ロールには影響しません。
 - サービス テナントのサブスクリプション所有者を変更するには、[別の Azure Active Directory ディレクトリにサブスクリプション](../../role-based-access-control/transfer-subscription.md)を譲渡する必要があります。
+
+MCA 課金アカウントは、1 つのテナントまたはディレクトリによって管理されます。 課金アカウントが管理するのは、そのテナント内のサブスクリプションの課金のみです。 ただし課金所有権の譲渡を使用すると、異なるテナントの課金アカウントにサブスクリプションをリンクすることができます。
+
+### <a name="billing-ownership-transfer"></a>課金所有権の譲渡
+
+課金所有権の譲渡で変更されるのは、1 つのサブスクリプションに対する請求書の段取りだけです。 サブスクリプションのユーザーとリソースの管理は変更されません。
+
+課金所有権の譲渡では、次の 2 つの処理が実行されます。
+
+- サブスクリプションの元の課金所有権が削除されます。
+- サブスクリプションの課金所有権が、ターゲットの課金アカウントに "*リンク*" されます。ターゲットの課金アカウントは、異なるテナントまたはディレクトリに存在していてもかまいません。
+
+課金所有権の譲渡は、次の要素には影響しません。
+
+- ユーザー
+- リソース
+- Azure RBAC アクセス許可
+
 
 ## <a name="add-guest-users-to-your-microsoft-customer-agreement-tenant"></a>Microsoft 顧客契約テナントにゲスト ユーザーを追加する
 

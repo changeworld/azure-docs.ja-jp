@@ -4,12 +4,12 @@ description: Azure Resource Graph によって要求がスロットルされな�
 ms.date: 04/09/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 891d5951670dd6022b66ae2936ee855f73f8b33a
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 87d94da5ae247f80d1d7eb26e7aea3d9f582b370
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283543"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751969"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph のスロットルされた要求に関するガイダンス
 
@@ -174,7 +174,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
         var azureOperationResponse = await this.resourceGraphClient
             .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
             .ConfigureAwait(false);
-        
+
         var responseHeaders = azureOperationResponse.response.Headers;
         int remainingQuota = /* read and parse x-ms-user-quota-remaining from responseHeaders */
         TimeSpan resetAfter = /* read and parse x-ms-user-quota-resets-after from responseHeaders */

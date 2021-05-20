@@ -12,36 +12,59 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: d106021d90304a06ea7c08494d626511bb903df0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: bb0d39ea9e37f87a465ea5803e004a142c3a3fc6
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553041"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715162"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
-[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関する記事で詳しく説明したように、デバイスは、デバイス向けエンドポイント (**/devices/{deviceId}/files**) を介して通知を送信することで、ファイルのアップロードを開始できます。 アップロードが完了したことをデバイスが IoT Hub に通知すると、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/filenotifications**) を介してファイル アップロード通知メッセージを送信します。
+デバイスから送信されたデータを、IoT Hub ですぐに受け入れられる、比較的小さい device-to-cloud メッセージに簡単にマップできない多くのシナリオがあります。 次に例を示します。
+* 大きなイメージ ファイル
+* ビデオ ファイル
+* 高頻度でサンプリングされる振動データ
+* 何らかの形式の前処理済みデータ
 
-IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT Hub が、関連付けられている Azure ストレージ アカウントへのディスパッチャーとして機能します。 デバイスは、アップロードするファイルに固有のストレージ トークンを IoT Hub に要求します。 SAS URI を使用して、ファイルをストレージにアップロードし、アップロードが完了すると、IoT Hub に完了の通知を送信します。 IoT Hub は、ファイル アップロードが完了したことを確認してから、サービス向けファイル通知エンドポイントにファイル アップロード通知メッセージを追加します。
-
-デバイスから IoT Hub にファイルをアップロードするには、[Azure Storage アカウントを関連付ける](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub)ことによってハブを構成する必要があります。
-
-その後、デバイスは、[アップロードを開始](iot-hub-devguide-file-upload.md#initialize-a-file-upload)し、アップロードの完了時に [IoT Hub に通知](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)できます。 必要に応じて、デバイスがアップロードの完了を IoT Hub に通知するときに、サービスによって[通知メッセージ](iot-hub-devguide-file-upload.md#file-upload-notifications)を生成できます。
+デバイスからそのようなファイルをアップロードする必要がある場合も、IoT Hub のセキュリティと信頼性を利用できます。 IoT Hub 自体を介してメッセージを仲介する代わりに、IoT Hub は、関連付けられている Azure Storage アカウントへのディスパッチャーとして機能します。 デバイスは、アップロードするファイルに固有のストレージ トークンを IoT Hub に要求します。 SAS URI を使用して、ファイルをストレージにアップロードし、アップロードが完了すると、IoT Hub に完了の通知を送信します。 IoT Hub では、ファイルのアップロードが完了したことが確認されます。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>使用する場合
 
-ファイルのアップロードを使用して、断続的に接続されたデバイスでアップロードされた、または帯域幅を節約するために圧縮されたメディア ファイルや大容量のテレメトリ バッチを送信します。
-
-報告プロパティ、Device-to-cloud メッセージ、またはファイルのアップロードのどれを使用するべきか不明な場合は、[デバイスからクラウドへの通信に関するガイダンス](iot-hub-devguide-d2c-guidance.md)を参照してください。
+ファイルのアップロードを使用して、断続的に接続されたデバイスでアップロードされた、または帯域幅を節約するために圧縮されたメディア ファイルや大容量のテレメトリ バッチを送信します。 報告プロパティ、Device-to-cloud メッセージ、またはファイルのアップロードのどれを使用するべきか不明な場合は、[デバイスからクラウドへの通信に関するガイダンス](iot-hub-devguide-d2c-guidance.md)を参照してください。
 
 ## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Azure Storage アカウントと IoT Hub の関連付け
 
-ファイルのアップロード機能を使用するには、最初に Azure ストレージ アカウントを IoT Hub にリンクする必要があります。 このタスクは、Azure portal から、または [IoT Hub のリソース プロバイダー REST API](/rest/api/iothub/iothubresource) からプログラムで完了することができます。 Azure ストレージ アカウントと IoT ハブを関連付けると、デバイスがファイルのアップロード要求を開始したときに、サービスがデバイスに SAS URI を返します。
+IoT ハブに関連付けられた Azure Storage アカウントを持っている必要があります。 
 
-[IoT Hub でデバイスからクラウドにファイルをアップロードする方法](iot-hub-csharp-csharp-file-upload.md)に関する操作ガイドに、ファイルのアップロード プロセスの完全な手順が示されています。 これらの操作ガイドには、Azure portal を使用してストレージ アカウントを IoT ハブに関連付ける方法が説明されています。
+ポータルを使用して作成する方法については、「[ストレージ アカウントを作成する](../storage/common/storage-account-create.md)」を参照してください。 
+
+[IoT Hub リソース プロバイダー REST API](/rest/api/iothub/iothubresource) を使用して、プログラムを使って作成することもできます。 
+
+Azure Storage アカウントを IoT ハブに関連付けると、IoT ハブによって SAS URI が生成されます。 デバイスは、この SAS URI を使って安全にファイルを BLOB コンテナーにアップロードすることができます。
+
+## <a name="create-a-container"></a>コンテナーを作成する
+
+ ポータルを使用して BLOB コンテナーを作成するには、次のようにします。
+
+1. ストレージ アカウントの左ペインで、 **[データ ストレージ]** の下の **[コンテナー]** を選択します。
+1. [コンテナー] ブレードで、 **[+ コンテナー]** を選択します。
+1. 開いた **[新しいコンテナー]** ペインで、コンテナーに名前を付け、 **[作成]** を選択します。
+
+コンテナーを作成したら、「[Azure portal を使用してファイルのアップロードを構成する](iot-hub-configure-file-upload.md)」の手順に従います。 ご利用の IoT ハブに BLOB コンテナーが関連付けられていること、またファイル通知が有効になっていることを確認します。
+
+[IoT Hub リソース プロバイダー REST API](/rest/api/iothub/iothubresource) を使用して、IoT Hub のストレージに関連付けられているコンテナーを作成することもできます。
+
+## <a name="file-upload-using-an-sdk"></a>SDK を使用したファイルのアップロード
+
+次の攻略ガイドでは、さまざまな SDK 言語でのファイルのアップロード プロセスに関する完全なチュートリアルを提供します。 これらのガイドでは、Azure portal を使用してストレージ アカウントを IoT ハブに関連付ける方法が示されます。 また、コード スニペットが含まれており、アップロード プロセスをガイドするサンプルを紹介します。
+
+* [.NET](iot-hub-csharp-csharp-file-upload.md)
+* [Java](iot-hub-java-java-file-upload.md)
+* [Node.js](iot-hub-node-node-file-upload.md)
+* [Python](iot-hub-python-python-file-upload.md)
 
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) では、共有アクセス署名 URI の取得、ファイルのアップロード、および IoT Hub へのアップロード完了の通知を自動的に処理します。 ファイアウォールによって BLOB ストレージ エンドポイントへのアクセスがブロックされていても、IoT Hub エンドポイントへのアクセスが許可されている場合、ファイルのアップロード プロセスは失敗し、IoT C# デバイス SDK に対して次のエラーが表示されます。
@@ -52,8 +75,9 @@ IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT
 > 
 
 
-## <a name="initialize-a-file-upload"></a>ファイルのアップロードの初期化
-IoT Hub には、ファイルをアップロードするためのストレージの SAS URI を要求する、特にデバイス向けのエンドポイントがあります。 ファイルのアップロード プロセスを開始するために、デバイスは以下の JSON 本文を含む POST 要求を `{iot hub}.azure-devices.net/devices/{deviceId}/files` に送信します。
+## <a name="initialize-a-file-upload-rest"></a>ファイルのアップロードを初期化する (REST)
+
+SDK の 1 つではなく REST API を使用して、ファイルをアップロードできます。 IoT Hub には、ファイルをアップロードするためのストレージの SAS URI を要求する、特にデバイス向けのエンドポイントがあります。 ファイルのアップロード プロセスを開始するために、デバイスは以下の JSON 本文を含む POST 要求を `{iot hub}.azure-devices.net/devices/{deviceId}/files` に送信します。
 
 ```json
 {
@@ -84,7 +108,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 * アップロードの完了後に使用される関連付け ID
 
-## <a name="notify-iot-hub-of-a-completed-file-upload"></a>IoT Hub へのファイルのアップロード完了の通知
+## <a name="notify-iot-hub-of-a-completed-file-upload-rest"></a>IoT Hub にファイルのアップロード完了を通知する (REST)
 
 デバイスは、Azure Storage SDK を使用してストレージにファイルをアップロードします。 アップロードが完了すると、デバイスは、次の JSON 本文を含む POST 要求を `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` に送信します。
 
@@ -103,7 +127,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 以下の参照トピックは、デバイスからのファイルのアップロードに関する詳細情報を提供しています。
 
-## <a name="file-upload-notifications"></a>ファイルのアップロード通知
+### <a name="file-upload-notifications"></a>ファイルのアップロード通知
 
 必要に応じて、デバイスがアップロードの完了を IoT Hub に通知すると、IoT Hub によって通知メッセージが生成されます。 このメッセージには、ファイルの名前とストレージの場所が含まれています。
 
@@ -131,7 +155,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 }
 ```
 
-## <a name="file-upload-notification-configuration-options"></a>ファイルのアップロード通知の構成オプション
+### <a name="file-upload-notification-configuration-options"></a>ファイルのアップロード通知の構成オプション
 
 各 IoT ハブには、ファイルのアップロード通知用に次の構成オプションが用意されています。
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/26/2021
+ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e524430d696dab7233f4ebb3403f08b2a8030412
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 70f52e0b82b8a5a06aec322456253eb044141b75
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126707"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794289"
 ---
 # <a name="sign-ins-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 
@@ -50,9 +50,9 @@ IT 管理者は、IT 環境がどのように動作しているかを知る必�
 
 ## <a name="who-can-access-it"></a>だれがアクセスできるのか。
 
-自分のサインイン ログにはいつでもアクセスできます。 
+このリンクを使用すれば、いつでも自身のサインイン履歴にアクセスできます: [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 
-以下に該当するユーザーだけが、別のユーザーのサインイン ログにアクセスできます。
+サインイン ログにアクセスするには、次の条件が必要です。
 
 - グローバル管理者
 
@@ -266,6 +266,35 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 **[ユーザー]** ページの **[アクティビティ]** セクションの **[サインイン]** をクリックすると、すべてのユーザー サインインの完全な概要が表示されます。
 
 ![スクリーンショットには、[サインイン] を選択できる [アクティビティ] セクションが示されています。](./media/concept-sign-ins/08.png "サインイン アクティビティ")
+
+## <a name="authentication-details"></a>認証の詳細
+
+サインイン レポート内にある **[認証の詳細]** タブには、認証を試行するごとに次の情報が表示されます。
+
+- 適用される認証ポリシーの一覧 (条件付きアクセス、ユーザーごとの MFA、セキュリティの既定値など)
+- サインインに使用される認証方法のシーケンス
+- 認証試行が成功したかどうか
+- 認証試行が成功または失敗した理由の詳細
+
+こうした情報によって、管理者はユーザーのサインインの各ステップのトラブルシューティングを行い、次の情報を追跡できます。
+
+- 多要素認証によって保護されるサインインの回数 
+- 各認証方法の使用状況と成功率 
+- パスワードレス認証方法の使用 (パスワードレス電話サインイン、FIDO2、Windows Hello for Business など) 
+- トークン要求によって認証要件が満たされる頻度 (ユーザーが対話形式でパスワードの入力や SMS OTP の入力を求められない場合など)
+
+サインイン レポートを表示している状態で、 **[認証の詳細]** タブを選択 します。 
+
+![[認証の詳細] タブのスクリーンショット](media/concept-sign-ins/auth-details-tab.png)
+
+>[!NOTE]
+>**OATH 検証コード** は、OATH ハードウェア トークンとソフトウェア トークン (Microsoft Authenticator アプリの認証など) の両方で認証方法として記録されます。
+
+>[!IMPORTANT]
+>**[認証の詳細]** タブでは、ログ情報が完全に集計されるまでの最初のうちは、不完全または不正確なデータが表示されることがあります。 たとえば、次のような場合が確認されています。 
+>- サインイン イベントが最初にログに記録された場合、 **[トークンの要求によって満たされました]** というメッセージが正しく表示されません。 
+>- **[プライマリ認証]** の行が最初はログに記録されません。 
+
 
 ## <a name="usage-of-managed-applications"></a>マネージド アプリケーションの使用状況
 

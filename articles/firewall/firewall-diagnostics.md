@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 05/06/2021
 ms.author: victorh
-ms.openlocfilehash: a682523b9486886d5be3c96a372fe36c81582649
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 4c3b33400340fc4dd13e74437aa9fddf6921e710
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988642"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804504"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリックを監視する
 
@@ -59,19 +59,19 @@ PowerShell を使用して診断ログを有効にするには、次の手順を
 
    サブスクリプション内の任意のワークスペースを使用できます。 この情報は、Azure Portal で確認できます。 この情報はリソースの **プロパティ** ページにあります。
 
-2. ログが有効になっているファイアウォールのリソース ID に注意してください。 この値の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` です。
+2. ファイアウォールのリソース ID に注意してください。 この値の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` です。
 
    この情報は、ポータルで確認できます。
 
 3. 次の PowerShell コマンドレットを使用して、すべてのログとメトリックの診断ログを有効にします。
 
-   ```powershell
-   $diagSettings = @{
+   ```azurepowershell
+      $diagSettings = @{
       Name = 'toLogAnalytics'
       ResourceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
       WorkspaceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
       Enabled = $true
-   }
+      }
    Set-AzDiagnosticSetting  @diagSettings 
    ```
 
@@ -85,14 +85,14 @@ Azure CLI を使用して診断ログを有効にするには、次の手順を�
 
    サブスクリプション内の任意のワークスペースを使用できます。 この情報は、Azure Portal で確認できます。 この情報はリソースの **プロパティ** ページにあります。
 
-2. ログが有効になっているファイアウォールのリソース ID に注意してください。 この値の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` です。
+2. ファイアウォールのリソース ID に注意してください。 この値の形式は `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` です。
 
    この情報は、ポータルで確認できます。
 
 3. 次の Azure CLI コマンドを使用して、すべてのログとメトリックの診断ログを有効にします。
 
-   ```azurecli-interactive
-   az monitor diagnostic-settings create -n 'toLogAnalytics'
+   ```azurecli
+      az monitor diagnostic-settings create -n 'toLogAnalytics'
       --resource '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
       --workspace '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
       --logs '[{\"category\":\"AzureFirewallApplicationRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallNetworkRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallDnsProxy\",\"Enabled\":true}]' 
@@ -121,12 +121,12 @@ Azure Firewall のログ分析のサンプル クエリについては、「[Azu
 > Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 
 ## <a name="view-metrics"></a>メトリックを表示する
-Azure Firewall に移動し、 **[監視]** の **[メトリック]** を選択します。 利用できる値を表示するには、 **[メトリック]** ドロップダウン リストを選択します。
+Azure Firewall に移動します。 **[監視]** で **[メトリック]** を選びます。 利用できる値を表示するには、 **[メトリック]** ドロップダウン リストを選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
 ログを収集するようにファイアウォールを構成した後、Azure Monitor ログを使用してデータを表示できます。
 
-[Azure Firewall ブックを使用してログを監視する](firewall-workbook.md)
+- [Azure Firewall ブックを使用してログを監視する](firewall-workbook.md)
 
-[Azure Monitor ログのネットワーク監視ソリューション](../azure-monitor/insights/azure-networking-analytics.md)
+- [Azure Monitor ログのネットワーク監視ソリューション](../azure-monitor/insights/azure-networking-analytics.md)

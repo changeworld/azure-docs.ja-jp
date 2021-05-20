@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes クラスターでの承認チェックに Azure RBAC を使用します
-ms.openlocfilehash: f0275e1516e8487b5a00fb08c885b09b6df1684c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 63621391da3dec966e9d0375a8671b7413a0b222
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145701"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804602"
 ---
 # <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Azure Active Directory と Azure Arc 対応 Kubernetes クラスターの統合
 
@@ -39,7 +39,7 @@ Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/
     ```
 
 - Azure Arc 対応 Kubernetes に接続された既存のクラスター。
-    - クラスターをまだ接続していない場合は、[クイックスタート](quickstart-connect-cluster.md)を使用します。
+    - クラスターをまだ接続していない場合は[クイックスタート](quickstart-connect-cluster.md)を使用します。
     - バージョン 1.1.0 以降に [エージェントをアップグレードします](agent-upgrade.md#manually-upgrade-agents)。
 
 > [!NOTE]
@@ -398,6 +398,112 @@ az connectedk8s proxy -n <clusterName> -g <resourceGroupName>
 
     管理者は、このユーザーにリソースへのアクセスを許可する新しいロールの割り当てを作成する必要があります。
 
+## <a name="use-conditional-access-with-azure-ad"></a>条件付きアクセスと Azure AD を組み合わせて使用する
+
+Azure AD を Arc 対応 Kubernetes クラスターと統合する場合、[条件付きアクセス](../../active-directory/conditional-access/overview.md)を使用してクラスターへのアクセスを制御することもできます。
+
+> [!NOTE]
+> Azure AD 条件付きアクセスは Azure AD Premium の機能です。
+
+クラスターで使用する条件付きアクセス ポリシーの例を作成するには、次の手順を行います。
+
+1. Azure portal の上部で、[Azure Active Directory] を検索して選択します。
+1. 左側の Azure Active Directory のメニューで、 *[エンタープライズ アプリケーション]* を選択します。
+1. 左側のエンタープライズ アプリケーションのメニューで、 *[条件付きアクセス]* を選択します。
+1. 左側の条件付きアクセスのメニューで、 *[ポリシー]* 、 *[新しいポリシー]* の順に選択します。
+1. 左側の条件付きアクセスのメニューで、 *[ポリシー]* 、 *[新しいポリシー]* の順に選択します。
+    
+    [ ![条件付きアクセス ポリシーの追加](./media/azure-rbac/conditional-access-new-policy.png) ](./media/azure-rbac/conditional-access-new-policy.png#lightbox)
+
+1. ポリシーの名前を入力します (例: *arc-k8s-policy*)。
+1. *[ユーザーとグループ]* を選択し、 *[含める]* で *[ユーザーとグループを選択]* を選択します。 ポリシーを適用するユーザーとグループを選択します。 この例では、クラスターへの管理アクセス権を持つ同じ Azure AD グループを選択します。
+
+    [ ![条件付きアクセス ポリシーを適用するユーザーまたはグループの選択](./media/azure-rbac/conditional-access-users-groups.png) ](./media/azure-rbac/conditional-access-users-groups.png#lightbox)
+
+1. *[クラウド アプリまたはアクション]* を選択し、 *[含める]* で *[アプリを選択]* を選択します。 前に作成したサーバー アプリケーションを検索して選択します。
+
+    [ ![条件付きアクセス ポリシーの適用対象とするサーバー アプリケーションを選択する](./media/azure-rbac/conditional-access-apps.png) ](./media/azure-rbac/conditional-access-apps.png#lightbox)
+
+1. *[アクセス制御]* で *[許可]* を選択します。 *[アクセス権の付与]* 、 *[デバイスは準拠としてマーク済みである必要があります]* の順に選択します。
+
+    [ ![準拠デバイスのみに条件付きアクセス ポリシーを許可する選択](./media/azure-rbac/conditional-access-grant-compliant.png) ](./media/azure-rbac/conditional-access-grant-compliant.png#lightbox)
+    
+1. *[ポリシーを有効化する]* で、 *[オン]* 、 *[作成]* の順に選択します。
+
+    [ ![条件付きアクセス ポリシーの有効化](./media/azure-rbac/conditional-access-enable-policies.png) ](./media/azure-rbac/conditional-access-enable-policies.png#lightbox)
+
+クラスターに再びアクセスします。 たとえば、`kubectl get nodes` コマンドを実行して、クラスター内のノードを表示するには、次のようにします。
+
+```console
+kubectl get nodes
+```
+
+手順に従ってもう一度サインインします。 正常にログインしているというエラー メッセージが表示されますが、管理者の要求により、アクセスを要求しているデバイスは Azure AD で管理されていないとリソースにアクセスできません。
+
+Azure portal で [Azure Active Directory] に移動し、 *[エンタープライズ アプリケーション]* を選択し、 *[アクティビティ]* で *[サインイン]* を選択します。一番上のエントリの *[状態]* が *[失敗]* 、 *[条件付きアクセス]* が *[成功]* になっています。 このエントリを選択し、 *[詳細]* で *[条件付きアクセス]* を選択します。 条件付きアクセス ポリシーが表示されます。
+
+[ ![条件付きアクセス ポリシーにより失敗したサインインのエントリ](./media/azure-rbac/conditional-access-sign-in-activity.png) ](./media/azure-rbac/conditional-access-sign-in-activity.png#lightbox)
+
+## <a name="configure-just-in-time-cluster-access-with-azure-ad"></a>Azure AD を使用して Just-In-Time クラスター アクセスを構成する
+
+クラスター アクセス制御のもう 1 つの選択肢は、Just-In-Time 要求に Privileged Identity Management (PIM) を使用することです。
+
+>[!NOTE]
+> PIM は、Premium P2 SKU を必要とする Azure AD Premium 機能です。 Azure AD SKU の詳細については、[料金ガイド](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+
+ご利用のクラスターに対して Just-In-Time アクセス要求を構成するには、次の手順を行います。
+
+1. Azure portal の上部で、[Azure Active Directory] を検索して選択します。
+1. テナント ID (以下の残りの手順にある `<tenant-id>) をメモしておきます。
+
+    [ ![AAD テナントの詳細](./media/azure-rbac/jit-get-tenant-id.png) ](./media/azure-rbac/jit-get-tenant-id.png#lightbox)
+
+1. 左側の Azure Active Directory のメニューにある *[管理]* で *[グループ]* を選択し、 *[新しいグループ]* を選択します。
+
+    [ ![新しいグループを選択する](./media/azure-rbac/jit-create-new-group.png) ](./media/azure-rbac/jit-create-new-group.png#lightbox)
+
+1. グループの種類として *[セキュリティ]* が選択されていることを確認し、*myJITGroup* などのグループ名を入力します。 *[グループに Azure AD ロールを割り当てることができる (プレビュー)]* で *[はい]* を選択します。 最後に、 *[作成]* を選択します。
+
+    [ ![新しいグループの作成](./media/azure-rbac/jit-new-group-created.png) ](./media/azure-rbac/jit-new-group-created.png#lightbox)
+
+1. *[グループ]* ページに戻ります。 新しく作成したグループを選択し、オブジェクト ID (残りの手順では `<object-id>`) をメモします。
+
+    [ ![グループの作成](./media/azure-rbac/jit-get-object-id.png) ](./media/azure-rbac/jit-get-object-id.png#lightbox)
+
+1. Azure portal に戻り、左側の *[アクティビティ]* メニューで、 *[特権アクセス (プレビュー)]* を選択し、 *[特権アクセスの有効化]* を選択します。
+
+    [ ![特権アクセスの有効化](./media/azure-rbac/jit-enabling-priv-access.png) ](./media/azure-rbac/jit-enabling-priv-access.png#lightbox)
+
+1. *[割り当ての追加]* を選択してアクセスの付与を開始します。
+
+    [ ![アクティブな割り当ての追加](./media/azure-rbac/jit-add-active-assignment.png) ](./media/azure-rbac/jit-add-active-assignment.png#lightbox)
+
+1. *メンバー* ロールを選択し、クラスターへのアクセス権を付与するユーザーとグループを選択します。 これらの割り当ては、グループ管理者によっていつでも変更できます。先に進む準備ができたら、 *[次へ]* を選択します。
+
+    [ ![割り当ての追加](./media/azure-rbac/jit-adding-assignment.png) ](./media/azure-rbac/jit-adding-assignment.png#lightbox)
+
+1. 割り当ての種類として *[アクティブ]* を選択し、目的の期間を選択して、理由を指定します。 続行する準備ができたら、 *[割り当て]* を選択します。 割り当ての種類の詳細については、「[Privileged Identity Management で特権アクセス グループ (プレビュー) の資格を割り当てる](../../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group)」を参照してください。
+
+    [ ![割り当てのためのプロパティの選択](./media/azure-rbac/jit-set-active-assignment.png) ](./media/azure-rbac/jit-set-active-assignment.png#lightbox)
+
+割り当てが完了したら、クラスターにアクセスして、Just-In-Time アクセスが機能していることを確認します。 次に例を示します。
+
+`kubectl get nodes` コマンドを使用してクラスター内のノードを表示します。
+
+```console
+kubectl get nodes
+```
+
+認証要件を確認し、手順に従って認証します。 成功した場合は、次のような出力が表示されます。
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+
+NAME      STATUS   ROLES    AGE      VERSION
+node-1    Ready    agent    6m36s    v1.18.14
+node-2    Ready    agent    6m42s    v1.18.14
+node-3    Ready    agent    6m33s    v1.18.14
+```
 
 ## <a name="next-steps"></a>次のステップ
 

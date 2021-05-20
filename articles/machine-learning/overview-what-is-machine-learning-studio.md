@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ca53c42c5c80a86e50db5ac52e6efee75c17cd8e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563192"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770643"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -105,8 +105,10 @@ Azure Machine Learning に切り替えると、次のような利点がありま
 
 [スタジオ](https://ml.azure.com)にアクセスするか、以下のチュートリアルを使用して別の作成オプションを調べます。  
 
-- + [個人の開発環境で使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)
-  + [コンピューティング インスタンスで Jupyter Notebook を使用してモデルのトレーニングとデプロイを行う](tutorial-1st-experiment-sdk-setup.md)
+最初に、[Azure Machine Learning の利用開始作に関するクイックスタート](quickstart-create-resources.md)をお読みください。  その後、これらのリソースを使用して、お好きな方法で最初の実験を作成します。
+
+  + ["Hello world!" Python スクリプトを実行する (パート 1/3)](tutorial-1st-experiment-hello-world.md)
+  + [Jupyter Notebook を使用して画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
   + [自動化された機械学習を使用して、モデルをトレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md)  
   + [デザイナーを使用して、モデルをトレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md)
   + [セキュリティで保護された仮想ネットワークでスタジオを使用する](how-to-enable-studio-virtual-network.md)
