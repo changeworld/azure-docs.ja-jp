@@ -120,14 +120,14 @@
               items:
                 - name: カスタム ニューラル音声とは
                   href: custom-neural-voice.md
-                - name: Custom Voice の概要
+                - name: カスタム ニューラル音声の概要
                   displayName: 'custom voice, neural voice'
                   href: how-to-custom-voice.md
-                - name: データを準備する
+                - name: トレーニング用のデータを準備する
                   href: how-to-custom-voice-prepare-data.md
-                - name: Custom Voice モデルを作成して使用する
+                - name: 音声モデルを作成して使用する
                   href: how-to-custom-voice-create-voice.md
-                - name: 音声サンプルを録音する
+                - name: 音声サンプルを録音する方法
                   href: record-custom-voice-samples.md
             - name: Audio Content Creation
               items:
@@ -295,12 +295,16 @@
       items:
         - name: Speaker Recognition REST API
           href: /rest/api/speakerrecognition/
-- name: カスタム キーワード
+- name: キーワード認識
   items:
-    - name: カスタム キーワードの概要
-      href: custom-keyword-overview.md
-    - name: カスタム キーワードの基本
+    - name: キーワード認識の概要
+      href: keyword-recognition-overview.md
+    - name: Custom Keyword のクイックスタート
       href: custom-keyword-basics.md
+    - name: 推奨事項とガイドライン
+      href: keyword-recognition-guidelines.md
+    - name: リージョンのサポート
+      href: keyword-recognition-region-support.md
 - name: シナリオの詳細
   items:
     - name: 会話のシナリオ

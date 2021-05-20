@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 545272b15862ebab81d839cb8a885560f8920b76
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: c9c0b2807962aaddc2f3b6cef6a261084b21714c
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286314"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715774"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -38,7 +38,7 @@ IoT ハブには、Event Hubs との互換性がある、既定の組み込み�
 
 各メッセージは、一致するルーティング クエリを持つすべてのエンドポイントにルーティングされます。 つまり、メッセージは複数のエンドポイントにルーティングできます。
 
-カスタム エンドポイントにファイアウォール構成がある場合、特定のエンドポイント ([Azure Storage](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)、[Azure Event Hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)、[Azure Service Bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)) に IoT Hub アクセスを与えるため、Microsoft が信頼を置くファースト パーティの例外の使用を検討してください。 [マネージド サービス ID](./virtual-network-support.md) が与えられている IoT Hub の場合、これは一部のリージョンで利用できます。
+カスタム エンドポイントにファイアウォール構成がある場合、[Microsoft が信頼を置くファースト パーティの例外](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources)の使用を検討してください
 
 IoT Hub では現在、次のエンドポイントがサポートされています。
 

@@ -23,7 +23,7 @@ items:
           - name: C#
             href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
           - name: Python
-            href: 'https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.0.0/sdk/textanalytics/ai-text-analytics/samples'
+            href: 'https://github.com/Azure/azure-sdk-for-python/tree/azure-ai-textanalytics_5.0.0_tests/sdk/textanalytics/azure-ai-textanalytics/samples'
           - name: Java
             href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
           - name: JavaScript
@@ -33,11 +33,11 @@ items:
           - name: C#
             href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
           - name: Python
-            href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
-          - name: Java
-            href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
-          - name: JavaScript
             href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples'
+          - name: Java
+            href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+          - name: JavaScript
+            href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples'
   - name: AI の責任ある使用
     items:
       - name: 透明性に関するメモ
@@ -57,6 +57,9 @@ items:
       - name: 統合と責任ある使用
         href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
         displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
+      - name: データ、プライバシー、セキュリティ
+        href: /legal/cognitive-services/text-analytics/data-privacy?context=/azure/cognitive-services/text-analytics/context/context
+        displayName: 'Data privacy, logging, data retention'
   - name: 操作方法ガイド
     items:
       - name: Text Analytics API を呼び出す
@@ -124,8 +127,8 @@ items:
     items:
       - name: Text Analytics API
         items:
-          - name: v3.1.preview.3
-            href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/'
+          - name: v3.1.preview.5
+            href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/'
           - name: v3.0
             href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0'
           - name: v2 (廃止)

@@ -3,12 +3,12 @@ title: 一般的なエラーのトラブルシューティング
 description: Azure Resource Graph を使用して Azure リソースのクエリを実行する際に発生するさまざまな SDK に関する問題をトラブルシューティングする方法について説明します。
 ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 54b680169c38cd4517c225e6452c02de8ecd4dd2
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 86d60f888dfd702e8895f560258b8ddb02d35827
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325807"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751483"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Resource Graph 使用時のエラーのトラブルシューティング
 
@@ -30,7 +30,7 @@ Azure Resource Graph を使用して Azure リソースをクエリすると、�
 
 Azure Resource Graph では、タイム ウィンドウに基づいて各ユーザーにクォータ数が割り当てられます。 たとえば、ユーザーは、5 秒間のウィンドウごとに最大 15 のクエリをスロットルなしで送信できます。 クォータ値は多数の要因によって決定され、変更される可能性があります。 詳細については、[Azure Resource Graph のスロットル](../overview.md#throttling)に関する記事をご覧ください。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 スロットルされた要求を処理する方法はいくつかあります。
 
@@ -49,7 +49,7 @@ Azure Resource Graph では、タイム ウィンドウに基づいて各ユー�
 
 Azure CLI と PowerShell は、最初の 1,000 サブスクリプションのみを Azure Resource Graph に転送します。 Azure Resource Graph 用の REST API は、クエリを実行するために最大数のサブスクリプションを受け付けます。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 1,000 サブスクリプションの制限を超えないよう、サブスクリプションのサブセットを使用してクエリ要求をバッチ化します。 ソリューションでは PowerShell の **Subscription** パラメーターを使用しています。
 
@@ -86,7 +86,7 @@ Azure Resource Graph REST API クエリを実行すると、_500_ (内部サー�
 
 Azure Resource Graph REST API では、**application/json** の `Content-Type` のみがサポートされます。 一部の REST ツールまたはエージェントは、既定で **text/plain** に設定されています。これは、REST API ではサポートされていません。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 Azure Resource Graph のクエリに使用しているツールまたはエージェントの REST API ヘッダー `Content-Type` が **application/json** 用に構成されていることを検証します。
 
@@ -100,7 +100,7 @@ Azure Resource Graph クエリを使用してサブスクリプションの一�
 
 指定されたすべてのサブスクリプションに対する読み取りアクセス許可を持っていない場合は、ユーザーに適切なセキュリティ権限がないため、要求は拒否されます。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 そのクエリを実行するユーザーが、少なくとも読み取りアクセス権を持っている 1 つ以上のサブスクリプションを、サブスクリプション一覧に含めます。 詳細については、「[Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)」を参照してください。
 
@@ -109,5 +109,5 @@ Azure Resource Graph クエリを使用してサブスクリプションの一�
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 
 - [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
-- [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる – Microsoft Azure 公式アカウントです。Azure コミュニティを適切なリソース (回答、サポート、エキスパート) に結び付けることで、カスタマー エクスペリエンスを向上します。
+- [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
 - さらにヘルプが必要であれば、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bcbf2f88409dba5d0f3e0955345c298de9961ca4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: cf143af4bba7b26aa1fec5ed6e18ab41fbc65dd5
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289060"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664836"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -285,7 +285,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     * **パブリック エンドポイント:** 提示されるプロジェクトの一覧で、`api-gateway` に対応する番号を入力します。  これで、パブリック アクセスが与えられます。
 
 1. POM ファイル内の `appName` 要素が正しいことを確認します。
-    ```
+    ```xml
     <build>
         <plugins>
             <plugin>
@@ -298,7 +298,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
                     <appName>customers-service</appName>
     
     ```
-    `appName` のテキストを次のように修正することが必要な場合があります。
+    `appName` のテキストが次と一致することを確認し、必要に応じてプレフィックスを削除して、ファイルを保存してください。
     * api-gateway
     * customers-service
 
@@ -307,6 +307,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     ```azurecli
     mvn azure-spring-cloud:deploy
     ```
+    
 ## <a name="verify-the-services"></a>サービスを確認する
 
 デプロイ コマンドが成功すると、"https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io" の形式の URL が返されます。  これを使用して、実行中のサービスに移動します。
@@ -321,12 +322,12 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 
 ## <a name="deploy-extra-apps"></a>追加のアプリをデプロイする
 
-管理サーバー、訪問、獣医などのすべての機能を使用して PetClinic アプリを機能させるには、他のマイクロサービスをデプロイします。   構成コマンドを再実行し、次のマイクロサービスを選択します。
+管理サーバー、訪問、獣医などのすべての機能を使用して PetClinic アプリを機能させるには、他のマイクロサービスをデプロイします。 構成コマンドを再実行し、次のマイクロサービスを選択します。
 * admin-server
 * vets-service
 * visits-service
 
-次に、`deploy` コマンドをもう一度実行します。
+上記の各モジュールで `pom.xml` 内のアプリ名を修正し、その後 `deploy` コマンドを再度実行します。
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
@@ -354,7 +355,7 @@ Azure にデプロイするには、Azure アカウントで Azure Toolkit for I
 1. **[Public Endpoint]\(パブリック エンドポイント\)** を *[Enable]\(有効化\)* に設定します。
 1. **[App:]\(アプリ:\)** ボックスで、 **[Create app]\(アプリの作成\)** を選択します。
 1. 「*api-gateway*」と入力し、 **[OK]** をクリックします。
-1. メモリと JVM のオプションを指定します。
+1. メモリを 2 GB、JVM のオプションを `-Xms2048m -Xmx2048m` に指定します。
 
      ![メモリと JVM のオプション](media/spring-cloud-intellij-howto/memory-jvm-options.png)
 

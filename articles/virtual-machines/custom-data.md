@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b0bc143ca92961d7c358248b73ee5524e6835c3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87284916"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768195"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 仮想マシンでのカスタム データと cloud-init
 
@@ -92,4 +92,4 @@ Azure では、現在、次の 2 つのプロビジョニング エージェン�
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>カスタム データは IMDS で使用できますか?
-いいえ、この機能は現在使用できません。
+カスタム データは IMDS では使用できません。 代わりに、IMDS を使用してユーザー データを使用することをお勧めします。 詳細については、[Azure Instance Metadata Service を介したユーザー データ](./linux/instance-metadata-service.md?tabs=linux#get-user-data)に関するセクションをご覧ください。

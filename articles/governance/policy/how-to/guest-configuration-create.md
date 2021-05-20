@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: e1c71acd8544073c861a8ad62fb06d78e9d139c5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 8fbe3528f998a70ad489174274bda0a54b5e2455
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165337"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733519"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -23,10 +23,10 @@ Windows の監査時に、ゲスト構成では [Desired State Configuration](/p
 Azure または非 Azure マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 
 > [!IMPORTANT]
-> Azure Government 環境と Azure China 環境でのゲスト構成を使用したカスタム ポリシー定義は、プレビュー機能です。
+> Azure Government および Azure China 21Vianet 環境でのゲスト構成を使用したカスタム ポリシー定義はプレビュー機能です。
 >
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Windows マシンに拡張機能を大規模にデプロイするには、ポリシー定義 `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs` を割り当てます。
-> 
+>
 > カスタム コンテンツ パッケージでは、秘密や機密情報を使用しないでください。
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
@@ -85,8 +85,8 @@ DSC の概念と用語の概要については、[PowerShell DSC の概要](/pow
 
 ゲスト構成でコンピューターを監査する場合、Windows PowerShell DSC とは一連のイベントが異なります。
 
-1. エージェントでは最初に `Test-TargetResource` を実行して、構成が正しい状態であるかどうかを判定します。
-1. 関数によって返されるブール値は、ゲスト割り当ての Azure Resource Manager ステータスが準拠しているべきか否かを決定します。
+1. 最初にエージェントで `Test-TargetResource` を実行し、構成が正しい状態であるかどうかを判断します。
+1. この関数から返るブール値によって、ゲスト割り当てに使用する Azure Resource Manager が正しい形式に準拠しているかどうかを判定します。
 1. プロバイダーによって `Get-TargetResource` が実行され、各設定の現在の状態が返されます。これにより、コンピューターが準拠していない理由と、現在の状態が準拠していることの確認に関する両方の詳細情報が得られます。
 
 ゲスト構成の割り当てに値を渡す Azure Policy のパラメーターは、_文字列_ 型である必要があります。 DSC リソースで配列がサポートされている場合でも、パラメーターを使用して配列を渡すことはできません。
@@ -122,7 +122,7 @@ return @{
 Reason プロパティは、リソースのスキーマ MOF に埋め込みクラスとして追加する必要があります。
 
 ```mof
-[ClassVersion("1.0.0.0")] 
+[ClassVersion("1.0.0.0")]
 class Reason
 {
     [Read] String Phrase;
@@ -214,9 +214,9 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-このスクリプトを PowerShell ターミナルで実行するか、このファイルを `config.ps1` の名前でプロジェクト フォルダーに保存します。 ターミナルで `./config.ps1` を実行して、これを PowerShell で実行します。 新しい mof ファイルが作成されます。
+このスクリプトを PowerShell ターミナルで実行するか、このファイルを `config.ps1` の名前でプロジェクト フォルダーに保存します。 ターミナルで `./config.ps1` を実行して、これを PowerShell で実行します。 新しい MOF ファイルが作成されます。
 
-`Node AuditBitlocker` コマンドは技術的には必須ではありませんが、既定の `localhost.mof` ではなく `AuditBitlocker.mof` という名前のファイルを生成します。 .mof ファイル名を構成に従わせることにより、大規模な運用時に多くのファイルを簡単に整理できます。
+`Node AuditBitlocker` コマンドは技術的には必須ではありませんが、既定の `localhost.mof` ではなく `AuditBitlocker.mof` という名前のファイルを生成します。 .MOF ファイルの名前を構成に合わせることで、大規模な運用を行う際、多数のファイルを整理しやすくなります。
 
 MOF をコンパイルしたら、サポート ファイルをまとめてパッケージ化する必要があります。 完成したパッケージは、Azure Policy の定義を作成するためにゲスト構成によって使われます。
 
@@ -257,7 +257,7 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./AuditBitlocker/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-次の手順はファイルの Azure Blob Storage への発行です。 ストレージ アカウントに特別な要件はありませんが、自分のコンピューターの近くのリージョンでファイルをホストすることをお勧めします。 ストレージ アカウントがない場合は、次の例を使用します。 `Publish-GuestConfigurationPackage` を含む次のコマンドには、`Az.Storage` モジュールが必要です。
+次の手順はファイルの Azure Blob Storage への発行です。 ストレージ アカウントに特別な要件はありませんが、自分のコンピューターの近くのリージョンでファイルをホストすることをお勧めします。 ストレージ アカウントがない場合は、次の例を使用します。 `Publish-GuestConfigurationPackage` を含む次のコマンドには `Az.Storage` モジュールが必要です。
 
 ```azurepowershell-interactive
 # Creates a new resource group, storage account, and container
@@ -273,7 +273,7 @@ New-AzStorageAccount -ResourceGroupName myResourceGroupName -Name myStorageAccou
 - **StorageContainerName**: (既定: _guestconfiguration_) ストレージ アカウントのストレージ コンテナーの名前
 - **Force**:同じ名前のストレージ アカウント内の既存のパッケージを上書きする
 
-次の例では、パッケージをストレージ コンテナー名 'guestconfiguration' に発行します。
+次の例では、'guestconfiguration' という名前のストレージ コンテナーにパッケージを発行します。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
@@ -283,7 +283,7 @@ Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName 
 
 `New-GuestConfigurationPolicy` コマンドレットのパラメーター:
 
-- **ContentUri**: ゲスト構成コンテンツ パッケージのパブリック HTTP(S) URI。
+- **ContentUri**: ゲスト構成コンテンツ パッケージの公開 HTTP(S) URI。
 - **DisplayName**: ポリシーの表示名。
 - **説明**:ポリシーの説明。
 - **Parameter**: ハッシュテーブル形式で提供されるポリシー パラメーター。
@@ -415,7 +415,7 @@ New-GuestConfigurationPolicy
 コミュニティ ソリューションがまだ存在しない場合、DSC リソースにはカスタム開発が必要です。
 コミュニティ ソリューションを見つけるには、PowerShell ギャラリーで [GuestConfiguration](https://www.powershellgallery.com/packages?q=Tags%3A%22GuestConfiguration%22) タグを検索します。
 
-> [!Note]
+> [!NOTE]
 > ゲスト構成の拡張性は、"ライセンス持ち込み" シナリオです。 サードパーティ製ツールを使用する前に、その使用条件が満たされていることを確認してください。
 
 開発環境に DSC リソースをインストールした後、`New-GuestConfigurationPackage` の **FilesToInclude** パラメーターを使用して、コンテンツ アーティファクトにサードパーティ製のプラットフォームのコンテンツを含めます。
@@ -429,7 +429,7 @@ New-GuestConfigurationPolicy
 
 まず、`New-GuestConfigurationPackage` を実行するときに、以前のバージョンと異なる一意のパッケージの名前を指定します。 名前には、`PackageName_1.0.0` などのバージョン番号を含めることができます。 この例の番号は、パッケージを一意にするためにのみ使用されており、パッケージを他のパッケージよりも新しいまたは古いものとして見なすように指定するものではありません。
 
-次に、以下の各説明に従って、`New-GuestConfigurationPolicy` コマンドレットで使用するパラメーターを更新します。
+次に、下の各説明に従って、`New-GuestConfigurationPolicy` コマンドレットで使用するパラメーターを更新します。
 
 - **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
 - **contentUri**: `New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。

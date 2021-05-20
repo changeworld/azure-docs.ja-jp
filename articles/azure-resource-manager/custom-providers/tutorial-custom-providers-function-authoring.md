@@ -5,19 +5,19 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49a2d242ef5cdb9304a9b94d29328c8379a05f46
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98200211"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755623"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>カスタム プロバイダー用の RESTful エンドポイントを作成する
 
 カスタム プロバイダーは、Azure とエンドポイントの間のコントラクトです。 カスタム プロバイダーを使うと、Azure 上のワークフローをカスタマイズできます。 このチュートリアルでは、カスタム プロバイダーの RESTful エンドポイントを作成する方法について説明します。 Azure カスタム プロバイダーについてなじみがない場合は、[カスタム リソースプロバイダーの概要](overview.md)に関するページを参照してください。
 
 > [!NOTE]
-> このチュートリアルは、「[Azure カスタム プロバイダー用に Azure Functions を設定する](./tutorial-custom-providers-function-setup.md)」のチュートリアルに基づいて作成されています。 このチュートリアルの手順の一部は、Azure 関数アプリがカスタム プロバイダーと連携するよう設定されている場合にのみ機能します。
+> このチュートリアルは、「[Azure カスタム プロバイダー用に Azure Functions を設定する](./tutorial-custom-providers-function-setup.md)」のチュートリアルに基づいて作成されています。 このチュートリアルの手順の一部は、Azure Functions の関数アプリがカスタム プロバイダーと連携するよう設定されている場合にのみ機能します。
 
 ## <a name="work-with-custom-actions-and-custom-resources"></a>カスタム アクションとカスタム リソースを使用する
 
@@ -259,7 +259,7 @@ public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRe
 
 ```csharp
 /// <summary>
-/// Entry point for the Azure function app webhook that acts as the service behind a custom provider.
+/// Entry point for the function app webhook that acts as the service behind a custom provider.
 /// </summary>
 /// <param name="requestMessage">The HTTP request message.</param>
 /// <param name="log">The logger.</param>

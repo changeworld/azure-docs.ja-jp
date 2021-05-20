@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 8457d64b541bd012dc85cf9964f09e69b10e962c
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 1f28ee0cb174c02ba05d93ac0c8eba309bfc3872
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006694"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739819"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -326,7 +326,8 @@ Application Insights Java 3.0.3 以降、このテレメトリのキャプチャ
 
 (JSON 構成で指定されている有効設定よりも優先されます)。
 
-> 注: より細かい制御を検討している (たとえば、すべての Redis 呼び出しではなく、一部の Redis 呼び出しを抑制する) 場合は、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を参照してください。
+> [!NOTE]
+> より細かい制御を検討している (たとえば、すべての Redis 呼び出しではなく、一部の Redis 呼び出しを抑制する) 場合は、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を参照してください。
 
 ## <a name="heartbeat"></a>Heartbeat
 

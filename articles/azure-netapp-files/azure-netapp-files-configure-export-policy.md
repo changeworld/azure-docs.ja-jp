@@ -7,13 +7,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/27/2020
-ms.openlocfilehash: b71d3cc0636e5edeb78e1d88be1df2d2d61f239b
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 05/07/2021
+ms.openlocfilehash: 35bcff2615ab9b31f077a13c1cae7fbe38518575
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988462"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109628250"
 ---
 # <a name="configure-export-policy-for-nfs-or-dual-protocol-volumes"></a>NFS またはデュアル プロトコル ボリュームのエクスポート ポリシーを構成する
 
@@ -33,7 +33,7 @@ NFS プロトコル (NFSv3 および NFSv4.1) またはデュアル プロトコ
     * **許可されたクライアント**: 次のいずれかの形式で値を指定します。  
       * IPv4 アドレス。 例: `10.1.12.24`
       * ビット数として表されたサブネット マスクを指定した IPv4 アドレス。 例: `10.1.12.10/4`
-      * コンマ区切りの IP アドレス。 コンマで区切ることによって、1 つの規則に複数のホスト IP を入力できます。 例: `10.1.12.25,10.1.12.28,10.1.12.29`
+      * コンマ区切りの IP アドレス。 コンマで区切ることによって、1 つの規則に複数のホスト IP を入力できます。 長さの制限は 4,096 文字です。 例: `10.1.12.25,10.1.12.28,10.1.12.29`
 
     * **アクセス**:次のアクセス タイプのいずれかを選択します。  
       * アクセス権なし 

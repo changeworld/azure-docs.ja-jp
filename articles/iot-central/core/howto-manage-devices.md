@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central アプリケーションでデバイス を管理する | Microsoft Docs
-description: オペレーターとして、Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。 個々のデバイスを管理する方法と、アプリケーションでデバイスの一括インポートとエクスポートを実行する方法について説明します。
+description: Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。 個々のデバイスを管理する方法と、アプリケーションでデバイスの一括インポートとエクスポートを実行する方法について説明します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/08/2020
@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2ea75adfb7c2d990cfa543270f245113e15e4ee2
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e1b4ca90cf7b4d8c5bdc23ea311a5a1feaada89c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389844"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741097"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
-この記事は、オペレーターが Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。 オペレーターは、次の操作を実行できます。
+この記事では、Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。 次のようにすることができます。
 
 - **[Devices]\(デバイス\)** ページを使用して、Azure IoT Central アプリケーションに接続されているデバイスを表示、追加、および削除します。
 - デバイスを一括でインポートおよびエクスポートします。
@@ -63,7 +63,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 | 列 | 説明 
 | - | - | 
 | IOTC_DEVICEID | デバイス ID は、このデバイスの接続に使用される一意識別子です。 デバイス ID には、文字、数字、および `-` 文字を含めることができます (スペースなし)。 |
-| IOTC_DEVICENAME | 任意。 デバイス名は、アプリケーション全体に表示されるフレンドリ名です。 指定しない場合、これはデバイス ID と同じになります。   |
+| IOTC_DEVICENAME | 省略可能。 デバイス名は、アプリケーション全体に表示されるフレンドリ名です。 指定しない場合、これはデバイス ID と同じになります。   |
 
 
 

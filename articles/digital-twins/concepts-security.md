@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aea55b77330972877fd5e2d87758ab110071c072
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 5224804b1e0d306bfca8e9e42511ad908a3bb5c1
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207773"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787745"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -47,7 +47,7 @@ Azure でサポートされているロールとロールの割り当ての詳�
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Authorization:Azure Digital Twins の Azure ロール
 
-Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) へのアクセスを承認するための **2 つの Azure 組み込みロール** が用意されています。 名前または ID を使用してロールを参照できます。
+Azure には、Azure Digital Twins [データ プレーン API](concepts-apis-sdks.md#overview-data-plane-apis) へのアクセスを承認するための **2 つの Azure 組み込みロール** が用意されています。 名前または ID を使用してロールを参照できます。
 
 | 組み込みのロール | 説明 | id | 
 | --- | --- | --- |
@@ -67,7 +67,7 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 自動化されたシナリオでロールを参照する場合は、名前ではなく **ID** を使用して参照することをお勧めします。 名前はリリースによって変わる可能性がありますが、ID は変わらないため、自動化の場合はより安定した参照になります。
 
 > [!TIP]
-> `New-AzRoleAssignment` ([ reference](/powershell/module/az.resources/new-azroleassignment)) などのコマンドレットを使用してロールを割り当てる場合は、`-RoleDefinitionName` ではなく `-RoleDefinitionId` パラメーターを使用して、ロールの名前ではなく ID を渡すことができます。
+> `New-AzRoleAssignment` ([reference](/powershell/module/az.resources/new-azroleassignment)) などのコマンドレットを使用してロールを割り当てる場合は、`-RoleDefinitionName` ではなく `-RoleDefinitionId` パラメーターを使用して、ロールの名前ではなく ID を渡すことができます。
 
 ### <a name="permission-scopes"></a>アクセス許可のスコープ
 

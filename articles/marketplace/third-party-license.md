@@ -1,5 +1,5 @@
 ---
-title: Microsoft によるサードパーティ製アプリのライセンス管理 - Azure
+title: Microsoft によるサードパーティ製アプリのライセンス管理 - Azure および Microsoft AppSource
 description: Microsoft によるサードパーティ製アプリのライセンス管理について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,12 +8,12 @@ author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
 ms.date: 04/30/2021
-ms.openlocfilehash: de39afe0b88c78b75948fc7c702f0ae06916e2ff
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 8535d124596b2ce5bd80df0d95f0fb5af5bb68f9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331504"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759493"
 ---
 # <a name="third-party-app-license-management-through-microsoft"></a>Microsoft によるサードパーティ製アプリのライセンス管理
 
@@ -49,11 +49,11 @@ Microsoft 経由でアプリのライセンスを管理するには、次の前�
 
 | 手順 | 詳細 |
 | ------------ | ------------- |
-| 手順 1: オファーを作成する | ISV がパートナー センターでオファーを作成し、Microsoft 経由でこのオファーのライセンスを管理することを選択します。 これには、オファーのライセンス プランを 1 つ以上定義することが含まれます。 |
-| 手順 2: パッケージを更新する | ISV は、ライセンス プランの情報をメタデータとして含めたうえでオファーのソリューション パッケージを作成し、パートナー センターにアップロードして Microsoft AppSource に公開します。 詳細については、[ソリューションへのライセンス メタデータの追加](https://go.microsoft.com/fwlink/?linkid=2162161&clcid=0x409)に関するページを参照してください。 |
+| 手順 1: オファーを作成する | ISV がパートナー センターでオファーを作成し、Microsoft 経由でこのオファーのライセンスを管理することを選択します。 これには、オファーのライセンス プランを 1 つ以上定義することが含まれます。 詳しくは、「[Microsoft AppSource での Dynamics 365 for Customer Engagement & Power Apps オファーの作成](dynamics-365-customer-engage-offer-setup.md)」を参照してください。 |
+| 手順 2: パッケージを更新する | ISV は、ライセンス プランの情報をメタデータとして含めたうえでオファーのソリューション パッケージを作成し、パートナー センターにアップロードして Microsoft AppSource に公開します。 詳細については、[ソリューションへのライセンス メタデータの追加](/powerapps/developer/data-platform/appendix-add-license-information-to-your-solution)に関するページを参照してください。 |
 | 手順 3: ライセンスを購入する | 顧客は ISV のオファーを AppSource で探すか、ISV の Web サイトで直接探します。 顧客は、必要なプランのライセンスを ISV から直接購入します (現時点では、これらのオファーは AppSource 経由での購入はできません)。 |
-| 手順 4: 取引を登録する | ISV は、パートナー センターで購入を Microsoft に登録します。 [取引登録](/partner-center/csp-commercial-marketplace-licensing)の過程で、ISV は、顧客が購入した各ライセンス プランの種類と数量を指定します。 |
-| 手順 5: ライセンスを管理する | Microsoft 365 管理センターに表示されたライセンス プランを、顧客が組織内のユーザーまたはグループに割り当てます。 顧客は Power Platform 管理センターを使用してアプリケーションをテナントにインストールすることもできます。 |
+| 手順 4: 取引を登録する | ISV は、パートナー センターで購入を Microsoft に登録します。 [取引登録](/partner-center/csp-commercial-marketplace-licensing#register-isv-connect-deal-in-deal-registration)の過程で、ISV は、顧客が購入した各ライセンス プランの種類と数量を指定します。 |
+| 手順 5: ライセンスを管理する | Microsoft 365 管理センターに表示されたライセンス プランを、顧客が組織内の[ユーザーまたはグループに割り当て](/microsoft-365/commerce/licenses/manage-third-party-app-licenses)ます。 顧客は Power Platform 管理センターを使用してアプリケーションをテナントにインストールすることもできます。 |
 | 手順 6: ライセンス チェックを実行する | 顧客の組織内のユーザーがアプリケーションを実行しようとすると、実行が許可される前に、ユーザーがライセンスを持っていることが Microsoft によって確認されます。 ライセンスを持っていない場合、ライセンスの管理者に問い合わせる必要があるというメッセージがユーザーに表示されます。 |
 | 手順 7: レポートを表示する | ISV は、プロビジョニングされて割り当てられたライセンスに関する情報を、期間または地域を指定して表示できます。 |
 |||

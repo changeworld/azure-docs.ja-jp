@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB クエリ言語での型チェック関数
 description: Azure Cosmos DB での SQL システム関数の型チェックについて説明します。
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.author: girobins
+ms.date: 05/04/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 2becc9216d847dfe26d8fd3a433993112fff7980
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a97517e524bbd6f13a108562a85037ae9695187
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96546354"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768915"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>型チェック関数 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,18 +22,18 @@ ms.locfileid: "96546354"
 
 ## <a name="functions"></a>関数
 
-次の表に、サポートされている組み込みの型チェック関数を示します。
+次の関数は、入力値に対する型チェックをサポートし、それぞれがブール値を返します。
 
-次の関数は、入力値に対する型チェックをサポートし、それぞれがブール値を返します。  
-
-* [IS_ARRAY](sql-query-is-array.md)
-* [IS_BOOL](sql-query-is-bool.md)
-* [IS_DEFINED](sql-query-is-defined.md)
-* [IS_NULL](sql-query-is-null.md)
-* [IS_NUMBER](sql-query-is-number.md)
-* [IS_OBJECT](sql-query-is-object.md)
-* [IS_PRIMITIVE](sql-query-is-primitive.md)
-* [IS_STRING](sql-query-is-string.md)
+| システム関数                           | インデックスの使用量 | [スカラー集計関数を使用したクエリでのインデックスの使用](index-overview.md#index-utilization-for-scalar-aggregate-functions) | 注釈 |
+| ----------------------------------------- | ----------- | ------------------------------------------------------------ | ------- |
+| [IS_ARRAY](sql-query-is-array.md)         | フル スキャン   | フル スキャン                                                    |         |
+| [IS_BOOL](sql-query-is-bool.md)           | インデックス シーク  | インデックス シーク                                                   |         |
+| [IS_DEFINED](sql-query-is-defined.md)     | インデックス シーク  | インデックス シーク                                                   |         |
+| [IS_NULL](sql-query-is-null.md)           | インデックス シーク  | インデックス シーク                                                   |         |
+| [IS_NUMBER](sql-query-is-number.md)       | インデックス シーク  | インデックス シーク                                                   |         |
+| [IS_OBJECT](sql-query-is-object.md)       | フル スキャン   | フル スキャン                                                    |         |
+| [IS_PRIMITIVE](sql-query-is-primitive.md) | インデックス シーク  | インデックス シーク                                                   |         |
+| [IS_STRING](sql-query-is-string.md)       | インデックス シーク  | インデックス シーク                                                   |         
 
 ## <a name="next-steps"></a>次のステップ
 

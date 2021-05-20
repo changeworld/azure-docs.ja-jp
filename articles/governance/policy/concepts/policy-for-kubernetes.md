@@ -4,12 +4,12 @@ description: Azure Policy で Rego および Open Policy Agent を使用して�
 ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9ca33c3a937b0a155928f20469830388a95a08e3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 2610d788c18883d7aaffc3f7cae3ab7774eed1fa
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107506025"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752599"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -386,7 +386,7 @@ Azure Policy からはアドオンに対して、ポリシー定義の _details.
 
 1. Azure Policy ページの左側のウィンドウで、 **[定義]** を選択します。
 
-1. カテゴリ ドロップダウン リスト ボックスから、 **[すべて選択]** を使用してフィルターをクリアし、 **[Kubernetes]** を選択します。
+1. [カテゴリ] ドロップダウン リスト ボックスから、 **[すべて選択]** を使用してフィルターをクリアし、 **[Kubernetes]** を選択します。
 
 1. ポリシー定義を選択し、 **[割り当てる]** ボタンを選択します。
 
@@ -501,7 +501,6 @@ AKS エンジン クラスターから Azure Policy アドオンと Gatekeeper �
 - AKS エンジンのクラスター定義で **addons** プロパティを設定してインストールした場合:
 
   _azure-policy_ の **addons** プロパティを false に変更した後で、クラスター定義を AKS エンジンに再デプロイします。
-
 
   ```json
   "addons": [{

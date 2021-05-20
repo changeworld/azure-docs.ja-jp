@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 11bfe1fbb9b0ba7c38eb946918b04d1568d2d1da
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: d60c4ba78169bb137b8c63682b770c7148fe3f12
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001000"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756739"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
-
-"_この記事は、デバイス開発者を対象としています。_ "
 
 Azure IoT Central のデバイス テンプレートは、以下を定義するブループリントです。
 
@@ -25,7 +23,7 @@ Azure IoT Central のデバイス テンプレートは、以下を定義する�
 * デバイスが IoT Central と同期するプロパティ。
 * IoT Central がデバイスに対して呼び出すコマンド。
 
-この記事では、デバイス開発者に向けて、デバイス テンプレートで定義されたテレメトリ、プロパティ、およびコマンドについてデバイスが送受信する JSON ペイロードについて説明します。
+この記事では、デバイス テンプレートで定義されたテレメトリ、プロパティ、およびコマンドについてデバイスが送受信する JSON ペイロードについて説明します。
 
 この記事では、利用可能なすべての種類のテレメトリ、プロパティ、およびコマンドのペイロードについては説明しませんが、例では全種類のキーを示します。
 
@@ -1136,4 +1134,4 @@ IoT Central Web UI では、コマンドに **[オフラインの場合にキュ
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者として、デバイス テンプレートについて学んだので、次のステップとして、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を読み、デバイスを IoT Central に登録する方法と IoT Central でデバイスの接続を保護する方法の詳細を把握することをお勧めします。
+デバイス テンプレートについて学んだので、次のステップとして、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を読み、デバイスを IoT Central に登録する方法と IoT Central でデバイスの接続を保護する方法の詳細を把握することをお勧めします。

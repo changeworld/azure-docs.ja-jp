@@ -3,12 +3,12 @@ title: コンテナー インスタンスで liveness probe を設定する
 description: Azure Container Instances で liveness probe を構成して、異常なコンテナーを再起動する方法について説明します
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: befe9693be1413abf455d915814c53aab20db53c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d88133692fbfad4c5e81eefa57c69a843448222
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86169699"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771561"
 ---
 # <a name="configure-liveness-probes"></a>liveness probe の構成
 
@@ -23,7 +23,7 @@ Azure Container Instances では [readiness probes](container-instances-readines
 
 ## <a name="yaml-deployment"></a>YAML のデプロイ
 
-次のコードを使用して `liveness-probe.yaml` ファイルを作成します。 このファイルは、最終的に異常状態になる NGNIX コンテナーから構成されるコンテナー グループを定義します。
+次のコードを使用して `liveness-probe.yaml` ファイルを作成します。 このファイルは、最終的に異常状態になる NGINX コンテナーから構成されるコンテナー グループを定義します。
 
 ```yaml
 apiVersion: 2019-12-01

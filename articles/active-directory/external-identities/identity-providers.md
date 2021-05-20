@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdef929b27c636b3908dd7a88eb93adc2382a53f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fd158c5d19c805fe7b7592904fc42ed3117bef6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687747"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764353"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部 ID に対する ID プロバイダー
 
@@ -32,13 +32,13 @@ Azure AD アカウントに加えて、外部 ID にはさまざまな ID プロ
 
 - **Google**: Google フェデレーションでは、外部ユーザーが自分の Gmail アカウントでアプリにサインインすることにより、あなたからの招待を利用することができます。 Google フェデレーションは、セルフサービスのサインアップ ユーザー フローでも使用できます。 [ID プロバイダーとして Google を追加する](google-federation.md)方法に関するページを参照してください。
    > [!IMPORTANT]
-   > **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
+   > **2021 年の下半期以降**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
 
 - **Facebook**: アプリを構築するときに、セルフサービス サインアップを構成し、Facebook フェデレーションを有効にすることで、ユーザーが自分の Facebook アカウントを使用してアプリにサインアップできるようにすることが可能です。 Facebook は、セルフサービス サインアップ ユーザー フローにのみ使用でき、ユーザーがあなたからの招待を利用するときにサインイン オプションとして使用することはできません。 [ID プロバイダーとして Facebook を追加する](facebook-federation.md)方法に関するページを参照してください。
 
-- **直接フェデレーション**:また、SAML または WS-Fed プロトコルをサポートする任意の外部 ID プロバイダーとのフェデレーションを設定することもできます。 直接フェデレーションでは、外部ユーザーが自分の既存のソーシャル アカウントまたはエンタープライズ アカウントでアプリにサインインすることにより、あなたからの招待を利用することができます。 [直接フェデレーションを設定する](direct-federation.md)方法に関するページを参照してください。
+- **SAML/WS-Fed ID プロバイダー フェデレーション**: SAML または WS-Fed プロトコルをサポートする任意の外部 ID プロバイダーとのフェデレーションを設定することもできます。 SAML/WS-Fed IdP フェデレーションでは、外部ユーザーが自分の既存のソーシャル アカウントまたはエンタープライズ アカウントでアプリにサインインすることにより、あなたからの招待を利用することができます。 [SAML/WS-Fed IdP フェデレーションを設定する](direct-federation.md)方法を参照してください。
    > [!NOTE]
-   > 直接フェデレーション ID プロバイダーは、セルフサービス サインアップ ユーザー フローでは使用できません。
+   > フェデレーション SAML/WS-Fed IdP は、セルフサービス サインアップ ユーザー フローでは使用できません。
 
 ## <a name="adding-social-identity-providers"></a>ソーシャル ID プロバイダーの追加
 
@@ -60,4 +60,4 @@ Azure AD テナントに ID プロバイダーを追加した後、次のよう�
 - [電子メール ワンタイム パスコード認証を追加する](one-time-passcode.md)
 - 許可されるソーシャル ID プロバイダーとして [Google を追加する](google-federation.md)
 - 許可されるソーシャル ID プロバイダーとして [Facebook を追加する](facebook-federation.md)
-- ID プロバイダーが SAML 2.0 または WS-Fed プロトコルをサポートしている組織との[直接フェデレーションを設定する](direct-federation.md)。 セルフサービス サインアップのユーザー フローでは直接フェデレーションを使用できないことに注意してください。
+- ID プロバイダーが SAML 2.0 または WS-Fed プロトコルをサポートしている組織との [SAML/WS-Fed IdP フェデレーションを設定する](direct-federation.md)。 セルフサービス サインアップのユーザー フローでは SAML/WS-Fed IdP フェデレーションを使用できないことにご注意ください。

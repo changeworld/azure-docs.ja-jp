@@ -6,12 +6,12 @@ ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: c35a9045bf809c03630fbb7c57f9d31e7b143422
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 7c8aa496d44ba72c5a8d62631108b8e332dd4fbf
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876459"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795818"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT device SDK の概要
 
@@ -49,7 +49,7 @@ Azure IoT device SDK は、任意の言語をユーザーが選べるよう複�
 
 ## <a name="how-can-i-get-started"></a>利用を始めるには?
 
-まず、Azure device SDK の GitHub リポジトリを参照してください。 SDK を使って簡単にテレメトリを Azure IoT に送信する方法を紹介した[クイックスタート](quickstart-send-telemetry-python.md)に取り組むのもよいでしょう。
+まず、Azure device SDK の GitHub リポジトリを参照してください。 SDK を使って簡単にテレメトリを Azure IoT に送信する方法を紹介した[クイックスタート](quickstart-send-telemetry-central.md)に取り組むのもよいでしょう。
 
 最初に何をすべきかは、所有するデバイスの種類によって異なります。
 - 制約のあるデバイスをご使用の場合は、[Embedded C SDK](#embedded-c-sdk) を使用してください。 
@@ -163,7 +163,7 @@ IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サー�
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイックスタート: デバイスを IoT Central に接続する (Python)](quickstart-send-telemetry-python.md)
-* [クイックスタート: デバイスを IoT Hub に接続する (Python)](quickstart-send-telemetry-cli-python.md)
+* [クイックスタート: テレメトリを IoT Central に送信する](quickstart-send-telemetry-central.md)
+* [クイックスタート: テレメトリを IoT Hub に送信する](quickstart-send-telemetry-iot-hub.md)
 * [埋め込み開発の概要](quickstart-device-development.md)
 * [Azure IoT SDK を使用した開発の利点](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)について詳しい情報を入手する

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 04/29/2021
-ms.openlocfilehash: 8c07026681f5381d9c4e54438c9503d170022658
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.date: 05/10/2021
+ms.openlocfilehash: 39f684f2eb6f0c8d4c9089ae4d34c38cc51922be
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226788"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685191"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -389,7 +389,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>プライマリ データベースのアップグレードまたはダウングレード
 
-セカンダリ データベースの接続を解除することなく、プライマリ データベースを (General Purpose と Business Critical 間ではなく、同じサービス レベル内の) 異なるコンピューティング サイズにアップグレードまたはダウングレードできます。 アップグレードの場合は、最初にすべてのセカンダリ データベースをアップグレードしてからプライマリ データベースをアップグレードすることをお勧めします。 ダウングレードは逆の順序で行います。つまり、最初にプライマリ データベースをダウングレードしてからすべてのセカンダリ データベースをダウングレードします。 データベースを異なるサービス レベルにアップグレードまたはダウングレードすると、この推奨事項が強制されます。
+セカンダリ データベースの接続を解除することなく、プライマリ データベースを異なるコンピューティング サイズにアップグレードまたはダウングレードできます。 アップグレードの場合は、最初にすべてのセカンダリ データベースをアップグレードしてからプライマリ データベースをアップグレードすることをお勧めします。 ダウングレードは逆の順序で行います。つまり、最初にプライマリ データベースをダウングレードしてからすべてのセカンダリ データベースをダウングレードします。 データベースを異なるサービス レベルにアップグレードまたはダウングレードすると、この推奨事項が強制されます。
 
 より低い SKU のセカンダリが過負荷になり、アップグレードまたはダウングレー ドのプロセス中に再シードする必要があるという問題を回避するために、このシーケンスが特に推奨されます。 プライマリを読み取り専用にすることでこの問題を回避することもできます。その場合、プライマリへのすべての読み取り/書き込みワークロードに影響が出ることになります。
 

@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center 内のセキュリティ スコア
 description: Azure Security Center のセキュリティ スコアとそのセキュリティ コントロールの説明
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetd: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/03/2021
+ms.date: 05/05/2021
 ms.author: memildin
-ms.openlocfilehash: 889c79357037afb0d9c83c645e86d05edc0df6f1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 9879b5154866436e3216243b123b3575e6cd3df4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903760"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754915"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
@@ -47,19 +41,26 @@ Security Center は、セキュリティの問題について、リソース、�
 
 総合的なセキュリティ スコアに対する各セキュリティ コントロールの影響は、[推奨事項] ページで明確に示されています。
 
-[![強化されたセキュリティ スコアによるセキュリティ コントロールの導入](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
+:::image type="content" source="./media/secure-score-security-controls/security-controls.png" alt-text="Azure Security Center のセキュリティ制御とセキュリティ スコアへの影響" lightbox="./media/secure-score-security-controls/security-controls.png":::
 
 セキュリティ コントロールで取得可能なポイントをすべて取得するには、すべてのリソースがセキュリティ コントロール内のすべてのセキュリティの推奨事項に準拠している必要があります。 たとえば、Security Center には、管理ポートをセキュリティで保護する方法に関する推奨事項が複数あります。 今後は、セキュリティ スコアを改善するには、これらをすべて修復する必要があります。
 
-たとえば、"システム更新プログラムの適用" というセキュリティ コントロールのスコアは最大 6 ポイントです。これは、コントロールの潜在的な増加値に関するヒントに表示されます。
+### <a name="example-scores-for-a-control"></a>コントロールのスコアの例
 
-[![セキュリティ コントロール "システム更新プログラムの適用"](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
+:::image type="content" source="./media/secure-score-security-controls/remediate-vulnerabilities-control.png" alt-text="セキュリティ コントロール システム更新プログラムの適用" lightbox="./media/secure-score-security-controls/remediate-vulnerabilities-control.png":::
 
-このコントロール (システム更新プログラムの適用) の最大スコアは、常に 6 です。 この例では、50 のリソースがあります。 このため、最大スコアを 50 で割ると、各リソースが 0.12 ポイントずつ貢献しているという結果になります。 
 
-* **上昇の可能性** (0.12 x 8 (正常な状態ではないリソース数) = 0.96) - コントロール内で取得できる残りのポイント数。 このコントロールですべての推奨事項を修復した場合、スコアは 2% 上昇します (この場合、0.96 ポイントは 1 に切り上げられます)。 
-* **現在のスコア** (0.12 x 42 (正常な状態のリソース数) = 5.04) - このコントロールの現在のスコア。 合計スコアは、各コントロールを基にしています。 この例のコントロールは、現在の合計セキュリティ スコアに 5.04 ポイント貢献しています。
-* **最大スコア** - コントロール内のすべての推奨事項を完了することによって得られるポイントの最大数です。 コントロールの最大スコアは、そのコントロールの相対的な有意性を示します。 最大スコア値を使用して問題をトリアージし、最初に対処すべき問題を決定します。 
+次の点に注意してください。
+
+| #  | Name                                           | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|:-:|------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | **脆弱性セキュリティ制御の修復** | このコントロールは、既知の脆弱性の検出と解決に関連する複数のレコメンデーションをグループ化します。                                                                                                                                                                                                                                                                                                                                   |
+| 2 | **最大スコア**                                  | コントロール内のすべてのレコメンデーションを完了することによって得られるポイントの最大数です。 コントロールの最大スコアは、そのコントロールの相対的な有意性を示し、各環境で固定されます。 最大スコア値を使用して問題をトリアージし、最初に対処すべき問題を決定します。<br>すべてのコントロールとその最大スコアの一覧については、[「セキュリティ コントロールとそのレコメンデーション」](#security-controls-and-their-recommendations)を参照してください。 |
+| 3 | **リソースの数**                        | このコントロールの影響を受けるリソースは 35 個あります。<br>すべてのリソースのコントリビューションの可能性について理解するには、最大スコアをリソースの数で割ります。<br>この例では 6/35=0.1714 です<br>**すべてのリソースが 0.1714 ポイントになります。**                                                                                                                                                                                          |
+| 4 | **現在のスコア**                              | このコントロールの現在のスコアです。<br>現在のスコア = [リソースあたりのスコア] * [正常なリソースの数]<br> 0.1714 x 5 正常なリソース = 0.86<br>合計スコアは、各コントロールを基にしています。 この例のコントロールは、現在の合計セキュリティ スコアに 0.86 ポイント貢献しています。                                                                                                                                               |
+| 5 | **潜在的なスコアの増加**                   | コントロール内で取得できる残りのポイント。 このコントロールのすべてのレコメンデーションを修復すると、スコアが 9% 増加します。<br>潜在スコア増加 = [リソースあたりのスコア] * [異常なリソースの数]<br> 0.1714 x 30 異常なリソース = 5.14<br>                                                                                                                                                        |
+|   |                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+
 
 
 ### <a name="calculations---understanding-your-score"></a>計算 - スコアを理解する

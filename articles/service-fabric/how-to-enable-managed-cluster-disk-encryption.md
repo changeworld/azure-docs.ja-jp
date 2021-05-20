@@ -1,16 +1,16 @@
 ---
-title: Service Fabric 管理対象クラスター (プレビュー) ノードのディスク暗号化を有効にする
+title: Service Fabric 管理対象クラスター ノードのディスク暗号化を有効にする
 description: ARM テンプレートを使用して、Windows の Azure Service Fabric 管理対象クラスター ノードのディスク暗号化を有効にする方法について説明します。
 ms.topic: how-to
-ms.date: 02/15/2021
-ms.openlocfilehash: aa6388d9d165cd149faae3c19b81320198fd0b02
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 5/10/2021
+ms.openlocfilehash: 10705027f376f53bedf7e5742162d58140f3a282
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127283"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684975"
 ---
-# <a name="enable-disk-encryption-for-service-fabric-managed-cluster-preview-nodes"></a>Service Fabric 管理対象クラスター (プレビュー) ノードのディスク暗号化を有効にする
+# <a name="enable-disk-encryption-for-service-fabric-managed-cluster-nodes"></a>Service Fabric 管理対象クラスター ノードのディスク暗号化を有効にする
 
 このガイドでは、Azure Resource Manager (ARM) テンプレートを使用し、[仮想マシン スケール セット](../virtual-machine-scale-sets/disk-encryption-azure-resource-manager.md)用の [Azure Disk Encryption](../virtual-machines/windows/disk-encryption-overview.md) 機能を使用して、Windows の Service Fabric 管理対象クラスター ノードでディスク暗号化を有効にする方法について説明します。
 
@@ -36,7 +36,7 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 
 ### <a name="create-key-vault-with-disk-encryption-enabled"></a>ディスク暗号化を有効にして Key Vault を作成する
 
-ディスク暗号化用の新しい Key Vault を作成するには、次のコマンドを実行します。 Key Vault のリージョンが [Service Fabric 管理対象クラスターでサポート](faq-managed-cluster.md#what-regions-are-supported-in-the-preview)されていて、ご自身のクラスターと同じリージョンにあることを確認します。
+ディスク暗号化用の新しい Key Vault を作成するには、次のコマンドを実行します。 Key Vault のリージョンが [Service Fabric 管理対象クラスターでサポート](faq-managed-cluster.md#what-regions-are-supported)されていて、ご自身のクラスターと同じリージョンにあることを確認します。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

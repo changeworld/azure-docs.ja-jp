@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Central ソリューションでデバイス コマンドを使用する方法
-description: Azure IoT Central ソリューションでデバイス コマンドを使用する方法。 このチュートリアルでは、デバイス開発者として、Azure IoT Central アプリケーションのクライアント アプリでデバイス コマンドを使用する方法を示します。
+description: Azure IoT Central ソリューションでデバイス コマンドを使用する方法。 このチュートリアルでは、Azure IoT Central アプリケーションのクライアント アプリでデバイス コマンドを使用する方法を示します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0a7b24c2d28e27c44a130383e852838950abe49
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98611000"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733195"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Azure IoT Central ソリューションでコマンドを使用する方法
 
-このハウツー ガイドでは、デバイス開発者として、デバイス テンプレートで定義されているコマンドを使用する方法を示します。
+このハウツー ガイドでは、デバイス テンプレートで定義されているコマンドを使用する方法を示します。
 
 オペレーターは、IoT Central UI を使用して、デバイスでコマンドを呼び出すことができます。 コマンドによってデバイスの動作が制御されます。 たとえば、オペレーターはデバイスを再起動するか、または診断データを収集するためにコマンドを呼び出すことがあります。
 

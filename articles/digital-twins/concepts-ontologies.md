@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7bed0f3b10dd057073203bb9c2e336299c50662
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ba261609772e380e85de084096a3242f2f92fd49
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207989"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734311"
 ---
 # <a name="what-is-an-ontology"></a>オントロジとは 
 
@@ -20,7 +20,7 @@ Azure Digital Twins ソリューションのボキャブラリは、ご自身の
 
 自分のソリューションが特定の業界に関連している場合、独自のモデル セットをゼロから作成するよりも、既に存在するその業界用の一連のモデルから開始する方が簡単で効率的な場合があります。 これらの既存のモデル セットを **オントロジ** と呼びます。 
 
-一般的に、オントロジとは、特定の分野 (建造物、IoT システム、スマート シティ、エネルギー グリッド、Web コンテンツなど) の一連のモデルです。オントロジは、次のことを実現できるため、ナレッジ グラフのスキーマとしてよく使用されます。
+一般的に、オントロジとは、特定の分野 (建造物、IoT システム、スマート シティ、エネルギー グリッド、Web コンテンツなど) のモデルのセットです。オントロジは、次のことを実現できるため、ツイン グラフのスキーマとしてよく使用されます。
 * ソフトウェア コンポーネント、ドキュメント、クエリ ライブラリなどの調和
 * 概念モデリングとシステム開発への投資の削減
 * セマンティック レベルでのデータ相互運用性の向上

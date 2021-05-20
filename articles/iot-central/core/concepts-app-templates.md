@@ -7,16 +7,16 @@ ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 8309a567436d1526c1341f3d7db774acf4879dc2
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 885c9d5a14eed7bdd518865344a9a41820fd7db7
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600621"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683958"
 ---
 # <a name="what-are-application-templates"></a>アプリケーション テンプレートとは
 
-Azure IoT Central のアプリケーション テンプレートは、ソリューション ビルダーが IoT ソリューション開発を開始するのに役立つツールです。 アプリ テンプレートは、利用できる機能の感触をつかむことから、顧客への再販のためにアプリケーションを完全にカスタマイズすることに至るまで、あらゆる用途に利用できます。
+Azure IoT Central のアプリケーション テンプレートは、IoT ソリューション開発を開始するのに役立つツールです。 アプリ テンプレートは、利用できる機能の感触をつかむことから、顧客への再販のためにアプリケーションを完全にカスタマイズすることに至るまで、あらゆる用途に利用できます。
 
 アプリケーション テンプレートは以下から構成されます。
 
@@ -30,28 +30,13 @@ Azure IoT Central のアプリケーション テンプレートは、ソリュ�
 
 ## <a name="custom-templates"></a>カスタム テンプレート
 
-アプリケーションを最初から作成する場合は、いずれかの **カスタム アプリケーション** テンプレートを選択します。
+アプリケーションを最初から作成する場合は、**カスタム アプリケーション** テンプレートを選択します。 カスタム アプリケーション テンプレートの ID は `iotc-pnp-preview` です。
 
 ## <a name="industry-focused-templates"></a>特定業界に焦点を合わせたテンプレート
 
-Azure IoT Central は、業界を問わないアプリケーション プラットフォームです。 アプリケーション テンプレートは、特定業界に焦点を合わせた例であり、現在は以下の業界に向けて提供されています。また、今後さらに多くが提供される予定です。
+Azure IoT Central は、業界を問わないアプリケーション プラットフォームです。 アプリケーション テンプレートは、特定業界に焦点を合わせた例であり、現在はこちらの業界に向けて提供されています。
 
-- [小売](../retail/overview-iot-central-retail.md)
-  - コネクテッド ロジスティクス
-  - デジタル流通センター
-  - ストア内分析 - 条件監視
-  - ストア内分析 - レジ
-  - スマート在庫管理
-  - ビデオ分析 - オブジェクトとモーションの検出
-- [エネルギー](../energy/overview-iot-central-energy.md)
-  - スマート メーター監視
-  - ソーラー パネルの監視
-- [政府](../government/overview-iot-central-government.md)
-  - 接続された廃棄物管理
-  - 水消費量のモニタリング
-  - 水質のモニタリング
-- [医療](../healthcare/overview-iot-central-healthcare.md)。
-  - 患者の継続的なモニタリング
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,18 +6,20 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
-ms.openlocfilehash: d8ec04227316088983977f5b487abfa81fb5c525
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01b932cf33883f186f9f4ff69bc78869cdb4cb18
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652404"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516580"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Azure API Management 診断の概要
 
 Azure API Management で API を構築して管理する際には、404 見つかりませんのエラーから 502 無効なゲートウェイのエラーまで、発生する可能性のある問題に備える必要があります。 API Management 診断は、APIM で公開された API のトラブルシューティングを支援するインテリジェントな対話型エクスペリエンスで、構成は不要です。 公開した API で問題が発生すると、API Management 診断によって問題点が指摘され、その問題を迅速にトラブルシューティングして解決する適切な情報がユーザーに提供されます。
 
 このエクスペリエンスは API の問題発生時刻が過去 24 時間以内である場合に最も役立ちますが、すべての診断グラフをいつでも分析に利用できます。
+
+[!NOTE] 問題の診断と解決は、Consumption レベルでは現在サポートされていません。
 
 ## <a name="open-api-management-diagnostics"></a>API Management 診断を開く
 

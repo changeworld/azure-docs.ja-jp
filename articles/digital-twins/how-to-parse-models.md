@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: dc6c6e4d97bb90cdf88c50b1d3fbc4e27b5a9a0a
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 12916b06dd965d7eed717df2fe71f935b8319bc4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208403"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772713"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>DTDL パーサー ライブラリを使用してモデルを解析および検証する
 
@@ -37,7 +37,7 @@ NuGet には、これを行うのに役立つ .NET クライアント側の DTDL
 DTDLValidator
 ```
 
-既定のオプションでは、サンプルは現在のディレクトリとすべてのサブディレクトリ内で `*.json` ファイルを検索します。 また、次のオプションを追加すると、指定されたディレクトリおよびすべてのサブディレクトリ内で拡張子が *.dtdl* のファイルを検索できます。
+既定のオプションでは、サンプルは現在のディレクトリとすべてのサブディレクトリ内で .json ファイルを検索します。 また、次のオプションを追加すると、指定されたディレクトリおよびすべてのサブディレクトリ内で拡張子が .dtdl のファイルを検索できます。
 
 ```cmd/sh
 DTDLValidator -d C:\Work\DTDL -e dtdl 
@@ -53,7 +53,7 @@ DTDLValidator -i
 
 ## <a name="use-the-net-parser-library"></a>.NET パーサー ライブラリを使用する 
 
-[Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ライブラリは、DTDL 定義へのモデル アクセスを備えており、本質的に DTDL の C# リフレクションと同等の機能を果たします。 このライブラリは、特にビジュアル エディターまたはテキスト エディターで DTDL 検証を行う場合に、すべての [Azure Digital Twins SDK](how-to-use-apis-sdks.md) から独立して使用できます。 これは、モデル定義ファイルをサービスにアップロードする前にその有効性を確認するのに役立ちます。
+[Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ライブラリは、DTDL 定義へのモデル アクセスを備えており、本質的に DTDL の C# リフレクションと同等の機能を果たします。 このライブラリは、特にビジュアル エディターまたはテキスト エディターで DTDL 検証を行う場合に、すべての [Azure Digital Twins SDK](concepts-apis-sdks.md) から独立して使用できます。 これは、モデル定義ファイルをサービスにアップロードする前にその有効性を確認するのに役立ちます。
 
 パーサー ライブラリを使用するには、DTDL ドキュメントのセットをライブラリに提供します。 通常、これらのモデル ドキュメントはサービスから取得しますが、クライアントが最初にそれらをサービスにアップロードする責任がある場合は、それらをローカルで使用できるようにすることもできます。 
 

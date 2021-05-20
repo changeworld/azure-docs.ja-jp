@@ -2,13 +2,13 @@
 title: Azure Service Bus サブスクリプション ルール SQL フィルター構文 | Microsoft Docs
 description: この記事では、SQL フィルターの文法について詳しく説明します。 SQL フィルターでは、SQL-92 標準のサブセットがサポートされます。
 ms.topic: article
-ms.date: 11/24/2020
-ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/30/2021
+ms.openlocfilehash: 6b8190cf2a57b47fdce416fbe087fa8fa0485bda
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652943"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743239"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>サブスクリプション ルールの SQL フィルター構文
 
@@ -50,9 +50,12 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
   
 ## <a name="arguments"></a>引数  
   
--   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 `sys` 値は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のパブリック プロパティ名である場合にシステム スコープを示します。 `user` は、`<property_name>` が [BrokeredMessage クラス](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)のディクショナリのキーである場合にユーザー スコープを示します。 `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
+-   `<scope>` は、`<property_name>` のスコープを示す省略可能な文字列です。 有効な値は `sys` または `user`です。 
+    - `sys` 値はシステム スコープを示します。ここで、`<property_name>` は「[メッセージ、ペイロード、およびシリアル化](service-bus-messages-payloads.md)」で説明されている Service Bus メッセージのプロパティのいずれかです。
+    - `user` 値はユーザー スコープを示します。ここで、`<property_name>` は Service Bus に送信するときにメッセージに設定できるカスタム プロパティのキーです。
+    - `<scope>` が指定されていない場合、`user` スコープが既定のスコープです。  
   
-## <a name="remarks"></a>解説
+## <a name="remarks"></a>注釈
 
 存在しないシステム プロパティにアクセスしようとするとエラーになりますが、存在しないユーザー プロパティにアクセスしようとしてもエラーにはなりません。 代わりに、存在しないユーザー プロパティは不明な値として内部的に評価されます。 不明な値は演算子の評価時に特別に処理されます。  
   
@@ -105,7 +108,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
       <expression>  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
 `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
@@ -120,7 +123,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
       <expression>  
 ```  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 `<escape_char>` は、長さ 1 の文字列として評価される式である必要があります。 これは、LIKE 演算子のエスケープ文字として使用されます。  
   
@@ -169,7 +172,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 ブール型の定数は、**TRUE** または **FALSE** キーワードで表されます。 値は `System.Boolean` として格納されます。  
   
@@ -179,7 +182,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>解説  
+### <a name="remarks"></a>注釈  
 
 文字列定数は単一引用符で囲まれ、任意の有効な Unicode 文字が含まれます。 文字列定数に組み込む単一引用符は、2 つの単一引用符で表されます。  
   
@@ -191,7 +194,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>解説
+### <a name="remarks"></a>注釈
   
 `newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された `System.Guid` を返します。  
   
@@ -199,13 +202,13 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
   
 ## <a name="considerations"></a>考慮事項
   
-次の [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) セマンティクスを考慮してください。  
+次の SQL フィルター セマンティクスを考慮してください。  
   
 -   プロパティ名では大文字と小文字が区別されます。  
   
 -   可能であれば、演算子は C# の暗黙的な変換セマンティクスに従います。  
   
--   システム プロパティは、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) インスタンスで公開されるパブリック プロパティです。  
+-   システム プロパティは、「[メッセージ、ペイロード、およびシリアル化](service-bus-messages-payloads.md)」で説明されている Service Bus メッセージのプロパティのいずれかです。
   
     次の `IS [NOT] NULL` セマンティクスを考慮してください。  
   
@@ -213,7 +216,7 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
   
 ### <a name="property-evaluation-semantics"></a>プロパティ評価セマンティクス  
   
-- 存在しないシステム プロパティを評価しようとすると、[FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 例外がスローされます。  
+- 存在しないシステム プロパティを評価しようとすると、`FilterException` 例外がスローされます。  
   
 - 存在しないプロパティは、内部的に **unknown** として評価されます。  
   

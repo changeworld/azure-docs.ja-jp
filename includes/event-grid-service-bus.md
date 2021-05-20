@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 49e35687820679a1c06cf19e7a26b3b04a1e1318
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8115e79a0cf747fbf5980d717331883097012077
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363248"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719026"
 ---
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 
@@ -22,7 +22,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | キューまたはサブスクリプションにアクティブなメッセージがあり、リッスンしているレシーバーがない場合に生成されます。 |
-| Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 配信不能キューにアクティブなメッセージがあり、アクティブなレシーバーがない場合に生成されます。 |
+| Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListeners | 配信不能キューにアクティブなメッセージがあり、アクティブなレシーバーがない場合に生成されます。 |
 | Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | キューまたはサブスクリプションにアクティブなメッセージがある場合に、その特定のキューまたはサブスクリプションにアクティブなリスナーが存在する場合でも、定期的に生成されます。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | キューまたはサブスクリプションの配信不能エンティティにメッセージがある場合に、その特定のキューまたはサブスクリプションの配信不能エンティティにアクティブなリスナーが存在する場合でも、定期的に生成されます。 | 
 
@@ -53,7 +53,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 }]
 ```
 
-#### <a name="deadletter-messages-available-with-no-listener"></a>配信不能なメッセージが利用可能 (リスナーなしの場合)
+#### <a name="deadletter-messages-available-with-no-listeners"></a>配信不能なメッセージが利用可能 (リスナーなしの場合)
 
 配信不能キュー イベントのスキーマも同様です。 メッセージがあり、アクティブなレシーバーがいない配信不能キューごとに少なくとも 1 つのイベントを受信します。
 
@@ -61,7 +61,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 [{
   "topic": "/subscriptions/{subscription-id}/resourcegroups/{your-rg}/providers/Microsoft.ServiceBus/namespaces/{your-service-bus-namespace}",
   "subject": "topics/{your-service-bus-topic}/subscriptions/{your-service-bus-subscription}",
-  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListeners",
   "eventTime": "2018-02-14T05:12:53.4133526Z",
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
@@ -147,7 +147,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 }]
 ```
 
-#### <a name="deadletter-messages-available-with-no-listener"></a>配信不能なメッセージが利用可能 (リスナーなしの場合)
+#### <a name="deadletter-messages-available-with-no-listeners"></a>配信不能なメッセージが利用可能 (リスナーなしの場合)
 
 配信不能キュー イベントのスキーマも同様です。 メッセージがあり、アクティブなレシーバーがいない配信不能キューごとに少なくとも 1 つのイベントを受信します。
 
@@ -155,7 +155,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 [{
   "source": "/subscriptions/{subscription-id}/resourcegroups/{your-rg}/providers/Microsoft.ServiceBus/namespaces/{your-service-bus-namespace}",
   "subject": "topics/{your-service-bus-topic}/subscriptions/{your-service-bus-subscription}",
-  "type": "Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener",
+  "type": "Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListeners",
   "time": "2018-02-14T05:12:53.4133526Z",
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
@@ -223,7 +223,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 # <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -238,7 +238,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -252,7 +252,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | `namespaceName` | string | リソースが存在する Service Bus 名前空間。 |
 | `requestUri` | string | イベントを生成している特定のキューまたはサブスクリプションの URI。 |

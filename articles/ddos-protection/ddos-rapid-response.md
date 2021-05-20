@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: f551f40a9bd70c4a3b54c1d2756cfb94caf79590
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8f0ebeebb47885d12529a7f09041af9bc3eb12f2
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103064"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656706"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS Rapid Response
 
-アクティブなアクセスの間、Azure DDoS Protection Standard のお客様は、DDoS Rapid Response (DRR) チームにアクセスできます。このチームは、攻撃中の攻撃の調査と、攻撃後の分析を支援します。
+攻撃を受けたとき、Azure DDoS Protection Standard の顧客は、DDoS Rapid Response (DRR) チームのサービスを受けられます。このチームは、攻撃時にその攻撃の調査を行ったり、攻撃後に分析を行ったりすることをサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 

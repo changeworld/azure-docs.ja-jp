@@ -1,6 +1,6 @@
 ---
 title: SharePoint へのリモート アクセスを有効にする - Azure Active Directory アプリケーション プロキシ
-description: オンプレミスの SharePoint サーバーを Azure Active Directory アプリケーション プロキシと統合する方法の基礎について説明します。
+description: オンプレミスの SharePoint Server を Azure Active Directory アプリケーション プロキシと統合する方法の基礎について説明します。
 services: active-directory
 author: kenwith
 manager: mtillman
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 3bbe0480fcf6e4e1cf828cc61c5778fdd096ed8b
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 45433268a61772f499b5d2672a8b81044c1e3414
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186888"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764461"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを利用し、SharePoint へのリモート アクセスを有効にする
 
@@ -180,7 +180,7 @@ KCD を構成して、Azure AD アプリケーション プロキシ サービ�
 KCD を構成するには、コネクタ コンピューターごとに以下の手順を実行します。
 
 1. ドメイン管理者としてドメイン コントローラーにサインインし、[Active Directory ユーザーとコンピューター] を開きます。
-1. Azure AD プロキシ コネクタが実行されているコンピューターを見つけます。 この例では、SharePoint サーバー自体です。
+1. Azure AD プロキシ コネクタが実行されているコンピューターを見つけます。 この例では、SharePoint Server を実行しているコンピューターです。
 1. そのコンピューターをダブルクリックし、 **[委任]** タブを選択します。
 1. 委任オプションが **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** に設定されていることを確認します。 **[任意の認証プロトコルを使う]** を選択します。
 1. **[追加]** ボタンを選択し、**[ユーザーまたはコンピューター]** を選択して、SharePoint アプリケーション プール アカウントを特定します。 たとえば、`Contoso\spapppool` のように指定します。

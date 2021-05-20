@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure IoT Edge デバイスを Azure IoT Central に追加する | Microsoft Docs
-description: チュートリアル - オペレーターとして、Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加します
+description: 'チュートリアル: Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する'
 author: rangv
 ms.author: rangv
 ms.date: 05/29/2020
@@ -11,16 +11,14 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: 373d144b4df818a075f0088e9cbf31cb5027e747
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2adae8a99e9e0f3626f444c1c6dd13d29bad3b64
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724882"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683985"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する
-
-"*この記事は、オペレーター、ソリューション ビルダー、デバイス開発者を対象としています。* "
 
 このチュートリアルでは、Azure IoT Edge デバイスを構成して、お使いの Azure IoT Central アプリケーションに追加する方法について説明します。 このチュートリアルでは、IoT Edge 対応 Linux 仮想マシン (VM) を使用して、IoT Edge デバイスをシミュレートします。 この IoT Edge デバイスは、シミュレートされた環境のテレメトリを生成するモジュールを使用します。 テレメトリは、Azure IoT Central アプリケーションのダッシュボードに表示されます。
 
@@ -33,11 +31,9 @@ ms.locfileid: "101724882"
 
 ## <a name="prerequisites"></a>前提条件
 
-**[カスタム アプリ] > [カスタム アプリケーション]** テンプレートを使用して IoT Central アプリケーションを作成するには、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」クイックスタートを完了します。
+このチュートリアルを完了するには、以下が必要になります。
 
-このチュートリアルの手順を完了するには、アクティブな Azure サブスクリプションが必要です。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 GitHub から IoT Edge マニフェスト ファイルをダウンロードします。 次のリンクを右クリックし、 **[名前を付けてリンク先を保存]** を選択します: [EnvironmentalSensorManifest.json](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
 
@@ -289,14 +285,9 @@ DPS を使用して IoT Central アプリケーションに登録、接続する
 * IoT Edge VM とその関連リソースを削除するには、Azure portal から **contoso-edge-rg** リソース グループを削除します。
 * IoT Central アプリケーションを削除するには、アプリケーションの **[管理]** セクションの **[お客様のアプリケーション]** ページに移動して、 **[削除]** を選択します。
 
-ソリューション開発者として、またはオペレーターとして、IoT Central で IoT Edge デバイスを操作および管理する方法について学習しました。推奨される次の手順として、以下のページにお進みください。
-
-> [!div class="nextstepaction"]
-> [デバイス グループを使用してデバイス テレメトリを分析する](./tutorial-use-device-groups.md)
-
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者として IoT Central で IoT Edge デバイスを操作および管理する方法について学習しました。推奨される次の手順として、以下をお読みください。
+IoT Central で IoT Edge デバイスを操作および管理する方法について学習しました。推奨される次の手順として、次をお読みください。
 
 > [!div class="nextstepaction"]
 > [IoT Edge モジュールを開発する](../../iot-edge/tutorial-develop-for-linux.md)

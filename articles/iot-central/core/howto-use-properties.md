@@ -7,16 +7,16 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 39bab52a564439d34b8702de11edabe7f0d6dfbc
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: a605046c8cf76a425f7df5b1cdf637f7dc4bfc90
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492258"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747253"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Azure IoT Central ソリューションでプロパティを使用する
 
-このハウツー ガイドでは、デバイス開発者として、Azure IoT Central アプリケーションのデバイス テンプレートで定義されているデバイス プロパティを使用する方法について説明します。
+このハウツー ガイドでは、Azure IoT Central アプリケーションでデバイス テンプレートに定義されているデバイス プロパティを使用する方法について説明します。
 
 プロパティは、特定の時点の値を表します。 たとえば、デバイスはプロパティを使用して、到達しようとしているターゲット温度を報告できます。 既定では、IoT Central でのデバイスのプロパティは読み取り専用です。 書き込み可能なプロパティを使用すると、デバイスと Azure IoT Central アプリケーションの間で状態を同期することができます。
 

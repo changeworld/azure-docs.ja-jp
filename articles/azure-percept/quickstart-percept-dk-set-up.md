@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 7056027965bd5e0f41c07835d21b454ab772a55a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1b844eb66a287e103e453e242bec407b2f3a38e6
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132253"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788411"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK を設定し、最初の AI モデルをデプロイする
 
@@ -24,6 +24,9 @@ Azure Percept DK のセットアップ エクスペリエンスを完了し、�
 - 開発キットを IoT ハブと Azure アカウントに接続する
 
 このプロセスの過程で問題が発生した場合に実行できる解決策については、[セットアップのトラブルシューティング ガイド](./how-to-troubleshoot-setup.md)を参照してください。
+
+> [!TIP]
+> いつでもセットアップ エクスペリエンスに戻って、新しい Wi-Fi ネットワークへの接続、新しい SSH ユーザーの作成、IoT ハブへの再接続などを行うために開発キットを再初期化することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -144,10 +147,8 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 
 1. **[デバイスのセットアップが完了しました]** ページが表示されたら、開発キットは正常に IoT ハブにリンクされ、必要なソフトウェアがダウンロードされています。 開発キットは正常に IoT ハブにリンクされ、必要なソフトウェアがダウンロードされています。 開発キットが Wi-Fi アクセス ポイントから自動的に切断されて、これら 2 つの通知が表示されます。
 
-    <!---
     > [!NOTE]
-    > The onboarding process and connection to the device Wifi access to your host computer shuts down at this point, but your dev kit will stay connected to the internet.   You can restart the onboarding experience with a dev kit reboot, which will allow you to go back through the onboarding and reconnect the device to a different IOT hub associated with the same or a different Azure Subscription..
-    --->
+    > このセットアップ プロセスの一環として構成される IoT Edge コンテナーでは、90 日後に期限切れになる証明書を使用します。 証明書は、IoT Edge を再起動することによって自動的に再生成できます。 詳細については、「[IoT Edge デバイスで証明書を管理する](https://docs.microsoft.com/azure/iot-edge/how-to-manage-device-certificates)」を参照してください。
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="セットアップ エクスペリエンスの切断に関する警告。":::
 
@@ -155,7 +156,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 
 1. **[Azure portal に進む]** をクリックします。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-20-azure-portal-continue.png" alt-text="Azure Percept Studio に移動します。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-20-Azure-portal-continue.png" alt-text="Azure Percept Studio に移動します。":::
 
 ## <a name="view-your-dev-kit-video-stream-and-deploy-a-sample-model"></a>開発キットのビデオ ストリームを表示してサンプル モデルをデプロイする
 

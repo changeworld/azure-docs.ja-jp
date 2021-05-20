@@ -3,22 +3,22 @@ title: Datadog を作成する - Azure パートナー ソリューション
 description: この記事では、Azure portal を使用して Datadog のインスタンスを作成する方法について説明します。
 ms.service: partner-services
 ms.topic: quickstart
-ms.date: 02/19/2021
+ms.date: 05/05/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: references_regions
-ms.openlocfilehash: 7af8b82c5da6c60527b45b6e8e292b9f067016ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d9c364c1367986f4ebe47cc00b4cb8b2434b90c
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747587"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517462"
 ---
 # <a name="quickstart-get-started-with-datadog"></a>クイックスタート: Datadog の使用を開始する
 
-このクイックスタートでは、Datadog のインスタンスを作成します。 新しい Datadog 組織を作成することも、既存の Datadog 組織にリンクすることもできます。
+このクイックスタートでは、Datadog のインスタンスを作成します。 新しい Datadog 組織を作成することも、既存の Datadog 組織にリンクすることもできます。 Azure は、**US3** の既存の Datadog 組織にのみリンクします。
 
-## <a name="pre-requisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 Azure Datadog 統合を設定するには、Azure サブスクリプションに対する **所有者** アクセス権が必要です。 設定を開始する前に、適切なアクセス権があることをご確認ください。
 
@@ -85,7 +85,7 @@ Datadog リソースを作成するためのフォームがポータルに表示
 
 ## <a name="link-to-existing-datadog-organization"></a>既存の Datadog 組織にリンクする
 
-Azure 内の新しい Datadog リソースを既存の Datadog 組織にリンクすることができます。
+Azure 内の新しい Datadog リソースを **US3** の既存の Datadog 組織にリンクすることができます。
 
 [データ組織] で **[既存]** を選択し、 **[Link to Datadog org]\(Datadog 組織にリンク\)** を選択します。
 
@@ -127,7 +127,7 @@ Azure から Datadog に出力できるログには 2 種類あります。
 
 サブスクリプション レベルのログを Datadog に送信するには、 **[Send subscription activity logs]\(サブスクリプションのアクティビティ ログを送信する\)** を選択します。 このオプションをオフのままにすると、サブスクリプション レベルのログは Datadog に送信されません。
 
-Azure リソース ログを Datadog に送信するには、 **[Send Azure resource logs for all defined resources]\(すべての定義済みリソースについて Azure リソース ログを送信する\)** を選択します。 Azure リソース ログの種類は、[[Azure Monitor Resource Log categories]\(Azure Monitor リソース ログのカテゴリ\)](../../azure-monitor/essentials/resource-logs-categories.md) に一覧表示されます。  Datadog にログを送信する Azure リソースのセットをフィルター処理するには、Azure リソース タグを使用します。  
+Azure リソース ログを Datadog に送信するには、 **[Send Azure resource logs for all defined resources]\(すべての定義済みリソースについて Azure リソース ログを送信する\)** を選択します。 Azure リソース ログの種類は、[[Azure Monitor Resource Log categories]\(Azure Monitor リソース ログのカテゴリ\)](../../azure-monitor/essentials/resource-logs-categories.md) に一覧表示されます。  Datadog にログを送信する Azure リソースのセットをフィルター処理するには、Azure リソース タグを使用します。
 
 Datadog に送信されるログには、Azure によって課金されます。 詳細については、Azure Marketplace パートナーに送信される[プラットフォーム ログの価格](https://azure.microsoft.com/pricing/details/monitor/)をご確認ください。
 

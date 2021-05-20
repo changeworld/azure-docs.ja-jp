@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/9/2020
-ms.openlocfilehash: 7adc7f568fb82692f2c96f610575076e397bd99c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: f218d87fe1f91e206c3b8873c9af0dddddd45b42
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896114"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656500"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>Azure Data Explorer の登録とスキャン
 
@@ -51,7 +51,7 @@ Azure Data Explorer の認証を設定する方法は 1 つだけです。
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
-1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
+1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
@@ -82,10 +82,10 @@ Azure Data Explorer の認証を設定する方法は 1 つだけです。
 **[ソースの登録 (Azure Data Explorer (Kusto))]** 画面で、次の手順を実行します。
 
 1. データ ソースがカタログに表示される際の **[名前]** を入力します。
-1. 目的のストレージ アカウントを指し示す方法を選択します。
-   1. **[Azure サブスクリプションから]** を選択して、 **[Azure サブスクリプション]** ドロップ ダウン ボックスから適切なサブスクリプションを選択し、 **[クラスター]** ドロップ ダウン ボックスから適切なクラスターを選択します。
-   1. または、 **[手動で入力]** を選択して、サービス エンドポイント (URL) を入力することもできます。
-1. **[完了]** を選択して、データ ソースを登録します。
+2. Azure サブスクリプションを選択して、Azure Data Explorer の検索結果を絞り込みます。
+3. 適切なクラスターを選択します。
+4. コレクションを選択するか新規作成します (オプション)。
+5. **[登録]** を選択してデータ ソースを登録します。
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 

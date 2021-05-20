@@ -3,12 +3,12 @@ title: リスク評価レポートの作成
 description: 個々のセンサーによって検出されたネットワーク リスクや、すべてのセンサーによって検出されたリスクの集計ビューを把握できます。
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 853157ef1b97fefdd15785b2a71c7ccc5d06a9a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 567660d1e1e55ee3dde0cbf5e5c09748cbb2cf0c
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784256"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655338"
 ---
 # <a name="risk-assessment-reporting"></a>リスク評価レポートの作成
 
@@ -58,6 +58,16 @@ ms.locfileid: "104784256"
 
 **脆弱なデバイス** は、セキュリティ スコアが 70% 未満のデバイスです。
 
+### <a name="about-backup-and-anti-virus-servers"></a>バックアップとウイルス対策サーバーについて
+
+センサーでバックアップとウイルス対策サーバーのアドレスを定義しない場合、リスク評価スコアが低下する場合があります。 これらのアドレスを追加すると、スコアが向上します。 既定では、これらのアドレスは定義されていません。
+[リスク評価レポート] 送付状には、バックアップ サーバーとウイルス対策サーバーが定義されていないかどうかが示されます。
+
+**サーバーを追加するには:**
+
+1. **[システム設定]** を選択し、 **[システム プロパティ]** を選択します。
+1. **[脆弱性評価]** を選択し **backup_servers** および **AV_addresses** フィールドにアドレスを追加します。 複数のアドレスを区切るには、コンマを使用してください。  コンマ区切り。  
+1. **[保存]** を選択します。
 ## <a name="create-risk-assessment-reports"></a>リスク評価レポートの作成
 
 PDF のリスク評価レポートを作成します。 レポート名は、risk-assessment-report-1.pdf のように自動的に生成されます。 数字は、新しいレポートを作成するたびに更新されます。  作成日時が表示されます。

@@ -3,12 +3,12 @@ title: Azure VMware Solution で VM をデプロイするためのコンテン�
 description: コンテンツ ライブラリを作成して、Azure VMware Solution プライベート クラウドに VM をデプロイします。
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: b27d2682d8799bec6b09a08e5063359113b20a88
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: bfac0e0353d1338d38d56b2fbf611ac3f0fb7e9b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107873885"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753751"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成する
 
@@ -95,7 +95,7 @@ ms.locfileid: "107873885"
 Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリの作成について理解したので、次のことについて学習できます。
 
 - [VM ワークロードをプライベート クラウドに移行する方法](tutorial-deploy-vmware-hcx.md)
-- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [Azure VMware ソリューション VM の監視と管理](lifecycle-management-of-azure-vmware-solution-vms.md)
 
 <!-- LINKS - external-->
 

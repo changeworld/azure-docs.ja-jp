@@ -8,12 +8,12 @@ ms.date: 11/18/2020
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 115c55a5833906aa0dcc616a5b1b659468647282
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 2fd9ac25d08cf4439278565f90258a230eeedb50
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814552"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627764"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 
@@ -259,7 +259,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 
 # <a name="azure-java-sdk-v12"></a>[Azure Java SDK v12](#tab/java)
 
-次のコードは、[ShareFileClient.uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile) メソッドを呼び出して、ローカル ファイルを Azure File Storage にアップロードします。 次のメソッド例は、指定したファイルが正常にアップロードされたかどうかを示す `Boolean` 値を返します。
+次のコードでは、[ShareFileClient.uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile) メソッドを呼び出して、ローカル ファイルを Azure Files にアップロードします。 次のメソッド例は、指定したファイルが正常にアップロードされたかどうかを示す `Boolean` 値を返します。
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
 

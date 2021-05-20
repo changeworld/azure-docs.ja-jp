@@ -1,34 +1,34 @@
 ---
-title: Synapse Studio ノートブック
-description: この記事では、データの準備と視覚化を行うために、Azure Synapse Studio ノートブックを作成および開発する方法について学習します。
+title: Synapse ノートブックの使用方法
+description: この記事では、データの準備と視覚化を行うために、Synapse ノートブックを作成および開発する方法について学習します。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 10/19/2020
+ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 203ac7252f06b342e7f553bb1900cdf9ac959e0a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: a66b036bde5f25873e9d4a371faf249deadd69dc
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891387"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736900"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio ノートブックを作成、開発、管理する
+# <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse ノートブックを作成、開発、管理する
 
-Synapse Studio ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
+Synapse ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
 
-Azure Synapse Studio ノートブックでは、次のことができます。
+Synapse ノートブックでは、次のことができます。
 
 * 設定作業をせずに使用を開始する。
 * 組み込みのエンタープライズ セキュリティ機能を使用してデータを安全に保つ。
 * 未加工の形式 (CSV、txt、JSON など) 全体のデータ、処理されたファイル形式 (parquet、Delta Lake、ORC など)、および Spark と SQL に対する SQL の表形式データ ファイルを分析する。
 * 高度な作成機能と組み込みのデータの視覚化で生産性を高める。
 
-この記事では、Azure Synapse Studio でノートブックを使用する方法について説明します。
+この記事では、Synapse Studio でノートブックを使用する方法について説明します。
 
 ## <a name="preview-of-the-new-notebook-experience"></a>新しいノートブック エクスペリエンスのプレビュー
 Synapse チームは、Microsoft のお客様に一貫したノートブック エクスペリエンスを提供し、検出可能性、生産性、共有、コラボレーションを最大化するための新しいノートブック コンポーネントを Synapse Studio に導入しました。 この新しいノートブック エクスペリエンスのプレビュー版が利用可能になりました。 ノートブック ツールバーの **[プレビュー機能]** ボタンをオンにしてください。 次の表では、既存のノートブック ("従来のノートブック") と新しいプレビュー版の機能を比較します。  
@@ -48,13 +48,13 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 
 ## <a name="create-a-notebook"></a>ノートブックを作成する
 
-ノートブックを作成するには、2 つの方法があります。 新しいノートブックを作成することも、既存のノートブックを **オブジェクト エクスプローラー** から Azure Synapse ワークスペースにインポートすることもできます。 Azure Synapse Studio ノートブックでは、標準の Jupyter Notebook IPYNB ファイルを認識することができます。
+ノートブックを作成するには、2 つの方法があります。 新しいノートブックを作成することも、既存のノートブックを **オブジェクト エクスプローラー** から Synapse ワークスペースにインポートすることもできます。 Synapse ノートブックでは、標準の Jupyter Notebook IPYNB ファイルが認識されます。
 
 ![インポートによるノートブックの作成](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
 
 ## <a name="develop-notebooks"></a>ノートブックを開発する
 
-ノートブックは、個別またはグループとして実行できるコードまたはテキストの個々のブロックである、セルで構成されます。
+ノートブックは、個別にまたはグループとして実行できるコードまたはテキストの個々のブロックである、セルで構成されます。
 
 ### <a name="add-a-cell"></a>セルを追加する
 
@@ -87,7 +87,7 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 
 ### <a name="set-a-primary-language"></a>第一言語を設定する
 
-Azure Synapse Studio ノートブックでは、次の 4 つの Apache Spark 言語がサポートされます。
+Synapse ノートブックでは、次の 4 つの Apache Spark 言語がサポートされます。
 
 * PySpark (Python)
 * Spark (Scala)
@@ -115,7 +115,7 @@ Azure Synapse Studio ノートブックでは、次の 4 つの Apache Spark 言
 
 ### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>一時テーブルを使用して言語間でデータを参照する
 
-Synapse Studio ノートブックでは、異なる言語間でデータや変数を直接参照することはできません。 Spark では、複数の言語間で一時テーブルを参照することができます。 以下は、回避策として Spark の一時テーブルを使用して、`PySpark` および `SparkSQL` で `Scala` DataFrame を読み取る方法の例です。
+Synapse ノートブックでは、異なる言語間でデータや変数を直接参照することはできません。 Spark では、複数の言語間で一時テーブルを参照することができます。 以下は、回避策として Spark の一時テーブルを使用して、`PySpark` および `SparkSQL` で `Scala` DataFrame を読み取る方法の例です。
 
 1. セル 1 で、Scala を使用して SQL プール コネクタから DataFrame を読み取り、一時テーブルを作成します。
 
@@ -141,7 +141,7 @@ Synapse Studio ノートブックでは、異なる言語間でデータや変�
 
 ### <a name="ide-style-intellisense"></a>IDE スタイルの IntelliSense
 
-Azure Synapse Studio ノートブックは、IDE スタイルの IntelliSense をセル エディターに取り込むために、Monaco エディターと統合されています。 構文の強調表示、エラー マーカー、および自動コード補完は、コードを記述したり、問題をより迅速に特定したりするために役立ちます。
+Synapse ノートブックは、IDE スタイルの IntelliSense をセル エディターに取り込むために、Monaco エディターと統合されています。 構文の強調表示、エラー マーカー、および自動コード補完は、コードを記述したり、問題をより迅速に特定したりするために役立ちます。
 
 IntelliSense の機能は、言語によって異なる成熟度レベルにあります。 次の表を使用して、サポートされている内容を確認してください。
 
@@ -156,7 +156,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 ### <a name="code-snippets"></a>コード スニペット
 
-Azure Synapse Studio ノートブックには、Spark セッションの構成、Spark DataFrame としてのデータの読み取り、matplotlib でのグラフの描画など、一般的に使用されるコード パターンの入力を容易にするコード スニペットが用意されています。
+Synapse ノートブックには、Spark セッションの構成、Spark DataFrame としてのデータの読み取り、matplotlib でのグラフの描画など、一般的に使用されるコード パターンの入力を容易にするコード スニペットが用意されています。
 
 スニペットは、他の候補と一緒に [IntelliSense](#ide-style-intellisense) に表示されます。 コード スニペットの内容は、コード セル言語に準拠したものとなります。 使用可能なスニペットを確認するには、「**Snippet**」と入力するか、コード セル エディターのスニペットのタイトルに表示されるキーワードを入力します。 たとえば、「**read**」と入力すると、さまざまなデータ ソースからデータを読み取るスニペットの一覧が表示されます。
 
@@ -271,7 +271,8 @@ Azure Synapse Studio ノートブックには、Spark セッションの構成�
 
 アウトライン (目次) では、素早くナビゲーションできるようにサイドバー ウィンドウ内に任意の Markdown セルの最初の Markdown ヘッダーが表示されます。 アウトラインのサイドバーは、最適な方法で画面に合わせてサイズを変更したり折りたたんだりすることができます。 ノートブックのコマンド バーにある **[アウトライン]** ボタンを選択すると、サイドバーを開いたり非表示にしたりできます。
 
-<a name="azure-notebook-outline"></a>![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+
 ---
 
 
@@ -372,7 +373,7 @@ Synapse ノートブックは、PySpark (Python) セルの現在の Spark セッ
 
 ### <a name="spark-progress-indicator"></a>Spark 進行状況インジケーター
 
-Azure Synapse Studio ノートブックは、純粋に Spark ベースです。 コード セルは、サーバーレス Apache Spark プールに対してリモートで実行されます。 Spark ジョブの進行状況インジケーターは、リアルタイムの進行状況バーで示されます。これは、ジョブの実行状態を把握するのに役立ちます。
+Synapse ノートブックは、純粋に Spark ベースです。 コード セルは、サーバーレス Apache Spark プールに対してリモートで実行されます。 Spark ジョブの進行状況インジケーターは、リアルタイムの進行状況バーで示されます。これは、ジョブの実行状態を把握するのに役立ちます。
 ジョブごとまたはステージごとのタスク数は、Spark ジョブの並列レベルを識別するのに役立ちます。 また、ジョブ (またはステージ) の名前のリンクを選択することで、特定のジョブ (またはステージ) の Spark UI をさらに掘り下げて調べることもできます。
 
 
@@ -476,7 +477,7 @@ df = spark.read.option("header", "true") \
    ![notebook-properties](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>マジック コマンド
-Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジック コマンドを使用できます。 以下の一覧で、現在使用可能なマジック コマンドを確認してください。 ユーザーのニーズに合ったマジック コマンドを引き続き作成できるよう、[GitHub でユース ケース](https://github.com/MicrosoftDocs/azure-docs/issues/new)についてお知らせください。
+Synapse ノートブックでは、使い慣れた Jupyter マジック コマンドを使用できます。 以下の一覧で、現在使用可能なマジック コマンドを確認してください。 ユーザーのニーズに合ったマジック コマンドを引き続き作成できるよう、[GitHub でユース ケース](https://github.com/MicrosoftDocs/azure-docs/issues/new)についてお知らせください。
 
 > [!NOTE]
 > Synapse パイプラインでは、次のマジック コマンドのみがサポートされています: %%pyspark、%%spark、%%csharp、%%sql。 
@@ -528,7 +529,7 @@ Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジ�
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>パイプラインからパラメーター値を割り当てる
 
-パラメーターを使ってノートブックを作成すると、Azure Synapse Notebook アクティビティを使用して、パイプラインからそれを実行できます。 アクティビティをパイプライン キャンバスに追加した後、 **[設定]** タブの **[基本パラメーター]** セクションで、パラメーターの値を設定できます。 
+パラメーターを使ってノートブックを作成したら、Synapse Notebook アクティビティを使用して、パイプラインから実行できます。 アクティビティをパイプライン キャンバスに追加した後、 **[設定]** タブの **[基本パラメーター]** セクションで、パラメーターの値を設定できます。 
 
 ![パラメーターを割り当てる](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
@@ -538,7 +539,7 @@ Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジ�
 
 ## <a name="shortcut-keys"></a>ショートカット キー
 
-Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモーダル ユーザー インターフェイスがあります。 キーボードの動作は、ノートブック セルのモードによって異なります。 Synapse Studio ノートブックでは、特定のコード セルに対して、コマンド モードと編集モードという 2 つのモードがサポートされます。
+Jupyter Notebook と同様に、Synapse ノートブックにはモーダル ユーザー インターフェイスが採用されています。 キーボードの動作は、ノートブック セルのモードによって異なります。 Synapse ノートブックでは、特定のコード セルに対して、コマンド モードと編集モードという 2 つのモードがサポートされます。
 
 1. 入力を求めるテキスト カーソルがない場合、セルはコマンド モードになります。 セルがコマンド モードの場合、ノートブックを全体として編集できますが、個々のセルに入力することはできません。 `ESC` キーを押すか、マウスを使用してセルのエディター領域の外側を選択し、コマンド モードに入ります。
 
@@ -552,9 +553,9 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
-次のキーストローク ショートカットを使用すると、Azure Synapse ノートブックのコードをより簡単に移動して実行できます。
+次のキーストローク ショートカットを使用すると、Synapse ノートブックのコードをより簡単に移動して実行できます。
 
-| アクション |Synapse Studio ノートブックのショートカット  |
+| アクション |Synapse ノートブックのショートカット  |
 |--|--|
 |現在のセルを実行して下のものを選択する | Shift + Enter |
 |現在のセルを実行して下に挿入する | Alt + Enter |
@@ -571,7 +572,7 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 
 # <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
-| アクション |Synapse Studio ノートブックのショートカット  |
+| アクション |Synapse ノートブックのショートカット  |
 |--|--|
 |現在のセルを実行して下のものを選択する | Shift + Enter |
 |現在のセルを実行して下に挿入する | Alt + Enter |
@@ -590,9 +591,9 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 ### <a name="shortcut-keys-under-edit-mode"></a>編集モードのショートカット キー
 
 
-次のキーストローク ショートカットを使用すると、編集モードのときに Azure Synapse ノートブックのコードをより簡単に移動して実行できます。
+次のキーストローク ショートカットを使用すると、編集モードのときに Synapse ノートブックのコードをより簡単に移動して実行できます。
 
-| アクション |Synapse Studio ノートブックのショートカット  |
+| アクション |Synapse ノートブックのショートカット  |
 |--|--|
 |カーソルを上に移動する | 上へ |
 |カーソルを下に移動する|[下へ]|
