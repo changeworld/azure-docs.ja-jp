@@ -14,19 +14,19 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2d30571b68ba7e38e9960d1e434cf7844f6be852
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 35170cb047ae7b4cfd376f86a76a36c88bbbaaa2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780103"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787493"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure ロールの割り当てを一覧表示する
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] この記事では、Azure CLI を使用してロールの割り当てを一覧表示する方法を説明します。
 
 > [!NOTE]
-> 組織で、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
+> 組織で、[Azure Lighthouse](../lighthouse/overview.md) を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
 
 ## <a name="prerequisites"></a>前提条件
 

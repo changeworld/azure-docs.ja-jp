@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: a37501498a9222025860702a7f29dccc9abfc8f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b096bcc59465bae0a37013c148880b6beb9eecb0
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102450051"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795656"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>一般的に使用される Azure Sentinel ブック
 
@@ -48,6 +48,6 @@ ms.locfileid: "102450051"
 |**セキュリティのアラート**     |  Azure Sentinel 環境でのアラートのセキュリティ アラート ダッシュボードが提供されます。 <br><br>詳細については、「[Microsoft セキュリティ アラートからインシデントを自動的に作成する](create-incidents-from-alerts.md)」を参照してください。      |
 |**セキュリティ操作の効率性**     |  セキュリティ オペレーション センター (SOC) マネージャーが、チームのパフォーマンスに関する全体的な効率のメトリックとメジャーを表示するためのものです。 <br><br>詳細については、「[インシデント メトリックを使用して SOC をより適切に管理する](manage-soc-with-incident-metrics.md)」をご覧ください。  |
 |**脅威インテリジェンス**     | 脅威の種類と重要度、時間の経過に伴う脅威アクティビティ、Office 365 やファイアウォールなどの他のデータソースとの相関関係など、脅威インジケーターに関する分析情報が提供されます。  <br><br>詳細については、「[Azure Sentinel への脅威インテリジェンスのインポート](import-threat-intelligence.md)」を参照してください。      |
-|**ワークスペースの監査**     |  ワークスペース全体のクエリ実行を把握できるワークスペース監査レポートが提供されます。   <br><br>詳細については、「[Azure Sentinel クエリとアクティビティの監査](audit-sentinel-data.md)」をご覧ください。  |
-|     |         |
+|**ゼロ トラスト (TIC 3.0)**     |  [トラステッド インターネット接続フレームワーク](https://www.cisa.gov/trusted-internet-connections)を横断的に説明したゼロ トラストの原則を自動的に視覚化できます。   <br><br>詳細については、[ゼロ トラスト (TIC 3.0) ブックのお知らせブログ](https://techcommunity.microsoft.com/t5/public-sector-blog/announcing-the-azure-sentinel-zero-trust-tic3-0-workbook/ba-p/2313761)を参照してください。  |
+
 

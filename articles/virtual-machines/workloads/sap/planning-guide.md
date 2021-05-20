@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 67ef0bf7a8c3906122468c895325a77de555c196
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 93a53169df18c88b4d74c699fe5c4cb8b2a11135
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258794"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738322"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -228,7 +228,7 @@ ms.locfileid: "107258794"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-az-ps
+[powershell-install-configure]:/powershell/azure/install-az-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -591,7 +591,7 @@ Azure Virtual Network 内の VM には、固定または予約済み IP アド�
 
 
 ##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>SAP ホスト名仮想化のセカンダリ IP アドレス
-各 Azure 仮想マシンのネットワーク インターフェイス カードには複数の IP アドレスを割り当てることができます。このセカンダリ IP は、必要に応じて DNS A または PTR レコードにマップされる SAP 仮想ホスト名に使用できます。 セカンダリ IP アドレスは、[こちらの記事](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)に従って Azure vNIC IP 構成に割り当てる必要があります。また、セカンダリ IP が DHCP 経由で割り当てられないように、OS 内で構成する必要があります。 各セカンダリ IP は、vNIC のバインド先と同じサブネットからのものである必要があります。 Pacemaker クラスターなどのセカンダリ IP 構成では Azure Load Balancer のフローティング IP の使用は[サポートされていません]( https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。この場合、Load Balancer の IP によって SAP 仮想ホスト名が有効になります。 仮想ホスト名の使用についての一般的なガイダンスについては、SAP ノート [#962955](https://launchpad.support.sap.com/#/notes/962955) も参照してください。
+各 Azure 仮想マシンのネットワーク インターフェイス カードには複数の IP アドレスを割り当てることができます。このセカンダリ IP は、必要に応じて DNS A または PTR レコードにマップされる SAP 仮想ホスト名に使用できます。 セカンダリ IP アドレスは、[こちらの記事](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)に従って Azure vNIC IP 構成に割り当てる必要があります。また、セカンダリ IP が DHCP 経由で割り当てられないように、OS 内で構成する必要があります。 各セカンダリ IP は、vNIC のバインド先と同じサブネットからのものである必要があります。 Pacemaker クラスターなどのセカンダリ IP 構成では Azure Load Balancer のフローティング IP の使用は[サポートされていません](/azure/load-balancer/load-balancer-multivip-overview#limitations)。この場合、Load Balancer の IP によって SAP 仮想ホスト名が有効になります。 仮想ホスト名の使用についての一般的なガイダンスについては、SAP ノート [#962955](https://launchpad.support.sap.com/#/notes/962955) も参照してください。
 
 
 ##### <a name="multiple-nics-per-vm"></a>VM あたり複数の NIC
@@ -733,7 +733,7 @@ Azure Extension for SAP のデプロイ (このドキュメントの「[Azure Ex
 
 Azure の機能が増えるのに応じて、新しい PS コマンドレットが追加され、コマンドレットの更新が必要になります。 このため、少なくとも月に 1 回は、Azure のダウンロード サイト <https://azure.microsoft.com/downloads/> で新しいバージョンのコマンドレットを確認することをお勧めします。 新バージョンは、以前のバージョンの上にインストールされます。
 
-Azure 関連の PowerShell コマンドについての総目録については、ここ <https://docs.microsoft.com/powershell/azure/> を参照してください。
+Azure 関連の PowerShell コマンドの総目録については、</powershell/azure/> を参照してください。
 
 ### <a name="management-via-microsoft-azure-cli-commands"></a>Microsoft Azure CLI コマンドを使用した管理
 
@@ -780,7 +780,7 @@ OS または DBMS バージョンの固有のパッチ要件により、Azure Ma
 ---
 > ![Windows ロゴ。][Logo_Windows] Windows
 >
-> 詳細については、以下を参照してください。<https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed>Windows の設定 (Windows SID やホスト名など) は、sysprep コマンドを使用してオンプレミスの VM 上で抽象化または一般化する必要があります。
+> 詳細については、</azure/virtual-machines/windows/upload-generalized-managed> を参照してください。オンプレミス VM では、sysprep コマンドを使用して Windows 設定 (Windows の SID やホスト名など) を抽象化/一般化する必要があります。
 >
 >
 > ![Linux ロゴ。][Logo_Linux] Linux
@@ -874,7 +874,7 @@ VM を一般化して、対象の Azure デプロイメント シナリオでは
 ### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>オンプレミスと Azure 間での VM と VHD の転送
 Azure Portal では、VM イメージとディスクを Azure にアップロードすることはできないので、Azure PowerShell コマンドレットまたは CLI を使用する必要があります。 また、'AzCopy'.ツールを使用する方法もあります。 このツールでは、オンプレミスと Azure の間で VHD を (双方向に) コピーできます。 また、Azure リージョン間で VHD をコピーすることもできます。 AzCopy のダウンロードと使用方法については、[こちらのドキュメント][storage-use-azcopy]を参照してください。
 
-3 番目の方法は、サード パーティ製のさまざま GUI 指向ツールを使用する方法です。 ただし、それらのツールで Azure ページ BLOB がサポートされていることを確認してください。 ここでは、Azure ページ BLOB ストアを使用する必要があります (相違点についてはここ <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs> で説明されています)。 また、Azure で提供されるツールは、アップロードする必要がある、VM と VHD を圧縮するうえで効率的です。 この圧縮効率によってアップロード時間を減らすことができるので、このことは重要です (アップロード時間は、オンプレミス施設からインターネットまでのアップロード リンクと、対象となる Azure デプロイメント リージョンによって異なります) 。 通常、ヨーロッパの場所から米国の Azure データ センターに VM や VHD をアップロードする場合、同じ VM や VHD をヨーロッパの Azure データ センターにアップロードするよりも、長い時間がかかります。
+3 番目の方法は、サード パーティ製のさまざま GUI 指向ツールを使用する方法です。 ただし、それらのツールで Azure ページ BLOB がサポートされていることを確認してください。 ここでは、Azure ページ BLOB ストアを使用する必要があります (相違点については、</rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs> を参照してください)。 また、Azure で提供されるツールは、アップロードする必要がある、VM と VHD を圧縮するうえで効率的です。 この圧縮効率によってアップロード時間を減らすことができるので、このことは重要です (アップロード時間は、オンプレミス施設からインターネットまでのアップロード リンクと、対象となる Azure デプロイメント リージョンによって異なります) 。 通常、ヨーロッパの場所から米国の Azure データ センターに VM や VHD をアップロードする場合、同じ VM や VHD をヨーロッパの Azure データ センターにアップロードするよりも、長い時間がかかります。
 
 #### <a name="uploading-a-vhd-from-on-premises-to-azure"></a><a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>オンプレミスから Azure への VHD のアップロード
 オンプレミス ネットワークから既存の VM や VHD をアップロードするには、それらの VM や VHD が、このドキュメントの「[オンプレミスから汎用でないディスクを使用する Azure に VM を移動する準備][planning-guide-5.2.1]」の章に記載されている要件を満たしている必要があります。
@@ -887,19 +887,19 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 **PowerShell**
 
 * *Connect-AzAccount* を使用してサブスクリプションにサインインする
-* *Set-AzContext* および SubscriptionId または SubscriptionName パラメーターを使用してコンテキストのサブスクリプションを設定する - <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext> を参照してください
-* *Add-AzVhd* を使用して VHD を Microsoft Azure Storage アカウントにアップロードする - <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd> を参照してください
-* (省略可能) *New-AzDisk* を使用して VHD からマネージド ディスクを作成する - <https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk> を参照してください
-* *Set-AzVMOSDisk* を使用して新しい VM 構成の OS ディスクを VHD またはマネージド ディスクに設定する - <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk> を参照してください
-* *New-AzVM* を使用して VM 構成から新しい VM を作成する - <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm> を参照してください
-* *Add-AzVMDataDisk* を使用して新しい VM にデータ ディスクを追加する - <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk> を参照してください
+* *Set-AzContext* および SubscriptionId または SubscriptionName パラメーターを使用してコンテキストのサブスクリプションを設定する - </powershell/module/az.accounts/set-Azcontext> を参照
+* *Add-AzVhd* を使用して VHD を Azure Storage アカウントにアップロードする - </powershell/module/az.compute/add-Azvhd> を参照
+* (オプション) *New-AzDisk* を使用して VHD からマネージド ディスクを作成する - </powershell/module/az.compute/new-Azdisk> を参照
+* *Set-AzVMOSDisk* を使用して新しい VM 構成の OS ディスクを VHD またはマネージド ディスクに設定する - </powershell/module/az.compute/set-Azvmosdisk> を参照
+* *New-AzVM* を使用して VM 構成から新しい VM を作成する - </powershell/module/az.compute/new-Azvm> を参照
+* *Add-AzVMDataDisk* を使用して新しい VM にデータ ディスクを追加する - see </powershell/module/az.compute/add-Azvmdatadisk> を参照
 
 **Azure CLI**
 
 * *az login* を使用してサブスクリプションにサインインする
 * *az account set --subscription `<subscription name or id`>* を使用してサブスクリプションを選択する
-* *az storage blob upload* を使用して VHD をアップロードする - 「[Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
-* (省略可能) *az disk create* を使用して VHD から管理ディスクを作成 - https://docs.microsoft.com/cli/azure/disk を参照
+* *az storage blob upload* を使用して VHD をアップロードする - [Azure Storage での Azure CLI の使用][storage-azure-cli]に関する記事を参照。
+* (オプション) *az disk create* を使用して VHD からマネージド ディスクを作成する - 「[az disk](/cli/azure/disk)」を参照。
 * *az vm create* とパラメーター *--attach-os-disk* を使用して、アップロードした VHD または管理ディスクを OS ディスクとして指定して新しい VM を作成する
 * *az vm disk attach* とパラメーター *--new* を使用してデータ ディスクを新しい VM に追加する
 
@@ -907,28 +907,28 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 
 * PowerShell または Azure CLI で VHD をアップロード
 * (オプション) PowerShell、Azure CLI、または Azure portal を使用して、VHD からマネージド ディスクを作成する
-* [この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)のように VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)のように管理ディスクを使用して、VM を作成します。
+* [この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)のように VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)のように管理ディスクを使用して、VM を作成します。
 
 #### <a name="deployment-of-a-vm-image"></a>VM イメージのデプロイメント
 オンプレミス ネットワークから既存の VM または VHD をアップロードし、それを Azure VM イメージとして使用するには、それらの VM や VHD が、このドキュメントの「[SAP 用の顧客固有のイメージを使用する VM のデプロイの準備][planning-guide-5.2.2]」の章にリストされている要件を満たしている必要があります。
 
 * Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「[Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「[Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
 * *Connect-AzAccount* を使用してサブスクリプションにサインインする
-* *Set-AzContext* および SubscriptionId または SubscriptionName パラメーターを使用してコンテキストのサブスクリプションを設定する - <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext> を参照してください
-* *Add-AzVhd* を使用して VHD を Microsoft Azure Storage アカウントにアップロードする - <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd> を参照してください
-* (省略可能) *New-AzImage* を使用して VHD からマネージド ディスク イメージを作成する - <https://docs.microsoft.com/powershell/module/az.compute/new-Azimage> を参照してください
+* *Set-AzContext* および SubscriptionId または SubscriptionName パラメーターを使用してコンテキストのサブスクリプションを設定する - </powershell/module/az.accounts/set-Azcontext> を参照
+* *Add-AzVhd* を使用して VHD を Azure Storage アカウントにアップロードする - </powershell/module/az.compute/add-Azvhd> を参照
+* (オプション) *New-AzImage* を使用して VHD からマネージド ディスク イメージを作成する - </powershell/module/az.compute/new-Azimage> を参照
 * 新しい VM config の OS ディスクを以下に設定する
-  * *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* を使用した VHD - <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk> を参照してください
-  * マネージド ディスク イメージ *Set-AzVMSourceImage* - <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage> を参照してください
-* *New-AzVM* を使用して VM 構成から新しい VM を作成する - <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm> を参照してください
+  * *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* による VHD - </powershell/module/az.compute/set-Azvmosdisk> を参照
+  * *Set-AzVMSourceImage* によるマネージド ディスク イメージ - </powershell/module/az.compute/set-Azvmsourceimage> を参照
+* *New-AzVM* を使用して VM 構成から新しい VM を作成する - </powershell/module/az.compute/new-Azvm> を参照
 
 **Azure CLI**
 
 * Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「[Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「[Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
 * *az login* を使用してサブスクリプションにサインインする
 * *az account set --subscription `<subscription name or id`>* を使用してサブスクリプションを選択する
-* *az storage blob upload* を使用して VHD をアップロードする - 「[Azure Storage での Azure CLI の使用][storage-azure-cli]」を参照
-* (省略可能) *az image create* を使用して VHD から管理ディスク イメージを作成する - https://docs.microsoft.com/cli/azure/image を参照
+* *az storage blob upload* を使用して VHD をアップロードする - [Azure Storage での Azure CLI の使用][storage-azure-cli]に関する記事を参照。
+* (オプション) *az image create* を使用して VHD からマネージド ディスク イメージを作成する - [az image](/cli/azure/image] を参照。
 * *az vm create* とパラメーター *--image* を使用して、アップロードした VHD または管理ディスク イメージを OS ディスクとして指定して新しい VM を作成する
 
 **テンプレート**
@@ -967,7 +967,7 @@ Azure のサービスとしてのインフラストラクチャは、VHD およ�
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  Save-AzVhd コマンドレットの詳細については、こちら (<https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>) を確認してください。
+  Save-AzVhd コマンドレットの詳細については、</powershell/module/az.compute/save-Azvhd> を参照してください。
 
 #### <a name="azure-cli"></a>Azure CLI
 * 管理ディスクのダウンロード。まず管理ディスクの基になる BLOB へのアクセス権を取得する必要があります。 アクセス権を取得すると、基になる BLOB を新しいストレージ アカウントにコピーし、このストレージ アカウントから BLOB をダウンロードできるようになります。
@@ -1080,8 +1080,8 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 
 PS コマンドレット ロジックの基本的な流れは次のようになります。
 
-* *New-AzStorageContext* を使用して **ソース** ストレージ アカウントのストレージ アカウント コンテキストを作成する - <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext> を参照してください
-* *New-AzStorageContext* を使用して **ターゲット** ストレージ アカウントのストレージ アカウント コンテキストを作成する - <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext> を参照してください
+* *New-AzStorageContext* を使用して **ソース** ストレージ アカウントのストレージ アカウント コンテキストを作成する - </powershell/module/az.storage/new-AzStoragecontext> を参照
+* *New-AzStorageContext* を使用して **ターゲット** ストレージ アカウントのストレージ アカウント コンテキストを作成する - </powershell/module/az.storage/new-AzStoragecontext> を参照
 * 以下を使用してコピーを開始します
 
 ```powershell
@@ -1261,7 +1261,7 @@ Azure Resource Manager の場合、以前のクラシック モデルのよう�
 
 このトピックについて詳細に説明した次の記事を参照してください: 
 
-<https://docs.microsoft.com/archive/blogs/saponsqlserver/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure>
+</archive/blogs/saponsqlserver/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure>
 
 #### <a name="changing-firewall-settings-within-vm"></a>VM 内のファイアウォール設定の変更
 
@@ -1520,7 +1520,7 @@ GitHub 上の Azure-quickstart-templates リポジトリのサンプル テン�
 
 * [Simple Linux VM (シンプルな Linux VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
 * [Simple Linux VM (シンプルな Windows VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-* [VM from image (イメージからの VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+* [VM from image (イメージからの VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 ### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>Azure 内で通信する一連の VM を実装する
 
@@ -1972,9 +1972,9 @@ SAP システム内の他の VM は、Azure 仮想マシン バックアップ�
 > 論理的には、データベースを実行する VM は、DBMS システムで、たとえば SQL Server のように Windows VSS (ボリューム シャドウ コピー サービス <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx>) をサポートしている場合は、整合性のとれた方法でバックアップできます。
 > ただし、データベースの Azure VM バックアップのポイントインタイム リストアによってはバックアップできない場合があることにご注意ください。 そのため、Azure VM Backup を使用するのではなく、DBMS 機能を使ってデータベースのバックアップを実行することをお勧めします。
 >
-> Azure 仮想マシンのバックアップの詳細については、こちら (<https://docs.microsoft.com/azure/backup/backup-azure-vms>) をご覧ください。
+> Azure 仮想マシンのバックアップについて理解するには、最初に </azure/backup/backup-azure-vms> を参照してください。
 >
-> 他の方法として、Azure VM にインストールされた Microsoft Data Protection Manager と Azure Backup を組み合わせて、データベースをバックアップ/リストアする方法があります。 詳細については、こちら <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction> をご覧ください。
+> 他の方法として、Azure VM にインストールされた Microsoft Data Protection Manager と Azure Backup を組み合わせて、データベースをバックアップ/リストアする方法があります。 詳細については、</azure/backup/backup-azure-dpm-introduction> を参照してください。
 >
 > ![Linux ロゴ。][Logo_Linux] Linux
 >
@@ -1986,7 +1986,7 @@ SAP システム内の他の VM は、Azure 仮想マシン バックアップ�
 
 2014 年中盤以降、Hyper-V、System Center、Azure 周辺のさまざまなコンポーネントの拡張により、Hyper-V をベースとするオンプレミスで実行される VM 向けの DR サイトとして Azure を使用できるようになりました。
 
-このソリューションを展開する方法の詳細については、ここ <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> を参照してください。
+このソリューションをデプロイする方法の詳細については、</archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> のブログを参照してください。
 
 ## <a name="summary-for-high-availability-for-sap-systems"></a>SAP システムの高可用性の概要
 
@@ -2004,6 +2004,7 @@ Azure での SAP システムの高可用性における重要なポイントは
 * SAP システムのグローバル ディレクトリを含む VM を異なるインスタンスのすべてのプロファイルと共にバックアップすることは合理的であり、これは、Windows Backup (または Linux 上の tar など) で実行する必要があります。 Windows Server 2008 (R2) と Windows Server 2012 (R2) にはいくつかの違いがあり、最新の Windows Server リリースを使用したバックアップのほうが簡単であるため、Windows Server 2012 (R2) を Windows ゲスト オペレーティング システムとして実行することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
+
 以下の記事を参照してください。
 
 - [SAP NetWeaver のための Azure Virtual Machines のデプロイ](./deployment-guide.md)

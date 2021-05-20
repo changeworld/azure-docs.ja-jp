@@ -3,12 +3,12 @@ title: ポータルから既存の割り当てを更新する
 description: Azure Blueprints でポータルから既存のブループリントの割り当てを更新する方法について説明します。
 ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 67ce41d6d7b4497d84d960e96813f20db940c965
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b08862ba32dbdd52faff85115553e59ae856b453
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323737"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761365"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
 
@@ -24,7 +24,7 @@ ms.locfileid: "108323737"
 
 1. 左側のページから **[割り当てられたブループリント]** を選択します。
 
-1. ブループリントの一覧で、ブループリントの割り当てを選択します。 **[割り当ての更新]** ボタンを使用するか、ブループリントの割り当てを右クリックし、 **[割り当ての更新]** を選択します。
+1. ブループリントの一覧で、ブループリントの割り当てを選択します。 次に、 **[割り当ての更新]** ボタンを使用するか、ブループリントの割り当てを選択して保持 (または右クリック) し、 **[割り当ての更新]** を選択します。
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="[割り当ての更新] ボタンが強調表示された [ブループリント割り当て] ページのスクリーンショット。" border="false":::
 
@@ -56,7 +56,7 @@ ms.locfileid: "108323737"
 
 割り当てを更新する際に、実行時に障害を発生させるような変更を行ことがあります。 例としては、既にデプロイされているリソース グループの場所を変更する場合が挙げられます。 [Resource Manager](../../../azure-resource-manager/management/overview.md) によってサポートされている任意の変更を行うことができますが、変更によって Resource Manager でエラーが発生する場合は、割り当てにおいても障害が発生します。
 
-割り当てを更新できる回数に制限はありません。 エラーが発生した場合は、エラーを特定して、割り当てに対して別の更新を行います。  エラー シナリオの例を次に示します。
+割り当てを更新できる回数に制限はありません。 エラーが発生した場合は、エラーを特定して、割り当てに対して別の更新を行います。 エラー シナリオの例を次に示します。
 
 - パラメーター不良
 - オブジェクトが既に存在している

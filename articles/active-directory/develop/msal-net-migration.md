@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 0e7dc3540dc54e0563a5ea416510bddb9a41fb65
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3d877641948635a47dd69ddb03b98acc2ddf3eaf
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861699"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633143"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -49,13 +49,15 @@ MSAL.NET と ADAL.NET を詳細に比較する前に、MSAL.NET を使用する�
 
 ただし、アプリケーションで以前のバージョンの [Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/active-directory-federation-services) を使用してユーザーをサインインさせる必要がある場合は、引き続き ADAL.NET を使用する必要があります。 詳細については、「[ADFS support](https://aka.ms/msal-net-adfs-support)」 (ADFS のサポート) を参照してください。
 
-次の図は、パブリック クライアント アプリケーションの ADAL.NET と MSAL.NET の違いをいくつかまとめたものです。![並列されたコード](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
+次の図は、パブリック・クライアント・アプリケーションの ADAL.NET と MSAL.NET の違いをまとめたものです。[![パブリック・クライアント・アプリケーションの ADAL.NET と MSAL.NET の違いをまとめたスクリーンショット。](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png#lightbox)
+
+また次の図は、機密クライアント・アプリケーションの ADAL.NET と MSAL.NET の違いをまとめたものです。[![機密クライアント・アプリケーションの ADAL.NET と MSAL.NET の違いをまとめたスクリーンショット。](./media/msal-net-migration/confidential-client-application.png)](./media/msal-net-migration/confidential-client-application.png#lightbox)
 
 ### <a name="nuget-packages-and-namespaces"></a>NuGet パッケージと名前空間
 
 ADAL.NET は [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet パッケージから使用されます。 使用する名前空間は `Microsoft.IdentityModel.Clients.ActiveDirectory` です。
 
-MSAL.NET を使用するには、[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet パッケージを追加し、`Microsoft.Identity.Client` 名前空間を使用する必要があります
+MSAL.NET を使用するには、[Microsoft.Identity.Client NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) パッケージを追加し、`Microsoft.Identity.Client` 名前空間を使用する必要があります 機密クライアント アプリケーションを構築する場合は、「[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web)」も確認してください。
 
 ### <a name="scopes-not-resources"></a>リソースではなくスコープ
 
@@ -147,7 +149,7 @@ Web アプリ | 承認コード | [ADAL.NET を使用する Web アプリの承�
 
 ADAL.NET では、`TokenCache` クラスを拡張し、セキュリティで保護されたストレージ (.NET Framework と .NET Core) のないプラットフォームで、`BeforeAccess` および `BeforeWrite` メソッドを使用して、目的の永続化機能を実装することができます。 詳細については、[ADAL.NET でのトークン キャッシュのシリアル化](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization)に関するページを参照してください。
 
-MSAL.NET では、トークン キャッシュがシールド クラスとなり、拡張することはできません。 そのため、トークン キャッシュの永続化の実装は、シールド トークン キャッシュと対話するヘルパー クラスの形式でなければなりません。 この対話については、[MSAL.NET でのトークン キャッシュのシリアル化](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization)に関するページで説明されています。
+MSAL.NET では、トークン キャッシュがシールド クラスとなり、拡張することはできません。 そのため、トークン キャッシュの永続化の実装は、シールド トークン キャッシュと対話するヘルパー クラスの形式でなければなりません。 この対話については、[MSAL.NET でのトークン キャッシュのシリアル化](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization)に関するページで説明されています。 パブリック クライアント アプリケーション (「[パブリック クライアント アプリケーション用のトークン キャッシュ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization#token-cache-for-a-public-client-application)」を参照) と、機密クライアント アプリケーション (「[Web アプリまたは Web API のトークン キャッシュ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization#token-cache-for-a-public-client-application)」を参照) では、シリアル化は異なります
 
 ## <a name="signification-of-the-common-authority"></a>一般的な機関の意味
 

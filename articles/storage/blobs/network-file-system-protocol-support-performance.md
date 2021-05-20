@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 16c2927aef83dfa1a3a69298e865c5684f40b7b9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 86031eb10dc96be8caac721ba4d9f66595b94aef
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144585"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633125"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項 (プレビュー)
 
@@ -49,6 +49,10 @@ Azure Blob Storage は、ストレージ アカウントのエグレスとイン
 ## <a name="avoid-frequent-overwrites-on-data"></a>データが頻繁に上書きされないようにする
 
 新規書き込み操作より、上書き操作の方が完了するまでに時間がかかります。 これは、NFS の上書き操作 (特に、部分的なインプレース ファイル編集) が、読み取り、変更、書き込み操作といういくつかの基になる BLOB 操作を組み合わせたものであるためです。 そのため、頻繁にインプレース編集が必要なアプリケーションは、NFS が有効になっている BLOB ストレージ アカウントには適していません。 
+
+## <a name="deploy-azure-hpc-cache-for-latency-senstive-applications"></a>待機時間に厳密なアプリケーションのための Azure HPC Cache のデプロイ
+
+アプリケーションによっては、高スループットに加えて待機時間の短縮が必要になることがあります。 [Azure HPC Cache](../../hpc-cache/nfs-blob-considerations.md) をデプロイすると、待機時間を大幅に向上させることができます。 [Blob Storage での待ち時間](storage-blobs-latency.md) の詳細を確認してください。 
 
 ## <a name="other-best-practice-recommendations"></a>その他のベスト プラクティスの推奨事項 
 

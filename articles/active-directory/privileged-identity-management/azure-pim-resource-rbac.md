@@ -7,26 +7,26 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: pim
-ms.date: 01/10/2020
+ms.date: 04/20/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd211c284ef5240e3f658d90c5d801018a02b9bf
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002495"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790183"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクティビティおよび監査履歴を表示する
 
-組織内の Azure リソース ロールのアクティビティ、アクティブ化、および監査履歴を Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で表示できます。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure のロールベースのアクセス制御機能を利用する Azure portal 内のすべてのリソースで、Privileged Identity Management のセキュリティおよびライフサイクル管理機能を利用できます。
+組織内の Azure リソース ロールのアクティビティ、アクティブ化、および監査履歴を Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で表示できます。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure のロールベースのアクセス制御機能を利用する Azure portal 内のすべてのリソースで、Privileged Identity Management のセキュリティおよびライフサイクル管理機能を利用できます。 監査データを既定の保有期間よりも長く保持するには、Azure Monitor を使用して Azure ストレージ アカウントにルーティングします。 詳細については、「[Azure AD のログを Azure ストレージ アカウントにアーカイブする](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)」をご覧ください。
 
 > [!NOTE]
-> 組織で、[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
+> 組織で、[Azure Lighthouse](../../lighthouse/overview.md) を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
 
 ## <a name="view-activity-and-activations"></a>アクティビティとアクティブ化を表示する
 
@@ -70,7 +70,7 @@ ms.locfileid: "96002495"
 
     ![Excel に表示された CSV ファイルでエクスポートされたロールの割り当て](media/azure-pim-resource-rbac/export-csv.png)
 
-## <a name="view-resource-audit-history"></a>リソースの監査履歴を表示する
+## <a name="view-resource-audit-history&quot;></a>リソースの監査履歴を表示する
 
 リソースの監査では、リソースのすべてのロール アクティビティのビューが提供されます。
 
@@ -84,7 +84,7 @@ ms.locfileid: "96002495"
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    [![フィルターを使用したリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-resource-audit.png "フィルターを使用したリソースの監査の一覧")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    [![フィルターを使用したリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-resource-audit.png &quot;フィルターを使用したリソースの監査の一覧")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. **[監査の種類]** で **[アクティブ化 (割り当て済み + アクティブ化済み)]** を選択します。
 
@@ -94,7 +94,7 @@ ms.locfileid: "96002495"
 
     ![特定のアクションに対するユーザーのアクティビティの詳細](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
-## <a name="view-my-audit"></a>自分の監査を表示する
+## <a name="view-my-audit&quot;></a>自分の監査を表示する
 
 自分の監査を使用すると、個人のロール アクティビティを表示できます。
 
@@ -108,7 +108,7 @@ ms.locfileid: "96002495"
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    [![現在のユーザーに対する監査の一覧](media/azure-pim-resource-rbac/my-audit-time.png "現在のユーザーに対する監査の一覧")](media/azure-pim-resource-rbac/my-audit-time.png)
+    [![現在のユーザーに対する監査の一覧](media/azure-pim-resource-rbac/my-audit-time.png &quot;現在のユーザーに対する監査の一覧")](media/azure-pim-resource-rbac/my-audit-time.png)
 
 > [!NOTE]
 > 監査履歴にアクセスするには、全体管理者ロールまたは特権ロールを持った管理者ロールが必要です。

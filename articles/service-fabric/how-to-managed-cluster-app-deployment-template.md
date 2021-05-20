@@ -1,18 +1,18 @@
 ---
-title: ARM テンプレートを使用して Service Fabric マネージド クラスター (プレビュー) アプリケーションをデプロイする
-description: Azure Resource Manager テンプレートを使用して、アプリケーションを Azure Service Fabric マネージド クラスター (プレビュー) にデプロイします。
+title: ARM テンプレートを使用して Service Fabric マネージド クラスター アプリケーションをデプロイする
+description: Azure Resource Manager テンプレートを使用して、アプリケーションを Azure Service Fabric マネージド クラスター にデプロイします。
 ms.topic: how-to
-ms.date: 02/15/2021
-ms.openlocfilehash: e860c77d77e3aabb70f70defdaa25de14e77e0e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 5/10/2021
+ms.openlocfilehash: 0712040032f0e7b33720df5bef1555652c27fbb0
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728013"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735622"
 ---
-# <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>ARM テンプレートを使用して Service Fabric マネージド クラスター (プレビュー) アプリケーションをデプロイする
+# <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>ARM テンプレートを使用して Service Fabric マネージド クラスター アプリケーションをデプロイする
 
-Azure Service Fabric アプリケーションを Service Fabric マネージド クラスターにデプロイするには、複数の選択肢があります。 Azure Resource Manager を使用することをお勧めします。 Resource Manager を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell や Azure CLI を使ってアプリケーションをデプロイして管理する場合と違い、Resource Manager を使用する場合は、クラスターの準備が整うまで待つ必要はありません。アプリケーションの登録、プロビジョニング、およびデプロイをすべて 1 回の手順で実行できます。 クラスターでアプリケーションのライフ サイクルを管理するには、Resource Manager を使用するのが最良の方法です。 詳細については、「[ベスト プラクティス: コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)」を参照してください。
+Azure Service Fabric アプリケーションを Service Fabric マネージド クラスターにデプロイするには、複数の選択肢があります。 Azure Resource Manager を使用することをお勧めします。 Resource Manager を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell や Azure CLI を使ってアプリケーションをデプロイして管理する場合と違い、Resource Manager を使用する場合は、クラスターの準備が整うまで待つ必要はありません。アプリケーションの登録、プロビジョニング、およびデプロイをすべて 1 回の手順で実行できます。 クラスターでアプリケーションのライフ サイクルを管理するには、Resource Manager を使用するのが最良の方法です。 詳細については、「[ベスト プラクティス: コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources)」を参照してください。
 
 Resource Manager でアプリケーションをリソースとして管理すると、次のような分野での改善に役立ちます。
 
@@ -101,25 +101,25 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 
 ```json
 {
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     "type": "Microsoft.ServiceFabric/managedclusters/applications",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     "type": "Microsoft.ServiceFabric/managedclusters/applicationTypes",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     "type": "Microsoft.ServiceFabric/managedclusters/applicationTypes/versions",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     "type": "Microsoft.ServiceFabric/managedclusters/applications/services",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
     "location": "[variables('clusterLocation')]"
@@ -181,12 +181,10 @@ Resource Manager でアプリケーション リソース モデルを使用し�
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーション リソース モデルに関する情報を入手します。
+マネージド クラスター アプリケーション デプロイについて詳しく学習してください。
 
-* [Service Fabric のアプリケーションのモデル化](service-fabric-application-model.md)
-* [Service Fabric のアプリケーション マニフェストとサービス マニフェスト](service-fabric-application-and-service-manifests.md)
-* [ベスト プラクティス: コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
-* [アプリケーションとサービスを Azure リソースとして管理する](service-fabric-best-practices-infrastructure-as-code.md)
+* [マネージド クラスターのアプリケーション シークレットをデプロイする](how-to-managed-cluster-application-secrets.md)
+* [マネージド ID を使用してマネージド クラスター アプリケーションをデプロイする](how-to-managed-cluster-application-managed-identity.md)
 
 
 <!--Image references-->

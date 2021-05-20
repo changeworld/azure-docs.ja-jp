@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 3/30/2021
+ms.date: 5/05/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: e048e788e674e90a62b15784c590c07e5d36b816
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 1ed9fc345b1c8afe416b4b98c621fc1c9b48a557
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078402"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795260"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -197,8 +197,11 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
  
 * **日次上限**:Azure portal で Application Insights リソースを作成する場合、日次上限は 100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。 日次上限の既定値は、テストを容易にするために設定されます。 アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 
 
-    高トラフィック アプリケーション用に最大値の引き上げを要求する場合を除き、最大の上限は 1,000 GB/日です。
+    高トラフィック アプリケーション用に最大値の引き上げを要求する場合を除き、Application Insights での上限は 1,000 GB/日です。
     
+    > [!TIP]
+    > ワークスペース ベースの Application Insights リソースがある場合、Application Insights の上限を使用するのではなく、[ワークスペースの日次上限](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)を使用してインジェストとコストを制限することをお勧めします。
+
     日次上限に関する警告メールは、Application Insights リソースの次のロールのメンバーであるアカウントに送信されます: "ServiceAdmin"、"AccountAdmin"、"CoAdmin"、"Owner"。
 
     日次上限を設定する場合はご注意ください。 意図は、"*日次上限に達しない*" ようにすることです。 日次上限に達した場合、その日の残りの時間についてデータが失われ、アプリケーションを監視することはできません。 日次上限を変更するには、 **[日次ボリューム上限]** オプションを使用します。 このオプションには、 **[使用量と推定コスト]** ウィンドウでアクセスできます (これについてはこの記事で後ほど詳しく説明します)。
@@ -210,6 +213,9 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 ## <a name="manage-your-maximum-daily-data-volume"></a>ご自分のデータの 1 日の最大ボリュームを管理する
 
 日次ボリューム上限を使用すると、収集されるデータを制限できます。 ただし、上限に達した場合は、その日の残りの時間についてアプリケーションから送信されたすべてのテレメトリが失われます。 アプリケーションが日次上限に達することは "*望ましくありません*"。 日次上限に達した後は、アプリケーションの正常性とパフォーマンスを追跡できません。
+
+> [!WARNING]
+> ワークスペース ベースの Application Insights リソースがある場合、[ワークスペースの日次上限](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)を使用してインジェストとコストを制限することをお勧めします。 Application Insights の日次上限では、場合によっては選択したレベルまでインジェストが制限されない可能性があります (Application Insights リソースによって大量のデータが取り込まれる場合、Application Insights の日次上限を引き上げる必要が生じることがあります)。
 
 日次ボリューム上限を使用する代わりに、[サンプリング](./sampling.md)を使用して、データ ボリュームを目的のレベルに調整してください。 その後、アプリケーションが予期せず大量のテレメトリの送信を開始した場合に、"最後の手段" としてのみ日次上限を使用します。
 

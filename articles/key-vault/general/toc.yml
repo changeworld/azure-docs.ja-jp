@@ -49,8 +49,6 @@
       items:
         - name: セキュリティ機能
           href: security-features.md
-        - name: Key Vault 認証の基礎
-          href: authentication.md
         - name: Key Vault の認証
           href: authentication.md
         - name: セキュリティ ワールドと地域

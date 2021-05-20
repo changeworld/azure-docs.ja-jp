@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 5dabae76308f32da7968d8cfa89b95f1eb19c142
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a31fde34a65d69ca862a6dd8bd4fb638b15cb3a
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863770"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751421"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 
@@ -70,12 +70,12 @@ Azure HDInsight の無料自動スケーリング機能を使用すると、以�
 
 | Version | Spark | Hive | Interactive Query | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3.6 (ESP なし) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
-| HDInsight 4.0 (ESP なし) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
-| HDInsight 3.6 (ESP あり) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
-| HDInsight 4.0 (ESP あり) | はい | はい | はい | はい* | いいえ | いいえ | いいえ |
+| HDInsight 3.6 (ESP なし) | はい | はい | はい* | はい* | いいえ | いいえ | いいえ |
+| HDInsight 4.0 (ESP なし) | はい | はい | はい* | はい* | いいえ | いいえ | いいえ |
+| HDInsight 3.6 (ESP あり) | はい | はい | はい* | はい* | いいえ | いいえ | いいえ |
+| HDInsight 4.0 (ESP あり) | はい | はい | はい* | はい* | いいえ | いいえ | いいえ |
 
-\* HBase クラスターは、負荷ベースではなく、スケジュールベースのスケーリングの場合にのみ構成できます。
+\* HBase および Interactive Query クラスターは、負荷ベースではなく、スケジュールベースのスケーリングの場合にのみ構成できます。
 
 ## <a name="get-started"></a>はじめに
 
@@ -85,7 +85,7 @@ Azure HDInsight の無料自動スケーリング機能を使用すると、以�
 
 1. **[構成と価格]** タブで、 **[自動スケーリングの有効化]** チェック ボックスをオンにします。
 1. **[Autoscale type]\(自動スケーリングの種類\)** で、 **[Load-based]\(負荷ベース\)** を選択します。
-1. 次のプロパティに対して目的の値を入力します。  
+1. 次のプロパティに対して目的の値を入力します。
 
     * **[ワーカー ノード]** の初期の **[Number of nodes]\(ノードの数\)** 。
     * ワーカー ノードの **[最小]** の数。
@@ -120,16 +120,16 @@ Azure HDInsight の無料自動スケーリング機能を使用すると、以�
 
 サブスクリプションには、リージョンごとに容量のクォータがあります。 ヘッド ノードのコアの総数とワーカー ノードの最大数の合計が容量のクォータを超えることはできません。 ただし、このクォータはソフト制限です。それを簡単に増やすためのサポート チケットをいつでも作成できます。
 
-> [!Note]  
+> [!Note]
 > 合計のコア クォータ制限を超えた場合は、"最大ノードがこのリージョン内の使用可能なコア数を超えました。別のリージョンを選択するか、またはサポートに連絡してクォータを増やしてください" というエラー メッセージが表示されます。
 
-Azure portal を使用した HDInsight クラスターの作成に関する詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。  
+Azure portal を使用した HDInsight クラスターの作成に関する詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ### <a name="create-a-cluster-with-a-resource-manager-template"></a>Resource Manager テンプレートでクラスターを作成する
 
 #### <a name="load-based-autoscaling"></a>負荷ベースの自動スケーリング
 
-以下の JSON スニペットに示すように、プロパティ `minInstanceCount` と `maxInstanceCount` で `computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートで負荷ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 完全な Resource Manager テンプレートについては、「[Deploy Spark Cluster with Loadbased Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)」 (クイックスタート テンプレート: 負荷ベースの自動スケーリングを有効にして Spark クラスターをデプロイする) というクイックスタート テンプレートを参照してください。
+以下の JSON スニペットに示すように、プロパティ `minInstanceCount` と `maxInstanceCount` で `computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートで負荷ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 完全な Resource Manager テンプレートについては、「[Deploy Spark Cluster with Loadbased Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-autoscale-loadbased)」 (クイックスタート テンプレート: 負荷ベースの自動スケーリングを有効にして Spark クラスターをデプロイする) というクイックスタート テンプレートを参照してください。
 
 ```json
 {
@@ -157,7 +157,7 @@ Azure portal を使用した HDInsight クラスターの作成に関する詳�
 
 #### <a name="schedule-based-autoscaling"></a>スケジュール ベースの自動スケーリング
 
-`computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートでスケジュール ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 `autoscale` ノードには、`timezone` および変更を実行するタイミングが記述されている `schedule` を含む `recurrence` が含まれます。 完全な Resource Manager テンプレートについては、「[Deploy Spark Cluster with schedule-based Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)」 (スケジュールベースの自動スケーリングを有効にして Spark クラスターをデプロイする) を参照してください。
+`computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートでスケジュール ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 `autoscale` ノードには、`timezone` および変更を実行するタイミングが記述されている `schedule` を含む `recurrence` が含まれます。 完全な Resource Manager テンプレートについては、「[Deploy Spark Cluster with schedule-based Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-autoscale-schedulebased)」 (スケジュールベースの自動スケーリングを有効にして Spark クラスターをデプロイする) を参照してください。
 
 ```json
 {
@@ -251,25 +251,37 @@ Azure portal に表示されるクラスターの状態は、自動スケーリ�
 
 実行中のジョブは続行されます。 保留中のジョブは、少ない数の使用可能ワーカー ノードでスケジューリングされるのを待ちます。
 
+### <a name="configure-schedule-based-autoscale-based-on-usage-pattern"></a>使用パターンに基づいてスケジュールベースの自動スケーリングを構成する
+
+スケジュールベースの自動スケーリングを構成する場合、クラスターの使用パターンを把握しておく必要があります。 [Grafana ダッシュボード](./interactive-query/hdinsight-grafana.md)は、クエリの負荷と実行スロットを理解するのに役立ちます。 このダッシュボードから、利用可能な実行プログラム スロットと実行プログラム スロットの合計数を取得できます。
+
+ここでは、必要となるワーカー ノードの数を見積もる方法を示します。 変動するワークロードを処理するために、10% のバッファーを追加することをお勧めします。
+
+実際に使用される実行プログラム スロットの数 = 実行プログラム スロットの合計数 - 使用可能な実行プログラム スロットの合計数。
+
+必要なワーカー ノードの数 = 実際に使用される実行プログラム スロットの数 / (hive.llap.daemon.num.executors + hive.llap.daemon.task.scheduler.wait.queue.size)
+
+*hive.llap.daemon.num.executors は構成可能であり、既定値は 4 です。
+
+*hive.llap.daemon.task.scheduler.wait.queue.size は構成可能であり、既定値は 10 です。
+
+
 ### <a name="be-aware-of-the-minimum-cluster-size"></a>クラスターの最小サイズに注意する
 
 クラスターを 3 つ未満のノードにスケールダウンしないでください。 クラスターを 3 つ未満のノードにスケーリングすると、ファイル レプリケーションが不十分なためにセーフ モードでスタックする場合があります。 詳細については、「[セーフ モードでスタックする](hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)」を参照してください。
 
 ### <a name="increase-the-number-of-mappers-and-reducers"></a>マッパーとレジューサーの数を増やす
 
-Hadoop クラスターの自動スケーリングでは、HDFS の使用状況も監視します。 HDFS がビジーの場合は、クラスターがまだ現在のリソースを必要としていることを前提とします。 クエリに大量のデータが含まれている場合は、マッパーとレジューサーの数を増やして、並列処理を増やし、HDFS 操作を高速化することができます。 このように、追加リソースがある場合に適切なスケールダウンがトリガーされます。 
+Hadoop クラスターの自動スケーリングでは、HDFS の使用状況も監視します。 HDFS がビジーの場合は、クラスターがまだ現在のリソースを必要としていることを前提とします。 クエリに大量のデータが含まれている場合は、マッパーとレジューサーの数を増やして、並列処理を増やし、HDFS 操作を高速化することができます。 このように、追加リソースがある場合に適切なスケールダウンがトリガーされます。
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>ピーク時の使用状況シナリオに対する Hive 構成の同時実行クエリの最大合計数を設定する
 
 Ambari では、Hive 構成の *同時実行クエリの最大合計数* は、自動スケーリング イベントによって変更されません。 つまり Hive Server 2 Interactive Service は、Interactive Query デーモンの数が負荷やスケジュールに基づいてスケールアップまたはスケールダウンされた場合でも、任意の時点で指定された数の同時実行クエリのみを処理できます。 一般的には、手動による介入を避けられるように、ピーク時の使用状況シナリオに合わせてこの構成を設定することをお勧めします。
 
-ただし、ワーカー ノードが少ししかなく、同時実行クエリの最大合計数の値が非常に高く構成されている場合に、Hive サーバー 2 の再起動エラーが発生することがあります。 少なくとも、指定された数の Tez AM に対応できるワーカー ノードの最小数が必要です (同時実行クエリの最大合計数の構成と同じ)。 
+ただし、ワーカー ノードが少ししかなく、同時実行クエリの最大合計数の値が非常に高く構成されている場合に、Hive サーバー 2 の再起動エラーが発生することがあります。 少なくとも、指定された数の Tez AM に対応できるワーカー ノードの最小数が必要です (同時実行クエリの最大合計数の構成と同じ)。
 
 ## <a name="limitations"></a>制限事項
 
-### <a name="node-label-file-missing"></a>ノード ラベル ファイルの欠落
-
-HDInsight の自動スケーリングは、ノード ラベル ファイルを使用して、タスクを実行する準備がノードでできているかどうかを判断します。 ノード ラベル ファイルは、3 つのレプリカを持つ HDFS に格納されます。 クラスターサイズが大幅にスケールダウンされ、一時データが大量にある場合、3 つのレプリカすべてが削除される可能性はわずかです。 これが発生すると、クラスターはエラー状態になります。
 
 ### <a name="interactive-query-daemons-count"></a>Interactive Query デーモン数
 

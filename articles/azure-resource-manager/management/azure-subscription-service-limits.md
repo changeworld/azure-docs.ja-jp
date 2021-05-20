@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 8aad2f885c39d6f5ecd237a6167363b0efe8cef4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: cb39dc5312c729659993d9a9e754bef711137b4d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290410"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790138"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -70,8 +70,6 @@ Resource Manager API の読み取りと書き込みの制限については、�
 
 ## <a name="app-service-limits"></a>App Service の制限
 
-次の App Service の制限には、Web Apps、Mobile Apps、および API Apps の制限が含まれます。
-
 [!INCLUDE [azure-websites-limits](../../../includes/azure-websites-limits.md)]
 
 ## <a name="automation-limits"></a>Automation の制限
@@ -81,6 +79,10 @@ Resource Manager API の読み取りと書き込みの制限については、�
 ## <a name="azure-app-configuration"></a>Azure App Configuration
 
 [!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
+
+## <a name="azure-api-for-fhir-service-limits"></a>Azure API for FHIR サービスの制限
+
+[!INCLUDE [functions-limits](../../../includes/azure-api-for-fhir-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Cache for Redis の制限
 

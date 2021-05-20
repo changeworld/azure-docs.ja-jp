@@ -3,7 +3,7 @@ title: Azure AD のエンタイトルメント管理で接続されている組�
 description: 自分の組織外のユーザーがアクセス パッケージを要求して、プロジェクトの共同作業を行うことができるようにする方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/11/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b4e4bccde07d078c9749ee76c1653e6d431e63
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7371bd090581d2295e3e0e53ae27136e37c89191
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532080"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786377"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -60,7 +60,7 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 
 外部 Azure AD ディレクトリまたはドメインを接続された組織として追加するには、このセクションの手順のようにします。
 
-**事前に必要なロール**:"*グローバル管理者*" または "*ユーザー管理者*"
+**必要なロール**: *グローバル管理者*、*ID ガバナンス管理者*、または *ユーザー管理者*
 
 1. Azure portal で **[Azure Active Directory]** を選択し、 **[Identity Governance]** を選択します。
 

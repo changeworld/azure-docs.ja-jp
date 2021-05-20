@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: ed4047b7ac4187138f29bc3f53b5bc5995132296
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: ae5aacf48fdc038e485226476509e14c551bfbfa
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107898137"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785207"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -286,7 +286,7 @@ Azure Machine Learning Studio を実験に使用している場合は、[Studio 
 ### <a name="enable-deep-learning"></a>ディープ ラーニングを有効にする
 
 > [!NOTE]
-> 自動機械学習での予測における DNN サポートは **プレビュー** 段階です。また、ローカルの実行はサポートされていません。
+> 自動機械学習での予測のための DNN サポートは **プレビュー** 段階です。また、ローカルの実行や Databricks で開始される実行はサポートされていません。
 
 深層ニューラル ネットワーク (DNN) を使用したディープ ラーニングを利用し、モデルのスコアを向上させることもできます。 自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
 

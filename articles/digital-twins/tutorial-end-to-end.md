@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a0584bea6fab1d49c552785d093e7e2df823b11b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 33860e35785e65396851bcd9f8cf9d9577a9d0a5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205829"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790903"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -72,7 +72,7 @@ _**AdtE2ESample**_ プロジェクトが開いている Visual Studio ウィン�
 SetupBuildingScenario
 ```
 
-このコマンドは、Azure Digital Twins に 3 つの [デジタル ツイン](concepts-twins-graph.md) インスタンス (*floor1* という名前のフロア、*room21* という名前の部屋、*thermostat67* という名前の温度センサー) を作成、接続すると共に、一連の確認メッセージを出力します。 これらのデジタル ツインは、実世界の環境に存在するであろうエンティティを表します。
+このコマンドでは、Azure Digital Twins インスタンスで 3 つの[デジタル ツイン](concepts-twins-graph.md) (floor1 という名前のフロア、room21 という名前の部屋、thermostat67 という名前の温度センサー) が作成され、接続された際に一連の確認メッセージが出力されます。 これらのデジタル ツインは、実世界の環境に存在するであろうエンティティを表します。
 
 それらがリレーションシップを介して接続され、以下の[ツイン グラフ](concepts-twins-graph.md)が形成されます。 ツイン グラフは、エンティティの相互作用や相互関係を含め、環境を全体として表します。
 
@@ -85,7 +85,7 @@ Query
 ```
 
 >[!TIP]
-> この簡略化された方法は、_**AdtE2ESample**_ プロジェクトの一部として提供されています。 このサンプル コードのコンテキスト外では、[クエリ API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](how-to-use-cli.md)を使用して、インスタンス内のすべてのツインに対していつでもクエリを実行できます。
+> この簡略化された方法は、_**AdtE2ESample**_ プロジェクトの一部として提供されています。 このサンプル コードのコンテキスト外では、[クエリ API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](concepts-cli.md)を使用して、インスタンス内のすべてのツインに対していつでもクエリを実行できます。
 >
 > インスタンス内のすべての Digital Twins を取得するための完全なクエリの本文を次に示します。
 > 
@@ -111,7 +111,7 @@ _**AdtE2ESample**_ プロジェクトが開かれた状態の Visual Studio ウ�
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp プロジェクトの [NuGet パッケージの管理]" border="false":::
 
-これで、NuGet パッケージ マネージャーが開かれます。 *[更新]* タブを選択し、更新するパッケージがある場合は、 *[すべてのパッケージを選択]* ボックスをオンにします。 次に、 *[更新]* をクリックします。
+これで、NuGet パッケージ マネージャーが開かれます。 *[更新]* タブを選択し、更新するパッケージがある場合は、 *[すべてのパッケージを選択]* ボックスをオンにします。 次に、 *[更新]* を選択します。
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: NuGet パッケージ マネージャーですべてのパッケージを更新するように選択する":::
 
@@ -141,7 +141,7 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
     > 結果が空の場合は、ID の詳細を表示する代わりに、次のコマンドを使用して関数の新しいシステム マネージド ID を作成します。
     > 
     >```azurecli-interactive    
-    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>    
     >```
     >
     > これで、出力には、次の手順で必要な **principalId** 値を含む、ID の詳細が表示されます。 
@@ -161,7 +161,7 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 次のコマンドを実行して、プレースホルダーにリソースの詳細を設定します。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
+az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
 
 出力は、Azure 関数の設定の一覧です。ここには、**ADT_SERVICE_URL** というエントリが含まれているはずです。
@@ -191,7 +191,7 @@ Azure Digital Twins は、デバイスとそのデータを管理するための
 Azure Cloud Shell で、次のコマンドを使用して新しい IoT ハブを作成します。
 
 ```azurecli-interactive
-az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
+az iot hub create --name <name-for-your-IoT-hub> --resource-group <your-resource-group> --sku S1
 ```
 
 このコマンドからは、作成された IoT ハブについての情報が出力されます。
@@ -217,20 +217,20 @@ IoT ハブに付けた **名前** は保存しておいてください。 これ
 * *[トピックの詳細]*  >  **[システム トピック名]** : システム トピックに使用する名前を指定します。 
 * *[イベントの種類]*  >  **[イベントの種類のフィルター]** : メニュー オプションから *[Device Telemetry]\(デバイス テレメトリ\)* を選択します。
 * *[エンドポイントの詳細]*  >  **[エンドポイントのタイプ]** : メニュー オプションから *[Azure 関数]* を選択します。
-* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[エンドポイントの選択]* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure portal のイベント サブスクリプション: Azure 関数の選択" border="false":::
+* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[Select an endpoint]\(エンドポイントを選択する\)* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure portal のイベント サブスクリプション: Azure 関数の選択" border="false":::
     - **サブスクリプション**、**リソース グループ**、**関数アプリ**、**関数** (*ProcessHubToDTEvents*) を入力します。 そのいくつかは、サブスクリプションの選択後に自動的に入力されます。
-    - **[選択の確認]** をクリックします。
+    - **[選択の確認]** を選択します。
 
-再び *[イベント サブスクリプションの作成]* ページで、 **[作成]** をクリックします。
+再び *[イベント サブスクリプションの作成]* ページで、 **[作成]** を選択します。
 
 ### <a name="register-the-simulated-device-with-iot-hub"></a>シミュレートされたデバイスを IoT Hub に登録する 
 
-このセクションでは、IoT Hub におけるデバイスの表現を *thermostat67* という ID で作成します。 これがシミュレートされたデバイスの接続先となります。こうして、テレメトリ イベントがデバイスから IoT Hub に伝えられ、前の手順でサブスクライブした Azure 関数は、IoT Hub でリッスンしながらイベントを収集し、処理を続行します。
+このセクションでは、IoT Hub におけるデバイスの表現を thermostat67 という ID で作成します。 これがシミュレートされたデバイスの接続先となります。こうして、テレメトリ イベントがデバイスから IoT Hub に伝えられ、前の手順でサブスクライブした Azure 関数は、IoT Hub でリッスンしながらイベントを収集し、処理を続行します。
 
 Azure Cloud Shell で、IoT Hub にデバイスを作成するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
+az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> --resource-group <your-resource-group>
 ```
 
 作成されたデバイスについての情報が出力されます。
@@ -242,7 +242,7 @@ az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-
 まず、次のコマンドで "*IoT ハブの接続文字列*" を取得します。
 
 ```azurecli-interactive
-az iot hub connection-string show -n <your-IoT-hub-name>
+az iot hub connection-string show --hub-name <your-IoT-hub-name>
 ```
 
 次に、"*デバイスの接続文字列*" を次のコマンドで取得します。
@@ -279,11 +279,11 @@ deviceConnectionString = <your-device-connection-string>
 
 ### <a name="see-the-results-in-azure-digital-twins"></a>Azure Digital Twins で結果を確認する
 
-先ほど発行した *ProcessHubToDTEvents* 関数は、IoT Hub データをリッスンし、Azure Digital Twins API を呼び出して、*thermostat67* ツインの *Temperature* プロパティを更新します。
+先ほど発行した *ProcessHubToDTEvents* 関数は、IoT Hub データをリッスンし、Azure Digital Twins API を呼び出して、thermostat67 ツインの *Temperature* プロパティを更新します。
 
 Azure Digital Twins 側からデータを確認するには、_**AdtE2ESample**_ プロジェクトが開いている Visual Studio ウィンドウに移動し、プロジェクトを実行します。
 
-プロジェクトのコンソール ウィンドウが開いたら、次のコマンドを実行して、デジタル ツイン *thermostat67* からレポートされる温度を取得します。
+プロジェクトのコンソール ウィンドウが開いたら、次のコマンドを実行して、デジタル ツイン thermostat67 からレポートされる温度を取得します。
 
 ```cmd
 ObserveProperties thermostat67 Temperature
@@ -302,7 +302,7 @@ ObserveProperties thermostat67 Temperature
 
 このチュートリアルではこれまで、外部のデバイス データから Azure Digital Twins を更新する方法を見てきました。 今度は、ある 1 つのデジタル ツインから Azure Digital Twins グラフ全体に変更を反映させる方法、つまり、サービス内部のデータからツインを更新する方法について見ていきます。
 
-そのために、ここでは *ProcessDTRoutedData* という Azure 関数を使用して、*Thermostat* ツインが更新されたときに、接続された *Room* ツインを更新します。 これが行われるのは、エンド ツー エンド シナリオの以下の部分 (**矢印 C**) です。
+そのために、ここでは *ProcessDTRoutedData* という Azure 関数を使用して、Thermostat ツインが更新されたときに、接続された Room ツインを更新します。 これが行われるのは、エンド ツー エンド シナリオの以下の部分 (**矢印 C**) です。
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="ビルディング シナリオの全体図から矢印 C (Azure Digital Twins の後の要素、つまり Event Grid と 2 つ目の Azure 関数) を抜粋して強調したもの":::
 
@@ -321,13 +321,13 @@ ObserveProperties thermostat67 Temperature
 Event Grid トピックを作成するには、Azure Cloud Shell から次のコマンドを実行します。
 
 ```azurecli-interactive
-az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
+az eventgrid topic create --resource-group <your-resource-group> --name <name-for-your-event-grid-topic> --location <region>
 ```
 
 > [!TIP]
 > Azure CLI のコマンドに渡すことのできる Azure リージョン名のリストを出力するには、次のコマンドを実行します。
 > ```azurecli-interactive
-> az account list-locations -o table
+> az account list-locations --output table
 > ```
 
 このコマンドからは、作成した Event Grid トピックについての情報が出力されます。
@@ -367,7 +367,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 #### <a name="connect-the-function-to-event-grid"></a>Event Grid に関数を接続する
 
-次に、先ほど作成した Event Grid トピックを Azure 関数 (*ProcessDTRoutedData*) からサブスクライブします。そうすることで、テレメトリ データは *thermostat67* ツインから Event Grid トピックを介して関数へと流れることができ、関数が再び Azure Digital Twins に作用して *room21* ツインを適宜更新します。
+次に、先ほど作成した Event Grid トピックを Azure 関数 (*ProcessDTRoutedData*) からサブスクライブします。そうすることで、テレメトリ データは thermostat67 ツインから Event Grid トピックを介して関数へと流れることができ、関数が再び Azure Digital Twins に作用して room21 ツインを適宜更新します。
 
 これを行うには、先ほど作成した **イベント グリッド トピック** から *ProcessDTRoutedData* Azure 関数にデータを送信する **Event Grid サブスクリプション** を作成します。
 
@@ -380,17 +380,17 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 *[イベント サブスクリプションの作成]* ページで、各フィールドに次のように入力します (既定値が入力されるフィールドは省略しています)。
 * *[イベント サブスクリプションの詳細]*  >  **[名前]** : イベント サブスクリプションに名前を付けます。
 * *[エンドポイントの詳細]*  >  **[エンドポイントのタイプ]** : メニュー オプションから *[Azure 関数]* を選択します。
-* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[エンドポイントの選択]* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。
+* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[Select an endpoint]\(エンドポイントを選択する\)* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。
     - **サブスクリプション**、**リソース グループ**、**関数アプリ**、**関数** (*ProcessDTRoutedData*) を入力します。 そのいくつかは、サブスクリプションの選択後に自動的に入力されます。
-    - **[選択の確認]** をクリックします。
+    - **[選択の確認]** を選択します。
 
-再び *[イベント サブスクリプションの作成]* ページで、 **[作成]** をクリックします。
+再び *[イベント サブスクリプションの作成]* ページで、 **[作成]** を選択します。
 
 ### <a name="run-the-simulation-and-see-the-results"></a>シミュレーションを実行して結果を確認する
 
 デバイス シミュレーターを実行して、これまでに設定した新しいイベント フローを開始してみましょう。 _**DeviceSimulator**_ プロジェクトが開いている Visual Studio ウィンドウに移動し、プロジェクトを実行します。
 
-先ほどデバイス シミュレーターを実行したときと同様に、コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらのイベントは、前半に設定したフローをたどって *thermostat67* ツインを更新した後、後半に設定したフローをたどって *room21* ツインを thermostat67 と同じ状態に更新します。
+先ほどデバイス シミュレーターを実行したときと同様に、コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらのイベントは、前半に設定したフローをたどって thermostat67 ツインを更新した後、後半に設定したフローをたどって room21 ツインを thermostat67 と同じ状態に更新します。
 
 :::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="送信中の温度テレメトリを示すデバイス シミュレーターのコンソール出力":::
 
@@ -398,13 +398,13 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 Azure Digital Twins 側からデータを確認するには、_**AdtE2ESample**_ プロジェクトが開いている Visual Studio ウィンドウに移動し、プロジェクトを実行します。
 
-プロジェクトのコンソール ウィンドウが開いたら、次のコマンドを実行して、*thermostat67* と *room21* の **両方** のデジタル ツインによってレポートされる温度を取得します。
+プロジェクトのコンソール ウィンドウが開いたら、次のコマンドを実行して、thermostat67 と room21 の **両方** のデジタル ツインによってレポートされる温度を取得します。
 
 ```cmd
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-"*Azure Digital Twins インスタンスから*" のライブ更新された温度が 2 秒ごとにコンソールにログされていることを確認できます。 *thermostat67* への変更に合わせて *room21* の温度が更新されていることがわかります。
+"*Azure Digital Twins インスタンスから*" のライブ更新された温度が 2 秒ごとにコンソールにログされていることを確認できます。 thermostat67 への変更に合わせて room21 の温度が更新されていることがわかります。
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="thermostat と room からの温度メッセージのログを示すコンソール出力":::
 
@@ -415,8 +415,8 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 以下、このチュートリアルで構築したシナリオの確認です。
 
 1. Azure Digital Twins インスタンスは、フロア、部屋、サーモスタットをデジタルで表現します (以下の図の **セクション A**)。
-2. シミュレートされたデバイスのテレメトリが IoT Hub に送信されます。IoT Hub では、Azure 関数 *ProcessHubToDTEvents* がテレメトリ イベントをリッスンします。 Azure 関数 *ProcessHubToDTEvents* は、これらのイベント内の情報を使用して、*thermostat67* の *Temperature* プロパティを設定します (図の **矢印 B**)。
-3. Azure Digital Twins のプロパティ変更イベントが Event Grid トピックにルーティングされます。Event Grid トピックでは、Azure 関数 *ProcessDTRoutedData* がイベントをリッスンしています。 Azure 関数 *ProcessDTRoutedData* は、これらのイベント内の情報を使用して、*room21* の *Temperature* プロパティを設定します (図の **矢印 C**)。
+2. シミュレートされたデバイスのテレメトリが IoT Hub に送信されます。IoT Hub では、Azure 関数 *ProcessHubToDTEvents* がテレメトリ イベントをリッスンします。 Azure 関数 *ProcessHubToDTEvents* は、これらのイベント内の情報を使用して、thermostat67 の *Temperature* プロパティを設定します (図の **矢印 B**)。
+3. Azure Digital Twins のプロパティ変更イベントが Event Grid トピックにルーティングされます。Event Grid トピックでは、Azure 関数 *ProcessDTRoutedData* がイベントをリッスンしています。 Azure 関数 *ProcessDTRoutedData* は、これらのイベント内の情報を使用して、room21 の *Temperature* プロパティを設定します (図の **矢印 C**)。
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="ビルディング シナリオ全体を表す図。データがデバイスから IoT Hub へと流れ、Azure Functions を経て (矢印 B) Azure Digital Twins インスタンス (セクション A) に到達した後、Event Grid を介して別の Azure Functions に到達して処理 (矢印 C) されるようすを表しています":::
 
@@ -426,7 +426,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/dt) という CLI コマンドを使用して、目的の要素を削除することができます。
+* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部をクリアする場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/dt) という CLI コマンドを使用して、目的の要素を削除することができます。
 
     この方法では、このチュートリアルで作成した他の Azure リソース (IoT ハブ、Azure Functions アプリなど) は一切削除されません。 これらのリソースは、それぞれの種類に合った適切な [dt コマンド](/cli/azure/reference-index)を使用して個別に削除できます。
 

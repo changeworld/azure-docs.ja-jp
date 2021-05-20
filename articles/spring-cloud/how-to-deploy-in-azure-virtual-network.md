@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
-ms.openlocfilehash: 2ff56857eca112ebd808a96f3aaa097ab4be5c18
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ebf8070a6f5fae97d1cee3720ffee2ee2399735c
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291534"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634421"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>仮想ネットワークに Azure Spring Cloud をデプロイする
 
-**この記事の適用対象:** âœ”ï¸ Java âœ”ï¸ C#
+**この記事の適用対象:** âœ”ï¸ Java âœ”ï¸ C#
 
 このチュートリアルでは、Azure Spring Cloud インスタンスを仮想ネットワークにデプロイする方法について説明します。 このデプロイは、VNet インジェクションとも呼ばれます。
 
@@ -88,7 +88,7 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 
     ![[アクセス制御] 画面を示すスクリーンショット。](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. [management-group | subscription | resource-group | resource] スコープで [azure-spring-cloud-data-reader](../role-based-access-control/built-in-roles.md#azure-spring-cloud-data-reader) ロールを [user | group | service-principal | managed-identity] に割り当てます。
+1. [管理グループ | サブスクリプション | リソース グループ | リソース] スコープで [[所有者]](../role-based-access-control/built-in-roles.md#owner) ロールを [ユーザー | グループ | サービス プリンシパル | マネージド ID] に割り当てます。
 
     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 

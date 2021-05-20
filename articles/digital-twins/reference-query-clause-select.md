@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 58e37cb1cffadf841e6d9450f1ce908cf6f22c69
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1118e44e822068566579fdc516479afeda294cf6
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296491"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789499"
 ---
 # <a name="azure-digital-twins-query-language-reference-select-clause"></a>Azure Digital Twins クエリ言語リファレンス: SELECT 句
 
@@ -70,11 +70,11 @@ SELECT 句は、クエリの最初の部分です。 これにより、クエリ
 #### <a name="example-scenario"></a>シナリオ例
 
 次の例では、次のデータ要素を含むツイン グラフについて考えてみましょう。
-* `FactoryA` と呼ばれるファクトリ ツイン
+* FactoryA と呼ばれるファクトリ ツイン
     - `FactoryA` の値を持つ `name` というプロパティが含まれています
-* `Contoso` と呼ばれるコンシューマー ツイン
+* Contoso と呼ばれるコンシューマー ツイン
     - `Contoso` の値を持つ `name` というプロパティが含まれています
-* `FactoryA-consumerRelationship-Contoso` と呼ばれる `FactoryA` から `Contoso` への consumerRelationship リレーションシップ
+* `FactoryA-consumerRelationship-Contoso` と呼ばれる、FactoryA から Contoso への consumerRelationship リレーションシップ
     - `Jeff` の値を持つ `managedBy` というプロパティが含まれています
 
 次の図にこのシナリオを示します。

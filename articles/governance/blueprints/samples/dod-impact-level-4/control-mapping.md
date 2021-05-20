@@ -3,16 +3,17 @@ title: DoD 影響レベル 4 ブループリント サンプルのコントロ�
 description: DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 5e022f4cea10be628d7d58c85ac10eb960d8ffa0
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 401c0be0f30ade1dd35c8597dcb60f15e1a86b23
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386977"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757603"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング
 
-次の記事では、Azure Blueprints 国防総省影響レベル 4 (DoD IL4) のブループリント サンプルが、DoD 影響レベル 4 のコントロールにどのようにマップされるかについて詳しく説明します。 コントロールの詳細については、「[DoD クラウド コンピューティング セキュリティ要件ガイド (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)」を参照してください。 国防情報システム局 (DISA) は、DoD クラウド コンピューティング セキュリティ要件ガイド (SRG) の開発と保守を担当する米国国防総省 (DoD) の機関です。 SRG は、DoD 情報、システム、およびアプリケーションをホストするクラウド サービス プロバイダー (CSP) と、DoD によるクラウド サービスの使用に関する基本的なセキュリティ要件を定義します。  
+次の記事では、Azure Blueprints 国防総省影響レベル 4 (DoD IL4) のブループリント サンプルが、DoD 影響レベル 4 のコントロールにどのようにマップされるかについて詳しく説明します。 コントロールの詳細については、「[DoD クラウド コンピューティング セキュリティ要件ガイド (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)」を参照してください。
+国防情報システム局 (DISA) は、DoD クラウド コンピューティング セキュリティ要件ガイド (SRG) の開発と保守を担当する米国国防総省 (DoD) の機関です。 SRG は、DoD 情報、システム、およびアプリケーションをホストするクラウド サービス プロバイダー (CSP) と、DoD によるクラウド サービスの使用に関する基本的なセキュリティ要件を定義します。
 
 以下のマッピングは、**DoD 影響レベル 4** のコントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:DoD Impact Level 4]** 組み込みのポリシー イニシアチブ。
 
@@ -131,7 +132,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 監査の確認、分析、および報告 | 統合/スキャンおよび監視機能
 
-このブループリントは、仮想マシン、仮想マシン スケール セット、SQL Database サーバー、SQL Managed Instance サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も活用することをお勧めします。
+このブループリントは、仮想マシン、仮想マシン スケール セット、SQL Database サーバー、SQL Managed Instance サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も使用することをお勧めします。
 
 - \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
 - 脆弱性評価を SQL サーバー上で有効にする必要がある
@@ -162,7 +163,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
-- SQL Server での監査のデプロイ
+- SQL サーバーでの監査のデプロイ
 - ネットワーク セキュリティ グループの診断設定のデプロイ
 
 ## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>AU-12 (01) 監査の生成 | システム全体/時間相関の監査証跡
@@ -196,7 +197,7 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 - ディザスター リカバリーが構成されていない仮想マシンの監査
 
-## <a name="cp-9-05--information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 情報システムのバックアップ | 代替ストレージ サイトへの転送
+## <a name="cp-9-05-information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 情報システムのバックアップ | 代替ストレージ サイトへの転送
 
 このブループリントは、代替ストレージ サイトに対する組織のシステム バックアップ情報を電子的に監査する Azure Policy 定義を割り当てます。 ストレージ メタデータの物理的な移送については、Azure Data Box の使用を検討してください。
 
@@ -259,7 +260,8 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 脆弱性のスキャン
 
-このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
+このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。
+Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
 
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
@@ -277,8 +279,7 @@ Azure の分散型サービス拒否 (DDoS) Standard レベルでは、Basic サ
 
 ## <a name="sc-7-boundary-protection"></a>SC-7 境界保護
 
-このブループリントは、Azure Security Center でネットワーク セキュリティ グループの強化された推奨事項を監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、システム境界の管理と統制を支援するものです。 Azure Security Center では、インターネットに接続している仮想マシンのトラフィック パターンが分析され、ネットワーク セキュリティ グループのルールに関連して攻撃を受ける危険性の抑制に役立つ推奨事項が提示されます。
-また、このブルー プリントでは、保護されていないエンドポイント、アプリケーション、ストレージ アカウントを監視するポリシー定義も割り当てられます。 ファイアウォールで保護されていないエンドポイントやアプリケーションがあったり、アクセス制限のないストレージ アカウントがあると、情報システム内の情報に対する意図しないアクセスが許可される恐れがあります。
+このブループリントは、Azure Security Center でネットワーク セキュリティ グループの強化された推奨事項を監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、システム境界の管理と統制を支援するものです。 Azure Security Center では、インターネットに接続している仮想マシンのトラフィック パターンが分析され、ネットワーク セキュリティ グループのルールに関連して攻撃を受ける危険性の抑制に役立つ推奨事項が提示されます。 また、このブルー プリントでは、保護されていないエンドポイント、アプリケーション、ストレージ アカウントを監視するポリシー定義も割り当てられます。 ファイアウォールで保護されていないエンドポイントやアプリケーションがあったり、アクセス制限のないストレージ アカウントがあると、情報システム内の情報に対する意図しないアクセスが許可される恐れがあります。
 
 - インターネットに接続している仮想マシン用のネットワーク セキュリティ グループ ルールは、強化する必要がある
 - インターネットに接続するエンドポイント経由のアクセスを制限する必要がある
@@ -337,15 +338,15 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 このブループリントでは、最新バージョンの HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
 
-- API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+- API アプリの実行に使用される "HTTP のバージョン" が最新であることを確認する
 - 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
-- API アプリの一部として使用された "Java のバージョン" が最新であることを確認する
+- API アプリの一部として使用される "Java のバージョン" が最新であることを確認する
 - 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する
-- API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
+- API アプリの一部として使用される "PHP のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
-- API アプリの一部として使用された "Python のバージョン" が最新であることを確認する
+- API アプリの一部として使用される "Python のバージョン" が最新であることを確認する
 - 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する
 - API アプリでは最新の TLS バージョンを使用する必要がある
@@ -383,7 +384,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
-- SQL Server での監査のデプロイ
+- SQL サーバーでの監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
 - SQL サーバーでの脅威検出のデプロイ
 - 許可される場所
@@ -394,9 +395,9 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントでは、データ セキュリティ通知が適切に有効になっていることの確認に役立つポリシー定義を提供します。 さらに、このブループリントによって、Standard 価格レベルが Azure Security Center に対して有効になります。 Standard 価格レベルでは、ネットワークと仮想マシンの脅威検出が可能になり、Azure Security Center で脅威インテリジェンス、異常検出、動作分析が提供されます。
 
 - サブスクリプション所有者に対する重要度 - 高のアラートのメール通知を有効にする必要がある
-- 自分のサブスクリプションに対し、セキュリティ連絡先のメール アドレスを指定する必要がある 
-- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある 
-- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある 
+- 自分のサブスクリプションに対し、セキュリティ連絡先のメール アドレスを指定する必要がある
+- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
 - 自分のサブスクリプションに対し、セキュリティ連絡先の電話番号を指定する必要がある
 - SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
 - Security Center の Standard 価格レベルを選択する必要がある
@@ -408,7 +409,7 @@ Advanced Threat Protection for Azure Storage では、ストレージ アカウ�
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
 
 > [!NOTE]
-> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 
+> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

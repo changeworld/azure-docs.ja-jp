@@ -12,16 +12,14 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c365f367a090f1697b71c51f24679b9ea09561d0
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 54bee74fcab02a487b9e950d0ea8f8a45a38601a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490014"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760907"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
-
-"*この記事は、オペレーターとデバイス開発者を対象としています。* "
 
 この記事では、Azure IoT Central アプリケーションにデバイスを接続する方法について説明します。 デバイスが IoT Central とデータを交換できるようにするには、デバイスで次を行う必要があります。
 
@@ -215,6 +213,15 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
     オペレーターは、 **[デバイス]** ページから **[移行]** ボタンを使用して、デバイス テンプレートにデバイスを関連付けることができます。
 
+## <a name="device-connection-status"></a>デバイス接続の状態
+MQTT プロトコルを使用してデバイスやエッジ デバイスを接続すると、デバイスの "_接続済み_" および "_切断済み_" のイベントが表示されます。 これらのイベントは、デバイスの送信によって送信されるわけではなく、IoT Central で内部的に生成されます。
+
+次の図は、デバイスを接続したときに、接続がどのように時間枠の最後に登録されるかを示しています。 複数の接続および切断のイベントが発生した場合は、IoT Central によって時間枠の終わりに最も近いイベントが登録されます。 たとえば、デバイスが時間枠内で切断および再接続されると、IoT Central によって接続イベントが登録されます。 現在、この時間枠は約 1 分です。
+
+:::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="接続および切断されたイベントのイベント ウィンドウを示す図。" border="false":::
+
+接続および切断のイベントは、[IoT Central からのエクスポート](howto-export-data.md#set-up-data-export)に含めることができます。 詳細については、[IoT Hub のイベントへの対応に関する記事の、「デバイス接続イベントおよびデバイス切断イベントの制限事項」](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events)を参照してください。
+
 ## <a name="sdk-support"></a>SDK のサポート
 
 Azure Device SDK では、デバイス コードを最も簡単に実装する方法が提供されます。 次のデバイス SDK が使用できます。
@@ -241,7 +248,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | オフライン コマンド | クラウドからデバイスへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| command | ダイレクト メソッド |
+| コマンド | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 
@@ -261,7 +268,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次のステップは次のとおりです。
+推奨される次のステップは以下のとおりです。
 
 - デバイス開発の[ベスト プラクティス](concepts-best-practices.md)を確認します。
 - 「[チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」で、SAS トークンの使い方を示すサンプル コードを確認する

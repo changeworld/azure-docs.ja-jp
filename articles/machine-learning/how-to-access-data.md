@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: sihhu
-author: MayMSFT
+ms.author: yogipandey
+author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 35a60291017668755f3b98e63d6a15bda59f2b8e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f0fb8ee681bfb3056547eed712d0197100b8ec08
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143649"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785243"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Azure のストレージ サービスに接続する
 
@@ -150,7 +150,8 @@ Azure Storage ソリューションをデータストアとして登録すると
 
 コードの少ないエクスペリエンスの方がよい場合は、[Azure Machine Learning Studio でのデータへの接続](how-to-connect-data-ui.md)に関する記事を参照してください。
 >[!IMPORTANT]
-> データストアの登録を解除し、同じ名前を使用して再登録しようとして失敗した場合は、ワークスペースの Azure Key Vault で、論理的な削除が有効になっていない可能性があります。 既定では、ワークスペースによって作成されたキー コンテナー インスタンスでは論理的な削除が有効になっていますが、既存のキー コンテナーを使用した場合、または 2020 年 10 月より前にワークスペースを作成した場合は、論理的な削除が有効になっていないことがあります。 論理的な削除を有効にする方法の詳細については、「[既存のキー コンテナーの論理的な削除を有効にする]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
+> データストアの登録を解除し、同じ名前を使用して再登録しようとして失敗した場合は、ワークスペースの Azure Key Vault で、論理的な削除が有効になっていない可能性があります。 既定では、ワークスペースによって作成されたキー コンテナー インスタンスでは論理的な削除が有効になっていますが、既存のキー コンテナーを使用した場合、または 2020 年 10 月より前にワークスペースを作成した場合は、論理的な削除が有効になっていないことがあります。 論理的な削除を有効にする方法の詳細については、「[既存のキー コンテナーの論理的な削除を有効にする](../key-vault/general/soft-delete-change.md#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
+
 
 > [!NOTE]
 > データストア名は、小文字、数字、およびアンダースコアのみで構成する必要があります。 

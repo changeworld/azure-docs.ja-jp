@@ -8,18 +8,18 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 52adba94650c09f731cfb6142852b28a0e3f3906
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 67d09eb3420143c362914a7903b181a419d7a388
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288647"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786881"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
-この記事では、クエリの例と、**Azure Digital Twins クエリ言語** を使用して[ツイン グラフ](concepts-twins-graph.md)で情報をクエリする手順について説明します。 (クエリ言語の概要については、[クエリ言語の概念](concepts-query-language.md)に関する記事を参照してください。)
+この記事では、クエリの例と、**Azure Digital Twins クエリ言語** を使用して [ツイン グラフ](concepts-twins-graph.md)で情報をクエリする手順について説明します。 (クエリ言語の概要については、[クエリ言語の概念](concepts-query-language.md)に関する記事を参照してください。)
 
-デジタル ツインのクエリ言語の構造および共通のクエリ操作を示すサンプル クエリについて説明します。 また、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) または [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用して、クエリを作成した後にそれらを実行する方法について説明します。
+デジタル ツインのクエリ言語の構造および共通のクエリ操作を示すサンプル クエリについて説明します。 また、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) または [SDK](concepts-apis-sdks.md#overview-data-plane-apis) を使用して、クエリを作成した後にそれらを実行する方法について説明します。
 
 > [!NOTE]
 > 次のサンプル クエリを、API または SDK の呼び出しで実行している場合は、クエリ テキストを 1 行にまとめる必要があります。
@@ -116,11 +116,11 @@ Azure Digital Twins の[モデル](concepts-models.md)機能では、ツイン�
 
 リレーションシップのクエリ構造を使用すると、リレーションシップのソースまたはターゲットであるデジタル ツインを特定できます。
 
-たとえば、ソース ツインから開始し、そのリレーションシップに従ってリレーションシップのターゲット ツインを見つけることができます。 次に、ツイン *source-twin* からの *feeds* リレーションシップのターゲット ツインを見つけるクエリの例を示します。
+たとえば、ソース ツインから開始し、そのリレーションシップに従ってリレーションシップのターゲット ツインを見つけることができます。 次に、ツイン source-twin からの *feeds* リレーションシップのターゲット ツインを見つけるクエリの例を示します。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipSource":::
 
-また、リレーションシップのターゲットから開始し、リレーションシップをトレースしてソース ツインを見つけることもできます。 次に、ツイン *target-twin* からの *feeds* リレーションシップのソース ツインを見つけるクエリの例を示します。
+また、リレーションシップのターゲットから開始し、リレーションシップをトレースしてソース ツインを見つけることもできます。 次に、ツイン target-twin への *feeds* リレーションシップのソース ツインを見つけるクエリの例を示します。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipTarget":::
 
@@ -172,15 +172,15 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 >[!NOTE]
 >現時点では、複合プロパティはサポートされていません。 プロジェクションのプロパティが有効であることを確認するには、`IS_PRIMITIVE` チェックでプロジェクションを結合します。
 
-プロジェクションを使用してツインとリレーションシップを返すクエリの例を次に示します。 次のクエリでは、ID が "*ABC*" の "*Factory*" が "*Factory.customer*" のリレーションシップを介して "*Consumer*" と関連付けられており、そのリレーションシップが "*Edge*" としてプロジェクションされるシナリオから、"*Consumer*"、"*Factory*"、"*Edge*" がプロジェクションされています。
+プロジェクションを使用してツインとリレーションシップを返すクエリの例を次に示します。 次のクエリでは、ID が "*ABC*" の "Factory" が "*Factory.customer*" のリレーションシップを介して "Consumer" と関連付けられており、そのリレーションシップが "*Edge*" として表されるシナリオから、"Consumer"、"Factory"、"Edge" がプロジェクションされています。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections1":::
 
-また、プロジェクションを使用してツインのプロパティを返すこともできます。 以下のクエリでは、"*Factory.customer*" のリレーションシップを介して、ID が "*ABC*" の "*Factory*" に関連付けられている "*Consumers*" の "*Name*" プロパティがプロジェクションされています。
+また、プロジェクションを使用してツインのプロパティを返すこともできます。 以下のクエリでは、"Factory.customer" のリレーションシップを介して、ID が "ABC" の "*Factory*" に関連付けられている "*Consumers*" の "*Name*" プロパティがプロジェクションされています。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections2":::
 
-また、プロジェクションを使用してリレーションシップのプロパティを返すこともできます。 前述の例と同様に、以下のクエリでは、"*Factory.customer*" のリレーションシップを介して、ID が "*ABC*" の "*Factory*" に関連付けられている "*Consumers*" の "*Name*" プロパティがプロジェクションされていますが、今回は、そのリレーションシップの 2 つのプロパティである *prop1* および *prop2* も返されます。 これは、リレーションシップに "*Edge*" という名前を付け、そのプロパティを収集することで行います。  
+また、プロジェクションを使用してリレーションシップのプロパティを返すこともできます。 前述の例と同様に、以下のクエリでは、"Factory.customer" のリレーションシップを介して、ID が "ABC" の "*Factory*" に関連付けられている "*Consumers*" の "*Name*" プロパティがプロジェクションされていますが、今回は、そのリレーションシップの 2 つのプロパティである *prop1* および *prop2* も返されます。 これは、リレーションシップに "*Edge*" という名前を付け、そのプロパティを収集することで行います。  
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections3":::
 
@@ -190,7 +190,7 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections4":::
 
-これは、上記と同じセットに対してクエリを実行する類似のクエリですが、"*Consumer.name*" プロパティのみが `consumerName` としてプロジェクションされ、完全な "*Factory*" はツインとしてプロジェクションされます。
+これは、上記と同じセットに対してクエリを実行する類似のクエリですが、"*Consumer.name*" プロパティのみが `consumerName` としてプロジェクションされ、完全な "Factory" はツインとしてプロジェクションされます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections5":::
 
@@ -198,13 +198,13 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 必要なクエリ数を大幅に減らすには、ツインの配列を構築し、`IN` 演算子を使用してクエリを実行します。 
 
-たとえば、"*Buildings*"(建物) に "*Floors*" (フロア) が含まれ、"*Floors*" に "*Rooms*" (部屋) が含まれるシナリオを考えてみます。 建物内の暑い部屋を見つけるには、1 つの方法として、次の手順に従います。
+たとえば、"Buildings"(建物) に "Floors" (フロア) が含まれ、"Floors" に "Rooms" (部屋) が含まれるシナリオを考えてみます。 建物内の暑い部屋を見つけるには、1 つの方法として、次の手順に従います。
 
 1. `contains` のリレーションシップに基づいて、建物内のフロアを見つけます。
 
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="INOperatorWithout":::
 
-2. 部屋を見つけるには、フロアを 1 つずつ検討し、`JOIN` クエリを実行してそれぞれの部屋を見つけるのではなく、建物内のフロアのコレクション (以下のクエリでは *Floor* という名前) を使用してクエリを実行することができます。
+2. 部屋を見つけるには、フロアを 1 つずつ検討し、`JOIN` クエリを実行してそれぞれの部屋を見つけるのではなく、建物内のフロアのコレクション (以下のクエリでは Floor という名前) を使用してクエリを実行することができます。
 
     クライアント アプリ:
     
@@ -220,18 +220,18 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 結合演算子を使用して上記のクエリ タイプを **組み合わせ**、1 つのクエリに含める詳細を増やすことができます。 次に、複数のツイン記述子タイプに対して一度にクエリを実行する複合クエリの追加例をいくつか挙げます。
 
-* *Room 123* に与えられているデバイスの中から、Operator の役割を担う MxChip デバイスが返されます
+* Room 123 に与えられているデバイスの中から、Operator の役割を担う MxChip デバイスが返されます
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples1":::
 * ID が *id1* の別のツインとの間に *Contains* という名前のリレーションシップがあるツインを取得します
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples2":::
-* *floor11* によって包含されるこの部屋モデルのすべての部屋を取得します
+* floor11 によって包含されるこの部屋モデルのすべての部屋を取得します
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples3":::
 
 ## <a name="run-queries-with-the-api"></a>API を使用してクエリを実行する
 
 クエリ文字列を決定したら、[Query API](/rest/api/digital-twins/dataplane/query) を呼び出して実行します。
 
-API を直接呼び出すか、Azure Digital Twins で使用可能な [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) のいずれかを使用することができます。
+API を直接呼び出すか、Azure Digital Twins で使用可能な [SDK](concepts-apis-sdks.md#overview-data-plane-apis) のいずれかを使用することができます。
 
 次のコード スニペットは、クライアント アプリからの [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 呼び出しを示しています。
 
@@ -250,4 +250,4 @@ API を直接呼び出すか、Azure Digital Twins で使用可能な [SDK](how-
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事のクエリの実行に使用される Query API を含め、詳細については、[Azure Digital Twins API と SDK](how-to-use-apis-sdks.md) に関する記事を参照してください。
+この記事のクエリの実行に使用される Query API を含め、詳細については、[Azure Digital Twins API と SDK](concepts-apis-sdks.md) に関する記事を参照してください。

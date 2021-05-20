@@ -5,12 +5,12 @@ description: Windows Server ノード プールとアプリケーション ワ�
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9b2072ddcb688cd320700d47bb5f5f3670e6543
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739578"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790075"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS の Windows Server ノード プールに関してよく寄せられる質問
 
@@ -82,6 +82,24 @@ AKS クラスター上の Windows ノードでは、Calico が有効になって
 Windows ノード プールは、サービス プリンシパルのローテーションをサポートしていません。 サービス プリンシパルを更新するには、新しい Windows ノード プールを作成し、ポッドを古いプールから新しいものに移行します。 この処理が完了したら、古いノード プールを削除します。
 
 代わりに、マネージド ID を使用します。これは基本的に、サービス プリンシパルをラップするラッパーです。 詳細については、「[Azure Kubernetes Service でマネージド ID を使用する][managed-identity]」を参照してください。
+
+## <a name="how-do-i-change-the-administrator-password-for-windows-server-nodes-on-my-cluster"></a>クラスター上の Windows Server ノードの管理者パスワードはどのように変更しますか?
+
+AKS クラスターを作成するとき、`--windows-admin-password` と `--windows-admin-username` の各パラメーターを指定して、クラスター上の Windows Server ノードの管理者資格情報を設定します。 Azure portal を使用してクラスターを作成するときや、Azure CLI を使用して `--vm-set-type VirtualMachineScaleSets` と `--network-plugin azure` を設定するときなどに、管理者の資格情報を指定しなかった場合、ユーザー名は既定の *azureuser* になり、パスワードはランダムに生成されます。
+
+管理者パスワードを変更するには、`az aks update` コマンドを使用します。
+
+```azurecli
+az aks update \
+    --resource-group $RESOURCE_GROUP \
+    --name $CLUSTER_NAME \
+    --windows-admin-password $NEW_PW
+```
+
+> [!IMPORTANT]
+> この操作を実行すると、すべての Windows Server ノード プールがアップグレードされます。 Linux ノード プールは影響を受けません。
+> 
+> `--windows-admin-password` を変更する場合、新しいパスワードは 14 文字以上かつ [Windows Server のパスワード要件][windows-server-password]を満たしている必要があります。
 
 ## <a name="how-many-node-pools-can-i-create"></a>ノード プールはいくつ作成できますか?
 
@@ -200,3 +218,4 @@ AKS で Windows Server コンテナーの使用を開始するには、[AKS で 
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
 [dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 45269c964c2114c31ca6bfeeb6a48cb0c1329937
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 0b45c23bc7d8679ce1fa2135efc2a99fc443e57d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203543"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788892"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Digital Twins グラフを作成する
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-このチュートリアルでは、モデル、ツイン、およびリレーションシップを使用して、Azure Digital Twins でグラフを作成します。 このチュートリアルのツールは、[Azure CLI 用の Azure Digital Twins コマンド セット](how-to-use-cli.md)です。 
+このチュートリアルでは、モデル、ツイン、およびリレーションシップを使用して、Azure Digital Twins でグラフを作成します。 このチュートリアルのツールは、[Azure CLI 用の Azure Digital Twins コマンド セット](concepts-cli.md)です。 
 
 CLI コマンドを使用して、モデルのアップロード、ツインの作成と変更、リレーションシップの作成など、基本的な Azure Digital Twins の操作を実行できます。 また、[az dt コマンド セットのリファレンス ドキュメント](/cli/azure/dt)を参照して、CLI コマンドの完全なセットを確認することもできます。
 
@@ -33,7 +33,7 @@ CLI コマンドを使用して、モデルのアップロード、ツインの�
 
 このチュートリアルの手順を実行するには、まず次の前提条件を満たしておく必要があります。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に **[無料のアカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成** してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ### <a name="download-the-sample-models"></a>サンプル モデルをダウンロードする
 
@@ -61,7 +61,7 @@ Azure Digital Twins インスタンスを設定したら、後でインスタン
 インスタンスのこれらの両方の値は、次の Azure CLI コマンドの出力から取得できます。 
 
 ```azurecli-interactive
-az dt show -n <ADT_instance_name>
+az dt show --dt-name <ADT_instance_name>
 ```
 
 :::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="az dt show コマンドの出力を示す Cloud Shell ブラウザー ウィンドウのスクリーンショット。hostName フィールドとサブスクリプション ID (id フィールドの一部) が強調表示されています。":::
@@ -91,11 +91,11 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
     
     マシン上の *Room.json* ファイルに移動し、[開く] を選択します。 その後、*Floor.json* についてもこの手順を繰り返します。
 
-1. 次に、下に示す [az dt model create](/cli/azure/dt/model#az_dt_model_create) コマンドを使用して、更新した *Room* モデルを Azure Digital Twins インスタンスにアップロードします。 2 番目のコマンドでは、別のモデルである *Floor* をアップロードします。これは、さまざまな種類のツインを作成するために次のセクションでも使用します。
+1. 次に、下に示す [az dt model create](/cli/azure/dt/model#az_dt_model_create) コマンドを使用して、更新した Room モデルを Azure Digital Twins インスタンスにアップロードします。 2 番目のコマンドでは、別のモデルである Floor をアップロードします。これは、さまざまな種類のツインを作成するために次のセクションでも使用します。
 
     ```azurecli-interactive
-    az dt model create -n <ADT_instance_name> --models Room.json
-    az dt model create -n <ADT_instance_name> --models Floor.json
+    az dt model create --dt-name <ADT_instance_name> --models Room.json
+    az dt model create --dt-name <ADT_instance_name> --models Floor.json
     ```
     
     各コマンドの出力には、正常にアップロードされたモデルに関する情報が表示されます。
@@ -106,10 +106,10 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
 1. 下に示すように、[az dt model list](/cli/azure/dt/model#az_dt_model_list) コマンドを使用して、モデルが作成されたことを確認します。 これにより、Azure Digital Twins インスタンスにアップロードされたすべてのモデルの一覧が、その完全な情報と共に出力されます。 
 
     ```azurecli-interactive
-    az dt model list -n <ADT_instance_name> --definition
+    az dt model list --dt-name <ADT_instance_name> --definition
     ```
     
-    この結果から、編集済みの *Room* モデルを探してみましょう。
+    この結果から、編集済みの Room モデルを探してみましょう。
     
     :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="model list コマンドの結果 (更新した Room モデルを含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-get-models.png":::
 
@@ -120,7 +120,7 @@ CLI では、サービスからのエラーも処理されます。
 `az dt model create` コマンドを再実行して、もう一度、先ほどアップロードしたものと同じモデルをどれか再アップロードしてみてください。
 
 ```azurecli-interactive
-az dt model create -n <ADT_instance_name> --models Room.json
+az dt model create --dt-name <ADT_instance_name> --models Room.json
 ```
 
 モデルは上書きできないので、これにより `ModelIdAlreadyExists` のエラー コードが返されます。
@@ -131,21 +131,21 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 
 デジタル ツインを作成するには、[az dt twin create](/cli/azure/dt/twin#az_dt_twin_create) コマンドを使用します。 ツインのベースとなるモデルを参照する必要があります。モデルのプロパティには、必要に応じて初期値を定義することができます。 この段階では、リレーションシップ情報を渡す必要はありません。
 
-1. Cloud Shell でこのコードを実行して、先ほど更新した *Room* モデルと、もう 1 つのモデル (*Floor*) に基づいて、いくつかのツインを作成します。 *Room* には 3 つのプロパティがあったことを思い出してください。それらの初期値を引数で指定することができます。 (プロパティ値の初期化は一般に省略可能ですが、このチュートリアルでは必要です。)
+1. Cloud Shell でこのコードを実行して、先ほど更新した Room モデルと、もう 1 つのモデル (Floor) に基づいて、いくつかのツインを作成します。 Room には 3 つのプロパティがあったことを思い出してください。それらの初期値を引数で指定することができます。 (プロパティ値の初期化は一般に省略可能ですが、このチュートリアルでは必要です。)
 
     ```azurecli-interactive
-    az dt twin create -n <ADT_instance_name> --dtmi "dtmi:example:Room;2" --twin-id room0 --properties '{"RoomName":"Room0", "Temperature":70, "HumidityLevel":30}'
-    az dt twin create -n <ADT_instance_name> --dtmi "dtmi:example:Room;2" --twin-id room1 --properties '{"RoomName":"Room1", "Temperature":"80", "HumidityLevel":"60"}'
-    az dt twin create -n <ADT_instance_name> --dtmi "dtmi:example:Floor;1" --twin-id floor0
-    az dt twin create -n <ADT_instance_name> --dtmi "dtmi:example:Floor;1" --twin-id floor1
+    az dt twin create --dt-name <ADT_instance_name> --dtmi "dtmi:example:Room;2" --twin-id room0 --properties '{"RoomName":"Room0", "Temperature":70, "HumidityLevel":30}'
+    az dt twin create --dt-name <ADT_instance_name> --dtmi "dtmi:example:Room;2" --twin-id room1 --properties '{"RoomName":"Room1", "Temperature":"80", "HumidityLevel":"60"}'
+    az dt twin create --dt-name <ADT_instance_name> --dtmi "dtmi:example:Floor;1" --twin-id floor0
+    az dt twin create --dt-name <ADT_instance_name> --dtmi "dtmi:example:Floor;1" --twin-id floor1
     ```
 
     >[!NOTE]
     > PowerShell 環境で Cloud Shell を使用している場合は、`--properties` JSON 値が正しく解析されるように、引用符文字のエスケープが必要になる場合があります。 この編集を行うと、部屋のツインを作成するコマンドは次のようになります。
     >
     > ```azurecli-interactive
-    > az dt twin create -n <ADT_instance_name> --dtmi "dtmi:example:Room;2" --twin-id room0 --properties '{\"RoomName\":\"Room0\", \"Temperature\":70, \"HumidityLevel\":30}'
-    > az dt twin create -n <ADT_instance_name> --dtmi "dtmi:example:Room;2" --twin-id room1 --properties '{\"RoomName\":\"Room1\", \"Temperature\":80, \"HumidityLevel\":60}'
+    > az dt twin create --dt-name <ADT_instance_name> --dtmi "dtmi:example:Room;2" --twin-id room0 --properties '{\"RoomName\":\"Room0\", \"Temperature\":70, \"HumidityLevel\":30}'
+    > az dt twin create --dt-name <ADT_instance_name> --dtmi "dtmi:example:Room;2" --twin-id room1 --properties '{\"RoomName\":\"Room1\", \"Temperature\":80, \"HumidityLevel\":60}'
     > ```
     > これは、下のスクリーンショットに反映されています。
     
@@ -154,10 +154,10 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 1. 下に示すように、[az dt twin query](/cli/azure/dt/twin#az_dt_twin_query) コマンドを使用してツインが作成されたことを確認できます。 示されたクエリにより、Azure Digital Twins インスタンス内のすべてのデジタル ツインが検索されます。
     
     ```azurecli-interactive
-    az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
+    az dt twin query --dt-name <ADT_instance_name> --query-command "SELECT * FROM DIGITALTWINS"
     ```
     
-    その結果から、*room0*、*room1*、*floor0*、*floor1* のツインを探します。 このクエリの結果の一部を示す抜粋を次に示します。
+    その結果から、room0、room1、floor0、floor1 のツインを探します。 このクエリの結果の一部を示す抜粋を次に示します。
     
     :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="ツイン クエリの部分的な結果 (room0 と room1 を含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
@@ -168,14 +168,14 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 1. こちらの [az dt twin update](/cli/azure/dt/twin#az_dt_twin_update) コマンドを実行して、*room0* の RoomName を *Room0* から *PresidentialSuite* に変更します。
 
     ```azurecli-interactive
-    az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
+    az dt twin update --dt-name <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
     ```
     
     >[!NOTE]
     > PowerShell 環境で Cloud Shell を使用している場合は、`--json-patch` JSON 値が正しく解析されるように、引用符文字のエスケープが必要になる場合があります。 この編集を行うと、ツインを更新するコマンドは次のようになります。
     >
     > ```azurecli-interactive
-    > az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{\"op\":\"add\", \"path\":\"/RoomName\", \"value\": \"PresidentialSuite\"}'
+    > az dt twin update --dt-name <ADT_instance_name> --twin-id room0 --json-patch '{\"op\":\"add\", \"path\":\"/RoomName\", \"value\": \"PresidentialSuite\"}'
     > ```
     > これは、下のスクリーンショットに反映されています。
     
@@ -183,10 +183,10 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="update コマンドの結果 (PresidentialSuite の RoomName を含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. [az dt twin show](/cli/azure/dt/twin#az_dt_twin_show) コマンドを実行して *room0* の情報を表示すると、更新が成功したことを確認できます。
+1. [az dt twin show](/cli/azure/dt/twin#az_dt_twin_show) コマンドを実行して room0 の情報を表示すると、更新が成功したことを確認できます。
 
     ```azurecli-interactive
-    az dt twin show -n <ADT_instance_name> --twin-id room0
+    az dt twin show --dt-name <ADT_instance_name> --twin-id room0
     ```
     
     更新後の名前が出力結果に反映されているはずです。
@@ -195,15 +195,15 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 
 次に、ツイン間にいくつかの **リレーションシップ** を作成することで、それらのツインを接続し、[ツイン グラフ](concepts-twins-graph.md)を形成することができます。 ツイン グラフは、環境全体を表すために使用されます。 
 
-あるツインから別のものへと作成できるリレーションシップの種類は、前にアップロードした[モデル](#model-a-physical-environment-with-dtdl)内に定義されています。 [Floor のモデル定義](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)では、フロアに *contains* という種類のリレーションシップを設定できることが指定されています。 これにより、各 *Floor* ツインから、それに含まれる対応する部屋への *contains* の種類のリレーションシップを作成できるようになります。
+あるツインから別のものへと作成できるリレーションシップの種類は、前にアップロードした[モデル](#model-a-physical-environment-with-dtdl)内に定義されています。 [Floor のモデル定義](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)では、フロアに *contains* という種類のリレーションシップを設定できることが指定されています。 これにより、各 Floor ツインから、それに含まれる対応する部屋への *contains* の種類のリレーションシップを作成できるようになります。
 
 リレーションシップを追加するには、[az dt twin relationship create](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create) コマンドを使用します。 リレーションシップの接続元となるツインと、リレーションシップの種類、リレーションシップの接続先のツインを指定します。 最後に、リレーションシップに一意の ID を指定します。 プロパティを持つようにリレーションシップが定義されていた場合は、このコマンドでリレーションシップのプロパティを初期化することもできます。
 
-1. 次のコードを実行すると、先ほど作成した各 *Floor* ツインから対応する *Room* ツインへの *contains* の種類のリレーションシップが追加されます。 リレーションシップには、*relationship0* と *relationship1* という名前が付けられます。
+1. 次のコードを実行すると、先ほど作成した各 Floor ツインから対応する Room ツインへの *contains* の種類のリレーションシップが追加されます。 リレーションシップには、relationship0 と relationship1 という名前が付けられます。
 
     ```azurecli-interactive
-    az dt twin relationship create -n <ADT_instance_name> --relationship-id relationship0 --relationship contains --twin-id floor0 --target room0
-    az dt twin relationship create -n <ADT_instance_name> --relationship-id relationship1 --relationship contains --twin-id floor1 --target room1
+    az dt twin relationship create --dt-name <ADT_instance_name> --relationship-id relationship0 --relationship contains --twin-id floor0 --target room0
+    az dt twin relationship create --dt-name <ADT_instance_name> --relationship-id relationship1 --relationship contains --twin-id floor1 --target room1
     ```
     
     >[!TIP]
@@ -220,18 +220,18 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 1. 次のいずれかのコマンドを使用し、Azure Digital Twins インスタンスでリレーションシップのクエリを実行することで、リレーションシップを確認できます。
     * 各フロアを接続元とするすべてのリレーションシップを確認するには (一方の側からリレーションシップを表示):
         ```azurecli-interactive
-        az dt twin relationship list -n <ADT_instance_name> --twin-id floor0
-        az dt twin relationship list -n <ADT_instance_name> --twin-id floor1
+        az dt twin relationship list --dt-name <ADT_instance_name> --twin-id floor0
+        az dt twin relationship list --dt-name <ADT_instance_name> --twin-id floor1
         ```
     * 各部屋を接続先とするすべてのリレーションシップを表示するには ("もう一方の" 側からリレーションシップを表示):
         ```azurecli-interactive
-        az dt twin relationship list -n <ADT_instance_name> --twin-id room0 --incoming
-        az dt twin relationship list -n <ADT_instance_name> --twin-id room1 --incoming
+        az dt twin relationship list --dt-name <ADT_instance_name> --twin-id room0 --incoming
+        az dt twin relationship list --dt-name <ADT_instance_name> --twin-id room1 --incoming
         ```
     * これらのリレーションシップを ID で個別に検索するには:
         ```azurecli-interactive
-        az dt twin relationship show -n <ADT_instance_name> --twin-id floor0 --relationship-id relationship0
-        az dt twin relationship show -n <ADT_instance_name> --twin-id floor1 --relationship-id relationship1
+        az dt twin relationship show --dt-name <ADT_instance_name> --twin-id floor0 --relationship-id relationship0
+        az dt twin relationship show --dt-name <ADT_instance_name> --twin-id floor1 --relationship-id relationship1
         ```
 
 このチュートリアルで設定したツインとリレーションシップによって、次の概念グラフが形成されます。
@@ -247,7 +247,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 1. **Azure Digital Twins で表されている自分の環境内のすべてのエンティティを知りたい** (すべて照会)
 
     ```azurecli-interactive
-    az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
+    az dt twin query --dt-name <ADT_instance_name> --query-command "SELECT * FROM DIGITALTWINS"
     ```
 
     これで環境の概要を調べ、必要な事柄がすべて Azure Digital Twins 内で表現されていることを確認できます。 このコマンドを実行すると、個々のデジタル ツインとその詳細を含んだ出力が返されます。 その抜粋を次に示します。
@@ -260,45 +260,45 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 1. **環境内に存在する部屋をすべて知りたい** (モデルで照会)
 
     ```azurecli-interactive
-    az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS T WHERE IS_OF_MODEL(T, 'dtmi:example:Room;2')"
+    az dt twin query --dt-name <ADT_instance_name> --query-command "SELECT * FROM DIGITALTWINS T WHERE IS_OF_MODEL(T, 'dtmi:example:Room;2')"
     ```
 
-    クエリを特定のタイプのツインに制限することで、表現されている内容についての、より具体的な情報を取得することができます。 このコマンドを実行すると、*room0* と *room1* は表示されますが、*floor0* と *floor1* は (room ではなく floor であるため) **表示されません**。
+    クエリを特定のタイプのツインに制限することで、表現されている内容についての、より具体的な情報を取得することができます。 このコマンドを実行すると、room0 と room1 は表示されますが、floor0 と floor1 は (room ではなく floor であるため) 表示 **されません**。
     
     :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="モデル クエリの結果 (room0 と room1 のみを含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-query-model.png":::
 
-1. ***floor0* に存在するすべての部屋を知りたい** (リレーションシップで照会)
+1. **floor0 に存在するすべての部屋を知りたい** (リレーションシップで照会)
 
     ```azurecli-interactive
-    az dt twin query -n <ADT_instance_name> -q "SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.`$dtId = 'floor0'"
+    az dt twin query --dt-name <ADT_instance_name> --query-command "SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.`$dtId = 'floor0'"
     ```
 
-    グラフ内のリレーションシップに基づいてクエリを実行すると、ツインの関係性についての情報を入手したり、クエリを特定のエリアに制限したりすることができます。 *floor0* に存在するのは *room0* のみです。したがって、結果に含まれる部屋は room0 のみとなります。
+    グラフ内のリレーションシップに基づいてクエリを実行すると、ツインの関係性についての情報を入手したり、クエリを特定のエリアに制限したりすることができます。 floor0 に存在するのは room0 のみです。したがって、結果に含まれる部屋は room0 のみとなります。
 
     :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="リレーションシップ クエリの結果 (room0 を含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
 
     > [!NOTE]
-    > ツインの ID (上記のクエリの *floor0* など) には、メタデータ フィールド `$dtId` を使用してクエリが実行されることに注意してください。 
+    > ツインの ID (上記のクエリの floor0 など) には、メタデータ フィールド `$dtId` を使用してクエリが実行されることに注意してください。 
     >
     >Cloud Shell を使用して、このような `$` で始まるメタデータ フィールドでクエリを実行する場合は、バッククォートで `$` をエスケープして、それが変数ではなく、クエリ テキスト内のリテラルとして使用する必要があることを CloudShell に認識させる必要があります。 これは、上のスクリーンショットに反映されています。
 
 1. **自分の環境に存在するツインのうち、温度が 75 度を超えるツインをすべて知りたい** (プロパティで照会)
 
     ```azurecli-interactive
-    az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DigitalTwins T WHERE T.Temperature > 75"
+    az dt twin query --dt-name <ADT_instance_name> --query-command "SELECT * FROM DigitalTwins T WHERE T.Temperature > 75"
     ```
 
-    プロパティに基づいてグラフを照会することにより、さまざまな質問への答えを得ることができます。たとえば、環境内で注意すべき外れ値を見つけることもできます。 その他の比較演算子 ( *<* , *>* 、 *=* 、 *!=* ) もサポートされます。 ここでは、温度が 80 である *room1* が結果として表示されます。
+    プロパティに基づいてグラフを照会することにより、さまざまな質問への答えを得ることができます。たとえば、環境内で注意すべき外れ値を見つけることもできます。 その他の比較演算子 ( *<* , *>* 、 *=* 、 *!=* ) もサポートされます。 ここでは、温度が 80 である room1 が結果として表示されます。
 
     :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="プロパティ クエリの結果 (room1 のみを含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-query-property.png":::
 
 1. ***floor0* 上で温度が 75 度を超えるすべての部屋を知りたい** (複合クエリ)
 
     ```azurecli-interactive
-    az dt twin query -n <ADT_instance_name> -q "SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.`$dtId = 'floor0' AND IS_OF_MODEL(room, 'dtmi:example:Room;2') AND room.Temperature > 75"
+    az dt twin query --dt-name <ADT_instance_name> --query-command "SELECT room FROM DIGITALTWINS floor JOIN room RELATED floor.contains where floor.`$dtId = 'floor0' AND IS_OF_MODEL(room, 'dtmi:example:Room;2') AND room.Temperature > 75"
     ```
 
-    SQL と同様、結合演算子 (`AND`、`OR`、`NOT` など) を使用して、先行するクエリを結合することもできます。 このクエリは、`AND` を使用して、ツインの温度に関する先行するクエリを絞り込んでいます。 結果には、*floor0* 上の部屋のうち、温度が 75 度を超える部屋のみが表示されます。このケースでは、該当する部屋はありません。 結果セットは空になります。
+    SQL と同様、結合演算子 (`AND`、`OR`、`NOT` など) を使用して、先行するクエリを結合することもできます。 このクエリは、`AND` を使用して、ツインの温度に関する先行するクエリを絞り込んでいます。 結果には、floor0 上の部屋のうち、温度が 75 度を超える部屋のみが表示されます。このケースでは、該当する部屋はありません。 結果セットは空になります。
 
     :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="複合クエリの結果 (項目を含まない) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
 
@@ -308,7 +308,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 * **次のチュートリアルに進む場合** は、ここで設定したリソースを保持し、その間に何もクリアすることなく、Azure Digital Twins インスタンスを再利用できます。
 
-* **Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、およびリレーションシップをすべてクリアする場合** は、[az dt twin relationship delete](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete)、[az dt twin delete](/cli/azure/dt/twin#az_dt_twin_delete)、[az dt model delete](/cli/azure/dt/model#az_dt_model_delete) の各コマンドを使用して、インスタンスのリレーションシップ、ツイン、モデルをそれぞれクリアできます。
+* **Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、および関係をすべてクリアする場合** は、[az dt twin relationship delete](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete)、[az dt twin delete](/cli/azure/dt/twin#az_dt_twin_delete)、[az dt model delete](/cli/azure/dt/model#az_dt_model_delete) の各コマンドを使用して、インスタンスの関係、ツイン、モデルをそれぞれクリアできます。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 

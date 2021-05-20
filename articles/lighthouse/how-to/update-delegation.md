@@ -3,12 +3,12 @@ title: 委任を更新する
 description: Azure Lighthouse に以前オンボードされた顧客の委任を更新する方法について説明します。
 ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f93dcda5eead60c22457d4e8be30f352ad8a8c81
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555770"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785981"
 ---
 # <a name="update-a-delegation"></a>委任を更新する
 
@@ -69,3 +69,4 @@ Azure Marketplace に発行されたマネージド サービス オファーを
 
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。
 - 以前にオンボードした[委任へのアクセスを削除する](remove-delegation.md)方法について学習します。
+- Azure Lighthouse のアーキテクチャの詳細は[こちら](../concepts/architecture.md)をご覧ください。

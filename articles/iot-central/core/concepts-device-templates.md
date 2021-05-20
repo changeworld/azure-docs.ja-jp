@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 2396768d87b93c4df16b6de78d03faf1d8d1cc2b
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: ecd99a21c4d92eeddaa84661424980f6d40d1ae2
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492003"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760879"
 ---
 # <a name="what-are-device-templates"></a>デバイス テンプレートとは
-
-"_この記事は、デバイス開発者およびソリューション ビルダーを対象としています。_ "
 
 Azure IoT Central のデバイス テンプレートは、アプリケーションに接続する種類のデバイスの特性と動作を定義するブループリントです。 たとえば、デバイス テンプレートによって、IoT Central が、適切なユニットとデータの種類を使用して視覚化を作成できるように、デバイスが送信するテレメトリが定義されます。
 
@@ -341,6 +339,4 @@ IoT Central のデータ エクスポート機能を使用して、ストレー�
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者としてデバイス テンプレートについて学習したので、推奨される次の手順は、[テレメトリ、プロパティ、およびコマンド ペイロード](./concepts-telemetry-properties-commands.md)を読み取り、デバイスが IoT Central とやり取りするデータの詳細について学ぶことです。
-
-ソリューション開発者として、次のステップでは、「[Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する](./howto-set-up-template.md)」を読み、デバイス テンプレートを作成する方法の詳細を把握することをお勧めします。
+デバイス テンプレートについて学習したので、推奨される次の手順は、[テレメトリ、プロパティ、およびコマンド ペイロード](./concepts-telemetry-properties-commands.md)を読み取り、デバイスが IoT Central とやり取りするデータの詳細について学ぶことです。

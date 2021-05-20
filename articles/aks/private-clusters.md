@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 3/31/2021
-ms.openlocfilehash: 20adab9a42cabc0f3fc62378427d2c7bdb669806
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 2a897c9b3b104193e9ad2395c3f502a242001a48
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072389"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764119"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -71,6 +71,7 @@ az aks create \
 次のパラメーターを使用してプライベート DNS ゾーンを構成できます。
 
 - 既定値は "System" です。 --private-dns-zone 引数を省略すると、AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。
+- プライベート DNS ゾーンが AKS クラスターとは異なるサブスクリプションにある場合は、両方のサブスクリプションで Microsoft.ContainerServices を登録する必要があります。
 - "None" は、AKS によってプライベート DNS ゾーンが作成されないことを意味します。  この場合、独自の DNS サーバーを使用し、プライベート FQDN の DNS 解決を構成する必要があります。  DNS 解決を構成しない場合、エージェント ノード内でのみ DNS の解決が可能になり、デプロイ後にクラスターの問題が発生します。 
 - "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" では、Azure グローバル クラウド用に `privatelink.<region>.azmk8s.io` の形式でプライベート DNS ゾーンを作成する必要があります。 そのプライベート DNS ゾーンのリソース ID は、後で必要になります。  さらに、少なくとも `private dns zone contributor` および `vnet contributor` ロールを持つユーザー割り当て ID またはサービス プリンシパルも必要になります。
 - "fqdn-subdomain" は、サブドメインの機能を `privatelink.<region>.azmk8s.io` に提供するためにのみ、"CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" と共に使用できます。

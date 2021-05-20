@@ -6,15 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/25/2021
+ms.date: 05/11/2021
 ms.author: alkohli
 ms.custom: references_regions
-ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 819a67cd049f5aed9eb66e65613d7e86be5db0c4
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730577"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786719"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -26,7 +26,7 @@ Microsoft Azure Data Box ハイブリッド ソリューションにより、転
 - デバイスの注文
 - 構成と接続 
 - 状態の追跡
-- データをコピーする 
+- データの移行 
 - デバイスの配送
 - データの確認とアップロード 
 - 生産物流管理のサポート
@@ -259,16 +259,16 @@ A.  移動中では、Data Box の次の機能によりデータを保護でき�
  - デバイスはロックされ、データにアクセスするにはロック解除パスワードを入力する必要があります。
 詳細については、「[Data Box のセキュリティ機能](data-box-security.md)」を参照してください。  
 
-### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-the-data-box"></a>Q. インポート注文で [配送の準備] が完了しており、デバイスをシャット ダウンします。 それでも Data Box にデータをさらに追加できますか。
+### <a name="q-i-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-the-data-box"></a>Q. インポート注文で [配送の準備] が完了しており、デバイスをシャット ダウンします。 それでも Data Box にデータをさらに追加できますか。
 A. はい。 デバイスを起動して、データをさらに追加できます。 データのコピーが完了したら、 **[配送の準備]** をもう一度実行する必要があります。
 
-### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Q. デバイスは届いたのですが、起動しません。 返送する方法を教えてください。
+### <a name="q-i-received-my-device-and-its-not-booting-up-how-do-i-ship-the-device-back"></a>Q. デバイスは届いたのですが、起動しません。 返送する方法を教えてください。
 A. デバイスが起動しない場合は、Azure portal で、該当する注文に移動してください。 配送先住所ラベルをダウンロードし、デバイスに添付します。 詳細については、「[配送先住所ラベルのダウンロード](data-box-portal-admin.md#download-shipping-label)」を参照してください。
 
 ## <a name="verify-and-upload"></a>確認とアップロード
 
 ### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>Q. Data Box を返送したら、どのくらいで Azure 内の自分のデータにアクセスできますか? 
-A.  **データのコピー** の注文状況が **完了** として表示されたら、データにはすぐにアクセスできるはずです。
+A.  **[データのコピー]** の注文状況が **[完了]** と表示されたら、データにただちにアクセスできます。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. アップロード後、私のデータは Azure 内のどこに置かれるのですか?
 A.  データを Data Box にコピーする場合、そのデータがブロック BLOB、ページ BLOB、または Azure ファイルのいずれであるかに応じて、データは Azure Storage アカウントの次のいずれかのパスにアップロードされます。
@@ -281,6 +281,13 @@ A.  データを Data Box にコピーする場合、そのデータがブロッ
 A.  コンテナー名に大文字が使われている場合、それらの名前は自動的に小文字へと変換されます。 名前が他の方式に準拠していない場合 (特殊文字やその他の言語など)、アップロードは失敗します。 共有、コンテナー、ファイルの名前付けのガイダンスについては、次を参照してください。
 - [Naming and referencing shares](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
 - [ブロック BLOB とページ BLOB の規則](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
+
+
+### <a name="q-i-was-notified-of-copy-errors-during-a-data-upload-from-my-data-box-what-should-i-do"></a>Q. Data Box からのデータのアップロード中にコピー エラーが通知されました。 どうすればよいですか。
+A.  再試行できないデータ コピー エラーが原因で、インポート順序に含まれるファイルを Azure にアップロードできない場合、エラーがデータ コピー ログに記録され、通知が表示されます。 このエラーは修正できません。 アップロードはエラーで完了したことになります。 通知が送信されるため、ファイルがアップロードされなかったことを認識でき、再試行する前に構成エラーを修正できます。 続行する準備ができていることを確認して応答すると、データがデバイスから安全に消去されます。 応答しないと、注文は 14 日後に自動的に完了します。
+
+エラー情報と注文を続行するための手順については、「[Azure Data Box および Azure Data Box Heavy デバイスからのアップロードのコピー エラーを確認する](data-box-troubleshoot-data-upload.md)」を参照してください。  
+
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>Q. Data Box にコピーしたデータを検証する方法を教えてください。
 A.  データのコピーが完了したら、 **[配送の準備]** を実行すると、データが検証されます。 Data Box は、検証の処理中にファイルのリストとデータのチェックサムを生成します。 ファイルのリストをダウンロードすれば、ソース データ内のファイルに対してリストを検証できます。 詳細については、「[配送の準備](data-box-deploy-picked-up.md#prepare-to-ship)」を参照してください。

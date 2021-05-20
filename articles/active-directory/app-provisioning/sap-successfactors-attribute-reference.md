@@ -1,24 +1,24 @@
 ---
-title: SAP SuccessFactors 属性のリファレンス
-description: SuccessFactors-HR ドリブン プロビジョニングによってサポートされる SuccessFactors の属性について説明します。
+title: Azure Active Directory 用 SAP SuccessFactors 属性リファレンス
+description: Azure Active Directory における SuccessFactors-HR 駆動のプロビジョニングによって、SuccessFactors のどの属性がサポートされるかについて説明します。
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/05/2020
-ms.author: chmutali
-ms.reviewer: celested
-ms.openlocfilehash: 0d1a25f67d3550e79b2339ee060d37acaea0c1c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.author: kenwith
+ms.reviewer: chmutali
+ms.openlocfilehash: ea6887c69b292cc2cff4d923ba2ce60af8f1920e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255544"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784955"
 ---
-# <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性のリファレンス
+# <a name="sap-successfactors-attribute-reference-for-azure-active-directory"></a>Azure Active Directory 用 SAP SuccessFactors 属性リファレンス
 
 この記事では、次の情報を取り上げます。
 

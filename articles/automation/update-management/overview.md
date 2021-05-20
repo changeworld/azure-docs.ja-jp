@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 04/01/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: f04334b4b9704d1048d03ed82aaef400806b219f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166702"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787029"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -42,7 +42,7 @@ Update Management で管理されるマシンでは、評価の実行と更新�
 
 ![Update Management ワークフロー](./media/overview/update-mgmt-updateworkflow.png)
 
-Update Management を使用すると、同じテナントにある、または [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を使用して複数のテナントにまたがる複数のサブスクリプション内のマシンにネイティブにデプロイできます。
+Update Management を使用すると、同じテナントにある、または [Azure Lighthouse](../../lighthouse/overview.md)を使用して複数のテナントにまたがる複数のサブスクリプション内のマシンにネイティブにデプロイできます。
 
 パッケージがリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2 時間から 3 時間かかります。 Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 時間から 15 時間かかります。 マシンで更新プログラムのコンプライアンスを確認するためのスキャンが完了すると、エージェントによって情報が Azure Monitor ログに一括転送されます。 Windows マシンでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。 Linux マシンでは、コンプライアンス スキャンは既定で 1 時間ごとに実行されます。 Log Analytics エージェントを再起動した場合、コンプライアンス スキャンは 15 分以内に開始されます。
 
@@ -64,6 +64,10 @@ Update Management では、同期先として構成されたソースに基づ�
 更新プログラムのデプロイで指定された日時に、ターゲット マシンでデプロイが並列で実行されます。 まず、スキャンが実行され、その更新プログラムが依然として必須であることが確認されてからインストールされます。 WSUS クライアント マシンの場合、更新プログラムが WSUS で承認されていないと、更新プログラムのデプロイは失敗します。
 
 1 つのマシンを複数の Log Analytics ワークスペースに Update Management 用に登録すること (マルチホームとも言われます) は、サポートされていません。
+
+## <a name="limits"></a>制限
+
+Update Management に適用される制限については、「[Azure Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#update-management)」を参照してください。
 
 ## <a name="clients"></a>クライアント
 

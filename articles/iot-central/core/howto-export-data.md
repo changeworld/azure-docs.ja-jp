@@ -4,27 +4,24 @@ description: 新しいデータ エクスポートを使用して Azure とカ�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/24/2021
+ms.date: 05/03/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 7d57f24f8cb4b59ce9b9cd5853be11fb2d104d75
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e8df0d2adebd4815a2079699bdebec5eb41b183f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277897"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760699"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
-> [!Note]
-> この記事では、IoT Central のデータ エクスポート機能について説明します。 従来のデータ エクスポート機能の詳細については、[データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする (レガシ)](./howto-export-data-legacy.md) に関するページを参照してください。
-
-この記事では、Azure IoT Central の新しいデータ エクスポート機能を使用する方法について説明します。 この機能を使用して、フィルター処理およびエンリッチ化された IoT データを IoT Central アプリケーションから連続エクスポートします。 データ エクスポートを使用すると、ウォーム パスの分析情報、分析、およびストレージ用に、クラウド ソリューションの他の部分にほぼリアルタイムで変更がプッシュされます。
+この記事では、Azure IoT Central のデータ エクスポートを使用する方法について説明します。 この機能を使用して、フィルター処理およびエンリッチ化された IoT データを IoT Central アプリケーションから連続エクスポートします。 データ エクスポートを使用すると、ウォーム パスの分析情報、分析、およびストレージ用に、クラウド ソリューションの他の部分にほぼリアルタイムで変更がプッシュされます。
 
 たとえば、次のように操作できます。
 
-- テレメトリ、プロパティ変更、デバイスのライフサイクル、デバイス テンプレートのライフサイクルのデータを、JSON 形式で、ほぼリアルタイムで継続的にエクスポートする
+- テレメトリ、プロパティ変更、デバイスのライフサイクル、デバイスの接続性、デバイスのライフサイクル、およびデバイスのテンプレートのライフサイクル データを、JSON 形式で、ほぼリアルタイムで継続的にエクスポートする
 - データ ストリームをフィルター処理して、カスタム条件に一致するデータをエクスポートする
 - デバイスからのカスタム値とプロパティ値を使用してデータ ストリームをエンリッチ化する
 - データを Azure Event Hubs、Azure Service Bus、Azure Blob Storage、Webhook エンドポイントなどの宛先に送信する
@@ -133,7 +130,8 @@ V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central 
     | :------------- | :---------- | :----------- |
     |  テレメトリ | デバイスからのテレメトリ メッセージがほぼリアルタイムでエクスポートされます。 エクスポートされた各メッセージには、元のデバイス メッセージの完全な内容が正規化されて含まれます。   |  [テレメトリ メッセージの形式](#telemetry-format)   |
     | プロパティ変更 | デバイスとクラウドのプロパティに対する変更がほぼリアルタイムでエクスポートされます。 読み取り専用のデバイス プロパティでは、報告された値に対する変更がエクスポートされます。 読み取り/書き込みプロパティの場合、報告された値と必要な値の両方がエクスポートされます。 | [プロパティ変更メッセージの形式](#property-changes-format) |
-    | デバイスのライフサイクル | デバイスの registered および deleted イベントをエクスポートします。 | [デバイスのライフサイクル変更メッセージの形式](#device-lifecycle-changes-format) |
+    | デバイスの接続性 | デバイスの接続イベントと非接続イベントをエクスポートします。 | [デバイス接続メッセージの形式](#device-connectivity-changes-format) |
+    | デバイスのライフサイクル | デバイスの登録、削除、プロビジョニング、有効化、無効化、displayNameChanged、および deviceTemplateChanged のイベントをエクスポートします。 | [デバイスのライフサイクル変更メッセージの形式](#device-lifecycle-changes-format) |
     | デバイス テンプレートのライフサイクル | created、updated、および deleted など、発行されたデバイス テンプレートの変更をエクスポートします。 | [デバイス テンプレートのライフサイクル変更メッセージの形式](#device-template-lifecycle-changes-format) | 
 
 1. 必要に応じて、フィルターを追加して、エクスポートするデータの量を減らします。 データ エクスポートの種類ごとに、使用できるフィルターの種類は異なります。<a name="DataExportFilters"></a>
@@ -142,6 +140,7 @@ V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central 
     |--------------|------------------|
     |製品利用統計情報|<ul><li>デバイス名、デバイス ID、デバイス テンプレートでフィルター処理します</li><li>フィルター条件を満たすテレメトリのみが含まれるようにストリームをフィルター処理します</li><li>フィルター条件に一致するプロパティを持つデバイスのテレメトリのみが含まれるようにストリームをフィルター処理します</li><li>フィルター条件を満たす "*メッセージ プロパティ*" を持つテレメトリのみが含まれるようにストリームをフィルター処理します。 "*メッセージ プロパティ*" ("*アプリケーション プロパティ*" とも呼ばれる) は、デバイス SDK を使用するデバイスから必要に応じて送信される各テレメトリ メッセージ上のキーと値ペアのバッグで送信されます。 メッセージ プロパティ フィルターを作成するには、検索するメッセージ プロパティ キーを入力し、条件を指定します。 指定したフィルター条件に一致するプロパティを持つテレメトリ メッセージのみがエクスポートされます。 [アプリケーション プロパティの詳細については、IoT Hub のドキュメントを参照してください](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
     |プロパティ変更|<ul><li>デバイス名、デバイス ID、デバイス テンプレートでフィルター処理します</li><li>フィルター条件を満たすプロパティ変更のみが含まれるようにストリームをフィルター処理します</li></ul>|
+    |デバイスの接続性|<ul><li>デバイス名、デバイス ID、デバイス テンプレートでフィルター処理します</li><li>フィルター条件に一致するプロパティを持つデバイスの変更のみが含まれるようにストリームをフィルター処理します</li></ul>|
     |デバイスのライフサイクル|<ul><li>デバイス名、デバイス ID、デバイス テンプレートでフィルター処理します</li><li>フィルター条件に一致するプロパティを持つデバイスの変更のみが含まれるようにストリームをフィルター処理します</li></ul>|
     |デバイス テンプレートのライフサイクル|<ul><li>デバイス テンプレートでフィルター処理します</li></ul>|
     
@@ -376,14 +375,47 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
     }
 }
 ```
+## <a name="device-connectivity-changes-format"></a>デバイス接続性の変更形式
 
+各メッセージまたはレコードは、1 つのデバイスで検出された接続イベントを表します。 エクスポートされたメッセージに含まれる情報は次のとおりです。
+
+- `applicationId`:IoT Central アプリケーションの ID。
+- `messageSource`:メッセージのソース - `deviceConnectivity`。
+- `messageType`: `connected` または `disconnected` のいずれか。
+- `deviceId`: 変更されたデバイスの ID。
+- `schema`:ペイロード スキーマの名前とバージョン。
+- `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
+- `enqueuedTime`: IoT Central でこの変更が発生した時刻。
+- `enrichments`:エクスポートに設定されたエンリッチメント。
+
+Event Hubs と Service Bus の場合、IoT Central から新しいメッセージ データが、ほぼリアルタイムでイベント ハブあるいは Service Bus キューまたはトピックに送信されます。 各メッセージのユーザー プロパティ (アプリケーション プロパティとも呼ばれます) では、`iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` および `iotcentral-message-type` が自動的に含まれます。
+
+Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。
+
+次の例は、Azure Blob Storage で受信された、エクスポート済みデバイス接続メッセージを示しています。
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceConnectivity",
+  "messageType": "connected",
+  "deviceId": "1vzb5ghlsg1",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-04-05T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+
+```
 ## <a name="device-lifecycle-changes-format"></a>デバイスのライフサイクル変更の形式
 
 各メッセージまたはレコードは、1 つのデバイスに対する 1 つの変更を表します。 エクスポートされたメッセージに含まれる情報は次のとおりです。
 
 - `applicationId`:IoT Central アプリケーションの ID。
 - `messageSource`:メッセージのソース - `deviceLifecycle`。
-- `messageType`: `registered` または `deleted` のいずれか。
+- `messageType`: 発生したエラーの種類。 `registered`、`deleted`、`provisioned`、`enabled`、`disabled`、`displayNameChanged` および `deviceTemplateChanged` のいずれか。
 - `deviceId`: 変更されたデバイスの ID。
 - `schema`:ペイロード スキーマの名前とバージョン。
 - `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
@@ -444,11 +476,11 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
 
 ## <a name="comparison-of-legacy-data-export-and-data-export"></a>従来のデータ エクスポートとデータ エクスポートの比較
 
-次の表は、[従来のデータ エクスポート](howto-export-data-legacy.md)と新しいデータ エクスポートの機能の違いを示しています。
+次の表は、[レガシ データ エクスポート](howto-export-data-legacy.md)とデータ エクスポートの機能の違いを示しています。
 
 | 機能  | 従来のデータ エクスポート | 新しいデータ エクスポート |
 | :------------- | :---------- | :----------- |
-| 使用できるデータの種類 | テレメトリ、デバイス、デバイス テンプレート | テレメトリ、プロパティ変更、デバイスのライフサイクル変更、デバイス テンプレートのライフサイクル変更 |
+| 使用できるデータの種類 | テレメトリ、デバイス、デバイス テンプレート | テレメトリ、プロパティ変更、デバイス接続性の変更、デバイスのライフサイクルの変更、デバイス テンプレートのライフサイクルの変更 |
 | フィルター処理 | なし | エクスポートするデータの種類によって異なります。 テレメトリの場合は、テレメトリ、メッセージ プロパティ、プロパティ値によるフィルター処理 |
 | エンリッチメント | なし | デバイスのカスタム文字列またはプロパティ値を使用してエンリッチ化する |
 | 変換先 | Azure Event Hubs、Azure Service Bus キューおよびトピック、Azure Blob Storage | 従来のデータ エクスポートと同じ宛先に加えて Webhook|

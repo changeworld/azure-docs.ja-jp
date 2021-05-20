@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 4/27/2021
+ms.date: 5/6/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd283e5ef0d7a3692e819311a749c8c12b1b38b1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: abd0ff2b7330bdc459bf3775e92b376686ebfc83
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137899"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517184"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
-従業員およびゲストに対するグループやアプリケーションへのアクセスは、時間の経過と共に変化します。 アクセスの割り当てが古いことで生じるリスクを軽減するために、管理者は、グループ メンバーまたはアプリケーションのアクセスに対するアクセス レビューを Azure Active Directory (Azure AD) を使用して作成することができます。 定期的にアクセスをレビューする必要がある場合は、繰り返すアクセス レビューを作成することもできます。 これらのシナリオについて詳しくは、[ユーザー アクセスの管理](manage-user-access-with-access-reviews.md)と[ゲスト アクセスの管理](manage-guest-access-with-access-reviews.md)に関するページをご覧ください。
+従業員およびゲストに対するグループやアプリケーションへのアクセスは、時間の経過と共に変化します。 アクセスの割り当てが古いことで生じるリスクを軽減するために、管理者は、グループ メンバーまたはアプリケーションのアクセスに対するアクセス レビューを Azure Active Directory (Azure AD) を使用して作成することができます。 グローバル管理者またはユーザー管理者が [アクセス レビューの設定] ブレードで設定を有効にしていれば、Microsoft 365 およびセキュリティのグループ所有者が、Azure AD を使用して、グループ メンバーのアクセス レビュー を作成することもできます (プレビュー)。 定期的にアクセスをレビューする必要がある場合は、繰り返すアクセス レビューを作成することもできます。 これらのシナリオについて詳しくは、[ユーザー アクセスの管理](manage-user-access-with-access-reviews.md)と[ゲスト アクセスの管理](manage-guest-access-with-access-reviews.md)に関するページをご覧ください。
 
 アクセス レビューの有効化に関する短いビデオをご覧ください。
 
@@ -36,6 +36,7 @@ ms.locfileid: "108137899"
 
 - Azure AD Premium P2
 - グローバル管理者またはユーザー管理者
+- Microsoft 365 およびセキュリティのグループ所有者 (プレビュー)
 
 詳細については、「[License requirements ライセンスの要件](access-reviews-overview.md#license-requirements)」を参照してください。
 
@@ -75,7 +76,8 @@ ms.locfileid: "108137899"
     >[!NOTE]
     > ステップ 2 でゲスト ユーザーを含むすべての Microsoft 365 グループを選択した場合、ステップ 3 ではゲスト ユーザーを確認することが唯一の選択肢になります
 
-8. 次へ:レビュー
+8. **[次へ:レビュー]** をクリックします。
+
 9. **[レビュー担当者を選択する]** セクションで、アクセス レビューを実行する人を 1 人以上選択します。 次の項目から選択できます。
     - **Group owner(s) (グループ所有者)** (チームまたはグループでレビューを実行する場合のみ使用可能)
     - **Selected user(s) or groups(s) (選択したユーザーまたはグループ)**
@@ -89,7 +91,8 @@ ms.locfileid: "108137899"
 
     ![レビューが行われる頻度を選択する](./media/create-access-review/frequency.png)
 
-11. **[次へ:設定]** ボタンがページの下部にあるのでクリックします
+11. **[次へ: 設定]** ボタンがページの下部にあるのでクリックします。
+
 12. **[Upon completion settings]\(完了時の設定\)** では、レビュー完了後の動作を指定できます
 
     ![アクセス レビューの作成 - 完了時の設定](./media/create-access-review/upon-completion-settings-new.png)
@@ -111,12 +114,11 @@ ms.locfileid: "108137899"
 
     組織内のリソースへのアクセス権がなくなったゲスト ユーザーを削除するためのベスト プラクティスの詳細については、「[Azure AD Identity Governance を使用して、リソースへのアクセス権がなくなった外部ユーザーを確認および削除する](access-reviews-external-users.md)」というタイトルの記事をご覧ください。
 
-   > [!NOTE]
-   > 拒否されたゲスト ユーザーに適用するアクションは、ゲスト ユーザー数より多くスコープ設定されたレビューでは構成できません。 また、**ゲスト ユーザーを含むすべての M365 グループ** のレビューに対して構成することもできません。 構成できない場合、リソースからユーザーのメンバーシップを削除する既定のオプションが、拒否されたユーザーに対して使用されます。
 
-13. レビュー完了の更新を受け取るために、追加のユーザーまたはグループに通知を送信することができます (プレビュー)。 この機能を使用すると、レビュー作成者以外の関係者をレビューの進行状況で更新できます。 この機能を使用するには、 **[ユーザーまたはグループを選択する]** を選択し、完了の状態を受け取るユーザーまたはグループを追加します。
+    > [!NOTE]
+    > 拒否されたゲスト ユーザーに適用するアクションは、ゲスト ユーザー数より多くスコープ設定されたレビューでは構成できません。 また、**ゲスト ユーザーを含むすべての Microsoft 365 グループ** のレビューに対して構成することもできません。 構成できない場合、リソースからユーザーのメンバーシップを削除する既定のオプションが、拒否されたユーザーに対して使用されます。
 
-    ![完了設定時 - 通知を受信するユーザーを追加する](./media/create-access-review/upon-completion-settings-additional-receivers.png) 
+13. レビュー完了の更新を受け取るために、追加のユーザーまたはグループに通知を送信することができます (プレビュー)。 この機能により、レビュー作成者以外の利害関係者も、通知を受け取ってレビューの進行状況を把握できます。 この機能を使用するには **[ユーザーまたはグループの選択]** を選択し、完了通知を受け取るユーザーまたはグループを追加します。
 
 14. **[Enable review decision helpers]\(レビュー担当者の意思決定ヘルパーを有効にする\)** で、レビュー プロセス中にレビュー担当者が推奨事項を受け取るようにするかどうかを選択します。
 
@@ -131,10 +133,27 @@ ms.locfileid: "108137899"
       ![レビュー担当者向けの追加のコンテンツ](./media/create-access-review/additional-content-reviewer.png)
 
 16. **[次へ:確認および作成]** をクリックして、次のページに進みます
+
 17. アクセス レビューに名前を付けます。 必要に応じて、そのレビューに説明を加えます。 その名前と説明がレビュアーに示されます。
-18. 情報を確認し、 **[作成]** を選択します
+
+18. 情報を確認し、 **[作成]** を選択します。
 
        ![レビューの作成の画面](./media/create-access-review/create-review.png)
+
+## <a name="allow--group-owners-to-create-and-manage-access-reviews-preview"></a>グループ所有者によるアクセス レビューの作成と管理を許可する (プレビュー)
+
+事前に必要なロール: グローバル管理者またはユーザー管理者
+
+1. Azure portal にサインインして、[[Identity Governance] ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)を開きます。
+
+1. 左側のメニューで **[アクセス レビュー]** の下の **[設定]** を選択します。
+
+1. [Delegate who can create and manage access reviews]\(アクセス レビューの作成および管理を委任する\) ページ上で、 **[(Preview) Group owners can create and manage for access reviews of groups they own]\((プレビュー) グループ所有者が自身が所有するグループのアクセス レビューを作成および管理できる\)** 設定を **[はい]** に 設定します。
+
+    ![レビューの作成 - グループ所有者によるレビューを有効にする](./media/create-access-review/group-owners-review-access.png)
+
+    > [!NOTE]
+    > 既定では、この設定は **[いいえ]** に設定されています。グループ所有者がアクセス レビューを作成および管理するには、この設定を更新する必要があります。
 
 ## <a name="start-the-access-review"></a>アクセス レビューを開始する
 

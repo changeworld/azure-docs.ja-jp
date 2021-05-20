@@ -6,13 +6,13 @@ ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/25/2020
-ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 9ae996d344604ebdaf4e166f6c0536eb6acb169b
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880643"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656608"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Storage の登録とスキャン
 
@@ -79,7 +79,7 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
-1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
+1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
@@ -119,10 +119,10 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 **[ソースの登録 (Azure Blob Storage)]** 画面で、次の手順を実行します。
 
 1. データ ソースがカタログに表示される際の **[名前]** を入力します。 
-1. サブスクリプションを選択して、ストレージ アカウントをフィルター処理します
-1. Select a storage account (ストレージ アカウントを選択する)
-1. コレクションを選択するか、新しいものを作成します (省略可能)
-1. **[完了]** を選択して、データ ソースを登録します。
+1. サブスクリプションを選択して、ストレージ アカウントをフィルター処理します。
+1. ストレージ アカウントを選択します。
+1. コレクションを選択するか、新しいものを作成します (省略可能)。
+1. **[登録]** を選択してデータ ソースを登録します。
 
 :::image type="content" source="media/register-scan-azure-blob-storage-source/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 

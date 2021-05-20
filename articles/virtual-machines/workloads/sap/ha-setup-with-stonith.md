@@ -3,27 +3,27 @@ title: STONITH を使用した SAP HANA on Azure (L インスタンス) の高�
 description: STONITH を使って SUSE の SAP HANA on Azure (L インスタンス) の高可用性を確立します
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/21/2017
-ms.author: saghorpa
+ms.date: 05/10/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3dd2a618f22036fd0826a99207d83a3add390c7d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 79998a0980d5bbc21c9207d2f9f1d6a71d77d3b2
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645324"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735316"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
-このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
+このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムで高可用性をセットアップする詳しい手順について説明します。
 
-**免責事項:** *このガイドは、正常に動作する Microsoft HANA L インスタンス環境でのセットアップのテストによって得られたものです。HANA L インスタンスの Microsoft サービス管理チームはオペレーティング システムをサポートしていないので、オペレーティング システム レイヤーでの詳細なトラブルシューティングや不明点については、SUSE に問い合わせる必要があります。Microsoft のサービス管理チームは、STONITH デバイスのセットアップを行い、STONITH デバイスに関する問題のトラブルシューティングについて全面的にサポートします。*
+**免責事項:** *このガイドは、Microsoft HANA L インスタンス環境でのセットアップの正常なテストによって得られたものです。HANA L インスタンスの Microsoft サービス管理チームはオペレーティング システムをサポートしていないので、オペレーティング システム レイヤーでの詳細なトラブルシューティングや不明点については、SUSE に問い合わせる必要があります。Microsoft のサービス管理チームは、STONITH デバイスのセットアップを行い、STONITH デバイスに関する問題のトラブルシューティングについて全面的にサポートします。*
 ## <a name="overview"></a>概要
 SUSE のクラスタリングを使って高可用性をセットアップするには、次の前提条件が満たされている必要があります。
 ### <a name="pre-requisites"></a>前提条件
@@ -37,7 +37,7 @@ SUSE のクラスタリングを使って高可用性をセットアップする
 ### <a name="setup-details"></a>セットアップの詳細
 このガイドでは、次のセットアップを使用します。
 - オペレーティング システム:SLES 12 SP1 for SAP
-- HANA L インスタンス:2xS192 (4 ソケット、2 TB)
+- HANA L インスタンス: 2xS192 (4 ソケット、2 TB)
 - HANA バージョン:HANA 2.0 SP1
 - サーバー名: sapprdhdb95 (node1) および sapprdhdb96 (node2)
 - STONITH デバイス: iSCSI ベースの STONITH デバイス
@@ -50,18 +50,18 @@ HSR で HANA L インスタンスをセットアップするときは、Microsof
 - 顧客名 (例: Microsoft)
 - SID - HANA システム識別子 (例: H11)
 
-STONITH デバイスの構成が済むと、Microsoft のサービス管理チームから iSCSI ストレージの SBD デバイス名と IP アドレスが提供されるので、それを使って STONITH のセットアップを構成できます。 
+STONITH デバイスが構成されると、Microsoft のサービス管理チームから iSCSI ストレージの SBD デバイス名と IP アドレスが提供されるため、それを使って STONITH のセットアップを構成できます。 
 
 STONITH を使ってエンド ツー エンドの HA をセットアップするには、次の手順に従う必要があります。
 
-1.  SBD デバイスを識別する
-2.  SBD デバイスを初期化する
-3.  クラスターを構成する
-4.  Softdog ウォッチドッグを設定する
-5.  クラスターにノードを参加させる
-6.  クラスターを検証する
-7.  クラスターのリソースを構成する
-8.  フェールオーバー プロセスをテストする
+1.  SBD デバイスを識別する。
+2.  SBD デバイスを初期化する。
+3.  クラスターを構成する。
+4.  Softdog ウォッチドッグを設定する。
+5.  クラスターにノードを参加させる。
+6.  クラスターを検証する。
+7.  クラスターのリソースを構成する。
+8.  フェールオーバー プロセスをテストする。
 
 ## <a name="1---identify-the-sbd-device"></a>1. SBD デバイスを識別する
 このセクションでは、Microsoft のサービス管理チームが STONITH を構成した後で、セットアップ対象の SBD デバイスを特定する方法について説明します。 **このセクションは、既存のお客様のみが対象となります**。 新しいお客様の場合は、Microsoft のサービス管理チームが SBD のデバイス名を提供するので、お客様はこのセクションをスキップできます。
@@ -85,14 +85,14 @@ iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 
 ![iscsiadm discovery コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-1.4 コマンドを実行して iSCSI デバイスにログインします。4 つのセッションが表示されます。 **両方** のノードで実行します。
+1.4 コマンドを実行して iSCSI デバイスにサインインします。4 つのセッションが表示されます。 **両方** のノードで実行します。
 
 ```
 iscsiadm -m node -l
 ```
 ![iscsiadm node コマンドの結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 再スキャン スクリプト *rescan-scsi-bus.sh* を実行します。自動的に作成された新しいディスクが表示されます。  両方のノードで実行します。 ゼロより大きい LUN 番号が表示されます (例:1、2 など)
+1.5 再スキャン スクリプト *rescan-scsi-bus.sh* を実行します。自動的に作成された新しいディスクが表示されます。  両方のノードで実行します。 ゼロより大きい LUN 番号が表示されます (1、2 など)。
 
 ```
 rescan-scsi-bus.sh
@@ -125,7 +125,7 @@ sbd -d <SBD Device Name> dump
 ## <a name="3---configuring-the-cluster"></a>3. クラスターを構成する
 このセクションでは、SUSE HA クラスターをセットアップする手順について説明します。
 ### <a name="31-package-installation"></a>3.1 パッケージのインストール
-3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合はインストールします。 **両方** のノードにインストールしてください。
+3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされているかどうかを確認します。 インストールされていない場合はインストールします。 **両方** のノードにインストールしてください。
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -139,34 +139,39 @@ zypper in SAPHanaSR SAPHanaSR-doc
 [yast2] > [High Availability]\(高可用性) > [Cluster]\(クラスター\) の順に選択します ![[High Availability]\(高可用性) と [Cluster]\(クラスター\) が選択された YaST コントロール センターを示すスクリーンショット。 ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![[Install]\(インストール\) と [Cancel]\(キャンセル\) オプションが表示されたダイアログ ボックスを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-halk2 パッケージは既にインストールされているので、 **[Cancel]\(キャンセル\)** をクリックします。
+halk2 パッケージは既にインストールされているので、 **[Cancel]\(キャンセル\)** を選択します。
 
 ![キャンセル オプションに関するメッセージを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
-**[Continue]\(続行\)** をクリックします
+**[続行]** をクリックします。
 
-予想される値 = デプロイされているノードの数 (この場合は 2) ![[Enable Security Auth]\(セキュリティ認証を有効にする\) チェック ボックスが表示された [Cluster Security]\(クラスター セキュリティ\) を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
-**[Next]\(次へ\)** をクリックします 
+必要な値 = デプロイされているノードの数 (この場合 2)
+
+![[Enable Security Auth]\(セキュリティ認証を有効にする\) チェック ボックスが表示された [Cluster Security]\(クラスター セキュリティ\) を示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
+
+**[次へ]** を選択します。
+
 ![[Sync Host]\(同期ホスト\) と [Sync File]\(同期ファイル\) 一覧が表示されたクラスターの構成ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
-ノード名を追加し、[Add suggested files]\(示されたファイルを追加する\) をクリックします
 
-[Turn csync2 ON]\(csync2 をオンにする\) をクリックします
+ノード名を追加し、[Add suggested files]\(示されたファイルを追加する\) を選択します。
 
-[Generate Pre-Shared-Keys]\(事前共有キーの生成\) をクリックします。次のポップアップが表示されます
+**[Turn csync2 ON]\(csync2 をオンにする\)** を選択します。
+
+**[Generate Pre-Shared-Keys]\(事前共有キーの生成\)** を選択します。下のポップアップが表示されます。
 
 ![キーが生成されたことを示すメッセージを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-**[OK]**
+**[OK]** を選択します。
 
 Csync2 で IP アドレスと事前共有キーを使って認証が実行されます。 キー ファイルは csync2 -k /etc/csync2/key_hagroup で生成されます。 作成された key_hagroup ファイルを、クラスターのすべてのメンバーに手動でコピーする必要があります。 **node1 から node2 にファイルを必ずコピーします**。
 
 ![クラスターのすべてのメンバーにキーをコピーするのに必要なオプションが表示されたクラスターの構成ダイアログ ボックスを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-**[Next]\(次へ\)** をクリックします 
+**[Next]\(次へ\)** を選択します 
 ![クラスターのサービス ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 既定のオプションでは起動はオフになっているので、Pacemaker が起動時に開始されるように "オン" に変更します。 セットアップの要件に基づいて選ぶことができます。
-**[Next]\(次へ\)** をクリックしてクラスターの構成を完了します。
+**[Next]\(次へ\)** を選択してクラスターの構成を完了します。
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4. Softdog ウォッチドッグを設定する
 このセクションでは、ウォッチドッグ (softdog) の構成について説明します。
@@ -260,7 +265,7 @@ systemctl start pacemaker
 crm_mon
 ```
 ![crm_mon の結果が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/crm-mon.png)
-hawk にログインして、クラスターの状態 *https://\<node IP>:7630* を確認することもできます。 既定のユーザーは hacluster で、パスワードは linux です。 必要な場合は、*passwd* コマンドを使ってパスワードを変更できます。
+hawk にサインインして、クラスターの状態 *https://\<node IP>:7630* を確認することもできます。 既定のユーザーは hacluster で、パスワードは linux です。 必要な場合は、*passwd* コマンドを使ってパスワードを変更できます。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.クラスターのプロパティとリソースを構成する 
 このセクションでは、クラスター リソースを構成する手順について説明します。
@@ -348,14 +353,14 @@ Service pacemaker stop
 このセクションでは、セットアップ中に発生する可能性のあるいくつかの障害シナリオについて説明します。 これらの問題は必ず発生するとは限りません。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>シナリオ 1:クラスター ノードがオンラインではない
-クラスター マネージャーでいずれかのノードがオンラインと表示されない場合は、以下の方法でオンラインになる可能性があります。
+クラスター マネージャーでいずれかのノードがオンラインと表示されない場合は、オンラインにするために次の方法を試すことができます。
 
 iSCSI サービスを開始します
 ```
 service iscsid start
 ```
 
-その iSCSI ノードにログインできるようになります
+これで、その iSCSI ノードにサインインできます。
 ```
 iscsiadm -m node -l
 ```
@@ -400,11 +405,11 @@ yast2 のグラフィカル ビューが開かない場合は、以下の手順�
 
 パッケージのインストールが実行されます ![インストールの進行状況が表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-[Next]\(次へ\) をクリックします
+[Next]\(次へ\) を選択します。
 
 ![成功メッセージが表示されたコンソール ウィンドウを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
-[Finish]\(完了\) をクリックします
+[Finish]\(完了\) を選択します。
 
 libqt4 パッケージと libyui-qt パッケージもインストールする必要があります。
 ```
@@ -420,7 +425,7 @@ zypper -n install libyui-qt
 ![[Software]\(ソフトウェア\) と [Online Update]\(オンライン更新\) が選択された YaST コントロール センターを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>シナリオ 3: yast2 に高可用性オプションが表示されない
-yast2 コントロール センターに高可用性オプションが表示されるようにするには、追加パッケージをインストールする必要があります。
+yast2 コントロール センターに高可用性オプションが表示されるようにするには、他のパッケージをインストールする必要があります。
 
 [Yast2] > [Software]\(ソフトウェア\) > [Software management]\(ソフトウェア管理\) で次のパターンを選びます
 
@@ -440,15 +445,15 @@ yast2 コントロール センターに高可用性オプションが表示さ�
 ![[C / C++ Compiler and Tools]\(C/C++ コンパイラとツール\) 項目の最初のパターンが選択されたスクリーンショット。 ](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
 ![[C / C++ Compiler and Tools]\(C/C++ コンパイラとツール\) 項目の 2 つ目のパターンが選択されたスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
-**[Accept]\(受け入れる\)** をクリックします
+**[Accept]\(承認\)** を選択します。
 
 ![依存関係を解決するように変更されたパッケージが表示された [Changed Packages]\(変更されたパッケージ\) ダイアログ ボックスを示すスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
 
-**[Continue]\(続行\)** をクリックします
+**[続行]** を選択します。
 
 ![[Performing Installation]\(インストールの実行中\) 状態ページが示されたスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-インストールが完了したら、 **[Next]\(次へ\)** をクリックします
+インストールが完了したら、 **[Next]\(次へ\)** を選択します
 
 ![インストールのレポートが表示されたスクリーンショット。](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 

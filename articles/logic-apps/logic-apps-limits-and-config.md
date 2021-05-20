@@ -1,79 +1,99 @@
 ---
 title: 制限と構成
-description: Azure Logic Apps に対応するサービスの制限 (期間、スループット、容量など)、および構成値 (可能な IP アドレスなど)
+description: Azure Logic Apps の制限と構成情報のリファレンス ガイド
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
-ms.topic: article
-ms.date: 04/16/2021
-ms.openlocfilehash: 286da1412e8a74ffbf34e4abb493241914d4f925
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: rohithah, logicappspm
+ms.topic: conceptual
+ms.date: 05/05/2021
+ms.openlocfilehash: a074009b29c5414b356022f08afe81210fc0f60c
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764875"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634691"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
-この記事では、Azure Logic Apps で自動ワークフローを作成および実行するための制限と構成の詳細について説明します。 Power Automate については、[Power Automate の制限と構成](/flow/limits-and-config)に関するページを参照してください。
+> Power Automate については、[Power Automate の制限と構成](/flow/limits-and-config)に関するページを参照してください。
+
+この記事では、Azure Logic Apps と関連リソースの制限と構成情報について説明します。 多くの制限は、マルチテナントとシングルテナント (プレビュー) の Logic Apps サービスの両方で同じです (相違がある場合は、注記が付けられています)。
+
+次の表では、この記事で使用されている "*マルチテナント*"、"*シングルテナント*"、および "*統合サービス環境*" という用語について詳しく説明します。
+
+| Environment | リソースの共有と使用 | [価格モデル](logic-apps-pricing.md) | メモ |
+|-------------|----------------------------|----------------------------------------|-------|
+| Azure Logic Apps <br>(マルチテナント) | "*複数のテナントにわたる*" ロジック アプリのワークフローで、同じ処理 (コンピューティング)、ストレージ、ネットワークなどが共有されます。 | 従量課金 | Azure Logic Apps でこれらの制限の既定値が管理されますが、特定の制限に対してオプションが存在する場合は、これらの値の一部を変更できます。 |
+| Azure Logic Apps <br>(シングルテナント (プレビュー)) | "*同じロジック アプリでシングルテナント*" のワークフローでは、同じ処理 (コンピューティング)、ストレージ、ネットワークなどが共有されます。 | プレビュー ([Premium ホスティング プラン](../azure-functions/functions-scale.md)、または特定の[価格レベル](../app-service/overview-hosting-plans.md)での [App Service ホスティング プラン](../azure-functions/functions-scale.md)のいずれか) <p><p>[外部ストレージ](../azure-functions/storage-considerations.md#storage-account-requirements)を使用する "*ステートフル*" ワークフローがある場合は、Azure Logic Apps ランタイムによって、[Azure Storage 価格](https://azure.microsoft.com/pricing/details/storage/)に従うストレージ トランザクションが行われます。 | シナリオのニーズに応じて、多くの制限の既定値を変更できます。 <p><p>**重要**: 一部の制限には、ハード上限があります。 Visual Studio Code では、ロジック アプリのプロジェクト構成ファイル内の既定の制限値に対して行った変更は、デザイナー エクスペリエンスには表示されません。 <p><p>詳細については、[Visual Studio Code を使用したシングルテナント Azure Logic Apps のワークフローの作成](create-stateful-stateless-workflows-visual-studio-code.md)に関する記事を参照してください。 |
+| 統合サービス環境 | "*同じ環境*" のワークフローでは、同じ処理 (コンピューティング)、ストレージ、ネットワークなどを共有します。 | 固定 | Azure Logic Apps でこれらの制限の既定値が管理されますが、特定の制限に対してオプションが存在する場合は、これらの値の一部を変更できます。 |
+|||||
+
+> [!TIP]
+> 異なる制限が必要なシナリオについては、[Logic Apps チームに連絡し](mailto://logicappspm@microsoft.com)、その要件について相談してください。
 
 <a name="definition-limits"></a>
 
-## <a name="logic-app-definition-limits"></a>ロジック アプリ定義の制限
+## <a name="workflow-definition-limits"></a>ワークフロー定義の制限
 
-1 つのロジック アプリ定義の制限を次に示します。
+次の表に、1 つのワークフロー定義の値を示します。
 
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
-| ワークフローごとのアクション数 | 500 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
-| アクションで許可される入れ子の深さ | 8 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
-| サブスクリプションごとの 1 リージョンあたりのワークフロー数 | 1,000 | |
-| ワークフローごとのトリガー数 | 10 | デザイナーではなくコード ビューで作業するとき |
-| スコープ ケースの切り替えの制限 | 25 | |
-| ワークフローごとの変数 | 250 | |
-| `action` または `trigger` の名前 | 80 文字 | |
-| 式ごとの文字数 | 8,192 | |
-| `description` の長さ | 256 文字 | |
-| `parameters` の最大数 | 50 | |
-| `outputs` の最大数 | 10 | |
-| `trackedProperties` の最大サイズ | 16,000 文字 |
-| インライン コード アクション - コードの最大文字数 | 1,024 文字 | この制限を 100,000 文字に拡張するには、リソースの種類 **[ロジック アプリ (プレビュー)]** を使用してロジック アプリを作成します。その際には、[Azure portal を使用](create-stateful-stateless-workflows-azure-portal.md)するか、[Visual Studio Code と **Azure Logic Apps (プレビュー)** 拡張機能](create-stateful-stateless-workflows-visual-studio-code.md)を使用します。 |
-| インライン コード アクション - コードを実行するための最長期間 | 5 秒 | この制限を 15 秒に拡張するには、リソースの種類 **[ロジック アプリ (プレビュー)]** を使用してロジック アプリを作成します。その際には、[Azure portal を使用](create-stateful-stateless-workflows-azure-portal.md)するか、[Visual Studio Code と **Azure Logic Apps (プレビュー)** 拡張機能](create-stateful-stateless-workflows-visual-studio-code.md)を使用します。 |
+| サブスクリプションごとの 1 リージョンあたりのワークフロー数 | 1,000 個のワークフロー | |
+| ワークフローごとのトリガー数 | 10 個のトリガー | この制限は、デザイナーではなく、JSON ワークフロー定義 (コード ビューでも Azure Resource Manager (ARM) テンプレートでも) を操作する場合にのみ適用されます。 |
+| ワークフローごとのアクション数 | 500 個のアクション | この制限を拡大するには、必要に応じて入れ子になったワークフローを使用します。 |
+| アクションの入れ子の深さ | 8 個のアクション | この制限を拡大するには、必要に応じて入れ子になったワークフローを使用します。 |
+| トリガーまたはアクション - 名前の最大長 | 80 文字 | |
+| トリガーまたはアクション - 入力または出力の最大サイズ | 104,857,600 バイト <br>(105 MB) |
+| アクション - 入力と出力の最大結合サイズ | 209,715,200 バイト <br>(210 MB) |
+| 式の文字制限 | 8,192 文字 | |
+| `description` - 最大長 | 256 文字 | |
+| `parameters` - 項目の最大数 | 50 個のパラメーター | |
+| `outputs` - 項目の最大数 | 10 個の出力 | |
+| `trackedProperties` - 最大サイズ | 16,000 文字 |
 ||||
 
 <a name="run-duration-retention-limits"></a>
 
 ## <a name="run-duration-and-retention-history-limits"></a>実行継続時間と保持履歴の制限
 
-ロジック アプリの 1 回の実行の制限を次に示します。
+次の表に、1 つのワークフロー実行の値を示します。
 
-| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
-|------|--------------------|---------------------------------------|-------|
-| 実行継続時間 | 90 日間 | 366 日間 | 実行継続時間は、実行の開始時刻と、ワークフロー設定に指定された指定された制限である [ **[実行履歴の保持期間 (日数)]**](#change-duration) を使用して開始時に計算されます。 <p><p>既定の制限を変更するには、「[実行継続時間とストレージでの履歴の保持期間を変更する](#change-duration)」を参照してください。 |
-| ストレージでの実行履歴の保持期間 | 90 日間 | 366 日間 | 実行の継続時間が現在の実行履歴の保持期間の制限を超えると、その実行はストレージの実行履歴から削除されます。 実行が完了したかタイムアウトしたかに関係なく、実行履歴の保持期間は、常に、実行の開始時刻と、ワークフロー設定に指定された現在の制限である [ **[実行履歴の保持期間 (日数)]**](#change-retention) を使用して計算されます。 前の制限に関係なく、現在の制限は、保持期間の計算に常に使用されます。 <p><p>既定の制限を変更する方法と詳細については、「[実行継続時間とストレージでの履歴の保持期間を変更する](#change-retention)」を参照してください。 この最大制限を引き上げるには、[Logic Apps チームに問い合わせ](mailto://logicappspm@microsoft.com)の上、要件についてご相談ください。 |
-| 最小の繰り返し間隔 | 1 秒 | 1 秒 ||
-| 最大の繰り返し間隔 | 500 日 | 500 日 ||
-|||||
+| 名前 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|--------------|-------------------------|---------------------------------|-------|
+| ストレージでの実行履歴の保持期間 | 90 日間 | 90 日間 | 366 日間 | 実行の開始後、ワークフローの実行履歴をストレージに保持する時間。 実行の継続時間が現在の実行履歴の保持期間の制限を超えると、その実行はストレージ内の実行履歴から削除されます。 <p>実行が完了したかタイムアウトしたかに関係なく、実行履歴の保持期間は、常に、実行の開始時刻と、ワークフロー設定に指定された現在の制限である [ **[実行履歴の保持期間 (日数)]**](#change-retention) を使用して計算されます。 前の制限に関係なく、現在の制限は、保持期間の計算に常に使用されます。 <p><p>詳細については、「[実行継続時間とストレージでの履歴の保持期間を変更する](#change-retention)」を参照してください。 <p><p>**ヒント**: 異なる制限が必要なシナリオについては、[Logic Apps チームに連絡し](mailto://logicappspm@microsoft.com)、その要件について相談してください。 |
+| 実行継続時間 | 90 日間 | - ステートフル ワークフロー: 90 日間 <p><p>- ステートレス ワークフロー: 5 分間 | 366 日間 | タイムアウトを強制する前にワークフローの実行を継続できる時間。 <p>実行継続時間は、実行の開始時刻と、ワークフロー設定 [ **[実行履歴の保持期間 (日数)]** ](#change-duration) に指定された制限を使用してその開始時に計算されます。 <p>**重要**: [実行期間] の値は常に、[ストレージでの実行履歴の保持期間] の値以下になるようにしてください。 そうしないと、関連付けられているジョブが完了する前に実行履歴が削除される可能性があります。 <p><p>詳細については、「[実行継続時間とストレージでの履歴の保持期間を変更する](#change-duration)」を参照してください。 <p><p>**ヒント**: 異なる制限が必要なシナリオについては、[Logic Apps チームに連絡し](mailto://logicappspm@microsoft.com)、その要件について相談してください。 |
+| 繰り返し間隔 | - 最小: 1 秒 <p><p>- 最大: 500 日間 | - 最小: 1 秒 <p><p>- 最大: 500 日間  | - 最小: 1 秒 <p><p>- 最大: 500 日間 ||
+||||||
 
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
 ### <a name="change-run-duration-and-history-retention-in-storage"></a>実行継続時間とストレージでの履歴の保持期間を変更する
 
-同じ設定を使用して、ワークフローを実行し、実行履歴をストレージに保持できる最大日数を制御します。 これらのプロパティの既定値または現在の制限を変更するには、次の手順を実行します。
+デザイナーで、同じ設定を使用して、ワークフローを実行し、実行履歴をストレージに保持できる最大日数を制御します。
 
-* マルチテナント Azure のロジック アプリの場合、90 日間の既定制限は最大制限と同じです。 この値は減らすことしかできません。
+* マルチテナント サービスの場合、90 日間の既定制限は最大制限と同じです。 この値は減らすことしかできません。
 
-* 統合サービス環境内のロジック アプリの場合、90 日間の既定制限を減らすことも増やすこともできます。
+* シングルテナント サービス (プレビュー) の場合は、90 日間の既定制限を減らすことも増やすこともできます。 詳細については、[Visual Studio Code を使用したシングルテナント Azure Logic Apps のワークフローの作成](create-stateful-stateless-workflows-visual-studio-code.md)に関する記事を参照してください。
+
+* 統合サービス環境の場合、90 日間の既定制限を減らすことも増やすこともできます。
+
+> [!TIP]
+> 異なる制限が必要なシナリオについては、[Logic Apps チームに連絡し](mailto://logicappspm@microsoft.com)、その要件について相談してください。
 
 たとえば、保持期間の制限を 90 日間から 30 日間に減らしたとします。 実行履歴から 60 日前の実行が削除されます。 保有期間を 30 日間から 60 日間に増やした場合、20 日前の実行はさらに 40 日間実行履歴に残ります。
 
 > [!IMPORTANT]
-> 実行の継続時間が現在の実行履歴の保持期間の制限を超えると、その実行はストレージの実行履歴から削除されます。 実行履歴が失われないようにするには、保持期間の制限を、実行の可能な最長期間よりも "*常に*" 多くします。
+> 実行の継続時間が現在の実行履歴の保持期間の制限を超えると、その実行はストレージ内の実行履歴から削除されます。 実行履歴が失われないようにするには、保持期間の制限を、実行の可能な最長期間よりも "*常に*" 多くします。
+
+これらのプロパティの既定値または現在の制限を変更するには、次の手順を実行します。
+
+#### <a name="portal-multi-tenant-service"></a>[ポータル (マルチテナント サービス)](#tab/azure-portal)
 
 1. [Azure portal](https://portal.azure.com) の検索ボックスで、 **[ロジック アプリ]** を検索して選択します。
 
-1. ロジック アプリを検索して選択します。 ロジック アプリ デザイナーでロジック アプリを開きます。
+1. ロジック アプリ デザイナーでロジック アプリを見つけて開きます。
 
 1. ロジック アプリのメニューで、 **[ワークフロー設定]** を選択します。
 
@@ -83,7 +103,9 @@ ms.locfileid: "107764875"
 
 1. 操作が完了したら、 **[ワークフロー設定]** のツールバーで、 **[保存]** を選択します。
 
-ロジック アプリ用の Azure Resource Manager テンプレートを生成する場合、この設定はワークフローのリソース定義のプロパティとして表示されます。これについては、「[Microsoft.Logic ワークフロー テンプレートのリファレンス](/azure/templates/microsoft.logic/workflows)」を参照してください。
+#### <a name="resource-manager-template"></a>[Resource Manager テンプレート](#tab/azure-resource-manager)
+
+Azure Resource Manager テンプレートを使用する場合、この設定はワークフローのリソース定義内にプロパティとして表示されます。これについては、「[Microsoft.Logic ワークフロー テンプレートのリファレンス](/azure/templates/microsoft.logic/workflows)」を参照してください。
 
 ```json
 {
@@ -103,63 +125,82 @@ ms.locfileid: "107764875"
    }
 }
 ```
+---
 
+<a name="concurrency-looping-and-debatching-limits"></a>
 <a name="looping-debatching-limits"></a>
 
-## <a name="concurrency-looping-and-debatching-limits"></a>コンカレンシー、ループ、および分割処理の制限
+## <a name="looping-concurrency-and-debatching-limits"></a>ループ、コンカレンシー、および分割処理の制限
 
-ロジック アプリの 1 回の実行の制限を次に示します。
+次の表に、1 つのワークフロー実行の値を示します。
 
-### <a name="loops"></a>ループ
+### <a name="loop-actions"></a>ループ アクション
 
-| 名前 | 制限 | Notes |
-| ---- | ----- | ----- |
-| Foreach の配列項目 | 100,000 | この制限は、"for each" ループで処理できる配列項目の最大数を示します。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](logic-apps-perform-data-operations.md#filter-array-action)を使用できます。 |
-| Foreach のコンカレンシー | コンカレンシーがオフの場合:20 <p><p>コンカレンシーがオンの場合: <p><p>- 既定:20 <br>- 最小:1 <br>- 最大:50 | この制限は、同時に (つまり、並列で) 実行できる "for each" ループ イテレーションの最大数です。 <p><p>この制限を変更するには、["for each" のコンカレンシー制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)方法に関するページ、または「["for each" ループを順次実行する](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)」を参照してください。 |
-| Until 反復数 | - 既定:60 <br>- 最小:1 <br>- 最大:5,000 | ロジック アプリの実行中に、"Until" ループで実行できる最大サイクル数。 <p><p>この制限を変更するには、"Until" ループ図形で **[制限の変更]** を選択し、 **[カウント]** プロパティの値を指定します。 |
-| タイムアウトまで | - 既定:PT1H (1 時間) | "Until" ループを終了するまでに実行できる最大時間数であり、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定されます。 タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 <p><p>この制限を変更するには、"Until" ループ図形で **[制限の変更]** を選択し、 **[タイムアウト]** プロパティの値を指定します。 |
-||||
+#### <a name="for-each-loop"></a>For each ループ
+
+**For each** ループの値の一覧を次の表に示します。
+
+| 名前 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|--------------|-------------------------|---------------------------------|-------|
+| 配列項目 | 100,000 項目 | - ステートフル ワークフロー: 100,000 項目 <p><p>- ステートレス ワークフロー: 100 項目 | 100,000 項目 | **For each** ループで処理できる配列項目の数。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](logic-apps-perform-data-operations.md#filter-array-action)を使用できます。 |
+| コンカレント反復 | コンカレンシーがオフ: 20 <p><p>コンカレンシーがオン: <p>- 既定:20 <br>- 最小:1 <br>- 最大:50 | コンカレンシーがオフ: 20 <p><p>コンカレンシーがオン: <p><p>- 既定:20 <br>- 最小:1 <br>- 最大:50 | コンカレンシーがオフ: 20 <p><p>コンカレンシーがオン: <p>- 既定:20 <br>- 最小:1 <br>- 最大:50 | 同時に (つまり、並列で) 実行できる **For each** ループ イテレーションの数。 <p><p>マルチテナント サービスでこの値を変更するには、「[**For each** のコンカレンシーを変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)」または「[**For each** ループを順次実行する](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)」を参照してください。 |
+||||||
+
+#### <a name="until-loop"></a>Until ループ
+
+**Until** ループの値の一覧を次の表に示します。
+
+| 名前 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|--------------|-------------------------|---------------------------------|-------|
+| イテレーション | - 既定:60 <br>- 最小:1 <br>- 最大:5,000 | ステートフル ワークフロー: <p><p>- 既定:60 <br>- 最小:1 <br>- 最大:5,000 <p><p>ステートレス ワークフロー: <p><p>- 既定:60 <br>- 最小:1 <br>- 最大:100 | - 既定:60 <br>- 最小:1 <br>- 最大:5,000 | ワークフロー実行中に **Until** ループで実行できるサイクル数。 <p><p>この値を変更するには、**Until** ループ図形で **[制限の変更]** を選択し、 **[カウント]** プロパティの値を指定します。 |
+| タイムアウト | 既定: PT1H (1 時間) | ステートフル ワークフロー: PT1H (1 時間) <p><p>ステートレス ワークフロー: PT5M (5 分間) | 既定: PT1H (1 時間) | **Until** ループを終了するまでに実行できる時間であり、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定されます。 タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 <p><p>この値を変更するには、**Until** ループ図形で **[制限の変更]** を選択し、 **[タイムアウト]** プロパティの値を指定します。 |
+||||||
 
 <a name="concurrency-debatching"></a>
 
 ### <a name="concurrency-and-debatching"></a>コンカレンシーと分割処理
 
-| 名前 | 制限 | Notes |
-| ---- | ----- | ----- |
-| トリガーのコンカレンシー | コンカレンシーがオフの場合:無制限 <p><p>コンカレンシーがオンの場合、これを有効にした後に元に戻すことはできません。 <p><p>- 既定:25 <br>- 最小:1 <br>- 最大:100 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数です。 <p><p>**注**:コンカレンシーが有効になっていると、[配列のバッチ解除](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)のために SplitOn 上限が 100 項目に下がります。 <p><p>この制限を変更するには、[トリガーのコンカレンシー制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)方法に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
-| 待機中の実行の最大数 | コンカレンシーがオフの場合: <p><p>- 最小:1 <br>- 最大:50 <p><p>コンカレンシーがオンの場合: <p><p>- 最小:10 + 同時実行の数 (トリガーのコンカレンシー) <br>- 最大:100 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数です。 <p><p>この制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
-| SplitOn 項目数 | コンカレンシーがオフの場合:100,000 <p><p>コンカレンシーがオンの場合:100 | 配列を返すトリガーの場合、"Foreach" ループを使用するのではなく、処理のために配列項目を複数のワークフロー インスタンスに[分割、つまり、バッチ解除する](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) 'SplitOn' プロパティを使用する式を指定できます。 この式では、各配列項目のワークフロー インスタンスを作成および実行するために使用する配列を参照します。 <p><p>**注**:コンカレンシーが有効になっていると、SplitOn 上限が 100 項目に下がります。 |
-||||
+| 名前 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|--------------|-------------------------|---------------------------------|-------|
+| トリガー - 同時実行 | コンカレンシーがオフ: 無制限 <p><p>コンカレンシーがオン (元に戻せません): <p><p>- 既定:25 <br>- 最小:1 <br>- 最大:100 | コンカレンシーがオフ: 無制限 <p><p>コンカレンシーがオン (元に戻せません): <p><p>- 既定:25 <br>- 最小:1 <br>- 最大:100 | コンカレンシーがオフ: 無制限 <p><p>コンカレンシーがオン (元に戻せません): <p><p>- 既定:25 <br>- 最小:1 <br>- 最大:100 | 1 つのトリガーで同時に (つまり並列で) 開始できる同時実行の数。 <p><p>**注**: コンカレンシーが有効になっていると、[配列のバッチ解除](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)のために **SplitOn** 上限が 100 項目に下がります。 <p><p>マルチテナント サービスでこの値を変更するには、「[トリガーのコンカレンシーを変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)」または「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
+| 待機中の実行の最大数 | コンカレンシーがオフ: <p><p>- 最小: 1 回の実行 <p>- 最大: 50 回の実行 <p><p>コンカレンシーがオン: <p><p>- 最小: 10 回の実行 + 同時実行の数 <p>- 最大: 100 回の実行 | コンカレンシーがオフ: <p><p>- 最小: 1 回の実行 <p>- 最大: 50 回の実行 <p><p>コンカレンシーがオン: <p><p>- 最小: 10 回の実行 + 同時実行の数 <p>- 最大: 100 回の実行 | コンカレンシーがオフ: <p><p>- 最小: 1 回の実行 <p>- 最大: 50 回の実行 <p><p>コンカレンシーがオン: <p><p>- 最小: 10 回の実行 + 同時実行の数 <p>- 最大: 100 回の実行 | 現在のワークフロー インスタンスで既に最大数の同時インスタンスが実行されているときに実行を待機できるワークフロー インスタンスの数。 <p><p>マルチテナント サービスでこの値を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
+| **SplitOn** 項目数 | コンカレンシーがオフ: 100,000 項目 <p><p>コンカレンシーがオン: 100 項目 | コンカレンシーがオフ: 100,000 項目 <p><p>コンカレンシーがオン: 100 項目 | コンカレンシーがオフ: 100,000 項目 <p><p>コンカレンシーがオン: 100 項目 | 配列を返すトリガーの場合、**For each** ループを使用するのではなく、処理のために [配列項目を複数のワークフロー インスタンスに分割、つまり、バッチ解除する](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) **SplitOn** プロパティを使用する式を指定できます。 この式では、各配列項目のワークフロー インスタンスを作成および実行するために使用する配列を参照します。 <p><p>**注**: コンカレンシーが有効になっていると、**SplitOn** 上限が 100 項目に下がります。 |
+||||||
 
 <a name="throughput-limits"></a>
 
 ## <a name="throughput-limits"></a>スループットの制限
 
-1 つのロジック アプリ定義の制限を次に示します。
+次の表に、1 つのワークフロー定義の値を示します。
 
-### <a name="multi-tenant-logic-apps-service"></a>マルチテナント Logic Apps サービス
+### <a name="multi-tenant--single-tenant-preview"></a>マルチテナントとシングルテナント (プレビュー)
 
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
-| アクション: 5 分間隔ごとに実行 | - 100,000 回の実行 (既定) <p><p>- 300,000 回の実行 (高スループット モードで最大)  | ロジック アプリの既定の制限を最大限度に引き上げるには、プレビュー段階の「[高スループット モードで実行する](#run-high-throughput-mode)」を参照してください。 または、必要に応じて[複数のロジック アプリにワークロードを分散](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)できます。 |
-| アクション:同時送信呼び出し | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
-| ランタイム エンドポイント: 同時受信呼び出し | ～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
-| ランタイム エンドポイント: 5 分あたりの読み取り呼び出し数  | 60,000 | この制限は、ロジック アプリの実行履歴から未加工の入力と出力を取得する呼び出しに適用されます。 必要に応じて、複数のアプリにわたってワークロードを分散できます。 |
-| ランタイム エンドポイント: 5 分あたりの起動呼び出し数 | 45,000 | 必要に応じて、複数のアプリにワークロードを分散できます。 |
-| 5 分あたりのコンテンツのスループット | 600 MB | 必要に応じて、複数のアプリにワークロードを分散できます。 |
+| アクション - 5 分間のローリング間隔ごとの実行 | - 既定: 100,000 回の実行 <p><p>- 高スループット モード: 300,000 回の実行  | 既定値をワークフローの最大値に引き上げるには、プレビュー段階の「[高スループット モードで実行する](#run-high-throughput-mode)」を参照してください。 または、必要に応じて[複数のワークフローにワークロードを分散](handle-throttling-problems-429-errors.md#logic-app-throttling)できます。 |
+| アクション - 同時送信呼び出し | 最大 2,500 回の呼び出し | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
+| マネージド コネクタの調整 | - マルチテナント: 調整の制限はコネクタによって異なります <p><p>- シングルテナント: 接続ごとに、1 分あたり 50 の要求 | マルチテナントの場合は、[各マネージド コネクタのテクニカル リファレンス ページ](/connectors/connector-reference/connector-reference-logicapps-connectors)を確認してください。 <p><p>コネクタの調整の処理について詳しくは、[調整の問題 ("429 - 要求が多すぎます" エラー) の処理](handle-throttling-problems-429-errors.md#connector-throttling)に関するページを参照してください。 |
+| ランタイム エンドポイント - 同時受信呼び出し | 最大 1,000 回の呼び出し | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
+| ランタイム エンドポイント - 5 分あたりの読み取り呼び出し数  | 60,000 回の読み取り呼び出し | この制限は、ワークフローの実行履歴から未加工の入力と出力を取得する呼び出しに適用されます。 必要に応じて複数のワークフローにワークロードを分散できます。 |
+| ランタイム エンドポイント - 5 分あたりの起動呼び出し数 | 45,000 回の起動呼び出し | 必要に応じて複数のワークフローにワークロードを分散できます。 |
+| 5 分あたりのコンテンツのスループット | 600 MB | 必要に応じて複数のワークフローにワークロードを分散できます。 |
 ||||
 
 <a name="run-high-throughput-mode"></a>
 
-#### <a name="run-in-high-throughput-mode"></a>高スループット モードで実行する
+### <a name="run-in-high-throughput-mode"></a>高スループット モードで実行する
 
-1 回のロジック アプリの定義において、5 分ごとに実行されるアクションの数には、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)が設定されています。 ロジック アプリの既定の制限を[最大限度](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)に引き上げるには (既定の上限の 3 倍)、プレビュー段階の高スループット モードを有効にします。 または、必要に応じて[複数のロジック アプリにワークロードを分散](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)できます。
+1 つのワークフロー定義の場合、5 分ごとに実行されるアクションの数には、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)があります。 ワークフローの既定値を[最大値](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) (既定値の 3 倍) に引き上げるには、プレビュー段階の高スループット モードを有効にできます。 または、必要に応じて[複数のワークフローにワークロードを分散](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling)できます。
 
-1. Azure portal のロジック アプリのメニューで **[設定]** の **[ワークフロー設定]** を選択します。
+#### <a name="portal-multi-tenant-service"></a>[ポータル (マルチテナント サービス)](#tab/azure-portal)
+
+1. Azure portal のロジック アプリのメニューで **[設定]** の下から **[ワークフロー設定]** を選択します。
 
 1. **[ランタイム オプション]** ** > [高スループット]** で設定を **[オン]** に変更します。
 
    ![[ワークフロー設定] と [高スループット] が [オン] に設定されている Azure portal のロジック アプリ メニューを示すスクリーンショット。](./media/logic-apps-limits-and-config/run-high-throughput-mode.png)
+
+#### <a name="resource-manager-template"></a>[Resource Manager テンプレート](#tab/azure-resource-manager)
 
 ロジック アプリをデプロイするために、ARM テンプレートのこの設定を有効にするには、ロジック アプリのリソース定義の `properties` オブジェクトで、`operationOptions` プロパティを `OptimizedForHighThroughput`に設定した `runtimeConfiguration` オブジェクトを追加します。
 
@@ -193,6 +234,8 @@ ms.locfileid: "107764875"
 
 ロジック アプリのリソース定義の詳細については、「[概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)」を参照してください。
 
+---
+
 ### <a name="integration-service-environment-ise"></a>統合サービス環境 (ISE)
 
 * [Developer ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):1 分あたり最大 500 回の実行が提供されますが、これらの点に注意してください。
@@ -207,44 +250,59 @@ ms.locfileid: "107764875"
   |------|-------|-------|
   | 基本単位の実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 1 分あたり最大 4,000 回のアクション実行 (1 か月あたり最大 1 億 6,000 万回のアクション実行) が提供されます |
   | スケール ユニットの実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 各スケール ユニットでは、1 分あたり最大 2,000 回の追加アクション実行 (1 か月あたり最大 8,000 万回の追加アクション実行) を提供できます |
-  | 追加できる最大スケール ユニット | 10 | |
+  | 追加できる最大スケール ユニット | 10 スケール ユニット | |
   ||||
 
 <a name="gateway-limits"></a>
 
-## <a name="gateway-limits"></a>ゲートウェイの制限
+## <a name="data-gateway-limits"></a>データ ゲートウェイの制限
 
-Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。
+Azure Logic Apps では、オンプレミス データ ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。
+
+<a name="variables-action-limits"></a>
+
+## <a name="variables-action-limits"></a>変数アクションの制限
+
+次の表に、1 つのワークフロー定義の値を示します。
+
+| 名前 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|--------------|-------------------------|---------------------------------|-------|
+| ワークフローごとの変数 | 250 個の変数 | 250 個の変数 | 250 個の変数 ||
+| 変数 - コンテンツの最大サイズ | 104,857,600 文字 | ステートフル ワークフロー: 104,857,600 文字 <p><p>ステートレス ワークフロー: 1,024 文字 | 104,857,600 文字 ||
+| 変数 (配列型) - 配列項目の最大数 | 100,000 項目 | 100,000 項目 | Premium SKU: 100,000 項目 <p><p>Developer SKU: 5,000 項目 ||
+||||||
 
 <a name="http-limits"></a>
 
-## <a name="http-limits"></a>HTTP 制限
+## <a name="http-request-limits"></a>HTTP 要求の制限
 
-1 回の受信または送信呼び出しの制限を次に示します。
+次の表に、1 回の受信または送信呼び出しの値を示します。
 
 <a name="http-timeout-limits"></a>
 
-#### <a name="timeout-duration"></a>タイムアウト期間
+### <a name="timeout-duration"></a>タイムアウト期間
 
-コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトはこれらの制限より長くなる場合があります。 詳細については、特定のコネクタの技術詳細をご覧ください。「[Workflow triggers and actions](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)」もご覧ください。
+既定では、HTTP アクションと APIConnection アクションは、[標準的な同期操作パターン](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)に従いますが、Response アクションは "*同期操作パターン*" に従います。 マネージド コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトは次の制限よりも長くなる場合があります。 詳細については、[各コネクタのテクニカル リファレンス ページ](/connectors/connector-reference/connector-reference-logicapps-connectors)のほか、[ワークフローのトリガーとアクション](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)に関するドキュメントも参照してください。
 
-| 名前 | ロジック アプリ (マルチテナント) | ロジック アプリ (プレビュー) | 統合サービス環境 | Notes |
-|------|---------------------------|----------------------|---------------------------------|-------|
-| 送信要求 | 120 秒 <br>(2 分) | 230 秒 <br>(3.9 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーまたはアクションによる呼び出しが含まれます。 プレビュー バージョンの詳細については、「[Azure Logic Apps プレビュー](logic-apps-overview-preview.md)」を参照してください。 <p><p>**ヒント**:これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern) または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 [呼び出し可能なエンドポイント](logic-apps-http-endpoint.md)を持つ別のロジック アプリを呼び出したときにタイムアウト制限を回避するには、組み込みの Azure Logic Apps アクションを代わりに使用できます。これは、 **[Built-in]\(組み込み\)** の下のコネクタ ピッカーにあります。 |
-| 受信要求 | 120 秒 <br>(2 分) | 230 秒 <br>(3.9 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガー、HTTP Webhook トリガー、および HTTP Webhook アクションによって受信された呼び出しが含まれます。 プレビュー バージョンの詳細については、「[Azure Logic Apps プレビュー](logic-apps-overview-preview.md)」を参照してください。 <p><p>**注**:元の呼び出し元で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
+| 名前 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|--------------|-------------------------|---------------------------------|-------|
+| 送信要求 | 120 秒 <br>(2 分) | 230 秒 <br>(3.9 分) | 240 秒 <br>(4 分) | 送信要求の例には、HTTP トリガーまたはアクションによる呼び出しが含まれます。 <p><p>**ヒント**: これよりも実行時間が長い操作には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern)または ["Until" ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 [呼び出し可能なエンドポイント](logic-apps-http-endpoint.md)を持つ別のワークフローを呼び出すときにタイムアウト制限を回避するには、組み込みの Azure Logic Apps アクションを代わりに使用できます。これは、デザイナーの操作ピッカー ( **[ビルトイン]** の下) にあります。 |
+| 受信要求 | 120 秒 <br>(2 分) | 230 秒 <br>(3.9 分) | 240 秒 <br>(4 分) | 受信要求の例には、要求トリガー、HTTP Webhook トリガー、および HTTP Webhook アクションによって受信された呼び出しが含まれます。 <p><p>**注**: 元の呼び出し元で応答を受け取るには、入れ子になった別のワークフローを呼び出す場合を除き、応答のすべてのステップが制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
 ||||||
 
 <a name="message-size-limits"></a>
 
-#### <a name="message-size"></a>メッセージ サイズ
+### <a name="messages"></a>メッセージ
 
-| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
-|------|--------------------|---------------------------------------|-------|
-| メッセージ サイズ | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 <p><p>- AS2、X12、EDIFACT などのコネクタには、独自の [B2B メッセージ制限](#b2b-protocol-limits)があります。 <br>- ISE コネクタは、ISE 以外のコネクタの制限ではなく、ISE の制限を使用します。 |
-| チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p><p>ISE を使用している場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。例については、[Azure Blob Storage コネクタの API リファレンス](/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
-|||||
+| 名前 | チャンクが有効 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|------------------|--------------|-------------------------|---------------------------------|-------|
+| コンテンツのダウンロード - 要求の最大数 | はい | 1,000 の要求 | 1,000 の要求 | 1,000 の要求 ||
+| メッセージ サイズ | いいえ | 100 MB | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API では、チャンク、または既定の制限さえもサポートされない場合があります。 <p><p>- AS2、X12、EDIFACT などのコネクタには、独自の [B2B メッセージ制限](#b2b-protocol-limits)があります。 <p>- ISE コネクタでは、ISE 以外のコネクタ制限ではなく、ISE の制限が使用されます。 |
+| メッセージ サイズ | はい | 1 GB | 1,073,741,824 バイト <br>(1 GB) | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p><p>ISE を使用している場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。例については、[Azure Blob Storage コネクタの API リファレンス](/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
+| コンテンツのチャンク サイズ | はい | コネクタごとに異なります | 52,428,800 バイト (52 MB) | コネクタごとに異なります | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 |
+|||||||
 
-#### <a name="character-limits"></a>文字制限
+### <a name="character-limits"></a>文字制限
 
 | 名前 | 制限 | Notes |
 |------|-------|-------|
@@ -254,49 +312,83 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 <a name="retry-policy-limits"></a>
 
-#### <a name="retry-policy"></a>再試行ポリシー
+### <a name="retry-policy"></a>再試行ポリシー
 
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
-| 再試行 | 90 | 既定値は 4 です。 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
-| 再試行の最大間隔 | 1 日 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
-| 再試行の最小間隔 | 5 秒 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
+| 再試行 | - 既定値: 4 回の試行 <br> - 最大: 90 回の試行 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
+| 再試行の最大間隔 | - 既定値: 1 日 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
+| 再試行の最小間隔 | - 既定値: 5 秒 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
 ||||
 
 <a name="authentication-limits"></a>
 
 ### <a name="authentication-limits"></a>認証制限
 
-以下に、Request トリガーで開始され、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を有効にして Request トリガーへの受信呼び出しを承認するロジック アプリの制限を示します。
+次の表に、Request トリガーで開始され、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を有効にして Request トリガーへの受信呼び出しを承認するワークフローの値を示します。
 
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
-| Azure AD 承認ポリシー | 5 | |
-| 承認ポリシーごとの要求数 | 10 | |
-| クレームの値 - 最大文字数 | 150 |
+| Azure AD 承認ポリシー | 5 個のポリシー | |
+| 承認ポリシーごとの要求数 | 10 個のクレーム | |
+| クレームの値 - 最大文字数 | 150 字 |
 ||||
+
+<a name="switch-action-limits"></a>
+
+## <a name="switch-action-limits"></a>アクションの制限を切り替える
+
+次の表に、1 つのワークフロー定義の値を示します。
+
+| 名前 | 制限 | Notes |
+| ---- | ----- | ----- |
+| アクションごとのケースの最大数 | 25 ||
+||||
+
+<a name="inline-code-action-limits"></a>
+
+## <a name="inline-code-action-limits"></a>インライン コード アクションの制限
+
+次の表に、1 つのワークフロー定義の値を示します。
+
+| 名前 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|--------------|-------------------------|---------------------------------|-------|
+| コード文字の最大数 | 1,024 文字 | 100,000 文字 | 1,024 文字 | 上限を引き上げるには、[Azure portal を使用](create-stateful-stateless-workflows-azure-portal.md)するか、[Visual Studio Code と **Azure Logic Apps (プレビュー)** 拡張機能を使用して](create-stateful-stateless-workflows-visual-studio-code.md)、シングルテナント (プレビュー) Logic Apps で実行される **ロジック アプリ (プレビュー)** リソースを作成します。 |
+| コードを実行するための最長期間 | 5 秒 | 15 秒 | 1,024 文字 | 上限を引き上げるには、**Azure portal を使用** するか、[Visual Studio Code と](create-stateful-stateless-workflows-azure-portal.md)Azure Logic Apps (プレビュー)[ 拡張機能を使用して **、シングルテナント (プレビュー) Logic Apps で実行される** ロジック アプリ (プレビュー)](create-stateful-stateless-workflows-visual-studio-code.md) リソースを作成します。 |
+||||||
 
 <a name="custom-connector-limits"></a>
 
 ## <a name="custom-connector-limits"></a>カスタム コネクタの制限
 
-次に示すのは、Web API から作成できるカスタム コネクタの制限です。
+マルチテナントおよび統合サービス環境の場合のみ、既存の REST API または SOAP API のラッパーである[カスタム マネージド コネクタ](/connectors/custom-connectors)を作成して使用できます。 シングルテナント (プレビュー) の場合のみ、[カスタム組み込みコネクタ](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)を作成して使用できます。
 
-| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
-|------|--------------------|---------------------------------------|-------|
-| カスタム コネクタの数 | Azure サブスクリプションあたり 1,000 | Azure サブスクリプションあたり 1,000 ||
-| カスタム コネクタの 1 分あたりの要求数 | 接続ごとに、1 分あたり 500 の要求 | *カスタム コネクタ* ごとに、1 分あたり 2,000 の要求 ||
-|||
+カスタム コネクタの値の一覧を次の表に示します。
+
+| 名前 | マルチテナント | シングルテナント (プレビュー) | 統合サービス環境 | Notes |
+|------|--------------|-------------------------|---------------------------------|-------|
+| カスタム コネクタ | Azure サブスクリプションあたり 1,000 | 無制限 | Azure サブスクリプションあたり 1,000 ||
+| カスタム コネクタの 1 分あたりの要求数 | 接続ごとに、1 分あたり 500 の要求 | 実装に基づく | *カスタム コネクタ* ごとに、1 分あたり 2,000 の要求 ||
+| [接続タイムアウト] | 2 分 | アイドル接続: <br>4 分 <p><p>アクティブ接続: <br>10 分 | 2 分 ||
+||||||
+
+詳細については、次のドキュメントを確認してください。
+
+* [カスタム マネージド コネクタの概要](/connectors/custom-connectors)
+* [組み込みコネクタの作成を有効にする - Visual Studio Code と Azure Logic Apps (プレビュー)](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring)
 
 <a name="managed-identity"></a>
 
-## <a name="managed-identities"></a>マネージド ID
+## <a name="managed-identity-limits"></a>マネージド ID の制限
 
 | 名前 | 制限 |
 |------|-------|
 | ロジック アプリあたりのマネージド ID | システム割り当て ID または 1 個のユーザー割り当て ID |
 | Azure サブスクリプションにマネージド ID を持つ、リージョンごとのロジック アプリの数 | 1,000 |
 |||
+
+> [!NOTE] 
+> 既定では、ロジック アプリ (プレビュー) リソースには、実行時に接続を認証するために自動的に有効にされるシステム割り当てマネージド ID があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。 この設定を表示するには、ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。
 
 <a name="integration-account-limits"></a>
 
@@ -308,12 +400,12 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 * [Developer SKU と Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) の両方にわたる任意の[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内の統合アカウントを含む、合計 1,000 個の統合アカウント。
 
-* [Developer でも Premium でも](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)、各 ISE で追加コストなしで 1 つの統合アカウントを使用できます。ただし、含まれるアカウントの種類は ISE SKU によって異なります。 [コストを追加すれば](logic-apps-pricing.md#fixed-pricing)、ISE の統合アカウントを上限まで増やすことができます。
+* [Developer でも Premium でも](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)、各 ISE では追加コストなしで 1 つの統合アカウントを使用できます。ただし、含まれるアカウントの種類は ISE SKU によって異なります。 [コストを追加すれば](logic-apps-pricing.md#fixed-pricing)その合計制限まで、ISE の統合アカウントを追加作成できます。
 
   | ISE SKU | 統合アカウントの制限 |
   |---------|----------------------------|
   | **Premium** | 合計 20 アカウント。追加コストなしで Standard アカウントが 1 つ含まれます。 この SKU では、[Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントのみが与えられます。 Free または Basic アカウントは使用できません。 |
-  | **開発者** | 合計 20 アカウント。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントが 1 つ含まれます (1 に制限)。 この SKU では、次のいずれかの組み合わせを利用できます。 <p>- Free アカウントが 1 つと最大 19 の [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウント。 <br>- Free アカウントなしと最大 20 の Standard アカウント。 <p>Basic と追加の Free アカウントは許可されません。 <p><p>**重要**:[Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
+  | **開発者** | 合計 20 アカウント。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントが 1 つ含まれます (1 に制限)。 この SKU では、次のいずれかの組み合わせを利用できます。 <p>- Free アカウントが 1 つと最大 19 の [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウント。 <br>- Free アカウントなしと最大 20 の Standard アカウント。 <p>Basic または追加の Free アカウントは許可されません。 <p><p>**重要**:[Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
   |||
 
 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
@@ -322,7 +414,7 @@ ISE の価格と課金のしくみについては、「[固定価格モデル](.
 
 ### <a name="artifact-limits-per-integration-account"></a>統合アカウントごとのアーティファクトの制限
 
-次に示すのは、各統合アカウント レベルのアーティファクト数の制限です。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 統合アカウントの価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)に関する記事を参照してください。
+次の表に、各統合アカウント レベルに制限されるアーティファクト数の値を示します。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 統合アカウントの価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)に関する記事を参照してください。
 
 > [!NOTE]
 > Free レベルは、調査シナリオでのみ使用し、運用シナリオでは使用しないでください。 このレベルでは、スループットと使用率が制限され、サービス レベル アグリーメント (SLA) はありません。
@@ -365,33 +457,25 @@ ISE の価格と課金のしくみについては、「[固定価格モデル](.
 
 ### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>B2B プロトコル (AS2、X12、EDIFACT) のメッセージのサイズ
 
-B2B プロトコルに適用されるメッセージ サイズの制限を次に示します。
+次の表に、B2B プロトコルに適用されるメッセージ サイズ制限を示します。
 
-| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | Notes |
-|------|--------------------|---------------------------------------|-------|
-| AS2 | v2 - 100 MB<br>v1 - 25 MB | v2 - 200 MB <br>v1 - 25 MB | デコードおよびエンコードに適用 |
-| X12 | 50 MB | 50 MB | デコードおよびエンコードに適用 |
-| EDIFACT | 50 MB | 50 MB | デコードおよびエンコードに適用 |
+| 名前 | マルチテナント | シングルテナント | 統合サービス環境 | Notes |
+|------|--------------|---------------|---------------------------------|-------|
+| AS2 | v2 - 100 MB<br>v1 - 25 MB | 使用不可 | v2 - 200 MB <br>v1 - 25 MB | デコードおよびエンコードに適用 |
+| X12 | 50 MB | 使用不可 | 50 MB | デコードおよびエンコードに適用 |
+| EDIFACT | 50 MB | 使用不可 | 50 MB | デコードおよびエンコードに適用 |
 ||||
-
-<a name="disable-delete"></a>
-
-## <a name="disabling-or-deleting-logic-apps"></a>ロジック アプリを無効化または削除する
-
-ロジック アプリを無効にすると、新しい実行は開始されなくなります。 進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。
-
-ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
 
 <a name="configuration"></a>
 <a name="firewall-ip-configuration"></a>
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>ファイアウォールの構成:IP アドレスとサービス タグ
 
-ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [受信](#inbound)と [送信](#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。
+ワークフローが特定の IP アドレスへのトラフィックを制限するファイアウォール経由で通信する必要がある場合、そのファイアウォールでは、ロジック アプリ リソースが存在する Azure リージョン内の Logic Apps サービスまたはランタイムによって使用される [受信](#inbound)と [送信](#outbound) "*両方*" の IP アドレスに対してアクセスを許可する必要があります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。
 
 たとえば、米国西部リージョンのロジック アプリが、組み込みのトリガーとアクション ([HTTP トリガーやアクションなど](../connectors/connectors-native-http.md)) を介して送信または受信する呼び出しをサポートする場合、ファイアウォールでは、"*すべて*" の Azure Logic Apps サービスの受信 IP アドレス "*および*" 米国西部リージョンに存在する送信 IP アドレスへのアクセスを許可する必要があります。
 
-また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/managed.md)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の [マネージド コネクタ送信 IP アドレス](#outbound)へのアクセスを許可する必要もあります。 さらに、オンプレミスのリソースにアクセスするカスタム コネクタを [Azure 内のオンプレミス データ ゲートウェイ リソース](logic-apps-gateway-connection.md)を介して使用する場合は、ゲートウェイのインストールをセットアップして、対応する *マネージド コネクタ [送信 IP アドレス](#outbound)* へのアクセスを許可する必要があります。
+また、ワークフローで Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/managed.md)が使用されている場合、または [カスタム コネクタ](/connectors/custom-connectors/)が使用されている場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内にある "*すべて*" の[マネージド コネクタ送信 IP アドレス](#outbound)に対するアクセスも許可する必要があります。 さらに、オンプレミスのリソースにアクセスするカスタム コネクタを [Azure 内のオンプレミス データ ゲートウェイ リソース](logic-apps-gateway-connection.md)を介して使用する場合は、ゲートウェイのインストールをセットアップして、対応する *マネージド コネクタ [送信 IP アドレス](#outbound)* へのアクセスを許可する必要があります。
 
 ゲートウェイでの通信設定の設定の詳細については、次のトピックを参照してください。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 2799e25dbd84ff07b375c6fa1b103789aae82b49
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c44f3cb4ee8d25a0197888b498f07b40ed2072c6
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538420"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790201"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする (プレビュー)
 
@@ -45,7 +45,7 @@ Azure IoT Edge for Linux on Windows を使用すると、Linux 仮想マシン�
   * 最小空きメモリ容量: 1 GB
   * 最小空きディスク領域:10 GB
   * Windows 10 を使用して新しいデプロイを作成している場合は、Hyper-V が有効になっていることを確認します。 詳細については、「[Windows 10 上に Hyper-V をインストールする](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)」を参照してください。
-  * Windows Server を使用して新しいデプロイを作成している場合は、Hyper-V ロールがインストールされていることを確認します。 詳細については、「[Windows Server 上に Hyper-V ロールをインストールする](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)」を参照してください。
+  * Windows Server を使用して新しいデプロイを作成している場合は、必ず Hyper-V ロールがインストールされ、ネットワーク スイッチがあることを確認します。 詳細については、「[Azure IoT Edge for Linux on Windows の入れ子になった仮想化](nested-virtualization.md)」を参照してください。
   * VM を使用して新しいデプロイを作成している場合は、入れ子になった仮想化が正しく構成されていることを確認します。 詳細については、[入れ子になった仮想化](nested-virtualization.md)に関するガイドを参照してください。
 
 * Windows Admin Center 用の Azure IoT Edge 拡張機能がインストールされている Windows Admin Center へのアクセス:
@@ -177,7 +177,7 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
    ```
 
    > [!NOTE]
-   > パラメーターを指定せずにこのコマンドを実行したり、必要に応じてパラメーターを使用してデプロイをカスタマイズしたりできます。 [IoT Edge for Linux on Windows の PowerShell スクリプト リファレンス](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow)を参照して、パラメーターの意味と既定値を確認できます。
+   > パラメーターを指定せずにこのコマンドを実行したり、必要に応じてパラメーターを使用してデプロイをカスタマイズしたりできます。 [IoT Edge for Linux on Windows の PowerShell スクリプト リファレンス](reference-iot-edge-for-linux-on-windows-functions.md#deploy-eflow)を参照して、パラメーターの意味と既定値を確認できます。
 
 1. ライセンス条項に同意するには、「Y」と入力します。
 
