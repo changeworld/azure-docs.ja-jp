@@ -3,12 +3,12 @@ title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
 ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 677e203b724f2046dfd7ba8d7a509965a36a8172
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 886087a22712e316f4ecd50674f48594d6953dab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326167"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747469"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
@@ -141,7 +141,7 @@ if ($roleDefinitionIds.Count -gt 0)
    > [!NOTE]
    > **[修復タスク]** ページは、 **[コンプライアンス]** ページからポリシーを見つけて選択し、 **[修復タスクの作成]** ボタンを選択して開くこともできます。
 
-1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、 **[場所]** ドロップダウンを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
+1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、 **[場所]** ドロップダウン リストを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
 
    :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="修復ノードと、修復するリソースのグリッドのスクリーンショット。" border="false":::
 
@@ -151,7 +151,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. ポリシー コンプライアンス ページの **[修復タスク]** を選択すると､進行状況の詳細が表示されます｡ 修復されているリソースの一覧と共に、タスクに使用されたフィルターが表示されます。
 
-1. **[修復タスク]** ページで、リソースを右クリックして、修復タスクのデプロイまたはリソースのいずれかを表示します。 行の末尾にある **[関連イベント]** を選択すると､エラー メッセージなどの詳細が表示されます｡
+1. **[修復タスク]** ページで、リソースを選択して保持し (または右クリック)、修復タスクのデプロイまたはリソースのいずれかを表示します。 行の末尾にある **[関連イベント]** を選択すると､エラー メッセージなどの詳細が表示されます｡
 
    :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="[修復タスク] タブのリソースのコンテキスト メニューを示すスクリーンショット。" border="false":::
 

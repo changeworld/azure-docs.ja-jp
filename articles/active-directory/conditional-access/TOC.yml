@@ -39,6 +39,8 @@
       href: service-dependencies.md
     - name: 場所の条件
       href: location-condition.md
+    - name: デバイスのフィルター
+      href: concept-condition-filters-for-devices.md
     - name: What if ツール
       href: what-if-tool.md
     - name: 継続的アクセス評価

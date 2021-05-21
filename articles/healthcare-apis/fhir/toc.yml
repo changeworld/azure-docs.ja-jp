@@ -106,6 +106,8 @@
           href: export-data.md
         - name: 匿名化エクスポート
           href: de-identified-export.md
+        - name: データを Synapse にエクスポートする
+          href: export-to-synapse.md
     - name: データの変換
       expanded: false
       items:

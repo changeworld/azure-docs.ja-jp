@@ -1,18 +1,14 @@
 ---
 title: アラート情報を転送する
 description: 転送ルールを使用して、パートナーのシステムにアラート情報を送信することができます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 0fec86a6212cc0f4cb3df67280a0e6d39ed329ac
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837274"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732229"
 ---
 # <a name="forward-alert-information"></a>アラート情報を転送する
 
@@ -144,6 +140,20 @@ Defender for IoT の管理者には、転送ルールを使用するためのア
 | Message | Sensor name: Azure Defender for IoT アプライアンスの名前。 <br />LEEF:1.0 <br />Azure Defender for IoT <br />Sensor  <br /><センサーのバージョン> <br />Azure Defender for IoT Alert <br />title: アラートのタイトル。 <br />msg:  アラートのメッセージ。 <br />protocol:  アラートのプロトコル。<br />severity:  **[Warning]** 、 **[Minor]** 、 **[Major]** 、または **[Critical]** 。 <br />type:  アラートの種類: **[Protocol Violation]** 、 **[Policy Violation]** 、 **[Malware]** 、 **[Anomaly]** 、または **[Operational]** 。 <br />start: アラートの時刻。 Syslog サーバー マシンの時刻とは異なる場合があることに注意してください (これはタイム ゾーンの構成によって決まります)。 <br />src_ip:  送信元デバイスの IP アドレス。<br />dst_ip:  送信先デバイスの IP アドレス。 <br />cat: アラートに関連付けられているアラート グループ。 |
 
 すべての情報を入力したら、 **[送信]** を選択します。
+
+#### <a name="webhook-server-action"></a>Webhook サーバー アクション
+
+webhook サーバーにアラート情報を送信します。 Webhook サーバーを使用すると、Defender for IoT によるアラート イベントにサブスクライブする統合を設定できます。 アラート イベントがトリガーされると、管理コンソールから webhook の構成済み URL に HTTP POST ペイロードが送信されます。 Webhook は、外部の SIEM システム、SOAR システム、インシデント管理システムなどを更新するために使用できます。   
+
+**Webhook アクションを定義するには、以下の手順を実行します。**
+
+1. Webhook アクションを選択します。
+
+:::image type="content" source="media/how-to-work-with-alerts-sensor/webhook.png" alt-text="Webhook の転送規則を定義します。":::
+
+1. **[URL]** フィールドにサーバー アドレスを入力します。
+1. **[キー]** と **[値]** のフィールドで、キーと値の定義を使用して HTTP ヘッダーをカスタマイズします。 キーには、文字、数字、ダッシュ、およびアンダースコアのみを含めることができます。 値には、先頭または末尾にスペースを 1 つだけ含めることができます。
+1. **[保存]** を選択します。
 
 #### <a name="netwitness-action"></a>NetWitness のアクション
 

@@ -3,12 +3,12 @@ title: Windows のグループ ポリシー ベースラインからゲスト構
 description: Windows Server 2019 セキュリティ ベースラインからグループ ポリシーをポリシー定義に変換する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: a49c8044914c8c23b4f99cad7838652eb94c4b92
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: fa6012702bf00ee062b4d9d46f47bb673bb460ef
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096582"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763003"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows のグループ ポリシー ベースラインからゲスト構成ポリシー定義を作成する方法
 
@@ -20,12 +20,12 @@ Windows の監査時に、ゲスト構成では [Desired State Configuration](/p
 > [!IMPORTANT]
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Windows マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
 > - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
-> 
+>
 > カスタム コンテンツ パッケージでは、秘密や機密情報を使用しないでください。
 
 DSC コミュニティでは、エクスポートされたグループ ポリシー テンプレートを DSC 形式に変換できる [BaselineManagement モジュール](https://github.com/microsoft/BaselineManagement)を公開しています。 BaselineManagement モジュールと GuestConfiguration コマンドレットを組み合わせて使用すると、グループ ポリシー コンテンツから Windows 用の Azure Policy ゲスト構成パッケージを作成できます。 BaselineManagement モジュールの使用方法の詳細については、「[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/scripting/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
 
-このガイドでは、グループ ポリシー オブジェクト (GPO) から Azure Policy ゲスト構成パッケージを作成するプロセスについて説明します。 このチュートリアルでは、Windows Server 2019 セキュリティ ベースラインの変換の概要を説明していますが、同じプロセスを他の GPO に適用することもできます。  
+このガイドでは、グループ ポリシー オブジェクト (GPO) から Azure Policy ゲスト構成パッケージを作成するプロセスについて説明します。 このチュートリアルでは、Windows Server 2019 セキュリティ ベースラインの変換の概要を説明していますが、同じプロセスを他の GPO に適用することもできます。
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Windows Server 2019 セキュリティ ベースラインをダウンロードし、関連する PowerShell モジュールをインストールする
 
@@ -97,15 +97,15 @@ PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、お�
 
    ```azurepowershell-interactive
    $NewGuestConfigurationPolicySplat = @{
-        ContentUri = $Uri 
-        DisplayName = 'Server 2019 Configuration Baseline' 
-        Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
+        ContentUri = $Uri
+        DisplayName = 'Server 2019 Configuration Baseline'
+        Description 'Validation of using a completely custom baseline configuration for Windows VMs'
         Path = 'C:\git\policyfiles\policy'  
-        Platform = Windows 
+        Platform = Windows
    }
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
-    
+
 1. `Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。 Publish コマンドを実行するには、Azure でポリシー定義を作成できるアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md#getting-started)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者** です。
 
    ```azurepowershell-interactive
@@ -119,7 +119,7 @@ Azure で作成されるポリシーに関する最後のステップでは、�
 > [!IMPORTANT]
 > ゲスト構成ポリシー定義は **常に**、"_AuditIfNotExists_" ポリシーと "_DeployIfNotExists_" ポリシーを組み合わせたイニシアティブを使って割り当てる必要があります。 "_AuditIfNotExists_" ポリシーのみを割り当てた場合は、前提条件がデプロイされず、ポリシーでは、準拠しているサーバーが常に "0" と示されます。
 
-_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加のレベルのアクセス権が必要です。 最小限の権限を付与するために、**リソース ポリシーの共同作成者** を拡張するカスタム ロール定義を作成できます。 次の例では、追加のアクセス許可 _Microsoft.Authorization/roleAssignments/write_ を持つ **リソース ポリシーの共同作成者 DINE** という名前のロールを作成します。
+_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加のレベルのアクセス権が必要です。 最小限の権限を付与するために、**リソース ポリシーの共同作成者** を拡張するカスタム ロール定義を作成できます。 以下の例では、追加のアクセス許可 _Microsoft.Authorization/roleAssignments/write_ を持つ **リソース ポリシーの共同作成者 DINE** という名前のロールを作成します。
 
    ```azurepowershell-interactive
    $subscriptionid = '00000000-0000-0000-0000-000000000000'

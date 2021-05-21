@@ -9,17 +9,17 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: デバイス アプリケーション開発の概要
+    - name: デバイス アプリケーション開発
       items:
         - name: テレメトリを IoT Central に送信する
           href: quickstart-send-telemetry-central.md
         - name: テレメトリを IoT Hub に送信する
           href: quickstart-send-telemetry-iot-hub.md
-    - name: 埋め込み開発の概要
+    - name: 組み込みデバイス開発
       items:
         - name: 組み込みデバイス開発のクイックスタート
           href: quickstart-device-development.md
-        - name: MXCHIP AZ3166 を IoT Central に接続する
+        - name: MXCHIP AZ3166
           href: quickstart-devkit-mxchip-az3166.md
 - name: チュートリアル
   items:

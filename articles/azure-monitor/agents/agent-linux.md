@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 23597804a34a9bc409db179010569024aa472016
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 45489d25256d049467dd946922d30606c53f9bed
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725928"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750953"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -56,7 +56,7 @@ Log Analytics エージェントでサポートされている Linux ディス�
  - Ubuntu、Debian: `apt-get install -y python2`
  - SUSE: `zypper install -y python2`
 
-python2 実行可能ファイルに *python* という別名を付ける必要があります。 この別名を設定するために使用できる 1 つの方法を次に示します。
+ここでも、古いバージョンのエージェントを使用している場合にのみ、python2 実行可能ファイルに *python* という別名を付ける必要があります。 この別名を設定するために使用できる 1 つの方法を次に示します。
 
 1. 次のコマンドを実行して、既存の別名を削除します。
  
@@ -80,7 +80,7 @@ OMS エージェントでは、Linux のカスタマイズおよびセキュリ�
 - CIS
 - SELINUX
 
-[Azure Monitor エージェント](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview)では、CIS と SELINUX のセキュリティ強化のサポートが予定されています。 その他のセキュリティ強化とカスタマイズの手段は、OMS エージェントではサポートされておらず、その計画もありません。  
+[Azure Monitor エージェント](./azure-monitor-agent-overview.md)では、CIS と SELINUX のセキュリティ強化のサポートが予定されています。 その他のセキュリティ強化とカスタマイズの手段は、OMS エージェントではサポートされておらず、その計画もありません。  
 
 ## <a name="agent-prerequisites"></a>エージェントの前提条件
 

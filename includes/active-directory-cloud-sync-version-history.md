@@ -1,14 +1,30 @@
 ---
-ms.openlocfilehash: 69f0da2f1528ad1f45762a8f754cc2020b4cb880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1beac7a75bc8ddfbdec046d381ee95b23b1575ca
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98901026"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108793505"
 ---
 この記事では、これまでにリリースされた Azure Active Directory Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 プロビジョニング エージェントは、新しいバージョンがリリースされると自動的に更新されます。 
 
 Microsoft では、エージェントの最新バージョンと 1 つ前のバージョンを直接サポートしています。
+
+## <a name="113590"></a>1.1.359.0
+
+### <a name="new-features-and-improvements"></a>新機能と機能強化
+- アクセス許可を設定/リセットするための GMSA コマンドレット
+
+### <a name="fixed-issues"></a>修正された問題
+- GMSA フォルダーのアクセス許可のバグ修正 (元来、ブートストラップの問題によって発生した問題)
+- 1 つの値参照属性に対する複数の変更を処理するためのバグ修正 (マネージャーなど)
+- 初期列挙の失敗に対するバグ修正と、失敗に対する強化されたトレース
+- スコープ グループへのグループ メンバーシップの更新を最適化します。 これにより、お客様はグループ スコープ フィルターを使用して、最大 50,000 人のメンバーのグループを同期できるようになりました。 
+- スコープ設定ロジックに従うために、オンデマンド プロビジョニングで使用されるスコープ設定と DN による単一オブジェクトの取得をサポートします
+
+
+
+
 
 ## <a name="113540"></a>1.1.354.0
 

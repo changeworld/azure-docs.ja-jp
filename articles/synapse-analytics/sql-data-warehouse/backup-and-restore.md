@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 0fa6777dc5b587150f630ed8ccc110d16448cc21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb0cf3d84db507d3200f0285e95c2142e3288fbd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602249"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784073"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse の専用 SQL プールにおけるバックアップと復元
 
@@ -57,7 +57,7 @@ order by run_id desc
 1. 専用 SQL プールは、7 日間の保有期間に達したとき **と**、復元ポイントの合計数が少なくとも 42 個ある場合 (ユーザー定義と自動の両方を含む) に、復元ポイントを削除します。
 2. 専用 SQL プールが一時停止しているときはスナップショットは取得されません。
 3. 復元ポイントの経過時間は、復元ポイントが取得された時点 (SQL プールが一時停止された時点を含む) からのカレンダーの絶対日数によって測定されます。
-4. 任意の時点で、復元ポイントが 7 日間の保有期間に達していない限り、専用 SQL プールは最大 42 個のユーザー定義の復元ポイントと 42 個の自動復元ポイントを格納できることが保証されています。
+4. 任意の時点で、復元ポイントが 7 日間の保有期間に達していない限り、専用 SQL プールは最大 42 個のユーザー定義の復元ポイントまたは 42 個の自動復元ポイントを格納できることが保証されています
 5. スナップショットが取得され、専用 SQL プールが 7 日間を超えて一時停止されてから再開した場合、復元ポイントの数が合計で 42 になるまで (ユーザー定義と自動の両方を含む)、復元ポイントが維持されます。
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>SQL プールが停止しているときのスナップショットのリテンション期間

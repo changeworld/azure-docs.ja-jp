@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 02/11/2021
-ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 22923742e5389ac2bd6e5268e6dcd9055c23a703
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461710"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656078"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview でのソース認証用の資格情報
 
@@ -57,6 +57,19 @@ Purview マネージド ID を使用してスキャンを設定する場合は�
 
 ## <a name="grant-the-purview-managed-identity-access-to-your-azure-key-vault"></a>Purview マネージド ID に Azure Key Vault へのアクセス権を付与する
 
+現在 Azure Key Vault では、次の 2 つのアクセス許可モデルがサポートされています。
+
+- オプション 1 - アクセス ポリシー 
+- オプション 2 - ロールベースのアクセス制御 
+
+Purview マネージド ID へのアクセス権の割り当てを行う前に、まず、メニューにある、Key Vault リソースの **[アクセス ポリシー]** から自分の Azure Key Vault のアクセス許可モデルを識別してください。 関連するアクセス許可モデルに基づいて、次の手順を行います。  
+
+:::image type="content" source="media/manage-credentials/akv-permission-model.png" alt-text="Azure Key Vault アクセス許可モデル"::: 
+
+### <a name="option-1---assign-access-using-using-key-vault-access-policy"></a>オプション 1 - Key Vault アクセス ポリシーを使用してアクセス権を割り当てる  
+
+ご利用の Azure Key Vault リソース内のアクセス許可モデルが **コンテナー アクセス ポリシー** に設定されている場合にのみ、次の手順に従います。
+
 1. お使いの Azure Key Vault に移動します。
 
 2. **[アクセス ポリシー]** ページを選択します。
@@ -76,6 +89,21 @@ Purview マネージド ID を使用してスキャンを設定する場合は�
 7. **[保存]** を選択してアクセス ポリシーを保存します。
 
    :::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="アクセス ポリシーの保存":::
+
+### <a name="option-2---assign-access-using-key-vault-azure-role-based-access-control"></a>オプション 2 - Key Vault の Azure ロールベースのアクセス制御を使用してアクセス権を割り当てる 
+
+ご利用の Azure Key Vault リソース内のアクセス許可モデルが **Azure ロールベースのアクセス制御** に設定されている場合にのみ、次の手順に従います。
+
+1. お使いの Azure Key Vault に移動します。
+
+2. 左側のナビゲーション メニューから **[アクセス制御 (IAM)]** を選択します。
+
+3. **[+ 追加]** を選択します。
+
+4. **[ロール]** を **[Key Vault Secrets User]** に設定し、 **[選択]** 入力ボックスに、ご利用の Azure Purview アカウント名を入力してください。 次に、[保存] を選択して、このロールの割り当てを、自分の Purview アカウントに付与します。
+
+   :::image type="content" source="media/manage-credentials/akv-add-rbac.png" alt-text="Azure Key Vault RBAC":::
+
 
 ## <a name="create-a-new-credential"></a>新しい資格情報を作成する
 

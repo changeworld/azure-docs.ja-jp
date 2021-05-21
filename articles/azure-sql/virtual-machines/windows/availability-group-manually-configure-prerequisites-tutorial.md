@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1f7d73a6553d8baed86c87da0c4e7a5b036e99f7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 29830357f7899d821d627595a3e533788e788205
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134323"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769851"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>チュートリアル:Azure Virtual Machines 上の SQL Server に可用性グループを作成するための前提条件
 
@@ -35,6 +35,9 @@ ms.locfileid: "108134323"
 次の図に、チュートリアルで構築するものを示します。
 
 ![可用性グループ](./media/availability-group-manually-configure-prerequisites-tutorial-/00-EndstateSampleNoELB.png)
+
+>[!NOTE]
+> これで、Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、「[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)」を参照してください。 
 
 ## <a name="review-availability-group-documentation"></a>可用性グループのドキュメントの確認
 
