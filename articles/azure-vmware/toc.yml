@@ -55,7 +55,7 @@
 - name: 操作方法ガイド
   items:
     - name: Azure VMware Solution のホスト クォータを要求する
-      href: enable-azure-vmware-solution.md
+      href: request-host-quota-azure-vmware-solution.md
     - name: リソースの移動
       items:
         - name: Azure VMware Solution のサブスクリプションを移動する
@@ -64,8 +64,10 @@
       href: reserved-instance.md
     - name: Azure VMware Solution の評価を作成する
       href: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
-    - name: DHCP の管理
-      href: manage-dhcp.md
+    - name: DHCP の構成と管理
+      href: configure-dhcp-azure-vmware-solution.md
+    - name: L2 拡張 VMware HCX ネットワークで DHCP を構成する
+      href: configure-l2-stretched-vmware-hcx-networks.md
     - name: NSX ネットワーク コンポーネントの構成
       href: configure-nsx-network-components-azure-portal.md
     - name: GitHub Enterprise Server を構成する
@@ -76,8 +78,8 @@
       href: configure-site-to-site-vpn-gateway.md
     - name: Windows Server フェールオーバー クラスターの構成
       href: configure-windows-server-failover-cluster.md
-    - name: vSphere の資格情報をリセットする
-      href: reset-vsphere-credentials.md
+    - name: cloudadmin 資格情報のローテーション
+      href: rotate-cloudadmin-credentials.md
     - name: Azure Backup Server を使用したバックアップと復元
       items:
         - name: VMware VM のバックアップ
@@ -147,7 +149,7 @@
     - name: よく寄せられる質問
       items:
         - name: 全般
-          href: /azure/azure-vmware/faq#general
+          href: faq.yml
         - name: 顧客とのコミュニケーション
           href: /azure/azure-vmware/faq#customer-communication
         - name: 構成とセットアップ

@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 953d43f93635e25da008515afd9baf9a9e9b7afa
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 7340b137ddc2eb1e51c3734c85e860636ef9797b
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817073"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752645"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをトレーニングする
 
@@ -28,7 +28,7 @@ Azure Machine Learning では既定の Docker 基本イメージを提供しま�
 コードは、次の環境のいずれかで実行してください。
 
 * Azure Machine Learning コンピューティング インスタンス (ダウンロードやインストールは必要なし):
-  * [環境とワークスペースの設定](tutorial-1st-experiment-sdk-setup.md)に関するチュートリアルを完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+  * [クイック スタート: Azure Machine Learning の利用を開始](quickstart-create-resources.md)に関するチュートリアルを完了して、SDK およびサンプル リポジトリが事前に組み込まれている専用のノートブック サーバーを作成します。
   * Azure Machine Learning の [例のリポジトリ](https://github.com/Azure/azureml-examples)で、 **[notebooks]**  >  **[fastai]**  >  **[train-pets-resnet34.ipynb]** ディレクトリに移動して完了したノートブックを検索します。 
 * 独自の Jupyter Notebook サーバー:
   * [ワークスペース構成ファイル](how-to-configure-environment.md#workspace)を作成します。
@@ -107,6 +107,7 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 > * Ubuntu 16.04 以上
 > * Conda 4.5.# 以上
 > * Python 3.6 以上
+> * /bin/sh で入手可能な POSIX 準拠シェルは、トレーニングに使用されるすべてのコンテナー イメージで必要です。 
 
 Azure Machine Learning 環境の作成と管理の詳細について詳しくは、[ソフトウェア環境を作成して使用する](how-to-use-environments.md)方法に関するページを参照してください。 
 

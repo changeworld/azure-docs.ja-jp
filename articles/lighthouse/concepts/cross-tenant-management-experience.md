@@ -1,21 +1,21 @@
 ---
 title: テナント間の管理エクスペリエンス
-description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 03/29/2021
+description: Azure Lighthouse により、多くの Azure サービスでクロステナント エクスペリエンスが有効になり、強化されます。
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 005d8f15c20749dff7d45385124a08a64b213afb
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f482c4738fd0bec8f32eaeb540b2d0ef2e0d4b15
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139041"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790435"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
-サービス プロバイダーは、Azure Active Directory (Azure AD) 内から複数の顧客のリソースを管理するために、[Azure Lighthouse](../overview.md) を使用できます。 [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用して、多くのタスクとサービスをマネージド テナントをまたいで実行できます。
+サービス プロバイダーは、Azure Active Directory (Azure AD) 内から複数の顧客のリソースを管理するために、[Azure Lighthouse](../overview.md) を使用できます。 [Azure の委任されたリソース管理](../concepts/architecture.md)を使用して、多くのタスクとサービスをマネージド テナントをまたいで実行できます。
 
 > [!TIP]
-> Azure の委任されたリソース管理はまた、[独自の Azure AD テナントが複数存在する企業内で](enterprise.md)使用して、テナントにまたがる管理を簡素化することもできます。
+> また、[独自の Azure AD テナントが複数存在する企業内](enterprise.md)で Azure Lighthouse を使用して、テナント間の管理を簡素化できます。
 
 ## <a name="understanding-tenants-and-delegation"></a>テナントと委任について
 
@@ -88,7 +88,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - ホストされている Kubernetes 環境を管理し、顧客のテナント内でコンテナー化されたアプリケーションをデプロイして管理する
 - 顧客テナントのクラスターをデプロイおよび管理する
--   コンテナーに対して Azure Monitor を使用して、顧客テナント全体のパフォーマンスを監視する
+- コンテナーに対して Azure Monitor を使用して、顧客テナント全体のパフォーマンスを監視する
 
 [Azure Migrate](../../migrate/index.yml):
 
@@ -175,7 +175,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 すべてのシナリオで、次に示す現在の制限事項に注意してください。
 
 - Azure Resource Manager で処理される要求は、Azure Lighthouse を使用して実行できます。 これらの要求の操作 URI は、`https://management.azure.com` で始まります。 ただし、リソースの種類のインスタンス (Key Vault のシークレット アクセスやストレージのデータ アクセスなど) によって処理される要求は、Azure Lighthouse ではサポートされていません。 これらの要求の操作 URI は、通常、`https://myaccount.blob.core.windows.net` や `https://mykeyvault.vault.azure.net/` など、実際のインスタンスに固有のアドレスで始まります。 また、通常、後者は管理操作ではなくデータ操作です。
-- ロールの割り当てには [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
+- ロールの割り当てには [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 所有者、または [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールを除くすべての組み込みロールが、Azure Lighthouse で現在サポートされています。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
 - Azure Databricks を使用するサブスクリプションをオンボードすることはできますが、現時点では、管理テナントのユーザーは、委任されたサブスクリプションで Azure Databricks ワークスペースを起動することはできません。
 - リソース ロックがあるサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](../../role-based-access-control/deny-assignments.md)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
 - [各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。

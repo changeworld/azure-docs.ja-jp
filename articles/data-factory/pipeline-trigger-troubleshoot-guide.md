@@ -7,12 +7,12 @@ ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 49205025e26f7c0eb609638e70a58c9c0c14748e
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: d9827eab8c9d6187c78a979591f2c7ee0cad99e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385413"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741889"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプライン オーケストレーションおよびトリガーのトラブルシューティング
 
@@ -26,7 +26,7 @@ Azure Data Factory の "パイプライン実行" により、パイプライン
 
 ### <a name="an-azure-functions-app-pipeline-throws-an-error-with-private-endpoint-connectivity"></a>Azure Functions アプリ パイプラインからプライベート エンドポイント接続のエラーがスローされる
  
-Data Factory と Azure 関数アプリがプライベート エンドポイントで実行されているとします。 関数アプリと連携するパイプラインを実行しようとしています。 3 つの異なるメソッドを試行しましたが、1 つのメソッドでエラー "Bad Request" が返され、他の 2 つのメソッドで "103 Error Forbidden" が返されました。
+Azure のプライベート エンドポイントで Data Factory と関数アプリを実行しています。 関数アプリと連携するパイプラインを実行しようとしています。 3 つの異なるメソッドを試行しましたが、1 つのメソッドでエラー "Bad Request" が返され、他の 2 つのメソッドで "103 Error Forbidden" が返されました。
 
 **原因**
 

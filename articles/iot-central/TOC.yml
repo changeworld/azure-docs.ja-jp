@@ -203,8 +203,8 @@
           href: core/howto-create-iot-central-application.md
         - name: デバイス テンプレートを設定する
           href: core/howto-set-up-template.md
-        - name: デバイス テンプレートをバージョン管理する
-          href: core/howto-version-device-template.md
+        - name: デバイス テンプレートの編集
+          href: core/howto-edit-device-template.md
         - name: プロパティの使用方法
           href: core/howto-use-properties.md
         - name: コマンドの使用方法

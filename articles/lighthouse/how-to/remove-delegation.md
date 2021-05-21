@@ -1,18 +1,18 @@
 ---
 title: 委任へのアクセスを削除する
 description: Azure Lighthouse のためにサービス プロバイダーに委任されたリソースへのアクセスを削除する方法について説明します。
-ms.date: 02/16/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a127eb47e48796225df6118159485e2c327eb704
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555777"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785948"
 ---
 # <a name="remove-access-to-a-delegation"></a>委任へのアクセスを削除する
 
-顧客のサブスクリプションまたはリソース グループが、[Azure Lighthouse](../overview.md) のためにサービス プロバイダーに委任された後、必要に応じて委任を削除できます。 委任が削除されると、サービス プロバイダー テナントのユーザーに以前付与されていた、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)アクセスは適用されなくなります。
+顧客のサブスクリプションまたはリソース グループが、[Azure Lighthouse](../overview.md) のためにサービス プロバイダーに委任された後、必要に応じて委任を削除できます。 委任が削除されると、サービス プロバイダー テナントのユーザーに以前付与されていた、[Azure の委任されたリソース管理](../concepts/architecture.md)アクセスは適用されなくなります。
 
 委任の削除は、ユーザーが適切なアクセス許可を持っている限り、顧客テナントまたはサービス プロバイダー テナントのユーザーが行うことができます。
 
@@ -97,6 +97,6 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)について学習してください。
+- [Azure Lighthouse のアーキテクチャ](../concepts/architecture.md)について学習してください。
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。
 - [以前の委任を更新する](update-delegation.md)方法について説明します。

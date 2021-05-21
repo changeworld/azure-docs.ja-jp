@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 04/15/2021
-ms.openlocfilehash: acae55ca82b82de8459068bb1ac4363d6a9faafe
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8a8e8fae151b0d9be318d4dfad832ead34ef04da
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206639"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738088"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>サーバーレス SQL プールを使用してデータを分析する
 
@@ -28,6 +28,9 @@ ms.locfileid: "108206639"
 各ワークスペースは、**組み込み** と呼ばれる、事前構成されたサーバーレス SQL プールを備えています。 
 
 ## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>サーバーレス SQL プールを使用してニューヨーク市のタクシー データを分析する
+ 
+> [!NOTE]
+> [サンプル データがプライマリ ストレージ アカウントに配置されている](get-started-create-workspace.md#place-sample-data-into-the-primary-storage-account)ことを確認します
 
 1. Synapse Studio で、 **[開発]** ハブに移動します。
 1. 新しい SQL スクリプトを作成します。
@@ -97,7 +100,7 @@ ms.locfileid: "108206639"
     FROM
         OPENROWSET(
                 BULK '/users/NYCTripSmall.parquet',
-                DATA_SOURCE = 'ContosoLake'
+                DATA_SOURCE = 'ContosoLake',
                 FORMAT='PARQUET'
         ) AS [result]
     ```

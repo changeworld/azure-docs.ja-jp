@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 04/30/2021
-  ms.openlocfilehash: 09cef5e5e209b89f3c80b7565fbffb65c3d6eb6d
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: 301ed3864eb6a5bd6bdcb9153730e3443e5e5333
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108732943"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110091596"
 landingContent:
 - title: Azure のセキュリティの利点を理解する
   linkLists:
@@ -98,6 +98,6 @@ landingContent:
   - linkListType: concept
     links:
     - text: ガバナンス、リスク、コンプライアンス
-      url: /azure/architecture/framework/governance/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+      url: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - text: ID とネットワークのリスク
       url: /azure/architecture/framework/security/monitor-test?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json

@@ -1,24 +1,24 @@
 ---
 title: Azure Active Directory を使用してオンデマンドでユーザーをプロビジョニングする
-description: 同期の強制
+description: Azure Active Directory においてオンデマンドでユーザーをプロビジョニングする方法を説明します。
 services: active-directory
-author: msmimart
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/01/2020
-ms.author: mimart
+ms.date: 05/11/2021
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56c86e5d0f06d66eea1841e5c1157432fd92f0ac
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255663"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785009"
 ---
-# <a name="on-demand-provisioning"></a>オンデマンド プロビジョニング
+# <a name="on-demand-provisioning-in-azure-active-directory"></a>Azure Active Directory でのオンデマンド プロビジョニング
 数秒でユーザーをアプリケーションにプロビジョニングするには、オンデマンド プロビジョニングを使用します。 この機能を使用すると、特に以下のことが可能です。
 
 * 構成の問題を迅速にトラブルシューティングする。

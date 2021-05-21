@@ -81,6 +81,10 @@
       items:
         - name: リモート ファイルのエンコードとストリーム配信 (CLI)
           href: stream-files-cli-quickstart.md
+        - name: Key Vault キーを使用してデータを暗号化する
+          href: security-encrypt-data-managed-identity-cli-tutorial.md
+        - name: マネージド ID を使用してストレージにアクセスする
+          href: security-access-storage-managed-identity-cli-tutorial.md
     - name: Node.js
       items:
         - name: リモート ファイルのエンコードとストリーム配信 (Node.js)
@@ -455,6 +459,10 @@
           href: security-trusted-storage-rest-tutorial.md
         - name: カスタマー マネージド キーと REST API
           href: security-customer-managed-keys-rest-postman-tutorial.md
+        - name: Key Vault キーを使用してデータを暗号化する
+          href: security-encrypt-data-managed-identity-cli-tutorial.md
+        - name: マネージド ID を使用してストレージにアクセスする
+          href: security-access-storage-managed-identity-cli-tutorial.md
     - name: メディア プレイヤーの使用
       items:
         - name: Azure Media Player のフル セットアップ

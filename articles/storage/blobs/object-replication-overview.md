@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 05/11/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 391c33e72f45e7c0c0b56128b32a8e73399e417a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 503c146584ddf05f12ada3dfc103c86b28bd797a
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834325"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790831"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -80,7 +80,9 @@ ms.locfileid: "99834325"
 
 オブジェクト レプリケーションを構成すると、Azure Storage リソース プロバイダー経由でソース アカウントと宛先アカウントの両方にレプリケーション ポリシーが作成されます。 レプリケーション ポリシーは、ポリシー ID で識別されます。 レプリケーションを実行するには、ソースと宛先のアカウントのポリシーに、同じポリシー ID が設定されている必要があります。
 
-1 つのストレージ アカウントを、最大 2 つの宛先アカウントのソース アカウントとして使用できます。 ソース アカウントと宛先アカウントが同じリージョンに存在していても、異なるリージョンに存在していてもかまいません。 また、異なるサブスクリプションや異なる Azure Active Directory (Azure AD) テナントに存在していてもかまいません。 ソース アカウントと宛先アカウントのペアごとに作成できるレプリケーション ポリシーは、1 つのみです。
+ソース アカウントは、宛先アカウントごとに 1 つのポリシーを使用して、2 つまでの宛先アカウントにレプリケートできます。 同様に、宛先アカウントにはソース アカウントを 2 つまで含めることができます。 各レプリケーション ポリシーで、最大 10 個のレプリケーション ルールを使用できます。したがって、最大 10 個のソース コンテナーと 10 個の宛先コンテナーが各レプリケーション ポリシーに参加できます。
+
+ソース アカウントと宛先アカウントが同じリージョンに存在していても、異なるリージョンに存在していてもかまいません。 また、異なるサブスクリプションや異なる Azure Active Directory (Azure AD) テナントに存在していてもかまいません。 ソース アカウントと宛先アカウントのペアごとに作成できるレプリケーション ポリシーは、1 つのみです。
 
 ### <a name="replication-rules"></a>レプリケーション ルール
 
