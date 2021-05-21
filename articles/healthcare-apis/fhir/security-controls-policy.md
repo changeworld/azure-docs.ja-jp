@@ -1,19 +1,19 @@
 ---
 title: FHIR 用 Azure API の法令遵守制御の Azure Policy
 description: FHIR の Azure API で使用できる法令遵守制御 Azure Policy 一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: sample
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 55958b2d6243a9809d7d0f1424e8504b8014c628
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e470fd12cc08893e5694f13c0beeaf80fcb717c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756839"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094753"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-for-fhir"></a>FHIR 用 Azure API の法令遵守制御の Azure Policy
 

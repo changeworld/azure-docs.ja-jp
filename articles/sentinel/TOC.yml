@@ -387,3 +387,5 @@
       href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'
     - name: 米国政府機関向けクラウドで利用できる機能
       href: /azure/security/fundamentals/feature-availability
+    - name: アーカイブされた新機能 (6 か月より前)
+      href: whats-new-archive.md

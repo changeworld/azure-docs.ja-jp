@@ -1,17 +1,16 @@
 ---
-title: Azure Resource Manager を使用して Service Fabric マネージド クラスター (プレビュー) をデプロイする
+title: Azure Resource Manager を使用して Service Fabric マネージド クラスターをデプロイする
 description: Azure Resource Manager テンプレートを使用して Service Fabric マネージド クラスターを作成する方法について説明します
 ms.topic: quickstart
-ms.date: 09/28/2020
-ms.custom: references_regions
-ms.openlocfilehash: 079e8e3e39bd306332abb43fa2ae1f8cc04e305b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.openlocfilehash: 0775d5f6874de8fafb1d9a32cf19071f4a7a99b4
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91410421"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685209"
 ---
-# <a name="quickstart-deploy-a-service-fabric-managed-cluster-preview-with-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用して Service Fabric マネージド クラスター (プレビュー) をデプロイする
+# <a name="quickstart-deploy-a-service-fabric-managed-cluster-with-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用して Service Fabric マネージド クラスターをデプロイする
 
 Service Fabric マネージド クラスターは、デプロイとクラスター管理エクスペリエンスを効率化する Azure Service Fabric クラスター リソース モデルの進化版です。 Service Fabric マネージド クラスターは、単一の Service Fabric クラスター リソースをデプロイできる完全にカプセル化されたリソースで、Service Fabric クラスターを構成する基盤リソースをすべてデプロイする必要がありません。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure でのテスト用に Service Fabric マネージド クラスターをデプロイする方法について説明します。
 
@@ -47,7 +46,7 @@ Service Fabric マネージド クラスターでは、アクセスの制御用�
 
     * **サブスクリプション**:Azure サブスクリプションを選択します。
     * **リソース グループ**: **[新規作成]** を選択します。 リソース グループの一意の名前 (*myResourceGroup* など) を入力し、 **[OK]** を選択します。
-    * **[場所]** :場所 (**eastus2** など) を選択します。 Service Fabric マネージド クラスター プレビューは、`centraluseuap`、`eastus2euap`、`eastasia`、`northeurope`、`westcentralus`、`eastus2` などのリージョンでサポートされます。
+    * **[場所]** :場所を選択します。
     * **クラスター名**:自分のクラスター用に一意の名前 (*mysfcluster* など) を入力します。
     * **管理ユーザー名**: クラスター内の基になる VM で RDP に使用する管理者の名前を入力します。
     * **管理パスワード**: クラスター内の基になる VM で RDP に使用する管理者のパスワードを入力します。

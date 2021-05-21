@@ -9,12 +9,12 @@ ms.date: 04/28/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 033893ac0f939929eda597a1eb978e0dde4c57d9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: f50255510d5f4716f181a8e2b51cb5fa3998062d
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181492"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715084"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)
 
@@ -121,13 +121,14 @@ Linux クライアントは、Azure 仮想マシン (VM) またはオンプレ�
 | [追加 BLOB](storage-blobs-introduction.md#blobs) | ✔️   |  ⛔ | [ページ BLOB](storage-blobs-introduction.md#blobs) | ⛔ | ⛔ |
 | [Azure Active Directory (AD) セキュリティ](../common/storage-auth-aad.md?toc=/azure/storage/blobs/toc.json) | ⛔ | ⛔ | [暗号化スコープ](encryption-scope-overview.md)  |    ⛔ | ⛔ |
 | [ブロック BLOB のオブジェクト レプリケーション](object-replication-overview.md) | ⛔  |   ⛔ | [カスタマー マネージド アカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=/azure/storage/blobs/toc.json) | ⛔ |    ⛔ |
+| [Blob ストレージのイベント](storage-blob-event-overview.md)| ⛔ |    ⛔ 
 
   
 ## <a name="known-issues"></a>既知の問題
 
 - 既存のストレージ アカウントで NFS 3.0 のサポートを有効にすることはできません。
 
-- ストレージ アカウントで NFS 3.0 のサポートを有効にした後、それを無効にすることはできません。
+- ストレージ アカウントで NFS 3.0 のサポートを一度有効にすると、無効に戻すことはできません。
 
 -  Azure portal または Azure Storage Explorer でファイルを表示することはできません。 ファイルとディレクトリを一覧表示するには、[NFS 3.0 プロトコルを使用して Blob Storage コンテナーをマウントする](network-file-system-protocol-support-how-to.md)か、[Blob service REST API](/rest/api/storageservices/blob-service-rest-api) を使用します。
 

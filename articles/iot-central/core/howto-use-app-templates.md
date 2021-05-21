@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 15daaa7d64bb6719807d2930691ff9e9a4ca3902
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a7ad5188e891786ebe1bc1680365a891c256979a
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061470"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683589"
 ---
 # <a name="export-your-application"></a>アプリケーションのエクスポート
 
-この記事では、ソリューション マネージャーとして IoT Central アプリケーションをエクスポートして再利用できるようにする方法について説明します。
+この記事では、IoT Central アプリケーションをエクスポートして再利用できるようにする方法について説明します。
 
 2 つのオプションがあります。
 
@@ -28,7 +28,7 @@ ms.locfileid: "106061470"
 
 デバイス インスタンス、デバイス データ履歴、およびユーザー データ以外の任意のアプリケーションのコピーを作成できます。 このコピーでは標準の料金プランが使用され、課金されます。 無料の料金プランが使用されるアプリケーションをアプリケーションをコピーして作成することはできません。
 
-**[コピー]** を選択します。 ダイアログ ボックスに、新しいアプリケーションの詳細を入力します。 **[コピー]** を選択して、続行することを確認します。 このフォームのフィールドの詳細については、[アプリケーションの作成](quick-deploy-iot-central.md)に関するクイックスタートを参照してください。
+**[コピー]** を選択します。 ダイアログ ボックスに、新しいアプリケーションの詳細を入力します。 **[コピー]** を選択して、続行することを確認します。 このフォームのフィールドの詳細については、[アプリケーションの作成](howto-create-iot-central-application.md)に関するページを参照してください。
 
 ![[アプリケーションのコピー] 設定ページが示されているスクリーンショット。](media/howto-use-app-templates/appcopy2.png)
 
