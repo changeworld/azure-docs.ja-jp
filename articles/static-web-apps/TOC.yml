@@ -4,6 +4,8 @@
   items:
     - name: Static Web Apps について
       href: overview.md
+    - name: ホスティング プラン
+      href: plans.md
 - name: クイックスタート
   expanded: true
   items:

@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 48924cd16eef4cafb2ee0d6a85e30903203169ce
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075594"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785513"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
 StorSimple 8000 シリーズは、8100 または 8600 の物理オンプレミス アプライアンス、およびそれらのクラウド サービス コンポーネントによって表されます。 これらのアプライアンスのいずれかから Azure File Sync 環境にデータを移行することができます。 Azure File Sync は、StorSimple アプライアンスの移行先となる、既定の戦略的な長期 Azure サービスです。
 
-StorSimple 8000 シリーズは 2022 年 12 月に[サポート終了](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series)となります。 できるだけ早く移行の計画を開始することが重要です。 この記事では、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。
+StorSimple 8000 シリーズは 2022 年 12 月に[サポート終了](/lifecycle/products/azure-storsimple-8000-series)となります。 できるだけ早く移行の計画を開始することが重要です。 この記事では、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。
 
 ## <a name="phase-1-prepare-for-migration"></a>フェーズ 1:移行を準備する
 
@@ -45,7 +45,7 @@ StorSimple Data Manager リソースでの移行ジョブによる StorSimple �
 
 Azure ファイル共有を使用すると、ファイル サービスのデプロイを構築するためのまったく新しい機会が開けます。 Azure ファイル共有はクラウド内の SMB 共有であり、使い慣れた Kerberos 認証と既存の NTFS アクセス許可 (ファイルとフォルダーの ACL) を使用してネイティブで動作する SMB プロトコルを介してユーザーが直接アクセスできるように設定できます。 [Azure ファイル共有への ID ベースのアクセス](storage-files-active-directory-overview.md)の詳細について参照してください。
 
-直接アクセスの代わりに、[Azure File Sync](./storage-sync-files-planning.md) を使用できます。Azure File Sync は、頻繁に使用されるファイルをオンプレミスにキャッシュする StorSimple の機能に直接相当します。
+直接アクセスの代わりに、[Azure File Sync](../file-sync/file-sync-planning.md) を使用できます。Azure File Sync は、頻繁に使用されるファイルをオンプレミスにキャッシュする StorSimple の機能に直接相当します。
 
 Azure File Sync は、次の 2 つの主要なコンポーネントに基づく Microsoft のクラウド サービスです。
 
@@ -56,8 +56,8 @@ Azure ファイル共有により、属性、アクセス許可、タイムス�
 
 この記事では、移行手順を中心に説明します。 移行前に Azure File Sync について詳しく知りたい場合は、次の記事を参照してください。
 
-* [Azure File Sync の概要](./storage-sync-files-planning.md "概要")
-* [Azure File Sync デプロイ ガイド](storage-sync-files-deployment-guide.md)
+* [Azure File Sync の概要](../file-sync/file-sync-planning.md "概要")
+* [Azure File Sync デプロイ ガイド](../file-sync/file-sync-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple のサービス データ暗号化キー
 
@@ -117,6 +117,15 @@ StorSimple により、ボリューム レベルでの差分バックアップ�
 > Azure リージョンを決定し、各ストレージ アカウントと Azure File Sync リソースが選択したリージョンと一致するようにします。
 > ここでは、ストレージ アカウントのネットワークとファイアウォールの設定を構成しないでください。 この時点でこれらの構成を行うと、移行が不可能になります。 これらの Azure Storage の設定は、移行が完了した後で構成します。
 
+### <a name="storage-account-settings"></a>Storage アカウントの設定
+
+ストレージ アカウントには多くの構成を行います。 ストレージ アカウントの構成を確認するには、次のチェックリストを使用する必要があります。 たとえば、移行の完了後にネットワーク構成を変更できます。 
+
+> [!div class="checklist"]
+> * 大型ファイルの共有: 有効 - 大きなファイルを共有すると、パフォーマンスが向上し、共有に最大 100 TiB を格納できます。 この設定は、Azure ファイル共有を持つターゲット ストレージ アカウントに適用されます。
+> * ファイアウォールと仮想ネットワーク: 無効 - IP 制限を構成したり、ストレージ アカウントの特定の VNET へのアクセスに制限したりしません。 ストレージ アカウントのパブリック エンドポイントは、移行中に使用されます。 Azure VM からのすべての IP アドレスを許可する必要があります。 移行後は、ストレージ アカウントでファイアウォール規則を構成するのが最善です。 ソースとターゲットの両方のストレージ アカウントをこの方法で構成します。
+> * プライベート エンドポイント: サポートされている - プライベート エンドポイントを有効にできますが、パブリック エンドポイントは移行に使用され、引き続き使用できる必要があります。 この考慮事項は、ソース ストレージ アカウントとターゲット ストレージ アカウントの両方に適用されます。
+
 ### <a name="phase-1-summary"></a>フェーズ 1 の概要
 
 「Phase 1:
@@ -160,7 +169,7 @@ StorSimple のデータ (ストレージ アカウント) が現在存在する�
 
 #### <a name="performance"></a>パフォーマンス
 
-Azure ファイル共有には、Premium Storage (SSD) または Standard Storage を選択できます。 Standard Storage には、[ファイル共有用の複数の階層](storage-how-to-create-file-share.md#changing-the-tier-of-an-azure-file-share)が含まれています。 StorSimple から移行するほとんどのお客様には、Standard Storage が適切なオプションです。
+Azure ファイル共有には、Premium Storage (SSD) または Standard Storage を選択できます。 Standard Storage には、[ファイル共有用の複数の階層](storage-how-to-create-file-share.md#change-the-tier-of-an-azure-file-share)が含まれています。 StorSimple から移行するほとんどのお客様には、Standard Storage が適切なオプションです。
 
 まだ決められない場合は、次のようにしてください。
 
@@ -204,6 +213,9 @@ Azure ファイル共有には、Premium Storage (SSD) または Standard Storag
 * 差分バックアップで必要なストレージ容量など、移行するすべてのデータを保持するのに十分な容量がファイル共有にあることが保証されます。
 * 将来の拡張に対応できます。
 
+> [!IMPORTANT]
+> 移行前または移行中に、ストレージ アカウントに特別なネットワークを適用しない。 パブリック エンドポイントには、ソースとターゲットのストレージ アカウントでアクセスできる必要があります。 特定の IP 範囲または VNET への制限はサポートされていません。 移行後にストレージ アカウントのネットワーク構成を変更できます。
+
 ### <a name="azure-file-shares"></a>Azure ファイル共有
 
 ストレージ アカウントが作成されたら、ストレージ アカウントの **[ファイル共有]** セクションに移動し、フェーズ 1 の移行プランに従って、適切な数の Azure ファイル共有をデプロイできます。 Azure での新しいファイル共有については、次の基本的な設定に従って検討してください。
@@ -242,7 +254,7 @@ Azure File Sync を使用すると、最も頻繁にアクセスされるファ�
 
 :::row:::
     :::column:::
-        ![StorSimple 8000 シリーズの移行ジョブ。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "移行ジョブの新しいジョブ作成フォームのスクリーンショット。")
+       ![StorSimple 8000 シリーズの移行ジョブ。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "移行ジョブの新しいジョブ作成フォームのスクリーンショット。")
     :::column-end:::
     :::column:::
         **Job definition name (ジョブ定義名)**</br>この名前は、移動しているファイルのセットを示すものである必要があります。 Azure ファイル共有に似た名前を付けることをお勧めします。 </br></br>**ジョブを実行する場所**</br>リージョンを選択するときは、StorSimple のストレージ アカウントと同じリージョンを選択する必要があります。または、利用できない場合は、それに近いリージョンを選択します。 </br></br><h3>source</h3>**ソース サブスクリプション**</br>StorSimple デバイス マネージャー リソースを格納するサブスクリプションを選択します。 </br></br>**StorSimple リソース**</br>アプライアンスが登録されている StorSimple デバイス マネージャーを選択します。 </br></br>**サービス データ暗号化キー**</br>レコードでキーが見つからない場合は、[この記事の前のセクション](#storsimple-service-data-encryption-key)を確認してください。 </br></br>**[デバイス]**</br>移行するボリュームが保持されている StorSimple デバイスを選択します。 </br></br>**数量**</br>ソース ボリュームを選択します。 後で、ボリューム全体またはサブディレクトリをターゲットの Azure ファイル共有に移行するかどうかを決定します。</br></br> **ボリューム バックアップ**</br>*[Select volume backups]\(ボリューム バックアップの選択\)* を選択して、このジョブの一部として移動する特定のバックアップを選択できます。 詳細なプロセスについては、後の[この記事の専用セクション](#selecting-volume-backups-to-migrate)を参照してください。</br></br><h3>移行先</h3>この移行ジョブのターゲットとして、サブスクリプション、ストレージ アカウント、Azure ファイル共有を選択します。</br></br><h3>ディレクトリのマッピング</h3>関連するすべての詳細は、[この記事の専用セクション](#directory-mapping)で説明します。
@@ -295,7 +307,7 @@ Azure File Sync を使用すると、最も頻繁にアクセスされるファ�
 移行計画の一環として、StorSimple ボリューム上のフォルダーを複数の Azure ファイル共有に分割する必要があると決定している場合があります。 その場合は、次のように分割することができます。
 
 1. 1 つのボリューム上のフォルダーを移行するために、複数のジョブを定義します。 それぞれの StorSimple ボリューム ソースは同じですが、ターゲットとしての Azure ファイル共有は異なります。
-1. ジョブ作成フォームの "**ディレクトリ マッピング**" セクションを使用し、特定の [マッピング セマンティクス](#semantic-elements)に従って、StorSimple ボリュームのフォルダーを指定したファイル共有に移行する必要があることを正確に指定します。
+1. ジョブ作成フォームの「**ディレクトリ マッピング**」セクションを使用し、特定の[マッピング セマンティクス](#semantic-elements)に従って、StorSimple ボリュームのフォルダーを指定したファイル共有に移行する必要があることを正確に指定します。
 
 > [!IMPORTANT]
 > このフォームのパスとマッピング式を、フォームの送信時に検証することはできません。 マッピングが正しく指定されていない場合、ジョブは完全に失敗するか、望ましくない結果を生成する可能性があります。 その場合は、通常、Azure ファイル共有を削除して再作成してから、その共有に対する新しい移行ジョブでマッピングのステートメントを修正するのが最善の方法です。 修正したマッピングのステートメントを使用して新しいジョブを実行すると、省略されたフォルダーを修正し、既存の共有に移動できます。 ただし、この方法で対処できるのは、パスのスペルミスのために省略されたフォルダーのみです。
@@ -367,6 +379,23 @@ Azure File Sync を使用すると、最も頻繁にアクセスされるファ�
         > 最初に最も古いバックアップを選択して移行ジョブを実行し、その後、毎回新しいバックアップを選択することが重要です。 手動バックアップの順序は、常に古いものから新しいもので保持する必要があります。
     :::column-end:::
 :::row-end:::
+
+#### <a name="run-jobs-in-parallel"></a>ジョブを並列実行する
+
+StorSimple の複数の場所がある可能性があります。それぞれを別の Azure ファイル共有にコピーする必要があります。 StorSimple アプライアンスが 1 つある場合、それぞれ異なる Azure ファイル共有を対象とする場合は、最大 4 つの移行ジョブを並列で実行できます。 
+
+各ジョブは複数のフェーズを経て行います。 別のジョブを開始できるのは、前のジョブがファイル コピー フェーズに入ったときだけです。 通常、ジョブが開始されてから 25～35 分以内に、別のジョブを同時に開始できます (最大 4 つ)。 同じファイル共有を対象とするジョブ (後続のバックアップ用) は、もう一方のバックアップの後に 1 つのバックアップをコピーする必要があります。
+
+> [!CAUTION]
+> 同じ Azure ファイル共有に移動するデータについては、一度に 1 つの移行ジョブのみを開始します。
+
+#### <a name="interpret-the-log-files"></a>ログ ファイルを解釈する
+
+移行ジョブが完了すると、コピー ログへのリンクが表示されます。 これらのログは *\* .csv* ファイルで、コピーに成功した名前空間項目と失敗した項目が一覧表示されています。
+
+ログ ファイルの場所にアクセスしたら、検索語句「failed」で一覧をフィルター処理することによって、失敗したファイルのログを見つけることができます。 結果は、コピーに失敗したファイルのログのセットです。 次に、サイズで並べ替えます。 サイズが 17 バイトになると、追加のログが生成される場合があります。 これらは空であり、無視することができます。 並べ替えを使用すると、コンテンツを含むログに簡単に集中できます。
+
+成功したコピーを記録するログファイルにも同じ処理が適用されます。
 
 ### <a name="phase-3-summary"></a>フェーズ 3 のまとめ
 
@@ -475,7 +504,7 @@ Azure portal を使用して、名前空間が完全に移動されたことを�
 
 * Azure portal にサインインし、同期グループに移動します。 同期グループとサーバー エンドポイントの同期状態を確認します。
 * 注目する方向はダウンロードです。 サーバー エンドポイントが新しくプロビジョニングされている場合、名前空間がまだダウンロードされていることを示す **初期同期** が表示されます。
-それが **初期同期** 以外に変わった後、名前空間はサーバーに完全に設定されます。 これで、ローカルの RoboCopy に進むことができます。
+その状態が **初期同期** 以外に変わった後、名前空間はサーバーに完全に設定されます。 これで、ローカルの RoboCopy に進むことができます。
 
 #### <a name="windows-server-event-viewer"></a>Windows Server イベント ビューアー
 
@@ -502,96 +531,11 @@ Windows Server インスタンスのイベント ビューアーを使用して�
 > [!WARNING]
 > サーバーに Azure ファイル共有の名前空間が完全にダウンロードされる前に、RoboCopy を開始することは "*できません*"。 詳細については、「[名前空間がサーバーに完全に同期されたことを確認する](#determine-when-your-namespace-has-fully-synced-to-your-server)」を参照してください。
 
- 移行ジョブが最後に実行されてから変更されたファイルと、前にこれらのジョブで移動されていないファイルをコピーするだけです。 移行が完了した後で、サーバーに移動されなかった問題を解決できます。 詳細については、[Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関する記事を参照してください。
+ 移行ジョブが最後に実行されてから変更されたファイルと、前にこれらのジョブで移動されていないファイルをコピーするだけです。 移行が完了した後で、サーバーに移動されなかった問題を解決できます。 詳細については、[Azure File Sync のトラブルシューティング](../file-sync/file-sync-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関する記事を参照してください。
 
 RoboCopy にはいくつかのパラメーターがあります。 以下の例では、完全なコマンドと、これらのパラメーターを選択する理由の一覧を示します。
 
-```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-背景:
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      RoboCopy でマルチスレッドを実行できるようにします。 既定値は 8、最大値は 128 です。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:<file name>
-   :::column-end:::
-   :::column span="1":::
-      状態を UNICODE 形式でログ ファイルに出力します (既存のログを上書きします)。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      コンソール ウィンドウに出力します。 ログ ファイルへの出力と組み合わせて使用されます。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /NP
-   :::column-end:::
-   :::column span="1":::
-      ログを読み取り可能な状態に保つために、進行状況のログ記録を省略します。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      バックアップ アプリケーションが使用するのと同じモードで RoboCopy を実行します。 現在のユーザーがアクセス許可を持っていないファイルを、RoboCopy によって移動できます。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      RoboCopy がソース (StorSimple アプライアンス) とターゲット (Windows Server ディレクトリ) 間の差分のみを考慮できるようにします。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /IT
-   :::column-end:::
-   :::column span="1":::
-      特定のミラー シナリオで、忠実性が維持されることを保証します。</br>例:2 回の Robocopy の実行の間に、ファイルには ACL の変更と属性の更新が行われます。また、たとえば、"*非表示*" とマークされます。 /IT を使用しない場合、ACL の変更が Robocopy で見逃される可能性があるため、ターゲットの場所に転送されません。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      ファイル コピーの忠実性 (既定値は /COPY:DAT)、コピー フラグ: D = データ、A = 属性、T = タイムスタンプ、S = セキュリティ = NTFS ACL、O = 所有者情報、U = 監査情報。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      すべてのファイル情報をコピーします (/COPY:DATSOU と同等)。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      ディレクトリのコピーの忠実性 (既定値は /DCOPY:DA)、コピー フラグ: D = データ、A = 属性、T = タイムスタンプ。
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 RoboCopy コマンドのソースとターゲットの場所を構成する場合は、ソースとターゲットの構造が一致していることを確認してください。 移行ジョブのディレクトリ マッピング機能を使用した場合は、ルート ディレクトリの構造が StorSimple のボリュームの構造と異なる場合があります。 その場合は、サブディレクトリごとに 1 回ずつ、複数の RoboCopy ジョブが必要になることがあります。 コマンドが想定どおりに実行されるかどうかわからない場合は、 */L* パラメーターを使用できます。これにより、実際に変更を行わずに、コマンドがシミュレートされます。
 
@@ -603,6 +547,10 @@ RoboCopy のログ ファイルを調べて、ファイルが残っているか�
 
 1. ローカルの Windows コンピューターにネットワーク ドライブとして [Azure ファイル共有をマウント](storage-how-to-use-files-windows.md#mount-the-azure-file-share)します。
 1. StorSimple とマウントされた Azure ファイル共有の間で RoboCopy を実行します。 ファイルがコピーされない場合は、StorSimple 側で名前を修正して無効な文字を削除します。 その後で、RoboCopy を再試行します。 前に示した RoboCopy コマンドは、StorSimple に対する不要な呼び出しを再度行うことなく、複数回実行できます。
+
+### <a name="troubleshoot-and-optimize"></a>トラブルシューティングと最適化
+
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
 
 ### <a name="user-cut-over"></a>ユーザーのカットオーバー
 
@@ -622,7 +570,7 @@ DFS-N のデプロイがある場合、DFN 名前空間を新しいサーバー 
 始める前に、運用環境の新しい Azure File Sync のデプロイを少し観察することをお勧めします。 その間に、発生する可能性のある問題を修正できます。 Azure File Sync のデプロイを少なくとも数日間観察した後、リソースのプロビジョニング解除を次の順序で開始できます。
 
 1. Azure portal を使用して StorSimple Data Manager リソースのプロビジョニングを解除します。 それによりすべての DTS ジョブが削除されます。 コピー ログを簡単に取得することができなくなります。 それらがレコードにとって重要な場合は、プロビジョニングを解除する前に取得します。
-1. StorSimple の物理アプライアンスが移行されていることを確認してから、登録を解除します。 移行されたことを完全に確認できない場合は、続行しないでください。 まだ必要な間にこれらのリソースのプロビジョニングを解除した場合、データやその構成を回復することはできません。<br>必要に応じて、最初に StorSimple ボリューム リソースのプロビジョニングを解除できます。これにより、アプライアンス上のデータがクリーンアップされます。 これには数日かかることがあり、アプライアンス上のデータが科学捜査的にゼロに設定されることは **ありません**。 このことが重要な場合は、リソースのプロビジョニング解除とは別に、ポリシーに従って、ディスクのゼロ設定を処理する必要があります。
+1. StorSimple の物理アプライアンスが移行されていることを確認してから、登録を解除します。 移行されたことを完全に確認できない場合は、続行しないでください。 まだ必要な間にこれらのリソースのプロビジョニングを解除した場合、データやその構成を回復することはできません。<br>必要に応じて、最初に StorSimple ボリューム リソースのプロビジョニングを解除できます。これにより、アプライアンス上のデータがクリーンアップされます。 このプロセスには数日かかることがあり、アプライアンス上のデータが科学捜査的にゼロに設定されることは **ありません**。 このことが重要な場合は、リソースのプロビジョニング解除とは別に、ポリシーに従って、ディスクのゼロ設定を処理する必要があります。
 1. StorSimple デバイス マネージャーに登録されているデバイスがこれ以上ない場合は、そのデバイス マネージャー リソース自体を削除することができます。
 1. それから、Azure の StorSimple ストレージ アカウントを削除します。 やはり、続行する前に、移行が完了していることと、このデータに依存しているものやユーザーがないことを確認してください。
 1. StorSimple 物理アプライアンスをデータ センターから取り外します。
@@ -636,7 +584,7 @@ DFS-N のデプロイがある場合、DFN 名前空間を新しいサーバー 
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure File Sync: aka.ms/AFS](./storage-sync-files-planning.md) の詳細を確認します。
-* [クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)ポリシーの柔軟性を理解します。
+* [Azure File Sync: aka.ms/AFS](../file-sync/file-sync-planning.md) の詳細を確認します。
+* [クラウドを使った階層化](../file-sync/file-sync-cloud-tiering-overview.md)ポリシーの柔軟性を理解します。
 * Azure ファイル共有で [Azure Backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) を有効にして、スナップショットをスケジュールし、バックアップ保持期間のスケジュールを定義します。
-* Azure portal で、一部のファイルが完全に同期していないことがわかった場合は、その問題を解決する手順について[トラブルシューティング ガイド](storage-sync-files-troubleshoot.md)を確認します。
+* Azure portal で、一部のファイルが完全に同期していないことがわかった場合は、その問題を解決する手順について[トラブルシューティング ガイド](../file-sync/file-sync-troubleshoot.md)を確認します。

@@ -4,16 +4,16 @@ description: この記事を使用して、コンポーネントの状態およ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/01/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 78dff59e1cd902b6f503d9dc75213d0bd4822baa
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308270"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634727"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -113,7 +113,15 @@ sudo iotedge support-bundle --since 6h
 :::moniker-end
 <!-- end 1.2 -->
 
-また、デバイスへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)の呼び出しを使用して、support-bundle コマンドの出力を Azure Blob Storage にアップロードすることもできます。
+既定では、 `support-bundle` コマンドにより、コマンドが呼び出されるディレクトリに **support_bundle.zip** という名前の zip ファイルが作成されます。 出力に別のパスまたはファイル名を指定するには、フラグ `--output` を使用します。
+
+コマンドの詳細については、ヘルプ情報を参照してください。
+
+```bash/cmd
+iotedge support-bundle --help
+```
+
+また、組み込みのダイレクト メソッド呼び出し [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) を使用して、support-bundle コマンドの出力を Azure Blob Storage にアップロードすることもできます。
 
 > [!WARNING]
 > `support-bundle` コマンドからの出力には、ホスト、デバイス名とモジュール名、モジュールによってログに記録された情報などが含まれる場合があります。パブリック フォーラムで出力を共有する場合は、この点に注意してください。
@@ -131,7 +139,7 @@ sudo iotedge support-bundle --since 6h
 最新の edgeAgent モジュール ツインを取得するには、[Azure Cloud Shell](https://shell.azure.com/) から次のコマンドを実行します。
 
    ```azurecli-interactive
-   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   az iot hub module-twin show --device-id <edge_device_id> --module-id '$edgeAgent' --hub-name <iot_hub_name>
    ```
 
 このコマンドは、edgeAgent の[報告されるプロパティ](./module-edgeagent-edgehub.md)すべてを出力します。 次に、デバイスの状態を監視する便利な方法を示します。
@@ -264,6 +272,21 @@ iotedge logs <container name>
 ```
 
 また、デバイス上のモジュールへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-module-logs)の呼び出しを使用して、そのモジュールのログを Azure Blob Storage にアップロードすることもできます。
+
+## <a name="clean-up-container-logs"></a>コンテナー ログをクリーンナップする
+
+既定では、Moby コンテナー エンジンでは、コンテナー ログ サイズの制限が設定されません。 これにより、時間の経過と共に、デバイスがログでいっぱいになり、ディスク容量が不足する可能性があります。 大きなコンテナー ログが IoT Edge デバイスのパフォーマンスに影響を与える場合は、次のコマンドを使用して、コンテナーとそれに関連するログを強制的に削除します。
+
+引き続きトラブルシューティングを行う場合は、コンテナー ログを検査してからこの手順を実行します。
+
+>[!WARNING]
+>未配信メッセージ バックログがあり、 [ホスト ストレージ](how-to-access-host-storage-from-module.md) がセットアップされていないときに edgeHub コンテナーを強制的に削除すると、配信されていないメッセージは失われます。
+
+```cmd
+docker rm --force <container name>
+```
+
+進行中のログの保守と運用のシナリオにおいては、[ログのサイズに制限をかけます](production-checklist.md#place-limits-on-log-size)。
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge ハブを通過するメッセージを表示する
 

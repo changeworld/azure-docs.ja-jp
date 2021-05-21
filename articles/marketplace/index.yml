@@ -10,12 +10,12 @@ metadata:
   author: mingshen-ms
   ms.author: mingshen
   ms.date: 09/02/2020
-  ms.openlocfilehash: 2610013e7f5c2ee856a6fb1cd10fe4aebcbeb4c5
-  ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+  ms.openlocfilehash: 28ef4a1b2531de4462a1ae313732b1dae17e09f1
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "108318983"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110071832"
 landingContent:
 - title: コマーシャル マーケットプレースでの作業
   linkLists:
@@ -111,22 +111,16 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Marketplace API ガイド
+      url: marketplace-apis-guide.md
+    - text: API 前提条件
+      url: ./cloud-partner-portal-api-prerequisites.md
     - text: SaaS Fulfillment API
       url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
     - text: Marketplace の測定サービス API
       url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-    - text: Cloud パートナー ポータルの API リファレンス
-      url: ./cloud-partner-portal-api-overview.md
-    - text: API 前提条件
-      url: ./cloud-partner-portal-api-prerequisites.md
-    - text: オファーを取得する
-      url: ./cloud-partner-portal-api-retrieve-offers.md
-    - text: オファーを作成または変更する
-      url: ./cloud-partner-portal-api-creating-offer.md
-    - text: 仮想マシン プランの価格
-      url: ./cloud-partner-portal-api-setting-price.md
-    - text: 公開
-      url: ./cloud-partner-portal-api-go-live.md
+    - text: Reporting API (PDF)
+      url: https://partneranalytics-api.azureedge.net/partneranalytics-api/Programmatic%20Access%20to%20Commercial%20Marketplace%20Analytics%20Data_v1.pdf
 - title: サポートを受ける
   linkLists:
   - linkListType: get-started

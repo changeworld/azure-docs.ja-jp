@@ -9,16 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom:
 - device-developer
-ms.openlocfilehash: e8ae8b0173e53c0a46ded1a2690175e367997c9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 683ec2b75cad36e4f4745b74ec3207bde9af9ac3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054145"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760951"
 ---
 # <a name="best-practices-for-device-development"></a>デバイス開発のベスト プラクティス
-
-"*この記事は、デバイス開発者を対象としています。* "
 
 これらの推奨事項は、IoT Central の組み込みのディザスター リカバリーと自動スケーリングを活用するようにデバイスを実装する方法を示しています。
 
@@ -61,7 +59,7 @@ DPS を使用してデバイスをプロビジョニングするには、IoT Cen
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次のステップは次のとおりです。
+推奨される次のステップは以下のとおりです。
 
 - 「[チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」で、SAS トークンの使い方を示すサンプル コードを確認する
 - [IoT Central アプリケーション用の Node.js デバイス SDK を使用して、x.509 証明書を使用するデバイスを接続する](how-to-connect-devices-x509.md)方法を確認する

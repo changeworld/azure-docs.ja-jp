@@ -6,16 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 05/07/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 11d9b38d71d428a3c6c829b508318389338f5a15
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: c091d1b25b8c8e166fa759dfc31421bc7b778232
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800348"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109635231"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -89,7 +88,7 @@ geo 冗長アカウントの場合は、DNS エントリが更新されて、要
 > [!IMPORTANT]
 > フェールオーバーが完了すると、ストレージ アカウントは、新しいプライマリ エンドポイントでローカル冗長に構成されます。 新しいセカンダリへのレプリケーションを再開するには、geo 冗長用にアカウントを再構成します。
 >
-> geo 冗長性を使用するように LRS アカウントを変換すると、コストが発生することにご注意ください。 このコストは、フェールオーバー後の新しいプライマリ リージョンのストレージ アカウントの更新に適用されます。  
+> geo 冗長性を使用するようにローカル冗長ストレージ アカウントを変換すると、コストと時間の両方がかかることにご注意ください。 詳細については、「[アカウントのフェールオーバーの重要な影響](storage-initiate-account-failover.md#important-implications-of-account-failover)」を参照してください。
 
 ### <a name="anticipate-data-loss"></a>データ損失の可能性
 
@@ -158,7 +157,7 @@ VM をシャットダウンすると、一時ディスクに格納されてい�
 次の機能とサービスは、アカウントのフェールオーバーではサポートされていません。
 
 - Azure File Sync では、ストレージ アカウントのフェールオーバーはサポートされていません。 Azure File Sync でクラウド エンドポイントとして使用されている Azure ファイル共有を含むストレージ アカウントは、フェールオーバーしないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。
-- ADLS Gen2 ストレージ アカウント (階層型名前空間が有効になっているアカウント) は、現時点ではサポートされていません。
+- 階層型名前空間が有効になっているストレージ アカウント (Data Lake Storage Gen2 など) は、現時点ではサポートされていません。
 - Premium ブロック BLOB 含むストレージ アカウントは、フェールオーバーできません。 現在、Premium ブロック BLOB をサポートするストレージ アカウントでは、geo 冗長がサポートされていません。
 - 任意の [WORM 不変ポリシー](../blobs/storage-blob-immutable-storage.md)対応コンテナーを含むストレージ アカウントをフェール オーバーすることはできません。 ロックされていない、またはロックされている時間ベースのリテンション期間または訴訟ホールド ポリシーでは、コンプライアンスを維持するためにフェール オーバーが防止されます。
 

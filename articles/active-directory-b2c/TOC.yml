@@ -274,12 +274,26 @@
           href: configure-tokens.md
     - name: カスタム属性を定義する
       href: user-flow-custom-attributes.md
-    - name: リスクベースの認証
+    - name: セキュリティと脅威の管理
       items:
         - name: Identity Protection を使用してリスクを調査する
           href: identity-protection-investigate-risk.md
         - name: 条件付きアクセスを構成する
           href: conditional-access-user-flow.md
+        - name: 資格情報攻撃を軽減する
+          displayName: 'smart lockout, account lockout, password attack'
+          href: threat-management.md
+        - name: Fraud Protection のパートナー
+          items:
+            - name: Arkose Labs
+              href: partner-arkose-labs.md
+              displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
+            - name: BioCatch
+              href: partner-biocatch.md
+              displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection, user behavior'
+            - name: Microsoft Dynamics 365 Fraud Protection
+              href: partner-dynamics-365-fraud-protection.md
+              displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
     - name: 年齢制限を構成する
       href: age-gating.md
     - name: API コネクタ
@@ -322,17 +336,6 @@
           href: partner-lexisnexis.md
         - name: Onfido
           href: partner-onfido.md
-    - name: Fraud Protection のパートナー
-      items:
-        - name: Arkose Labs
-          href: partner-arkose-labs.md
-          displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
-        - name: BioCatch
-          href: partner-biocatch.md
-          displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection, user behavior'
-        - name: Microsoft Dynamics 365 Fraud Protection
-          href: partner-dynamics-365-fraud-protection.md
-          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
     - name: レガシとオンプレミスのアプリへのアクセスをセキュリティで保護する
       items:
         - name: Ping Identity
@@ -538,8 +541,6 @@
           href: ../active-directory/fundamentals/resilience-b2c-developer-best-practices.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
         - name: 監視と分析
           href: ../active-directory/fundamentals/resilience-with-monitoring-alerting.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
-    - name: 脅威管理
-      href: threat-management.md
       displayName: security
     - name: ユーザー フローのバージョン
       href: user-flow-versions.md

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 2a6cff1aa93c4f3ac4f95fd176e1b1e42736d8f4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728026"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763355"
 ---
 ### <a name="functional-limits"></a>機能制限
 
@@ -56,6 +56,6 @@ ms.locfileid: "107728026"
 
 ### <a name="other-limits"></a>その他の制限
 
-Azure Digital Twins モデルの DTDL ドキュメント内のデータ型とフィールドに関する制限事項については、GitHub の仕様ドキュメントを参照してください。[*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+Azure Digital Twins モデルの DTDL ドキュメント内のデータ型とフィールドに関する制限事項については、GitHub の仕様ドキュメントを参照してください。[Digital Twins Definition Language (DTDL) - バージョン 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
-クエリの待機時間の詳細およびその他のクエリの制限事項については、[*ツイン グラフにクエリを実行する*](../articles/digital-twins/how-to-query-graph.md)方法に関する記事を参照してください。
+クエリの待機時間の詳細は、[クエリ言語](../articles/digital-twins/concepts-query-language.md#considerations-for-querying)に関するセクションで説明しています。 クエリ言語の特定の機能の制約については、[クエリの参考ドキュメント](../articles/digital-twins/concepts-query-language.md#reference-documentation)をご覧ください。

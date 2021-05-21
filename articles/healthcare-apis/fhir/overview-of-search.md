@@ -5,14 +5,14 @@ author: stevewohl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 5/3/2021
+ms.date: 5/17/2021
 ms.author: cavoeg
-ms.openlocfilehash: 37e75fb4f1e63e52bf81458641e56da9ae677b91
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 93468d2be1c9ab8fbdbce1e82a58f04f0676f260
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770895"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071184"
 ---
 # <a name="overview-of-fhir-search"></a>FHIR 検索の概要
 
@@ -32,36 +32,36 @@ GET {{FHIR_URL}}/Patient
 
 ## <a name="search-parameters"></a>検索パラメーター
 
-検索を実行すると、リソースのさまざまな属性に基づいて検索が実行されます。 これらの属性は、検索パラメーターと呼ばれます。 各リソースには、定義済みの検索パラメーターのセットがあります。 検索を正常に検索するには、検索パラメーターを定義し、データベース内でインデックスを作成する必要があります。
+検索を実行すると、リソースのさまざまな属性に基づいて検索が実行されます。 これらの属性は検索パラメーターと呼ばれる。 各リソースには、定義された検索パラメーターのセットがあります。 検索パラメーターを正しく検索するには、データベースで検索パラメーターを定義してインデックスを作成する必要があります。
 
-各検索パラメーターには、定義された [データ型](https://www.hl7.org/fhir/search.html#ptypes)があります。 さまざまなデータ型のサポートについて以下に説明します。
+各検索パラメーターには、定義済みのデータ [型 があります](https://www.hl7.org/fhir/search.html#ptypes)。 さまざまなデータ型のサポートの概要を次に示します。
 
 
 | **検索パラメーターの種類**  | **サポート対象 - PaaS** | **サポート対象 - OSS (SQL)** | **サポート対象 - OSS (Cosmos DB)** | **コメント**|
 | -------------------------  | -------------------- | ------------------------- | ------------------------------- |------------|
-|  number                    | はい                  | はい                       | はい                             |
-|  date                      | はい                  | はい                       | はい                             |
-|  string                    | はい                  | はい                       | はい                             |
-|  token                     | はい                  | はい                       | はい                             |
-|  reference                 | はい                  | はい                       | はい                             |
-|  複合                 | 部分的              | 部分的                   | 部分的                         | サポートされている複合型の一覧については、この記事の後半で説明します。 |
-|  数量                  | はい                  | はい                       | はい                             |
-|  uri                       | はい                  | はい                       | はい                             |
+|  number                    | はい                  | Yes                       | はい                             |
+|  date                      | はい                  | Yes                       | はい                             |
+|  string                    | はい                  | Yes                       | Yes                             |
+|  token                     | Yes                  | Yes                       | Yes                             |
+|  reference                 | Yes                  | Yes                       | Yes                             |
+|  複合                 | Partial              | Partial                   | Partial                         | サポートされている複合型の一覧については、この記事の後半で説明します。 |
+|  数量                  | Yes                  | Yes                       | Yes                             |
+|  uri                       | Yes                  | Yes                       | Yes                             |
 |  special                   | いいえ                   | いいえ                        | いいえ                              |
 
 ### <a name="common-search-parameters"></a>一般的な検索パラメーター
 
-すべてのリソースに適用される [一般的な検索パラメーター](https://www.hl7.org/fhir/search.html#all) があります。 次に、Azure API for FHIR でのサポートと共に以下の一覧を示します。
+すべてのリソース [に適用される一](https://www.hl7.org/fhir/search.html#all) 般的な検索パラメーターがあります。 以下に示すのは、以下の一覧と、次のコード内でのサポートAzure API for FHIR。
 
 | **一般的な検索パラメーター** | **サポート対象 - PaaS** | **サポート対象 - OSS (SQL)** | **サポート対象 - OSS (Cosmos DB)** | **コメント** |
 | --------------------------  | -------------------- | ------------------------- | ------------------------------- | ------------|
-| _id                         | はい                  | はい                       | はい                             |             |
-| _lastUpdated                | はい                  | はい                       | はい                             |             |
-| _tag                        | はい                  | はい                       | はい                             |             | 
-| _type                       | はい                  | はい                       | はい                             |             |
-| _security                   | はい                  | はい                       | はい                             |             |
-| _profile                    | はい                  | はい                       | はい                             | 2021年2月20日より前に R4 データベースを作成した場合は、再 [インデックスジョブ](how-to-run-a-reindex.md) を実行して **_profile** を有効にする必要があります。|
-| _has                        | 部分的              | はい                       | 部分的                         | _Has のサポートは、Azure API for FHIR と、Cosmos DB によってサポートされる OSS バージョンの MVP に含まれています。 詳細については、以下の「チェーン」セクションを参照してください。 |
+| _id                         | Yes                  | Yes                       | Yes                             |             |
+| _lastUpdated                | Yes                  | Yes                       | Yes                             |             |
+| _tag                        | Yes                  | Yes                       | Yes                             |             | 
+| _type                       | Yes                  | Yes                       | Yes                             |             |
+| _security                   | Yes                  | Yes                       | Yes                             |             |
+| _profile                    | Yes                  | Yes                       | Yes                             | 2021 年 2 月 20 日より前に R4 データベースを [](how-to-run-a-reindex.md)作成した場合は、インデックスの再作成ジョブを実行して、 を有効にする **_profile。**|
+| _has                        | Partial              | はい                       | 部分的                         | サポートされている_hasは、MVP の Azure API for FHIR と、サポートされている OSS バージョンCosmos DB。 詳細については、以下のチェーンに関するセクションを参照してください。 |
 | _query                      | いいえ                   | いいえ                        | いいえ                              |             |
 | _filter                     | いいえ                   | いいえ                        | いいえ                              |             |
 | _list                       | いいえ                   | いいえ                        | いいえ                              |             |
@@ -96,73 +96,73 @@ Azure API for FHIR では、次の検索パラメーターの型の組み合わ�
 * トークン、日付
 * Token、Number、Number
 * トークン、数量
-* Token、String
+* トークン、文字列
 * トークン、トークン
 
-詳細については、「HL7 [複合検索パラメーター](https://www.hl7.org/fhir/search.html#composite)」を参照してください。 
+詳細については、「HL7 複合検索パラメーター」 [を参照してください](https://www.hl7.org/fhir/search.html#composite)。 
 
 > [!NOTE]
-> 複合検索パラメーターでは、FHIR 仕様に従って修飾子をサポートしていません。
+> 複合検索パラメーターでは、FHIR 仕様に基く修飾子はサポートされていません。
 
- ### <a name="modifiers--prefixes"></a>修飾子 & プレフィックス
+ ### <a name="modifiers--prefixes"></a>プレフィックス&修飾子
 
-[修飾子](https://www.hl7.org/fhir/search.html#modifiers) を使用すると、検索パラメーターを変更できます。 次に、すべての FHIR 修飾子の概要と、FHIR 用の Azure API でのサポートを示します。 
+[修飾子を](https://www.hl7.org/fhir/search.html#modifiers) 使用すると、検索パラメーターを変更できます。 次に示すのは、すべての FHIR 修飾子の概要と、Azure API for FHIR。 
 
 | **修飾子** | **サポート対象 - PaaS** | **サポート対象 - OSS (SQL)** | **サポート対象 - OSS (Cosmos DB)** |
 | ------------- | -------------------- | ------------------------- | ------------------------------- |
-|  : 不足しています     | はい                  | はい                       | はい                             |
-|  : exact       | はい                  | はい                       | はい                             | 
-|  : 次のものが含まれます    | はい                  | はい                       | はい                             | 
-|  : テキスト        | はい                  | はい                       | はい                             | 
-|  : 型 (リファレンス) | はい             | はい                       | はい                             | 
-|  : not         | はい                  | はい                       | はい                             | 
-|  : 以下 (uri) | はい                  | はい                       | はい                             |  
-|  : 上 (uri) | いいえ                   | いいえ                        | いいえ                              | 
-|  : in (token)  | いいえ                   | いいえ                        | いいえ                              | 
-|  : 以下 (トークン) | いいえ                 | いいえ                        | いいえ                              | 
-|  : 上 (トークン) | いいえ                 | いいえ                        | いいえ                              | 
-|  : not in (token) | いいえ                | いいえ                        | いいえ                              | 
+|  :missing     | Yes                  | Yes                       | Yes                             |
+|  :exact       | Yes                  | Yes                       | Yes                             | 
+|  :contains    | Yes                  | Yes                       | Yes                             | 
+|  :text        | Yes                  | Yes                       | Yes                             | 
+|  :type (リファレンス) | Yes             | Yes                       | Yes                             | 
+|  :not         | Yes                  | Yes                       | Yes                             | 
+|  :below (uri) | Yes                  | Yes                       | Yes                             |  
+|  :above (uri) | Yes                  | Yes                       | Yes                             | 
+|  :in (トークン)  | いいえ                   | いいえ                        | いいえ                              | 
+|  :below (トークン) | いいえ                 | いいえ                        | いいえ                              | 
+|  :above (トークン) | いいえ                 | いいえ                        | いいえ                              | 
+|  :not-in (トークン) | いいえ                | いいえ                        | いいえ                              | 
 
-特定の順序 (数値、日付、および数量) を持つ検索パラメーターについては、パラメーターの [プレフィックス](https://www.hl7.org/fhir/search.html#prefix) を使用して一致項目を検索できます。 Azure API for FHIR では、すべてのプレフィックスがサポートされています。
+特定の順序 (数値、日付、数量) を持つ検索パラメーターの場合は、[](https://www.hl7.org/fhir/search.html#prefix)パラメーターのプレフィックスを使用して、一致を見つけるのに役立ちます。 Azure API for FHIR では、すべてのプレフィックスがサポートされています。
 
  ### <a name="search-result-parameters"></a>検索結果のパラメーター
 返されたリソースを管理するために、検索で使用できる検索結果パラメーターがあります。 各検索結果パラメーターの使用方法の詳細については、 [HL7](https://www.hl7.org/fhir/search.html#return) の web サイトを参照してください。 
 
 | **検索結果のパラメーター**  | **サポート対象 - PaaS** | **サポート対象 - OSS (SQL)** | **サポート対象 - OSS (Cosmos DB)** | **コメント**                 |
 | ----------------------------  | -------------------- | ------------------------- | ------------------------------- | -----------------------------|
-| _elements                     | はい                  | はい                       | はい                             |  問題 [1256](https://github.com/microsoft/fhir-server/issues/1256)                              |
-| _count                        | はい                  | はい                       | はい                             | _count は、1000のリソースに制限されています。 1000よりも大きい値を設定した場合は、1000だけが返され、バンドルで警告が返されます。                               |
-| _include                      | はい                  | はい                       | はい                             | 含まれる項目は 100 に制限されています。 Cosmos DB での PaaS および OSS の _include には、反復処理のサポート [(#1313)](https://github.com/microsoft/fhir-server/issues/1313)は含まれません。                               |
-| _revinclude                   | はい                  | はい                       | はい                             |  含まれる項目は 100 に制限されています。 Cosmos DB での PaaS および OSS の _revinclude には、反復処理のサポート [(#1313)](https://github.com/microsoft/fhir-server/issues/1313)は含まれません。  イシュー [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
-| _summary                      | はい             | はい                   | はい                        |                               |
-| _total                        | 部分的              | 部分的                   | 部分的                         | _total = none および _total = 正確                               |
-| _sort                         | 部分的              | 部分的                   | 部分的                         | sort = _lastUpdated がサポートされています。 2021年4月20日より後に作成された Azure API for FHIR および OSS Cosmos DB データベースでは、first name、last name、および臨床日でも並べ替えがサポートされています。                               |
+| _elements                     | Yes                  | Yes                       | Yes                             |                                |
+| _count                        | Yes                  | Yes                       | Yes                             | _count は、1000のリソースに制限されています。 1000よりも大きい値を設定した場合は、1000だけが返され、バンドルで警告が返されます。                               |
+| _include                      | Yes                  | Yes                       | Yes                             | 含まれる項目は 100 に制限されています。 Cosmos DB での PaaS および OSS の _include には、反復処理のサポート [(#1313)](https://github.com/microsoft/fhir-server/issues/1313)は含まれません。                               |
+| _revinclude                   | Yes                  | Yes                       | Yes                             |  含まれる項目は 100 に制限されています。 Cosmos DB での PaaS および OSS の _revinclude には、反復処理のサポート [(#1313)](https://github.com/microsoft/fhir-server/issues/1313)は含まれません。  イシュー [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
+| _summary                      | Yes             | Yes                   | Yes                        |                               |
+| _total                        | Partial              | Partial                   | Partial                         | _total = none および _total = 正確                               |
+| _sort                         | Partial              | Partial                   | Partial                         | sort = _lastUpdated がサポートされています。 2021年4月20日より後に作成された Azure API for FHIR および OSS Cosmos DB データベースでは、first name、last name、および臨床日でも並べ替えがサポートされています。                               |
 | _contained                    | いいえ                   | いいえ                        | いいえ                              |                                |
 | _containedType                | いいえ                   | いいえ                        | いいえ                              |                                |
 | _score                        | いいえ                   | いいえ                        | いいえ                              |                                |
 
-既定では、Azure API for FHIR は、厳密な処理に設定されています。 これは、サーバーが不明またはサポートされていないパラメーターを無視することを意味します。 厳格な処理を使用する場合 **は、use header と** set を使用でき `handling=strict` ます。
+既定では、Azure API for FHIR は、厳密な処理に設定されています。 これは、サーバーが不明なパラメーターまたはサポートされていないパラメーターを無視することを意味します。 厳密な処理を使用する場合は、Prefer ヘッダーを使用して **を設定** できます `handling=strict` 。
 
- ## <a name="chained--reverse-chained-searching"></a>チェーン & 逆チェーン検索
+ ## <a name="chained--reverse-chained-searching"></a>チェーン&逆連鎖検索
 
-[チェーン検索](https://www.hl7.org/fhir/search.html#chaining)では、別のリソースによって参照されているリソースに対して検索パラメーターを使用して検索できます。 たとえば、患者の名前が Jane である場合は、次のように入力します。
+チェーン [検索を使用](https://www.hl7.org/fhir/search.html#chaining) すると、別のリソースによって参照されるリソースの検索パラメーターを使用して検索できます。 たとえば、患者の名前が Jane である検出を見つける場合は、次のコマンドを使用します。
 
 `GET {{FHIR_URL}}/Encounter?subject:Patient.name=Jane`
 
-同様に、逆の連鎖検索を行うこともできます。 これにより、リソースを参照する他のリソースに関する条件を指定するリソースを取得できます。 チェーンと逆のチェーン検索のその他の例については、 [Fhir の検索例](search-samples.md) に関するページを参照してください。 
+同様に、逆チェーン検索を実行できます。 これにより、リソースを参照する他のリソースの条件を指定するリソースを取得できます。 チェーン検索とリバース チェーン検索のその他の例については [、FHIR 検索の例に関するページを参照](search-samples.md) してください。 
 
 > [!NOTE]
-> Azure API for FHIR と Cosmos DB によってサポートされるオープンソースでは、チェーン検索と逆連鎖検索に必要な各サブクエリが100項目のみを返すという制限があります。 100個を超える項目が見つかった場合は、次のエラーメッセージが表示されます。 "チェーン式のサブクエリが100を超える結果を返すことができません。より選択的な条件を使用してください。" クエリを成功させるには、探している内容についてより具体的な情報を取得する必要があります。
+> Azure API for FHIR と Cosmos DB によってサポートされるオープン ソースでは、チェーン検索とリバース チェーン検索に必要な各サブクエリで返される項目が 100 項目のみになるという制限があります。 見つかった項目が 100 を超える場合は、次のエラー メッセージが表示されます。"チェーンされた式のサブクエリは 100 を超える結果を返すはできない、より選択的な条件を使用してください。" クエリを正常に実行するには、探している情報についてより具体的に説明する必要があります。
 
 ## <a name="pagination"></a>改ページ位置の自動修正
 
-前述のように、検索結果はページングバンドルになります。 既定では、検索はページごとに10件の結果を返しますが、を指定することにより、この値を増減でき `_count` ます。 バンドル内には、検索の現在の結果を含む自己リンクがあります。 その他の一致がある場合、バンドルには次のリンクが含まれます。 引き続き次のリンクを使用して、結果の後続のページを取得できます。 `_count` は、1000項目以下に制限されています。 
+前述のように、検索の結果はページ付きバンドルになります。 既定では、検索では 1 ページあたり 10 件の結果が返されますが、 を指定することでこれを増やしたり減らしたりできます `_count` 。 バンドル内には、検索の現在の結果を含む自己リンクがあります。 追加の一致がある場合、バンドルには次のリンクが含まれています。 次のリンクを引き続き使用して、結果の後続のページを取得できます。 `_count` は 1,000 項目以下に制限されます。 
 
-現時点では、Azure API for FHIR では、バンドルの次のリンクのみがサポートされており、最初、最後、または前のリンクはサポートされていません。
+現時点では、Azure API for FHIRはバンドル内の次のリンクのみをサポートし、最初、最後、または前のリンクはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 
-検索の基本について学習したので、さまざまな検索パラメーター、修飾子、およびその他の FHIR 検索シナリオを使用して検索する方法の詳細については、「検索のサンプル」ページを参照してください。
+これで、検索の基本について学習しました。さまざまな検索パラメーター、修飾子、その他の FHIR 検索シナリオを使用して検索する方法の詳細については、検索サンプル ページを参照してください。
 
 >[!div class="nextstepaction"]
 >[FHIR 検索の例](search-samples.md)

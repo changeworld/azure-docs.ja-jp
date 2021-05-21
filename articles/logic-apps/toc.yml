@@ -66,11 +66,19 @@
     - name: シングルテナント Azure Logic Apps (プレビュー)
       items:
         - name: シングルテナントの概要 (プレビュー)
-          href: logic-apps-overview-preview.md
-        - name: プレビュー ロジック アプリの作成 - ポータル
-          href: create-stateful-stateless-workflows-azure-portal.md
-        - name: プレビュー ロジック アプリの作成 - Visual Studio Code
-          href: create-stateful-stateless-workflows-visual-studio-code.md
+          href: single-tenant-overview-compare.md
+        - name: シングルテナント ワークフローの作成 - ポータル
+          href: create-single-tenant-workflows-azure-portal.md
+        - name: シングルテナント ワークフローの作成 - Visual Studio Code
+          href: create-single-tenant-workflows-visual-studio-code.md
+        - name: シングルテナント用の DevOps デプロイ
+          href: devops-deployment-single-tenant-azure-logic-apps.md
+        - name: シングルテナント用の DevOps デプロイを設定する
+          href: set-up-devops-deployment-single-tenant-azure-logic-apps.md
+        - name: シングルテナント ワークフローと仮想ネットワーク間のトラフィックをセキュリティで保護する
+          href: secure-single-tenant-workflow-virtual-network-private-endpoint.md
+        - name: シングルテナント ワークフローのストレージ コストを見積もる
+          href: estimate-storage-costs.md
     - name: 開発
       items:
         - name: あらかじめ用意されているテンプレートから作成する
@@ -350,7 +358,7 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: 配置
       items:
-        - name: 概要 - ロジック アプリ デプロイの自動化
+        - name: 自動デプロイについて (マルチテナント)
           href: logic-apps-azure-resource-manager-templates-overview.md
         - name: Logic Apps テンプレートの作成
           href: logic-apps-create-azure-resource-manager-templates.md

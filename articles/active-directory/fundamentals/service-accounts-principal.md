@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f101c8a3d3af9658414e816afff9050402d71ce
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: d8a4b97ef095f5860ddf99751186ca04926e1698
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064073"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761743"
 ---
 # <a name="securing-service-principals"></a>サービス プリンシパルのセキュリティ保護
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) [サービス プリンシパル](../develop/a
 > 認証関連タスクのコンテキストでアプリケーションをゆるやかに参照する場合、アプリケーションとサービス プリンシパルという用語は同じ意味で使用されることがあります。 ただし Azure AD では、これらはアプリケーションの 2 つの異なる表現です。
  
 
-ApplicationID は、グローバルなアプリケーションを表し、テナント全体のすべてのアプリケーション インスタンスで同一です。 ObjectID は、アプリケーション オブジェクトの一意の値であり、サービス プリンシパルを表します。 ユーザー、グループ、その他のリソースと同様に、ObjectID は、Azure AD 内のアプリケーション インスタンスを一意に識別するのに役立ちます。
+ApplicationID は、グローバルなアプリケーションを表し、テナント全体のすべてのアプリケーション インスタンスで同一です。 ObjectID は、アプリケーション オブジェクトの一意の値です。 ユーザー、グループ、その他のリソースと同様に、ObjectID は、Azure AD 内のアプリケーション インスタンスを一意に識別するのに役立ちます。
 
 このトピックの詳細については、[アプリケーションとサービス プリンシパルの関係](../develop/app-objects-and-service-principals.md)に関するページを参照してください。
 

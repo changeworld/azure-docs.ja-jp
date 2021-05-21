@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: mathapli
 ms.author: mathapli
-ms.date: 01/18/2021
-ms.openlocfilehash: 7a9fa4a6f44e88caa6f98d5e1c56adaa065fa29a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/13/2021
+ms.openlocfilehash: 20f69edac6338c07132e004acc6c0ce1cd58ab29
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558711"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634331"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>仮想マシンの認定に関するトラブルシューティング
 
@@ -540,13 +540,13 @@ Bash 履歴を削除するには:
 このセクションでは、自分の VM イメージの 1 つで脆弱性または悪用が検出された場合に、新しい VM イメージを提供する方法を説明します。 Azure Marketplace に公開される Azure VM オファーのみに適用されます。
 
 > [!NOTE]
-> プランからは最後の VM イメージを削除したり、オファーの最後のプランを販売停止にしたりすることはできません。
+> プランから最後の VM イメージを削除することも、(前に販売を停止した) オファーの最後のプランを非推奨にすることもできません。
 
 次のいずれかのアクションを実行します。
 
 - 脆弱性がある VM イメージの代わりとなる新しい VM イメージがある場合は、「[修正した VM イメージを提供する](#provide-a-fixed-vm-image)」を参照してください。
-- プラン唯一の VM イメージの代わりとなる新しい VM イメージがない場合、またはそのプランを終了させてもよい場合は、[そのプランの販売を停止](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)してください。
-- オファー唯一の VM イメージを置き換える予定がない場合は、[そのオファーの販売を停止](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)することをお勧めします。
+- プラン唯一の VM イメージの代わりとなる新しい VM イメージがない場合、またはそのプランを終了させてもよい場合は、[(前に販売を停止した) そのプランを非推奨にしてください](partner-center-portal/update-existing-offer.md#deprecate-an-offer-or-plan)。
+- オファー唯一の VM イメージを置き換える予定がない場合は、[(前に販売を停止した) そのオファーを非推奨にする](partner-center-portal/update-existing-offer.md#deprecate-an-offer-or-plan)ことをお勧めします。
 
 ### <a name="provide-a-fixed-vm-image"></a>修正した VM イメージを提供する
 

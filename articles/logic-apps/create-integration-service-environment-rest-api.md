@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa0b37c46fd39a1764c356aa910347cafaa7d448
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550659"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787259"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する
 
@@ -195,6 +195,8 @@ ISE を、仮想ネットワーク上またはオンプレミスのカスタム 
 カスタムの信頼されたルート証明書を使用して ISE を更新する前に、次の考慮事項を確認してください。
 
 * 必ず、ルート証明書 *および* すべての中間証明書をアップロードしてください。 証明書の最大数 は 20 です。
+
+* 証明書のサブジェクト名は、Azure Logic Apps から呼び出すターゲット エンドポイントのホスト名と一致している必要があります。 
 
 * ルート証明書のアップロードは、最新のアップロードによって前のアップロードが上書きされる置換操作です。 たとえば、ある証明書をアップロードする要求を送信した後に、別の証明書をアップロードする別の要求を送信した場合、2 番目の証明書のみが ISE によって使用されます。 両方の証明書を使用する必要がある場合は、同じ要求内に一緒に追加します。  
 
