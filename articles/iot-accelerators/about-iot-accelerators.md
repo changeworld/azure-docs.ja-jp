@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: c966051ed5699d408fe83f1e9c862ca78b3282c4
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 8a89462ca132ddbf20ecc7f70502747d4a664b58
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714544"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486019"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータとは
 
 クラウドベースの IoT ソリューションは通常、カスタム コードとクラウド サービスを使用してデバイスの接続性、データ処理と分析、プレゼンテーションを管理します。
 
-IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 このシナリオには、接続済みファクトリとデバイスのシミュレーションが含まれます。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
+IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
 
 ソリューション アクセラレータは、IoT ソリューションの出発点です。 すべてのソリューション アクセラレータのソース コードはオープン ソースで、GitHub で入手できます。 ソリューション アクセラレータをダウンロードし、要件に合わせてカスタマイズすることをお勧めします。
 
@@ -33,7 +33,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 ## <a name="supported-iot-scenarios"></a>サポートされる IoT のシナリオ
 
-現時点では、次の 2 つのソリューション アクセラレータをデプロイできます。
+現時点では、1 つのソリューション アクセラレータをデプロイできます。
 
 ### <a name="connected-factory"></a>接続済みファクトリ
 
@@ -42,14 +42,6 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 接続済みファクトリのダッシュボードを使用して、産業用デバイスを監視および管理することができます。
 
 :::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="接続済みファクトリ ソリューションのダッシュボードを示すスクリーンショット。" lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
-
-### <a name="device-simulation"></a>デバイスのシミュレーション
-
-[デバイスのシミュレーション ソリューション アクセラレータ](iot-accelerators-device-simulation-overview.md)は、現実のテレメトリを生成する、シミュレートされたデバイスを実行するために使用します。 このソリューション アクセラレータを使用して、他のソリューション アクセラレータの動作をテストしたり、独自のカスタム IoT ソリューションをテストしたりできます。
-
-デバイス シミュレーション Web アプリを使用して、シミュレーションを構成および実行できます。
-
-:::image type="content" source="./media/about-iot-accelerators/ds-dashboard-inline.png" alt-text="デバイス シミュレーション ソリューションのダッシュボードを示すスクリーンショット。" lightbox="./media/about-iot-accelerators/ds-dashboard-expanded.png":::
 
 ## <a name="design-principles"></a>設計原則
 
@@ -68,7 +60,6 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 | ソリューション アクセラレータ   | Architecture  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | 接続済みファクトリ      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
-| デバイスのシミュレーション      | マイクロサービス | [.NET](https://github.com/Azure/azure-iot-pcs-device-simulation)          |
 
 マイクロサービス アーキテクチャの詳細については、「[Introduction to the Azure IoT reference architecture (Azure IoT リファレンス アーキテクチャの概要)](/azure/architecture/reference-architectures/iot/)」を参照してください。
 

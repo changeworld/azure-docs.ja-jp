@@ -5,13 +5,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
-ms.date: 02/07/2021
-ms.openlocfilehash: 4f3e5a22b9692823f1e9542fb3a6d9ad42fe79cf
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 05/07/2021
+ms.openlocfilehash: 0547e6dbdddc5533642145e6a54a20d29ae240d1
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321143"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518380"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -38,17 +38,11 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 - 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションに記載されているものに限定されています。 たとえば、カスタム ログ テーブルは現在サポートされていません。
 - サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはテーブルがサポートされるまでエクスポートされません。 
 - 存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace``` エラーで失敗します。
-- Log Analytics ワークスペースは、以下を除くすべてのリージョンに配置できます。
-  - Azure Government リージョン
-  - 西日本
-  - ブラジル南東部
-  - ノルウェー東部
-  - アラブ首長国連邦北部
-- ワークスペースでは、最大 10 個のルールを有効にすることができます。 10 を超える追加のルールは、無効状態で作成できます。 
+- データのエクスポートはすべてのリージョンで利用できるようになる予定ですが、現在は Azure Government リージョン、西日本、ブラジル南東部、ノルウェー東部、ノルウェー西部、アラブ首長国連邦北部、アラブ首長国連邦中部、オーストラリア中部 2、スイス北部、スイス西部、ドイツ中西部、インド南部、フランス南部、西日本では利用できません
+- ワークスペースでは、最大で 10 個のルールを定義できます。 追加の規則は許可されますが、無効の状態になります。 
 - エクスポート先は、ワークスペース内のすべてのエクスポート ルールごとに一意である必要があります。
 - エクスポート先のストレージ アカウントまたはイベント ハブは、Log Analytics ワークスペースと同じリージョンに配置されている必要があります。
 - エクスポートするテーブルの名前は、ストレージ アカウントでは 60 文字以内、イベント ハブでは 47 文字以内にする必要があります。 これよりも長い名前のテーブルはエクスポートされません。
-- Azure Data Lake Storage の追加 BLOB のサポートは、[制限付きパブリック プレビューになりました](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/)
 
 ## <a name="data-completeness"></a>データの完全性
 データ エクスポートでは、エクスポート先が使用できない場合に最大 30 分間、データ送信の再試行が続行されます。 30 分経ってもまだ使用できない場合、データは、エクスポート先が使用可能になるまで破棄されます。
@@ -68,9 +62,6 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 [![ストレージのサンプル データ](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
 Log Analytics のデータ エクスポートでは、時間ベースのアイテム保持ポリシーで *allowProtectedAppendWrites* 設定が有効になっている場合に、不変ストレージ アカウントに追加 BLOB を書き込むことができます。 これにより、追加 BLOB への新しいブロックの書き込みが許可される一方で、不変性の保護とコンプライアンスは維持されます。 「[保護された追加 BLOB の書き込みを許可する](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)」を参照してください。
-
-> [!NOTE]
-> Azure Data Lake ストレージの追加 BLOB のサポートが、プレビューとしてすべての Azure リージョンで利用できるようになりました。 Azure Data Lake ストレージへのエクスポート ルールを作成するには、事前に[制限付きパブリック プレビューに登録してください](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u)。 この登録を行わないと、エクスポートは機能しません。
 
 ### <a name="event-hub"></a>イベント ハブ
 データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
@@ -118,7 +109,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 データ エクスポート ルールは、データをエクスポートするテーブルとその宛先を定義します。 ワークスペースでは、有効なルールを 10 個持つことができますが、10 個以上のルールを追加する場合は、無効な状態にする必要があります。 エクスポート先は、ワークスペース内のすべてのエクスポート ルールごとに一意である必要があります。
 
 > [!NOTE]
-> データをエクスポートすると所有している宛先にログが送信されますが、これらには[ストレージ アカウントのスケーラビリティ](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)、[イベント ハブ名前空間のクォータ](../../event-hubs/event-hubs-quotas.md)などの制限があります。 エクスポート先のスロットリングを監視し、エクスポート先の限度に近づいたら対策を行うことをお勧めします。 次に例を示します。 
+> データをエクスポートすると所有している宛先にログが送信されますが、これらには[ストレージ アカウントのスケーラビリティ](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)、[イベント ハブ名前空間のクォータ](../../event-hubs/event-hubs-quotas.md)などの制限があります。 エクスポート先のスロットリングを監視し、その限度に近づいたら対策を行うことをお勧めします。 次に例を示します。 
 > - TU の数 (スループット単位) を自動的にスケールアップして増加させる、イベント ハブの自動インフレ機能を設定します。 自動インフレが最大になった場合は、さらに多くの TU を要求できます。
 > - それぞれのエクスポート先が異なる複数のエクスポート ルールにテーブルを分割する
 
@@ -626,7 +617,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DnsEvents |  |
 | DnsInventory |  |
 | Dynamics365Activity |  |
-| イベント | 部分的なサポート – このテーブルに対するデータの一部は、ストレージ アカウントを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| イベント | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータは、ストレージを使用して収集される一方で、このパスはエクスポートではサポートされていません。 |
 | ExchangeAssessmentRecommendation |  |
 | FailedIngestion |  |
 | FunctionAppLogs |  |
@@ -662,7 +653,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
 | SecurityDetection |  |
-| SecurityEvent | 部分的なサポート – このテーブルに対するデータの一部は、ストレージ アカウントを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| SecurityEvent | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータは、ストレージを使用して収集される一方で、このパスはエクスポートではサポートされていません。 |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -687,7 +678,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| syslog | 部分的なサポート – このテーブルに対するデータの一部は、ストレージ アカウントを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| syslog | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータは、ストレージを使用して収集される一方で、このパスはエクスポートではサポートされていません。 |
 | ThreatIntelligenceIndicator |  |
 | 更新 | 部分的なサポート – データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | UpdateRunProgress |  |

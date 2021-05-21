@@ -71,6 +71,8 @@
           href: enable-rdp.md
         - name: WAD 拡張機能を適用する
           href: enable-wad.md
+        - name: Key Vault 拡張機能を適用する
+          href: enable-key-vault-virtual-machine.md
     - name: アラートを有効にする
       href: enable-alerts.md
     - name: スケーリングを構成する

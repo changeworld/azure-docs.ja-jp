@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 144e8058e640f98dc6b0ef60534405525532b00e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 681900e2d2175e3e52a906072ae0b31a835cd1c8
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547868"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483661"
 ---
 # <a name="document-extraction-cognitive-skill"></a>ドキュメント抽出の認知技術
 
@@ -26,6 +26,12 @@ ms.locfileid: "102547868"
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.DocumentExtractionSkill
+
+## <a name="supported-document-formats"></a>サポートされるドキュメントの形式
+
+DocumentExtractionSkill を使用すると、次の形式のドキュメントからテキストを抽出できます。
+
+[!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -60,13 +66,23 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 }
 ```
 
+または
+
+```json
+{
+  "$type": "file",
+  "url": "URL to download file",
+  "sasToken": "OPTIONAL: SAS token for authentication if the URL provided is for a file in blob storage"
+}
+```
+
 このファイル参照オブジェクトは、次の 3 つの方法のいずれかで生成できます。
 
  - インデクサーの定義で `allowSkillsetToReadFileData` パラメーターを "true" に設定します。  このようにすると、BLOB データ ソースからダウンロードされた元のファイル データを表すオブジェクトであるパス `/document/file_data` が作成されます。 このパラメーターは、BLOB ストレージのデータにのみ適用されます。
 
  - インデクサーの定義で `imageAction` パラメーターを `none` 以外の値に設定します。  このようにすると、画像の配列が作成されます。この配列は、個別に渡した場合にこのスキルに対する入力となるために必要な規則に従います (つまり `/document/normalized_images/*`)。
 
- - カスタム スキルで、上記のように EXACTLY と定義された JSON オブジェクトが返されるようにします。  `$type` パラメーターは厳密に `file` に設定する必要があり、`data` パラメーターはファイル コンテンツの Base 64 でエンコードされたバイト配列データである必要があります。
+ - カスタム スキルで、上記のように EXACTLY と定義された JSON オブジェクトが返されるようにします。  `$type` パラメーターは `file` に正確に設定する必要があります。`data` パラメーターは、ファイル コンテンツの base 64 でエンコードされたバイト配列データである必要があります。または、`url` パラメーターは、その場所でファイルをダウンロードするアクセス権を持つ正しい形式の URL である必要があります。
 
 ## <a name="skill-outputs"></a>スキルの出力
 

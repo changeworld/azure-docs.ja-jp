@@ -1,14 +1,14 @@
 ---
 title: センサーとオンプレミスの管理コンソールのトラブルシューティング
 description: センサーとオンプレミスの管理コンソールをトラブルシューティングして、発生している可能性のある問題を排除します。
-ms.date: 03/14/2021
+ms.date: 04/22/2021
 ms.topic: article
-ms.openlocfilehash: e20c11e869ebeea0b4fc7f917dd8cebba7a69c5c
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: aac8fb9d3b6c102d72cf427cae46b8530b94cc0f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209051"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734635"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>センサーとオンプレミスの管理コンソールのトラブルシューティング
 
@@ -165,7 +165,7 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
 
 1. データマイニング レポートで、:::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: を選択して管理者モードに移行し、ICS デバイスの IP アドレスを削除します。
 
-### <a name="tweak-the-sensors-quality-of-service"></a>センサーのサービス品質を調整する
+### <a name="tweak-the-sensors-quality-of-service-qos"></a>センサーのサービス品質 (QoS) を調整する
 
 ネットワーク リソースを節約するために、センサーが日常的な手順に使用するインターフェイス帯域幅を制限できます。
 
@@ -198,7 +198,7 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
 
 - オンプレミスの管理コンソールで **[アラートの除外]** ルールを使用してこのアラートを除外していなかったことを確認します。  
 
-### <a name="tweak-the-quality-of-service"></a>サービス品質を調整する
+### <a name="tweak-the-quality-of-service-qos"></a>サービスの品質 (QoS) を調整する
 
 ネットワーク リソースを節約するため、アプライアンスとオンプレミスの管理コンソールとの間で、1 回の同期操作で外部システム (メールや SIEM など) に送信されるアラートの数を制限できます。
 
