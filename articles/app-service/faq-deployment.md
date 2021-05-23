@@ -89,7 +89,7 @@ Azure DevOps で継続的デプロイを使用するには、2 つの方法が�
 どちらの方法でも、コードの継続的デプロイは既存の開発者ワークフローとチェックイン プロシージャに依存します。 詳細と例については、次の記事をご覧ください。 
 
 *   [アプリの継続的デプロイを Azure Web サイトに実装する](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
-*   [Set up an Azure DevOps organization so it can deploy to a web app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)\(Web アプリにデプロイできるよう Azure DevOps 組織をセットアップする\)
+*   [Set up an Azure DevOps organization so it can deploy to a web app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)\(Web アプリにデプロイできるよう Azure DevOps organization をセットアップする\)
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>FTP または FTPS を使用してアプリを App Service にデプロイするにはどうすればよいですか。
 
