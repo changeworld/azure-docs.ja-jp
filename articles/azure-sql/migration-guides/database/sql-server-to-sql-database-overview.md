@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 72e27e79bc1eea7633d7594f1f72e31abbfd7744
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 89cfbe95b6c4900ea6512d79ece4625e75ea5cc4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136519"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773451"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>移行の概要: SQL Server から Azure SQL Database へ
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -41,6 +41,8 @@ SQL Database では、さまざまな種類のアプリケーションやワー�
 SQL Database に移行する主な利点の 1 つは、PaaS 機能を使用してアプリケーションを最新化できることです。 その後、SQL Agent ジョブなどのインスタンス レベルでスコープ設定されている技術コンポーネントに対する依存関係を排除できます。
 
 また、SQL Server の [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、SQL Server オンプレミスのライセンスを Azure SQL Database に移行することでコストを節約することもできます。 このオプションは、[仮想コアベースの購入モデル](../../database/service-tiers-vcore.md)を選択した場合に使用できます。
+
+移行ターゲットのサポート可能性を検証するには、[Azure SQL Database で利用可能](../../database/features-comparison.md)な SQL Server データベース エンジンの機能を必ず確認してください。  
 
 ## <a name="considerations"></a>考慮事項 
 
@@ -153,17 +155,12 @@ Always On フェールオーバー クラスター インスタンスや Always 
 
 Azure SQL Database に含まれる高可用性アーキテクチャに加えて、[自動フェールオーバー グループ](../../database/auto-failover-group-overview.md)機能もあります。これを使用すると、マネージド インスタンス内のデータベースの別リージョンへのレプリケーションとフェールオーバーを管理できます。 
 
+### <a name="logins-and-groups"></a>ログインとグループ
+
+Windows ログインは Azure SQL Database ではサポートされていません。代わりに Azure Active Directory ログインを作成してください。 SQL ログインを手動で再作成します。 
+
 ### <a name="sql-agent-jobs"></a>SQL Agent ジョブ
 SQL Agent ジョブは、Azure SQL Database では直接サポートされていないため、[エラスティック データベース ジョブ (プレビュー)](../../database/job-automation-overview.md) にデプロイする必要があります。
-
-### <a name="logins-and-groups"></a>ログインとグループ
-SQL ログインは、オフライン モードで Database Migration Service を使用して、SQL Server ソースから Azure SQL Database に移動します。 移行ウィザードの **[Selected logins]\(選択したログイン\)** ペインを使用して、ログインをターゲットの SQL データベースに移行します。 
-
-また、Database Migration Service の **[構成]** ページで対応するトグルを有効にすることで、Database Migration Service を使用して Windows ユーザーとグループを移行することもできます。 
-
-または、Microsoft データ移行アーキテクトが特別に設計した [PowerShell ユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)を使用できます。 このユーティリティでは、ログインを再作成し、ソースからターゲットへのデータベース ユーザーを選択するために、PowerShell を使用して Transact-SQL (T-SQL) スクリプトが作成されます。 
-
-PowerShell ユーティリティでは、Windows Server Active Directory アカウントが Azure Active Directory (Azure AD) アカウントに自動的にマップされ、ソースの Active Directory インスタンスに対してログインごとに UPN 参照を実行できます。 このユーティリティでは、ロール メンバーシップおよびユーザー アクセス許可と共に、カスタム サーバーとデータベース ロールのスクリプトが作成されます。 包含データベースはまだサポートされていません。使用可能な SQL Server アクセス許可のサブセットのみがスクリプト化されます。 
 
 ### <a name="system-databases"></a>システム データベース
 Azure SQL Database の場合、適用できるシステム データベースは、[master](/sql/relational-databases/databases/master-database) と tempdb のみになります。 詳細については、[Azure SQL Database での tempdb](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database) に関する記事を参照してください。

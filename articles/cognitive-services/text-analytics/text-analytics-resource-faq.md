@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: c38b7c33cfe787ba933ca1fc4961080eaa4ada61
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 324ff6f29aef76ef5baded89db92bb4e4b5ec362
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276061"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755551"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Text Analytics API に関してよく寄せられる質問 (FAQ)
 
@@ -39,7 +39,7 @@ ms.locfileid: "106276061"
 
 感情分析とキー フレーズ抽出は、[一部の言語](./language-support.md)でのみご利用いただけます。 自然言語処理は複雑であり、新しい機能を公開する前に十分な試験が必要になります。 そのため、成熟により多くの時間を要する機能に誰も依存しないように予告サポートは避けています。 
 
-次にどの言語に取り組むべきか、優先順位を付けるために、[User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics) で投票にご協力ください。 
+次にどの言語に取り組むべきか優先順位を付けるために、[フィードバック ツール](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749) で特定の言語に投票してください。 
 
 ## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>キー フレーズ抽出で特定の単語が返されるのはなぜですか。
 
@@ -63,7 +63,7 @@ ms.locfileid: "106276061"
 
 ## <a name="next-steps"></a>次のステップ
 
-不足している機能について質問がある場合は、 [UserVoice Web サイト](https://cognitive.uservoice.com/forums/555922-text-analytics)でご要望またはご投票ください。
+不足している機能について質問がある場合は、 [フィードバック ツール](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)を使用して、要求または投票を検討してください。
 
 ## <a name="see-also"></a>関連項目
 

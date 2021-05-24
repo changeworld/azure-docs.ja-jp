@@ -1,14 +1,14 @@
 ---
 title: Defender for IoT のインストール
 description: Azure Defender for IoT のセンサーとオンプレミス管理コンソールをインストールする方法について説明します。
-ms.date: 04/27/2021
+ms.date: 05/04/2021
 ms.topic: how-to
-ms.openlocfilehash: 77ff5a6d29544599a74bd6176e8b8e99a5c41968
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 2bbf9440dbae8c50569e18cccef7a2a0a2a7782a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076484"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108735327"
 ---
 # <a name="defender-for-iot-installation"></a>Defender for IoT のインストール
 
@@ -906,8 +906,8 @@ sudo ethtool -p <port value> <time-in-seconds>
 | アーキテクチャ | 仕様 | 使用方法 | 
 |--|--|--|
 | Enterprise <br/>(既定かつ最も一般的) | CPU: 8 <br/>メモリ:32G RAM<br/> HDD:1.8 TB | 大規模な運用環境 | 
-| Enterprise | CPU: 4 <br/> メモリ:8G RAM<br/> HDD:500 GB | 大規模な運用環境 |
-| Enterprise | CPU: 4 <br/>メモリ:8G RAM <br/> HDD:100 GB | 小規模なテスト環境 | 
+| Small | CPU: 4 <br/> メモリ:8G RAM<br/> HDD:500 GB | 大規模な運用環境 |
+| Office | CPU: 4 <br/>メモリ:8G RAM <br/> HDD:100 GB | 小規模なテスト環境 | 
    
 ### <a name="prerequisites"></a>前提条件
 
@@ -1036,6 +1036,191 @@ Hyper-V を使用して仮想マシンを作成するには:
 1. 以前に構成した IP アドレス `<https://ip_address>` を使用して管理コンソールにアクセスします。
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-management-console-sign-in-screen.png" alt-text="管理コンソールのサインイン画面を示すスクリーンショット。":::
+
+## <a name="legacy-devices"></a>レガシ デバイス
+
+このセクションでは、購入することはできなくなりましたが、引き続き Azure Defender for IoT でサポートされているデバイスについて説明します。
+
+### <a name="nuvo-5006lp-installation"></a>Nuvo 5006LP のインストール
+
+このセクションでは、Nuvo 5006LP のインストール手順について説明します。 Nuvo 5006LP アプライアンスにソフトウェアをインストールする前に、そのアプライアンスの BIOS 構成を調整する必要があります。 
+
+#### <a name="nuvo-5006lp-front-panel"></a>Nuvo 5006LP の前面パネル
+
+:::image type="content" source="media/tutorial-install-components/nuvo5006lp_frontpanel.png" alt-text="Nuvo 5006LP デバイスの前面パネルのビュー。":::
+
+1. 電源ボタン、電源インジケーター
+1. DVI ビデオ コネクタ
+1. HDMI ビデオ コネクタ
+1. VGA ビデオ コネクタ
+1. リモート オン/オフ コントロール、状態 LED 出力
+1. リセット ボタン
+1. 管理ネットワーク アダプター
+1. ミラー化されたデータを受信するポート
+
+#### <a name="nuvo-back-panel"></a>Nuvo の背面パネル
+
+:::image type="content" source="media/tutorial-install-components/nuvo5006lp_backpanel.png" alt-text="Nuvo 5006LP の背面パネルのビュー。":::
+
+1. SIM カード スロット
+1. マイクとスピーカー
+1. COM ポート
+1. USB コネクタ
+1. DC 電源ポート (DC IN)
+
+#### <a name="configure-the-nuvo-5006lp-bios"></a>Nuvo 5006LP BIOS を構成する
+
+次の手順では、Nuvo 5006LP BIOS の構成方法について説明します。 オペレーティング システムがアプライアンスに以前にインストールされていることを確認します。
+
+BIOS を構成するには:
+
+1. アプライアンスの電源をオンにします。
+
+1. **F2** キーを押して BIOS 構成を入力します。
+
+1. **[電源]** に移動し、[Power On after Power Failure]\(電源障害後の電源オン\) を "S0-Power On"\(S0 電源オン\) に変更します。
+
+    :::image type="content" source="media/tutorial-install-components/nuvo-power-on.png" alt-text="電源障害後に Nuvo 5006 の電源をオンにするように変更します..":::
+
+1. **[ブート]** に移動し、 **[PXE boot to LAN]\(LAN 経由の PXE ブート\)** が **[無効]** に設定されていることを確認します。
+
+1. **F10** キーを押して保存し、 **[Exit]\(終了\)** を選択します。 
+
+#### <a name="software-installation-nuvo-5006lp"></a>ソフトウェアのインストール (Nuvo 5006LP)
+
+インストール プロセスには約 20 分かかります。 インストール後、システムが数回再起動されます。
+
+1. ISO イメージを含む外部 CD またはキーのディスクを接続します。
+
+1. アプライアンスを起動します。
+
+1. **[English]\(英語\)** を選択します。
+
+1. **[XSENSE-RELEASE-<version> Office...]** を選択します。
+
+    :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="インストールするセンサーのバージョンを選択してください。":::
+
+1. アプライアンス アーキテクチャとネットワークのプロパティを定義します。
+
+    :::image type="content" source="media/tutorial-install-components/nuvo-profile-appliance.png" alt-text="Nuvo のアーキテクチャとネットワークのプロパティを定義します。":::
+
+    | パラメーター | 構成 |
+    | ----------| ------------- |
+    | **ハードウェア プロファイル** | **office** を選択します。 |
+    | **管理インターフェイス** | **eth0** |
+    | **管理ネットワークの IP アドレス** | **顧客が指定した IP アドレス** | 
+    | **管理サブネット マスク** | **顧客が指定した IP アドレス** | 
+    | **DNS** | **顧客が指定した IP アドレス** |
+    | **既定ゲートウェイの IP アドレス** | **0.0.0.0** | 
+    | **入力インターフェイス** | 入力インターフェイスの一覧は、システムによって生成されます。 <br />入力インターフェイスをミラー化するには、一覧に表示されているすべての項目をコンマ区切り記号を使用してコピーします。 |
+    | **ブリッジ インターフェイス** | - |
+
+1. 設定を受け入れ、「`Y`」と入力して続行します。
+
+約 10 分後に、サインイン資格情報が自動的に生成されます。 ユーザー名とパスワードを保存します。これらの資格情報は、初めてプラットフォームを使用するときにアクセスするために必要になります。
+
+### <a name="fitlet2-mini-sensor-installation"></a>Fitlet2 ミニ センサーのインストール
+
+このセクションでは、Fitlet2 のインストール手順について説明します。 Fitlet アプライアンスにソフトウェアをインストールする前に、そのアプライアンスの BIOS 構成を調整する必要があります。
+
+#### <a name="fitlet2-front-panel"></a>Fitlet2 前面パネル 
+
+:::image type="content" source="media/tutorial-install-components/fitlet-front-panel.png" alt-text="Fitlet2 の前面パネルのビュー。":::
+
+#### <a name="fitlet2-back-panel"></a>Fitlet2 背面パネル
+
+:::image type="content" source="media/tutorial-install-components/fitlet2-back-panel.png" alt-text="Fitlet2 の背面パネルのビュー。":::
+
+#### <a name="configure-the-fitlet2-bios"></a>Fitlet2 BIOS を構成する
+
+1. アプライアンスの電源をオンにします。
+
+1. **[Main]\(メイン\)**  >  **[OS Selection]\(OS の選択\)** に移動します。
+
+1. **+/-** を押して、 **[Linux]** を選択します。
+
+    :::image type="content" source="media/tutorial-install-components/fitlet-linux.png" alt-text="Fitlet2 で OS を Linux に設定します。":::
+
+1. システムの日付と時刻がインストールした日付と時刻で更新されることを確認します。
+
+1. **[詳細設定]** に移動し、 **[ACPI 設定]** を選択します。
+
+1. **[Enable Hibernation]\(休止状態を有効にする\)** を選択し、 **+/-** を押して **[無効]** を選択します。
+
+    :::image type="content" source="media/tutorial-install-components/disable-hibernation.png" alt-text="Fitlet2 で休止状態モードを無効にします。":::
+
+1. **Esc** キーを押します。
+
+1. **[詳細設定]**  >  **[TPM 構成]** に移動します。
+
+1. **[fTPM]** を選択し、 **+/-** を押して **[無効]** を選択します。
+
+1. **Esc** キーを押します。
+
+1. **[CPU 構成]**  >  **[VT-d]** に移動します。
+
+1. **+/-** を押して **[有効]** を選択します。
+
+1. **[CSM 構成]**  >  **[CSM サポート]** に移動します。
+
+1. **+/-** を押して **[有効]** を選択します。
+1. **[詳細設定]**  >  **[Boot option filter [Legacy only]]\(ブート オプション フィルター [レガシのみ]\)** に移動し、次のフィールドの設定を **[レガシ]** に変更します。
+    - ネットワーク
+    - ストレージ
+    - ビデオ
+    - その他の PCI
+
+    :::image type="content" source="media/tutorial-install-components/legacy-only.png" alt-text="すべてのフィールドを [レガシ] に設定します。":::
+
+1. **Esc** キーを押します。
+
+1. **[セキュリティ]**  >  **[Secure Boot Customization]\(セキュア ブートのカスタマイズ\)** に移動します。
+
+1. **+/-** を押して **[無効]** を選択します。
+
+1. **Esc** キーを押します。
+
+1. **[ブート]**  >  **[ブート モード]** 選択に移動し、 **[レガシ]** を選択します。
+
+1. **[ブート オプション #1 – [USB CD/DVD]]** を選択します。
+ 
+1. **[Save & Exit]\(保存して終了\)** を選択します。
+
+#### <a name="software-installation-fitlet2"></a>ソフトウェアのインストール (Fitlet2)
+
+インストール プロセスには約 20 分かかります。 インストール後、システムが数回再起動されます。
+
+1. ISO イメージを含む外部 CD またはキーのディスクを接続します。
+
+1. アプライアンスを起動します。
+
+1. **[English]\(英語\)** を選択します。
+
+1. **[XSENSE-RELEASE-<version> Office...]** を選択します。
+
+    :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="インストールするセンサーのバージョンを選択してください。":::
+
+    > [!Note]
+    > [Ruggedized]\(ラグド\) は選択しないでください。
+
+1. アプライアンス アーキテクチャとネットワークのプロパティを定義します。
+
+    :::image type="content" source="media/tutorial-install-components/nuvo-profile-appliance.png" alt-text="Nuvo のアーキテクチャとネットワークのプロパティを定義します。":::
+
+    | パラメーター | 構成 |
+    | ----------| ------------- |
+    | **ハードウェア プロファイル** | **office** を選択します。 |
+    | **管理インターフェイス** | **em1** |
+    | **管理ネットワークの IP アドレス** | **顧客が指定した IP アドレス** | 
+    | **管理サブネット マスク** | **顧客が指定した IP アドレス** | 
+    | **DNS** | **顧客が指定した IP アドレス** |
+    | **既定ゲートウェイの IP アドレス** | **0.0.0.0** | 
+    | **入力インターフェイス** | 入力インターフェイスの一覧は、システムによって生成されます。 <br />入力インターフェイスをミラー化するには、一覧に表示されているすべての項目をコンマ区切り記号を使用してコピーします。 |
+    | **ブリッジ インターフェイス** | - |
+
+1. 設定を受け入れ、「`Y`」と入力して続行します。
+
+約 10 分後に、サインイン資格情報が自動的に生成されます。 ユーザー名とパスワードを保存します。これらの資格情報は、初めてプラットフォームを使用するときにアクセスするために必要になります。
 
 ## <a name="post-installation-validation"></a>インストール後の検証
 

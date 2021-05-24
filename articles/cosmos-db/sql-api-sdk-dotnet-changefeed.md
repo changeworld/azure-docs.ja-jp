@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
-ms.openlocfilehash: 8f38ed175241bdb9235795d7a999a82d0799d46d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 8f35e0fcf369616e5e95ce41554370e2bb7b604d
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876564"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632639"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,6 +52,10 @@ ms.locfileid: "107876564"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="240"></a><a id="2.4.0"></a>2.4.0
+* /partitionKey として定義されたパーティション キーを使用してパーティション分割できるリース コレクションのサポートが追加されました。 この変更前には、リース コレクションのパーティション キーを/id として定義する必要がありました。
+* このリリースでは、Gremlin API でリース コレクションを使用することができます。Gremlin API では、パーティション キーを/id として定義ないためです。
 
 ### <a name="232"></a><a id="2.3.2"></a>2.3.2
 * V3 SDK とのリース ストアの互換性が追加されました。これにより、ホット移行パスが有効になります。 アプリケーションを V3 SDK に移行し、状態を失うことなく Change Feed Processor ライブラリに再び移行することができます。
@@ -199,6 +203,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |2021 年 5 月 6 日 |--- |
 | [2.3.2](#2.3.2) |2020 年 8 月 11 日 |--- |
 | [2.3.1](#2.3.1) |2020 年 7 月 30 日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |

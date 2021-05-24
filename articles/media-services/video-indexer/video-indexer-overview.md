@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7508b8123bbcd4188537fefd053394888e507c86
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100530231"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795846"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
 
@@ -71,6 +71,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 * **ローリング クレジット**: テレビ番組や映画の終わりにあるローリング クレジットの始まりと終わりを識別します。
 * **アニメーション キャラクターの検出** (プレビュー): [Cognitive Services の Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) との統合によって、アニメ化されたコンテンツのキャラクターの検出、グループ化、および認識を行います。 詳細については、「[アニメーション キャラクターの検出](animated-characters-recognition.md)」を参照してください。
 * **編集ショット タイプの検出**: タイプに基づくショットのタグ付け (ワイド ショット、ミディアム ショット、クローズアップ、エクストリーム クローズアップ、2 ショット、複数の人物、屋外、室内など)。 詳細については、「[編集ショット タイプの検出](scenes-shots-keyframes.md#editorial-shot-type-detection)」を参照してください。
+* **観測されたユーザーのトレース**: ビデオで観察されたユーザーを検出し、ビデオフレーム内のユーザーの場所 (境界ボックスを使用) や、正確なタイムスタンプ (開始、終了)、およびユーザーが表示されたときの信頼度などの情報を提供します。 詳細については、「[Trace observed people in a video](observed-people-tracing.md)」\(ビデオ内で確認されたユーザーを追跡する\)を参照してください。
 
 ### <a name="audio-insights"></a>オーディオの分析情報
 

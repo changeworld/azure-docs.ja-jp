@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 69af7e2129136128e87b4c9b28806b2f02f09e27
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e56867b66e963239a62a13876fee78f4075ea65b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205397"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744321"
 ---
 # <a name="np-series"></a>NP シリーズ 
 NP シリーズの仮想マシンでは、機械学習の推論、ビデオのトランスコード、データベースの検索と分析など、ワークロードを加速させるために [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA を利用しています。 また、NP シリーズの VM は Intel Xeon 8171M (Skylake) の CPU を搭載し、全コア ターボ クロック速度は 3.2 GHz です。
@@ -23,7 +23,7 @@ NP シリーズの仮想マシンでは、機械学習の推論、ビデオの�
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 VM 世代サポート: 第 1 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md): サポートされています ([プレビュー段階](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | FPGA | FPGA メモリ:GiB | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) | 
@@ -38,6 +38,10 @@ VM 世代サポート: 第 1 世代<br>
 
 
 ##  <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+**Q:** NP VM のクォータを要求するにはどうすればよいですか?
+
+**A:** [VM シリーズでの制限の引き上げ](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)に関するページの説明に従ってください。 NP VM は、米国東部、米国西部 2、西ヨーロッパ、東南アジアで利用できます。
 
 **Q:** 使用すべき Vitis のバージョンを教えてください。 
 
@@ -143,14 +147,7 @@ Host_Mem(SB) を無効にするには: sudo xbutil host_mem --disable
 
 **A:** xbutil クエリを実行し、下の部分を確認する必要があります。 
 
-**Q:** 独自の VM を作成して XRT を手動でデプロイした場合、どのような追加の変更を行う必要がありますか? 
 
-**A:** /opt/xilinx/xrt/setup.sh で、 /opt/xilinx/xrt/xrt.ini をポイントする XRT_INI_PATH エントリを追加してください
-
- 
-/Opt/xilinx/xrt/xrt.ini の内容には次が含まれている必要があります。 <br>
-[Runtime]<br>
-ert=false <br>
 
 ## <a name="other-sizes"></a>その他のサイズ
 

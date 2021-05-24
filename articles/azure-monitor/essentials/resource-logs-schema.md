@@ -2,13 +2,13 @@
 title: Azure リソース ログでサポートされているサービスとスキーマ
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
-ms.date: 04/07/2020
-ms.openlocfilehash: d219153f9d1dfbcd05cbe28a5ac0609a156c68a9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 05/10/2021
+ms.openlocfilehash: 5021f6fcfdd981989e2c30edb7605bd080725142
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142569"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715504"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -76,6 +76,7 @@ ms.locfileid: "108142569"
 | Kubernetes Service |[Azure Kubernetes のログ記録](../../aks/view-control-plane-logs.md#log-event-schema) |
 | Load Balancer |[Azure Load Balancer のログ分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| Media Services | [メディア サービス監視スキーマ](../../media-services/latest/monitoring/monitor-media-services-data-reference.md#schemas) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | Power BI 専用 | [Azure の Power BI Embedded のログ記録](/power-bi/developer/azure-pbie-diag-logs) |
 | 復旧サービス | [Azure Backup のデータ モデル](../../backup/backup-azure-reports-data-model.md)|

@@ -6,30 +6,31 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 6991fe7023991ed507c3dbbf7ca3db77545d0886
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3335dbb749369129889f132a68be0270a1016f1c
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135367"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790795"
 ---
-# <a name="cicd-for-azure-spring-cloud"></a>Azure Spring Cloud の CI/CD
+# <a name="automate-application-deployments-to-azure-spring-cloud"></a>Azure Spring Cloud へのアプリケーション デプロイを自動化する
 
-継続的インテグレーションと継続的デリバリーのツールを使用すると、最小限の労力とリスクで、既存のアプリケーションにすばやく更新プログラムをデプロイできます。 Azure DevOps は、これらの主要なジョブを整理および制御するのに役立ちます。 現在、Azure Spring Cloud では特定の Azure DevOps プラグインは提供されていません。  ただし、[Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli)を使用して、Spring Cloud アプリケーションと DevOps を統合できます。
+継続的インテグレーションと継続的デリバリーのツールを使用すると、最小限の労力とリスクで、既存のアプリケーションにすばやく更新プログラムをデプロイできます。 Azure DevOps は、これらの主要なジョブを整理および制御するのに役立ちます。 
 
-この記事では、Azure Spring Cloud で Azure CLI タスクを使用して Azure DevOps と統合する方法について説明します。
+この記事では、[Azure Pipelines 用の Azure Spring Cloud タスク](/azure/devops/pipelines/tasks/deploy/azure-spring-cloud)を使用し、アプリケーションをデプロイする方法について説明します。
 
 ## <a name="create-an-azure-resource-manager-service-connection"></a>Azure Resource Manager サービス接続を作成する
 
 Azure DevOps プロジェクトへの Azure Resource Manager サービス接続を作成する方法については、[こちらの記事](/azure/devops/pipelines/library/connect-to-azure)を参照してください。 Azure Spring Cloud サービス インスタンスに使用しているものと同じサブスクリプションを必ず選択してください。
 
-## <a name="azure-cli-task-templates"></a>Azure CLI タスクのテンプレート
+## <a name="build-and-deploy-apps"></a>アプリをビルドして配置する
+
 ::: zone pivot="programming-language-csharp"
 ### <a name="deploy-artifacts"></a>成果物をデプロイする
 
-一連の `tasks` を使用して、プロジェクトをビルドしてデプロイできます。 このスニペットでは、変数、アプリケーションをビルドする .NET Core タスク、および  *.zip* ファイルをデプロイする Azure CLI タスクを定義しています。
+一連のタスクを使用し、プロジェクトをビルドしてデプロイできます。 このスニペットでは、変数、アプリケーションをビルドする .NET Core タスク、アプリケーションをデプロイする Azure Spring Cloud タスクを定義しています。
 
 ```yaml
 variables:
@@ -39,7 +40,7 @@ variables:
   planetAppName: 'planet-weather-provider'
   solarAppName: 'solar-system-weather'
   serviceName: '<your service name>'
-  resourceGroupName: '<your resource group name>'
+
 
 steps:
 # Restore, build, publish and package the zipped planet app
@@ -52,41 +53,84 @@ steps:
     modifyOutputPath: false
     workingDirectory: $(workingDirectory)
 
-# Configure Azure CLI and install spring-cloud extension
-- task: AzureCLI@1
+# Deploy the planet app
+- task: AzureSpringCloud@0
   inputs:
-    azureSubscription: '<your subscription>'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az extension add --name spring-cloud --y
-      az configure --defaults group=${{ variables.resourceGroupName }}
-      az configure --defaults spring-cloud=${{ variables.serviceName }}
-      az spring-cloud app deploy -n ${{ variables.planetAppName }} --runtime-version NetCore_31 --main-entry ${{ variables.planetMainEntry }} --artifact-path ./${{ variables.planetAppName }}/publish-deploy-planet.zip
-      az spring-cloud app deploy -n ${{ variables.solarAppName }} --runtime-version NetCore_31 --main-entry ${{ variables.solarMainEntry }} --artifact-path ./${{ variables.solarAppName }}/publish-deploy-solar.zip
-      az spring-cloud app update -n ${{ variables.solarAppName }} --assign-endpoint
-      az spring-cloud app show -n ${{ variables.solarAppName }} -o table
-    workingDirectory: '${{ variables.workingDirectory }}/src'
+    azureSubscription: '<Service Connection Name>'
+    Action: 'Deploy'
+    AzureSpringCloud: $(serviceName)
+    AppName: 'testapp'
+    UseStagingDeployment: false
+    DeploymentName: 'default'
+    Package: $(workingDirectory)/src/$(planetAppName)/publish-deploy-planet.zip
+    RuntimeVersion: 'NetCore_31'
+    DotNetCoreMainEntryPath: $(planetMainEntry)
+
+# Deploy the solar app
+- task: AzureSpringCloud@0
+  inputs:
+    azureSubscription: '<Service Connection Name>'
+    Action: 'Deploy'
+    AzureSpringCloud: $(serviceName)
+    AppName: 'testapp'
+    UseStagingDeployment: false
+    DeploymentName: 'default'
+    Package: $(workingDirectory)/src/$(solarAppName)/publish-deploy-solar.zip
+    RuntimeVersion: 'NetCore_31'
+    DotNetCoreMainEntryPath: $(solarMainEntry)
 ```
 
 ::: zone-end
 ::: zone pivot="programming-language-java"
 ### <a name="deploy-artifacts"></a>成果物をデプロイする
 
-一連の `tasks` を使用して、プロジェクトをビルドしてデプロイできます。 このスニペットでは、最初にアプリケーションをビルドする Maven タスクが定義され、次に Azure Spring Cloud Azure CLI 拡張機能を使用して JAR ファイルをデプロイする 2 つ目のタスクが定義されています。
+#### <a name="to-production"></a>運用環境
+
+一連のタスクを使用し、プロジェクトをビルドしてデプロイできます。 このスニペットでは、最初にアプリケーションをビルドする Maven タスクが定義され、次に Azure Pipelines 用の Azure Spring Cloud タスクを使用して JAR ファイルをデプロイする 2 つ目のタスクが定義されています。
 
 ```yaml
 steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-- task: AzureCLI@1
+- task: AzureSpringCloud@0
   inputs:
-    azureSubscription: <your service connection name>
-    scriptLocation: inlineScript
-    inlineScript: |
-      az extension add -y --name spring-cloud
-      az spring-cloud app deploy --resource-group <your-resource-group> --service <your-spring-cloud-service> --name <app-name> --jar-path ./target/your-result-jar.jar
-      # deploy other app
+    azureSubscription: '<your service connection name>'
+    Action: 'Deploy'
+    AzureSpringCloud: <your Azure Spring Cloud service>
+    AppName: <app-name>
+    UseStagingDeployment: false
+    DeploymentName: 'default'
+    Package: ./target/your-result-jar.jar
+```
+
+#### <a name="blue-green-deployments"></a>ブルーグリーン デプロイ
+
+前のセクションで示されているデプロイでは、デプロイ時にすぐにアプリケーション トラフィックを受信します。 開発者は、顧客のトラフィックをアプリケーションで受信する前に、運用環境でアプリケーションをテストすることを望む場合があります。
+
+次のスニペットでは、上と同じようにアプリケーションをビルドし、その後、それをステージング デプロイにデプロイします。 この例では、ステージング デプロイが既に存在している必要があります。 別の方法については、[ブルーグリーン デプロイの戦略](concepts-blue-green-deployment-strategies.md)に関するページを参照してください。
+
+
+```yaml
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+- task: AzureSpringCloud@0
+  inputs:
+    azureSubscription: '<your service connection name>'
+    Action: 'Deploy'
+    AzureSpringCloud: <your Azure Spring Cloud service>
+    AppName: <app-name>
+    UseStagingDeployment: true
+    Package: ./target/your-result-jar.jar
+- task: AzureSpringCloud@0
+  inputs:
+    azureSubscription: '<your service connection name>'
+    Action: 'Set Production'
+    AzureSpringCloud: <your Azure Spring Cloud service>
+    AppName: <app-name>
+    UseStagingDeployment: true
 ```
 
 ### <a name="deploy-from-source"></a>ソースからデプロイする
@@ -94,19 +138,19 @@ steps:
 独立したビルド ステップを使用せず、Azure に直接デプロイすることができます。
 
 ```yaml
-- task: AzureCLI@1
+- task: AzureSpringCloud@0
   inputs:
-    azureSubscription: <your service connection name>
-    scriptLocation: inlineScript
-    inlineScript: |
-      az extension add -y --name spring-cloud
-      az spring-cloud app deploy --resource-group <your-resource-group> --service <your-spring-cloud-service> --name <app-name>
-
-      # or if it is a multi-module project
-      az spring-cloud app deploy --resource-group <your-resource-group> --service <your-spring-cloud-service> --name <app-name> --target-module relative/path/to/module
+    azureSubscription: '<your service connection name>'
+    Action: 'Deploy'
+    AzureSpringCloud: <your Azure Spring Cloud service>
+    AppName: <app-name>
+    UseStagingDeployment: false
+    DeploymentName: 'default'
+    Package: $(Build.SourcesDirectory)
 ```
 ::: zone-end
 
 ## <a name="next-steps"></a>次の手順
 
 * [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)
+

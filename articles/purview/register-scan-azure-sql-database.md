@@ -6,13 +6,13 @@ ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: 9873ec2113c0c5704ccca4fa10daf6ac8d572989
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 05/08/2021
+ms.openlocfilehash: 47cc0eeb052d980e5c33061dc4721e2f819b3b34
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107433"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654924"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -137,11 +137,11 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 
 新しい Azure SQL Database をデータ カタログに登録するには、次の手順を実行します。
 
-1. 自分の Purview アカウントに移動します
+1. ご自分の Purview アカウントに移動します。
 
 1. 左側のナビゲーションで **[ソース]** を選択します。
 
-1. **[登録]** を選択します
+1. **[登録]** を選択します。
 
 1. **[Register sources]\(ソースの登録\)** で、 **[Azure SQL Database]** を選択します。 **[続行]** をクリックします。
 
@@ -151,7 +151,7 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 
 1. データ ソースがカタログに表示される際の **名前** を入力します。
 1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択し、 **[Azure subscription]\(Azure サブスクリプション\)** ドロップダウン ボックスから適切なサブスクリプション、 **[Server name]\(サーバー名\)** ドロップダウン ボックスから適切なサーバーを選択します。
-1. **[完了]** を選択して、データ ソースを登録します。
+1. **[登録]** を選択してデータ ソースを登録します。
 
 :::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="ソースの登録のオプション" border="true":::
 

@@ -12,16 +12,19 @@ ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: da70f06bf2789bad300a29bd7307f69af2945756
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: afb3b3d6a2828e17abbca54ab8bd716f06cb01f8
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895867"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632747"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
 Microsoft Graph では、お使いの Azure AD B2C ディレクトリ内のリソースを管理できます。 次の Microsoft Graph API 操作は、ユーザー、ID プロバイダー、ユーザーフロー、カスタム ポリシー、およびポリシー キーなど、Azure AD B2C リソースの管理に対してサポートされています。 次のセクションの各リンクは、その操作の Microsoft Graph API リファレンス内の対応するページを対象としています。 
+
+> [!NOTE]
+> また、Azure サブスクリプションにリンクされている対応の Azure リソースと共に、Azure AD B2C ディレクトリ自体をプログラムによって作成することもできます。 この機能は Microsoft Graph API ではなく、Azure REST API を通じて公開されます。 詳細については、「[B2C テナント - 作成](https://docs.microsoft.com/rest/api/activedirectory/b2ctenants/create)」を参照してください。
 
 ## <a name="prerequisites"></a>[前提条件]
 

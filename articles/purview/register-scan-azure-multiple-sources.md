@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 2/26/2021
-ms.openlocfilehash: f3503dd986f037310b2b24dec535cc05b9d4c4a4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 05/08/2021
+ms.openlocfilehash: ce78b36a07a0648e869a2a382554fdc41b408f96
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127499"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656328"
 ---
 # <a name="register-and-scan-multiple-sources-in-azure-purview"></a>Azure Purview で複数のソースを登録してスキャンする
 
@@ -73,7 +73,7 @@ Azure で複数のソースの認証を設定するには、次の 2 つの方�
 
       :::image type="content" source="media/register-scan-azure-multiple-sources/azure-multiple-source-setup.png" alt-text="サブスクリプションとリソース グループを選択するためのボックスを示すスクリーンショット。":::
    1. **[コレクションを選択する]** ボックスで、コレクションを選択するか、新しいものを作成します (省略可能)。
-   1. **[完了]** を選択してデータ ソースを登録します。
+   1. **[登録]** を選択してデータ ソースを登録します。
 
 
 ## <a name="create-and-run-a-scan"></a>スキャンを作成して実行する

@@ -5,166 +5,176 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: how-to
-ms.date: 7/13/2019
+ms.date: 05/06/2021
 ms.author: rohink
-ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c09c1840c9976a2ac14cb5ef73f8c4e15000c54f
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92487400"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634939"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 
-Azure DNS は、カスタム ドメインをサポートする、または完全修飾ドメイン名 (FQDN) を持つ任意の Azure リソースに対して、カスタム ドメインの DNS を提供します。 たとえば、Azure Web アプリがあり、ユーザーが FQDN として contoso.com または www\.contoso.com を使用してそのアプリにアクセスできるようにします。 この記事では、カスタム ドメインを使用するために Azure サービスと Azure DNS を構成する方法について説明します。
+Azure DNS は、カスタム ドメインをサポートする、または完全修飾ドメイン名 (FQDN) を持つ Azure リソースに対して名前解決を提供します。 たとえば、ユーザーが `contoso.com` または `www.contoso.com` を FQDN として使用してアクセスする必要がある Azure Web アプリがあるとします。 この記事では、カスタム ドメインを使用するために Azure サービスと Azure DNS を構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-カスタム ドメインのために Azure DNS を使用するには、まずドメインを Azure DNS に委任する必要があります。 ネーム サーバーを委任のために構成する方法については、[Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md)を参照してください。 Azure DNS ゾーンにドメインを委任した後、必要な DNS レコードを構成できます。
+カスタム ドメインに Azure DNS を使用するには、まずドメインを Azure DNS に委任する必要があります。 ネーム サーバーを委任のために構成する方法については、[Azure DNS へのドメインの委任](./dns-delegate-domain-azure-dns.md)に関するページを参照してください。 Azure DNS ゾーンにドメインを委任したら、必要な DNS レコードを構成できるようになります。
 
-[Azure Function App](#azure-function-app)、[パブリック IP アドレス](#public-ip-address)、[App Service (Web Apps)](#app-service-web-apps)、[BLOB ストレージ](#blob-storage)、および [Azure CDN](#azure-cdn) 用のバニティまたはカスタム ドメインを構成できます。
+Azure Function App、パブリック IP アドレス、App Service (Web Apps)、BLOB ストレージ、および Azure CDN 用のバニティまたはカスタム ドメインを構成できます。
 
 ## <a name="azure-function-app"></a>Azure Function App
 
-Azure Function App 用のカスタム ドメインを構成するために、Function App 自体での構成に加えて CNAME レコードが作成されます。
+Azure 関数アプリに対してカスタム ドメインを構成するために、CNAME レコードがその関数アプリ自体で作成および構成されます。
  
-**[Function App]** に移動して関数アプリを選択します。 **[プラットフォーム機能]** をクリックし、 **[ネットワーク]** で **[カスタム ドメイン]** をクリックします。
+1. **[Function App]** に移動して関数アプリを選択します。 *[設定]* で、 **[カスタム ドメイン]** を選択します。 *[割り当てられたカスタム ドメイン]* の下の **現在の URL** をメモしてください。このアドレスは、作成される DNS レコードの別名として使用されます。
 
-![Function App ブレード](./media/dns-custom-domain/functionapp.png)
+    :::image type="content" source="./media/dns-custom-domain/function-app.png" alt-text="関数アプリの [カスタム ドメイン] のスクリーンショット。":::
 
-**[Custom domains] \(カスタム ドメイン)** ブレードの現在の URL をメモしてください。このアドレスは、作成される DNS レコードの別名として使用されます。
+1. DNS ゾーンに移動して **[+ レコード セット]** を選択します。 **[レコード セットの追加]** ページで次の情報を入力し、 **[OK]** を選択して作成します。
 
-![カスタム ドメイン ブレード](./media/dns-custom-domain/functionshostname.png)
+    :::image type="content" source="./media/dns-custom-domain/function-app-record.png" alt-text="関数アプリの [レコードセットの追加] ページのスクリーンショット。":::
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
+    |プロパティ  |値  |説明  |
+    |---------|---------|---------|
+    | 名前 | myfunctionapp | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。 |
+    | Type | CNAME | CNAME レコードを別名として使用します。 |
+    | TTL | 1 | 1 時間には 1 を使用します  |
+    | TTL の単位 | 時間 | 時間数は時間の単位として使用されます  |
+    | エイリアス | contosofunction.azurewebsites.net | 別名を作成している DNS 名。この例では、既定で関数アプリに指定される contosofunction.azurewebsites.net という DNS 名です。        |
+    
+1. 関数アプリに戻り、 *[設定]* で **[カスタム ドメイン]** を選択します。 **[+ カスタム ドメインの追加]** を選択します。
 
-|プロパティ  |値  |説明  |
-|---------|---------|---------|
-|名前     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | CNAME        | CNAME レコードを別名として使用します。        |
-|TTL     | 1        | 1 時間には 1 を使用します        |
-|TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
-|エイリアス     | adatumfunction.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Function App によって提供される adatumfunction.azurewebsites.net という DNS 名です。        |
+    :::image type="content" source="./media/dns-custom-domain/function-app-add-domain.png" alt-text="関数アプリの [カスタム ドメインの追加] ボタンのスクリーンショット。":::    
 
-関数アプリに戻って **[プラットフォーム機能]** をクリックし、 **[ネットワーク]** で **[カスタム ドメイン]** をクリックし、 **[カスタム ホスト名]** で **[+ ホスト名の追加]** をクリックします。
+1. **[カスタム ドメインの追加]** ページで、 **[カスタム ドメイン]** テキスト フィールドに CNAME レコードを入力し、 **[検証]** を選択します。 そのレコードが見つかった場合、 **[カスタム ドメインの追加]** ボタンが表示されます。 別名を追加するには、 **[カスタム ドメインの追加]** を選択します。
 
-**[Add hostname] \(ホスト名の追加)** ブレードで、CNAME レコードを **[hostname] \(ホスト名)** テキスト フィールドに入力して **[Validate] \(検証)** をクリックします。 レコードが見つからなかった場合、 **[ホスト名の追加]** ボタンが表示されます。 **[Add hostname] \(ホスト名の追加)** をクリックして別名を追加します。
-
-![Function App のホスト名追加ブレード](./media/dns-custom-domain/functionaddhostname.png)
+    :::image type="content" source="./media/dns-custom-domain/function-app-cname.png" alt-text="関数アプリの [カスタム ドメインの追加] ページのスクリーンショット。":::
 
 ## <a name="public-ip-address"></a>パブリック IP アドレス
 
 Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Classic VM などの、パブリック IP アドレスを使用するサービス用のカスタム ドメインを構成するために、A レコードが使用されます。
 
-**[Networking] \(ネットワーク)**  >  **[Public IP address] \(パブリック IP アドレス)** に移動し、パブリック IP リソースを選択して **[Configuration] \(構成)** をクリックします。 表示されている IP address をメモします。
+1. パブリック IP リソースに移動し、 **[構成]** を選択します。 表示されている IP アドレスをメモします。
 
-![パブリック IP ブレード](./media/dns-custom-domain/publicip.png)
+    :::image type="content" source="./media/dns-custom-domain/public-ip.png" alt-text="パブリック IP の[構成] ページのスクリーンショット。":::
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
+1. DNS ゾーンに移動して **[+ レコード セット]** を選択します。 **[レコード セットの追加]** ページで次の情報を入力し、 **[OK]** を選択して作成します。
 
+    :::image type="content" source="./media/dns-custom-domain/public-ip-record.png" alt-text="パブリック IP のレコード セットのページのスクリーンショット。":::
 
-|プロパティ  |値  |説明  |
-|---------|---------|---------|
-|名前     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
-|TTL     | 1        | 1 時間には 1 を使用します        |
-|TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
-|IP アドレス     | `<your ip address>`       | パブリック IP アドレス。|
+    | プロパティ | 値 | 説明 |
+    | -------- | ----- | ------------|
+    | 名前 | webserver1 | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。 |
+    | Type | A | リソースは IP アドレスなので、A レコードを使用します。 |
+    | TTL | 1 | 1 時間には 1 を使用します |
+    | TTL の単位 | 時間 | 時間数は時間の単位として使用されます |
+    | IP アドレス | `<your ip address>` | パブリック IP アドレス。 |
 
-![A レコードを作成する](./media/dns-custom-domain/arecord.png)
+1. A レコードが作成されたら、`nslookup` を実行してレコードの解決を検証します。
 
-A レコードが作成されたら、`nslookup` を実行してレコードの解決を検証します。
-
-![パブリック IP DNS 参照](./media/dns-custom-domain/publicipnslookup.png)
+    :::image type="content" source="./media/dns-custom-domain/public-ip-nslookup.png" alt-text="パブリック IP についての cmd での nslookup のスクリーンショット。":::
 
 ## <a name="app-service-web-apps"></a>App Service (Web Apps)
 
 次の手順では、App Service Web アプリ用のカスタム ドメインを構成する方法を説明します。
 
-**[App Service]** に移動し、カスタム ドメイン名を構成しているリソースを選択して、 **[カスタム ドメイン]** をクリックします。
+1. **[App Service]** に移動し、カスタム ドメイン名を構成しているリソースを選択して、 *[設定]* で **[カスタム ドメイン]** を選択します。 **[割り当てられたカスタム ドメイン]** の下の *現在の URL* をメモしてください。このアドレスは、作成される DNS レコードの別名として使用されます。
 
-**[Custom domains] \(カスタム ドメイン)** ブレードの現在の URL をメモしてください。このアドレスは、作成される DNS レコードの別名として使用されます。
+    :::image type="content" source="./media/dns-custom-domain/web-app.png" alt-text="Web アプリの [カスタム ドメイン] のスクリーンショット。":::
 
-![カスタム ドメイン ブレード](./media/dns-custom-domain/url.png)
+1. DNS ゾーンに移動して **[+ レコード セット]** を選択します。 **[レコード セットの追加]** ページで次の情報を入力し、 **[OK]** を選択して作成します。
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
+    :::image type="content" source="./media/dns-custom-domain/web-app.png" alt-text="Web アプリのレコード セットのページのスクリーンショット。":::
 
+    | プロパティ  | 値 | 説明 |
+    |---------- | ----- | ----------- |
+    | 名前 | mywebserver | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。 |
+    | Type | CNAME | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。 |
+    | TTL | 1 | 1 時間には 1 を使用します |
+    | TTL の単位 | 時間 | 時間数は時間の単位として使用されます |
+    | エイリアス | contoso.azurewebsites.net | 別名を作成している DNS 名。この例では、既定で Web アプリに指定される contoso.azurewebsites.net という DNS 名です。 |
 
-|プロパティ  |値  |説明  |
-|---------|---------|---------|
-|名前     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
-|TTL     | 1        | 1 時間には 1 を使用します        |
-|TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
-|エイリアス     | webserver.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Web アプリに与えられる webserver.azurewebsites.net という DNS 名です。        |
+1. Web アプリに戻り、 *[設定]* で **[カスタム ドメイン]** を選択します。 **[+ カスタム ドメインの追加]** を選択します。
 
+    :::image type="content" source="./media/dns-custom-domain/web-app-add-domain.png" alt-text="Web アプリの [カスタム ドメインの追加] ボタンのスクリーンショット。":::  
 
-![CNAME レコードを作成する](./media/dns-custom-domain/createcnamerecord.png)
+1. **[カスタム ドメインの追加]** ページで、 **[カスタム ドメイン]** テキスト フィールドに CNAME レコードを入力し、 **[検証]** を選択します。 そのレコードが見つかった場合、 **[カスタム ドメインの追加]** ボタンが表示されます。 別名を追加するには、 **[カスタム ドメインの追加]** を選択します。
 
-カスタム ドメイン名が構成されているアプリ サービスに戻ります。 **[Custom domains] \(カスタム ドメイン)** をクリックし、 **[Hostnames] \(ホスト名)** をクリックします。 作成した CNAME レコードを追加するには、 **[+ Add hostname] \(ホスト名の追加)** をクリックします。
+    :::image type="content" source="./media/dns-custom-domain/web-app-cname.png" alt-text="Web アプリの [カスタム ドメインの追加] ページのスクリーンショット。":::
 
-![[+ ホスト名の追加] ボタンが強調表示されているスクリーンショット。](./media/dns-custom-domain/figure1.png)
+1. プロセスが完了したら、**nslookup** を実行して、名前解決が機能していることを検証します。
 
-プロセスが完了したら、**nslookup** を実行して、名前解決が機能していることを検証します。
+    :::image type="content" source="./media/dns-custom-domain/app-service-nslookup.png" alt-text="Web アプリについての nslookup のスクリーンショット。"::: 
 
-![図 1](./media/dns-custom-domain/finalnslookup.png)
-
-カスタム ドメインを App Service にマッピングする方法について、詳しくは[既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)を参照してください。
+カスタム ドメインを App Service にマッピングする方法の詳細については、「[既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)」を参照してください。
 
 アクティブな DNS 名を移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](../app-service/manage-custom-dns-migrate-domain.md)」を参照してください。
 
-カスタム ドメインを購入する必要がある場合、App Service ドメインの詳細について[Buy a custom domain name for Azure Web Apps](../app-service/manage-custom-dns-buy-domain.md)を参照してください。
+App Service 用にカスタム ドメインを購入する必要がある場合は、「[Azure Web Apps のカスタム ドメイン名を購入する](../app-service/manage-custom-dns-buy-domain.md)」を参照してください。
 
 ## <a name="blob-storage"></a>BLOB ストレージ
 
-次の手順では、asverify の手法を使用して BLOB ストレージ アカウント用の CNAME レコードを構成する方法を説明します。 この手法はダウンタイムがないことを保証します。
+次の手順では、asverify の手法を使用して BLOB ストレージ アカウント用の CNAME レコードを構成する方法を説明します。 この方法はダウンタイムがないことを保証します。
 
-**[Storage] \(ストレージ)**  >  **[Storage Accounts] \(ストレージ アカウント)** に移動し、ストレージ アカウントを選択し、 **[Custom domain] \(カスタム ドメイン)** をクリックします。 ステップ 2 の FQDN をメモします。この値は、最初の CNAME レコードを作成するために使用されます
+1. **[ストレージ アカウント]** に移動し、ご利用のストレージ アカウントを選択し、 *[設定]* で **[ネットワーク]** を選択します。 次に、 **[カスタム ドメイン]** タブを選択します。手順 2 の FQDN を記録してください。この名前は、最初の CNAME レコードの作成に使用されます。
 
-![BLOB ストレージのカスタム ドメイン](./media/dns-custom-domain/blobcustomdomain.png)
+    :::image type="content" source="./media/dns-custom-domain/blob-storage.png" alt-text="ストレージ アカウントの [カスタム ドメイン] のスクリーンショット。":::
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
+1. DNS ゾーンに移動して **[+ レコード セット]** を選択します。 **[レコード セットの追加]** ページで次の情報を入力し、 **[OK]** を選択して作成します。
 
+    :::image type="content" source="./media/dns-custom-domain/storage-account-record.png" alt-text="ストレージ アカウントのレコード セットのページのスクリーンショット。":::
 
-|プロパティ  |値  |説明  |
-|---------|---------|---------|
-|名前     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | CNAME        | CNAME レコードを別名として使用します。        |
-|TTL     | 1        | 1 時間には 1 を使用します        |
-|TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
-|エイリアス     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる asverify.adatumfunctiona9ed.blob.core.windows.net という DNS 名です。        |
+    | プロパティ | 値 | 説明 |
+    | -------- | ----- | ----------- |
+    | 名前 | asverify.mystorageaccount | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。 |
+    | Type | CNAME | CNAME レコードを別名として使用します。 |
+    | TTL | 1 | 1 時間には 1 を使用します |
+    | TTL の単位 | 時間 | 時間数は時間の単位として使用されます |
+    | エイリアス | asverify.contoso.blob.core.windows.net | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに指定される asverify.contoso.blob.core.windows.net という DNS 名です。 |
 
-**[Storage] \(ストレージ)**  >  **[Storage Accounts] \(ストレージ アカウント)** をクリックしてストレージ アカウントに戻り、ストレージ アカウントを選択して **[Custom domain] \(カスタム ドメイン)** をクリックします。 作成した別名から asverify プレフィックスを除いたものをテキスト ボックスに入力し、 **[間接 CNAME 検証を使用する]** をオンにし、 **[保存]** をクリックします。 この手順が完了したら、DNS ゾーンに戻り、asverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。
+1. ストレージ アカウントに戻り、 **[ネットワーク]** 、 **[カスタム ドメイン]** タブの順に選択します。テキスト ボックスに、作成した別名を asverify プレフィックスなしで入力し、 **[間接 CNAME 検証を使用する]** のチェックを付け、 **[保存]** を選択します。 
 
-![[カスタム ドメイン] ページを示しているスクリーンショット。](./media/dns-custom-domain/indirectvalidate.png)
+    :::image type="content" source="./media/dns-custom-domain/blob-storage-add-domain.png" alt-text="ストレージ アカウントのカスタム ドメインの追加ページのスクリーンショット。":::
 
-`nslookup` を実行して DNS 解決を検証する
+1. DNS ゾーンに戻り、asverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、asverify プレフィックスを含む CNAME レコードを削除しても安全です。
+
+    :::image type="content" source="./media/dns-custom-domain/storage-account-record-set.png" alt-text="asverify プレフィックスを含まないストレージ アカウント レコードのスクリーンショット。":::
+
+1. `nslookup` を実行して DNS 解決を検証します。
 
 カスタム ドメインを BLOB ストレージ エンドポイントにマップする方法について、詳しくは[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)を参照してください。
 
 ## <a name="azure-cdn"></a>Azure CDN
 
-次の手順では、cdnverify の手法を使用して、CDN エンドポイント用の CNAME レコードを構成する方法を説明します。 この手法はダウンタイムがないことを保証します。
+次の手順では、cdnverify の手法を使用して、CDN エンドポイント用の CNAME レコードを構成する方法を説明します。 この方法はダウンタイムがないことを保証します。
 
-**[ネットワーク]**  >  **[CDN Profiles]\(CDN プロファイル\)** の順に移動し、CDN プロファイルを選択します。
+1. CDN プロファイルに移動し、作業するエンドポイントを選択します。 **[+ カスタム ドメイン]** を選択します。 **[Endpoint hostname] \(エンドポイントのホスト名)** の値は CNAME レコードが指すレコードであるため、これをメモします。
 
-対象のエンドポイントを選択して **[+ Custom domain] \(カスタム ドメインの追加)** をクリックします。 **[Endpoint hostname] \(エンドポイントのホスト名)** の値は CNAME レコードが指すレコードであるため、これをメモします。
+    :::image type="content" source="./media/dns-custom-domain/cdn.png" alt-text="CDN カスタム ドメインのページのスクリーンショット。":::
 
-![CDN カスタム ドメイン](./media/dns-custom-domain/endpointcustomdomain.png)
+1. DNS ゾーンに移動して **[+ レコード セット]** を選択します。 **[レコード セットの追加]** ページで次の情報を入力し、 **[OK]** を選択して作成します。
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、 **[OK]** をクリックして作成します。
+    :::image type="content" source="./media/dns-custom-domain/cdn-record.png" alt-text="CDN のレコード セットのページのスクリーンショット。":::
 
-|プロパティ  |値  |説明  |
-|---------|---------|---------|
-|名前     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|Type     | CNAME        | CNAME レコードを別名として使用します。        |
-|TTL     | 1        | 1 時間には 1 を使用します        |
-|TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
-|エイリアス     | cdnverify.adatumcdnendpoint.azureedge.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる cdnverify.adatumcdnendpoint.azureedge.net という DNS 名です。        |
+    | プロパティ | 値 | 説明 |
+    | -------- | ----- | ----------- |
+    | 名前 | cdnverify.mycdnendpoint | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。 |
+    | Type | CNAME | CNAME レコードを別名として使用します。 |
+    | TTL | 1 | 1 時間には 1 を使用します |
+    | TTL の単位 | 時間 | 時間数は時間の単位として使用されます |
+    | エイリアス | cdnverify.contoso.azureedge.net | 別名を作成している DNS 名。この例では、CDN エンドポイントに既定で指定される cdnverify.contoso.azureedge.net という DNS 名です。 |
 
-**[Networking] \(ネットワーク)**  >  **[CDN Profiles] \(CDN プロファイル)** をクリックして CDN エンドポイントに戻り、CDN プロファイルを選択します。 **[+ Custom domain] \(カスタム ドメインの追加)** をクリックし、CNAME レコードの別名から cdnverify プレフィックスを除いたものを入力して **[Add] \(追加)** をクリックします。
+1. CDN エンドポイントに戻り、 **[+ カスタム ドメイン]** を選択します。 CNAME レコードの別名を cdnverify プレフィックスなしで入力し、 **[追加]** を選択します。
 
-この手順が完了したら、DNS ゾーンに戻り、cdnverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。 CDN の詳細と、中間登録手順なしでカスタム ドメインを構成する方法については、[カスタム ドメインへの Azure CDN コンテンツのマッピング](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)を参照してください。
+    :::image type="content" source="./media/dns-custom-domain/cdn-add.png" alt-text="CDN エンドポイントの [カスタム ドメインの追加] ページのスクリーンショット。":::
+
+1. DNS ゾーンに戻り、cdnverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスを含む CNAME レコードを削除しても安全です。
+
+    :::image type="content" source="./media/dns-custom-domain/cdn-record-set.png" alt-text="cdnverify プレフィックスを含まない CDN レコードのスクリーンショット。":::
+
+CDN の詳細と、中間登録手順なしでカスタム ドメインを構成する方法については、[カスタム ドメインへの Azure CDN コンテンツのマッピング](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

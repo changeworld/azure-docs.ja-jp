@@ -3,12 +3,12 @@ title: プライベート エンドポイントを使用して Azure Functions �
 description: このチュートリアルでは、関数を Azure 仮想ネットワークに接続し、プライベート エンドポイントを使用してこれをロック ダウンする方法について説明します。
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 0f18712e9881c60754d5729751609f6458104daf
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078776"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715486"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>チュートリアル: プライベート エンドポイントを使用して Azure Functions を Azure 仮想ネットワークに統合する
 
@@ -91,11 +91,11 @@ ms.locfileid: "106078776"
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証が終了したら、 **[作成]** を選択します。
 
-### <a name="create-a-service-bus"></a>サービス バスを作成する
+### <a name="create-a-service-bus"></a>Service Bus の作成
 
 1. Azure portal のメニューまたは **[ホーム]** ページで **[リソースの作成]** を選択します。
 
-1. **[新規]** ページで、"*サービス バス*" を検索します。 **[作成]** を選択します。
+1. **[新規]** ページで、「*サービス バス*」を検索します。 **[作成]** を選択します。
 
 1. **[基本]** タブで、次の表を使用してサービス バスの設定を構成します。 その他の設定はすべて、既定値を使用できます。
 
@@ -103,8 +103,8 @@ ms.locfileid: "106078776"
     | ------------ | ---------------- | ---------------- |
     | **サブスクリプション** | 該当するサブスクリプション | リソースが作成されるサブスクリプション。 |
     | **[リソース グループ](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 関数アプリで作成したリソース グループ。 |
-    | **名前** | myServiceBus| プライベート エンドポイントを適用するサービス バスの名前。 |
-    | **[リージョン](https://azure.microsoft.com/regions/)** | myFunctionRegion | 関数アプリを作成したリージョン。 |
+    | **名前空間名** | myServiceBus| プライベート エンドポイントを適用するサービス バスの名前。 |
+    | **[場所](https://azure.microsoft.com/regions/)** | myFunctionRegion | 関数アプリを作成したリージョン。 |
     | **価格レベル** | Premium | Azure Service Bus でプライベート エンドポイントを使用するには、このレベルを選択します。 |
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証が終了したら、 **[作成]** を選択します。
@@ -183,9 +183,13 @@ Azure プライベート エンドポイントは、プライベート IP アド
     | ------------ | ---------------- | ---------------- |
     | **サブスクリプション** | 該当するサブスクリプション | リソースが作成されるサブスクリプション。 | 
     | **リソースの種類**  | Microsoft.Storage/storageAccounts | ストレージ アカウントのリソースの種類。 |
+    | **名前** | blob-endpoint | ストレージ アカウントからの BLOB のプライベート エンドポイントの名前。 |
     | **リソース** | mysecurestorage | 作成したストレージ アカウント。 |
     | **ターゲット サブリソース** | blob (blob) | ストレージ アカウントからの BLOB に使用されるプライベート エンドポイント。 |
+1. プライベート エンドポイントが作成された後、ストレージ アカウントの **[ファイアウォールと仮想 ネットワーク]** セクションに戻します。  
+1. **選択したネットワーク** が確実に選択されているようにします。  既存の仮想ネットワークを追加する必要はありません。
 
+仮想ネットワーク内のリソースは、プライベート エンドポイントを使用してストレージ アカウントと通信できるようになりました。
 ## <a name="lock-down-your-service-bus"></a>サービス バスをロック ダウンする
 
 サービス バスをロック ダウンするためのプライベート エンドポイントを作成します。
@@ -211,14 +215,31 @@ Azure プライベート エンドポイントは、プライベート IP アド
     | ------------ | ---------------- | ---------------- |
     | **サブスクリプション** | 該当するサブスクリプション | リソースが作成されるサブスクリプション。 | 
     | **リソースの種類**  | Microsoft.ServiceBus/namespaces | サービス バスのリソースの種類。 |
-    | **リソース** | myServiceBus | チュートリアルで作成したサービス バス。 |
+    | **リソース** | myServiceBus | チュートリアルで作成した Service Bus。 |
     | **ターゲット サブリソース** | namespace | サービス バスの名前空間に使用されるプライベート エンドポイント。 |
 
 1. **[構成]** タブで、 **[サブネット]** 設定に **[既定値]** を選択します。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証が終了したら、 **[作成]** を選択します。 
+1. プライベート エンドポイントが作成された後、サービス バス名前空間の **[ファイアウォールと仮想 ネットワーク]** セクションに戻します。
+1. **選択したネットワーク** が確実に選択されているようにします。
+1. **[+ 既存の仮想ネットワークの追加]** を選択 して、最近作成した仮想ネットワークを追加します。
+1. **[ネットワークの追加]** タブで、次の表のネットワーク設定を使用します。
 
-仮想ネットワーク内のリソースがサービス バスと通信できるようになりました。
+    | 設定 | 推奨値 | 説明|
+    |---------|-----------------|------------|
+    | **サブスクリプション** | 該当するサブスクリプション | リソースが作成されるサブスクリプション。 |
+    | **仮想ネットワーク** | myVirtualNet | 関数アプリが接続する仮想ネットワークの名前。 |
+    | **サブネット** | functions | 関数アプリの接続先となるサブネットの名前。 |
+
+1. 現在のクライアント IP にその名前空間へのアクセスを許可するには、 **[クライアント IP アドレスを追加する]** を選択します。
+    > [!NOTE]
+    > クライアント IP アドレスの許可は、[このチュートリアルの後半でキューにメッセージを Azure portal が発行できるようにする](#test-your-locked-down-function-app)ために必要です。
+1. **[有効にする]** を選択して、サービス エンドポイントを有効にします。
+1. **[追加]** を選択して、選択した仮想ネットワークとサブネットをサービス バスのファイアウォール規則に追加します。
+1. **[保存]** を選択して、更新したファイアウォール規則を保存します。
+
+仮想ネットワーク内のリソースは、プライベート エンドポイントを使用してサービス バスと通信できるようになりました。
 
 ## <a name="create-a-file-share"></a>ファイル共有を作成する
 
@@ -244,9 +265,9 @@ Azure Functions サービス バス トリガーがイベントを取得する�
 
 1. サービス バスの左側のメニューで、 **[キュー]** を選択します。
 
-1. **[共有アクセス ポリシー]** を選択します。 このチュートリアルでは、一覧に "*queue*" という名前を指定します。
+1. **[キュー]** を選択します。 このチュートリアルでは、新しいキューの名前 として名前 *キュー* を指定することが目的です。
 
-    :::image type="content" source="./media/functions-create-vnet/6-create-queue.png" alt-text="Service Bus キューを作成する方法を示すスクリーンショット。":::
+    :::image type="content" source="./media/functions-create-vnet/6-create-queue.png" alt-text="サービス バス キューを作成する方法を示すスクリーンショット。":::
 
 1. **［作成］** を選択します
 
@@ -256,7 +277,7 @@ Azure Functions サービス バス トリガーがイベントを取得する�
 
 1. **[RootManageSharedAccessKey]** を選択します。 **[プライマリ接続文字列]** をコピーして保存します。 この接続文字列は、アプリ設定を構成するときに必要になります。
 
-    :::image type="content" source="./media/functions-create-vnet/7-get-service-bus-connection-string.png" alt-text="Service Bus の接続文字列を取得する方法を示すスクリーンショット。":::
+    :::image type="content" source="./media/functions-create-vnet/7-get-service-bus-connection-string.png" alt-text="サービス バスの接続文字列を取得する方法を示すスクリーンショット。":::
 
 ## <a name="integrate-the-function-app"></a>関数アプリを統合する
 
@@ -272,7 +293,7 @@ Azure Functions サービス バス トリガーがイベントを取得する�
 
 1. **[仮想ネットワーク]** で、前に作成した仮想ネットワークを選択します。
 
-1. 先ほど作成した **関数** サブネットを選択します。 これで、関数アプリが仮想ネットワークと統合されました。
+1. 先ほど作成した **関数** サブネットを選択します。 **[OK]** を選択します。  これで、関数アプリが仮想ネットワークと統合されました。
 
     :::image type="content" source="./media/functions-create-vnet/9-connect-app-subnet.png" alt-text="関数アプリをサブネットに接続する方法を示すスクリーンショット。":::
 
@@ -302,7 +323,7 @@ Azure Functions サービス バス トリガーがイベントを取得する�
 
 ## <a name="deploy-a-service-bus-trigger-and-http-trigger"></a>サービス バス トリガーと HTTP トリガーをデプロイする
 
-1. GitHub で、次のサンプル リポジトリにアクセスします。 これには、関数アプリと 2 つの関数、HTTP トリガー、およびサービス バス キュートリガーが含まれています。
+1. GitHub で、次のサンプル リポジトリにアクセスします。 これには、関数アプリと 2 つの関数、HTTP トリガー、およびサービス バス キュー トリガーが含まれています。
 
     <https://github.com/Azure-Samples/functions-vnet-tutorial>
 
@@ -316,9 +337,10 @@ Azure Functions サービス バス トリガーがイベントを取得する�
     | ------------ | ---------------- | ---------------- |
     | **ソース** | GitHub | 手順 2 のサンプル コードに GitHub リポジトリを作成しておく必要があります。 | 
     | **組織**  | myOrganization | リポジトリがチェックインされる組織。 通常は自分のアカウントです。 |
-    | **リポジトリ** | myRepo | サンプル コード用に作成したリポジトリ。 |
+    | **リポジトリ** | functions-vnet-tutorial | https://github.com/Azure-Samples/functions-vnet-tutorial からフォークされたリポジトリ。 |
     | **ブランチ** | メイン | 作成したリポジトリのメイン ブランチ。 |
     | **ランタイム スタック** | .NET | サンプル コードは C# で作成されています。 |
+    | **[バージョン]** | .NET Core 3.1 | ランタイム バージョン。 |
 
 1. **[保存]** を選択します。 
 
@@ -402,11 +424,9 @@ Application Insights を使用して関数を監視する別の方法を次に�
 
 このチュートリアルでは、Premium 関数アプリ、ストレージ アカウント、およびサービス バスを作成しました。 これらのリソースをすべて、プライベート エンドポイントの背後でセキュリティ保護しました。 
 
-利用可能なネットワーク機能の詳細については、次のリンクを使用してください。
+ネットワーク オプションとプライベート エンドポイントの詳細については次のリンクを参照してください。
 
-> [!div class="nextstepaction"]
-> [Azure Functions のネットワーク オプション](./functions-networking-options.md)
-
-
-> [!div class="nextstepaction"]
-> [Azure Functions の Premium プラン](./functions-premium-plan.md)
+- [Azure Functions のネットワーク オプション](./functions-networking-options.md)
+- [Azure Functions の Premium プラン](./functions-premium-plan.md)
+- [サービス バス エンドポイント](../service-bus-messaging/private-link-service.md)
+- [Azure Storage プライベート エンドポイント](../storage/common/storage-private-endpoints.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center でのテナント間の管理 | Microsoft Docs
-description: テナント間の管理を設定して、Azure の委任されたリソース管理を利用して Security Center で複数のテナントのセキュリティ体制を管理する方法について説明します。
+description: Azure Lighthouse を利用し、テナント間の管理を設定して Security Center の複数のテナントのセキュリティ体制を管理する方法について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 65ab3d1e6229d3d6fad752b1bc336d0ad749b597
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099490"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787997"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Security Center でのテナント間の管理
 
-テナント間の管理を使用すると、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を利用して、Security Center で複数のテナントのセキュリティ体制を表示および管理することができます。 各テナントのディレクトリにサインインすることなく、1 つのビューから複数のテナントを効率的に管理します。
+テナント間の管理を使用すると、[Azure Lighthouse](../lighthouse/overview.md) を利用して、Security Center で複数のテナントのセキュリティ体制を表示および管理することができます。 各テナントのディレクトリにサインインすることなく、1 つのビューから複数のテナントを効率的に管理します。
 
 - サービス プロバイダーは、独自のテナント内から、複数の顧客についてリソースのセキュリティ体制を管理できます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "102099490"
 
 ## <a name="set-up-cross-tenant-management"></a>テナント間の管理を設定する
 
-Azure の委任されたリソース管理は、Azure Lighthouse の主要なコンポーネントの 1 つです。 Azure Lighthouse のドキュメントに記載されている手順に従って、管理対象テナントのリソースへのアクセスを自身のテナントに委任することによって、テナント間の管理を設定します: [Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)
+[Azure の委任されたリソース管理](../lighthouse/concepts/architecture.md)は、Azure Lighthouse の主要な要素の 1 つです。 Azure Lighthouse のドキュメント、「[Azure Lighthouse への顧客のオンボード](../lighthouse/how-to/onboard-customer.md)」に記載されている手順に従って、マネージド テナントのリソースへのアクセスを自身のテナントに委任することによって、テナント間の管理を設定します。
 
 
 ## <a name="how-does-cross-tenant-management-work-in-security-center"></a>Security Center でのテナント間の管理のしくみ

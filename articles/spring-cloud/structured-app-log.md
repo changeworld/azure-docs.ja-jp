@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6899edc25a55beff45d2058975008f7fe2c2bb9d
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 64b84c248a943c8558bf1e5fea646a36046c7f1b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886717"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740413"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure Spring Cloud の構造化アプリケーション ログ
 
@@ -47,6 +47,12 @@ ms.locfileid: "107886717"
  ```
 {"timestamp":"2021-01-08T09:23:51.280Z","logger":"com.example.demo.HelloController","level":"ERROR","thread":"http-nio-1456-exec-4","mdc":{"traceId":"c84f8a897041f634","spanId":"c84f8a897041f634"},"stackTrace":"java.lang.RuntimeException: get an exception\r\n\tat com.example.demo.HelloController.throwEx(HelloController.java:54)\r\n\","message":"Got an exception","exceptionClass":"RuntimeException"}
 ```
+
+## <a name="limitations"></a>制限事項
+
+JSON ログの各行には、最大 **16K バイト** を含めることができます。 1 つのログ レコードの JSON 出力がこの制限を超えると、そのレコードは強制的に複数の行に分割され、未加工の各行は、構造的に解析されることなく、`Log` 列に収集されます。
+
+通常、これは、特に [AppInsights In-Process エージェント](./how-to-application-insights.md) が有効になっている場合に、深いスタックトレースを使用した例外ログで発生します。  最終的な出力が適切に解析されるように、スタックトレース出力に制限設定を適用します (次の構成サンプルを参照)。
 
 ## <a name="generate-schema-compliant-json-log"></a>スキーマ準拠の JSON ログを生成する  
 
@@ -94,6 +100,12 @@ Spring Boot スターターを使用する場合は、既定で logback が使�
                     </nestedField>
                     <stackTrace>
                         <fieldName>stackTrace</fieldName>
+                        <!-- maxLength - limit the length of the stack trace -->
+                        <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                            <maxDepthPerThrowable>200</maxDepthPerThrowable>
+                            <maxLength>14000</maxLength>
+                            <rootCauseFirst>true</rootCauseFirst>
+                        </throwableConverter>
                     </stackTrace>
                     <message />
                     <throwableClassName>
@@ -207,7 +219,8 @@ log4j2 アプリの場合、[json-template-layout](https://logging.apache.org/lo
     <configuration>
         <appenders>
             <console name="Console" target="SYSTEM_OUT">
-                <JsonTemplateLayout eventTemplateUri="classpath:jsonTemplate.json" />
+                <!-- maxStringLength - limit the length of the stack trace -->
+                <JsonTemplateLayout eventTemplateUri="classpath:jsonTemplate.json" maxStringLength="14000" />
             </console>
         </appenders>
         <loggers>
