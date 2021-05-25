@@ -11,14 +11,13 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 38d0c350718480506e1267c161a85505ece4b69d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ac0b1b78291d895e97cb967e047ae36da6ff7469
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452256"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746839"
 ---
-
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter Notebook を使用した Azure Machine Learning について調べます
 
 > [!NOTE] 
@@ -38,7 +37,7 @@ ms.locfileid: "96452256"
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスでサンプルを取得する
 
-サンプルを開始する最も簡単な方法は、「[チュートリアル:環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。 完了すると、SDK とサンプル リポジトリが事前に読み込まれた専用の Notebook サーバーが用意されます。 ダウンロードやインストールは必要ありません。
+サンプルを体験するには、[Azure Machine Learning の利用開始に関するクイックスタート](quickstart-create-resources.md)に取り組むのが最も簡単です。 完了すると、SDK とサンプル リポジトリが事前に読み込まれた専用の Notebook サーバーが用意されます。 ダウンロードやインストールは必要ありません。
 
 <a name="byo"></a>
 

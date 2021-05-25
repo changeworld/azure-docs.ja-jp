@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b66ef767795b320368224e5ef855332a735b210
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798428"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714316"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でカタログ作成者にアクセス ガバナンスを委任する
 
@@ -33,7 +33,7 @@ ms.locfileid: "87798428"
 
 カタログ作成者ロールにユーザーを割り当てるには、これらの手順に従います。
 
-**事前に必要なロール:** グローバル管理者またはユーザー管理者
+**事前に必要なロール:** グローバル管理者、ID ガバナンス管理者、またはユーザー管理者
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 

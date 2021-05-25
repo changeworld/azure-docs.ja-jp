@@ -3,20 +3,20 @@ title: Azure Active Directory ユーザー プロビジョニングのための�
 description: この記事では、Workday や SuccessFactors などのクラウド人事システムを Azure Active Directory と統合するデプロイ プロセスについて説明します。 Azure AD とクラウド人事システムを統合することで、完全な ID ライフサイクル管理システムが実現します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/22/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: arvindha, celested
-ms.openlocfilehash: d9171226de7c975e75139af92798ea78419428f0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: arvinh
+ms.openlocfilehash: 4f8803dc3cf8234bfbdf3cf9281ec8388727749b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175426"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785045"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -85,7 +85,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 - Azure portal でプロビジョニング アプリを構成する[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)ロール
 - クラウド人事アプリのテストおよび運用インスタンス。
 - クラウド人事アプリの管理者権限。システム統合ユーザーを作成したり、テスト目的でテスト用社員データを変更したりするために必要です。
-- Active Directory へのユーザー プロビジョニングの場合、Azure AD Connect プロビジョニング エージェントをホストするために、.NET 4.7.1 以降のランタイムがインストールされた Windows Server 2012 以降を実行しているサーバーが必要です
+- Active Directory へのユーザー プロビジョニングの場合、Azure AD Connect プロビジョニング エージェントをホストするために、Windows Server 2016 以降を実行しているサーバーが必要です。 このサーバーは、Active Directory 管理層モデルに基づいた階層 0 のサーバーである必要があります。
 - Active Directory と Azure AD 間でユーザーを同期する [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)。
 
 ### <a name="training-resources"></a>トレーニング リソース

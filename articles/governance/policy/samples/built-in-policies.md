@@ -1,15 +1,15 @@
 ---
 title: 組み込みのポリシー定義の一覧
 description: Azure Policy の組み込みのポリシー定義を一覧表示します。 カテゴリには、タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成などが含まれます。
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 62a0b86b03cb60010848d87feba425bcbe28938a
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ce3b40f51fcf0b9dc79eac5c69553b394d3a349a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108182989"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762156"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy の組み込みのポリシー定義
 
@@ -161,7 +161,11 @@ ms.locfileid: "108182989"
 
 [!INCLUDE [azure-policy-reference-policies-managed-application](../../../../includes/policy/reference/bycat/policies-managed-application.md)]
 
-## <a name="migrate"></a>移行
+## <a name="media-services"></a>Media Services
+
+[!INCLUDE [azure-policy-reference-policies-media-services](../../../../includes/policy/reference/bycat/policies-media-services.md)]
+
+## <a name="migrate"></a>Migrate
 
 [!INCLUDE [azure-policy-reference-policies-migrate](../../../../includes/policy/reference/bycat/policies-migrate.md)]
 

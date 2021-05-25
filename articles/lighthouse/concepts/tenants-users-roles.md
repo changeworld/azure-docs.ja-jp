@@ -1,20 +1,20 @@
 ---
 title: Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
 description: Azure Active Directory のテナント、ユーザー、およびロールの概念と、それらを Azure Lighthouse のシナリオで使用する方法について説明します。
-ms.date: 01/14/2021
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40b446063e828c694925ecfe5f530f570b162f32
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233918"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786935"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
 
 顧客を [Azure Lighthouse](../overview.md) にオンボードする前に、Azure Active Directory (Azure AD) のテナント、ユーザー、およびロールがどのように機能するか、およびそれらを Azure Lighthouse シナリオでどのように使用するかを理解しておくことが重要です。
 
-*テナント* とは、Azure AD の信頼された専用インスタンスです。 通常、各 Azure テナントは 1 つの組織を表します。 [Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用すると、あるテナントから別のテナントにリソースを論理的に投影できます。 これにより、(サービス プロバイダーに属するユーザーなどの) 管理テナントのユーザーは、顧客のテナント内の委任されたリソースにアクセスできるようになります。また、[複数のテナントを持つ企業が、管理操作を一元的に実行できるようになります。](enterprise.md)
+*テナント* とは、Azure AD の信頼された専用インスタンスです。 通常、各 Azure テナントは 1 つの組織を表します。 Azure Lighthouse を使用すると、あるテナントから別のテナントにリソースを[論理的に投影](architecture.md#logical-projection)できます。 これにより、(サービス プロバイダーに属するユーザーなどの) 管理テナントのユーザーは、顧客のテナント内の委任されたリソースにアクセスできるようになります。また、[複数のテナントを持つ企業が、管理操作を一元的に実行できるようになります。](enterprise.md)
 
 この論理的な投影を実現するには、顧客テナントのサブスクリプション (またはサブスクリプション内の 1 つ以上のリソース グループ) を、Azure Lighthouse に "*オンボード*" する必要があります。 オンボードは、[Azure Resource Manager のテンプレート](../how-to/onboard-customer.md)を使用して行うか、[Azure Marketplace にパブリックまたはプライベート サービスを発行して行います](../how-to/publish-managed-services-offers.md)。
 

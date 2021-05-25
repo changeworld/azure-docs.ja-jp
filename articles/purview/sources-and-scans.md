@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3b19fab33d0c8f53025605fd14fe65f08e660392
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15ade6fca3885bfabba7a23e2c3d8e561a9e6a0c
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677928"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738466"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure Purview でサポートされているデータ ソースとファイルの種類
 
@@ -21,23 +21,7 @@ ms.locfileid: "101677928"
 
 ## <a name="supported-data-sources"></a>サポートされるデータ ソース
 
-Azure Purview では、次のソースがサポートされています。
-
-| ストアの種類 | サポートされる認証の種類 | UX または PowerShell を使用したスキャンの設定 |
-| ---------- | ------------------- | ------------------------------ |
-| オンプレミスの SQL Server                   | SQL 認証                        | UX                                |
-| Azure Synapse Analytics (旧称 SQL DW)            | SQL 認証、サービス プリンシパル、MSI               | UX                             |
-| Azure SQL Database (DB)                  | SQL 認証、サービス プリンシパル、MSI               | UX |
-| Azure SQL Database Managed Instance      | SQL 認証、サービス プリンシパル、MSI               | UX    |
-| Azure Blob Storage                       | アカウント キー、サービス プリンシパル、MSI | UX            |
-| Azure Data Explorer                      | サービス プリンシパル                              | UX            |
-| Azure Data Lake Storage Gen1 (ADLS Gen1) | サービス プリンシパル、MSI                              | UX            |
-| Azure Data Lake Storage Gen2 (ADLS Gen2) | アカウント キー、サービス プリンシパル、MSI            | UX            |
-| Azure Cosmos DB                          | アカウント キー                                    | UX            |
-
-
-> [!Note]
-> Azure Data Lake Storage Gen2 の一般提供が開始されました。 今すぐ使用を開始することをお勧めします。 詳細については、[製品に関するページ](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/)を参照してください。
+Purview では、[こちら](purview-connector-overview.md)に示すすべてのデータ ソースがサポートされています。
 
 ## <a name="file-types-supported-for-scanning"></a>スキャンがサポートされているファイルの種類
 
@@ -48,7 +32,10 @@ Azure Purview では、次のソースがサポートされています。
 - Purview では、カスタム ファイル拡張子とカスタム パーサーもサポートされています。
  
 > [!Note]
-> すべての Gzip ファイルは、内部の 1 つの csv ファイルにマップする必要があります。 Gzip ファイルは、システムおよびカスタムの分類ルールの対象となります。 現在、内部の複数のファイルにマップされた gzip ファイル、または csv 以外の任意のファイルの種類のスキャンはサポートされていません。 
+> すべての Gzip ファイルは、内部の 1 つの csv ファイルにマップする必要があります。 Gzip ファイルは、システムおよびカスタムの分類ルールの対象となります。 現在、内部の複数のファイルにマップされた gzip ファイル、または csv 以外の任意のファイルの種類のスキャンはサポートされていません。 また、Purview スキャナーでは、スキーマの抽出と分類のために、スナップ圧縮されたファイルの種類が PARQUET や AVRO のスキャンがサポートされています。
+
+> [!Note]
+> Purview スキャナーでは、ファイルの種類が AVRO、ORC、PARQUET の複雑なデータ型のスキーマ抽出はサポートされていません。   
 
 ## <a name="sampling-within-a-file"></a>ファイル内のサンプリング
 
@@ -74,28 +61,6 @@ Purview の用語では、
 - **その他の構造化されたファイルの種類 (JSON、XML、TXT)** - 'リソース セット' と見なされるフォルダーまたはパーティション ファイルのグループ内で、100 個中 1 個のファイルがサンプリングされます (L3 スキャン)。
 - **SQL オブジェクトと CosmosDB エンティティ** - 各ファイルが L3 スキャンされます。
 - **ドキュメント ファイルの種類** - 各ファイルが L3 スキャンされます。 リソース セットのパターンは、これらのファイルの種類には適用されません。
-
-## <a name="scan-regions"></a>スキャンのリージョン
-Purview スキャナーが実行されるすべての Azure データ ソース (データセンター) リージョンの一覧を次に示します。 Azure データ ソースがこの一覧にないリージョンにある場合、スキャナーは Purview インスタンスのリージョンで実行されます。
- 
-### <a name="purview-scanner-regions"></a>Purview スキャナーのリージョン
-
-- EastUs
-- EastUs2 
-- SouthCentralUS
-- WestUs
-- WestUs2
-- SoutheastAsia
-- 西ヨーロッパ
-- NorthEurope
-- UkSouth
-- AustraliaEast
-- CanadaCentral
-- BrazilSouth
-- CentralIndia
-- JapanEast
-- SouthAfricaNorth
-- FranceCentral
 
 ## <a name="classification"></a>分類
 

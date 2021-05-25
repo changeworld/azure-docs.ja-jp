@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 03/10/2021
-  ms.openlocfilehash: b68af98c5b55ddff605bb1c88274daf483f19f35
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: ec0a4ebaebecf9cf5fac95ca1b3bded1ba759958
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "108288402"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110092280"
 landingContent:
 - title: Azure Communication Services について
   linkLists:
@@ -64,6 +64,14 @@ landingContent:
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: 通話のフロー
       url: concepts/call-flows.md
+- title: UI ライブラリ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: UI ライブラリの概要
+      url: concepts/ui-library/ui-library-overview.md
+    - text: UI ライブラリのユース ケース
+      url: concepts/ui-library/ui-library-use-cases.md
 - title: テレフォニーと SMS
   linkLists:
   - linkListType: quickstart

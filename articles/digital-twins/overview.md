@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: a64564887fa2738fd3c0586d1040be3c95193927
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 050512da539e08d029786983fbda46da0fea27ce
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205793"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789625"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
-**Azure Digital Twins** は、環境全体のデジタル モデルに基づいたナレッジ グラフの作成を可能にする、サービスとしてのプラットフォーム (PaaS) オファリングです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
+**Azure Digital Twins** は、環境全体のデジタル モデルに基づいたツイン グラフの作成を可能にする、サービスとしてのプラットフォーム (PaaS) オファリングです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
 
 Azure Digital Twins に加えて、ご自分の分野の専門知識を活用して、次のようなカスタマイズされた接続済みソリューションを構築します。
 * あらゆる環境をモデル化し、デジタル ツインをスケーラブルで安全な方法で実現する
@@ -32,12 +32,12 @@ Azure Digital Twins で提供される機能の概要を次に示します。
 
 Azure Digital Twins では、[モデル](concepts-models.md)と呼ばれるカスタム ツイン型を使用して、物理環境の人、場所、および物を表すデジタルエン ティティを定義します。 
 
-これらのモデル定義は、ビジネスを説明するための特殊なボキャブラリと考えることができます。 たとえば、ビル管理ソリューションでは、"建物"、"階数"、"エレベーター" などのモデルを定義できます。 その後、これらのモデルに基づいて **デジタル ツイン** を作成して、特定の環境を表すことができます。
+これらのモデル定義は、ビジネスを説明するための特殊なボキャブラリと考えることができます。 たとえば、ビルの管理ソリューションでは、建物、階数、エレベーターなどのモデルを定義できます。 その後、これらのモデルに基づいて **デジタル ツイン** を作成して、特定の環境を表すことができます。
 
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 モデルは [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) と呼ばれる JSON に似た形式の言語で定義され、その状態プロパティ、テレメトリ イベント、コマンド、コンポーネント、およびリレーションシップの観点からツインを記述します。
-* モデルは、エンティティ間のセマンティック **リレーションシップ** を定義して、それらのやり取りを反映するナレッジ グラフにツインを接続できるようにします。 モデルは自分の環境を説明する名詞で、リレーションシップは動詞として考えることができます。
+* モデルは、エンティティ間のセマンティック **リレーションシップ** を定義して、それらのやり取りを反映するグラフにツインを接続できるようにします。 モデルは自分の環境を説明する名詞で、リレーションシップは動詞として考えることができます。
 * モデルの継承を使用してツインを特殊化することもできます。 一方のモデルがもう一方のモデルから継承できます。
 
 DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) および [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) などの他の Azure IoT サービス全体でデータ モデルに使用されます。 これにより、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持することができます。
@@ -94,11 +94,11 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 
 ## <a name="service-limits"></a>サービスの制限
 
-Azure Digital Twins の **サービスの制限** については、こちらを参照してください: [Azure Digital Twins サービスの制限](reference-service-limits.md)。 これは、サービスを操作する際、サービスの機能とレート制限、および必要に応じて調整できる制限を理解するうえで役立つことがあります。
+Azure Digital Twins の **サービスの制限** については、「[Azure Digital Twins サービスの制限](reference-service-limits.md)」を参照してください。 これは、サービスを操作する際、サービスの機能とレート制限、および必要に応じて調整できる制限を理解するうえで役立つことがあります。
 
 ## <a name="terminology"></a>用語
 
-**一般的な IoT 用語** と、Azure Digital Twins を含む Azure IoT サービス全体におけるその使い方の一覧については、[Azure IoT の用語集](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json)を参照してください。 これは、Azure Digital Twins を開始して IoT ソリューションを構築する際に役立つ参考資料となることがあります。
+**一般的な IoT 用語** と、Azure Digital Twins を含む Azure IoT サービス全体におけるその使い方の一覧については、[Azure IoT の用語集](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json)を参照してください。 このリソースは、Azure Digital Twins を開始して IoT ソリューションを構築する際に役立つ参考資料となることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

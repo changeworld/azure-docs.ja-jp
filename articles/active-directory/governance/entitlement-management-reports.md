@@ -3,7 +3,7 @@ title: エンタイトルメント管理でレポートおよびログを表示�
 description: Azure Active Directory エンタイトルメント管理でユーザー割り当てレポートと監査ログを表示する方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab1cd0da0e44f9b0dd496b72c3dff7630eb9d641
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97746628"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786269"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でレポートとログを表示する
 
@@ -35,7 +35,7 @@ Azure AD エンタイトルメント管理レポートと Azure AD 監査ログ�
 
 このレポートを使用すると、ユーザーが要求できるすべてのアクセス パッケージと、現在そのユーザーに割り当てられているアクセス パッケージを一覧表示できます。
 
-**事前に必要なロール:** グローバル管理者またはユーザー管理者
+**事前に必要なロール:** グローバル管理者、ID ガバナンス管理者、またはユーザー管理者
 
 1. **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
 
@@ -59,7 +59,7 @@ Azure AD エンタイトルメント管理レポートと Azure AD 監査ログ�
 
 このレポートでは、エンタイトルメント管理でユーザーに現在割り当てられているリソースを一覧表示できます。 このレポートは、エンタイトルメント管理で管理されているリソースを対象としています。 ユーザーは、エンタイトルメント管理の外部にあるディレクトリ内の他のリソースにアクセスできる可能性があります。
 
-**事前に必要なロール:** グローバル管理者またはユーザー管理者
+**事前に必要なロール:** グローバル管理者、ID ガバナンス管理者、またはユーザー管理者
 
 1. **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
 

@@ -7,16 +7,14 @@ ms.date: 02/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 79aead5b374714e7856897a9b85349198341cb3d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 73e74b460f64ee03744a4cc109ce6ebeccbd534b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107872733"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756649"
 ---
 # <a name="how-to-transfer-a-device-to-azure-iot-central-from-iot-hub"></a>IoT Hub から Azure IoT Central にデバイスを移動する方法
-
-"*この記事は、オペレーターとデバイス開発者を対象としています。* "  
 
 この記事では、IoT Hub から Azure IoT Central アプリケーションにデバイスを移動する方法について説明します。 
 
@@ -35,7 +33,7 @@ IoT Central と対話するには、デバイスが実装するプロパティ/�
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次のステップは次のとおりです。
+推奨される次のステップは以下のとおりです。
 
 - 「[チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」で、SAS トークンの使い方を示すサンプル コードを確認する
 - [IoT Central アプリケーション用の Node.js デバイス SDK を使用して、x.509 証明書を使用するデバイスを接続する](how-to-connect-devices-x509.md)方法を確認する

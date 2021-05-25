@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a66b53cbcc8a072dce6b4f5f2f1f0cf1dc6322f
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577843"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714334"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理の委任とロール
 
@@ -65,7 +65,7 @@ IT 管理者の Hana には、各部署に連絡先担当者がいます。マ�
 
 | User | 職務 | Azure AD ロール | エンタイトルメント管理ロール |
 | --- | --- | --- | --- |
-| Hana | IT 管理者 | グローバル管理者またはユーザー管理者 |  |
+| Hana | IT 管理者 | グローバル管理者、ID ガバナンス管理者、またはユーザー管理者 |  |
 | Mamta | マーケティング マネージャー | User | カタログ作成者とカタログ所有者 |
 | Bob | マーケティング リーダー | User | カタログ所有者 |
 | Jessica | マーケティング プロジェクト マネージャー | User | アクセス パッケージ マネージャー |

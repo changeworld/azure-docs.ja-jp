@@ -7,24 +7,34 @@ ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 548cfd9d593e9adaeaaf984f756e58d242ca9f45
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 4f3ef03e3561cf054102b5f5c15ff571c3d4d28d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576552"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742627"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
-Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、Python アプリケーションの分散トレース、メトリック収集、およびログ記録をサポートします。 この記事では、OpenCensus for Python を設定し、監視データを Azure Monitor に送信するプロセスについて説明します。
+Azure Monitor では、Python アプリケーションの分散トレース、メトリック収集、およびログ記録がサポートされています。
+
+Microsoft でサポートされている、Python アプリケーションのデータの追跡とエクスポートを行うソリューションは、[Azure Monitor エクスポーター](#instrument-with-opencensus-python-sdk-with-azure-monitor-exporters)を介した [Opencensus Python SDK](#introducing-opencensus-python-sdk) です。
+
+その他の Python 用テレメトリ SDK はサポートされていないため、テレメトリ ソリューションとして使用することはお勧めしません。
+
+OpenCensus が [OpenTelemetry](https://opentelemetry.io/) に統合されつつあることはご存知かと思います。 しかし、Microsoft では、OpenTelemetry が成熟するまでは、OpenCensus をお勧めしています。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 SDK でサポートされているのは、Python v2.7 および v3.4 から v3.7 のみです。
+- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 Opencensus Python SDK でサポートされているのは、Python v2.7 および v3.4 から v3.7 のみです。
 - Application Insights の[リソース](./create-new-resource.md)を作成します。 リソースの独自のインストルメンテーション キー (ikey) が割り当てられます。
 
-## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Monitor 用の OpenCensus Python SDK を使用したインストルメント化
+## <a name="introducing-opencensus-python-sdk"></a>Opencensus Python SDK の概要
+
+[OpenCensus](https://opencensus.io) は、分散トレース、メトリック、ログ テレメトリを収集できる一連のオープン ソース ライブラリです。 [Azure Monitor エクスポーター](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)を使用すれば、収集したこのテレメトリを Application Insights に送信できます。 この記事では、Python 用の OpenCensus および Azure Monitor エクスポーターを設定し、監視データを Azure Monitor に送信するプロセスについて説明します。
+
+## <a name="instrument-with-opencensus-python-sdk-with-azure-monitor-exporters"></a>OpenCensus Python SDK と Azure Monitor エクスポーターを使用したインストルメント化
 
 OpenCensus Azure Monitor エクスポーターをインストールします。
 
@@ -539,4 +549,3 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 * [可用性テスト](./monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
 * [スマート診断](./proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
 * [メトリック アラート](../alerts/alerts-log.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。
-

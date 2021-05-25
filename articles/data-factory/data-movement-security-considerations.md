@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/26/2020
-ms.openlocfilehash: 1a99fbd3d3163808a364e8b26e770563a901dc18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/03/2021
+ms.openlocfilehash: 54c96aced03853b8a3f78ff0f348eeb6459afccc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371330"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760298"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 
@@ -130,10 +130,11 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイム上のリンクされたサービスの暗号化時に使用されるポート
 
-PowerShell では既定で、セキュリティで保護された通信にセルフホステッド統合ランタイムでコンピューター上のポート 8060 を使用します。 このポートは、必要に応じて変更できます。  
+既定では、イントラネットからのリモート アクセスが有効になっている場合、PowerShell はセキュリティで保護された通信のためにセルフホステッド統合ランタイムを備えたマシン上のポート 8060 を使用します。 このポートは、必要に応じて、Integration Runtime Configuration Manager の [設定] タブから変更できます。
 
-![ゲートウェイの HTTPS ポート](media/data-movement-security-considerations/https-port-for-gateway.png)
+:::image type="content" source="media/data-movement-security-considerations/integration-runtime-configuration-manager-settings.png" alt-text="Integration Runtime Configuration Manager の [設定] タブ":::
 
+:::image type="content" source="media/data-movement-security-considerations/https-port-for-gateway.png" alt-text="ゲートウェイの HTTPS ポート":::
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
@@ -175,7 +176,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 次の表には、企業ファイアウォールの送信ポートとドメインの要件を示しています。
 
-[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
+[!INCLUDE [domain-and-outbound-port-requirements](includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE]
 > 各データ ソースで必要な場合は、企業ファイアウォール レベルでドメインに対するポートを管理するか、許可リストを設定することが必要になる場合があります。 この表では、例として Azure SQL Database、および Azure Synapse Analytics、Azure Data Lake Store のみを使用しています。   

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 0e4585e801b356bd1c0e4bc1fb0f2ab9ee7ab7bf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c5e8a9eafc2bee0631ead77cde5855651c3f81ed
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136339"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745780"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>移行ガイド: SQL Server から Azure SQL Managed Instance へ
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -36,12 +36,13 @@ ms.locfileid: "108136339"
 
 ## <a name="prerequisites"></a>前提条件 
 
-SQL Server を Azure SQL Managed Instance に移行する場合、次の前提条件を満たす必要があります。 
+SQL Server を Azure SQL Managed Instance に移行するには、以下を完了していることを確認します。 
 
-- [移行方法](sql-server-to-managed-instance-overview.md#compare-migration-options)を選択し、選択した方法に必要な対応ツールを選択する
-- ソース SQL Server に接続できるコンピューターに [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) をインストールする
-- ソースとターゲットの両方にアクセスするための接続と、適切なアクセス許可。 
-
+- [移行方法](sql-server-to-managed-instance-overview.md#compare-migration-options)と、それに対応するツールの選択。
+- ソース SQL Server に接続できるコンピューターへの [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) のインストール。
+- 移行先となる [Azure SQL Managed Instance](../../managed-instance/instance-create-quickstart.md) の作成。
+- ソースとターゲットの両方にアクセスするための接続と、適切なアクセス許可の構成。 
+- [Azure SQL Managed Instance で使用できる](../../database/features-comparison.md) SQL Server データベース エンジンの機能の確認。 
 
 
 ## <a name="pre-migration"></a>移行前

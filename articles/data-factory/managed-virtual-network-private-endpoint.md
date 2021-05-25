@@ -1,20 +1,20 @@
 ---
 title: マネージド仮想ネットワークとマネージド プライベート エンドポイント
 description: Azure Data Factory におけるマネージド仮想ネットワークとマネージド プライベート エンドポイントについて説明します。
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 34211feb34b3e2ec21b9bc0e6a180df0febd8c76
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: dd4e5838c97d6a2e86f67bb40457b797462183d9
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987940"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785477"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -57,7 +57,7 @@ Azure Data Factory では、プライベート リンクがサポートされま
 > Azure のデータ ソースとの接続にはすべて、マネージド プライベート エンドポイントを作成することをお勧めします。 
  
 > [!WARNING]
-> PaaS データ ストア (BLOB、ADLS Gen2、Azure Synapse Analytics) に対してプライベート エンドポイントが既に作成されており、すべてのネットワークからのアクセスが許可されている場合でも、ADF からはマネージド プライベート エンドポイントを使用してのみアクセスできます。 このようなシナリオでは、必ずプライベート エンドポイントを作成してください。 
+> PaaS データ ストア (BLOB、ADLS Gen2、Azure Synapse Analytics) に対してプライベート エンドポイントが既に作成されており、すべてのネットワークからのアクセスが許可されている場合でも、ADF からはマネージド プライベート エンドポイントを使用してのみアクセスできます。 プライベート エンドポイントが存在しない場合は、このようなシナリオで作成する必要があります。 
 
 Azure Data Factory にマネージド プライベート エンドポイントを作成すると、プライベート エンドポイント接続は "保留" 状態で作成されます。 承認ワークフローが開始されます。 接続を承認または拒否する役割は、プライベート リンク リソースの所有者が担います。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721c13ea31f812dd5f5b5c335373884766764c80
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103196871"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750763"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub AE の統合
 
@@ -95,7 +95,7 @@ GitHub AE で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[ユーザー属性と要求]** を編集します。
 
-1. **[Add new claim]\(新しい要求の追加\)** をクリックし、名前として「**administrator**」をテキスト ボックスに入力します。
+1. **[Add new claim]\(新しいクレームの追加\)** をクリックし、名前として「**administrator**」をテキスト ボックスに入力します (**administrator** の値は大文字と小文字が区別されます)。
 
 1. **[要求条件]** を展開し、 **[ユーザーの種類]** から **[メンバー]** を選択します。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 8980a8920b4f41f5a8e6afe106415032eef2055b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 82efc1d36176003d11b610fd8e0e669f034dc0a1
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375842"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786683"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
@@ -125,6 +125,8 @@ ms.locfileid: "107375842"
 - [Undetermined]\(不明\)
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="[分類の選択] リストで使用できる分類が強調表示されているスクリーンショット。":::
+
+偽陽性と真陽性について詳しくは、「[Azure Sentinel での偽陽性の処理](false-positives.md)」を参照してください。
 
 適切な分類を選択した後、 **[コメント]** フィールドに説明文を追加します。 これは、このインシデントを参照する必要がある場合に役立ちます。 完了したら **[適用]** をクリックすると、インシデントが閉じられます。
 

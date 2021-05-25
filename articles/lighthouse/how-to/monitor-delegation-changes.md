@@ -1,14 +1,14 @@
 ---
 title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
-ms.date: 02/18/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a12b916fae9794d6d695191a81ec076917bda31
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 4280e83ef0fc44310aabc2d8d5d9e04044322d4d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814894"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786157"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -180,6 +180,6 @@ else {
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Lighthouse](../concepts/azure-delegated-resource-management.md) への顧客のオンボード方法について説明します。
+- [Azure Lighthouse への顧客のオンボード](onboard-customer.md)方法について説明します。
 - [Azure Monitor](../../azure-monitor/index.yml) と [Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)について説明します。
 - [ドメイン別のアクティビティ ログ](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) サンプル ブックを確認し、ドメイン名でサブスクリプションをフィルター処理するオプションを指定して、サブスクリプションをまたがって Azure アクティビティ ログを表示する方法を把握します。

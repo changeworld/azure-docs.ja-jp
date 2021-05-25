@@ -7,18 +7,14 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: 6b535ecb80fae9f55eb6ab11751c26e0c6d0e9e5
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: f32f36399eec2b54b872ae9750ea2ddf2fb5a218
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713738"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683787"
 ---
 # <a name="use-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>IoT Central デバイス ブリッジを使用して他の IoT クラウドを IoT Central に接続する
-
-*この記事は管理者向けです。*
-
-## <a name="azure-iot-central-device-bridge"></a>Azure IoT Central デバイス ブリッジ
 
 IoT Central デバイス ブリッジは、他 IoT のクラウドを IoT Central アプリケーションに接続するオープン ソース ソリューションです。 他の IoT クラウドの例として、[Sigfox](https://www.sigfox.com/)、[Particle Device Cloud](https://www.particle.io/)、[The Things Network](https://www.thethingsnetwork.org/) などがあります。 デバイス ブリッジは、他の IoT クラウドに接続されているデバイスから IoT Central アプリケーションにデータを転送することで機能します。 デバイス ブリッジでは、IoT Central にデータを転送するだけで、IoT Central からデバイスにコマンドやプロパティの更新を送信しません。
 
@@ -28,21 +24,19 @@ IoT Central デバイス ブリッジは、他 IoT のクラウドを IoT Centra
 
 ## <a name="prerequisites"></a>前提条件
 
-このハウツー ガイドの手順を完了するには、アクティブな Azure サブスクリプションが必要です。
+この攻略ガイドの手順を完了するには、次が必要です。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-**[カスタム アプリ] > [カスタム アプリケーション]** テンプレートを使用して IoT Central アプリケーションを作成するには、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」クイックスタートを完了します。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 ## <a name="overview"></a>概要
 
-IoT Central デバイス ブリッジは、GitHub のオープン ソース ソリューションです。 カスタム Azure Resource Manager テンプレートを使用して、Azure 関数アプリを含む複数のリソースを Azure サブスクリプションにデプロイします。
+IoT Central デバイス ブリッジは、GitHub のオープン ソース ソリューションです。 カスタム Azure Resource Manager テンプレートを使用して、Azure Functions の関数アプリを含む複数のリソースを Azure サブスクリプションにデプロイします。
 
 関数アプリはデバイス ブリッジの中核部分です。 シンプルな Webhook を介して他の IoT プラットフォームから HTTP POST 要求を受信します。 [Azure IoT Central デバイス ブリッジ](https://github.com/Azure/iotc-device-bridge) リポジトリには、Sigfox、Particle、および The Things Network クラウドに接続する方法を示す例が含まれています。 お使いのプラットフォームで関数アプリに HTTP POST 要求を送信できる場合は、カスタムの IoT クラウドに接続するようにこのソリューションを拡張できます。
 
 関数アプリでは、データを IoT Central で受け入れられる形式に変換し、Device Provisioning Service とデバイス クライアントの API を使用してそれを転送します。
 
-:::image type="content" source="media/howto-build-iotc-device-bridge/azure-function.png" alt-text="Azure 関数のスクリーンショット。":::
+:::image type="content" source="media/howto-build-iotc-device-bridge/azure-function.png" alt-text="Azure Functions のスクリーンショット。":::
 
 IoT Central アプリケーションで転送されたメッセージのデバイス ID が認識されると、デバイスからのテレメトリが IoT Central に表示されます。 IoT Central アプリケーションでデバイス ID が認識されない場合、関数アプリでは、そのデバイス ID を使用して新しいデバイスを登録しようとします。 新しいデバイスは、IoT Central アプリケーションの **[デバイス]** ページに **[関連付けられていないデバイス]** として表示されます。 **[デバイス]** ページでは、新しいデバイスをデバイス テンプレートに関連付けてから、テレメトリを表示することができます。
 
@@ -62,7 +56,7 @@ IoT Central アプリケーションで転送されたメッセージのデバ�
 
 デプロイが完了したら、関数で必要とされる NPM パッケージをインストールする必要があります。
 
-1. Azure portal で、サブスクリプションにデプロイされた関数アプリを開きます。 次に、 **[開発ツール] > [コンソール]** に移動します。 コンソールで次のコマンドを実行して、パッケージをインストールします。
+1. Azure portal で、サブスクリプションにデプロイされた関数アプリを開きます。 次に、 **[開発ツール]**  >  **[コンソール]** の順に移動します。 コンソールで次のコマンドを実行して、パッケージをインストールします。
 
     ```bash
     cd IoTCIntegration
@@ -114,14 +108,14 @@ Application Insights で関数アプリのログ記録を切り替えるには�
 
 Resource Manager テンプレートでは、Azure サブスクリプションに次のリソースがプロビジョニングされます。
 
-* Function App
+* 関数アプリ
 * App Service プラン
 * ストレージ アカウント
 * Key Vault
 
 キー コンテナーには、IoT Central アプリケーションの SAS グループ キーが格納されます。
 
-関数アプリは、[従量課金プラン](https://azure.microsoft.com/pricing/details/functions/)で実行されます。 このオプションでは、専用のコンピューティング リソースが提供されませんが、デバイス ブリッジで 1 分あたり数百個のデバイス メッセージを処理できます。これは、小規模なデバイス フリートやメッセージを送信する頻度が低いデバイスに適しています。 アプリケーションが多数のデバイス メッセージのストリーミングに依存している場合は、従量課金プランを専用の [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/windows/)に置き換えます。 このプランでは、専用のコンピューティング リソースが提供されるため、サーバーの応答時間が短縮されます。 Standard App Service プランを使用した場合、このリポジトリで観測された Azure 関数の最大パフォーマンスは 1 分あたり 1500 個のデバイス メッセージでした。 詳細については、「[Azure Functions のホスティング オプション](../../azure-functions/functions-scale.md)」を参照してください。
+関数アプリは、[従量課金プラン](https://azure.microsoft.com/pricing/details/functions/)で実行されます。 このオプションでは、専用のコンピューティング リソースが提供されませんが、デバイス ブリッジで 1 分あたり数百個のデバイス メッセージを処理できます。これは、小規模なデバイス フリートやメッセージを送信する頻度が低いデバイスに適しています。 アプリケーションが多数のデバイス メッセージのストリーミングに依存している場合は、従量課金プランを専用の [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/windows/)に置き換えます。 このプランでは、専用のコンピューティング リソースが提供されるため、サーバーの応答時間が短縮されます。 Standard App Service プランを使用した場合、このリポジトリで観測された Azure からの関数の最大パフォーマンスは 1 分あたり 1500 個のデバイス メッセージでした。 詳細については、「[Azure Functions のホスティング オプション](../../azure-functions/functions-scale.md)」を参照してください。
 
 従量課金プランではなく専用の App Service プランを使用するには、カスタム テンプレートをデプロイする前に編集します。 **[テンプレートの編集]** を選択します。
 
@@ -185,16 +179,16 @@ Resource Manager テンプレートでは、Azure サブスクリプションに
     "deviceId": "{{{PARTICLE_DEVICE_ID}}}"
   },
   "measurements": {
-    "{{{PARTICLE_EVENT_NAME}}}": {{{PARTICLE_EVENT_VALUE}}}
+    "{{{PARTICLE_EVENT_NAME}}}": "{{{PARTICLE_EVENT_VALUE}}}"
   }
 }
 ```
 
-Azure 関数アプリから **関数の URL** を貼り付けます。IoT Central では、Particle デバイスが [関連付けられていないデバイス] として表示されます。 詳細については、[Particle を利用したプロジェクトを Azure IoT Central に統合する方法](https://blog.particle.io/2019/09/26/integrate-particle-with-azure-iot-central/)に関するブログ記事をご覧ください。
+関数アプリから **関数の URL** を貼り付けます。IoT Central では、Particle デバイスが [関連付けられていないデバイス] として表示されます。 詳細については、[Particle を利用したプロジェクトを Azure IoT Central に統合する方法](https://blog.particle.io/2019/09/26/integrate-particle-with-azure-iot-central/)に関するブログ記事をご覧ください。
 
 ### <a name="example-2-connecting-sigfox-devices-through-the-device-bridge"></a>例 2: デバイス ブリッジを介して Sigfox デバイスを接続する
 
-プラットフォームによっては、Webhook を介して送信されるデバイス メッセージの形式を指定できない場合があります。 このようなシステムでは、デバイス ブリッジでの処理の前に、メッセージのペイロードを期待される本文形式に変換する必要があります。 この変換は、デバイス ブリッジを実行する同じ Azure 関数で行うことができます。
+プラットフォームによっては、Webhook を介して送信されるデバイス メッセージの形式を指定できない場合があります。 このようなシステムでは、デバイス ブリッジでの処理の前に、メッセージのペイロードを期待される本文形式に変換する必要があります。 この変換は、デバイス ブリッジを実行する同じ関数で行うことができます。
 
 このセクションでは、Sigfox Webhook 統合のペイロードをデバイス ブリッジで期待される本文形式に変換する方法について説明します。 Sigfox クラウドでは、デバイス データを 16 進数の文字列形式で送信します。 便宜上、デバイス ブリッジにはこの形式用の変換関数が含まれています。この関数では、Sigfox デバイスのペイロードで使用可能なフィールドの種類のサブセット (8、16、32、または 64 ビットの `int` および `uint`、32 または 64 ビットの `float`、リトルエンディアンとビッグエンディアン) を受け入れます。 Sigfox Webhook 統合からのメッセージを処理するには、関数アプリの _IoTCIntegration/index.js_ ファイルを次のように変更します。
 
@@ -224,7 +218,7 @@ context.res = {
 The Things Network デバイスを IoT Central に接続するには:
 
 * 新しい HTTP 統合を The Things Network のアプリケーションに追加します ( **[アプリケーション] > [統合] > [統合の追加] > [HTTP 統合]** )。
-* デバイス メッセージのペイロードを Azure 関数に送信する前に JSON に自動的に変換するデコーダー関数がアプリケーションに含まれていることを確認します ( **[アプリケーション] > [ペイロード関数] > [デコーダー]** )。
+* デバイス メッセージのペイロードを関数に送信する前に JSON に自動的に変換するデコーダー関数がアプリケーションに含まれていることを確認します ( **[アプリケーション] > [ペイロード関数] > [デコーダー]** )。
 
 次のサンプルは、バイナリ データから一般的な数値型をデコードするために使用できる JavaScript デコーダー関数を示しています。
 
@@ -271,7 +265,7 @@ function Decoder(bytes, port) {
 }
 ```
 
-統合を定義した後、Azure 関数アプリの "*IoTCIntegration/index.js*" ファイルの 21 行目にある `handleMessage` の呼び出しの前に、次のコードを追加します。 このコードでは、HTTP 統合の本文を期待される形式に変換します。
+統合を定義した後、関数アプリの "*IoTCIntegration/index.js*" ファイルの 21 行目にある `handleMessage` の呼び出しの前に、次のコードを追加します。 このコードでは、HTTP 統合の本文を期待される形式に変換します。
 
 ```javascript
 device: {

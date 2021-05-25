@@ -1,25 +1,24 @@
 ---
-title: チュートリアル - Azure AD からアプリにユーザーをプロビジョニングするための SCIM エンドポイントを開発する
+title: チュートリアル - Azure Active Directory からアプリにユーザーをプロビジョニングするための SCIM エンドポイントを開発する
 description: クロスドメイン ID 管理システム (SCIM) では、自動ユーザー プロビジョニングが標準化されます。 このチュートリアルでは、SCIM エンドポイントを開発し、SCIM API を Azure Active Directory と統合して、クラウド アプリケーションへのユーザーとグループのプロビジョニングの自動化を開始する方法について学習します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/28/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9a39a1b0df364aeed970f3ed0e0d99d4d31585b2
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ddc50ab8c72017160a7032e35a69eedf85ebac95
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175480"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784811"
 ---
-# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>チュートリアル:SCIM エンドポイントのプロビジョニングを開発および計画する
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint-in-azure-active-directory"></a>チュートリアル: Azure Active Directory の SCIM エンドポイントのプロビジョニングを開発および計画する
 
 アプリケーション開発者は System for Cross-Domain Identity Management (SCIM) ユーザー管理 API を使用して、アプリケーションと Azure AD (AAD) の間のユーザーとグループの自動プロビジョニングを有効にできます。 この記事では、SCIM エンドポイントを構築し、AAD プロビジョニング サービスと統合する方法について説明します。 SCIM 仕様では、プロビジョニングのための共通のユーザー スキーマが提供されます。 SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用した場合、SCIM では エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
 
@@ -84,7 +83,7 @@ SCIM 標準では、ユーザーとグループを管理するためのスキー
 |lastName|name.familyName|surName|
 |workMail|emails[type eq "work"].value|Mail|
 |manager|manager|manager|
-|tag|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
+|tag|urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:tag|extensionAttribute1|
 |status|active|isSoftDeleted (ユーザーに格納されない計算値)|
 
 **必須属性の例一覧**
@@ -104,7 +103,7 @@ SCIM 標準では、ユーザーとグループを管理するためのスキー
      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
      "Manager": "123456"
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "tag": "701984",
    },
    "meta": {

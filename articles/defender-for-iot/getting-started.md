@@ -2,13 +2,13 @@
 title: 'クイックスタート: 概要'
 description: このクイックスタートでは、Defender for IoT のデプロイに関する基本的なワークフローを理解して作業を開始する方法について学習します。
 ms.topic: quickstart
-ms.date: 04/17/2021
-ms.openlocfilehash: b1e7686e1d68d5a3f239320930d69f22c78e13cb
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.date: 05/10/2021
+ms.openlocfilehash: 97d08d1911634db0a2d1ce4583f7b61090d01bfc
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750448"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664764"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>クイックスタート: Defender for IoT での作業を開始する
 
@@ -20,9 +20,12 @@ ms.locfileid: "107750448"
 
 ## <a name="permission-requirements"></a>権限の要件
 
+### <a name="for-sensors-and-on-premises-management-consoles"></a>センサーおよびオンプレミスの管理コンソールの場合
+
 一部の設定手順では、特定のユーザーのアクセス許可が必要です。
 
 センサーと管理コンソールをアクティブにし、SSL/TLS 証明書をアップロードして、新しいパスワードを生成するには、管理ユーザーのアクセス許可が必要です。
+### <a name="for-the-defender-for-iot-portal"></a>Defender for IoT ポータルの場合
 
 Azure Defender for IoT ポータル ツールに対するユーザー アクセス許可を次の表で説明します。
 

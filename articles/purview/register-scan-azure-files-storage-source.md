@@ -6,13 +6,13 @@ ms.author: suvirdi
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/01/2020
-ms.openlocfilehash: a0bd7a4cd8afafc16f05b4a37cd5723304ad931e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: c88134e978615d53bdfbde26492096212c3f582f
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96550901"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656411"
 ---
 # <a name="register-and-scan-azure-files"></a>Azure Files の登録とスキャン
 
@@ -40,10 +40,10 @@ Azure Files では、フル スキャンと増分スキャンがサポートさ�
 **[ソースの登録 (Azure Files)]** 画面で、次の手順を実行します。
 
 1. データ ソースがカタログに表示される際の **[名前]** を入力します。
-1. 目的のストレージ アカウントを指し示す方法を選択します。
-   1. **[Azure サブスクリプションから]** を選択して、 **[Azure サブスクリプション]** ドロップ ダウン ボックスから適切なサブスクリプションを選択し、 **[ストレージ アカウント名]** ドロップ ダウン ボックスから適切なストレージ アカウントを選択します。
-   1. または、 **[手動で入力]** を選択して、サービス エンドポイント (URL) を入力することもできます。
-1. **[完了]** を選択して、データ ソースを登録します。
+2. Azure サブスクリプションを選択して、Azure Storage アカウントの検索結果を絞り込みます。
+3. Azure Storage アカウントを選択します。
+4. コレクションを選択するか、新しいものを作成します (省略可能)。
+5. **[登録]** を選択してデータ ソースを登録します。
 
 :::image type="content" source="media/register-scan-azure-files/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 

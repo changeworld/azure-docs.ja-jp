@@ -1,18 +1,18 @@
 ---
-title: Service Fabric マネージド クラスターのネットワーク設定を構成する (プレビュー)
+title: Service Fabric マネージド クラスターのネットワーク設定を構成する
 description: NSG ルール、RDP ポート アクセス、負荷分散規則などに関して Service Fabric マネージド クラスターを構成する方法について説明します。
 ms.topic: how-to
-ms.date: 03/02/2021
-ms.openlocfilehash: e17251523c0720665c4c6f5b7811304eebc9923e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 5/10/2021
+ms.openlocfilehash: 2b31e62bdd7f18ea866c69566ffea80e77df145f
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743960"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685281"
 ---
-# <a name="configure-network-settings-for-service-fabric-managed-clusters-preview"></a>Service Fabric マネージド クラスターのネットワーク設定を構成する (プレビュー)
+# <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターのネットワーク設定を構成する
 
-Service Fabric マネージド クラスターは、既定のネットワーク構成を使用して作成されます。 この構成は、重要なクラスター機能に関する必須の規則と、お客様による構成を容易にするためのいくつかのオプションの規則で構成されています。
+Service Fabric マネージド クラスターは、既定のネットワーク構成を使用して作成されます。 この構成は、重要なクラスター機能に関する必須の規則と、お客様による構成を容易にするためのいくつかのオプションの規則 (既定ですべての送信トラフィックを許可するなど) で構成されています。
 
 既定のネットワーク構成以外に、シナリオのニーズに合わせて変更できるネットワーク規則があります。
 
@@ -28,10 +28,10 @@ Service Fabric マネージド クラスターは、既定のネットワーク�
 
 Service Fabric のクラシック (非マネージド) クラスターの場合、[クラスターにネットワーク セキュリティ グループ (NSG) ルールを適用する](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-nsg-cluster-65-node-3-nodetype)には、個別に *Microsoft.Network/networkSecurityGroups* リソースを宣言して管理する必要があります。 Service Fabric マネージド クラスターを使用すると、展開テンプレートのクラスター リソース内で NSG ルールを直接割り当てることができます。
 
-NSG ルールを割り当てるには、*Microsoft.ServiceFabric/managedclusters* リソース (バージョン `2021-01-01-preview` 以降) の [networkSecurityRules](/azure/templates/microsoft.servicefabric/managedclusters#managedclusterproperties-object) プロパティを使用します。 次に例を示します。
+NSG ルールを割り当てるには、*Microsoft.ServiceFabric/managedclusters* リソース (バージョン `2021-05-01` 以降) の [networkSecurityRules](/azure/templates/microsoft.servicefabric/managedclusters#managedclusterproperties-object) プロパティを使用します。 次に例を示します。
 
 ```json
-            "apiVersion": "2021-01-01-preview",
+            "apiVersion": "2021-05-01",
             "type": "Microsoft.ServiceFabric/managedclusters",
             ...
             "properties": {

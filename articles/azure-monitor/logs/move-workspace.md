@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3628669890d23dd504e7900afa8910a5586db938
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 96d9e64a7b3443b4c2e835bfe824bd7d9197cb1c
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322223"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752159"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -44,7 +44,7 @@ ms.locfileid: "108322223"
 > - ワークスペースを既に移動している場合は、 **[Analytics]** の下のアクティブなルールをすべて無効にし、5 分後に再び有効にします。 これは、ほとんどの場合に効果的な解決策です。ただし、繰り返しますがこれはサポートされていないため、ご自身の責任で行ってください。
 > 
 > **アラートを再作成する**
-> - ワークスペースの移動中に変更されるワークスペースの Azure Resource ID に基づいて権限が設定されているため、移動後にすべてのアラートを再作成する必要があります。
+> - すべてのアラートは、ワークスペースの移動または名前の変更操作の後に再作成する必要があります。これは、権限がワークスペースの Azure リソース ID に基づいており、これはワークスペースの移動またはリソース名の変更時に変更されるためです。
 >
 > **リソース パスの更新**
 > - ワークスペースの移動後、このワークスペースにポイントしているすべての Azure または外部リソースを確認し、新しいリソース ターゲット パスを指すように更新する必要があります。

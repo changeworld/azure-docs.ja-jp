@@ -141,10 +141,14 @@
               href: vpn-profile-intune.md
         - name: VPN クライアント
           items:
-            - name: Windows 10
-              href: openvpn-azure-ad-client.md
             - name: OpenVPN
               href: howto-openvpn-clients.md?
+            - name: Azure AD 認証
+              items:
+                - name: Windows 10
+                  href: openvpn-azure-ad-client.md
+                - name: macOS - プレビュー
+                  href: openvpn-azure-ad-client-mac.md
         - name: Always-On トンネルを構成する
           items:
             - name: ユーザー トンネル
@@ -171,7 +175,7 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md

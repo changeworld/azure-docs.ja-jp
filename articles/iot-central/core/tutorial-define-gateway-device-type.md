@@ -9,18 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7d2321189e32c77d9360ff6d772fcebf9c6abb1d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: d1a730a20ef2ab0fe5e455ef86a428aa1d83fc19
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324565"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683931"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>チュートリアル - Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
 
-"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
-
-このチュートリアルでは、ソリューション ビルダーとして IoT Central アプリケーションでゲートウェイ デバイス テンプレートを使用してゲートウェイ デバイスを定義する方法について説明します。 次に、ゲートウェイ デバイスを介して IoT Central アプリケーションに接続するいくつかのダウンストリーム デバイスを構成します。 
+このチュートリアルでは、IoT Central アプリケーションでゲートウェイ デバイス テンプレートを使用してゲートウェイ デバイスを定義する方法について説明します。 次に、ゲートウェイ デバイスを介して IoT Central アプリケーションに接続するいくつかのダウンストリーム デバイスを構成します。 
 
 このチュートリアルでは、**スマート ビルディング** ゲートウェイ デバイス テンプレートを作成します。 **スマート ビルディング** ゲートウェイデバイスは、他のダウンストリーム デバイスとリレーションシップがあります。
 
@@ -37,7 +35,9 @@ ms.locfileid: "108324565"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)必要があります。
+このチュートリアルを完了するには、以下が必要になります。
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 ## <a name="create-downstream-device-templates"></a>ダウンストリーム デバイス テンプレートを作成する
 
@@ -210,7 +210,7 @@ ms.locfileid: "108324565"
 
 [!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -221,7 +221,7 @@ ms.locfileid: "108324565"
 * リレーションシップの追加。
 * デバイス テンプレートの公開。
 
-次に、デバイス開発者は、以下の方法を学ぶことができます。
+次の学習内容は次のとおりです。
 
 > [!div class="nextstepaction"]
 > [Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する](tutorial-add-edge-as-leaf-device.md)

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/28/2021
+ms.date: 05/07/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4653ea1e266f65fe60eff6cadeef81a65fb709d4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ac9b0f07697c7f8c6a5d733e29270b1652bad5e2
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319452"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753743"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -38,7 +38,10 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
   - 監視対象 VM の数
   - 各監視対象 VM から収集されるデータの種類 
   
-従量課金制モデルに加えて、Log Analytics には **容量予約** レベルがあります。これにより、従量課金制の料金と比較して 25 % も節約できます。 容量予約の価格を選択すると、1 日あたり 100 GB から予約を購入できます。 予約レベルを超える使用量は、従量課金制で請求されます。 容量予約レベルには、31 日間のコミットメント期間があります。 コミットメント期間中は、より高いレベルの容量予約レベルに変更できます (これにより 31 日間のコミットメント期間が再スタートされます) が、コミットメント期間が終了するまでは、従量課金制または低い容量予約レベルに戻ることはできません。 容量予約レベルの課金は 1 日単位で行われます。 Log Analytics の従量課金制および容量予約の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。 
+従量課金制モデルに加えて、Log Analytics には **容量予約** レベルがあります。これにより、従量課金制の料金と比較して 25 % も節約できます。 容量予約の価格を選択すると、1 日あたり 100 GB から予約を購入できます。 予約レベルを超過する使用 (超過分) については、1 GB につき現在の容量予約レベルで提供されている同じ価格で請求されます。 容量予約レベルには、31 日間のコミットメント期間があります。 コミットメント期間中は、より高いレベルの容量予約レベルに変更できます (これにより 31 日間のコミットメント期間が再スタートされます) が、コミットメント期間が終了するまでは、従量課金制または低い容量予約レベルに戻ることはできません。 容量予約レベルの課金は 1 日単位で行われます。 Log Analytics の従量課金制および容量予約の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。 
+
+> [!NOTE]
+> 2021 年 5 月上旬まで、容量予約の超過分は従量課金制で請求されていました。 この変更により、1 GB につき現在の容量予約レベルと同じ価格で超過分が請求されるようになり、大きな予約レベルを持つユーザーが予約レベルを微調整する必要性が軽減されます。 
 
 イベントのデータ サイズは、すべての価格レベルで、このイベントの Log Analytics に格納されているプロパティの文字列形式から計算されます。データがエージェントから送信されたか、インジェスト プロセス中に追加されたかは関係ありません。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](custom-fields.md)が含まれます。 一部の [Log Analytics 標準プロパティ](./log-standard-columns.md)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 AzureActivity、Heartbeat、Usage 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように `_IsBillable` プロパティを使用できます。 使用量は GB (1.0E9 バイト) 単位でレポートされます。 
 
@@ -213,7 +216,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 日次上限に達するとすぐに、課金対象のデータの種類の収集は、その日はそれ以上行われません。 (日次上限の適用には待ち時間が内在するため、指定された日次上限のレベルは正確には適用されません)。 選択した Log Analytics ワークスペースのページの上部に警告バナーが表示され、**LogManagement** カテゴリの *Operation* テーブルに操作イベントが送信されます。 [*1 日の上限を次に設定する*] で定義されているリセット時刻が過ぎると、データ収集が再開されます。 この操作イベントに基づいてアラート ルールを定義し、データの日次制限に達したら通知するよう構成することをお勧めします ([下記](#alert-when-daily-cap-reached)を参照)。 
 
 > [!NOTE]
-> 特にワークスペース上で大量のデータを受信している場合には、日次上限によって、指定された上限レベルで厳密にデータ収集を停止することはできず、一部のデータが超過することが予想されます。 日次上限の動作を確認する際に役立つクエリについては、[下記](#view-the-effect-of-the-daily-cap)を参照してください。 
+> 特にワークスペース上で大量のデータを受信している場合には、日次上限によって、指定された上限レベルで厳密にデータ収集を停止することはできず、一部のデータが超過することが予想されます。 データが上限を超えて収集された場合でも、請求は発生します。 日次上限の動作を確認する際に役立つクエリについては、[下記](#view-the-effect-of-the-daily-cap)を参照してください。 
 
 > [!WARNING]
 > 日次上限によって、データの種類 (WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、Update および UpdateSummary) の収集が停止することはありません。ただし、2017 年 6 月 19 日より前に Azure Defender (Security Center) がインストールされたワークスペースは除きます。 

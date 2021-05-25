@@ -7,30 +7,26 @@ ms.author: baanders
 ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ac794fda92e2ad005b30fc1aa153cc0546430fbe
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 3947267959bd5cc90cc5d74512417df97eadae9e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208565"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789848"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
-[DigitalTwinsModels API](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、Azure Digital Twins インスタンスの[モデル](concepts-models.md)を管理できます。 
-
-管理操作には、モデルのアップロード、検証、取得、および削除が含まれます。 
+この記事では、Azure Digital Twins インスタンスで[モデル](concepts-models.md)を管理する方法について説明します。 管理操作には、モデルのアップロード、検証、取得、および削除が含まれます。 
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="ways-to-manage-models"></a>モデルの管理方法
-
-[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+[!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
 ## <a name="create-models"></a>モデルを作成する
 
-Azure Digital Twins のモデルは DTDL で記述され、 *.json* ファイルとして保存されます。 また、[DTDL 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)も用意されており、[Visual Studio Code](https://code.visualstudio.com/) に使用できます。これにより、構文の検証や、DTDL ドキュメントの作成を容易にするその他の機能が提供されます。
+Azure Digital Twins のモデルは DTDL で記述され、 .json ファイルとして保存されます。 また、[DTDL 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)も用意されており、[Visual Studio Code](https://code.visualstudio.com/) に使用できます。これにより、構文の検証や、DTDL ドキュメントの作成を容易にするその他の機能が提供されます。
 
 病院が部屋をデジタルで表現する例を考えてみましょう。 各部屋には、手の洗浄を監視するためのスマート ソープ ディスペンサーと、部屋の行き来を監視するセンサーが含まれています。
 
@@ -41,7 +37,7 @@ Azure Digital Twins のモデルは DTDL で記述され、 *.json* ファイル
 > [!NOTE]
 > これは、クライアントプロジェクトの一部としてアップロードされる、モデルが定義され保存されている .json ファイルのサンプル本文です。 一方、REST API 呼び出しは、上記のようなモデル定義の配列を取得します (これは .NET SDK の `IEnumerable<string>` にマップされています)。 そのため、REST API でこのモデルを直接使用するには、ブラケットで囲みます。
 
-このモデルでは、病室の名前と一意の ID、および訪問者の数と手洗いの状態を表すプロパティを定義します (これらのカウンターはモーション センサーおよびスマート ソープ ディスペンサー から更新され、組み合わせて *手洗いパーセンテージ* プロパティを計算します)。 このモデルでは、*hasDevices* のリレーションシップも定義されています。これは、この *Room* モデルに基づいて [デジタル ツイン](concepts-twins-graph.md)を実際のデバイスに接続するために使用されます。
+このモデルでは、病室の名前と一意の ID、および訪問者の数と手洗いの状態を表すプロパティを定義します (これらのカウンターはモーション センサーおよびスマート ソープ ディスペンサー から更新され、組み合わせて *手洗いパーセンテージ* プロパティを計算します)。 このモデルでは、*hasDevices* のリレーションシップも定義されています。これは、この Room モデルに基づいて [デジタル ツイン](concepts-twins-graph.md)を実際のデバイスに接続するために使用されます。
 
 この方法に従うと、病院の病棟、ゾーン、または病院自体のモデルを定義することができます。
 
@@ -150,7 +146,7 @@ Azure Digital Twins インスタンスに格納されているモデルを一覧
 
 一般的に、設定はいつでも削除できます。
 
-例外は、`extends` リレーションシップまたはコンポーネントとして、他のモデルが依存しているモデルです。 たとえば、*ConferenceRoom* モデルが *Room* モデルを拡張し、コンポーネントとして *ACUnit* モデルを持っている場合、*ConferenceRoom* によってそれらの参照が削除されるまで、*Room* または *ACUnit* を削除することはできません。 
+例外は、`extends` リレーションシップまたはコンポーネントとして、他のモデルが依存しているモデルです。 たとえば、ConferenceRoom モデルが Room モデルを拡張し、コンポーネントとして ACUnit モデルを持っている場合、ConferenceRoom によってそれらの参照が削除されるまで、Room または ACUnit を削除することはできません。 
 
 これを行うには、依存モデルを更新して依存関係を削除するか、依存モデルを完全に削除します。
 

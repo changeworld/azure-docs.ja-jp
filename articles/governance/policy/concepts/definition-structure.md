@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 594dbfe3dda919e4d8dcbf3047fac78bad600127
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 926ee1d44d0f0ce523e883c36203fb278023e6c4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326203"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753067"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -122,7 +122,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 ### <a name="common-metadata-properties"></a>一般的なメタデータのプロパティ
 
 - `version` (string):ポリシー定義の内容のバージョンに関する詳細を追跡します。
-- `category` (string):ポリシー定義が表示される Azure portal 内のカテゴリを指定します。
+- `category` (string): ポリシー定義が表示される Azure portal 内のカテゴリを指定します。
 - `preview` (boolean):ポリシー定義が _preview_ であるかどうかを示す true または false フラグです。
 - `deprecated` (boolean):ポリシー定義が _deprecated_ とマークされているかどうかを示す true または false フラグです。
 
@@ -131,7 +131,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ## <a name="parameters"></a>パラメーター
 
-パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 1 つのフォームにあるフィールドのようなパラメーター `name`、`address``city``state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。
+パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 フォームにあるフィールドのようなパラメーター `name`、`address`、`city`、`state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。
 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
 
 > [!NOTE]
@@ -150,7 +150,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
   - `assignPermissions`:(省略可能) ポリシーの割り当て中に Azure portal にロールの割り当てを作成させるには、_true_ に設定します。 このプロパティは、割り当てスコープ外でアクセス許可を割り当てたい場合に便利です。 ロールの割り当ては、ポリシーのロール定義ごと (またはイニシアチブのすべてのポリシーのロール定義ごとに) 1 つあります。 パラメーター値は、有効なリソースまたはスコープである必要があります。
 - `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。
   割り当てられている既存のポリシー定義を更新するときは、必須です。
-- `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。 許可されている値の比較では、大文字と小文字が区別されます。 
+- `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。 許可されている値の比較では、大文字と小文字が区別されます。
 
 たとえば、リソースをデプロイできる場所を制限するためのポリシー定義を定めることができます。 そのポリシー定義のパラメーターは、**allowedLocations** にすることができます。 このパラメーターは、許可される値を制限するために、ポリシー定義の割り当てごとに使用されます。 **strongType** の使用によって、ポータル経由で割り当てを完了したときに、拡張されたエクスペリエンスが提供されます。
 
@@ -188,7 +188,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="strongtype"></a>strongType
 
-`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 ある "_リソースの種類_" が **strongType** に対して有効かどうかを確認するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。 _リソースの種類_ **strongType** の形式は `<Resource Provider>/<Resource Type>` です。 たとえば、「 `Microsoft.Network/virtualNetworks/subnets` 」のように入力します。
+`metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 "_リソースの種類_" が **strongType** に対して有効かどうかを判断するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。 _リソースの種類_ **strongType** の形式は `<Resource Provider>/<Resource Type>` です。 たとえば、「 `Microsoft.Network/virtualNetworks/subnets` 」のように入力します。
 
 **Get-AzResourceProvider** によって返されない一部の "_リソースの種類_" もサポートされています。 その種類には、次のようなものがあります。
 
@@ -720,6 +720,7 @@ Azure Policy で配列プロパティを操作する方法の詳細 (**field cou
 ```
 
 ポリシー:
+
 ```json
 {
     "count": {
@@ -811,7 +812,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 - `policy()`
   - 評価対象のポリシーに関する次の情報が返されます。 プロパティには、返されたオブジェクトからアクセスできます (例: `[policy().assignmentId]`)。
-  
+
     ```json
     {
       "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",

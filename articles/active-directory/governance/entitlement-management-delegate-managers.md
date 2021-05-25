@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4a33170fecab6efbe86568eb81b87637ca5da24
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798641"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714298"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージ管理者にアクセス ガバナンスを委任する
 
@@ -40,7 +40,7 @@ ms.locfileid: "87798641"
 
 アクセス パッケージ管理者のロールにユーザーを割り当てるには、以下の手順のようにします。
 
-**事前に必要なロール:** 全体管理者、ユーザー管理者、またはカタログ所有者
+**事前に必要なロール:** グローバル管理者、ID ガバナンス管理者、ユーザー管理者、またはカタログ所有者
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 

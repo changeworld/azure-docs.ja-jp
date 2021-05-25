@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e9c7d246c1cfb10c43979365c090a3a70775767
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: fbe90455142da55289c053c64390f354668b52bc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315545"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766081"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -28,7 +28,7 @@ Google とのフェデレーションを設定することで、招待された�
 ![Google ユーザーのサインイン オプション](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
-> Google フェデレーションは Gmail ユーザー専用に設計されています。 G Suite ドメインとのフェデレーションを行うには、[直接フェデレーション](direct-federation.md)を使用します。
+> Google フェデレーションは Gmail ユーザー専用に設計されています。 G Suite ドメインとのフェデレーションを行うには、[SAML/WS-Fed ID プロバイダー フェデレーション](direct-federation.md)を使用します。
 
 > [!IMPORTANT]
 > **2021 年の下半期以降**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](#deprecation-of-web-view-sign-in-support)。
@@ -71,7 +71,7 @@ Gmail ユーザーに影響を与える既知のシナリオを次に示しま�
 - Windows 上の Microsoft アプリ
 - Web アプリ
 - 認証でシステム Web ビューを使用したモバイルアプリ (iOS の [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)、Android の[カスタム タブ](https://developer.chrome.com/docs/android/custom-tabs/overview/))。  
-- G Suite ID (たとえば、G Suite との SAML ベースの[直接フェデレーション](direct-federation.md)を使用している場合)
+- G Suite ID (たとえば、G Suite との [SAML ベースのフェデレーション](direct-federation.md)を使用している場合)
 
 この変更によって次のような影響があるか Google に確認しています。
 - Web アカウント マネージャー (WAM) または Web 認証ブローカー (WAB) を使用する Windows アプリ。  

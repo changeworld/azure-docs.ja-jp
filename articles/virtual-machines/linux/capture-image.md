@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: dddbad2403734bc749497a7acca16b2a5b6076f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dff0425c119015d69ef994540e03e56dfc2decb6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792257"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744589"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
@@ -82,12 +82,14 @@ Azure CLI を使用し、一般化されたものとして VM を設定し、イ
     ```azurecli
     az image create \
         --resource-group myResourceGroup \
-        --name myImage --source myVM
+    --name myImage --source myVM
     ```
    
    > [!NOTE]
    > このイメージは、ソース VM と同じリソース グループに作成されます。 このイメージから、サブスクリプション内の任意のリソース グループに VM を作成できます。 管理の観点から、VM のリソースとイメージに専用のリソース グループを作成することをお勧めします。
    >
+   > 第 2 世代 VM のイメージをキャプチャする場合は、 `--hyper-v-generation V2` パラメーターも使用します。 詳細については、[「第 2 世代 VM」](../generation-2.md)を参照してください。
+   > 
    > イメージをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、`--zone-resilient true` パラメーターを含める必要があります。
    
 このコマンドからは、VM イメージを記述する JSON が返されます。 後で参照するためにこの出力を保存します。

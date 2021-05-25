@@ -1,16 +1,16 @@
 ---
-title: Azure NetApp Files および Azure VMware Solution
+title: Azure NetApp Files と Azure VMware Solution との統合
 description: Azure NetApp Files および Azure VMware Solution VM を使用して、オンプレミス サーバー、Azure VMware Solution VM、クラウド インフラストラクチャの間でデータを移行および同期します。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 09b9ba2ff6b95e12558b1ac49e401ce6dede4942
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: d4a311412f215ee02fcc4d7d93d76cb6c116df58
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870987"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771669"
 ---
-# <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files および Azure VMware Solution
+# <a name="integrate-azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files と Azure VMware Solution との統合
 
 この記事では、Azure NetApp Files と Azure VMware Solution ベースのワークロードを統合する手順について説明します。 ゲスト オペレーティング システムは、Azure NetApp Files ボリュームにアクセスする仮想マシン (VM) 内で実行されます。 
 

@@ -1,24 +1,24 @@
 ---
-title: Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化とは
-description: Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。
+title: Azure Active Directory での SaaS アプリ ユーザー プロビジョニングの自動化とは
+description: Azure Active Directory を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: overview
 ms.workload: identity
-ms.date: 02/08/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: f899c4d67321482dab62729632fe031bb23f71ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87b74ecb8517ac54327eff189c4b32e989a748af
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99830670"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784703"
 ---
-# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化とは
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-active-directory"></a>Azure Active Directory での SaaS アプリ ユーザー プロビジョニングの自動化とは
 
 Azure Active Directory (Azure AD) での **アプリ プロビジョニング** という用語は、ユーザーがアクセスする必要のあるクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 一般的なシナリオには、[Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) などのアプリケーションへの Azure AD ユーザーのプロビジョニングが含まれます。
 

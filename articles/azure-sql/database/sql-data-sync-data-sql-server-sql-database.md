@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 660297beacb6594058a3d83fb622ddeb579c223b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7746e05583057b3ed313a55699cae711c560f061
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951722"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803946"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -152,6 +152,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - ユーザー定義データ型の列はサポートされていません
 - 異なるサブスクリプション間でのサーバーの移動はサポートされていません。 
 - 2 つの主キーでケースだけが違っている (例: Foo と foo) 場合、データ同期ではこのシナリオがサポートされません。
+- テーブルの切り捨ては、データ同期でサポートされている操作ではありません (変更は追跡されません)。
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 

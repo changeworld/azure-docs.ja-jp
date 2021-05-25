@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7da35f77dd232e5f523e2bdc3f125c68015ab871
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 69edeb73be969c1f065ff99ee80153305ec70a60
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448187"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753707"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment"></a>Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する
 
@@ -175,7 +175,7 @@ Windows イベント ログを既に有効にしていて、削除する場合�
 
 ## <a name="optional-configure-alerts"></a>省略可能: アラートを構成する
 
-Windows Virtual Desktop 向けの Azure Monitor を使用すると、選択したサブスクリプション内で発生した Azure Monitor アラートを Windows Virtual Desktop データのコンテキストで監視できます。 Azure Monitor アラートは Azure サブスクリプションのオプション機能であり、Windows Virtual Desktop 向けの Azure Monitor とは別に設定する必要があります。 Windows Virtual Desktop のイベント、診断、およびリソースに対するカスタム アラートを設定するには、Azure Monitor アラート フレームワークを使用します。 Azure Monitor のアラートの詳細については、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/alerts/tutorial-response.md)」をご覧ください。
+Windows Virtual Desktop 向けの Azure Monitor を使用すると、選択したサブスクリプション内で発生した Azure Monitor アラートを Windows Virtual Desktop データのコンテキストで監視できます。 Azure Monitor アラートは Azure サブスクリプションのオプション機能であり、Windows Virtual Desktop 向けの Azure Monitor とは別に設定する必要があります。 Windows Virtual Desktop のイベント、診断、およびリソースに対するカスタム アラートを設定するには、Azure Monitor アラート フレームワークを使用します。 Azure Monitor のアラートについて詳しくは、[Azure Monitor のログ アラート](../azure-monitor/alerts/alerts-log.md)に関するページをご覧ください。
 
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 

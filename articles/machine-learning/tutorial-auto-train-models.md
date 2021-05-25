@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 7dc42c305ff8cd7320d711574e4095141041d8b4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210637"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773883"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 
@@ -40,8 +40,11 @@ ms.locfileid: "107210637"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版](https://aka.ms/AMLFree)の Azure Machine Learning を今すぐお試しください。
 
-* まだ Azure Machine Learning ワークスペースとノートブック仮想マシンがない場合は、[セットアップのチュートリアル](tutorial-1st-experiment-sdk-setup.md)を済ませておいてください。
-* セットアップのチュートリアルを完了したら、同じノートブック サーバーを使用して、*tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* ノートブックを開きます。
+* まだ Azure Machine Learning ワークスペースまたはコンピューティング インスタンスがない場合は、[Azure Machine Learning の利用開始に関するクイックスタート](quickstart-create-resources.md)を完了します。
+* ウィザードの完了後:
+    1. スタジオで **[Notebooks]** を選択します。
+    1. **[サンプル]** タブを選択します。
+    1. *tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* ノートブックを開きます。
 
 独自の[ローカル環境](how-to-configure-environment.md#local)で実行したい場合は、このチュートリアルを [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。 必要なパッケージを取得するには、 
 * [完全な `automl` クライアントをインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。

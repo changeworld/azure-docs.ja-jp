@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用して Azure NetApp Files に格納され�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/26/2021
+ms.date: 05/05/2021
 ms.author: v-erkel
-ms.openlocfilehash: 1358f3cfebcd5cdc6d9e402e9c487f80f1aa8bcd
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8dca61a9debad2c743c66b15d6f721edc7538178
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322026"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737296"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Azure HPC Cache と Azure NetApp Files を使用する
 
@@ -50,7 +50,7 @@ Azure HPC Cache で使用する Azure NetApp Files システムを作成する�
 
 最小サイズは、ネットマスク /28 で指定され、16 個の IP アドレスを提供します。 実際には、Azure NetApp Files は、使用可能な IP アドレスのうち 3 つだけをボリューム アクセスに使用します。 つまり、Azure HPC Cache に 3 つのストレージ ターゲットを作成するだけですべてのボリュームに対応できることを意味しています。
 
-委任されたサブネットが大きすぎる場合、Azure NetApp Files ボリュームは、1 つの Azure HPC Cache インスタンスが処理できるよりも多くの IP アドレスを使用する可能性があります。 1 つのキャッシュには、キャッシュ スループットのほとんどのサイズで 10 個のストレージ ターゲット、または最大の構成で 20 個のストレージ ターゲットの制限があります。
+委任されたサブネットが大きすぎる場合、Azure NetApp Files ボリュームは、1 つの Azure HPC Cache インスタンスが処理できるよりも多くの IP アドレスを使用する可能性があります。 1 つのキャッシュには、ほとんどのキャッシュ スループットとストレージのサイズの組み合わせで [10 個のストレージ ターゲットの制限](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)、または最大の構成で 20 個のストレージ ターゲットの制限があります。
 
 Azure NetApp Files ドキュメントのクイックスタートの例では、委任されたサブネットに 10.7.0.0/16 を使用していますが、。これはサブネットが大きすぎます。
 

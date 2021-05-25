@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
-ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4be6e297fafb3184224806f0bde4db468ce3b79
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389506"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788201"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -44,15 +44,13 @@ ms.locfileid: "100389506"
 
 ![データ フローの大まかな概要](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
-1. データ開発者は、Azure portal または PowerShell コマンドレットを使用して Azure Data Factory 内でセルフホステッド統合ランタイムを作成します。
+1. まず、データ開発者は Azure portal または PowerShell コマンドレットを使用して、Azure Data Factory 内でセルフホステッド統合ランタイムを作成します。  次にデータ開発者は、サービスがデータ ストアに接続するために使用する必要があるセルフホステッド統合ランタイムのインスタンスを指定して、オンプレミスのデータ ストア用のリンクされたサービスを作成します。
 
-2. データ開発者は、オンプレミスのデータ ストアに使用するリンクされたサービスを作成します。 開発者は、データ ストアへの接続にサービスが使用するセルフホステッド統合ランタイムのインスタンスを指定することによって、この操作を行います。
+2. セルフホステッド統合ランタイム ノードでは、Windows DPAPI (Data Protection Application Programming Interface) を使用して資格情報を暗号化し、その資格情報をローカルに保存します。 高可用性を目的として複数ノードが設定されている場合、資格情報はさらに他のノード間で同期されます。 各ノードでは、DPAPI を使用して資格情報を暗号化し、それらをローカルに格納します。 資格情報の同期は、データ開発者に透過的であり、セルフホステッド IR によって処理されます。
 
-3. セルフホステッド統合ランタイム ノードでは、Windows DPAPI (Data Protection Application Programming Interface) を使用して資格情報を暗号化し、その資格情報をローカルに保存します。 高可用性を目的として複数ノードが設定されている場合、資格情報はさらに他のノード間で同期されます。 各ノードでは、DPAPI を使用して資格情報を暗号化し、それらをローカルに格納します。 資格情報の同期は、データ開発者に透過的であり、セルフホステッド IR によって処理されます。
+3. Azure Data Factory は、セルフホステッド統合ランタイムと通信して、ジョブのスケジュール設定と管理を行います。 通信は、[Azure Relay](../azure-relay/relay-what-is-it.md#wcf-relay) 共有接続を使用する制御チャネルを介して行われます。 アクティビティ ジョブを実行する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。 これは、セルフホステッド統合ランタイムに資格情報がまだ格納されていない場合に備えて行われます。 セルフホステッド統合ランタイムでは、そのキューをポーリングした後、ジョブを開始します。
 
-4. Azure Data Factory は、セルフホステッド統合ランタイムと通信して、ジョブのスケジュール設定と管理を行います。 通信は、[Azure Relay](../azure-relay/relay-what-is-it.md#wcf-relay) 共有接続を使用する制御チャネルを介して行われます。 アクティビティ ジョブを実行する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。 これは、セルフホステッド統合ランタイムに資格情報がまだ格納されていない場合に備えて行われます。 セルフホステッド統合ランタイムでは、そのキューをポーリングした後、ジョブを開始します。
-
-5. セルフホステッド統合ランタイムによって、オンプレミス ストアとクラウドとの間でデータがコピーされます。 コピーの方向は、データ パイプライン内でのコピー アクティビティの構成方法によって異なります。 この手順では、セルフホステッド統合ランタイムは、セキュリティで保護された HTTPS チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信を行います。
+4. セルフホステッド統合ランタイムによって、オンプレミス ストアとクラウドとの間でデータがコピーされます。 コピーの方向は、データ パイプライン内でのコピー アクティビティの構成方法によって異なります。 この手順では、セルフホステッド統合ランタイムは、セキュリティで保護された HTTPS チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信を行います。
 
 ## <a name="prerequisites"></a>前提条件
 

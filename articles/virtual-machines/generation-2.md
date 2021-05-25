@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: a9c832d9a5e90cb2c9ffcbe8a26cdb08ebcddfcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fd639d1050490c03d269422d2d6eabad972ce10
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553121"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738181"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -65,10 +65,10 @@ ms.locfileid: "102553121"
 * Windows 10 Pro、Windows 10 Enterprise
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04、18.04、19.04、19.10 
-* RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7.0
-* Cent OS 8.1、8.0、7.7、7.6、7.5、7.4
-* Oracle Linux 7.7、7.7-CI
+* Ubuntu Server 16.04, 18.04, 19.04, 19.10, 20.04 
+* RHEL 8.2, 8.1, 8.0, 7.9, 7.7, 7.6, 7.5, 7.4, 7.0, 8.3
+* Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 8.2, 8.3
+* Oracle Linux 7.7, 7.7-CI, 7.8
 
 > [!NOTE]
 > Mv2 シリーズのような特定の仮想マシンのサイズでは、これらのイメージのサブセットのみがサポートされている場合があります。詳細については、関連する仮想マシンのサイズに関するドキュメントを参照してください。

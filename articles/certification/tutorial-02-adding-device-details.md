@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 05/04/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: f4f3d045a2530fa54d22bec789918454cba80097
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: be6bcf84ebb9c979cd60e6ca6803b7a24a0944a1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310429"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736304"
 ---
 # <a name="tutorial-add-device-details"></a>チュートリアル: デバイスの詳細を追加する
 
@@ -35,18 +35,26 @@ ms.locfileid: "107310429"
 
 デバイス名、説明、プロセッサ、オペレーティング システム、接続オプション、ハードウェア インターフェイス、業界プロトコル、物理的なサイズなど、デバイスの主要なハードウェア機能に関する情報は、プロジェクト ページの最初にある [Input device details]\(デバイスの詳細の入力\) というセクションで入力できます。 フィールドの多くは省略可能ですが、その情報のほとんどは、認定されたデバイスを発行するよう選択した場合に、Azure Certified Device カタログで潜在顧客に公開されます。
 
-1. プロジェクトの概要ページの [Input device details]\(デバイスの詳細の入力\) セクションで [`Add`] をクリックし、デバイスの詳細セクションを開きます。 情報を入力するためのセクションが 5 つ表示されます。
+1. プロジェクトの概要ページの [Input device details]\(デバイスの詳細の入力\) セクションで [`Add`] をクリックし、デバイスの詳細セクションを開きます。 情報を入力するためのセクションが 6 つ表示されます。
 
 ![プロジェクトの詳細ページの画像](./media/images/device-details-menu.png)
 
 2. プロジェクトの作成時に入力した情報を [`Basics`] タブで確認します。
 1. デバイスに関して申請する認定を [`Certifications`] タブで確認します。
-1. [`Product details`] タブを開き、オペレーティング システムを少なくとも 1 つ選択します。
-1. デバイスを表す個別のコンポーネントを **少なくとも** 1 つ追加します。 コンポーネントの使用に関する詳しいガイダンスは、[こちら](how-to-using-the-components-feature.md)でご覧いただけます。
+1. [`Hardware`]\(ハードウェア\) タブを開き、デバイスを表す個別のコンポーネントを **少なくとも 1 つ** 追加します。 [コンポーネントの使用](how-to-using-the-components-feature.md)に関する詳しいガイダンスもご覧ください。
 1. [`Save`] をクリックします。 その後、コンポーネント デバイスを編集して、さらに詳しい情報を追加することができます。
-1. コンポーネントの詳細ではキャプチャされていない、追加分のデバイスの詳細を [`Additional product details`]\(追加の製品詳細\) に列挙します。
+1. 動作情報に関する情報 (IP 等級、動作温度、安全性認定など) を追加します。
+
+![ハードウェア セクションの画像](./media/images/hardware-section.png)
+
+7. コンポーネントの詳細ではキャプチャされていない、追加分のデバイスの詳細を [`Additional product details`]\(追加の製品詳細\) に列挙します。
 1. いずれかのコンポーネント フィールドで [`Other`] をマークした場合、または Azure 認定チームに注意を喚起したい特別な事情がある場合、[`Comments for reviewer`]\(レビュー担当者向けのコメント\) セクションにコメントをわかりやすく入力します。
-1. デバイスから Azure にデータを送信する際に追加のハードウェアまたはサービスが必要である場合、[`Dependencies`] タブを使用して依存関係を列挙します。 依存関係の列挙に関する詳しいガイダンスは、[こちら](how-to-indirectly-connected-devices.md)でご覧いただけます。
+1. [`Software`]\(ソフトウェア\) タブを開き、オペレーティング システムを **少なくとも 1 つ** 選択します。
+1. (**開発キット デバイスでは必須**、それ以外でも強く推奨) デバイスを Azure に接続するために必要なセットアップ プロセスを示すレベルを選択します。 レベル 2 を選択した場合は、使用可能なソフトウェア イメージへのリンクを指定する必要があります。
+
+![ソフトウェア セクションの画像](./media/images/software-section.png)
+
+11. デバイスから Azure にデータを送信する際に追加のハードウェアまたはサービスが必要である場合、[`Dependencies`] タブを使用して依存関係を列挙します。 [依存関係の列挙](how-to-indirectly-connected-devices.md)に関する詳しいガイダンスもご覧ください。
 1. 入力した情報に問題がなければ、[`Review`] タブを使用して、入力したデバイスの詳細全体の概要を読み取り専用で確認できます。
 1. ページの上部にある [`Project summary`] をクリックして、概要ページに戻ります。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 1ff9fbbb6cd4b8827555a6cb1b222ed4eb0a5299
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ef5f465cbb8dfd044482bfad1eb72f1aa78df39
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608837"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783731"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>自動化ルールで Azure Sentinel でのインシデント処理を自動化する
 
@@ -32,9 +32,9 @@ ms.locfileid: "104608837"
 
 ## <a name="what-are-automation-rules"></a>自動化ルールとは
 
-オートメーション ルールとは、Azure Sentinel における新しい概念です。 この機能により、ユーザーはインシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 オートメーション ルールにより、Azure Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。
+オートメーション ルールとは、Azure Sentinel における新しい概念です。 この機能により、ユーザーはインシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 自動化ルールにより、Azure Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。
 
-## <a name="components"></a>Components
+## <a name="components"></a>コンポーネント
 
 自動化ルールは、次のいくつかのコンポーネントで構成されています。
 
@@ -48,13 +48,13 @@ ms.locfileid: "104608837"
 
 複雑な条件のセットを定義して、アクション (以下を参照) を実行するタイミングを制御できます。 これらの条件は、通常、インシデントとそのエンティティの属性の状態または値に基づいており、`AND`/`OR`/`NOT`/`CONTAINS` 演算子を含めることができます。
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>アクション
 
 条件 (上記参照) が満たされたときに実行するようにアクションを定義できます。 ルールには多くのアクションを定義できます。また、実行する順序を選択することもできます (下記参照)。 次のアクションは、[プレイブックの高度な機能](automate-responses-with-playbooks.md)を必要とせずに、自動化ルールを使用して定義できます。
 
 - インシデントの状態を変更して、ワークフローを最新の状態に保ちます。
 
-  - [終了理由](tutorial-investigate-cases.md#closing-an-incident)を指定して、コメントを追加して "closed" に変更する場合。 これにより、パフォーマンスと有効性を追跡し、誤検知を減らすための微調整を行うことができます。
+  - [終了理由](tutorial-investigate-cases.md#closing-an-incident)を指定して、コメントを追加して "closed" に変更する場合。 これにより、パフォーマンスと有効性を追跡し、[誤検知](false-positives.md)を減らすための微調整を行うことができます。
 
 - インシデントの重要度を変更する – インシデントに関連するエンティティのプレゼンス、不在、値、または属性に基づいて、再評価や優先順位の変更を行うことができます。
 

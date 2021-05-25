@@ -6,15 +6,15 @@ ms.service: storage
 ms.topic: how-to
 ms.author: jukullam
 ms.reviewer: dineshm
-ms.date: 01/11/2021
+ms.date: 05/05/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3ae0904eda2608026ad09ba8b8993008380725f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5ab81f442aaf45328892de42cbf9aef651d3fe8d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788531"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762805"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub Actions ワークフローを設定して、静的 Web サイトを Azure Storage にデプロイする
 
@@ -117,7 +117,7 @@ Azure サブスクリプションと GitHub アカウント。
               creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
-1. Azure CLI アクションを使用して、コードを BLOB ストレージにアップロードし、CDN エンドポイントを消去します。 `az storage blob upload-batch` の場合、プレースホルダーを実際のストレージ アカウント名に置き換えます。 スクリプトが `$web` コンテナーにアップロードされます。 `az cdn endpoint purge` の場合、プレースホルダーを CDN プロファイル名、CDN エンドポイント名、およびリソース グループに置き換えます。
+1. Azure CLI アクションを使用して、コードを BLOB ストレージにアップロードし、CDN エンドポイントを消去します。 `az storage blob upload-batch` の場合、プレースホルダーを実際のストレージ アカウント名に置き換えます。 スクリプトが `$web` コンテナーにアップロードされます。 `az cdn endpoint purge` の場合、プレースホルダーを CDN プロファイル名、CDN エンドポイント名、およびリソース グループに置き換えます。 CDN の消去を高速化するには、`--no-wait` オプションを `az cdn endpoint purge` に追加します。
 
     ```yaml
         - name: Upload to blob storage

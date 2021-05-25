@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 183693963d66a5df13cbb4dd1e561b26f5495f08
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014368"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685695"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でストア内分析アプリケーションを作成する
 
-チュートリアルでは、Azure IoT Central のストア内分析アプリケーションを作成する方法をソリューション ビルダーに説明します。 サンプル アプリケーションは小売店用です。 これは、利用状況と環境条件を監視して適応するという一般的なビジネス ニーズに対するソリューションです。
+Azure IoT Central のインストア アナリティクス アプリケーションを作成する方法を説明するチュートリアルです。 サンプル アプリケーションは小売店用です。 これは、利用状況と環境条件を監視して適応するという一般的なビジネス ニーズに対するソリューションです。
 
 作成するサンプル アプリケーションには、3 つの実際のデバイス (1 つの Rigado Cascade 500 ゲートウェイと 2 つの RuuviTag センサー) が含まれます。 チュートリアルでは、アプリケーション テンプレートに含まれるシミュレートされた人感センサーをテスト目的で使用する方法についても説明します。 Rigado C500 ゲートウェイは、アプリケーション内で通信ハブとして機能します。 これにより、ストア内のセンサーと通信し、クラウドへの接続を管理します。 RuuviTag は、温度、湿度、圧力などのテレメトリを提供する環境センサーです。 シミュレートされた人感センサーでは、ストアのチェックアウト エリア内での動きと存在を追跡する手段が提供されます。 
 
@@ -72,8 +72,6 @@ ms.locfileid: "103014368"
     > わかりやすい **アプリケーション名** を使用する場合でも、アプリケーションの **URL** には一意の値を使用する必要があります。
 
 1. Azure サブスクリプションをお持ちの場合は、"*ディレクトリ、Azure サブスクリプション、リージョン*" を入力します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版** を有効にし、必須の連絡先情報を入力できます。  
-
-    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../core/quick-deploy-iot-central.md)に関するページを参照してください。
 
 1. **［作成］** を選択します
 
@@ -278,7 +276,7 @@ Azure IoT Central アプリケーション内でセンサーを使用して状�
 
 [!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 

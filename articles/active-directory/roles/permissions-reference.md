@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 04/26/2021
+ms.date: 05/05/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25b4494fedec61fd2e23c793271d53a703fc5c8c
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 32aa09d5c607b932da1530ced30c1b5b378b3990
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064433"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683889"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD の組み込みロール
 
@@ -67,6 +67,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | [ゲスト招待元](#guest-inviter) | [メンバーがゲストを招待できる] の設定とは無関係にゲスト ユーザーを招待できます。 | 95e79109-95c0-4d8e-aee3-d01accf2d47b |
 > | [ヘルプデスク管理者](#helpdesk-administrator) | 管理者以外のユーザーとヘルプデスク管理者のパスワードをリセットできます。 | 729827e3-9c14-49f7-bb1b-9608f156bbb8 |
 > | [ハイブリッド ID の管理者](#hybrid-identity-administrator) | AD から Azure AD へのクラウド プロビジョニング、Azure AD Connect、フェデレーションの設定を管理できます。 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
+> | [Identity Governance 管理者](#identity-governance-administrator) | Identity Governance シナリオで Azure AD を使用してアクセスを管理します。 | 45d8d3c5-c802-45c6-b32a-1d70b5e1e86e |
 > | [Insights 管理者](#insights-administrator) | Microsoft 365 Insights アプリへの管理アクセス権があります。 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
 > | [Insights ビジネス リーダー](#insights-business-leader) | M365 Insights アプリを使用して、ダッシュボードと分析情報を表示および共有できます。 | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Intune 管理者](#intune-administrator) | Intune 製品のすべての側面を管理できます。 | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
@@ -1081,6 +1082,18 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.office365.supportTickets/allEntities/allTasks | Microsoft 365 サービス要求を作成および管理する |
 > | microsoft.office365.webPortal/allEntities/standard/read | Microsoft 365 管理センターですべてのリソースの基本プロパティを読み取る |
 
+## <a name="identity-governance-administrator"></a>Identity Governance 管理者
+
+このロールのユーザーは、アクセス パッケージ、アクセス レビュー、カタログとポリシーを含む Azure AD Identity Governance 構成を管理することができ、アクセスの承認や確認、アクセスの必要がなくなったゲスト ユーザーの削除が確実に行われるようにすることができます。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | microsoft.directory/accessReviews/allProperties/allTasks | Azure AD で、アクセス レビューの作成と削除、およびアクセス レビューのすべてのプロパティの読み取りと更新を行う |
+> | microsoft.directory/entitlementManagement/allProperties/allTasks | Azure AD エンタイトルメント管理でのリソースの作成と削除、すべてのプロパティの読み取りと更新を行う |
+> | microsoft.directory/groups/members/update | ロール割り当て可能なグループを除き、グループのメンバーを更新する |
+> | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | サービス プリンシパルのロールの割り当ての更新 |
+
 ## <a name="insights-administrator"></a>Insights 管理者
 
 このロールのユーザーは、[M365 Insights アプリケーション](https://go.microsoft.com/fwlink/?linkid=2129521)の管理機能の完全なセットにアクセスできます。 このロールでは、ディレクトリ情報の読み取り、サービスの正常性の監視、サポート チケットの提出、Insights 管理者設定の側面へのアクセスを行うことができます。
@@ -1913,7 +1926,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 `<namespace>/<entity>/<propertySet>/<action>`
 
-次に例を示します。
+例:
 
 `microsoft.directory/applications/credentials/update`
 

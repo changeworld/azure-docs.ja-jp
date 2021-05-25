@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0295c994a736e26d7b581bd13b6167819833360
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798937"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748711"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -40,12 +40,13 @@ ms.locfileid: "104798937"
 
 デスクトップ アプリケーションで使用するリダイレクト URI は、使用するフローによって決まります。
 
-Azure portal の **[アプリの登録]** でアプリの[プラットフォーム設定を構成](quickstart-register-app.md#add-a-redirect-uri)して、アプリのリダイレクト URI を指定します。
+Azure portal の **[アプリの登録]** でアプリの [プラットフォーム設定を構成](quickstart-register-app.md#add-a-redirect-uri)して、アプリのリダイレクト URI を指定します。
 
 - 対話型認証を使用するアプリの場合:
-  - 埋め込みブラウザーを使用するアプリ: `https://login.microsoftonline.com/common/oauth2/nativeclient`
-  - システム ブラウザーを使用するアプリ: `http://localhost`
 
+  - 埋め込みブラウザーを使用するアプリ: `https://login.microsoftonline.com/common/oauth2/nativeclient` (注: アプリでポップアップ表示されるウィンドウに通常、アドレス バーが含まれていない場合、"埋め込みブラウザー" が使用されています)。
+  - システム ブラウザーを使用するアプリ: `http://localhost` (注: アプリでシステムの既定のブラウザー (Edge、Chrome、Firefox など) が起動して Microsoft ログイン ポータルにアクセスする場合は、"システム ブラウザー" が使用されています。)
+  
   > [!IMPORTANT]
   > セキュリティのベスト プラクティスとして、`https://login.microsoftonline.com/common/oauth2/nativeclient` または `http://localhost` をリダイレクト URI として明示的に設定することをお勧めします。 MSAL.NET のような一部の認証ライブラリでは、他のリダイレクト URI が指定されていない場合、推奨されていない既定値の `urn:ietf:wg:oauth:2.0:oob` が使用されます。 この既定値は、次のメジャー リリースで破壊的変更として更新されます。
 

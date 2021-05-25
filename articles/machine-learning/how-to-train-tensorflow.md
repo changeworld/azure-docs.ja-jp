@@ -9,12 +9,12 @@ ms.author: minxia
 author: mx-iao
 ms.date: 09/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 297721d9801385d9fdbff708c723c5b6e02949ad
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: c1c0ac3d95a005a55d3b334a1f68add072b75700
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950606"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764767"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow モデルをトレーニングする
 
@@ -30,7 +30,7 @@ TensorFlow モデルを一から開発する場合でも、[既存のモデル](
 
  - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
-     - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+     - [クイック スタート: Azure Machine Learning の利用の開始](quickstart-create-resources.md)を完了して、SDK およびサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
     - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > ml-frameworks > tensorflow > train-hyperparameter-tune-deploy-with-tensorflow** とディレクトリを移動して、完成した展開済みノートブックを見つけます。 
  
  - 独自の Jupyter Notebook サーバー
