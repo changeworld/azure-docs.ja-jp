@@ -7,20 +7,20 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9adc69734a1b2de806d7af6cf0e987110b605ec4
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 01511a1c857ff2b4daad2b5865872a717b60a9f1
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208601"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789967"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Azure Digital Twins では、ダウンストリームのサービスや接続されているコンピューティング リソースに[イベント通知](concepts-event-notifications.md)をルーティングすることができます。 これを行うには、まず、イベントを受信できる **エンドポイント** を設定します。 そのうえで、Azure Digital Twins によって生成されるどのイベントをどのエンドポイントに配信するかを指定する[イベント ルート](concepts-route-events.md)を作成します。
+Azure Digital Twins では、ダウンストリームのサービスや接続されているコンピューティング リソースに[イベント通知](concepts-event-notifications.md)をルーティングすることができます。 これを行うには、まず、イベントを受信できる **エンドポイント** を設定します。 この後、Azure Digital Twins によって生成されたどのイベントをどのエンドポイントに送信するかを指定する "[イベント ルート](concepts-route-events.md)" を作成することができます。
 
-この記事では、[REST API](/rest/api/azure-digitaltwins/)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、および [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、エンドポイントとルートを作成する手順について説明します。
+この記事では、[REST API](/rest/api/azure-digitaltwins/)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、および [Azure Digital Twins CLI](concepts-cli.md) を使用して、エンドポイントとルートを作成する手順について説明します。
 
 別の方法として、エンドポイントとルートは、[Azure portal](https://portal.azure.com) で管理することもできます。 ポータルを使用したバージョンの記事については、[エンドポイントとルートをポータルで管理する方法](how-to-manage-routes-portal.md)に関するページを参照してください。
 
@@ -48,22 +48,22 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 ### <a name="create-the-endpoint"></a>エンドポイントを作成する
 
-エンドポイント リソースを作成したら、Azure Digital Twins エンドポイントにそれらを使用できます。 次の例では、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/dt/endpoint/create) コマンドを使用してエンドポイントを作成する方法を示します。 コマンドのプレースホルダーは、独自のリソースの詳細に置き換えます。
+エンドポイント リソースを作成したら、Azure Digital Twins エンドポイントにそれらを使用できます。 次の例では、[Azure Digital Twins CLI](concepts-cli.md) の [az dt endpoint create](/cli/azure/dt/endpoint/create) コマンドを使用してエンドポイントを作成する方法を示します。 コマンドのプレースホルダーは、独自のリソースの詳細に置き換えます。
 
 Event Grid エンドポイントを作成するには:
 
 ```azurecli-interactive
-az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
+az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> --dt-name <your-Azure-Digital-Twins-instance-name>
 ```
 
 Event Hubs エンドポイントを作成するには (キーベース認証):
 ```azurecli-interactive
-az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
+az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> --dt-name <your-Azure-Digital-Twins-instance-name>
 ```
 
 Service Bus トピック エンドポイントを作成するには (キーベース認証):
 ```azurecli-interactive 
-az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
+az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> --dt-name <your-Azure-Digital-Twins-instance-name>
 ```
 
 これらのコマンドが正常に実行されると、イベント グリッド、イベント ハブ、または Service Bus トピックが、Azure Digital Twins 内のエンドポイントとして、`--endpoint-name` 引数で指定した名前で使用できるようになります。 通常、この名前を、**イベント ルート** ([この記事の中で後で](#create-an-event-route)作成します) のターゲットとして使用します。
@@ -88,7 +88,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 エンドポイントでは、一定期間内にイベントを配信できない場合や、イベントの配信を一定回数試行した後も配信できない場合、未配信イベントをストレージ アカウントに送信できます。 このプロセスは **配信不能処理** と呼ばれます。
 
-配信不能処理が有効なエンドポイントは、Azure Digital Twins [CLI](how-to-use-cli.md) または[コントロール プレーン API](how-to-use-apis-sdks.md#overview-control-plane-apis) を使用して設定できます。
+配信不能処理が有効なエンドポイントは、Azure Digital Twins [CLI](concepts-cli.md) または[コントロール プレーン API](concepts-apis-sdks.md#overview-control-plane-apis) を使用して設定できます。
 
 配信不能処理の詳細については、[イベント ルートの概念](concepts-route-events.md#dead-letter-events)に関するページを参照してください。 配信不能処理を構成してエンドポイントを設定する方法については、このセクションの残りの部分を読み進めます。
 
@@ -119,7 +119,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
     
 #### <a name="create-the-dead-letter-endpoint"></a>配信不能エンドポイントを作成する
 
-配信不能処理が有効なエンドポイントを作成するには、次の配信不能パラメーターを、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/dt/endpoint/create) コマンドに追加します。
+配信不能処理が有効なエンドポイントを作成するには、次の配信不能パラメーターを、[Azure Digital Twins CLI](concepts-cli.md) の [az dt endpoint create](/cli/azure/dt/endpoint/create) コマンドに追加します。
 
 パラメーターの値は、[前のセクション](#set-up-storage-resources)で収集したストレージ アカウント名、コンテナー名、SAS トークンで構成された **配信不能 SAS URI** です。 このパラメーターにより、キーベースの認証を使用するエンドポイントが作成されます。
 
@@ -129,7 +129,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 配信不能処理が有効になっている目的の種類のエンドポイントを作成するには、前の「[エンドポイントを作成する](#create-the-endpoint)」セクションのエンドポイント作成コマンドの末尾に、このパラメーターを追加します。
 
-または、CLI の代わりに [Azure Digital Twins コントロール プレーン API](how-to-use-apis-sdks.md#overview-control-plane-apis) を使用して、配信不能エンドポイントを作成することもできます。 これを行うには、[DigitalTwinsEndpoint のドキュメント](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)を参照し、要求を構成して配信不能パラメーターを追加する方法を確認してください。
+または、CLI の代わりに [Azure Digital Twins コントロール プレーン API](concepts-apis-sdks.md#overview-control-plane-apis) を使用して、配信不能エンドポイントを作成することもできます。 これを行うには、[DigitalTwinsEndpoint のドキュメント](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)を参照し、要求を構成して配信不能パラメーターを追加する方法を確認してください。
 
 #### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>ID ベースの認証を使用して配信不能エンドポイントを作成する
 
@@ -208,7 +208,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>API と C# SDK を使用してルートを作成する
 
-イベント ルートを定義する方法の 1 つは、[データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用することです。 このセクションのサンプルでは、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) を使用しています。
+イベント ルートを定義する方法の 1 つは、[データ プレーン API](concepts-apis-sdks.md#overview-data-plane-apis) を使用することです。 このセクションのサンプルでは、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) を使用しています。
 
 `CreateOrReplaceEventRouteAsync` は、イベント ルートを追加するために使用される SDK 呼び出しです。 その使用例を次に示します。
 
@@ -227,7 +227,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 Azure Digital Twins CLI の [az dt route](/cli/azure/dt/route) コマンドを使用して、ルートを管理することもできます。 
 
-CLI の使用および利用できるコマンドについて詳しくは、"[Azure Digital Twins CLI を使用する方法](how-to-use-cli.md)" に関するページを参照してください。
+CLI の使用方法および使用できるコマンドの詳細は、[Azure Digital Twins の CLI コマンド](concepts-cli.md)に関するページをご覧ください。
 
 ## <a name="filter-events"></a>イベントのフィルター処理
 
@@ -243,7 +243,7 @@ CLI の使用および利用できるコマンドについて詳しくは、"[Az
 >
 > テレメトリ フィルターの場合、これは、大文字と小文字の指定が、デバイスによって送信されたテレメトリ内の大文字と小文字の指定と一致する必要はあるが、必ずしもツインのモデル内に定義された大文字と小文字の指定に一致する必要はないことを意味します。 
 
-フィルターを追加するために、次の本文を含む PUT 要求を *https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31* に対して使用できます。
+フィルターを追加するために、次の本文を含む PUT 要求を `https://{Your-azure-digital-twins-host-name}/eventRoutes/{event-route-name}?api-version=2020-10-31` に対して使用できます。
 
 :::code language="json" source="~/digital-twins-docs-samples/api-requests/filter.json":::
 

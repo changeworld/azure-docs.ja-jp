@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 61993df77b0831926f16339a741a2553e80c2a0d
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b9b8c97f7b87fc96bb0ea9e60958e5579a27d89c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713842"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484669"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -24,19 +24,18 @@ ms.locfileid: "107713842"
 ソース コードは、次の GitHub リポジトリに格納されています。
 
 * [接続済みファクトリ ソリューション アクセラレータ](https://github.com/Azure/azure-iot-connected-factory)
-* [デバイス シミュレーション ソリューション アクセラレータ](https://github.com/Azure/azure-iot-pcs-device-simulation)
 
 ### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>リモート監視と予測メンテナンスのソリューション アクセラレータはどこで入手できますか?
 
 2020 年 12 月 10 日の時点で、リモート監視と予測メンテナンスのアクセラレータは [Azure IoT Solution Accelerators ](https://www.azureiotsolutions.com/Accelerators)のサイトから削除され、新しいデプロイでは利用できなくなりました。 両方のアクセラレータの GitHub リポジトリがアーカイブされました。 コードにはだれでもアクセスできますが、リポジトリに新しい投稿が寄せられることはありません。
 
+### <a name="where-can-i-find-the-device-simulation-solution-accelerator"></a>デバイス シミュレーション ソリューション アクセラレータはどこで見つかりますか?
+
+そのアクセラレータの GitHub リポジトリはアーカイブされています。 コードにはだれでもアクセスできますが、リポジトリに新しい投稿が寄せられることはありません。
+
 ### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>既存のリモート監視と予測メンテナンスのデプロイはどうなりますか?
 
 リモート監視と予測メンテナンスのソリューション アクセラレータが削除されても、既存のデプロイは影響を受けず、引き続き機能します。 フォークされたリポジトリも影響を受けません。 GitHub のマスター リポジトリはアーカイブされています。
-
-### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>デバイス シミュレーション ソリューション アクセラレータはどのようにデプロイしますか?
-
-デバイス シミュレーション ソリューション アクセラレータをデプロイするには、[デバイス シミュレーション](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)の GitHub リポジトリを参照してください。
 
 ### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>削除されたソリューション アクセラレータに関する情報はどこで入手できますか?
 
@@ -44,6 +43,7 @@ ms.locfileid: "107713842"
 
 * [リモート監視](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 * [予測メンテナンス](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+* [デバイスのシミュレーション](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>ソリューション アクセラレータ用のデバイス クライアントの開発では、どの SDK を使用できますか?
 

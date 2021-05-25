@@ -1,25 +1,23 @@
 ---
 title: Azure IoT Central アプリケーションの正常性状態を監視する | Microsoft Docs
-description: オペレーターまたは管理者として、IoT Central アプリケーションに接続されているデバイスの全体的な正常性状態を監視します。
+description: IoT Central アプリケーションに接続されているデバイスの全体的な正常性状態を監視する
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df89d53e6b5043c1ef3caa1c92f2abaae542d6ec
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 6a9751ba40f39a1a6f6166f6c6bce2149ed06984
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599011"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685065"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>IoT Central アプリケーションの全体的な正常性状態を監視する
 
 > [!NOTE]
 > メトリックは、バージョン 3 の IoT Central アプリケーションでのみ使用できます。 アプリケーションのバージョンを確認する方法については、「[アプリケーションに関する情報](./howto-get-app-info.md)」を参照してください。
-
-*この記事は、オペレーターおよび管理者に適用されます。*
 
 この記事では、IoT Central で提供される一連のメトリックを使用して、IoT Central アプリケーションに接続されているデバイスの正常性、および実行中のデータ エクスポートの正常性を評価する方法について説明します。
 
@@ -31,7 +29,7 @@ ms.locfileid: "107599011"
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Azure portal でメトリックを表示する
 
-次の手順では、[IoT Central アプリケーション](./quick-deploy-iot-central.md)に、[接続されているデバイス](./tutorial-connect-device.md)または実行中の[データ エクスポート](howto-export-data.md)があることを前提としています。
+次の手順では、[IoT Central アプリケーション](./howto-create-iot-central-application.md)に、[接続されているデバイス](./tutorial-connect-device.md)または実行中の[データ エクスポート](howto-export-data.md)があることを前提としています。
 
 ポータルで IoT Central メトリックを表示するには:
 
@@ -54,7 +52,7 @@ IoT Central で現在使用できるメトリックの一覧については、�
 
 - IoT Central の[標準料金プラン](https://azure.microsoft.com/pricing/details/iot-central/)には、2 つのデバイスとさまざまなメッセージ クォータが無料で含まれています。 無料の項目は課金から除外されますが、メトリックには引き続きカウントされます。
 
-- IoT Central は、アプリケーション内のデバイス テンプレートごとに 1 つのテスト デバイス ID を自動生成します。 このデバイス ID は、デバイス テンプレートの **[テスト デバイスの管理]** ページに表示されます。 ソリューション ビルダーは、これらのテスト デバイス ID を使用するコードを生成することによって、公開する前にデバイス テンプレートを検証することができます。 これらのデバイスは課金から除外されますが、メトリックには引き続きカウントされます。
+- IoT Central は、アプリケーション内のデバイス テンプレートごとに 1 つのテスト デバイス ID を自動生成します。 このデバイス ID は、デバイス テンプレートの **[テスト デバイスの管理]** ページに表示されます。 これらのテスト デバイス ID を使用するコードを生成することによって、公開する前にデバイス テンプレートを検証することができます。 これらのデバイスは課金から除外されますが、メトリックには引き続きカウントされます。
 
 - メトリックはデバイスからクラウドへの通信のサブセットを示す場合がありますが、デバイスとクラウド間のすべての通信は、[課金のメッセージとしてカウントされます](https://azure.microsoft.com/pricing/details/iot-central/)。
 

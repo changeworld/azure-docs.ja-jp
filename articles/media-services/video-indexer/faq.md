@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 0b7f0427708eece75b5d418b68dd1c7a2e90853f
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 5ee6d89d19e0981c0a0ae705536b2f6f3b767730
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108695"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790741"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問
 
@@ -133,10 +133,12 @@ Video Indexer については Azure Media Service の SLA が適用されます�
 ### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>自分の Video Indexer アカウントで作成したカスタム モデルを他のアカウントで使用できますか?
 
  いいえ、自分のアカウントで作成したカスタム モデルは、他のアカウントでは使用できません。 Video Indexer では、現在、自分のアカウントで[ブランド](customize-brands-model-overview.md)、[言語](customize-language-model-overview.md)、および[人](customize-person-model-overview.md)のカスタム モデルを作成できます。 これらのモデルは、モデルを作成したアカウントでのみ使用できます。
-  
+    
 ### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Video Indexer によってインデックスが付けられたコンテンツは、使用中の Video Indexer がある Azure リージョン内に保持されますか?
 
-はい、コンテンツとその分析情報は、その Azure リージョン内に保持されますが、複数の Azure リージョンを使用するように Azure サブスクリプションを手動構成した場合を除きます。 
+はい、コンテンツとその分析情報は、その Azure リージョン内に保持されます (シンガポールとブラジル南部リージョンを除く)。ただし、複数の Azure リージョンが使用されるように Azure サブスクリプションを手動構成した場合を除きます。
+
+リージョン内の顧客データは、BCDR のために、[ペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)にレプリケートされます。
 
 ### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Video Indexer のプライバシー ポリシーとは何ですか。
 

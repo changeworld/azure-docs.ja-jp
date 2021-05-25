@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/22/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb2de2c9076ae17598b761ba7dc2c17286d1352d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607902"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750791"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>クイック スタート: 3D モデルから Object Anchors モデルを作成する
 
@@ -125,6 +125,9 @@ Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Realit
    今後の参照のために **ジョブ ID** をメモしておきます。 デバッグやトラブルシューティングの際に役立つ場合があります。
 
 4. ジョブが正常に完了すると、指定した出力場所に `<Model-Filename-Without-Extension>_<JobID>.ou` の形式のファイルが表示されます。 たとえば、3D モデルのファイル名が `chair.ply` で、ジョブ ID が `00000000-0000-0000-0000-000000000000` である場合、サービスにより出力されるファイル名は `chair_00000000-0000-0000-0000-000000000000.ou` になります。
+
+## <a name="error-codes"></a>エラー コード
+アセット変換ジョブが失敗した結果生成されるさまざまなエラー コードと、それぞれの処理方法の詳細については、[変換エラー コードに関するページ](..\model-conversion-error-codes.md)を参照してください。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

@@ -37,7 +37,7 @@
   items:
     - name: サンプルの Node アプリサンプルの発行者
       href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
-    - name: Sample Issuer
+    - name: サンプルの発行者
       href: 'https://didvc-issuer-sample.azurewebsites.net/'
     - name: サンプルの検証ツール
       href: 'https://didvc-verifier-sample.azurewebsites.net/'
@@ -48,3 +48,13 @@
       href: verifiable-credentials-faq.md
     - name: 開発者アカウントを作成する方法
       href: how-to-create-a-free-developer-account.md
+    - name: すべてのものの分散化 ID (DID) を対象とする業界の作業グループ
+      href: 'https://identity.foundation'
+    - name: Microsoft の DID ホワイトペーパー
+      href: 'http://aka.ms/didwhitepaper'
+    - name: DID マーケティングの概要
+      href: 'http://aka.ms/didexplained'
+    - name: 分散化 ID のブログ
+      href: 'https://techcommunity.microsoft.com/t5/tag/decentralized%20identity/tg-p'
+    - name: 分散化 ID 概要のビデオ
+      href: 'https://www.youtube.com/watch?v=Whc9Im-U0Wg'

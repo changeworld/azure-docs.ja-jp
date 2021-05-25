@@ -1,5 +1,5 @@
 ---
-title: コストの計画と管理
+title: コストの管理を計画する
 titleSuffix: Azure Machine Learning
 description: Azure portal のコスト分析を使用して、Azure Machine Learning のコストを計画および管理します。 ML モデルを構築する場合のコストを削減するための、さらなるコスト節約のヒントについて説明します。
 author: sdgilley
@@ -9,15 +9,15 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: a52bcc9a2649592bef7b6f8d09cdde96226b77ea
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 05/07/2021
+ms.openlocfilehash: 0ad5c432cb9ba5742ae4fa2ee2e41dc2ff2b5936
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886120"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713502"
 ---
-# <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストを計画して管理する
+# <a name="plan-to-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストの管理を計画する
 
 この記事では、Azure Machine Learning のコストを計画して管理する方法について説明します。 リソースを追加する前に、まず、コストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 最後に、マネージド Azure Machine Learning コンピューティング クラスターでモデルをトレーニングするときに、コスト節約のヒントを使用します。
 
@@ -35,17 +35,18 @@ Azure Machine Learning のコストは、Azure の月額請求料金の一部で
 
 ## <a name="prerequisites"></a>前提条件
 
-コスト分析では、さまざまな種類の Azure アカウントがサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 
+Cost Management のコスト分析では、ほとんどの種類の Azure アカウントがサポートされますが、すべてではありません。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 
 
-Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
+コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
 
 ## <a name="estimate-costs-before-using-azure-machine-learning"></a>Azure Machine Learning を使用する前にコストを見積もる
 
-Azure Machine Learning アカウントにリソースを作成する前に、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を使用してコストを見積もります。 左側で、 **[AI + 機械学習]** を選択してから、 **[Azure Machine Learning]** を選択して始めます。  
+- Azure Machine Learning ワークスペースにリソースを作成する前に、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用してコストを見積もります。
+左側で、 **[AI + 機械学習]** を選択してから、 **[Azure Machine Learning]** を選択して始めます。  
 
 次のスクリーンショットでは、計算ツールを使用したコストの見積もりを示します。
 
-:::image type="content" source="media/concept-plan-manage-cost/capacity-calculator-cost-estimate.png" alt-text="Azure 料金計算ツールでのコスト見積り":::
+:::image type="content" source="media/concept-plan-manage-cost/capacity-calculator-cost-estimate.png" alt-text="Azure 料金計算ツールの推定コストを示す例。":::
 
 ワークスペースに新しいリソースを追加したら、この計算ツールに戻り、同じリソースをここに追加して、コストの見積もりを更新します。
 
@@ -54,6 +55,11 @@ Azure Machine Learning アカウントにリソースを作成する前に、[Az
 ## <a name="understand-the-full-billing-model-for-azure-machine-learning"></a>Azure Machine Learning の詳細な課金モデルを理解する
 
 Azure Machine Learning は、新しいリソースをデプロイするときに Azure Machine Learning と共にコストが発生する Azure インフラストラクチャ上で実行されます。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 デプロイされたリソースに変更を加える場合は、このコストを管理する必要があります。 
+
+
+
+
+
 
 ### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>Azure Machine Learning で通常発生するコスト
 
@@ -66,7 +72,7 @@ Azure Machine Learning ワークスペースのリソースを作成すると、
  
 ### <a name="costs-might-accrue-after-resource-deletion"></a>リソースの削除後にコストが発生する可能性がある
 
-Azure portal または Azure CLI で Azure Machine Learning ワークスペースを削除した場合、次のリソースは引き続き存在します。 これらを削除するまで、これらのコストは発生し続けます。
+Azure portal または Azure CLI で Azure Machine Learning ワークスペースを削除した後も、次のリソースは引き続き存在します。 これらを削除するまで、これらのコストは発生し続けます。
 
 * Azure Container Registry
 * Azure ブロック BLOB ストレージ
@@ -83,9 +89,58 @@ ws.delete(delete_dependent_resources=True)
 
 ### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>Azure Machine Learning で Azure 前払いクレジットを使用する
 
-Azure Machine Learning の料金は、Azure 前払い (旧称: 年額コミットメント) のクレジットを使用して支払うことができます。 ただし、Azure 前払いを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+Azure Machine Learning の料金は、Azure 前払いのクレジットで支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
+
+## <a name="review-estimated-costs-in-the-azure-portal"></a>Azure portal で推定料金を検討する
+
+<!-- Note for Azure service writer: If your service shows estimated costs when a user is creating resources in the Azure portal, at a minimum, insert this section as a brief walkthrough that steps through creating a Azure Machine Learning resource where the estimated cost is shown to the user, updated for your service. Add a screenshot where the estimated costs or subscription credits are shown.
+
+If your service doesn't show costs as they create a resource or if estimated costs aren't shown to users before they use your service, then omit this section.
+
+For example, you might start with the following (modify for your service):
+-->
+
+Azure Machine Learning のコンピューティング リソースを作成すると、推定コストが表示されます。
+
+*コンピューティング インスタンス* を作成し、推定価格を表示するには、次の操作を行います。
+
+1. [Azure Machine Learning スタジオ](https://ml.azure.com)にサインインします
+1. 左側にある **[コンピューティング]** を選択します。
+1. 上部のツール バーで、 **[+新規]** を選択します。
+1. 使用可能な仮想マシンのサイズごとに表示される推定価格を確認します。
+1. リソースの作成を完了します。
 
 
+:::image type="content" source="media/concept-plan-manage-cost/create-resource.png" alt-text="コンピューティング インスタンス作成中に推定コストが表示される例。" lightbox="media/concept-plan-manage-cost/create-resource.png" :::
+
+Azure サブスクリプションに使用制限がある場合は、Azure により、クレジット額を超える支出が防止されます。 Azure リソースを作成して使用するときに、クレジットが使用されます。 クレジットの上限に達すると、その請求期間の残りの期間は、デプロイしたリソースが無効にされます。 クレジットの上限は変更できませんが、上限を取り除くことは可能です。 使用制限の詳細については、「[Azure の使用制限](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。
+
+## <a name="monitor-costs"></a>コストを監視する
+
+Azure Machine Learning で Azure リソースを使用すると、コストが発生します。 Azure リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。Azure Machine Learning の使用が開始されるとすぐにコストが発生し、[コスト分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)でコストを確認できます。
+
+コスト分析を使用すると、さまざまな期間について、Azure Machine Learning のコストがグラフや表で表示されます。 たとえば、日単位、現在の月、以前の月、年単位などがあります。 予算や予想コストを基準としてコストを表示することもできます。 時間経過を示す、より長い期間のビューに切り替えると、支出の傾向を特定するのに役立ちます。 超過出費が発生した可能性のある時期を確認できます。 予算を作成したら、それを超えた場所も簡単に確認できます。
+
+Azure Machine Learning のコストをコスト分析で表示するには、次の操作を行います。
+
+1. Azure portal にサインインします。
+2. Azure portal でスコープを開き、メニューから **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 コスト分析で別のスコープに切り替えるには、 **[スコープ]** を選択します。
+3. 既定では、最初のドーナツ グラフにサービスのコストが表示されます。 グラフの [Azure Machine Learning] というラベルが付いた領域を選択します。
+
+最初にコスト分析を開いたときに、実際の月額コストが表示されます。 月単位のすべての使用コストを示す例を次に示します。
+
+:::image type="content" source="media/concept-plan-manage-cost/all-costs.png" alt-text="サブスクリプションの累積コストを示す例。" lightbox="media/concept-plan-manage-cost/all-costs.png" :::
+
+
+Azure Machine Learning などの 1 つのサービスのコストに絞り込むには、 **[フィルターの追加]** を選択してから、 **[サービス名]** を選択します。 次に、 **[Azure Machine Learning]** を選択します。
+
+Azure Machine Learning のみのコストが表示される例を次に示します。
+
+:::image type="content" source="media/concept-plan-manage-cost/vm-specific-cost.png" alt-text="ServiceName の累積コストを示す例。" lightbox="media/concept-plan-manage-cost/vm-specific-cost.png" :::
+
+<!-- Note to Azure service writer: The image shows an example for Azure Storage. Replace the example image with one that shows costs for your service. -->
+
+前の例では、サービスの現在のコストが表示されます。 Azure リージョン (場所) 別およびリソース グループ別の Azure Machine Learning のコストも表示されます。 ここでは、コストを自分で調べることができます。
 ## <a name="create-budgets"></a>予算を作成する
 
 [予算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成して、コストを管理し、異常な支出や浪費のリスクについて、関係者に自動的に通知する[アラート](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 
@@ -163,5 +218,5 @@ Azure Machine Learning コンピューティングでは、予約インスタン
 
 - [Azure Cost Management を使用してクラウドへの投資を最適化する](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)方法について説明します。
 - [コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を使用してコストを管理する方法について詳細に説明します。
-- [予期しないコストを回避](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。
+- [予期しないコストを回避](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。
 - [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) のガイド付き学習コースを受講します。

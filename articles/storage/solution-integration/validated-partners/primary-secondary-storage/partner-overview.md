@@ -4,16 +4,16 @@ titleSuffix: Azure Storage
 description: Azure Storage のプライマリおよびセカンダリ ストレージ用のカスタマー ソリューションを構築している Microsoft パートナー
 author: beber-msft
 ms.author: beber
-ms.date: 03/15/2021
+ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 5fa17083be01a702ebac888eecc17a4969b754ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8efcc6b9837596175a8bcf9a0a7b159f0560cff0
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561597"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486091"
 ---
 # <a name="azure-storage-partners-for-primary-and-secondary-storage"></a>プライマリおよびセカンダリ ストレージの Azure Storage パートナー
 
@@ -29,6 +29,7 @@ ms.locfileid: "103561597"
 | ![Scality](./media/scality-logo.png) |**Scality**<br>Scality は、オンプレミス、ハイブリッド、およびマルチクラウド環境向けに設計された、ソフトウェアによるファイルとオブジェクトのプラットフォームを構築しています。 また、Scality と Azure Blob Storage の統合により、企業は、オンプレミス環境と Azure をまたいでデータを管理およびセキュリティ保護し、高パフォーマンスでクラウドベースのファイル ワークロードの要求を満たすことができます。 |[パートナー ページ](https://www.scality.com/partners/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/scality.scalityconnecthourly?tab=Overview)|
 | ![Tiger Technology 社のロゴ](./media/tiger-logo.png) |**Tiger Technology**<br>Tiger Technology 社は、高パフォーマンスで安全なデータ管理ソフトウェア ソリューションを提供しています。 Tiger Technology 社を利用することで、あらゆる規模の組織が、オンプレミスで、任意のパブリック クラウドで、またはハイブリッドのモデルを使用して、デジタル資産を管理できます。 <br><br> Tiger Bridge は、特定の企業が占有する技術ではない、ソフトウェア専用のデータによる、ストレージ管理システムです。 オンプレミスと多層クラウドのストレージが 1 つのスペースに一体化されて、ハイブリッドのワークフローが可能になります。 この透過的なファイル サーバー拡張機能により、従来のアプリケーションとワークフローを維持しながら、Azure のスケールとサービスを活用できます。 Tiger Bridge により、ファイル サーバー拡張機能、ディザスター リカバリー、クラウド移行、バックアップとアーカイブ、リモート コラボレーション、マルチサイト同期など、さまざまなデータ管理の課題が対処されます。また、継続的データ保護も提供されます。 |[パートナー ページ](https://www.tiger-technology.com/partners/microsoft-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tiger-technology.tigerbridge_vm)|
 
+ストレージ パートナーであるのに、ご自分のソリューションがまだ一覧に表示されていませんか? [こちら](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUQjY4QlJYUzFHQ0ZBVDNYWERaUlNRVU5IMyQlQCN0PWcu)から情報をお送りください。
 ## <a name="next-steps"></a>次のステップ
 
 他のパートナーの詳細については、以下を参照してください。
