@@ -3,12 +3,12 @@ title: FedRAMP Moderate ブループリント サンプルのコントロール
 description: FedRAMP Moderate ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 7c8b2524958be1a4b5e49ff870c7c01a8f89f305
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 27db1fdc8fc6f1c51f2cf708fe2e5cfc8a2c4026
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386671"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757297"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate ブループリント サンプルのコントロール マッピング
 
@@ -97,7 +97,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
-- SQL Server での監査のデプロイ
+- SQL サーバーでの監査のデプロイ
 - ネットワーク セキュリティ グループの診断設定のデプロイ
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM-7 (2) 最小限の機能 | プログラムの実行の防止
@@ -271,12 +271,12 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
-- SQL Server での監査のデプロイ
+- SQL サーバーでの監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
 - SQL サーバーでの脅威検出のデプロイ
 
 > [!NOTE]
-> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 
+> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 611d41b166a283dffd36729c0f4516ff80ecd35f
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504177"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803082"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Speech SDK のログの有効化
 
@@ -69,6 +69,17 @@ config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
 UWP アプリケーションのファイル アクセス許可の詳細については、[こちら](/windows/uwp/files/file-access-permissions)を参照してください。
+
+### <a name="universal-windows-platform-uwp-on-unity"></a>Unity 上のユニバーサル Windows プラットフォーム (UWP)
+
+Unity と UWP アプリケーション内で、次のようにアプリケーション永続フォルダーにログ ファイルを作成できます。
+
+```csharp
+#if ENABLE_WINMD_SUPPORT
+        string logFile = Application.persistentDataPath + "/logFile.txt";
+        config.SetProperty(PropertyId.Speech_LogFilename, logFile);
+#endif
+```
 
 ### <a name="android"></a>Android
 

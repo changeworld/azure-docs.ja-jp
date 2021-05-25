@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d1817db4615d321db3d5f098d449410ee5b0606c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 819e3574a2341d2a9f946e7fa7e008c798bd099f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141851"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756433"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub 用のデバイス更新と IoT プラグ アンド プレイ
 
@@ -36,7 +36,7 @@ IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検
 |resultCode|整数 (integer)|デバイスからクラウド|前回の更新操作の結果に関する情報が含まれているコード。 成功または失敗のいずれでも設定でき、[HTTP 状態コードの仕様](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)に従う必要があります。|500|
 |extendedResultCode|整数 (integer)|デバイスからクラウド|結果に関する追加情報が含まれているコード。 成功または失敗のいずれでも設定できます。|0x80004005|
 |state|整数 (integer)|デバイスからクラウド|デバイス更新エージェントの現在の状態を示す整数です。 詳細については、以下をご覧ください。 |アイドル|
-|installedUpdateId|string|デバイスからクラウド|現在 (デバイス更新を通じて) インストールされている更新プログラムの ID。 デバイス更新によって更新が行われたことのないデバイスの場合、この値は null になります。|[Null]|
+|installedUpdateId|string|デバイスからクラウド|現在 (デバイス更新を通じて) インストールされている更新プログラムの ID。 デバイス更新によって更新が行われたことのないデバイスの場合、この値は更新 ID の JSON をキャプチャした文字列または null になります。|"{\"provider\":\"contoso\",\"name\":\"image-update\",\"version\":\"1.0.0\"}"|
 |`deviceProperties`|マップ|デバイスからクラウド|製造元とモデルが含まれるプロパティのセット。|詳細については、以下をご覧ください。
 
 #### <a name="state"></a>State

@@ -4,7 +4,7 @@ description: 使われなくなった Azure AD のユーザー アカウント�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
@@ -13,22 +13,25 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 01/21/2021
+ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 1c15bc161874d9c09423fe4070958538ec2148ca
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535101"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795098"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 
 大規模な環境では、従業員が退職したときに、ユーザー アカウントが必ず削除されるとは限りません。 こうした使われなくなったユーザー アカウントはセキュリティ上のリスクとなるため、IT 管理者はそれらを検出して処理する必要があります。
 
 この記事では、Azure AD で不使用になったユーザー アカウントを処理する方法について説明します。 
+
+> [!IMPORTANT]
+> Microsoft Graph 内の `/beta` 版の API は変更されることがあります。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。 v1.0 で API を使用できるかどうかを確認するには、**バージョン** セレクターを使用します。
 
 ## <a name="what-are-inactive-user-accounts"></a>非アクティブなユーザーアカウントとは
 
@@ -65,7 +68,7 @@ ms.locfileid: "107535101"
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>このプロパティにアクセスするために必要な Azure AD のエディションは何ですか?
 
-このプロパティには、Azure AD のすべてのエディションでアクセスできます。
+このプロパティにアクセスするには、Azure Active Directory Premium エディションが必要です。
 
 ### <a name="what-permission-do-i-need-to-read-the-property"></a>このプロパティを読み取るために必要な権限は何ですか?
 

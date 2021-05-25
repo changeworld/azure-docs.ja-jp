@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: ceb39893327af82e8dff3e82ef570727b3bdfa33
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1b66397fcc6ed32c7630aea1287c8f6865ebcbc5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141952"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749755"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 用語集
 
@@ -48,7 +48,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 ### <a name="azure-digital-twins"></a>Azure Digital Twins
 
-Azure Digital Twins は、実世界の物、場所、ビジネス プロセス、人についてデジタル表現を作成するための PaaS (サービスとしてのプラットフォーム) オファリングです。 環境全体を表すナレッジ グラフを作成し、それらを使用して、製品の質を高め、運用とコストを最適化し、カスタマー エクスペリエンスを通じてブレークスルーをもたらす分析情報を入手します。 詳細については、[Azure Digital Twins](../digital-twins/index.yml) に関するドキュメントを参照してください。
+Azure Digital Twins は、実世界の物、場所、ビジネス プロセス、人についてデジタル表現を作成するための PaaS (サービスとしてのプラットフォーム) オファリングです。 環境全体を表すツイン グラフを作成し、それらを使用して、製品の質を高め、運用とコストを最適化し、カスタマー エクスペリエンスを通じてブレークスルーをもたらす分析情報を入手します。 詳細については、[Azure Digital Twins](../digital-twins/index.yml) に関するドキュメントを参照してください。
 
 ### <a name="azure-digital-twins-instance"></a>Azure Digital Twins インスタンス
 

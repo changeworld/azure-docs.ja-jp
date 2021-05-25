@@ -2,13 +2,13 @@
 title: 概念 - ID とアクセス
 description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 352daaec87c2df7a0bc062abd38a96ad0285180a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 05/11/2021
+ms.openlocfilehash: cd04cc6265faf480d80903ea65ba9886a413e356
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108069833"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788273"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
@@ -31,8 +31,10 @@ Azure VMware Solution では、vCenter に cloudadmin という組み込みの�
 
 Azure VMware Solution プライベート クラウドの vCenter で Azure VMware Solution の CloudAdmin ロールに付与された特権を確認できます。
 
-1. SDDC vSphere Client にログインし、 **[Menu]\(メニュー\)**  >  **[Administration]\(管理\)** に移動します。
+1. vSphere Client にサインインし、 **[Menu]\(メニュー\)** 、 **[Administration]\(管理\)** の順に移動します。
+
 1. **[Access Control]\(アクセス制御\)** で、 **[Roles]\(ロール\)** を選択します。
+
 1. ロールの一覧から **[CloudAdmin]** を選択し、 **[Privileges]\(特権\)** を選択します。 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="vSphere Client で CloudAdmin ロールの特権を確認する方法":::
@@ -64,31 +66,38 @@ Azure VMware Solution の CloudAdmin ロールには、vCenter に対する次�
 
 Azure VMware Solution では、CloudAdmin ロール以下の権限を持つカスタム ロールの使用がサポートされています。 
 
-CloudAdmin ロールでは、現在のロール以下の権限を持つカスタム ロールを作成、変更、削除できます。 CloudAdmin よりも強力な権限を持つロールを作成することはできますが、ユーザーまたはグループにそのロールを割り当てたり、削除したりすることはできません。
+CloudAdmin ロールを使用し、現在のロール以下の権限を持つカスタム ロールを作成、変更、削除します。 CloudAdmin よりも強力な権限を持つロールを作成できますが、そのロールをユーザーまたはグループに割り当てたり、削除したりすることはできません。
 
-割り当てと削除ができないロールの作成を防止するために、Azure VMware Solution では、新しいカスタム ロールを作成するための基礎として CloudAdmin ロールを複製することが推奨されています。
+割り当てと削除ができないロールの作成を防止するために、新しいカスタム ロールを作成するための基礎として CloudAdmin ロールを複製します。
 
 #### <a name="create-a-custom-role"></a>カスタム ロールを作成する
 1. cloudadmin\@vsphere.local で、または CloudAdmin ロールを持つユーザーで vCenter にサインインします。
-2. **[ロール]** 構成セクションに移動し、 **[メニュー]**  >  **[管理]**  >  **[アクセス コントロール]**  >  **[ロール]** の順に移動します。
-3. **CloudAdmin** ロールを選択し、 **[ロールのクローン作成アクション]** アイコンを選択します。
 
-   > [!NOTE] 
-   > **管理者** ロールは複製しないでください。 このロールは使用できません。また、作成されたカスタム ロールは、loudadmin\@vsphere.local によって削除できません。
+1. **[ロール]** 構成セクションに移動し、 **[メニュー]**  >  **[管理]**  >  **[アクセス コントロール]**  >  **[ロール]** の順に移動します。
 
-4. 複製するロールの名前を指定します。
-5. ロールの権限を追加または削除し、 **[OK]** 選択します。 これで、複製されたロールは **[ロール]** 一覧に表示されます。
+1. **CloudAdmin** ロールを選択し、 **[ロールのクローン作成アクション]** アイコンを選択します。
+
+   >[!NOTE] 
+   >**管理者** ロールは使用できないため、複製しないでください。 また、作成されたカスタム ロールは、cloudadmin\@vsphere.local では作成できません。
+
+1. 複製するロールの名前を指定します。
+
+1. ロールの権限を追加または削除し、 **[OK]** 選択します。 複製されたロールは **[ロール]** 一覧に表示されます。
 
 
-#### <a name="use-a-custom-role"></a>カスタム ロールを使用する
+#### <a name="apply-a-custom-role"></a>カスタム ロールを適用する
 
-1. 追加したアクセス許可を必要とするオブジェクトに移動します。 たとえば、フォルダーにアクセス許可を適用するには、 **[メニュー]**  >  **[仮想マシンおよびテンプレート]**  >  **[フォルダー名]** の順に移動します。
+1. 追加したアクセス許可を必要とするオブジェクトに移動します。 たとえば、フォルダーにアクセス許可を適用するには、 **[メニュー]** 、 **[仮想マシンおよびテンプレート]** 、 **[フォルダー名]** の順に移動します。
+
 1. オブジェクトを右クリックし、 **[アクセス許可の追加]** を選択します。
+
 1. **[アクセス許可の追加]** ウィンドウで、グループまたはユーザーを検索できる **[ユーザー]** ドロップダウンで ID ソースを選択します。
+
 1. **[ユーザー]** セクションで ID ソースを選択したら、ユーザーまたはグループを検索します。 
+
 1. ユーザーまたはグループに適用するロールを選択します。
-1. 必要に応じて **[子へ伝達]** をオンにし、 **[OK]** を選択します。
-   追加されたアクセス許可は、オブジェクトの **[権限]** セクションに表示されます。
+
+1. 必要に応じて **[子へ伝達]** をオンにし、 **[OK]** を選択します。 追加されたアクセス許可は、 **[権限]** セクションに表示されます。
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager のアクセスと ID
 
@@ -96,9 +105,6 @@ CloudAdmin ロールでは、現在のロール以下の権限を持つカスタ
 >NSX-T 2.5 は、現在すべての新しいプライベート クラウドでサポートされています。
 
 NSX-T Manager には "*管理者*" アカウントを使用してアクセスします。 これには完全な特権があるため、 Tier-1 (T1) ゲートウェイ、セグメント (論理スイッチ)、およびすべてのサービスを作成および管理できます。 この特権により、NSX-T Tier-0 (T0) ゲートウェイへのアクセスが可能になります。 T0 ゲートウェイを変更すると、ネットワーク パフォーマンスが低下したり、プライベート クラウドにアクセスできなくなったりする可能性があります。 Azure portal でサポート リクエストを開いて、NSX-T T0 ゲートウェイに対する変更を依頼してください。
-
->[!TIP]
->NSX-T Manager を使用する代わりに、[Azure portal の簡易 NSX 機能](configure-nsx-network-components-azure-portal.md)を使用できます。
 
  
 ## <a name="next-steps"></a>次のステップ
@@ -108,7 +114,7 @@ Azure VMware Solution のアクセスと ID に関する概念を理解したら
 - [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
 - [各特権の詳細](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
 - [Azure VMware Solution でプライベート クラウドを監視し、修復するしくみ](/azure/azure-vmware/concepts-private-clouds-clusters#host-monitoring-and-remediation)
-- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
+
 
 
 <!-- LINKS - external-->
