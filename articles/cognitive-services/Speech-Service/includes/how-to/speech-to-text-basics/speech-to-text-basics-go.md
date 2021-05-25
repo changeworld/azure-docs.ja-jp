@@ -99,7 +99,7 @@ func main() {
 }
 ```
 
-次のコマンドを実行して、Github でホストされるコンポーネントにリンクされる、go.mod ファイルを作成します。
+次のコマンドを実行して、GitHub でホストされるコンポーネントにリンクされる、go.mod ファイルを作成します。
 
 ```cmd
 go mod init quickstart
@@ -179,7 +179,7 @@ func main() {
 }
 ```
 
-次のコマンドを実行して、Github でホストされるコンポーネントにリンクされる、go.mod ファイルを作成します。
+次のコマンドを実行して、GitHub でホストされるコンポーネントにリンクされる、go.mod ファイルを作成します。
 
 ```cmd
 go mod init quickstart
