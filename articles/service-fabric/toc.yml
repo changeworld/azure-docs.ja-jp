@@ -398,14 +398,20 @@
   items:
     - name: Service Fabric の管理対象クラスターの使用
       items:
+        - name: 管理対象クラスターの構成
+          href: how-to-managed-cluster-configuration.md
         - name: 管理対象クラスター ノードの種類に VM スケールセット拡張機能を追加する
           href: how-to-managed-cluster-vmss-extension.md
         - name: NSG ルールおよびその他のマネージド クラスター ネットワーク オプションを追加する
           href: how-to-managed-cluster-networking.md
         - name: 管理対象クラスターの可用性ゾーン スパニングを構成する
           href: how-to-managed-cluster-availability-zones.md
-        - name: 管理対象クラスターの構成
-          href: how-to-managed-cluster-configuration.md
+        - name: 管理対象クラスター ノードでのディスク暗号化の有効化
+          href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: 管理対象クラスター ノードでのマネージド ディスクの種類を選択する
+          href: how-to-managed-cluster-managed-disk.md
+        - name: 管理されたクラスターのアップグレード オプションを構成する
+          href: how-to-managed-cluster-upgrades.md
         - name: 管理対象クラスターのアプリケーション シークレットをデプロイする
           href: how-to-managed-cluster-application-secrets.md
         - name: ARM テンプレートを使用して管理対象クラスター アプリケーションをデプロイする
@@ -414,10 +420,6 @@
           href: how-to-managed-cluster-application-managed-identity.md
         - name: 管理対象クラスターにステートレス専用のノードの種類をデプロイする
           href: how-to-managed-cluster-stateless-node-type.md
-        - name: 管理対象クラスター ノードでのディスク暗号化の有効化
-          href: how-to-enable-managed-cluster-disk-encryption.md
-        - name: 管理対象クラスター ノードでのマネージド ディスクの種類を選択する
-          href: how-to-managed-cluster-managed-disk.md
         - name: マネージド クラスター ノードのマネージド ID を使用する
           href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 開発環境を設定する
@@ -954,13 +956,11 @@
       href: release-notes.md
     - name: サンプル コード
       href: /samples/browse/?products=azure
-    - name: サポート オプション
-      href: service-fabric-support.md
     - name: Service Fabric のバージョン
       href: service-fabric-versions.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
-    - name: トラブルシューティング ガイド
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'
+- name: サポートとトラブルシューティング
+  href: service-fabric-support.md

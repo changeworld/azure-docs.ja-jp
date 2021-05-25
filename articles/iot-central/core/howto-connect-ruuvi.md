@@ -10,18 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13b1e22f1e1e5f51d524e80d0bf102b744fbec3d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96006389"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684597"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag センサーを Azure IoT Central アプリケーションに接続する
 
-*この記事は、ソリューション ビルダーを対象としています。*
-
-この記事では、ソリューション ビルダーとして、RuuviTag センサーを、お使いの Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
+この記事では、RuuviTag センサーを、お使いの Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
 RuuviTag とは
 
@@ -35,9 +33,12 @@ Rigado Cascade 500 ゲートウェイ デバイスを設定する場合は、[�
 
 RuuviTag センサーを接続するには、次のリソースが必要です。
 
-* RuuviTag センサー。 詳細については、[RuuviTag](https://ruuvi.com/) に関するページをご覧ください。
-* Rigado Cascade 500 デバイスまたはその他の BLE ゲートウェイ。 詳細については、[Rigado](https://www.rigado.com/) に関するページをご覧ください。
-* Azure IoT Central アプリケーション。 詳細については、[新しいアプリケーションの作成](./quick-deploy-iot-central.md)に関するページをご覧ください。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+- RuuviTag センサー。 詳細については、[RuuviTag](https://ruuvi.com/) に関するページをご覧ください。
+
+- Rigado Cascade 500 デバイスまたはその他の BLE ゲートウェイ。 詳細については、[Rigado](https://www.rigado.com/) に関するページをご覧ください。
+
 
 ## <a name="add-a-ruuvitag-device-template"></a>RuuviTag デバイス テンプレートを追加する
 
@@ -76,7 +77,7 @@ RuuviTag デバイス テンプレートを追加するには:
 
 ## <a name="next-steps"></a>次の手順
 
-デバイス開発者にお勧めする次の手順は以下です。
+推奨される次のステップは以下のとおりです。
 
 - [Azure IoT Central のデバイス接続](./concepts-get-connected.md)について確認する
 - [Azure CLI を使用してデバイスの接続性を監視する](./howto-monitor-devices-azure-cli.md)方法を確認する

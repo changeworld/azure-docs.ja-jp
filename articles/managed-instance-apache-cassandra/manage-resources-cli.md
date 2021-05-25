@@ -6,12 +6,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: ea28bf21424f0624b4f1bb5856a17672c1c7b106
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: ee35faf70066ece0f1c799b7d04317a8cd28729d
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875451"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517210"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Azure CLI を利用して Azure Managed Instance for Apache Cassandra リソースを管理する (プレビュー)
 
@@ -132,8 +132,10 @@ az managed-cassandra cluster list
 * [データセンターを作成する](#create-datacenter)
 * [データセンターを削除する](#delete-datacenter)
 * [データセンターの詳細を取得する](#get-datacenter-details)
-* [データセンターを更新またはスケーリングする](#update-datacenter)
 * [クラスター内のデータセンターを取得する](#get-datacenters-cluster)
+* [データセンターを更新またはスケーリングする](#update-datacenter)
+* [Cassandra の構成を更新する](#update-yaml)
+
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>データセンターを作成する
 
@@ -194,13 +196,50 @@ resourceGroupName='MyResourceGroup'
 clusterName='cassandra-hybrid-cluster'
 dataCenterName='dc1'
 dataCenterLocation='eastus'
-delegatedSubnetId= '/subscriptions/<Subscription_ID>/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/dc1-subnet'
 
 az managed-cassandra datacenter update \
     --resource-group $resourceGroupName \
     --cluster-name $clusterName \
     --data-center-name $dataCenterName \
     --node-count 13 
+```
+
+### <a name="update-cassandra-configuration"></a><a id="update-yaml"></a>Cassandra の構成を更新する
+
+データセンターで Cassandra の構成を変更するには、[az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) コマンドを使用します。 [オンライン ツール](https://www.base64encode.org/)を使用して、YAML フラグメントを base64 でエンコードする必要があります。 YAML の次の設定がサポートされています。
+
+- column_index_size_in_kb
+- compaction_throughput_mb_per_sec
+- read_request_timeout_in_ms
+- range_request_timeout_in_ms
+- aggregated_request_timeout_in_ms
+- write_request_timeout_in_ms
+- internode_compression
+- batchlog_replay_throttle_in_kb
+
+たとえば、次の YAML フラグメントがあるとします。
+
+```yaml
+column_index_size_in_kb: 16
+read_request_timeout_in_ms: 10000
+```
+
+エンコードすると、この YAML は次のように変換されます: `Y29sdW1uX2luZGV4X3NpemVfaW5fa2I6IDE2CnJlYWRfcmVxdWVzdF90aW1lb3V0X2luX21zOiAxMDAwMA==`。 
+
+次を参照してください。
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+clusterName='cassandra-hybrid-cluster'
+dataCenterName='dc1'
+dataCenterLocation='eastus'
+yamlFragment='Y29sdW1uX2luZGV4X3NpemVfaW5fa2I6IDE2CnJlYWRfcmVxdWVzdF90aW1lb3V0X2luX21zOiAxMDAwMA=='
+
+az managed-cassandra datacenter update \
+    --resource-group $resourceGroupName \
+    --cluster-name $clusterName \
+    --data-center-name $dataCenterName \
+    --base64-encoded-cassandra-yaml-fragment $yamlFragment
 ```
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>クラスター内のデータセンターを取得する

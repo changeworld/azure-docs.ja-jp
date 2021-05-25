@@ -1,18 +1,18 @@
 ---
 title: 修復できるポリシーをデプロイする
 description: Azure Lighthouse を通して修復タスクを使用するポリシーをデプロイするには、顧客テナント内にマネージド ID を作成する必要があります。
-ms.date: 01/14/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65fb11ff98d51ca6ee9f9280bdd50997e6eeef26
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233884"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788663"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 
-[Azure Lighthouse](../overview.md) では、サービス プロバイダーが委任されたサブスクリプション内にポリシー定義を作成したり、その編集をしたりすることができます。 ただし、[修復タスク](../../governance/policy/how-to/remediate-resources.md)を使用しているポリシー (つまり、効果が [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) または [modify](../../governance/policy/concepts/effects.md#modify) のポリシー) をデプロイする場合には、顧客のテナントに[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を作成する必要があります。 このマネージド ID は、ポリシー内にテンプレートをデプロイする際に Azure Policy が使用するものです。 このシナリオを実現するにあたっては、顧客を Azure の委任されたリソース管理にオンボードする場合とポリシーそのものをデプロイする場合のどちらにも必要な手順があります。
+[Azure Lighthouse](../overview.md) では、サービス プロバイダーが委任されたサブスクリプション内にポリシー定義を作成したり、その編集をしたりすることができます。 ただし、[修復タスク](../../governance/policy/how-to/remediate-resources.md)を使用しているポリシー (つまり、効果が [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) または [modify](../../governance/policy/concepts/effects.md#modify) のポリシー) をデプロイする場合には、顧客のテナントに[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を作成する必要があります。 このマネージド ID は、ポリシー内にテンプレートをデプロイする際に Azure Policy が使用するものです。 このシナリオを実現するにあたっては、顧客を Azure Lighthouse にオンボードする場合とポリシーそのものをデプロイする場合のどちらにも必要な手順があります。
 
 > [!TIP]
 > このトピックではサービス プロバイダーと顧客の場合について説明していますが、[複数のテナントを管理するエンタープライズ](../concepts/enterprise.md)も同じプロセスを使用できます。

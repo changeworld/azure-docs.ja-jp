@@ -4,18 +4,18 @@ description: Service Fabric マネージド クラスターについてよく寄
 ms.topic: troubleshooting
 ms.author: pepogors
 author: peterpogorski
-ms.date: 02/15/2021
+ms.date: 5/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: aa77896ba88d0ffd0a6f94a84603b5f4a1803357
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 377e71c7fdf1f6750ae9529db2cf62fa329d18be
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100633089"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684669"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric マネージド クラスターに関してよく寄せられる質問
 
-Service Fabric マネージド クラスター (プレビュー) についてよく寄せられる質問 (FAQ) とその回答を示します。
+Service Fabric マネージド クラスターについてよく寄せられる質問 (FAQ) とその回答を示します。
 
 ## <a name="general"></a>全般
 
@@ -23,13 +23,13 @@ Service Fabric マネージド クラスター (プレビュー) についてよ
 
 Service Fabric マネージド クラスターは、クラスターのデプロイと管理を容易にするために設計された Service Fabric クラスター リソース モデルの進化版です。 Service Fabric マネージド クラスターで使用されている Azure Resource Manager カプセル化モデルにより、ユーザーはクラスター リソースを 1 つ定義してデプロイするだけでよく、現在のように多数の独立したリソース (仮想マシン スケール セット、Load Balancer、IP など) をデプロイする必要はありません。
 
-### <a name="what-regions-are-supported-in-the-preview"></a>プレビューでサポートされているリージョンはどこですか?
+### <a name="what-regions-are-supported"></a>どのリージョンがサポートされていますか?
 
-Service Fabric マネージド クラスター プレビューは、`centraluseuap`、`eastus2euap`、`eastasia`、`northeurope`、`westcentralus`、`eastus2` などのリージョンでサポートされています。
+Service Fabric マネージド クラスターは、すべてのパブリック クラウド リージョンでサポートされています。
 
 ### <a name="can-i-do-an-in-place-migration-of-my-existing-service-fabric-cluster-to-a-managed-cluster-resource"></a>既存の Service Fabric クラスターをマネージド クラスター リソースにインプレース移行することはできますか?
 
-いいえ。 現時点では、新しい Service Fabric マネージド クラスター リソースの種類を使用するには、新しい Service Fabric クラスター リソースを作成する必要があります。
+いいえ。 新しい Service Fabric マネージド クラスター リソースの種類を使用するには、新しい Service Fabric クラスター リソースを作成する必要があります。
 
 ### <a name="is-there-an-additional-cost-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターを使用すると追加料金が発生しますか?
 
@@ -55,15 +55,19 @@ Basic SKU クラスターを使用すると、ほとんどの構成が Service F
 
 ### <a name="can-i-autoscale-my-cluster"></a>クラスターを自動スケーリングできますか?
 
-現在、プレビューでは自動スケーリングは利用できません。
+自動スケーリングは現在サポートされていません。
 
 ### <a name="can-i-deploy-my-cluster-across-availability-zones"></a>可用性ゾーンをまたいでクラスターをデプロイできますか?
 
-クロス可用性ゾーン クラスターは、現在プレビューでは使用できません。
+はい、複数の可用性ゾーンにまたがる Service Fabric マネージド クラスターは、可用性ゾーンがサポートされている Azure リージョンでサポートされます。 詳細については、[複数の可用性ゾーンにまたがる Service Fabric マネージド クラスター](.\service-fabric-cross-availability-zones.md)に関する記事を参照してください。
+
+### <a name="can-i-deploy-stateless-node-types-on-a-service-fabric-managed-cluster"></a>Service Fabric マネージド クラスターにステートレス ノード タイプをデプロイできますか? 
+
+はい、Service Fabric マネージド クラスターでは、すべてのセカンダリ ノード タイプでステートレス ノード タイプがサポートされます。 詳細については、[Service Fabric マネージド クラスターのステートレス ノード タイプ](./how-to-managed-cluster-stateless-node-type.md)に関する記事を参照してください。
 
 ### <a name="can-i-select-between-automatic-and-manual-upgrades-for-my-cluster-runtime"></a>クラスター ランタイムで自動アップグレードと手動アップグレードのどちらかを選択できますか?
 
-プレビューでは、すべてのランタイム アップグレードは自動的に行われます。
+はい、自動と手動アップグレードのどちらかを選択できます。 詳細については、[クラスターのアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade)に関する記事を参照してください。
 
 ## <a name="applications"></a>アプリケーション
 
@@ -74,3 +78,7 @@ Basic SKU クラスターを使用すると、ほとんどの構成が Service F
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>アプリケーションを Azure Resource Manager リソースとしてデプロイできますか?
 
 はい。 PowerShell と CLI を使用したデプロイに加えて、アプリケーションを Azure Resource Manager リソースとしてデプロイするためのサポートが追加されました。 利用を開始するには、「[ARM テンプレートを使用して Service Fabric マネージド クラスター アプリケーションをデプロイする](how-to-managed-cluster-app-deployment-template.md)」を参照してください。
+
+### <a name="can-i-deploy-applications-with-managed-identities"></a>マネージド ID を使用してアプリケーションをデプロイできますか?
+
+ はい。マネージド ID を使用するアプリケーションを Service Fabric マネージド クラスターにデプロイできます。 詳細については、[アプリケーションのマネージド ID](.\concepts-managed-identity.md) に関する記事を参照してください。

@@ -1,24 +1,24 @@
 ---
-title: スコープ外のユーザーの削除をスキップする
-description: スコープ外のユーザーのプロビジョニングを解除する既定の動作をオーバーライドする方法について説明します。
+title: Azure Active Directory アプリケーションのプロビジョニングで、スコープ外のユーザーの削除をスキップします
+description: Azure Active Directory でスコープ外のユーザーのプロビジョニングを解除する既定の動作をオーバーライドする方法について説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: celested
-ms.openlocfilehash: a6cbabe35b223020528d1cf48aa9e0ef9b9f7c05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 37196dafd094f997bc5fe2ea165cefb9099562a0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256121"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784883"
 ---
-# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>スコープ外に出るユーザー アカウントの削除をスキップする
+# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope-in-azure-active-directory"></a>Azure Active Directory でスコープ外に出るユーザー アカウントの削除をスキップする
 
 既定では、Azure AD プロビジョニング エンジンは、スコープ外に出るユーザーを論理的に削除または無効化します。 ただし、Workday to AD User Inbound Provisioning などの特定のシナリオでは、この動作が予期されていない場合があり、この既定の動作をオーバーライドしたいことがあります。  
 

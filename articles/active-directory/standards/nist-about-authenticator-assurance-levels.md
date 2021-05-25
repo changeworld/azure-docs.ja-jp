@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08660ae2d9f3b3561665489e10b29b51a9c2d512
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 34cf1b096963c5b83c359c6583573c709655bc1c
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108294047"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517728"
 ---
 # <a name="about-authenticator-assurance-levels"></a>Authenticator Assurance Level について
 
@@ -55,7 +55,7 @@ ms.locfileid: "108294047"
 
 一般に、AAL1 はパスワードのみのソリューションを受け入れるため、推奨されておらず、パスワードは、最も侵害されやすい認証の形式です。 「[パスワードは関係ない](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)」を参照してください。 
 
-NIST では、AAL3 まで検証ツールの偽装 (資格情報のフィッシングとも呼ばれる) への耐性を必要としませんが、すべてのレベルでこの脅威に対処することが強く推奨されます。 Azure AD に参加しているか、ハイブリッド Azure AD に参加しているデバイスを必要とするなど、検証ツールの偽装への耐性を備えている Authenticator を選択できます。 Office 365 を使用している場合は、Office 365 Advanced Threat Protection、特に[フィッシング対策ポリシー](https://docs.microsoft.com/microsoft-365/security/office-365-security/set-up-anti-phishing-policies?view=o365-worldwide)を使用して、対処できます。
+NIST では、AAL3 まで検証ツールの偽装 (資格情報のフィッシングとも呼ばれる) への耐性を必要としませんが、すべてのレベルでこの脅威に対処することが強く推奨されます。 Azure AD に参加しているか、ハイブリッド Azure AD に参加しているデバイスを必要とするなど、検証ツールの偽装への耐性を備えている Authenticator を選択できます。 Office 365 を使用している場合は、Office 365 Advanced Threat Protection、特に[フィッシング対策ポリシー](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies)を使用して、対処できます。
 
 組織に適切な NIST AAL を評価する際に、組織全体が NIST 標準を満たす必要があるかどうか、または分離できる特定のユーザーとリソースのグループがあるかどうか、および特定のユーザーとリソースのグループのみに適用する NIST AAL 構成を検討できます。 
 
@@ -75,13 +75,13 @@ Azure では、他のどのクラウド プロバイダーよりも多くの Fed
 
 [NIST の概要](nist-overview.md)
 
-[AAL の詳細](nist-about-authenticator-assurance-levels.md)
+[AAL について確認する](nist-about-authenticator-assurance-levels.md)
 
 [認証の基本](nist-authentication-basics.md)
 
-[NIST Authenticator の種類](nist-authenticator-types.md)
+[NIST 認証システムの種類](nist-authenticator-types.md)
 
-[Azure AD を使用して NIST AAL1 を達成する](nist-authenticator-assurance-level-1.md)
+[Azure AD を使用して NIST AAL1 を実現する](nist-authenticator-assurance-level-1.md)
 
 [Azure AD を使用して NIST AAL2 を達成する](nist-authenticator-assurance-level-2.md)
 

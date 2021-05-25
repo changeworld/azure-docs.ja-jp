@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 9ec1680d5dbad0ca18fe145bab8804dcbcee7fd4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 58c0d35178c2683bd2626ad0b9d9209c2819e463
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296474"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789481"
 ---
 # <a name="azure-digital-twins-query-language-reference-where-clause"></a>Azure Digital Twins クエリ言語リファレンス: WHERE 句
 
@@ -44,7 +44,7 @@ WHERE 句は、クエリ結果をフィルター処理するブール値条件�
 
 ### <a name="examples"></a>例
 
-プロパティと演算子を使用した例を次に示します。 次のクエリでは、`$dtId` 値が *Room1* のツインのみを返すよう WHERE 句で指定しています。
+プロパティと演算子を使用した例を次に示します。 次のクエリでは、`$dtId` 値が Room1 のツインのみを返すよう WHERE 句で指定しています。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="WhereExample":::
 

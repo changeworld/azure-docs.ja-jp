@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0e0df10d9bbcb69e6a0bf56020c1ef70e1f81df6
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e0591d9897b1ea20978afc663e63e74af7153832
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207809"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788512"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
@@ -25,7 +25,7 @@ Azure Digital Twins ソリューションでは、環境内のエンティティ
 
 Azure Digital Twins インスタンスでデジタル ツインを作成するには、"*モデル*" をサービスにアップロードしておく必要があります。 モデルは、特に、プロパティ、テレメトリ メッセージ、特定のツインが持つことのできるリレーションシップのセットを記述したものです。 モデルで定義される情報の種類については、[カスタム モデル](concepts-models.md)に関するページを参照してください。
 
-モデルを作成してアップロードしたら、クライアント アプリはその型のインスタンスを作成できます。これがデジタル ツインです。 たとえば、モデル *Floor* を作成したら、この型を使用する 1 つまたは複数のデジタル ツイン (*GroundFloor* という *Floor* 型ツイン、*Floor2* という別のツインなど) を作成できます。
+モデルを作成してアップロードしたら、クライアント アプリはその型のインスタンスを作成できます。これがデジタル ツインです。 たとえば、モデル Floor を作成したら、この型を使用する 1 つまたは複数のデジタル ツイン (GroundFloor という Floor 型ツイン、Floor2 という別のツインなど) を作成できます。
 
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
@@ -33,7 +33,7 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 ツインは、そのリレーションシップによってツイン グラフに接続されます。 ツインが持つことのできるリレーションシップは、そのモデルの一部として定義されます。  
 
-たとえば、モデル *Floor* で、*room* 型のツインをターゲットとする *contains* リレーションシップが定義されているとします。 この定義により、Azure Digital Twins では、任意の *Floor* ツインから任意の *Room* ツイン (*Room* サブタイプのツインを含む) への *contains* リレーションシップを作成できます。 
+たとえば、モデル Floor で、Room 型のツインをターゲットとする *contains* リレーションシップが定義されているとします。 この定義により、Azure Digital Twins では、任意の *Floor* ツインから任意の Room ツイン (Room サブタイプのツインを含む) への contains リレーションシップを作成できます。 
 
 このプロセスにより、グラフ内にエッジ (リレーションシップ) によって接続された一連のノード (デジタル ツイン) が作成されます。
 
@@ -45,7 +45,7 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 ### <a name="create-digital-twins"></a>デジタル ツインを作成する
 
-[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、*Room* 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
+[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、Room 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
 
 ツインは作成時にそのプロパティを初期化できます。あるいは後で設定できます。 プロパティを初期化してツインを作成するには、必要な初期化値を与える JSON ドキュメントを作成します。
 

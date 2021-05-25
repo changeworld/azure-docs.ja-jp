@@ -4,15 +4,15 @@ description: この記事では、コマーシャル マーケットプレース
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 04/14/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b17041f25fdd26bd0f8328a206267ef1c4984672
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: da0a216842ddbd10728f3ff4c3b0eee2df200ee7
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144747"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633431"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -42,7 +42,7 @@ Microsoft 経由で販売することを選択すると、Microsoft コマース
 
 | プランの種類 | 請求の頻度 | 従量制課金 | 価格モデル |
 | ------------ | ------------- | ------------- | ------------- |
-| Azure Application<br>(マネージド アプリケーション) | 月単位 | はい | 使用量ベース |
+| Azure Application<br>(マネージド アプリケーション) | 月 1 回 | はい | 使用量ベース |
 | Azure Virtual Machine | 月 1 回 * | いいえ | 使用量ベース、BYOL |
 | サービスとしてのソフトウェア (SaaS) | 月 1 回および年 1 回 | はい | 定額、ユーザーごと、使用量ベース。 |
 |||||
@@ -73,7 +73,7 @@ Microsoft 経由で販売することを選択すると、Microsoft コマース
 > [!NOTE]
 > ソリューションの使用後に使用量に基づいて課金されるオファーは、返金の対象になりません。
 
-オファーに関連付けられている使用料金を変更する発行元は、まず、コマーシャル マーケットプレースからオファー (またはオファー内の特定のプラン) を削除する必要があります。 削除は、[Microsoft 発行元契約](/legal/marketplace/msft-publisher-agreement)の要件に従って行う必要があります。 その後、公開元は新しいユーザー料金を含む新しいオファー (はたはオファー内のプラン) を公開できます。 オファーまたはプランの削除の詳細については、「[オファーまたはプランの販売を停止する](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)」を参照してください。
+オファーに関連付けられている使用料金を変更する発行元は、まず、コマーシャル マーケットプレースからオファー (またはオファー内の特定のプラン) を削除する必要があります。 削除は、[Microsoft 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の要件に従って行う必要があります。 その後、公開元は新しいユーザー料金を含む新しいオファー (はたはオファー内のプラン) を公開できます。 オファーまたはプランの削除に関する詳細については、「[オファーまたはプランの廃止](./partner-center-portal/update-existing-offer.md#deprecate-an-offer-or-plan)」を参照してください (廃止は、以前の販売停止に当たる)。
 
 ### <a name="free-contact-me-and-bring-your-own-license-byol-pricing"></a>無料、問い合わせ、およびライセンス持ち込み (BYOL) の価格
 
@@ -207,7 +207,7 @@ Microsoft を介した取引を利用できるのは、次のコマーシャル 
 
 プライベート プランを使用すると、特定の顧客向けに、一般提供されているオファリングよりも高いまたは低い価格を提示できます。 プライベート プランは、あるオファーに対する割引や特典の追加を行うために使用できます。 プライベート プランは、単一または複数の顧客の Azure サブスクリプションをプランレベルでリスト登録することによって、それらの顧客に対して使用可能にすることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - オンライン ショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認します。
 - [オファーの種類別の公開ガイド](publisher-guide-by-offer-type.md)。

@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 12/18/2020
+ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6da5dfcded067420fd6d43f4a5b2841da060898a
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389809"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738124"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは何ですか?
 
@@ -99,6 +99,17 @@ Data Box に含まれるコンポーネントを次に示します。
 * **ローカル Web ユーザー インターフェイス** - デバイスの構成に使用する Web ベースの UI。この UI を使用して、ローカル ネットワークに接続し、デバイスを Data Box サービスに登録できます。 ローカル Web UI を使用すると、Data Box デバイスのシャット ダウンと再起動、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の送信も行うことができます。
 
     ![Data Box のローカル Web UI](media/data-box-overview/data-box-local-web-ui.png)
+
+    デバイス上のローカル Web UI は現在、以下の言語および対応する言語コードをサポートしています。
+
+    | Language             | コード | Language                | コード   | Language                | コード         |
+    |----------------------|------|-------------------------|--------|-------------------------|--------------|
+    | 英語 {既定}    | en   |  チェコ語                  | cs     | ドイツ語                  | de           |
+    | スペイン語              | es   | フランス語                  | fr     | ハンガリー語               | hu           |
+    | イタリア語              | it   | 日本語                | ja     | 韓国語                  | ko           |
+    | オランダ語                | nl   | ポーランド語                  | pl     | ポルトガル語 - ブラジル     | pt-br        |
+    | ポルトガル語 - ポルトガル| pt-pt| ロシア語                 | ru     | スウェーデン語                 | sv           |
+    | トルコ語              | tr   | 簡体中国語    | zh-hans|    |       |    
 
     Web ベース UI の使用については、「[Web ベース UI を使用した Data Box の管理](data-box-portal-ui-admin.md)」を参照してください。
 

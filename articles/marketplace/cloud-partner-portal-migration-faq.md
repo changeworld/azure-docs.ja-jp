@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 7c1e908b5b113c5a2eff81105b1f0cd622c57b5e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 04/14/2021
+ms.openlocfilehash: af648b24d1fb5006a6dbfae33030e4c064646aeb
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127517"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634259"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -170,11 +170,14 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 
 ![パートナー センターのオファー ID の場所を示す](media/cpp-pc-faq/offer-id.png)
 
-### <a name="stop-selling-an-offer"></a>オファーの販売を停止する
+### <a name="deprecate-an-offer"></a>オファーを廃止する
 
-パートナー センター ポータルから直接、マーケットプレースで[オファーの販売停止](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)を要求できます。 このオプションは、オファーの **[オファー概要]** ページで利用できます。
+> [!IMPORTANT]
+> 販売停止は廃止に変更されました。
 
-[![パートナー センターのオファー販売停止ページを示すスクリーンショット。](media/cpp-pc-faq/stop-sell.png "パートナー センターのオファー販売停止ページを示す")](media/cpp-pc-faq/stop-sell.png#lightbox)
+パートナー センター ポータルから直接、マーケットプレースでの[オファーの廃止 (以前の販売停止)](partner-center-portal/update-existing-offer.md#deprecate-an-offer-or-plan) を要求できます。 このオプションは、オファーの **[オファー概要]** ページで利用できます。
+
+[![オファーを廃止 (以前の販売停止) するためのパートナー センターのページを示すスクリーンショット。](media/cpp-pc-faq/stop-sell.png "オファーを廃止するためのパートナー センターのページを示す")](media/cpp-pc-faq/stop-sell.png#lightbox)
 <br><br>
 
 ## <a name="are-the-cloud-partner-portal-rest-apis-still-supported"></a>Cloud パートナー ポータル REST API はまだサポートされていますか?

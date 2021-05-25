@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/21/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c9f59c5c4410bbb3a8f53a53b0febaa2b04ba2aa
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: dff35243db327d2b224855e1f65e8e98296d8c8e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315993"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752267"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -275,7 +275,7 @@ Content-type: application/json
 
 アカウント暗号化キー (AEK) は新しいキー暗号化キー (KEK) バージョンによって Key Vault で暗号化されるようになりますが、データは常に AEK によって暗号化されているため、キー ローテーション操作後も、すべてのデータにアクセスできます。
 
-## <a name="customer-managed-key-for-saved-queries"></a>保存されたクエリ用のカスタマー マネージド キー
+## <a name="customer-managed-key-for-saved-queries-and-log-alerts"></a>保存されたクエリおよびログ アラート用のカスタマー マネージド キー
 
 Log Analytics で使用されるクエリ言語は表現力が豊かで、クエリに追加するコメントまたはクエリ構文に機密情報を含めることができます。 組織によっては、このような情報をカスタマー マネージド キー ポリシーによって保護する必要があり、キーで暗号化された状態でクエリを保存する必要があります。 Azure Monitor では、独自のキーを使用して暗号化された "*保存された検索条件*" および "*ログ アラート*" のクエリを、ワークスペースに接続したときに独自のストレージ アカウントに保存しておくことができます。 
 
@@ -292,6 +292,7 @@ Bring Your Own Storage (BYOS) を使用して、それをワークスペース�
 * クエリ履歴はサポートされていないため、実行したクエリは表示できません
 * クエリを保存するために、1 つのストレージ アカウントをワークスペースにリンクすることができますが、これは "*保存された検索条件*" と "*ログ アラート*" のクエリの両方から使用できます
 * ダッシュボードへのピン留めはサポートされていません
+* 発生したログ アラートには、検索結果もアラート クエリも含まれません。 発生したアラートの背景を取得する目的で[アラート ディメンション](../alerts/alerts-unified-log.md#split-by-alert-dimensions)を使用できます。
 
 **保存された検索条件のクエリ用に BYOS を構成する**
 

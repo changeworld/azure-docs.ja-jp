@@ -5,28 +5,28 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 67a2799a93141ad84f458642d8499a58784cc19c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1eceb842947abd8975036c3145c1da755ef59526
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463762"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766771"
 ---
 ## <a name="configure-the-sample-project"></a>サンプル プロジェクトを構成する
 
 次に、Azure Digital Twins インスタンスとやり取りするサンプル クライアント アプリケーションを設定します。
 
-マシン上で、[*Azure Digital Twins のエンドツーエンド サンプル*](/samples/azure-samples/digital-twins-samples/digital-twins-samples)からダウンロードしたファイルに移動します (まだの場合は解凍します)。
+マシン上で、[Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)からダウンロードしたファイルに移動します (まだの場合は解凍します)。
 
 フォルダー内の _AdtSampleApp_ に移動します。 Visual Studio 2019 で _**AdtE2ESample.sln**_ を開きます。 
 
 Visual Studio で _[SampleClientApp] > **[appsettings.json]**_ ファイルを選択し、編集ウィンドウで開きます。 このファイルは、プロジェクトを実行するために必要な構成変数を含んだ事前設定済みの JSON ファイルとして機能します。
 
-ファイルの本体で、`instanceUrl` を Azure Digital Twins インスタンスの *hostName URL* に変更します (以下に示すように、*hostName* の前に **_https://_** を追加します)。
+ファイルの本体で、`instanceUrl` を Azure Digital Twins インスタンスの "*ホスト名 URL*" に変更します (以下に示すように、"*ホスト名*" の前に **_https://_** を追加します)。
 
 ```json
 {
-  "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
+  "instanceUrl": "https://<your-Azure-Digital-Twins-instance-host-name>"
 }
 ```
 

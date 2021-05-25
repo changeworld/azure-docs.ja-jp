@@ -3,21 +3,22 @@ title: マッピングのために Azure Active Directory に属性を同期す�
 description: Azure Active Directory と SaaS アプリを使用してユーザー プロビジョニングを構成する際は、ディレクトリの拡張機能を使用して、既定では同期されないソース属性を追加します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.reviewer: arvinh
+ms.openlocfilehash: 2cc6c3ec2b58a64491b0741658db325e808f0fa5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388212"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784649"
 ---
-# <a name="syncing-extension-attributes-for-app-provisioning"></a>アプリ プロビジョニングの拡張属性の同期
+# <a name="syncing-extension-attributes-for-azure-active-directory-application-provisioning"></a>Azure Active Directory アプリケーション プロビジョニングの拡張属性を同期する
 
 Azure AD から [SaaS アプリ](../saas-apps/tutorial-list.md)にユーザー アカウントをプロビジョニングするときに、Azure Active Directory (Azure AD) には、ユーザー プロファイルの作成に必要なすべてのデータ (属性) が含まれていなければなりません。 ユーザー プロビジョニングのために属性マッピングをカスタマイズしているときに、マップ対象の属性が **[ソース属性]** の一覧に表示されないことがあります。 この記事では、欠落している属性を追加する方法について説明します。
 
