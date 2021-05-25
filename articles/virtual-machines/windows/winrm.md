@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: eb2bf1badb699060a0c1576956db395d612433c2
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ffd531cb7eaa54b8b65bc564455eb17c193bd397
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325746"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753131"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
 
@@ -25,7 +25,7 @@ ms.locfileid: "108325746"
 4. Key Vault の自己署名証明書の URL を取得する
 5. VM を作成するときに、自己署名証明書の URL を参照する
 
- 
+
 
 ## <a name="step-1-create-a-key-vault"></a>手順 1: Key Vault を作成する
 次のコマンドを使用して、Key Vault を作成します
@@ -127,9 +127,9 @@ $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name
     },
 ```
 
-上記のサンプル テンプレートは、 [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
+上記事項のサンプル テンプレートは [vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/demos/vm-winrm-keyvault-windows) で公開しています
 
-このテンプレートのソース コードは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
+このテンプレートのソース コードは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)
 
 #### <a name="powershell"></a>PowerShell
 ```azurepowershell
@@ -151,8 +151,8 @@ Enable-PSRemoting -Force
 
 > [!NOTE]
 > 上記が動作しない場合は、WinRM サービスが実行されていることを確認する必要があります。 `Get-Service WinRM`
-> 
-> 
+>
+>
 
 設定が完了すると、次のコマンドを使用して VM に接続することができます。
 

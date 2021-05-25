@@ -1,22 +1,21 @@
 ---
-title: Azure CLI を使用して Linux VM のサイズを変更する方法
-description: スケールアップまたは VM のサイズを変更することで Linux 仮想マシンをスケールアップまたはスケールダウンする方法。
-author: DavidCBerry13
+title: Azure CLI を使用して VM のサイズを変更する方法
+description: スケールアップまたは VM のサイズを変更することで仮想マシンをスケールアップまたはスケールダウンする方法。
+author: mimckitt
 ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 02/10/2017
-ms.author: daberry
-ms.collection: linux
-ms.openlocfilehash: 290c42cadd840e5a292201247b1555059b5b4381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mimckitt
+ms.openlocfilehash: 9361814a12e2f3c0d8c57852c89299e477f43dcb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556640"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738145"
 ---
-# <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Azure CLI を使用して Linux 仮想マシンのサイズを変更する 
+# <a name="resize-a-virtual-machine-using-azure-cli"></a>Azure CLI を使用した仮想マシンのサイズ変更 
 
-仮想マシン (VM) をプロビジョニングした後、[VM のサイズ][vm-sizes]を変更することで、VM をスケールアップまたはスケールダウンできます。 場合によっては、先に VM の割り当てを解除する必要があります。 VM をホストしているハードウェア クラスターで目的のサイズが使用できない場合、VM の割り当てを解除する必要があります。 この記事では、Azure CLI を使用して Linux VM のサイズを変更する方法を詳しく説明します。 
+仮想マシン (VM) をプロビジョニングした後、[VM のサイズ][vm-sizes]を変更することで、VM をスケールアップまたはスケールダウンできます。 場合によっては、先に VM の割り当てを解除する必要があります。 VM をホストしているハードウェア クラスターで目的のサイズが使用できない場合、VM の割り当てを解除する必要があります。 この記事では、Azure CLI を使用して VM のサイズを変更する方法を詳しく説明します。 
 
 ## <a name="resize-a-vm"></a>VM のサイズを変更する
 VM のサイズを変更するには、[Azure CLI ](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしてください。
@@ -47,7 +46,7 @@ VM のサイズを変更するには、[Azure CLI ](/cli/azure/install-az-cli2) 
    > VM の割り当てを解除すると、VM に割り当てられているすべての動的 IP アドレスも解放されます。 OS とデータ ディスクには影響しません。
 
 ## <a name="next-steps"></a>次のステップ
-スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、「[仮想マシン スケール セットでの Linux マシンの自動スケール][scale-set]」をご覧ください。 
+スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、[仮想マシン スケール セットでのマシンの自動スケール][scale-set]に関する記事をご覧ください。 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

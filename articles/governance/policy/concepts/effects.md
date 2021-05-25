@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d819c20c27a2c2f4a316e60da1c0fdb7c8bb859
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: a1f7d8584aada19e565aa4eff40c44f94b1bbaba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896894"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752977"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -181,7 +181,7 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ### <a name="auditifnotexists-example"></a>AuditIfNotExists の例
 
-例:仮想マシンを評価してマルウェア対策の拡張機能が存在するかどうかを判定し、ない場合に監査します。
+例: 仮想マシンを評価してマルウェア対策の拡張機能が存在するかどうかを判定し、ない場合に監査します。
 
 ```json
 {
@@ -314,7 +314,8 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists の例
 
-例:SQL Server データベースを評価して、transparentDataEncryption が有効になっているかどうかを判断します。 有効になっていない場合は、有効にするためのデプロイが実行されます。
+例: SQL Server データベースを評価して、transparentDataEncryption が有効になっているかどうかを判定します。
+有効になっていない場合は、有効にするためのデプロイが実行されます。
 
 ```json
 "if": {
@@ -391,7 +392,7 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 - **constraintTemplate** (必須)
   - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
 - **constraint** (必須)
-  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例では、これらの値は `{{ .Values.cpuLimit }}` および `{{ .Values.memoryLimit }}` です。
+  - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 以下の例では、これらの値は `{{ .Values.cpuLimit }}` と `{{ .Values.memoryLimit }}` です。
 - **values** (省略可能)
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
 
@@ -540,7 +541,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 ### <a name="modify-operations"></a>Modify の操作
 
-**operations** プロパティ配列を使用すると、1 つのポリシー定義から複数のタグを異なる方法で変更できます。 各操作は **operation**、**field**、および **value** の各プロパティで構成されます。 operation では、修復タスクがタグに対して行う処理を決定し、field では、どのタグを変更するかを決定し、value では、そのタグの新しい設定を定義します。 下記の例では、以下のタグ変更が実行されます。
+**operations** プロパティ配列を使用すると、1 つのポリシー定義から複数のタグを異なる方法で変更できます。 各操作は **operation**、**field**、および **value** の各プロパティで構成されます。 operation では、修復タスクがタグに対して行う処理を決定し、field では、どのタグを変更するかを決定し、value では、そのタグの新しい設定を定義します。 次の例では、次のようにタグを変更します。
 
 - `environment` タグを "Test" に設定する (異なる値で既に存在している場合でも)。
 - タグ `TempResource` を削除する。
@@ -570,7 +571,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|操作 |説明 |
+|Operation |説明 |
 |-|-|
 |addOrReplace |プロパティまたはタグが別の値で既に存在する場合でも、定義されたプロパティまたはタグと値をリソースに追加します。 |
 |追加 |定義されたプロパティまたはタグと値をリソースに追加します。 |
@@ -657,7 +658,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
   - リソースの場所を 'eastus' に制限する
   - サブスクリプション A のリソース グループ B に割り当てる
   - Audit 効果
-  
+
 この設定の結果は次のようになります。
 
 - リソース グループ B の既存のリソースで、場所が 'eastus' のリソースは、ポリシー 2 に準拠しているが、ポリシー 1 には準拠していない

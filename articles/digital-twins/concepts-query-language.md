@@ -8,12 +8,12 @@ ms.date: 4/22/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 13bf3b8b8756fcc83211b02379980972629d9438
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e311a39a68a5fb03c68a1685996a8e0fbde206e8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290544"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734347"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
 
@@ -31,7 +31,7 @@ Azure Digital Twins クエリ言語を使用し、次に応じて、デジタル
 * relationships
   - リレーションシップのプロパティ
 
-クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) を使用します。 API を使用する方法の 1 つとして、Azure Digital Twins のいずれかの [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用する方法があります。
+クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) を使用します。 API を使用する方法の 1 つとして、Azure Digital Twins のいずれかの [SDK](concepts-apis-sdks.md#overview-data-plane-apis) を使用する方法があります。
 
 [!INCLUDE [digital-twins-query-reference.md](../../includes/digital-twins-query-reference.md)]
 
@@ -42,6 +42,8 @@ Azure Digital Twins のクエリを作成する場合は、次の考慮事項に
 * **単一引用符をエスケープする**: クエリ テキストのデータに単一引用符文字が含まれている場合は、`\` 文字を使用して引用符をエスケープする必要があります。 プロパティ値 *D'Souza* を扱う例を次に示します。
 
   :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="EscapedSingleQuote":::
+
+* **待機時間を想定する**: グラフのデータを変更してからそれがクエリに反映されるまで、最大 10 秒の待機時間が発生する場合があります。 [GetDigitalTwin API](how-to-manage-twin.md#get-data-for-a-digital-twin) ではこの待機時間が発生しないので、即時の応答が必要な場合は、クエリを実行する代わりにこの API の呼び出しを使用して、変更が即座に反映されるようにしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

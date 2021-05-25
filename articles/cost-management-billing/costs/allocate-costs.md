@@ -3,17 +3,17 @@ title: Azure のコストの割り当て
 description: この記事では、サブスクリプション、リソース グループ、タグのコストを配分するためのコストの割り当てルールを作成する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/23/2021
+ms.date: 05/10/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: e7afef7e0a10bb4be3c30112fc207467167e4a17
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b837e5819318707b44932f5915746479e27646ec
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726522"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734902"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure のコストの割り当てルールの作成と管理 (プレビュー)
 
@@ -76,6 +76,10 @@ ms.locfileid: "107726522"
 > [!NOTE] 
 > 新しいルールの処理が完了してアクティブになるまでには、最大 2 時間かかる場合があります。
 
+このビデオでは、コストの割り当てルールを作成する方法について説明しています。
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 ## <a name="verify-the-cost-allocation-rule"></a>コストの割り当てルールを検証する
 
 コストの割り当てルールがアクティブの場合、選択したソースからのコストが、指定したターゲット (割り当て先) に配分されます。 以下の情報を参考に、ターゲットに対してコストが適切に割り当てられていることを確認してください。
@@ -96,10 +100,17 @@ Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  > 
 
 :::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="タグ付けされた項目のコストを示す例" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
-このビデオでは、コストの割り当てルールを作成する方法について説明しています。
+### <a name="view-cost-allocation-in-the-downloaded-usage-details-and-in-exports-csv-files"></a>ダウンロードした使用状況の詳細およびエクスポート CSV ファイルでコストの割り当てを表示する
 
->[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+コストの割り当てルールは、ダウンロードした使用状況の詳細ファイルやエクスポートしたデータでも確認できます。 データ ファイルには、`costAllocationRuleName` という名前の列があります。 使用状況の詳細またはエクスポート ファイルのエントリに、コストの割り当てルールが適用されている場合、その行にはコストの割り当てルールの名前が表示されます。 次の例の画像には、ソース サブスクリプションのエントリに負の料金が表示されています。 これは、割り当て元となっている料金です。 コストの割り当てルールのターゲットになっている正の料金も表示されています。
 
+:::image type="content" source="./media/allocate-costs/rule-costs-allocated.png" alt-text="使用状況の詳細ファイルの、割り当てられたコストを示すスクリーンショット。" lightbox="./media/allocate-costs/rule-costs-allocated.png" :::
+
+#### <a name="azure-invoice-reconciliation"></a>Azure の請求書の調整 
+
+使用状況の詳細ファイルは、Azure の請求書の調整にも使用できます。 調整中に内部で割り当てたコストを表示すると、混乱を招く場合があります。 潜在的な混乱を避け、請求書に表示されているデータに合わせるために、コストの割り当てルールを除外することができます。 コストの割り当てルールを削除すると、使用状況の詳細ファイルは、課金されているサブスクリプションの請求書に示されているコストと一致します。
+
+:::image type="content" source="./media/allocate-costs/rule-name-filtered.png" alt-text="ルール名をフィルターで除外した場合の、割り当てられたコストを示すスクリーンショット" lightbox="./media/allocate-costs/rule-name-filtered.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>既存のコストの割り当てルールを編集する
 
@@ -111,7 +122,6 @@ Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  > 
 
 パブリック プレビューのコストの割り当てでは、現在次の項目がサポートされていません。
 
-- [エクスポート](tutorial-export-acm-data.md)のスケジュール実行
 - [Usage Details](/rest/api/consumption/usagedetails/list) API によって公開されたデータ
 - 課金サブスクリプション領域
 - [Cost Management Power BI アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)

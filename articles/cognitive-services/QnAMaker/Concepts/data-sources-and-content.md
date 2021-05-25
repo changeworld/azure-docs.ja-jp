@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 0d4d32aba34a97c6a060c999694f66d79933d011
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82ae7e1bd0bf2a8bcd0ad18ee4db381f90f8db18
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99556038"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743833"
 ---
 # <a name="importing-from-data-sources"></a>データ ソースからのインポート
 

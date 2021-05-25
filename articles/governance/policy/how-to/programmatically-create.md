@@ -3,12 +3,12 @@ title: プログラムによるポリシーの作成
 description: この記事では、Azure CLI、Azure PowerShell、および REST API を使用して、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
 ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: fb20509fe6d699050e0c98e82873ccdb6a0137b2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 04b2e1a2c84320c61d1c1aba7404af47bc03150e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313693"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747487"
 ---
 # <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 
@@ -141,7 +141,7 @@ Resource Manager PowerShell モジュールを使用したリソース ポリシ
 
    前の {subscriptionId} をサブスクリプションの ID と置き換えるか、{managementGroupId} を[管理部グループ](../../management-groups/overview.md)の ID と置き換えます。
 
-   クエリの構造の詳細については、「[Azure Policy Definitions – Create or Update (Azure Policy の定義 - 作成または更新)](/rest/api/policy/policydefinitions/createorupdate)」および「[Policy Definitions – Create or Update At Management Group (ポリシー定義 - 管理グループでの作成または更新)](/rest/api/policy/policydefinitions/createorupdateatmanagementgroup)」をご覧ください。
+   クエリの構造の詳細については、[Azure Policy の定義 - 作成または更新](/rest/api/policy/policydefinitions/createorupdate)および[ポリシー定義 - 管理グループでの作成または更新](/rest/api/policy/policydefinitions/createorupdateatmanagementgroup)に関する記事をご覧ください。
 
 次の手順を使用してポリシー割り当てを作成し、ポリシー定義をリソース グループ レベルに割り当てます。
 

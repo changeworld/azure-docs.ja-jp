@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 04/30/2021
 ms.author: radeltch
-ms.openlocfilehash: aa2006ecfad91e21ac13a1e63be23302b2a70399
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: e0ebc527f1eb0aa3ed014957633b89c407952364
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551035"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743203"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -442,8 +442,8 @@ o- / ...........................................................................
    >SUSEConnect ---list-extensions を実行して、拡張機能を確認できます。  
    >Azure Fence エージェントでフェールオーバー時間を短縮するには、次のようにします。
    > - SLES 12 SP4 または SLES 12 SP5 の場合、python-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする  
-   > - SLES 15 の場合、python **3**-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする 
-
+   > - SLES 15.X の場合、python **3**-azure-mgmt-compute パッケージのバージョン **4.6.2** をインストールする (これより新しいバージョンは対象外)。 python **3**-azure-mgmt-compute パッケージのバージョン 17.0.0-6.7.1 には Azure Fence Agent と互換性のない変更が含まれているため避けてください    
+     
 1. **[A]** ホスト名解決を設定します
 
    DNS サーバーを使用するか、すべてのノードの /etc/hosts を変更します。 この例では、/etc/hosts ファイルを使用する方法を示しています。

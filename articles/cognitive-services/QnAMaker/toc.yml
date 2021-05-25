@@ -16,10 +16,14 @@
           href: Quickstarts/quickstart-sdk.md
 - name: チュートリアル
   items:
-    - name: Power 仮想エージェントとの統合
-      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: Azure Bot Service を使用した FAQ ボットの作成
       href: Tutorials/create-faq-bot-with-azure-bot-service.md
+    - name: ボットのカスタマイズ
+      items:
+        - name: FAQ ボットに複数のドメインを追加する
+          href: Tutorials/create-faq-bot-for-multiple-domains.md
+    - name: Power 仮想エージェントとの統合
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
 - name: 概念
   items:
     - name: ナレッジ ベースの計画

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: how-to
 ms.custom: synapse-azureml
-ms.openlocfilehash: 8ef4eca10971f9f7f405292fa7b722b26c7d53cd
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 6541cc008c479d8836f90ea99874d24713adb434
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896767"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746857"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)
 
@@ -65,7 +65,7 @@ for service in LinkedService.list(ws) :
 linked_service = LinkedService.get(ws, 'synapselink1')
 ```
 
-まず、`Workspace.from_config()` により、`config.json` 内の構成を使用して Azure Machine Learning ワークスペースにアクセスします (「[チュートリアル: 個人の開発環境で Azure Machine Learning の使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)」を参照してください)。 次に、このコードによって、ワークスペースで使用可能なリンクされたサービスがすべて出力されます。 最後に、`LinkedService.get()` によって、`'synapselink1'` という名前のリンクされたサービスが取得されます。 
+最初に、`Workspace.from_config()` は `config.json` の構成を使用して Azure Machine Learning ワークスペースにアクセスします ([ワークスペース構成ファイルの作成](how-to-configure-environment.md#workspace)に関するページを参照してください)。 次に、このコードによって、ワークスペースで使用可能なリンクされたサービスがすべて出力されます。 最後に、`LinkedService.get()` によって、`'synapselink1'` という名前のリンクされたサービスが取得されます。 
 
 ## <a name="attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning"></a>Azure Machine Learning のコンピューティング先として Apache Spark プールをアタッチする
 

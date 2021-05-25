@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: e410e5de529bde122fe42d21b593a6fc483dcbc0
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: c190af2532f28bd183a92b37b814210cb794501d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726695"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748495"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>更新プログラムを展開して結果を確認する方法
 
@@ -61,6 +61,9 @@ ms.locfileid: "107726695"
 
     > [!NOTE]
     > このオプションは、Azure VM または Arc 対応サーバーを選択した場合は使用できません。 スケジュールされた展開の対象は自動的にそのマシンとなります。
+
+   > [!IMPORTANT]
+   > Azure VM の動的グループを構築するとき、Update Management では、グループのスコープ内のサブスクリプションまたはリソースグループを結合する最大 500 のクエリのみがサポートされます。
 
 6. **[更新するマシン]** 領域で、保存した検索またはインポートしたグループを選択するか、ドロップダウン メニューから **[マシン]** を選択し、個々のマシンを選択します。 このオプションを使用すると、各マシンの Log Analytics エージェントの準備状況を確認できます。 Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../../azure-monitor/logs/computer-groups.md)に関するページを参照してください スケジュールされた更新プログラムのデプロイには、最大で 1,000 台のマシンを含めることができます。
 

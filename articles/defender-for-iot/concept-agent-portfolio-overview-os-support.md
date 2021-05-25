@@ -1,14 +1,14 @@
 ---
 title: エージェント ポートフォリオの概要と OS サポート (プレビュー)
 description: Azure Defender for IoT では、デバイスの種類に基づいて、エージェントの大規模なポートフォリオが提供されます。
-ms.date: 1/20/2021
+ms.date: 05/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d2e463051d0897afe52981ea2d50ddd1f06bb54d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5449f0ac3f3c2e37a79ba156f11042b640786959
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383424"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108735013"
 ---
 # <a name="agent-portfolio-overview-and-os-support-preview"></a>エージェント ポートフォリオの概要と OS サポート (プレビュー)
 
@@ -16,7 +16,7 @@ Azure Defender for IoT では、デバイスの種類に基づいて、エージ
 
 ## <a name="standalone-agent"></a>スタンドアロンのエージェント
 
-スタンドアロンのエージェントは、ほとんどの Linux オペレーティング システムに対応しています。ファームウェアの一部として組み込むことができるバイナリ パッケージまたはソース コードとしてデプロイすることができ、お客様のニーズに基づいて変更やカスタマイズができます。 OS のサポートの例を次に示します。 
+スタンドアロンのエージェントは、ほとんどの Linux オペレーティング システム (OS) に対応しています。ファームウェアの一部として組み込むことができるバイナリ パッケージまたはソース コードとしてデプロイすることができ、お客様のニーズに基づいて変更やカスタマイズができます。 サポートされる OS の例を次に示します。 
 
 | オペレーティング システム | AMD64 | ARM32v7 |
 |--|--|--|
@@ -24,7 +24,7 @@ Azure Defender for IoT では、デバイスの種類に基づいて、エージ
 | Ubuntu 18.04 | ✓ |  |
 | Ubuntu 20.04 | ✓ |  |
 
-より詳細な情報、オペレーティング システムのサポート、またはデバイスのファームウェアの一部としてソース コードを組み込むためのソース コードへのアクセスの要求については、アカウント マネージャーに問い合わせるか、<defender_micro_agent@microsoft.com> に電子メールを送信してください。 
+詳細な情報、サポートされるオペレーティング システム、またはデバイスのファームウェアの一部としてソース コードを組み込むためのソース コードへのアクセスの要求については、アカウント マネージャーに問い合わせるか、<defender_micro_agent@microsoft.com> に電子メールを送信してください。 
 
 ## <a name="azure-rtos-micro-agent"></a>Azure RTOS マイクロ エージェント
 

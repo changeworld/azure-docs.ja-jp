@@ -3,12 +3,12 @@ title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義の作成、さまざまな SDK、および Kubernetes のアドオンに関する問題をトラブルシューティングする方法について説明します。
 ms.date: 04/19/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c4feae11c6d8d78a43bae9882405e292a18e90bd
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6f369b16755c09468dbdae2076cc7828a53c8a17
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725064"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752167"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Policy の使用に関するエラーをトラブルシューティングする
 
@@ -67,7 +67,7 @@ Resource Manager プロパティのエイリアスが存在しない場合は、
 
 ポリシー定義をトラブルシューティングするには、次のことを実行します。
 
-1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 
+1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。
 
 1. Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには、「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
 1. 割り当てパラメーターと割り当てスコープが正しく設定されていることを確認します。
@@ -98,7 +98,7 @@ Azure Policy によって処理されると予想されているリソースが�
 
 ポリシー割り当ての適用をトラブルシューティングするには、次のことを実行します。
 
-1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。 
+1. まず、評価が完了して Azure portal または SDK でコンプライアンスの結果を利用できるようになるまで、適切な時間待機します。
 
 1. Azure PowerShell または REST API を使用して新しい評価スキャンを開始するには、「[オンデマンドの評価スキャン](../how-to/get-compliance-data.md#on-demand-evaluation-scan)」を参照してください。
 1. 割り当てパラメーターと割り当てスコープが正しく設定されていること、および **enforcementMode** が "_有効_" になっていることを確認します。
@@ -238,7 +238,7 @@ Azure Policy では、ARM テンプレートの関数と、ポリシー定義で
 
 アドオンは Azure Policy サービス エンドポイントに接続できず、次のいずれかのエラーが返されます。
 
-- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
+- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
 - `adal: Refresh request failed. Status Code = '404'. Response body: getting assigned identities for pod kube-system/azure-policy-8c785548f-r882p in CREATED state failed after 16 attempts, retry duration [5]s, error: <nil>`
 
 #### <a name="cause"></a>原因

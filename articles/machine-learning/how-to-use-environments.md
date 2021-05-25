@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: e33dd4a6578c22cf0ce002db6a5bcc456643a305
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 22e5a2f648993cbe24266702ce33f81e35bfaea3
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888208"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751367"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
 
@@ -85,6 +85,12 @@ for env in envs:
 > [!WARNING]
 >  独自の環境名の先頭には、_AzureML_ プレフィックスを付加しないでください。 このプレフィックスは、選別された環境用に予約されています。
 
+キュレーション環境をカスタマイズするには、環境を複製して名前を変更します。 
+```python 
+env = Environment.get(workspace=ws, name="AzureML-Minimal")
+curated_clone = env.clone("customize_curated")
+```
+
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>Conda の依存関係または PIP 要件ファイルを使用する
 
 環境は、Conda の仕様または pip 要件ファイルから作成することができます。 [`from_conda_specification()`](/python/api/azureml-core/azureml.core.environment.environment#from-conda-specification-name--file-path-) メソッド、または [`from_pip_requirements()`](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) メソッドを使用します。 メソッドの引数に、ご利用の環境の名前と、必要なファイルのファイル パスを含めます。 
@@ -127,6 +133,7 @@ myenv.docker.base_image_registry="your_registry_location"
 > * Ubuntu 16.04 以上
 > * Conda 4.5.# 以上
 > * Python 3.6 以上
+> * /bin/sh で入手可能な POSIX 準拠シェルは、トレーニングに使用されるすべてのコンテナー イメージで必要です。 
 
 #### <a name="use-your-own-dockerfile"></a>独自の Dockerfile を使用する 
 

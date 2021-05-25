@@ -5,12 +5,12 @@ ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: fddf208a51254d70fb8cc2aa1c9322a22506003a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b01bc4ceefd1d0c645ed584648a34851d741aed1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324277"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751771"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -103,7 +103,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 1. 評価したいサンプル ダッシュボードを選択してダウンロードします。
 
-1. Azure portal で、左側のウィンドウから **[ダッシュボード]** を選択します。
+1. Azure portal で、左側のペインから **[ダッシュボード]** を選択します。
 
 1. **[アップロード]** を選択し、ダウンロードしたサンプル ダッシュボード ファイルを探して選択します。 その後、 **[開く]** を選択します。
 
@@ -115,7 +115,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 1. 左側のウィンドウから **[ダッシュボード]** を選択します。
 
-1. ダッシュボードのドロップダウンから、削除するサンプルの Resource Graph ダッシュボードを選択します。
+1. ダッシュボードのドロップダウン リストから、削除するサンプルの Resource Graph ダッシュボードを選択します。
 
 1. ダッシュボードの上部にあるダッシュボード メニューから **[削除]** を選択し、 **[OK]** を選択して確定します。
 

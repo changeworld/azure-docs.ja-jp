@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 05/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cd63144074577d4ff3564da41e672dd1ca226dcb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f359595a136a356938194f2df728935c80059008
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257162"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742879"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する
 
@@ -160,7 +160,7 @@ Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウント�
 
 1. 変更したポリシーを開きます。 たとえば、*B2C_1A_profile_edit_password_change* です。
 2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 トークンを表示するには、 **[応答 URL]** に `https://jwt.ms` が表示される必要があります。
-3. **[今すぐ実行]** をクリックします。 前に作成したアカウントでサインインします。 これで、パスワードを変更することができます。
+3. **[今すぐ実行]** をクリックします。 開いた新しいタブで、URL から "&prompt=login" を削除し、タブを更新します。次に、前に作成したアカウントを使用してサインインします。 これで、パスワードを変更することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

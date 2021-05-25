@@ -1,20 +1,7 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: app-service
-author: cephalin
-ms.service: app-service
-ms.topic: include
-ms.date: 04/27/2021
-ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: 4bc789435d99c5faed80ffdb13a8bbf4ac6d48a4
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108121127"
+title: "インクルード ファイル" description: "インクルード ファイル" services: app-service author: cephalin ms.service: app-service ms.topic: "インクルード" ms.date: 04/27/2021 ms.author: cephalin ms.custom: "インクルード ファイル", devx-track-azurecli
 ---
+
 Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan) コマンドを使用して、App Service プランを作成します。
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->

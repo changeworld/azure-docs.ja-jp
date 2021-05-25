@@ -3,18 +3,18 @@ title: Azure Image Builder テンプレートを作成する (プレビュー)
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
 author: danielsollondon
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 05/04/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 77460d1675b806e04c72e5f46da0ec4274d99d41
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 94083c8811d92d05a68295f9ac75f38123b3f771
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762535"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732598"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -38,6 +38,7 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
         "vmProfile": 
             {
             "vmSize": "<vmSize>",
+        "proxyVmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
                 "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
@@ -72,19 +73,43 @@ location は、カスタム イメージを作成するリージョンです。 
 - 米国西部 2
 - 北ヨーロッパ
 - 西ヨーロッパ
+- 米国中南部
 
+近日公開予定 (2021 年中旬):
+- 東南アジア
+- オーストラリア南東部
+- オーストラリア東部
+- 英国南部
+- 英国西部
 
 ```json
     "location": "<region>",
 ```
-## <a name="vmprofile"></a>vmProfile
-既定では Image Builder は "Standard_D1_v2" ビルド VM を使用しますが、これはオーバーライドできます。たとえば GPU VM 用にイメージをカスタマイズする場合は、GPU VM サイズが必要になります。 これは省略可能です。
 
+### <a name="data-residency"></a>データ所在地
+Azure VM Image Builder サービスでは、顧客が単一リージョンのデータ所在地の要件が厳しいリージョンでの構築を要求した場合に、そのリージョンの外部に顧客のデータが保存されたり、外部で処理されたりすることはありません。 データ所在地の要件が設けられているリージョンでサービスが停止した場合は、別のリージョンや地域にテンプレートを作成する必要があります。
+
+ 
+## <a name="vmprofile"></a>vmProfile
+## <a name="buildvm"></a>buildVM
+既定では、Image Builder では "Standard_D1_v2" ビルド VM が使用され、`source` で指定したイメージから構築されます。 これはオーバーライド可能で、次の理由から行う場合があります:
+1. より大きなメモリや CPU、および大きなファイル (GB) の処理が必要なカスタマイズの実行。
+2. Windows ビルドの実行。"Standard_D2_v2" または同等の VM サイズを使用する必要があります。
+3. [VM の分離](https://docs.microsoft.com/azure/virtual-machines/isolation)が必要。
+4. 特定のハードウェアを必要とするイメージのカスタマイズ (GPU VM の場合は GPU VM サイズが必要になるなど)。 
+5. ビルド VM の残りの部分でエンド ツー エンドの暗号化が必要。ローカル一時ディスクを使用しないサポート ビルド [VM](https://docs.microsoft.com/azure/virtual-machines/azure-vms-no-temp-disk) サイズを指定する必要があります。
+ 
+これは省略可能です。
+
+
+## <a name="proxy-vm-size"></a>プロキシ VM サイズ
+プロキシ VM は、Azure Image Builder Service とビルド VM の間でコマンドを送信するために使用されます。これは、既存の VNET を指定するときにのみ展開されます。詳細については、ネットワーク オプションに関する[ドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking#why-deploy-a-proxy-vm)を参照してください。
 ```json
  {
-    "vmSize": "Standard_D1_v2"
+    "proxyVmSize": "Standard A1_v2"
  },
 ```
+これは省略可能です。
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 

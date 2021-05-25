@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 2eb6bcb2fcaeb3afddfb8605b9065766fa0af5ee
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 677ce4e66a3d9f870e21785327f382b9974b2cdf
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130571"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748657"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-holmes"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Holmes の統合
 
@@ -36,8 +36,6 @@ ms.locfileid: "108130571"
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
-
-* Holmes では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 ## <a name="adding-holmes-from-the-gallery"></a>ギャラリーからの Holmes の追加
 
@@ -74,18 +72,20 @@ Holmes に対して Azure AD SSO を構成してテストするには、次の�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+2. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    **[識別子]** ボックスに、`https://<WorkspaceID>.holmescloud.com` の形式で URL を入力します。
+   1. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** テキスト ボックスに、URL として「`https://www.holmescloud.com/login`」と入力します。
+      `https://<WorkspaceID>.holmescloud.com`
+      
+   1. **[応答 URL (Assertion Consumer Service URL)]** ボックスに「`https://holmescloud.com/sso/acs`」と入力します
+   
+   1. **[ログアウト URL]** ボックスに「`https://holmescloud.com/sso/logout`」と入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 この値を実際の識別子で更新してください。 この値を取得するには、[Holmes クライアント サポート チーム](mailto:team-dev@holmescloud.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は、Holmes Admin ページを参照する実際の識別子に置き換えてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+3. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -103,7 +103,7 @@ Holmes に対して Azure AD SSO を構成してテストするには、次の�
    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -115,15 +115,15 @@ Holmes に対して Azure AD SSO を構成してテストするには、次の�
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンを選択します。
 
 ## <a name="configure-holmes-sso"></a>Holmes の SSO の構成
 
-**Holmes** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Holmes サポート チーム](mailto:team-dev@holmescloud.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Holmes** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を Holmes Admin ページで登録します。 
 
 ### <a name="create-holmes-test-user"></a>Holmes のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Holmes に作成します。 [Holmes サポート チーム](mailto:team-dev@holmescloud.com)と連携して、Holmes プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Holmes で B.Simon というユーザーを作成します。 ユーザーの作成と招待は、Holmes のメンバー管理ページで行うことができます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

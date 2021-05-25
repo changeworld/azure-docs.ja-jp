@@ -1,17 +1,17 @@
 ---
 title: Azure Synapse Analytics のデータをコピーして変換する
 description: Azure Synapse Analytics との間でデータをコピーする方法、および Data Factory を使用して Azure Synapse Analytics のデータを変換する方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 9c843ededd1fa863cc5eb4dc0db3a6da3478466d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: b4c90f8fa7efb002e9bcc243a55ba903002855c8
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597523"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736972"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics のデータをコピーおよび変換する
 
@@ -48,7 +48,7 @@ ms.locfileid: "104597523"
 > [!TIP]
 > 最高のパフォーマンスを実現するには、PolyBase または COPY ステートメントを使用して、Azure Synapse Analytics にデータを読み込みます。 詳細については、「[PolyBase を使用して Azure Synapse Analytics にデータを読み込む](#use-polybase-to-load-data-into-azure-synapse-analytics)」および [COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込む](#use-copy-statement)方法に関するセクションを参照してください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](load-azure-sql-data-warehouse.md)に関する記事をご覧ください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure Synapse Analytics コネクタに固有の Data Factory エンティティを定義するプロパティについて詳しく説明します。
 
@@ -270,8 +270,8 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | ***`partitionSettings` の下:*** | | |
 | partitionColumnName | 並列コピーの範囲パーティション分割で使用される **整数型または日付/日時型** (`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2`、または `datetimeoffset`) のソース列の名前を指定します。 指定しない場合は、テーブルのインデックスまたは主キーが自動的に検出され、パーティション列として使用されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfDynamicRangePartitionCondition ` をフックします。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
-| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定しない場合、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
-| partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定しない場合、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
+| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
+| partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
 
 **以下の点に注意してください。**
 
@@ -833,6 +833,24 @@ Azure Synapse Analytics に固有の設定は、シンク変換の **[設定]** 
 
 ![事前および事後 SQL 処理スクリプト](media/data-flow/prepost1.png "SQL 処理スクリプト")
 
+### <a name="error-row-handling"></a>エラー行の処理
+
+Azure Synapse Analytics に書き込む場合、書き込み先で設定されている制約によって、データの特定の行が失敗することがあります。 一般的なエラーには次のようなものがあります。
+
+*    テーブル内の文字列データまたはバイナリ データが切り捨てられる
+*    列に値 NULL を挿入できない
+*    値をデータ型に変換できない
+
+既定では、データ フローの実行は最初に発生したエラーで失敗します。 **[エラーのまま続行する]** を選択すると、個々の行でエラーが発生した場合でもデータ フローを完了することができます。 Azure Data Factory には、これらのエラー行を処理するためのさまざまなオプションが用意されています。
+
+**[Transaction Commit]\(トランザクション コミット\):** データを 1 つのトランザクションまたはバッチのどちらで書き込むかを選択します。 1 つのトランザクションの場合はパフォーマンスが向上し、トランザクションが完了するまで書き込みデータは他のユーザーに表示されません。 バッチ トランザクションのパフォーマンスは低下しますが、大規模なデータセットを扱うことができます。
+
+**[Output rejected data]\(拒否されたデータの出力\):** 有効にすると、エラー行を Azure Blob Storage または選択した Azure Data Lake Storage Gen2 アカウントの csv ファイルに出力できます。 これにより、3 つの列 (INSERT または UPDATE などの SQL 操作、データ フロー エラー コード、および行のエラー メッセージ) を含むエラー行が書き込まれます。
+
+**[Report success on error]\(エラー発生時に成功を報告\):** 有効にすると、エラー行が見つかった場合でもデータ フローは成功としてマークされます。 
+
+:::image type="content" source="media/data-flow/sql-error-row-handling.png" alt-text="エラー行の処理を示すスクリーンショット" border="false":::
+
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
@@ -858,14 +876,14 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | Datetime                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | Datetimeoffset                        | DateTimeOffset                 |
-| Decimal                               | Decimal (10 進数型)                        |
+| Decimal                               | Decimal                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
 | Float                                 | Double                         |
 | image                                 | Byte[]                         |
 | INT                                   | Int32                          |
-| money                                 | Decimal (10 進数型)                        |
+| money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |
-| numeric                               | Decimal (10 進数型)                        |
+| numeric                               | Decimal                        |
 | nvarchar                              | String, Char[]                 |
 | real                                  | Single                         |
 | rowversion                            | Byte[]                         |

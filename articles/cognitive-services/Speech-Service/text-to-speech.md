@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: テキスト読み上げ
-ms.openlocfilehash: 73e37fde4b3c2dd1aeb6ab171c3726f1b4353949
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: edde973b8b3abf2ef370195d4903927fa9eba9fb
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106090"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732868"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
@@ -46,10 +46,7 @@ ms.locfileid: "107106090"
 
 * SSML で話し方を調整する - 音声合成マークアップ言語 (SSML) は、音声テキスト変換の出力をカスタマイズするために使用される XML ベースのマークアップ言語です。 SSML を使用して、ピッチの調整、一時停止の追加、発音の改善、読み上げ速度の調整、音量の上げ下げ、単一のドキュメントへの複数の音声の割り当てを行うことができます。 話し方の調整については、[方法](speech-synthesis-markup.md)に関するページを参照してください。
 
-* 口形素 - [口形素](how-to-speech-synthesis-viseme.md)は、特定の音素を生成するときの唇、顎、舌の位置などの観察されたスピーチにおける主要な姿勢です。 口形素は、音声と音素との強い相関関係を持っています。 Speech SDK で口形素イベントを使用すると、顔のアニメーション データを生成できます。これは、読唇時のコミュニケーション、教育、エンターテイメント、カスタマー サービスの顔をアニメーションで表現するために使用できます。
-
-> [!NOTE]
-> Viseme イベントは現在、`en-US-AriaNeural` 音声でのみサポートされています。
+* 口形素 - [口形素](how-to-speech-synthesis-viseme.md)は、特定の音素を生成するときの唇、顎、舌の位置などの観察されたスピーチにおける主要な姿勢です。 口形素は、音声と音素との強い相関関係を持っています。 Speech SDK で口形素イベントを使用すると、顔のアニメーション データを生成できます。これは、読唇時のコミュニケーション、教育、エンターテイメント、カスタマー サービスの顔をアニメーションで表現するために使用できます。 Viseme は現在、`en-US` 英語 (米国) の[ニューラル音声](language-support.md#text-to-speech)でのみサポートされています。
 
 ## <a name="get-started"></a>はじめに
 

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Virtual WAN のドキュメント
-summary: Azure 仮想 WAN を構成、作成、管理する方法について説明します。 グローバルなスケールで支社の安全な接続を作成します。
+summary: Azure 仮想 WAN を構成、作成、管理する方法について説明します。 Azure Virtual WAN は、ネットワーク、セキュリティ、ルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。
 metadata:
   title: Virtual WAN のドキュメント
   description: Virtual WAN の説明
@@ -11,12 +11,12 @@ metadata:
   ms.author: cherylmc
   ms.date: 01/15/2020
   ms.custom: e2e-hybrid
-  ms.openlocfilehash: a6a0660d960ad04145288475986f1bd40143b0aa
-  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+  ms.openlocfilehash: 8a5db17d58a96f3669d824d78ba11061cf758e75
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/27/2021
-  ms.locfileid: "108071836"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110080598"
 landingContent:
 - title: Virtual WAN について
   linkLists:
