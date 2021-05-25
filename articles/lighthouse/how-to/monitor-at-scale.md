@@ -1,14 +1,14 @@
 ---
 title: 委任されたリソースを大規模に監視する
 description: 管理下にある顧客テナント全体を対象に、スケーラブルな方法で効率よく Azure Monitor ログを使用する方法について説明します。
-ms.date: 02/11/2021
+ms.date: 05/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 98fd984492276dbdfbc2f8001bca19560764a2a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9490d439b0614c0191843c0a25322f6c0183aa3f
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742587"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751313"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
@@ -31,7 +31,19 @@ ms.locfileid: "101742587"
 Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/logs/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md)、[Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) のいずれかを使用して作成できます。
 
 > [!IMPORTANT]
-> すべてのワークスペースが顧客テナントに作成されている場合でも、管理テナントのサブスクリプションには、Microsoft.Insights リソース プロバイダーも登録する必要があります。
+> すべてのワークスペースが顧客テナントに作成されている場合でも、管理テナントのサブスクリプションには、Microsoft.Insights リソース プロバイダーも登録する必要があります。 管理テナントに既存の Azure サブスクリプションがない場合は、次の PowerShell コマンドを使用してリソース プロバイダーを手動で登録できます。
+>
+> ```powershell
+> $ManagingTenantId = "your-managing-Azure-AD-tenant-id"
+> 
+> # Authenticate as a user with admin rights on the managing tenant
+> Connect-AzAccount -Tenant $ManagingTenantId
+> 
+> # Register the Microsoft.Insights resource providers Application Ids
+> New-AzADServicePrincipal -ApplicationId 1215fb39-1d15-4c05-b2e3-d519ac3feab4
+> New-AzADServicePrincipal -ApplicationId 6da94f3c-0d67-4092-a408-bb5d1cb08d2d 
+> ```
+>
 
 ## <a name="deploy-policies-that-log-data"></a>データのログ記録ポリシーをデプロイする
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/24/2019
+ms.date: 05/04/2021
 ms.author: alkohli
-ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b3a89178648d90d1b9aa54fe7963a1baa7270ef
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91744153"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735942"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く
 
@@ -83,5 +83,9 @@ ms.locfileid: "91744153"
 ## <a name="next-steps"></a>次のステップ
 
 [Data Box Disk に関する問題のトラブルシューティング](data-box-disk-troubleshoot.md)方法を確認します。
+
 [Data Box に関する問題のトラブルシューティング](data-box-troubleshoot.md)方法を確認します。
+
+[Data Box または Data Box Disk デバイスからのアップロードでコピー エラーを確認する](data-box-troubleshoot-data-upload.md)方法を確認します。
+
 [Data Box BLOB ストレージに関する問題のトラブルシューティング](data-box-troubleshoot-rest.md)方法を確認します。
