@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: acf02fcb0d827228bf6709fd871d1248e895f9fd
-  ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+  ms.openlocfilehash: cf4c84aefbf05da66f6e33a3890f022176bfaccf
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100555089"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110059754"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -89,7 +89,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 脅威の管理
+    - text: 資格情報攻撃を管理する
       url: threat-management.md
     - text: ユーザー データの格納場所について
       url: data-residency.md

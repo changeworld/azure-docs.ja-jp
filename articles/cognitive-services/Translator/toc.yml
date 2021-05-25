@@ -3,18 +3,20 @@
 - name: 概要
   expanded: true
   items:
+    - name: Translator とは
+      href: translator-info-overview.md
     - name: 言語サポート
       href: language-support.md
     - name: 価格
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
+    - name: 新機能
+      href: whats-new.md
+    - name: Translator に関する FAQ
+      href: translator-faq.md
 - name: Text Translation
   expanded: true
   items:
-    - name: Translator とは
-      href: translator-info-overview.md
-    - name: Translator に関する FAQ
-      href: 'https://www.microsoft.com/translator/faq.aspx'
-    - name: クイックスタート
+    - name: クイック スタート
       href: quickstart-translator.md
     - name: サンプル
       items:
@@ -50,10 +52,6 @@
           href: dynamic-dictionary.md
         - name: ファイアウォールの内側で翻訳する
           href: firewalls.md
-    - name: 概念
-      items:
-        - name: API が文字数をカウントする方法
-          href: character-counts.md
     - name: チュートリアル
       items:
         - name: Translator の WPF アプリの作成 (C#)
@@ -66,8 +64,6 @@
           href: reference/v3-0-reference.md
         - name: Languages
           href: reference/v3-0-languages.md
-        - name: 利用可能なリージョン
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 要求の制限
           href: request-limits.md
         - name: Translate
@@ -82,7 +78,37 @@
           href: reference/v3-0-dictionary-lookup.md
         - name: 辞書の例
           href: reference/v3-0-dictionary-examples.md
-- name: カスタム変換
+- name: ドキュメント変換
+  items:
+    - name: ドキュメント変換とは
+      href: document-translation/overview.md
+    - name: クイック スタート
+      href: document-translation/get-started-with-document-translation.md
+    - name: 操作方法ガイド
+      items:
+        - name: ドキュメント翻訳用の SAS トークンを作成する
+          href: document-translation/create-sas-tokens.md
+    - name: リファレンス
+      items:
+        - name: サポートされるドキュメントの形式の取得
+          href: document-translation/reference/get-supported-document-formats.md
+        - name: サポートされる用語集の形式の取得
+          href: document-translation/reference/get-supported-glossary-formats.md
+        - name: サポートされるストレージ ソースの取得
+          href: document-translation/reference/get-supported-storage-sources.md
+        - name: 翻訳の開始
+          href: document-translation/reference/start-translation.md
+        - name: ドキュメント状態の取得
+          href: document-translation/reference/get-documents-status.md
+        - name: ドキュメント状態の取得
+          href: document-translation/reference/get-document-status.md
+        - name: 翻訳状態の取得
+          href: document-translation/reference/get-translations-status.md
+        - name: 翻訳状態の取得
+          href: document-translation/reference/get-translation-status.md
+        - name: 翻訳の取り消し
+          href: document-translation/reference/cancel-translation.md
+- name: Custom Translator
   items:
     - name: Custom Translator とは
       href: custom-translator/overview.md
@@ -140,45 +166,9 @@
       items:
         - name: リリース ノート
           href: custom-translator/release-notes.md
-- name: ドキュメント変換
-  items:
-    - name: ドキュメント変換とは
-      href: document-translation/overview.md
-    - name: クイックスタート
-      href: document-translation/get-started-with-document-translation.md
-    - name: 操作方法ガイド
-      items:
-        - name: ドキュメント翻訳用の SAS トークンを作成する
-          href: document-translation/create-sas-tokens.md
-    - name: リファレンス
-      items:
-        - name: サポートされるドキュメントの形式の取得
-          href: document-translation/reference/get-supported-document-formats.md
-        - name: サポートされる用語集の形式の取得
-          href: document-translation/reference/get-supported-glossary-formats.md
-        - name: サポートされるストレージ ソースの取得
-          href: document-translation/reference/get-supported-storage-sources.md
-        - name: 翻訳の開始
-          href: document-translation/reference/start-translation.md
-        - name: ドキュメント状態の取得
-          href: document-translation/reference/get-documents-status.md
-        - name: ドキュメント状態の取得
-          href: document-translation/reference/get-document-status.md
-        - name: 翻訳状態の取得
-          href: document-translation/reference/get-translations-status.md
-        - name: 翻訳状態の取得
-          href: document-translation/reference/get-translation-status.md
-        - name: 翻訳の取り消し
-          href: document-translation/reference/cancel-translation.md
 - name: リソース
   items:
-    - name: リージョンのサポート
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンスと認定資格
       href: 'https://www.microsoft.com/translator/business/notrace/'
-    - name: サポート オプションとヘルプ オプション
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: コード サンプル (GitHub)
       href: 'https://aka.ms/TranslatorGitHub'
-    - name: プライバシーと Cookie
-      href: 'https://privacy.microsoft.com/en-US/privacystatement'

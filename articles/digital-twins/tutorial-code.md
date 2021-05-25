@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 64f18d3217d7f5b7c2feb28190475ef885d4e72b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: bacf9682e8ac9587a664eb7f363f505faa73b383
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203507"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787709"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -43,7 +43,7 @@ Azure Digital Twins を使用する開発者は、Azure Digital Twins サービ�
 
 Azure Digital Twins インスタンスを使用する準備ができたら、クライアント アプリ プロジェクトの設定を開始します。 
 
-ご使用のコンピューターでコマンド プロンプトまたはその他のコンソール ウィンドウを開き、このチュートリアルでの作業を格納する空のプロジェクト ディレクトリを作成します。 ディレクトリに任意の名前を指定します (たとえば、*DigitalTwinsCodeTutorial*)。
+ご使用のマシンでコマンド プロンプトまたはその他のコンソール ウィンドウを開き、このチュートリアルでの作業を格納する空のプロジェクト ディレクトリを作成します。 ディレクトリに任意の名前を指定します (たとえば、*DigitalTwinsCodeTutorial*)。
 
 その新しいディレクトリに移動します。
 
@@ -96,9 +96,9 @@ dotnet add package Azure.Identity
 
 アプリで最初に行う必要があるのは、Azure Digital Twins サービスに対して認証することです。 その後、SDK 関数にアクセスするためのサービス クライアント クラスを作成できます。
 
-認証するには、Azure Digital Twins インスタンスの *hostName* が必要です。
+認証するには、Azure Digital Twins インスタンスの "*ホスト名*" が必要です。
 
-*Program.cs* で、次のコードを "Hello, World!" の 出力行 (`Main` メソッド内) の下に貼り付けます。 `adtInstanceUrl` の値を Azure Digital Twins インスタンスの *hostName* に設定します。
+*Program.cs* で、次のコードを "Hello, World!" の 出力行 (`Main` メソッド内) の下に貼り付けます。 `adtInstanceUrl` の値を Azure Digital Twins インスタンスの "*ホスト名*" に設定します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
@@ -120,7 +120,7 @@ Azure Digital Twins には、組み込みのドメイン ボキャブラリは�
 
 Azure Digital Twins ソリューションを作成するにあたり最初にすべきことは、DTDL ファイル内に少なくとも 1 つのモデルを定義することです。
 
-プロジェクトを作成したディレクトリに、*SampleModel.json* という名前の新しい *.json* ファイルを作成します。 次のファイル本文を貼り付けます。 
+プロジェクトを作成したディレクトリに、SampleModel.json という名前の新しい *.json* ファイルを作成します。 次のファイル本文を貼り付けます。 
 
 :::code language="json" source="~/digital-twins-docs-samples/models/SampleModel.json":::
 
@@ -192,7 +192,7 @@ dotnet run
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Initialize_twins":::
 
-コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 出力で、*sampleTwin-0*、*sampleTwin-1*、および *sampleTwin-2* が作成されたことを示す出力メッセージを探します。 
+コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 出力で、sampleTwin-0、sampleTwin-1、および sampleTwin-2 が作成されたことを示す出力メッセージを探します。 
 
 次に、プログラムを再度実行します。 
 

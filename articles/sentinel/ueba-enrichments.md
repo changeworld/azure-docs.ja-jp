@@ -15,25 +15,58 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 01/04/2021
 ms.author: yelevin
-ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d393b325d30e2136ac08741c4b5010130535300a
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97901629"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664620"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA エンリッチメント リファレンス
 
-以下の表では、セキュリティ インシデントの調査の絞り込みと明確化に使用できるエンティティ エンリッチメントの一覧を示して説明します。
+この記事では、[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)にある **動作分析** の表と、セキュリティ インシデントの調査の絞り込みと明確化に使用できるその他のエンティティのエンリッチメントについて説明します。
 
-最初の 2 つの表である **ユーザー分析情報** と **デバイス分析情報** には、Active Directory と Azure AD および Microsoft 脅威インテリジェンスのソースからのエンティティ情報が含まれます。
+[ユーザー分析情報の表](#user-insights-table)と[デバイス分析情報の表](#device-insights-table)には、Active Directory / Azure AD および Microsoft 脅威インテリジェンスのソースからのエンティティ情報が含まれます。
 
-<a name="baseline-explained"></a>**アクティビティ分析情報の表** 以下にある残りの表には、Azure Sentinel のエンティティ行動分析によって作成される行動プロファイルに基づくエンティティ情報が含まれます。 アクティビティは、使用されるたびに動的にコンパイルされるベースラインに対して分析されます。 各アクティビティには、この動的なベースラインの派生元であるルックバック期間が定義されています。 この期間は、この表の「[**ベースライン**](#activity-insights-tables)」列で指定されています。
+[アクティビティ分析情報の表](#activity-insights-tables)で説明されているその他の表には、Azure Sentinel のエンティティ行動分析によって作成される行動プロファイルに基づくエンティティ情報が含まれます。 
+
+<a name="baseline-explained"></a>ユーザー アクティビティは、使用されるたびに動的にコンパイルされるベースラインに対して分析されます。 各アクティビティには、この動的なベースラインの派生元であるルックバック期間が定義されています。 このルックバック期間は、この表の「[**ベースライン**](#activity-insights-tables)」列で指定されています。
 
 > [!NOTE] 
-> 3 つの表すべての「**エンリッチメント名**」フィールドには、2 行の情報が示されています。 1 行目には、エンリッチメントの "フレンドリ名" が **太字** で示されています。 " *(斜体とかっこ)* " で示された 2 行目は、「[**行動分析テーブル**](identify-threats-with-entity-behavior-analytics.md#data-schema)」に格納されるエンリッチメントのフィールド名です。
+> [[ユーザー分析情報の表]](#user-insights-table)、[[デバイス分析情報の表]](#device-insights-table)、および [[アクティビティ分析情報の表]](#activity-insights-tables) の **[エンリッチメント名]** フィールドには、2 行の情報が表示されます。 
+> 
+> 1 行目には、エンリッチメントの "フレンドリ名" が **太字** で示されています。 " *(斜体とかっこ)* " で示された 2 行目は、「[**行動分析テーブル**](#behavior-analytics-table)」に格納されるエンリッチメントのフィールド名です。
+
+## <a name="behavior-analytics-table"></a>行動分析テーブル
+
+次の表に、Azure Sentinel の各[エンティティの詳細ページ](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)に表示される行動分析データを示します。
+
+| フィールド                     | 説明                                                         |
+|---------------------------|---------------------------------------------------------------------|
+| **TenantId**                  | テナントの一意の ID 番号                                      |
+| **SourceRecordId**            | EBA イベントの一意の ID 番号                                   |
+| **TimeGenerated**             | アクティビティの発生のタイムスタンプ                              |
+| **TimeProcessed**             | EBA エンジンによるアクティビティの処理のタイムスタンプ            |
+| **ActivityType**              | アクティビティの高レベルのカテゴリ                                 |
+| **ActionType**                | アクティビティの標準化名                                     |
+| **UserName**                  | アクティビティを開始したユーザーのユーザー名                    |
+| **UserPrincipalName**         | アクティビティを開始したユーザーの完全なユーザー名               |
+| **EventSource**               | 元のイベントを提供したデータ ソース                        |
+| **SourceIPAddress**           | アクティビティが開始された元の IP アドレス                        |
+| **SourceIPLocation**          | アクティビティが開始された元の国 (IP アドレスからエンリッチ処理済み) |
+| **SourceDevice**              | アクティビティを開始したデバイスのホスト名                  |
+| **DestinationIPAddress**      | アクティビティのターゲットの IP アドレス                            |
+| **DestinationIPLocation**     | アクティビティのターゲットの国 (IP アドレスからエンリッチ処理済み)     |
+| **DestinationDevice**         | ターゲット デバイスの名前                                           |
+| **UsersInsights**         | 関連するユーザーのコンテキスト エンリッチメント                            |
+| **DevicesInsights**       | 関連するデバイスのコンテキスト エンリッチメント                          |
+| **ActivityInsights**      | プロファイリングに基づくアクティビティのコンテキスト分析              |
+| **InvestigationPriority** | 0 ～ 10 の異常スコア (0=無害、10=きわめて異常)         |
+|
 
 ## <a name="user-insights-table"></a>ユーザー分析情報の表
+
+次の表は、Azure Sentinel の **ユーザー分析情報** の表にリストされている <?> について説明しています (場所)
 
 | エンリッチメント名 | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -64,7 +97,7 @@ ms.locfileid: "97901629"
 
 ## <a name="activity-insights-tables"></a>アクティビティ分析情報の表
 
-#### <a name="action-performed"></a>実行されたアクション
+### <a name="action-performed"></a>実行されたアクション
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -75,7 +108,7 @@ ms.locfileid: "97901629"
 | **Action uncommonly performed in tenant** (テナントであまり実行されないアクション)<br>*(ActionUncommonlyPerformedInTenant)* | 180 | その組織ではそのアクションをあまり実行しません。 | True、False |
 |
 
-#### <a name="app-used"></a>使用されたアプリ
+### <a name="app-used"></a>使用されたアプリ
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -86,7 +119,7 @@ ms.locfileid: "97901629"
 | **App uncommonly used in tenant** (テナントであまり使用されないアプリ)<br>*(AppUncommonlyUsedInTenant)* | 180 | そのアプリはその組織ではあまり使用されません。 | True、False |
 | 
 
-#### <a name="browser-used"></a>使用されたブラウザー
+### <a name="browser-used"></a>使用されたブラウザー
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -97,7 +130,7 @@ ms.locfileid: "97901629"
 | **Browser uncommonly used in tenant** (テナントであまり使用されないブラウザー)<br>*(BrowserUncommonlyUsedInTenant)* | 30 | そのブラウザーはその組織ではあまり使用されません。 | True、False |
 | 
 
-#### <a name="country-connected-from"></a>接続元の国
+### <a name="country-connected-from"></a>接続元の国
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -108,7 +141,7 @@ ms.locfileid: "97901629"
 | **Country uncommonly connected from in tenant** (テナントであまり接続されない国)<br>*(CountryUncommonlyConnectedFromInTenant)* | 90 | IP アドレスからの解決で、テナントはその地域からあまり接続されません。 | True、False |
 | 
 
-#### <a name="device-used-to-connect"></a>接続に使用されたデバイス
+### <a name="device-used-to-connect"></a>接続に使用されたデバイス
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -119,7 +152,7 @@ ms.locfileid: "97901629"
 | **Device uncommonly used in tenant** (テナントであまり使用されないデバイス)<br>*(DeviceUncommonlyUsedInTenant)* | 180 | そのデバイスはその組織ではあまり使用されません。 | True、False |
 | 
 
-#### <a name="other-device-related"></a>その他のデバイス関連
+### <a name="other-device-related"></a>その他のデバイス関連
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -127,7 +160,7 @@ ms.locfileid: "97901629"
 | **Device family uncommonly used in tenant** (テナントであまり使用されないデバイス ファミリ)<br>*(DeviceFamilyUncommonlyUsedInTenant)* | 30 | そのデバイス ファミリはその組織ではあまり使用されません。 | True、False |
 | 
 
-#### <a name="internet-service-provider-used-to-connect"></a>接続に使用されたインターネット サービス プロバイダー
+### <a name="internet-service-provider-used-to-connect"></a>接続に使用されたインターネット サービス プロバイダー
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -138,7 +171,7 @@ ms.locfileid: "97901629"
 | **ISP uncommonly used in tenant** (テナントであまり使用されない ISP)<br>*(ISPUncommonlyUsedInTenant)* | 30 | その ISP はその組織ではあまり使用されません。 | True、False |
 | 
 
-#### <a name="resource-accessed"></a>アクセス先のリソース
+### <a name="resource-accessed"></a>アクセス先のリソース
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
@@ -149,7 +182,7 @@ ms.locfileid: "97901629"
 | **Resource uncommonly accessed in tenant** (テナントがあまりアクセスしないリソース)<br>*(ResourceUncommonlyAccessedInTenant)* | 180 | その組織はそのリソースにあまりアクセスしません。 | True、False |
 | 
 
-#### <a name="miscellaneous"></a>その他
+### <a name="miscellaneous"></a>その他
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |

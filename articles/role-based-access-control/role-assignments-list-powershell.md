@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bf5445f6ca04e56aab466e97967a58c3e4b735a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac1c623f3ac136f1e16a92d47995c1067818e926
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556944"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787469"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure でのロールの割り当てを一覧表示する
 
@@ -28,7 +28,7 @@ ms.locfileid: "100556944"
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 組織で、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
+> 組織で、[Azure Lighthouse](../lighthouse/overview.md) を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって認可されているロールの割り当てはここに表示されません。
 
 ## <a name="prerequisites"></a>前提条件
 

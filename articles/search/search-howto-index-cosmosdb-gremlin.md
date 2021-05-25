@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/11/2021
-ms.openlocfilehash: 2d247f9e1529b7667e52f33a4a22841b8933fbaf
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: a1181af6bf7f8c734d7cb90c7e9bb28c22e00b08
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163069"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517984"
 ---
 # <a name="how-to-index-data-available-through-cosmos-db-gremlin-api-using-an-indexer-preview"></a>Cosmos DB Gremlin API を介して使用できるデータに、インデクサーを使用してインデックスを付ける方法 (プレビュー)
 
@@ -24,9 +24,9 @@ ms.locfileid: "108163069"
 > このプレビューでは、[REST API バージョン 2020-06-30-Preview](search-api-preview.md) を使用することをお勧めします。 現時点で、ポータルによるサポートは制限されており、.NET SDK によるサポートはありません。
 
 > [!WARNING]
-> Azure Cognitive Search で Gremlin API を使用して Cosmos DB のデータにインデックスを付けるには、[Cosmos DB 独自のインデックス作成](https://docs.microsoft.com/azure/cosmos-db/index-overview)も有効にして、[[Consistent]\(一致\)](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) に設定する必要があります。 これは Cosmos DB の既定の構成です。 Azure Cognitive Search のインデックス作成は、Cosmos DB のインデックス作成が事前に有効になっていないと機能しません。
+> Azure Cognitive Search で Gremlin API を使用して Cosmos DB のデータにインデックスを付けるには、[Cosmos DB 独自のインデックス作成](../cosmos-db/index-overview.md)も有効にして、[[Consistent]\(一致\)](../cosmos-db/index-policy.md#indexing-mode) に設定する必要があります。 これは Cosmos DB の既定の構成です。 Azure Cognitive Search のインデックス作成は、Cosmos DB のインデックス作成が事前に有効になっていないと機能しません。
 
-[Azure Cosmos DB のインデックス作成](https://docs.microsoft.com/azure/cosmos-db/index-overview)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)は、それぞれのサービスに固有の異なる操作です。 Azure Cognitive Search のインデックス作成を開始する前に、Azure Cosmos DB データベースが既に存在している必要があります。
+[Azure Cosmos DB のインデックス作成](../cosmos-db/index-overview.md)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)は、それぞれのサービスに固有の異なる操作です。 Azure Cognitive Search のインデックス作成を開始する前に、Azure Cosmos DB データベースが既に存在している必要があります。
 
 この記事では、Gremlin API を使用して Azure Cosmos DB のコンテンツにインデックスを付けるよう Azure Cognitive Search を構成する方法について説明します。 このワークフローでは、Azure Cognitive Search インデックスを作成し、Gremlin API を使用して Azure Cosmos DB から抽出された既存のテキストと共にそれを読み込みます。
 
@@ -147,6 +147,7 @@ ms.locfileid: "108163069"
 パーティション分割されたコレクションの場合、既定のドキュメント キーは Azure Cosmos DB の `_rid` プロパティですが、フィールド名の先頭にはアンダースコア文字を使用できないため、この名前は Azure Cognitive Search によって `rid` に自動的に変更されます。 また、Azure Cosmos DB の `_rid` 値には、Azure Cognitive Search キーでは無効な文字が含まれています。 このため、`_rid` 値をドキュメント キーにする場合は、Base64 でエンコードする必要があります。
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>JSON データ型と Azure Cognitive Search データ型間のマッピング
+
 | JSON データ型 | 互換性のあるターゲット インデックス フィールドの型 |
 | --- | --- |
 | Bool |Edm.Boolean、Edm.String |
@@ -292,5 +293,6 @@ Cosmos DB Gremlin API インデクサーによって、一部のグラフ デー
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure Cosmos DB Gremlin API について詳しくは、「[Azure Cosmos DB の概要: Gremlin API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)」をご覧ください。
-* Azure Cognitive Search について詳しくは、[Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。
++ Azure Cosmos DB Gremlin API について詳しくは、[Azure Cosmos DB の概要: Gremlin API]() /cosmos-db/graph-introduction.md) に関するページをご覧ください。
+
++ Azure Cognitive Search のシナリオと価格の詳細については、[azure.microsoft.com の Search Service に関するページ](https://azure.microsoft.com/services/search/)を参照してください。

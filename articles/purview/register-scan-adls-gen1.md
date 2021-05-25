@@ -6,13 +6,13 @@ ms.author: sandeepshah
 ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: a831681f892de9f6aae50fa9a2fcf71e883fe6ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 98de0156eca9269b2a274aa3ca2027112b7b4043
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693716"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655492"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の登録とスキャン
 
@@ -128,10 +128,12 @@ Data Catalog の MSI を使用してスキャンを設定するには、まず�
 [ソースの登録 (Azure Data Lake Storage Gen1)] 画面で、次の手順を行います。
 
 1. データ ソースがカタログに表示されるときの **名前** を入力します。
-2. サブスクリプションを選択して、ストレージ アカウントをフィルター処理します
-3. Select a storage account (ストレージ アカウントを選択する)
-4. コレクションを選択するか、新しいものを作成します (省略可能)
-5. データ ソースの登録を終了します。
+2. サブスクリプションを選択して、ストレージ アカウントをフィルター処理します。
+3. ストレージ アカウントを選択します。
+4. コレクションを選択するか、新しいものを作成します (省略可能)。
+5. **[登録]** を選択してデータ ソースを登録します。
+
+:::image type="content" source="media/register-scan-adls-gen1/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 

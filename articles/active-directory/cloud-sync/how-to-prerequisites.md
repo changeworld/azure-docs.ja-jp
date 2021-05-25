@@ -11,12 +11,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0277d4ce263610576178e3844a0665ab6506fbfa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cd2d660a0591506b59aaa1b11526175582d2785b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579163"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758773"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド同期を選択して使用する方法に関するガイダンスを示します。
@@ -116,7 +116,7 @@ TLS 1.2 を有効にするには、次の手順に従います。
 
 ### <a name="delta-synchronization"></a>差分同期
 
-- 差分同期のグループ スコープ フィルターでは、1,500 人を超えるメンバーはサポートされません。
+- 差分同期のグループ スコープ フィルターでは、50,000 人を超えるメンバーはサポートされません。
 - グループ スコープ フィルターの一部として使用されているグループを削除すると、そのグループのメンバーであるユーザーが削除されません。 
 - スコープ内の OU またはグループの名前を変更すると、差分同期を実行してもユーザーが削除されません。
 
@@ -125,6 +125,11 @@ TLS 1.2 を有効にするには、次の手順に従います。
 
 ### <a name="group-re-naming-or-ou-re-naming"></a>グループ名の変更または OU 名の変更
 - 特定の構成のスコープ内にある AD でグループまたは OU の名前を変更すると、クラウド同期ジョブによって AD での名前の変更が認識されなくなります。 ジョブは検疫されず、正常な状態のままになります。
+
+### <a name="scoping-filter"></a>スコープ フィルター
+OU スコープ フィルターを使用する場合
+- 特定の構成に対して同期できるのは、最大 59 の個別の OU のみです。 
+- 入れ子になった OU がサポートされています (つまり、130 の入れ子になった OU を持つ OU を同期 **できます** が、同じ構成で 60 の個別の OU を同期することは **できません**)。 
 
 
 ## <a name="next-steps"></a>次のステップ 

@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6b6e6de7eba912fec62adf7c661128afadec0bf6
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 4e9c989131a4d2df37bb957f5da964354ce9d47b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208799"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788946"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Twins を Azure SignalR Service と統合する
 
@@ -45,7 +45,7 @@ ms.locfileid: "108208799"
 
 最初に、必要なサンプル アプリをダウンロードします。 次の両方が必要になります。
 * [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): このサンプルには、Azure Digital Twins インスタンスにデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、「[チュートリアル:エンド ツー エンドのソリューションの接続](tutorial-end-to-end.md)」に関するページを参照)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。
-    - 「[前提条件](#prerequisites)」にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、[サンプルにアクセス](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。サンプルは、" *[Code]\(コード\)* " ボタンと、" *[Download ZIP]\(ZIP のダウンロード\)* " を選択して、 *.ZIP* としてダウンロードできます。
+    - 「[前提条件](#prerequisites)」にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、[サンプルにアクセス](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、.zip 形式でこれをダウンロードできます。
 
         :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリの図。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/includes/download-repo-zip.png":::
 
@@ -78,7 +78,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
     これにより、そのクラスに含まれる依存関係の問題が解決されます。
 
-1. 「*エンド ツー エンドのソリューションを接続する*」のチュートリアルの[「アプリの発行」セクション](tutorial-end-to-end.md#publish-the-app)で説明されている手順を使用して、関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 
+1. 「*エンド ツー エンドのソリューションを接続する*」のチュートリアルの [「アプリの発行」セクション](tutorial-end-to-end.md#publish-the-app)で説明されている手順を使用して、関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 
 
 次に、Azure SignalR インスタンスと通信するように関数を構成します。 まず、SignalR インスタンスの **接続文字列** を収集し、関数アプリの設定に追加します。
 
@@ -91,7 +91,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 1. 最後に、次の Azure CLI コマンドを使用して、Azure SignalR の **接続文字列** を関数のアプリ設定に追加します。 また、プレースホルダーを、[チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)のリソース グループと App Service/関数アプリの名前に置き換えます。 このコマンドは、[Azure Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
  
     ```azurecli-interactive
-    az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
+    az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
     このコマンドの出力では、Azure 関数用に設定されたすべてのアプリ設定が出力されます。 一覧の下部で `AzureSignalRConnectionString` を検索して、それが追加されていることを確認します。
@@ -111,13 +111,13 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 *[イベント サブスクリプションの作成]* ページで、各フィールドに次のように入力します (既定値が入力されるフィールドは省略しています)。
 * *[イベント サブスクリプションの詳細]*  >  **[名前]** : イベント サブスクリプションに名前を付けます。
 * *[エンドポイントの詳細]*  >  **[エンドポイントのタイプ]** : メニュー オプションから *[Azure 関数]* を選択します。
-* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[エンドポイントの選択]* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。
+* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[Select an endpoint]\(エンドポイントを選択する\)* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。
     - **サブスクリプション**、**リソース グループ**、**関数アプリ**、**関数** (*broadcast*) を入力します。 そのいくつかは、サブスクリプションの選択後に自動的に入力されます。
-    - **[選択の確認]** をクリックします。
+    - **[選択の確認]** を選択します。
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="イベント サブスクリプションの作成の Azure portal ビュー。上記のフィールドが入力され、[選択の確認] および [作成] ボタンが強調表示されています。":::
 
-再び *[イベント サブスクリプションの作成]* ページで、 **[作成]** をクリックします。
+再び *[イベント サブスクリプションの作成]* ページで、 **[作成]** を選択します。
 
 この時点で、 *[Event Grid Topic]\(Event Grid トピック\)* ページに 2 つのイベント サブスクリプションが表示されます。
 
@@ -135,7 +135,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="メニューで [関数] が強調表示されている、関数アプリの Azure portal ビュー。このページには関数の一覧が表示され、&quot;negotiate&quot; 関数も強調表示されています。":::
 
-1. *[関数の URL の取得]* をクリックし、**_/api_ までの値 (最後の _/negotiate?_ は含めないでください)** をコピーします。 これは次の手順で使用します。
+1. *[関数の URL の取得]* を選択し、**_/api_ までの値 (最後の _/negotiate?_ は含めないでください)** をコピーします。 これは次の手順で使用します。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="&quot;negotiate&quot; 関数の Azure portal ビュー。[関数の URL の取得] ボタンと、URL の先頭から &quot;/api&quot; までの部分が強調表示されています":::
 
@@ -157,7 +157,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 次に、Azure Portal で関数アプリでのアクセス許可を設定します。
 1. Azure portal の [[関数アプリ]](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) ページで、関数アプリ インスタンスを選択します。
 
-1. インスタンスのメニューを下にスクロールし、 *[CORS]* を選択します。 [CORS] ページで、空のボックスに `http://localhost:3000` を入力して、許可された配信元として追加します。 *[Access-Control-Allow-Credentials を有効にする]* ボックスをオンにして、 *[保存]* をクリックします。
+1. インスタンスのメニューを下にスクロールし、 *[CORS]* を選択します。 [CORS] ページで、空のボックスに `http://localhost:3000` を入力して、許可された配信元として追加します。 *[Access-Control-Allow-Credentials を有効にする]* ボックスをオンにして、 *[保存]* を選択します。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Azure 関数での CORS 設定":::
 

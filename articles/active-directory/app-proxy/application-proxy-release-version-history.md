@@ -11,17 +11,17 @@ ms.date: 04/27/2021
 ms.subservice: app-proxy
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2062b957a751d80bb278fe830688b1db3cfa5dfe
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: c340d0b51e1d4326bba575094491cdd5ea756616
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186808"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764389"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
-この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。 
+この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、[新しいメジャー バージョンがリリースされると自動的に更新されます](application-proxy-faq.yml#why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version-)。 
 
-最新の機能とバグの修正が適用されるように、コネクタの自動更新が有効になっていることを確認することをお勧めします。 Microsoft では、コネクタの最新バージョンと 1 つ前のバージョンを直接サポートしています。
+最新の機能とバグの修正が適用されるように、コネクタの自動更新が有効になっていることを確認することをお勧めします。 問題を解決するために、Microsoft サポートから最新バージョンのコネクタをインストールするように求められる場合があります。
 
 以下は、関連リソースの一覧です。
 
@@ -35,7 +35,7 @@ ms.locfileid: "108186808"
 
 ### <a name="release-status"></a>リリースの状態
 
-2020 年 7 月 22 日: ダウンロード対象としてリリース済み。このバージョンは、ダウンロードページからのみインストールできます。 このバージョンの自動アップグレード リリースは、後でリリースされる予定です。
+2020 年 7 月 22 日: ダウンロード対象としてリリース済み。このバージョンは、ダウンロードページからのみインストールできます。 
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 -   Azure Government クラウド環境のサポートが強化されました。 Azure Government クラウドのコネクタを正しくインストールする手順については、[前提条件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls)と[インストール手順](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)を確認してください。
@@ -51,7 +51,7 @@ ms.locfileid: "108186808"
 
 ### <a name="release-status"></a>リリースの状態
 
-2020 年 7 月 17 日: ダウンロード対象としてリリース済み。 このバージョンは、ダウンロードページからのみインストールできます。 このバージョンの自動アップグレード リリースは、後でリリースされる予定です。
+2020 年 7 月 17 日: ダウンロード対象としてリリース済み。 このバージョンは、ダウンロードページからのみインストールできます。 
 
 ### <a name="fixed-issues"></a>修正された問題
 - 以前のバージョンで発生したメモリ リークの問題を解決しました
@@ -61,7 +61,7 @@ ms.locfileid: "108186808"
 
 ### <a name="release-status"></a>リリースの状態
 
-2020 年 4 月 7 日: ダウンロード対象としてリリース済み。このバージョンは、ダウンロードページからのみインストールできます。 このバージョンの自動アップグレード リリースは、後でリリースされる予定です。
+2020 年 4 月 7 日: ダウンロード対象としてリリース済み。このバージョンは、ダウンロードページからのみインストールできます。 
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 -   コネクタはすべての接続に TLS 1.2 のみを使用します。 詳細については、[コネクタの前提条件](application-proxy-add-on-premises-application.md#prerequisites)に関する記事を参照してください。

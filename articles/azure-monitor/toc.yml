@@ -47,8 +47,6 @@
       href: logs/get-started-queries.md
     - name: ログ クエリからダッシュボードを作成する
       href: visualize/tutorial-logs-dashboards.md
-    - name: ログ クエリからアラートを作成する
-      href: alerts/tutorial-response.md
     - name: パフォーマンスとスケジュールに基づく自動スケール
       href: autoscale/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
@@ -372,6 +370,9 @@
             - name: データ コレクション
               displayname: 'data collection rule,Azure Monitor agent'
               href: agents/data-collection-rule-azure-monitor-agent.md
+            - name: よく寄せられる質問
+              displayname: Azure Monitor agent FAQ
+              href: faq.md#azure-monitor-agent-preview
         - name: Log Analytics エージェント
           items:
             - name: 概要
@@ -649,15 +650,15 @@
               items:
                 - name: Web Apps
                   displayname: java
-                  href: app/java-get-started.md
+                  href: app/java-2x-get-started.md
                 - name: ログ トレース
-                  href: app/java-trace-logs.md
+                  href: app/java-2x-trace-logs.md
                 - name: 依存関係
-                  href: app/java-agent.md
+                  href: app/java-2x-agent.md
                 - name: テレメトリのフィルター処理
-                  href: app/java-filter-telemetry.md
+                  href: app/java-2x-filter-telemetry.md
                 - name: トラブルシューティング
-                  href: app/java-troubleshoot.md
+                  href: app/java-2x-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
             - name: Python
@@ -787,6 +788,8 @@
             - name: 複数ステップ テスト
               displayname: 'availability, GSM, visual studio web test, web test'
               href: app/availability-multistep.md
+            - name: プライベート テスト
+              href: app/availability-private-test.md
             - name: 可用性 + Azure Functions
               href: app/availability-azure-functions.md
               displayname: 'availability,azure functions,TrackAvailability(), timer function, azure gov, azure china, custom test, customized tests, contentmatch'
@@ -1442,10 +1445,10 @@
         - name: Key Vault Analytics (非推奨)
           href: insights/azure-key-vault-deprecated.md
         - name: Unix メトリック
-          href: app/java-collectd.md
+          href: app/java-2x-collectd.md
         - name: Micrometer メトリック
           displayname: java
-          href: app/micrometer-java.md
+          href: app/java-2x-micrometer.md
         - name: ビュー
           items:
             - name: ビュー デザイナー

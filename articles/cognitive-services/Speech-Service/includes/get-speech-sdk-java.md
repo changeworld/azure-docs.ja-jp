@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 6897bf9b4ccce71048af88a3108e3d87d17a375d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b283166bb4c345a25d77c3ee40af486aa1d9f5f7
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434493"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109805455"
 ---
 :::row:::
     :::column span="3":::
-        Android用Java SDKは、必要なライブラリとAndroid許可を含む <a href="https://developer.android.com/studio/projects/android-library" target="_blank">AAR　(Android ライブラリ） </a>としてパッケージ化されています。 これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:1.15.0` としてホストされます。
+        Android用Java SDKは、必要なライブラリとAndroid許可を含む <a href="https://developer.android.com/studio/projects/android-library" target="_blank">AAR　(Android ライブラリ） </a>としてパッケージ化されています。 これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:1.16.0` としてホストされます。 ([GitHub リポジトリを検索](https://github.com/Azure-Samples/cognitive-services-speech-sdk/search?q=com.microsoft.cognitiveservices.speech%3Aclient-sdk.)して、1.16.0 が最新バージョンであることを確認します)
     :::column-end:::
     :::column:::
         <br>
         <div class="icon is-large">
-            <img alt="Java" src="https://docs.microsoft.com/media/logos/logo_java.svg" width="60px">
+            <img alt="Java" src="/media/logos/logo_java.svg" width="60px">
         </div>
     :::column-end:::
 :::row-end:::
@@ -32,7 +32,7 @@ ms.locfileid: "102434493"
 
 2. モジュールレベルでの *build.grandle* ファイルで、`dependencies` セクションに次のものを追加します：
   ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.15.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.16.0'
   ```
 
 Java SDK は [Speech Devices SDK](../speech-devices-sdk.md) の一部でもあります。

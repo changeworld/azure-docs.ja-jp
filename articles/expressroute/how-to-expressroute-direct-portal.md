@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 05/05/2021
 ms.author: duau
-ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b659fee979fd936a85c0cd5a711390594bbe79b1
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097076"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795766"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Azure portal を使用して ExpressRoute Direct を作成する
 
@@ -81,7 +81,13 @@ ExpressRoute Direct を利用する前に、まず、サブスクリプション
 
 ## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>承認状 (LOA) を生成する
 
-現時点では、ポータルから承認状を生成することはできません。 **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** を使用して、承認状を取得します。
+1. ExpressRoute ダイレクト リソースの 概要 ページに移動し、**Generate Letter of Authorization**\(認証の生成\) を選択します。
+
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/overview.png" alt-text="[概要] ページの承認の文字を生成するボタンのスクリーンショット。":::
+
+1. 会社名を入力し、 **[ダウンロード]** を選択して文字を生成します。
+
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/letter-of-authorization-page.png" alt-text="承認の文字のページのスクリーンショット。":::
 
 ## <a name="change-admin-state-of-links"></a><a name="state"></a>リンクの管理状態を変更する
 

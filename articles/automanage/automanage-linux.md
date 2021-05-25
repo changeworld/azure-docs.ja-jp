@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: fb3c1a7826eaf61476a804159199e83e23ebad3e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 900c6f08bfda1efc995016209423e3f4d8fa7d95
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209681"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803232"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---linux"></a>Azure Automanage for virtual machines のベスト プラクティス - Linux
 
@@ -26,8 +26,8 @@ Linux VM で Automanage for virtual machines (VM) を使用する場合、これ
 
 Automanage によって、次の Linux ディストリビューションとバージョンがサポートされています。
 
-- CentOS 7.3 以上
-- RHEL 7.4 以上
+- CentOS 7.3+、8
+- RHEL 7.4+、8
 - Ubuntu 16.04 および 18.04
 - SLES 12 (SP3 から SP5 のみ)
 

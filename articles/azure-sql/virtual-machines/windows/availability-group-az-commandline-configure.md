@@ -14,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: ffd4ec6eff94589abbc8af70ecf9c0f7dc168962
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4a3c48a5be457a7e789c4ce05d4faf8cbb50daab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766935"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769779"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>PowerShell または Az CLI を使用して Azure VM で SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,6 +29,9 @@ ms.locfileid: "107766935"
 可用性グループのデプロイは、引き続き SQL Server Management Studio (SSMS) または Transact-SQL (T-SQL) を使用して手動で実行されます。 
 
 この記事では PowerShell と Az CLI を使用して可用性グループ環境を構成しますが、 [Azure portal](availability-group-azure-portal-configure.md)から [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
+
+> [!NOTE]
+> これで、Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 

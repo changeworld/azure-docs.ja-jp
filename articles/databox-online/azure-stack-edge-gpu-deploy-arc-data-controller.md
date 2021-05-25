@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d56e03cd650032a775c30b02d939cf934f384fae
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: ebccfdad883242411b4f45b717553ebd25ee69a9
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568609"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633521"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Data Services を Azure Stack Edge Pro GPU デバイスにデプロイする
 
@@ -21,7 +21,7 @@ ms.locfileid: "107568609"
 
 この記事では、Azure Arc データ コントローラーを作成した後、Azure Data Services を Azure Stack Edge Pro GPU デバイスにデプロイするプロセスについて説明します。 
 
-Azure Arc データ コントローラーは、カスタマー マネージド環境で Azure Data Services を使用できるようにするローカル コントロール プレーンです。 Azure Stack Edge Pro GPU デバイス上で実行されている Kubernetes クラスターで Azure Arc Data Controller を作成すると、そのデータ コントローラーに SQL Managed Instance (プレビュー) などの Azure Data Services をデプロイできます。
+Azure Arc データ コントローラーは、カスタマー マネージド環境で Azure Data Services を使用できるようにするローカル コントロール プレーンです。 Azure Stack Edge Pro GPU デバイス上で実行されている Kubernetes クラスターで Azure Arc Data Controller を作成すると、そのデータ コントローラーに SQL Managed Instance などの Azure Data Services をデプロイできます。
 
 データ コントローラーを作成して SQL Managed Instance をデプロイする手順には、PowerShell と、デバイス上の Kubernetes クラスターにコマンド ラインでアクセスできるネイティブ ツールである `kubectl` を使用します。
 

@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 04/22/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 68672ccc93871a3baa26da81a25a31d1850ef599
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 298a94f20b12ae6e965441a3a7492e99e7c71e22
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897075"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795062"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
 Azure NetApp Files レプリケーション機能を使用すると、リージョンをまたがるボリュームのレプリケーションにおいてデータを保護できます。 あるリージョンの Azure NetApp Files ボリューム (ソース) から別のリージョンにある別の Azure NetApp Files ボリューム (コピー先) にデータを非同期的にレプリケートできます。  この機能により、リージョン全体が停止したり障害が発生した場合に、重要なアプリケーションをフェールオーバーすることができます。
 
 > [!IMPORTANT]
-> リージョン間レプリケーションの機能は、現在パブリック プレビュー段階です。 [Azure NetApp Files のリージョン間レプリケーションの順番待ち送信ページ](https://aka.ms/anfcrrpreviewsignup)から、機能にアクセスするための順番待ちリクエストを送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってからリージョン間レプリケーション機能を使用してください。
+> リージョン間レプリケーションの機能は、現在プレビュー段階です。 [Azure NetApp Files のリージョン間レプリケーションの順番待ち送信ページ](https://aka.ms/anfcrrpreviewsignup)から、機能にアクセスするための順番待ちリクエストを送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってからリージョン間レプリケーション機能を使用してください。
 
 ## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>サポートされているリージョン間レプリケーション ペア
 

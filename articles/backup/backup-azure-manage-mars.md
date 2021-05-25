@@ -3,13 +3,13 @@ title: MARS エージェントのバックアップを管理および監視す�
 description: Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理および監視する方法について説明します。
 ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 10/07/2019
-ms.openlocfilehash: 4306f01d608542f7453b32b32a1a6894c2379159
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/29/2021
+ms.openlocfilehash: 5e495a5a5750ce2a2375000d208d9856ce68d803
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515024"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516688"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -94,9 +94,8 @@ ms.locfileid: "107515024"
   - 有効期限になっていない復旧ポイントのバックアップ データを復元することができます。
   - 保護を再開する場合は、*バックアップ スケジュールを再有効化する* オプションを使用できます。 その後は、新しいアイテム保持ポリシーに基づいてデータが保持されます。
 - **保護を停止してバックアップ データを削除します**。
-  - このオプションでは、今後、バックアップ ジョブによるデータの保護がすべて停止され、すべての復旧ポイントが削除されます。
-  - ユーザーは、バックアップ データの削除に関するアラート メールを受信します。このメールには、"*Your data for this Backup item has been deleted. (このバックアップ項目のデータは削除されました。)This data will be temporarily available for 14 days, after which it will be permanently deleted (このデータは 14 日間一時的に使用できるようになり、その後、完全に削除されます)* " というメッセージと、"*Reprotect the Backup item within 14 days to recover your data. (データを復旧するには、14 日以内にバックアップ項目を再保護してください。)* という推奨される操作が記載されています。
-  - 保護を再開するには、削除操作から 14 日以内に再保護します。
+  - このオプションを選択すると、今後のすべてのバックアップ ジョブでデータが保護されなくなります。 コンテナーのセキュリティ機能が有効になっていない場合は、すべての復旧ポイントが直ちに削除されます。<br>セキュリティ機能が有効になっている場合、削除は 14 日後に行われ、アラート メールが届きます。このメールには、"*Your data for this Backup item has been deleted. (このバックアップ項目のデータは削除されました。)This data will be temporarily available for 14 days, after which it will be permanently deleted (このデータは 14 日間一時的に使用できるようになり、その後、完全に削除されます)* " というメッセージと、"*Reprotect the Backup item within 14 days to recover your data. (データを復旧するには、14 日以内にバックアップ項目を再保護してください。)* " という推奨される操作が記載されています。<br>この状態でアイテム保持ポリシーは引き続き適用され、バックアップ データは課金対象のままになります。 コンテナーのセキュリティ機能を有効にする方法の詳細については、[こちらを](backup-azure-security-feature.md#enable-security-features)参照してください。
+  - 保護を再開するには、削除操作から 14 日以内にサーバーを再保護します。 この期間中、別のサーバーにデータを復元することもできます。
 
 ### <a name="stop-protection-and-retain-backup-data"></a>保護を停止してバックアップ データを保持する
 

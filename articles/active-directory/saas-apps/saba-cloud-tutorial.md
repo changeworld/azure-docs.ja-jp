@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 493ec8ccc46ea5c2763f3a0159891fe9cbea142c
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 7622b3bb50139ddfdce53bb7e765db5aac90eff3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209249"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-cloud"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Saba Cloud の統合
 
@@ -79,9 +79,12 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`<CUSTOMER_NAME>_SPLN_PRINCIPLE` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`<CUSTOMER_NAME>_sp` というパターンを使用して URL を入力します (この値は、「Saba Cloud の SSO の構成」セクションの手順 6. で取得しますが、通常は `<CUSTOMER_NAME>_sp` の形式になっています)。
 
-    b. **[応答 URL]** ボックスに、`https://<SIGN-ON URL>/Saba/saml/SSO/alias/<ENTITY_ID>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<CUSTOMER_NAME>.sabacloud.com/Saba/saml/SSO/alias/<ENTITY_ID>` というパターンを使用して URL を入力します。ENTITY_ID には、前の手順で使用した値 (通常は `<CUSTOMER_NAME>_sp`) を指定してください。
+    
+    > [!NOTE]
+    > 応答 URL の指定に誤りがある場合、 **[エンタープライズ アプリケーション]** セクションではなく、Azure AD の **[アプリの登録]** セクションで調整する必要があります。 **[基本的な SAML 構成]** セクションに変更を加えても、応答 URL が更新されるとは限りません。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -90,10 +93,13 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
     b. `IDP_INIT---SAML_SSO_SITE=<SITE_ID> ` というパターンを使用して URL を **[リレー状態]** ボックスに入力します。または、SAML がマイクロサイト用に構成されている場合は、`IDP_INIT---SAML_SSO_SITE=<SITE_ID>---SAML_SSO_MICRO_SITE=<MicroSiteId>` というパターンを使用して URL を入力します。
 
     > [!NOTE]
-    > RelayState の構成の詳細については、[こちら](https://help.sabacloud.com/sabacloud/help-system/topics/help-system-idp-and-sp-initiated-sso-for-a-microsite.html)のリンクを参照してください。
-
-    > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL、リレー状態でこれらの値を更新します。 これらの値を取得するには、[Saba Cloud クライアント サポート チーム](mailto:support@saba.com)にご連絡ください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 
+    > RelayState の構成の詳細については、「[マイクロサイトの IdP Initiated SSO と SP Initiated SSO](https://help.sabacloud.com/sabacloud/help-system/topics/help-system-idp-and-sp-initiated-sso-for-a-microsite.html)」を参照してください。
+
+1. **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、一意のユーザー ID を調整します。Saba ユーザーのプライマリ ユーザー名として使用する予定の ID を使用してください。
+
+   この手順が必要になるのは、ユーザー名とパスワードから SSO への変換を試みる場合のみです。 まだユーザーがいない新しい Saba Cloud デプロイである場合、この手順はスキップしてかまいません。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -153,6 +159,8 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
 1. **[Configure Properties]\(プロパティの構成\)** セクションで、事前設定されたフィールドを確認し、 **[SAVE]\(保存\)** をクリックします。 
 
     ![[Configure Properties]\(プロパティの構成\) のスクリーンショット](./media/saba-cloud-tutorial/configure-properties.png) 
+    
+    **[Max Authentication Age (in seconds)]\(最大認証期間 (秒)\)** は、Azure AD がログインに許容する既定の最大ローリング期間に合わせて、**7776000** (90 日) に設定しなければならない場合があります。 そのようにしないと、"`(109) Login failed. Please contact system administrator.` ((109) ログインに失敗しました。システム管理者に問い合わせてください)" というエラーが発生する可能性があります。
 
 ### <a name="create-saba-cloud-test-user"></a>Saba Cloud のテスト ユーザーを作成する
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b4d69157f4544daad962cca15e53802e7b912399
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b6071370d510881d06c5b81f8660781169596a72
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530427"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764418"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory で使用できる認証方法と検証方法
 
@@ -89,6 +89,9 @@ Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーが�
 
 > [!NOTE]
 > Azure AD では、多くの場合、パスワードはプライマリ認証方法の 1 つです。 パスワード認証方法を無効にすることはできません。 プライマリ認証要素としてパスワードを使用する場合は、Azure AD Multi-Factor Authentication を使用してサインイン イベントのセキュリティを強化します。
+
+> [!IMPORTANT]
+> FIDO2 は MFA の形式として機能するために必要な要件を満たしていますが、FIDO2 はパスワードレス形式の認証としてのみ使用できます。
 
 特定のシナリオでは、次の追加認証方法を使用できます。
 

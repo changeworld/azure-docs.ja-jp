@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 05/07/2021
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e473e7305f7e2dd9609edf0f2d18a12a950b9d40
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218368"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656922"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -152,11 +152,23 @@ SELECT properties.reported.telemetryConfig.status AS status,
 
 この例では、3 つのデバイスが正常な構成を報告し、2 つは構成を適用中であり、1 つがエラーを報告しています。
 
-プロジェクション クエリを使用すると、開発者は必要なプロパティのみを返すことができます。 たとえば、すべての切断されているデバイスの最後のアクティビティ時間を取得するには、次のクエリを使用します。
+プロジェクション クエリを使用すると、開発者は必要なプロパティのみを返すことができます。 たとえば、最後のアクティビティ時刻と、切断されているすべての有効なデバイスのデバイス ID を取得するには、次のクエリを使用します。
 
 ```sql
-SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+SELECT DeviceId, LastActivityTime FROM devices WHERE status = 'enabled' AND connectionState = 'Disconnected'
 ```
+
+IoT Hub の **クエリ エクスプローラー** でこのクエリを実行した場合の結果の例を次に示します。
+
+```json
+[
+  {
+    "deviceId": "AZ3166Device",
+    "lastActivityTime": "2021-05-07T00:50:38.0543092Z"
+  }
+]
+```
+
 
 ### <a name="module-twin-queries"></a>モジュール ツイン クエリ
 

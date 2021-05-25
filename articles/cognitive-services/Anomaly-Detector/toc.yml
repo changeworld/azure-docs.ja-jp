@@ -60,8 +60,6 @@
       href: concepts/anomaly-detection-best-practices.md
     - name: 予測メンテナンスのアーキテクチャ (多変量)
       href: concepts/multivariate-architecture.md
-    - name: 多変量のトラブルシューティング
-      href: concepts/troubleshoot.md
     - name: Spectral Residual (SR) と畳み込みニューラル ネットワーク (CNN) の異常検出
       href: 'https://arxiv.org/abs/1906.03821'
     - name: グラフ アテンション ネットワークによる多変量時系列の異常検出
@@ -104,7 +102,9 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
-    - name: テクニカル ブログ
+    - name: 多変量のトラブルシューティング
+      href: concepts/troubleshoot.md
+    - name: 技術記事
       items:
         - name: Azure Anomaly Detector API の概要
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'

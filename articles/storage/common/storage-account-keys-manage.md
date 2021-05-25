@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b79b2d9767112d95f6ea0388bfc7ef577ef8d7ba
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 6435fbffc6a78d82129443f15a9ebcc41ab52ce8
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073541"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109635195"
 ---
 # <a name="manage-storage-account-access-keys"></a>ストレージ アカウント アクセス キーを管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "108073541"
 Azure portal からストレージ アカウントのアクセス キーまたは接続文字列を表示およびコピーするには:
 
 1. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
-1. **[設定]** で **[アクセス キー]** を選択します。 アカウント アクセス キーと、各キーの完全な接続文字列が表示されます。
+1. **[セキュリティとネットワーク]** で、 **[アクセス キー]** を選択します。 アカウント アクセス キーと、各キーの完全な接続文字列が表示されます。
 1. **[key1]** で **[キー]** 値を見つけ、 **[コピー]** ボタンをクリックしてアカウント キーをコピーします。
 1. あるいは、接続文字列全体をコピーできます。 **[Key1]** の **[接続文字列]** の値を見つけて **[コピー]** ボタンをクリックし、接続文字列をコピーします。
 
@@ -90,7 +90,7 @@ Azure portal でストレージ アカウントのアクセス キーをロー�
 
 1. ストレージ アカウントのセカンダリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 1. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
-1. **[設定]** で **[アクセス キー]** を選択します。
+1. **[セキュリティとネットワーク]** で、 **[アクセス キー]** を選択します。
 1. ストレージ アカウントのプライマリ アクセス キーを再生成するには、プライマリ アクセス キーの隣にある **[再生成]** ボタンを選択します。
 1. 新しいプライマリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 1. 同様に、セカンダリ アクセス キーを再生成します。

@@ -5,6 +5,8 @@
   items:
     - name: Custom Vision とは
       href: overview.md
+    - name: 料金と制限
+      href: limits-and-quotas.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
@@ -97,8 +99,6 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: サンプル
       href: /samples/browse/?products=azure&term=vision
-    - name: 制限とクォータ
-      href: limits-and-quotas.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: リリース ノート

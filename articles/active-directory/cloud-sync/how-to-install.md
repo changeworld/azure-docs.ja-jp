@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742b9fc79489feba8192b6e62a6431bb37f55ad4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d83b617f08c143ee09251667c4f9bee89577a23
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612795"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758863"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect プロビジョニング エージェントをインストールする
 このドキュメントでは、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で最初に構成する方法について説明します。
@@ -30,6 +30,8 @@ Azure AD Connect クラウド同期のインストールと構成は、次の手
 - [エージェントをインストールする](#install-the-agent)
 - [エージェントのインストールを検証する](#verify-agent-installation)
 
+>[!NOTE]
+>このドキュメントでは、ウィザードを使用したプロビジョニング エージェントのインストールについて説明します。  コマンド ライン インターフェイス (CLI) を使用した Azure AD Connect プロビジョニング エージェントのインストールの詳細については、「[コマンド ライン インターフェイス (CLI) と PowerShell を使用して Azure AD Connect プロビジョニング エージェントをインストールする](how-to-install-pshell.md)」を参照してください。
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
 グループ管理サービス アカウントは、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、および管理を他の管理者に委任する機能を提供し、またこの機能を複数のサーバーに拡張する、マネージド ドメイン アカウントです。  Azure AD Connect Cloud Sync では、エージェントの実行にグループ管理サービス アカウントを使用することがサポートされ、またこれが推奨されています。  gMSA の詳細については、[グループ管理サービス アカウント](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)に関するページを参照してください 
@@ -37,6 +39,8 @@ Azure AD Connect クラウド同期のインストールと構成は、次の手
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>gMSA アカウントを使用するよう既存のエージェントをアップグレードする
 インストール中に作成された gMSA アカウントを使用するように既存のエージェントをアップグレードするには、AADConnectProvisioningAgent.msi を実行して、エージェント サービスを最新バージョンに更新するだけです。  これにより、サービスが最新バージョンにアップグレードされます。  ここで、インストール ウィザードを再度実行し、メッセージが表示されたらアカウントを作成するための資格情報を指定します。
+
+
 
 
 

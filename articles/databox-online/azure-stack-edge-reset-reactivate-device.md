@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 05/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 95fbe5dc4a934fee10c558f640bc24f261203a33
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f744e85c97d3c7e79028ae95b4d90626af41787
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443529"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773091"
 ---
 # <a name="reset-and-reactivate-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスをリセットして再アクティブ化する
 
@@ -23,14 +23,12 @@ ms.locfileid: "102443529"
 
 デバイスをリセットしてデータを削除した後、デバイスを新しいリソースとして再アクティブ化する必要があります。 デバイスをリセットするとデバイスの構成が削除されるため、ローカル Web UI を使用してデバイスを再構成する必要があります。
 
-この記事では、次のことについて説明します。
+たとえば、既存の Azure Stack Edge リソースを新しいサブスクリプションに移動する必要が生じる場合があります。 これを行うには、次のようにします。
 
-> [!div class="checklist"]
->
-> * デバイス上のデータ ディスクのデータを削除する
-> * 新しい注文を作成し、デバイスを再構成してアクティブ化することで、デバイスを再アクティブ化する
+1. 「[デバイスのリセット](#reset-device)」の手順に従って、デバイス上のデータをリセットします。
+2. 既存のデバイスで新しいサブスクリプションを使用する新しいリソースを作成し、デバイスをアクティブ化します。 「[デバイスを再アクティブ化する](#reactivate-device)」の手順に従います。
 
-## <a name="reset-data-from-the-device"></a>デバイスのデータをリセットする
+## <a name="reset-device"></a>デバイスのリセット
 
 デバイス上のデータ ディスクのデータを削除するには、ご利用のデバイスをリセットする必要があります。
 

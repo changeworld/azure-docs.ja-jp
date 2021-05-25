@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/19/2016
+ms.date: 05/05/2021
 ms.author: rohink
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3418ef3f0c6a85a21ef4f295fa3d0e4104a91e5a
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015062"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794054"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK を使用した DNS ゾーンとレコード セットの作成
 
@@ -28,15 +28,18 @@ DNS ゾーン、レコード セット、レコードを作成、削除、更新
 
 ## <a name="create-a-service-principal-account"></a>サービス プリンシパル アカウントの作成
 
-通常、Azure リソースへのプログラムによるアクセスは、ユーザー自身の資格情報ではなく、専用アカウント経由で許可されます。 これらの専用アカウントは、"サービス プリンシパル" アカウントと呼ばれます。 Azure DNS SDK のサンプル プロジェクトを使用するには、まずサービス プリンシパル アカウントを作成し、作成したアカウントに適切なアクセス許可を割り当てる必要があります。
+通常、Azure リソースへのプログラムによるアクセスは、ユーザー自身の資格情報ではなく、専用アカウントを使用して許可されます。 これらの専用アカウントは、"サービス プリンシパル" アカウントと呼ばれます。 Azure DNS SDK のサンプル プロジェクトを使用するには、まずサービス プリンシパル アカウントを作成し、適切なアクセス許可を割り当てる必要があります。
 
-1. [こちらの手順](../active-directory/develop/howto-authenticate-service-principal-powershell.md) に従い、サービス プリンシパル アカウントを作成します (Azure DNS SDK のサンプル プロジェクトではパスワードベースの認証を前提としています)。
-2. リソース グループを作成します ([手順はこちら](../azure-resource-manager/templates/deploy-portal.md))。
-3. Azure RBAC を使用して、サービス プリンシパル アカウント "DNS Zone Contributor" にリソース グループへのアクセス許可を付与します ([手順はこちら](../role-based-access-control/role-assignments-portal.md))。
-4. Azure DNS SDK のサンプル プロジェクトを使用する場合、"program.cs" ファイルを次のように編集します。
+1. [サービス プリンシパル アカウントを作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md)します。 Azure DNS SDK サンプル プロジェクトは、パスワードベースの認証を前提としています。
 
-   * 手順 1. で使用した `tenantId`、`clientId` (アカウント ID とも呼ばれます)、`secret` (サービス プリンシパル アカウントのパスワード)、`subscriptionId` の適切な値を入力します。
-   * 手順 2. で選択したリソース グループ名を入力します。
+1. 次に、[リソース グループ](../azure-resource-manager/templates/deploy-portal.md)を作成します。
+
+1. [Azure RBAC](../role-based-access-control/role-assignments-portal.md) を使用して、サービス プリンシパル アカウント "DNS Zone Contributor" にリソース グループへのアクセス許可を付与します。
+
+1. Azure DNS SDK のサンプル プロジェクトを使用している場合は、"program.cs" ファイルを次のように編集します。
+
+   * 手順 1. で使用した `tenantId`、`clientId` (アカウント ID とも呼ばれます)、`secret` (サービス プリンシパル アカウントのパスワード)、`subscriptionId` に適切な値を挿入します。
+   * 手順 2. で作成したリソース グループ名を入力します。
    * 任意の DNS ゾーンの名前を入力します。
 
 ## <a name="nuget-packages-and-namespace-declarations"></a>NuGet パッケージと名前空間宣言
@@ -44,10 +47,14 @@ DNS ゾーン、レコード セット、レコードを作成、削除、更新
 Azure DNS .NET SDK を使用するには、 **Azure DNS 管理ライブラリ** NuGet パッケージとその他の必要な Azure パッケージをインストールする必要があります。
 
 1. **Visual Studio** で、プロジェクトを開くか、新規作成します。
-2. **[ツール]** **>** **[NuGet パッケージ マネージャー]** **>** **[ソリューションの NuGet パッケージの管理]** の順に移動します。
-3. **[参照]** をクリックし、**[プレリリースを含める]** チェック ボックスをオンにして、検索ボックスに「**Microsoft.Azure.Management.Dns**」と入力します。
-4. パッケージを選択し、 **[インストール]** をクリックして Visual Studio プロジェクトに追加します。
-5. 上記の手順を繰り返して、**Microsoft.Rest.ClientRuntime.Azure.Authentication** パッケージと **Microsoft.Azure.Management.ResourceManager** パッケージもインストールします。
+
+1. **[ツール]** **>** **[NuGet パッケージ マネージャー]** **>** **[ソリューションの NuGet パッケージの管理]** の順に移動します。
+
+1. **[参照]** を選択し、 **[プレリリースを含める]** チェック ボックスをオンにして、検索ボックスに「**Microsoft.Azure.Management.Dns**」と入力します。
+
+1. パッケージを選択し、 **[インストール]** を選択して Visual Studio プロジェクトに追加します。
+
+1. 上記の手順を繰り返して、**Microsoft.Rest.ClientRuntime.Azure.Authentication** パッケージと **Microsoft.Azure.Management.ResourceManager** パッケージもインストールします。
 
 ## <a name="add-namespace-declarations"></a>名前空間宣言の追加
 
@@ -72,9 +79,9 @@ dnsClient.SubscriptionId = subscriptionId;
 
 ## <a name="create-or-update-a-dns-zone"></a>DNS ゾーンを作成または更新する
 
-DNS ゾーンを作成するには、まず、DNS ゾーン パラメーターを含む "Zone" オブジェクトを作成します。 DNS ゾーンは特定のリージョンにリンクされないため、場所は "global" に設定されます。 この例では、 [Azure Resource Manager の "タグ"](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) も、ゾーンに追加されます。
+DNS ゾーンを作成するには、まず、DNS ゾーン パラメーターを含む "ゾーン" オブジェクトを作成する必要があります。 DNS ゾーンは特定のリージョンにリンクされないため、場所は "global" に設定されます。 この例では、 [Azure Resource Manager の "タグ"](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) も、ゾーンに追加されます。
 
-Azure DNS でゾーンを実際に作成または更新するには、ゾーン パラメーターを含むゾーン オブジェクトを `DnsManagementClient.Zones.CreateOrUpdateAsyc` メソッドに渡します。
+Azure DNS でゾーンを作成または更新するには、ゾーン パラメーターを含むゾーン オブジェクトを `DnsManagementClient.Zones.CreateOrUpdateAsyc` メソッドに渡します。
 
 > [!NOTE]
 > DnsManagementClient は、同期 ("CreateOrUpdate")、非同期 ("CreateOrUpdateAsync")、および HTTP 応答へのアクセスを使用した非同期 ("CreateOrUpdateWithHttpMessagesAsync") の 3 つの操作モードをサポートします。  アプリケーションのニーズに応じていずれかのモードを選択できます。
@@ -102,7 +109,7 @@ DNS レコードはレコード セットとして管理されます。 レコ�
 
 レコード セットを作成または更新するには、"RecordSet" パラメーター オブジェクトを作成し、`DnsManagementClient.RecordSets.CreateOrUpdateAsync` に渡します。 DNS ゾーンと同様に、同期 ("CreateOrUpdate")、非同期 ("CreateOrUpdateAsync")、および HTTP 応答へのアクセスを使用した非同期 ("CreateOrUpdateWithHttpMessagesAsync") の 3 つの操作モードがあります。
 
-DNS ゾーンと同様に、レコード セットでの操作では、オプティミスティック コンカレンシーがサポートされます。  この例では、"If-Match" も "If-None-Match" も指定されていないので、レコード セットは常に作成されます。  この呼び出しは、この DNS ゾーン内で同じ名前とレコード タイプを持つ既存のレコード セットを上書きします。
+DNS ゾーンと同様に、レコード セットでの操作では、オプティミスティック コンカレンシーがサポートされます。  この例では、"If-Match" または "If-None-Match" が指定されていないので、レコード セットが常に作成されます。  この呼び出しは、この DNS ゾーン内で同じ名前とレコード タイプを持つ既存のレコード セットを上書きします。
 
 ```cs
 // Create record set parameters
@@ -132,7 +139,7 @@ var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetN
 
 ## <a name="update-an-existing-record-set"></a>既存のレコード セットの更新
 
-既存の DNS レコード セットを更新するには、まずレコード セットを取得し、レコード セットのコンテンツを更新してから、変更を送信します。  この例では、"If-Match" パラメーターで取得したレコード セットの "Etag" を指定します。 同時実行の操作によって更新中にレコード セットが変更された場合、この呼び出しは失敗します。
+既存の DNS レコード セットを更新するには、まずレコード セットを取得します。 次に、変更を送信する前にレコード セットの内容を更新します。 この例では、"If-Match" パラメーターで取得したレコード セットの "Etag" を指定します。 同時実行の操作によって更新中にレコード セットが変更された場合、この呼び出しは失敗します。
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -147,7 +154,9 @@ recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zo
 
 ## <a name="list-zones-and-record-sets"></a>ゾーンとレコード セットの一覧表示
 
-ゾーンを一覧表示するには、*DnsManagementClient.Zones.List...* メソッドを使用します。このメソッドを使用すると、指定したリソース グループ内のすべてのゾーンまたは指定した Azure サブスクリプション内 (リソース グループ全体) のすべてのゾーンを一覧表示できます。レコード セットを一覧表示するには、*DnsManagementClient.RecordSets.List...* メソッドを使用します。このメソッドを使用すると、指定したゾーン内のすべてのレコード セットを一覧表示することも、特定の種類のレコード セットのみを一覧表示することもできます。
+* ゾーンを一覧表示するには、*DnsManagementClient.Zones.List...* メソッドを使用します。このメソッドを使用すると、指定したリソース グループ内のすべてのゾーンまたは指定した Azure サブスクリプション内 (リソース グループ全体) のすべてのゾーンを一覧表示できます。 
+
+* レコード セットを一覧表示するには、*DnsManagementClient.RecordSets.List...* メソッドを使用します。このメソッドを使用すると、指定したゾーン内のすべてのレコード セットを一覧表示することも、特定の種類のレコード セットのみを一覧表示することもできます。
 
 ゾーンとレコード セットを一覧表示する場合、結果がページ分割される可能性がある点に注意してください。  次の例では、結果のページを反復処理する方法を示します(意図的に "2" という小さなページ サイズを使用して、強制的にページングしています。 実際にはこのパラメーターは削除し、既定のページ サイズを使用する必要があります)。
 
@@ -167,4 +176,4 @@ while (page.NextPageLink != null)
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure DNS .NET SDK サンプル プロジェクト](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)をダウンロードします。このサンプル プロジェクトには、他の DNS レコードの種類の例など、Azure DNS .NET SDK のさまざまな使用方法の例が含まれています。
+[Azure DNS .NET SDK サンプル プロジェクト](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)をダウンロードします。 Azure DNS .NET SDK の使用方法の例と、他の DNS レコードの種類の例が含まれています。

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f662c825dba99ec7513a523ab511cb75ebb1f0f9
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f1136676002a737f4e860e33e8b3b855712d3928
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208619"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789823"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
 Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、**リレーションシップ** を介して接続された個々のデジタル ツインで構成されています。 
 
-機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで[認証](how-to-authenticate-client.md)コードを設定すると、[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
+機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで[認証](how-to-authenticate-client.md)コードを設定すると、Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができるようになります。
 
 この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインを操作については、[「デジタル ツインを管理する」方法](how-to-manage-twin.md)を参照してください。
 
@@ -26,9 +26,7 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="ways-to-manage-graph"></a>グラフの管理方法
-
-[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+[!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
 また、Azure Digital Twins Explorer サンプルを使用して、グラフに変更を加えることもできます。このサンプルでは、ツインとグラフを視覚化し、バックグラウンドで SDK を利用できます。 次のセクションでは、このサンプルについて詳しく説明します。
 
@@ -47,7 +45,7 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 * リレーションシップ ID (以下のコード サンプルの `relId`):このリレーションシップの具体的な名前 (_Relationship1_ など)。
 
 リレーションシップ ID は、指定されたソース ツイン内で一意である必要があります。 グローバルに一意である必要はありません。
-たとえば、ツイン *foo* の場合、それぞれのリレーションシップ ID は一意である必要があります。 ただし、別のツインである *bar* は、*foo* リレーションシップの同じ ID と一致する発信リレーションシップを持つことができます。
+たとえば、ツイン Foo の場合、それぞれのリレーションシップ ID は一意である必要があります。 ただし、別のツインである Bar は、Foo リレーションシップの同じ ID と一致する発信リレーションシップを持つことができます。
 
 次のコード サンプルは、Azure Digital Twins インスタンスにリレーションシップを作成する方法を示しています。 より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
@@ -59,7 +57,7 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 複数のリレーションシップを作成する場合は、同じメソッドの呼び出しを繰り返して、異なるリレーションシップの種類を引数に渡すことができます。 
 
-ヘルパー クラス `BasicRelationship` の詳細については、[「Azure Digital Twins の API および SDK を使用する」方法](how-to-use-apis-sdks.md#serialization-helpers)を参照してください。
+ヘルパー クラス `BasicRelationship` の詳細については、[コンセプト: Azure Digital Twins API および SDK](concepts-apis-sdks.md#serialization-helpers) に関するページを参照してください。
 
 ### <a name="create-multiple-relationships-between-twins"></a>ツイン間でリレーションシップの作成
 
@@ -70,9 +68,9 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 2 つのツイン間のリレーションシップの数には制限がありません。ツイン間には、必要な数のリレーションシップを含めることができます。 
 
-これは、2 つのツイン間に、さまざまな種類のリレーションシップを同時に複数表すことができることを意味します。 たとえば、"*ツイン A*" と "*ツイン B*" の間に、"*格納された*" リレーションシップと "*製造された*" リレーションシップを含めることができます。
+これは、2 つのツイン間に、さまざまな種類のリレーションシップを同時に複数表すことができることを意味します。 たとえば、ツイン A とツイン B の間に、"*格納された*" リレーションシップと "*製造された*" リレーションシップを含めることができます。
 
-必要に応じて、同じ 2 つのツイン間に、同じ種類のリレーションシップのインスタンスを複数作成することもできます。 この例では、リレーションシップのリレーションシップ ID が異なる限り、"*ツイン A*" は "*ツイン B*" と 2 つの異なる "*格納された*" リレーションシップを持つことができます。
+必要に応じて、同じ 2 つのツイン間に、同じ種類のリレーションシップのインスタンスを複数作成することもできます。 この例では、リレーションシップのリレーションシップ ID が異なる限り、ツイン A はツイン B と 2 つの異なる "*格納された*" リレーションシップを持つことができます。
 
 ## <a name="list-relationships"></a>リレーションシップの一覧表示
 
@@ -146,40 +144,6 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseDeleteRelationship":::
 
-## <a name="runnable-twin-graph-sample"></a>実行可能なツインのグラフのサンプル
-
-次の実行可能なコード スニペットでは、この記事のリレーションシップ操作を使用して、デジタル ツインとリレーションシップからツイン グラフを作成します。
-
-### <a name="set-up-the-runnable-sample"></a>実行可能なサンプルを設定する
-
-このスニペットでは、[Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) と [Floor.json](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) モデル定義を使用しています。「[チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す](tutorial-command-line-app.md)」のものです。 これらのリンクを使用してファイルに直接移動するか、[完全なエンドツーエンドのサンプル プロジェクト](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部としてダウンロードすることができます。 
-
-このサンプルを実行する前に、以下を実行します。
-1. モデル ファイルをダウンロードしてプロジェクトに配置し、以下のコードの `<path-to>` プレースホルダーを置き換えて、プログラムに検索場所を指示します。
-2. プレースホルダー `<your-instance-hostname>` を Azure Digital Twins インスタンスのホスト名に置き換えます。
-3. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
-
-      ```cmd/sh
-      dotnet add package Azure.DigitalTwins.Core
-      dotnet add package Azure.Identity
-      ```
-
-サンプルを直接実行する場合は、ローカルの資格情報も設定する必要があります。 次のセクションでは、これについて説明します。
-[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
-
-### <a name="run-the-sample"></a>サンプルを実行する
-
-上記の手順を完了すると、次のサンプル コードを直接実行できます。
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs":::
-
-上記のプログラムのコンソール出力は次のようになります。 
-
-:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="ツインの詳細、ツインの受信および発信リレーションシップが表示されているコンソール出力。" lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
-
-> [!TIP]
-> ツイン グラフは、ツイン間にリレーションシップを作成する概念です。 ツイン グラフの視覚的表現を表示する場合は、この記事の "[視覚化](how-to-manage-graph.md#visualization)" に関するセクションを参照してください。 
-
 ## <a name="create-graph-from-a-csv-file"></a>CSV ファイルからグラフを作成する
 
 実際の使用例では、多くの場合、別のデータベース、または場合によってはスプレッドシートまたは CSV ファイルに格納されたデータからツイン階層が作成されます。 このセクションでは、CSV ファイルからデータを読み取り、そこからツイン グラフを作成する方法について説明します。
@@ -195,9 +159,49 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 
 このデータを Azure Digital Twins に取り込む方法の 1 つとして、テーブルを CSV ファイルに変換してコードを記述し、ファイルをコマンドに解釈して、ツインやリレーションシップを作成するという方法があります。 次のコード サンプルは、CSV ファイルからのデータの読み取り、および Azure Digital Twins でのツイン グラフの作成を示しています。
 
-次のコードでは、CSV ファイルは *data.csv* と呼ばれ、Azure Digital Twins インスタンスの **hostname** を表すプレースホルダーがあります。 また、このサンプルでは、プロジェクトに追加できるパッケージをいくつか使用すると、このプロセスを実行しやすくなります。
+次のコードでは、CSV ファイルは *data.csv* と呼ばれ、Azure Digital Twins インスタンスの **ホスト名** を表すプレースホルダーがあります。 また、このサンプルでは、プロジェクトに追加できるパッケージをいくつか使用すると、このプロセスを実行しやすくなります。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graphFromCSV.cs":::
+
+## <a name="runnable-twin-graph-sample"></a>実行可能なツインのグラフのサンプル
+
+次の実行可能なコード スニペットでは、この記事のリレーションシップ操作を使用して、デジタル ツインとリレーションシップからツイン グラフを作成します。
+
+### <a name="set-up-sample-project-files"></a>サンプル プロジェクト ファイルの設定
+
+このスニペットでは、[Room.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-samples/master/AdtSampleApp/SampleClientApp/Models/Room.json) と [Floor.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-samples/master/AdtSampleApp/SampleClientApp/Models/Floor.json) という 2 つのサンプル モデル定義を使用します。 コードで使用する **モデル ファイルをダウンロード** するには、これらのリンクを使用して GitHub 上のファイルに直接アクセスします。 次に、画面上の任意の場所を右クリックし、ブラウザーの右クリック メニューから **[名前を付けて保存]** を選択して、[名前を付けて保存] のウィンドウでファイルを **Room.json** および **Floor.json** で保存します。
+
+次に、Visual Studio または任意のエディターで、**新しいコンソール アプリ プロジェクト** を作成します。
+
+次に、実行可能なサンプルの **次のコードをプロジェクトにコピー** します。
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs":::
+
+### <a name="configure-project"></a>プロジェクトを構成する
+
+次に、以下の手順を実行してプロジェクト コードを構成します。
+1. 以前ダウンロードした **Room.json** および **Floor.json** ファイルをプロジェクトに追加し、コード内部の `<path-to>` プレースホルダーを置き換えて、プログラムに検索する場所を指示します。
+1. プレースホルダー `<your-instance-hostname>` を Azure Digital Twins インスタンスのホスト名に置き換えます。
+1. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
+
+      ```cmd/sh
+      dotnet add package Azure.DigitalTwins.Core
+      dotnet add package Azure.Identity
+      ```
+
+サンプルを直接実行する場合は、ローカルの資格情報も設定する必要があります。 次のセクションでは、これについて説明します。
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>サンプルを実行する
+
+セットアップが完了したので、これでサンプル コード プロジェクトを実行できます。
+
+このプログラムのコンソール出力は次のようになります。 
+
+:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="ツインの詳細、ツインの受信および発信リレーションシップが表示されているコンソール出力。" lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
+
+> [!TIP]
+> ツイン グラフは、ツイン間にリレーションシップを作成する概念です。 ツイン グラフの視覚的表現を表示する場合は、この記事の "[視覚化](how-to-manage-graph.md#visualization)" に関するセクションを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

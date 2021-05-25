@@ -90,6 +90,12 @@
           href: howto-feature-filters-aspnet-core.md
         - name: 指定したユーザー/グループの機能を有効にする
           href: howto-targetingfilter-aspnet-core.md
+    - name: Azure の監視を有効にする
+      items:
+        - name: App Configuration を監視する
+          href: monitor-app-configuration.md
+        - name: データ参照を監視する
+          href: monitor-app-configuration-reference.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -106,7 +112,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md

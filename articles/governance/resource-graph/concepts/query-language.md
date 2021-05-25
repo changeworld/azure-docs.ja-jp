@@ -3,12 +3,12 @@ title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5e600439d54a89dd9bd2510b2e47b71b60ee93a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a980e285061e986e55920fc4558b44daf552f102
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557685"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790759"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -38,7 +38,7 @@ Resource Graph には、Azure Resource Manager のリソースの種類とその
 |MaintenanceResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.Maintenance` に "_関連する_" リソースが含まれています。 |
 |PatchAssessmentResources|いいえ |Azure Virtual Machines パッチ評価に "_関連する_" リソースが含まれています。 |
 |PatchInstallationResources|いいえ |Azure Virtual Machines パッチのインストールに "_関連する_" リソースが含まれています。 |
-|PolicyResources |No |`Microsoft.PolicyInsights` に "_関連する_" リソースが含まれています。 (**プレビュー**)|
+|PolicyResources |No |`Microsoft.PolicyInsights` に "_関連する_" リソースが含まれています。 (**プレビュー**) |
 |RecoveryServicesResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.DataProtection` および `Microsoft.RecoveryServices` に "_関連する_" リソースが含まれています。 |
 |SecurityResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.Security` に "_関連する_" リソースが含まれています。 |
 |ServiceHealthResources |No |`Microsoft.ResourceHealth` に "_関連する_" リソースが含まれています。 |
@@ -155,7 +155,7 @@ Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/
 クエリによってリソースが返されるサブスクリプションのスコープは、Resource Graph にアクセスする方法によって異なります。 Azure CLI および Azure PowerShell は、承認されたユーザーのコンテキストに基づいて、要求に含めるサブスクリプションの一覧を設定します。 サブスクリプションの一覧は、それぞれ **subscriptions** と **Subscription** パラメーターを使用して、それぞれに対して手動で定義できます。
 REST API およびその他のすべての SDK では、リソースを含めるサブスクリプションの一覧は、要求の一部として明示的に定義する必要があります。
 
-**プレビュー** として、REST API バージョン `2020-04-01-preview` では、クエリのスコープを [管理グループ](../../management-groups/overview.md)に設定するプロパティが追加されます。 また、このプレビュー API では、サブスクリプション プロパティは省略可能になります。 管理グループまたはサブスクリプションの一覧が定義されていない場合は、認証されたユーザーがアクセスできるすべてのリソース ([Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) の委任されたリソースを含む) がクエリ スコープになります。 新しい `managementGroupId` プロパティは管理グループ ID を取ります。これは、管理グループの名前とは異なります。 `managementGroupId` を指定すると、指定した管理グループ階層内、またはその下にある最初の5000 件のサブスクリプションのリソースが含まれます。 `managementGroupId` を `subscriptions` と同時に使用することはできません。
+**プレビュー** として、REST API バージョン `2020-04-01-preview` では、クエリのスコープを [管理グループ](../../management-groups/overview.md)に設定するプロパティが追加されます。 また、このプレビュー API では、サブスクリプション プロパティは省略可能になります。 管理グループまたはサブスクリプションの一覧が定義されていない場合は、認証されたユーザーがアクセスできるすべてのリソース ([Azure Lighthouse](../../../lighthouse/overview.md) の委任されたリソースを含む) がクエリ スコープになります。 新しい `managementGroupId` プロパティは管理グループ ID を取ります。これは、管理グループの名前とは異なります。 `managementGroupId` を指定すると、指定した管理グループ階層内、またはその下にある最初の 5,000 件のサブスクリプションのリソースが含まれます。 `managementGroupId` を `subscriptions` と同時に使用することはできません。
 
 例:ID "myMG" を持つ "My Management Group" という名前の管理グループの階層内のすべてのリソースに対してクエリを実行します。
 
@@ -179,7 +179,7 @@ REST API およびその他のすべての SDK では、リソースを含める
 `.` や `$` を含むものなど、一部のプロパティ名はクエリ内でラップまたはエスケープする必要があります。そうしないと、プロパティ名が正しく解釈されず、期待する結果が得られません。
 
 - `.` - プロパティ名を `['propertyname.withaperiod']` のようにラップします。
-  
+
   プロパティ _odata.type_ をラップするクエリ例:
 
   ```kusto
@@ -190,7 +190,7 @@ REST API およびその他のすべての SDK では、リソースを含める
 
   - **bash** - `\`
 
-    bash でプロパティ _\$type_ をエスケープするクエリ例:
+    Bash でプロパティ _\$type_ をエスケープするクエリ例:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type

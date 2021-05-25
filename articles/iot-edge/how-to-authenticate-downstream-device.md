@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 59b2e3d5ccefaa9740359891815d83ddd14ad09d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f8e3541fc3d9ae6fe49af4445402af17a3d3d3e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140807"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770855"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
 
@@ -125,7 +125,7 @@ X.509 自己署名認証 (拇印認証とも呼ばれます) の場合、お使�
 
 5. 使用する言語に応じて、IoT アプリケーションで x.509 証明書が参照される方法を示すサンプルを確認してください。
 
-   * C#:[Azure IoT Hub での X.509 セキュリティの設定](../iot-hub/tutorial-x509-scripts.md)
+   * C#:[Azure IoT Hub での X.509 セキュリティの設定](../iot-hub/tutorial-x509-test-certificate.md)
    * C: [iotedge_downstream_device_sample.c](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iotedge_downstream_device_sample)
    * Node.js: [simple_sample_device_x509](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js)
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
@@ -143,19 +143,19 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 X.509 証明機関 (CA) 署名認証の場合、お使いのダウンストリーム デバイスの証明書の署名に使用する IoT Hub に登録されているルート CA 証明書が必要です。 ルート CA 証明書または中間証明書のいずれかで発行された証明書を使用しているデバイスはすべて、認証が許可されます。
 
-このセクションは、IoT Hub の記事「[Azure IoT Hub での X.509 セキュリティの設定](../iot-hub/tutorial-x509-scripts.md)」に詳しく記載されている手順に基づいています。
+このセクションは、IoT Hub の x.509 証明書チュートリアル シリーズを基にしています。 このシリーズの導入については、「[公開キーの暗号化と X.509 公開キー基盤について](../iot-hub/tutorial-x509-introduction.md)」を参照してください。
 
 1. CA 証明書を使用して、ダウンストリーム デバイス用に 2 つのデバイス証明書 (プライマリとセカンダリ) を作成します。
 
    X.509 証明書を作成するための証明機関がない場合は、IoT Edge のデモ証明書スクリプトを使用して、[ダウンストリーム デバイスの証明書を作成](how-to-create-test-certificates.md#create-downstream-device-certificates)できます。 CA 署名証明書を作成する手順に従います。 ゲートウェイ デバイスの証明書を生成した同じルート CA 証明書を使用します。
 
-2. 「*Azure IoT Hub での X.509 セキュリティの設定*」の「[IoT ハブに X.509 CA 証明書を登録する](../iot-hub/tutorial-x509-scripts.md)」セクションの指示に従います。 そのセクションでは、次の手順を実行します。
+2. 「*Azure IoT Hub での X.509 セキュリティの設定*」の「[所有証明のデモンストレーション](../iot-hub/tutorial-x509-openssl.md#step-7---demonstrate-proof-of-possession)」セクションの指示に従います。 そのセクションでは、次の手順を実行します。
 
    1. ルート CA 証明書をアップロードします。 デモ証明書を使用している場合、ルート CA は **\<path>/certs/azure-iot-test-only.root.ca.cert.pem** になります。
 
    2. そのルート CA 証明書を所有していることを確認します。
 
-3. 「*Azure IoT Hub での X.509 セキュリティの設定*」の「[IoT ハブの X.509 デバイスを作成する](../iot-hub/tutorial-x509-scripts.md)」セクションの指示に従います。 そのセクションでは、次の手順を実行します。
+3. 「*Azure IoT Hub での X.509 セキュリティの設定*」の「[IoT ハブにデバイスを作成する](../iot-hub/tutorial-x509-openssl.md#step-8---create-a-device-in-your-iot-hub)」セクションの指示に従います。 そのセクションでは、次の手順を実行します。
 
    1. 新しいデバイスを追加します。 **デバイス ID** に小文字の名前を指定し、認証の種類に **X.509 CA 署名済み** を選択します。
 
@@ -169,7 +169,7 @@ X.509 証明機関 (CA) 署名認証の場合、お使いのダウンストリ�
 
 6. 使用する言語に応じて、IoT アプリケーションで x.509 証明書が参照される方法を示すサンプルを確認してください。
 
-   * C#:[Azure IoT Hub での X.509 セキュリティの設定](../iot-hub/tutorial-x509-scripts.md)
+   * C#:[Azure IoT Hub での X.509 セキュリティの設定](../iot-hub/tutorial-x509-test-certificate.md)
    * C: [iotedge_downstream_device_sample.c](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iotedge_downstream_device_sample)
    * Node.js: [simple_sample_device_x509](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js)
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)

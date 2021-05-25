@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/16/2021
-ms.openlocfilehash: da8d193d140d96d9742666429ebc85672c71ad4e
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 05/06/2021
+ms.openlocfilehash: 78a40b3a84b0d3df19b1fabc6c3485f12d8c3dbb
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567266"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481753"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -69,6 +69,9 @@ traceLevel | データ フロー アクティビティの実行のログ レベ�
 ### <a name="dynamically-size-data-flow-compute-at-runtime"></a>実行時、データ フロー コンピューティングのサイズを動的に設定する
 
 Core Count プロパティと Compute Type プロパティは、実行時に入ってくるソース データのサイズに合わせて調整されるよう、動的に設定できます。 ソース データセット データのサイズを見つける目的で、Lookup や Get Metadata など、パイプライン アクティビティを使用します。 次に、Data Flow アクティビティ プロパティで Add Dynamic Content を使用します。
+
+> [!NOTE]
+> Synapse データ フローでドライバーとワーカー ノードのコアを選択する場合は、常に少なくとも 3 つのノードが使用されます。
 
 ![動的データ フロー](media/data-flow/dyna1.png "動的データ フロー")
 

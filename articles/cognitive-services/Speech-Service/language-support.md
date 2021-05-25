@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 52dd642c661aa60157876a89d41c771cabfe2f1d
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: c7bd85a3cf02196216b63c3ad29eba7f425fb0c5
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256159"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795008"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -414,25 +414,30 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 ### <a name="customization"></a>カスタマイズ
 
-Custom Voice は、標準およびニューラル レベルで使用できます。 サポートされている言語は、これら 2 つのレベルで異なります。 
+Custom Voice は、ニューラル レベル (カスタム ニューラル音声) 内で使用できます。 以下のサポートされている言語をご確認ください。 
 
-| Language | Locale | Standard | ニューラル |
-|--|--|--|--|
-| 中国語 (標準、簡体字) | `zh-CN` | はい | はい |
-| 中国語 (標準、簡体字)、英語バイリンガル | `zh-CN` バイリンガル | はい | はい |
-| 英語 (オーストラリア) | `en-AU` | いいえ | はい |
-| 英語 (インド) | `en-IN` | はい | はい |
-| 英語 (イギリス) | `en-GB` | はい | はい |
-| 英語 (米国) | `en-US` | はい | はい |
-| フランス語 (カナダ) | `fr-CA` | いいえ | はい |
-| フランス語 (フランス) | `fr-FR` | はい | はい |
-| ドイツ語 (ドイツ) | `de-DE` | はい | はい |
-| イタリア語 (イタリア) | `it-IT` | はい | はい |
-| 日本語 (日本) | `ja-JP` | いいえ | はい |
-| 韓国語 (韓国) | `ko-KR` | いいえ | はい |
-| ポルトガル語 (ブラジル) | `pt-BR` | はい | はい |
-| スペイン語 (メキシコ) | `es-MX` | はい | はい |
-| スペイン語 (スペイン) | `es-ES` | いいえ | はい |
+> [!IMPORTANT]
+> Custom Voice の統計的パラメトリックおよび連結トレーニング方法を含む Standard レベルは非推奨で、2024 年 2 月 29 日に廃止される予定です。 ニューラル以外/Standard Custom Voice を使用している場合は、次の手順に従って、カスタム ニューラル音声に直ちに移行して、品質を向上させ、責任を持って音声をデプロイしてください。 
+
+| Language | Locale | ニューラル |
+|--|--|--|
+| ブルガリア語 (ブルガリア)| `bg-BG` | はい |
+| 中国語 (標準、簡体字) | `zh-CN` | はい |
+| 中国語 (標準、簡体字)、英語バイリンガル | `zh-CN` バイリンガル | はい |
+| オランダ語 (オランダ)   | `nl-NL` | はい |
+| 英語 (オーストラリア) | `en-AU` | はい |
+| 英語 (インド) | `en-IN` | はい |
+| 英語 (イギリス) | `en-GB` | はい |
+| 英語 (米国) | `en-US` | はい |
+| フランス語 (カナダ) | `fr-CA` | はい |
+| フランス語 (フランス) | `fr-FR` | はい |
+| ドイツ語 (ドイツ) | `de-DE` | はい |
+| イタリア語 (イタリア) | `it-IT` | はい |
+| 日本語 (日本) | `ja-JP` | はい |
+| 韓国語 (韓国) | `ko-KR` | はい |
+| ポルトガル語 (ブラジル) | `pt-BR` | はい |
+| スペイン語 (メキシコ) | `es-MX` | はい |
+| スペイン語 (スペイン) | `es-ES` | はい |
 
 カスタム音声モデルをトレーニングする必要があるトレーニング データと一致する適切なロケールを選択します。 たとえば、持っている録音データが英国アクセントの英語で話されている場合は、`en-GB` を選択します。
 

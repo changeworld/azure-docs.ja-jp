@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5061b2b45f63b6d6d7d9f533b127341c7b604d28
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879597"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517102"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -25,7 +25,7 @@ ms.locfileid: "98879597"
 上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](/previous-versions/msp-n-p/jj554200(v=pandp.10))からの[マテリアライズドビュー パターン](/previous-versions/msp-n-p/dn589782(v=pandp.10))の使用があります。  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
-異なる **RowKey** 値 (同じパーティション内) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用した高速で効率的な参照と代替の並べ替え順序を可能にします。 コピー間の更新の一貫性は、EGT を使用して保つことができます。  
+異なる **RowKey** 値 (同じパーティション内) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用した高速で効率的な参照と代替の並べ替え順序を可能にします。 コピー間の更新は、エンティティ グループ トランザクション (EGT) を使用して一貫性を維持できます。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
 Table service は **PartitionKey** と **RowKey** 値を使用して自動的にインデックスを作成します。 そのため、クライアント アプリケーションでは、これらの値を使用してエンティティを効率的に取得できます。 たとえば、次のようなテーブル構造を使用することにより、クライアント アプリケーションでは、ポイント クエリを使用して部署名と従業員 ID (**PartitionKey** と **RowKey** 値) から、個々の従業員エンティティを取得できます。 また、各部署内の従業員 ID で並べ替えたエンティティを取得することも可能です。
