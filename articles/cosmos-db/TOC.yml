@@ -41,7 +41,7 @@
             - name: 自動スケーリングの概要
               href: provision-throughput-autoscale.md
             - name: 自動スケーリングに関する FAQ
-              href: autoscale-faq.md
+              href: autoscale-faq.yml
         - name: サーバーレス
           href: serverless.md
         - name: 自動スケーリングと標準 (手動) のスループットのいずれかを選択
@@ -116,6 +116,8 @@
           href: optimize-dev-test.md
         - name: 予約容量によるコストの最適化
           href: cosmos-db-reserved-capacity.md
+        - name: レート制限を使用した最適化
+          href: rate-limiting-requests.md
     - name: 変更フィードの概要
       href: change-feed.md
     - name: 組み込み Jupyter ノートブック
@@ -637,21 +639,6 @@
           href: sql-sdk-connection-modes.md
     - name: 攻略ガイド
       items:
-        - name: Azure Cosmos DB リソースの管理
-          items:
-            - name: Azure Cosmos アカウントを管理する
-              href: how-to-manage-database-account.md
-            - name: PowerShell の使用
-              href: manage-with-powershell.md
-            - name: Azure CLI の使用
-              href: manage-with-cli.md
-            - name: Resource Manager テンプレートの使用
-              href: manage-with-templates.md
-              displayName: ARM
-            - name: リージョン間の移動
-              href: how-to-move-regions.md
-            - name: 変更または削除の防止
-              href: resource-locks.md
         - name: グローバル配信
           items:
             - name: マルチリージョンの書き込みを構成する
@@ -924,7 +911,7 @@
             - name: Java バルク エグゼキューター ライブラリ v2
               href: sql-api-sdk-bulk-executor-java.md
         - name: Azure CLI
-          href: /cli/azure/cosmosdb
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
         - name: Node.js
           href: sql-api-sdk-node.md
         - name: Python
@@ -1055,6 +1042,8 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: MongoDB API
   items:
     - name: 概要
@@ -1110,7 +1099,7 @@
         - name: API バージョン 3.2
           href: mongodb-feature-support.md
         - name: よく寄せられる質問
-          href: mongodb-api-faq.md
+          href: mongodb-api-faq.yml
         - name: 整合性レベルのマッピング
           href: mongodb-consistency.md
     - name: 操作方法ガイド
@@ -1187,6 +1176,8 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: Gremlin API
   displayName: 'graph, graph database'
   items:
@@ -1217,7 +1208,7 @@
     - name: 概念
       items:
         - name: よく寄せられる質問
-          href: gremlin-api-faq.md
+          href: gremlin-api-faq.yml
         - name: 応答ヘッダー
           href: gremlin-headers.md
         - name: 制限
@@ -1267,6 +1258,8 @@
           href: /rest/api/cosmos-db-resource-provider/2021-03-15/gremlinresources
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: テーブル API
   items:
     - name: 概要
@@ -1316,7 +1309,7 @@
     - name: 概念
       items:
         - name: よく寄せられる質問
-          href: table-api-faq.md
+          href: table-api-faq.yml
     - name: 操作方法ガイド
       items:
         - name: Table API によるアプリの構築
@@ -1351,8 +1344,25 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Table Storage REST API
           href: /rest/api/storageservices/table-service-rest-api
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: 攻略ガイド
   items:
+    - name: Azure Cosmos DB リソースの管理
+      items:
+        - name: Azure Cosmos アカウントを管理する
+          href: how-to-manage-database-account.md
+        - name: PowerShell の使用
+          href: manage-with-powershell.md
+        - name: Azure CLI の使用
+          href: manage-with-cli.md
+        - name: Resource Manager テンプレートの使用
+          href: manage-with-templates.md
+          displayName: ARM
+        - name: リージョン間の移動
+          href: how-to-move-regions.md
+        - name: 変更または削除の防止
+          href: resource-locks.md
     - name: 開発者ツールの使用
       items:
         - name: エミュレーターを使用したローカル開発
@@ -1471,7 +1481,7 @@
     - name: SQL のプレイグラウンド
       href: 'https://www.documentdb.com/sql/demo'
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
     - name: ホワイトペーパー
       href: whitepapers.md
     - name: パートナー

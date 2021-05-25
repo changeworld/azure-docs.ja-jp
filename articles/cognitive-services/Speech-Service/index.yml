@@ -89,7 +89,7 @@ conceptualContent:
       links:
         - itemType: overview
           text: Custom Keyword について
-          url: custom-keyword-overview.md
+          url: keyword-recognition-overview.md
         - itemType: quickstart
           text: Custom Keyword の概要
           url: custom-keyword-basics.md
