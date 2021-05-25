@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 04ff93f8fa19e6ec18ebf606291a09f558d93529
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 15d5e1d68dce69b5b2f68a02f8b4832393cdd59c
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075917"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713470"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 
@@ -71,7 +71,7 @@ Azure CLI を使用してサービス Azure ロールを割り当てるには、
 
 サービス プリンシパルにロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者にロールの割り当ての実行を依頼しなければならない可能性があります。
 
-次の例では、Azure CLI を使用して新しいサービス プリンシパルを作成し、**ストレージ BLOB データ閲覧者ロール** をアカウント スコープで割り当てています。
+次の例では、Azure CLI を使用して新しいサービス プリンシパルを作成し、**ストレージ BLOB データ共同作成者** ロールをアカウント スコープで割り当てています
 
 ```azurecli-interactive
 az ad sp create-for-rbac \

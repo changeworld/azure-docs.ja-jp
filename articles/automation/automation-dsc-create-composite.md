@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5833308f03d328d988ac818d83ff5ee618a4c79c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3baf87cc1b14ca4d8d7d3630e777b03801398968
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563574"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737551"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>構成を複合リソースに変換する
 
@@ -26,7 +26,7 @@ ms.locfileid: "103563574"
 
 - Web サーバーを作成する
 - DNS サーバーを作成する
-- SharePoint サーバーを作成する
+- SharePoint を実行するサーバーを作成する
 - SQL クラスターを構成する
 - ファイアウォール設定を管理する
 - パスワード設定を管理する

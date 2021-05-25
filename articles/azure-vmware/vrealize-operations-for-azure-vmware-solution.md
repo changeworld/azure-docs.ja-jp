@@ -1,16 +1,16 @@
 ---
-title: Azure VMware Solution 向け vRealize Operations の設定
+title: Azure VMware Solution 向け vRealize 操作の構成
 description: Azure VMware Solution のプライベート クラウド向けに vRealize Operations を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 127280d22e26a88b81016aeb53432dade45dc010
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802490"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769311"
 ---
-# <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware Solution 向け vRealize Operations の設定
+# <a name="configure-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware Solution 向け vRealize 操作の構成
 
 
 vRealize Operations Manager は、VMware インフラストラクチャ管理者がシステム リソースの監視に使用できる運用管理プラットフォームです。 これらのシステム リソースとしては、アプリケーションレベルのオブジェクトまたはインフラストラクチャ レベルのオブジェクト (物理および仮想の両方) があります。 ほとんどの VMware 管理者は、vRealize Operations を使用して VMware プライベート クラウドのコンポーネント (vCenter、ESXi、NSX-T、vSAN、VMware HCX) を監視および管理していました。  プロビジョニングされた各 Azure VMware Solution プライベート クラウドには、専用の vCenter、NSX-T、vSAN、HCX デプロイが含まれています。 

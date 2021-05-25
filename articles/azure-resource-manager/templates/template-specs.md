@@ -2,17 +2,17 @@
 title: テンプレート スペックの作成とデプロイ
 description: テンプレート スペックを作成し、組織内の他のユーザーと共有する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 05/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 2f4aec6d9fa07edf36dea68a23ba12eb5f72d308
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa93342fa1f0a2358ca05da5c5510b8510034210
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626086"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736798"
 ---
-# <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager テンプレート スペック (プレビュー)
+# <a name="azure-resource-manager-template-specs"></a>Azure Resource Manager テンプレート スペック
 
 テンプレート スペックは、後でデプロイするために Azure に Azure Resource Manager テンプレート (ARM テンプレート) を格納するためのリソースの種類です。 このリソースの種類を使用すると、ARM テンプレートを組織内の他のユーザーと共有できます。 他の Azure リソースと同じように、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してテンプレート スペックを共有できます。
 
@@ -21,7 +21,7 @@ ms.locfileid: "105626086"
 テンプレート スペックをデプロイするには、PowerShell、Azure CLI、Azure portal、REST およびその他のサポートされている SDK およびクライアントなど、標準の Azure ツールを使用します。 テンプレートの場合と同じコマンドを使用します。
 
 > [!NOTE]
-> Template Specs は現在プレビューの段階です。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+> Azure PowerShell でテンプレート スペックを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="why-use-template-specs"></a>テンプレート スペックを使用する理由は何ですか。
 

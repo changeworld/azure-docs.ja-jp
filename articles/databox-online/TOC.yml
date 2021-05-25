@@ -274,6 +274,8 @@
                   items:
                     - name: VM コンソールに接続する
                       href: azure-stack-edge-gpu-connect-virtual-machine-console.md
+                    - name: VM イメージのアップロード
+                      href: azure-stack-edge-troubleshoot-virtual-machine-image-upload.md
         - name: 証明書の管理
           items:
             - name: 要件
@@ -342,7 +344,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 共有のリリース ノート
       items:
-        - name: 2103 - 最新
+        - name: 2105 - 最新
+          href: azure-stack-edge-gpu-2105-release-notes.md
+        - name: 2103
           href: azure-stack-edge-gpu-2103-release-notes.md
         - name: 2101
           href: azure-stack-edge-gpu-2101-release-notes.md

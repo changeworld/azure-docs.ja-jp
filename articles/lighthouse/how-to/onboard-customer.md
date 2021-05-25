@@ -1,18 +1,18 @@
 ---
 title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 03/29/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: d8ad448ac022b07ecdea6b68c4544b8c955814b1
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: fc67146b6fb1fb5767678838af0c7cbf30c5815a
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497967"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786132"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
-この記事では、サービス プロバイダーが顧客を Azure Lighthouse にオンボードする方法について説明します。 これを行うとき、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用することにより、顧客の Azure Active Directory (Azure AD) テナントにおいて委任されたリソース (サブスクリプションやリソース グループ) を、顧客自身のテナントを通じて管理できます。
+この記事では、サービス プロバイダーが顧客を Azure Lighthouse にオンボードする方法について説明します。 これを行う場合、顧客の Azure Active Directory (Azure AD) テナント内の委任されたリソース (サブスクリプション、リソース グループ、またはこれらの両方) は、[Azure の委任されたリソース管理](../concepts/architecture.md)を通じてテナントのユーザーが管理できます。
 
 > [!TIP]
 > このトピックではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して Azure Lighthouse を設定し、自社の管理エクスペリエンスを強化することができます。
@@ -205,7 +205,7 @@ az role definition list --name "<roleName>" | grep name
 パラメーター ファイルを更新したら、顧客のテナント内のユーザーは、Azure Resource Manager テンプレートを顧客のテナントにデプロイする必要があります。 オンボードするサブスクリプションごと (または、オンボードするリソース グループを含むサブスクリプションごと) に個別のデプロイが必要です。
 
 > [!IMPORTANT]
-> このデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者](../../role-based-access-control/built-in-roles.md#owner)などの `Microsoft.Authorization/roleAssignments/write` アクセス許可を含むロールを持っている (またはオンボード対象のリソース グループを含む) 顧客のテナント内で実行する必要があります。 サブスクリプションを委任できるユーザーを見つけるには、顧客のテナント内のユーザーが Azure portal 上でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。 
+> このデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者](../../role-based-access-control/built-in-roles.md#owner)などの `Microsoft.Authorization/roleAssignments/write` アクセス許可を含むロールを持っている (またはオンボード対象のリソース グループを含む) 顧客のテナント内で実行する必要があります。 サブスクリプションを委任できるユーザーを見つけるには、顧客のテナント内のユーザーが Azure portal 上でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 >
 > サブスクリプションが[クラウド ソリューション プロバイダー (CSP) プログラム](../concepts/cloud-solution-provider.md)を使用して作成されている場合、サービス プロバイダー テナントの[管理エージェント](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ロールを持つユーザーがデプロイを実行できます。
 

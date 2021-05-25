@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 180a5edd00b6085ffd91568471ca763f5e4e9711
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 9115c31b3eb24e9d0e3afd5984ea60308c424a77
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814858"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786755"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>チュートリアル:脅威を検出するためのカスタム分析規則を作成する
 
@@ -207,6 +207,8 @@ Azure Sentinel に[データソースを接続](quickstart-onboard.md)した後�
 - 新しく作成されたカスタムルール (種類は "スケジュールされた") は、メインの **[分析]** 画面の **[アクティブなルール]** タブの下のテーブルにあります。 この一覧から、各ルールを有効にしたり、無効にしたり、削除したりできます。
 
 - 作成したアラート ルールの結果を表示するには、 **[インシデント]** ページに移動します。ここでは、トリアージ、[インシデントの調査](tutorial-investigate-cases.md)、脅威の修復を行うことができます。
+
+- ルール クエリを更新して、偽陽性を除外できます。 詳細については、「[Azure Sentinel での偽陽性の処理](false-positives.md)」を参照してください。
 
 > [!NOTE]
 > Azure Sentinel で生成されたアラートは、[Microsoft Graph Security](/graph/security-concept-overview) を通じて使用できます。 詳細については、[Microsoft Graph のセキュリティ アラートのドキュメント](/graph/api/resources/security-api-overview)を参照してください。

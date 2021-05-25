@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 04/02/2021
 ms.author: aahi
-ms.openlocfilehash: d7f62082d860d8ec39a5937af5c1bae81b372caa
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b1af48aa2aad3daa37a3ca4073d44574b5b05e6c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906586"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742123"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>例:Text Analytics を使用して言語を検出する
 
@@ -91,9 +91,9 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。
 
-要求の例の結果は、次の JSON のようになります。 複数の項目を含む 1 つのドキュメントであることに注意してください。 出力は英語です。 言語識別子には、[ISO 639-1](https://www.iso.org/standard/22109.html) 形式のフレンドリ名と言語コードが含まれます。
+要求の例の結果は、次の JSON ドキュメントのようになります。 複数の項目を含む 1 つのドキュメントになっていて、それぞれの項目が、送信された各ドキュメントの検出結果を表していることに注意してください。 出力は英語です。 
 
-正のスコア 1.0 は、分析の可能な最も高い信頼レベルを表します。
+言語検出からは、1 つのドキュメントに対して主要な言語が 1 つ、その [ISO 639-1](https://www.iso.org/standard/22109.html) 名、フレンドリ名、信頼度スコアと共に返されます。 正のスコア 1.0 は、分析の可能な最も高い信頼レベルを表します。
 
 ```json
 {

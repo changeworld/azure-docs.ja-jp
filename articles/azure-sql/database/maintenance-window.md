@@ -10,17 +10,17 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 04/28/2021
-ms.openlocfilehash: a02735c20b7286df4aafef998066b9edfc519ef4
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: ab3da3ba8764ced53f3dcd936d56a24e73cfd8a2
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228282"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736453"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-メンテナンス期間機能を使用すると、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL マネージド インスタンス](../managed-instance/sql-managed-instance-paas-overview.md) リソースのメンテナンス スケジュールを構成して、影響のあるメンテナンス イベントを予測可能にし、ワークロードの中断を減らすことができます。 
+メンテナンス期間機能を使用すると、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) リソースのメンテナンス スケジュールを構成して、影響のあるメンテナンス イベントを予測可能にし、ワークロードの中断を減らすことができます。 
 
 > [!Note]
 > メンテナンス期間機能では、アップグレードや予定メンテナンスから見込まれる予定される影響のみを防ぎます。 フェールオーバーのあらゆる原因を防ぐことはありません。メンテナンス期間の外で短い接続中断を引き起こしうる例外には、ハードウェアの故障、クラスターの負荷分散、データベースの Service Level Objective の変更などのイベントに起因するデータベース再構成などがあります。 
@@ -100,15 +100,15 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 
 * Azure SQL Database では、プロキシ接続ポリシーを使用した接続は、選択したメンテナンス期間とゲートウェイ ノードのメンテナンス期間の両方の影響を受ける可能性があります。 ただし、推奨のリダイレクト接続ポリシーを使用したクライアント接続であれば、ゲートウェイ ノードのメンテナンス再構成の影響を受けません。 
 
-* Azure SQL マネージド インスタンスでは、ゲートウェイ ノードは[仮想クラスター内](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)でホストされ、マネージド インスタンスと同じメンテナンス期間を使用しますが、メンテナンス イベント中の中断の回数を最小限に抑えるために、リダイレクト接続ポリシーを使用することをお勧めします。
+* Azure SQL Managed Instance では、ゲートウェイ ノードは[仮想クラスター内](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)でホストされ、マネージド インスタンスと同じメンテナンス期間を使用しますが、メンテナンス イベント中の中断の回数を最小限に抑えるために、リダイレクト接続ポリシーを使用することをお勧めします。
 
 Azure SQL Database でのクライアント接続ポリシーについて詳しくは、[Azure SQL Database の接続ポリシー](../database/connectivity-architecture.md#connection-policy)に関するページをご覧ください。 
 
-Azure SQL マネージド インスタンスでのクライアント接続ポリシーについて詳しくは、[Azure SQL マネージド インスタンスの接続の種類](../../azure-sql/managed-instance/connection-types-overview.md)に関するページをご覧ください。
+Azure SQL Managed Instance のクライアント接続ポリシーについて詳しくは、「[Azure SQL Managed Instance の接続の種類](../../azure-sql/managed-instance/connection-types-overview.md)」をご覧ください。
 
-## <a name="considerations-for-azure-sql-managed-instance"></a>Azure SQL マネージド インスタンスに関する考慮事項
+## <a name="considerations-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance に関する考慮事項
 
-Azure SQL マネージド インスタンスは、お客様の仮想ネットワーク サブネット内で実行される、隔離された一連の専用仮想マシンでホストされたサービス コンポーネントで構成されます。 これらの仮想マシンは、複数のマネージド インスタンスをホストできる[仮想クラスター](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture)を形成します。 1 つのサブネットのインスタンスに対して構成されたメンテナンス期間は、サブネット内の仮想クラスターの数と、仮想クラスター間でのインスタンスの分散に影響を与える可能性があります。 これには、いくつかの影響を考慮する必要がある場合があります。
+Azure SQL Managed Instance は、お客様の仮想ネットワーク サブネット内で実行される、隔離された一連の専用仮想マシンでホストされたサービス コンポーネントで構成されます。 これらの仮想マシンは、複数のマネージド インスタンスをホストできる[仮想クラスター](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture)を形成します。 1 つのサブネットのインスタンスに対して構成されたメンテナンス期間は、サブネット内の仮想クラスターの数と、仮想クラスター間でのインスタンスの分散に影響を与える可能性があります。 これには、いくつかの影響を考慮する必要がある場合があります。
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>メンテナンス期間の構成は実行時間の長い操作です 
 仮想クラスターでホストされているすべてのインスタンスは、メンテナンス期間を共有します。 既定では、すべてのマネージド インスタンスは、既定のメンテナンス期間を使用して仮想クラスターでホストされます。 その作成時または作成後にマネージド インスタンスに対して別のメンテナンス期間を指定すると、それは、対応するメンテナンス期間を持つ仮想クラスターに配置する必要があります。 そのような仮想クラスターがサブネット内に存在しない場合は、そのインスタンスを格納するために、最初に新しいものを作成する必要があります。 既存の仮想クラスターに追加のインスタンスを格納するには、クラスターのサイズ変更が必要になる場合があります。 どちらの操作も、マネージド インスタンスのメンテナンス期間の構成にかかる時間に影響します。
@@ -136,4 +136,4 @@ Azure SQL マネージド インスタンスは、お客様の仮想ネットワ
 * [メンテナンス期間に関する FAQ](maintenance-window-faq.yml)
 * [Azure SQL Database](sql-database-paas-overview.md) 
 * [SQL マネージド インスタンス](../managed-instance/sql-managed-instance-paas-overview.md)
-* [Azure SQL Database および Azure SQL マネージド インスタンスでの Azure メンテナンス イベントの計画](planned-maintenance.md)
+* [Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画](planned-maintenance.md)
