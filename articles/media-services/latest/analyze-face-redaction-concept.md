@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4907a81fc8cb55499fa97f2b02a3e19e7117bbbc
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 2f9eca1600ffe9270ac2f02db38c815e92498afe
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286387"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086214"
 ---
 # <a name="find-and-redact-blur-faces-with-the-face-detector-preset"></a>Face Detector プリセットで顔を検索して編集する (ぼかす)
 
@@ -29,10 +29,8 @@ Azure Media Services v3 API に含まれる Face Detector プリセットによ�
 
 この記事では、**Face Detector プリセット** の詳細を説明し、Azure Media Services SDK for .NET でのその使用方法を示します。
 
-[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
-
 ## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
- 
+
 重要な注意事項として、Azure Media Services での分析を使用するときは、適用されるすべての法令に従う必要があります。 他の人の権利を侵害するような方法で Azure Media Services またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Azure Media Services サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Azure Media Services のコンプライアンス、プライバシー、セキュリティについては、Azure の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) (OST)、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保有、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../video-indexer/faq.md)で確認できます。 Azure Media Services を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます
 
 ## <a name="face-redaction-modes"></a>顔編集モード
@@ -55,7 +53,7 @@ Azure Media Services v3 API に含まれる Face Detector プリセットによ�
 
 ### <a name="analyze-mode"></a>分析モード
 
-2 パス ワークフローの **分析** パスでは、ビデオ入力が取得され、顔の位置のリストを含む JSON ファイル、顔 ID、および検出された各顔の jpg 画像が生成されます。 
+2 パス ワークフローの **分析** パスでは、ビデオ入力が取得され、顔の位置のリストを含む JSON ファイル、顔 ID、および検出された各顔の jpg 画像が生成されます。
 
 | 段階 | ファイル名 | Notes |
 | --- | --- | --- |
@@ -149,7 +147,6 @@ foo_IDList.txt の例
 
 ぼかしの種類のサンプルを以下に示します。
 
-
 #### <a name="low"></a>低
 
 ![低解像度のぼかし設定の例。](./media/media-services-face-redaction/blur-1.png)
@@ -214,4 +211,3 @@ Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フ
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -12,20 +12,20 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: f9c2c15bbfcf9a9271e629ef26c11ecc4cbaaa6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7a26bfd979fd58ba0519aeba274b22ae502f8a8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98740110"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085926"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するアプリへの同意のアクセス許可
 
 この記事では、Azure Active Directory (Azure AD) のカスタム ロールの定義に対して現在利用可能なアプリへの同意のアクセス許可について説明します。 この記事には、アプリへの同意とアクセス許可に関連したいくつかの一般的なシナリオに必要なアクセス許可が記載されています。
 
-## <a name="required-license-plan"></a>必要とされるライセンス プラン
+## <a name="license-requirements"></a>ライセンスの要件
 
-この機能を使用するためには、Azure AD 組織に Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="app-consent-permissions"></a>アプリへの同意のアクセス許可
 

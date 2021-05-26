@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: b1a172adb54593421ef56e09c131e0ddcaee9f6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: v-erkel
+ms.openlocfilehash: 5cfc83bb844048edfb2c3d18161562c2263c1b31
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215826"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455904"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer の仕様
 

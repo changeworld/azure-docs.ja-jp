@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 01/15/2021
-ms.openlocfilehash: 3bd617f052d52339ae35e5a088c6ee85b797fb48
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/01/2021
+ms.openlocfilehash: 29ce9430d43ed663be8d888dc2388551659c873c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779185"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468892"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database および Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,12 +112,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 DC シリーズは、プロビジョニング済みコンピューティングでのみサポートされており (サーバーレスはサポートされていません)、またゾーン冗長性はサポートされていません。 DC シリーズが利用可能なリージョンについては、[DC シリーズの可用性](#dc-series-1)に関するセクションを参照してください。
 
-#### <a name="azure-offer-types-supported-by-dc-series"></a>DC シリーズでサポートされている Azure オファーの種類
-
-DC シリーズにアクセスするには、サブスクリプションの種類を、従量課金制やマイクロソフト エンタープライズ契約 (EA) を含む有料のオファーにする必要があります。  DC シリーズでサポートされている Azure オファーの種類の一覧については、[使用制限のない現在のオファー](https://azure.microsoft.com/support/legal/offer-details)を参照してください。
-
 ### <a name="compute-and-memory-specifications"></a>コンピューティングとメモリの仕様
-
 
 |ハードウェアの世代  |Compute  |メモリ  |
 |:---------|:---------|:---------|

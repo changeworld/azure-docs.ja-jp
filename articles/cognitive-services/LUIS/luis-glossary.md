@@ -4,13 +4,13 @@ description: 用語集では、LUIS API サービスの使用中に目にする�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/08/2020
-ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 15235ddd1ae6bfe3166b523004bc8fe80a5b5be9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98786946"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061464"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS サービスの使用中に目にする可能性のある用語について説明します。
@@ -44,7 +44,7 @@ HR ボットを構築している場合は、"休暇の予定を立てる"、"�
 
 ### <a name="authoring-resource"></a>作成リソース
 
-LUIS の[作成リソース](luis-how-to-azure-subscription.md#azure-resources-for-luis)は、Azure を通じて利用できる管理可能な項目です。 リソースは、Azure サービスの関連する作成、トレーニング、および公開機能に対するアクセスです。 リソースには、関連する Azure サービスにアクセスするために必要な認証、承認、セキュリティ情報が含まれています。
+LUIS の[作成リソース](luis-how-to-azure-subscription.md)は、Azure を通じて利用できる管理可能な項目です。 リソースは、Azure サービスの関連する作成、トレーニング、および公開機能に対するアクセスです。 リソースには、関連する Azure サービスにアクセスするために必要な認証、承認、セキュリティ情報が含まれています。
 
 作成 リソースには、`LUIS-Authoring` という Azure の "種類" があります。
 

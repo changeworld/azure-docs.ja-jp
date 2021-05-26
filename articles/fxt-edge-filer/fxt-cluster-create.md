@@ -2,16 +2,16 @@
 title: チュートリアル:Azure FXT Edge Filer キャッシュ クラスターを作成する
 description: Azure FXT Edge Filer を使用してハイブリッド ストレージ キャッシュ クラスターを作成する方法、およびクラスターのコントロール パネルにサインインしてクラスターの設定を構成する方法について説明します。
 author: ekpgh
-ms.author: rohogue
+ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a58eb462d37c94373c21915cfc22287d3749184
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92220807"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456292"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>チュートリアル:Azure FXT Edge Filer クラスターの作成
 

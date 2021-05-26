@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 10742ec277f5742067c432a2823cbb7592e6a752
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 63740e6d3f6df757cc7cc8847ed10a03b8831fd5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874697"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060186"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>チュートリアル: Linux コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -226,10 +226,10 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
    ```
 
    `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
-   
+
 3. Azure Container Registry にログインする
 
-   ```cmd/sh
+   ```azurecli
    az acr login -n <ACR registry name>
    ```
 

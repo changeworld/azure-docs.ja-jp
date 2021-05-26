@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: dd56740b7153cdbafdfa847a22d34b57f862cdf3
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6fb47cf8c3bea7080151d635620bde549070060d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550745"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084990"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
@@ -26,7 +26,7 @@ ms.locfileid: "106550745"
 > Front Door は世界中に多くのエッジ環境があるので、バックエンドに対する正常性プローブの量が極めて多くなる可能性があります。構成されている正常性プローブの頻度にもよりますが、毎分 25 回要求されることもあれば、多いときは毎分 1200 回要求されることもあります。 既定のプローブ頻度は 30 秒であり、バックエンドのプローブ量は毎分 200 要求程度になるはずです。
 
 > [!NOTE]
-> Front Door HTTP/HTTPS プローブは、`Edge Health Probes` という値の `User-Agent` ヘッダー セットと共に送信されます。 
+> Front Door HTTP/HTTPS プローブは、`Edge Health Probe` という値の `User-Agent` ヘッダー セットと共に送信されます。 
 
 ## <a name="supported-protocols"></a>サポートされるプロトコル
 
@@ -46,7 +46,7 @@ Front Door では、正常性プローブを送信するための次の HTTP メ
 
 | Responses  | 説明 | 
 | ------------- | ------------- |
-| 正常性の特定  |  200 OK 状態コードは、バックエンドが正常であることを示します。 他のすべての状態コードは、エラーとみなされます。 (ネットワーク障害を含む) 何らかの理由で有効な HTTP 応答がプローブに対して受信されない場合、そのプローブはエラーとしてカウントされます。|
+| 正常性の特定  | 200 OK 状態コードは、バックエンドが正常であることを示します。 他のすべての状態コードは、エラーとみなされます。 (ネットワーク障害を含む) 何らかの理由で有効な HTTP 応答がプローブに対して受信されない場合、そのプローブはエラーとしてカウントされます。|
 | 待ち時間の測定  | 待ち時間は、プローブ要求を送信する直前から応答の最後のバイトを受信した瞬間までの実時間です。 要求ごとに新しい TCP 接続が使用されるため、この測定値が既存のウォーム接続のあるバックエンドに偏ることはありません。  |
 
 ## <a name="how-front-door-determines-backend-health"></a>Front Door によるバックエンドの正常性の判定方法
