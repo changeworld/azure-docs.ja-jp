@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: bc809cf02b827b7498890cb7d929c44bd360ab53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14f21939e53a284619f18049df84706cab6fd594
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99094711"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087062"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>チュートリアル:Azure AD グループにディレクトリ閲覧者ロールを割り当てて、ロールの割り当てを管理する
 
@@ -94,7 +94,7 @@ SQL Managed Instance では、[マネージド インスタンスの Azure AD �
 ## <a name="directory-readers-role-assignment-using-powershell"></a>PowerShell を使用したディレクトリ閲覧者ロールの割り当て
 
 > [!IMPORTANT]
-> [全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator)または[特権ロール管理者](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)は、これらの初期手順を実行する必要があります。 PowerShell に加えて、Azure AD には、[Azure AD でロールの割り当てが可能なグループを作成する](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api)ための Microsoft Graph API が用意されています。
+> [全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator)または[特権ロール管理者](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)は、これらの初期手順を実行する必要があります。 PowerShell に加えて、Azure AD には、[Azure AD でロールの割り当てが可能なグループを作成する](../../active-directory/roles/groups-create-eligible.md#microsoft-graph-api)ための Microsoft Graph API が用意されています。
 
 1. 次のコマンドを使用して、Azure AD プレビュー PowerShell モジュールをダウンロードします。 場合によっては、管理者として PowerShell を実行する必要があります。
 

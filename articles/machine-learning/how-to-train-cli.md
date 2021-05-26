@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 38b166818f9f27a2905647518c36296965dc953d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 92397e1648afe8e92cd810827b75cb23c2dac09f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382645"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458278"
 ---
 # <a name="train-models-create-jobs-with-the-20-cli-preview"></a>2\.0 CLI を使用してモデルをトレーニングする (ジョブを作成する) (プレビュー)
 
@@ -23,7 +23,8 @@ Machine Learning 用の Azure 2.0 CLI 拡張機能 (プレビュー) を使用�
 
 通常、機械学習モデルのトレーニングは反復的プロセスです。 最新のツールを使用すると、より多くのデータでより大きなモデルをより速くトレーニングすることがこれまでになく簡単になります。 多くの場合、ハイパーパラメーター調整などの以前は面倒だった手動プロセスやアルゴリズム選択でさえも自動化されます。 Azure Machine Learning CLI を使用すると、ハイパーパラメーター スイープ、高パフォーマンス Azure コンピューティングでのスケールアップ、分散トレーニングを利用したスケールアウトを使用して、[ワークスペース](concept-workspace.md)でジョブ (およびモデル) を追跡できます。
 
-完全な機能を備えた開発環境の場合は、Visual Studio Code と [Azure Machine Learning 拡張機能](how-to-setup-vs-code.md)を使用して、[Azure Machine Learning リソースを管理](how-to-manage-resources-vscode.md)し、[機械学習モデルをトレーニング](tutorial-train-deploy-image-classification-model-vscode.md)します。
+> [!TIP]
+> 完全な機能を備えた開発環境の場合は、Visual Studio Code と [Azure Machine Learning 拡張機能](how-to-setup-vs-code.md)を使用して、[Azure Machine Learning リソースを管理](how-to-manage-resources-vscode.md)し、[機械学習モデルをトレーニング](tutorial-train-deploy-image-classification-model-vscode.md)します。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
@@ -48,7 +49,7 @@ Azure Machine Learning CLI の場合、ジョブは YAML 形式で作成され�
 
 "hello world" ジョブには、この 3 つのすべてがあります。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/hello-world.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/hello-world.yml":::
 
 これは、ログ ファイルに 1 行出力する以外は何も出力しない、サンプルのジョブです。 通常は、システムによって生成されたログに加えて、モデル バイナリや付随するメタデータなどの追加の成果物を生成します。
 
@@ -74,11 +75,11 @@ Azure Machine Learning では、次の成果物を自動的にキャプチャし
 
 基本的なコマンド ジョブは、`job.yml` を介して構成されます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/lightgbm/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/lightgbm/iris/job.yml":::
 
 このジョブは、`--file/-f` パラメーターを使用して、`az ml job create` を介して作成および実行できます。 ただし、このジョブは、まだ存在しない `cpu-cluster` という名前のコンピューティングを対象とします。 最初にこのジョブをローカルで実行するには、`--set` を使用してコンピューティング先をオーバーライドします。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="lightgbm_iris_local":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris_local":::
 
 このジョブをローカルで実行すると、必要なパッケージを含むローカルの Python 環境で `python main.py` を実行するよりも時間がかかりますが、上記の方法で次のことが可能になります。
 
@@ -98,7 +99,7 @@ Azure Machine Learning では、次の成果物を自動的にキャプチャし
 
 コマンド ラインから Azure Machine Learning コンピューティング クラスターを作成できます。 たとえば、次のコマンドでは、`cpu-cluster` という名前のクラスターと `gpu-cluster` という名前のクラスターを作成します。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="create_computes":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="create_computes":::
 
 `cpu-cluster` と `gpu-cluster` はジョブが送信されるまで 0 ノードのままであるため、この時点ではコンピューティングの料金は請求されないことに注意してください。 [AmlCompute のコストを計画および管理する](concept-plan-manage-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)方法の詳細を確認してください。
 
@@ -108,7 +109,7 @@ Azure Machine Learning では、次の成果物を自動的にキャプチャし
 
 `cpu-cluster` を作成したら、モデルとそれに付随するメタデータを出力する基本的なトレーニング ジョブを実行できます。 ジョブ YAML ファイルの詳細を確認してみましょう。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/lightgbm/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/lightgbm/iris/job.yml":::
 
 | Key | 説明 |
 | --- | ----------- |
@@ -125,11 +126,11 @@ Azure Machine Learning では、次の成果物を自動的にキャプチャし
 
 lightgbm または iris トレーニング ジョブを実行するには:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="lightgbm_iris":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris":::
 
 ジョブが完了すると、出力をダウンロードできます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="download_outputs":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="download_outputs":::
 
 > [!IMPORTANT]
 > `$run_id` を実際の実行 ID に置き換えます。これは、コンソール出力またはスタジオの [実行の詳細] ページで見つけることができます。
@@ -142,7 +143,7 @@ Azure Machine Learning では、機械学習モデルのハイパーパラメー
 
 `job.yml` を `job-sweep.yml` に変更して、ハイパーパラメーターをスイープすることができます。
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/lightgbm/iris/job-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/lightgbm/iris/job-sweep.yml":::
 
 | Key | 説明 |
 | --- | ----------- |
@@ -159,7 +160,7 @@ Azure Machine Learning では、機械学習モデルのハイパーパラメー
 
 ジョブを作成し、スタジオで開きます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="lightgbm_iris_sweep":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris_sweep":::
 
 > [!TIP]
 > ハイパーパラメーター スイープは、分散コマンド ジョブで使用できます。
@@ -174,25 +175,25 @@ Azure Machine Learning では、機械学習モデルのハイパーパラメー
 
 CIFAR-10 データセットでの分散 PyTorch トレーニング用の YAML ファイルの例:
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/pytorch/cifar-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/pytorch/cifar-distributed/job.yml":::
 
 これはクローンされた examples リポジトリに存在しないローカル データを参照していることに注意してください。 最初に、CIFAR-10 データセットをローカルでダウンロード、抽出、および再配置して、プロジェクト ディレクトリ内の適切な場所に配置する必要があります。
 
-:::code language="bash" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="download_cifar":::
+:::code language="bash" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="download_cifar":::
 
 ジョブを作成し、スタジオで開きます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="pytorch_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="pytorch_cifar":::
 
 ### <a name="tensorflow"></a>TensorFlow
 
 MNIST データセットでの分散 TensorFlow トレーニング用の YAML ファイルの例:
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/tensorflow/mnist-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/tensorflow/mnist-distributed/job.yml":::
 
 ジョブを作成し、スタジオで開きます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="tensorflow_mnist":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="tensorflow_mnist":::
 
 ### <a name="mpi"></a>MPI
 
@@ -202,13 +203,13 @@ MPI ジョブを起動するには、`distribution` セクションで、種類�
 
 Horovod を使用して MNIST で TensorFlow ジョブを実行する YAML 指定の例:
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/tensorflow/mnist-distributed-horovod/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/tensorflow/mnist-distributed-horovod/job.yml":::
 
 ジョブを作成し、スタジオで開きます。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="tensorflow_mnist_horovod":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="tensorflow_mnist_horovod":::
 
 ## <a name="next-steps"></a>次の手順
 
 - [マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)
-- [REST を使用してモデルをトレーニングする (プレビュー)][how-to-train-with-rest.md]
+- [REST を使用してモデルをトレーニングする (プレビュー)](how-to-train-with-rest.md)

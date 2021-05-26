@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53549869098504396d1fa1039ed43b5ff02d2a9b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100558912"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083640"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
@@ -44,7 +44,7 @@ ms.locfileid: "100558912"
 
 ### <a name="publishing-regions"></a>公開リージョン
 
-このアプリは、 **[管理]**  ->  **[[Azure リソース]](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** ページの LUIS ポータルに追加された LUIS 予測エンドポイント リソースに関連付けられているすべてのリージョンに発行されます。
+このアプリは、 **[管理]**  ->  **[[Azure リソース]](luis-how-to-azure-subscription.md#assign-luis-resources)** ページの LUIS ポータルに追加された LUIS 予測エンドポイント リソースに関連付けられているすべてのリージョンに発行されます。
 
 たとえば、[www.luis.ai](https://www.luis.ai) で作成されたアプリの場合、**westus** と **eastus** の 2 つのリージョンで LUIS リソースを作成し、それらをリソースとしてアプリに追加すると、アプリは両方のリージョンに発行されます。 LUIS のリージョンの詳細については、[リージョン](luis-reference-regions.md)に関するページを参照してください。
 

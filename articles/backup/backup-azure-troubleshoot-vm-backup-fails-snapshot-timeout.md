@@ -2,14 +2,14 @@
 title: エージェントと拡張機能に関する問題のトラブルシューティング
 description: エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。
 ms.topic: troubleshooting
-ms.date: 07/05/2019
+ms.date: 05/25/2021
 ms.service: backup
-ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 57a0002d353ebb75570dc3b70c55d2f17f70db35
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519607"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472476"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -34,7 +34,7 @@ ms.locfileid: "102519607"
     - Azure VM エージェントは、既定でポータル、PowerShell、コマンド ライン インターフェイス、または Azure Resource Manager テンプレートから Azure Marketplace イメージによってデプロイされた、すべての Windows VM にインストールされます。 Azure にデプロイするカスタム VM イメージを作成する場合は、[エージェントの手動インストール](../virtual-machines/extensions/agent-windows.md#manual-installation)が必要となる場合があります。
     - サポート マトリックスを確認して、VM が[サポートされている Windows オペレーティング システム](backup-support-matrix-iaas.md#operating-system-support-windows)で動作するかどうかを確認します。
   - Linux VM の場合は、
-    - コマンド `ps-e` を実行して、Azure VM ゲスト エージェント サービスが実行されていることを確認します。 また、[最新バージョン](../virtual-machines/extensions/update-linux-agent.md)がインストールされていることを確認してください。 詳細については、[Linux VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)に関するページを参照してください。
+    - コマンド `ps -e` を実行して、Azure VM ゲスト エージェント サービスが実行されていることを確認します。 また、[最新バージョン](../virtual-machines/extensions/update-linux-agent.md)がインストールされていることを確認してください。 詳細については、[Linux VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)に関するページを参照してください。
     - [Linux VM エージェントのシステム パッケージの依存関係](../virtual-machines/extensions/agent-linux.md#requirements)が、サポートされている構成であることを確認します。 次に例を示します。サポートされている Python のバージョンは 2.6 以降です。
     - サポート マトリックスを確認し、VM が[サポートされている Linux オペレーティング システム](backup-support-matrix-iaas.md#operating-system-support-linux)で動作するかどうかを確認します。
 

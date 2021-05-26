@@ -4,12 +4,12 @@ description: タグを適用して、課金や管理のために Azure リソー
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ef9e94203987374bebb461989fd1763cf1b0bf80
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 0106ae6bda21544629616f2268ccc111c1946b47
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803280"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480308"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -831,7 +831,7 @@ Azure REST API でタグを操作するには、次のように使用します�
 
 タグを使用して課金データをグループ化できます。 たとえば、異なる組織向けに複数の VM を実行している場合は、タグを使用して、コスト センターごとに使用状況をグループ化します。 また、タグを使用すると、運用環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
 
-タグに関する情報を取得するには、 Azure portal から入手できる使用状況ファイル (コンマ区切り値 (CSV) ファイル) をダウンロードします。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)」を参照してください。 Azure アカウント センターから使用状況ファイルをダウンロードする場合は、 **[バージョン 2]** を選択します。 課金のタグがサポートされているサービスの場合、タグは **[Tags]** 列に表示されます。
+タグに関する情報を取得するには、 Azure portal から入手できる使用状況ファイル (コンマ区切り値 (CSV) ファイル) をダウンロードします。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)」を参照してください。 課金のタグがサポートされているサービスの場合、タグは **[Tags]** 列に表示されます。
 
 REST API の操作については、「 [Azure Billing REST API Reference (Azure Billing REST API リファレンス)](/rest/api/billing/)」を参照してください。
 

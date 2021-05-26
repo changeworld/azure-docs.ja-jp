@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b11b2591ad90111c7a2d96ae1f7bf7bdde0673d5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755976"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471418"
 ---
 # <a name="accounts--tenant-profiles-android"></a>アカウントとテナント プロファイル (Android)
 
@@ -118,7 +118,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> アカウント オブジェクトから利用可能な要求のリストを表示する場合は、「[id_token の要求](./id-tokens.md#claims-in-an-id_token)」を参照してください
+> アカウント オブジェクトから利用可能な要求のリストを表示する場合は、「[id_token の要求](./id-tokens.md#claims-in-an-id-token)」を参照してください
 
 > [!TIP]
 > id_token に追加の要求を含める場合は、次のドキュメントに記載されている省略可能な要求に関するドキュメントを参照してください。「[方法: Azure AD アプリに省略可能な要求を提供する](./active-directory-optional-claims.md)」

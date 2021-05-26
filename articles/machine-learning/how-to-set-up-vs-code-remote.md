@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 04/08/2021
-ms.openlocfilehash: 7199534fa581ccb235bc8091d9459c640d53b74f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 534becdfcba1ccc992daadc5007e2eb56337a45e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884626"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379270"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)
 
@@ -31,7 +31,7 @@ Visual Studio Code からコンピューティング インスタンスに接続
 
 開発用にリモート コンピューティング インスタンスを構成するには、いくつかの前提条件を満たす必要があります。
 
-* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](tutorial-setup-vscode-extension.md)を参照してください。
+* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](how-to-setup-vs-code.md)を参照してください。
 * Azure Machine Learning ワークスペース。 まだ用意していない場合は、[Visual Studio Code の Azure Machine Learning 拡張機能を使用して新しいワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)します。
 * Azure Machine Learning コンピューティング インスタンス。 用意していない場合は、[Visual Studio Code の Azure Machine Learning 拡張機能を使用して新しいコンピューティング インスタンスを作成](how-to-manage-resources-vscode.md#create-compute-instance)します。
 
@@ -98,7 +98,7 @@ Visual Studio Code からコンピューティング インスタンスに接続
 
 コンピューティング インスタンスをリモート Jupyter Notebook サーバーとして構成するには、いくつかの前提条件が必要です。
 
-* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](tutorial-setup-vscode-extension.md)を参照してください。
+* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](how-to-setup-vs-code.md)を参照してください。
 * Azure Machine Learning ワークスペース。 まだ用意していない場合は、[Visual Studio Code の Azure Machine Learning 拡張機能を使用して新しいワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)します。
 
 コンピューティング インスタンスに接続するには、次のようにします。

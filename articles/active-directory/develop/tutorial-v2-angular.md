@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 221f48241f1d2917da94ec305dd1529e22a4b9af
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98756147"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475466"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -64,7 +64,7 @@ npm install -g @angular/cli@8                    # Install the Angular CLI
 ng new my-application --routing=true --style=css # Generate a new Angular app
 cd my-application                                # Change to the app directory
 npm install @angular/material@8 @angular/cdk@8   # Install the Angular Material component library (optional, for UI)
-npm install msal @azure/msal-angular             # Install MSAL and MSAL Angular in your application
+npm install msal @azure/msal-angular@1           # Install MSAL and MSAL Angular in your application
 ng generate component page-name                  # To add a new page (such as a home or profile page)
 ```
 

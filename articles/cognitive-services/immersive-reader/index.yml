@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Immersive Reader のドキュメント
+title: Azure イマーシブ リーダーのドキュメント
 summary: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
 metadata:
-  title: Immersive Reader のドキュメント
+  title: Azure イマーシブ リーダーのドキュメント
   description: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
   services: service
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: 4cc05d3b99530e5ba923bfcbf7f749fbcd1c0f20
-  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.openlocfilehash: dff95a1989d8ff55658227cf135d3e2fc687ec0f
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/10/2021
-  ms.locfileid: "102616640"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110377730"
 landingContent:
 - title: Immersive Reader の概要
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: Immersive Reader とは
       url: overview.md
+    - text: Azure Applied AI Services とは?
+      url: ../../applied-ai-services/what-are-applied-ai-services.md
   - linkListType: video
     links:
     - text: 作業の開始 - 短いエンジニアリング ビデオ
