@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: f1138f0b33e75968f51965355528805dd29033b3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9a9cfc444c101b603b5287fa862c36d5befef91a
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145630"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189652"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>ストレージ: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,15 +44,13 @@ ms.locfileid: "108145630"
       - M シリーズの仮想マシン デプロイについて、Azure Ultra ディスクの使用よりも[書き込みアクセラレータ](../../../virtual-machines/how-to-enable-write-accelerator.md)を検討します。
     - 最適な VM サイズを選択した後、大半の SQL Server ワークロード用のローカル エフェメラル SSD `D:\` ドライブに [tempdb](/sql/relational-databases/databases/tempdb-database) を配置します。 
       - ローカル ドライブの容量が tempdb に対して十分でない場合は、VM のサイズを増やすことを検討します。 詳細については、「[データ ファイルのキャッシュ ポリシー](#data-file-caching-policies)」を参照してください。
-- [記憶域スペース](/windows-server/storage/storage-spaces/overview)を使用して複数の Azure データ ディスクをストライプ化し、ターゲット仮想マシンの IOPS およびスループットの上限まで I/O 帯域幅を増やします。
+- [記憶域スペース](/windows-server/storage/storage-spaces/overview)を使用して複数の Azure データ ディスクをストライピングし、ターゲット仮想マシンの IOPS およびスループットの上限まで I/O 帯域幅を増やします。
 - データ ファイル ディスクの場合は、[[ホスト キャッシュ]](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) を [読み取り専用] に設定します。
 - ログ ファイル ディスクの場合は、[[ホスト キャッシュ]](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) を [なし] に設定します。
     - SQL Server ファイルが含まれているディスクでは、読み取り/書き込みキャッシュを有効にしないでください。 
     - ディスクのキャッシュ設定を変更する前に、必ず SQL Server サービスを停止してください。
 - 開発とテストのワークロード、および長期的なバックアップのアーカイブでは、Standard Storageの使用を検討してください。 運用環境のワークロードに Standard HDD/SDD を使用することはお勧めしません。
 - [クレジットベースのディスク バースト](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1 から P20) は、小規模な開発またはテストのワークロードおよび部門別システムでのみ検討してください。
-- ストレージ アカウントは、SQL Server VM と同じリージョンにプロビジョニングします。 
-- ストレージ アカウントで Azure geo 冗長ストレージ (geo レプリケーション) を無効にし、LRS (ローカル冗長ストレージ) を使用します。
 - ドライブに配置されるすべてのデータ ファイルに 64 KB のブロック サイズ (アロケーション ユニット サイズ) を使用するように、データ ディスクをフォーマットします。ただし、一時 `D:\` ドライブ (既定値は 4 KB) 以外が対象です。 Azure Marketplace を通じてデプロイされた SQL Server VM には、ブロック サイズでフォーマットされたデータ ディスクが付属しており、64 KB に設定された記憶域プールに対してインターリーブします。 
 
 このストレージのチェックリストを他と比較するには、総合的な[パフォーマンスのベスト プラクティスのチェックリスト](performance-guidelines-best-practices-checklist.md)をご覧ください。 

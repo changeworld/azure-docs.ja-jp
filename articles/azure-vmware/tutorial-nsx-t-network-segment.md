@@ -3,12 +3,12 @@ title: チュートリアル - Azure VMware Solution で NSX-T ネットワー�
 description: 仮想マシン (VM) に使用する NSX-T ネットワーク セグメントを vCenter で作成する方法について説明します。
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 9125e552f9641a2d26b9584b66a4447f9c152161
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 70a0602b037aaebd4b9776c3a8dafafcb173fa23
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462127"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064462"
 ---
 # <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>チュートリアル:Azure VMware Solution にネットワーク セグメントを追加する 
 
@@ -35,7 +35,7 @@ vCenter と NSX-T Manager のインターフェイスへのアクセスが可能
 
 次のことが可能になりました。 
 
-- [Azure VMware Solution 用の DHCP を作成して管理する](manage-dhcp.md)
+- [Azure VMware Solution 用の DHCP を作成して管理する](configure-dhcp-azure-vmware-solution.md)
 - [Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成する](deploy-vm-content-library.md) 
 - [オンプレミス環境をプライベート クラウドにピアリングする](tutorial-expressroute-global-reach-private-cloud.md)
 

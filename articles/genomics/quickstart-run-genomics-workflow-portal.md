@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6daec7658c6db6c18bd198b9aff0b8993f27ac22
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c02ed16208338edce7e29f5a516ec5af13ab07aa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177249"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477865"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイック スタート:Microsoft Genomics サービス経由でワークフローを実行する
 
@@ -35,7 +35,7 @@ Microsoft Genomics アカウントを作成するには、Azure portal の [[Cre
 
  |**設定**          |  **推奨値**  | **フィールドの説明** |
  |:-------------       |:-------------         |:----------            |
- |サブスクリプション         | お使いのサブスクリプション名|これは、Azure サービスの課金単位です。サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
+ |サブスクリプション         | お使いのサブスクリプション名|これは、Azure サービスの課金単位です。サブスクリプションの詳細については、[サブスクリプション](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に関するページをご覧ください。 |      
  |Resource group       | MyResourceGroup       |  リソース グループを使用すると、複数の Azure リソース (Storage アカウント、Genomics アカウントなど) を1 つのグループにまとめて、管理を簡単にできます。 詳細については、「[リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。 有効なリソース グループ名については、「[名前付け規則](/azure/architecture/best-practices/resource-naming)」をご覧ください。 |
  |アカウント名         | MyGenomicsAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](/azure/architecture/best-practices/resource-naming)」をご覧ください。 |
  |場所                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
@@ -94,7 +94,7 @@ Microsoft Genomics サービスでは、Azure Storage アカウントのブロ�
 
  |**設定**          |  **推奨値**  | **フィールドの説明** |
  |:-------------------------       |:-------------         |:----------            |
- |サブスクリプション         | お使いの Azure サブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
+ |サブスクリプション         | お使いの Azure サブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に関するページをご覧ください。 |      
  |Resource group       | MyResourceGroup       |  お使いの Genomics アカウントと同じリソース グループを選択できます。 有効なリソース グループ名については、[名前付けルール](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
  |ストレージ アカウント名         | MyStorageAccount     |一意のアカウント識別子を選択します。 有効な名前については、[名前付けルール](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
  |場所                  | 米国西部 2                  | お使いの Genomics アカウントの場所と同じ場所を使用し、エグレス料金を削減すると共に待ち時間を短縮します。  | 

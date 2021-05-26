@@ -1,33 +1,50 @@
 ---
 title: Form Recognizer の新機能
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Form Recognizer API の最新の変更点を把握します。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
-ms.topic: conceptual
-ms.date: 04/28/2021
+ms.topic: overview
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: 58430c94fa1b22954ca640188ced5bfb1fb197d0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 691094164a9aa57ab9b029455b5e3a0e9fefd63f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293323"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373973"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
-Form Recognizer サービスは、継続的に更新されます。 この記事で、機能の強化、修正、ドキュメントの更新についての最新情報を入手してください。
+Form Recognizer サービスは、継続的に更新されます。 このページにブックマークを設定して、リリースノート、機能の強化、およびドキュメントの更新についての最新情報を入手してください。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="form-recognizer-21-ga"></a>Form Recognizer 2.1 (一般提供)
+
+Form Recognizer 2.1 は、一般提供されています。 このリリースでは、次から情報とデータを検出して抽出することができます。
+
+* [ドキュメント](concept-layout.md)
+* [Receipts](concept-receipts.md)
+* [名刺](concept-business-cards.md)
+* [Invoices](concept-invoices.md)
+* [ID ドキュメント](concept-identification-cards.md)
+* [カスタム フォーム](concept-custom.md)
+
+### <a name="layout-adds-table-headers"></a>レイアウトによってテーブル ヘッダーが追加される
+
+更新された Layout API テーブル機能では、複数の行にまたがることができる列ヘッダーを使用してヘッダーが認識されます。 各テーブル セルには、ヘッダーの一部であるかどうかを示す属性があります。 これは、テーブル ヘッダーを構成する行を識別するために使用できます。
 
 ## <a name="april-2021"></a>2021 年 4 月
 <!-- markdownlint-disable MD029 -->
 
 ### <a name="sdk-preview-updates-for-api--version-21-preview3"></a>API バージョン 2.1-preview.3 の SDK プレビュー更新プログラム
 
-### <a name="c"></a>[**C#** ](#tab/csharp)
+### <a name="c"></a>[**C#**](#tab/csharp)
 
 NuGet パッケージ バージョン 3.1.0-beta.4
 
@@ -258,7 +275,7 @@ pip パッケージ バージョン 3.1.0b4
 **新しいサンプル** は GitHub で入手できます。
 
 * [知識抽出レシピ - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) では、Form Recognizer の実際のカスタマー エンゲージメントからベスト プラクティスが収集され、これらのプロジェクトの開発時に使用する便利なコード サンプル、チェックリスト、およびサンプル パイプラインが提供されます。
-* [サンプルラベル付けツール](https://github.com/microsoft/OCR-Form-Tools) が、v2.1 の新機能をサポートするように更新されました。 ツールの概要については、こちらの[クイックスタート](quickstarts/label-tool.md)を参照してください。
+* [サンプルラベル付けツール](https://github.com/microsoft/OCR-Form-Tools) が、v2.1 の新機能をサポートするように更新されました。 ツールの概要については、こちらの[クイックスタート](label-tool.md)を参照してください。
 * [インテリジェント キオスク](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) Form Recognizer サンプルでは、`Analyze Receipt` と `Train Custom Model` -  _[ラベルを使用しないトレーニング]_ を統合する方法について示します。
 
 ## <a name="july-2020"></a>2020 年 7 月
@@ -322,7 +339,7 @@ pip パッケージ バージョン 3.1.0b4
   * `time`
   * `integer`
 
-  この機能の使用方法については、[サンプル ラベル付けツール](./quickstarts/label-tool.md#specify-tag-value-types) ガイドを参照してください。
+  この機能の使用方法については、[サンプル ラベル付けツール](label-tool.md#specify-tag-value-types) ガイドを参照してください。
 
 * **テーブルの視覚化** サンプル ラベル付けツールで、ドキュメントで認識されたテーブルが表示されるようになりました。 この機能により、ラベル付けおよび分析を行う前に、ドキュメントから認識されて抽出されたテーブルを表示できます。 この機能は、レイヤー オプションを使用してオンとオフを切り替えることができます。
 

@@ -202,7 +202,7 @@
     - name: インフラストラクチャの自動化
       href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: ../virtual-machines/security-policy.md
@@ -413,6 +413,42 @@
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
+      href: ../virtual-machines/policy-reference.md
 - name: リソース
-  items: null
+  items:
+    - name: クラウド導入フレームワーク
+      href: /azure/cloud-adoption-framework/get-started/
+    - name: アーキテクチャ センター
+      href: /azure/architecture/
+    - name: 移行ツール
+      href: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools
+    - name: Microsoft Q&A
+      href: /answers/topics/azure-virtual-machines.html
+    - name: Azure クイック スタート テンプレート
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 一般的な CLI コマンド
+      href: ../virtual-machines/linux/cli-manage.md
+    - name: 一般的な PowerShell コマンド
+      href: ../virtual-machines/windows/ps-common-ref.md
+    - name: 一般的なネットワーク PowerShell コマンド
+      href: ../virtual-machines/windows/ps-common-network-ref.md
+    - name: VM テンプレートの説明
+      href: ../virtual-machines/windows/template-description.md
+    - name: よく寄せられる質問
+      items:
+        - name: Linux
+          href: ../virtual-machines/linux/faq.md
+        - name: Windows
+          href: ../virtual-machines/windows/faq.md
+- name: サポートとトラブルシューティング
+  href: vmss-support-help.md

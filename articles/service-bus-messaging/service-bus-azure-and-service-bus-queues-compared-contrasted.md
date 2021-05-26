@@ -3,12 +3,12 @@ title: Azure Storage キューと Service Bus キューの比較
 description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 ms.topic: article
 ms.date: 04/12/2021
-ms.openlocfilehash: 1c3b0fda12d5e301b17a342c5d5ed11ab76c76da
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a63ed276981a692b96b7e7369093af221b3d3a5f
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304360"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190129"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、どちらのソリューションが自分のニーズに最も適しているかについて、より多くの情報に基づいて判断できるようになります。
@@ -100,7 +100,7 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 | 有害なメッセージのサポート |**はい** |**はい** |
 | インプレース更新 |**はい** |**はい** |
 | サーバー側のトランザクション ログ |**はい** |**いいえ** |
-| Storage のメトリック |**はい**<br/><br/>**分単位のメトリック** は、可用性、TPS、API 呼び出し数、エラー数などのリアルタイムのメトリックを提供します。 これらはすべてリアルタイムで、分単位で集計され、運用環境での発生から数分以内に報告されます。 詳細については、「[Storage Analytics Metrics について](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)」を参照してください。 |**はい**<br/><br/>Azure Service Bus でサポートされるメトリックの詳細については、「[メッセージのメトリック](service-bus-metrics-azure-monitor.md#message-metrics)」を参照してください。 |
+| Storage のメトリック |**はい**<br/><br/>**分単位のメトリック** は、可用性、TPS、API 呼び出し数、エラー数などのリアルタイムのメトリックを提供します。 これらはすべてリアルタイムで、分単位で集計され、運用環境での発生から数分以内に報告されます。 詳細については、「[Storage Analytics Metrics について](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)」を参照してください。 |**はい**<br/><br/>Azure Service Bus でサポートされるメトリックの詳細については、「[メッセージのメトリック](monitor-service-bus-reference.md#message-metrics)」を参照してください。 |
 | 状態管理 |**いいえ** |**はい** (Active、Disabled、SendDisabled、ReceiveDisabled。 これらの状態の詳細については、「[キューの状態](entity-suspend.md#queue-status)」を参照してください |
 | メッセージの自動転送 |**いいえ** |**はい** |
 | キューの消去機能 |**はい** |**いいえ** |

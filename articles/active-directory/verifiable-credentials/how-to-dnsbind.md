@@ -4,17 +4,17 @@ description: DNS バインドの方法について学習しますか?
 documentationCenter: ''
 author: barclayn
 manager: daveba
-ms.service: identity
+ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 8225d81b11553307b9675decf74c651eb8a5f9d4
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: c1254176966a902f81cd42b68db17557288aa241
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109628070"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466182"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>ドメインを分散識別子 (DID) にリンクする
 

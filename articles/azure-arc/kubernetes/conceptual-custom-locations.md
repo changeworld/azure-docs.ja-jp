@@ -2,17 +2,17 @@
 title: カスタムの場所 - Azure Arc 対応 Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 04/05/2021
+ms.date: 05/25/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: この記事では、Azure Arc 対応 Kubernetes のカスタムの場所機能の概念的な概要について説明します
-ms.openlocfilehash: 1235c6adfe97a943ef77584a6a0c8683d691be91
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fa707822ea385b0f9812e9d71a35bef8f8edfe1f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450820"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376342"
 ---
 # <a name="custom-locations-on-top-of-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes でのカスタムの場所
 
