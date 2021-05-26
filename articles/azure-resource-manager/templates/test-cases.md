@@ -2,15 +2,15 @@
 title: テスト ツールキットのテスト ケース
 description: ARM テンプレート テスト ツールキットによって実行されるテストについて説明します。
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 05/17/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5dc4891bbc8bf6397a0f041fa845f4fb0ad6c600
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8e771d8c15e26367ab205ea77a451fae443ac981
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142515"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064398"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM テンプレート テスト ツールキットの既定のテスト ケース
 
@@ -40,30 +40,6 @@ ms.locfileid: "108142515"
 * `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json`
-
-## <a name="parameters-must-exist"></a>パラメーターが存在する必要がある
-
-テスト名: **Parameters Property Must Exist** (parameters プロパティが存在する必要がある)
-
-テンプレートには parameters 要素が必要です。 パラメーターは、さまざまな環境でテンプレートを再利用できるようにするために不可欠です。 異なる環境にデプロイするときに変更される値について、テンプレートにパラメーターを追加します。
-
-次の例は、このテストに **合格します**。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-      "vmName": {
-          "type": "string",
-          "defaultValue": "linux-vm",
-          "metadata": {
-            "description": "Name for the Virtual Machine."
-          }
-      }
-  },
-  ...
-```
 
 ## <a name="declared-parameters-must-be-used"></a>宣言されたパラメーターが使用されている必要がある
 

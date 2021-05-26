@@ -3,12 +3,12 @@ title: Azure Service Bus の Premium レベルと Standard レベル
 description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: b7117da6a959181704dd136c6d5be5ab62edef55
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e0149f0ad1ee608179cc7dbdfaa61b498dd60ca0
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389487"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190740"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -69,7 +69,7 @@ Service Bus Premium 名前空間に割り当てられるメッセージング �
 アーキテクチャのメッセージング ユニット数を決定する際には、いくつかの要素を考慮する必要があります。
 
 - 名前空間に割り当てられた ***1 つまたは 2 つのメッセージング ユニット*** から始めます。
-- 名前空間の[リソース使用状況メトリック](service-bus-metrics-azure-monitor.md#resource-usage-metrics)内の CPU 使用率メトリックを調査します。
+- 名前空間の[リソース使用状況メトリック](monitor-service-bus-reference.md#resource-usage-metrics)内の CPU 使用率メトリックを調査します。
     - CPU 使用率が "***20% を下回る** _" 場合は、名前空間に割り当てられたメッセージング ユニット数を "_ *_スケールダウン_*" できる可能性があります。
     - CPU 使用率が "***70% を超える** _" 場合は、名前空間に割り当てられたメッセージング ユニット数を "_ *_スケールアップ_**" すると、アプリケーションにメリットがあります。
 

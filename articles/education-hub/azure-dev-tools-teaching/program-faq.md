@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c2690b625454c7767619ba756f61383fc8f509c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675701"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481034"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Education Hub に関してよく寄せられる質問
 
@@ -22,7 +22,7 @@ ms.locfileid: "92675701"
 
 ### <a name="what-happens-after-i-use-my-100-credit-or-im-at-the-end-of-12-months"></a>$100 のクレジットを使い切った後や、12 か月が経過した後はどうなりますか?
 
-利用可能なクレジットを使い切るか 12 か月が経過すると、Azure サブスクリプションが無効になります。 [Azure](https://account.azure.com/) を引き続き使用するには、Azure アカウントポータルで従量課金制サブスクリプションにアップグレードできます。 Microsoft Azure for Students の利用規約の詳細については、[契約条件](https://azure.microsoft.com/offers/ms-azr-0170p/)を参照してください。
+利用可能なクレジットを使い切るか 12 か月が経過すると、Azure サブスクリプションが無効になります。 引き続き Azure を使用する場合は、Azure portal で従量課金制サブスクリプションにアップグレードできます。 Microsoft Azure for Students の利用規約の詳細については、[契約条件](https://azure.microsoft.com/offers/ms-azr-0170p/)を参照してください。
 
 ### <a name="can-i-get-azure-for-students-again-next-year"></a>Microsoft Azure for Students を来年もう一度入手することはできますか?
 
