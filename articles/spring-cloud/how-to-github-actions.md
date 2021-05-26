@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: caf70a005711decae794b02d4a2ccbaf3c2c32f4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9ebfe1d4bba7b9b0629f800ec311dfb80770a4d6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135007"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087816"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub Actions を使用する Azure Spring Cloud CI/CD
 
@@ -26,14 +26,14 @@ GitHub Actions は、自動化されたソフトウェア開発ライフサイ�
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub リポジトリを設定して認証する
 Azure ログイン アクションを承認するには、Azure サービス プリンシパルの資格情報が必要です。 Azure の資格情報を取得するには、ローカル マシン上で次のコマンドを実行します。
 
-```
+```azurecli
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
 ```
 
 特定のリソース グループにアクセスするには、範囲を縮小できます。
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 
@@ -148,12 +148,12 @@ jobs:
 ::: zone pivot="programming-language-java"
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub リポジトリを設定して認証する
 Azure ログイン アクションを承認するには、Azure サービス プリンシパルの資格情報が必要です。 Azure の資格情報を取得するには、ローカル マシン上で次のコマンドを実行します。
-```
+```azurecli
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
 ```
 特定のリソース グループにアクセスするには、範囲を縮小できます。
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 このコマンドからは、次のような JSON オブジェクトが出力されます。
@@ -192,7 +192,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 コマンド `az spring-cloud app create` は現在べき等ではありません。  既存の Azure Spring Cloud アプリおよびインスタンスにはこのワークフローをお勧めします。
 
 準備には、次の Azure CLI コマンドを使用します。
-```
+```azurecli
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 az spring-cloud app create --name gateway
@@ -203,7 +203,7 @@ az spring-cloud app create --name account-service
 ### <a name="deploy-with-azure-cli-directly"></a>Azure CLI を使用して直接デプロイする
 リポジトリに `.github/workflow/main.yml` ファイルを作成します。
 
-```
+```yaml
 name: AzureSpringCloud
 on: push
 
@@ -250,7 +250,7 @@ az `run` コマンドには、Azure CLI の最新バージョンが使用され�
 > このコマンドは新しいコンテナーで実行されるため、`env` は機能しません。また、クロス アクション ファイル アクセスには追加の制限が存在する可能性があります。
 
 リポジトリに .github/workflow/main.yml ファイルを作成します。
-```
+```yaml
 name: AzureSpringCloud
 on: push
 
@@ -291,7 +291,7 @@ jobs:
 ## <a name="deploy-with-maven-plugin"></a>Maven プラグインを使用してデプロイする
 もう 1 つの方法は、Jar のデプロイとアプリ設定の更新に [Maven プラグイン](./quickstart.md)を使用することです。 コマンド `mvn azure-spring-cloud:deploy` はべき等であり、必要に応じて自動的にアプリを作成します。 対応するアプリを事前に作成する必要はありません。
 
-```
+```yaml
 name: AzureSpringCloud
 on: push
 

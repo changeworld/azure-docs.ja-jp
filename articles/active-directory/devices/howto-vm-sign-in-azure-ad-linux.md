@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 05/10/2021
+ms.date: 05/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f964b6035c3438517b78ed4d2a52b7069d1ef47
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 34a43212e8883e1ae727d18c53d5c28f873d9e94
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732814"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458092"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>プレビュー: SSH 証明書ベースの認証を使用した Azure Active Directory で Azure の Linux 仮想マシンにログインする
 
@@ -359,7 +359,7 @@ az ssh vm --ip 10.11.123.456
 デバイス コード フローに基づいた以前のバージョンの Linux 用 Azure AD ログインを使用しているお客様は、次の手順を実行してください。
 
 1. VM の AADLoginForLinux 拡張機能をアンインストールします。
-   1. Azure CLI の使用: `az vm extension delete -g MyResourceGroup -n MyVm -n AADLoginForLinux`
+   1. Azure CLI の使用: `az vm extension delete -g MyResourceGroup --vm-name MyVm -n AADLoginForLinux`
 1. VM でシステム割り当てマネージド ID を有効にします。
    1. Azure CLI の使用: `az vm identity assign -g myResourceGroup -n myVm`
 1. VM に AADLoginForLinux 拡張機能をインストールします

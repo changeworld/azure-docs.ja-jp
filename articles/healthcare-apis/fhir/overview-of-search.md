@@ -1,18 +1,18 @@
 ---
 title: FHIR の Azure API での検索の概要
 description: この記事では、Azure API for FHIR で実装されている FHIR 検索の概要について説明します。
-author: stevewohl
+author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 5/17/2021
 ms.author: cavoeg
-ms.openlocfilehash: 93468d2be1c9ab8fbdbce1e82a58f04f0676f260
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d1bccbd40689a06a13b7a2283ad02a0ac43ce84
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071184"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477829"
 ---
 # <a name="overview-of-fhir-search"></a>FHIR 検索の概要
 

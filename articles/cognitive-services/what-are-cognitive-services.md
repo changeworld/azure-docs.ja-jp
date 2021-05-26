@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c6b83a25816c29f1642625618e66624aa3e0a6de
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 09279e476f2d130c4938937e2c9e60df863c688d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289806"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110450608"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -42,8 +42,6 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |[Computer Vision](./computer-vision/index.yml "Computer Vision")|Computer Vision サービスを使用すると、画像を処理して情報を返すための高度なコグニティブ アルゴリズムにアクセスできます。 サービスを開始するには、[Computer Vision のクイックスタート](./computer-vision/quickstarts-sdk/client-library.md)に関する記事をご覧ください。|
 |[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Custom Vision Service を使用すると、独自の画像分類器を構築、デプロイ、改良できます。 画像分類器は、視覚特性に基づいて画像にラベルを適用する AI サービスです。 |
 |[Face](./face/index.yml "Face")| Face サービスは、顔属性の検出と認識を有効にする、高度な顔アルゴリズムへのアクセスを提供します。 サービスを開始するには、[Face のクイックスタート](./face/quickstarts/client-libraries.md)に関する記事をご覧ください。|
-|[Form Recognizer](./form-recognizer/index.yml "Form Recognizer")|Form Recognizer では、キーと値のペアおよびテーブル データを識別して form ドキュメントから抽出し、その後、元のファイルにあるリレーションシップを含む構造化データを出力します。 開始するには、[Form Recognizer のクイックスタート](./form-recognizer/quickstarts/client-library.md)に関する記事をご覧ください。|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。 開始するには、[Video Indexer のクイックスタート](../media-services/video-indexer/video-indexer-get-started.md)に関する記事をご覧ください。|
 
 ## <a name="speech-apis"></a>Speech API
 
@@ -63,7 +61,6 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。 開始するには、[QnA Maker のクイックスタート](./qnamaker/quickstarts/create-publish-knowledge-base.md)に関する記事をご覧ください。|
 |[Text Analytics](./text-analytics/index.yml "Text Analytics")| Text Analytics によって、未加工のテキストに対して、感情分析、キー フレーズ抽出、および言語検出のための自然言語処理が提供されます。 開始するには、[Text Analytics のクイックスタート](./text-analytics/quickstarts/client-libraries-rest-api.md)に関する記事をご覧ください。|
 |[Translator](./translator/index.yml "Translator")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
-| [Immersive Reader](./immersive-reader/index.yml "イマーシブ リーダー") | Immersive Reader は、スクリーン リーダーや読解機能をアプリケーションに追加するものです。 サービスを開始するには、[イマーシブ リーダーのクイックスタート](./immersive-reader/quickstarts/client-libraries.md)をご覧ください。 |
 
 ## <a name="decision-apis"></a>Decision API
 
@@ -71,7 +68,6 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |:-----------|:------------------|
 |[Anomaly Detector](./anomaly-detector/index.yml "Anomaly Detector") |Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。 開始するには、[Anomaly Detector のクイックスタート](./anomaly-detector/quickstarts/client-libraries.md)に関する記事をご覧ください。|
 |[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。 開始するには、[Content Moderator のクイックスタート](./content-moderator/client-libraries.md)に関する記事をご覧ください。|
-|[Metrics Advisor](./metrics-advisor/index.yml) (プレビュー) | Metrics Advisor には、多変量の時系列データに対するカスタマイズ可能な異常検出機能と、そのサービスの使用を支援するあらゆる機能を備えた Web ポータルがあります。 開始するには、[Metrics Advisor のクイックスタート](./metrics-advisor/quickstarts/rest-api-and-client-library.md)に関する記事をご覧ください。 |
 |[Personalizer](./personalizer/index.yml "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。 開始するには、[Personalizer のクイックスタート](./personalizer/quickstart-personalizer-sdk.md)に関する記事をご覧ください。|
 
 ## <a name="search-apis"></a>検索 API

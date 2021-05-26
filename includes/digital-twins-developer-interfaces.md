@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 4/30/2021
 ms.author: baanders
-ms.openlocfilehash: 7d11367c820400f37caab411486eaf78c5e09864
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1b0ff4eed849ef0741fa471851f7c56a76f8596a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772958"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065146"
 ---
 ## <a name="developer-interfaces"></a>開発者インターフェイス
 
-この記事では、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/management) を使用して、さまざまな管理操作を実行する方法について説明します。 また、「[概念: Azure Digital Twins API と SDK](../articles/digital-twins/concepts-apis-sdks.md)」で説明されているその他の言語の SDK を使用して、これらと同じ管理呼び出しを作成することもできます。
+この記事では、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true) を使用して、さまざまな管理操作を実行する方法について説明します。 また、「[概念: Azure Digital Twins API と SDK](../articles/digital-twins/concepts-apis-sdks.md)」で説明されているその他の言語の SDK を使用して、これらと同じ管理呼び出しを作成することもできます。
 
 これらの操作を完了するために使用できるその他の開発者インターフェイスは次のとおりです。
 * [REST API](/rest/api/azure-digitaltwins/) 呼び出し

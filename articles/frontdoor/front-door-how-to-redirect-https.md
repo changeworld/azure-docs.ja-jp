@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: edc1ebe53969ceac0452818bee016e35de1e9322
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e3e2de040c80692824c648ee15f6ae0c97e2786c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167840"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110453320"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトする Front Door を作成する
 
@@ -29,7 +29,7 @@ Azure portal を使用して、TLS 終端の証明書で [Front Door を作成](
 1. *サブスクリプション* を選択して、既存のリソース グループを使用するか、新しいものを作成します。 **[次へ]** をクリックして構成タブに進みます。
 
     > [!NOTE]
-    > UI で指定するよう求められる場所は、このリソース グループ専用です。 Front Door 構成は、[Azure Front Door の POP の場所](front-door-faq.yml#what-are-the-pop-locations-for-azure-front-door-)全体にわたってデプロイされます。
+    > UI で指定するよう求められる場所は、このリソース グループ専用です。 Front Door 構成は、[Azure Front Door の POP の場所](front-door-faq.yml#where-are-the-edge-locations-for-azure-front-door-)全体にわたってデプロイされます。
 
     :::image type="content" source="./media/front-door-url-redirect/front-door-create-basics.png" alt-text="新規 Front Door の基本を構成する":::
 

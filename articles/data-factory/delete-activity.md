@@ -6,12 +6,12 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3021d29f472dbbf43ae53981287b1f4676e8f932
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 569e42643642a435ba8fbd56f11d7ffcbea9249e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392716"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065172"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
 
@@ -45,7 +45,9 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
+-   [Amazon S3 互換ストレージ](connector-amazon-s3-compatible-storage.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)
+-   [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
 -   [HDFS](connector-hdfs.md)
 
 ## <a name="syntax"></a>構文

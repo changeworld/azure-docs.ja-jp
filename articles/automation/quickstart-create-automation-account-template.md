@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 50a8c057a6fdf6350a18225cd2dc538942d6686d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: effdb8ec511a6060fffb571864273a1f84901ab6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538399"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081300"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する
 
@@ -26,7 +26,7 @@ Azure Automation は、Azure 環境と非 Azure 環境を一貫性をもって�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.automation%2F101-automation%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-automation/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-automation/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.automation/101-automation/azuredeploy.json":::
 
 ### <a name="api-versions"></a>API のバージョン
 
@@ -92,7 +92,7 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、Azure Automation アカウントと Log Analytics ワークスペースを作成し、Automation アカウントをワークスペースにリンクします。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-automation%2Fazuredeploy.json)
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.automation%2F101-automation%2Fazuredeploy.json)
 
 2. 値を入力します。
 
@@ -104,7 +104,7 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure portal で、先ほど作成した Automation アカウントを開きます。 
+2. Azure portal で、先ほど作成した Automation アカウントを開きます。
 
 3. 左側のペインから、 **[Runbook]** を選択します。 **[Runbook]** ページに、Automation アカウントで作成された 3 つのチュートリアル Runbook が表示されています。
 

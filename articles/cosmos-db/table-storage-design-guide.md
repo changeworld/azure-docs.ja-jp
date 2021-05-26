@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 603c891e53e5712d489fcef8415e3db55328c9ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 271bcd12fea3a09a3a62570cee865292f7c413e6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988432"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064441"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Table storage のテーブル設計ガイド:スケーラビリティとパフォーマンスに優れたテーブル
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -209,7 +209,7 @@ Table storage では、読み取り、書き込み、またはその両方の負
 * 2 番目に良いのは *範囲クエリ* です。 `PartitionKey` を使用し、`RowKey` 値の範囲でフィルター処理して複数のエンティティを返します。 `PartitionKey` 値は特定のパーティションを識別し、`RowKey` 値はそのパーティション内のエンティティのサブセットを識別します。 (例: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`)。  
 * 3 番目に良いのは *パーティション スキャン* です。 `PartitionKey` を使用し、キーでない別のプロパティでフィルター処理し、複数のエンティティを返す場合があります。 `PartitionKey` 値は特定のパーティションを識別し、プロパティ値はそのパーティション内のエンティティのサブセットを選択します。 (例: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`)。  
 * *テーブル スキャン* に `PartitionKey` は含まれません。また、一致するエンティティのテーブルを構成するパーティションのすべてを検索するため、非効率的です。 フィルターが `RowKey` を使用するかどうかにかかわらず、テーブル スキャンを実行します。 (例: `$filter=LastName eq 'Jones'`)。  
-* 複数のエンティティを返す Azure Table storage クエリは、それらを `PartitionKey` および `RowKey` の順序で並べ替えます。 クライアント内でエンティティを再度並べ替えるのを防ぐため、最も一般的な並べ替え順序を定義する `RowKey` を選択します。 Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](table-api-faq.md#table-api-vs-table-storage)に関するページを参照してください。
+* 複数のエンティティを返す Azure Table storage クエリは、それらを `PartitionKey` および `RowKey` の順序で並べ替えます。 クライアント内でエンティティを再度並べ替えるのを防ぐため、最も一般的な並べ替え順序を定義する `RowKey` を選択します。 Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](/table-api-faq.yml#table-api-in-azure-cosmos-db-vs-azure-table-storage)に関するページを参照してください。
 
 "**or**" を使用して `RowKey` 値に基づいてフィルターを指定した場合はパーティション スキャンが行われます。範囲クエリとしては扱われません。 したがって、`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` などのフィルターを使用するクエリは避けてください。  
 
@@ -251,7 +251,7 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用して、1 つの
 Table storage は、`PartitionKey` に基づいて、次に `RowKey` によって昇順で並べ替えたクエリ結果を返します。
 
 > [!NOTE]
-> Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](table-api-faq.md#table-api-vs-table-storage)に関するページを参照してください。
+> Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](/table-api-faq.yml#table-api-in-azure-cosmos-db-vs-azure-table-storage)に関するページを参照してください。
 
 Table storage でのキーは文字列値です。 数値が正しく並べ替えられるようにするには、固定長の値に変換し、ゼロ パディングを施す必要があります。 たとえば、従業員 ID 値を整数値の `RowKey` として使用する場合、従業員 ID を **123** から **00000123** に変換する必要があります。 
 
@@ -543,7 +543,7 @@ EGT を使用すると、同じパーティション キーを共有する複数
 * Table storage に格納されているが、Azure Cognitive Search を使用してインデックスが作成されたエンティティ。  
 
 #### <a name="solution"></a>解決策
-Azure Queue を使用すると、2 つ以上のパーティションまたはストレージ システム間で最終的に一貫性を確保するソリューションを実装できます。
+Azure キューを使用すると、2 つ以上のパーティションまたはストレージ システム間で最終的に一貫性を確保するソリューションを実装できます。
 
 この方法を説明するために、以前の従業員エンティティをアーカイブできるようにする必要があるという場合を考えてみましょう。 以前の従業員エンティティはめったに照会されず、現在の従業員を対象にしたすべてのアクティビティから除外する必要があります。 この要件を実装するには、**現在** テーブルにいる現在の従業員と、**アーカイブ** テーブルにいる以前の従業員を格納します。 従業員をアーカイブするには、**現在** テーブルからのエンティティを削除し、**アーカイブ** テーブルにエンティティを追加する必要があります。
 
@@ -735,7 +735,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 逆の日付と時間順でソートする `RowKey` 値を 使用して、最も新しく追加された *n* 件のエンティティを取得します。  
 
 > [!NOTE]
-> Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 そのため、このパターンは Table storage には適していますが、Azure Cosmos DB には適していません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](table-api-faq.md#table-api-vs-table-storage)に関するページを参照してください。
+> Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 そのため、このパターンは Table storage には適していますが、Azure Cosmos DB には適していません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](/table-api-faq.yml#table-api-in-azure-cosmos-db-vs-azure-table-storage)に関するページを参照してください。
 
 #### <a name="context-and-problem"></a>コンテキストと問題
 直近に作成されたエンティティ (従業員が提出した経費請求を日時の新しいものから 10 件など) の取得が必要となる場合がよくあります。 テーブル クエリは、セットから最初の *n* 個のエンティティを返す `$top` クエリ操作をサポートします。 セット内の最後の *n* 個のエンティティを返す同等のクエリ操作はありません。  

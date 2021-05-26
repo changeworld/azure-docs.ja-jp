@@ -8,12 +8,12 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
-ms.openlocfilehash: 5d2591fa3b6d69e403935faeca075a2c747026c1
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a782d94b40be7fb07009f46cc69883cc529d91c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734740"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081516"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
@@ -125,7 +125,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。
 テンプレートは、デプロイ後の構成が必要な仮想マシンを 1 つ以上デプロイするときに最適です。
-Windows 用の DSC 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/automation-configuration/automation-configuration/nested/provisionServer.json#L91)にあります。
+Windows 用の DSC 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration/nested/provisionServer.json#L91)にあります。
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 

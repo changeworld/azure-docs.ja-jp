@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: amsriva
-ms.openlocfilehash: ceacd210fa02594ff8b54996c1d87d560f244a7f
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 0ab6dfb61800bba91b52edd5b07fa918c85ba73b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634619"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085008"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリング
 
-既定では、Azure Front Door は、要求が送信される場所に関係なくすべてのユーザーの要求に応答します。 一部のシナリオでは、国/地域ごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Front Door の Web アプリケーション ファイアウォール (WAF) では、エンドポイントの特定のパスに対するカスタム アクセス ルールを使用してポリシーを定義することにより、指定した国/地域からのアクセスを許可したりブロックしたりすることができます。 
+既定では、Azure Front Door は、要求が送信される場所に関係なくすべてのユーザーの要求に応答します。 一部のシナリオでは、国/地域ごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Front Door の Web アプリケーション ファイアウォール (WAF) では、エンドポイントの特定のパスに対するカスタム アクセス ルールを使用してポリシーを定義することにより、指定した国/地域からのアクセスを許可したりブロックしたりすることができます。
 
-WAF ポリシーには一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。 geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR、演算子は GeoMatch、値は対象となる 2 文字の国/地域コードです。 "ZZ" 国番号または "不明" 国は、データセット内の国にまだマップされていない IP アドレスを取り込みます。 擬陽性を回避するために、一致条件に ZZ を追加できます。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。 
+WAF ポリシーには一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。 geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR、演算子は GeoMatch、値は対象となる 2 文字の国/地域コードです。 "ZZ" 国番号または "不明" 国は、データセット内の国にまだマップされていない IP アドレスを取り込みます。 擬陽性を回避するために、一致条件に ZZ を追加できます。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
 
 
-Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](front-door-tutorial-geo-filtering.md) を使用するか、または[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)を使用して構成できます。
+Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](front-door-tutorial-geo-filtering.md) を使用するか、または[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering)を使用して構成できます。
 
 ## <a name="countryregion-code-reference"></a>国/地域コード リファレンス
 

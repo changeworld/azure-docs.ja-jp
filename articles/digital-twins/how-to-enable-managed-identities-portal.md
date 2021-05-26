@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: subject-rbac-steps
-ms.openlocfilehash: 14d3da16c8ebee0c32462cc916984536cdf943a9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: subject-rbac-steps, contperf-fy21q4
+ms.openlocfilehash: 95594e5b32bdf0a1cc00820bc939ca547d8e7054
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734221"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083676"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー):Azure portal
 

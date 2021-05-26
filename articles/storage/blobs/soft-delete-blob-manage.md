@@ -10,12 +10,12 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d5ef85d947ae999fd94ba5a6e9cdb00baec9786
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 7e951de46b5220e5c2edde2fcd84673c9a16cebc
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555898"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477708"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>論理的に削除された BLOB を管理および復元する
 
@@ -70,7 +70,7 @@ Azure Storage クライアント ライブラリを使用して、論理的に�
 
 ### <a name="restore-soft-deleted-objects-when-versioning-is-disabled"></a>バージョン管理が無効になっている場合に論理的に削除されたオブジェクトを復元する
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 バージョン管理が有効になっていない場合に削除された BLOB を復元するには、これらの BLOB に対して [[BLOB の削除の取り消し]](/rest/api/storageservices/undelete-blob) 操作を呼び出します。 **[BLOB の削除の取り消し]** 操作によって、論理的に削除された BLOB とそれらの BLOB に関連する削除済みスナップショットが復元されます。
 
@@ -82,7 +82,7 @@ Azure Storage クライアント ライブラリを使用して、論理的に�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 バージョン管理が有効になっていない場合に削除された BLOB を復元するには、これらの BLOB に対して [[BLOB の削除の取り消し]](/rest/api/storageservices/undelete-blob) 操作を呼び出します。 **[BLOB の削除の取り消し]** 操作によって、論理的に削除された BLOB とそれらの BLOB に関連する削除済みスナップショットが復元されます。
 
@@ -118,11 +118,11 @@ blockBlob.StartCopy(copySource);
 
 バージョン管理が有効になっている場合に論理的に削除された BLOB を復元するには、[[BLOB のコピー]](/rest/api/storageservices/copy-blob) または [[BLOB を URL からコピーする]](/rest/api/storageservices/copy-blob-from-url) 操作を使用して、ベース BLOB に以前のバージョンをコピーします。  
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RestorePreviousVersion":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 適用不可。 BLOB のバージョン管理は、Azure Storage クライアント ライブラリのバージョン 12.x 以降でのみサポートされます。
 
