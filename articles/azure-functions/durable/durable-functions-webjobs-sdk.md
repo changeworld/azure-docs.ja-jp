@@ -2,14 +2,14 @@
 title: Durable Functions を WebJobs として実行する方法 - Azure
 description: WebJobs SDK を使用して、Durable Function を WebJobs で実行するようにコーディングし、構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 05/12/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1bfc285d1afba0c83d07dcd7da3851231553e2f1
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009502"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375726"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
@@ -37,7 +37,7 @@ Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージ�
 
   (代わりに [Visual Studio Code](https://code.visualstudio.com/) を使うこともできますが、一部の説明は Visual Studio に固有のものです。)
 
-* [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) バージョン 5.2 以降をインストールして実行します。 これは、*App.config* ファイルを Azure Storage の接続文字列で更新することで代用できます。
+* [Azure ストレージ エミュレーター](../../storage/common/storage-use-emulator.md) をインストールして実行します。 これは、*App.config* ファイルを Azure Storage の実際の接続文字列で更新することで代用できます。
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK のバージョン
 
@@ -58,7 +58,7 @@ Visual Studio には、WebJob プロジェクト テンプレートも用意さ�
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
 Install-Package Microsoft.Extensions.Logging -version 2.0.1
-Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
+Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.7
 ```
 
 ログ プロバイダーも必要です。 次に示すのは、Azure Application Insights プロバイダーと `ConfigurationManager` をインストールするコマンドです。 `ConfigurationManager` では、Application Insights のインストルメンテーション キーをアプリ設定から取得できます。

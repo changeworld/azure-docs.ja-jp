@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 2709081bd38acb1cc3aab1ae7b9c35e58e97b16f
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 9ed958c7656d6101824a14ed8e39f41df2ce63e5
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110461589"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110375235"
 landingContent:
 - title: App Service について
   linkLists:
@@ -196,11 +196,11 @@ landingContent:
     links:
     - text: Azure Arc の App Service、Functions、および Logic Apps (プレビュー)
       url: overview-arc-integration.md
-  - linkListType: quickstart
-    links:
-    - text: Azure Arc で App Service アプリを作成する (プレビュー)
-      url: quickstart-arc.md
   - linkListType: tutorial
     links:
     - text: Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
       url: manage-create-arc-environment.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Arc で App Service アプリを作成する (プレビュー)
+      url: quickstart-arc.md

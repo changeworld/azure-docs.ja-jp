@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で持続的タ�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d96afbad061071bfc80a69764b577032fdcb95c0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91876449"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375743"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
@@ -76,6 +76,18 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         yield context.call_activity("SendBillingEvent")
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+for ($num = 0 ; $num -le 9 ; $num++){    
+    $expiryTime =  New-TimeSpan -Days 1
+    $timerTask = Start-DurableTimer -Duration $expiryTime
+    Invoke-DurableActivity -FunctionName 'SendBillingEvent'
+}
 ```
 ---
 
@@ -166,6 +178,26 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         return False
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+```powershell
+param($Context)
+
+$expiryTime =  New-TimeSpan -Seconds 30
+
+$activityTask = Invoke-DurableActivity -FunctionName 'GetQuote'-NoWait
+$timerTask = Start-DurableTimer -Duration $expiryTime -NoWait
+
+$winner = Wait-DurableTask -Task @($activityTask, $timerTask) -Any
+
+if ($winner -eq $activityTask) {
+    Stop-DurableTaskTimer -Task $timerTask
+    return $True
+}
+else {
+    return $False
+}
 ```
 
 ---

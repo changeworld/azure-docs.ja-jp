@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a3aff7b99dad910a9691eef2004df856ca883789
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08aad681160a4f0d369fd312ba58c3ea6c7e8780
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224386"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454125"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -210,7 +210,7 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
 
 次の PowerShell コマンドを使用して、Sync 用 Azure AD Connect Health エージェントを手動で登録します。 Azure AD Connect Health サービスは、エージェントが正常に登録された後で開始されます。
 
-`Register-AzureADConnectHealthSyncAgent -AttributeFiltering $false -StagingMode $false`
+`Register-AzureADConnectHealthSyncAgent -AttributeFiltering $true -StagingMode $false`
 
 このコマンドは次のパラメーターを受け取ります。
 

@@ -10,18 +10,18 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a9afef0e2616664578e66be3735104c47bfcffa9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8583229104d29f48784c7790e505852ac4b08dfd
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760753"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376291"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
 この記事では、Azure portal または [Python 用 SDK](/python/api/overview/azure/ml/) を使用して、[Azure Machine Learning](overview-what-is-azure-ml.md) 用の [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、および削除します。
 
-ニーズに変化が生じたり自動化の要件が増えたりしたときに、[CLI](reference-azure-machine-learning-cli.md) または [VS Code 拡張機能](tutorial-setup-vscode-extension.md)を使用して、ワークスペースの作成と削除を行うこともできます。
+ニーズに変化が生じたり自動化の要件が増えたりしたときに、[CLI](reference-azure-machine-learning-cli.md) または [VS Code 拡張機能](how-to-setup-vs-code.md)を使用して、ワークスペースの作成と削除を行うこともできます。
 
 ## <a name="prerequisites"></a>前提条件
 

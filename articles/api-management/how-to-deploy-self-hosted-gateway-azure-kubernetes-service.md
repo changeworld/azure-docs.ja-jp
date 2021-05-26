@@ -8,18 +8,21 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 05/25/2021
 ms.author: apimpm
-ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 366b0fa70fd5229310d0f999acd07a49c45f0da0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87015223"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375444"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Azure Kubernetes Service にデプロイする
 
-この記事では、Azure API Management のセルフホステッド ゲートウェイ コンポーネントを [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) にデプロイする手順について説明します。 セルフホステッド ゲートウェイを Kubernetes クラスターにデプロイする場合は、この[ドキュメント](how-to-deploy-self-hosted-gateway-kubernetes.md)を参照してください。
+この記事では、Azure API Management のセルフホステッド ゲートウェイ コンポーネントを [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) にデプロイする手順について説明します。 
+
+> [!NOTE]
+> また、セルフホステッド ゲートウェイを [Azure Arc 対応 Kubernetes クラスター](how-to-deploy-self-hosted-gateway-azure-arc.md)に[クラスター拡張機能](../azure-arc/kubernetes/extensions.md)としてデプロイすることもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +65,8 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 
 ## <a name="next-steps"></a>次のステップ
 
-* セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関する記事を参照してください
-* [Azure Kubernetes Service](../aks/intro-kubernetes.md) の詳細を見る
-* [クラウドでログを構成して保持する方法](how-to-configure-cloud-metrics-logs.md)について学習する
-* * [ローカルでログを構成して永続化する方法](how-to-configure-local-metrics-logs.md)について学習する
+* セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関するページを参照してください。
+* [Azure Arc 対応 Kubernetes クラスターに API Management セルフホステッド ゲートウェイをデプロイする方法](how-to-deploy-self-hosted-gateway-azure-arc.md)について学習します。
+* [Azure Kubernetes Service](../aks/intro-kubernetes.md) の詳細について学習します。
+* [クラウドでログを構成して保持する方法](how-to-configure-cloud-metrics-logs.md)について学習します。
+* [ローカルでログを構成して永続化する方法](how-to-configure-local-metrics-logs.md)について学習します。

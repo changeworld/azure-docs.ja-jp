@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: 7b7ac20672ee653cbf6d2b82b7a9454c1d742b2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7b4bbafd5630c2c116e002ee6ebafaa5444ce2d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612696"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369322"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -49,7 +49,7 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 <details>
 <summary><b>クエリ予測のスループットのパフォーマンスを向上させるにはどうすればよいですか。</b></summary>
@@ -173,7 +173,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 <details>
 <summary><b>指定した URL/ファイルから質問とその回答のペアが抽出されません。なぜでしょうか。</b></summary>
@@ -349,7 +349,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 
 <details>
@@ -432,7 +432,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 
 <details>
@@ -494,7 +494,7 @@ QnA Maker サービスを作成するときに、Azure リージョンを選択�
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 <details>
 <summary><b>どのようなデータが、どこに保存されますか。</b></summary>
