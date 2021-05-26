@@ -1,6 +1,6 @@
 ---
 title: Form Recognizer サービスによる保存データの暗号化
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Microsoft からは Microsoft が管理する暗号化キーが提供されます。また、カスタマー マネージド キー (CMK) と呼ばれている独自のキーで自分の Cognitive Services サブスクリプションを管理することをお客様に許可します。 この記事では、Form Recognizer の保存データの暗号化と、CMK を有効化および管理する方法について説明します。
 author: erindormier
 manager: venkyv
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 7a8b331c1295ed19afa64e95318bfa14414e6d9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16da5e11db26f416950852b0d9f5378ca2df6fab
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100524068"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374546"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Form Recognizer による保存データの暗号化
 

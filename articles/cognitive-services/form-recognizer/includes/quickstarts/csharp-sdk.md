@@ -7,16 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: b7a35046a7f170365974c50a5be99f35cb4a868f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: " devx-track-csharp"
+ms.openlocfilehash: 1adba2b8f0be01be231721a9c838ad6961ab03a0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516432"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374176"
 ---
 <!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
 > [!IMPORTANT]
 > この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。
 
@@ -59,7 +61,7 @@ Build succeeded.
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Form Recognizer クライアント ライブラリをインストールします。
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.4
@@ -68,7 +70,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.4
 > [!NOTE]
 > Form Recognizer 3.1.0-beta.4 SDK は、_API バージョン 2.1-preview.3 を反映しています。
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
@@ -97,11 +99,11 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 
 アプリケーションの **Main** メソッドで、このクイックスタートで使用する非同期タスクへの呼び出しを追加します。 これらは後で実装します。
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
 
@@ -131,14 +133,14 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 [モデルのトレーニング](#train-a-custom-model)と[カスタム モデルの管理](#manage-custom-models)に関する例を参照してください。
 
 > [!NOTE]
-> モデルのトレーニングは、[Form Recognizer のラベル付けツール](../../quickstarts/label-tool.md)など、グラフィカル ユーザー インターフェイスを使用して行うこともできます。
+> モデルのトレーニングは、[Form Recognizer のラベル付けツール](../../label-tool.md)など、グラフィカル ユーザー インターフェイスを使用して行うこともできます。
 
 ## <a name="code-examples"></a>コード例
 
 これらのコード スニペットでは、.NET 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 <!-- markdownlint-disable MD001 -->
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [レイアウトを分析する](#analyze-layout)
@@ -148,16 +150,16 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * [身分証明書を分析する](#analyze-identity-documents)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
-* [カスタム モデルを管理する](#manage-your-custom-models)
+* [カスタム モデルを管理する](#manage-custom-models)
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [レイアウトを分析する](#analyze-layout)
 * [領収書を分析する](#analyze-receipts)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
-* [カスタム モデルを管理する](#manage-your-custom-models)
+* [カスタム モデルを管理する](#manage-custom-models)
 
 ---
 
@@ -180,17 +182,17 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 また、トレーニング データとテスト データの URL への参照を追加する必要もあります。 これらを **Program** クラスのルートに追加します。
 
-* [!INCLUDE [get SAS URL](../sas-instructions.md)]
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
 * 次に、上記の手順を繰り返して、Blob Storage コンテナー内の個々のドキュメントの SAS URL を取得します。 同様に、一時的な場所にこれを保存します。
 * 最後に、以下に含まれているサンプル画像の URL を保存します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) でも入手できます)。
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
 
@@ -307,7 +309,7 @@ Total: '1203.39', with confidence '0.774'
 
 ## <a name="analyze-business-cards"></a>名刺を分析する
 
-####  <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。
 
@@ -322,7 +324,7 @@ URL から名刺を分析するには、`StartRecognizeBusinessCardsFromUriAsync
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > この機能は、選択した API バージョンでは使用できません。
@@ -331,7 +333,7 @@ URL から名刺を分析するには、`StartRecognizeBusinessCardsFromUriAsync
 
 ## <a name="analyze-invoices"></a>請求書を分析する
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。
 
@@ -346,7 +348,7 @@ URL から請求書を分析するには、`StartRecognizeInvoicesFromUriAsync` 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > この機能は、選択した API バージョンでは使用できません。
@@ -355,7 +357,7 @@ URL から請求書を分析するには、`StartRecognizeInvoicesFromUriAsync` 
 
 ## <a name="analyze-identity-documents"></a>身分証明書を分析する
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 身分証明書分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-identification-cards.md)を参照してください。
 
@@ -370,7 +372,7 @@ URI から身分証明書を分析するには、`StartRecognizeIdDocumentsFromU
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs" id="snippet_id_print":::
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > この機能は、選択した API バージョンでは使用できません。
@@ -382,7 +384,7 @@ URI から身分証明書を分析するには、`StartRecognizeIdDocumentsFromU
 このセクションでは、独自のデータを使用してモデルをトレーニングする方法を示します。 トレーニング済みのモデルは、元のフォーム ドキュメント内のキー/値の関係を含む構造化データを出力できます。 モデルをトレーニングした後、モデルをテストおよび再トレーニングでき、最終的にはモデルを使用して、ニーズに従ってより多くのフォームから正確にデータを抽出できます。
 
 > [!NOTE]
-> また、[Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)などのグラフィカル ユーザー インターフェイスを使用してモデルをトレーニングすることもできます。
+> また、[Form Recognizer のサンプル ラベル付けツール](../../label-tool.md)などのグラフィカル ユーザー インターフェイスを使用してモデルをトレーニングすることもできます。
 
 ### <a name="train-a-model-without-labels"></a>ラベルなしでモデルをトレーニングする
 
@@ -456,7 +458,7 @@ Submodel Form Type: form-0
 
 ### <a name="train-a-model-with-labels"></a>ラベルを使用してモデルをトレーニングする
 
-トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、`uselabels` パラメーターを `true` に設定して `StartTrainingAsync` メソッドを呼び出すことができます。
+トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、`uselabels` パラメーターを `true` に設定して `StartTrainingAsync` メソッドを呼び出すことができます。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels)]
 

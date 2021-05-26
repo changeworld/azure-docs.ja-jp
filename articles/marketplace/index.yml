@@ -10,12 +10,12 @@ metadata:
   author: mingshen-ms
   ms.author: mingshen
   ms.date: 09/02/2020
-  ms.openlocfilehash: 28ef4a1b2531de4462a1ae313732b1dae17e09f1
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 66bc200f2c330c839eb91e9172207c4c752d9b67
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110071832"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110450590"
 landingContent:
 - title: コマーシャル マーケットプレースでの作業
   linkLists:
@@ -90,7 +90,7 @@ landingContent:
     - text: Dynamics 365 Business Central
       url: ./partner-center-portal/create-new-business-central-offer.md
     - text: Dynamics 365 for Operations
-      url: ./partner-center-portal/create-new-operations-offer.md
+      url: dynamics-365-operations-offer-setup.md
     - text: その他の種類のオファー
       url: ./publisher-guide-by-offer-type.md
 - title: 支払いの受け取り

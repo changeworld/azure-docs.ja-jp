@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f47ad3d63ca99ffbe095498d2db7646e8a4a3ae7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791249"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072480"
 ---
-# <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの GitHub Actions ワークフロー
+# <a name="github-actions-workflows-for-azure-static-web-apps"></a>Azure Static Web Apps の GitHub Actions ワークフロー
 
 新しい Azure Static Web Apps リソースを作成すると、アプリの継続的デプロイを制御する GitHub Actions ワークフローが生成されます。 このワークフローは、YAML ファイルによって起動されます。 この記事では、ワークフロー ファイルの構造とオプションについて詳しく説明します。
 
@@ -58,7 +58,7 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
@@ -76,7 +76,7 @@ jobs:
     steps:
       - name: Close Pull Request
         id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
           action: 'close'
@@ -180,19 +180,6 @@ with:
 > [!NOTE]
 > フロントエンド アプリのビルドのみをスキップできます。 アプリに API がある場合でも、Static Web Apps の GitHub アクションによってビルドされます。
 
-## <a name="route-file-location"></a>ルート ファイルの場所
-
-ワークフローをカスタマイズして、リポジトリ内の任意のフォルダー内で [routes.json](routes.md) を検索できます。 次のプロパティは、ジョブの `with` セクションの下で定義できます。
-
-| プロパティ          | 説明                                                                                                                                 |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | _routes.json_ ファイルが存在するディレクトリの場所を定義します。 この場所は、リポジトリのルートを基準としています。 |
-
-_routes.json_ ファイルの場所を明確にすることは、フロントエンド フレームワークのビルド手順で、既定でこのファイルが `output_location` に移動されない場合に特に重要です。
-
-> [!IMPORTANT]
-> _routes.json_ ファイルで定義されている機能は非推奨になりました。 _staticwebapp.config.json_ の詳細については、Azure Static Web Apps [構成ファイル](./configuration.md)を参照してください。
-
 ## <a name="environment-variables"></a>環境変数
 
 ビルドの環境変数を設定するには、ジョブの構成の `env` セクションを使用します。
@@ -209,7 +196,7 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}

@@ -4,12 +4,12 @@ description: Application Insights SDK の最新の更新内容。
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 07/27/2020
-ms.openlocfilehash: 0f5cebcb2711ca63833b6c7e285483f4e3ca6eb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e8ce1f3a15351f295dc8a8f08418239e8aafc97
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88934278"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072318"
 ---
 # <a name="release-notes---application-insights"></a>リリース ノート - Application Insights
 
@@ -42,7 +42,7 @@ Application Insights サービス全体の主要な機能強化をまとめた[�
 
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)
-* [Java](./java-get-started.md)
+* [Java](./java-in-process-agent.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
 

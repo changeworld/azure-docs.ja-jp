@@ -1,22 +1,22 @@
 ---
-title: Visual Studio Code を使用してタスクとワークフローを自動化する
-description: Visual Studio Code (VS Code) を使用して、ロジック アプリ ワークフロー定義を作成または編集します
+title: クイックスタート - Visual Studio Codel で Azure Logic Apps を使用して統合ワークフローを作成する
+description: Visual Studio Code のマルチテナント Azure Logic Apps を使用して、ワークフロー定義を作成および管理します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/23/2021
-ms.openlocfilehash: 0163b58017599ceb26f52f0e47cbc87e161f6ed2
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 05/25/2021
+ms.openlocfilehash: 001a97f07655c4af78e14e07d9204045cec9502b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161244"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372552"
 ---
-# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリ ワークフローの定義を作成、管理する
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-multi-tenant-azure-logic-apps-and-visual-studio-code"></a>クイックスタート - Visual Studio Code のマルチテナント Azure Logic Apps を使用して、ワークフロー定義を作成および管理する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、ロジック アプリを作成し、管理できます。ロジック アプリを使用すると、組織や企業間でアプリ、データ、システム、サービスを統合するためのタスク、ワークフロー、プロセスを自動化できます。 このクイックスタートでは、コードベースのエクスペリエンスを通じて、ロジック アプリの JavaScript Object Notation (JSON) を使用する、基になるワークフロー定義を作成および編集する方法を示します。 Azure に既にデプロイされている既存のロジック アプリを使用することもできます。
+このクイックスタートでは、マルチテナント [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、組織と企業間でアプリ、データ、システム、サービスを統合するタスクとプロセスを自動化するために役立つロジック アプリ ワークフローを作成および管理する方法を示します。 コードベースのエクスペリエンスを通じて、ロジック アプリの JavaScript Object Notation (JSON) を使用する、基になるワークフロー定義を作成および編集します。 Azure に既にデプロイされている既存のロジック アプリを使用することもできます。 マルチテナントとシングルテナントのモデルの比較の詳細については、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を参照してください。
 
 これらのタスクは [Azure portal](https://portal.azure.com) と Visual Studio でも実行できますが、既にロジック アプリ定義を使い慣れていて、コードで直接作業する場合は、Visual Studio Code の方が迅速に作業を開始できます。 たとえば、既に作成されているロジック アプリを無効化、有効化、削除、更新することができます。 また、Visual Studio Code が実行されている開発プラットフォーム (Linux、Windows、Mac など) からロジック アプリと統合アカウントを操作することもできます。
 
@@ -331,7 +331,7 @@ Visual Studio Code では、発行されたロジック アプリを編集して
 
 * 進行中および保留中の実行があれば、それらのキャンセルを Logic Apps サービスがベスト エフォートで試みます。
 
-  大量のボリュームやバックログがあったとしても、ほとんどの実行は完了前または開始前にキャンセルされます。 ただし、キャンセル プロセスは完了までに時間がかかる場合があります。 その間、サービスがキャンセル プロセスに対処する傍ら、いくつかの実行が実行対象として選択されてしまう可能性があります。
+  大量のボリュームやバックログがあったとしても、ほとんどの実行は完了前または開始前にキャンセルされます。 ただし、キャンセル プロセスは完了までに時間がかかる場合があります。 その間、サービスによってキャンセル プロセスが処理される一方、いくつかの実行が実行対象として取り上げられてしまう可能性があります。
 
 * Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
 
@@ -348,4 +348,4 @@ Visual Studio Code では、発行されたロジック アプリを編集して
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Visual Studio Code でステートフルおよびステートレスなロジック アプリを作成する (プレビュー)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)
+> [Visual Studio Code でシングルテナント ベースのロジック アプリ ワークフローを作成する](../logic-apps/create-single-tenant-workflows-visual-studio-code.md)

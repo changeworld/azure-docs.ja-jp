@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 03917b332d6ce204cda0ec072d213a0844690b94
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8aaa1b2865b1d0f39e6cb224c3979b4f53eeee81
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787835"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066720"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -52,7 +52,7 @@ Visual Studio 2019 で、 **[ファイル]**  >  **[新規作成]**  >  **[プ�
 
 ## <a name="write-a-function-that-has-an-event-grid-trigger"></a>イベント グリッド トリガーを持つ関数を記述する
 
-関数アプリに SDK を追加して関数を作成することができます。 関数アプリは、[.NET (C#) 用の Azure Digital Twin SDK](/dotnet/api/overview/azure/digitaltwins/client) を使用して Azure Digital Twins と対話します。 
+関数アプリに SDK を追加して関数を作成することができます。 関数アプリは、[.NET (C#) 用の Azure Digital Twin SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用して Azure Digital Twins と対話します。 
 
 この SDK を使用するには、次のパッケージをプロジェクトに含める必要があります。 Visual Studio NuGet パッケージ マネージャーを使用してパッケージをインストールします。 または、コマンドライン ツールで `dotnet` を使用してパッケージを追加します。
 

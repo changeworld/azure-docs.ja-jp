@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/18/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: befd80ea212d5439c19733c9e64e25e53ba416b7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 46f03b56ad7fd2a57720962a624ee03f86c246fc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773281"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110093655"
 ---
 | カテゴリ | データ ストア | ソースとしてサポート | シンクとしてサポート | [Azure IR](../concepts-integration-runtime.md#azure-integration-runtime) がサポート | [セルフホステッド IR](../concepts-integration-runtime.md#self-hosted-integration-runtime) がサポート |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -65,18 +65,20 @@ ms.locfileid: "108773281"
 | &nbsp; |[MongoDB](../connector-mongodb.md) |✓ | |✓ |✓  |
 | &nbsp; |[MongoDB Atlas](../connector-mongodb-atlas.md) |✓ | |✓ |✓  |
 | **[最近使ったファイル]** |[Amazon S3](../connector-amazon-simple-storage-service.md) |✓ | |✓ |✓  |
+| &nbsp; |[Amazon S3 互換ストレージ](../connector-amazon-s3-compatible-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[ファイル システム](../connector-file-system.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[FTP](../connector-ftp.md) |✓ | |✓ |✓  |
 | &nbsp; |[Google Cloud Storage](../connector-google-cloud-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[HDFS](../connector-hdfs.md) |✓ | |✓ |✓  |
+| &nbsp; |[Oracle Cloud Storage](../connector-oracle-cloud-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[SFTP](../connector-sftp.md) |✓ |✓ |✓ |✓  |
 | **汎用プロトコル** |[汎用 HTTP](../connector-http.md) |✓ | |✓ |✓  |
 | &nbsp; |[汎用 OData](../connector-odata.md) |✓ | |✓ |✓  |
 | &nbsp; |[汎用 ODBC](../connector-odbc.md) |✓ |✓ | |✓  |
 | &nbsp; |[汎用 REST](../connector-rest.md) |✓ | ✓ |✓ |✓  |
 | **サービスとアプリ** |[Amazon Marketplace Web Service](../connector-amazon-marketplace-web-service.md) |✓ | |✓ |✓  |
-| &nbsp; |[Common Data Service](../connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Concur (プレビュー)](../connector-concur.md) |✓ | |✓ |✓  |
+| &nbsp; |[Dataverse](../connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Dynamics 365](../connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Dynamics AX](../connector-dynamics-ax.md) |✓ | |✓ |✓  |
 | &nbsp; |[Dynamics CRM](../connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |

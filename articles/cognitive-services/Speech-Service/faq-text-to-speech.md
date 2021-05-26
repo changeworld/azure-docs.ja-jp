@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 67284225299641a71050342056ad7ca91bf39740
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7abc34719cbbd03d84fc34a3691c7c84e1abda5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353716"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067260"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>テキスト読み上げについてよく寄せられる質問
 
@@ -33,7 +33,7 @@ ms.locfileid: "96353716"
 
 **Q:カスタム音声モデルを使用する場合、API は標準音声と同じですか。**
 
-**A**: カスタム音声モデルを作成し、デプロイした場合、使用しているモデルに固有のエンドポイントを得られます。 その音声を使用してアプリで話すには、HTTP 要求でそのエンドポイントを指定する必要があります。 カスタム エンドポイントにも、テキスト読み上げサービスの REST API で使用可能な同じ機能が用意されています。 「[カスタム エンドポイントを作成して使用する](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint)」方法を参照してください。
+**A**: カスタム音声モデルを作成し、デプロイした場合、使用しているモデルに固有のエンドポイントを得られます。 その音声を使用してアプリで話すには、HTTP 要求でそのエンドポイントを指定する必要があります。 カスタム エンドポイントにも、テキスト読み上げサービスの REST API で使用可能な同じ機能が用意されています。 「[カスタム エンドポイントを作成して使用する](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-neural-voice-endpoint)」方法を参照してください。
 
 **Q:カスタム音声モデルの作成には、自分でトレーニング データを準備する必要がありますか。**
 
