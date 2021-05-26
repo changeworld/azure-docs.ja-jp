@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 01c34304ac0e3e7faa42611758d77893e149a2f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: v-erkel
+ms.openlocfilehash: ae882d30fa81d9eb901088fbf6f63c5e65e66dde
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92218733"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455974"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Azure FXT Edge Filer ハードウェアの電源を安全に切る方法
 

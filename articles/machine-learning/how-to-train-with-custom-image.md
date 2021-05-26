@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7340b137ddc2eb1e51c3734c85e860636ef9797b
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 31b1ac989e90b525f754f49ccf2f6d5fd254ff58
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752645"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098598"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをトレーニングする
 
@@ -53,13 +53,12 @@ ws = Workspace.from_config()
 
 ### <a name="define-your-environment"></a>環境を定義する
 
-`Environment` オブジェクトを作成し、Docker を有効にします。
+`Environment` オブジェクトを作成します。
 
 ```python
 from azureml.core import Environment
 
 fastai_env = Environment("fastai2")
-fastai_env.docker.enabled = True
 ```
 
 次のコードで指定された基本イメージは、分散型ディープ ラーニング機能を可能にする fast.ai ライブラリをサポートしています。 詳細については、[fast.ai の Docker Hub リポジトリ](https://hub.docker.com/u/fastdotai)を参照してください。 
@@ -145,7 +144,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>トレーニング ジョブを構成する
 
-このチュートリアルでは、[GitHub](https://github.com/Azure/azureml-examples/blob/main/workflows/train/fastai/pets/src/train.py) 上のトレーニング スクリプト *train.py* を使用します。 実際には、任意のカスタム トレーニング スクリプトを使用し、そのまま Azure Machine Learning で実行できます。
+このチュートリアルでは、[GitHub](https://github.com/Azure/azureml-examples/blob/main/python-sdk/workflows/train/fastai/pets/src/train.py) 上のトレーニング スクリプト *train.py* を使用します。 実際には、任意のカスタム トレーニング スクリプトを使用し、そのまま Azure Machine Learning で実行できます。
 
 `ScriptRunConfig` リソースを作成し、目的の[コンピューティング先](how-to-set-up-training-targets.md)で実行されるようにジョブを構成します。
 

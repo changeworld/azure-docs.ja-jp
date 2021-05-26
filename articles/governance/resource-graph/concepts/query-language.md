@@ -1,14 +1,14 @@
 ---
 title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
-ms.date: 03/10/2021
+ms.date: 05/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: a980e285061e986e55920fc4558b44daf552f102
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 3a0e6c1e824016dbfdef4a1e351972a34ea2daa5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790759"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099192"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -40,7 +40,7 @@ Resource Graph には、Azure Resource Manager のリソースの種類とその
 |PatchInstallationResources|いいえ |Azure Virtual Machines パッチのインストールに "_関連する_" リソースが含まれています。 |
 |PolicyResources |No |`Microsoft.PolicyInsights` に "_関連する_" リソースが含まれています。 (**プレビュー**) |
 |RecoveryServicesResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.DataProtection` および `Microsoft.RecoveryServices` に "_関連する_" リソースが含まれています。 |
-|SecurityResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.Security` に "_関連する_" リソースが含まれています。 |
+|SecurityResources |はい (プレビュー) |`Microsoft.Security` に "_関連する_" リソースが含まれています。 |
 |ServiceHealthResources |No |`Microsoft.ResourceHealth` に "_関連する_" リソースが含まれています。 |
 |WorkloadMonitorResources |No |`Microsoft.WorkloadMonitor` に "_関連する_" リソースが含まれています。 |
 
