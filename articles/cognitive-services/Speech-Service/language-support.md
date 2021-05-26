@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 0ada06e5b96ed5344347f5de1baf006c8682ff87
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fe3f3e49805d0702bfe0baf9ff0c6fa3d779208c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480220"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379356"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -74,7 +74,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 英語 (南アフリカ)             | `en-ZA` | テキスト                                   |                           |
 | 英語 (タンザニア)                 | `en-TZ` | テキスト                                   |                           |
 | 英語 (イギリス)           | `en-GB` | オーディオ (20201019)<br>テキスト<br>発音| はい                          |
-| 英語 (米国)            | `en-US` | Audio (20201019、20210223)<br>テキスト<br>発音| はい                          |
+| 英語 (米国)            | `en-US` | オーディオ (20201019)<br>テキスト<br>発音| はい                          |
 | エストニア語 (エストニア)                  | `et-EE` | テキスト                                   |                           |
 | フィリピノ語 (フィリピン)             | `fil-PH`| テキスト                                   |                           |
 | フィンランド語 (フィンランド)                  | `fi-FI` | Text                                   |     はい                      |
@@ -590,7 +590,7 @@ Custom Voice は、ニューラル レベル (カスタム ニューラル音声
 | 日本語 (日本) | ja-JP | いいえ | はい |
 | ポルトガル語 (ブラジル) | pt-BR | いいえ | はい |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

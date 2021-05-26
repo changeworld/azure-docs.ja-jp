@@ -2,13 +2,14 @@
 title: リリース ノート - Azure Event Grid IoT Edge | Microsoft Docs
 description: IoT Edge の Azure Event Grid リリース ノート
 ms.date: 07/08/2020
+ms.subservice: iot-edge
 ms.topic: article
-ms.openlocfilehash: a7582750f5230f02c784b14f50dfc6efa7af8698
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06084169767330ac8fb573dafc3d004446034f44
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171416"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379819"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>リリース ノート:IoT Edge の Azure Event Grid
 

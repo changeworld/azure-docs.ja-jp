@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 05/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 96eb88bf1e62753cff5606881af471d32bf1e85c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 47375c32869be4433e02273306a8d47f88ffa61d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483699"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463558"
 ---
 # <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
@@ -40,7 +40,7 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 
 1. **[ロール]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
 
-   ![新しいエクスペリエンスを使用したロールの一覧を示すスクリーンショット。](./media/role-definitions-list/roles-list.png)
+   ![新しいエクスペリエンスを使用したロールの一覧を示すスクリーンショット。](./media/shared/roles-list.png)
 
 1. 特定のロールのアクセス許可を表示するには、 **[詳細]** 列の **[表示]** リンクをクリックします。
 
