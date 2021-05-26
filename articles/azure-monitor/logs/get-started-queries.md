@@ -5,17 +5,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: c87b70c74a5de9cc4b6c48935b93fdd13295f0f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6e389cf58b5761d4069cf8a8b1e336d58db7a787
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052332"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459298"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 
 > [!NOTE]
-> 少なくとも 1 つの仮想マシンからデータを収集する場合は、独自の環境でこの演習を行うことができます。 それ以外の場合は、サンプル データが多数含まれている Microsoft の[デモ環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)を使用してください。  KQL でクエリを実行する方法がわかっていて、リソースの種類に応じて便利なクエリをすぐに作成したい場合は、[保存済みサンプル クエリ ペイン](../logs/example-queries.md)に関するページを参照してください。
+> 少なくとも 1 つの仮想マシンからデータを収集する場合は、独自の環境でこの演習を行うことができます。 それ以外の場合は、サンプル データが多数含まれている Microsoft の[デモ環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)を使用してください。  KQL でクエリを実行する方法がわかっていて、リソースの種類に応じて便利なクエリをすぐに作成したい場合は、[保存済みサンプル クエリ ペイン](../logs/queries.md)に関するページを参照してください。
 
 このチュートリアルでは、Azure Monitor でログ クエリを記述する方法について説明します。 以下の方法について説明します。
 

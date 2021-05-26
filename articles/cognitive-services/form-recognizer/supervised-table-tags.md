@@ -1,6 +1,6 @@
 ---
 title: テーブル タグを使用してカスタム フォーム モデルをトレーニングする方法 - Form Recognizer
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 監視対象のテーブル タグのラベル付けを効果的に使用する方法について説明します。
 author: laujan
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5422520c6a863876091d7820a5c07fa2413346c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cbf96a050124fe0d72bb0fc24be4ad7ea265fed
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467969"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374054"
 ---
 # <a name="use-table-tags-to-train-your-custom-form-model"></a>テーブル タグを使用したカスタム フォーム モデルのトレーニング
 
@@ -47,7 +47,7 @@ ms.locfileid: "103467969"
 クイックスタートに従って、カスタムの Form Recognizer モデルをトレーニングして使用します。
 
 > [!div class="nextstepaction"]
-> [サンプル ラベル付けツールを使用したラベルによるトレーニング](quickstarts/label-tool.md)
+> [サンプル ラベル付けツールを使用したラベルによるトレーニング](label-tool.md)
 
 ## <a name="see-also"></a>関連項目
 

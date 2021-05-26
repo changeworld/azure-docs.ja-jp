@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: cb39dc5312c729659993d9a9e754bef711137b4d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 3feb0c0ac40812ef628281d93d5848c2d60df6eb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790138"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375846"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -254,8 +254,7 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 [!INCLUDE [event-grid-limits](../../../includes/event-grid-limits.md)]
 
 ## <a name="event-hubs-limits"></a>Event Hubs の制限
-
-[!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
+[!INCLUDE [event-hubs-limits](../../../includes/event-hubs-limits.md)]
 
 ## <a name="iot-central-limits"></a>IoT Central の制限
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
@@ -365,6 +364,8 @@ Azure Purview のクォータの最新の値については、 [Azure Purview �
 ## <a name="sql-database-limits"></a>SQL Database の制限
 
 SQL Database の制限については、[単一データベースの SQL Database のリソース制限](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[エラスティック プールとプールされたデータベースの SQL Database のリソース制限](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)、および[SQL Managed Instance に対する SQL Database のリソース制限](../../azure-sql/managed-instance/resource-limits.md)に関する記事をご覧ください。
+
+Azure SQL Database 論理サーバーあたりのプライベート エンドポイントの最大数は 250 です。
 
 ## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics の制限
 

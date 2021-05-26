@@ -7,14 +7,14 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 04/26/2021
+ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: 80ff8508caefd355f00a0407df0d9a65c76c999a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e852f0ce1584a0858f9523c1ea055d4f2cd616d2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742105"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376257"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-a-workflow-in-azure-logic-apps"></a>Azure Logic Apps のワークフローからの IBM MQ サーバーへの接続
 
@@ -30,11 +30,9 @@ MQ コネクタを使用すると、オンプレミスまたは Azure にある 
 
 ## <a name="available-operations"></a>使用可能な操作
 
-IBM MQ コネクタはアクションを出しますがトリガーとはなりません。
+* マルチテナント Azure Logic Apps: **ロジック アプリ (消費)** リソースを作成する場合は、*マネージド* MQ コネクタを使用して MQ サーバーにのみ接続できます。 このコネクタでは、アクションのみが提供され、トリガーは提供されません。
 
-* マルチテナント Azure Logic Apps: 消費ベースのロジック アプリ ワークフローを作成する場合は、*マネージド* MQ コネクタを使用して MQ サーバー に接続できます。
-
-* シングルテナント Azure Logic Apps (プレビュー): プレビュー ロジック アプリ ワークフローを作成するときに、マネージド MQ コネクタまたは *組み込みの* MQ 操作 (プレビュー) のいずれかを使用して MQ サーバーに接続できます。
+* シングルテナント Azure Logic Apps : シングルテナント ベースのロジック アプリ ワークフローを作成するときに、アクション *のみ* を含むマネージド MQ コネクタ、またはトリガー *と* アクションを含む *組み込みの* MQ 操作のいずれかを使用して MQ サーバーに接続できます。
 
 マネージド コネクタと組み込み操作の違いの詳細については、[「Logic Apps の重要用語」](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
 
@@ -49,14 +47,17 @@ IBM MQ コネクタはアクションを出しますがトリガーとはなり�
 
 すべてのマネージド コネクタ操作と、プロパティ、制限など、その他の技術情報については、[MQ コネクタの参照ページ](/connectors/mq/) をご確認ください。
 
-#### <a name="built-in-preview"></a>[組み込み (プレビュー)](#tab/built-in)
+#### <a name="built-in"></a>[組み込み](#tab/built-in)
 
 次の一覧では、MQ で使用できる組み込み操作の一部のみを示します。
 
-* 1 つのメッセージまたはメッセージの配列を受信し、MQ サーバーから受信します。 メッセージが複数ある場合は、バッチごとに返されるメッセージの最大数および最大バッチ サイズを KB で指定できます。
+* キューでメッセージを使用できる場合は、何らかのアクションを実行します。
+* 1 つ以上のメッセージがキューから受信 (オートコンプリート) された場合は、何らかのアクションを実行します。
+* 1 つ以上のメッセージがキューから受信 (ピークロック) された場合は、何らかのアクションを実行します。
+* 1 つのメッセージまたはメッセージの配列をキューから受信します。 メッセージが複数ある場合は、バッチごとに返されるメッセージの最大数および最大バッチ サイズを KB で指定できます。
 * 1 つのメッセージまたはメッセージの配列を MQ サーバーに送信します。
 
-これらの組み込みの MQ 操作には、次の機能に加えて、 [シングルテナント Logic Apps サービス](../logic-apps/logic-apps-overview-preview.md)での logic apps のその他すべての機能のメリットも含まれています。
+これらの組み込みの MQ 操作には、次の機能に加えて、 [シングルテナント Logic Apps サービス](../logic-apps/single-tenant-overview-compare.md)での logic apps のその他すべての機能のメリットも含まれています。
 
 * 転送中のデータのためのトランスポート層セキュリティ (TLS) の暗号化
 * 送受信の両方の操作のためのメッセージ エンコーディング
@@ -125,7 +126,7 @@ MQ アクションを初めて追加すると、MQ サーバーへの接続を�
 
 1. 完了したら **[作成]** を選択します。
 
-#### <a name="built-in-preview"></a>[組み込み (プレビュー)](#tab/built-in)
+#### <a name="built-in"></a>[組み込み](#tab/built-in)
 
 1. MQ サーバーの接続情報を指定します。
 

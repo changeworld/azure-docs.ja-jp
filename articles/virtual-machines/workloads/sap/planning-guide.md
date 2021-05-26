@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 93a53169df18c88b4d74c699fe5c4cb8b2a11135
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 8e2b757010aa79bd6d8a14b5e90ac95a199be75a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738322"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083118"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -936,7 +936,7 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 * Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「[Sysprep テクニカル リファレンス](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))」、Linux の場合:「[Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
 * PowerShell または Azure CLI で VHD をアップロード
 * (オプション) PowerShell、Azure CLI、または Azure portal を使用して、VHD からマネージド ディスク イメージを作成する
-* [この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)のようにイメージ VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)のように管理ディスク イメージを使用して、VM を作成します。
+* [この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)のようにイメージ VHD を参照する JSON テンプレートを使用するか、[この JSON テンプレート サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)のように管理ディスク イメージを使用して、VM を作成します。
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>VHD または管理ディスクをオンプレミスにダウンロードする
 Azure のサービスとしてのインフラストラクチャは、VHD および SAP システムをアップロードできるだけではありません。 SAP システムを Azure からオンプレミスに移動し直すこともできます。
@@ -1518,8 +1518,8 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 GitHub 上の Azure-quickstart-templates リポジトリのサンプル テンプレートを使用できます。
 
-* [Simple Linux VM (シンプルな Linux VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* [Simple Linux VM (シンプルな Windows VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+* [Simple Linux VM (シンプルな Linux VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux)
+* [Simple Linux VM (シンプルな Windows VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows)
 * [VM from image (イメージからの VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 ### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>Azure 内で通信する一連の VM を実装する

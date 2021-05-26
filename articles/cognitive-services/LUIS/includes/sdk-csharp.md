@@ -5,15 +5,15 @@ services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 09/01/2020
+ms.date: 05/17/2021
 ms.topic: include
 ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: fd47d5df053931c343fd811fe4d93b66f080f225
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43a4cf24cd2305be560ee5f5bd4b763995e340e0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947194"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165019"
 ---
 .NET 用 Language Understanding (LUIS) クライアント ライブラリを使用して次のことを行います。
 * アプリを作成する
@@ -28,7 +28,7 @@ ms.locfileid: "98947194"
 * 現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) および [.NET Core CLI](/dotnet/core/tools/)。
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * Azure サブスクリプションを入手したら、Azure portal で [Language Understanding 作成リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
-    * アプリケーションを Language Understanding 作成に接続するには、[作成](../luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。
+    * アプリケーションを Language Understanding 作成に接続するには、[作成](../luis-how-to-azure-subscription.md)したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。
 
 ## <a name="setting-up"></a>設定
 

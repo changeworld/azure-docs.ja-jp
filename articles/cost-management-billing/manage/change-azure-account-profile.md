@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f394b6b44b2030253f7b78ec68459819c82c3c27
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 43b3332629922bb60eefb68782b84e996b692848
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480904"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461484"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Azure 課金アカウントの連絡先情報を変更する
 
@@ -79,6 +79,20 @@ Azure Active Directory のユーザー プロファイル情報を更新する�
 1. 左側のメニューの **[設定]** で、 **[プロパティ]** を選択します。
 1. **[発注番号の更新]** を選択します。
 1. 発注番号を入力し、 **[更新]** を選択します。
+
+## <a name="update-your-tax-id"></a>税 ID を更新する
+
+サブスクリプションの移動後は、必ず税 ID を更新してください。 この税 ID は、免税の計算に使用され、請求書に表示されます。
+
+**課金アカウントの情報を更新するには**
+
+1. [ビジネス向け Microsoft Store](https://businessstore.microsoft.com/) または[教育機関向け Microsoft Store](https://educationstore.microsoft.com/) にサインインします。
+1. **[管理]** を選択し、 **[Billing accounts]\(課金アカウント\)** を選択します。
+1. **[概要]** で **[Edit billing account information]\(課金アカウント情報の編集\)** を選択します。
+1. 更新後、 **[保存]** を選択します。
+
+[課金アカウントの設定を更新する方法の詳細](/microsoft-store/update-microsoft-store-for-business-account-settings)をご覧ください。
+
 
 ## <a name="service-and-marketing-emails"></a>サービスおよびマーケティングのメール
 

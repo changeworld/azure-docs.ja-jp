@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 05/17/2021
 ms.author: banders
-ms.openlocfilehash: 37ce1a292b6ff2efe0abecdb2ab934f096689f87
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: b98e9af17b20482a1c5c3178aa183198e936bef7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "105560657"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069204"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の表示とダウンロード
 
@@ -116,7 +116,7 @@ Azure の支払いにクレジット カードを使用して予約を購入し�
 
 ## <a name="get-mosp-subscription-invoice-in-email"></a>MOSP サブスクリプションの請求書をメールで受け取る
 
-サブスクリプションまたはサポート プランの請求書をメールで受信するようオプトインするには、そのサブスクリプションまたはサポート プランのアカウント管理者ロールが必要です。 メールでの請求書を利用できるのは、サブスクリプションとサポート プランだけです。予約や Azure Marketplace の購入では利用できません。 オプトイン後、請求書をメールで受け取ることができる受信者をさらに追加可能です。
+サブスクリプションまたはサポート プランの請求書をメールで受信するようオプトインするには、そのサブスクリプションまたはサポート プランのアカウント管理者ロールが必要です。 オプトイン後、請求書をメールで受け取ることができる受信者をさらに追加可能です。
 
 1.  [Azure portal](https://portal.azure.com) にサインインします。
 2.  "**コスト管理 + 請求**" を検索します。  

@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 05426f6f9eb01fa5a23b6bb20a2b1c50b8720ab1
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 3e3f729243f4bcd8f40ca681bd1c0d7675696e27
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227724"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455151"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
@@ -67,7 +67,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> この要求を実行するには、以下のリンクをクリックしてください。 サインイン後、ブラウザーは `https://localhost/myapp/` にリダイレクトされ、アドレス バーに `code` が含まれた状態になります。
+> この要求を実行するには、以下のリンクをクリックしてください。 サインイン後、ブラウザーは `http://localhost/myapp/` にリダイレクトされ、アドレス バーに `code` が含まれた状態になります。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | パラメーター    | 必須/省略可能 | 説明 |
@@ -365,12 +365,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > を必ず置き換えてください)。 (`refresh_token` を置き換えるのを忘れないでください) [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| パラメーター     | Type           | 説明        |
+| パラメーター     | 種類           | 説明        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。   |
 | `client_id`     | required    | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。 |
 | `grant_type`    | required    | この段階の承認コード フローでは `refresh_token` を指定する必要があります。 |
-| `scope`         | required    | スコープのスペース区切りリスト。 この段階で要求するスコープは、最初の承認コード要求段階で要求したスコープと同じか、またはそのサブセットである必要があります。 この要求で指定したスコープが複数のリソース サーバーにまたがる場合、Microsoft ID プラットフォームからは、最初のスコープで指定したリソースのトークンが返されます。 スコープの詳細については、 [アクセス許可、同意、スコープ](v2-permissions-and-consent.md)に関するページを参照してください。 |
+| `scope`         | オプション    | スコープのスペース区切りリスト。 この段階で要求するスコープは、最初の承認コード要求段階で要求したスコープと同じか、またはそのサブセットである必要があります。 この要求で指定したスコープが複数のリソース サーバーにまたがる場合、Microsoft ID プラットフォームからは、最初のスコープで指定したリソースのトークンが返されます。 スコープの詳細については、 [アクセス許可、同意、スコープ](v2-permissions-and-consent.md)に関するページを参照してください。 |
 | `refresh_token` | required    | フローの第 2 段階で取得した refresh_token。 |
 | `client_secret` | Web アプリの場合は必須 | アプリ登録ポータルで作成した、アプリケーションのシークレット。 ネイティブ アプリでは使用しないでください。デバイスに client_secret を確実に保存することができません。 Web アプリや Web API では client_secret をサーバー側で安全に保存する機能が備わっており、必ず指定する必要があります。 このシークレットは URL エンコードする必要があります。 詳細については、[URI の一般構文の仕様](https://tools.ietf.org/html/rfc3986#page-12)に関する記事を参照してください。 |
 
