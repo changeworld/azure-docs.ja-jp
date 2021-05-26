@@ -3,17 +3,17 @@ title: よく寄せられる質問 - Azure Verifiable Credentials (プレビュ�
 description: Verifiable Credentials についてよく寄せられる質問の回答を示します
 author: barclayn
 manager: davba
-ms.service: identity
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 3c43cfb537c84fb25a6bf879d32a8034342ff605
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c9253ce81b64b45d0ab8a72605eeba4c0d49f3f6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280719"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457893"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -81,4 +81,4 @@ Verifiable Credentials のプレビューを使用するには、Azure AD P2 ラ
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Active Directory の検証可能な資格情報をカスタマイズする方法](credential-design.md)
+- [Azure Active Directory Verifiable Credentials をカスタマイズする方法](credential-design.md)

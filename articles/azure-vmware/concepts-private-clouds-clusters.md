@@ -2,13 +2,13 @@
 title: 概念 - プライベート クラウドとクラスター
 description: Azure VMware Solution ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.openlocfilehash: 71cd3c80f5ada0d8e21fbf1696896fe03368babe
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 05/13/2021
+ms.openlocfilehash: 7b32752e368f9aac003a45f96f7c0477e9221481
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161647"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089616"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution のプライベート クラウドとクラスターの概念
 
@@ -85,7 +85,7 @@ Azure VMware Solution プライベート クラウドに関する概念を理解
 
 - [Azure VMware Solution におけるネットワークと相互接続性の概念](concepts-networking.md)
 - [Azure VMware Solution のストレージの概念](concepts-storage.md)
-- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
+- [Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
 
 <!-- LINKS - internal -->
 [concepts-networking]: ./concepts-networking.md

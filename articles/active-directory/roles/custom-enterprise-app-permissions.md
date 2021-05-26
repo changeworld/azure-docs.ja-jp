@@ -12,20 +12,20 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: d2159540c688a63082efb792fd4d261062ef65d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc3db3de91c9fbf059c56fb1f2770381265d82de
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466795"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090643"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するエンタープライズ アプリケーションのアクセス許可
 
 この記事では、Azure Active Directory (Azure AD) のカスタム ロール定義に対して現在利用可能なエンタープライズ アプリケーションのアクセス許可について説明します。 この記事には、いくつかの一般的なシナリオで使用されるアクセス許可の一覧のほか、エンタープライズ アプリのアクセス許可を網羅した一覧が記載されています。 現在このリリースでは、アプリケーション プロキシのアクセス許可はロールアウトされていません。
 
-## <a name="required-license-plan"></a>必要とされるライセンス プラン
+## <a name="license-requirements"></a>ライセンスの要件
 
-この機能を使用するためには、Azure AD 組織に Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="enterprise-application-permissions"></a>エンタープライズ アプリケーションのアクセス許可
 
@@ -166,7 +166,7 @@ microsoft.directory/servicePrincipals/synchronization/standard/read | サービ�
 microsoft.directory/servicePrincipals/synchronizationSchema/manage | サービス プリンシパル リソースのスキーマ同期の側面をすべて管理します。
 microsoft.directory/provisioningLogs/allProperties/read | プロビジョニング ログのすべてのプロパティを読み取ります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure portal、Azure AD PowerShell、および Graph API を使用してカスタム ロールを作成する](custom-create.md)
 - [ロールの割り当てを一覧表示する](view-assignments.md)
