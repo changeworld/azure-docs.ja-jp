@@ -4,12 +4,12 @@ description: 新しい Azure Monitor Application Insights のワークスペー�
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a84a9de854123b70ca96531942debc00afb2d6c6
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0ae01212eaa73deeac4774f7e13f5b46976ee7e2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754499"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075594"
 ---
 # <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 
@@ -65,10 +65,10 @@ ms.locfileid: "109754499"
 コードベースの監視用の Application Insights SDK の設定に関する詳細なドキュメントについては、言語またはフレームワーク固有のドキュメントを参照してください。
 
 - [ASP.NET](./asp-net.md)
-- [ASP.NET Core ](./asp-net-core.md)
+- [ASP.NET Core](./asp-net-core.md)
 - [バックグラウンド タスクおよび最新のコンソール アプリケーション (.NET/.NET Core)](./worker-service.md)
 - [クラシック コンソール アプリケーション (.NET)](./console.md) 
-- [Java ](./java-get-started.md?tabs=maven)
+- [Java](./java-in-process-agent.md)
 - [JavaScript](./javascript.md)
 - [Node.js](./nodejs.md)
 - [Python](./opencensus-python.md)

@@ -1,6 +1,6 @@
 ---
 title: レシート - Form Recognizer
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Form Recognizer API を使用したレシート分析に関連する概念 (使用法と制限) について説明します。
 services: cognitive-services
 author: laujan
@@ -10,33 +10,55 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 96625959c089c46b04b13216bbb9ea4b74ef4feb
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 9d37811c89cd42053333bfb8ddc17dfbb47b907c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331864"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374694"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form Recognizer の事前構築済みレシート モデル
 
-Azure Form Recognizer を使用すると、事前構築済みのレシート モデルを使用して、販売レシートから情報を分析して抽出できます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と、ディープ ラーニング モデルを組み合わせて、英語で書かれたレシートから重要な情報を抽出します。
-
-## <a name="understanding-receipts"></a>レシートについて
-
 多くの企業と個人は、いまだにレシートから手動で抽出されたデータに依存しています。 これらのレシートからデータを自動的に抽出する処理は、複雑になる場合があります。 レシートはしわくちゃになっていたり、読み取るのが難しかったり、手書き部分があったり、低画質のスマートフォン画像が含まれていたりする場合があります。 また、レシートのテンプレートとフィールドは、市場、リージョン、マーチャントなどによって大きく変わることがあります。 データ抽出とフィールド検出におけるこうした課題によって、レシート処理は独特の問題となっています。
 
-レシート API は、光学式文字認識 (OCR) と、事前に構築された Microsoft のモデルを使用して、大量のレシート処理シナリオを可能にします。 レシート API を使用すると、モデルをトレーニングする必要がなくなります。 レシートの画像を Analyze Receipt API に送信すると、データが抽出されます。
+Azure Form Recognizer を使用すると、事前構築済みのレシート モデルを使用して、販売レシートから情報を分析して抽出できます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能とディープ ラーニング モデルを組み合わせて、英語で書かれたレシートから、マーチャント名、マーチャントの電話番号、取引日、取引合計などの重要な情報を抽出します。
 
-![レシートの例](./media/receipts-example.jpg)
+## <a name="customer-scenarios"></a>顧客シナリオ
 
+### <a name="business-expense-reporting"></a>事業経費の報告
+
+事業経費のファイリングでは、多くの場合、レシートの画像からデータを手動で入力することに時間を費やす必要があります。 レシート API があれば、抽出されたフィールドを使用して、このプロセスを部分的に自動化し、レシートをすばやく分析することができます。
+
+レシート API は単純な JSON 出力であり、抽出されたフィールド値をさまざまな方法で使用できるようにします。 社内経費アプリケーションと統合すると、経費報告書に自動的に入力できます。 このシナリオの詳細については、Acumatica 社がレシート API を活用して[経費報告を苦労の少ないプロセスにしている](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)方法に関するページをご覧ください。
+
+### <a name="auditing-and-accounting"></a>監査と会計
+
+レシート API の出力を使用すると、経費報告および払い戻しプロセスのさまざまな時点で多数の経費について分析を行うこともできます。 手動による監査または迅速な承認のために、レシートを処理して選別することができます。
+
+また、レシートの出力はビジネスまたは個人用の一般簿記にも役立ちます。 レシート API を使用すると、未加工のレシート画像/PDF データを実行可能なデジタル出力に変換できます。
+
+### <a name="consumer-behavior"></a>消費者の行動
+
+レシートには、消費者の行動やショッピングの傾向を分析するために使用できる有益なデータが含まれています。
+
+また、レシート API は [AI Builder の領収書処理機能](/ai-builder/prebuilt-receipt-processing)にも採用されています。
+
+## <a name="try-it-out"></a>試してみる
+
+Form Recognizer レシート サービスを試すには、オンラインのサンプル UI ツールにアクセスしてください。
+
+> [!div class="nextstepaction"]
+> [事前構築済みモデルを試す](https://aka.ms/fott-2.1-ga)
 
 ## <a name="what-does-the-receipt-service-do"></a>レシート サービスの機能
 
 事前構築済みのレシート サービスでは、レシート (レストラン、小売業者、または食料品店で通常取得されるレシートの類) の内容を抽出します。
 
+![レシートの例](./media/receipts-example.jpg)
+
 ### <a name="fields-extracted"></a>抽出されるフィールド
 
-|名前| Type | 説明 | Text | 値 (標準化された出力) |
+|名前| 型 | 説明 | Text | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | string | 販売レシートの種類 | Itemized |  |
 | MerchantName | string | レシートを発行しているマーチャントの名前 | Contoso |  |
@@ -62,21 +84,14 @@ Azure Form Recognizer を使用すると、事前構築済みのレシート モ
 * OCR の未加工のテキスト (レシート全体の OCR 抽出テキスト出力)
 * 値、行、単語ごとの境界ボックス
 
-## <a name="try-it-out"></a>試してみる
-
-Form Recognizer レシート サービスを試すには、オンラインのサンプル UI ツールにアクセスしてください。
-
-> [!div class="nextstepaction"]
-> [事前構築済みモデルを試す](https://fott-preview.azurewebsites.net/)
-
 ## <a name="input-requirements"></a>入力の要件
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>サポート対象のロケール
 
-* **事前構築済みレシート v2.0** (GA) では、**en-us** ロケールでのレシートがサポートされています
-* **事前構築済みレシート v2.1-preview.3** (パブリック プレビュー) では、次の英語のレシート ロケールのサポートが追加されています。
+* **あらかじめ構築されたレシート v2.0** では、**en-us** ロケールでのレシートがサポートされています
+* **あらかじめ構築されたレシート v2.1** では、次の英語のレシート ロケールのサポートが追加されています。
 
 * **en-au**
 * **en-ca**
@@ -86,12 +101,11 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
   > [!NOTE]
   > 言語の入力
   >
-  > 事前構築済みレシート v2.1-preview.3 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (EN-AU)、カナダ (EN-CA)、英国 (EN-GB)、インド (EN-IN) の英語で書かれた各レシートについては、ロケールを指定して、改善された結果を得ることができます。 v2.1-preview.3 でロケールが指定されていない場合、このモデルは既定で EN-US モデルになります。
-
+  > あらかじめ構築されたレシート v2.1 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (en-au)、カナダ (en-ca)、英国 (en-gb)、インド (en-in) の英語で書かれた各レシートについては、ロケールを指定することで、より良い結果を得ることができます。 v2.1 でロケールが指定されていない場合、このモデルは既定で en-us モデルになります。
 
 ## <a name="the-analyze-receipt-operation"></a>Analyze Receipt の操作
 
-[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync) では、レシートの画像または PDF を入力として受け取り、目的の値やテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[Analyze Receipt](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync) では、レシートの画像または PDF を入力として受け取り、目的の値やテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
@@ -99,7 +113,7 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Get Analyze Receipt Result の操作
 
-2 番目の手順では、[Get Analyze Receipt Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeReceiptResult) 操作を呼び出します。 この操作では、Analyze Receipt 操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 番目の手順では、[Get Analyze Receipt Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeReceiptResult) 操作を呼び出します。 この操作では、Analyze Receipt 操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
@@ -113,7 +127,6 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 ![レシート結果の例](./media/contoso-receipt-2-information.png)
 
 ### <a name="sample-json-output"></a>サンプル JSON 出力
-
 
 Get Analyze Receipt Result 操作への応答は、抽出されたすべての情報が含まれるレシートの構造化表現になります。  [サンプルのレシート ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg)と、その構造化された出力である[サンプルのレシート出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)を参照してください。
 
@@ -446,37 +459,7 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
 }
 ```
 
-## <a name="customer-scenarios"></a>顧客シナリオ
+## <a name="next-steps"></a>次の手順
 
-レシート API で抽出されたデータは、さまざまな作業を行うために使用できます。 次に、顧客がレシート API を使用して行った作業の例をいくつかご紹介します。
-
-### <a name="business-expense-reporting"></a>事業経費の報告
-
-事業経費のファイリングでは、多くの場合、レシートの画像からデータを手動で入力することに時間を費やす必要があります。 レシート API があれば、抽出されたフィールドを使用して、このプロセスを部分的に自動化し、レシートをすばやく分析することができます。
-
-レシート API は単純な JSON 出力であり、抽出されたフィールド値をさまざまな方法で使用できるようにします。 社内経費アプリケーションと統合すると、経費報告書に自動的に入力できます。 このシナリオの詳細については、Acumatica 社がレシート API を活用して[経費報告を苦労の少ないプロセスにしている](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)方法に関するページをご覧ください。
-
-### <a name="auditing-and-accounting"></a>監査と会計
-
-レシート API の出力を使用すると、経費報告および払い戻しプロセスのさまざまな時点で多数の経費について分析を行うこともできます。 手動による監査または迅速な承認のために、レシートを処理して選別することができます。
-
-また、レシートの出力はビジネスまたは個人用の一般簿記にも役立ちます。 レシート API を使用すると、未加工のレシート画像/PDF データを実行可能なデジタル出力に変換できます。
-
-### <a name="consumer-behavior"></a>消費者の行動
-
-レシートには、消費者の行動やショッピングの傾向を分析するために使用できる有益なデータが含まれています。
-
-また、レシート API は [AI Builder の領収書処理機能](/ai-builder/prebuilt-receipt-processing)にも採用されています。
-
-## <a name="next-steps"></a>次のステップ
-
- 選択した開発言語で Form Recognizer を使用してレシート処理アプリの作成を開始します。
-
-> [!div class="nextstepaction"]
-> [Form Recognizer のクイックスタートを完了する](quickstarts/client-library.md)
-
-## <a name="see-also"></a>関連項目
-
-* [Form Recognizer とは](overview.md)
-* [Form Recognizer API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync)
->
+* [Form Recognizer サンプル UI](https://fott-preview.azurewebsites.net/) で、独自のレシートとサンプルを試してみてください。
+* 選択した開発言語で Form Recognizer を使用して領収書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: bd4541f8c8471c68ed539f407d9ff79684ccb3bf
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a847eb04745895fb903385715296a2c5c5d8898e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733504"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061518"
 ---
 # <a name="azure-arc-enabled-managed-instance-high-availability"></a>Azure Arc 対応 Managed Instance の高可用性
 
@@ -79,7 +79,7 @@ Azure Arc 対応 Managed Instance は、コンテナー化されたアプリケ�
 
 - データベースはすべて可用性グループに自動的に追加されます。これには、すべてのユーザーおよびシステム データベース (`master` や `msdb` など) が含まれます。 この機能により、可用性グループ レプリカ全体で単一システム ビューが提供されます。 インスタンスに直接接続する場合は、`containedag_master` データベースと `containedag_msdb` データベースの両方に注意してください。 `containedag_*` データベースは、可用性グループ内の `master` と `msdb` を表します。
 
-- 外部エンドポイントは、可用性グループ内のデータベースへの接続用に自動的にプロビジョニングされます。 このエンドポイント `<managed_instance_name>-svc-external` は、可用性グループ リスナーの役割を果たします。
+- 外部エンドポイントは、可用性グループ内のデータベースへの接続用に自動的にプロビジョニングされます。 このエンドポイント `<managed_instance_name>-external-svc` は、可用性グループ リスナーの役割を果たします。
 
 ### <a name="deploy"></a>配置
 

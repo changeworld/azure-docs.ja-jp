@@ -5,12 +5,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Monitor を使用して Azure Arc 対応 Kubernetes クラスターのメトリックとログを収集する
-ms.openlocfilehash: 0a983f6d7032310d02d35e713482de942bfbfd70
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 55beedec85b5e2a426954f179b738fcf81eb4982
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443852"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845746"
 ---
 # <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Arc 対応 Kubernetes クラスター用の Azure Monitor Container Insights
 
@@ -90,7 +90,7 @@ ms.locfileid: "106443852"
 - クラスターのリージョンに対応する既定の Log Analytics ワークスペースを作成または使用します
 - Azure Monitor クラスター拡張機能に対して自動アップグレードが有効化されます
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers
 ```
 
@@ -98,7 +98,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 "*共同作成者*" またはより制限が少ないロール割り当てがある任意のサブスクリプションで、既存の Azure Log Analytics ワークスペースを使用できます。
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings logAnalyticsWorkspaceResourceID=<armResourceIdOfExistingWorkspace>
 ```
 
@@ -106,7 +106,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 既定のリソース要求と制限を調整する場合、詳細な構成設定を使用できます。
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings  omsagent.resources.daemonset.limits.cpu=150m omsagent.resources.daemonset.limits.memory=600Mi omsagent.resources.deployment.limits.cpu=1 omsagent.resources.deployment.limits.memory=750Mi
 ```
 
@@ -116,7 +116,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 Azure Arc 対応 Kubernetes クラスターが Azure Stack Edge にある場合は、カスタム マウント パス `/home/data/docker` を使用する必要があります。
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings omsagent.logsettings.custommountpath=/home/data/docker
 ```
 
@@ -163,7 +163,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 3. テンプレートをデプロイして Azure Monitor Container Insights 拡張機能を作成します。 
 
-    ```console
+    ```azurecli
     az login
     az account set --subscription "Subscription Name"
     az deployment group create --resource-group <resource-group> --template-file ./arc-k8s-azmon-extension-arm-template.json --parameters @./arc-k8s-azmon-extension-arm-template-params.json

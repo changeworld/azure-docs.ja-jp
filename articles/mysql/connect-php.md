@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: bf62eca26d846cc529df43b519b1377f88c8aede
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6d97417d4e1ac549c0aeb0311013455bb967a41
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98132904"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071904"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:PHP を使用して Azure Database for MySQL に接続してデータを照会する
 このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。
@@ -76,7 +76,7 @@ mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootG2.crt.pem", NU
 mysqli_real_connect($conn, 'mydemoserver.mysql.database.azure.com', 'myadmin@mydemoserver', 'yourpassword', 'quickstartdb', 3306, NULL, MYSQLI_CLIENT_SSL);
 
 //If connection failed, show the error
-if (mysqli_connect_errno($conn))
+if (mysqli_connect_errno())
 {
     die('Failed to connect to MySQL: '.mysqli_connect_error());
 }

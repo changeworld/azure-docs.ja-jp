@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator サービス, テキストの翻訳, テキストの表記変換, 言語の検出
-ms.openlocfilehash: 7cb3eb259cc21a5a10b426e4da53513d1f42fb56
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 87e67e5c62180c9120aaf7a426a4195960d9bcf8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488701"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076530"
 ---
 # <a name="quickstart-get-started-with-translator"></a>クイックスタート: Translator を使ってみる
 
@@ -2833,10 +2833,5 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 ## <a name="next-steps"></a>次の手順
 
-* [API で文字数をカウントする方法を確認する](character-counts.md)
-* [翻訳をカスタマイズおよび改善する](customization.md)
-
-## <a name="see-also"></a>関連項目
-
-* [Translator v3 API リファレンス](reference/v3-0-reference.md)
-* [言語サポート](language-support.md)
+> [!div class="nextstepaction"]
+> [翻訳をカスタマイズおよび改善する](customization.md)

@@ -8,12 +8,12 @@ ms.date: 04/06/2021
 author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be527647466ad76455585e16baabb26e39e42193
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 77f6b2ec71df63da1fe5ff52f948ded9502c5edb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107989"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076278"
 ---
 # <a name="add-and-manage-azure-ad-applications"></a>Azure AD アプリケーションを追加して管理する
 
@@ -41,7 +41,7 @@ ms.locfileid: "107107989"
 1. **[アカウント設定]** の **[ユーザー]** ページから **[Add Azure AD applications]\(Azure AD アプリケーションの追加\)** を選択します。
 1. 次のページで、 **[New Azure AD application]\(新しい Azure AD アプリケーション\)** を選択します。
 1. 新しい Azure AD アプリケーションの **応答 URL** を入力します。 これは、Azure AD アプリケーションにユーザーがサインインして使用するための URL です ("アプリの URL" や "サインオン URL" と呼ばれることもあります)。 *応答 URL* は 256 文字未満、かつディレクトリ内で一意であることが必要です。
-1. 新しい Azure AD アプリケーションの **アプリ ID/URI** を入力します。 これは、シングル サインオン要求が Azure AD に送信されるときに提示される、Azure AD アプリケーションの論理的な ID です。 *アプリ ID/URI* は、ディレクトリ内の Azure AD アプリケーションごとに一意であることが必要です。 この ID は 256 文字以下にする必要があります。 アプリ ID/URI の詳細については、[Azure Active Directory とアプリケーションの統合](/azure/active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)に関するページを参照してください。
+1. 新しい Azure AD アプリケーションの **アプリ ID/URI** を入力します。 これは、シングル サインオン要求が Azure AD に送信されるときに提示される、Azure AD アプリケーションの論理的な ID です。 *アプリ ID/URI* は、ディレクトリ内の Azure AD アプリケーションごとに一意であることが必要です。 この ID は 256 文字以下にする必要があります。 アプリ ID/URI の詳細については、[Azure Active Directory とアプリケーションの統合](/azure/active-directory/develop/howto-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)に関するページを参照してください。
 1. **[ロール]** セクションで、Azure AD アプリケーションのロール (またはカスタマイズされたアクセス許可) を指定します。
 1. **[保存]** を選択します。
 

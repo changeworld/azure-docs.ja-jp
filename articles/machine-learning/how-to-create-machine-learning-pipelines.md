@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1
-ms.openlocfilehash: 6a77cfd933b79e3ada02e90f900467cedf08e406
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b3f313000bf66162cd4abffa18fd2b7bfbfb0693
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889972"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458571"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 
@@ -286,7 +286,7 @@ ws = Run.get_context().experiment.workspace
 
 パイプラインの動作を最適化およびカスタマイズするためには、キャッシュと再利用に関連するいくつかのことを実行できます。 たとえば、次のようなことを選択できます。
 + [ステップ定義](/python/api/azureml-pipeline-steps/)中に `allow_reuse=False` を設定して、**既定のステップ実行出力の再利用をオフにします**。 共同環境でパイプラインを使用する際は再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ただし、再利用しないことも選択できます。
-+ `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` を使用して、**1 回の実行で全ステップの出力の再生成を強制します**。
++ `pipeline_run = exp.submit(pipeline, regenerate_outputs=True)` を使用して、**1 回の実行で全ステップの出力の再生成を強制します**。
 
 既定では、ステップの `allow_reuse` が有効になり、ステップの定義に指定されている `source_directory` がハッシュ化されます。 したがって、ある特定のステップのスクリプトが同じ場合 (`script_name`、inputs、およびパラメーター)、` source_directory` では他に何か変更されることはなく、前のステップ実行の出力が再利用されて、ジョブはコンピューティングに送信されず、代わりに、前の実行の結果が次のステップで即時使用可能になります。
 

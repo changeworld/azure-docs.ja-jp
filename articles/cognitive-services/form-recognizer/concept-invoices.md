@@ -1,6 +1,6 @@
 ---
 title: 請求書 - Form Recognizer
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Form Recognizer API を使用した請求書分析に関連する概念 (使用法と制限) について説明します。
 services: cognitive-services
 author: laujan
@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: e30e431ec393a59e0799bf1c56611fbba84d8960
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: effe9a1f4959748ee04fadff2bd733c52c14a790
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330586"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374870"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
 
-Azure Form Recognizer を使用すると、事前構築済みの請求書モデルを使用して、販売請求書から情報を分析して抽出できます。 お客様は Invoice API を使用して、さまざまな形式の請求書を受け取り、構造化データを返すことによって請求書の処理を自動化することができます。 そこでは、Microsoft の強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と、英語で記述された請求書から重要な情報を抽出するための請求書解釈ディープ ラーニング モデルが組み合わされます。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求金額、課税額、出荷先、請求先、品目などのテキスト、テーブル、情報が抽出されます。 Form Recognizer v2.1 プレビューでは、事前構築済みの Invoice API が一般公開されています。
+Azure Form Recognizer を使用すると、事前構築済みの請求書モデルを使用して、販売請求書から情報を分析して抽出できます。 お客様は Invoice API を使用して、さまざまな形式の請求書を受け取り、構造化データを返すことによって請求書の処理を自動化することができます。 そこでは、Microsoft の強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と、英語で記述された請求書から重要な情報を抽出するための請求書解釈ディープ ラーニング モデルが組み合わされます。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求金額、課税額、出荷先、請求先、品目などのテキスト、テーブル、情報が抽出されます。 Form Recognizer v2.1 は、事前構築済みの Invoice API が一般公開されています。
 
 ## <a name="what-does-the-invoice-service-do"></a>請求書サービスの機能
 
@@ -32,7 +32,7 @@ Invoice API を呼び出すと、請求書から主要なフィールドと品�
 Form Recognizer の請求書サービスを試してみるには、オンラインのサンプル UI ツールにアクセスしてください。
 
 > [!div class="nextstepaction"]
-> [事前構築済みモデルを試す](https://fott-preview.azurewebsites.net/)
+> [事前構築済みモデルを試す](https://aka.ms/fott-2.1-ga)
 
 Form Recognizer の請求書サービスを試すには、Azure サブスクリプション ([無料で作成](https://azure.microsoft.com/free/cognitive-services)) および [Form Recognizer リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)のエンドポイントとキーが必要です。
 
@@ -44,19 +44,19 @@ Form Recognizer の請求書サービスを試すには、Azure サブスクリ�
 
 ## <a name="supported-locales"></a>サポート対象のロケール
 
-**事前に構築された請求書 v2.1-preview.3** (プレビュー) では、**en-us** ロケールの請求書がサポートされています。
+**事前に構築された請求書 v2.1** では、**en-us** ロケールの請求書がサポートされています。
 
 ## <a name="the-analyze-invoice-operation"></a>請求書分析操作
 
-[請求書分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)操作に請求書の画像または PDF を入力として渡すと、目的の値が抽出されます。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[請求書分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)操作に請求書の画像または PDF を入力として渡すと、目的の値が抽出されます。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/prebuilt/invoice/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>請求書分析結果取得操作
 
-2 番目の手順では、[請求書分析結果取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9acb78c40a2533aee83)操作を呼び出します。 この操作には、請求書分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 番目の手順では、[請求書分析結果取得](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9acb78c40a2533aee83)操作を呼び出します。 この操作には、請求書分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
@@ -78,7 +78,7 @@ JSON 出力には、次の 3 つの部分があります。
 
 請求書サービスでは、テキスト、テーブルのほか、26 個の請求書フィールドを抽出します。 次に示すのは、JSON の出力応答で請求書から抽出されるフィールドです (以下の出力では、こちらの[サンプル請求書](media/sample-invoice.jpg)が使用されています)。
 
-|名前| Type | 説明 | Text | 値 (標準化された出力) |
+|名前| 型 | 説明 | Text | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | string | 請求対象の顧客 | Microsoft Corp |  |
 | CustomerId | string | 顧客の参照 ID | CID-12345 |  |
@@ -109,13 +109,13 @@ JSON 出力には、次の 3 つの部分があります。
 
 次に示すのは、JSON の出力応答で請求書から抽出される品目です (以下の出力では、こちらの[サンプル請求書](./media/sample-invoice.jpg)が使用されています)
 
-|名前| Type | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
+|名前| 型 | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | アイテム | string | 品目の完全な文字列テキスト行 | 3/4/2021 A123 Consulting Services 2 hours $30.00 10% $60.00 | |
-| Amount | number | 品目の金額 | $60.00 | 100 |
-| 説明 | string | 請求書の明細項目の説明テキスト | コンサルティング サービス | コンサルティング サービス |
+| Amount | 数値 | 品目の金額 | $60.00 | 100 |
+| Description | string | 請求書の明細項目の説明テキスト | コンサルティング サービス | コンサルティング サービス |
 | 数量 | 数値 | この請求書明細項目の数量 | 2 | 2 |
-| UnitPrice | number | この項目の 1 つの単位の正味価格または総価格 (請求書の総請求書の設定によって異なります) | $30.00 | 30 |
+| UnitPrice | 数値 | この項目の 1 つの単位の正味価格または総価格 (請求書の総請求書の設定によって異なります) | $30.00 | 30 |
 | ProductCode | string| 特定の品目に関連付けられている製品コード、製品番号、または SKU | A123 | |
 | ユニット | string| 品目の単位 (kg、lb など) | 時間 | |
 | Date | 日付| 各品目に対応する日付。 多くの場合、これは品目が発送された日付です | 3/4/2021| 2021-03-04 |
@@ -124,10 +124,10 @@ JSON 出力には、次の 3 つの部分があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Form Recognizer サンプル UI](https://fott-preview.azurewebsites.net/) で、独自の請求書とサンプルを試してみてください。
+- [Form Recognizer サンプル UI](https://aka.ms/fott-2.1-ga) で、独自の請求書とサンプルを試してみてください。
 - 選択した開発言語で Form Recognizer を使用して請求書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 
 * [Form Recognizer とは](./overview.md)
-* [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)
+* [REST API リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)

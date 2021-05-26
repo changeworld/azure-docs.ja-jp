@@ -1,6 +1,6 @@
 ---
 title: ID - Form Recognizer
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Form Recognizer 事前構築済み ID API を使用した ID ドキュメントからのデータ抽出に関連する概念について説明します。
 services: cognitive-services
 author: laujan
@@ -10,16 +10,35 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: d59df677fda920be5ed9547bee3855d4c9511187
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 9ab936f90fb890d50e6e476e216b327ed26fc4f5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330838"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374853"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Form Recognizer 事前構築済み身分証明書類 (ID) モデル
 
-Azure Form Recognizer を使用すると、その事前構築済み ID モデルを使用して、政府機関が発行した身分証明書類 (ID) からの情報を分析および抽出できます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と ID 認識機能を組み合わせて、世界各国のパスポートと米国の運転免許証 (50 州すべてとワシントン D.C.) から重要な情報を抽出することができます。 ID API により、これらの ID ドキュメントから、名、姓、生年月日、ドキュメント番号などの重要な情報が抽出されます。 この API は、Form Recognizer v2.1 プレビューで、クラウド サービスおよびオンプレミスのコンテナーとして使用できます。
+Azure Form Recognizer を使用すると、その事前構築済み ID モデルを使用して、政府機関が発行した身分証明書類 (ID) からの情報を分析および抽出できます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と ID 認識機能を組み合わせて、世界各国のパスポートと米国の運転免許証 (50 州すべてとワシントン D.C.) から重要な情報を抽出することができます。 ID API により、これらの ID ドキュメントから、名、姓、生年月日、ドキュメント番号などの重要な情報が抽出されます。 この API は、Form Recognizer v2.1 でクラウド サービスとして使用できます。 
+
+## <a name="customer-scenarios"></a>顧客シナリオ
+
+ID API で抽出されたデータを使用すると、金融、医療保険、政府などの業界で、Know Your Customer (KYC) などのシナリオに対してさまざまなタスクを実行できます。いくつかの例を次に示します。
+
+* デジタル オンボード - エンド ユーザーは、モバイル アプリケーションを使用して自分の ID をスキャンして、さまざまなサービスにオンボードできます。 リモート顧客認証は、ID データの抽出によって支援されます。 
+
+* 検証と ID の照合 - エンド ユーザーは、アプリケーションに入力し、ID の画像を添付できます。 あらかじめ構築された ID により、銀行は、情報が手元のデータと一致することを確認できます。
+
+* フォームの事前入力 - 保険金請求プロセスの一環として、エンド ユーザーが自分の ID を送信すると、フィールドがオンライン ドキュメントに事前に入力され、プロセスの時間を節約できます。
+
+ID API により、[AI Builder ID リーダー機能](/ai-builder/prebuilt-id-reader)も強化されます。
+
+## <a name="try-it-out"></a>試してみる
+
+Form Recognizer IDs サービスを試してみるには、オンラインのサンプル UI ツールにアクセスしてください。
+
+> [!div class="nextstepaction"]
+> [事前構築済みモデルを試す](https://aka.ms/fott-2.1-ga)
 
 ## <a name="what-does-the-id-service-do"></a>ID サービスの機能
 
@@ -35,7 +54,7 @@ Azure Form Recognizer を使用すると、その事前構築済み ID モデル
 
 ### <a name="fields-extracted"></a>抽出されるフィールド
 
-|名前| Type | 説明 | 値 |
+|名前| 型 | 説明 | 値 |
 |:-----|:----|:----|:----|
 |  国 | country | ISO 3166 標準に準拠した国番号 | "USA" |
 |  DateOfBirth | date | YYYY-MM-DD 形式の DOB | "1980-01-01" |
@@ -55,7 +74,7 @@ Azure Form Recognizer を使用すると、その事前構築済み ID モデル
 ID API からは次の情報も返されます。
 
 * フィールドの信頼度 (各フィールドから関連付けられた信頼度の値が返されます)
-* OCR の未加工のテキスト (レシート全体の OCR 抽出テキスト出力)
+* OCR の未加工のテキスト (身分証明書全体の OCR 抽出テキスト出力)
 * 米国の運転免許証で抽出された各フィールドの境界ボックス
 * パスポートの機械読み取り可能ゾーンの境界ボックス (MRZ)
 
@@ -64,24 +83,17 @@ ID API からは次の情報も返されます。
   >
   > Form Recognizer 事前構築済み ID により、ID データから重要なデータが抽出されます。 ただし、元の ID ドキュメントの有効性や信頼性は検出されません。
 
-## <a name="try-it-out"></a>試してみる
-
-Form Recognizer IDs サービスを試してみるには、オンラインのサンプル UI ツールにアクセスしてください。
-
-> [!div class="nextstepaction"]
-> [事前構築済みモデルを試す](https://fott-preview.azurewebsites.net/)
-
 ## <a name="input-requirements"></a>入力の要件
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>サポート対象のロケール
 
- **事前構築済み ID v2.1-preview.3** (プレビュー) では、**en-us** ロケールで ID ドキュメントがサポートされています。
+ **あらかじめ構築された ID v2.1** では、**en-us** ロケールで ID ドキュメントがサポートされています。
 
 ## <a name="supported-identity-document-types"></a>サポートされている ID ドキュメントの種類
 
-* **Pre-built IDs v2.1-preview.3** 世界各国のパスポートと米国の運転免許証から主要な値が抽出されます。
+* **あらかじめ構築された ID v2.1** では、世界各国のパスポートと米国の運転免許証から主要な値が抽出されます。
 
   > [!NOTE]
   > ID の種類のサポート
@@ -90,19 +102,19 @@ Form Recognizer IDs サービスを試してみるには、オンラインのサ
 
 ## <a name="post-analyze-id-document"></a>ID 分析ドキュメントの投稿
 
-[ID 分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7daad1f2612c46f5822)操作に ID の画像または PDF を入力として渡すと、目的の値が抽出されます。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[ID 分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7daad1f2612c46f5822)操作に ID の画像または PDF を入力として渡すと、目的の値が抽出されます。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="get-analyze-id-document-result"></a>ID 分析ドキュメント結果の取得
+## <a name="get-analyze-id-document-result"></a>ID ドキュメントの分析結果の取得
 
 <!---
 Need to update this with updated APIM links when available
 -->
 
-2 つ目の手順により、[**ID 分析ドキュメント結果の取得**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7738978e467c5fb8707)を呼び出します。 この操作には、ID 分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 つ目の手順により、[**ID 分析ドキュメント結果の取得**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)を呼び出します。 この操作には、ID 分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
@@ -253,10 +265,7 @@ Need to update this with updated APIM links when available
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Form Recognizer サンプル UI](https://fott-preview.azurewebsites.net/) で、独自の ID とサンプルを試してみてください。
+* [Form Recognizer サンプル UI](https://aka.ms/fott-2.1-ga) で、独自の ID とサンプルを試してみてください。
 * 選択した開発言語で Form Recognizer を使用して ID 処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
 
-## <a name="see-also"></a>関連項目
 
-* [**Form Recognizer とは**](./overview.md)
-* [**REST API リファレンス ドキュメント**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

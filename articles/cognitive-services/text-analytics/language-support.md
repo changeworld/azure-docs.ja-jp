@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 05/18/2021
 ms.author: aahi
-ms.openlocfilehash: 38fda578a2151d1d5cf306095b3be49cb916977b
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b1af4e147f960e8e241a2d49ac94b7fb2594207f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287430"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078204"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
@@ -233,9 +233,17 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 |トンガ語|`to`|✓|2020-09-01|
 |トルコ語|`tr`|✓|2021-01-05|
 |トルクメン語|`tk`|✓|2021-01-05|
+|ウクライナ語|`uk`|✓||
+|ウルドゥ語|`ur`|✓||
+|ウズベク語|`uz`|✓||
+|ベトナム語|`vi`|✓||
+|ウェールズ語|`cy`|✓|| 
 |コサ語|`xh`|✓|2021-01-05|
+|イディッシュ語|`yi`|✓||
 |ヨルバ語|`yo`|✓|2021-01-05|
+|ユカテコ語| `yua` | ✓| |
 |ズールー語|`zu`|✓|2021-01-05|
+
 
 ---
 

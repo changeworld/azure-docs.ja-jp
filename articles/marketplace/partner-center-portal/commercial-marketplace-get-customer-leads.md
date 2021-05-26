@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 10/01/2020
-ms.openlocfilehash: 1d5f2248d94796d5e3ee76301642a95abddebfe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/20/2021
+ms.openlocfilehash: bfb900dd2be2d83c46663b21773bb14585129be9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94489337"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110453093"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーからの顧客リード
 
@@ -44,7 +44,7 @@ ms.locfileid: "94489337"
 
 ## <a name="connect-to-your-crm-system"></a>CRM システムに接続する
 
-[!INCLUDE [Links to lead configuration for different CRM systems](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](../includes/customer-leads.md)]
 
 ## <a name="understand-lead-data"></a>リード データについて
 

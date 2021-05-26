@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2021
+ms.date: 05/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 08e46f056a63fe82c8a41afb9934963f55e13c36
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 476bed754c6ccc2cab1cd9c97b52873a9b430770
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742519"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480325"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -197,10 +197,6 @@ Azure Active Directory Domain Services と組み合わせて Azure NetApp Files 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>サポートされる Windows Server Active Directory のバージョンを教えてください。
 
 Azure NetApp Files では、Windows Server 2008r2SP1-2019 バージョンの Active Directory Domain Services がサポートされています。
-
-### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>SMB クライアントで使用可能な領域にプロビジョニング済みのサイズが表示されないのはなぜですか?
-
-SMB クライアントで報告されるボリューム サイズは、Azure NetApp Files ボリュームを拡張できる最大サイズです。 SMB クライアントに表示される Azure NetApp Files ボリュームのサイズは、クォータやボリュームのサイズを反映するものではありません。 API Azure NetApp Files ボリュームのサイズまたはクォータは、Azure portal または API を使用して取得できます。
 
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>SMB 共有に接続すると問題が発生します。 どうすればよいですか。
 

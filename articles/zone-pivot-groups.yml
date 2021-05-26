@@ -776,6 +776,14 @@ groups:
     title: Java
   - id: programming-language-more
     title: その他の言語
+- id: video-analyzer-programming-languages
+  title: Azure Video Analyzer のプログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
 - id: ams-lva-edge-programming-languages
   title: Live Video Analytics on IoT Edge のプログラミング言語
   prompt: プログラミング言語を選択する
@@ -1193,9 +1201,9 @@ groups:
   - id: programming-language-java
     title: Java
 metadata:
-  ms.openlocfilehash: 1ce7b672204fefdff6def450ba50d38981e67bed
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: adcb769a1cf52dc86ee60349463caa078fb31a4b
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110084972"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110373529"

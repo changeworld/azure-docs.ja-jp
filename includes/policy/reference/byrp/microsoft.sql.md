@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 718ed77d00c574de891a1d015072a7c1db0ab0eb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f04dbd73d8bc5222de7bfccb095854586b9da1b2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753869"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071479"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -25,7 +25,7 @@ ms.locfileid: "108753869"
 |[監査を有効にするように SQL Server を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4c68484-132f-41f9-9b6d-3e4b1cb55036) |SQL アセットに対して実行された操作が確実にキャプチャされるようにするには、SQL サーバーで監査が有効になっている必要があります。 これは、規制標準に準拠するために必要になる場合があります。 |DeployIfNotExists、Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Deploy.json) |
 |[デプロイ - Log Analytics ワークスペースにストリーム配信されるように SQL Database の診断設定を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb79fa14e-238a-4c2d-b376-442ce508fc84) |SQL Database の診断設定をデプロイして、この診断設定がない SQL Database が作成または更新されたときに、リソース ログが Log Analytics ワークスペースにストリーム配信されるようにします。 |DeployIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DataConnectosSqlLogs_PolicyAssignment.json) |
 |[SQL サーバーで Advanced Data Security をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6134c3db-786f-471e-87bc-8f479dc890f6) |このポリシーを使用して、SQL サーバーでの Advanced Data Security を有効にすることができます。 これには、脅威の検出と脆弱性評価の有効化が含まれます。 SQL サーバーと同じリージョンとリソース グループにストレージ アカウントが自動的に作成され、スキャン結果が "sqlva" プレフィックスを付けて保存されます。 |DeployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAdvancedDataSecurity_Deploy.json) |
-|[Azure SQL Database の診断設定をイベント ハブにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9a7c7a7d-49e5-4213-bea8-6a502b6272e0) |Azure SQL Database の診断設定をデプロイして、この診断設定がない Azure SQL Database が作成または更新されたときにリージョンのイベント ハブにストリーム配信します。 |DeployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDB_DiagnosticsLog_Deploy.json) |
+|[Azure SQL Database の診断設定をイベント ハブにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9a7c7a7d-49e5-4213-bea8-6a502b6272e0) |Azure SQL Database の診断設定をデプロイして、この診断設定がない Azure SQL Database が作成または更新されたときにリージョンのイベント ハブにストリーム配信します。 |DeployIfNotExists |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDB_DiagnosticsLog_Deploy.json) |
 |[SQL DB Transparent Data Encryption のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86a912f6-9a06-4e26-b447-11b16ba8659f) |SQL データベースで Transparent Data Encryption を有効にします |DeployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Deploy.json) |
 |[SQL Server での脅威検出のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F36d49e87-48c4-4f2e-beed-ba4ed02b71f5) |このポリシーでは、SQL サーバーで脅威検出が有効になっていることを確認します。 |DeployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DeployTdOnSqlServers_Deploy.json) |
 |[Azure SQL データベースの長期的な geo 冗長バックアップを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd38fc420-0735-4ef3-ac11-c806f651a570) |このポリシーは、長期的な geo 冗長バックアップが有効になっていないすべての Azure SQL データベースを監査します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_SQLDatabase_AuditIfNotExists.json) |

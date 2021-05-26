@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f67bc46b4f612d3d2f377070d5d8280512e0e3df
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 30d36836bf0a0803573f930b0f352a6179be962f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576365"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451480"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -74,12 +74,12 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 ## <a name="1624"></a>1.6.2.4
 >[!IMPORTANT]
 > 2021 年 3 月 30 日の更新: このビルドで問題が検出されました。 このビルドをインストールすると、Health サービスが登録されません。 このビルドをインストールしないことをお勧めします。 修正プログラムが間もなくリリースされる予定です。
-> このビルドが既にインストールされている場合は、[こちらの記事](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#manually-register-azure-ad-connect-health-for-sync)に示されているように、コマンドレットを使用して手動で Health サービスを登録できます
+> このビルドが既にインストールされている場合は、[こちらの記事](./how-to-connect-health-agent-install.md#manually-register-azure-ad-connect-health-for-sync)に示されているように、コマンドレットを使用して手動で Health サービスを登録できます
 
 >[!NOTE]
 > - このリリースはダウンロードでのみ提供されます。
 > - 同期規則の変更のため、このリリースにアップグレードする場合は完全な同期が必要になります。
-> - このリリースでは、AADConnect サーバーは既定で、新しい V2 エンド ポイントに設定されます。 このエンド ポイントは、ドイツ国内クラウドではサポートされていないことに注意してください。この環境にこのバージョンをデプロイする必要がある場合は、[こちらの手順](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback)に従って V1 エンド ポイントに戻す必要があります。 そのようにしないと、同期でエラーが発生します。
+> - このリリースでは、AADConnect サーバーは既定で、新しい V2 エンド ポイントに設定されます。 このエンド ポイントは、ドイツ国内クラウドではサポートされていないことに注意してください。この環境にこのバージョンをデプロイする必要がある場合は、[こちらの手順](./how-to-connect-sync-endpoint-api-v2.md#rollback)に従って V1 エンド ポイントに戻す必要があります。 そのようにしないと、同期でエラーが発生します。
 
 ### <a name="release-status"></a>リリースの状態
 3/19/2021: ダウンロード用にリリース。自動アップグレードには使用できません
@@ -96,11 +96,11 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
      - 更新された規則は既定で無効になります。 ただし、追加された新しい同期規則 "Out to AD - Group SOAInAAD - Exchange" が有効になります。
      - Cloned Custom Sync Rule の優先順位に応じて、AADConnect により、Mail 属性と Exchange 属性が流されます。
      - 何らかの Mail 属性や Exchange 属性が Cloned Custom Sync Rule によって流されない場合、それらの属性は新しい Exchange Sync Rule によって追加されます。
- - [選択的なパスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-selective-password-hash-synchronization)のサポートが追加されました
- - 新しい[単一オブジェクト同期コマンドレット](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-single-object-sync)が追加されました。 このコマンドレットは、Azure AD Connect の同期の構成をトラブルシューティングするために使用します。 
+ - [選択的なパスワード ハッシュ同期](./how-to-connect-selective-password-hash-synchronization.md)のサポートが追加されました
+ - 新しい[単一オブジェクト同期コマンドレット](./how-to-connect-single-object-sync.md)が追加されました。 このコマンドレットは、Azure AD Connect の同期の構成をトラブルシューティングするために使用します。 
  -  Azure AD Connect では、サービスを構成するための、ハイブリッド ID の管理者の役割をサポートするようになりました。
  - AADConnectHealth エージェントが 3.1.83.0 に更新されました
- - 新しいバージョンの [ADSyncTools PowerShell モジュール](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adsynctools)。これには、新しいコマンドレットや改良されたコマンドレットがいくつかあります。 
+ - 新しいバージョンの [ADSyncTools PowerShell モジュール](./reference-connect-adsynctools.md)。これには、新しいコマンドレットや改良されたコマンドレットがいくつかあります。 
  
    - Clear-ADSyncToolsMsDsConsistencyGuid
    - ConvertFrom-ADSyncToolsAadDistinguishedName
@@ -134,7 +134,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
     - Get-ADSyncAADConnectorExportApiVersion - AWS API の get export のバージョンを取得します
 
  - サービスでの変更に関するトラブルシューティングを支援するため、同期規則に加えられた変更が追跡されるようになりました。 コマンドレット "Get-ADSyncRuleAudit" を使用して、追跡された変更を取得します。
- - ADSyncAdmin グループのユーザーが AD DS コネクタ アカウントを変更できるように、[ADSyncConfig PowerShell モジュール](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account#using-the-adsyncconfig-powershell-module)の Add-ADSyncADDSConnectorAccount が更新されました。 
+ - ADSyncAdmin グループのユーザーが AD DS コネクタ アカウントを変更できるように、[ADSyncConfig PowerShell モジュール](./how-to-connect-configure-ad-ds-connector-account.md#using-the-adsyncconfig-powershell-module)の Add-ADSyncADDSConnectorAccount が更新されました。 
 
 ### <a name="bug-fixes"></a>バグの修正
  - 白い背景での明るさの要件を満たすため、無効にされる前景色が更新されました。 明るさの要件を満たすため、無効にされているページが選択されたときは前景のテキストの色を白に設定する、ナビゲーション ツリーでの追加の条件が用意されました。
@@ -263,7 +263,6 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 - Kerberos ハッシュのパディングが正しく考慮されるように、Azure AD Domain Services のパスワード ハッシュ同期を更新しました。  これにより、Azure AD から Azure AD Domain Services へのパスワード同期中のパフォーマンスが向上します。
 - 認証エージェントとサービス バスの間の信頼できるセッションのサポートを追加しました。
-- このリリースでは、認証エージェントとクラウド サービス間の通信に TLS 1.2 が適用されます。
 - 認証エージェントとクラウド サービス間に websocket 接続用の DNS キャッシュを追加しました。
 - クラウドから特定のエージェントをターゲットにして、エージェントの接続をテストする機能を追加しました。
 

@@ -8,17 +8,97 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/20/2021
+ms.date: 05/15/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: f901dde7501823a6bf54599d10f0f47abe27273b
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 2c09e17c6324ba71e15d9eeff387788620cd0ccf
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905812"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368979"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
+
+## <a name="text-to-speech-2021-may-release"></a>テキスト読み上げの 2021 年 5 月のリリース
+
+**ニューラル TTS 用に追加された新しい言語と音声**
+
+- **10 個の新しい言語の導入** - ニューラル TTS 言語の一覧に、次の 10 個の新しいロケールの 20 個の新しい音声が追加されています。`en-HK` 英語 (香港) の Yan、`en-HK` 英語 (香港) の Sam、`en-NZ` 英語 (ニュージーランド) の Molly、`en-NZ` 英語 (ニュージーランド) の Mitchell、`en-SG` 英語 (シンガポール) の Luna、`en-SG` 英語 (シンガポール) の Wayne、`en-ZA` 英語 (南アフリカ) の Leah、`en-ZA` 英語 (南アフリカ) の Luke、`gu-IN` グジャラート語 (インド) の Dhwani、`gu-IN` グジャラート語 (インド) の Niranjan、`mr-IN` マラーティー語 (インド) の Aarohi、`mr-IN` マラーティー語 (インド) の Manohar、`es-AR` スペイン語 (アルゼンチン) の Elena、`es-AR` スペイン語 (アルゼンチン) の Tomas、`es-CO` スペイン語 (コロンビア) の Salome、`es-CO` スペイン語 (コロンビア) の Gonzalo、`es-US` スペイン語 (米国) の Paloma、`es-US` スペイン語 (米国) の Alonso、`sw-KE` スワヒリ語 (ケニア) の Zuri、`sw-KE` スワヒリ語 (ケニア) の Rafiki。
+
+- **11 個の新しい en-US 音声 (プレビュー段階)** - 11 個の新しいen-US 音声 (プレビュー段階) が米国英語に追加されています。これらは、Ashley、Amber、Ana、Brandon、Christopher、Cora、Elizabeth、Eric、Michelle、Monica、Jacob です。
+
+- **5 つの `zh-CN` 中国語 (標準、簡体字) の音声が一般公開に** - 5 つの中国語 (標準、簡体字) の音声がプレビューから一般公開に変更されました。 これらは、Yunxi、Xiaomo、Xiaoman、Xiaoxuan、Xiaorui です。 これで、これらの音声がすべての[リージョン](regions.md#neural-and-standard-voices)で利用できるようになりました。 Yunxi には、チャット ボットや音声エージェントに適した新しい "アシスタント" スタイルが追加されています。 Xiaomo の音声スタイルは、より自然で特徴的なものになるように洗練されています。 
+
+## <a name="speech-sdk-1170-2021-may-release"></a>Speech SDK 1.17.0: 2021 年 5 月のリリース
+
+>[!NOTE]
+>[こちらから](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk) Speech SDK を開始します。
+
+**要点の概要**
+
+- フットプリントの削減 - Speech SDK とそのコンポーネントのメモリとディスクのフットプリントを引き続き削減します。
+- 新しいスタンド アロンの言語検出 API を使用すると、話されている言語を認識することができます。
+- macOS で Unity を使用して、音声対応の複合現実とゲーム アプリケーションを開発します。
+- これで、Go プログラミング言語の音声認識に加えて、テキスト読み上げを使用できるようになりました。
+- 重要なお客様が GitHub でフラグを設定した問題に対処するためのいくつかのバグ修正。 ご協力ありがとうございます。 ぜひフィードバックをお寄せください。
+
+#### <a name="new-features"></a>新機能
+
+- **C++/C#** : `SourceLanguageRecognizer` API を介した新しいスタンドアロンの単発または開始時および継続的な言語検出。 オーディオ コンテンツで話されている言語のみを検出する場合は、この API で可能です。
+- **C++/C#** : 音声認識と翻訳認識で、単発と継続的の両方の言語検出がサポートされるようになったため、文字起こしまたは翻訳される前に、どの言語が話されているかをプログラムで判断できます。 [音声認識](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection)と [Speech Translation](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation) のドキュメントを参照してください。
+- **C#** : macOS (x64) に Unity のサポートを追加しました。 これにより、複合現実とゲームにおける音声認識と音声合成のユース ケースのロックが解除されます。
+- **Go**: Go プログラミング言語に音声合成およびテキスト読み上げのサポートを追加して、さらに多くのユース ケースで音声合成を利用できるようにしました。 [クイック スタート](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=windowsinstall&pivots=programming-language-go)または Microsoft の[リファレンス ドキュメント](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go)を参照してください。
+- **C++/C#/Java/Python/Objective-C/Go**: 音声シンセサイザーで `connection` オブジェクトがサポートされるようになりました。 これは、音声サービスへの接続を管理および監視するのに役立ち、待機時間を短縮するための事前接続に特に役立ちます。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-lower-tts-latency)のドキュメントを参照してください。
+- **C++/C#/Java/Python/Objective-C/Go**: 音声合成の待機時間の問題を監視および診断できるように、`SpeechSynthesisResult` で待機時間とアンダーラン時間を公開するようにしました。 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesisresult)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisresult)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesisresult)、[Go](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go#readme-reference) のそれぞれの詳細を参照してください。 
+- **C++/C#/Java/Python/Objective-C/Go**: 性別に基づいて音声を選択しやすくするために、音声合成情報に Gender (性別) プロパティを追加しました。 これは、[GitHub イシュー #1055](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1055) に対応するものです。
+- **C++、C#、Java、JavaScript**: 特定のアカウントのすべての音声プロファイルのユーザー管理を容易するために、Speaker Recognition で `retrieveEnrollmentResultAsync`、`getAuthorizationPhrasesAsync`、`getAllProfilesAsync()` がサポートされるようになりました。 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.voiceprofileclient?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.voiceprofileclient?view=azure-java-stable)、[JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient?view=azure-node-latest) のそれぞれのドキュメントを参照してください。 これは、[GitHub イシュー #338](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/338) に対応するものです。
+- **JavaScript**: 接続エラーの再試行を追加しました。これにより、JavaScript ベースの音声アプリケーションの堅牢性が高まります。
+
+#### <a name="improvements"></a>機能強化
+
+- Linux および Android の Speech SDK バイナリは、最新バージョンの OpenSSL (1.1.1k) を使用するように更新されました。
+- コード サイズの改善:
+    - Language Understanding が別の "lu" ライブラリに分割されるようになりました。
+    - Windows x64 コア バイナリ サイズが 14.4% 減少しました。 
+    - Android ARM64 コア バイナリ サイズが 13.7% 減少しました。
+    - その他のコンポーネントもサイズが減少しました。
+
+#### <a name="bug-fixes"></a>バグの修正
+
+- **すべて**: ServiceTimeout の [GitHub イシュー #842](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/842) を修正しました。 このエラーで終了するサービスに接続しなくても、Speech SDK を使用して非常に長いオーディオ ファイルの文字起こしができるようになりました。 ただし、長いファイルに対しては、引き続き[バッチ文字起こし](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription)を使用することをお勧めします。
+- **C#** : [GitHub イシュー #947](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/947): 音声入力がないと、アプリが正常な状態でなくなる可能性がある問題を修正しました。 
+- **Java**: [GitHub イシュー #997](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/997): ネットワーク接続なしで DialogServiceConnector を使用したり、無効なサブスクリプション キーを使用すると、Java Speech SDK 1.16 がクラッシュする問題を修正しました。
+- (コンソール アプリで CTRL + C キーを使用するなどして) 音声認識を突然停止したときのクラッシュを修正しました。
+- **Java**: Java Speech SDK を使用しているときに、Windows 上の一時ファイルを削除する修正プログラムを追加しました。
+- **Java**: [GitHub イシュー #994](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/994): `DialogServiceConnector.stopListeningAsync` を呼び出すとエラーになる可能性がある問題を修正しました。 
+- **Java**: [仮想アシスタントのクイックスタート](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre/virtual-assistant)におけるお客様の問題を修正しました。
+- **JavaScript**: [GitHub イシュー #366](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/366): `ConversationTranslator` で "'this.cancelSpeech is not a function" (this.cancelSpeech は機能していません) というエラーがスローされる問題を修正しました。 
+- **JavaScript**: [GitHub イシュー #298](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/298): "結果をインメモリ ストリームとして取得する" のサンプルが大音量で再生される問題を修正しました。
+- **JavaScript**: [GitHub イシュー #350](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/350): `AudioConfig` を呼び出すと "ReferenceError: MediaStream is not defined" (MediaStream が定義されていません) という結果になる場合がある問題を修正しました。 
+- **JavaScript**: Node.js で長時間実行されているセッションに対する UnhandledPromiseRejection 警告を修正しました。
+
+#### <a name="samples"></a>サンプル
+
+- 更新された macOS 用の Unity サンプルのドキュメントは、[こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk)にあります。
+- Cognitive Services 音声認識サービスの React Native サンプルは、[こちら](https://github.com/microsoft/cognitive-services-sdk-react-native-example)から入手できます。
+
+## <a name="speech-cli-also-known-as-spx-2021-may-release"></a>Speech CLI (別名 SPX): 2021 年 5 月のリリース
+
+>[!NOTE]
+>[こちらで](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics) Azure Speech Service コマンド ライン インターフェイス (CLI) の使用を開始します。 CLI を使用すると、コードを記述しなくても Azure Speech Service を使用できます。
+
+#### <a name="new-features"></a>新機能
+
+- SPX で、プロファイル、スピーカー ID、話者認証がサポートされるようになりました - SPX コマンド ラインから `spx profile` と `spx speaker` を試してください。
+- また、ダイアログのサポートも追加しました - SPX コマンド ラインから `spx dialog` を試してください。
+- SPX は機能強化に役立ちます。 [GitHub イシュー](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)を開いて、これがどのように機能しているかについてのフィードバックをお寄せください。
+- SPX .NET ツールのインストールのサイズを減らしました。
+
+**COVID-19 の影響によるテストの短縮**:
+
+パンデミックが続いており、エンジニアは自宅で作業する必要があるため、パンデミック前の手動検証スクリプトは大幅に削減されています。 テスト対象のデバイスと構成が少なくなっており、環境固有のバグが漏れる可能性が高くなる場合があります。 大きな自動化のセットを使用して、厳格な検証をまだ行っています。 しかし、もし仮に何らかの問題が発生した場合には、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) にてお知らせください。<br>
+皆様の健康をお祈りします！
 
 ## <a name="text-to-speech-2021-april-release"></a>テキスト読み上げの 2021 年 4 月のリリース
 
@@ -55,18 +135,18 @@ ms.locfileid: "107905812"
 
 #### <a name="new-features"></a>新機能
 
-- **C++/C#/Java/Python**: 最新バージョンの GStreamer (1.18.3) に移行し、Windows、Linux、および Android のあらゆるメディア形式の文字起こしのサポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)のドキュメントを参照してください。
-- **C++、C#、Java、Objective-C、Python**: 圧縮された TTS または合成オーディオのデコードのサポートが SDK に追加されました。 出力オーディオ形式を PCM に設定し、システムで GStreamer を使用できる場合、SDK は圧縮されたオーディオをサービスに自動的に要求して、帯域幅を節約し、クライアントのオーディオをデコードします。 `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` を `false` に設定し、この機能を無効にできます。 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.propertyid?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.propertyid?view=azure-java-stable)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxpropertyid)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid?view=azure-python) の詳細。
-- **JavaScript**: Node.js ユーザーが [`AudioConfig.fromWavFileInput` API](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_) を使用できるようになりました。 これは、[GitHub イシュー #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252) に対応するものです。
-- **C++、C#、Java、Objective-C、Python**: 利用可能なすべての合成音声を返す、TTS 用の `GetVoicesAsync()` メソッドが追加されました。 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet#methods)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable#methods)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoiceasync)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python#methods) の詳細。
-- **C++/C#/Java/JavaScript/Objective-C/Python**: 同期口形素アニメーションを返す TTS または音声合成用に `VisemeReceived` イベントが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme)のドキュメントを参照してください。
-- **C++/C#/Java/JavaScript/Objective-C/Python**: TTS 用に `BookmarkReached` イベントが追加されました。 入力 SSML でブックマークを設定し、各ブックマークのオーディオ オフセットを取得することができます。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element)のドキュメントを参照してください。
-- **Java**: Speaker Recognition API のサポートが追加されました。 詳細については、[こちら](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-java-stable) を参照してください。
-- **C++/C#/Java/JavaScript/Objective-C/Python**: TTS 用 WebM コンテナー (Webm16Khz16BitMonoOpus および Webm24Khz16BitMonoOpus) の 2 つの新しい出力オーディオ形式が追加されました。 これらは、Opus コーデックを使用したオーディオのストリーミングに適した形式です。 Details for [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-java-stable)、[JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-python) の詳細。
-- **C++、C#、Java**: 話者認識シナリオの音声プロファイルを取得するためのサポートが追加されました。 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerrecognizer)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer?view=azure-java-stable) の詳細。
+- **C++/C#/Java/Python**: 最新バージョンの GStreamer (1.18.3) に移行し、Windows、Linux、および Android のあらゆるメディア形式の文字起こしのサポートが追加されました。 [こちら](how-to-use-codec-compressed-audio-input-streams.md)のドキュメントを参照してください。
+- **C++、C#、Java、Objective-C、Python**: 圧縮された TTS または合成オーディオのデコードのサポートが SDK に追加されました。 出力オーディオ形式を PCM に設定し、システムで GStreamer を使用できる場合、SDK は圧縮されたオーディオをサービスに自動的に要求して、帯域幅を節約し、クライアントのオーディオをデコードします。 `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` を `false` に設定し、この機能を無効にできます。 [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.propertyid)、[Java](/java/api/com.microsoft.cognitiveservices.speech.propertyid)、[Objective-C](/objectivec/cognitive-services/speech/spxpropertyid)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid) の詳細。
+- **JavaScript**: Node.js ユーザーが [`AudioConfig.fromWavFileInput` API](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig#fromWavFileInput_File_) を使用できるようになりました。 これは、[GitHub イシュー #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252) に対応するものです。
+- **C++、C#、Java、Objective-C、Python**: 利用可能なすべての合成音声を返す、TTS 用の `GetVoicesAsync()` メソッドが追加されました。 [C++](/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer#methods)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer#methods)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoiceasync)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#methods) の詳細。
+- **C++/C#/Java/JavaScript/Objective-C/Python**: 同期口形素アニメーションを返す TTS または音声合成用に `VisemeReceived` イベントが追加されました。 [こちら](/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme)のドキュメントを参照してください。
+- **C++/C#/Java/JavaScript/Objective-C/Python**: TTS 用に `BookmarkReached` イベントが追加されました。 入力 SSML でブックマークを設定し、各ブックマークのオーディオ オフセットを取得することができます。 [こちら](/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element)のドキュメントを参照してください。
+- **Java**: Speaker Recognition API のサポートが追加されました。 詳細については、[こちら](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer) を参照してください。
+- **C++/C#/Java/JavaScript/Objective-C/Python**: TTS 用 WebM コンテナー (Webm16Khz16BitMonoOpus および Webm24Khz16BitMonoOpus) の 2 つの新しい出力オーディオ形式が追加されました。 これらは、Opus コーデックを使用したオーディオのストリーミングに適した形式です。 Details for [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat), [C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat), [Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat) の詳細。
+- **C++、C#、Java**: 話者認識シナリオの音声プロファイルを取得するためのサポートが追加されました。 [C++](/cpp/cognitive-services/speech/speakerrecognizer)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speakerrecognizer)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer) の詳細。
 - **C++、C#、Java、Objective-C、Python**: オーディオ マイクとスピーカー コントロール用の別個の共有ライブラリのサポートが追加されました。 これにより、必要なオーディオ ライブラリの依存関係がない環境で、SDK を使用できるようになります。
 - **Objective-C/Swift**: アンブレラ ヘッダーを持つモジュール フレームワークのサポートが追加されました。 これにより、iOS/Mac Objective-C/Swift アプリで Speech SDK をモジュールとしてインポートできます。 これは、[GitHub イシュー #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452) に対応するものです。
-- **Python**: [Python 3.9](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) のサポートが追加され、Python の [3.5 のサポート終了](https://devguide.python.org/devcycle/#end-of-life-branches)に伴って Python 3.5 のサポートが停止しました。
+- **Python**: [Python 3.9](/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) のサポートが追加され、Python の [3.5 のサポート終了](https://devguide.python.org/devcycle/#end-of-life-branches)に伴って Python 3.5 のサポートが停止しました。
 
 **既知の問題**
 
@@ -75,7 +155,7 @@ ms.locfileid: "107905812"
 #### <a name="improvements"></a>機能強化
 
 - Speech SDK のメモリ使用量とディスク フットプリントを削減するための複数リリースの取り組みの一環として、Android バイナリのサイズが 3% から 5% 小さくなりました。
-- C# リファレンス ドキュメント ([こちら](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)を参照) の精度、読みやすさ、および関連項目のセクションが改善されました。
+- C# リファレンス ドキュメント ([こちら](/dotnet/api/microsoft.cognitiveservices.speech)を参照) の精度、読みやすさ、および関連項目のセクションが改善されました。
 
 #### <a name="bug-fixes"></a>バグの修正
 
@@ -95,7 +175,7 @@ ms.locfileid: "107905812"
 ## <a name="speech-cli-also-known-as-spx-2021-march-release"></a>Speech CLI (別名 SPX): 2021 年 3 月のリリース
 
 > [!NOTE]
-> [こちらで](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics) Azure Speech Service コマンド ライン インターフェイス (CLI) の使用を開始します。 CLI を使用すると、コードを記述しなくても Azure Speech Service を使用できます。
+> [こちらで](spx-basics.md) Azure Speech Service コマンド ライン インターフェイス (CLI) の使用を開始します。 CLI を使用すると、コードを記述しなくても Azure Speech Service を使用できます。
 
 #### <a name="new-features"></a>新機能
 
@@ -114,7 +194,7 @@ ms.locfileid: "107905812"
 
 **カスタム ニューラル音声の GA**
 
-カスタム ニューラル音声は、2 月に次の 13 言語で一般提供されています。中国語 (標準、簡体字)、英語 (オーストラリア)、英語 (インド)、英語 (英国)、英語 (米国)、フランス語 (カナダ)、フランス語 (フランス)、ドイツ語 (ドイツ)、イタリア語 (イタリア)、日本語 (日本)、韓国語 (韓国)、ポルトガル語 (ブラジル)、スペイン語 (メキシコ)、スペイン語 (スペイン)。 [カスタム ニューラル音声とは何か](custom-neural-voice.md)と、[責任を持ってそれを使用する方法](concepts-guidelines-responsible-deployment-synthetic.md)について詳細を確認してください。 カスタム ニューラル音声機能の利用には登録が必要です。Microsoft の適格性基準に基づき、Microsoft がアクセスを制限することがあります。 [制限付きアクセス](https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context)の詳細を確認してください。  
+カスタム ニューラル音声は、2 月に次の 13 言語で一般提供されています。中国語 (標準、簡体字)、英語 (オーストラリア)、英語 (インド)、英語 (英国)、英語 (米国)、フランス語 (カナダ)、フランス語 (フランス)、ドイツ語 (ドイツ)、イタリア語 (イタリア)、日本語 (日本)、韓国語 (韓国)、ポルトガル語 (ブラジル)、スペイン語 (メキシコ)、スペイン語 (スペイン)。 [カスタム ニューラル音声とは何か](custom-neural-voice.md)と、[責任を持ってそれを使用する方法](concepts-guidelines-responsible-deployment-synthetic.md)について詳細を確認してください。 カスタム ニューラル音声機能の利用には登録が必要です。Microsoft の適格性基準に基づき、Microsoft がアクセスを制限することがあります。 [制限付きアクセス](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context)の詳細を確認してください。  
 
 ## <a name="speech-sdk-1150-2021-january-release"></a>Speech SDK 1.15.0: 2021 年 1 月のリリース
 
@@ -516,7 +596,7 @@ SPX は、コードを記述せずに Azure 音声サービスを使用するた
 **新機能**
 - **Go**: [音声認識](./get-started-speech-to-text.md?pivots=programming-language-go)と [カスタム音声アシスタント](./quickstarts/voice-assistants.md?pivots=programming-language-go)のための新しい Go 言語サポート。 開発環境を[ここで](./quickstarts/setup-platform.md?pivots=programming-language-go)セットアップします。 サンプル コードについては、以下の「サンプル」セクションを参照してください。 
 - **JavaScript**:音声合成のためのブラウザー サポートを追加しました。 [こちら](./get-started-text-to-speech.md?pivots=programming-language-JavaScript)のドキュメントを参照してください。
-- **C++、C#、Java**:新しい `KeywordRecognizer` オブジェクトと API が Windows、Android、Linux、および iOS プラットフォームでサポートされました。 [こちら](./custom-keyword-overview.md)のドキュメントをお読みください。 サンプル コードについては、以下の「サンプル」セクションを参照してください。 
+- **C++、C#、Java**:新しい `KeywordRecognizer` オブジェクトと API が Windows、Android、Linux、および iOS プラットフォームでサポートされました。 [こちら](./keyword-recognition-overview.md)のドキュメントをお読みください。 サンプル コードについては、以下の「サンプル」セクションを参照してください。 
 - **Java**: 翻訳サポートを含むマルチデバイスの会話機能を追加しました。 [こちら](/java/api/com.microsoft.cognitiveservices.speech.transcription)の参照ドキュメントを参照してください。
 
 **強化および最適化**

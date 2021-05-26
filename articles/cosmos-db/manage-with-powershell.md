@@ -5,18 +5,18 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 04/25/2021
+ms.date: 05/13/2021
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: f967c5b40facbcbfe21ae87ae962241632135c34
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 650c68ae6c0bbfa36a69f87cc0d0809dbf864fae
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228205"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097986"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理する
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 以下のガイドでは、PowerShell を使用して、Cosmos アカウント、データベース、コンテナー、スループットなど、Azure Cosmos DB Core (SQL) API リソースの管理をスクリプト処理および自動化する方法について説明します。 他の API 用の PowerShell コマンドレットについては、[Cassandra 用の PowerShell サンプル](powershell-samples-cassandra.md)、[MongoDB API 用の PowerShell サンプル](powershell-samples-mongodb.md)、[Gremlin 用の PowerShell サンプル](powershell-samples-gremlin.md)、[Table 用の PowerShell サンプル](powershell-samples-table.md)に関する記述を参照してください。
 

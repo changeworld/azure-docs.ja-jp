@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: e88925743422e5bc3b58efc0e501a203a84288cf
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 127ce4aceff536ef8ce4d2a988a26070ef06b6ec
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787121"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078412"
 ---
 開いている [Azure Cloud Shell](https://shell.azure.com) ウィンドウで Azure Digital Twins の使用を開始するには、最初にログインし、このセッションのサブスクリプションにシェル コンテキストを設定します。 Cloud Shell でこれらのコマンドを実行します。
 
@@ -27,7 +27,7 @@ az account set --subscription "<your-Azure-subscription-ID>"
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-次に、[Azure CLI 用の Microsoft Azure IoT 拡張機能](/cli/azure/service-page/azure%20iot)を Cloud Shell に追加し、Azure Digital Twins およびその他の IoT サービスと対話するためのコマンドを有効にします。 このコマンドを実行して、最新バージョンの拡張機能がインストールされていることを確認します。
+次に、[Azure CLI 用の Microsoft Azure IoT 拡張機能](/cli/azure/service-page/azure%20iot?view=azure-cli-latest&preserve-view=true)を Cloud Shell に追加し、Azure Digital Twins およびその他の IoT サービスと対話するためのコマンドを有効にします。 このコマンドを実行して、最新バージョンの拡張機能がインストールされていることを確認します。
 
 ```azurecli-interactive
 az extension add --upgrade --name azure-iot

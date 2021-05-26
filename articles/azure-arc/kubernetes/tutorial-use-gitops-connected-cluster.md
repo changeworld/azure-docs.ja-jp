@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: 66d00ae738cc693d46f1df333ce64accea4b12a8
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b6b15d39616db88af9c8ccebd1d739c734a714c8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883942"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373159"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>チュートリアル: GitOps を使用して Azure Arc 対応 Kubernetes クラスターに構成をデプロイする 
 
@@ -149,7 +149,7 @@ Flux オペレーターは、SSH 接続を確立する前に Git リポジトリ
 >[!NOTE]
 >* Helm オペレーター チャートのバージョン 1.2.0 以上では、HTTPS Helm リリースのプライベート認証をサポートしています。
 >* HTTPS Helm リリースは、AKS マネージド クラスターではサポートされていません。
->* Flux でプロキシを介して Git リポジトリにアクセスする必要がある場合は、Azure Arc エージェントのプロキシ設定を更新する必要があります。 詳細については、「[送信プロキシ サーバーを使用して接続する](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server)」を参照してください。
+>* Flux でプロキシを介して Git リポジトリにアクセスする必要がある場合は、Azure Arc エージェントのプロキシ設定を更新する必要があります。 詳細については、「[送信プロキシ サーバーを使用して接続する](./quickstart-connect-cluster.md#5-connect-using-an-outbound-proxy-server)」を参照してください。
 
 
 ## <a name="additional-parameters"></a>追加のパラメーター

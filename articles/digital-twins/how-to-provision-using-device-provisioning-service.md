@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 30419579dab90af07efcea38592d783f1a1d8e00
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 91a204015f24bafad27a83d7c65be3b7c04807e7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786953"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078294"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Device Provisioning Service (DPS) を使用して Azure Digital Twins でデバイスを自動管理する
 
@@ -330,7 +330,7 @@ az dt twin show --dt-name <Digital Twins instance name> --twin-id "<Device Regis
 
 この記事で作成したリソースがもう必要ない場合は、次の手順に従って削除します。
 
-Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/cli/azure/group#az_group_delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、イベント ハブ名前空間と両方の Azure Functions アプリが、ストレージなどの関連するリソースを含めて削除されます。
+Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、イベント ハブ名前空間と両方の Azure Functions アプリが、ストレージなどの関連するリソースを含めて削除されます。
 
 > [!IMPORTANT]
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
