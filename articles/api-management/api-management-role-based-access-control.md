@@ -11,15 +11,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 05/18/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ef71591d6d5a26aa737db4e7cb547c8b2c39d92a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 407defa76b5677e3e5136a5e28a64eb4a78c3cd2
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812176"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191224"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Azure API Management でロールベースのアクセス制御を使用する方法
 
@@ -38,14 +38,10 @@ API Management には、現在、組み込みロールが 3 つ提供されて�
 | API Management Service Contributor | ✓ | ✓ | ✓ | ✓ | スーパー ユーザー。 API Management のサービスとエンティティ (API やポリシーなど) への完全な CRUD アクセス権がある。 以前のパブリッシャー ポータルにアクセスできる。 |
 | API Management サービス リーダー | ✓ | | || API Management のサービスとエンティティへの読み取り専用アクセスがある。 |
 | API Management サービス オペレーター | ✓ | | ✓ | | API Management サービスは管理できるが、エンティティの管理はできない。|
-| API Management サービス エディター<sup>*</sup> | ✓ | ✓ | |  | API Management エンティティは管理できるが、サービスは管理できない。|
-| API Management コンテンツ マネージャー<sup>*</sup> | ✓ | | | ✓ | 開発者ポータルを管理できる。 サービスおよびエンティティへの読み取り専用アクセス。|
 
 <sup>[1] API Management サービスとエンティティ (API やポリシーなど) への読み取りアクセス</sup>
 
 <sup>[2] 次の操作以外の API Management サービスとエンティティへの書き込みアクセス: インスタンスの作成、削除、およびスケーリング、VPN 構成、カスタム ドメインのセットアップ</sup>
-
-<sup>\* 既存の発行者ポータルから Azure ポータルへすべての管理者 UI を移行すると、サービス エディターのロールが利用可能になります。コンテンツ マネージャー ロールは、発行者ポータルが開発者ポータルの管理に関連する特定の機能のみを含むようリファクタリングされた後、利用可能になります。</sup>  
 
 ## <a name="custom-roles"></a>カスタム ロール
 

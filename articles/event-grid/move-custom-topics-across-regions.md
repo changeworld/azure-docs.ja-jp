@@ -4,12 +4,12 @@ description: この記事では、Azure Event Grid カスタム トピックを�
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
-ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a8e4283b0b9ed2a6bb7080e9a0fa05bf8f409cc
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89145343"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472217"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Azure Event Grid カスタム トピックを別のリージョンに移動する
 さまざまな理由により、リソースを別のリージョンに移動する場合があります。 たとえば、新しい Azure リージョンを利用するため、内部ポリシーとガバナンスの要件を満たすため、または容量計画の要件に応じるためです。 
@@ -106,7 +106,6 @@ Azure portal を使用して、カスタム トピックを含むリソース �
 Azure Event Grid カスタム トピックをあるリージョンから別のリージョンに移動する方法について学習しました。 リージョン間でシステム トピック、ドメイン、およびパートナー名前空間を移動するには、次の記事を参照してください。
 
 - [リージョン間でシステム トピックを移動する](move-system-topics-across-regions.md)。 
-- [リージョン間でドメインを移動する](move-domains-across-regions.md)。 
-- [リージョン間でパートナー名前空間を移動する](move-partner-namespaces-across-regions.md)。
+- [リージョン間でのドメインの移動](move-domains-across-regions.md)。 
 
 リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)」という記事を参照してください。

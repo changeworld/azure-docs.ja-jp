@@ -1,6 +1,6 @@
 ---
 title: 認証トークンをキャッシュする
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: この記事では、認証トークンをキャッシュする方法について説明します。
 author: metanMSFT
 manager: guillasi
@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.author: metang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e79ae3914e32038e2823fb37e3eee658c95e0003
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 765534813a8fe483268778add70cdc537eea29ee
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608769"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377817"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>認証トークンをキャッシュする方法
 

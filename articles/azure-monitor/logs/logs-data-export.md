@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: 0547e6dbdddc5533642145e6a54a20d29ae240d1
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 827e860c0b25945339a9e1640b94863697e04f88
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109518380"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377143"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -33,11 +33,11 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 
 ## <a name="limitations"></a>制限事項
 
-- 構成は、現在、CLI または REST 要求を使用して行うことができます。 Azure portal または PowerShell はまだサポートされていません。
-- CLI と REST の ```--export-all-tables``` オプションはサポートされていないため、削除されます。 エクスポート ルールでテーブルの一覧を明示的に指定する必要があります。
-- 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションに記載されているものに限定されています。 たとえば、カスタム ログ テーブルは現在サポートされていません。
+- 現在、構成は CLI または REST 要求を使用して行うことができます。 Azure portal または PowerShell はまだサポートされていません。
+- CLI と REST の `--export-all-tables` オプションはサポートされていないため、削除されます。 エクスポート ルールでテーブルの一覧を明示的に指定する必要があります。
+- 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションで指定されているものに限られます。 たとえば、現在、カスタム ログ テーブルはサポートされていません。
 - サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはテーブルがサポートされるまでエクスポートされません。 
-- 存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace``` エラーで失敗します。
+- 存在しないテーブルがデータ エクスポート ルールに含まれている場合、`Table <tableName> does not exist in the workspace` エラーで失敗します。
 - データのエクスポートはすべてのリージョンで利用できるようになる予定ですが、現在は Azure Government リージョン、西日本、ブラジル南東部、ノルウェー東部、ノルウェー西部、アラブ首長国連邦北部、アラブ首長国連邦中部、オーストラリア中部 2、スイス北部、スイス西部、ドイツ中西部、インド南部、フランス南部、西日本では利用できません
 - ワークスペースでは、最大で 10 個のルールを定義できます。 追加の規則は許可されますが、無効の状態になります。 
 - エクスポート先は、ワークスペース内のすべてのエクスポート ルールごとに一意である必要があります。
@@ -70,11 +70,11 @@ Log Analytics のデータ エクスポートでは、時間ベースのアイ�
 > ['Basic' および 'Standard' 名前空間レベルごとにサポートされるイベント ハブの数は 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers) です。 10 を超えるテーブルをエクスポートする場合は、複数のエクスポート ルール間でテーブルを別のイベント ハブ名前空間に分割するか、エクスポート ルールでイベントハブ名を指定して、すべてのテーブルをそのイベント ハブにエクスポートします。
 
 考慮事項:
-1. イベント ハブの "Basic" レベルでは、低い[イベント サイズ](../../event-hubs/event-hubs-quotas.md)がサポートされるため、ワークスペース内の一部のログがこのサイズを超えてしまい、ドロップされる可能性があります。 "Standard" または "Dedicated" イベント ハブをエクスポート先として使用することをお勧めします。
+1. "Basic" イベント ハブ SKU では、サポートされるイベント サイズ[制限](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers)が低く、ワークスペースの一部のログはそれを超過し、削除される可能性があります。 エクスポート先としては、"Standard" または "Dedicated" のイベント ハブを使用することをお勧めします。
 2. 多くの場合、エクスポートされるデータの量は時間の経過と共に増加します。そのため、より高い転送速度を処理し、調整シナリオやデータ待ち時間を回避するために、イベント ハブのスケールを拡大する必要があります。 Event Hubs の自動インフレ機能を使用して、自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たす必要があります。 詳細については、「[Azure Event Hubs のスループット ユニットを自動的にスケールアップする](../../event-hubs/event-hubs-auto-inflate.md)」参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-Log Analytics のデータ エクスポートを構成する前に、次の前提条件が揃っている必要があります。
+Log Analytics のデータ エクスポートを構成する前に、次の前提条件が満たされている必要があります。
 
 - エクスポート先は、エクスポート ルールの構成の前に作成し、Log Analytics ワークスペースと同じリージョンに配置する必要があります。 対象のデータを他のストレージ アカウントにレプリケートする必要がある場合は、[Azure Storage の冗長性オプション](../../storage/common/storage-redundancy.md)のいずれかを使用できます。  
 - ストレージ アカウントは StorageV1 または StorageV2 である必要があります。 従来のストレージはサポートされていません  
@@ -121,7 +121,7 @@ find where TimeGenerated > ago(24h) | distinct Type
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -397,7 +397,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -429,7 +429,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -476,7 +476,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -508,7 +508,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -543,7 +543,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 
 ## <a name="supported-tables"></a>サポート対象のテーブル
-サポート対象のテーブルは、現在、以下に記載されているものに限定されています。 制限事項が指定されている場合を除き、テーブルのすべてのデータがエクスポートされます。 この一覧は、その他のテーブルのサポートが追加されると更新されます。
+サポート対象のテーブルは、現在、以下で指定されているものに限られます。 制限事項が指定されている場合を除き、テーブルのすべてのデータがエクスポートされます。 この一覧は、その他のテーブルのサポートが追加されると更新されます。
 
 
 | テーブル | 制限事項 |
