@@ -5,18 +5,18 @@ services: active-directory
 author: barclayn
 manager: daveba
 editor: ''
-ms.service: identity
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 04b36b9b32e78016f693e61d40246776492be0e3
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 6f124c6bb0dccb2fb1f8d808932ac9f8775f7f7e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222862"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466288"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Azure Active Directory Verifiable Credentials (プレビュー) の概要
 

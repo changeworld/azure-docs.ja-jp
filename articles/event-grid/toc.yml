@@ -1,5 +1,7 @@
 - name: Azure Event Grid のドキュメント
   href: index.yml
+- name: Kubernetes の Event Grid のドキュメントに切り替える
+  href: kubernetes/index.yml
 - name: IoT Edge の Event Grid のドキュメントに切り替える
   href: edge/pub-sub-events-webhook-local.md
 - name: 概要
@@ -268,8 +270,6 @@
           href: move-custom-topics-across-regions.md
         - name: リージョン間でのドメインの移動
           href: move-domains-across-regions.md
-        - name: リージョン間でのパートナー名前空間の移動
-          href: move-partner-namespaces-across-regions.md
     - name: セキュリティで保護
       items:
         - name: プライベート リンクを介してイベントを安全に公開する

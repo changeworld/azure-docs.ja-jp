@@ -9,7 +9,7 @@
         - name: ワークロードを移行する
           tocHref: /azure/migrate/
           topicHref: /azure/azure-vmware/
-        - name: サイト復元
+        - name: Azure Site Recovery
           tocHref: /azure/site-recovery/
           topicHref: /azure/azure-vmware/
         - name: Azure Backup Server

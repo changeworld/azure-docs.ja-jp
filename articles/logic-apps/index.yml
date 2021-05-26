@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 03/24/2021
-  ms.openlocfilehash: 55f2be9b738e91c076d918cf19ddd5d55d445e20
-  ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+  ms.openlocfilehash: e49682f79efb102ccf71a184b77b74e0c6df3fbc
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/28/2021
-  ms.locfileid: "108204965"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110372983"
 landingContent:
 - title: Azure Logic Apps について
   linkLists:
@@ -23,17 +23,15 @@ landingContent:
     links:
     - text: Azure Logic Apps とは
       url: logic-apps-overview.md
+    - text: シングルテナントとマルチテナント、および統合サービス環境
+      url: single-tenant-overview-compare.md
+    - text: Azure Arc 対応 Logic Apps とは
+      url: azure-arc-enabled-logic-apps-overview.md
   - linkListType: concept
     links:
     - text: Azure Logic Apps のコネクタの概要
       url: ../connectors/apis-list.md
-    - text: マネージド コネクタ
-      url: ../connectors/managed.md
-    - text: Azure Logic Apps の使用可能なコネクタ
-      url: /connectors/connector-reference/connector-reference-logicapps-connectors
-    - text: 組み込みのトリガーとアクション
-      url: ../connectors/built-in.md
-    - text: 定期的なワークフローをスケジュール設定する
+    - text: ワークフローの繰り返しスケジュール
       url: concepts-schedule-automated-recurring-tasks-workflows.md
     - text: B2B エンタープライズ統合
       url: logic-apps-enterprise-integration-overview.md
@@ -157,6 +155,8 @@ landingContent:
       url: logic-apps-limits-and-config.md
     - text: 価格モデル
       url: logic-apps-pricing.md
+    - text: Azure Logic Apps の使用可能なコネクタ リファレンス
+      url: /connectors/connector-reference/connector-reference-logicapps-connectors
     - text: ワークフロー定義言語スキーマ
       url: logic-apps-workflow-definition-language.md
     - text: Azure PowerShell

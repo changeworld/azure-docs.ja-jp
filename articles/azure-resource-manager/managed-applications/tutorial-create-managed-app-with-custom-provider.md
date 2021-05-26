@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3765229fccb00f6e19fd3cf2b6b1a39919abcf05
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2270d9569f2638cd08e81e26cff4a4605011ffbb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321809"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070140"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>チュートリアル:カスタム アクションおよびリソースを備えたマネージド アプリケーションを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "108321809"
 
 このチュートリアルでは、マネージド アプリケーションを作成します。アプリケーションのマネージド リソース グループには、カスタム プロバイダー インスタンス、ストレージ アカウント、関数を含めます。 この例で使用する Azure 関数は、アクションとリソースに関するカスタム プロバイダーの操作を処理する API を実装するものです。 Azure ストレージ アカウントは、カスタム プロバイダー リソースの基本ストレージとして使用されます。
 
-マネージド アプリケーション インスタンスの作成に必要なこのユーザー インターフェイス定義ファイルには、`funcname` と `storagename` という入力要素があります。 ストレージ アカウント名と関数名はグローバルに一意である必要があります。 既定では、関数ファイルは [サンプル関数パッケージ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)からデプロイされますが、*createUiDefinition.json* 内にパッケージ リンクの入力要素を追加することでこれを変更できます。
+マネージド アプリケーション インスタンスの作成に必要なこのユーザー インターフェイス定義ファイルには、`funcname` と `storagename` という入力要素があります。 ストレージ アカウント名と関数名はグローバルに一意である必要があります。 既定では、関数ファイルは [サンプル関数パッケージ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.customproviders/custom-rp-with-function/artifacts/functionzip)からデプロイされますが、*createUiDefinition.json* 内にパッケージ リンクの入力要素を追加することでこれを変更できます。
 
 ```json
 {
@@ -67,7 +67,7 @@ ms.locfileid: "108321809"
 {
   "name": "zipFileBlobUri",
   "type": "Microsoft.Common.TextBox",
-  "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
+  "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.customproviders/custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
   "label": "The Uri to the uploaded function zip file",
   "toolTip": "The Uri to the uploaded function zip file",
   "visible": true
@@ -185,7 +185,7 @@ ms.locfileid: "108321809"
 * mainTemplate.json
 * viewDefinition.json
 
-ファイルはいずれも、ルート レベルに配置する必要があります。 アーティファクトが入ったパッケージは、GitHub BLOB や Azure ストレージ アカウント BLOB などの任意のストレージに格納できます。 アプリケーション パッケージをストレージ アカウントにアップロードするスクリプトは次のとおりです。 
+ファイルはいずれも、ルート レベルに配置する必要があります。 アーティファクトが入ったパッケージは、GitHub BLOB や Azure ストレージ アカウント BLOB などの任意のストレージに格納できます。 アプリケーション パッケージをストレージ アカウントにアップロードするスクリプトは次のとおりです。
 
 ```powershell
 $resourceGroup="appResourcesGroup"
@@ -210,7 +210,7 @@ Set-AzStorageBlobContent `
   -File "path_to_your_zip_package" `
   -Container appcontainer `
   -Blob app.zip `
-  -Context $ctx 
+  -Context $ctx
 
 # Get blob absolute uri
 $blobUri=(Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx).ICloudBlob.uri.AbsoluteUri
@@ -248,8 +248,8 @@ az managedapp definition create \
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**マネージド アプリケーション センター**」と入力し、選択します。
-2. **[Managed Applications Center]\(マネージド アプリケーション センター\)** 上で **[サービス カタログ アプリケーション定義]** を選択し、 **[追加]** をクリックします。 
-    
+2. **[Managed Applications Center]\(マネージド アプリケーション センター\)** 上で **[サービス カタログ アプリケーション定義]** を選択し、 **[追加]** をクリックします。
+
     ![サービス カタログの追加](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
 
 3. サービス カタログの定義を作成するための値を指定します。
@@ -304,7 +304,7 @@ az managedapp create \
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**マネージド アプリケーション センター**」と入力し、選択します。
-2. **[Managed Applications Center]\(マネージド アプリケーション センター\)** 上で **[サービス カタログ アプリケーション]** を選択し、 **[追加]** をクリックします。 
+2. **[Managed Applications Center]\(マネージド アプリケーション センター\)** 上で **[サービス カタログ アプリケーション]** を選択し、 **[追加]** をクリックします。
 
     ![マネージド アプリケーションの追加](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
 
@@ -319,8 +319,8 @@ az managedapp create \
 
     ![アプリケーションの設定](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
 
-5. 検証に合格したら、 **[OK]** をクリックしてマネージド アプリケーションのインスタンスをデプロイします。 
-    
+5. 検証に合格したら、 **[OK]** をクリックしてマネージド アプリケーションのインスタンスをデプロイします。
+
     ![マネージド アプリケーションのデプロイ](./media/tutorial-create-managed-app-with-custom-provider/deploy-managed-application.png)
 
 ---
@@ -349,7 +349,7 @@ az managedapp create \
 
 ## <a name="looking-for-help"></a>ヘルプを探しています
 
-Azure Managed Applications に関して不明な点がある場合には、azure-managed-app というタグを使用して [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) で質問するか、azure-managed-application というタグを使用して [Microsoft Q&A](/answers/topics/azure-managed-applications.html) で質問してみてください。 同様の質問が既に質問され回答されているため、投稿する前にまず確認してください。 回答が得られるまでの時間を短縮するために、それぞれのタグを使用してください。 
+Azure Managed Applications に関して不明な点がある場合には、azure-managed-app というタグを使用して [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) で質問するか、azure-managed-application というタグを使用して [Microsoft Q&A](/answers/topics/azure-managed-applications.html) で質問してみてください。 同様の質問が既に質問され回答されているため、投稿する前にまず確認してください。 回答が得られるまでの時間を短縮するために、それぞれのタグを使用してください。
 
 ## <a name="next-steps"></a>次のステップ
 

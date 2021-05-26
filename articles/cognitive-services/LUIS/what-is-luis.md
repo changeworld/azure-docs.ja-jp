@@ -5,14 +5,14 @@ keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 04/16/2021
+ms.date: 05/17/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3a7484269f16cc55fa16597e74b1d0671d16d980
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d48d80170e3f1b9db83e12b34610a8b6736f42ca
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290598"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095826"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -49,7 +49,7 @@ Language Understanding (LUIS) は、カスタムの機械学習インテリジ�
 -   **計画**: ユーザーがアプリケーションを使用する可能性のあるシナリオを識別します。 認識する必要があるアクションと関連情報を定義します。
 -   **作成**: お使いの作成リソースを使用してアプリを開発します。 [意図](luis-concept-intent.md)と[エンティティ](luis-concept-entity-types.md)を定義することから始めます。 次に、各意図のトレーニング用の[発話](luis-concept-utterance.md)を追加します。 
 -   **テストと改善**: 他の発話でモデルのテストを開始して、アプリの動作を把握し、改善が必要かどうかを判断することができます。 これらの[ベスト プラクティス](luis-concept-best-practices.md)に従うことで、アプリケーションを改善できます。 
--   **公開**: 予測用にアプリをデプロイし、予測リソースを使用してエンドポイントに対してクエリを実行します。 作成および予測リソースの詳細については、[こちら](luis-how-to-azure-subscription.md#luis-resources)を参照してください。 
+-   **公開**: 予測用にアプリをデプロイし、予測リソースを使用してエンドポイントに対してクエリを実行します。 作成および予測リソースの詳細については、[こちら](luis-how-to-azure-subscription.md)を参照してください。 
 -   **接続**: [Microsoft Bot Framework](/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)、[音声サービス](../speech-service/get-started-intent-recognition.md)などの他のサービスに接続します。 
 -   **調整**: [エンドポイントの発話を確認](luis-concept-review-endpoint-utterances.md)し、実際の例を使用してアプリケーションを改善します
 

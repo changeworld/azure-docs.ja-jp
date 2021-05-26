@@ -3,12 +3,12 @@ title: Azure VM で Azure Arc 対応サーバーを評価する方法
 description: Azure 仮想マシンを使用して Azure Arc 対応サーバーを評価する方法について説明します。
 ms.date: 05/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3c8318775c37c8cb3ed8171c00666bbcdd280a9c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 1e49b2d29b21f6ded72d1b22e946743f27e7d160
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486073"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109837837"
 ---
 # <a name="evaluate-arc-enabled-servers-on-an-azure-virtual-machine"></a>Azure 仮想マシンで Arc 対応サーバーを評価する
 
@@ -19,8 +19,8 @@ Azure Arc 対応サーバーは、オンプレミスまたは他のクラウド�
 ## <a name="prerequisites"></a>前提条件
 
 * お使いのアカウントが、[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロールに割り当てられている。
-* Azure 仮想マシンで、[Arc 対応サーバーによってサポートされているオペレーティング システム](agent-overview.md#supported-operating-systems)が実行されている。 Azure VM がない場合は、[単純な Windows VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json) または[単純な Ubuntu Linux 18.04 LTS VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json) をデプロイできます。
-* Windows の場合は [Microsoft ダウンロード センター](https://aka.ms/AzureConnectedMachineAgent)から、Linux の場合は Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)から Azure Connected Machine エージェント パッケージをダウンロードするために、Azure VM から送信方向に通信できる。 IT セキュリティ ポリシーに従ってインターネットへの送信接続が制限されている場合は、エージェント パッケージを手動でダウンロードし、Azure VM 上のフォルダーにコピーする必要があります。 
+* Azure 仮想マシンで、[Arc 対応サーバーによってサポートされているオペレーティング システム](agent-overview.md#supported-operating-systems)が実行されている。 Azure VM がない場合は、[単純な Windows VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json) または[単純な Ubuntu Linux 18.04 LTS VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json) をデプロイできます。
+* Windows の場合は [Microsoft ダウンロード センター](https://aka.ms/AzureConnectedMachineAgent)から、Linux の場合は Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)から Azure Connected Machine エージェント パッケージをダウンロードするために、Azure VM から送信方向に通信できる。 IT セキュリティ ポリシーに従ってインターネットへの送信接続が制限されている場合は、エージェント パッケージを手動でダウンロードし、Azure VM 上のフォルダーにコピーする必要があります。
 * VM に対する昇格された (つまり、管理者または root) 権限と、VM への RDP または SSH によるアクセス。
 * Azure VM を Arc 対応サーバーに登録して管理するために、リソース グループで [Azure Connected Machine リソース管理者](../../role-based-access-control/built-in-roles.md#azure-connected-machine-resource-administrator)または[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールのメンバーである。
 
@@ -34,9 +34,9 @@ Arc 対応サーバーとして Azure VM の管理を開始するには、Arc �
 
 3. Azure Instance Metadata Service (IMDS) へのアクセスを拒否するセキュリティ規則を作成します。 IMDS は、リソース ID や場所など、Azure での VM の表現に関する情報を取得するためにアプリケーションから呼び出すことができる REST API です。 IMDS により、マシンに割り当てられているマネージド ID へのアクセスも提供されます。 Azure Arc 対応サーバーでは、その独自の IMDS 実装が提供され、Azure Arc での VM の表現に関する情報が返されます。 両方の IMDS エンドポイントが使用でき、アプリが 2 つのいずれかを選択しなければならない状況を回避するために、Azure VM IMDS へのアクセスをブロックすることで、Azure Arc 対応サーバー IMDS の実装のみが使用できるようにします。
 
-これらの変更を行うと、Azure VM は Azure の外部にあるマシンまたはサーバーと同様に動作するようになり、Azure Arc 対応サーバーをインストールして評価するために必要な出発点に達したことになります。 
+これらの変更を行うと、Azure VM は Azure の外部にあるマシンまたはサーバーと同様に動作するようになり、Azure Arc 対応サーバーをインストールして評価するために必要な出発点に達したことになります。
 
-VM で Arc 対応サーバーが構成されると、Azure ではその 2 つの表現が表示されます。 1 つはリソースの種類が `Microsoft.Compute/virtualMachines` である Azure VM リソース、もう 1 つはリソースの種類が `Microsoft.HybridCompute/machines` である Azure Arc リソースです。 共有の物理ホスト サーバーからゲスト オペレーティング システムが管理されないようにしているため、2 つのリソースに対する考え方として最も適切なことは、Azure VM リソースは VM の仮想ハードウェアであり、これによって、電源の状態を制御し、その SKU、ネットワーク、ストレージの構成に関する情報を表示できるということです。 Azure Arc リソースは、その VM 内のゲスト オペレーティング システムを管理します。また、拡張機能のインストール、Azure Policy のコンプライアンス データの表示、Arc 対応サーバーによってサポートされているその他のタスクの実行に使用できます。  
+VM で Arc 対応サーバーが構成されると、Azure ではその 2 つの表現が表示されます。 1 つはリソースの種類が `Microsoft.Compute/virtualMachines` である Azure VM リソース、もう 1 つはリソースの種類が `Microsoft.HybridCompute/machines` である Azure Arc リソースです。 共有の物理ホスト サーバーからゲスト オペレーティング システムが管理されないようにしているため、2 つのリソースに対する考え方として最も適切なことは、Azure VM リソースは VM の仮想ハードウェアであり、これによって、電源の状態を制御し、その SKU、ネットワーク、ストレージの構成に関する情報を表示できるということです。 Azure Arc リソースは、その VM 内のゲスト オペレーティング システムを管理します。また、拡張機能のインストール、Azure Policy のコンプライアンス データの表示、Arc 対応サーバーによってサポートされているその他のタスクの実行に使用できます。
 
 ## <a name="reconfigure-azure-vm"></a>Azure VM を再構成する
 
@@ -68,10 +68,10 @@ VM で Arc 対応サーバーが構成されると、Azure ではその 2 つの
    サーバーにまだ接続している状態で、次のコマンドを実行して、Azure IMDS エンドポイントへのアクセスをブロックします。 Windows では、次の PowerShell コマンドを実行します。
 
    ```powershell
-   New-NetFirewallRule -Name BlockAzureIMDS -DisplayName "Block access to Azure IMDS" -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.254 
+   New-NetFirewallRule -Name BlockAzureIMDS -DisplayName "Block access to Azure IMDS" -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.254
    ```
 
-   Linux の場合は、ディストリビューションのドキュメントを参照して、TCP ポート 80 を介する `169.254.169.254/32` への送信アクセスをブロックする最適な方法を確認します。 通常は、組み込みのファイアウォールを使用して送信アクセスをブロックしますが、**iptables** または **nftables** を使用して一時的にブロックすることもできます。 
+   Linux の場合は、ディストリビューションのドキュメントを参照して、TCP ポート 80 を介する `169.254.169.254/32` への送信アクセスをブロックする最適な方法を確認します。 通常は、組み込みのファイアウォールを使用して送信アクセスをブロックしますが、**iptables** または **nftables** を使用して一時的にブロックすることもできます。
 
    Azure VM で Ubuntu が実行されている場合は、次の手順を実行して、Uncomplicated Firewall (UFW) を構成します。
 
@@ -86,7 +86,7 @@ VM で Arc 対応サーバーが構成されると、Azure ではその 2 つの
    汎用 iptables 構成を設定するには、次のコマンドを実行します。
 
    ```bash
-   iptables -A OUTPUT -d 169.254.169.254 -j DROP 
+   iptables -A OUTPUT -d 169.254.169.254 -j DROP
    ```
 
    > [!NOTE]
@@ -97,7 +97,7 @@ VM で Arc 対応サーバーが構成されると、Azure ではその 2 つの
    これで、VM で Arc 対応サーバーの評価を開始する準備ができました。 Arc 対応サーバー エージェントをインストールして構成するには、[Azure portal を使用したハイブリッド マシンの接続](onboard-portal.md)に関する記事を参照し、手順に従ってインストール スクリプトを生成し、スクリプト化された手法を使用してインストールします。
 
    > [!NOTE]
-   > Azure VM からのインターネットへの送信接続が制限されている場合は、エージェント パッケージを手動でダウンロードする必要があります。 エージェント パッケージを Azure VM にコピーし、ソース フォルダーを参照するように Arc 対応サーバーのインストール スクリプトを変更します。 
+   > Azure VM からのインターネットへの送信接続が制限されている場合は、エージェント パッケージを手動でダウンロードする必要があります。 エージェント パッケージを Azure VM にコピーし、ソース フォルダーを参照するように Arc 対応サーバーのインストール スクリプトを変更します。
 
 手順のいずれかを実行しなかった場合、インストール スクリプトではそれが Azure VM 上で実行されていることが検出され、エラーで終了します。 手順 1 から 3 を完了していることを確認してから、スクリプトを再実行します。
 

@@ -3,12 +3,12 @@ title: 'クイックスタート: Terraform を使用した新しいポリシー
 description: このクイックスタートでは、Terraform と HCL 構文を使用して、ポリシー割り当てを作成し、非準拠リソースを特定します。
 ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: 7530ad1c4e87fb2df00e1fa81e324bb9bd0c4034
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c9e33fc8070adc2685e26272565d95716c0df8db
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763039"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094764"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>クイックスタート: Terraform を使用してポリシー割り当てを作成し、非準拠リソースを特定する
 
@@ -85,7 +85,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
 
 1. [Azure CLI](/cli/azure/) で Terraform に対して認証します。 詳細については、「[Azure プロバイダー: Azure CLI を使用した認証](https://www.terraform.io/docs/providers/azurerm/guides/azure_cli.html)」を参照してください。
 
-   ```bash
+   ```azurecli
    az login
    ```
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ad6d006157424c995ea94e89163d69a0db242ce1
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 513b6ca963535cefe72caf1f7c98c130be99e45d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789688"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475864"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -126,7 +126,7 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 | フィールド | 説明 |
 | --- | --- |
-| `@id` | モデルの識別子。 `dtmi:<domain>:<unique model identifier>;<model version number>` の形式でなければなりません。 |
+| `@id` | モデルの識別子。 `dtmi:<domain>:<unique-model-identifier>;<model-version-number>` の形式でなければなりません。 |
 | `@type` | 記述されている情報の種類を識別します。 インターフェイスの場合、型は *Interface* です。 |
 | `@context` | JSON ドキュメントの[コンテキスト](https://niem.github.io/json/reference/json-ld/context/)を設定します。 モデルは `dtmi:dtdl:context;2` を使用する必要があります。 |
 | `displayName` | [オプション] 必要に応じて、モデルにフレンドリ名を付けることができます。 |

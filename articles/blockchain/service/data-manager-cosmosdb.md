@@ -4,16 +4,20 @@ description: Azure Blockchain Service の Blockchain Data Manager を使用し�
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b054688fb524d82e758f2ac1a9ff643293bc3b29
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91283457"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "110465750"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>チュートリアル:Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する
 
-このチュートリアルでは、Azure Blockchain Service 用の Blockchain Data Manager を使用して、Azure Cosmos DB にブロックチェーン トランザクション データを記録します。 Blockchain Data Manager を使うと、ブロックチェーン台帳データをキャプチャし、変換して、Azure Event Grid トピックに配信できます。 Azure Event Grid からは、Azure Logic App コネクタを使用して、Azure Cosmos DB データベースにドキュメントを作成します。 チュートリアルを完了すると、Azure Cosmos DB Data Explorer でブロックチェーン トランザクション データを探索できます。
+このチュートリアルでは、Azure Blockchain Service 用の Blockchain Data Manager を使用して、Azure Cosmos DB にブロックチェーン トランザクション データを記録します。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+Blockchain Data Manager を使うと、ブロックチェーン台帳データをキャプチャし、変換して、Azure Event Grid トピックに配信できます。 Azure Event Grid からは、Azure Logic App コネクタを使用して、Azure Cosmos DB データベースにドキュメントを作成します。 チュートリアルを完了すると、Azure Cosmos DB Data Explorer でブロックチェーン トランザクション データを探索できます。
 
 [![ブロックチェーン トランザクションの詳細を示すスクリーンショット。](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
