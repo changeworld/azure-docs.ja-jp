@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub 用の組み込みポリシー定義
 description: Azure IoT Hub 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: reference
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 096a7adacf9800a22da7a36f3f6789f51c0613a0
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0ec9ff6d57b140b3b48493fbc6ceca4058840574
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749693"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079944"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Azure IoT Hub 用の Azure Policy 組み込み定義
 

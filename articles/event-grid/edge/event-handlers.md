@@ -1,14 +1,15 @@
 ---
 title: イベント ハンドラーと送信先 - Azure Event Grid IoT Edge |Microsoft Docs
 description: Edge の Event Grid でのイベント ハンドラーと送信先
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 18e2b944f60ebdf8a1b0c60ba446a13df13134c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b449368a94da95727729fe6100915e55ce106ecb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171586"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370448"
 ---
 # <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Edge の Event Grid でのイベント ハンドラーと送信先
 

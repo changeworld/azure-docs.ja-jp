@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で外部イベ�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: a7625a6fcd1000595c2c582935c839ba6d26b20d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 513bb1837a50ba05314afb7e89745438e3b8ed79
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728489"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376912"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
 
@@ -73,6 +73,20 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         # approval denied - send a notification
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$approved = Start-DurableExternalEventListener -EventName "Approval"
+
+if ($approved) {
+    # approval granted - do the approved action
+} else {
+    # approval denied - send a notification
+}
 ```
 
 ---
@@ -154,6 +168,25 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$event1 = Start-DurableExternalEventListener -EventName "Event1" -NoWait
+$event2 = Start-DurableExternalEventListener -EventName "Event2" -NoWait
+$event3 = Start-DurableExternalEventListener -EventName "Event3" -NoWait
+
+$winner = Wait-DurableTask -Task @($event1, $event2, $event3) -Any
+
+if ($winner -eq $event1) {
+    # ...
+} else if ($winner -eq $event2) {
+    # ...
+} else if ($winner -eq $event3) {
+    # ...
+}
+```
 ---
 
 前の例では、複数のイベントの "*いずれか*" をリッスンします。 "*すべて*" のイベントを待つこともできます。
@@ -221,6 +254,20 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$applicationId = $Context.Input
+$gate1 = Start-DurableExternalEventListener -EventName "CityPlanningApproval" -NoWait
+$gate2 = Start-DurableExternalEventListener -EventName "FireDeptApproval" -NoWait
+$gate3 = Start-DurableExternalEventListener -EventName "BuildingDeptApproval" -NoWait
+
+Wait-DurableTask -Task @($gate1, $gate2, $gate3)
+
+Invoke-ActivityFunction -FunctionName 'IssueBuildingPermit' -Input $applicationId
+```
 ---
 
 `WaitForExternalEvent` では、入力を無期限に待機します。  関数アプリは、待機中に安全にアンロードすることができます。 これは、このオーケストレーション インスタンスのイベントが到着すると、自動的に起動され、すぐにそのイベントを処理します。
@@ -278,9 +325,16 @@ async def main(instance_id:str, starter: str) -> func.HttpResponse:
     await client.raise_event(instance_id, 'Approval', True)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($instanceId)
+
+Send-DurableExternalEvent -InstanceId $InstanceId -EventName "Approval"
+```
 ---
 
-内部的には、`RaiseEventAsync` (.NET)、`raiseEvent` (JavaScript)、または `raise_event` (Python) は、待機オーケストレーター関数によって取得されるメッセージをエンキューします。 指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージがインメモリ キューに追加されます。 オーケストレーション インスタンスが後でその "*イベント名*" のリッスンを開始した場合、キューにイベント メッセージがあるかどうかを確認します。
+内部的には、`RaiseEventAsync` (.NET)、`raiseEvent` (JavaScript)、`raise_event` (Python)、`Send-DurableExternalEvent` (PowerShell) は、待機中のオーケストレーター関数によって取得されるメッセージをエンキューします。 指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージがインメモリ キューに追加されます。 オーケストレーション インスタンスが後でその "*イベント名*" のリッスンを開始した場合、キューにイベント メッセージがあるかどうかを確認します。
 
 > [!NOTE]
 > 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、イベント メッセージは破棄されます。

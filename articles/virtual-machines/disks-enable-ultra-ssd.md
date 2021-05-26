@@ -4,16 +4,16 @@ description: Azure VM 用の Ultra ディスクについて説明します。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 05/12/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 5699cf29075bbc645ae656857b15dff8bab453f1
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: aa451b725d9edd4711f57a52e48ad4e0fabcd61e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891495"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079438"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
 

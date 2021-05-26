@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 174f177080a421ec65f4ba79c550292737284de4
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: d6d497d241a91c0125f5ebe1c8437e90679768b8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734794"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064992"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps での実行状態の監視、トリガー履歴の確認、アラートの設定
 
@@ -193,7 +193,7 @@ ms.locfileid: "109734794"
 > [!TIP]
 > アラートからロジック アプリを実行するために、[要求トリガー](../connectors/connectors-native-reqres.md)をワークフローに含めることができます。これにより、次の例のようなタスクを実行できます。
 >
-> * [Slack に投稿する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
+> * [Slack に投稿する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-slack-with-logic-app)
 > * [テキストを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)
 > * [メッセージをキューに追加する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)
 

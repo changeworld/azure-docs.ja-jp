@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f70a43efd0b56f76ee4b68e8fede3ce4e255063d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572792"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466026"
 ---
 # <a name="tutorial-monitor-published-apis"></a>チュートリアル:発行された API を監視する
 
@@ -151,7 +151,7 @@ Log Analytics ワークスペースで GatewayLogs またはメトリックの�
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="[監視] メニューの [ログ] 項目のスクリーンショット":::
 
-クエリを実行してデータを表示します。 [サンプル クエリ](../azure-monitor/logs/example-queries.md)がいくつか用意されています。自分で用意したものを実行してもかまいません。 たとえば、次のクエリでは、GatewayLogs テーブルから直近の 24 時間のデータを取得します。
+クエリを実行してデータを表示します。 [サンプル クエリ](../azure-monitor/logs/queries.md)がいくつか用意されています。自分で用意したものを実行してもかまいません。 たとえば、次のクエリでは、GatewayLogs テーブルから直近の 24 時間のデータを取得します。
 
 ```kusto
 ApiManagementGatewayLogs

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: c7bd85a3cf02196216b63c3ad29eba7f425fb0c5
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 0ada06e5b96ed5344347f5de1baf006c8682ff87
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795008"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480220"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -74,7 +74,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 英語 (南アフリカ)             | `en-ZA` | テキスト                                   |                           |
 | 英語 (タンザニア)                 | `en-TZ` | テキスト                                   |                           |
 | 英語 (イギリス)           | `en-GB` | オーディオ (20201019)<br>テキスト<br>発音| はい                          |
-| 英語 (米国)            | `en-US` | オーディオ (20201019)<br>テキスト<br>発音| はい                          |
+| 英語 (米国)            | `en-US` | Audio (20201019、20210223)<br>テキスト<br>発音| はい                          |
 | エストニア語 (エストニア)                  | `et-EE` | テキスト                                   |                           |
 | フィリピノ語 (フィリピン)             | `fil-PH`| テキスト                                   |                           |
 | フィンランド語 (フィンランド)                  | `fi-FI` | Text                                   |     はい                      |
@@ -136,7 +136,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 ## <a name="text-to-speech"></a>テキスト読み上げ
 
-Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポートされ、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。 [音声/リスト API](rest-text-to-speech.md#get-a-list-of-voices) を使用して、特定のリージョン/エンドポイントごとにサポートされている言語と音声の完全な一覧を取得することもできます。 
+Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポートされ、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。 [voices/list API](rest-text-to-speech.md#get-a-list-of-voices) を使用して、特定のリージョン/エンドポイントごとにサポートされている言語と音声の完全な一覧を取得することもできます。 
 
 > [!IMPORTANT]
 > 価格は、標準音声、カスタム音声、ニューラル音声ごとに異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)のページを参照してください。
@@ -168,8 +168,13 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 中国語 (繁体字) | `zh-HK` | Male | `zh-HK-WanLungNeural` | 全般 |
 | 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
 | 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | 物語のナレーション向けに最適化された子どもの声 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaomoNeural` | 全般、複数のロールプレイとスタイルが [SSML の使用](speech-synthesis-markup.md#adjust-speaking-styles)により使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` | 全般、複数のロールプレイとスタイルが [SSML の使用](speech-synthesis-markup.md#adjust-speaking-styles)により使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaohanNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、高齢者の音声、複数のスタイルを使用可能 |
 | 中国語 (標準、簡体字) | `zh-CN` | Male | `zh-CN-YunyangNeural` | ニュースの読み取り向けに最適化<br /> [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、複数の音声スタイルを使用可能 |
 | 中国語 (標準、簡体字) | `zh-CN` | Male | `zh-CN-YunyeNeural` | ストーリーのナレーション向けに最適化 |
+| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunxiNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
 | 中国語 (台湾標準中国語) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` | 全般 |
 | 中国語 (台湾標準中国語) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | 全般 |
 | 中国語 (台湾標準中国語) | `zh-TW` | Male | `zh-TW-YunJheNeural` | 全般 |
@@ -179,8 +184,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | チェコ語 (チェコ) | `cs-CZ` | Male | `cs-CZ-AntoninNeural` | 全般 |
 | デンマーク語 (デンマーク) | `da-DK` | Female | `da-DK-ChristelNeural` | 全般 |
 | デンマーク語 (デンマーク) | `da-DK` | Male | `da-DK-JeppeNeural` | 全般 |
-| オランダ語 (ベルギー) | `nl-BE` | Female | `nl-BE-DenaNeural` <sup>[新規作成]</sup> | 全般 | 
-| オランダ語 (ベルギー) | `nl-BE` | Male | `nl-BE-ArnaudNeural` <sup>[新規作成]</sup> | 全般 | 
+| オランダ語 (ベルギー) | `nl-BE` | Female | `nl-BE-DenaNeural` | 全般 | 
+| オランダ語 (ベルギー) | `nl-BE` | Male | `nl-BE-ArnaudNeural` | 全般 | 
 | オランダ語 (オランダ) | `nl-NL` | Female | `nl-NL-ColetteNeural` | 全般 |
 | オランダ語 (オランダ) | `nl-NL` | Female | `nl-NL-FennaNeural` | 全般 |
 | オランダ語 (オランダ) | `nl-NL` | Male | `nl-NL-MaartenNeural` | 全般 |
@@ -188,12 +193,20 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 英語 (オーストラリア) | `en-AU` | Male | `en-AU-WilliamNeural` | 全般 |
 | 英語 (カナダ) | `en-CA` | Female | `en-CA-ClaraNeural` | 全般 |
 | 英語 (カナダ) | `en-CA` | Male | `en-CA-LiamNeural` | 全般 |
+| 英語 (香港) | `en-HK` | Female | `en-HK-YanNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (香港) | `en-HK` | Male | `en-HK-SamNeural` <sup>[新規作成]</sup> | 全般 |
 | 英語 (インド) | `en-IN` | Female | `en-IN-NeerjaNeural` | 全般 |
 | 英語 (インド) | `en-IN` | Male | `en-IN-PrabhatNeural` | 全般 |
 | 英語 (アイルランド) | `en-IE` | Female | `en-IE-EmilyNeural` | 全般 |
 | 英語 (アイルランド) | `en-IE` | Male | `en-IE-ConnorNeural` | 全般 |
-| 英語 (フィリピン) | `en-PH` | Female | `en-PH-RosaNeural` <sup>[新規作成]</sup> | 全般 | 
-| 英語 (フィリピン) | `en-PH` | Male | `en-PH-JamesNeural` <sup>[新規作成]</sup> | 全般 | 
+| 英語 (ニュージーランド) | `en-NZ` | Female | `en-NZ-MollyNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (ニュージーランド) | `en-NZ` | Male | `en-NZ-MitchellNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (フィリピン) | `en-PH` | Female | `en-PH-RosaNeural` | 全般 | 
+| 英語 (フィリピン) | `en-PH` | Male | `en-PH-JamesNeural` | 全般 | 
+| 英語 (シンガポール) | `en-SG` | Female | `en-SG-LunaNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (シンガポール) | `en-SG` | Male | `en-SG-WayneNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (南アフリカ) | `en-ZA` | Female | `en-ZA-LeahNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (南アフリカ) | `en-ZA` | Male | `en-ZA-LukeNeural` <sup>[新規作成]</sup> | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-LibbyNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` | 全般 |
@@ -205,8 +218,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-NooraNeural` | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-SelmaNeural` | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Male | `fi-FI-HarriNeural` | 全般 |
-| フランス語 (ベルギー) | `fr-BE` | Female | `fr-BE-CharlineNeural` <sup>[新規作成]</sup> | 全般 | 
-| フランス語 (ベルギー) | `fr-BE` | Male | `fr-BE-GerardNeural` <sup>[新規作成]</sup> | 全般 | 
+| フランス語 (ベルギー) | `fr-BE` | Female | `fr-BE-CharlineNeural` | 全般 | 
+| フランス語 (ベルギー) | `fr-BE` | Male | `fr-BE-GerardNeural` | 全般 | 
 | フランス語 (カナダ) | `fr-CA` | Female | `fr-CA-SylvieNeural` | 全般 |
 | フランス語 (カナダ) | `fr-CA` | Male | `fr-CA-AntoineNeural` | 全般 |
 | フランス語 (カナダ) | `fr-CA` | Male | `fr-CA-JeanNeural` | 全般 |
@@ -222,6 +235,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | ドイツ語 (スイス) | `de-CH` | Male | `de-CH-JanNeural` | 全般 |
 | ギリシャ語 (ギリシャ) | `el-GR` | Female | `el-GR-AthinaNeural` | 全般 |
 | ギリシャ語 (ギリシャ) | `el-GR` | Male | `el-GR-NestorasNeural` | 全般 |
+| グジャラート語 (インド) | `gu-IN` | Female | `gu-IN-DhwaniNeural` <sup>[新規作成]</sup> | 全般 |
+| グジャラート語 (インド) | `gu-IN` | Male | `gu-IN-NiranjanNeural` <sup>[新規作成]</sup> | 全般 |
 | ヘブライ語 (イスラエル) | `he-IL` | Female | `he-IL-HilaNeural` | 全般 |
 | ヘブライ語 (イスラエル) | `he-IL` | Male | `he-IL-AvriNeural` | 全般 |
 | ヒンディー語 (インド) | `hi-IN` | Female | `hi-IN-SwaraNeural` | 全般 |
@@ -247,6 +262,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | マレー語 (マレーシア) | `ms-MY` | Male | `ms-MY-OsmanNeural` | 全般 |
 | マルタ語 (マルタ) | `mt-MT` | Female | `mt-MT-GraceNeural` | 全般 |
 | マルタ語 (マルタ) | `mt-MT` | Male | `mt-MT-JosephNeural` | 全般 |
+| マラーティー語 (インド) | `mr-IN` | Female | `mr-IN-AarohiNeural` <sup>[新規作成]</sup> | 全般 |
+| マラーティー語 (インド) | `mr-IN` | Male | `mr-IN-ManoharNeural` <sup>[新規作成]</sup> | 全般 |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-IselinNeural` | 全般 |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-PernilleNeural` | 全般 |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Male | `nb-NO-FinnNeural` | 全般 |
@@ -267,10 +284,18 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | スロバキア語 (スロバキア) | `sk-SK` | Male | `sk-SK-LukasNeural` | 全般 |
 | スロベニア語 (スロベニア) | `sl-SI` | Female | `sl-SI-PetraNeural` | 全般 |
 | スロベニア語 (スロベニア) | `sl-SI` | Male | `sl-SI-RokNeural` | 全般 |
+| スペイン語 (アルゼンチン) | `es-AR` | Female | `es-AR-ElenaNeural` <sup>[新規作成]</sup> | 全般 |
+| スペイン語 (アルゼンチン) | `es-AR` | Male | `es-AR-TomasNeural` <sup>[新規作成]</sup> | 全般 |
+| スペイン語 (コロンビア) | `es-CO` | Female | `es-CO-SalomeNeural` <sup>[新規作成]</sup> | 全般 |
+| スペイン語 (コロンビア) | `es-CO` | Male | `es-CO-GonzaloNeural` <sup>[新規作成]</sup> | 全般 |
 | スペイン語 (メキシコ) | `es-MX` | Female | `es-MX-DaliaNeural` | 全般 |
 | スペイン語 (メキシコ) | `es-MX` | Male | `es-MX-JorgeNeural` | 全般 |
 | スペイン語 (スペイン) | `es-ES` | Female | `es-ES-ElviraNeural` | 全般 |
 | スペイン語 (スペイン) | `es-ES` | Male | `es-ES-AlvaroNeural` | 全般 |
+| スペイン語 (米国) | `es-US` | Female | `es-US-PalomaNeural` <sup>[新規作成]</sup> | 全般 |
+| スペイン語 (米国) | `es-US` | Male | `es-US-AlonsoNeural` <sup>[新規作成]</sup> | 全般 |
+| スワヒリ語 (ケニア) | `sw-KE` | Female | `sw-KE-ZuriNeural` <sup>[新規作成]</sup> | 全般 |
+| スワヒリ語 (ケニア) | `sw-KE` | Male | `sw-KE-RafikiNeural` <sup>[新規作成]</sup> | 全般 |
 | スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-HilleviNeural` | 全般 |
 | スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-SofieNeural` | 全般 |
 | スウェーデン語 (スウェーデン) | `sv-SE` | Male | `sv-SE-MattiasNeural` | 全般 |
@@ -283,14 +308,14 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | タイ語 (タイ) | `th-TH` | Male | `th-TH-NiwatNeural` | 全般 |
 | トルコ語 (トルコ) | `tr-TR` | Female | `tr-TR-EmelNeural` | 全般 |
 | トルコ語 (トルコ) | `tr-TR` | Male | `tr-TR-AhmetNeural` | 全般 |
-| ウクライナ語 (ウクライナ) | `uk-UA` | Female | `uk-UA-PolinaNeural` <sup>[新規作成]</sup> | 全般 | 
-| ウクライナ語 (ウクライナ) | `uk-UA` | Male | `uk-UA-OstapNeural` <sup>[新規作成]</sup> | 全般 | 
-| ウルドゥー語 (パキスタン) | `ur-PK` | Female | `ur-PK-UzmaNeural` <sup>[新規作成]</sup>  | 全般 | 
-| ウルドゥー語 (パキスタン) | `ur-PK` | Male | `ur-PK-AsadNeural` <sup>[新規作成]</sup> | 全般 | 
+| ウクライナ語 (ウクライナ) | `uk-UA` | Female | `uk-UA-PolinaNeural` | 全般 | 
+| ウクライナ語 (ウクライナ) | `uk-UA` | Male | `uk-UA-OstapNeural` | 全般 | 
+| ウルドゥー語 (パキスタン) | `ur-PK` | Female | `ur-PK-UzmaNeural`  | 全般 | 
+| ウルドゥー語 (パキスタン) | `ur-PK` | Male | `ur-PK-AsadNeural` | 全般 | 
 | ベトナム語 (ベトナム) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | 全般 |
 | ベトナム語 (ベトナム) | `vi-VN` | Male | `vi-VN-NamMinhNeural` | 全般 |
-| ウェールズ語 (英国) | `cy-GB` | Female | `cy-GB-NiaNeural` <sup>[新規作成]</sup> | 全般 | 
-| ウェールズ語 (英国) | `cy-GB` | Male | `cy-GB-AledNeural` <sup>[新規作成]</sup> | 全般 | 
+| ウェールズ語 (英国) | `cy-GB` | Female | `cy-GB-NiaNeural` | 全般 | 
+| ウェールズ語 (英国) | `cy-GB` | Male | `cy-GB-AledNeural` | 全般 | 
 
 #### <a name="neural-voices-in-preview"></a>プレビュー段階のニューラル音声
 
@@ -298,14 +323,24 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 | Language                         | Locale  | 性別 | 音声名                             | スタイルのサポート |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaohanNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaomoNeural` | 全般、複数のロールプレイとスタイルが [SSML の使用](speech-synthesis-markup.md#adjust-speaking-styles)により使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、高齢者の音声、複数のスタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` | 全般、複数のロールプレイとスタイルが [SSML の使用](speech-synthesis-markup.md#adjust-speaking-styles)により使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunxiNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
+| 英語 (米国) | `en-US` | Female | `en-US-AmberNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-AshleyNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-CoraNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-ElizabethNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-JennyMultilingualNeural` <sup>[新規作成]</sup> | [SSML](speech-synthesis-markup.md#create-an-ssml-document)を使用して使用できる一般的な多言語機能 |
+| 英語 (米国) | `en-US` | Female | `en-US-MichelleNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-MonicaNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Kid | `en-US-AnaNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-BrandonNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-ChristopherNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-JacobNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-EricNeural` <sup>[新規作成]</sup> | 全般 |
 
 > [!IMPORTANT]
 > パブリック プレビュー段階の音声は、3 つのサービス リージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
+
+> [!TIP]
+> `en-US-JennyNeuralMultilingual` では、複数の言語がサポートされます。 サポートされている言語の一覧については、[voices/list API ](rest-text-to-speech.md#get-a-list-of-voices)を確認してください。
 
 リージョン別の提供状況の詳細については、[リージョン](regions.md#neural-and-standard-voices)に関するページを参照してください。
 
@@ -543,6 +578,17 @@ Custom Voice は、ニューラル レベル (カスタム ニューラル音声
 |ポルトガル語 (ブラジル) | pt-BR |     該当なし |     はい |     はい|
 |スペイン語 (メキシコ)     | es-MX     | 該当なし |     はい |     はい|
 |スペイン語 (スペイン)     | es-ES | 該当なし     | はい |     はい|
+
+## <a name="custom-keyword-and-keyword-verification"></a>カスタム キーワードとキーワード検証
+
+次の表では、カスタム キーワードおよびキーワードの検証がサポートされている言語の概要を示しています。
+
+| Language | ロケール (BCP-47) | カスタム キーワード | キーワード検証 |
+| -------- | --------------- | -------------- | -------------------- |
+| 中国語 (標準、簡体字) | zh-CN | Yes | はい |
+| 英語 (米国) | ja-JP | Yes | はい |
+| 日本語 (日本) | ja-JP | いいえ | はい |
+| ポルトガル語 (ブラジル) | pt-BR | いいえ | はい |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f1136676002a737f4e860e33e8b3b855712d3928
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 31c99fbac936ab6ec96d6e24bc824d9cb2069e0f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789823"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078780"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
@@ -95,7 +95,7 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 Azure Digital Twins には、特定のツインとのすべての **受信** リレーションシップを検索する API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
 
 >[!NOTE]
-> `IncomingRelationship` の呼び出しからは、リレーションシップ全体は返されません。 `IncomingRelationship` クラスの詳細については、その[リファレンス ドキュメント](/dotnet/api/azure.digitaltwins.core.incomingrelationship)を参照してください。
+> `IncomingRelationship` の呼び出しからは、リレーションシップ全体は返されません。 `IncomingRelationship` クラスの詳細については、その[リファレンス ドキュメント](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)を参照してください。
 
 前のセクションのコード サンプルは、ツインからの発信リレーションシップの検索に重点を置いていました。 次の例は同じような構造になってますが、代わりにツインへの "*受信*" リレーションシップを検索します。 この例でも、より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
@@ -182,7 +182,7 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 次に、以下の手順を実行してプロジェクト コードを構成します。
 1. 以前ダウンロードした **Room.json** および **Floor.json** ファイルをプロジェクトに追加し、コード内部の `<path-to>` プレースホルダーを置き換えて、プログラムに検索する場所を指示します。
 1. プレースホルダー `<your-instance-hostname>` を Azure Digital Twins インスタンスのホスト名に置き換えます。
-1. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
+1. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

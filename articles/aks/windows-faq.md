@@ -5,12 +5,12 @@ description: Windows Server ノード プールとアプリケーション ワ�
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: e9b2072ddcb688cd320700d47bb5f5f3670e6543
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 192306d2aeb9abddef641c0b55adaacaf8442de2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790075"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065712"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS の Windows Server ノード プールに関してよく寄せられる質問
 
@@ -116,10 +116,6 @@ Kubernet は現在、Windows ノードではサポートされていません。
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Windows ノードでイングレス コントローラーを実行できますか?
 
 はい。Windows Server コンテナーがサポートされているイングレス コントローラーは、AKS の Windows ノードで実行できます。
-
-## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>Windows ノードで Azure Dev Spaces を使用できますか?
-
-Azure Dev Spaces は現在、Linux ベースのノード プールに対してのみ使用できます。
 
 ## <a name="can-my-windows-server-containers-use-gmsa"></a>Windows Server コンテナーで gMSA を使用できますか?
 
