@@ -1,24 +1,24 @@
 ---
 title: Azure Logic Apps の概要
-description: Logic Apps クラウド プラットフォームは、コードをほとんどまたはまったく使用せずに、エンタープライズ統合シナリオ向けの自動化されたワークフローの作成と実行を支援します。
+description: Azure Logic Apps は、アプリ、データ、サービス、システムを最小限のコーディングまたはノーコードで統合するワークフローを自動化するためのクラウド プラットフォームです。 ワークフローは、マルチテナント、シングルテナント、または専用環境で実行できます。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/26/2021
-ms.openlocfilehash: 78a1d577be21334a14008b18bb777f3d79c2a5e1
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 05/07/2021
+ms.openlocfilehash: c971f184aad7bfaf6d36a00ec1fb95f474c3a61c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287196"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376947"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは
 
-[Logic Apps](https://azure.microsoft.com/services/logic-apps) は、アプリ、データ、サービス、システムを統合するための自動化された[ワークフロー](#logic-app-concepts)の作成と実行を支援するクラウドベースのプラットフォームです。 このプラットフォームを使用すると、エンタープライズおよび企業間 (B2B) シナリオ向けのスケーラビリティの高い統合ソリューションをより簡単かつ迅速に構築できます。 [Azure Integration Services](https://azure.microsoft.com/product-categories/integration/) のメンバーである Logic Apps は、クラウド、オンプレミス、ハイブリッド環境で、レガシ、最新、および最先端システムをより簡単に接続する方法を提供します。
+[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) は、アプリ、データ、サービス、およびシステムを統合する自動化された "[*ワークフロー*](#logic-app-concepts)" を作成および実行するためのクラウドベースのプラットフォームです。 このプラットフォームを使用すると、エンタープライズおよび企業間 (B2B) シナリオ向けのスケーラビリティの高い統合ソリューションを迅速に開発できます。 [Azure Integration Services](https://azure.microsoft.com/product-categories/integration/) のメンバーである Logic Apps を使用すると、クラウド、オンプレミス、ハイブリッド環境で、レガシ、最新、および最先端システムをより簡単に接続できます。
 
-この一覧に例として挙げたのは、Logic Apps サービスを使用して自動化できるタスク、ビジネス プロセス、ワークロードのうちのごく一部です。
+以下の一覧に例として挙げたのは、Logic Apps サービスを使用して自動化できるタスク、ビジネス プロセス、ワークロードのうちのごく一部です。
 
 * Office 365 を使用して、特定のイベント (新しいファイルのアップロードなど) が発生したときの電子メール通知をスケジュールして送信する。
 * オンプレミス システムとクラウド サービスの垣根を越えて顧客注文をルーティングし、処理する。
@@ -27,17 +27,19 @@ ms.locfileid: "108287196"
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-さまざまなデータ ソースに対し、リアルタイムかつ安全にアクセスして操作を実行できるよう、日々拡充される [Microsoft マネージド コネクタ](#logic-app-concepts)の[ギャラリー](/connectors/connector-reference/connector-reference-logicapps-connectors)をご利用ください。たとえば次のようなものがあります。
+選択して作成したロジック アプリのリソースの種類に応じて、ロジック アプリはマルチテナント、シングルテナント、または専用の統合サービス環境で実行されます。 たとえば、シングルテナント ベースのロジック アプリをコンテナー化する場合、アプリをコンテナーとしてデプロイして、それを Azure Functions を実行可能な任意の場所で実行できます。 詳細については、[ロジック アプリのリソースの種類とホスト環境の違い](#resource-environment-differences)に関するセクションを参照してください。
+
+さまざまなデータ ソースにリアルタイムかつ安全にアクセスして操作を実行するには、[今も増え続けている 400 以上の Azure コネクタ エコシステム](/connectors/connector-reference/connector-reference-logicapps-connectors)から "[*マネージド コネクタ*](#logic-app-concepts)" を選択し、ワークフローで使用することができます。以下に例を示します。
 
 * Azure サービス (Blob Storage、Service Bus など)
-* Office サービス (Outlook、Excel、SharePoint など)
+* Office 365 サービス (Outlook、Excel、SharePoint など)
 * データベース サーバー (SQL、Oracle など)
 * エンタープライズ システム (SAP、IBM MQ など)
 * ファイル共有 (FTP、SFTP など)
 
-サービス エンドポイントとの通信、独自コードの実行、ワークフローの編成、データの操作のために、Logic Apps サービス内でネイティブに実行される[組み込みのトリガーとアクション](#logic-app-concepts)を使用できます。 たとえば、組み込みトリガーとしては、要求トリガー、HTTP トリガー、繰り返しトリガーなどがあります。 組み込みアクションには、条件、For each、JavaScript コードに加えて、Azure でホストされる Azure 関数、Web アプリ、API アプリのほか、他の Logic Apps ワークフローを呼び出す操作などがあります。
+サービス エンドポイントとの通信、独自コードの実行、ワークフローの編成、データの操作のために、Logic Apps サービス内でネイティブに実行される "[*組み込みの*](#logic-app-concepts)" トリガーとアクションを使用できます。 たとえば、組み込みトリガーとしては、要求トリガー、HTTP トリガー、繰り返しトリガーなどがあります。 組み込みアクションには、条件、For each、JavaScript コードに加えて、Azure でホストされる Azure 関数、Web アプリ、API アプリのほか、他の Logic Apps ワークフローを呼び出す操作などがあります。
 
-Logic Apps には、B2B 統合シナリオ向けに [BizTalk Server](/biztalk/core/introducing-biztalk-server) の機能が含まれています。 [統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)を作成して、そこに取引先、契約、スキーマ、マップなどの B2B アーティファクトを定義することができます。 このアカウントをロジック アプリにリンクすると、これらのアーティファクトと連携し、AS2、EDIFACT、X12、RosettaNet などのプロトコルを使用してメッセージを交換するワークフローを構築できます。
+Logic Apps には、B2B 統合シナリオ向けに [BizTalk Server](/biztalk/core/introducing-biztalk-server) の機能が含まれています。 企業間 (B2B) の成果物を定義するには、これらのアーティファクトを格納する "[*統合アカウント*](#logic-app-concepts)" を作成します。 このアカウントをロジック アプリにリンクすると、ワークフローでこれらの B2B の成果物を使用し、電子データ交換 (EDI) および Enterprise Application Integration (EAI) 標準に準拠するメッセージを交換できます。
 
 ワークフローからアプリやデータ、サービス、システムにアクセスしてそれらと連携する方法について詳しくは、次のドキュメントを参照してください。
 
@@ -50,21 +52,25 @@ Logic Apps には、B2B 統合シナリオ向けに [BizTalk Server](/biztalk/co
 
 ## <a name="key-terms"></a>キーワード
 
-* **ワークフロー**: タスクまたはプロセスを定義する一連のステップ。単一のトリガーを起点として 1 つまたは複数のアクションを実行します
+* *ロジック アプリ*: ワークフローを開発するときに作成する Azure リソース。 シナリオのニーズとソリューションの要件に応じて、マルチテナント Azure Logic Apps、シングルテナント Azure Logic Apps、または統合サービス環境 (ISE) で実行されるロジック アプリを作成できます。 詳細については、[ロジック アプリのリソースの種類とホスト環境の違い](#resource-environment-differences)に関するセクションを参照してください。
 
-* **トリガー**: 各ワークフローの起点となると共に、ワークフローのアクションを実行するにあたって満たすべき条件を指定する最初のステップ。 たとえば、受信トレイにメールが届いた、ストレージ アカウントで新しいファイルを検出した、といったトリガー イベントが考えられます。
+* *ワークフロー*: タスクまたはプロセスを定義する一連のステップ。単一のトリガーを起点として 1 つまたは複数のアクションを実行します。
 
-* **アクション**: トリガーの後、ワークフロー内のなんらかの操作を実行する後続の各ステップ。
+* *トリガー*: 各ワークフローの起点となると共に、ワークフローのアクションを実行するにあたって満たすべき条件を指定する最初のステップ。 たとえば、受信トレイにメールが届いた、ストレージ アカウントで新しいファイルを検出した、といったトリガー イベントが考えられます。
 
-* **マネージド コネクタ**: 特定のアプリ、データ、サービス、またはシステムへのアクセスを提供する、Microsoft が管理する REST API。 ほとんどのマネージド コネクタは、その使用前に、ワークフローから接続を作成し、ID の認証を行う必要があります。
+* *アクション*: トリガーの後、ワークフロー内のなんらかの操作を実行する後続の各ステップ。
 
-  たとえば、トリガーを使用してワークフローを開始したり、Azure Blob Storage、Office 365、Salesforce、SFTP サーバーと連携するアクションを追加したりすることができます。 詳細については、[Azure Logic Apps のマネージド コネクタ](../connectors/managed.md)に関するページを参照してください。
-
-* **組み込みのトリガーまたはアクション**: ネイティブで実行される Logic Apps 操作。ワークフローのスケジュールや構造の制御、独自のコードの実行、データの管理または操作、ワークフロー内の他のタスクの実行などを可能にする手段となります。 ほとんどの組み込み操作は、いずれのサービスやシステムにも関連付けられていません。 また、その多くは、ワークフローから接続を作成したり、ID の認証を行ったりする必要がありません。 Azure Functions、Azure API Management、Azure App Service など、いくつかのサービス、システム、プロトコルでも、組み込み操作を利用できます。
+* *組み込みのトリガーまたはアクション*: ネイティブで実行される Logic Apps 操作。ワークフローのスケジュールや構造の制御、独自のコードの実行、データの管理または操作、ワークフロー内の他のタスクの実行などを可能にする手段となります。 ほとんどの組み込み操作は、いずれのサービスやシステムにも関連付けられていません。 また、その多くは、ワークフローから接続を作成したり、ID の認証を行ったりする必要がありません。 ただし、Azure Functions、Azure API Management、Azure App Service など、頻繁に使用するいくつかのサービス、システム、プロトコルでも、組み込み操作を利用できます。
 
   たとえば、繰り返しトリガーを使用すると、ほぼどのようなワークフローでもスケジュールに従って開始できます。 また、要求トリガーを使用すると、呼び出すまでワークフローを待機させることもできます。 詳細については、[Azure Logic Apps の組み込みのトリガーとアクション](../connectors/built-in.md)に関するページを参照してください。
 
-* **ロジック アプリ**: ワークフローを構築するために作成する Azure リソース。 シナリオのニーズとソリューションの要件に基づいて、マルチテナントまたはシングルテナント Logic Apps サービス環境で動作するロジック アプリ、または統合サービス環境で動作するロジック アプリを作成できます。 詳細については、[ロジック アプリのホスト環境](#host-environments)に関するセクションをご覧ください。
+* *マネージド コネクタ*: 特定のアプリ、データ、サービス、システムにアクセスするためのトリガーやアクションをワークフローに提供する、REST API のプロキシあるいはラッパー。 ほとんどのマネージド コネクタは、その使用前に、ワークフローから接続を作成し、ID の認証を行う必要があります。
+
+  たとえば、トリガーによってワークフローを開始したり、Azure Blob Storage、Office 365、Salesforce、SFTP サーバーと連携するアクションを追加したりすることができます。 マネージド コネクタは、Microsoft によってホストおよび管理されています。 詳細については、[Azure Logic Apps のマネージド コネクタ](../connectors/managed.md)に関するページを参照してください。
+
+* *統合アカウント*: ワークフローで使用する B2B 成果物を定義して格納する場合に作成する Azure リソース。 このアカウントをロジック アプリにリンクすると、ワークフローでこれらの B2B の成果物を使用し、電子データ交換 (EDI) および Enterprise Application Integration (EAI) 標準に準拠するメッセージを交換できます。
+
+  たとえば、取引先、契約、スキーマ、マップ、その他の B2B 成果物を定義できます。 これらの成果物を使用し、AS2、EDIFACT、X12、RosettaNet などのプロトコルを使用してメッセージを交換するワークフローを作成できます。 詳細については、[B2B エンタープライズ統合用の統合アカウントを作成および管理する](logic-apps-enterprise-integration-create-integration-account.md)方法に関するページを参照してください。
 
 <a name="how-do-logic-apps-work"></a>
 
@@ -78,20 +84,15 @@ Logic Apps には、B2B 統合シナリオ向けに [BizTalk Server](/biztalk/co
 
 Azure portal、Visual Studio Code、または Visual Studio で Logic Apps デザイナーを使用して、ワークフローを視覚的に作成できます。 各ワークフローには、JavaScript Object Notation (JSON) を使用して記述された、基になる定義も含まれています。 必要に応じて、この JSON 定義を変更してワークフローを編集できます。 Logic Apps では、一部の作成タスクと管理タスクについて、Azure PowerShell と Azure CLI コマンドがサポートされます。 Logic Apps では、デプロイの自動化を目的として、Azure Resource Manager テンプレートがサポートされます。
 
-<a name="host-environments"></a>
+<a name="resource-environment-differences"></a>
 
-## <a name="host-environments"></a>ホスト環境
+## <a name="resource-type-and-host-environment-differences"></a>リソースの種類とホスト環境の違い
 
-シナリオとソリューションの要件に基づいて、実行される Logic Apps サービス環境とワークフローでのリソースの使用方法が異なるロジック アプリを作成できます。 次の表は、それらの違いを簡単にまとめたものです。
+ロジック アプリ ワークフローを作成するには、シナリオ、ソリューションの要件、必要な機能、およびワークフローを実行する環境を踏まえて、**ロジック アプリ** のリソースの種類を選択します。
 
-| 環境 | [価格モデル](logic-apps-pricing.md) | 説明 |
-|-------------|----------------------------------------|-------------|
-| Azure Logic Apps (マルチテナント) | 従量課金 | ロジック アプリでワークフローを 1 つだけ使用できます。 <p><p>"*複数のテナント*" のさまざまなロジック アプリのワークフローで、同じ処理 (コンピューティング)、ストレージ、ネットワークなどが共有されます。 |
-| Azure Logic Apps ([シングルテナント (プレビュー)](logic-apps-overview-preview.md)) | [プレビュー](logic-apps-overview-preview.md#pricing-model) | ロジック アプリで複数のワークフローを使用できます。 <p><p>"*単一のテナントの同じロジック アプリ*" のワークフローで、同じ処理 (コンピューティング)、ストレージ、ネットワークなどが共有されます。 |
-| [統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) | 固定 | ロジック アプリでワークフローを 1 つだけ使用できます。 <p><p>"*同じ環境*" 内のさまざまなロジック アプリのワークフローで、同じ処理 (コンピューティング)、ストレージ、ネットワークなどが共有されます。 |
-||||
+次の表は、元の **ロジック アプリ (従量課金)** と **ロジック アプリ (Standard)** のリソースの種類の違いを簡単にまとめたものです。 また、ロジック アプリ ワークフローをデプロイするための "*シングルテナント*" モデルと、"*マルチテナント*" および "*統合サービス環境 (ISE)* " モデルの比較についても説明します。
 
-Logic Apps サービス環境でホストされるロジック アプリにもさまざまな制限があります。 詳細については、[Logic Apps の制限](logic-apps-limits-and-config.md)に関する記事および [Logic Apps (プレビュー) の制限](logic-apps-overview-preview.md#limits)に関する記事をご覧ください。
+[!INCLUDE [Logic app resource type and environment differences](../../includes/logic-apps-resource-environment-differences-table.md)]
 
 ## <a name="why-use-logic-apps"></a>Logic Apps を使用する理由
 
@@ -109,7 +110,7 @@ Logic Apps を他の Azure サービスや Microsoft 製品と組み合わせる
 
 Logic Apps のビジュアル デザイン ツールを使用して、時間を節約し、複雑なプロセスを簡素化します。 ワークフローは、Azure portal、Visual Studio Code、または Visual Studio で Logic Apps デザイナーを使用して最初から最後まで作成できます。 トリガーを使用してワークフローを開始し、[コネクタ ギャラリー](/connectors/connector-reference/connector-reference-logicapps-connectors)から任意の数のアクションを追加するだけです。
 
-マルチテナント ロジック アプリを作成する場合は、[テンプレート ギャラリーからワークフローを作成](../logic-apps/logic-apps-create-logic-apps-from-templates.md)すると、作業を速やかに開始できます。 これらのテンプレートは、サービスとしてのソフトウェア (SaaS) アプリの単純な接続から、高度な B2B ソリューション、"遊び感覚" のテンプレートまで、一般的なワークフロー パターンで利用できます。
+マルチテナント ベースのロジック アプリを作成する場合は、[テンプレート ギャラリーからワークフローを作成](../logic-apps/logic-apps-create-logic-apps-from-templates.md)すると、作業を速やかに開始できます。 これらのテンプレートは、サービスとしてのソフトウェア (SaaS) アプリの単純な接続から、高度な B2B ソリューション、"遊び感覚" のテンプレートまで、一般的なワークフロー パターンで利用できます。
 
 #### <a name="connect-different-systems-across-various-environments"></a>さまざまな環境でさまざまなシステムを接続
 
@@ -138,7 +139,7 @@ Logic Apps のビジュアル デザイン ツールを使用して、時間を�
 
 #### <a name="access-resources-inside-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースにアクセスする
 
-"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成するときに、ロジック アプリ ワークフローでは [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にあるセキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) にアクセスできます。 ISE は、専用のリソースを使用し、グローバルなマルチテナント Logic Apps サービスとは別に実行される、Logic Apps サービスの専用インスタンスです。
+"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成するときに、ロジック アプリ ワークフローでは [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にあるセキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) にアクセスできます。 ISE は、専用リソースを使用し、グローバルなマルチテナント Azure Logic Apps サービスとは別に実行される、Azure Logic Apps サービスの専用インスタンスです。
 
 独自の専用インスタンスでロジック アプリを実行することで、他の Azure テナントがアプリのパフォーマンスに与える可能性がある影響 (["うるさい隣人" エフェクト](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)とも呼ばれます) を低減できます。 ISE には、次の利点があります。
 
@@ -150,7 +151,7 @@ ISE を作成すると、Azure によってその ISE が Azure 仮想ネット�
 
 #### <a name="pricing-options"></a>価格オプション
 
-ロジック アプリの種類は、機能と実行される場所 (マルチテナント、シングルテナント、統合サービス環境) によって異なり、それぞれ[価格モデル](../logic-apps/logic-apps-pricing.md)が異なります。 たとえば、マルチテナント ロジック アプリでは従量課金ベースの価格が使用され、統合サービス環境のロジック アプリでは固定価格が使用されます。 Logic Apps の[価格と使用状況測定](../logic-apps/logic-apps-pricing.md)の詳細をご覧ください。
+ロジック アプリの種類は、機能と実行される場所 (マルチテナント、シングルテナント、統合サービス環境) によって異なり、それぞれ[価格モデル](../logic-apps/logic-apps-pricing.md)が異なります。 たとえば、マルチテナント ベースのロジック アプリでは従量課金の価格が使用され、統合サービス環境のロジック アプリでは固定価格が使用されます。 Logic Apps の[価格と使用状況測定](../logic-apps/logic-apps-pricing.md)の詳細をご覧ください。
 
 ## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-power-automate"></a>Logic Apps と Functions、WebJobs、Power Automate の違い
 
@@ -171,5 +172,3 @@ Logic Apps プラットフォームの詳細については、これらの紹介
 ## <a name="next-steps"></a>次のステップ
 
 * [クイックスタート: 初めてのロジック アプリ ワークフローを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Azure を使用したサーバーレス ソリューション](../logic-apps/logic-apps-serverless-overview.md)について確認する
-* [Enterprise Integration Pack による B2B 統合](../logic-apps/logic-apps-enterprise-integration-overview.md)について確認する

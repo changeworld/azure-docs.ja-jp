@@ -2,13 +2,13 @@
 title: Apache Kafka 用 Azure Event Hubs に関する問題をトラブルシューティングする
 description: この記事では、Apache Kafka 用 Azure Event Hubs に関する問題をトラブルシューティングする方法を示します
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: a9d4a93f0074f206cd4627913505c66eb6480cbd
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 05/10/2021
+ms.openlocfilehash: ee2e598cff140ebfd16c5acd10eca545a29f5b2b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314084"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378166"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs 用 Apache Kafka トラブルシューティング ガイド
 この記事では、Apache Kafka 用 Event Hubs を使用するときに発生する可能性がある問題のトラブルシューティングのヒントを示します。 
@@ -49,7 +49,7 @@ Event Hubs で Kafka を使用するときに問題が発生する場合は、�
 - **ファイアウォールによるトラフィックのブロック** - ポート **9093** がファイアウォールによってブロックされていないことを確認してください。
 - **TopicAuthorizationException** - この例外の最も一般的な原因は次のとおりです。
     - 構成ファイル内の接続文字列の入力ミス。または、
-    - Basic レベルの名前空間で Kafka 用 Event Hubs を使用しようとしている。 Kafka 用 Event Hubs 機能は、[Standard および Dedicated レベルの名前空間でのみサポート](https://azure.microsoft.com/pricing/details/event-hubs/)されます。
+    - Basic レベルの名前空間で Kafka 用 Event Hubs を使用しようとしている。 Kafka 機能の Event Hubs は、Basic 層ではサポートされていません。
 - **Kafka バージョンの不一致** - Kafka エコシステム用 Event Hubs では、Apache Kafka バージョン 1.0 以降がサポートされます。 Kafka バージョン 0.10 以降を使用する一部のアプリケーションは、Kafka プロトコルの下位互換性のために動作することがありますが、古い API バージョンを使用しないことを強くお勧めします。 Kafka バージョン 0.9 以前では、必要な SASL プロトコルがサポートされず、Event Hubs に接続できません。
 - **Kafka で使用するときの AMQP ヘッダーでの異常なエンコーディング** - AMQP 経由でイベント ハブにイベントを送信するときに、AMQP ペイロード ヘッダーが AMQP エンコードでシリアル化されます。 Kafka コンシューマーでは、AMQP からヘッダーを逆シリアル化しません。 ヘッダー値を読み取るには、AMQP ヘッダーを手動でデコードします。 また、Kafka プロトコル経由で使用することがわかっている場合は、AMQP ヘッダーを使用しないようにすることもできます。 詳細については、[こちらの GitHub の問題](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56)のページを参照してください。
 - **SASL 認証** - Event Hubs で必要な SASL 認証プロトコルと連携するフレームワークを取得することは、見かけ以上に難しい場合があります。 SASL 認証でフレームワークのリソースを使用して、構成のトラブルシューティングを行うことができるかどうかを確認してください。 

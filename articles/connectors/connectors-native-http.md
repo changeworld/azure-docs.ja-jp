@@ -4,15 +4,15 @@ description: Azure Logic Apps からサービス エンドポイントに送信 
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 02/18/2021
+ms.topic: how-to
+ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45c6945818016618252e69554c62391691d2fb6a
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719442"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368858"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -104,14 +104,14 @@ ms.locfileid: "101719442"
 
 ここでは、以下の情報を返す HTTP トリガーまたはアクションからの出力の詳細情報を示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |----------|------|-------------|
 | `headers` | JSON オブジェクト | 要求のヘッダー |
 | `body` | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
 | `status code` | Integer | 要求の状態コード |
 |||
 
-| status code | 説明 |
+| status code | Description |
 |-------------|-------------|
 | 200 | [OK] |
 | 202 | 承認済み |
@@ -194,6 +194,41 @@ HTTP 要求の本文に form-urlencoded データを提供するには、デー�
 
 * HTTP アクションの基になる JavaScript Object Notation (JSON) 定義では、暗黙的に非同期操作パターンに従います。
 
+<a name="tsl-ssl-certificate-authentication"></a>
+
+## <a name="tslssl-certificate-authentication"></a>TSL/SSL 証明書認証
+
+シングルテナント Azure Logic Apps に **ロジックアプリ (Standard)** リソースがあり、HTTP 操作および TSL/SSL 証明書を使用してワークフローから HTTPS エンドポイントを呼び出して認証を試みた場合、次の手順を実行しなければ、呼び出しは失敗します。
+
+1. ロジック アプリ リソースのアプリ設定で、[アプリ設定 (`WEBSITE_LOAD_ROOT_CERTIFICATES`) を追加または更新](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)します。
+
+1. 設定値には、信頼できるルート証明書として TSL/SSL 証明書のサムプリントを指定します。
+
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+
+たとえば、Visual Studio Code で作業している場合は、次の手順を実行します。
+
+1. ロジック アプリ プロジェクトの **local.settings.json** ファイルを開きます。
+
+1. `Values` JSON オブジェクトで、`WEBSITE_LOAD_ROOT_CERTIFICATES` 設定を追加または更新します。
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         <...>
+      }
+   }
+   ```
+
+詳細については、次のドキュメントを確認してください。
+
+* [シングルテナントの Azure Logic Apps でロジック アプリのホストとアプリの設定を編集する](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [非公開のクライアント証明書 - Azure App Service](../app-service/environment/certificates.md#private-client-certificate)
+
 <a name="disable-asynchronous-operations"></a>
 
 ## <a name="disable-asynchronous-operations"></a>非同期操作の無効化
@@ -233,7 +268,7 @@ HTTP 要求には[タイムアウト制限](../logic-apps/logic-apps-limits-and-
 
 ## <a name="disable-checking-location-headers"></a>場所ヘッダーの確認を無効にする
 
-一部のエンドポイント、サービス、システム、または API は、`location` ヘッダーのない "202 ACCEPTED" 応答を返します。 `location` ヘッダーが存在しない場合に、HTTP アクションが要求の状態を継続的に確認しないようにするには、次のオプションを使用します。
+一部のエンドポイント、サービス、または API は、`location` ヘッダーのない `202 ACCEPTED` 応答を返します。 `location` ヘッダーが存在しない場合に、HTTP アクションが要求の状態を継続的に確認しないようにするには、次のオプションを使用します。
 
 * アクションが継続的にポーリングしたり、要求の状態を確認したりしないように、[HTTP アクションの非同期操作パターンを無効にします](#disable-asynchronous-operations)。 アクションは代わりに、要求が処理を終了した後、受信側が状態と結果を応答するまで待機します。
 
@@ -262,7 +297,7 @@ Logic Apps では、これらのヘッダーが含まれる HTTP トリガーま
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-トリガーとアクションのパラメーターの詳細については、以下のセクションを参照してください。
+トリガーとアクションのパラメーターに関する技術的な情報については、以下のセクションを参照してください。
 
 * [HTTP トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
 * [HTTP アクション パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)

@@ -1,6 +1,6 @@
 ---
 title: イマーシブ リーダー Swift クライアント ライブラリのクイックスタート
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: このクイックスタートでは、iOS アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
 author: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 5dc4e38eb0e29cc9fa272f6e740fcc7d1dbfe44a
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 090fe51ab2734629e8d4d44862df5aca827d7c83
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619210"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376548"
 ---
 [Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 

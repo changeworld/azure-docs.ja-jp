@@ -6,12 +6,12 @@ ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: cf655885e01fe6bca99a82c82d6bbbc4c1a080b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c20a8307fc61e180b378fee034e086a5f54ba03f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632436"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089850"
 ---
 # <a name="tutorial-use-azure-quickstart-templates-for-azure-resource-manager-bicep-development"></a>チュートリアル: Azure Resource Manager Bicep 開発にクイックスタート テンプレートを使用する
 
@@ -39,7 +39,7 @@ Visual Studio Code と Bicep 拡張機能に加え、Azure PowerShell または 
 
 1. [[Azure クイックスタート テンプレート]](https://azure.microsoft.com/resources/templates/) を開きます。
 1. **[検索]** に「_deploy linux web app_」と入力します。
-1. "**Deploy a basic Linux web app**" というタイトルのタイルを選択します。 見つからない場合は、[直接リンク](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)からアクセスしてください。
+1. "**Deploy a basic Linux web app**" というタイトルのタイルを選択します。 見つからない場合は、[直接リンク](https://azure.microsoft.com/resources/templates/webapp-basic-linux/)からアクセスしてください。
 1. **[GitHub で参照する]** を選択します。
 1. _azuredeploy.json_ を選択します。 これが、使用できるテンプレートです。
 1. **[Raw]\(生\)** を選択し、URL をコピーします。

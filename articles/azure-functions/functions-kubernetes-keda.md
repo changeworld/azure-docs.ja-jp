@@ -1,16 +1,16 @@
 ---
 title: KEDA を使用した Kubernetes での Azure Functions
 description: クラウドまたはオンプレミスで KEDA (Kubernetes ベースのイベント ドリブン自動スケーリング) を使用して Kubernetes で Azure Functions を実行する方法について説明します。
-author: jeffhollan
+author: eamonoreilly
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.author: jehollan
-ms.openlocfilehash: 1eac5a24ae577d712a7dccc7514eb4b18ade232a
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.author: eamono
+ms.openlocfilehash: a1b7113c8d63163023baffa0abeb7d5cf7de7a6b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485263"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481435"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA を使用した Kubernetes での Azure Functions
 

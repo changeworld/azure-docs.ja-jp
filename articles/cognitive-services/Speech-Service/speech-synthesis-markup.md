@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: beb77517a953163c9d1dd34b59fa429b5d58cdd2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3e0bcef30d13403d8067c41568b7ee321fb46995
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478038"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377194"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -396,20 +396,20 @@ speechConfig!.setPropertyTo(
 
 | 音声                            | ロケール言語           | Description                                                 |
 |----------------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | en-US ロケール (この音声のプライマリ ロケールである) を読み上げます |
-|                                  | `lang="en-CA"`            | en-CA ロケール言語を読み上げます                                  |
-|                                  | `lang="en-AU"`            | en-AU ロケール言語を読み上げます                                  |
-|                                  | `lang="en-GB"`            | en-GB ロケール言語を読み上げます                                  |
-|                                  | `lang="de-DE"`            | de-DE ロケール言語を読み上げます                                  |
-|                                  | `lang="fr-FR"`            | fr-FR ロケール言語を読み上げます                                  |
-|                                  | `lang="fr-CA"`            | fr-CA ロケール言語を読み上げます                                  |
-|                                  | `lang="es-ES"`            | es-ES ロケール言語を読み上げます                                  |
-|                                  | `lang="es-MX"`            | es-MX ロケール言語を読み上げます                                  |
-|                                  | `lang="zh-CN"`            | zh-CN ロケール言語を読み上げます                                  |
-|                                  | `lang="ko-KR"`            | ko-KR ロケール言語を読み上げます                                  |
-|                                  | `lang="ja-JP"`            | ja-JP ロケール言語を読み上げます                                  |
-|                                  | `lang="it-IT"`            | it-IT ロケール言語を読み上げます                                  |
-|                                  | `lang="pt-BR"`            | pt-BR ロケール言語を読み上げます                                  |
+| `en-US-JennyMultilingualNeural`  | `lang="en-us"`            | en-US ロケール (この音声のプライマリ ロケールである) を読み上げます |
+|                                  | `lang="en-ca"`            | en-CA ロケール言語を読み上げます                                  |
+|                                  | `lang="en-au"`            | en-AU ロケール言語を読み上げます                                  |
+|                                  | `lang="en-gb"`            | en-GB ロケール言語を読み上げます                                  |
+|                                  | `lang="de-de"`            | de-DE ロケール言語を読み上げます                                  |
+|                                  | `lang="fr-fr"`            | fr-FR ロケール言語を読み上げます                                  |
+|                                  | `lang="fr-ca"`            | fr-CA ロケール言語を読み上げます                                  |
+|                                  | `lang="es-es"`            | es-ES ロケール言語を読み上げます                                  |
+|                                  | `lang="es-mx"`            | es-MX ロケール言語を読み上げます                                  |
+|                                  | `lang="zh-cn"`            | zh-CN ロケール言語を読み上げます                                  |
+|                                  | `lang="ko-kr"`            | ko-KR ロケール言語を読み上げます                                  |
+|                                  | `lang="ja-jp"`            | ja-JP ロケール言語を読み上げます                                  |
+|                                  | `lang="it-it"`            | it-IT ロケール言語を読み上げます                                  |
+|                                  | `lang="pt-br"`            | pt-BR ロケール言語を読み上げます                                  |
 
 **例**
 
@@ -420,10 +420,10 @@ speechConfig!.setPropertyTo(
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
     <voice name="en-US-JennyMultilingualNeural">
         I am looking forward to the exciting things.
-        <lang xml:lang="es-MX">
+        <lang xml:lang="es-mx">
             Estoy deseando que lleguen las cosas emocionantes.
         </lang>
-        <lang xml:lang="de-DE">
+        <lang xml:lang="de-de">
             Ich freue mich auf die spannenden Dinge.
         </lang>
     </voice>

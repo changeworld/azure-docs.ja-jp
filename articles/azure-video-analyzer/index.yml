@@ -1,0 +1,34 @@
+### YamlMime:Hub
+title: Azure Video Analyzer のドキュメント
+summary: 開発者は Azure Video Analyzer を使用すると、保存またはストリーミングされているビデオから、AI を使用した実用性のある分析情報を引き出すビデオ分析ソリューションを短期間で開発できます。 ビデオや機械学習の専門知識がなくても、音声と映像のビデオ コンテンツを理解できるため、組織は職場の安全性、店舗内体験、デジタル資産管理、メディア アーカイブなどの質を高めることができます。 Azure Video Analyzer はビデオ分析用の開発者向けプラットフォームを提供し、Azure Video Analyzer for Media はメディア シナリオを対象とする AI ソリューションを提供します。
+brand: azure
+metadata:
+  title: Azure Video Analyzer のドキュメント
+  description: 開発者は Azure Video Analyzer を使用すると、保存またはストリーミングされているビデオから、AI を使用した実用性のある分析情報を引き出すビデオ分析ソリューションを短期間で開発できます。 ビデオや機械学習の専門知識がなくても、音声と映像のビデオ コンテンツを理解できるため、組織は職場の安全性、店舗内体験、デジタル資産管理、メディア アーカイブなどの質を高めることができます。 Azure Video Analyzer はビデオ分析用の開発者向けプラットフォームを提供し、Azure Video Analyzer for Media はメディア シナリオを対象とする AI ソリューションを提供します。
+  services: azure-video-analyzer
+  ms.service: azure-video-analyzer
+  ms.topic: hub-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 03/21/2021
+highlightedContent:
+  items:
+    - title: Azure Video Analyzer のドキュメント
+      itemType: overview
+      url: ./video-analyzer-docs/overview.md
+    - title: Azure Video Analyzer for Media のドキュメント
+      itemType: overview
+      url: ./video-analyzer-for-media-docs/video-indexer-overview.md
+additionalContent:
+  sections:
+    - items:
+        - title: Azure AI
+          summary: ビジネス要件に適した人工知能 (AI) を実現します。
+          url: 'https://azure.microsoft.com/overview/ai-platform/'
+        - title: Azure IoT のサービス
+          summary: Azure IoT の力を利用し、エッジやクラウドで、業界の要件別にニーズを満たします。
+          url: 'https://azure.microsoft.com/overview/iot/'
+        - title: Azure Machine Learning
+          summary: Azure Machine Learning でエンドツーエンドの機械学習ライフサイクルを加速します
+          url: 'https://azure.microsoft.com/services/machine-learning/'

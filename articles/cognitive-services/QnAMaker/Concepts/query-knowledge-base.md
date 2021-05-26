@@ -3,12 +3,12 @@ title: ナレッジ ベースに対してクエリを実行する - QnA Maker
 description: ナレッジ ベースは公開する必要があります。 公開されると、ナレッジ ベースに対するクエリは、generateAnswer API を使用してランタイム予測エンドポイントで実行されます。
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: c723d1446c90290929bc8cad066b4744e284f3f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d36e1feb0279eec638a3602c5188e8af1cb7c17
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008673"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369305"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>回答を求めてナレッジ ベースに対してクエリを実行する
 
@@ -39,7 +39,7 @@ ms.locfileid: "103008673"
 
 使用される特徴は、単語レベルのセマンティクス、コーパスの用語レベルの重要性、2 つのテキスト文字列間の類似性と関連性を判別するディープ ラーニング済みのセマンティック モデルなどですが、これらに限定されません。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 トレーニングされ、[公開された](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
 
