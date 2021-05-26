@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: ccb58f94045d69dc1cfcfed830fdd401881ecd3f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: be61dad30d7c8670442612faf928d5aa82e64d56
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746323"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065748"
 ---
 # <a name="tutorial-implement-federated-authentication-between-azure-active-directory-and-sharepoint-on-premises"></a>チュートリアル: Azure Active Directory と SharePoint オンプレミスの間のフェデレーション認証を実装する
 
@@ -105,7 +105,7 @@ $realm = "urn:sharepoint:federation"
 $loginUrl = "https://login.microsoftonline.com/dc38a67a-f981-4e24-ba16-4443ada44484/wsfed"
 
 # Define the claim types used for the authorization
-$userIdentifier = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" -IncomingClaimTypeDisplayName "name" -LocalClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
+$userIdentifier = New-SPClaimTypeMapping -IncomingClaimType `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` -IncomingClaimTypeDisplayName "name" -LocalClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
 $role = New-SPClaimTypeMapping "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" -IncomingClaimTypeDisplayName "Role" -SameAsIncoming
 
 # Let SharePoint trust the Azure AD signing certificate
@@ -301,7 +301,7 @@ Azure AD のセキュリティ グループは、その `Id` 属性、つまり 
 
     1. **[一意のユーザー識別子 (名前 ID)]** を選択し、その **[ソース属性]** プロパティを **user.localuserprincipalname** に変更して、 **[保存]** をクリックします。
     
-    1. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** を選択し、その **[ソース属性]** プロパティを **user.localuserprincipalname** に変更して、 **[保存]** をクリックします。
+    1. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` を選択し、その **[ソース属性]** プロパティを **user.localuserprincipalname** に変更して、 **[保存]** をクリックします。
     
     1. **[User Attributes & Claims]\(ユーザー属性とクレーム\)** は次のようになります。
     

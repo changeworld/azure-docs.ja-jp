@@ -1,6 +1,6 @@
 ---
 title: 言語サポート - イマーシブ リーダー
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: イマーシブ リーダーで利用できる人間言語について説明します。
 services: cognitive-services
 author: metanMSFT
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metang
-ms.openlocfilehash: c36933a13bf3373930acf5dbb36513aa171748f9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a706f3b7cde5e7f3a19d82ff4b2bb7a7d2fa7913
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768897"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377712"
 ---
 # <a name="language-support-for-immersive-reader"></a>イマーシブ リーダーの言語サポート
 

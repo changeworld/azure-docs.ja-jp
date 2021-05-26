@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で発生した�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a2a95a25bc42de9f4c93200d4fdd1e5d558549a
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673649"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377435"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
@@ -124,6 +124,21 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+$transferDetails = $Context.Input
+
+Invoke-DurableActivity -FunctionName 'DebitAccount' -Input @{ account = transferDetails.sourceAccount; amount = transferDetails.amount }
+
+try {
+    Invoke-DurableActivity -FunctionName 'CreditAccount' -Input @{ account = transferDetails.destinationAccount; amount = transferDetails.amount }
+} catch {
+    Invoke-DurableActivity -FunctionName 'CreditAccount' -Input @{ account = transferDetails.sourceAccount; amount = transferDetails.amount }
+}
+```
+
 
 ---
 
@@ -185,6 +200,18 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     yield context.call_activity_with_retry('FlakyFunction', retry_options)
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$retryOptions = New-DurableRetryOptions `
+                    -FirstRetryInterval (New-Timespan -Seconds 5) `
+                    -MaxNumberOfAttempts 3
+
+Invoke-DurableActivity -FunctionName 'FlakyFunction' -RetryOptions $retryOptions
 ```
 
 ---
@@ -283,6 +310,27 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
         return False
 
 main = df.Orchestrator.create(orchestrator_function)
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$expiryTime =  New-TimeSpan -Seconds 30
+
+$activityTask = Invoke-DurableActivity -FunctionName 'FlakyFunction'-NoWait
+$timerTask = Start-DurableTimer -Duration $expiryTime -NoWait
+
+$winner = Wait-DurableTask -Task @($activityTask, $timerTask) -NoWait
+
+if ($winner -eq $activityTask) {
+    Stop-DurableTimerTask -Task $timerTask
+    return $True
+}
+else {
+    return $False
+}
 ```
 
 ---

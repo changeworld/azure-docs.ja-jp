@@ -7,19 +7,23 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 5a506d84f338b2eab1c32caa4d94bd03a33e637d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+zone_pivot_groups: acs-plat-web-ios-android-windows
+ms.openlocfilehash: 2220fe93d5897fa5ebcf90c03b3d37c305967b23
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728336"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092269"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>クイック スタート:音声通話をアプリに追加する
 
 Communication Services 通話 SDK を使用して音声およびビデオ通話をアプリに追加することによって、Azure Communication Services の使用を開始します。
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+
+::: zone pivot="platform-windows"
+[!INCLUDE [Calling with Windows](./includes/get-started-windows.md)]
+::: zone-end
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/get-started-javascript.md)]
@@ -42,5 +46,5 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - [通話のヒーロー サンプル](../../samples/calling-hero-sample.md)を確認する
-- [通話 SDK](./calling-client-samples.md) について確認する
+- [Calling SDK の機能](./calling-client-samples.md)について確認する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

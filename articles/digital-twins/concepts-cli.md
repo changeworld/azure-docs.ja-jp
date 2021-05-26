@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 04/30/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d6fd782020957222fbf56f197abc40b45eaa47be
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: d3e081d4a60b5e4f26e5163d55f2df682b042bca
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788784"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066523"
 ---
 # <a name="azure-digital-twins-cli-command-set"></a>Azure Digital Twins CLI コマンド セット
 
@@ -25,7 +25,7 @@ Azure portal で Azure Digital Twins インスタンスを管理できるだけ�
 * [ルート](concepts-route-events.md)の管理
 * Azure ロールベースのアクセス制御 (Azure RBAC) を使用した[セキュリティ](concepts-security.md)の構成
 
-コマンド セットは、**az dt** と呼ばれ、[Azure CLI の Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)の一部として存在します。 コマンドとその用途の完全な一覧は、`az iot` コマンド セット [az dt コマンド参照](/cli/azure/dt)の参照ドキュメントで参照できます。
+コマンド セットは、**az dt** と呼ばれ、[Azure CLI の Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)の一部として存在します。 コマンドとその用途の完全な一覧は、`az iot` コマンド セット [az dt コマンド参照](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)の参照ドキュメントで参照できます。
 
 ## <a name="uses-deploy-and-validate"></a>使用する (デプロイと検証)
 
@@ -61,4 +61,4 @@ az extension add --upgrade --name azure-iot
 ## <a name="next-steps"></a>次のステップ
 
 CLI とその完全なコマンド セットを、参照ドキュメント:
-* [az dt コマンド参照](/cli/azure/dt)で確認する
+* [az dt コマンド参照](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)で確認する

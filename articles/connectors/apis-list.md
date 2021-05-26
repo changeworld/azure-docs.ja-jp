@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 04/20/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: d6a2b6c30d4ff6212a905e454ff56e844e423d22
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e6841afabe36667070ca595810c423c61db03837
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124637"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377041"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -44,7 +44,7 @@ Azure Logic Apps では、"*コネクタ*" を使用して、他のアプリ、�
 
 ## <a name="connector-categories"></a>コネクタのカテゴリ
 
-Logic Apps では、ほとんどのトリガーとアクションが "*組み込み*" バージョンまたは "*マネージド コネクタ*" バージョンのどちらかで使用できます。 少数のトリガーとアクションが、両方のバージョンで利用できます。 使用できるバージョンは、マルチテナント ロジック アプリと (現在 [Logic Apps プレビュー](../logic-apps/logic-apps-overview-preview.md)でのみ使用可能な) シングルテナント ロジック アプリのどちらを作成するかによって異なります。
+Logic Apps では、ほとんどのトリガーとアクションが "*組み込み*" バージョンまたは "*マネージド コネクタ*" バージョンのどちらかで使用できます。 少数のトリガーとアクションが、両方のバージョンで利用できます。 使用できるバージョンは、マルチテナント ロジック アプリと (現在[シングルテナントの Azure Logic Apps](../logic-apps/single-tenant-overview-compare.md) でのみ使用可能な) シングルテナント ロジック アプリのどちらを作成するかによって異なります。
 
 [組み込みのトリガーとアクション](built-in.md)は Logic Apps ランタイムでネイティブに実行され、接続を作成する必要はなく、次の種類のタスクを実行します。
 
