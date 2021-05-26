@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e0591d9897b1ea20978afc663e63e74af7153832
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 29430671cd5879f140127c94541dd50d765fa87e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788512"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460278"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
@@ -75,17 +75,17 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 | `$dtId` | デジタル ツインの ID を表すユーザー指定の文字列 |
 | `$etag` | Web サーバーによって割り当てられた標準 HTTP フィールド |
 | `$conformance` | このデジタル ツインの適合性状態 (*conformant*、*non-conformant*、*unknown*) を含む列挙型 |
-| `{propertyName}` | JSON のプロパティ値 (`string`、数値型、またはオブジェクト) |
+| `<property-name>` | JSON のプロパティ値 (`string`、数値型、またはオブジェクト) |
 | `$relationships` | リレーションシップ コレクションへのパスの URL。 デジタル ツインに発信リレーションシップ エッジがない場合、このフィールドは存在しません。 |
 | `$metadata.$model` | [省略可能] このデジタル ツインを特徴付けるモデル インターフェイスの ID |
-| `$metadata.{propertyName}.desiredValue` | [書き込み可能なプロパティ専用] 指定されたプロパティの目的の値 |
-| `$metadata.{propertyName}.desiredVersion` | [書き込み可能なプロパティ専用] 目的の値のバージョン |
-| `$metadata.{propertyName}.ackVersion` | デジタル ツインを実装するデバイス アプリによって確認されたバージョン |
-| `$metadata.{propertyName}.ackCode` | [書き込み可能なプロパティ専用] デジタル ツインを実装するデバイス アプリによって返される `ack` コード |
-| `$metadata.{propertyName}.ackDescription` | [書き込み可能なプロパティ専用] デジタル ツインを実装するデバイス アプリによって返される `ack` の説明 |
-| `{componentName}` | コンポーネントのプロパティ値とメタデータを含む JSON オブジェクト。ルート オブジェクトの場合と似たものです。 このオブジェクトは、コンポーネントにプロパティがない場合でも存在します。 |
-| `{componentName}.{propertyName}` | コンポーネントの、JSON のプロパティ値 (`string`、数値型、またはオブジェクト) |
-| `{componentName}.$metadata` | コンポーネントのメタデータ情報。ルートレベルの `$metadata` と似たものです。 |
+| `$metadata.<property-name>.desiredValue` | [書き込み可能なプロパティ専用] 指定されたプロパティの目的の値 |
+| `$metadata.<property-name>.desiredVersion` | [書き込み可能なプロパティ専用] 目的の値のバージョン |
+| `$metadata.<property-name>.ackVersion` | デジタル ツインを実装するデバイス アプリによって確認されたバージョン |
+| `$metadata.<property-name>.ackCode` | [書き込み可能なプロパティ専用] デジタル ツインを実装するデバイス アプリによって返される `ack` コード |
+| `$metadata.<property-name>.ackDescription` | [書き込み可能なプロパティ専用] デジタル ツインを実装するデバイス アプリによって返される `ack` の説明 |
+| `<component-name>` | コンポーネントのプロパティ値とメタデータを含む JSON オブジェクト。ルート オブジェクトの場合と似たものです。 このオブジェクトは、コンポーネントにプロパティがない場合でも存在します。 |
+| `<component-name>.<property-name>` | コンポーネントの、JSON のプロパティ値 (`string`、数値型、またはオブジェクト) |
+| `<component-name>.$metadata` | コンポーネントのメタデータ情報。ルートレベルの `$metadata` と似たものです。 |
 
 JSON オブジェクトとして書式設定されたデジタル ツインの例を次に示します。
 
@@ -144,7 +144,7 @@ JSON オブジェクトとして表された場合、デジタル ツインの�
 | `$sourceId` | ソース デジタル ツインの ID |
 | `$targetId` | ターゲット デジタル ツインの ID |
 | `$relationshipName` | リレーションシップの名前 |
-| `{propertyName}` | [省略可能] このリレーションシップの、JSON のプロパティ値 (`string`、数値型、またはオブジェクト) |
+| `<property-name>` | [省略可能] このリレーションシップの、JSON のプロパティ値 (`string`、数値型、またはオブジェクト) |
 
 JSON オブジェクトとして書式設定されたリレーションシップの例を次に示します。
 

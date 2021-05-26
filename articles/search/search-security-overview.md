@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4310c724707548cd55df5591504736d8f3c3857
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097638"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460054"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure Cognitive Search のセキュリティの概要
 
@@ -109,7 +109,7 @@ Azure Cognitive Search では、個別のインデックスはセキュリティ
 
 Azure Cognitive Search では、Resource Manager を使用して、サービスの作成または削除、API キーの管理、サービスのスケーリングが行われます。 そのため、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api) のどれを使用しているかにかかわらず、Azure で割り当てられているロールによって、これらのタスクを実行できるユーザーが決定されます。
 
-検索サービスの管理には、[3 つの基本的なロール](search-security-rbac.md#management-tasks-by-role)が定義されます。 ロールの割り当ては、サポートされている任意の方法 (ポータル、PowerShell など) を使用して行うことができ、サービス全体に適用されます。 所有者ロールと共同作成者ロールは、さまざまな管理機能を実行できます。 重要な情報のみを表示するユーザーに閲覧者ロールを割り当てることができます。
+検索サービスの管理には、[3 つの基本的なロール](search-security-rbac.md)が定義されます。 ロールの割り当ては、サポートされている任意の方法 (ポータル、PowerShell など) を使用して行うことができ、サービス全体に適用されます。 所有者ロールと共同作成者ロールは、さまざまな管理機能を実行できます。 重要な情報のみを表示するユーザーに閲覧者ロールを割り当てることができます。
 
 > [!Note]
 > Azure 全体のメカニズムを使用して、サブスクリプションまたはリソースをロックし、管理者権限を持つユーザーが検索サービスを誤って、または許可なく削除しないようにすることができます。 詳細については、[リソースのロックによる予期せぬ削除の防止](../azure-resource-manager/management/lock-resources.md)に関するページを参照してください。

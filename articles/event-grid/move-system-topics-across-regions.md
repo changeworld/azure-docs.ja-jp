@@ -4,12 +4,12 @@ description: この記事では、Azure Event Grid システム トピックを�
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
-ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b8db19b1ef99d81f47ec19254e1f6622c6a4ba2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89082201"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481052"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Azure Event Grid システム トピックを別のリージョンに移動する
 さまざまな理由により、リソースを別のリージョンに移動する場合があります。 たとえば、新しい Azure リージョンを利用するため、内部ポリシーとガバナンスの要件を満たすため、または容量計画の要件に応じるためです。 
@@ -118,6 +118,5 @@ Azure イベント ソースとそれに関連付けられているシステム 
 
 - [リージョン間でのカスタム トピックの移動](move-custom-topics-across-regions.md)。 
 - [リージョン間でのドメインの移動](move-domains-across-regions.md)。 
-- [リージョン間でパートナー名前空間を移動する](move-partner-namespaces-across-regions.md)。 
 
 リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)」という記事を参照してください。

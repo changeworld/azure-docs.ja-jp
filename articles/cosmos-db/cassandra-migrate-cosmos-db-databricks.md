@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: caedefbf3887205b68bcd5de5e7cd5f1f7d7f53c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6cc461aa2c73ad17086e9dece7d976f9de235682
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801011"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465007"
 ---
 # <a name="migrate-data-from-cassandra-to-an-azure-cosmos-db-cassandra-api-account-by-using-azure-databricks"></a>Azure Databricks を使用して Cassandra から Azure Cosmos DB Cassandra API アカウントにデータを移行する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -89,6 +89,8 @@ val cosmosCassandra = Map(
     //throughput related settings below - tweak these depending on data volumes. 
     "spark.cassandra.output.batch.size.rows"-> "1",
     "spark.cassandra.output.concurrent.writes" -> "1000",
+    //"spark.cassandra.connection.remoteConnectionsPerExecutor" -> "1", // Spark 3.x
+    "spark.cassandra.connection.connections_per_executor_max"-> "1", // Spark 2.x
     "spark.cassandra.concurrent.reads" -> "512",
     "spark.cassandra.output.batch.grouping.buffer.size" -> "1000",
     "spark.cassandra.connection.keep_alive_ms" -> "600000000"
@@ -106,7 +108,7 @@ DFfromNativeCassandra
   .write
   .format("org.apache.spark.sql.cassandra")
   .options(cosmosCassandra)
-  .mode(SaveMode.Append)
+  .mode(SaveMode.Append) // only required for Spark 3.x
   .save
 ```
 

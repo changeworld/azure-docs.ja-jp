@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f52796cd5477ecd692296213e337ded4f52503cd
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571583"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189594"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop の RDP Shortpath (プレビュー)
 
@@ -53,10 +53,11 @@ RDP Shortpath では、セッション ホストの証明書を使用して、�
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="RDP Shortpath ネットワーク接続の図" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>必要条件
+## <a name="requirements"></a>要件
 
 RDP Shortpath をサポートするには、Windows Virtual Desktop クライアントに、セッション ホストへの直接の通信経路が必要です。 直接の通信経路を取得するには、次のテクノロジのいずれかを使用します。
 
+* リモート クライアント コンピューターでは、Windows 10 または Windows 7 が実行されている必要があり、[Windows デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop)がインストールされている必要があります。 現在、Web クライアントはサポートされていません。
 * [ExpressRoute プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md)
 * [サイト間 VPN (IPsec ベース)](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [ポイント間 VPN (IPsec ベース)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)

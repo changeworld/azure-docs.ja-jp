@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7634a07ab3a0026a06f959c99e7b104a9dc91650
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701707"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459724"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Azure Storage Analytics ログを有効にして管理する (クラシック)
 
@@ -113,11 +113,11 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
 
    Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/)に関する記事をご覧ください。  
 
-### <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
 
-### <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -210,7 +210,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
    Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/)に関する記事をご覧ください。  
 
-### <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 次の例では、BLOB とキューのストレージ サービスの保持期間をコンソールに出力します。
 
@@ -220,7 +220,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_ModifyRetentionPeriod":::
 
-### <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 次の例では、BLOB とキューのストレージ サービスの保持期間をコンソールに出力します。
 

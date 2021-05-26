@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 05/13/2021
 ms.author: alkohli
-ms.openlocfilehash: c2f66895fccd14dcffd8c5570f1d5f46933090aa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 24fd0e9765ddbafda0fde0a3b362a4facd99afe7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439189"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460842"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで Azure Monitor を有効にする
 
@@ -144,19 +144,19 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
     
     Container Insights を有効にした Log Analytics ワークスペースの出力例を次に示します。
     
-    ```powershell
+    ```output
     Requesting a Cloud Shell.Succeeded.
     Connecting terminal...
     MOTD: Switch to Bash from PowerShell: bash
     VERBOSE: Authenticating to Azure ...
     VERBOSE: Building your Azure drive ...
     
-    PS /home/alpa> az account set -s fa68082f-8ff7-4a25-95c7-ce9da541242f
-    PS /home/alpa> ls
+    PS /home/myaccount> az account set -s fa68082f-8ff7-4a25-95c7-ce9da541242f
+    PS /home/myaccount> ls
     clouddrive  containerSolution.json
-    PS /home/alpa> ls
+    PS /home/myaccount> ls
     clouddrive  containerSolution.json  containerSolutionParams.json
-    PS /home/alpa> az deployment group create --resource-group myaserg --name Testdeployment1 --template-file containerSolution.json --parameters containerSolutionParams.json
+    PS /home/myaccount> az deployment group create --resource-group myaserg --name Testdeployment1 --template-file containerSolution.json --parameters containerSolutionParams.json
     {- Finished ..
         "id": "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/myaserg/providers/Microsoft.Resources/deployments/Testdeployment1",
         "location": null,
@@ -219,7 +219,7 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
         "tags": null,
         "type": "Microsoft.Resources/deployments"
     }
-    PS /home/alpa>
+    PS /home/myaccount>
     ```
 
 ## <a name="configure-azure-monitor-on-your-device"></a>デバイスで Azure Monitor を構成する

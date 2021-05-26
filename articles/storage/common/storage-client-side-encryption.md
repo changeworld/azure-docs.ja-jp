@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eca43b43606828ebb514f3f22e1839d96db4e0fa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588258"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461796"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 
@@ -125,7 +125,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 ### <a name="interface-and-dependencies"></a>インターフェイスと依存関係
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Key Vault 統合には、次の 2 つの必要なパッケージがあります。
 
@@ -134,7 +134,7 @@ Key Vault 統合には、次の 2 つの必要なパッケージがあります�
 
 Key Vault は値の高いマスター キー向けで、Key Vault ごとのスロットルの上限はこれを念頭に設計されています。 Azure.Security.KeyVault.Keys 4.1.0 では、キーのキャッシュをサポートしている `IKeyEncryptionKeyResolver` 実装はありません。 スロットルのためにキャッシュする必要がある場合は、[こちらのサンプル](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/)に従って、キャッシュ層を `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` インスタンスに挿入できます。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 次の 3 種類の Key Vault パッケージがあります。
 
@@ -179,7 +179,7 @@ v11 での Key Vault の使用方法について詳しくは、[v11 暗号化コ
 
 ### <a name="blob-service-encryption"></a>Blob service 暗号化
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 **ClientSideEncryptionOptions** オブジェクトを作成し、それをクライアント作成で **SpecializedBlobClientOptions** に設定します。 API ごとに暗号化オプションを設定することはできません。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
@@ -229,7 +229,7 @@ ClientSideEncryptionOptions encryptionOptions;
 BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOptions(encryptionOptions);
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 **BlobEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
@@ -255,7 +255,7 @@ blob.DownloadToStream(outputStream, null, options, null);
 
 ### <a name="queue-service-encryption"></a>Queue サービス暗号化
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 **ClientSideEncryptionOptions** オブジェクトを作成し、それをクライアント作成で **SpecializedQueueClientOptions** に設定します。 API ごとに暗号化オプションを設定することはできません。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
@@ -333,7 +333,7 @@ QueueMessage[] messages = queue.ReceiveMessages(maxMessages: 5).Value;
 Debug.Assert(messages.Length == 4)
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 **QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 

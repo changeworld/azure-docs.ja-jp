@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 057004a7a322505b137c04b76c3407e4c36f6f89
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98049832"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378200"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>プロビジョニングされたスループットとサーバーレスのどちらかを選択する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,16 +24,12 @@ Azure Cosmos DB は、[プロビジョニングされたスループット](set-
 
 | 条件 | プロビジョニング スループット | サーバーレス |
 | --- | --- | --- |
-| 状態 | 一般公開 | プレビュー段階 |
 | 最も適しているデータ | 予測可能なパフォーマンスが必要な持続したトラフィックを含むワークロード | 断続的または予測不可能なトラフィックを含み、平均対ピークのトラフィック比率の低いワークロード |
 | しくみ | 各コンテナーに対して、1 秒あたりの[要求ユニット](request-units.md)数で表されるスループットの量をプロビジョニングします。 毎秒、この量の要求ユニットをデータベース操作に使用できます。 プロビジョニングされたスループットは、手動で更新することも、[自動スケール](provision-throughput-autoscale.md)で自動的に調整することもできます。 | コンテナーに対してデータベース操作を実行し、容量をプロビジョニングする必要はありません。 |
 | 地理的分散 | 使用可能 (Azure リージョンの数に制限なし) | 使用不可 (サーバーレス アカウントは 1 つの Azure リージョンでのみ実行できます) |
 | コンテナーあたりの最大ストレージ | 無制限 | 50 GB |
 | パフォーマンス | SLA に記載されるポイント読み取りと書き込み 10 ms 未満の待機時間 | SLO に記載されるポイント読み取り 10 ms 未満、書き込み 30 ms 未満の待機時間 |
 | 課金モデル | 消費された RU 数に関係なく、プロビジョニングされた RU/ 秒に対して 1 時間ごとに課金が行われます。 | データベース操作で消費される RU の量に対して時間単位で課金が行われます。 |
-
-> [!IMPORTANT]
-> サーバーレスの制限事項の一部は、サーバーレスが一般公開されるときに緩和または削除される可能性があります。**お客様のフィードバック** を参考にして決定されます。 サーバーレス エクスペリエンスの詳細については、[azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) までお問い合わせください。
 
 ## <a name="estimating-your-expected-consumption"></a>予想される消費量の見積もり
 

@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 4d5ea8b741aa45b54a0079bceb2a4da582861c09
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 42bddf07ed4ac4c539ba832b54ec20216533d16e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564490"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110487244"
 ---
 #### <a name="windows"></a>[Windows](#tab/windows/)
 ```json
@@ -104,6 +104,9 @@ ms.locfileid: "107564490"
                     "uri": ""
                 },
                 "writeAcceleratorEnabled": "false"
+            },
+            "resourceDisk": {
+                "size": "4096"
             }
         },
         "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
@@ -227,6 +230,9 @@ ms.locfileid: "107564490"
                     "uri": ""
                 },
                 "writeAcceleratorEnabled": "false"
+            },
+            "resourceDisk": {
+                "size": "4096"
             }
         },
         "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
