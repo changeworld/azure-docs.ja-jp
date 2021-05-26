@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cd6147fbe38710bcefd580e71be1d6f5d446a21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a68697d6dffad6aad857bb59d66beeb42dec62d2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89010751"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475398"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>.NET を使用して保存されているアクセス ポリシーを作成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "89010751"
 
 次のコード例では、保存されているアクセス ポリシーをコンテナーに作成します。 アクセス ポリシーを使用して、コンテナーまたは blob のサービス SAS に制約を指定します。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Azure Storage 向け .NET クライアント ライブラリのバージョン 12 を使用してコンテナー上に保存されているアクセス ポリシーを作成するには、次のメソッドのいずれかを呼び出します。
 
@@ -93,7 +93,7 @@ async static Task CreateStoredAccessPolicyAsync(string containerName)
 }
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Azure Storage 向け .NET クライアント ライブラリのバージョン 12 を使用してコンテナー上に保存されているアクセス ポリシーを作成するには、次のメソッドのいずれかを呼び出します。
 

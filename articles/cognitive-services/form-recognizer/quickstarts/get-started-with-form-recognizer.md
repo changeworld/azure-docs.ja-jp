@@ -1,6 +1,6 @@
 ---
 title: 'クイック スタート: サンプル ラベル付けツールを使用したフォームのラベル付け、モデルのトレーニング、フォームの分析 - Form Recognizer'
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: このクイックスタートでは、Form Recognizer のサンプル ラベル付けツールを使用して、フォーム ドキュメントに手動でラベルを付けます。 次に、ラベル付けされたドキュメントを使用してカスタム ドキュメント処理モデルをトレーニングし、そのモデルを使用してキーと値のペアを抽出します。
 author: laujan
 manager: nitinme
@@ -11,12 +11,12 @@ ms.date: 05/14/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: ドキュメントの処理
-ms.openlocfilehash: c833e08915347682276cb53b45c507902d5ea43f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: af803b92945be059f604a3890a90d3aa36e5781e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382281"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475155"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -32,8 +32,6 @@ Form Recognizer の用途:
 * Analyze Layout
 * 事前構築済みモデル (請求書、領収書、ID ドキュメント) を使用して分析する
 * カスタムフォームのトレーニングと解析
-
-> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
 ## <a name="prerequisites"></a>前提条件
 

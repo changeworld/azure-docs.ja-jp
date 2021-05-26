@@ -393,8 +393,6 @@
       items:
         - name: 一般的な問題
           href: troubleshooting.md
-        - name: ベスト プラクティスの確認
-          href: kube-advisor-tool.md
         - name: SSH ノード アクセス
           href: ssh.md
         - name: Linux のパフォーマンス ツール

@@ -5,15 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec7ecb77d37ed1cdf1d13aa7191f5d50e0008c20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5eca5eb8ed59553e1b5eebdb859bc3f23d8b0e5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98790801"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379854"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>チュートリアル: クラウドでイベントを発行してサブスクライブする
 

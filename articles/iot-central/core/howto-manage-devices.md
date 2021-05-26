@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e1b4ca90cf7b4d8c5bdc23ea311a5a1feaada89c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c2b75d8b9d4743e4ee632ad1840f50a4580f3ea7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741097"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474293"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -38,7 +38,7 @@ ms.locfileid: "108741097"
 
 1. **[Devices]\(デバイス\)** ページの右側のウィンドウに、そのデバイス テンプレートから作成されたデバイスの一覧が表示されます。 各デバイスを選択すると、そのデバイスのデバイス詳細ページが表示されます。
 
-    ![[デバイスの詳細] ページ](./media/howto-manage-devices/devicelist.png)
+    ![[デバイスの詳細] ページ](./media/howto-manage-devices/device-list.png)
 
 ## <a name="add-a-device"></a>デバイスを追加する
 
@@ -78,7 +78,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. **[インポート]** を選択します。
 
-    ![インポート アクション](./media/howto-manage-devices/bulkimport1a.png)
+    ![インポート アクション](./media/howto-manage-devices/bulk-import-1.png)
 
 
 1. インポートするデバイス ID の一覧を含む CSV ファイルを選択します。
@@ -87,7 +87,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. インポートが完了すると、[Device Operations]\(デバイスの操作\) パネルに成功メッセージが表示されます。
 
-    ![インポート成功](./media/howto-manage-devices/bulkimport3a.png)
+    ![インポート成功](./media/howto-manage-devices/bulk-import-2.png)
 
 デバイスのインポート操作が失敗した場合は、[Device Operations]\(デバイスの操作\) パネルにエラー メッセージが表示されます。 すべてのエラーをキャプチャしたログ ファイルが生成されており、ダウンロードできます。
 
@@ -99,7 +99,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. 左側のウィンドウで、 **[すべてのデバイス]** を選択します。
 
-    ![関連付けが解除されているデバイス](./media/howto-manage-devices/unassociateddevices1a.png)
+    ![関連付けが解除されているデバイス](./media/howto-manage-devices/unassociated-devices-1.png)
 
 1. グリッドのフィルターを使用して、 **[デバイス テンプレート]** 列の値が、どのデバイスに対しても **[関連付けなし]** かどうかを判断します。
 
@@ -107,7 +107,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. **[移行]** を選択します。
 
-    ![デバイスの関連付け](./media/howto-manage-devices/unassociateddevices2a.png)
+    ![デバイスの関連付け](./media/howto-manage-devices/unassociated-devices-2.png)
 
 1. 使用可能なテンプレートの一覧からテンプレートを選択し、 **[移行]** を選択します。
 
@@ -125,7 +125,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. エクスポートするデバイスを選択して、 **[エクスポート]** アクションを選択します。
 
-    ![[エクスポート]](./media/howto-manage-devices/export1a.png)
+    ![[エクスポート]](./media/howto-manage-devices/export-1.png)
 
 1. エクスポート プロセスが開始します。 状態は、[Device Operations]\(デバイスの操作\) パネルを使用して追跡できます。
 
@@ -133,7 +133,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. **[ファイルのダウンロード]** リンクを選択して、ディスク上のローカル フォルダーにファイルをダウンロードします。
 
-    ![エクスポート - 成功](./media/howto-manage-devices/export2a.png)
+    ![エクスポート - 成功](./media/howto-manage-devices/export-2.png)
 
 1. エクスポートされた CSV ファイルには、デバイス ID、デバイス名、デバイス キー、および X509 証明書拇印の列が含まれています。
 

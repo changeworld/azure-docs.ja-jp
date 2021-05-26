@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 4fc71f3242cc5607acebc68b62c5c0565b8f8e56
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 88ed92f4db7037753e93386eea329ab560f0847b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715012"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464218"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate アプライアンスのアーキテクチャ
 
@@ -51,7 +51,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 - **SQL 検出および評価エージェント**: SQL Server インスタンスおよびデータベースの構成とパフォーマンスのメタデータを Azure に送信します。
 
 > [!Note]
-> 最後の 3 つのサービスは、VMware 環境で実行されているサーバーの検出と評価に使用されるアプライアンスでのみ使用できます。<br/> VMware 環境で実行されている SQL Server インスタンスとデータベースの検出および評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
+> 最後の 3 つのサービスは、VMware 環境で実行されているサーバーの検出と評価に使用されるアプライアンスでのみ使用できます。
 
 ## <a name="discovery-and-collection-process"></a>検出と収集のプロセス
 

@@ -5,14 +5,15 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27e5194b86ea5f76a346412c3239dac111c07d80
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171331"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379785"
 ---
 # <a name="module-twin-json-schema-azure-event-grid"></a>モジュール ツイン JSON スキーマ (Azure Event Grid)
 
