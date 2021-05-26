@@ -6,12 +6,12 @@ ms.date: 03/26/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 320908ab4b24c43e8bd5209d4f32ef0211036958
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a24a969a6f90533252340e0702c6be8861a9eb5
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628426"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838503"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -58,7 +58,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 1. **[ファイル名]** ボックスに次の URL を貼り付けます。
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json
     ```
 
 1. ファイルを開くには、 **[開く]** を選択します。

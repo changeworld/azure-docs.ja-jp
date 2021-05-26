@@ -7,12 +7,12 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 02/05/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b75f1e7df44840618accdbcc3b8d95eba9d2e228
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 454c25891759d99b3f622d66920f20d2ec0f1a6c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776506"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081642"
 ---
 # <a name="pause-and-resume-dedicated-sql-pools-with-synapse-pipelines"></a>Synapse パイプラインを使用して専用 SQL プールを一時停止および再開する
 
@@ -48,7 +48,7 @@ Synapse パイプラインを使用すると、一時停止と再開を自動化
 
 - 既存の [Azure Synapse ワークスペース](../get-started-create-workspace.md)
 - 1 つ以上の[専用 SQL プール](../get-started-analyze-sql-pool.md)
-- ワークスペースには、Azure 共同作成者ロールが割り当てられている必要があります。 「[ワークスペースの "Azure 共同作成者" ロールを Synapse 管理者に付与する](https://review.docs.microsoft.com/en-us/azure/synapse-analytics/security/how-to-set-up-access-control?branch=pr-en-us-146232#step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace)」を参照してください。
+- ワークスペースには、Azure 共同作成者ロールが割り当てられている必要があります。 「[ワークスペースの "Azure 共同作成者" ロールを Synapse 管理者に付与する](../security/how-to-set-up-access-control.md#step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace)」を参照してください。
 
 ## <a name="step-1-create-a-pipeline-in-synapse-studio"></a>手順 1: Synapse Studio でパイプラインを作成する。
 1. ワークスペースに移動し、Synapse Studio を開きます。 

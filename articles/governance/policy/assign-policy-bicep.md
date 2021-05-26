@@ -1,15 +1,15 @@
 ---
 title: 'クイックスタート: Bicep (プレビュー) ファイルを使用した新しいポリシーの割り当て'
 description: このクイックスタートでは、Bicep (プレビュー) ファイルを使用して、ポリシー割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 04/01/2021
+ms.date: 05/20/2021
 ms.topic: quickstart
 ms.custom: subject-bicepqs
-ms.openlocfilehash: a1808114dd336d09af01beff6b8a47982444ce66
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6ce9eb5ab021e5d6d5d57b9c81f5d0f4d0360f01
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733537"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475484"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-bicep-file"></a>クイックスタート: Bicep ファイルを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -39,8 +39,8 @@ param policyDefinitionID string = '/providers/Microsoft.Authorization/policyDefi
 
 resource assignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
     name: policyAssignmentName
+    scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
     properties: {
-        scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
         policyDefinitionId: policyDefinitionID
     }
 }

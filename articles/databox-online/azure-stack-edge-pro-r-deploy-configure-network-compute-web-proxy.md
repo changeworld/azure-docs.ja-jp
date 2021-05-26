@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 05/11/2021
 ms.author: alkohli
-ms.openlocfilehash: a1f3966c8794b50f6ec369f1ea86905c4d8aaf3f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 609e12e2c39dcbc6b0213f7619541a83dc6ffde8
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059940"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839556"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-r"></a>チュートリアル:Azure Stack Edge Pro R のネットワークを構成する
 
@@ -125,21 +125,16 @@ ms.locfileid: "106059940"
 これはオプション構成です。
 
 > [!IMPORTANT]
-> * ご利用の Azure Stack Edge Pro R デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 NTLM はサポートされていません。
->* プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。 プロキシの証明書は信頼されていないため、すべてのトラフィックをインターセプトして読み取る (その後、独自の証明書を使用してすべてに再署名する) プロキシは互換性がありません。 通常、透過プロキシは、Azure Stack Edge Pro R で適切に動作します。非透過の Web プロキシはサポートされていません。
+> プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。 プロキシの証明書は信頼されていないため、すべてのトラフィックをインターセプトして読み取る (その後、独自の証明書を使用してすべてに再署名する) プロキシは互換性がありません。 通常、透過プロキシは、Azure Stack Edge Pro R で適切に動作します。非透過の Web プロキシはサポートされていません。
 
 
 1. **[Web プロキシの設定]** ページで、次の手順を実行します。
 
-    1. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
+   1. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
 
-    2. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。 ご利用の Azure Stack Edge Pro R デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 **NTLM** はサポートされていません。
-
-    3. 認証を使用している場合は、ユーザー名とパスワードを入力します。
-
-    4. 構成された Web プロキシ設定を検証して適用するには、 **[適用]** を選択します。
+   2. 構成された Web プロキシ設定を検証して適用するには、 **[適用]** を選択します。
     
-   ![ローカル Web UI の [Web プロキシ設定] ページ 2](./media/azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![ローカル Web UI の [Web プロキシ設定] ページ 2](./media/azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy/web-proxy-2.png)<!--UI text update for instruction text is needed.-->
 
 2. 設定が適用されたら、 **[次へ: デバイス]** を選択します。
 

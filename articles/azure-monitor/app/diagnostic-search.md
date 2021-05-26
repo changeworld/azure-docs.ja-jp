@@ -3,12 +3,12 @@ title: Azure Application Insights の検索の使用 | Microsoft Docs
 description: Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9da2acea857f2b295fd2333988507babd967c88
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579554"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059394"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 
@@ -128,7 +128,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 Application Insights SDK によって送信される標準のテレメトリに加えて、次の操作を実行できます。
 
-* [.NET](./asp-net-trace-logs.md) または [Java](./java-trace-logs.md) の好みのログ記録フレームワークからのログ トレースをキャプチャする。 これは、ログ トレースを検索し、ページ ビュー、例外、その他のイベントと関連付けることができることを意味します。
+* [.NET](./asp-net-trace-logs.md) または [Java](java-2x-trace-logs.md) の好みのログ記録フレームワークからのログ トレースをキャプチャする。 これは、ログ トレースを検索し、ページ ビュー、例外、その他のイベントと関連付けることができることを意味します。
 * カスタム イベント、ページ ビュー、および例外を送信する[コードを作成](./api-custom-events-metrics.md)する。
 
 [ログとカスタム テレメトリを Application Insights に送信する方法についてはこちら](./asp-net-trace-logs.md)。

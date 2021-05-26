@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1af2c1b912afbcf44cefbfb021c592836dbde5b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 258dcb7c66b043828e55d6c0dbfe101c0992f8c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466288"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092892"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するアプリケーションの登録のアクセス許可
 
@@ -163,7 +163,7 @@ microsoft.directory/applications/owners/update と同じアクセス許可を付
 
 microsoft.directory/applications/permissions/update と同じアクセス許可を付与しますが、シングルテナント アプリケーションのみが対象となります。
 
-## <a name="required-license-plan"></a>必要とされるライセンス プラン
+## <a name="license-requirements"></a>ライセンスの要件
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
