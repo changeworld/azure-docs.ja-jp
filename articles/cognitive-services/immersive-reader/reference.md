@@ -1,6 +1,6 @@
 ---
 title: Immersive Reader SDK リファレンス
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: イマーシブ リーダー SDK には、お客様のアプリケーションにイマーシブ リーダーを統合させる JavaScript ライブラリが含まれています。
 services: cognitive-services
 author: metanMSFT
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metang
-ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 852e3d91b9d90d79bc45b4478ee433fbbd13255b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92636529"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370790"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Immersive Reader JavaScript SDK リファレンス (v1.1)
 
@@ -43,7 +43,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 #### <a name="launchasync-parameters"></a>launchAsync のパラメーター
 
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 認証トークン。 詳細については、[イマーシブ リーダー リソースの作成方法](./how-to-create-immersive-reader.md)に関するページを参照してください。 |
 | `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 詳細については、[イマーシブ リーダー リソースの作成方法](./how-to-create-immersive-reader.md)に関するページを参照してください。 |
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>renderButtons のパラメーター
 
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | ---- | ---- |------------ |
 | `options` | [renderButtons のオプション](#renderbuttons-options) | renderButtons 関数の特定の動作を構成するためのオプション。 省略可能。 |
 
@@ -205,7 +205,7 @@ Required: false
 
 #### <a name="content-parameters"></a>Content のパラメーター
 
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | ---- | ---- |------------ |
 | title | String | イマーシブ リーダーの上部に表示されるタイトルのテキスト (省略可能) |
 | チャンク | [Chunk[]](#chunk) | チャンクの配列 |
@@ -240,7 +240,7 @@ Default value: null
 
 #### <a name="chunk-parameters"></a>Chunk のパラメーター
 
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | ---- | ---- |------------ |
 | コンテンツ | String | イマーシブ リーダーに送信されるコンテンツが含まれる文字列。 |
 | lang | String | テキストの言語。値は IETF BCP 47 の言語タグ形式です (例: en、es-ES)。 指定しないと、言語は自動的に検出されます。 [サポートされている言語](#supported-languages)を参照してください。 |
@@ -305,7 +305,7 @@ Default value: "text/plain"
 
 #### <a name="options-parameters"></a>Options のパラメーター
 
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | ---- | ---- |------------ |
 | uiLang | String | UI の言語。値は IETF BCP 47 の言語タグ形式です (例: en、es-ES)。 指定しない場合の既定値はブラウザーの言語です。 |
 | timeout | 番号 | [launchAsync](#launchasync) がタイムアウト エラーで失敗するまでの期間 (ミリ秒単位) (既定値は 15000 ミリ秒)。 このタイムアウトは、リーダー ページの初回起動にのみ適用されます。リーダー ページが開いてスピナーが開始すると、成功と見なされます。 タイムアウトを調整する必要はありません。 |
@@ -390,7 +390,7 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>ReadAloudOptions のパラメーター
 
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | ---- | ---- |------------ |
 | voice | String | 音声。"Female" または "Male"。 すべての言語で両方の性別がサポートされているわけではないことに注意してください。 |
 | 速度 | 番号 | 再生速度。0.5 から 2.5 の範囲で指定する必要があります。 |
@@ -429,7 +429,7 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>TranslationOptions のパラメーター
 
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | ---- | ---- |------------ |
 | language | String | 翻訳言語を設定します。値は IETF BCP 47 の言語タグ形式です (例: fr-FR、es-MX、zh-Hans-CN)。 単語またはドキュメントの翻訳を自動的に有効にするために必要です。 |
 | autoEnableDocumentTranslation | Boolean | ドキュメント全体を自動的に翻訳します。 |
@@ -457,7 +457,7 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>DisplayOptions のパラメーター
 
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | ---- | ---- |------------ |
 | textSize | 番号 | 選択されたテキストのサイズを設定します。 |
 | increaseSpacing | Boolean | テキストの間隔をオンまたはオフに切り替えるかどうかを設定します。 |

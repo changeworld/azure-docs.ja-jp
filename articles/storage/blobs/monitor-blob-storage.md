@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 464b5a6fddb724500e27a4b7d5e35fd84549565b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dd4d4c1ddea737a1aa2083f7e2801aaee1b4cff7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771625"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467448"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Azure Blob Storage の監視
 
@@ -298,7 +298,7 @@ Azure Blob Storage のメトリックは、次の名前空間にあります。
 > [!TIP]
 > Azure CLI または .NET の例を表示するには、ここに示した対応するタブを選択します。
 
-### <a name="net"></a>[.NET](#tab/azure-portal)
+### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)
 
 Azure Monitor には、メトリックの定義と値を読み取るための [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。
  

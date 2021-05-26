@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.date: 05/10/2021
+ms.subservice: iot-edge
 ms.topic: article
-ms.openlocfilehash: a9cf6088201ffeaed76d99a9b211e5bcd1ea139a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bd533cb59fd661e3ac6dff9ff6aa3fa2d646889
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91322582"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370721"
 ---
 # <a name="configure-event-grid-api-protocols"></a>Event Grid API プロトコルの構成
 
