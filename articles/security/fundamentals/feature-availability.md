@@ -1,17 +1,17 @@
 ---
 title: 米国政府機関のお客様向けの Azure サービス クラウド機能の利用可能性
 description: 米国政府機関のお客様向け Azure Sentinel などの Azure セキュリティ サービスの機能の利用可能性を一覧表示します
-author: batami
-ms.author: bagol
+author: TerryLanfear
+ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 04/29/2021
-ms.openlocfilehash: d545d406bc914eaf634ff2c47698df7c1206a5cb
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: f9ce2ab9df2febc4dcc5d79e5937b97ef498aebe
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109655518"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845026"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 

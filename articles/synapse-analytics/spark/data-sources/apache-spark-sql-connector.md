@@ -8,17 +8,17 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
 ms.date: 05/19/2020
-ms.openlocfilehash: 39d43bd9e4006b50339979a2dbdcdbf1d36655d1
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 82518e6c8f4901ffe6c5503d902359a79c12e0b0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795488"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081678"
 ---
 # <a name="azure-sql-database-and-sql-server-connector-for-apache-spark"></a>Apache Spark の Azure SQL Database および SQL Server 用コネクタ
 Azure SQL Database と SQL Server 用の Apache Spark コネクタを使用すると、これらのデータベースを Apache Spark ジョブの入力データ ソースおよび出力データ シンクとして機能させることができます。 ビッグ データ分析の中でリアルタイム トランザクション データを利用でき、アドホック クエリの結果やレポートを保持できます。
 
-組み込みの JDBC コネクタに比べて、このコネクタには、SQL データベースにデータを一括挿入する機能があります。 行単位の挿入に比べ、パフォーマンスを 10 倍から 20 倍も向上させることができます。 SQL Server および Azure SQL Database 用の Spark コネクタは、Azure Active Directory (Azure AD) [認証](https://docs.microsoft.com/sql/connect/spark/connector?view=sql-server-ver15#azure-active-directory-authentication)もサポートしています。この機能を使用すると、Azure Synapse Analytics から Azure SQL データベースに安全に接続できます。 
+組み込みの JDBC コネクタに比べて、このコネクタには、SQL データベースにデータを一括挿入する機能があります。 行単位の挿入に比べ、パフォーマンスを 10 倍から 20 倍も向上させることができます。 SQL Server および Azure SQL Database 用の Spark コネクタは、Azure Active Directory (Azure AD) [認証](/sql/connect/spark/connector#azure-active-directory-authentication)もサポートしています。この機能を使用すると、Azure Synapse Analytics から Azure SQL データベースに安全に接続できます。 
 
 この記事では、DataFrame API を使用して、MS SQL コネクタで SQL データベースに接続する方法について説明します。 この記事では、PySpark API を使用した詳細な例を示します。 MS SQL コネクタを使用して SQL データベースに接続する場合にサポートされているすべての引数とサンプルについては、[Azure Data SQL のサンプル](https://github.com/microsoft/sql-server-samples#azure-data-sql-samples-repository)に関するページをご覧ください。
 
@@ -130,5 +130,5 @@ jdbc_df = spark.read \
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- [SQL Server と Azure SQL のコネクタの詳細情報](https://docs.microsoft.com/sql/connect/spark/connector?view=sql-server-ver15)
+- [SQL Server と Azure SQL のコネクタの詳細情報](/sql/connect/spark/connector)
 - [Azure Data SQL のサンプルを確認する](https://github.com/microsoft/sql-server-samples)

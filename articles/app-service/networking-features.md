@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7410793a429395b7f1b1e826c66cb2647eb77cd2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889146"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367712"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -23,6 +23,9 @@ Azure App Service のデプロイには、主に 2 つの種類があります�
 - シングルテナントの App Service Environment (ASE) を使用すると、Isolated SKU の App Service プランを、Azure 仮想ネットワークで直接ホストできます。 
 
 使用する機能は、マルチテナント サービスと ASE のどちらを使用しているかによって異なります。 
+
+> [!NOTE]
+> ネットワーク機能は、[Azure Arc にデプロイされているアプリ](overview-arc-integration.md)では使用できません。
 
 ## <a name="multitenant-app-service-networking-features"></a>マルチテナント App Service のネットワーク機能 
 

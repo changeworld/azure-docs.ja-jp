@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: f6416a688c7f1c94d7d8a90b0531b1ccd684ee29
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 7f7e6cb896d5284a7bc4ff54c7396600463260c9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031105"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367626"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -200,7 +200,7 @@ Azure Cosmos DB は、各アカウントのシステム メタデータを保持
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>自動スケーリングでプロビジョニングされたスループットの制限
 
-自動スケーリングでのスループットとストレージの制限の詳細については、[自動スケーリング](provision-throughput-autoscale.md#autoscale-limits)および [FAQ](autoscale-faq.md#lowering-the-max-rus) に関する記事をご覧ください。
+自動スケーリングでのスループットとストレージの制限の詳細については、[自動スケーリング](provision-throughput-autoscale.md#autoscale-limits)および [FAQ](autoscale-faq.yml#lowering-the-max-ru-s) に関する記事をご覧ください。
 
 | リソース | 既定の制限 |
 | --- | --- |
@@ -236,8 +236,9 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 | リソース | 既定の制限 |
 | --- | --- |
 | MongoDB クエリの最大メモリ サイズ (この制限は 3.2 サーバー バージョンにのみ適用されます) | 40 MB |
-|MongoDB 操作の最大実行時間 (3.2 サーバー バージョンの場合)| 15 秒|
-|MongoDB 操作の最大実行時間 (3.6 サーバー バージョンの場合)| 60 秒|
+| MongoDB 操作の最大実行時間 (3.2 サーバー バージョンの場合)| 15 秒|
+| MongoDB 操作の最大実行時間 (3.6 および 4.0 サーバー バージョンの場合)| 60 秒|
+| インデックス定義の埋め込みオブジェクトまたは配列の入れ子の最大レベル | 6 |
 | サーバー側の接続を終了するためのアイドル状態の接続のタイムアウト* | 30 分 |
 
 \* クライアント アプリケーションではドライバー設定内のアイドル状態の接続のタイムアウトを 2 から 3 分に設定することをお勧めします。これは、[Azure LoadBalancer の既定のタイムアウトが 4 分である](../load-balancer/load-balancer-tcp-idle-timeout.md)ためです。  このタイムアウトにより、クライアント マシンと Azure Cosmos DB 間の中間ロード バランサーによってアイドル状態の接続が閉じられないようになります。
@@ -265,15 +266,12 @@ Cosmos DB 試用版は、米国中部、北ヨーロッパ、および東南ア�
 | --- | --- |
 | Azure サブスクリプションあたりの Free レベルのアカウント数 | 1 |
 | Free レベル割引の期間 | アカウントの有効期間。 アカウントの作成時にオプトインする必要があります。 |
-| Free の最大 RU/秒 | 400 RU/秒 |
-| Free の最大ストレージ | 5 GB |
+| Free の最大 RU/秒 | 1000 RU/秒 |
+| Free の最大ストレージ | 25 GB |
 | 共有スループット データベースの最大数 | 5 |
 | 共有スループット データベース内のコンテナーの最大数 | 25 <br>Free レベルのアカウントでは、最大 25 個のコンテナーを使用する共有スループット データベースの最小 RU/秒は 400 RU/秒です。 |
 
-上記に加えて、[アカウントあたりの制限](#per-account-limits)も、Free レベルのアカウントに適用されます。
-
-> [!NOTE]
-> Azure Cosmos DB Free レベルは、Azure 無料アカウントとは異なります。 Azure 無料アカウントでは、Azure クレジットおよびリソースが一定の期間無料で提供されます。 この無料アカウントの一部として Azure Cosmos DB を使用する場合、25 GB のストレージと 400 RU/秒のプロビジョニング済みスループットが 12 か月間利用できます。
+上記に加えて、[アカウントあたりの制限](#per-account-limits)も、Free レベルのアカウントに適用されます。 詳細については、[Free レベル アカウント](free-tier.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

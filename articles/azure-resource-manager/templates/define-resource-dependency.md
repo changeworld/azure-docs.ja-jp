@@ -3,12 +3,12 @@ title: リソースにデプロイ順序を設定する
 description: デプロイ時に、ある Azure リソースが別のリソースに依存するように設定する方法について説明します。 依存関係によって、リソースが適切な順序でデプロイされます。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 009f5731e871c47aba418fca0937ae7aa195919e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 723344a4619325eb29a481a42f7dd2de5094a7b0
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737065"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814066"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM テンプレートでのリソース デプロイ順序の定義
 
@@ -20,7 +20,7 @@ Azure Resource Manager により、リソース間の依存関係が評価され
 
 Azure Resource Manager テンプレート (ARM テンプレート) 内で、`dependsOn` 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 その値は文字列の JSON (JavaScript Object Notation) 配列であり、それぞれがリソース名または ID です。 配列には、[条件付きでデプロイされた](conditional-resource-deployment.md)リソースを含めることができます。 条件付きリソースがデプロイされていない場合、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。
 
-次の例は、仮想ネットワーク、ネットワーク セキュリティ グループ、およびパブリック IP アドレスに依存するネットワーク インターフェイスを示しています。 完全なテンプレートについては、[Linux VM 用のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json)を参照してください。
+次の例は、仮想ネットワーク、ネットワーク セキュリティ グループ、およびパブリック IP アドレスに依存するネットワーク インターフェイスを示しています。 完全なテンプレートについては、[Linux VM 用のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json)を参照してください。
 
 ```json
 {

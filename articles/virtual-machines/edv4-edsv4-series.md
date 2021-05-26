@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 0db26f372cd8a9cbe96752f1d72f6cafcba56715
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: dffe54250bdbe8b060483a846b84b4adae858fb6
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109655608"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845495"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 および Edsv4 シリーズ
 
@@ -77,6 +77,8 @@ Edsv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascad
 <sup>1</sup> [コア数を制限したサイズも提供しています](./constrained-vcpu.md)。
 
 <sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
+
+<sup>**</sup> これらの IOPS 値を実現するには、[Gen2 VM](generation-2.md) を使用します
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

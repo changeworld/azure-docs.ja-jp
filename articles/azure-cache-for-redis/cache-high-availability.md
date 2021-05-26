@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 6c44c87221442797f063877385ac5eb7f8585850
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 576c1f0b087775ee3784229147b3715b22135217
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719099"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090678"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis の高可用性
 
@@ -22,7 +22,7 @@ Azure Cache for Redis により、キャッシュ用に "*ノード*" と呼ば�
 | オプション | 説明 | 可用性 | Standard | Premium | エンタープライズ |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [標準のレプリケーション](#standard-replication)| 単一のデータセンターでのデュアルノードのレプリケートされた構成 (自動フェールオーバーあり) | 99.9% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)を参照) |✔|✔|-|
-| [ゾーン冗長性](#zone-redundancy) | AZ 間でのマルチノードのレプリケートされた構成 (自動フェールオーバーあり) | 最大 99.99% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)を参照) |-|プレビュー|✔|
+| [ゾーン冗長性](#zone-redundancy) | AZ 間でのマルチノードのレプリケートされた構成 (自動フェールオーバーあり) | 最大 99.99% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)を参照) |-|✔|✔|
 | [geo レプリケーション](#geo-replication) | 2 つのリージョンでのリンクされたキャッシュ インスタンス (ユーザー制御のフェールオーバーあり) | 最大 99.999% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)を参照) |-|✔|プレビュー|
 
 ## <a name="standard-replication"></a>標準のレプリケーション
@@ -40,11 +40,6 @@ Redis Cache 内のプライマリ ノードが使用できない場合、レプ�
 
 プライマリ ノードは、Redis ソフトウェアやオペレーティング システムの更新などの計画されたメンテナンス アクティビティの一部としてサービスを認識しないことがあります。 また、基になるハードウェア、ソフトウェア、またはネットワークでの障害など、計画外のイベントが原因で動作を停止することもあります。 Redis フェールオーバーの種類については、「[Azure Cache for Redis のフェールオーバーと修正プログラムの適用](cache-failover.md)」に詳しく説明されています。 Azure Cache for Redis により、その有効期間中に多くのフェールオーバーが確認されます。 高可用性アーキテクチャは、キャッシュ内でのこれらの変更を、そのクライアントに対して可能な限り透過的に行うように設計されています。
 
->[!NOTE]
->プレビューとして使用できるのは次のとおりです。
->
->
-
 さらに、Azure Cache for Redis によって、Premium レベルで追加のレプリカ ノードが許可されます。 [複数レプリカのキャッシュ](cache-how-to-multi-replicas.md)は、最大 3 つのレプリカ ノードで構成できます。 一般に、レプリカが増えると、プライマリをバックアップするノードが追加されるため、回復性が向上します。 レプリカが増えても、Azure Cache for Redis インスタンスは、データセンターまたは AZ レベルの停止によって大きな影響を受ける可能性があります。 複数のレプリカを[ゾーン冗長性](#zone-redundancy)と組み合わせて使用することで、キャッシュの可用性を向上させることができます。
 
 ## <a name="zone-redundancy"></a>ゾーン冗長性
@@ -52,11 +47,6 @@ Redis Cache 内のプライマリ ノードが使用できない場合、レプ�
 Azure Cache for Redis によって、Premium レベルと Enterprise レベルでのゾーン冗長構成がサポートされます。 [ゾーン冗長キャッシュ](cache-how-to-zone-redundancy.md)を使用すると、同じリージョン内の異なる [Azure Availability Zones](../availability-zones/az-overview.md) にわたってノードを配置できます。 これにより、単一障害点としてデータセンターまたは AZ の停止が除去され、キャッシュの全体的な可用性が向上します。
 
 ### <a name="premium-tier"></a>Premium レベル
-
->[!NOTE]
->これはプレビューとして利用できます。
->
->
 
 次の図は、Premium レベルのゾーン冗長の構成を示しています。
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: bf1fde475227ae1735a19016e6ecb69d20fb9281
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 0521316dafc149823db6f095d32dfb5242c5863f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947521"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084450"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 
@@ -59,25 +59,14 @@ const loginRequest = {
     scopes: ["User.ReadWrite"]
 }
 
-let username = "";
+let accountId = "";
 
 const myMsal = new PublicClientApplication(config);
 
 myMsal.loginPopup(loginRequest)
     .then(function (loginResponse) {
-        //login success
-
-        // In case multiple accounts exist, you can select
-        const currentAccounts = myMsal.getAllAccounts();
-    
-        if (currentAccounts === null) {
-            // no accounts detected
-        } else if (currentAccounts.length > 1) {
-            // Add choose account code here
-        } else if (currentAccounts.length === 1) {
-            username = currentAccounts[0].username;
-        }
-    
+        accountId = loginResponse.account.homeAccountId;
+        // Display signed-in user content, call API, etc.
     }).catch(function (error) {
         //login failure
         console.log(error);
@@ -306,28 +295,30 @@ const loginRequest = {
     scopes: ["User.ReadWrite"]
 }
 
-let username = "";
+let accountId = "";
 
 const myMsal = new PublicClientApplication(config);
 
 function handleResponse(response) {
-    //handle redirect response
-
-    // In case multiple accounts exist, you can select
-    const currentAccounts = myMsal.getAllAccounts();
-
-    if (currentAccounts === null) {
-        // no accounts detected
-    } else if (currentAccounts.length > 1) {
-        // Add choose account code here
-    } else if (currentAccounts.length === 1) {
-        username = currentAccounts[0].username;
+    if (response !== null) {
+        accountId = response.account.homeAccountId;
+        // Display signed-in user content, call API, etc.
+    } else {
+        // In case multiple accounts exist, you can select
+        const currentAccounts = myMsal.getAllAccounts();
+    
+        if (currentAccounts.length === 0) {
+            // no accounts signed-in, attempt to sign a user in
+            myMsal.loginRedirect(loginRequest);
+        } else if (currentAccounts.length > 1) {
+            // Add choose account code here
+        } else if (currentAccounts.length === 1) {
+            accountId = currentAccounts[0].homeAccountId;
+        }
     }
 }
 
 myMsal.handleRedirectPromise().then(handleResponse);
-
-myMsal.loginRedirect(loginRequest);
 ```
 
 # <a name="javascript-msaljs-v1"></a>[JavaScript (MSAL.js v1)](#tab/javascript1)

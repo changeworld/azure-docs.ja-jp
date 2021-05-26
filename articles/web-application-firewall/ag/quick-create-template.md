@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: victorh
 ms.custom: subject-armqs
-ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebe235d24c8c8c926ceeb6b82db23d03075ed764
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92091323"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845458"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Application Gateway に Azure WAF v2 を作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "92091323"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/demos/ag-docs-wafv2/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 

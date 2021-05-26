@@ -1,29 +1,25 @@
 ---
-title: Azure Cache for Redis のゾーン冗長を有効にする (プレビュー)
+title: Azure Cache for Redis のゾーン冗長性を有効にする
 description: Premium および Enterprise の各レベルの Azure Cache for Redis インスタンス用にゾーン冗長を設定する方法について説明します
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 0623f47528d0530838f62c28cf5546e1e66c187b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c355939191e6da9a9408edde02deac97d69c9bbf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508267"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084432"
 ---
-# <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Azure Cache for Redis のゾーン冗長を有効にする (プレビュー)
+# <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Azure Cache for Redis のゾーン冗長性を有効にする
 この記事では、Azure portal を使用してゾーン冗長の Azure Cache インスタンスを構成する方法について説明します。
 
 Azure Cache for Redis の Standard、Premium、および Enterprise の各レベルでは、2 つの専用仮想マシン (VM) で各キャッシュをホストすることにより、組み込みの冗長性が提供されます。 これらの VM は、[Azure の障害と更新のドメイン](../virtual-machines/availability.md)に個別に配置されているため、可用性は高いですが、データセンター レベルの障害の影響を受けやすくなっています。 Azure Cache for Redis では、Premium および Enterprise の各レベルでのゾーン冗長もサポートされています。 ゾーン冗長キャッシュは、複数の[可用性ゾーン](../availability-zones/az-overview.md)に分散している VM 上で実行されます。 これにより、回復性と可用性が向上します。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-
-> [!NOTE]
-> この機能は現在プレビュー段階です。ご興味がある場合は[お問い合わせください](mailto:azurecache@microsoft.com)。
->
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 キャッシュを作成するには、次の手順に従います。

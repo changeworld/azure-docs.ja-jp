@@ -3,12 +3,12 @@ title: Azure VMware Solution で VM をデプロイするためのコンテン�
 description: コンテンツ ライブラリを作成して、Azure VMware Solution プライベート クラウドに VM をデプロイします。
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: bfac0e0353d1338d38d56b2fbf611ac3f0fb7e9b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f8a45ce301d250aa30ec08617e0ae11bcbfbafaf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753751"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086880"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "108753751"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、NSX-T セグメント (論理スイッチ) とマネージド DHCP サービスが必要です。  詳細については、[Azure VMware Solution で DHCP を管理する方法](manage-dhcp.md)に関する記事を参照してください。
+このチュートリアルを完了するには、NSX-T セグメント (論理スイッチ) とマネージド DHCP サービスが必要です。  詳細については、[Azure VMware Solution で DHCP を管理する方法](configure-dhcp-azure-vmware-solution.md)に関する記事を参照してください。
 
 ## <a name="create-a-content-library"></a>コンテンツ ライブラリを作成する
 

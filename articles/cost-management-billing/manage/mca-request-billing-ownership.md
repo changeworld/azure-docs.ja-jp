@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: banders
-ms.openlocfilehash: c3294c09012339cb19f04327f1933688b05ae077
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1e9e5582c95183a5e832950c5ac0b154cdef8362
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321467"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088122"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Azure サブスクリプションの課金所有権を Microsoft 顧客契約で使用するために譲渡する
 
@@ -157,7 +157,7 @@ Azure サポート プランに加入していて、ご自分のすべての Azu
 
 資格情報が新しい Microsoft 顧客契約アカウントへのアクセスに使用するものと異なる場合は、古いアカウントのアカウント管理者の資格情報を使用する必要があります。
 
-1.  Azure Portal ( https://azure.portal.com ) にサインインします。
+1.  Azure Portal ( https://portal.azure.com/ ) にサインインします。
 1.  **[コストの管理と請求]** に移動します。
 1.  左側のペインで **[課金スコープ]** を選択します。
 1.  マイクロソフト オンライン サブスクリプション契約アカウントに関連付けられている課金アカウントを選択します。

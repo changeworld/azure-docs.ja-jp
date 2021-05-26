@@ -3,12 +3,12 @@ title: Azure VMware Solution の cloudadmin 資格情報のローテーション
 description: Azure VMware Solution プライベート クラウドの vCenter Server および NSX-T Manager の資格情報をローテーションする方法について説明します。
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 6e7a37a1c262548e49952ed162cf725b1a7d6ed1
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: fbfed495fd904b67ce283934791cee516349dfa6
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789752"
+ms.locfileid: "109814958"
 ---
 # <a name="rotate-the-cloudadmin-credentials-for-azure-vmware-solution"></a>Azure VMware Solution の cloudadmin 資格情報のローテーション
 
@@ -51,7 +51,7 @@ HCX、vRealize Orchestrator、vRealize Operations Manager、VMware Horizon な�
 
 2. VMware HCX ダッシュボードで、 **[Site Pairing]\(サイトのペアリング\)** を選択します。
     
-   :::image type="content" source="media/reset-vsphere-credentials/hcx-site-pairing.png" alt-text="[Site Pairing]\(サイトのペアリング\) が強調表示されている VMware HCX ダッシュボードのスクリーンショット。":::
+   :::image type="content" source="media/rotate-cloudadmin-credentials/hcx-site-pairing.png" alt-text="[Site Pairing]\(サイトのペアリング\) が強調表示されている VMware HCX ダッシュボードのスクリーンショット。":::
  
 3. Azure VMware Solution への正しい接続を選択し、 **[Edit Connection]\(接続の編集\)** を選択します。
  

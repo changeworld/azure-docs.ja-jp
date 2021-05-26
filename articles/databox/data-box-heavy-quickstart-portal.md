@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8c418f7cbeb56b94b7a85b12e833301b979bff32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347424"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871554"
 ---
 ::: zone target = "docs"
 
@@ -89,7 +89,7 @@ Data Box Heavy ジョブを作成するには、以下の Azure CLI コマンド
    az storage account create --resource-group databox-rg --name databoxtestsa
    ```
 
-1. [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) コマンドを実行して Data Box ジョブを作成します。 **--sku** の値には `DataBoxHeavy` を指定します。
+1. [az databox job create](/cli/azure/databox/job#az_databox_job_create) コマンドを実行して Data Box ジョブを作成します。 **--sku** の値には `DataBoxHeavy` を指定します。
 
    ```azurecli
    az databox job create --resource-group databox-rg --name databoxheavy-job \
@@ -102,37 +102,37 @@ Data Box Heavy ジョブを作成するには、以下の Azure CLI コマンド
    > [!NOTE]
    > ご利用のサブスクリプションが Data Box Heavy をサポートしていることを確認してください。
 
-1. 次の例のように、[az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) を実行してジョブを更新します。連絡先の名前とメールは変更してください。
+1. 次の例のように、[az databox job update](/cli/azure/databox/job#az_databox_job_update) を実行してジョブを更新します。連絡先の名前とメールは変更してください。
 
    ```azurecli
    az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
    ```
 
-   [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) コマンドを実行して、ジョブに関する情報を取得します。
+   [az databox job show](/cli/azure/databox/job#az_databox_job_show) コマンドを実行して、ジョブに関する情報を取得します。
 
    ```azurecli
    az databox job show --resource-group databox-rg --name databox-job
    ```
 
-   [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) コマンドを使用して、リソース グループのすべての Data Box ジョブを表示します。
+   [az databox job list]( /cli/azure/databox/job#az_databox_job_list) コマンドを使用して、リソース グループのすべての Data Box ジョブを表示します。
 
    ```azurecli
    az databox job list --resource-group databox-rg
    ```
 
-   [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) コマンドを実行してジョブをキャンセルします。
+   [az databox job cancel](/cli/azure/databox/job#az_databox_job_cancel) コマンドを実行してジョブをキャンセルします。
 
    ```azurecli
    az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
    ```
 
-   [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) コマンドを実行してジョブを削除します。
+   [az databox job delete](/cli/azure/databox/job#az_databox_job_delete) コマンドを実行してジョブを削除します。
 
    ```azurecli
    az databox job delete –resource-group databox-rg --name databox-job
    ```
 
-1. [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) コマンドを使用して、Data Box ジョブの資格情報を一覧表示します。
+1. [az databox job list-credentials]( /cli/azure/databox/job#az_databox_job_list_credentials) コマンドを使用して、Data Box ジョブの資格情報を一覧表示します。
 
    ```azurecli
    az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
@@ -177,7 +177,7 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
 
 この手順の所要時間は 5 分から 7 分程度です。
 
-1. デバイスのパスワードを取得するには、 [Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。 デバイスの両方のノードで同じパスワードが使用されます。
+1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。 デバイスの両方のノードで同じパスワードが使用されます。
 2. Data Box Heavy に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。
 3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
 4. 既定では、インターフェイス (MGMT を除く) のネットワーク設定は DHCP で構成されます。 必要に応じて、これらのインターフェイスを静的インターフェイスとして構成し、IP アドレスを指定することができます。
