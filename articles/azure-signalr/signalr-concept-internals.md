@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ffbe207109143956f6c5a56d8560925d93661bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98572563"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459072"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service の内部
 
@@ -57,21 +57,21 @@ SignalR Service を使用する場合、クライアントはアプリケーシ�
 
 1. クライアントがアプリケーション サーバーにネゴシエート要求を送信します。 アプリケーション サーバーは、Azure SignalR Service SDK を使用して、SignalR Service の URL とアクセス トークンを含むリダイレクト応答を返します。
 
-- ASP.NET Core SignalR の場合、標準的なリダイレクト応答は次のようになります。
-    ```
-    {
-        "url":"https://test.service.signalr.net/client/?hub=chat&...",
-        "accessToken":"<a typical JWT token>"
-    }
-    ```
-- ASP.NET SignalR の場合、標準的なリダイレクト応答は次のようになります。
-    ```
-    {
-        "ProtocolVersion":"2.0",
-        "RedirectUrl":"https://test.service.signalr.net/aspnetclient",
-        "AccessToken":"<a typical JWT token>"
-    }
-    ```
+    - ASP.NET Core SignalR の場合、標準的なリダイレクト応答は次のようになります。
+        ```
+        {
+            "url":"https://test.service.signalr.net/client/?hub=chat&...",
+            "accessToken":"<a typical JWT token>"
+        }
+        ```
+    - ASP.NET SignalR の場合、標準的なリダイレクト応答は次のようになります。
+        ```
+        {
+            "ProtocolVersion":"2.0",
+            "RedirectUrl":"https://test.service.signalr.net/aspnetclient",
+            "AccessToken":"<a typical JWT token>"
+        }
+        ```
 
 1. リダイレクト応答を受信すると、クライアントは新しい URL とアクセス トークンを使用して、通常の SignalR Service 接続プロセスを開始します。
 

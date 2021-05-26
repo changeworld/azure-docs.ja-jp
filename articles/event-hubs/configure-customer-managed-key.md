@@ -2,19 +2,19 @@
 title: Azure Event Hubs 保存データの暗号化用に独自のキーを構成する
 description: この記事では、Azure Event Hubs の保存データを暗号化するために独自のキーを構成する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/01/2021
-ms.openlocfilehash: 33587812121051d93aa8b939c3df70530ba65c5e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 05/04/2021
+ms.openlocfilehash: 89d12079195406e4b3c6da77105dc359cc1dacae
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812446"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377245"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Event Hubs 保存データの暗号化用にカスタマー マネージド キーを構成する
 Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Event Hubs サービスには、データを格納するために Azure Storage が使用されます。 Azure Storage に格納されているすべてのデータは、Microsoft マネージド キーを使用して暗号化されます。 独自のキー (Bring Your Own Key (BYOK) またはカスタマーマネージド キーとも呼ばれます) を使用する場合、データは引き続き Microsoft マネージド キーを使用して暗号化されますが、さらに Microsoft マネージド キーはカスタマー マネージド キーを使用して暗号化されます。 この機能を使用して、Microsoft マネージド キーの暗号化に使用されるカスタマー マネージド キーへの作成、ローテーション、無効化、およびアクセスの取り消しを実行できます。 BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ プロセスです。
 
-> [!NOTE]
-> - BYOK 機能は [Event Hubs Dedicated のシングルテナント](event-hubs-dedicated-overview.md) クラスターでサポートされています。 Standard Event Hubs 名前空間用に有効にすることはできません。
+> [!IMPORTANT]
+> - BYOK 機能は、Event Hubs の **Premium** レベルおよび **Dedicated** レベルのサービスでサポートされます。
 > - 暗号化は、新規または空の名前空間に対してのみ有効にすることができます。 名前空間にイベント ハブが含まれている場合、暗号化操作は失敗します。
 
 キーの管理およびキーの使用状況の監査には、Azure Key Vault を使用できます。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/general/overview.md)
@@ -25,9 +25,8 @@ Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による
 > Azure Event Hubs でカスタマー マネージド キーを使うには、キー コンテナーに 2 つの必須プロパティが構成されている必要があります。 これらは次のとおりです。 **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** です。 Azure portal で新しいキー コンテナーを作成すると、これらのプロパティは既定で有効になります。 ただし、既存のキー コンテナーでこれらのプロパティを有効にする必要がある場合は、PowerShell または Azure CLI を使う必要があります。
 
 ## <a name="enable-customer-managed-keys"></a>カスタマー マネージド キーを有効にする
-Azure portal でカスタマー マネージド キーを有効にするには、次の手順のようにします。
+Azure portal でカスタマー マネージド キーを有効にするには、次の手順のようにします。 Dedicated レベルを使用している場合は、まず Event Hubs Dedicated クラスターに移動します。
 
-1. Event Hubs Dedicated クラスターに移動します。
 1. BYOK を有効にする名前空間を選択します。
 1. Event Hubs 名前空間の **[設定]** ページで、 **[暗号化]** を選択します。 
 1. 次の図に示すように、**カスタマー マネージド キーによる保存中の暗号化** を選択します。 

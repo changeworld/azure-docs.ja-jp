@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 8964248bb23b2b615c7e73e26d730fbd79b4e9e7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4b15d683a54f665e948dc31b51df039d20c58f7a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184459"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081373"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -69,7 +69,7 @@ VM を作成すると、Azure CLI によって次の例のような情報が表�
 ## <a name="create-and-attach-a-new-disk-for-oracle-datafiles-and-fra"></a>Oracle のデータファイルと FRA に使用する新しいディスクを作成してアタッチする
 
 ```bash
-az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 128 --sku StandardSSD_LRS --vm-name vmoracle19c
+az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 64 --sku StandardSSD_LRS --vm-name vmoracle19c
 ```
 
 ## <a name="open-ports-for-connectivity"></a>接続のポートを開く

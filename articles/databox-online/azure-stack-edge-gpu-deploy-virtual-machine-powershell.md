@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 05/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 94ebfcab77b6db579b263dc11f856612bb2c630a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568326"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086322"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge デバイスに VM をデプロイする
 
@@ -456,6 +456,13 @@ Windows VM と Linux VM のどちらを作成したかによって、接続手�
 Linux VM に接続する場合は、次の手順に従います。
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+  VM の作成時にパブリック IP アドレスを使用した場合は、その IP を使用して VM に接続できます。 パブリック IP を取得するには、次のコマンドを実行します。 
+
+  ```powershell
+  $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
+  ```
+  この場合、パブリック IP は仮想ネットワーク インターフェイスの作成時に渡したプライベート IP と同じになります。
 
 ### <a name="connect-to-a-windows-vm"></a>Windows VM に接続する
 

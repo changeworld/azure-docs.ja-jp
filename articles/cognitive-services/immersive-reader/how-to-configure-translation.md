@@ -1,6 +1,6 @@
 ---
 title: 翻訳を構成する
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: この記事では、翻訳のさまざまなオプションを構成する方法について説明します。
 author: metanMSFT
 manager: guillasi
@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: metang
-ms.openlocfilehash: bb90cb3a86acb6a94fa92c33d78ec596659e105f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ffcc613a9a1e5222f0f812b4a2a9e0eb774ddbc
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608701"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377765"
 ---
 # <a name="how-to-configure-translation"></a>翻訳を構成する方法
 

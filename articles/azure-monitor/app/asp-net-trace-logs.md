@@ -4,12 +4,12 @@ description: Trace、NLog、または Log4Net で生成されたログを検索�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f94920d44e37aae17c484be4f8e74a4f351e1b1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937558"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082776"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core および Python のトレース ログを調べる
 
@@ -195,7 +195,7 @@ logger.warning('Hello, World!')
 ### <a name="how-do-i-do-this-for-java"></a>Java の場合はどうすればよいですか。
 Java コード不要のインストルメンテーション (推奨) では、ログがすぐに収集され、[Java 3.0 エージェント](./java-in-process-agent.md)を使用します。
 
-Java SDK を使用している場合は、[Java ログ アダプター](./java-trace-logs.md)を使用します。
+Java SDK を使用している場合は、[Java ログ アダプター](java-2x-trace-logs.md)を使用します。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>プロジェクトのコンテキスト メニューに Application Insights のオプションがありません
 * 開発用マシンに Developer Analytics Tools がインストールしてあることを確認します。 Visual Studio の **[ツール]**  >  **[拡張機能と更新プログラム]** で、**Developer Analytics Tools** を探します。 **[インストール済み]** タブにない場合は、 **[オンライン]** タブを開いてインストールします。

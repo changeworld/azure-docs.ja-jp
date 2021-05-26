@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 550ae815933fd79e0cf6dc411aaddc8a8f564202
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5a6adc0ad4f515e98f4393266bf71565359b3e0a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314519"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473383"
 ---
 # <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーを作成する方法
 
@@ -82,7 +82,7 @@ ms.locfileid: "108314519"
 
 ## <a name="customer-leads"></a>潜在顧客
 
-[!INCLUDE [Connect lead management](partner-center-portal/includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](includes/customer-leads.md)]
 
 詳細については、「[コマーシャル マーケットプレース オファーからの顧客リード](partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
 

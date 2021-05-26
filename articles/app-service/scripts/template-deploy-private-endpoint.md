@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df71c1a92840ae0e7fa263e2ababcf5b3e059789
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 11761a7ec3716703d6714b515957d3a085791354
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832538"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068250"
 ---
 # <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して App Service アプリを作成し、プライベート エンドポイントをデプロイする
 
@@ -32,13 +32,13 @@ ms.locfileid: "107832538"
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
-:::code language="json" source="~/quickstart-templates/101-private-endpoint-webapp/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/private-endpoint-webapp/azuredeploy.json" :::
 
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 Azure Resource Manager テンプレートを Azure にデプロイする方法を次に示します。
 
-1. Azure にサインインしてテンプレートを開くためには、このリンクを選択します。[Azure にデプロイされている](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)。 このテンプレートでは、仮想ネットワーク、Web アプリ、プライベート エンドポイント、プライベート DNS ゾーンを作成します。
+1. Azure にサインインしてテンプレートを開くためには、このリンクを選択します。[Azure にデプロイされている](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.web%2Fprivate-endpoint-webapp%2Fazuredeploy.json)。 このテンプレートでは、仮想ネットワーク、Web アプリ、プライベート エンドポイント、プライベート DNS ゾーンを作成します。
 2. リソース グループを選択または作成します。
 3. Web アプリの名前、Azure App Service プラン、プライベート エンドポイントを入力します。
 5. 使用条件に関する声明を読みます。 同意する場合は **[上記の使用条件に同意する]**  >  **[購入]** を選択します。 デプロイが完了するまでに数分かかる場合があります。

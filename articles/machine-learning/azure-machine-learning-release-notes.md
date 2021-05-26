@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 55522324dc69fe0a433f012d28cbbde077b5ef04
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 332be773bca07acf178bd0754d3dad12f4879f51
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754175"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371138"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -22,28 +22,54 @@ ms.locfileid: "109754175"
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
+## <a name="2021-05-25"></a>2021-05-25
+
+### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>Azure Machine Learning の 2.0 CLI (プレビュー) を発表
+
+Azure CLI に対する `ml` 拡張機能は、Azure Machine Learning の次世代インターフェイスです。 これにより、コマンド ラインからモデルをトレーニングおよびデプロイできます。また、モデルのライフサイクルを追跡しながらデータ サイエンスのスケールアップとスケールアウトを加速する機能もあります。 [インストールして開始する](how-to-configure-cli.md)。
+
+### <a name="azure-machine-learning-sdk-for-python-v1290"></a>Azure Machine Learning SDK for Python v1.29.0
++ **バグの修正と機能強化**
+  + **重大な変更**
+    + Python 3.5 のサポートを終了しました。
+  + **azureml-automl-runtime**
+    + 時系列の長さが季節性よりも短い場合に STLFeaturizer が失敗するバグを修正しました。 このエラーは、IndexError として発生していました。 このケースはエラーにならずに処理されるようになりましたが、STL の季節コンポーネントは、この場合は 0 で構成されます。
+  + **azureml-contrib-automl-dnn-vision**
+    + ファイル パスを使用したバッチ推論のためのメソッドを追加しました。
+  + **azureml-contrib-gbdt**
+    + azureml-contrib-gbdt パッケージは非推奨とされており、今後の更新を受けない可能性があります。配布から完全に削除される予定です。
+  + **azureml-core**
+    + Datastore.register_azure_blob_container のパラメーター create_if_not_exists の説明を修正しました。
+    + DatasetConsumptionConfig クラスにサンプル コードを追加しました。
+    + run.log() のスカラー メトリック値の代替軸としてステップのサポートを追加しました
+  + **azureml-dataprep**
+    + `_with_partition_size()` で許容されるパーティション サイズを 2 GB に制限します
+  + **azureml-interpret**
+    + azureml-interpret を最新の interpret-core パッケージ バージョンに更新します
+    + SHAP 0.36.0 で非推奨とされた SHAP DenseData のサポートが削除されました。
+    + `ExplanationClient` によるユーザー指定のデータストアへのアップロードを有効にします。
+  + **azureml-mlflow**
+    + 完全なプラグイン サポートを維持しつつ、依存関係のフットプリントを減らすために、azureml-mlflow を mlflow-skinny に移動します
+  + **azureml-pipeline-core**
+    + 参照ドキュメントの PipelineParameter コード サンプルが、正しいパラメーターを使用するように更新されます。
+
 
 ## <a name="2021-05-10"></a>2021-05-10
 
 ### <a name="azure-machine-learning-sdk-for-python-v1280"></a>Azure Machine Learning SDK for Python v1.28.0
 + **バグの修正と機能強化**
-  + **azureml-automl-core**
-    + 機能強化を処理する、Designer 仕様に準拠した AutoML スコアリング スクリプトのバージョン 2 のサポートが追加されました。
   + **azureml-automl-runtime**
-    + 機能強化を処理する、Designer 仕様に準拠した AutoML スコアリング スクリプトのバージョン 2 のサポートが追加されました。
-  + **azureml-contrib-automl-dnn-forecasting**
-    + 機能強化を処理する、Designer 仕様に準拠した AutoML スコアリング スクリプトのバージョン 2 のサポートが追加されました。
+    + AutoML スコアリング スクリプトが、デザイナーとの整合性を保つように改善されました
+    + Prophet モデルを使用した予測で、SDK の以前のバージョンでトレーニングされた場合に "列がない" というエラーがスローされるバグに、パッチを適用します。
+    + AutoML SDK の、パブリックに公開されていて、予測がサポートされているモデルの一覧に、ARIMAX モデルが追加されました。 ここで、ARIMAX は、ARIMA エラーによる回帰であり、Box および Jenkins によって開発された転送関数モデルの特殊なケースです。 2 つの方法の違いについては、「[The ARIMAX model muddle (ARIMAX モデルの混乱)](https://robjhyndman.com/hyndsight/arimax/)」を参照してください。 AutoML で、自動生成され時間に依存する機能 (一日のどの時刻か、年初から何日目か、など) を使用するその他の多変数モデルとは異なり、このモデルではユーザーによって提供される機能だけが使用されます。
   + **azureml-contrib-dataset**
     + ドキュメントの説明が更新され、mount の使用時に libfuse をインストールする必要があることが示されました。
   + **azureml-core**
-    +  既定の CPU イメージが mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04 に更新されました。既定の GPU イメージが mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.2-cudnn8-ubuntu18.04 に更新されました。
+    + 既定の CPU キュレーション イメージが、mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04 になりました。 既定の GPU イメージが、mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.2-cudnn8-ubuntu18.04 になりました
     + Run.fail() が非推奨になりました。Run.tag() を使用して実行に失敗のマークを付けるか、Run.cancel() を使用して実行に取り消し済みのマークを付けてください。
-    + ドキュメントの説明が更新され、mount の使用時に libfuse をインストールする必要があることが示されました。
-    + MSI 認証で対象ユーザーが使用可能になりました。
-    +  試験的な register_dask_dataframe() のサポートが表形式データセットに追加されました。
+    + ファイル データセットをマウントするときに libfuse をインストールする必要があることを記載して、ドキュメントを更新しました。
+    + 試験的な register_dask_dataframe() のサポートが表形式データセットに追加されました。
     + 入力/出力として Azure Blob/ADL-S を使用する DatabricksStep がサポートされ、パラメーター permit_cluster_restart が公開されました。これにより、顧客は、I/O アクセス構成をクラスターに追加する必要がある場合に、AML でクラスターを再起動できるかどうかを判断できます。
-  + **azureml-dataprep**
-    + azureml-dataset-runtime で、バージョン 4.0.0 未満の pyarrow がサポートされるようになりました。
   + **azureml-dataset-runtime**
     + azureml-dataset-runtime で、バージョン 4.0.0 未満の pyarrow がサポートされるようになりました。
   + **azureml-mlflow**

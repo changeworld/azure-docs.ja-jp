@@ -2,14 +2,14 @@
 title: Event Hubs の Azure スキーマ レジストリ (プレビュー)
 description: この記事では、Azure Event Hubs での Schema Registry のサポート (プレビュー) に関する概要について説明します。
 ms.topic: overview
-ms.date: 04/28/2021
+ms.date: 05/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 578bb082cf439d48b186461742ed51c39ce85e80
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 43380ccd4f20616676f4eeb53fb2231b4f76f4e9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226446"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371207"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs の Azure スキーマ レジストリ (プレビュー)
 多くのイベント ストリーミングおよびメッセージング シナリオでは、イベントまたはメッセージのペイロードに、Apache Avro のようなスキーマ駆動型の形式を使用してシリアル化または逆シリアル化された構造化データが含まれています。 送信側と受信側のどちらであっても、JSON スキーマのようなスキーマ ドキュメントでデータの整合性を検証したい場合があります。 スキーマ駆動型の形式の場合、メッセージ コンシューマーでスキーマを使用できるようにすることは、コンシューマーでデータを逆シリアル化できるようにするための前提条件です。 
@@ -18,7 +18,7 @@ ms.locfileid: "108226446"
 
 > [!NOTE]
 > - 現在、**Schema Registry** 機能は **プレビュー** 段階にあります。運用環境のワークロードにはお勧めできません。
-> - この機能は **Standard** と **Dedicated** レベルでのみ使用でき、**Basic** レベルでは使用できません。
+> - この機能は、**basic** レベルでは使用できません。
 
 Apache Avro のようなスキーマ駆動型のシリアル化フレームワークを使用すると、共有スキーマにシリアル化メタデータを外部化するすることで、JSON などのタグ付きの形式の場合と同様に、すべてのデータ セットに含まれる型情報およびフィールド名の、メッセージごとのオーバーヘッドを大幅に削減することもできます。 スキーマをイベントと一緒にイベント インフラストラクチャ内に保持しておくことで、シリアル化または逆シリアル化に必要なメタデータに常にアクセスできるため、スキーマを間違えることがありません。 
 
@@ -47,8 +47,8 @@ Avro シリアライザーを含む次のライブラリのいずれかを使用
 
 :::image type="content" source="./media/schema-registry-overview/flow-diagram.png" alt-text="フロー図":::
 
-## <a name="standard-vs-dedicated-limits"></a>Standard と Dedicated の制限
-Event Hubs の Standard レベルと Dedicated レベルの間で同じ、または異なる制限 (例: 名前空間内のスキーマ グループの数) については、[Event Hubs のクォータと制限](event-hubs-quotas.md)に関するページを参照してください
+## <a name="limits"></a>制限
+Event Hubs の制限 (例: 名前空間内のスキーマ グループの数) については、[Event Hubs のクォータと制限](event-hubs-quotas.md)に関するページを参照してください
 
 ## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 プログラムを使用してスキーマ レジストリにアクセスする場合は、Azure Active Directory (Azure AD) にアプリケーションを登録し、Azure ロールベースのアクセス制御 (Azure RBAC) ロールのいずれかにアプリケーションのセキュリティ プリンシパルを追加する必要があります。

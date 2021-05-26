@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c7033e74c8b6d845346e8f9d1b4fc5fd015a220b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8de7e27c4e98f0ef5bf58ac4f12847efa5cc36e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108792406"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110166288"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,6 +58,7 @@ import com.azure.communication.phonenumbers.*;
 import com.azure.communication.phonenumbers.models.*;
 import com.azure.core.http.rest.*;
 import com.azure.core.util.Context;
+import com.azure.core.util.polling.LongRunningOperationStatus;
 import com.azure.core.util.polling.PollResponse;
 import com.azure.identity.*;
 import java.io.*;
@@ -109,13 +110,18 @@ PhoneNumbersClient phoneNumberClient = new PhoneNumbersClientBuilder()
     .setSms(PhoneNumberCapabilityType.INBOUND_OUTBOUND);
 PhoneNumberSearchOptions searchOptions = new PhoneNumberSearchOptions().setAreaCode("833").setQuantity(1);
 
-PhoneNumberSearchResult searchResult = phoneNumberClient
-    .beginSearchAvailablePhoneNumbers("US", PhoneNumberType.TOLL_FREE, PhoneNumberAssignmentType.APPLICATION, capabilities,  searchOptions, Context.NONE)
-    .getFinalResult();
+SyncPoller<PhoneNumberOperation, PhoneNumberSearchResult> poller = phoneNumberClient
+    .beginSearchAvailablePhoneNumbers("US", PhoneNumberType.TOLL_FREE, PhoneNumberAssignmentType.APPLICATION, capabilities, searchOptions, Context.NONE);
+PollResponse<PhoneNumberOperation> response = poller.waitForCompletion();
+String searchId = "";
 
-System.out.println("Searched phone numbers: " + searchResult.getPhoneNumbers());
-System.out.println("Search expires by: " + searchResult.getSearchExpiresBy());
-System.out.println("Phone number costs:" + searchResult.getCost().getAmount());
+if (LongRunningOperationStatus.SUCCESSFULLY_COMPLETED == response.getStatus()) {
+    PhoneNumberSearchResult searchResult = poller.getFinalResult();
+    searchId = searchResult.getSearchId();
+    System.out.println("Searched phone numbers: " + searchResult.getPhoneNumbers());
+    System.out.println("Search expires by: " + searchResult.getSearchExpiresBy());
+    System.out.println("Phone number costs:" + searchResult.getCost().getAmount());
+}
 ```
 
 ### <a name="purchase-phone-numbers"></a>電話番号を購入する
@@ -123,7 +129,7 @@ System.out.println("Phone number costs:" + searchResult.getCost().getAmount());
 電話番号の検索結果は PhoneNumberSearchResult です。 そこに含まれる `searchId` を番号購入 API に渡すことで、検索した番号を取得することができます。 電話番号購入 API を呼び出すと、Azure アカウントに料金が発生するので注意してください。
 
 ```java
-PollResponse<PhoneNumberOperation> purchaseResponse = phoneNumberClient.beginPurchasePhoneNumbers(searchResult.getSearchId(), Context.NONE).waitForCompletion();
+PollResponse<PhoneNumberOperation> purchaseResponse = phoneNumberClient.beginPurchasePhoneNumbers(searchId, Context.NONE).waitForCompletion();
 System.out.println("Purchase phone numbers operation is: " + purchaseResponse.getStatus());
 ```
 
@@ -150,10 +156,14 @@ PhoneNumberCapabilities capabilities = new PhoneNumberCapabilities();
 capabilities
     .setCalling(PhoneNumberCapabilityType.INBOUND)
     .setSms(PhoneNumberCapabilityType.INBOUND_OUTBOUND);
-PurchasedPhoneNumber phoneNumber = phoneNumberClient.beginUpdatePhoneNumberCapabilities("+14255550123", capabilities, Context.NONE).getFinalResult();
 
-System.out.println("Phone Number Calling capabilities: " + phoneNumber.getCapabilities().getCalling()); //Phone Number Calling capabilities: inbound
-System.out.println("Phone Number SMS capabilities: " + phoneNumber.getCapabilities().getSms()); //Phone Number SMS capabilities: inbound+outbound
+SyncPoller<PhoneNumberOperation, PurchasedPhoneNumber> poller = phoneNumberClient.beginUpdatePhoneNumberCapabilities("+18001234567", capabilities, Context.NONE);
+PollResponse<PhoneNumberOperation> response = poller.waitForCompletion();
+if (LongRunningOperationStatus.SUCCESSFULLY_COMPLETED == response.getStatus()) {
+    PurchasedPhoneNumber phoneNumber = poller.getFinalResult();
+    System.out.println("Phone Number Calling capabilities: " + phoneNumber.getCapabilities().getCalling()); //Phone Number Calling capabilities: inbound
+    System.out.println("Phone Number SMS capabilities: " + phoneNumber.getCapabilities().getSms()); //Phone Number SMS capabilities: inbound+outbound
+}
 ```
 
 ### <a name="release-phone-number"></a>電話番号を解放する

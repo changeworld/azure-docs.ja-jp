@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8440ad951b093f41dbccb92de6cfebc17dcf2abb
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 2753ff878b45b95f0da316bc50f9432244106d17
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714987"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465558"
 ---
 # <a name="categorize-images-by-subject-matter"></a>主題によるイメージの分類
 
@@ -64,7 +64,7 @@ Computer Vision では次の図の 86 カテゴリの一覧を使用して、大
 
 分類機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Categories` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"categories"` セクションのコンテンツを対象に文字列を解析します。
 
-* [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)
 
 ## <a name="next-steps"></a>次のステップ
 
