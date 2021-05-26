@@ -4,13 +4,15 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: aa82809aaa793f1b36a31c7615dd718b9304aae5
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 2a1a39a4adc5855c68763825b2e584c2fb2361ed
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109719040"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110487504"
 ---
+[![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
+
 ## <a name="prerequisites"></a>前提条件
 
 この記事の手順を完了するには、次のリソースが必要です。

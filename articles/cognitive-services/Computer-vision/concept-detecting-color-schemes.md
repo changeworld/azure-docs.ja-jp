@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: bdfad828fb2a714c0bcf3854d9daf019787db26d
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: edd0f6a5c09172272e8081b5d72681395d8ec291
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714964"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465454"
 ---
 # <a name="detect-color-schemes-in-images"></a>イメージ内の配色を検出する
 
@@ -82,4 +82,4 @@ Computer Vision では、イメージが白黒であるかどうかを示すブ�
 
 配色検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Color` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"color"` セクションのコンテンツを対象に文字列を解析します。
 
-* [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)

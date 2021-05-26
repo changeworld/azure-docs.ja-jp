@@ -628,6 +628,14 @@
               href: stored-procedures-triggers-udfs.md
             - name: JavaScript クエリ API
               href: javascript-query-api.md
+        - name: 統合キャッシュ
+          items:
+            - name: 専用ゲートウェイの概要
+              href: dedicated-gateway.md
+            - name: 統合キャッシュの概要
+              href: integrated-cache.md
+            - name: 統合キャッシュのよくあるご質問
+              href: integrated-cache-faq.md
         - name: セキュリティ
           items:
             - name: データへのアクセスをセキュリティで保護する
@@ -718,6 +726,8 @@
                   href: performance-tips-async-java.md
                 - name: 同期の Java SDK v2
                   href: performance-tips-java.md
+            - name: 統合キャッシュの構成
+              href: how-to-configure-integrated-cache.md
             - name: パフォーマンス テスト - サンプル アプリ
               href: performance-testing.md
             - name: コスト効率の優れた読み取りと書き込み
@@ -850,6 +860,8 @@
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
             - name: 証明書を使用してデータにアクセスする
               href: certificate-based-authentication.md
+            - name: Always Encrypted の使用
+              href: how-to-always-encrypted.md
         - name: 他の Azure サービスとの統合
           items:
             - name: 変更フィードの e コマース ソリューション
@@ -1348,6 +1360,9 @@
           href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: 攻略ガイド
   items:
+    - name: Free レベル
+      href: free-tier.md
+      displayName: free tier
     - name: Azure Cosmos DB リソースの管理
       items:
         - name: Azure Cosmos アカウントを管理する
@@ -1369,6 +1384,12 @@
           items:
             - name: エミュレーターのインストールと使用
               href: local-emulator.md
+            - name: Docker でのエミュレーターの実行
+              items:
+                - name: Docker for Linux でのエミュレーターの実行
+                  href: linux-emulator.md
+                - name: Docker for Windows でのエミュレーターの実行
+                  href: local-emulator-on-docker-windows.md
             - name: エミュレーターの証明書のエクスポート
               href: local-emulator-export-ssl-certificates.md
             - name: エミュレーターのコマンドライン パラメーター

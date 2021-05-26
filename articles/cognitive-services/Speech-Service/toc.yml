@@ -116,7 +116,7 @@
           href: how-to-speech-synthesis-viseme.md
         - name: カスタマイズ
           items:
-            - name: Custom Voice ポータル
+            - name: カスタム ニューラル音声
               items:
                 - name: カスタム ニューラル音声とは
                   href: custom-neural-voice.md

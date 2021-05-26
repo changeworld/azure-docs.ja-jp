@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 625f69b0088ffe6931410afc6f2a825c3156fd70
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8b8205681da7ea24fdafcef337ad903fff06c589
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209951"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474631"
 ---
 # <a name="event-notifications"></a>イベント通知
 
@@ -234,7 +234,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete` |
 | `datacontenttype` | `application/json` |
-| `subject` | リレーションシップの ID (`<twinID>/relationships/<relationshipID>` など) |
+| `subject` | リレーションシップの ID (`<twin-ID>/relationships/<relationshipID>` など) |
 | `time` | リレーションシップで操作が発生したときのタイムスタンプ |
 | `traceparent` | イベントの W3C トレース コンテキスト |
 
@@ -280,7 +280,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | Name    | 値 |
 | --- | --- |
 | `id` | テレメトリ API を呼び出す際にユーザーにより指定される、通知の識別子。 |
-| `source` | テレメトリ イベントの送信先ツインの完全修飾名。 次の形式を使用します: `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`。 |
+| `source` | テレメトリ イベントの送信先ツインの完全修飾名。 次の形式を使用します: `<your-Digital-Twin-instance>.api.<your-region>.digitaltwins.azure.net/<twin-ID>`。 |
 | `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `microsoft.iot.telemetry` |
 | `data` | ツインに送信されたテレメトリ メッセージ。 ペイロードは変更されないため、テレメトリを送信したツインのスキーマと一致しない可能性があります。 |
