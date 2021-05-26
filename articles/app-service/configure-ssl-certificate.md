@@ -3,15 +3,15 @@ title: TLS/SSL 証明書を追加および管理する
 description: Azure App Service での無料の証明書の作成、App Service 証明書のインポート、Key Vault 証明書のインポート、App Service 証明書の購入について説明します。
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4fd5d7bfc7a4ac8ab3b255091b4383085a87d4da
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 11cd17041ce110cca4f3cd5bce5cc98ccc0ed7af
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634529"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373053"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -26,7 +26,7 @@ ms.locfileid: "109634529"
 
 |オプション|説明|
 |-|-|
-| 無料の App Service マネージド証明書を作成する (プレビュー) | App Service で[カスタム ドメイン](app-service-web-tutorial-custom-domain.md)をセキュリティで保護することだけが必要な場合に、使いやすい無料のプライベート証明書。 |
+| 無料の App Service マネージド証明書を作成します。 | App Service で[カスタム ドメイン](app-service-web-tutorial-custom-domain.md)をセキュリティで保護することだけが必要な場合に、使いやすい無料のプライベート証明書。 |
 | App Service 証明書を購入する | Azure によって管理されるプライベート証明書。 自動証明書管理のシンプルさと、更新オプションとエクスポート オプションの柔軟性が組み合わされています。 |
 | Key Vault から証明書をインポートする | [Azure Key Vault](../key-vault/index.yml) を使用して [PKCS12 証明書](https://wikipedia.org/wiki/PKCS_12)を管理する場合に便利です。 「[プライベート証明書の要件](#private-certificate-requirements)」を参照してください。 |
 | プライベート証明書のアップロード | 既にサードパーティ プロバイダーからのプライベート証明書がある場合は、それをアップロードすることができます。 「[プライベート証明書の要件](#private-certificate-requirements)」を参照してください。 |
@@ -42,7 +42,7 @@ ms.locfileid: "109634529"
 
 ## <a name="private-certificate-requirements"></a>プライベート証明書の要件
 
-[無料の App Service マネージド証明書](#create-a-free-managed-certificate-preview)と [App Service 証明書](#import-an-app-service-certificate)は、App Service の要件を既に満たしています。 App Service にプライベート証明書をアップロードまたはインポートする場合、証明書は次の要件を満たしている必要があります。
+[無料の App Service マネージド証明書](#create-a-free-managed-certificate)と [App Service 証明書](#import-an-app-service-certificate)は、App Service の要件を既に満たしています。 App Service にプライベート証明書をアップロードまたはインポートする場合、証明書は次の要件を満たしている必要があります。
 
 * Triple DES を使用して暗号化され、[パスワードで保護された PFX ファイル](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)としてエクスポートされている
 * 少なくとも 2048 ビット長の秘密キーが含まれている
@@ -58,17 +58,19 @@ TLS バインドでカスタム ドメインをセキュリティで保護する
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-managed-certificate-preview"></a>無料のマネージド証明書を作成する (プレビュー)
+## <a name="create-a-free-managed-certificate"></a>無料のマネージド証明書を作成する
 
 > [!NOTE]
 > 無料のマネージド証明書を作成する前に、アプリの[前提条件を満たしている](#prerequisites)ことを確認してください。
 
 無料 App Service マネージド証明書は、App Service でカスタム DNS 名をセキュリティで保護するためのターンキー ソリューションです。 これは、App Service によって管理され、自動的に更新される、完全に機能する TLS/SSL 証明書です。 無料の証明書には以下の制限が伴います。
 
-- ワイルドカード証明書はサポートされていないため、クライアント証明書として使用しないでください。
+- ワイルドカード証明書はサポートされません。
+- 証明書拇印別にクライアント証明書として使用することはできません (証明書拇印の削除が予定されています)。
 - エクスポートはできません。
 - App Service Environment (ASE) ではサポートされません。
 - Traffic Manager と統合されたルート ドメインではサポートされません。
+- 証明書が CNAME でマップされるドメイン向けの場合、CNAME を `<app-name>.azurewebsites.net` に直接マップする必要があります。
 
 > [!NOTE]
 > 無料の証明書は DigiCert によって発行されます。 一部のトップレベル ドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue digicert.com` の値を使用して作成することによって、DigiCert を証明書の発行者として明示的に許可する必要があります。

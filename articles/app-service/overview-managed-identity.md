@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: badc6b6f1b45938e950ffadeefe30d81ed383440
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 27e17fd6cc9f50a5a46bf3de9bf2603209894bf3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762445"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368250"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -20,6 +20,9 @@ ms.locfileid: "107762445"
 
 > [!Important] 
 > ご自分のアプリがサブスクリプションやテナント間で移行されている場合、App Service と Azure Functions のマネージド ID は、予期どおりには動作しません。 アプリ用には、新規で ID を取得する必要があります。これには、この機能を無効にしてから再度有効にする必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでも新しい ID が使用されるように、アクセス ポリシーを更新する必要があります。
+
+> [!NOTE]
+> マネージド ID は、[Azure Arc にデプロイされているアプリ](overview-arc-integration.md)では使用できません。
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 

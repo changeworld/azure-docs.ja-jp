@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/05/2021
-ms.openlocfilehash: 98e849791acd71ea8bf3ac9cb1949da9f562e749
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: c8589911e4424afe1ff2f5dbed32c375cb29c706
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490830"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095736"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB のコストを計画および管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Azure Cosmos DB は、プロビジョニングされたスループットとサ�
 
 次のスクリーンショットは、Capacity Calculator の利用によるスループットとコストの見積もりを示しています。
 
-:::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Azure Cosmos DB Capacity Calculator でのコスト見積もり":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode-sql-api.png" alt-text="Capacity Planner の基本モード" border="true":::
 
 ### <a name="estimate-serverless-costs"></a><a id="estimating-serverless-costs"></a> サーバーレスのコストを見積もる
 
@@ -107,7 +107,7 @@ Azure Cosmos DB でリソースを使用するとコストが発生します。 
 
 Azure Cosmos DB のコストをコスト分析で表示するには、次の操作を行います。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal ](https://portal.azure.com)にサインインします。
 
 1. Azure portal でスコープを開き、メニューから **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 コスト分析で別のスコープに切り替えるには、 **[スコープ]** を選択します。
 

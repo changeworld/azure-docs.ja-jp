@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c95c90e7860b0257f63802b321c35b38ec00bb23
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 582a3303d5e43fff2390025bc35281c8ac916d84
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140967"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096366"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web アプリでプライベート エンドポイントを使用する
 
@@ -68,7 +68,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 既定では、プライベート エンドポイントを使用しない場合、Web アプリのパブリック名がクラスターの正規の名前になります。
 たとえば、名前解決は次のようになります。
 
-|名前 |Type |値 |
+|名前 |型 |値 |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -78,7 +78,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 プライベート エンドポイントをデプロイすると、DNS エントリは正規名 mywebapp.privatelink.azurewebsites.net を指すように更新されます。
 たとえば、名前解決は次のようになります。
 
-|名前 |Type |値 |注記 |
+|名前 |型 |値 |注記 |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
@@ -89,7 +89,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 作成する必要がある DNS ゾーンは、**privatelink.azurewebsites.net** です。 A レコードとプライベート エンドポイント IP を使用して、Web アプリのレコードを登録します。
 たとえば、名前解決は次のようになります。
 
-|名前 |Type |値 |注記 |
+|名前 |型 |値 |注記 |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<-- Azure パブリック DNS にこのエントリが作成され、App Service がプライベートリンクを指すようになります。これは Microsoft によって管理されます|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<-- プライベート エンドポイントの IP アドレスを指すように、DNS システムでこのエントリを管理します|
@@ -101,7 +101,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 
 Kudu コンソールまたは Kudu REST API (Azure DevOps セルフホステッド エージェントを使用したデプロイなど) の場合は、Azure DNS プライベート ゾーンまたはカスタム DNS サーバーに 2 つのレコードを作成する必要があります。 
 
-| 名前 | Type | 値 |
+| 名前 | 型 | 値 |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
@@ -150,6 +150,6 @@ FTP アクセスは、受信パブリック IP アドレスを介して提供さ
 [howtoguide2]: ../scripts/cli-deploy-privateendpoint.md
 [howtoguide3]: ../scripts/powershell-deploy-private-endpoint.md
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md
-[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-privateendpoint-vnet-injection
 [howtoguide6]: ../scripts/terraform-secure-backend-frontend.md
 [TiP]: https://docs.microsoft.com/azure/app-service/deploy-staging-slots#route-traffic

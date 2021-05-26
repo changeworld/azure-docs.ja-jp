@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 1ddc1579686fae1f37b4bf3aed5225b87625dfd9
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 53fb43a2ca45bf6c599f23ffc9a2fdc492bbdc68
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632729"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068526"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -184,7 +184,7 @@ Azure AD アプリケーション プロキシは、クラウドベースのア�
 
 * **REST API の安全な発行**。 ビジネス ロジックや API をオンプレミスで実行しているか、クラウド上の仮想マシンでホストしている場合、アプリケーション プロキシによって API アクセス用のパブリック エンドポイントが提供されます。 API エンドポイント アクセスでは、着信ポートを必要とせず、認証と認可を制御できます。 Azure AD Premium の機能を通じて追加のセキュリティが提供されます (多要素認証や、Intune を使用したデスクトップ、iOS、MAC、および Android デバイス向けのデバイス ベースの条件付きアクセスなど)。 詳しくは、「[ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](../manage-apps/application-proxy-configure-native-client-application.md)」および「[Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する](../../api-management/api-management-howto-protect-backend-with-aad.md)」をご覧ください。
 * **リモート デスクトップ サービス** **(RDS)** . RDS の標準的なデプロイでは、インバウンド接続を開く必要があります。 ただし、[アプリケーション プロキシを使用した RDS デプロイ](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md)には、コネクタ サービスを実行しているサーバーからの永続的なアウトバウンド接続があります。 これにより、リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行し、エンド ユーザーにより多くのアプリケーションを提供することができます。 RDS に対する 2 段階認証と条件付きアクセス制御の限定的なセットを使用して、デプロイの攻撃対象領域を減らすこともできます。
-* **Websocket を使用して接続するアプリケーションの発行**。 [Qlik Sense](../manage-apps/application-proxy-qlik.md) のサポートはパブリック プレビュー段階にあり、今後他のアプリに展開されます。
+* **Websocket を使用して接続するアプリケーションの発行**。 [Qlik Sense](/azure/active-directory/app-proxy/application-proxy-qlik) のサポートはパブリック プレビュー段階にあり、今後他のアプリに展開されます。
 * **ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする**。 Azure AD アプリケーション プロキシは、Web アプリを発行するために使用できますが、Azure AD Authentication Library (ADAL) で構成された[ネイティブ クライアント アプリケーション](../manage-apps/application-proxy-configure-native-client-application.md)の発行にも使うことができます。 ネイティブ クライアント アプリケーションはデバイスにインストールされる点が Web アプリとは異なり、Web アプリはブラウザーからアクセスされます。
 
 ## <a name="conclusion"></a>まとめ

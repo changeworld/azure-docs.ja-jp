@@ -1,22 +1,22 @@
 ---
-title: クイックスタート - Azure portal で統合ワークフローを作成する
-description: Azure portal で Azure Logic Apps を使用して、初めての自動化された統合ワークフローを作成します。
+title: クイックスタート - Azure portal で Azure Logic Apps を使用して統合ワークフローを作成する
+description: Azure portal でマルチテナントの Azure Logic Apps を使用して、初めての自動化された統合ワークフローを作成します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: contperf-fy21q4
-ms.date: 04/28/2021
-ms.openlocfilehash: 1ff7ba5e3835fccb2f67fa56cf3737adb9d36b45
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 05/25/2021
+ms.openlocfilehash: b7419986137632561cae71b91dd55a2af64912a7
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738898"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373292"
 ---
-# <a name="quickstart-create-an-integration-workflow-using-azure-logic-apps-in-the-azure-portal"></a>クイックスタート: Azure portal で Azure Logic Apps を使用して統合ワークフローを作成する
+# <a name="quickstart-create-an-integration-workflow-with-multi-tenant-azure-logic-apps-and-the-azure-portal"></a>クイックスタート: マルチテナントの Azure Logic Apps および Azure portal を使用して統合ワークフローを作成する
 
-このクイックスタートでは、[Azure Logic Apps](logic-apps-overview.md) を使用して、Web サイトの RSS フィードと電子メール アカウントの 2 つのサービスを統合する、自動化されたサンプル ワークフローを作成する方法について説明します。 この例はクラウドベースですが、Logic Apps では、クラウド、オンプレミス、ハイブリッド環境でアプリ、データ、サービス、システムを接続するワークフローがサポートされています。
+このクイックスタートでは、"*マルチテナント*" [Azure Logic Apps](logic-apps-overview.md) を使用して、Web サイトの RSS フィードと電子メール アカウントの 2 つのサービスを統合する、自動化されたサンプル ワークフローを作成する方法について説明します。 この例はクラウドベースですが、Azure Logic Apps では、クラウド、オンプレミス、ハイブリッド環境でアプリ、データ、サービス、システムを接続するワークフローがサポートされています。 マルチテナントとシングルテナントのモデルの比較の詳細については、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を参照してください。
 
 この例では、RSS コネクタと Office 365 Outlook コネクタを使用するワークフローを作成します。 RSS コネクタには、スケジュールに基づいて RSS フィードをチェックするトリガーがあります。 Office 365 Outlook コネクタには、新しい項目ごとに電子メールを送信するアクションがあります。 この例のコネクタは、ワークフローで使用できる[数百個のコネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)の中の 2 つにすぎません。
 

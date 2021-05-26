@@ -4,13 +4,13 @@ description: この記事では、Language Understanding (LUIS) についてよ�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
-ms.date: 04/16/2021
-ms.openlocfilehash: 593e02520d3e6ae87550257381dbc47aa068a242
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 05/17/2021
+ms.openlocfilehash: ba3d6da1d4b9505746e0316bb0f34217e86a7914
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951542"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096276"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -44,7 +44,7 @@ Language Understanding (LUIS) の詳細については、[こちら](whats-new.m
 [Bing Spell Check API V7](luis-tutorial-bing-spellcheck.md) のチュートリアルをご覧ください。 LUIS は、Bing Spell Check API V7 による制限を強制します。
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>プログラムで LUIS アプリを編集するにはどうすればよいですか?
-LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./get-started-get-model-rest-apis.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-how-to-azure-subscription.md#azure-resources-for-luis)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-how-to-azure-subscription.md)に関するページをご覧ください。
+LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./get-started-get-model-rest-apis.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-how-to-azure-subscription.md)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-how-to-azure-subscription.md)に関するページをご覧ください。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>正規表現のマッチングを提供していたパターン機能はどこにありますか?
 以前の **パターン機能** は現在は非推奨になっており、 **[パターン](luis-concept-patterns.md)** に置き換えられています。

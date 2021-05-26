@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 05/17/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c68f76e56f49f055466f7332d7751ac468e034d8
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: aefaf2ca96ac697a74561ff3df68bacbadf1ec99
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616741"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067207"
 ---
 ::: zone target="docs"
 
@@ -80,7 +80,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 3. 自分のストレージ アカウントに関連付けられている共有 (次の例の場合は、*utsac1*) にホスト コンピューターからアクセスするために、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
-    `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
+    `net use \\<IP address of the device>\<share name>  /u:<IP address of the device>\<user name for the share>`
 
     データ形式に応じて、共有パスは次のようになっています。
     - Azure ブロック BLOB - `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
@@ -90,7 +90,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 4. メッセージに従って共有のパスワードを入力します。 パスワードに特殊文字が含まれている場合は、その前後に二重引用符を追加してください。 上記のコマンドを使用して共有に接続する例を次に示します。
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:10.126.76.138\testuser1
     Enter the password for 'testuser1' to connect to '10.126.76.138': "ab1c2def$3g45%6h7i&j8kl9012345"
     The command completed successfully.
     ```

@@ -6,12 +6,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 77888d1d0fe8c4ef1d948904cf9981ed23276fb8
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 312965c96a575578522c848707716115b5a45485
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109719084"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092237"
 ---
 このクイックスタートでは、iOS 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
 
@@ -186,7 +186,7 @@ func startCall()
 ```swift
 func endCall()
 {    
-    self.call!.hangUp(HangUpOptions()) { (error) in
+    self.call!.hangUp(options: HangUpOptions()) { (error) in
         if (error != nil) {
             print("ERROR: It was not possible to hangup the call.")
         }

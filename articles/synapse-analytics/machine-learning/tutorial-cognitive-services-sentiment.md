@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 08d5e53facce172c2287c2e341895f0ee38571f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4199e82ee5b32fe3e34df421a9ca54136b8cbfb7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943700"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846394"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>チュートリアル:Cognitive Services を使用した感情分析 (プレビュー)
 
@@ -109,6 +109,6 @@ Cognitive Services に対して認証するには、キー コンテナーのシ
 ![感情分析を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 
 ## <a name="next-steps"></a>次の手順
-- [チュートリアル: Azure Cognitive Services を使用した異常検出](tutorial-cognitive-services-sentiment.md)
+- [チュートリアル: Azure Cognitive Services を使用した異常検出](tutorial-cognitive-services-anomaly.md)
 - [チュートリアル: Azure Synapse 専用 SQL プールでの機械学習モデルのスコアリング](tutorial-sql-pool-model-scoring-wizard.md)
 - [Azure Synapse Analytics の機械学習機能](what-is-machine-learning.md)
