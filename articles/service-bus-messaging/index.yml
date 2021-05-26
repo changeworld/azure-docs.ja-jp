@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/23/2020
-  ms.openlocfilehash: ec91be71357e2dda70032930d2133eebbf1b5dfd
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 5bddcdf8761682180508b7195c5f86b7aaaebdda
+  ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110468255"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110191777"
 landingContent:
 - title: Service Bus メッセージングについて
   linkLists:
@@ -71,6 +71,8 @@ landingContent:
       url: service-bus-python-how-to-use-queues.md
     - text: PHP
       url: service-bus-php-how-to-use-queues.md
+    - text: Ruby
+      url: service-bus-ruby-how-to-use-queues.md
 - title: メッセージの発行とサブスクライブ
   linkLists:
   - linkListType: quickstart
@@ -85,6 +87,8 @@ landingContent:
       url: service-bus-python-how-to-use-topics-subscriptions.md
     - text: PHP
       url: service-bus-php-how-to-use-topics-subscriptions.md
+    - text: Ruby
+      url: service-bus-ruby-how-to-use-topics-subscriptions.md
 - title: 監視と管理
   linkLists:
   - linkListType: how-to-guide

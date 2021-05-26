@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: bb331f8829252b69499944e5354c9343e96c78bd
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 1b3d13402e18659d0deba723eaf52d4eb5959253
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684741"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379253"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -284,7 +284,7 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 Azure Media Services Video Indexer が、これらの従来のメディア プロセッサに取って代わります。
 
 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
 

@@ -5,15 +5,15 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 3ee8d5f36977a5a9f20c7e636118ffa9f6ee0b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 146a1dba3e13ac594e3b4d9edc358d46b0d54201
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570989"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378493"
 ---
-# <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB サーバーレス (プレビュー)
+# <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB サーバーレス
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB サーバーレスでは、従量課金ベースの方法で Azure Cosmos アカウントを使用できます。この方法では、データベース操作によって消費される要求ユニットと、データによって消費されるストレージに対してのみ課金されます。 サーバーレス コンテナーを使用すると、1 秒あたり数千の要求に対応できます。最低料金はなく、キャパシティ プランニングも必要ありません。
@@ -45,9 +45,6 @@ Azure Cosmos DB サーバーレスは、アイドル時間が長く、**断続�
 
 サーバーレス アカウントで作成されたコンテナーはすべて、サーバーレス コンテナーです。 サーバーレス コンテナーでは、プロビジョニングされたスループット モードで作成されたコンテナーと同じ機能が公開されているため、まったく同じ方法でデータの読み取り、書き込み、クエリを実行できます。 ただし、サーバーレス アカウントとコンテナーには固有の特性もあります。
 
-> [!IMPORTANT]
-> これらの制限事項の一部は、サーバーレスが一般公開されるときに緩和または削除される可能性があります。**お客様のフィードバック** を参考にして決定されます。 サーバーレス エクスペリエンスの詳細については、[azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) までお問い合わせください。
-
 - サーバーレス アカウントは、1 つの Azure リージョンでのみ実行できます。 サーバーレス アカウントを作成した後で、そのアカウントに Azure リージョンを追加することはできません。
 - サーバーレス アカウントで [Synapse Link プレビュー機能](synapse-link.md)を有効にすることはできません。
 - サーバーレス コンテナーでは、スループットのプロビジョニングは必要ないため、次の記述が該当します。
@@ -68,7 +65,7 @@ Azure Cosmos DB サーバーレスは、アイドル時間が長く、**断続�
 
 ## <a name="performance"></a><a id="performance"></a>パフォーマンス
 
-サーバーレス リソースでは、プロビジョニングされたスループット リソースが提供するものとは異なる、特有のパフォーマンス特性がもたらされます。 サーバーレス オファーが一般公開されると、サーバーレス コンテナーの待機時間は、サービスレベル目標 (SLO) に記載されるポイント読み取り 10 ミリ秒以下、書き込み 30 ミリ秒以下になります。 ポイント読み取り操作では、1 つの項目をその ID とパーティション キー値でフェッチします。
+サーバーレス リソースでは、プロビジョニングされたスループット リソースが提供するものとは異なる、特有のパフォーマンス特性がもたらされます。 サーバーレス コンテナーの待機時間は、サービスレベル目標 (SLO) に記載されるポイント読み取り 10 ミリ秒以下、書き込み 30 ミリ秒以下になります。 ポイント読み取り操作では、1 つの項目をその ID とパーティション キー値でフェッチします。
 
 ## <a name="next-steps"></a>次のステップ
 

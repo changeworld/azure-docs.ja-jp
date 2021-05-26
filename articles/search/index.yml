@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: f514b33bb39db2732053102bd69cb853477f67f1
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 6203e20f007fc170447d0c145bbaab942834d907
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101677819"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110378371"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -30,6 +30,8 @@ landingContent:
       url: cognitive-search-concept-intro.md
     - text: インデクサーとは
       url: search-indexer-overview.md
+    - text: Azure Applied AI Services とは
+      url: ../applied-ai-services/what-are-applied-ai-services.md
   - linkListType: video
     links:
     - text: 検索ソリューションで AI を使用する

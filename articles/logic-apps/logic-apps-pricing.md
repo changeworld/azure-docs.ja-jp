@@ -3,15 +3,15 @@ title: 課金および価格モデル
 description: Azure Logic Apps での価格および課金モデルのしくみに関する概要
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: a3c20dd85c94c359259cf69e25bb9083d56857fc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: 629b7a4a52dcc5749941de695eec4558085263df
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777151"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372707"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Azure Logic Apps の価格および課金モデル
 
@@ -19,9 +19,9 @@ ms.locfileid: "107777151"
 
 <a name="consumption-pricing"></a>
 
-## <a name="multi-tenant-pricing"></a>マルチテナントの価格
+## <a name="consumption-pricing-multi-tenant"></a>従量課金 (マルチテナント)
 
-従量課金制モデルは、パブリックの "グローバル" マルチテナント Logic Apps サービスで実行されるロジック アプリに適用されます。 成功した実行も失敗した実行も、すべて従量課金されます。
+従量課金モデルは、パブリックの "グローバル" マルチテナント Logic Apps 環境で実行されるロジック アプリに適用されます。 成功した実行も失敗した実行も、すべて従量課金されます。
 
 たとえば、ポーリング トリガーによって行われた要求は、そのトリガーがスキップされてロジック アプリのワークフロー インスタンスが作成されない場合でも、実行として従量課金されます。
 
@@ -29,7 +29,7 @@ ms.locfileid: "107777151"
 |-------|-------------|
 | [組み込みの](../connectors/built-in.md)トリガーとアクション | Logic Apps サービスでネイティブに実行され、[**アクション** の価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 <p><p>たとえば、HTTP トリガーと Request トリガーは組み込みトリガーですが、HTTP アクションと Response アクションは組み込みアクションです。 データ操作、バッチ操作、変数操作のほか、ループ、条件、スイッチ、並列分岐などの[ワークフロー制御アクション](../connectors/built-in.md)も組み込みアクションです。 |
 | [Standard コネクタ](../connectors/managed.md)のトリガーとアクション <p><p>[カスタム コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)のトリガーとアクション | [Standard コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 |
-| [エンタープライズ コネクタ](../connectors/managed.md)のトリガーとアクション | [エンタープライズ コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 ただし、パブリック プレビュー期間中のエンタープライズ コネクタは、[*Standard* コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 |
+| [エンタープライズ コネクタ](../connectors/managed.md)のトリガーとアクション | [エンタープライズ コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 しかし、コネクタ プレビュー期間中のエンタープライズ コネクタは、[*Standard* コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 |
 | [ループ](logic-apps-control-flow-loops.md)内のアクション | ループで実行される各アクションは、実行されるループ サイクルごとに従量課金されます。 <p><p>たとえば、リストを処理するアクションを含む "for each" ループがあるものとします。 Logic Apps サービスでは、リスト項目の数にループ内のアクションの数を乗算することによって、そのループで実行される各アクションに従量課金し、ループを開始するアクションを加算します。 したがって、10 項目のリストの場合の計算は (10 * 1) + 1 になり、結果は 11 個のアクション実行になります。 |
 | 再試行 | 最も基本的な例外とエラーを処理するために、サポートされているトリガーとアクションに対して[再試行ポリシー](logic-apps-exception-handling.md#retry-policies)を設定できます。 これらの再試行は、元の要求と共に、トリガーまたはアクションの種類 (組み込み、Standard、エンタープライズ) に応じた料金で課金されます。 たとえば、アクションを実行して再試行が 2 回だった場合、3 回のアクション実行として課金されます。 |
 | [データ保持とストレージ消費](#data-retention) | データ保持料金を使用して従量課金されます。[Logic Apps の価格ページ](https://azure.microsoft.com/pricing/details/logic-apps/)の「**価格の詳細**」表で確認できます。 |
@@ -64,11 +64,47 @@ ms.locfileid: "107777151"
 
   たとえば、毎日エンドポイントをチェックするトリガーを設定したとします。 トリガーはエンドポイントを確認し、条件を満たす 15 のイベントを検出した場合、トリガーが起動し、対応するワークフローを 15 回実行します。 Logic Apps サービスでは、トリガー要求を含め、これら 15 のワークフローによって実行されるすべてのアクションが従量課金されます。
 
+<a name="standard-pricing"></a>
+
+## <a name="standard-pricing-single-tenant"></a>Standard 価格 (シングルテナント)
+
+Azure portal で **ロジック アプリ (Standard)** リソースを作成するか、Visual Studio Code からデプロイする場合は、ご利用のロジック アプリのホスティング プランと価格レベルを選ぶ必要があります。 これらの選択肢によって、シングルテナントの Azure Logic Apps でワークフローを実行するときに適用される価格が決まります。
+
+<a name="hosting-plans"></a>
+
+### <a name="hosting-plans-and-pricing-tiers"></a>ホスティング プランと価格レベル
+
+シングルテナント ベースのロジック アプリの場合は、**ワークフロー Standard** ホスティング プランを使用します。 次の一覧は、選択できる利用可能な価格レベルを示しています。
+
+| Pricing tier | コア | メモリ | ストレージ |
+|--------------|-------|--------|---------|
+| **WS1** | 1 | 3.5 GB | 250 GB |
+| **WS2** | 2 | 7 GB | 250 GB |
+| **WS3** | 2 | 14 GB | 250 GB |
+|||||
+
+<a name="storage-transactions"></a>
+
+### <a name="storage-transactions"></a>ストレージ トランザクション
+
+Azure Logic Apps では、すべてのストレージ操作に [Azure Storage](/storage) を使用します。 マルチテナントの Azure Logic Apps では、すべてのストレージの使用状況およびコストがロジック アプリに関連付けられます。 シングルテナントの Azure Logic Apps では、独自の Azure [ストレージ アカウント](../azure-functions/storage-considerations.md#storage-account-requirements)を使用できます。 この機能により、Logic Apps のデータの管理のしやすさと柔軟性が向上します。
+
+"*ステートフル*" ワークフローで操作を実行すると、Azure Logic Apps ランタイムによってストレージ トランザクションが作成されます。 たとえば、キューはスケジュール設定に使用され、テーブルと BLOB はワークフローの状態の格納に使用されます。 ストレージのコストは、ワークフローのコンテンツに基づいて変化します。 トリガー、アクション、ペイロードが異なると、ストレージ操作とニーズも異なります。 ストレージ トランザクションは、[Azure Storage の価格モデル](https://azure.microsoft.com/pricing/details/storage/)に従います。 ストレージ コストは、Azure の請求書に個別に一覧表示されます。
+
+### <a name="tips-for-estimating-storage-needs-and-costs"></a>ストレージのニーズとコストを見積もる場合のヒント
+
+ワークフローで実行される可能性があるストレージ操作の数とそのコストをある程度把握するのに役立つように、[Logic Apps ストレージ計算ツール](https://logicapps.azure.com/calculator)を使用してみてください。 サンプル ワークフローを選択するか、既存のワークフロー定義を使用することができます。 最初の計算では、ワークフロー内のストレージ操作の数を推定します。 その後、これらの数値を使用し、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使って考えられるコストを見積もることができます。
+
+詳細については、次のドキュメントを確認してください。
+
+* [シングルテナント Azure Logic Apps のワークフローのストレージのニーズとコストを見積もる](estimate-storage-costs.md)
+* [Azure Storage の価格の詳細](https://azure.microsoft.com/pricing/details/storage/)
+
 <a name="fixed-pricing"></a>
 
-## <a name="ise-pricing"></a>ISE の価格
+## <a name="ise-pricing-dedicated"></a>ISE の価格 (専用)
 
-固定価格モデルは、[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で実行されるロジック アプリに適用されます。 ISE は、[統合サービス環境の価格](https://azure.microsoft.com/pricing/details/logic-apps)を使用して課金されますが、この価格は、作成する [ISE のレベルまたは *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に応じて変動します。 この価格は、予約容量および専用リソースに対する、使用の有無によらない支払いとなるため、マルチテナントの価格とは異なります。
+固定価格モデルは、専用の "[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で実行されるロジック アプリに適用されます。 ISE は、[統合サービス環境の価格](https://azure.microsoft.com/pricing/details/logic-apps)を使用して課金されますが、この価格は、作成する [ISE のレベルまたは *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に応じて変動します。 この価格は、予約容量および専用リソースに対する、使用の有無によらない支払いとなるため、マルチテナントの価格とは異なります。
 
 | ISE SKU | 説明 |
 |---------|-------------|
@@ -81,7 +117,7 @@ ms.locfileid: "107777151"
 | 項目 | 説明 |
 |-------|-------------|
 | [組み込みの](../connectors/built-in.md)トリガーとアクション | **Core** というラベルが表示され、ロジック アプリと同じ ISE で実行されます。 |
-| [Standard コネクタ](../connectors/managed.md) <p><p>[エンタープライズ コネクタ](../connectors/managed.md#enterprise-connectors) | - **ISE** というラベルが表示されるマネージド コネクタは、オンプレミス データ ゲートウェイなしで機能するように特別に設計されており、ロジック アプリと同じ ISE で実行されます。 ISE の価格には、必要な数のエンタープライズ接続が含まれています。 <p><p>- ISE というラベルが表示されないコネクタは、マルチテナントの Logic Apps サービスで実行されます。 ただし、ISE の価格には、ISE で実行されるロジック アプリに関するこれらの実行が含まれます。 |
+| [Standard コネクタ](../connectors/managed.md) <p><p>[エンタープライズ コネクタ](../connectors/managed.md#enterprise-connectors) | - **ISE** というラベルが表示されるマネージド コネクタは、オンプレミス データ ゲートウェイなしで機能するように特別に設計されており、ロジック アプリと同じ ISE で実行されます。 ISE の価格には、必要な数のエンタープライズ接続が含まれています。 <p><p>- ISE というラベルが表示されないコネクタは、シングルテナントの Azure Logic Apps サービスで実行されます。 ただし、ISE の価格には、ISE で実行されるロジック アプリに関するこれらの実行が含まれます。 |
 | [ループ](logic-apps-control-flow-loops.md)内のアクション | ISE の価格には、実行されるループ サイクルごとにループで実行される各アクションが含まれます。 <p><p>たとえば、リストを処理するアクションを含む "for each" ループがあるものとします。 アクションの合計実行数を得るには、リスト項目の数とループ内のアクションの数を乗算し、ループを開始するアクションを加算します。 したがって、10 項目のリストの場合の計算は (10 * 1) + 1 になり、結果は 11 個のアクション実行になります。 |
 | 再試行 | 最も基本的な例外とエラーを処理するために、サポートされているトリガーとアクションに対して[再試行ポリシー](logic-apps-exception-handling.md#retry-policies)を設定できます。 ISE の価格には、元の要求に加えて再試行が含まれます。 |
 | [データ保持とストレージ消費](#data-retention) | ISE 内のロジック アプリには、保持およびストレージのコストはかかりません。 |

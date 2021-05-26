@@ -450,8 +450,6 @@
           href: manage/review-enterprise-billing.md
         - name: サブスクリプションの用途の確認
           href: manage/review-subscription-billing.md
-        - name: リソース使用状況の確認
-          href: manage/review-service-usage-api.md
 - name: Cloudyn
   items:
     - name: 概要
