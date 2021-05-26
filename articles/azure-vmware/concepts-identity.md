@@ -2,13 +2,13 @@
 title: 概念 - ID とアクセス
 description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
-ms.date: 05/11/2021
-ms.openlocfilehash: cd04cc6265faf480d80903ea65ba9886a413e356
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 05/13/2021
+ms.openlocfilehash: d5d4b7f09df86315553e4716ef38cdbb67a883f4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788273"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089580"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
@@ -111,7 +111,7 @@ NSX-T Manager には "*管理者*" アカウントを使用してアクセスし
 
 Azure VMware Solution のアクセスと ID に関する概念を理解したら、次の事項の学習に進むことができます。
 
-- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
+- [Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
 - [各特権の詳細](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
 - [Azure VMware Solution でプライベート クラウドを監視し、修復するしくみ](/azure/azure-vmware/concepts-private-clouds-clusters#host-monitoring-and-remediation)
 

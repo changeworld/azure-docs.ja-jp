@@ -8,12 +8,12 @@ ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: a163c061e2709e8be479be198c2e9465bb801dec
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b9ee3b76b1762034e6c1c5d29654b00d31022ff2
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480539"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838089"
 ---
 # <a name="azure-storage-archive-backup-and-disaster-recovery-partners"></a>Azure Storage のアーカイブ、バックアップ、ディザスター リカバリーのパートナー
 
@@ -28,7 +28,7 @@ ms.locfileid: "109480539"
 ![Tiger Technology 社のロゴ](./media/tiger-logo.png) |**Tiger Technology**<br>Tiger Technology 社は、高パフォーマンスで安全なデータ管理ソフトウェア ソリューションを提供しています。 Tiger Technology 社を利用することで、あらゆる規模の組織が、オンプレミスで、任意のパブリック クラウドで、またはハイブリッドのモデルを使用して、デジタル資産を管理できます。 <br><br> Tiger Bridge は、特定の企業が占有する技術ではない、ソフトウェア専用のデータによる、ストレージ管理システムです。 オンプレミスと多層クラウドのストレージが 1 つのスペースに一体化されて、ハイブリッドのワークフローが可能になります。 この透過的なファイル サーバー拡張機能により、従来のアプリケーションとワークフローを維持しながら、Azure のスケールとサービスを活用できます。 Tiger Bridge により、ファイル サーバー拡張機能、ディザスター リカバリー、クラウド移行、バックアップとアーカイブ、リモート コラボレーション、マルチサイト同期など、さまざまなデータ管理の課題が対処されます。また、継続的データ保護も提供されます。 |[パートナー ページ](https://www.tiger-technology.com/partners/microsoft-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tiger-technology.tigerbridge_vm)|
 | ![Veeam 社のロゴ](./media/veeam-logo.png) |**Veeam**<br> Veeam Backup for Microsoft Azure により、Azure VM を自動的にネイティブ保護するために必要なすべてのものが提供されます。 このソリューションは、Azure とプライベート クラウド全体を対象とする透過的なハイブリッド クラウド データ管理のための Veeam Backup & Replication とも統合されます。 <br><br>Veeam Backup & Replication からは、クラウド、仮想、物理のすべてのワークロードの保護が提供されます。 高速で柔軟な、信頼性の高いバックアップと高速な復元が実現されます。 これにより、すべてのアプリケーションとデータについて、短い目標復旧時間 (RTO) での回復とレプリケーションが保証されます。 |パートナー ページ:<br>[Backup for Azure](https://www.veeam.com/backup-azure.html)<br>[Backup and Replication](https://www.veeam.com/vm-backup-recovery-replication-software.html) <br>Azure Marketplace: [Backup for Azure](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.azure_backup_free?tab=Overview)<br>[Backup and Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication)<br>[ファースト ステップ ガイド](./veeam/veeam-solution-guide.md)|
 | ![Veritas 社のロゴ](./media/veritas-logo.png) |**Veritas**<br>Veritas Technologies 社のソリューションは、マルチクラウドのデータ管理、データ保護、ストレージの最適化に加え、コンプライアンスへの準備とワークロードの移植性にも対応しています。<br><br>NetBackup は、統合されたデータ保護および回復ソリューションを提供します。 NetBackup は、環境全体を標準化し、ワークロードかクラウドかに関係なく、複雑さとリスクを大幅に軽減するのに役立ちます。 NetBackup は、Azure Stack 環境間または Azure リージョン間で、プッシュボタン調整ディザスター リカバリー、シームレスなワークロードとデータの移植性、回復性とモビリティを提供します。<br><br>Veritas Backup Exec により、社内の仮想環境と物理環境の Azure へのシンプルで迅速かつ安全なオフサイト バックアップが提供されます。 Azure のクラウドベースのワークロードも保護されます。|[パートナー ページ](https://www.veritas.com/partners/microsoft-azure)<br>Azure Marketplace:<br>[NetBackup](https://azuremarketplace.microsoft.com/marketplace/apps/veritas.veritas-netbackup-8-s?tab=Overview)<br>[Backup Exec](https://azuremarketplace.microsoft.com/marketplace/apps/veritas.backup-exec-20?tab=Overview)|
-| ![Zerto 社のロゴ](./media/zerto-logo.png) |**Zerto**<br>Zerto 社は、クラウドのデータ管理と保護用の単独プラットフォームで IT 変革を促進するのに役立ちます。 Zerto 社は、プライベート、パブリック、ハイブリッド クラウド全体にわたるアプリケーションとデータの保護、復旧、モビリティを簡略化し、Azure 向けに最適化された、常時オンのカスタマー エクスペリエンスを実現します。|[パートナー ページ](https://www.zerto.com/azure)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/zerto.zerto?tab=overview)<br>[Backup Exec](https://azuremarketplace.microsoft.com/marketplace/apps/veritas.backup-exec-20?tab=Overview)|
+| ![Zerto 社のロゴ](./media/zerto-logo.png) |**Zerto**<br>Zerto 社は、クラウドのデータ管理と保護用の単独プラットフォームで IT 変革を促進するのに役立ちます。 Zerto 社は、プライベート、パブリック、ハイブリッド クラウド全体にわたるアプリケーションとデータの保護、復旧、モビリティを簡略化し、Azure 向けに最適化された、常時オンのカスタマー エクスペリエンスを実現します。|[パートナー ページ](https://www.zerto.com/azure)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/zerto.zerto?tab=overview)|
 
 ストレージ パートナーであるのに、ご自分のソリューションがまだ一覧に表示されていませんか? [こちら](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUQjY4QlJYUzFHQ0ZBVDNYWERaUlNRVU5IMyQlQCN0PWcu)から情報をお送りください。
 

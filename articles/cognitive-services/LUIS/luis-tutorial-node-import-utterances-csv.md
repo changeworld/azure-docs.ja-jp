@@ -8,13 +8,13 @@ ms.custom: seodec18, devx-track-js
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 09/05/2019
-ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: cce44bde0985be1943b44e0e7edd34ca62f50fe5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91541045"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090732"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
@@ -24,7 +24,7 @@ LUIS は、[LUIS](luis-reference-regions.md) Web サイトによって実行さ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [LUIS](luis-reference-regions.md) Web サイトにサインインし、[アカウント設定] で[オーサリング キー](luis-how-to-azure-subscription.md#authoring-key)を見つけます。 このキーを使用して、Authoring API を呼び出します。
+* [LUIS](luis-reference-regions.md) Web サイトにサインインし、[アカウント設定] で[オーサリング キー](luis-how-to-azure-subscription.md)を見つけます。 このキーを使用して、Authoring API を呼び出します。
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 * この記事では、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
 * NPM を使用して最新の Node.js をインストールします。 これは、[こちら](https://nodejs.org/en/download/)からダウンロードできます。

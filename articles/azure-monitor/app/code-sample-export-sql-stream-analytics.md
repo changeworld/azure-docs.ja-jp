@@ -3,12 +3,12 @@ title: Azure Application Insights から SQL へのエクスポート | Microsof
 description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 25d28bb0fc35ef76231c085dc1d9d8a1234a264c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7627ae6dabb75782549ed17fc6e590b7bc7da77d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587747"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092748"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法について説明します。 
@@ -26,7 +26,7 @@ ms.locfileid: "100587747"
 
 1. [Web ページに Application Insights を設定する](./javascript.md) 
    
-    (この例では、クライアント ブラウザーからのページ ビュー データの処理を取り上げますが、サーバー側の [Java](./java-get-started.md) または [ASP.NET](./asp-net.md) アプリに Application Insights を設定し、要求、依存関係、その他のサーバー テレメトリを処理することもできます。)
+    (この例では、クライアント ブラウザーからのページ ビュー データの処理を取り上げますが、サーバー側の [Java](./java-in-process-agent.md) または [ASP.NET](./asp-net.md) アプリに Application Insights を設定し、要求、依存関係、その他のサーバー テレメトリを処理することもできます。)
 2. アプリを発行して Application Insights のリソースに表示されるテレメトリ データを確認します。
 
 ## <a name="create-storage-in-azure"></a>Azure でのストレージの作成

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Metrics Advisor のドキュメント
+title: Azure Metrics Advisor のドキュメント
 summary: Metrics Advisor は、機械学習の知識がなくてもデータ インジェスト、異常検出、診断を行うことができる一連の API を備えた時系列の監視プラットフォームです。
 metadata:
-  title: Metrics Advisor のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
-  titleSuffix: Azure Cognitive Services
+  title: Azure Metrics Advisor のドキュメント - チュートリアル、API リファレンス - Azure Applied AI Services | Microsoft Docs
+  titleSuffix: Azure Applied AI Services
   services: cognitive-services
   description: Metrics Advisor は、機械学習の知識がなくてもデータ インジェスト、異常検出、診断を行うことができる一連の API を備えた時系列の監視プラットフォームです。
   author: mrbullwinkle
@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/13/2020
   ms.author: mbullwin
-  ms.openlocfilehash: 82029d4547f840d838b371fe42c8ec727a57fa2d
-  ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+  ms.openlocfilehash: 9779d1b024782f723ab9991a09daa2f859bb1539
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102201551"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110367292"
 landingContent:
 - title: Metrics Advisor について
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
     links:
     - text: Metrics Advisor とは
       url: overview.md
+    - text: Azure Applied AI Services とは
+      url: ../../applied-ai-services/what-are-applied-ai-services.md
   - linkListType: quickstart
     links:
     - text: Web で初めてのメトリックを監視する

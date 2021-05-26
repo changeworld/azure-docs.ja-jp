@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/22/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80ea49436e9bfec5203f3a0493d441cfdbd1dbde
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dde8291bce52e8f36aa712e294109dfe156fb426
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755119"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367205"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために Python 開発環境をセットアップする
 
@@ -132,7 +132,7 @@ Azure Machine Learning と Jupyter Notebook の使用を開始するには、[Az
 開発に Visual Studio Code を使用するには
 
 1. [Visual Studio Code](https://code.visualstudio.com/Download) をインストールします。
-1. [Visual Studio Code の Azure Machine Learning 拡張機能](tutorial-setup-vscode-extension.md) (プレビュー) をインストールします。
+1. [Visual Studio Code の Azure Machine Learning 拡張機能](how-to-setup-vs-code.md) (プレビュー) をインストールします。
 
 Visual Studio Code 拡張機能をインストールしたら、次の用途に使用します。
 

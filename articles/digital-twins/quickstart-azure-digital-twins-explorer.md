@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d56c4b8fc17dc29578366e3d84e9ba20ca95a9dd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 128bc90ec019927a34d258d3cc58286c5b5ab048
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789715"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092298"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>クイック スタート - Azure Digital Twins Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -59,7 +59,7 @@ Azure Digital Twins を操作する際の最初の手順は、Azure Digital Twin
 
 ### <a name="set-up-local-azure-credentials"></a>ローカルの Azure 資格情報を設定する
 
-Azure Digital Twins Explorer アプリケーションは、ローカル コンピューターで実行された Azure Digital Twins インスタンスに対し、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) (`Azure.Identity` ライブラリの一部) を使用してユーザーの認証を行います。 Azure Digital Twins に対してクライアント アプリの認証を行う各種の方法について詳しくは、「[アプリ認証コードを作成する](how-to-authenticate-client.md)」を参照してください。
+Azure Digital Twins Explorer アプリケーションは、ローカル コンピューターで実行された Azure Digital Twins インスタンスに対し、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) (`Azure.Identity` ライブラリの一部) を使用してユーザーの認証を行います。 Azure Digital Twins に対してクライアント アプリの認証を行う各種の方法について詳しくは、「[アプリ認証コードを作成する](how-to-authenticate-client.md)」を参照してください。
 
 この種の認証では、Azure Digital Twins Explorer によってローカル環境内で資格情報が検索されます。たとえば、ローカル [Azure CLI](/cli/azure/install-azure-cli) や Visual Studio または Visual Studio Code での Azure サインインなどです。 このため、Azure Digital Twins Explorer アプリの資格情報を設定するために、これらのメカニズムのいずれかを使用して、"**Azure にローカルでサインイン**" する必要があります。
 

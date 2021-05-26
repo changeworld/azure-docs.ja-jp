@@ -9,12 +9,12 @@ ms.date: 01/20/2021
 ms.topic: quickstart
 ms.service: application-gateway
 ms.custom: devx-track-azurepowershell - mvc - subject-armqs - mode-arm
-ms.openlocfilehash: 09efb78251e6ca385a2bd45be722aa267736d318
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ab9a586e657652c50f182fd1dcb7e085e2e8dac7
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321323"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839169"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>クイック スタート:Azure Application Gateway を使用して Web トラフィックを転送する - ARM テンプレート
 
@@ -28,7 +28,7 @@ ms.locfileid: "108321323"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdemos%2Fag-docs-qs%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "108321323"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/ag-docs-qs/)からのものです
 
-:::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/demos/ag-docs-qs/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
@@ -58,7 +58,7 @@ ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートにより、アプリケーション ゲートウェイ、ネットワーク インフラストラクチャ、IIS を実行しているバックエンドプールに 2 つの仮想マシンが作成されます。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdemos%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. ご自分のリソース グループを選択または作成し、仮想マシンの管理者ユーザーの名前とパスワードを入力します。
 3. **[確認および作成]** を選択し、次に **[作成]** を選択します。

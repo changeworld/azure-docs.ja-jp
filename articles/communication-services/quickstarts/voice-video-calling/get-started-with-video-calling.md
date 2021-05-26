@@ -7,13 +7,13 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 5519fc73fa41091e274e07906bab574d2df4bd69
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+zone_pivot_groups: acs-plat-web-ios-android-windows
+ms.openlocfilehash: ae763743bd4e3012e2f79df1dab0cad231939224
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483241"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110093565"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app"></a>クイックスタート: アプリに 1 対 1 のビデオ通話を追加する
 
@@ -27,6 +27,10 @@ ms.locfileid: "109483241"
 
 ::: zone pivot="platform-ios"
 [!INCLUDE [Video calling with iOS](./includes/video-calling-ios.md)]
+::: zone-end
+
+::: zone pivot="platform-windows"
+[!INCLUDE [Video calling with Windows](./includes/video-calling-windows.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

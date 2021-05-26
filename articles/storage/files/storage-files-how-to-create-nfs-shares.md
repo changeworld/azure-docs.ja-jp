@@ -4,16 +4,16 @@ description: ネットワーク ファイル システム プロトコルを使�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 05/11/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b549c625f0a6ff0480eafc38f84d292e66350950
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 4b49d8a0fce3dac1c5558d4784d1bb7ddb33b734
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717133"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810554"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS 共有を作成する方法
 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 この記事では、NFS プロトコルを使用するファイル共有の作成について説明します。 両方のプロトコルの詳細については、[Azure ファイル共有のプロトコル](storage-files-compare-protocols.md)に関するページを参照してください。
