@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: b90d628f0d24e43d7b9f2e3fa87e74d426648c6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1da3f75fb95488d45a3f29284bdc8c7424b6bc9a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048575"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459107"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -29,10 +29,6 @@ ms.locfileid: "102048575"
 - 個人または共有の Workbooks のオプション。
 - 簡単でコラボレーションしやすい作成エクスペリエンス。
 - テンプレートでの GitHub ベースのパブリック テンプレート ギャラリーのサポート。
-
-### <a name="limitations"></a>制限事項
-- 自動更新なし。
-- ダッシュボードのような密度の高いレイアウトがなく、Workbooks が 1 つのウィンドウとして表示されるため、利便性には劣りますが、 詳細な分析情報を提供することを目的としています。
 
 
 ## <a name="azure-dashboards"></a>Azure ダッシュボード

@@ -153,6 +153,8 @@
       href: v2-permissions-and-consent.md
     - name: 条件付きアクセス
       href: v2-conditional-access-dev-guide.md
+    - name: 認証コンテキスト
+      href: developer-guide-conditional-access-authentication-context.md
     - name: 自動ユーザー プロビジョニング (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
 - name: 操作方法
@@ -657,6 +659,8 @@
     - name: モバイル シングル サインオン (SSO)
       href: mobile-sso-support-overview.md
       displayName: 'android, ios'
+    - name: クレームのチャレンジと要求
+      href: claims-challenge.md
     - name: アクセス許可と同意
       displayName: Scopes
       items:

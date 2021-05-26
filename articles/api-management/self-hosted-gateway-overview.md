@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 05/25/2021
 ms.author: apimpm
-ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 946a2707e68e2f3ce6f78df997d102eeb0c7c450
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99989093"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376972"
 ---
 # <a name="self-hosted-gateway-overview"></a>セルフホステッド ゲートウェイの概要
 
@@ -43,7 +43,7 @@ ms.locfileid: "99989093"
 
 ## <a name="packaging-and-features"></a>パッケージと機能
 
-セルフホステッド ゲートウェイは、すべての API Management サービスの一部として Azure にデプロイされるマネージド ゲートウェイと機能的に同等の、コンテナー化されたバージョンです。 セルフホステッド ゲートウェイは、Microsoft Container Registry から Linux ベースの Docker [コンテナー](https://aka.ms/apim/sputnik/dhub)として入手できます。 オンプレミスのサーバー クラスターで実行されている Docker、Kubernetes などのコンテナー オーケストレーション ソリューション、クラウド インフラストラクチャ、または評価と開発が目的の場合はパーソナル コンピューター上にデプロイできます。
+セルフホステッド ゲートウェイは、すべての API Management サービスの一部として Azure にデプロイされるマネージド ゲートウェイと機能的に同等の、コンテナー化されたバージョンです。 セルフホステッド ゲートウェイは、Microsoft Container Registry から Linux ベースの Docker [コンテナー](https://aka.ms/apim/sputnik/dhub)として入手できます。 オンプレミスのサーバー クラスターで実行されている Docker、Kubernetes などのコンテナー オーケストレーション ソリューション、クラウド インフラストラクチャ、または評価と開発が目的の場合はパーソナル コンピューター上にデプロイできます。 また、セルフホステッド ゲートウェイをクラスター拡張機能として、[Azure Arc 対応 Kubernetes クラスター](./how-to-deploy-self-hosted-gateway-azure-arc.md)にデプロイすることもできます。
 
 マネージ ゲートウェイにある次の機能は、セルフホステッド ゲートウェイでは **使用できません**。
 
@@ -85,3 +85,4 @@ Azure への接続性が失われると、セルフホステッド ゲートウ�
 -   [このトピックの追加の背景情報についてのホワイトペーパーを読む](https://aka.ms/hybrid-and-multi-cloud-api-management)
 -   [Docker にセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-docker.md)
 -   [Kubernetes にセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-kubernetes.md)
+-   [Azure Arc 対応 Kubernetes クラスターにセルフホステッド ゲートウェイをデプロイする](how-to-deploy-self-hosted-gateway-azure-arc.md)

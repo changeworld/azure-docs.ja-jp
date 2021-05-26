@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cb4f074cb9487c22fc340b2e7b2941cd7b69ca98
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041027"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459055"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Azure Monitor でのログ クエリ
 Azure Monitor ログは Azure Data Explorer を基盤としており、ログ クエリは同じ Kusto クエリ言語 (KQL) を使用して作成します。 これは、読みやすく、簡単に作成できるよう設計されたリッチ言語であるため、いくつかの基本的なガイダンスを使用してクエリの作成を開始できます。
@@ -30,7 +30,7 @@ KQL を使用してログ クエリを作成するための学習を開始する
 
 - [Log Analytics チュートリアル](./log-analytics-tutorial.md) - Log Analytics (Azure portal でクエリを編集および実行するために使用するツール) の機能の使用に関するチュートリアルです。 これを使用すると、クエリ言語を直接操作することなく、単純なクエリを記述することもできます。 以前に Log Analytics を使用したことがない場合は、ここから開始して、他のチュートリアルやサンプルで使用するツールについて理解してください。
 - [KQL チュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor) - 基本的な KQL の概念と一般的な演算子に関するガイド付きチュートリアルです。 これは、言語自体とログ クエリの構造をすばやく理解するのに最適な場所です。 
-- [クエリの例](../logs/example-queries.md) - Log Analytics で使用できるクエリの例について説明します。 クエリは、変更せずに使用することも、KQL を学習するためのサンプルとして使用することもできます。
+- [クエリの例](../logs/queries.md) - Log Analytics で使用できるクエリの例について説明します。 クエリは、変更せずに使用することも、KQL を学習するためのサンプルとして使用することもできます。
 - [クエリ サンプル](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor) - さまざまな概念を示すサンプル クエリです。
 
 

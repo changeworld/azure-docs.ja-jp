@@ -5,14 +5,15 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a647b83a3a64de72cca81ef2ade411135410ab45
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171637"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370465"
 ---
 # <a name="output-batching"></a>出力のバッチ処理
 
@@ -47,7 +48,7 @@ Event Grid のバッチ処理の動作は、次の 2 つの設定を調整して
 
   既定では、Event Grid によって、各配信要求に 1 つのイベントのみが追加されます。 バッチ処理を有効にする方法は、イベント サブスクリプション JSON で、この記事で前述した設定のいずれかを指定することです。
 
-* 既定値
+* 既定の値
 
   イベント サブスクリプションを作成するときに、両方の設定 (バッチあたりの最大イベント数とキロバイト単位の概算バッチ サイズ) を指定する必要はありません。 1 つの設定さえ指定されれば、Event Grid によって (構成可能な) 既定値が使用されます。 既定値と、それらをオーバーライドする方法については、以降のセクションを参照してください。
 

@@ -1,6 +1,6 @@
 ---
-title: イマーシブ リーダーとは
-titleSuffix: Azure Cognitive Services
+title: Azure イマーシブ リーダーとは?
+titleSuffix: Azure Applied AI Services
 description: イマーシブ リーダーは、学習障碍者を支援したり、新しい読者や言語学習者の読解力を支援したりするように設計されているツールです。
 services: cognitive-services
 author: metanMSFT
@@ -12,16 +12,16 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: 読者, 言語学習者, 絵の表示, 読解力の向上, コンテンツの読み取り, 翻訳
-ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: a8a8f26f6b79d5a687b3adf5d68bdfd89cc837d4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801572"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377641"
 ---
-# <a name="what-is-immersive-reader"></a>Immersive Reader とは
+# <a name="what-is-azure-immersive-reader"></a>Azure イマーシブ リーダーとは?
 
-[イマーシブ リーダー](https://www.onenote.com/learningtools)は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 イマーシブ リーダー クライアント ライブラリを使用すると、Microsoft Word および Microsoft One Note で使用されるものと同じテクノロジを利用して、Web アプリケーションを改良できます。 
+[イマーシブ リーダー](https://www.onenote.com/learningtools)は、[Azure Applied AI Services](../../applied-ai-services/what-are-applied-ai-services.md) の一部を成すものであり、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 イマーシブ リーダー クライアント ライブラリを使用すると、Microsoft Word および Microsoft One Note で使用されるものと同じテクノロジを利用して、Web アプリケーションを改良できます。 
 
 このドキュメントには、次のような記事が記載されています。  
 

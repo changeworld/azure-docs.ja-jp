@@ -3,12 +3,12 @@ title: チュートリアル:Azure Event Grid を使用して、アップロー�
 description: チュートリアル:Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: e88dff9dcf06ad5eb120c11c4c17c3ef318e4418
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 5b5630fe969f248f10065f1fb5049112da03e391
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897147"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457754"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -22,7 +22,7 @@ ms.locfileid: "107897147"
 
 ![ブラウザーでの発行済みの Web アプリ (\.NET v12 SDK 用) を示すスクリーンショット。](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 ![ブラウザーでの発行済みの Web アプリ (\.NET v10 SDK 用) を示すスクリーンショット。](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
@@ -163,7 +163,7 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 ```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
@@ -217,7 +217,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 Node.js のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。
 
@@ -245,7 +245,7 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
 
 この関数の詳細については、[function.json ファイルと run.csx ファイル](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions)を参照してください。
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 この関数の詳細については、[function.json ファイルと index.js ファイル](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail)を参照してください。
 
@@ -303,7 +303,7 @@ Web アプリでイメージのサイズ変更をテストするには、公開�
 
 ![ブラウザーでの発行済みの "ImageResizer" というタイトルの Web アプリ (\.NET v12 SDK 用) を示すスクリーンショット。](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 **[Choose File]** をクリックしてファイルを選び、 **[Upload Image]** をクリックします。 アップロードが成功すると、ブラウザーが成功ページに移動します。 リンクをクリックすると、ホーム ページに戻ります。 **[Generated Thumbnails]** 領域に、アップロードされた画像のコピーが表示されます。 画像が表示されない場合は、ページを再度読み込んでみてください。この画像は、関数によってサイズが変更され、*thumbnails* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 1563543dec0a27094c00e446a205e94535e54229
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 97901b851353007d6b99dd39f4ecb36b7284eaf8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713525"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470413"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
@@ -141,7 +141,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
     ![プロバイダーのダウンロード](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 8. アプライアンスの設定ファイルとキー ファイルを、アプライアンス用に作成した Windows Server 2016 マシンにコピーします。
-9. インストールが完了すると、アプライアンス構成ウィザードが自動的に起動します (アプライアンスのデスクトップに作成された cspsconfigtool ショートカットを使用して、ウィザードを手動で起動することもできます)。 ウィザードの [アカウントの管理] タブを使用して、モビリティ サービスのプッシュ インストールに使用するアカウントの詳細を追加します。 このチュートリアルでは、レプリケートされるソース VM にMobility Service を手動でインストールします。そのため、この手順でダミー アカウントを作成し、続行します。 ダミー アカウントを作成するための詳細情報には、"ゲスト" としてフレンドリ名、"ユーザー名" としてユーザー名、"パスワード" としてアカウントのパスワードを指定できます。 このダミー アカウントは、レプリケーションの有効化ステージで使用します。 
+9. インストールが完了すると、アプライアンス構成ウィザードが自動的に起動します (アプライアンスのデスクトップに作成された cspsconfigtool ショートカットを使用して、ウィザードを手動で起動することもできます)。 このチュートリアルでは、レプリケートされるソース VM にMobility Service を手動でインストールします。そのため、この手順でダミー アカウントを作成し、続行します。 ダミー アカウントを作成するための詳細情報には、"ゲスト" としてフレンドリ名、"ユーザー名" としてユーザー名、"パスワード" としてアカウントのパスワードを指定できます。 このダミー アカウントは、レプリケーションの有効化ステージで使用します。 
 
 10. アプライアンスが設定後に再起動されたら、 **[マシンの検出]** の **[構成サーバーの選択]** で新しいアプライアンスを選択し、 **[Finalize registration]\(登録の終了処理\)** をクリックします。 登録の終了処理では、レプリケーション アプライアンスを準備するための終了タスクがいくつか実行されます。
 

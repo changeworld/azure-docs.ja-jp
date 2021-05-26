@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2cf201c17b97464386ce52f4d689c2c1006d0970
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728625"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377418"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions のホスティング オプション
 
@@ -22,7 +22,10 @@ Azure で Function App を作成するときは、アプリのホスティング
 * 各 Function App  インスタンスに利用できるリソース。
 * Azure Virtual Network 接続などの高度な機能のサポート。
 
-この記事では、さまざまなホスティング プランの詳しい比較を、Kubernetes ベースのホスティングと共に示します。
+この記事では、さまざまなホスティング プランの詳しい比較を、[Kubernetes ベースのホスティング](functions-kubernetes-keda.md)と共に示します。
+
+> [!NOTE]
+> Kubernetes クラスターで関数をホストする場合は、[Azure Arc 対応 Kubernetes クラスター](../azure-arc/kubernetes/overview.md)の使用を検討してください。 現在、Azure Arc 対応 Kubernetes クラスターでのホスティングはプレビュー段階です。 詳細は、「[Azure Arc の App Service、Functions、および Logic Apps](../app-service/overview-arc-integration.md)」をご覧ください。  
 
 ## <a name="overview-of-plans"></a>プランの概要
 
@@ -39,7 +42,7 @@ Azure で Function App を作成するときは、アプリのホスティング
 | ホスティング オプション | 詳細 |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | App Service Environment (ASE) は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。<br/><br/>ASE は、以下を必要とするアプリケーション ワークロードに最適です。 <br/><br/>✔ 高スケール。<br/>✔ コンピューティングの完全分離とセキュリティで保護されたネットワーク アクセス。<br/>✔ メモリ使用量が多い。|  
-| **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes は、Kubernetes プラットフォーム上で実行される完全に分離された専用の環境を提供します。<br/><br/> Kubernetes は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ ハードウェア要件のカスタマイズ。<br/>✔ 分離およびセキュリティで保護されたネットワーク アクセス。<br/>✔ ハイブリッド環境またはマルチクラウド環境で実行可能。<br/>✔ 既存の Kubernetes アプリケーションやサービスと並行して実行。|  
+| **Kubernetes**<br/>([ダイレクト](functions-kubernetes-keda.md)または<br/>[Azure Arc](../app-service/overview-arc-integration.md)) | Kubernetes は、Kubernetes プラットフォーム上で実行される完全に分離された専用の環境を提供します。<br/><br/> Kubernetes は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ ハードウェア要件のカスタマイズ。<br/>✔ 分離およびセキュリティで保護されたネットワーク アクセス。<br/>✔ ハイブリッド環境またはマルチクラウド環境で実行可能。<br/>✔ 既存の Kubernetes アプリケーションやサービスと並行して実行。|  
 
 この記事の残りの表では、さまざまな機能と動作のプランを比較します。 動的ホスティング プラン (従量課金と Premium) のコスト比較については、[Azure Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。 さまざまな専用プラン オプションの価格については、[App Service の価格に関するページ](https://azure.microsoft.com/pricing/details/app-service/windows/)を参照してください。 
 
@@ -53,7 +56,8 @@ Azure で Function App を作成するときは、アプリのホスティング
 | **[Premium プラン](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
 | **[専用プラン](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes](functions-kubernetes-keda.md)** | 該当なし | 該当なし |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Kubernetes (ダイレクト)](functions-kubernetes-keda.md)** | 該当なし | 該当なし |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Azure Arc (プレビュー)](../app-service/overview-arc-integration.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | 該当なし |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 
 <sup>1</sup> Linux は、Python ランタイム スタックでサポートされている唯一のオペレーティング システムです。 <br/>
 <sup>2</sup> Windows は、PowerShell ランタイム スタックでサポートされている唯一のオペレーティング システムです。<br/>
