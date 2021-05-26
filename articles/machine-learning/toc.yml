@@ -75,11 +75,11 @@
       items:
         - name: CLI を使用したトレーニングとデプロイ
           href: tutorial-train-deploy-model-cli.md
+        - name: マネージド エンドポイントを使用した Azure リソースへのアクセス
+          href: tutorial-deploy-managed-endpoints-using-system-managed-identity.md
     - name: Visual Studio Code
       items:
-        - name: Azure Machine Learning 拡張機能の設定
-          href: tutorial-setup-vscode-extension.md
-        - name: TensorFlow 画像分類モデルのトレーニングとデプロイ
+        - name: TensorFlow 画像分類モデルのトレーニング
           href: tutorial-train-deploy-image-classification-model-vscode.md
     - name: Microsoft Power BI 統合
       items:
@@ -134,6 +134,8 @@
       href: concept-workspace.md
     - name: 環境
       href: concept-environments.md
+    - name: 推論用の事前構築済み Docker イメージ
+      href: concept-prebuilt-docker-images-inference.md
     - name: コンピューティング インスタンス
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -157,6 +159,8 @@
     - name: ディープ ラーニング
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
+    - name: エンドポイント
+      href: concept-endpoints.md
     - name: モデル管理 (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -283,6 +287,9 @@
           href: how-to-create-attach-compute-studio.md
     - name: 環境の設定方法
       items:
+        - name: 2.0 CLI のインストールと設定
+          displayName: 'azurecli, mlops'
+          href: how-to-configure-cli.md
         - name: 開発環境をセットアップする
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
@@ -305,8 +312,11 @@
         - name: 入力および出力ディレクトリを設定する
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: Visual Studio Code
+        - name: VS Code 拡張機能の設定
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
+          href: how-to-setup-vs-code.md
+        - name: VS Code でのコンピューティング インスタンスへの接続
+          displayName: 'Visual Studio Code, VSCode, debug, bugs'
           href: how-to-set-up-vs-code-remote.md
         - name: Git 統合
           displayName: github gitlab
@@ -371,6 +381,8 @@
               href: how-to-differential-privacy.md
     - name: モデルをトレーニングする
       items:
+        - name: 2.0 CLI を使用したトレーニング
+          href: how-to-train-cli.md
         - name: トレーニングの実行の構成と送信
           displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
@@ -387,6 +399,8 @@
           href: how-to-train-pytorch.md
         - name: カスタム Docker イメージを使用したトレーニング
           href: how-to-train-with-custom-image.md
+        - name: REST API を使用したトレーニング
+          href: how-to-train-with-rest.md
         - name: Estimator から ScriptRunConfig への移行
           href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: トレーニングの追跡と監視
@@ -424,6 +438,9 @@
         - name: MLflow を使用して Azure Databricks 実行を追跡する
           displayName: 'log, monitor, deploy, metrics, databricks'
           href: how-to-use-mlflow-azure-databricks.md
+        - name: MLflow プロジェクトを使用した実験のトレーニング
+          displayName: 'log, monitor, metrics, model registry, register'
+          href: how-to-train-mlflow-projects.md
         - name: MLflow モデルのデプロイ
           displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
           href: how-to-deploy-mlflow-models.md
@@ -461,6 +478,30 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: エンドポイントを使用したデプロイと提供
+          items:
+            - name: オンライン
+              items:
+                - name: マネージド オンライン エンドポイントを使用して ML モデルをデプロイする
+                  href: how-to-deploy-managed-online-endpoints.md
+                - name: オンライン エンドポイントの安全なロールアウト
+                  href: how-to-safely-rollout-managed-endpoints.md
+                - name: Studio でマネージド オンライン エンドポイントを使用する
+                  href: how-to-use-managed-online-endpoint-studio.md
+                - name: マネージド オンライン エンドポイントのコストを確認する
+                  href: how-to-view-online-endpoints-costs.md
+                - name: マネージド オンライン エンドポイント VM SKU の一覧
+                  href: reference-managed-online-endpoints-vm-sku-list.md
+                - name: マネージド オンライン エンドポイントの監視
+                  href: how-to-monitor-online-endpoints.md
+                - name: マネージド オンライン エンドポイントのトラブルシューティング
+                  href: how-to-troubleshoot-managed-online-endpoints.md
+            - name: Batch
+              items:
+                - name: バッチ エンドポイントでのバッチ スコアリング
+                  href: how-to-use-batch-endpoint.md
+                - name: バッチ エンドポイントのトラブルシューティング
+                  href: how-to-troubleshoot-batch-endpoints.md
         - name: 展開ターゲット
           items:
             - name: ローカル
@@ -487,6 +528,14 @@
               href: ../iot-edge/tutorial-deploy-machine-learning.md?context=azure%2fmachine-learning%2fservice%2fcontext%2fml-context
             - name: FPGA 推論
               href: how-to-deploy-fpga-web-service.md
+        - name: 事前構築済み Docker イメージ
+          items:
+            - name: Python の拡張性
+              href: how-to-prebuilt-docker-images-inference-python-extensibility.md
+            - name: Dockerfile の拡張性
+              href: how-to-extend-prebuilt-docker-image-inference.md
+            - name: 事前構築済み Docker イメージのトラブルシューティング
+              href: how-to-troubleshoot-prebuilt-docker-image-inference.md
         - name: 展開のトラブルシューティング
           href: how-to-troubleshoot-deployment.md
         - name: デプロイのトラブルシューティング (ローカル)
@@ -524,7 +573,7 @@
         - name: デザイナー モデルをデプロイする
           displayName: 'designer, studio'
           href: how-to-deploy-model-designer.md
-        - name: (プレビュー) コードなしのデプロイ
+        - name: コードなしのデプロイ
           displayName: no code
           href: how-to-deploy-no-code-deployment.md
         - name: モデルのパッケージ化
@@ -632,6 +681,8 @@
       href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: サービスの制限
       href: resource-limits-quotas-capacity.md
+    - name: Conda ライセンス
+      href: /legal/machine-learning/conda-licensing
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ユーザー フォーラム

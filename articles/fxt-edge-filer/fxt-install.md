@@ -2,16 +2,16 @@
 title: 'チュートリアル: Azure FXT Edge Filer の物理デバイスを設置する'
 description: Microsoft Azure FXT Edge Filer ハイブリッド ストレージ キャッシュ物理デバイス コンポーネントの開梱、ラックへの取り付け、およびケーブル接続を行う方法
 author: ekpgh
-ms.author: rohogue
+ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: 48ee6de28bcd76d4c484b77c981062bad1a3754d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 626ec99d59979e13121b8c32ee2f24843328697b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92219753"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456239"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>チュートリアル: Azure FXT Edge Filer を設置する
 

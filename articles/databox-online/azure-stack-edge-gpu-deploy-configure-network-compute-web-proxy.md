@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 05/11/2021
 ms.author: alkohli
-ms.openlocfilehash: dfef9b3078b17e4758d5fd886ecd1b3fbefc5794
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 38259febaed159217379ba131fb2bffb808e65e7
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055231"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838152"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する
 
@@ -128,7 +128,6 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 これはオプション構成です。
 
 > [!IMPORTANT]
-> * Azure Stack Edge Pro デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 NTLM はサポートされていません。
 > * プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。 
 > * 透過プロキシは、Azure Stack Edge Pro で適切に動作します。 プロキシ サーバーにインストールされている独自の証明書を通じて、すべてのトラフィックをインターセプトして読み取る非透過的プロキシの場合は、プロキシの証明書の公開キーを Azure Stack Edge Pro デバイスの署名チェーンとしてアップロードします。 その後、Azure Stack Edge デバイスのプロキシ サーバー設定を構成できます。 詳細については、[独自の証明書の持ち込みとローカル UI によるアップロード](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)に関するセクションを参照してください。  
 
@@ -139,15 +138,11 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 1. **[Web プロキシの設定]** ページで、次の手順を実行します。
 
-    1. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
+   1. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
 
-    2. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。 Azure Stack Edge Pro デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 **NTLM** はサポートされていません。
+   2. 構成された Web プロキシ設定を検証して適用するには、 **[適用]** を選択します。
 
-    3. 認証を使用している場合は、ユーザー名とパスワードを入力します。
-
-    4. 構成された Web プロキシ設定を検証して適用するには、 **[適用]** を選択します。
-    
-   ![ローカル Web UI の [Web プロキシ設定] ページ 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![ローカル Web UI の [Web プロキシ設定] ページ 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)<!--UI text update for instruction text is needed.-->
 
 2. 設定が適用されたら、 **[次へ: デバイス]** を選択します。
 

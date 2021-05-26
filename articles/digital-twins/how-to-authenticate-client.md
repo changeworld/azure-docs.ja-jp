@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e993a4f65c2c71e36db2666dc2c7ce3c086b4d18
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7f8448b7abcc16d2151ec10dbab9028eb8c4e984
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734239"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099283"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
@@ -20,7 +20,7 @@ ms.locfileid: "108734239"
 
 Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)を使用して認証が実行されます。 ご使用の SDK を認証するには、Azure Digital Twins に対する適切なアクセス許可を持つベアラー トークンを取得し、API 呼び出しと共にこれを渡す必要があります。 
 
-この記事では、`Azure.Identity` クライアント ライブラリを使用して資格情報を取得する方法について説明します。 この記事では C# のコード サンプルを示していますが ([.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 用に記述する内容など)、使用する SDK に関係なく `Azure.Identity` のバージョンを使用できます (Azure Digital Twins で使用できる SDK の詳細については、[コンセプト: Azure Digital Twins API と SDK](concepts-apis-sdks.md) に関する記事をご覧ください)。
+この記事では、`Azure.Identity` クライアント ライブラリを使用して資格情報を取得する方法について説明します。 この記事では C# のコード サンプルを示していますが ([.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用に記述する内容など)、使用する SDK に関係なく `Azure.Identity` のバージョンを使用できます (Azure Digital Twins で使用できる SDK の詳細については、[コンセプト: Azure Digital Twins API と SDK](concepts-apis-sdks.md) に関する記事をご覧ください)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,16 +32,16 @@ Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ �
 
 `Azure.Identity` は、ベアラー トークンを取得して SDK で認証するために使用できる、資格情報を取得するためのメソッドをいくつか提供するクライアント ライブラリです。 この記事では C# の例を示していますが、次のようないくつかの言語で `Azure.Identity` を表示できます。
 
-* [.NET (C#)](/dotnet/api/azure.identity)
-* [Java](/java/api/overview/azure/identity-readme)
-* [JavaScript](/javascript/api/overview/azure/identity-readme)
-* [Python](/python/api/overview/azure/identity-readme)
+* [.NET (C#)](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)
+* [Java](/java/api/overview/azure/identity-readme?view=azure-java-stable&preserve-view=true)
+* [JavaScript](/javascript/api/overview/azure/identity-readme?view=azure-node-latest&preserve-view=true)
+* [Python](/python/api/overview/azure/identity-readme?view=azure-python&preserve-view=true)
 
 `Azure.Identity` で資格情報を取得するための一般的な 3 つのメソッドは次のとおりです。
 
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) では、Azure にデプロイされるアプリケーションに対して既定の `TokenCredential` 認証フローが提供されます。これは、**ローカル開発に推奨** されています。 また、これを有効にして、この記事で推奨されている他の 2 つのメソッドを試すこともできます。つまり、これで `ManagedIdentityCredential` をラップすることや、構成変数で `InteractiveBrowserCredential` にアクセスすることができます。
-* [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) は、[マネージド ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) を必要とする場合に適しており、Azure Functions を操作する場合や Azure サービスにデプロイする場合の有力な選択肢です。
-* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) は、対話型アプリケーションを対象とし、認証された SDK クライアントを作成するために使用できます
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) では、Azure にデプロイされるアプリケーションに対して既定の `TokenCredential` 認証フローが提供されます。これは、**ローカル開発に推奨** されています。 また、これを有効にして、この記事で推奨されている他の 2 つのメソッドを試すこともできます。つまり、これで `ManagedIdentityCredential` をラップすることや、構成変数で `InteractiveBrowserCredential` にアクセスすることができます。
+* [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) は、[マネージド ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) を必要とする場合に適しており、Azure Functions を操作する場合や Azure サービスにデプロイする場合の有力な選択肢です。
+* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) は、対話型アプリケーションを対象とし、認証された SDK クライアントを作成するために使用できます
 
 次の例は、.NET (C#) SDK でこれらの各メソッドを使用する方法を示しています。
 
@@ -59,7 +59,7 @@ Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ �
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential メソッド
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) では、Azure にデプロイされるアプリケーションに対して既定の `TokenCredential` 認証フローが提供されます。これは、**ローカル開発に推奨** されています。
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) では、Azure にデプロイされるアプリケーションに対して既定の `TokenCredential` 認証フローが提供されます。これは、**ローカル開発に推奨** されています。
 
 既定の Azure 資格情報を使用するには、Azure Digital Twins インスタンスの URL が必要です ([確認の手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))。
 
@@ -73,7 +73,7 @@ Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ �
 
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential メソッド
 
-[ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) メソッドは、Azure Functions を使用する場合など、[マネージド ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) が必要な場合に適しています。
+[ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) メソッドは、Azure Functions を使用する場合など、[マネージド ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) が必要な場合に適しています。
 
 つまり、同じプロジェクトで `ManagedIdentityCredential` を `DefaultAzureCredential` または `InteractiveBrowserCredential` として使用し、プロジェクトの別の部分を認証することができます。
 
@@ -85,7 +85,7 @@ Azure 関数で、次のようにマネージド ID の資格情報を使用で�
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential メソッド
 
-[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。 対話型認証が必要な場合には、これを `DefaultAzureCredential` の代わりに使用できます。
+[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。 対話型認証が必要な場合には、これを `DefaultAzureCredential` の代わりに使用できます。
 
 対話型のブラウザー資格情報を使用するには、Azure Digital Twins API へのアクセス許可がある **アプリの登録** が必要になります。 このアプリの登録を設定する手順については、[方法:アプリ登録の作成](how-to-create-app-registration.md)に関するページを参照してください。 アプリの登録が設定されたら、次のものが必要になります。
 * アプリの登録の "*アプリケーション (クライアント) ID*" ([確認の手順](how-to-create-app-registration.md#collect-client-id-and-tenant-id))

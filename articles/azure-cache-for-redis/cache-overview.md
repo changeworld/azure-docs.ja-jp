@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 49a697e6c3a6a6c931f2bb9c545647e2d6f1322d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a7f37df7d312e9279eecaa49851d13957bd418d3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056659"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075630"
 ---
 # <a name="about-azure-cache-for-redis"></a>Azure Cache for Redis について
 Azure Cache for Redis は、[Redis](https://redis.io/) ソフトウェアを基にしたインメモリ データ ストアを提供します。 Redis は、バックエンドでデータ ストアを酷使するアプリケーションのパフォーマンスとスケーラビリティを高めます。 高速に読み書きできるサーバーのメモリ内にアクセス頻度の高いデータを維持することで、大量のアプリケーション要求を処理することができます。 Redis によって、きわめて低遅延かつ高スループットのデータ ストレージ ソリューションがモダン アプリケーションにもたらされます。
@@ -58,7 +58,7 @@ Azure Cache for Redis は以下のレベルでご利用いただけます。
 | [スケーリング](cache-how-to-scale.md) |✔|✔|✔|✔|✔|
 | [OSS クラスター](cache-how-to-premium-clustering.md) |-|-|✔|✔|✔|
 | [データの永続化](cache-how-to-premium-persistence.md) |-|-|✔|プレビュー|プレビュー|
-| [ゾーン冗長性](cache-how-to-zone-redundancy.md) |-|-|プレビュー|✔|✔|
+| [ゾーン冗長性](cache-how-to-zone-redundancy.md) |-|-|✔|✔|✔|
 | [geo レプリケーション](cache-how-to-geo-replication.md) |-|-|✔|プレビュー|プレビュー|
 | [モジュール](https://redis.io/modules) |-|-|-|✔|✔|
 | [Import/Export](cache-how-to-import-export-data.md) |-|-|✔|✔|✔|

@@ -3,12 +3,12 @@ author: phillipgibson
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: phillipgibson
-ms.openlocfilehash: f99db628b08084ca750816c00a6892e877e90efc
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6a4871b4aca10dddae46ed8f732090d9a258b3d6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079804"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468121"
 ---
 ## <a name="download-and-install-the-osm-client-binary"></a>OSM クライアント バイナリをダウンロードしてインストールする
 
@@ -16,7 +16,7 @@ Linux または [Linux 用 Windows サブシステム][install-wsl]上の bash �
 
 ```bash
 # Specify the OSM version that will be leveraged throughout these instructions
-OSM_VERSION=v0.8.2
+OSM_VERSION=v0.8.4
 
 curl -sL "https://github.com/openservicemesh/osm/releases/download/$OSM_VERSION/osm-$OSM_VERSION-linux-amd64.tar.gz" | tar -vxzf -
 ```

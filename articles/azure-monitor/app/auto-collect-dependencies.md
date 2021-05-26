@@ -4,12 +4,12 @@ description: Application Insights では、依存関係が自動的に収集さ�
 ms.topic: reference
 ms.custom: devx-track-dotnet
 ms.date: 05/06/2020
-ms.openlocfilehash: aa4d39ca8964e95ca787d236223e2b475a9597c1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: c81be9762af658d0149dd6547f50aa9a7503601d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107873831"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097284"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
@@ -61,7 +61,7 @@ ms.locfileid: "107873831"
 
 > [!NOTE]
 > *リアクティブ プログラミング サポートを除く。
-> <br>†[JVM エージェント](./java-agent.md#install-the-application-insights-agent-for-java)のインストールが必要。
+> <br>†[JVM エージェント](java-2x-agent.md#install-the-application-insights-agent-for-java)のインストールが必要。
 
 ## <a name="nodejs"></a>Node.js
 
@@ -88,7 +88,7 @@ ms.locfileid: "107873831"
 ## <a name="next-steps"></a>次のステップ
 
 - [.NET](./asp-net-dependencies.md) のカスタム依存関係追跡を設定します。
-- [Java](./java-agent.md) のカスタム依存関係追跡を設定します。
+- [Java](java-2x-agent.md) のカスタム依存関係追跡を設定します。
 - [OpenCensus Python](./opencensus-python-dependency.md) のカスタム依存関係追跡を設定します。
 - [カスタム依存関係テレメトリを記述します](./api-custom-events-metrics.md#trackdependency)。
 - Application Insights の型とデータ モデルについては、[データ モデル](./data-model.md)に関するページを参照してください。

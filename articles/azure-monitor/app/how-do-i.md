@@ -3,12 +3,12 @@ title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c889c0890f8e6d193b7e36a525470fc18bef494d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584162"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060834"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -162,7 +162,7 @@ ASP.NET Core アプリケーションの場合は、[ASP.NET Core の依存関�
 ### <a name="if-you-see-no-performance-counter-data"></a>パフォーマンス カウンターのデータが表示されない場合
 * **IIS サーバー** の場合。 [Status Monitor をインストール](./monitor-performance-live-website-now.md)します。
 * **Azure Web サイト** - パフォーマンス カウンターはまだサポートしていません。 Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
-* **Unix サーバー** - [collectd をインストール](./java-collectd.md)します。
+* **Unix サーバー** - [collectd をインストール](java-2x-collectd.md)します。
 
 ### <a name="to-display-more-performance-counters"></a>表示するパフォーマンス カウンターの数を増やすには
 * 最初に、 [新しいグラフを追加](../essentials/metrics-charts.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。

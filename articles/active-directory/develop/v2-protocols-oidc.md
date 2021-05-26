@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5d64a6e6a4dcd1d7b1917720152e2738bf6476e9
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 82e9901c4bea8de7e5fee37ff4f2b7374f67e0ca
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108063985"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467239"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
 
@@ -188,7 +188,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ID トークンを確認することで、すべてのアプリでメリットが得られるわけではありません。たとえば、ネイティブ アプリやシングル ページ アプリでは、ID トークンを検証してもメリットはほとんどありません。  デバイス (またはブラウザー) に物理的にアクセスできるユーザーは、偽のトークンとキーを提供するためのデバイスへの Web トラフィックの編集から、検証ロジックをスキップするためのアプリケーションの単なるデバッグに至る、さまざまな方法で検証をバイパスできます。  一方、承認に ID トークンを使用する Web アプリと API では、データへのアクセスを制御するため、ID トークンを注意深く検証する必要があります。
 
-id_token の署名を検証した後、確認する必要のある要求がいくつか存在します。 [トークンの検証](id-tokens.md#validating-an-id_token)と[署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md)などの詳細については、[`id_token` のリファレンス](id-tokens.md)を参照してください。 トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
+id_token の署名を検証した後、確認する必要のある要求がいくつか存在します。 [トークンの検証](id-tokens.md#validating-an-id-token)と[署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md)などの詳細については、[`id_token` のリファレンス](id-tokens.md)を参照してください。 トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
 
 シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
 
@@ -275,7 +275,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 想定されるエラー コードと推奨されるクライアントの応答については、「[承認エンドポイント エラーのエラー コード](#error-codes-for-authorization-endpoint-errors)」を参照してください。
 
-承認コードと ID トークンがある場合は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。 ユーザーをサインインさせるには、[説明したとおり](id-tokens.md#validating-an-id_token)に ID トークンを検証する必要があります。 アクセス トークンを取得するには、[OAuth コード フローのドキュメント](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token)に記載されている手順に従って取得できます。
+承認コードと ID トークンがある場合は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。 ユーザーをサインインさせるには、[説明したとおり](id-tokens.md#validating-an-id-token)に ID トークンを検証する必要があります。 アクセス トークンを取得するには、[OAuth コード フローのドキュメント](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token)に記載されている手順に従って取得できます。
 
 ### <a name="calling-the-userinfo-endpoint"></a>UserInfo エンドポイントの呼び出し
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: risverma
-ms.openlocfilehash: e0797dfd8c4bf1cf86e2eeafb824298c412e5f1f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 54958eb6fa6d3ef855bdc3667921535ab47c7b29
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491816"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468273"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -28,7 +28,7 @@ B シリーズには、次の VM サイズが用意されています。
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています \*\*<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 
 \* B シリーズの VM はバースト可能であるため、ACU の数はワークロードとコアの使用状況によって異なります。<br>
 **高速ネットワークは、*Standard_B12ms*、*Standard_B16ms*、*Standard_B20ms* でのみサポートされます。

@@ -2,21 +2,21 @@
 title: Azure Event Hubs スキーマ レジストリを作成する
 description: この記事では、Azure Event Hubs 名前空間にスキーマ レジストリを作成する方法について説明します。
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 05/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 45791cd69772be97ca6768184ed17179e04ad9dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9794d1521b8b16b99a108517bfd19a3c9e29b21
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576810"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373618"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Azure Event Hubs スキーマ レジストリを作成する (プレビュー)
 この記事では、Azure Event Hubs によってホストされるスキーマ レジストリに、スキーマを含むスキーマ グループを作成する方法について説明します。 Azure Event Hubs のスキーマ レジストリ機能の概要については、「[Event Hubs の Azure スキーマ レジストリ](schema-registry-overview.md)」を参照してください。
 
 > [!NOTE]
 > - 現在、**Schema Registry** 機能は **プレビュー** 段階にあります。運用環境のワークロードにはお勧めできません。
-> - この機能は **Standard** と **Dedicated** レベルでのみ使用でき、**Basic** レベルでは使用できません。
+> - この機能は、**basic** レベルでは使用できません。
 > - イベント ハブが **仮想ネットワーク** にある場合、同じ仮想ネットワーク内の VM からポータルにアクセスしない限り、Azure portal にスキーマを作成することはできません。 
 
 ## <a name="prerequisites"></a>前提条件

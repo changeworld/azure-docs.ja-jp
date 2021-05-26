@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 05/12/2021
 ms.author: alkohli
-ms.openlocfilehash: c32aa15b3c1ac9e794e66936219ba645d3ec425d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b472bdcc517d00b895efa25840e8072adafddc0b
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078803"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846584"
 ---
 # <a name="vm-sizes-and-types-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro 用の VM のサイズと種類 
 

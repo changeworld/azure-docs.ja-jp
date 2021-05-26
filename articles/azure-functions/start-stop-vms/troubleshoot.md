@@ -2,15 +2,15 @@
 title: VM の開始/停止のトラブルシューティング (プレビュー)
 description: この記事では、Azure VM の VM の開始/停止 (プレビュー) 機能を使用して、発生した問題をトラブルシューティングする方法について説明します。
 services: azure-functions
-ms.subservice: ''
+ms.subservice: start-stop-vms
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3c379c1eb36fc19368630188f1b584e1d8a7b8ad
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 83633b6f107aee995c19e1cda94f4f93a96e84e2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111102"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076782"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>VM の開始/停止 (プレビュー) に関する一般的な問題のトラブルシューティング
 

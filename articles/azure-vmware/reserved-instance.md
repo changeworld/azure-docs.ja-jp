@@ -2,13 +2,13 @@
 title: Azure VMware Solution の予約インスタンス
 description: Azure VMware Solution の予約インスタンスを購入する方法について説明します。 予約インスタンスでは、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストが含まれます。
 ms.topic: how-to
-ms.date: 04/09/2021
-ms.openlocfilehash: fb30ae2fcf06abfa25770aff85f2668d7aaca770
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/13/2021
+ms.openlocfilehash: 2ec43374561db9b0de39f4d1c571b85a75df13ba
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753733"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063102"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware Solution でコストを節約する
 
@@ -20,7 +20,7 @@ ms.locfileid: "108753733"
 
 -   **クラウド** - 予約は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)」ページの一覧にあるリージョンでのみ使用できます。
 
--   **クォータの不足**- 単一サブスクリプションまたは共有サブスクリプションをスコープとする予約の場合、新しい予約インスタンスで利用可能なホスト クォータがそのサブスクリプションに存在している必要があります。 [クォータを増やす要求を作成](enable-azure-vmware-solution.md)して、この問題を解決できます。
+-   **クォータの不足**- 単一サブスクリプションまたは共有サブスクリプションをスコープとする予約の場合、新しい予約インスタンスで利用可能なホスト クォータがそのサブスクリプションに存在している必要があります。 [クォータを増やす要求を作成](request-host-quota-azure-vmware-solution.md)して、この問題を解決できます。
 
 -   **プランの適格性** - Microsoft との [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) が必要です。
 
@@ -138,6 +138,6 @@ CSP は、一定の制限付きで、顧客に代わって購入する予約の�
 Azure VMware Solution の予約インスタンスについて確認したので、次の事項の学習に進むことができます。
 
 - [Azure VMware Solution 評価の作成](../migrate/how-to-create-azure-vmware-solution-assessment.md)。
-- [Azure VMware Solution 用の DHCP の管理](manage-dhcp.md)。
+- [Azure VMware Solution 用の DHCP の管理](configure-dhcp-azure-vmware-solution.md)。
 - [Azure VMware ソリューション VM の監視と管理](lifecycle-management-of-azure-vmware-solution-vms.md)
  

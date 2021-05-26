@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: feb84e408c5f5339c6195b87a3ecc38791eaa90a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2233e6f40c1023f1b02543f4e234b00422f6f77f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760933"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077196"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -195,8 +195,6 @@ Azure IoT Central では、配置マニフェストをインポートして、Io
 詳細については、「[チュートリアル: Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する](tutorial-add-edge-as-leaf-device.md)」を参照してください。
 
 ### <a name="update-a-deployment-manifest"></a>配置マニフェストを更新する
-
-デバイス テンプレートの新しい[バージョン](howto-version-device-template.md)を作成する場合は、配置マニフェストを新しいバージョンに置き換えることができます。
 
 配置マニフェストを置き換えると、接続されているすべての IoT Edge デバイスで新しいマニフェストがダウンロードされて、モジュールが更新されます。 ただし、モジュールの構成を変更しても、IoT Central によってデバイス テンプレート内のインターフェイスが更新されることはありません。 たとえば、前のスニペットで示されているマニフェストを次のマニフェストに置き換えても、デバイス テンプレートの **management** インターフェイスに **SendUnits** プロパティが自動的に追加されることはありません。 IoT Central によってそれが認識されるようにするには、新しいプロパティを **management** インターフェイスに手動で追加します。
 

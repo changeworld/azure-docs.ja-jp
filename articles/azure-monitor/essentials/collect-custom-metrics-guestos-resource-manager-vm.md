@@ -6,15 +6,15 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
-ms.openlocfilehash: 8e510cf2e6fed9f9ffdec1dcc4dacf16a866d66b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0e8ae9e642caad0486b862b48d94ba392256a45
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049017"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839493"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
-Azure 仮想マシンのゲスト OS から収集したパフォーマンス データは、他の[プラットフォーム メトリック](./monitor-azure-resource.md#monitoring-data)のように自動的には収集されません。 Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md)をインストールして、メトリック データベースにゲスト OS メトリックを収集し、凖リアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなど、Azure Monitor メトリックのすべての機能で使用できるようにします。 この記事では、Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS のパフォーマンス メトリックをメトリック データベースに送信するプロセスについて説明します。 
+Azure 仮想マシンのゲスト OS から収集したパフォーマンス データは、他の[プラットフォーム メトリック](./monitor-azure-resource.md#monitoring-data)のように自動的には収集されません。 Azure Monitor [診断拡張機能](../agents/diagnostics-extension-overview.md)をインストールして、メトリック データベースにゲスト OS メトリックを収集し、凖リアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなど、Azure Monitor メトリックのすべての機能で使用できるようにします。 この記事では、Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS のパフォーマンス メトリックをメトリック データベースに送信するプロセスについて説明します。
 
 > [!NOTE]
 > Azure portal を使用してゲスト OS メトリックを収集するように診断拡張機能を構成する方法の詳細については、「[Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](../agents/diagnostics-extension-windows-install.md)」を参照してください。
@@ -28,14 +28,14 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 - [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](../../cloud-shell/overview.md) がインストールされている必要があります。
 
-- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](./metrics-custom-overview.md#supported-regions)に存在する必要があります。 
+- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](./metrics-custom-overview.md#supported-regions)に存在する必要があります。
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor をデータ シンクとして設定する
 Azure Diagnostics 拡張機能では、"データ シンク" と呼ばれる機能を使って、メトリックとログがさまざまな場所にルーティングされます。 次の手順では、Resource Manager テンプレートと PowerShell を使用して、新しい "Azure Monitor" データ シンクを使って VM をデプロイする方法を説明します。
 
 ## <a name="author-resource-manager-template"></a>Resource Manager テンプレートを作成する
-この例では、公開されているサンプル テンプレートを使用できます。 開始用テンプレートは https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows にあります。
+この例では、公開されているサンプル テンプレートを使用できます。 開始用テンプレートは https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows にあります。
 
 - **Azuredeploy.json** は、仮想マシンのデプロイ用に事前構成された Resource Manager テンプレートです。
 
