@@ -1,6 +1,6 @@
 ---
 title: カスタム モデル - Form Recognizer
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Form Recognizer API カスタム モデルに関連する概念 - 使用法と制限について説明します。
 services: cognitive-services
 author: laujan
@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9d339d02310fddc3e5fd463f7d37e253614dba17
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 329176e40b1a8cf187a4b2154a26b1adbbca4233
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067590"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374734"
 ---
 # <a name="form-recognizer-custom-models"></a>Form Recognizer カスタム モデル
 
@@ -46,7 +46,7 @@ Form Recognizer を使用すると、ユース ケースに関連するフォー
 > [!div class="nextstepaction"]
 >[&#120785;. カスタム モデルをトレーニングする](quickstarts/client-library.md#train-a-custom-model)
 
-ラベル付きデータ セットの[ない](quickstarts/client-library.md#train-a-model-without-labels)、または[ある](quickstarts/client-library.md#train-a-model-with-labels)モデルをトレーニングできます。 ラベルのないデータセットの場合、Layout API のみに依存し、ユーザーの入力を追加することなく重要な情報を検出および特定できます。 ラベル付きデータセットの場合も、Layout API をに依存していますが、特定のラベルやフィールドの場所など、補助的なユーザーの入力が含まれています。 ラベル付きデータとラベルなしデータの両方を使用するには、ラベル付きトレーニング データに同じ種類の少なくとも 5 つの完成したフォームから始めて、ラベルなしデータを必要なデータ セットに追加します。  
+ラベル付きデータ セットの有無にかかわらず、[モデルをトレーニング](quickstarts/client-library.md#train-a-custom-model)できます。 ラベルのないデータセットの場合、Layout API のみに依存し、ユーザーの入力を追加することなく重要な情報を検出および特定できます。 ラベル付きデータセットの場合も、Layout API をに依存していますが、特定のラベルやフィールドの場所など、補助的なユーザーの入力が含まれています。 ラベル付きデータとラベルなしデータの両方を使用するには、ラベル付きトレーニング データに同じ種類の少なくとも 5 つの完成したフォームから始めて、ラベルなしデータを必要なデータ セットに追加します。  
 
 >[!div class="nextstepaction"]
 >[&#120786;. カスタム モデルを使用してドキュメントを分析する](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
@@ -63,5 +63,5 @@ Form Recognizer を使用すると、ユース ケースに関連するフォー
 API リファレンスのドキュメントを参照して、Form Recognizer クライアント ライブラリの詳細について理解します。
 
 > [!div class="nextstepaction"]
-> [Form Recognizer API リファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
+> [Form Recognizer API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)
 >

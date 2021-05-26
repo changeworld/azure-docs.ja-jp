@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 05/07/2021
-ms.openlocfilehash: 4432de4bb5f156ed1be0230759fcf3cd86adfe60
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: f435ed599e39b2dd0c204ef8c2cdcbb23146bc08
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634313"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367869"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Azure Cosmos DB は、最新のアプリ開発に対応するフル マネージ
 > [!NOTE]
 > Azure Cosmos DB のドキュメントの品質向上のためのユーザー調査にご協力ください。 こちらの 5 分間の[事前アンケート](https://aka.ms/cosmosdb-documentation-screener-survey)にご記入ください。 条件に一致した方は、スケジューラにリダイレクトされます。このスケジューラで、対話型の調査セッションに参加するスロットを予約できます。 Microsoft [プライバシー ステートメント](https://go.microsoft.com/fwlink/?LinkId=521839)に従い、この過程で個人データが収集されることはありません。
 
-Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベル](optimize-dev-test.md#azure-cosmos-db-free-tier)を使用してアカウントを取得し、最初の 400 RU/秒と 5 GB のストレージを無料でご利用いただけます。
+Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベル](free-tier.md)を使用してアカウントを取得し、最初の 1000 RU/秒と 25 GB のストレージを無料でご利用いただけます。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)

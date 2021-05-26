@@ -3,26 +3,36 @@ title: Durable Functions におけるタスク ハブ - Azure
 description: Azure Functions の Durable Functions 拡張機能におけるタスク ハブについて説明します。 タスク ハブを構成する方法について説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 05/12/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 26234039c77601bc1d29beeebd3fcb8461d6d6c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9172075ca22937a85fd7fd5827ebb40a4b58bcfa
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009519"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375760"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) の *タスク ハブ* は、オーケストレーションに使用される Azure Storage リソースの論理コンテナーです。 オーケストレーター関数とアクティビティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。
+[Durable Functions](durable-functions-overview.md) の *タスク ハブ* は、オーケストレーションとエンティティに使用される持続性の高いリソースの論理コンテナーです。 オーケストレーター、アクティビティ、およびエンティティの関数は、同じタスク ハブに属しているときに限り、情報を直接やり取りすることができます。
 
-複数の関数アプリがストレージ アカウントを共有している場合、各関数アプリには個別のタスク ハブ名を構成する *必要があります*。 ストレージ アカウントには、複数のタスク ハブを含めることができます。 次の図は、共有ストレージ アカウントと専用ストレージ アカウントの各関数アプリにタスク ハブが 1 つあることを示しています。
+> [!NOTE]
+> このドキュメントでは、既定の [Durable Functions の Azure Storage プロバイダー](durable-functions-storage-providers.md#azure-storage)に特化した形で、タスク ハブの詳細を説明しています。 Durable Functions アプリで既定以外のストレージ プロバイダーを使用している場合は、プロバイダー固有のドキュメントで詳細なタスク ハブのドキュメントを確認できます。
+> 
+> * [Netherite ストレージ プロバイダーのタスク ハブ情報](https://microsoft.github.io/durabletask-netherite/#/storage)
+> * [Microsoft SQL (MSSQL) ストレージ プロバイダーのタスク ハブの情報](https://microsoft.github.io/durabletask-mssql/#/taskhubs)
+> 
+> さまざまなストレージ プロバイダーのオプションとその比較については、[Durable Functions ストレージ プロバイダー](durable-functions-storage-providers.md)に関するドキュメントを参照してください。
+
+複数の関数アプリがストレージ アカウントを共有している場合、各関数アプリには個別のタスク ハブ名を構成する *必要があります*。 ストレージ アカウントには、複数のタスク ハブを含めることができます。 通常、この制限は他のストレージ プロバイダーにも適用されます。
+
+次の図は、共有ストレージ アカウントと専用 Azure Storage アカウントの各関数アプリにタスク ハブが 1 つあることを示しています。
 
 ![共有ストレージ アカウントと専用ストレージ アカウントの図](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
 ## <a name="azure-storage-resources"></a>Azure Storage のリソース
 
-タスク ハブは次のストレージ リソースから構成されます。
+Azure Storage のタスク ハブは次のリソースから構成されます。
 
 * 1 つまたは複数のコントロールキュー。
 * 1 つの作業項目キュー。
@@ -31,11 +41,11 @@ ms.locfileid: "96009519"
 * Lease Blob を少なくとも 1 つ含んだ 1 つのストレージ コンテナー。
 * サイズの大きいメッセージ ペイロードを含むストレージ コンテナー (該当する場合)。
 
-これらすべてのリソースは、オーケストレーター、エンティティ、またはアクティビティ関数の実行時 (またはスケジュール時) に、既定の Azure Storage アカウントに自動的に作成されます。 これらのリソースがどのように使用されるかについては、[パフォーマンスとスケーリング](durable-functions-perf-and-scale.md)に関する記事で説明しています。
+これらのリソースはすべて、オーケストレーター、エンティティ、またはアクティビティ関数の実行時 (またはスケジュール時) に、構成した Azure Storage アカウントに自動的に作成されます。 これらのリソースがどのように使用されるかについては、[パフォーマンスとスケーリング](durable-functions-perf-and-scale.md)に関する記事で説明しています。
 
 ## <a name="task-hub-names"></a>タスク ハブ名
 
-タスク ハブは、これらの規則に準拠した名前で識別されます。
+Azure Storage のタスク ハブは、これらの規則に準拠した名前で識別されます。
 
 * 英数字のみを含む
 * 文字で始まる
@@ -102,7 +112,7 @@ ms.locfileid: "96009519"
 }
 ```
 
-次のコードでは、アプリ設定として構成されているタスク ハブを操作するために[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client)を使用する関数の記述方法を示しています。
+タスク ハブ名は、**host.json** に加えて、[オーケストレーション クライアント バインディング](durable-functions-bindings.md#orchestration-client) メタデータでも設定できます。 これは、別の関数アプリに存在するオーケストレーションまたはエンティティにアクセスする必要がある場合に便利です。 次のコードでは、アプリ設定として構成されているタスク ハブを操作するために[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client)を使用する関数の記述方法を示しています。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -155,7 +165,10 @@ public static async Task<HttpResponseMessage> Run(
 
 ---
 
-タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、次の表に示すように、既定のタスク ハブ名が使用されます。
+> [!NOTE]
+> クライアント バインド メタデータでタスク ハブ名を構成する必要があるのは、ある関数アプリを使用して別の関数アプリのオーケストレーションとエンティティにアクセスする場合のみです。 クライアント関数がオーケストレーションやエンティティと同じ関数アプリで定義されている場合は、バインド メタデータでタスク ハブ名を指定するのは避ける必要があります。 既定では、すべてのクライアント バインドでは、タスク ハブのメタデータは **host.json** の設定から取得されます。
+
+Azure Storage のタスク ハブの名前の先頭文字は、アルファベットにする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、次の表に示すように、既定のタスク ハブ名が使用されます。
 
 | Durable の拡張機能のバージョン | 既定のタスク ハブ名 |
 | - | - |
