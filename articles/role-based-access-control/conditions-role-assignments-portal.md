@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2021
 ms.author: rolyon
-ms.openlocfilehash: fd13fa81d3b6081468bc4071ffe3c41bf3294c7a
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 7d7b8732cedc05759fe4aa343a58eb89a3cec3c9
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656663"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109844676"
 ---
 # <a name="add-or-edit-azure-role-assignment-conditions-using-the-azure-portal-preview"></a>Azure portal で Azure ロール割り当ての条件を追加または編集する (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "109656663"
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Azure ロール割り当ての条件](conditions-overview.md)は、必要に応じてロール割り当てに追加し、細かなアクセス制御を行うことで、安全確認を強化するための仕組みです。 たとえば、特定のタグがあるオブジェクトしか読み込めない、という条件を設定できます。 この記事では、Azure portal でロール割り当ての条件を追加、編集、閲覧、削除する方法を説明します。
+[Azure ロールの割り当て条件](conditions-overview.md)は、必要に応じてロールの割り当てに追加して、よりきめ細かなアクセス制御を提供できるようにする追加のチェックです。 たとえば、特定のタグがあるオブジェクトしか読み込めない、という条件を設定できます。 この記事では、Azure portal でロール割り当ての条件を追加、編集、閲覧、削除する方法を説明します。
 
 ## <a name="prerequisites"></a>[前提条件]
 
@@ -35,7 +35,7 @@ ms.locfileid: "109656663"
 
 必要な条件を判断するには、[Azure ロール割り当ての条件の例](../storage/common/storage-auth-abac-examples.md)に関する記事をご確認ください。
 
-現在条件を追加できるのは、[ストレージ BLOB データ アクション](../storage/common/storage-auth-abac-attributes.md)がある、組み込みまたはカスタムのロール割り当てです。 次の組み込みロールが含まれます。
+現在条件を追加できるのは、[ストレージ BLOB データ アクション](../storage/common/storage-auth-abac-attributes.md)がある、組み込みまたはカスタムのロール割り当てです。 これらには、次の組み込みロールが含まれます。
 
 - [ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)
 - [ストレージ BLOB データ所有者](built-in-roles.md#storage-blob-data-owner)
@@ -124,13 +124,13 @@ ms.locfileid: "109656663"
 
 1. [値] ボックスでは、式の右側に使用する値を入力します。
 
-    ![[式の作成] セクション。BLOB インデックス タグの値が表示されています。](./media/conditions-role-assignments-portal/condition-expressions.png)
+    ![[式の作成] セクション。BLOB インデックス タグの値が表示されています。](./media/shared/condition-expressions.png)
 
 ## <a name="step-6-review-and-add-condition"></a>ステップ 6: 条件を確認、追加する
 
 1. **[エディターの種類]** まで上方にスクロールし、 **[コード]** をクリックします。
 
-    条件がコードで表示されます。 このコード エディターで条件を変更できます。 ビジュアル エディターに戻るには、 **[ビジュアル]** をクリックします。
+    条件がコードとして表示されます。 このコード エディターでは、条件を変更できます。 ビジュアル エディターに戻るには、 **[ビジュアル]** をクリックします。
 
     ![アクションを選択し式を追加した状態で、コード エディターに表示されている条件。](./media/conditions-role-assignments-portal/condition-code.png)
 
@@ -158,6 +158,6 @@ ms.locfileid: "109656663"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure ロール割り当ての条件の例 (プレビュー)](../storage/common/storage-auth-abac-examples.md)
-- [チュートリアル: Azure portal でロール割り当ての条件を追加して BLOB へのアクセスを制限する (プレビュー)](../storage/common/storage-auth-abac-portal.md)
+- [Azure ロール割り当て条件の例 (プレビュー)](../storage/common/storage-auth-abac-examples.md)
+- [チュートリアル: Azure portal でロール割り当ての条件を追加して blob へのアクセスを制限する (プレビュー)](../storage/common/storage-auth-abac-portal.md)
 - [Azure ロール割り当ての条件のトラブルシューティング (プレビュー)](conditions-troubleshoot.md)

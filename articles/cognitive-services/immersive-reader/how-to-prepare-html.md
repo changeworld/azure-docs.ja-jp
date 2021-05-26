@@ -1,6 +1,6 @@
 ---
 title: イマーシブ リーダー用の HTML コンテンツを準備する方法
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: HTML、JavaScript、Python、Android、または iOS を使用してイマーシブ リーダーを起動する方法について説明します。 イマーシブ リーダーは、実績のある技術を使用して、言語学習者、新しい読者、および学習方法の異なる学生の読解力を向上させます。
 author: erhopf
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: include
 ms.date: 03/04/2021
 ms.author: erhopf
-ms.openlocfilehash: 40aab9510eb90c405f92be49a3b4c0a3f756c872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35fa7067a8aaf669bd2487465cfa7f0ba5315aa9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102620289"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373843"
 ---
 # <a name="how-to-prepare-html-content-for-immersive-reader"></a>イマーシブ リーダー用の HTML コンテンツを準備する方法
 

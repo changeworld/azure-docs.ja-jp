@@ -6,17 +6,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 09/12/2020
+ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: 29b5c5d3cf55cd11fe505c0d9ab9b894dc2ad267
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8d39f6215e76c4cd9da9458f5e8a7af61622089
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93342030"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094836"
 ---
 # <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Azure Cosmos DB アカウントを別のリージョンに移動する
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 この記事では、次の方法について説明します。
 

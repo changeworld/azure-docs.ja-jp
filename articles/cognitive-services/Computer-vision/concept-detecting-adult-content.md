@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a3c8a5a0ee31b827c41c4a5a07af8c69c8a8cecd
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 5a3d8ab8a14a2b3ed5bb20d7c97d82a26d30ade3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714885"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465489"
 ---
 # <a name="detect-adult-content"></a>成人向けコンテンツを検出する
 
@@ -37,4 +37,4 @@ Computer Vision では、イメージ内にある成人向けの素材を検出�
 
 成人向けコンテンツは、[Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API を使用して検出できます。 **visualFeatures** クエリ パラメーターに値 `Adult` を追加すると、API の JSON 応答で、3 つのブール型プロパティ `isAdultContent`、`isRacyContent`、`isGoryContent` が返されます。 メソッドでは、それぞれのカテゴリに対する信頼度スコアが 0 から 1 の範囲の値で表されている、対応するプロパティ `adultScore`、`racyScore`、`goreScore` も返されます。
 
-- [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+- [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)

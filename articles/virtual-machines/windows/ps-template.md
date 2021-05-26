@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 534a8480e783853f7497a0538b04e0302a9cda0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6c874536353e4149b3cf740884034bdab980d2e
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553614"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839205"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Resource Manager テンプレートから Windows 仮想マシンを作成する
 
@@ -20,7 +20,7 @@ Azure Resource Manager テンプレートと、Azure Cloud シェルの Azure Po
 
 別の方法としては、Azure portal からテンプレートをデプロイする方法があります。 ポータルでテンプレートを開くには、 **[Azure に配置する]** ボタンを選択します。
 
-[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-simple-windows%2Fazuredeploy.json)
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
@@ -29,9 +29,9 @@ Azure Resource Manager テンプレートと、Azure Cloud シェルの Azure Po
 - リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。
 - 仮想マシンを作成します。
 
-次の例では、[Azure クイック スタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json)から VM を作成します。 テンプレートのコピーを次に示します。
+次の例では、[Azure クイック スタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json)から VM を作成します。 テンプレートのコピーを次に示します。
 
-[!code-json[create-windows-vm](~/quickstart-templates/101-vm-simple-windows/azuredeploy.json)]
+[!code-json[create-windows-vm](~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json)]
 
 PowerShell スクリプトを実行するには、**[使ってみる]** を選択して、Azure Cloud シェルを開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
@@ -45,7 +45,7 @@ $dnsLabelPrefix = Read-Host -Prompt "Enter an unique DNS name for the public IP"
 New-AzResourceGroup -Name $resourceGroupName -Location "$location"
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json" `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json" `
     -adminUsername $adminUsername `
     -adminPassword $adminPassword `
     -dnsLabelPrefix $dnsLabelPrefix

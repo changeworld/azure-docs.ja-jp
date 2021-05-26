@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 514a6f9d4d72eeffaa4a8592b57c3fdd6592d958
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: beb77517a953163c9d1dd34b59fa429b5d58cdd2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627530"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478038"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -202,14 +202,11 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
-* `zh-CN-YunxiNeural` (プレビュー)
-* `zh-CN-XiaohanNeural` (プレビュー)
-* `zh-CN-XiaomoNeural` (プレビュー)
-* `zh-CN-XiaoxuanNeural` (プレビュー)
-* `zh-CN-XiaoruiNeural` (プレビュー)
-
-> [!NOTE]
-> プレビュー段階の音声は 3 つのリージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
+* `zh-CN-YunxiNeural` 
+* `zh-CN-XiaohanNeural` 
+* `zh-CN-XiaomoNeural` 
+* `zh-CN-XiaoxuanNeural` 
+* `zh-CN-XiaoruiNeural`
 
 ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 現在、話し方の調整は、中国語 (標準、簡体字) のニューラル音声でサポートされています。
 
@@ -372,6 +369,63 @@ speechConfig!.setPropertyTo(
         <mstts:express-as role="OlderAdultMale" style="calm">
             “刚打车过来的，路上还挺顺畅。”
         </mstts:express-as>
+    </voice>
+</speak>
+```
+
+## <a name="adjust-speaking-languages"></a>読み上げ言語を調整する
+
+> [!IMPORTANT]
+>  ニューラル音声用の読み上げ言語のみを調整できます。
+> `<lang xml:lang>` 要素を使用して、1 つの音声でさまざまな言語 (英語、スペイン語、中国語など) を流暢に読み上げられるようにします。 これは、Speech Service に固有の省略可能な要素です。 この要素がない場合、音声で読み上げられるのはその第一言語となります。
+> 現在、これらのニューラル音声に対しては、読み上げ言語の調整がサポートされています: `en-US-JennyMultilingualNeural` 上記の変更は文章レベルと単語レベルで適用されます。 言語がサポートされていない場合、このサービスからオーディオ ストリームは返されません。
+
+**構文**
+
+```xml
+<lang xml:lang="string"></lang>
+```
+
+**属性**
+
+| 属性 | 説明 | 必須/省略可能 |
+|-----------|-------------|---------------------|
+| `lang` | 読み上げ言語を指定します。 現在、さまざまな言語の読み上げは音声専用になっています。 | ニューラル音声の読み上げ言語を調整する場合は必須です。 `lang xml:lang` を使用する場合は、ロケールを指定する必要があります。 |
+
+各ニューラル音声でサポートされている読み上げ言語を確認するには、この表を使用してください。
+
+| 音声                            | ロケール言語           | Description                                                 |
+|----------------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | en-US ロケール (この音声のプライマリ ロケールである) を読み上げます |
+|                                  | `lang="en-CA"`            | en-CA ロケール言語を読み上げます                                  |
+|                                  | `lang="en-AU"`            | en-AU ロケール言語を読み上げます                                  |
+|                                  | `lang="en-GB"`            | en-GB ロケール言語を読み上げます                                  |
+|                                  | `lang="de-DE"`            | de-DE ロケール言語を読み上げます                                  |
+|                                  | `lang="fr-FR"`            | fr-FR ロケール言語を読み上げます                                  |
+|                                  | `lang="fr-CA"`            | fr-CA ロケール言語を読み上げます                                  |
+|                                  | `lang="es-ES"`            | es-ES ロケール言語を読み上げます                                  |
+|                                  | `lang="es-MX"`            | es-MX ロケール言語を読み上げます                                  |
+|                                  | `lang="zh-CN"`            | zh-CN ロケール言語を読み上げます                                  |
+|                                  | `lang="ko-KR"`            | ko-KR ロケール言語を読み上げます                                  |
+|                                  | `lang="ja-JP"`            | ja-JP ロケール言語を読み上げます                                  |
+|                                  | `lang="it-IT"`            | it-IT ロケール言語を読み上げます                                  |
+|                                  | `lang="pt-BR"`            | pt-BR ロケール言語を読み上げます                                  |
+
+**例**
+
+この SSML スニペットでは、`<lang xml:lang>` を使用して、読み上げ言語を `en-US`、`es-MX`、および `de-DE` に変更する方法を示します。
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+    <voice name="en-US-JennyMultilingualNeural">
+        I am looking forward to the exciting things.
+        <lang xml:lang="es-MX">
+            Estoy deseando que lleguen las cosas emocionantes.
+        </lang>
+        <lang xml:lang="de-DE">
+            Ich freue mich auf die spannenden Dinge.
+        </lang>
     </voice>
 </speak>
 ```
@@ -912,7 +966,7 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 音声 SDK で`BookmarkReached`イベントをサブスクライブして、ブックマーク オフセットを取得できます。
 
 > [!NOTE]
-> `BookmarkReached` イベントは、音声 SDK バージョン 1.16.0 以降でのみ使用できます。
+> `BookmarkReached` イベントは、音声 SDK バージョン 1.16 以降でのみ使用できます。
 
 `BookmarkReached` イベントは、出力オーディオ データが使用可能になると発生します。これは、出力デバイスへの再生よりも高速です。
 

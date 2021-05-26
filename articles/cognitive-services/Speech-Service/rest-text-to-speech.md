@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 7a15f51b76cc6109537a8c2e0cbbe27bfb9ffb0f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c5772f6632629a75bc1ea54cf2434dac34d9586a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368770"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478318"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -130,11 +130,11 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 
     ...
 
-    {
+     {
     "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JennyMultilingualNeural)",
     "ShortName": "en-US-JennyMultilingualNeural",
-    "DisplayName": "JennyMultilingualNeural",
-    "LocalName": "JennyMultilingualNeural",
+    "DisplayName": "Jenny Multilingual",
+    "LocalName": "Jenny Multilingual",
     "Gender": "Female",
     "Locale": "en-US",
     "SampleRateHertz": "24000",
@@ -318,4 +318,4 @@ HTTP ステータスが `200 OK` の場合、応答の本文には要求され�
 
 - [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 - [長い形式の音声の非同期合成](./long-audio-api.md)
-- [カスタム音声の概要](how-to-custom-voice.md)
+- [カスタム ニューラル音声の概要](how-to-custom-voice.md)

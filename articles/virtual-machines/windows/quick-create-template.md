@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: b2856c51ccc31b57ea567c5d0940cd260797f770
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d56f565dab1b83e0cf9572e6807577be32678fe7
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560754"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839115"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシンを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "102560754"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json":::
 
 
 このテンプレートでは、いくつかのリソースが定義されています。
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートを使用すると、キー コンテナーとシークレットが作成されます。
 
-    [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+    [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)
 
 1. 次の値を選択または入力します。 既定値がある場合には、既定値を使用します。
 
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったリソース グループは削除してください。リソース グループを削除すると、そのリソース グループ内の VM とすべてのリソースが削除されます。 
+不要になったリソース グループは削除してください。リソース グループを削除すると、そのリソース グループ内の VM とすべてのリソースが削除されます。
 
 1. **[リソース グループ]** を選択します。
 1. リソース グループのページで、 **[削除]** を選択します。

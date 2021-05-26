@@ -3,18 +3,18 @@ title: トレースの重大度の比率の低下 - Azure Application Insights
 description: スマート検出を使用してトレースのテレメトリから異常なパターンを検出するために、Azure Application Insights でアプリケーション トレースを監視します。
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 2b27860adfc1652b58fe9c51d4d0b0a6c271fc0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8432ce53a4d630839a62d29833e3863fff4e8afa
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86539875"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072426"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>トレースの重大度の比率の低下 (プレビュー)
 
 トレースはバックグラウンドの状況を把握するのに役立つため、アプリケーションで広く使用されています。 問題が発生したときに、望ましくない状態の原因となる一連のイベントを可視化するうえでトレースは極めて重要です。 通常、トレースは構造化されていませんが、トレースから具体的にわかることが 1 つあります。トレースの重大度レベルです。 アプリケーションの安定状態で、安定した状態を保つための "良好な" トレース (*Info*、*Verbose*) と "問題のある" トレース (*Warning*、 *Error*、*Critical*) の比率を予想します。 さまざまな理由 (ネットワークの一時的な問題など) によって "問題のある" トレースがある程度まで定期的に発生する可能性があることが想定されています。 しかし、実際の問題が大きくなり始めると、通常は "問題のある" トレースと "良好な" トレースの相対的比率の増加として現れます。 Application Insights のスマート検出では、アプリケーションによって記録されたトレースを自動的に分析し、トレースのテレメトリの重大度における異常なパターンについて警告できます。
 
-この機能には、アプリのトレース ログを構成する以外に特別な設定は不要です ([.NET](./asp-net-trace-logs.md) または [Java](./java-trace-logs.md) のトレース ログ リスナーを構成する方法を参照してください)。 この機能は、アプリが十分な例外のテレメトリを生成するとアクティブになります。
+この機能には、アプリのトレース ログを構成する以外に特別な設定は不要です ([.NET](./asp-net-trace-logs.md) または [Java](java-2x-trace-logs.md) のトレース ログ リスナーを構成する方法を参照してください)。 この機能は、アプリが十分な例外のテレメトリを生成するとアクティブになります。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に取得されますか。
 過去 7 日間に計算されたベースラインと比較して、"良好な" トレース (*Info* または *Verbose* レベルで記録されたトレース) と "問題のある" トレース (*Warning*、*Error*、または *Fatal* レベルで記録されたトレース) の比率が特定の日に低下している場合に、この種の通知が送信されます。

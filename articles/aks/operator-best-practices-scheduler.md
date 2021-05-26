@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でリソース クォータやポ�
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 8c0f1d0cda61638abe03b92c627a5ea0455c31cb
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 034b7e18d3114804f846d77aa4feb001492c8883
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104900"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467066"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での基本的なスケジューラ機能に関するベスト プラクティス
 
@@ -20,7 +20,6 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際は、多く�
 > [!div class="checklist"]
 > * リソース クォータを使用して、チームやワークロードに固定量のリソースを提供する
 > * ポッド中断バジェットを使用して、予定メンテナンスの影響を制限する
-> * `kube-advisor` ツールを使用して、ポッド リソースの足りない要求と制限を調べる
 
 ## <a name="enforce-resource-quotas"></a>リソース クォータを適用する
 
@@ -134,18 +133,6 @@ kubectl apply -f nginx-pdb.yaml
 
 ポッド中断バジェットの使用について詳しくは、「[Specifying a Disruption Budget for your Application][k8s-pdbs]」 (アプリケーションに対する中断バジェットの指定) をご覧ください。
 
-## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>kube-advisor を使用してクラスターの問題を定期的に確認する
-
-> **ベスト プラクティスのガイダンス** 
->
-> 最新バージョンの `kube-advisor` オープンソース ツールを定期的に実行して、クラスター内の問題を検出します。 既存の AKS クラスターでリソース クォータを適用する場合は、まず、`kube-advisor` を実行し、リソースの要求と制限が定義されていないポッドを見つけます。
-
-[kube-advisor][kube-advisor] ツールは、Kubernetes クラスターをスキャンし、特定された問題について報告する、関連する AKS オープンソース プロジェクトです。 `kube-advisor` は、リソースの要求と制限が設定されていないポッドを特定するために役立ちます。
-
-`kube-advisor` ツールを使用すると、Windows および Linux アプリケーション用の PodSpecs にないリソースの要求と制限をレポートすることができますが、ツール自体は Linux ポッド上でスケジュールする必要があります。 ポッドの構成で[ノード セレクター][k8s-node-selector]を使用して、特定の OS のノード プールで実行するようにポッドをスケジュールしてください。
-
-複数の開発チームとアプリケーションをホストする AKS クラスターで、リソースの要求と制限を設定せずにポッドを追跡することは難しい場合があります。 ベスト プラクティスとしては、AKS クラスターで `kube-advisor` を定期的に実行します (特に、リソース クォータを名前空間に割り当てていない場合)。
-
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、Kubernetes の基本的なスケジューラ機能に注目しました。 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
@@ -157,7 +144,6 @@ kubectl apply -f nginx-pdb.yaml
 <!-- EXTERNAL LINKS -->
 [k8s-resource-quotas]: https://kubernetes.io/docs/concepts/policy/resource-quotas/
 [configure-default-quotas]: https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/
-[kube-advisor]: https://github.com/Azure/kube-advisor
 [k8s-pdbs]: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
 
 <!-- INTERNAL LINKS -->

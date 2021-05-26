@@ -4,17 +4,17 @@ description: 発行済みの検証可能な資格情報を失効させる方法�
 documentationCenter: ''
 author: barclayn
 manager: daveba
-ms.service: identity
+ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 50f270dde59860e7c9dd2ac1b35039d5855859e5
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 86a1683751b76b0b6e08b71fdeccaae47d88ffc3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222845"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466131"
 ---
 # <a name="revoke-a-previously-issued-verifiable-credential-preview"></a>以前に発行された検証可能な資格情報を失効させる (プレビュー)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: f421274513cc3d76f7e8c1119cf98e4e5d36b1f9
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a0644342c417cb06c257372e526fff55df62f9b9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950275"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095430"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
@@ -56,7 +56,7 @@ Azure Machine Learning コンピューティング インスタンスまたは�
     * [コンピューティング インスタンス](how-to-create-manage-compute-instance.md)
     * [コンピューティング クラスター](how-to-create-attach-compute-cluster.md)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (プレビュー)
-* Azure Resource Manager テンプレート。 テンプレートの例については、[Azure Machine Learning コンピューティング クラスターの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)に関する記事を参照してください。
+* Azure Resource Manager テンプレート。 テンプレートの例については、[Azure Machine Learning コンピューティング クラスターの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-amlcompute)に関する記事を参照してください。
 * 機械学習の [Azure CLI 用拡張機能](reference-azure-machine-learning-cli.md#resource-management)
 
 作成されると、これらのコンピューティング リソースは、他の種類のコンピューティング ターゲットとは異なり、自動的にワークスペースの一部になります。
@@ -103,11 +103,11 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | NC | [なし] : |  GPU | コンピューティングのクラスターとインスタンス |
 | NC Promo | [なし] : | GPU | コンピューティングのクラスターとインスタンス |
 | NCsv2 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
-| NCsv3 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |  
-| NDs | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス | 
-| NDv2 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス | 
-| NV | [なし] : | GPU | コンピューティングのクラスターとインスタンス | 
-| NVv3 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス | 
+| NCsv3 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| NDs | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| NDv2 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| NV | [なし] : | GPU | コンピューティングのクラスターとインスタンス |
+| NVv3 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
 
 
 これらの VM シリーズは Azure Machine Learning でサポートされていますが、すべての Azure リージョンで使用できるとは限りません。 VM シリーズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)」を参照してください。

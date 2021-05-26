@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: tisande
-ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c792a967805bdda1e51ab3a0f5521c5b1baa1be2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98011396"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466884"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB での結合
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -76,11 +76,9 @@ ms.locfileid: "98011396"
   
 **例 3** - 3 つのソース  
   
-- <from_source1> をコンテナー スコープにし、セット {A, B, C} を表します。  
-  
 - `<from_source1>` をコンテナー スコープにし、セット {A, B, C} を表します。  
   
-- <from_source2> を input_alias1 を参照するドキュメント スコープにし、次のセットを表します。  
+- `<from_source2>` を `input_alias1` を参照するドキュメント スコープにし、次のセットを表します。  
   
     `input_alias1 = A,` の {1, 2}  
   

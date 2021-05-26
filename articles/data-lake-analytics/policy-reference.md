@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Analytics 用の組み込みポリシー定義
 description: Azure Data Lake Analytics 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: reference
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-lake-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 6c26aedaec00c79d479c0a8052b40f863f5fd788
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3936d4265edb97c742fb1ec4e27ee8e83aa43d82
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765516"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071230"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics 用の Azure Policy 組み込み定義
 

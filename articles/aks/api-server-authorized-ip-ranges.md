@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9b6ee4a17c15b6ada39798db40408d1d26971dfe
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: e97ed38d3491ace658a92e2abfbc7cd417ca9cf1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016349"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100560"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -61,7 +61,6 @@ az aks create \
 > 次の範囲を許可リストに追加してください。
 > - ファイアウォール パブリック IP アドレス
 > - クラスターを管理するネットワークを表すあらゆる範囲
-> - AKS クラスターで Azure Dev Spaces を使用している場合は、[リージョンに基づく追加の範囲][dev-spaces-ranges]を許可する必要があります。
 >
 > 指定できる IP 範囲の数の上限は 200 です。
 >

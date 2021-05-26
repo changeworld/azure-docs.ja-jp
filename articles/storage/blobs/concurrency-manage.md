@@ -11,12 +11,12 @@ ms.date: 12/01/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea0bed0884a3a03e2cd15b274b2afb0f054b0cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53005bffde698030221751ec0638a6cc6cbd98c7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96523301"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478936"
 ---
 # <a name="managing-concurrency-in-blob-storage"></a>BLOB ストレージ内でのコンカレンシーの管理
 
@@ -49,11 +49,11 @@ Azure Storage では、格納されているすべてのオブジェクトに識
 
 次のコード例は、BLOB の ETag 値をチェックする書き込み要求に対して **If-Match** 条件を構築する方法を示しています。 Azure Storage は、BLOB の現在の ETag が要求で提供される ETag と同じであるかどうかを評価し、2 つの ETag 値が一致する場合にのみ書き込み操作を実行します。 その間に別のプロセスが BLOB を更新した場合、Azure Storage によって HTTP 412 (必須条件に失敗) のステータス メッセージが返されます。  
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Concurrency.cs" id="Snippet_DemonstrateOptimisticConcurrencyBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 public void DemonstrateOptimisticConcurrencyBlob(string containerName, string blobName)
@@ -116,11 +116,11 @@ BLOB をロックして排他的に使用する場合は、リースを取得し
 
 次のコード例では、BLOB に対して排他的リースを取得し、リース ID を指定して BLOB の内容を更新してから、リースを解放する方法を示します。 リースがアクティブで、書き込み要求でリース ID が指定されていない場合、その書き込み操作は失敗し、エラーコード 412 (必須条件に失敗) が表示されます。  
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Concurrency.cs" id="Snippet_DemonstratePessimisticConcurrencyBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 public void DemonstratePessimisticConcurrencyBlob(string containerName, string blobName)

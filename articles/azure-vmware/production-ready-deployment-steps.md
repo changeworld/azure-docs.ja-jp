@@ -3,13 +3,13 @@ title: Azure VMware Solution のデプロイを計画する
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
-ms.date: 04/27/2021
-ms.openlocfilehash: bc78830180f12c947b195b8525ea9b100b123836
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.date: 05/13/2021
+ms.openlocfilehash: 0b8826582957e02ec3f18d09dec7283cc92188a1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179540"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097122"
 ---
 # <a name="plan-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイを計画する
 
@@ -24,15 +24,15 @@ ms.locfileid: "108179540"
 ## <a name="request-a-host-quota"></a>ホスト クォータをリクエストする 
 
 Azure VMware Solution リソースの作成に備えて、ホスト クォータを早めにリクエストすることが大切です。 ホスト クォータは今すぐリクエストできるので、計画プロセスが完了したら、Azure VMware Solution のプライベートクラウドをいつでもデプロイすることができます。 ホスト クォータのリクエストをサポート チームが受け取った後、リクエストが確認され、ホストが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのホストを割り当てる必要がある場合でも、実行するプロセスは同じです。 詳細については、サブスクリプションの種類に応じて次のリンクを参照してください。
-- [EA のお客様](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-ea-customers)
-- [CSP のお客様](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-csp-customers)
+- [EA のお客様](request-host-quota-azure-vmware-solution.md#request-host-quota-for-ea-customers)
+- [CSP のお客様](request-host-quota-azure-vmware-solution.md#request-host-quota-for-csp-customers)
 
 ## <a name="identify-the-subscription"></a>サブスクリプションを特定する
 
 Azure VMware Solution のデプロイに使用する予定のサブスクリプションを特定します。  新しいサブスクリプションを作成することも、既存のものを再利用することもできます。
 
 >[!NOTE]
->サブスクリプションは、マイクロソフト エンタープライズ契約またはクラウド ソリューション プロバイダー Azure プランに関連付けられている必要があります。 詳細については、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」を参照してください。
+>サブスクリプションは、マイクロソフト エンタープライズ契約またはクラウド ソリューション プロバイダー Azure プランに関連付けられている必要があります。 詳細については、「[Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)」を参照してください。
 
 ## <a name="identify-the-resource-group"></a>リソース グループを特定する
 
