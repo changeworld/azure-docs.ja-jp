@@ -9,12 +9,12 @@ ms.subservice: azure-arc-data
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.custom: template-concept
-ms.openlocfilehash: 036922e3a87e3378f0f517ee0c2d973c78c26bfb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dcaf900164e3d9d4b9b3b54e27a79fdae937abc5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776584"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472771"
 ---
 # <a name="azure-arc-data-services-data-collection-and-reporting"></a>Azure Arc データ サービスのデータ収集とレポート
 
@@ -43,7 +43,7 @@ Azure Arc 対応 データ サービスでは、次の製品の一部または�
 |オペレーショナル データ|メトリックとログ|自動 (実行されるよう構成されている場合)|いいえ
 課金およびインベントリ データ|インスタンス数などのインベントリや、消費された仮想コアの数などの使用状況|自動 |はい
 診断|トラブルシューティングのための診断情報|手動でエクスポートされ、Microsoft サポートに提供される|トラブルシューティングの範囲でのみとし、標準の[プライバシー ポリシー](https://privacy.microsoft.com/privacystatement)に従う
-カスタマー エクスペリエンス向上プログラム (CEIP)|[CEIP の概要](/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)|自動 (許可されている場合)|いいえ
+カスタマー エクスペリエンス向上プログラム (CEIP)|[CEIP の概要](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)|自動 (許可されている場合)|いいえ
 
 ## <a name="indirectly-connected"></a>間接接続
 
@@ -56,7 +56,7 @@ Azure に直接接続するように構成されていないクラスターで�
 |オペレーショナル データ|メトリックとログ|手動|いいえ
 課金およびインベントリ データ|インスタンス数などのインベントリや、消費された仮想コアの数などの使用状況|マニュアル |はい
 診断|トラブルシューティングのための診断情報|手動でエクスポートされ、Microsoft サポートに提供される|トラブルシューティングの範囲でのみとし、標準の[プライバシー ポリシー](https://privacy.microsoft.com/privacystatement)に従う
-カスタマー エクスペリエンス向上プログラム (CEIP)|[CEIP の概要](/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)|自動 (許可されている場合)|いいえ
+カスタマー エクスペリエンス向上プログラム (CEIP)|[CEIP の概要](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)|自動 (許可されている場合)|いいえ
 
 ## <a name="detailed-description-of-data"></a>データの詳しい説明
 

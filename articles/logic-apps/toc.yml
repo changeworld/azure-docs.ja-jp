@@ -61,16 +61,20 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/logic-apps-security-baseline?toc=/azure/logic-apps/toc.json
-- name: 攻略ガイド
+- name: 操作方法ガイド
   items:
-    - name: シングルテナント Azure Logic Apps (プレビュー)
+    - name: シングルテナントの Azure Logic Apps
       items:
-        - name: シングルテナントの概要 (プレビュー)
+        - name: シングルテナントの概要
           href: single-tenant-overview-compare.md
         - name: シングルテナント ワークフローの作成 - ポータル
           href: create-single-tenant-workflows-azure-portal.md
         - name: シングルテナント ワークフローの作成 - Visual Studio Code
           href: create-single-tenant-workflows-visual-studio-code.md
+        - name: シングルテナントでロジック アプリのホストとアプリの設定を編集する
+          href: edit-app-settings-host-settings.md
+        - name: シングルテナント ワークフローのパラメーターを作成する
+          href: parameterize-workflow-app.md
         - name: シングルテナント用の DevOps デプロイ
           href: devops-deployment-single-tenant-azure-logic-apps.md
         - name: シングルテナント用の DevOps デプロイを設定する
@@ -79,6 +83,12 @@
           href: secure-single-tenant-workflow-virtual-network-private-endpoint.md
         - name: シングルテナント ワークフローのストレージ コストを見積もる
           href: estimate-storage-costs.md
+    - name: Azure Arc 対応 Logic Apps
+      items:
+        - name: Azure Arc 対応 Logic Apps について
+          href: azure-arc-enabled-logic-apps-overview.md
+        - name: Arc 対応のロジック アプリを作成してデプロイする
+          href: azure-arc-enabled-logic-apps-create-deploy-workflows.md
     - name: 開発
       items:
         - name: あらかじめ用意されているテンプレートから作成する
