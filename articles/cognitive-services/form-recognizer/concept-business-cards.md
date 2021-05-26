@@ -1,6 +1,6 @@
 ---
 title: 名刺 - Form Recognizer
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Form Recognizer API を使用した名刺分析に関連する概念 (使用法と制限) について説明します。
 services: cognitive-services
 author: laujan
@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: a7fb5eeb90a26d85b3e56706e0c2b32ceadc8d11
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: eea2ec77a22a430ac5202a2fda446bc70a69138c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330892"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374923"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Form Recognizer の事前構築済みの名刺モデル
 
-Azure Form Recognizer では、事前構築済みの名刺モデルを使用して、名刺から連絡先情報を分析して抽出できます。 これは、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。
+Azure Form Recognizer では、事前構築済みの名刺モデルを使用して、名刺から連絡先情報を分析して抽出できます。 これは、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 あらかじめ構築された Business Card API は、Form Recognizer v2.1 で一般公開されています。
 
 ## <a name="what-does-the-business-card-service-do"></a>名刺サービスにはどのような機能がありますか。
 
@@ -29,7 +29,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 
 ### <a name="fields-extracted"></a>抽出されるフィールド:
 
-|名前| Type | 説明 | Text |
+|名前| 型 | 説明 | Text |
 |:-----|:----|:----|:----|
 | ContactNames | オブジェクトの配列 | 名刺から抽出された連絡先の名前 | [{ "FirstName":"John", "LastName":"Doe" }] |
 | FirstName | string | 連絡先の名 | "John" |
@@ -54,7 +54,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 
 ## <a name="supported-locales"></a>サポート対象のロケール
 
-**事前構築済み名刺 v2.1-preview.3** (パブリック プレビュー) は、次のロケールをサポートしています。
+**あらかじめ構築された名刺 v2.1** は、次のロケールをサポートしています。
 
 * **ja-JP**
 * **en-au**
@@ -64,15 +64,15 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 
 ## <a name="the-analyze-business-card-operation"></a>名刺の分析操作
 
-[名刺の分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)では、名刺の画像または PDF を入力として受け取り、目的の値を抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[名刺の分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)では、名刺の画像または PDF を入力として受け取り、目的の値を抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>名刺の分析結果の取得操作
 
-2 番目の手順では、[名刺の分析結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeBusinessCardResult)操作を呼び出します。 この操作では、名刺の分析操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 番目の手順では、[名刺の分析結果の取得](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeBusinessCardResult)操作を呼び出します。 この操作では、名刺の分析操作によって作成された結果 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
@@ -410,4 +410,4 @@ Business Card API で抽出されたデータは、さまざまなタスクを�
 ## <a name="see-also"></a>関連項目
 
 * [Form Recognizer とは](./overview.md)
-* [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)
+* [REST API リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)

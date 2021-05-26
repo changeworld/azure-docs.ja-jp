@@ -133,6 +133,8 @@
           href: zone-redundancy.md
         - name: セルフホステッド ゲートウェイをプロビジョニングする
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Azure API Management ゲートウェイを Azure Arc にデプロイする
+          href: how-to-deploy-self-hosted-gateway-azure-arc.md
         - name: Azure Kubernetes Service にセルフホステッド ゲートウェイをデプロイする
           href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Kubernetes にセルフホステッド ゲートウェイをデプロイする

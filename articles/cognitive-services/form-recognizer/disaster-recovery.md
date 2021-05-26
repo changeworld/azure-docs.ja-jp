@@ -1,6 +1,6 @@
 ---
 title: Azure Form Recognizer のディザスター リカバリーに関するガイダンス
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: モデルのコピー API を使用して、ご使用の Form Recognizer リソースをバックアップする方法について説明します。
 author: laujan
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ddf13e190f80ddbda0c5b97be4e55e2ca963aef
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466917"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374529"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>ご使用の Form Recognizer モデルのバックアップと復旧
 
@@ -162,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>次のステップ
 
 このガイドでは、コピー API を使用して、ご使用のカスタム モデルをセカンダリ Form Recognizer リソースにバックアップする方法について説明しました。 次に、API リファレンス ドキュメントを参照して、Form Recognizer を使用して他にできることを確認します。
-* [REST API リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
+* [REST API リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm, azla
 ms.topic: conceptual
 ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb8e97dfd929be96d51c761ff91c91cc033d5127
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367420"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847837"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -33,11 +33,11 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 * Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* Service Bus 名前空間と、キューなどのメッセージング エンティティ。 項目とロジック アプリでは、同じ Azure サブスクリプションを使用する必要があります。 これらの項目がない場合は、[Service Bus 名前空間とキューの作成](../service-bus-messaging/service-bus-create-namespace-portal.md)方法を学習してください。
+* Service Bus 名前空間と、キューなどのメッセージング エンティティ。 これらの項目がない場合は、[Service Bus 名前空間とキューの作成](../service-bus-messaging/service-bus-create-namespace-portal.md)方法を学習してください。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* ロジック アプリでは、Service Bus 名前空間とメッセージング エンティティを使用します。 ロジック アプリと Service Bus では、同じ Azure サブスクリプションを使用する必要があります。 ワークフローを Service Bus トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 ワークフローで Service Bus アクションを使用するには、[Recurrence](../connectors/connectors-native-recurrence.md) トリガーなど、別のトリガーでロジック アプリを開始します。
+* ロジック アプリでは、Service Bus 名前空間とメッセージング エンティティを使用します。 ワークフローを Service Bus トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 ワークフローで Service Bus アクションを使用するには、[Recurrence](../connectors/connectors-native-recurrence.md) トリガーなど、別のトリガーでロジック アプリを開始します。
 
 <a name="permissions-connection-string"></a>
 

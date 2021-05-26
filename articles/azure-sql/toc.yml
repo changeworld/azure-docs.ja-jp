@@ -299,6 +299,9 @@
             - name: ARM テンプレート
               displayName: Resource Manager
               href: database/single-database-create-arm-template-quickstart.md
+            - name: 台帳およびダイジェスト ストレージを使用
+              displayName: Create Azure SQL Database with ledger
+              href: database/ledger-create-a-single-database-with-ledger-enabled.md
         - name: 構成
           items:
             - name: サーバーレベルの IP ファイアウォール規則
@@ -434,14 +437,32 @@
               href: database/auditing-overview.md
             - name: 監査ログの形式
               href: database/audit-log-format.md
-            - name: ネットワーク アクセス制御
-              href: database/network-access-controls-overview.md
             - name: DNS エイリアス
               href: database/dns-alias-overview.md
-            - name: VNet エンドポイント
-              href: database/vnet-service-endpoint-rule-overview.md
+            - name: 台帳
+              items:
+                - name: 台帳
+                  href: database/ledger-landing.yml
+                - name: 元帳の概要
+                  href: database/ledger-overview.md
+                - name: データベース台帳
+                  href: database/ledger-database-ledger.md
+                - name: 更新可能な台帳テーブル
+                  href: database/ledger-updatable-ledger-tables.md
+                - name: 追加専用の台帳テーブル
+                  href: database/ledger-append-only-ledger-tables.md
+                - name: ダイジェストの管理とデータベースの検証
+                  href: database/ledger-digest-management-and-database-verification.md
+                - name: 台帳の監査
+                  href: database/ledger-audit.md
+                - name: 台帳の制限事項
+                  href: database/ledger-limits.md
+            - name: ネットワーク アクセス制御
+              href: database/network-access-controls-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
+            - name: VNet エンドポイント
+              href: database/vnet-service-endpoint-rule-overview.md
         - name: データベース シャーディング
           items:
             - name: データベース シャーディング
@@ -522,6 +543,17 @@
               href: database/dynamic-data-masking-configure-portal.md
             - name: IP ベースのファイアウォール
               href: database/firewall-configure.md
+            - name: 台帳
+              items:
+                - name: 追加専用の台帳テーブルを作成する
+                  href: database/ledger-how-to-append-only-ledger-tables.md
+                - name: 更新可能な台帳テーブルを作成する
+                  href: database/ledger-how-to-updatable-ledger-tables.md
+                - name: Azure Confidential Ledger ダイジェストにアクセスする
+                  displayName: Access Azure Confidential Ledger digest
+                  href: database/ledger-how-to-access-acl-digest.md
+                - name: 台帳のデータベースが改ざんされていないか確認する
+                  href: database/ledger-verify-database.md
             - name: vNet エンドポイント - PowerShell
               href: database/scripts/vnet-service-endpoint-rule-powershell-create.md
         - name: ビジネス継続性

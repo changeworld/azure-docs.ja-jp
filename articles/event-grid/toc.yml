@@ -270,6 +270,8 @@
           href: move-custom-topics-across-regions.md
         - name: リージョン間でのドメインの移動
           href: move-domains-across-regions.md
+        - name: リージョン間でのパートナー名前空間の移動
+          href: move-partner-namespaces-across-regions.md
     - name: セキュリティで保護
       items:
         - name: プライベート リンクを介してイベントを安全に公開する

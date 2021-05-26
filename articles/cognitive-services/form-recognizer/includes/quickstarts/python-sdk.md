@@ -7,18 +7,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/09/2021
+ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 606755333856f6dd97ab6c5158ac67f122a1237d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 0210ef3d82997887cd306098d4db7934443cd300
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516429"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374192"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
+
 > [!IMPORTANT]
 >
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。
@@ -41,7 +42,7 @@ ms.locfileid: "107516429"
 
 Python をインストールしたら、次のコマンドを使用して最新バージョンの Form Recognizer クライアント ライブラリをインストールすることができます。
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 ```console
 pip install azure-ai-formrecognizer --pre
@@ -50,7 +51,7 @@ pip install azure-ai-formrecognizer --pre
 > [!NOTE]
 > Form Recognizer 3.1.0b4 は最新の SDK レビュー バージョンであり、"_API バージョン 2.1 preview.3_" を反映しています。
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 ```console
 pip install azure-ai-formrecognizer
@@ -76,7 +77,7 @@ pip install azure-ai-formrecognizer
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`form_recognizer_client` です。フォーム フィールドとコンテンツを認識するためにサービスに照会するときに使用します。 もう 1 つは `form_training_client` です。認識精度を高めるために使用できるカスタム モデルを作成および管理するときに使用します。 
+Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`form_recognizer_client` です。フォーム フィールドとコンテンツを認識するためにサービスに照会するときに使用します。 もう 1 つは `form_training_client` です。認識精度を高めるために使用できるカスタム モデルを作成および管理するときに使用します。
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
@@ -96,14 +97,14 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * Form Recognizer リソース間でカスタム モデルをコピーする。
 
 > [!NOTE]
-> モデルのトレーニングは、[Form Recognizer のラベル付けツール](../../quickstarts/label-tool.md)など、グラフィカル ユーザー インターフェイスを使用して行うこともできます。
+> モデルのトレーニングは、[Form Recognizer のラベル付けツール](../../label-tool.md)など、グラフィカル ユーザー インターフェイスを使用して行うこともできます。
 
 ## <a name="code-examples"></a>コード例
 
 これらのコード スニペットでは、Python 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [レイアウトを分析する](#analyze-layout)
@@ -113,16 +114,16 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * [身分証明書を分析する](#analyze-identity-documents)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
-* [カスタム モデルを管理する](#manage-your-custom-models)
+* [カスタム モデルを管理する](#manage-custom-models)
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [レイアウトを分析する](#analyze-layout)
 * [領収書を分析する](#analyze-receipts)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
-* [カスタム モデルを管理する](#manage-your-custom-models)
+* [カスタム モデルを管理する](#manage-custom-models)
 
 ---
 
@@ -140,7 +141,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
 
-* 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。 
+* 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。
 
 > [!NOTE]
 > このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](/python/api/azure-ai-formrecognizer)の関連するメソッドと[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)を参照してください。
@@ -212,9 +213,9 @@ Total: 1203.39 has confidence 0.774
 
 ## <a name="analyze-business-cards"></a>名刺を分析する
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
-このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。 
+このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。
 
 URL から名刺を分析するには、`begin_recognize_business_cards_from_url` メソッドを使用します。
 
@@ -223,7 +224,7 @@ URL から名刺を分析するには、`begin_recognize_business_cards_from_url
 > [!TIP]
 > ローカルにある名刺の画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_business_cards` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > この機能は、選択した API バージョンでは使用できません。
@@ -232,9 +233,9 @@ URL から名刺を分析するには、`begin_recognize_business_cards_from_url
 
 ## <a name="analyze-invoices"></a>請求書を分析する
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
-このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。 
+このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。
 
 URL から請求書を分析するには、`begin_recognize_invoices_from_url` メソッドを使用します。
 
@@ -243,7 +244,7 @@ URL から請求書を分析するには、`begin_recognize_invoices_from_url` �
 > [!TIP]
 > ローカルの請求書画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_invoices` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > この機能は、選択した API バージョンでは使用できません。
@@ -252,7 +253,7 @@ URL から請求書を分析するには、`begin_recognize_invoices_from_url` �
 
 ## <a name="analyze-identity-documents"></a>身分証明書を分析する
 
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 請求書分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-identification-cards.md)を参照してください。
 
@@ -263,7 +264,7 @@ URL から身分証明書を分析するには、`begin_recognize_id_documents_f
 > [!TIP]
 > 身分証明書の画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true#methods) のメソッドを "_参照_" してください (`begin_recognize_id_documents` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードも "_参照_" してください。
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > この機能は、選択した API バージョンでは使用できません。
@@ -275,7 +276,7 @@ URL から身分証明書を分析するには、`begin_recognize_id_documents_f
 このセクションでは、独自のデータを使用してモデルをトレーニングする方法を示します。 トレーニング済みのモデルは、元のフォーム ドキュメント内のキー/値の関係を含む構造化データを出力できます。 モデルをトレーニングした後、モデルをテストおよび再トレーニングでき、最終的にはモデルを使用して、ニーズに従ってより多くのフォームから正確にデータを抽出できます。
 
 > [!NOTE]
-> また、[Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)などのグラフィカル ユーザー インターフェイスを使用してモデルをトレーニングすることもできます。
+> また、[Form Recognizer のサンプル ラベル付けツール](../../label-tool.md)などのグラフィカル ユーザー インターフェイスを使用してモデルをトレーニングすることもできます。
 
 ### <a name="train-a-model-without-labels"></a>ラベルなしでモデルをトレーニングする
 
@@ -324,7 +325,7 @@ Document errors: []
 トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 返される `CustomFormModel` は、モデルが抽出できるフィールドを、各フィールドの予測精度と共に示します。 次のコード ブロックは、この情報をコンソールに出力します。
 
 > [!IMPORTANT]
-> ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、*use_training_labels* パラメーターを `true` に設定して、`begin_training` 関数を呼び出すことができます。
+> ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、*use_training_labels* パラメーターを `true` に設定して、`begin_training` 関数を呼び出すことができます。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_trainlabels)]
 
@@ -400,8 +401,7 @@ Field 'Tax' has label 'Tax' with value 'None' and a confidence score of None
 Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 ```
 
-
-## <a name="manage-your-custom-models"></a>カスタム モデルを管理する
+## <a name="manage-custom-models"></a>カスタム モデルを管理する
 
 このセクションでは、アカウントに格納されているカスタム モデルを管理する方法について説明します。
 
@@ -410,7 +410,6 @@ Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 次のコード ブロックは、Form Recognizer アカウントに保存したモデルの数を確認し、アカウントの制限と比較します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_count)]
-
 
 ### <a name="output"></a>出力
 
@@ -423,7 +422,6 @@ Our account has 5 custom models, and we can have at most 5000 custom models
 次のコード ブロックは、アカウント内の現在のモデルを一覧表示し、その詳細をコンソールに出力します。 また、最初のモデルへの参照も保存します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_list)]
-
 
 ### <a name="output"></a>出力
 
@@ -444,7 +442,6 @@ c6309148-6b64-4fef-aea0-d39521452699
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_getmodel)]
 
-
 ### <a name="output"></a>出力
 
 これは、前の例で作成したカスタム モデルのサンプル出力です。
@@ -461,7 +458,6 @@ Training completed on: 2020-08-20 23:20:57+00:00
 ID を参照して、アカウントからモデルを削除することもできます。 このコードは、前のセクションで使用したモデルを削除します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_delete)]
-
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -492,10 +488,23 @@ Form Recognizer クライアント ライブラリにより、[Azure Core](https
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_logging)]
 
-
 同様に、`logging_enable` は、詳細なログ記録がクライアントで有効になっていない場合でも、1 回の操作のために有効にすることができます。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_example)]
+
+## <a name="rest-samples-on-github"></a>GitHub の REST サンプル
+
+* ドキュメントからテキスト、選択マーク、およびテーブル構造を抽出する
+  * [レイアウト データを抽出する - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
+* カスタム モデルをトレーニングしてフォーム データを抽出する
+  * [ラベルを使用しないトレーニング - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+  * [ラベルを使用したトレーニング - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
+* 請求書からデータを抽出する
+  * [請求書データを抽出する - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
+* レシートからデータを抽出する
+  * [レシートのデータを抽出する - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
+* 名刺からデータを抽出する
+  * [名刺データを抽出する - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
 ## <a name="next-steps"></a>次のステップ
 
