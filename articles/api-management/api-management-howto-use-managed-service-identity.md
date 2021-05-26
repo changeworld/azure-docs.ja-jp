@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 03/09/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 40ee196f53af040e4099fb344de5488109ce001b
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 1dc0c67a173333f2d2bcabd71d92ec88fa5a467d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812248"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071778"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
@@ -44,7 +44,7 @@ Azure portal でマネージド ID を設定するには、まず API Management
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-次の手順では、Azure PowerShell を使用して、API Management インスタンスを作成し、それに対して ID を割り当てる方法について説明します。 
+次の手順では、Azure PowerShell を使用して、API Management インスタンスを作成し、それに対して ID を割り当てる方法について説明します。
 
 1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/install-az-ps)の手順を使用して、Azure PowerShell をインストールします。 その後、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
@@ -298,7 +298,7 @@ API Management は、次のリソースに対する信頼された Microsoft サ
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-次の手順では、Azure PowerShell を使用して、API Management インスタンスを作成し、それに対して ID を割り当てる方法について説明します。 
+次の手順では、Azure PowerShell を使用して、API Management インスタンスを作成し、それに対して ID を割り当てる方法について説明します。
 
 1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/install-az-ps)の手順を使用して、Azure PowerShell をインストールします。 その後、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
@@ -372,7 +372,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-         "dependsOn": [       
+         "dependsOn": [
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]
@@ -401,7 +401,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
 ## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を使用したサポートされるシナリオ
 
 ### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>API Management インスタンスのカスタム TLS/SSL 証明書を Azure Key Vault から取得する
-ユーザーが割り当てた任意の ID を使用して、API Management インスタンスと KeyVault 間で信頼を確立できます。 その後、この信頼を使用して、Azure Key Vault に格納されているカスタム TLS/SSL 証明書を取得できます。 その後、これらの証明書を API Management インスタンスのカスタム ドメインに割り当てることができます。 
+ユーザーが割り当てた任意の ID を使用して、API Management インスタンスと KeyVault 間で信頼を確立できます。 その後、この信頼を使用して、Azure Key Vault に格納されているカスタム TLS/SSL 証明書を取得できます。 その後、これらの証明書を API Management インスタンスのカスタム ドメインに割り当てることができます。
 
 以下の考慮事項に留意してください。
 
@@ -411,7 +411,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
 > [!Important]
 > 証明書のオブジェクト バージョンの指定がない場合は、より新しいバージョンの証明書が Key Vault にアップロードされた後、4 時間以内にそれが API Management によって自動的に取得されます。
 
-完全なテンプレートについては、[ユーザー割り当て ID を使用した KeyVault ベースの SSL を使用する API Management](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json) に関するページをご覧ください。
+完全なテンプレートについては、[ユーザー割り当て ID を使用した KeyVault ベースの SSL を使用する API Management](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.apimanagement/api-management-key-vault-create/azuredeploy.json) に関するページをご覧ください。
 
 このテンプレートでは、以下をデプロイします。
 
@@ -421,7 +421,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.apimanagement%2Fapi-management-key-vault-create%2Fazuredeploy.json)
 
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>ユーザー割り当て ID を使用してバックエンドに対する認証を行う
 

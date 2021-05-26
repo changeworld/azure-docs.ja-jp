@@ -38,7 +38,7 @@
           href: ./scripts/cli/cdn-azure-cli-create-endpoint.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/content-delivery-network-security-baseline?toc=/azure/cdn/TOC.json
@@ -194,7 +194,11 @@
         - name: リージョン別の POP の場所
           href: cdn-pop-locations.md
         - name: 略称別の POP の場所
-          href: cdn-pop-abbreviations.md
+          items:
+            - name: Microsoft
+              href: microsoft-pop-abbreviations.md
+            - name: Verizon
+              href: cdn-pop-abbreviations.md
     - name: Azure Content Delivery Network の請求
       href: cdn-billing.md
     - name: Azure のロードマップ

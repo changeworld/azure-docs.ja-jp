@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 02/28/2020
-ms.openlocfilehash: 760979ffa96043dbe0ab9d0d925fec08e11374cb
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 7d7ba260177cb27ac181f081335ffb1e19aa5c33
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278976"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062796"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
@@ -29,7 +29,7 @@ ms.locfileid: "108278976"
 
 クラスターにエッジ ノードが含まれている場合は、SSH を使用して __常にエッジ ノードに接続する__ ことをお勧めします。 ヘッド ノードは、Hadoop の正常な稼働に不可欠なサービスをホストします。 エッジ ノードは、配置されたもののみを実行します。 エッジ ノードの使用の詳細については、[HDInsight でのエッジ ノードの使用](hdinsight-apps-use-edge-node.md#access-an-edge-node)に関する記事を参照してください。
 
-> [!TIP]  
+> [!TIP]
 > HDInsight に初めて接続すると、ホストの信頼性を確立できないという警告が SSH クライアントに表示されることがあります。 メッセージが表示されたら、"はい" を選択して、SSH クライアントの信頼済みサーバーの一覧にこのホストを追加してください。
 >
 > 以前に同じ名前でサーバーに接続したことがある場合は、保存されているホスト キーとサーバーのホスト キーが一致しないという警告が表示されることがあります。 サーバー名の既存のエントリを削除する方法については、SSH クライアントのドキュメントを参照してください。
@@ -62,7 +62,7 @@ SSH アカウントがキーを使用してセキュリティ保護されてい�
 
 * 異なる複数のサーバーで使用するための __複数の秘密キー__ がある場合は、[ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) などのユーティリティを使用することを検討してください。 `ssh-agent` ユーティリティを使用すると、SSH セッションを確立するときに使用するキーを自動的に選択できます。
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > パスフレーズを使用して秘密キーをセキュリティ保護した場合は、そのキーを使用するときにパスフレーズを入力する必要があります。 `ssh-agent` などのユーティリティは、利便性のためにパスワードをキャッシュすることができます。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
@@ -79,7 +79,7 @@ ssh-keygen -t rsa -b 2048
 
 * __秘密キー__ は、HDInsight クラスターでクライアントを認証するために使用します。
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > キーはパスフレーズを使用してセキュリティ保護することができます。 パスフレーズは実質的には秘密キーのパスワードです。 だれかが秘密キーを入手したとしても、パスフレーズがないと使用できません。
 
 ### <a name="create-hdinsight-using-the-public-key"></a>秘密キーを使用して HDInsight を作成する
@@ -89,16 +89,16 @@ ssh-keygen -t rsa -b 2048
 | Azure portal | __[SSH のクラスター ログイン パスワードを使用する]__ チェック ボックスをオフにし、[SSH 認証の種類] で __[公開キー]__ を選択します。 最後に、公開キー ファイルを選択するか、ファイルのテキストの内容を __[SSH 公開キー]__ フィールドに貼り付けます。</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png" alt-text="HDInsight クラスター作成時の SSH 公開キー ダイアログ ボックス"::: |
 | Azure PowerShell | [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `-SshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。|
 | Azure CLI | [`az hdinsight create`](/cli/azure/hdinsight#az_hdinsight_create) コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
-| Resource Manager テンプレート | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
+| Resource Manager テンプレート | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
 
 ## <a name="authentication-password"></a>認証: パスワード
 
 SSH アカウントは、パスワードを使用してセキュリティ保護することができます。 SSH を使用して HDInsight に接続すると、パスワードの入力を求められます。
 
-> [!WARNING]  
+> [!WARNING]
 > SSH でパスワード認証を使用することはお勧めしません。 パスワードは推測可能であり、ブルート フォース攻撃に対して脆弱です。 代わりに、[SSH キーによる認証](#sshkey)を行うことをお勧めします。
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > SSH アカウントのパスワードは、HDInsight クラスターの作成後 70 日で期限切れになります。 パスワードの期限が切れた場合は、[HDInsight の管理](hdinsight-administer-use-portal-linux.md#change-passwords)に関するドキュメントの情報を使用して変更できます。
 
 ### <a name="create-hdinsight-using-a-password"></a>パスワードを使用して HDInsight を作成する
@@ -156,7 +156,7 @@ sudo service sshd restart
     ssh sshuser@edgnodename.clustername-ssh.azurehdinsight.net
     ```
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 前の例では、パスワード認証が使用されていること、または証明書認証が自動的に行われていることを前提としています。 認証に SSH キー ペアを使用していて、証明書が自動的に使用されない場合は、`-i` パラメーターを使用して秘密キーを指定します。 たとえば、「 `ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net` 」のように入力します。
 
 接続後はプロンプトが変更され、SSH ユーザー名と接続先ノードが示されます。 たとえば、プライマリ ヘッド ノードに `sshuser` として接続されている場合、プロンプトは `sshuser@<active-headnode-name>:~$` になります。
@@ -183,14 +183,14 @@ SSH アカウントが __パスワード__ を使用してセキュリティで�
 
 SSH アカウントが __SSH キー__ を使用してセキュリティで保護されている場合は、クライアント側で SSH の転送が有効になっていることを確認します。
 
-> [!NOTE]  
+> [!NOTE]
 > 別の方法でクラスター内のすべてのノードに直接アクセスするには、Azure 仮想ネットワークに HDInsight をインストールします。 次に、リモート マシンを同じ仮想ネットワーク内に参加させることで、クラスター内のすべてのノードに直接アクセスできます。
 >
 > 詳細については、「[Plan a virtual network for HDInsight](hdinsight-plan-virtual-network-deployment.md)」 (HDInsight 用の仮想ネットワークの計画) を参照してください。
 
 ### <a name="configure-ssh-agent-forwarding"></a>SSH エージェント転送を構成する
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 次の手順では、Linux または UNIX ベースのシステムを想定して Bash on Windows 10 を使用します。 次の手順をお使いのシステムで利用できない場合は、必要に応じて SSH クライアントのドキュメントを参照してください。
 
 1. テキスト エディターを使用して `~/.ssh/config`を開きます。 このファイルが存在しない場合は、コマンド ラインで「`touch ~/.ssh/config`」と入力して作成できます。

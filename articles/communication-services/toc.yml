@@ -48,14 +48,14 @@
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: 通話アプリを Teams の会議に参加させる
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
-    - name: UI フレームワーク
+    - name: UI ライブラリ
       items:
         - name: 複合の概要
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-composites--page'
+          href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-get-started-with-composites--page'
         - name: ステートフル クライアントの概要
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-stateful-client--page'
+          href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-get-started-with-stateful-client--page'
         - name: UI コンポーネントの概要
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-ui-components--page'
+          href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-get-started-with-ui-components--page'
 - name: チュートリアル
   expanded: false
   items:

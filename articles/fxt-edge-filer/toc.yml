@@ -34,5 +34,9 @@
       href: fxt-specs.md
     - name: その他のドキュメント
       href: fxt-additional-doc.md
+    - name: サポートされる暗号
+      href: fxt-supported-ciphers.md
+    - name: ネットワーク ポート
+      href: fxt-port-list.md
     - name: サポート チケットを開く
       href: fxt-support-ticket.md

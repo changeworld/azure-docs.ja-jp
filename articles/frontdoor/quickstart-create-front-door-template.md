@@ -15,12 +15,12 @@ ms.devlang: na
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: de8a592f6eecbb43b58a044096e8ba2e0f9b5973
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: db51e7ca844ee9d4e36b522e21d395bf9544acf3
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538999"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847456"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>クイック スタート」を参照してください。ARM テンプレートを使用して Front Door を作成する
 
@@ -43,7 +43,7 @@ ms.locfileid: "107538999"
 
 このクイックスタートでは、1 つのバックエンドと、`/*` に一致する 1 つの既定のパスを使用して、Front Door 構成を作成します。
 
-:::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/front-door-create-basic/azuredeploy.json":::
 
 テンプレートには、1 つの Azure リソースが定義されています。
 

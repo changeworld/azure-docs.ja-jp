@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
 ms.topic: guide
-author: danimir
-ms.author: danil
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: sstein
-ms.date: 02/04/2019
-ms.openlocfilehash: fdcaabf98d4559ae6ec59a4ca7c1652329217032
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.date: 05/24/2021
+ms.openlocfilehash: 4c9cf08ad0a048c0c37f2c9943e455914ecc21fd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754463"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456930"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 用 Azure Resource Manager テンプレート
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -38,9 +38,9 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 | [Azure イベント ハブの監査](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-auditing-server-policy-to-eventhub) | このテンプレートを使用すると、監査を有効にしたサーバーをデプロイして、監査ログを既存のイベント ハブに書き込むことができます。 監査イベントをイベント ハブに送信するには、`Enabled` `State` で監査設定を設定し、`IsAzureMonitorTargetEnabled` を `true` に設定します。 また、`master` データベースの `SQLSecurityAuditEvents` ログ カテゴリで診断設定を構成します (サーバーレベルの監査用)。 監査によってデータベース イベントが追跡され、監査ログに書き込まれます。監査ログは、Azure ストレージ アカウント、OMS ワークスペース、または Event Hubs に置くことができます。|
 | [Azure Web アプリと SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-sql-database) | このサンプルでは、無料の Azure Web アプリと Azure SQL Database のデータベースを "Basic" サービス レベルで作成します。|
 | [Azure Web アプリおよび Redis Cache と SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | このテンプレートでは、同じリソース グループ内に Web アプリ、Redis Cache、データベースを作成し、Web アプリ内にデータベースと Redis Cache 用の 2 つの接続文字列を作成します。|
-| [ADF V2 を使用した Blob Storage からのデータのインポート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/101-data-factory-v2-blob-to-sql-copy) | この Azure Resource Manager テンプレートでは、Azure Blob Storage から SQL Database にデータをコピーする Azure Data Factory V2 のインスタンスを作成します。|
-| [HDInsight クラスターとデータベース](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | このテンプレートを使用すると、HDInsight クラスターと論理 SQL サーバー、データベース、2 つのテーブルを作成できます。 このテンプレートは、[HDInsight の Hadoop での Sqoop の使用](../../hdinsight/hadoop/hdinsight-use-sqoop.md)に関する記事で使用されています。 |
-| [スケジュールに従って SQL ストアド プロシージャを実行する Azure Logic Apps](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | このテンプレートを使用すると、スケジュールに従って SQL ストアド プロシージャを実行する Logic Apps を作成できます。 プロシージャの引数は、テンプレートの body セクションに配置できます。|
+| [ADF V2 を使用した Blob Storage からのデータのインポート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | この Azure Resource Manager テンプレートでは、Azure Blob Storage から SQL Database にデータをコピーする Azure Data Factory V2 のインスタンスを作成します。|
+| [HDInsight クラスターとデータベース](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-linux-with-sql-database) | このテンプレートを使用すると、HDInsight クラスターと論理 SQL サーバー、データベース、2 つのテーブルを作成できます。 このテンプレートは、[HDInsight の Hadoop での Sqoop の使用](../../hdinsight/hadoop/hdinsight-use-sqoop.md)に関する記事で使用されています。 |
+| [スケジュールに従って SQL ストアド プロシージャを実行する Azure Logic Apps](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logic-app-sql-proc) | このテンプレートを使用すると、スケジュールに従って SQL ストアド プロシージャを実行する Logic Apps を作成できます。 プロシージャの引数は、テンプレートの body セクションに配置できます。|
 
 ## <a name="azure-sql-managed-instance"></a>[Azure SQL Managed Instance](#tab/managed-instance)
 

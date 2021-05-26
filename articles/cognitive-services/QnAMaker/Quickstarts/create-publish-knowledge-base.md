@@ -5,22 +5,32 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: eee4d23b17bf852946b31912eb81fd4f897e0f56
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 049cbc6f28e4a405b20eaf37e85e31bd1eb4dfb9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803874"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367326"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
-QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
+QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して質問に答える例が含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 > [!div class="checklist"]
 > * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
-> * Azure portal で作成された QnA Maker [リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
+> * Azure portal で作成された [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 リソースを作成したときに選択した Azure Active Directory ID、サブスクリプション、QnA Maker リソース名を覚えておいてください。
+
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+
+> [!div class="checklist"]
+> * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
+> * カスタム質疑応答機能が有効になっている [Text Analytics リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。 リソースを作成したときに選択した Azure Active Directory ID、サブスクリプション、Text Analytics リソース名を覚えておいてください。
+
+---
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>最初の QnA Maker ナレッジ ベースを作成する
 
@@ -32,9 +42,9 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 3. QnA Maker リソースが既にある場合は、 **[Create]\(作成\)** ページで、 **[Step 1]\(手順 1\)** をスキップします。
 
-    リソースをまだ作成していない場合は、 **[Create a QnA service]\(QnA サービスの作成\)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
+サービスをまだ作成していない場合は、 **[Stable]\(安定\)** と **[Create a QnA service]\(QnA サービスの作成\)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
 
-    Azure portal でリソースの作成が完了したら、QnA Maker ポータルに戻り、ブラウザー ページを最新の状態に更新して、 **[Step 2]\(手順 2\)** を続けます。
+Azure portal でリソースの作成が完了したら、QnA Maker ポータルに戻り、ブラウザー ページを最新の状態に更新して、 **[Step 2]\(手順 2\)** を続けます。
 
 4. **[Step 2]\(手順 2\)** で、Active Directory、サブスクリプション、サービス (リソース)、およびサービスで作成されたすべてのナレッジ ベースの言語を選択します。
 
@@ -57,23 +67,32 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     QnA Maker がナレッジ ベースを正常に作成すると、 **[Knowledge base]\(ナレッジ ベース\)** ページが開きます。 このページで、ナレッジ ベースの内容を編集することができます。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 1. ご自分の Azure の資格情報を使用して [QnAMaker.ai](https://QnAMaker.ai) ポータルにサインインします。
 
 2. QnA Maker ポータルで、 **[Create a knowledge base]\(ナレッジ ベースの作成\)** を選択します。
 
-3. QnA Maker リソースが既にある場合は、 **[Create]\(作成\)** ページで、 **[Step 1]\(手順 1\)** をスキップします。
+3. **[Create]\(作成\)** ページで、カスタムの質問の回答が既に Text Analytics サービスに追加されている場合は、 **[Step 1]\(手順 1\)** をスキップします。
 
-    リソースをまだ作成していない場合は、 **[Create a QnA service]\(QnA サービスの作成\)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。 リソースを作成するしたに選択した Azure Active Directory ID、サブスクリプション、QnA リソース名を覚えておいてください。
+    サービスをまだ作成していない場合は、 **[Preview]\(プレビュー\)** と **[Create a QnA service]\(QnA サービスの作成\)** を選択します。 
 
-    Azure portal でリソースの作成が完了したら、QnA Maker ポータルに戻り、ブラウザー ページを最新の状態に更新して、 **[Step 2]\(手順 2\)** を続けます。
+> [!div class="mx-imgBorder"]
+> ![サービスの作成](../media/qnamaker-create-publish-knowledge-base/create-qna-service.png) 
+    
+サブスクリプションで Text Analytics サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) にリダイレクトされます。 作成時にサービスにカスタム質問回答機能を追加する必要があります。 
+    
+> [!div class="mx-imgBorder"]
+> ![[Add QnA to TA]\(TA に QnA を追加する\)](../media/qnamaker-how-to-setup-service/select-qna-feature-create-flow.png)
+ 
+   リソースを作成したときに選択した Azure Active Directory ID、サブスクリプション、Text Analytics リソース名を覚えておいてください。 Azure portal でリソースの作成が完了したら、QnA Maker ポータルに戻り、ブラウザー ページを最新の状態に更新して、 **[Step 2]\(手順 2\)** を続けます。
 
 4. **[Step 2]\(手順 2\)** で、Active Directory、サブスクリプション、サービス (リソース)、およびサービスで作成されたすべてのナレッジ ベースの言語を選択します。
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/connect-your-knowledge-base.png" alt-text="QnA Maker サービス ナレッジ ベース マネージド (プレビュー) の選択のスクリーンショット":::
+> [!div class="mx-imgBorder"]
+> ![KB の作成](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png) 
 
-5. **[Step 2]\(手順 2\)** で、サービスの最初のナレッジ ベースを作成する場合には、各ナレッジ ベース固有の言語設定を指定できます。 最初のナレッジ ベースに対して言語設定を定義すると、後でサービスの設定を変更することはできません。
+5. **[Step 2]\(手順 2\)** で、サービスの最初のナレッジ ベースを作成する場合は、 **[Add knowledge bases in multiple languages to this service]\(このサービスに複数の言語のナレッジ ベースを追加する\)** プロパティをオンにし、異なる言語のナレッジ ベースを同じサービスに追加する機能を許可することができます。 これは後で変更することはできません。
 
 6.  **[Step 3]\(手順 3\)** で、自分のナレッジ ベースに  **My Sample QnA KB** という名前を付けます。 
 
@@ -90,7 +109,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     抽出プロセスでは、ドキュメントを読み取って質問と回答を識別します。これにはしばらくかかります。
 
-    QnA Maker がナレッジ ベースを正常に作成すると、 **[Knowledge base]\(ナレッジ ベース\)** ページが開きます。 このページで、ナレッジ ベースの内容を編集することができます。
+    ナレッジ ベースが正常に作成されると、 **[Knowledge base]\[ナレッジ ベース\]** ページが開きます。 このページで、ナレッジ ベースの内容を編集することができます。
 
 ---
 
@@ -130,7 +149,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 4. **[Test]\(テスト\)** パネルを閉じるには、もう一度 **[Test]\(テスト\)** を選択します。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 1. QnA Maker ポータルの右上にある **[テスト]** を選択して、行った変更が反映されたかどうかをテストします。
 2. テキスト ボックスにユーザー クエリの例を入力します。

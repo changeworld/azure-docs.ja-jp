@@ -2,15 +2,15 @@
 title: Start/Stop VMs v2 (プレビュー) の管理
 description: この記事では、Start/Stop VMs v2 (プレビュー) 機能によって管理されている Azure VM の状態を監視し、その他の管理タスクを実行する方法について説明します。
 services: azure-functions
-ms.subservice: ''
+ms.subservice: start-stop-vms
 ms.date: 03/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 477e3fe51f05bb4323642f56233f1995e6394eec
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e9d6f7a93f2bd59b120be059d7f9c254d1bde56b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111267"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073164"
 ---
 # <a name="how-to-manage-startstop-vms-v2-preview"></a>Start/Stop VMs v2 (プレビュー) を管理する方法
 

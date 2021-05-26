@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のサポート ポリシー、共�
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: d30e2aa5ab13c5d7676ca7cb455a2372981e4a46
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 3e4f5e4411eb81ab14d844adf03433e9de0d73b2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714478"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368112"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -92,7 +92,7 @@ Microsoft とユーザーは、次の場合に、Kubernetes エージェント �
   * `Kube-proxy`
   * Kubernetes マスター コンポーネントへの通信パスを提供するネットワーク トンネル
   * `Kubelet`
-  * `Moby` または `ContainerD`
+  * Docker または `containerd`
 
 > [!NOTE]
 > エージェント ノードが動作していない場合、AKS は個々のコンポーネントまたはエージェント ノード全体を再起動する可能性があります。 こうした再起動操作は自動化されており、これにより一般的な問題の自動修復機能が提供されます。 自動修復メカニズムの詳細については、「[ノードの自動修復](node-auto-repair.md)」を参照してください

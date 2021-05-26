@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 04/27/2021
 ms.topic: how-to
 ms.service: azure-maps
-ms.openlocfilehash: a2434494a769fb9a4695e698b3d9215dffc18974
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 262c6cb92f9c7327f13e357298242e281358253e
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326869"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845836"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>ARM テンプレートを使用して Azure Maps アカウントを作成する
 
@@ -21,7 +21,7 @@ Azure Resource Manager (ARM) テンプレートを使用して Azure Maps アカ
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-maps-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.maps%2Fmaps-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ Azure Resource Manager (ARM) テンプレートを使用して Azure Maps アカ
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-maps-create/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-maps-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.maps/maps-create/azuredeploy.json":::
 
 Azure Maps リソースはこのテンプレートで定義されています。
 
@@ -43,7 +43,7 @@ Azure Maps リソースはこのテンプレートで定義されています。
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートによって Azure Maps アカウントが作成されます。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-maps-create%2Fazuredeploy.json)
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.maps%2Fmaps-create%2Fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 
@@ -57,7 +57,7 @@ Azure Maps リソースはこのテンプレートで定義されています。
     * **アカウント名**: Azure Maps アカウントの名前を入力します。この名前はグローバルに一意である必要があります。
     * **価格レベル**: 適切な価格レベルを選択します。テンプレートの既定値は S0 です。
 
-3. **[Review + create]\(レビュー + 作成\)** を選択します。 
+3. **[Review + create]\(レビュー + 作成\)** を選択します。
 4. [確認] ページで、設定を確認し、 **[作成]** をクリックします。 Azure Maps が正常にデプロイされると、次の通知が表示されます。
 
     ![ARM テンプレート デプロイのポータル通知](./media/how-to-create-template/resource-manager-template-portal-deployment-notification.png)

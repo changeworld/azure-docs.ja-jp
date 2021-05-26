@@ -1,6 +1,6 @@
 ---
 title: イマーシブ リーダーの起動ボタンを編集する
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: この記事では、イマーシブ リーダーの起動ボタンをカスタマイズする方法について説明します。
 services: cognitive-services
 author: metanMSFT
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: metang
-ms.openlocfilehash: d60e37a437cacda8afbe88a901089f9478a53c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17076cc98da20c714523b2cdde58ea259ad76653
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608616"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367066"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>イマーシブ リーダーのボタンをカスタマイズする方法
 
