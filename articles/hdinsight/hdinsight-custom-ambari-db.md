@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: fe38ddc594060c78a2d26e9b25476e38736b4cf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d5b67bb25f6f2425016824e5b73783a8db8e806
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946053"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072156"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>カスタム Ambari DB を使用して HDInsight クラスターを設定する
 
@@ -49,7 +49,7 @@ Apache Ambari DB を外部データベースでホストする場合は、次の
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>カスタム Ambari DB を使用するクラスターをデプロイする
 
-独自の外部 Ambari データベースを使用する HDInsight クラスターを作成するには、[カスタム Ambari DB クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-custom-ambari-db)を使用します。
+独自の外部 Ambari データベースを使用する HDInsight クラスターを作成するには、[カスタム Ambari DB クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-custom-ambari-db)を使用します。
 
 `azuredeploy.parameters.json` 内のパラメーターを編集して、新しいクラスターと、Ambari を保持するデータベースに関する情報を指定します。
 

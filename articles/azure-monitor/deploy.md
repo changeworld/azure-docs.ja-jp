@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7656efeb26a8a8b3c752ea996c8e644c68a48626
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc73ac91320e1860c5c30f1b31962ad826a1038f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044002"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076800"
 ---
 # <a name="deploy-azure-monitor"></a>Azure Monitor をデプロイする
 Azure Monitor ですべての Azure リソースを監視できるようにするには、Azure Monitor コンポーネントの構成と、Azure Monitor で収集される監視データを生成するための Azure リソースの構成を、組み合わせて行います。 この記事では、一般的な構成を使用して Azure Monitor を完全に実装して Azure サブスクリプション内のすべてのリソースを監視するために必要なさまざまなステップについて説明します。 各ステップの基本的な説明は、詳細な構成要件に関する他のドキュメントへのリンクで提供されます。
@@ -137,7 +137,7 @@ VM 分析情報によって使用される Log Analytics エージェントで�
 - [ASP.NET アプリケーション](app/asp-net.md)
 - [ASP.NET Core アプリケーション](app/asp-net-core.md)
 - [.NET コンソール アプリケーション](app/console.md)
-- [Java](app/java-get-started.md)
+- [Java](app/java-in-process-agent.md)
 - [Node.js](app/nodejs.md)
 - [Python](app/opencensus-python.md)
 - [その他のプラットフォーム](app/platforms.md)

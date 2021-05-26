@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0aae2092a167915f2130c031808368ae52047615
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: cddf266d9457f81e5aa11a3dc91ea7a5fb9756ab
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753365"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845980"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ
 
@@ -320,7 +320,7 @@ az custom-providers resource-provider show --resource-group $rgName --name $func
 ```azurecli-interactive
 az custom-providers resource-provider create --resource-group $rgName --name $funcName \
 --action name=ping endpoint=https://myTestSite.azurewebsites.net/api/{requestPath} routing_type=Proxy \
---resource-type name=users endpoint=https://myTestSite.azurewebsites.net/api{requestPath} routing_type="Proxy, Cache"
+--resource-type name=users endpoint=https://myTestSite.azurewebsites.net/api/{requestPath} routing_type="Proxy, Cache"
 ```
 
 ```json
@@ -334,7 +334,7 @@ az custom-providers resource-provider create --resource-group $rgName --name $fu
 
 "resourceTypes": [
   {
-    "endpoint": "https://myTestSite.azurewebsites.net/api{requestPath}",
+    "endpoint": "https://myTestSite.azurewebsites.net/api/{requestPath}",
     "name": "users",
     "routingType": "Proxy, Cache"
   }

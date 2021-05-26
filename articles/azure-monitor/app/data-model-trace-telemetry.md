@@ -4,12 +4,12 @@ description: トレース テレメトリ用の Application Insights データ �
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8fea4bbf590816b2ef168a2ed16f197389ee282e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb298812b9970882c4bb3c7d2562bb5cbbf69b2d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87320546"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098904"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>トレース テレメトリ:Application Insights データ モデル
 
@@ -32,7 +32,7 @@ ms.locfileid: "87320546"
 ## <a name="next-steps"></a>次のステップ
 
 - [Application Insights で .NET トレース ログを調べます](./asp-net-trace-logs.md)。
-- [Application Insights で Java トレース ログを調べます](./java-trace-logs.md)。
+- [Application Insights で Java トレース ログを調べます](java-2x-trace-logs.md)。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
 - [カスタム トレース テレメトリを記述します](./api-custom-events-metrics.md#tracktrace)。
 - Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 576c1f0b087775ee3784229147b3715b22135217
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1d7c017b2be76a7b5df1e92658a848d209218138
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090678"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465905"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis の高可用性
 
@@ -21,9 +21,9 @@ Azure Cache for Redis により、キャッシュ用に "*ノード*" と呼ば�
 
 | オプション | 説明 | 可用性 | Standard | Premium | エンタープライズ |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [標準のレプリケーション](#standard-replication)| 単一のデータセンターでのデュアルノードのレプリケートされた構成 (自動フェールオーバーあり) | 99.9% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)を参照) |✔|✔|-|
-| [ゾーン冗長性](#zone-redundancy) | AZ 間でのマルチノードのレプリケートされた構成 (自動フェールオーバーあり) | 最大 99.99% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)を参照) |-|✔|✔|
-| [geo レプリケーション](#geo-replication) | 2 つのリージョンでのリンクされたキャッシュ インスタンス (ユーザー制御のフェールオーバーあり) | 最大 99.999% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)を参照) |-|✔|プレビュー|
+| [標準のレプリケーション](#standard-replication)| 単一のデータセンターでのデュアルノードのレプリケートされた構成 (自動フェールオーバーあり) | 99.9% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)を参照) |✔|✔|-|
+| [ゾーン冗長性](#zone-redundancy) | AZ 間でのマルチノードのレプリケートされた構成 (自動フェールオーバーあり) | 最大 99.99% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)を参照) |-|✔|✔|
+| [geo レプリケーション](#geo-replication) | 2 つのリージョンでのリンクされたキャッシュ インスタンス (ユーザー制御のフェールオーバーあり) | 最大 99.999% ([詳細](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)を参照) |-|✔|プレビュー|
 
 ## <a name="standard-replication"></a>標準のレプリケーション
 

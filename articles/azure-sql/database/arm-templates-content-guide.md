@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
 ms.topic: guide
-author: srdan-bozovic-msft
-ms.author: srbozovi
+author: danimir
+ms.author: danil
 ms.reviewer: sstein
-ms.date: 05/24/2021
-ms.openlocfilehash: 4c9cf08ad0a048c0c37f2c9943e455914ecc21fd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 02/04/2019
+ms.openlocfilehash: e3442338ab388da36ad1f8f8f8bbef4952b06d3c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456930"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096188"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 用 Azure Resource Manager テンプレート
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

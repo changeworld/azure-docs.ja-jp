@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a912a3023ba6d8504d5856d5a45a93d0dc9488
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88008918"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809402"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング
 
@@ -33,7 +33,7 @@ ms.locfileid: "88008918"
 - キャッシュに、その最大容量に近いデータが格納されている。
 - Redis でメモリの断片化が大量に発生している。 Redis は小さいオブジェクト用に最適化されているため、この断片化は、大きいオブジェクトを格納することによって最も頻繁に発生します。
 
-Redis は、[INFO](https://redis.io/commands/info) コマンドを通して、この問題を識別するために役立つ "used_memory" と "used_memory_rss" という 2 つの統計を公開しています。 ポータルを使用して[これらのメトリックを表示](cache-how-to-monitor.md#view-metrics-with-azure-monitor)できます。
+Redis は、[INFO](https://redis.io/commands/info) コマンドを通して、この問題を識別するために役立つ "used_memory" と "used_memory_rss" という 2 つの統計を公開しています。 ポータルを使用して[これらのメトリックを表示](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer)できます。
 
 メモリ使用量を正常な状態に保つために実行できる、可能性のあるいくつかの変更を次に示します。
 
@@ -47,7 +47,7 @@ Redis は、[INFO](https://redis.io/commands/info) コマンドを通して、�
 
 高いサーバーの負荷または CPU 使用率は、サーバーが適切なタイミングで要求を処理できないことを示します。 サーバーは応答が遅くなり、要求レートについていけない可能性があります。
 
-CPU またはサーバーの負荷などの[メトリックを監視](cache-how-to-monitor.md#view-metrics-with-azure-monitor)します。 タイムアウトに対応する CPU 使用率が急激に増えていないか監視します。
+CPU またはサーバーの負荷などの[メトリックを監視](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer)します。 タイムアウトに対応する CPU 使用率が急激に増えていないか監視します。
 
 高いサーバーの負荷を軽減するために実行できるいくつかの変更を次に示します。
 
@@ -65,7 +65,7 @@ Redis コマンドの中には、他のコマンドより実行コストが高�
 
 キャッシュ サイズが違えば、ネットワーク帯域幅容量も異なります。 サーバーが使用可能な帯域幅を超えている場合、データはすばやくクライアントに送信されません。 サーバーが十分な速さでデータをクライアントにプッシュできないため、クライアント要求はタイムアウトする可能性があります。
 
-"キャッシュの読み取り" および "キャッシュの書き込み" メトリックを使用すると、サーバー側の帯域幅がどれだけ使用されているかを確認できます。 ポータルで[これらのメトリックを表示](cache-how-to-monitor.md#view-metrics-with-azure-monitor)できます。
+"キャッシュの読み取り" および "キャッシュの書き込み" メトリックを使用すると、サーバー側の帯域幅がどれだけ使用されているかを確認できます。 ポータルで[これらのメトリックを表示](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer)できます。
 
 ネットワーク帯域幅の使用量が最大容量に近い状況を緩和するには:
 

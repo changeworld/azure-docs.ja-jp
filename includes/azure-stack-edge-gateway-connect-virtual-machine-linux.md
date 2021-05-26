@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 08/03/2020
+ms.date: 05/13/2021
 ms.author: alkohli
-ms.openlocfilehash: b3d4ec54d6db88a04f7aca46c0c96fa2d4d17ac7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 45a82d85510bd432efa93211ffc9dba8b911c557
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101730642"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070749"
 ---
 VM の作成時に渡したプライベート IP を使用して、VM に接続します。
 
@@ -64,11 +64,3 @@ VM の作成時に渡したプライベート IP を使用して、VM に接続�
     
     Administrator@mylinuxvm:
     ```
-
-1. VM の作成時にパブリック IP アドレスを使用した場合は、その IP を使用して VM に接続できます。 パブリック IP を取得するには、次のコマンドを実行します。 
-
-   ```powershell
-   $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
-   ```
-
-   この場合、パブリック IP は仮想ネットワーク インターフェイスの作成時に渡したプライベート IP と同じになります。

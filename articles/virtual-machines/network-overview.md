@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c0fa311f03de1805d2487fe469d9305c0e01af78
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a3c07457a193e4a1285dc8a2b3c7197f6151a984
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751871"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077645"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure における仮想ネットワークと仮想マシン
 
@@ -50,7 +50,7 @@ VM に接続された各 NIC は、VM と同じ場所およびサブスクリプ
 | Azure portal | Azure Portal で VM を作成する場合、ネットワーク インターフェイスは自動的に作成されます (別個に作成する NIC は使用できません)。 ポータルで作成されるのは、NIC を 1 つだけ備えた VM です。 複数の NIC を備えた VM を作成したい場合は、別の方法で作成する必要があります。 |
 | [Azure PowerShell](./windows/multiple-nics.md) | 以前作成したパブリック IP アドレスの識別子を **-PublicIpAddressId** パラメーターで指定して、[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を実行します。 |
 | [Azure CLI](./linux/multiple-nics.md) | 以前作成したパブリック IP アドレスの識別子を指定するために、 **--public-ip-address** パラメーターを使用して [az network nic create](/cli/azure/network/nic) を実行します。 |
-| [テンプレート](../virtual-network/template-samples.md) | テンプレートを使用したネットワーク インターフェイスのデプロイのガイドとして、「[Network Interface in a Virtual Network with Public IP Address (パブリック IP アドレスを使用した仮想ネットワークのネットワーク インターフェイス)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)」を使用してください。 |
+| [テンプレート](../virtual-network/template-samples.md) | テンプレートを使用したネットワーク インターフェイスのデプロイのガイドとして、「[Network Interface in a Virtual Network with Public IP Address (パブリック IP アドレスを使用した仮想ネットワークのネットワーク インターフェイス)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/nic-publicip-dns-vnet)」を使用してください。 |
 
 ## <a name="ip-addresses"></a>IP アドレス
 
@@ -114,7 +114,7 @@ VM と VNet を計画する際は、必ず NSG の[計画](../virtual-network/vi
 | [Azure Portal](../virtual-network/tutorial-filter-network-traffic.md) | Azure Portal で VM を作成する場合、NSG は自動的に作成され、ポータルで作成された NIC に関連付けられます。 NSG の名前は、VM の名前と **-nsg** の組み合わせです。 この NSG には、優先順位 (1000)、サービス (RDP)、プロトコル (TCP)、ポート (3389)、アクション (許可) が設定された受信ルールが 1 つ含まれています。 VM への他の受信トラフィックを許可したい場合は、NSG に他のルールを追加する必要があります。 |
 | [Azure PowerShell](../virtual-network/tutorial-filter-network-traffic.md) | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用し、必要なルールの情報を指定します。 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して NSG を作成します。 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) を使用して NSG をサブネット用に構成します。 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) を使用して NSG を VNet に追加します。 |
 | [Azure CLI](../virtual-network/tutorial-filter-network-traffic-cli.md) | [az network nsg create](/cli/azure/network/nsg) を使用して、最初に NSG を作成します。 [az network nsg rule create](/cli/azure/network/nsg/rule) を使用して、その NSG にルールを追加します。 [az network vnet subnet update](/cli/azure/network/vnet/subnet) を使用して NSG をサブネットに追加します。 |
-| [テンプレート](../virtual-network/template-samples.md) | テンプレートを使用したネットワーク セキュリティ グループのデプロイについては、「[Create a Network Security Group (ネットワーク セキュリティ グループの作成)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create)」をガイドとして使用してください。 |
+| [テンプレート](../virtual-network/template-samples.md) | テンプレートを使用したネットワーク セキュリティ グループのデプロイについては、「[Create a Network Security Group (ネットワーク セキュリティ グループの作成)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/security-group-create)」をガイドとして使用してください。 |
 
 ## <a name="load-balancers"></a>ロード バランサー
 
@@ -138,7 +138,7 @@ VM と VNet を計画する際は、必ず NSG の[計画](../virtual-network/vi
 | Azure portal |  [Azure Portal を使用して VM へのインターネット トラフィックを負荷分散](../load-balancer/quickstart-load-balancer-standard-public-portal.md)できます。 |
 | [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) | 以前作成したパブリック IP アドレスの識別子を指定するために、 **-PublicIpAddress** パラメーターを使用して [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を実行します。 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用してバックエンド アドレス プールの構成を作成します。 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) を使用して、作成済みのフロントエンド IP 構成に関連付けられた受信 NAT 規則を作成します。 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) を使用して必要なプローブを作成します。 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) を使用してロード バランサーの構成を作成します。 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用してロード バランサーを作成します。|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md) | [az network lb create](/cli/azure/network/lb) を使用してロード バランサーの初期構成を作成します。 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) を使用して、以前作成したパブリック IP アドレスを追加します。 [az network lb address-pool create](/cli/azure/network/lb/address-pool) を使用して、バックエンド アドレス プールの構成を追加します。 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) を使用して NAT 規則を追加します。 [az network lb rule create](/cli/azure/network/lb/rule) を使用してロード バランサー規則を追加します。 [az network lb probe create](/cli/azure/network/lb/probe) を使用してプローブを追加します。 |
-| [テンプレート](../load-balancer/quickstart-load-balancer-standard-public-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 3 つの VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create) に関するページをガイドとして使用してください。 |
+| [テンプレート](../load-balancer/quickstart-load-balancer-standard-public-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 3 つの VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create) に関するページをガイドとして使用してください。 |
 
 次の表に、内部ロード バランサーの作成に使用できる方法の一覧を示します。
 
@@ -168,7 +168,7 @@ VM にはデプロイ時に IP アドレスが割り当てられます。 複数
 | [Azure Portal](./windows/quick-create-portal.md) | 前に述べた既定のネットワーク設定を使用して、1 つの NIC を備えた VM を作成します。 複数の NIC を備えた VM を作成するには、別の方法を使用する必要があります。 |
 | [Azure PowerShell](./windows/tutorial-manage-vm.md) | [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) を使用して、以前作成した NIC を VM 構成に追加します。 |
 | [Azure CLI](./linux/create-cli-complete.md) | VM を作成し、個々のステップとして構築された Vnet、サブネット、および NIC に接続します。 |
-| [テンプレート](./windows/ps-template.md) | テンプレートを使用した VM のデプロイについては、「[Very simple deployment of a Windows VM (Windows VM の非常に簡単なデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)」をガイドとして使用してください。 |
+| [テンプレート](./windows/ps-template.md) | テンプレートを使用した VM のデプロイについては、「[Very simple deployment of a Windows VM (Windows VM の非常に簡単なデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows)」をガイドとして使用してください。 |
 
 ## <a name="next-steps"></a>次のステップ
 VM 用の Azure 仮想ネットワークの管理方法に関する VM 固有の手順については、[Windows](../virtual-machines/windows/tutorial-virtual-network.md) または [Linux](../virtual-machines/linux/tutorial-virtual-network.md) のチュートリアルを参照してください。

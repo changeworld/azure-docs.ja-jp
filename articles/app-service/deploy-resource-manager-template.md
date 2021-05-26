@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ed6edeadfb1c6f73cc10771d4a5328e7bddb3642
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 921a2c6425010dbf98c170d8435267e440883aa5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835166"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075144"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -53,7 +53,7 @@ Web アプリの依存関係を定義するには、Web アプリ内のリソー
 
 通常、ソリューションにはこれらのリソースとレベルの一部しか含まれていません。 ないレベルについては、下位のリソースを次に高いレベルにマップします。
 
-次の例は、テンプレートの一部を示しています。 接続文字列の構成値は、MSDeploy 拡張機能に応じて異なります。 MSDeploy 拡張機能は、Web アプリおよびデータベースに依存します。 
+次の例は、テンプレートの一部を示しています。 接続文字列の構成値は、MSDeploy 拡張機能に応じて異なります。 MSDeploy 拡張機能は、Web アプリおよびデータベースに依存します。
 
 ```json
 {
@@ -82,7 +82,7 @@ Web アプリの依存関係を定義するには、Web アプリ内のリソー
 }
 ```
 
-上記のコードを使用するすぐに実行できるサンプルについては、「[Template:Build a simple Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)」(テンプレート: 簡単な Umbraco Web アプリを作成する) をご覧ください。
+上記のコードを使用するすぐに実行できるサンプルについては、「[Template:Build a simple Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/umbraco/umbraco-webapp-simple)」(テンプレート: 簡単な Umbraco Web アプリを作成する) をご覧ください。
 
 ## <a name="find-information-about-msdeploy-errors"></a>MSDeploy エラーについての情報を見つける
 

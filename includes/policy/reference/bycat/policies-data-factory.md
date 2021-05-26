@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dee1bd9ae9d6074296cf038fdf4e385953fe7ffb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 640acb37fb2a61ddd57a7c02c0c4e275c44c3913
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762276"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110074438"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -25,4 +25,4 @@ ms.locfileid: "108762276"
 |[Azure Data Factory に接続するプライベート エンドポイントに対してプライベート DNS ゾーンを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86cd96e1-1745-420d-94d4-d3f2fe415aa4) |プライベート DNS レコードを使用すると、プライベート エンドポイントへのプライベート接続が許可されます。 プライベート エンドポイント接続を使用すると、送信元または送信先のパブリック IP アドレスを必要とせずに Azure Data Factory へのプライベート接続を有効にすることで、セキュリティで保護された通信が可能になります。 Azure Data Factory でのプライベート エンドポイントと DNS ゾーンの詳細については、[https://docs.microsoft.com/azure/data-factory/data-factory-private-link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PrivateDnsZones_DeployIfNotExists.json) |
 |[データ ファクトリのプライベート エンドポイントを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496ca26b-f669-4322-a1ad-06b7b5e41882) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークが Azure サービスに接続されます。  プライベート エンドポイントを Azure Data Factory にマッピングすることにより、データ漏えいのリスクを軽減できます。  詳細については、[https://docs.microsoft.com/azure/data-factory/data-factory-private-link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PrivateEndpoints_DeployIfNotExists.json) |
 |[Azure Data Factory のパブリック ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1cf164be-6819-4a50-b8fa-4bcaa4f98fb6) |パブリック ネットワーク アクセス プロパティを無効にすると、Azure Data Factory へのアクセスがプライベート エンドポイントのみに制限されるため、セキュリティが強化されます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PublicNetworkAccess_Audit.json) |
-|[Azure Data Factory 上の SQL Server Integration Services 統合ランタイムでは仮想ネットワークに参加する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0088bc63-6dee-4a9c-9d29-91cfdc848952) |Azure Virtual Network のデプロイでは、Azure Data Factory 上の SQL Server Integration Services 統合ランタイムのための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、アクセスをさらに制限するための機能を提供します。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/SSISIR_JoinVirtualNetwork_Audit.json) |
+|[Azure Data Factory 上の SQL Server Integration Services 統合ランタイムでは仮想ネットワークに参加する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0088bc63-6dee-4a9c-9d29-91cfdc848952) |Azure Virtual Network のデプロイでは、Azure Data Factory 上の SQL Server Integration Services 統合ランタイムのための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、アクセスをさらに制限するための機能を提供します。 |Audit、Deny、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/SSISIR_JoinVirtualNetwork_Audit.json) |
