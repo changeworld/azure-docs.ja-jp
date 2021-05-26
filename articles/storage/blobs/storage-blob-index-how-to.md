@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f7ae7af0f2764bd3f157ad5ca3166c9989cd9bf
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 63f06b9cab7896bcd98b6b6cd9c037b7ee83b47f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276792"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451771"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する
 
@@ -32,7 +32,7 @@ ms.locfileid: "106276792"
 - BLOB インデックス プレビューへのアクセスが登録および承認された Azure サブスクリプション
 - [Azure portal](https://portal.azure.com/)にアクセスする
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 BLOB インデックスがプレビューであるため、.NET ストレージ パッケージはプレビュー NuGet フィードでリリースされます。 このライブラリは、プレビュー期間中に変更されることがあります。
 
@@ -76,7 +76,7 @@ BLOB インデックスがプレビューであるため、.NET ストレージ 
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png" alt-text="インデックス タグを使用した BLOB のアップロード方法を示した Azure portal のスクリーンショット。":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 次の例は、作成時にタグが設定される追加 BLOB を作成する方法を示しています。
 
@@ -136,7 +136,7 @@ BLOB インデックス タグを設定し、更新できるのは、[ストレ�
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="BLOB のインデックス タグを取得、設定、更新、および削除する方法を示す Azure portal のスクリーンショット。":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 ```csharp
 static async Task BlobIndexTagsExample()
@@ -213,7 +213,7 @@ Azure portal 内では、BLOB インデックス タグ フィルターによっ
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="インデックス タグを使用してタグ付きの BLOB をフィルター処理および検索する方法を示す Azure portal のスクリーンショット":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 ```csharp
 static async Task FindBlobsByTagsExample()
@@ -313,7 +313,7 @@ static async Task FindBlobsByTagsExample()
 
 6. ライフサイクル管理ポリシーに新しいルールを適用するには、 **[追加]** を選択します
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 [ライフサイクル管理](storage-lifecycle-management-concepts.md)ポリシーは、各ストレージ アカウントにコントロール プレーン レベルで適用されます。 .NET の場合は、[Microsoft Azure の管理ストレージ ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) バージョン 16.0.0 以降をインストールします。
 

@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: how-to
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d50820e954c1a34f1ccffe133a338538bf0abd18
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f61e1a604c9296f85bbfd508f39dcbc74e256caf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888532"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098724"
 ---
 # <a name="start-monitor-and-track-run-history"></a>実行履歴の開始、監視および追跡
 
@@ -194,11 +194,11 @@ ms.locfileid: "107888532"
 **[すべての実行]** ページでは、タグ、実験、コンピューティング ターゲットなどで実行の一覧をフィルター処理し、自分の作業を整理したり、範囲を絞り込んだりすることができます。  
     
 1. このページでは、比較する実行を選択したり、グラフを追加したり、フィルターを適用して、カスタマイズすることが可能です。 これらの変更は **カスタム ビュー** として保存できるので、簡単に作業に戻ることができます。 ワークスペースのアクセス許可を持つユーザーは、カスタム ビューを編集、または表示できます。 また、 **[共有ビュー]** を選択すると、カスタム ビューをチームメンバーと共有して、連携を強化できます。   
-    
+
+1. 実行ログを表示するには、特定の実行を選択し、自分の実行の診断ログとエラー ログを **[Outputs + logs]** \(出力 + ログ\) タブから確認します。    
+
 :::image type="content" source="media/how-to-track-monitor-analyze-runs/custom-views.gif" alt-text="スクリーンショット: カスタム ビューを作成する":::
     
-1. 実行ログを表示するには、特定の実行を選択し、自分の実行の診断ログとエラー ログを **[Outputs + logs]** \(出力 + ログ\) タブから確認します。
-
 ## <a name="run-description"></a>実行の説明 
 
 実行に実行の説明を追加し、その実行に関するコンテキストおよび情報をより多く指定できます。 また、実行の一覧でこれらの説明を検索し、実行の一覧の列として実行の説明を追加することもできます。 

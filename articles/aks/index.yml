@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: 84d02dba9bc1d45205bc610dc1d155a80179e93e
-  ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+  ms.openlocfilehash: b1eea38b95fda9f2291782e020df1719c82835ba
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/10/2020
-  ms.locfileid: "97007655"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110452432"
 landingContent:
 - title: Azure Kubernetes Service (AKS) について
   linkLists:
@@ -86,8 +86,6 @@ landingContent:
       url: /azure/architecture/operator-guides/aks/aks-triage-practices?WT.mc_id=AKSDOCSPAGE
     - text: クラスターのオペレーターと開発者向けのベスト プラクティス
       url: best-practices.md
-    - text: ベスト プラクティスの確認
-      url: kube-advisor-tool.md
 - title: Microsoft Learn でスキルを身に付ける
   linkLists:
   - linkListType: learn

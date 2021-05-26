@@ -2,13 +2,13 @@
 title: Azure Event Hubs のファイアウォール ルール | Microsoft Docs
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Event Hubs への接続を許可します。
 ms.topic: article
-ms.date: 03/29/2021
-ms.openlocfilehash: 12240135401b267fd7c60e579fdf5a12e10ffce9
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.date: 05/10/2021
+ms.openlocfilehash: e0cefa24db8728ebe9d268c00718c2276ed7cee4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963004"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375009"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>特定の IP アドレスまたは範囲から Azure Event Hubs 名前空間へのアクセスを許可します
 既定では、要求が有効な認証と承認を受けている限り、Event Hubs 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -20,7 +20,7 @@ IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用
 
 
 ## <a name="important-points"></a>重要なポイント
-- この機能は、**Standard** と **Dedicated** レベルの両方でサポートされています。 **Basic** レベルではサポートされません。
+- この機能は **Basic** レベルではサポートされていません。
 - 許可されているパブリック IP アドレスで稼働中のサービスから要求が送信される場合を除き、Event Hubs 名前空間に対してファイアウォール規則を有効にすると、着信要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外として、IP フィルターが有効になっている場合でも、特定の **信頼できるサービス** からの Event Hubs リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、「[信頼できる Microsoft サービス](#trusted-microsoft-services)」を参照してください。
 - 指定した IP アドレスまたは仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に **少なくとも 1 つの IP ファイアウォール規則または仮想ネットワーク規則** を指定します。 IP 規則も仮想ネットワーク規則も指定しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。  
 
@@ -29,7 +29,7 @@ IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用
 このセクションでは、Azure portal を使用して、Event Hubs 名前空間に対する IP ファイアウォール規則を作成する方法について説明します。 
 
 1. [Azure portal](https://portal.azure.com) で **Event Hubs 名前空間** に移動します。
-4. 左側のメニューの **[設定]** で **[ネットワーク]** を選択します。 **Standard** または **Dedicated** 名前空間のみの **[ネットワーク]** タブが表示されます。 
+4. 左側のメニューの **[設定]** で **[ネットワーク]** を選択します。 
     
     > [!WARNING]
     > このページで **[選択されたネットワーク]** オプションを選択し、1 つ以上の IP ファイアウォール規則または仮想ネットワークを追加しない場合は、**パブリック インターネット** 経由で (アクセス キーを使用して) 名前空間にアクセスできます。  
@@ -59,7 +59,7 @@ IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 
 > [!IMPORTANT]
-> ファイアウォール ルールは、**Standard** レベルと **Dedicated** レベルの Event Hubs でサポートされます。 Basic レベルではサポートされません。
+> ファイアウォール機能は、Basic レベルではサポートされていません。
 
 次の Resource Manager テンプレートでは、既存の Event Hubs 名前空間に IP フィルター規則を追加できます。
 

@@ -2,15 +2,15 @@
 title: Start/Stop VMs v2 (プレビュー) のデプロイ
 description: この記事では、Azure サブスクリプションで Azure VM の Start/Stop VMs v2 (プレビュー) 機能をデプロイする方法について説明します。
 services: azure-functions
-ms.subservice: ''
+ms.subservice: start-stop-vms
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9ca808fffbd26c8837ad9a43447f60e99f89d922
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 726af0d36c543936076d1fa529e5527d166d5bbc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111294"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073236"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Start/Stop VMs v2 (プレビュー) のデプロイ
 
@@ -72,7 +72,7 @@ VM の起動と停止を制御するためのオートメーションの方法�
 
 - Scheduled - 起動と停止のアクションは、Azure Resource Manager とクラシックの VM に対して指定したスケジュールに基づきます。**ststv2_vms_Scheduled_start** と **ststv2_vms_Scheduled_stop** により、スケジュールされた起動と停止が構成されます。
 
-- Sequenced - 起動と停止のアクションは、事前定義されたシーケンス処理タグの付いた VM を対象とするスケジュールに基づきます。 サポートされているのは、**sequencestart** および **sequencestop** の 2 つの名前付きタグのみです。 **ststv2_vms_Sequenced_start** と **ststv2_vms_Sequenced_stop** により、シーケンスされた起動と停止が構成されます。
+- Sequenced - 起動と停止のアクションは、事前定義されたシーケンス処理タグの付いた VM を対象とするスケジュールに基づきます。 サポートされているのは、**sequencestart** および **sequencestop** の 2 つの名前付きタグのみです。 **ststv2_vms_Sequenced_start** と **ststv2_vms_Sequenced_stop** により、シーケンスされた開始と停止が構成されます。
 
     > [!NOTE]
     > このシナリオでサポートされるのは、Azure Resource Manager の VM のみです。

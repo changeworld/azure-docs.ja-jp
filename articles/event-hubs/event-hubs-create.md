@@ -2,13 +2,13 @@
 title: Azure クイック スタート - Azure portal を使用したイベント ハブの作成
 description: このクイックスタートでは、Azure portal を使用して Azure イベント ハブを作成する方法について説明します。
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: bf83c53792c4934f43e0039d092bb3e36954bf7b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 05/25/2021
+ms.openlocfilehash: 32a669c08976f1626617b7d17558e2733fa784a5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303119"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375113"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>クイック スタート:Azure portal を使用したイベント ハブの作成
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -54,8 +54,8 @@ Event Hubs 名前空間は、イベント ハブの作成先となる一意の�
    1. 前の手順で作成した **リソース グループ** を選択します。   
    1. 名前空間の **名前** を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。  
    1. 名前空間の **場所** を選択します。
-   1. **価格レベル** (Basic または Standard) を選択します。 Basic レベルと Standard レベルのいくつかの違いについては、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」のほか、[レベル間の違い](event-hubs-faq.yml#what-is-the-difference-between-event-hubs-basic-and-standard-tiers-)および[クォータと制限](event-hubs-quotas.md)に関するページを参照してください。 
-   1. **[throughput units]\(スループット ユニット\)** 設定はそのままにしておきます。 スループット ユニットとは、購入済みの容量ユニットのことです。 スループット ユニットの詳細については、[Event Hubs のスケーラビリティ](event-hubs-scalability.md#throughput-units)に関するページを参照してください。  
+   1. **価格レベル** として **Basic** を選択します。 レベル間の違いについては、[クォータと制限](event-hubs-quotas.md)、[Event Hubs Premium](event-hubs-premium-overview.md)、[Event Hubs Dedicated](event-hubs-dedicated-overview.md) に関する記事を参照してください。 
+   1. **スループット ユニット** (Standard レベルの場合) または **処理ユニット** (Premium レベルの場合) の設定はそのままにします。 スループット ユニットとは、購入済みの容量ユニットのことです。 スループット ユニットまたは処理ユニットの詳細については、[Event Hubs のスケーラビリティ](event-hubs-scalability.md)に関する記事を参照してください。  
    1. ページの下部にある **[確認および作成]** を選択します。
       
       ![イベント ハブの名前空間の作成](./media/event-hubs-quickstart-portal/create-event-hub1.png)

@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: e3bf6748157e53093cc848ffaff37df7c711e64c
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 606151084d399f605f12012ab5b3e323c705199d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209267"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468134"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Open Service Mesh AKS アドオン (プレビュー)
 
@@ -51,6 +51,12 @@ OSM では、次のシナリオで AKS のデプロイを支援できます。
 - A/B またはカナリア デプロイ用の複数のサービス間の重み付けトラフィック制御の構成
 
 - アプリケーション トラフィックからの KPI の収集と表示
+
+## <a name="prerequisites"></a>前提条件
+
+- Azure CLI バージョン 2.20.0 以降
+- `aks-preview` 拡張機能バージョン 0.5.5 以降
+- OSM バージョン v0.8.0 以降
 
 ## <a name="osm-service-quotas-and-limits-preview"></a>OSM サービスのクォータと制限 (プレビュー)
 

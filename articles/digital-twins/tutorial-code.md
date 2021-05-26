@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bacf9682e8ac9587a664eb7f363f505faa73b383
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 1cfed11eec3758586519eeb33b396a41b768e693
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787709"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075503"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
-Azure Digital Twins を使用する開発者は、Azure Digital Twins サービスのインスタンスとのやり取りのために、クライアント アプリケーションを作成するのが一般的です。 この開発者向けのチュートリアルでは、[.NET 用 Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client) を使用した、Azure Digital Twins サービスに対するプログラミングの概要を説明します。 C# コンソール クライアント アプリの作成手順を最初から順を追って説明します。
+Azure Digital Twins を使用する開発者は、Azure Digital Twins サービスのインスタンスとのやり取りのために、クライアント アプリケーションを作成するのが一般的です。 この開発者向けのチュートリアルでは、[.NET 用 Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用した、Azure Digital Twins サービスに対するプログラミングの概要を説明します。 C# コンソール クライアント アプリの作成手順を最初から順を追って説明します。
 
 > [!div class="checklist"]
 > * プロジェクトの設定
@@ -57,7 +57,7 @@ dotnet new console
 
 コマンド ウィンドウは、チュートリアル全体を通して使用するため、開いたままにしておきます。
 
-次に、Azure Digital Twins を操作するために必要な **2 つの依存関係をプロジェクトに追加** します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client) パッケージであり、2 つ目は Azure に対する認証に役立つツールを提供します。
+次に、Azure Digital Twins を操作するために必要な **2 つの依存関係をプロジェクトに追加** します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) パッケージであり、2 つ目は Azure に対する認証に役立つツールを提供します。
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core

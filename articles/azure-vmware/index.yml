@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 05/11/2021
-  ms.openlocfilehash: 43baa8884bb7ab649ddba0e0516d828837a529ec
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: b70f47f5cba7782862ddd2e81e6743830f2a8c1d
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110086844"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110452085"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -52,11 +52,11 @@ landingContent:
       url: /azure/azure-vmware/faq#configuration-and-setup
     - text: VMware ソフトウェア
       url: /azure/azure-vmware/faq#vmware-software
-    - text: コンピューティング、バックアップ、およびディザスター リカバリー
-      url: /azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery
+    - text: Compute
+      url: /azure/azure-vmware/faq#compute
     - text: ネットワークと相互接続
       url: /azure/azure-vmware/faq#networking-and-interconnectivity
-    - text: ストレージ
+    - text: Storage
       url: /azure/azure-vmware/faq#storage
     - text: ホスト、クラスター、およびプライベート クラウド
       url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
@@ -106,12 +106,12 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: Azure VMware Solution の評価を作成する
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
     - text: Azure VMware Solution のホスト クォータを要求する
       url: request-host-quota-azure-vmware-solution.md
     - text: 予約インスタンスを使用してコストを削減する
       url: reserved-instance.md
-    - text: Azure VMware Solution の評価を作成する
-      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
   - linkListType: how-to-guide
     links:
     - text: DHCP の構成と管理

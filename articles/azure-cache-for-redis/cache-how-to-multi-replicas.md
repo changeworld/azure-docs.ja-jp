@@ -1,33 +1,25 @@
 ---
-title: Azure Cache for Redis にレプリカを追加する (プレビュー)
+title: Azure Cache for Redis にレプリカを追加する
 description: Premium レベルの Azure Cache for Redis インスタンスに、より多くのレプリカを追加する方法について説明します
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 87b5ec5eb13f2bc53bdf993547ce3da1c74404bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aef8055d289ada8a62078185517c3ba129972488
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91566790"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099857"
 ---
-# <a name="add-replicas-to-azure-cache-for-redis-preview"></a>Azure Cache for Redis にレプリカを追加する (プレビュー)
+# <a name="add-replicas-to-azure-cache-for-redis"></a>Azure Cache for Redis にレプリカを追加する
 この記事では、Azure portal を使用して、追加のレプリカを持つ Azure Cache インスタンスを設定する方法について説明します。
 
 Azure Cache for Redis の Standard レベルと Premium レベルでは、2 つの専用仮想マシン (VM) で各キャッシュをホストすることで冗長性が提供されます。 これらの VM は、プライマリとレプリカとして構成されます。 プライマリ VM が使用できなくなると、レプリカでは、それが検出されて、新しいプライマリとして自動的に引き継ぎが行われます。 Premium キャッシュ内のレプリカの数は、3 つまで増やせるようになったため、キャッシュをバックアップする VM は合計 4 つになります。 複数のレプリカを使用すると、単一のレプリカで提供できるレベルよりも高い回復力が得られます。
 
-> [!IMPORTANT]
-> このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。 
-> 
-
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-
-> [!NOTE]
-> この機能は現在プレビュー段階です。ご興味がある場合は[お問い合わせください](mailto:azurecache@microsoft.com)。
->
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 キャッシュを作成するには、次の手順に従います。

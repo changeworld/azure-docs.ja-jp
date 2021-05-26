@@ -11,12 +11,12 @@ metadata:
   author: laujan
   ms.author: lajanuar
   ms.date: 09/05/2019
-  ms.openlocfilehash: d3dd7c5a9befd00c51f6ec40fdc1ee304ea55db3
-  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.openlocfilehash: 2d38f9dd270bb3c3ffb304206edbefe6ab4db165
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/20/2021
-  ms.locfileid: "107784301"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110374477"
 landingContent:
 - title: Form Recognizer について
   linkLists:
@@ -24,122 +24,184 @@ landingContent:
     links:
     - text: Form Recognizer とは
       url: overview.md
+    - text: Azure Applied AI Services とは?
+      url: https://aka.ms/applied-ai-services-hub
   - linkListType: whats-new
     links:
     - text: Form Recognizer の新機能
       url: whats-new.md
   - linkListType: video
     links:
-    - text: Form Recognizer による AI を活用したプロセスの自動化
+    - text: ドキュメントとフォームからのデータの抽出
+      url: https://channel9.msdn.com/Shows/AI-Show/Extracting-Data-From-Documents-and-Forms-with-OCR-and-Form-Recognizer
+    - text: AI を利用したプロセスの自動化
       url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+    - text: 最新の機能と更新プログラム
+      url: https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Form-Recognizer
+- title: フォーム レイアウトからデータを抽出する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Layout
+      url: concept-layout.md?
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-layout
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-layout
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-layout
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-layout
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-layout
+  - linkListType: deploy
+    links:
+    - text: Form Recognizer を試す
+      url: https://fott-2-1.azurewebsites.net/layout-analyze
+- title: 配信確認メッセージからデータを抽出する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Receipts
+      url: concept-receipts.md?
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-receipts
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-receipts
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-receipts
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-receipts
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-receipts
+- title: 名刺からデータを抽出する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 名刺
+      url: concept-business-cards.md
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-business-cards
+- title: 請求書からデータを抽出する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Invoices
+      url: concept-invoices.md?
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-invoices
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-invoices
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-invoices
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-invoices
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-invoices
+  - linkListType: deploy
+    links:
+    - text: Form Recognizer を試す
+      url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
+- title: 身分証明書からデータを抽出する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ID ドキュメント
+      url: concept-invoices.md
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-identity-documents
+- title: Microsoft Tech Community
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: コードを使用して、または使用せずに PDF からデータを抽出する
+      url: https://techcommunity.microsoft.com/t5/azure-ai/extract-data-from-pdfs-using-form-recognizer-with-code-or/ba-p/2214299
+    - text: その他の言語の参照、ID と請求書の処理、テーブルでのトレーニングなどを行う
+      url: https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428
+    - text: Form Recognizer を使用して個人用の財務アプリを構築する
+      url: https://techcommunity.microsoft.com/t5/azure-ai/how-to-build-a-personal-finance-app-using-azure/ba-p/2088995
+    - text: 拡張されたドキュメント テーブルの抽出
+      url: https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011
+    - text: メタデータドリブン アプローチを使用してキーと値のペアを抽出する
+      url: https://techcommunity.microsoft.com/t5/azure-ai/meta-data-driven-key-value-pairs-extraction-with-azure-form/ba-p/1942595
+    - text: ドキュメントからのテキスト、データ、および構造の抽出を高速化する
+      url: https://techcommunity.microsoft.com/t5/azure-ai/accelerate-extraction-of-text-data-and-structure-from-your/ba-p/1507365
+    - text: フォーム処理の自動化による生産性の向上
+      url: https://techcommunity.microsoft.com/t5/azure-ai/get-started-with-automating-form-processing-to-enable/ba-p/1387305
 - title: カスタム モデルをトレーニングしてデータを抽出する
   linkLists:
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#train-a-custom-model
     - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#train-a-custom-model
     - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#train-a-custom-model
     - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#train-a-custom-model
     - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#train-a-custom-model
   - linkListType: tutorial
     links:
     - text: フォーム データを一括で抽出する
       url: tutorial-bulk-processing.md
-- title: トレーニング データ セットの作成
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: トレーニング データ セットの作成
-      url: build-training-data-set.md
-- title: ラベルを使用してカスタム モデルをトレーニングする
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: ラベルの付いたデータ
-      url: overview.md#train-with-labels
-  - linkListType: quickstart
-    links:
-    - text: サンプル ラベル付けツールを使用したトレーニング
-      url: quickstarts/label-tool.md
-- title: 配信確認メッセージからデータを抽出する
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp
-    - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python
-    - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java
-    - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript
-    - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api
-  - linkListType: concept
-    links:
-    - text: レシートの概念
-      url: concept-receipts.md?
-- title: 名刺からデータを抽出する
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp
-    - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python
-    - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java
-    - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript
-    - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api
-  - linkListType: concept
-    links:
-    - text: 名刺の概念
-      url: concept-business-cards.md?
-- title: テキスト レイアウト情報を取得する
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: レイアウトの概念
-      url: concept-layout.md?
-  - linkListType: quickstart
-    links:
-    - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp
-    - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python
-    - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java
-    - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript
-    - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api
-- title: コンテナーの使用
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: コンテナーのインストールと実行
-      url: form-recognizer-container-howto.md
-  - linkListType: how-to-guide
-    links:
-    - text: コンテナーを構成する
-      url: form-recognizer-container-configuration.md
   - linkListType: deploy
     links:
-    - text: Container Instances の使用
-      url: ../containers/azure-container-instance-recipe.md
-- title: リファレンス
+    - text: Form Recognizer を試す
+      url: https://fott-2-1.azurewebsites.net/
+- title: カスタム モデルを使用してフォームを分析する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+- title: ラベル付けツールの使用を開始する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ラベル付けツールを使用する
+      url: label-tool.md
+- title: API とクライアント ライブラリ
   linkLists:
   - linkListType: reference
     links:
-    - text: Form Recognizer API v2.1 preview.3
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm
+    - text: Form Recognizer API v2.1
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm
     - text: .NET SDK
       url: /dotnet/api/overview/azure/ai.formrecognizer-readme
     - text: Python SDK
@@ -148,10 +210,6 @@ landingContent:
       url: /java/api/overview/azure/ai-formrecognizer-readme
     - text: JavaScript SDK
       url: /javascript/api/overview/azure/ai-form-recognizer-readme
-    - text: Azure PowerShell
-      url: /powershell/module/az.cognitiveservices/#cognitive_services
-    - text: Azure コマンド ライン インターフェイス (CLI)
-      url: /cli/azure/cognitiveservices#az_cognitiveservices_list
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

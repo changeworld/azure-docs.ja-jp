@@ -2,16 +2,16 @@
 title: 'チュートリアル: Azure FXT Edge Filer クラスターにストレージを追加する'
 description: バックエンド ストレージとクライアント側の擬似名前空間を Azure FXT Edge Filer 用に構成する方法
 author: ekpgh
-ms.author: rohogue
+ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 87d6d24f1cc325909249c7ad65c2b63ffe228a2a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92217526"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456277"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>チュートリアル: バックエンド ストレージを追加して仮想名前空間を構成する
 

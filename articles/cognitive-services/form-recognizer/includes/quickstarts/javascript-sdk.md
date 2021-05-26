@@ -7,20 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 05/12/2021
 ms.author: lajanuar
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: feff8b003428fd61fba826d05f8212fa8d9788f9
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.custom: devx-track-js
+ms.openlocfilehash: 84d6f181636c65aea5c247185bfd7ef083151c75
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107601942"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374162"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
+
 > [!IMPORTANT]
 >
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。
@@ -100,7 +101,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * Form Recognizer リソース間でカスタム モデルをコピーする。
 
 > [!NOTE]
-> モデルのトレーニングは、[Form Recognizer のラベル付けツール](../../quickstarts/label-tool.md)など、グラフィカル ユーザー インターフェイスを使用して行うこともできます。
+> モデルのトレーニングは、[Form Recognizer のラベル付けツール](../../label-tool.md)など、グラフィカル ユーザー インターフェイスを使用して行うこともできます。
 
 ## <a name="code-examples"></a>コード例
 
@@ -114,7 +115,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * [身分証明書を分析する](#analyze-identity-documents)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
-* [カスタム モデルを管理する](#manage-your-custom-models)
+* [カスタム モデルを管理する](#manage-custom-models)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -126,7 +127,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 また、トレーニング データとテスト データの URL への参照を追加する必要もあります。
 
-* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+* [!INCLUDE [get SAS URL](../sas-instructions.md)]
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
 * 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/assets) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。
@@ -217,7 +218,7 @@ URL から身分証明書を分析するには、`beginRecognizeIdDocumentsFromU
 このセクションでは、独自のデータを使用してモデルをトレーニングする方法を示します。 トレーニング済みのモデルは、元のフォーム ドキュメント内のキー/値の関係を含む構造化データを出力できます。 モデルをトレーニングした後、モデルをテストおよび再トレーニングでき、最終的にはモデルを使用して、ニーズに従ってより多くのフォームから正確にデータを抽出できます。
 
 > [!NOTE]
-> また、[Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)などのグラフィカル ユーザー インターフェイスを使用してモデルをトレーニングすることもできます。
+> また、[Form Recognizer のサンプル ラベル付けツール](../../label-tool.md)などのグラフィカル ユーザー インターフェイスを使用してモデルをトレーニングすることもできます。
 
 ### <a name="train-a-model-without-labels"></a>ラベルなしでモデルをトレーニングする
 
@@ -265,7 +266,7 @@ Document errors:
 
 ### <a name="train-a-model-with-labels"></a>ラベルを使用してモデルをトレーニングする
 
-トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、`uselabels` パラメーターを `true` に設定して `beginTraining` メソッドを呼び出すことができます。
+トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、`uselabels` パラメーターを `true` に設定して `beginTraining` メソッドを呼び出すことができます。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_trainlabels)]
 
@@ -353,7 +354,7 @@ Field Tax has value 'undefined' with a confidence score of undefined
 Field Total has value 'undefined' with a confidence score of undefined
 ```
 
-## <a name="manage-your-custom-models"></a>カスタム モデルを管理する
+## <a name="manage-custom-models"></a>カスタム モデルを管理する
 
 このセクションでは、アカウントに格納されているカスタム モデルを管理する方法について説明します。 次のコードは、例として、1 つの関数ですべてのモデル管理タスクを実行します。
 

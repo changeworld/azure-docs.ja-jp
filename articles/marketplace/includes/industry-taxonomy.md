@@ -5,16 +5,16 @@ documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 12/02/2020
+ms.date: 12/14/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 869bc472439c7264943ee540e57644b8161380ba
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 836c4cb3c64cdd88307461e1893848dff5b13d69
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820241"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467431"
 ---
 必要に応じて、各業界で最大 2 つの業界と 2 つの業種を選択します。 これらのカテゴリは、業界および業種が検索フィルターで使用され、オンライン ストアで適用される場合に、オファーを表示するために使用されます。 特定の業界や業種をターゲットとするオファーの場合は、選択した業種または業種に対してオファーがどのように役立つかを、オファーの説明で説明します。 そうしない場合、オファーが業界固有ではない場合は、選択せずにこのセクションを空白のままにします。
 
