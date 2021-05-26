@@ -101,8 +101,6 @@
           href: how-to-create-azure-function.md
         - name: ツイン グラフにクエリを実行する
           href: how-to-query-graph.md
-        - name: マーカー タグを使用してツインレベルの RBAC を作成する
-          href: how-to-create-twin-level-role-based-access-control.md
     - name: クライアント アプリの開発
       items:
         - name: Postman で要求を行う

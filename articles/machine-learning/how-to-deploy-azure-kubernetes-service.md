@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: ae16fbd97a6994edb796da7eb8210d414bbe6de5
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 7b25aaf6d151b840571a562819fb804f4af5c8dd
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889738"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371087"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -43,7 +43,7 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 
 - ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
-- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+- [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-setup-vs-code.md)。
 
 - この記事の __Python__ コード スニペットは、次の変数が設定されていることを前提としています。
 
@@ -188,7 +188,7 @@ az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.jso
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-VS Code の使用については、「[モデルを展開して管理する](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)」を参照してください。
+VS Code の使用については、「[モデルを展開して管理する](how-to-manage-resources-vscode.md)」を参照してください。
 
 > [!IMPORTANT]
 > VS Code を使ってデプロイするには、事前にワークスペースに AKS クラスターを作成するかアタッチしておく必要があります。

@@ -4,12 +4,12 @@ description: データ保持およびプライバシー ポリシー ステー�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6a7545d4d927418e6153ce3bf439fc8c3e2dc702
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56c86387ab06bf0fe94900e654853e74d3ee2603
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774917"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059412"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -43,7 +43,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
   
   * それぞれの SDK にはさまざまな [モジュール](./configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
   * デプロイ時に SDK をインストールする場合、標準のモジュールに加え、その API を利用し、独自の製品利用統計情報を送信できます。 このカスタム製品利用統計情報にあらゆるデータを含め、送信できます。
-* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、[Java EE サーバー](./java-agent.md)にそのようなエージェントがあります。
+* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、[Java EE サーバー](java-2x-agent.md)にそのようなエージェントがあります。
 * [可用性テスト](./monitor-web-app-availability.md) は Microsoft が実行するプロセスであり、定期的な間隔で要求を Web アプリに送信します。 結果は Application Insights サービスに送信されます。
 
 ### <a name="what-kinds-of-data-are-collected"></a>どのような種類のデータが収集されますか。
@@ -311,7 +311,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [client]: ./javascript.md
 [config]: ./configuration-with-applicationinsights-config.md
 [greenbrown]: ./asp-net.md
-[java]: ./java-get-started.md
+[java]: ./java-in-process-agent.md
 [platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: ./monitor-performance-live-website-now.md

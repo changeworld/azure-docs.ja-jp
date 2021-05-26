@@ -3,12 +3,12 @@ title: Service Fabric マネージド クラスターのネットワーク設定
 description: NSG ルール、RDP ポート アクセス、負荷分散規則などに関して Service Fabric マネージド クラスターを構成する方法について説明します。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: 2b31e62bdd7f18ea866c69566ffea80e77df145f
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 67bcdccbd3a54fc0e05b2516aaf5633ddddb1f00
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685281"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060978"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターのネットワーク設定を構成する
 
@@ -26,7 +26,7 @@ Service Fabric マネージド クラスターは、既定のネットワーク�
 
 ## <a name="apply-nsg-rules"></a>NSG ルールを適用する
 
-Service Fabric のクラシック (非マネージド) クラスターの場合、[クラスターにネットワーク セキュリティ グループ (NSG) ルールを適用する](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-nsg-cluster-65-node-3-nodetype)には、個別に *Microsoft.Network/networkSecurityGroups* リソースを宣言して管理する必要があります。 Service Fabric マネージド クラスターを使用すると、展開テンプレートのクラスター リソース内で NSG ルールを直接割り当てることができます。
+Service Fabric のクラシック (非マネージド) クラスターの場合、[クラスターにネットワーク セキュリティ グループ (NSG) ルールを適用する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicefabric/service-fabric-secure-nsg-cluster-65-node-3-nodetype)には、個別に *Microsoft.Network/networkSecurityGroups* リソースを宣言して管理する必要があります。 Service Fabric マネージド クラスターを使用すると、展開テンプレートのクラスター リソース内で NSG ルールを直接割り当てることができます。
 
 NSG ルールを割り当てるには、*Microsoft.ServiceFabric/managedclusters* リソース (バージョン `2021-05-01` 以降) の [networkSecurityRules](/azure/templates/microsoft.servicefabric/managedclusters#managedclusterproperties-object) プロパティを使用します。 次に例を示します。
 
@@ -46,7 +46,7 @@ NSG ルールを割り当てるには、*Microsoft.ServiceFabric/managedclusters
                         "destinationPortRange": "33000-33499",
                         "access": "Allow",
                         "priority": 2001,
-                        "direction": "Inbound" 
+                        "direction": "Inbound"
                     },
                     {
                         "name": "AllowARM",
@@ -57,7 +57,7 @@ NSG ルールを割り当てるには、*Microsoft.ServiceFabric/managedclusters
                         "destinationPortRange": "33500-33699",
                         "access": "Allow",
                         "priority": 2002,
-                        "direction": "Inbound" 
+                        "direction": "Inbound"
                     },
                     {
                         "name": "DenyCustomers",
@@ -94,14 +94,14 @@ NSG ルールを割り当てるには、*Microsoft.ServiceFabric/managedclusters
 Service Fabric マネージド クラスターの場合、RDP ポートへのアクセスは既定では許可されません。 Service Fabric マネージド クラスター リソースで次のプロパティを設定することにより、インターネットへの RDP ポートを開くことができます。
 
 ```json
-"allowRDPAccess": true 
+"allowRDPAccess": true
 ```
 
-AllowRDPAccess プロパティを true に設定すると、次の NSG ルールがクラスターのデプロイに追加されます。  
+AllowRDPAccess プロパティを true に設定すると、次の NSG ルールがクラスターのデプロイに追加されます。
 
 ```json
 {
-    "name": "SFMC_AllowRdpPort", 
+    "name": "SFMC_AllowRdpPort",
     "type": "Microsoft.Network/networkSecurityGroups/securityRules",
     "properties": {
         "description": "Optional rule to open RDP ports.",
@@ -128,59 +128,59 @@ AllowRDPAccess プロパティを true に設定すると、次の NSG ルール
 >このルールは常に追加され、オーバーライドすることはできません。
 
 ```json
-{ 
-    "name": "SFMC_AllowServiceFabricGatewayToSFRP", 
-    "type": "Microsoft.Network/networkSecurityGroups/securityRules", 
-    "properties": { 
-        "description": "This is required rule to allow SFRP to connect to the cluster. This rule cannot be overridden.", 
-        "protocol": "TCP", 
-        "sourcePortRange": "*", 
-        "sourceAddressPrefix": "ServiceFabric", 
-        "destinationAddressPrefix": "VirtualNetwork", 
-        "access": "Allow", 
-        "priority": 500, 
-        "direction": "Inbound", 
-        "sourcePortRanges": [], 
-        "destinationPortRanges": [ 
-            "19000", 
-            "19080" 
-        ] 
-    } 
+{
+    "name": "SFMC_AllowServiceFabricGatewayToSFRP",
+    "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+    "properties": {
+        "description": "This is required rule to allow SFRP to connect to the cluster. This rule cannot be overridden.",
+        "protocol": "TCP",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "ServiceFabric",
+        "destinationAddressPrefix": "VirtualNetwork",
+        "access": "Allow",
+        "priority": 500,
+        "direction": "Inbound",
+        "sourcePortRanges": [],
+        "destinationPortRanges": [
+            "19000",
+            "19080"
+        ]
+    }
 }
 ```
 
 ### <a name="nsg-rule-sfmc_allowservicefabricgatewayports"></a>NSG ルール: SFMC_AllowServiceFabricGatewayPorts
 
-これは、インターネットから clientConnectionPort および httpGatewayPort へのアクセスを許可するオプションの NSG ルールです。 このルールにより、お客様は SFX にアクセスしたり、PowerShell を使用してクラスターに接続したり、外部から Service Fabric クラスター API エンドポイントを使用したりすることができます。 
+これは、インターネットから clientConnectionPort および httpGatewayPort へのアクセスを許可するオプションの NSG ルールです。 このルールにより、お客様は SFX にアクセスしたり、PowerShell を使用してクラスターに接続したり、外部から Service Fabric クラスター API エンドポイントを使用したりすることができます。
 
 >[!NOTE]
->同じポートに同じアクセス、方向、プロトコルの値を持つカスタム ルールがある場合、このルールは追加されません。 このルールは、カスタム NSG ルールでオーバーライドできます。 
+>同じポートに同じアクセス、方向、プロトコルの値を持つカスタム ルールがある場合、このルールは追加されません。 このルールは、カスタム NSG ルールでオーバーライドできます。
 
 ```json
-{ 
-    "name": "SFMC_AllowServiceFabricGatewayPorts", 
-    "type": "Microsoft.Network/networkSecurityGroups/securityRules", 
-    "properties": { 
-        "description": "Optional rule to open SF cluster gateway ports. To override add a custom NSG rule for gateway ports in priority range 1000-3000.", 
-        "protocol": "tcp", 
-        "sourcePortRange": "*", 
-        "sourceAddressPrefix": "*", 
-        "destinationAddressPrefix": "VirtualNetwork", 
-        "access": "Allow", 
-        "priority": 3001, 
-        "direction": "Inbound", 
-        "sourcePortRanges": [], 
-        "destinationPortRanges": [ 
-            "19000", 
-            "19080" 
-        ] 
-    } 
+{
+    "name": "SFMC_AllowServiceFabricGatewayPorts",
+    "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+    "properties": {
+        "description": "Optional rule to open SF cluster gateway ports. To override add a custom NSG rule for gateway ports in priority range 1000-3000.",
+        "protocol": "tcp",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "VirtualNetwork",
+        "access": "Allow",
+        "priority": 3001,
+        "direction": "Inbound",
+        "sourcePortRanges": [],
+        "destinationPortRanges": [
+            "19000",
+            "19080"
+        ]
+    }
 }
 ```
 
 ## <a name="load-balancer-ports"></a>ロード バランサーのポート
 
-Service Fabric マネージド クラスターにより、*ManagedCluster* プロパティの loadBalancingRules セクションで構成されているすべてのロード バランサー (LB) ポートに対する NSG ルールが、既定の優先順位範囲に作成されます。 このルールにより、インターネットからの受信トラフィック用に LB ポートが開かれます。  
+Service Fabric マネージド クラスターにより、*ManagedCluster* プロパティの loadBalancingRules セクションで構成されているすべてのロード バランサー (LB) ポートに対する NSG ルールが、既定の優先順位範囲に作成されます。 このルールにより、インターネットからの受信トラフィック用に LB ポートが開かれます。
 
 >[!NOTE]
 >このルールは、オプションの優先順位範囲に追加され、カスタム NSG ルールを追加することによってオーバーライドできます。
@@ -191,7 +191,7 @@ Service Fabric マネージド クラスターにより、*ManagedCluster* プ�
     "type": "Microsoft.Network/networkSecurityGroups/securityRules",
     "properties": {
         "description": "Optional rule to open LB ports",
-        "protocol": "*", 
+        "protocol": "*",
         "sourcePortRange": "*",
         "sourceAddressPrefix": "*",
         "destinationAddressPrefix": "VirtualNetwork",
@@ -211,58 +211,58 @@ Service Fabric マネージド クラスターにより、*ManagedCluster* プ�
 Service Fabric マネージド クラスターにより、ファブリック ゲートウェイのポート用、およびマネージド クラスターのプロパティの "loadBalancingRules" セクションで構成されているすべてのポート用のロード バランサー プローブが、自動的に作成されます。
 
 ```json
-{ 
-  "value": [ 
-    { 
-        "name": "FabricTcpGateway", 
-        "properties": { 
-            "provisioningState": "Succeeded", 
-            "protocol": "Tcp", 
-            "port": 19000, 
-            "intervalInSeconds": 5, 
-            "numberOfProbes": 2, 
-            "loadBalancingRules": [ 
-                { 
+{
+  "value": [
+    {
+        "name": "FabricTcpGateway",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "protocol": "Tcp",
+            "port": 19000,
+            "intervalInSeconds": 5,
+            "numberOfProbes": 2,
+            "loadBalancingRules": [
+                {
                     "id": "<>"
-                } 
-            ] 
-        }, 
-        "type": "Microsoft.Network/loadBalancers/probes" 
-    }, 
-    { 
-        "name": "FabricHttpGateway", 
-        "properties": { 
-            "provisioningState": "Succeeded", 
-            "protocol": "Tcp", 
-            "port": 19080, 
-            "intervalInSeconds": 5, 
-            "numberOfProbes": 2, 
-            "loadBalancingRules": [ 
-                { 
-                    "id": "<>" 
-                } 
+                }
             ]
         },
-        "type": "Microsoft.Network/loadBalancers/probes" 
+        "type": "Microsoft.Network/loadBalancers/probes"
     },
     {
-        "name": "probe1_tcp_8080", 
-        "properties": { 
-            "provisioningState": "Succeeded", 
-            "protocol": "Tcp", 
-            "port": 8080, 
-            "intervalInSeconds": 5, 
-            "numberOfProbes": 2, 
-            "loadBalancingRules": [ 
-            { 
-                "id": "<>" 
-            } 
-        ] 
-      }, 
-      "type": "Microsoft.Network/loadBalancers/probes" 
-    } 
-  ] 
-} 
+        "name": "FabricHttpGateway",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "protocol": "Tcp",
+            "port": 19080,
+            "intervalInSeconds": 5,
+            "numberOfProbes": 2,
+            "loadBalancingRules": [
+                {
+                    "id": "<>"
+                }
+            ]
+        },
+        "type": "Microsoft.Network/loadBalancers/probes"
+    },
+    {
+        "name": "probe1_tcp_8080",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "protocol": "Tcp",
+            "port": 8080,
+            "intervalInSeconds": 5,
+            "numberOfProbes": 2,
+            "loadBalancingRules": [
+            {
+                "id": "<>"
+            }
+        ]
+      },
+      "type": "Microsoft.Network/loadBalancers/probes"
+    }
+  ]
+}
 ```
 
 ## <a name="next-steps"></a>次のステップ

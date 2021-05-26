@@ -9,12 +9,12 @@ ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: d3c4438cdfa8ddd41cb306e84623ccd569ac1680
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 49954224fbdb2d100a809ea5c1d975e1b2e46f56
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885580"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372932"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
@@ -28,7 +28,7 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 
 ### <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning VS Code 拡張機能 (プレビュー)。 詳しくは、[Azure Machine Learning VS Code 拡張機能の設定](tutorial-setup-vscode-extension.md)に関するページを参照してください。
+* Azure Machine Learning VS Code 拡張機能 (プレビュー)。 詳しくは、[Azure Machine Learning VS Code 拡張機能の設定](how-to-setup-vs-code.md)に関するページを参照してください。
 * [Docker](https://www.docker.com/get-started)
   * Mac および Windows 用の Docker デスクトップ
   * Linux 用 Docker エンジン。

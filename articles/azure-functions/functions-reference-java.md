@@ -4,12 +4,12 @@ description: Java を使用して関数を開発する方法について説明�
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82e40fbe3be88754ce7196f61c971c7a002998ca
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96326456"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095106"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -195,7 +195,7 @@ Maven アーキタイプでは、指定された Java バージョンを対象�
  
 ## <a name="jdk-runtime-availability-and-support"></a>JDK ランタイムの使用可能性とサポート 
 
-Java 関数アプリをローカルで開発するには、[Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) から適切な [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDK をダウンロードして使用します。 Azure Functions は、関数アプリをクラウドにデプロイするときに Azul Java 8 JDK ランタイムを使用します。
+Java 関数アプリをローカルで開発するには、Azul Systems から適切な [Azul Zulu Enterprise for Azure](https://www.azul.com/downloads/azure-only/zulu/) Java JDK をダウンロードして使用します。 Azure Functions は、関数アプリをクラウドにデプロイするときに Azul Java 8 JDK ランタイムを使用します。
 
 JKD および関数アプリに関する問題に対する [Azure サポート](https://azure.microsoft.com/support/)は、[認定サポート プラン](https://azure.microsoft.com/support/plans/)を通じてご利用いただけます。
 

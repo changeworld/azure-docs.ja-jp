@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/22/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: ead8bf6620bbe53af6c28870fa94b7a16490fcb1
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c5d98afb3bc228cc3eb8789aa242b3dc3b129e5d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202787"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367435"
 ---
 # <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -28,12 +28,12 @@ MongoDB Atlas などのサービス オファリングと比較して、MongoDB 
 * **ファイブ ナインの可用性**: [99.999% の可用性](high-availability.md)を簡単に構成でき、データの喪失を確実に防ぐことができます。  
 * **コスト効率に優れた、粒度の細かい、無制限のスケーラビリティ**: 他の MongoDB サービス オファリングとは異なり、シャード コレクションを任意のサイズにスケーリングできます。 今日、MongoDB 用 API ユーザーは、600 TB を超えるストレージでデータベースを実行しています。 スケーリングは、コスト効率のよい方法で実行されます。Cosmos DB プラットフォームは、他の MongoDB サービス オファリングとは異なり、スケールとリソース ガバナンスの効率利用によって、VM の 1/100 単位でのスケーリングが可能です。
 * **サーバーレスのデプロイ**: MongoDB Atlas とは異なり、MongoDB 用 API は、[サーバーレス容量モード](serverless.md)を備えたクラウド ネイティブのデータベースです。 [サーバーレス](serverless.md)であるため、料金はあくまで操作に応じて発生し、データベースを使用していないときには課金されません。
-* **Free レベル**: Azure Cosmos DB の Free レベルでは、アカウント レベルで適用されている最初の 400 RU/秒と 5 GB のストレージを、お使いのアカウントで無期限かつ無料でご利用いただけます。
-* **数秒で終わるアップグレード**: すべての API バージョンが 1 つのコードベース内に存在するため、バージョンの変更が[スイッチの切り替え](mongodb-version-upgrade.md)のように簡単です。ダウンタイムは発生しません。
+* **Free レベル**: Azure Cosmos DB の Free レベルでは、アカウント レベルで適用されている最初の 1000 RU/s と 25 GB のストレージを、お使いのアカウントで無期限かつ無料でご利用いただけます。
+* **数秒で終わるアップグレード**: すべての API バージョンが 1 つのコードベース内に存在するため、バージョンの変更が [スイッチの切り替え](mongodb-version-upgrade.md)のように簡単です。ダウンタイムは発生しません。
 * **あらゆる規模でのリアルタイム分析 (HTAP)** : データベースに影響を与えることなくそのデータにリアルタイムでビジネス インテリジェンスを実行するようなユース ケースに対応するため、MongoDB 用 API には、複雑な分析クエリを実行する機能が備わっています。 ETL パイプラインなしで、クラウド ネイティブの分析列ストアが利用されているため、高速でありながら、大きなコストがかかりません。 [Azure Synapse Link](synapse-link.md) についての詳しい情報をご覧ください。
 
 > [!NOTE]
-> [Free レベルをご利用いただくと、MongoDB 用 Azure Cosmos DB API を無料で使用できます](how-pricing-works.md)。 Azure Cosmos DB の Free レベルでは、アカウント レベルに適用されている最初の 400 RU/秒と 5 GB のストレージを、お使いのアカウントで無料でご利用いただけます。
+> [Free レベルをご利用いただくと、MongoDB 用 Azure Cosmos DB API を無料で使用できます](free-tier.md)。 Azure Cosmos DB の Free レベルでは、アカウント レベルに適用されている最初の 1000 RU/s と 25 GB のストレージを、お使いのアカウントで無料でご利用いただけます。
 
 
 ## <a name="how-the-api-works"></a>API の動作
@@ -53,7 +53,7 @@ MongoDB 用 API の各バージョンはいずれも同じコードベースで�
 
 ## <a name="what-you-need-to-know-to-get-started"></a>最初に知っておくべきこと
 
-* クラスター内の仮想マシンに対しては課金されません。 [価格](how-pricing-works.md)は、データベース単位またはコレクション単位で構成された要求ユニット (RU) あたりのスループットに基づきます。 [Free レベル](how-pricing-works.md)では、最初の 400 RU/秒が無料になります。
+* クラスター内の仮想マシンに対しては課金されません。 [価格](how-pricing-works.md)は、データベース単位またはコレクション単位で構成された要求ユニット (RU) あたりのスループットに基づきます。 [Free レベル](free-tier.md)では、最初の 1000 RU/s が無料になります。
 
 * MongoDB 用 Azure Cosmos DB API には、次の 3 とおりのデプロイ方法があります。
      * [プロビジョニング スループット](set-throughput.md): 1 秒あたりの RU 数を設定して手動で変更します。 このモデルは、一貫性のあるワークロードに最も適しています。

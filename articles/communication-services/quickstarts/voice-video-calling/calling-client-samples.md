@@ -9,13 +9,13 @@ ms.author: arturk
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 87808cfd97be5fb38ee64ef57540aada255f6ca5
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+zone_pivot_groups: acs-plat-web-ios-android-windows
+ms.openlocfilehash: f08beb70129535f31c64bfe4cef3ecf284208a79
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110344"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060679"
 ---
 # <a name="quickstart-use-the-communication-services-calling-sdk"></a>クイック スタート: Communication Services 通話 SDK を使用する
 
@@ -31,6 +31,10 @@ Communication Services 通話 SDK を使用して音声と動画の通話をア�
 
 ::: zone pivot="platform-ios"
 [!INCLUDE [Calling with iOS](./includes/calling-sdk-ios.md)]
+::: zone-end
+
+::: zone pivot="platform-windows"
+[!INCLUDE [Calling with Windows](./includes/calling-sdk-windows.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

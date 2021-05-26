@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 222ae284f77950c729a6a790e2ad29453a9ce34a
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 671c86790a3c90f948edb574bc015c0f41c5fbdf
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903169"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858055"
 ---
 このクイックスタートでは、iOS 用の Azure Communication Services Teams Embed ライブラリを使用して Microsoft Teams 会議に参加する方法について説明します。
 
@@ -86,7 +86,7 @@ end
 
 ### <a name="add-the-teams-embed-framework"></a>Teams Embed フレームワークを追加する
 
-1. [`MicrosoftTeamsSDK` iOS パッケージ](https://github.com/Azure/communication-teams-embed/releases)をダウンロードします。
+1. `MicrosoftTeamsSDK` iOS パッケージをダウンロードします。
 2. プロジェクト ルートに `Frameworks` フォルダーを作成します。 例: `\TeamsEmbedGettingStarted\Frameworks\`
 3. ダウンロードした `TeamsAppSDK.framework`、`MeetingUIClient.framework`、およびリリース バンドルで提供されているその他のフレームワークを、このフォルダーにコピーします。
 4. フレームワークを全般タブのプロジェクト ターゲットに追加します。[`Add Other`]\(その他のものを追加\) -> [`Add Files...`]\(ファイルを追加\) を使用してフレームワーク ファイルに移動し、それらを追加します。

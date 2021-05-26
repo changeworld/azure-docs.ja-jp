@@ -5,14 +5,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 5/17/2021
+ms.date: 5/25/2021
 ms.author: cavoeg
-ms.openlocfilehash: 50f79d8b73b6c716e14504d6d763d900a7bed488
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 54dadb47018b474bb7651ddb17b0170a2c07e29a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078664"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477847"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR データをエクスポートする方法
 
@@ -67,7 +67,7 @@ Azure API for FHIR では、次のクエリ パラメーターがサポートさ
 | \_since | Yes | 指定された時間以降に変更されたリソースのみをエクスポートできます |
 | \_type | Yes | どの種類のリソースを含めるかを指定できます。 たとえば、\_type=Patient とすると、患者のリソースのみが返されます|
 | \_typefilter | Yes | よりきめ細かいフィルター処理を要求するには、\_typefilter を \_type パラメーターと共に使用します。 _TypeFilter パラメーターの値は、結果をさらに限定する FHIR クエリのコンマ区切りリストです。 |
-| \_container | No |  データのエクスポート先となる、構成済みストレージ アカウント内のコンテナーを指定します。 コンテナーが指定されている場合は、その名前を持つ新しいフォルダー内のそのコンテナーにデータがエクスポートされます。 コンテナーが指定されていない場合は、タイムスタンプとジョブ ID を使用して新しいコンテナーにエクスポートされます。 |
+| \_container | No |  データのエクスポート先となる、構成済みストレージ アカウント内のコンテナーを指定します。 コンテナーが指定されている場合、データはそのコンテナー内のフォルダーにエクスポートされます。 コンテナーが指定されていない場合、データは新しいコンテナーにエクスポートされます。 |
 
 > [!Note]
 > $Export 操作の宛先として登録できるのは、FHIR 用の Azure API の場合と同じサブスクリプション内のストレージアカウントだけです。
@@ -78,7 +78,7 @@ Azure API for FHIR では、セキュア エクスポート操作がサポート
 
 * Azure storage アカウントにアクセスするために、Microsoft の信頼されたサービスとして FHIR の Azure API を許可します。
  
-* FHIR の Azure API に関連付けられている特定の IP アドレスが Azure ストレージアカウントにアクセスできるようにします。 このオプションは、ストレージアカウントがと同じ場所にあるか、または Azure API for FHIR とは異なる場所にあるかによって、2つの異なる構成を提供します。
+* FHIR の Azure API に関連付けられている特定の IP アドレスが Azure ストレージアカウントにアクセスできるようにします。 このオプションでは、ストレージ アカウントが と同じ場所にあるか、ストレージ アカウントの場所と異なる場所にあるかによって、2 つの異なる構成が提供Azure API for FHIR。
 
 ### <a name="allowing-azure-api-for-fhir-as-a-microsoft-trusted-service"></a>Microsoft Azure API for FHIRサービスとしてのアクセスを許可する
 
@@ -131,16 +131,16 @@ Azure API for FHIR では、セキュア エクスポート操作がサポート
 > [!NOTE]
 > 上記の手順は、FHIR (プレビュー) にデータを変換する方法に関するドキュメントで説明されている構成手順に似ています。 詳細については、「テンプレートのホスト [と使用」を参照してください。](https://docs.microsoft.com/azure/healthcare-apis/fhir/convert-data#host-and-use-templates)
 
-### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-the-same-region"></a>同じリージョン内の Azure ストレージ アカウントに対して特定の IP アドレスを許可する
+### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-the-same-region"></a>同じリージョン内の Azure ストレージアカウントの特定の IP アドレスを許可する
 
 構成プロセスは上記と同じですが、CIDR 形式の特定の IP アドレス範囲 100.64.0.0/10 が代わりに使用される点が異なります。 IP アドレス範囲 (100.64.0.0 – 100.127.255.255 を含む) を指定する必要がある理由は、サービスで使用される実際の IP アドレスは $export 要求ごとに異なりますが、この範囲には入ることを示すためです。
 
 > [!Note] 
-> 10.0.2.0/24 の範囲内のプライベート IP アドレスを代わりに使用することができます。 その場合、$exportは成功しません。 $Export 要求を再試行することはできますが、100.64.0.0/10 の範囲内の IP アドレスが次回使用されるという保証はありません。 これは設計上の既知のネットワーク動作です。 代替策として、ストレージ アカウントを別のリージョンで構成する方法があります。
+> 10.0.2.0/24 の範囲内のプライベート IP アドレスを代わりに使用することができます。 この場合、$export 操作は成功しません。 $Export 要求を再試行することはできますが、100.64.0.0/10 の範囲内の IP アドレスが次回使用されるという保証はありません。 これは設計上の既知のネットワーク動作です。 代替策として、ストレージ アカウントを別のリージョンで構成する方法があります。
     
 ## <a name="next-steps"></a>次の手順
 
-この記事では、$export コマンドを使用して、FHIR リソースをエクスポートする方法について説明しました。 次に、特定できないデータをエクスポートする方法については、以下を参照してください。
+この記事では、$export コマンドを使用して FHIR リソースをエクスポートする方法について説明しました。 次に、特定できないデータをエクスポートする方法については、以下を参照してください。
  
 >[!div class="nextstepaction"]
 >[匿名化データをエクスポートする](de-identified-export.md)

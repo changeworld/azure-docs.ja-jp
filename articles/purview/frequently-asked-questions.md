@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 05/08/2021
-ms.openlocfilehash: eb835fad0f051098b1689ed6d165dc712a73f908
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 5926add3b4affffeb532c1b10cd81edc866f7f14
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109655266"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059556"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-purview"></a>Azure Purview に関してよく寄せられる質問 (FAQ)
 
@@ -150,4 +150,4 @@ Azure Purview は、Atlas API と互換性があります。 Atlas から移行�
 
 いいえ。現時点では、Azure Purview にはデータ損失防止機能はありません。 
 
-Microsoft 365 のデータ損失防止に興味がある場合は、[Microsoft Information Protection 内のデータ損失防止機能](https://docs.microsoft.com/microsoft-365/compliance/information-protection?view=o365-worldwide#prevent-data-loss)について目を通してください。
+Microsoft 365 のデータ損失防止に興味がある場合は、[Microsoft Information Protection 内のデータ損失防止機能](/microsoft-365/compliance/information-protection#prevent-data-loss)について目を通してください。

@@ -12,16 +12,19 @@ ms.date: 04/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
 adobe-target: true
-ms.openlocfilehash: b16550a95c1eb35b7683c181953dd0d1da4f447a
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: bb010852b9e20b7e6b678907628b2da5872ad678
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952180"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372949"
 ---
-# <a name="deploy-machine-learning-models-to-azure"></a>機械学習モデルを Azure にデプロイする
+# <a name="deploy-machine-learning-models-to-azure"></a>機械学習モデルを Azure にデプロイする 
 
 機械学習またはディープ ラーニング モデルを Web サービスとして Azure クラウドにデプロイする方法について説明します。
+
+> [!TIP]
+> マネージド オンライン エンドポイント (プレビュー) を使用すると、基盤となるインフラストラクチャを作成および管理することなく、トレーニング済みモデルをデプロイすることができます。 詳細については、「[マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)」を参照してください。
 
 モデルをどこにデプロイするかに関係なく、ワークフローは同様です。
 
@@ -29,9 +32,9 @@ ms.locfileid: "107952180"
 1. エントリ スクリプトを用意する
 1. 推論構成ファイルを準備します
 1. モデルをローカルに展開して、すべてが正しく動作することを確認する
-1. コンピューティング ターゲットを選択します。
+1. コンピューティング ターゲットを選択する
 1. モデルをクラウドに再展開する
-1. 結果の Web サービスをテストします。
+1. 結果の Web サービスをテストする
 
 機械学習デプロイ ワークフローに関連する概念の詳細については、[Azure Machine Learning でのモデルの管理、デプロイ、監視](concept-model-management-and-deployment.md)に関する記事を参照してください。
 
@@ -99,10 +102,7 @@ Azure Machine Learnings では、サービスを 2 つの部分に分けて展�
 
 ### <a name="register-a-model-from-a-local-file"></a>ローカル ファイルからモデルを登録する
 
-```azurecli-interactive
-wget https://aka.ms/bidaf-9-model -o model.onnx
-az ml model register -n bidaf_onnx -p ./model.onnx
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=register-model-from-local-file-code)]
 
 `-p` を、登録したいフォルダまたはファイルのパスに設定してください。
 
@@ -125,17 +125,9 @@ az ml model register -bidaf_onnx  --asset-path outputs/model.onnx  --experiment-
 ### <a name="register-a-model-from-a-local-file"></a>ローカル ファイルからモデルを登録する
 
 モデルのローカル パスを指定することで、モデルを登録できます。 ローカル コンピューター上のフォルダーまたは単一のファイルのパスを指定できます。
+<!-- pyhton nb call -->
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=register-model-from-local-file-code)]
 
-```python
-
-import urllib.request
-from azureml.core.model import Model
-# Download model
-urllib.request.urlretrieve("https://aka.ms/bidaf-9-model", 'model.onnx')
-
-# Register model
-model = Model.register(ws, model_name='bidaf_onnx', model_path='./model.onnx')
-```
 
 モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているフォルダーのパスに設定します。
 
@@ -192,47 +184,9 @@ model = Model.register(ws, model_name='bidaf_onnx', model_path='./model.onnx')
 
 最小限の推論構成は、次のように記述することができます。
 
-```json
-{
-    "entryScript": "echo_score.py",
-    "sourceDirectory": "./source_dir",
-    "environment": {
-        "docker": {
-            "arguments": [],
-            "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
-            "enabled": false,
-            "sharedVolumes": true,
-            "shmSize": null
-        },
-        "environmentVariables": {
-            "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
-        },
-        "name": "my-deploy-env",
-        "python": {
-            "baseCondaEnvironment": null,
-            "condaDependencies": {
-                "channels": [],
-                "dependencies": [
-                    "python=3.6.2",
-                    {
-                        "pip": [
-                            "azureml-defaults"
-                        ]
-                    }
-                ],
-                "name": "project_environment"
-            },
-            "condaDependenciesFile": null,
-            "interpreterPath": "python",
-            "userManagedDependencies": false
-        },
-        "version": "1"
-    }
-}
-```
+:::code language="json" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/dummyinferenceconfig.json":::
 
-`inferenceconfig.json` という名前でこのファイルを保存します。
+`dummyinferenceconfig.json` という名前でこのファイルを保存します。
 
 
 推論構成に関する詳細な説明については、[こちらの記事を参照](./reference-azure-machine-learning-cli.md#inference-configuration-schema)してください。 
@@ -241,13 +195,7 @@ model = Model.register(ws, model_name='bidaf_onnx', model_path='./model.onnx')
 
 次の例で、上で用意したダミーのスコアリング スクリプトを使用して、pip 関連の依存関係がない最小の環境を作成する方法を示します。
 
-```python
-from azureml.core import Environment
-from azureml.core.model import InferenceConfig
-
-env = Environment(name='project_environment')
-inf_config = InferenceConfig(environment=env, source_directory='./source_dir', entry_script='./echo_score.py')
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=inference-configuration-code)]
 
 環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
 
@@ -272,11 +220,7 @@ inf_config = InferenceConfig(environment=env, source_directory='./source_dir', e
 
 ローカル用の展開構成は次の手順で作成します。
 
-```python
-from azureml.core.webservice import LocalWebservice
-
-deploy_config = LocalWebservice.deploy_configuration(port=6789)
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=deployment-configuration-code)]
 
 ---
 
@@ -292,25 +236,13 @@ deploy_config = LocalWebservice.deploy_configuration(port=6789)
 エコー モデルを正しく展開できたことを確認しましょう。 単純な liveness の要求やスコアリング要求を実行できるはずです。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+<!-- cli nb call -->
 
-```azurecli-interactive
-curl -v http://localhost:32267
-curl -v -X POST -H "content-type:application/json" -d '{"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}' http://localhost:32267/score
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=call-into-model-code)]
 
 # <a name="python"></a>[Python](#tab/python)
-
-```python
-import requests
-
-uri = service.scoring_uri
-requests.get('http://localhost:6789')
-headers = {'Content-Type': 'application/json'}
-data = {"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}
-data = json.dumps(data)
-response = requests.post(uri, data=data, headers=headers)
-print(response.json())
-```
+<!-- python nb call -->
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=call-into-model-code)]
 
 ---
 
@@ -318,94 +250,18 @@ print(response.json())
 
 ここでは、モデルをロードします。 最初にエントリ スクリプトを修正します。
 
-```python
-import json
-import numpy as np
-import os
-import onnxruntime
-from nltk import word_tokenize
-import nltk
 
-def init():
-    nltk.download('punkt')
-    global sess
-    sess = onnxruntime.InferenceSession(os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model.onnx'))
+:::code language="python" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/source_dir/score.py":::
 
-def run(request):
-    print(request)
-    text = json.loads(request)
-    qw, qc = preprocess(text['query'])
-    cw, cc = preprocess(text['context'])
-
-    # Run inference
-    test = sess.run(None, {'query_word': qw, 'query_char': qc, 'context_word': cw, 'context_char': cc})
-    start = np.asscalar(test[0])
-    end = np.asscalar(test[1])
-    ans = [w for w in cw[start:end+1].reshape(-1)]
-    print(ans)
-    return ans
-
-def preprocess(word):
-    tokens = word_tokenize(word)
-
-    # split into lower-case word tokens, in numpy array with shape of (seq, 1)
-    words = np.asarray([w.lower() for w in tokens]).reshape(-1, 1)
-
-    # split words into chars, in numpy array with shape of (seq, 1, 1, 16)
-    chars = [[c for c in t][:16] for t in tokens]
-    chars = [cs+['']*(16-len(cs)) for cs in chars]
-    chars = np.asarray(chars).reshape(-1, 1, 1, 16)
-    return words, chars
-```
 このファイルを `score.py` という名前で `source_dir` の中に保存します。
 
-`AZUREML_MODEL_DIR` 環境変数で、登録したモデルの場所を確認できます。 pip パッケージをいくつか追加したので、推論構成にもそれらのパッケージを追加する必要があります。
+`AZUREML_MODEL_DIR` 環境変数で、登録したモデルの場所を確認できます。 これで、いくつかの pip パッケージを追加できました。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
+:::code language="json" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/inferenceconfig.json":::
 
-```json
-{
-    "entryScript": "score.py",
-    "sourceDirectory": "./source_dir",
-    "environment": {
-        "docker": {
-            "arguments": [],
-            "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
-            "enabled": false,
-            "sharedVolumes": true,
-            "shmSize": null
-        },
-        "environmentVariables": {
-            "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
-        },
-        "name": "my-deploy-env",
-        "python": {
-            "baseCondaEnvironment": null,
-            "condaDependencies": {
-                "channels": [],
-                "dependencies": [
-                    "python=3.6.2",
-                    {
-                        "pip": [
-                            "azureml-defaults",
-                            "nltk",
-                            "numpy",
-                            "onnxruntime"
-                        ]
-                    }
-                ],
-                "name": "project_environment"
-            },
-            "condaDependenciesFile": null,
-            "interpreterPath": "python",
-            "userManagedDependencies": false
-        },
-        "version": "2"
-    }
-}
-```
+このファイルを `inferenceconfig.json` として保存します 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -421,34 +277,33 @@ inf_config = InferenceConfig(environment=env, source_directory='./source_dir', e
 詳細については、[LocalWebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice)、[Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)、および [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice) のドキュメントを参照してください。
 
 ---
+Deploy your service again: null
+---
 
-## <a name="deploy-again-and-call-your-service"></a>もう一度サービスを展開して呼び出す
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-もう一度サービスを展開します。
+`bidaf_onnx:1` を、モデルの名前とそのバージョン番号に置き換えます。
 
-[!INCLUDE [aml-deploy-service](../../includes/machine-learning-deploy-service.md)]
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=re-deploy-model-code)]
 
+# <a name="python"></a>[Python](#tab/python)
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=re-deploy-model-code)]
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=re-deploy-model-print-logs)]
+
+詳細についてはね[Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) および [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice) のドキュメントを参照してください。
+
+---
 次に、POST 要求をサービスに送信できることを確認します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-```bash
-curl -v -X POST -H "content-type:application/json" -d '{"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}' http://localhost:32267/score
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=send-post-request-code)]
 
 # <a name="python"></a>[Python](#tab/python)
 
-```python
-import requests
-
-uri = service.scoring_uri
-
-headers = {'Content-Type': 'application/json'}
-data = {"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}
-data = json.dumps(data)
-response = requests.post(uri, data=data, headers=headers)
-print(response.json())
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=send-post-request-code)]
 
 ---
 
@@ -470,65 +325,50 @@ print(response.json())
 
 デプロイ構成で使用できるオプションは、選択するコンピューティング ターゲットによって異なります。
 
-```json
-{
-    "computeType": "aci",
-    "containerResourceRequirements":
-    {
-        "cpu": 0.5,
-        "memoryInGB": 1.0
-    },
-    "authEnabled": true,
-    "sslEnabled": false,
-    "appInsightsEnabled": false
-}
+:::code language="json" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/re-deploymentconfig.json":::
 
-```
-このファイルを `deploymentconfig.json` として保存します。
+このファイルを `re-deploymentconfig.json` として保存します。
 
 詳細については、[こちらのリファレンス](./reference-azure-machine-learning-cli.md#deployment-configuration-schema)を参照してください。
 
 # <a name="python"></a>[Python](#tab/python)
 
-
-```python
-from azureml.core.webservice import AciWebservice
-
-deployment_config = AciWebservice.deploy_configuration(cpu_cores = 0.5, memory_gb = 1)
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=deploy-model-on-cloud-code)]
 
 ---
 
 もう一度サービスを展開します。
 
-[!INCLUDE [aml-deploy-service](../../includes/machine-learning-deploy-service.md)]
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+`bidaf_onnx:1` を、モデルの名前とそのバージョン番号に置き換えます。
+
+
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=deploy-model-on-cloud-code)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=re-deploy-service-code)]
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=re-deploy-service-print-logs)]
+
+詳細についてはね[Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) および [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice) のドキュメントを参照してください。
+
+---
+
 
 ## <a name="call-your-remote-webservice"></a>リモートの Web サービスを呼び出す
 
 リモートに展開する場合、キー認証が有効になっている場合があります。 下の例では、推論要求を行うために Python でサービス キーを取得する方法を示します。
 
-```python
-import requests
-import json
-from azureml.core import Webservice
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=call-remote-web-service-code)]
 
-service = Webservice(workspace=ws, name='myservice')
-scoring_uri = service.scoring_uri
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=call-remote-webservice-print-logs)]
 
-# If the service is authenticated, set the key or token
-primary_key, _ = service.get_keys()
 
-# Set the appropriate headers
-headers = {'Content-Type': 'application/json'}
-headers['Authorization'] = f'Bearer {key}'
-
-# Make the request and display the response and logs
-data = {"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}
-data = json.dumps(data)
-resp = requests.post(scoring_uri, data=data, headers=headers)
-print(resp.text)
-print(service.get_logs())
-```
 
 他の言語のクライアントの例は、[Web サービスのクライアント アプリケーション](how-to-consume-web-service.md)に関する記事をご覧ください。
 
@@ -561,6 +401,11 @@ print(service.get_logs())
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=delete-resource-code)]
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=delete-your-resource-code)]
+
 デプロイされた Web サービスを削除するには、`az ml service delete <name of webservice>` を使用します。
 
 ワークスペースから登録済みのモデルを削除するには、`az ml model delete <model id>` を使用します。
@@ -568,6 +413,8 @@ print(service.get_logs())
 [Web サービスの削除](/cli/azure/ml/service#az_ml_service_delete)と[モデルの削除](/cli/azure/ml/model#az_ml_model_delete)に関する詳細を確認してください。
 
 # <a name="python"></a>[Python](#tab/python)
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=delete-resource-code)]
 
 デプロイされた Web サービスを削除するには、`service.delete()` を使用します。
 登録済みのモデルを削除するには、`model.delete()` を使用します。

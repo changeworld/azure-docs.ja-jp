@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Azure Video Analyzer のドキュメント
+summary: Azure Video Analyzer の使用方法の説明
+metadata:
+  title: Azure Video Analyzer のドキュメント
+  description: Azure Video Analyzer の使用方法の説明
+  services: azure-video-analyzer
+  ms.service: azure-video-analyzer
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 03/11/2021
+  ms.openlocfilehash: 9b4418aa8ff0d0cf3fb6d43d52d5b8991f403515
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110383486"
+landingContent:
+- title: Video Analyzer の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Video Analyzer について (プレビュー段階)
+      url: overview.md
+    - text: メディア用の Azure Video Analyzer について
+      url: ../video-analyzer-for-media-docs/video-indexer-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Video Analyzer で作業を開始する
+      url: get-started-detect-motion-emit-events.md
+- title: イベントに基づいてビデオを記録する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 継続的なビデオ記録
+      url: event-based-video-recording-concept.md
+  - linkListType: quickstart
+    links:
+    - text: モーションの検出、エッジ デバイス上でのビデオの記録
+      url: detect-motion-record-video-edge-devices.md
+    - text: モーションの検出、クラウドでのビデオの記録
+      url: detect-motion-record-video-clips-cloud.md
+  - linkListType: tutorial
+    links:
+    - text: イベントベースのビデオ記録と再生
+      url: record-event-based-live-video.md
+- title: 記録を行わないライブ ビデオの分析
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 記録を行わないライブ ビデオの分析
+      url: analyze-live-video-without-recording.md
+  - linkListType: quickstart
+    links:
+    - text: モーションの検出とイベントの生成
+      url: detect-motion-emit-events-quickstart.md
+    - text: ライブ ビデオのオブジェクトの追跡
+      url: track-objects-live-video.md
+  - linkListType: tutorial
+    links:
+    - text: HTTP 拡張機能を使用した OVMS でのライブ ビデオの分析
+      url: use-intel-openvino-tutorial.md
+    - text: gRPC 拡張機能を使用した OV DL Streamer でのライブ ビデオの分析
+      url: use-intel-grpc-video-analytics-serving-tutorial.md
+    - text: 空間分析でのライブ ビデオの分析
+      url: computer-vision-for-spatial-analysis.md
+    - text: Custom Vision でのライブ ビデオの分析
+      url: analyze-live-video-custom-vision.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: FAQ
+      url: faq-edge.md
+    - text: SDK
+      url: sdk.md
+    - text: パイプライン拡張
+      url: pipeline-extension.md
+    - text: ダイレクト メソッド
+      url: direct-methods.md
+    - text: クォータと制限
+      url: quotas-limitations.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 483377d0376a5a98d822392af1fa2d84ad8498e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37a116752062e722f65acb6ca01431b5176ea60e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458593"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>チュートリアル: Azure Active Directory と Lifesize Cloud の統合
 
@@ -115,7 +115,7 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
     d. **[リレー状態]** ボックスに、`https://webapp.lifesizecloud.com/?ent=<identifier>` のパターンで URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、リレー状態でこれらの値を更新します。 サインオン URL と識別子の値は、[Lifesize Cloud クライアント サポート チーム](https://www.lifesize.com/en/support)に問い合わせます。リレー状態の値は、このチュートリアルで後述する SSO 構成から取得できます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、リレー状態でこれらの値を更新します。 サインオン URL と識別子の値は、[Lifesize Cloud クライアント サポート チーム](https://legacy.lifesize.com/en/support)に問い合わせます。リレー状態の値は、このチュートリアルで後述する SSO 構成から取得できます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/06/2021
-ms.openlocfilehash: b6efd4fbb96c519508d621983eee7619d18efc38
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 27f7aa419a2dd57bf205e945221c8224c6247f11
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656130"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062665"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーに対するプランを作成する
 
@@ -156,9 +156,6 @@ Microsoft がパートナーに代わって消費税および使用税を送金�
 ## <a name="technical-configuration"></a>技術的な構成
 
 この計画に関連付けられているイメージとその他の技術プロパティを指定します。
-
-> [!NOTE]
-> **[プランのセットアップ]** タブで別のプランからパッケージを再利用するように、これを構成した場合、このタブは表示されません。
 
 ### <a name="reuse-technical-configuration"></a>技術的構成を再利用する
 

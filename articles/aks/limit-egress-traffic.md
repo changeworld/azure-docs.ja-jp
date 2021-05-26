@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: bf006c6ade92cc2d1286dc1173d09efea0294f50
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e5f71566d3e31858a60f805bf45fe95793dd9b20
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754471"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094260"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -178,26 +178,6 @@ Azure Monitor for containers 有効になっている AKS クラスターの場�
 | *.ods.opinsights.azure.com    | **`HTTPS:443`**    | このエンドポイントは、ログ分析データを取り込むために Azure Monitor によって使用されます。 |
 | *.oms.opinsights.azure.com | **`HTTPS:443`** | このエンドポイントは、ログ分析サービスの認証に使用される omsagent によって使用されます。 |
 | *.monitoring.azure.com | **`HTTPS:443`** | このエンドポイントは、メトリック データを Azure Monitor に送信するために使用されます。 |
-
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
-
-以下のすべての FQDN と [Azure Dev Spaces インフラストラクチャ サービス][dev-spaces-service-tags]との間のネットワーク トラフィックを許可するように、ファイアウォールまたはセキュリティ構成を更新します。
-
-#### <a name="required-network-rules"></a>必要なネットワーク規則
-
-| 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
-|----------------------------------------------------------------------------------|----------|---------|------|
-| [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  **`AzureDevSpaces`**  | TCP           | 443      | このエンドポイントは、メトリック データとログを Azure Monitor および Log Analytics に送信するために使用されます。 |
-
-#### <a name="required-fqdn--application-rules"></a>必要な FQDN とアプリケーションの規則
-
-Azure Dev Spaces が有効になっている AKS クラスターの場合、次の FQDN/アプリケーション規則が必要です。
-
-| FQDN                                    | Port      | 用途      |
-|-----------------------------------------|-----------|----------|
-| `cloudflare.docker.com` | **`HTTPS:443`** | このアドレスは、linux alpine やその他の Azure Dev Spaces イメージをプルするために使用されます。 |
-| `gcr.io` | **`HTTPS:443`** | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
-| `storage.googleapis.com` | **`HTTPS:443`** | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
 
 ### <a name="azure-policy"></a>Azure Policy
 
@@ -802,4 +782,3 @@ az group delete -g $RG
 [aks-upgrade]: upgrade-cluster.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[dev-spaces-service-tags]: ../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations

@@ -3,15 +3,15 @@ title: TLS/SSL バインドを使用してカスタム DNS をセキュリティ
 description: 証明書を使用して TLS/SSL バインディングを作成することによって、カスタム ドメインに対する HTTPS アクセスのセキュリティを確保します。 HTTPS または TLS 1.2 を強制して Web サイトのセキュリティを強化しましょう。
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ae0ca07d0aad72a38ee4eccbefbdb826da9627b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039803"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373035"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -42,7 +42,7 @@ ms.locfileid: "102039803"
 - [プライベート証明書をアプリに追加する](configure-ssl-certificate.md)
 
 > [!NOTE]
-> プライベート証明書を追加する最も簡単な方法は、[無料の App Service マネージド証明書 (プレビュー) を作成する](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)ことです。
+> プライベート証明書を追加する最も簡単な方法は、[無料の App Service マネージド証明書を作成する](configure-ssl-certificate.md#create-a-free-managed-certificate)ことです。
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "102039803"
 - **App Service 証明書のインポート** - 「[App Service 証明書をインポートする](configure-ssl-certificate.md#import-an-app-service-certificate)」のワークフローに従い、ここでこのオプションを選択します。
 
 > [!NOTE]
-> [無料証明書を作成](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)したり (プレビュー)、[Key Vault 証明書をインポート](configure-ssl-certificate.md#import-a-certificate-from-key-vault)したりすることもできますが、それは別々に行い、 **[TLS/SSL バインド]** ダイアログに戻る必要があります。
+> [無料証明書を作成](configure-ssl-certificate.md#create-a-free-managed-certificate)したり、[Key Vault 証明書をインポート](configure-ssl-certificate.md#import-a-certificate-from-key-vault)したりすることもできますが、それは別々に行い、 **[TLS/SSL バインド]** ダイアログに戻る必要があります。
 
 ### <a name="create-binding"></a>バインドを作成する
 

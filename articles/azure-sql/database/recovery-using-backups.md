@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 670176d7478ddab3d17e15526df512dfa7e99fd4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 800fa34901ee63434d3f4798ec4c16dd52479fa6
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762085"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191848"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>自動データベース バックアップを使用して復旧する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -191,7 +191,7 @@ Azure portal を使用して、マネージド インスタンス データベ�
 
 ### <a name="geo-restore-considerations"></a>geo リストアに関する考慮事項
 
-geo セカンダリ データベースでは、ポイントインタイム リストアを実行できません。 これを実行できるのは、プライマリ データベースだけです。 geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](../../key-vault/general/disaster-recovery-guidance.md)に関するページを参照してください。
+geo セカンダリ データベースでは、ポイントインタイム リストアを実行できません。 これを実行できるのは、プライマリ データベースだけです。 geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](disaster-recovery-guidance.md#recover-using-geo-restore)に関するページを参照してください。
 
 > [!IMPORTANT]
 > geo リストアは、SQL Database と SQL Managed Instance で使用できる最も基本的なディザスター リカバリー ソリューションです。 これは、自動的に作成される geo レプリケートされたバックアップに依存し、目標復旧時点 (RPO) は最大 1 時間、推定復旧時間は最大 12 時間です。 リージョンの停止後は、需要が急激に増加する可能性があるため、目的のデータベースを復元する容量がターゲット リージョンに確保される保証はありません。 アプリケーションで使用されているデータベースが比較的小さく、アプリケーションがビジネスにとって重要でなければ、geo リストアは適切なディザスター リカバリー ソリューションです。 
