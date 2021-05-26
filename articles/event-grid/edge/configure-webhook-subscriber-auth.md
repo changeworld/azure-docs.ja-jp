@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: d78b6e80005e9533ccd5ebfaea853f35ae6004be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8855369516067c0cf05bab8be7128b628d61ce6b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171654"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370499"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>Webhook サブスクライバー認証の構成
 

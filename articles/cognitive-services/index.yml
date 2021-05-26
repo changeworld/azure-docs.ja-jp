@@ -52,18 +52,9 @@ conceptualContent:
         - url: ./face/index.yml
           itemType: overview
           text: Face
-        - url: ./form-recognizer/index.yml
-          itemType: overview
-          text: Form Recognizer
-        - url: ../media-services/video-indexer/index.yml
-          itemType: overview
-          text: Video Indexer
     - title: Language
       summary: お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。
       links:
-        - url: ./immersive-reader/index.yml
-          itemType: overview
-          text: イマーシブ リーダー
         - url: ./luis/index.yml
           itemType: overview
           text: Language Understanding (LUIS)
@@ -94,9 +85,6 @@ conceptualContent:
         - url: ./content-moderator/index.yml
           itemType: overview
           text: Content Moderator
-        - url: ./metrics-advisor/index.yml
-          itemType: overview
-          text: Metrics Advisor (プレビュー)
         - url: ./personalizer/index.yml
           itemType: overview
           text: Personalizer

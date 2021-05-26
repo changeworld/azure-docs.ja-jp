@@ -1,6 +1,6 @@
 ---
 title: イマーシブ リーダー Java (Android) クライアント ライブラリのクイックスタート
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: このクイックスタートでは、Android アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
 author: dylankil
@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 7119e1d029bb682f004e65323df5b50087c0634c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 49420e073644f8884bdcc19ac55a9d7e0d987bac
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619247"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376565"
 ---
 [Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 

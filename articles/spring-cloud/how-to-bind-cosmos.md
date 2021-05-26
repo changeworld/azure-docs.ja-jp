@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 73ab7e9bab4106af52f615982666922115af4187
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 51f6807ebaa611f8c21588aa4e6dea3461bce265
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135385"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110058458"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする
 
@@ -60,16 +60,6 @@ Azure Cosmos DB では、5 種類の API でバインドがサポートされて
       <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-data-cassandra</artifactId>
-      </dependency>
-      ```
-
-    * API の種類: Gremlin (グラフ)
-
-      ```xml
-      <dependency>
-          <groupId>com.microsoft.spring.data.gremlin</groupId>
-          <artifactId>spring-data-gremlin</artifactId>
-          <version>2.1.7</version>
       </dependency>
       ```
 

@@ -3,12 +3,12 @@ author: phillipgibson
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: pgibson
-ms.openlocfilehash: 8ac70027f7483fbf0131c31a5ba3631ed1d4ff9a
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 990a1f7d6e81c888d9a9901bf651e61cd7072fd4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079805"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468112"
 ---
 ## <a name="download-and-install-the-osm-client-binary"></a>OSM クライアント バイナリをダウンロードしてインストールする
 
@@ -16,7 +16,7 @@ Windows 上の PowerShell ベースのシェルでは、次のように `Invoke-
 
 ```powershell
 # Specify the OSM version that will be leveraged throughout these instructions
-$OSM_VERSION="v0.8.2"
+$OSM_VERSION="v0.8.4"
 
 [Net.ServicePointManager]::SecurityProtocol = "tls12"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/openservicemesh/osm/releases/download/$OSM_VERSION/osm-$OSM_VERSION-windows-amd64.zip&quot; -OutFile &quot;osm-$OSM_VERSION.zip"

@@ -1,6 +1,6 @@
 ---
-title: Metrics Advisor サービスとは
-titleSuffix: Azure Cognitive Services
+title: Azure Metrics Advisor サービスとは
+titleSuffix: Azure Applied AI Services
 description: Metrics Advisor とは
 services: cognitive-services
 author: mrbullwinkle
@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: dfdd7286013bbb6462fb8e5b1bdf52e6ed738029
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 34ab524cfc00cf4f74d632883ffeb18b904342a6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384682"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376849"
 ---
-# <a name="what-is-metrics-advisor-preview"></a>Metrics Advisor (プレビュー) とは 
+# <a name="what-is-azure-metrics-advisor-preview"></a>Azure Metrics Advisor サービス (プレビュー) とは 
 
-Metrics Advisor は、AI を使用してデータの監視と時系列データにおける異常検出を実行するサービスで、Azure Cognitive Services に含まれています。 このサービスは、データにモデルを適用するプロセスを自動化すると共に、機械学習の知識を得なくてもデータ インジェスト、異常検出、診断を行うことができる一連の API と Web ベースのワークスペースを備えています。 開発者は、AIOps、予測メンテナンス、およびビジネス監視アプリケーションをサービス上に構築できます。 Metrics Advisor を使用すると、次のことができます。
+Metrics Advisor は、AI を使用してデータの監視と時系列データにおける異常検出を実行するサービスで、[Azure Applied AI Services](../../applied-ai-services/what-are-applied-ai-services.md) に含まれています。 このサービスは、データにモデルを適用するプロセスを自動化すると共に、機械学習の知識を得なくてもデータ インジェスト、異常検出、診断を行うことができる一連の API と Web ベースのワークスペースを備えています。 開発者は、AIOps、予測メンテナンス、およびビジネス監視アプリケーションをサービス上に構築できます。 Metrics Advisor を使用すると、次のことができます。
 
 * 複数のデータ ソースからの多次元データを分析する
 * 異常を識別して関連付ける

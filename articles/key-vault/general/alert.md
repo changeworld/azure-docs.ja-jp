@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 51a354bfc6df43938d8e2117a7d93f9bd6749225
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3229e8a3ee482067677cdd5af1fb98b120ef8dd0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140787"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082110"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault の監視とアラート
 
@@ -26,7 +26,7 @@ ms.locfileid: "108140787"
 + メトリックの構成方法とダッシュボードの作成方法
 + 指定したしきい値でアラートを作成する方法
 
-Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 [Azure Monitor for Key Vault の詳細はこちらからご確認ください](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-azure-monitor-for-key-vault)
+Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 [Azure Monitor for Key Vault の詳細はこちらからご確認ください](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-key-vault-insights)
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>監視する基本的な Key Vault メトリック
 

@@ -6,13 +6,13 @@ author: johndowns
 ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
-ms.date: 04/16/2021
-ms.openlocfilehash: 387ff5ef13892c11867e26cff63ec482c1cdc5ee
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.date: 05/11/2021
+ms.openlocfilehash: 7be1c0852528033103c46c3de8cceccf6b5c24e0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795530"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110058476"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Front Door 用 Azure Resource Manager テンプレート
 

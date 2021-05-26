@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de328fb70f8abc32a89b8d5b54b0cb40a12f9356
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171569"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370380"
 ---
 # <a name="event-schemas"></a>イベント スキーマ
 
@@ -52,16 +53,16 @@ EventGrid スキーマは、発行エンティティが準拠する必要のあ�
 
 すべてのイベントには、次の同じ最上位レベルのデータが含まれています。
 
-| プロパティ | Type | 必須 | 説明 |
+| プロパティ | 種類 | 必須 | 説明 |
 | -------- | ---- | ----------- |-----------
-| topic | string | いいえ | 発行されるトピックと一致している必要があります。 指定しない場合、Event Grid によって、発行されるトピックの名前が設定されます。 |
+| topic | string | No | 発行されるトピックと一致している必要があります。 指定しない場合、Event Grid によって、発行されるトピックの名前が設定されます。 |
 | subject | string | はい | 発行元が定義したイベントの対象のパス。 |
 | eventType | string | はい | このイベント ソースのイベントの種類 (たとえば、BlobCreated)。 |
 | eventTime | string | はい | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | いいえ | イベントの一意識別子。 |
+| id | string | No | イベントの一意識別子。 |
 | data | object | いいえ | 発行エンティティに固有のイベント データをキャプチャするために使用されます。 |
 | dataVersion | string | はい | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | string | いいえ | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| metadataVersion | string | No | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 ### <a name="example--eventgrid-schema-event"></a>例 - EventGrid スキーマ イベント
 

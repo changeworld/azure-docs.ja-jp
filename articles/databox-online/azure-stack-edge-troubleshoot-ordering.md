@@ -1,6 +1,6 @@
 ---
-title: Azure portal を使用して Azure Stack Edge Pro の順序の問題をトラブルシューティングする | Microsoft Docs
-description: Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
+title: Azure portal を使用して Azure Stack Edge の順序の問題をトラブルシューティングする | Microsoft Docs
+description: Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: e074043cb685f60027d3c09ae7ad8dc17dded0df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0b0c39ba59fe851d04ba4ec538f14051e23b056d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443405"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110058584"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Azure Stack Edge Pro の順序の問題をトラブルシューティングする
+# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Azure Stack Edge の順序の問題をトラブルシューティングする
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
+この記事では、Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -61,7 +61,7 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Microsoft.DataBoxEdge がサブスクリプションに登録されいない
 
-**エラー:** Azure portal で、Azure Stack Edge Pro または Data Box Gateway に使用するサブスクリプションを選択すると、次のエラーが表示されます。
+**エラー:** Azure portal で、Azure Stack Edge または Data Box Gateway に使用するサブスクリプションを選択すると、次のエラーが表示されます。
 
 *リソース プロバイダー Microsoft.DataBoxEdge はサブスクリプション &lt;サブスクリプション名&gt; に登録されておらず、サブスクリプション &lt;サブスクリプション名&gt; のリソース プロバイダーを登録するためのアクセス許可がありません*。
 
@@ -77,4 +77,4 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stack Edge Pro に関する問題をトラブルシューティングする](azure-stack-edge-troubleshoot.md)方法の詳細について学習します。
+* [Azure Stack Edge に関する問題をトラブルシューティングする](azure-stack-edge-troubleshoot.md)方法の詳細について学習します。

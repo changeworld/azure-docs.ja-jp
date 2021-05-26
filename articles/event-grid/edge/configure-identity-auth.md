@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 2418c8518bbf298a102d4f29b4a973f6121de2eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6449866d47b20d22912e3803ac1737528aa1dbc
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171688"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370602"
 ---
 # <a name="configure-identity-for-the-event-grid-module"></a>Event Grid モジュールの ID を構成する
 

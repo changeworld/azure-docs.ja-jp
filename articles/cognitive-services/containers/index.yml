@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/05/2021
   ms.author: aahi
-  ms.openlocfilehash: d56a26e0bd087bfa34f140307b54cb7550ac2c47
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: 99ec768c5ecbcaff46c974e1cfe683338d76d29d
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108743779"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110374974"
 landingContent:
 - title: Cognitive Services コンテナーについて
   linkLists:
@@ -66,6 +66,8 @@ landingContent:
       text: Text Analytics for Health
     - url: ../luis/luis-container-howto.md
       text: LUIS コンテナー
+    - url: ../Translator/containers/translator-how-to-install-container.md
+      text: 翻訳コンテナー
 - title: 音声コンテナー
   linkLists:
   - linkListType: how-to-guide
