@@ -5,14 +5,16 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f806a700fa9f1788e2435a43d8fdcb19fa8134ce
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698741"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372656"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge のトラブルシューティング
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では、Live Video Analytics (LVA) on Azure IoT Edge のトラブルシューティング手順について説明します。
 

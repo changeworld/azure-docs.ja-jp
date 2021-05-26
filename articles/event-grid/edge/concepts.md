@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.date: 05/10/2021
+ms.subservice: iot-edge
 ms.topic: article
-ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed3a0b1f27919e322a76b6f9ce1b04617538f9aa
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98682381"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370704"
 ---
 # <a name="event-grid-concepts"></a>Event Grid の概念
 

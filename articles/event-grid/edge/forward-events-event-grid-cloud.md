@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a35cfb293ca7cda0a9a1d24f4faf88ef0ed733d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171603"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378320"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>チュートリアル: イベントを Event Grid クラウドに転送する
 

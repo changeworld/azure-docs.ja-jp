@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 05/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a3d7a3892e5d90e4ee8cc4e5b80df768fc138d7
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101656399"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378807"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -63,7 +63,7 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="role-based-access-control-preview"></a><a id="rbac"></a> ロールベースのアクセス制御 (プレビュー)
+## <a name="role-based-access-control"></a><a id="rbac"></a> ロールベースのアクセス制御
 
 Azure Cosmos DB では、次のことを可能にする組み込みのロールベースのアクセス制御 (RBAC) システムを公開しています。
 

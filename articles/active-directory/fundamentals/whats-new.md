@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b918cc2b692ed3d5e6594cd6b888b55eb54e5aa
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7b07e27139ce4a09c5e9964401c9e2b533a94c96
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733354"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838989"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -156,6 +156,15 @@ Azure AD B2C での B2C シナリオ用の[ページ レイアウト](../../acti
 これらの結果には、イベントのコンテキストおよび関連する詳細と、これらの問題を解決するために実行するアクションが示されます。 また、詳細なコンテキスト診断がないシナリオに対しては、サインイン診断によって、エラー イベントに関するより説明的な内容が示されます。
 
 詳細については、「[Azure AD におけるサインイン診断とは](../reports-monitoring/overview-sign-in-diagnostics.md)」を参照してください。
+
+---
+### <a name="azure-ad-connect-cloud-sync-general-availability-refresh"></a>Azure AD Connect クラウド同期の一般提供の更新 
+**種類:** 変更された機能  
+**サービス カテゴリ:** Azure AD Connect クラウド同期 **製品の機能:** ディレクトリ
+
+Azure AD Connect クラウド同期でエージェントが更新されました (バージョン番号 - 1.1.359)。 バグの修正など、エージェントの更新の詳細については、[バージョン履歴](../cloud-sync/reference-version-history.md)を確認してください。 更新されたエージェントを使用すると、クラウド同期のお客様は GMSA コマンドレットを使用して、gMSA アクセス許可をきめ細かいレベルで設定およびリセットできます。 さらに、グループ スコープのフィルター処理を使用したメンバーの同期の制限を 1499 から 50,000 (50K) メンバーに変更しました。 
+
+クラウド同期用に新しく使用可能になった[式ビルダー](../cloud-sync/how-to-expression-builder.md#deploy-the-expression)を確認してください。これは、属性マッピングを使用して AD から Azure AD への属性値の変換を行う場合に、単純な式だけでなく複雑な式を構築するのに役立ちます。
 
 ---
 
@@ -341,16 +350,6 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
 **製品の機能:** アクセス制御
  
 ヘッダーベースの認証に対する Azure AD アプリケーション プロキシのネイティブ サポートが一般公開されました。 この機能を使用すると、追加コンポーネントのデプロイを必要とせずに、必要なユーザー属性をアプリケーションの HTTP ヘッダーとして構成できます。 [詳細については、こちらを参照してください](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md)。
-
----
-
-### <a name="azure-ad-connect-cloud-sync-general-availability-refresh"></a>Azure AD Connect クラウド同期の一般提供の更新 
-**種類:** 変更された機能  
-**サービス カテゴリ:** Azure AD Connect クラウド同期 **製品の機能:** ディレクトリ
-
-Azure AD Connect クラウド同期でエージェントが更新されました (バージョン番号 - 1.1.359)。 バグの修正など、エージェントの更新の詳細については、[バージョン履歴](../cloud-sync/reference-version-history.md)を確認してください。 更新されたエージェントを使用すると、クラウド同期のお客様は GMSA コマンドレットを使用して、gMSA アクセス許可をきめ細かいレベルで設定およびリセットできます。 さらに、グループ スコープのフィルター処理を使用したメンバーの同期の制限を 1499 から 50,000 (50K) メンバーに変更しました。 
-
-クラウド同期用に新しく使用可能になった[式ビルダー](../cloud-sync/how-to-expression-builder.md#deploy-the-expression)を確認してください。これは、属性マッピングを使用して AD から Azure AD への属性値の変換を行う場合に、単純な式だけでなく複雑な式を構築するのに役立ちます。
 
 ---
 

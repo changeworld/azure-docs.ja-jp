@@ -4,18 +4,18 @@ description: このチュートリアルでは、検証可能な資格情報を�
 documentationCenter: ''
 author: barclayn
 manager: daveba
-ms.service: active-directory
+ms.service: identity
 ms.topic: tutorial
 ms.subservice: verifiable-credentials
 ms.date: 05/18/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 4b48d23a7122c82cf149bdd80335afe0aaf896cb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3f5808f3074fa2e45bc638e3e3d13cad431997ac
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466408"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092794"
 ---
 # <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>チュートリアル - Azure Active Directory を構成して検証可能な資格情報 (プレビュー) を発行する
 

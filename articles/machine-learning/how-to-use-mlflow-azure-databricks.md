@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: c1bef16d89a22e7df43e1f473697b4577d080d4c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: dcaa0f964b2a3c047826bb82ae8d1121e38f1796
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888172"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378858"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡 (プレビュー)
 
@@ -25,6 +25,8 @@ ms.locfileid: "107888172"
 [MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLflow Tracking は、トレーニング実行のメトリックとモデル成果物のログ記録と追跡を行う、MLflow のコンポーネントです。 [Azure Databricks と MLflow](/azure/databricks/applications/mlflow/)の詳細を参照してください。 
 
 MLflow と Azure Machine Learning のその他の機能統合については、[MLflow と Azure Machine Learning を使用した実験実行の追跡](how-to-use-mlflow.md)に関する記事をご覧ください。
+
+MLflow プロジェクトを Azure Machine Learning でトレーニングする場合は、「[MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする (プレビュー)](how-to-train-mlflow-projects.md)」を参照してください。
 
 >[!NOTE]
 > オープン ソース ライブラリである MLflow は頻繁に変更されます。 そのため、Azure Machine Learning と MLflow の統合によって利用できるようになる機能はプレビューとして見なす必要があり、Microsoft は完全にサポートしていません。

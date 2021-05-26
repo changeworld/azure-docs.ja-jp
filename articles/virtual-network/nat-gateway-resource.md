@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: cd26034b0049e2eeceb2526bbb6f89e9eb70d236
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 8fcc7b4f7f23c33450bdc00c53e97b0081ad1035
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905836"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109848045"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -72,13 +72,13 @@ Standard Load Balancer のシナリオ ([アウトバウンド規則](../load-ba
 
 すべての IP アドレスとプレフィックス リソースによって提供される IP アドレスの総数が、16 個を超えることはできません。 IP アドレスの数は、1 から 16 の範囲内であれば、いくつでもかまいません。
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="81-96":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/nat-gateway-vnet/azuredeploy.json" range="81-96":::
 
 作成された NAT ゲートウェイ リソースは、仮想ネットワークの 1 つまたは複数のサブネット上で使用することができます。 その NAT ゲートウェイ リソースをどのサブネットで使用するかを指定してください。 1 つの NAT ゲートウェイを複数の仮想ネットワークにまたがって適用することはできません。 仮想ネットワークのすべてのサブネットに同じ NAT ゲートウェイを割り当てる必要はありません。 サブネットは、それぞれ異なる NAT ゲートウェイ リソースを使用して構成できます。
 
 可用性ゾーンを使用しないシナリオは、リージョン単位の運用となります (ゾーン指定なし)。 可用性ゾーンを使用する場合は、ゾーンを指定することで、NAT を特定のゾーンに分離することができます。 ゾーンの冗長性はサポートされません。 NAT の[可用性ゾーン](#availability-zones)について、再確認してください。
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
 
 NAT ゲートウェイは、仮想ネットワーク内のサブネットのプロパティを使用して定義します。 仮想マシンによって仮想ネットワーク **vnetname** のサブネット **subnetname** 上で作成されたフローに、NAT ゲートウェイが使用されます。 すべてのアウトバウンド接続には、**natgatewayname** に関連付けられた IP アドレスが発信元 IP アドレスとして使用されます。
 

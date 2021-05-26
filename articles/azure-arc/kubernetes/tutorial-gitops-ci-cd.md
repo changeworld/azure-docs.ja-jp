@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: e27923ff1f29163f5d3390c2c92a11f3adfa5c87
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3d7b88007a27b05119ebe93217c64279c8c541ff
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126635"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373406"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>チュートリアル: Azure Arc 対応 Kubernetes クラスターを使用して GitOps で CI/CD を実装する
 
@@ -28,7 +28,7 @@ ms.locfileid: "108126635"
 > * `dev` および `stage` 環境をデプロイする。
 > * アプリケーション環境をテストする。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [前のチュートリアル](./tutorial-use-gitops-connected-cluster.md)を完了し、CI/CD 環境用に GitOps をデプロイする方法を学習します。
 * この機能の[利点とアーキテクチャ](./conceptual-configurations.md)について理解します。
 * 以下が用意されていることを確認します。
-  * **arc-cicd-cluster** という名前の [接続済みの Azure Arc 対応 Kubernetes クラスター](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster)。
+  * **arc-cicd-cluster** という名前の [接続済みの Azure Arc 対応 Kubernetes クラスター](./quickstart-connect-cluster.md#3-connect-an-existing-kubernetes-cluster)。
   * [AKS 統合](../../aks/cluster-container-registry-integration.md)または[非 AKS クラスター認証](../../container-registry/container-registry-auth-kubernetes.md)を使用して接続された Azure Container Registry (ACR)。
   * [Azure Repos](/azure/devops/repos/get-started/what-is-repos) および [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started) に対する "ビルド管理者" および "プロジェクト管理者" アクセス許可。
 * 次の Azure Arc 対応 Kubernetes CLI 拡張機能 (バージョン 1.0.0 以上) をインストールします。
@@ -181,14 +181,13 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | GitOps リポジトリの Git 接続文字列 |
-| PAT | ソースの読み取り/書き込みアクセス許可が付与されている[作成済みの PAT トークン](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat)。 これは、後で `stage` 変数グループを作成する際に使用するために保存します。 |
+| ORGANIZATION_NAME | Azure DevOps 組織の名前 |
+| PROJECT_NAME | Azure DevOps の GitOps プロジェクトの名前 |
+| REPO_URL | GitOps リポジトリの完全な URL |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
-> [!IMPORTANT]
-> PAT をシークレットの種類としてマークします。 アプリケーションでは、[Azure KeyVault](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)のシークレットをリンクすることを検討してください。
->
 ### <a name="stage-environment-variable-group"></a>環境変数グループをステージする
 
 1. **az-vote-app-dev** 変数グループを複製します。
@@ -201,6 +200,20 @@ kubectl create secret docker-registry <secret-name> \
 | TARGET_NAMESPACE | `stage` |
 
 これで、`dev` および `stage` 環境にデプロイする準備ができました。
+
+## <a name="give-more-permissions-to-the-build-service"></a>ビルド サービスにさらにアクセス許可を付与する
+CD パイプラインは、実行中のビルドのセキュリティ トークンを使用して、GitOps リポジトリに対する認証を行います。 パイプラインで新しいブランチを作成したり、変更をプッシュしたり、pull request を作成したりするには、さらに多くのアクセス許可が必要です。
+
+1. Azure DevOps プロジェクトのメイン ページから `Project settings` にアクセスします。
+1. [`Repositories`] を選択します。
+1. [`<GitOps Repo Name>`] を選択します。
+1. [`Security`] を選択します。 
+1. `<Project Name> Build Service (<Organization Name>)` に対して `Contribute`、`Contribute to pull requests`、`Create branch` を許可します。
+
+詳細については、次を参照してください。
+- [ビルド サービスに VC のアクセス許可を付与する](https://docs.microsoft.com/azure/devops/pipelines/scripts/git-commands?view=azure-devops&tabs=yaml&preserve-view=true#version-control )
+- [ビルド サービス アカウントのアクセス許可を管理する](https://docs.microsoft.com/azure/devops/pipelines/process/access-tokens?view=azure-devops&tabs=yaml&preserve-view=true#manage-build-service-account-permissions)
+
 
 ## <a name="deploy-the-dev-environment-for-the-first-time"></a>開発環境を初めてデプロイする
 CI および CD パイプラインが作成されたら、CI パイプラインを実行して、初めてアプリをデプロイします。
@@ -219,6 +232,8 @@ CI パイプライン:
 * Docker イメージが変更され、新しいイメージがプッシュされたことを確認します。
 
 ### <a name="cd-pipeline"></a>CD パイプライン
+最初の CD パイプラインの実行中に、パイプラインに GitOps リポジトリへのアクセス権を付与するように求められます。 パイプラインにリソースへのアクセス許可が必要であることを示すメッセージが表示されたら、[表示] を選択します。 次に、[許可] を選択して、パイプラインの現在および将来の実行に GitOps リポジトリを使用するためのアクセス許可を付与します。
+
 CI パイプラインの実行が成功すると、デプロイ プロセスを完了するために CD パイプラインがトリガーされます。 各環境に段階的にデプロイします。
 
 > [!TIP]

@@ -4,17 +4,17 @@ description: PowerShell で Azure Image Builder を使用して、Windows Virtua
 author: danielsollondon
 ms.author: danis
 ms.reviewer: cynthn
-ms.date: 01/27/2021
+ms.date: 05/12/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
-ms.openlocfilehash: 45f4cbea20d6e223738adf3bcb9782a0c939946d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a4bc152f2eb12008b942d3da8fdd1dfa1ba1aa74
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744139"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846484"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Windows Virtual Desktop イメージを作成する
 
@@ -54,7 +54,7 @@ Image Builder の構成のデプロイを簡略化するために、この例で
           "name": "installFsLogix",
           "runElevated": true,
           "runAsSystem": true,
-          "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/0_installConfFsLogix.ps1"
+          "scriptUri": "https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/0_installConfFsLogix.ps1"
     ```
 - コードにコメントを追加 - AIB ビルド ログ (customization.log) は非常に詳細なログを出力します。"write-host" を使用してスクリプトにコメントを追加すると、それらがログに送られ、トラブルシューティングが容易になります。
 
@@ -150,7 +150,7 @@ $idenityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageRe
 イメージを配布するためにアクセス許可を ID に割り当てます。 このコマンドは、テンプレートをダウンロードし、前に指定したパラメーターを使用してテンプレートを更新します。
 
 ```azurepowershell-interactive
-$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
 $aibRoleImageCreationPath = "aibRoleImageCreation.json"
 
 # download config
@@ -226,7 +226,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsDesktop -Offer
 ここで、テンプレートをダウンロードして、用途に合わせて構成する必要があります。
 
 ```azurepowershell-interactive
-$templateUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json"
+$templateUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json"
 $templateFilePath = "armTemplateWVD.json"
 
 Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
@@ -243,7 +243,7 @@ Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
 
 ```
 
-[テンプレート](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json)を自由に表示できます。すべてのコードを表示することもできます。
+[テンプレート](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json)を自由に表示できます。すべてのコードを表示することもできます。
 
 
 ## <a name="submit-the-template"></a>テンプレートの編集
@@ -311,4 +311,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-[GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts) で他のサンプルを試すこともできます。
+[GitHub](https://github.com/azure/azvmimagebuilder/tree/master/quickquickstarts) で他のサンプルを試すこともできます。

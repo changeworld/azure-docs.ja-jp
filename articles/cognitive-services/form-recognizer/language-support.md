@@ -1,6 +1,6 @@
 ---
 title: 言語サポート - Form Recognizer
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: Form Recognizer で利用できる人間言語について説明します。
 services: cognitive-services
 author: laujan
@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 05/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: eee8c7d595ff73bf14ac996c030ac938523d1a09
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c1a8303b0534cfe0398a7e40aa476d320dd61bc5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374425"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462872"
 ---
 # <a name="language-support-for-form-recognizer"></a>Form Recognizer の言語サポート
 

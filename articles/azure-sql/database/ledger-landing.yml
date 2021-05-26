@@ -1,0 +1,96 @@
+### YamlMime:Landing
+title: Azure SQL Database 台帳のドキュメント
+summary: Azure SQL Database 台帳に関するドキュメントを示します
+metadata:
+  title: Azure SQL Database 台帳のドキュメント
+  description: Azure SQL Database の台帳のドキュメントを示します
+  ms.service: sql-database
+  ms.subservice: security
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: VanMSFT
+  ms.author: vanto
+  ms.reviewer: 
+  ms.date: 05/25/2021
+  ms.openlocfilehash: 18bbf2d2747d65cd177520c44d68fdda224f385c
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110402064"
+landingContent:
+- title: Azure SQL Database 台帳の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure SQL Database 台帳とは
+      url: ledger-overview.md
+- title: 台帳の概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データベース台帳とは
+      url: ledger-database-ledger.md
+    - text: 追加専用の台帳テーブル
+      url: ledger-append-only-ledger-tables.md
+    - text: 更新可能な台帳テーブル
+      url: ledger-updatable-ledger-tables.md
+- title: 台帳のクイックスタート
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 台帳が有効化された Azure SQL Database を作成する
+      url: ledger-create-a-single-database-with-ledger-enabled.md
+- title: 台帳の使用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 追加専用の台帳テーブルを作成する
+      url: ledger-how-to-append-only-ledger-tables.md
+    - text: 更新可能な台帳テーブルを作成する
+      url: ledger-how-to-updatable-ledger-tables.md
+    - text: Azure Confidential Ledger (ACL) に格納されているダイジェストにアクセスする方法
+      url: ledger-how-to-access-acl-digest.md
+    - text: 台帳テーブルを検証して改ざんを検出する方法
+      url: ledger-verify-database.md
+- title: 台帳の管理、検証、保存
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ダイジェストの管理とデータベースの検証
+      url: ledger-digest-management-and-database-verification.md
+    - text: 台帳の監査
+      url: ledger-audit.md
+- title: 台帳のリファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 現在の台帳の制限事項
+      url: ledger-limits.md
+    - text: Azure SQL Database 台帳のホワイトペーパー
+      url: https://aka.ms/sql-ledger-whitepaper
+- title: 台帳システム カタログ ビュー
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: sys.database_ledger_blocks (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql
+    - text: sys.database_ledger_transactions (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql
+    - text: sys.database_ledger_digest_locations (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-database-ledger-digest-locations-transact-sql
+    - text: sys.ledger_table_history (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-ledger-table-history-transact-sql
+    - text: sys.ledger_column_history (Transact-SQL)
+      url: /sql/relational-databases/system-catalog-views/sys-ledger-column-history-transact-sql
+- title: 台帳保存の手順
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: sys.sp_generate_database_ledger_digest (Transact-SQL)
+      url: /sql/relational-databases/system-stored-procedures/sys-sp-generate-database-ledger-digest-transact-sql
+    - text: sys.sp_verify_database_ledger (Transact-SQL)
+      url: /sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-transact-sql
+    - text: sys.sp_verify_database_ledger_from_digest_storage (Transact-SQL)
+      url: /sql/relational-databases/system-stored-procedures/sys-sp-verify-database-ledger-from-digest-storage-transact-sql

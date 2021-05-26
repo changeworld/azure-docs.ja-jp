@@ -8,12 +8,12 @@ ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0c029abd87e1b819cc4d96e906be8824c019f433
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aafea55e2683ab9c78fafbf819c9a67d7cb75a45
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584976"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459685"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Storage から大量のランダム データをダウンロードする
 
@@ -103,13 +103,13 @@ dotnet run
 
 次の例に、`DownloadFilesAsync` タスクを示します。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 アプリケーションは、**storageconnectionstring** で指定されたストレージ アカウント内にあるコンテナーを読み取ります。 [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) メソッドを使用して BLOB を反復処理し、[DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) メソッドを使用してローカル コンピューターにダウンロードします。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Scalable.cs" id="Snippet_DownloadFilesAsync":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 アプリケーションは、**storageconnectionstring** で指定されたストレージ アカウント内にあるコンテナーを読み取ります。 コンテナー内の [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync) メソッドを使用して一度に 10 個の BLOB を反復処理し、[DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) メソッドを使用してローカル コンピューターにダウンロードします。
 

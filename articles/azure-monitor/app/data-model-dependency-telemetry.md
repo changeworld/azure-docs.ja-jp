@@ -4,12 +4,12 @@ description: 依存関係テレメトリ用の Application Insights データ �
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06e22c69e8d2d5187b2f78022302d10d12fe6a6c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87315973"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098958"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依存関係テレメトリ:Application Insights データ モデル
 
@@ -59,7 +59,7 @@ ms.locfileid: "87315973"
 ## <a name="next-steps"></a>次のステップ
 
 - [.NET](./asp-net-dependencies.md) の依存関係追跡を設定します。
-- [Java](./java-agent.md) の依存関係追跡を設定します。
+- [Java](java-2x-agent.md) の依存関係追跡を設定します。
 - [カスタム依存関係テレメトリを記述します](./api-custom-events-metrics.md#trackdependency)。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
 - Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。

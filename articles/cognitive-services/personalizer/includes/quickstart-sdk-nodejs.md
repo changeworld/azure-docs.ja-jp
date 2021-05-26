@@ -8,14 +8,14 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/27/2020
-ms.openlocfilehash: b3e80612cb83d13f674b9f0e7710e59a7c27696a
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 14c1ddca63ebb9928a86c7a56be016e58eae8d40
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445329"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110487581"
 ---
-[リファレンスのドキュメント](/javascript/api/@azure/cognitiveservices-personalizer/) |[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
+[リファレンスのドキュメント](/javascript/api/@azure/cognitiveservices-personalizer) |[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
 
 ## <a name="prerequisites"></a>前提条件
 

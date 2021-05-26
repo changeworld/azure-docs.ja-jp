@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-csharp-ieux
-ms.openlocfilehash: c2585fcef3133c1f07832b13fcae9973cdd8090a
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: c5366587e11018b57142a2ed8ebf60c42a03ef4b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107866217"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369597"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>クイックスタート: Azure でコマンド ラインから C# 関数を作成する
 

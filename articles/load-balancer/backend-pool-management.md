@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 4e8be77851d0d7102d7c0cef85d9fbfefd8dc2a2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5aa15204d646278abfb669466a34f11543e338f2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137168"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091218"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。
@@ -22,7 +22,7 @@ ms.locfileid: "108137168"
 * ネットワーク インターフェイス カード (NIC)
 * IP アドレスと Virtual Network (VNET) のリソース ID の組み合わせ
 
-既存の仮想マシンと仮想マシン スケール セットを使用する場合は、NIC によってバックエンド プールを構成します。 この方法では、リソースとバックエンド プールの間に最も直接的なリンクが構築されます。 
+既存の仮想マシンと仮想マシン スケール セットを使用する場合は、NIC によってバックエンド プールを構成します。 この方法では、リソースとバックエンド プールの間に最も直接的なリンクが構築されます。
 
 後で仮想マシンと仮想マシン スケール セットを作成する予定の IP アドレス範囲を使用してバックエンド プールを事前に割り当てる場合は、IP アドレスと VNET ID の組み合わせによってバックエンド プールを構成します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "108137168"
 * Azure PowerShell
 * Azure CLI
 * REST API
-* Azure Resource Manager のテンプレート 
+* Azure Resource Manager のテンプレート
 
 これらのセクションでは、各構成オプションについてバックエンド プールがどのように構造化されているかについて詳しく説明します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "108137168"
 
 次の例では、バックエンド プールの作成と設定の操作に焦点を当て、このワークフローと関係を強調表示しています。
 
-  >[!NOTE] 
+  >[!NOTE]
   >ネットワーク インターフェイスを使用して構成されたバックエンド プールは、バックエンド プールでの操作の一部として更新できないことに注意してください。 バックエンド リソースの追加または削除は、リソースのネットワーク インターフェイス上で行う必要があります。
 
 ### <a name="powershell"></a>PowerShell
@@ -53,7 +53,7 @@ $resourceGroup = "myResourceGroup"
 $loadBalancerName = "myLoadBalancer"
 $backendPoolName = "myBackendPool"
 
-$backendPool = 
+$backendPool =
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
@@ -67,10 +67,10 @@ $nicname = "myNic"
 $location = "eastus"
 $vnetname = <your-vnet-name>
 
-$vnet = 
+$vnet =
 Get-AzVirtualNetwork -Name $vnetname -ResourceGroupName $resourceGroup
 
-$nic = 
+$nic =
 New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicname -LoadBalancerBackendAddressPool $backendPoolName -Subnet $vnet.Subnets[0]
 ```
 
@@ -105,9 +105,9 @@ $location = "eastus"
 $nic =
 Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
 
-$vmConfig = 
+$vmConfig =
 New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
- 
+
 # Create a virtual machine using the configuration
 $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
@@ -119,7 +119,7 @@ $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -V
 az network lb address-pool create \
 --resource-group myResourceGroup \
 --lb-name myLB \
---name myBackendPool 
+--name myBackendPool
 ```
 
 新しいネットワーク インターフェイスを作成して、バックエンド プールに追加します。
@@ -158,7 +158,7 @@ az vm create \
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 
-この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/)に従って、ロード バランサーと仮想マシンをデプロイし、ネットワーク インターフェイスを使用して仮想マシンをバックエンド プールに追加します。
+この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create/)に従って、ロード バランサーと仮想マシンをデプロイし、ネットワーク インターフェイスを使用して仮想マシンをバックエンド プールに追加します。
 
 この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool)に従って、ロード バランサーと仮想マシンをデプロイし、IP アドレスを使用して仮想マシンをバックエンド プールに追加します。
 
@@ -203,7 +203,7 @@ Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBala
 ネットワーク インターフェイスを作成して、バックエンド プールに追加します。 IP アドレスをバックエンド アドレスの 1 つに設定します。
 
 ```azurepowershell-interactive
-$nic = 
+$nic =
 New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicName -PrivateIpAddress 10.0.0.4 -Subnet $virtualNetwork.Subnets[0]
 ```
 
@@ -225,7 +225,7 @@ $location = "eastus"
 $nic =
 Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
 
-$vmConfig = 
+$vmConfig =
 New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 
 # Create a virtual machine using the configuration
@@ -233,7 +233,7 @@ $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -V
 ```
 
 ### <a name="cli"></a>CLI
-CLI を使用すると、コマンドライン パラメーターを使用するか、JSON 構成ファイルを使用して、バックエンド プールを設定できます。 
+CLI を使用すると、コマンドライン パラメーターを使用するか、JSON 構成ファイルを使用して、バックエンド プールを設定できます。
 
 コマンドライン パラメーターを使用して、バックエンド プールを作成して設定します。
 
@@ -307,7 +307,7 @@ az vm create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
- 
+
 ### <a name="limitations"></a>制限事項
 IP アドレスで構成されたバックエンド プールには、次の制限があります。
   * 使用できるのは Standard ロード バランサーのみ
