@@ -1,16 +1,18 @@
 ---
-title: 記録ポリシーの管理 - Azure
-description: このトピックでは、記録ポリシーを管理する方法について説明します。
+title: Live Video Analytics を使用して記録ポリシーを管理する - Azure
+description: このトピックでは、Live Video Analytics を使用して記録ポリシーを管理する方法について説明します。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ec72f28496c1392b9d95134c343e1892998a0c28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52c9011e81c4e9d43aa32158d8577a7388dc20d2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99224991"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379048"
 ---
-# <a name="manage-recording-policy"></a>記録ポリシーの管理
+# <a name="manage-recording-policy-with-live-video-analytics"></a>Live Video Analytics を使用して記録ポリシーを管理する
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Live Video Analytics on IoT Edge を使用して、クラウドにビデオを数週間から数か月にわたって録画する[継続的なビデオ記録](continuous-video-recording-concept.md)を行うことができます。 Azure ストレージに組み込まれている[ライフサイクル管理ツール](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)を使用して、そのクラウド アーカイブの長さ (日数) を管理できます。  
 

@@ -1,16 +1,18 @@
 ---
-title: 記録を行わないライブ ビデオの分析 - Azure
-description: メディア グラフは、ライブ ビデオ ストリームから分析を単に抽出するために使用できます。これをエッジやクラウドに記録する必要はありません。 この記事ではこの概念について説明します。
+title: Live Video Analytics を使用して記録せずにライブ ビデオを分析する - Azure
+description: メディア グラフは、ライブ ビデオ ストリームから分析を単に抽出するために使用できます。これをエッジやクラウドに記録する必要はありません。 この記事では、この概念のほか、Live Video Analytics を使用して記録せずにライブ ビデオを分析する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 25a7cadc47603b726542fa391d441e1fbca78908
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f880646410ba77015663915575cdc32a7c188b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97398976"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378927"
 ---
-# <a name="analyzing-live-video-without-any-recording"></a>記録を行わないライブ ビデオの分析
+# <a name="analyze-live-video-without-any-recording-with-live-video-analytics"></a>Live Video Analytics を使用して記録せずにライブ ビデオを分析する
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事 
 

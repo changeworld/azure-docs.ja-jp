@@ -1,16 +1,18 @@
 ---
-title: イベントベースのビデオ記録用にシグナル ゲートを構成する - Azure
-description: この記事では、メディア グラフでシグナル ゲートを構成する方法に関するガイダンスを提供します。
+title: Live Video Analytics を使用してイベントベースのビデオ記録用にシグナル ゲートを構成する - Azure
+description: この記事では、メディア グラフで Live Video Analytics を使用してシグナル ゲートを構成する方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 11/3/2020
-ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fc36757c44ad69d61466b373756bdd9428dbab9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94410795"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367695"
 ---
-# <a name="configure-a-signal-gate-for-event-based-video-recording"></a>イベントベースのビデオ記録用にシグナル ゲートを構成する
+# <a name="configure-a-signal-gate-for-event-based-video-recording-with-live-video-analytics"></a>Live Video Analytics を使用してイベントベースのビデオ記録用にシグナル ゲートを構成する
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 メディア グラフ内の[シグナル ゲート プロセッサ ノード](media-graph-concept.md#signal-gate-processor)を使用すると、イベントによってゲートがトリガーされたときに、あるノードから別のノードにメディアを転送できます。 トリガーされると、ゲートが開き、指定された期間だけメディアがフローできるようになります。 ゲートをトリガーするイベントがない場合、ゲートは閉じ、メディアのフローは停止します。 イベントベースのビデオ記録には、シグナル ゲート プロセッサを使用できます。
 

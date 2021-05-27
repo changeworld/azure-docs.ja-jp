@@ -4,13 +4,13 @@ description: このドキュメントでは、QnA Maker リソースの詳細な
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 48a56500646e4bd5e24cdcf3e076f46f1de94741
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/04/2021
+ms.openlocfilehash: 0eaff84368327da7ebef11d53338f13ee6f8cdb4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743905"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376370"
 ---
 # <a name="configure-qna-maker-resources"></a>QnA Maker のリソースを構成する
 
@@ -19,6 +19,9 @@ ms.locfileid: "108743905"
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 ## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker を構成する
+
+> [!NOTE]
+> QnA Maker に関連付けられている Azure Search サービスを変更した場合、既に存在しているすべてのナレッジ ベースにアクセスできなくなります。 Azure Search サービスを変更する前に、既存のナレッジ ベースがエクスポートされていることを確認してください。
 
 ポータルを使用して QnA サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker サービスにリンクされます。 これらのリソースが作成された後、既存の Search サービスを使用するように App Service 設定を更新して、先ほど作成されたサービスを削除できます。
 
@@ -47,7 +50,30 @@ Azure Resource Manager テンプレートを使用して QnA サービスを作�
 
 詳しくは、App Service の[アプリケーションの設定](../../../app-service/configure-common.md#configure-app-settings)を構成する方法をご覧ください。
 
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+
+### <a name="configure-text-analytics-resource-with-custom-question-answering-feature-to-use-a-different-cognitive-search-resource"></a>Custom question answering 機能を利用している Text Analytics リソースを、異なる Cognitive Search リソースを使用するように構成する
+
+> [!NOTE]
+> Text Analytics に関連付けている Azure Search サービスを変更すると、このサービスに存在するすべてのナレッジ ベースにアクセスできなくなります。 Azure Search サービスを変更する前に、既存のナレッジ ベースがエクスポートされていることを確認してください。
+
+
+Text Analytics リソースと、依存関係上これに必要なもの (Search など) を portal で作成する場合、そのユーザーに対して Search サービスが作成され Text Analytics リソースにリンクされます。 これらのリソースの作成後は、 **[Features]\(機能\)** タブで Search リソースを更新できます。
+
+1.  Azure portal で Text Analytics リソースに移動します。
+
+2.  **[Features]\(機能\)** を選択し、Text Analytics リソースにリンクしたい Azure Cognitive Search サービスを選択します。
+
+> [!div class="mx-imgBorder"]
+> ![[Add QnA to TA]\(TA に QnA を追加する\)](../media/qnamaker-how-to-upgrade-qnamaker/update-custom-qna-feature.png)
+
+3.  **[保存]** をクリックします。
+
+---
+
 ## <a name="get-the-latest-runtime-updates"></a>最新のランタイム更新プログラムを取得する
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成する](./set-up-qnamaker-service-azure.md)ときにデプロイされる Azure App Service インスタンスの一部です。 ランタイムの更新は定期的に行われます。 QnA Maker App Service インスタンスは、2019 年 4 月のサイト拡張リリース (バージョン 5+) 以降は自動更新モードになります。 この更新は、アップグレード中のダウンタイムがゼロになるように設計されています。
 
@@ -67,8 +93,16 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 1. App Service を再起動します。 更新プロセスは数秒で完了します。 この再起動中、エンド ユーザーは、この QnA Maker サービスを使用する依存アプリケーションやボットを使用できなくなります。
 
     ![QnA Maker App Service インスタンスの再起動](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+
+App Service の展開に Custom question answering は含まれません。
+
+---
 
 ## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>タイムアウトを回避するように App Service のアイドル設定を構成する
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 公開されたナレッジ ベースの QnA Maker 予測ランタイムを提供するアプリ サービスにはアイドル タイムアウトの構成があり、サービスがアイドル状態の場合、既定では自動的にタイムアウトします。 QnA Maker の場合、これは、予測ランタイム GenerateAnswer API は、一定期間トラフィックがないとタイムアウトする場合があることを意味します。
 
@@ -87,7 +121,15 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 
 詳しくは、App Service の[一般設定](../../../app-service/configure-common.md#configure-general-settings)を構成する方法をご覧ください。
 
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+
+App Service の展開に Custom question answering は含まれません。
+
+---
+
 ## <a name="business-continuity-with-traffic-manager"></a>トラフィック マネージャーを使用したビジネス継続性
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 ビジネス継続性計画の主な目的は、回復性に優れたナレッジ ベース エンドポイントを作成し、そのナレッジ ベース エンドポイントを使用するボットまたはアプリケーションにダウン タイムが発生しないようにすることです。
 
@@ -110,21 +152,8 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 
 1. 最後に、ボットまたはアプリでトラフィック マネージャー エンドポイントを使用します。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-## <a name="configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker マネージド (プレビュー) サービスを構成する
-
-ポータルを使用して QnA マネージド (プレビュー) サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker マネージド (プレビュー) サービスにリンクされます。 これらのリソースが作成されたら、 **[構成]** タブで Search サービスを更新することができます。
-
-1. Azure portal で QnA Maker マネージド (プレビュー) サービスにアクセスします。
-
-1. **[構成]** を選択し、ご利用の QnA Maker マネージド (プレビュー) サービスとリンクさせる Azure Cognitive Search サービスを選択します。
-
-    ![QnA Maker マネージド (プレビュー) の構成ページのスクリーンショット](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-configuration.png)
-
-1. **[保存]** をクリックします。
-
-> [!NOTE]
-> QnA Maker に関連付けられている Azure Search サービスを変更した場合、既に存在しているすべてのナレッジ ベースにアクセスできなくなります。 Azure Search サービスを変更する前に、既存のナレッジ ベースがエクスポートされていることを確認してください。
+App Service の展開に Custom question answering は含まれません。
 
 ---

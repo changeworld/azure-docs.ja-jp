@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/23/2020
-  ms.openlocfilehash: 06cce3f999b329d41c7ef7e5f381f55fdaee8054
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c9697126e64a6fbcdf25ab4904179b4ae08e8e17
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88933751"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110375253"
 landingContent:
 - title: Event Hubs について
   linkLists:
@@ -29,6 +29,8 @@ landingContent:
       url: event-hubs-for-kafka-ecosystem-overview.md
     - text: Event Hubs Capture とは
       url: event-hubs-capture-overview.md
+    - text: Event Hubs Premium とは
+      url: event-hubs-premium-overview.md
     - text: Event Hubs Dedicated とは
       url: event-hubs-dedicated-overview.md
 - title: イベント ハブの作成
@@ -151,7 +153,7 @@ landingContent:
       url: event-hubs-metrics-azure-monitor.md
     - text: 診断ログの設定
       url: event-hubs-diagnostic-logs.md
-    - text: スループット ユニットを自動的にスケールアップする
+    - text: 自動スケールアップ
       url: event-hubs-auto-inflate.md
     - text: 例外のトラブルシューティング
       url: event-hubs-messaging-exceptions.md

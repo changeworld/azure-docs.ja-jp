@@ -4,14 +4,6 @@
   items:
     - name: Event Hubs とは
       href: event-hubs-about.md
-    - name: Apache Kafka 用 Event Hubs
-      href: event-hubs-for-kafka-ecosystem-overview.md
-    - name: Event Hubs Capture
-      href: event-hubs-capture-overview.md
-    - name: Event Hubs Dedicated
-      href: event-hubs-dedicated-overview.md
-    - name: Event Hubs の Azure スキーマ レジストリ (プレビュー)
-      href: schema-registry-overview.md
 - name: クイックスタート
   expanded: true
   items:
@@ -81,6 +73,16 @@
   items:
     - name: Event Hubs の用語
       href: event-hubs-features.md
+    - name: Event Hubs Premium
+      href: event-hubs-premium-overview.md
+    - name: Apache Kafka 用 Event Hubs
+      href: event-hubs-for-kafka-ecosystem-overview.md
+    - name: Event Hubs Capture
+      href: event-hubs-capture-overview.md
+    - name: Event Hubs Dedicated
+      href: event-hubs-dedicated-overview.md
+    - name: Event Hubs の Azure スキーマ レジストリ (プレビュー)
+      href: schema-registry-overview.md
     - name: イベント プロセッサ ホスト (レガシ SDK)
       href: event-hubs-event-processor-host.md
     - name: イベント プロセッサ (最新の SDK)

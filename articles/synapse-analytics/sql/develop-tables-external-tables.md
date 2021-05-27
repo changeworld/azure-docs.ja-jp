@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a02938d2c294d80b2c3f4a98aea905a4d431199
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 41825ceed38203c88ddfc28eca9a738663b9d7e6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070193"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378668"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -22,19 +22,23 @@ ms.locfileid: "108070193"
 
 外部データ ソースの種類に応じて、次の 2 種類の外部テーブルを使用できます。
 - Hadoop 外部テーブル。各種データ形式 (CSV、Parquet、ORC など) のデータを読み取ったりエクスポートしたりする際に使用できます。 Hadoop 外部テーブルは、Synapse の専用 SQL プールでは利用できますが、サーバーレス SQL プールでは利用できません。
-- ネイティブ外部テーブル。各種データ形式 (CSV、Parquet など) のデータを読み取ったりエクスポートしたりする際に使用できます。 ネイティブ外部テーブルは、Synapse のサーバーレス SQL プールでは利用できますが、Synapse の専用 SQL プールでは利用できません。
+- ネイティブ外部テーブル。各種データ形式 (CSV、Parquet など) のデータを読み取ったりエクスポートしたりする際に使用できます。 ネイティブ外部テーブルは、Synapse のサーバーレス SQL プールで利用でき、Synapse の専用 SQL プールではプレビュー段階です。
 
 Hadoop 外部テーブルとネイティブ外部テーブルの主な違いを次の表に示します。
 
 | 外部テーブルの種類 | Hadoop | ネイティブ |
 | --- | --- | --- |
-| 専用 SQL プール | 利用可能 | 使用不可 |
+| 専用 SQL プール | 利用可能 | Parquet テーブルは **限定的なプレビュー** で利用可能 - Microsoft のテクニカル アカウント マネージャーまたはクラウド ソリューション アーキテクトに問い合わせて、お使いの専用プールがプレビューに参加できるかどうかを確認してください。 |
 | サーバーレス SQL プール | 使用不可 | 利用可能 |
-| サポートされるフォーマット | 区切り形式 (CSV)、Parquet、ORC、Hive RC、RC | 区切り形式 (CSV) および Parquet |
-| フォルダー パーティションの除外 | No | Synapse ワークスペースの Apache Spark プールから同期されたパーティション テーブルのみ |
-| 場所のカスタム形式 | No | Yes (`/year=*/month=*/day=*` などのワイルドカードを使用) |
-| 再帰的フォルダー スキャン | 常時 | 場所のパスで `/**` が指定されている場合のみ |
+| サポートされるフォーマット | 区切り形式 (CSV)、Parquet、ORC、Hive RC、RC | サーバーレス プール: 区切り形式 (CSV)、Parquet、および Delta Lake (プレビュー)<br/>専用プール: Parquet |
+| フォルダー パーティションの除外 | No | Synapse ワークスペースの Apache Spark プールからサーバーレス SQL プールに同期されたパーティション テーブルのみ |
+| 場所のカスタム形式 | Yes | Yes (`/year=*/month=*/day=*` などのワイルドカードを使用) |
+| 再帰的フォルダー スキャン | No | ロケーション パスの最後に `/**` で指定されている場合、サーバーレス SQL プールのみ |
+| ストレージ フィルター プッシュダウン | No | Yes (サーバーレス SQL プールの場合)。 文字列のプッシュダウンでは、`VARCHAR` 列で `Latin1_General_100_BIN2_UTF8` の照合順序を使用する必要があります。 |
 | ストレージ認証 | ストレージ アクセス キー (SAK)、AAD パススルー、マネージド ID、カスタム アプリケーションの Azure AD ID | Shared Access Signature (SAS)、AAD パススルー、マネージド ID |
+
+> [!NOTE]
+> Delta Lake 形式のネイティブ外部テーブルは、パブリック プレビュー段階にあります。 [CETAS](develop-tables-cetas.md) では、Delta Lake 形式でのコンテンツのエクスポートはサポートされていません。
 
 ## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>専用 SQL プールとサーバーレス SQL プールにおける外部テーブル
 
@@ -51,9 +55,9 @@ Hadoop 外部テーブルとネイティブ外部テーブルの主な違いを�
 
 次の手順を通じて、Synapse SQL プールに外部テーブルを作成できます。
 
-1. CREATE EXTERNAL DATA SOURCE
-2. CREATE EXTERNAL FILE FORMAT
-3. CREATE EXTERNAL TABLE
+1. [CREATE EXTERNAL DATA SOURCE](#create-external-data-source) で、外部 Azure ストレージを参照し、ストレージへのアクセスに使用する資格情報を指定します。
+2. [CREATE EXTERNAL FILE FORMAT](#create-external-file-format) で、CSV または Parquet ファイルの形式を記述します。
+3. [CREATE EXTERNAL TABLE](#create-external-table) を、データ ソースに配置されているファイル上で、同じファイル形式を使用して実行します。
 
 ### <a name="security"></a>セキュリティ
 
@@ -84,7 +88,7 @@ WITH
 
 #### <a name="native"></a>[ネイティブ](#tab/native)
 
-`TYPE=HADOOP` のない外部データ ソースはサーバーレス SQL プールでのみ利用できます。
+`TYPE=HADOOP` がない外部データソースは、サーバーレス SQL プールでは一般公開されており、専用プールではパブリック プレビュー段階です。
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -99,7 +103,7 @@ WITH
 
 ### <a name="arguments-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE の引数
 
-data_source_name
+#### <a name="data_source_name"></a>data_source_name
 
 データ ソースのユーザー定義の名前を指定します。 名前は、データベース内で一意である必要があります。
 
@@ -154,7 +158,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 #### <a name="native"></a>[ネイティブ](#tab/native)
 
-次の例では、SAS 資格情報を使用してアクセスできる Azure Data Lake Gen2 の外部データソースをサーバーレス SQL プールに作成します。
+次の例では、SAS 資格情報を使用してアクセスできる Azure Data Lake Gen2 のサーバーレスまたは専用 SQL プールに外部データソースを作成します。
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [sqlondemand]
@@ -366,7 +370,7 @@ Synapse Studio の Data Lake 探索機能を使用すると、ファイルを右
 
 ### <a name="prerequisites"></a>前提条件
 
-- 少なくとも ADLS Gen2 アカウントに対する `Storage Blob Data Contributor` アクセス ロールがある状態で、ワークスペースにアクセスできる必要があります
+- 少なくとも、ファイルに対してクエリを実行できる、ADLS Gen2 アカウントまたはアクセス制御リスト (ACL) への `Storage Blob Data Contributor` アクセス ロールが設定されたワークスペースにアクセスできる必要があります。
 
 - Synapse SQL プール (専用またはサーバーレス) で外部テーブルを[作成してクエリを実行するためのアクセス許可](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true)が少なくとも必要です。
 

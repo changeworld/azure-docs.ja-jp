@@ -1,16 +1,18 @@
 ---
-title: クラウドへのイベントベースのビデオ記録とクラウドからの再生に関するチュートリアル - Azure
-description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ録画をクラウドに記録し、これをクラウドから再生する方法について説明します。
+title: クラウドへのイベントベースのビデオ記録とクラウドからの再生 - Azure
+description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ記録をクラウドに記録し、これをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: de1a4d423108ddb18af4f8478c9bac60672d6062
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: bf5bd39805aa581553bdf2e663f462251bf418d1
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279818"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371541"
 ---
-# <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
+# <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud-with-live-video-analytics"></a>チュートリアル: Live Video Analytics を使用したクラウドへのイベントベースのビデオ記録とクラウドからの再生
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、クラウド内の Azure Media Services にライブ ビデオ ソースの一部を選択的に記録する方法について説明します。 このチュートリアルでは、このユース ケースを[イベントベースのビデオ記録](event-based-video-recording-concept.md) (EVR) と呼んでいます。 ライブ ビデオの一部を記録するには、オブジェクト検出 AI モデルを使用してビデオ内のオブジェクトを検索し、特定の種類のオブジェクトが検出された場合にのみビデオ クリップを記録します。 また、記録したビデオ クリップを Media Services を使用して再生する方法についても説明します。 この機能は、関心のあるビデオ クリップのアーカイブを保持する必要があるさまざまなシナリオで役立ちます。 
 

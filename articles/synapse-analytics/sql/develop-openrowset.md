@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 90ff0a42a9d82fc0bf4f9235e235c774a2d0e75d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: be412f4dd2413cfe5562f895489aed10b9a9a80f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146565"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378686"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -70,10 +70,10 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
 ## <a name="syntax"></a>構文
 
 ```syntaxsql
---OPENROWSET syntax for reading Parquet files
+--OPENROWSET syntax for reading Parquet or Delta Lake (preview) files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ]
-    FORMAT='PARQUET' }  
+    FORMAT= ['PARQUET' | 'DELTA'] }  
 )  
 [WITH ( {'column_name' 'column_type' }) ]
 [AS] table_alias(column_alias,...n)
@@ -107,6 +107,8 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 - 'CSV' - 行と列の区切り文字を含む区切りテキスト ファイルが含まれます。 任意の文字をフィールド区切り文字として使用できます。例: TSV:FIELDTERMINATOR = tab。
 
 - 'PARQUET' - Parquet 形式のバイナリ ファイル 
+
+- 'DELTA' - Delta Lake (プレビュー) 形式で編成された Parquet ファイルのセット 
 
 **'unstructured_data_path'**
 
@@ -152,9 +154,9 @@ WITH 句を使用すると、ファイルから読み取る列を指定できま
     > [!TIP]
     > CSV ファイルの場合は WITH 句を省略することもできます。 データ型は、ファイルの内容から自動的に推論されます。 HEADER_ROW 引数を使用してヘッダー行の存在を指定することができます。この場合、列名はヘッダー行から読み取られます。 詳細については、「[スキーマの自動検出](#automatic-schema-discovery)」を参照してください。
     
-- Parquet データ ファイルの場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます (大文字と小文字が区別されます)。 WITH 句を省略すると、Parquet ファイルのすべての列が返されます。
+- Parquet または Delta Lake ファイルの場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます (大文字と小文字が区別されます)。 WITH 句を省略すると、Parquet ファイルのすべての列が返されます。
     > [!IMPORTANT]
-    > Parquet ファイル内の列名では大文字と小文字が区別されます。 大文字と小文字の区別が Parquet ファイル内の列名と異なる列名を指定すると、その列に対して NULL 値が返されます。
+    > Parquet および Delta Lake ファイル内の列名では大文字と小文字が区別されます。 大文字と小文字の区別がファイル内の列名と異なる列名を指定すると、その列に対して `NULL` 値が返されます。
 
 
 column_name = 出力列の名前。 指定した場合、ソース ファイル内の列名および JSON パスに指定された列名 (存在する場合) は、この名前によってオーバーライドされます。 json_path を指定しなかった場合、"$.column_name" として自動的に追加されます。 動作については、json_path 引数をチェックしてください。
@@ -261,7 +263,7 @@ CSV ファイルの場合、列名はヘッダー行から読み取ることが�
 
 ### <a name="type-mapping-for-parquet"></a>Parquet の型マッピング
 
-Parquet ファイルには、すべての列の型の説明が含まれています。 次の表では、Parquet 型を SQL ネイティブ型にマップする方法について説明します。
+Parquet および Delta Lake ファイルには、すべての列の型の説明が含まれています。 次の表では、Parquet 型を SQL ネイティブ型にマップする方法について説明します。
 
 | Parquet 型 | Parquet 論理型 (注釈) | SQL データ型 |
 | --- | --- | --- |
@@ -340,6 +342,20 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-delta-lake-files-without-specifying-schema"></a>スキーマを指定せずに Delta Lake ファイルを読み取る
+
+次の例では、列名とデータ型を指定せずに、census データ セットの最初の行のすべての列が Delta Lake 形式で返されます。 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='DELTA'
+    ) AS [r]
+```
+
 ### <a name="read-specific-columns-from-csv-file"></a>CSV ファイルから特定の列を読み取る
 
 次の例では、population*.csv ファイルから序数 1 と 4 の 2 列だけが返されます。 ファイルにはヘッダー行がないため、最初の行から読み取りを開始します。
@@ -404,4 +420,5 @@ AS [r]
 
 ## <a name="next-steps"></a>次のステップ
 
-その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 最適なパフォーマンスが得られるように、[ベスト プラクティス](./best-practices-serverless-sql-pool.md)をご確認ください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。
+その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、[DELTA LAKE](query-delta-lake-format.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 最適なパフォーマンスが得られるように、[ベスト プラクティス](best-practices-sql-on-demand.md)をご確認ください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。
+

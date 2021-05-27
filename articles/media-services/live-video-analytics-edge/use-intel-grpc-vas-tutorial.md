@@ -1,19 +1,21 @@
 ---
-title: gRPC 経由で Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する
-description: このチュートリアルでは、Intel OpenVINO™ DL Streamer – Edge AI Extension を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
+title: Live Video Analytics と Intel OpenVINO™ DL Streamer – Edge AI Extension を使用して gRPC 経由でライブ ビデオを分析する
+description: このチュートリアルでは、Live Video Analytics と Intel OpenVINO™ DL Streamer – Edge AI Extension を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 07a7daf6363f0e528f84635ed6713ac462f89ca5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d6d842a59a184470720da50917726eae069c6b02
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562853"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368511"
 ---
-# <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
+# <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Live Video Analytics と Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 このチュートリアルでは、Intel OpenVINO™ DL Streamer – Edge AI Extension を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。 この推論サーバーで、オブジェクト (人物、車両、バイク) を検出するためのさまざまなモデル、オブジェクトの分類 (車両の属性)、オブジェクト (人物、車両、バイク) 追跡用のモデルを利用する方法を見ていきます。 gRPC モジュールとの統合により、ビデオ フレームを AI 推論サーバーに送信できます。 結果は IoT Edge ハブに送信されます。 この推論サービスを Live Video Analytics と同じ計算ノードで実行すると、共有メモリを通じたビデオ データ送信を活用できます。 これにより、ライブ ビデオ フィードのフレーム レートで推論を実行できます (例: 30 フレーム/秒)。 
 
@@ -66,7 +68,7 @@ gRPC 拡張プロセッサ ノードは、デコードされたビデオ フレ�
 
 OpenVINO™ DL Streamer – Edge AI Extension モジュールは、OpenVINO™ DL Streamer を使用して構築されたビデオ分析パイプラインを提供する Intel Video Analytics Serving (VA Serving) に基づくマイクロサービスです。 開発者は、検出、分類、または追跡を実行して結果を返す AI 拡張機能モジュールに、デコードされたビデオ フレームを送信できます。 AI 拡張機能モジュールは、Microsoft の Live Video Analytics on IoT Edge など、ビデオ分析プラットフォームと互換性のある gRPC API を公開します。 
 
-複雑なハイパフォーマンスのライブ ビデオ分析ソリューションを構築するには、Live Video Analytics on IoT Edge モジュールに、エッジのスケールを活かせる強力な推論エンジンを組み合わせる必要があります。 このチュートリアルでは、Live Video Analytics on IoT Edge と連動するように設計されたエッジ モジュールである [Intel OpenVINO™ DL Streamer – Edge AI Extension]() に推論要求が送信されます。 
+複雑なハイパフォーマンスのライブ ビデオ分析ソリューションを構築するには、Live Video Analytics on IoT Edge モジュールに、エッジのスケールを活かせる強力な推論エンジンを組み合わせる必要があります。 このチュートリアルでは、Live Video Analytics on IoT Edge と連動するように設計されたエッジ モジュールである [Intel OpenVINO™ DL Streamer – Edge AI Extension]() に推論要求が送信されます。
 
 この推論サーバーの初期リリースでは、次の[モデル](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options)を利用できます。
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c27ce8087020a43076ee3c4c8a99454a554554c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353155"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377485"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースをテストする
 
@@ -66,7 +66,7 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 > [!NOTE]
 > ナレッジ ベースに対するすべての編集は、**[Save and Train]\(保存してトレーニング\)** ボタンを押したときにのみ保存されます。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 1. **[My knowledge bases]\(マイ ナレッジ ベース\)** ページで目的のナレッジ ベースの名前を選択して、ナレッジ ベースにアクセスします。
 1. スライド式の [Test]\(テスト\) パネルにアクセスするには、アプリケーションの上部パネルにある **[Test]\(テスト\)** を選択します。 
@@ -94,6 +94,7 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 
 2.  [検査] パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
 3. パネルには、回答文の信頼度スコアと、検出された回答スパンのスコアが示されます。
+4. パネルには、回答文の元になったナレッジベースのデータも表示されます。
 
 ### <a name="correct-the-top-scoring-answer"></a>上位スコアの回答を修正する
 

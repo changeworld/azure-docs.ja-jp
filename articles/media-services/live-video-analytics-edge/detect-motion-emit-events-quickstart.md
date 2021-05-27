@@ -1,17 +1,19 @@
 ---
-title: モーションの検出とイベントの生成 - Azure
-description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、プログラムからダイレクト メソッドを呼び出すことで動きを検出し、イベントを生成する方法について説明します。
+title: Azure Live Video Analytics を使用してモーションを検出し、イベントを生成する
+description: このクイックスタートでは、Azure Live Video Analytics on IoT Edge を使用して、プログラムからダイレクト メソッドを呼び出すことでモーションを検出し、イベントを生成する方法について説明します。
 ms.topic: quickstart
 ms.date: 08/10/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 09a17712287c73fa165b4bec77682831a51edfa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1119d6ab2295138b7c13ca19e36a48417e72b6cb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98060574"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379596"
 ---
-# <a name="quickstart-detect-motion-and-emit-events"></a>クイック スタート:モーションの検出とイベントの生成
+# <a name="quickstart-detect-motion-and-emit-events-with-live-video-analytics"></a>クイックスタート: Live Video Analytics を使用してモーションを検出し、イベントを生成する
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 このクイックスタートでは、Live Video Analytics on IoT Edge の基本的な操作手順について説明します。 IoT Edge デバイスとして Azure VM を使用すると共に、シミュレートしたライブ ビデオ ストリームを使用します。 セットアップ手順の完了後、メディア グラフを通じて、シミュレートされたライブ ビデオ ストリームを実行できます。そのストリーム内のあらゆるモーションがメディア グラフによって検出およびレポートされます。 次の図は、そのメディア グラフをグラフィカルに表したものです。
 

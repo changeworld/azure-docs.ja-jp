@@ -1,16 +1,18 @@
 ---
-title: モーションの検出、Azure Media Services へのビデオの記録
-description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
+title: Live Video Analytics を使用してモーションを検出し、ビデオを Azure Media Services に記録する
+description: このクイックスタートでは、Azure Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 135e68e2630d74dace6c3a6b70bb3666f77aad89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 890d527eea0486bf42c1e5319d65e67dbeb05c06
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99575536"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378978"
 ---
-# <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
+# <a name="quickstart-detect-motion-record-video-to-azure-media-services"></a>クイックスタート: モーションを検出し、Azure Media Services にビデオを記録する
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では、Live Video Analytics on IoT Edge を使用して[イベントベースの記録](event-based-video-recording-concept.md)を行う手順について説明します。 IoT Edge デバイスとして Azure 上の Linux VM を使用すると共に、シミュレートしたライブ ビデオ ストリームを使用します。 このビデオ ストリームで、動くオブジェクトが存在するかどうかが分析されます。 動きが検出されると、イベントが Azure IoT Hub に送信され、ビデオ ストリームの関連する部分が Azure Media Services に資産として記録されます。
 

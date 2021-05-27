@@ -1,16 +1,18 @@
 ---
-title: 空間分析用の Computer Vision でライブ ビデオを分析する - Azure
-description: このチュートリアルでは、Live Video Analytics を Azure Cognitive Services の Computer Vision 空間分析 AI 機能と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
+title: Live Video Analytics を使用して空間分析用の Computer Vision でライブ ビデオを分析する - Azure
+description: このチュートリアルでは、Azure Live Video Analytics を Azure Cognitive Services の Computer Vision 空間分析 AI 機能と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 1c3fd411e60cabb504f01bece62d497ddeea31d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 549c1405e7deb3531da65ff4425befa2d29aaeef
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561017"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373565"
 ---
-# <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
+# <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-and-live-video-analytics-preview"></a>空間分析用の Computer Vision と Live Video Analytics を使用してライブ ビデオを分析する (プレビュー)
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 このチュートリアルでは、Live Video Analytics を [Azure Cognitive Services の Computer Vision 空間分析 AI サービス](https://azure.microsoft.com/services/cognitive-services/computer-vision/)と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。 この推論サーバーでストリーミング ビデオを分析することで、物理領域内の人と動きの間の空間的な関係を理解できるようになります。  ビデオ フィード内のフレームのサブセットがこの推論サーバーに送信され、結果が IoT Edge ハブに送信されます。いくつかの条件が満たされると、Azure Media Services アセットとしてビデオ クリップが記録、保存されます。
 

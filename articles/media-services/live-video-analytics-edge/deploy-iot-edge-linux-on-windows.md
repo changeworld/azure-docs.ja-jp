@@ -1,16 +1,18 @@
 ---
-title: IoT Edge for Linux on Windows にデプロイする - Azure
-description: この記事では、IoT Edge for Linux on Windows デバイスにデプロイする方法に関するガイダンスを取り上げます。
+title: Live Video Analytics を使用して IoT Edge for Linux on Windows にデプロイする - Azure
+description: この記事では、Live Video Analytics を使用して IoT Edge for Linux on Windows デバイスにデプロイする方法に関するガイダンスを取り上げます。
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c504ecf2bb7405ee49d6e9ee94f069336924f5c0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561085"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378097"
 ---
-# <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>IoT Edge for Linux on Windows (EFLOW) デバイスにデプロイする
+# <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device-with-live-video-analytics"></a>Live Video Analytics を使用して IoT Edge for Linux on Windows (EFLOW) デバイスにデプロイする
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では、[IoT Edge for Linux on Windows (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md) がインストールされているエッジ デバイスに Live Video Analytics をデプロイする方法について説明します。 このドキュメントの手順を終えると、ビデオでの動きを検出してそのようなイベントをクラウド内の IoT ハブに出力する[メディア グラフ](media-graph-concept.md)を実行できるようになります。 そのメディア グラフを、高度なシナリオに対応するよう置き換えれば、Live Video Analytics の強力な機能を Windows ベースの IoT Edge デバイスで利用することができます。
 

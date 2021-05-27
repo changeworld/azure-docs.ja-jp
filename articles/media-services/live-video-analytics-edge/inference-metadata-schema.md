@@ -1,16 +1,18 @@
 ---
-title: 推論メタデータ スキーマ - Azure
-description: この記事では、推論メタデータ スキーマについて説明します。
+title: Live Video Analytics の推論メタデータ スキーマ - Azure
+description: この記事では、Live Video Analytics の推論メタデータ スキーマについて説明します。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c79071609c291b6d09fe9c83d90d2cac137241b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92019496"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376989"
 ---
-# <a name="inference-metadata-schema"></a>推論メタデータ スキーマ 
+# <a name="inference-metadata-schema-in-live-video-analytics"></a>Live Video Analytics の推論メタデータ スキーマ
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 HTTP ベースのコントラクトを使用するか、gRPC ベースのコントラクトを使用するかに関係なく、各推論オブジェクトは、このトピックで説明するオブジェクト モデルに従います。
 
@@ -20,7 +22,7 @@ HTTP ベースのコントラクトを使用するか、gRPC ベースのコン�
  
 |型の定義|説明|
 |---|---|
-|タグ|結果に関連付けられたタグまたはラベル。タグ付けと共に、タグに関連付けられた信頼度値も取得します。|
+|タグ|結果に関連付けられているタグまたはラベル。 タグ付けのほかに、タグに関連付けられている信頼度の値も取得できます。|
 |属性|結果に関連付けられた追加の属性。 信頼度値と共に推論エンジンから受け取る新しい属性を追加できます。|
 |属性リスト|省略可能な属性のリスト。|
 |Rectangle|画像の左上隅を基準とした長方形の領域。 必須プロパティは、"長さ"、"幅"、"高さ"、"原点から上端までの距離" です。|

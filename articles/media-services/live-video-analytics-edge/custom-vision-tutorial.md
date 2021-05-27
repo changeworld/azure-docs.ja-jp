@@ -1,17 +1,19 @@
 ---
-title: Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
-description: Azure Custom Vision を使用して、おもちゃのトラックを検出できるコンテナー化されたモデルを構築し、Azure Live Video Analytics on Azure IoT Edge の AI 拡張機能を使用して、ライブ ビデオ ストリームからおもちゃのトラックを検出するためにそのモデルをエッジにデプロイする方法について説明します。
+title: Azure Live Video Analytics on IoT Edge と Azure Custom Vision を使用してライブ ビデオを分析する
+description: Azure Custom Vision を使用して、おもちゃのトラックを検出できるコンテナー化されたモデルを構築し、Live Video Analytics on Azure IoT Edge の AI 拡張機能を使用して、ライブ ビデオ ストリームからおもちゃのトラックを検出するためにそのモデルをエッジにデプロイする方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 1abf123883a89bb41909e8aa67aedfadffc3d37e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d9718a8c7cf6f93af32a3bd33bcf1e8c75c6aa8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561204"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378268"
 ---
-# <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル:Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
+# <a name="tutorial-analyze-live-video-with-azure-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル: Azure Live Video Analytics on IoT Edge と Azure Custom Vision を使用してライブ ビデオを分析する
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 このチュートリアルでは、Azure [Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) を使用して、おもちゃのトラックを検出できるコンテナー化されたモデルを構築し、Azure Live Video Analytics on Azure IoT Edge の [AI 拡張機能](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model)を使用して、ライブ ビデオ ストリームからおもちゃのトラックを検出するためにそのモデルをエッジにデプロイする方法について説明します。
 

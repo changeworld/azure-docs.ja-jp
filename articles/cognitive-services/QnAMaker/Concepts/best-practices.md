@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: b09c36f1dce3c394ff24e3e601d773279a6ac510
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3f12881bd0cb7114f32cab5b7a67d80a73f4fe
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102123311"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372844"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 
@@ -119,8 +119,8 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 同義語は QnA Maker サービスレベルで追加され、**サービス内の全ナレッジ ベースで共有されます**。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 QnA Maker マネージド (プレビュー) の同意語は **ナレッジ ベースごとに追加** されます。
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+英語では同意語をある程度サポートしていますが、さまざま言い方があるキーワードに同意語を追加するには、[Alterations API](/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 Custom question answering (プレビュー) では、**ナレッジ ベースごとに同意語の追加を行います**。
 
 |元の語|シノニム|
 |--|--|

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3718a4255e8b58202c723bccbbfb1aa3459e1ce2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97605061"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372324"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker のリソースとナレッジ ベースに対する言語のサポート
 
@@ -25,11 +25,11 @@ ms.locfileid: "97605061"
 
 言語により、ユーザー クエリに対する応答で QnA Maker によって提供される結果の関連性が決まります。 QnA Maker リソース、およびそのリソース内のすべてのナレッジ ベースは、1 つの言語をサポートします。 クエリに対して最適な回答結果を提供するために、1 つの言語が必要です。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-QnA Maker マネージドでは、個々のナレッジベース レベルで言語設定を行うかどうかを選択することができます。 この設定は、サービスのナレッジベースに対してのみ有効にすることができます。 一旦設定されたら、サービスの言語設定を変更することはできません。 
+Custom question answering には、同じサービスに対して異なる言語のナレッジ ベースを追加するオプションがあります。 ナレッジ ベース単位の言語設定は、一度有効にすると無効に戻すことはできません。 そのサービスで作成するすべてのナレッジベースに対して言語の選択が必要になります。
 
-ナレッジベース固有の言語設定を選択すると、サービス自体でさまざまな言語のナレッジベースを作成することができます。 
+この設定により、同じサービスの複数のナレッジベースにそれぞれ異なる言語を設定するという柔軟な構成が可能になります。
 
 ---
 
@@ -45,15 +45,16 @@ QnA Maker マネージドでは、個々のナレッジベース レベルで言
 * サービス内の他のナレッジ ベースの言語は変更できません
 * この言語は Cognitive Search Service (ランカー #1) と QnA Maker サービス (ランカー #2) に使用され、クエリに対して最適な回答が生成されます。
 
-# <a name="qnamaker-managed-preview"></a>[QnA Maker マネージド (プレビュー)](#tab/v2)
-![QnA Maker マネージドでの言語設定](../media/language-support/language-setting-managed.png)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+> [!div class="mx-imgBorder"]
+> ![多言語ナレッジベースの選択](../media/language-support/language-support-custom-qna.png)
 
-**ナレッジベースごとに言語設定を有効にするためのチェックボックスをオンにしない** 場合は、次の点を考慮してください。 
-* QnA Maker サービスとそのすべてのナレッジ ベースでは、1 つの言語のみがサポートされます。
+**多言語のナレッジベースを有効にするチェックボックスに印を入れない** 場合は、次のことを考慮してください。 
+* Text Analytics サービスとそれに属するすべてのナレッジベースで、1 種類の言語だけをサポートすることになります。
 * 言語は、サービスの最初のナレッジ ベースが作成されるときに明示的に設定されます
 * 言語は、ナレッジ ベースの作成時に追加されたファイルと URL から決定されます
 * サービス内の他のナレッジ ベースの言語は変更できません
-* この言語は Cognitive Search Service (ランカー #1) と QnA Maker サービス (ランカー #2) に使用され、クエリに対して最適な回答が生成されます
+* Cognitive Search サービス (ランカー 1) と Custom question answering (ランカー 2) では、その言語でクエリに対するベスト アンサーを生成します
 
 ---
 
@@ -62,12 +63,13 @@ QnA Maker マネージドでは、個々のナレッジベース レベルで言
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 この機能は、現在の一般提供 (GA) の安定版リリースではサポートされていません。 この機能をテストするには、QnA Maker マネージドをチェックアウトしてください。 
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-* ご利用のサービスで最初のナレッジ ベースを作成する場合は、ナレッジ ベースごとに言語設定を有効にするかどうかを選択できます。 1 つのサービス内でさまざまな言語に属するナレッジ ベースを作成するには、チェックボックスをオンにします。
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+* サービスで最初のナレッジ ベースを作成するときに、複数言語の使用を有効にするかどうか、サービス単位で選択できます。 1 つのサービス内でさまざまな言語に属するナレッジ ベースを作成するには、チェックボックスをオンにします。
 * 最初のナレッジ ベースが作成されたら、そのサービスの言語設定オプションを変更することはできません。
-* すべてのナレッジベースにそれぞれ固有の言語設定を有効にした場合、サービスに対して 1 つのテスト インデックスが作成されるのではなく、ナレッジ ベースごとに 1 つのテスト インデックスが作成されます。 
+* ナレッジ ベースで複数言語の使用を有効にする場合、サービスに 1 つではなく、ナレッジ ベースごとに 1 つのテスト インデックスを使用します。 
 
-![QnA Maker マネージドでの言語設定](../media/language-support/language-setting-managed.png)
+> [!div class="mx-imgBorder"]
+> ![多言語ナレッジ ベース設定](../media/language-support/language-support-custom-qna-chkd.png)
 
 ---
 

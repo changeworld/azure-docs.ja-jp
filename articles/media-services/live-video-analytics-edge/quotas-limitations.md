@@ -1,16 +1,18 @@
 ---
-title: Live Video Analytics on IoT Edge のクォータと制限 - Azure
+title: Azure Live Video Analytics on IoT Edge のクォータと制限 - Azure
 description: この記事では、Live Video Analytics on IoT Edge のクォータと制限について説明します。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 68c7b91bb1051348b5a8e52f841d443894f0a632
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02347b5ae963008b3f8dd256afe2d8c264245650
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97400526"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378423"
 ---
-# <a name="quotas-and-limitations"></a>クォータと制限
+# <a name="quotas-and-limitations-in-live-video-analytics"></a>Live Video Analytics のクォータと制限
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では Live Video Analytics on IoT Edge モジュールのクォータと制限を列挙します。
 

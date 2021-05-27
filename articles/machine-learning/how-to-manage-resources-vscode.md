@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: e0922d4b32162660e5ede7501eb4a23db519b9b2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4ebdb5d092a64213727bd35d923c335c8e82210b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377170"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479908"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code 拡張機能 (プレビュー) を使用して Azure Machine Learning リソースを管理する
 
@@ -37,7 +37,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. アクティビティ バーで **[+]** を選択します。
 1. ドロップダウン リストからリソースを選択します。
 1. 仕様ファイルを構成します。 必要な情報は、作成するリソースの種類によって異なります。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットを使用してリソースを作成することもできます。
 
@@ -55,7 +55,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 
 1. リソースを作成した既存の仕様ファイルを使用するか、リソースの作成プロセスに従って新しい仕様ファイルを作成します。
 1. テンプレートのバージョン番号をインクリメントします。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 更新されたリソースの名前が以前のバージョンと同じ場合、Azure Machine Learning によって変更点が取得され、新しいバージョンが作成されます。
 
@@ -67,7 +67,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 
 1. Azure Machine Learning ビューで、自分のサブスクリプション ノードを右クリックし、 **[ワークスペースの作成]** を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Workspace` コマンドを使用します。
 
@@ -99,7 +99,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. **[データストア]** ノードを右クリックし、 **[データストアの作成]** を選択します。
 1. データストアの種類を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Datastore` コマンドを使用します。
 
@@ -129,7 +129,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. データセットを作成するワークスペース ノードを展開します。
 1. **[データセット]** ノードを右クリックし、 **[データセットの作成]** を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Dataset` コマンドを使用します。
 
@@ -155,7 +155,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 1. データストアを作成するワークスペース ノードを展開します。
 1. **[環境]** ノードを右クリックし、 **[環境の作成]** を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Environment` コマンドを使用します。
 
@@ -185,7 +185,7 @@ Azure Machine Learning ビューのリソース ノードを使用します。
 1. ワークスペースの **[実験]** ノードを右クリックし、 **[ジョブの作成]** を選択します。
 1. ジョブの種類を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Job` コマンドを使用します。
 
@@ -234,7 +234,7 @@ Azure Machine Learning スタジオでジョブを表示するには:
 1. **[コンピューティング]** ノードを展開します。
 1. 自分のワークスペースの **[コンピューティング インスタンス]** ノードを右クリックし、 **[コンピューティングの作成]** を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Compute` コマンドを使用します。
 
@@ -280,7 +280,7 @@ Azure Machine Learning スタジオでジョブを表示するには:
 1. **[コンピューティング]** ノードを展開します。
 1. 自分のワークスペースの **[コンピューティング クラスター]** ノードを右クリックし、 **[コンピューティングの作成]** を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Compute` コマンドを使用します。
 
@@ -351,7 +351,7 @@ Azure Machine Learning スタジオでジョブを表示するには:
 1. ワークスペース ノードを展開します。
 1. 自分のワークスペースの **[モデル]** ノードを右クリックし、 **[モデルの作成]** を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Model` コマンドを使用します。
 
@@ -391,7 +391,7 @@ Azure Machine Learning スタジオでジョブを表示するには:
 1. ワークスペースの **[モデル]** ノードを右クリックし、 **[エンドポイントの作成]** を選択します。
 1. エンドポイントの種類を選択します。
 1. 仕様ファイルが表示されます。 仕様ファイルを構成します。
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 または、コマンド パレットの `> Azure ML: Create Endpoint` コマンドを使用します。
 

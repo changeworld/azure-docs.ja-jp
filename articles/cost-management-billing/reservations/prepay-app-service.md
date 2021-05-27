@@ -1,24 +1,24 @@
 ---
 title: 予約容量を利用して Azure App Service のコストを節約する
-description: Azure App Service Premium v3 の予約インスタンスおよび Isolated スタンプ料金のコストを節約する方法について説明します。
+description: Azure App Service Premium v3 と Premium v2 の予約インスタンスおよび Isolated スタンプ料金のコストを節約する方法について説明します。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 05/13/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f80619f1eeb7cdd970e4e3ee64491453c790149d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374543"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378528"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Azure App Service 予約インスタンスを使用してコストを節約する
 
-この記事では、Azure App Service 予約インスタンスで、Premium v3 インスタンスおよび Isolated スタンプ料金を節約する方法について説明します。
+この記事では、Premium v3 および Premium v2 インスタンスの Azure App Service 予約インスタンスと、Isolated スタンプ料金で節約する方法について説明します。
 
 ## <a name="save-with-premium-v3-reserved-instances"></a>Premium v3 予約インスタンスで節約する
 
@@ -42,7 +42,6 @@ Azure App Service Premium v3 予約インスタンスにコミットすると、
 購入する必要がある予約の決定に役立てるために、利用状況の情報を分析します。 利用状況データは、利用状況ファイルと API で入手できます。 それらをまとめて使用し、購入する予約を決定します。 購入する予約の数量を決定するには、日単位の使用率が高い Premium v3 インスタンスを確認します。
 
 使用状況ファイルは、請求期間と毎日の使用状況別の料金を示しています。 使用状況ファイルのダウンロードについては、「[Azure の使用量と料金の表示とダウンロード](../understand/download-azure-daily-usage.md)」を参照してください。 その後、使用状況ファイルの情報を使用して、[購入する予約を判断する](determine-reservation-purchase.md)ことができます。
-
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>Premium v3 予約インスタンスを購入する
 
@@ -69,6 +68,32 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ�
 | Premium v3 予約インスタンス サイズ | Premium v3 予約インスタンスのサイズです。 |
 | 期間 | 1 年間または 3 年間。 また、HBv2 Premium v3 予約インスタンスでのみ使用できる 5 年間の期間もあります。 |
 | Quantity | 予約内で購入しているインスタンス数。 この数量は、課金の割引を受けることができる実行中の Premium v3 予約インスタンスの数です。 たとえば、米国東部で Standard\_D2 Premium v3 予約インスタンスを 10 個実行している場合、実行中のすべての Premium v3 予約インスタンスのメリットを最大限に利用するには、数量を 10 と指定します。 |
+
+## <a name="buy-an-isolated-v2-reserved-instance"></a>Isolated v2 予約インスタンスを購入する
+
+Isolated v2 予約インスタンスは [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) で購入できます。 予約の支払いは、[前払いまたは月払い](prepare-buy-reservation.md)で行います。 Isolated v2 予約インスタンスの購入には、次の要件が適用されます。
+
+- 少なくとも 1 つの EA サブスクリプションまたは従量課金制料金のサブスクリプションの所有者ロールである必要があります。
+- EA サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
+- クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理エージェントまたはセールス エージェントのみが予約購入できます。
+
+インスタンスを購入する場合、次のことが必要です。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+2. **[すべてのサービス]**  >  **[予約]** を選択します。
+3. **[追加]** を選択して新しい予約を購入してから、 **[インスタンス]** をクリックします。
+4. 必須フィールドに入力します。 選択した属性に一致する Isolated v2 予約インスタンスを実行することで、予約割引を受けることができます。 割引を受ける Isolated v2 予約インスタンスの実際の数は、選択したスコープと数量によって変わります。
+
+EA 契約を結んでいる場合、 **[Add more option]\(さらにオプションを追加\)** を使用してインスタンスをすばやく追加することができます。 このオプションは、他のサブスクリプションの種類では使用できません。
+
+| **フィールド** | **説明** |
+| --- | --- |
+| サブスクリプション | 予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または Microsoft Customer Agreement または従来課金制の個々のサブスクリプション (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 年額コミットメント残高から料金が差し引かれるか(使用可能な場合)、超過料金として課金されます。 従量課金制料金のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。 |
+| Scope | 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合:<UL><LI>**単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。</li><li>**単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。</li><li>**共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 EA の顧客の場合、課金コンテキストは課金です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。</li> |
+| リージョン | 予約の対象となる Azure リージョン。 |
+| Isolated v2 予約インスタンス サイズ | Isolated v2 予約インスタンスのサイズです。 |
+| 期間 | 1 年間または 3 年間。 また、HBv2 Isolated v2 予約インスタンスでのみ使用できる 5 年間の期間もあります。 |
+| Quantity | 予約内で購入しているインスタンス数。 この数量は、課金の割引を受けることができる実行中の Isolated v2 予約インスタンスの数です。 たとえば、米国東部で Standard\_ D2 Isolated v2 予約インスタンスを 10 個実行している場合、実行中のすべての Isolated v2 予約インスタンスのメリットを最大限に利用するには、数量を 10 と指定します。 |
 
 ## <a name="save-with-isolated-stamp-fees"></a>Isolated スタンプ料金で節約する
 

@@ -1,16 +1,18 @@
 ---
-title: メディア グラフの概念 - Azure
-description: メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 この記事では、メディア グラフの概念の詳細について説明します。
+title: Live Video Analytics メディア グラフの概念 - Azure
+description: メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 この記事では、Live Video Analytics メディア グラフの概念の詳細について説明します。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 83c51bc87321633339f75ac57b480116d450bca7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7be1bf485fd0641d96a51258f57818d9aa1692fc
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770607"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372449"
 ---
-# <a name="media-graph"></a>メディア グラフ
+# <a name="live-video-analytics-media-graph"></a>Live Video Analytics メディア グラフ
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>推奨される事前読み取り
 

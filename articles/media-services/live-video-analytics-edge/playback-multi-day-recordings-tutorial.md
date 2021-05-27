@@ -1,16 +1,18 @@
 ---
-title: 数日間の記録の再生 - Azure
+title: Live Video Analytics を使用して数日間の記録を再生する - Azure
 description: このチュートリアルでは、Azure Media Services API を使用して数日間の継続的なビデオ記録を再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c224b6267dd7eac4df669a7ccbd6f59abeb8ef
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492791"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372151"
 ---
-# <a name="tutorial-playback-of-multi-day-recordings"></a>チュートリアル:数日間の記録の再生  
+# <a name="tutorial-playback-of-multi-day-recordings-with-live-video-analytics"></a>チュートリアル: Live Video Analytics を使用して数日間の記録を再生する
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 このチュートリアルは、[継続的なビデオ記録](continuous-video-recording-concept.md) (CVR) のチュートリアルを基礎にしています。 このチュートリアルでは、Azure Media Services API を使用してクラウドから数日間の継続的なビデオ記録を再生する方法について説明します。 
 

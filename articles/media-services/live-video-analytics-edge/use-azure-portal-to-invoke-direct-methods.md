@@ -1,6 +1,6 @@
 ---
-title: Azure portal を使用してダイレクト メソッドを呼び出す方法
-description: この記事は、Azure portal を使用したダイレクト メソッドの呼び出しに関する概要です。
+title: Azure portal を使用して Live Video Analytics のダイレクト メソッドを呼び出す方法
+description: この記事では、Azure portal を使用して Live Video Analytics のダイレクト メソッドを呼び出す方法の概要を示します。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,14 +13,16 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: ddd6a94015829a0b5dd4053f4d3a2fd6d2650d32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d91395f148db2245c48784e00c3403a5c76a5b0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492656"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368529"
 ---
-# <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Azure portal を使用してダイレクト メソッドを呼び出す方法
+# <a name="how-to-use-azure-portal-to-invoke-live-video-analytics-direct-methods"></a>Azure portal を使用して Live Video Analytics のダイレクト メソッドを呼び出す方法
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 IoT Hub には、クラウドからエッジ デバイス上の[ダイレクト メソッド](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules)を呼び出す機能が備わっています。 Live Video Analytics on IoT Edge (LVA) モジュールでは、ライブ ビデオを分析するためにさまざまなワークフローを定義、デプロイ、インスタンス化するために使用できる、いくつかの[ダイレクト メソッド](./direct-methods.md)が公開されています。
 

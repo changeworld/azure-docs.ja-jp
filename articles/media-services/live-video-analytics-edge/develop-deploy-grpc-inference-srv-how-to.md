@@ -1,16 +1,18 @@
 ---
-title: gRPC 推論サーバーの開発とデプロイ - Azure
-description: この記事では、gRPC 推論サーバーを開発およびデプロイする方法に関するガイダンスを提供します。
+title: Live Video Analytics を使用して gRPC 推論サーバーを開発およびデプロイする - Azure
+description: この記事では、Live Video Analytics を使用して gRPC 推論サーバーを開発してデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: dbf46a26626a4143d76385968d092c4f238729da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7d636803ac49d78aae78dad256598d9de3e7448
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034862"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371576"
 ---
-# <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>攻略ガイド - gRPC 推論サーバーの開発とデプロイ
+# <a name="develop-and-deploy-a-grpc-inference-server-with-live-video-analytics"></a>Live Video Analytics を使用して gRPC 推論サーバーを開発およびデプロイする
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="overview"></a>概要
 

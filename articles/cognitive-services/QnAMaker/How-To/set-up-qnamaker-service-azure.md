@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: b6ab131c0fa81609b956de53f2b15d445e8979dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67ba835237dac96a28aae124781bbb71b59323f2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102219269"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369386"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
-QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA Maker サービスをセットアップしておく必要があります。 QnA Maker サービスは、サブスクリプション内で新しいリソースを作成することが認可されているユーザーであれば、だれでもセットアップできます。
+QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA Maker サービスをセットアップしておく必要があります。 QnA Maker サービスは、サブスクリプション内で新しいリソースを作成することが認可されているユーザーであれば、だれでもセットアップできます。 カスタム質問と回答機能を試す場合は、Text Analytics リソースを作成し、カスタム質問と回答機能を追加する必要があります。
 
 リソースを作成する前に、次の概念について十分に理解しておくことをお勧めします。
 
@@ -63,35 +63,41 @@ QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA 
 
     種類が _Cognitive Services_ であるリソースには、_サブスクリプション_ キーがあります。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 この手順では、ナレッジ ベースのコンテンツを管理するために必要な Azure リソースを作成します。 これらの手順を完了すると、Azure portal のリソース用の **[キー]** ページに、*サブスクリプション* キーが表示されます。
 
-1. Azure portal にサインインし、[QnA Maker リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)します。
+1.  Azure portal にサインインし、[Text Analytics リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)します。
 
-1. 使用条件を読んだ後、 **[作成]** を選択します。
+2.  Text Analytics リソースに追加するカスタム質問と回答機能を選択します。 **[リソースの作成を続行する]** をクリックします。
 
-    ![新しい QnA Maker サービスの作成](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
+> [!div class="mx-imgBorder"]
+> ![[Add QnA to TA]\(TA に QnA を追加する\)](../media/qnamaker-how-to-setup-service/select-qna-feature-create-flow.png)
 
-1. **QnA Maker** で、[マネージド (プレビュー)] チェックボックスをオンにして、適切な層とリージョンを選択します。
+3.  Text Analytics リソースの適切なサービス レベルとリージョンを選択します。 カスタム質問と回答機能の場合、[場所と価格レベルの検索] を選択します。
 
-    ![新しい QnA Maker マネージド サービスを作成する - 価格レベルとリージョン](../media/qnamaker-how-to-setup-service/enter-qnamaker-v2-info.png)
+> [!div class="mx-imgBorder"]
+> ![新しい TA サービスを作成する - 価格レベルとリージョン](../media/qnamaker-how-to-setup-service/custom-qna-create-button.png)
 
-    * QnA Maker リソースのデプロイ先となる **サブスクリプション** を選択します。
-    * この QnA Maker マネージド (プレビュー) リソースのデプロイ先として、新しい **リソース グループ** を作成する (推奨) か、既存のものを使用します。 QnA Maker マネージド (プレビュー) によって、いくつかの Azure リソースが作成されます。 これらのリソースを保持するリソース グループを作成すると、リソースの検索、管理、および削除を、リソース グループ名によって簡単に実行できます。
-    * **[名前]** フィールドに、この QnA Maker マネージド (プレビュー) サービスを識別する一意の名前を入力します。 
-    * QnA Maker マネージド (プレビュー) サービスをデプロイする **場所** を選択します。 管理 API とサービス エンドポイントは、この場所でホストされます。 
-    * QnA Maker マネージド (プレビュー) サービス (プレビュー) の **[価格レベル]** を選択します (プレビューの場合は Free)。 [詳細については、SKU の価格](https://aka.ms/qnamaker-pricing)に関するページをご覧ください。
-    * Azure Cognitive Search インデックスのデプロイ先となる **検索場所** を選択します。 顧客データをどの場所に格納する必要があるかの制限に基づいて、Azure Cognitive Search で使用する場所を選択できます。
-    * Azure Cognitive Search サービスの **検索価格レベル** を選択します。 Free レベル オプションを利用できない (灰色表示されている) 場合、それは、ご利用のサブスクリプションで Free サービスが既にデプロイされていることを意味します。 その場合は、Basic レベルから開始する必要があります。 [Azure Cognitive Search の価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページを参照してください。
+   * Text Analytics リソースのデプロイ先となる **サブスクリプション** を選択します。
+   * この Text Analytics リソースのデプロイ先として、新しい **リソース グループ** を作成する (推奨) か、既存のリソース グループを使用します。 Text Analytics リソースを使用してカスタム質問と回答を有効にすると、作成される Azure リソースが少なくなります。 これらのリソースを保持するリソース グループを作成すると、リソースの検索、管理、および削除を、リソース グループ名によって簡単に実行できます。
+   * **[名前]** フィールドに、この Text Analytics リソースを識別する一意の名前を入力します。 
+   * Text Analytics リソースをデプロイする **[場所]** を選択します。 管理 API とサービス エンドポイントは、この場所でホストされます。 
+   * Text Analytics サービスの **[価格レベル]** を選択します。 [詳細については、SKU の価格](https://aka.ms/qnamaker-pricing)に関するページをご覧ください。
+   * Azure Cognitive Search インデックスのデプロイ先となる **検索場所** を選択します。 顧客データをどの場所に格納する必要があるかの制限に基づいて、Azure Cognitive Search で使用する場所を選択できます。
+   * Azure Cognitive Search サービスの **検索価格レベル** を選択します。 Free レベル オプションを利用できない (灰色表示されている) 場合、それは、ご利用のサブスクリプションで Free サービスが既にデプロイされていることを意味します。 その場合は、Basic レベルから開始する必要があります。 [Azure Cognitive Search の価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページを参照してください。
 
-1. すべてのフィールドを確認した後、 **[確認と作成]** を選択します。 プロセスが完了するまでに数分かかることがあります。
+4.  すべてのフィールドを確認した後、 **[確認と作成]** を選択します。 プロセスが完了するまでに数分かかることがあります。
 
-1. デプロイが完了すると、サブスクリプション内に次のリソースが作成されていることがわかります。
+> [!div class="mx-imgBorder"]
+> ![TA リソースの確認](../media/qnamaker-how-to-setup-service/custom-qna-review-resource.png)
 
-    ![新しい QnA Maker マネージド (プレビュー) サービスによって作成されたリソース](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+5.  デプロイが完了すると、サブスクリプション内に次のリソースが作成されていることがわかります。
 
-    種類が _Cognitive Services_ であるリソースには、_サブスクリプション_ キーがあります。
+> [!div class="mx-imgBorder"]
+> ![新しい QnA Maker マネージド (プレビュー) サービスによって作成されたリソース](../media/qnamaker-how-to-setup-service/resources-created-question-answering.png)
+
+   種類が _Cognitive Services_ であるリソースには、_サブスクリプション_ キーがあります。
 
 ---
 
@@ -157,13 +163,13 @@ QnA Maker リソースを使用していない場合、そのリソースをす�
 
 無料の Search リソースは、API 呼び出しを受信しない状態で 90 日経過すると削除されます。
     
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 ### <a name="upgrade-the-azure-cognitive-search-service"></a>Azure Cognitive Search サービスのアップグレード
 
 多数のナレッジ ベースを使用する予定の場合は、Azure Cognitive Search サービスの価格レベルをアップグレードします。
 
-現在、Azure Search SKU のインプレース アップグレードを実行することはできません。 ただし、必要な SKU で新しい Azure Search リソースを作成し、その新しいリソースにデータを復元して、QnA Maker スタックにリンクすることはできます。 そのためには、次の手順に従います。
+現在、Azure Search SKU のインプレース アップグレードを実行することはできません。 ただし、必要な SKU で新しい Azure Search リソースを作成し、その新しいリソースにデータを復元して、カスタム質問と回答スタックにリンクすることはできます。 そのためには、次の手順に従います。
 
 1. Azure portal で新しい Azure Search リソースを作成し、必要な SKU を選択します。
 
@@ -171,11 +177,11 @@ QnA Maker リソースを使用していない場合、そのリソースをす�
 
 1. 元の Azure Search リソースのインデックスを新しいリソースに復元します。 [バックアップと復元のサンプル コード](https://github.com/pchoudhari/QnAMakerBackupRestore)を参照してください。
 
-1. 新しい Azure Search リソースを QnA Maker マネージド (プレビュー) サービスにリンクするには、次のトピックを参照してください。
+1. [Text Analytics リソースの [機能] タブ](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/configure-qna-maker-resources?tabs=v2#configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource)で、新しい Azure Search リソースをカスタム質問と回答機能にリンクします。
 
 ### <a name="inactivity-policy-for-free-search-resources"></a>無料 Search リソースのアイドル時間ポリシー
 
-QnA Maker リソースを使用していない場合、そのリソースをすべて削除してください。 不使用のリソースを削除しなかった場合、無料の Search リソースを作成したときにナレッジ ベースが機能しなくなります。
+QnA Maker または Text Analytics リソースを使用していない場合、そのリソースをすべて削除してください。 不使用のリソースを削除しなかった場合、無料の Search リソースを作成したときにナレッジ ベースが機能しなくなります。
 
 無料の Search リソースは、API 呼び出しを受信しない状態で 90 日経過すると削除されます。
 
@@ -183,7 +189,7 @@ QnA Maker リソースを使用していない場合、そのリソースをす�
 
 ## <a name="delete-azure-resources"></a>Azure リソースを削除する
 
-QnA Maker ナレッジ ベースに使用されているいずれかの Azure リソースを削除すると、ナレッジ ベースは機能しなくなります。 いずれかのリソースを削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。
+ナレッジ ベースに使用されているいずれかの Azure リソースを削除すると、そのナレッジ ベースは機能しなくなります。 いずれかのリソースを削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

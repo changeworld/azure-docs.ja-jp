@@ -1,16 +1,18 @@
 ---
-title: 継続的なビデオ記録 - Azure
-description: 継続的なビデオ記録 (CVR) とは、ビデオ ソースからの継続的なビデオ記録プロセスのことを指します。 このトピックでは、CVR について説明します。
+title: Live Video Analytics を使用した継続的なビデオ記録 - Azure
+description: 継続的なビデオ記録 (CVR) とは、Live Video Analytics を使用したビデオ ソースからの継続的なビデオ記録プロセスを指します。 このトピックでは、CVR について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28fbe234984e3d75ef854bb8a001e5979d2bb97c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453752"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367678"
 ---
-# <a name="continuous-video-recording"></a>継続的なビデオ記録  
+# <a name="continuous-video-recording-with-live-video-analytics"></a>Live Video Analytics を使用した継続的なビデオ記録
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事  
 

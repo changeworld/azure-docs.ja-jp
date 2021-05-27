@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8f65ca9386963824f0cb740f587de83c9dec7f78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 268cb05b7399c6fc812310f451797df60e283557
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103017425"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376308"
 ---
 # <a name="filter-responses-with-metadata"></a>メタデータを使用して応答をフィルター処理する
 
@@ -51,6 +51,35 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
     "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+## <a name="filter-by-source"></a>ソースによるフィルター
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
+QnA Maker の GA バージョンでは、コンテンツ ソースで結果にフィルターをかけることはできません。
+
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+
+ナレッジ ベースに複数のコンテンツ ソースがあって、一部の特定のソースに結果を限定したい場合、下に示す方法で予約キーワード `source_name_metadata` を使用してこれを実行できます。
+
+```json
+"strictFilters": [
+    {
+        "name": "category",
+        "value": "api"
+    },
+   {
+        "name": "source_name_metadata",
+        "value": "boby_brown_docx"
+    },
+   {
+        "name": "source_name_metadata",
+        "value": "chitchat.tsv"
+   }
+]
+```
+
+---
 
 ### <a name="logical-and-by-default"></a>既定での論理 AND
 

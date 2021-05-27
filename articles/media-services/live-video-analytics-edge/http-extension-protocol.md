@@ -1,16 +1,18 @@
 ---
-title: HTTP 拡張プロトコル - Azure
-description: この記事では、HTTP 拡張プロトコルを使用した、Live Video Analytics モジュールと AI または CV モジュールの間でのメッセージの送信について説明します。
+title: Live Video Analytics での HTTP 拡張プロトコル - Azure
+description: この記事では、HTTP 拡張プロトコルを使用した、Azure Live Video Analytics モジュールと AI または CV モジュールの間でのメッセージの送信について説明します。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 54b25894c60a39de9c0ec00cdc4982f691bf1ee3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3dbb329e1210ce27fa33f2b1e7ec8b0cf4f8b3e9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565743"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375478"
 ---
-# <a name="http-extension-protocol"></a>HTTP 拡張プロトコル
+# <a name="http-extension-protocol-in-live-video-analytics"></a>Live Video Analytics での HTTP 拡張プロトコル
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Live Video Analytics on IoT Edge では、[グラフ拡張ノード](./media-graph-extension-concept.md)を使用してメディア グラフ処理機能を拡張することができます。 HTTP 拡張プロセッサを拡張ノードとして使用した場合、Live Video Analytics モジュールとご利用の AI (または CV) モジュールとの間の通信は HTTP で行われます。
 
@@ -91,7 +93,7 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 
 モジュールによってコンテンツ タイプが "application/json" でない応答が返される場合、Live Video Analytics では、メッセージが base 64 コンテンツとしてエンコードされ、非透過の JSON ペイロードとしてシリアル化されます。
 
-モジュールによってコンテンツ タイプが "application/json" の応答が返されたが、JSON スキーマが下記の推定メタデータ スキーマに従っていない場合、メッセージ ペイロードはパイプラインを介して転送されますが、相互運用性は低下します。 推論メタデータ スキーマに関する最新の詳しい日付情報については、[こちら](./inference-metadata-schema.md)を参照してください。
+モジュールによってコンテンツ タイプが "application/json" の応答が返されたが、JSON スキーマが下記の推定メタデータ スキーマに従っていない場合、メッセージ ペイロードはパイプラインを介して転送されますが、相互運用性は低下します。 推論メタデータ スキーマに関する最新の詳細情報については、[こちら](./inference-metadata-schema.md)を参照してください。
 
 > [!NOTE]
 > モジュールが結果を生成しない場合、応答本文が空の HTTP 204 状態コード (No Content) が返されます。 Live Video Analytics はこれを空の結果として認識し、パイプライン全体でイベントを転送しません。

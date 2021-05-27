@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 87dde7662050794a24cf976a0bae6237b91d29b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d346610ecb4e0552a52775c086eeb16e6e11680
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102213710"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373018"
 ---
 # <a name="active-learning"></a>アクティブ ラーニング
 
@@ -130,9 +130,9 @@ QnA Maker では、どの回答が最適な回答であったかについて明�
 
 アクティブ ラーニングは、ランタイム バージョン 4.4.0 以上でサポートされています。 ナレッジ ベースが以前のバージョンで作成された場合は、この機能を使用するために[ランタイムをアップグレード](configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)します。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-QnA Maker マネージド (プレビュー) では、ランタイムが QnA Maker サービス自体によってホストされるため、ランタイムを手動でアップグレードする必要がありません。
+カスタム質問と回答 (プレビュー) では、ランタイムを手動でアップグレードする必要はありません。
 
 ---
 
@@ -159,9 +159,9 @@ QnA Maker マネージド (プレビュー) では、ランタイムが QnA Make
 
     **[Active Learning]\(アクティブ ラーニング\)** が有効になると、ユーザーが送信した質問に基づいて、ナレッジ ベースから定期的に新しい質問が提案されます。 設定を再度切り替えると、 **[Active Learning] (アクティブ ラーニング)** を無効にできます。
     
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-QnA Maker マネージド (プレビュー) のアクティブ ラーニングは、既定では **有効** になっています。 提案された代わりの質問を表示するには、[編集] ページの [[表示] オプションを使用](../How-To/improve-knowledge-base.md#view-suggested-questions)します。
+既定では、アクティブ ラーニングはカスタム質問と回答 (プレビュー) で **オン** になっています。 提案された代わりの質問を表示するには、[編集] ページの [[表示] オプションを使用](../How-To/improve-knowledge-base.md#view-suggested-questions)します。
 
 ---
 

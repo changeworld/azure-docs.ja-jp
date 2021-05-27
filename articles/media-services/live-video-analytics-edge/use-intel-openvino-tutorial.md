@@ -1,17 +1,19 @@
 ---
-title: Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する
+title: Intel の AI 拡張機能 OpenVINO™ モデル サーバーと Live Video Analytics を使用してライブ ビデオを分析する
 description: このチュートリアルでは、Intel が提供する AI モデル サーバーを使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析します。
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 5751184493fffeeaf647507e9e9b00834f63ab5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6445a5bfffe6d359de66e8eda8b9ec82ea56dc0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557260"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368423"
 ---
-# <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル:Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
+# <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-openvino-model-server--ai-extension-from-intel"></a>チュートリアル: Intel の AI 拡張機能 OpenVINO™ モデル サーバーと Live Video Analytics を使用してライブ ビデオを分析する 
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 このチュートリアルでは、Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。 この推論サーバーで、物体 (人物、車両、バイク) を検出するためのモデルや車両を分類するためのモデルにアクセスできるようにする方法を見ていきましょう。 ライブ ビデオ フィード内のフレームのサブセットが推論サーバーに送信され、その結果が IoT Edge ハブに送信されます。
 

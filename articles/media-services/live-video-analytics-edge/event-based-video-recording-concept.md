@@ -1,17 +1,19 @@
 ---
-title: イベントベースのビデオ記録 - Azure
-description: イベントベースのビデオ記録 (EVR) とは、イベントによってトリガーされるビデオ記録のプロセスのことです。 対象となるイベントは、ビデオ信号自体の処理が原因で発生したもの (動きの検出など) でも、独立したソースからのもの (ドアを開くなど) でもかまいません。  この記事では、イベントベースのビデオ記録に関連するいくつかのユース ケースについて説明します。
+title: Azure Live Video Analytics を使用したイベントベースのビデオ記録
+description: イベントベースのビデオ記録 (EVR) とは、Live Video Analytics を使用してイベントによってトリガーされるビデオ記録のプロセスのことです。 対象となるイベントは、ビデオ信号自体の処理が原因で発生したもの (動きの検出など) でも、独立したソースからのもの (ドアを開くなど) でもかまいません。  この記事では、イベントベースのビデオ記録に関連するいくつかのユース ケースについて説明します。
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 6a5f4873b2cfef8d9a6594916d82cd30a3bc1cc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7970bc6e29a6fb9f914541a52188bf0b53b83b86
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97401605"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371489"
 ---
-# <a name="event-based-video-recording"></a>イベントベースのビデオ記録  
- 
+# <a name="event-based-video-recording-with-live-video-analytics"></a>Live Video Analytics を使用したイベントベースのビデオ記録
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
+
 ## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事  
 
 * [継続的なビデオ記録](continuous-video-recording-concept.md)

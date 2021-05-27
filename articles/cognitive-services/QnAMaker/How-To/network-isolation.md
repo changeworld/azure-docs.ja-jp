@@ -5,18 +5,20 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa24347c8fcc0550dc6dc86c96624d1b1f6dcf25
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043361"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376325"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定
 
 QnA Maker リソースへのパブリック アクセスを制限するには、次の手順に従う必要があります。 [仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
 
 ## <a name="restrict-access-to-app-service-qna-runtime"></a>App Service (QnA Runtime) へのアクセスを制限する
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 App Service 許可リストに IP を追加してアクセスを制限したり、QnA Maker App Service をホストするように App Service Environment を構成したりできます。
 
@@ -50,6 +52,10 @@ App Service Environment (ASE) を使用して、QnA Maker App Service をホス�
 
 4.  Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。QnA Maker エンドポイントは上記で作成した App Service Environment (https:// mywebsite.myase.p.azurewebsite.net) に設定する必要があります。
     
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+
+App Service の展開に Custom question answering は含まれません。
+
 ---
 
 ## <a name="restrict-access-to-cognitive-search-resource"></a>Cognitive Search リソースへのアクセスを制限する
@@ -62,8 +68,9 @@ QnA Maker App Service が App Service Environment を使用して制限される
 
 QnAMaker App Service に App Service Environment が使用されない場合、まず、新しい VNet リソースを作成してから Cognitive Search インスタンスへのプライベート エンドポイント接続を作成します。 この場合、Cognitive Search インスタンスに接続するには、QnA Maker App Service を [VNet と統合する](../../../app-service/web-sites-integrate-with-vnet.md)必要があります。 
 
-#  <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 Azure Search リソースに[プライベート エンドポイントを作成](../reference-private-endpoint.md)します。
 
 ---
+

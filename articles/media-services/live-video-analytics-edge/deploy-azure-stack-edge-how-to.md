@@ -1,16 +1,18 @@
 ---
-title: Live Video Analytics を Azure Stack Edge にデプロイする
-description: この記事では、Live Video Analytics を Azure Stack Edge にデプロイするときに役立つ手順を示します。
+title: Azure Live Video Analytics を Azure Stack Edge にデプロイする
+description: この記事では、Azure Live Video Analytics を Azure Stack Edge にデプロイするときに役立つ手順を示します。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 3f751a69bf4d5efca80047479917b5f40e14fe3f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 186b6d95572c6d3772d7271cde1fedccb7d47528
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144729"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378961"
 ---
-# <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Live Video Analytics を Azure Stack Edge にデプロイする
+# <a name="deploy-azure-live-video-analytics-on-azure-stack-edge"></a>Azure Live Video Analytics を Azure Stack Edge にデプロイする
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では、Live Video Analytics を Azure Stack Edge にデプロイするときに役立つ手順を示します。 設定とアクティブ化が済んだら、デバイスで Live Video Analytics をデプロイする準備が整います。 
 

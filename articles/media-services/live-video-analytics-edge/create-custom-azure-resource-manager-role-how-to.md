@@ -1,16 +1,18 @@
 ---
-title: カスタム Azure Resource Manager ロールを作成し、サービス プリンシパルに割り当てる - Azure
-description: この記事では、Azure CLI を使用して、カスタム Azure Resource Manager ロールを作成し、Live Video Analytics on IoT Edge のサービス プリンシパルに割り当てる方法に関するガイダンスを提供します。
+title: カスタム Azure Resource Manager ロールを作成して Azure Live Video Analytics のサービス プリンシパルに割り当てる
+description: この記事では、Azure CLI を使用して、カスタム Azure Resource Manager ロールを作成し、Azure Live Video Analytics on IoT Edge のサービス プリンシパルに割り当てる方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 6c33f6703522fc0b28237e22c16c96587467df40
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4cf819fdcdb0c046070e90dd9c2aa1a42a1d8a1b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788513"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373756"
 ---
-# <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>カスタム Azure Resource Manager ロールを作成し、サービス プリンシパルに割り当てる
+# <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal-with-live-video-analytics"></a>カスタム Azure Resource Manager ロールを作成して Live Video Analytics のサービス プリンシパルに割り当てる
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Live Video Analytics on IoT Edge モジュール インスタンスが正常に機能するには、アクティブな Azure Media Services アカウントが必要です。 Live Video Analytics on IoT Edge モジュールと Azure Media Services アカウントのリレーションシップは、一連のモジュール ツイン プロパティを使用して確立されます。 これらのツイン プロパティのうちの 1 つが[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)で、モジュール インスタンスが Media Services アカウントと通信して必要な操作をトリガーできるようします。 誤用の可能性や、エッジ デバイスからの偶発的なデータの漏えいを最小限に抑えるために、このサービス プリンシパルに最小限の特権を与える必要があります。
 

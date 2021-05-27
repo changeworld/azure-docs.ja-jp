@@ -270,7 +270,7 @@ Django データベースの移行によって、Azure データベース上の 
 
     設定を更新してエラーを修正したら、アプリが再起動するまで少し待ってから、ブラウザーを最新の状態に更新します。
 
-1. [https://www.microsoft.com](`http://<app-name>.azurewebsites.net/admin`) を参照します。 前のセクションで用いた Django のスーパーユーザー資格情報 (`root` と `Pollsdb1`) を使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** を選択し、いくつかの選択肢がある投票の質問を作成します。
+1. [http://.azurewebsites.net/admin](`http://<app-name>.azurewebsites.net/admin`) を参照します。 前のセクションで用いた Django のスーパーユーザー資格情報 (`root` と `Pollsdb1`) を使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** を選択し、いくつかの選択肢がある投票の質問を作成します。
 
 1. もう一度 `http://<app-name>.azurewebsites.net` に移動し、質問がユーザーに表示されるようになったことを確認します。 質問に自由に回答してデータベースにデータを生成します。
 

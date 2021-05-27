@@ -1,5 +1,5 @@
 ---
-title: Visual Studio Code 拡張機能をセットアップする
+title: Visual Studio Code 拡張機能 (プレビュー) を設定する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Visual Studio Code 拡張機能をセットアップする方法について説明します
 services: machine-learning
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 05/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 42553c51ef1d223486de9e29ad8991c7ae96e79d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 80f6849bb4989692e8cd29a3288f9b104bf250bb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382699"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460088"
 ---
-# <a name="set-up-the-visual-studio-code-azure-machine-learning-extension"></a>Visual Studio Code Azure Machine Learning 拡張機能をセットアップする
+# <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>Visual Studio Code Azure Machine Learning 拡張機能をセットアップする (プレビュー)
 
 機械学習ワークフローに使用する Azure Machine Learning Visual Studio Code 拡張機能をセットアップする方法について説明します。
 
@@ -55,7 +55,7 @@ VS Code 用の Azure Machine Learning 拡張機能には、次の作業を行う
 このチュートリアルの残りの手順は、拡張機能の最新バージョンを使用してテストされています。
 
 > [!NOTE]
-> 拡張機能には、2.0 CLI が既定で使用されます。 2\.0 CLI 以外のエクスペリエンスに切り替えるには、Visual Studio Code の `azureML.experimental.V2Config` 設定を `false` にします。 Visual Studio の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
+> Azure Machine Learning VS Code 拡張機能では、既定で 2.0 CLI が使用されます。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
 
 ## <a name="sign-in-to-your-azure-account"></a>Azure アカウントにサインインする
 
@@ -87,5 +87,5 @@ Azure アカウントにサインインするには、Visual Studio Code のス�
 - [Azure Machine Learning リソースの管理](how-to-manage-resources-vscode.md)
 - [ローカルからリモート コンピューティング インスタンスで開発を行う](how-to-set-up-vs-code-remote.md)
 - [リモート Jupyter サーバーとしてコンピューティング インスタンスを使用する](how-to-set-up-vs-code-remote.md)
-- [Visual Studio Code 拡張機能を使用して画像分類モデルをトレーニングおよびデプロイする](tutorial-train-deploy-image-classification-model-vscode.md)
+- [Visual Studio Code 拡張機能を使用して画像分類モデルをトレーニングする](tutorial-train-deploy-image-classification-model-vscode.md)
 - [機械学習の実験をローカルで実行およびデバッグする](how-to-debug-visual-studio-code.md)

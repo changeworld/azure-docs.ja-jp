@@ -1,16 +1,18 @@
 ---
-title: 監視とログ記録 - Azure
-description: この記事では、Live Video Analytics on IoT Edge での監視とログ記録の概要について説明します。
+title: Live Video Analytics での監視とログ - Azure
+description: この記事では、Azure Live Video Analytics on IoT Edge での監視とログの概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4bc69192d0d36d01755d625ee46cd77cd9eec1b9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564485"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372142"
 ---
-# <a name="monitoring-and-logging"></a>監視およびログ記録
+# <a name="monitoring-and-logging-in-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge での監視とログ - Azure
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では、リモート監視のために Live Video Analytics on IoT Edge モジュールからイベントを受け取る方法について説明します。 
 

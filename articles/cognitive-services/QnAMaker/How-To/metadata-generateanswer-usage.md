@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0daa44f0d901dc14541785f764d5ccf8f96fc737
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232207"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376676"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>GenerateAnswer API を使って回答を取得する
 
@@ -42,7 +42,7 @@ ms.locfileid: "103232207"
 
     ![エンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+    # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
     ![管理対象のエンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
 
@@ -180,9 +180,9 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 正確な回答機能は、QnA Maker マネージド バージョンでのみ提供しています。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-ユーザーは QnA Maker 管理対象リソースを使用するときに、[正確な回答](../reference-precise-answering.md)を有効にすることができます。 同じ目的で answerSpanRequest パラメーターを更新する必要があります。
+Text Analytics リソースで Custom question answering 機能を利用している場合に、[正確な回答](../reference-precise-answering.md)を有効にできます。 同じ目的で answerSpanRequest パラメーターを更新する必要があります。
 
 ```json
 {

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41477b99c6bb07ab836f6c4ef75a06b2f642f3a2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96352424"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375427"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
@@ -48,11 +48,11 @@ ms.locfileid: "96352424"
 
     [![ユーザーからの質問、回答、スコアを確認するクエリを実行する](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-QnA Maker マネージド (プレビュー) によって Azure 診断ログが使用され、テレメトリ データとチャット ログが格納されます。 下の手順でサンプル クエリを実行し、QnA Maker ナレッジ ベースの使用状況分析を取得します。
+Custom question answering (プレビュー) では、Azure 診断ログによりテレメトリ データとチャットのログを保存します。 下の手順でサンプル クエリを実行し、QnA Maker ナレッジ ベースの使用状況分析を取得します。
 
-1. QnA Maker マネージド (プレビュー) サービスの[診断ログを有効にします](../../diagnostic-logging.md)。
+1. Custom question answering (プレビュー) 機能を利用している Text Analytics サービスで[診断ログを有効にします](../../diagnostic-logging.md)。
 
 2. 前の手順で、ログに **[Audit]、[RequestResponse]、[AllMetrics]** に加えて **[Trace]** を選択しました。
 
@@ -132,7 +132,7 @@ traces | extend id = operation_ParentId
 | order  by timestamp  desc
 ```
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 ### <a name="all-qna-chat-log"></a>すべての QnA チャット ログ
 

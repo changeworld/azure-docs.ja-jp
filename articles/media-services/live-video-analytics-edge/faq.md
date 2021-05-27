@@ -1,16 +1,18 @@
 ---
-title: Live Video Analytics on IoT Edge に関する FAQ - Azure
-description: この記事では、Live Video Analytics on IoT Edge に関してよく寄せられる質問に回答します。
+title: Azure Live Video Analytics on IoT Edge に関する FAQ
+description: この記事では、Azure Live Video Analytics on IoT Edge に関してよく寄せられる質問に回答します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 2e5ec6e3a303bb8d655e666a820cfe67943b4eb6
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: ed27b120ff28704aeb3595815544262bab78e95d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275959"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371454"
 ---
-# <a name="live-video-analytics-on-iot-edge-faq"></a>Live Video Analytics on IoT Edge の FAQ
+# <a name="azure-live-video-analytics-on-iot-edge-faq"></a>Azure Live Video Analytics on IoT Edge に関する FAQ
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では、Live Video Analytics on Azure IoT Edge に関してよく寄せられる質問に回答します。
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 82ae7e1bd0bf2a8bcd0ad18ee4db381f90f8db18
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ff1ce49395a5a7374a0dc739eb26fb7b4a6f72af
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743833"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372810"
 ---
 # <a name="importing-from-data-sources"></a>データ ソースからのインポート
 
@@ -20,7 +20,9 @@ ms.locfileid: "108743833"
 
 コンテンツは、データ ソースからナレッジ ベースに取り込まれます。 データ ソースの場所は、認証を必要としない **パブリック URL またはファイル** です。
 
-認証で保護された [SharePoint ファイル](../how-to/add-sharepoint-datasources.md)は例外です。 SharePoint リソースは、Web ページではなく、ファイルになっている必要があります。 URL が .ASPX のような Web 拡張子で終わる場合、SharePoint から QnA Maker にインポートされません。
+認証で保護された [SharePoint ファイル](../how-to/add-sharepoint-datasources.md)は例外です。 SharePoint リソースは、Web ページではなく、ファイルになっている必要があります。 
+
+QnA Maker は、Web 拡張子 .ASPX で終わる、認証により保護されていない公開 URL をサポートしています。
 
 ## <a name="chit-chat-content"></a>おしゃべりコンテンツ
 
@@ -37,7 +39,7 @@ ms.locfileid: "108743833"
 
 ## <a name="structured-multi-turn-format-through-import"></a>インポートによる構造化された複数ターン形式
 
-複数ターンの会話は、`.tsv` ファイル形式で作成できます。 この形式を使うと、(QnA Maker を使用せずに他のプロセスを使用して) 以前のチャット ログを分析して複数ターンの会話を作成してから、自動化によって `.tsv` ファイルを作成することができます。 ファイルをインポートし、既存のナレッジ ベースを置き換えます。
+`.tsv` ファイル形式でマルチターン会話を作成できます。 この形式を使うと、(QnA Maker を使用せずに他のプロセスを使用して) 以前のチャット ログを分析して複数ターンの会話を作成してから、自動化によって `.tsv` ファイルを作成することができます。 ファイルをインポートし、既存のナレッジ ベースを置き換えます。
 
 > [!div class="mx-imgBorder"]
 > ![3 レベルの複数ターンの質問の概念モデル](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
@@ -62,6 +64,13 @@ ms.locfileid: "108743833"
 * この [GitHub からダウンロードできるサンプル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)を使用します
 * または、QnA Maker ポータルでペアを作成し、保存してから、ペアを表す方法の例としてナレッジ ベースをエクスポートします。
 
+## <a name="unstructured-data-format"></a>非構造化データ形式 
+
+ファイルの形でインポートした非構造化コンテンツからナレッジ ベースを作成することもできます。 現在この機能は、サポートしているファイル形式のドキュメントをアップロードする方法でのみ使用できます。
+
+> [!IMPORTANT]
+> ファイルの形で非構造化コンテンツをアップロードする機能は、Custom question answering (プレビュー リリース) でのみ使用できます
+
 ## <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>ナレッジ ベースに追加できるドキュメントのコンテンツの種類
 コンテンツの種類には、PDF、DOC、TXT など、多くの標準的な構造化ドキュメントが含まれています。
 
@@ -71,8 +80,8 @@ ms.locfileid: "108743833"
 
 |ソースの種類|コンテンツの種類| 例|
 |--|--|--|
-|URL|FAQ<br> (基本、セクション付き、またはトピックのホーム ページ付き)<br>サポート ページ <br> (単一ページのハウツー記事や、トラブルシューティングの記事など)|[基本的な FAQ](../troubleshooting.md)、 <br>[リンク付きの FAQ](https://www.microsoft.com/en-us/software-download/faq)、<br> [トピック ホーム ページ付きの FAQ](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[サポート記事](./best-practices.md)|
-|PDF / DOC|FAQ、<br> 製品マニュアル、<br> パンフレット、<br> 論文、<br> チラシ ポリシー、<br> サポート ガイド、<br> 構造化 QnA、<br> など|**マルチターンなし**<br>[Structured QnA.docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)、<br><br>**マルチターン**：<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Benefits (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Benefits (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)|
+|URL|FAQ<br> (基本、セクション付き、またはトピックのホーム ページ付き)<br>サポート ページ <br> (単一ページのハウツー記事や、トラブルシューティングの記事など)|[基本的な FAQ](../troubleshooting.md)、 <br>[リンク付きの FAQ](https://www.microsoft.com/software-download/faq)、<br> [トピック ホーム ページ付きの FAQ](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[サポート記事](./best-practices.md)|
+|PDF / DOC|FAQ、<br> 製品マニュアル、<br> パンフレット、<br> 論文、<br> チラシ ポリシー、<br> サポート ガイド、<br> 構造化 QnA、<br> など|**マルチターンなし**<br>[Structured QnA.docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)、<br> [非構造化 blog.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Introducing-surface-laptop-4-and-new-access.pdf)、<br> [非構造化ホワイト ペーパー.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/sample-unstructured-paper.pdf)<br><br>**マルチターン**：<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Benefits (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Benefits (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)|
 |*Excel|構造化 QnA ファイル<br> (RTF、HTML サポートなど)|**マルチターンなし**:<br>[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)<br><br>**マルチターン**：<br>[構造化された簡単な FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx)<br>[Surface ノート PC の FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-Surface-Pro.xlsx)|
 |*TXT/TSV|構造化 QnA ファイル|[Sample chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 

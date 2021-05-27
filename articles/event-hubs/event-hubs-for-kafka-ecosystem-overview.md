@@ -3,12 +3,12 @@ title: Apache Kafka アプリからイベント ハブを使用する - Azure Ev
 description: この記事では、Azure Event Hubs での Apache Kafka のサポートに関する情報を提供します。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 1cd6d06b610ccccb8c80818d3bdec726ed94e875
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 2e6e1defffd012e524044bc427788fc8a1bcc53a
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505316"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376086"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs により、独自の Apache Kafka® クラスターを実行する代わりに、既存のほとんどの Apache Kafka クライアント アプリケーションで使用できる、Apache Kafka プロデューサーおよびコンシューマー API と互換性のあるエンドポイントが提供されます。 Event Hubs によって、Apache Kafka のプロデューサーおよびコンシューマー API クライアントのバージョン 1.0 以降がサポートされています。
@@ -39,7 +39,7 @@ Apache Kafka 機能用の Event Hubs により、Apache Kafka サーバー バ�
 
 Event Hubs と名前空間について詳しくは、「[Event Hubs の機能](event-hubs-features.md#namespace)」をご覧ください。 クラウド サービスとしての Event Hubs は、単一の安定した仮想 IP アドレスをエンドポイントとして使用するため、クライアントは、ブローカーやクラスター内のマシンについて知っておく必要はありません。 Event Hubs によって同じプロトコルが実装されますが、この違いは、すべてのパーティションに対するすべての Kafka トラフィックが、クラスターのすべてのブローカーに対してファイアウォール アクセスを必要とするのではなく、この 1 つのエンドポイント経由で予測どおりにルーティングされることを意味します。   
 
-Event Hubs のスケーリングは、購入するスループット ユニットの数によって制御されます。各スループット ユニットでは、1 秒あたり 1 メガバイト、またはイングレスでは 1 秒あたり 1,000 イベント、エグレスではその量の 2 倍を利用できます。 [自動インフレ](event-hubs-auto-inflate.md)機能を使用した場合、スループットの上限に達したときに、Event Hubs でスループット ユニットを自動的にスケールアップすることができます。この機能は、Apache Kafka プロトコルのサポートでも動作します。  
+Event Hubs のスケーリングは、購入する[スループット ユニット](event-hubs-scalability.md#throughput-units)または[処理ユニット](event-hubs-scalability.md#processing-units)の数によって制御されます。各スループット ユニットでは、1 秒あたり 1 メガバイト、またはイングレスでは 1 秒あたり 1,000 イベント、エグレスではその量の 2 倍を利用できます。 [自動インフレ](event-hubs-auto-inflate.md)機能を使用した場合、スループットの上限に達したときに、Event Hubs でスループット ユニットまたは処理ユニットを自動的にスケールアップすることができます。この機能は、Apache Kafka プロトコルのサポートでも動作します。  
 
 ### <a name="is-apache-kafka-the-right-solution-for-your-workload"></a>Apache Kafka はワークロードに適したソリューションか
 

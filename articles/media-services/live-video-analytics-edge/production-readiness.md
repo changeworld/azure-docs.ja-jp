@@ -1,16 +1,18 @@
 ---
-title: 運用環境の準備状況とベスト プラクティス - Azure
-description: この記事では、運用環境で Live Video Analytics on IoT Edge モジュールを構成してデプロイする方法について説明します。
+title: Live Video Analytics における運用環境の準備状況とベスト プラクティス - Azure
+description: この記事では、運用環境で Azure Live Video Analytics on IoT Edge モジュールを構成してデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7893750c1f835a95b5eba706f94679a41a424856
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97400558"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372065"
 ---
-# <a name="production-readiness-and-best-practices"></a>運用環境の準備状況とベスト プラクティス
+# <a name="production-readiness-and-best-practices-in-live-video-analytics"></a>Live Video Analytics における運用環境の準備状況とベスト プラクティス
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では、運用環境で Live Video Analytics on IoT Edge モジュールを構成してデプロイする方法について説明します。 また、IoT Edge ソリューションの準備について、記事「[IoT Edge ソリューションを運用環境にデプロイするための準備を行う](../../iot-edge/production-checklist.md)」を確認する必要があります。 
 

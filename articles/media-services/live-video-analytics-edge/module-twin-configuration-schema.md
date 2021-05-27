@@ -1,16 +1,18 @@
 ---
-title: モジュール ツインの JSON スキーマ - Azure
-description: このトピックでは、Live Video Analytics on IoT Edge のモジュール ツイン JSON スキーマについて説明します。
+title: Live Video Analytics のモジュール ツイン JSON スキーマ - Azure
+description: このトピックでは、Azure Live Video Analytics on IoT Edge のモジュール ツイン JSON スキーマについて説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be80b5782d76f1ec490395013310058f1cb2fe79
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87053068"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371173"
 ---
-# <a name="module-twin-json-schema"></a>モジュール ツインの JSON スキーマ
+# <a name="module-twin-json-schema-in-live-video-analytics"></a>Live Video Analytics のモジュール ツイン JSON スキーマ
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 Azure IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 詳細については、「[IoT Hub のモジュール ツインの理解と使用](../../iot-hub/iot-hub-devguide-module-twins.md)」を参照してください
 

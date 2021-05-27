@@ -55,6 +55,12 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
+        - name: Azure Arc (プレビュー)
+          items:
+            - name: コード プロジェクトを発行する
+              href: create-first-function-arc-cli.md
+            - name: Linux コンテナーを発行する
+              href: create-first-function-arc-custom-container.md
     - name: データベースへの接続
       items:
         - name: Visual Studio Code
@@ -73,8 +79,9 @@
       href: functions-twitter-email.md
     - name: VS Code での Python 関数の開発
       href: /azure/python/tutorial-vs-code-serverless-python-01
-    - name: サーバーレス API のための OpenAPI 定義
-      href: functions-openapi-definition.md
+    - name: Visual Studio を使用してサーバーレス API を作成する
+      href: openapi-apim-integrate-visual-studio.md
+      displayName: 'OpenAPI, Swagger'
     - name: ネットワーク
       items:
         - name: 仮想ネットワークへの接続
@@ -452,8 +459,14 @@
           href: functions-scenario-database-table-cleanup.md
         - name: 仮想ネットワークへの接続
           href: ./functions-create-vnet.md
-        - name: Open API 2.0 定義の作成
-          href: ./functions-openapi-definition.md
+        - name: OpenAPI 定義を作成する
+          items:
+            - name: API Management 統合 (ポータル)
+              href: ./functions-openapi-definition.md
+              displayName: 'OpenAPI, Swagger'
+            - name: Visual Studio と API Management (C#)
+              href: openapi-apim-integrate-visual-studio.md
+              displayName: 'OpenAPI, Swagger'
         - name: マネージド ID の使用
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: HTTP 関数エンドポイントのカスタマイズ
@@ -658,8 +671,6 @@
       href: functions-host-json-v1.md
     - name: ネットワークに関する FAQ
       href: functions-networking-faq.md
-    - name: OpenAPI リファレンス
-      href: functions-api-definition.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

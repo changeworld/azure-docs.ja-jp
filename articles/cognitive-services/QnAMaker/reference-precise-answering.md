@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 9c7b265118e395dde2b4b5f3959ba397d75ddac5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c27ff08ba3fc75b7f8e7b2053ba5e6949c808fe
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232190"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379487"
 ---
 # <a name="precise-answering"></a>正確な回答
 
-QnA Maker マネージド (プレビュー) で導入された正確な回答機能を使用すると、ナレッジベースにある一番適した回答文章の候補から、ユーザーのすべてのクエリに対する正しい短い回答を得ることができます。 この機能では、実行時にユーザー クエリの意図を理解し、回答文章にファクトとして短い回答がある場合に短い回答を回答文章から検出する、ディープ ラーニング モデルを使用しています。 
+カスタム質問と回答 (プレビュー) で導入された正確な回答機能を使用すると、ナレッジベースにある一番適した回答文章の候補から、ユーザーのすべてのクエリに対する正しい短い回答を得ることができます。 この機能では、実行時にユーザー クエリの意図を理解し、回答文章にファクトとして短い回答がある場合に短い回答を回答文章から検出する、ディープ ラーニング モデルを使用しています。 
 
 この機能は、テスト ウィンドウで既定でオンになっているため、自分のシナリオに固有の機能をテストできます。 この機能は、コンテンツ開発者とエンドユーザーの両方に非常に有益です。 コンテンツ開発者は、ナレッジベースにあるすべてのファクトに対して、特定の質問と回答のペアを手動でキュレートする必要がなくなりました。また、エンドユーザーは、サービスから返された回答全体を確認して、ユーザーのクエリの回答である実際のファクトを探す必要がなくなりました。 [GenerateAnswer API を使用して、正確な回答](How-To/metadata-generateanswer-usage.md#get-precise-answers-with-generateanswer-api)をフェッチできます。
 
@@ -28,7 +28,7 @@ QnA Maker ポータルで [テスト] ウィンドウを開くと、上部に **
 
 このサービスでは、正確な回答の信頼度スコアも **回答範囲スコア** として返されます。これは、[テスト] ウィンドウのクエリのすぐ下の **[検査]** オプションを選択して確認できます。
 
-![管理された回答範囲スコア](../QnAMaker/media/conversational-context/managed-answer-span-score.png)
+![管理された回答範囲スコア](../QnAMaker/media/conversational-context/inspect-precise-answer.png)
 
 ## <a name="publishing-a-qna-maker-bot"></a>QnA Maker ボットを発行する
 

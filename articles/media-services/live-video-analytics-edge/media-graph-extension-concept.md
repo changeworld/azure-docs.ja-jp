@@ -1,16 +1,18 @@
 ---
-title: メディア グラフ拡張機能とは - Azure
-description: Live Video Analytics on IoT Edge では、グラフ拡張ノードを使用してメディア グラフ処理機能を拡張することができます。
+title: Live Video Analytics メディア グラフ拡張機能とは - Azure
+description: Azure Live Video Analytics on IoT Edge では、グラフ拡張ノードを使用してメディア グラフ処理機能を拡張することができます。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 4a7aea7cc60a67603d8a0376cf84228072659d6c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8f3165d948e636bda49128f080af00df7f30c977
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557617"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372414"
 ---
-# <a name="media-graph-extension"></a>メディア グラフ拡張機能
+# <a name="live-video-analytics-media-graph-extension"></a>Live Video Analytics メディア グラフ拡張機能
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Live Video Analytics on IoT Edge では、グラフ拡張ノードを使用してメディア グラフ処理機能を拡張することができます。 分析拡張機能プラグインでは、従来のイメージ処理手法またはコンピューター ビジョンの AI モデルを利用できます。 グラフ拡張機能を有効にするには、拡張プロセッサ ノードをメディア グラフに含めます。 拡張プロセッサ ノードは、構成済みのエンドポイントにビデオ フレームを中継し、拡張機能へのインターフェイスとして機能します。 ローカルまたはリモートのエンドポイントに接続でき、必要に応じて認証と TLS 暗号化によって保護することができます。 また、グラフ拡張プロセッサ ノードでは、ビデオ フレームをカスタム拡張機能に送信する前に、オプションでそれらのスケーリングとエンコードを実行できます。 
 

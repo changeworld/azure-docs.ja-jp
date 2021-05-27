@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: da46084c8c2616284c31ef155927e8dbcbd19e0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a24045d38b594e09b931a885c60851109a108e3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102209361"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372690"
 ---
 # <a name="service-configuration"></a>サービス構成
 
@@ -38,9 +38,9 @@ QnA Maker は、App Service を使用して、[generateAnswer API](/rest/api/cog
 
 変更を完了したら、Azure portal の **[概要]** ページからサービスを **再起動** する必要があります。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-App Service のカスタマイズは、QnA Maker マネージド (プレビュー) には適用されません。
+App Service のカスタマイズは、Custom question answering (プレビュー) には適用されません。
 
 ---
 
@@ -64,9 +64,9 @@ QnA Maker サービスにリンクされている [Cognitive Search サービス
 
 Application Insights は、QnA Maker GA でテレメトリを監視するために使用されます。 QnA Maker に固有の構成設定はありません。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-[QnA Maker マネージド (プレビュー) サービスにテレメトリを追加する方法](How-To/get-analytics-knowledge-base.md)を参照してください。 
+[テレメトリを Custom question answering (プレビュー) サービスに追加する方法](How-To/get-analytics-knowledge-base.md)を知る。 
 
 ---
 
@@ -76,9 +76,9 @@ Application Insights は、QnA Maker GA でテレメトリを監視するため�
 
 App Service プランには、QnA Maker に固有の構成設定はありません。
 
-# <a name="qnamaker-managed-preview-release"></a>[QnAMaker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-App Service プランは、QnA Maker マネージド (プレビュー) では使用されません。
+App Service Plan は Custom question answering (プレビュー) には使用しません。
 
 ---
 

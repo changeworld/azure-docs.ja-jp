@@ -1,16 +1,18 @@
 ---
-title: gRPC 拡張プロトコル - Azure
-description: この記事では、gRPC 拡張プロトコルを使用した、Live Video Analytics モジュールと AI または CV カスタム拡張機能の間でのメッセージの送信について説明します。
+title: Live Video Analytics での gRPC 拡張プロトコル - Azure
+description: この記事では、gRPC 拡張プロトコルを使用した、Azure Live Video Analytics モジュールと AI または CV カスタム拡張機能の間でのメッセージの送信について説明します。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 8d153b472e54b221b60a2b584043ffaf68e8ff82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1bbcee9a964e95b8a32d7229ae7045e012a5a6e5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565811"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379925"
 ---
-# <a name="grpc-extension-protocol"></a>gRPC 拡張プロトコル
+# <a name="grpc-extension-protocol-in-live-video-analytics"></a>Live Video Analytics での gRPC 拡張プロトコル
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 Live Video Analytics on IoT Edge では、[グラフ拡張ノード](./media-graph-extension-concept.md)を使用してメディア グラフ処理機能を拡張することができます。 gRPC 拡張プロセッサを拡張ノードとして使用した場合、Live Video Analytics モジュールとご利用の AI (または CV) モジュールとの間の通信は、gRPC ベースの高性能な構造化プロトコルで行われます。
 

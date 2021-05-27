@@ -61,6 +61,9 @@
         - name: Azure Marketplace へのマネージド サービス オファーの公開
           displayName: 'managed services, azure marketplace, publish, marketplace'
           href: ./how-to/publish-managed-services-offers.md
+        - name: 適格な認可を作成する
+          displayName: 'jit, pim, elevate, elevation, just-in-time'
+          href: ./how-to/create-eligible-authorizations.md
         - name: 委任を更新する
           displayName: upgrade
           href: ./how-to/update-delegation.md

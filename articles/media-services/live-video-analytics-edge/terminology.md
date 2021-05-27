@@ -1,16 +1,18 @@
 ---
-title: IoT Edge の Live Video Analytics の用語 - Azure
-description: この記事では、Live Video Analytics on IoT Edge の用語の概要について説明します。
+title: Azure Live Video Analytics on IoT Edge の用語
+description: この記事では、Azure Live Video Analytics on IoT Edge の用語の概要について説明します。
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a017a7ddb946bf5bb8c01b9a61c322843c9815f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88690614"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378406"
 ---
-# <a name="terminology"></a>用語
+# <a name="live-video-analytics-terminology"></a>Live Video Analytics の用語
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 この記事では、[Live Video Analytics on IoT Edge](overview.md) に関連する用語の概要について説明します。
 

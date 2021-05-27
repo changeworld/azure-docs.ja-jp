@@ -1,16 +1,18 @@
 ---
-title: ビデオ記録 - Azure
-description: CCTV カメラ用のビデオ管理システムのコンテキストでは、ビデオ記録とは、カメラからビデオをキャプチャし、モバイルおよびブラウザー アプリで表示するためにそれを記録するプロセスのことです。 ビデオ記録は、連続ビデオ記録とイベントベースのビデオ記録に分類できます。
+title: Live Video Analytics を使用したビデオ記録 - Azure
+description: CCTV カメラ用のビデオ管理システムのコンテキストでは、ビデオ記録とは、カメラからビデオをキャプチャし、モバイルおよびブラウザー アプリで表示するためにそれを記録するプロセスのことです。 ビデオ記録は、連続ビデオ記録とイベントベースのビデオ記録に分類できます。 この記事では、ビデオ記録について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c03472f577e67d5b2705a2ebe3f53e85e0849819
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fea0d2daaa4724cf4d354c8ab16b6b6ba3e76bf5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84260195"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368372"
 ---
-# <a name="video-recording"></a>ビデオ記録
+# <a name="video-recording-with-live-video-analytics"></a>Live Video Analytics を使用したビデオ記録
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 CCTV カメラ用のビデオ管理システムのコンテキストでは、ビデオ記録とは、カメラからビデオをキャプチャし、モバイルおよびブラウザー アプリで表示するためにそれを記録するプロセスのことです。 ビデオ記録は、連続ビデオ記録とイベントベースのビデオ記録に分類できます。 
 

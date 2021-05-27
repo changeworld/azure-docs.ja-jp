@@ -3,12 +3,12 @@ title: スケーラビリティ - Azure Event Hubs | Microsoft Docs
 description: この記事では、パーティションとスループット ユニットを使用して Azure Event Hubs をスケーリングする方法について説明します。
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acfc300ff7e6bd77c570c68bda50a731df10409c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601282"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367093"
 ---
 # <a name="scaling-with-event-hubs"></a>Event Hubs によるスケーリング
 
@@ -35,6 +35,14 @@ Event Hubs の **自動インフレ** 機能は、使用量のニーズに合わ
 負荷が最小しきい値を超えていて、ServerBusy エラーなどで失敗した要求がない場合、Event Hubs サービスでスループットが増えます。 
 
 自動インフレ機能の詳細については、[スループット単位の自動的なスケーリング](event-hubs-auto-inflate.md) に関する記事を参照してください。
+
+## <a name="processing-units"></a>プロセッシング ユニット
+
+ [Event Hubs Premium](./event-hubs-premium-overview.md) は、マネージド マルチテナント PaaS 環境で優れたパフォーマンスと分離性を提供します。 Premium レベルのリソースは CPU とメモリのレベルで分離され、各テナント ワークロードが分離して実行されます。 このリソース コンテナーを "*プロセッシング ユニット*" (PU) と呼びます。 各 Event Hubs Premium 名前空間に対して 1、2、4、8、または 16 のプロセッシング ユニットを購入できます。 
+
+プロセッシング ユニットで取り込みおよびストリーミングできる量は、プロデューサー、コンシューマー、取り込みと処理の速度など、さまざまな要因によって異なります。 十分なパーティションがあり、ストレージが調整要因とならない場合、1 つのプロセッシング ユニットでは、約 5 から 10 MB/秒のイングレスと 10 から 20 MB/秒のエグレスのコア容量を提供できます。  
+
+
 
 ## <a name="partitions"></a>[パーティション]
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
