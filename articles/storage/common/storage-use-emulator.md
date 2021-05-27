@@ -19,7 +19,7 @@ ms.locfileid: "106277115"
 Microsoft Azure Storage Emulator は、ローカル開発のために Azure の Blob service、Queue サービス、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
 
 > [!IMPORTANT]
-> Azure Storage エミュレーターは現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage エミュレーターよりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
+> Azure Storage Emulator は現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage Emulator よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
 
 ## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターを入手する
 
