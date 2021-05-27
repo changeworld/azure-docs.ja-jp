@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: 46b5f12b005eaea36c96f183857311614ddba5bc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2eabd6462edd609d70fc302ce2d0d64cb99dbdc3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387183"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475364"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>Azure Arc 対応 Logic Apps を使用してシングルテナント ベースのロジック アプリ ワークフローを作成してデプロイする (プレビュー)
 
@@ -392,7 +392,7 @@ Azure Arc 対応ロジック アプリをビルドしてデプロイするため
 | Item | JSON プロパティ | 説明 |
 |------|---------------|-------------|
 | 場所 | `location` | カスタムの場所および Kubernetes 環境と同じリソースの場所 (Azure リージョン) を必ず使用してください。 ロジック アプリのリソースの場所、カスタムの場所、Kubernetes 環境はすべて同じである必要があります。 <p><p>**注**: この値は、カスタムの場所の "*名前*" と同じではありません。 |
-| アプリの種類 | `kind` | Azure プラットフォームでアプリを識別できるようにデプロイするアプリの種類。 Azure Logic Apps の場合、この情報は次の例のようになります: `kubernetes,functionapp,logicapp,linux` |
+| アプリの種類 | `kind` | Azure プラットフォームでアプリを識別できるようにデプロイするアプリの種類。 Azure Logic Apps の場合、この情報は次の例のようになります: `kubernetes,functionapp,workflowapp,linux` |
 | 拡張された場所 | `extendedLocation` | このオブジェクトでは、Kubernetes 環境に "*カスタムの場所*" の `"name"` が必要であるため、`"type"` が `"CustomLocation"` に設定されている必要があります。 |
 | ホスティング プランのリソース ID | `serverFarmId` | 関連付けられている App Service プランのリソース ID。これは次のような形式になります。 <p><p>`"/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}"` |
 | ストレージ接続文字列 | `AzureWebJobsStorage` | ストレージ アカウントの接続文字列 <p><p>**重要**: ARM テンプレートでは、自分のストレージ アカウントの接続文字列を指定する必要があります。 運用シナリオまたは環境では、キー コンテナーを使用するなどして、このようなシークレットや機密情報をセキュリティで保護するようにしてください。 |
@@ -408,7 +408,7 @@ Azure Arc 対応ロジック アプリをビルドしてデプロイするため
    "apiVersion": "2020-12-01",
    "name": "[parameters('name')]",
    "location": "[parameters('location')]",
-   "kind": "kubernetes,functionapp,logicapp,linux",
+   "kind": "kubernetes,functionapp,workflowapp,linux",
    "extendedLocation": {
       "name": "[parameters('customLocationId')]",
       "type": "CustomLocation"
@@ -441,7 +441,7 @@ Azure Arc 対応ロジック アプリをビルドしてデプロイするため
             },
             {
                "name": "APP_KIND",
-               "value": "logicapp"
+               "value": "workflowapp"
             }
          ],
          "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
@@ -465,7 +465,7 @@ Azure Arc 対応ロジック アプリをビルドしてデプロイするため
 | Item | JSON プロパティ | 説明 |
 |------|---------------|-------------|
 | 場所 | `location` | カスタムの場所および Kubernetes 環境と同じリソースの場所 (Azure リージョン) を必ず使用してください。 ロジック アプリのリソースの場所、カスタムの場所、Kubernetes 環境はすべて同じである必要があります。 <p><p>**注**: この値は、カスタムの場所の "*名前*" と "*同じではありません*"。 |
-| アプリの種類 | `kind` | Azure プラットフォームでアプリを識別できるようにデプロイするアプリの種類。 Azure Logic Apps の場合、この情報は次の例のようになります: `kubernetes,functionapp,logicapp,container` |
+| アプリの種類 | `kind` | Azure プラットフォームでアプリを識別できるようにデプロイするアプリの種類。 Azure Logic Apps の場合、この情報は次の例のようになります: `kubernetes,functionapp,workflowapp,container` |
 | 拡張された場所 | `extendedLocation` | このオブジェクトでは、Kubernetes 環境に "*カスタムの場所*" の `"name"` が必要であるため、`"type"` が `"CustomLocation"` に設定されている必要があります。 |
 | コンテナー名 | `linuxFxVersion` | コンテナーの名前。次のような形式になります。`DOCKER\|<container-name>` |
 | ホスティング プランのリソース ID | `serverFarmId` | 関連付けられている App Service プランのリソース ID。これは次のような形式になります。 <p><p>`"/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}"` |
@@ -491,7 +491,7 @@ Docker レジストリとコンテナー イメージを参照するには、こ
    "apiVersion": "2020-12-01",
    "name": "[parameters('name')]",
    "location": "[parameters('location')]",
-   "kind": " kubernetes,functionapp,logicapp,container",
+   "kind": " kubernetes,functionapp,workflowapp,container",
    "extendedLocation": {
       "name": "[parameters('customLocationId')]",
       "type": "CustomLocation"
@@ -524,7 +524,7 @@ Docker レジストリとコンテナー イメージを参照するには、こ
             },
             {
                "name": "APP_KIND",
-               "value": "logicapp"
+               "value": "workflowapp"
             }, 
             {
                "name": "DOCKER_REGISTRY_SERVER_URL",

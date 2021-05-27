@@ -9,12 +9,12 @@ ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: e74b4ed5b54a27b13768c19878331a9779bb9dc6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 36d7c5d6b97b54392be8c85d1b6a6088eda5f983
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456845"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110388280"
 ---
 # <a name="azure-sql-database-ledger"></a>Azure SQL Database 台帳
 
@@ -66,7 +66,7 @@ ms.locfileid: "110456845"
 
 [更新可能な台帳テーブル](ledger-updatable-ledger-tables.md)では、更新または削除を実行するトランザクションが発生したときに、データベース内の行への変更の履歴を追跡します。 更新可能な台帳テーブルは、システムによってバージョン管理されたテーブルであり、ミラー化されたスキーマを持つ別のテーブルへの参照が含まれています。 システムでは、このテーブルを使用して、台帳テーブルの行が更新または削除されるたびに、行の以前のバージョンを自動的に保存します。 このもう 1 つのテーブルは、履歴テーブルと呼ばれます。 履歴テーブルは、更新可能な台帳テーブルが作成されると自動的に作成されます。 更新可能な台帳テーブルとそれに対応する履歴テーブルに含まれる値は、時間の経過に伴うデータベースの値の記録を提供します。 データベースのこの記録を簡単に照会するために、システムによって生成された台帳ビューが作成されます。これは、更新可能な台帳テーブルと履歴テーブルを結合します。
 
-更新可能な台帳テーブルを作成して使用する方法の詳細については、「[更新可能な台帳テーブルを作成して使用する](ledger-how-to-updatable-ledger-tables.md)」を参照してください。
+更新可能な台帳テーブルを作成して使用する方法の詳細については、「[更新可能な台帳テーブルを作成する](ledger-how-to-updatable-ledger-tables.md)」を参照してください。
 
 ### <a name="append-only-ledger-tables"></a>追加専用の台帳テーブル
 

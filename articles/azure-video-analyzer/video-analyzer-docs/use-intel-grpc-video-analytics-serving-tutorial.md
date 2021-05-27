@@ -4,12 +4,12 @@ description: このチュートリアルでは、Intel OpenVINO™ DL Streamer �
 ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 05/18/2021
-ms.openlocfilehash: 449cd027396f92be0443d7cd4fe6dabc3eb449f6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e06acecfd65686d90afa4727dd611bcfa2877c51
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384108"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465715"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
 
@@ -97,7 +97,7 @@ OpenVINO™ DL Streamer – Edge AI Extension モジュールは、OpenVINO™ D
 1. IoT Hub デバイスを選択するように求めるメッセージが表示されたら、 **[avasample-iot-edge-device]** を選択します。
 1. 約 30 秒後に、ウィンドウの左下隅で Azure IoT Hub を最新の情報に更新します。 エッジ デバイスには、次のデプロイ済みモジュールが表示されます。
 
-    * Video Analyzer エッジ モジュール (名前: **avaedge**)。
+    * **avaedge** という名前の Video Analyzer エッジ モジュール。
     * **rtspsim** モジュール。RTSP サーバーをシミュレートし、ライブ ビデオ フィードのソースとして機能します。 
     * **avaextension** モジュール。コンピューター ビジョンをイメージに適用し、複数のオブジェクトの種類のクラスを返す、オブジェクトの検出、分類、および追跡モデルを備えた Intel OpenVINO DL Streamer モジュールです。
 
@@ -114,7 +114,7 @@ Azure Video Analyzer デバイスを右クリックし、 **[組み込みイベ�
 ![監視の開始](./media/quickstarts/start-monitoring-iot-hub-events.png) 
 
 ### <a name="run-the-sample-program-to-detect-vehicles-persons-or-bike"></a>サンプル プログラムを実行して車両、人物、またはバイクを検出する
-ブラウザーでこのチュートリアルの [パイプライン トポロジ](https://raw.githubusercontent.com/Azure/azure-video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json)を開くと、`grpcExtensionAddress` の値が `tcp://avaExtension:5001` に設定されていることがわかります。*httpExtensionOpenVINO* チュートリアルとは対照的に、URL を gRPC サーバーに変更する必要はありません。 代わりに、操作ファイルの `extensionConfiguration` によって特定のパイプラインを実行するようモジュールに指示します。 指定しない場合、既定では "person_vehicle_bike_detection" を表す "object_detection" になります。 サポートされている他のパイプラインで実験することができます。
+ブラウザーでこのチュートリアルの [パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json)を開くと、`grpcExtensionAddress` の値が `tcp://avaExtension:5001` に設定されていることがわかります。*httpExtensionOpenVINO* チュートリアルとは対照的に、URL を gRPC サーバーに変更する必要はありません。 代わりに、操作ファイルの `extensionConfiguration` によって特定のパイプラインを実行するようモジュールに指示します。 指定しない場合、既定では "person_vehicle_bike_detection" を表す "object_detection" になります。 サポートされている他のパイプラインで実験することができます。
 
 1. *operations.json* ファイルを編集します。
     * ライブ パイプライン トポロジへのリンクを変更します。
@@ -329,7 +329,7 @@ Azure Video Analyzer デバイスを右クリックし、 **[組み込みイベ�
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント
 
-ライブ パイプラインがアクティブ化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。
+ライブ パイプラインがアクティブ化されると、RTSP ソース ノードによって、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続が試行されます。 接続に成功すると、次のイベントが出力されます。
 
 ```
 [IoTHubMonitor] [10:51:34 AM] Message received from [avasample-iot-edge-device/avaedge]:
