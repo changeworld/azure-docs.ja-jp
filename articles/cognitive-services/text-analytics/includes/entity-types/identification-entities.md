@@ -447,7 +447,7 @@ ms.locfileid: "106097553"
    :::column-end:::
 :::row-end:::
 
-#### <a name="canada"></a>Canada
+#### <a name="canada"></a>カナダ
 
 :::row:::
     :::column span="":::
