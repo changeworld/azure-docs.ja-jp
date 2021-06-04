@@ -1,7 +1,7 @@
 ---
 title: 'チュートリアル: Azure 関数を使用して格納済みドキュメントを処理する'
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、Azure 関数を使用して、Azure BLOB ストレージ コンテナーにアップロードされたドキュメントの処理をトリガーする方法について説明します。
+description: このガイドでは、Azure 関数を使用して、Azure Blob Storage コンテナーにアップロードされたドキュメントの処理をトリガーする方法について説明します。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
@@ -18,7 +18,7 @@ ms.locfileid: "105048694"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>チュートリアル: Azure 関数を使用して格納済みドキュメントを処理する
 
-Form Recognizer は、Azure Functions で構築された自動データ処理パイプラインの一部として使用できます。 このガイドでは、Azure 関数を使用して、Azure BLOB ストレージ コンテナーにアップロードされたドキュメントを処理する方法について説明します。 このワークフローでは、Form Recognizer レイアウト サービスを使用して格納済みドキュメントからテーブル データを抽出し、そのテーブル データを Azure で .csv ファイルに保存します。 その後、Microsoft Power BI (ここでは説明しません) を使用してデータを表示できます。
+Form Recognizer は、Azure Functions で構築された自動データ処理パイプラインの一部として使用できます。 このガイドでは、Azure 関数を使用して、Azure Blob Storage コンテナーにアップロードされたドキュメントを処理する方法について説明します。 このワークフローでは、Form Recognizer レイアウト サービスを使用して格納済みドキュメントからテーブル データを抽出し、そのテーブル データを Azure で .csv ファイルに保存します。 その後、Microsoft Power BI (ここでは説明しません) を使用してデータを表示できます。
 
 > [!div class="mx-imgBorder"]
 > ![Aure サービス ワークフローの図](./media/tutorial-azure-function/workflow-diagram.png)
