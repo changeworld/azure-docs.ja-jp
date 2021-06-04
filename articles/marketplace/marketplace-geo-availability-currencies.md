@@ -49,7 +49,7 @@ CSP は、パートナー センターのプランをエンドユーザーの通
 | ブルガリア                            | BG        | EUR          | BGN、EUR、USD |
 | カーボベルデ                          | CV        | USD          | CVE、EUR、USD |
 | カメルーン                            | CM        | USD          | EUR、USD、XAF |
-| Canada                              | CA        | CAD          | CAD、EUR、USD |
+| カナダ                              | CA        | CAD          | CAD、EUR、USD |
 | ケイマン諸島                      | KY        | USD          | EUR、KYD、USD |
 | チリ                               | CL        | USD          | CLP、EUR、USD |
 | 中国\**                            | CN        | 該当なし          | 該当なし |
@@ -156,7 +156,7 @@ CSP は、パートナー センターのプランをエンドユーザーの通
 | ウクライナ                             | UA        | USD          | EUR、RUB、UAH、USD |
 | アラブ首長国連邦                | AE        | USD          | AED、EUR、USD |
 | イギリス                      | GB        | GBP          | EUR、GBP、USD |
-| United States                       | US        | USD          | EUR、USD |
+| アメリカ                       | US        | USD          | EUR、USD |
 | 米国バージン諸島                 | VI        | USD          | EUR、USD|
 | ウルグアイ                             | UY        | USD          | EUR、USD、UYU |
 | ウズベキスタン                          | UZ        | USD          | EUR、USD、UZS |
