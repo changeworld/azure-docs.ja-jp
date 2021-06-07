@@ -812,7 +812,7 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 さらに、次の UI ツールを使用して、Azure Storage のデータにアクセスすることもできます。
 
 * Visual Studio のサーバー エクスプローラー。
-* [スクリーンショットには、Azure Storage Exploref のコンテナーとテーブルが示されています](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
+* [スクリーンショットには、Azure Storage Exploref のコンテナーとテーブルが示されています](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer")。
 
 この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-30-configuration)と正確には一致しません。
 
