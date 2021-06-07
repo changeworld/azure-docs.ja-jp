@@ -14,7 +14,7 @@ ms.locfileid: "107773443"
 
 以下は、[az acr check-health][az-acr-check-health] コマンドによって返されるエラー コードの詳細です。 各エラーについて、考えられる解決策が示されています。
 
-`az acr check-healh` の実行の詳細については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。
+`az acr check-healh` の実行の詳細については、「[Azure Container Registry の正常性のチェック](container-registry-check-health.md)」を参照してください。
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
@@ -112,7 +112,7 @@ ms.locfileid: "107773443"
 
 ## <a name="next-steps"></a>次のステップ
 
-レジストリの正常性チェックのオプションについては、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」をご覧ください。
+レジストリの正常性チェックのオプションについては、「[Azure Container Registry の正常性のチェック](container-registry-check-health.md)」をご覧ください。
 
 Azure Container Registry に関するよくあるご質問や他の既知の問題については、[FAQ](container-registry-faq.md) をご覧ください。
 
