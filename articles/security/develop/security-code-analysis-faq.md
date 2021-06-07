@@ -88,7 +88,7 @@ ms.locfileid: "104801317"
 
 ビルド タスクでは、[Azure DevOps Package Management フィード](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)からツールの NuGet パッケージをダウンロードできます。 ビルド タスクでは、ノード パッケージ マネージャーを使用することもできます。これはビルド エージェントに事前にインストールしておく必要があります。 このようなインストールの例として、コマンド **npm install tslint** があります。
 
-### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>この拡張機能をインストールすると、自分の Azure DevOps 組織にはどのような影響がありますか? 
+### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>この拡張機能をインストールすると、自分の Azure DevOps organization にはどのような影響がありますか? 
 
 インストールすると、拡張機能によって提供されるセキュリティ ビルド タスクを組織内のすべてのユーザーが使用できるようになります。 Azure パイプラインを作成または編集する場合、これらのタスクはビルド - タスク コレクションの一覧から利用できます。 それ以外の点では、Azure DevOps 組織にこの拡張機能をインストールしても影響はありません。 インストールによって、アカウント設定、プロジェクト設定、またはパイプラインは変更されません。
 
