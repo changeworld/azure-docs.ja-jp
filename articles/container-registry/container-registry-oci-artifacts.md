@@ -13,15 +13,15 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/20/2021
 ms.locfileid: "107781489"
 ---
-# <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure コンテナー レジストリを使用して OCI 成果物をプッシュおよびプルする
+# <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure Container Registry を使用して OCI 成果物をプッシュおよびプルする
 
-Azure コンテナー レジストリを使用して、[Open Container Initiative (OCI) 成果物](container-registry-image-formats.md#oci-artifacts)のほか、Docker および Docker と互換性のあるコンテナー イメージを格納および管理することができます。
+Azure Container Registry を使用して、[Open Container Initiative (OCI) 成果物](container-registry-image-formats.md#oci-artifacts)のほか、Docker および Docker と互換性のあるコンテナー イメージを格納および管理することができます。
 
-この機能を示すため、この記事では [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) ツールを使用して、サンプルの成果物 (テキスト ファイル) を Azure コンテナー レジストリにプッシュする方法について説明します。 次に、レジストリから成果物をプルします。 各成果物に適したさまざまなコマンドライン ツールを使用して、Azure コンテナー レジストリ内の多様な OCI 成果物を管理できます。
+この機能を示すため、この記事では [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) ツールを使用して、サンプルの成果物 (テキスト ファイル) を Azure Container Registry にプッシュする方法について説明します。 次に、レジストリから成果物をプルします。 各成果物に適したさまざまなコマンドライン ツールを使用して、Azure Container Registry 内の多様な OCI 成果物を管理できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure コンテナー レジストリ** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
+* **Azure Container Registry** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
 * **ORAS ツール** - [GitHub リポジトリ](https://github.com/deislabs/oras/releases)から、ご使用のオペレーティング システムの現在の ORAS リリースをダウンロードしてインストールします。 このツールは、圧縮された tarball (`.tar.gz` ファイル) としてリリースされています。 ご使用のオペレーティング システムの標準的な手順を使用して、ファイルを抽出してインストールします。
 * **Azure Active Directory サービス プリンシパル (オプション)** - ORAS を使用して直接認証するには、[サービス プリンシパル](container-registry-auth-service-principal.md)を作成してレジストリにアクセスします。 サービス プリンシパルに、成果物をプッシュおよびプルするアクセス許可が付与されるように、確実に AcrPush などのロールを割り当てます。
 * **Azure CLI (オプション)** - 個々の ID を使用するには、Azure CLI のローカル インストールが必要です。 バージョン 2.0.71 以降をお勧めします。 バージョンを確認するには、`az --version ` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
@@ -142,7 +142,7 @@ Here is an artifact
 
 ## <a name="remove-the-artifact-optional"></a>成果物を削除する (省略可能)
 
-Azure コンテナー レジストリから成果物を削除するには、[az acr repository delete][az-acr-repository-delete] コマンドを使用します。 次の例では、そこに格納した成果物を削除します。
+Azure Container Registry から成果物を削除するには、[az acr repository delete][az-acr-repository-delete] コマンドを使用します。 次の例では、そこに格納した成果物を削除します。
 
 ```azurecli
 az acr repository delete \
@@ -152,7 +152,7 @@ az acr repository delete \
 
 ## <a name="example-build-docker-image-from-oci-artifact"></a>例:OCI 成果物から Docker イメージを構築する
 
-コンテナー イメージを構築するためのソース コードとバイナリを、OCI 成果物として Azure コンテナー レジストリに格納できます。 [ACR タスク](container-registry-tasks-overview.md)のビルド コンテキストとして、ソース成果物を参照できます。 この例では、Dockerfile を OCI 成果物として格納し、その成果物を参照してコンテナー イメージをビルドする方法を示します。
+コンテナー イメージを構築するためのソース コードとバイナリを、OCI 成果物として Azure Container Registry に格納できます。 [ACR タスク](container-registry-tasks-overview.md)のビルド コンテキストとして、ソース成果物を参照できます。 この例では、Dockerfile を OCI 成果物として格納し、その成果物を参照してコンテナー イメージをビルドする方法を示します。
 
 たとえば、1 行の Dockerfile を作成します。
 
