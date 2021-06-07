@@ -199,7 +199,7 @@ NSString* value =
 
 [Microsoft Azure 用カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)には、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。 カスタマー ロックボックス要求の開始、追跡、後のレビューと監査のための保存の方法に関する詳細については、「[カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)」を参照してください。 
 
-カスタマー ロックボックスはこのコグニティブ サービスで利用できます。
+カスタマー ロックボックスはこの Cognitive Services で利用できます。
 
 * Translator
 
