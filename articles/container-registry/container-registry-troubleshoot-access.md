@@ -1,6 +1,6 @@
 ---
 title: レジストリに関するネットワークの問題のトラブルシューティング
-description: 仮想ネットワークまたはファイアウォールの内側で Azure コンテナー レジストリにアクセスするときの一般的な問題の現象、原因、および解決策
+description: 仮想ネットワークまたはファイアウォールの内側で Azure Container Registry にアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
 ms.date: 03/30/2021
 ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
@@ -12,7 +12,7 @@ ms.locfileid: "106220115"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
-この記事は、仮想ネットワーク内またはファイアウォールやプロキシ サーバーの内側で Azure コンテナー レジストリにアクセスするときに発生する可能性のある問題のトラブルシューティングに役立ちます。 
+この記事は、仮想ネットワーク内またはファイアウォールやプロキシ サーバーの内側で Azure Container Registry にアクセスするときに発生する可能性のある問題のトラブルシューティングに役立ちます。 
 
 ## <a name="symptoms"></a>現象
 
@@ -40,7 +40,7 @@ ms.locfileid: "106220115"
 
 [az acr check-health](/cli/azure/acr#az-acr-check-health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、特定のネットワーク接続や構成の問題を診断します。 
 
-コマンドの例については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。 エラーが報告された場合は、推奨される対処法について、[エラー リファレンス](container-registry-health-error-reference.md)と次のセクションを確認してください。
+コマンドの例については、「[Azure Container Registry の正常性のチェック](container-registry-check-health.md)」を参照してください。 エラーが報告された場合は、推奨される対処法について、[エラー リファレンス](container-registry-health-error-reference.md)と次のセクションを確認してください。
 
 Azure Kubernetes Service と統合レジストリを使用しているときに問題が発生する場合は、[az aks check-acr](/cli/azure/aks#az_aks_check_acr) コマンドを実行して、AKS クラスターがレジストリに到達できることを確認します。
 
@@ -64,14 +64,14 @@ ContainerRegistryLoginEvents テーブルのレジストリ リソース ログ�
 
 関連リンク:
 
-* [ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)
+* [ファイアウォールの内側から Azure Container Registry にアクセスする規則を構成する](container-registry-firewall-access-rules.md)
 * [HTTP/HTTPS プロキシの構成](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
 * [Azure Container Registry の geo レプリケーション](container-registry-geo-replication.md)
 * [診断の評価と監査のための Azure Container Registry ログ](container-registry-diagnostics-audit-logs.md)
 
 ### <a name="configure-public-access-to-registry"></a>レジストリへのパブリック アクセスを構成する
 
-インターネット経由でレジストリにアクセスしている場合は、クライアントからのパブリック ネットワーク アクセスがレジストリで許可されていることを確認します。 既定では、Azure コンテナー レジストリによって、すべてのネットワークからのパブリック レジストリエンド ポイントへのアクセスが許可されています。 レジストリでは、選択したネットワークまたは選択した IP アドレスへのアクセスを制限することができます。 
+インターネット経由でレジストリにアクセスしている場合は、クライアントからのパブリック ネットワーク アクセスがレジストリで許可されていることを確認します。 既定では、Azure Container Registry によって、すべてのネットワークからのパブリック レジストリエンド ポイントへのアクセスが許可されています。 レジストリでは、選択したネットワークまたは選択した IP アドレスへのアクセスを制限することができます。 
 
 レジストリがサービス エンドポイントを持つ仮想ネットワーク用に構成されている場合、パブリック ネットワークアクセスを無効にすると、サービス エンドポイント経由のアクセスも無効になります。 レジストリが Private Link を使用する仮想ネットワーク用に構成されている場合、IP ネットワーク規則は、レジストリのプライベート エンドポイントには適用されません。 
 
