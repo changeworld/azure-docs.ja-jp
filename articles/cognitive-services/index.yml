@@ -131,7 +131,7 @@ conceptualContent:
           itemType: reference
           text: Cognitive Services コンテナーに関する FAQ
     - title: ビッグ データの Cognitive Services
-      summary: ビッグ データ向けの Cognitive Services により、開発者は、データベース内でコグニティブ サービスを使用して、大規模なデータセットにインテリジェントなアルゴリズムを適用できます。
+      summary: ビッグ データ向けの Cognitive Services により、開発者は、データベース内で Cognitive Services を使用して、大規模なデータセットにインテリジェントなアルゴリズムを適用できます。
       links:
         - url: ./big-data/cognitive-services-for-big-data.md
           itemType: overview
