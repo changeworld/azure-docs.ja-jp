@@ -382,11 +382,11 @@ Speech サービス電話設定では、強制音節の母音の後に強勢が�
 | 然后        | ㄖㄢˊㄏㄡˋ   |
 | 剪掉        | ㄐㄧㄢˇㄉㄧㄠˋ |
 
-# <a name="ja-jp"></a>[en-US](#tab/ja-JP)
+# <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
 `ja-JP` の音声サービスの音標文字は、固有の音標文字 <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana</a> に基づいています。
 
-### <a name="stress"></a>ストレス テスト
+### <a name="stress"></a>強勢
 
 | `sapi` | `ipa`          |
 |--------|----------------|
