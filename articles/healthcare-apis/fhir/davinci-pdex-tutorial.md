@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - DaVinci PDex - Azure API for FHIR
-description: このチュートリアルでは、Da Vinci Payer Data Exchange 実装ガイドAzure API for FHIRテストに合格する方法を設定する方法について説明します。
+title: チュートリアル-Da ヴィンチ PDex-FHIR 用 Azure API
+description: このチュートリアルでは、Da ヴィンチ支払人データ交換実装ガイドのテストに合格するように、FHIR 用の Azure API を設定する手順について説明します。
 services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
@@ -8,55 +8,55 @@ ms.topic: tutorial
 ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
-ms.date: 06/02/2021
-ms.openlocfilehash: 3f9aa795a08aa027fd0cc9758e9479fa0ec81e09
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 06/07/2021
+ms.openlocfilehash: 454b049a90bcf6e1d1793606a8759222698e5697
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592962"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751111"
 ---
-# <a name="davinci-pdex"></a>DaVinci PDex
+# <a name="da-vinci-pdex"></a>Da ヴィンチ PDex
 
-このチュートリアルでは[、Da Vinci Payer Data Exchange](http://hl7.org/fhir/us/davinci-pdex/toc.html)実装ガイド (PDex IG) の[Touchstone](https://touchstone.aegis.net/touchstone/)テストに合格するために Azure API for FHIR を設定する方法について説明します。
+このチュートリアルでは、 [Da ヴィンチ支払人データ交換実装ガイド](http://hl7.org/fhir/us/davinci-pdex/toc.html)(PDEX IG) の[Touchstone](https://touchstone.aegis.net/touchstone/)テストに合格するように、Fhir 用の Azure API を設定する手順について説明します。
 
 > [!NOTE]
-> これらのテストはすべて、JSON テストに対して実行します。 このAzure API for FHIRは JSON と XML の両方をサポートしますが、JSON または XML にアクセスする個別のエンドポイントを持つ必要があります。 この理由から、すべての XML テストは失敗します。 XML で機能ステートメントを表示する場合は \_ \` 、GET {fhirurl}/metadata という形式パラメーターを渡します。 \_format=xml\`
+> これらのすべてのテストに対して、JSON テストに対して実行します。 Azure API for FHIR は、JSON と XML の両方をサポートしていますが、JSON または XML にアクセスするための個別のエンドポイントがありません。 このため、すべての XML テストが失敗します。 XML で機能ステートメントを表示する場合は、単に \_ format パラメーター: \` GET {fhirurl}/metadata を渡してください \_ 。format = xml\`
 
 ## <a name="touchstone-capability-statement"></a>Touchstone 機能ステートメント
 
-最初に注目するテストのセットは、PDex IG 機能ステートメントAzure API for FHIRテストです。 これには、次の 3 つのテストが含まれます。
+ここで注目するテストの最初のセットは、PDex IG 機能ステートメントに対して Azure API for FHIR をテストすることです。 これには、次の3つのテストが含まれます。
 
-* 最初のテストでは、基本的な機能ステートメントを IG 要件に対して検証し、更新なしで合格します。
+* 最初のテストでは、IG の要件に対して基本的な機能ステートメントを検証し、更新を行わずに成功します。
 
-* 2 番目のテストでは、US Core 用に追加されたすべてのプロファイルが検証されます。 このテストは更新なしで合格しますが、一連の警告が含まれます。 これらの警告を削除するには、US Core プロファイル [を読み込む必要があります](validation-against-profiles.md)。 すべてのプロファイルを作成 [するサンプル HTTP](https://github.com/microsoft/fhir-server/blob/main/docs/rest/PayerDataExchange/USCore.http) ファイルを作成しました。 また、HL7 [サイトから](http://hl7.org/fhir/us/core/STU3.1.1/profiles.html#profiles) プロファイルを直接取得することもできます。プロファイルのバージョンは最新バージョンです。
+* 2番目のテストでは、すべてのプロファイルが米国コア用に追加されていることを検証します。 このテストは更新なしで成功しますが、多数の警告が含まれます。 これらの警告を削除するには、 [US コアプロファイルを読み込む](validation-against-profiles.md)必要があります。 すべてのプロファイルの作成手順を説明する [サンプル HTTP ファイル](https://github.com/microsoft/fhir-server/blob/main/docs/rest/PayerDataExchange/USCore.http) を作成しました。 また、HL7 サイトから直接 [プロファイル](http://hl7.org/fhir/us/core/STU3.1.1/profiles.html#profiles) を取得することもできます。この場合、最新バージョンが使用されます。
 
-* 3 番目のテストでは、$patient [すべての操作が](patient-everything.md) サポートされている検証が行います。 現在、このテストは失敗します。 この操作は、Azure API for FHIR の 2021 年 6 月半ばに使用できる予定であり、現在は Cosmos DB のオープン ソースの FHIR サーバーで使用できます。 ただし、機能ステートメントにはないので、バグ [1989](https://github.com/microsoft/fhir-server/issues/1989)の修正プログラムをリリースするまで、このテストは失敗します。 
+* 3番目のテストでは、 [$patient すべての操作](patient-everything.md) がサポートされていることを検証します。 現時点では、このテストは失敗します。 この操作は、Azure API for FHIR の2021年6月中旬に利用可能になり、Cosmos DB のオープンソースの FHIR サーバーで使用できるようになりました。 ただし、機能ステートメントには不足しているため、このテストはバグ [1989](https://github.com/microsoft/fhir-server/issues/1989)の修正プログラムをリリースするまで失敗します。 
 
  
-:::image type="content" source="media/cms-tutorials/davinci-pdex-test-script-failed.png" alt-text="DaVinci PDex の実行に失敗しました。":::
+:::image type="content" source="media/cms-tutorials/davinci-pdex-test-script-failed.png" alt-text="Da ヴィンチ PDex の実行に失敗しました。":::
 
-## <a name="touchstone-member-match-test"></a>Touchstone $member一致テスト
+## <a name="touchstone-member-match-test"></a>Touchstone $member-一致テスト
 
-[Payer](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/DaVinci/FHIR4-0-1-Test/PDEX/PayerExchange/01-Member-Match&activeOnly=false&contentEntry=TEST_SCRIPTS) Data Exchange セクションの 2 番目のテストでは、一致する一致操作[$member存在をテストします](http://hl7.org/fhir/us/davinci-hrex/2020Sep/OperationDefinition-member-match.html)。 一致操作の詳細については$member一致操作の概要 [$memberを参照してください](tutorial-member-match.md)。
+[支払人データ交換] セクションの [2 番目のテスト](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/DaVinci/FHIR4-0-1-Test/PDEX/PayerExchange/01-Member-Match&activeOnly=false&contentEntry=TEST_SCRIPTS) では、 [$member 一致操作](http://hl7.org/fhir/us/davinci-hrex/2020Sep/OperationDefinition-member-match.html)の存在をテストします。 $Member 一致操作の詳細については、「 [$member の一致操作の概要](tutorial-member-match.md)」を参照してください。
 
-このテストでは、テストに合格するためにいくつかのサンプル データを読み込む必要があります。 ここには、 [患者とカバレッジ](https://github.com/microsoft/fhir-server/blob/main/docs/rest/PayerDataExchange/membermatch.http) がリンクされた、テストに必要な Rest ファイルがあります。 このデータが読み込まれたら、このテストに成功できます。 データが読み込まれない場合は、完全一致が見つからなから、422 応答が返されます。
+このテストでは、テストを成功させるためにいくつかのサンプルデータを読み込む必要があります。 [ここ](https://github.com/microsoft/fhir-server/blob/main/docs/rest/PayerDataExchange/membermatch.http)には、テストに必要な、リンクされている患者と範囲を含む rest ファイルがあります。 このデータが読み込まれると、このテストを成功させることができます。 データが読み込まれていない場合は、完全一致が見つからないことが原因で422応答が返されます。
 
-:::image type="content" source="media/cms-tutorials/davinci-pdex-test-script-passed.png" alt-text="DaVinci PDex テスト スクリプトに合格しました。":::
+:::image type="content" source="media/cms-tutorials/davinci-pdex-test-script-passed.png" alt-text="Da ヴィンチ PDex テストスクリプトが成功しました。":::
 
-## <a name="touchstone-patient-by-reference"></a>参照によるタッチトン患者
+## <a name="touchstone-patient-by-reference"></a>Touchstone による患者の参照
 
-次に確認するテストは、参照 [テストによる患者](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/DaVinci/FHIR4-0-1-Test/PDEX/PayerExchange/02-PatientByReference&activeOnly=false&contentEntry=TEST_SCRIPTS) です。 この一連のテストでは、さまざまな検索条件に基づいて患者を検索できると検証されます。 参照によって患者をテストする最善の方法は、独自のデータに対してテストすることですが、使用するために[](https://github.com/microsoft/fhir-server/blob/main/docs/rest/PayerDataExchange/PDex_Sample_Data.http)読み込み可能なサンプル リソース ファイルもアップロードしました。
+次に確認するテストは、 [参照テストによる患者](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/DaVinci/FHIR4-0-1-Test/PDEX/PayerExchange/02-PatientByReference&activeOnly=false&contentEntry=TEST_SCRIPTS) です。 この一連のテストでは、さまざまな検索条件に基づいて患者を見つけることができるかどうかが検証されます。 患者を参照によってテストする最良の方法は、独自のデータに対してテストすることですが、使用するために読み込むことのできる [サンプルリソースファイル](https://github.com/microsoft/fhir-server/blob/main/docs/rest/PayerDataExchange/PDex_Sample_Data.http) もアップロードしています。
 
-:::image type="content" source="media/cms-tutorials/davinci-pdex-test-execution-passed.png" alt-text="DaVinci PDex の実行が渡された。":::
+:::image type="content" source="media/cms-tutorials/davinci-pdex-test-execution-passed.png" alt-text="Da ヴィンチ PDex の実行に成功しました。":::
 
-## <a name="touchstone-patienteverything-test"></a>Touchstone 患者/$everything テスト
+## <a name="touchstone-patienteverything-test"></a>Touchstone の患者/$everything テスト
 
-最後に行うテストは、patient-everything のテストです。 このテストでは、患者を読み込む必要があります。その後、その患者の ID を使用して、$everything 操作を使用して患者に関連するデータをプルできるテストを行います。
+最後に説明するテストは、患者のすべてをテストすることです。 このテストでは、患者を読み込んだ後、その患者の ID を使用して、患者に関連するすべてのデータをプルするために $everything 操作を使用できることをテストします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Touchstone で Payer Exchange テストに合格する方法について説明しました。 次に、すべての機能についてAzure API for FHIRできます。
+このチュートリアルでは、Touchstone で支払人 Exchange テストを渡す方法について説明します。 次に、すべての Azure API for FHIR 機能について学習できます。
 
 >[!div class="nextstepaction"]
 >[サポートされる機能](fhir-features-supported.md)  
