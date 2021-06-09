@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 04/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 14328179a297ebcc3994bf627b1690195774b2b1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dbc03ccd235c456941e5f201b647215389fed92c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741133"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408229"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -74,7 +74,7 @@ SMART (Substitutable Medical Applications and Reusable Technology) on FHIR は�
 
 ### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>[拡張機能](https://www.hl7.org/fhir/extensibility.html)は、Azure API for FHIR でサポートされていますか?
 
-有効な FHIR JSON データをサーバーに読み込むことができます。 拡張機能を定義する構造定義を格納する場合は、これを構造定義リソースとして保存できます。 現時点では、拡張機能を検索することはできません。
+有効な FHIR JSON データをサーバーに読み込むことができます。 拡張機能を定義する構造定義を格納する場合は、これを構造定義リソースとして保存できます。 拡張機能を検索するには、 [独自の検索パラメーターを定義](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fhealthcare-apis%2Ffhir%2Fhow-to-do-custom-search&data=04%7C01%7Cv-stevewohl%40microsoft.com%7Cc6a08c7f0c86433f248c08d925377d85%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637581742517376233%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=Ws%2FVQ2N33sMagzs393hmR67M9dNaL6WCLXyxXtor6PM%3D&reserved=0)する必要があります。 
 
 ### <a name="what-is-the-limit-on-_count"></a>_count にはどのような制限がありますか?
 

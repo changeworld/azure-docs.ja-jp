@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 05/27/2021
-ms.openlocfilehash: 25be80678389b59e907caf60529a8e4048a959e0
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 1fade881fbe6d5c401712a4f97c8a249006d8190
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111562783"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590380"
 ---
 # <a name="carin-implementation-guide-for-blue-button174"></a>青色のボタンの実装ガイド&#174;
 
@@ -23,7 +23,6 @@ ms.locfileid: "111562783"
 ## <a name="touchstone-capability-statement"></a>Touchstone 機能ステートメント
 
 最初に焦点を当てるテストは、 [C4BB IG の機能ステートメント](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/00-Capability&activeOnly=false&contentEntry=TEST_SCRIPTS)に対して Azure API for FHIR をテストすることです。 更新を行わずに Azure API for FHIR に対してこのテストを実行すると、検索パラメーターがなく、プロファイルが見つからないことが原因でテストが失敗します。 
-
 
 ### <a name="define-search-parameters"></a>検索パラメーターの定義
 
@@ -43,19 +42,12 @@ C4BB IG に必要な残りの検索パラメーターは、基本仕様によっ
 検索パラメーターを定義する以外に、このテストを成功させるために必要なもう1つの更新は、 [必要なプロファイル](validation-against-profiles.md)を読み込むことです。 C4BB IG 内には、8つのプロファイルが定義されています。 
 
 * [C4BB カバレッジ](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-Coverage.html) 
-
 * [C4BB ExplanationOfBenefit 入院機関](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-ExplanationOfBenefit-Inpatient-Institutional.html) 
-
 * [C4BB ExplanationOfBenefit Outpatient 機関](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-ExplanationOfBenefit-Outpatient-Institutional.html) 
-
 * [C4BB ExplanationOfBenefit 薬剤](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-ExplanationOfBenefit-Pharmacy.html) 
-
 * [C4BB ExplanationOfBenefit Professional NonClinician](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-ExplanationOfBenefit-Professional-NonClinician.html) 
-
 * [C4BB 組織](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-Organization.html) 
-
 * [C4BB の患者](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-Patient.html) 
-
 * [C4BB の専門家](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-Practitioner.html) 
 
 ### <a name="sample-rest-file"></a>サンプルの rest ファイル
@@ -72,13 +64,13 @@ Capabilities ステートメントをテストした後、C4BB IG に対して A
 
 ## <a name="touchstone-eob-query-test"></a>Touchstone EOB クエリテスト
 
-次に確認するテストは、 [EOB クエリテスト](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/02-EOBQuery&activeOnly=false&contentEntry=TEST_SCRIPTS)です。 読み取りテストを既に完了している場合は、必要なすべてのデータが読み込まれています。 このテストでは、さまざまなパラメーターを使用して、特定の患者や特典リソースの説明を検索できるかどうかを検証します。
+次に確認するテストは、 [EOB クエリテスト](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/02-EOBQuery&activeOnly=false&contentEntry=TEST_SCRIPTS)です。 読み取りテストを既に完了している場合は、必要なすべてのデータが読み込まれています。 このテストでは `Patient` 、 `ExplanationOfBenefit` さまざまなパラメーターを使用して特定のリソースとリソースを検索できるかどうかを検証します。
 
 :::image type="content" source="media/cms-tutorials/test-execution-touchstone-eob-query-test.png" alt-text="Touchstone EOB クエリの実行結果。":::
 
 ## <a name="touchstone-error-handling-test"></a>Touchstone エラー処理テスト
 
-最後のテストでは、 [エラー処理](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/99-ErrorHandling&activeOnly=false&contentEntry=TEST_SCRIPTS)をテストします。 必要な手順は、データベースから ExplanationOfBenefit リソースを削除し、テストで delete ExplanationOfBenfit リソースの ID を使用することだけです。
+最後のテストでは、 [エラー処理](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/99-ErrorHandling&activeOnly=false&contentEntry=TEST_SCRIPTS)をテストします。 必要な手順は、データベースから ExplanationOfBenefit リソースを削除し、テストで削除されたリソースの ID を使用することだけです `ExplanationOfBenefit` 。
 
 :::image type="content" source="media/cms-tutorials/test-execution-touchstone-error-handling.png" alt-text="Touchstone EOB エラー処理の結果。":::
 
