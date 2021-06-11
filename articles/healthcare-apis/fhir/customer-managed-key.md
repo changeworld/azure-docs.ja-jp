@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/04/2021
 ms.author: ginle
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 371b1286976a5f9dabfb82a5a706ff4a2672ceb2
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0c32725d020043c3cd62828e4bdccfafef2f53aa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700472"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970183"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>保存状態のカスタマー マネージド キーを構成する
 
@@ -48,7 +48,7 @@ Azure portal で Azure API for FHIR アカウントを作成すると、[追加�
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-create.png" alt-text="Azure API for FHIR の作成":::
 
 > [!Important]
-> アプリケーションのすべてのアクセス許可が適切Azure Key Vault設定されている必要があります。 詳細については、「アクセス ポリシー [をインスタンスに追加する」をAzure Key Vaultしてください](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#add-access-policy)。 さらに、 のプロパティで、ソフト削除が有効Key Vault。 これらの手順を完了しない場合、デプロイ エラーが発生します。 詳細については、「キー コンテナーで [ソフト削除が有効になっているか確認する」および「ソフト削除を有効にする」を参照してください](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete)。
+> アプリケーションのすべてのアクセス許可が適切Azure Key Vault設定されている必要があります。 詳細については、「アクセス ポリシー [をインスタンスに追加する」をAzure Key Vaultしてください](../../cosmos-db/how-to-setup-cmk.md#add-access-policy)。 さらに、 のプロパティで、ソフト削除が有効Key Vault。 これらの手順を完了しない場合、デプロイ エラーが発生します。 詳細については、「キー コンテナーで [ソフト削除が有効になっているか確認する」および「ソフト削除を有効にする」を参照してください](../../key-vault/general/key-vault-recovery.md?tabs=azure-portal#verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete)。
 
 既存の FHIR アカウントの場合は、次に示すように、[データベース] ブレードでキー暗号化の選択肢 **(サービス** マネージドキーまたはカスタマー マネージド **キー)** を表示できます。 構成オプションは、選択した後は変更できません。 ただし、キーを変更したり更新したりすることはできます。
 

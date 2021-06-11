@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 5/25/2021
 ms.author: cavoeg
-ms.openlocfilehash: 54dadb47018b474bb7651ddb17b0170a2c07e29a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 30e9b5cf5f296ac161301f27c82ac6a2f98f4611
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477847"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970167"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR データをエクスポートする方法
 
@@ -63,11 +63,11 @@ Azure API for FHIR では、次のクエリ パラメーターがサポートさ
 
 |Query parameter (クエリ パラメーター)        | FHIR 仕様で定義されている    |  説明|
 |------------------------|---|------------|
-| \_outputFormat | Yes | 現在、FHIR 仕様に合わせた 3 つの値 (application/fhir+ndjson、application/ndjson、または単にndjson) がサポートされています。 すべてのエクスポート ジョブは `ndjson` を返し、渡された値はコードの動作に影響を与えません。 |
-| \_since | Yes | 指定された時間以降に変更されたリソースのみをエクスポートできます |
-| \_type | Yes | どの種類のリソースを含めるかを指定できます。 たとえば、\_type=Patient とすると、患者のリソースのみが返されます|
-| \_typefilter | Yes | よりきめ細かいフィルター処理を要求するには、\_typefilter を \_type パラメーターと共に使用します。 _TypeFilter パラメーターの値は、結果をさらに限定する FHIR クエリのコンマ区切りリストです。 |
-| \_container | No |  データのエクスポート先となる、構成済みストレージ アカウント内のコンテナーを指定します。 コンテナーが指定されている場合、データはそのコンテナー内のフォルダーにエクスポートされます。 コンテナーが指定されていない場合、データは新しいコンテナーにエクスポートされます。 |
+| \_outputFormat | はい | 現在、FHIR 仕様に合わせた 3 つの値 (application/fhir+ndjson、application/ndjson、または単にndjson) がサポートされています。 すべてのエクスポート ジョブは `ndjson` を返し、渡された値はコードの動作に影響を与えません。 |
+| \_since | はい | 指定された時間以降に変更されたリソースのみをエクスポートできます |
+| \_type | はい | どの種類のリソースを含めるかを指定できます。 たとえば、\_type=Patient とすると、患者のリソースのみが返されます|
+| \_typefilter | はい | よりきめ細かいフィルター処理を要求するには、\_typefilter を \_type パラメーターと共に使用します。 _TypeFilter パラメーターの値は、結果をさらに限定する FHIR クエリのコンマ区切りリストです。 |
+| \_container | いいえ |  データのエクスポート先となる、構成済みストレージ アカウント内のコンテナーを指定します。 コンテナーが指定されている場合、データはそのコンテナー内のフォルダーにエクスポートされます。 コンテナーが指定されていない場合、データは新しいコンテナーにエクスポートされます。 |
 
 > [!Note]
 > $Export 操作の宛先として登録できるのは、FHIR 用の Azure API の場合と同じサブスクリプション内のストレージアカウントだけです。
@@ -78,31 +78,31 @@ Azure API for FHIR では、セキュア エクスポート操作がサポート
 
 * Azure storage アカウントにアクセスするために、Microsoft の信頼されたサービスとして FHIR の Azure API を許可します。
  
-* FHIR の Azure API に関連付けられている特定の IP アドレスが Azure ストレージアカウントにアクセスできるようにします。 このオプションでは、ストレージ アカウントが と同じ場所にあるか、ストレージ アカウントの場所と異なる場所にあるかによって、2 つの異なる構成が提供Azure API for FHIR。
+* FHIR の Azure API に関連付けられている特定の IP アドレスが Azure ストレージアカウントにアクセスできるようにします。 このオプションは、ストレージアカウントがと同じ場所にあるか、または Azure API for FHIR とは異なる場所にあるかによって、2つの異なる構成を提供します。
 
-### <a name="allowing-azure-api-for-fhir-as-a-microsoft-trusted-service"></a>Microsoft Azure API for FHIRサービスとしてのアクセスを許可する
+### <a name="allowing-azure-api-for-fhir-as-a-microsoft-trusted-service"></a>Microsoft 信頼されたサービスとしての FHIR の Azure API の許可
 
-ストレージ アカウントを選択し、Azure portalブレード **を選択** します。 [ **ファイアウォールと仮想ネットワーク]** タブ **で [選択したネットワーク] を選択** します。
+Azure portal からストレージアカウントを選択し、[ **ネットワーク** ] ブレードを選択します。 [**ファイアウォールと仮想ネットワーク**] タブで、**選択したネットワーク** を選択します。
 
 > [!IMPORTANT]
-> マネージド ID を使用して、ストレージ アカウントにアクセス許可を付与Azure API for FHIRアカウントにアクセス許可を付与します。 詳細については、「エクスポート設定を [構成し、ストレージ アカウントを設定する」を参照してください](https://docs.microsoft.com/azure/healthcare-apis/fhir/configure-export-data)。
+> 管理対象 id を使用して、FHIR 用の Azure API のストレージアカウントへのアクセス許可が付与されていることを確認します。 詳細については、「 [export 設定の構成」および「ストレージアカウントの設定](./configure-export-data.md)」を参照してください。
 
   :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure Storage の [ネットワーク] の設定。" lightbox="media/export-data/storage-networking.png":::
 
-[例外 **] セクションで** 、[信頼されたアカウントにこのストレージ アカウントMicrosoft サービスアクセスを許可する] ボックスを **選択し** 、設定を保存します。 
+[ **例外** ] セクションで、[ **信頼された Microsoft サービスによるこのストレージアカウントへのアクセスを許可する** ] チェックボックスをオンにして、設定を保存します。 
 
-:::image type="content" source="media/export-data/exceptions.png" alt-text="信頼されたアカウントMicrosoft サービスこのストレージ アカウントへのアクセスを許可します。":::
+:::image type="content" source="media/export-data/exceptions.png" alt-text="信頼された Microsoft サービスによるこのストレージアカウントへのアクセスを許可します。":::
 
-これで、FHIR データをストレージ アカウントに安全にエクスポートする準備ができました。 ストレージ アカウントは選択したネットワーク上にあるので、パブリックにアクセスすることはできません。 ファイルにアクセスするには、ストレージ アカウントのプライベート エンドポイントを有効にして使用するか、ストレージ アカウントのすべてのネットワークを短時間有効にします。
+これで、ストレージアカウントに FHIR データを安全にエクスポートする準備ができました。 ストレージアカウントは選択されたネットワーク上にあり、パブリックにアクセスできないことに注意してください。 ファイルにアクセスするには、ストレージアカウントのプライベートエンドポイントを有効にして使用するか、ストレージアカウントのすべてのネットワークを短時間有効にすることができます。
 
 > [!IMPORTANT]
-> ユーザー インターフェイスは後で更新され、サービス インスタンスと特定のサービス インスタンスAzure API for FHIRリソースの種類を選択できます。
+> ユーザーインターフェイスは後で更新され、FHIR の Azure API と特定のサービスインスタンスのリソースの種類を選択できるようになります。
 
-### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-a-different-region"></a>別のリージョンで Azure ストレージ アカウントの特定の IP アドレスを許可する
+### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-a-different-region"></a>別のリージョンの Azure ストレージアカウントの特定の IP アドレスを許可する
 
-ポータル **から [Azure** ストレージ アカウントのネットワーク] を選択します。 
+ポータルから Azure ストレージアカウントの [ **ネットワーク** ] を選択します。 
    
-**[選択されたネットワーク]** を選択します。 [ファイアウォール] セクションの [アドレス範囲] ボックスに IP アドレス **を指定** します。 インターネットまたはオンプレミス ネットワークからのアクセスを許可する IP 範囲を追加します。 次の表の IP アドレスは、サービスがプロビジョニングされている Azure リージョンAzure API for FHIR確認できます。
+**[選択されたネットワーク]** を選択します。 [ファイアウォール] セクションで、[ **アドレス範囲** ] ボックスに IP アドレスを指定します。 インターネットまたはオンプレミスネットワークからのアクセスを許可する IP 範囲を追加します。 次の表では、Azure API for FHIR サービスがプロビジョニングされている Azure リージョンの IP アドレスを確認できます。
 
 |**Azure リージョン**         |**パブリック IP アドレス** |
 |:----------------------|:-------------------|
@@ -129,18 +129,18 @@ Azure API for FHIR では、セキュア エクスポート操作がサポート
 | 米国西部 2            | 40.64.135.77      |
 
 > [!NOTE]
-> 上記の手順は、FHIR (プレビュー) にデータを変換する方法に関するドキュメントで説明されている構成手順に似ています。 詳細については、「テンプレートのホスト [と使用」を参照してください。](https://docs.microsoft.com/azure/healthcare-apis/fhir/convert-data#host-and-use-templates)
+> 上記の手順は、FHIR (プレビュー) にデータを変換する方法に関するドキュメントで説明されている構成手順に似ています。 詳細については、「テンプレートのホスト [と使用」を参照してください。](./convert-data.md#host-and-use-templates)
 
-### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-the-same-region"></a>同じリージョン内の Azure ストレージアカウントの特定の IP アドレスを許可する
+### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-the-same-region"></a>同じリージョン内の Azure ストレージ アカウントに対して特定の IP アドレスを許可する
 
 構成プロセスは上記と同じですが、CIDR 形式の特定の IP アドレス範囲 100.64.0.0/10 が代わりに使用される点が異なります。 IP アドレス範囲 (100.64.0.0 – 100.127.255.255 を含む) を指定する必要がある理由は、サービスで使用される実際の IP アドレスは $export 要求ごとに異なりますが、この範囲には入ることを示すためです。
 
 > [!Note] 
-> 10.0.2.0/24 の範囲内のプライベート IP アドレスを代わりに使用することができます。 この場合、$export 操作は成功しません。 $Export 要求を再試行することはできますが、100.64.0.0/10 の範囲内の IP アドレスが次回使用されるという保証はありません。 これは設計上の既知のネットワーク動作です。 代替策として、ストレージ アカウントを別のリージョンで構成する方法があります。
+> 10.0.2.0/24 の範囲内のプライベート IP アドレスを代わりに使用することができます。 その場合、$exportは成功しません。 $export 要求を再試行できますが、次に 100.64.0.0/10 の範囲内の IP アドレスが使用される保証はありません。 これは設計上の既知のネットワーク動作です。 代替策として、ストレージ アカウントを別のリージョンで構成する方法があります。
     
 ## <a name="next-steps"></a>次の手順
 
-この記事では、$export コマンドを使用して FHIR リソースをエクスポートする方法について説明しました。 次に、特定できないデータをエクスポートする方法については、以下を参照してください。
+この記事では、 コマンドを使用して FHIR リソースをエクスポートする方法$exportしました。 次に、識別されていないデータをエクスポートする方法については、以下を参照してください。
  
 >[!div class="nextstepaction"]
 >[匿名化データをエクスポートする](de-identified-export.md)
