@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 05/11/2021
 ms.author: ranku
-ms.openlocfilehash: 8d60cde14d52dceb58ea5c68383fad192a1e1ff3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d42cf0a59c3ff20078930559870f346efd7b6d9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078690"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970260"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>データを FHIR に変換する方法 (プレビュー)
 
@@ -120,7 +120,7 @@ Azure API for FHIR でマネージド ID を有効にするには、状態を **
 
 1. [追加 **] を** 選択し、[ロールの割り当 **ての追加] を** 選択して [ロールの割り当ての追加] ページを開きます。
 
-1. [AcrPull ロールを割り当](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#acrpull)てる。 
+1. [AcrPull ロールを割り当](../../role-based-access-control/built-in-roles.md#acrpull)てる。 
 
    ![[ロールの割り当ての追加] ページ](../../../includes/role-based-access-control/media/add-role-assignment-page.png) 
 
@@ -136,7 +136,7 @@ ACR サーバーを登録するには、AZURE PORTAL CLI を使用します。
 #### <a name="registering-the-acr-server-using-cli"></a>CLI を使用した ACR サーバーの登録
 このサーバーには、最大 20 台の ACR サーバーを登録Azure API for FHIR。
 
-必要に応じて Azure PowerShell から医療 Api CLI をインストールします。
+必要に応じて、次の手順にAzure PowerShell Healthcare API CLI をインストールします。
 
 ```powershell
 az extension add -n healthcareapis
@@ -157,16 +157,16 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 ```
 ### <a name="configure-acr-firewall"></a>ACR ファイアウォールを構成する
 
-ポータルから Azure ストレージアカウントの [ **ネットワーク** ] を選択します。
+ポータル **から [Azure** ストレージ アカウントのネットワーク] を選択します。
 
-   :::image type="content" source="media/convert-data/networking-container-registry.png" alt-text="コンテナーレジストリ。":::
+   :::image type="content" source="media/convert-data/networking-container-registry.png" alt-text="コンテナー レジストリ。":::
 
 
 **[選択されたネットワーク]** を選択します。 
 
-[ **ファイアウォール** ] セクションで、[ **アドレス範囲** ] ボックスに IP アドレスを指定します。 インターネットまたはオンプレミスネットワークからのアクセスを許可する IP 範囲を追加します。 
+[ファイアウォール **] セクション** の [アドレス範囲] ボックスに IP アドレス **を指定** します。 インターネットまたはオンプレミス ネットワークからのアクセスを許可する IP 範囲を追加します。 
 
-次の表では、Azure API for FHIR サービスがプロビジョニングされている Azure リージョンの IP アドレスを確認できます。
+次の表に、サービスがプロビジョニングされている Azure リージョンの IP アドレスAzure API for FHIR示します。
 
 |**Azure リージョン**         |**パブリック IP アドレス** |
 |:----------------------|:-------------------|
@@ -194,7 +194,7 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 
 
 > [!NOTE]
-> 上記の手順は、「FHIR データをエクスポートする方法」のドキュメントで説明されている構成手順に似ています。 詳細については、「 [Azure Storage への安全なエクスポート](https://docs.microsoft.com/azure/healthcare-apis/fhir/export-data#secure-export-to-azure-storage)」を参照してください。
+> 上記の手順は、「FHIR データをエクスポートする方法」のドキュメントで説明されている構成手順に似ています。 詳細については、「 [Azure Storage への安全なエクスポート](./export-data.md#secure-export-to-azure-storage)」を参照してください。
 
 ### <a name="verify"></a>確認
 
