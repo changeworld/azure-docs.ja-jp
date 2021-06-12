@@ -1,19 +1,19 @@
 ---
 title: Azure API for FHIR 用の組み込みポリシー定義
 description: Azure API for FHIR 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3f8b59cffedd6a01ed32c7226d8a7f77f792d45b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 163877c2d3ab6e1a55d61908911f2c4b8f57a731
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087877"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017435"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-api-for-fhir"></a>Azure API for FHIR 用の Azure Policy 組み込み定義
 
