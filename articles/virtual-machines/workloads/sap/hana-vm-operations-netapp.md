@@ -182,8 +182,8 @@ Commvault バックアップ製品のユーザーの場合、2 つ目のオプ�
 
 
 ### <a name="back-up-the-snapshot-using-azure-blob-storage"></a>Azure Blob Storage を使用してスナップショットをバックアップする
-Azure Blob Storage へのバックアップは、ANF ベースの HANA データベース ストレージのスナップショット バックアップを保存する費用対効果の高い高速な方法です。 スナップショットを Azure Blob Storage に保存するには、azcopy ツールを使用することをお勧めします。 このツールの最新版をダウンロードして、GitHub の python スクリプトがインストールされている bin ディレクトリなどにインストールします。
-次のように、最新の azcopy ツールをダウンロードします。
+Azure Blob Storage へのバックアップは、ANF ベースの HANA データベース ストレージのスナップショット バックアップを保存する費用対効果の高い高速な方法です。 スナップショットを Azure Blob Storage に保存するには、AzCopy ツールを使用することをお勧めします。 このツールの最新版をダウンロードして、GitHub の python スクリプトがインストールされている bin ディレクトリなどにインストールします。
+次のように、最新の AzCopy ツールをダウンロードします。
 
 ```
 root # wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1
