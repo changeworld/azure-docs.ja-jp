@@ -22,7 +22,7 @@ ms.locfileid: "93320334"
 
 この記事では、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。 このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
 
-Machine Learning 用に Azure SQL Database にデータを移動するためのオプションに関する説明は、「 [Azure Machine Learning 用に Azure SQL Database にデータを移動する](move-sql-azure.md)」を参照してください。
+Machine Learning 用に Azure SQL Database にデータを移動するためのオプションに関する説明は、「[Azure Machine Learning 用に Azure SQL Database にデータを移動する](move-sql-azure.md)」を参照してください。
 
 次の表は、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションをまとめたものです。
 
@@ -34,7 +34,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 このドキュメントでは、SQL Server Management Studio または Visual Studio のデータベース エクスプローラーから SQL コマンドが実行されることを想定しています。
 
 > [!TIP]
-> 別の方法として、 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。 詳細については、「 [Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../../data-factory/copy-activity-overview.md)」を参照してください。
+> 別の方法として、 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。 詳細については、「[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../../data-factory/copy-activity-overview.md)」を参照してください。
 >
 >
 
@@ -42,9 +42,9 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 このチュートリアルでは、以下があることを前提としています。
 
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント**。 このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。 「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
-* **Azure VM 上に SQL Server** がプロビジョニングされていること。 手順については、「 [高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](../data-science-virtual-machine/overview.md)」を参照してください。
-* **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
+* **Azure ストレージ アカウント**。 このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。 「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
+* **Azure VM 上に SQL Server** がプロビジョニングされていること。 手順については、「[高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](../data-science-virtual-machine/overview.md)」を参照してください。
+* **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する
 データがフラット ファイル (行と列の形式で配置されている) に存在する場合は、次の方法を使用して Azure の SQL Server VM にデータを移動できます。
@@ -82,7 +82,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
-> **BCP 挿入の最適化** こうした挿入を最適化するには、「 [一括インポートを最適化するためのガイドライン](/previous-versions/sql/sql-server-2008-r2/ms177445(v=sql.105)) 」の記事を参照してください。
+> **BCP 挿入の最適化** こうした挿入を最適化するには、「[一括インポートを最適化するためのガイドライン](/previous-versions/sql/sql-server-2008-r2/ms177445(v=sql.105)) 」の記事を参照してください。
 >
 >
 
@@ -90,7 +90,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 移動するデータのサイズが大きい場合は、PowerShell スクリプトで複数の BCP コマンドを並行して同時に実行することによって、高速化できます。
 
 > [!NOTE]
-> **ビッグ データの取り込み** 大きなデータセットや非常に大きなデータセットのデータ読み込みを最適化するには、複数のファイル グループとパーティション テーブルを使用して、論理的および物理的なデータベース テーブルをパーティション分割します。 データを作成してパーティション テーブルに読み込む方法についての詳細は、「 [SQL パーティション テーブルの並列読み込み](parallel-load-sql-partitioned-tables.md)」を参照してください。
+> **ビッグ データの取り込み** 大きなデータセットや非常に大きなデータセットのデータ読み込みを最適化するには、複数のファイル グループとパーティション テーブルを使用して、論理的および物理的なデータベース テーブルをパーティション分割します。 データを作成してパーティション テーブルに読み込む方法についての詳細は、「[SQL パーティション テーブルの並列読み込み](parallel-load-sql-partitioned-tables.md)」を参照してください。
 >
 >
 
@@ -158,10 +158,10 @@ Set-ExecutionPolicy Restricted #reset the execution policy
 
 ### <a name="built-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。
-SSIS は 2 つの Studio 環境で使用できます。 詳細については、「 [統合サービス (SSIS) と Studio 環境](/sql/integration-services/integration-services-ssis-development-and-management-tools)」を参照してください:。
+SSIS は 2 つの Studio 環境で使用できます。 詳細については、「[統合サービス (SSIS) と Studio 環境](/sql/integration-services/integration-services-ssis-development-and-management-tools)」を参照してください:。
 
-* SQL Server データ ツールの詳細については、「 [Microsoft SQL Server データ ツール](/sql/ssdt/download-sql-server-data-tools-ssdt)  
-* インポート/エクスポート ウィザードの詳細については、「 [SQL Server のインポートおよびエクスポート ウィザード](/sql/integration-services/import-export-data/import-and-export-data-with-the-sql-server-import-and-export-wizard)
+* SQL Server データ ツールの詳細については、「[Microsoft SQL Server データ ツール](/sql/ssdt/download-sql-server-data-tools-ssdt)  
+* インポート/エクスポート ウィザードの詳細については、「[SQL Server のインポートおよびエクスポート ウィザード](/sql/integration-services/import-export-data/import-and-export-data-with-the-sql-server-import-and-export-wizard)
 
 ## <a name="moving-data-from-on-premises-sql-server-to-sql-server-on-an-azure-vm"></a><a name="sqlonprem_to_sqlonazurevm"></a>オンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動する
 次の移行方法を使用することもできます。
@@ -177,13 +177,13 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 **Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード** は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。 詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)」を参照してください。
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>フラット ファイルへのエクスポート
-「 [データの一括インポートと一括エクスポート (SQL Server)](/sql/relational-databases/import-export/bulk-import-and-export-of-data-sql-server) 」のトピックで説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。 このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。 データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
+「[データの一括インポートと一括エクスポート (SQL Server)](/sql/relational-databases/import-export/bulk-import-and-export-of-data-sql-server) 」のトピックで説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。 このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。 データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
 
 1. 次のように bcp ユーティリティを使用して、オンプレミスの SQL Server からファイルにデータをエクスポートします
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. 手順 1 でエクスポートされたテーブル スキーマに対して `create database` と `create table` を使用して、データベースとテーブルを Azure の SQL Server VM に作成します。
-3. エクスポート/インポートされているデータのテーブルのスキーマを記述するためのフォーマット ファイルを作成します。 フォーマット ファイルの詳細については、「 [フォーマット ファイルの作成 (SQL Server)](/sql/relational-databases/import-export/create-a-format-file-sql-server)」を参照してください。
+3. エクスポート/インポートされているデータのテーブルのスキーマを記述するためのフォーマット ファイルを作成します。 フォーマット ファイルの詳細については、「[フォーマット ファイルの作成 (SQL Server)](/sql/relational-databases/import-export/create-a-format-file-sql-server)」を参照してください。
 
     SQL Server コンピューターから BCP を実行する場合のフォーマット ファイルの生成
 
@@ -203,7 +203,7 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 SQL Server は以下のものをサポートします。
 
 1. [データベースのバックアップと復元機能](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC エクスポート) と[データ層アプリケーション](/sql/relational-databases/data-tier-applications/data-tier-applications) (BACPAC を使用)。
-2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または SQL Database 内の既存のデータベースにコピーする機能。 詳細については、「 [Use the Copy Database Wizard](/sql/relational-databases/databases/use-the-copy-database-wizard)」を参照してください。
+2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または SQL Database 内の既存のデータベースにコピーする機能。 詳細については、「[Use the Copy Database Wizard](/sql/relational-databases/databases/use-the-copy-database-wizard)」を参照してください。
 
 SQL Server Management Studio のデータベースのバックアップ/復元オプションのスクリーンショットを次に示します。
 
