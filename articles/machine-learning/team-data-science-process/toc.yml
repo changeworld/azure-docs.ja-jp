@@ -105,17 +105,7 @@
             - name: 概要
               href: ingest-data.md
             - name: Blob Storage との間の移動
-              items:
-                - name: 概要
-                  href: move-azure-blob.md
-                - name: Storage Explorer を使用する
-                  href: move-data-to-azure-blob-using-azure-storage-explorer.md
-                - name: AzCopy を使用する
-                  href: ../../storage/common/storage-use-azcopy-v10.md
-                - name: Python の使用
-                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
-                - name: SSIS を使用する
-                  href: move-data-to-azure-blob-using-ssis.md
+              href: move-azure-blob.md
             - name: VM 上の SQL への移動
               href: move-sql-server-virtual-machine.md
             - name: Azure SQL Database への移動

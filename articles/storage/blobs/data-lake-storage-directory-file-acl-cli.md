@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08e1976a1bc97ae83d1b9d45700fd614420be0c2
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100650356"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413071"
 ---
 # <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
 
@@ -184,7 +184,7 @@ az storage fs file list -f my-file-system --path my-directory --account-name mys
 
 ## <a name="upload-a-file-to-a-directory"></a>ファイルをディレクトリにアップロードする
 
-`az storage fs directory upload` コマンドを使用して、ファイルをディレクトリにアップロードします。
+`az storage fs file upload` コマンドを使用して、ファイルをディレクトリにアップロードします。
 
 この例では、`upload.txt` という名前のファイルを `my-directory` という名前のディレクトリにアップロードします。 
 

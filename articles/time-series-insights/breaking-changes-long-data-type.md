@@ -3,19 +3,19 @@ title: Azure Time Series Insights Gen2 での Long データ型のサポート |
 description: Azure Time Series Insights Gen2 での Long データ型のサポート。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: msrsrinivasan
+ms.author: radhsrin
+manager: cnovak
+ms.reviewer: orspodak
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.custom: dpalled
-ms.openlocfilehash: 0f7ac9844bfe7eac7094d3b7fdf653e07f236599
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8643fd7aee68e4e5e767be42249cbcda0a6933d1
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780826"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616968"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 での Long データ型のサポートの追加
 

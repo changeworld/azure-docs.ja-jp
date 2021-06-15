@@ -2,14 +2,14 @@
 title: Oracle 用の BareMetal のイーサネット構成
 description: Oracle ワークロード用の BareMetal インスタンスでのイーサネット インターフェイスの構成について説明します。
 ms.topic: reference
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 04/14/2021
-ms.openlocfilehash: c381d06c5f152ef1bfecfb76747bf26dbb24f06e
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: b3183e660b8775e8f3c9137f27220e9db97deec6
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109516959"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578604"
 ---
 # <a name="ethernet-configuration-of-baremetal-for-oracle"></a>Oracle 用の BareMetal のイーサネット構成
 

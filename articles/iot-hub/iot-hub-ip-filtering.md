@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: jlian
-ms.openlocfilehash: bf9d58926c5a0fdc7c305e1d9daebfa1c8c9cf63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 20edf9c0977db3b9557214220df1a76e7363e704
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023607"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695712"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 

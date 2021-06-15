@@ -51,7 +51,7 @@
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
     - name: REST
       href: /rest/api/attestation/
     - name: Azure PowerShell

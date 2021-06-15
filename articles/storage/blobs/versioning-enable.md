@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-csharp
-ms.openlocfilehash: f6a1d315342ea98ccaf1382630eccca876ada3f1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: 0647a777207d5add66b0480a79a52034ee1c3068
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870195"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664912"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
 

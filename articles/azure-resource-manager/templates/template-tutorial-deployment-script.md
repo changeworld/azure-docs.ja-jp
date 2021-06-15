@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7ecd31f6f788331071abbbe67d5460494d54de8d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 65c94346725123913cc2ea53be9b95a7c1bb0fda
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753985"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889582"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する
 
@@ -60,7 +60,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 
 ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。
 
-このクイックスタートで使用するテンプレートは、[Create an Azure Key Vault and a secret](https://azure.microsoft.com/resources/templates/101-key-vault-create/) と呼ばれます。 このテンプレートにより、キー コンテナーが作成され、そのキー コンテナーにシークレットが追加されます。
+このクイックスタートで使用するテンプレートは、[Create an Azure Key Vault and a secret](https://azure.microsoft.com/resources/templates/key-vault-create/) と呼ばれます。 このテンプレートにより、キー コンテナーが作成され、そのキー コンテナーにシークレットが追加されます。
 
 1. Visual Studio Code から、 **[ファイル]**  >  **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。

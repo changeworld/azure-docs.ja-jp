@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69184abac12e9146d29ec5e7f14a536756ae0139
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91714533"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613580"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 
@@ -38,7 +38,7 @@ PowerShell を使用してユーザー委任 SAS を作成するには、バー�
 1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 Windows PowerShell ウィンドウを開き、次のコマンドを実行して最新バージョンをインストールします。
 
     ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
+    Install-Module PowerShellGet -Repository PSGallery -Force
     ```
 
 1. PowerShellGet のインストール後、PowerShell ウィンドウを閉じて再び開きます。
@@ -46,7 +46,7 @@ PowerShell を使用してユーザー委任 SAS を作成するには、バー�
 1. 最新バージョンの Azure PowerShell をインストールします。
 
     ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
+    Install-Module Az -Repository PSGallery -AllowClobber
     ```
 
 1. Azure PowerShell バージョン 3.2.0 以降がインストールされていることを確認します。 次のコマンドを実行して、最新バージョンの Azure Storage PowerShell モジュールをインストールします。

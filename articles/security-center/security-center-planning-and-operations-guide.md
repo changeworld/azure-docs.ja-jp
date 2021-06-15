@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: a8b285ca0b8d0dae88bfe8dd19ac7e1bc8372e32
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 57390f57366959cecc82782254099532d832d303
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099201"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558640"
 ---
 # <a name="planning-and-operations-guide"></a>計画と運用のガイド
 このガイドは、Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -33,7 +33,7 @@ ms.locfileid: "102099201"
 
 
 > [!NOTE]
-> 「 [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md) 」に、設計と計画のフェーズにも役立つ一般的な質問の一覧が記載されています。
+> 「 [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.yml) 」に、設計と計画のフェーズにも役立つ一般的な質問の一覧が記載されています。
 
 ## <a name="security-roles-and-access-controls"></a>セキュリティ ロールとアクセス制御
 組織の規模と構造によっては、複数の個人やチームが Security Center を使用して、セキュリティ関連のさまざまなタスクを実行する場合があります。 次の図には、架空の人物のほか、それぞれの役割とセキュリティ責任が例として挙げられています。
@@ -142,7 +142,7 @@ Windows 用 Log Analytics エージェントでは、TCP ポート 443 を使用
 ある時点で、データ収集を無効にする必要が生じた場合は、セキュリティ ポリシーで無効にすることができます。 ただし、Log Analytics エージェントは他の Azure 管理サービスや監視サービスで使用されている場合があるため、Security Center でデータ収集をオフにしても、このエージェントが自動的にアンインストールされることはありません。 必要な場合は、手動でエージェントをアンインストールできます。
 
 > [!NOTE]
-> サポート対象の VM の一覧については、「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-vms.md)」を参照してください。
+> サポート対象の VM の一覧については、「[Azure Security Center のよく寄せられる質問 (FAQ)](faq-vms.yml)」を参照してください。
 
 ### <a name="workspace"></a>ワークスペース
 
@@ -233,5 +233,5 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)
 * [Azure Security Center を使用したパートナー ソリューションの監視](./security-center-partner-integration.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+* [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.yml) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](/archive/blogs/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

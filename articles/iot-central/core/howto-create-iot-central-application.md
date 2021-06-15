@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 10791fac984a5df4a7fba95217f00ef6a2114b86
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 956e84e8eb7281541fbb787a6ce7557a1f5fee03
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689336"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586494"
 ---
 # <a name="create-an-iot-central-application"></a>IoT Central アプリケーションを作成する
 
@@ -39,7 +39,7 @@ IoT Central アプリケーションを作成するには、いくつかの方�
 
 - Azure サブスクリプションが必要です。 Azure サブスクリプションに、少なくとも **共同作成者** のアクセス権を持っている必要があります。 ご自身でサブスクリプションを作成した場合は、ご自分が自動的に十分なアクセス権を持つ管理者になります。 詳細については、「[Azure ロールベースのアクセス制御とは](../../role-based-access-control/overview.md)」を参照してください。
 - いずれかの使用可能な方法を使用して IoT Central アプリケーションを作成および管理できます。
-- 必要な数のデバイスを接続できます。 デバイスごとに課金されます。 詳細については、「[Azure IoT Central の価格](/pricing/details/iot-central/)」を参照してください。
+- 必要な数のデバイスを接続できます。 デバイスごとに課金されます。 詳細については、「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。
 - 無料プランにダウングレードすることはできませんが、他の Standard プランにアップグレードしたり、ダウングレードしたりすることはできます。
 
 以下の表に、3 つの Standard プランの違いをまとめています。

@@ -3,12 +3,13 @@ title: Service Fabric マネージド クラスターをスケールアウトす
 description: このチュートリアルでは、Service Fabric マネージド クラスターのノード タイプをスケールアウトする方法について説明します。
 ms.topic: tutorial
 ms.date: 5/10/2021
-ms.openlocfilehash: ebce8b0506866e52d79395a3abfcda280c460532
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9e2bd57925ddb78dcfe23742b35c1490584558f8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685767"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666879"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster"></a>チュートリアル: Service Fabric マネージド クラスターをスケールアウトする
 

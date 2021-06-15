@@ -7,12 +7,13 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: a4c04033f3fb5ff523f0d80bb6c978955f4c9ec2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6014867ed30901f0b6470d843dd7b3761bc1ba71
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84737514"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696602"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>プライベート エンドポイントのネットワーク ポリシーを無効にする
 

@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/23/2020
-  ms.openlocfilehash: c9697126e64a6fbcdf25ab4904179b4ae08e8e17
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: f76c64156ac36492ca428bb661704feb78ccded4
+  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110375253"
+  ms.lasthandoff: 06/14/2021
+  ms.locfileid: "112060671"
 landingContent:
 - title: Event Hubs について
   linkLists:
@@ -150,7 +150,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Azure Monitor を使用して Event Hubs を監視する
-      url: event-hubs-metrics-azure-monitor.md
+      url: monitor-event-hubs.md
     - text: 診断ログの設定
       url: event-hubs-diagnostic-logs.md
     - text: 自動スケールアップ

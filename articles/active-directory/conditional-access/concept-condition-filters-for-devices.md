@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/19/2021
+ms.date: 06/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0eb008cdf85e6891f7d6e1159314ceccf46b794
-ms.sourcegitcommit: 2ab484c6c8aeef8c6b7a1eb56d28ba13010d912c
+ms.openlocfilehash: 9e760cbca23aba21ad2d8c85e21a8014590419e9
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2021
-ms.locfileid: "110208649"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438326"
 ---
 # <a name="conditional-access-filters-for-devices-preview"></a>条件付きアクセス: デバイスのフィルター (プレビュー)
 
@@ -46,7 +46,7 @@ ms.locfileid: "110208649"
 デバイスのフィルターは、Azure portal で条件付きアクセス ポリシーを作成する場合または Microsoft Graph API を使用する場合のオプションです。
 
 > [!IMPORTANT]
-> デバイス状態とデバイスのフィルターは、条件付きアクセス ポリシーで一緒に使用することはできません。 デバイスのフィルターを使用する方が、`trustType` および `isCompliant` プロパティを介して、対象とするデバイス状態情報のサポートも含め、より詳細に対象設定できます。
+> デバイス状態とデバイスのフィルターは、条件付きアクセス ポリシーで一緒に使用することはできません。
 
 次の手順を利用して、[一般的なシナリオ](#common-scenarios)の最初のシナリオをサポートする 2 つの条件付きアクセス ポリシーを作成します。 
 

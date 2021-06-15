@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 89309cfe427183d594a5cc2f76332ae150d4f803
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f85c693f038143543a3a90cc2774f3e6efea3c9b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102498678"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952260"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>チュートリアル:自動機械学習で Python のモデルをトレーニングする
 
@@ -31,7 +31,7 @@ Azure Machine Learning は、機械学習モデルのトレーニング、デプ
 ## <a name="before-you-begin"></a>始める前に
 
 - [サーバーレス Apache Spark プールの作成](../quickstart-create-apache-spark-pool-studio.md)に関するクイックスタートに従って、サーバーレス Apache Spark プールを作成します。
-- 既存の Azure Machine Learning ワークスペースがない場合は、[Azure Machine Learning ワークスペースのセットアップ](../../machine-learning/tutorial-1st-experiment-sdk-setup.md)のチュートリアルを完了します。 
+- 既存の Azure Machine Learning ワークスペースがない場合は、[Azure Machine Learning ワークスペースのセットアップ](../../machine-learning/quickstart-create-resources.md)のチュートリアルを完了します。 
 
 ## <a name="understand-regression-models"></a>回帰モデルについて
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 04/07/2021
-ms.openlocfilehash: f6c6f2ba20a67cd39d4142ffadddc803927c936c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 761dcc36e684aa8f024cb650929441b54dddb790
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227060"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952912"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -43,7 +43,7 @@ ms.locfileid: "107227060"
         * [LUIS DevOps の継続的インテグレーションと継続的デリバリーのワークフロー](luis-concept-devops-automation.md)
         * [LUIS DevOps のテスト](luis-concept-devops-testing.md)
     * 操作方法
-        * [GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する](luis-how-to-devops-with-github.md)
+        * [GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する](./luis-concept-devops-automation.md)
     * [完成したコードの GitHub リポジトリ](https://github.com/Azure-Samples/LUIS-DevOps-Template)
 
 ### <a name="may-2020---build"></a>2020 年 5 月 - //Build

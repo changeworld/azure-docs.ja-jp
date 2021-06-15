@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/23/2021
 ms.custom: devx-track-csharp
 ms.devlang: dotnet
-ms.openlocfilehash: 8a73ab04ea782c248a8fab61fb375c01a2339d1c
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 49919a5a0efbdae46f2ef82a7129fee8aa686e8e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981976"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964039"
 ---
 # <a name="1---overview-of-adding-search-to-a-website-with-net"></a>1 - .NET による Web サイトへの検索の追加の概要
 
@@ -58,7 +58,7 @@ ms.locfileid: "107981976"
     - [Azure Cognitive Search 0.2.0+](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
     - [Azure Static Web Apps](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) 
 - 省略可能:
-    - このチュートリアルでは Azure 関数 API をローカルで実行しませんが、ローカルで実行する場合は、[azure-functions-core-tools](/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash#install-the-azure-functions-core-tools) をインストールする必要があります。
+    - このチュートリアルでは Azure 関数 API をローカルで実行しませんが、ローカルで実行する場合は、[azure-functions-core-tools](../azure-functions/functions-run-local.md?tabs=linux%2ccsharp%2cbash#install-the-azure-functions-core-tools) をインストールする必要があります。
 
 ## <a name="fork-and-clone-the-search-sample-with-git"></a>Git を使用して検索サンプルをフォークし、クローンする
 

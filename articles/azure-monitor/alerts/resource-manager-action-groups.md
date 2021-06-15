@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 12/03/2020
-ms.openlocfilehash: 3c7982c108cf6c238c28c843e1dfbb881a6e0bb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a893e0c5d7820ebaa93e1258606ac799b04e6822
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036403"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967056"
 ---
 # <a name="resource-manager-template-samples-for-action-groups-in-azure-monitor"></a>Azure Monitor のアクション グループ用の Resource Manager テンプレート サンプル
-この記事には、Azure Monitor で[アクション グループ](../alerts/action-groups.md)を作成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure Monitor で[アクション グループ](../alerts/action-groups.md)を作成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -121,4 +121,3 @@ ms.locfileid: "102036403"
 
 * [Azure Monitor の他のサンプル テンプレートを入手します](../resource-manager-samples.md)。
 * [アクション グループについて学習します](../alerts/action-groups.md)。
-

@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 9fa4c678a04342b47601f81ede7c49ab841f42ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 487d30c350fc6871122c66bbb3faa6b656ea96f9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102630964"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698645"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-mini-r-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge Mini R デバイスで VPN を構成する
 

@@ -2,14 +2,13 @@
 title: Azure BareMetal インフラストラクチャの用語を把握する
 description: Azure BareMetal インフラストラクチャの用語を把握します。
 ms.topic: conceptual
-ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: 61ff958e75952f73efb222df3f0c4d5437668cd3
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 91270b2c16a1b642b697fd4ffb6a9c635608110e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725460"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576317"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>BareMetal インフラストラクチャの用語を把握する
 

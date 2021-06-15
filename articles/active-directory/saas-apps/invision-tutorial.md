@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: ec35917ca18064d58279d8ed2b3fb1f0e83a88fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 429215dbd35368c7a2c8681e480b5256813171a1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736936"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753649"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と InVision の統合
 
@@ -154,7 +154,7 @@ InVision に対して Azure AD SSO を構成してテストするには、次の
 
     e. ダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容をコピーして **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
 
-    f. **[Name ID Format]\(名前 ID の形式\)** ボックスで、**名前 ID の形式** に `Unspecified` を使用します。
+    f. **[Name ID Format]\(名前 ID の形式\)** ボックスで、**名前 ID の形式** に `urn:oasis:names:tc:SAML:1.1:nameid-format:Unspecified` を使用します。
 
     g. **[HASH Algorithm]\(ハッシュ アルゴリズム\)** のドロップダウンで **[SHA-256]** を選択します。
 

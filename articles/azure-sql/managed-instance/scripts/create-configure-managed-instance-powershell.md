@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: この記事では、マネージド インスタンスを作成するための Azure PowerShell サンプル スクリプトを紹介しています。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: deployment-configuration
+ms.custom: devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: urosmil
+ms.author: urmilano
+ms.reviewer: mathoma
 ms.date: 03/25/2019
-ms.openlocfilehash: fd091cedb67c07b7de2c7e8540e99c3e8daf7dcf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08ec0b92fc9ac71950014efb77a74904a962c78d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323795"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692908"
 ---
 # <a name="use-powershell-to-create-a-managed-instance"></a>PowerShell を使用してマネージド インスタンスを作成する
 

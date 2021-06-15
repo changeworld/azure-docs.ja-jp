@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 6ac427c84661f049502d86d9d621d64b2ac4a2f5
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: dcc49e10e480e519573d80661248fc60e939efdb
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736806"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895101"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と O.C. Tanner - AppreciateHub の統合 Azure AD で制御できます。
 
@@ -125,8 +125,8 @@ O.C. Tanner - AppreciateHub で構成するには、次の手順に従います�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した O.C. Tanner - AppreciateHub に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 アクセス パネルで [O.C.  Tanner - AppreciateHub タイルをクリックすると、SSO を設定した O.C. Tanner - AppreciateHub に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 アクセス パネルで [O.C.  Tanner - AppreciateHub タイルをクリックすると、SSO を設定した O.C. Tanner - AppreciateHub に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-O.C. Tanner - AppreciateHub を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+O.C. Tanner - AppreciateHub を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
 ms.author: rolyon
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 625cf443ab9bd334d2a10e3fb15348459b85f625
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
+ms.openlocfilehash: de71203ab8b61aa3c81d610b231deedab4c63baa
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108069995"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693676"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC の変更のアクティビティ ログを表示する
 

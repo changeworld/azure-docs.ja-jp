@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51120f70977a1ff09a30ae6418dc622c77ff5797
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98599791"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437948"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -25,7 +25,7 @@ ms.locfileid: "98599791"
 > [!IMPORTANT]
 > 2018 年 6 月 13 日より、ClearDB は、現在 Microsoft から請求を受けている Azure ベースの顧客を ClearDB による直接請求モデルに移行しました。 この記事内の情報は古くなっています。 ClearDB データベースの作成、または Azure で作成された ClearDB データベースのアップグレードはできなくなります。
 >
-> 詳細および次のステップについては、「[Changes to ClearDB service plans](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)」を参照してください。
+> 詳細および次のステップについては、「[Changes to ClearDB service plans](https://www.navisite.com/blog/news/update-change-of-billing-notice-for-all-azure-cleardb-service-plans/)」を参照してください。
 
 ## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Azure で使用できる MySQL にはどのようなオプションがありますか。
 そのサービスの最新情報については、[ClearDB](https://w2.cleardb.net/) のページを参照してください。 ClearDB は、ユーザーに代わって MySQL インフラストラクチャを管理する、MySQL のホスティング サービスです。 
@@ -63,7 +63,7 @@ ClearDB Premium MySQL クラスターは、インド、オーストラリア、�
 Azure Marketplace は、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様にはご利用いただけません。 これらのリージョンでは、ClearDB を使用できません。
 
 ## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>運用中の Web アプリケーションとデータベースにはどの価格レベルを選択すればよいですか。
-Web Apps には Basic 以上の価格レベルを使用してください。 ClearDB には Saturn か Jupiter をお勧めします。 [Web Apps](https://azure.microsoft.com/pricing/details/app-service/) と [ClearDB MySQL データベース](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)の両方について、各価格レベルの機能と制限事項を確認し、ニーズに合ったレベルを選んでください。
+Web Apps には Basic 以上の価格レベルを使用してください。 ClearDB には Saturn か Jupiter をお勧めします。 [Web Apps](https://azure.microsoft.com/pricing/details/app-service/) と [ClearDB MySQL データベース](https://www.navisite.com/blog/news/update-change-of-billing-notice-for-all-azure-cleardb-service-plans/)の両方について、各価格レベルの機能と制限事項を確認し、ニーズに合ったレベルを選んでください。
 
 ## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>ClearDB データベースのプランをアップグレードする方法を教えてください。
 [Azure Portal](https://portal.azure.com) では、ClearDB の共有ホスティング データベースをスケールアップできます。 詳しくは、[こちらの記事](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)をご覧ください。 現在、Azure Portal での ClearDB Premium クラスターへのアップグレードはサポートされていません。

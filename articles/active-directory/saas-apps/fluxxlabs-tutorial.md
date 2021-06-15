@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 8b0ec0709d714cda7eb714b13aa061147cd49b4b
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a2e3f3969ce9d39dc8d7b2aa2cb5d0cb6db7ad7a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733547"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111886857"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fluxx Labs の統合
 
@@ -191,8 +191,8 @@ Azure AD ユーザーが Fluxx Labs にサインインできるようにする�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Fluxx Labs に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fluxx Labs] タイルをクリックすると、SSO を設定した Fluxx Labs に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fluxx Labs] タイルをクリックすると、SSO を設定した Fluxx Labs に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Fluxx Labs を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Fluxx Labs を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

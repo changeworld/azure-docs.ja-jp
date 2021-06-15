@@ -4,18 +4,18 @@ description: インメモリ OLTP を導入し、Azure SQL Database と Azure SQ
 services: sql-database
 ms.service: sql-database
 ms.custom: sqldbrb=2
-ms.subservice: development
+ms.subservice: performance
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: MightyPen
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: mathoma
 ms.date: 11/07/2018
-ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d878ce051b9986dc17f2154d91a529b7c38d0cd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91619748"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698954"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>インメモリ OLTP を使用して Azure SQL Database と Azure SQL Managed Instance のアプリケーション パフォーマンスを向上させる
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]

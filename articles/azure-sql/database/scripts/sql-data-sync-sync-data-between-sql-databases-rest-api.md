@@ -3,20 +3,20 @@ title: 'REST API: 複数のデータベース間での同期'
 description: 複数のデータベース間で同期するには、REST API のサンプル スクリプトを使用します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: REST API
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: d3ff8114c11b224a0bdbb0bd2d0e5686a7e57b55
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0e8b12c7a58f3376c4e05819dbe60c9436ecef8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565909"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693348"
 ---
 # <a name="use-rest-api-to-sync-data-between-multiple-databases"></a>REST API を使用して複数のデータベース間でデータを同期する 
 

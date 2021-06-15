@@ -7,12 +7,13 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: jocorte
-ms.openlocfilehash: bdf8896c23bcd61647da83512fb1c0ff9ac3265e
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6fc065c0e20e1560bebad1743fb889886cb07213
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989476"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694922"
 ---
 # <a name="scale-snat-ports-with-azure-nat-gateway"></a>Azure NAT ゲートウェイを使用した SNAT ポートのスケーリング
 

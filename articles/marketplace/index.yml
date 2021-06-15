@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: mingshen-ms
   ms.author: mingshen
-  ms.date: 09/02/2020
-  ms.openlocfilehash: 66bc200f2c330c839eb91e9172207c4c752d9b67
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.date: 06/01/2021
+  ms.openlocfilehash: c4a3d962129dd7acc0d013dd05f482a29752bdd4
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110450590"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111955674"
 landingContent:
 - title: コマーシャル マーケットプレースでの作業
   linkLists:
@@ -24,13 +24,13 @@ landingContent:
     - text: 新しいアカウントを作成する
       url: create-account.md
     - text: 公開オプションを選定する
-      url: ./determine-your-listing-type.md
+      url: determine-your-listing-type.md
     - text: ポリシーと利用規約
-      url: ./policies-terms.md
+      url: policies-terms.md
     - text: Microsoft 商用マーケットプレースに関する FAQ
-      url: ./marketplace-faq-publisher-guide.md
+      url: marketplace-faq-publisher-guide.md
     - text: Microsoft Publisher Agreement
-      url: https://go.microsoft.com/fwlink/?LinkID=699560
+      url: /legal/marketplace/msft-publisher-agreement
     - text: 新機能
       url: what-is-new.md
 - title: 一般的なシナリオとタスク
@@ -38,19 +38,19 @@ landingContent:
   - linkListType: overview
     links:
     - text: マーケティングのベスト プラクティス
-      url: ./gtm-marketing-best-practices.md
+      url: gtm-marketing-best-practices.md
     - text: クラウド ソリューション プロバイダー
-      url: ./cloud-solution-providers.md
+      url: cloud-solution-providers.md
     - text: オファーの掲載のベスト プラクティス
-      url: ./gtm-offer-listing-best-practices.md
+      url: gtm-offer-listing-best-practices.md
   - linkListType: get-started
     links:
     - text: マーケットプレース オファーからの潜在顧客
-      url: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
+      url: partner-center-portal/commercial-marketplace-get-customer-leads.md
     - text: コマーシャル マーケットプレースでの共同販売オプション
-      url: ./co-sell-configure.md
+      url: co-sell-configure.md
     - text: 共同販売のパートナー エンゲージメント
-      url: ./co-sell-overview.md
+      url: co-sell-overview.md
     - text: Microsoft AppSource と Office 内でソリューションを使用できるようにする
       url: /office/dev/store/submit-to-appsource-via-partner-center
     - text: Azure Marketplace と AppSource コミュニティ フォーラムに参加する
@@ -62,19 +62,19 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: '[Summary]\(概要\) ダッシュボード'
-      url: ./summary-dashboard.md
+      url: summary-dashboard.md
     - text: '[Marketplace の分析情報] ダッシュボード'
-      url: ./insights-dashboard.md
+      url: insights-dashboard.md
     - text: '[使用状況] ダッシュボード'
-      url: ./usage-dashboard.md
+      url: usage-dashboard.md
     - text: 顧客ダッシュボード
-      url: ./customer-dashboard.md
+      url: customer-dashboard.md
     - text: '[注文] ダッシュボード'
-      url: ./orders-dashboard.md
+      url: orders-dashboard.md
     - text: '[ダウンロード] ダッシュボード'
-      url: ./partner-center-portal/downloads-dashboard.md
+      url: downloads-dashboard.md
     - text: '[評価とレビュー] ダッシュボード'
-      url: ./partner-center-portal/ratings-reviews.md
+      url: ratings-reviews.md
 - title: オファーの作成
   linkLists:
   - linkListType: how-to-guide
@@ -82,17 +82,17 @@ landingContent:
     - text: SaaS
       url: plan-saas-offer.md
     - text: 仮想マシン
-      url: ./marketplace-virtual-machines.md
+      url: marketplace-virtual-machines.md
     - text: Azure アプリケーション
-      url: ./create-new-azure-apps-offer.md
+      url: azure-app-offer-setup.md
     - text: Dynamics 365 for Customer Engagement & Power Apps
       url: dynamics-365-customer-engage-offer-setup.md
     - text: Dynamics 365 Business Central
-      url: ./partner-center-portal/create-new-business-central-offer.md
+      url: dynamics-365-business-central-offer-setup.md
     - text: Dynamics 365 for Operations
       url: dynamics-365-operations-offer-setup.md
     - text: その他の種類のオファー
-      url: ./publisher-guide-by-offer-type.md
+      url: publisher-guide-by-offer-type.md
 - title: 支払いの受け取り
   linkLists:
   - linkListType: concept
@@ -106,7 +106,7 @@ landingContent:
     - text: 税の詳細
       url: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
     - text: コマーシャル マーケットプレースの課金
-      url: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+      url: marketplace-commercial-transaction-capabilities-and-considerations.md
 - title: API リファレンス
   linkLists:
   - linkListType: reference
@@ -114,11 +114,11 @@ landingContent:
     - text: Marketplace API ガイド
       url: marketplace-apis-guide.md
     - text: API 前提条件
-      url: ./cloud-partner-portal-api-prerequisites.md
+      url: cloud-partner-portal-api-prerequisites.md
     - text: SaaS Fulfillment API
-      url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+      url: partner-center-portal/pc-saas-fulfillment-api-v2.md
     - text: Marketplace の測定サービス API
-      url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+      url: marketplace-metering-service-apis-faq.md
     - text: Reporting API (PDF)
       url: https://partneranalytics-api.azureedge.net/partneranalytics-api/Programmatic%20Access%20to%20Commercial%20Marketplace%20Analytics%20Data_v1.pdf
 - title: サポートを受ける
@@ -128,6 +128,6 @@ landingContent:
     - text: サポート オプション
       url: ./support.md
     - text: 認証エラーのトラブルシューティング
-      url: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+      url: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - text: 利用可能な地域と通貨
-      url: ./marketplace-geo-availability-currencies.md
+      url: marketplace-geo-availability-currencies.md

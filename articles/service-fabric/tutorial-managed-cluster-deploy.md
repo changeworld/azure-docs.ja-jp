@@ -3,13 +3,13 @@ title: Service Fabric マネージド クラスターをデプロイする
 description: このチュートリアルでは、テスト用に Service Fabric マネージド クラスターをデプロイします。
 ms.topic: tutorial
 ms.date: 5/10/2021
-ms.custom: references_regions
-ms.openlocfilehash: 48332bd8115a48497157b846f02db49c96e61001
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: f87e45dcaab5e42607f24decc5897471a74e90b5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685785"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666931"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster"></a>チュートリアル: Service Fabric マネージド クラスターをデプロイする
 

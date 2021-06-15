@@ -8,16 +8,16 @@ ms.author: mbullwin
 manager: nitinme
 ms.date: 09/30/2020
 ms.topic: quickstart
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.custom:
 - mode-portal
-ms.openlocfilehash: aaeaf92df140019db32c326199c9614fd8f5ae37
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 8281204496197f60c49c00d2e663972911d0fbd9
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531811"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894688"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>クイック スタート:Web ポータルを使用して初めてのメトリックを監視する
 

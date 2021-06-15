@@ -3,20 +3,20 @@ title: サービス レベル - DTU ベースの購入モデル
 description: コンピューティング サイズやストレージ サイズを提供するための Azure SQL Database に対する DTU ベースの購入モデルでのサービス レベルについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
 ms.date: 5/4/2021
-ms.reviewer: ''
-ms.openlocfilehash: a800e30f73c73659ecf31da3f63f4ae78bfb8278
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c5413918923ebb4e613ecb48e86dbccfcc60889b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742375"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693290"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
