@@ -2,21 +2,21 @@
 title: ホーム領域検出ポリシーを使用して Azure AD でのサインインの自動高速化を防ぐ
 description: フェデレーション IDP への domain_hint の自動高速化を防ぐ方法について説明します。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: hirsin
-ms.openlocfilehash: b89e0e1c8bd8109fac8b4b7c05a845a3e234b617
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 3f5dbff31bedce2473e3849b4e12161e93f33c8a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375552"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076872"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用してユーザー サインイン時のフェデレーション IDP への自動高速化を無効にする
 

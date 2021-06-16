@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: e7245e8e468ea051ee095d97cc250ad303aa80a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcfe5fb48a6eef0b7185fe8bba5a8f1e80fb4f1f
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619438"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030541"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Active Directory Domain Services マネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -81,7 +81,7 @@ Windows Server VM が必要な場合は、Resource Manager テンプレートを
 
 Windows Server VM を作成して、それをマネージド ドメインに参加させるには、次の手順を完了します。
 
-1. [クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)に移動します。 **[Azure に配置する]** を選択します。
+1. [クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/vm-domain-join/)に移動します。 **[Azure に配置する]** を選択します。
 1. **[カスタム デプロイ]** ページ上で、次の情報を入力して Windows Server VM を作成し、マネージド ドメインに参加させます。
 
     | 設定                   | 値 |
@@ -114,7 +114,7 @@ Windows Server VM を作成して、それをマネージド ドメインに参�
 
 既存の Windows Server VM をマネージド ドメインに参加させるには、次の手順を完了します。
 
-1. [クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)に移動します。 **[Azure に配置する]** を選択します。
+1. [クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/vm-domain-join-existing/)に移動します。 **[Azure に配置する]** を選択します。
 1. **[カスタム デプロイ]** ページ上で、次の情報を入力して、VM をマネージド ドメインに参加させます。
 
     | 設定                   | 値 |

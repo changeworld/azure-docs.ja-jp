@@ -2,15 +2,15 @@
 title: 'クイックスタート: Azure PowerShell を使用して Apache Kafka を作成する - HDInsight'
 description: このクイックスタートでは、Azure PowerShell を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
 ms.service: hdinsight
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 881e37143d9ba77786889e4228069872cdac941a
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 7f29ba5291ab80ef4a4d323e23741c333796c7a8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190208"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691147"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>クイックスタート: PowerShell を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 

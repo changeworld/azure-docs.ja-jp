@@ -2,14 +2,14 @@
 title: Oracle BareMetal インフラストラクチャ サーバーのオプション
 description: Oracle BareMetal インフラストラクチャ サーバーのオプションと考慮事項について説明します。
 ms.topic: reference
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 04/15/2021
-ms.openlocfilehash: e8a2dece11884e3a659f14b30bce51e7f0244924
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: eb77731ad018817cf6d868cefd6a4d84b8f6d330
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589783"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578656"
 ---
 # <a name="options-for-oracle-baremetal-infrastructure-servers"></a>Oracle BareMetal インフラストラクチャ サーバーのオプション
 

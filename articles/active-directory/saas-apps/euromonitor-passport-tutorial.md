@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 0965616c7ce4350c3da1f755f97111346a0d955f
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: a764fbd0edb6531ad0ea4ea25fcfe4f56c426ee7
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163735"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893734"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-euromonitor-passport"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Euromonitor Passport の統合
 
@@ -147,8 +147,8 @@ Euromonitor Passport に対する Azure AD SSO を構成してテストするに
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Euromonitor Passport に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Euromonitor Passport] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Euromonitor Passport に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Euromonitor Passport] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Euromonitor Passport に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Euromonitor Passport を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Euromonitor Passport を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

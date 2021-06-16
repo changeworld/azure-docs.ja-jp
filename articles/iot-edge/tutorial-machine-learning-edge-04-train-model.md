@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 73e4edd25946f71cfb6d14a379d5b004343cc4e3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a0b9c96fcd54ab89d5d454b206ece6fce8f0e34e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367239"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969236"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>チュートリアル:Azure Machine Learning モデルをトレーニングしてデプロイする
 
@@ -45,7 +45,7 @@ Machine Learning スタジオは、機械学習モデルの実験、トレーニ
 Machine Learning スタジオを使用して、2 つの Jupyter ノートブックとサポート ファイルをホストします。 ここでは、Machine Learning プロジェクトを作成して構成します。 Jupyter や Machine Learning スタジオを使用したことがない方のために、2 つの入門用ドキュメントをご紹介します。
 
 * **Jupyter ノートブック:** [Visual Studio Code での Jupyter ノートブックの使用](https://code.visualstudio.com/docs/python/jupyter-support)
-* **Azure Machine Learning:** [Jupyter ノートブックで Azure Machine Learning の作業を開始する](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
+* **Azure Machine Learning:** [Jupyter ノートブックで Azure Machine Learning の作業を開始する](../machine-learning/quickstart-create-resources.md)
 
 > [!NOTE]
 > サービスの設定後は、任意のマシンから Machine Learning にアクセスできるようになります。 設定中は、必要なファイルが揃った開発用 VM を使用する必要があります。

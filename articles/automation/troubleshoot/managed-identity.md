@@ -4,14 +4,13 @@ description: この記事では、Automation アカウントでマネージド I
 services: automation
 ms.subservice: ''
 ms.date: 04/28/2021
-ms.author: v-dturcaso
 ms.topic: troubleshooting
-ms.openlocfilehash: f42605b92093cf08a417690eae8324b9280e8ce6
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 719b20190194779b834eb3de996c0920d50ad313
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108230004"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787356"
 ---
 # <a name="troubleshoot-azure-automation-managed-identity-issues-preview"></a>Azure Automation マネージド ID の問題のトラブルシューティング (プレビュー)
 

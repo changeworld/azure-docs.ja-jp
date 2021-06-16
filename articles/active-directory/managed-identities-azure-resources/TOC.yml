@@ -59,7 +59,7 @@
     - name: マネージド ID と Azure VM
       href: how-managed-identities-work-vm.md
     - name: ベスト プラクティスの推奨事項
-      url: managed-identity-best-practice-recommendations.md
+      href: managed-identity-best-practice-recommendations.md
 - name: 操作方法ガイド
   items:
     - name: VM でのマネージド ID の構成
@@ -105,17 +105,7 @@
         - name: PowerShell
           href: howto-assign-access-powershell.md
     - name: ユーザー割り当てマネージド ID の管理
-      items:
-        - name: ポータル
-          href: how-to-manage-ua-identity-portal.md
-        - name: CLI
-          href: how-to-manage-ua-identity-cli.md
-        - name: PowerShell
-          href: how-to-manage-ua-identity-powershell.md
-        - name: Azure Resource Manager テンプレート
-          href: how-to-manage-ua-identity-arm.md
-        - name: REST
-          href: how-to-manage-ua-identity-rest.md
+      href: how-manage-user-assigned-managed-identities.md
     - name: マネージド個人 ID サービス プリンシパルの表示
       items:
         - name: ポータル

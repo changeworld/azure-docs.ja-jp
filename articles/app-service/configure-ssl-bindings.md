@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9ae0ca07d0aad72a38ee4eccbefbdb826da9627b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0759a3fce2d056bbe5d9234e25b45525874faf4e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373035"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670566"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -100,9 +100,9 @@ ms.locfileid: "110373035"
 
 - 既定では、アプリは、共有のパブリック IP アドレスを使用します。 IP SSL で証明書をバインドすると、アプリ用の新規の専用 IP アドレスが App Service によって作成されます。 アプリに A レコードをマップした場合は、この新規の専用 IP アドレスでドメイン レジストリを更新します。
 
-    アプリの **[カスタム ドメイン]** ページが、新規の専用 IP アドレスで更新されます。 [この IP アドレスをコピー](app-service-web-tutorial-custom-domain.md#info)して、この新しい IP アドレスに [A レコードを再マップ](app-service-web-tutorial-custom-domain.md#map-an-a-record)します。
+    アプリの **[カスタム ドメイン]** ページが、新規の専用 IP アドレスで更新されます。 [この IP アドレスをコピー](app-service-web-tutorial-custom-domain.md#info)して、この新しい IP アドレスに [A レコードを再マップ](app-service-web-tutorial-custom-domain.md#4-create-the-dns-records)します。
 
-- `<app-name>.azurewebsites.net` への SNI SSL バインディングがある場合は、`sni.<app-name>.azurewebsites.net` を指すように [CNAME マッピングを再マップ](app-service-web-tutorial-custom-domain.md#map-a-cname-record)します (`sni` プレフィックスを追加)。
+- `<app-name>.azurewebsites.net` への SNI SSL バインディングがある場合は、`sni.<app-name>.azurewebsites.net` を指すように [CNAME マッピングを再マップ](app-service-web-tutorial-custom-domain.md#4-create-the-dns-records)します (`sni` プレフィックスを追加)。
 
 ## <a name="test-https"></a>HTTPS のテスト
 

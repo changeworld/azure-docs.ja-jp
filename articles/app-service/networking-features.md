@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7410793a429395b7f1b1e826c66cb2647eb77cd2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 33cfd226df9f7620bafe2e404cc43050f176de13
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367712"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892060"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -298,7 +298,7 @@ ASE は分離された専用のアプリのホスティングに最適ですが�
 
 どちらも必要ない場合は、プライベート エンドポイントを使用することをお勧めします。 App Service で使用可能なプライベート エンドポイントの場合、仮想ネットワーク内のプライベート アドレスでアプリを公開できます。 仮想ネットワークに配置したプライベート エンドポイントには、ExpressRoute および VPN 接続を介して到達できます。 
 
-プライベート エンドポイントを構成すると、プライベート アドレスでアプリが公開されますが、オンプレミスからそのアドレスに到達するように DNS を構成する必要があります。 この構成を機能させるには、プライベート エンドポイントが含まれる Azure DNS プライベート ゾーンを、オンプレミスの DNS サーバーに転送する必要があります。 Azure DNS プライベート ゾーンでゾーンの転送はサポートされませんが、その目的に DNS サーバーを使用すれば、ゾーンの転送をサポートできます。 [DNS フォワーダー](https://azure.microsoft.com/resources/templates/301-dns-forwarder/) テンプレートを使用すると、Azure DNS のプライベート ゾーンをオンプレミスの DNS サーバーに簡単に転送できます。
+プライベート エンドポイントを構成すると、プライベート アドレスでアプリが公開されますが、オンプレミスからそのアドレスに到達するように DNS を構成する必要があります。 この構成を機能させるには、プライベート エンドポイントが含まれる Azure DNS プライベート ゾーンを、オンプレミスの DNS サーバーに転送する必要があります。 Azure DNS プライベート ゾーンでゾーンの転送はサポートされませんが、その目的に DNS サーバーを使用すれば、ゾーンの転送をサポートできます。 [DNS フォワーダー](https://azure.microsoft.com/resources/templates/dns-forwarder/) テンプレートを使用すると、Azure DNS のプライベート ゾーンをオンプレミスの DNS サーバーに簡単に転送できます。
 
 ## <a name="app-service-ports"></a>App Service ポート
 

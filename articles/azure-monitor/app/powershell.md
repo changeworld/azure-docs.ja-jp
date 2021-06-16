@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを使用して、PowerShe
 ms.topic: conceptual
 ms.date: 05/02/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 60417e829297eb9a7ad4e244523c546dcaff053d
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d629ef1bc7d2086f85bbb08105041a0457b133c5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318605"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954887"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
@@ -437,7 +437,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
     `"apiVersion": "2015-05-01",`
 
 ### <a name="parameterize-the-template"></a>テンプレートのパラメーター化
-ここでは、特定の名前をパラメーターで置き換える必要があります。 [テンプレート](../../azure-resource-manager/templates/template-syntax.md)をパラメーター化するには、[一連のヘルパー関数](../../azure-resource-manager/templates/template-functions.md)を使用して式を記述します。 
+ここでは、特定の名前をパラメーターで置き換える必要があります。 [テンプレート](../../azure-resource-manager/templates/syntax.md)をパラメーター化するには、[一連のヘルパー関数](../../azure-resource-manager/templates/template-functions.md)を使用して式を記述します。 
 
 文字列の一部のみをパラメーター化することはできません。そのため、`concat()` を使用して、文字列を構築します。
 

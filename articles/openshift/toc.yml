@@ -24,6 +24,8 @@
       items:
         - name: プライベート ARO クラスターを作成する
           href: howto-create-private-cluster-4x.md
+        - name: カスタム DNS の構成
+          href: howto-custom-dns.md
         - name: DNS 転送を構成する
           href: dns-forwarding.md
         - name: エグレス トラフィックを制限する

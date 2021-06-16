@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: a7b18fe6584781db2ec4e81e8bf0cb85e23f0566
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: daf339a1ba79212f82a853a209068c97c13b29f8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175804"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965997"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>すべてのアプリを Azure AD と統合するための 5 つの手順
 
@@ -86,7 +86,7 @@ Azure AD が中心の ID プロバイダーになると、フェデレーショ�
 
 ## <a name="4-integrate-on-premises-applications"></a>4.オンプレミスのアプリケーションを統合する
 
-従来、アプリケーションは、企業ネットワークに接続している間のみアクセスを許可することによって、セキュリティが維持されてきました。 しかし、接続が拡大している世界では、お客様、パートナー、従業員が世界のどこにいても、アプリにアクセスできるようにする必要があります。 [Azure AD アプリケーション プロキシ](../manage-apps/what-is-application-proxy.md) (AppProxy) は、既存のオンプレミス アプリを Azure AD に接続する Azure AD の機能であり、それを実行するために、エッジ サーバーやその他の追加のインフラストラクチャを保守する必要がありません。
+従来、アプリケーションは、企業ネットワークに接続している間のみアクセスを許可することによって、セキュリティが維持されてきました。 しかし、接続が拡大している世界では、お客様、パートナー、従業員が世界のどこにいても、アプリにアクセスできるようにする必要があります。 [Azure AD アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md) (AppProxy) は、既存のオンプレミス アプリを Azure AD に接続する Azure AD の機能であり、それを実行するために、エッジ サーバーやその他の追加のインフラストラクチャを保守する必要がありません。
 
 ![図は、動作中のアプリケーション プロキシ サービスを示しています。 ユーザーが "https://sales.contoso.com" にアクセスすると、その要求が、Azure Active Directory の "https://sales-contoso.msappproxy.net" 経由で、オンプレミスのアドレス "http://sales" にリダイレクトされます。](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
 

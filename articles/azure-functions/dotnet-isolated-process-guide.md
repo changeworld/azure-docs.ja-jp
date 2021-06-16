@@ -3,14 +3,15 @@ title: Azure Functions での .NET 5.0 の .NET 分離プロセス ガイド
 description: .NET 分離プロセスを使用して、Azure において C# 関数を .NET 5.0 でアウトプロセスで実行する方法について説明します。
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 06/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 53f3c79886d26b20a584d747759176ea842741cf
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+recommendations: false
+ms.openlocfilehash: 34a4a37d351f144d00d926de0544c8ae56e9a314
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739280"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901465"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure において関数を .NET 5.0 で実行するためのガイド
 
@@ -36,9 +37,7 @@ ms.locfileid: "107739280"
 + プロセスの完全制御: アプリの起動を制御でき、使用する構成や起動するミドルウェアを制御できます。
 + 依存関係の挿入: プロセスを完全制御できるため、現在の .NET 動作を使用して、依存関係の挿入や関数アプリへのミドルウェアの組み込みを行えます。 
 
-## <a name="supported-versions"></a>サポートされているバージョン
-
-アウトプロセスでの実行が現在サポートされている .NET の唯一のバージョンは .NET 5.0 です。
+[!INCLUDE [functions-dotnet-supported-versions](../../includes/functions-dotnet-supported-versions.md)]
 
 ## <a name="net-isolated-project"></a>.NET 分離プロジェクト
 

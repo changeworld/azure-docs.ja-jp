@@ -3,21 +3,21 @@ title: Azure SQL とは
 description: 次の Azure SQL ファミリのサービス内のさまざまなオプションについて説明します:Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=4
 ms.devlang: ''
 ms.topic: overview
 keywords: SQL Server クラウド、クラウド内の SQL Server、PaaS データベース、クラウド SQL Server、DBaaS、IaaS
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 1202843781ab1c08b2d573967e5118ed04d48990
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dabfe4c3416d1595d8f030d3c671fe2aa0b0c7a3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129911"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708920"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]

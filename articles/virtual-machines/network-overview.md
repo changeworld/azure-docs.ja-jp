@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: a3c07457a193e4a1285dc8a2b3c7197f6151a984
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e9a2f65317dfba8fd28766aec4d07331b924f63b
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077645"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586477"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure における仮想ネットワークと仮想マシン
 

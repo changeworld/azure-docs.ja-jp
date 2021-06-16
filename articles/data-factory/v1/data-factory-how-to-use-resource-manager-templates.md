@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8ade57fc4cf96e3638fffc918899385d8935c95f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec2e7d2f80e19d2e001fec0a3949f469b33149d2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782896"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957133"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "104782896"
 また、企業が、異なる環境間でこれらの 10 のデータ ファクトリを複数回デプロイする必要がある場合、テンプレートでは、この **再利用性** を使用して、開発、テスト、および運用環境に個別のパラメーター ファイルを利用できます。
 
 ## <a name="templating-with-azure-resource-manager"></a>Azure Resource Manager でのテンプレート
-[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)は、Azure Data Factory でテンプレートを実現するための優れた方法です。 Resource Manager テンプレートでは、JSON ファイルを使用して Azure ソリューションのインフラストラクチャと構成を定義します。 Azure Resource Manager テンプレートはほぼすべての Azure サービスと連携するため、広範に使用して Azure アセットのあらゆるリソースを簡単に管理できます。 Resource Manager テンプレート全般については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を参照してください。
+[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)は、Azure Data Factory でテンプレートを実現するための優れた方法です。 Resource Manager テンプレートでは、JSON ファイルを使用して Azure ソリューションのインフラストラクチャと構成を定義します。 Azure Resource Manager テンプレートはほぼすべての Azure サービスと連携するため、広範に使用して Azure アセットのあらゆるリソースを簡単に管理できます。 Resource Manager テンプレート全般については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/syntax.md)」を参照してください。
 
 ## <a name="tutorials"></a>チュートリアル
 Resource Manager テンプレートを使用して Data Factory エンティティを作成する詳細な手順については、次のチュートリアルをご覧ください。
@@ -224,7 +224,7 @@ dataFactoryName は以下のように "変数" で定義します。
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Data Factory テンプレートのパラメーター化
-パラメーター化のベスト プラクティスについては、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/templates/template-best-practices.md)」を参照してください。 通常は、特に代わりに変数を使用できる場合には、パラメーターの使用を最小限にすることをお勧めします。 次のシナリオではパラメーターのみを指定します。
+パラメーター化のベスト プラクティスについては、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/templates/best-practices.md)」を参照してください。 通常は、特に代わりに変数を使用できる場合には、パラメーターの使用を最小限にすることをお勧めします。 次のシナリオではパラメーターのみを指定します。
 
 * 設定は環境によって異なります (例: 開発、テスト、運用)
 * シークレット情報 (パスワードなど)

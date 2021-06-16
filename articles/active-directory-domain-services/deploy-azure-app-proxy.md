@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 70951dc1c1934bcbb2721512175e7d314168ce91
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 67d29dcf0ea4e68354f7b0fad2be7e57e85f8fe7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175462"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962200"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメイン内の内部アプリケーションに安全にアクセスするために Azure AD アプリケーション プロキシをデプロイする
 
 Azure AD Domain Services (Azure AD DS) を使用して、オンプレミスで実行されているレガシ アプリケーションを Azure にリフトアンドシフトすることができます。 その後、Azure Active Directory (AD) アプリケーション プロキシにより、インターネット経由でアクセスできるように、Azure AD DS マネージド ドメインの一部として内部アプリケーションを安全に公開することで、リモート ワーカーをサポートできます。
 
-Azure AD アプリケーション プロキシを使用したことがなく、詳細を確認したい場合は、[内部アプリケーションに安全なリモート アクセスを提供する方法](../active-directory/manage-apps/application-proxy.md)に関する記事を参照してください。
+Azure AD アプリケーション プロキシを使用したことがなく、詳細を確認したい場合は、[内部アプリケーションに安全なリモート アクセスを提供する方法](../active-directory/app-proxy/application-proxy.md)に関する記事を参照してください。
 
 この記事では、Azure AD アプリケーション プロキシ コネクタを作成および構成して、マネージド ドメイン内のアプリケーションへの安全なアクセスを提供する方法について説明します。
 
@@ -75,7 +75,7 @@ VM を Azure AD アプリケーション プロキシ コネクタとして使�
         > たとえば、Azure AD ドメインが *contoso.com* の場合、全体管理者は `admin@contoso.com` か、そのドメインの別の有効なエイリアスである必要があります。
 
    * コネクタをインストールする VM で [Internet Explorer セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージの指示に従うか、インストールプロセス中に Internet Explorer のセキュリティ強化をオフにします。
-   * コネクタの登録が失敗する場合は、[アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)に関する記事をご覧ください。
+   * コネクタの登録が失敗する場合は、[アプリケーション プロキシのトラブルシューティング](/azure/active-directory/app-proxy/application-proxy-troubleshoot)に関する記事をご覧ください。
 1. セットアップの最後に、送信プロキシを使用している環境に対してメモが表示されます。 送信プロキシ経由で動作するように Azure AD アプリケーション プロキシ コネクタを構成するには、提供されたスクリプト (`C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` など) を実行します。
 1. Azure portal の [アプリケーション プロキシ] ページで、次の例に示すように、新しいコネクタが *[アクティブ]* の状態で一覧表示されます。
 

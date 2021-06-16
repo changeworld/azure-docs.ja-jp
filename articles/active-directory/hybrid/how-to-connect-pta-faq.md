@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f797c40a276323cea9983c5340d2d854160c83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ebf9f490bd746115d4cdf095538063a2ab8e018
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368479"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958255"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -50,7 +50,7 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 
 Azure AD Connect を使用して、サインイン方法をパスワード ハッシュ同期からパススルー認証に切り替えると、パススルー認証がマネージド ドメイン内でのユーザーのプライマリ サインイン方法になります。 パスワード ハッシュ同期によって以前同期されていたすべてのユーザーのパスワード ハッシュは、Azure AD に格納されたままになることに注意してください。
 
-## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 
 はい。 この構成は、パススルー認証エージェント (バージョン 1.5.193.0 以降) のブランド名変更バージョンでサポートされます。
 

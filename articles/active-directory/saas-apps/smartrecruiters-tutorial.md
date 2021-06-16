@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2021
 ms.author: jeedes
-ms.openlocfilehash: abe025436562a22fa31c436d8ce47bc2c8b5d31a
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 5e7e77bdac0ce58a1a516ffa56a1fb2436491309
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734538"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889330"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル: Azure Active Directory と SmartRecruiters の統合
 
@@ -162,8 +162,8 @@ SmartRecruiters に対して Azure AD SSO を構成してテストするには�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した SmartRecruiters に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [SmartRecruiters] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SmartRecruiters に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [SmartRecruiters] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した SmartRecruiters に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-SmartRecruiters を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SmartRecruiters を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

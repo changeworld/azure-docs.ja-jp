@@ -14,12 +14,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 350df1aede076120fd14dc46da351835c894c5b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3a9090ace9fce69b0b9a1a445b498fc662f7ba3
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356839"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079519"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Windows 仮想マシンに SQL Server を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "97356839"
 
 > [!TIP]
 > - このクイック スタートでは、SQL VM を迅速にプロビジョニングしてそこに接続する方法について説明します。 SQL VM を作成するためのその他の Azure PowerShell オプションについては、[Azure PowerShell を使用した SQL Server VM のプロビジョニング ガイド](create-sql-vm-powershell.md)を参照してください。
-> - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+> - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Azure サブスクリプションを取得する
 

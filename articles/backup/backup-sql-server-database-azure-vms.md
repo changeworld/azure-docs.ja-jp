@@ -2,13 +2,13 @@
 title: コンテナーから複数の SQL Server VM をバックアップする
 description: この記事では、Recovery Services コンテナーから Azure Backup を使用して Azure 仮想マシン上の SQL Server データベースをバックアップする方法について説明します
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 05/28/2021
+ms.openlocfilehash: 3a6792fe5146df9babc906edec1fc12aa4b3e1cb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258471"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672322"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Recovery Services コンテナーから複数の SQL Server VM をバックアップする
 
@@ -87,7 +87,7 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 | サービス    | アクセスするドメイン名                             | ポート
 | -------------- | ------------------------------------------------------------ | ---
 | Azure Backup  | `*.backup.windowsazure.com`                             | 443
-| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` | 443
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` | 443
 | Azure AD      | [この記事](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)に従って、セクション 56 および 59 の FQDN へのアクセスを許可します | 該当する場合
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する

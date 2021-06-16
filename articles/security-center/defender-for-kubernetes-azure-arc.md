@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: f59c8b4e4f4ddc32cb0ec14e264e4dbb5b093971
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 02690da936190b7d868f54c987939c06b91b1a35
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762859"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854020"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>オンプレミスおよびマルチクラウド環境で実行されている Azure Arc 対応 Kubernetes クラスターを防御する
 
@@ -139,9 +139,9 @@ REST API を使用して Azure Defender 拡張機能をデプロイするには�
     PUT https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
     ```
 
-    この場合、
+    各値の説明:
 
-    | 名前            | /   | 必須 | 型   | 説明                                  |
+    | 名前            | /   | 必須 | 種類   | 説明                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | サブスクリプション ID | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースのサブスクリプション ID |
     | リソース グループ  | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースを含むリソース グループの名前 |
@@ -255,7 +255,7 @@ REST API を使用して Azure Defender 拡張機能をデプロイするには�
 
 ## <a name="simulate-security-alerts-from-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes からのセキュリティ アラートをシミュレートする
 
-サポートされているアラートの完全な一覧については、[Azure Security Center のすべてのセキュリティ アラートのリファレンス テーブル](alerts-reference.md#alerts-akscluster)を参照してください。
+サポートされているアラートの完全な一覧については、[Azure Security Center のすべてのセキュリティ アラートのリファレンス テーブル](alerts-reference.md#alerts-k8scluster)を参照してください。
 
 1. Azure Defender アラートをシミュレートするには、次のコマンドを実行します。
 
@@ -324,7 +324,7 @@ REST API を使用して拡張機能を削除するには、次の DELETE コマ
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名前            | /   | 必須 | 型   | 説明                                           |
+| 名前            | /   | 必須 | 種類   | 説明                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | サブスクリプション ID | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのサブスクリプション ID |
 | リソース グループ  | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのリソース グループ  |
@@ -340,7 +340,7 @@ az account get-access-token --subscription <your-subscription-id>
 
 ---
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このページでは、Azure Arc 対応 Kubernetes クラスター用の Azure Defender 拡張機能をデプロイする方法について説明しました。 Azure Defender と Azure Security Center のコンテナー セキュリティ機能の詳細については、次のページを参照してください。
 

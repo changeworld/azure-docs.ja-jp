@@ -3,12 +3,12 @@ title: 親リソースのエラー
 description: Azure Resource Manager テンプレートで親リソースの操作時のエラーを解決する方法について説明します。
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: 474cb85d16382136e24e5502b87ba8a1a65488ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 885bd319d322128784b53f781b2ceb5a42d292f5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84673662"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951092"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>親リソースのエラーを解決する
 
@@ -78,4 +78,4 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 }
 ```
 
-詳細については、「[Azure Resource Manager テンプレートでのリソース デプロイ順序の定義](define-resource-dependency.md)」を参照してください。
+詳細については、「[Azure Resource Manager テンプレートでのリソース デプロイ順序の定義](./resource-dependency.md)」を参照してください。

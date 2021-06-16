@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: f4f534aeb915fb79bbc52f16615edd549aefe78c
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: de4d66f3ef8195e13ff8b67538901d1ebc7d88aa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804234"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971063"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
@@ -122,9 +122,9 @@ Device | Connection
 --- | ---
 **デプロイ前** | Azure Migrate: Discovery and Assessment ツールがプロジェクトに追加された状態で、プロジェクトを準備する必要があります。<br /><br />オンプレミス サーバーを検出するには、Azure Migrate アプライアンスを設定した後、依存関係の視覚化をデプロイします。<br /><br />初めてプロジェクトを作成する方法については、[こちら](create-manage-projects.md)を参照してください。<br /> 既存のプロジェクトに検出および評価ツールを追加する方法については、[こちら](how-to-assess.md)を参照してください。<br /> [Hyper-V](how-to-set-up-appliance-hyper-v.md)、[VMware](how-to-set-up-appliance-vmware.md)、または物理サーバーの評価のために Azure Migrate アプライアンスを設定する方法について説明します。
 **サポートされているサーバー** | オンプレミス環境にあるすべてのサーバーに対してサポートされています。
-**Log Analytics** | Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)の [Service Map](../azure-monitor/insights/service-map.md) ソリューションを使用します。<br /><br /> 新規または既存の Log Analytics ワークスペースをプロジェクトに関連付けます。 プロジェクトのワークスペースは、ワークスペースの追加後に変更することはできません。 <br /><br /> ワークスペースは、プロジェクトと同じサブスクリプションに含まれている必要があります。<br /><br /> ワークスペースは、米国東部、東南アジア、または西ヨーロッパ リージョンにある必要があります。 他のリージョンにあるワークスペースをプロジェクトに関連付けることはできません。<br /><br /> ワークスペースは、[Service Map がサポートされているリージョン](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)に存在する必要があります。<br /><br /> Log Analytics では、Azure Migrate に関連付けられたワークスペースに、プロジェクト キーとプロジェクト名のタグが付けられます。
+**Log Analytics** | Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)の [Service Map](../azure-monitor/vm/service-map.md) ソリューションを使用します。<br /><br /> 新規または既存の Log Analytics ワークスペースをプロジェクトに関連付けます。 プロジェクトのワークスペースは、ワークスペースの追加後に変更することはできません。 <br /><br /> ワークスペースは、プロジェクトと同じサブスクリプションに含まれている必要があります。<br /><br /> ワークスペースは、米国東部、東南アジア、または西ヨーロッパ リージョンにある必要があります。 他のリージョンにあるワークスペースをプロジェクトに関連付けることはできません。<br /><br /> ワークスペースは、[Service Map がサポートされているリージョン](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)に存在する必要があります。<br /><br /> Log Analytics では、Azure Migrate に関連付けられたワークスペースに、プロジェクト キーとプロジェクト名のタグが付けられます。
 **必要なエージェント** | 分析する各サーバーに、次のエージェントをインストールします。<br />- [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)<br />- [Dependency エージェント](../azure-monitor/agents/agents-overview.md#dependency-agent)<br /><br /> オンプレミス サーバーがインターネットに接続されていない場合は、Log Analytics ゲートウェイをダウンロードしてインストールします。<br /><br /> [依存関係エージェント](how-to-create-group-machine-dependencies.md#install-the-dependency-agent)と [MMA](how-to-create-group-machine-dependencies.md#install-the-mma) のインストールの詳細を確認してください。
-**Log Analytics ワークスペース** | ワークスペースは、プロジェクトと同じサブスクリプションに含まれている必要があります。<br /><br /> Azure Migrate では、米国東部、東南アジア、および西ヨーロッパの各リージョンにあるワークスペースがサポートされます。<br /><br />  ワークスペースは、[Service Map がサポートされている](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。<br /><br /> プロジェクトのワークスペースは、ワークスペースの追加後に変更することはできません。
+**Log Analytics ワークスペース** | ワークスペースは、プロジェクトと同じサブスクリプションに含まれている必要があります。<br /><br /> Azure Migrate では、米国東部、東南アジア、および西ヨーロッパの各リージョンにあるワークスペースがサポートされます。<br /><br />  ワークスペースは、[Service Map がサポートされている](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。<br /><br /> プロジェクトのワークスペースは、ワークスペースの追加後に変更することはできません。
 **コスト** | Service Map ソリューションでは、(Log Analytics ワークスペースをプロジェクトに関連付けた日から) 最初の 180 日間は料金が発生しません。<br /><br /> 180 日が経過すると、Log Analytics の標準の料金が適用されます。<br /><br /> この関連付けられた Log Analytics ワークスペース内で Service Map 以外のソリューションを使用すると、Log Analytics の[標準の料金](https://azure.microsoft.com/pricing/details/log-analytics/)が発生します。<br /><br /> プロジェクトが削除されるときに、ワークスペースは自動的に削除されません。 プロジェクトの削除後に、Service Map を無料で使用することはできず、Log Analytics ワークスペースの有料階層ごとに各ノードの料金が請求されます。<br /><br />Azure Migrate の一般提供 (2018 年 2 月 28 日) 前に作成したプロジェクトがある場合、Service Map の追加料金が発生する可能性があります。 確実に 180 日後にのみ支払いが発生するようにするために、新しいプロジェクトを作成することをお勧めします。 GA の前に作成されたワークスペースは引き続き課金対象となります。
 **管理** | エージェントをワークスペースに登録する場合、プロジェクトで提供される ID とキーを使用します。<br /><br /> Azure Migrate 以外で Log Analytics ワークスペースを使用できます。<br /><br /> 関連付けられたプロジェクトを削除しても、ワークスペースは自動的に削除されません。 [手動で削除してください](../azure-monitor/logs/manage-access.md)。<br /><br /> プロジェクトを削除する場合を除き、Azure Migrate で作成されたワークスペースは削除しないでください。 そのようにすると、依存関係可視化機能が期待どおりに動作しなくなります。
 **インターネット接続** | サーバーがインターネットに接続されていない場合は、そのサーバーに Log Analytics ゲートウェイをインストールします。

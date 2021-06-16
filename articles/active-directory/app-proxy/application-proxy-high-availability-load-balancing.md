@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8dbff6b53133bace6643b21c8faa706ef817f1de
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 215c8e2d2f758044898fa184bc10721996d84b5f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286278"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964733"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>アプリケーション プロキシ コネクタとアプリケーションの高可用性と負荷分散
 
@@ -91,6 +91,6 @@ ms.locfileid: "108286278"
 
 - [アプリケーション プロキシを有効にする](application-proxy-add-on-premises-application.md)
 - [シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)
-- [条件付きアクセスを有効にする](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+- [条件付きアクセスを有効にする](./application-proxy-integrate-with-sharepoint-server.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)
 - [Azure AD アーキテクチャで高可用性がサポートされるしくみについて学習する](../fundamentals/active-directory-architecture.md)

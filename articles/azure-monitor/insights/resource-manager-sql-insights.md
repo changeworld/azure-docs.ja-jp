@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 03/25/2021
-ms.openlocfilehash: dafb7335ef211cb9173ec2fb4565243d603d35fe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: c82a46fa249bd55207e3fc20fbe991c0d7d24bf9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730198"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958152"
 ---
 # <a name="resource-manager-template-samples-for-sql-insights"></a>SQL Insights 用の Resource Manager テンプレートのサンプル
-この記事には、Azure で実行されている SQL を監視できるように SQL Insights を有効にするためのサンプル [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。  サポートされている SQL のオファリングとバージョンの詳細については、[SQL Insights のドキュメント](sql-insights-overview.md)を参照してください。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure で実行されている SQL を監視できるように SQL Insights を有効にするためのサンプル [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)が含まれています。  サポートされている SQL のオファリングとバージョンの詳細については、[SQL Insights のドキュメント](sql-insights-overview.md)を参照してください。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

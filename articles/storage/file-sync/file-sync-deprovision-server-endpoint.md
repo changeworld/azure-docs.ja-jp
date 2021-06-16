@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 4/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c6286c22234f7f9a32b58245835dc2df8467c725
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 49eeef80dd93c8dd87668485db6def84a4d74427
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992761"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676218"
 ---
 # <a name="deprovision-your-azure-file-sync-server-endpoint"></a>Azure File Sync サーバー エンドポイントのプロビジョニング解除
 

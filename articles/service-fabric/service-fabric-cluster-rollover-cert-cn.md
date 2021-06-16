@@ -3,12 +3,13 @@ title: Azure Service Fabric クラスターの証明書をロールオーバー�
 description: 証明書共通名によって識別される Service Fabric クラスターの証明書をロールオーバーする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 65ea4f463073c472ac6a31e62dcfdfd11cb28cc5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 46bcf0a9b5b8477487b224074ccce714bba57dde
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88853347"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677493"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric クラスターの証明書を手動でロールオーバーする
 Service Fabric クラスター証明書の期限切れが近い場合は、証明書を更新する必要があります。  証明書のロール オーバーは、クラスターが (拇印ではなく) [共通名に基づく証明書を使用するように設定](service-fabric-cluster-change-cert-thumbprint-to-cn.md)されている場合は単純です。  証明機関から、新しい有効期限日の新しい証明書を取得します。  自己署名証明書は、Azure portal のクラスター作成ワークフロー中に生成された証明書を含めるため、運用環境の Service Fabric クラスターではサポートされません。 新しい証明書は、古い証明書と同じ共通名を持っている必要があります。 

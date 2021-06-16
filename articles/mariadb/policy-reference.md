@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MariaDB 用の組み込みポリシー定義
 description: Azure Database for MariaDB 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.topic: reference
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 08e8ae4949b00d4798772f8660309893e490000b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7b655dfa8070ee22210f7e224ddfb37779fb72cb
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080749"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017032"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Azure Policy 組み込み定義
 

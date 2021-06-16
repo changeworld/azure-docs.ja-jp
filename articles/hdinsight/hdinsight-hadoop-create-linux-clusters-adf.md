@@ -3,14 +3,14 @@ title: チュートリアル:Data Factory を使用した Azure HDInsight での
 description: チュートリアル - Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する方法について説明します。
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: seoapr2020
+ms.custom: seoapr2020, devx-track-azurepowershell
 ms.date: 04/24/2020
-ms.openlocfilehash: c61ad4d26c4a03889d9ac80332335543ec4140b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3cf8b53cdabbd9360c3e57e5e633327dd4e8a4ad
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868983"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698500"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 

@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB のポイントインタイム
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 06/08/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 065127fbeaabc415dd9a5fbe74f90d5060909d5d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4cb6d818713bb083451bc11257f21a6f6146472a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641032"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753469"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB のポイントインタイム リストア機能 (プレビュー) のリソース モデル
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -128,7 +128,7 @@ ms.locfileid: "105641032"
 | restorableLocations: creationTime | リージョン アカウントが作成された時刻 (UTC)。|
 | restorableLocations: deletionTime | リージョン アカウントが削除された時刻 (UTC)。 リージョン アカウントがライブ状態の場合、この値は空になります。|
 
-復元可能なすべてのアカウントの一覧を取得するには、[復元可能なデータベース アカウント - 一覧](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/list)または[復元可能なデータベース アカウント - 場所別の一覧](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorabledatabaseaccounts/listbylocation)に関する記事を参照してください。
+復元可能なすべてのアカウントの一覧を取得するには、[復元可能なデータベース アカウント - 一覧](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorabledatabaseaccounts/list)または[復元可能なデータベース アカウント - 場所別の一覧](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorabledatabaseaccounts/listbylocation)に関する記事を参照してください。
 
 ### <a name="restorable-sql-database"></a>復元可能な SQL データベース
 
@@ -142,7 +142,7 @@ ms.locfileid: "105641032"
 | operationType | このデータベース イベントの操作の種類。 設定できる値は次のとおりです。<br/><ul><li>Create: データベース作成イベント</li><li>Delete: データベース削除イベント</li><li>Replace: データベース変更イベント</li><li>SystemOperation: システムによってトリガーされたデータベース変更イベント。 このイベントはユーザーによって開始されません</li></ul> |
 | database |イベント発生時の SQL データベースのプロパティ|
 
-すべてのデータベース変更の一覧を取得するには、[復元可能な SQL データベース - 一覧](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqldatabases/list)に関する記事を参照してください。
+すべてのデータベース変更の一覧を取得するには、[復元可能な SQL データベース - 一覧](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqldatabases/list)に関する記事を参照してください。
 
 ### <a name="restorable-sql-container"></a>復元可能な SQL コンテナー
 
@@ -156,7 +156,7 @@ ms.locfileid: "105641032"
 | operationType | このコンテナー イベントの操作の種類。 設定できる値は次のとおりです。 <br/><ul><li>Create: コンテナー作成イベント</li><li>Delete: コンテナー削除イベント</li><li>Replace: コンテナー変更イベント</li><li>SystemOperation: システムによってトリガーされたコンテナー変更イベント。 このイベントはユーザーによって開始されません</li></ul> |
 | container | イベント発生時の SQL コンテナーのプロパティ。|
 
-同じデータベースにあるすべてのコンテナーの変更の一覧を取得するには、[復元可能な SQL コンテナー - 一覧](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlcontainers/list)に関する記事を参照してください。
+同じデータベースにあるすべてのコンテナーの変更の一覧を取得するには、[復元可能な SQL コンテナー - 一覧](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqlcontainers/list)に関する記事を参照してください。
 
 ### <a name="restorable-sql-resources"></a>復元可能な SQL リソース
 
@@ -167,7 +167,7 @@ ms.locfileid: "105641032"
 | databaseName  | SQL データベースの名前。
 | collectionNames   | このデータベースにある SQL コンテナーの一覧。|
 
-指定のタイムスタンプと場所にあるアカウントに存在する SQL データベースとコンテナーの組み合わせの一覧を取得するには、[復元可能な SQL リソース - 一覧](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablesqlresources/list)に関する記事を参照してください。
+指定のタイムスタンプと場所にあるアカウントに存在する SQL データベースとコンテナーの組み合わせの一覧を取得するには、[復元可能な SQL リソース - 一覧](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqlresources/list)に関する記事を参照してください。
 
 ### <a name="restorable-mongodb-database"></a>復元可能な MongoDB データベース
 
@@ -180,7 +180,7 @@ ms.locfileid: "105641032"
 | ownerResourceId   | MongoDB データベースのリソース ID。 |
 | operationType |   このデータベース イベントの操作の種類。 設定できる値は次のとおりです。<br/><ul><li> Create: データベース作成イベント</li><li> Delete: データベース削除イベント</li><li> Replace: データベース変更イベント</li><li> SystemOperation: システムによってトリガーされたデータベース変更イベント。 このイベントはユーザーによって開始されません </li></ul> |
 
-すべてのデータベース変更の一覧を取得するには、[復元可能な Mongodb データベース - 一覧](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbdatabases/list)に関する記事を参照してください。
+すべてのデータベース変更の一覧を取得するには、[復元可能な Mongodb データベース - 一覧](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbdatabases/list)に関する記事を参照してください。
 
 ### <a name="restorable-mongodb-collection"></a>復元可能な MongoDB コレクション
 
@@ -193,7 +193,7 @@ ms.locfileid: "105641032"
 | ownerResourceId   | MongoDB コレクションのリソース ID。 |
 | operationType |このコレクション イベントの操作の種類。 設定できる値は次のとおりです。<br/><ul><li>Create: コレクション作成イベント</li><li>Delete: コレクション削除イベント</li><li>Replace: コレクション変更イベント</li><li>SystemOperation: システムによってトリガーされたコレクション変更イベント。 このイベントはユーザーによって開始されません</li></ul> |
 
-同じデータベースにあるすべてのコンテナーの変更の一覧を取得するには、[復元可能な Mongodb コレクション - 一覧](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbcollections/list)に関する記事を参照してください。
+同じデータベースにあるすべてのコンテナーの変更の一覧を取得するには、[復元可能な Mongodb コレクション - 一覧](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbcollections/list)に関する記事を参照してください。
 
 ### <a name="restorable-mongodb-resources"></a>復元可能な MongoDB リソース
 
@@ -204,7 +204,7 @@ ms.locfileid: "105641032"
 | databaseName  |MongoDB データベースの名前。 |
 | collectionNames | このデータベースにある MongoDB コレクションの一覧。 |
 
-指定のタイムスタンプと場所にあるアカウントに存在するすべての MongoDB データベースとコレクションの組み合わせの一覧を取得するには、[復元可能な Mongodb リソース - 一覧](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/restorablemongodbresources/list)に関する記事を参照してください。
+指定のタイムスタンプと場所にあるアカウントに存在するすべての MongoDB データベースとコレクションの組み合わせの一覧を取得するには、[復元可能な Mongodb リソース - 一覧](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbresources/list)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

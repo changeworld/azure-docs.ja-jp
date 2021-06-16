@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a93db3a2ee147267432d84ea7a7c87ee77eb50e4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576159"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786275"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
@@ -63,8 +63,6 @@ VM の各サイズで想定される送信スループットとサポートさ�
 [Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) では、ネットワーク フローの数や、VM または VMSS インスタンスでのフロー作成の頻度を追跡するためのメトリックを使用できます。
 
 ![折れ線グラフと、受信フローと送信フローの合計が表示されている Azure Monitor の [メトリック] ページを示すスクリーンショット。](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
-
-接続の確立と終了はパケット処理ルーチンと CPU を共有するため、接続の確立と終了の頻度もネットワーク パフォーマンスに影響を与える場合があります。 予測されるトラフィック パターンに対してワークロードをベンチマークし、パフォーマンスのニーズを満たすようにワークロードを適切にスケールアウトすることをお勧めします。 
 
 ## <a name="next-steps"></a>次のステップ
 

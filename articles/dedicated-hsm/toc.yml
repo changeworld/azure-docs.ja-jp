@@ -43,4 +43,4 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml

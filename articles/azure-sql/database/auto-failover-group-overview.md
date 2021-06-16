@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 05/10/2021
-ms.openlocfilehash: 39f684f2eb6f0c8d4c9089ae4d34c38cc51922be
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: ea50d8f4fd614d450685c7efa3004c8853eb8643
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685191"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966877"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -374,7 +374,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL Managed Instance のインスタンスによって使用される仮想ネットワークは、[VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) または [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 経由で接続されている必要があります。 2 つの仮想ネットワークがオンプレミスのネットワーク経由で接続されている場合、ポート 5022 および 11000-11999 をブロックするファイアウォール規則がないことを確認します。 グローバル VNet ピアリングはサポート対象ですが、次の注記で説明する制限事項があります。
 
    > [!IMPORTANT]
-   > [2020 年 9 月 22 日に、新しく作成された仮想クラスターに対するグローバル仮想ネットワーク ピアリングのサポートが発表されました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 つまり、この発表日の後に空のサブネット内に作成された SQL Managed Instance のほか、これらのサブネット内に作成されたそれ以降のすべてのマネージド インスタンスでグローバル仮想ネットワーク ピアリングがサポートされます。 その他のすべての SQL Managed Instance では、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)のために、ピアリングのサポートが同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 この発表日の前に作成された仮想クラスターの SQL Managed Instance でグローバル仮想ネットワーク ピアリングを使用できるようにするには、そのインスタンス上で[メンテナンス期間](https://docs.microsoft.com/azure/azure-sql/database/maintenance-window)を構成することを検討してください。それにより、そのインスタンスが、グローバル仮想ネットワーク ピアリングをサポートする新しい仮想クラスターに移動されます。
+   > [2020 年 9 月 22 日に、新しく作成された仮想クラスターに対するグローバル仮想ネットワーク ピアリングのサポートが発表されました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 つまり、この発表日の後に空のサブネット内に作成された SQL Managed Instance のほか、これらのサブネット内に作成されたそれ以降のすべてのマネージド インスタンスでグローバル仮想ネットワーク ピアリングがサポートされます。 その他のすべての SQL Managed Instance では、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)のために、ピアリングのサポートが同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 この発表日の前に作成された仮想クラスターの SQL Managed Instance でグローバル仮想ネットワーク ピアリングを使用できるようにするには、そのインスタンス上で[メンテナンス期間](./maintenance-window.md)を構成することを検討してください。それにより、そのインスタンスが、グローバル仮想ネットワーク ピアリングをサポートする新しい仮想クラスターに移動されます。
 
 - 2 つの SQL Managed Instance VNet に、重複する IP アドレスを含めることはできません。
 - 他のマネージド インスタンスのサブネットからの接続では、インバウンドおよびアウトバウンドでポート 5022 およびその範囲の 11000 から 12000 を開くように、ネットワーク セキュリティ グループ (NSG) を設定する必要があります。 これで、インスタンス間のレプリケーション トラフィックを許可します。

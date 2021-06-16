@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: duau
-ms.openlocfilehash: 8ee7f42a4b05def7c2239c7a1e5bcef54f6f7e50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 923113610f7ea7c9a898e2a8c5481047893f5c54
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89395776"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702464"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute Direct ポートで MACsec を構成する
 

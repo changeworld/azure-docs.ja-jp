@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: c7c0fc8aaa3779390060ae283f1427f4955ed421
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2ffef6ee99bc7e5de589a52c71a6c7bc4656d655
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555977"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677563"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>チュートリアル - カスタム スクリプト拡張機能を使って Azure 内の Windows 仮想マシンにアプリケーションを展開する
 

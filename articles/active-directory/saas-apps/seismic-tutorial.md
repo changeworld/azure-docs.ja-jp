@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 0ce6382e5ae0123d1a4dd85a6c622dabe126c5a4
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 62785a787cb1153264001def1a030ad47f9b38bf
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109735802"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893284"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>チュートリアル:Azure Active Directory と Seismic の統合
 
@@ -135,8 +135,8 @@ Seismic に対して Azure AD SSO を構成してテストするには、次の�
 
 * Seismic のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Seismic] タイルをクリックすると、Seismic のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Seismic] タイルをクリックすると、Seismic のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Seismic を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Seismic を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

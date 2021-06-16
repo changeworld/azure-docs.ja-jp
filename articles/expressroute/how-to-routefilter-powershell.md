@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
-ms.custom: seodec18
-ms.openlocfilehash: 90d4def5a1c08e305b9315f299e83e2187b6be2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 8321e3e78702d95936fa46bdbdac4b59f17d8a84
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91969904"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695891"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-powershell"></a>チュートリアル:PowerShell を使用して Microsoft ピアリングにルート フィルターを構成する
 

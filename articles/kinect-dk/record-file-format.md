@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect Sensor SDK を使用してファイル形式を記録する
 description: Azure Kinect Sensor SDK を使用してファイル形式を記録する方法について説明します。
-author: xthexder
-ms.author: jawirth
+author: martinekuan
+ms.author: martinek
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, センサー, SDK, 深度, RGB, 記録, 再生, Matroska, mkv
-ms.openlocfilehash: f4fa14b0841cb76b2ba191310ecbca312d29f805
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f45893d37d56e90fbb266c3b988b603f58a43d2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97654593"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753451"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Azure Kinect Sensor SDK を使用してファイル形式を記録する
 

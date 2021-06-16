@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: e5bf54426f3aeedbeeaae7ff4a232e46a1ebf3e3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 886e0ffb2ba9d367c5f0bb89ec1f48b5fbf7ef5a
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064650"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061274"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -35,7 +35,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
+| ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
 
 Azure API Management のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -136,15 +136,6 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
 | ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
-
-
-### <a name="azure-communication-services"></a>Azure Communication Services
-
-マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
-| --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
-
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -461,25 +452,18 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 | クラウド | Resource ID | Status |
 |--------|------------|:-:|
 | Azure Global | `https://eventhubs.azure.net` | ![利用可能][check] |
-| Azure Government |  | 利用不可 |
-| Azure Germany |   | 利用不可 |
-| Azure China 21Vianet |  | 利用不可 |
+| Azure Government | `https://eventhubs.azure.net` | ![利用可能][check] |
+| Azure Germany | `https://eventhubs.azure.net` | ![利用可能][check] |
+| Azure China 21Vianet | `https://eventhubs.azure.net` | ![利用可能][check] |
 
 ### <a name="azure-service-bus"></a>Azure Service Bus
 
 | クラウド | Resource ID | Status |
 |--------|------------|:-:|
 | Azure Global | `https://servicebus.azure.net`  | ![利用可能][check] |
-| Azure Government |  | ![利用可能][check] |
-| Azure Germany |   | 利用不可 |
-| Azure China 21Vianet |  | 利用不可 |
-
-
-
-
-
-
-
+| Azure Government | `https://servicebus.azure.net`  | ![利用可能][check] |
+| Azure Germany |  `https://servicebus.azure.net`  | ![利用可能][check] |
+| Azure China 21Vianet | `https://servicebus.azure.net`  | ![利用可能][check] |
 
 
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage の BLOB とキュー
@@ -499,6 +483,14 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![利用可能][check] |
 | Azure Germany | `https://*.asazure.cloudapi.de` | ![利用可能][check] |
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![利用可能][check] |
+
+### <a name="azure-communication-services"></a>Azure Communication Services
+
+マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
+
 
 > [!Note]
 > Microsoft Power BI は[マネージド ID もサポートします](../../stream-analytics/powerbi-output-managed-identity.md)。

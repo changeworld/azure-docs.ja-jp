@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bc493197b6ae4e6bd969a837bb873cae38c0790
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98017784"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032017"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
 
@@ -177,4 +177,4 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 1. 一部のフィールド名は、\_s または \_d が付加されます。 これらは、送信先と送信元を示すものではなく、それぞれデータ型としての string と decimal を示しています。
 
 ### <a name="next-steps"></a>次の手順
-よく寄せられる質問への回答を確認するには、[トラフィック分析に関する FAQ](traffic-analytics-faq.md) をご覧ください。機能に関する詳細を確認するには、[Traffic Analytics のドキュメント](traffic-analytics.md)をご覧ください
+よく寄せられる質問への回答を確認するには、[トラフィック分析に関する FAQ](traffic-analytics-faq.yml) をご覧ください。機能に関する詳細を確認するには、[Traffic Analytics のドキュメント](traffic-analytics.md)をご覧ください

@@ -9,12 +9,13 @@ ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 26921b3d102032cb36f47c3be7a79c2b596a1d0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 647f9bd509633000e5154e77aeebfea56947b45d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503676"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668867"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-powershell"></a>Azure PowerShell を使用して近接通信配置グループに VM をデプロイする
 

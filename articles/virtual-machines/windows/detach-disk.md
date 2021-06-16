@@ -9,12 +9,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 24c95d486ce77028a2c49917d8f98de23a3a8315
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a9243bdc014f3f9ac3d68a91054fbfef6b4c0840
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552135"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669156"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
 

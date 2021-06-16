@@ -10,16 +10,17 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: ba1df23b40de82a8ef901541884ef29ea0b504a1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5f0368c3d2ee0132816852bfdf170700939bee46
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771877"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949231"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)]Azure PowerShell または Azure CLI を使う以外に、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)を使ってロールを割り当てることもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、テンプレートを使用してロールを割り当てる方法について説明します。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)]Azure PowerShell または Azure CLI を使う以外に、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/syntax.md)を使ってロールを割り当てることもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、テンプレートを使用してロールを割り当てる方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -377,6 +378,6 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 ## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [ARM テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)
+- [ARM テンプレートの構造と構文の詳細](../azure-resource-manager/templates/syntax.md)
 - [サブスクリプション レベルでリソース グループとリソースを作成する](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -11,12 +11,12 @@ ms.date: 04/30/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d097260dc7e84804df30895babd5977a191e293d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e861a1adc2dead2ee7c4397b9fb09aae202aaf94
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737931"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963701"
 ---
 # <a name="attribute-mapping-in-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の属性マッピング
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) Connect のクラウド同期機能を使用�
 これらの基本的な種類とともに、カスタム属性マッピングではオプションの *既定* 値の割り当てという概念をサポートします。 既定値の割り当てでは、Azure AD またはターゲット オブジェクトに値がない場合にも、ターゲットの属性には必ず値が設定されます。 最も一般的な構成では、これを空白のままにします。
 
 ## <a name="schema-updates-and-mappings"></a>スキーマの更新とマッピング
-クラウド同期では、スキーマと、[同期される](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=/azure/active-directory/cloud-provisioning/context/cp-context)既定の属性の一覧が更新される場合があります。  これらの既定の属性マッピングは、新しいインストールで使用できますが、既存のインストールには自動的に追加されません。  これらのマッピングを追加するには、以下の手順に従います。
+クラウド同期では、スキーマと、[同期される](../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context)既定の属性の一覧が更新される場合があります。  これらの既定の属性マッピングは、新しいインストールで使用できますが、既存のインストールには自動的に追加されません。  これらのマッピングを追加するには、以下の手順に従います。
 
 
   1. [属性マッピングの追加] をクリックします

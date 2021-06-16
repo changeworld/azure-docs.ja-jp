@@ -4,20 +4,20 @@ description: Azure SQL Database と Azure SQL Managed Instance に接続して�
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: connect
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: guide
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 03/17/2021
-ms.openlocfilehash: 548d7ee7495d579557cfff89f415298326807338
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 8ba88b2d740eb723fa05ff6e9587a181dbaa56f6
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803730"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694649"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database と Azure SQL Managed Instance の接続とクエリに関する記事
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

@@ -5,18 +5,18 @@ description: この記事では、イマーシブ リーダーの Cookie ポリ�
 services: cognitive-services
 author: nitinme
 manager: guillasi
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: nitinme
 ms.custom: devx-track-js
-ms.openlocfilehash: ad3b54d3350087c53adf8be1c2d78e06fc2744af
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 69cf0eb1659b243220eed1199dac06effc22f363
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373809"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887987"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>イマーシブ リーダーの Cookie ポリシーを設定する方法
 

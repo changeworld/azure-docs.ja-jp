@@ -8,13 +8,13 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: monitoring
-ms.openlocfilehash: 7634a07ab3a0026a06f959c99e7b104a9dc91650
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: monitoring, devx-track-azurepowershell
+ms.openlocfilehash: 0470813cf19305124956925a0730344c3183866a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459724"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666777"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Azure Storage Analytics ログを有効にして管理する (クラシック)
 

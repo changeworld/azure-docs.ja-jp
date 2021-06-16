@@ -1,20 +1,20 @@
 ---
 title: データ収集とレポート | Azure Arc 対応データ サービス
 description: Arc 対応データ サービスによって Microsoft に送信されるデータの種類について説明します。
-author: MikeRayMSFT
-ms.author: mikeray
+author: dnethi
+ms.author: dinethi
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.custom: template-concept
-ms.openlocfilehash: dcaf900164e3d9d4b9b3b54e27a79fdae937abc5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 46c2addc8c844e2fe909bccddfa4927feef5a34a
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472771"
+ms.locfileid: "110495778"
 ---
 # <a name="azure-arc-data-services-data-collection-and-reporting"></a>Azure Arc データ サービスのデータ収集とレポート
 

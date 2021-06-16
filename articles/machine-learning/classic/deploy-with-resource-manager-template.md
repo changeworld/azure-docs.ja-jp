@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: ee0bee4857d410781561e6f7f6a7eae0509d1138
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c81397fb7729e6ce55da6fa7c8121de43c96130
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520036"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956043"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用して Azure Machine Learning Studio (クラシック) ワークスペースをデプロイする
 
@@ -142,7 +142,7 @@ Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEa
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)について確認します。
+* [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/syntax.md)について確認します。
 * [Azure クイックスタート テンプレート リポジトリ](https://github.com/Azure/azure-quickstart-templates)を確認します。
 * [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)のビデオを見ます。
 * [Resource Manager テンプレート リファレンス ヘルプ](/azure/templates/microsoft.machinelearning/allversions)を参照してください

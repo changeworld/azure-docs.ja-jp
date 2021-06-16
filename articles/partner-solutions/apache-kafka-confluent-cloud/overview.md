@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
-ms.openlocfilehash: eea96f9a445fcfd1af5d23db1e01d1a7440fceea
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6fbd6b72c17b8483f9fdb5bc227625fd92009594
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137077"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952629"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Apache Kafka on Confluent Cloud とは
 
@@ -21,7 +21,7 @@ Apache Kafka on Confluent Cloud は、サービスとしての Apache Kafka を�
 
 これまでは、Marketplace で Confluent Cloud オファリングを購入し、Confluent Cloud で個別にアカウントを設定する必要がありました。 構成やリソースを管理するには、Azure と Confluent Cloud のポータル間を行き来する必要がありました。
 
-これからは、**Microsoft.Confluent** という名前のリソース プロバイダーを使用して、Confluent Cloud リソースをプロビジョニングします。 Confluent Cloud の組織リソースは、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/)、または [Azure SDK](/azure/#languages-and-tools) を使用して作成および管理します。 Confluent Cloud は、環境、クラスター、トピック、API キー、マネージド コネクタなどの、サービスとしてのソフトウェア (SaaS) アプリケーションを所有し、実行します。
+これからは、**Microsoft.Confluent** という名前のリソース プロバイダーを使用して、Confluent Cloud リソースをプロビジョニングします。 Confluent Cloud の組織リソースは、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/)、または [Azure SDK](/azure/index.yml#languages-and-tools) を使用して作成および管理します。 Confluent Cloud は、環境、クラスター、トピック、API キー、マネージド コネクタなどの、サービスとしてのソフトウェア (SaaS) アプリケーションを所有し、実行します。
 
 ## <a name="capabilities"></a>機能
 

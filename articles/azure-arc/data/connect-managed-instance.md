@@ -4,17 +4,17 @@ description: Azure Arc 対応 SQL Managed Instance に接続する
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: rothja
-ms.author: jroth
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4edf23b3c5f8dd2d683b90cde4dcb3d9be94ca3e
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 87d9ca35cbed711f8fad0faf4759e3f6c3833b86
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733876"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496000"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance に接続する
 

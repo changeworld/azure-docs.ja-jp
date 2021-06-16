@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 3ddfd8d9004394828ae60998171a73b13a9a8a6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 43b68e5910a8c6a09847ee5694ea080369f78c44
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351403"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614987"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>クイック スタート:Python を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -44,8 +44,8 @@ ms.locfileid: "96351403"
     import json
     
     subscriptionKey = 'ENTER YOUR KEY HERE'
-    host = 'api.cognitive.microsoft.com'
-    path = '/bing/v7.0/entities'
+    host = 'api.bing.microsoft.com'
+    path = '/v7.0/search'
     mkt = 'en-US'
     query = 'italian restaurants near me'
     ```

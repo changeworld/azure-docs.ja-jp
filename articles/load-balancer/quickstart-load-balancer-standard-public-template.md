@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4b1bdd1addec93647eaa631a89e6d419f7ecf477
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 2feee9beb6232320cc5265227754b0803d248bae
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789139"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028237"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -41,9 +41,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/load-balancer-standard-create/)からのものです。
 
-ロード バランサーとパブリック IP の SKU は一致している必要があります。 標準のロード バランサーを作成するときに、標準のロード バランサーのフロントエンドとして構成されている新しい標準パブリック IP アドレスも作成する必要があります。 標準のロード バランサーを作成する場合は、[このテンプレート](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)を使用します。 運用環境のワークロードには標準 SKU の使用をお勧めします。
+ロード バランサーとパブリック IP の SKU は一致している必要があります。 標準のロード バランサーを作成するときに、標準のロード バランサーのフロントエンドとして構成されている新しい標準パブリック IP アドレスも作成する必要があります。 標準のロード バランサーを作成する場合は、[このテンプレート](https://azure.microsoft.com/resources/templates/2-vms-loadbalancer-natrules/)を使用します。 運用環境のワークロードには標準 SKU の使用をお勧めします。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/load-balancer-standard-create/azuredeploy.json":::
 

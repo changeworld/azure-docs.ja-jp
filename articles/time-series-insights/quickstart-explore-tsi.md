@@ -3,19 +3,20 @@ title: クイック スタート:Gen2 デモ環境を探索する - Azure Time S
 description: Azure Time Series Insights Gen2 デモ環境の主な機能を探索します。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: shreyasharmamsft
+ms.author: shresha
+manager: cnovak
+ms.reviewer: orspodek
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 03/01/2021
-ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b109d363b495712efd96e2fa8e5684ad43980964
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698112"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061130"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>クイック スタート:Azure Time Series Insights Gen2 デモ環境を探索する
 
@@ -32,7 +33,7 @@ Azure Time Series Insights Gen2 デモ環境には、2 つの風力タービン�
 
 Azure Time Series Insights Gen2 エクスプローラーでは、履歴データと根本原因分析が示されます。 作業を開始するには:
 
-1.  [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境に移動します。  
+1.  [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境に移動します。
 
 1. プロンプトが表示されたら、Azure アカウントの資格情報を使用して Azure Time Series Insights Gen2 エクスプローラーにサインインします。
 
@@ -124,7 +125,7 @@ Azure Time Series Insights Gen2 とセンサー テレメトリを使用して�
 
     2 つの電圧センサーは、正常なパラメーター内で同等に動作しています。 **[GridVoltagePhase3]** センサーが原因であるようです。
 
-1. 高度なコンテキスト データを追加すると、このフェーズ 3 の下落が問題として浮上してきます。 これで、警告の原因についての有力な手掛かりが手に入りました。 問題をメンテナンス チームに任せる準備ができました。  
+1. 高度なコンテキスト データを追加すると、このフェーズ 3 の下落が問題として浮上してきます。 これで、警告の原因についての有力な手掛かりが手に入りました。 問題をメンテナンス チームに任せる準備ができました。
 
     * 同じグラフ スケール上に **Generator System** のセンサーをすべてオーバーレイ表示するように変更します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: jeedes
-ms.openlocfilehash: d1d8ff566f9b3f3c9f6daf2622cab0efe304181d
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 617578aacbc17ee19f2fd2d2f687d352f67bcb3d
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734686"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894634"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whitesource"></a>チュートリア: Azure Active Directory シングル サインオン (SSO) と Whitesource の統合
 
@@ -135,8 +135,8 @@ Whitesource に対する Azure AD SSO を構成してテストするには、次
 
 * Whitesource のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Whitesource] タイルをクリックすると、Whitesource サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Whitesource] タイルをクリックすると、Whitesource サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Whitesource を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Whitesource を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

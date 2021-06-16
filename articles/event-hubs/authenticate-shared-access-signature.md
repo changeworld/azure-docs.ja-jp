@@ -4,12 +4,12 @@ description: この記事では、Shared Access Signature を使用して Event 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12e129686bdde9b03e1c284e0f54cb31e32469c3
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986497"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903007"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 
@@ -59,11 +59,11 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 受信側が同じパラメーターでハッシュを再計算して、発行者が有効な署名キーを所有していることを確認できるように、トークンにはハッシュされていない値が含まれています。
 
-リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、 http://<namespace>.servicebus.windows.net/<entityPath> または `sb://<namespace>.servicebus.windows.net/<entityPath>;` つまり、`http://contoso.servicebus.windows.net/eventhubs/eh1` となります。
+リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、 http://<namespace>.servicebus.windows.net/<entityPath> または `sb://<namespace>.servicebus.windows.net/<entityPath>;` つまり、`http://contoso.servicebus.windows.net/eh1` となります。
 
 URI はパーセント エンコードする必要があります。
 
-署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/eventhubs/eh1` または `http://contoso.servicebus.windows.net` となります。
+署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/eh1` または `http://contoso.servicebus.windows.net` となります。
 
 SAS トークンは、署名文字列で使われている <resourceURI> がプレフィックスになっているすべてのリソースで有効です。
 

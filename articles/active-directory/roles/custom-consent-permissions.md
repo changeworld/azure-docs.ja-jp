@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: a7a26bfd979fd58ba0519aeba274b22ae502f8a8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8795007a5a38d21985d8b31884c66342b3dda7ed
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085926"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792410"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するアプリへの同意のアクセス許可
 
@@ -65,14 +65,15 @@ ms.locfileid: "110085926"
 
 ## <a name="full-list-of-permissions"></a>アクセス許可の全一覧
 
-権限 | 説明
----------- | -----------
-microsoft.directory/servicePrincipals/managePermissionGrantsForSelf.{id} | 自己の代理となることへの同意 (ユーザーの同意) をアプリに与える権限が、アプリへの同意ポリシー `{id}` の適用を条件に付与されます。
-microsoft.directory/servicePrincipals/managePermissionGrantsForAll.{id} | すべてのユーザーの代理となることへの同意 (テナント全体の管理者の同意) をアプリに与える権限が、アプリへの同意ポリシー `{id}` の適用を条件に付与されます。
-microsoft.directory/permissionGrantPolicies/standard/read | アプリへの同意ポリシーの読み取り権限が付与されます。
-microsoft.directory/permissionGrantPolicies/basic/update | 既存のアプリへの同意ポリシーにある基本的なプロパティを更新する権限が付与されます。
-microsoft.directory/permissionGrantPolicies/create | アプリへの同意ポリシーの作成権限が付与されます。
-microsoft.directory/permissionGrantPolicies/delete | アプリへの同意ポリシーの削除権限が付与されます。
+> [!div class="mx-tableFixed"]
+> | 権限 | 説明 |
+> | ---------- | ----------- |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForSelf.{id} | 自己の代理となることへの同意 (ユーザーの同意) をアプリに与える権限が、アプリへの同意ポリシー `{id}` の適用を条件に付与されます。 |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.{id} | すべてのユーザーの代理となることへの同意 (テナント全体の管理者の同意) をアプリに与える権限が、アプリへの同意ポリシー `{id}` の適用を条件に付与されます。 |
+> | microsoft.directory/permissionGrantPolicies/standard/read | アプリへの同意ポリシーの読み取り権限が付与されます。 |
+> | microsoft.directory/permissionGrantPolicies/basic/update | 既存のアプリへの同意ポリシーにある基本的なプロパティを更新する権限が付与されます。 |
+> | microsoft.directory/permissionGrantPolicies/create | アプリへの同意ポリシーの作成権限が付与されます。 |
+> | microsoft.directory/permissionGrantPolicies/delete | アプリへの同意ポリシーの削除権限が付与されます。 |
 
 ## <a name="next-steps"></a>次の手順
 

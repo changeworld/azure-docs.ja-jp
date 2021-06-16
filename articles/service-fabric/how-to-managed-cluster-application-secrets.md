@@ -3,12 +3,12 @@ title: Service Fabric マネージド クラスターでアプリケーション
 description: Azure Service Fabric アプリケーション シークレットについて、およびマネージド クラスターでの使用に必要な情報を収集する方法について説明します
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: e10a02c82e7f78e120863c89d53bb70e1234ec9e
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 820fb2a116ba5343a2f2126950a7f5d5896ddee3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689384"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950113"
 ---
 # <a name="use-application-secrets-in-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターでアプリケーション シークレットを使用する
 
@@ -37,7 +37,7 @@ ms.locfileid: "109689384"
 独自のキー コンテナーを作成して証明書を設定するには、Azure Key Vault から [Azure CLI、PowerShell、ポータルなど][key-vault-certs]を使用する手順に従います。
 
 >[!NOTE]
-> コンピューティング リソース プロバイダーが Key Vault から証明書を取得し、クラスター ノードにインストールするには、その Key Vault を[テンプレート デプロイ用に有効にする](https://docs.microsoft.com/azure/key-vault/general/manage-with-cli2#bkmk_KVperCLI)必要があります。
+> コンピューティング リソース プロバイダーが Key Vault から証明書を取得し、クラスター ノードにインストールするには、その Key Vault を[テンプレート デプロイ用に有効にする](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI)必要があります。
 
 ## <a name="install-the-certificate-in-your-cluster"></a>クラスターへの証明書のインストール
 この証明書は、クラスター内の各ノードにインストールする必要があります。Service Fabric マネージド クラスターを使用すると、これを簡単に行うことができます。 マネージド クラスター サービスからノードにバージョン固有のシークレットがプッシュされると、プライベート ルート CA をノードにインストールする場合など、頻繁に変更されないシークレットをインストールすることができます。 ほとんどの実稼働ワークロードでは、[KeyVault 拡張機能][key-vault-windows]を使用することをお勧めしています。 Key Vault VM 拡張機能には、静的なバージョンと比較して Azure Key Vault に保存されている証明書を自動更新する機能が備わっています。

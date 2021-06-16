@@ -9,15 +9,15 @@ manager: arthiaga
 ms.reviewer: arthiaga
 ms.service: dms
 ms.workload: data-services
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: tutorial
 ms.date: 04/11/2021
-ms.openlocfilehash: f01f718bca7d6fc8c6226f682289ef46068aa126
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eea4a539c8a2b17a9a6280a8f847e68542d1a8d5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125843"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950652"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-offline-with-powershell--azure-database-migration-service"></a>PowerShell と Azure Database Migration Service を使用して MySQL を Azure Database for MySQL にオフラインで移行する
 
@@ -31,7 +31,8 @@ ms.locfileid: "108125843"
 > Amazon Relational Database Service (RDS) for MySQL および Amazon Relational Database Service (RDS) for Amazon Aurora (MySQL ベース) も移行元としてサポートされます。
 
 > [!IMPORTANT]
-> "MySQL を Azure Database for MySQL に移行する" オンライン移行シナリオは、2021 年 6 月 1 日以降、並列化された高パフォーマンスのオフライン移行シナリオで置き換えられます。 オンライン移行では、この新しいオファリングを[データイン レプリケーション](../mysql/concepts-data-in-replication.md)と共に使用できます。 または、データイン レプリケーションと共に [MyDumper や MyLoader](https://centminmod.com/mydumper.html) などのオープンソース ツールを使用してオンライン移行を行うこともできます。 
+> オンライン移行では、[データイン レプリケーション](../mysql/concepts-data-in-replication.md)と共に、[MyDumper/MyLoader](https://centminmod.com/mydumper.html) などのオープンソース ツールを使用できます。
+
 
 この記事を参考に自動化するシナリオでは、ソース データベースとターゲット データベースの名前は同じであっても、異なっていてもかまいません。また、移行の一環として、ターゲット データベース内のテーブルのうち、同じ名前とテーブル構造を共有する一部または全部のテーブルを移行しなければなりません。 この記事は、ソースとして MySQL データベース インスタンスを、ターゲットとして Azure Database for MySQL を想定していますが、ソース サーバーの名前と資格情報さえ変更すれば Azure Database for MySQL 間の移行にも使用できます。 また、MySQL サーバーの下位バージョン (v5.6 以上) から上位バージョンへの移行にも対応します。
 
@@ -57,7 +58,7 @@ ms.locfileid: "108125843"
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
-    > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、*Microsoft.Sql* サービスの[エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加してください。 Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
+    > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、*Microsoft.Sql* サービスの [エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加してください。 Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
 
 * 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Storage および AzureMonitor の ServiceTag のアウトバウンド ポート 443 がブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
 * Azure Database Migration Service がソース MySQL Server (既定では TCP ポート 3306) にアクセスできるよう、Windows ファイアウォールを開放して仮想ネットワークからの接続を許可します。

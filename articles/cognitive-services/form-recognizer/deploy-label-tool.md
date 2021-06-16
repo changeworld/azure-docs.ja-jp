@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: 監視された学習に役立てるため、Form Recognizer のサンプル ラベル付けツールをデプロイするさまざまな方法について説明します。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: lajanuar
-ms.openlocfilehash: 66edf7dbe7bc32cffcc5c4adad6e04d81f8a21ac
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cc78ae0bc417becb1c6cf16270f77206c60b461e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374597"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076980"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -77,7 +77,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 * [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
 * [ユーザー名] (省略可能) - ユーザー名を作成します。 
 * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
-* [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
+* [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-2.1` に設定します
 * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを **オン** に設定します。
 * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
 
@@ -127,7 +127,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-2.1 \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -146,7 +146,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \

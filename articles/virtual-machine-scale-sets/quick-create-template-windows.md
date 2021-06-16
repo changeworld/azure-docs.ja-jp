@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.collection: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: db914a73845e0bdb36cd5a58156880c2ac2c2358
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: mimckitt, subject-armqs, devx-track-azurepowershell
+ms.openlocfilehash: 42d3c95f722746044df620448a8d74ae75e25838
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740377"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901783"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシン スケール セットを作成する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/)からのものです。
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/vmss-windows-webapp-dsc-autoscale/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/demos/vmss-windows-webapp-dsc-autoscale/azuredeploy.json":::
 

@@ -2,18 +2,18 @@
 title: Azure Storage インベントリを使用して BLOB の数とサイズを計算する
 description: コンテナーごとの BLOB の数と合計サイズを計算する方法について説明します。
 services: storage
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: e752d40ce2f237c2ab08bac2e71133cd06ec40e4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 8365c4873165b5a8040bc3def5743eca435cb7e9
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277183"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653939"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Azure Storage インベントリを使用してコンテナーあたりの BLOB の数と合計サイズを計算する
 

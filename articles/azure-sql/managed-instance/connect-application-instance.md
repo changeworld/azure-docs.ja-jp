@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: この記事では、Azure SQL Managed Instance にアプリケーションを接続する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: connect
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 02/25/2021
-ms.openlocfilehash: ca61f2163f1a66e87317274bab789db7944a4536
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4a24c40abc938d63ed94c9b8b23654c619b776f1
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065210"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688974"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance にアプリケーションを接続する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

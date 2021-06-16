@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c65f8c3ffcf8e48153701c8d4d2b316c2b41f375
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7f3680af94e8ae36a1d2a2b356d717fcc25b575e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768465"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028021"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI で特殊化されたイメージ バージョンを使用してスケール セットを作成する
 
@@ -58,6 +58,6 @@ az vmss create \
 
 共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 
-- [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
+- [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)

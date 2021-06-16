@@ -3,15 +3,13 @@ title: Azure Resource Manager テンプレートを使用して Azure Recovery S
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Recovery Services コンテナーを作成する方法について説明します。
 ms.date: 04/28/2021
 ms.topic: quickstart
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 453c1a14a54011d8124588911da1cde64fe2ea28
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 8d7d62c05586032bc73c41ef671862a4aa211334
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277302"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903174"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Recovery Services コンテナーを作成する
 
@@ -29,7 +27,7 @@ ms.locfileid: "108277302"
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/recovery-services-vault-create/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.recoveryservices/recovery-services-vault-create/azuredeploy.json":::
 

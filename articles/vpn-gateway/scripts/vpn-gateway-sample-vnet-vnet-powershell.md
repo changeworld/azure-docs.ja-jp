@@ -9,12 +9,13 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 949c2b7810bc6b4f5a80b9932427f4aa3565794e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0688e2bb86a79cd9e68528cd4fce9bba629b6846
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88030363"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681462"
 ---
 # <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>PowerShell を使用して VNet 対 VNet VPN ゲートウェイ接続を構成する
 

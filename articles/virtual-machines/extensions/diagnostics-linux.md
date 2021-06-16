@@ -8,12 +8,13 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/05/2021
-ms.openlocfilehash: 6457134e733265fa7e59f32dd522bfcddfadb9f7
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: aae7cc0d9289e4121f0cb58b719ff791e4880bb4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322151"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950021"
 ---
 # <a name="use-the-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension 4.0 を使用して、メトリックとログを監視する
 
@@ -44,7 +45,7 @@ VM および仮想マシン スケール セット用のこの拡張機能は、
 >[!NOTE]
 >Linux Diagnostic VM 拡張機能の一部のコンポーネントは、[Log Analytics VM 拡張機能](./oms-linux.md)にも付属しています。 このアーキテクチャが原因で、両方の拡張機能が同じ ARM テンプレートでインスタンス化されると、競合が発生する場合があります。
 >
->インストール時の競合を回避するには、[`dependsOn` ディレクティブ](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)を使用して、拡張機能を順番にインストールします。 拡張機能は、どちらの順序でもインストールできます。
+>インストール時の競合を回避するには、[`dependsOn` ディレクティブ](../../azure-resource-manager/templates/resource-dependency.md#dependson)を使用して、拡張機能を順番にインストールします。 拡張機能は、どちらの順序でもインストールできます。
 
 インストール手順と[ダウンロード可能なサンプル構成](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)を使用して、LAD 4.0 を次のように構成します。
 

@@ -16,12 +16,13 @@ ms.date: 04/17/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a26f13b71ae96f4d6593cb4a4d9107f8ef6c207c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6cc8baf17440f34ab500034b4b77ba968acc066d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784877"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749797"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、または削除する
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d372c4bff4977ed310d2e84aa255679a9c5ed928
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99475490"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756457"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
@@ -30,8 +30,7 @@ ms.locfileid: "99475490"
 
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>ヒント 2: データ ソースの資格情報が正しいことを確認する
 データ ソース接続は、それを使用するインデクサーを定義するまでは検証されません。 インデクサーがデータにアクセスできないというエラーが表示される場合は、次の点を確認してください。
-- 接続文字列正しい。 特に、SAS トークンを作成している場合は、Azure Cognitive Search の所定の形式を使用するようにしてください。 サポートされているさまざまなフォーマットについては、「[資格情報を指定する方法](
-https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials)」のセクションを参照してください。
+- 接続文字列正しい。 特に、SAS トークンを作成している場合は、Azure Cognitive Search の所定の形式を使用するようにしてください。 サポートされているさまざまなフォーマットについては、「[資格情報を指定する方法](search-howto-indexing-azure-blob-storage.md#credentials)」のセクションを参照してください。
 - インデクサー内のコンテナー名が正しい。
 
 ## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>ヒント 3: いくつかのエラーがある場合でも何が動作しているかを確認する

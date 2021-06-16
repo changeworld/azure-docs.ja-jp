@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: f9ab258f59279112d0b90c5d460e6761ac911a2d
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 3d6e9fe8ad21ab47e3062a63f45f096b8ba60bc5
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713356"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887260"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell を使用した Azure Security Center へのオンボードの自動化
 
@@ -43,33 +43,51 @@ Security Center のコマンドレットを実行する前に、これらの手�
 
 1. PowerShell で次のコマンドを実行します。
       
-    ```Set-ExecutionPolicy -ExecutionPolicy AllSigned```
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy AllSigned
+    ```
 
-    ```Install-Module -Name Az.Security -Force```
+    ```powershell
+    Install-Module -Name Az.Security -Force
+    ```
 
 ## <a name="onboard-security-center-using-powershell"></a>PowerShell を使用したセキュリティ センターへのオンボード
 
 1. Security Center のリソース プロバイダーに次のようにサブスクリプションを登録します。
 
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
 
-    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'
+    ```
 
 1. 省略可能:サブスクリプションのカバレッジレベル (Azure Defender のオン/オフ) を設定します。 未定義の場合、Defender はオフになります。
 
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
 
-    ```Set-AzSecurityPricing -Name "default" -PricingTier "Standard"```
+    ```powershell
+    Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
+    ```
 
 1. エージェントのレポート先の Log Analytics ワークスペースを構成します。 サブスクリプションの VM のレポート先になる、事前に作成済みの Log Analytics ワークスペースが必要です。 同じワークスペースをレポート先にする複数のサブスクリプションを定義できます。 定義されていない場合、既定のワークスペースが使用されます。
 
-    ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
+    ```powershell
+    Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+    ```
 
 1. Azure VM 上での Log Analytics エージェントの自動プロビジョニング インストール:
     
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
     
-    ```Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision```
+    ```powershell
+    Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    ```
 
     > [!NOTE]
     > Azure 仮想マシンが Azure Security Center によって必ず自動的に保護されるように、自動プロビジョニングを有効にすることをお勧めします。
@@ -77,13 +95,19 @@ Security Center のコマンドレットを実行する前に、これらの手�
 
 1. 省略可能: オンボードするサブスクリプションの[セキュリティ連絡先の詳細を定義](security-center-provide-security-contact-details.md)することを強くお勧めします。その連絡先は Security Center により生成されるアラートと通知の受信者として使用されます。
 
-    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert```
+    ```powershell
+    Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert
+    ```
 
 1. 既定の Security Center ポリシーのイニシアティブを割り当てます。
 
-    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+    ```
 
-    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+    ```powershell
+    $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+    ```
 
 PowerShell を使用した Azure Security Center のオンボードが正常に行われました。
 

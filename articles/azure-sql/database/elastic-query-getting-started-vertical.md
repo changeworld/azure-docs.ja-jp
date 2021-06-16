@@ -7,16 +7,16 @@ ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 90f89e72193c26b71859076b99c448a6e2d4c4c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58d66f587c65546aa8c2b03c25592a09ea059f7a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98060086"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708772"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

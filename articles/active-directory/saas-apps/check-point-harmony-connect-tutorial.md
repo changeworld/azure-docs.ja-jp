@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2021
 ms.author: jeedes
-ms.openlocfilehash: c398e9a3ae1c46dc8ae8e28c04a185be492be2fc
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: 18a919827ec213f5165d8b7d913f0c489d63ee5c
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109665246"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891844"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-harmony-connect"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Harmony Connect の統合
 
@@ -171,6 +171,4 @@ Check Point Harmony Connect をテストするには、その認証サービス�
 
 ## <a name="next-steps"></a>次の手順
 
-Check Point Harmony Connect を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Check Point Harmony Connect を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

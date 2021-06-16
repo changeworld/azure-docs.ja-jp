@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/12/2021
+ms.date: 05/26/2021
 ms.author: radeltch
-ms.openlocfilehash: 5abbd1ed5c33d0ec0957d34dd8d78a958208e8f6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6162f02de8eb742653aef0d527c525e1b792a033
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142875"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534515"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性
 
@@ -401,6 +401,49 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    10.32.0.4   hanadb1
    10.32.0.5   hanadb2
    ```
+
+3. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で説明されているように、NFS を使用して Azure NetApp で SAP HANA を実行できるよう OS を準備します。 NetApp 構成設定用の構成ファイル */etc/sysctl.d/netapp-hana.conf* を作成します。  
+
+    <pre><code>
+    vi /etc/sysctl.d/netapp-hana.conf
+    # Add the following entries in the configuration file
+    net.core.rmem_max = 16777216
+    net.core.wmem_max = 16777216
+    net.core.rmem_default = 16777216
+    net.core.wmem_default = 16777216
+    net.core.optmem_max = 16777216
+    net.ipv4.tcp_rmem = 65536 16777216 16777216
+    net.ipv4.tcp_wmem = 65536 16777216 16777216
+    net.core.netdev_max_backlog = 300000 
+    net.ipv4.tcp_slow_start_after_idle=0 
+    net.ipv4.tcp_no_metrics_save = 1
+    net.ipv4.tcp_moderate_rcvbuf = 1
+    net.ipv4.tcp_window_scaling = 1    
+    net.ipv4.tcp_sack = 1
+    </code></pre>
+
+4. **[A]** 追加の最適化設定を使用して、構成ファイル */etc/sysctl.d/ms-az.conf* を作成します。  
+
+    <pre><code>
+    vi /etc/sysctl.d/ms-az.conf
+    # Add the following entries in the configuration file
+    net.ipv6.conf.all.disable_ipv6 = 1
+    net.ipv4.tcp_max_syn_backlog = 16348
+    net.ipv4.conf.all.rp_filter = 0
+    sunrpc.tcp_slot_table_entries = 128
+    vm.swappiness=10
+    </code></pre>
+
+    > [!TIP]
+    > SAP ホスト エージェントからポート範囲を管理できるように、sysctl 構成ファイルで明示的に net.ipv4.ip_local_port_range と net.ipv4.ip_local_reserved_ports を設定しないようにしてください。 詳細については、SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) を参照してください。  
+
+5. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で推奨されているように、sunrpc 設定を調整します。  
+
+    <pre><code>
+    vi /etc/modprobe.d/sunrpc.conf
+    # Insert the following line
+    options sunrpc tcp_max_slot_table_entries=128
+    </code></pre>
 
 2. **[A]** HANA 構成のための RHEL
 

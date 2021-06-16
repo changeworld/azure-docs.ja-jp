@@ -909,7 +909,7 @@
     - name: ホワイトペーパー
       href: whitepapers.md
     - name: よく寄せられる質問
-      href: frequently-asked-questions.md
+      href: frequently-asked-questions.yml
       displayName: timeout
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=data-factory'

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 06/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9455045bb03ad03d2e5cf31a27696850f2d31bed
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 01aa29865967818a3308bc696544fdb140d95f73
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886426"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409435"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
@@ -502,7 +502,6 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
             <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for validating the account</LocalizedString>
             <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
             <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
-          </LocalizedStrings>
           </LocalizedStrings>
         </LocalizedResources>
         <LocalizedResources Id="api.custom-email.es">

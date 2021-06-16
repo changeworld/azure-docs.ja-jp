@@ -4,17 +4,17 @@ titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: 6ed565c624e542771bdb4f205e618f8fb2b53ed5
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 70560a2788527a0f45d0cb977723edf6c797d0af
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109844448"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894469"
 ---
 [リファレンスのドキュメント](/java/api/overview/azure/ai-metricsadvisor-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/ai-metrics-advisor) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 5e84f59253c85495bfccb289b3c40229304c0f49
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: d2e0dcb7d973a4e4b2b6f4438aab5f08187ae44b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790165"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953112"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>サービス プロバイダー向けの Azure Monitor ログ
 
@@ -88,4 +88,4 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 * [Power BI](../visualize/powerbi.md) を使用して概要レポートを作成する
 
-* [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)に顧客をオンボードする
+* [Azure の委任されたリソース管理](../../lighthouse/concepts/architecture.md)に顧客をオンボードする

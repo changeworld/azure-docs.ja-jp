@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: sngun
-ms.openlocfilehash: faa931348d94575754b2d369b8ce50840f2f35a8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 77e4ccd7b651de97d3f423a72309ac08a6495fd6
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386380"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539811"
 ---
 # <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB の Free レベル 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ Azure PowerShell を使用して Free レベルのアカウントを作成する
 
 ```powershell-interactive
 # Create a free tier account for SQL API. 
-New-AzCosmosDBAccount -ResourceGroupName MyResourcegroup" `
+New-AzCosmosDBAccount -ResourceGroupName "MyResourcegroup" `
     -Name "Myaccount" `
     -ApiKind "sql" `
     -EnableFreeTier true `

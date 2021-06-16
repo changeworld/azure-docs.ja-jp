@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/11/2021
 ms.author: juliako
-ms.openlocfilehash: abbd88b3a7e2c2713033b5f5da2ecc95ffdeacf3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1976985db9543030d32bd99fcaf983acba6d4acf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367463"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993717"
 ---
 > [!NOTE]
-> サービスの最新バージョンについては、[Azure Video Analyzer](https://aka.ms/video-analyzer-landing) に関するページを参照してください。
+> サービスの最新バージョンについては、[Azure Video Analyzer](../../../azure-video-analyzer/video-analyzer-docs/index.yml) に関するページを参照してください。

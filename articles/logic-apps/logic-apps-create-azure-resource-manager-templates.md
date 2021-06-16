@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 3debd58aadb98ab1e78692411e8d0bb66635f0da
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 9bf6e9a09cfd271fb701b930eaee7b0e8bdee61f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279300"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961615"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps でのデプロイを自動化するために Azure Resource Manager テンプレートを作成する
 
@@ -24,9 +24,9 @@ Azure Logic Apps には、ロジック アプリの作成だけでなく、デ�
 
 Azure Resource Manager テンプレートの詳細については、これらのトピックを参照してください。
 
-* [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/template-syntax.md)
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
-* [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates/templates-cloud-consistency.md)
+* [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/syntax.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/syntax.md)
+* [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates/template-cloud-consistency.md)
 
 <a name="visual-studio"></a>
 

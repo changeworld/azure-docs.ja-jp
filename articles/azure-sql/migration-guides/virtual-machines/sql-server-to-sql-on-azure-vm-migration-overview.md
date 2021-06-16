@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
-ms.reviewer: mathoma
+ms.reviewer: chadam
 ms.date: 11/06/2020
-ms.openlocfilehash: 152ea453e63164f2e784c573170c001ced63df85
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f330fb4886a04a1bc861b63e5dd70e3ba1286351
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769797"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794893"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>移行の概要: SQL Server から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -73,7 +73,7 @@ VM 上の SQL Server の適切なインストールと構成にも考慮する�
 次の表では、SQL Server データベースを Azure VM 上の SQL Server に移行する **リフト アンド シフト** 移行戦略で使用できる方法について詳しく説明します。
 <br />
 
-|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** |  **メモ** |
+|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** |  **ノート** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM ストレージの制限](../../../index.yml) |  既存の SQL Server がそのまま、Azure VM 上の SQL Server のインスタンスに移動されます。 移行のワークロードは最大 35,000 VM にスケーリングできます。 <br /><br /> サーバー データの同期中、ソース サーバーがオンラインのままで要求に対応するので、ダウンタイムが最小限に抑えられます。 <br /><br /> **自動化とスクリプト**:[Azure Site Recovery のスクリプト](../../../migrate/how-to-migrate-at-scale.md)と [ Azure のスケーリングされた移行と計画の例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
@@ -89,7 +89,7 @@ SQL Server データベースを Azure VM 上の SQL Server のインスタン�
 次の表では、SQL Server データベースを Azure VM 上の SQL Server に移行するために使用できるすべての方法について詳しく説明します。
 <br />
 
-|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** | **メモ** |
+|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** | **ノート** |
 | --- | --- | --- | --- | --- |
 | **[ファイルへのバックアップ](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM ストレージの制限](../../../index.yml) |  これは、マシン間でデータベースを移動する際の、十分にテストされたシンプルな手法です。 圧縮を使用して、転送するバックアップのサイズを最小限に抑えます。 <br /><br /> **自動化とスクリプト**:[Transact-SQL (T-SQL)](/sql/t-sql/statements/backup-transact-sql) と [BLOB ストレージへの AzCopy](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[URL へのバックアップ](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| SQL Server 2016 の場合は 12.8 TB、それ以外の場合は 1 TB | Azure Storage を使用してバックアップ ファイルを VM に移動するもう 1 つの方法です。 圧縮を使用して、転送するバックアップのサイズを最小限に抑えます。 <br /><br /> **自動化とスクリプト**:[T-SQL またはメンテナンス プラン](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |

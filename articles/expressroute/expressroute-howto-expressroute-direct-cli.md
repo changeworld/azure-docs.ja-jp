@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: f827d61ad7e04f4ff2a5369d86a04f5231281997
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ce307efb2321fdc36a902ee1cdc5162aab587ba8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930967"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696910"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 

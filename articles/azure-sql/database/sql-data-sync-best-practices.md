@@ -3,20 +3,20 @@ title: Azure SQL データ同期のベスト プラクティス
 description: Azure SQL データ同期の構成と実行に関するベスト プラクティスについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 12/20/2018
-ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e4a08dca9fe30b632b2653270ff6a41c6c081b41
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180243"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689756"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL データ同期のベスト プラクティス 
 

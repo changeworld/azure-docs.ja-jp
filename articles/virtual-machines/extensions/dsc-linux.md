@@ -8,12 +8,13 @@ author: mgoedtel
 ms.author: magoedte
 ms.collection: linux
 ms.date: 06/12/2018
-ms.openlocfilehash: 3a9478f93a2a6f8e31be39a58a18e0e394b9d5c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 664d087f93d72c146908c6f708f527a8147d7e28
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560108"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949870"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -285,7 +286,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 サンプルの Resource Manager テンプレートは、[201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) と [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu) です。
 
-Azure Resource Manager テンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)に関するページを参照してください。
+Azure Resource Manager テンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/syntax.md)に関するページを参照してください。
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 

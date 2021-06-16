@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dadec45a23191763ad803560f1362c61917c95c5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7b72fd3c47e6f3013c0f9eb39707a1e55c78cac0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756667"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789010"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central アプリケーションの設定を変更する
 
@@ -25,7 +25,7 @@ ms.locfileid: "108756667"
 
 **[アプリケーション設定]** ページで、アプリケーションの名前と URL を変更し、**[保存]** を選択できます。
 
-![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/image0-a.png)
+![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/image-a.png)
 
 管理者がアプリケーション用のカスタム テーマを作成した場合、このページには UI で **アプリケーション名** を非表示にするオプションが含まれています。 このオプションは、カスタム テーマ内のアプリケーション ロゴにアプリケーション名が含まれている場合に便利です。 詳細については、「[Customize the Azure IoT Central UI (Azure IoT Central の UI をカスタマイズする)](./howto-customize-ui.md)」を参照してください。
 

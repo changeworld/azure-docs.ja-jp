@@ -22,7 +22,7 @@
     - name: MQTT を使用してデバイスを接続する
       href: tutorial-use-mqtt.md
     - name: MXCHIP デバイスを接続する
-      href: /azure/iot-develop/quickstart-devkit-mxchip-az3166
+      href: ../iot-develop/quickstart-devkit-mxchip-az3166.md
     - name: デバイス モジュールを接続する
       href: tutorial-migrate-device-to-module.md
     - name: Time Series Insights Gen2 を使用したデータの接続および分析

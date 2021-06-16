@@ -23,7 +23,7 @@
 - name: 概念
   expanded: true
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/aad-security-baseline?toc=/azure/active-directory/fundamentals/toc.json
@@ -256,4 +256,4 @@
     - name: Azure Active Directory のサポートを利用する
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory に関する FAQ
-      href: active-directory-faq.md
+      href: active-directory-faq.yml

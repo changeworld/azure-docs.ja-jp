@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eb5d73d6820260702f9b0190cf4e190b10f2c54
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233442"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030001"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -106,7 +106,7 @@ Traffic Analytics は、組織のネットワーク アクティビティを監�
 ![リージョン間のトラフィックを示すマップ 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 関連リンク:
-* [ブログ記事](https://aka.ms/trafficanalytics)、[ドキュメント](../network-watcher/traffic-analytics.md)、[FAQ](../network-watcher/traffic-analytics-faq.md)
+* [ブログ記事](https://aka.ms/trafficanalytics)、[ドキュメント](../network-watcher/traffic-analytics.md)、[FAQ](../network-watcher/traffic-analytics-faq.yml)
 
 ## <a name="dns-analytics"></a>DNS Analytics
 DNS 管理者用に開発されたこのソリューションは、DNS ログの収集、分析、および相互の関連付けを行って、セキュリティ、運用、およびパフォーマンスに関する分析情報を提供します。  いくつかの機能を次に示します。

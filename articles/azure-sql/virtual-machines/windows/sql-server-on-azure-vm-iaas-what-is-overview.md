@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
+ms.subservice: service-overview
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bdb890ac70d60e7742c4818fef27d5959c2df801
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c5d3b5c1838883f3e12114f348c73bed246e0c2d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142299"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079573"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -132,7 +133,7 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 - [SQL Server 仮想マシンを作成する](sql-vm-create-portal-quickstart.md)
 
 ## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL Server VM イメージの更新ポリシー
-Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](frequently-asked-questions-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。
+Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](/azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq#images) に関するページの「**イメージ**」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](/sql/sql-server/sql-server-privacy)」を参照してください。
@@ -161,7 +162,7 @@ Azure Virtual Machines における SQL Server の概要:
 
 SQL Server VM についてよく寄せられる質問とその回答:
 
-* [Azure Virtual Machines における SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+* [Azure Virtual Machines における SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 
 IaaS の SQL Server で N 層アプリケーションを実行するための参照アーキテクチャを表示する
 
