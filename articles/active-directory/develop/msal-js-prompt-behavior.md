@@ -3,22 +3,22 @@ title: 対話型要求のプロンプト動作 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を使用して、対話的な呼び出しでのプロンプト動作をカスタマイズする方法について説明します。
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: nacanuma
+ms.author: mtillman
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 85f5269c3c2616070b826ecc38735c31617db537
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cd1b6a0015f51902dd3228648f16fb79ab6957d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85477551"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077178"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>MSAL.js の対話型要求におけるプロンプト動作
 

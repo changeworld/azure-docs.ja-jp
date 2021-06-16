@@ -5,13 +5,13 @@ author: mumian
 ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: seodec18
-ms.openlocfilehash: 3bd0a0f70aa3ff983f87677219513aa56e051d89
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: e2136e70f45fa909a306e1af2c25cb6e5c6a85d0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838449"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081913"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     openssl rand -base64 32
     ```
 
-    生成されたパスワードが、VM のパスワード要件を満たしていることを確認します。 各 Azure サービスには、特定のパスワード要件があります。 VM のパスワード要件については、[VM を作成するときのパスワードの要件とは何か](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)に関するページを参照してください。
+    生成されたパスワードが、VM のパスワード要件を満たしていることを確認します。 各 Azure サービスには、特定のパスワード要件があります。 VM のパスワード要件については、[VM を作成するときのパスワードの要件とは何か](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)に関するページを参照してください。
 
 ## <a name="prepare-a-key-vault"></a>キー コンテナーを準備する
 
@@ -107,7 +107,7 @@ Write-Output $secretValueText
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM (単純な Windows VM をデプロイする)](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」と呼ばれます。
+Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM (単純な Windows VM をデプロイする)](https://azure.microsoft.com/resources/templates/vm-simple-windows/)」と呼ばれます。
 
 1. Visual Studio Code の **[ファイル]**  >  **[ファイルを開く]** を選択します。
 

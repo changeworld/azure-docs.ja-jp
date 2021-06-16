@@ -4,12 +4,12 @@ description: ワークステーションから Azure PowerShell を使用して�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165660a0141c50cf1c6dc24e3ba8df0299f885f2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 62ac9d5243c719af73cfd30b3a5190a2e7344668
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069006"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559288"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
 
@@ -59,7 +59,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 ## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>テスト環境のセットアップ
 
-クラスター、SQL データベース、およびその他のオブジェクトは、Azure Resource Manager テンプレートを使用して Azure portal から作成されます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)にあります。 Resource Manager テンプレートでは、SQL データベースにテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージは、パブリック BLOB コンテナー、 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac の中にあります。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
+クラスター、SQL データベース、およびその他のオブジェクトは、Azure Resource Manager テンプレートを使用して Azure portal から作成されます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/hdinsight-linux-with-sql-database/)にあります。 Resource Manager テンプレートでは、SQL データベースにテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージは、パブリック BLOB コンテナー、 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac の中にあります。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
 
 ```json
 "storageKeyType": "Primary",

@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62a6cd9e6302e66277b67ca7d37dd1ef33f96f1a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96905174"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031693"
 ---
 # <a name="define-and-use-moderation-jobs-api-console"></a>モデレーション ジョブを定義して使用する (API コンソール)
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 モデレーション ジョブはコンテンツ モデレーション、ワークフロー、レビューの機能に対するある種のラッパーとして機能します。 このガイドでは、ジョブの REST API を使ってコンテンツ モデレーション ジョブを開始し、レビューする方法を示します。 API の構造を理解すれば、これらの呼び出しを REST と互換性のあるプラットフォームに簡単に移植することができます。
 

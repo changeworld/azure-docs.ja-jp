@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 2cb9be9426c2c1d0446508a0a4f85b587ce68260
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 31c6195ac83d2b1fb9cfadf30876cca4cc41a57f
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065159"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005863"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
 
@@ -42,9 +42,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 >
 > `CLUSTERNAME` は、テンプレートを使用する際に指定するクラスター名に置き換えられます。
 
-1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)にあります。
+1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/hdinsight-hbase-linux-vnet/)にあります。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.hdinsight%2Fhdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. **[カスタム デプロイ]** ダイアログで **[テンプレートの編集]** を選択します。
 

@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: このクイックスタートでは、SQL Server Management Studio (SSMS) を使用して Azure SQL Managed Instance にデータベース バックアップを復元する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: srdan-bozovic-msft
-ms.author: srbozovi
-ms.reviewer: sstein, bonova
+author: danimir
+ms.author: danil
+ms.reviewer: mathoma
 ms.date: 12/14/2018
-ms.openlocfilehash: 15aead5c9f93205baac28e8b93a88015c9689e3a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 492f7b505d87c56a8ec41d6ee7c31a12795b1ca7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625315"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692878"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>クイック スタート:SSMS を使用して Azure SQL Managed Instance にデータベースを復元する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

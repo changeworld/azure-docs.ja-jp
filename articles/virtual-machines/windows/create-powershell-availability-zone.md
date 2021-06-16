@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 7167c5806fde883a84878d4947dba9fd8c095f69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 01c4c22dcf806eced40cf6d3aa382dbeb68078aa
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558833"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669258"
 ---
 # <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-powershell"></a>Azure PowerShell を使用して可用性ゾーン内に仮想マシンを作成する
 

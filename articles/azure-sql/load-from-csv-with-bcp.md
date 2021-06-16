@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 09ae46ec6455b6998bcf4da5648d2ceaef4d5b19
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 24bf347aa617e1a05aa8bf3284169aa669b297db
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644788"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707437"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>CSV から Azure SQL Database または SQL Managed Instance へのデータの読み込み (フラット ファイル)
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]

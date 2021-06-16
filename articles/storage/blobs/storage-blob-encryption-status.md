@@ -9,12 +9,13 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: ee54357250e3f31ef9db633d933d897fff362f48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f9392b0645b86ea055d67a7d11f9e62f1bf08743
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878563"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677268"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>BLOB の暗号化状態を確認する
 

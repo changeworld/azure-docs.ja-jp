@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: be61dad30d7c8670442612faf928d5aa82e64d56
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 142b16d58fae508614324746345bc8d33f41cab4
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065748"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890053"
 ---
 # <a name="tutorial-implement-federated-authentication-between-azure-active-directory-and-sharepoint-on-premises"></a>チュートリアル: Azure Active Directory と SharePoint オンプレミスの間のフェデレーション認証を実装する
 
@@ -196,7 +196,7 @@ SharePoint と Azure AD の間の信頼に関する基本的な構成は以上�
 
 ## <a name="sign-in-as-a-member-user"></a>メンバー ユーザーとしてサインインする
 
-Azure Active Directory には、[2 種類のユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-user-properties)が存在します。ゲスト ユーザーとメンバー ユーザーです。 まずは、メンバー ユーザーから見ていきましょう。メンバー ユーザーとは、単に自分の組織に属しているユーザーのことです。
+Azure Active Directory には、[2 種類のユーザー](../external-identities/user-properties.md)が存在します。ゲスト ユーザーとメンバー ユーザーです。 まずは、メンバー ユーザーから見ていきましょう。メンバー ユーザーとは、単に自分の組織に属しているユーザーのことです。
 
 ### <a name="create-a-member-user-in-azure-active-directory"></a>Azure Active Directory にメンバー ユーザーを作成する
 

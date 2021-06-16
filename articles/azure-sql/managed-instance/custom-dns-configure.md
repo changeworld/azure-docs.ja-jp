@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: このトピックでは、Azure SQL Managed Instance のカスタム DNS の構成オプションについて説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 07/17/2019
-ms.openlocfilehash: a54907dd3f7b3fbc06033624f14b12de14d9afb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: deb7c89099a53b77d7c56b68173c071355baea1e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831503"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707200"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance のカスタム DNS を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

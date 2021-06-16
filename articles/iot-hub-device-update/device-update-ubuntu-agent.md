@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6464ad632251053ac481fbd1f6a3e1197aa470df
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b8fc67076418678f6c53331dc6d0fbe0e7e7a0b1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121304"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410029"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18.04 x64 上のパッケージ エージェントを使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -92,7 +92,7 @@ Ubuntu 18.04 LTS 仮想マシンを短時間で設定しやすいように、こ
    > [!NOTE]
    > Device Update パッケージ エージェントは IoT Edge に依存しません。 ただし、ID を取得して IoT Hub に接続するために、IoT Edge (1.2.0 以上) と一緒にインストールされる IoT ID サービス デーモンに依存します。
    >
-   > このチュートリアルでは取り上げませんが、[IoT ID サービス デーモンは Linux ベースの IoT デバイスにスタンドアロンでインストールすることができます](https://azure.github.io/iot-identity-service/packaging.html)。 インストールの順序が重要です。 Device Update パッケージ エージェントは、IoT ID サービスの "_後に_" インストールする必要があります。 そうしないと、承認済みのコンポーネントとしてパッケージ エージェントが登録されず、IoT Hub との接続が確立されません。
+   > このチュートリアルでは取り上げませんが、[IoT ID サービス デーモンは Linux ベースの IoT デバイスにスタンドアロンでインストールすることができます](https://azure.github.io/iot-identity-service/installation.html)。 インストールの順序が重要です。 Device Update パッケージ エージェントは、IoT ID サービスの "_後に_" インストールする必要があります。 そうしないと、承認済みのコンポーネントとしてパッケージ エージェントが登録されず、IoT Hub との接続が確立されません。
 
 1. 次に、Device Update エージェントの .deb パッケージをインストールします。
 

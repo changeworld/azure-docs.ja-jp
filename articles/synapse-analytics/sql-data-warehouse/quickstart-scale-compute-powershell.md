@@ -10,16 +10,13 @@ ms.date: 04/17/2018
 ms.topic: quickstart
 ms.service: synapse-analytics
 ms.subservice: sql-dw
-ms.custom:
-- seo-lt-2019
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: 4a178c1104870eb59634537ee659925bdb6abda3
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: devx-track-azurepowershell - seo-lt-2019 - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 29884fbaea8a686d81ff303dc50feaae0aadd541
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163681"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669773"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングする
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e38f590628381710afec1d7bbf1ceb0daf9f77a2
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84987938"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032215"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -76,9 +76,9 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |---------|---------|
 |`/images/*`     |はい|
 |`/images*`     |はい|
-|`/images/*.jpg`     |no|
-|`/*.jpg`     |no|
-|`/Repos/*/Comments/*`     |no|
+|`/images/*.jpg`     |Ｘ|
+|`/*.jpg`     |Ｘ|
+|`/Repos/*/Comments/*`     |Ｘ|
 |`/CurrentUser/Comments/*`     |はい|
 
 #### <a name="v2"></a>v2
@@ -89,12 +89,12 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |---------|---------|
 |`/images/*`     |はい|
 |`/images*`     |はい|
-|`/images/*.jpg`     |no|
-|`/*.jpg`     |no|
-|`/Repos/*/Comments/*`     |no|
+|`/images/*.jpg`     |Ｘ|
+|`/*.jpg`     |Ｘ|
+|`/Repos/*/Comments/*`     |Ｘ|
 |`/CurrentUser/Comments/*`     |はい|
 
-詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) 」をご覧ください。
+詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/resources/templates/application-gateway-url-path-based-routing) 」をご覧ください。
 
 ## <a name="pathbasedrouting-rule"></a>PathBasedRouting ルール
 

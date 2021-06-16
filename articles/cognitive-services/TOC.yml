@@ -28,6 +28,8 @@
       href: plan-manage-costs.md
     - name: 診断ログ
       href: diagnostic-logging.md
+    - name: リソースの管理
+      href: manage-resources.md
     - name: デプロイ
       items:
         - name: コンテナー
@@ -127,6 +129,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
+    - name: AI の責任ある使用
+      href: responsible-use-of-ai-overview.md
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: コンプライアンス

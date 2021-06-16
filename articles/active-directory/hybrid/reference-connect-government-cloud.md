@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fec955815a4d65a406179a311af7d3e74c0a188
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97504357"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965850"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Government クラウドのハイブリッド ID に関する考慮事項
 
@@ -36,7 +36,7 @@ ms.locfileid: "97504357"
 パススルー認証エージェントをデプロイする前に、お使いのサーバーと Azure AD の間にファイアウォールがあるかどうかを確認します。 Domain Name System (DNS) でブロックされているプログラムまたは安全なプログラムがお使いのファイアウォールまたはプロキシで許可される場合、次の接続を追加します。
 
 > [!NOTE]
-> 次のガイダンスは、Azure Government 環境用に [Azure AD アプリケーション プロキシ コネクタ](../manage-apps/what-is-application-proxy.md)をインストールする場合にも適用されます。
+> 次のガイダンスは、Azure Government 環境用に [Azure AD アプリケーション プロキシ コネクタ](../app-proxy/what-is-application-proxy.md)をインストールする場合にも適用されます。
 
 |URL |用途|
 |-----|-----|

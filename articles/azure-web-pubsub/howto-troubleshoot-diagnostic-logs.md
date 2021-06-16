@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 03/22/2021
-ms.openlocfilehash: 58017425eda0461a648b81472933aaeb911b24f1
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 119591c4a337cf622b95fa4ed70a7508d8acb99e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166992"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963094"
 ---
 # <a name="how-to-troubleshoot-with-diagnostic-logs"></a>診断ログを使用したトラブルシューティングの方法
 
@@ -77,7 +77,7 @@ Azure Web PubSub サービスが GA になった後には、ライブ トレー�
 
 ## <a name="capture-diagnostic-logs-with-azure-monitor"></a>Azure Monitor を使用して診断ログをキャプチャする
 
-[Azure Monitor](https://azure.microsoft.com/services/monitor/)、[Azure Storage](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs#send-to-azure-storage)、および [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs#send-to-log-analytics-workspace) との統合による診断ログのキャプチャは、パブリック プレビューではサポートされていません。
+[Azure Monitor](https://azure.microsoft.com/services/monitor/)、[Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)、および [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) との統合による診断ログのキャプチャは、パブリック プレビューではサポートされていません。
 
 ## <a name="troubleshoot-with-the-diagnostic-logs"></a>診断ログを使用したトラブルシューティング
 
@@ -110,4 +110,3 @@ Azure Web PubSub サービスが GA になった後には、ライブ トレー�
 ### <a name="throttling"></a>Throttling
 
 Azure Web PubSub サービスへのクライアント接続を確立できないことがわかった場合は、診断ログを確認してください。 診断ログ上で `Connection count reaches limit` が見つかった場合は、確立している Azure Web PubSub サービスへの接続が多すぎて、接続数の上限に到達しています。 Azure Web PubSub サービス インスタンスのスケール アップを検討してください。 診断ログ上で `Message count reaches limit` が見つかった場合は、Free レベルを利用していて、メッセージのクォータを最大まで使用していることを意味します。 さらにメッセージを送信する場合は、Azure Web PubSub サービス インスタンスを Standard レベルに変更することでさらに多くのメッセージを送信できるようにする検討を行ってください。 詳細については、[Azure Web PubSub サービスの価格](https://azure.microsoft.com/pricing/details/web-pubsub/)に関するページを参照してください。
-

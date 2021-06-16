@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 9b6ca281733a68b02c4fcfa6429da58e36661923
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: f94b69614c32c09be275780b3a56e1e8f9a2d687
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164599"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668095"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Azure PowerShell を使用して可用性セットに仮想マシンを作成およびデプロイする
 

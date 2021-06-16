@@ -8,12 +8,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: bf9e802e2485e84211044ce650c7748e789e752e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a239b362cc7d85b45a5ae0c4f102471ae46cc450
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762607"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673586"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>プレビュー:Azure での VM とスケール セットの拡張機能の自動アップグレード
 

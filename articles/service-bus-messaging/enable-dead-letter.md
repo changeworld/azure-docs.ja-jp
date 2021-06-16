@@ -3,12 +3,13 @@ title: Azure Service Bus のキューとサブスクリプションで配信不�
 description: この記事では、Azure portal、PowerShell、CLI、プログラミング言語 (C#、Java、Python、JavaScript) を使用して、キューとサブスクリプションで配信不能を有効にする方法について説明します
 ms.topic: how-to
 ms.date: 04/20/2021
-ms.openlocfilehash: 789f9221c224a70225849d05b736276b95ebfc11
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 13082574510a0668076b7191b6b973e5a1a7cd77
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989272"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671480"
 ---
 # <a name="enable-dead-lettering-on-message-expiration-for-azure-service-bus-queues-and-subscriptions"></a>Azure Service Bus のキューとサブスクリプションでメッセージの期限切れによる配信不能を有効にする
 Azure Service Bus のキューおよびトピックのサブスクリプションでは、配信不能キュー (DLQ) と呼ばれるセカンダリ サブキューが提供されます。 配信不能キューを明示的に作成する必要はなく、削除したり、メイン エンティティとは別に管理したりすることはできません。 配信不能キューの目的は、受信者に配信できないメッセージ、または処理できなかったメッセージを保持することです。 詳しくは、「[Service Bus の配信不能キューの概要](service-bus-dead-letter-queues.md)」を参照してください。 この記事では、Service Bus のキューとサブスクリプションで配信不能を有効にするさまざまな方法について説明します。 

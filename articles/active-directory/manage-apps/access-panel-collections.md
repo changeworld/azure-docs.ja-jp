@@ -3,7 +3,7 @@ title: Azure Active Directory でマイ アプリ ポータルのコレクショ
 description: マイ アプリ コレクションを使用してマイ アプリ ページをカスタマイズし、エンド ユーザーのマイ アプリ エクスペリエンスをシンプルにします。 別個のタブを使用してアプリケーションをグループに整理します。
 services: active-directory
 documentationcenter: ''
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc79e8026cb91b8ef3eac2addbb097b9db83afa7
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 239bd084a1a593211a544b86ba8b24ed9c13624a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377685"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077684"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>マイ アプリ ポータルでコレクションを作成する
 

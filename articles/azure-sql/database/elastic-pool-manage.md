@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: sstein
+author: arvindshmicrosoft
+ms.author: arvindsh
+ms.reviewer: mathoma
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1, devx-track-azurecli
-ms.openlocfilehash: 555b18a7edbc3cc00cd7dcaf7f4897a4608d52e7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 601ab778d1db7c6f161062ef5034acbc26e41cf7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787199"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708849"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 135c853236793088b10759cac5e86f72c8548df3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: b10e1d1c903f306668e051633467ba15079dcaca
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459738"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664327"
 ---
 # <a name="monitoring-azure-table-storage"></a>Azure Table Storage の監視
 

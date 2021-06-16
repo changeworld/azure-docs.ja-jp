@@ -424,6 +424,8 @@
               href: backup-azure-sql-automation.md
             - name: Azure PowerShell のサンプル
               href: powershell-backup-samples.md
+        - name: Azure CLI の使用
+          href: create-manage-azure-services-using-azure-command-line-interface.md
         - name: Azure Backup REST API の使用
           items:
             - name: Recovery Services コンテナーの作成
@@ -438,9 +440,11 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: Azure Backup ジョブの管理
               href: backup-azure-arm-userestapi-managejobs.md
+        - name: ARG を使用したバックアップ情報のクエリ
+          href: query-backups-using-azure-resource-graph.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md

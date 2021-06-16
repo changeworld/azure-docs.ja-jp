@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17fe0c0ca5f1399c78def37ea7640ba8dfa395e
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: db1878c2760cfcaa157d0ef233bb1931a5f310b3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988228"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970907"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -336,7 +336,7 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 
 ### <a name="review-guest-users-group-memberships"></a>ゲスト ユーザーのグループ メンバーシップをレビューする
 
-「[Azure AD のアクセス レビューによるゲスト アクセスの管理](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)」でゲスト ユーザーのグループ メンバーシップをレビューする方法を説明しています。
+「[Azure AD のアクセス レビューによるゲスト アクセスの管理](./manage-guest-access-with-access-reviews.md)」でゲスト ユーザーのグループ メンバーシップをレビューする方法を説明しています。
 
 ### <a name="review-access-to-on-premises-groups"></a>オンプレミス グループへのアクセスのレビュー
 

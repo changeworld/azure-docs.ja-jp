@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 01/15/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 52e491c88d3483f21aa74f1a9f176246033bee3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ccb008ae74c67d243399cd810b43fc968755937a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735794"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673569"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>マネージド ディスクの増分スナップショットの作成
 

@@ -11,12 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/29/2021
 ms.author: rohink
-ms.openlocfilehash: 98cf894489c6d5eb34f7561c5dcf48e52034a5cd
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e9f952f0bb534ddad767280991ab0829ff9fa1b8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316085"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696953"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 

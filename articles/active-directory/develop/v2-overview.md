@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: a4ce8242bd3110fee038ac826973e6a134413344
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9d8c747fb18cc815570c536b6f01a745a6c86a7a
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426843"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438254"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームとは
 

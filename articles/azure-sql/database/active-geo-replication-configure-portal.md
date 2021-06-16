@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 927cc0c4ba6b430c8e3abe22ff7d50e9b8238642
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92673269"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708950"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>チュートリアル:Azure portal でアクティブ geo レプリケーションとフェールオーバーを構成する (Azure SQL Database)
 

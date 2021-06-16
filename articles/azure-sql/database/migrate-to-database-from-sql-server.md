@@ -8,16 +8,16 @@ ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: mathoma
 ms.date: 02/11/2019
-ms.openlocfilehash: fab52fcea03a2f65c868cfac27f8a8cef115b2be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53f01086bebc968c1a33f249993e9b6e94ae11db
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917649"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708448"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

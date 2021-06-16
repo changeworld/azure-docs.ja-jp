@@ -7,16 +7,16 @@ ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4d7ae6849249fec874d0d5af2df042323c81886
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011858"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708188"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>共有マルチテナント データベースを使用している SaaS アプリケーションでのスキーマの管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

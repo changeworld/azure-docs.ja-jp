@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/12/2021
+ms.date: 05/26/2021
 ms.author: radeltch
-ms.openlocfilehash: 49c4c579d75b964a4b4c37c8a44bddf1ad08c62b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 211fa45626a8ca4db8e555795adccc55bc6c0a3e
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142821"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534464"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server での HSR を使用した SAP HANA スケールアウト システムの高可用性 
 
@@ -28,7 +28,7 @@ ms.locfileid: "108142821"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-azure-doc]:../../../azure-netapp-files/index.yml
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
@@ -275,6 +275,49 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
      10.23.1.200     hana-s2-db2-hsr
      10.23.1.201     hana-s2-db3-hsr
     ```
+
+3. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で説明されているように、NFS を使用して NetApp システムで SAP HANA を実行できるよう OS を準備します。 NetApp 構成設定用の構成ファイル */etc/sysctl.d/netapp-hana.conf* を作成します。  
+
+    <pre><code>
+    vi /etc/sysctl.d/netapp-hana.conf
+    # Add the following entries in the configuration file
+    net.core.rmem_max = 16777216
+    net.core.wmem_max = 16777216
+    net.core.rmem_default = 16777216
+    net.core.wmem_default = 16777216
+    net.core.optmem_max = 16777216
+    net.ipv4.tcp_rmem = 65536 16777216 16777216
+    net.ipv4.tcp_wmem = 65536 16777216 16777216
+    net.core.netdev_max_backlog = 300000
+    net.ipv4.tcp_slow_start_after_idle=0
+    net.ipv4.tcp_no_metrics_save = 1
+    net.ipv4.tcp_moderate_rcvbuf = 1
+    net.ipv4.tcp_window_scaling = 1
+    net.ipv4.tcp_sack = 1
+    </code></pre>
+
+4. **[A]** Azure 用の Microsoft の構成設定を使用して、構成ファイル */etc/sysctl.d/ms-az.conf* を作成します。  
+
+    <pre><code>
+    vi /etc/sysctl.d/ms-az.conf
+    # Add the following entries in the configuration file
+    net.ipv6.conf.all.disable_ipv6 = 1
+    net.ipv4.tcp_max_syn_backlog = 16348
+    net.ipv4.conf.all.rp_filter = 0
+    sunrpc.tcp_slot_table_entries = 128
+    vm.swappiness=10
+    </code></pre>
+
+    > [!TIP]
+    > SAP ホスト エージェントからポート範囲を管理できるように、sysctl 構成ファイルで明示的に net.ipv4.ip_local_port_range と net.ipv4.ip_local_reserved_ports を設定しないようにしてください。 詳細については、SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) を参照してください。  
+
+4. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で推奨されているように、sunrpc 設定を調整します。  
+
+    <pre><code>
+    vi /etc/modprobe.d/sunrpc.conf
+    # Insert the following line
+    options sunrpc tcp_max_slot_table_entries=128
+    </code></pre>
 
 2. **[A]** SUSE では SAP HANA 用の特別なリソース エージェントが提供され、既定では SAP HANA ScaleUp のエージェントがインストールされます。 ScaleUp 用のパッケージがインストールされている場合はアンインストールし、SAP HANAScaleOut シナリオ用のパッケージをインストールします。 この手順は、マジョリティ メーカーを含むすべてのクラスター VM で実行する必要があります。   
 

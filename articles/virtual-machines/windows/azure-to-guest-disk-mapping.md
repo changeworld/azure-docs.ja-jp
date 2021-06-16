@@ -9,12 +9,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: 7a4fad066af37217eb42060d5fc5a7ef716770c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f2eaa92b99e286d4046b0bbb784c12f090c3903e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560992"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677738"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>Azure ディスクを Windows VM のゲスト ディスクにマップする方法
 

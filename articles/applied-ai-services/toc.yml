@@ -7,6 +7,8 @@
       href: what-are-applied-ai-services.md
     - name: Applied AI Services を使用する理由
       href: why-applied-ai-services.md
+    - name: よく寄せられる質問 (FAQ)
+      href: faq.yml
 - name: クイックスタート
   items:
     - name: Azure Form Recognizer
@@ -18,9 +20,9 @@
     - name: Azure Cognitive Search
       href: ../search/search-get-started-portal.md
     - name: Azure Video Analyzer
-      href: 'https://aka.ms/video-analytics-qs'
+      href: ../azure-video-analyzer/video-analyzer-docs/detect-motion-emit-events-quickstart.md
     - name: Azure Bot Service
-      href: 'https://docs.microsoft.com/composer/quickstart-create-bot'
+      href: /composer/quickstart-create-bot
 - name: リソース
   items:
     - name: パートナーの紹介

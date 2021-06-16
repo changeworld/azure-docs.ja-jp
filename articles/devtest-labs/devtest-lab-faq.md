@@ -3,12 +3,13 @@ title: Azure DevTest Labs に関する FAQ | Microsoft Docs
 description: この記事では、Azure DevTest Labs に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 6abc2b0b950521d5ce7d4974c3535c5fbd64fba1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 31106eb69e118e6f68fbb1a0eecfe4301839ee88
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139005"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004243"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -134,7 +135,7 @@ DevTest Labs を使用してリモートで共同作業する外部のコンサ�
 ## <a name="lab-configuration"></a>ラボの構成
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Resource Manager テンプレートからラボを作成するにはどうすればよいですか。
-Microsoft では、そのままデプロイしたり、変更してラボ用のカスタム テンプレートを作成したりできる、[ラボの Azure Resource Manager テンプレートの GitHub リポジトリ](https://azure.microsoft.com/resources/templates/101-dtl-create-lab)を提供しています。 各テンプレートには、ご自分の Azure サブスクリプションにラボをそのままデプロイできるリンクが含まれています。 また、テンプレートをカスタマイズし、[PowerShell または Azure CLI を使用してデプロイ](../azure-resource-manager/templates/deploy-powershell.md)することもできます。
+Microsoft では、そのままデプロイしたり、変更してラボ用のカスタム テンプレートを作成したりできる、[ラボの Azure Resource Manager テンプレートの GitHub リポジトリ](https://azure.microsoft.com/resources/templates/dtl-create-lab)を提供しています。 各テンプレートには、ご自分の Azure サブスクリプションにラボをそのままデプロイできるリンクが含まれています。 また、テンプレートをカスタマイズし、[PowerShell または Azure CLI を使用してデプロイ](../azure-resource-manager/templates/deploy-powershell.md)することもできます。
 
 
 ### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>仮想マシンをその仮想マシン独自のリソース グループにそれぞれ入れるのではなく、すべての仮想マシンを共有のリソース グループに入れて作成することはできますか。
@@ -273,7 +274,7 @@ foreach($labVM in $labVMs)
 カスタム イメージを作成するために VHD ファイルのアップロードを自動化する場合、次の 2 つのオプションがあります。
 
 - [AzCopy](../storage/common/storage-use-azcopy-v10.md) を使用して、ラボに関連付けられているストレージ アカウントに VHD ファイルをコピーまたはアップロードします。
-- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。 ストレージ エクスプローラーは、Windows、OS X、Linux で動作するスタンドアロン アプリです。
+- [Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。 ストレージ エクスプローラーは、Windows、OS X、Linux で動作するスタンドアロン アプリです。
 
 ラボに関連付けられているコピー先ストレージ アカウントを検索するには、次の手順に従います。
 

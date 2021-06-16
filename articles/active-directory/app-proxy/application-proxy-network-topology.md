@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a9b09193c94cf6e1674605312f0fbad03af1e7eb
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: e26522130d98d5e2f706a6c48002ad75b537d32a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186867"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964761"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用してトラフィック フローを最適化する
 
@@ -199,5 +199,5 @@ ExpressRoute プライベート ピアリング経由で企業ネットワーク
 
 - [アプリケーション プロキシを有効にする](application-proxy-add-on-premises-application.md)
 - [シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)
-- [条件付きアクセスを有効にする](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+- [条件付きアクセスを有効にする](./application-proxy-integrate-with-sharepoint-server.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)

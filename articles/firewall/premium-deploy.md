@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 05/27/2021
 ms.author: victorh
-ms.openlocfilehash: fa106fac683619706f4be330ad1c4bff7b56f2dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7984cff6b6cf0f70fc50493fd680d7203e09a81b
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721788"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585856"
 ---
 # <a name="deploy-and-configure-azure-firewall-premium-preview"></a>Azure Firewall Premium プレビューをデプロイして構成する
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-premium%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-premium%2Fazuredeploy.json)
 
 ## <a name="test-the-firewall"></a>ファイアウォールをテストする
 

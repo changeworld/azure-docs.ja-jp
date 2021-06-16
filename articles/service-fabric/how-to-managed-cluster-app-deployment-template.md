@@ -3,12 +3,13 @@ title: ARM テンプレートを使用して Service Fabric マネージド ク�
 description: Azure Resource Manager テンプレートを使用して、アプリケーションを Azure Service Fabric マネージド クラスター にデプロイします。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: 0712040032f0e7b33720df5bef1555652c27fbb0
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0f2561b182689467598f2c939589295d9af72e4d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109735622"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671222"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>ARM テンプレートを使用して Service Fabric マネージド クラスター アプリケーションをデプロイする
 

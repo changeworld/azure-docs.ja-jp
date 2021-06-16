@@ -8,12 +8,12 @@ ms.custom: references_regions
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/29/2021
-ms.openlocfilehash: 06b08ec2a28af36299f583bc9f8aa5604c347593
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 51ef78575a6987c3ac1537f1bb9d35e98e294ab6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319055"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971412"
 ---
 # <a name="set-up-dynamics-365-for-customer-engagement--power-apps-offer-technical-configuration"></a>Dynamics 365 for Customer Engagement & Power Apps オファーの技術的な構成を設定する
 
@@ -47,7 +47,7 @@ ms.locfileid: "108319055"
 
 既定では、上記で入力した **アプリケーション構成 URL** が各リージョンに使用されます。 必要に応じて、1 つ以上の特定のリージョンに個別のアプリケーション構成 URL を入力できます。
 
-左側のナビゲーション メニューの次のタブである **[Microsoft との共同販売]** に進む前に、 **[下書きの保存]** を選択します。 Microsoft との共同販売 (省略可能) の設定については、「[Microsoft のセールス チームとパートナーによる共同販売の概要](marketplace-co-sell.md)」を参照してください。 共同販売を設定していないか、完了した場合は、下の「**次のステップ**」に進みます。
+左側のナビゲーション メニューの次のタブである **[Microsoft との共同販売]** に進む前に、 **[下書きの保存]** を選択します。 Microsoft との共同販売 (省略可能) の設定については、「[Microsoft のセールス チームとパートナーによる共同販売の概要](./co-sell-overview.md)」を参照してください。 共同販売を設定していないか、完了した場合は、下の「**次のステップ**」に進みます。
 
 ## <a name="next-steps"></a>次のステップ
 

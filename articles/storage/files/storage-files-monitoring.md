@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 49f5a4689c305961a9b71f540ace70628435db1a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 37f3d7a8ff56ea16f6004516c43ac33989263023
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471539"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669844"
 ---
 # <a name="monitoring-azure-files"></a>Azure Files の監視
 

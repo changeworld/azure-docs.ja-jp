@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database と Azure SQL Managed Instance の Business Critical サービス レベルについて説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 830ecc44d0def13e51cb06704bef429bb8860cd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e5a4283416dcd20c8d419a00cb3debfb208d118
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92780225"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691565"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Business Critical レベル - Azure SQL Database と Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

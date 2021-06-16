@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb088d56879ebdf5d439c913ac47a701db5c4a60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6993357241e646e1e8b70c65a9aa45ba0e20f477
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576249"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963600"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 
@@ -61,7 +61,7 @@ Azure AD では、あらゆる種類のパスワード シングル サインオ
 * カスタム パスワード アプリケーション
 * [アプリケーションの使用状況に関するダッシュボード/レポート](../authentication/howto-sspr-reporting.md)
 * エンド ユーザー アクセス ポータル
-* [アプリケーション プロキシ](../manage-apps/application-proxy.md)
+* [アプリケーション プロキシ](../app-proxy/application-proxy.md)
 * [Active Directory マーケットプレース](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>アカウントの共有

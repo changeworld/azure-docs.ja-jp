@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8e8fd100b1c9dd630698944780263100c40575d4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84463622"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677320"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB ストレージの不変ポリシーを設定および管理する
 

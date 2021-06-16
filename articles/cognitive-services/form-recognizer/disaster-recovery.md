@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: モデルのコピー API を使用して、ご使用の Form Recognizer リソースをバックアップする方法について説明します。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6ddf13e190f80ddbda0c5b97be4e55e2ca963aef
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 98d04f667601bfaa5788a39e17aef3f7a68d42d5
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374529"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887692"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>ご使用の Form Recognizer モデルのバックアップと復旧
 

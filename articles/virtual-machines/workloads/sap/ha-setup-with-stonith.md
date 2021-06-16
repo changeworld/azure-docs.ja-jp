@@ -7,18 +7,19 @@ author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79998a0980d5bbc21c9207d2f9f1d6a71d77d3b2
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 471d2cf7f7a1dc5f7809b4391928206cbfa037eb
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109735316"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577842"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムで高可用性をセットアップする詳しい手順について説明します。

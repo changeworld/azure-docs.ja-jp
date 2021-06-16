@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebed2f5e8664bd4336219f9387b8d27c8f3a1c59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bbdd0dc8914847c5502dc79635293fd685d071f9
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "78187306"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613442"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定
 
@@ -85,7 +85,7 @@ Azure AD B2C ユーザー アカウントを使用して、Azure AD B2C で保�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-他の Azure AD B2C クイックスタートやチュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant)ことができます。
+他の Azure AD B2C クイックスタートやチュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](faq.yml#how-do-i-delete-my-azure-ad-b2c-tenant-)ことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

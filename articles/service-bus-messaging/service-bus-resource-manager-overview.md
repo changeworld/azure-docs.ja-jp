@@ -8,18 +8,18 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5af10bc30a7a3bd8ca211c3fd74364c74ee36fb5
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: e2311f3cf2a9418ba3ffef25fc1a8f3b22a3faa5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278508"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961165"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
 
 この記事では、Azure Resource Manager テンプレート、PowerShell、Service Bus リソース プロバイダーを使用して Service Bus リソースを作成し、デプロイする方法について説明します。
 
-Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。 テンプレートは JSON で記述され、デプロイの値の構築に使用できる式で構成されます。 Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、[「structure and syntax of Azure Resource Manager templates」](../azure-resource-manager/templates/template-syntax.md)を参照してください。
+Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。 テンプレートは JSON で記述され、デプロイの値の構築に使用できる式で構成されます。 Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、[「structure and syntax of Azure Resource Manager templates」](../azure-resource-manager/templates/syntax.md)を参照してください。
 
 > [!NOTE]
 > この記事の例では、Azure Resource Manager を使用して Service Bus の名前空間とメッセージング エンティティ (キュー) を作成する方法について説明します。 他のテンプレート例については、「[Azure クイックスタート テンプレート][Azure Quickstart Templates gallery]」ギャラリーで **Service Bus** を検索してください。
@@ -251,7 +251,7 @@ Azure Resource Manager テンプレートをデプロイする基本のワーク
 
 * [Azure リソース マネージャーの概要][Azure Resource Manager overview]
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ][Deploy resources with Azure Resource Manager templates]
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/syntax.md)
 * [Microsoft.ServiceBus のリソースの種類](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md

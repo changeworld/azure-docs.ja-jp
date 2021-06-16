@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 02/18/2020
-ms.openlocfilehash: 96ea4eb3df07cfd02dd99a55b2c33ac8b7518849
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c3d4b882a83b457527fcf71424357b8a51a86d84
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745723"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783271"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>移行の概要: SQL Server から Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]

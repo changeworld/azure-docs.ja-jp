@@ -3,14 +3,14 @@ title: Hadoop での SSH の使用 - Azure HDInsight
 description: Secure Shell (SSH) を使用して HDInsight にアクセスできます。 このドキュメントでは、Windows、Linux、Unix、または macOS の各クライアントから SSH コマンドを使用して HDInsight に接続する方法について説明します。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-azurepowershell
 ms.date: 02/28/2020
-ms.openlocfilehash: 7d7ba260177cb27ac181f081335ffb1e19aa5c33
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6077db17258c40cef5c6cd987469612171e344d2
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062796"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558568"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
@@ -89,7 +89,7 @@ ssh-keygen -t rsa -b 2048
 | Azure portal | __[SSH のクラスター ログイン パスワードを使用する]__ チェック ボックスをオフにし、[SSH 認証の種類] で __[公開キー]__ を選択します。 最後に、公開キー ファイルを選択するか、ファイルのテキストの内容を __[SSH 公開キー]__ フィールドに貼り付けます。</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png" alt-text="HDInsight クラスター作成時の SSH 公開キー ダイアログ ボックス"::: |
 | Azure PowerShell | [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `-SshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。|
 | Azure CLI | [`az hdinsight create`](/cli/azure/hdinsight#az_hdinsight_create) コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
-| Resource Manager テンプレート | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
+| Resource Manager テンプレート | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
 
 ## <a name="authentication-password"></a>認証: パスワード
 
@@ -108,7 +108,7 @@ SSH アカウントは、パスワードを使用してセキュリティ保護�
 | Azure portal | 既定では、SSH ユーザー アカウントには、クラスター ログイン アカウントと同じパスワードがあります。 別のパスワードを使用するには、__[SSH のクラスター ログイン パスワードを使用する]__ チェック ボックスをオフにし、__[SSH パスワード]__ フィールドにパスワードを入力します。</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png" alt-text="HDInsight クラスター作成時の SSH パスワード ダイアログ ボックス":::|
 | Azure PowerShell | [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `--SshCredential` パラメーターを使用して、SSH ユーザー アカウントの名前とパスワードを含む `PSCredential` オブジェクトを渡します。 |
 | Azure CLI | [`az hdinsight create`](/cli/azure/hdinsight#az_hdinsight_create) コマンドの `--ssh-password` パラメーターを使用して、パスワードの値を提供します。 |
-| Resource Manager テンプレート | テンプレートを使用したパスワードの使用例については、[SSH パスワードを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-password/azuredeploy.json) ファイルの `linuxOperatingSystemProfile` 要素は、クラスターの作成時に SSH アカウントの名前とパスワードを Azure に渡すために使用されます。|
+| Resource Manager テンプレート | テンプレートを使用したパスワードの使用例については、[SSH パスワードを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/hdinsight-linux-ssh-password/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-password/azuredeploy.json) ファイルの `linuxOperatingSystemProfile` 要素は、クラスターの作成時に SSH アカウントの名前とパスワードを Azure に渡すために使用されます。|
 
 ### <a name="change-the-ssh-password"></a>SSH パスワードを変更する
 

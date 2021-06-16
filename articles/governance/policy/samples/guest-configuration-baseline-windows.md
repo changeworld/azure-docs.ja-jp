@@ -1,15 +1,15 @@
 ---
 title: 参考資料 - Azure Policy ゲスト構成の Windows 向けベースライン
 description: Azure Policy ゲスト構成で実装する Azure の Windows 向けベースラインの詳細。
-ms.date: 05/11/2021
+ms.date: 06/11/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: f4e5dd5470c2a8640501e511934ff2848d3b21bd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f0eaf007d890751d339ec6ada6c568d54ba4d107
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789059"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032998"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-windows"></a>Azure Policy ゲスト構成の Windows 向けベースライン
 

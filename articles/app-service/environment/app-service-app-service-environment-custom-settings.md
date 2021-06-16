@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e871778576266d772f37c23ee174dda7df6a6a75
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226391"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027427"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
 ## <a name="overview"></a>概要
@@ -107,7 +107,7 @@ ASE では、既定の暗号スイートの変更がサポートされていま�
 > SChannel が認識できない間違った値を暗号スイートに設定すると、ご利用のサーバーに対するすべての TLS 通信が機能しなくなります。 この場合は、 *clusterSettings* から **FrontEndSSLCipherSuiteOrder** エントリを削除し、更新された Resource Manager テンプレートを送信して、既定の暗号スイート設定に戻す必要があります。  この機能は慎重に使用してください。
 
 ## <a name="get-started"></a>作業開始
-Azure クイック スタート Resource Manager テンプレートのサイトには、 [App Service Environment を作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
+Azure クイック スタート Resource Manager テンプレートのサイトには、 [App Service Environment を作成](https://azure.microsoft.com/resources/templates/web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
 
 <!-- LINKS -->
 

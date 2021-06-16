@@ -14,12 +14,13 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 799475db567c88f067192d027589e9185ee1782b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a65ab5e32a3a11becff70fb2e563d6760fa95360
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369176"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696646"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Azure PowerShell を使用して Azure カスタム ロールを作成または更新する
 

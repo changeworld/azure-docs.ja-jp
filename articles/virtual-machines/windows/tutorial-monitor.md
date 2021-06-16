@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 8c4345d16efe296413ea9d995c2307bba62d33f8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: cf30282ee37beaa99e83b78b8b7455f2060d8023
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560703"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668006"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンを監視する
 

@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: この記事では、ユーザーの設定を格納する方法について説明します。
 author: metanMSFT
 manager: guillasi
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: metang
-ms.openlocfilehash: b3ac552d60515d907157e9d4d778aef9bd7bb380
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 988b6aa7445eb5080d0c67c1af997bcbd046d4e3
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373860"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888160"
 ---
 # <a name="how-to-store-user-preferences"></a>ユーザー設定を格納する方法
 

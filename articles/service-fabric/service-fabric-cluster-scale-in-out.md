@@ -3,12 +3,13 @@ title: Service Fabric クラスターをスケールインまたはスケール�
 description: ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定することにより、需要に合わせて Service Fabric クラスターをスケールインまたはスケールアウトします。 Service Fabric クラスターのノードの追加または削除
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: e7f11aa5fee2b339ea8466dac93e8629419847f0
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bb7e668a5b50e73d5aee8aa3bcbb2ea6b1d4bac7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018549"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677424"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>クラスターをスケールインまたはスケールアウトする
 

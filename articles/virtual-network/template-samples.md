@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: d565e1b6991534a19e9ac9a92d9fe6aed62d520b
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 580cd2c72374a1c54664c8bef5c9d11c79336e88
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751511"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949671"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>仮想ネットワーク用の Azure Resource Manager テンプレート サンプル
 
-次の表は、Azure Resource Manager テンプレート サンプルのリンク一覧です。 テンプレートのデプロイには、Azure [Portal](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、Azure [CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、Azure [PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) のいずれかを使用できます。 独自のテンプレートを作成する方法については、[初めてのテンプレートの作成](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページおよび「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+次の表は、Azure Resource Manager テンプレート サンプルのリンク一覧です。 テンプレートのデプロイには、Azure [Portal](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、Azure [CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、Azure [PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) のいずれかを使用できます。 独自のテンプレートを作成する方法については、[初めてのテンプレートの作成](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページおよび「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/syntax.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 テンプレートで使用する JSON 構文とプロパティについては、「[Microsoft.Network resource types (Microsoft.Network のリソースの種類)](/azure/templates/microsoft.network/allversions)」を参照してください。
 

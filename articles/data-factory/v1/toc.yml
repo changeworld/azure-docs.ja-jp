@@ -46,7 +46,7 @@
     - name: オンプレミスとクラウドの間でのデータ移動
       href: data-factory-move-data-between-onprem-and-cloud.md
     - name: よく寄せられる質問
-      href: data-factory-faq.md
+      href: data-factory-faq.yml
 - name: 操作方法
   items:
     - name: データの移動

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77159a099dcc28739457a10afef374502d117b5a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092401"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971155"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>従量制課金に対する異常検出サービス
 
-[マーケットプレース測定サービス](marketplace-metering-service-apis-faq.md)を使用すると、標準以外の単位に応じて課金されるコマーシャル マーケットプレース プログラムでプランを作成できます。 従量制課金では、お客様が顧客の使用量について使用状況イベントを Microsoft に送信し、Microsoft がその使用量に基づいて請求を準備します。
+[マーケットプレース測定サービス](../marketplace-metering-service-apis-faq.md)を使用すると、標準以外の単位に応じて課金されるコマーシャル マーケットプレース プログラムでプランを作成できます。 従量制課金では、お客様が顧客の使用量について使用状況イベントを Microsoft に送信し、Microsoft がその使用量に基づいて請求を準備します。
 
 バグ、使用量追跡の構成ミス、不正行為など、さまざまな原因によって間違った使用量データが発生する可能性があります。 間違った使用量データは、不適当な顧客請求および請求紛争につながる可能性があります。
 
@@ -82,5 +82,5 @@ ms.locfileid: "101092401"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Marketplace の測定サービス API](marketplace-metering-service-apis.md) について学習する。
+- [Marketplace の測定サービス API](../marketplace-metering-service-apis.md) について学習する。
 - [パートナー センターで従量制課金の異常を管理する](../anomaly-detection.md)

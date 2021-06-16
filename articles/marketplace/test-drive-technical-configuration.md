@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4d5ccaead616fa53cc10733ad82f0f20b7e1cab
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462899"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007393"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 
@@ -97,10 +97,8 @@ Microsoft が体験版のデプロイを代行できるようにするには、�
 
 ホストされている体験版を一覧表示して構成するための詳しい手順については、「[ホストされた体験版の詳細な構成](./test-drive-hosted-detailed-config.md)」ページを参照してください。
 
-## <a name="additional-resources"></a>その他のリソース
-
 ## <a name="next-steps"></a>次のステップ
 
 - [体験版のベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF、ポップアップ ブロックがオフになっていることを確認してください)
-- [商業マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)
+- [商業マーケットプレースで既存のオファーを更新する](update-existing-offer.md)

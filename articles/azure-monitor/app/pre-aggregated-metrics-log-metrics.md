@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ce337c97aa7eca601e72122568c3205ca21457f
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101717827"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372386"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
@@ -47,7 +47,7 @@ ms.locfileid: "101717827"
 |------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
 | .NET Core と .NET Framework | サポート対象 (V2.13.1 以降)| [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| [GetMetric](get-metric.md) を介してサポート対象 (V 2.7.2 以降) |
 | Java                         | サポートされていません       | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
-| Node.js                      | サポートされていません       | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
+| Node.js                      | サポート対象 (V2.0.0 以降) | [TrackMetric](api-custom-events-metrics.md#trackmetric) を介してサポート対象| サポートされていません                           |
 | Python                       | サポートされていません       | サポートされています                                 | [OpenCensus.stats](opencensus-python.md#metrics) を介して部分的にサポート対象 |  
 
 > [!NOTE]

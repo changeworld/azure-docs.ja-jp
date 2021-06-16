@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: このチュートリアルでは、AI Builder を使用して、フォーム処理アプリケーションを作成し、トレーニングします。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 11/23/2020
 ms.author: lajanuar
-ms.openlocfilehash: a7c89bf9211bbd67fcd413cb5061f27f9e88c0a0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ea5e49cf6a61ad89d182637c11b969ee80c754e6
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374018"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889474"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>チュートリアル:AI Builder を使用してフォーム処理アプリを作成する
 

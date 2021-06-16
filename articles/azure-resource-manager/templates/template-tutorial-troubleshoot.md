@@ -5,12 +5,13 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 88898d3a0e42ff362a5ab6fa586c52064fcb8221
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6fd9f84656c1478f8bde1261165cfb9d7655d670
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736741"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111886720"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>チュートリアル:ARM テンプレート デプロイのトラブルシューティング
 
@@ -41,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-problematic-template"></a>問題のあるテンプレートの作成
 
-「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)」から [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) テンプレートを開き、2 つのテンプレートの問題を設定します。
+「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)」から [Create a standard storage account](https://azure.microsoft.com/resources/templates/storage-account-create/) テンプレートを開き、2 つのテンプレートの問題を設定します。
 
 1. Visual Studio Code から、 **[ファイル]**  >  **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。

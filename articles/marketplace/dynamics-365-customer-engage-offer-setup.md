@@ -7,18 +7,18 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 5a6adc0ad4f515e98f4393266bf71565359b3e0a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 060d24a331a7f15c4ee687c919fe8c2b7cdf2ca6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473383"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971453"
 ---
 # <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーを作成する方法
 
 この記事では、Dynamics 365 for Customer Engagement & PowerApps オファーの作成方法について説明します。 Dynamics 365 のすべてのオファーは、弊社の認定プロセスを通過する必要があります。 試用版エクスペリエンスでは、ユーザーがソリューションをライブの Dynamics 365 環境にデプロイできます。
 
-開始する前に、[パートナー センター](partner-center-portal/create-account.md)でコマーシャル マーケットプレース アカウントを作成し、それがコマーシャル マーケットプレース プログラムに登録されているようにします。
+開始する前に、[パートナー センター](./create-account.md)でコマーシャル マーケットプレース アカウントを作成し、それがコマーシャル マーケットプレース プログラムに登録されているようにします。
 
 ## <a name="before-you-begin"></a>開始する前に
 

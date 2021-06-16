@@ -3,12 +3,12 @@ title: ジョブのサイズ超過エラー
 description: ジョブのサイズまたはテンプレートが大きすぎる場合のエラーをトラブルシューティングする方法について説明します。
 ms.topic: troubleshooting
 ms.date: 03/23/2021
-ms.openlocfilehash: b39a0bba15e73bab1a85cbd9e36efebf82d6cf42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d7333e8faf44b5c2c872448960eff34ff61daf2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889367"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963259"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>ジョブのサイズ超過に関するエラーを解決する
 
@@ -56,4 +56,4 @@ dependsOn: [
 
 ## <a name="solution-2---reduce-name-size"></a>解決策 2 - 名前のサイズを小さくする
 
-[parameters](template-parameters.md)、[variables](template-variables.md)、[outputs](template-outputs.md) に使用する名前の長さを短くしてください。 これらの値がコピー ループを通じて繰り返されると、大きな名前は何度も増殖します。
+[parameters](./parameters.md)、[variables](./variables.md)、[outputs](./outputs.md) に使用する名前の長さを短くしてください。 これらの値がコピー ループを通じて繰り返されると、大きな名前は何度も増殖します。

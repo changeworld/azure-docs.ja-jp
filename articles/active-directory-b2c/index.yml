@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: cf4c84aefbf05da66f6e33a3890f022176bfaccf
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 024c9b54fbbf0a14f8d8ca15862c102d1936bdaa
+  ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110059754"
+  ms.lasthandoff: 05/28/2021
+  ms.locfileid: "110613354"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -128,7 +128,7 @@ landingContent:
     - text: サービスの更新情報
       url: https://azure.microsoft.com/updates/?product=active-directory-b2c
     - text: よく寄せられる質問
-      url: faq.md
+      url: faq.yml
     - text: Microsoft のサポート
       url: support-options.md
 - title: 一般的な統合

@@ -2,21 +2,21 @@
 title: Azure Active Directory アプリケーションの管理証明書に関してよく寄せられる質問
 description: Azure Active Directory を ID プロバイダー (IdP) として使用するアプリの証明書の管理についてよく寄せられる質問 (FAQ) とその回答について説明します。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/19/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: secherka, mifarca, shchaur, shravank, sureshja
-ms.openlocfilehash: 653a9291cea6b65692ef2a34e2710ed947152a76
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 0f0bfe38dc28586d2fdfc40777dc0c599ab7b307
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318497"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077412"
 ---
 # <a name="azure-active-directory-azure-ad-application-management-certificates-frequently-asked-questions"></a>Azure Active Directory (Azure AD) アプリケーションの管理証明書に関してよく寄せられる質問
 

@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: aamalvea
-ms.author: aamalvea
-ms.reviewer: wiassaf, sstein
+author: AlainDormehlMSFT
+ms.author: aldorme
+ms.reviewer: mathoma, wiassaf
 ms.date: 05/04/2020
-ms.openlocfilehash: c7f72a9b140c68320e221a4cfb20cbf107a5f531
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afedce181d9d7c7e2feb476716a453c556344091
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572265"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706505"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Azure portal を使用して、Azure SQL Database と Azure Synapse Analytics のアラートを作成します
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

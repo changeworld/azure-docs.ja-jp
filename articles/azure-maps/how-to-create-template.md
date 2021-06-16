@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 04/27/2021
 ms.topic: how-to
 ms.service: azure-maps
-ms.openlocfilehash: 262c6cb92f9c7327f13e357298242e281358253e
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: cb030eb74523d72035fd093f7766e55a2e668867
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845836"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985348"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>ARM テンプレートを使用して Azure Maps アカウントを作成する
 
@@ -31,7 +31,7 @@ Azure Resource Manager (ARM) テンプレートを使用して Azure Maps アカ
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-maps-create/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/maps-create/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.maps/maps-create/azuredeploy.json":::
 

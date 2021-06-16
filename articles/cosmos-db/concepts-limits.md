@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 7f7e6cb896d5284a7bc4ff54c7396600463260c9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0e954b06afb9e1db09aefc77d9c9b85204f6fe28
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367626"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615235"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -91,7 +91,7 @@ Cosmos DB は、SDK またはポータルを経由した、コンテナーまた
 
 | リソース | 制限 |
 | --- | --- |
-| (論理) パーティションあたりの最大 RU | 5,000 |
+| コンテナーあたりの最大 RU/秒 | 5,000 |
 | すべての項目にわたる、(論理) パーティションあたりの最大ストレージ | 20 GB |
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
 | コンテナーあたりの最大ストレージ | 50 GB |
