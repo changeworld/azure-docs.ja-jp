@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 80fabe5f720182e51e731e0d4d833ed0e7ab9137
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 3ae1bcc6cc1c99bc89e2f8fbd2c8debf95418850
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751547"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951149"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -611,7 +611,7 @@ QueryString の先頭に "?" がないことを確認してください。 デ�
 
 ```json
 "variables": {
-  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/postgre/postgresql-on-ubuntu/",
   "sharedTemplateUrl": "[uri(variables('templateBaseUrl'), 'shared-resources.json')]",
   "vmTemplateUrl": "[uri(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
 }
@@ -894,6 +894,6 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 ## <a name="next-steps"></a>次のステップ
 
 * チュートリアルについては、「[チュートリアル:リンク済みテンプレートをデプロイする](./deployment-tutorial-linked-template.md)」を参照してください。
-* リソースのデプロイの順序の定義については、「[ARM テンプレートでのリソース デプロイ順序の定義](define-resource-dependency.md)」を参照してください。
+* リソースのデプロイの順序の定義については、「[ARM テンプレートでのリソース デプロイ順序の定義](./resource-dependency.md)」を参照してください。
 * 定義するリソースは 1 つですが、そこに多数のインスタンスを作成する方法については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
 * ストレージ アカウントにテンプレートを設定し、SAS トークンを生成する手順については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」または「[ARM テンプレートと Azure CLI でリソースをデプロイする](deploy-cli.md)」を参照してください。

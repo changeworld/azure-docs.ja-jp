@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 21546286d8ca9f8b455b84801d2f706466912165
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9877f50fe7bb06cb33a38f8ee89fa09ad12c0693
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137601"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672480"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -468,7 +468,7 @@ requirements.psd1 ファイルで、モジュールの特定のバージョン�
 
 ```powershell
 @{
-    Az.Accounts = '1.9.5'
+    'Az.Accounts' = '1.9.5'
 }
 ```
 

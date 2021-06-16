@@ -3,12 +3,12 @@ title: セキュリティ エージェント
 description: IoT デバイスでの Azure Defender for IoT セキュリティ サービス エージェントについて理解を深め、構成、デプロイ、および使用を開始します。
 ms.topic: conceptual
 ms.date: 1/24/2021
-ms.openlocfilehash: a1d74de9824b9e825f87754da21070d4e7f1ee33
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 117572c8b5e2d42b24c1f3af9dbb0eab474647a9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783491"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949161"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>Azure Defender for IoT デバイス マイクロ エージェントの使用を開始する
 
@@ -20,7 +20,7 @@ Defenders for IoT セキュリティ エージェントでは、デバイスの�
 
 1. [IoT Hub で Defender for IoT サービスを有効にします](quickstart-onboard-iot-hub.md)。
 
-1. IoT Hub に登録済みデバイスがない場合は、[新しいデバイスを登録](../iot-accelerators/iot-accelerators-device-simulation-overview.md)します。
+1. IoT Hub に登録済みデバイスがない場合は、[新しいデバイスを登録](/previous-versions/azure/iot-accelerators/iot-accelerators-device-simulation-overview)します。
 
 1. デバイスの [DefenderIotMicroAgent モジュール ツインを作成](quickstart-create-micro-agent-module-twin.md)します。
 

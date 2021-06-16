@@ -2,20 +2,20 @@
 title: Azure Active Directory におけるアプリに対するパスワードベースのシングル サインオン (SSO) について理解する
 description: Azure Active Directory におけるアプリに対するパスワードベースのシングル サインオン (SSO) について理解する
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.author: iangithinji
-ms.openlocfilehash: ffa517f068dbc13f2734630216466373d9014ae6
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: mtillman
+ms.openlocfilehash: 45a0a8c6001629e97b6c493774141e30dac1cbd9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374558"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076206"
 ---
 # <a name="understand-password-based-single-sign-on"></a>パスワードベースのシングル サインオンについて理解する
 

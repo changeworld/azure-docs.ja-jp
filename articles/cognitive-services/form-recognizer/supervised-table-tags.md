@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: 監視対象のテーブル タグのラベル付けを効果的に使用する方法について説明します。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6cbf96a050124fe0d72bb0fc24be4ad7ea265fed
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1265be9e71706c7a0d1cc5c8c1e096b1a166652f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374054"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889528"
 ---
 # <a name="use-table-tags-to-train-your-custom-form-model"></a>テーブル タグを使用したカスタム フォーム モデルのトレーニング
 

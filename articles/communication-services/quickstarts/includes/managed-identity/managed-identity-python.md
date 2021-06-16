@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: 6a9628f3bd77e2e7001a5c8cf371259c18fa373c
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 84f8ca8ebb88c1f661683b16ff5e6bd90b177dbe
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107984390"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430265"
 ---
+> [!NOTE]
+> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/use-managed-Identity) にあります
+
 ## <a name="setting-up"></a>設定
 
 ### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する

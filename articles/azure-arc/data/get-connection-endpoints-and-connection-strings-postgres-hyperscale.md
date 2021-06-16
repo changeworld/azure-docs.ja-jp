@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: de7d23689ae984ea0abece5edb03cf8a0c3a9be1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3477c8f1dbffb9f2c42c72c1b0bfc03c662ed24c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670343"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412297"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループの接続エンドポイントを取得し、接続文字列を作成する
 
@@ -85,13 +85,8 @@ postgres=#
 > _基本領域 ="ログイン_ 資格情報が必要です", ベアラー エラー ="invalid_token", error_description="トークンの有効期限が切れています"'})_ これが発生した場合は、上記の説明に従って、azdata に再接続する必要があります。
 
 ## <a name="from-cli-with-kubectl"></a>CLI から kubectl を使用する
-- サーバー グループの Postgres バージョンが 12 (既定) である場合は、次のコマンドを実行します。
 ```console
-kubectl get postgresql-12/<server group name> -n <namespace name>
-```
-- サーバー グループの Postgres バージョンが 11 である場合は、次のコマンドを実行します。
-```console
-kubectl get postgresql-11/<server group name> -n <namespace name>
+kubectl get postgresqls/<server group name> -n <namespace name>
 ```
 
 これらのコマンドでは、次のような出力が生成されます。 この情報を使用して、接続文字列を作成できます。
@@ -153,7 +148,7 @@ host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} 
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- サーバー グループの[スケール アウト (ワーカー ノードの追加)](scale-out-postgresql-hyperscale-server-group.md) について確認する
+- サーバー グループの[スケール アウト (ワーカー ノードの追加)](scale-out-in-postgresql-hyperscale-server-group.md) について確認する
 - サーバー グループの[スケールアップまたはスケール ダウン (メモリ/仮想コアの増減)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) について確認する
 
 

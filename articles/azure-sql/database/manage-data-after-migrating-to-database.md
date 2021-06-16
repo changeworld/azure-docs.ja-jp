@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database
 description: Azure SQL Database への移行後の単一データベースとプールされたデータベースの管理方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: joesackmsft
-ms.author: josack
-ms.reviewer: sstein
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a7cd071d9b1a2f0a359c11a123914f451a35569
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446112"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690075"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: eaf541f1b95880e4d055af8cbd4ccbee06b41428
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b1b2782f9bf7ab7e99478a547c2181598ff4cd12
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803046"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672753"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>PowerShell を使用して Azure VM で使用される OS ディスクを変更する
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: dc8f8f7ced1c5915c2ea54390685806cfcdd257f
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: faf34a71289f81d3e08110e7cda46dc861faed14
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280311"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797496"
 ---
 <!-- NOTE this file is temporary and a placeholder until the FAQ file update is completed. -->
 
@@ -113,7 +113,7 @@ Azure Active Directory (Azure AD) のような特定のトークン プロバイ
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>JWT トークンを使用してライセンスまたはキーを要求する前に、JWT トークンを入手する方法と入手できる場所を教えてください。
 
-運用環境では、HTTPS 要求時に JWT トークンを発行する Secure Token Services (つまり、Web サービス) が必要です。 テスト環境では、[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) で定義されている `GetTokenAsync` メソッドに示されているコードを使用できます。
+運用環境では、HTTPS 要求時に JWT トークンを発行する Secure Token Services (つまり、Web サービス) が必要です。 テスト環境では、[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs) で定義されている `GetTokenAsync` メソッドに示されているコードを使用できます。
 
 プレーヤーは、ユーザーが認証された後、そのトークンの要求を STS に対して作成し、それをトークンの値として割り当てます。 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使用できます。
 
@@ -123,7 +123,7 @@ Azure Active Directory (Azure AD) のような特定のトークン プロバイ
 
 正しいアプローチは、セキュリティ トークン サービスを使用することです。 STS では、ユーザー プロファイルに応じて、異なる要求を追加します ("Premium ユーザー"、"Basic ユーザー"、"無料試用ユーザー" など)。 JWT の要求に応じて、ユーザーには異なるコンテンツが表示されます。 コンテンツまたはアセットが異なる場合、`ContentKeyPolicyRestriction` には対応する `RequiredClaims` 値が設定されます。
 
-Azure Media Services API シリーズを使用して、ライセンス/キー配信の構成とご自分の資産の暗号化を行います ([このサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)を参照してください)。
+Azure Media Services API シリーズを使用して、ライセンス/キー配信の構成とご自分の資産の暗号化を行います ([このサンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES/Program.cs)を参照してください)。
 
 詳細については、次を参照してください。
 

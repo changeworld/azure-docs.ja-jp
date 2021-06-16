@@ -1,19 +1,17 @@
 ---
 title: Azure Event Grid IoT Edge での出力のバッチ処理 | Microsoft Docs
 description: Event Grid on IoT Edge での出力のバッチ処理。
-author: HiteshMadan
 manager: rajarv
-ms.author: himad
 ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: a647b83a3a64de72cca81ef2ade411135410ab45
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: af63b9c5c11e26e9b5730241cf4d9b0e350e82a5
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370465"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750715"
 ---
 # <a name="output-batching"></a>出力のバッチ処理
 
@@ -48,7 +46,7 @@ Event Grid のバッチ処理の動作は、次の 2 つの設定を調整して
 
   既定では、Event Grid によって、各配信要求に 1 つのイベントのみが追加されます。 バッチ処理を有効にする方法は、イベント サブスクリプション JSON で、この記事で前述した設定のいずれかを指定することです。
 
-* 既定の値
+* 既定値
 
   イベント サブスクリプションを作成するときに、両方の設定 (バッチあたりの最大イベント数とキロバイト単位の概算バッチ サイズ) を指定する必要はありません。 1 つの設定さえ指定されれば、Event Grid によって (構成可能な) 既定値が使用されます。 既定値と、それらをオーバーライドする方法については、以降のセクションを参照してください。
 

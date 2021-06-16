@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: bfdfad8af2d730caf0ac9e22ee815a6d59a6b6a3
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: f0412b6e67ff62247feb3f8643553c5a6101ad73
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074729"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892672"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して App Service アプリを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "108074729"
 ## <a name="2-review-the-template"></a>2. テンプレートを確認する
 
 ::: zone pivot="platform-windows"
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/app-service-docs-windows)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json":::
 
@@ -55,7 +55,7 @@ ms.locfileid: "108074729"
 
 次の表は、既定のパラメーターとその説明です。
 
-| パラメーター | Type    | 既定値                | 説明 |
+| パラメーター | 種類    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -69,7 +69,7 @@ ms.locfileid: "108074729"
 </details>
 ::: zone-end
 ::: zone pivot="platform-linux"
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/app-service-docs-linux)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-linux/azuredeploy.json":::
 
@@ -85,7 +85,7 @@ ms.locfileid: "108074729"
 
 次の表は、既定のパラメーターとその説明です。
 
-| パラメーター | Type    | 既定値                | 説明 |
+| パラメーター | 種類    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>異なる言語スタックはどのようにしてデプロイすればよいですか?</summary>
 別の言語スタックをデプロイするには、 <abbr title="このテンプレートは、.NET Core、.NET Framework、PHP、Node.js、静的 HTML アプリと互換性があります。">言語パラメーター</abbr> 適切な値 Java の場合は、<a href="/azure/app-service/quickstart-java-uiex">Java アプリの作成</a>に関する記事を参照してください。
 
-| パラメーター | Type    | 既定値                | 説明 |
+| パラメーター | 種類    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | language   | string  | ".net"                       | プログラミング言語スタック (.net、php、node、html) |
 

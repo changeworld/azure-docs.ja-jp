@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bf50db4c463f5161adcc88d69eb2ae8970526103
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d513c19eed36d4a1cc5c620bff9dd2e8deb533e0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515619"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949552"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -129,7 +129,7 @@ Access Control によって発行されたトークンを受け入れる各 Micr
 
 | サービス | ガイダンス |
 | ------- | -------- |
-| Azure Service Bus | [Shared Access Signatures への移行](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure Service Bus | [Shared Access Signatures への移行](../../service-bus-messaging/service-bus-sas.md) |
 | Azure Service Bus Relay | [Shared Access Signatures への移行](../../azure-relay/relay-migrate-acs-sas.md) |
 | Azure Managed Cache | [Azure Cache for Redis への移行](../../azure-cache-for-redis/cache-faq.md) |
 | Azure DataMarket | [Cognitive Services APIs への移行](https://azure.microsoft.com/services/cognitive-services/) |

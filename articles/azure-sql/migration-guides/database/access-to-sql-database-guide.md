@@ -6,15 +6,16 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: 741a47120b9410f91ef7f6de21879aab796e9a5e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 37266c7a7692c59efdded9ba3fabe71458a5f674
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136730"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110788624"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>移行ガイド: Access から Azure SQL Database
 

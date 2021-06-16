@@ -3,22 +3,22 @@ title: MSAL.js と ADAL.js の相違点 |Azure
 titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library for JavaScript (MSAL.js) と Azure AD Authentication Library for JavaScript (ADAL.js) の違いと、どちらを使用するかを選択する方法について説明します。
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/10/2019
-ms.author: nacanuma
+ms.author: mtillman
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c4a1463074635ed46fc4bc0c21771aabdb00254
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99580848"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077250"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js と ADAL.js の相違点
 

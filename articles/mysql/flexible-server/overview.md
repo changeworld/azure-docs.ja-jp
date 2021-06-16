@@ -4,15 +4,15 @@ description: MySQL Community Edition をベースとした、Microsoft クラウ
 author: savjani
 ms.service: mysql
 ms.author: pariks
-ms.custom: mvc
+ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 2b1a66c5f277f4aa46a0a8befe3a92a39b04d296
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 4f36fae568619807754e838082af270037842bea
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229686"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526292"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -148,8 +148,8 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: |
 | フランス中部 | :heavy_check_mark: | :x:|
 | Brazil South | :heavy_check_mark: | :x: |
+| スイス北部 | :heavy_check_mark: | :x: |
 
-近日中に新しいリージョンを追加できるよう取り組んでいます。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for MySQL フレキシブル サーバーについてのご質問やご提案については、Azure Database for MySQL チームまでメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。

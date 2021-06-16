@@ -3,12 +3,12 @@ title: Azure Resource Manager テンプレートを使ってラボを作成ま�
 description: Azure Resource Manager テンプレートと PowerShell を使用して DevTest ラボでラボを自動的に作成または変更する方法を学習します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 645f1d0717514d2c7e7b16844513327127e4e1a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65656a7383aed76538e43bebd41c82f62f81e724
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87272642"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953915"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Azure Resource Manager テンプレートと PowerShell を使ってラボを自動的に作成または変更する
 
@@ -22,7 +22,7 @@ DevTest ラボが提供する数多くの Azure Resource Manager テンプレー
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>ステップ 2: Azure Resource Manager テンプレートの変更
 これまでテンプレートを作成したことがない場合は、「[初めての Azure Resource Manager テンプレートを作成する](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」の手順に従うことができます。
 
-さらに、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../azure-resource-manager/templates/template-best-practices.md)」では、信頼性が高く使いやすい Azure Resource Manager テンプレートの作成に役立つ多くのガイドラインと推奨事項を紹介しています。 通常、紹介されているいずれかのアプローチや例のバリエーションを使用し、ニーズに応じてテンプレートを変更します。
+さらに、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../azure-resource-manager/templates/best-practices.md)」では、信頼性が高く使いやすい Azure Resource Manager テンプレートの作成に役立つ多くのガイドラインと推奨事項を紹介しています。 通常、紹介されているいずれかのアプローチや例のバリエーションを使用し、ニーズに応じてテンプレートを変更します。
 
 ## <a name="step-3-deploy-resources-with-powershell"></a>ステップ 3: PowerShell によりリソースをデプロイする
 テンプレートやスクリプトをカスタマイズした後で、[Resource Manager テンプレートと Azure PowerShell を使用してリソースをデプロイ](../azure-resource-manager/templates/deploy-powershell.md)するために必要な手順に従ってください。 この記事では、Azure PowerShell と Azure Resource Manager テンプレートを使用してリソースを Azure にデプロイする場合の概要を説明します。

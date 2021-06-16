@@ -1,16 +1,16 @@
 ---
 author: laujan
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 707dccf0305ca7c9268cc686f5154fc08311b38d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 40307ddd6d7f15de0015229b66b8693430dc4a5e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374693"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887807"
 ---
 <!-- markdownlint-disable MD041 -->
 * サポートされているファイル形式: JPEG、PNG、PDF、TIFF

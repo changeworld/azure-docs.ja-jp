@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: d60c4ba78169bb137b8c63682b770c7148fe3f12
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2f76be3bd5a2688e91f63da5da137492190b2ccb
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756739"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789078"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
 
@@ -478,7 +478,7 @@ IoT Central では、デバイスからアプリケーションに送信され�
 { "BooleanProperty": false }
 ```
 
-デバイス モデルの次のスニペットは、`boolean` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、`long` 型のプロパティの定義を示しています。
 
 ```json
 {

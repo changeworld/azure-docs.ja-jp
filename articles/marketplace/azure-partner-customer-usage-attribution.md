@@ -5,17 +5,17 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/12/2021
-ms.custom: devx-track-terraform
-ms.openlocfilehash: aadf1f4c9ab8fa20933256749bd8ce37a1258063
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-terraform, devx-track-azurepowershell
+ms.openlocfilehash: b1f40ff5175de88e101bfe8f22f9593502e7d6d0
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738808"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005881"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure 顧客の使用状況の属性
 
-顧客の使用状況の属性は、パートナーの IP をデプロイしているときに作成された顧客のサブスクリプションでの Azure リソースの使用状況をパートナーに関連付けます。 これらの関連付けを Microsoft システム内に形成することにより、パートナーのソフトウェアを実行している Azure の占有領域の可視性が向上します。 [コマーシャル マーケットプレースの Azure アプリケーション プラン](#commercial-marketplace-azure-apps)の場合、この追跡機能は、Microsoft セールス チームと連携し、Microsoft パートナー プログラムでの信頼を得るために役立ちます。 顧客の利用状況属性は [コマーシャル マーケットプレースの Azure 仮想マシン オファー](./azure-vm-create.md)には適用されません。 エンドカスタマー サブスクリプションで Azure の使用量が追跡されるようにするために、マーケットプレースのパブリッシャーが仮想マシン オファーに対して行う必要があることは何もありません。
+顧客の使用状況の属性は、パートナーの IP をデプロイしているときに作成された顧客のサブスクリプションでの Azure リソースの使用状況をパートナーに関連付けます。 これらの関連付けを Microsoft システム内に形成することにより、パートナーのソフトウェアを実行している Azure の占有領域の可視性が向上します。 [コマーシャル マーケットプレースの Azure アプリケーション プラン](#commercial-marketplace-azure-apps)の場合、この追跡機能は、Microsoft セールス チームと連携し、Microsoft パートナー プログラムでの信頼を得るために役立ちます。 顧客の利用状況属性は [コマーシャル マーケットプレースの Azure 仮想マシン オファー](marketplace-virtual-machines.md)には適用されません。 エンドカスタマー サブスクリプションで Azure の使用量が追跡されるようにするために、マーケットプレースのパブリッシャーが仮想マシン オファーに対して行う必要があることは何もありません。
 
 顧客の使用状況の属性では、以下の 3 つのデプロイ オプションがサポートされます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "109738808"
 
 ## <a name="commercial-marketplace-azure-apps"></a>コマーシャル マーケットプレースの Azure アプリ
 
-コマーシャル マーケットプレースに公開されている Azure アプリの Azure の使用状況の追跡は、ほぼ自動的に行われます。 [マーケットプレースの Azure アプリのプランの技術的な構成](./create-new-azure-apps-offer-solution.md#define-the-technical-configuration)の一部として Resource Manager テンプレートをアップロードすると、パートナー センターでは、Azure Resource Manager で読み取り可能な追跡 ID を追加します。
+コマーシャル マーケットプレースに公開されている Azure アプリの Azure の使用状況の追跡は、ほぼ自動的に行われます。 [マーケットプレースの Azure アプリのプランの技術的な構成](./azure-app-solution.md#define-the-technical-configuration)の一部として Resource Manager テンプレートをアップロードすると、パートナー センターでは、Azure Resource Manager で読み取り可能な追跡 ID を追加します。
 
 Azure Resource Manager API を使用する場合は、コードでリソースをデプロイするときに Azure Resource Manager に渡すために、[以下の手順](#use-resource-manager-apis)に従って追跡 ID を追加する必要があります。 この ID は、パートナー センターのそのプランの [技術的な構成] ページに表示されます。 
 
@@ -41,7 +41,7 @@ Azure Resource Manager API を使用する場合は、コードでリソース�
 >
 >プランを更新すると、メイン テンプレート ファイルに、**Microsoft.Resources またはデプロイ** リソースの種類を追加する必要がなくなります。
 
-## <a name="other-use-cases"></a>その他のユース ケース 
+## <a name="other-use-cases"></a>その他のユース ケース
 
 顧客の使用状況の属性を使用すると、コマーシャル マーケットプレースでは入手できないソリューションの Azure の使用状況を追跡できます。 これらのソリューションは通常、クイック スタート リポジトリやプライベート GitHub リポジトリに存在するか、または持続的な IP を作成する 1:1 の顧客エンゲージメントから生まれます (デプロイ可能で、かつスケーラブルなアプリなど)。
 
@@ -65,9 +65,9 @@ Azure Resource Manager API を使用する場合は、コードでリソース�
 
 次に、GUID をパートナー センターで登録して、パートナーに関連付けることができるようにする必要があります。
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 
-1. [商業マーケットプレース パブリッシャー](https://aka.ms/JoinMarketplace)としてサインアップします。
+1. [商業マーケットプレース パブリッシャー](https://go.microsoft.com/fwlink/?linkid=2165614)としてサインアップします。
 
 1. 右上隅の **[設定]** (歯車アイコン) を選択してから、 **[アカウント設定]** を選択します。
 
@@ -253,7 +253,7 @@ provider "azurerm" {
 1. 問題のタイトルと詳細な説明を入力します。
 1. **[Submit]\(送信\)** をクリックします。
 
-スクリーンショット付きの詳細な手順については、[テクニカル プリセールスおよびデプロイ サービスを使用する](https://aka.ms/TechConsultInstructions)方法に関する記事を参照してください。
+スクリーンショット付きの詳細な手順については、[テクニカル プリセールスおよびデプロイ サービスを使用する](/partner-center/technical-benefits)方法に関する記事を参照してください。
 
 お客様のニーズを調べる電話の準備のために、Microsoft パートナー技術コンサルタントから連絡があります。
 

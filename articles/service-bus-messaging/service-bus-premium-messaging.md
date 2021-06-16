@@ -3,12 +3,12 @@ title: Azure Service Bus の Premium レベルと Standard レベル
 description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: e0149f0ad1ee608179cc7dbdfaa61b498dd60ca0
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: f0cc6b6d7b9026d9be23e36a587b7ce667ba1652
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190740"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811264"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -91,7 +91,8 @@ Premium メッセージングは簡単に使い始めることができ、その
 
 ![create-premium-namespace][create-premium-namespace]
 
-[Azure Resource Manager テンプレートを使用して Premium 名前空間](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/)を作成することもできます。
+[Azure Resource Manager テンプレートを使用して Premium 名前空間](https://azure.microsoft.com/resources/templates/servicebus-pn-ar/)を作成することもできます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

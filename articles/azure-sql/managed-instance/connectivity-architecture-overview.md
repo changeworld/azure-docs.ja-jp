@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance の通信および接続アーキテクチャと、コンポーネントによるマネージド インスタンスへのトラフィックの誘導方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 04/29/2021
-ms.openlocfilehash: 8a753d598c55653536284679f2848c24dd571f2a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 259bd0128a4c5ce677e4d01f44b114aaba0cb977
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289374"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889158"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の接続アーキテクチャ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -112,7 +112,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の受信セキュリティ規則
 これらの規則は、受信管理トラフィック フローを確認するために必要です。 接続アーキテクチャと管理トラフィックの詳細については、[上の段落](#high-level-connectivity-architecture)を参照してください。
 
-| 名前       |Port                        |Protocol|source           |宛先|アクション|
+| 名前       |Port                        |Protocol|source           |到着地|アクション|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |CorpNetSaw       |MI SUBNET  |Allow |
@@ -123,7 +123,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の送信セキュリティ規則
 これらの規則は、送信管理トラフィック フローを確認するために必要です。 接続アーキテクチャと管理トラフィックの詳細については、[上の段落](#high-level-connectivity-architecture)を参照してください。
 
-| 名前       |Port          |Protocol|source           |宛先|アクション|
+| 名前       |Port          |Protocol|source           |到着地|アクション|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -178,5 +178,5 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 - マネージド インスタンスの作成方法を確認します。
   - [Azure ポータル](instance-create-quickstart.md)から設定。
   - [PowerShell](scripts/create-configure-managed-instance-powershell.md) を使用して。
-  - [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)を使用して。
-  - [Azure Resource Manager テンプレート (Jumpbox と SSMS を含む)](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/) を使用して。
+  - [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/sqlmi-new-vnet/)を使用して。
+  - [Azure Resource Manager テンプレート (Jumpbox と SSMS を含む)](https://azure.microsoft.com/resources/templates/sqlmi-new-vnet-w-jumpbox/) を使用して。

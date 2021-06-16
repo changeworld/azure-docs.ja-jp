@@ -2,14 +2,14 @@
 title: Recovery Services コンテナーを作成して構成する
 description: この記事では、バックアップと復旧ポイントを格納する Recovery Services コンテナーを作成して構成する方法について説明します。 リージョンをまたがる復元を使用してセカンダリ リージョンで復元する方法について説明します。
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 06/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5e2983e473fac72d02f0fdbc8c307e96326ac0a6
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: b301ce0ab2f4b57a03e3ba24d672bb4102a1a997
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518577"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794224"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
-ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21f8109fa1db49af8f2e84833466ed204d2f59fa
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91858174"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536534"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>コマーシャル マーケットプレース オファーのプランと価格
 
@@ -100,7 +100,7 @@ ms.locfileid: "91858174"
 > [!IMPORTANT]
 > オファー公開後は、価格モデルの選択を変更できません。
 
-定額の SaaS オファーとマネージド アプリケーション オファーでは、マーケットプレース メータリング サービスを使用した従量制課金がサポートされています。 これは使用量ベースの課金モデルであり、お客様が使用量ベースで支払う帯域幅や電子メールなどの非標準ユニットを定義することができます。 [マネージド アプリケーション](./partner-center-portal/azure-app-metered-billing.md)と [SaaS アプリ](./partner-center-portal/saas-metered-billing.md)の従量制課金の詳細については、関連ドキュメントを参照してください。
+定額の SaaS オファーとマネージド アプリケーション オファーでは、マーケットプレース メータリング サービスを使用した従量制課金がサポートされています。 これは使用量ベースの課金モデルであり、お客様が使用量ベースで支払う帯域幅や電子メールなどの非標準ユニットを定義することができます。 [マネージド アプリケーション](marketplace-metering-service-apis.md)と [SaaS アプリ](./partner-center-portal/saas-metered-billing.md)の従量制課金の詳細については、関連ドキュメントを参照してください。
 
 ## <a name="custom-prices"></a>カスタム価格
 
@@ -166,5 +166,5 @@ Azure 仮想マシンおよび SaaS プランの取引可能オファーにつ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 既存のオファーに対してプランを追加または更新する方法については、「[コマーシャル マーケットプレースでの既存のオファーを更新する](./partner-center-portal/update-existing-offer.md)」を参照してください。
+- 既存のオファーに対してプランを追加または更新する方法については、「[コマーシャル マーケットプレースでの既存のオファーを更新する](./update-existing-offer.md)」を参照してください。
 - トランザクション オプションと関連する価格モデルの詳細については、「[コマーシャル マーケットプレースの販売機能](./marketplace-commercial-transaction-capabilities-and-considerations.md)」を参照してください。

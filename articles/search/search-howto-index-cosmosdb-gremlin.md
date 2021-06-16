@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/11/2021
-ms.openlocfilehash: a1181af6bf7f8c734d7cb90c7e9bb28c22e00b08
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: d54432b482e952327083996b486ce27fc56a1c88
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517984"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949083"
 ---
 # <a name="how-to-index-data-available-through-cosmos-db-gremlin-api-using-an-indexer-preview"></a>Cosmos DB Gremlin API を介して使用できるデータに、インデクサーを使用してインデックスを付ける方法 (プレビュー)
 
@@ -32,13 +32,13 @@ ms.locfileid: "109517984"
 
 ## <a name="get-started"></a>はじめに
 
-[プレビューの REST API](https://docs.microsoft.com/rest/api/searchservice/index-preview) を使用して、Azure Cognitive Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースの作成、インデックスの作成、インデクサーの作成) に従うことで、Gremlin API を介して使用可能な Azure Cosmos DB データにインデックスを付けることができます。 下のプロセスでは、インデクサーの作成要求を送信すると、Cosmos DB からのデータ抽出が開始されます。
+[プレビューの REST API](/rest/api/searchservice/index-preview) を使用して、Azure Cognitive Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースの作成、インデックスの作成、インデクサーの作成) に従うことで、Gremlin API を介して使用可能な Azure Cosmos DB データにインデックスを付けることができます。 下のプロセスでは、インデクサーの作成要求を送信すると、Cosmos DB からのデータ抽出が開始されます。
 
 既定では、Azure Cognitive Search Cosmos DB Gremlin API インデクサーによって、グラフ内のすべての頂点が、インデックス内のドキュメントになります。 エッジは無視されます。 また、エッジのインデックスのみ作成するようにクエリを設定することもできます。
 
 ### <a name="step-1---assemble-inputs-for-the-request"></a>ステップ 1 - 要求に対する入力をアセンブルする
 
-要求ごとに、Azure Cognitive Search のサービス名と管理者キーを (POST ヘッダーに) 指定する必要があります。 [Postman](search-get-started-postman.md) または REST API クライアントを使用して、HTTPS 要求を Azure Cognitive Search に送信できます。
+要求ごとに、Azure Cognitive Search のサービス名と管理者キーを (POST ヘッダーに) 指定する必要があります。 [Postman](./search-get-started-rest.md) または REST API クライアントを使用して、HTTPS 要求を Azure Cognitive Search に送信できます。
 
 要求で使用する次の値をコピーして保存します。
 
@@ -178,7 +178,7 @@ ms.locfileid: "109517984"
 
 このインデクサーは、作成後に実行が開始され、一度だけ実行されます。 要求にオプションの schedule パラメーターを追加することで、スケジュールに基づいて実行されるようにインデクサーを設定できます。 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
-インデクサー作成 API の詳細については、「[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
+インデクサー作成 API の詳細については、「[インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
 
 <a name="DataDeletionDetectionPolicy"></a>
 

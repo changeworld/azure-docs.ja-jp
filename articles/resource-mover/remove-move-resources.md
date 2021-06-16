@@ -7,12 +7,13 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/22/2020
 ms.author: raynew
-ms.openlocfilehash: 067aa245223bce0e8fa009b88af760a26f7ce3dc
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 71397e4635e447701863122e58576dfb6507bcaf
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739028"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698381"
 ---
 # <a name="manage-move-collections-and-resource-groups"></a>移動コレクションとリソース グループを管理する
 

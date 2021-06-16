@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: c6cf6d0f3bc7982f8ac41c12cfd6bf394f763348
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 02bcfa765f9047e3d633402840a37cccc8ada867
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094800"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680722"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Azure Cosmos DB リソースが削除または変更されないようにする
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

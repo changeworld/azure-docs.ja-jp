@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: d21d53476c82c089fd160462093e45a8da1609c7
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 5b81883b8c9556500ec6b6bd994d50a1f4202808
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229447"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949908"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典を Linux 仮想マシンに適用する方法
 
@@ -176,7 +176,7 @@ SLES VM での Azure ハイブリッド特典の使用方法について、お�
 
 ## <a name="azure-hybrid-benefit-on-reserved-instances"></a>予約インスタンスの Azure ハイブリッド特典 
 
-Azure の予約 (Azure Reserved Virtual Machine Instances) を使用すると、複数の製品に対するプランを 1 年分または 3 年分コミットすることで、コストを削減できます。 詳細については、[こちらの予約インスタンス](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)を参照してください。 Azure ハイブリッド特典は、[予約仮想マシンインスタンス (RI)](https://review.docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation) で使用できます。 
+Azure の予約 (Azure Reserved Virtual Machine Instances) を使用すると、複数の製品に対するプランを 1 年分または 3 年分コミットすることで、コストを削減できます。 詳細については、[こちらの予約インスタンス](../../cost-management-billing/reservations/save-compute-costs-reservations.md)を参照してください。 Azure ハイブリッド特典は、[予約仮想マシンインスタンス (RI)](/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation) で使用できます。 
 
 これは、RI を使用して割引料金でコンピューティング コストを購入した場合、RHEL および SUSE のライセンス コストに AHB 特典を適用できることを意味しています。 RI インスタンスに AHB 特典を適用する手順は、通常の VM の場合とまったく同じです。
 ![RI 向け AHB](./media/azure-hybrid-benefit/reserved-instances.png)
@@ -212,7 +212,7 @@ A: はい、できます。 RHEL VM にはライセンスの種類 `RHEL_BYOS` �
 
 *Q:RHEL および SLES の仮想マシン スケール セットで Azure ハイブリッド特典を使用できますか。*
 
-A: はい、RHEL および SLES の仮想マシン スケール セットでの Azure ハイブリッド特典はすべてのユーザーが使用できます。 [この特典について、およびこれを使用する方法については、こちらを参照](https://docs.microsoft.com/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux)してください。 
+A: はい、RHEL および SLES の仮想マシン スケール セットでの Azure ハイブリッド特典はすべてのユーザーが使用できます。 [この特典について、およびこれを使用する方法については、こちらを参照](../../virtual-machine-scale-sets/azure-hybrid-benefit-linux.md)してください。 
 
 *Q:RHEL および SLES の予約インスタンスで Azure ハイブリッド特典を使用できますか。*
 
@@ -236,4 +236,4 @@ A:いいえ、できません。 VDC は、AHB を含め、Azure ではサポー
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure CLI を使用して、VM を作成および更新し、Azure ハイブリッド特典のライセンスの種類 (RHEL_BYOS、SLES_BYOS) を追加する方法を確認する](/cli/azure/vm)
-* RHEL および SLES の仮想マシン スケール セットでの Azure ハイブリッド特典はすべてのユーザーが使用できます。 [この特典について、およびこれを使用する方法については、こちらを参照](https://docs.microsoft.com/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux)してください。 
+* RHEL および SLES の仮想マシン スケール セットでの Azure ハイブリッド特典はすべてのユーザーが使用できます。 [この特典について、およびこれを使用する方法については、こちらを参照](../../virtual-machine-scale-sets/azure-hybrid-benefit-linux.md)してください。

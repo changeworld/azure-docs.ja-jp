@@ -8,12 +8,12 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: 2220fe93d5897fa5ebcf90c03b3d37c305967b23
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d0abb3cae3c1bf8521460ae5bcbb31c84f0f50af
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092269"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560822"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>クイック スタート:音声通話をアプリに追加する
 
@@ -22,19 +22,19 @@ Communication Services 通話 SDK を使用して音声およびビデオ通話�
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
 ::: zone pivot="platform-windows"
-[!INCLUDE [Calling with Windows](./includes/get-started-windows.md)]
+[!INCLUDE [Calling with Windows](./includes/get-started/get-started-windows.md)]
 ::: zone-end
 
 ::: zone pivot="platform-web"
-[!INCLUDE [Calling with JavaScript](./includes/get-started-javascript.md)]
+[!INCLUDE [Calling with JavaScript](./includes/get-started/get-started-javascript.md)]
 ::: zone-end
 
 ::: zone pivot="platform-android"
-[!INCLUDE [Calling with Android](./includes/get-started-android.md)]
+[!INCLUDE [Calling with Android](./includes/get-started/get-started-android.md)]
 ::: zone-end
 
 ::: zone pivot="platform-ios"
-[!INCLUDE [Calling with iOS](./includes/get-started-ios.md)]
+[!INCLUDE [Calling with iOS](./includes/get-started/get-started-ios.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

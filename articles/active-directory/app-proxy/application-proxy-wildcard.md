@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a950e2c282eb3f06d32f87b0d81724aca31710e5
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: da2ea074a717189c038705f95f77e538d1bd9680
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186209"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962155"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 ### <a name="custom-domains"></a>カスタム ドメイン
 
-[カスタム ドメイン](../manage-apps/application-proxy-configure-custom-domain.md)は他のすべてのアプリケーションではオプションですが、ワイルドカード アプリケーションでは前提条件です。 カスタム ドメインの作成には以下が必要です。
+[カスタム ドメイン](./application-proxy-configure-custom-domain.md)は他のすべてのアプリケーションではオプションですが、ワイルドカード アプリケーションでは前提条件です。 カスタム ドメインの作成には以下が必要です。
 
 1. Azure 内で確認済みドメインを作成する。
 1. PFX 形式の TLS/SSL 証明書をアプリケーション プロキシにアップロードする。
@@ -122,7 +122,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos の制約付き委任
 
-[Kerberos の制約付き委任 (KCD) を SSO 方法として](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)使用しているアプリケーションでは、SSO 方法に関してリストされる SPN にもワイルドカードが必要な場合があります。 たとえば、SPN は `HTTP/*.adventure-works.com` などになります。 さらに、バックエンド サーバーで個別の SPN を構成する必要があります (例: `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`)。
+[Kerberos の制約付き委任 (KCD) を SSO 方法として](./application-proxy-configure-single-sign-on-with-kcd.md)使用しているアプリケーションでは、SSO 方法に関してリストされる SPN にもワイルドカードが必要な場合があります。 たとえば、SPN は `HTTP/*.adventure-works.com` などになります。 さらに、バックエンド サーバーで個別の SPN を構成する必要があります (例: `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`)。
 
 ## <a name="scenario-1-general-wildcard-application"></a>シナリオ 1:一般的なワイルドカード アプリケーション
 
@@ -199,5 +199,5 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 ## <a name="next-steps"></a>次のステップ
 
-- **カスタム ドメイン** の詳細については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](../manage-apps/application-proxy-configure-custom-domain.md)」を参照してください。
+- **カスタム ドメイン** の詳細については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](./application-proxy-configure-custom-domain.md)」を参照してください。
 - **アプリケーションの発行** の詳細については、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)に関するページを参照してください。
