@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 35346836767bc1da8c498e23fd3b42afe7a9c350
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bf5a3e753f3110fd07b6ab6bcde4b40bd2940153
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531197"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669497"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>PowerShell を使用して別のギャラリーからイメージをコピーする
 

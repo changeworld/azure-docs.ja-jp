@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 9be250fe350313c3f4647bb7c98b0d1743fda20e
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 06622c01ea2f25b4b4fde301ddf549ee846abd55
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738826"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669241"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 

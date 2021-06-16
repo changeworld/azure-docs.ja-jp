@@ -7,12 +7,13 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 26078c3757e42c3e290a5f4122461b287582fb80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 478c2cbe35c43ffb0fdc507cc1b00585623013ea
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96518823"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668544"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成
 

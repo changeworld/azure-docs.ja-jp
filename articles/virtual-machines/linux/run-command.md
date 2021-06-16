@@ -8,13 +8,14 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
+ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 73dd15a5eed3e27d9b72bc0357e35901c04ba7a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 498c7bd16cc314316c67c202f55c7ce3dcac67c7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552934"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668148"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 

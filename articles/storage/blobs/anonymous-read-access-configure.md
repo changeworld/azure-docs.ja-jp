@@ -10,12 +10,13 @@ ms.date: 04/29/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 7050718955c9a2651ecf8c646ceae7c5bb8cdd02
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ba46c98a97b1ef7576cd54ab6227a18bb9cb059f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319012"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664933"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 

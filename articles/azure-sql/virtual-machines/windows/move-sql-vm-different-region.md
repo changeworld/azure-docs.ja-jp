@@ -15,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cd917ced00220d1251b5aa1118f4287623b9445
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97360154"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080041"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Azure Site Recovery を使用して Azure 内の別のリージョンに SQL Server VM を移動する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -154,6 +154,6 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 詳細については、次の記事を参照してください。 
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM における SQL Server に関するよくあるご質問](frequently-asked-questions-faq.md)
+* [Windows VM における SQL Server に関するよくあるご質問](frequently-asked-questions-faq.yml)
 * [Windows VM における SQL Server に関する料金ガイダンス](pricing-guidance.md)
 * [Windows VM における SQL Server のリリース ノート](doc-changes-updates-release-notes.md)

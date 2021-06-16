@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 00f663b90f34f3b557329692f844bbbc1bf3207d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a67bb6a79e6ef3e51269090611d18c0711fb5bbd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556801"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691030"
 ---
 # <a name="assign-azure-roles-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールを割り当てる
 

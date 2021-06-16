@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: bf13d5c0caeb0bf31a383cd23155a6856c81c53b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ed1201bf90a7178d59a6f7e287dd144c14790838
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897393"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668078"
 ---
 # <a name="how-to-tag-a-virtual-machine-in-azure-using-powershell"></a>PowerShell を使用して Azure で仮想マシンにタグを付ける方法
 

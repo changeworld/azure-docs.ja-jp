@@ -7,15 +7,13 @@ ms.date: 09/08/2020
 ms.topic: quickstart
 ms.service: virtual-machines-sap
 ms.devlang: azurepowershell
-ms.custom:
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: 0af2611bada7a9aad206ce7463ef72ec930c89a2
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 24a8d3a893b5c3c988be25ae55be06f7fc934c8d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538702"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667563"
 ---
 # <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>クイック スタート」を参照してください。Azure PowerShell を使用してAzure Monitor for SAP Solutions をデプロイする
 

@@ -5,19 +5,19 @@ description: PowerShell と Azure CLI を使用して、Azure SQL Database や A
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 67bcd8597314530f26481ef840644ffbc056b033
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9c43cb7bb60b758230664571fd7d7e592009fff2
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777565"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667186"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Transparent Data Encryption (TDE) 保護機能をローテーションする
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

@@ -7,18 +7,19 @@ author: Ajayan1008
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4b7ac968564c6c2e734fe48cca27c617eb82533
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: d72825dd00bdb90425a85f9fcfb7cff56f7241ef
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737278"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577825"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>HANA Large Instances での SAP HANA のバックアップと復元
 

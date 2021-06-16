@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 04/14/2021
-ms.openlocfilehash: d69935c663106e9377fe78b77bcad063b0e528b4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 004f99f585ca10d6ef9985b001333b2a301df740
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746173"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537038"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -167,7 +167,7 @@ NextGen SIEM で業界をリードする LogRhythm は、インターネット�
 
 Microfocus **ArcSight** には、Azure Monitor イベント ハブ用のスマート コネクタがあります。
 
-[ArcSight のドキュメントを参照する](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)
+[ArcSight のドキュメントを参照する](https://community.microfocus.com/cyberres/arcsight/f/arcsight-product-announcements/163662/announcing-general-availability-of-arcsight-smart-connectors-7-10-0-8114-0)
 
 Microfocus **Operations Bridge** では、実行される箇所やあらゆる種類のデータ (イベント、メトリクス、ログ、依存関係) に AIOps を適用する箇所に関係なく、あらゆるハイブリッド IT リソース、つまり、あらゆるデバイス、オペレーティング システム、データベース、アプリケーション、サービスが自動的に監視されます。 高品質のサービス監視とアプリケーションの正常性の詳細な分析を独自の方法で組み合わせ、Microsoft Azure サービスの包括的なパフォーマンスと可用性を監視します。 Operations Bridge の顧客は、ビジネスの関係者も IT の関係者も理解できるような方法で、ブラウザー付きのあらゆるデバイスで利用できる統一画面を提供できます。
 
@@ -355,7 +355,7 @@ Azure Monitor で監視データを Azure イベント ハブにルーティン�
 |  IBM QRadar | いいえ | Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web](https://www.ibm.com/support) サイトからダウンロードすることができます。 Azure との統合の詳細については、「[QRadar DSM の構成](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)」を参照してください。 |
 | Splunk | いいえ | [Splunk 用 Microsoft Azure アドオン](https://splunkbase.splunk.com/app/3757/)が、Splunkbase でオープンソース プロジェクトとして公開されています。 <br><br> プロキシの使用時や Splunk Cloud での実行時など、アドオンをご自分の Splunk インスタンスにインストールできない場合は、イベント ハブの新着メッセージによりトリガーされる [Splunk 向け Azure 関数](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。 |
 | sumologic | いいえ | 「[イベント ハブから Azure 監査アプリのログを収集する](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)」で、イベント ハブのデータを使用するように SumoLogic を設定する手順が説明されています。 |
-| ArcSight | いいえ | [ArcSight スマート コネクタ コレクション](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)の一部として、ArcSight Azure イベント ハブ スマート コネクタが提供されています。 |
+| ArcSight | いいえ | [ArcSight スマート コネクタ コレクション](https://community.microfocus.com/cyberres/arcsight/f/arcsight-product-announcements/163662/announcing-general-availability-of-arcsight-smart-connectors-7-10-0-8114-0)の一部として、ArcSight Azure イベント ハブ スマート コネクタが提供されています。 |
 | Syslog サーバー | いいえ | Azure Monitor データを Syslog サーバーに直接ストリーム配信したい場合は、[Azure 関数ベースのソリューション](https://github.com/miguelangelopereira/azuremonitor2syslog/)を使用できます。
 | LogRhythm | いいえ| LogRhythm を設定してイベント ハブからログを収集するための手順については、[こちら](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)を参照してください。 
 |Logz.io | はい | 詳細については、[Azure で実行される Java アプリ用の Logz.io を使用した監視とログ記録の概要](/azure/developer/java/fundamentals/java-get-started-with-logzio)に関するページを参照してください。

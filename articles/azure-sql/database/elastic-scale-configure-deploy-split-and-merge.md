@@ -7,16 +7,16 @@ ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8656202685db424cd6047e6a8b58191c6293e9ff
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792074"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694341"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93a8a4d2e7f4f8a455f6437c69dee4c44c2e29f3
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 83c3fd114ab7ed3bf04d47ef3be2fc563b6b43d5
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751925"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586186"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してクエリの結果をストレージに格納する
 
@@ -105,7 +105,7 @@ ORDER BY
 - [CETAS でパーティションを指定する](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
 - [ファイルのサイズと数を指定する](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
 
-サポートされている出力の種類は、Parquet と CSV だけです。 その他の種類については、[Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions)で投票することができます。
+サポートされている出力の種類は、Parquet と CSV だけです。 その他の種類については、[Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/)で投票することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

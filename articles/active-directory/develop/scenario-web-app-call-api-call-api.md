@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b81e94fddd428da97429fb280f09a16a77229235
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: fadab51318bc41851b6ea74c3a85ee797dfdb8e0
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165085"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110584928"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出す Web アプリ: Web API を呼び出す
 
@@ -133,8 +133,8 @@ public async Task<IActionResult> Profile()
   string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
   // Use the access token to call a protected web API.
-  HttpClient client = new HttpClient();
-  client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+  HttpClient httpClient = new HttpClient();
+  httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
   var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
 

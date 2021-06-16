@@ -5,19 +5,19 @@ description: Azure SQL Database と Azure Synapse Analytics のネットワー�
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sqldbrb=3
+ms.custom: sqldbrb=3, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1640cfae4925c1ef3699ea72778e392e4249db9b
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460009"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666603"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御
 

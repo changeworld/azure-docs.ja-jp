@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 61e8ee2cbcd1252704b2d1e220fcfaaff17c2f28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3d79c043446fbf124ca851f40e85cd10c962a73b
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93085991"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662142"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータ操作にユーザー アクセスを制限する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

@@ -5,14 +5,14 @@ ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.topic: article
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 03/12/2020
-ms.openlocfilehash: ae0f1c20de9861b3d025031867e1c2e3c0015c79
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b14d0eae07715f6979210f0608fd1b91848afd26
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481645"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665556"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>PowerShell を使用して、クラウド内のデータをコピーするための Data Factory パイプラインを作成する
 
@@ -51,7 +51,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | データ ファクトリを作成します。 |

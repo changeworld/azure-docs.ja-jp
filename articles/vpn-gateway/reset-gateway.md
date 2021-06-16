@@ -7,12 +7,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: fcf92808f41d7681f2fe5c44cc958435438a1f86
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a3df054e026e09ec826e78affffd1114f4705346
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229218"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662055"
 ---
 # <a name="reset-a-vpn-gateway-or-a-connection"></a>VPN ゲートウェイまたは接続をリセットする
 

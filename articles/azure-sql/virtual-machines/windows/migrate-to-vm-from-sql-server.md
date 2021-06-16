@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f6e9009040d2d02702f8a71c352716491d07d1f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 719de6058ca683acc8fb0be9727271f5a7928531
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704306"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080023"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>SQL Server データベースを Azure 仮想マシン上の SQL Server に移行する
 
@@ -113,6 +113,6 @@ ms.locfileid: "98704306"
 詳細については、[Azure Virtual Machines 上の SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。
 
 > [!TIP]
-> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
 
 キャプチャ イメージから Azure 仮想マシン上に SQL Server を作成する手順については、CSS SQL Server Engineers ブログの「[Azure SQL 仮想マシンをキャプチャ イメージから "複製する" ためのヒント](/archive/blogs/psssql/tips-tricks-on-cloning-azure-sql-virtual-machines-from-captured-images)」を参照してください。

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 6c72f62db310155c9b2fa1d09476ab9406f2d330
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 4a7bd76a6b7536a6bbc117d52fb2c0770145ab9d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813202"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078710"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Ubuntu Linux 仮想マシンを作成する
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/vm-simple-linux/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json":::
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - **[管理者ユーザー名]** : *azureuser* のように、ユーザー名を指定します。
     - **[認証の種類]** : SSH キーとパスワードのどちらを使用するかを選択できます。
     - **[Admin Password Or Key]\(管理者パスワードまたはキー\)** : 認証の種類の選択内容に応じて、次のようにします。
-        - **[パスワード]** を選択した場合には、パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+        - **[パスワード]** を選択した場合には、パスワードは 12 文字以上で、[定義された複雑さの要件](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
         - **[sshPublicKey]** を選択した場合には、公開キーの内容を貼り付けます。
     - **[DNS label prefix]\(DNS ラベルのプレフィックス\)** : DNS ラベルの一部として使用する一意の識別子を入力します。
     - **[Ubuntu OS version]\(Ubuntu OS のバージョン\)** : VM 上で稼働させるUbuntu のバージョンを選択します。
