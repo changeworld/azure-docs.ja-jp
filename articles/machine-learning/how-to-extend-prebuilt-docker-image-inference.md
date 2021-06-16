@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 2c410d6c310c8f9b0c50ff0073f4dda9a35c8f9c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b84255a4148322f9aa1b5c0d59eb220c2555102f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382681"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967622"
 ---
 # <a name="extend-a-prebuilt-docker-image-preview"></a>事前構築済み Docker イメージを拡張する (プレビュー)
 
@@ -61,7 +61,7 @@ docker build -f <above dockerfile> -t <image_name>:<tag> .
 > [!TIP]
 > `docker build` の詳細については、[Docker のドキュメント](https://docs.docker.com/engine/reference/commandline/build/)を参照してください。
 
-ローカルから `docker build` コマンドが利用できない場合は、Azure Machine Learning ワークスペースの Azure Container Registry ACR を使用して、Docker イメージをクラウドにビルドします。 詳細については、[Azure Container Registry でコンテナー イメージをビルド、デプロイする方法に関するチュートリアル](/azure/container-registry/container-registry-tutorial-quick-task)を参照してください。
+ローカルから `docker build` コマンドが利用できない場合は、Azure Machine Learning ワークスペースの Azure Container Registry ACR を使用して、Docker イメージをクラウドにビルドします。 詳細については、[Azure Container Registry でコンテナー イメージをビルド、デプロイする方法に関するチュートリアル](../container-registry/container-registry-tutorial-quick-task.md)を参照してください。
 
 > [!IMPORTANT]
 > Microsoft では、Azure Container Registry でカスタム基本イメージを作成しようとする前に、Dockerfile がローカルで正しく動作するか確認することを推奨しています。

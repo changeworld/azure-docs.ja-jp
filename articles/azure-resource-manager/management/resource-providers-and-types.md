@@ -4,12 +4,12 @@ description: Azure Resource Manager をサポートするリソース プロバ�
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d5936e1e4c80869495d5b71023e26264dc9a2cde
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d33debc8a7cfd72e919f7e93e1af50a653fa651e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319199"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968273"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -315,7 +315,7 @@ West US
 
 ## <a name="next-steps"></a>次のステップ
 
-* リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](../templates/template-syntax.md)に関するページを参照してください。 
+* リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](../templates/syntax.md)に関するページを参照してください。 
 * リソース プロバイダーのテンプレートのスキーマを表示するには、「[テンプレート リファレンス](/azure/templates/)」を参照してください。
 * リソース プロバイダーを Azure サービスにマップされるリストについては、「[Resource providers for Azure services](azure-services-resource-providers.md)」 (Azure サービスのリソースプロバイダー) を参照してください。
 * リソース プロバイダーの操作を表示するには、「[Azure REST API](/rest/api/)」を参照してください。

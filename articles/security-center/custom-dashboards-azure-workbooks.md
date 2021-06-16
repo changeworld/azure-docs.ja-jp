@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.openlocfilehash: 198702f619e490e8000e4430aab23a7f6bfb6d85
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 06/13/2021
+ms.openlocfilehash: 9aad86bc08d7190ae9fca9faab9dbfcfba93f206
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107230"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062318"
 ---
 # <a name="create-rich-interactive-reports-of-security-center-data"></a>Security Center データの豊富な対話型レポートを作成する
 
@@ -28,7 +28,7 @@ Azure Security Center 内で、組み込みレポートにアクセスして組�
 
 | 側面                          | 詳細                                                                                                                                      |
 |---------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
-| リリース状態:                  | プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                       |
+| リリース状態:                  | 一般提供 (GA)                                                                                                                    |
 | 価格:                        | Free                                                                                                                                         |
 | 必要なロールとアクセス許可: | ブックを保存するには、少なくともターゲット リソース グループに対するブックの共同作成者のアクセス許可が必要です                                      |
 | クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov) |
@@ -39,7 +39,7 @@ Azure Security Center 内で、組み込みレポートにアクセスして組�
 統合された Azure ブック機能を使用すると、Azure Security Center で独自のカスタム対話型レポートを簡単に作成できます。 Security Center には、カスタマイズの準備ができている次のレポートを含むブック ギャラリーも含まれています。
 
 - **経過時間に応じたセキュア スコア** - サブスクリプションのスコアと、リソースに対する推奨事項の変化を追跡します
-- **システムの更新プログラム** - リソース、OS、重要度などに応じて、不足しているシステムの更新プログラムを表示します
+- **システムの更新プログラム** - リソース、OS、重要度などに応じて、システムに適用できていない更新プログラムを表示します
 - **脆弱性評価の結果** - Azure リソースを対象とした脆弱性スキャンの結果を表示します
 
 :::image type="content" source="media/custom-dashboards-azure-workbooks/workbooks-gallery-security-center.png" alt-text="Azure Security Center の組み込みブックのギャラリー":::

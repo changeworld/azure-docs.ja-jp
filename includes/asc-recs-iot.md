@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 05/05/2021
+ms.date: 06/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 285aa520f22874cc9ad93ca253086617a7363943
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5f4838765ff21d744faa14733f02bb0119b2f875
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766526"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083760"
 ---
 このカテゴリには **12 個** の推奨事項があります。
 

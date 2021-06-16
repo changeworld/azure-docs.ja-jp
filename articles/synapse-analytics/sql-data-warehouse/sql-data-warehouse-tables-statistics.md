@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 42dd34f0fe4006411f413002eb7c351646e72390
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 91fb5c3bc341adb3485e11f27ef0e362c704bf01
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078963"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111813451"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのテーブルの統計
 
@@ -143,7 +143,7 @@ left join
     ON rg.object_id = nt.object_id
     AND rg.pdw_node_id = nt.pdw_node_id
     AND rg.distribution_id = nt.distribution_id
-    WHERE 1 = 1
+    WWHERE rg.index_id = 1
     GROUP BY sm.name, tb.name, tb.object_id
 ) actualRowCounts
 on objIdsWithStats.object_id = actualRowCounts.object_id

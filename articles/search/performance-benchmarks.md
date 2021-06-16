@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 5f7617fdfea68c8005c8a33ec782edc2bbe01f4b
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 2da5a39710e7bbce2e610ef7850b9284bc5c4309
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930779"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441471"
 ---
 # <a name="azure-cognitive-search-performance-benchmarks"></a>Azure Cognitive Search のパフォーマンス ベンチマーク
 
@@ -22,7 +22,7 @@ Azure Cognitive Search のパフォーマンスは、検索サービスのサイ
 さまざまなユース ケースに対応するために、次の 2 つの主要なシナリオでベンチマークを実行しました。
 
 * **eコマース検索** - このベンチマークは、eコマースの実際のシナリオをエミュレートしたもので、北欧の eコマース企業 [CDON](https://cdon.com) に基づいています。
-* **ドキュメント検索** - このシナリオは、[Semantic Scholar](http://s2-public-api-prod.us-west-2.elasticbeanstalk.com/corpus/download/) のドキュメント全文に対するキーワード検索で構成されています。 これは、一般的なドキュメント検索ソリューションをエミュレートします。
+* **ドキュメント検索** - このシナリオは、[Semantic Scholar](https://www.aclweb.org/anthology/2020.acl-main.447/) のドキュメント全文に対するキーワード検索で構成されています。 これは、一般的なドキュメント検索ソリューションをエミュレートします。
 
 これらのシナリオにはさまざまなユース ケースが反映されていますが、どのシナリオも異なるため、常に個々のワークロードのパフォーマンスをテストすることをお勧めします。 Microsoft は [JMeter を使用したパフォーマンス テスト ソリューション](https://github.com/Azure-Samples/azure-search-performance-testing)を公開し、独自のサービスに対して同様のテストを実行できるようにしました。
 

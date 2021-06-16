@@ -4,14 +4,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 02/10/2021
+ms.date: 06/07/2021
 ms.author: tamram
-ms.openlocfilehash: 483f5853c321eee4ac6d10543f0e360a0a5e54b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32f2d1a5533c48b3b7c78d9e66b08cafdde09a8f
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373754"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901902"
 ---
 セキュリティ プリンシパルに Azure RBAC ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。 より広い範囲で定義されている Azure RBAC ロールは、その下のリソースによって継承されます。
 
