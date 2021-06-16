@@ -1,18 +1,18 @@
 ---
 title: IoT プラグ アンド プレイ認定の要件
-description: IoT プラグ アンド プレイ認定プログラムの要件
+description: IoT プラグ アンド プレイ認定の要件
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: eaf3ef6016388404761e913f878972df4a333061
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: bec37c72d8db3e0891cb2cd375084465950ea5f5
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712804"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541951"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT プラグ アンド プレイ認定の要件
 
@@ -75,7 +75,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **検証タイプ**                       | マニュアル                                                       |
 | **検証**                            | パートナーは、 物理デバイスに対して追加の検証を実行するための手配を行うために、Microsoft Contact ([iotcert@microsoft.com](mailto:iotcert@microsoft.com)) と提携する必要があります。 COVID-19 の状況のため、デバイスを Microsoft に出荷せずに、物理的なデバイスの検証を実行するさまざまな方法を模索しています。 |
 | **リソース**                             | 詳細は後日お知らせします                                 |
-| **Azure の推奨事項**       | 該当なし    |
+| **Azure の推奨事項**       | N/A    |
 
 **[実装されている場合] デバイス情報インターフェイス: テストの目的は、デバイス情報インターフェイスがデバイス コードに適切に実装されていることを検証することです**
 
@@ -87,7 +87,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | [ポータル ワークフロー](https://certify.azure.com)により、デバイス コードがデバイス情報インターフェイスを実装していることが検証されます **1.** デバイス コードによって IoT Hub に値が出力されることを確認します **2.** インターフェイスが DCM に実装されていることを確認します (この実装は DTDL v2 で変更されます) **3.** チェック プロパティが書き込み可能ではありません (読み取り専用) **4.** スキーマの種類が文字列または long であり、null ではないことを確認します |
 | **リソース**           | [Microsoft によって定義されたインターフェイス](../iot-pnp/overview-iot-plug-and-play.md) |
-| **Azure の推奨事項**  | 該当なし                                                          |
+| **Azure の推奨事項**  | N/A                                                          |
 
 **[実装されている場合] クラウドからデバイス: テストの目的は、メッセージがクラウドからデバイスに送信されることを確認することです**
 

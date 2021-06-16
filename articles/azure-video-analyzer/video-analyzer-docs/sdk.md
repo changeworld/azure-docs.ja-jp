@@ -5,12 +5,12 @@ author: bennage
 ms.author: christb
 ms.topic: reference
 ms.date: 05/14/2021
-ms.openlocfilehash: 480d3fbadbac6dcf7ec56f92e45e7c2e65653195
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 25e94b06fbc45d16ef198e2d77a653a407fcf1c9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387823"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954450"
 ---
 # <a name="azure-video-analyzer-sdks"></a>Azure Video Analyzer の SDK
 
@@ -18,7 +18,7 @@ Azure Video Analyzer には、2 つのグループの SDK が含まれていま�
 
 ## <a name="management-sdks"></a>管理 SDK
 
-管理 SDK を使用して、Azure Resource Manager によって公開されるリソースと相互作用できます。 Video Analyzer アカウントの作成、エッジ モジュールのプロビジョニング トークンの生成、ビデオのアクセス ポリシーの管理などを行うことができます。 SDK は、基盤となる [REST API] の上に構築されます。
+管理 SDK を使用して、Azure Resource Manager によって公開されるリソースと相互作用できます。 Video Analyzer アカウントの作成、エッジ モジュールのプロビジョニング トークンの生成、ビデオのアクセス ポリシーの管理などを行うことができます。 SDK は、基盤となる [REST API](/rest/api/videoanalyzer/?branch=video) の上に構築されます。
 
 次のプラットフォームがサポートされています。
 
@@ -38,6 +38,6 @@ Azure Video Analyzer には、2 つのグループの SDK が含まれていま�
 
 <!-- links -->
 [docs-direct-methods]: direct-methods.md
-[docs-iot-hub-sdks]: /azure/iot-hub/iot-hub-devguide-sdks
+[docs-iot-hub-sdks]: ../../iot-hub/iot-hub-devguide-sdks.md
 
 [REST API]: https://aka.ms/ava/api/rest

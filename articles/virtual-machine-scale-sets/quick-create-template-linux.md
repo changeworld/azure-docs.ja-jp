@@ -9,12 +9,12 @@ ms.collection: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: be5007c08f51defdd3e705b9e73e9ce2a21a18e0
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: df9721e400f1d7142db2578eceee8dd4fc25f7cc
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750966"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901765"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/vmss-bottle-autoscale/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json":::
 

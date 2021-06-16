@@ -3,12 +3,12 @@ title: '[Azure にデプロイ] ボタン'
 description: Azure Resource Manager テンプレートを GitHub リポジトリからデプロイするためのボタンを使用する。
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 77d23852941177aca35a582f64b21bfac02d7942
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5074d21867e931560367a6ab62c46e5753f1b00e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736903"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957810"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする
 
@@ -122,4 +122,4 @@ Git で Azure リポジトリを使用する場合、ボタンは次の形式に
 
 ## <a name="next-steps"></a>次のステップ
 
-- テンプレートの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+- テンプレートの詳細については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。

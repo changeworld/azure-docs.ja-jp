@@ -3,12 +3,12 @@ title: リソースのプロパティについて
 description: リソースのプロパティの確認方法について説明します。
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: aaa7bb13f49c1c742e44a255d4bbdbd2b1730939
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7f0267e4a5afaec0853b82624f4c2486fd8a70e0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736687"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959435"
 ---
 # <a name="discover-resource-properties"></a>リソースのプロパティについて
 
@@ -116,4 +116,4 @@ Resources.azure.com は一般向けの Web サイトで、Azure サブスクリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、テンプレート スキーマ情報を見つける方法について説明しました。 Resource Manager テンプレートの作成については、「[ARM テンプレートの構造と構文について](./template-syntax.md)」を参照してください。
+この記事では、テンプレート スキーマ情報を見つける方法について説明しました。 Resource Manager テンプレートの作成については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。

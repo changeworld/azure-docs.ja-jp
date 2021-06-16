@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2bb178302d399805eb84b233060d5717e2dba8b3
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8716b8ddb267aa76dec7950026027442bf438e65
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830558"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853552"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hybrid Runbook Worker の概要
 
@@ -21,7 +21,7 @@ Azure Automation の Runbook は Azure クラウド プラットフォームで�
 
 Runbook Worker には、システムとユーザーの 2 種類があります。 次の表は、それらの違いについて説明しています。
 
-|Type | [説明] |
+|種類 | [説明] |
 |-----|-------------|
 |**システム** |Windows および Linux マシンにユーザー指定の更新プログラムをインストールするために設計された Update Management 機能によって使用される、非表示の一連の Runbook がサポートされます。<br> この種類の Hybrid Runbook Worker は Hybrid Runbook Worker グループのメンバーではないため、Runbook Worker グループを対象とする Runbook は実行されません。 |
 |**User** |1 つまたは複数の Runbook Worker グループのメンバーである Windows および Linux マシン上で直接実行することを目的としたユーザー定義の Runbook がサポートされます。 |
@@ -90,7 +90,7 @@ Azure Government で Azure Automation Hybrid Runbook Worker を使用すると�
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Hybrid Runbook Worker の Update Management アドレス
 
-Hybrid Runbook Worker に必要な標準のアドレスとポートに加えて、Update Management には、「[ネットワークの計画](./update-management/overview.md#ports)」セクションで説明されている他のネットワーク構成要件があります。
+Hybrid Runbook Worker に必要な標準のアドレスとポートに加えて、Update Management には、「[ネットワークの計画](./update-management/plan-deployment.md#ports)」セクションで説明されている他のネットワーク構成要件があります。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Azure Automation State Configuration
 

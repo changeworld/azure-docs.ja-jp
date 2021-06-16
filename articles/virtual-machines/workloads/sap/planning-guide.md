@@ -10,13 +10,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
-ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 8e2b757010aa79bd6d8a14b5e90ac95a199be75a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 717d98591fe5dc8326e6ee311c569bdca83eaa19
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083118"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960947"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -591,7 +591,7 @@ Azure Virtual Network 内の VM には、固定または予約済み IP アド�
 
 
 ##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>SAP ホスト名仮想化のセカンダリ IP アドレス
-各 Azure 仮想マシンのネットワーク インターフェイス カードには複数の IP アドレスを割り当てることができます。このセカンダリ IP は、必要に応じて DNS A または PTR レコードにマップされる SAP 仮想ホスト名に使用できます。 セカンダリ IP アドレスは、[こちらの記事](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)に従って Azure vNIC IP 構成に割り当てる必要があります。また、セカンダリ IP が DHCP 経由で割り当てられないように、OS 内で構成する必要があります。 各セカンダリ IP は、vNIC のバインド先と同じサブネットからのものである必要があります。 Pacemaker クラスターなどのセカンダリ IP 構成では Azure Load Balancer のフローティング IP の使用は[サポートされていません](/azure/load-balancer/load-balancer-multivip-overview#limitations)。この場合、Load Balancer の IP によって SAP 仮想ホスト名が有効になります。 仮想ホスト名の使用についての一般的なガイダンスについては、SAP ノート [#962955](https://launchpad.support.sap.com/#/notes/962955) も参照してください。
+各 Azure 仮想マシンのネットワーク インターフェイス カードには複数の IP アドレスを割り当てることができます。このセカンダリ IP は、必要に応じて DNS A または PTR レコードにマップされる SAP 仮想ホスト名に使用できます。 セカンダリ IP アドレスは、[こちらの記事](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)に従って Azure vNIC IP 構成に割り当てる必要があります。また、セカンダリ IP が DHCP 経由で割り当てられないように、OS 内で構成する必要があります。 各セカンダリ IP は、vNIC のバインド先と同じサブネットからのものである必要があります。 Pacemaker クラスターなどのセカンダリ IP 構成では Azure Load Balancer のフローティング IP の使用は[サポートされていません](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。この場合、Load Balancer の IP によって SAP 仮想ホスト名が有効になります。 仮想ホスト名の使用についての一般的なガイダンスについては、SAP ノート [#962955](https://launchpad.support.sap.com/#/notes/962955) も参照してください。
 
 
 ##### <a name="multiple-nics-per-vm"></a>VM あたり複数の NIC

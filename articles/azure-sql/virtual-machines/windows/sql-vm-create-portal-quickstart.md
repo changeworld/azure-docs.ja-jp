@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1186d6c138b555144d59414d7b1d9293474390d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356959"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079627"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Windows 仮想マシン上に SQL Server 2017 を作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "97356959"
 
   > [!TIP]
   > - このクイック スタートでは、SQL VM を迅速にプロビジョニングしてそこに接続する方法について説明します。 その他の SQL VM プロビジョニング オプションについては、[Azure portal での Windows VM 上への SQL Server のプロビジョニング ガイド](create-sql-vm-portal.md)を参照してください。
-  > - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+  > - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Azure サブスクリプションを取得する
 
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![インスタンスの詳細](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
-1. **[管理者アカウント]** で、ユーザー名 (_azureuser_ など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+1. **[管理者アカウント]** で、ユーザー名 (_azureuser_ など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
 
    ![[Administrator account] (管理者アカウント)](./media/sql-vm-create-portal-quickstart/basics-administrator-account.png)
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db90d49034fb61c26bf4528045d2b3f54d7a30fc
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937095"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963840"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -286,7 +286,7 @@ NPS 拡張機能を無効にする:
 
 * [Azure AD Authentication のドキュメント](./howto-mfaserver-iis.md)
 * [Azure AD で緊急アクセス用管理者アカウントを管理する](../roles/security-emergency-access.md)
-* [Azure Active Directory でネームド ロケーションを構成する](../reports-monitoring/quickstart-configure-named-locations.md)
+* [Azure Active Directory でネームド ロケーションを構成する](../conditional-access/location-condition.md)
   * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](../devices/hybrid-azuread-join-plan.md)
 * [Windows Hello for Business の展開ガイド](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)

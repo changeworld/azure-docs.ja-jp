@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: how-to
 ms.date: 05/13/2021
-ms.openlocfilehash: 093dd29a4e9eda9157a49c6cc44144b5e8a4bbec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 860e84bf8e2378d4a9c433df81c5adfb6741169e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369151"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953832"
 ---
 # <a name="estimate-storage-costs-for-workflows-in-single-tenant-azure-logic-apps"></a>シングルテナント Azure Logic Apps のワークフローのストレージ コストを見積もる
 
-Azure Logic Apps では、すべてのストレージ操作に [Azure Storage](/azure/storage/) を使用します。 従来の "*マルチテナント*" の Azure Logic Apps では、すべてのストレージの使用状況およびコストがロジック アプリに関連付けられます。 "*シングルテナント*" の Azure Logic Apps では、独自のストレージ アカウントを使用できるようになりました。 これらのストレージ コストは、Azure の請求書に個別に一覧表示されます。 この機能により、ロジック アプリ データの柔軟性と管理のしやすさが向上します。
+Azure Logic Apps では、すべてのストレージ操作に [Azure Storage](../storage/index.yml) を使用します。 従来の "*マルチテナント*" の Azure Logic Apps では、すべてのストレージの使用状況およびコストがロジック アプリに関連付けられます。 "*シングルテナント*" の Azure Logic Apps では、独自のストレージ アカウントを使用できるようになりました。 これらのストレージ コストは、Azure の請求書に個別に一覧表示されます。 この機能により、ロジック アプリ データの柔軟性と管理のしやすさが向上します。
 
 > [!NOTE]
 > この記事は、シングルテナントの Azure Logic Apps 環境のワークフローに該当します。 これらのワークフローは、同じロジック アプリ内に、同じストレージを共有する 1 つのテナントに存在します。 詳細については、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を参照してください。

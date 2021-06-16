@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: mimckitt
-ms.openlocfilehash: d88970d05a002248f1b477cfabffc5febd027ef1
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f950ba730b939c2782a6f44f8eb849a3a3626505
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753005"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670394"
 ---
 # <a name="change-the-availability-set-for-a-vm-using-azure-powershell"></a>Azure PowerShell を使用して VM の可用性セットを変更する    
 以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。 

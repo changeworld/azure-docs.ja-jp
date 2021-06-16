@@ -6,13 +6,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
+ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 0634f75f000689f409ee81279e7d52f680ab98d8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 50e9dbddd0a84f104aed9275f985f444990dbc30
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209231"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677166"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
