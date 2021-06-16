@@ -9,12 +9,12 @@ ms.date: 03/24/2021
 ms.custom:
 - template-quickstart
 - devx-track-azurecli
-ms.openlocfilehash: b40407f4c4fb81bbf76bd0b552f3c9f2c827232a
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: c9f4b46553a119bfb7b8b639e6a28e95a2be5999
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871526"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750841"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure データ ファクトリを作成する
 
@@ -73,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-Azure データ ファクトリを作成するには、[az datafactory factory create](/cli/azure/datafactory/factory#az_datafactory_factory_create) コマンドを実行します。
+Azure データ ファクトリを作成するには、[az datafactory factory create](/cli/azure/datafactory#az_datafactory_create) コマンドを実行します。
 
 ```azurecli
 az datafactory factory create --resource-group ADFQuickStartRG \
@@ -83,7 +83,7 @@ az datafactory factory create --resource-group ADFQuickStartRG \
 > [!IMPORTANT]
 > `ADFTutorialFactory` は、グローバルに一意のデータ ファクトリ名に置き換えてください (ADFTutorialFactorySP1127 など)。
 
-作成したデータ ファクトリは、[az datafactory factory show](/cli/azure/datafactory/factory#az_datafactory_factory_show) コマンドを使用して確認できます。
+作成したデータ ファクトリは、[az datafactory factory show](/cli/azure/datafactory#az_datafactory_factory_show) コマンドを使用して確認できます。
 
 ```azurecli
 az datafactory factory show --resource-group ADFQuickStartRG \
@@ -94,7 +94,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 次に、リンク サービスと 2 つのデータセットを作成します。
 
-1. [az storage account show-connection-string](/cli/azure/datafactory/factory#az_datafactory_factory_show) コマンドを使用してストレージ アカウントの接続文字列を取得します。
+1. [az storage account show-connection-string](/cli/azure/datafactory#az_datafactory_factory_show) コマンドを使用してストレージ アカウントの接続文字列を取得します。
 
    ```azurecli
    az storage account show-connection-string --resource-group ADFQuickStartRG \

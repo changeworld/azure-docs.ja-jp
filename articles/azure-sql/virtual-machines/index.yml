@@ -6,16 +6,17 @@ metadata:
   description: Windows と Linux 両方の Azure 仮想マシンにインストールされている SQL Server に関するドキュメントを紹介します。
   services: virtual-machines-sql
   ms.service: virtual-machines-sql
+  ms.subservice: service-overview
   ms.topic: landing-page
   author: MashaMSFT
   ms.author: mathoma
   ms.date: 05/27/2020
-  ms.openlocfilehash: 5b93139b896c3b2868db8b9f03c8eb84df7ca834
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: a33f9268dce514c7b7d9522d4a1c58e57befa122
+  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110064380"
+  ms.lasthandoff: 05/29/2021
+  ms.locfileid: "110688230"
 landingContent:
 - title: Azure VM 上の SQL Server
   linkLists:

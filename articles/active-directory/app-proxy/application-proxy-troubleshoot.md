@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 3c5dce26a8c1274e68bb1d6cbc497852b86a3821
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 1e46bb0fad37e1a6da3676578f6cd92af912cb3f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186752"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963891"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 
-アプリケーション プロキシの問題をトラブルシューティングするときは、このトラブルシューティングのフローの確認から始めて、[アプリケーション プロキシ コネクタの問題をデバッグ](../manage-apps/application-proxy-debug-connectors.md)し、アプリケーション プロキシ コネクタが正しく構成されているかどうかを判断することをお勧めします。 アプリケーションへの接続にまだ問題がある場合は、[アプリケーション プロキシ アプリケーションの問題のデバッグ](../manage-apps/application-proxy-debug-apps.md)のトラブルシューティングのフローに従います。
+アプリケーション プロキシの問題をトラブルシューティングするときは、このトラブルシューティングのフローの確認から始めて、[アプリケーション プロキシ コネクタの問題をデバッグ](./application-proxy-debug-connectors.md)し、アプリケーション プロキシ コネクタが正しく構成されているかどうかを判断することをお勧めします。 アプリケーションへの接続にまだ問題がある場合は、[アプリケーション プロキシ アプリケーションの問題のデバッグ](./application-proxy-debug-apps.md)のトラブルシューティングのフローに従います。
 
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
 
@@ -78,7 +78,7 @@ Get-EventLog application –source "Microsoft AAD Application Proxy Connector" �
 | この企業のアプリにはアクセスできません。 このアプリケーションにアクセスする権限がありません。 承認に失敗しました。 このアプリケーションへのアクセス権をユーザーに割り当ててください。 | サインインに企業アカウントではなく Microsoft アカウントを使用しているユーザーが、発行済みのアプリにアクセスしようとしたときに、このエラーが表示されることがあります。 このエラーはゲスト ユーザーにも表示されることがあります。 Microsoft アカウントのユーザーとゲスト ユーザーは IWA アプリケーションにはアクセスできません。 ユーザーが、発行されたアプリケーションのドメインに一致する企業アカウントを使用してサインインするようにします。<br><br>このアプリケーションにユーザーを割り当てていない可能性があります。 **[アプリケーション]** タブに移動し、 **[ユーザーとグループ]** でこのユーザーまたはユーザー グループをこのアプリケーションに割り当てます。 |
 | この企業アプリには、現在、アクセスできません。 後でもう一度やり直してください。コネクタがタイムアウトになりました。 | オンプレミス側でこのアプリケーション向けに適切に定義されていないユーザーが、発行済みのアプリにアクセスしようとしたときに、このエラーが表示されることがあります。 ユーザーが、オンプレミス コンピューターでこのバックエンド アプリケーションに対して定義されているような適切なアクセス許可を持っていることを確認します。 |
 | この企業のアプリにはアクセスできません。 このアプリケーションにアクセスする権限がありません。 承認に失敗しました。 ユーザーが Azure Active Directory Premium のライセンスを持っていることを確認します。 | サブスクライバーの管理者によってユーザーに対して Premium ライセンスが明示的に割り当てられていない場合、発行されたアプリにそのユーザーがアクセスしようとすると、このエラーが発生することがあります。 サブスクライバーの Active Directory **[ライセンス]** タブに移動し、このユーザーまたはユーザー グループに Premium ライセンスが割り当てられていることを確認します。 |
-| 指定されたホスト名を持つサーバーが見つかりませんでした。 | アプリケーションのカスタム ドメインが正しく構成されていない場合、発行したアプリにユーザーがアクセスしようとすると、このエラーが表示されることがあります。 「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](../manage-apps/application-proxy-configure-custom-domain.md)」の手順に従って、ドメインの証明書がアップロードされ、DNS レコードが正しく構成されていることを確認してください。 |
+| 指定されたホスト名を持つサーバーが見つかりませんでした。 | アプリケーションのカスタム ドメインが正しく構成されていない場合、発行したアプリにユーザーがアクセスしようとすると、このエラーが表示されることがあります。 「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](./application-proxy-configure-custom-domain.md)」の手順に従って、ドメインの証明書がアップロードされ、DNS レコードが正しく構成されていることを確認してください。 |
 |禁止:この社内アプリにアクセスできないか、ユーザーを承認できませんでした。 ユーザーがオンプレミスの AD で定義されていること、およびユーザーがオンプレミスの AD でアプリにアクセスできることを確認してください。 | これは、承認情報へのアクセスに問題がある可能性があります。「[一部のアプリケーションや API でアカウント オブジェクトの承認情報に対するアクセス許可が必要になる]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information)」を参照してください。 簡単に言うと、アプリケーション プロキシ コネクタのコンピューター アカウントを "Windows Authorization Access Group" 組み込みドメイン グループに追加して解決します。 |
 
 ## <a name="my-error-wasnt-listed-here"></a>上記に記載のないエラー
@@ -89,7 +89,7 @@ Azure AD アプリケーション プロキシでこのトラブルシューテ�
 * [Azure Active Directory のアプリケーション プロキシを有効にする](application-proxy-add-on-premises-application.md)
 * [アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)
 * [シングル サインオンの有効化](application-proxy-configure-single-sign-on-with-kcd.md)
-* [条件付きアクセスを有効にする](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+* [条件付きアクセスを有効にする](./application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

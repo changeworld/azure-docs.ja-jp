@@ -3,12 +3,12 @@ title: Application Insights の可用性の概要
 description: 繰り返し実施される Web テストを設定して、アプリまたは Web サイトの可用性と応答性を監視します。
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 4e0cbcec2773186feb38f26720d40c03e5817b7f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 94fe55a5bce0e915a092fd32ad5acf6936d59e61
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742609"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967019"
 ---
 # <a name="availability-tests-overview"></a>可用性テストの概要
 
@@ -39,4 +39,4 @@ ms.locfileid: "108742609"
 * [複数ステップ Web テスト](availability-multistep.md)
 * [URL テスト](monitor-web-app-availability.md)
 * [Azure Functions を使用してカスタム可用性テストを作成し、実行する](availability-azure-functions.md)
-* [Azure Resource Manager テンプレートの Web テスト](https://docs.microsoft.com/azure/templates/microsoft.insights/webtests?tabs=json)
+* [Azure Resource Manager テンプレートの Web テスト](/azure/templates/microsoft.insights/webtests?tabs=json)

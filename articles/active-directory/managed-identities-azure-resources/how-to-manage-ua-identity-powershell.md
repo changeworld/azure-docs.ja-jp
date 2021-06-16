@@ -16,12 +16,13 @@ ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e62ce85c6a9e4a10b9453ce065977f86deb9bd5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ROBOTS: NOINDEX
+ms.openlocfilehash: c43b4dc998f0ff61a428dff089102796d94ac443
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162241"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749689"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する
 

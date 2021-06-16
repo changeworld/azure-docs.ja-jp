@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: d32d822d0ca85c25401f17411a8d34b4fb2e1eaf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e9c1299c0847aa30e1e3e198d2165e2674164458
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125400"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960841"
 ---
 # <a name="tutorial-use-azure-log-analytics-to-collect-and-visualize-metrics-and-logs-preview"></a>チュートリアル: Azure Log Analytics を使用してメトリックとログを収集して視覚化する (プレビュー)
 
@@ -214,7 +214,7 @@ Azure Monitor アラートにより、ユーザーは Log Analytics クエリを
 
 ## <a name="limitation"></a>制限事項
 
-[マネージド仮想ネットワーク](/azure/synapse-analytics/security/synapse-workspace-managed-vnet)が有効になっている Azure Synapse Analytics ワークスペースはサポートされていません。
+[マネージド仮想ネットワーク](../security/synapse-workspace-managed-vnet.md)が有効になっている Azure Synapse Analytics ワークスペースはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

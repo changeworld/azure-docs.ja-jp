@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 83775a48e0be1dec50e9205bb1fa9ddb8fcf0087
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cf1e471144ec901f82cae1217921ad0eac29b2ae
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743923"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953268"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -92,7 +92,7 @@ Private Link 接続を設定すると、DNS が更新され、VNet の IP 範囲
 ![AMPLS の制限に関する図](./media/private-link-security/ampls-limits.png)
 
 > [!NOTE]
-> Update Management、Change Tracking、Inventory などの、Automation アカウントを必要とする Log Analytics ソリューションを使用する場合は、Automation アカウント用に個別の Private Link を設定する必要もあります。 詳細は、「[Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する](https://docs.microsoft.com/azure/automation/how-to/private-link-security)」を参照してください。
+> Update Management、Change Tracking、Inventory などの、Automation アカウントを必要とする Log Analytics ソリューションを使用する場合は、Automation アカウント用に個別の Private Link を設定する必要もあります。 詳細は、「[Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する](../../automation/how-to/private-link-security.md)」を参照してください。
 
 
 ## <a name="example-connection"></a>接続の例

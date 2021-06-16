@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 431e42e422ecbaeb0e404928a505cf90180f6dd7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 090e00bbf9ca86115f286b8f24955f33c7230bf3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379339"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969404"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0:Translate
 
@@ -50,9 +50,9 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 | Query parameter (クエリ パラメーター) | 説明 |
 | --- | --- |
-| from | "_省略可能なパラメーター_"。  <br>入力テキストの言語を指定します。 `translation` スコープを使用して[サポートされている言語](../reference/v3-0-languages.md)を検索することにより、翻訳することができるソース言語を確認します。 `from` パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。  <br>  <br>[動的ディクショナリ](/azure/cognitive-services/translator/dynamic-dictionary)機能を使用する場合は、自動検出ではなく、`from` パラメーターを使用する必要があります。 |
+| from | "_省略可能なパラメーター_"。  <br>入力テキストの言語を指定します。 `translation` スコープを使用して[サポートされている言語](../reference/v3-0-languages.md)を検索することにより、翻訳することができるソース言語を確認します。 `from` パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。  <br>  <br>[動的ディクショナリ](../dynamic-dictionary.md)機能を使用する場合は、自動検出ではなく、`from` パラメーターを使用する必要があります。 |
 | textType | "_省略可能なパラメーター_"。  <br>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は `plain` (既定値) または `html` です。 |
-| category | "_省略可能なパラメーター_"。  <br>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、[Custom Translator](../customization.md) でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール [プロジェクトの詳細](/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details)からこのパラメーターにカテゴリ ID を追加します。 既定値は `general` です。 |
+| category | "_省略可能なパラメーター_"。  <br>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、[Custom Translator](../customization.md) でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール [プロジェクトの詳細](../custom-translator/how-to-create-project.md#view-project-details)からこのパラメーターにカテゴリ ID を追加します。 既定値は `general` です。 |
 | profanityAction | "_省略可能なパラメーター_"。  <br>翻訳での不適切な表現の処理方法を指定します。 指定できる値は `NoAction` (既定値)、`Marked`、または `Deleted` です。 不適切な表現の処理方法を理解するには、[不適切な表現の処理](#handle-profanity)に関するセクションを参照してください。 |
 | profanityMarker | "_省略可能なパラメーター_"。  <br>翻訳での不適切な表現のマーキング方法を指定します。 指定できる値は `Asterisk` (既定値) または `Tag` です。 不適切な表現の処理方法を理解するには、[不適切な表現の処理](#handle-profanity)に関するセクションを参照してください。 |
 | includeAlignment | "_省略可能なパラメーター_"。  <br>ソース テキストから翻訳済みテキストへのアライメント プロジェクションを含めるかどうかを指定します。 指定できる値は `true` または `false` (既定値) です。 |
@@ -60,13 +60,13 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 | suggestedFrom | "_省略可能なパラメーター_"。  <br>入力テキストの言語を識別できない場合のフォールバック言語を指定します。 `from` パラメーターが省略されている場合は、言語自動検出が適用されます。 検出に失敗した場合は、`suggestedFrom` 言語と見なされます。 |
 | fromScript | "_省略可能なパラメーター_"。  <br>入力テキストのスクリプトを指定します。 |
 | toScript | "_省略可能なパラメーター_"。  <br>翻訳済みテキストのスクリプトを指定します。 |
-| allowFallback | "_省略可能なパラメーター_"。  <br>カスタム システムが存在しない場合は、サービスが一般的なシステムにフォールバックできることを指定します。 指定できる値は `true` (既定値) または `false` です。  <br>  <br>`allowFallback=false` は、要求によって指定された `category` 向けにトレーニングされているシステムのみを翻訳で使用することを指定します。 言語 X から言語 Y への翻訳で、中心言語 E を経由するチェーン処理が必要な場合、チェーン内のすべてのシステム (X->E と E->Y) はカスタムであり、同じカテゴリを持っている必要があります。 特定のカテゴリを持つシステムが見つからない場合、要求は 400 状態コードを返します。 `allowFallback=true` は、カスタム システムが存在しない場合に、サービスが一般的なシステムにフォールバックできることを指定します。 |
+| allowFallback | "_省略可能なパラメーター_"。  <br>カスタム システムが存在しない場合に、サービスが一般的なシステムにフォールバックできることを指定します。 指定できる値は `true` (既定値) または `false` です。  <br>  <br>`allowFallback=false` は、要求によって指定された `category` 向けにトレーニングされているシステムのみを翻訳で使用することを指定します。 言語 X から言語 Y への翻訳で、中心言語 E を経由するチェーン処理が必要な場合、チェーン内のすべてのシステム (X->E と E->Y) はカスタムであり、同じカテゴリを持っている必要があります。 特定のカテゴリを持つシステムが見つからない場合、要求は 400 状態コードを返します。 `allowFallback=true` は、カスタム システムが存在しない場合に、サービスが一般的なシステムにフォールバックできることを指定します。 |
 
 要求ヘッダーには次のものがあります。
 
 | ヘッダー | 説明 |
 | --- | --- |
-| 認証ヘッダー | "_必須の要求ヘッダー_" です。  <br>[認証に使用できるオプション](/azure/cognitive-services/translator/reference/v3-0-reference#authentication)に関するページをご覧ください。 |
+| 認証ヘッダー | "_必須の要求ヘッダー_" です。  <br>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。 |
 | Content-Type | "_必須の要求ヘッダー_" です。  <br>ペイロードのコンテンツ タイプを指定します。  <br>指定できる値は `application/json; charset=UTF-8` です。 |
 | Content-Length | "_必須の要求ヘッダー_" です。  <br>要求本文の長さです。 |
 | X-ClientTraceId | _オプション_。  <br>要求を一意に識別する、クライアントで生成された GUID。 `ClientTraceId` という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。 |
@@ -124,7 +124,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
   * `sourceText`:`text` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、ソース言語の既定のスクリプトで入力テキストが提供されます。 `sourceText` プロパティは、言語の通常のスクリプトではないスクリプトで入力が表されている場合にのみ存在します。 たとえば、入力がラテン文字で記述されたアラビア語であるならば、`sourceText.text` は同じアラビア語のテキストをアラビア文字に変換したものとなります。
 
-JSON 応答の例については、「[例](#examples)」セクションをご覧ください。
+JSON 応答の例については、「[例](#examples)」セクションを参照してください。
 
 ## <a name="response-headers"></a>応答ヘッダー
 
@@ -315,7 +315,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-content-with-markup-and-decide-whats-translated"></a>マークアップを含むコンテンツの翻訳および翻訳対象の決定
 
-HTML ページからのコンテンツや XML ドキュメントからのコンテンツなど、マークアップを含むコンテンツを翻訳するのが一般的です。 タグ付きのコンテンツを翻訳する場合は、クエリ パラメーター `textType=html` を含めます。 さらに、特定のコンテンツを翻訳から除外すると便利な場合があります。 属性 `class=notranslate` を使用すると、元の言語のまま残す必要があるコンテンツを指定できます。 次の例では、1 番目の `div` 要素内のコンテンツは翻訳されませんが、2 番目の `div` 要素内のコンテンツは翻訳されます。
+HTML ページからのコンテンツや XML ドキュメントからのコンテンツなど、マークアップを含むコンテンツを翻訳することは一般的です。 タグ付きのコンテンツを翻訳する場合は、クエリ パラメーター `textType=html` を含めます。 さらに、特定のコンテンツを翻訳から除外すると便利な場合があります。 属性 `class=notranslate` を使用すると、元の言語のまま残す必要があるコンテンツを指定できます。 次の例では、1 番目の `div` 要素内のコンテンツは翻訳されませんが、2 番目の `div` 要素内のコンテンツは翻訳されます。
 
 ```
 <div class="notranslate">This will not be translated.</div>

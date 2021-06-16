@@ -1,19 +1,19 @@
 ---
 title: Azure Active Directory Domain Services の組み込みポリシー定義
 description: Azure Active Directory Domain Services の組み込みポリシー定義の一覧を示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.service: active-directory
 ms.subservice: domain-services
 author: justinha
 ms.author: justinha
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 45052d6a042507d8d7ec4bf5fedb5eb396f1fe21
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6cdb628a247dcd51737e0941faae1619a44f557f
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066854"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017957"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の Azure Policy 組み込み定義
 

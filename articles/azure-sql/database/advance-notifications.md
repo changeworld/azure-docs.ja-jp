@@ -3,20 +3,20 @@ title: 計画メンテナンス イベントの事前通知 (プレビュー)
 description: Azure SQL Database の計画メンテナンスの前に通知を受け取ります。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scott-kim-sql
+ms.author: scottkim
+ms.reviewer: mathoma
 ms.date: 03/02/2021
-ms.openlocfilehash: 895b9081ba7eb6d7e8b5d3304d37168e4064ed39
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b79d9f88c61ca4bc11895e26f8ffc4fd69b8a35
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560048"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706558"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>計画メンテナンス イベントの事前通知 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

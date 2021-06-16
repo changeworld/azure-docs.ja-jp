@@ -3,12 +3,12 @@ title: Azure Lighthouse と Azure Managed Applications
 description: Azure Lighthouse と Azure Managed Applications を組み合わせて使用する方法について説明します。
 ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: b2bca71973dd22e566c5fb330206d37cc2854d6c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 09e07aca77fc53cb9eab2ba0c980b6c838ef6726
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788609"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962637"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications
 
@@ -45,7 +45,7 @@ Azure Lighthouse は通常、サービス プロバイダーがお客様の管�
 
 マネージド アプリケーションは、[カスタマイズされた Azure portal エクスペリエンス](../../azure-resource-manager/managed-applications/concepts-view-definition.md)と、[カスタム プロバイダー](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md)との統合をサポートします。 これらのオプションは、カスタマイズされた統合されたエクスペリエンスを提供するために使用でき、お客様が一部の管理タスクを自分で簡単に実行できるようになります。
 
-マネージド アプリケーションは、特定のお客様専用のプライベート オファーとして、または複数のお客様が購入できるパブリック オファーとして、[Azure Marketplace に公開](../../marketplace/create-new-azure-apps-offer.md)することができます。 また、[マネージド アプリケーションをサービス カタログに公開する](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)ことによって、組織内のユーザーに提供することもできます。 ARM テンプレートを使用して、サービス カタログと Marketplace の両方のインスタンスをデプロイできます。このテンプレートには、[お客様の使用状況の属性](../../marketplace/azure-partner-customer-usage-attribution.md)を追跡するための、コマーシャル マーケットプレース パートナーの一意識別子を含めることができます。
+マネージド アプリケーションは、特定のお客様専用のプライベート オファーとして、または複数のお客様が購入できるパブリック オファーとして、[Azure Marketplace に公開](../../marketplace/azure-app-offer-setup.md)することができます。 また、[マネージド アプリケーションをサービス カタログに公開する](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)ことによって、組織内のユーザーに提供することもできます。 ARM テンプレートを使用して、サービス カタログと Marketplace の両方のインスタンスをデプロイできます。このテンプレートには、[お客様の使用状況の属性](../../marketplace/azure-partner-customer-usage-attribution.md)を追跡するための、コマーシャル マーケットプレース パートナーの一意識別子を含めることができます。
 
 通常、Azure Managed Applications は、サービス プロバイダーによって完全に管理されるターンキー ソリューションによって満たすことができる、具体的なお客様のニーズのために使用されます。
 

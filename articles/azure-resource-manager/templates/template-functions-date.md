@@ -2,13 +2,13 @@
 title: テンプレート関数 - 日付
 description: Azure Resource Manager テンプレート (ARM テンプレート) で日付の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: abff5b86ad1e10042596b11f613cdb594e307209
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: c6bf3adca5dde4947e2c22dd8468f1b045f77120
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889928"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959699"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM テンプレート用の日付関数
 
@@ -16,8 +16,6 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="datetimeadd"></a>dateTimeAdd
 
@@ -27,7 +25,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | base | はい | string | 加算する期間の開始日時の値。 [ISO 8601 タイムスタンプの形式](https://en.wikipedia.org/wiki/ISO_8601)を使用します。 |
 | duration | はい | string | ベースに加算する時間の値。 負の値を指定することができます。 [ISO 8601 期間の形式](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用します。 |
@@ -40,8 +38,6 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 ### <a name="examples"></a>例
 
 次のテンプレート例は、時間の値を加算するさまざまな方法を示します。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -76,33 +72,15 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param baseTime string = utcNow('u')
-
-var add3Years = dateTimeAdd(baseTime, 'P3Y')
-var subtract9Days = dateTimeAdd(baseTime, '-P9D')
-var add1Hour = dateTimeAdd(baseTime, 'PT1H')
-
-output add3YearsOutput string = add3Years
-output subtract9DaysOutput string = subtract9Days
-output add1HourOutput string = add1Hour
-```
-
----
-
 以前のテンプレートがベースの日時 `2020-04-07 14:53:14Z`でデプロイされている場合、出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | add3YearsOutput | String | 4/7/2023 2:53:14 PM |
 | subtract9DaysOutput | String | 3/29/2020 2:53:14 PM |
 | add1HourOutput | String | 4/7/2020 3:53:14 PM |
 
 次のテンプレート例は、Automation スケジュールの開始日時を設定する方法を示します。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -154,30 +132,6 @@ output add1HourOutput string = add1Hour
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param omsAutomationAccountName string = 'demoAutomation'
-param scheduleName string = 'demSchedule1'
-param baseTime string = utcNow('u')
-
-var startTime = dateTimeAdd(baseTime, 'PT1H')
-
-...
-
-resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31' = {
-  name: concat(omsAutomationAccountName, '/', scheduleName)
-  properties: {
-    description: 'Demo Scheduler'
-    startTime: startTime
-    interval: 1
-    frequency: 'Hour'
-  }
-}
-```
-
----
-
 ## <a name="utcnow"></a>utcNow
 
 `utcNow(format)`
@@ -186,7 +140,7 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | format |いいえ |string |文字列に変換する URI エンコードされた値。 [標準書式指定文字列](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
 
@@ -205,8 +159,6 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 ### <a name="examples"></a>例
 
 次の例のテンプレートでは、datetime 値のさまざまな形式を示します。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -245,31 +197,15 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param utcValue string = utcNow()
-param utcShortValue string = utcNow('d')
-param utcCustomValue string = utcNow('M d')
-
-output utcOutput string = utcValue
-output utcShortOutput string = utcShortValue
-output utcCustomOutput string = utcCustomValue
-```
-
----
-
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |
 | utcCustomOutput | string | 3 5 |
 
 次の例では、タグ値を設定するときに関数からの値を使用する方法を示します。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -305,25 +241,6 @@ output utcCustomOutput string = utcCustomValue
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param utcShort string = utcNow('d')
-param rgName string
-
-resource myRg 'Microsoft.Resources/resourceGroups@2020-10-01' = {
-  name: rgName
-  location: 'westeurope'
-  tags: {
-    createdDate: utcShort
-  }
-}
-
-output utcShortOutput string = utcShort
-```
-
----
-
 ## <a name="next-steps"></a>次のステップ
 
-* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。

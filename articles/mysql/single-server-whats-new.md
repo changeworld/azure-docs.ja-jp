@@ -7,16 +7,16 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 9f0fd2b23fe363b3db353267908b2c466ba70b68
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 6b77ede348073dd09c0ba44bfe282d3bf546a092
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487999"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958546"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL 単一サーバーの新機能
 
-Azure Database for MySQL は、Microsoft クラウドのリレーショナル データベース サービスです。 このサービスは、[MySQL コミュニティ エディション](https://www.mysql.com/products/community/) (GPLv2 ライセンスで入手可能) のデータベース エンジンを基にしており、バージョン 5.6、5.7、および 8.0 をサポートしています。 [Azure Database for MySQL 単一サーバー](https://docs.microsoft.com/azure/mysql/overview#azure-database-for-mysql---single-server)は、最小限の要件でデータベースをカスタマイズできる、フル マネージド データベース サービスを提供するデプロイ モードです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、セキュリティなど、データベース管理機能のほとんどを、最小限のユーザー構成と制御ですべて処理するよう設計されています。
+Azure Database for MySQL は、Microsoft クラウドのリレーショナル データベース サービスです。 このサービスは、[MySQL コミュニティ エディション](https://www.mysql.com/products/community/) (GPLv2 ライセンスで入手可能) のデータベース エンジンを基にしており、バージョン 5.6、5.7、および 8.0 をサポートしています。 [Azure Database for MySQL 単一サーバー](./overview.md#azure-database-for-mysql---single-server)は、最小限の要件でデータベースをカスタマイズできる、フル マネージド データベース サービスを提供するデプロイ モードです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、セキュリティなど、データベース管理機能のほとんどを、最小限のユーザー構成と制御ですべて処理するよう設計されています。
 
 この記事では、2021 年 1 月に利用開始される Azure Database for MySQL 単一サーバーの新しいリリースと機能について説明します。 リストは新しい順に記載されており、最新の更新が最初に示されています。
 
@@ -49,5 +49,5 @@ Azure Database for MySQL についての質問や提案がある場合は、Azur
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Database for MySQL の価格](https://azure.microsoft.com/pricing/details/mysql/server/)についての詳細を確認します。
-- Azure Database for MySQL 単一サーバー用の[公開ドキュメント](https://docs.microsoft.com/azure/mysql/single-server/)を参照します。
-- [一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-errors)について詳しく検討します。
+- Azure Database for MySQL 単一サーバー用の[公開ドキュメント](./single-server/index.yml)を参照します。
+- [一般的なエラーのトラブルシューティング](./howto-troubleshoot-common-errors.md)について詳しく検討します。

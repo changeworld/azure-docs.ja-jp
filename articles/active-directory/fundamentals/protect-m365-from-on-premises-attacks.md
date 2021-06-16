@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cee69fbd2cb829a7ec90179e94098e307e5a094
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609908"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968538"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -187,7 +187,7 @@ Azure AD の機能を使用して、デバイスを安全に管理します。
 
 * **レガシ アプリケーション** 
 
-   * 先進認証がサポートされていないレガシ アプリケーションに対して、認証、認可、およびリモート アクセスを有効にすることができます。 [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を使用します。 また、[セキュリティで保護されたハイブリッド アクセス パートナー統合](../manage-apps/secure-hybrid-access.md)を使用して、ネットワークまたはアプリケーションの配信コントローラー ソリューションによって有効にすることもできます。   
+   * 先進認証がサポートされていないレガシ アプリケーションに対して、認証、認可、およびリモート アクセスを有効にすることができます。 [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)を使用します。 また、[セキュリティで保護されたハイブリッド アクセス パートナー統合](../manage-apps/secure-hybrid-access.md)を使用して、ネットワークまたはアプリケーションの配信コントローラー ソリューションによって有効にすることもできます。   
 
    * 先進認証をサポートしている VPN ベンダーを選択します。 その認証を Azure AD と統合します。 オンプレミスの侵害では、Azure AD を使用して VPN を無効にすることにより、アクセスを無効にしたりブロックしたりすることができます。
 
@@ -222,7 +222,7 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
     すべての [Azure AD リスク イベント](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation)で、疑わしいアクティビティを監視します。 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) は、Azure Security Center とネイティブに統合されています。
 
-    場所ベースのシグナルで多くのノイズが検出されないよう、ネットワークの[ネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)を定義します。 
+    場所ベースのシグナルで多くのノイズが検出されないよう、ネットワークの[ネームド ロケーション](../conditional-access/location-condition.md)を定義します。 
 *  **ユーザー/エンティティ行動分析 (UEBA) のアラート** 
 
     UEBA を使用して、異常検出に関する分析情報を取得します。

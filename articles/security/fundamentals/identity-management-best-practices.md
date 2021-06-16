@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f69fe97c33a17ade39f67078d5b035dac4d0bfaf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 227b8d9c797a8fec81d8792a48f456bcda6a838c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034168"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958506"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -113,7 +113,7 @@ Active Directory フェデレーション サービス (AD FS) または他の I
 すべてのアプリとリソースで同じ ID ソリューションを使用することにより、SSO が実現されます。 また、ユーザーは、必要なリソースがオンプレミスまたはクラウドのどちらにあっても、同じ資格情報セットを使用してリソースにサインインしてアクセスできます。
 
 **ベスト プラクティス**: SSO を有効にします。  
-**詳細**: Azure AD はクラウドに [オンプレミス Active Directory を拡張](../../active-directory/hybrid/whatis-hybrid-identity.md)します。 ユーザーは、主要な職場または学校アカウントを、ドメイン参加済みデバイス、会社のリソース、および作業を完了させるために必要なすべての Web アプリケーションと SaaS アプリケーションに使用することができます。 ユーザーは複数のユーザー名とパスワードのセットを覚える必要がなくなり、組織のグループ メンバーシップや従業員としての地位に基づいて、ユーザーのアプリケーション アクセスが自動的にプロビジョニング (またはプロビジョニング解除) されるようにすることができます。 また、ギャラリー アプリ、または [Azure AD アプリケーション プロキシ](../../active-directory/manage-apps/application-proxy.md)で開発および公開した独自のオンプレミス アプリについてそのアクセスを制御できます。
+**詳細**: Azure AD はクラウドに [オンプレミス Active Directory を拡張](../../active-directory/hybrid/whatis-hybrid-identity.md)します。 ユーザーは、主要な職場または学校アカウントを、ドメイン参加済みデバイス、会社のリソース、および作業を完了させるために必要なすべての Web アプリケーションと SaaS アプリケーションに使用することができます。 ユーザーは複数のユーザー名とパスワードのセットを覚える必要がなくなり、組織のグループ メンバーシップや従業員としての地位に基づいて、ユーザーのアプリケーション アクセスが自動的にプロビジョニング (またはプロビジョニング解除) されるようにすることができます。 また、ギャラリー アプリ、または [Azure AD アプリケーション プロキシ](../../active-directory/app-proxy/application-proxy.md)で開発および公開した独自のオンプレミス アプリについてそのアクセスを制御できます。
 
 SSO を使用すると、ユーザーは Azure AD 内の職場または学校アカウントに基づいて [SaaS アプリケーション](../../active-directory/manage-apps/what-is-single-sign-on.md)にアクセスできます。 これは、Microsoft SaaS アプリだけでなく、[Google Apps](../../active-directory/saas-apps/google-apps-tutorial.md) や [Salesforce](../../active-directory/saas-apps/salesforce-tutorial.md) などの他のアプリにも当てはまります。 [SAML ベースの ID](../../active-directory/fundamentals/active-directory-whatis.md) プロバイダーとして Azure AD を使用するように、アプリケーションを構成できます。 セキュリティ コントロールの目的で、Azure AD では、ユーザーに Azure AD を使用するアクセス権が付与されない限り、アプリケーションへのサインインを許可するトークンは発行されません。 ユーザーに対してアクセスを直接許可することも、ユーザーがメンバーであるグループを介して許可することもできます。
 

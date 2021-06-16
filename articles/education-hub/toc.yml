@@ -51,6 +51,6 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: azure-dev-tools-teaching/program-faq.md
+      href: azure-dev-tools-teaching/program-faq.yml
     - name: サポート
       href: azure-dev-tools-teaching/program-support.md

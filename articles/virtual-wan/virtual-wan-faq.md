@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: troubleshooting
-ms.date: 03/05/2021
+ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: cb84083c26274b877c18e58ec938b586184dc605
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: b3393a400c02227d56d28a597677464e30254a02
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060433"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411307"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN の FAQ
 

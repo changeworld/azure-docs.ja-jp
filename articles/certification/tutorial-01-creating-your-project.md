@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: tutorial
 ms.date: 03/01/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: ab7f552602fa4eacc249d01ca2e255d8a0297a1a
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 11c0a621375cfa57c8b25f0bdd5ed4651dffa853
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738682"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949413"
 ---
 # <a name="tutorial-create-your-project"></a>チュートリアル: プロジェクトを作成する
 
@@ -28,11 +28,11 @@ Azure Certified Device プログラムによるデバイスの認定に興味を
 ## <a name="prerequisites"></a>前提条件
 
 
-- 職場または学校の有効な [Azure Active Directory アカウント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)。
+- 職場または学校の有効な [Azure Active Directory アカウント](../active-directory/fundamentals/active-directory-whatis.md)。
 - 検証済みの Microsoft Partner Network (MPN) アカウント。 MPN アカウントをお持ちでない場合は、最初に[パートナー ネットワークに参加](https://partner.microsoft.com/)してください。 
 
 > [!NOTE] 
-> MPN アカウントの設定または検証で問題が発生する場合は、[パートナー センターのサポート](https://docs.microsoft.com/partner-center)に関するドキュメントを参照してください。
+> MPN アカウントの設定または検証で問題が発生する場合は、[パートナー センターのサポート](/partner-center)に関するドキュメントを参照してください。
 
 
 ## <a name="signing-into-the-azure-certified-device-portal"></a>Azure Certified Device ポータルにサインインする

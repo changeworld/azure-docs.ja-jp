@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: d6835d06015923a70301c95370c76efbd0c2163e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d3180ba6e8c19714759563eb79a8488929efe940
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776737"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675857"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -176,7 +177,7 @@ az vm show \
 | 宛先ポート範囲 | 80                                                                                 |
 | Protocol                | TCP                                                                                |
 | アクション                  | Allow                                                                              |
-| Priority                | 100                                                                                |
+| 優先度                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 
 この規則を作成した後は、ポート 80 でインターネットからの受信が許可されるようになります。これは、トラフィックを拒否している *DenyAllInBound* という名前の既定のセキュリティ規則より、この規則の優先順位の方が高いためです。 方法については、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 ネットワーク インターフェイスとサブネットに異なる NSG が関連付けられている場合は、両方の NSG に同じ規則を作成する必要があります。

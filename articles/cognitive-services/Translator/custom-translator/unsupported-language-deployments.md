@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: lajanuar
-ms.openlocfilehash: fb31388647fc6022a2e6670baf7b3e73f345c36a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca2fab82dd08ea999186a430b78b6329c64ae816
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98898072"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409597"
 ---
 # <a name="unsupported-language-deployments"></a>サポートされていない言語の展開
 
@@ -28,7 +28,7 @@ ms.locfileid: "98898072"
 ## <a name="prerequisites"></a>前提条件
 
 自社モデルを展開の対象とするには、次の条件を満たしている必要があります。
-* モデルを含むプロジェクトは、移行ツールを使用してハブからカスタム翻訳ツールに移行されていること。  移行するプロジェクトとワークスペースのプロセスは[ここ](how-to-migrate.md)にあります。
+* モデルを含むプロジェクトは、移行ツールを使用してハブからカスタム翻訳ツールに移行されていること。  
 * モデルは、移行が発生したときに展開された状態でなければなりません。  
 * モデルの言語ペアは、カスタム翻訳ツールで、サポートされていない言語のペアである必要があります。  言語のペアの片方が英語をサポートしているもののその言語は英語では無い場合、サポートされていない言語の展開の対象となります。  たとえば、フランス語とドイツ語の言語ペアにおいてフランス語から英語がサポートされていて英語からドイツ語がサポートされていても、この言語ペアのハブ モデルはサポートされていない言語の組み合わせとなります。
 

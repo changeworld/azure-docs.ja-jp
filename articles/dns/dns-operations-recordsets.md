@@ -8,16 +8,16 @@ ms.service: dns
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
 ms.workload: infrastructure-services
 ms.date: 04/28/2021
 ms.author: rohink
-ms.openlocfilehash: 1b3e4df12a7b8a08d3f7edc8e63c9b6225a3e7bc
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 2aaa8ff93d0e334bf8b9104b4f82b0e35ccf36c1
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228084"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705044"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS のレコードおよびレコード セットを管理する
 

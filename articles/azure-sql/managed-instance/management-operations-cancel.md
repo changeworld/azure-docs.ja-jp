@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance の管理操作をキャンセルする方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: deployment-configuration
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13e0190b330d1cae0d819ee28c9c8fabe98e8dcb
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861546"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689749"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作のキャンセル
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,7 @@ Azure SQL Managed Instance には、新しいマネージド インスタンス�
 
 次の表に、各管理操作、キャンセル可能かどうか、および一般的な所要時間をまとめてあります。
 
-カテゴリ  |Operation  |キャンセル可能  |推定キャンセル時間  |
+カテゴリ  |操作  |キャンセル可能  |推定キャンセル時間  |
 |---------|---------|---------|---------|
 |デプロイ |インスタンスの作成 |はい |操作の 90% は 5 分以内に完了。 |
 |更新 |インスタンスのストレージのスケールアップとスケールダウン (General Purpose) |いいえ |  |

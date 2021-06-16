@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2021
 ms.author: rolyon
-ms.openlocfilehash: 7d7b8732cedc05759fe4aa343a58eb89a3cec3c9
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 57a4c866681f9970982a34545081549a407377db
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109844676"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592036"
 ---
 # <a name="add-or-edit-azure-role-assignment-conditions-using-the-azure-portal-preview"></a>Azure portal で Azure ロール割り当ての条件を追加または編集する (プレビュー)
 

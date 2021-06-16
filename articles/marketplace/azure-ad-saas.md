@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4638139b6cc57e18b11382341b291a13b6c558c0
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93124919"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540075"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー
 
@@ -68,7 +68,7 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 | プロセスの手順 | 発行元のアクション | 発行元での推奨または必須 |
 | ------------ | ------------- | ------------- |
 | 5.発行元は、SaaS フルフィルメント API を使用して、SaaS アプリケーションに対するサブスクリプションを管理します。 | [SaaS フルフィルメント API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) を通じて、サブスクリプションの変更やその他の管理タスクを処理します。<br><br>プロセスの手順 3 に説明されているように、この手順ではアクセス トークンが必要になります。 | 必須 |
-| 6.従量制課金を利用している場合、発行元は使用状況のイベントを測定サービス API に出力します。 | SaaS アプリによって使用状況に基づく課金が行われる場合は、[Marketplace の測定サービス API ](./partner-center-portal/marketplace-metering-service-apis.md)を通じて使用状況の通知を行います。<br><br>手順 3 に説明されているように、この手順ではアクセス トークンが必要になります。 | 測定では必須 |
+| 6.従量制課金を利用している場合、発行元は使用状況のイベントを測定サービス API に出力します。 | SaaS アプリによって使用状況に基づく課金が行われる場合は、[Marketplace の測定サービス API ](marketplace-metering-service-apis.md)を通じて使用状況の通知を行います。<br><br>手順 3 に説明されているように、この手順ではアクセス トークンが必要になります。 | 測定では必須 |
 ||||
 
 ## <a name="process-steps-for-user-management"></a>ユーザー管理のプロセスの手順

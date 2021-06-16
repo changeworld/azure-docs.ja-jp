@@ -6,19 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 3614dffeca90e3986f7900d513682ad8b91fd066
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: f6d0e9b303f12beb7cac22bf94d7ae34b36b77b3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987130"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958763"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 
 この記事では、Azure Database for MySQL Single Server との、ドライバーと管理ツールの互換性について説明します。
 
 >[!NOTE]
->この記事は、ドライバーが Single Server サービスの[接続アーキテクチャ](concepts-connectivity-architecture.md)と互換性があることを確認する方法を説明しており、Azure Database for MySQL Single Server にのみ適用されます。 [Azure Database for MySQL フレキシブル サーバー](/azure/mysql/flexible-server/overview)は、MySQL Community Edition と互換性がある、サポート対象のすべてのドライバーとツールと互換性があります。 
+>この記事は、ドライバーが Single Server サービスの[接続アーキテクチャ](concepts-connectivity-architecture.md)と互換性があることを確認する方法を説明しており、Azure Database for MySQL Single Server にのみ適用されます。 [Azure Database for MySQL フレキシブル サーバー](./flexible-server/overview.md)は、MySQL Community Edition と互換性がある、サポート対象のすべてのドライバーとツールと互換性があります。 
 
 ## <a name="mysql-drivers"></a>MySQL ドライバー
 Azure Database for MySQL では、MySQL データベースの世界で最も人気のある Community Edition を使用しています。 そのため、さまざまな種類のプログラミング言語とドライバーと互換性があります。 目標は、MySQL ドライバーの 3 つの最新バージョンと、常に MySQL ドライバーの機能と使いやすさを向上させ続けているオープン ソース コミュニティの作成者の努力をサポートすることです。 テストによって Azure Database for MySQL 5.6 および 5.7 と互換性のあることがわかっているドライバーの一覧を次の表に示します。

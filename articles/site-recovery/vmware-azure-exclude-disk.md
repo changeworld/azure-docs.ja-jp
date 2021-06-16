@@ -1,17 +1,18 @@
 ---
 title: Azure Site Recovery を使用した Azure へのディザスター リカバリーから VMware VM ディスクを除外する
 description: Azure Site Recovery を使用した Azure へのレプリケーションから VMware VM ディスクを除外する方法。
-author: mayurigupta13
-manager: rochakm
-ms.date: 12/10/2019
-ms.author: mayg
+author: Sharmistha-Rai
+manager: gaggupta
+ms.service: site-recovery
 ms.topic: conceptual
-ms.openlocfilehash: c4842172ff181b5cdbe7f6fecf69da8755ae43fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 6aa4776ed1666857ba2873351c24dc561edb5890
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86129883"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576966"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Azure への VMware VM レプリケーションからディスクを除外する
 

@@ -6,15 +6,13 @@ ms.author: edoyle
 ms.date: 05/10/2021
 ms.topic: quickstart
 ms.service: service-fabric
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 096894bc35f954b913020c4d3820cf096065c7df
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: c6ef30d722d4835d0a287bfe2dfafff0aff7a701
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753275"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671170"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Service Fabric クラスターを作成する
 

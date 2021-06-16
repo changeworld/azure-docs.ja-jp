@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9d9ba7e3e898da8d5b7d1bb4fbc69554ee205147
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 56a2eff6a39f879de4e9d968eb470243014cb430
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028335"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982036"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -149,7 +149,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
     ```
 
 1. **ClaimsProvider** 要素の下で、**Domain** の値を、他の ID プロバイダーと区別するために使用できる一意の値に更新します。
-1. **TechnicalProfile** 要素の下で、**DisplayName** の値を更新します (例: `Contoso Employee`)。 この値は、サインイン ページのサインイン ボタン上に表示されます。
+1. **TechnicalProfile** 要素の下で、**DisplayName** の値を更新します (例: `Multi-Tenant AAD`)。 この値は、サインイン ページのサインイン ボタン上に表示されます。
 1. **client_id** は、前に登録した Azure AD マルチテナント アプリケーションのアプリケーション ID に設定します。
 1. **CryptographicKeys** で、**StorageReferenceId** の値を、前に作成したポリシー キーの名前に更新します。 たとえば、「 `B2C_1A_AADAppSecret` 」のように入力します。
 

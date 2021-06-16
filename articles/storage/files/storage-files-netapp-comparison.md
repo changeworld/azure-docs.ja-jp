@@ -6,14 +6,14 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 3/19/2021
+ms.date: 5/25/2021
 ms.author: jeffpatt
-ms.openlocfilehash: afdcfe553d7dc2e236b0bda28212bd09360a0fba
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: f6143c6aa35cf8cefddef0dab33b6b96a8edbce4
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330856"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110493566"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Azure Files と Azure NetApp Files の比較
 
@@ -31,7 +31,7 @@ ms.locfileid: "108330856"
 | 冗長性 | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> 詳細については、「[冗長性](./storage-files-planning.md#redundancy)」を参照してください。 | すべてのレベル<br><ul><li>組み込みのローカル HA</li><li>[リージョン間レプリケーション](../../azure-netapp-files/cross-region-replication-introduction.md)</li></ul> |
 | サービス レベル アグリーメント (SLA)<br><br> Azure Files と Azure NetApp Files の SLA は異なる方法で計算されることに注意してください。 | [Azure Files の SLA](https://azure.microsoft.com/support/legal/sla/storage/) | [Azure NetApp Files の SLA](https://azure.microsoft.com/support/legal/sla/netapp) |  
 | ID ベースの認証と認可 | SMB<br><ul><li>Active Directory Domain Services (AD DS)</li><li>Azure Active Directory Domain Services (Azure AD DS)</li></ul><br> ID ベースの認証は、SMB プロトコルを使用している場合にのみサポートされることに注意してください。 詳細については、「[よくあるご質問](./storage-files-faq.md#security-authentication-and-access-control)」をご覧ください。 | SMB<br><ul><li>Active Directory Domain Services (AD DS)</li><li>Azure Active Directory Domain Services (Azure AD DS)</li></ul><br> NFS/SMB デュアル プロトコル<ul><li>ADDS/LDAP 統合</li></ul><br>NFSv3/NFSv4.1<ul><li>ADDS/LDAP 統合 (近日公開予定)</li><li>NFS 拡張グループ (近日公開予定)</li></ul><br> 詳細については、「[よくあるご質問](../../azure-netapp-files/azure-netapp-files-faqs.md)」をご覧ください。 |
-| 暗号化 | SMB<br><ul><li>カスタマーまたは Microsoft マネージド キーを使用した保存時の暗号化 (AES 256)</li><li>AES 256 または RC4-HMAC を使用した Kerberos 暗号化</li><li>転送中の暗号化</li></ul><br>NFS<br><ul><li>カスタマーまたは Microsoft マネージド キーを使用した保存時の暗号化 (AES 256)</li></ul><br>REST<br><ul><li>カスタマーまたは Microsoft マネージド キーを使用した保存時の暗号化 (AES 256)</li><li>転送中の暗号化</li></ul><br> 詳細については、「[セキュリティ](./storage-files-compare-protocols.md#security)」を参照してください。 | すべてのプロトコル<br><ul><li>Microsoft マネージド キーを使用した保存時の暗号化 (AES 256) </li></ul><br>NFS 4.1<ul><li>AES 256 による Kerberos を使用した転送中の暗号化</li></ul><br> 詳細については、「[セキュリティに関する FAQ](../../azure-netapp-files/azure-netapp-files-faqs.md#security-faqs)」を参照してください。 |
+| 暗号化 | すべてのプロトコル<br><ul><li>カスタマーまたは Microsoft マネージド キーを使用した保存時の暗号化 (AES 256)</li></ul><br>SMB<br><ul><li>AES 256 または RC4-HMAC を使用した Kerberos 暗号化</li><li>転送中の暗号化</li></ul><br>REST<br><ul><li>転送中の暗号化</li></ul><br> 詳細については、「[セキュリティ](./storage-files-compare-protocols.md#security)」を参照してください。 | すべてのプロトコル<br><ul><li>Microsoft マネージド キーを使用した保存時の暗号化 (AES 256) </li></ul><br>NFS 4.1<ul><li>AES 256 による Kerberos を使用した転送中の暗号化</li></ul><br> 詳細については、「[セキュリティに関する FAQ](../../azure-netapp-files/azure-netapp-files-faqs.md#security-faqs)」を参照してください。 |
 | アクセス オプション | <ul><li>インターネット</li><li>セキュリティで保護された VNet アクセス</li><li>VPN Gateway</li><li>ExpressRoute</li><li>Azure File Sync</li></ul><br> 詳細については、[ネットワークの考慮事項](./storage-files-networking-overview.md)に関する記事を参照してください。 | <ul><li>セキュリティで保護された VNet アクセス</li><li>VPN Gateway</li><li>ExpressRoute</li><li>[グローバル ファイル キャッシュ](https://cloud.netapp.com/global-file-cache/azure)</li><li>[HPC Cache](../../hpc-cache/hpc-cache-overview.md)</li></ul><br> 詳細については、[ネットワークの考慮事項](../../azure-netapp-files/azure-netapp-files-network-topologies.md)に関する記事を参照してください。 |
 | データ保護  | <ul><li>増分スナップショット</li><li>ファイルまたはディレクトリ ユーザーの自己復元</li><li>新しい場所に復元</li><li>インプレース復元</li><li>共有レベルの論理的な削除</li><li>Azure Backup 統合</li></ul><br> 詳細については、「[Azure Files でのデータ保護機能の拡張](https://azure.microsoft.com/blog/azure-files-enhances-data-protection-capabilities/)」を参照してください。 | <ul><li>スナップショット (255/ボリューム)</li><li>ファイルまたはディレクトリ ユーザーの自己復元</li><li>新しいボリュームに復元</li><li>インプレース復元</li><li>[リージョン間のレプリケーション](../../azure-netapp-files/cross-region-replication-introduction.md) (パブリックプレビュー)</li></ul><br> 詳細については、「[Azure NetApp Files スナップショットのしくみ](../../azure-netapp-files/snapshots-introduction.md)」を参照してください。 |
 | 移行ツール  | <ul><li>Azure Data Box</li><li>Azure File Sync</li><li>記憶域移行サービス</li><li>AzCopy</li><li>Robocopy</li></ul><br> 詳細については、「[Azure ファイル共有への移行](./storage-files-migration-overview.md)」を参照してください。 | <ul><li>[グローバル ファイル キャッシュ](https://cloud.netapp.com/global-file-cache/azure)</li><li>[CloudSync](https://cloud.netapp.com/cloud-sync-service)、[XCP](https://xcp.netapp.com/)</li><li>記憶域移行サービス</li><li>AzCopy</li><li>Robocopy</li><li>アプリケーション ベース (HSR、Data Guard、AOAG など)</li></ul> |

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 2bc2b12127af175d051f433f15ad4a9ffdee0467
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: ad79bbd166e12c24339e13f38b4e10ca9ea2b549
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627782"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966621"
 ---
 # <a name="build-a-react-app-to-add-users-to-a-face-service"></a>ユーザーを Face サービスに追加するための React アプリを作成する
 
@@ -88,7 +88,7 @@ ms.locfileid: "109627782"
 
 #### <a name="android"></a>[Android](#tab/android)
 
-最初に、アプリが運用環境に展開できる状態であることを確認します。アプリのコードからキーまたはシークレットを削除し、[セキュリティのベスト プラクティス](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)に従っていることを確認します。
+最初に、アプリが運用環境に展開できる状態であることを確認します。アプリのコードからキーまたはシークレットを削除し、[セキュリティのベスト プラクティス](../cognitive-services-security.md?tabs=command-line%2ccsharp)に従っていることを確認します。
 
 アプリを運用環境にリリースする準備ができたら、リリース対応の APK ファイルを生成します。これは、Android アプリのパッケージ ファイル形式です。 この APK ファイルに、秘密キーで署名する必要があります。 このリリース ビルドを使用して、デバイスへのアプリの直接的な配布を始めることができます。 
 
@@ -98,7 +98,7 @@ ms.locfileid: "109627782"
 
 #### <a name="ios"></a>[iOS](#tab/ios)
 
-最初に、アプリが運用環境に展開できる状態であることを確認します。アプリのコードからキーまたはシークレットを削除し、[セキュリティのベスト プラクティス](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)に従っていることを確認します。 配布を準備するには、アプリ アイコンと起動画面を作成し、さらにデプロイ情報設定を構成する必要があります。 [Xcode からのドキュメント](https://developer.apple.com/documentation/Xcode/preparing_your_app_for_distribution)に従って、アプリを配布するための準備を行います。 
+最初に、アプリが運用環境に展開できる状態であることを確認します。アプリのコードからキーまたはシークレットを削除し、[セキュリティのベスト プラクティス](../cognitive-services-security.md?tabs=command-line%2ccsharp)に従っていることを確認します。 配布を準備するには、アプリ アイコンと起動画面を作成し、さらにデプロイ情報設定を構成する必要があります。 [Xcode からのドキュメント](https://developer.apple.com/documentation/Xcode/preparing_your_app_for_distribution)に従って、アプリを配布するための準備を行います。 
 
 アプリを運用環境にリリースする準備ができたら、そのアプリのアーカイブを作成します。 アーカイブ ビルドを作成する方法と、アプリを配布するためのオプションについては、[Xcode からのドキュメント](https://developer.apple.com/documentation/Xcode/distributing_your_app_for_beta_testing_and_releases)を参照してください。  
 

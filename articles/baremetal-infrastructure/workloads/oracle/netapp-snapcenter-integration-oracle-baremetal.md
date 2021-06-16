@@ -2,14 +2,14 @@
 title: BareMetal インフラストラクチャでの Oracle の SnapCenter 統合
 description: Oracle と NetApp のスナップショット テクノロジを使用して、BareMetal インフラストラクチャ上に Oracle データベースの運用復旧バックアップを作成する方法について説明します。
 ms.topic: how-to
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 05/05/2021
-ms.openlocfilehash: 4182a5fe97e356152b6d589fc6788b922e5c8493
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: d9cf6933287167da82b1a5ad4ab8848d5c34d404
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109520674"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579891"
 ---
 # <a name="snapcenter-integration-for-oracle-on-baremetal-infrastructure"></a>BareMetal インフラストラクチャ上の Oracle の SnapCenter 統合
 

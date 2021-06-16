@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: f433d09079769cca99fd78183b9acbcd23c2adf0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: 5302cfb1f1078a4d0e969b35498852ebcb632a12
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163573"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676920"
 ---
 # <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>既存の専用 SQL プール (旧称 SQL DW) を復元する
 

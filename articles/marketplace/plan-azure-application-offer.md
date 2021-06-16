@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: c6dbab1b7fa1599add9fb48814a1138bf176c81d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8120bcb030f5a1ff6948757d8f65e3a21d31898f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127463"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955403"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する
 
@@ -33,7 +33,7 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する場合は、次のリソースを確認してください。
 
-- [Azure Resource Manager テンプレートについての理解](../azure-resource-manager/templates/template-syntax.md)
+- [Azure Resource Manager テンプレートについての理解](../azure-resource-manager/templates/syntax.md)
 - クイック スタート:
     - [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)
     - [Azure テンプレートのベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
@@ -195,9 +195,9 @@ Azure サブスクリプション ID GUID を使用してプレビュー対象�
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-[Marketplace の測定サービス API](partner-center-portal/marketplace-metering-service-apis.md) を使用して測定イベントを生成するマネージド アプリケーションの場合は、使用状況測定イベントを生成するときにサービスで使用される ID を指定する必要があります。
+[Marketplace の測定サービス API](marketplace-metering-service-apis.md) を使用して測定イベントを生成するマネージド アプリケーションの場合は、使用状況測定イベントを生成するときにサービスで使用される ID を指定する必要があります。
 
-[Batch 使用状況イベント](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)を使用する場合は、この構成が必要です。 [使用イベント](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)を送信する場合は、[インスタンス メタデータ サービス](../active-directory/managed-identities-azure-resources/overview.md)を使用して、[JSON Web トークン (JWT) ベアラー トークン](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)を取得することもできます。
+[Batch 使用状況イベント](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)を使用する場合は、この構成が必要です。 [使用イベント](marketplace-metering-service-apis.md#metered-billing-single-usage-event)を送信する場合は、[インスタンス メタデータ サービス](../active-directory/managed-identities-azure-resources/overview.md)を使用して、[JSON Web トークン (JWT) ベアラー トークン](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)を取得することもできます。
 
 - **Azure Active Directory テナント ID** (必須): Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、[Azure Active Directory (AD) アプリを作成する](../active-directory/develop/howto-create-service-principal-portal.md)必要があります。 Azure Active Directory (Azure AD) アプリの[テナント ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列で、アプリを選択します。 次に、 **[プロパティ]** を探してから、**ディレクトリ (テナント) ID** (たとえば `50c464d3-4930-494c-963c-1e951d15360e`) を見つけます。
 - **Azure Active Directory アプリケーション ID** (必須): また、自分の [アプリケーション ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) と認証キーも必要です。 アプリケーション ID を見つけるには、Azure Active Directory の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ブレードに移動します。 **[表示名]** 列でアプリを選択し、次に **アプリケーション (クライアント) ID** (たとえば `50c464d3-4930-494c-963c-1e951d15360e`) を探します。 認証キーを見つけるには、 **[設定]** に移動して **[キー]** を選択します。 説明と期間を入力する必要があります。その後、数値が提供されます。

@@ -6,12 +6,13 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lle
-ms.openlocfilehash: 57b31c77943b41d76b265a8cea76c9882cf1fbf3
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 64d7133432eacbdf9077a6089e927caa679d1c7f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486721"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670361"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する
 

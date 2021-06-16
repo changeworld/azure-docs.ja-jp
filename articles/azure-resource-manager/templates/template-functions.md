@@ -3,18 +3,18 @@ title: テンプレート関数
 description: 値の取得、文字列および数値の処理、デプロイ情報の取得のために、Azure Resource Manager テンプレート (ARM テンプレート) で使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a9ea21a57404f7de832fb307bdabeb47f8cf3f58
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 012e570a769e8ea969d0c527a71053f55ecdf5a9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220183"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959411"
 ---
 # <a name="arm-template-functions"></a>ARM テンプレート関数
 
 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](template-expressions.md)に関するセクションを参照してください。
 
-独自の関数を作成するには、[ユーザー定義関数](template-syntax.md#functions)に関するページをご覧ください。
+独自の関数を作成するには、[ユーザー定義関数](./syntax.md#functions)に関するページをご覧ください。
 
 ほとんどの関数は、リソース グループ、サブスクリプション、管理グループ、またはテナントにデプロイされた場合に、同じように動作します。 いくつかの関数は、すべてのスコープでは使用できません。 これらは以下の一覧に記載されています。
 
@@ -36,7 +36,7 @@ ms.locfileid: "106220183"
 
 ## <a name="any-function"></a>すべての関数
 
-Bicep では、データ型の警告に関する問題の解決に役立つ[任意の関数](template-functions-any.md)を使用できます。
+Bicep では、データ型の警告に関する問題の解決に役立つ[任意の関数](../bicep/bicep-functions-any.md)を使用できます。
 
 ## <a name="array-functions"></a>配列関数
 
@@ -253,7 +253,7 @@ Resource Manager には、オブジェクトを操作する関数が複数用意
 
 ## <a name="next-steps"></a>次のステップ
 
-* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* ARM テンプレートのセクションの説明については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。
 * 複数のテンプレートをマージする方法については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。
 * ある種類のリソースを作成するときに、指定した回数だけ反復する方法については、「[ARM テンプレートでのリソースの反復処理](copy-resources.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

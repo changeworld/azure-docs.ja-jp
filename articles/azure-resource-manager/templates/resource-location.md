@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b2eba8e48a9b5ccc1ddb731690e99dcbbaa8f6fb
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 686975b73ee2ad0e487fad278f872e7d31753041
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321629"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960041"
 ---
 # <a name="set-resource-location-in-arm-template"></a>ARM テンプレートでリソースの場所を設定する
 
@@ -97,4 +97,4 @@ az provider show \
 ## <a name="next-steps"></a>次のステップ
 
 * テンプレート関数の完全な一覧については、「[ARM テンプレート関数](template-functions.md)」を参照してください。
-* テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。

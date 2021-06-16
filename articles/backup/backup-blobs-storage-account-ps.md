@@ -3,16 +3,16 @@ title: Azure PowerShell を使用してストレージ アカウント内の Azu
 description: Azure PowerShell を使用して、ストレージ アカウント内のすべての Azure BLOB をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: ed657d40a5967431c9bf2017d47d0d3c13cd9908
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 55d33283360adae4894032bec648cfc973391f38
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803136"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968691"
 ---
 # <a name="back-up-all-azure-blobs-in-a-storage-account-using-azure-powershell"></a>Azure PowerShell を使用してストレージ アカウント内のすべての Azure BLOB をバックアップする
 
-この記事では、Azure PowerShell を使用して、ストレージ アカウント内のすべての [Azure BLOB](/azure/backup/blob-backup-overview) をバックアップする方法について説明します。
+この記事では、Azure PowerShell を使用して、ストレージ アカウント内のすべての [Azure BLOB](./blob-backup-overview.md) をバックアップする方法について説明します。
 
 この記事では、次の方法について学習します。
 

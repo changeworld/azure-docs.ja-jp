@@ -2,21 +2,21 @@
 title: PowerShell のサンプル - Azure Active Directory テナントで、間もなく期限が切れるシークレットと証明書を含むアプリをエクスポートします。
 description: Azure Active Directory テナントで指定したアプリについて、間もなく期限が切れるシークレットと証明書を含むすべてのアプリをエクスポートする PowerShell の例。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: mifarca
-ms.openlocfilehash: 7f129e06904497b43eff8a3f0221fb57565ac112
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 38b7b424e23c196f89004b443b8945d6f7bfe44b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375408"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076782"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>間もなく期限が切れるシークレットと証明書を含むアプリをエクスポートする
 

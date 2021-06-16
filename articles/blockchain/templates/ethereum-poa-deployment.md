@@ -4,13 +4,13 @@ description: Etherereum Proof-of-Authority Consortium ソリューションを�
 ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 0ced84afc47c188dc8f5d911794a90cdbeeebd81
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: contperf-fy21q3, devx-track-azurepowershell
+ms.openlocfilehash: 58615f1d57c5b97da555e894bcc33dcf98dee204
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164923"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705240"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
 

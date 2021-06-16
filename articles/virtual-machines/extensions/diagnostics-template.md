@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 05/31/2017
-ms.openlocfilehash: 7759257f51cb00cd106af7e72e14c6660450cae9
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 50693e25b01d175c24931c5e2b298a00339fff33
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754355"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962501"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する
 Azure Diagnostics の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure Resource Manager テンプレートの一部として拡張機能を組み込むことにより、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](../windows/template-description.md#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure Diagnostics の拡張機能を追加する方法について説明します。
@@ -172,4 +172,4 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、Resour
 ## <a name="next-steps"></a>次の手順
 * 診断の拡張機能を備えた Windows 仮想マシンの完全なサンプル テンプレートについては、[vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-monitoring-diagnostics-extension) に関するページを参照してください
 * [Azure PowerShell](../windows/ps-template.md) または [Azure コマンド ライン](../linux/create-ssh-secured-vm-from-template.md)を使用した Azure Resource Manager テンプレートのデプロイ
-* [Azure リソース マネージャーのテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)
+* [Azure リソース マネージャーのテンプレートの作成](../../azure-resource-manager/templates/syntax.md)

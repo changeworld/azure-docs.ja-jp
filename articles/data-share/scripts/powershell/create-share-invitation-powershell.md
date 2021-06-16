@@ -6,12 +6,13 @@ ms.service: data-share
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 5f65d081e724206c1c64ad08189d1b620bbb4f2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f6d9a4885e5281db9339a1529fd35381430d788c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221334"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704071"
 ---
 # <a name="use-a-powershell-script-to-monitor-the-usage-of-a-sent-data-share"></a>送信されたデータ共有の使用状況を監視するために PowerShell スクリプトを使用する
 
@@ -37,7 +38,7 @@ New-AzDataShareInvitation -ResourceGroupName $resourceGroupName -AccountName $da
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [New-AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation) | データ共有の招待を作成します。 |
 |||

@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49dc71dac6d246907de3498ed0a39541a3caf522
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183160"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888430"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した API Management 用の CI/CD
 
@@ -41,7 +41,7 @@ ms.locfileid: "96183160"
 * API 開発者は、開発インスタンスにアクセスし、それを使用して自分の API の開発とテストを行うことができます。 
 * "*API 発行者*" と呼ばれる指定のチームが運用インスタンスを管理します。
 
-この提案されたアプローチの鍵となるのは、API Management のすべての構成を [Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)に保存しておくことです。 組織は、これらのテンプレートを Git などのソース管理システムで保持する必要があります。 図に示すように、発行者リポジトリに、テンプレート コレクション内の運用 API Management インスタンスのすべての構成が含まれています。
+この提案されたアプローチの鍵となるのは、API Management のすべての構成を [Azure Resource Manager テンプレート](../azure-resource-manager/templates/syntax.md)に保存しておくことです。 組織は、これらのテンプレートを Git などのソース管理システムで保持する必要があります。 図に示すように、発行者リポジトリに、テンプレート コレクション内の運用 API Management インスタンスのすべての構成が含まれています。
 
 |テンプレート  |説明  |
 |---------|---------|

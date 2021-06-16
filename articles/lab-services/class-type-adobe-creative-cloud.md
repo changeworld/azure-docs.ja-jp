@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 04/21/2021
 ms.author: nicolela
-ms.openlocfilehash: ef4245a3c17f95cf7e04b866939d4e92e39411c8
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 210fa647f12a786e357902bef3bbb3b20cca8077
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108281063"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962651"
 ---
 # <a name="set-up-a-lab-for-adobe-creative-cloud"></a>Adobe Creative Cloud のラボを設定する
 [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) は、写真、デザイン、ビデオ、Web、ユーザー エクスペリエンス (UX) などに使用されるデスクトップ アプリケーションと Web サービスのコレクションです。  大学と K-12 教育機関は、デジタル アートおよびメディア クラスで Creative Cloud を使用しています。  一部の Creative Cloud のメディア プロセスでは、一般的なタブレット、ラップトップ、またはワークステーションのサポートよりも多くのコンピューティングと視覚化 (GPU) の性能を必要とする場合があります。  Azure Lab Services によって、GPU サイズを含むさまざまな仮想マシン (VM) サイズから柔軟に選択できます。
@@ -29,11 +29,11 @@ ms.locfileid: "108281063"
 
 | ラボ アカウントの設定 | Instructions |
 | ------------------- | ------------ |
-|Marketplace イメージ| ラボ アカウント内で使用するための Windows 10 イメージを有効にします。|
+|Marketplace イメージ| ラボ アカウント内で使用する Windows 10 イメージを有効にします。|
 
 ### <a name="lab-settings"></a>ラボの設定
 
-ラボで使用する必要がある VM のサイズは、学生が作成するプロジェクトの種類によって異なります。  ほとんどの [Creative Cloud アプリ](https://helpx.adobe.com/creative-cloud/system-requirements.html) では GPU ベースのアクセラレーションがサポートされており、機能を正常に動作させるために GPU が必要です。  適切な VM サイズを選択できるように、学生が作成するプロジェクトをテストし、適切なパフォーマンスを確認することが推奨されます。  次の表は、Creative Cloud で使用するために推奨される [VM サイズ](https://docs.microsoft.com/azure/lab-services/administrator-guide#vm-sizing) を示しています。  
+ラボで使用する必要がある VM のサイズは、学生が作成するプロジェクトの種類によって異なります。  ほとんどの [Creative Cloud アプリ](https://helpx.adobe.com/creative-cloud/system-requirements.html) では GPU ベースのアクセラレーションがサポートされており、機能を正常に動作させるために GPU が必要です。  適切な VM サイズを選択できるように、学生が作成するプロジェクトをテストし、適切なパフォーマンスを確認することが推奨されます。  次の表は、Creative Cloud で使用するために推奨される [VM サイズ](./administrator-guide.md#vm-sizing) を示しています。  
 
 | ラボの設定 | 値/説明 |
 | ------------ | ------------------ |

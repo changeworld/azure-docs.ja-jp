@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f7afc671dbb3d4ef8aa30222c4f235c9f7869d02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d992d34b552c94d75bf714048c5e9bebd96364c0
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556844"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673195"
 ---
 # <a name="create-an-image-from-a-vm"></a>VM からイメージを作成する
 

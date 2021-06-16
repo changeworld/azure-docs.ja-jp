@@ -5,18 +5,18 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 560f26b712818327294791feb787b5fe7c9d7b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f31371c3d33354c4d8e6c849c9739eb9001c7641
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036471"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961767"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでログ アラートを作成する
 
 ログ アラートにより、ユーザーは [Log Analytics](../logs/log-analytics-tutorial.md) クエリを使用して、設定された頻度でリソース ログを評価し、その結果に基づいてアラートを発行することができます。 [アクション グループ](./action-groups.md)を使用することで、ルールによって 1 つ以上のアクションの実行をトリガーできます。 [ログ アラートの機能と用語の詳細について参照してください](./alerts-unified-log.md)。
 
-この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[ログ アラート](./alerts-unified-log.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ ログ アラートは `Microsoft.Insights/scheduledQueryRules` リソース プロバイダーで作成されます。 API リファレンスについては、[Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) のページを参照してください。
+この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md) を使用して Azure Monitor に[ログ アラート](./alerts-unified-log.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ ログ アラートは `Microsoft.Insights/scheduledQueryRules` リソース プロバイダーで作成されます。 API リファレンスについては、[Scheduled Query Rules API](/rest/api/monitor/scheduledqueryrules/) のページを参照してください。
 
 基本的な手順は次のとおりです。
 

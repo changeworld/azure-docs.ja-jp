@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: branim
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 712e6422060619e5567a74d6335320eff9ed8e66
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: b20ab4720f9f172ef9248d3314b25922896eb8bd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741435"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796932"
 ---
 # <a name="introduction-to-dynamic-node-tags"></a>動的ノード タグの概要
 ノード タグを使用すると、サービスの配置を変更するために、ノードのタグを動的に追加したり削除したりすることができます。 ノードのタグ付けには非常に柔軟性があり、アプリケーションまたはクラスターをアップグレードすることなく、サービスの配置を変更できます。 タグはいつでもノードに対して追加または削除できます。サービスは、特定のタグの作成時にその要件を指定できます。 また、サービスは、タグの要件をその実行中に動的に更新することもできます。
@@ -54,7 +54,7 @@ ms.locfileid: "107741435"
     "name": "PlacementAndLoadBalancing",
     "parameters": [
       {
-          "name": " NodeTaggingEnabled ",
+          "name": "NodeTaggingEnabled",
           "value": "true"
       }
     ]

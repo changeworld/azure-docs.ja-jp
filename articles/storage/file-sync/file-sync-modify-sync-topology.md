@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 4/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4977b56265f542f8f8ff13693abb468bc695a384
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 12bab4b8099b074f79d0e5307780ec34178f13b8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992745"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968478"
 ---
 # <a name="modify-your-azure-file-sync-topology"></a>Azure File Sync トポロジを修正する
 
@@ -44,7 +44,7 @@ Azure File Sync リソースは、サーバー エンドポイント、同期グ
 
 現時点では、これはサポートされていません。 
 
-現在 D ドライブを使用していて、クラウドへの移行を計画している場合は、「[VM の D: ドライブをデータディスクにする - Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/change-drive-letter)」を参照してください。
+現在 D ドライブを使用していて、クラウドへの移行を計画している場合は、「[VM の D: ドライブをデータディスクにする - Azure Virtual Machines](../../virtual-machines/windows/change-drive-letter.md)」を参照してください。
 
 ## <a name="deprovision-all-server-endpoints-associated-with-a-registered-server"></a>登録済みサーバーに関連付けられているすべてのサーバー エンドポイントをプロビジョニング解除する
 
@@ -54,6 +54,3 @@ Azure File Sync リソースは、サーバー エンドポイント、同期グ
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure File Sync サーバー エンドポイントのプロビジョニングを解除する](./file-sync-deprovision-server-endpoint.md)
-
-
-

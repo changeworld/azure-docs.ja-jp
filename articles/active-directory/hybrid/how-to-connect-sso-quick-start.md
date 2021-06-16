@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba3bdc3f58395f17911042c699a0aca3cbae92a2
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 06c42fef2abddc5f04a2d74f30df5fcf54e1b1b3
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290634"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854416"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -202,7 +202,7 @@ macOS および他の Windows 以外のプラットフォームの Chromium に�
 
 #### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS と Windows 以外のその他のプラットフォーム)
 
-macOS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証用の Azure AD の URL の許可一覧を制御する方法については、[Chromium プロジェクト ポリシー リスト](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)に関する記事をご覧ください。
+macOS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証用の Azure AD の URL の許可一覧を制御する方法については、[Chromium プロジェクト ポリシー リスト](https://chromeenterprise.google/policies/)に関する記事をご覧ください。
 
 サード パーティの Active Directory グループ ポリシーの拡張機能を使用して、Mac 上で Firefox および Google Chrome を使用するユーザーに Azure AD の URL を ロールアウトする場合については、この記事では扱われません。
 
