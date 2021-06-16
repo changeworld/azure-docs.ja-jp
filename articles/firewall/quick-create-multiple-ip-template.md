@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: a894f8760ed3012b8bd46cc73eef1935850512e6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 94f884c04aa8d01704f9e84afd3d9bcfe9b35c62
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094782"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692113"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>クイック スタート:複数のパブリック IP アドレスを使用した Azure Firewall の作成 - ARM テンプレート
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
-ms.openlocfilehash: cb0274260022c55ae657b5b28b2c9ad1903d0296
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 089eeb1f4b412f3d696b74885e1a7358f37e4860
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043271"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965577"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -101,7 +101,7 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 | 保存        | 変更を保存し、ビューを閉じます。 |
 | Cancel      | 変更を破棄し、ビューを閉じます。 |
 | ビューの削除 | ビューを削除します。 |
-| エクスポート      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
+| エクスポート      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
 | [インポート]      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
 | 複製       | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 

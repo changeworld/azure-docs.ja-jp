@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: stegag
-ms.openlocfilehash: 8b240b31d7b3fc90ad9dc62eaf49aed6af6dd93d
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: cc4165a2636169c34b14795a8c2298a0f9917916
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229074"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652137"
 ---
 # <a name="troubleshoot-azure-vpn-gateway-using-diagnostic-logs"></a>診断ログを使用した Azure VPN Gateway のトラブルシューティング
 
@@ -100,7 +100,7 @@ AzureDiagnostics
 
 
 トラブルシューティングに関するヒント:
-- 1 つのゲートウェイ インスタンスで切断イベントが発生した後、数秒後に **異なる** ゲートウェイ インスタンスで接続イベントが発生する場合、ゲートウェイのフェールオーバーを調べます。 これは通常、ゲートウェイ インスタンスのメンテナンスのために予期される動作です。 この動作の詳細については、「[AZURE VPN gateway の冗長性について](./vpn-gateway-highlyavailable.md#about-azure-vpn-gateway-redundancy)」を参照してください。
+- 1 つのゲートウェイ インスタンスで切断イベントが発生した後、数秒後に **異なる** ゲートウェイ インスタンスで接続イベントが発生する場合、ゲートウェイのフェールオーバーを調べます。 これは通常、ゲートウェイ インスタンスのメンテナンスのために予期される動作です。 この動作の詳細については、「[AZURE VPN gateway の冗長性について](./vpn-gateway-highlyavailable.md#activestandby)」を参照してください。
 - Azure 側でゲートウェイのリセットを意図的に実行すると (アクティブなゲートウェイ インスタンスが再起動されます)、これと同じ動作が見られます。 この動作の詳細については、[VPN Gateway のリセット](./reset-gateway.md)に関するページを参照してください。
 - 1 つのゲートウェイ インスタンスで切断イベントが発生した後、数秒後に **同じ** ゲートウェイ インスタンスで接続イベントが発生する場合、DPD タイムアウトを引き起こしているネットワーク障害、またはオンプレミス デバイスによる誤送信によって引きこされた切断がないか調べます。
 

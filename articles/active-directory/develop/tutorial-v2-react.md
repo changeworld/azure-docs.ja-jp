@@ -3,21 +3,21 @@ title: 'チュートリアル: 認証コード フローを使用する React �
 titleSuffix: Microsoft identity platform
 description: このチュートリアルでは、ユーザーのサインインを処理すると共に、認証コード フローを使用して Microsoft ID プラットフォームからアクセス トークンを取得し、Microsoft Graph API を呼び出すことができる React SPA を作成します。
 services: active-directory
-author: tnorling
+author: j-mantu
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 04/16/2021
-ms.author: thnorlin
+ms.author: jamesmantu
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 82a484964992809dc7e27744035ec19ed3a9e3db
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 1b8e822c72bdf2af8b20950944fb93686524b797
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657402"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072345"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-react-single-page-app-spa-using-auth-code-flow"></a>チュートリアル: 認証コード フローを使用して、ユーザーをサインインさせて React シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 

@@ -11,19 +11,19 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8c0628d9e2d0d89fcb84569d227f592b5ad0943
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a1a41c2360438158adcee9a4198a5f956012a443
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285576"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952049"
 ---
 # <a name="securing-cloud-resources-with-azure-ad-multi-factor-authentication-and-ad-fs"></a>Azure AD Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
 組織が Azure Active Directory とフェデレーションされている場合は、Azure AD Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使用して、Azure AD によってアクセスされるリソースをセキュリティで保護します。 Azure AD Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使用して Azure Active Directory リソースをセキュリティで保護するには、次の手順に従います。
 
 >[!NOTE]
->Azure AD リソースをセキュリティ保護するには、[条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-all-users-mfa)を使用して MFA を要求し、ドメイン設定 SupportsMfa を $True に設定して、ユーザーが 2 段階認証を正常に実行したときに [multipleauthn 要求を出力する](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-adfs#secure-azure-ad-resources-using-ad-fs)ことをお勧めします。
+>Azure AD リソースをセキュリティ保護するには、[条件付きアクセス ポリシー](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)を使用して MFA を要求し、ドメイン設定 SupportsMfa を $True に設定して、ユーザーが 2 段階認証を正常に実行したときに [multipleauthn 要求を出力する](#secure-azure-ad-resources-using-ad-fs)ことをお勧めします。
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>AD FS を使って Azure AD リソースのセキュリティを確保する
 

@@ -7,12 +7,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 28262d66794d573d40e4e202d8b047e1d1fbefc7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555994"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953800"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -163,7 +164,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 ## <a name="parameters-and-variables"></a>パラメーターと変数
 
-[パラメーター](../../azure-resource-manager/templates/template-syntax.md)を使用すると、テンプレートの実行時にテンプレートに値を指定することが簡単になります。 この例では、次の parameters セクションが使用されています。
+[パラメーター](../../azure-resource-manager/templates/syntax.md)を使用すると、テンプレートの実行時にテンプレートに値を指定することが簡単になります。 この例では、次の parameters セクションが使用されています。
 
 ```json
 "parameters": {
@@ -175,7 +176,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 サンプル テンプレートをデプロイするときに、各 VM の管理者アカウントの名前とパスワード、作成する VM の数の値を入力します。 テンプレートと共に管理される別のファイルでパラメーター値を指定したり、要求時に値を指定したりすることもできます。
 
-[変数](../../azure-resource-manager/templates/template-syntax.md)を使用すると、テンプレート全体で繰り返し使用される値や時間の経過と共に変化する可能性がある値を、テンプレートで簡単に設定できます。 この例では、次の variables セクションが使用されています。
+[変数](../../azure-resource-manager/templates/syntax.md)を使用すると、テンプレート全体で繰り返し使用される値や時間の経過と共に変化する可能性がある値を、テンプレートで簡単に設定できます。 この例では、次の variables セクションが使用されています。
 
 ```json
 "variables": { 
@@ -208,7 +209,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 }, 
 ```
 
-サンプル テンプレートをデプロイすると、以前に作成したストレージ アカウントの名前と識別子に変数の値が使用されています。 変数は、診断拡張機能の設定の指定にも使用されています。 [Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/templates/template-best-practices.md)に関する記事を参照すると、テンプレートでパラメーターと変数をどのように構成するかを決めるのに役立ちます。
+サンプル テンプレートをデプロイすると、以前に作成したストレージ アカウントの名前と識別子に変数の値が使用されています。 変数は、診断拡張機能の設定の指定にも使用されています。 [Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/templates/best-practices.md)に関する記事を参照すると、テンプレートでパラメーターと変数をどのように構成するかを決めるのに役立ちます。
 
 ## <a name="resource-loops"></a>リソース ループ
 
@@ -247,7 +248,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 ## <a name="dependencies"></a>依存関係
 
-ほとんどのリソースは、正常に動作するために他のリソースに依存しています。 仮想マシンは仮想ネットワークに関連付ける必要があり、そのためにはネットワーク インターフェイスが必要です。 [dependsOn](../../azure-resource-manager/templates/define-resource-dependency.md) 要素は、VM が作成される前にネットワーク インターフェイスを使用できるようするために使用されます。
+ほとんどのリソースは、正常に動作するために他のリソースに依存しています。 仮想マシンは仮想ネットワークに関連付ける必要があり、そのためにはネットワーク インターフェイスが必要です。 [dependsOn](../../azure-resource-manager/templates/resource-dependency.md) 要素は、VM が作成される前にネットワーク インターフェイスを使用できるようするために使用されます。
 
 ```json
 "dependsOn": [
@@ -451,7 +452,7 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 
 ## <a name="next-steps"></a>次の手順
 
-- 「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を使用して、独自のテンプレートを作成します。
+- 「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/syntax.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](ps-template.md)」を使用して作成したテンプレートをデプロイします。
 - 作成した VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md)」をご覧ください。
 - テンプレート内のリソースの種類の JSON 構文とプロパティについては、[Azure Resource Manager テンプレート リファレンス](/azure/templates/)を参照してください。

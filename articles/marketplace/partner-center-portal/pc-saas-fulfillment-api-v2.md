@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d47d93c7e1456cbd589aec34c2840a4b8257c8eb
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: b2c1840acae64940561133a90cb1450c4af80a19
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109848161"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952765"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2
 
@@ -970,6 +970,6 @@ Response body:
 
 ## <a name="next-steps"></a>次のステップ
 
-コマーシャル マーケットプレースでの SaaS オファーのその他のオプションについては、[コマーシャル マーケットプレースの測定サービス API](marketplace-metering-service-apis.md) を参照してください。
+コマーシャル マーケットプレースでの SaaS オファーのその他のオプションについては、[コマーシャル マーケットプレースの測定サービス API](../marketplace-metering-service-apis.md) を参照してください。
 
 [さまざまなプログラミング言語のクライアントを確認して、サンプルを使用します](https://github.com/microsoft/commercial-marketplace-samples)。

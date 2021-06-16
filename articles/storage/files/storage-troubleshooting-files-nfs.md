@@ -7,13 +7,13 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.custom: references_regions
-ms.openlocfilehash: 6ba070f0ed04885b79a56284f08a2467f6fcf51b
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 6554fefe035267416a47af7e28270129b443a550
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324079"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663312"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS ファイル共有に関するトラブルシューティング
 

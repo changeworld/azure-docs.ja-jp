@@ -11,14 +11,16 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e67a9b35291615b87edf918b4146ab8d77a0ae7f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f4bf378db5d9091cb48f2b0c813a92823bc72589
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065145"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031747"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator を使用して eコマース製品画像をモデレートする
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 このチュートリアルでは、Content Moderator などの Azure Cognitive Services を使用し、eコマース シナリオ用の製品画像を分類してモデレートする方法について学習します。 Computer Vision と Custom Vision を使用してタグ (ラベル) を画像に適用したうえで、チーム レビューを作成します。これにより、Content Moderator の機械学習に基づくテクノロジが人間のレビュー チームと組み合わされ、インテリジェントなモデレーション システムが実現します。
 

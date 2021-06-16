@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
-ms.openlocfilehash: 477145619e1b4d8b41c422389b57a46615597478
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: af70296b886f7e1fb736c1df1b041e2f43451327
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92202550"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701963"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute パブリック ピアリングを作成して管理する
 

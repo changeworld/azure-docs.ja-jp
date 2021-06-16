@@ -3,16 +3,16 @@ title: DMS のインスタンスを作成する (Azure Resource Manager テン�
 description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Database Migration Service を作成する方法を学習します。
 author: MashaMSFT
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 8b448f04811ad254358990f6f37c4a02f1909d65
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: fad7f93e4ccaa31f17df79f4d512647607427f1c
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952730"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006799"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Database Migration Service のインスタンスを作成する
 
@@ -33,7 +33,7 @@ Azure Database Migration Service の ARM テンプレートには、次のもの
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azure-database-migration-simple-deploy/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.datamigration/azure-database-migration-simple-deploy/azuredeploy.json":::
 

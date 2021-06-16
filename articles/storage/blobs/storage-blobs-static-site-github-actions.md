@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 05/05/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 5ab81f442aaf45328892de42cbf9aef651d3fe8d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 88ad67b03b3362b3430daefd81a4d1b0475b0980
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762805"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854650"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub Actions ワークフローを設定して、静的 Web サイトを Azure Storage にデプロイする
 
@@ -171,6 +171,7 @@ Azure サブスクリプションと GitHub アカウント。
         - name: logout
           run: |
                 az logout
+          if: always()
     ```
 
 ## <a name="review-your-deployment"></a>デプロイを確認する

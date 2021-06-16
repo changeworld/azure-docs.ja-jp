@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ef1ed584a609b2e4baa27111e47343df99146f5a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 46cd1b2d695592b97f2fe27451fe48e6e2c7be19
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257502"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410713"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
@@ -113,7 +113,7 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 | [Delete Storage Account](/rest/api/storagerp/storageaccounts/delete) | 変更はありません。 削除されたアカウントのコンテナーと BLOB は復旧できません。 | 変更はありません。 削除されたアカウントのコンテナーと BLOB は復旧できません。 |
 | [Delete Container](/rest/api/storageservices/delete-container) | 変更はありません。 削除されたコンテナーの BLOB は復旧できません。 | 変更はありません。 削除されたコンテナーの BLOB は復旧できません。 |
 | [Delete Blob](/rest/api/storageservices/delete-blob) | BLOB の削除に使った場合、その BLOB は論理的に削除済みとしてマークされます。 <br /><br /> BLOB のスナップショットを削除するために使用した場合、そのスナップショットは論理的に削除済みとしてマークされます。 | BLOB を削除するために使用した場合、現在のバージョンが前のバージョンになり、現在のバージョンは削除されます。 新しいバージョンは作成されず、論理的に削除されたスナップショットは作成されません。<br /><br /> BLOB のバージョンを削除するために使用した場合、そのバージョンは論理的に削除済みとしてマークされます。 |
-| [BLOB の削除の取り消し](/rest/api/storageservices/delete-blob) | 保持期間内に削除された BLOB とすべてのスナップショットが復元されます。 | 保持期間内に削除された BLOB とすべてのバージョンが復元されます。 |
+| [BLOB の削除の取り消し](/rest/api/storageservices/undelete-blob) | 保持期間内に削除された BLOB とすべてのスナップショットが復元されます。 | 保持期間内に削除された BLOB とすべてのバージョンが復元されます。 |
 | [Put Blob](/rest/api/storageservices/put-blob)<br />[Put Block List](/rest/api/storageservices/put-block-list)<br />[Copy Blob](/rest/api/storageservices/copy-blob)<br />[Copy Blob from URL](/rest/api/storageservices/copy-blob) | アクティブな BLOB に対して呼び出した場合、操作の前の BLOB の状態のスナップショットが自動的に生成されます。 <br /><br /> 論理的に削除された BLOB に対して呼び出した場合、同じ種類の BLOB で置き換えられている場合にのみ、BLOB の以前の状態のスナップショットが生成されます。 BLOB の種類が異なる場合は、既存のすべての論理的に削除されたデータが完全に削除されます。 | 操作の前の BLOB の状態をキャプチャした新しいバージョンが、自動的に生成されます。 |
 | [Put Block](/rest/api/storageservices/put-block) | アクティブな BLOB にブロックをコミットするために使用した場合、変更はありません。<br /><br />論理的に削除された BLOB にブロックをコミットするために使用した場合、新しい BLOB が作成され、論理的に削除された BLOB の状態をキャプチャするためにスナップショットが自動的に生成されます。 | 変更はありません。 |
 | [Put Page](/rest/api/storageservices/put-page)<br />[Put Page from URL](/rest/api/storageservices/put-page-from-url) | 変更はありません。 この操作を使って上書きまたは消去されるページ BLOB のデータは保存されず、復旧できません。 | 変更はありません。 この操作を使って上書きまたは消去されるページ BLOB のデータは保存されず、復旧できません。 |

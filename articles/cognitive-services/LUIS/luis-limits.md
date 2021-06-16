@@ -4,13 +4,13 @@ description: この記事では、Azure Cognitive Services Language Understandin
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 06/04/2020
-ms.openlocfilehash: 1f917087eb15d8c77356995299e27dfc1657cb5d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 05/26/2021
+ms.openlocfilehash: 00b218908242b27e7276a18a490250a0db34d57a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497202"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954189"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS モデルとキーの制限
 LUIS にはいくつかの制限領域があります。 1 つは[モデルの制限](#model-limits)であり、これによって LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の制限領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。
@@ -80,7 +80,6 @@ Azure portal 内のリソースをフィルター処理する場合は、_kind_�
 
 |リソースの作成|TPS の作成|
 |--|--|
-|スターター|100 万/月、5/秒|
 |F0 - Free レベル |100 万/月、5/秒|
 
 * TPS = Transactions per second (1 秒あたりのトランザクション数)
@@ -117,7 +116,7 @@ Azure portal 内のリソースをフィルター処理する場合は、_kind_�
 ご自身のサインイン アクセスは **60 分** です。 この時間を過ぎると、エラーが発生します。 再度サインインする必要があります。
 
 [luis-get-started-create-app]: ./luis-get-started-create-app.md
-[batch-testing]: ./luis-concept-test.md#batch-testing
+[batch-testing]: ./luis-interactive-test.md#batch-testing
 [intents]: ./luis-concept-intent.md
 [phrase-list]: ./luis-concept-feature.md
 [utterances]: ./luis-concept-utterance.md

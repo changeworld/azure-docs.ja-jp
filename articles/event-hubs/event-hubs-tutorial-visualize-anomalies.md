@@ -3,12 +3,13 @@ title: Azure Event Hubs - リアルタイム イベントでのデータの異�
 description: チュートリアル:Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: bb7d8da2498005b8b2e1183a836d9385f3d31e5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dc498398a164cb559cb243e46699f39a21ab3d50
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783757"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698533"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 

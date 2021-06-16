@@ -3,12 +3,12 @@ title: Azure Video Analyzer を使用して動きを検出し、ビデオを録�
 description: このクイック スタートでは、Azure Video Analyzer エッジ モジュールを使用して、ライブ ビデオ ストリーム内の動きを検出し、Video Analyzer アカウントにビデオを録画する方法を示します。
 ms.topic: quickstart
 ms.date: 04/03/2021
-ms.openlocfilehash: 851310ff3b03730a1fc9adb4eaa7c0c3f9cf84f2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9643ed3a7bbcc23757110033be1dbc3780ddafb5
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387383"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565934"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>クイック スタート: 動きを検出し、Video Analyzer にビデオを録画する
 
@@ -986,6 +986,23 @@ ms.locfileid: "110387383"
 ```
 
 状態コード 200 は、パイプライン トポロジが正常に削除されたことを示しています。
+
+## <a name="playing-back-the-recording"></a>録画を再生する
+
+ライブ パイプラインによって作成された Video Analyzer ビデオ リソースを調べるには、Azure portal にログインしてビデオを視聴します。
+1. Web ブラウザーを開き、[Azure portal](https://portal.azure.com/) に移動します。 資格情報を入力してポータルにサインインします。 既定のビューはサービス ダッシュボードです。
+1. サブスクリプション内のリソースの中から Video Analyzers アカウントを見つけ、アカウント ペインを開きます。
+1. **[Video Analyzer]** のリストで **[ビデオ]** を選択します。
+1. `sample-motion-video-camera001` という名前で一覧に含まれているビデオが見つかります。 これは、パイプライン トポロジ ファイルで選択された名前です。
+1. ビデオを選択します。
+1. ビデオの詳細ページが開き、自動的に再生が開始されます。
+
+    <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
+
+
+> [!NOTE]
+> ビデオのソースはカメラ フィードをシミュレートするコンテナーだったので、ビデオのタイム スタンプは、ライブ パイプラインをアクティブにした時点と、非アクティブ化した時点に関連しています。
+    
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

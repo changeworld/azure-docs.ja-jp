@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 001ccf1e9992af4cce2146cb899b7cce159da6eb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 854069a6cab7f3f1a928933a1c6b07de8d27f04c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737389"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957961"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure PowerShell を使用した Azure リソースの管理
 
@@ -139,6 +139,6 @@ Remove-AzResourceLock -LockId $lockId
 ## <a name="next-steps"></a>次のステップ
 
 - Azure Resource Manager については、「[Azure Resource Manager の概要](overview.md)」を参照してください。
-- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](../templates/template-syntax.md)」を参照してください。
+- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](../templates/syntax.md)」を参照してください。
 - テンプレートを開発する方法については、[ステップバイステップのチュートリアル](../index.yml)のページをご覧ください。
 - Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

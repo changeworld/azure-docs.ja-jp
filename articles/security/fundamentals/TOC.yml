@@ -43,6 +43,8 @@
       items:
         - name: ファームウェアのセキュリティ
           href: firmware.md
+        - name: コードの整合性
+          href: code-integrity.md
         - name: セキュア ブート
           href: secure-boot.md
         - name: メジャー ブートとホストの構成証明

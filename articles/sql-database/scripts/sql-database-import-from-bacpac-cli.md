@@ -3,20 +3,20 @@ title: Azure CLI:BACPAC ファイルを Azure SQL Database のデータベース
 description: BACPAC ファイルを Azure SQL Database のデータベースにインポートするための Azure CLI サンプル スクリプト
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: backup-restore
 ms.custom: load & move data, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: carlrab
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma
 ms.date: 05/24/2019
-ms.openlocfilehash: a76a2e72533068f37613d801e39f9451098b89e5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d0c20ee8e64d5ed9887e04efeaa721e2ea8d08c9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786605"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688652"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>CLI を使用して BACPAC ファイルを SQL Database のデータベースにインポートする
 

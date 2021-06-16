@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e1f45c787c319c32358e7f310108131647d60e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29e15061310ddc72b3abe3f9a29b103dcbd49f37
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91335835"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965697"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Monitor を使用して Azure Active Directory のログを SumoLogic と統合する方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "91335835"
 ## <a name="prerequisites"></a>前提条件
 
 この機能を使用するには、次が必要です。
-* Azure AD のアクティビティ ログを含む Azure イベント ハブ。 [アクティビティ ログをイベント ハブにストリーミングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
+* Azure AD のアクティビティ ログを含む Azure Event Hub。 [アクティビティ ログをイベント ハブにストリーミングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
 * SumoLogic でのシングル サインオンが有効なサブスクリプション。
 
 ## <a name="steps-to-integrate-azure-ad-logs-with-sumologic"></a>Azure AD のログを SumoLogic と統合する手順 
@@ -44,6 +44,6 @@ ms.locfileid: "91335835"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
+* [Azure Monitor で監査ログのスキーマを解釈する](./overview-reports.md)
 * [Azure Monitor でサインイン ログのスキーマを解釈する](reference-azure-monitor-sign-ins-log-schema.md)
 * [よく寄せられる質問と既知の問題](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

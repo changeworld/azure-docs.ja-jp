@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
-ms.openlocfilehash: 37ff94608e9756142f70a4f3c64d0a6f7eeea685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 22eefcde250057fae142142ed91c6e339849b0ba
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88932901"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689256"
 ---
 # <a name="get-customer-managed-key-information-from-indexes-and-synonym-maps"></a>インデックスとシノニム マップからカスタマー マネージド キーの情報を取得する
 

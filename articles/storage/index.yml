@@ -103,7 +103,7 @@ additionalContent:
               text: フルマネージド ファイル キャッシュ サービスを使用する (Azure HPC Cache)
             - url: ../avere-vfxt/avere-vfxt-overview.md
               text: Azure でオンプレミスの NAS をキャッシュする (Avere vFXT for Azure)
-            - url: ../fxt-edge-filer/fxt-overview.md
+            - url: ../fxt-edge-filer/overview.md
               text: オンプレミスのキャッシュ アプライアンスをデプロイする (Azure FXT Edge Filer)
     - title: データ操作
       items:

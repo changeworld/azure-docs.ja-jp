@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 232e28d3cc8b0bc7427dd035d51743f623e54259
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e9fbda18c786f934790c9aa70cd0f27d045fa64
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564305"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901315"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark
 
@@ -35,7 +35,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
   「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」をご覧ください。
 
-* ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](../common/storage-auth-aad-rbac-portal.md)が割り当てられていることを確認します。
+* ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](assign-azure-role-data-access.md)が割り当てられていることを確認します。
 
 * AzCopy v10 をインストールします。 [AzCopy v10 を使用したデータ転送](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 

@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/22/2021
-ms.openlocfilehash: af1ef22c55502ac6ae4279810a527b407555dd5c
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 18d556a11ff55c1967252491d26bea62729498c5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987806"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952430"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL - フレキシブル サーバーの仮想ネットワークの作成と管理
 
@@ -41,7 +41,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、フレ�
      4. プルアウト画面の **[サービス エンドポイント]** で、ドロップダウンから `Microsoft.storage` を選択します。
      5. 変更を保存します。
 
-- フレキシブル サーバーで使用する独自のプライベート DNS ゾーンを設定する場合、詳細については、 [プライベート DNS の概要](https://docs.microsoft.com/azure/dns/private-dns-overview) に関する説明書を参照してください。 
+- フレキシブル サーバーで使用する独自のプライベート DNS ゾーンを設定する場合、詳細については、 [プライベート DNS の概要](../../dns/private-dns-overview.md) に関する説明書を参照してください。 
   
 ## <a name="create-azure-database-for-postgresql---flexible-server-in-an-already-existing-virtual-network"></a>Azure Database for PostgreSQL - フレキシブル サーバーを既存の仮想ネットワーク内に作成する
 
@@ -60,7 +60,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、フレ�
 > フレキシブル サーバーを仮想ネットワークとサブネットにデプロイした後は、パブリック アクセス (許可された IP アドレス) に移動することはできません。
 
 >[!Note]
-> 別の VNET にプロビジョニングされているクライアントからフレキシブル サーバーに接続する場合は、プライベート DNS ゾーンを VNET にリンクする必要があります。 これを行う方法については、[仮想ネットワークのドキュメントのリンク](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) を参照してください。
+> 別の VNET にプロビジョニングされているクライアントからフレキシブル サーバーに接続する場合は、プライベート DNS ゾーンを VNET にリンクする必要があります。 これを行う方法については、[仮想ネットワークのドキュメントのリンク](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバー仮想ネットワークを作成し、管理する](./how-to-manage-virtual-network-cli.md)。

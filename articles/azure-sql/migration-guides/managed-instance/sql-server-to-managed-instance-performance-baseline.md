@@ -6,16 +6,16 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: mokabiru
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: a47684bf29f1f34b8c9c59c04b7d33d234505cc2
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: ee51e3ee0fd9f0084e8dddf03a9e181b38bc2fb4
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389708"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689407"
 ---
 # <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-baseline"></a>移行のパフォーマンス: SQL Server から Azure SQL Managed Instance への場合のパフォーマンス ベースライン
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]

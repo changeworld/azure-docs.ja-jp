@@ -6,16 +6,16 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f6a32bdef2269e1235534ca99144a61c5ea023db
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 246c86b2e1f2e49af22d290ccb0a80f3e8c98c64
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463374"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958225"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management を有効にする
 
-[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して、リソース グループ内の Azure Automation Update Management 機能を有効にすることができます。 この記事では、以下のことを自動化するサンプル テンプレートについて説明します。
+[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)を使用して、リソース グループ内の Azure Automation Update Management 機能を有効にすることができます。 この記事では、以下のことを自動化するサンプル テンプレートについて説明します。
 
 * Azure Monitor Log Analytics ワークスペースの作成を自動化します。
 * Azure Automation アカウントの作成を自動化します。
@@ -153,7 +153,7 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
             },
             "_artifactsLocation": {
                 "type": "string",
-                "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation/",
+                "defaultValue": "[deployment().properties.templateLink.uri]",
                 "metadata": {
                     "description": "URI to artifacts location"
                 }

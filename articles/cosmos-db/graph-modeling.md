@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: chrande
-ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f2be9103d61897eb24d1653f63cbec86ffb407c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93357047"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957341"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API のグラフ データのモデリング
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "93357047"
 
 上記の条件を満たしている場合、グラフ データベース アプローチが **クエリの複雑さ**、**データ モデルのスケーラビリティ**、および **クエリ パフォーマンス** の面でメリットをもたらす可能性があります。
 
-次の手順では、分析とトランザクション目的のどちらでグラフを使用するかを確認します。 グラフを高負荷な計算やデータ処理ワークロードに使用する場合は、[Cosmos DB Spark コネクタ](./spark-connector.md)と [GraphX ライブラリ](https://spark.apache.org/graphx/)の使用について検討する価値があります。 
+次の手順では、分析とトランザクション目的のどちらでグラフを使用するかを確認します。 グラフを高負荷な計算やデータ処理ワークロードに使用する場合は、[Cosmos DB Spark コネクタ](./create-sql-api-spark.md)と [GraphX ライブラリ](https://spark.apache.org/graphx/)の使用について検討する価値があります。 
 
 ## <a name="how-to-use-graph-objects"></a>グラフ オブジェクトを使用する方法
 
@@ -46,7 +46,7 @@ ms.locfileid: "93357047"
 
 以下は、グラフ オブジェクトのプロパティのベスト プラクティスです。
 
-| Object | プロパティ | Type | Notes |
+| Object | プロパティ | 種類 | Notes |
 | --- | --- | --- |  --- |
 | Vertex | id | String | パーティションごとに一意に適用されます。 挿入時に値の指定がなかった場合には、自動生成された GUID が格納されます。 |
 | Vertex | label | String | このプロパティは、頂点が表すエンティティの種類を定義するために使用されます。 値が指定されないと、既定値の "vertex" が使用されます。 |

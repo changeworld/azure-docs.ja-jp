@@ -6,18 +6,18 @@ metadata:
   description: Microsoft SQL Server の安定した最新バージョンに基づく、サービスとしてのプラットフォーム (PaaS) である Azure SQL Database に関するドキュメントをご覧ください。
   services: sql-database
   ms.service: sql-database
-  ms.subservice: single-database
+  ms.subservice: service-overview
   ms.topic: landing-page
-  author: stevestein
-  ms.author: sstein
+  author: MashaMSFT
+  ms.author: mathoma
   ms.reviewer: 
   ms.date: 01/25/2021
-  ms.openlocfilehash: bf7056f05264a8c9c2275e4b2e562c8a4761a053
-  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+  ms.openlocfilehash: a7d66b2775800d00aec434960847ec00cdcbbcf3
+  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104607995"
+  ms.lasthandoff: 05/29/2021
+  ms.locfileid: "110704227"
 landingContent:
 - title: Azure SQL データベース
   linkLists:

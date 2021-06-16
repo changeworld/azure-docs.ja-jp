@@ -3,12 +3,13 @@ title: パッチ オーケストレーション アプリケーションの使�
 description: パッチ オーケストレーション アプリケーションを使用して、Azure でホストされていない Service Fabric クラスターでのオペレーティング システムの修正プログラムの適用を自動化します。
 ms.topic: how-to
 ms.date: 2/01/2019
-ms.openlocfilehash: 9c3f1eb767f0dac0e5be3d9fd2b344d538b95ee0
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3d51cfeaa13bd2556e1d32ffc39232b514f8a7b4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738700"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663689"
 ---
 # <a name="use-patch-orchestration-application"></a>パッチ オーケストレーション アプリケーションの使用
 

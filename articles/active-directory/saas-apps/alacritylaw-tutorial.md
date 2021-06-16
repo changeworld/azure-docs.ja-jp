@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 0bd252ca330a4b2c4a92ceb8cb49efeca850074a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bdfb60425984aeeec18e54d64d215ac5d6a1838b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776170"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956620"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alacritylaw"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と AlacrityLaw の統合
 
@@ -133,11 +133,9 @@ AlacrityLaw に対して Azure AD SSO を構成してテストするには、次
 
 * AlacrityLaw のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [AlacrityLaw] タイルをクリックすると、AlacrityLaw のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [AlacrityLaw] タイルをクリックすると、AlacrityLaw のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-AlacrityLaw を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+AlacrityLaw を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

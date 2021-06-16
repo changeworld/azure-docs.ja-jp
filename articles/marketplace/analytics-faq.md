@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/10/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 1b98948100c06868cd14f636f2049ca515fec18d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5236c7d9cb29f8c91ea99d17e78fb4e584012dde
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94564806"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537278"
 ---
 # <a name="commercial-marketplace-analytics-common-questions"></a>コマーシャル マーケットプレース分析の一般的な質問
 
@@ -43,9 +43,9 @@ ms.locfileid: "94564806"
 
 ## <a name="next-steps"></a>次のステップ
 
-- パートナー センターで利用できる分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](./partner-center-portal/analytics.md)」を参照してください。
+- パートナー センターで利用できる分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](analytics.md)」を参照してください。
 - グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](orders-dashboard.md)」を参照してください。
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](usage-dashboard.md)」を参照してください。
 - 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](customer-dashboard.md)」を参照してください。
-- 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./partner-center-portal/downloads-dashboard.md)」を参照してください。
-- Azure Marketplace と Microsoft AppSource でのサービスに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](./partner-center-portal/ratings-reviews.md)」を参照してください。
+- 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
+- Azure Marketplace と Microsoft AppSource でのサービスに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](ratings-reviews.md)」を参照してください。

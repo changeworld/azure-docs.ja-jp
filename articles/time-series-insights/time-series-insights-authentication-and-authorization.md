@@ -2,21 +2,21 @@
 title: API の認証と承認 - Azure Time Series Insights | Microsoft Docs
 description: この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。
 ms.service: time-series-insights
-author: deepakpalled
+author: shreyasharmamsft
 ms.author: shresha
-manager: dpalled
-ms.reviewer: v-mamcge, jasonh, kfile
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: c174504ea48330821d7734def5b6a5904d3ec2b8
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 68b7300219953b0f80bd40522c3f4ec961ec5262
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883924"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613546"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 

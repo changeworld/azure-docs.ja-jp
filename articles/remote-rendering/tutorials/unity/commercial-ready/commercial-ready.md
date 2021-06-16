@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7258b37c9d92f25227eac678dde77963e644e64b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 130bf6c9ff105b445830c5f73fdf7d5f564064ab
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483319"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958569"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>チュートリアル:商用の Azure Remote Rendering アプリケーションの作成
 
@@ -255,7 +255,7 @@ OneDrive ファイル ピッカーが Microsoft の混合現実デバイスに�
 詳細情報:
 
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/)
-* [チュートリアル:Azure マネージド アプリケーションを Marketplace で公開する](../../../../marketplace/create-new-azure-apps-offer.md)
+* [チュートリアル:Azure マネージド アプリケーションを Marketplace で公開する](../../../../marketplace/azure-app-offer-setup.md)
 
 ### <a name="security"></a>セキュリティ
 

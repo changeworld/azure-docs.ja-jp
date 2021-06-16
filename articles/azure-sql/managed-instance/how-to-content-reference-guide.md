@@ -4,20 +4,19 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance を構成および管理する方法を説明するコンテンツの参照ガイドです。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: guide
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155c87c1f5343e583beb226c2eb5416d782fcfb9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92779766"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963191"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance のコンテンツ参照
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -86,7 +85,7 @@ ms.locfileid: "92779766"
 ## <a name="develop-applications"></a>アプリケーションを開発する
 
 - [接続](../database/connect-query-content-reference-guide.md#libraries)
-- [Spark コネクタの使用](../../cosmos-db/spark-connector.md)
+- [Spark コネクタの使用](../../cosmos-db/create-sql-api-spark.md)
 - [アプリの認証](../database/application-authentication-get-client-id-keys.md)
 - [バッチ処理を使用したパフォーマンスの向上](../performance-improve-use-batching.md)
 - [接続のガイダンス](../database/troubleshoot-common-connectivity-issues.md)

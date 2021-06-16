@@ -7,12 +7,13 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 32bee2a83e9133e516c66aec10e353fc0790b114
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5c1bd9b4f9420a67283c3b0bbed77e5fbf1a87a7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632477"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668765"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Front Door に使用する geo フィルタリング WAF ポリシーを設定する
 

@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: b191941dff66f28467030a3f367837ca4ed9656c
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1e85974968e523903282cdd8a577dee13ab32bf4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330820"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668131"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 

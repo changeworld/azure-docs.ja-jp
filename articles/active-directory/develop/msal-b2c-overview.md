@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 383c9651d6552a327bc9e986d18fbc7832fc94f8
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: e11ed0d284e89a9e5f406aade2147b52d139f0ad
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072191"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953534"
 ---
 # <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
 
@@ -28,12 +28,12 @@ ID 管理サービスとして Azure AD B2C を使用すると、顧客がアプ
 
 ## <a name="supported-app-types-and-scenarios"></a>サポートされているアプリの種類とシナリオ
 
-MSAL.js を使用すると、[シングルページ アプリケーション](https://docs.microsoft.com/azure/active-directory-b2c/application-types#single-page-applications)で、[PKCE による承認コード フロー](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow)の付与を使用してユーザーを Azure AD B2C にサインインさせることができます。 MSAL.js と Azure AD B2C を使用する場合:
+MSAL.js を使用すると、[シングルページ アプリケーション](../../active-directory-b2c/application-types.md#single-page-applications)で、[PKCE による承認コード フロー](../../active-directory-b2c/authorization-code-flow.md)の付与を使用してユーザーを Azure AD B2C にサインインさせることができます。 MSAL.js と Azure AD B2C を使用する場合:
 
 - ユーザーは、各自のソーシャル ID やローカル ID を使用して認証を行うことが **できます**。
 - ユーザーは、Azure AD B2C で保護されたリソースへのアクセスの認可を受けることが **できます** (ただし、Azure AD で保護されたリソースにはアクセスできません)。
-- ユーザーは、[委任されたアクセス許可](https://review.docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent?branch=master#permission-types)を使用して (MS Graph API などの) Microsoft API のトークンを取得することは **できません**。
-- 管理者特権を持つユーザーは、[委任されたアクセス許可](https://review.docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent?branch=master#permission-types)を使用して (MS Graph API などの) Microsoft API のトークンを取得することが **できます**。
+- ユーザーは、[委任されたアクセス許可](/azure/active-directory/develop/v2-permissions-and-consent#permission-types)を使用して (MS Graph API などの) Microsoft API のトークンを取得することは **できません**。
+- 管理者特権を持つユーザーは、[委任されたアクセス許可](/azure/active-directory/develop/v2-permissions-and-consent#permission-types)を使用して (MS Graph API などの) Microsoft API のトークンを取得することが **できます**。
 
 詳細については、[Azure AD B2C の操作](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/working-with-b2c.md)に関するページを参照してください。
 

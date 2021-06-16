@@ -5,13 +5,13 @@ author: mumian
 ms.date: 12/17/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: ''
-ms.openlocfilehash: 001a20c38a82d053ae22a2614a32f0be9d8aabce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7608f40ec1e605e74969a8c7a3d215bad6006ce6
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656990"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703011"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>チュートリアル:初めての ARM テンプレートを作成してデプロイする
 
