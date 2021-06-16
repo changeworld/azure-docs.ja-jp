@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Resource Manager テ�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 95ff4572b789fd4b8856d08ffad451357c400f06
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 8a1bf27e9dc778bdf2e1e30ec21424f9f1b7a9cc
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175696"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006655"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>クイック スタート:Azure DevTest Labs の ARM テンプレートを使用してラボを設定する
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Windows Server 2019 Datacenter VM を含むラボを作成します。 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/dtl-create-lab-windows-vm/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.devtestlab/dtl-create-lab-windows-vm/azuredeploy.json":::
 

@@ -1,17 +1,19 @@
 ---
 title: VMware VM と物理サーバーを Azure にディザスター リカバリーするために、プッシュ インストールでモビリティ サービスをインストールできるようにソース マシンを準備する | Microsoft Docs
 description: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーするために、プッシュ インストールでモビリティ エージェントをインストールできるようお使いのサーバーを準備する方法を説明します。
-author: Rajeswari-Mamilla
+services: site-recovery
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.author: ramamill
-ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: c48fe1f4c6d871506235d5bea743226bc1184fee
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90524999"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576915"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
 

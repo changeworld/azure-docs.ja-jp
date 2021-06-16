@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: b3fbf73ab51092f614a416355477fc552a404fd3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a9d0e2c52b0996699c94e6d8eb5f44921f76709
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581808"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985535"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>チュートリアル:Azure Active Directory と Jitbit Helpdesk の統合
 
@@ -32,6 +32,9 @@ ms.locfileid: "104581808"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Jitbit Helpdesk でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

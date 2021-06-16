@@ -7,15 +7,13 @@ ms.author: duau
 ms.date: 09/01/2020
 ms.topic: quickstart
 ms.service: traffic-manager
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 68ebc6d7827e898946930b956263be3e3010a008
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: d18e85ec73e1112ed31cc25846fb46aa34038932
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839295"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900577"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Traffic Manager プロファイルを作成する
 
@@ -33,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-traffic-manager-external-endpoint)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/traffic-manager-external-endpoint)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/traffic-manager-external-endpoint/azuredeploy.json":::
 

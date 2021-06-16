@@ -70,7 +70,7 @@
         - name: リンクベースの SSO
           href: configure-linked-sign-on.md
         - name: ヘッダー ベースの SSO (オンプレミス アプリ)
-          href: application-proxy-configure-single-sign-on-with-headers.md
+          href: ../app-proxy/application-proxy-configure-single-sign-on-with-headers.md
         - name: ワンクリック SSO
           href: one-click-sso-tutorial.md
     - name: アプリケーションのセキュリティ

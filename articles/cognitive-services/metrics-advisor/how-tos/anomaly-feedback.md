@@ -5,17 +5,17 @@ description: Metrics Advisor インスタンスによって検出された異常
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbullwin
-ms.openlocfilehash: 96a6dfebdd0047d5a6f4ff3e295ab96dd8c7226a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d63457bddbe1758a172abef4073419a218acf75
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96184971"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892600"
 ---
 # <a name="provide-anomaly-feedback"></a>異常に関するフィードバックを提供する
 

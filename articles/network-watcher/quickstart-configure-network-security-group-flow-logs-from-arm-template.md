@@ -7,15 +7,13 @@ ms.author: damendo
 ms.date: 01/07/2021
 ms.topic: quickstart
 ms.service: network-watcher
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 36a70cf01130e4156c21b01013cddcb706b32276
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 9d541294ff20047f9041b58b3ce971c76adb6737
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277716"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982684"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用してネットワーク セキュリティ グループのフロー ログを構成する
 
@@ -35,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用するテンプレートは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)からのものです。
+このクイックスタートで使用するテンプレートは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/networkwatcher-flowlogs-create)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/networkwatcher-flowLogs-create/azuredeploy.json":::
 
@@ -83,7 +81,7 @@ NSG フロー ログ オブジェクトのプロパティの完全な概要に�
 
 ARM テンプレートを初めて使用する場合は、ARM テンプレートの詳細について、次の記事を参照してください。
 
-- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
+- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 - [チュートリアル:初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 完全なテンプレートの例を次に示します。 これは、テンプレートの最も単純なバージョンでもあります。 この例には、NSG フロー ログを設定するために渡される最小限のパラメーターが含まれています。 その他の例については、概要記事の「[Azure Resource Manager テンプレートから NSG フロー ログを構成する](network-watcher-nsg-flow-logging-azure-resource-manager.md)」を参照してください。

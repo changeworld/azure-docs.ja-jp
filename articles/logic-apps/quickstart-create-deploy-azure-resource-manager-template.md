@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurepowershell
 ms.date: 04/01/2021
-ms.openlocfilehash: 01fe3121173eb730584dadd1266b3217af2b5017
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: e141a33be0433e8d40af41c4624b4921321a6aae
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279552"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971595"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してロジック アプリ ワークフローを作成してデプロイする
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイック スタートでは、[**ロジック アプリの作成**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)テンプレートを使用します。これは、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates) にありますが、長すぎるため、ここには表示できません。 代わりに、テンプレート ギャラリーのクイック スタート テンプレートの ["azuredeploy.json ファイル"](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json) を確認できます。
+このクイック スタートでは、[**ロジック アプリの作成**](https://azure.microsoft.com/resources/templates/logic-app-create/)テンプレートを使用します。これは、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates) にありますが、長すぎるため、ここには表示できません。 代わりに、テンプレート ギャラリーのクイック スタート テンプレートの ["azuredeploy.json ファイル"](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json) を確認できます。
 
 クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の "[*組み込み*" アクション](../connectors/built-in.md)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
 
@@ -167,7 +167,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
    詳細については、[Resource Management REST API: デプロイ - 作成または更新](/rest/api/resources/deployments/createorupdate)に関するページを参照してください。
 
-1. デプロイに使用する値 (Azure リージョン、クイック スタート テンプレートへのリンク、デプロイ時に使用するクイック スタート テンプレートの値を含む[パラメーター ファイル](../azure-resource-manager/templates/template-parameters.md)へのリンクなど) を指定するには、Resource Management REST API に送信する要求本文でこの構文に従います。
+1. デプロイに使用する値 (Azure リージョン、クイック スタート テンプレートへのリンク、デプロイ時に使用するクイック スタート テンプレートの値を含む[パラメーター ファイル](../azure-resource-manager/templates/parameters.md)へのリンクなど) を指定するには、Resource Management REST API に送信する要求本文でこの構文に従います。
 
    ```json
    {

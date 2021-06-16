@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: radeltch
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b04b1e873016d2b1e3f2acce6a358373381d8074
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
+ms.openlocfilehash: 88529f44ff4de95ddf1f568fe5531ae2b15ec177
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101671663"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672617"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 

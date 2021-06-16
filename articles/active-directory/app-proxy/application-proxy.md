@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 1b2887dd82d9c01cc5403f35dffa230feff385d7
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: f45dcde6368cefe0d8eb869bd042e36f364589cf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186203"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963880"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス
 
@@ -35,10 +35,10 @@ Azure AD アプリケーション プロキシの特徴:
 
 アプリケーション プロキシは次に対応します。
 
-* 認証に[統合 Windows 認証](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)を使用する Web アプリ
-* フォーム ベースまたは[ヘッダー ベース](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md)のアクセスを使用する Web アプリ
+* 認証に[統合 Windows 認証](./application-proxy-configure-single-sign-on-with-kcd.md)を使用する Web アプリ
+* フォーム ベースまたは[ヘッダー ベース](./application-proxy-configure-single-sign-on-with-headers.md)のアクセスを使用する Web アプリ
 * さまざまなデバイスの豊富なアプリケーションに公開する Web API
-* [リモート デスクトップ ゲートウェイ](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md)の背後でホストされているアプリケーション
+* [リモート デスクトップ ゲートウェイ](./application-proxy-integrate-with-remote-desktop-services.md)の背後でホストされているアプリケーション
 * Microsoft Authentication Library (MSAL) と統合されるリッチ クライアント アプリ
 
 アプリケーション プロキシは、シングル サインオンをサポートします。 サポートされている方法の詳細については、「[シングル サインオンの方法の選択](../manage-apps/sso-options.md#choosing-a-single-sign-on-method)」を参照してください。

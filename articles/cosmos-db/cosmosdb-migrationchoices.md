@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 3325960793a5a0d7bc48ca8030c675d7ebf0c026
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: db8164cc0d1216050bfd7f6cc071b3d47db452f1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106442594"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956307"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>オンプレミスまたはクラウドのデータを Azure Cosmos DB に移行するためのオプション
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "106442594"
 |---------|---------|---------|---------|---------|
 |オフライン|[データ移行ツール](import-data.md)| &bull;JSON/CSV ファイル<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;AWS DynamoDB<br/>&bull;Azure Blob Storage|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB Tables API<br/>&bull;JSON ファイル |&bull; セットアップが簡単で、さまざまなソースをサポートします。 <br/>&bull; 大規模なデータセットには適していません。|
 |オフライン|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)| &bull;JSON/CSV ファイル<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB 用 Azure Cosmos DB API<br/>&bull;MongoDB <br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;Azure Blob Storage <br/> <br/>サポートされているその他のソースについては、[Azure Data Factory](../data-factory/connector-overview.md) に関する記事をご覧ください。|&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB 用 Azure Cosmos DB API<br/>&bull;JSON ファイル <br/><br/> サポートされているその他のターゲットについては、[Azure Data Factory](../data-factory/connector-overview.md) に関する記事をご覧ください。 |&bull; セットアップが簡単で、さまざまなソースをサポートします。<br/>&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します。 <br/>&bull; 大規模なデータセットに適しています。 <br/>&bull; チェックポイントがありません - つまり、移行の途中で問題が発生した場合、移行プロセスを全部やり直す必要があります。<br/>&bull; 配信不能キューがありません - つまり、エラーが含まれるファイルがいくつかあると、移行プロセス全体が停止することがあります|
-|オフライン|[Azure Cosmos DB Spark コネクタ](spark-connector.md)|Azure Cosmos DB SQL API。 <br/><br/>Spark エコシステムからの追加コネクタで他のソースを使用できます。| Azure Cosmos DB SQL API。 <br/><br/>Spark エコシステムからの追加コネクタで他のターゲットを使用できます。| &bull; Azure Cosmos DB Bulk Executor ライブラリを使用します。 <br/>&bull; 大規模なデータセットに適しています。 <br/>&bull; カスタム Spark セットアップが必要です。 <br/>&bull; Spark ではスキーマの不整合に注意を要し、移行中、問題になることがあります。 |
+|オフライン|[Azure Cosmos DB Spark コネクタ](./create-sql-api-spark.md)|Azure Cosmos DB SQL API。 <br/><br/>Spark エコシステムからの追加コネクタで他のソースを使用できます。| Azure Cosmos DB SQL API。 <br/><br/>Spark エコシステムからの追加コネクタで他のターゲットを使用できます。| &bull; Azure Cosmos DB Bulk Executor ライブラリを使用します。 <br/>&bull; 大規模なデータセットに適しています。 <br/>&bull; カスタム Spark セットアップが必要です。 <br/>&bull; Spark ではスキーマの不整合に注意を要し、移行中、問題になることがあります。 |
 |オフライン|[カスタム ツールと Cosmos DB Bulk Executor ライブラリ](migrate-cosmosdb-data.md)| ソースはカスタム コードに依存します | Azure Cosmos DB SQL API| &bull; 移行の回復性を向上させるチェックポイント機能や配信不能機能を提供します。 <br/>&bull; 非常に大規模なデータセット (10 TB 以上) に適しています。  <br/>&bull; App Service として実行するこのツールのカスタム セットアップが必要になります。 |
 |オンライン|[Cosmos DB Functions + ChangeFeed API](change-feed-functions.md)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; セットアップが簡単です。 <br/>&bull; ソースが Azure Cosmos DB コンテナーの場合にのみ動作します。 <br/>&bull; 大規模なデータセットには適していません。 <br/>&bull; ソース コンテナーからの削除をキャプチャすることはありません。 |
 |オンライン|[ChangeFeed を利用したカスタム移行サービス](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; 進捗状況を追跡します。 <br/>&bull; ソースが Azure Cosmos DB コンテナーの場合にのみ動作します。 <br/>&bull; 大規模なデータセットでも機能します。<br/>&bull; ChangeFeed プロセッサをホストする目的で App Service を設定することがユーザーに求められます。 <br/>&bull; ソース コンテナーからの削除をキャプチャすることはありません。|
@@ -86,5 +86,5 @@ SQL API、Mongo API、Cassandra API 以外の API については、API の既�
 ## <a name="next-steps"></a>次のステップ
 
 * [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。 
-* Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](spark-connector.md)に関する記事をご覧ください。  
+* Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](./create-sql-api-spark.md)に関する記事をご覧ください。  
 * 大規模な移行に関して別途支援が必要な場合は、問題のタイプに "General Advisory (一般的な勧告)" を、問題のサブタイプに "Large (TB+) migrations (大規模な (TB 以上の) 移行)" を選択してサポート チケットを開き、Azure Cosmos DB 製品チームに連絡します。

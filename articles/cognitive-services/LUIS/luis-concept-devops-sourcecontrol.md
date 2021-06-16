@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b860510610330d6c5d60f41dccc9e82bc77685f5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932524"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969443"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS の DevOps プラクティス
 
@@ -214,4 +214,4 @@ PR での変更をメインにマージした時点で、メインに対する�
 ## <a name="next-steps"></a>次のステップ
 
 * [LUIS DevOps のテスト](luis-concept-devops-testing.md)について学習します
-* [GitHub で DevOps for LUIS を実装する](luis-how-to-devops-with-github.md)方法を学習します
+* [GitHub で DevOps for LUIS を実装する](./luis-concept-devops-automation.md)方法を学習します

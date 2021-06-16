@@ -8,14 +8,15 @@ manager: dcscontentpm
 ms.date: 10/25/2019
 ms.service: storage
 ms.subservice: files
+ms.custom: devx-track-azurepowershell
 services: storage
 tags: ''
-ms.openlocfilehash: d8cc0cb7df4bb7bfff5a6b9d2f159cb674532927
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 31e102b1b603e3f24427da427a3149271148627c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789755"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664292"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure ファイル共有 - Azure ファイル共有からファイルを削除できない
 

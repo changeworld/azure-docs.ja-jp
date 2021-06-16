@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b815914d4a34d50e2bb566097620ee29e15f957
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389452"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677528"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
@@ -215,6 +215,6 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
 
 - [Azure DNS で未解決の DNS レコードを防ぐ](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [Azure App Service でカスタム ドメインを追加するときにドメイン検証 ID を使用する](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
+- [Azure App Service でカスタム ドメインを追加するときにドメイン検証 ID を使用する](../../app-service/app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id)
 
 - [クイック スタート: Azure PowerShell を使用して最初の Resource Graph クエリを実行します](../../governance/resource-graph/first-query-powershell.md)

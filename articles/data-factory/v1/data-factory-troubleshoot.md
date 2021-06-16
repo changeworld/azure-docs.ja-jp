@@ -7,13 +7,14 @@ ms.date: 01/10/2018
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
+ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 70c1aecd358b52a7b5b62ba7cb8f3badffef2998
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc21ea65e410c71641d81794cbfe2ff256e18af
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779921"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110674922"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]

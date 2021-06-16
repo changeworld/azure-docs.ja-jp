@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: ac79e1eb5c4f7448dc17804cd8aac3cba582497e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0567597841719df4b749ede3d71dbd7cf57a78ba
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88509945"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675738"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>パブリック IPv6 アドレスのプレフィックスを予約する
 Azure Virtual Network (VNet) の IPv6 により、仮想ネットワークやインターネットで IPv6 接続や IPv4 接続を使用するアプリケーションを Azure 内でホストできます。 個々の IPv6 アドレスを予約することに加え、Azure IPv6 アドレスの連続する範囲 (IP プレフィックスと呼ばれます) を予約して使用することもできます。 この記事では、Azure PowerShell と CLI を使用して IPv6 パブリック IP アドレスおよびアドレス範囲を作成する方法について説明します。

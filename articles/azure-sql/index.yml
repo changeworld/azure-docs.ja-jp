@@ -6,20 +6,20 @@ metadata:
   description: Azure SQL は、クラウド内の SQL Server データベース エンジン製品のファミリで、Azure SQL Database のフルマネージド データベース、Azure SQL Managed Instance のフルマネージド インスタンス、または Azure の仮想マシンにインストールされた SQL Server です。
   services: sql-database
   ms.service: sql-database
-  ms.subservice: service
+  ms.subservice: service-overview
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: landing-page
-  author: stevestein
-  ms.author: sstein
+  author: MashaMSFT
+  ms.author: mathoma
   ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 8f462fc8b37b3f84d0e74897de76fc92d1c08fb8
-  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+  ms.openlocfilehash: 45e35a554bd00344574b4d1efe19377f2e0ae2e5
+  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/28/2021
-  ms.locfileid: "108147717"
+  ms.lasthandoff: 05/29/2021
+  ms.locfileid: "110707463"
 landingContent:
 - title: Azure SQL データベース
   linkLists:

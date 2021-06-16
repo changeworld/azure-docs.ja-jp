@@ -8,12 +8,13 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 9f8793b6ea0ba454b66c525c2d53c1de2197d539
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6eb802d560e168d64a1f9abe0301f8038203ee54
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440209"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028489"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>PowerShell を使用して Azure Image Builder サービスのアクセス許可を構成する
 
@@ -22,20 +23,6 @@ ms.locfileid: "102440209"
 Azure VM Image Builder で、マネージド イメージまたは Shared Image Gallery にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートまたはパブリック コンテナーを読み取るためのアクセス許可が必要です。
 
 イメージを構築する前にアクセス許可と特権を設定する必要があります。 以下のセクションでは、PowerShell を使用して考えられるシナリオを構成する方法について詳しく説明します。
-
-> [!IMPORTANT]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="register-the-features"></a>機能の登録
-
-まず、Azure Image Builder サービスに登録する必要があります。 登録すると、ステージング リソース グループを作成、管理、削除するためのアクセス許可がこのサービスに付与されます。 このサービスには、イメージのビルドに必要なグループにリソースを追加する権限もあります。
-
-```powershell-interactive
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-```
 
 ## <a name="create-an-azure-user-assigned-managed-identity"></a>Azure ユーザー割り当てマネージド ID を作成する
 
@@ -133,7 +120,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 ```powershell-interactive
 $sub_id = "<Subscription ID>"
-# Resource group - For Preview, image builder will only support creating custom images in the same Resource Group as the source managed image.
+# Resource group - image builder will only support creating custom images in the same Resource Group as the source managed image.
 $imageResourceGroup = "<Resource group>"
 $identityName = "aibIdentity"
 

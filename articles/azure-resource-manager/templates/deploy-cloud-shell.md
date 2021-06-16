@@ -3,12 +3,12 @@ title: Cloud Shell を使用したテンプレートのデプロイ
 description: Azure Resource Manager と Azure Cloud Shell を使用してリソースを Azure にデプロイします。 リソースは Azure Resource Manager テンプレート (ARM テンプレート) で定義されます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7697eb0a6786a07546bb0de679df69d64da30b1b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bd597c2cb29120e680493a99aac33f146940bc19
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742348"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957888"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Azure Cloud Shell から ARM テンプレートをデプロイする
 
@@ -118,4 +118,4 @@ ms.locfileid: "108742348"
 ## <a name="next-steps"></a>次のステップ
 
 - デプロイ コマンドの詳細については、「[ARM テンプレートと Azure CLI でリソースをデプロイする](deploy-cli.md)」および「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
-- テンプレートをデプロイする前に変更をプレビューするには、「[ARM テンプレートのデプロイの what-if 操作](template-deploy-what-if.md)」を参照してください。
+- テンプレートをデプロイする前に変更をプレビューするには、「[ARM テンプレートのデプロイの what-if 操作](./deploy-what-if.md)」を参照してください。

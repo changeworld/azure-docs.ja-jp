@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
-ms.custom: subject-armqs
-ms.openlocfilehash: 13d419623bd6c2939ddfedd29f29527028ced74c
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.custom: subject-armqs, devx-track-azurepowershell
+ms.openlocfilehash: 2870592d7026a2bdf3cf2525f9e9401886843d9f
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813256"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811056"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>クイックスタート: NAT ゲートウェイの作成 - ARM テンプレート
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/nat-gateway-1-vm)からのものです。
 
 このテンプレートは、以下のリソースを作成するように構成されています。
 

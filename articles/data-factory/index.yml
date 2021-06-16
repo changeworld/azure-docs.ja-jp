@@ -11,12 +11,12 @@ metadata:
   author: jonburchel
   ms.author: jburchel
   ms.date: 10/02/2019
-  ms.openlocfilehash: 00cf99e97df08bde67e31250b4222fc68f0140c6
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 754cdd8b8f2029814f69b12166d93adf03576911
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110075000"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111957181"
 landingContent:
 - title: Azure Data Factory について
   linkLists:
@@ -59,7 +59,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure Data Factory の概要
-      url: https://docs.microsoft.com/learn/modules/intro-to-azure-data-factory/
+      url: /learn/modules/intro-to-azure-data-factory/
 - title: データの移動
   linkLists:
   - linkListType: concept

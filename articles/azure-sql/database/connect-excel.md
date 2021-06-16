@@ -4,20 +4,20 @@ description: Microsoft Excel を Azure SQL Database または Azure SQL Managed 
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: connect
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: mathoma
 ms.date: 05/29/2020
-ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 910be324a43f5d6ed7f4da4dee1e4376cf332c65
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91444029"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694743"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Azure SQL Database または Azure SQL Managed Instance 内のデータベースに Excel を接続し、レポートを作成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

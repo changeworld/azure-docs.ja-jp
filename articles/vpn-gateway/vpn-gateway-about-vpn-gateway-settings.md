@@ -7,12 +7,13 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 5d89af190f27e845835986c27ca028fcde69e8a9
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3829202dab08b2f0a18db7d6092623cccd336e6a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204173"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662072"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 

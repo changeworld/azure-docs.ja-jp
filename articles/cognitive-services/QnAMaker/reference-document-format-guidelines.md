@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: e45720543a5fc5f3293a2aae0c2740af1048384a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 53baa580d2f2c68fa32f38bddb07b5d9e362d190
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465231"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787751"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>インポートされたドキュメントおよび URL の形式のガイドライン
 
@@ -92,7 +92,7 @@ Answer2
 
 ### <a name="structured-txt-tsv-and-xls-files"></a>構造化 *TXT*、*TSV*、および *XLS* ファイル
 
-構造化 *.txt*、 *.tsv*、または *.xls* ファイル形式の QnA を QnA Maker にアップロードして、ナレッジ ベースを作成または拡張することもできます。  これらはプレーン テキストでも、RTF または HTML のコンテンツが含まれていても構いません。 [QnA ペア](/how-to/edit-knowledge-base#question-and-answer-pairs)には、QnA ペアをカテゴリにグループ化するために使用できる省略可能なメタデータ フィールドがあります。
+構造化 *.txt*、 *.tsv*、または *.xls* ファイル形式の QnA を QnA Maker にアップロードして、ナレッジ ベースを作成または拡張することもできます。  これらはプレーン テキストでも、RTF または HTML のコンテンツが含まれていても構いません。 [QnA ペア](./How-To/edit-knowledge-base.md#question-and-answer-pairs)には、QnA ペアをカテゴリにグループ化するために使用できる省略可能なメタデータ フィールドがあります。
 
 | Question  | Answer  | メタデータ (1 つのキー: 1 つの値) |
 |-----------|---------|-------------------------|
@@ -122,7 +122,7 @@ Answer2
 
 ### <a name="structured-data-format-through-import"></a>インポートでの構造化データ形式
 
-ナレッジ ベースをインポートすると、既にあるナレッジ ベースの内容が置き換えられます。 インポートでは、データ ソース情報を含んだ .tsv 形式の構造化ファイルが必要となります。 この情報によって、QnA Maker は質問とその回答のペアをグループ化し、その帰属先となるデータ ソースを特定することができます。 [QnA ペア](/how-to/edit-knowledge-base#question-and-answer-pairs)には、QnA ペアをカテゴリにグループ化するために使用できる省略可能なメタデータ フィールドがあります。
+ナレッジ ベースをインポートすると、既にあるナレッジ ベースの内容が置き換えられます。 インポートでは、データ ソース情報を含んだ .tsv 形式の構造化ファイルが必要となります。 この情報によって、QnA Maker は質問とその回答のペアをグループ化し、その帰属先となるデータ ソースを特定することができます。 [QnA ペア](./How-To/edit-knowledge-base.md#question-and-answer-pairs)には、QnA ペアをカテゴリにグループ化するために使用できる省略可能なメタデータ フィールドがあります。
 
 | Question  | Answer  | source| メタデータ (1 つのキー: 1 つの値) |
 |-----------|---------|----|---------------------|

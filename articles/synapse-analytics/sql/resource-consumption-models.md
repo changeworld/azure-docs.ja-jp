@@ -9,12 +9,13 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: ddd49f26194c52cf0218f21d915ff078aee70c6b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 253f0a3b8ae6e730b308a55224e15ff31779e43b
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164671"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669686"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL のリソースの使用
 

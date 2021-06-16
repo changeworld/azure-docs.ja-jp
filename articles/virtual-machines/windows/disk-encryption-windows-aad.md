@@ -8,13 +8,13 @@ ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 081ead434dbdc3b9c348e3fa35068a638bab6e62
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 72c210ae08ad794267433891aa5bf498d70bf464
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776863"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669207"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows VM における Azure AD を使用した Azure Disk Encryption (以前のリリース)
 

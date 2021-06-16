@@ -3,21 +3,21 @@ title: 'クイックスタート: Java デーモンからの Microsoft Graph の
 titleSuffix: Microsoft identity platform
 description: このクイックスタートでは、Java アプリでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を、アプリ自体の ID を使用して呼び出す方法について説明します
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 01/22/2021
-ms.author: nacanuma
+ms.author: mtillman
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 196b80a704b8a270a4cbb7d3505d5f9be1e23479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 866fc8c0a44f9380dd38227d2b5a2d2b332ec8b4
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99820324"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075459"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>クイックスタート: トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 

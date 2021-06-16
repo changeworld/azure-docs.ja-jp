@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3e3f729243f4bcd8f40ca681bd1c0d7675696e27
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1d2c2f3131c8ee8fb73dfd52df3d7545b52b0044
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455151"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075153"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
@@ -164,7 +164,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |`response_type`| 必須 | `id_token` の追加により、アプリケーションが `/authorize` エンドポイントからの応答で ID トークンを要求していることがサーバーに示されます。  |
 |`scope`| 必須 | ID トークン用であり、更新して ID トークン スコープ (`openid` とオプションの `profile` および `email`) を含める必要があります。 |
 |`nonce`| 必須|     要求に含まれる、アプリによって生成される値。この値は、結果の id_token に要求として含まれます。 アプリはこの値を確認することにより、トークン リプレイ攻撃を緩和できます。 通常、この値はランダム化された一意の文字列であり、要求の送信元を特定する際に使用できます。 |
-|`response_mode`| 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 既定では、認可コードのみの場合は `query` に設定されますが、要求に id_token `response_type` を含める場合は `fragment` に設定します。  ただし、特に `http:/localhost` をリダイレクト URI として使用している場合は、アプリで `form_post` を使用することをお勧めします。 |
+|`response_mode`| 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 既定では、認可コードのみの場合は `query` に設定されますが、要求に id_token `response_type` を含める場合は `fragment` に設定します。  ただし、特に `http://localhost` をリダイレクト URI として使用している場合は、アプリで `form_post` を使用することをお勧めします。 |
 
 応答モードとして `fragment` を使用すると、ブラウザーでフラグメントが Web サーバーに渡されないため、リダイレクトからコードを読み取る Web アプリでは問題が発生する可能性があります。  このような状況では、すべてのデータがサーバーに送信されるようにするために、アプリで `form_post` 応答モードを使用してください。 
 

@@ -7,18 +7,19 @@ author: Ajayan1008
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8c52235a96a7f83d0bcecc2a9f9ba64c1e164a2
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 1a7127477be68d931efa2b0de69961f314b88879
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733084"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580183"
 ---
 # <a name="disaster-recovery-principles"></a>ディザスター リカバリーの原則
 

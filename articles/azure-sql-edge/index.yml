@@ -7,15 +7,15 @@ metadata:
   services: sql-edge
   ms.service: sql-edge
   ms.topic: landing-page
-  author: stevestein
-  ms.author: sstein
+  author: MashaMSFT
+  ms.author: mathoma
   ms.date: 05/19/2020
-  ms.openlocfilehash: 3a043b3e29352abd44d1b880f366d9fa8ccea4d2
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: fc04ed3b9e1411c2a4293b3e777969bd981abdbe
+  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90894468"
+  ms.lasthandoff: 05/29/2021
+  ms.locfileid: "110689082"
 landingContent:
 - title: SQL Edge
   linkLists:

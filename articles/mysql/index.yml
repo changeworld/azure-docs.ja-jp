@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: a9d05253ffbe452076e6a46d2f8a0f2d15ad1782
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: 94f0a30c070578a441940b701a7110f1b0bf76fe
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108770553"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110464131"
 landingContent:
 - title: Azure Database for MySQL について
   linkLists:
@@ -109,10 +109,14 @@ landingContent:
       url: concepts-migrate-import-export.md
   - linkListType: how-to-guide
     links:
+    - text: MySQL Workbench を使用して RDS MySQL を移行する
+      url: how-to-migrate-rds-mysql-workbench.md
     - text: データ移行サービスを使用して移行する
       url: howto-migrate-online.md
     - text: Azure データ移行ガイド
       url: https://datamigration.microsoft.com/scenario/mysql-to-azuremysql?step=1
+    - text: 一般的なエラーのトラブルシューティング
+      url: howto-troubleshoot-common-errors.md
 - title: アプリケーション開発
   linkLists:
   - linkListType: concept

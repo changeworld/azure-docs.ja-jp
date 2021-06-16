@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 04/15/2021
 ms.author: jaysoni
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2291bc88a90a703239764a2d5fda9b2889a7af7
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 83ad2e7a8f138451063eef1746555563970e125e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319667"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681814"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 
@@ -92,7 +92,7 @@ App Service のカスタム ドメイン機能を使用することは、トラ�
 
 リダイレクトと ARRAffinity の Cookie ドメイン不一致の両方の問題については、所定の方法に従うことができます。 この方法では、カスタム ドメインの DNS ゾーンへのアクセス権が必要になります。
 
-**手順 1**: App Service でカスタム ドメインを設定し、[CNAME および TXT DNS レコード](../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)を追加してドメインの所有権を確認します。
+**手順 1**: App Service でカスタム ドメインを設定し、[CNAME および TXT DNS レコード](../app-service/app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id)を追加してドメインの所有権を確認します。
 レコードは次のようになります。
 -  `www.contoso.com` IN CNAME `contoso.azurewebsite.net`
 -  `asuid.www.contoso.com` IN TXT "`<verification id string>`"

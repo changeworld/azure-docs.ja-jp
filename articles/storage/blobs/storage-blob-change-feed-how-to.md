@@ -1,20 +1,20 @@
 ---
 title: Azure Blob Storage の変更フィードを処理する | Microsoft Docs
 description: .NET クライアント アプリケーションで変更フィード ログを処理する方法を学習します
-author: normesta
-ms.author: normesta
+author: tamram
+ms.author: tamram
 ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 857e5ba3c4251e49dd84726697164f87e0a96bc6
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89568253"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653180"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードを処理する
 

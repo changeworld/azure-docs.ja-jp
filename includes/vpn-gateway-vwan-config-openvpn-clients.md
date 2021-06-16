@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ee9dc61169b182356e8ed272bc64785e9c3f6384
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f6576a6aa4be42705ce8b8c12d7cee2bdb87bfd0
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073483"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579611"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows クライアント
 

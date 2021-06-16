@@ -5,12 +5,13 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: ad357c53d64a9bd9fdb5822e7a7c6a94b60a3ee1
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ae7eaa628e0e3cfc256b7cd01035d9e068f47867
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732328"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671119"
 ---
 # <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 

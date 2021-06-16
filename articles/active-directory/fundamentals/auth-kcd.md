@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc182be0d92f3b15d1546017a164d0a6061e4bbf
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 453779c1289bb64749e7f3632c02d79d1522c88f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175822"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966096"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows 認証 - Azure Active Directory による Kerberos の制約付き委任
 
@@ -52,7 +52,6 @@ Azure Active Directory アプリケーション プロキシによって、ア�
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>Azure AD による Windows 認証 (KCD) を実装する
 
-* [アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) 
+* [アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md) 
 
 * [Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md)
-

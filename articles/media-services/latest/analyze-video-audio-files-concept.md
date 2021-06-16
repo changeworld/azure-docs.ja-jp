@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: 97aff4bf97a8d79813afb1bd5b7a5e14f6d545c4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 83e739eb643896de710b5179b78a6305adf84465
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375281"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949267"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Azure Media Services を使用してビデオ ファイルとオーディオ ファイルを分析する
 
@@ -21,7 +21,7 @@ ms.locfileid: "110375281"
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure Media Services v3 を使うと、Video Indexer でビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 この記事では、これらの分析情報の抽出に使用される Media Services v3 アナライザーのプリセットについて説明します。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。 どのような場合に Video Indexer や Media Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../video-indexer/compare-video-indexer-with-media-services-presets.md)をご覧ください。
+Azure Media Services v3 を使うと、Video Indexer でビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 この記事では、これらの分析情報の抽出に使用される Media Services v3 アナライザーのプリセットについて説明します。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。 どのような場合に Video Indexer や Media Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)をご覧ください。
 
 オーディオ アナライザーのプリセットには、基本と標準の 2 つのモードがあります。 次の表の違いの説明を参照してください。
 
@@ -29,7 +29,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
 
-重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Video Indexer サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Video Indexer のコンプライアンス、プライバシー、セキュリティについては、Azure の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../video-indexer/faq.md)で確認できます。 Video Indexer を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
+重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Video Indexer サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Video Indexer のコンプライアンス、プライバシー、セキュリティについては、Azure の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)で確認できます。 Video Indexer を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
 
 ## <a name="built-in-presets"></a>組み込みのプリセット
 

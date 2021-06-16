@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 4ec21086ee94610be1d9cf5da7b64c837b5311a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30bd445940187d3514dc4b7024d3dbb8f7d920b2
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381530"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536727"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Blob Storage のバインドの概要
 
@@ -36,7 +36,7 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 
 #### <a name="storage-extension-5x-and-higher"></a>ストレージ拡張機能 5.x 以降
 
-Storage のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2)として入手できます。 このプレビューでは、[シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更されます。これにより、`WindowsAzure.Storage` と `Microsoft.Azure.Storage` の型が [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) の新しい型に置き換えられます。
+Storage のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.3)として入手できます。 このプレビューでは、[シークレットではなく ID を使用して接続する](./functions-reference.md#configure-an-identity-based-connection)機能が導入されています。 .NET アプリケーションの場合は、バインドできる型も変更されます。これにより、`WindowsAzure.Storage` と `Microsoft.Azure.Storage` の型が [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) の新しい型に置き換えられます。
 
 > [!NOTE]
 > このプレビュー パッケージは拡張機能バンドルに含まれていないため、手動でインストールする必要があります。 .NET アプリの場合は、パッケージへの参照を追加します。 その他のすべてのアプリの種類については、[拡張機能の更新]に関する記事を参照してください。

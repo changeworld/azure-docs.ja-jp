@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance プール (プレビュー) について説明します。これは、より小規模な SQL Server データベースをクラウドに大規模に移行して複数のマネージド インスタンスを管理するための便利でコスト効率に優れた方法を提供する機能です。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein
+author: urosmil
+ms.author: urmilano
+ms.reviewer: mathoma
 ms.date: 09/05/2019
-ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b84ff58517d413be884b81b6498f5b626ba02016
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97347066"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697243"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL Managed Instance プール (プレビュー) とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

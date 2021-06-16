@@ -3,17 +3,17 @@ title: ARM テンプレートを使用して SQL Server VM を作成する
 description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure 仮想マシン (VM) に SQL Server を作成する方法を説明します。
 author: MashaMSFT
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
 ms.subservice: deployment
-ms.openlocfilehash: 8ba1966590b1b1af88366b8545136de8eff18ca1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 89df657e1b1e9164769880ff29217833d6e96c9b
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755641"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006277"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して SQL Server VM を作成する
 
@@ -36,7 +36,7 @@ SQL Server VM ARM テンプレートには、次のものが必要です。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/sql-vm-new-storage/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sqlvirtualmachine/sql-vm-new-storage/azuredeploy.json":::
 

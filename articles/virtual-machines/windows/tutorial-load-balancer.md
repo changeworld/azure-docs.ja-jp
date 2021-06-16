@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: d6c872ecfbad6cb8bb01ad5a7c3df8c47aadaebe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 891c114ea9d2272fd739bafdc16fd3ef2c85acbe
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549109"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668042"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure 内で Windows 仮想マシンの負荷分散を行って高可用性アプリケーションを作成する
 負荷分散では、着信要求を複数の仮想マシンに分散させることで高可用性を提供します。 このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。

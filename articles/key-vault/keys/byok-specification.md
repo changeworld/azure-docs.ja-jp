@@ -10,12 +10,13 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 141abea0c0946c98b6dfe627f32f01682a18be44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1005176576e2c0db8450dda8ea15d7b3d6934c88
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581025"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665108"
 ---
 # <a name="bring-your-own-key-specification"></a>Bring Your Own Key の仕様
 

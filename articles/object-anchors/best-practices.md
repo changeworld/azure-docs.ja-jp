@@ -6,18 +6,18 @@ ms.author: crtreasu
 ms.date: 03/12/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6b9546843d88a5a7329120cca86d685d8abf3460
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0a092b45b341af37e4251951b06d1211fa6c600a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061929"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983800"
 ---
 # <a name="best-practices"></a>ベスト プラクティス
 
 最良の結果を得るために、これらの手順のいくつかを試してみることをお勧めします。
 
-## <a name="ingestion"></a>データの取り込み
+## <a name="conversion"></a>変換
 
 - 物理オブジェクトのディメンションを確認します。 Azure Object Anchors は、最小ディメンションが、推奨されている 1 m から 10 m の範囲内のオブジェクトで最もうまく機能します。
 - [**MeshLab**](https://www.meshlab.net/) のようなソフトウェアで 3D モデルを調べて、次の詳細を確認します。

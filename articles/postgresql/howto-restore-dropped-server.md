@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/26/2021
-ms.openlocfilehash: 0cfbf6fa6a329e2038120703e6fe29fca23bfa06
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 544bf2ff63b81842b942b645dc74a9f5ac838461
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018034"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966276"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>ドロップした Azure Database for PostgreSQL サーバーを復元する
 
@@ -37,7 +37,7 @@ ms.locfileid: "108018034"
 3. **PostgreSQL サーバーの削除** イベントを選択し、 **[JSON] タブ** を選択します。JSON 出力の `resourceId` 属性と `submissionTimestamp` 属性をコピーします。 resourceId の形式は次のとおりです: `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver`。
 
 
- 1. PostgreSQL の [[Create Server REST API]\(サーバー REST API の作成\) ページ](https://docs.microsoft.com/rest/api/postgresql/singleserver/servers/create)を参照し、緑色で強調表示されている **[試してみる]** タブを選択します。 Azure のアカウントを使用してサインインします。
+ 1. PostgreSQL の [[Create Server REST API]\(サーバー REST API の作成\) ページ](/rest/api/postgresql/singleserver/servers/create)を参照し、緑色で強調表示されている **[試してみる]** タブを選択します。 Azure のアカウントを使用してサインインします。
 
  2. 前の手順 3 でキャプチャした resourceId 属性の JSON 値に基づいて、**resourceGroupName**、**serverName** (削除されたサーバー名)、**subscriptionId** の各プロパティを指定します。 次の図に示すように、api-version プロパティはあらかじめ設定されており、そのまま残すことができます。
 

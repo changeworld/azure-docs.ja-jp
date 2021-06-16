@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b80100216003e91fde54b5e555bafb755c942810
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b686eac137a0531befea6fe42c31112c46b18cc9
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98682921"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028651"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal からプライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 
@@ -91,5 +91,5 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [プライベート リンクに関する FAQ](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [プライベート リンクに関する FAQ](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

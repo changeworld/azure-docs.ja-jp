@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/19/2021
+ms.date: 06/11/2021
 ms.author: aahi
 keywords: テキスト マイニング, センチメント分析, テキスト分析
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 527936e1da385a3622358fe12efa0f87af4b3fd9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dadf293369071ff4f6dd95c3167754f16e952864
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765096"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026923"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-and-rest-api"></a>クイックスタート: Text Analytics クライアント ライブラリおよび REST API を使用する
 

@@ -8,13 +8,13 @@ ms.collection: windows
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: c7340cde78f6be6853ec50163cfd68cc1fd2ceec
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 802194a79ac697cd92bc5a875c2a5620b71bd6a3
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087366"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669190"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption のサンプル スクリプト
 

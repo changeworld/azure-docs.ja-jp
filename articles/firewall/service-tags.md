@@ -7,12 +7,13 @@ ms.service: firewall
 ms.topic: article
 ms.date: 4/5/2021
 ms.author: victorh
-ms.openlocfilehash: 3cc1e85a18eab1adb0a1dd8307a074cb43ba0c70
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d32d5daf67fe7ab30f3ac1b132bd74edd78e8712
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529540"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700494"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure Firewall サービス タグ
 

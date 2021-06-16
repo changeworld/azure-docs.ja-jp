@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e8c926c2fbc5b19f67fb78d321ee3293c73be939
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cd58ae6aa0083b0f2a02ef1c008e76f92f39b766
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869349"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676303"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 

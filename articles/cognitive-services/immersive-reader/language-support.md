@@ -5,17 +5,17 @@ description: イマーシブ リーダーで利用できる人間言語につい
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metang
-ms.openlocfilehash: a706f3b7cde5e7f3a19d82ff4b2bb7a7d2fa7913
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 66cf989b563b6798e415ad6feb0a906c0a3a1cde
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377712"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893950"
 ---
 # <a name="language-support-for-immersive-reader"></a>イマーシブ リーダーの言語サポート
 

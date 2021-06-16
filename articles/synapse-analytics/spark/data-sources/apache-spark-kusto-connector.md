@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/19/2020
 ms.reviewer: ManojRaheja
 author: midesa
-ms.openlocfilehash: 9d2ddb263ac5c8459b2d15665da8243aed52e94a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 5b7707354d7bf63671e21d1adbaebc2ef8d71d0e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795493"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952239"
 ---
 # <a name="azure-data-explorer-kusto-connector-for-apache-spark"></a>Apache Spark 用の Azure Data Explorer (Kusto) コネクタ
 Apache Spark 用の Azure Data Explorer (Kusto) コネクタは、Kusto クラスターと Spark の間でデータを効率的に転送するように設計されています。 このコネクタは、Python、Java、.NET で使用できます。 これは、Azure Synapse Apache Spark 2.4 ランタイムに組み込まれています。
@@ -78,7 +78,7 @@ df.write \
     .mode("Append") \
     .save()
 ```
-さらに、追加のインジェスト プロパティを指定することで、データをバッチ書き込みすることができます。 サポートされているインジェスト プロパティの詳細については、[Kusto インジェスト プロパティの参照資料](https://docs.microsoft.com/azure/data-explorer/ingestion-properties)に関するページを参照してください。
+さらに、追加のインジェスト プロパティを指定することで、データをバッチ書き込みすることができます。 サポートされているインジェスト プロパティの詳細については、[Kusto インジェスト プロパティの参照資料](/azure/data-explorer/ingestion-properties)に関するページを参照してください。
 
 
  ```python

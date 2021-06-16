@@ -6,14 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/08/2021
+ms.date: 06/10/2021
 ms.author: alkohli
-ms.openlocfilehash: ed539df9fec3c66b3881257ff1ce68d03cf4c382
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5c9874324a11f9416806c22a3153c1ee4e8d442
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107878598"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111981957"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 

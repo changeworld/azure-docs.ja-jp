@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: 72bff0ff2974dda93c7d25027efa82b9d8d1d629
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: 4eba6315029b9dd720e47fc46d7fa64a0ee8fba9
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108772659"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110477952"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -31,12 +31,16 @@ landingContent:
       url: concepts-twins-graph.md
     - text: クエリ言語
       url: concepts-query-language.md
-- title: クイックスタートの概要
+- title: Azure Digital Twins Explorer を開始する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: サンプル シナリオの探索
+    - text: Azure Digital Twins Explorer を開始する
       url: quickstart-azure-digital-twins-explorer.md
+  - linkListType: get-started
+    links:
+    - text: Azure Digital Twins Explorer
+      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer
 - title: チュートリアルによる掘り下げ
   linkLists:
   - linkListType: tutorial
@@ -85,10 +89,6 @@ landingContent:
     links:
     - text: エンドツーエンドのサンプル
       url: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
-  - linkListType: sample
-    links:
-    - text: Azure Digital Twins エクスプローラー (サンプル)
-      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer
   - linkListType: sample
     links:
     - text: DTDL 検証ツール (サンプル)

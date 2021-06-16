@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4ff717a49ba9c9b4d66e54e5eae1248af3fcea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b5bbe10c07897c1e33dc4c5a156bc5acd0d7779
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579367"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110584877"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -283,7 +283,7 @@ Azure AD では、次の場合に監査ログにエントリが追加されま�
 ロールバックを行うには、管理者が Azure Active Directory ポータルにサインインし、目的の強力な認証方法を選択して、有効にするオプションを **[いいえ]** に変更する必要があります。 このプロセスにより、すべてのユーザーのパスワードなし機能が無効になります。
 
 FIDO2 セキュリティ デバイスを既に登録しているユーザーには、次回のサインイン時に、セキュリティ デバイスの使用を求めるメッセージが表示され、次のエラーが表示されます。
-
+  
 ![別のサインイン方法を選択する](./media/howto-authentication-passwordless-deployment/passwordless-choose-sign-in.png)
 
 ## <a name="deploy-and-troubleshoot-passwordless-authentication"></a>パスワードレス認証のデプロイとトラブルシューティング

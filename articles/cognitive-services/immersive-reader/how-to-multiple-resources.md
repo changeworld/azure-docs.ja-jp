@@ -4,18 +4,18 @@ titleSuffix: Azure Applied AI Services
 description: このチュートリアルでは、複数のイマーシブ リーダー リソースを使用して、イマーシブ リーダーを起動する Node.js アプリケーションを作成します。
 author: skamal
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.author: skamal
 ms.custom: devx-track-js
-ms.openlocfilehash: 2b8258b5235deac0f6ebc03b1da4d28bb2439a82
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d324df663aa4c955a65e6e1cef7b4ab167c50d11
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373826"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888233"
 ---
 # <a name="integrate-multiple-immersive-reader-resources"></a>複数のイマーシブ リーダー リソースを統合する
 

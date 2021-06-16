@@ -9,12 +9,12 @@ ms.custom:
 - subject-armqs
 - references_regions
 - mode-arm
-ms.openlocfilehash: b190020b079957337b197074637f5f65c9dc80ba
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 95a00d4de266984b0a91bdd04cc2f20be15f63ad
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "110059368"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004549"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Blockchain Service メンバーを作成する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/blockchain-asaservice/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.blockchain/blockchain-asaservice/azuredeploy.json":::
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure にサインインして、テンプレートを開くには、次のリンクを選択します。
 
-    [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.blockchain%2Fblockchain-asaservice%2FFazuredeploy.json)
+    [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.blockchain%2Fblockchain-asaservice%2Fazuredeploy.json)
 
 1. Azure Blockchain Service のメンバーの設定を選択します。
 

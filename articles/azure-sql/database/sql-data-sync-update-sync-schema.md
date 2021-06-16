@@ -3,20 +3,20 @@ title: SQL データ同期でスキーマ変更のレプリケーションを自
 description: Azure SQL データ同期でスキーマ変更のレプリケートを自動化する方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 11/14/2018
-ms.openlocfilehash: f9997ea737b96185b31a7f51996a396fb5fc46c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b165850106d674e001349711c34f3f7479ab831f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790187"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707651"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL データ同期でスキーマ変更のレプリケートを自動化する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

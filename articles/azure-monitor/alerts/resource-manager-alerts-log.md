@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: 19bbeba3db7e3df5ea5120d3562f24b447848f7f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d76631313f425785b692c34629a6d408278e76b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044036"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949440"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Azure Monitor のログ アラート ルール用の Resource Manager テンプレートのサンプル
-この記事には、Azure Monitor でログ クエリ アラートを作成および構成するための [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)のサンプルが含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure Monitor でログ クエリ アラートを作成および構成するための [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)のサンプルが含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

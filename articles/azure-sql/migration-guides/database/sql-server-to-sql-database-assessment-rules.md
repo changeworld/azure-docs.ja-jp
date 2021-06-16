@@ -6,16 +6,16 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: MashaMSFT
+author: rajeshsetlem
+ms.author: rsetlem
+ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: c407b62b5f0308fbb6d9ff7223a3554ca09592db
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7046ac7852585a51174c774a0ef2f1150a72ae1f
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027212"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591964"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>SQL Server から Azure SQL Database に移行するための評価ルール
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]

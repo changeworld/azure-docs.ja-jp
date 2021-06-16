@@ -2,22 +2,22 @@
 title: Azure Active Directory におけるアプリに対する OIDC ベースのシングル サインオン (SSO) について理解する
 description: Azure Active Directory におけるアプリに対する OIDC ベースのシングル サインオン (SSO) について理解する。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/19/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: arajpathak7
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 990e0c09f8a49b83bc68d7123f5f8146a3551575
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 8c98449368a19f2bbc9d845539acc5b1c015ffac
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374541"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076224"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>OIDC ベースのシングル サインオンについて理解する
 アプリケーション管理の[クイックスタート シリーズ](view-applications-portal.md)では、アプリケーションの ID プロバイダー (IdP) として Azure AD を使用する方法について学習しました。 この記事では、OpenID Connect 標準を使用してシングル サインオンを実装するアプリについて詳しく説明します。 

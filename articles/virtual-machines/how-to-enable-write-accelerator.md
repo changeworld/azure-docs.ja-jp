@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: 827643866c23583051bc290c2c50bed3f1bdd421
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8658845a3f5a0e9913536a73850d0cf6442e69d3
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737916"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669514"
 ---
 # <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 

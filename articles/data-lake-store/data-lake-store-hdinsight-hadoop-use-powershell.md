@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b7cb9d5c5c2ca850678d3f3194a9af8de526ada4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6fcf0dbff9de4bee2d83d824dfd4a724f57039dd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92103392"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704109"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を (追加のストレージとして) 使用する HDInsight クラスターを作成する
 

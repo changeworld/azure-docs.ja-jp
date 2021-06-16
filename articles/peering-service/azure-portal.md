@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 04/07/2021
 ms.author: gatharej
-ms.openlocfilehash: 0b351b1fe4ad9492c414dd31789b8dd0029f9638
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: b75c0ec5be4ac26189a0e847a58cbe81461c5ff2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202739"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952462"
 ---
 # <a name="create-peering-service-connection-using-the-azure-portal"></a>Azure portal を使用して Peering Service 接続を作成する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに[ア�
 
 ### <a name="connectivity-provider"></a>接続プロバイダー
 
-任意の [Azure Peering Service プロバイダー](https://docs.microsoft.com/azure/peering-service/location-partners)と協力して Peering Service を取得することで、お使いのネットワークを最適な方法で Microsoft ネットワークに接続することができます。
+任意の [Azure Peering Service プロバイダー](./location-partners.md)と協力して Peering Service を取得することで、お使いのネットワークを最適な方法で Microsoft ネットワークに接続することができます。
 
 
 

@@ -2,14 +2,13 @@
 title: Azure で BareMetal インフラストラクチャ インスタンスを接続する
 description: Azure portal または Azure CLI を使用して BareMetal インスタンスを識別および操作する方法について説明します。
 ms.topic: how-to
-ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: 8f28579a83c45692e5d1eade2e4632ff8c1c8e42
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5ae1a075254a8bcfd1f5978a5d41190bd34bf84d
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139617"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576419"
 ---
 # <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Azure で BareMetal インフラストラクチャ インスタンスを接続する
 

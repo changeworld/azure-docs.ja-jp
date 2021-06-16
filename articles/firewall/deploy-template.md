@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/10/2021
 ms.author: victorh
-ms.openlocfilehash: d2c3a1501c2489b5d747ac5a64bcaef0c725bad0
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: d0aa88ef44f1d63593a22c657b781720622465d6
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752717"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033565"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>クイック スタート:可用性ゾーンを使用して Azure Firewall をデプロイする - ARM テンプレート
 
@@ -41,7 +41,7 @@ Azure Firewall の詳細については、[Azure portal を使用した Azure Fi
 
 このテンプレートは、可用性ゾーンを使用して Azure Firewall を作成すると共に、Azure Firewall をサポートするために必要なリソースも作成します。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azurefirewall-with-zones-sandbox)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azurefirewall-with-zones-sandbox/azuredeploy.json":::
 

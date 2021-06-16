@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a5388d15b18180539eb95990a29f7ddf4f1951
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 5c6611b7437bdaf873caaaf4722e30fb644b5f13
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739550"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617245"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
@@ -154,4 +154,4 @@ B2B ゲスト ユーザーが許可制御を満たしている場合は、[サ�
 - [Azure AD B2B コラボレーションとは](./what-is-b2b.md)
 - [Identity Protection と B2B ユーザー](../identity-protection/concept-identity-protection-b2b.md)
 - [External Identities の価格](https://azure.microsoft.com/pricing/details/active-directory/)
-- [よく寄せられる質問 (FAQ)](./faq.md)
+- [よく寄せられる質問 (FAQ)](./faq.yml)

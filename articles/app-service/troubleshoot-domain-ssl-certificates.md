@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c2c09e1a30c9cef4d65b2d5443481c84ab779af8
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: ba266c5a4ec5ffb84ee02e9c1904423f01d333e5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833834"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670913"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング
 
@@ -109,7 +109,7 @@ Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md
 
 **原因 1 の解決策**
 
-- A レコードを追加した場合は、必ず TXT レコードも追加するようにします。 詳細については、「[A レコードを作成する](./app-service-web-tutorial-custom-domain.md#create-the-a-record)」を参照してください。
+- A レコードを追加した場合は、必ず TXT レコードも追加するようにします。 詳細については、「[A レコードを作成する](./app-service-web-tutorial-custom-domain.md#4-create-the-dns-records)」を参照してください。
 - アプリのためにルート ドメインを使用する必要がない場合は、A レコードではなく CNAME レコードを使用することをお勧めします。
 - 同じドメインのために CNAME レコードと A レコードの両方を使用しないでください。 この問題によって競合が発生し、ドメインの解決が妨げられる場合があります。 
 

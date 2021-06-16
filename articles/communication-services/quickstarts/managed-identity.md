@@ -6,16 +6,16 @@ services: azure-communication-services
 author: peiliu
 ms.service: azure-communication-services
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 05/27/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: aedf54c8c958e96b2bbfa31652b4861ff452f75a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3433aceb4bc9bda10c11602a7a45f28a5882f479
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307441"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585747"
 ---
 # <a name="use-managed-identities"></a>マネージド ID の使用
 マネージド ID を使用して、Azure Communication Services を開始します。 Communication Services の ID および SMS SDK では、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。

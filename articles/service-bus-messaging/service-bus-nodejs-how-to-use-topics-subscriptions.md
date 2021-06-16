@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: e9d53c312f6e61d6384afc17dce023742ab6bd98
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 13664e2a465ae891666e9c296514dc18a14ed191
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743293"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950206"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-javascript"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (JavaScript)
 このチュートリアルでは、JavaScript プログラムの [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して、Service Bus トピックにメッセージを送信したり、そのトピックの Service Bus サブスクリプションからメッセージを受信したりする方法について説明します。
@@ -209,6 +209,6 @@ Azure portal で Service Bus 名前空間に移動し、下のペインでトピ
 次のドキュメントおよびサンプルを参照してください。 
 
 - [JavaScript 用の Azure Service Bus クライアント ライブラリ](https://www.npmjs.com/package/@azure/service-bus)
-- [JavaScript のサンプル](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [TypeScript のサンプル](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [JavaScript のサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript のサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 - [API リファレンス ドキュメント](/javascript/api/overview/azure/service-bus)

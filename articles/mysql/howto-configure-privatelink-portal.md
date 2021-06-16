@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: ce916336ea47cd223c10a8f664b2dc9806ed0a17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c1f9d565cd6e3bafd5caa36d8da9266a3f1edb6
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221028"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076332"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>ポータルを使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
-    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。|
     | パスワードの確認 | パスワードを再入力します。 |
     | **受信ポートの規則** |  |
     | パブリック受信ポート | 既定値 **[なし]** のままにします。 |

@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 717561614a3e42995bbce6746839fd9b7cbca37e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 34006afd79ef2c1bb8a1f552a7f8f9905b95d72f
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834860"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075549"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Chocolatey を使用して継続的配置を設定する
 
@@ -81,7 +81,7 @@ Automation アカウントは、米国東部 2、米国中南部、US Gov バー
 
 ## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>手順 2:VM 拡張機能を使用して Resource Manager テンプレートに応じて微調整する
 
-(PowerShell DSC VM 拡張機能を使用する) VM 登録の詳細については、この [Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)を参照してください。
+(PowerShell DSC VM 拡張機能を使用する) VM 登録の詳細については、この [Azure クイック スタート テンプレート](https://azure.microsoft.com/blog/automating-vm-configuration-using-powershell-dsc-extension/)を参照してください。
 この手順では、新しい VM を State Configuration ノードのリストのプル サーバーに登録します。 この登録の中で、ノードに適用するノード構成を指定します。 このノード構成は、現時点でプル サーバーに配置されている必要はありません。手順 4 で初めて実行してもかまいません。 ただし、この手順 2. でノードの名前と構成の名前を決定しておく必要があります。 この使用例では、ノードの名前は "isvbox" で、構成の名前は "ISVBoxConfig" です。 このため、(DeploymentTemplate.json で指定される) ノード構成の名前は、"ISVBoxConfig.isvbox" です。
 
 ## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>手順 3:プル サーバーに必要な DSC リソースを追加する

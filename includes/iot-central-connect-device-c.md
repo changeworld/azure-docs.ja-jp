@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 30ae12b256c776abcf9c0df36cb180a611a65cd1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c41f7ff83268782a11e625c8a4d9faa51ae0c909
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487160"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111896671"
 ---
 [![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 
@@ -102,7 +102,7 @@ int main(void)
 
     int numberOfIterations = 0;
 
-    // During startup, send the non-"writeable" properties.
+    // During startup, send the non-"writable" properties.
     PnP_TempControlComponent_ReportSerialNumber_Property(deviceClient);
     PnP_DeviceInfoComponent_Report_All_Properties(g_deviceInfoComponentName, deviceClient);
     PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHandle1, deviceClient);

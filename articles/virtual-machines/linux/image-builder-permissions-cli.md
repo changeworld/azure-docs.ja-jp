@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 996242ba7d1ce82d2db1c8e72b96af305b9c2a4a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607536"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028525"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Azure CLI を使用して Azure Image Builder サービスのアクセス許可を構成する
 
@@ -23,19 +23,8 @@ Azure VM Image Builder で、マネージド イメージまたは Shared Image 
 
 イメージを構築する前にアクセス許可と特権を設定する必要があります。 以下のセクションでは、Azure CLI を使用して考えられるシナリオを構成する方法について詳しく説明します。
 
-> [!IMPORTANT]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
-
-## <a name="register-the-features"></a>機能の登録
-
-まず、Azure Image Builder サービスに登録する必要があります。 登録すると、ステージング リソース グループを作成、管理、削除するためのアクセス許可がこのサービスに付与されます。 このサービスには、イメージのビルドに必要なグループにリソースを追加する権限もあります。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
 
 ## <a name="create-an-azure-user-assigned-managed-identity"></a>Azure ユーザー割り当てマネージド ID を作成する
 
@@ -131,7 +120,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 ```azurecli-interactive
 # Subscription ID - You can get this using `az account show | grep id` or from the Azure portal.
 subscriptionID=<Subscription ID>
-# Resource group - For Preview, image builder will only support creating custom images in the same Resource Group as the source managed image.
+# Resource group - image builder will only support creating custom images in the same Resource Group as the source managed image.
 imageResourceGroup=<Resource group>
 identityName="aibIdentity"
 
@@ -220,7 +209,7 @@ Image Builder テンプレートでは、ユーザー割り当てマネージド
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
     "location": "<Region>",
     ..
     "identity": {
