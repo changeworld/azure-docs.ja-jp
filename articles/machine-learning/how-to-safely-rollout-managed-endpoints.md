@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: how-to
-ms.openlocfilehash: 61754eec2c866a7bf5897b2faa2a2b2ae7b60d02
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 93365304e958bfabaf3067ab58312a9b78745edb
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382859"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854668"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>オンライン エンドポイントの安全なロールアウト (プレビュー)
 
@@ -56,7 +56,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 * まだ環境変数 $ENDPOINT_NAME の設定が済んでいない場合は、ここで設定してください。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
 
 * (推奨) サンプル リポジトリをクローンしてリポジトリの `cli/` ディレクトリに切り替えます。 
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure/azureml-examples
 cd azureml-examples/cli
 ```
 
-このチュートリアルのコマンドは、`how-to-deploy-declarative-safe-rollout-online-endpoints.sh` ファイルに存在します。また、YAML 構成ファイルは `endpoints/online/managed/canary-declarative-flow/` サブディレクトリに存在します。
+このチュートリアルのコマンドは、`deploy-declarative-safe-rollout-online-endpoints.sh` ファイルに存在します。また、YAML 構成ファイルは `endpoints/online/managed/canary-declarative-flow/` サブディレクトリに存在します。
 
 ## <a name="confirm-your-existing-deployment-is-created"></a>既存のデプロイが作成されていることを確認する
 
@@ -85,7 +85,7 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 デプロイを次の内容で更新します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
 
 > [!IMPORTANT]
 > YAML を使用した更新は宣言型です。 つまり YAML の変更は、基になる Azure Resource Manager リソース (エンドポイントとデプロイ) に反映されます。 このアプローチによって [GitOps](https://www.atlassian.com/git/tutorials/gitops) が促進されます。つまり、エンドポイントまたはデプロイに対する "*すべて*" の変更は YAML を経由することになります (`instance_count` も含む)。 副作用として、YAML からデプロイを削除し、そのファイルを使用して `az ml endpoint update` を実行した場合、そのデプロイは削除されます。 
@@ -98,13 +98,13 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 デプロイを更新します。 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="create_green" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="create_green" :::
 
 ### <a name="test-the-new-deployment"></a>新しいデプロイをテストする
 
 この構成では、先ほど作成した `green` デプロイに対するトラフィックを 0% として指定しました。 これは、`--deployment` の名前を指定して直接呼び出すことでテストできます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="test_green" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="test_green" :::
 
 トラフィック ルールを介さずに、REST クライアントを使用して直接デプロイを呼び出したい場合、`azureml-model-deployment: <deployment-name>` という HTTP ヘッダーを設定します。
 
@@ -116,7 +116,7 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 強調表示されている行を除いて、構成ファイルは変更されていません。 デプロイを次の内容で更新します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
 
 これで、`green` デプロイが要求の 10% を受け取るようになります。 
 
@@ -128,7 +128,7 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 さらに、デプロイを更新します。 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
 
 ## <a name="remove-the-old-deployment"></a>以前のデプロイを削除する
 
@@ -138,10 +138,10 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 デプロイを次の内容で更新します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
 
 ## <a name="delete-the-endpoint-and-deployment"></a>エンドポイントとデプロイを削除する
 
 デプロイを使用する予定がなければ、次のようにして削除してください。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9fd77ec4f72555e2d326a07831abe2648a68fbaf
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500687"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592054"
 ---
 # <a name="chat-sdk-overview"></a>Chat SDK の概要 
 
@@ -40,7 +40,7 @@ Azure Communication Services Chat SDK を使用して、アプリケーション
 |                   | 送信したメッセージの内容を更新する                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
 |                   | 以前に送信したメッセージを削除する                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
 |                   | チャットの他の参加者が確認済みメッセージの開封確認                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | 参加者がチャット スレッドにメッセージを入力中であることを示す通知を受け取る                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | 参加者がチャット スレッドにメッセージを入力中であることを示す通知を受け取る                                         | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 |                   | チャット スレッド内のすべてのメッセージを取得する                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | メッセージ コンテンツの一部として Unicode の絵文字を送信する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 |リアルタイムの通知 (独自のシグナリング パッケージで対応**)|  チャット クライアントは、受信メッセージや、チャット スレッドで発生しているその他の操作のリアルタイム更新を取得するためにサブスクライブできます。 リアルタイム通知でサポートされている更新の一覧を確認するには、「[チャットに関する概念](concepts.md#real-time-notifications)」をご覧ください                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
