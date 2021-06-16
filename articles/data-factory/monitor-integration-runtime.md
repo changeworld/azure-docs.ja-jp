@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 author: minhe-msft
 ms.author: hemin
-ms.openlocfilehash: 17c3d67d80f03a5c504885914cf9bb4f1036e86e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9e8a624d715405a32b6ceb24912161709bf89806
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904426"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670741"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する
 

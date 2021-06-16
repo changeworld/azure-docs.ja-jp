@@ -2,14 +2,14 @@
 title: Oracle Database を復元する
 description: SnapCenter を使用して BareMetal インフラストラクチャ上の Oracle Database を復元する方法について説明します。
 ms.topic: how-to
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 05/07/2021
-ms.openlocfilehash: 35cc8bc4cd1aa357bf1eea255f12bcf3bdf4bbcf
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 3d7f417b6881fd44d67011d33e4fdde87ff2a6e1
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109520627"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576368"
 ---
 # <a name="restore-oracle-database"></a>Oracle Database を復元する
 

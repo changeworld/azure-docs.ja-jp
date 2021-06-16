@@ -48,12 +48,18 @@ items:
           - name: 正常性の場合
             href: /legal/cognitive-services/text-analytics/transparency-note-health?context=/azure/cognitive-services/text-analytics/context/context
             displayName: 'Transparency note for Text Analytics for Health, Text Analytics Transparency for Health, Responsible AI, Responsible use of AI, Text Analytics Health'
-          - name: 個人を特定できる情報の場合
-            href: /legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
-            displayName: 'Transparency note for Text Analytics PII, Transparency note for Text Analytics Personally Identifiable Information, Text Analytics Transparency for PII, Responsible AI, Responsible use of AI, Text Analytics PII'
+          - name: 固有表現認識 (NER) と個人を特定できる情報 (PII) の場合
+            href: /legal/cognitive-services/text-analytics/transparency-note-named-entity-recognition?context=/azure/cognitive-services/text-analytics/context/context
+            displayName: 'Transparency note for Text Analytics NER, Transparency note for Text Analytics Named Entity Recognition, Text Analytics Transparency for NER, Responsible AI, Responsible use of AI, Text Analytics NER'
           - name: 感情分析の場合
             href: /legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
             displayName: 'Transparency note for Text Analytics Sentiment Analysis, Text Analytics Transparency for Sentiment Analysis, Responsible AI, Responsible use of AI, Text Analytics Sentiment Analysis, Sentiment Analysis Transparency Note'
+          - name: キーフレーズ分析の場合
+            href: /legal/cognitive-services/text-analytics/transparency-note-key-phrase-extraction?context=/azure/cognitive-services/text-analytics/context/context
+            displayName: 'Transparency note for Text Analytics Key Phrase Analysis, Text Analytics Transparency for Key Phrase Analysis, Responsible AI, Responsible use of AI, Text Analytics Key Phrase Analysis, Key Phrase Analysis Transparency Note'
+          - name: 言語検出の場合
+            href: /legal/cognitive-services/text-analytics/transparency-note-language-detection?context=/azure/cognitive-services/text-analytics/context/context
+            displayName: 'Transparency note for Text Analytics Language Detection, Text Analytics Transparency for Language Detection, Responsible AI, Responsible use of AI, Text Analytics Language Detection, Language Detection Transparency Note'
       - name: 統合と責任ある使用
         href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
         displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'

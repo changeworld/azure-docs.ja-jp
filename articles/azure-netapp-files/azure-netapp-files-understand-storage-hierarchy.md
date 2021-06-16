@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd96a8c2002bc22a0e4ef2c5a19fa06bf10b5565
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91278330"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071895"
 ---
 # <a name="storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files のストレージ階層
 
@@ -63,9 +63,6 @@ QoS の種類は容量プールの属性です。 Azure NetApp Files は、2 種
     ボリュームに割り当てられる最大スループットは、容量プールのサービス レベルとボリュームのサイズ クォータによって異なります。 計算例については、「[Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)」を参照してください。
 
 - <a name="manual_qos_type"></a>"*手動*" の種類の QoS  
-
-     > [!IMPORTANT] 
-     > 容量プールに手動の種類の QoS を使用するには、登録が必要です。  「[手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md)」を参照してください。  
 
     容量プールには、手動の種類の QoS を使用するオプションがあります。
 

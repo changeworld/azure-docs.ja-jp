@@ -6,15 +6,13 @@ manager: gwallace
 ms.date: 03/21/2019
 ms.topic: quickstart
 ms.service: container-instances
-ms.custom:
-- mvc
-- mode-api
-ms.openlocfilehash: f9c6bac45e2e7fe18895a16831f840c3ae5a9f9d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - mvc - mode-api
+ms.openlocfilehash: 875913550ff41cf5988b7910e165376bfa446bfb
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536156"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689424"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用してコンテナー インスタンスを Azure にデプロイする
 

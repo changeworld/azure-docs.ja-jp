@@ -2,23 +2,23 @@
 title: Microsoft Azure Active Directory シングル サインオンのデプロイ計画
 description: 組織内での SSO を計画、デプロイ、管理できるようにガイドします。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/10/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3f395eaf21dce0077c1239ef2251973aeb5faa70
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: ef1daed862a67c5219d7ec243985340a8a20ea01
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375612"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076962"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 

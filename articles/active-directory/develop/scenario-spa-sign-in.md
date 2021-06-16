@@ -3,21 +3,21 @@ title: シングルページ アプリのサインインとサインアウト
 titleSuffix: Microsoft identity platform
 description: シングルページ アプリケーション (サインイン) を構築する方法を学習する
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/11/2020
-ms.author: nacanuma
+ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 0521316dafc149823db6f095d32dfb5242c5863f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e20d9f2ed0060cf28f73e107ca95017d3b30418b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084450"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075135"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 

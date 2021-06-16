@@ -8,13 +8,13 @@ ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f014c07a319cbb07497cba01699b93d092255b93
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: eed40e353531ec6df4ecafad3757845b45a99886
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771510"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071852"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -187,7 +187,7 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-with-a-template"></a>テンプレートを使用して既存または実行中の Linux VM で暗号化を有効にする
 
-Azure 内にある既存または実行中の Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)を使用して有効化できます。
+Azure 内にある既存または実行中の Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm-without-aad)を使用して有効化できます。
 
 1. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
 

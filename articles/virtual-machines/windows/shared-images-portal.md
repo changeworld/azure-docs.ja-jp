@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e28a1412fa417b9f15ab7a6f79305d07ca6d9fec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ef48e6eaef441026457e584a302eb3fe515c0a6
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556096"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079411"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>ポータルを使用して Azure 共有イメージ ギャラリーを作成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "102556096"
 1. **[可用性オプション]** で、既定の *[インフラストラクチャ冗長は必要ありません]* のままにします。
 1. イメージ定義のページから操作を開始していれば、 **[イメージ]** の値に `latest` イメージ バージョンが自動的に入力されます。
 1. **[サイズ]** では、利用可能なサイズの一覧から VM サイズを選択し、 **[選択]** を選択します。
-1. そのイメージが一般化されている場合は、 **[管理者アカウント]** で、ユーザー名 (*azureuser* など) とパスワードを指定する必要があります。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。 イメージが特殊化されている場合は、ソース VM のユーザー名とパスワードが使用されるため、[ユーザー名] と [パスワード] のフィールドはグレーアウトされます。
+1. そのイメージが一般化されている場合は、 **[管理者アカウント]** で、ユーザー名 (*azureuser* など) とパスワードを指定する必要があります。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。 イメージが特殊化されている場合は、ソース VM のユーザー名とパスワードが使用されるため、[ユーザー名] と [パスワード] のフィールドはグレーアウトされます。
 1. VM へのリモート アクセスを許可する場合、 **[パブリック受信ポート]** で、 **[選択したポートを許可する]** を選択し、ドロップダウンから **[RDP (3389)]** を選択します。 VM へのリモート アクセスを許可しない場合、 **[パブリック受信ポート]** で、 **[なし]** を選択したままにします。
 1. 完了したら、ページの下部にある **[Review + create]\(確認と作成\)** ボタンを選択します。
 1. VM が検証に合格したら、ページの下部にある **[作成]** を選択し、デプロイを開始します。
@@ -64,9 +64,9 @@ ms.locfileid: "102556096"
 
 共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 
-- [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
+- [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 共有イメージ ギャラリーの詳細については、[概要](../shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](../troubleshooting-shared-images.md)」を参照してください。

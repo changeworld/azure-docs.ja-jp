@@ -2,21 +2,21 @@
 title: Azure Active Directory におけるアプリに対する SAML ベースのシングル サインオン (SSO) について理解する
 description: Azure Active Directory におけるアプリに対する SAML ベースのシングル サインオン (SSO) について理解する
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/28/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: b7468f33c75dd58e70c344f3ef19c51e220a7abb
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 1f08e5d75b1a364a3a79a8da01a0a6494a61fdd6
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374490"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075990"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>SAML ベースのシングル サインオンについて理解する
 

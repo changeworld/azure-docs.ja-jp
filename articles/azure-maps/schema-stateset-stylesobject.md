@@ -8,20 +8,16 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f213976d0e61706b2d8a9c8465be1ff0a4065b2e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903345"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031891"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>動的マップの StylesObject スキーマ リファレンス ガイド
 
-> [!IMPORTANT]
-> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
- `StylesObject` は、stateset スタイルを表す `StyleObject` 配列です。 Azure Maps Creator (プレビュー) [Feature State サービス](/rest/api/maps/featurestate)を使用して、stateset スタイルを屋内マップ データ地物に適用します。 stateset スタイルを作成して屋内マップ機能に関連付けると、それらを使用して動的な屋内マップを作成できます。 動的な屋内マップの作成の詳細については、「[Creator の屋内マップに動的スタイル設定を実装する](indoor-map-dynamic-styling.md)」を参照してください。
+ `StylesObject` は、stateset スタイルを表す `StyleObject` 配列です。 Azure Maps Creator [Feature State サービス](/rest/api/maps/v2/feature-state)を使用して、stateset スタイルを屋内マップ データ地物に適用します。 stateset スタイルを作成して屋内マップ機能に関連付けると、それらを使用して動的な屋内マップを作成できます。 動的な屋内マップの作成の詳細については、「[Creator の屋内マップに動的スタイル設定を実装する](indoor-map-dynamic-styling.md)」を参照してください。
 
 ## <a name="styleobject"></a>StyleObject
 
@@ -86,7 +82,7 @@ ms.locfileid: "96903345"
 
  `NumericTypeStyleRule` は [`StyleObject`](#styleobject) であり、次のプロパティで構成されています:
 
-| プロパティ | Type | 説明 | 必須 |
+| プロパティ | 種類 | 説明 | 必須 |
 |-----------|----------|-------------|-------------|
 | `keyName` | string | *state* または動的プロパティ名。 `keyName` は `StyleObject` 配列内で一意である必要があります。| はい |
 | `type` | string | 値は "数値" です。 | はい |
@@ -123,7 +119,7 @@ ms.locfileid: "96903345"
 ]
 ```
 
-| プロパティ | Type | 説明 | 必須 |
+| プロパティ | 種類 | 説明 | 必須 |
 |-----------|----------|-------------|-------------|
 | `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject) には、一連の論理的な範囲条件を定義します。これにより、`true` の場合、*state* の表示色が `color` プロパティで指定された色に変更されます。 `range` が指定されていない場合、`color` プロパティで定義された色が常に使用されます。   | いいえ |
 | `color` | string | state 値が範囲内にあるときに使用する色。 `color` プロパティは、次のいずれかの形式の JSON 文字列です。 <ul><li> HTML スタイルの 16 進値 </li><li> RGB ("#ff0", "#ffff00", "rgb(255, 255, 0)")</li><li> RGBA ("rgba(255, 255, 0, 1)")</li><li> HSL("hsl(100, 50%, 50%)")</li><li> HSLA("hsla(100, 50%, 50%, 1)")</li><li> yellow や blue など、定義済みの HTML の色名。</li></ul> | はい |
@@ -132,7 +128,7 @@ ms.locfileid: "96903345"
 
 `RangeObject` には、[`NumberRuleObject`](#numberruleobject) の数値範囲値を定義します。 *state* 値が範囲内に収まるには、定義されているすべての条件が true である必要があります。
 
-| プロパティ | Type | 説明 | 必須 |
+| プロパティ | 種類 | 説明 | 必須 |
 |-----------|----------|-------------|-------------|
 | `minimum` | double | x ≥ `minimum` であるすべての数値 x。| いいえ |
 | `maximum` | double | x ≤ `maximum` であるすべての数値 x。 | いいえ |
@@ -170,7 +166,7 @@ ms.locfileid: "96903345"
 
 `StringTypeStyleRule` は [`StyleObject`](#styleobject) であり、次のプロパティで構成されています:
 
-| プロパティ | Type | 説明 | 必須 |
+| プロパティ | 種類 | 説明 | 必須 |
 |-----------|----------|-------------|-------------|
 | `keyName` | string |  *state* または動的プロパティ名。  `keyName` は `StyleObject` 配列内で一意である必要があります。| はい |
 | `type` | string |値は "string" です。 | はい |
@@ -182,7 +178,7 @@ ms.locfileid: "96903345"
 
 文字列の値の一致では、大文字と小文字が区別されます。
 
-| プロパティ | Type | 説明 | 必須 |
+| プロパティ | 種類 | 説明 | 必須 |
 |-----------|----------|-------------|-------------|
 | `stateValue1` | string | 値文字列が stateValue1 の場合の色。 | いいえ |
 | `stateValue2` | string | 値文字列が stateValue の場合の色。 | いいえ |
@@ -212,7 +208,7 @@ ms.locfileid: "96903345"
 
 `BooleanTypeStyleRule` は [`StyleObject`](#styleobject) であり、次のプロパティで構成されています:
 
-| プロパティ | Type | 説明 | 必須 |
+| プロパティ | 種類 | 説明 | 必須 |
 |-----------|----------|-------------|-------------|
 | `keyName` | string |  *state* または動的プロパティ名。  `keyName` は `StyleObject` 配列内で一意である必要があります。| はい |
 | `type` | string |値は "boolean" です。 | はい |
@@ -222,7 +218,7 @@ ms.locfileid: "96903345"
 
 `BooleanRuleObject` には、`true` および `false` 値の色を定義します。
 
-| プロパティ | Type | 説明 | 必須 |
+| プロパティ | 種類 | 説明 | 必須 |
 |-----------|----------|-------------|-------------|
 | `true` | string | *state* 値が `true` の場合に使用する色。 `color` プロパティは、次のいずれかの形式の JSON 文字列です。 <ul><li> HTML スタイルの 16 進値 </li><li> RGB ("#ff0", "#ffff00", "rgb(255, 255, 0)")</li><li> RGBA ("rgba(255, 255, 0, 1)")</li><li> HSL("hsl(100, 50%, 50%)")</li><li> HSLA("hsla(100, 50%, 50%, 1)")</li><li> yellow や blue など、定義済みの HTML の色名。</li></ul>| はい |
 | `false` | string | *state* 値が `false` の場合に使用する色。 | はい |

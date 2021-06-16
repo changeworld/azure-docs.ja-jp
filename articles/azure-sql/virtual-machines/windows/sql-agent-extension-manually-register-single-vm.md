@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 00400197a2f3b523ad83c5bb2667b53c621ca2b1
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 7890d87730aa65e09e3bbc5a79fd22eb68610939
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161881"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079717"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM を SQL IaaS Agent 拡張機能に登録する
 
@@ -219,7 +219,7 @@ Azure portal を使用して拡張機能をフル モードにアップグレー
   $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
 
   # Register with SQL IaaS Agent extension in full mode
-  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full -Location $vm.Location
   ```
 
 ---
@@ -319,6 +319,6 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 詳細については、次の記事を参照してください。
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+* [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
 * [Windows VM 上の SQL Server のリリース ノート](../../database/doc-changes-updates-release-notes.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: bd948814b4b647bcc3fbfe58b090b1e794504232
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: fc1927ddf867ab9bfd5b288d57f2c5c9e59b0295
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363633"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957248"
 ---
 # <a name="azure-cosmos-db-apache-spark-2-oltp-connector-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Apache Spark 2 OLTP コネクタのリリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,7 +62,7 @@ Core (SQL) 用 Azure Cosmos DB Apache Spark 2 OLTP コネクタを使用する�
 | **SDK のダウンロード** | [最新の .jar](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)、[Maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) のダウンロード |
 |**API ドキュメント** | [Spark コネクタのリファレンス]() |
 |**SDK に投稿する** | [GitHub の Apache Spark 用 Azure Cosmos DB コネクタ](https://github.com/Azure/azure-cosmosdb-spark) | 
-|**開始するには** | [Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化](./spark-connector.md#bk_working_with_connector) <br> [Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する](../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
+|**開始するには** | [Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化](./create-sql-api-spark.md) <br> [Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する](../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>リリース履歴
 

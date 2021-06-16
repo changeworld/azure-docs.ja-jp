@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure 仮想マシンから SQL Server Management Studio を使用して、Azure SQL Managed Instance に接続することができます。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: connect
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein, srbozovi, bonova
+author: zoran-rilak-msft
+ms.author: zoranrilak
+ms.reviewer: mathoma, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8a708caf410ab53da6f9c2e77325307506ea9de
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91620258"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076026"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>クイック スタート:Azure SQL Managed Instance に接続するように Azure VM を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -85,7 +85,7 @@ SQL Managed Instance はご自分のプライベートの仮想ネットワー�
    | **場所** | リソース グループの場所 | この値は、選択したリソース グループに基づいて設定されます。 |
    | **仮想マシン名**  | 有効な名前 | 有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
    |**管理ユーザー名**|有効なユーザー名|有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。<br>[VM に接続](#connect-to-the-virtual-machine)するときは常に、このユーザー名を使用します。|
-   |**パスワード**|有効なパスワード|パスワードは 12 文字以上で、[定義された複雑さの要件](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。<br>[VM に接続](#connect-to-the-virtual-machine)するときは常に、このパスワードを使用します。|
+   |**パスワード**|有効なパスワード|パスワードは 12 文字以上で、[定義された複雑さの要件](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。<br>[VM に接続](#connect-to-the-virtual-machine)するときは常に、このパスワードを使用します。|
    | **仮想マシン サイズ** | 任意の有効なサイズ | このクイック スタートでは、このテンプレートの既定値 **Standard_B2s** で十分です。 |
    | **場所**|[resourceGroup().location]| この値は変更しないでください。 |
    | **仮想ネットワーク名**|マネージド インスタンスを作成した仮想ネットワーク|

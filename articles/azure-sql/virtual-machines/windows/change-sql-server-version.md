@@ -15,12 +15,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5dbd5725c666afe04d57d4432f0a4798fcb34c03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb8d0150bafe795f2b23fa18581adc60d091aaf2
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358845"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078835"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上の SQL Server バージョンのインプレース変更
 
@@ -122,6 +122,6 @@ SQL Server のバージョンを変更した後、Azure portal を使用して S
 詳細については、次の記事を参照してください。
 
 - [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-- [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+- [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.yml)
 - [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
 - [Windows VM 上の SQL Server のリリース ノート](doc-changes-updates-release-notes.md)

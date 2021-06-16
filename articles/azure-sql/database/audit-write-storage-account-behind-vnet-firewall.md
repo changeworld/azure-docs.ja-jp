@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e0bb7949e6f528925eb66c1148662720b144e06
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93348255"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060356"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet とファイアウォールの背後にあるストレージ アカウントに対して監査を書き込む
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -154,7 +154,7 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
 > [!IMPORTANT]
 > 仮想ネットワークとファイアウォールの背後でストレージ アカウントを使用するには、**isStorageBehindVnet** パラメーターを true に設定する必要があります。
 
-- [BLOB ストレージに監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [BLOB ストレージに監査ログを書き込むように監査機能を有効にした Azure SQL Server をデプロイする](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-blob-storage/)
 
 > [!NOTE]
 > リンクされたサンプルは、外部の公開リポジトリにあり、保証なしに "手を加えず" に提供され、Microsoft サポート プログラム/サービスのサポート対象ではありません。

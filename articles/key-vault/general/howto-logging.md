@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6e2c44b80390fc1fcf4f9b579daba65d0387a0f7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 75e5100c12940083626d94367bb70b280a49711b
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751195"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665161"
 ---
 # <a name="enable-key-vault-logging"></a>Key Vault のログ記録を有効にする
 

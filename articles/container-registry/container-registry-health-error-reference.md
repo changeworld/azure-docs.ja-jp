@@ -3,18 +3,18 @@ title: レジストリ正常性チェックのエラー リファレンス
 description: Azure Container Registry で az acr check-health 診断コマンドを実行することによって検出された問題のエラー コードと考えられる解決策
 ms.topic: article
 ms.date: 01/25/2021
-ms.openlocfilehash: f9716c29093ae58518bc86ec06af40522d49047c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 12cdd1e75a51097bab3830cdd0e6567e53f91dce
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773443"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537421"
 ---
 # <a name="health-check-error-reference"></a>正常性チェックのエラー リファレンス
 
 以下は、[az acr check-health][az-acr-check-health] コマンドによって返されるエラー コードの詳細です。 各エラーについて、考えられる解決策が示されています。
 
-`az acr check-healh` の実行の詳細については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。
+`az acr check-health` の実行の詳細については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 

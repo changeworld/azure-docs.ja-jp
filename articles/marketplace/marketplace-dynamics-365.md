@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: c0af6f3045a686f9ef73b7761b41e869d3ce9d6f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5d81b8321fe574be39a23a99521521516b86cfbb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766387"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971256"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>Microsoft Dynamics 365 オファーを計画する
 
 この記事では、コマーシャル マーケットプレースの Microsoft AppSource に含まれる Dynamics 365 オファーのさまざまなオプションと機能について説明します。 AppSource には、Microsoft 365、Dynamics 365、PowerApps、Power BI 上に構築される、またはそれらを拡張するオファーが含まれています。
 
-最初に、[パートナー センター](./partner-center-portal/create-account.md)でコマーシャル マーケットプレース アカウントを作成してコマーシャル マーケットプレース プログラムに登録します。 また、[公開プロセスとガイドライン](/office/dev/store/submit-to-appsource-via-partner-center)を確認します。
+最初に、[パートナー センター](./create-account.md)でコマーシャル マーケットプレース アカウントを作成してコマーシャル マーケットプレース プログラムに登録します。 また、[公開プロセスとガイドライン](/office/dev/store/submit-to-appsource-via-partner-center)を確認します。
 
 ## <a name="licensing-options"></a>ライセンス オプション
 
@@ -77,7 +77,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 ## <a name="additional-sales-opportunities"></a>その他の営業案件
 
-Microsoft がサポートするマーケティングおよびセールス チャネルのオプトインを選択できます。 パートナー センターでオファーを作成しているとき、プロセスの終わり頃に **[Microsoft との共同販売]** に関するタブが表示されます。 このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](commercial-marketplace-co-sell.md)」を参照してください。
+Microsoft がサポートするマーケティングおよびセールス チャネルのオプトインを選択できます。 パートナー センターでオファーを作成しているとき、プロセスの終わり頃に **[Microsoft との共同販売]** に関するタブが表示されます。 このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](./co-sell-configure.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -85,8 +85,8 @@ Microsoft がサポートするマーケティングおよびセールス チャ
 
 | 公開ガイド    | Notes  |
 | :------------------- | :-------------------|
-| [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) | Enterprise Edition 向けに作成している場合は、最初に、こちらの追加の[公開プロセスとガイドライン](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。 |
-| [Dynamics 365 for Business Central](partner-center-portal/create-new-business-central-offer.md) |   |
+| [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) | Enterprise Edition 向けに作成している場合は、最初に、こちらの追加の[公開プロセスとガイドライン](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。 |
+| [Dynamics 365 for Business Central](dynamics-365-business-central-offer-setup.md) |   |
 | [Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) | 最初に、こちらの追加の[公開プロセスとガイドライン](/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。 |
-| [Power BI](/azure/marketplace/partner-center-portal/create-power-bi-app-offer) | 最初に、こちらの追加の [公開プロセスとガイドライン](/power-bi/developer/office-store)を確認します。 |
+| [Power BI](./power-bi-app-offer-setup.md) | 最初に、こちらの追加の [公開プロセスとガイドライン](/power-bi/developer/office-store)を確認します。 |
 |||

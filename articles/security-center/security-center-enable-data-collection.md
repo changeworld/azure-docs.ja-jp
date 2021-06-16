@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16902a8733c4b4d423deb47c5a8980284d8e690e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561264"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964071"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Azure Security Center からのエージェントと拡張機能の自動プロビジョニングを構成する
 
@@ -86,9 +86,9 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
         > [!TIP]
         > 既定のワークスペースに関する質問については、以下をご覧ください。
         >
-        > - [Security Center で作成されたワークスペース上の Azure Monitor ログには課金されますか?](faq-data-collection-agents.md#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center)
-        > - [既定の Log Analytics ワークスペースはどこに作成されますか?](faq-data-collection-agents.md#where-is-the-default-log-analytics-workspace-created)
-        > - [Security Center で作成された既定のワークスペースは削除できますか?](faq-data-collection-agents.md#can-i-delete-the-default-workspaces-created-by-security-center)
+        > - [Security Center で作成されたワークスペース上の Azure Monitor ログには課金されますか?](/azure/security-center/faq-data-collection-agents.yml#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center)
+        > - [既定の Log Analytics ワークスペースはどこに作成されますか?](/azure/security-center/faq-data-collection-agents.yml#where-is-the-default-log-analytics-workspace-created)
+        > - [Security Center で作成された既定のワークスペースは削除できますか?](/azure/security-center/faq-data-collection-agents.yml#can-i-delete-the-default-workspaces-created-by-security-center)
 
     - **[Connect Azure VMs to a different workspace]\(Azure VM を別のワークスペースに接続する\)** - ドロップダウン リストから、収集したデータを保存するワークスペースを選択します。 ドロップダウン リストには、自分の全サブスクリプション内のワークスペースがすべて含まれています。 このオプションを使用して、さまざまなサブスクリプションで稼働している仮想マシンからデータを収集し、自分が選択したワークスペースにすべて保存できます。  
 
@@ -181,7 +181,7 @@ Microsoft では、**共通** および **最小** オプションのイベン�
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - グループ ポリシー オブジェクト (GPO) を使用している場合は、プロセス作成イベント 4688 の監査ポリシーと、イベント 4688 内の *CommandLine* フィールドを有効にすることをお勧めします。 プロセス作成イベント 4688 の詳細については、Security Center の [FAQ](faq-data-collection-agents.md#what-happens-when-data-collection-is-enabled) を参照してください。 これらの監査ポリシーの詳細については、「[Audit Policy Recommendations](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)」(監査ポリシーの推奨事項) を参照してください。
+> - グループ ポリシー オブジェクト (GPO) を使用している場合は、プロセス作成イベント 4688 の監査ポリシーと、イベント 4688 内の *CommandLine* フィールドを有効にすることをお勧めします。 プロセス作成イベント 4688 の詳細については、Security Center の [FAQ](/azure/security-center/faq-data-collection-agents.yml#what-happens-when-data-collection-is-enabled) を参照してください。 これらの監査ポリシーの詳細については、「[Audit Policy Recommendations](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)」(監査ポリシーの推奨事項) を参照してください。
 > -  [適応型アプリケーション制御](security-center-adaptive-application.md)のデータ収集を有効にするために、Security Center は、ローカル AppLocker ポリシーを監査モードで構成して、すべてのアプリケーションを許可します。 これをきっかけとして AppLocker がイベントを生成するようになり、そのイベントが Security Center によって収集されて活用されます。 ただし、既に AppLocker ポリシーが構成されているマシンでは、このポリシーが構成されないので注意してください。 
 > - Windows フィルタリング プラットフォーム イベント ([イベント ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)) を収集するには、[[フィルタリング プラットフォームの接続の監査]](/windows/security/threat-protection/auditing/audit-filtering-platform-connection) を有効にする必要があります (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)。
 >
@@ -249,7 +249,7 @@ Log Analytics エージェントを手動でインストールするには:
 - **既存の VM 拡張機能が存在する**:
     - Monitoring Agent が拡張機能としてインストールされている場合、拡張機能の構成では 1 つのワークスペースにのみレポートできます。 Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center では、"Security" または "SecurityCenterFree" ソリューションがインストールされているという条件で、既に接続されているワークスペース内の VM からのセキュリティ データを保存します。 Security Center では、このプロセスで拡張機能のバージョンを最新バージョンにアップグレードする可能性があります。
     - 既存の拡張機能がどのワークスペースにデータを送信しているのかを調べるには、[Azure Security Center との接続を確認](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center)するテストを実行します。 または、Log Analytics ワークスペースを開いてワークスペースを選択し、対象の VM を選択して、Log Analytics エージェント接続を調べることもできます。
-    - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。 詳しくは、「[既存の Log Analytics ユーザー](./faq-azure-monitor-logs.md)」をご覧ください。
+    - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。 詳しくは、「[既存の Log Analytics ユーザー](./faq-azure-monitor-logs.yml)」をご覧ください。
  
 
 ## <a name="disable-auto-provisioning"></a>自動プロビジョニングの無効化<a name="offprovisioning"></a>
@@ -271,7 +271,7 @@ Log Analytics エージェントを手動でインストールするには:
 
 
 > [!NOTE]
->  自動プロビジョニングを無効にしても、Log Analytics エージェントがプロビジョニングされている Azure VM からそのエージェントは削除されません。 OMS 拡張機能の削除については、「[Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか](faq-data-collection-agents.md#remove-oms)」をご覧ください。
+>  自動プロビジョニングを無効にしても、Log Analytics エージェントがプロビジョニングされている Azure VM からそのエージェントは削除されません。 OMS 拡張機能の削除については、「[Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか](/azure/security-center/faq-data-collection-agents.yml#remove-oms)」をご覧ください。
 >
 
 

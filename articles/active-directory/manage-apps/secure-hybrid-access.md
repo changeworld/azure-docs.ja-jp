@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 2/16/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b93fdcc125075786c237ab1eb7bfac8cf2e551f6
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ad3946dcd850a4a3d05f4d28882d08408e39b707
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179170"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964697"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全なハイブリッド アクセス:Azure Active Directory を使用してレガシ アプリをセキュリティで保護する
 
@@ -32,13 +32,13 @@ Azure AD [条件付きアクセス](../conditional-access/overview.md)や Azure 
 
 ## <a name="secure-hybrid-access-sha-through-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したセキュリティで保護されたハイブリッド アクセス (SHA)
   
-[アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md)を使用すると、お使いのオンプレミスの Web アプリケーションに[セキュリティで保護されたリモート アクセス](../app-proxy/application-proxy.md)を提供できます。 ユーザーが VPN を使用する必要はありません。 ユーザーは [シングル サインオン](add-application-portal-setup-sso.md)の後、簡単に任意のデバイスからアプリケーションに接続できるようになります。 サービスとしてのリモート アクセスを提供するアプリケーション プロキシを使用すると、企業ネットワーク外のユーザーに[お使いのオンプレミスのアプリケーションを簡単に発行](../app-proxy/application-proxy-add-on-premises-application.md)できるようになります。 お使いのオンプレミス アプリケーションは変更せずに、自分のクラウド アクセス管理を拡張できます。 次の手順として、「[Azure AD アプリケーション プロキシのデプロイ計画](application-proxy-deployment-plan.md)」に進みます。
+[アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md)を使用すると、お使いのオンプレミスの Web アプリケーションに[セキュリティで保護されたリモート アクセス](../app-proxy/application-proxy.md)を提供できます。 ユーザーが VPN を使用する必要はありません。 ユーザーは [シングル サインオン](add-application-portal-setup-sso.md)の後、簡単に任意のデバイスからアプリケーションに接続できるようになります。 サービスとしてのリモート アクセスを提供するアプリケーション プロキシを使用すると、企業ネットワーク外のユーザーに[お使いのオンプレミスのアプリケーションを簡単に発行](../app-proxy/application-proxy-add-on-premises-application.md)できるようになります。 お使いのオンプレミス アプリケーションは変更せずに、自分のクラウド アクセス管理を拡張できます。 次の手順として、「[Azure AD アプリケーション プロキシのデプロイ計画](../app-proxy/application-proxy-deployment-plan.md)」に進みます。
 
 ## <a name="azure-ad-partner-integrations"></a>Azure AD のパートナーとの統合
 
 ### <a name="sha-through-networking-and-delivery-controllers"></a>ネットワークおよびデリバリー コントローラーを使用した SHA
 
-Microsoft では、[ゼロ トラスト フレームワーク](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)を使用するために、[Azure AD アプリケーション プロキシ](./what-is-application-proxy.md)以外に、サードパーティ プロバイダーと提携しています。 お使いの既存のネットワークとデリバリー コントローラーを使用し、これまでは Azure AD では保護できなかった自分のビジネス プロセスに非常に重要なレガシ アプリケーションを容易に保護できます。 これらのアプリケーションの保護を開始するのに必要なものはすべて、おそらく既に持っていることでしょう。
+Microsoft では、[ゼロ トラスト フレームワーク](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)を使用するために、[Azure AD アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md)以外に、サードパーティ プロバイダーと提携しています。 お使いの既存のネットワークとデリバリー コントローラーを使用し、これまでは Azure AD では保護できなかった自分のビジネス プロセスに非常に重要なレガシ アプリケーションを容易に保護できます。 これらのアプリケーションの保護を開始するのに必要なものはすべて、おそらく既に持っていることでしょう。
 
 ![ネットワーク パートナーとアプリケーション プロキシを使用した、セキュリティで保護されたハイブリッド アクセスを示す図](./media/secure-hybrid-access/secure-hybrid-access.png)
 

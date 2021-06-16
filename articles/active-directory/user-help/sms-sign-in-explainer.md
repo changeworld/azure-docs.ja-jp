@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/21/2021
+ms.date: 06/10/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32210818979c6314d2fb262ca4fd51ec1190bcc5
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98661596"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984484"
 ---
 # <a name="use-your-phone-number-as-a-user-name"></a>ユーザー名として電話番号を使用する
 

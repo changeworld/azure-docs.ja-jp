@@ -4,16 +4,16 @@ description: Azure Queue Storage を使用して、キューの作成と削除�
 author: twooley
 ms.author: twooley
 ms.reviewer: dineshm
-ms.date: 12/08/2016
+ms.date: 06/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 257b435f0136884e8568f4201794a7ce5cf0c209
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7850e7fef034fd618c86400e17ddaa319c45005a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275857"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080995"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby から Queue Storage を使用する方法
 
@@ -42,7 +42,7 @@ Azure Storage を使用するには、Ruby azure パッケージをダウンロ�
 ### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems を使用してパッケージを取得する
 
 1. PowerShell (Windows)、ターミナル (Mac)、Bash (Unix) などのコマンド ライン インターフェイスを使用します。
-2. コマンド ウィンドウに「`gem install Azure`」と入力して、gem と依存関係をインストールします。
+2. コマンド ウィンドウに「`gem install azure`」と入力して、gem と依存関係をインストールします。
 
 ### <a name="import-the-package"></a>パッケージをインポートする
 

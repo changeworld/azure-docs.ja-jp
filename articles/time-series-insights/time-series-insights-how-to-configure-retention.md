@@ -3,19 +3,20 @@ title: 環境のリテンション期間の構成方法 - Azure Time Series Insi
 description: Azure Time Series Insights 環境のリテンション期間の構成方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0189fdbd37be97d841d8a0ea80c83fa2e2c32d0
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91569412"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063470"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 のリテンション期間の構成
 
@@ -33,7 +34,7 @@ Azure Time Series Insights 環境ごとに、 **[ストレージ制限を超過�
 - **[Purge old data]\(古いデータを消去\)** (既定値)
 - **[Pause ingress]\(イングレスを一時停止\)**
 
-これらの設定の詳細については、[Azure Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを確認してください。  
+これらの設定の詳細については、[Azure Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを確認してください。
 
 ## <a name="configure-data-retention"></a>データ リテンション期間の構成
 

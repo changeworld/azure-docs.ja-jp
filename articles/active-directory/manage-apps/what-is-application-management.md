@@ -2,21 +2,21 @@
 title: Azure Active Directory でのアプリケーション管理とは
 description: クラウドとオンプレミス アプリケーションの Identity and Access Management (IAM) システムとして Azure Active Directory (AD) を使用する方法の概要です。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 01/22/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: ''
-ms.openlocfilehash: 4a880fadb91daa34688e3876ba665d97659db015
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 31bfbe1405e1180f8909333da8947d72d68dd7db
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320855"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079357"
 ---
 # <a name="what-is-application-management"></a>アプリケーション管理とは
 

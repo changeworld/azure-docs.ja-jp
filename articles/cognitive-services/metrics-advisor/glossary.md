@@ -5,17 +5,17 @@ description: Metrics Advisor サービスの主要なアイデアと概念
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 6c461983053a145dfda58b9e3d26b39db0c339e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b429770df58de6d3a6aa542111f94757a68ed53
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92893422"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889420"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Metrics Advisor の用語集
 

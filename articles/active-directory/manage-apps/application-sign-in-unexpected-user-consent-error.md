@@ -2,22 +2,22 @@
 title: アプリケーションに同意すると、予期しないエラーが発生する | Microsoft Docs
 description: アプリケーションに同意する処理の最中に発生する可能性があるエラーとそれらに対処する方法について説明します
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad216d0062928fc16b0f2226daabb6258d09063c
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a42801c723ea399ec8582e108c1a6e0f0baa2297
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378127"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080815"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>アプリケーションに同意すると、予期しないエラーが発生する
 

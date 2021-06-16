@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bce54bb845e3085d654e3980123ef5c8a856fd98
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 70cc20b51587a70e8a124b6f3b5d047ff827db83
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530188"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034591"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -74,7 +74,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft Authenticator または Microsoft ポータル サイトを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーは必要なブローカー アプリをインストールするために、適切な App ストアにリダイレクトされます。
 
-この設定は、以下の iOS アプリと Android アプリに適用されます。
+次のクライアン トアプリは、この設定をサポートすることが確認されています。
 
 - Microsoft Azure Information Protection
 - Microsoft Bookings
@@ -86,6 +86,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
+- Microsoft リスト
 - Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote

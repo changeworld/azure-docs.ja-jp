@@ -1,14 +1,14 @@
 ---
 title: MARS エージェントを使用したサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
-ms.date: 04/09/2021
+ms.date: 06/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 20bca0e9ca9dfd735501e68bd0e5a6d69d2ef68e
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 068a5391130f569a2d56fa9bd605356036e7737f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576501"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952969"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -50,77 +50,7 @@ Folder | キャッシュ フォルダーは、重複除去されたボリュー�
 
 ## <a name="networking-and-access-support"></a>ネットワークとアクセスのサポート
 
-### <a name="url-and-ip-access"></a>URL と IP アクセス
-
-MARS エージェントには、次の URL へのアクセス権が必要です。
-
-- `http://www.msftncsi.com/ncsi.txt`
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.MicrosoftOnline.com
-- *.Windows.net
-- `www.msftconnecttest.com`
-
-これらの IP アドレスに対しては、次のようになります。
-
-- 20.190.128.0/18
-- 40.126.0.0/18
-
-上記のすべての URL と IP アドレスにアクセスするには、ポート 443 で HTTPS プロトコルを使用します。
-
-MARS エージェントを使用して Azure VM からファイルとフォルダーをバックアップする場合、アクセスを許可するように Azure 仮想ネットワークを構成する必要もあります。 ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (*AzureActiveDirectory*) および Azure Storage (*Storage*) に対して同様の [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。 次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
-
-1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
-2. **[設定]** で **[送信セキュリティ規則]** を選択します。
-3. **[追加]** を選択します。 [セキュリティ規則の設定](../virtual-network/manage-network-security-group.md#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が *[サービス タグ]* に、 **[宛先サービス タグ]** が *[AzureBackup]* に設定されていることを確認します。
-4. **[追加]** を選択して、新しく作成した送信セキュリティ規則を保存します。
-
-Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
-
-### <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
-
-パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。
-
-パブリック ピアリングを使用して、次のドメインまたはアドレスへのアクセスを確保します。
-
-* URL
-  * `www.msftncsi.com`
-  * `*.Microsoft.com`
-  * `*.WindowsAzure.com`
-  * `*.microsoftonline.com`
-  * `*.windows.net`
-  * `www.msftconnecttest.com`
-* IP アドレス
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-Microsoft ピアリングの使用時には、サービス、リージョン、関連するコミュニティについて以下の値を選択します。
-
-- Azure Backup (Recovery Services コンテナーの場所による)
-- Azure Active Directory (12076:5060)
-- Azure Storage (Recovery Services コンテナーの場所による)
-
-詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md#bgp)」を参照してください。
-
->[!NOTE]
->パブリック ピアリングは、新しい回線では非推奨です。
-
-### <a name="private-endpoint-support"></a>プライベート エンドポイントのサポート
-
-プライベート エンドポイントを使用して、サーバーから Recovery Services コンテナーにデータを安全にバックアップできるようになりました。 Azure Active Directory は現在、プライベート エンドポイントをサポートしていないため、Azure Active Directory に必要な IP および FQDN には、別個に送信アクセスを許可する必要があります。
-
-MARS エージェントを使用してオンプレミスのリソースをバックアップする場合は、バックアップ対象のリソースが含まれるオンプレミスのネットワークが、コンテナー用のプライベート エンドポイントが含まれる Azure VNet と確実にピアリングされているようにします。 その後で、MARS エージェントのインストールを続行し、バックアップを構成することができます。 ただし、バックアップ用のすべての通信が、ピアリングされたネットワークのみを介して行われるようにする必要があります。
-
-MARS エージェントの登録後にそのコンテナー用のプライベート エンドポイントを削除した場合は、コンテナーを Recovery Services コンテナーに再登録する必要があります。 それらに対する保護を停止する必要はありません。
-
-[Azure Backup のプライベート エンドポイント](private-endpoints.md)の詳細を確認してください。
-
-### <a name="throttling-support"></a>調整のサポート
-
-**機能** | **詳細**
---- | ---
-帯域幅の制御 | サポートされています。 MARS エージェントで、 **[プロパティの変更]** を使用して帯域幅を調整します。
-Network throttling | Windows Server 2008 R2、Windows Server 2008 SP2、または Windows 7 を実行しているバックアップ済みのコンピューターでは使用できません。
+[!INCLUDE [Configuring network connectivity](../../includes/backup-network-connectivity.md)]
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 

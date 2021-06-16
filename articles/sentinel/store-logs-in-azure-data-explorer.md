@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: 12a6ae76b1eb4dced661b811d8f6e9030f74b4f1
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 584f108ea534b8703b941d91b7d03b6275ea6134
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795728"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958339"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>長期的なログ保持のために Azure Data Explorer を統合する
 
@@ -39,7 +39,7 @@ Azure Sentinel は、SIEM および SOAR のフル機能を搭載し、迅速に
 
 定期的な調査や監査など、特定のテーブルに少ない頻度でアクセスするだけでよい場合は、データを Azure Sentinel に保持してもコスト効率がよくないと考えることができます。 この時点で、データを Azure Data Explorer に格納することをお勧めします。より低コストでありながら、Azure Sentinel で実行するのと同じ KQL クエリを使用して探索できます。
 
-[Log Analytics Azure Data Explorer プロキシ機能](/azure/azure-monitor/logs/azure-monitor-data-explorer-proxy)を使用して、Azure Sentinel から Azure Data Explorer のデータに直接アクセスできます。 これを行うには、ログ検索またはブックでクロスクラスター クエリを使用します。
+[Log Analytics Azure Data Explorer プロキシ機能](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md)を使用して、Azure Sentinel から Azure Data Explorer のデータに直接アクセスできます。 これを行うには、ログ検索またはブックでクロスクラスター クエリを使用します。
 
 > [!IMPORTANT]
 > 分析ルール、UEBA、調査グラフなどの SIEM コア機能は、Azure Data Explorer に格納されているデータをサポートしていません。
@@ -55,7 +55,7 @@ Azure Sentinel は、SIEM および SOAR のフル機能を搭載し、迅速に
 すべてのデータを "*そのセキュリティ価値に関係なく*" Azure Data Explorer に同時に送信するよう構成することもでき、そこでより長期間保存できます。 Azure Sentinel と Azure Data Explorer の両方にデータを同時に送信すると多少の重複が生じますが、Azure Sentinel の保持コストが減るので大きなコスト節約になります。
 
 > [!TIP]
-> また、このオプションでは、Azure Sentinel に格納されているセキュリティ データを Azure Data Explorer に格納されている運用データや長期的なデータでエンリッチするなど、データ ストアに分散しているデータを関連付けることができます。 詳細については、「[Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ](/azure/azure-monitor/logs/azure-monitor-data-explorer-proxy)」をご覧ください。
+> また、このオプションでは、Azure Sentinel に格納されているセキュリティ データを Azure Data Explorer に格納されている運用データや長期的なデータでエンリッチするなど、データ ストアに分散しているデータを関連付けることができます。 詳細については、「[Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md)」をご覧ください。
 >
 
 次の画像は、すべてのデータを Azure Data Explorer に保持しながら、日常的に使用するためにセキュリティ データだけを Azure Sentinel に送信する方法を示しています。
@@ -82,7 +82,7 @@ Azure Data Explorer にデータを直接送信する代わりに、データを
 |---------|---------|
 |**エクスポートするデータのスコープ**     |  特定のテーブルに対するエクスポートが構成されると、そのテーブルに送信されたすべてのデータが、例外なくエクスポートされます。 データのサブセットをフィルタリングしてエクスポートしたり、特定のイベントにエクスポートを制限したりすることはできません。       |
 |**場所の要件**     |   Azure Monitor または Azure Sentinel ワークスペースと目的の場所 (Azure ストレージ アカウントまたはイベント ハブ) の両方が、同じ地理的リージョンにある必要があります。      |
-|**サポート対象のテーブル**     | すべてのテーブルがエクスポートでサポートされているわけではありません。たとえば、カスタム ログ テーブルはサポート対象ではありません。 <br><br>詳細については、[Azure Monitor での Log Analytics ワークスペースのデータ エクスポート](/azure/azure-monitor/logs/logs-data-export)および[サポートされるテーブルの一覧](/azure/azure-monitor/logs/logs-data-export#supported-tables)に関するページを参照してください。         |
+|**サポート対象のテーブル**     | すべてのテーブルがエクスポートでサポートされているわけではありません。たとえば、カスタム ログ テーブルはサポート対象ではありません。 <br><br>詳細については、[Azure Monitor での Log Analytics ワークスペースのデータ エクスポート](../azure-monitor/logs/logs-data-export.md)および[サポートされるテーブルの一覧](../azure-monitor/logs/logs-data-export.md#supported-tables)に関するページを参照してください。         |
 |     |         |
 
 ### <a name="data-export-methods-and-procedures"></a>データ エクスポートの方法と手順
@@ -104,9 +104,9 @@ Azure Sentinel から Azure Data Explorer にデータをエクスポートす�
 前の画像で示されているアーキテクチャでは、*X* か月ごとに頻繁にアクセスしなければならないデータに対して、インシデント管理、視覚的調査、脅威ハンティング、高度な視覚化、UEBA など、Azure Sentinel の SIEM の完全なエクスペリエンスが提供されます。 同時に、このアーキテクチャでは、長期的データに対するクエリを、Azure Data Explorer で直接アクセスして行ったり、Azure Data Explorer のプロキシ機能を使って Azure Sentinel 経由で行ったりすることもできます。 Azure Data Explorer の長期的データ ストレージに対するクエリは、Azure Sentinel から Azure Data Explorer に、変更を加えることなく移植できます。
 
 > [!NOTE]
-> イベント ハブを介して複数のデータ テーブルを Azure Data Explorer にエクスポートするときは、Log Analytics データのエクスポートで、名前空間あたりのイベント ハブの最大数に制限があることに注意してください。 データ エクスポートの詳細については、[Azure Monitor での Log Analytics ワークスペースのデータ エクスポート](/azure/azure-monitor/logs/logs-data-export?tabs=portal)に関するページを参照してください。
+> イベント ハブを介して複数のデータ テーブルを Azure Data Explorer にエクスポートするときは、Log Analytics データのエクスポートで、名前空間あたりのイベント ハブの最大数に制限があることに注意してください。 データ エクスポートの詳細については、[Azure Monitor での Log Analytics ワークスペースのデータ エクスポート](../azure-monitor/logs/logs-data-export.md?tabs=portal)に関するページを参照してください。
 >
-> ほとんどのお客様には、Event Hubs Standard レベルを使用することをお勧めします。 エクスポートする必要があるテーブルの量とそれらのテーブルに対するトラフィックの量によっては、Event Hubs Dedicated レベルを使用する必要がある場合があります。 詳細については、[イベント ハブに関するドキュメント](/azure/event-hubs/event-hubs-quotas)を参照してください。
+> ほとんどのお客様には、Event Hubs Standard レベルを使用することをお勧めします。 エクスポートする必要があるテーブルの量とそれらのテーブルに対するトラフィックの量によっては、Event Hubs Dedicated レベルを使用する必要がある場合があります。 詳細については、[イベント ハブに関するドキュメント](../event-hubs/event-hubs-quotas.md)を参照してください。
 >
 
 > [!TIP]
@@ -115,7 +115,7 @@ Azure Sentinel から Azure Data Explorer にデータをエクスポートす�
 
 **イベント ハブ経由でデータを Azure Data Explorer に エクスポートするには**:
 
-1. **イベント ハブへの Log Analytics データのエクスポートを構成します**。 詳細については、[Azure Monitor での Log Analytics ワークスペースのデータ エクスポート](/azure/azure-monitor/platform/logs-data-export)に関するページを参照してください。
+1. **イベント ハブへの Log Analytics データのエクスポートを構成します**。 詳細については、[Azure Monitor での Log Analytics ワークスペースのデータ エクスポート](../azure-monitor/logs/logs-data-export.md)に関するページを参照してください。
 
 1. **Azure Data Explorer クラスターとデータベースを作成します**。 詳細については、次をご覧ください。
 
@@ -171,7 +171,7 @@ Azure Storage と Azure Data Factory を使用すると、Azure Storage のデ�
 
 **Azure Storage と Azure Data Factory を介してデータを Azure Data Explorer にエクスポートするには**:
 
-1. **イベント ハブへの Log Analytics データのエクスポートを構成します**。 詳細については、[Azure Monitor での Log Analytics ワークスペースのデータ エクスポート](/azure/azure-monitor/logs/logs-data-export?tabs=portal#enable-data-export)に関するページを参照してください。
+1. **イベント ハブへの Log Analytics データのエクスポートを構成します**。 詳細については、[Azure Monitor での Log Analytics ワークスペースのデータ エクスポート](../azure-monitor/logs/logs-data-export.md?tabs=portal#enable-data-export)に関するページを参照してください。
 
 1. **Azure Data Explorer クラスターとデータベースを作成します**。 詳細については、次をご覧ください。
 

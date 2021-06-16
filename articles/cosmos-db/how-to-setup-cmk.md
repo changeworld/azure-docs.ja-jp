@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: thweiss
-ms.openlocfilehash: 4ea11b23c7a45fb263a3716c051e960c72a7b300
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8738f34ea9d038bbc5a0bc3d9f13be11db2b9e00
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065405"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681712"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

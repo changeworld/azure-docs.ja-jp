@@ -5,18 +5,18 @@ description: このクイックスタートでは、お使いのアプリケー�
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.author: mbullwin
 zone_pivot_groups: programming-languages-metrics-monitor
-ms.openlocfilehash: 5b3df5f4b41b2beeec68b667863f6ca7715df47b
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: dc13aec8cd5bab7df93c25275331b34ea8093206
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186939"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894513"
 ---
 # <a name="quickstart-use-the-client-libraries-or-rest-apis-to-customize-your-solution"></a>クイックスタート: クライアント ライブラリまたは REST API を使用してソリューションをカスタマイズする
 

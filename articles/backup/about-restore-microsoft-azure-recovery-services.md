@@ -4,12 +4,12 @@ description: Microsoft Azure Recovery Services (MARS) エージェントで使�
 ms.reviewer: mepand
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 322edb090b74338e9127b0723f833c11e0e605b2
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: cebe13f6e72a9d8db346171384182756fb474ecd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109629482"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970471"
 ---
 # <a name="about-restore-using-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用した復元について 
 
@@ -19,7 +19,7 @@ ms.locfileid: "109629482"
 
 - [MARS エージェント](https://aka.ms/azurebackup_agent)の最新バージョンがインストールされていることを確認します。
 - [ネットワーク帯域幅の調整](backup-windows-with-mars-agent.md#enable-network-throttling)が無効になっていることを確認します。
-- [エージェントのキャッシュ フォルダー](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)用の十分な空き容量がある高速ストレージが利用可能であることを確認します。
+- [エージェントのキャッシュ フォルダー](/azure/backup/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)用の十分な空き容量がある高速ストレージが利用可能であることを確認します。
 - メモリと CPU リソースを監視し、データの圧縮解除と復号化に使用できるリソースが十分にあることを確認します。
 - **インスタント リストア** 機能を使用して回復ポイントをディスクとしてマウントする際は、マルチスレッド コピー オプション (/MT スイッチ) がある **robocopy** を使用して、マウントされた回復ポイントからファイルを効率的にコピーします。
 

@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7c1c8532a3f77054755eb040fceff1bf8cf273e
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606992"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440234"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -102,7 +102,7 @@ Azure Key Vault 参照を使用すると、コードの変更を必要とせず�
 現時点では、次の 2 つの方法のいずれかで、仮想ネットワーク内から非 HTTP トリガー関数を使用できます。
 
 + Premium プランで関数アプリを実行し、仮想ネットワーク トリガーのサポートを有効にする。
-+ App Service プランまたは App Service Environment で関数アプリを実行する。
++ App Service プランまたは App Service 環境で関数アプリを実行する。
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
@@ -161,7 +161,7 @@ Premium プランまたは App Service プランの関数アプリを仮想ネ�
 次の API では、リージョンでの仮想ネットワーク統合をプログラミングで管理できます。
 
 + **Azure CLI**:[`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) コマンドを使用し、リージョンでの仮想ネットワーク統合を追加、一覧表示、または削除します。  
-+ **ARM テンプレート**:リージョンでの仮想ネットワーク統合は、Azure Resource Manager テンプレートを使用することで有効にできます。 完全な例については、[こちらの関数クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/) ページを参照してください。
++ **ARM テンプレート**:リージョンでの仮想ネットワーク統合は、Azure Resource Manager テンプレートを使用することで有効にできます。 完全な例については、[こちらの関数クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/function-premium-vnet-integration/) ページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

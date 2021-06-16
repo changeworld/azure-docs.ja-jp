@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/11/2021
+ms.openlocfilehash: a0d28be0bc9754ab678792f2dca294b4fb185bf0
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580611"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018641"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスのコストの見積りと管理を行う方法
 
@@ -111,7 +111,7 @@ Azure Cognitive Search サービスをデータと同じリージョンに作成
 
 ## <a name="next-steps"></a>次の手順
 
-Azure サブスクリプション全体のコストを監視および管理する方法について説明します。
+クラウドの支出を最適化して節約しますか?
 
 > [!div class="nextstepaction"]
-> [Azure Cost Management および Billing のドキュメント](../cost-management-billing/cost-management-billing-overview.md)
+> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

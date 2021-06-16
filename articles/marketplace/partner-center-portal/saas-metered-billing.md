@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 9f72d54fda8f66c2fce35f0520b51406aa276bb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c84f48d7a41a43b1425663b2ceed9ba74276f3f9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92892755"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955620"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>コマーシャル マーケットプレースの測定サービスを使用した SaaS の従量制課金
 
@@ -26,7 +26,7 @@ ms.locfileid: "92892755"
 - お客様がプロビジョニングしてオファーに接続するための [SaaS Fulfillment API](./pc-saas-fulfillment-api-v2.md) と統合していること。  
 - お客様に対してサービスの課金を行う際、**定額** 料金モデルが構成されていること。  ディメンションは、定額料金モデルに対するオプションの拡張機能です。 
 
-次に、SaaS オファーは、[コマーシャル マーケットプレースの測定サービス API](./marketplace-metering-service-apis.md) と統合して、Microsoft に請求対象のイベントを通知することができます。
+次に、SaaS オファーは、[コマーシャル マーケットプレースの測定サービス API](../marketplace-metering-service-apis.md) と統合して、Microsoft に請求対象のイベントを通知することができます。
 
 >[!Note]
 >マーケットプレース測定サービスは定額課金モデルでのみ使用でき、ユーザーあたりの課金モデルには適用されません。
@@ -41,7 +41,7 @@ ms.locfileid: "92892755"
 - 定額課金モデル用に構成された各プランには、少なくとも 1 つの定期的な料金 (0 ドルの場合もあります) が含まれています。
     - 定期的な **月額** 料金: ユーザーがプランを購入した場合に毎月定期的に前払いされる定額の月額料金。
     - 定期的な **年間** 料金: ユーザーがプランを購入した場合に毎年定期的に前払いされる定額の年間料金。
-- 定期的な料金に加えて、定額プランには、定額料金に含まれない、超過使用量に応じてお客様に請求するために使用されるオプションのカスタム ディメンションを含めることもできます。  各ディメンションは、サービスが[コマーシャル マーケットプレースの測定サービス API](./marketplace-metering-service-apis.md) を使用して Microsoft に連絡すべき課金対象の項目を表しています。
+- 定期的な料金に加えて、定額プランには、定額料金に含まれない、超過使用量に応じてお客様に請求するために使用されるオプションのカスタム ディメンションを含めることもできます。  各ディメンションは、サービスが[コマーシャル マーケットプレースの測定サービス API](../marketplace-metering-service-apis.md) を使用して Microsoft に連絡すべき課金対象の項目を表しています。
 
 ## <a name="sample-offer"></a>サンプル オファー
 
@@ -67,7 +67,7 @@ ms.locfileid: "92892755"
 
     [![Enterprise プランの価格](./media/saas-enterprise-pricing.png "クリックして拡大表示")](./media/saas-enterprise-pricing.png)
 
-選択したプランに基づいて、CNS SaaS オファーのサブスクリプションを購入する Azure のお客様は、サブスクリプションの期間 (サブスクリプションの詳細に表示される startDate および endDate の月または年) に応じて、SMS メッセージとメールの無料使用量を送信できるようになります。  Contoso では、基本として含まれている無料使用料に達するまで、Microsoft に使用状況イベントを送信せずに使用量をカウントします。 お客様の使用量が無料使用量を超えた場合、プランを変更したり別のことを行ったりする必要はありません。  Contoso では、無料使用量の超過分を測定し、超過使用量の請求を目的として、[コマーシャル マーケットプレースの測定サービス API](./marketplace-metering-service-apis.md) を使用して、Microsoft に対して使用状況イベントを生成し始めます。  Microsoft ではこれに応じて、カスタム ディメンションで公開元によって指定された超過使用量の請求をお客様に対して行います。 超過分の課金が行われるのは次の課金サイクルです (毎月、ただし顧客に応じて四半期ごとにすることや、早期も可)。  定額の月額料金プランの場合、超過分の課金は、超過が発生した各月に行われます。  定額の年間料金プランの場合、1 年あたりの基本として含まれている無料使用量が消費されると、カスタム測定によって生成される追加の使用量はすべて、サブスクリプションの期間が終わるまで、各請求サイクル (毎月) の超過分として課金されます。
+選択したプランに基づいて、CNS SaaS オファーのサブスクリプションを購入する Azure のお客様は、サブスクリプションの期間 (サブスクリプションの詳細に表示される startDate および endDate の月または年) に応じて、SMS メッセージとメールの無料使用量を送信できるようになります。  Contoso では、基本として含まれている無料使用料に達するまで、Microsoft に使用状況イベントを送信せずに使用量をカウントします。 お客様の使用量が無料使用量を超えた場合、プランを変更したり別のことを行ったりする必要はありません。  Contoso では、無料使用量の超過分を測定し、超過使用量の請求を目的として、[コマーシャル マーケットプレースの測定サービス API](../marketplace-metering-service-apis.md) を使用して、Microsoft に対して使用状況イベントを生成し始めます。  Microsoft ではこれに応じて、カスタム ディメンションで公開元によって指定された超過使用量の請求をお客様に対して行います。 超過分の課金が行われるのは次の課金サイクルです (毎月、ただし顧客に応じて四半期ごとにすることや、早期も可)。  定額の月額料金プランの場合、超過分の課金は、超過が発生した各月に行われます。  定額の年間料金プランの場合、1 年あたりの基本として含まれている無料使用量が消費されると、カスタム測定によって生成される追加の使用量はすべて、サブスクリプションの期間が終わるまで、各請求サイクル (毎月) の超過分として課金されます。
 
 ## <a name="billing-dimensions"></a>課金ディメンション
 
@@ -157,4 +157,4 @@ ms.locfileid: "92892755"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Marketplace の測定サービス API](./marketplace-metering-service-apis.md)
+- [Marketplace の測定サービス API](../marketplace-metering-service-apis.md)

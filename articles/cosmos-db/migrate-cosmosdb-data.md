@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04a86b0e8ebae2349d8c53470cca043ea5f87a87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018073"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967983"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>数百テラバイトのデータを Azure Cosmos DB に移行する 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Azure Cosmos DB には、テラバイト単位のデータを格納できます�
 
 ## <a name="tools-for-data-migration"></a>データ移行のためのツール 
 
-現在、Azure Cosmos DB の移行方法は、API の選択とデータのサイズによって異なります。 データ モデリング、クエリ パフォーマンス、パーティションキーの選択などの検証のために小規模なデータセットを移行するには、[データ移行ツール](import-data.md)または [Azure Data Factory の Azure Cosmos DB コネクタ](../data-factory/connector-azure-cosmos-db.md)を選択できます。 Spark を使い慣れている場合は、[Azure Cosmos DB Spark コネクタ](spark-connector.md)を使用してデータを移行することもできます。
+現在、Azure Cosmos DB の移行方法は、API の選択とデータのサイズによって異なります。 データ モデリング、クエリ パフォーマンス、パーティションキーの選択などの検証のために小規模なデータセットを移行するには、[データ移行ツール](import-data.md)または [Azure Data Factory の Azure Cosmos DB コネクタ](../data-factory/connector-azure-cosmos-db.md)を選択できます。 Spark を使い慣れている場合は、[Azure Cosmos DB Spark コネクタ](./create-sql-api-spark.md)を使用してデータを移行することもできます。
 
 ## <a name="challenges-for-large-scale-migrations"></a>大規模な移行での課題 
 
@@ -146,5 +146,5 @@ Azure Cosmos DB ではストレージは自動的にスケールアウトされ�
 ## <a name="next-steps"></a>次のステップ
 
 * [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。 
-* Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](spark-connector.md)に関する記事をご覧ください。  
+* Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](./create-sql-api-spark.md)に関する記事をご覧ください。  
 * 大規模な移行に関して別途支援が必要な場合は、問題のタイプに "General Advisory (一般的な勧告)" を、問題のサブタイプに "Large (TB+) migrations (大規模な (TB 以上の) 移行)" を選択してサポート チケットを開き、Azure Cosmos DB 製品チームに連絡します。

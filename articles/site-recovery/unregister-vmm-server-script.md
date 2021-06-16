@@ -1,18 +1,16 @@
 ---
 title: VMM サーバー スクリプトの登録解除
 description: この記事では、VMM サーバー上のクリーンアップ スクリプトについて説明します
-author: v-harisudhan
 manager: evansma
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.author: v-harisudhan
-ms.openlocfilehash: 3143464b662add4bb069000b4d04a1ec9c5c188b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c74ef8b639ac595ca8b4e3222be5e205130b62d8
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776572"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026221"
 ---
 # <a name="cleanup-script-on-a-vmm-server"></a>VMM サーバー上のクリーンアップ スクリプト
 VMM サーバーが切断状態になっていた場合は、VMM サーバーでクリーンアップ スクリプトをダウンロードして実行します。

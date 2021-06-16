@@ -7,12 +7,13 @@ ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 02/09/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9778942dc24a81c839e14e095a755a280a17d9c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0b7f4ae32ddb7aa8f691680e972128adf2887f67
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379133"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681435"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>PowerShell を使用して、VPN Gateway を作成し、サイト間接続を追加する
 

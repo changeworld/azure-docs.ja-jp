@@ -4,12 +4,12 @@ description: このチュートリアルでは、Intel OpenVINO™ DL Streamer �
 ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 05/18/2021
-ms.openlocfilehash: e06acecfd65686d90afa4727dd611bcfa2877c51
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9f3a313b1dc99fd86bc2ee764a78a151e8d88f96
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465715"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440560"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
 
@@ -119,9 +119,9 @@ Azure Video Analyzer デバイスを右クリックし、 **[組み込みイベ�
 1. *operations.json* ファイルを編集します。
     * ライブ パイプライン トポロジへのリンクを変更します。
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json"`
+        `"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json"`
 
-    * `pipelineTopologySet` で、前のリンクの値と一致するようにライブ パイプライン トポロジの名前を編集します。
+    * `pipelineTopologySet` で、上記のリンクの値と一致するようにライブ パイプライン トポロジの名前を編集します。
 
       `"topologyName" : "InferencingWithOpenVINOgRPC"`
 

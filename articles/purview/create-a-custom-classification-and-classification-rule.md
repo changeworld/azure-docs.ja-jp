@@ -1,18 +1,18 @@
 ---
 title: カスタム分類と分類ルールの作成 (プレビュー)
 description: Azure Purview で組織に固有のデータ資産のデータの種類を定義する、カスタム分類を作成する方法について説明します。
-author: animukherjee
+author: anmuk601
 ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 3/24/2021
-ms.openlocfilehash: 7d6baee49250509e50cdeeea8cf8ca6cec5b362d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e54535449ddf9605bc483b9a309a717b22d8398d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222162"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071499"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview でのカスタム分類
 
@@ -48,7 +48,7 @@ Microsoft のシステム分類は、予約済みの `MICROSOFT.` 名前空間�
 
 - 名前空間の最後の 2 つのセグメント以外はすべてトリミングされます。
 
-- 大文字と小文字の区別は、各単語の最初の文字が大文字になるように調整されます。 その他の文字はすべて小文字に変換されます。
+- 大文字と小文字の区別は、各単語の最初の文字が大文字になるように調整されます。
 
 - すべてのアンダースコア (\_) はスペースで置き換えられます。
 

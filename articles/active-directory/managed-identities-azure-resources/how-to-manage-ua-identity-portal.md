@@ -6,21 +6,23 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: ''
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/26/2020
+ms.date: 05/20/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4cccdfc3a2cf8dd3827776028a7738ae769673
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 72a9cfe6142b4c82cd122068e096776c19c4e392
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98184832"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080905"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする
 
@@ -74,16 +76,9 @@ Azure リソースのマネージド ID は、Azure Active Directory のマネ�
 
 ユーザー割り当てマネージド ID にロールを割り当てるには、お使いのアカウントに[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールの割り当てが必要です。
 
-1. Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインして、ユーザー割り当てマネージド ID を一覧表示します。
-2. 検索ボックスに "*マネージド ID*" と入力して、[サービス] の下で **[マネージド ID]** をクリックします。
-3. ご使用のサブスクリプションのユーザー割り当てマネージド ID の一覧が表示されます。  ロールを割り当てるユーザー割り当てマネージド ID を選択します。
-4. **[アクセス制御 (IAM)]** を選択したら、 **[ロール割り当ての追加]** を選択します。
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-   ![ユーザー割り当てマネージド ID の開始](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
+## <a name="next-steps"></a>次のステップ
 
-5. [ロールの割り当ての追加] ブレードで、次の値を構成してから **[保存]** をクリックします。
-   - **[ロール]** - 割り当てるロール
-   - **[アクセスの割り当て先]** - ユーザー割り当てマネージド ID を割り当てるリソース
-   - **[選択]** - アクセスを割り当てるメンバー
-   
-   ![ユーザー割り当てマネージド ID の IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)
+- [Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](howto-assign-access-cli.md)
+- [PowerShell を使用して、リソースにマネージド ID アクセスを割り当てる](howto-assign-access-powershell.md)

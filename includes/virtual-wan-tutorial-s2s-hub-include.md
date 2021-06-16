@@ -5,20 +5,20 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f469664c716ecef6b82de2befa40b33f253e229f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab341181db71a8df5dde27311e9169f9477c70f8
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99627714"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578251"
 ---
 1. 作成した仮想 WAN を見つけます。 仮想 WAN ページの **[接続]** セクションで、 **[ハブ]** を選択します。
 2. **[ハブ]** ページで、 **[+ 新しいハブ]** を選択して、 **[仮想ハブを作成する]** ページを開きます。
 
-    ![スクリーンショットには、[基本] タブが選択された [仮想ハブの作成] ペインが表示されています。](./media/virtual-wan-tutorial-hub-include/basics.png "基本")
+   :::image type="content" source="./media/virtual-wan-tutorial-hub-include/basics.png" alt-text="スクリーンショットには、[基本] タブが選択された [仮想ハブの作成] ペインが表示されています。" border="false":::
 3. **[仮想ハブを作成する]** ページの **[基本]** タブで、次のフィールドを入力します。
 
    * **[リージョン]** (旧称は [場所])
@@ -26,7 +26,7 @@ ms.locfileid: "99627714"
    * **[ハブ プライベート アドレス空間]** - ハブを作成するための最小アドレス空間は /24 です。 /25 から /32 の範囲で使用すると、作成中にエラーが発生します。 仮想ハブ内のサービスのサブネット アドレス空間を明示的に計画する必要はありません。 Azure Virtual WAN はマネージド サービスであるため、異なるゲートウェイまたはサービス (VPN ゲートウェイ、ExpressRoute ゲートウェイ、ユーザー VPN またはポイント対サイト ゲートウェイ、ファイアウォール、ルーティングなど) に対して、適切なサブネットが仮想ハブに作成されます。
 4. **サイト間** を選択します。
 
-    ![スクリーンショットには、[サイト間] タブが選択された [仮想ハブの作成] ペインが表示されています。](./media/virtual-wan-tutorial-hub-include/site-to-site.png "サイト間")
+   :::image type="content" source="./media/virtual-wan-tutorial-hub-include/site-to-site.png" alt-text="スクリーンショットには、[サイト間] タブが選択された [仮想ハブの作成] ペインが表示されています。" border="false":::
 
 5. **[サイト間]** タブで、次のフィールドを入力します。
 

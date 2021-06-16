@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 6634a536828b3c19d771d135fdb3a1224d3dfdf3
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e6bfa172624ba65c161abcba6dfd97b557fb8d91
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717425"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950460"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -144,9 +144,9 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 次の DevOps のベスト プラクティスを使用して、エンタープライズとチームが、生産性と効率性があることを確認します。
 
 **ベスト プラクティス**: サービスのビルドとデプロイを自動化する。  
-**詳細**: [コードとしてのインフラストラクチャ](/azure/devops/learn/what-is-infrastructure-as-code)は、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とプラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。
+**詳細**: [コードとしてのインフラストラクチャ](/devops/deliver/what-is-infrastructure-as-code)は、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とプラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。
 
-[Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) を使用して、宣言型のテンプレートを使ってアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
+[Azure Resource Manager](../../azure-resource-manager/templates/syntax.md) を使用して、宣言型のテンプレートを使ってアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
 
 **ベスト プラクティス**: Azure Web アプリまたはクラウド サービスに自動的にビルドし、デプロイする。  
 **詳細**: Azure DevOps Projects を Azure Web アプリまたはクラウド サービスに [自動的にビルドしてデプロイ](/azure/devops/pipelines/index)するように構成できます。 コードをチェックインするたびに、Azure DevOps により、Azure へビルドが実行され、バイナリが自動的にデプロイされます。 パッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。

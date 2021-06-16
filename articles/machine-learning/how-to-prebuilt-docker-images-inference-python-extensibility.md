@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 688c0fd03573737ee97084025251c9082a8cb915
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8af27f876f1c325cf99214e36f680e012e86c98d
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382862"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536328"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>事前構築済み Docker イメージの Python パッケージ拡張 (プレビュー)
 
@@ -155,7 +155,7 @@ myenv.environment_variables = {
     | 解決策  | 指定されたパッケージをコンテナーの起動時にインストールする `requirements.txt` を作成します。 | すべての依存関係を含んだローカル Python 環境を作成します。 そのディレクトリを実行時にコンテナーにマウントします。 |
     | パッケージのインストール           | 追加インストールは不要です (pip が既にインストールされている場合)                                                                                                          | 仮想環境または conda 環境のインストール。                                                                                   |
     | 仮想環境のセットアップ              | 必要な仮想環境について、特別なセットアップはありません。ユーザーは、`requirements.txt` を作成するために必要に応じて pip freeze を使用し、現在のローカル ユーザー環境をプルできます。 | クリーンな仮想環境をセットアップする場合は、現在のユーザーのローカル環境に応じて追加の手順が必要になることがあります。                        |
-    | デバッグ                  | 依存関係が明確にリストされているので、サーバーのセットアップとデバッグは簡単です。 | 仮想環境がクリーンではない場合、サーバーのデバッグ時に問題が生じる可能性があります。 たとえば、環境やユーザー コードからエラーが発生するようだとクリアとは言えません。 |
+    | [デバッグ](how-to-inference-server-http.md)                 | 依存関係が明確にリストされているので、サーバーのセットアップとデバッグは簡単です。 | 仮想環境がクリーンではない場合、サーバーのデバッグ時に問題が生じる可能性があります。 たとえば、環境やユーザー コードからエラーが発生するようだとクリアとは言えません。 |
     | スケールアウト中の一貫性 | 外部の PyPi パッケージに依存しており、またその依存関係をユーザーが固定しているため、一貫性がありません。 こうした外部ダウンロードは、不具合の原因になる場合があります。                                 | ユーザー環境にのみ依存しているため、一貫性の問題はありません。                                                                             |
 
 * `requirements.txt` とマウントされた依存関係ディレクトリがコンテナーに見つかりません。なぜでしょうか?

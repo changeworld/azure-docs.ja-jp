@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 413e8387e6e6e1c1386aa9477aebe37b2488c098
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047781"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950554"
 ---
 # <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 
@@ -363,7 +363,7 @@ Microsoft では、複数のセキュリティ上の方法およびテクノロ�
 
 - [Azure Active Directory の参加](../../active-directory/devices/overview.md)によって、クラウド機能を Windows 10 デバイスに拡張し、集中管理することができます。 ユーザーが Azure Active Directory を介して企業や組織のクラウドに接続できるようになり、アプリやリソースへのアクセスが簡略化されます。
 
-- [Azure Active Directory アプリケーション プロキシ](../../active-directory/manage-apps/application-proxy.md)は、オンプレミスでホストされた Web アプリケーションに対する SSO およびセキュリティ保護されたリモート アクセスを提供します。
+- [Azure Active Directory アプリケーション プロキシ](../../active-directory/app-proxy/application-proxy.md)は、オンプレミスでホストされた Web アプリケーションに対する SSO およびセキュリティ保護されたリモート アクセスを提供します。
 
 ## <a name="next-steps"></a>次の手順
 

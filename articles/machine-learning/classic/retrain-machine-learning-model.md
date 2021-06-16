@@ -7,14 +7,14 @@ ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18, devx-track-csharp
+ms.custom: seodec18, devx-track-csharp, devx-track-azurepowershell
 ms.date: 02/14/2019
-ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1bf9582c73eb168c0f32e713f8308096edcf603
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517588"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704808"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 

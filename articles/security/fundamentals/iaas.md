@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 6f073777930b4d026d826d2c3586e0886f906206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3099ff7525e07a2361a63382eea0d3dc6e689ee7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102503081"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956827"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -43,7 +43,7 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](../../governance/management-groups/overview.md)の範囲は、サブスクリプションを上回ります。 サブスクリプションを管理グループ (コンテナー) にまとめ、それらのグループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、グループに適用された条件を自動的に継承します。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。
 
 **ベスト プラクティス**: VM の設定とデプロイ方法のばらつきを減らす。   
-**詳細**: [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) テンプレートを使用して、デプロイの選択の自由を強化し、環境内の VM を理解してインベントリを実行しやすくします。
+**詳細**: [Azure Resource Manager](../../azure-resource-manager/templates/syntax.md) テンプレートを使用して、デプロイの選択の自由を強化し、環境内の VM を理解してインベントリを実行しやすくします。
 
 **ベスト プラクティス**: 特権アクセスをセキュリティで保護する。   
 **詳細**: [最低限の特権](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)と Azure に組み込まれているロールを使用して、ユーザーが VM へのアクセスと設定を実行できるようにします。
@@ -99,7 +99,7 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 **詳細**: Windows の更新プログラムを確認してすべてインストールすることは、あらゆるデプロイの第一歩です。 独自にイメージをデプロイするときや、独自のライブラリからイメージをデプロイするときは、このことが特に重要となります。 ただし、Azure Marketplace のイメージは既定で自動的に更新されますが、公開リリース後は遅れが発生する可能性があります (最大数週間)。
 
 **ベスト プラクティス**: VM を定期的に再デプロイして、OS の最新バージョンを使用する。   
-**詳細**: VM を [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して VM を定義して、簡単に再デプロイできるようにします。 テンプレートを使用すると、必要なときに、修正プログラムが適用されセキュリティで保護された VM を設定できます。
+**詳細**: VM を [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)を使用して VM を定義して、簡単に再デプロイできるようにします。 テンプレートを使用すると、必要なときに、修正プログラムが適用されセキュリティで保護された VM を設定できます。
 
 **ベスト プラクティス**: VM にセキュリティ更新プログラムを迅速に適用する。   
 **詳細**: Azure Security Center (Free レベルまたは Standard レベル) を有効にし、[不足しているセキュリティ更新プログラムを特定して適用](../../security-center/asset-inventory.md)します。

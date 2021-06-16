@@ -4,12 +4,12 @@ description: 'クイックスタート: Azure CLI を使用して、Azure portal
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: 76d4e3b9c1c906dd91a7355af2c7cb957ef6ac95
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: aa9d5f1c7ab20de9a2f815ce5b2639582d5f2bed
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891736"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081607"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure portal ダッシュボードを作成する
 
@@ -47,7 +47,7 @@ az vm create --resource-group myResourceGroup --name SimpleWinVM --image win2016
 > パスワードは複雑なものにする必要があります。
 > これは新しいユーザー名とパスワードです。
 > たとえば、Azure へのサインインに使用するアカウントではありません。
-> 詳細については、[ユーザー名の要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページと[パスワードの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)に関するページを参照してください。
+> 詳細については、[ユーザー名の要件](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-)に関するページと[パスワードの要件](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)に関するページを参照してください。
 
 デプロイが開始されます。通常、完了するまでに数分かかります。
 デプロイが完了したら、次のセクションに進みます。

@@ -8,17 +8,17 @@ metadata:
   description: Metrics Advisor は、機械学習の知識がなくてもデータ インジェスト、異常検出、診断を行うことができる一連の API を備えた時系列の監視プラットフォームです。
   author: mrbullwinkle
   manager: nitinme
-  ms.service: cognitive-services
+  ms.service: applied-ai-services
   ms.subservice: metrics-advisor
   ms.topic: landing-page
   ms.date: 08/13/2020
   ms.author: mbullwin
-  ms.openlocfilehash: 9779d1b024782f723ab9991a09daa2f859bb1539
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 51a9315974b97032a58e21923df12d0adbe9d11b
+  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110367292"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111893861"
 landingContent:
 - title: Metrics Advisor について
   linkLists:

@@ -1,18 +1,19 @@
 ---
-title: Azure SQL Database のコストを計画および管理する
+title: コストの計画と管理
 description: Azure portal でコスト分析を使用して、Azure SQL Database のコストを計画および管理する方法について説明します。
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.custom: subject-cost-optimization
 ms.service: sql-database
+ms.subservice: service-overview
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 56cf30d89460df8ac50d258bd8b29cf4e7236690
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e43d9b85bc50772ad75e974e11d0e7332e271b29
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734632"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408913"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>Azure SQL Database のコストを計画および管理する
 
@@ -38,7 +39,7 @@ Azure SQL Database では、仮想コアと DTU という 2 つの購入モデ�
 
 ### <a name="provisioned-or-serverless"></a>プロビジョニング済みまたはサーバーレス
 
-仮想コア購入モデルでは、Azure SQL Database は 2 種類のコンピューティング レベル (プロビジョニング済みスループットとサーバーレス) もサポートします。 課金の方法はコンピューティング レベルによって異なります。そのため、コストを計画して検討する際には、実際のワークロードに最適なレベルを理解することが重要です。 詳細については、「[仮想コア モデルの概要 - コンピューティング レベル](service-tiers-vcore.md#compute-tiers)」を参照してください。
+仮想コア購入モデルでは、Azure SQL Database は 2 種類のコンピューティング レベル (プロビジョニング済みスループットとサーバーレス) もサポートします。 課金の方法はコンピューティング レベルによって異なります。そのため、コストを計画して検討する際には、実際のワークロードに最適なレベルを理解することが重要です。 詳細については、「[仮想コア モデルの概要 - コンピューティング レベル](service-tiers-sql-database-vcore.md#compute-tiers)」を参照してください。
 
 仮想コアベースの購入モデルのプロビジョニング済みコンピューティング レベルでは、既存のライセンスを割引料金で交換できます。 詳細については、「[Azure ハイブリッド特典 (AHB)](../azure-hybrid-benefit.md)」を参照してください。
 

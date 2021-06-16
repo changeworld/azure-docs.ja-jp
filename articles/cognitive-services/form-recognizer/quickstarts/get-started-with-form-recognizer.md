@@ -4,19 +4,19 @@ titleSuffix: Azure Applied AI Services
 description: このクイックスタートでは、Form Recognizer のサンプル ラベル付けツールを使用して、フォーム ドキュメントに手動でラベルを付けます。 次に、ラベル付けされたドキュメントを使用してカスタム ドキュメント処理モデルをトレーニングし、そのモデルを使用してキーと値のペアを抽出します。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/14/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: ドキュメントの処理
-ms.openlocfilehash: af803b92945be059f604a3890a90d3aa36e5781e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b30dbd58e0a9c440f51386052529850d9ce9adc4
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475155"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894076"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -148,11 +148,11 @@ Form Recognizer 事前構築済みモデルを使用して、請求書、領収�
 * **[セキュリティ トークン]** - 一部のプロジェクト設定には、API キーや他の共有シークレットなどの機密性の高い値を含めることができます。 各プロジェクトでは、機密性の高いプロジェクト設定の暗号化または暗号化解除に使用できるセキュリティ トークンが生成されます。 セキュリティ トークンは、左側のナビゲーション バーの下部にある歯車アイコンを選択すると、[アプリケーション設定] に表示されます。
 
 * **ソース接続** - サンプル ラベル付けツールは、ソース (元のアップロードされたフォーム) とターゲット (作成されたラベルと出力データ) に接続されます。 接続は、複数のプロジェクトにまたがって設定および共有できます。 拡張可能なプロバイダー モデルが使用されるため、新しいソースまたはターゲット プロバイダーを簡単に追加できます。 新しい接続を作成し、 **[Add Connection]** \(接続の追加\) ボタンをクリック します。 フィールドに次の値を入力します。
-   * **[表示名]** - 接続の表示名。
-   * **[説明]** - プロジェクトの説明。
-   * **[SAS URL]** - Azure Blob Storage コンテナーの Shared Access Signature (SAS) URL。
+  * **[表示名]** - 接続の表示名。
+  * **[説明]** - プロジェクトの説明。
+  * **[SAS URL]** - Azure Blob Storage コンテナーの Shared Access Signature (SAS) URL。
 
-   [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+  * [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
 
    :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS の場所。":::
 
@@ -217,13 +217,15 @@ Form Recognizer 事前構築済みモデルを使用して、請求書、領収�
 * **[Average Accuracy]\(平均精度\)** - モデルの平均精度。 追加のフォームにラベルを付け、再度トレーニングを行って新しいモデルを作成することにより、モデルの精度を向上させることができます。 最初に、結果を解析してテストする 5 つのフォームにラベルを付け、必要に応じてフォームを追加することをお勧めします。
 * タグの一覧と、タグごとの予測精度。
 
-    :::image type="content" source="../media/label-tool/custom-2.jpg" alt-text="トレーニング ビュー。":::
+    :::image type="content" source="../media/label-tool/custom-3.jpg" alt-text="トレーニング ビュー ツール。":::
+
+    
 
 #### <a name="analyze-a-custom-form"></a>カスタムフォームを解析する
 
 左側の解析 (電球) アイコンを選択して、モデルをテストします。 ソースの「ローカル ファイル」を選択します。 ファイルを参照し、テスト フォルダーに展開したサンプル データセットからファイルを選択します。 次に、 **[Run analysis]** \(解析の実行\) ボタンを選択して、フォームのキーと値のペア、テキスト、テーブルの予測を取得します。 このツールでは、境界ボックスにタグが適用され、各タグの信頼度がレポートされます。
 
-:::image type="content" source="../media/label-tool/custom-3.jpg" alt-text="トレーニング ビュー ツール。":::
+   :::image type="content" source="../media/label-tool/custom-2.jpg" alt-text="トレーニング ビュー。":::
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 025ab1ddd9a7b14ac75df762c54fe48e4f665e29
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763579"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970141"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Device Update for IoT Hub に更新プログラムを追加する
 新しい更新プログラムを Device Update for IoT Hub に追加する方法について説明します。
@@ -122,7 +122,7 @@ OEM またはソリューション インテグレーターからデバイスを
 ## <a name="import-an-update"></a>更新プログラムをインポートする
 
 > [!NOTE]
-> 次の手順は、Azure portal ユーザー インターフェイスを使用して更新プログラムをインポートする方法を示しています。 [IoT Hub API のデバイス更新](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) プログラムを使用して、更新プログラムをインポートすることもできます。 
+> 次の手順は、Azure portal ユーザー インターフェイスを使用して更新プログラムをインポートする方法を示しています。 [IoT Hub API のデバイス更新](/rest/api/deviceupdate/updates) プログラムを使用して、更新プログラムをインポートすることもできます。 
 
 1. [Azure portal](https://portal.azure.com) にログインし、Device Update がある IoT Hub に移動します。
 

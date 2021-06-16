@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 2a035f531e03dc42e8be4f3dab403406eb7c8f14
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 0e5b4d17b0c0ccaa4c839338e0656c0a8eda3bd5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518628"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078026"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -31,7 +31,7 @@ Service Fabric ランタイムの 8.0 リリースでは、ツールと SDK の�
 ### <a name="key-announcements"></a>重要なお知らせ
 
 - Windows 向け .NET 5 に対するサポートの **一般提供**
-- [ステートレス NodeType](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types) の **一般提供**
+- [ステートレス NodeType](./service-fabric-stateless-node-types.md) の **一般提供**
 - ステートレス サービス インスタンスを移動する機能
 - パラメーター化された DefaultLoad をアプリケーション マニフェストに追加する機能
 - シングルトン レプリカのアップグレード - 一部のクラスター レベル設定をアプリケーション レベルで定義する機能
@@ -214,15 +214,14 @@ Service Fabric 6.5 の新機能:
 | 2019 年 8 月 23 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
 | 2019 年 10 月 14 日 | [Azure Service Fabric 6.5 更新リリース](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
 
-
 ### <a name="service-fabric-64-releases"></a>Service Fabric 6.4 のリリース
 
-| リリース日 | Release | 詳細情報 |
-|---|---|---|
-| 2018 年 11 月 30 日 | [Azure Service Fabric 6.4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
-| 2018 年 12 月 12 日 | [Windows クラスター向け Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)  | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |
-| 2019 年 2 月 4 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/02/Service-Fabric-6.4CU3-Release-Notes.pdf) |
-| 2019 年 3 月 4 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/03/Service-Fabric-6.4CU4-Release-Notes.pdf)
-| 2019 年 4 月 8 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/04/Service-Fabric-6.4CU5-ReleaseNotes3.pdf)
-| 2019 年 5 月 2 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/05/Service-Fabric-64CU6-Release-Notes-V2.pdf)
-| 2019 年 5 月 28 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) | [リリース ノート](https://msdnshared.blob.core.windows.net/media/2019/05/Service_Fabric_64CU7_Release_Notes1.pdf)
+| リリース日 | Release |
+|---|---|
+| 2018 年 11 月 30 日 | [Azure Service Fabric 6.4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/) |
+| 2018 年 12 月 12 日 | [Windows クラスター向け Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 2 月 4 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 3 月 4 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 4 月 8 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 5 月 2 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |
+| 2019 年 5 月 28 日 | [Azure Service Fabric 6.4 更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) |

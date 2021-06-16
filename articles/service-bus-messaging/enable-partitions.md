@@ -3,12 +3,13 @@ title: Azure Service Bus のキューとトピックでパーティション分�
 description: この記事では、Azure portal、PowerShell、CLI、プログラミング言語 (C#、Java、Python、JavaScript) を使用して、Azure Service Bus のキューとトピックでパーティション分割を有効にする方法について説明します
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: ac77dfc2e72d1d83c4424c05da40c5adba1e8e9d
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 786a78cfa86c67ba32675fcee2b03c4e3817fbf6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076691"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671394"
 ---
 # <a name="enable-partitioning-for-an-azure-service-bus-queue-or-a-topic"></a>Azure Service Bus のキューまたはトピックでパーティション分割を有効にする
 Service Bus "パーティション" では、キューとトピック、つまり "メッセージング エンティティ" を複数のメッセージ ブローカーとメッセージング ストアにパーティション分割することもできます。 パーティション分割は、パーティション分割されたエンティティの全体のスループットが、単一のメッセージ ブローカーまたはメッセージング ストアのパフォーマンスによって制限されなくなることを意味します。 また、1 つのメッセージング ストアが一時的に停止しても、パーティション分割されたキューまたはトピックは使用することができます。 パーティション分割されたキューとトピックには、トランザクションやセッションのサポートなど、あらゆる高度な Service Bus 機能を含めることができます。 詳細については、「[パーティション分割されたキューとトピック](service-bus-partitioning.md)」を参照してください。 この記事では、Service Bus のキューまたはトピックで重複メッセージの検出を有効にするさまざまな方法について説明します。 
@@ -186,12 +187,12 @@ New-AzServiceBusTopic -ResourceGroup myresourcegroup `
 ## <a name="next-steps"></a>次のステップ
 Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [.NET (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
-- [Java (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Java (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)

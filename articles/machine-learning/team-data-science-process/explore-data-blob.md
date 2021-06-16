@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/30/2021
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1e17d50904ed973b21072211c06343bc880421b2
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 488e71925e557d8697d56575a6541b9aff047b35
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517372"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078278"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure Blob Storage のデータを探索する
 
@@ -48,7 +48,7 @@ ms.locfileid: "109517372"
     #download from blob
     t1=time.time()
     blob_service_client_instance = BlobServiceClient(account_url=STORAGEACCOUNTURL, credential=STORAGEACCOUNTKEY)
-    blob_client_instance = blob_service_client.get_blob_client(CONTAINERNAME, BLOBNAME, snapshot=None)
+    blob_client_instance = blob_service_client_instance.get_blob_client(CONTAINERNAME, BLOBNAME, snapshot=None)
     with open(LOCALFILENAME, "wb") as my_blob:
         blob_data = blob_client_instance.download_blob()
         blob_data.readinto(my_blob)

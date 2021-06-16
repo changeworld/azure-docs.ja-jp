@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance (プレビュー) で SQL Server トランザクション レプリケーションを使用するについて説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: data-movement
+ms.subservice: replication
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: ferno-ms
+ms.author: ferno
+ms.reviewer: mathoma
 ms.date: 05/10/2020
-ms.openlocfilehash: 23c9650a4bb53257e369e87e7a03681f94ed9cae
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: bad663dd0101a4e42f761256bf5fb9d32ac09320
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684310"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693955"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance (プレビュー) でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "109684310"
   > [!NOTE]
   > Azure SQL Managed Instance のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) を使用している必要があります。
 
-### <a name="components"></a>コンポーネント
+### <a name="components"></a>Components
 
 トランザクション レプリケーションの主要なコンポーネントは、次の図の **パブリッシャー**、**ディストリビューター**、**サブスクライバー** です。  
 

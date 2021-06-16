@@ -9,22 +9,21 @@ ms.custom: seodec18, cog-serv-seo-aug-2020, devx-track-azurecli
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 06/02/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, 感情分析, 自然言語処理
-ms.openlocfilehash: 09d0da5aa811f694657ae6a0b8059bf55bcbf657
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 103f6ce9c614646f96129f9579a35655756bb794
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290256"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968201"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
 > [!NOTE]
 > * 感情分析と言語検出のためのコンテナーが、一般提供されるようになりました。 キー フレーズ抽出のコンテナーは、制限なしのパブリック プレビューとして使用できます。
 > * 現時点では、エンティティのリンクと NER をコンテナーとして使用することはできません。
-> * Text Analytics for Health コンテナーには[要求フォーム](https://aka.ms/csgate)が必要です。 現時点では、その使用に対しては課金されません。
 > * コンテナー イメージの場所が最近変更された可能性があります。 このコンテナーの更新された場所については、この記事をご覧ください。
 
 コンテナーを使用すると、独自の環境で Text Analytic API を実行でき、セキュリティとデータ ガバナンスの固有の要件に対応できます。 Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 

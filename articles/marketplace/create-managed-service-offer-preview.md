@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
-ms.openlocfilehash: 072f1d63e0b3df898ef170205b5c560432d870b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a30265f335dd279470e6de421f83e682a304788f
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97918038"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060509"
 ---
 # <a name="how-to-add-a-preview-audience-for-your-managed-service-offer"></a>管理サービス オファーのプレビュー対象ユーザーを追加する方法
 

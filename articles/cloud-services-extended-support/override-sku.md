@@ -7,13 +7,13 @@ author: surbhijain
 ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/05/2021
-ms.custom: ''
-ms.openlocfilehash: d5dfae4b5cfee8f61e11e418a05e86017d119410
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fc973f024ea93b986793a8daff8e0db8caf56e22
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739262"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696214"
 ---
 # <a name="override-sku-information-over-cscfgcsdef-in-cloud-services-extended-support"></a>Cloud Services (延長サポート) で CSCFG/CSDEF で SKU 情報をオーバーライドする 
 

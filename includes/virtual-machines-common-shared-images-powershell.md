@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2020
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: 807cbd283cf7971bf4256451028ffa16a0911266
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: 8e6a079aec7fd47e2909958d71ab45eb04e676da
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96027070"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721063"
 ---
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
 

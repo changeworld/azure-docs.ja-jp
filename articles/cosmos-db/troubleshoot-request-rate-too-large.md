@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: ed75ad96346d4a98e947a6231714d19431aa2715
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 99cad194317a2dfc7a5924635aef7484d83f8ba0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734406"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969287"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-429-exceptions"></a>Azure Cosmos DB の要求率が大きすぎる (429) 例外を診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +57,7 @@ Azure Cosmos DB クライアント SDK とデータ インポート ツール (A
 
 ホット パーティションの原因となるパーティション分割戦略の例を次に示します。
 - 書き込みが多いワークロード用の IoT デバイス データを保存する、日付でパーティション分割されたコンテナーがある。 1 つの日付のすべてのデータが、同じ論理および物理パーティションに存在します。 毎日書き込まれるすべてのデータが同じ日付であるため、毎日ホット パーティションが発生します。 
-    - このシナリオでは、代わりに、ID (GUID またはデバイス ID) などのパーティション キー、または ID と日付を組み合わせた[合成パーティション キー](/synthetic-partition-keys.md)を使用すると、値のカーディナリティが高まり、要求量がより適切に分配されます。
+    - このシナリオでは、代わりに、ID (GUID またはデバイス ID) などのパーティション キー、または ID と日付を組み合わせた[合成パーティション キー](./synthetic-partition-keys.md)を使用すると、値のカーディナリティが高まり、要求量がより適切に分配されます。
 - tenantId によってパーティション分割されたコンテナーを使用するマルチテナント シナリオがある。 1 つのテナントが他のテナントよりも大幅にアクティブな場合、ホット パーティションが発生します。 たとえば、最大のテナントのユーザー数が 100,000 人で、ほとんどのテナントのユーザー数が 10 人未満の場合、tenantID でパーティション分割すると、ホット パーティションが発生します。 
     - この前述のシナリオでは、UserId などのより詳細なプロパティによってパーティション分割された、最大テナント用の専用コンテナーを使用することを検討します。 
     
@@ -92,7 +92,7 @@ AzureDiagnostics
 > どのワークロードでも、論理パーティション間で要求量は自然に変化します。 ホット パーティションの原因が、パーティション キーの選択による根本的な歪みであるか (この場合、キーの変更が必要になることがあります)、またはワークロード パターンの自然な変動による一時的な急増であるか特定する必要があります。
 
 #### <a name="recommended-solution"></a>推奨される解決策
-[適切なパーティション キーを選択する方法](/partitioning-overview.md#choose-partitionkey)に関するガイダンスを確認します。
+[適切なパーティション キーを選択する方法](./partitioning-overview.md#choose-partitionkey)に関するガイダンスを確認します。
 
 レート制限された要求のパーセンテージが高く、ホット パーティションがない場合:
 - クライアント SDK、Azure portal、PowerShell、CLI、または ARM テンプレートを使用して、データベースまたはコンテナーで [RU/秒を増やす](set-throughput.md)ことができます。  

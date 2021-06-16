@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: jgao
 ms.date: 04/26/2021
-ms.openlocfilehash: 732606c24b116edb3f89f9f60db2bd5621d90e63
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 85cf5d527e608fc7a5af6728d0443f83d3f33d5c
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277410"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005308"
 ---
 # <a name="quickstart-create-an-azure-ddos-protection-standard-using-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure DDoS Protection Standard を作成する
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-create-and-enable-ddos-protection-plans)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/create-and-enable-ddos-protection-plans)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/create-and-enable-ddos-protection-plans/azuredeploy.json":::
 

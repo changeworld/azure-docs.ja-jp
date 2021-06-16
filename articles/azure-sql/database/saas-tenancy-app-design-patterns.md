@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: b3d819cc87d653b2ef132539a77dbc57220ca5d1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bf25325f12fba6edaf106dc582f843c0c3c0adec
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142335"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693415"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>マルチテナント SaaS データベース テナント パターン
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery で VMware vCenter の検出エラーをトラブルシューティングする
 description: この記事では、Azure Site Recovery で VMware vCenter の検出エラーをトラブルシューティングする方法について説明します。
-author: mayurigupta13
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.author: mayg
-ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 5941539477aa4a4addf39bbf00451e6369ab8415
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92366660"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576402"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server の検出エラーをトラブルシューティングする
 

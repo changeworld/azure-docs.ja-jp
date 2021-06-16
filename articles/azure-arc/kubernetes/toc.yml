@@ -54,6 +54,8 @@
           href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Azure Policy を使用した受付制御ポリシー
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: Arc 対応 Open Service Mesh をデプロイする
+          href: tutorial-arc-enabled-open-service-mesh.md
         - name: どこからでもクラスターに安全に接続する
           href: cluster-connect.md
         - name: 認可の確認に Azure AD RBAC を使用する

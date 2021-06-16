@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 06/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 04ae2589e8abfab4826f2286d5f00869c24442f5
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bb6f7cc8331d242459d5af515919db13277a5f5e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057968"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985744"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 

@@ -5,18 +5,16 @@ description: Azure DNS で、DNS ゾーンとレコードを作成する方法�
 services: dns
 author: duongau
 ms.author: duau
-ms.date: 09/8/2020
+ms.date: 6/2/2021
 ms.topic: quickstart
 ms.service: dns
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 3ec97385d9774b93c04ebc4b8c5885d7effbbcd0
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 4b025f9073497a718f5ab47144794e84b57b1b5b
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949454"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568537"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>ARM テンプレートを使用して Azure DNS ゾーンとレコードを作成する
 
@@ -34,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-dns-new-zone)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azure-dns-new-zone)からのものです。
 
 このクイックスタートでは、サフィックスが `azurequickstart.org` である一意の DNS ゾーンを作成します。 2 つの IP アドレスを指す `A` レコードも、ゾーン内に配置されます。
 

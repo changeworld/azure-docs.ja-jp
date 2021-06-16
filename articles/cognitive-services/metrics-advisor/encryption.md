@@ -4,17 +4,17 @@ titleSuffix: Azure Cognitive Services
 description: Metrics Advisor サービスによる保存データの暗号化。
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: 5d41500a9c53e38cd36f0feba602e0e1baa5da2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 782314b39a3ab6deda7011b38d75778e5441b32f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92909745"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891196"
 ---
 # <a name="metrics-advisor-service-encryption-of-data-at-rest"></a>Metrics Advisor サービスによる保存データの暗号化
 

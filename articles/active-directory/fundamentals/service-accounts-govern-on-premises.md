@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50ba13a49d8e08b70ebf8a8bb12dfe92d8a35bb7
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e02755f748cffcf7c523ce3b9c6fc651d2b1b02f
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206586"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438920"
 ---
 # <a name="govern-on-premises-service-accounts"></a>オンプレミス サービス アカウントを管理する
 
@@ -59,7 +59,7 @@ Active Directory では、次の 4 種類のオンプレミス サービス ア�
 
 *  **ログオンできるワークステーション**: サービス アカウントでサインインできる場所のアクセス許可を制限します。 マシン上でローカルに実行され、そのマシン上のリソースにのみアクセスする場合は、それ以外の場所にサインインできないよう制限します。
 
-* [**パスワードを変更できない**](/powershell/module/addsadministration/set-aduser): パラメーターを false に設定することで、サービス アカウントから自身のパスワードを変更できないようにします。
+* [**パスワードを変更できない**](/powershell/module/activedirectory/set-aduser): パラメーターを false に設定することで、サービス アカウントから自身のパスワードを変更できないようにします。
  
 ## <a name="build-a-lifecycle-management-process"></a>ライフサイクル管理プロセスを作成する
 
@@ -175,13 +175,13 @@ Web サイトを実行するために使用され、1 つ以上の人事 (HR) SQ
 
 1. 無効のままにするポリシーが満たされたら、サービス アカウントを削除します。 
 
-   * **MSA の場合**: PowerShell を使用して[アカウントをアンインストールする](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true)ことも、管理されたサービス アカウント コンテナーから手動で削除することもできます。
+   * **MSA の場合**: PowerShell を使用して [アカウントをアンインストールする](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true)ことも、管理されたサービス アカウント コンテナーから手動で削除することもできます。
 
    * **コンピューターまたはユーザー アカウントの場合**: Active Directory 内から手動でアカウントを削除できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-サービス アカウントのセキュリティ保護の詳細については、次の記事をご覧ください。
+サービス アカウントのセキュリティ保護の詳細については、次の記事を参照してください。
 
 * [オンプレミス サービス アカウントの概要](service-accounts-on-premises.md)  
 * [グループ管理サービス アカウントをセキュリティで保護する](service-accounts-group-managed.md)  

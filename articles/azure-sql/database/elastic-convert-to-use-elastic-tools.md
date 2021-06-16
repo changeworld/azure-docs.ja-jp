@@ -7,16 +7,16 @@ ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18a78ef71143968327b290548b3307a8bbcfdfd2
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92787144"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021593"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケール アウト
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -160,7 +160,7 @@ Get-Mappings -ShardMap $ShardMap
 
 ツールは GitHub:[Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools) にもあります。
 
-マルチテナント モデルとシングルテナント モデルの間でデータを移動するには、分割/マージ ツールを使用します。 [分割/マージ ツール](elastic-scale-get-started.md)を参照してください。
+マルチテナント モデルとシングルテナント モデルの間でデータを移動するには、分割/マージ ツールを使用します。 [分割/マージ ツール](elastic-scale-configure-deploy-split-and-merge.md)を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

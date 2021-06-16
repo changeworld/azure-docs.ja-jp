@@ -3,12 +3,13 @@ title: Azure Backup の論理的な削除
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: da473b1d886ec2fe95a7baae76b09aff38fb3cd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 29a441db597de5d71ec71dde3f13e0630fabc05e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95254051"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681287"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup の論理的な削除
 

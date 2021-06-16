@@ -4,12 +4,12 @@ description: Azure PowerShell を使用して Azure portal でダッシュボー
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 03/25/2021
-ms.openlocfilehash: cd001a8259c54f1d86aab5983da1413c8163008c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7828dd6ba43cebeef158e897dd8f2a5fb54d8d83
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557447"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077738"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>クイック スタート:PowerShell を使用して Azure portal ダッシュボードを作成する
 
@@ -77,7 +77,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 このクイックスタートの次の部分で作成するダッシュボードには既存の VM が必要です。 次の手順に従って VM を作成します。
 
-VM のログイン資格情報を変数に格納します。 パスワードは複雑なものにする必要があります。 これは新しいユーザー名とパスワードです。たとえば Azure にサインインするためのアカウントではありません。 詳細については、[ユーザー名の要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページと[パスワードの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)に関するページを参照してください。
+VM のログイン資格情報を変数に格納します。 パスワードは複雑なものにする必要があります。 これは新しいユーザー名とパスワードです。たとえば Azure にサインインするためのアカウントではありません。 詳細については、[ユーザー名の要件](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-)に関するページと[パスワードの要件](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)に関するページを参照してください。
 
 ```azurepowershell-interactive
 $Cred = Get-Credential

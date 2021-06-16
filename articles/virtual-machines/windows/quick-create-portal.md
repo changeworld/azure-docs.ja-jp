@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ba28d003f359af12de6242c6d2444fb8adab0d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c37017269eb8989102353b079f61c104f5061749
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562757"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074928"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure Portal で Windows 仮想マシンを作成する
 
@@ -39,7 +39,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     ![仮想マシンの名前を指定し、そのリージョン、イメージ、サイズを選択する [インスタンスの詳細] セクションのスクリーンショット](./media/quick-create-portal/instance-details.png)
 
-1. **[Administrator account] (管理者アカウント)** で、ユーザー名 (*azureuser* など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+1. **[Administrator account] (管理者アカウント)** で、ユーザー名 (*azureuser* など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
 
     ![管理者のユーザー名とパスワードを入力する [管理者アカウント] セクションのスクリーンショット](./media/quick-create-portal/administrator-account.png)
 
@@ -56,6 +56,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. デプロイが完了したら、 **[リソースに移動]** を選択します。
 
     ![リソースに移動する、次のステップを示すスクリーンショット](./media/quick-create-portal/next-steps.png)
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
