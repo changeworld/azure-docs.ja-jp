@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: c01da4aed9e27296ea7b570420bb190b16749848
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4698826a78afe816029288f2d5eda14834124904
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931547"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407809"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループを使用したデータ分散の概念
 
@@ -70,7 +70,7 @@ Azure Arc 対応 PostgreSQL Hyperscale から最大のメリットを得るに�
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Arc 対応 PostgreSQL Hyperscale の作成について確認する](create-postgresql-hyperscale-server-group.md)
-- [Arc データ コントローラーに作成された Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのスケールアウトについて確認する](scale-out-postgresql-hyperscale-server-group.md)
+- [Arc データ コントローラーに作成された Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのスケールアウトについて確認する](scale-out-in-postgresql-hyperscale-server-group.md)
 - [Azure Arc 対応データ サービスについて確認する](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
 - [Azure Arc について確認する](https://aka.ms/azurearc)
 

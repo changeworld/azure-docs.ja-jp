@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49cc885976e022e8b7c4c44c3546febc217e2d7c
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581127"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071823"
 ---
 # <a name="manual-qos-capacity-pool"></a>手動 QoS 容量プール
 
@@ -44,8 +44,6 @@ QoS の種類に関する考慮事項については、「[Azure NetApp Files �
 [容量プールを作成する](azure-netapp-files-set-up-capacity-pool.md)ときには、容量プールに対して、手動 QoS の種類を使用するように指定できます。  手動 QoS の種類を使用するように[既存の容量プールを変更する](manage-manual-qos-capacity-pool.md#change-to-qos)こともできます。 
 
 容量の種類を手動 QoS に設定することは、永続的な変更です。 種類が手動 QoS である容量プールを、自動 QoS 容量プール変換することはできません。 
-
-手動 QoS の種類を使用するには、[この機能を登録する](manage-manual-qos-capacity-pool.md#register-the-feature)必要があります。  
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 068a3852371c44086717a6f0164e42d6a3ee33a6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aa57446053531ee4d3b40b617e8664eb0648c725
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754543"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951926"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Azure AD Multi-Factor Authentication のデプロイを計画する
 
@@ -39,7 +39,7 @@ Azure AD Multi-factor Authentication のデプロイを始める前に考慮す�
 | --- | --- |
 | 先進認証を使用する **クラウド専用** の ID 環境 | **追加の前提条件タスクはありません** |
 | **ハイブリッド** ID のシナリオ | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) がデプロイされ、ユーザー ID はオンプレミスの Active Directory Domain Services および Azure Active Directory と同期またはフェデレーションされています。 |
-| クラウド アクセス用に公開されたオンプレミスのレガシ アプリケーション | Azure AD の[アプリケーション プロキシ](../manage-apps/application-proxy.md)がデプロイされています。 |
+| クラウド アクセス用に公開されたオンプレミスのレガシ アプリケーション | Azure AD の[アプリケーション プロキシ](../app-proxy/application-proxy.md)がデプロイされています。 |
 | Azure AD MFA と RADIUS 認証の使用 | [ネットワーク ポリシー サーバー (NPS)](howto-mfa-nps-extension.md) がデプロイされています。 |
 | ユーザーが Microsoft Office 2010 以前または Apple Mail for iOS 11 以前を使用している | [Microsoft Office 2013 以降](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o)および Apple mail for iOS 12 以降にアップグレードします。 条件付きアクセスは、レガシ認証プロトコルではサポートされません。 |
 
@@ -267,7 +267,7 @@ Azure AD に対して直接認証し、先進認証 (WS-Fed、SAML、OAuth、Ope
 
 ### <a name="use-azure-ad-mfa-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで Azure AD MFA を使用する
 
-オンプレミスに存在するアプリケーションは、[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を使用して Azure AD テナントに公開でき、Azure AD の事前認証を使用するように構成されている場合は、Azure AD Multi-Factor Authentication を利用できます。
+オンプレミスに存在するアプリケーションは、[Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)を使用して Azure AD テナントに公開でき、Azure AD の事前認証を使用するように構成されている場合は、Azure AD Multi-Factor Authentication を利用できます。
 
 これらのアプリケーションは、他のすべての Azure AD 統合型アプリケーションと同様に、Azure AD Multi-Factor Authentication を適用する条件付きアクセス ポリシーに従います。
 
@@ -338,7 +338,7 @@ Windows セキュリティ ログと AD FS 管理者ログ両方の標準的な 
 
 1. 必要な前提条件をすべて満たします
    1. ハイブリッド シナリオの場合は [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) をデプロイします
-   1. クラウド アクセス用に公開されるすべてのオンプレミス アプリには [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を展開します
+   1. クラウド アクセス用に公開されるすべてのオンプレミス アプリには [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)を展開します
    1. RADIUS 認証の場合は [NPS](/windows-server/networking/technologies/nps/nps-top) をデプロイします
    1. ユーザーが先進認証を有効にしたサポートされるバージョンの Microsoft Office にアップグレードしたことを確認します
 1. 選択した[認証方法](#choose-verification-options)を構成します

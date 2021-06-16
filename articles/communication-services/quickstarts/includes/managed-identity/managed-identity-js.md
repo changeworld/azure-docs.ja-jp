@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: ce29158c2a44f01fa06649e4b4497bf5c5076866
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 1425d359febe877564280123716270860790d8ff
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511597"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430620"
 ---
+> [!NOTE]
+> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/use-managed-Identity) にあります
+
 ## <a name="setting-up"></a>設定
 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する

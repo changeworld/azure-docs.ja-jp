@@ -3,21 +3,21 @@ title: シングルページ アプリの構成 | Azure
 titleSuffix: Microsoft identity platform
 description: シングルページ アプリケーション (アプリのコード構成) を構築する方法について説明します
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/11/2020
-ms.author: nacanuma
+ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: e286c27c10d5e937c705f7c90df273fa3556eccc
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: f8bce3057bec88791890d476ac85d4e6610dc89e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947593"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075207"
 ---
 # <a name="single-page-application-code-configuration"></a>シングルページ アプリケーション：コード構成
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric マネージド クラスターのアップグレー
 description: Azure Service Fabric マネージド クラスターをアップグレードするためのオプションについて説明します。
 ms.topic: how-to
 ms.date: 05/10/2021
-ms.openlocfilehash: c7096191e72d5645149bc1b1e28254a0c57a94b0
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 478b39a6222906c793d826ab69edeeaddbb096bf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785279"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960995"
 ---
 # <a name="manage-service-fabric-managed-cluster-upgrades"></a>Service Fabric マネージド クラスターのアップグレードの管理
 
@@ -63,7 +63,7 @@ Resource Manager テンプレートを使用してクラスター アップグ�
 
 テンプレートが正常にデプロイされると、クラスター アップグレード モードの変更が適用されます。 クラスターが手動モードの場合、クラスターのアップグレードは自動的に開始されます。
 
-[クラスター正常性ポリシー](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction#health-policies) (ノードの正常性と、クラスターで実行されている全アプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。 クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。
+[クラスター正常性ポリシー](./service-fabric-health-introduction.md#health-policies) (ノードの正常性と、クラスターで実行されている全アプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。 クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。
 
 ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
 

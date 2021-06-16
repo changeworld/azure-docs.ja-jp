@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0c010d71217dcae23348098355bf1752ffc43337
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1232e7774a88bec089254397d0582cc52f450fdb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314897"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959812"
 ---
 # <a name="syntax-and-expressions-in-arm-templates"></a>ARM テンプレートの構文と式
 
@@ -134,4 +134,4 @@ New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azurede
 ## <a name="next-steps"></a>次のステップ
 
 * テンプレート関数の完全な一覧については、「[ARM テンプレート関数](template-functions.md)」を参照してください。
-* テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。

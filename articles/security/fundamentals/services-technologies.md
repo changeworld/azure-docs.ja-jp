@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d2c8f16e340b0b8eca30dd8a67010020b6362df
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641980"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950431"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
@@ -89,7 +89,7 @@ ms.locfileid: "105641980"
 | [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)|TCP/UDP アプリケーション ネットワーク ロード バランサーです。 |
 | [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)| オンプレミス ネットワークと Azure Virtual Network 間の専用 WAN リンクです。 |
 | [Azure の Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| グローバルな DNS ロード バランサーです。|
-| [Azure アプリケーション プロキシ](../../active-directory/manage-apps/application-proxy.md)| オンプレミスでホストされている Web アプリケーションのリモート アクセスをセキュリティで保護するための認証フロントエンドです。 |
+| [Azure アプリケーション プロキシ](../../active-directory/app-proxy/application-proxy.md)| オンプレミスでホストされている Web アプリケーションのリモート アクセスをセキュリティで保護するための認証フロントエンドです。 |
 |[Azure Firewall](../../firewall/overview.md)|Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。|
 |[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|アプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
 |[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)|直接接続によって、仮想ネットワークのプライベート アドレス空間と VNet の ID が Azure サービスまで拡張されます。|

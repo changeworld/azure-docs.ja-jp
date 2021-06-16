@@ -7,13 +7,13 @@ ms.service: dns
 ms.topic: include file for PowerShell for Azure DNS
 ms.date: 04/28//2021
 ms.author: subsarma
-ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 3634850a78db5ba03624a4363bbb72397460af38
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.custom: include file for PowerShell for Azure DNS, devx-track-azurepowershell
+ms.openlocfilehash: 2454ab0a95e8f69fb72e85b8fad083793e00735e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203265"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720490"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Azure DNS 用に Azure PowerShell をセットアップする
 

@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 60fe76c4321b510cd5881e6d92d2deaf10ad687e
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: bb536143c518b785a692858c09f0d89f0c1cc4f2
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163375"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663278"
 ---
 # <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) のユーザー定義の復元ポイント
 
@@ -42,7 +42,7 @@ $Label = "<YourRestorePointLabel>"
 
 Connect-AzAccount
 Get-AzSubscription
-Select-AzSubscription -SubscriptionName $SubscriptionName
+Set-AzContext -SubscriptionName $SubscriptionName
 
 # Create a restore point of the original database
 New-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -RestorePointLabel $Label

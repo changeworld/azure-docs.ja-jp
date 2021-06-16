@@ -7,12 +7,13 @@ services: firewall
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: ffdcad33568af9955dbdf5aafb1b6ffe4a51681d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 27125e7f635c6d8f0690ebd39fb84eb3e0fb2989
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100549492"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700554"
 ---
 # <a name="migrate-to-azure-firewall-premium-preview"></a>Azure Firewall Premium プレビューへの移行
 
