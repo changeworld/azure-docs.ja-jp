@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: PowerShell
 ms.topic: sample
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c68c94c8c4a8e5f9e80dbd69130c611a270d21d9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690974"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699379"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance の Azure PowerShell サンプル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

@@ -3,12 +3,13 @@ title: Azure DevTest Labs でのラボ ユーザーの追加を自動化する |
 description: この記事では、Azure Resource Manager テンプレート、PowerShell、および CLI を使用して、Azure DevTest Labs でのラボへのユーザー追加を自動化する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1168e00960c35e2ac1e4a660efba63d30c63a575
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 70f8e2740a53c7bb855d3796efa438e9c9ff0ffa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727707"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965227"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する
 Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/Environments)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
@@ -76,7 +77,7 @@ Azure DevTest Labs によって、Azure portal を使用することにより、
 
 ```
 
-ラボを作成するのと同じテンプレートでロールを割り当てている場合、ロールの割り当てリソースとラボの間に依存関係を追加することを忘れないでください。 詳細については、[Azure Resource Manager のテンプレートでの依存関係の定義](../azure-resource-manager/templates/define-resource-dependency.md)に関するページを参照してください。
+ラボを作成するのと同じテンプレートでロールを割り当てている場合、ロールの割り当てリソースとラボの間に依存関係を追加することを忘れないでください。 詳細については、[Azure Resource Manager のテンプレートでの依存関係の定義](../azure-resource-manager/templates/resource-dependency.md)に関するページを参照してください。
 
 ### <a name="role-assignment-resource-information"></a>ロールの割り当てリソースに関する情報
 ロールの割り当てリソースでは、種類と名前を指定する必要があります。
@@ -195,4 +196,3 @@ az role assignment create --roleName "DevTest Labs User" --signInName <email@com
 - [Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する](devtest-lab-vmcli.md)
 - [Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する](devtest-lab-vm-powershell.md)
 - [コマンドライン ツールを使用した Azure DevTest Labs 仮想マシンの開始と停止](use-command-line-start-stop-virtual-machines.md)
-

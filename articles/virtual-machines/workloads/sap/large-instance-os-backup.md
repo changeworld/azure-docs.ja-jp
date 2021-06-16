@@ -3,22 +3,23 @@ title: SAP HANA on Azure (Large Instances) のオペレーティング システ
 description: SAP HANA on Azure (Large Instances) のオペレーティング システムのバックアップと復元を実行します
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
-ms.author: juergent
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c044d09626fe4c1d4409f98fc615b5a7d70c7cc8
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 7cd7210ceec1297431ab5929d2733c8b4d164d71
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108230019"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575256"
 ---
 # <a name="os-backup-and-restore"></a>OS のバックアップと復元
 
@@ -125,7 +126,7 @@ BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/cra
 ```
 
 その他のリファレンス
-- [ストレージ スナップショットのセットアップ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)
+- [ストレージ スナップショットのセットアップ](hana-backup-restore.md#set-up-storage-snapshots)
 - [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) の Microsoft Snapshot Tools for SAP HANA ガイド。
 
 ### <a name="how-to-restore-a-backup"></a>バックアップを復元する方法

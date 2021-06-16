@@ -8,19 +8,20 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
-ms.openlocfilehash: fe03bbfb33f3637eecc4e68f24846c929dad5fa4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 20be29d428fe6eaf9e7e64b4536c5014641c5416
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479255"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962523"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension 3.0 を使用して、メトリックとログを監視する
 
 このドキュメントでは、Linux Diagnostic Extension (LAD) のバージョン 3.0 以降について説明します。
 
 > [!IMPORTANT]
-> バージョン 2.3 以前の詳細については、[Linux VM のパフォーマンスと診断データの監視](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)に関する記事を参照してください。
+> バージョン 2.3 以前の詳細については、[Linux VM のパフォーマンスと診断データの監視](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)に関する記事を参照してください。
 
 ## <a name="introduction"></a>はじめに
 
@@ -42,7 +43,7 @@ Linux Diagnostic Extension は、Microsoft Azure で実行される Linux VM の
 >[!NOTE]
 >LAD VM 拡張機能の一部のコンポーネントは、[Log Analytics VM 拡張機能](./oms-linux.md)にも付属しています。 このアーキテクチャが原因で、両方の拡張機能が同じ ARM テンプレートでインスタンス化されると、競合が発生する可能性があります。 
 >
->インストール時の競合を回避するには、[`dependsOn` ディレクティブ](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)を使用して、拡張機能が順番にインストールされるようにします。 拡張機能は、どちらの順序でもインストールできます。
+>インストール時の競合を回避するには、[`dependsOn` ディレクティブ](../../azure-resource-manager/templates/resource-dependency.md#dependson)を使用して、拡張機能が順番にインストールされるようにします。 拡張機能は、どちらの順序でもインストールできます。
 
 これらのインストール手順と[ダウンロード可能な構成例](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)により、LAD 3.0 は次のように構成されます。
 
@@ -381,7 +382,7 @@ sampleRateInSeconds | (省略可能) 生の (未集計) メトリックを収集
 要素 | 値
 ------- | -----
 resourceId | VM または VM が属するスケール セットの Azure Resource Manager リソース ID。 この設定は、構成で `JsonBlob` シンクが使用されている場合でも、指定する必要があります。
-scheduledTransferPeriod | 集計メトリックが計算され、Azure Monitor メトリックに転送される頻度。 頻度 は、IS 8601 の時間間隔として表されます。 最小の転送間隔は 60 秒、つまり、PT1M です。 少なくとも 1 つの `scheduledTransferPeriod` を指定します。
+scheduledTransferPeriod | 集計メトリックが計算され、Azure Monitor メトリックに転送される頻度。 頻度は、IS 8601 の時間間隔として表されます。 最小の転送間隔は 60 秒、つまり、PT1M です。 少なくとも 1 つの `scheduledTransferPeriod` を指定します。
 
 `performanceCounters` セクションで指定されたメトリックのサンプルは、15 秒ごと、またはカウンターに明示的に定義されたサンプル レートで収集されます。 この例のように複数の `scheduledTransferPeriod` 頻度が指定されている場合、各集計は独立して計算されます。
 
@@ -554,7 +555,7 @@ sinks | (省略可能) ログ行が送信される追加のシンクの名前を
 
 "プロセッサ" クラスのメトリックは、VM のプロセッサ使用率に関する情報を提供します。 パーセンテージが集計されると、結果はすべての CPU の平均になります。 
 
-2 vCPU の VM では、1 つの vCPU が 100% ビジーで、もう一方が 100% アイドル状態の場合、報告される `PercentIdleTime` は 50 です。 各 vCPU が同じ期間に 50% ビジーだった場合、報告される結果はやはり 50 になります。 4 vCPU の VM では、1 つの vCPU が 100% ビジー状態で、他の vCPU がアイドル状態の場合、報告される `PercentIdleTime` は 75 になります。
+2 vCPU の VM では、1 つの vCPU が 100% ビジーで、もう一方が 100% アイドル状態の場合、報告される `PercentIdleTime` は 50 です。 各 vCPU が同じ期間に 50% ビジーだった場合、報告される結果はやはり 50 になります。 4 vCPU の VM では、1 つの vCPU が 100% ビジー状態で、その他がアイドル状態になると、報告される `PercentIdleTime` は 75 になります。
 
 カウンタ | 意味
 ------- | -------

@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: c9b5d525954e7f0742cd13fe4d64a73df64ea854
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4082fee167e64b6fc88191957bca3f69975f35dd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594469"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696678"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>クイック スタート:モデルをレンダリング用に変換する
 

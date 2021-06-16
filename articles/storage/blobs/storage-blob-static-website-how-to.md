@@ -7,13 +7,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: aaa73eaf95001d23efd09419d6ff3bb46ae005be
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-js, devx-track-azurepowershell
+ms.openlocfilehash: b4279d296c9948d9fbb06174c7c379cd067666dc
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140067"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677303"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 

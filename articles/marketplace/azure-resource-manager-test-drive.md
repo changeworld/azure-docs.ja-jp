@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d9c849ce7454e2875c4f00e73cc3b3edc37ad7e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730373"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971559"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
 この種類は、Azure Marketplace または AppSource にオファーがあっても、体験版は Azure リソースだけでビルドさせたい場合に使用します。 Azure Resource Manager (ARM) テンプレートは、ソリューションが最適に表現されるように設計する Azure リソースのコード化されたコンテナーです。 体験版では、提供された ARM テンプレートが取得されて、必要なすべてのリソースがリソース グループにデプロイされます。 これは、仮想マシンまたは Azure アプリのオファーの唯一の体験版オプションです。
 
-ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/templates/template-syntax.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
+ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/templates/syntax.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
 
 **ホストされた** 体験版または **ロジック アプリ** の体験版については、「[体験版とは](what-is-test-drive.md)」を参照してください。
 

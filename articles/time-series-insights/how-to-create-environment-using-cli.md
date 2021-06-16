@@ -1,21 +1,22 @@
 ---
 title: Azure CLI を使用して Azure Time Series Insights Gen2 環境を作成する - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure CLI を使用して Azure Time Series Insights Gen2 で環境を設定する方法について説明します。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 07e7f21bd706d9f83d2813b0ab491b01fbc53672
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 36a6da683912ac004b948b9a334da1758ab903fd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107867567"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791880"
 ---
 # <a name="create-an-azure-time-series-insights-gen2-environment-using-the-azure-cli"></a>Azure CLI を使用して Azure Time Series Insights Gen2 環境を作成する
 

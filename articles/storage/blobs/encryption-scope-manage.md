@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1fc2f47c2cd95722bc7659a1bfb2354d00f3b9c2
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1419dcba2dbf1732760848738c6f50c4168ac545
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684459"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664985"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>暗号化スコープの作成と管理
 

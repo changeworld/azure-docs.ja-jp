@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 03/29/2021
-ms.openlocfilehash: fc0d0b0a589ff5b8354a56a2f8c95062f4d2d9a9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: d19a080ef596975dd3377207b84bade6ef0d3b12
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076151"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537587"
 ---
 # <a name="what-is-spatial-analysis"></a>空間分析とは
 
@@ -43,12 +43,6 @@ ms.locfileid: "108076151"
 
 ## <a name="get-started"></a>作業開始
 
-### <a name="public-preview-gating"></a>パブリック プレビューの限定
-
-空間分析向けに設計されたシナリオで空間分析を使用してもらえるように、Microsoft では、お客様がアプリケーション プロセスを通じてこのテクノロジを利用できるようにしています。 空間分析にアクセスするには、最初にオンラインの受付フォームに入力する必要があります。 [アプリケーションはこちらから開始します](https://aka.ms/csgate)。
-
-空間分析パブリック プレビューへのアクセスは、Microsoft の資格基準、審査プロセス、およびこの制限プレビュー期間中での限られた数のお客様に対するサポートの可用性に基づき、Microsoft の独自の判断によって決定されます。 パブリック プレビューでは、Microsoft と重要な関係を持ち、推奨のユース ケースと、責任ある AI へのコミットメントに従った追加シナリオに関して Microsoft と協力することに関心があるお客様を求めています。
-
 ### <a name="follow-a-quickstart"></a>クイックスタートの実施
 
 空間分析へのアクセスが許可されたら、[クイックスタート](spatial-analysis-container.md)に従って、コンテナーを設定し、ビデオの分析を開始します。
@@ -60,4 +54,4 @@ ms.locfileid: "108076151"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [クイックスタート: 空間分析コンテナー](spatial-analysis-container.md)''''''''''''
+> [クイックスタート: 空間分析コンテナー](spatial-analysis-container.md)

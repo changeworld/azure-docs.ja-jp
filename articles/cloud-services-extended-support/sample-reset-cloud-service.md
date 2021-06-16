@@ -7,13 +7,13 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
-ms.custom: ''
-ms.openlocfilehash: 5c43d61b1e7cd98674eab4c6d857cc1114a06013
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e571a6cfae82274c2e4f3d85540c9724edb657a5
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99475322"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705167"
 ---
 # <a name="reset-an-azure-cloud-service-extended-support"></a>Azure クラウド サービス (延長サポート) をリセットする 
 ここに挙げたサンプルでは、Azure クラウド サービス (延長サポート) の既存のデプロイをリセットする際のさまざまな方法を紹介します。

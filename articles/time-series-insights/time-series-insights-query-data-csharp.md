@@ -3,20 +3,21 @@ title: C# コードを使用して Gen1 環境からデータのクエリを実�
 description: C# で記述されたカスタム アプリを使用して Azure Time Series Insights Gen1 環境からデータのクエリを実行する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: shreyasharmamsft
+ms.author: shresha
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 724bc80f8887ff2c47db93ecfc4cd2e20be7e7f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccc49221514f7846148ff2958e9fe8954fba074e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95020046"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790888"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen1 環境からデータのクエリを実行する
 

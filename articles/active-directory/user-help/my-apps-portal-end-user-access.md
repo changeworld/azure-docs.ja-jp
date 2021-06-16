@@ -12,12 +12,12 @@ ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d65daffab7522c1ececb3383d1cf5184f906d8f9
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642115"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893014"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
@@ -75,7 +75,7 @@ ms.locfileid: "105642115"
 - サインイン ページから直接アプリにサインインする。
 - **クイック検索** 機能を使用して、アプリを開始する。
 - **[最近の使用]** セクションで使用した最後のアプリを確認する。
-- リモート時に[アプリケーション プロキシ](../manage-apps/application-proxy.md)を利用して社内 URL を使用する。
+- リモート時に[アプリケーション プロキシ](../app-proxy/application-proxy.md)を利用して社内 URL を使用する。
 
 ### <a name="to-download-and-install-the-extension"></a>拡張機能をダウンロードしてインストールするには
 

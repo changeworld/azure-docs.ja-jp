@@ -136,7 +136,7 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: Architecture
+    - name: アーキテクチャ
       href: service-fabric-architecture.md
     - name: セキュリティ
       items:
@@ -199,7 +199,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: Architecture
+            - name: アーキテクチャ
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -225,6 +225,8 @@
           href: service-fabric-concept-resource-model.md
         - name: アプリケーション マニフェストとサービス マニフェスト
           href: service-fabric-application-and-service-manifests.md
+        - name: StartupServices モデルを使用したサービス構成
+          href: service-fabric-startupservices-model.md
         - name: アプリケーション マニフェストとサービス マニフェストの例
           href: service-fabric-manifest-examples.md
           items:
@@ -328,7 +330,7 @@
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: Architecture
+            - name: アーキテクチャ
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -862,29 +864,6 @@
           href: service-fabric-sfctl-container.md
         - name: sfctl is
           href: service-fabric-sfctl-is.md
-        - name: sfctl mesh
-          href: service-fabric-sfctl-mesh.md
-          items:
-            - name: sfctl mesh app
-              href: service-fabric-sfctl-mesh-app.md
-            - name: sfctl mesh code-package-log
-              href: service-fabric-sfctl-mesh-code-package-log.md
-            - name: sfctl mesh deployment
-              href: service-fabric-sfctl-mesh-deployment.md
-            - name: sfctl mesh gateway
-              href: service-fabric-sfctl-mesh-gateway.md
-            - name: sfctl mesh network
-              href: service-fabric-sfctl-mesh-network.md
-            - name: sfctl mesh secret
-              href: service-fabric-sfctl-mesh-secret.md
-            - name: sfctl mesh secretvalue
-              href: service-fabric-sfctl-mesh-secretvalue.md
-            - name: sfctl mesh service
-              href: service-fabric-sfctl-mesh-service.md
-            - name: sfctl mesh service-replica
-              href: service-fabric-sfctl-mesh-service-replica.md
-            - name: sfctl mesh volume
-              href: service-fabric-sfctl-mesh-volume.md
         - name: sfctl node
           href: service-fabric-sfctl-node.md
         - name: sfctl partition

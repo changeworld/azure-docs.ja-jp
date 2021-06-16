@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 8779381425d4180cc7320f251de9c2cfdd1f0510
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f264097ac340e5810c3f69e199a28b06d2a22972
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99223425"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678369"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>PowerShell を使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -58,7 +59,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 ```
 
-### <a name="step-2"></a>手順 2.
+### <a name="step-2"></a>手順 2
 
 次の例では、`Set-AzVMExtension` コマンドレットを実行するために必要な拡張機能情報を取得します。 このコマンドレットにより、ゲスト仮想マシンにパケット キャプチャ エージェントがインストールされます。
 
@@ -89,7 +90,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
                          True         OK OK   
 ```
 
-### <a name="step-3"></a>手順 3.
+### <a name="step-3"></a>手順 3
 
 エージェントがインストールされていることを確認するには、`Get-AzVMExtension` コマンドレットを実行し、仮想マシン名と拡張機能名を渡します。
 
@@ -131,7 +132,7 @@ ForceUpdateTag          :
 $networkWatcher = Get-AzNetworkWatcher  | Where {$_.Location -eq "westcentralus" }
 ```
 
-### <a name="step-2"></a>手順 2.
+### <a name="step-2"></a>手順 2
 
 ストレージ アカウントを取得します。 このストレージ アカウントは、パケット キャプチャ ファイルの格納に使用されます。
 
@@ -139,7 +140,7 @@ $networkWatcher = Get-AzNetworkWatcher  | Where {$_.Location -eq "westcentralus"
 $storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa123
 ```
 
-### <a name="step-3"></a>手順 3.
+### <a name="step-3"></a>手順 3
 
 フィルターを使用して、パケット キャプチャによって格納されるデータを制限できます。 次の例では、2 つのフィルターを設定します。  最初のフィルターは、ローカル IP 10.0.0.3 から宛先ポート 20、80、443 への送信 TCP トラフィックのみを収集します。  2 番目のフィルターは、UDP トラフィックのみを収集します。
 
@@ -151,7 +152,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 > [!NOTE]
 > 単一のパケット キャプチャに対して複数のフィルターを定義できます。
 
-### <a name="step-4"></a>手順 4.
+### <a name="step-4"></a>手順 4
 
 `New-AzNetworkWatcherPacketCapture` コマンドレットを実行してパケット キャプチャ プロセスを開始し、前の手順で取得した必要な値を渡します。
 ```powershell

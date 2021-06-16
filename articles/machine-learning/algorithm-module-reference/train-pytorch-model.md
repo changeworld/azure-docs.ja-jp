@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/19/2021
-ms.openlocfilehash: 7524b0fd496a87a281e5b9cd9f8ffcc8b54d6388
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: cfc866a7b7a63982377f8a2498b9538bd870e381
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108000923"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969114"
 ---
 # <a name="train-pytorch-model"></a>PyTorch モデルのトレーニング
 
@@ -81,7 +81,7 @@ ms.locfileid: "108000923"
 
 ### <a name="how-to-enable-distributed-training"></a>分散トレーニングを有効にする方法
 
-**PyTorch モデルのトレーニング** モジュールに対して分散トレーニングを有効にするために、モジュールの右側のペインで **[実行設定]** を設定できます。 分散トレーニングでは **[AML コンピューティング クラスター](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster?tabs=python)** のみがサポートされています。
+**PyTorch モデルのトレーニング** モジュールに対して分散トレーニングを有効にするために、モジュールの右側のペインで **[実行設定]** を設定できます。 分散トレーニングでは **[AML コンピューティング クラスター](../how-to-create-attach-compute-cluster.md?tabs=python)** のみがサポートされています。
 
 > [!NOTE]
 > NCCL バックエンドの "PyTorch モデルのトレーニング" モジュールでは CUDA を使用する必要があるため、分散トレーニングをアクティブ化するには **複数の GPU** が必要です。
@@ -102,7 +102,7 @@ ms.locfileid: "108000923"
 
     [![コンピューティング クラスターの確認方法を示すスクリーンショット](./media/module/compute-cluster-node.png)](./media/module/compute-cluster-node.png#lightbox)
 
-Azure Machine Learning での分散トレーニングの詳細については、[こちら](https://docs.microsoft.com/azure/machine-learning/concept-distributed-training)を参照してください。
+Azure Machine Learning での分散トレーニングの詳細については、[こちら](../concept-distributed-training.md)を参照してください。
 
 ### <a name="troubleshooting-for-distributed-training"></a>分散トレーニングのトラブルシューティング
 
@@ -125,7 +125,7 @@ Azure Machine Learning での分散トレーニングの詳細については、
 ## <a name="technical-notes"></a>テクニカル ノート
 ###  <a name="expected-inputs"></a>想定される入力  
 
-| 名前               | Type                    | 説明                              |
+| 名前               | 種類                    | 説明                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | 未トレーニング モデル    | UntrainedModelDirectory | 未トレーニング モデル、PyTorch が必要         |
 | トレーニング データセット   | ImageDirectory          | トレーニング データセット                         |
@@ -145,13 +145,10 @@ Azure Machine Learning での分散トレーニングの詳細については、
 
 ###  <a name="outputs"></a>出力  
 
-| 名前          | Type           | 説明   |
+| 名前          | 種類           | 説明   |
 | ------------- | -------------- | ------------- |
 | トレーニングされたモデル | ModelDirectory | トレーニングされたモデル |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
-
-
-
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

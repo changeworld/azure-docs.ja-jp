@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/17/2021
-ms.openlocfilehash: 15235ddd1ae6bfe3166b523004bc8fe80a5b5be9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5d4b5f5264ad38ca3610840e6fd9a72c6bc5e0aa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061464"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950975"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS サービスの使用中に目にする可能性のある用語について説明します。
@@ -295,7 +295,7 @@ LUIS の[リスト エンティティ](reference-entity-list.md)では、それ�
 
 ## <a name="test"></a>テスト
 
-LUIS アプリの[テスト](luis-concept-test.md)とは、モデル予測を表示することを意味します。
+LUIS アプリの[テスト](./luis-interactive-test.md)とは、モデル予測を表示することを意味します。
 
 ## <a name="timezone-offset"></a>タイムゾーン オフセット
 

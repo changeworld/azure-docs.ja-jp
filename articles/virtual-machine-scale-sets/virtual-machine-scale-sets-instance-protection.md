@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: instance-protection
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 292abce3361c000eeeef2c399d5ffa2d2c4852e1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: 1b54a1be03aca62cacf6afe7361028a42ea7f84c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762859"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673903"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスのインスタンス保護
 

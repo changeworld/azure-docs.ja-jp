@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: 43605f8dfdcac8fe545e5464c13d9a50ae8ed82c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 14bbd15fec0015073eefbe2421d03a73fac45d75
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108294136"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968388"
 ---
 # <a name="monitor-the-capacity-of-a-volume"></a>ボリュームの容量を監視する  
 
@@ -56,7 +56,7 @@ Linux クライアントでは、[df コマンド](https://linux.die.net/man/1/d
 "*使用可能な領域*" は、`df` コマンドを使用する場合は正確です。 ただし、"*消費済み/使用領域*" は、ボリュームでスナップショットが生成された時点の推定値になります。 "[消費済みスナップショット容量](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots)"  は、ボリュームの消費済み合計容量にカウントされます。 スナップショットで使用される容量を含め、ボリュームの絶対消費量を取得するには、Azure portal で [Azure NetApp メトリック](azure-netapp-files-metrics.md#volumes)を使用します。 
 
 ## <a name="using-azure-portal"></a>Azure Portal の使用
-Azure NetApp Files では、標準の [Azure Monitor](/azure/azure-monitor/overview) 機能を活用します。 そのため、Azure Monitor を使用して Azure NetApp Files ボリュームを監視することができます。  
+Azure NetApp Files では、標準の [Azure Monitor](../azure-monitor/overview.md) 機能を活用します。 そのため、Azure Monitor を使用して Azure NetApp Files ボリュームを監視することができます。  
 
 ## <a name="using-azure-cli"></a>Azure CLI の使用  
 

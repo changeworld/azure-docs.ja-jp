@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 3/18/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b6fcbf7d31e76965cfd8b2944b426dce94b8aa75
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: c912984879cac12a9ad9fe078056677dccb48cf7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324511"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970124"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-azure-real-time-operating-system-rtos"></a>Azure Real Time Operating System (RTOS) を使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -29,7 +29,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 * IoT Hub へのアクセス。 S1 (Standard) レベル以上を使用することをお勧めします。
-* ご使用の IoT ハブにリンクされている Device Update インスタンスおよびアカウント。 [Device Update アカウントの作成とリンク](/azure/iot-hub-device-update/create-device-update-account)がまだ済んでいない場合は、ガイドに従って行ってください。
+* ご使用の IoT ハブにリンクされている Device Update インスタンスおよびアカウント。 [Device Update アカウントの作成とリンク](./create-device-update-account.md)がまだ済んでいない場合は、ガイドに従って行ってください。
 
 ## <a name="get-started"></a>はじめに
 
