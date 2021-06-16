@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 8fcc7b4f7f23c33450bdc00c53e97b0081ad1035
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: ac7d0f971ab03aa34faa39935e741d645bf19a7a
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109848045"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111809153"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -85,7 +85,7 @@ NAT ゲートウェイは、仮想ネットワーク内のサブネットのプ�
 この例で使用される Azure Resource Manager テンプレートの詳細については、次を参照してください。
 
 - [クイック スタート: NAT ゲートウェイを作成する - Resource Manager テンプレート](quickstart-create-nat-gateway-template.md)
-- [Virtual Network NAT](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm/)
+- [Virtual Network NAT](https://azure.microsoft.com/resources/templates/nat-gateway-1-vm/)
 
 ## <a name="design-guidance"></a>設計ガイダンス
 

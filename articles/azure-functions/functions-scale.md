@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2cf201c17b97464386ce52f4d689c2c1006d0970
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e4463659077943507651ddd2ad30ee2a1af9cf7a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377418"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785215"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions のホスティング オプション
 
@@ -103,7 +103,7 @@ Azure で Function App を作成するときは、アプリのホスティング
 | --- | --- |
 | **[従量課金プラン](consumption-plan.md)** | 関数が実行された時間に対してだけ支払います。 課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 |
 | **[Premium プラン](functions-premium-plan.md)** | Premium プランは、必要なインスタンスや事前ウォーミングされたインスタンスで使用されたコア秒数とメモリに基づいています。 プランごとに少なくとも 1 つのインスタンスが常にウォーム状態である必要があります。 このプランでは、最も予測可能な価格が提供されます。 |
-| * *[専用プラン](dedicated-plan.md)* | App Service プランの Function App に対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。|
+| **[専用プラン](dedicated-plan.md)** | App Service プランの Function App に対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。|
 | **[App Service Environment (ASE)](dedicated-plan.md)** | インフラストラクチャの支払いを行うための ASE には一定の月額料金があり、ASE のサイズが変化しても料金は変わりません。 App Service プランの vCPU あたりのコストもあります。 ASE でホストされているすべてのアプリは、分離された価格 SKU に含まれます。 |
 | **[Kubernetes](functions-kubernetes-keda.md)**| お支払いは Kubernetes クラスターのコストだけです。関数に対する追加の課金はありません。  Function App は、通常のアプリと同じように、クラスターのアプリケーションのワークロードとして実行されます。 |
 

@@ -5,18 +5,18 @@ description: Azure portal を使用して BACPAC ファイルにデータベー�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: data-movement
-author: stevestein
+author: cawrites
 ms.custom: sqldbrb=2
-ms.author: sstein
+ms.author: chadam
 ms.reviewer: ''
 ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 14854f839d6dfe3c8a08a4a1453fd78e389fe8d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 997f52a35d66d13872142a0208e5ecc796d06560
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568734"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787406"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC ファイルへのエクスポート - Azure SQL Database および Azure SQL Managed Instance
 

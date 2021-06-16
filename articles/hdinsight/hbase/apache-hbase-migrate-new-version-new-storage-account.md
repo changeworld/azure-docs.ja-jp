@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/06/2021
-ms.openlocfilehash: 57ce3d38e715dce80289b38efeb7ddacba46ff8e
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 4ed4de8c134575bba1b961f918216eb3cca9b6b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657539"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963993"
 ---
 # <a name="migrate-apache-hbase-to-a-new-version-and-storage-account"></a>Apache HBase を新しいバージョンおよびストレージ アカウントに移行する
 
@@ -143,7 +143,7 @@ HDFS のコピー コマンドは `hdfs dfs <copy properties starting with -D> -
 - `-Dfs.azure.account.key.<storageaccount>.blob.core.windows.net='<storage account key>'`
 - `-Dfs.azure.account.keyprovider.<storageaccount>.blob.core.windows.net=org.apache.hadoop.fs.azure.SimpleKeyProvider`
 
-HBase のデータ ファイルをコピーするときは [AzCopy](/azure/storage/common/storage-ref-azcopy) も使用でき、こちらの方がパフォーマンスがいいです。
+HBase のデータ ファイルをコピーするときは [AzCopy](../../storage/common/storage-ref-azcopy.md) も使用でき、こちらの方がパフォーマンスがいいです。
    
 1. AzCopy コマンドを実行します。
    
@@ -159,7 +159,7 @@ HBase のデータ ファイルをコピーするときは [AzCopy](/azure/stora
    sudo -u hbase hadoop fs -chmod -R 0755 /hbase
    ```
 
-AzCopy は「[AzCopy を使ってみる](/azure/storage/common/storage-use-azcopy-v10)」でダウンロードできます。 AzCopy の詳しい使用方法は「[azcopy copy](/azure/storage/common/storage-ref-azcopy-copy)」をご覧ください。
+AzCopy は「[AzCopy を使ってみる](../../storage/common/storage-use-azcopy-v10.md)」でダウンロードできます。 AzCopy の詳しい使用方法は「[azcopy copy](../../storage/common/storage-ref-azcopy-copy.md)」をご覧ください。
 
 #### <a name="the-source-cluster-is-hdi-36-or-hdi-40-with-accelerated-writes-and-the-destination-cluster-has-accelerated-writes"></a>移行元クラスターが HDI 3.6 または HDI 4.0 で高速書き込みを使用しており、移行先クラスターでも高速書き込みを使用する
 
@@ -276,4 +276,3 @@ AzCopy は「[AzCopy を使ってみる](/azure/storage/common/storage-use-azcop
 - [Apache Ambari Web UI を使用して Azure HDInsight を監視および管理する](../hdinsight-hadoop-manage-ambari.md)
 - [Azure HDInsight のバージョン](../hdinsight-component-versioning.md)
 - [Apache HBase の最適化](../optimize-hbase-ambari.md)
-

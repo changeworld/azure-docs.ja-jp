@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0708548e1ece88cbf575301ee779fd5e5000dc5d
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 727b5997045694a1a9242b30d865ec6229fbd3bf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683516"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963636"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory でユーザー アクセスを取り消す
 
@@ -54,7 +54,7 @@ ms.locfileid: "109683516"
 
 ## <a name="revoke-access-for-a-user-in-the-hybrid-environment"></a>ハイブリッド環境でユーザーのアクセスを取り消す
 
-オンプレミスの Active Directory が Azure Active Directory と同期されているハイブリッド環境では、IT 管理者が次の操作を実行することをお勧めします。 **Azure AD のみの環境** を使用している場合は、「[Azure Active Directory の環境](https://docs.microsoft.com/azure/active-directory/enterprise-users/users-revoke-access#azure-active-directory-environment)」セクションにスキップしてください。
+オンプレミスの Active Directory が Azure Active Directory と同期されているハイブリッド環境では、IT 管理者が次の操作を実行することをお勧めします。 **Azure AD のみの環境** を使用している場合は、「[Azure Active Directory の環境](#azure-active-directory-environment)」セクションにスキップしてください。
 
 
 ### <a name="on-premises-active-directory-environment"></a>オンプレミスの Active Directory 環境

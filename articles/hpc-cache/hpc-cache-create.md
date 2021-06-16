@@ -6,12 +6,13 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0cb4317a874e0f342c799fabad55aaefe5ba485d
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 72c9590cca805d0a6e22d42f482ad80935e842d3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733804"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706793"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -135,11 +136,11 @@ nets/<cache_subnet_name>"``
 
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3,072 GB    | 可         | no          | no          |
+  | 3,072 GB    | 可         | Ｘ          | Ｘ          |
   | 6144 GB    | はい         | はい         | no          |
   | 12288 GB   | 可         | はい         | 可         |
   | 24576 GB   | Ｘ          | はい         | 可         |
-  | 49152 GB   | Ｘ          | いいえ          | はい         |
+  | 49152 GB   | Ｘ          | Ｘ          | はい         |
 
   キャッシュで 10 を超えるストレージ ターゲットを使用する場合は、SKU に対して使用可能なキャッシュの最大サイズ値を選択します。 これらの構成は、最大 20 のストレージ ターゲットをサポートします。
 
@@ -240,11 +241,11 @@ nets/<cache_subnet_name>"`
 
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3,072 GB    | 可         | no          | no          |
+  | 3,072 GB    | 可         | Ｘ          | Ｘ          |
   | 6144 GB    | はい         | はい         | no          |
   | 12,288 GB   | はい         | はい         | はい         |
   | 24,576 GB   | no          | はい         | はい         |
-  | 49,152 GB   | no          | いいえ          | 可         |
+  | 49,152 GB   | no          | Ｘ          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
 

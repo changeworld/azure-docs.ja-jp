@@ -3,12 +3,13 @@ title: Windows Azure Diagnostics を使用したイベントの集計
 description: Azure Service Fabric クラスターの監視と診断に WAD を使用したイベントの集計と収集について説明します。
 ms.topic: conceptual
 ms.date: 04/03/2018
-ms.openlocfilehash: bbc8efcb2600e1832ad8a37560ab231a4a7f3185
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f2adfb44c1ff65503635cf2623371e529092fe19
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626731"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680905"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]

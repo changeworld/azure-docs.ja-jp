@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 2eb5675701842192ff348048f8235718af2eea90
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a958e42f3afab3dccd2a989c9d824a37ed9d9a6c
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388015"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536813"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>Azure Arc を使用した Kubernetes 上の Event Grid (プレビュー) - 概要
 この記事では、Kubernetes 上の Event Grid の概要、使用方法のユース ケース、提供されている機能、および Azure Event Grid との違いについて説明します。
@@ -29,7 +29,7 @@ Event Grid には、2 つのエディションが提供されています。**Az
 
 
 ## <a name="event-grid-on-kubernetes-with-azure-arc"></a>Azure Arc を使用した Kubernetes 上の Event Grid
-Azure Arc を使用した Kubernetes 上の Event Grid は、独自の Kubernetes クラスターで Event Grid を実行できるオファリングです。 この機能は、[Azure Arc 対応 Kubernetes](../../azure-arc/kubernetes/overview.md) を使用すると有効になります。 Azure Arc 対応 Kubernetes を使用すると、[サポートされている Kubernetes クラスター](install-k8s-extension.md#supported-kubernetes-distributions)が Azure に接続されます。 接続したら、そこに [Event Grid をインストール](install-k8s-extension.md#install-event-grid-on-kubernetes-extension)することができます。 
+Azure Arc を使用した Kubernetes 上の Event Grid は、独自の Kubernetes クラスターで Event Grid を実行できるオファリングです。 この機能は、[Azure Arc 対応 Kubernetes](../../azure-arc/kubernetes/overview.md) を使用すると有効になります。 Azure Arc 対応 Kubernetes を使用すると、[サポートされている Kubernetes クラスター](install-k8s-extension.md#supported-kubernetes-distributions)が Azure に接続されます。 接続したら、そこに [Event Grid をインストール](install-k8s-extension.md)することができます。 
 
 ### <a name="use-case"></a>使用事例
 Kubernetes 上の Event Grid では、さまざまなイベント駆動型の統合シナリオがサポートされています。 ただし、ユーザー ストーリーとしてサポートされる、これを包含する主なシナリオは次の通りです。

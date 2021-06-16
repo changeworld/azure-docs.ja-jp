@@ -7,12 +7,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 3bd921d8c17f89d4f9adbc7d0409d48c00cba7a1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5126f6a0dedec746792e9ed545541f938c110c72
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768123"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672651"
 ---
 # <a name="resize-a-virtual-machine-using-the-azure-portal-or-powershell"></a>Azure portal または PowerShell を使用して仮想マシンのサイズを変更する
 

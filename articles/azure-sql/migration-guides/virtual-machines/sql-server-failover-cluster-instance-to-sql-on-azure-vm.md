@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: 88cade73c03f1dd3562ac196cbad5091981c2058
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d21a9b91a7030deb805c80034ca0515e2b226b16
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108777025"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954593"
 ---
 # <a name="migrate-failover-cluster-instance-to-sql-server-on-azure-vms"></a>フェールオーバー クラスター インスタンスを Azure VM 上の SQL Server に移行する
 
@@ -46,7 +46,7 @@ Server Migration を使用した移行に向けて Azure を準備します。
 
 **タスク** | **詳細**
 --- | ---
-**Azure Migrate プロジェクトの作成** | Azure アカウントには、[新規プロジェクトを作成する](https://docs.microsoft.com/azure/migrate/create-manage-projects)ために共同作成者または所有者のアクセス許可が必要です。
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、[新規プロジェクトを作成する](../../../migrate/create-manage-projects.md)ために共同作成者または所有者のアクセス許可が必要です。
 **Azure アカウントのアクセス許可の確認** | Azure アカウントでは、Key Vault を作成し、VM を作成し、Azure マネージド ディスクに書き込むために、Azure サブスクリプションに対する共同作成者または所有者のアクセス許可、Azure Active Directory (AAD) アプリを登録するためのアクセス許可、Azure サブスクリプションに対するユーザー アクセス管理者のアクセス許可が必要になります。
 **Azure Virtual Network の設定** | Azure Virtual Network (VNet) を[設定](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)します。 Azure にレプリケートすると、Azure VM が作成され、移行の設定時に指定した Azure VNet に参加させられます。
 
@@ -134,7 +134,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 1. レプリケーション アプライアンスにサインインします。
 2. **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** に移動します。
-3. マシンのオペレーティング システムとバージョンに合ったインストーラーを見つけます。 [サポートされているオペレーティング システム](/site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)を確認してください。 
+3. マシンのオペレーティング システムとバージョンに合ったインストーラーを見つけます。 [サポートされているオペレーティング システム](../../../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)を確認してください。 
 4. 移行したいマシンにインストーラー ファイルをコピーします。
 5. アプライアンスをデプロイしたときに生成されたパスフレーズを持っていることを確認します。
     - マシン上の一時テキスト ファイルにファイルを格納します。
@@ -247,7 +247,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
     - プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化
 
     > [!NOTE]
-    > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](https://go.microsoft.com/fwlink/?linkid=2151800)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
+    > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](../../../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
   
 1. **[Azure ハイブリッド特典]** で、
 
@@ -356,7 +356,7 @@ SQL Server のフェールオーバー クラスター インスタンスの準�
     - オンプレミス マシンのレプリケーションを停止します。
     - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントからマシンを削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
     - マシンのレプリケーション状態情報をクリーンアップします。
-1. Azure VM の [Windows](/virtual-machines/extensions/agent-windows.md) エージェントを、移行するマシンにインストールします。
+1. Azure VM の [Windows](../../../virtual-machines/extensions/agent-windows.md) エージェントを、移行するマシンにインストールします。
 1. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
 1. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
 1. 移行された Azure VM インスタンスにトラフィックを切り替えます。

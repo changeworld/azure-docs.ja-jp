@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 22356cb6d5745c9552e2bd26a24bcb25a3b33c1d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 34be4920b343117ed895313c45a66e54b2de9ab3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776500"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950581"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-users-and-roles"></a>IoT Central REST API を使用してユーザーとロールを管理する方法
 
@@ -20,7 +20,7 @@ IoT Central REST API を使用して、IoT Central アプリケーションと�
 
 すべての IoT Central REST API 呼び出しに承認ヘッダーが必要です。 詳細については、「[IoT Central REST API 呼び出しを認証および承認する方法](howto-authorize-rest-api.md)」を参照してください。
 
-IoT Central REST API のリファレンス ドキュメントについては、「[Azure IoT Central REST API リファレンス](https://docs.microsoft.com/rest/api/iotcentral/)」をご覧ください。
+IoT Central REST API のリファレンス ドキュメントについては、「[Azure IoT Central REST API リファレンス](/rest/api/iotcentral/)」をご覧ください。
 
 ## <a name="manage-roles"></a>ロールの管理
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 5dffc4b1ffaa221e507c84c8a9b5654f9e5355c8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "102050122"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785247"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
 
@@ -24,8 +24,6 @@ ms.locfileid: "102050122"
 + アクティブなサブスクリプションがある Azure アカウントを作成します。 <abbr title="Azure の使用に関する課金情報を保持するプロファイル。">account</abbr> アクティブ <abbr title="Azure 内のリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Visual Studio 2019](https://azure.microsoft.com/downloads/) をインストールします。インストールの過程で **[Azure の開発]** ワークロードを選択してください。 
-
-![Azure 開発ワークロードと共に Visual Studio をインストールする](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 <br/>
 <details>
@@ -155,19 +153,7 @@ ms.locfileid: "102050122"
 
 ## <a name="7-clean-up-resources"></a>7.リソースをクリーンアップする
 
-不要なコストが発生しないよう、関数アプリとそのリソースを削除してください。
-
-1. Cloud Explorer で、自分のサブスクリプションを展開して **[App Services]** を展開し、関数アプリを右クリックして、 **[ポータルで開く]** を選択します。 
-
-1. 関数アプリのページで、 **[概要]** タブを選択してから、 **[リソース グループ]** の下にあるリンクを選択します。
-
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="関数アプリのページで削除するリソース グループを選択する":::
-
-1. **[リソース グループ]** ページで、含まれているリソースの一覧を確認し、削除するものであることを確認します。
- 
-1. **[リソース グループの削除]** を選択し、指示に従います。
-
-    削除には数分かかることがあります。 実行されると、通知が数秒間表示されます。 ページの上部にあるベルのアイコンを選択して、通知を表示することもできます。
+[!INCLUDE [functions-vstools-cleanup](../../includes/functions-vstools-cleanup.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

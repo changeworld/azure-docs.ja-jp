@@ -14,8 +14,12 @@
           href: release-notes.md
 - name: クイックスタート
   items:
-    - name: 概要 - Azure Video Analyzer
-      href: get-started-detect-motion-emit-events.md
+    - name: Azure Video Analyzer で作業を開始する
+      items:
+        - name: ARM テンプレートの使用
+          href: get-started-detect-motion-emit-events.md
+        - name: ポータルの使用
+          href: get-started-detect-motion-emit-events-portal.md
     - name: Azure Video Analyzer Visual Studio Code 拡張機能
       href: create-pipeline-vs-code-extension.md
     - name: モーションの検出とイベントの生成
@@ -69,12 +73,12 @@
   items:
     - name: パイプライン
       href: pipeline.md
+    - name: パイプライン拡張機能
+      href: pipeline-extension.md
     - name: ビデオ記録
       href: video-recording.md
     - name: シナリオ
       items:
-        - name: パイプライン拡張
-          href: pipeline-extension.md
         - name: イベントベースのビデオ記録
           href: event-based-video-recording-concept.md
         - name: 継続的なビデオ記録

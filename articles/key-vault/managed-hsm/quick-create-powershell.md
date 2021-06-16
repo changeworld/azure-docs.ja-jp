@@ -10,14 +10,13 @@ ms.service: key-vault
 ms.subservice: keys
 tags:
 - azure-resource-manager
-ms.custom:
-- mode-api
-ms.openlocfilehash: aa984a8f3899db72ead878e2c4381ea6a080e32d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.custom: devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 6f2588ce3dc2add87b845d5c4ff6255171b6af08
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815434"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670016"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>クイックスタート: PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う
 

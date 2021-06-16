@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 26b5331aa9242978f0f097c8e90bc807fc65f745
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b7aefa537c9b822572f38501920afdaa45bc01c3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531944"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955055"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -153,7 +153,7 @@ Windows 10 では、[Windows Hello for Business](/windows/security/identity-prot
 
 ### <a name="single-sign-on-for-apps"></a>アプリのシングル サインオン
 
-標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。 Azure AD で SSO をサポートしていても、現時点ではローカル アカウントを使用するように構成されているアプリケーションを使用している場合は、そのようなアプリケーションを Azure AD で SSO を使用するように再構成する必要があります。 同様に、Azure AD で SSO をサポートしていても、別の ID プロバイダーを使用している場合は、そのようなアプリケーションも Azure AD で SSO を使用するように再構成する必要があります。 フェデレーション プロトコルはサポートしていなくても、フォーム ベースの認証をサポートしているアプリケーションの場合は、Azure AD アプリケーション プロキシを使用して[パスワード保管](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)を使用するようにアプリケーションを構成することをお勧めします。
+標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。 Azure AD で SSO をサポートしていても、現時点ではローカル アカウントを使用するように構成されているアプリケーションを使用している場合は、そのようなアプリケーションを Azure AD で SSO を使用するように再構成する必要があります。 同様に、Azure AD で SSO をサポートしていても、別の ID プロバイダーを使用している場合は、そのようなアプリケーションも Azure AD で SSO を使用するように再構成する必要があります。 フェデレーション プロトコルはサポートしていなくても、フォーム ベースの認証をサポートしているアプリケーションの場合は、Azure AD アプリケーション プロキシを使用して[パスワード保管](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md)を使用するようにアプリケーションを構成することをお勧めします。
 
 ![AppProxy パスワードベースのサインオン](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
@@ -196,10 +196,10 @@ Windows 10 では、[Windows Hello for Business](/windows/security/identity-prot
 
 ### <a name="named-locations"></a>ネームド ロケーション
 
-Azure AD で[ネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
+Azure AD で[ネームド ロケーション](../conditional-access/location-condition.md)を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
 
 - リスク イベントの誤判定を防ぎます。 信頼できるネットワークの場所からサインインすることで、ユーザーのサインイン リスクが低下します。
-- [場所ベースの条件付きアクセス](../reports-monitoring/quickstart-configure-named-locations.md)を構成する。
+- [場所ベースの条件付きアクセス](../conditional-access/location-condition.md)を構成する。
 
 ![ネームド ロケーション](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 

@@ -3,12 +3,12 @@ title: Azure Portal を使用してリソースをデプロイする
 description: Azure Portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 6370b628a8dc2d880168dd3c4ea8a7d10a1cd36c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 718d8be4e51bf41467bea398440b24f98ac1f6e9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737119"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957905"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure Portal でリソースをデプロイする
 
@@ -75,7 +75,7 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
 
 ## <a name="deploy-resources-from-custom-template"></a>カスタム テンプレートからリソースをデプロイする
 
-デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレート作成の詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレート作成の詳細については、「[ARM テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。
 
 > [!NOTE]
 > ポータル インターフェイスは、[Key Vault からのシークレット](key-vault-parameter.md)の参照をサポートしません。 代わりに、[PowerShell](deploy-powershell.md) または [Azure CLI](deploy-cli.md) を使用して、テンプレートをローカルにデプロイするか、外部 URI からデプロイします。

@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: Form Recognizer コンテナーを構成してフォームとテーブルのデータを解析する方法を学習します。
 author: aahill
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: 444e59aa969950eadb8532849ae10b97412555ab
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b40b9996a1cb8f66e5befa3b6e2d18addf6433f2
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374563"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894256"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form Recognizer コンテナーの構成
 

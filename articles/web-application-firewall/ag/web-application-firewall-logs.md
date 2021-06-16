@@ -7,12 +7,13 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 116c12900f015c849c9492ed67bc11d116286c43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: af7b46d0942b5d1bec1cbe77ec02eec7080597ba
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611931"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676962"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールのリソース ログ
 
@@ -232,7 +233,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |ruleSetVersion     | 使用されるルール セットのバージョン。 使用できる値は 2.2.9 と 3.0 です。     |
 |ruleId     | トリガーするイベントのルール ID。        |
 |message     | トリガーするイベントのわかりやすいメッセージ。 詳細は details セクションに示されます。        |
-|action     |  要求に対して実行されるアクション。 使用可能な値は Blocked と Allowed (カスタム ルールの場合)、Matched (ルールが要求の一部と一致する場合)、Detected と Blocked (どちらも必須ルールの場合。WAF が検出または防止モードであるかどうかによって異なる)。      |
+|action     |  要求に対して実行されるアクション。 使用可能な値は Blocked と Allowed (カスタム ルールの場合)、Matched (ルールが要求の一部と一致する場合)、Detected と Blocked (どちらも必須ルールの場合。WAF のモードが検出なのか防止なのかによって異なる)。      |
 |site     | ログの生成対象のサイト。 ルールがグローバルであるため、現時点では Global のみ表示されます。|
 |details     | トリガーするイベントの詳細。        |
 |details.message     | ルールの説明。        |

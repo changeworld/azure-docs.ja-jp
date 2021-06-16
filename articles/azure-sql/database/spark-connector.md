@@ -7,16 +7,15 @@ ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: denzilribeiro
-ms.author: denzilr
-ms.reviewer: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 09/02/2020
-ms.openlocfilehash: 2e01e74f5086f7f1eb7e85661fbd35f452d8dae8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63fa26e9b07d3b0b8a92b506c21675477ab3d962
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790204"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693061"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark コネクタを使用したリアルタイムのビッグ データ分析の高速化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 05/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 47375c32869be4433e02273306a8d47f88ffa61d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 66efe0015e0ca85ac793100ee6d8d0944e3614c1
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463558"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690867"
 ---
 # <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 

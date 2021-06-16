@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a1698a56ad7e92a59b664ce8f8bca2355fb44fb1
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 90aa9b141ab0fd41c84d8442173945b77f3a658b
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074711"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679376"
 ---
 # <a name="enable-soft-delete-for-blobs"></a>BLOB の論理的な削除の有効化
 

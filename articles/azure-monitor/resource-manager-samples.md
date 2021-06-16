@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3a56ff7a53151030b1c0aec8d11906c09a499a63
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: b67a1dcb2f6df42c95bb0b5c20ae4397582112db
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319379"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966921"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Azure Monitor 用の Resource Manager テンプレートのサンプル
 
-[Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)を使用すると、Azure Monitor を大規模にデプロイし、構成することができます。 以下の記事では、さまざまな Azure Monitor 機能向けのサンプル テンプレートを紹介しています。 これらのサンプルは特定の要件に合わせて変更可能であり、Resource Manager テンプレートの標準的なデプロイ方法によってデプロイできます。 
+[Azure Resource Manager テンプレート](../azure-resource-manager/templates/syntax.md)を使用すると、Azure Monitor を大規模にデプロイし、構成することができます。 以下の記事では、さまざまな Azure Monitor 機能向けのサンプル テンプレートを紹介しています。 これらのサンプルは特定の要件に合わせて変更可能であり、Resource Manager テンプレートの標準的なデプロイ方法によってデプロイできます。 
 
 ## <a name="deploying-the-sample-templates"></a>サンプル テンプレートのデプロイ
 サンプルの基本的な使用手順は次のとおりです。

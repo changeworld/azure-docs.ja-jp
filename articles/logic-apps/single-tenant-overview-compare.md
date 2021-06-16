@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, azla
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: 1dd4a75cbebeb0244ffd3e0c1f8e2cfcd1968440
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0c09d013e3e9e3934702eb512334a33a60044b9d
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379734"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441242"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境の比較
 
@@ -95,7 +95,7 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 | Azure portal | **ロジック アプリ (従量課金)** のリソースの種類 | [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成する - Azure portal](quickstart-create-first-logic-app-workflow.md) |
 | Visual Studio Code | [**Azure Logic Apps (従量課金)** の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) | [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成する - Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 | Azure CLI | [**Logic Apps Azure CLI** の拡張機能](https://github.com/Azure/azure-cli-extensions/tree/master/src/logic) | - [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成して管理する - Azure CLI](quickstart-logic-apps-azure-cli.md) <p><p>- [az logic](/cli/azure/logic) |
-| Azure Resource Manager | [**ロジック アプリを作成する** Azure Resource Manager (ARM) テンプレート](https://azure.microsoft.com/resources/templates/101-logic-app-create/) | [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成してデプロイする - ARM テンプレート](quickstart-create-deploy-azure-resource-manager-template.md) |
+| Azure Resource Manager | [**ロジック アプリを作成する** Azure Resource Manager (ARM) テンプレート](https://azure.microsoft.com/resources/templates/logic-app-create/) | [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成してデプロイする - ARM テンプレート](quickstart-create-deploy-azure-resource-manager-template.md) |
 | Azure PowerShell | [Az.LogicApp モジュール](/powershell/module/az.logicapp) | [Azure PowerShell の概要](/powershell/azure/get-started-azureps) |
 | Azure REST API | [Azure Logic Apps REST API](/rest/api/logic) | [Azure Rest API リファレンスの概要](/rest/api/azure) |
 ||||

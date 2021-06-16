@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
-ms.custom: references_regions
-ms.openlocfilehash: 74df338fd888bd7f654ddfc2fc5f9dddf10e84ab
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.custom: references_regions , devx-track-azurepowershell
+ms.openlocfilehash: ebc5e15038574983c7b21a5a47a36059c041519a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598416"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678649"
 ---
 # <a name="upgrade-public-ip-addresses"></a>パブリック IP アドレスのアップグレード
 

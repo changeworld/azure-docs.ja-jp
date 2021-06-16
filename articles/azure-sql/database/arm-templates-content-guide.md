@@ -3,20 +3,20 @@ title: Azure Resource Manager テンプレート - Azure SQL Database および 
 description: Azure Resource Manager テンプレートを使用して、Azure SQL Database と Azure SQL Managed Instance を作成および構成します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
 ms.topic: guide
-author: danimir
-ms.author: danil
-ms.reviewer: sstein
-ms.date: 02/04/2019
-ms.openlocfilehash: e3442338ab388da36ad1f8f8f8bbef4952b06d3c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+author: srdan-bozovic-msft
+ms.author: srbozovi
+ms.reviewer: mathoma
+ms.date: 05/24/2021
+ms.openlocfilehash: 84a489222ed8d68c8c49d240cc22bd35f443227a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096188"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705715"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 用 Azure Resource Manager テンプレート
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

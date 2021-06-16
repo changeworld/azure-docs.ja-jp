@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2e2f9876c77e292a2634b5ba29958f64f1f32679
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cbbb1ab30a9f49157951b95a7b33769c3cb2347e
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079302"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111810268"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -162,7 +162,7 @@ resolv.conf ファイルは通常は自動生成され、編集すべきでは�
 
 仮想ネットワーク内の DNS サーバーは、Azure の再帰的リゾルバーに DNS クエリを転送できます。 これにより、その仮想ネットワーク内のホスト名を解決することができます。 たとえば、Azure で実行しているドメイン コントローラー (DC) は、そのドメインに対する DNS クエリに応答し、他のすべてのクエリを Azure に転送できます。 クエリを転送することで、VM はオンプレミスのリソース (DC 経由) と Azure で提供されるホスト名 (フォワーダー経由) の両方を参照できます。 Azure の再帰的リゾルバーへのアクセスは、仮想 IP 168.63.129.16 を通じて提供されます。
 
-また、DNS の転送により、仮想ネットワーク間の DNS 解決も可能になり、オンプレミスのマシンが Azure で提供されるホスト名を解決できるようになります。 VM のホスト名を解決するために、DNS サーバー VM は、同じ仮想ネットワークに存在し、Azure にホスト名のクエリを転送するように構成されている必要があります。 DNS サフィックスは仮想ネットワークごとに異なるため、条件付きの転送ルールを使用し、解決のために正しい仮想ネットワークに DNS クエリを送信します。 次の図は、2 つの仮想ネットワークと、この方法を使用して仮想ネットワーク間の DNS 解決を行うオンプレミスのネットワークを示しています。 DNS フォワーダーの例は、[Azure クイック スタート テンプレートのギャラリー](https://azure.microsoft.com/en-us/resources/templates/dns-forwarder)と [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) で確認できます。
+また、DNS の転送により、仮想ネットワーク間の DNS 解決も可能になり、オンプレミスのマシンが Azure で提供されるホスト名を解決できるようになります。 VM のホスト名を解決するために、DNS サーバー VM は、同じ仮想ネットワークに存在し、Azure にホスト名のクエリを転送するように構成されている必要があります。 DNS サフィックスは仮想ネットワークごとに異なるため、条件付きの転送ルールを使用し、解決のために正しい仮想ネットワークに DNS クエリを送信します。 次の図は、2 つの仮想ネットワークと、この方法を使用して仮想ネットワーク間の DNS 解決を行うオンプレミスのネットワークを示しています。 DNS フォワーダーの例は、[Azure クイック スタート テンプレートのギャラリー](https://azure.microsoft.com/resources/templates/dns-forwarder)と [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) で確認できます。
 
 > [!NOTE]
 > ロール インスタンスは、同じ仮想ネットワーク内の VM の名前解決を実行できます。 これは、VM のホスト名と **internal.cloudapp.net** DNS サフィックスで構成される FQDN を使用することで可能になります。 ただし、この場合、名前解決は、ロール インスタンスが[ロール スキーマ (.cscfg ファイル)](/previous-versions/azure/reference/jj156212(v=azure.100)) に定義されている VM 名を持っている場合にのみ成功します。
@@ -199,7 +199,7 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 
 仮想ネットワークにリンクされている App Service を使用してビルドされた Web アプリから別の仮想ネットワーク内の VM への名前解決を行う必要がある場合は、次のように、両方の仮想ネットワークでカスタム DNS サーバーを使用する必要があります。
 
-* クエリを Azure の再帰的リゾルバー (仮想 IP 168.63.129.16) に転送することもできる VM 上のターゲット仮想ネットワーク内に DNS サーバーを設定します。 DNS フォワーダーの例は、[Azure クイック スタート テンプレートのギャラリー](https://azure.microsoft.com/en-us/resources/templates/dns-forwarder/)と [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) で確認できます。
+* クエリを Azure の再帰的リゾルバー (仮想 IP 168.63.129.16) に転送することもできる VM 上のターゲット仮想ネットワーク内に DNS サーバーを設定します。 DNS フォワーダーの例は、[Azure クイック スタート テンプレートのギャラリー](https://azure.microsoft.com/resources/templates/dns-forwarder/)と [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) で確認できます。
 * VM 上のソース仮想ネットワーク内に DNS フォワーダーを設定します。 この DNS フォワーダーを、ターゲット仮想ネットワーク内の DNS サーバーにクエリを転送するように構成します。
 * ソース仮想ネットワークの設定内にソース DNS サーバーを構成します。
 * [仮想ネットワークへのアプリの統合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの指示に従って、ソース仮想ネットワークにリンクする App Service Web App に対する仮想ネットワークの統合を有効にします。

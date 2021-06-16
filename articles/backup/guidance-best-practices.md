@@ -3,12 +3,12 @@ title: ガイダンスとベスト プラクティス
 description: クラウドとオンプレミスのワークロードをクラウドにバックアップするためのベストプラクティスとガイダンスについて説明します
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 7b507fec6c3f9cd53dd5b775dff2ca43c4dcfd1f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519065"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965480"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>クラウドとオンプレミスのワークロードをクラウドにバックアップする
 
@@ -178,7 +178,7 @@ Azure Backup では、ワークロードのデータを Recovery Services コン
 
 * *Azure VM 上の SAP HANA データベース、Azure VM 上の SQL Server データベース* - Azure Backup サービス、Azure Storage、Azure Active Directory への接続が必要です。 これは、プライベート エンドポイントを使用するか、必要なパブリック IP アドレスまたは FQDN へのアクセスを許可することによって実現できます。 必要な Azure サービスへの適切な接続を許可しないと、データベースの検出、バックアップの構成、バックアップの実行、データの復元などの操作の失敗につながる可能性があります。 NSG タグ、Azure Firewall、HTTP プロキシを使用しているときのネットワークの完全なガイダンスについては、これらの [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) と [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) の記事をご覧ください。
 
-* *ハイブリッド* - MARS (Microsoft Azure Recovery Services) エージェントでは、すべての重要な操作 (インストール、構成、バックアップ、復元) にネットワーク アクセスが必要です。 MARS エージェントは、パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) 経由で、[プライベート エンドポイント](install-mars-agent.md#private-endpoints)を使用して、または[適切なアクセス制御によるプロキシ/ファイアウォール](install-mars-agent.md#verify-internet-access)経由で、Azure Backup サービスに接続できます。
+* *ハイブリッド* - MARS (Microsoft Azure Recovery Services) エージェントでは、すべての重要な操作 (インストール、構成、バックアップ、復元) にネットワーク アクセスが必要です。 MARS エージェントは、パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して [Azure ExpressRoute](install-mars-agent.md#azure-expressroute-support) 経由で、[プライベート エンドポイント](install-mars-agent.md#private-endpoint-support)を使用して、または[適切なアクセス制御によるプロキシ/ファイアウォール](install-mars-agent.md#verify-internet-access)経由で、Azure Backup サービスに接続できます。
 
 ### <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 

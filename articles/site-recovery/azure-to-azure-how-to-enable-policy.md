@@ -6,16 +6,16 @@ ms.author: rishjai
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 3fe6ec7baba3e075f5c5026732b10fab81f3bd42
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7707fb0688a10c1791556f0605b40cacc54b5a85
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749377"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961019"
 ---
 # <a name="using-policy-with-azure-site-recovery-public-preview"></a>Azure Site Recovery でのポリシーの使用 (パブリック プレビュー)
 
-この記事では、Azure Policy を使用して、リソースに対して [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を設定する方法について説明します。 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) は、特定のビジネス ルールを Azure リソースに適用し、そのリソースのコンプライアンスを評価するのに役立ちます。
+この記事では、Azure Policy を使用して、リソースに対して [Azure Site Recovery](./site-recovery-overview.md) を設定する方法について説明します。 [Azure Policy](../governance/policy/overview.md) は、特定のビジネス ルールを Azure リソースに適用し、そのリソースのコンプライアンスを評価するのに役立ちます。
 
 ## <a name="disaster-recovery-with-azure-policy"></a>Azure Policy を使用したディザスター リカバリー
 Site Recovery は、計画的または計画外のゾーンまたはリージョンの障害が発生した場合にアプリケーションの稼働状態を維持するのに役立ちます。 Azure portal を介して複数のコンピューターで Site Recovery を大規模に有効にすることは困難な場合があります。 そこで、ポータルを介して特定のリソース グループ (ポリシーの "_スコープ_") で Site Recovery を一括して有効にする方法があります。
@@ -27,8 +27,8 @@ Azure Policy がこの問題を解決します。 リソース グループに�
 
 ## <a name="prerequisites"></a>前提条件
 
-- ポリシーを割り当てる方法を[こちら](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)で参照してください。
-- Azure から Azure へのディザスター リカバリーのアーキテクチャの詳細について[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture)を参照してください。
+- ポリシーを割り当てる方法を[こちら](../governance/policy/assign-policy-portal.md)で参照してください。
+- Azure から Azure へのディザスター リカバリーのアーキテクチャの詳細について[こちら](./azure-to-azure-architecture.md)を参照してください。
 - Azure Site Recovery ポリシー サポートについてサポート マトリックスを確認してください。
 
 **シナリオ** | **サポートに関する声明**
@@ -93,7 +93,7 @@ Azure Site Recovery を有効にするポリシーを作成しているところ
 ## <a name="remediation-and-other-properties"></a>修復とその他のプロパティ
 1. Azure Site Recovery のターゲット プロパティが構成されました。 ただし、このポリシーは、ポリシーのスコープ内で新たに作成された仮想マシンに対してのみ有効になります。 ポリシーが割り当てられた後は、修復タスクを使用して既存のリソースに適用することができます。 ここで _[修復タスクの作成]_ チェックボックスをオンにして修復タスクを作成できます。
 
-1. Azure Policy によって、スコープ内のリソースに対して Azure Site Recovery を有効にするための所有者アクセス許可を持つ[マネージド ID](https://aka.ms/arm-policy-identity) が作成されます。
+1. Azure Policy によって、スコープ内のリソースに対して Azure Site Recovery を有効にするための所有者アクセス許可を持つ[マネージド ID](../governance/policy/how-to/remediate-resources.md) が作成されます。
 
 1. _[非コンプライアンス メッセージ]_ タブで、ポリシーに関するカスタムの非コンプライアンス メッセージを構成できます。
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/11/2018
 ms.subservice: tables
-ms.openlocfilehash: b921be718bfeb5eb95d4a802fb4d2a8cdd0946c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b874bfb9f3c261f395f8358151ae555cdaed8e8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88236779"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756889"
 ---
 # <a name="encrypt-table-data"></a>テーブル データを暗号化する
 .NET Azure Storage クライアント ライブラリでは、挿入および置換操作の文字列エンティティ プロパティの暗号化がサポートされます。 暗号化された文字列はバイナリ プロパティとしてサービスで保存され、復号化された後、解読された後、文字列に再度変換されます。    
@@ -26,9 +26,8 @@ ms.locfileid: "88236779"
 
 テーブル データの暗号化については、「 [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../common/storage-client-side-encryption.md)」を参照してください。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [テーブルの設計パターン](table-storage-design-patterns.md)
-- [リレーションシップのモデル化](table-storage-design-modeling.md)
 - [リレーションシップのモデル化](table-storage-design-modeling.md)
 - [データの変更に対応した設計](table-storage-design-for-modification.md)

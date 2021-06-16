@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery Deployment Planner のコスト見積もりを確認する
 description: この記事では、VMware のディザスター リカバリーのために、Azure Site Recovery Deployment Planner のコスト見積もりを確認する方法について説明します。
-author: rajeswari-mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/29/2019
-ms.author: ramamill
-ms.openlocfilehash: dba585fbadca479c146ad42ac1bc5aa9d5349f49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 92d1c5babc2daacdd0b0687a5ff779fcd4272e71
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93186707"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577072"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Deployment Planner のコスト見積もりを確認する 
 

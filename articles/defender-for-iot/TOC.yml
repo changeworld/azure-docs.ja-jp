@@ -142,7 +142,7 @@
         - name: ユーザーとユーザー アクセスの管理
           items:
             - name: ユーザーの作成と管理
-              displayName: 'Active Directory, roles, permissions'
+              displayName: 'Active Directory, roles, permissions, password, passwords, change, reset'
               href: how-to-create-and-manage-users.md
             - name: グローバル ユーザー アクセス制御の定義
               href: how-to-define-global-user-access-control.md
@@ -180,6 +180,7 @@
             - name: センサー アラートについて
               href: how-to-work-with-alerts-on-your-sensor.md
             - name: '[アラート] ページからのアラートのフィルター処理と管理'
+              displayName: 'alert, alerts, Important, pinned, recent, acknowledge, archive, archived, search, text,'
               href: how-to-view-alerts.md
             - name: アラート メッセージについて
               href: how-to-view-information-provided-in-alerts.md
@@ -338,7 +339,7 @@
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
         - name: よく寄せられる質問 - エージェント
-          displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
+          displayName: 'FAQ, embedded, dependencies, data, quota, internet, password, change'
           href: resources-agent-frequently-asked-questions.md
         - name: Azure のロードマップ
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'

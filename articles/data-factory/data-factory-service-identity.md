@@ -6,12 +6,13 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: abnarain
-ms.openlocfilehash: 632c5930fdae7a4a7504d57b9cb8f285efad8d0a
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d175bf7123cc8fdab336594c0ef05f13562a5622
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481663"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681073"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 

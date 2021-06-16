@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: d816854c8d8a78931060c6e56fffbaee1fde5150
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seohack1, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: b364e74df7e6069407b0bcc3a6cfccd2ead09eae
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771715"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690859"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 

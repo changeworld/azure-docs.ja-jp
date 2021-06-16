@@ -8,12 +8,13 @@ ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 03/10/2021
 ms.author: alzam
-ms.openlocfilehash: 0f7ef69494281684d7846e4490dfcc27ba08080e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 65ebf90d2485969343092bbee1fd3935112b6466
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206729"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672151"
 ---
 # <a name="view-bgp-metrics-and-status"></a>BGP のメトリックと状態の表示
 

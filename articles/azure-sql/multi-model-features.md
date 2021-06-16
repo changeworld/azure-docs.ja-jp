@@ -3,20 +3,20 @@ title: マルチモデル機能
 description: Microsoft Azure SQL では、同じデータベース内の複数のデータ モデルを使用できます。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: ''
+ms.reviewer: mathoma
 ms.date: 12/17/2018
-ms.openlocfilehash: b16a2fc9f107a8420fb7d05667807a869fa3e00a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5eebf03d5ea3757f7dc003a1dbd114190feb72f9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172759"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688843"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のマルチモデル機能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
