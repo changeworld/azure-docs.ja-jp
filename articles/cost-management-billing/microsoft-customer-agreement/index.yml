@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 05/05/2021
-  ms.openlocfilehash: 6a7627fbce3042f23f680c1d0439e50450645082
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.date: 05/21/2021
+  ms.openlocfilehash: 5c64dcb1c96357128dc7a1cf86847472edf611e3
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108747829"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110470712"
 landingContent:
 - title: はじめに
   linkLists:
@@ -68,6 +68,8 @@ landingContent:
       url: https://www.youtube.com/watch?v=9sqglBlKkho
     - text: 請求書を理解する
       url: https://www.youtube.com/watch?v=e2LGZZ7GubA
+    - text: Azure サブスクリプションの課金を MOSA から MCA に移行する
+      url: https://www.youtube.com/watch?v=gfiUI2YLsgc
 - title: サブスクリプションを管理する
   linkLists:
   - linkListType: concept

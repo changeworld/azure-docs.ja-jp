@@ -299,7 +299,7 @@
       items:
         - name: クラスターのメトリックの表示
           href: view-metrics.md
-        - name: コンテナーに対する Azure Monitor
+        - name: コンテナーの分析情報
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
         - name: コントロール プレーン コンポーネントのログを表示する

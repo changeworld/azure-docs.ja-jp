@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: f3b43ed6a86276b308599f9091d581423b0f363c
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 58de8de28b796d67f9368224ced24c9c592cfdb6
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220992"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033817"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 このチュートリアルでは、Azure Content Moderator を使用して Facebook ページの投稿とコメントをモデレートする方法について説明します。 訪問者が投稿したコンテンツは Facebook から Content Moderator サービスに送信されるようになります。 その後、コンテンツのスコアとしきい値に応じて、Content Moderator のワークフローは、コンテンツを公開するか、レビュー ツール内にレビューを作成します。 このシナリオの例が動作しているところは、[Build 2017 のデモ ビデオ](https://channel9.msdn.com/Events/Build/2017/T6033)でご覧いただけます。
 

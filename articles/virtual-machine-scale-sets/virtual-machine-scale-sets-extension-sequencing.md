@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: extensions
 ms.date: 01/30/2019
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 1b5aea1f0f0101231408dc9ad7b57a30f2c86256
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 013404113c3346cfce752f53266062a3b5386092
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788159"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673961"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>仮想マシン スケール セット内の拡張機能のプロビジョニングをシーケンス処理する
 Azure 仮想マシンの拡張機能は、デプロイ後の構成と管理、監視、セキュリティなどの機能を提供します。 通常、運用環境のデプロイでは、目的の結果を実現するために、VM インスタンス用に構成された複数の拡張機能の組み合わせを使用します。

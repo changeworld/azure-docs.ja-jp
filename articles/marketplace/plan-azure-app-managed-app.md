@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a34bdfe55d2200176d6f6c7fde389c19dc26cfa5
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96621418"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536473"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure アプリケーション オファーの Azure マネージド アプリケーションを計画する
 
@@ -81,7 +81,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 各プランについて、月ごとの価格を指定する必要があります。 このソリューションによってデプロイされるリソースによって発生する Azure インフラストラクチャまたは従量課金制ソフトウェアのコストに、この価格が追加されます。
 
-月ごとの価格に加え、[従量制課金](partner-center-portal/azure-app-metered-billing.md)を使用して、非標準ユニットの消費に対する価格を設定することもできます。 月ごとの価格を 0 に設定し、必要に応じて、従量制課金のみを使用して課金することができます。
+月ごとの価格に加え、[従量制課金](marketplace-metering-service-apis.md)を使用して、非標準ユニットの消費に対する価格を設定することもできます。 月ごとの価格を 0 に設定し、必要に応じて、従量制課金のみを使用して課金することができます。
 
 価格は USD (USD = 米国ドル) で設定され、保存時の最新の為替レートを使用して、選択されたすべての市場の現地通貨に変換されます。 しかし、市場ごとに顧客向け価格を設定することを選択できます。
 
@@ -137,4 +137,4 @@ JIT アクセスによって、発行元は、トラブルシューティング�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースで Azure アプリケーション オファーを作成する方法](create-new-azure-apps-offer.md)
+- [Azure アプリケーション オファーを作成する](azure-app-offer-setup.md)
