@@ -7,16 +7,16 @@ ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c42a11d5d59007f9e97fbc64e854cd96e29410f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93305972"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708038"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

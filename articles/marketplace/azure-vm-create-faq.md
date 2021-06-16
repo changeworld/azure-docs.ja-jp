@@ -7,12 +7,13 @@ ms.topic: guide
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 867b9dfefd47e38b5bcfd54ae54aab607e7acea5
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 665e454730c4a13aad083ac6cd8bfa5d966cc800
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814912"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703497"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Azure Marketplace の VM についての一般的な質問
 

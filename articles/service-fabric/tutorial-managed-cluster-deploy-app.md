@@ -3,12 +3,13 @@ title: PowerShell を使用して Service Fabric マネージド クラスター
 description: このチュートリアルでは、Service Fabric マネージド クラスターに接続し、PowerShell を使用してアプリケーションをデプロイします。
 ms.topic: tutorial
 ms.date: 5/10/2021
-ms.openlocfilehash: c51d753f3d0aa5d3c05c66fc45ae653f0bfa8e71
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f9ee801bdddd43563794aee7420ee8ba54f4d1d7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685425"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672411"
 ---
 # <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster"></a>チュートリアル: Service Fabric マネージド クラスターにアプリケーションをデプロイする
 

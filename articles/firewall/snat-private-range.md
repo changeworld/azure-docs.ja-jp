@@ -7,12 +7,13 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: victorh
-ms.openlocfilehash: 01707a99b1ff5d077daf3c095e1daf78ccddfeac
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6235e5ec34987c0a383ea776aabf0a00e345ce63
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107898191"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693686"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall の SNAT プライベート IP アドレス範囲
 

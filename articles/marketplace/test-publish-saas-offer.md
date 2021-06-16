@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/25/2021
-ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7fed85abe42b0366ff2429ba923fc9a3cdf6190a
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045248"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536420"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>SaaS オファーをテストしてコマーシャル マーケットプレースに公開する方法
 
@@ -53,13 +53,13 @@ ms.locfileid: "105045248"
 
 1. 購入と設定のフローを徹底的に検証するため、プレビュー段階にある間にオファーのプランを購入してください。 まず、課金を処理しないよう、[サポート チケット](https://aka.ms/marketplacesupport)で Microsoft に通知します。
 
-1. SaaS オファーでコマーシャル マーケットプレースの測定サービスを使用した[従量制課金](./partner-center-portal/saas-metered-billing.md)がサポートされている場合は、「[マーケットプレースの従量制課金 API](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices)」で詳しく説明されているテストのベスト プラクティスをレビューして、それに従ってください。
+1. SaaS オファーでコマーシャル マーケットプレースの測定サービスを使用した[従量制課金](./partner-center-portal/saas-metered-billing.md)がサポートされている場合は、「[マーケットプレースの従量制課金 API](marketplace-metering-service-apis.md#development-and-testing-best-practices)」で詳しく説明されているテストのベスト プラクティスをレビューして、それに従ってください。
 
 1. オファーを公開する前に、「[Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2](./partner-center-portal/pc-saas-fulfillment-api-v2.md#development-and-testing)」のテスト手順をレビューして従って、オファーが正常に統合されていることを確認してください。
 
 1. オファー検証手順によって警告が表示された場合は、 **[オファーの概要]** ページに **[検証レポートの表示]** リンクが表示されます。 **[公開]** ボタンを選択する前に、レポートを確認し、問題があれば解決してください。 そうしないと、認定されず、オファーの公開が遅延する可能性があります。
 
-1. オファーをプレビューしてテストした後に変更を加える必要がある場合は、オファーを編集して再送信すれば、新しいプレビューを公開できます。 詳細については、「[Commercial Marketplace で既存のオファーを更新する](./partner-center-portal/update-existing-offer.md)」を参照してください。
+1. オファーをプレビューしてテストした後に変更を加える必要がある場合は、オファーを編集して再送信すれば、新しいプレビューを公開できます。 詳細については、「[Commercial Marketplace で既存のオファーを更新する](update-existing-offer.md)」を参照してください。
 
 ## <a name="publish-your-offer-live"></a>オファーを発行する
 
@@ -74,4 +74,4 @@ ms.locfileid: "105045248"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](./partner-center-portal/analytics.md)
+- [パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](analytics.md)

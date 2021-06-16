@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Video Analyzer を使用して、イベントベースのビデオ録画をクラウドに記録し、それをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 04/13/2021
-ms.openlocfilehash: 05c28fbc3b410f792d10adf7e59e43f070d7d57a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6ecbaf794530e80837c2d2a5f9f3fca11e3c93ae
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384060"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565664"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>チュートリアル: イベントベースのビデオ記録と再生
 
@@ -334,7 +334,7 @@ applicationProperties の subject セクションでは、このメッセージ�
 
 ### <a name="recordingstopped-event"></a>RecordingStopped イベント
 
-ライブ パイプラインを非アクティブ化すると、ビデオ シンク ノードによってメディアの録画が停止されます。 種類が **Microsoft.Media.Graph.Operational.RecordingStopped** のこのイベントが出力されます。
+ライブ パイプラインを非アクティブ化すると、ビデオ シンク ノードではメディアの録画が停止されます。 **Microsoft.Media.Graph.Operational.RecordingStopped** の種類のイベントが出力されます。
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [avasample-iot-edge-device/avaedge]:
@@ -355,17 +355,15 @@ applicationProperties の subject セクションでは、このメッセージ�
 
 このイベントは、記録が停止したことを示します。 applicationProperties の subject セクションでは、このメッセージの生成元となったライブ パイプライン内のビデオ シンク ノードが参照されています。 body セクションには、出力場所に関する情報が含まれています。 この場合は、ビデオが録画される Video Analyzer リソースの名前です。
 
-## <a name="video-analyzer-video-resource"></a>Video Analyzer ビデオ リソース
+## <a name="playing-back-the-recording"></a>録画を再生する
 
 ライブ パイプラインによって作成された Video Analyzer ビデオ リソースを調べるには、Azure portal にログインしてビデオを視聴します。
 1. Web ブラウザーを開き、[Azure portal](https://portal.azure.com/) に移動します。 資格情報を入力してポータルにサインインします。 既定のビューはサービス ダッシュボードです。
 1. サブスクリプション内のリソースの中から Video Analyzers アカウントを見つけ、アカウント ペインを開きます。
 1. **[Video Analyzer]** のリストで **[ビデオ]** を選択します。
-
-    <!--TODO: add image -- ![Video Analyzers videos]() ./media/event-based-video-recording-tutorial/videos.png -->
 1. `sample-evr-video` という名前で一覧に含まれているビデオが見つかります。 これは、パイプライン トポロジ ファイルで選択された名前です。
 1. ビデオを選択します。
-1. ビデオの詳細ページで、再生オプションを選択します <!-- TODO: fix this-->
+1. ビデオの詳細ページが開き、自動的に再生が開始されます。
 
     <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
 

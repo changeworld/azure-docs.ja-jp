@@ -7,16 +7,16 @@ ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 09/25/2018
-ms.openlocfilehash: bfe5dc00ba0255520c04ea85157f0b8bdc71b590
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 408434145d3bea15fe13eebd26ce13695bef3d7e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84038513"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706302"
 ---
 # <a name="building-scalable-cloud-databases"></a>スケーラブルなクラウド データベースの構築
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

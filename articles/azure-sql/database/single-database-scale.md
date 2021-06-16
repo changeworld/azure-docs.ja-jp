@@ -4,19 +4,19 @@ description: この記事では、Azure SQL Database で単一データベース
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1, references_regions
+ms.custom: sqldbrb=1, references_regions, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 04/09/2021
-ms.openlocfilehash: ae1b3cc41d709c28ba517d672eb98cb60a837a8d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 215936e1a3d9b4552747a67ed8d0de9edcc1e969
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779077"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667140"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースをスケーリングする
 
@@ -62,7 +62,7 @@ ms.locfileid: "107779077"
 |**Basic 単一データベース、</br>Standard (S0-S1)**|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 5 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
 |**Basic エラスティック プール、</br>Standard (S2-S12)、</br>汎用の単一データベースまたはエラスティック プール**|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;単一データベースの場合は、使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;単一データベースの場合は、通常 5 分未満</br>&bull; &nbsp;エラスティック プールの場合は、データベースの数に比例|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
 |**Premium または Business Critical の単一データベースまたはエラスティック プール**|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
-|**Hyperscale**|該当なし|該当なし|該当なし|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 2 分未満|
+|**Hyperscale**|該当なし|N/A|該当なし|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 2 分未満|
 
 > [!NOTE]
 > さらに、Standard (S2-S12) データベースと General Purpose データベースでは、データベースで Premium ファイル共有 ([PFS](../../storage/files/storage-files-introduction.md)) ストレージが使用されている場合、エラスティック プールとの間、またはエラスティック プール間でデータベースを移動するための待ち時間は、データベース サイズに比例します。

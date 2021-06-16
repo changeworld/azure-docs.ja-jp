@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: 127ce4aceff536ef8ce4d2a988a26070ef06b6ec
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5f11c78e6619c2581d04ebc8e97c683c43cf2e73
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078412"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793005"
 ---
 開いている [Azure Cloud Shell](https://shell.azure.com) ウィンドウで Azure Digital Twins の使用を開始するには、最初にログインし、このセッションのサブスクリプションにシェル コンテキストを設定します。 Cloud Shell でこれらのコマンドを実行します。
 
@@ -18,6 +18,7 @@ ms.locfileid: "110078412"
 az login
 az account set --subscription "<your-Azure-subscription-ID>"
 ```
+
 > [!TIP]
 > 上記のコマンドでは、ID の代わりにサブスクリプション名も使用できます。 
 

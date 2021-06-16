@@ -7,12 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7919d32326e7cb82720714a2bff574ad21f0d5d9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 83d7066ca003cc935526abd6b7fd4d456b4dd7d1
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753240"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665846"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

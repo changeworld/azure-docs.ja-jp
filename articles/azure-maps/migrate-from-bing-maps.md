@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9bd0516889733a666bf15668cffd124dcc468f3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4be7bc555578c4abeaa65c6433da3e285b9235b2
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388959"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786567"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>チュートリアル:Bing 地図から Azure Maps に移行する
 
@@ -53,7 +53,7 @@ Azure Maps は、Web アプリケーションやモバイル アプリケーシ�
 | 自動提案                           | ✓                  |
 | ルート案内 (トラックを含む)          | ✓                  |
 | Distance Matrix                       | ✓                  |
-| 標高                            | ✓ (プレビュー)        |
+| 標高                            | ✓      |
 | 映像 - 静的マップ                  | ✓                  |
 | 映像メタデータ                      | ✓                  |
 | 等時線                            | ✓                  |
@@ -66,7 +66,7 @@ Azure Maps は、Web アプリケーションやモバイル アプリケーシ�
 | Spatial Data Services (SDS)           | Partial            |
 | タイム ゾーン                             | ✓                  |
 | トラフィック インシデント                     | ✓                  |
-| 構成ドリブン マップ             | 該当なし                |
+| 構成ドリブン マップ             | N/A                |
 
 Bing 地図では、基本的なキーベースの認証が提供されます。 Azure Maps には、基本的なキーベースの認証と、高度なセキュリティで保護された Azure Active Directory 認証の両方が用意されています。
 

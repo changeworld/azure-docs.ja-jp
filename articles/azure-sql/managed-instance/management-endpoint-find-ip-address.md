@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance 管理エンドポイントのパブリック IP アドレスを取得し、組み込みファイアウォールの保護機能を検証する方法について説明します
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: a9a2b904bd7526f00a8f8a5d013be0c1e42e38a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02c28282bbf35e2e69cb85149c3a7d1187c5c258
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91617368"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694007"
 ---
 # <a name="determine-the-management-endpoint-ip-address---azure-sql-managed-instance"></a>管理エンドポイント IP アドレスを確認する - Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

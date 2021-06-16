@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 45cdb9217eebf6e3129718a96d9f7b72a3ab62b3
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 10fe02b0deb505fcedc6fc3119150709b6613b04
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533616"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673025"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Azure CLI を使用して、ホストでの暗号化を使用したエンドツーエンドの暗号化を有効にする
 

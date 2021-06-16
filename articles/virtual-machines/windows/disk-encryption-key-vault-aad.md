@@ -7,13 +7,13 @@ ms.subservice: disks
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6af33ace32d829c4158d36859cdb00bd81d7c3f8
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: db284f016c2343942ebe91a977d04485e04fef5d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754013"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670325"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 

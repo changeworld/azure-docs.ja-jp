@@ -4,19 +4,19 @@ description: Azure SQL Database の拡張イベントのイベント ファイ�
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/06/2020
-ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48f6c2f676f9e2b0efff63d4070a52e88e3dc68c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96501228"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672378"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

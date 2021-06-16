@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8dc6ac712110210414f66446827569f51f396c1f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94630194"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669809"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Azure Files の DNS 転送の構成
 Azure Files では、ファイル共有を含むストレージ アカウントのプライベート エンドポイントを作成することができます。 プライベート エンドポイントは、多くの異なるアプリケーションで役立ちますが、プライベート ピアリングを使用する VPN または ExpressRoute 接続を使って、オンプレミス ネットワークから Azure ファイル共有に接続する場合に特に便利です。 

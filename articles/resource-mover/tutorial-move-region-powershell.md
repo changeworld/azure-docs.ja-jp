@@ -7,12 +7,13 @@ ms.service: resource-move
 ms.topic: tutorial
 ms.date: 02/21/2021
 ms.author: raynew
-ms.openlocfilehash: b728170521570ff0d83b67671109e82adb7fa7b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3489d7359b7557f0a2305a30ff3d28f05863504d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583280"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702255"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>PowerShell でリソースをリージョン間で移動する
 

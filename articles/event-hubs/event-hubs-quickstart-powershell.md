@@ -3,12 +3,13 @@ title: 'クイックスタート: PowerShell を使用したイベント ハブ�
 description: このクイック スタートでは、Azure PowerShell を使用してイベント ハブを作成したうえで、.NET Standard SDK を使用してイベントの送受信を行う方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: be2761bedd3198d25cb279e6a8ff188db6a51de2
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 81181dd7b9167c76e167e781bc6aa6f277125953
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107873777"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695910"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用したイベント ハブの作成
 

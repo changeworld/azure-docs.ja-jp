@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: f2dffe98f401acad927cc3404ffd2c48378e9026
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 59d24ebd16d25658d75cb36509183233d2f2e500
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372250"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412153"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>チュートリアル:Azure Bot Service を使用した FAQ ボットの作成
 QnA Maker と Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) を使用して FAQ ボットをコードなしで作成します。
@@ -88,12 +88,6 @@ QnA Maker と Azure [Bot Service](https://azure.microsoft.com/services/bot-servi
 
 
 1. 追加の[サポートされているチャネル](/azure/bot-service/bot-service-manage-channels)でボットを照らします。
-
-
-    - Bot Service リソースの [Channels]\(チャネル\) をクリックします。
-
-    > [!div class="mx-imgBorder"]
-    > ![ボットをチャネルに接続するスクリーンショット](../media/qnamaker-tutorial-updates/connect-with-teams.png)
     
 ## <a name="integrate-the-bot-with-channels"></a>ボットをチャネルと統合する
 

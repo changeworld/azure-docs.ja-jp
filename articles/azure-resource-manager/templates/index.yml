@@ -12,12 +12,12 @@ metadata:
   author: mumian
   ms.author: jgao
   ms.date: 03/03/2021
-  ms.openlocfilehash: 01f89fa12654a949c701d728e23f7ae79e0c69e7
-  ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+  ms.openlocfilehash: b3a8448145a101367a2000e5b16d0ff61b93a0d7
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/26/2021
-  ms.locfileid: "105611958"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111963215"
 landingContent:
 - title: ARM テンプレートについて
   linkLists:
@@ -25,12 +25,10 @@ landingContent:
     links:
     - text: テンプレートとは
       url: overview.md
-    - text: Bicep とは
-      url: bicep-overview.md
   - linkListType: concept
     links:
     - text: ベスト プラクティス
-      url: template-best-practices.md
+      url: ./best-practices.md
     - text: よく寄せられる質問
       url: frequently-asked-questions.md
     - text: テンプレート スペック
@@ -49,8 +47,6 @@ landingContent:
     links:
     - text: JSON テンプレートを作成する - VS Code
       url: quickstart-create-templates-use-visual-studio-code.md
-    - text: Bicep テンプレートを作成する - VS Code
-      url: quickstart-create-bicep-use-visual-studio-code.md
     - text: JSON テンプレートを作成する - ポータル
       url: quickstart-create-templates-use-the-portal.md
     - text: テンプレート スペックの作成とデプロイ
@@ -59,8 +55,6 @@ landingContent:
     links:
     - text: 初級者向けテンプレートのチュートリアル
       url: template-tutorial-create-first-template.md
-    - text: 初級者向け Bicep のチュートリアル
-      url: bicep-tutorial-create-first-bicep.md
   - linkListType: learn
     links:
     - text: Resource Manager テンプレートを使用してデプロイする
@@ -78,17 +72,17 @@ landingContent:
     - text: 関数を使用する
       url: template-functions.md
     - text: パラメーターを定義する
-      url: template-parameters.md
+      url: ./parameters.md
     - text: 変数の定義
-      url: template-variables.md
+      url: ./variables.md
     - text: リソースを定義する
-      url: template-syntax.md#resources
+      url: ./syntax.md#resources
     - text: 出力を定義する
-      url: template-outputs.md
+      url: ./outputs.md
   - linkListType: reference
     links:
     - text: テンプレート ファイルの構文
-      url: template-syntax.md
+      url: ./syntax.md
     - text: Azure クイック スタート テンプレート
       url: https://azure.microsoft.com/resources/templates/
 - title: テンプレートのデプロイ
@@ -112,7 +106,7 @@ landingContent:
     - text: Cloud Shell
       url: deploy-cloud-shell.md
     - text: what-if のデプロイ
-      url: template-deploy-what-if.md
+      url: ./deploy-what-if.md
 - title: スコープ付きのデプロイ
   linkLists:
   - linkListType: how-to-guide

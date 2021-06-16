@@ -3,20 +3,20 @@ title: テンポラル テーブルで履歴データを管理する
 description: 一時的なリテンション ポリシーを使用して、履歴データを管理する方法について説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: development
+ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein
+author: MladjoA
+ms.author: mlandzic
+ms.reviewer: mathoma
 ms.date: 09/25/2018
-ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ba19b7de7843268c3fd1c8135deaa860a0905ee
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91619391"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707583"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>アイテム保持ポリシーを使用してテンポラル テーブルで履歴データを管理する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

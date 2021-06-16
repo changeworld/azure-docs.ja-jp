@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fa64d491a872d830ac57a1d097045d1702dd852
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737542"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527300"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -109,7 +109,7 @@ touch ~/fuse_connection.cfg
 
 このファイルを作成して編集したら、他のユーザーが読み取れないよう、必ずアクセスを制限してください。
 ```bash
-chmod 600 fuse_connection.cfg
+chmod 600 ~/fuse_connection.cfg
 ```
 
 > [!NOTE]

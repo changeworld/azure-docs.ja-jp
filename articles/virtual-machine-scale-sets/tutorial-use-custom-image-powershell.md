@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
-ms.openlocfilehash: 1edbd391f9ad265c77cd0947c94afcbbc65e2f64
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b7de842478a3a4e4f79c9b35146569c6ee938abd
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108732655"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110674100"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 

@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9d2ff583b032ff1f9aa5dbc9706ea6c981fc7265
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 771d108bc3a3262c46ab13127727eddce2abaeb8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009978"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675815"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションを IPv6 にアップグレードする - PowerShell
 

@@ -3,18 +3,20 @@ title: Azure SQL Database と Azure Synapse Analytics の接続設定
 description: この記事では、トランスポート層セキュリティ (TLS) のバージョンの選択と、Azure SQL Database および Azure Synapse Analytics のプロキシとリダイレクトの設定について説明します。
 services: sql-database
 ms.service: sql-database
+ms.subservice: connect
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: sstein, vanto
+ms.reviewer: mathoma, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 0c45a48e6cafa722945400554f2f81916da13775
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4de2ad883e0daa4a0be0e1da8060b783af5713ff
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627610"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699862"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

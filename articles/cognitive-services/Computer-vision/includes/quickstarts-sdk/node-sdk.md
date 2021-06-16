@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 0f84a9d6be2944f1d8fec656a7cd68c1279a4dab
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7eadec693c1ec1adee4b6a6dffdf5ce211dfce91
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487498"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083808"
 ---
 <a name="HOLTop"></a>
 
@@ -126,7 +126,7 @@ OCR サービスでは、画像に映っているテキストを抽出し、文�
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
 > [!NOTE]
-> また、ローカルの画像からテキストを読み取ることもできます。 [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) のメソッドを参照してください (**readInStream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js#L503) 上のサンプル コードを参照してください。
+> また、ローカルの画像からテキストを読み取ることもできます。 [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) のメソッドを参照してください (**readInStream** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上のサンプル コードを参照してください。
 
 ### <a name="call-the-read-api"></a>Read API を呼び出す
 

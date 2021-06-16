@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: fd1b74d33793c06e586a92cc8b2e8d2d36f4827a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c721f0ac599863fb2fa72e0c243df1087be83ff1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519964"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407545"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Kubernetes ツールを使用して PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -48,16 +48,16 @@ metadata:
 type: Opaque
 ---
 apiVersion: arcdata.microsoft.com/v1alpha1
-kind: postgresql-12
+kind: postgresql
 metadata:
-  generation: 1
   name: pg1
 spec:
   engine:
+    version: 12
     extensions:
     - name: citus
   scale:
-    shards: 3
+    workers: 3
   scheduling:
     default:
       resources:
@@ -67,18 +67,22 @@ spec:
         requests:
           cpu: "1"
           memory: 2Gi
-  service:
-    type: LoadBalancer
+  services:
+    primary:
+      type: LoadBalancer # Modify service type based on your Kubernetes environment
   storage:
     backups:
-      className: default
-      size: 5Gi
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
     data:
-      className: default
-      size: 5Gi
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
     logs:
-      className: default
-      size: 1Gi
+      volumes:
+      - className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
+        size: 5Gi
 ```
 
 ### <a name="customizing-the-login-and-password"></a>ログインとパスワードのカスタマイズ。
@@ -155,7 +159,7 @@ PostgreSQL Hyperscale サーバー グループの作成が完了するまで数
 >  下のコマンド例では、"pg1" という名前の PostgreSQL Hyperscale サーバー グループと、"arc" という名前の Kubernetes 名前空間を作成していることを前提としています。  異なる名前空間や PostgreSQL Hyperscale サーバー グループ名を使用した場合は、"arc" と "pg1" を実際の名前に置き換えることができます。
 
 ```console
-kubectl get postgresql-12/pg1 --namespace arc
+kubectl get postgresqls/pg1 --namespace arc
 ```
 
 ```console
@@ -165,10 +169,10 @@ kubectl get pods --namespace arc
 次のようなコマンドを実行して、特定のポッドの作成状態を確認することもできます。  これは特に、何らの問題をトラブルシューティングするのに役立ちます。
 
 ```console
-kubectl describe po/<pod name> --namespace arc
+kubectl describe pod/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/pg1-0 --namespace arc
+#kubectl describe pod/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>作成の問題のトラブルシューティング

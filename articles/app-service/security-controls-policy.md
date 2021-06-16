@@ -1,16 +1,16 @@
 ---
 title: Azure App Service 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure App Service に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.topic: sample
 ms.service: app-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: deea9966c57e2934051eb9cd1c3f8f4bf7fcb466
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ede1fe153f3beca8b80a500631b1d514aed26682
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083791"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027401"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-service"></a>Azure App Service 用の Azure Policy 規制コンプライアンス コントロール
 

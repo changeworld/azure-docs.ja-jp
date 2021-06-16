@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
-ms.custom: ''
-ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 77433ff3a3bb74d3c976fb0a65e668e8e4d8f452
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84737905"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676095"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>特定の場所から Azure リージョンへの相対待機時間を確認する
 

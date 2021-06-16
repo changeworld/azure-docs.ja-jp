@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 97b3ac4d693afb8ee2f2dba362e1e2f307e50f78
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82c99ea320ac06df8ce3a4309ccade90598f5033
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047266"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953154"
 ---
 # <a name="resource-manager-template-samples-for-log-queries-in-azure-monitor"></a>Azure Monitor のログ クエリ用の Resource Manager テンプレート サンプル
-この記事には、Azure Monitor でログ クエリを作成および構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+この記事には、Azure Monitor でログ クエリを作成および構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

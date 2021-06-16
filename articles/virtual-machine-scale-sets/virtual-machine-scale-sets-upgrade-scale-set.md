@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: e2e754a8dc3adcb4d177c009653338b78e097933
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 47902f17662dea8205d02e6a49e447b8467c9870
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108732673"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673722"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 

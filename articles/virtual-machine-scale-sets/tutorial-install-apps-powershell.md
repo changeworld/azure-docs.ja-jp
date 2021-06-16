@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: extensions
 ms.date: 11/08/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 936ec9ac4d20f06a01a43ec9f05ec3a287fc77a4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: faacadc391a124bbb67833a9c4c8f63033fea62a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750997"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110674255"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットへのアプリケーションのインストール
 

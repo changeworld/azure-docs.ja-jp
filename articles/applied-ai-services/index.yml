@@ -11,7 +11,7 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.custom: custom-portals-hub
-  ms.date: 05/05/2021
+  ms.date: 06/11/2021
 highlightedContent:
   items:
     - title: Applied AI Services とは?
@@ -25,30 +25,30 @@ highlightedContent:
       url: ./applied-ai-services-customer-spotlight-use-cases.md
 productDirectory:
   items:
+    - title: Azure Bot Service
+      imageSrc: ./media/bot-services.svg
+      summary: ボットを作成して複数のチャネルにわたって接続します
+      url: /composer/
     - title: Azure Form Recognizer
       imageSrc: ./media/form-recognizer.svg
       summary: わずかな時間とコストでドキュメントを使用可能なデータに変換します
       url: ../cognitive-services/form-recognizer/index.yml
-    - title: Azure Immersive Reader
-      imageSrc: ./media/immersive-reader.svg
-      summary: ユーザーがテキストを読み、理解するのを支援します
-      url: ../cognitive-services/immersive-reader/index.yml
-    - title: Azure Metrics Advisor
-      imageSrc: ./media/metrics-advisor.svg
-      summary: メトリックの予防的な監視および問題の診断を行います
-      url: ../cognitive-services/metrics-advisor/index.yml
     - title: Azure Cognitive Search
       imageSrc: ./media/cognitive-search.svg
       summary: AI を利用したクラウド検索をモバイル アプリと Web アプリで使用できるようにします
       url: ../search/index.yml
+    - title: Azure Metrics Advisor
+      imageSrc: ./media/metrics-advisor.svg
+      summary: メトリックの予防的な監視および問題の診断を行います
+      url: ../cognitive-services/metrics-advisor/index.yml
     - title: Azure Video Analyzer
       imageSrc: ./media/video-analytics.svg
       summary: ご利用のビデオからアクションにつながる分析情報を抽出します
-      url: 'https://aka.ms/video-analyzer-hub'
-    - title: Azure Bot Service
-      imageSrc: ./media/bot-services.svg
-      summary: ボットを作成して複数のチャネルにわたって接続します
-      url: 'https://docs.microsoft.com/composer/'
+      url: ../azure-video-analyzer/index.yml
+    - title: Azure Immersive Reader
+      imageSrc: ./media/immersive-reader.svg
+      summary: ユーザーがテキストを読み、理解するのを支援します
+      url: ../cognitive-services/immersive-reader/index.yml
 additionalContent:
   sections:
     - title: その他の技術情報
@@ -58,7 +58,7 @@ additionalContent:
             - text: UserVoice に関するフィードバックを送信する
               url: 'https://aka.ms/AppliedAIUserVoice'
             - text: Microsoft Q&A で質問する
-              url: 'https://aka.ms/AppliedAIMSFTQandA'
+              url: /answers/topics/azure-applied-ai-services.html
             - text: StackOverflow でのトラブルシューティング
               url: 'https://aka.ms/AppliedAIStackOverflow'
         - title: クイック スタートを使用してコードを記述する
@@ -72,14 +72,14 @@ additionalContent:
             - text: Azure Cognitive Search
               url: ../search/search-get-started-portal.md
             - text: Azure Video Analyzer
-              url: 'https://aka.ms/video-analytics-qs'
+              url: ../azure-video-analyzer/video-analyzer-docs/detect-motion-emit-events-quickstart.md
             - text: Azure Bot Service
-              url: 'https://docs.microsoft.com/composer/quickstart-create-bot'
+              url: /composer/quickstart-create-bot
             - text: 無料で開始する
               url: 'https://azure.microsoft.com/free/ai'
         - title: その他の Azure AI サービスを探索する
           links:
             - text: Azure Cognitive Services
-              url: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
+              url: ../cognitive-services/index.yml
             - text: Azure Machine Learning
-              url: 'https://docs.microsoft.com/en-us/azure/machine-learning/'
+              url: ../machine-learning/index.yml

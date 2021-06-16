@@ -6,12 +6,12 @@ ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: 8d0abcef8ac5f139ce120443475a67217455b0a8
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 5c9396cdfe8296b4869f6713ff0022bc896dc733
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657440"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957235"
 ---
 # <a name="tutorial-how-to-access-sql-managed-instance-from-data-factory-managed-vnet-using-private-endpoint"></a>チュートリアル: プライベート エンドポイントを使用して、Data Factory マネージド VNET から SQL Managed Instance にアクセスする方法
 
@@ -22,9 +22,9 @@ ms.locfileid: "109657440"
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* **Virtual Network**。 仮想ネットワークがない場合は、[仮想ネットワークの作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)に関する記事に従って作成します。
-* **オンプレミス ネットワークへの仮想ネットワーク**。 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager?toc=/azure/virtual-network/toc.json) と [VPN](https://docs.microsoft.com/azure/vpn-gateway/tutorial-site-to-site-portal?toc=/azure/virtual-network/toc.json) のいずれかを使用して、仮想ネットワークとオンプレミス ネットワークの間の接続を作成します。
-* **マネージド VNET が有効なデータ ファクトリ**。 データ ファクトリがない、またはマネージド VNET が有効でない場合は、[データ ファクトリとマネージド VNET の作成](https://docs.microsoft.com/azure/data-factory/tutorial-copy-data-portal-private)に関する記事に従って作成します。
+* **Virtual Network**。 仮想ネットワークがない場合は、[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事に従って作成します。
+* **オンプレミス ネットワークへの仮想ネットワーク**。 [ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [VPN](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) のいずれかを使用して、仮想ネットワークとオンプレミス ネットワークの間の接続を作成します。
+* **マネージド VNET が有効なデータ ファクトリ**。 データ ファクトリがない、またはマネージド VNET が有効でない場合は、[データ ファクトリとマネージド VNET の作成](./tutorial-copy-data-portal-private.md)に関する記事に従って作成します。
 
 ## <a name="create-subnets-for-resources"></a>リソース用のサブネットの作成
 

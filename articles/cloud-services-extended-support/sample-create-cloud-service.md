@@ -7,13 +7,13 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
-ms.custom: ''
-ms.openlocfilehash: 7f2710eccd7ac71213472a00633b9b855b38e9b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 624e428a5561280d6f223eff50e906192f7195b9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99430295"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705211"
 ---
 # <a name="create-a-new-azure-cloud-service-extended-support"></a>新しい Azure クラウド サービス (延長サポート) を作成する
 ここに挙げたサンプルでは、新しく Azure クラウド サービス (延長サポート) のデプロイを作成する際のさまざまな方法を紹介します。

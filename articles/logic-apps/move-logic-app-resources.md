@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f86a30a82bce15e8d2c5b6b33166793798deb2d5
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87826213"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411523"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>ロジック アプリのリソースを別の Azure リソース グループ、リージョン、またはサブスクリプションに移動する
 
@@ -57,7 +57,7 @@ ms.locfileid: "87826213"
 
 ロジック アプリや統合アカウント、または[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) などのリソースを別の Azure リソース グループに移動するには、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 これらの手順では、リソースのリージョンが同じままの場合に使用できる Azure portal について説明します。 その他の手順や一般的な準備については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
-グループ間でリソースを実際に移動する前に、リソースを別のグループに正常に移動できるかどうかをテストできます。 詳細については、「[移動の検証](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)」を参照してください。
+グループ間でリソースを実際に移動する前に、リソースを別のグループに正常に移動できるかどうかをテストできます。 詳細については、「[移動の検証](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-rest-api)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com)で、移動するロジック アプリのリソースを探して選択します。
 

@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: bc3db3de91c9fbf059c56fb1f2770381265d82de
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46d1a0029607767ac3d7c0abbfe3a318b04aebda
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090643"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790802"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するエンタープライズ アプリケーションのアクセス許可
 
@@ -119,54 +119,55 @@ SAML ベースのシングル サインオン アプリケーションに使用�
 
 ## <a name="full-list-of-permissions"></a>アクセス許可の全一覧
 
-権限 | 説明
----------- | -----------
-microsoft.directory/applicationPolicies/allProperties/read | アプリケーション ポリシーのすべてのプロパティを読み取ります。
-microsoft.directory/applicationPolicies/allProperties/update | アプリケーション ポリシーのすべてのプロパティを更新します。
-microsoft.directory/applicationPolicies/basic/update | アプリケーション ポリシーの標準プロパティを更新します。
-microsoft.directory/applicationPolicies/create | アプリケーション ポリシーを作成します。
-microsoft.directory/applicationPolicies/createAsOwner | アプリケーション ポリシーを作成します。 作成者は最初の所有者として追加されます。
-microsoft.directory/applicationPolicies/delete | アプリケーション ポリシーを削除します。
-microsoft.directory/applicationPolicies/owners/read | アプリケーション ポリシーの所有者を読み取ります。
-microsoft.directory/applicationPolicies/owners/update | アプリケーション ポリシーの所有者プロパティを更新します。
-microsoft.directory/applicationPolicies/policyAppliedTo/read | オブジェクト リストに適用されているアプリケーション ポリシーを読み取ります。
-microsoft.directory/applicationPolicies/standard/read | アプリケーション ポリシーの標準プロパティを読み取ります。
-microsoft.directory/servicePrincipals/allProperties/allTasks | Azure Active Directory での servicePrincipals の作成と削除、およびすべてのプロパティの読み取りと更新。
-microsoft.directory/servicePrincipals/allProperties/read | servicePrincipals のすべてのプロパティを読み取ります。
-microsoft.directory/servicePrincipals/allProperties/update | servicePrincipals のすべてのプロパティを更新します。
-microsoft.directory/servicePrincipals/appRoleAssignedTo/read | サービス プリンシパルのロールの割り当てを読み取ります。
-microsoft.directory/servicePrincipals/appRoleAssignedTo/update | サービス プリンシパルのロールの割り当てを更新します。
-microsoft.directory/servicePrincipals/appRoleAssignments/read | サービス プリンシパルに割り当てられたロールの割り当てを読み取ります。
-microsoft.directory/servicePrincipals/audience/update | サービス プリンシパルの対象ユーザー プロパティを更新します。
-microsoft.directory/servicePrincipals/authentication/update | サービス プリンシパルの認証プロパティを更新します。
-microsoft.directory/servicePrincipals/basic/update | サービス プリンシパルで基本プロパティを更新します。
-microsoft.directory/servicePrincipals/create | サービス プリンシパルを作成します。
-microsoft.directory/servicePrincipals/createAsOwner | サービス プリンシパルを作成します。 作成者は最初の所有者として追加されます。
-microsoft.directory/servicePrincipals/credentials/update | サービス プリンシパルの資格情報プロパティを更新します。
-microsoft.directory/servicePrincipals/delete | サービス プリンシパルを削除します。
-microsoft.directory/servicePrincipals/disable | サービス プリンシパルを無効にします。
-microsoft.directory/servicePrincipals/enable | サービス プリンシパルを有効にします。
-microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials | サービス プリンシパルのパスワード シングル サインオン資格情報を読み取ります。
-microsoft.directory/servicePrincipals/managePasswordSingleSignOnCredentials | サービス プリンシパルのパスワード シングル サインオン資格情報を管理します。
-microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | サービス プリンシパルの委任されたアクセス許可付与を読み取ります。
-microsoft.directory/servicePrincipals/owners/read | サービス プリンシパルの所有者を読み取ります。
-microsoft.directory/servicePrincipals/owners/update | サービス プリンシパルの所有者を更新します。
-microsoft.directory/servicePrincipals/permissions/update |  
-microsoft.directory/servicePrincipals/policies/read | サービス プリンシパルのポリシーを読み取ります。
-microsoft.directory/servicePrincipals/policies/update | サービス プリンシパルのポリシーを更新します。
-microsoft.directory/servicePrincipals/standard/read | サービス プリンシパルの標準プロパティを読み取ります。
-microsoft.directory/servicePrincipals/synchronization/standard/read | サービス プリンシパルに関連付けられているプロビジョニング設定を読み取ります。
-microsoft.directory/servicePrincipals/tag/update | サービス プリンシパルのタグ プロパティを更新します。
-microsoft.directory/applicationTemplates/instantiate | アプリケーション テンプレートからギャラリー アプリケーションのインスタンス化。
-microsoft.directory/auditLogs/allProperties/read | 監査ログを読み取ります。
-microsoft.directory/signInReports/allProperties/read | サインイン レポートを読み取ります。
-microsoft.directory/applications/synchronization/standard/read | アプリケーション オブジェクトに関連付けられているプロビジョニング設定を読み取ります。
-microsoft.directory/servicePrincipals/synchronizationJobs/manage | サービス プリンシパル リソースのジョブ同期の側面をすべて管理します。
-microsoft.directory/servicePrincipals/synchronization/standard/read | サービス プリンシパルに関連付けられているプロビジョニング設定を読み取ります。
-microsoft.directory/servicePrincipals/synchronizationSchema/manage | サービス プリンシパル リソースのスキーマ同期の側面をすべて管理します。
-microsoft.directory/provisioningLogs/allProperties/read | プロビジョニング ログのすべてのプロパティを読み取ります。
+> [!div class="mx-tableFixed"]
+> | 権限 | 説明 |
+> | ---------- | ----------- |
+> | microsoft.directory/applicationPolicies/allProperties/read | アプリケーション ポリシーのすべてのプロパティを読み取ります。 |
+> | microsoft.directory/applicationPolicies/allProperties/update | アプリケーション ポリシーのすべてのプロパティを更新します。 |
+> | microsoft.directory/applicationPolicies/basic/update | アプリケーション ポリシーの標準プロパティを更新します。 |
+> | microsoft.directory/applicationPolicies/create | アプリケーション ポリシーを作成します。 |
+> | microsoft.directory/applicationPolicies/createAsOwner | アプリケーション ポリシーを作成します。 作成者は最初の所有者として追加されます。 |
+> | microsoft.directory/applicationPolicies/delete | アプリケーション ポリシーを削除します。 |
+> | microsoft.directory/applicationPolicies/owners/read | アプリケーション ポリシーの所有者を読み取ります。 |
+> | microsoft.directory/applicationPolicies/owners/update | アプリケーション ポリシーの所有者プロパティを更新します。 |
+> | microsoft.directory/applicationPolicies/policyAppliedTo/read | オブジェクト リストに適用されているアプリケーション ポリシーを読み取ります。 |
+> | microsoft.directory/applicationPolicies/standard/read | アプリケーション ポリシーの標準プロパティを読み取ります。 |
+> | microsoft.directory/servicePrincipals/allProperties/allTasks | Azure Active Directory での servicePrincipals の作成と削除、およびすべてのプロパティの読み取りと更新。 |
+> | microsoft.directory/servicePrincipals/allProperties/read | servicePrincipals のすべてのプロパティを読み取ります。 |
+> | microsoft.directory/servicePrincipals/allProperties/update | servicePrincipals のすべてのプロパティを更新します。 |
+> | microsoft.directory/servicePrincipals/appRoleAssignedTo/read | サービス プリンシパルのロールの割り当てを読み取ります。 |
+> | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | サービス プリンシパルのロールの割り当てを更新します。 |
+> | microsoft.directory/servicePrincipals/appRoleAssignments/read | サービス プリンシパルに割り当てられたロールの割り当てを読み取ります。 |
+> | microsoft.directory/servicePrincipals/audience/update | サービス プリンシパルの対象ユーザー プロパティを更新します。 |
+> | microsoft.directory/servicePrincipals/authentication/update | サービス プリンシパルの認証プロパティを更新します。 |
+> | microsoft.directory/servicePrincipals/basic/update | サービス プリンシパルで基本プロパティを更新します。 |
+> | microsoft.directory/servicePrincipals/create | サービス プリンシパルを作成します。 |
+> | microsoft.directory/servicePrincipals/createAsOwner | サービス プリンシパルを作成します。 作成者は最初の所有者として追加されます。 |
+> | microsoft.directory/servicePrincipals/credentials/update | サービス プリンシパルの資格情報プロパティを更新します。 |
+> | microsoft.directory/servicePrincipals/delete | サービス プリンシパルを削除します。 |
+> | microsoft.directory/servicePrincipals/disable | サービス プリンシパルを無効にします。 |
+> | microsoft.directory/servicePrincipals/enable | サービス プリンシパルを有効にします。 |
+> | microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials | サービス プリンシパルのパスワード シングル サインオン資格情報を読み取ります。 |
+> | microsoft.directory/servicePrincipals/managePasswordSingleSignOnCredentials | サービス プリンシパルのパスワード シングル サインオン資格情報を管理します。 |
+> | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | サービス プリンシパルの委任されたアクセス許可付与を読み取ります。 |
+> | microsoft.directory/servicePrincipals/owners/read | サービス プリンシパルの所有者を読み取ります。 |
+> | microsoft.directory/servicePrincipals/owners/update | サービス プリンシパルの所有者を更新します。 |
+> | microsoft.directory/servicePrincipals/permissions/update |  |
+> | microsoft.directory/servicePrincipals/policies/read | サービス プリンシパルのポリシーを読み取ります。 |
+> | microsoft.directory/servicePrincipals/policies/update | サービス プリンシパルのポリシーを更新します。 |
+> | microsoft.directory/servicePrincipals/standard/read | サービス プリンシパルの標準プロパティを読み取ります。 |
+> | microsoft.directory/servicePrincipals/synchronization/standard/read | サービス プリンシパルに関連付けられているプロビジョニング設定を読み取ります。 |
+> | microsoft.directory/servicePrincipals/tag/update | サービス プリンシパルのタグ プロパティを更新します。 |
+> | microsoft.directory/applicationTemplates/instantiate | アプリケーション テンプレートからギャラリー アプリケーションのインスタンス化。 |
+> | microsoft.directory/auditLogs/allProperties/read | 監査ログを読み取ります。 |
+> | microsoft.directory/signInReports/allProperties/read | サインイン レポートを読み取ります。 |
+> | microsoft.directory/applications/synchronization/standard/read | アプリケーション オブジェクトに関連付けられているプロビジョニング設定を読み取ります。 |
+> | microsoft.directory/servicePrincipals/synchronizationJobs/manage | サービス プリンシパル リソースのジョブ同期の側面をすべて管理します。 |
+> | microsoft.directory/servicePrincipals/synchronization/standard/read | サービス プリンシパルに関連付けられているプロビジョニング設定を読み取ります。 |
+> | microsoft.directory/servicePrincipals/synchronizationSchema/manage | サービス プリンシパル リソースのスキーマ同期の側面をすべて管理します。 |
+> | microsoft.directory/provisioningLogs/allProperties/read | プロビジョニング ログのすべてのプロパティを読み取ります。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal、Azure AD PowerShell、および Graph API を使用してカスタム ロールを作成する](custom-create.md)
 - [ロールの割り当てを一覧表示する](view-assignments.md)

@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: b9f7cce39e4f51aea7fc4db5ca37ee054f42c5cb
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d6e75efac274a456c3759edae2d5c62ae26467c8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078657"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675177"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 

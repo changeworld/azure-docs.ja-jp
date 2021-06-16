@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 675e99797a507cdcf96ad33ab13c4f386f6f372c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2dfd3df6cdfa7ce42194821dcf4891d82f6042db
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169030"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668918"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure PowerShell
 

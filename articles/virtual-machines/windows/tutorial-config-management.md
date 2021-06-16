@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 13ba043582efe4a9e8d52f96f279b02ad8dab963
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2b624f43a892c3b3fc07a7128a18dc9cc66736f8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141363"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668113"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Windows 仮想マシンを更新する
 

@@ -5,14 +5,14 @@ ms.service: data-factory
 author: nabhishek
 ms.author: abnarain
 ms.topic: tutorial
-ms.custom: seo-dt-2019
+ms.custom: seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 85f51fd52ce3224b37c27cea6c49a8a386fbea2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48d3ae3089a59e9d89ea57b5720981483344dae0
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377773"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672557"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 

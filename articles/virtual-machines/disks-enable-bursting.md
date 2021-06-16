@@ -7,13 +7,13 @@ ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7be60cb8c9863878cc4ba2f57098556ccedde01d
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 66134ce93de8e82e3e2e07b82ecfc7a613ce5d5b
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107892060"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673552"
 ---
 # <a name="enable-on-demand-bursting"></a>オンデマンドのバーストを有効にする
 

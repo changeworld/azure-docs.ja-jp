@@ -4,14 +4,14 @@ description: Azure Marketplace の Datadog の使用について説明します�
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 02/19/2021
+ms.date: 05/28/2021
 ms.author: tomfitz
-ms.openlocfilehash: 2e5c55c4f9b30bb30be9bee84ea00971c70fdc84
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 71f8ff575673e1a722b94d5d62f8de1fe8263622
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743953"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652377"
 ---
 # <a name="what-is-datadog"></a>Datadog とは
 

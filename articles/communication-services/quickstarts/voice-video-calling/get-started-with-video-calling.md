@@ -4,33 +4,33 @@ titleSuffix: An Azure Communication Services quickstart
 description: このクイックスタートでは、Azure Communication Services を使用してアプリにビデオ通話機能を追加する方法について説明します。
 author: xumo-95
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/01/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: ae763743bd4e3012e2f79df1dab0cad231939224
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 49ab4c48f6604855e08a76dfc414fbec95da27e9
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110093565"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560706"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app"></a>クイックスタート: アプリに 1 対 1 のビデオ通話を追加する
 
 ::: zone pivot="platform-web"
-[!INCLUDE [Video calling with JavaScript](./includes/video-calling-javascript.md)]
+[!INCLUDE [Video calling with JavaScript](./includes/video-calling/video-calling-javascript.md)]
 ::: zone-end
 
 ::: zone pivot="platform-android"
-[!INCLUDE [Video calling with Android](./includes/video-calling-android.md)]
+[!INCLUDE [Video calling with Android](./includes/video-calling/video-calling-android.md)]
 ::: zone-end
 
 ::: zone pivot="platform-ios"
-[!INCLUDE [Video calling with iOS](./includes/video-calling-ios.md)]
+[!INCLUDE [Video calling with iOS](./includes/video-calling/video-calling-ios.md)]
 ::: zone-end
 
 ::: zone pivot="platform-windows"
-[!INCLUDE [Video calling with Windows](./includes/video-calling-windows.md)]
+[!INCLUDE [Video calling with Windows](./includes/video-calling/video-calling-windows.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

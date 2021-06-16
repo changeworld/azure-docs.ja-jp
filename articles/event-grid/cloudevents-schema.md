@@ -3,13 +3,13 @@ title: CloudEvents スキーマ内のイベントで Azure Event Grid を使用�
 description: CloudEvents スキーマを Azure Event Grid 内のイベント用に使用する方法について説明します。 サービスでは、CloudEvents の JSON 実装でのイベントがサポートされています。
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 0ee816663a385601d4a31edbf87f8c787ea5aa91
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c4358239a87a55d677b5ae7cfe5882caa95827f3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389504"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700694"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid に CloudEvents v1.0 スキーマを使用する
 Azure Event Grid は、[既定のイベント スキーマ](event-schema.md)に加え、[CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) および [HTTP プロトコル バインディング](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)の JSON 実装のイベントをネイティブでサポートします。 [CloudEvents](https://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/v1.0/spec.md)です。

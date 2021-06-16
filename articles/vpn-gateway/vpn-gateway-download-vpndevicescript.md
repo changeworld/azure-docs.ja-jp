@@ -8,12 +8,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 2caa392ced15f96287c3218f1413c9aa9c16fe20
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c216002110716799b8588b63a97630b687f8594c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226338"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671910"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 

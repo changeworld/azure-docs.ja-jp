@@ -3,20 +3,20 @@ title: PowerShell:Azure SQL Managed Instance の geo バックアップを復元
 description: geo 冗長バックアップから Azure SQL Managed Instance データベースを復元する Azure PowerShell サンプル スクリプト。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: backup-restore
+ms.custom: devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: Misliplavo
+ms.author: mlazic
+ms.reviewer: mathoma
 ms.date: 07/03/2019
-ms.openlocfilehash: f04e4b5a44dccdc3aaeabe6b4144836b0be7354c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 021569203c93972efb71378d98ca19f6fdf1bc63
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790782"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692849"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>PowerShell を使用して Azure SQL Managed Instance データベースを別の geo リージョンに復元する
 
@@ -73,7 +73,7 @@ Remove-AzResourceGroup -ResourceGroupName $TargetResourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/New-AzResourceGroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | SQL Managed Instance データベースの geo 冗長バックアップを作成します。 |

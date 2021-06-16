@@ -7,12 +7,13 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e6403b1bab2bcdd6a001c5f55b34519b9447194d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93040257"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668629"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォールの要求サイズの制限と除外リスト
 

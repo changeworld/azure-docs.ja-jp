@@ -7,12 +7,13 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: 9b60075eb861fe598a05ba014a7def96bc815d06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d6ad68ef3d490d4fb95e8ce1fc658e80d7eb507a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97653012"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668459"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する
 

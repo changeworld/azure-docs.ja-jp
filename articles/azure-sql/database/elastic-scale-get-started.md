@@ -7,16 +7,16 @@ ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: anumjs
-ms.author: anjangsh
-ms.reviewer: sstein
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 316f1c6558cf033ac315f413f4e081b4f920343b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919546"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705536"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

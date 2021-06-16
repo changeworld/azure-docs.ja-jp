@@ -7,13 +7,13 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
-ms.custom: ''
-ms.openlocfilehash: fcb92ec3aa8f360107f0e7220415c57344c6d83a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1be03892e9516e5f73b447e8dba921db802903f2
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98881471"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696153"
 ---
 # <a name="update-an-azure-cloud-service-extended-support"></a>Azure Cloud Services (延長サポート) を更新する
 

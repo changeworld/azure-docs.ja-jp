@@ -6,14 +6,14 @@ ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 7431dcbdcd94b74482786625a052bc5abc31c164
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2d48386e0d9b4d82de5deb62da95677172c74155
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783168"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670999"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]

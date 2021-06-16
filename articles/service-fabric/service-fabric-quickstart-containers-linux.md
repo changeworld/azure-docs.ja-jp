@@ -4,12 +4,12 @@ description: このクイック スタートでは、アプリケーションの
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c81d1caf4a52bc09276949e139d7e5c43916f925
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98788164"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410767"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
 
@@ -70,7 +70,7 @@ az account set --subscription <mySubscriptionID>
 az group create --name $ResourceGroupName --location $Location 
 
 # Create secure five node Linux cluster. Creates a key vault in a resource group
-# and creates a certficate in the key vault. The certificate's subject name must match 
+# and creates a certificate in the key vault. The certificate's subject name must match 
 # the domain that you use to access the Service Fabric cluster.  The certificate is downloaded locally.
 az sf cluster create --resource-group $ResourceGroupName --location $Location --certificate-output-folder . --certificate-password $Password --certificate-subject-name $Subject --cluster-name $ClusterName --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName --vault-resource-group $ResourceGroupName --vm-password $VmPassword --vm-user-name $VmUserName
 ```

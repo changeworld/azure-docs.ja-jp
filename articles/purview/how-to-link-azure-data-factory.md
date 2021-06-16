@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/24/2021
-ms.openlocfilehash: 9d728160413d470383f3eee78fc430aed0125ed7
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 05/31/2021
+ms.openlocfilehash: 0f92a5313622ffafe5ea5cbe2fdedc77d685b0ab
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905236"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792223"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -158,9 +158,13 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 | データ ストア | サポートされています |
 | ------------------- | ------------------- | 
 | Azure Blob Storage | はい |
+| Azure Cosmos DB (SQL API) \* | はい | 
 | Azure Data Lake Storage Gen1 | はい |
 | Azure Data Lake Storage Gen2 | はい |
+| Azure Database for MySQL \* | はい | 
+| Azure Database for PostgreSQL \* | はい |
 | Azure SQL Database \* | はい |
+| Azure SQL Managed Instance \* | はい | 
 | Azure Synapse Analytics \* | はい |
 
 *\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*

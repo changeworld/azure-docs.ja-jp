@@ -11,16 +11,16 @@ author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 1572b0a9822f340887c512c5cc20448fe0729109
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e6d89bdfca268a02c1f58bdceb4e4485dc3851a6
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461726"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438380"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
-Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) を使用すると、ユーザーは Web ブラウザーを使用して自分のパスワードを更新したり、自分のアカウントのロックを解除したりできます。 Azure AD がオンプレミスの Active Directory Domain Services (AD DS) 環境に接続されているハイブリッド環境では、このシナリオにより、パスワードが 2 つのディレクトリ間で異なる場合があります。
+Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) を使用すると、ユーザーは Web ブラウザーを使用して自分のパスワードを更新したり、自分のアカウントのロックを解除したりできます。 「[Azure AD の SSPR を有効にして構成する方法](https://www.youtube.com/watch?v=rA8TvhNcCvQ)」の動画をぜひご覧ください。 Azure AD がオンプレミスの Active Directory Domain Services (AD DS) 環境に接続されているハイブリッド環境では、このシナリオにより、パスワードが 2 つのディレクトリ間で異なる場合があります。
 
 パスワード ライトバックを使用すると、Azure AD でのパスワード変更をオンプレミスの AD DS 環境に同期することができます。 Azure AD Connect には、これらのパスワード変更を Azure AD から既存のオンプレミス ディレクトリに送信するための安全なメカニズムが用意されています。
 

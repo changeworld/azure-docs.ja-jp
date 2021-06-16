@@ -6,18 +6,18 @@ metadata:
   description: Microsoft SQL Server の安定した最新バージョンに基づく、Azure 内のマネージド インスタンスである Azure SQL Managed Instance に関するドキュメントをご覧ください。
   services: sql-database
   ms.service: sql-managed-instance
-  ms.subservice: operations
+  ms.subservice: service-overview
   ms.topic: landing-page
-  author: stevestein
-  ms.author: sstein
+  author: MashaMSFT
+  ms.author: mathoma
   ms.reviewer: 
   ms.date: 05/27/2020
-  ms.openlocfilehash: 28155337abbb777dad871253c0aa6ae8513178bb
-  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+  ms.openlocfilehash: 96a72f5600e3866eece693b6617e20ec977c9a30
+  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104589040"
+  ms.lasthandoff: 05/29/2021
+  ms.locfileid: "110697196"
 landingContent:
 - title: Azure SQL Managed Instance
   linkLists:

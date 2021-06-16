@@ -16,7 +16,7 @@
 - name: Text Translation
   expanded: true
   items:
-    - name: クイック スタート
+    - name: クイックスタート
       href: quickstart-translator.md
     - name: サンプル
       items:
@@ -52,6 +52,14 @@
           href: dynamic-dictionary.md
         - name: ファイアウォールの内側で翻訳する
           href: firewalls.md
+        - name: 翻訳コンテナーを使用する
+          items:
+            - name: コンテナーのインストールと実行
+              href: containers/translator-how-to-install-container.md
+            - name: コンテナーを構成する
+              href: containers/translator-container-configuration.md
+            - name: 'コンテナー: 翻訳する'
+              href: containers/translator-container-supported-parameters.md
     - name: チュートリアル
       items:
         - name: Translator の WPF アプリの作成 (C#)
@@ -82,7 +90,7 @@
   items:
     - name: ドキュメント変換とは
       href: document-translation/overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       href: document-translation/get-started-with-document-translation.md
     - name: 操作方法ガイド
       items:
@@ -128,14 +136,12 @@
           href: custom-translator/how-to-view-document-details.md
         - name: モデルをトレーニングする
           href: custom-translator/how-to-train-model.md
-        - name: モデルの詳細の表示
+        - name: ビューモデルの詳細
           href: custom-translator/how-to-view-model-details.md
         - name: システムのテスト結果の表示
           href: custom-translator/how-to-view-system-test-results.md
         - name: 設定の管理
           href: custom-translator/how-to-manage-settings.md
-        - name: Hub からの移行
-          href: custom-translator/how-to-migrate.md
         - name: サポートされていない言語の展開
           href: custom-translator/unsupported-language-deployments.md
     - name: 概念

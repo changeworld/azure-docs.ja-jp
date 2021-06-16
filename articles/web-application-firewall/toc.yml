@@ -64,11 +64,13 @@
         - name: ボット保護の概要
           href: ./ag/bot-protection-overview.md
         - name: よく寄せられる質問
-          href: ./ag/application-gateway-waf-faq.md
+          href: ./ag/application-gateway-waf-faq.yml
     - name: フロントドア
       items:
         - name: チューニング
           href: ./afds/waf-front-door-tuning.md
+        - name: マネージド ルール
+          href: ./afds/waf-front-door-drs.md
         - name: カスタム規則
           href: ./afds/waf-front-door-custom-rules.md
         - name: 除外リスト
@@ -78,7 +80,7 @@
         - name: geo フィルタリング
           href: ./afds/waf-front-door-geo-filtering.md
         - name: よく寄せられる質問
-          href: ./afds/waf-faq.md
+          href: ./afds/waf-faq.yml
     - name: Security
       items:
         - name: セキュリティ ベースライン
@@ -184,7 +186,7 @@
 - name: リソース
   items:
     - name: テンプレートの作成
-      href: ../azure-resource-manager/templates/template-syntax.md
+      href: ../azure-resource-manager/templates/syntax.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: コミュニティ テンプレート

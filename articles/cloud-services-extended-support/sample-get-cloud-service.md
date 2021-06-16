@@ -7,13 +7,13 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
-ms.custom: ''
-ms.openlocfilehash: fc16c9e0d47cfe015f7ec5ceb766053635840abb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5f9c1ddf282234507369a6ed928d3314cbb6cf4
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99475338"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705199"
 ---
 # <a name="retrieve-information-about-your-azure-cloud-service-extended-support-deployments"></a>Azure クラウド サービス (延長サポート) のデプロイに関する情報を取得する
 

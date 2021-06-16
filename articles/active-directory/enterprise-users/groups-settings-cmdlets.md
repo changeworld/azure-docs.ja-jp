@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ad70aff7e1673681541a1b6b37a0bd50d822fed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc0acadadc728f714e84418a438c451aea255ccc
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97954407"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408031"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -157,7 +157,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 |  <ul><li>DefaultClassification<li>型: String<li>既定値: "" | 何も指定されていない場合にグループの既定の分類として使用される分類。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
 |  <ul><li>PrefixSuffixNamingRequirement<li>型: String<li>既定値: "" | Microsoft 365 グループ用に構成された名前付け規則を定義する、最大文字数 64 文字の文字列。 詳細については、[Microsoft 365 グループの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
 | <ul><li>CustomBlockedWordsList<li>型: String<li>既定値: "" | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Microsoft 365 グループの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
-| <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 使用しない
+| <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 非推奨。 使用しないでください。
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Microsoft 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: String<li>既定値: "" | ゲストの使用ガイドラインへのリンクの URL。 |

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: de99d6b5480a8e8262aba9d40826f69862630961
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 7248ae47d1ced0013559f14f5e5185f25b7d8083
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592987"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077859"
 ---
 # <a name="features"></a>特徴
 
@@ -97,19 +97,6 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 * **サブスクリプションの制限** -既定では、各サブスクリプションは最大10個の FHIR サーバーインスタンスに制限されています。 サブスクリプションあたりのインスタンス数を増やす必要がある場合は、サポートチケットを開いて、ニーズに関する詳細情報を提供してください。
 
 * **同時接続とインスタンス** -既定では、クラスター内の2つのインスタンスに対して同時接続が15個あります (合計で30個の同時要求)。 同時要求の数を増やす必要がある場合は、サポートチケットを開いて、ニーズに関する詳細情報を提供します。
-
-## <a name="performance-expectations"></a>パフォーマンスの期待値
-
-システムのパフォーマンスは、Ru の数、同時接続の数、実行している操作の種類 (Put、Post など) によって異なります。 構成された RU に基づく期待値の一般的範囲は以下のようになります。 一般的に、RU を増やせば、パフォーマンスが直線的に上がります。
-
-| RU の数 | リソース/sec |    最大ストレージ (GB)*    |
-|----------|---------------|--------|                 
-| 400      | 5-10          |     10   |
-| 1,000    | 100-150       |      25  |
-| 10,000   | 225-400       |      250  |
-| 100,000  | 2,500-4,000   |      2,500  |
-
-注: Cosmos DB の要件には、ストレージの GB あたり 40 RU/秒の最小スループットが必要です。 
 
 ## <a name="next-steps"></a>次のステップ
 

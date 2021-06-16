@@ -3,12 +3,13 @@ title: Linux クラスターでのディスク暗号化の有効化
 description: この記事では、Azure Resource Manager と Azure Key Vault を使用して、Linux で Azure Service Fabric クラスター ノードのディスク暗号化を有効にする方法について説明します。
 ms.topic: article
 ms.date: 03/22/2019
-ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 826ca54718625fb236f64587b63080cf16aafae4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78252825"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663569"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Linux での Azure Service Fabric クラスター ノードのディスク暗号化の有効化 
 > [!div class="op_single_selector"]

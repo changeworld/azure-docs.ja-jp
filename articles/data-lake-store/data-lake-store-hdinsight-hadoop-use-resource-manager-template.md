@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a5e83da902fd200ae0d915d4a0e58c3e26ff6da5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d2a8868dffa232aef58f9e57398987f1db755b3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089112"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704122"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]

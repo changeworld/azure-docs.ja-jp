@@ -3,12 +3,13 @@ title: 委任へのアクセスを削除する
 description: Azure Lighthouse のためにサービス プロバイダーに委任されたリソースへのアクセスを削除する方法について説明します。
 ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: a127eb47e48796225df6118159485e2c327eb704
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e9456d7b910c71305f321d0a4874aab0f4f368cd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785948"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700137"
 ---
 # <a name="remove-access-to-a-delegation"></a>委任へのアクセスを削除する
 

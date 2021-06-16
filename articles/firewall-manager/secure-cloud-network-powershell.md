@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: 5ef39118d16d47aeb46294658adf616515547ea6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9161eee3fe892092d06080a3a5ce1e11c4fa1764
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729526"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701914"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想ハブをセキュリティで保護する
 

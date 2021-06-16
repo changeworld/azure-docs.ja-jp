@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: troubleshooting
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, sstein
+author: AlainDormehlMSFT
+ms.author: aldorme
+ms.reviewer: mathoma, wiassaf
 ms.date: 1/14/2021
-ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18cc914db7634637ec2ea541afbcefc105e5d38c
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589321"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590344"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を Intelligent Insights でトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

@@ -1,21 +1,21 @@
 ---
 title: Azure Time Series Insights データの監視のリファレンス | Microsoft Docs
 description: Azure Time Series Insights の監視に関するリファレンス ドキュメント。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
-ms.custom: lyrana
-ms.openlocfilehash: 20d376ee501edf16711617847c685dfd531f2c80
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 52f2ea8b88bb7f83a3a897d101030d134749fc1a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504585"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792051"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Azure Time Series Insights データの監視のリファレンス
 
@@ -25,7 +25,6 @@ ms.locfileid: "106504585"
 
 このセクションには、Azure Time Series Insights 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 すべての Azure Monitor サポート メトリック (Azure Time Series Insights を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/essentials/metrics-supported.md)に関する記事を参照してください。
 これらのメトリックのリソース プロバイダーは、[Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) および [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments) です。
-
 
 ### <a name="ingress"></a>イングレス
 
@@ -55,6 +54,7 @@ ms.locfileid: "106504585"
 | イングレス | TSIIngress | イングレス カテゴリでは、イングレス パイプラインで発生したエラーが追跡されます。 このカテゴリには、イベントの受信時に発生するエラー (イベント ソースへの接続エラーなど) とイベントの処理時に発生するエラー (イベント ペイロード解析時のエラーなど) が含まれます。 |
 
 ## <a name="schemas"></a>スキーマ
+
 次のスキーマは、Azure Time Series Insights によって使用されています
 
 ### <a name="tsiingress-table"></a>TSIIngress テーブル

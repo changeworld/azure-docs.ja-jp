@@ -60,10 +60,6 @@
       href: concepts/anomaly-detection-best-practices.md
     - name: 予測メンテナンスのアーキテクチャ (多変量)
       href: concepts/multivariate-architecture.md
-    - name: Spectral Residual (SR) と畳み込みニューラル ネットワーク (CNN) の異常検出
-      href: 'https://arxiv.org/abs/1906.03821'
-    - name: グラフ アテンション ネットワークによる多変量時系列の異常検出
-      href: 'https://arxiv.org/abs/2009.02040'
 - name: チュートリアル
   items:
     - name: Power BI を使用して異常をバッチとして視覚化する
@@ -110,3 +106,7 @@
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
         - name: SR-CNN アルゴリズムの概要
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
+        - name: Spectral Residual (SR) と畳み込みニューラル ネットワーク (CNN) の異常検出
+          href: 'https://arxiv.org/abs/1906.03821'
+        - name: グラフ アテンション ネットワークによる多変量時系列の異常検出
+          href: 'https://arxiv.org/abs/2009.02040'
