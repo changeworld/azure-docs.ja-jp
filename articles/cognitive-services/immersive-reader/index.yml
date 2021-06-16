@@ -5,19 +5,19 @@ metadata:
   title: Azure イマーシブ リーダーのドキュメント
   description: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
   services: service
-  ms.service: cognitive-services
+  ms.service: applied-ai-services
   ms.subservice: immersive-reader
   ms.topic: landing-page
   ms.collection: collection
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: dff95a1989d8ff55658227cf135d3e2fc687ec0f
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 470efd48de825de8c6265270416736247d41c1c5
+  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110377730"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111887962"
 landingContent:
 - title: Immersive Reader の概要
   linkLists:

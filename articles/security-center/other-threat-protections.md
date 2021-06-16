@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 04/29/2021
 ms.author: memildin
-ms.openlocfilehash: cd9c2d5547c3b5e9468432539c2b07d18f6fd3ab
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8549734a643c97771681f2e90a1dad2e2c7ed7a3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459912"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749149"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Security Center での追加の脅威の防止
 組み込みの [Azure Defender の保護](azure-defender.md)に加えて、Azure Security Center によって次の脅威の防止機能も提供されています。
@@ -35,7 +35,7 @@ Azure ネットワーク レイヤー アラートの一覧については、[�
 >
 > 1. Security Center のメニューから、 **[価格と設定]** を選択します。
 > 1. 変更するサブスクリプションを選択します。
-> 1. **[脅威検出]** を選択します。
+> 1. **[Integrations]\(統合\)** を選択します。
 > 1. **[私のデータに Microsoft Cloud App Security がアクセスすることを許可します]** チェック ボックスをオフにして、 **[保存]** を選択します。
 
 

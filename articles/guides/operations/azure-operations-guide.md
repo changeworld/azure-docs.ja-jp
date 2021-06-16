@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f362bc76a3361b511b08a3822c01730c200d37b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093049"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957035"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -280,7 +280,7 @@ Resource Manager テンプレートを構成する 4 つのセクション:
 
 - **テンプレートのリンク作成**: 1 つの Resource Manager テンプレートから別のテンプレートへのリンクを作成できます。 目的に基づいてターゲットが設定された一連のテンプレートにデプロイを分解できます。
 
-Resource Manager テンプレートはあらゆるテキスト エディターで作成できます。 Azure SDK for Visual Studio に便利なツールが付属しているので推奨しています。 Visual Studio を利用すれば、ウィザードでリソースをテンプレートに追加し、Visual Studio 内から直接、テンプレートをデプロイし、デバッグできます。 詳細については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」をご覧ください。
+Resource Manager テンプレートはあらゆるテキスト エディターで作成できます。 Azure SDK for Visual Studio に便利なツールが付属しているので推奨しています。 Visual Studio を利用すれば、ウィザードでリソースをテンプレートに追加し、Visual Studio 内から直接、テンプレートをデプロイし、デバッグできます。 詳細については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/syntax.md)」をご覧ください。
 
 最後になりますが、Azure Portal で、既存のリソース グループを再利用可能なテンプレートに変換できます。 既存のリソース グループのデプロイ可能テンプレートを作成したり、基礎 JSON を調べたりする場合に便利です。 リソース グループをエクスポートするには、リソース グループの設定にある **[Automation スクリプト]** ボタンを選択します。
 

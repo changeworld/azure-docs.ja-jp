@@ -3,12 +3,12 @@ title: Azure VMware Solution vSAN 上に Windows Server フェールオーバー
 description: ネイティブ共有ディスクを使用して Azure VMware Solution vSAN 上に Windows Server フェールオーバー クラスターを設定する方法を説明します。
 ms.topic: how-to
 ms.date: 05/04/2021
-ms.openlocfilehash: d74ae5d699f965c4899c6e21c78cd2dec720de4e
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: f2fc9e712d3f56aeddc6e66c12837794dceb9abe
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632315"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954494"
 ---
 # <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>Azure VMware Solution vSAN 上に Windows Server フェールオーバー クラスターを構成する
 
@@ -165,5 +165,5 @@ Azure VMware Solution での WSFC の設定について理解したので、次�
 
 - WSFC 機能を必要とするアプリケーションを追加して新しい WSFC を設定する (例: SQL Server と SAP ASCS)。
 - バックアップ ソリューションを設定する。
-  - [Azure VMware Solution 向けの Azure Backup Server の設定](/azure/backup/backup-azure-microsoft-azure-backup?context=/azure/azure-vmware/context/context)
-  - [Azure VMware Solution 仮想マシンのバックアップ ソリューション](/azure/backup/backup-azure-backup-server-vmware?context=/azure/azure-vmware/context/context)
+  - [Azure VMware Solution 向けの Azure Backup Server の設定](../backup/backup-azure-microsoft-azure-backup.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)
+  - [Azure VMware Solution 仮想マシンのバックアップ ソリューション](../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)

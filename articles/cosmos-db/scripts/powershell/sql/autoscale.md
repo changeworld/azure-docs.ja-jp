@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 42407f3ebb0b7f3a726c0031a0af5effc338c880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5d49c3ead3c273a6c3ce1f67c392cef162ad1bd5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98677996"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679998"
 ---
 # <a name="create-a-database-and-container-with-autoscale-for-azure-cosmos-db---sql-api"></a>Azure Cosmos DB 用にデータベースと自動スケーリングするコンテナーを作成する - SQL API
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 4847fd88a96e96788f8e6ebdb4ee3cfa7f15fbdc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8e6c3e27f38342028efd102efa32f3df90b2f88a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135457"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950085"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>ステートレス専用ノード タイプを使用した Azure Service Fabric クラスターのデプロイ
 Service Fabric ノード タイプには、ある時点でステートフル サービスがノードに配置されるという固有の前提があります。 ステートレス ノード タイプを使用することで、ノード タイプに対するこの仮定を緩和します。これにより、ノード タイプでスケールアウト操作の高速化、ブロンズ持続性での自動 OS アップグレードのサポート、および単一の仮想マシン スケール セット内の 100 以上のノードへのスケールアウトなどの他の機能を使用することができます。
@@ -138,7 +138,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 ```
 
 ## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>複数の Availability Zones を持つステートレス ノード タイプの構成
-複数の Availability Zones にまたがるステートレス ノード タイプを構成するには、次のようないくつかの変更と共に、[こちら](/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)のドキュメントに従ってください。
+複数の Availability Zones にまたがるステートレス ノード タイプを構成するには、次のようないくつかの変更と共に、[こちら](./service-fabric-cross-availability-zones.md#1-preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)のドキュメントに従ってください。
 
 * 複数の配置グループを有効にする必要がある場合は、**singlePlacementGroup** :  **false** を設定します。
 * **upgradeMode** : **Rolling** を設定して、上述したようにアプリケーション正常性拡張機能または正常性プローブを追加します。

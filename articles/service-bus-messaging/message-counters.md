@@ -3,12 +3,13 @@ title: Azure Service Bus - メッセージ数
 description: Azure Resource Manager および Azure Service Bus NamespaceManager API を使用して、キューおよびサブスクリプションに保持されているメッセージの数を取得します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 3ef2e50521b57fc45846acecf9e776e3ff24c5d4
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cb559f6dbd492d1c35a15f9f30cbc0ad02620a01
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987328"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670691"
 ---
 # <a name="get-message-counters"></a>メッセージ数を取得する
 この記事では、次に挙げるキューまたはサブスクリプションのメッセージ数を取得する複数の方法を説明します。 現在展開されているものより、処理により多くのリソースを必要とするバックログをキューが生成するかどうか判断するために、アクティブなメッセージの数を把握することが有効です。 
@@ -102,12 +103,12 @@ $topicObj.CountDetails
 
 Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [.NET (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
-- [Java (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Java (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)

@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 05/10/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: cbeb6ff0ba6222de292dd185b21445ccf94252c8
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 9061e3621d8232c82a126a60bebe16bb32ce6d29
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733822"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673365"
 ---
 # <a name="enable-shared-disk"></a>共有ディスクを有効にする
 

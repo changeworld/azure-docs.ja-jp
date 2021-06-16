@@ -10,12 +10,13 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 02/10/2021
 ms.author: alzam
-ms.openlocfilehash: d41ec492f1f694a8b39f16a7932c4476d9614a1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ee0e38f9f3c73187d2fe955771b0476b113a4d38
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385882"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681592"
 ---
 # <a name="create-a-vpn-gateway---powershell-script-sample"></a>VPN ゲートウェイを作成する - PowerShell サンプル スクリプト
 

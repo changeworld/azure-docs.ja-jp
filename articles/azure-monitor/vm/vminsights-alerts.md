@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c921637fc0c50125f6cc657dc9329e2107e8e774
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046807"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894670"
 ---
 # <a name="how-to-create-alerts-from-vm-insights"></a>VM Insights からアラートを作成する方法
 [Azure Monitor のアラート](../alerts/alerts-overview.md)では、監視データの興味深いデータやパターンを事前に通知します。 VM Insights には事前に構成されたアラート ルールは含まれませんが、収集されるデータに基づいて独自のものを作成することができます。 この記事では、サンプル クエリのセットを含む、アラート ルールの作成に関するガイダンスを提供します。
@@ -100,7 +100,7 @@ InsightsMetrics
 | where Origin == "vm.azm.ms" 
 | where Namespace == "LogicalDisk" and Name == "TransfersPerSecond"
 | extend Disk=tostring(todynamic(Tags)["vm.azm.ms/mountId"])
-| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) ), Computer, _ResourceId, Disk
+| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk
 ```
 
 ### <a name="logical-disk-data-rate"></a>論理ディスクのデータ速度
@@ -110,7 +110,7 @@ InsightsMetrics
 | where Origin == "vm.azm.ms" 
 | where Namespace == "LogicalDisk" and Name == "BytesPerSecond"
 | extend Disk=tostring(todynamic(Tags)["vm.azm.ms/mountId"])
-| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) , Computer, _ResourceId, Disk
+| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk
 ```
 
 ### <a name="network-interfaces-bytes-received---all-interfaces"></a>ネットワーク インターフェイスの受信バイト数 - すべてのインターフェイス

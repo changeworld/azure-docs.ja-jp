@@ -6,12 +6,13 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 2c89ad69207a51a92b56d268c685aa2be4118cf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 048d6e423c063485705636cac3db0dfa6241874f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507587"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704884"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>PowerShell を使用して Azure 内部ロード バランサーを別のリージョンに移動する
 

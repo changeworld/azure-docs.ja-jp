@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: maintenance-control
 ms.date: 04/26/2021
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 076c007bd0a2fb2e70ad84dfd6a825030a22b15a
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: e23630fb0d102c10194d85d3beff1ce626fbf898
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015233"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673904"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 

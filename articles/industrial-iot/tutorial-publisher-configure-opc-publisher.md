@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: e4d26856d269a07ce87b22843c61be97b73bbea3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a889f0b740d506bd546f1fb67f050317146c31e8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137258"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677893"
 ---
 # <a name="tutorial-configure-the-opc-publisher"></a>チュートリアル: OPC Publisher の構成
 
@@ -85,7 +85,7 @@ OPC Publisher のグローバル設定に使用できるコマンドライン引
 ## <a name="configuration-via-the-built-in-opc-ua-server-interface"></a>組み込みの OPC UA サーバー インターフェイスを使用した構成
 
 >[!NOTE] 
-> この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。**
+> この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。
 
 OPC Publisher には、ポート 62222 で実行される、組み込みの OPC UA サーバーがあります。 これには、次の 3 つの OPC UA メソッドが実装されています。
 
@@ -98,7 +98,7 @@ OPC Publisher には、ポート 62222 で実行される、組み込みの OPC 
 ## <a name="configuration-via-iot-hub-direct-methods"></a>IoT Hub のダイレクト メソッドを使用した構成
 
 >[!NOTE] 
-> この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。**
+> この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。
 
 OPC Publisher には、次の [IoT Hub のダイレクトメソッド](../iot-hub/iot-hub-devguide-direct-methods.md)が実装されています。これらは、[IoT Hub Device SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して、(世界中のどこからでも) アプリケーションから呼び出すことができます。
 

@@ -12,12 +12,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-arm-template-uiex
-ms.openlocfilehash: 1b462c8e102d65470b55eb6d5d4368917053c155
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: b74287a4324d7a82cf3f47a008a3809e3c5690be
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074675"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892618"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して App Service アプリを作成する
 
@@ -42,7 +42,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) と [Azure CL
 ## <a name="review-the-template"></a>テンプレートを確認する
 
 ::: zone pivot="platform-windows"
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。 .NET Core、.NET Framework、PHP、Node.js、静的 HTML アプリと互換性があります。 Java の場合は、[Java アプリの作成](./quickstart-java.md)に関する記事を参照してください。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/app-service-docs-windows)からのものです。 これは App Service プランおよび App Service アプリを Windows にデプロイします。 .NET Core、.NET Framework、PHP、Node.js、静的 HTML アプリと互換性があります。 Java の場合は、[Java アプリの作成](./quickstart-java.md)に関する記事を参照してください。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json":::
 
@@ -53,7 +53,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) と [Azure CL
 
 このテンプレートには、利便性のために事前に定義されているいくつかのパラメーターが含まれています。 パラメーターの既定値とその説明については、次の表を参照してください。
 
-| パラメーター | Type    | 既定値                | 説明 |
+| パラメーター | 種類    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -63,7 +63,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) と [Azure CL
 | repoUrl    | string  | " "                          | 外部 Git リポジトリ (オプション) |
 ::: zone-end
 ::: zone pivot="platform-linux"
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux)からのものです。 これは App Service プランおよび App Service アプリを Linux にデプロイします。 これは App Service でサポートされているすべてのプログラミング言語と互換性があります。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/app-service-docs-linux)からのものです。 これは App Service プランおよび App Service アプリを Linux にデプロイします。 これは App Service でサポートされているすべてのプログラミング言語と互換性があります。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-linux/azuredeploy.json":::
 
@@ -74,7 +74,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) と [Azure CL
 
 このテンプレートには、利便性のために事前に定義されているいくつかのパラメーターが含まれています。 パラメーターの既定値とその説明については、次の表を参照してください。
 
-| パラメーター | Type    | 既定値                | 説明 |
+| パラメーター | 種類    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -98,7 +98,7 @@ Windows に .NET framework アプリをデプロイするには、次のコー�
 az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup \
 --parameters language=".net" helloWorld="true" webAppName="<app-name>" \
---template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsofot.web/app-service-docs-windows/azuredeploy.json"
+--template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json"
 ::: zone-end
 ::: zone pivot="platform-linux"
 Run the code below to create a Python app on Linux.

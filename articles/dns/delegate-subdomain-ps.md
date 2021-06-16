@@ -7,12 +7,13 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: rohink
-ms.openlocfilehash: 8f431202a12cecd3e3ec8290ccac3afa2c10e878
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0030eccff0885c2cf2e1e0eef386b8907aa0df29
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758002"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689356"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS サブドメインを委任する
 

@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.custom: seodec18
-ms.openlocfilehash: 650c68ae6c0bbfa36a69f87cc0d0809dbf864fae
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 3f2103577932f0b62e8f65a0e7b736ef111a780d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097986"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681695"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

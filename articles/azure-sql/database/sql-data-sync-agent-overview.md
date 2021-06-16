@@ -3,20 +3,20 @@ title: SQL データ同期用のデータ同期エージェント
 description: Azure に SQL データ同期のデータ同期エージェントをインストールして実行し、SQL Server データベースとデータを同期する方法について説明します
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 12/20/2018
-ms.openlocfilehash: 9996d7597631ec3c910e5be340ec3776ce77dbcf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7323552250821f05d3e316bd7e1e2dedf566e9bc
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147807"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707806"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL データ同期用のデータ同期エージェント
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

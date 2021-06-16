@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 1900326bf03c6a32f25c7a019d8bd1e460735bd6
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d403bb00099de4a1fb5f4b9799f45386beb6a9f0
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505600"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679255"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -236,7 +237,7 @@ AzCopy は、データの移動に推奨されるツールです。 パフォー
 
 Azure Data Factory を使用してデータを移動することもできます。 これには、直感的なユーザー インターフェイスが用意されています。 Azure Data Factory を使用するには、以下のリンクのいずれかを参照してください。 
 
-  - [Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob Storage をコピー先、またはコピー元にして、データをコピーする)](/azure/data-factory/connector-azure-blob-storage)
+  - [Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob ストレージをコピー先、またはコピー元にして、データをコピーする)](/azure/data-factory/connector-azure-blob-storage)
   - [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](/azure/data-factory/connector-azure-data-lake-storage)
   - [Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする](/azure/data-factory/connector-azure-file-storage)
   - [Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー](/azure/data-factory/connector-azure-table-storage)

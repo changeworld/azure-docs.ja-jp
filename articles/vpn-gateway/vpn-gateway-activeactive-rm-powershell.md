@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 7942de38cdbfd5e3b90d4eabdc87cf1188edefb5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 373c3e28e1d2dffdde8e8483a78c23174bd6513a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290166"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678598"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する
 

@@ -6,13 +6,14 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
+ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 3474e88c0c5167fa283362ede5133242b6fc0b34
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 83c4b1861b6ee0db02b9a192183fc0de35476665
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766971"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678927"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル:REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]

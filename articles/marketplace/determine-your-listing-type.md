@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 467cc4a62cd044cb4ad264ec8643728e6db0b10c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8ce06a1279a71840dea90e199f5b9c3ee60bd3d3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479816"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541087"
 ---
 # <a name="introduction-to-listing-options"></a>登録情報オプションの概要
 
@@ -112,7 +112,7 @@ ms.locfileid: "107479816"
 
 次のオファーの種類では、使用量ベースの価格がサポートされています。
 
-- Azure アプリケーション (マネージド アプリ) のオファーでは、従量制課金がサポートされています。 詳細については、「[マネージド アプリケーションの従量制課金](partner-center-portal/azure-app-metered-billing.md)」をご覧ください。
+- Azure アプリケーション (マネージド アプリ) のオファーでは、従量制課金がサポートされています。 詳細については、「[マネージド アプリケーションの従量制課金](marketplace-metering-service-apis.md)」をご覧ください。
 - SaaS オファーでは、従量制課金とユーザー単位 (接続クライアント数) の価格がサポートされています。 従量制課金の詳細については、「[マーケットプレース測定サービスを使用した従量制課金](partner-center-portal/saas-metered-billing.md)」をご覧ください。
 - Azure 仮想マシンのオファーでは、**コアあたり**、**コア サイズあたり**、**市場およびコア サイズあたり** の価格がサポートされています。 これらのオプションは、1 時間あたりの価格が設定され、毎月課金されます。
 

@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: e2f044ab267365885260b031638572846184bc83
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8979943b271041087e3541760d983b94977a07c1
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063187"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893968"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender for Storage を構成する
 
@@ -75,7 +76,7 @@ Azure Defender は、このサブスクリプションのすべてのストレ�
 
 ### <a name="template"></a>[テンプレート](#tab/template)
 
-Azure Resource Manager テンプレートを使用して、Azure Defender が有効な Azure Storage アカウントをデプロイします。 詳細については、[Advanced Threat Protection でのストレージ アカウント](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)に関するページを参照してください。
+Azure Resource Manager テンプレートを使用して、Azure Defender が有効な Azure Storage アカウントをデプロイします。 詳細については、[Advanced Threat Protection でのストレージ アカウント](https://azure.microsoft.com/resources/templates/storage-advanced-threat-protection-create/)に関するページを参照してください。
 
 ### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 

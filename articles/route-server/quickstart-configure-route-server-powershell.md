@@ -7,14 +7,13 @@ ms.author: duau
 ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: route-server
-ms.custom:
-- mode-api
-ms.openlocfilehash: 7c28ad86b9194c8120b463581177f659a13d5c2b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.custom: devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 2000c30a96f241ff5500552277f16b8b789ba8c9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949025"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690807"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用してルート サーバーを作成および構成する
 

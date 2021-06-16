@@ -8,12 +8,13 @@ author: v-amallick
 ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: c10be941206dd60887c9d82025506d1ea15c51a2
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 183ed69efaba2da1e1b7f9a4a3feb2115dd6b7d1
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517251"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663210"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM で実行されている SQL Server 用の Azure Backup
 

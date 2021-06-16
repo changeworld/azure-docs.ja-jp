@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: carlrab
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 07/16/2019
-ms.openlocfilehash: afefc556bcac096d67051f3014c31e449dbbca32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c828c8f5b2242653cfd6d6e2bc6675c8b591d380
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323568"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705854"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI を使用して Azure SQL Managed Instance をフェールオーバー グループに作成する
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | 説明 |
+| コマンド | 説明 |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | 仮想ネットワークのコマンド。  |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 仮想ネットワーク サブネットのコマンド。 |

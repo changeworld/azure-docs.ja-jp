@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 09/02/2020
-  ms.openlocfilehash: 31896c34c8bfc265dd16b5b6d317e211b310260f
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c633c8e975392f4e5a41fc116e4c09fd53b706c4
+  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89396745"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112032305"
 landingContent:
 - title: Web アプリケーション ファイアウォールについて
   linkLists:
@@ -32,9 +32,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: よく寄せられる質問 - Application Gateway
-      url: ./ag/application-gateway-waf-faq.md
+      url: ./ag/application-gateway-waf-faq.yml
     - text: よく寄せられる質問 - Front Door
-      url: ./afds/waf-faq.md
+      url: ./afds/waf-faq.yml
     - text: 新機能
       url: https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall
 - title: はじめに

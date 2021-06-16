@@ -4,12 +4,12 @@ description: 失敗したデプロイを、正常なデプロイにロールバ�
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7a0c4deef5956804aa74ad24f072bc46e5c2a8cd
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d66df9cafdb64c216896a66b3283277930a63ed0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321503"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960066"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>エラー発生時に正常なデプロイにロールバックする
 
@@ -126,4 +126,4 @@ az deployment group create \
 ## <a name="next-steps"></a>次のステップ
 
 - 完全および増分のモードについては、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
-- テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+- テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。

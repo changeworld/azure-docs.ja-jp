@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/10/2021
-ms.openlocfilehash: cee7993116e746c7b827faaf94724033501f1318
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/07/2021
+ms.openlocfilehash: ac9d0aaf4114e48fb128a5093c59781724e8fd9c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309052"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749059"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -141,9 +141,6 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 > [!NOTE]
 > 自動解決統合ランタイムを使用する場合、Time to Live は使用できません
  
-> [!NOTE]
-> 既存のクラスターのクイック再利用は、Azure Integration Runtime の機能であり、現在パブリック プレビュー段階です
-
 ## <a name="optimizing-sources"></a>ソースの最適化
 
 Azure SQL Database を除くすべてのソースについては、 **[Use current partitioning]\(現在のパーティションを使用する\)** を選択された値としてそのまま使用することをお勧めします。 他のすべてのソース システムから読み取る場合、データ フローでは、データのサイズに基づいて自動的にデータが均等にパーティション分割されます。 データ 128 MB ごとに新しいパーティションが作成されます。 データのサイズが増加するにつれて、パーティションの数が増加します。
@@ -308,9 +305,6 @@ SSIS などのツールでのマージ結合とは異なり、結合変換は強
 ### <a name="execute-data-flows-sequentially"></a>データ フローの順次実行
 
 データ フロー アクティビティを順番に実行する場合は、Azure IR 構成で TTL を設定することをお勧めします。 ADF によってコンピューティング リソースが再利用されるため、クラスターの起動時間が短縮されます。 各アクティビティは引き続き分離され、実行のたびに新しい Spark コンテキストを受け取ります。 順次アクティビティ間の時間をさらに短縮するには、Azure IR の [クイック再利用] チェックボックスを設定して、ADF に既存のクラスターを再利用するように指示します。
-
-> [!NOTE]
-> 既存のクラスターのクイック再利用は、Azure Integration Runtime の機能であり、現在パブリック プレビュー段階です
 
 ### <a name="overloading-a-single-data-flow"></a>単一データ フローのオーバーロード
 

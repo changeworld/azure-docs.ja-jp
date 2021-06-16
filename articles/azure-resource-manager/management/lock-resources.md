@@ -4,12 +4,12 @@ description: Azure リソースの更新または削除をユーザーに禁止�
 ms.topic: conceptual
 ms.date: 05/07/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5d8af2529039aa6e9435243249d7724d996b119d
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 780957dec73177541e8677fb5f6551a6ad147797
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634799"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951436"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -195,7 +195,7 @@ resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-メインの Bicep ファイルでは、リソース グループが作成され、[モジュール](../templates/bicep-modules.md)を使用してロックが作成されます。
+メインの Bicep ファイルでは、リソース グループが作成され、[モジュール](../bicep/modules.md)を使用してロックが作成されます。
 
 ```Bicep
 targetScope = 'subscription'

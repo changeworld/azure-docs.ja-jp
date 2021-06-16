@@ -5,12 +5,12 @@ ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 708e66cdf41dbe144ac1178ebf54279b32870910
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: b46f03dca8b01b1f880fcbfe186f8c58f43e3dc1
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277940"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892150"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>クイック スタート:ARM テンプレートから Azure Functions リソースを作成してデプロイする
 
@@ -68,7 +68,7 @@ Visual Studio Code を使用し、選択した言語でローカル関数プロ�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/function-app-create-dynamic/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json":::
 

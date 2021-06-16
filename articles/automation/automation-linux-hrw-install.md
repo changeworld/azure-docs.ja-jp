@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/06/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25880a60bd086afa84b0c3eaf901bfb987190f4a
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d60e4964ca9ce4de4b4d8e5545875f5c47f0f809
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166345"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854398"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -52,7 +52,7 @@ Hybrid Runbook Worker 機能では、次のディストリビューションが�
 * SUSE Linux Enterprise Server 12 および 15 (SUSE ではバージョン 13 と 14 はなし)
 
 > [!IMPORTANT]
-> システムの Hybrid Runbook Worker ロールに依存する Update Management 機能を有効にする前に、[ここ](update-management/overview.md#supported-operating-systems)でサポート対象の配布を確認してください。
+> システムの Hybrid Runbook Worker ロールに依存する Update Management 機能を有効にする前に、[ここ](update-management/operating-system-requirements.md)でサポート対象の配布を確認してください。
 
 ### <a name="minimum-requirements"></a>最小要件
 

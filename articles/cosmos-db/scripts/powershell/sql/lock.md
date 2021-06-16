@@ -7,12 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: d893abc2abacda45dabcdd8529a2ace7c5056399
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1e89104e51d234a2a2a6420da44094de28688f66
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98674846"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679751"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-sql-api-database-and-container-using-azure-powershell"></a>Azure PowerShell を使用して Azure Cosmos SQL API のデータベースとコンテナーのためのリソース ロックを作成する
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]

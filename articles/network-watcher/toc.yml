@@ -142,7 +142,7 @@
               href: traffic-analytics.md
               items:
                 - name: よく寄せられる質問
-                  href: traffic-analytics-faq.md
+                  href: traffic-analytics-faq.yml
                 - name: スキーマとデータ収集
                   href: traffic-analytics-schema.md
                 - name: スキーマ更新 (2019 年 8 月)
@@ -210,7 +210,7 @@
 - name: リソース
   items:
     - name: Network Watcher の FAQ
-      href: frequently-asked-questions.md
+      href: frequently-asked-questions.yml
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 質問ページ

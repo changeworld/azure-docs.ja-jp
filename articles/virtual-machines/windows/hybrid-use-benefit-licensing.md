@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: c5a9386540f418c8f490ca146e250e780737e478
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 759bd7fb48134d2e0da4514a143d3ffb5d5336bb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668062"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953767"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
@@ -67,7 +68,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Template
-Resource Manager テンプレート内に、追加パラメーター `licenseType` を指定する必要があります。 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)で詳細を確認できます
+Resource Manager テンプレート内に、追加パラメーター `licenseType` を指定する必要があります。 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/syntax.md)で詳細を確認できます
 ```json
 "properties": {
     "licenseType": "Windows_Server",

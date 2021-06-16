@@ -8,25 +8,25 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: 7d73bfa4b184cb2a3d1cad9a4b6f7fb918c9f953
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: f6e26d697c97b70770ec0445be8d72bda7269f4f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989482"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961431"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning-designer"></a>例: Azure Machine Learning デザイナーを使用してカスタム スキルをビルドおよびデプロイする
 
-[Azure Machine Learning デザイナー](https://docs.microsoft.com/azure/machine-learning/concept-designer)は、回帰や分類などのタスクの機械学習モデルを作成するための使いやすい対話型キャンバスです。 Cognitive Search エンリッチメント パイプラインでデザイナーによって作成されたモデルを呼び出すには、いくつかの追加の手順が必要です。 この例では、自動車の価格を予測し、推論エンドポイントを AML スキルとして呼び出すシンプルな回帰モデルを作成します。 
+[Azure Machine Learning デザイナー](../machine-learning/concept-designer.md)は、回帰や分類などのタスクの機械学習モデルを作成するための使いやすい対話型キャンバスです。 Cognitive Search エンリッチメント パイプラインでデザイナーによって作成されたモデルを呼び出すには、いくつかの追加の手順が必要です。 この例では、自動車の価格を予測し、推論エンドポイントを AML スキルとして呼び出すシンプルな回帰モデルを作成します。 
 
-[パイプラインとデータセットのサンプル](https://docs.microsoft.com/azure/machine-learning/samples-designer)に関するドキュメント ページの[回帰 - 自動車価格の予測 (詳細)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) についてのチュートリアルに従って、さまざまな機能を指定して自動車の価格を予測するモデルを作成します。
+[パイプラインとデータセットのサンプル](../machine-learning/concept-designer.md)に関するドキュメント ページの[回帰 - 自動車価格の予測 (詳細)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) についてのチュートリアルに従って、さまざまな機能を指定して自動車の価格を予測するモデルを作成します。
 
 > [!IMPORTANT] 
 > リアルタイムの推論プロセスに従ってモデルをデプロイすると、有効なエンドポイントが得られますが、Cognitive Search の AML スキルで使用できるものではありません。 
 
 ## <a name="register-model-and-download-assets"></a>モデルを登録して資産をダウンロードする
 
-モデルをトレーニングしたら、[そのトレーニング済みのモデルを登録](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-model-designer)し、手順に従って `trained_model_outputs` フォルダー内のすべてのファイルをダウンロードするか、モデル成果物ページから `score.py` および `conda_env.yml` ファイルのみをダウンロードします。 スコア付けスクリプトは、モデルがリアルタイムの推論エンドポイントとしてデプロイされる前に編集します。
+モデルをトレーニングしたら、[そのトレーニング済みのモデルを登録](../machine-learning/how-to-deploy-model-designer.md)し、手順に従って `trained_model_outputs` フォルダー内のすべてのファイルをダウンロードするか、モデル成果物ページから `score.py` および `conda_env.yml` ファイルのみをダウンロードします。 スコア付けスクリプトは、モデルがリアルタイムの推論エンドポイントとしてデプロイされる前に編集します。
 
 
 ## <a name="edit-the-scoring-script-for-use-with-cognitive-search"></a>Cognitive Search で使用するスコア付けスクリプトを編集する 
@@ -211,7 +211,7 @@ def run(data):
 
 新しく作成されたエンドポイントを Cognitive Search と統合するには、次のようにします
 1. 単一の自動車レコードを含む JSON ファイルを BLOB コンテナーに追加します
-2. [データのインポート ワークフロー](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)を使用して、AI エンリッチメント パイプラインを構成します。 必ず、`parsing mode` として `JSON` を選択してください
+2. [データのインポート ワークフロー](cognitive-search-quickstart-blob.md)を使用して、AI エンリッチメント パイプラインを構成します。 必ず、`parsing mode` として `JSON` を選択してください
 3. `Add Enrichments` タブで、プレースホルダーとして単一のスキル `Extract people names` を選択します。
 4. 種類が `Edm.Double` の `predicted_price` というインデックスに新しいフィールドを追加し、Retrievable プロパティを true に設定します。
 5. データのインポート プロセスを完了します

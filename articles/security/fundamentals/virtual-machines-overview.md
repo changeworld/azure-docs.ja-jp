@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 51b04feffd887fd86157d029168bc53546adfeeb
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6092476180614fe11f8c1199c079b0599f829779
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208169"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554428"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -144,7 +144,7 @@ Security Center は、仮想マシンのセキュリティの最適化と監視�
 詳細情報:
 
 * [Azure Security Center 入門](../../security-center/security-center-introduction.md)
-* [Azure Security Center についてよく寄せられる質問](../../security-center/faq-general.md)
+* [Azure Security Center についてよく寄せられる質問](../../security-center/faq-general.yml)
 * [Azure Security Center 計画および運用](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>コンプライアンス

@@ -10,13 +10,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 4e7f08e3c9869eae76f6c2e0127cfdab8f770d04
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 5aa44410c1ae0e43f2bb1f33bc3b1b9cfaae23d9
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562182"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667894"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows 仮想マシン用の Azure 仮想ネットワークを作成および管理する
 

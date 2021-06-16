@@ -3,12 +3,13 @@ title: Azure DevTest Labs の成果物に関する問題のトラブルシュー
 description: Azure DevTest Labs の仮想マシンで、成果物を適用するときに発生する問題をトラブルシューティングする方法について学びます。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6d3f37a942010240835238648c48ad5671ec028d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483195"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692433"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs 仮想マシンに、成果物を適用する場合に生じる問題のトラブルシューティング
 仮想マシンへの成果物の適用は、さまざまな理由で失敗する可能性があります。 この記事では、考えられる原因を特定するのに役立ついくつかの方法について説明します。

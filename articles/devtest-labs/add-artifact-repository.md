@@ -3,12 +3,13 @@ title: Azure DevTest Labs でラボにアーティファクト リポジトリ�
 description: Azure DevTest Labs で、パブリックの成果物リポジトリにはないツールを、自分のラボに自分専用の成果物リポジトリを指定して格納する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0915254b5dbaabfc32a47b9b07713499a26c16a5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502197"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954172"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs でラボにアーティファクト リポジトリを追加する
 DevTest Labs では、VM の作成時または VM が作成された後に VM に追加されるアーティファクトを指定できます。 このアーティファクトには、VM にインストールするツールやアプリケーションがあります。 アーティファクトは、GitHub または Azure DevOps リポジトリから読み込まれた JSON ファイルで定義されます。
@@ -74,7 +75,7 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 6. **[保存]** を選択します。
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
-Azure Resource Management (Azure Resource Manager) テンプレートは、作成する Azure 内のリソースが記載された JSON ファイルです。 これらのテンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-syntax.md)に関するページを参照してください。
+Azure Resource Management (Azure Resource Manager) テンプレートは、作成する Azure 内のリソースが記載された JSON ファイルです。 これらのテンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/syntax.md)に関するページを参照してください。
 
 このセクションでは、Azure Resource Manager テンプレートを使用してラボにアーティファクト リポジトリを追加する手順を示します。  このテンプレートでは、ラボがまだ存在しない場合は作成されます。
 
@@ -293,7 +294,7 @@ $propertiesObject = @{
     status = 'Enabled'
 }
 
-Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"
+Write-Verbose "Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"
 
 #Resource will be added to current subscription.
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'

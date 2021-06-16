@@ -7,13 +7,13 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
-ms.custom: ''
-ms.openlocfilehash: 14b1661792ca5276bd6ebfa4cee1c4b46f94764d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 03ab6be5b05cb42951b666776942270e4b430195
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780448"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691226"
 ---
 # <a name="apply-the-windows-azure-diagnostics-extension-in-cloud-services-extended-support"></a>Cloud Services (延長サポート) で Windows Azure 診断拡張機能を適用する 
 どのクラウド サービスでも主要なパフォーマンス メトリックを監視することができます。 各クラウド サービス ロールは最小限のデータ (CPU 使用率、ネットワーク使用状況、ディスク使用率) を収集します。 クラウド サービスで Microsoft.Azure.Diagnostics 拡張機能がロールに適用されている場合、そのロールは追加のデータ ポイントを収集できます。 詳細については、[拡張機能の概要](extensions.md)に関する記事を参照してください

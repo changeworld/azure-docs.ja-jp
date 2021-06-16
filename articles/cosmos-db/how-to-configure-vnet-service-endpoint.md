@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 39b134b77fbb98c79fe163b7a36f087ab8a27116
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94637185"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681780"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からの Azure Cosmos DB へのアクセスを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

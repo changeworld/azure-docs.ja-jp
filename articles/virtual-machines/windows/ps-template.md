@@ -6,13 +6,13 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6c874536353e4149b3cf740884034bdab980d2e
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
+ms.openlocfilehash: f31986b7c202309d41556c47233e8e8400590d3d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839205"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668833"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Resource Manager テンプレートから Windows 仮想マシンを作成する
 

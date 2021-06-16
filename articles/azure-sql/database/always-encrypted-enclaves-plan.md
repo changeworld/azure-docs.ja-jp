@@ -1,7 +1,6 @@
 ---
 title: Azure SQL Database で Intel SGX エンクレーブと構成証明を計画する
 description: Azure SQL Database でのセキュリティで保護されたエンクレーブが設定された Always Encrypted のデプロイを計画します。
-keywords: データの暗号化, sql 暗号化, データベース暗号化, 機密データ, Always Encrypted, セキュリティで保護されたエンクレーブ, SGX, 構成証明
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,12 +10,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccf4d00aa48edfc5cbe8df894d7d1a28387ecff2
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732746"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411571"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>Azure SQL Database で Intel SGX エンクレーブと構成証明を計画する
 
@@ -29,13 +28,13 @@ Azure SQL Database の[セキュリティで保護されたエンクレーブが
 
 ## <a name="plan-for-intel-sgx-in-azure-sql-database"></a>Azure SQL Database で Intel SGX を計画する
 
-Intel SGX は、ハードウェアベースの高信頼実行環境テクノロジです。 Intel SGX は、[仮想コア モデル](service-tiers-vcore.md)と [DC シリーズ](service-tiers-vcore.md?#dc-series)のハードウェアの世代を使用するデータベースで使用できます。 そのため、データベース内で、セキュリティで保護されたエンクレーブが設定された Always Encrypted を使用できるようにするには、データベースの作成時に DC シリーズのハードウェアの世代を選択するか、DC シリーズのハードウェアの世代を使用するように既存のデータベースを更新する必要があります。
+Intel SGX は、ハードウェアベースの高信頼実行環境テクノロジです。 Intel SGX は、[仮想コア モデル](service-tiers-sql-database-vcore.md)と [DC シリーズ](service-tiers-sql-database-vcore.md?#dc-series)のハードウェアの世代を使用するデータベースで使用できます。 そのため、データベース内で、セキュリティで保護されたエンクレーブが設定された Always Encrypted を使用できるようにするには、データベースの作成時に DC シリーズのハードウェアの世代を選択するか、DC シリーズのハードウェアの世代を使用するように既存のデータベースを更新する必要があります。
 
 > [!NOTE]
 > Intel SGX は、DC シリーズ以外のハードウェアの世代では使用できません。 たとえば、Intel SGX は Gen5 ハードウェアでは使用できず、[DTU モデル](service-tiers-dtu.md)を使用するデータベースでは使用できません。
 
 > [!IMPORTANT]
-> データベースに対して DC シリーズのハードウェアの世代を構成する前に、DC シリーズのリージョン別の提供状況を確認し、そのパフォーマンスの制限を理解するようにしてください。 詳細については、[DC シリーズ](service-tiers-vcore.md#dc-series)に関する記事を参照してください。
+> データベースに対して DC シリーズのハードウェアの世代を構成する前に、DC シリーズのリージョン別の提供状況を確認し、そのパフォーマンスの制限を理解するようにしてください。 詳細については、[DC シリーズ](service-tiers-sql-database-vcore.md#dc-series)に関する記事を参照してください。
 
 ## <a name="plan-for-attestation-in-azure-sql-database"></a>Azure SQL データベースでの構成証明を計画する
 

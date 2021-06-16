@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: lajanuar
-ms.openlocfilehash: cb6660585b5f2b9ab56eaf863f1ec431e5e85109
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e776555b1f51cc4a66c4cd074ce021adc976957
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895528"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537516"
 ---
 # <a name="translator-30-detect"></a>Translator 3.0:Detect
 
@@ -98,26 +98,19 @@ JSON 応答の例を次に示します。
 
 ```json
 [
-  {
-    "language": "de",
-    "score": 0.92,
-    "isTranslationSupported": true,
-    "isTransliterationSupported": false,
-    "alternatives": [
-      {
-        "language": "pt",
-        "score": 0.23,
+
+    {
+
+        "language": "de",
+
+        "score": 1.0,
+
         "isTranslationSupported": true,
+
         "isTransliterationSupported": false
-      },
-      {
-        "language": "sk",
-        "score": 0.23,
-        "isTranslationSupported": true,
-        "isTransliterationSupported": false
-      }
-    ]
-  }
+
+    }
+
 ]
 ```
 

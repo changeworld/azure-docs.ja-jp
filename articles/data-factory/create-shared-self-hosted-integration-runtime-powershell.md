@@ -5,14 +5,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.author: lle
 author: lrtoyou1223
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 06/10/2020
-ms.openlocfilehash: f87f73c37f5809cb2f3911ba9883271aa514841e
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 193e669b3429077be4e07c52042939a8a101e192
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481699"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681103"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 

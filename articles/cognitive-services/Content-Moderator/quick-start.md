@@ -12,14 +12,16 @@ ms.date: 05/24/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content Moderator, コンテンツ モデレーション
-ms.openlocfilehash: 4ac8e8e70061708f5bb6aca9901ac0dd30af8323
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8b0645b93a7adcc583c010b9bb7524fcd77b7aac
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454927"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033745"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 このクイックスタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。 このサービスをより迅速にご利用のコンテンツ モデレーション アプリに統合する場合は、[次のステップ](#next-steps)のセクションのその他のクイック スタートを参照してください。
 

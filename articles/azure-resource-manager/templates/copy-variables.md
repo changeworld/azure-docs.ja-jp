@@ -3,12 +3,12 @@ title: 変数の複数のインスタンスを定義する
 description: 変数を作成するときに、Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作を使用して、複数回、反復処理を行います。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: e1f6dfeb7b701b09ad1a9505d5dbcfddf2cd6b0b
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5f6459335fa3f059a76128edde4ee7096790fe13
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385711"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957955"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM テンプレートでの変数の反復処理
 
@@ -326,5 +326,5 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
   - [ARM テンプレートでのリソースの反復処理](copy-resources.md)
   - [ARM テンプレートでのプロパティの反復処理](copy-properties.md)
   - [ARM テンプレートでの出力の反復処理](copy-outputs.md)
-- テンプレートのセクションの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+- テンプレートのセクションの詳細については、「[ARM テンプレートの構造と構文について](./syntax.md)」を参照してください。
 - テンプレートをデプロイする方法の詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

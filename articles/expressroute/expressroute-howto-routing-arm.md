@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
-ms.openlocfilehash: 7cfd378ae621192cd98b482b66c85c3dcd3ca454
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e65c021cf858a634fc7ee9466cd502257c613d52
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721941"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702472"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>チュートリアル:PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
 

@@ -3,12 +3,13 @@ title: Azure DevTest Labs での所有者とユーザーの追加 | Microsoft Do
 description: Azure Portal または PowerShell を使用した Azure DevTest Labs での所有者とユーザーの追加
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d786af9eeb9b3c01dad2c3954ebe127d3811819f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511979"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703787"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]

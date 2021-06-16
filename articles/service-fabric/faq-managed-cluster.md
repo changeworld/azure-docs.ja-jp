@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 5/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 377e71c7fdf1f6750ae9529db2cf62fa329d18be
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: f79146e1271436e29dcd7f911c250cab58c28707
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684669"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956760"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric マネージド クラスターに関してよく寄せられる質問
 
@@ -67,7 +67,7 @@ Basic SKU クラスターを使用すると、ほとんどの構成が Service F
 
 ### <a name="can-i-select-between-automatic-and-manual-upgrades-for-my-cluster-runtime"></a>クラスター ランタイムで自動アップグレードと手動アップグレードのどちらかを選択できますか?
 
-はい、自動と手動アップグレードのどちらかを選択できます。 詳細については、[クラスターのアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade)に関する記事を参照してください。
+はい、自動と手動アップグレードのどちらかを選択できます。 詳細については、[クラスターのアップグレード](./service-fabric-cluster-upgrade.md)に関する記事を参照してください。
 
 ## <a name="applications"></a>アプリケーション
 

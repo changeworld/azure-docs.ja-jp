@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.custom: devx-track-csharp
-ms.openlocfilehash: b3b2cb4328a68c7718101c5acd362258706cb6d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: ae1f2f2dbf08ea6bcaf1e298db701cfd4aa705a3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103013259"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692402"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理  
 

@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fe6c04cf29a4c45436948eaea6fc8d0276ec16f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643866"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895786"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -180,28 +180,6 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 
 #### <a name="related-articles"></a>関連記事
 * [Microsoft 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
-
-### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>説明
-これにより、ユーザーの UserPrincipalName のサフィックスがあるフェデレーション ドメインから別のフェデレーション ドメインに変更された場合に **"FederatedDomainChangeError"** 同期エラーが発生することになります。
-
-#### <a name="scenarios"></a>シナリオ
-同期されたユーザーで、オンプレミスの UserPrincipalName のサフィックスが、あるフェデレーション ドメインから別のフェデレーション ドメインに変更されました。 たとえば、*UserPrincipalName = bob\@contoso.com* が *UserPrincipalName = bob\@fabrikam.com* に変更されました。
-
-#### <a name="example"></a>例
-1. Contoso.com のアカウントである Bob Smith が、新しいユーザーとして UserPrincipalName bob@contoso.com で Active Directory に追加されます。
-2. Bob が Contoso.com の別の部門 Fabrikam.com に移動し、UserPrincipalName が bob@fabrikam.com に変更されます。
-3. contoso.com ドメインと fabrikam.com ドメインは両方とも Azure Active Directory のフェデレーション ドメインです。
-4. Bob の userPrincipalName は更新されず、"FederatedDomainChangeError" 同期エラーが発生します。
-
-#### <a name="how-to-fix"></a>修正方法
-ユーザーの UserPrincipalName サフィックスが bob@**contoso.com** から bob\@**fabrikam.com** に更新され、**contoso.com** と **fabrikam.com** のどちらも **フェデレーション ドメイン** の場合、次の手順に従って同期エラーを修正します。
-
-1. Azure AD 内のユーザーの UserPrincipalName を bob@contoso.com から bob@contoso.onmicrosoft.com に更新します。 次の PowerShell コマンドを Azure AD PowerShell Module で使用できます。`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
-2. 次の同期サイクルで同期の試行を許可します。 このとき、同期が成功して、Bob の UserPrincipalName が予期したとおり bob@fabrikam.com に更新されます。
-
-#### <a name="related-articles"></a>関連記事
-* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](./howto-troubleshoot-upn-changes.md)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>説明

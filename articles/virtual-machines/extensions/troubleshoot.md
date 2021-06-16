@@ -8,12 +8,13 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/29/2016
-ms.openlocfilehash: b79bea4cda89254620244d85f1b7daf8ec2e128e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d8aad654fce1b62bdc51e6cd15f5836742b772f2
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738163"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669566"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 拡張機能のエラーのトラブルシューティング
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]

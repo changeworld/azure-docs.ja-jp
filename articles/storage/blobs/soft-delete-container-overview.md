@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions
-ms.openlocfilehash: 2efd673d26231e83d820f7971a740d06e9b2a1d2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 6ef960351f22e07c46f4f03a061bc47afbe09dd6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785417"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679341"
 ---
 # <a name="soft-delete-for-containers-preview"></a>コンテナーの論理的な削除 (プレビュー)
 

@@ -7,16 +7,16 @@ ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 029e3ba799e5f239bde0ef049316dd268ebe4c8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e70d37b0702278e8c3d5244b0731b058b6618a75
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588781"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708233"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-azure-sql-database-saas-app"></a>マルチテナントの Azure SQL Database SaaS アプリで Azure Monitor ログを設定して使用する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

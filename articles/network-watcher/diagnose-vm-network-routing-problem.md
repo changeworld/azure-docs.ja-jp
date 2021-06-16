@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: d5cd9c5d7f4a14a9a93e6984a8ef7367e5cbafc4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7a056d3a998be5d8edee71557c0333f4c5cb8fd9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055095"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082363"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想マシン ネットワークのルーティングの問題を診断する
 
@@ -51,7 +51,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |---|---|
     |名前|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
-    |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.yml?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。|
     |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「**myResourceGroup** と入力します。|
     |場所| **[米国東部]** を選択します。|

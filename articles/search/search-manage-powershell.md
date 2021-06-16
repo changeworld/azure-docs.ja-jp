@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: efb5d498c627a6731d2a90623c81eefabd0042a0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f25e83644c78328d866751a71e15a9658932e66f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462781"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689269"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>PowerShell を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]

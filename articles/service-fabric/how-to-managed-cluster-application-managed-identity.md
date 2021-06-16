@@ -3,12 +3,12 @@ title: Service Fabric マネージド クラスター ノード上でアプリ�
 description: ARM テンプレートでデプロイされた Azure Service Fabric マネージド クラスター上でアプリケーション マネージド ID を構成して使用する方法について説明します。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: f3c76ae6418ddf2ca9da0ed620941c10b7061603
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 4e488f9ebb78208617ca59fdb88dbec454de10e1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689288"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958277"
 ---
 # <a name="deploy-a-service-fabric-application-with-managed-identity"></a>マネージド ID を使用した Service Fabric アプリケーションをデプロイする
 
@@ -42,7 +42,7 @@ Service Fabric アプリケーションが [Azure リソース用のマネージ
 }
 
 ```
-[完全な JSON リファレンス](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2021-05-01/managedclusters/applications?tabs=json)
+[完全な JSON リファレンス](/azure/templates/microsoft.servicefabric/2021-05-01/managedclusters/applications?tabs=json)
 
 ## <a name="user-assigned-identity"></a>ユーザー割り当て ID
 

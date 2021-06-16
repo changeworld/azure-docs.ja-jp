@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 05/25/2021
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 84d3fd31f3da047b263a3e3a46761dfc4538e499
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 014084862f5dab95ee859315c52983cbcd96e678
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279546"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793443"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
@@ -52,7 +52,7 @@ REST API、または Media Services クライアント ライブラリを使用�
 
 ### <a name="media-services-code"></a>Media Services コード
   
-[DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)からは、.NET を使用してマルチ DRM システムと Media Services v3 を実装する方法がわかります。 また、Media Services ライセンス/キー配信サービスを使用する方法がわかります。
+[DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs)からは、.NET を使用してマルチ DRM システムと Media Services v3 を実装する方法がわかります。 また、Media Services ライセンス/キー配信サービスを使用する方法がわかります。
   
 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各アセットを暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption-types)」を参照してください。
 
@@ -191,7 +191,7 @@ Azure AD を STS として使用することも、[カスタム STS](#using-a-cu
 
 ### <a name="token-replay-prevention"></a>トークン再生の防止
 
-*トークン再生の防止* 機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 ユーザーは `urn:microsoft:azure:mediaservices:maxuses` の種類の要求をトークンに追加できます。この値は、トークンを使用してライセンスまたはキーを取得できる回数です。 キー配信に対して同じトークンを使用する後続のすべての要求では、"許可されていません" 応答が返されます。 [DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)で、要求を追加する方法を参照してください。
+*トークン再生の防止* 機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 ユーザーは `urn:microsoft:azure:mediaservices:maxuses` の種類の要求をトークンに追加できます。この値は、トークンを使用してライセンスまたはキーを取得できる回数です。 キー配信に対して同じトークンを使用する後続のすべての要求では、"許可されていません" 応答が返されます。 [DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L591)で、要求を追加する方法を参照してください。
  
 #### <a name="considerations"></a>考慮事項
 

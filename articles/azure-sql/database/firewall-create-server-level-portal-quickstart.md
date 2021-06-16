@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: quickstart
-author: sachinpMSFT
-ms.author: sachinp
-ms.reviewer: vanto, sstein
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: mathoma, vanto
 ms.date: 02/11/2019
-ms.openlocfilehash: bef1e9bdafd91a51290fe84af074c8cece7cc371
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c276d5dfd2ca6cbffe09fddacf9c1dc73a3d2eff
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102486728"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690038"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>クイック スタート:Azure Portal でサーバーレベルのファイアウォール規則を作成する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

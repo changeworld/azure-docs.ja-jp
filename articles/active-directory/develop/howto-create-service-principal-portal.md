@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 12739d535e37c4d1de89e69237a0daddd9569217
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: b772112a238b4af4ff536a98e0a4105e7237c1af
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897471"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951950"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -79,7 +79,7 @@ Azure サブスクリプションで AD アプリにロールを割り当てる�
 1. **[Azure Active Directory]** を選択します。
 1. **[アプリの登録]** を選択します。
 1. **[新規登録]** を選択します。
-1. アプリケーションに名前を付ける サポートされているアカウントを選択します。これにより、アプリケーションを使用できるユーザーを決定します。 **[リダイレクト URI]** で、作成するアプリケーションの種類で **[Web]** を選択します。 アクセス トークンの送信先の URI を入力します。 [ネイティブ アプリケーション](../manage-apps/application-proxy-configure-native-client-application.md)の資格情報を作成することはできません。 そのタイプを自動化されたアプリケーションに使用することはできません。 値を設定したら、 **[登録]** を選択します。
+1. アプリケーションに名前を付ける サポートされているアカウントを選択します。これにより、アプリケーションを使用できるユーザーを決定します。 **[リダイレクト URI]** で、作成するアプリケーションの種類で **[Web]** を選択します。 アクセス トークンの送信先の URI を入力します。 [ネイティブ アプリケーション](../app-proxy/application-proxy-configure-native-client-application.md)の資格情報を作成することはできません。 そのタイプを自動化されたアプリケーションに使用することはできません。 値を設定したら、 **[登録]** を選択します。
 
    ![アプリケーションの名前を入力する](./media/howto-create-service-principal-portal/create-app.png)
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3db4e47a73cf7b7ad4e4645546d103c1a3c4fc
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99576669"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812876"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -152,4 +152,4 @@ FAQ については、[仮想ネットワーク サービス エンドポイン�
 - [Azure Synapse Analytics を仮想ネットワークに限定する](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)
 - [仮想ネットワーク サービス エンドポイント ポリシー](./virtual-network-service-endpoint-policies-overview.md)
-- [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/vnet-2subnets-service-endpoints-storage-integration)

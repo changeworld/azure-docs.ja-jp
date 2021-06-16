@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 77d5ce2cc903be51b7a38d6edc34bb8424c52ddb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 62bcd3703aac251a839928d205e0fd438b48250e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786101"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892246"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する
 
@@ -170,7 +170,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
 次のコード スニペットでは、[Microsoft.NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) リソースを使用して Azure Resource Manager テンプレート (ARM テンプレート) で NetApp アカウントを作成する方法を示しています。 コードを実行するには、GitHub のリポジトリから[完全な ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)をダウンロードしてください。
 
-:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json" range="177-183":::
 
 <!-- Block begins with "type": "Microsoft.NetApp/netAppAccounts", -->
 
@@ -244,7 +244,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
 次のコード スニペットでは、[Microsoft.NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) リソースを使用して Azure Resource Manager テンプレート (ARM テンプレート) で容量プールを作成する方法を示しています。 コードを実行するには、GitHub のリポジトリから[完全な ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)をダウンロードしてください。
 
-:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json" range="184-196":::
 
 <!-- LN 185, block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools", -->
 
@@ -393,11 +393,11 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
 次のコード スニペットでは、Azure Resource Manager テンプレート (ARM テンプレート) で VNet を設定し、Azure NetApp Files ボリュームを作成する方法を示しています。 VNet の設定では、[Microsoft.Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) リソースを使用します。 ボリュームの作成では、[Microsoft.NetApp/netAppAccounts/capacityPools/volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) リソースを使用します。 コードを実行するには、GitHub のリポジトリから[完全な ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)をダウンロードしてください。
 
-:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json" range="148-176":::
 
 <!-- Block begins with  "type": "Microsoft.Network/virtualNetworks", -->
 
-:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="197-229":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.netapp/anf-nfs-volume/azuredeploy.json" range="197-229":::
 
 <!-- Block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes", -->
 

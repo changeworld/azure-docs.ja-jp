@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6f9570c04b9182e756560a23ffb6bbbdc079cd1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687976"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407747"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのセキュリティを構成する
 
@@ -221,6 +221,7 @@ AZDATA_PASSWORD **セッション** 環境変数が存在していて値がな�
 ## <a name="audit"></a>Audit
 
 監査シナリオの場合は、Postgres の `pgaudit` 拡張機能を使用するようにサーバー グループを構成してください。 `pgaudit` の詳細については、[`pgAudit` GitHub プロジェクト](https://github.com/pgaudit/pgaudit/blob/master/README.md)に関するページを参照してください。 サーバー グループで `pgaudit` 拡張機能を有効にするには、[PostgreSQL 拡張機能の使用](using-extensions-in-postgresql-hyperscale-server-group.md)に関するページを参照してください。
+
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: bc6da168dca367b152d1de967b448d75139a2d56
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 92014d161d0ef70b163494b617545287c7e39818
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387671"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111855010"
 ---
 # <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>クイックスタート: Python 用 Microsoft Azure Confidential Ledger クライアント ライブラリ
 
@@ -104,7 +104,7 @@ credential = DefaultAzureCredential()
 ```python
 resource_group = "myResourceGroup"
 ledger_name = "<your-unique-ledger-name>"
-subscription_id "<azure-subscription-id>"
+subscription_id = "<azure-subscription-id>"
 
 identity_url = "https://identity.confidential-ledger.core.azure.com"
 ledger_url = "https://" + ledger_name + ".eastus.cloudapp.azure.com"
@@ -219,7 +219,7 @@ from azure.confidentialledger.identity_service import ConfidentialLedgerIdentity
 
 rg = "myResourceGroup"
 ledger_name = "<unique-ledger-name>"
-subscription_id "<azure-subscription-id>"
+subscription_id = "<azure-subscription-id>"
 
 identity_url = "https://identity.confidential-ledger.core.azure.com"
 ledger_url = "https://" + ledger_name + ".eastus.cloudapp.azure.com"

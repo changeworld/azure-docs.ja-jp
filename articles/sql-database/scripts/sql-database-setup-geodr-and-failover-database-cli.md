@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-author: mashamsft
-ms.author: mathoma
-ms.reviewer: carlrab
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: 48ebf87a732380188b1c5f03954385b61bc765f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02c9d1a7521c6ce6d0e617e89ac06558c30a7418
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86528827"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690555"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースに対して CLI を使用してアクティブ geo レプリケーションを構成する
 
