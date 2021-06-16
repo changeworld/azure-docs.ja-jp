@@ -10,14 +10,16 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: ddf4d17cd2631f5bc299e392c46bd9065bb13744
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4336b24dd68df2ce52081e6b0d3d1e49517f3d8
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93146625"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031765"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator レビュー ツール
+
+[!INCLUDE [deprecation notice](../includes/tool-deprecation.md)]
 
 Azure Content Moderator からは、機械学習コンテンツ モデレーションと人間によるレビューを組み合わせるサービスが提供されます。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com) Web サイトは、そのようなサービスへの詳細なアクセスを提供するユーザーフレンドリなフロント エンドです。
 
