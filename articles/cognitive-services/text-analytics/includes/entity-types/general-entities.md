@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: c1ff099dd6dffe06e9707ff23fffd57ae753ab64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36f05d2803d4ac347ef9dc8bf8e840e3f4a63cac
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99500277"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111761488"
 ---
 Text Analytics 用の固有表現認識機能からは、次の一般的な (非識別) エンティティ カテゴリが返されます。 たとえば、`/entities/recognition/general` エンドポイントに要求を送信する場合などです。
 
@@ -410,7 +410,7 @@ Text Analytics 用の固有表現認識機能からは、次の一般的な (非
     :::column span="2":::
       **サポートされているドキュメントの言語**
 
-      `en`  
+      `en` , `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br` 
       
    :::column-end:::
 :::row-end:::

@@ -3,19 +3,20 @@ title: SQL Managed Instance でのフェールオーバーを手動で開始す�
 description: Azure SQL Managed Instance でプライマリ レプリカとセカンダリ レプリカを手動でフェールオーバーする方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.subservice: high-availability
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: douglas, sstein
+ms.reviewer: mathoma
 ms.date: 02/27/2021
-ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f66719ab3d7482fcc1df1665593d276a738257a9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101691146"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697229"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance でユーザーによって開始される手動フェールオーバー
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
