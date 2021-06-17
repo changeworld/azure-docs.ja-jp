@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 46ad81f6723d160bf1d675b68a8459dd8df32c80
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 9e7d1d08a3d69337cc205bdaf4bf3afc8941dd77
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078351"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750301"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
@@ -78,7 +78,7 @@ EA API は、認証と承認に API キーを使用します。 MCA API は Azur
 
 | 目的 | 古いオファリング | 新しいオファリング |
 | --- | --- | --- |
-| Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
+| Cloudyn | Cloudyn | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
 | Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) コンテンツ パックおよびコネクタ |  [Azure Consumption Insights コネクタ](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>残高とクレジットを取得するための API
@@ -519,7 +519,7 @@ Reservation Details API を使用して予約の概要を取得するには:
 
 ## <a name="move-from-cloudyn-to-cost-management"></a>Cost Management に Cloudyn から移行する
 
-[Cloudyn](https://cloudyn.com) を使用する組織は、あらゆるコスト管理ニーズに対して [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) から使用し始める必要があります。 Cost Management はオンボードせずに、8 時間の待機時間で Azure portal で使用できます。 詳細については、[Cost Management のドキュメント](../index.yml)を参照してください。
+Cloudyn を使用する組織は、あらゆるコスト管理ニーズに対して [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) から使用し始める必要があります。 Cost Management はオンボードせずに、8 時間の待機時間で Azure portal で使用できます。 詳細については、[Cost Management のドキュメント](../index.yml)を参照してください。
 
 Azure Cost Management では、次の操作が可能になります。
 

@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 1beac7a75bc8ddfbdec046d381ee95b23b1575ca
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5208f497fc5423cd0e9c2343af2a5757088399b1
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108793505"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111449941"
 ---
-この記事では、これまでにリリースされた Azure Active Directory Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 プロビジョニング エージェントは、新しいバージョンがリリースされると自動的に更新されます。 
+この記事では、これまでにリリースされた Azure Active Directory Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 
 
 Microsoft では、エージェントの最新バージョンと 1 つ前のバージョンを直接サポートしています。
 
@@ -113,5 +113,4 @@ Microsoft では、エージェントの最新バージョンと 1 つ前のバ�
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 
 * パフォーマンス、安定性、信頼性を向上させるためにプロビジョニング エージェントおよびコネクタのアーキテクチャが刷新されました 
-* UI 駆動型インストール ウィザードを使用してプロビジョニング エージェントの構成が簡略化されました 
-* エージェントの自動更新のサポートが追加されました
+* UI 駆動型インストール ウィザードを使用してプロビジョニング エージェントの構成が簡略化されました

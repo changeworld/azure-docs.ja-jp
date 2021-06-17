@@ -5,17 +5,17 @@ description: Metrics Advisor インスタンスを構成し、異常検出の結
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9daabd568cce9476b62f546d2d52bfc6706e670e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92048255"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892488"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>方法:メトリックを構成して検出構成を微調整する
 
