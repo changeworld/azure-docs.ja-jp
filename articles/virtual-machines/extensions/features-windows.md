@@ -8,12 +8,13 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
-ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2c6a96c1716f34b7bb27e8632a547cbafa432db1
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601862"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663108"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 

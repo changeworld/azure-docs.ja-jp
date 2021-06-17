@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 02/11/2021
-ms.openlocfilehash: 33e074da8c9e028916552e45be0dfb9634a1d173
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 40e48cade82f8ffc808303dd43cb0d5f9ff5fe86
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277824"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984430"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:ARM テンプレートを使用して、Azure Database for PostgreSQL - Single Server を作成する
 
@@ -46,7 +46,7 @@ Azure Database for PostgreSQL は、高可用性の PostgreSQL データベー�
 
 Azure Database for PostgreSQL サーバーは、構成済みの一連のコンピューティング リソースとストレージ リソースを使って作成されます。 詳細については、「[Azure Database for PostgreSQL - Single Server の価格レベル](concepts-pricing-tiers.md)」を参照してください。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成します。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/managed-postgresql-with-vnet/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.dbforpostgresql/managed-postgresql-with-vnet/azuredeploy.json":::
 

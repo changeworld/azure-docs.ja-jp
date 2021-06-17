@@ -2,13 +2,13 @@
 title: Azure Backup を使用して Azure に SAP HANA データベースをバックアップする
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: ab4b192c63697b398314f78518eaf8f90f17c452
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.date: 05/28/2021
+ms.openlocfilehash: 9267a3a27823249116e74c6aba9321cfdfd0e338
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277590"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681350"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -84,7 +84,7 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 | サービス    | アクセスするドメイン名                             |
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
-| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` |
 | Azure AD      | [この記事](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)に従って、セクション 56 および 59 の FQDN へのアクセスを許可します |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する

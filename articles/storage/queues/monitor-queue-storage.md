@@ -9,13 +9,13 @@ ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
-ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 96ff4cc5e8af951558817602ed9c3ddd66d93e68
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 43cb88f42ff0d61cb3f3e5f4e5475bf51e737457
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477518"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664344"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Azure Queue Storage の監視
 

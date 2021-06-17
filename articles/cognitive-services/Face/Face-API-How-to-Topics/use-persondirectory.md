@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7db7accec4b87f7bc8c3e38b409902fd4439851f
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 8d7238aea62b3532461cd40404b683e18227386f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018709"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950993"
 ---
 # <a name="use-the-persondirectory-structure"></a>PersonDirectory 構造を使用する
 
@@ -353,7 +353,7 @@ HttpResponseMessage response;
 // Request body
 var body = new Dictionary<string, object>();
 body.Add("faceIds", new List<string>{"{guid1}", "{guid2}", …});
-body.Add("personIds", "['*']");
+body.Add("personIds", new List<string>{"{guid1}", "{guid2}", …});
 byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(body));
 
 using (var content = new ByteArrayContent(byteData))
@@ -398,4 +398,4 @@ using (var content = new ByteArrayContent(byteData))
 
 このガイドでは、**PersonDirectory** 構造を使用して、Face アプリの顔データと個人データを格納する方法について説明しました。 次に、ユーザーの顔データを追加するためのベスト プラクティスについて説明します。
 
-* [ユーザーを追加するためのベスト プラクティス](https://docs.microsoft.com/azure/cognitive-services/face/enrollment-overview)
+* [ユーザーを追加するためのベスト プラクティス](../enrollment-overview.md)

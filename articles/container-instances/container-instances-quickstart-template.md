@@ -9,12 +9,12 @@ ms.custom:
 - subject-armqs
 - devx-track-js
 - mode-arm
-ms.openlocfilehash: 2f57e86421f7522467a3f4adf4a4e9a21456ba4c
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2af957f6b69f2ef8c20672e62acaed5066a0d4d4
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107878742"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006169"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure にコンテナー インスタンスをデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "107878742"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.containerinstance%2Faci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/aci-linuxcontainer-public-ip/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.containerinstance/aci-linuxcontainer-public-ip/azuredeploy.json":::
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
  1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートにより、別の場所にレジストリとレプリカが作成されます。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.containerinstance%2Faci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
  2. 次の値を選択または入力します。
 

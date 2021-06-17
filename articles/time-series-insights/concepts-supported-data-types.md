@@ -1,20 +1,21 @@
 ---
 title: サポートされているデータ型 - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 でサポートされているデータ型について説明します。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 8e8e6f007e19d2514a5f75dbdda7da13e1f8be3c
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: eee8a3167c5c7b9be2ccf0c5f14895846bfd3d3a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505180"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796239"
 ---
 # <a name="supported-data-types"></a>サポートされるデータ型
 

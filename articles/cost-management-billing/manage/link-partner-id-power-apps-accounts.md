@@ -8,12 +8,13 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: banders
-ms.openlocfilehash: acb22cc4b2a461e476131a83972db3e782425a39
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: eb6608e03debb7811497a1347c718bb2845cf87c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727710"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688199"
 ---
 # <a name="link-a-partner-id-to-your-power-apps-accounts"></a>パートナー ID を Power Apps アカウントにリンクする
 

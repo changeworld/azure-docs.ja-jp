@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: 717c3c8052c89825b161f77614d7411c5912d1cd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 58e1fad683f30c041cf5ca374e0340a81018f228
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799906"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007213"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する
 
@@ -68,11 +68,11 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>既存のクラスターにエッジ ノードを追加する
 
-このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。  Resource Manager テンプレートは、 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)にあります。 Resource Manager テンプレートは、 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh にあるスクリプト アクションを呼び出します。このスクリプトではアクションは実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを示すためのものです。
+このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。  Resource Manager テンプレートは、 [GitHub](https://azure.microsoft.com/resources/templates/hdinsight-linux-add-edge-node/)にあります。 Resource Manager テンプレートは、 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.hdinsight/hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh にあるスクリプト アクションを呼び出します。このスクリプトではアクションは実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを示すためのものです。
 
 1. 次の画像を選択して Azure にサインインし、Azure portal で Azure Resource Manager テンプレートを開きます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.hdinsight%2Fhdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. 次のプロパティを構成します。
 
@@ -90,13 +90,13 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>クラスター作成時にエッジ ノードを追加する
 
-このセクションでは、Resource Manager テンプレートを使用して、エッジ ノードを含む HDInsight クラスターを作成します。  Resource Manager テンプレートは [Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)にあります。 Resource Manager テンプレートは、 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh にあるスクリプト アクションを呼び出します。このスクリプトではアクションは実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを示すためのものです。
+このセクションでは、Resource Manager テンプレートを使用して、エッジ ノードを含む HDInsight クラスターを作成します。  Resource Manager テンプレートは [Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/hdinsight-linux-with-edge-node/)にあります。 Resource Manager テンプレートは、 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.hdinsight/hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh にあるスクリプト アクションを呼び出します。このスクリプトではアクションは実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを示すためのものです。
 
 1. HDInsight クラスターがない場合は作成します。  [HDInsight での Hadoop の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
 1. 次の画像を選択して Azure にサインインし、Azure portal で Azure Resource Manager テンプレートを開きます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.hdinsight%2Fhdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. 次のプロパティを構成します。
 
