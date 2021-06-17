@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf76427df2c1802ed49dc5ff848059d88ba9658e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782403"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558550"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 
@@ -36,7 +36,7 @@ ms.locfileid: "104782403"
 
 ### <a name="perform-code-reviews"></a>コード レビューを実行する
 
-コードをチェックインする前に、[コード レビュー](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)を実施して、コードの全体的な品質を高め、バグが発生するリスクを小さくします。 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) を使用して、コード レビュー プロセスを管理できます。
+コードをチェックインする前に、コード レビューを実施して、コードの全体的な品質を高め、バグが発生するリスクを小さくします。 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) を使用して、コード レビュー プロセスを管理できます。
 
 ### <a name="perform-static-code-analysis"></a>静的コード分析を実行する
 

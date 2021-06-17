@@ -14,12 +14,12 @@ ms.custom:
 - mvc
 - devx-track-azurecli
 - mode-arm
-ms.openlocfilehash: 33c262c61d50b45663a627e40ea186f1f0dcde41
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 5934c20c2c7749b75b05bdb80b6d9dee85d6d3c1
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532959"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007015"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Key Vault Managed HSM を作成する
 
@@ -51,7 +51,7 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 ## <a name="create-a-manage-hsm"></a>マネージド HSM を作成する
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-managed-hsm-create/)からのものです。
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/managed-hsm-create/)からのものです。
 
 このテンプレートで定義されている Azure リソースは次のとおりです。
 
@@ -73,7 +73,7 @@ az ad user show --id <your-email-address> --query "objectId"
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートを使用すると、キー コンテナーとシークレットが作成されます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-managed-hsm-create%2Fazuredeploy.json"><img src="../media/deploy-to-azure.svg" alt="deploy to azure"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2F%2Fmaster%2Fquickstarts%2Fmicrosoft.keyvault%2Fmanaged-hsm-create%2Fazuredeploy.json"><img src="../media/deploy-to-azure.svg" alt="deploy to azure"/></a>
 
 2. 次の値を選択または入力します。
 

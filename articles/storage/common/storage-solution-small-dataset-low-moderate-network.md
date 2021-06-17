@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e9fc80ea47aafb107c8497e304354c58fe7db96
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023229"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903835"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>低速から中速のネットワーク帯域幅での小規模なデータセットのデータ転送
  
@@ -63,5 +63,5 @@ ms.locfileid: "96023229"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Storage Explorer を使用してデータを転送する](../../machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer.md)方法を学習します。
+- [Azure Storage Explorer を使用してデータを転送する](../../vs-azure-tools-storage-manage-with-storage-explorer.md)方法を学習します。
 - [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md)
