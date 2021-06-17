@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 06/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c091d1b25b8c8e166fa759dfc31421bc7b778232
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 2fdbdcfd847c33bc6d948d12b14f468233b4cf19
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109635231"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901495"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -22,7 +22,7 @@ Microsoft は、Azure サービスを常に使用できるようにする作業�
 
 Azure Storage では、geo 冗長ストレージ アカウントのアカウント フェールオーバーがサポートされています。 アカウントのフェールオーバーでは、プライマリ エンドポイントが使用できなくなった場合に、ストレージ アカウントのフェールオーバー プロセスを開始できます。 フェールオーバーでは、セカンダリ エンドポイントが更新されて、ストレージ アカウントのプライマリ エンドポイントになります。 フェールオーバーが完了すると、クライアントは新しいプライマリ エンドポイントへの書き込みを開始できます。
 
-アカウント フェールオーバーは、Azure Resource Manager デプロイを使用する汎用 v1、汎用 v2、および BLOB Storage アカウントの種類で使用できます。 アカウントのフェールオーバーはすべてのパブリック リージョンでサポートされていますが、現時点ではソブリン クラウドまたは各国のクラウドでは使用できません。 階層型名前空間が有効になっているストレージ アカウントでは、アカウントのフェールオーバーはサポートされていません。
+アカウント フェールオーバーは、Azure Resource Manager デプロイを使用する汎用 v1、汎用 v2、および BLOB Storage アカウントの種類で使用できます。 階層型名前空間が有効になっているストレージ アカウントでは、アカウントのフェールオーバーはサポートされていません。
 
 この記事では、アカウントのフェールオーバーに関する概念とプロセスについて、および顧客への影響が最小限になるようにストレージ アカウントの復旧を準備する方法について説明します。 Azure portal または PowerShell でアカウントのフェールオーバーを開始する方法については、[アカウントのフェールオーバーの開始](storage-initiate-account-failover.md)に関するページを参照してください。
 

@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
-ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 19d0486461366f77a09b9e6a395e60a51efea853
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.custom: mimckitt, devx-track-azurecli, vmss-flex, devx-track-azurepowershell
+ms.openlocfilehash: 638ede086e0b76351642dec56605bbd857e8805a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754373"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673876"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>プレビュー: Azure の仮想マシン スケール セットのオーケストレーション モード
 

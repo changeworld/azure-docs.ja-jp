@@ -5,17 +5,17 @@ description: メトリックのグラフを構成し、データ内の関連す�
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbullwin
-ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d26d7ab61486617c13ec18fc65ba29f5771cf54e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92043155"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891340"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>方法: メトリックのグラフを作成して関連するメトリックを分析する
 

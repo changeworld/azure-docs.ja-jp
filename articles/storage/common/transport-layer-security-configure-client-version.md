@@ -10,13 +10,13 @@ ms.date: 07/08/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 2404fc1a0570f3e55a31dc7742b268365288c238
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: b1d0737d0320b2d2c3998650e1c1454617fdc92c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461779"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677200"
 ---
 # <a name="configure-transport-layer-security-tls-for-a-client-application"></a>クライアント アプリケーションのトランスポート層セキュリティ (TLS) を構成する
 
