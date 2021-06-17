@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 3c68d0138c9e9ca6bc72937be1a7f54347b89d0c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ae7da354b16dbea3e84f8d75fbf97e805387c4b0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187040"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952096"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -75,7 +75,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 - コネクタが 1 つしかない場合。2 つ目のコネクタをインストールして、[コネクタ グループを作成する](application-proxy-connector-groups.md)ことをお勧めします。 これにより、ダウンタイムを回避して、より高い可用性を提供します。  
 - 更新の開始時にコネクタがトランザクションの処理中であった場合: 初期トランザクションは失われますが、ブラウザーにより自動で操作が再試行されます。ページを更新しても構いません。 要求が再送信されると、トラフィックはバックアップ コネクタへルーティングされます。
 
-過去にリリースされたバージョンと変更履歴については、[アプリケーション プロキシのバージョン リリース履歴](../manage-apps/application-proxy-release-version-history.md)に関するページを参照してください。
+過去にリリースされたバージョンと変更履歴については、[アプリケーション プロキシのバージョン リリース履歴](./application-proxy-release-version-history.md)に関するページを参照してください。
 
 ## <a name="creating-connector-groups"></a>コネクタ グループの作成
 
@@ -111,7 +111,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 コネクタは送信要求を送信するだけです。 送信トラフィックは、アプリケーション プロキシ サービスと公開済みアプリケーションに送信されます。 セッションが確立するとトラフィックは両方向に流れるため、受信ポートを開く必要はありません。 また、ファイアウォール経由での受信アクセスを構成する必要はありません。
 
-送信トラフィックのファイアウォール規則を構成する方法の詳細については、「[既存のオンプレミス プロキシ サーバーと連携する](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)」をご覧ください。
+送信トラフィックのファイアウォール規則を構成する方法の詳細については、「[既存のオンプレミス プロキシ サーバーと連携する](./application-proxy-configure-connectors-with-proxy-servers.md)」をご覧ください。
 
 ## <a name="performance-and-scalability"></a>パフォーマンスと拡張性
 
@@ -165,7 +165,7 @@ Register-AppProxyConnector -EnvironmentName "AzureCloud"
 
 政府機関の場合は、`-EnvironmentName "AzureUSGovernment"` を使用します。 詳細については、「[Azure Government クラウド用にエージェントをインストールする](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)」を参照してください。
 
-証明書の検証と問題のトラブルシューティングの方法について詳しくは、「[コンピューターとバックエンド コンポーネントでアプリケーション プロキシ信頼証明書がサポートされていることを確認する](../manage-apps/application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)」を参照してください。
+証明書の検証と問題のトラブルシューティングの方法について詳しくは、「[コンピューターとバックエンド コンポーネントでアプリケーション プロキシ信頼証明書がサポートされていることを確認する](./application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)」を参照してください。
 
 ## <a name="under-the-hood"></a>しくみ
 
@@ -188,6 +188,6 @@ Windows パフォーマンス カウンターなど、同じ管理ツールの�
 ## <a name="next-steps"></a>次のステップ
 
 - [コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](application-proxy-connector-groups.md)
-- [既存のオンプレミス プロキシ サーバーと連携する](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
-- [アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](../manage-apps/application-proxy-troubleshoot.md)
-- [Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法](../manage-apps/application-proxy-register-connector-powershell.md)
+- [既存のオンプレミス プロキシ サーバーと連携する](./application-proxy-configure-connectors-with-proxy-servers.md)
+- [アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](./application-proxy-troubleshoot.md)
+- [Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法](./application-proxy-register-connector-powershell.md)

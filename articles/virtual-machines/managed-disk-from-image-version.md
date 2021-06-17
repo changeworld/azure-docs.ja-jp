@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 359816bbf3fb93a4ec2bfa3092adbb2236ae2f07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bb09c3332f41f5b4fe8f02e2e38940f4085b08fd
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562556"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672821"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>イメージ バージョンからマネージド ディスクを作成する
 

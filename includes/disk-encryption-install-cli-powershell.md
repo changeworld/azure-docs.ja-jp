@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file
-ms.openlocfilehash: 868fdd1bb31fbb8e3dd648f05409e80a2652e5c5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: 0850bd22faf6300c1c87918b88bfb4e74b0e7c76
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108211455"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721466"
 ---
 Azure Disk Encryption は、[Azure CLI](/cli/azure) と [Azure PowerShell](/powershell/azure/new-azureps-module-az) を使用して、有効にして管理することができます。 そのためには、ツールをローカルにインストールし、Azure サブスクリプションに接続する必要があります。
 

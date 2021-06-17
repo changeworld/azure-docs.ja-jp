@@ -15,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d936a795d22f533ee43c6eb0a59835790a1bffb
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 4a6671b19cf4af84891cb1aeb3d81da54de64983
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132001"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078889"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Azure portal を使用して SQL Server がインストールされた Windows 仮想マシンをプロビジョニングする方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "108132001"
 このガイドは、SQL Server VM を作成する目的にも使用できますし、 Azure Portal で使用できるオプションを参照する目的にも使用できます。
 
 > [!TIP]
-> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -86,7 +86,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 > [!IMPORTANT]
 > **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この見積もり料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この見積もり料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[SQL Server Azure VM の料金ガイダンス](pricing-guidance.md)」と[仮想マシンのサイズ](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
-* **[管理者アカウント]** で、ユーザー名とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+* **[管理者アカウント]** で、ユーザー名とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。
 
    ![[Administrator account] (管理者アカウント)](./media/create-sql-vm-portal/basics-administrator-account.png)
 
@@ -285,4 +285,4 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での SQL Server の使用に関するその他の情報については、[Azure 仮想マシンにおける SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md) に関する記事と[よく寄せられる質問](frequently-asked-questions-faq.md)に関するページを参照してください。
+Azure での SQL Server の使用に関するその他の情報については、[Azure 仮想マシンにおける SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md) に関する記事と[よく寄せられる質問](frequently-asked-questions-faq.yml)に関するページを参照してください。

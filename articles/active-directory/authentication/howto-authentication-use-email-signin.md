@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 222197249f9fa8c4a30a0361633229c1d6cc473a
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: ed77dcad9e9e6568cc38fd3510d9b5a9a0624c11
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517588"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963642"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメール アドレスを使用して Azure AD にサインインする (プレビュー)
 
@@ -40,7 +40,7 @@ ms.locfileid: "109517588"
 
 * この機能は、Azure AD Free エディション以上で使用できます。
 * この機能を使用すると、クラウドで認証された Azure AD ユーザーに対して、検証済みドメインの *ProxyAddresses* を使用したサインインを有効にすることができます。
-* ユーザーが UPN 以外のメール アドレスを使用してサインインするとき、[ID トークン](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)内の `unique_name` と `preferred_username` のクレーム (存在する場合) には UPN 以外のメール アドレスの値が含まれます。
+* ユーザーが UPN 以外のメール アドレスを使用してサインインするとき、[ID トークン](../develop/id-tokens.md)内の `unique_name` と `preferred_username` のクレーム (存在する場合) には UPN 以外のメール アドレスの値が含まれます。
 * この機能を構成するには、2 つのオプションがあります。
     * [ホーム領域検出 (HRD) ポリシー](#enable-user-sign-in-with-an-email-address) - テナント全体に対して機能を有効にするには、このオプションを使用します。 グローバル管理者特権が必要です。
     * [段階的なロールアウト ポリシー](#enable-staged-rollout-to-test-user-sign-in-with-an-email-address) - 特定の Azure AD グループで機能をテストするには、このオプションを使用します。 グローバル管理者特権が必要です。
@@ -93,8 +93,8 @@ Azure AD にサインインするために、ユーザーは自分のアカウ�
 
 | オプション | 説明 |
 |---|---|
-| [AD FS の代替ログイン ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) | AD FS ユーザーの代替属性 (Mail など) を使用したサインインを有効にします。 |
-| [Azure AD Connect での代替ログイン ID](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-userprincipalname#alternate-login-id) | 代替属性 (Mail など) を Azure AD UPN として同期します。 |
+| [AD FS の代替ログイン ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) | AD FS ユーザーの代替属性 (Mail など) を使用したサインインを有効にします。 |
+| [Azure AD Connect での代替ログイン ID](../hybrid/plan-connect-userprincipalname.md#alternate-login-id) | 代替属性 (Mail など) を Azure AD UPN として同期します。 |
 | 代替ログイン ID としてのメール アドレス | Azure AD ユーザーに対して、検証済みドメインの *ProxyAddresses* を使用したサインインを有効にします。 |
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>サインインのメール アドレスを Azure AD に同期する
@@ -227,7 +227,7 @@ Azure AD Connect によって自動的に同期されるユーザー属性の 1 
 ## <a name="enable-staged-rollout-to-test-user-sign-in-with-an-email-address"></a>メール アドレスを使用したユーザー サインインをテストするために段階的なロールアウトを有効にする  
 
 > [!NOTE]
->この構成オプションには、段階的ロールアウト ポリシーを使用します。 詳細については、「[featureRolloutPolicy リソースの種類](https://docs.microsoft.com/graph/api/resources/featurerolloutpolicy?view=graph-rest-1.0&preserve-view=true)」を参照してください。
+>この構成オプションには、段階的ロールアウト ポリシーを使用します。 詳細については、「[featureRolloutPolicy リソースの種類](/graph/api/resources/featurerolloutpolicy?preserve-view=true&view=graph-rest-1.0)」を参照してください。
 
 段階的なロールアウト ポリシーを使用すると、テナント管理者は特定の Azure AD グループに対して各機能を有効にすることができます。 テナント管理者が、段階的なロールアウトを使用して、メール アドレスでのユーザー サインインをテストすることをお勧めします。 管理者は、この機能をテナント全体にデプロイする準備ができたら、[HRD ポリシー](#enable-user-sign-in-with-an-email-address)を使用する必要があります。  
 

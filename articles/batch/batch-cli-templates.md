@@ -2,14 +2,14 @@
 title: テンプレートを使用してジョブをエンドツーエンドで実行する
 description: CLI コマンドのみで、プールの作成、入力データのアップロード、ジョブと関連するタスクの作成、結果の出力データのダウンロードを行うことができます。
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 06/14/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad7882276c53f6bee8fa32592ad474f47697c27a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91848723"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078368"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI テンプレートとファイル転送を使用する
 
@@ -18,7 +18,7 @@ Azure CLI に対して Batch 拡張機能を使用すると、コードを記述
 Azure CLI で JSON テンプレート ファイルを作成および使用して、Batch のプール、ジョブ、タスクを作成します。 CLI 拡張機能コマンドを使用して、Batch アカウントに関連付けられたストレージ アカウントにジョブ入力ファイルを簡単にアップロードし、ジョブ出力ファイルを簡単にダウンロードします。
 
 > [!NOTE]
-> JSON ファイルは、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/template-syntax.md)と同じ機能をサポートするわけではありません。 これらは、未加工の REST 要求本文のように書式設定されることを意図しています。 CLI 拡張機能では既存のコマンドが変更されることはありませんが、Azure Resource Manager テンプレートの一部の機能を追加する、同様のテンプレート オプションがあります。 [Windows、Mac、Linux 向けの Azure Batch CLI 拡張機能](https://github.com/Azure/azure-batch-cli-extensions)に関するページを参照してください。
+> JSON ファイルは、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/syntax.md)と同じ機能をサポートするわけではありません。 これらは、未加工の REST 要求本文のように書式設定されることを意図しています。 CLI 拡張機能では既存のコマンドが変更されることはありませんが、Azure Resource Manager テンプレートの一部の機能を追加する、同様のテンプレート オプションがあります。 [Windows、Mac、Linux 向けの Azure Batch CLI 拡張機能](https://github.com/Azure/azure-batch-cli-extensions)に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -121,7 +121,7 @@ ffmpeg がインストールされた Linux VM のプールを作成するテン
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "taskSlotsPerNode": 1,
+            "maxTasksPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",

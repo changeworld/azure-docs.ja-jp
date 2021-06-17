@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: e128e9f7515e572fc0be4b92ef03d8d98529ac66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 472747a1b6fdd6feb8ec285102530dbc59186b9a
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104674905"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111542071"
 ---
 # <a name="what-is-azure-data-catalog"></a>Azure Data Catalog とは何ですか
 [!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
@@ -67,7 +67,7 @@ Data Catalog の機能の詳細については、以下のページを参照し�
 * [ビッグ データを操作する方法](data-catalog-how-to-big-data.md)
 * [データ資産を管理する方法](data-catalog-how-to-manage.md)
 * [ビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)
-* [よく寄せられる質問](data-catalog-frequently-asked-questions.md)
+* [よく寄せられる質問](data-catalog-frequently-asked-questions.yml)
 
 ## <a name="next-steps"></a>次のステップ
 

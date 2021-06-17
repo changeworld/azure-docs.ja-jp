@@ -2,21 +2,21 @@
 title: Azure AD のシングル サインオン オプション
 description: Azure Active Directory のシングル サインオン (SSO) で利用できるオプションについて説明します。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 820f27e770e3168277e12b85e7766cd16975ef7f
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 965c3898a0175bbf448d8c59b9f7853c8aeb37bd
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315005"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082291"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD のシングル サインオン オプション
 
