@@ -1,17 +1,17 @@
 ---
 author: erhopf
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: include
 ms.date: 03/04/2021
 ms.author: erhopf
-ms.openlocfilehash: d5a483cb239893d04d2c2581fb378f411878f4ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2cadc349c24bb59e6ab97a89a8f5182a9b96632
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102620293"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893371"
 ---
 ## <a name="prerequisites"></a>前提条件
 

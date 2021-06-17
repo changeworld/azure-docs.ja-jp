@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 1d2e741f7f0a98a4b60e94b623afa676423af4c4
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: 0d4db3ba02eec7c5188d4f5682e3ef6e0b2eaa6b
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802596"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676939"
 ---
 # <a name="geo-restore-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールを geo リストアする
 

@@ -3,19 +3,19 @@ title: 空間分析コンテナーのテレメトリとログ
 titleSuffix: Azure Cognitive Services
 description: 空間分析では、各コンテナーに対する共通の構成フレームワークの洞察、ロギング、およびセキュリティの設定が用意されています。
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 08afa72507bb5689dbd1a003cb776958d6e63f1d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589501"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746449"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -301,14 +301,6 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 フェッチ ログのライン、時刻、およびサイズを確認します。これらの設定が適切であれば、 ***DoPost*** を `true` に置き換え、同じフィルターを使用してログを宛先にプッシュします。 
 
 問題を解決するときに、Azure Blob Storage からログをエクスポートできます。 
-
-## <a name="common-issues"></a>一般的な問題
-
-モジュール ログで次のメッセージが表示される場合は、お使いの Azure サブスクリプションを承認される必要があることを意味する場合があります。 
-
-"Container is not in a valid state. Subscription validation failed with status 'Mismatch'. Api Key is not intended for the given container type." (コンテナーは有効な状態ではありません。サブスクリプションの検証は、状態 '不一致' で失敗しました。API キーは、指定されたコンテナーの種類を対象としていません。)
-
-詳細については、「[コンテナーを実行するための承認を要求する](spatial-analysis-container.md#request-approval-to-run-the-container)」を参照してください。
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Azure Stack Edge デバイスの問題解決
 

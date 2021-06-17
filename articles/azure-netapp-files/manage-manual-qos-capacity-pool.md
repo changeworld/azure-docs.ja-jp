@@ -12,39 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 18333b7c9fded73d330cacd6322b0869bf65f9d9
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183830"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071085"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>手動 QoS 容量プールを管理する
 
 この記事では、手動 QoS の種類を使用する容量プールを管理する方法について説明します。  
 
 QoS の種類に関する考慮事項を理解するためには、「[Azure NetApp Files のストレージ階層](azure-netapp-files-understand-storage-hierarchy.md)」と「[Azure NetApp Files のパフォーマンスに関する考慮事項](azure-netapp-files-performance-considerations.md)」を参照してください。  
-
-## <a name="register-the-feature"></a>機能を登録する
-現在、手動 QoS の種類の機能はプレビュー段階にあります。 この機能を初めて使用する場合は、まず機能を登録する必要があります。
-  
-1.  機能を登録します。
-
-    ```azurepowershell-interactive
-    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
-    ```
-
-2. 機能の登録の状態を確認します。 
-
-    > [!NOTE]
-    > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
-
-    ```azurepowershell-interactive
-    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
-    ```
-また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>手動 QoS 容量プールを設定する 
 
