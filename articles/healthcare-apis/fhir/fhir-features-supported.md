@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 6/16/2021
 ms.author: cavoeg
-ms.openlocfilehash: 1a417d452a7db67cbcf392bb44233f9117f3f8e6
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: cec3b32fc2c56769cf910cf9317e45648cc59174
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 06/17/2021
-ms.locfileid: "112321317"
+ms.locfileid: "112295743"
 ---
 # <a name="features"></a>特徴
 
@@ -54,9 +54,9 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 
 
  **注 2**
-* CosmosDB のチェーンと逆のチェーン FHIR 検索に関する MVP サポートを追加します。 
+* CosmosDB でのチェーンおよびリバース チェーン FHIR 検索の MVP サポートを追加しました。 
 
-  Cosmos でサポートされている Azure API for FHIR とオープンソースの FHIR サーバーでは、チェーン検索と逆連鎖検索は MVP 実装です。 Cosmos DB でチェーン検索を実行するために、この実装は検索式を処理し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 クエリが100を超える結果を返す場合は、エラーがスローされます。 既定では、チェーン検索は機能フラグの背後にあります。 Cosmos DB でチェーン検索を使用するには、ヘッダーを使用し `x-ms-enable-chained-search: true` ます。 詳細については、「 [PR 1695](https://github.com/microsoft/fhir-server/pull/1695)」を参照してください。
+  Cosmos によってAzure API for FHIRされたオープンソースの FHIR サーバーでは、チェーン検索とリバース チェーン検索は MVP 実装です。 この実装では、Cosmos DBで連鎖検索を実行するために、検索式について説明し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 クエリから 100 を超える結果が返された場合は、エラーがスローされます。 既定では、チェーン検索は機能フラグの背後に置かされます。 オブジェクトでチェーン検索を使用するには、Cosmos DBを使用します `x-ms-enable-chained-search: true` 。 詳細については [、「PR 1695」を参照してください](https://github.com/microsoft/fhir-server/pull/1695)。
 
 ## <a name="extended-operations"></a>拡張操作
 
@@ -69,8 +69,8 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | Group/$export          | はい       | はい       | Yes       |         |
 | $convert-data          | Yes       | はい       | はい       |         |
 | $validate              | はい       | はい       | はい       |         |
-| $member-一致          | はい       | はい       | はい       |         |
-| $patient-すべて    | はい       | いいえ        | はい       |         |
+| $member一致          | はい       | はい       | はい       |         |
+| $patientすべて    | いいえ        | いいえ        | はい       |         |
 
 ## <a name="persistence"></a>永続化
 
@@ -88,15 +88,15 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 
 ## <a name="service-limits"></a>サービスの制限
 
-* [**要求ユニット (RU)**](../../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 Ru または 40 Ru/GB のいずれか大きい方が必要です。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
+* [**要求ユニット (RU)**](../../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 RUs または 40 RUs/GB の方が大きい方が必要です。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
 
 * **バンドル サイズ** - 各バンドルは 500 項目に制限されています。
 
 * **データ サイズ** - データとドキュメントはそれぞれ 2 MB より少しばかり少なくする必要があります。
 
-* **サブスクリプションの制限** -既定では、各サブスクリプションは最大10個の FHIR サーバーインスタンスに制限されています。 サブスクリプションあたりのインスタンス数を増やす必要がある場合は、サポートチケットを開いて、ニーズに関する詳細情報を提供してください。
+* **サブスクリプションの** 制限 - 既定では、各サブスクリプションは最大 10 の FHIR Server インスタンスに制限されます。 サブスクリプションごとにさらにインスタンスが必要な場合は、サポート チケットを開き、ニーズに関する詳細を入力します。
 
-* **同時接続とインスタンス** -既定では、クラスター内の2つのインスタンスに対して同時接続が15個あります (合計で30個の同時要求)。 同時要求の数を増やす必要がある場合は、サポートチケットを開いて、ニーズに関する詳細情報を提供します。
+* **コンカレント接続** とインスタンス - 既定では、クラスター内の 2 つのインスタンスに対して 15 のコンカレント接続があります (合計 30 件の同時要求)。 さらに同時要求が必要な場合は、サポート チケットを開き、ニーズに関する詳細を入力します。
 
 ## <a name="next-steps"></a>次のステップ
 

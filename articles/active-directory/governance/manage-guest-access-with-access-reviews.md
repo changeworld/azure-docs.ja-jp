@@ -16,12 +16,12 @@ ms.date: 4/16/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d7e5fd6fdbb17b91d151875a48b7763d6b93c8
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: d07e287214e911f278450f645a6873ffe638f32b
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988282"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652602"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 Microsoft 365 グループへのゲストユーザーのアクセスを確認する場合は、各グループに対して個別にレビューを作成するか、すべての Microsoft 365 グループのゲスト ユーザーに対する連続アクセス レビューを自動で有効にすることができます。 次のビデオでは、ゲストユーザーの連続アクセス レビューの詳細について説明しています。 
 
-> [!VIDEO https://www.youtube.com/watch?v=3D2_YW2DwQ8]
+> [!VIDEO https://www.youtube.com/embed/3D2_YW2DwQ8]
 
 そのうえで、各ゲストに自分自身のアクセスをレビューしてもらうか、各ゲストのアクセスを 1 人以上のユーザーにレビューしてもらうかを決めてください。
 

@@ -1,30 +1,37 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 05/04/2021
+ms.date: 06/02/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: iangithinji
-author: iantheninja
+ms.author: mtillman
+author: mtillman
 manager: CelesteDG
-ms.openlocfilehash: 19fbfbed3a86575eb38fd2651cab9fffeabb673f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 361fb5cc46d356fbab53defc5c3add4d7a5b768b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743869"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079195"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
 
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+
+
 ## <a name="april-2021"></a>2021 年 4 月
 
 ### <a name="new-articles"></a>新しい記事
 
-- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml)
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](../app-proxy/application-proxy-faq.yml)
 
 ### <a name="updated-articles"></a>更新された記事
 

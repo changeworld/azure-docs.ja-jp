@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.author: punagpal
-ms.openlocfilehash: dc20d4cc54824fc65eba6669eab9a1c32d7ef9eb
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.author: rabhaiya
+ms.openlocfilehash: db46af2dffbecb6301af13bbabd871c1c5392354
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018626"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286725"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Azure IoT Connector for FHIR (プレビュー) のデータ フロー
 

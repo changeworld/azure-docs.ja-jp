@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: 8de7e27c4e98f0ef5bf58ac4f12847efa5cc36e5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c312b33a63c179d9af8347e268d400c5e48b3921
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110166288"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430235"
 ---
+> [!NOTE]
+> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/PhoneNumbers) にあります
+
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -60,6 +63,7 @@ import com.azure.core.http.rest.*;
 import com.azure.core.util.Context;
 import com.azure.core.util.polling.LongRunningOperationStatus;
 import com.azure.core.util.polling.PollResponse;
+import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.*;
 import java.io.*;
 
@@ -91,7 +95,7 @@ PhoneNumbersClient phoneNumberClient = new PhoneNumbersClientBuilder()
 <!-- embedme ./src/samples/java/com/azure/communication/phonenumbers/ReadmeSamples.java#L30-L41 -->
 ```java
 // You can find your connection string from your resource in the Azure portal
-String connectionString = "https://<RESOURCE_NAME>.communication.azure.com/;accesskey=<ACCESS_KEY>";
+String connectionString = "endpoint=https://<RESOURCE_NAME>.communication.azure.com/;accesskey=<ACCESS_KEY>";
 
 PhoneNumbersClient phoneNumberClient = new PhoneNumbersClientBuilder()
     .connectionString(connectionString)

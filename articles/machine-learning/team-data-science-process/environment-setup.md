@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 557550627fe2c39571a848723e5d716324fee240
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d8244384abe42819fed61329409e150d334c8d8
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93321176"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111814309"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Team Data Science Process で使用するためのデータ サイエンス環境の設定
 Team Data Science Process は、データの格納、処理、および分析のために、さまざまなデータ サイエンス環境を使用します。 たとえば、Azure Blob Storage、いくつかの種類の Azure 仮想マシン、HDInsight (Hadoop) クラスター、Azure Machine Learning ワークスペースなどです。 使用する環境を決定する方法は、モデル化するデータの種類と量、さらにクラウド内でのデータの宛先によって異なります。 
@@ -27,7 +27,12 @@ Team Data Science Process は、データの格納、処理、および分析の
 以下の記事では、Team Data Science Process によって使用されるさまざまなデータ サイエンス環境の設定方法が説明されています。
 
 * [Azure のストレージ アカウント](../../storage/common/storage-account-create.md)
-* [HDInsight (Hadoop) クラスター](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
+* HDInsight クラスターの R と Python
+  * [HDInsight での Spark の概要](../../hdinsight/spark/apache-spark-overview.md)
+  * [HDInsight (Hadoop) クラスター](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)
+  * [Jupyter Notebook の PySpark カーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)
+  * [HDInsight での R Server](../../hdinsight/r-server/r-server-overview.md)
+  * [HDInsight での R Server の概要](../../hdinsight/r-server/r-server-overview.md)
 * [Azure Machine Learning Studio (クラシック) ワークスペース](../classic/create-workspace.md)
 
 **Microsoft データ サイエンス仮想マシン (DSVM)** は、Azure Virtual Machine (VM) イメージとしても利用できます。 VM は、あらかじめインストールされており、データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。 DSVM は、Windows と Linux の両方で使用できます。 詳しくは、[Linux および Windows 用のクラウドベースの Data Science Virtual Machine の概要](../data-science-virtual-machine/overview.md)に関するページをご覧ください。
