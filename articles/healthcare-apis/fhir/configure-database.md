@@ -6,13 +6,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
-ms.author: matjazl
-ms.openlocfilehash: 3ce51141f20d2e032cb255f53efe3cb63882f1b2
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.author: zxue
+ms.openlocfilehash: 1874db9ba1cbefa4fb3bf749aeaccafc23171d37
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018712"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283953"
 ---
 # <a name="configure-database-settings"></a>データベース設定を構成する 
 

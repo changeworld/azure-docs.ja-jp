@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: matjazl
-ms.openlocfilehash: 8d70a7b44893ba9c9a0cc2d1d01c65e8e1584e0f
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.author: cavoeg
+ms.openlocfilehash: 011067e336355994f4f45d83a38aec24238ac258
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018993"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299071"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Azure Active Directory にリソース アプリケーションを登録する
 

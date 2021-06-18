@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 04/05/2021
-ms.author: punagpal
-ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: rabhaiya
+ms.openlocfilehash: 978009c31cfcaba96e9601b672d182dc7a322278
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443775"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286779"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 

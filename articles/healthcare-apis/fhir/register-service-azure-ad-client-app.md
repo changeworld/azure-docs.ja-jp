@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: matjazl
-ms.openlocfilehash: 6f7bf122b292ca144eac406957f19a13c7ba6662
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.author: cavoeg
+ms.openlocfilehash: 12df23908d1d5aab18598fcefc574422e233bf19
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018973"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299035"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>Azure Active Directory にサービス クライアント アプリケーションを登録する
 

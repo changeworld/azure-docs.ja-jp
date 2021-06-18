@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
-ms.author: matjazl
-ms.openlocfilehash: 479e8f870692cc16345d0ca19b8eb065caa28fa8
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.author: chrupa
+ms.openlocfilehash: 79c7cf1def04ab61320b22df51b5d3933c462cb8
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018553"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286581"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Azure API for FHIR とは&reg;
 
@@ -22,7 +22,7 @@ Azure API for FHIR を使用すると、FHIR® (高速ヘルスケア相互運�
 - マネージド FHIR サービス (クラウド上で数分でプロビジョニング) 
 - データ アクセスおよび FHIR® 形式での保管を行うための Azure 内のエンタープライズレベルで FHIR® ベースのエンドポイント
 - ハイ パフォーマンス、低遅延
-- 準拠しているクラウド環境で保護された正常性情報 (PHI) の管理を保護する
+- 準拠しているクラウド環境内での保護された医療情報 (PHI) の安全な管理
 - モバイルおよび Web 実装用の SMART on FHIR
 - ロールベースのアクセス制御 (RBAC) によるお手元のデータの大規模な制御
 - 各データ ストア内でのアクセス、作成、変更、および読み取りを追跡する監査ログ

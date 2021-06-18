@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 4/15/2021
+ms.date: 6/16/2021
 ms.author: cavoeg
-ms.openlocfilehash: 7248ae47d1ced0013559f14f5e5185f25b7d8083
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1a417d452a7db67cbcf392bb44233f9117f3f8e6
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077859"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321317"
 ---
 # <a name="features"></a>特徴
 
@@ -35,14 +35,14 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | オプティミスティック ロック付きの update | はい       | はい       | はい       |                                                     |
 | update (条件付き)           | はい       | はい       | はい       |                                                     |
 | patch                          | いいえ        | いいえ        | いいえ        |                                                     |
-| delete                         | はい       | はい       | はい       |  以下の「注」を参照してください。                                   |
+| delete                         | はい       | はい       | はい       |  下記のメモを参照してください。                                   |
 | delete (条件付き)           | はい       | はい        | はい        |                                                     |
 | history                        | はい       | はい       | はい       |                                                     |
 | create                         | はい       | はい       | はい       | POST/PUT の両方をサポートします                               |
 | create (条件付き)           | はい       | はい       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| 検索                         | Partial   | Partial   | Partial   | FHIR [検索の概要に関するページを参照してください](overview-of-search.md)。                           |
-| chained search                 | Partial       | はい       | 部分的   | 以下の注 2 を参照してください。                                   |
-| reverse chained search         | Partial       | はい       | 部分的   | 以下の注 2 を参照してください。                                   |
+| 検索                         | Partial   | Partial   | Partial   | 「 [FHIR 検索の概要」を](overview-of-search.md)参照してください。                           |
+| chained search                 | Partial       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
+| reverse chained search         | Partial       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
 | capabilities                   | はい       | はい       | はい       |                                                     |
 | batch (バッチ)                          | はい       | はい       | はい       |                                                     |
 | transaction                    | いいえ        | はい       | いいえ        |                                                     |
@@ -70,7 +70,7 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | $convert-data          | Yes       | はい       | はい       |         |
 | $validate              | はい       | はい       | はい       |         |
 | $member-一致          | はい       | はい       | はい       |         |
-| $patient-すべて    | いいえ        | いいえ        | はい       |         |
+| $patient-すべて    | はい       | いいえ        | はい       |         |
 
 ## <a name="persistence"></a>永続化
 
