@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 04/28/2021
 ms.author: rolyon
-ms.openlocfilehash: d040b4b49ddb394639633cb40887a116ff1e613b
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 48be24436e032f044e8f23238059e16b55d9cf5c
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279336"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111886900"
 ---
 # <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure でのロールを割り当てる
 
@@ -37,7 +37,7 @@ Azure ロールを割り当てたりロール割り当てを削除したりす�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)からのものです。 テンプレートには、3 つのパラメーターとリソース セクションがあります。 リソース セクションには、ロールの割り当ての 3 つの要素 (セキュリティ プリンシパル、ロールの定義、スコープ) が含まれることに注意してください。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/rbac-builtinrole-resourcegroup/)からのものです。 テンプレートには、3 つのパラメーターとリソース セクションがあります。 リソース セクションには、ロールの割り当ての 3 つの要素 (セキュリティ プリンシパル、ロールの定義、スコープ) が含まれることに注意してください。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json":::
 

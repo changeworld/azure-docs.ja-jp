@@ -2,14 +2,14 @@
 title: SnapCenter で Oracle Database のオンデマンド バックアップを作成する
 description: Oracle BareMetal インフラストラクチャ上の SnapCenter で Oracle Database のオンデマンド バックアップを作成する方法について説明します。
 ms.topic: how-to
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 05/07/2021
-ms.openlocfilehash: 55465133d175b35f1996db1e25fa354318de9aa7
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 699c070a3eeca2904f9620ca5f12c95c509210ab
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109520743"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579158"
 ---
 # <a name="create-on-demand-backup-of-your-oracle-database-in-snapcenter"></a>SnapCenter で Oracle Database のオンデマンド バックアップを作成する
 

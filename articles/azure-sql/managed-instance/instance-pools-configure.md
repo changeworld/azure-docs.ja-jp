@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: この記事では、Azure SQL Managed Instance プール (プレビュー) を作成および管理する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: deployment-configuration
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein
+author: urosmil
+ms.author: urmilano
+ms.reviewer: mathoma
 ms.date: 09/05/2019
-ms.openlocfilehash: 96c24c05f5e0dbb671a294b10ee51be411ca25ff
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 60afa287a96425ec0a3aead7e5affa6e046b7cbd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285289"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689713"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL Managed Instance をインスタンス プールにデプロイする
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

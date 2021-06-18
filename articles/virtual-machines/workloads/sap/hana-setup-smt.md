@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 990274f34dac0234c2c2d521ca6a260f999671bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebf0c710a9c3c0358bff280eed2df8485fb991e0
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674516"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579584"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux 用 SMT サーバーの設定
 SAP HANA の L インスタンスは、インターネットに直接接続していません。 このようなユニットをオペレーティング システム プロバイダーに登録し、更新プログラムをダウンロードして適用するのは、簡単なプロセスではありません。 SUSE Linux の場合の解決策は、Azure 仮想マシンに SMT サーバーを設定することです。 仮想マシンは、HANA L インスタンスに接続されている Azure 仮想ネットワークでホストする必要があります。 HANA L インスタンス ユニットは、このような SMT サーバーを使用して登録や更新プログラムのダウンロードを実行できます。 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2021
-ms.openlocfilehash: 0b9b96c4cbc2484597e51463a6b7a4ecfaf9e950
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 16bac156af04394552c280271d13ecbe41a1982b
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107892438"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615182"
 ---
 # <a name="configure-azure-container-offer-listing-details"></a>Azure Container のオファー登録情報の詳細を構成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "107892438"
 
 ## <a name="marketplace-details"></a>Marketplace の詳細
 
-ここで入力する **[名前]** は、オファーのタイトルとしてお客様に表示されます。 このフィールドには、オファーの作成時に **[オファーの別名]** に入力した名前が事前に設定されていますが、これは変更できます。 この名前は、次のようになります。
+ここで入力する **[名前]** は、オファーのタイトルとしてお客様に表示されます。 このフィールドには、オファーの作成時に **[オファーの別名]** に入力した名前が事前に設定されていますが、それは変更できます。 この名前は、次のようになります。
 
 - 商標および著作権の記号を含めることができます。
 - 50 文字以下にする必要があります。
@@ -57,8 +57,6 @@ ms.locfileid: "107892438"
 ## <a name="marketplace-media"></a>Marketplace メディア
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 画像がぼやけていると、送信が拒否されます。
-
-[!INCLUDE [logo tips](includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターによって使用される https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。

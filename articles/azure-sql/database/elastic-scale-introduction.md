@@ -6,15 +6,16 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.topic: conceptual
 ms.custom: sqldbrb=1
-author: stevestein
-ms.author: sstein
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 3f00b2c1a8a8264267aa8ae68d80890adeb642ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0e577a8f0d8b77a9a8fcd1a5e9fdf4ca909c14e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98059147"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705567"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケールアウト
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

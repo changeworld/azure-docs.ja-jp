@@ -5,17 +5,17 @@ description: Metrics Advisor に追加したデータ フィードを管理す�
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: mbullwin
-ms.openlocfilehash: fb6eaf44967732d3a41ea92b0896540a40f694e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b9d1779d55f89acc7ad886b8b556837e1562622
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96184724"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891318"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>方法:データ フィードを管理する
 

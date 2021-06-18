@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/15/2021
 ms.author: amverma
-ms.openlocfilehash: 5a8e26aac388f44554a0a9d701f76a5e0f906a1e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 305b37d4b4ae67be79c095ee42810876770bb239
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081480"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673314"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 

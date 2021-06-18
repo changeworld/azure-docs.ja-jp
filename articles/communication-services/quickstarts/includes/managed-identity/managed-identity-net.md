@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: fe487aa684e0ec4c68adb9f5224066ac742676be
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: e87735d5e72bf39c1468afc876d8383950c83595
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564663"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430555"
 ---
+> [!NOTE]
+> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/use-managed-Identity) にあります
+
 ## <a name="setting-up"></a>設定
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
@@ -13,7 +16,7 @@ ms.locfileid: "107564663"
 コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`ManagedIdentitiesQuickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (`Program.cs`) を使用する単純な "Hello World" C# プロジェクトが作成されます。
 
 ```console
-dotnet new console -o ManagedIdentitiesQuickstartQuickstart
+dotnet new console -o ManagedIdentitiesQuickstart
 ```
 
 新しく作成したアプリ フォルダーにディレクトリを変更し、`dotnet build` コマンドを使用してアプリケーションをコンパイルします。
@@ -48,7 +51,7 @@ using Azure;
 このクイックスタートでは、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) を使用します。 この資格情報は、運用と開発の各環境に適しています。 これは各操作に必要なので、`Program.cs` クラス内に作成します。 ファイルの先頭に以下を追加します。
 
 ```csharp
-     private DefaultAzureCredential credential = new DefaultAzureCredential();
+private DefaultAzureCredential credential = new DefaultAzureCredential();
 ```
 
 ## <a name="issue-a-token-with-managed-identities"></a>マネージド ID を使用してトークンを発行する
@@ -56,16 +59,16 @@ using Azure;
 次に、作成した資格情報を使用するコードを追加して、VoIP アクセス トークンを発行します。 このコードは後で呼び出します。
 
 ```csharp
-     public Response<AccessToken> CreateIdentityAndGetTokenAsync(Uri resourceEndpoint)
-     {
-          var client = new CommunicationIdentityClient(resourceEndpoint, this.credential);
-          var identityResponse = client.CreateUser();
-          var identity = identityResponse.Value;
+public Response<AccessToken> CreateIdentityAndGetTokenAsync(Uri resourceEndpoint)
+{
+    var client = new CommunicationIdentityClient(resourceEndpoint, this.credential);
+    var identityResponse = client.CreateUser();
+    var identity = identityResponse.Value;
 
-          var tokenResponse = client.GetToken(identity, scopes: new[] { CommunicationTokenScope.VoIP });
+    var tokenResponse = client.GetToken(identity, scopes: new[] { CommunicationTokenScope.VoIP });
 
-          return tokenResponse;
-     }
+    return tokenResponse;
+}
 ```
 
 ## <a name="send-an-sms-with-managed-identities"></a>マネージド ID を使用して SMS を送信する
@@ -73,18 +76,18 @@ using Azure;
 マネージ ID を使用するもう 1 つの例として、同じ資格情報を使用して SMS を送信する次のコードを追加します。
 
 ```csharp
-     public SmsSendResult SendSms(Uri resourceEndpoint, string from, string to, string message)
-     {
-          SmsClient smsClient = new SmsClient(resourceEndpoint, this.credential);
-          SmsSendResult sendResult = smsClient.Send(
-               from: from,
-               to: to,
-               message: message,
-               new SmsSendOptions(enableDeliveryReport: true) // optional
-          );
+public SmsSendResult SendSms(Uri resourceEndpoint, string from, string to, string message)
+{
+    SmsClient smsClient = new SmsClient(resourceEndpoint, this.credential);
+    SmsSendResult sendResult = smsClient.Send(
+            from: from,
+            to: to,
+            message: message,
+            new SmsSendOptions(enableDeliveryReport: true) // optional
+        );
 
-          return sendResult;
-     }
+    return sendResult;
+}
 ```
 
 ## <a name="write-the-main-method"></a>Main メソッドを作成する
@@ -92,26 +95,26 @@ using Azure;
 `Program.cs` には Main メソッドがすでに含まれているはずなので、前に作成したコードを呼び出してマネージド ID の使用方法を実演するコードを追加してみましょう。
 
 ```csharp
-     static void Main(string[] args)
-     {
-          // You can find your endpoint and access key from your resource in the Azure portal
-          // e.g. "https://<RESOURCE_NAME>.communication.azure.com";
-          Uri endpoint = new("https://<RESOURCENAME>.communication.azure.com/");
+static void Main(string[] args)
+{
+    // You can find your endpoint and access key from your resource in the Azure portal
+    // e.g. "https://<RESOURCE_NAME>.communication.azure.com";
+    Uri endpoint = new("https://<RESOURCENAME>.communication.azure.com/");
 
-          // We need an instance of the program class to use within this method.
-          Program instance = new();
+    // We need an instance of the program class to use within this method.
+    Program instance = new();
 
-          Console.WriteLine("Retrieving new Access Token, using Managed Identities");
-          Response<AccessToken> response = instance.CreateIdentityAndGetTokenAsync(endpoint);
-          Console.WriteLine($"Retrieved Access Token: {response.Value.Token}");
+    Console.WriteLine("Retrieving new Access Token, using Managed Identities");
+    Response<AccessToken> response = instance.CreateIdentityAndGetTokenAsync(endpoint);
+    Console.WriteLine($"Retrieved Access Token: {response.Value.Token}");
 
-          Console.WriteLine("Sending SMS using Managed Identities");
+    Console.WriteLine("Sending SMS using Managed Identities");
 
-          // You will need a phone number from your resource to send an SMS.
-          SmsSendResult result = instance.SendSms(endpoint, "<Your ACS Phone Number>", "<The Phone Number you'd like to send the SMS to.>", "Hello from Managed Identities");
-          Console.WriteLine($"Sms id: {result.MessageId}");
-          Console.WriteLine($"Send Result Successful: {result.Successful}");
-     }
+    // You will need a phone number from your resource to send an SMS.
+    SmsSendResult result = instance.SendSms(endpoint, "<Your ACS Phone Number>", "<The Phone Number you'd like to send the SMS to.>", "Hello from Managed Identities");
+    Console.WriteLine($"Sms id: {result.MessageId}");
+    Console.WriteLine($"Send Result Successful: {result.Successful}");
+}
 ```
 
 最終的な `Program.cs` ファイルは次のようになります。
