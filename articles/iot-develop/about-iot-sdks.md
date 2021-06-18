@@ -6,12 +6,12 @@ ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 7c8aa496d44ba72c5a8d62631108b8e332dd4fbf
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 2e8a503731cc8e3774b898241140ef1bfaa72619
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795818"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591207"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT device SDK の概要
 
@@ -165,5 +165,5 @@ IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サー�
 
 * [クイックスタート: テレメトリを IoT Central に送信する](quickstart-send-telemetry-central.md)
 * [クイックスタート: テレメトリを IoT Hub に送信する](quickstart-send-telemetry-iot-hub.md)
-* [埋め込み開発の概要](quickstart-device-development.md)
+* [クイックスタート: MXCHIP AZ3166 Devkit を IoT Central に接続する](quickstart-devkit-mxchip-az3166.md)
 * [Azure IoT SDK を使用した開発の利点](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)について詳しい情報を入手する

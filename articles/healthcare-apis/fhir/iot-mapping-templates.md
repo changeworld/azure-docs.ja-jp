@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 04/05/2021
-ms.author: punagpal
-ms.openlocfilehash: e43b5068544927ba4d04c86b16d3a15510c32bed
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: rabhaiya
+ms.openlocfilehash: 9b5fa3533aa521053a321a3f0ffdfad3505abb73
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448474"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286671"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Azure IoT Connector for FHIR (プレビュー) のマッピング テンプレート
 この記事では、マッピング テンプレートを使用して、Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソース)* を構成する方法について詳しく説明します。
@@ -445,7 +445,7 @@ CodeValueFhirTemplate は、FHIR マッピングで現在サポートされて�
 |**Codes[].System**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のシステム。
 |**Codes[].Display**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) の表示。
 |**Value**|観察で抽出して表す値。 詳細については、「[値の型テンプレート](#valuetypes)」を参照してください。
-|**Components**|*省略可能:* 観察に対して作成する 1 つ以上のコンポーネント。
+|**コンポーネント**|*省略可能:* 観察に対して作成する 1 つ以上のコンポーネント。
 |**Components[].Codes**|コンポーネントに適用する 1 つ以上の [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 |**Components[].Value**|コンポーネントで抽出して表す値。 詳細については、「[値の型テンプレート](#valuetypes)」を参照してください。
 
@@ -457,16 +457,16 @@ CodeValueFhirTemplate は、FHIR マッピングで現在サポートされて�
 | プロパティ | 説明 
 | --- | ---
 |**DefaultPeriod**|使用する既定の時間 (ミリ秒単位)。 
-|**Unit**|SampledData の原点に設定する単位。 
+|**単位**|SampledData の原点に設定する単位。 
 
 #### <a name="quantity"></a>Quantity
 FHIR データ型の [Quantity](http://hl7.org/fhir/datatypes.html#Quantity) を表します。 グループ内に複数の値が存在する場合は、最初の値のみが使用されます。 同じ観察にマップされる新しい値が到着すると、古い値が上書きされます。
 
 | プロパティ | 説明 
 | --- | --- 
-|**Unit**| 単位の表記。
+|**単位**| 単位の表記。
 |**コード**| 単位のコード化された形式。
-|**System**| コード化された単位の形式を定義するシステム。
+|**システム**| コード化された単位の形式を定義するシステム。
 
 ### <a name="codeableconcept"></a>CodeableConcept
 FHIR データ型 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept) を表します。 実際の値は使用されません。

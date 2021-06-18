@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: d39cdc7430e41d788c29b72b129ee7939ac8b611
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 437b7bd6e919cd6b462cb8653354631fbeb438ed
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736417"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785558"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>移行ガイド: SQL Server から Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]

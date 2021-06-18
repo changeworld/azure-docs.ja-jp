@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.author: matjazl
-ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.author: cavoeg
+ms.openlocfilehash: 20d2e86786c3586cd4f45e98d670d4a937a77992
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284437"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299197"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Azure Active Directory に Confidential クライアント アプリケーションを登録する
 
@@ -25,7 +25,7 @@ ms.locfileid: "107284437"
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 
-1. [Azure portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。
 
 1. **[アプリの登録]** を選択します。 
 
