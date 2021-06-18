@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 11/13/2020
-ms.author: punagpal
-ms.openlocfilehash: 77d54ef0c9bef40af47c2fc48b9d4b5d6315b119
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.author: rabhaiya
+ms.openlocfilehash: f17223fbada3dabbf0126f6f841e36ace6d0215c
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780397"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283863"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>チュートリアル:Azure IoT Hub を通じてデバイス データを受信する
 

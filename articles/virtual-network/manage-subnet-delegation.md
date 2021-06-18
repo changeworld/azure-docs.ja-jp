@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 401124ed4b2794d891ca224ba3dc1c78edcae8d5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5ae401e0593eedfedfde1c657da66d9b423d810f
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783415"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060563"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>サブネットの委任を追加または削除する
 
@@ -59,16 +60,14 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 このセクションでは、前のセクションで作成したサブネットを Azure サービスに委任します。
 
 1. ポータルの検索バーに「*myVirtualNetwork*」と入力します。 検索結果に **[myVirtualNetwork]** が表示されたら、それを選択します。
-2. 検索結果で、 *[myVirtualNetwork]* を選択します。
-3. **[設定]** で **[サブネット]** を選択し、次に **[mySubnet]** を選択します。
-4. *[mySubnet]* ページで、 **[Subnet delegation]\(サブネットの委任\)** 一覧に対し、 **[Delegate subnet to a service]\(サブネットをサービスに委任\)** に一覧表示されているサービスから選択します (たとえば、**Microsoft.DBforPostgreSQL/serversv2**)。  
+2. **[設定]** で **[サブネット]** を選択し、次に **[mySubnet]** を選択します。
+3. *[mySubnet]* ページで、 **[Subnet delegation]\(サブネットの委任\)** 一覧に対し、 **[Delegate subnet to a service]\(サブネットをサービスに委任\)** に一覧表示されているサービスから選択します (たとえば、**Microsoft.DBforPostgreSQL/serversv2**)。  
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure サービスからサブネットの委任を削除する
 
 1. ポータルの検索バーに「*myVirtualNetwork*」と入力します。 検索結果に **[myVirtualNetwork]** が表示されたら、それを選択します。
-2. 検索結果で、 *[myVirtualNetwork]* を選択します。
-3. **[設定]** で **[サブネット]** を選択し、次に **[mySubnet]** を選択します。
-4. *[mySubnet]* ページで、 **[Subnet delegation]\(サブネットの委任\)** 一覧に対し、 **[Delegate subnet to a service]\(サブネットをサービスに委任\)** に一覧表示されているサービスから **[None]\(なし\)** を選択します。 
+2. **[設定]** で **[サブネット]** を選択し、次に **[mySubnet]** を選択します。
+3. *[mySubnet]* ページで、 **[Subnet delegation]\(サブネットの委任\)** 一覧に対し、 **[Delegate subnet to a service]\(サブネットをサービスに委任\)** に一覧表示されているサービスから **[None]\(なし\)** を選択します。 
 
 ## <a name="azure-cli"></a>Azure CLI
 

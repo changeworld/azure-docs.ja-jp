@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 4/30/2021
+ms.date: 5/31/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cca0e585f6ca17775ce21acb0d1a588ba36716e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 465a05beff227741e3cc211b243aaafc0f536c66
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085998"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962110"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -32,6 +32,188 @@ Azure Active Directory の新着情報のリリース ノートでは、次の�
 - 非推奨の機能
 - 変更の計画
 
+---
+
+## <a name="november-2020"></a>2020 年 11 月
+
+### <a name="azure-active-directory-tls-10-tls-11-and-3des-deprecation"></a>Azure Active Directory TLS 1.0、TLS 1.1、3DES の非推奨化
+
+**種類:** 変更の計画   
+**サービス カテゴリ:** すべての Azure AD アプリケーション  
+**製品の機能:** 標準
+
+Azure Active Directory では、2021 年 6 月 30 日以降、Azure Active Directory の世界各地のリージョンで次のプロトコルが非推奨になります。
+
+- TLS 1.0
+- TLS 1.1
+- 3DES 暗号スイート (TLS_RSA_WITH_3DES_EDE_CBC_SHA)
+
+影響を受ける環境は次のとおりです。
+- Azure 商用クラウド
+- Office 365 GCC および WW
+
+非推奨のプロトコルを削除するためのガイダンスについては、[Azure AD TLS 1.1 と 1.0 の非推奨に備えて、お使いの環境で TLS 1.2 のサポートを有効にする](/troubleshoot/azure/active-directory/enable-support-tls-environment)方法に関する記事を参照してください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---november-2020"></a>Azure AD アプリケーション ギャラリーで新しいフェデレーション アプリが利用できるようになりました - 2020 年 11 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+
+2020 年 11 月には、フェデレーションをサポートする次の 52 個の新しいアプリケーションがアプリ ギャラリーに追加されました。
+
+[Travel & Expense Management](https://app.expenseonce.com/Account/Login)、[Tribeloo](../saas-apps/tribeloo-tutorial.md)、[Itslearning File Picker](https://pmteam.itslearning.com/)、[Crises Control](../saas-apps/crises-control-tutorial.md)、[CourtAlert](https://www.courtalert.com/)、[StealthMail](https://stealthmail.com/)、[Edmentum - Study Island](https://app.studyisland.com/cfw/login/)、[Virtual Risk Manager](../saas-apps/virtual-risk-manager-tutorial.md)、[TIMU](../saas-apps/timu-tutorial.md)、[Looker Analytics Platform](../saas-apps/looker-analytics-platform-tutorial.md)、[Talview - Recruit, Real Time Translator](https://recruit.talview.com/login)、[Klaxoon](https://access.klaxoon.com/login)、[Podbean](../saas-apps/podbean-tutorial.md)、[zcal](https://zcal.co/signup)、[expensemanager](https://api.expense-manager.com/)、[Netsparker Enterprise](../saas-apps/netsparker-enterprise-tutorial.md)、[En-trak Tenant Experience Platform](https://portal.en-trak.app/)、[Appian](../saas-apps/appian-tutorial.md)、[Panorays](../saas-apps/panorays-tutorial.md)、[Builterra](https://portal.builterra.com/)、[EVA Check-in](https://my.evacheckin.com/organization)、[HowNow WebApp SSO](../saas-apps/hownow-webapp-sso-tutorial.md)、[Coupa Risk Assess](../saas-apps/coupa-risk-assess-tutorial.md)、[Lucid (すべての製品)](../saas-apps/lucid-tutorial.md)、[GoBright](https://portal.brightbooking.eu/)、[SailPoint IdentityNow](../saas-apps/sailpoint-identitynow-tutorial.md)、[Resource Central](../saas-apps/resource-central-tutorial.md)、[UiPathStudioO365App](https://www.uipath.com/product/platform)、[Jedox](../saas-apps/jedox-tutorial.md)、[Cequence Application Security](../saas-apps/cequence-application-security-tutorial.md)、[PerimeterX](../saas-apps/perimeterx-tutorial.md)、[TrendMiner](../saas-apps/trendminer-tutorial.md)、[Lexion](../saas-apps/lexion-tutorial.md)、[WorkWare](../saas-apps/workware-tutorial.md)、[ProdPad](../saas-apps/prodpad-tutorial.md)、[AWS ClientVPN](../saas-apps/aws-clientvpn-tutorial.md)、[AppSec Flow SSO](../saas-apps/appsec-flow-sso-tutorial.md)、[Luum](../saas-apps/luum-tutorial.md)、[Freight Measure](https://www.gpcsl.com/freight.html)、[Terraform Cloud](../saas-apps/terraform-cloud-tutorial.md)、[Nature Research](../saas-apps/nature-research-tutorial.md)、[Play Digital Signage](https://login.playsignage.com/login)、[RemotePC](../saas-apps/remotepc-tutorial.md)、[Prolorus](../saas-apps/prolorus-tutorial.md)、[Hirebridge ATS](../saas-apps/hirebridge-ats-tutorial.md)、[Teamgage](https://www.teamgage.com/Account/ExternalLoginAzure)、[Roadmunk](../saas-apps/roadmunk-tutorial.md)、[Sunrise Software Relations CRM](https://cloud.relations-crm.com/)、[Procaire](../saas-apps/procaire-tutorial.md)、[Mentor® by eDriving:Business](https://www.edriving.com/)、[Gradle Enterprise](https://gradle.com/)
+
+すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください
+
+Azure AD アプリ ギャラリーにアプリケーションを公開する場合は、こちらの詳細 (https://aka.ms/AzureADAppRequest ) をお読みください
+
+---
+
+### <a name="public-preview---custom-roles-for-enterprise-apps"></a>パブリック プレビュー - エンタープライズ アプリのカスタム ロール
+
+**種類:** 新機能  
+**サービス カテゴリ:** RBAC  
+**製品の機能:** アクセス制御
+ 
+ [委任されたエンタープライズ アプリケーション管理のためのカスタム RBAC ロール](../roles/custom-available-permissions.md)がパブリック プレビューになりました。 これらの新しいアクセス許可は、アプリ登録管理のためのカスタム ロールに付与されます。これにより、管理者が持つアクセス権をきめ細かく制御できます。 今後、Azure AD の管理を委任するための追加のアクセス許可がリリースされます。
+
+いくつかの一般的な委任のシナリオを次に示します。
+- SAML ベースのシングル サインオン アプリケーションにアクセスできるユーザーとグループの割り当て
+- Azure AD ギャラリー アプリケーションの作成
+- SAML ベースのシングル サインオン アプリケーションの基本的な SAML 構成の更新と読み取り
+- SAML ベースのシングル サインオン アプリケーションに使用される署名証明書の管理
+- SAML ベースのシングル サインオン アプリケーションの期限切れが迫っているサインイン証明書の通知メール アドレスの更新
+- SAML ベースのシングル サインオン アプリケーションに使用される SAML トークン署名とサインイン アルゴリズムの更新
+- SAML ベースのシングル サインオン アプリケーションに使用されるユーザー属性と要求の作成、削除、更新
+- プロビジョニング ジョブを有効化、無効化、再開する権限
+- 属性マッピングの更新
+- オブジェクトに関連付けられているプロビジョニング設定を読み取る権限
+- サービス プリンシパルに関連付けられているプロビジョニング設定を読み取る権限
+- プロビジョニングのためのアプリケーション アクセスを認可する権限
+
+---
+
+### <a name="public-preview---azure-ad-application-proxy-natively-supports-single-sign-on-access-to-applications-that-use-headers-for-authentication"></a>パブリック プレビュー - Azure AD アプリケーション プロキシでは、認証のためにヘッダーを使用するアプリケーションへのシングル サインオン アクセスがネイティブにサポートされる
+
+**種類:** 新機能  
+**サービス カテゴリ:** アプリ プロキシ  
+**製品の機能:** アクセス制御
+ 
+Azure Active Directory (Azure AD) アプリケーション プロキシ は、認証のためにヘッダーを使用するアプリケーションに対するシングル サインオン アクセスをサポートしています。 Azure AD で、お使いのアプリケーションに必要なヘッダー値を構成できます。 ヘッダー値は、アプリケーション プロキシを介してアプリケーションに送信されます。 詳細については、「[Azure AD アプリ プロキシを使用したオンプレミスのアプリに対するヘッダーベースのシングル サインオン](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md)」を参照してください
+ 
+---
+
+### <a name="general-availability---azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy"></a>一般提供 - Azure AD B2C Phone のカスタム ポリシーを使用したサインアップとサインイン
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2C - コンシューマー ID 管理  
+**製品の機能:** B2B/B2C
+
+開発者や企業は、電話番号を使用したサインアップとサインインを使用して、SMS 経由でユーザーの電話番号に送信されるワンタイム パスワードを使用したユーザーのサインアップとサインインを許可できます。 この機能を使用すると、ユーザーが電話にアクセスできなくなった場合に自分の電話番号を変更することもできます。 カスタム ポリシー機能によって、開発者や企業は、ページのカスタマイズを通して自社のブランドを伝達できます。 「[Azure AD B2C でカスタム ポリシーを使用した電話のサインアップとサインインを設定する](../../active-directory-b2c/phone-authentication-user-flows.md)」でその実行方法を確認してください。
+ 
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---november-2020"></a>Azure AD アプリケーション ギャラリーの新しいプロビジョニング コネクタ - 2020 年 11 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** サード パーティ統合
+ 
+新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
+
+- [Adobe Identity Management](../saas-apps/adobe-identity-management-provisioning-tutorial.md)
+- [Blogin](../saas-apps/blogin-provisioning-tutorial.md)
+- [Clarizen One](../saas-apps/clarizen-one-provisioning-tutorial.md)
+- [Contentful](../saas-apps/contentful-provisioning-tutorial.md)
+- [GitHub AE](../saas-apps/github-ae-provisioning-tutorial.md)
+- [Playvox](../saas-apps/playvox-provisioning-tutorial.md)
+- [PrinterLogic SaaS](../saas-apps/printer-logic-saas-provisioning-tutorial.md)
+- [Tic - Tac Mobile](../saas-apps/tic-tac-mobile-provisioning-tutorial.md)
+- [Visibly](../saas-apps/visibly-provisioning-tutorial.md)
+
+詳細については、[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングの自動化](../app-provisioning/user-provisioning.md)に関する記事を参照してください。
+ 
+---
+
+### <a name="public-preview---email-sign-in-with-proxyaddresses-now-deployable-via-staged-rollout"></a>パブリック プレビュー - 段階的なロールアウトを通じてデプロイできるようになった ProxyAddresses を使用した電子メール サインイン
+
+**種類:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+テナント管理者は、段階的なロールアウトを使用して、ProxyAddresses を使用した電子メール サインインを特定の Azure AD グループにデプロイできるようになりました。 これは、テナント全体にデプロイする前に、ホーム領域検出ポリシーを使用して機能を試す際に役立ちます。 段階的なロールアウトを通じて ProxyAddresses を使用した電子メール サインインをデプロイする手順については、[ドキュメント](../authentication/howto-authentication-use-email-signin.md)を参照してください。
+ 
+---
+
+### <a name="limited-preview---sign-in-diagnostic"></a>制限付きプレビュー - サインイン診断
+
+**種類:** 新機能  
+**サービス カテゴリ:** レポーティング  
+**製品の機能:** 監視とレポート
+ 
+サインイン診断の初期プレビュー リリースでは、管理者はユーザーのサインインを確認できるようになりました。管理者は、サインイン中に発生したことと問題の修正方法に関する、状況に応じた具体的で関連性のある詳細とガイダンスを受け取ることができます。 診断は Azure AD レベルと条件付きアクセスの診断と解決ブレードの両方で使用できます。 このリリースが対応する診断シナリオは、条件付きアクセス、Multi-Factor Authentication、成功したサインインです。
+
+詳細については、「[Azure AD におけるサインイン診断とは](../reports-monitoring/overview-sign-in-diagnostics.md)」を参照してください。
+ 
+---
+
+### <a name="improved-unfamiliar-sign-in-properties"></a>通常とは異なるサインイン プロパティの機能強化
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** Identity Protection  
+**製品の機能:** ID のセキュリティ & 保護
+
+  通常とは異なるサインイン プロパティの検出が更新されました。 お客様は、より高いリスクの通常とは異なるサインイン プロパティが検出されることに気付くことがあります。 詳細については、「[リスクとは](../identity-protection/concept-identity-protection-risks.md)」を参照してください。
+ 
+---
+
+### <a name="public-preview-refresh-of-cloud-provisioning-agent-now-available-version-112810"></a>クラウド プロビジョニング エージェントのパブリック プレビューの更新が利用可能 (バージョン:1.1.281.0)
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** Azure AD のクラウド プロビジョニング  
+**製品の機能:** ID ライフサイクル管理
+ 
+クラウド プロビジョニング エージェントがパブリック プレビューでリリースされ、ポータルから利用できるようになりました。 このリリースには、ドメインでの GMSA のサポートなど、いくつかの機能強化が含まれています。これにより、セキュリティが向上し、初期同期サイクルが改善され、大きいグループがサポートされます。 詳細については、リリース バージョンの[履歴](../app-provisioning/provisioning-agent-release-version-history.md)を参照してください。 
+ 
+---
+
+### <a name="bitlocker-recovery-key-api-endpoint-now-under-informationprotection"></a>BitLocker 回復キー API のエンドポイントが現在は /informationProtection の下に配置される
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** デバイス アクセス管理  
+**製品の機能:** デバイスのライフサイクル管理
+ 
+以前は、/bitlocker のエンドポイントを使用して BitLocker キーを回復することができました。 このエンドポイントはいずれ非推奨になるため、お客様は /informationProtection の下に配置されるようになった API の使用を開始するようにしてください。 
+
+これらの変更を反映するためのドキュメントの更新については、[BitLocker 回復 API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta&preserve-view=true) に関する記事を参照してください。
+
+---
+
+### <a name="general-availability-of-application-proxy-support-for-remote-desktop-services-html5-web-client"></a>リモート デスクトップ サービス HTML5 Web クライアントに対するアプリケーション プロキシ サポートの一般提供
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** アプリ プロキシ  
+**製品の機能:** アクセス制御
+ 
+Azure AD リモート デスクトップ サービス (RDS) Web クライアントに対する Azure AD アプリケーション プロキシのサポートが、一般提供されるようになりました。 RDS Web クライアントを使用すると、ユーザーは、Microsoft Edge、Internet Explorer 11、Google Chrome などの任意の HTML5 対応ブラウザーを使用して、リモート デスクトップ インフラストラクチャにアクセスできます。 ユーザーは、どこからでもローカル デバイスと同様にリモート アプリやデスクトップと対話できます。 
+
+Azure AD アプリケーション プロキシを使用すると、すべての種類のリッチ クライアント アプリに対して事前認証と条件付きアクセス ポリシーを適用することにより、RDS デプロイのセキュリティを強化できます。 詳細については、「[Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](../app-proxy/application-proxy-integrate-with-remote-desktop-services.md)」を参照してください
+ 
+---
+
+### <a name="new-enhanced-dynamic-group-service-is-in-public-preview"></a>新しい機能強化された動的グループ サービス (パブリック プレビュー)
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** グループ管理  
+**製品の機能:** コラボレーション
+ 
+機能強化された動的グループ サービスがパブリック プレビューになりました。 テナントに動的グループを作成する新しいお客様は、この新しいサービスを使用することになります。 動的グループの作成に必要な時間は、テナントのサイズではなく、作成されるグループのサイズに比例します。 この更新により、お客様がより小さいグループを作成した場合に、大きいテナントのパフォーマンスが大幅に向上します。 
+
+また、この新しいサービスでは、属性が変更されたことによるメンバーの追加と削除を数分以内に完了することを目標としています。 1 つの処理エラーによってテナントの処理がブロックされることもありません。 動的グループの作成の詳細については、[ドキュメント](../enterprise-users/groups-create-rule.md)を参照してください。
+ 
 ---
 
 ## <a name="october-2020"></a>2020 年 10 月
@@ -766,7 +948,7 @@ Azure portal の対応する更新により、ご自分の SPA の種類を "spa
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** アクセス制御
 
-Azure AD アプリケーション プロキシでリモート デスクトップ サービス (RDS) Web クライアントがサポートされるようになりました。 RDS Web クライアントを使用すると、ユーザーは、Microsoft Edge、Internet Explorer 11、Google Chrome などの任意の HTML5 対応ブラウザーを使用して、リモート デスクトップ インフラストラクチャにアクセスできます。ユーザーは、どこからでもローカル デバイスと同様にリモート アプリやデスクトップと対話できます。 Azure AD アプリケーション プロキシを使用すると、すべての種類のリッチ クライアント アプリに対して事前認証と条件付きアクセス ポリシーを適用することにより、RDS デプロイのセキュリティを強化できます。 詳細については、「[Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md)」を参照してください。
+Azure AD アプリケーション プロキシでリモート デスクトップ サービス (RDS) Web クライアントがサポートされるようになりました。 RDS Web クライアントを使用すると、ユーザーは、Microsoft Edge、Internet Explorer 11、Google Chrome などの任意の HTML5 対応ブラウザーを使用して、リモート デスクトップ インフラストラクチャにアクセスできます。ユーザーは、どこからでもローカル デバイスと同様にリモート アプリやデスクトップと対話できます。 Azure AD アプリケーション プロキシを使用すると、すべての種類のリッチ クライアント アプリに対して事前認証と条件付きアクセス ポリシーを適用することにより、RDS デプロイのセキュリティを強化できます。 詳細については、「[Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](../app-proxy/application-proxy-integrate-with-remote-desktop-services.md)」を参照してください。
  
 ---
 
@@ -2234,7 +2416,7 @@ Chrome 80 ブラウザーがリリースされる数週間前に、アプリケ�
     >[!NOTE]
     > アプリケーション プロキシ アクセス Cookie は、常にセキュリティで保護されたチャネルを介して排他的に送信されています。 これらの変更は、セッション Cookie にのみ適用されます。
 
-アプリケーション プロキシ Cookie の設定の詳細については、「[Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定](../manage-apps/application-proxy-configure-cookie-settings.md)」を参照してください。
+アプリケーション プロキシ Cookie の設定の詳細については、「[Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定](../app-proxy/application-proxy-configure-cookie-settings.md)」を参照してください。
 
 ---
 
@@ -2470,7 +2652,7 @@ Azure AD Domain Services (Azure AD DS) を更新し、新しく強化された�
 
 Power BI モバイル アプリと Azure AD アプリケーション プロキシの間の新しい統合により、Power BI モバイルアプリに安全にサインインし、オンプレミスの Power BI Report Server でホストされている組織のレポートを表示することができます。
 
-Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) については、[Power BI サイト](https://powerbi.microsoft.com/mobile/)を参照してください。 Azure AD アプリケーション プロキシを使用して Power BI モバイル アプリをセットアップする方法の詳細については、「[Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする](../manage-apps/application-proxy-integrate-with-power-bi.md)」を参照してください。
+Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) については、[Power BI サイト](https://powerbi.microsoft.com/mobile/)を参照してください。 Azure AD アプリケーション プロキシを使用して Power BI モバイル アプリをセットアップする方法の詳細については、「[Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする](../app-proxy/application-proxy-integrate-with-power-bi.md)」を参照してください。
 
 ---
 
@@ -3255,7 +3437,6 @@ Azure AD Connect で電子メール アラート システムの切り替えが�
 
 Azure AD Connect で、あるフェデレーション ドメインから別のフェデレーション ドメインに、ユーザーの UPN サフィックスを正しく変更できるようになりました。 この修正により、同期サイクル中に FederatedDomainChangeError エラー メッセージを受け取ったり、"Azure Active Directory でこのオブジェクトを更新できません。属性 [FederatedUser.UserPrincipalName] が無効です。 ローカルのディレクトリ サービスでこの値を更新してください" という通知メールを受け取ったりすることがなくなります。
 
-詳しくは、[同期中のエラーのトラブルシューティング](../hybrid/tshoot-connect-sync-errors.md#federateddomainchangeerror)に関するページをご覧ください。
 
 ---
 
@@ -3347,7 +3528,7 @@ Azure AD ポータルから削除された Office 365 グループを表示お�
 
 **種類:** 新機能 **サービス カテゴリ:** アプリ プロキシ **製品の機能:** アクセス制御
 
-SAML で認証されたオンプレミス アプリで、これらのアプリへのリモート アクセスと共に、アプリケーション プロキシ経由でシングル サインオン (SSO) エクスペリエンスを使用できるようになりました。 オンプレミス アプリで SAML SSO を設定する方法の詳細については、「[アプリケーション プロキシ (プレビュー) を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン](../manage-apps/application-proxy-configure-single-sign-on-on-premises-apps.md)」を参照してください。
+SAML で認証されたオンプレミス アプリで、これらのアプリへのリモート アクセスと共に、アプリケーション プロキシ経由でシングル サインオン (SSO) エクスペリエンスを使用できるようになりました。 オンプレミス アプリで SAML SSO を設定する方法の詳細については、「[アプリケーション プロキシ (プレビュー) を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン](../app-proxy/application-proxy-configure-single-sign-on-on-premises-apps.md)」を参照してください。
 
 ---
 
@@ -3403,7 +3584,7 @@ SAML で認証されたオンプレミス アプリで、これらのアプリ�
 
 - 出力形式 (JSON または CSV のどちらか) を決定する。
 
-この機能の詳細については、「[クイック スタート: Azure portal を使用して監査レポートをダウンロードする](../reports-monitoring/quickstart-download-audit-report.md)」を参照してください。
+この機能の詳細については、「[クイック スタート: Azure portal を使用して監査レポートをダウンロードする](../reports-monitoring/howto-download-logs.md)」を参照してください。
 
 ---
 
@@ -3547,7 +3728,7 @@ Azure AD、Microsoft アカウント (MSA)、Google フェデレーションな�
 
 - **永続的な Cookie を使用する。** Web ブラウザーが閉じているときにアクセスの Cookie が期限切れにならないようにします。 これらの Cookie は、アクセス トークンの有効期間の間、持続します。 ただし、有効期限に達した場合、またはユーザーが手動で Cookie を削除した場合、これらの Cookie はリセットされます。 既定の設定 **[いいえ]** のままにして、プロセス間で Cookie を共有しない古いアプリの設定だけをオンにすることをお勧めします。
 
-新しい Cookie の詳細については、「[Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定](../manage-apps/application-proxy-configure-cookie-settings.md)」を参照してください。
+新しい Cookie の詳細については、「[Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定](../app-proxy/application-proxy-configure-cookie-settings.md)」を参照してください。
 
 ---
 
@@ -3656,7 +3837,7 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 |conditionalAccessStatus|サインイン時点の条件付きアクセス ポリシー ステータスの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>障害</li><li>未適用</li><li>無効</li></ul>|
 |appliedConditionalAccessPolicies: 結果|サインイン時点の個別の条件付きアクセス ポリシー ステータスの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>障害</li><li>未適用</li><li>無効</li></ul>|
 
-スキーマの詳細については、「[Azure Monitor の Azure AD 監査ログ スキーマを解釈する (プレビュー)](../reports-monitoring/reference-azure-monitor-audit-log-schema.md)」を参照してください。
+スキーマの詳細については、「[Azure Monitor の Azure AD 監査ログ スキーマを解釈する (プレビュー)](../reports-monitoring/overview-reports.md)」を参照してください。
 
 ---
 
@@ -4878,7 +5059,7 @@ Azure AD 管理センターが更新されて、この機能がサポートさ�
 - 強化されたコネクタ正常性の監視
 - 複数のバグ修正と安定性の向上
 
-詳しくは、「[Azure AD アプリケーション プロキシ コネクタを理解する](../manage-apps/application-proxy-connectors.md)」をご覧ください。
+詳しくは、「[Azure AD アプリケーション プロキシ コネクタを理解する](../app-proxy/application-proxy-connectors.md)」をご覧ください。
 
 ---
 
@@ -4940,7 +5121,7 @@ SAML ベースのサインオンを使用したアプリケーションでは、
 
 アプリケーションをデプロイしやすくして管理オーバーヘッドを低減するために、ワイルドカードを使ってアプリケーションを発行する機能に対応しました。 ワイルドカード アプリケーションの発行は、標準的なアプリケーション発行フローに沿って行われますが、内部 URL と外部 URL にはワイルドカードが使用されます。
 
-詳細については、「[Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション](../manage-apps/application-proxy-wildcard.md)」を参照してください。
+詳細については、「[Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション](../app-proxy/application-proxy-wildcard.md)」を参照してください。
 
 ---
 

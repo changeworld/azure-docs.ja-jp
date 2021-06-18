@@ -3,13 +3,13 @@ title: 仮想マシンの論理的な削除
 description: 仮想マシンの論理的な削除によって、バックアップの安全性が向上するしくみについて説明します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.custom: references_regions
-ms.openlocfilehash: a8b70d4c8240d096c19e5a8d7449921557b8896c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions , devx-track-azurepowershell
+ms.openlocfilehash: 5bc103f894a6cbcfc06cce4a5f07b70fcea5b1d6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89022243"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678102"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>仮想マシンの論理的な削除
 

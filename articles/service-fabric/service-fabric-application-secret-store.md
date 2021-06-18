@@ -5,12 +5,12 @@ author: amenarde
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: anmenard
-ms.openlocfilehash: 735f0b375d26d00dce43fd9d64131fa194958a73
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1c920631d671ad2af9fa2e723fc98bf96462b007
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131081"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950104"
 ---
 # <a name="central-secret-service-in-azure-service-fabric"></a>Azure Service Fabric のセントラル シークレット サービス 
 セントラル シークレット サービス (CSS、別名セントラル シークレット ストア) は、クラスター内でシークレットを保護するための、Service Fabric のシステム サービスです。 CSS により SF アプリケーションでシークレットを管理しやすくなり、パラメーターの暗号化に頼る必要がなくなります。
@@ -67,7 +67,7 @@ ms.locfileid: "108131081"
 - シークレット リソースを削除すると、そのリソースのすべてのバージョンが削除される  
 - シークレット バージョンの値は変更できない
     
-シークレット リソース用の REST 管理 API はすべて[ここ](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-meshsecrets)で公開されています。シークレット バージョン用の API は[ここ](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-meshsecretvalues)で公開されています。
+シークレット リソース用の REST 管理 API はすべて[ここ](/rest/api/servicefabric/sfclient-index-meshsecrets)で公開されています。シークレット バージョン用の API は[ここ](/rest/api/servicefabric/sfclient-index-meshsecretvalues)で公開されています。
 
 ### <a name="declare-a-secret-resource"></a>シークレット リソースを宣言する
 REST API を使用して、シークレット リソースを作成できます。

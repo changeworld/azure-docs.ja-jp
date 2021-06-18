@@ -6,12 +6,13 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: ad73ef03aa9623fb724f1397697fac18f659a90c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1330c567b88adaa99342c35cef9ed584724278e6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98935000"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672583"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure ネットワーク セキュリティ グループ (NSG) を別のリージョンに移動する
 

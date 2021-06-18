@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 4aed956fc7052f844080b830aa4cc3b2a07235a1
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e48296b696d26bcf30424280f1cbd3fc6aaa9640
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799396"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958969"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Azure Cosmos DB は、多くの場合、その [Change Feed](change-feed.md) 機
 
 :::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB 注文パイプライン リファレンス アーキテクチャ" border="false":::
 
-さらに、Azure Cosmos DB に格納されたデータは、Apache Spark ジョブによるビッグ データ分析のために HDInsight と統合できます。 Azure Cosmos DB 用の Spark コネクタの詳細については、「[Run a Spark job with Cosmos DB and HDInsight (Cosmos DB と HDInsight を使用した Spark ジョブの実行)](spark-connector.md)」を参照してください。
+さらに、Azure Cosmos DB に格納されたデータは、Apache Spark ジョブによるビッグ データ分析のために HDInsight と統合できます。 Azure Cosmos DB 用の Spark コネクタの詳細については、「[Run a Spark job with Cosmos DB and HDInsight (Cosmos DB と HDInsight を使用した Spark ジョブの実行)](./create-sql-api-spark.md)」を参照してください。
 
 ## <a name="gaming"></a>Gaming
 データベース層は、ゲーム アプリケーションの重要なコンポーネントです。 最近のゲームはモバイル/コンソール クライアントでグラフィック処理を行いますが、ゲーム内統計、ソーシャル メディア統合、スコアボードなどの個人向けにカスタマイズされたコンテンツの配信は、クラウドに依存しています。 多くの場合、ゲームでは魅力的なゲーム内エクスペリエンスを提供するために、読み取り/書き込みの待機時間を 1 ミリ秒にする必要があります。 ゲーム データベースは高速であることが必要であり、新しいゲームのリリース時や機能の更新時に、要求レートの急増に対処できる必要があります。

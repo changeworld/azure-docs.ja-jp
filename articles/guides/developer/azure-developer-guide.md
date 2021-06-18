@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2110bd812827ab4ff47f170a74a71f90df061833
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8a67cb97487e1082aed976712ded5383008531b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129659"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957132"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -274,7 +274,7 @@ Azure Resource Manager では、関連するリソースを論理的にグルー
 
 > **いつ使用するか**: REST API、Azure CLI、Azure PowerShell を使用してプログラムで管理できるテンプレートベースのデプロイがアプリに必要な場合は、Resource Manager テンプレートを使用します。
 >
-> **作業開始**: テンプレートを初めて使用する場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../../azure-resource-manager/templates/template-syntax.md)」を参照してください。
+> **作業開始**: テンプレートを初めて使用する場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../../azure-resource-manager/templates/syntax.md)」を参照してください。
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>アカウント、サブスクリプション、課金の概要
 

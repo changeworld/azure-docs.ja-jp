@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: 833209b2f0216c26cc6df75dd1620cdbccaa6eae
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95561572"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720780"
 ---
 ## <a name="update-resources"></a>リソースの更新
 
