@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ecc8396204138df05aa779e8bfa09bbfc6cd184d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81680760"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720285"
 ---
 このセクションでは、Direct ピアリングで次の変更操作を実行する方法について説明します。
 

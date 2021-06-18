@@ -6,15 +6,15 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
 ms.reviewer: dseven
-ms.author: matjazl
+ms.author: zxue
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 574b2bcbf145441b98f8d1cd634316dc9a7654f3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018490"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292035"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>カスタム HTTP ヘッダーを使用してデータを監査ログに追加する
 

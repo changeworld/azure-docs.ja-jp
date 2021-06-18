@@ -3,20 +3,20 @@ title: Azure Resource Manager:Azure SQL Managed Instance の作成
 description: Azure Resource Manager テンプレートを使用して Azure SQL Managed Instance を作成する方法を説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: subject-armqs
+ms.subservice: deployment-configuration
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: srdan-bozovic-msft
+ms.author: srbozovi
+ms.reviewer: mathoma
 ms.date: 06/22/2020
-ms.openlocfilehash: 96518f82b44af5e4cfa629c0e81387abaffdb383
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: b4b19be4215f8a5bfa0b1f4eb42607c51bfe1d16
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803802"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889034"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure SQL Managed Instance を作成する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/sqlmi-new-vnet/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sql/sqlmi-new-vnet/azuredeploy.json":::
 

@@ -7,16 +7,16 @@ ms.subservice: migration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma
 ms.date: 01/08/2020
-ms.openlocfilehash: 9b649c8e51224043b02be791eee217bed98c7130
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: b4c993a98c661cd6f8a93321a49f7eb4da4c95db
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838557"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705756"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure サービスのサーバーへのアクセスを許可せずに Azure SQL Database をインポートまたはエクスポートする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

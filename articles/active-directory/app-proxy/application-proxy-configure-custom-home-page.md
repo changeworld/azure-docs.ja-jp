@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
-ms.openlocfilehash: bfec9273d1d363c3bd39887e83597d22262265f1
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: d635d0c87cb6f759c15461abe9efc9dd42297ddb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187224"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964899"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを利用し、発行されたアプリのカスタム ホーム ページを設定する
 
@@ -175,5 +175,5 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+- [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](./application-proxy-integrate-with-sharepoint-server.md)
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)

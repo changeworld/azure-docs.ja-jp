@@ -3,19 +3,19 @@ title: 空間分析コンテナーをインストールして実行する方法 
 titleSuffix: Azure Cognitive Services
 description: 空間分析コンテナーを使用すると、人物と距離を検出できます。
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 15ef67fb452b4302cc848b88b3dab89d46fb8793
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284721"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746467"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -26,7 +26,6 @@ ms.locfileid: "106284721"
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * Azure サブスクリプションを入手したら、Azure portal で Standard S1 レベルの <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 空間分析コンテナーを実行するには、作成したリソースのキーとエンドポイントが必要です。 後でキーとエンドポイントを使用します。
-
 
 ### <a name="spatial-analysis-container-requirements"></a>空間分析コンテナーの要件
 
@@ -70,21 +69,6 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 |--|--|
 | カメラ | 空間分析コンテナーは、特定のカメラ ブランドに関係していません。 カメラ デバイスは、リアルタイム ストリーミング プロトコル (RTSP) と H.264 エンコードをサポートし、ホスト コンピューターからアクセスでき、15FPS の解像度 1080p でストリーミングできる必要があります。 |
 | Linux OS | [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) をホスト コンピューターにインストールする必要があります。  |
-
-
-## <a name="request-approval-to-run-the-container"></a>コンテナーを実行するための承認を要求する
-
-コンテナーを実行するための承認を要求するには、[要求フォーム](https://aka.ms/csgate)に記入して送信します。
-
-このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、そのフォームは Azure Cognitive Services チームによって確認されます。その後、チームから決定事項がメールで届きます。
-
-> [!IMPORTANT]
-> * このフォームでは、Azure サブスクリプション ID に関連付けられているメール アドレスを使用する必要があります。
-> * コンテナーの実行に使用する Computer Vision リソースは、承認された Azure サブスクリプション ID で作成されている必要があります。
-
-承認されると、Microsoft Container Registry (MCR) からコンテナーをダウンロードした後、そのコンテナーを実行できるようになります。これについては、記事の後半で説明します。
-
-お使いの Azure サブスクリプションが承認されていない場合、コンテナーを実行することはできません。
 
 ## <a name="set-up-the-host-computer"></a>ホスト コンピューターを設定する
 

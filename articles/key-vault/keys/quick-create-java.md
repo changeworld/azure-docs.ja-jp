@@ -2,18 +2,18 @@
 title: クイックスタート - Java 用 Azure Key Vault キー クライアント ライブラリ
 description: Java 用 Azure Key Vault キー クライアント ライブラリのクイックスタートを提供します。
 author: msmbaldwin
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java, devx-track-azurecli, devx-track-azurepowershell
 ms.author: mbaldwin
 ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: bd12a02b4dcd54796d9252417310b77da4ad0b5e
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 65def18d91a6fd3f76439313cadcca07cf6bfc6b
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291408"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110664068"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault キー クライアント ライブラリ
 Java 用 Azure Key Vault キー クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。

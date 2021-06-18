@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 05/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 7ede9b952a27c8ed0df2c24598fc65187036e5dc
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: bd54b662e48ef6f66ea2bfef10863e2d7627289f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790489"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966433"
 ---
 # <a name="review-copy-errors-in-uploads-from-azure-data-box-and-azure-data-box-heavy-devices"></a>Azure Data Box および Azure Data Box Heavy デバイスからのアップロードのコピー エラーを確認する
 
@@ -110,7 +110,7 @@ Azure portal に、次の通知が表示されます。 エラーはデータ �
 
 **エラーの説明:** Blob ストレージ コンテナーが Write Once Read Many (WORM) として構成されている場合、コンテナーに既に格納されている BLOB のアップロードは失敗します。
 
-**補足情報:** 現在のアップロードでは、このエラーを修正することはできません。 アップロードは完了しましたが、エラーが発生しました。 ネットワーク転送を実行したり、新しいインポート注文を開始する前に、一覧表示されている BLOB が不変なストレージ コンテナーに含まれていないことを確認してください。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](/azure/storage/blobs/storage-blob-immutable-storage)」を参照してください。
+**補足情報:** 現在のアップロードでは、このエラーを修正することはできません。 アップロードは完了しましたが、エラーが発生しました。 ネットワーク転送を実行したり、新しいインポート注文を開始する前に、一覧表示されている BLOB が不変なストレージ コンテナーに含まれていないことを確認してください。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](../storage/blobs/storage-blob-immutable-storage.md)」を参照してください。
 
 
 ### <a name="the-total-provisioned-capacity-of-the-shares-cannot-exceed-the-account-maximum-size-limit"></a>The total provisioned capacity of the shares cannot exceed the account maximum size limit (共有のプロビジョニングされた容量の合計は、アカウントの最大サイズ制限を超えることはできません)
@@ -142,7 +142,7 @@ Azure portal に、次の通知が表示されます。 エラーはデータ �
 
 **エラーの説明:** アップロード先 BLOB にアクティブなリースが含まれている場合、クラウド上の BLOB へのデータ インポートは失敗します。
 
-**補足情報:** 現在のアップロードでは、このエラーを修正することはできません。 アップロードは完了しましたが、エラーが発生しました。 ネットワーク転送を実行したり、新しいインポート注文を開始する前に、一覧表示されている BLOB にアクティブなリースが存在していないことを確認してください。 詳細については、「[BLOB でのペシミスティック コンカレンシー制御](/azure/storage/blobs/concurrency-manage?tabs=dotnet#pessimistic-concurrency-for-blobs)」を参照してください。
+**補足情報:** 現在のアップロードでは、このエラーを修正することはできません。 アップロードは完了しましたが、エラーが発生しました。 ネットワーク転送を実行したり、新しいインポート注文を開始する前に、一覧表示されている BLOB にアクティブなリースが存在していないことを確認してください。 詳細については、「[BLOB でのペシミスティック コンカレンシー制御](../storage/blobs/concurrency-manage.md?tabs=dotnet#pessimistic-concurrency-for-blobs)」を参照してください。
 
 
 ### <a name="the-size-of-the-blob-being-imported-is-invalid-the-blob-size-is-blob-size-bytes-supported-sizes-are-between-20971520-bytes-and-8192-gib"></a>インポート中の BLOB のサイズが無効です。 BLOB サイズは `<blob-size>` バイトです。 サポートされているサイズは、20,971,520 バイトから 8,192 GiB までです。

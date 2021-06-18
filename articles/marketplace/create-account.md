@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/06/2021
-ms.openlocfilehash: 2b3516d5f573f13655963b678a2f164c460fd140
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fcef5fee62c9937538a2aba6cba8629a8a04b043
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133153"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004909"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターでコマーシャル マーケットプレース アカウントを作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "108133153"
 
 #### <a name="register-on-the-partner-center-enrollment-page"></a>パートナー センターの登録ページで登録する
 
-「[Microsoft パートナー センターへようこそ](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)」登録ページの情報を確認してから、アカウントを登録します。
+「[Microsoft パートナー センターへようこそ](https://go.microsoft.com/fwlink/?linkid=2165529)」登録ページの情報を確認してから、アカウントを登録します。
 
 #### <a name="sign-in-with-a-work-account"></a>職場アカウントでサインインする
 
@@ -80,7 +80,7 @@ Microsoft パートナー センターに既に登録している場合は、こ
 
 **コマーシャル マーケットプレイスに登録する**
 
-1. Microsoft Partner Network アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/)にサインインします。
+1. Microsoft Partner Network アカウントを使用して[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 
     >[!NOTE]
     > Microsoft Partner Network にサインインするには、**アカウント管理者** または **グローバル管理者** のロールが必要です。
@@ -115,7 +115,7 @@ Microsoft パートナー センターに既に登録している場合は、こ
 
 開発者プログラムと同じアカウントで商業マーケットプレース プログラムに登録すると、パートナー センターの左側のウィンドウに既存のすべてのプログラムの登録が表示されます。
 
-1. 既存のアカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/)にサインインします。
+1. 既存のアカウントを使用して[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 1. 右上で、**設定** > **アカウント設定** > **プログラム** の順に選択します。
 1. **[コマーシャル マーケットプレイス]** で **[開始]** を選択し、仕事用のメール アドレスを入力します。
 1. **[Publisher profile]\(発行元のプロファイル\)** ページで詳細を入力します。
@@ -134,7 +134,7 @@ Microsoft パートナー センターに既に登録している場合は、こ
 
 Cloud パートナー ポータルのアカウントをお持ちだった場合は、パートナー センターに移行してあります。 新しいパートナー センター アカウントを作成する必要はありません。 既存の Cloud パートナー ポータル アカウントにサインインすると、新しいパートナー センター アカウントへのカスタマイズされたリンクがメールとバナー通知の両方に送られます。
 
-カスタマイズされたリンクを選択して新しいパートナー センター アカウントを有効にしたら、パートナー センターの [[コマーシャル マーケットプレース ダッシュボード]](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) に移動することでご自分のアカウントに戻ることができます。
+カスタマイズされたリンクを選択して新しいパートナー センター アカウントを有効にしたら、パートナー センターの [[コマーシャル マーケットプレース ダッシュボード]](https://go.microsoft.com/fwlink/?linkid=2165290) に移動することでご自分のアカウントに戻ることができます。
 
 発行への同意と会社のプロファイル情報は、以前に設定したアカウント支払いプロファイル情報、ユーザー アカウントとアクセス許可、Cloud パートナー ポータル アカウントに関連付けられているアクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。
 

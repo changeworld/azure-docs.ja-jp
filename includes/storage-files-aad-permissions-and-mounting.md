@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 7d0631be67afd523ee47f9af021df35b3d74ae2a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: include file, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: afd94ba7a91d18ef1bc1321c6fbbb9688bc21255
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107893299"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721794"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>ID にアクセス許可を割り当てる
 

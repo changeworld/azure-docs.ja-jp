@@ -3,12 +3,12 @@ title: Availability Zones をまたがる Service Fabric マネージド クラ�
 description: Availability Zones をまたがって Service Fabric マネージド クラスターをデプロイする方法と、ARM テンプレートで構成する方法について説明します。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: 9e971516ca8f841129973297b808e28c2f2ed2ed
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 5278ea170e0a60907813b9a79b151dde44ab4a12
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689353"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956774"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-across-availability-zones"></a>Availability Zones をまたがる Service Fabric マネージド クラスターのデプロイ
 
@@ -49,7 +49,7 @@ Azure Service Fabric 可用性ゾーン Availability Zone のアーキテクチ�
 **ゾーン ダウンのシナリオ**: ゾーンがダウンすると、そのゾーン内のすべてのノードがダウン状態として表示されます。 これらのノードのサービス レプリカもダウンします。 他のゾーンにレプリカがあるため、正常に動作しているゾーンにプライマリ レプリカがフェールオーバーすることで、サービスは引き続き応答します。 ターゲット レプリカ数にまだ到達しておらず、かつ VM 数が、定義されている最小ターゲット レプリカ サイズを上回っているため、サービスは警告状態として表示されます。 結果として、Service Fabric ロード バランサーは、構成されているターゲット レプリカの数と一致するように、作業ゾーンでレプリカを起動します。 この時点で、サービスは正常と表示されます。 ダウンしたゾーンが復帰すると、負荷分散によってすべてのサービス レプリカがすべてのゾーンに均等に分散されます。
 
 ## <a name="networking-configuration"></a>ネットワーク構成
-詳細については、「[Service Fabric マネージド クラスターのネットワーク設定を構成する](https://docs.microsoft.com/azure/service-fabric/how-to-managed-cluster-networking)」を参照してください
+詳細については、「[Service Fabric マネージド クラスターのネットワーク設定を構成する](./how-to-managed-cluster-networking.md)」を参照してください
 
 ## <a name="enabling-a-zone-resilient-azure-service-fabric-managed-cluster"></a>ゾーンの回復性に優れた Azure Service Fabric マネージド クラスターを有効にする
 ゾーン回復性のある Azure Service Fabric マネージド クラスターを有効にするには、マネージド クラスターのリソース定義に次の情報を含める必要があります。

@@ -8,15 +8,13 @@ manager: kumud
 ms.date: 10/12/2020
 ms.topic: quickstart
 ms.service: expressroute
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 6c31f55d5b208437170f9a69ff7bbe1d6b836201
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 36520a7c8661cce71eb8b210c279a27c0766a7a7
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277446"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005395"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート ピアリングによる ExpressRoute 回線を作成する
 
@@ -34,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/expressroute-private-peering-vnet)からのものです。
 
 このクイックスタートでは、サービス プロバイダーに *Equinix* を使用して ExpressRoute 回線を作成します。 この回線には、帯域幅 *50 Mbps*、ピアリングの場所を "*ワシントン DC*" とする *Premium SKU* が使用されます。 プライベート ピアリングは、プライマリ サブネット *192.168.10.16/30* とセカンダリ サブネット *192.168.10.20/30* を使用して有効化されます。 また、"*HighPerformance ExpressRoute ゲートウェイ*" と共に仮想ネットワークが作成されます。
 

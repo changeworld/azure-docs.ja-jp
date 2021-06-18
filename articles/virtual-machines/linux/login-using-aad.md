@@ -10,19 +10,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
-ms.openlocfilehash: fd1d3afdd8ab6836971fbda88baac93f3abdbbb2
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 109e6f9a1cbc39e1382d73acacfb163940e72a0f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785603"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962449"
 ---
 # <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>非推奨: デバイス コード フロー認証を使用して Azure Active Directory で Azure の Linux 仮想マシンにログインする
 
 > [!CAUTION]
 > **この記事で説明されているパブリック プレビュー機能は、2021 年 8 月 15 日に非推奨となります。**
 > 
-> この機能は、証明書ベースの認証を使用して Azure AD と SSH を使用する機能に置き換えられています。 詳細については、[プレビュー: SSH 証明書ベースの認証を使用して Azure Active Directory で Azure の Linux 仮想マシンにログインする](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md)方法に関する記事を参照してください。 古いバージョンからこのバージョンに移行するには、[以前のプレビューからの移行](https://docs.microsoft.com/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux#migration-from-previous-preview)に関するセクションを参照してください
+> この機能は、証明書ベースの認証を使用して Azure AD と SSH を使用する機能に置き換えられています。 詳細については、[プレビュー: SSH 証明書ベースの認証を使用して Azure Active Directory で Azure の Linux 仮想マシンにログインする](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md)方法に関する記事を参照してください。 古いバージョンからこのバージョンに移行するには、[以前のプレビューからの移行](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md#migration-from-previous-preview)に関するセクションを参照してください
 
 Azure の Linux 仮想マシン (VM) のセキュリティを強化するために、Azure Active Directory (AD) の認証と統合できます。 Linux VM に Azure AD の認証を使用することで、VM へのアクセスを許可/拒否するポリシーを一元管理および施行します。 この記事では、Azure AD 認証を使用して Linux VM を作成し、構成する方法について説明します。
 
