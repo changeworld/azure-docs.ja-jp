@@ -6,15 +6,13 @@ ms.author: pariks
 ms.date: 05/14/2020
 ms.topic: quickstart
 ms.service: mariadb
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: a125f1aeacda48fdf8acfeb443527d6e2bf70e5c
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: b068df529dfad3cfa4d07eb57560028b0b70afb0
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277788"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556354"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MariaDB サーバーを作成する
 
@@ -48,7 +46,7 @@ Azure Database for MariaDB は、高可用性 MariaDB データベースをク�
 
 Azure Database for MariaDB サーバーは、定義済みの一連のコンピューティングおよびストレージ リソースを使って作成します。 詳細については、「[Azure Database for MariaDB の価格レベル](concepts-pricing-tiers.md)」を参照してください。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成します。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/managed-mariadb-with-vnet/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.dbformariadb/managed-mariadb-with-vnet/azuredeploy.json":::
 

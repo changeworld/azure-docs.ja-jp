@@ -2,21 +2,21 @@
 title: Azure Marketplace からアプリを追加する
 description: この記事は、Azure Marketplace の [今すぐ入手する] ボタンからのランディング ページとして機能します。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2020
-ms.author: iangithinji
+ms.author: mtillman
 ROBOTS: NOINDEX
-ms.openlocfilehash: b2c15ba1f059466240264565d5ff5276b70ddd63
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 55ffeb65daffc8c562f25a40696cba5b72dd9361
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374150"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078044"
 ---
 # <a name="get-it-now---add-an-app-from-the-azure-marketplace"></a>[今すぐ入手する] - Azure Marketplace からアプリを追加する
 

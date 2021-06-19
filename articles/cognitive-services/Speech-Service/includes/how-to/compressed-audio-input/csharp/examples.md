@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9739256cbe3381224913048904763a6e28da2eab
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 1ad4ffc070f03095ad80d2a57065f91be10e99fe
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109805401"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993517"
 ---
-Speech SDK で圧縮されたオーディオ入力を受け入れるように構成するには、`PullAudioInputStream` または `PushAudioInputStream` を作成します。 次に、ストリームの圧縮形式を指定して、ストリーム クラスのインスタンスから `AudioConfig` を作成します。 関連するサンプル コード スニペットについては、「[Speech SDK のオーディオ入力ストリーム API について](/azure/cognitive-services/speech-service/how-to-use-audio-input-streams)」を参照してください。
+Speech SDK で圧縮されたオーディオ入力を受け入れるように構成するには、`PullAudioInputStream` または `PushAudioInputStream` を作成します。 次に、ストリームの圧縮形式を指定して、ストリーム クラスのインスタンスから `AudioConfig` を作成します。 関連するサンプル コード スニペットについては、「[Speech SDK のオーディオ入力ストリーム API について](../../../../how-to-use-audio-input-streams.md)」を参照してください。
 
 `pushStream` という入力ストリーム クラスがあり、OPUS/OGG を使用しているものと想定します。 その場合のコードは次のようになります。
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: aab856b1e1d2d991cc4964d061a990dbedbeddb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25feef60e6b417d835f06be9641207ce56aa53a6
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98876513"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536427"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Azure アプリケーション オファーのソリューション テンプレートを計画する
 
@@ -76,4 +76,4 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースで Azure アプリケーション オファーを作成する方法](create-new-azure-apps-offer.md)
+- [Azure アプリケーション オファーを作成する](azure-app-offer-setup.md)

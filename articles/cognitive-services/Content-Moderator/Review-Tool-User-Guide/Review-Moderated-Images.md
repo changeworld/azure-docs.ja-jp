@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 77d7b8a0bf4d7fe9a94a61ea3f2f4279246ffb69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155bf999823625e1a91752c9cf064bc804d28335
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96903889"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031783"
 ---
 # <a name="create-human-reviews"></a>目視レビューを作成する
+
+[!INCLUDE [deprecation notice](../includes/tool-deprecation.md)]
 
 このガイドでは、レビュー ツール Web サイト上で[レビュー](../review-api.md#reviews)を設定する方法について説明します。 レビューにより、人間のモデレーターが評価するコンテンツが格納おされて表示されます。 モデレート担当者は適用されたタグを変更し、必要に応じて独自のカスタム タグを適用することができます。 ユーザーがレビューを完了すると、結果が指定のコールバック エンドポイントに送信され、コンテンツはサイトから削除されます。
 

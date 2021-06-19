@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: seo-lt-2019
-ms.date: 05/08/2020
-ms.openlocfilehash: e5c50d2cbd16ad2808dab485ad2b2870d6f3d350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/09/2021
+ms.openlocfilehash: 3f9b330e4e0cadd073a60293991066f74d8521c3
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392359"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903187"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -98,6 +98,10 @@ SparkJob1
         package1.jar
         package2.jar
     logs
+    
+    archives
+    
+    pyFiles
 
 SparkJob2
     main.py
@@ -105,6 +109,13 @@ SparkJob2
         scrip1.py
         script2.py
     logs
+    
+    archives
+    
+    jars
+    
+    files
+    
 ```
 ## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 

@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを使用して Azure port
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/15/2021
-ms.openlocfilehash: 3cb6069b13246e561de85c7a392283a5c243f1a4
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 0a1da860c4263f25e04e68253d0eed96254bed3a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517786"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077720"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure portal でダッシュボードを作成する
 
@@ -55,13 +55,13 @@ Azure portal のダッシュボードでは、お使いのクラウド リソー
         -Location "East US" 
     ```
 
-1. VM のユーザー名とパスワードを入力します。 これは新しいユーザー名とパスワードです。たとえば Azure にサインインするためのアカウントではありません。 詳細については、[ユーザー名の要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページと[パスワードの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)に関するページを参照してください。
+1. VM のユーザー名とパスワードを入力します。 これは新しいユーザー名とパスワードです。たとえば Azure にサインインするためのアカウントではありません。 詳細については、[ユーザー名の要件](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-)に関するページと[パスワードの要件](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)に関するページを参照してください。
 
     これで VM のデプロイが開始されます。通常、完了するまでに数分かかります。 デプロイが完了したら、次のセクションに進みます。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/)からのものです。 この記事のテンプレートは長いため、ここでは表示できません。 テンプレートを確認するには、[azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.portal/azure-portal-dashboard/azuredeploy.json) を参照してください。 Azure portal でダッシュボードを作成するテンプレート [Microsoft.Portal/dashboards](/azure/templates/microsoft.portal/dashboards) では、Azure リソースが 1 つ定義されます。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azure-portal-dashboard/)からのものです。 この記事のテンプレートは長いため、ここでは表示できません。 テンプレートを確認するには、[azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.portal/azure-portal-dashboard/azuredeploy.json) を参照してください。 Azure portal でダッシュボードを作成するテンプレート [Microsoft.Portal/dashboards](/azure/templates/microsoft.portal/dashboards) では、Azure リソースが 1 つ定義されます。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

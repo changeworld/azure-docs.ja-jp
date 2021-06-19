@@ -4,17 +4,17 @@ description: Azure Cosmos DB で保存データが暗号化される方法と、
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 06/08/2021
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 23d95e02c74918de711b18c7580c3774b19c6227
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 4e44184960a09b9e764b76b7a009281bb959d212
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229434"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757969"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Advanced Threat Protection (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -75,7 +75,7 @@ Rest API のコマンドを使用して、特定の Azure Cosmos DB アカウン
 # <a name="arm-template"></a>[ARM テンプレート](#tab/arm-template)
 
 Azure Resource Manager (ARM) テンプレートを使用して、Advanced Threat Protection が有効な Cosmos DB を設定します。
-詳細については、「[Advanced Threat Protection を使用して CosmosDB アカウントを作成する](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)」を参照してください。
+詳細については、「[Advanced Threat Protection を使用して CosmosDB アカウントを作成する](https://azure.microsoft.com/resources/templates/cosmosdb-advanced-threat-protection-create-account/)」を参照してください。
 
 # <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 5/03/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: dd0f86af30c88a7c7e1d1eb9cec9a5f31505496a
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 4576cad94cd26f0b2892dca5aeddd8861c5abf09
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795602"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540119"
 ---
 # <a name="manage-metered-billing-anomalies-in-partner-center"></a>パートナー センターで従量制課金の異常を管理する
 
@@ -83,5 +83,5 @@ Microsoft は、Microsoft からお客様への請求の前に SaaS または Az
 
 ## <a name="see-also"></a>関連項目
 - [コマーシャル マーケットプレースの測定サービスを使用した SaaS の従量制課金](./partner-center-portal/saas-metered-billing.md)
-- [マネージド アプリケーションの従量制課金](./partner-center-portal/azure-app-metered-billing.md)
+- [マネージド アプリケーションの従量制課金](marketplace-metering-service-apis.md)
 - [従量制課金に対する異常検出サービス](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

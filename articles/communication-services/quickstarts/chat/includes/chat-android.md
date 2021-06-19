@@ -10,14 +10,17 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: e97b1bef2ab170e1d045e6ddb18005fea1c83a67
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 04f97e121317635ceeda764da8c75834c972ace8
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109645250"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112039858"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
+> [!NOTE]
+> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add-chat) にあります
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -433,11 +436,11 @@ void listReadReceiptsNextPage(ChatThreadAsyncClient chatThreadAsyncClient, Strin
         try {
             PagedResponse<ChatMessageReadReceipt> nextPageWithResponse =
                     chatThreadAsyncClient.getReadReceiptsNextPageWithResponse(continuationToken, Context.NONE).get();
-
+                    
             for (ChatMessageReadReceipt readReceipt : nextPageWithResponse.getValue()) {
                 // You code to handle readReceipt
             }
-
+            
             listParticipantsNextPage(chatThreadAsyncClient, nextPageWithResponse.getContinuationToken(), ++pageNumber);
         } catch (Exception e) {
             e.printStackTrace();

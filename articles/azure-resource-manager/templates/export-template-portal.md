@@ -3,12 +3,12 @@ title: Azure portal でテンプレートをエクスポートする
 description: Azure portal を使用して、サブスクリプション内のリソースから Azure Resource Manager テンプレートをエクスポートします。
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 3cc790b67b6076236a550c1fa202e0d173fb360e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 59eb3add338e25e3fbd43e3bad5a04d16dcf78b5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731940"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963320"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
 
@@ -16,7 +16,7 @@ Azure Resource Manager テンプレートの作成に役立てるために、既
 
 Resource Manager では、テンプレートにエクスポートするリソースを 1 つまたは複数選択できます。 テンプレートに必要なリソースにのみ集中することができます。
 
-この記事では、ポータルを使用してテンプレートをエクスポートする方法を示します。 [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](/rest/api/resources/resources/resourcegroups/exporttemplate) を使用することもできます。
+この記事では、ポータルを使用してテンプレートをエクスポートする方法を示します。 [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](/rest/api/resources/resourcegroups/exporttemplate) を使用することもできます。
 
 ## <a name="choose-the-right-export-option"></a>適切なエクスポート オプションを選択する
 
@@ -123,7 +123,7 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](/rest/api/resources/resources/resourcegroups/exporttemplate) を使用してテンプレートをエクスポートする方法を学びます。
-- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+- [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](/rest/api/resources/resourcegroups/exporttemplate) を使用してテンプレートをエクスポートする方法を学びます。
+- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。
 - テンプレートを開発する方法については、[ステップバイステップのチュートリアル](../index.yml)のページをご覧ください。
 - Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

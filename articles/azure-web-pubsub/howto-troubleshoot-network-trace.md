@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 03/22/2021
-ms.openlocfilehash: 6e92ab3c27113aad44b7bed2815b9c5050afd0ac
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: f9c86cdf09e99d3cf5fc14ad6f6b72b8f36d9133
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166977"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963109"
 ---
 # <a name="how-to-collect-a-network-trace"></a>ネットワーク トレースの収集方法
 
@@ -50,7 +50,7 @@ man tcpdump
 
 ### <a name="microsoft-edge-chromium"></a>Microsoft Edge (Chromium)
 
-1. [DevTools](https://docs.microsoft.com/microsoft-edge/devtools-guide-chromium/) を開きます
+1. [DevTools](/microsoft-edge/devtools-guide-chromium/) を開きます
     * [`F12`] を選択します 
     * `Ctrl`+`Shift`+`I` \(Windows または Linux\) または `Command`+`Option`+`I` \(macOS\) を選択します
     * [`Settings and more`]、[`More Tools > Developer Tools`] の順に選択します  
