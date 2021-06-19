@@ -121,7 +121,7 @@ landingContent:
   linkLists:
   - linkListType: deploy
     links:
-    - text: Azure SQL データベース
+    - text: Azure SQL SQL Database
       url: migration-guides/database/sql-server-to-sql-database-overview.md
     - text: Azure SQL Managed Instance
       url: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
