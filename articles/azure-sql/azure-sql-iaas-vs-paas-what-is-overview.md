@@ -76,7 +76,7 @@ Azure は絶えずデータの脅威を監視します。 Azure SQL を使用す
 
 Azure では、ホストされるサービス ([PaaS](https://azure.microsoft.com/overview/what-is-paas/))、またはホストされるインフラストラクチャ ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) として、SQL Server のワークロードを実行することができます。 PaaS 内には、複数の製品オプションと、各オプション内のサービス レベルがあります。 PaaS か IaaS かを決定するときにたずねる必要がある重要な質問は、データベースの管理、修正プログラムの適用、バックアップの実行を自分で行うか、これらの操作を Azure に委任するかということです。
 
-### <a name="azure-sql-database"></a>Azure SQL データベース
+### <a name="azure-sql-database"></a>Azure SQL Database
 
 [Azure SQL Database](database/sql-database-paas-overview.md) は、Azure でホストされるリレーショナル DBaaS (サービスとしてのデータベース) であり、*サービスとしてのプラットフォーム (PaaS)* の業界カテゴリに分類されます。 
 - 最新のクラウド アプリケーションで、最新の安定した SQL Server 機能を使用する必要があり、開発とマーケティングに時間の制約がある場合に最適です。 
@@ -111,7 +111,7 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 
 ### <a name="comparison-table"></a>比較表
 
-| Azure SQL データベース | Azure SQL Managed Instance | Azure VM 上の SQL Server |
+| Azure SQL Database | Azure SQL Managed Instance | Azure VM 上の SQL Server |
 | :--- | :--- | :--- |
 |ほとんどのオンプレミス データベース レベルの機能をサポートしています。 最もよく使用される SQL Server 機能を利用できます。<br/>99.995% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>個々のデータベースに必要なリソース (CPU/ストレージ) を割り当てる機能。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| ほとんどすべてのオンプレミス インスタンス レベルおよびデータベース レベルの機能をサポートしています。 SQL Server との高い互換性。<br/>99.99% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure Virtual Network 内のプライベート IP アドレス。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| SQL Server エンジンを完全に制御できます。 すべてのオンプレミス機能をサポートしています。<br/>最大 99.99% の可用性。<br/>オンプレミスの SQL Server の対応するバージョンと完全に一致。<br/>固定された、既知のデータベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure Virtual Network 内のプライベート IP アドレス。<br/>SQL Server が配置されているホストでアプリケーションまたはサービスをデプロイできます。|
 |SQL Server からの移行が難しい可能性があります。<br/>一部の SQL Server 機能は使用できません。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。<br/>[Azure Private Link](database/private-endpoint-overview.md) を使用したプライベート IP アドレスのサポート。|利用できない最小限の数の SQL Server 機能がまだあります。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。|バックアップと修正プログラムを管理する必要があります。<br>高可用性ソリューションを独自に実装する必要があります。<br/>リソース (CPU/ストレージ) の変更中にダウンタイムが発生|
