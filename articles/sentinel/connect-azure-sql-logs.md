@@ -1,6 +1,6 @@
 ---
-title: Azure SQL データベースの診断と監査のログを Azure Sentinel に接続する
-description: Azure SQL データベースの診断ログとセキュリティ監査ログを Azure Sentinel に接続する方法について説明します。
+title: Azure SQL Database の診断と監査のログを Azure Sentinel に接続する
+description: Azure SQL Database の診断ログとセキュリティ監査ログを Azure Sentinel に接続する方法について説明します。
 author: yelevin
 manager: rkarlin
 ms.service: azure-sentinel
@@ -15,17 +15,17 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "99807735"
 ---
-# <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Azure SQL データベースの診断と監査のログを接続する
+# <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Azure SQL Database の診断と監査のログを接続する
 
 Azure SQL は、アップグレード、修正プログラムの適用、バックアップ、監視などのほとんどのデータベース管理機能をユーザーの介入なしで処理する、フル マネージドの PaaS (サービスとしてのプラットフォーム) データベース エンジンです。 
 
-Azure SQL データベース コネクタを使用すると、データベースの監査と診断のログを Azure Sentinel にストリーミングできます。これにより、すべてのインスタンスのアクティビティを継続的に監視できます。
+Azure SQL Database コネクタを使用すると、データベースの監査と診断のログを Azure Sentinel にストリーミングできます。これにより、すべてのインスタンスのアクティビティを継続的に監視できます。
 
 - 診断ログを接続すると、さまざまなデータ型のデータベース診断ログを Azure Sentinel ワークスペースに送信できます。
 
-- 監査ログを接続すると、サーバー レベルですべての Azure SQL データベースからセキュリティ監査ログをストリーミングできます。
+- 監査ログを接続すると、サーバー レベルですべての Azure SQL Database からセキュリティ監査ログをストリーミングできます。
 
-[Azure SQL データベースの監視](../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)の詳細を確認してください。
+[Azure SQL Database の監視](../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)の詳細を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ Azure SQL データベース コネクタを使用すると、データベース
 
 - 監査ログを接続するには、Azure SQL Server の監査設定に対する読み取りと書き込みのアクセス許可が必要です。
 
-## <a name="connect-to-azure-sql-database"></a>Azure SQL データベースに接続する
+## <a name="connect-to-azure-sql-database"></a>Azure SQL Database に接続する
     
 1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
 
@@ -43,7 +43,7 @@ Azure SQL データベース コネクタを使用すると、データベース
 
 ### <a name="connect-diagnostics-logs"></a>診断ログを接続する
 
-1. **[診断ログ]** で、 **[Enable diagnostics logs on each of your Azure SQL databases manually]\(各 Azure SQL データベースの診断ログを手動で有効にする\)** を展開します。
+1. **[診断ログ]** で、 **[Enable diagnostics logs on each of your Azure SQL databases manually]\(各 Azure SQL Database の診断ログを手動で有効にする\)** を展開します。
 
 1. **[Open Azure SQL >]\(Azure SQL を開く >\)** リンクを選択して **[Azure SQL]** リソース ブレードを開きます。
 
@@ -76,7 +76,7 @@ Azure SQL データベース コネクタを使用すると、データベース
 
 ### <a name="connect-audit-logs"></a>監査ログを接続する
 
-1. **[Auditing logs (preview)]\(監査ログ (プレビュー)\)** で **[Enable auditing logs on all Azure SQL databases (at the server level)]\(すべての Azure SQL データベースの監査ログを有効にする (サーバー レベル)\)** を展開します。
+1. **[Auditing logs (preview)]\(監査ログ (プレビュー)\)** で **[Enable auditing logs on all Azure SQL databases (at the server level)]\(すべての Azure SQL Database の監査ログを有効にする (サーバー レベル)\)** を展開します。
 
 1. **[Open Azure SQL >]\(Azure SQL を開く >\)** リンクを選択して **[SQL サーバー]** リソース ブレードを開きます。
 
@@ -106,6 +106,6 @@ Azure SQL データベース コネクタを使用すると、データベース
 > この特定のデータ コネクタを使用すると、過去 2 週間のある時点でデータが取り込まれた場合にのみ、接続状態インジケーター (データ コネクタ ギャラリーのカラー ストライプとデータ型の名前の横にある接続アイコン) が "*接続済み*" (緑) と表示されます。 データ インジェストがないまま 2 週間が経過すると、コネクタは切断済みと表示されます。 さらに多くのデータが入ってくると、"*接続済み*" 状態が返されます。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure SQL データベースの診断と監査のログを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Azure SQL Database の診断と監査のログを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
