@@ -257,7 +257,7 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure File Storage
           href: connector-azure-file-storage.md
-        - name: Azure SQL データベース
+        - name: Azure SQL Database
           href: connector-azure-sql-database.md
         - name: Azure SQL Managed Instance
           href: connector-azure-sql-managed-instance.md
