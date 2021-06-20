@@ -20,7 +20,7 @@ ms.locfileid: "107284240"
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-このガイドでは、SAP Adapter Server Enterprise 用の [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant を使用して、SAP Adapter Server Enterprise (ASE) データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
+このガイドでは、SAP Adapter Server Enterprise 用の [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant を使用して、SAP Adapter Server Enterprise (ASE) データベースを Azure SQL Database に[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
 
 その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
 
