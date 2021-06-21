@@ -352,10 +352,10 @@ SQL ソースからデータを共有するとき、スナップショットの�
 
 >[!NOTE]
 > 1. 10 進の中間型にマップされるデータ型の場合、スナップショットでは、現在、最大 28 の有効桁数がサポートされています。 28 よりも大きな有効桁数を必要とするデータがある場合は、文字列に変換することを検討してください。 
-> 1.  Azure SQL データベースから Azure Synapse Analytics にデータを共有している場合は、すべてのデータ型がサポートされるわけではありません。 詳細については、[専用 SQL プールでのテーブルのデータ型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md)に関する記事を参照してください。 
+> 1.  Azure SQL Database から Azure Synapse Analytics にデータを共有している場合は、すべてのデータ型がサポートされるわけではありません。 詳細については、[専用 SQL プールでのテーブルのデータ型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md)に関する記事を参照してください。 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted または動的データ マスク
-現時点では、Azure Data Share では、Always Encrypted が構成された Azure SQL データベースはサポートされていません。 
+現時点では、Azure Data Share では、Always Encrypted が構成された Azure SQL Database はサポートされていません。 
 
 動的データ マスクを使用するソース SQL テーブルの場合、データは受信側でマスクされて表示されます。
 
