@@ -5,7 +5,7 @@
   items:
     - name: Cognitive Search とは
       href: search-what-is-azure-search.md
-    - name: 機能の一覧
+    - name: 検索の機能
       href: search-features-list.md
     - name: 検索の新機能
       href: whats-new.md
@@ -42,28 +42,38 @@
       href: search-get-started-arm.md
 - name: チュートリアル
   items:
-    - name: Web サイトに検索を追加する
+    - name: Web アプリに検索を追加する
       items:
         - name: C#
           items:
-            - name: Web サイトの概要
+            - name: 概要
               href: tutorial-csharp-overview.md
             - name: 検索インデックスを作成する
               href: tutorial-csharp-create-load-index.md
             - name: 静的 Web アプリをデプロイする
               href: tutorial-csharp-deploy-static-web-app.md
-            - name: 統合のチート シート
+            - name: コードを調べる
               href: tutorial-csharp-search-query-integration.md
         - name: JavaScript
           items:
-            - name: Web サイトの概要
+            - name: 概要
               href: tutorial-javascript-overview.md
             - name: 検索インデックスを作成する
               href: tutorial-javascript-create-load-index.md
             - name: 静的 Web アプリをデプロイする
               href: tutorial-javascript-deploy-static-web-app.md
-            - name: 統合のチート シート
+            - name: コードを調べる
               href: tutorial-javascript-search-query-integration.md
+        - name: Python
+          items:
+            - name: 概要
+              href: tutorial-python-overview.md
+            - name: 検索インデックスを作成する
+              href: tutorial-python-create-load-index.md
+            - name: 静的 Web アプリをデプロイする
+              href: tutorial-python-deploy-static-web-app.md
+            - name: コードを調べる
+              href: tutorial-python-search-query-integration.md
     - name: C# アプリの作成
       items:
         - name: 1 - 基本的な検索ページ
@@ -264,6 +274,8 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
+        - name: Power Query データ ソース
+          href: search-how-to-index-power-query-data-sources.md
         - name: SharePoint Online
           href: search-howto-index-sharepoint-online.md
         - name: Azure BLOB
@@ -302,6 +314,8 @@
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Azure SQL Server VM
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Azure MySQL
+          href: search-howto-index-mysql.md
         - name: インデクサーに関する問題のトラブルシューティング
           href: search-indexer-troubleshooting.md
         - name: インデクサーのエラーと警告のトラブルシューティング
@@ -430,7 +444,7 @@
           href: search-traffic-analytics.md
     - name: Security
       items:
-        - name: 管理者権限
+        - name: ロールを割り当てる
           href: search-security-rbac.md
         - name: データの暗号化
           items:
@@ -540,8 +554,10 @@
               href: cognitive-search-skill-custom-entity-lookup.md
             - name: ドキュメント抽出
               href: cognitive-search-skill-document-extraction.md
-            - name: エンティティの認識
-              href: cognitive-search-skill-entity-recognition.md
+            - name: エンティティ リンク設定 (V3)
+              href: cognitive-search-skill-entity-linking-v3.md
+            - name: エンティティの認識 (V3)
+              href: cognitive-search-skill-entity-recognition-v3.md
             - name: 画像分析
               href: cognitive-search-skill-image-analysis.md
             - name: キー フレーズ抽出
@@ -552,8 +568,8 @@
               href: cognitive-search-skill-ocr.md
             - name: PII 検出
               href: cognitive-search-skill-pii-detection.md
-            - name: センチメント
-              href: cognitive-search-skill-sentiment.md
+            - name: センチメント (V3)
+              href: cognitive-search-skill-sentiment-v3.md
             - name: シェーパー
               href: cognitive-search-skill-shaper.md
             - name: テキスト マージャー
@@ -573,6 +589,10 @@
           items:
             - name: 名前付きエンティティの認識
               href: cognitive-search-skill-named-entity-recognition.md
+            - name: エンティティの認識
+              href: cognitive-search-skill-entity-recognition.md
+            - name: センチメント
+              href: cognitive-search-skill-sentiment.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

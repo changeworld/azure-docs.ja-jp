@@ -85,14 +85,20 @@
       items:
         - name: ルーティングの問題
           href: troubleshoot-route-issues.md
-        - name: 許可された証明機関
-          href: troubleshoot-allowed-certificate-authority.md
         - name: 圧縮
           href: troubleshoot-compression.md
         - name: クロス オリジン リソース共有
           href: troubleshoot-cross-origin-resources.md
+        - name: 許可された証明機関
+          href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: リファレンス
   items:
+    - name: Azure Front Door のエッジ ロケーション
+      items:
+        - name: リージョン別のエッジ ロケーション
+          href: edge-locations.md
+        - name: 略称別の エッジ ロケーション
+          href: edge-locations-by-abbreviation.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.cdn
     - name: REST API

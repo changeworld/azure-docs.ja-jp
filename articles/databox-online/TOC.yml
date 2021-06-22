@@ -230,6 +230,8 @@
               href: azure-stack-edge-gpu-virtual-machine-overview.md
             - name: サポートされている VM を表示する
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
+            - name: サポートされている API プロファイルを表示する
+              href: azure-stack-edge-profiles-azure-resource-manager-versions.md
             - name: VM イメージを作成する
               items:
                 - name: Azure VM からのカスタム イメージ
@@ -239,7 +241,9 @@
                 - name: ISO からの汎用化イメージ
                   href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
                 - name: 特殊化されたイメージを使用する
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+                  href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
+                - name: Azure Marketplace イメージを使用する
+                  href: azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md
             - name: VM をデプロイする
               items:
                 - name: Azure ポータルの使用
@@ -268,6 +272,8 @@
                   href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
                 - name: カスタム スクリプト拡張機能のインストール
                   href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
+                - name: GPU 拡張機能のインストール
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md
                 - name: VM のディスクをバックアップする
                   href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
                 - name: トラブルシューティング
@@ -275,7 +281,11 @@
                     - name: VM コンソールに接続する
                       href: azure-stack-edge-gpu-connect-virtual-machine-console.md
                     - name: VM イメージのアップロード
-                      href: azure-stack-edge-troubleshoot-virtual-machine-image-upload.md
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
+                    - name: VM のデプロイ
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
+                    - name: GPU 拡張機能の問題
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
         - name: 証明書の管理
           items:
             - name: 要件
@@ -334,12 +344,18 @@
               href: azure-stack-edge-gpu-enable-azure-monitor.md
         - name: トラブルシューティング
           items:
-            - name: デバイスの問題
-              href: azure-stack-edge-gpu-troubleshoot.md
             - name: 注文の問題
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: アクティブ化の問題
               href: azure-stack-edge-gpu-troubleshoot-activation.md
+            - name: デバイス ログと診断
+              href: azure-stack-edge-gpu-troubleshoot.md
+            - name: Azure Resource Manager の問題
+              href: azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md
+            - name: BLOB の問題
+              href: azure-stack-edge-gpu-troubleshoot-blob-storage.md
+            - name: IoT Edge の問題
+              href: azure-stack-edge-gpu-troubleshoot-iot-edge.md
             - name: Microsoft サポートに問い合わせる
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 共有のリリース ノート
@@ -426,6 +442,8 @@
                   href: azure-stack-edge-troubleshoot.md
                 - name: 注文の問題
                   href: azure-stack-edge-troubleshoot-ordering.md
+                - name: IoT Edge
+                  href: azure-stack-edge-troubleshoot-iot-edge.md
                 - name: Microsoft サポートに問い合わせる
                   href: azure-stack-edge-contact-microsoft-support.md
         - name: モニター

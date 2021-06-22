@@ -23,11 +23,11 @@
     - name: Python 作業の開始 (1 日目)
       expanded: true
       items:
-        - name: 1. "Hello world"
+        - name: 1. Python スクリプトを実行する
           href: tutorial-1st-experiment-hello-world.md
         - name: 2. モデルをトレーニングする
           href: tutorial-1st-experiment-sdk-train.md
-        - name: 3. データ持ち込み
+        - name: 3. 独自のデータを使用する
           href: tutorial-1st-experiment-bring-data.md
     - name: Jupyter Notebooks
       items:
@@ -73,8 +73,8 @@
           href: tutorial-labeling.md
     - name: CLI
       items:
-        - name: CLI を使用したトレーニングとデプロイ
-          href: tutorial-train-deploy-model-cli.md
+        - name: 2.0 CLI を使用したモデルのトレーニング
+          href: how-to-train-cli.md
         - name: マネージド エンドポイントを使用した Azure リソースへのアクセス
           href: tutorial-deploy-managed-endpoints-using-system-managed-identity.md
     - name: Visual Studio Code
@@ -295,6 +295,9 @@
           href: how-to-configure-environment.md
         - name: スタジオ環境の設定
           items:
+            - name: スタジオで環境を管理する
+              href: how-to-manage-environments-in-studio.md
+              displayName: 'environments, studio, create, edit'
             - name: ファイルの作成と管理
               href: how-to-manage-files.md
               displayName: 'Jupyter, notebooks, clone, samples'
@@ -383,37 +386,58 @@
       items:
         - name: 2.0 CLI を使用したトレーニング
           href: how-to-train-cli.md
-        - name: トレーニングの実行の構成と送信
-          displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
-          href: how-to-set-up-training-targets.md
-        - name: ハイパーパラメーターを調整する
-          displayName: 'parameter, hyperparameter, hyperdrive'
-          href: how-to-tune-hyperparameters.md
-        - name: Scikit-learn
-          href: how-to-train-scikit-learn.md
-        - name: TensorFlow
-          href: how-to-train-tensorflow.md
-        - name: Keras
-          href: how-to-train-keras.md
-        - name: PyTorch
-          href: how-to-train-pytorch.md
-        - name: カスタム Docker イメージを使用したトレーニング
-          href: how-to-train-with-custom-image.md
         - name: REST API を使用したトレーニング
           href: how-to-train-with-rest.md
-        - name: Estimator から ScriptRunConfig への移行
-          href: how-to-migrate-from-estimators-to-scriptrunconfig.md
-        - name: トレーニングの追跡と監視
+        - name: Python SDK でトレーニングする
           items:
-            - name: 実行の追跡、監視、分析
-              displayName: 'cancel, fail, status, child run'
-              href: how-to-track-monitor-analyze-runs.md
-            - name: メトリックおよびログ ファイルの記録および表示
-              displayName: 'troubleshoot, log, files, tracing, metrics'
-              href: how-to-log-view-metrics.md
-            - name: TensorBoard を使用して実行を視覚化する
-              displayName: 'log, monitor, metrics'
-              href: how-to-monitor-tensorboard.md
+            - name: トレーニングの実行の構成と送信
+              displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+              href: how-to-set-up-training-targets.md
+            - name: ハイパーパラメーターを調整する
+              displayName: 'parameter, hyperparameter, hyperdrive'
+              href: how-to-tune-hyperparameters.md
+            - name: Scikit-learn
+              href: how-to-train-scikit-learn.md
+            - name: TensorFlow
+              href: how-to-train-tensorflow.md
+            - name: Keras
+              href: how-to-train-keras.md
+            - name: PyTorch
+              href: how-to-train-pytorch.md
+            - name: カスタム Docker イメージを使用したトレーニング
+              href: how-to-train-with-custom-image.md
+            - name: Estimator から ScriptRunConfig への移行
+              href: how-to-migrate-from-estimators-to-scriptrunconfig.md
+            - name: 強化学習
+              href: how-to-use-reinforcement-learning.md
+            - name: MLflow を操作する
+              items:
+                - name: MLflow を使用して実験を追跡する
+                  displayName: 'log, monitor, metrics, model registry, register'
+                  href: how-to-use-mlflow.md
+                - name: MLflow を使用して Azure Databricks 実行を追跡する
+                  displayName: 'log, monitor, deploy, metrics, databricks'
+                  href: how-to-use-mlflow-azure-databricks.md
+                - name: MLflow プロジェクトを使用した実験のトレーニング
+                  displayName: 'log, monitor, metrics, model registry, register'
+                  href: how-to-train-mlflow-projects.md
+                - name: MLflow モデルのデプロイ
+                  displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
+                  href: how-to-deploy-mlflow-models.md
+            - name: トレーニングの追跡と監視
+              items:
+                - name: 実行の追跡、監視、分析
+                  displayName: 'cancel, fail, status, child run'
+                  href: how-to-track-monitor-analyze-runs.md
+                - name: メトリックおよびログ ファイルの記録および表示
+                  displayName: 'troubleshoot, log, files, tracing, metrics'
+                  href: how-to-log-view-metrics.md
+                - name: TensorBoard を使用して実行を視覚化する
+                  displayName: 'log, monitor, metrics'
+                  href: how-to-monitor-tensorboard.md
+            - name: トレーニング時に Key Vault を使用する
+              displayName: secrets keyvault
+              href: how-to-use-secrets-in-runs.md
         - name: モデルの解釈と説明
           displayName: interpretability
           items:
@@ -425,25 +449,6 @@
               href: how-to-machine-learning-interpretability-automl.md
         - name: モデルの公平性を評価して軽減する
           href: how-to-machine-learning-fairness-aml.md
-        - name: トレーニング時に Key Vault を使用する
-          displayName: secrets keyvault
-          href: how-to-use-secrets-in-runs.md
-        - name: 強化学習
-          href: how-to-use-reinforcement-learning.md
-    - name: MLflow を操作する
-      items:
-        - name: MLflow を使用して実験を追跡する
-          displayName: 'log, monitor, metrics, model registry, register'
-          href: how-to-use-mlflow.md
-        - name: MLflow を使用して Azure Databricks 実行を追跡する
-          displayName: 'log, monitor, deploy, metrics, databricks'
-          href: how-to-use-mlflow-azure-databricks.md
-        - name: MLflow プロジェクトを使用した実験のトレーニング
-          displayName: 'log, monitor, metrics, model registry, register'
-          href: how-to-train-mlflow-projects.md
-        - name: MLflow モデルのデプロイ
-          displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
-          href: how-to-deploy-mlflow-models.md
     - name: 自動化された機械学習
       displayName: 'automl, auto ml'
       items:
@@ -490,6 +495,8 @@
                   href: how-to-use-managed-online-endpoint-studio.md
                 - name: マネージド オンライン エンドポイントのコストを確認する
                   href: how-to-view-online-endpoints-costs.md
+                - name: REST を使用してマネージド オンライン エンドポイントとしてモデルをデプロイする
+                  href: how-to-deploy-with-rest.md
                 - name: マネージド オンライン エンドポイント VM SKU の一覧
                   href: reference-managed-online-endpoints-vm-sku-list.md
                 - name: マネージド オンライン エンドポイントの監視
@@ -628,6 +635,9 @@
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md
+    - name: コストの管理と最適化
+      displayName: 'cost-management,cost-optimization'
+      href: how-to-manage-optimize-cost.md
     - name: リソースの管理 (VS Code)
       displayName: 'vscode,resources'
       href: how-to-manage-resources-vscode.md
@@ -642,25 +652,31 @@
       href: how-to-use-event-grid.md
 - name: リファレンス
   items:
+    - name: REST API
+      href: /rest/api/azureml/
+    - name: CLI (v2)
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
+      href: /cli/azure/ml/
+    - name: CLI (v2) YAML スキーマ
+      items:
+        - name: オンライン エンドポイント
+          href: reference-online-endpoint-yaml.md
     - name: Python SDK
       displayName: 'api, core, package, python, class'
       href: /python/api/overview/azure/ml/intro
-    - name: R SDK
-      displayName: 'api, core, package, R, class'
-      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
-    - name: CLI
+    - name: CLI (v1)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
-    - name: REST API
-      href: /rest/api/azureml/
     - name: デザイナー モジュール リファレンス
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
     - name: データ参照を監視する
       href: monitor-resource-reference.md
+    - name: マネージド オンライン エンドポイント YAML のリファレンス
+      href: reference-online-endpoint-yaml.md
     - name: 機械学習パイプライン YAML のリファレンス
       href: reference-pipeline-yaml.md
-    - name: ソブリン クラウドのパリティ
+    - name: リージョン全体での機能の可用性
       href: reference-machine-learning-cloud-parity.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'

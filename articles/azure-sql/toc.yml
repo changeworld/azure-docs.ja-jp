@@ -102,6 +102,8 @@
                   href: database/authentication-aad-service-principal.md
                 - name: ディレクトリ閲覧者ロール
                   href: database/authentication-aad-directory-readers-role.md
+                - name: Azure AD のみの認証
+                  href: database/authentication-azure-ad-only-authentication.md
             - name: Transparent Data Encryption (TDE)
               items:
                 - name: 概要
@@ -156,7 +158,7 @@
         - name: エラスティック ジョブを使用したジョブの自動化
           href: database/job-automation-overview.md
         - name: SQL Agent を使用したジョブの自動化
-          href: database/job-automation-managed-instances.md
+          href: managed-instance/job-automation-managed-instance.md
         - name: アプリからの接続とクエリ実行
           items:
             - name: Visual Studio での .NET
@@ -189,6 +191,8 @@
                   href: database/authentication-aad-guest-users.md
                 - name: ディレクトリ閲覧者ロールをグループに割り当てる
                   href: database/authentication-aad-directory-readers-role-tutorial.md
+                - name: Azure AD のみの認証を有効化する
+                  href: database/authentication-azure-ad-only-authentication-tutorial.md
             - name: BYOK を使用した TDE の構成
               href: database/transparent-data-encryption-byok-configure.md
             - name: Always Encrypted
@@ -287,6 +291,8 @@
               href: database/service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
+            - name: 仮想コア
+              href: database/service-tiers-sql-database-vcore.md
         - name: コストの計画と管理
           href: database/cost-management.md
     - name: クイックスタート
@@ -742,7 +748,7 @@
           href: managed-instance/instance-pools-overview.md
         - name: よく寄せられる質問
           displayName: faq
-          href: managed-instance/frequently-asked-questions-faq.md
+          href: managed-instance/frequently-asked-questions-faq.yml
     - name: クイックスタート
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -811,6 +817,8 @@
       items:
         - name: リソース制限
           href: managed-instance/resource-limits.md
+        - name: コンピューティング ハードウェア
+          href: managed-instance/service-tiers-managed-instance-vcore.md
         - name: 接続のアーキテクチャ
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL の相違点
@@ -1013,46 +1021,56 @@
               href: managed-instance/server-trust-group-overview.md
     - name: 方法
       items:
-        - name: 概要
+        - name: 使用方法に関するドキュメント
           href: managed-instance/how-to-content-reference-guide.md
-        - name: SQL Managed Instance への移行
-          href: managed-instance/migrate-to-instance-from-sql-server.md
-        - name: タイム ゾーンのカスタマイズ
-          href: managed-instance/timezones-overview.md
-        - name: 接続の種類の構成
-          href: managed-instance/connection-types-overview.md
-        - name: TDE 証明書の移行
-          href: managed-instance/tde-certificate-migrate.md
-        - name: 特定の時点への復元
-          href: managed-instance/point-in-time-restore.md
-        - name: マネージド インスタンス サブネットのサイズの決定
-          href: managed-instance/vnet-subnet-determine-size.md
-        - name: マネージド インスタンス用の新しい VNet とサブネットの作成
-          href: managed-instance/virtual-network-subnet-create-arm-template.md
-        - name: マネージド インスタンス用の既存の VNet とサブネットの構成
-          href: managed-instance/vnet-existing-add-subnet.md
-        - name: マネージド インスタンスの削除後のサブネットの削除
-          href: managed-instance/virtual-cluster-delete.md
-        - name: カスタム DNS の構成
-          href: managed-instance/custom-dns-configure.md
-        - name: DNS 構成の同期
-          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
-        - name: ネットワーク構成の同期
-          href: managed-instance/azure-app-sync-network-configuration.md
-        - name: 管理エンドポイント IP アドレスの検索
-          href: managed-instance/management-endpoint-find-ip-address.md
-        - name: 組み込みのファイアウォール保護の確認
-          href: managed-instance/management-endpoint-verify-built-in-firewall.md
-        - name: 脅威検出の構成
-          href: managed-instance/threat-detection-configure.md
         - name: アプリケーションの接続
           href: managed-instance/connect-application-instance.md
-        - name: マネージド インスタンスでのアラートの作成
-          href: managed-instance/alerts-create.md
-        - name: マネージド インスタンスでのフェールオーバーの手動開始
-          href: managed-instance/user-initiated-failover.md
-        - name: ログ再生サービスを使用してデータベースを移行する
-          href: managed-instance/log-replay-service-migrate.md
+        - name: 設定の構成
+          items:
+            - name: タイム ゾーンのカスタマイズ
+              href: managed-instance/timezones-overview.md
+            - name: 接続の種類の構成
+              href: managed-instance/connection-types-overview.md
+            - name: マネージド インスタンスでのアラートの作成
+              href: managed-instance/alerts-create.md
+            - name: 脅威検出の構成
+              href: managed-instance/threat-detection-configure.md
+        - name: ネットワークを構成する
+          items:
+            - name: マネージド インスタンス サブネットのサイズの決定
+              href: managed-instance/vnet-subnet-determine-size.md
+            - name: マネージド インスタンス用の新しい VNet とサブネットの作成
+              href: managed-instance/virtual-network-subnet-create-arm-template.md
+            - name: マネージド インスタンス用の既存の VNet とサブネットの構成
+              href: managed-instance/vnet-existing-add-subnet.md
+            - name: マネージド インスタンスの削除後のサブネットの削除
+              href: managed-instance/virtual-cluster-delete.md
+            - name: カスタム DNS の構成
+              href: managed-instance/custom-dns-configure.md
+            - name: DNS 構成の同期
+              href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
+            - name: ネットワーク構成の同期
+              href: managed-instance/azure-app-sync-network-configuration.md
+            - name: 管理エンドポイント IP アドレスの検索
+              href: managed-instance/management-endpoint-find-ip-address.md
+            - name: 組み込みのファイアウォール保護の確認
+              href: managed-instance/management-endpoint-verify-built-in-firewall.md
+        - name: 移行
+          items:
+            - name: SQL Managed Instance への移行
+              href: managed-instance/migrate-to-instance-from-sql-server.md
+            - name: ログ再生サービスを使用してデータベースを移行する
+              href: managed-instance/log-replay-service-migrate.md
+            - name: TDE 証明書の移行
+              href: managed-instance/tde-certificate-migrate.md
+        - name: ビジネス継続性の構成
+          items:
+            - name: 特定の時点への復元
+              href: managed-instance/point-in-time-restore.md
+            - name: バックアップの監視
+              href: managed-instance/backup-activity-monitor.md
+            - name: マネージド インスタンスでのフェールオーバーの手動開始
+              href: managed-instance/user-initiated-failover.md
     - name: サンプル
       items:
         - name: Azure CLI
@@ -1090,6 +1108,7 @@
               items:
                 - name: 概要
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
                 - name: バックアップと復元
                   href: virtual-machines/windows/backup-restore.md
                 - name: バックアップ用の Azure Storage
@@ -1098,24 +1117,26 @@
                   href: virtual-machines/windows/availability-group-overview.md
                 - name: フェールオーバー クラスター インスタンス (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
+                - name: Windows Server フェールオーバー クラスター
+                  href: virtual-machines/windows/hadr-windows-server-failover-cluster-overview.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
             - name: ベスト プラクティス
               items:
+                - name: クイック チェックリスト
+                  href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                - name: VM サイズ
+                  href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                - name: ストレージ
+                  href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
                 - name: セキュリティ
                   href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: クラスター構成
+                - name: HADR の構成
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
+                - name: ベースラインの収集
+                  href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
                 - name: アプリケーション パターン
                   href: virtual-machines/windows/application-patterns-development-strategies.md
-                - name: パフォーマンス
-                  items:
-                    - name: クイック チェックリスト
-                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
-                    - name: VM サイズ
-                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
-                    - name: ストレージ
-                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
-                    - name: ベースラインの収集
-                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: 管理
               items:
                 - name: SQL IaaS Agent 拡張機能
@@ -1155,7 +1176,7 @@
                 - name: 記憶域を UltraSSD に移行する
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
                 - name: SQL 脆弱性評価を有効にする
-                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
+                  href: ../security-center/defender-for-sql-on-machines-vulnerability-assessment.md
                 - name: SQL IaaS Agent 拡張機能をインストールする
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
@@ -1173,6 +1194,8 @@
                   href: virtual-machines/windows/move-sql-vm-different-region.md
             - name: ビジネス継続性
               items:
+                - name: クラスター クォーラムを構成する
+                  href: virtual-machines/windows/hadr-cluster-quorum-configure-how-to.md
                 - name: バックアップと復元
                   items:
                     - name: 自動バックアップ (SQL 2016 以降)
@@ -1251,7 +1274,7 @@
         - name: リソース
           items:
             - name: よく寄せられる質問
-              href: virtual-machines/windows/frequently-asked-questions-faq.md
+              href: virtual-machines/windows/frequently-asked-questions-faq.yml
             - name: 価格
               href: virtual-machines/windows/pricing-guidance.md
             - name: アーカイブ済みの従来の RM ドキュメント
@@ -1289,7 +1312,7 @@
         - name: リソース
           items:
             - name: よく寄せられる質問
-              href: virtual-machines/linux/frequently-asked-questions-faq.md
+              href: virtual-machines/linux/frequently-asked-questions-faq.yml
             - name: SQL Server on Linux のドキュメント
               href: /sql/linux/sql-server-linux-overview
             - name: SQL Server Data Tools (SSDT)
@@ -1395,6 +1418,8 @@
           href: database/troubleshoot-common-connectivity-issues.md
         - name: Import/Export サービスがハングする
           href: database/database-import-export-hang.md
+        - name: トランザクション ログ エラー
+          href: database/troubleshoot-transaction-log-errors-issues.md
     - name: サービスの更新情報
       items:
         - name: SSL ルート証明書の期限切れ

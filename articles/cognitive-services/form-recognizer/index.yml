@@ -1,44 +1,44 @@
 ### YamlMime:Landing
-title: Form Recognizer のドキュメント
-summary: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出する Cognitive Services です。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習を使用すると、手動のデータ ラベル付けや大量のコーディングを行わなくても、モデルにレイアウトとフィールド データを学習させることができます。 また、手動でラベル付けされたデータを使用して、教師あり学習を行うこともできます。 ラベルの付いたデータを使用してトレーニングしたモデルは、パフォーマンスがより高くなり、より複雑なドキュメントを扱うことができます。
+title: Azure Form Recognizer のドキュメント
+summary: Azure Applied AI Services の一部である Azure Form Recognizer では、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データが識別され、抽出されます。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習を使用すると、手動のデータ ラベル付けや大量のコーディングを行わなくても、モデルにレイアウトとフィールド データを学習させることができます。 また、手動でラベル付けされたデータを使用して、教師あり学習を行うこともできます。 ラベルの付いたデータを使用してトレーニングしたモデルは、パフォーマンスがより高くなり、より複雑なドキュメントを扱うこともできます。
 metadata:
-  title: Form Recognizer のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
-  description: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出する Cognitive Services です。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習を使用すると、手動のデータ ラベル付けや大量のコーディングを行わなくても、モデルにレイアウトとフィールド データを学習させることができます。 また、手動でラベル付けされたデータを使用して、教師あり学習を行うこともできます。 ラベルの付いたデータを使用してトレーニングしたモデルは、パフォーマンスがより高くなり、より複雑なドキュメントを扱うことができます。
+  title: Form Recognizer のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Applied AI Services | Microsoft Docs
+  description: Azure Applied AI Services の一部である Azure Form Recognizer では、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データが識別され、抽出されます。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習を使用すると、手動のデータ ラベル付けや大量のコーディングを行わなくても、モデルにレイアウトとフィールド データを学習させることができます。 また、手動でラベル付けされたデータを使用して、教師あり学習を行うこともできます。 ラベルの付いたデータを使用してトレーニングしたモデルは、パフォーマンスがより高くなり、より複雑なドキュメントを扱うことができます。
   services: cognitive-services
-  ms.service: cognitive-services
+  ms.service: applied-ai-services
   ms.subservice: forms-recognizer
   ms.topic: landing-page
   author: laujan
   ms.author: lajanuar
   ms.date: 09/05/2019
-  ms.openlocfilehash: 2d38f9dd270bb3c3ffb304206edbefe6ab4db165
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 89a45403d198be46a7ce10f92a92f7b207488eee
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110374477"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111962841"
 landingContent:
-- title: Form Recognizer について
+- title: Azure From Recognizer について
   linkLists:
   - linkListType: overview
     links:
-    - text: Form Recognizer とは
+    - text: Azure Form Recognizer とは?
       url: overview.md
-    - text: Azure Applied AI Services とは?
-      url: https://aka.ms/applied-ai-services-hub
+    - text: Azure Applied AI Services とは
+      url: ../../applied-ai-services/index.yml
   - linkListType: whats-new
     links:
-    - text: Form Recognizer の新機能
+    - text: Azure Form Recognizer の新機能
       url: whats-new.md
   - linkListType: video
     links:
-    - text: ドキュメントとフォームからのデータの抽出
+    - text: OCR と Form Recognizer を使用したドキュメントとフォームからのデータの抽出
       url: https://channel9.msdn.com/Shows/AI-Show/Extracting-Data-From-Documents-and-Forms-with-OCR-and-Form-Recognizer
     - text: AI を利用したプロセスの自動化
       url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
     - text: 最新の機能と更新プログラム
       url: https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Form-Recognizer
-- title: フォーム レイアウトからデータを抽出する
+- title: ドキュメントからのレイアウトと構造の抽出
   linkLists:
   - linkListType: concept
     links:
@@ -56,9 +56,9 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-layout
     - text: REST API の使用する (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-layout
-  - linkListType: deploy
+  - linkListType: get-started
     links:
-    - text: Form Recognizer を試す
+    - text: Form Recognizer を試す (レイアウト)
       url: https://fott-2-1.azurewebsites.net/layout-analyze
 - title: 配信確認メッセージからデータを抽出する
   linkLists:
@@ -78,6 +78,10 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-receipts
     - text: REST API の使用する (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-receipts
+  - linkListType: get-started
+    links:
+    - text: Form Recognizer を試す (レシートの分析)
+      url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
 - title: 名刺からデータを抽出する
   linkLists:
   - linkListType: concept
@@ -96,6 +100,10 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-business-cards
     - text: REST API の使用する (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-business-cards
+  - linkListType: get-started
+    links:
+    - text: Form Recognizer を試す (名刺の分析)
+      url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
 - title: 請求書からデータを抽出する
   linkLists:
   - linkListType: concept
@@ -114,16 +122,16 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-invoices
     - text: REST API の使用する (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-invoices
-  - linkListType: deploy
+  - linkListType: get-started
     links:
-    - text: Form Recognizer を試す
+    - text: Form Recognizer を試す (請求書の分析)
       url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
 - title: 身分証明書からデータを抽出する
   linkLists:
   - linkListType: concept
     links:
     - text: ID ドキュメント
-      url: concept-invoices.md
+      url: concept-identification-cards.md
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
@@ -136,6 +144,10 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-identity-documents
     - text: REST API の使用する (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-identity-documents
+  - linkListType: get-started
+    links:
+    - text: Form Recognizer を試す (ID の分析)
+      url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
 - title: Microsoft Tech Community
   linkLists:
   - linkListType: reference
@@ -168,13 +180,9 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#train-a-custom-model
     - text: REST API の使用する (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#train-a-custom-model
-  - linkListType: tutorial
+  - linkListType: get-started
     links:
-    - text: フォーム データを一括で抽出する
-      url: tutorial-bulk-processing.md
-  - linkListType: deploy
-    links:
-    - text: Form Recognizer を試す
+    - text: Form Recognizer を試す (モデルのトレーニング)
       url: https://fott-2-1.azurewebsites.net/
 - title: カスタム モデルを使用してフォームを分析する
   linkLists:
@@ -190,17 +198,21 @@ landingContent:
       url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
     - text: REST API の使用する (cURL)
       url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+  - linkListType: get-started
+    links:
+    - text: Form Recognizer を試す (カスタム フォームの分析)
+      url: https://fott-2-1.azurewebsites.net/
 - title: ラベル付けツールの使用を開始する
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: ラベル付けツールを使用する
       url: label-tool.md
-- title: API とクライアント ライブラリ
+- title: REST API とクライアント ライブラリ
   linkLists:
   - linkListType: reference
     links:
-    - text: Form Recognizer API v2.1
+    - text: Azure Form Recognizer API v2.1
       url: https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm
     - text: .NET SDK
       url: /dotnet/api/overview/azure/ai.formrecognizer-readme

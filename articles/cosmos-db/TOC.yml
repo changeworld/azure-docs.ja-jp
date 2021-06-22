@@ -4,6 +4,8 @@
   items:
     - name: Azure Cosmos DB の概要
       href: introduction.md
+    - name: API を選択する
+      href: choose-api.md
     - name: NoSQL とリレーショナル データベース
       href: relational-nosql.md
 - name: 概念
@@ -139,7 +141,6 @@
       expanded: true
       items:
         - name: Cosmos DB リソースを作成する
-          expanded: true
           items:
             - name: Azure portal
               href: create-cosmosdb-resources-portal.md
@@ -834,8 +835,6 @@
               href: visualize-qlik-sense.md
         - name: Apache Spark による組み込みの分析
           items:
-            - name: Azure Databricks Spark 2 OLTP コネクタ
-              href: spark-connector.md
             - name: Apache Kafka と Cosmos DB を使用したストリーミング
               href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Cosmos DB にデータを移行する
@@ -931,7 +930,7 @@
         - name: REST (データ プレーン)
           href: /rest/api/cosmos-db/
         - name: REST (管理プレーン)
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/sqlresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -1049,7 +1048,7 @@
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/cassandraresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandraresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -1183,7 +1182,7 @@
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/mongodbresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongodbresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -1267,7 +1266,7 @@
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/gremlinresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlinresources
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
         - name: Azure CLI
@@ -1479,6 +1478,8 @@
           items:
             - name: 診断ログを使用して監視する
               href: cosmosdb-monitor-resource-logs.md
+            - name: 基本的なクエリを使用した問題のトラブルシューティング
+              href: cosmosdb-monitor-logs-basic-queries.md
             - name: コントロール プレーン ログの監査
               href: audit-control-plane-logs.md
         - name: アラートを構成する

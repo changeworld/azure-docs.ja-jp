@@ -170,6 +170,8 @@
               href: automation-linux-hrw-install.md
             - name: Hybrid Runbook Worker で Runbook を実行する
               href: automation-hrw-run-runbooks.md
+            - name: Azure Policy を使用してジョブの実行を適用する
+              href: enforce-job-execution-hybrid-worker.md
             - name: Hybrid Runbook Worker の問題のトラブルシューティング
               href: troubleshoot/hybrid-runbook-worker.md
         - name: ソース管理の統合を使用する
@@ -272,8 +274,12 @@
           href: update-management/overview.md
         - name: リンクされた Log Analytics ワークスペースでサポートされるリージョン
           href: how-to/region-mappings.md
+        - name: デプロイを計画する
+          href: update-management/plan-deployment.md
         - name: 有効化
           items:
+            - name: システムの前提条件
+              href: update-management/operating-system-requirements.md
             - name: Azure Resource Manager テンプレートの使用を有効にする
               href: update-management/enable-from-template.md
             - name: Azure portal から有効にする

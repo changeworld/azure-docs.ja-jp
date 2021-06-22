@@ -23,6 +23,12 @@
           href: quickstart-deploy-apps.md
         - name: ログ、メトリック、トレースの使用
           href: quickstart-logs-metrics-tracing.md
+        - name: Azure Database for MySQL との統合
+          href: quickstart-integrate-azure-database-mysql.md
+        - name: プロビジョニング
+          items:
+            - name: ARM テンプレートを使用したプロビジョニング
+              href: quickstart-deploy-infrastructure-vnet.md
 - name: チュートリアル
   items:
     - name: アラートとアクション グループ
@@ -39,6 +45,8 @@
   items:
     - name: アプリとデプロイ
       href: concept-understand-app-and-deployment.md
+    - name: ブルーグリーン デプロイの戦略
+      href: concepts-blue-green-deployment-strategies.md
     - name: クォータと制限
       href: quotas.md
     - name: メトリック
@@ -117,6 +125,8 @@
           href: how-to-circuit-breaker-metrics.md
         - name: 構造化されたアプリケーション ログ
           href: structured-app-log.md
+        - name: New Relic Java インプロセス エージェント
+          href: how-to-new-relic-monitor.md
     - name: ネットワーク
       items:
         - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
@@ -197,6 +207,8 @@
       href: /cli/azure/spring-cloud
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
+    - name: Azure Pipelines タスク
+      href: /azure/devops/pipelines/tasks/deploy/azure-spring-cloud
     - name: リソース
       href: resources.md
     - name: よく寄せられる質問

@@ -36,8 +36,6 @@
               href: service-bus-nodejs-how-to-use-queues.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
-            - name: Ruby
-              href: service-bus-ruby-how-to-use-queues.md
         - name: メッセージの送受信 (古いバージョン/パッケージ)
           items:
             - name: .NET (Microsoft.Azure.ServiceBus)
@@ -66,8 +64,6 @@
               href: service-bus-nodejs-how-to-use-topics-subscriptions.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
-            - name: Ruby
-              href: service-bus-ruby-how-to-use-topics-subscriptions.md
         - name: メッセージの発行とサブスクライブ (古いバージョン/パッケージ)
           items:
             - name: .NET (Microsoft.Azure.ServiceBus)
@@ -98,6 +94,8 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: 高度な機能
       items:
+        - name: 高度な機能の概要
+          href: advanced-features-overview.md
         - name: メッセージ セッション
           href: message-sessions.md
         - name: 重複メッセージ検出
@@ -220,8 +218,8 @@
           href: service-bus-end-to-end-tracing.md
         - name: 診断ログ
           href: service-bus-diagnostic-logs.md
-        - name: Azure Monitor のメトリック
-          href: service-bus-metrics-azure-monitor.md
+        - name: Azure Service Bus の監視
+          href: monitor-service-bus.md
     - name: 統合
       items:
         - name: RabbitMQ との統合
@@ -281,6 +279,8 @@
           href: service-bus-resource-manager-exceptions.md
 - name: リファレンス
   items:
+    - name: データ参照を監視する
+      href: monitor-service-bus-reference.md
     - name: .NET
       items:
         - name: Microsoft.Azure.ServiceBus から Azure.Messaging.ServiceBus への移行

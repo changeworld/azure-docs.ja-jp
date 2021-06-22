@@ -95,9 +95,15 @@
         - name: ルーティングの問題のトラブルシューティング
           href: front-door-troubleshoot-routing.md
         - name: 許可された証明機関
-          href: front-door-troubleshoot-allowed-ca.md
+          href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: リファレンス
   items:
+    - name: Azure Front Door のエッジ ロケーション
+      items:
+        - name: リージョン別のエッジ ロケーション
+          href: edge-locations-by-region.md
+        - name: 略称別の エッジ ロケーション
+          href: edge-locations-abbreviation.md
     - name: Azure CLI
       href: /cli/azure/afd/
     - name: Azure PowerShell

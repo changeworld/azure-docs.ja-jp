@@ -58,12 +58,18 @@
       items:
         - name: .NET Core
           href: enable-dynamic-configuration-dotnet-core-push-refresh.md
-    - name: Key Vault 参照を使用する
+    - name: Key Vault の参照
       items:
-        - name: ASP.NET Core
-          href: use-key-vault-references-dotnet-core.md
-        - name: Spring Boot
-          href: use-key-vault-references-spring-boot.md
+        - name: Key Vault 参照を使用する
+          items:
+            - name: ASP.NET Core
+              href: use-key-vault-references-dotnet-core.md
+            - name: Spring Boot
+              href: use-key-vault-references-spring-boot.md
+        - name: シークレットと証明書を自動的に再読み込みする
+          items:
+            - name: .NET
+              href: reload-key-vault-secrets-dotnet.md
     - name: ビルド、デプロイ、および CI/CD
       items:
         - name: Azure Pipelines を使用したプッシュ
@@ -124,6 +130,8 @@
           href: overview-managed-identity.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/app-config-security-baseline?toc=/azure/azure-app-configuration/TOC.json
+        - name: アクセス キー認証を無効にする (プレビュー)
+          href: howto-disable-access-key-authentication.md
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
     - name: 高可用性

@@ -129,7 +129,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -240,8 +240,12 @@
               href: logs/log-analytics-tutorial.md
             - name: クエリ スコープ
               href: logs/scope.md
-            - name: クエリの例
-              href: logs/example-queries.md
+            - name: クエリの保存
+              href: logs/save-query.md
+            - name: クエリの使用
+              href: logs/queries.md
+            - name: クエリ パック
+              href: logs/query-packs.md
         - name: ログ クエリ
           items:
             - name: 概要
@@ -370,6 +374,9 @@
             - name: データ コレクション
               displayname: 'data collection rule,Azure Monitor agent'
               href: agents/data-collection-rule-azure-monitor-agent.md
+            - name: 大規模にデプロイする
+              displayname: Deploy Azure Monitor agent at scale
+              href: deploy-scale.md#azure-monitor-agent-preview
             - name: よく寄せられる質問
               displayname: Azure Monitor agent FAQ
               href: faq.md#azure-monitor-agent-preview
@@ -625,27 +632,29 @@
           href: ./faq.md
         - name: コードベースの監視
           items:
-            - name: ASP.NET Core
+            - name: .NET
               items:
-                - name: ASP.NET Core アプリの監視
-                  displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
-                  href: app/asp-net-core.md
-                - name: ILogger
-                  displayname: 'ilogger, logging, log'
-                  href: app/ilogger.md
-            - name: ASP.NET
-              items:
-                - name: ASP.NET アプリの監視
-                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-                  href: app/asp-net.md
-                - name: ASP.NET に関するトラブルシューティング
-                  href: app/asp-net-troubleshoot-no-data.md
-            - name: 非 HTTP/バックグラウンド アプリ
-              displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
-              href: app/worker-service.md
-            - name: .NET コンソール
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
+                - name: ASP.NET Core
+                  items:
+                    - name: ASP.NET Core アプリの監視
+                      displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+                      href: app/asp-net-core.md
+                    - name: ILogger
+                      displayname: 'ilogger, logging, log'
+                      href: app/ilogger.md
+                - name: ASP.NET
+                  items:
+                    - name: ASP.NET アプリの監視
+                      displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                      href: app/asp-net.md
+                    - name: ASP.NET に関するトラブルシューティング
+                      href: app/asp-net-troubleshoot-no-data.md
+                - name: 非 HTTP/バックグラウンド アプリ
+                  displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
+                  href: app/worker-service.md
+                - name: .NET コンソール
+                  displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+                  href: app/console.md
             - name: Java
               items:
                 - name: Web Apps
@@ -867,6 +876,8 @@
         - name: スマート検出
           href: app/proactive-diagnostics.md
           items:
+            - name: アラートへのアップグレード
+              href: alerts/alerts-smart-detections-migration.md
             - name: 失敗の異常
               href: app/proactive-failure-diagnostics.md
             - name: パフォーマンスの異常
@@ -1073,6 +1084,8 @@
               href: containers/container-insights-azure-redhat-setup.md
             - name: Azure Red Hat OpenShift v4 での有効化
               href: containers/container-insights-azure-redhat4-setup.md
+            - name: Azure Policy による有効化
+              href: containers/container-insights-enable-aks-policy.md
             - name: リージョンのマッピング
               href: containers/container-insights-region-mapping.md
         - name: パフォーマンスの監視
@@ -1135,6 +1148,8 @@
           href: insights/cosmosdb-insights-overview.md
         - name: Azure Data Explorer (プレビュー)
           href: insights/data-explorer.md
+        - name: Log Analytics ワークスペース
+          href: logs/log-analytics-workspace-insights-overview.md
         - name: ネットワーク
           href: insights/network-insights-overview.md
         - name: Key Vault
@@ -1194,7 +1209,7 @@
                         - name: 価格
                           href: insights/network-performance-monitor-pricing-faq.md
                         - name: よく寄せられる質問
-                          href: insights/network-performance-monitor-faq.md
+                          href: insights/network-performance-monitor-faq.yml
                 - name: Office 365
                   href: insights/solution-office-365.md
                 - name: Service Map ソリューション

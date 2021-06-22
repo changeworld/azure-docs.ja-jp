@@ -130,6 +130,8 @@
           href: container-instances-get-logs.md
         - name: Azure Monitor ログでのログ記録
           href: container-instances-log-analytics.md
+        - name: Azure Container Scan アクションを使用してイメージをスキャンする
+          href: container-instances-github-action-scan.md
     - name: トラブルシューティング
       items:
         - name: 一般的な問題のトラブルシューティング
@@ -177,3 +179,5 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
     - name: よく寄せられる質問
       href: container-instances-faq.md
+- name: サポートとトラブルシューティング
+  href: container-instances-support-help.md

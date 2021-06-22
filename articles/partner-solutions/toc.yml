@@ -16,14 +16,44 @@
     - name: Datadog
       items:
         - name: 概要
-          displayName: 'Datadog, Monitoring'
-          href: ./datadog/overview.md
-        - name: 作成
-          href: ./datadog/create.md
-        - name: 管理する
-          href: ./datadog/manage.md
-        - name: トラブルシューティング
-          href: ./datadog/troubleshoot.md
+          items:
+            - name: Datadog とは
+              href: ./datadog/overview.md
+              displayName: 'Datadog, Monitoring'
+        - name: クイックスタート
+          items:
+            - name: 新しい Datadog 組織を作成する
+              href: ./datadog/create.md
+            - name: 既存の Datadog 組織にリンクする
+              href: ./datadog/link-to-existing-organization.md
+        - name: 方法
+          items:
+            - name: デプロイ前の構成
+              href: ./datadog/prerequisites.md
+            - name: 管理する
+              href: ./datadog/manage.md
+            - name: トラブルシューティング
+              items:
+                - name: サポートを受ける
+                  href: ./datadog/get-support.md
+                - name: 一般的なエラーを修正する
+                  href: ./datadog/troubleshoot.md
+    - name: Elastic
+      items:
+        - name: 概要
+          items:
+            - name: Elastic とは
+              href: ./elastic/overview.md
+        - name: クイックスタート
+          items:
+            - name: Elastic リソースを作成する
+              href: ./elastic/create.md
+        - name: 方法
+          items:
+            - name: 統合の管理
+              href: ./elastic/manage.md
+            - name: トラブルシューティング
+              href: ./elastic/troubleshoot.md
 - name: リファレンス
   items:
     - name: Azure CLI

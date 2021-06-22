@@ -165,7 +165,7 @@
         - name: Docker ホストのセキュリティを強化する
           displayName: containers
           href: harden-docker-hosts.md
-    - name: SQL リソースの保護
+    - name: データベースを保護する
       items:
         - name: Azure Defender for SQL の概要
           displayName: database
@@ -173,12 +173,12 @@
         - name: コンピューター上で SQL サーバー用 Defender を有効にする
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc, Azure Defender'
+        - name: オープンソースのリレーショナル データベース用 Azure Defender の概要
+          displayName: 'PG, PostgreSQL, MySQL, MariaDB'
+          href: defender-for-databases-introduction.md
         - name: SQL リソースの脆弱性をスキャンする
           href: defender-for-sql-on-machines-vulnerability-assessment.md
-          displayName: 'hybrid, arc, Azure Defender'
-        - name: SQL Server での脆弱性の検出を無効にする
-          displayName: 'VA, registry, vulnerabilities'
-          href: defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview
+          displayName: 'hybrid, arc, Azure Defender, VA, registry, vulnerabilities'
         - name: SQL 情報の保護ポリシーをカスタマイズする
           displayName: 'sql, database, data discovery'
           href: security-center-info-protection-policy.md
@@ -197,6 +197,9 @@
         - name: レジストリ イメージの脆弱性をスキャンする
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md
+        - name: CI/CD ワークフロー内のイメージをスキャンする
+          displayName: 'ACR, registry, images, trevi, vulnerabilities, scanner'
+          href: defender-for-container-registries-cicd.md
         - name: 特定のイメージの脆弱性の検出結果を無効にする (プレビュー)
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
@@ -287,7 +290,7 @@
         - name: アラートへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
-- name: リファレンス
+- name: 関連項目
   items:
     - name: アーカイブされたリリース ノート (6 か月以上前)
       displayName: 'changelog, news'
@@ -301,15 +304,15 @@
     - name: Azure Security Center の FAQ
       items:
         - name: 一般的な質問
-          href: faq-general.md
+          href: faq-general.yml
         - name: アクセス許可に関する質問
-          href: faq-permissions.md
+          href: faq-permissions.yml
         - name: データ収集とエージェントに関する質問
-          href: faq-data-collection-agents.md
+          href: faq-data-collection-agents.yml
         - name: Virtual Machines に関する質問
-          href: faq-vms.md
+          href: faq-vms.yml
         - name: Azure Log Analytics の既存のユーザー
-          href: faq-azure-monitor-logs.md
+          href: faq-azure-monitor-logs.yml
     - name: Azure Policy の組み込み
       displayName: 'samples, policy'
       href: policy-reference.md
@@ -319,6 +322,8 @@
       href: security-center-endpoint-protection.md
     - name: Azure CLI
       href: /cli/azure/security
+    - name: Azure PowerShell
+      href: /powershell/module/az.security/
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

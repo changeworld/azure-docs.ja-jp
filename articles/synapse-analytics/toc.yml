@@ -42,7 +42,7 @@ items:
       - name: 8 監視する
         href: get-started-monitor.md
         displayName: 'get, started'
-      - name: 9 Knowledge Center を調べる
+      - name: 9 Knowledge Center を探索する
         href: get-started-knowledge-center.md
         displayName: 'get, started'
       - name: 10 管理者を追加する
@@ -64,6 +64,7 @@ items:
                 href: quickstart-create-workspace-powershell.md
                 displayName: quickstart
               - name: ARM テンプレート
+                displayname: Resource Manager
                 href: quickstart-deployment-template-workspaces.md
             displayName: quickstart
           - name: Power BI ワークスペースをリンクする
@@ -507,6 +508,8 @@ items:
                 href: sql/query-json-files.md
               - name: 入れ子になっている型に対してクエリを実行する
                 href: sql/query-parquet-nested-types.md
+              - name: Delta Lake に対してクエリを実行する (プレビュー)
+                href: sql/query-delta-lake-format.md
               - name: クエリ フォルダーと複数のファイル
                 href: sql/query-folders-multiple-csv-files.md
                 displayname: csv
@@ -570,12 +573,6 @@ items:
             href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           - name: Spark ジョブ定義の送信
             href: ./spark/apache-spark-job-definitions.md
-          - name: Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
-            href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
-          - name: Prometheus と Grafana を使用して Apache Spark アプリケーション レベルのメトリックを監視する
-            href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
-          - name: Azure Log Analytics を使用してメトリックとログを収集して視覚化する (プレビュー)
-            href: ./spark/apache-spark-azure-log-analytics.md
       - name: 概念
         items:
           - name: Apache Spark
@@ -586,8 +583,14 @@ items:
             href: ./spark/apache-spark-what-is-delta-lake.md
           - name: Apache Spark の自動スケール動作
             href: ./spark/apache-spark-autoscale.md
-          - name: Synapse ランタイム
-            href: ./spark/apache-spark-version-support.md
+          - name: Azure Synapse ランタイム
+            items:
+              - name: ランタイムの概要
+                href: ./spark/apache-spark-version-support.md
+              - name: Azure Synapse Apache Spark 2.4 ランタイム
+                href: ./spark/apache-spark-24-runtime.md
+              - name: Azure Synapse Apache Spark 3.0 ランタイム
+                href: ./spark/apache-spark-3-runtime.md
           - name: 機械学習
             href: ./spark/apache-spark-machine-learning-concept.md
           - name: ノートブック
@@ -636,21 +639,25 @@ items:
                 href: ./spark/apache-spark-performance-hyperspace.md
           - name: 管理および監視
             items:
-              - name: Spark プール履歴サーバー
+              - name: Apache Spark プール履歴サーバーへの移動
                 href: ./spark/apache-spark-history-server.md
               - name: Spark アプリケーションの監視
                 href: monitoring/apache-spark-applications.md
-              - name: Apache Spark プール
+              - name: Spark プールの監視
                 href: monitoring/how-to-monitor-spark-pools.md
-              - name: Apache Spark を使用して JSON を分析する
-                href: how-to-analyze-complex-schema.md
+              - name: Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
+                href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+              - name: Prometheus と Grafana を使用した Apache Spark アプリケーション レベルのメトリックの監視
+                href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
+              - name: Azure Log Analytics を使用したメトリックおよびログの収集と視覚化 (プレビュー)
+                href: ./spark/apache-spark-azure-log-analytics.md
           - name: データ ソース
             items:
               - name: Azure Cosmos DB
                 href: ./synapse-link/how-to-query-analytical-store-spark.md
               - name: Azure Data Explorer (Kusto)
                 href: ./spark/data-sources/apache-spark-kusto-connector.md
-              - name: Azure SQL Data Warehouse
+              - name: Azure SQL Dedicated
                 href: ./spark/synapse-spark-sql-pool-import-export.md
               - name: Azure SQL と SQL Server
                 href: ./spark/data-sources/apache-spark-sql-connector.md
@@ -662,34 +669,54 @@ items:
         items:
           - name: Azure Cosmos DB の Synapse Link
             href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Dataverse の Synapse Link
+            href: /powerapps/maker/data-platform/export-to-data-lake?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
       - name: クイックスタート
         items:
           - name: Cosmos DB の Synapse Link に接続する
             href: quickstart-connect-synapse-link-cosmos-db.md
       - name: 概念
         items:
-          - name: 分析ストアの概要
-            href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-          - name: Synapse Link でサポートされる機能
-            href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
-          - name: Synapse Link に関する FAQ
-            href: ../cosmos-db/synapse-link-frequently-asked-questions.yml?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-          - name: Synapse Link のユース ケース
-            href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Cosmos DB
+            items:
+              - name: 分析ストアの概要
+                href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Synapse Link でサポートされる機能
+                href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
+              - name: Cosmos DB の FAQ
+                href: ../cosmos-db/synapse-link-frequently-asked-questions.yml?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Synapse Link のユース ケース
+                href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Dataverse
+            items:
+              - name: Dataverse とは
+                href: /powerapps/maker/data-platform/data-platform-intro?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Synapse Link での構成設定
+                href: /powerapps/maker/data-platform/azure-synapse-link-advanced-configuration?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Dataverse の FAQ
+                href: /powerapps/maker/data-platform/export-data-lake-faq?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
       - name: 操作方法ガイド
         items:
-          - name: Synapse Link の構成
-            href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-          - name: Cosmos DB の Azure Synapse Link に接続する
-            href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-          - name: Power BI とサーバーレス SQL プールを使用した Azure Cosmos DB の分析
-            href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-          - name: Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
-            href: ./synapse-link/how-to-query-analytical-store-spark.md
-          - name: Apache Spark を使用して Synapse Link のデータを専用 SQL プールにコピーする
-            href: ./synapse-link/how-to-copy-to-sql-pool.md
-          - name: サーバーレス SQL プールを使用して Azure Cosmos DB 分析ストアのクエリを実行する
-            href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Cosmos DB
+            items:
+              - name: Synapse Link の構成
+                href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Cosmos DB の Azure Synapse Link に接続する
+                href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+              - name: Power BI とサーバーレス SQL プールを使用した Azure Cosmos DB の分析
+                href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
+                href: ./synapse-link/how-to-query-analytical-store-spark.md
+              - name: Apache Spark を使用して Synapse Link のデータを専用 SQL プールにコピーする
+                href: ./synapse-link/how-to-copy-to-sql-pool.md
+              - name: サーバーレス SQL プールを使用して Azure Cosmos DB 分析ストアのクエリを実行する
+                href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Dataverse
+            items:
+              - name: Dataverse の Synapse Link を構成する
+                href: /powerapps/maker/data-platform/azure-synapse-link-synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Azure Synapse へのデータのエクスポート
+                href: /dynamics365/customer-insights/audience-insights/export-azure-synapse-analytics?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
   - name: パイプラインとデータ フロー
     items:
       - name: クイックスタート
@@ -698,6 +725,8 @@ items:
             href: quickstart-copy-activity-load-sql-pool.md
           - name: マッピング データ フローを使用してデータを変換する
             href: quickstart-data-flow.md
+          - name: Apache Spark のジョブ定義を使用してデータを変換する
+            href: quickstart-transform-data-using-spark-job-definition.md
       - name: 概念
         items:
           - name: パイプラインとアクティビティ
@@ -981,6 +1010,8 @@ items:
             items:
               - name: Data Flow の実行アクティビティ
                 href: ../data-factory/control-flow-execute-data-flow-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Synapse ノートブック アクティビティ
+                href: synapse-notebook-activity.md
               - name: Synapse SQL プール ストアド プロシージャ アクティビティ
                 href: ./data-integration/sql-pool-stored-procedure-activity.md
               - name: Azure 関数アクティビティ
@@ -1139,6 +1170,8 @@ items:
             href: machine-learning/what-is-machine-learning.md
       - name: クイックスタート
         items:
+          - name: ギャラリーからサンプル ノートブックを使用する
+            href: machine-learning/quickstart-gallery-sample-notebook.md
           - name: Azure Machine Learning のリンクされたサービスの新規作成
             href: machine-learning/quickstart-integrate-azure-machine-learning.md
       - name: 概念
@@ -1170,6 +1203,9 @@ items:
             href: ./machine-learning/tutorial-cognitive-services-anomaly.md
           - name: Microsoft Machine Learning for Apache Spark を使用して機械学習アプリケーションを構築する (プレビュー)
             href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
+          - name: ファイルシステムの仕様およびリンクされたサービスを使用した ADLS の読み取り/書き込み
+            displayname: machine learning
+            href: ./machine-learning/tutorial-spark-pool-filesystem-spec.md
   - name: Data Catalog とガバナンス
     items:
       - name: クイックスタート

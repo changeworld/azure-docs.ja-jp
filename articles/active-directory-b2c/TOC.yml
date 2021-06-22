@@ -24,9 +24,9 @@
       href: tutorial-create-tenant.md
     - name: 2 - アプリケーションの登録
       href: tutorial-register-applications.md
-    - name: 3 - ユーザー フローの作成
+    - name: 3 - ユーザー フローとカスタム ポリシーの作成
       href: tutorial-create-user-flows.md
-    - name: 4 - ユーザーの認証
+    - name: ユーザーを認証する
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -37,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: 5 - API アクセスの許可
+    - name: API アクセスの許可
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -45,7 +45,7 @@
           href: tutorial-desktop-app-webapi.md
         - name: シングル ページ
           href: tutorial-single-page-app-webapi.md
-    - name: 6 - テナントのクリーンアップと削除
+    - name: テナントのクリーンアップと削除
       href: tutorial-delete-tenant.md
 - name: サンプル
   href: code-samples.md
@@ -105,8 +105,28 @@
       href: tenant-management.md
     - name: アプリの統合
       items:
-        - name: Web アプリケーションの登録
-          href: tutorial-register-applications.md
+        - name: ASP.NET Core Web アプリ
+          items:
+            - name: サンプル Web アプリを構成する
+              href: configure-authentication-sample-web-app.md
+            - name: アプリでの認証の有効化
+              href: enable-authentication-web-application.md
+            - name: 認証オプション
+              href: enable-authentication-web-application-options.md
+        - name: API を呼び出す ASP.NET Core Web アプリ
+          items:
+            - name: API を呼び出すサンプル Web アプリを構成する
+              href: configure-authentication-sample-web-app-with-api.md
+            - name: アプリでの認証の有効化
+              href: enable-authentication-web-app-with-api.md
+            - name: 認証オプション
+              href: enable-authentication-web-app-with-api-options.md
+        - name: シングルページ アプリケーション (SPA)
+          items:
+            - name: サンプル SPA アプリを構成する
+              href: configure-authentication-sample-spa-app.md
+            - name: 認証オプション
+              href: enable-authentication-spa-app-options.md
         - name: シングルページ アプリケーション (SPA) を登録する
           href: tutorial-register-spa.md
         - name: SAML アプリケーション
@@ -158,7 +178,7 @@
       items:
         - name: ローカル アカウント ID プロバイダー
           href: identity-provider-local.md
-          displayName: 'Username, Email, Phone authorization, Phone sing-in'
+          displayName: 'Username, Email, Phone authorization, Phone sign-in'
         - name: ID プロバイダーの追加
           href: add-identity-provider.md
         - name: AD FS
@@ -475,14 +495,16 @@
                   href: id-token-hint.md
                 - name: JWT トークン発行者
                   href: jwt-issuer-technical-profile.md
-                - name: OAuth1
+                - name: OAuth1 ID プロバイダー
                   href: oauth1-technical-profile.md
-                - name: OAuth2
+                - name: OAuth2 ID プロバイダー
                   href: oauth2-technical-profile.md
+                - name: OAuth2 カスタム エラー
+                  href: oauth2-error-technical-profile.md
                 - name: ワンタイム パスワード
                   href: one-time-password-technical-profile.md
                   displayName: otp
-                - name: OpenID Connect
+                - name: OpenID Connect ID プロバイダー
                   href: openid-connect-technical-profile.md
                 - name: 電話要素
                   href: phone-factor-technical-profile.md
@@ -551,7 +573,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: よく寄せられる質問
-      href: faq.md
+      href: ./faq.yml
     - name: ヘルプの表示
       href: ../active-directory/develop/developer-support-help-options.md
     - name: 価格

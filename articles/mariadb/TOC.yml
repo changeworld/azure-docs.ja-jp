@@ -153,10 +153,8 @@
       href: concepts-ssl-connection-security.md
     - name: TLS の構成
       href: howto-tls-configurations.md
-    - name: 高度な脅威保護
-      href: concepts-data-access-and-security-threat-protection.md
-    - name: Advanced Threat Protection の構成
-      href: howto-database-threat-protection-portal.md
+    - name: Azure Defender による脅威保護
+      href: ../security-center/defender-for-databases-introduction.md
     - name: 監査の概念
       href: concepts-audit-logs.md
     - name: 監査ログの構成
