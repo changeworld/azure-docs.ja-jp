@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ff8376eea2eca459b93adbf46b81dbeb7639d40
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98762691"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954342"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUIS アプリのアクティブなバージョンをトレーニングする
 
 トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリを教えるプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。
 
-アプリのトレーニングと[テスト](luis-concept-test.md)は反復処理です。 LUIS アプリをトレーニングした後で、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。
+アプリのトレーニングと[テスト](./luis-interactive-test.md)は反復処理です。 LUIS アプリをトレーニングした後で、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。
 
 トレーニングは、LUIS ポータルでのアクティブなバージョンに適用されます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "98762691"
 
 ### <a name="using-the-luis-portal"></a>LUIS ポータルを使用する
 
-[LUIS ポータル](https://www.luis.ai/)にログインし、お使いのアプリをクリックします。 画面の上部にある **[管理]** を選択し、 **[設定]** を選択して、 **[決定論的トレーニングを使用する]** オプションを有効または無効にします。 無効にすると、利用可能なすべてのデータがトレーニングで使用されます。
+[LUIS ポータル](https://www.luis.ai/)にログインし、お使いのアプリをクリックします。 画面の上部にある **[管理]** を選択し、 **[設定]** を選択して、 **[Use non-deterministic training]\(非決定論的トレーニングを使用する\)** オプションを有効または無効にします。 無効にすると、利用可能なすべてのデータがトレーニングで使用されます。
 
 ![非決定論的トレーニングを有効または無効にするためのボタン](./media/non-determinstic-training.png)
 
