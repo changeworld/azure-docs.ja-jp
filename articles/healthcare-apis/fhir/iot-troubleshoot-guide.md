@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 11/13/2020
 ms.author: jasteppe
-ms.openlocfilehash: 3eef7354f7197f60e8abd1b5522393bf00a6203f
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 4e296f8d62afbebe49ebccc60654e26c46cbb2bf
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019351"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991201"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT Connector for FHIR (プレビュー) のトラブルシューティング ガイド
 
@@ -189,6 +189,6 @@ Azure IoT Connector for FHIR マッピング ファイルのコピーは、Azure
 Azure IoT Connector for FHIR についてよく寄せられる質問を確認します。
 
 >[!div class="nextstepaction"]
->[Azure IoT Connector for FHIR についてよく寄せられる質問](fhir-faq.md)
+>[Azure IoT Connector for FHIR についてよく寄せられる質問](fhir-faq.yml)
 
 *Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
