@@ -83,8 +83,8 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 
   :::image type="content" source="media/role-startup-failure-3.png" alt-text="画像は、ロールのスタートアップ エラーでの例外を示しています":::
   
-## <a name="diagnose-issues-by-using-the-compute-emulator"></a>コンピューティング エミュレーターを使用した問題の診断
-依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Azure コンピューティング エミュレーターを使用して行うことができます。
+## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Azure Compute Emulator を使用した問題の診断
+依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Azure Compute Emulator を使用して行うことができます。
 この診断方法の効果を最大限に高めるには、Windows がクリーン インストールされたコンピューターまたは仮想マシンを使用する必要があります。 
 1.  [Azure SDK](https://azure.microsoft.com/downloads/) をインストールします 
 2.  開発コンピューターで、クラウド サービスのプロジェクトをビルドします。
