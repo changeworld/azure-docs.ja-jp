@@ -1,5 +1,5 @@
 ---
-title: 'クイックスタート: Azure SQL マネージド インスタンスを作成する (ポータル)'
+title: 'クイックスタート: Azure SQL Managed Instance を作成する (ポータル)'
 description: このクイックスタートでは、Azure portal を使用して、マネージド インスタンス、ネットワーク環境、アクセス用のクライアント VM を作成します。
 services: sql-database
 ms.service: sql-managed-instance
@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "101691214"
 ---
-# <a name="quickstart-create-an-azure-sql-managed-instance"></a>クイック スタート:Azure SQL マネージド インスタンスの作成
+# <a name="quickstart-create-an-azure-sql-managed-instance"></a>クイック スタート:Azure SQL Managed Instance の作成
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 このクイックスタートでは、[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) を Azure portal で作成する方法について説明します。
@@ -26,7 +26,7 @@ ms.locfileid: "101691214"
 > [!IMPORTANT]
 > 制限については、[サポートされているリージョン](resource-limits.md#supported-regions)と[サポートされているサブスクリプションの種類](resource-limits.md#supported-subscription-types)に関するセクションを参照してください。
 
-## <a name="create-an-azure-sql-managed-instance"></a>Azure SQL マネージド インスタンスの作成
+## <a name="create-an-azure-sql-managed-instance"></a>Azure SQL Managed Instance の作成
 
 SQL マネージド インスタンスを作成するには、次の手順に従います。 
 
