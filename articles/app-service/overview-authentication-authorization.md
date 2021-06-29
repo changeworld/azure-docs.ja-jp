@@ -138,7 +138,7 @@ App Service または [Azure Functions](../azure-functions/functions-overview.md
 
 詳しくは、「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください。
 
-現時点では、現在のユーザーに Authentication/Authorization 機能を設定することは ASP.NET Core ではサポートされていません。 ただし、このギャップを埋めるのに役立つ[サードパーティのオープン ソースのミドルウェア コンポーネント](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)は存在します。
+.NET Core の場合、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) は、現在のユーザーへの認証/承認機能の設定をサポートします。詳細については、[Microsoft.Identity.Web wiki](https://github.com/AzureAD/microsoft-identity-web/wiki/1.2.0#integration-with-azure-app-services-authentication-of-web-apps-running-with-microsoftidentityweb) で確認するか、[このチュートリアル](https://docs.microsoft.com/en-us/azure/app-service/scenario-secure-app-access-microsoft-graph-as-user?tabs=command-line#install-client-library-packages)で Microsoft Graph にアクセスする Web アプリのデモを参照してください。
 
 #### <a name="token-store"></a>トークン ストア
 
