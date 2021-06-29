@@ -82,7 +82,7 @@ QnA Maker サービスでは、Azure Search サービスから CMK が使用さ�
 
 ## <a name="encryption-of-data-in-transit"></a>転送中のデータの暗号化
 
-QnA Maker ポータルは、ユーザーのブラウザー上で実行されます。 どのアクションでも、各コグニティブ サービス API への直接呼び出しがトリガーされます。 そのため、QnA Maker では転送中のデータに対応しています。
+QnA Maker ポータルは、ユーザーのブラウザー上で実行されます。 どのアクションでも、各 Cognitive Service API への直接呼び出しがトリガーされます。 そのため、QnA Maker では転送中のデータに対応しています。
 ただし、QnA Maker ポータル サービスは米国西部でホストされており、まだ米国以外のお客様にとっては最適な状況ではありません。 
 
 ## <a name="next-steps"></a>次のステップ
