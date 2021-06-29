@@ -324,4 +324,4 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 * [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (キュー/トピック)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-既定では、ほとんどのトリガーにより要求が最大 5 回再試行されます。 5 回目の再試行後に、Azure Queue ストレージによって[有害キュー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)にメッセージが書き込まれます。  既定の Service Bus キューおよびトピックのポリシーでは、10 回試行した後[配信不能キュー](../articles/service-bus-messaging/service-bus-dead-letter-queues.md)にメッセージが書き込まれます。
+既定では、ほとんどのトリガーにより要求が最大 5 回再試行されます。 5 回目の再試行後に、Azure Queue Storage によって[有害キュー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)にメッセージが書き込まれます。  既定の Service Bus キューおよびトピックのポリシーでは、10 回試行した後[配信不能キュー](../articles/service-bus-messaging/service-bus-dead-letter-queues.md)にメッセージが書き込まれます。
