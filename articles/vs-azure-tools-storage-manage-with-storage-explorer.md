@@ -206,7 +206,7 @@ https://contoso.blob.core.windows.net/container01?sv=2020-04-08&st=2021-03-02T00
 
 #### <a name="local-storage-emulator"></a>ローカル ストレージ エミュレーター
 
-Storage Explorer では、Azure Storage エミュレーターに接続できます。 現在、次の 2 つの エミュレーターがサポートされています。
+Storage Explorer では、Azure Storage Emulator に接続できます。 現在、次の 2 つの エミュレーターがサポートされています。
 
 * [Azure Storage Emulator](storage/common/storage-use-emulator.md) (Windows のみ)
 * [Azurite](https://github.com/azure/azurite) (Windows、macOS、または Linux)
