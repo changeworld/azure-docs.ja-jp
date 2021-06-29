@@ -29,7 +29,7 @@ Azure Cosmos DB では 2 種類の添付ファイルがサポートされます�
 > [!NOTE]
 > 添付ファイルはレガシ機能です。 この機能を既に使用している場合は、機能が引き続きサポートされます。
 > 
-> 添付ファイルを使用する代わりに、BLOB データを格納するための専用の BLOB ストレージ サービスとして Azure BLOB ストレージを使用することをお勧めします。 BLOB に関連するメタデータは、参照 URI リンクと共に、Azure Cosmos DB に項目プロパティとして引き続き格納できます。 このデータを Azure Cosmos DB に格納することで、メタデータを照会し、Azure BLOB ストレージに格納されている BLOB へのリンクを提供することができます。
+> 添付ファイルを使用する代わりに、BLOB データを格納するための専用の BLOB ストレージ サービスとして Azure Blob Storage を使用することをお勧めします。 BLOB に関連するメタデータは、参照 URI リンクと共に、Azure Cosmos DB に項目プロパティとして引き続き格納できます。 このデータを Azure Cosmos DB に格納することで、メタデータを照会し、Azure Blob Storage に格納されている BLOB へのリンクを提供することができます。
 > 
 > Microsoft は、添付ファイルを完全に非推奨にする前に、36 か月以上の通知期間を提供することを約束しています。これは、今後発表される予定です。
 
@@ -46,16 +46,16 @@ Azure Cosmos DB の管理対象の添付ファイルは、標準項目のサポ�
 >
 > MongoDB の GridFS 機能セットを使用する開発者は Azure Cosmos DB の MongoDB 用 API バージョン 3.6 以降にアップグレードすることをお勧めします。これは、添付ファイルから分離されるため、より良いエクスペリエンスが得られます。 または、MongoDB の GridFS 機能セットを使用する開発者は Azure Blob Storage を使用することも検討する必要があります。これは、Blob コンテンツの格納専用であり、GridFS と比較して低コストで拡張された機能が提供されます。
 
-## <a name="migrating-attachments-to-azure-blob-storage"></a>添付ファイルの Azure BLOB ストレージへの移行
+## <a name="migrating-attachments-to-azure-blob-storage"></a>添付ファイルの Azure Blob Storage への移行
 
-次の手順で Azure Cosmos DB の添付ファイルを Azure BLOB ストレージに移行することをお勧めします。
+次の手順で Azure Cosmos DB の添付ファイルを Azure Blob Storage に移行することをお勧めします。
 
-1. 移行元の Azure Cosmos DB コンテナーから移行先の Azure BLOB ストレージ コンテナーに、添付ファイルのデータをコピーします。
-2. アップロードされた BLOB データを移行先の Azure BLOB ストレージ コンテナーで検証します。
-3. 必要に応じて、Azure BLOB ストレージに含まれている BLOB への URI 参照を Azure Cosmos DB データセット内の文字列プロパティとして追加します。
-4. 新しい Azure BLOB ストレージ コンテナーから BLOB の読み取りと書き込みを行うようにアプリケーション コードをリファクタリングします。
+1. 移行元の Azure Cosmos DB コンテナーから移行先の Azure Blob Storage コンテナーに、添付ファイルのデータをコピーします。
+2. アップロードされた BLOB データを移行先の Azure Blob Storage コンテナーで検証します。
+3. 必要に応じて、Azure Blob Storage に含まれている BLOB への URI 参照を Azure Cosmos DB データセット内の文字列プロパティとして追加します。
+4. 新しい Azure Blob Storage コンテナーから BLOB の読み取りと書き込みを行うようにアプリケーション コードをリファクタリングします。
 
-次の dotnet コード サンプルは、Azure Cosmos DB の .NET SDK v2 と Azure Blob Storage .NET SDK v12 を使用して、移行フローの一部として Azure Cosmos DB から Azure BLOB ストレージに添付ファイルをコピーする方法を示しています。 移行元の Azure Cosmos DB アカウントと移行先の Azure BLOB ストレージ コンテナーの `<placeholder values>` を必ず置き換えてください。
+次の dotnet コード サンプルは、Azure Cosmos DB の .NET SDK v2 と Azure Blob Storage .NET SDK v12 を使用して、移行フローの一部として Azure Cosmos DB から Azure Blob Storage に添付ファイルをコピーする方法を示しています。 移行元の Azure Cosmos DB アカウントと移行先の Azure Blob Storage コンテナーの `<placeholder values>` を必ず置き換えてください。
 
 ```csharp
 
@@ -166,7 +166,7 @@ namespace attachments
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure BLOB ストレージ](../storage/blobs/storage-quickstart-blobs-dotnet.md)を使用する
+- [Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md) を使用する
 - [Azure Cosmos DB の .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment) を用いて添付ファイルを使用するための参照を取得する
 - [Azure Cosmos DB の Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment) を用いて添付ファイルを使用するための参照を取得する
 - [Azure Cosmos DB の REST API](/rest/api/cosmos-db/attachments) を用いて添付ファイルを使用するための参照を取得する
