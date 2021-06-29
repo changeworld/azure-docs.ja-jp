@@ -107,7 +107,7 @@ ASP.NET アプリケーションの場合は、バイト コード インスト�
 | IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用するか、Status Monitor PowerShell モジュールを使用して、[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-reference.md#enable-instrumentationengine)して IIS を再起動します。 |
 | Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](./asp-net.md) または [ASP.NET Core アプリケーション](./asp-net-core.md)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
 | IIS Express | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用します。
-| Azure Web ジョブ | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用します。
+| Azure WebJobs | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージを使用します。
 
 上記のプラットフォーム固有の手順に加えて、次のように applicationInsights.config ファイルを変更することで、**SQL コマンドの収集の有効化も明示的に選択する必要** があります。
 
