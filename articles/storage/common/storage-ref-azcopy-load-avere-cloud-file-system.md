@@ -36,7 +36,7 @@ ms.locfileid: "107503271"
 ターゲットは、空の Azure Storage コンテナーです。 転送が完了したら、Azure HPC Cache インスタンスまたは Avere vFXT for Azure クラスターでターゲット コンテナーを使用できます。
 
 > [!NOTE] 
-> これは、この load コマンドのプレビュー リリースです。 問題がありましたら、AzCopy Github リポジトリに報告してください。
+> これは、この load コマンドのプレビュー リリースです。 問題がありましたら、AzCopy GitHub リポジトリに報告してください。
 
 ```
 azcopy load clfs [local dir] [container URL] [flags]
