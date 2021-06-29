@@ -43,7 +43,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |スイス|ドイツ語|de-CH|
 |ドイツ|ドイツ語|de-DE|
 |オーストラリア|英語|en-AU|
-|Canada|英語|en-CA|
+|カナダ|英語|en-CA|
 |イギリス|英語|en-GB|
 |インドネシア|英語|en-ID|
 |アイルランド|英語|en-IE|
@@ -52,7 +52,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |ニュージーランド|英語|en-NZ|
 |フィリピン共和国|英語|en-PH|
 |シンガポール|英語|en-SG|
-|United States|英語|ja-JP|
+|アメリカ|英語|en-US|
 |英語|全般|en-WW|
 |英語|全般|en-XA|
 |南アフリカ|英語|en-ZA|
@@ -60,11 +60,11 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |チリ|スペイン語|es-CL|
 |スペイン|スペイン語|es-ES|
 |メキシコ|スペイン語|es-MX|
-|United States|スペイン語|es-US|
+|アメリカ|スペイン語|es-US|
 |スペイン語|全般|es-XL|
 |フィンランド|フィンランド語|fi-FI|  
 |フランス|フランス語|fr-BE|
-|Canada|フランス語|fr-CA|
+|カナダ|フランス語|fr-CA|
 |ベルギー|オランダ語|nl-BE|
 |スイス|フランス語|fr-CH|
 |フランス|フランス語|fr-FR|  
@@ -75,7 +75,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |韓国|韓国語|ko-KR|  
 |オランダ|オランダ語|nl-NL|  
 |中華人民共和国|Chinese|zh-CN|  
-|ブラジル|Portuguese|pt-BR|
+|ブラジル|ポルトガル語|pt-BR|
 |ロシア|ロシア語|ru-RU|  
 |スウェーデン|スウェーデン語|sv-SE|  
 |トルコ|トルコ語|tr-TR|  
@@ -91,16 +91,16 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |ドイツ|ドイツ語|de-DE|
 |オーストラリア|英語|en-AU|
 |イギリス|英語|en-GB|
-|United States|英語|ja-JP|
+|アメリカ|英語|en-US|
 |英語|全般|en-WW|
 |チリ|スペイン語|es-CL|
 |メキシコ|スペイン語|es-MX|
-|United States|スペイン語|es-US|
+|アメリカ|スペイン語|es-US|
 |フィンランド|フィンランド語|fi-FI|  
-|Canada|フランス語|fr-CA|
+|カナダ|フランス語|fr-CA|
 |フランス|フランス語|fr-FR|  
 |イタリア|イタリア語|it-IT|
-|ブラジル|Portuguese|pt-BR|
+|ブラジル|ポルトガル語|pt-BR|
 |中華人民共和国|Chinese|zh-CN|
 
 ## <a name="supported-markets-for-news-trending-endpoint"></a>ニュース トレンド エンドポイントでサポートされるマーケット
@@ -113,12 +113,12 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |ドイツ|ドイツ語|de-DE|
 |オーストラリア|英語|en-AU|
 |イギリス|英語|en-GB|
-|United States|英語|ja-JP|
-|Canada|英語|en-CA|
+|アメリカ|英語|en-US|
+|カナダ|英語|en-CA|
 |インド|英語|en-IN|
 |フランス|フランス語|fr-FR|
-|Canada|フランス語|fr-CA|
-|ブラジル|Portuguese|pt-BR|
+|カナダ|フランス語|fr-CA|
+|ブラジル|ポルトガル語|pt-BR|
 |中華人民共和国|Chinese|zh-CN|
 
 
@@ -134,7 +134,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |オーストリア|AT|  
 |ベルギー|BE|  
 |ブラジル|BR|  
-|Canada|CA|  
+|カナダ|CA|  
 |チリ|CL|  
 |デンマーク|DK|  
 |フィンランド|FI|  
@@ -164,7 +164,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |台湾|TW|  
 |トルコ|TR|  
 |イギリス|GB|  
-|United States|US|
+|アメリカ|US|
 
 ## <a name="next-steps"></a>次のステップ
 Bing News Search エンドポイントについて詳しくは、[News Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)をご覧ください。
