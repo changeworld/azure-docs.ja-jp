@@ -49,7 +49,7 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 6. エージェントのカスタム ログが機能してしない
 7. エージェントのログを収集する
 
-詳細については、[Github のドキュメント](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)をご覧ください。
+詳細については、[GitHub のドキュメント](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)をご覧ください。
 
  >[!NOTE]
  >問題が発生した場合は、ログ コレクター ツールを実行してください。 ログを最初に用意することは、サポート チームが問題を迅速にトラブルシューティングするのに役立ちます。
