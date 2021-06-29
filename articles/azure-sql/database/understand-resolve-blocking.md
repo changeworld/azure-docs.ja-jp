@@ -1,7 +1,7 @@
 ---
 title: Azure SQL のブロックの問題の概要と解決策
 titleSuffix: Azure SQL Database
-description: Azure SQL データベース固有のブロックとトラブルシューティングに関するトピックの概要です。
+description: Azure SQL Database 固有のブロックとトラブルシューティングに関するトピックの概要です。
 services: sql-database
 dev_langs:
 - TSQL
@@ -26,7 +26,7 @@ ms.locfileid: "106107148"
 
 ## <a name="objective"></a>目的
 
-この記事では、Azure SQL データベースのブロックについて説明し、ブロックのトラブルシューティングと解決の方法を示します。 
+この記事では、Azure SQL Database のブロックについて説明し、ブロックのトラブルシューティングと解決の方法を示します。 
 
 この記事では、接続という用語は、データベースの 1 回のログオン セッションを指します。 各接続は、多くの DMV でセッション ID (SPID) または session_id として表示されます。 これらの各 SPID は、多くの場合にプロセスと呼ばれますが、通常の意味での個別のプロセス コンテキストではありません。 各 SPID は、特定のクライアントからの単一の接続の要求を処理するために必要なサーバー リソースとデータ構造で構成されます。 1 つのクライアント アプリケーションで 1 つ以上の接続を確立できます。 Azure SQL Database の観点から、単一のクライアント コンピューター上の単一のクライアント アプリケーションからの複数の接続と、複数のクライアント アプリケーションまたは複数のクライアント コンピューターからの複数の接続の間に違いはなく、それらはアトミックです。 ソース クライアントに関係なく、1 つの接続によって、別の接続がブロックされる可能性があります。
 
@@ -84,7 +84,7 @@ ms.locfileid: "106107148"
 
 ## <a name="gather-blocking-information"></a>ブロック情報の収集
 
-ブロックの問題のトラブルシューティングの難しさを軽減するため、データベース管理者は、Azure SQL データベースのロックとブロックの状態を常に監視する SQL スクリプトを使用できます。 このデータを収集するには、基本的に 2 つの方法があります。 
+ブロックの問題のトラブルシューティングの難しさを軽減するため、データベース管理者は、Azure SQL Database のロックとブロックの状態を常に監視する SQL スクリプトを使用できます。 このデータを収集するには、基本的に 2 つの方法があります。 
 
 1 つ目は、動的管理オブジェクト (DMO) のクエリを実行し、経時的な比較の結果を保存することです。 この記事で参照しているオブジェクトには、動的管理ビュー (DMV) と、動的管理関数 (DMF) があります。 2 つ目の方法は、XEvent を使用して、何が実行されているかをキャプチャすることです。 
 
@@ -93,7 +93,7 @@ ms.locfileid: "106107148"
 
 ブロックをトラブルシューティングするために DMV を参照することには、ブロック チェーンのヘッドにある SPID (セッション ID) と SQL ステートメントを特定するという目標があります。 ブロックされている犠牲者の SPID を見つけます。 SPID が別の SPID によってブロックされている場合、リソースを所有している SPID (ブロックしている SPID) を調査します。 その所有者の SPID もブロックされていますか。 チェーンをたどってヘッド ブロッカーを見つけて、そのロックが保持されている理由を調査できます。
 
-ターゲットの Azure SQL データベースでこれらの各スクリプトを実行してください。
+ターゲットの Azure SQL Database でこれらの各スクリプトを実行してください。
 
 * sp_who コマンドと sp_who2 コマンドは、現在のすべてのセッションを表示する古いコマンドです。 DMV sys.dm_exec_sessions では、クエリの実行やフィルター処理が容易な結果セットに、より多くのデータが返されます。 sys.dm_exec_sessions は、他のクエリの中心にあることがわかります。 
 
@@ -212,7 +212,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 SQL Server でトレースをキャプチャする方法は 2 つあります。拡張イベント (Xevent) とプロファイラー トレースです。 ただし、[SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) は、Azure SQL Database でサポートされていない非推奨のトレース テクノロジです。 [拡張イベント](/sql/relational-databases/extended-events/extended-events)は、より汎用性が高く、監視対象のシステムへの影響が少ない新しいトレース テクノロジであり、そのインターフェイスは SQL Server Management Studio (SSMS) に統合されています。 
 
-SSMS の[拡張イベントの新しいセッション ウィザード](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)の使用方法について説明しているドキュメントを参照してください。 ただし、Azure SQL データベースの場合、SSMS によって、オブジェクト エクスプローラーの各データベースの下に拡張イベント サブフォルダーが提供されます。 拡張イベント セッション ウィザードを使用して、これらの有益なイベントをキャプチャします。 
+SSMS の[拡張イベントの新しいセッション ウィザード](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)の使用方法について説明しているドキュメントを参照してください。 ただし、Azure SQL Database の場合、SSMS によって、オブジェクト エクスプローラーの各データベースの下に拡張イベント サブフォルダーが提供されます。 拡張イベント セッション ウィザードを使用して、これらの有益なイベントをキャプチャします。 
 
 -   カテゴリ エラー:
     -   Attention
@@ -340,7 +340,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
     **解決方法**:この種類のブロックの問題の解決方法は、クエリを最適化する方法を探すことです。 実際に、このクラスのブロックの問題は、単にパフォーマンスの問題である場合があるため、そのようなものとして追跡する必要があります。 特定の実行速度の遅いクエリのトラブルシューティングについては、[SQL Server の実行速度の遅いクエリのトラブルシューティング方法](/troubleshoot/sql/performance/troubleshoot-slow-running-queries)に関するページを参照してください。 詳細については、「[パフォーマンスの監視とチューニング](/sql/relational-databases/performance/monitor-and-tune-for-performance)」を参照してください。 
 
-    SSMS の[クエリ ストア](/sql/relational-databases/performance/best-practice-with-the-query-store)からのレポートも、最もコストがかかるクエリ、最適でない実行プランを特定するために、強く推奨される貴重なツールです。 また、Azure portal の[インテリジェント パフォーマンス](intelligent-insights-overview.md)のセクションで、[Query Performance Insight](query-performance-insight-use.md) など、Azure SQL データベースについて確認してください。
+    SSMS の[クエリ ストア](/sql/relational-databases/performance/best-practice-with-the-query-store)からのレポートも、最もコストがかかるクエリ、最適でない実行プランを特定するために、強く推奨される貴重なツールです。 また、Azure portal の[インテリジェント パフォーマンス](intelligent-insights-overview.md)のセクションで、[Query Performance Insight](query-performance-insight-use.md) など、Azure SQL Database について確認してください。
 
     他のユーザーをブロックし、最適化できない実行時間の長いクエリがある場合は、それを OLTP 環境から専用のレポート システム、[データベースの同期読み取り専用レプリカ](read-scale-out.md)に移動することを検討してください。
 
