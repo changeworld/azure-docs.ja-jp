@@ -18,7 +18,7 @@ ms.locfileid: "105643597"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>移行ガイド: Access から Azure SQL Database
 
-このガイドでは、SQL Server Migration Assistant for Acces (SSMA for Acces) を使用して、Microsoft Access データベースを Azure SQL データベースに移行する方法について説明します。
+このガイドでは、SQL Server Migration Assistant for Acces (SSMA for Acces) を使用して、Microsoft Access データベースを Azure SQL Database に移行する方法について説明します。
 
 その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
 
@@ -132,7 +132,7 @@ SSMA for Access を使用してスキーマを公開し、データを移行す�
 
     ![確認用のレポートの例が表示されている [データ移行レポート] ペインのスクリーンショット。](./media/access-to-sql-database-guide/migrate-data-review.png)
 
-1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) を使用して Azure SQL データベースに接続し、データとスキーマを確認して移行を検証します。
+1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) を使用して Azure SQL Database に接続し、データとスキーマを確認して移行を検証します。
 
    ![SSMA での移行を検証するための SQL Server Management Studio オブジェクト エクスプローラーのスクリーンショット。](./media/access-to-sql-database-guide/validate-data.png)
 
