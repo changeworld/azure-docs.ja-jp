@@ -184,7 +184,7 @@ $backupFileShare = New-AzDmsFileShare -Path $backupFileSharePath -Credential $ba
 
 次の手順では、`New-AzDmsSelectedDB` コマンドレットを使用して、ソース データベースとターゲット データベースを選択します。
 
-次の例では、SQL Server から Azure SQL マネージド インスタンスに単一のデータベースを移行しています。
+次の例では、SQL Server から Azure SQL Managed Instance に単一のデータベースを移行しています。
 
 ```powershell
 $selectedDbs = @()
@@ -194,7 +194,7 @@ $selectedDbs += New-AzDmsSelectedDB -MigrateSqlServerSqlDbMi `
   -BackupFileShare $backupFileShare `
 ```
 
-SQL Server インスタンス全体で Azure SQL マネージド インスタンスへのリフトアンドシフトが必要な場合、すべてのデータベースをソースから取得するためのループを以下に示します。 次の例では、$Server、$SourceUserName、$SourcePassword にソース SQL Server の詳細を入力します。
+SQL Server インスタンス全体で Azure SQL Managed Instance へのリフトアンドシフトが必要な場合、すべてのデータベースをソースから取得するためのループを以下に示します。 次の例では、$Server、$SourceUserName、$SourcePassword にソース SQL Server の詳細を入力します。
 
 ```powershell
 $Query = "(select name as Database_Name from master.sys.databases where Database_id>4)";
@@ -263,7 +263,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 * *ProjectName*。 タスクを作成する Azure Database Migration Service プロジェクトの名前。 
 * *TaskName*。 作成するタスクの名前。 
 * *SourceConnection*。 ソース SQL Server 接続を表す AzDmsConnInfo オブジェクト。
-* *TargetConnection*。 ターゲットの Azure SQL マネージド インスタンスの接続を表す AzDmsConnInfo オブジェクト。
+* *TargetConnection*。 ターゲットの Azure SQL Managed Instance の接続を表す AzDmsConnInfo オブジェクト。
 * *SourceCred*。 ソース サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential) オブジェクト。
 * *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential) オブジェクト。
 * *SelectedDatabase*。 ソースとターゲット データベースのマッピングを表す AzDataMigrationSelectedDB オブジェクト。
