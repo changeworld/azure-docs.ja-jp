@@ -1308,13 +1308,13 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/queues/index.yml
-  - title: ストレージ
+  - title: Storage
     summary: 耐久性があり、高度にスケーラブルな高可用性クラウド ストレージ
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
     - storage
     url: storage/index.yml
-  - title: ストレージ エクスプローラー
+  - title: Storage Explorer
     summary: Azure Storage リソースの表示と操作
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
     azureCategories:
