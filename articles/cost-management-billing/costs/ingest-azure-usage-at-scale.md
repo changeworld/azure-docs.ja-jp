@@ -133,7 +133,7 @@ _TransferManager.CopyDirectoryAsync()_ メソッドは、_CopyMethod.ServiceSide
 
 ### <a name="test-summary"></a>テストのまとめ
 
-サービス側の同期転送機能を使うと、Azure BLOB ストレージでグローバルに高い転送速度を実現できます。 .NET アプリケーションでこの機能を使用するときは、Data Movement Library を使うのが簡単です。 Cost Management からエクスポートした数百ギガバイトものサイズのデータを、1 時間もかけることなく、どこにあるストレージ アカウントにも、高い確度でコピーできます。
+サービス側の同期転送機能を使うと、Azure Blob Storage でグローバルに高い転送速度を実現できます。 .NET アプリケーションでこの機能を使用するときは、Data Movement Library を使うのが簡単です。 Cost Management からエクスポートした数百ギガバイトものサイズのデータを、1 時間もかけることなく、どこにあるストレージ アカウントにも、高い確度でコピーできます。
 
 ## <a name="next-steps"></a>次の手順
 
