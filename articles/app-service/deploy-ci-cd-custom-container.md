@@ -161,7 +161,7 @@ App Service では、Azure Container Registry および Docker Hub との CI/CD 
 
 **[ソース]** で **[GitHub Actions]** を選択した場合 (「[デプロイ ソースの選択](#2-choose-deployment-source)」を参照)、App Service では次の方法で CI/CD を設定します。
 
-- Github Actions ワークフロー ファイルを GitHub リポジトリに保管して、App Service のビルドとデプロイのタスクを処理します。
+- GitHub Actions ワークフロー ファイルを GitHub リポジトリに保管して、App Service のビルドとデプロイのタスクを処理します。
 - プライベート レジストリの資格情報を GitHub シークレットとして追加します。 生成されたワークフロー ファイルは、[Azure/docker-login](https://github.com/Azure/docker-login) アクションを実行してプライベート レジストリでサインインし、`docker push` を実行してそれにデプロイします。
 - アプリの発行プロファイルを GitHub シークレットとして追加します。 生成されたワークフロー ファイルでは、App Service で認証するためにこのシークレットが使用され、その後、更新されたイメージを構成するために [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションが実行され、これによって、更新されたイメージをプルするためにアプリの再起動がトリガーされます。
 - [ワークフロー実行ログ](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)から情報をキャプチャし、それをアプリの "**デプロイ センター**" の **[ログ]** タブに表示します。

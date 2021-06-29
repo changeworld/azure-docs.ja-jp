@@ -23,7 +23,7 @@ ms.locfileid: "107783901"
 
 ## <a name="resource-management"></a>リソース管理
 
-- [Resource Manager テンプレートを使用して Azure コンテナー レジストリを作成できますか?](#can-i-create-an-azure-container-registry-using-a-resource-manager-template)
+- [Resource Manager テンプレートを使用して Azure Container Registry を作成できますか?](#can-i-create-an-azure-container-registry-using-a-resource-manager-template)
 - [ACR 内のイメージに対するセキュリティ脆弱性スキャンは存在しますか?](#is-there-security-vulnerability-scanning-for-images-in-acr)
 - [Azure Container Registry で Kubernetes を構成するにはどうすればよいですか?](#how-do-i-configure-kubernetes-with-azure-container-registry)
 - [コンテナー レジストリの管理者の資格情報を取得するにはどうすればよいですか?](#how-do-i-get-admin-credentials-for-a-container-registry)
@@ -31,7 +31,7 @@ ms.locfileid: "107783901"
 - [レプリケーションは Azure CLI または Azure PowerShell を使用して削除されるが、レプリケーションの削除が "許可されていません" 状態で失敗する](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
 - [ファイアウォール規則が正常に更新されたのに有効にならない](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
 
-### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure コンテナー レジストリを作成できますか?
+### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Container Registry を作成できますか?
 
 はい。 レジストリを作成するために使用できる[テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)がここにあります。
 
@@ -260,7 +260,7 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>匿名プル アクセスを有効にするにはどうすればよいですか?
 
-Azure コンテナー レジストリの匿名 (非認証) プル アクセス設定は現在、Standard と Premium の[サービス レベル](container-registry-skus.md)で利用できるプレビュー機能です。 
+Azure Container Registry の匿名 (非認証) プル アクセス設定は現在、Standard と Premium の[サービス レベル](container-registry-skus.md)で利用できるプレビュー機能です。 
 
 匿名プル アクセスを有効にするには、Azure CLI (バージョン 2.21.0 以降) を使用してレジストリを更新し、`--anonymous-pull-enabled` パラメーターを [ az acr update](/cli/azure/acr#az_acr_update) コマンドに渡します。
 
@@ -282,7 +282,7 @@ az acr update --name myregistry --anonymous-pull-enabled
 
 マニフェスト内の非再頒布可能レイヤーには、コンテンツのフェッチ元となる可能性がある URL パラメーターが含まれています。 非再頒布可能レイヤーのプッシュを有効にするユース ケースとしては、ネットワーク制限付きレジストリ、アクセス制限のあるエアギャップ レジストリ、またはインターネット接続のないレジストリが考えられます。
 
-たとえば、VM によるイメージのプルをお使いの Azure コンテナー レジストリからのみ実行できるように NSG 規則を設定している場合、Docker では、外部または非再頒布可能レイヤーのプル エラーが発生します。 たとえば、Windows Server Core イメージには、マニフェスト内の Azure コンテナー レジストリへの外部レイヤー参照が含まれており、このシナリオではプルは失敗します。
+たとえば、VM によるイメージのプルをお使いの Azure Container Registry からのみ実行できるように NSG 規則を設定している場合、Docker では、外部または非再頒布可能レイヤーのプル エラーが発生します。 たとえば、Windows Server Core イメージには、マニフェスト内の Azure Container Registry への外部レイヤー参照が含まれており、このシナリオではプルは失敗します。
 
 非再頒布可能レイヤーのプッシュを有効にするには:
 
@@ -322,7 +322,7 @@ az acr update --name myregistry --anonymous-pull-enabled
 
 ### <a name="check-health-with-az-acr-check-health"></a>`az acr check-health` を使用した正常性チェック
 
-環境とレジストリに関する一般的な問題のトラブルシューティングを行うには、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。
+環境とレジストリに関する一般的な問題のトラブルシューティングを行うには、「[Azure Container Registry の正常性のチェック](container-registry-check-health.md)」を参照してください。
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull が "net/http: 接続の待機中に要求が取り消されました (ヘッダーの待機中に Client.Timeout を超えました)" というエラーで失敗する
 

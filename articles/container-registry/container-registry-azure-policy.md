@@ -1,6 +1,6 @@
 ---
 title: Azure Policy を使用したコンプライアンス
-description: Azure Policy で組み込みポリシーを割り当て、Azure コンテナー レジストリのコンプライアンスを監査します
+description: Azure Policy で組み込みポリシーを割り当て、Azure Container Registry のコンプライアンスを監査します
 ms.topic: article
 ms.date: 03/01/2021
 ms.openlocfilehash: 62a1fd8d3c996fd3a0bac3cadf77fc7e7ace0ce3
@@ -10,7 +10,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/20/2021
 ms.locfileid: "107784175"
 ---
-# <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査
+# <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Azure Policy を使用した Azure Container Registry のコンプライアンスの監査
 
 [Azure Policy](../governance/policy/overview.md) は、ポリシーの作成、割り当て、管理に使用する Azure のサービスです。 これらのポリシーは、リソースにさまざまなルールと効果を適用して、それらのリソースが会社の標準とサービス レベル アグリーメントに準拠した状態に保たれるようにします。
 

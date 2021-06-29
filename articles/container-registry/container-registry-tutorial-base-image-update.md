@@ -11,11 +11,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/20/2021
 ms.locfileid: "107780805"
 ---
-# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure Container Registry で基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
 
 [ACR タスク](container-registry-tasks-overview.md)では、いずれかの基本イメージ内で OS またはアプリケーション フレームワークにパッチを適用したときなど、コンテナーの[基本イメージが更新](container-registry-tasks-base-images.md)されたときのコンテナー イメージ ビルドの自動化をサポートしています。 
 
-このチュートリアルでは、コンテナーの基本イメージが同じレジストリにプッシュされたときにクラウドでビルドをトリガーする ACR タスクの作成方法について説明します。 基本イメージが[別の Azure コンテナー レジストリ](container-registry-tutorial-private-base-image-update.md)にプッシュされたときにイメージのビルドをトリガーする ACR タスクを作成するチュートリアルもお試しください。 
+このチュートリアルでは、コンテナーの基本イメージが同じレジストリにプッシュされたときにクラウドでビルドをトリガーする ACR タスクの作成方法について説明します。 基本イメージが[別の Azure Container Registry](container-registry-tutorial-private-base-image-update.md)にプッシュされたときにイメージのビルドをトリガーする ACR タスクを作成するチュートリアルもお試しください。 
 
 このチュートリアルの内容:
 

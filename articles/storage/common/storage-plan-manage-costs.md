@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "98601308"
 ---
-# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure BLOB ストレージのコストを計画および管理する
+# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure Blob Storage のコストを計画および管理する
 
 この記事は、Azure Blob Storage のコストを計画および管理するのに役立ちます。 まず、Azure 料金計算ツールを使用して、コストを見積もります。 ストレージ アカウントを作成したら、必要な分だけ支払うようにアカウントを最適化します。 コスト管理機能を使用して、予算を設定し、コストを監視します。 また、予測コストを確認し、支出の傾向を監視して、対処した方がよい領域を識別することもできます。
 

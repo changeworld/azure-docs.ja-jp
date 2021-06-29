@@ -28,7 +28,7 @@ Azure CLI を使用して、いくつかの単純なコマンドで AKS から A
 * **Azure サブスクリプション** 上の **所有者** または **Azure アカウント管理者** ロール。
 * Azure CLI バージョン 2.7.0 以降
 
-**所有者** または **Azure アカウント管理者** ロールを必要としないようにするには、マネージド ID を手動で構成するか、既存のマネージド ID を使用して AKS から ACR を認証します。 詳細については、「[Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する](../container-registry/container-registry-authentication-managed-identity.md)」を参照してください。
+**所有者** または **Azure アカウント管理者** ロールを必要としないようにするには、マネージド ID を手動で構成するか、既存のマネージド ID を使用して AKS から ACR を認証します。 詳細については、「[Azure マネージド ID を使用して Azure Container Registry に対して認証する](../container-registry/container-registry-authentication-managed-identity.md)」を参照してください。
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR 統合を使用して新しい AKS クラスターを作成する
 

@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    Tamika|Walsh
    ```
 
-1. Azure ストレージ エクスプローラーを開きます。 お使いのストレージ アカウントを展開します。 **[BLOB コンテナー]** を右クリックし、 **[BLOB コンテナーの作成]** を選択します。
+1. Azure Storage Explorer を開きます。 お使いのストレージ アカウントを展開します。 **[BLOB コンテナー]** を右クリックし、 **[BLOB コンテナーの作成]** を選択します。
 1. 新しいコンテナーに *adfv2branch* という名前を付け、 **[アップロード]** を選択して、そのコンテナーに *input.txt* ファイルを追加します。
 
 ## <a name="create-visual-studio-project"></a>Visual Studio プロジェクトを作成する<a name="create-visual-studio-project"></a>

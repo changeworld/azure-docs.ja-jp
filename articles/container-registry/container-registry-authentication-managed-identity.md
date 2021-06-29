@@ -10,15 +10,15 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/20/2021
 ms.locfileid: "107781543"
 ---
-# <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
+# <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure Container Registry に対して認証する 
 
-レジストリの資格情報を提供したり管理したりすることなく、別の Azure リソースから Azure コンテナー レジストリに対して認証するには、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用します。 たとえば、パブリック レジストリを使用するように簡単にコンテナー レジストリからコンテナー イメージにアクセスするには、Linux VM 上でユーザー割り当てまたはシステム割り当てマネージド ID を設定します。 または、[マネージド ID](../aks/use-managed-identity.md) を使用して、ポッドのデプロイのために Azure Container Registry からコンテナー イメージをプルするように、Azure Kubernetes Service クラスターを設定します。
+レジストリの資格情報を提供したり管理したりすることなく、別の Azure リソースから Azure Container Registry に対して認証するには、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用します。 たとえば、パブリック レジストリを使用するように簡単にコンテナー レジストリからコンテナー イメージにアクセスするには、Linux VM 上でユーザー割り当てまたはシステム割り当てマネージド ID を設定します。 または、[マネージド ID](../aks/use-managed-identity.md) を使用して、ポッドのデプロイのために Azure Container Registry からコンテナー イメージをプルするように、Azure Kubernetes Service クラスターを設定します。
 
 この記事では、マネージド ID および次の操作を行う方法について詳細に説明します。
 
 > [!div class="checklist"]
 > * Azure VM 上でユーザー割り当てまたはシステム割り当て ID を有効にする
-> * ID に Azure コンテナー レジストリへのアクセス権を付与する
+> * ID に Azure Container Registry へのアクセス権を付与する
 > * マネージド ID を使用してレジストリにアクセスし、コンテナー イメージをプルする 
 
 Azure リソースを作成するために、この記事では Azure CLI バージョン 2.0.55 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
@@ -31,14 +31,14 @@ Azure リソースのマネージド ID 機能に慣れていない場合は、�
 
 マネージド ID を使用して、選択した Azure リソースを設定した後、他のセキュリティ プリンシパルと同様に、その ID に別のリソースへの必要なアクセス権を付与します。 たとえば、マネージド ID に、Azure 内のプライベート レジストリに対するプル、プッシュとプル、またはその他のアクセス許可を持つロールを割り当てます。 (レジストリ ロールの完全な一覧については、「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)」を参照してください。)ID には 1 つ以上のリソースへのアクセス権を付与できます。
 
-次に、その ID を使用して、コードで資格情報を渡すことなく [Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)に対して認証します。 シナリオに応じて、マネージド ID を使用して認証する方法を選択します。 その ID を使用して仮想マシンから Azure コンテナー レジストリにアクセスするには、Azure Resource Manager に対して認証します。 
+次に、その ID を使用して、コードで資格情報を渡すことなく [Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)に対して認証します。 シナリオに応じて、マネージド ID を使用して認証する方法を選択します。 その ID を使用して仮想マシンから Azure Container Registry にアクセスするには、Azure Resource Manager に対して認証します。 
 
 > [!NOTE]
 > 現時点では、Azure Web App for Containers や Azure Container Instances などのサービスは、コンテナー リソース自体をデプロイするためにコンテナー イメージをプルするときの Azure Container Registry での認証にマネージド ID を使用できません。 ID は、コンテナーが実行された後にのみ使用できます。 Azure Container Registry のイメージを使用してこれらのリソースをデプロイするには、[サービス プリンシパル](container-registry-auth-service-principal.md)などの別の認証方法をお勧めします。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-まだ Azure コンテナー レジストリがない場合は、レジストリを作成し、そこにサンプル コンテナー イメージをプッシュします。 手順については、「[クイック スタート: Azure CLI を使用したプライベート コンテナー レジストリの作成](container-registry-get-started-azure-cli.md)」を参照してください。
+まだ Azure Container Registry がない場合は、レジストリを作成し、そこにサンプル コンテナー イメージをプッシュします。 手順については、「[クイック スタート: Azure CLI を使用したプライベート コンテナー レジストリの作成](container-registry-get-started-azure-cli.md)」を参照してください。
 
 この記事では、レジストリ内に `aci-helloworld:v1` コンテナー イメージが格納されていることを前提にしています。 これらの例では、*myContainerRegistry* のレジストリ名を使用します。 後の手順で、独自のレジストリおよびイメージ名に置き換えてください。
 
@@ -228,7 +228,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 
 > [!div class="checklist"]
 > * Azure VM でユーザー割り当てまたはシステム割り当て ID を有効にする
-> * ID に Azure コンテナー レジストリへのアクセス権を付与する
+> * ID に Azure Container Registry へのアクセス権を付与する
 > * マネージド ID を使用してレジストリにアクセスし、コンテナー イメージをプルする
 
 * 詳細については、「[Azure リソースの管理 ID について](../active-directory/managed-identities-azure-resources/index.yml)」を参照してください。

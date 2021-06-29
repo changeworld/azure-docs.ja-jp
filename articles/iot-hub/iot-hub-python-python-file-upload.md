@@ -109,7 +109,7 @@ ms.locfileid: "102501143"
             return (False, ex)
     ```
 
-    この関数は、渡された *blob_info* 構造体を解析して、[azure.storage.blob.BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) を初期化するために使用する URL を作成します。 次に、このクライアントを使用して、ファイルが Azure BLOB ストレージにアップロードされます。
+    この関数は、渡された *blob_info* 構造体を解析して、[azure.storage.blob.BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) を初期化するために使用する URL を作成します。 次に、このクライアントを使用して、ファイルが Azure Blob Storage にアップロードされます。
 
 1. 次のコードを追加して、クライアントを接続し、ファイルをアップロードします。
 

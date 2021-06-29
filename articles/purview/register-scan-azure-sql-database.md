@@ -62,7 +62,7 @@ Azure SQL Database のログインが使用可能になっていない場合は�
 
 #### <a name="service-principal-and-managed-identity"></a>サービス プリンシパルとマネージド ID
 
-Purview でサービス プリンシパルまたは Purview の **マネージド ID** を使用して Azure SQL データベースをスキャンできるようにするには、いくつかの手順があります
+Purview でサービス プリンシパルまたは Purview の **マネージド ID** を使用して Azure SQL Database をスキャンできるようにするには、いくつかの手順があります
 
    > [!Note]
    > Purview でスキャンを行うには、**アプリケーション (クライアント) ID** および **クライアント シークレット** が必要になります。

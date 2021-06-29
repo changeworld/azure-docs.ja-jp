@@ -53,7 +53,7 @@ ms.locfileid: "89013760"
 
 [!INCLUDE [iot-hub-include-find-custom-connection-string](../../includes/iot-hub-include-find-custom-connection-string.md)]
 
-## <a name="create-the-service-app"></a>デバイス アプリを作成する
+## <a name="create-the-service-app"></a>サービス アプリを作成する
 
 このセクションでは、**myDeviceId** に関連付けられたデバイス ツインに場所のメタデータを追加する .NET コンソール アプリを C# を使用して作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT Hub に格納されているデバイス ツインに対してクエリを実行します。
 

@@ -37,7 +37,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このチュートリアルには、Premium サービス レベルの Azure コンテナー レジストリが必要です。 新しい Azure コンテナー レジストリを作成するには、このセクションの手順に従ってください。
+このチュートリアルには、Premium サービス レベルの Azure Container Registry が必要です。 新しい Azure Container Registry を作成するには、このセクションの手順に従ってください。
 
 > [!TIP]
 > 過去に作成したレジストリをアップグレードする必要がある場合は、「[階層の変更](container-registry-skus.md#changing-tiers)」を参照してください。 

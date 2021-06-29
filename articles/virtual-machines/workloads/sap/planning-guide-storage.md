@@ -34,7 +34,7 @@ Standard HDD、Standard SSD、Azure Premium Storage、Ultra Disk からなる Mi
 
 この他に、Azure で提供されるさまざまなストレージの種類の一部に適用されるいくつかの冗長化の方法があり、それらはすべて [Azure Storage のレプリケーション](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)に関する記事で説明されています。 
 
-「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)」でリリースされたシングル VM 可用性 SLA にさまざまな種類の Azure ストレージが影響を与えることにもご留意ください。
+「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)」でリリースされたシングル VM 可用性 SLA にさまざまな種類の Azure Storage が影響を与えることにもご留意ください。
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 
@@ -49,7 +49,7 @@ Standard HDD、Standard SSD、Azure Premium Storage、Ultra Disk からなる Mi
 マネージド ディスクを使用せずにユーザー定義のストレージ アカウントにデプロイする場合、ディスク割り当ては恣意的であり、回復性を目的として AvSet 内に VM がデプロイされるという事実は意識されません。
 
 > [!NOTE]
-> この理由と、マネージド ディスクのみで使用可能なその他いくつかの機能強化により、ディスク用に Azure ブロック ストレージ (Azure NetApp Files を除くすべての Azure ストレージ) を使用する VM の新しいデプロイでは、ベース VHD または OS ディスク用、SAP データベース ファイルを含むデータ ディスク用に、Azure マネージド ディスクを使用する必要があります。 VM を可用性セット内にデプロイするか、可用性ゾーン間にデプロイするか、セットやゾーンを使用せずにデプロイするかは関係ありません。 バックアップを格納する目的に使用するディスクは、必ずしもマネージド ディスクである必要はありません。
+> この理由と、マネージド ディスクのみで使用可能なその他いくつかの機能強化により、ディスク用に Azure ブロック ストレージ (Azure NetApp Files を除くすべての Azure Storage) を使用する VM の新しいデプロイでは、ベース VHD または OS ディスク用、SAP データベース ファイルを含むデータ ディスク用に、Azure マネージド ディスクを使用する必要があります。 VM を可用性セット内にデプロイするか、可用性ゾーン間にデプロイするか、セットやゾーンを使用せずにデプロイするかは関係ありません。 バックアップを格納する目的に使用するディスクは、必ずしもマネージド ディスクである必要はありません。
 
 > [!NOTE]
 > Azure Managed Disks ではローカル冗長 (LRS) のみが提供されます。 

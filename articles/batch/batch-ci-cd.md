@@ -24,7 +24,7 @@ Azure DevOps によって提供されるツールを、ハイ パフォーマン
 
 開始する前に、[ソース管理](/azure/devops/user-guide/source-control)と [Azure Resource Manager テンプレートの構文](../azure-resource-manager/templates/template-syntax.md)の基本を理解しておくと役立ちます。
 
-## <a name="create-an-azure-pipeline"></a>Azure パイプラインを作成する
+## <a name="create-an-azure-pipeline"></a>Azure Pipelines を作成する
 
 この例では、Azure Batch インフラストラクチャをデプロイしてアプリケーション パッケージをリリースするためのビルドとリリースのパイプラインを作成します。 コードがローカルで開発される場合、一般的なデプロイ フローは次のようになります。
 

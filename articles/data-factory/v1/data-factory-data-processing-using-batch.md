@@ -118,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
    f. **[OK]** を選択してプールを作成します。
 
-#### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+#### <a name="azure-storage-explorer"></a>Azure Storage Explorer
 [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf Software 製) を使用して、Storage プロジェクトのデータを検査し、変更します。 また、クラウドホスト型アプリケーションのログのデータを検査して変更することもできます。
 
 1. プライベートなアクセス (匿名アクセスなし) で **mycontainer** という名前のコンテナーを作成します。

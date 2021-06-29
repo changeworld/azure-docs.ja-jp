@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[キー]** ページからメモ帳に接続文字列をコピーします。 これは、後の手順で **appsettings.json** に対して必要になります。 推奨されるデータベース名 "hotel-rooms-db" を使用していない場合は、データベース名もコピーしてください。
 
-### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
+### <a name="azure-blob-storage"></a>Azure Blob Storage
 
 1. [Azure portal](https://portal.azure.com) にサインインし、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 

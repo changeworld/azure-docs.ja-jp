@@ -13,7 +13,7 @@ ms.locfileid: "103563193"
 ---
 次の表は、ML Studio (classic) と Azure Machine Learning との主な違いをまとめたものです。
 
-| 特徴量 | ML Studio (クラシック) | Azure Machine Learning |
+| 機能 | ML Studio (クラシック) | Azure Machine Learning |
 |---| --- | --- |
 | ドラッグ アンド ドロップ インターフェイス | クラシック エクスペリエンス | 更新されたエクスペリエンス - [Azure Machine Learning デザイナー](../articles/machine-learning/concept-designer.md)| 
 | コード SDK | サポートされていない | [Azure Machine Learning Python](/python/api/overview/azure/ml/) および [R](https://github.com/Azure/azureml-sdk-for-r) SDK との完全な統合 |

@@ -22,7 +22,7 @@ ms.locfileid: "103467228"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>クイックスタート: Form Recognizer クライアント ライブラリまたは REST API を使用する
 
-好みの開発言語で Form Recognizer の使用を開始しましょう。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 フォーム ドキュメントから、テキスト、キーと値のペア、選択マーク、テーブル データなどを特定して抽出します。このサービスによって、元のファイルにおけるリレーションシップを含む構造化データが出力されます。 Form Recognizer は、REST API または SDK を介して使用できます。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。 
+好みの開発言語で Form Recognizer の使用を開始しましょう。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にする [Azure Applied AI Service](https://aka.ms/applied-ai-services-hub) です。 フォーム ドキュメントから、テキスト、キーと値のペア、選択マーク、テーブル データなどを特定して抽出します。このサービスによって、元のファイルにおけるリレーションシップを含む構造化データが出力されます。 Form Recognizer は、REST API または SDK を介して使用できます。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
 Form Recognizer の用途:
 

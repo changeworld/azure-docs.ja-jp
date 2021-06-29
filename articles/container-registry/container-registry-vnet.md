@@ -1,6 +1,6 @@
 ---
 title: サービス エンドポイントを使用してアクセスを制限する
-description: Azure 仮想ネットワークのサービス エンドポイントを使用して Azure コンテナー レジストリへのアクセスを制限します。 サービス エンドポイント アクセスは、Premium サービス レベルの機能です。
+description: Azure 仮想ネットワークのサービス エンドポイントを使用して Azure Container Registry へのアクセスを制限します。 サービス エンドポイント アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 8a67a011c75a192df9ad3460458fd766b5ec1ec1
@@ -100,7 +100,7 @@ az network vnet subnet show \
 
 ### <a name="change-default-network-access-to-registry"></a>レジストリへの既定のネットワーク アクセスを変更する
 
-既定では、Azure コンテナー レジストリは、任意のネットワーク上のホストからの接続を許可します。 選択したネットワークへのアクセスを制限するには、既定のアクションを変更してアクセスを拒否します。 次の [az acr update][az-acr-update] コマンドでは、自分のレジストリの名前に置き換えます。
+既定では、Azure Container Registry は、任意のネットワーク上のホストからの接続を許可します。 選択したネットワークへのアクセスを制限するには、既定のアクションを変更してアクセスを拒否します。 次の [az acr update][az-acr-update] コマンドでは、自分のレジストリの名前に置き換えます。
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny
@@ -178,8 +178,8 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-* 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure コンテナー レジストリ用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
-* クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
+* 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure Container Registry 用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
+* クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure Container Registry にアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
 
 
 <!-- IMAGES -->

@@ -71,7 +71,7 @@ chat.csproj で Visual Studio を開き、デバッグ モードで実行しま�
 
 ## <a name="before-running-the-sample-for-the-first-time"></a>サンプルを初めて実行する前
 
-1. PowerShell、Windows ターミナル、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
+1. PowerShell、Windows Terminal、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
 2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
 3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。
 4. `Connection String` を取得したら、Chat フォルダーにある **Chat/appsettings.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。

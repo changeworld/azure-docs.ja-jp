@@ -28,7 +28,7 @@ ms.locfileid: "100383536"
 
 ## <a name="native-blob-soft-delete-preview"></a>ネイティブ BLOB の論理的な削除 (プレビュー)
 
-この削除検出方法の場合、Cognitive Search で Azure BLOB ストレージの[ネイティブ BLOB の論理的な削除](../storage/blobs/soft-delete-blob-overview.md)機能を使用して、BLOB が論理的に削除された状態に移行したかどうかを判断します。 この状態の BLOB が検出されると、この情報が検索インデクサーで使用され、対応するドキュメントがインデックスから削除されます。
+この削除検出方法の場合、Cognitive Search で Azure Blob Storage の[ネイティブ BLOB の論理的な削除](../storage/blobs/soft-delete-blob-overview.md)機能を使用して、BLOB が論理的に削除された状態に移行したかどうかを判断します。 この状態の BLOB が検出されると、この情報が検索インデクサーで使用され、対応するドキュメントがインデックスから削除されます。
 
 > [!IMPORTANT]
 > ネイティブ BLOB の論理的な削除のサポートはプレビュー段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2020-06-30-Preview](./search-api-preview.md) で、この機能を提供しています。 現時点では、ポータルと .NET SDK によるサポートはありません。
@@ -36,7 +36,7 @@ ms.locfileid: "100383536"
 ### <a name="prerequisites"></a>前提条件
 
 + [BLOB の論理的な削除を有効にします](../storage/blobs/soft-delete-blob-enable.md)。
-+ BLOB は、Azure BLOB ストレージ コンテナー内に存在する必要があります。 Cognitive Search のネイティブ BLOB の論理的な削除ポリシーは、Azure Data Lake Storage Gen2 の BLOB に対してはサポートされていません。
++ BLOB は、Azure Blob Storage コンテナー内に存在する必要があります。 Cognitive Search のネイティブ BLOB の論理的な削除ポリシーは、Azure Data Lake Storage Gen2 の BLOB に対してはサポートされていません。
 + インデックス内のドキュメントのドキュメント キーは、BLOB プロパティと BLOB メタデータのどちらかにマップされている必要があります。
 + 論理的な削除のサポートを構成するには、プレビュー REST API (`api-version=2020-06-30-Preview`) を使用する必要があります。
 

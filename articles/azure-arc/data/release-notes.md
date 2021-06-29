@@ -211,6 +211,6 @@ Azure Arc 対応データ サービスは、パブリック プレビュー用�
 
 - [クライアント ツールをインストールする](install-client-tools.md)
 - [Azure Arc データ コントローラーを作成する](create-data-controller.md) (先にクライアント ツールをインストールする必要があります)
-- [Azure Arc で Azure SQL マネージド インスタンスを作成する](create-sql-managed-instance.md) (先に Azure Arc データ コントローラーを作成する必要があります)
+- [Azure Arc で Azure SQL Managed Instance を作成する](create-sql-managed-instance.md) (先に Azure Arc データ コントローラーを作成する必要があります)
 - [Azure Arc に Azure Database for PostgreSQL Hyperscale サーバー グループを作成する](create-postgresql-hyperscale-server-group.md) (先に Azure Arc データ コントローラーを作成する必要があります)
 - [Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)

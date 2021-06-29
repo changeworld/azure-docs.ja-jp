@@ -39,7 +39,7 @@ Intel SGX エンクレーブを有効にするように DC シリーズのハー
    
 ## <a name="next-steps"></a>次の手順
 
-- [Azure SQL データベース サーバー用に Azure Attestation を構成する](always-encrypted-enclaves-configure-attestation.md)
+- [Azure SQL Database サーバー用に Azure Attestation を構成する](always-encrypted-enclaves-configure-attestation.md)
 
 ## <a name="see-also"></a>関連項目
 

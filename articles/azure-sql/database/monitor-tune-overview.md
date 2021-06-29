@@ -38,7 +38,7 @@ Azure portal では、Azure SQL Database と Azure SQL Managed Instance によ�
 
 ### <a name="monitor-with-sql-insights"></a>SQL insights で監視する
 
-[Azure Monitor SQL insights](../../azure-monitor/insights/sql-insights-overview.md) は、Azure SQL VM 内の Azure SQL マネージド インスタンス、Azure SQL データベース、SQL Server インスタンスを監視するためのツールです。 このサービスでは、リモート エージェントを使用して動的管理ビュー (DMV) からデータをキャプチャして、Azure Log Analytics にルーティングし、ここでそのデータを監視および分析することができます。 このデータは、[Azure Monitor](../../azure-monitor/overview.md) から提供されたビューで表示することも、ログ データに直接アクセスしてクエリを実行したり、傾向を分析したりすることもできます。 Azure Monitor SQL 分析情報の使用を開始するには、「[SQL insights を有効にする](../../azure-monitor/insights/sql-insights-enable.md)」を参照してください。
+[Azure Monitor SQL insights](../../azure-monitor/insights/sql-insights-overview.md) は、Azure SQL VM 内の Azure SQL Managed Instance、Azure SQL Database、SQL Server インスタンスを監視するためのツールです。 このサービスでは、リモート エージェントを使用して動的管理ビュー (DMV) からデータをキャプチャして、Azure Log Analytics にルーティングし、ここでそのデータを監視および分析することができます。 このデータは、[Azure Monitor](../../azure-monitor/overview.md) から提供されたビューで表示することも、ログ データに直接アクセスしてクエリを実行したり、傾向を分析したりすることもできます。 Azure Monitor SQL 分析情報の使用を開始するには、「[SQL insights を有効にする](../../azure-monitor/insights/sql-insights-enable.md)」を参照してください。
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL Database と Azure SQL Managed Instance のリソースの監視
 

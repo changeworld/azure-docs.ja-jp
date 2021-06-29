@@ -26,7 +26,7 @@ ms.locfileid: "101739247"
 ![基準値を使用するためのワークフロー](media/tutorial-incremental-copy-overview/workflow-using-watermark.png)
 
 具体的な手順については、次のチュートリアルを参照してください。 
-- [Azure SQL Database 内の 1 つのテーブルから Azure BLOB ストレージにデータを増分コピーする](tutorial-incremental-copy-powershell.md)
+- [Azure SQL Database 内の 1 つのテーブルから Azure Blob Storage にデータを増分コピーする](tutorial-incremental-copy-powershell.md)
 - [SQL Server インスタンスにある複数のテーブルから Azure SQL Database にデータを増分コピーする](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 テンプレートについては、以下を参照してください。
@@ -40,7 +40,7 @@ Change Tracking テクノロジは、SQL Server と Azure SQL Database におい
 ![Change Tracking を使用するためのワークフロー](media/tutorial-incremental-copy-overview/workflow-using-change-tracking.png)
 
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
-- [Change Tracking テクノロジを使用して Azure SQL Database から Azure BLOB ストレージにデータを増分コピーする](tutorial-incremental-copy-change-tracking-feature-powershell.md)
+- [Change Tracking テクノロジを使用して Azure SQL Database から Azure Blob Storage にデータを増分コピーする](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
 ## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>LastModifiedDate を使用して新しいファイルと変更済みのファイルを読み込む
 LastModifiedDate を使用して、新しいファイルと変更されたファイルのみをターゲット ストアにコピーすることができます。 ADF はソース ストアのすべてのファイルをスキャンし、LastModifiedDate に基づいてファイル フィルターを適用して、前回以降の新しいファイルと更新されたファイルのみをターゲット ストアにコピーします。  ADF に大量のファイルをスキャンさせるが、ターゲットにコピーするのは少数のファイルだけの場合でも、ファイルのスキャンに時間がかかることは変わらないため、この場合も長時間の実行が見込まれることに注意してください。   
@@ -61,4 +61,4 @@ LastModifiedDate を使用して、新しいファイルと変更されたファ
 次のチュートリアルに進みます。 
 
 > [!div class="nextstepaction"]
->[Azure SQL Database 内の 1 つのテーブルから Azure BLOB ストレージにデータを増分コピーする](tutorial-incremental-copy-powershell.md)
+>[Azure SQL Database 内の 1 つのテーブルから Azure Blob Storage にデータを増分コピーする](tutorial-incremental-copy-powershell.md)

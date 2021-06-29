@@ -1,6 +1,6 @@
 ---
 title: イメージのロック
-description: コンテナー イメージまたはリポジトリの属性を設定して、Azure コンテナー レジストリで削除や上書きができないようにします。
+description: コンテナー イメージまたはリポジトリの属性を設定して、Azure Container Registry で削除や上書きができないようにします。
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: 340beb1bb6666ddf0de7de38adee6be71f5f52bd
@@ -10,9 +10,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/20/2021
 ms.locfileid: "107772345"
 ---
-# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
+# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure Container Registry のコンテナー イメージをロックする
 
-Azure コンテナー レジストリでは、イメージ バージョンまたはリポジトリをロックして、削除や更新ができないようにすることができます。 イメージまたはリポジトリをロックするには、Azure CLI コマンド [az acr repository update][az-acr-repository-update] を使用して、その属性を更新します。 
+Azure Container Registry では、イメージ バージョンまたはリポジトリをロックして、削除や更新ができないようにすることができます。 イメージまたはリポジトリをロックするには、Azure CLI コマンド [az acr repository update][az-acr-repository-update] を使用して、その属性を更新します。 
 
 この記事では、Azure CLI を Azure Cloud Shell またはローカルで実行する必要があります (バージョン 2.0.55 以降を推奨)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 

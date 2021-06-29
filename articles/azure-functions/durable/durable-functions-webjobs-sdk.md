@@ -188,7 +188,7 @@ WebJob として実行されるように設定された Durable Functions を取
 
 ### <a name="run-locally"></a>ローカルで実行する
 
-1. ストレージ エミュレーターが実行されていることを確認します (「[前提条件](#prerequisites)」をご覧ください)。
+1. Storage Emulator が実行されていることを確認します (「[前提条件](#prerequisites)」をご覧ください)。
 
 1. プロジェクトをローカルで実行するときに Application Insights でログを表示するには:
 

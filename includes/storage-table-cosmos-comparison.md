@@ -17,7 +17,7 @@ ms.locfileid: "106178401"
 ---
 現在 Azure Table Storage を使用している場合、Azure Cosmos DB Table API に移行することにより次のメリットが得られます。
 
-|特徴量 | Azure Table Storage | Azure Cosmos DB Table API |
+| 機能 | Azure Table Storage | Azure Cosmos DB Table API |
 | --- | --- | --- |
 | Latency | 高速だが、待ち時間の上限はなし。 | 読み取りと書き込みの待ち時間は数ミリ秒であり、世界中のどこでもあらゆるスケールで 99 パーセンタイルの 10 ミリ秒未満の読み取り待ち時間と 15 ミリ秒未満の書き込み待ち時間でサポート。 |
 | スループット | 可変スループット モデル。 テーブルには、20,000 操作/秒のスケーラビリティの制限あり。 | SLA によって保証された、[テーブルごとの専用の予約済みスループット](../articles/cosmos-db/request-units.md)を備えた高いスケーラビリティ。 アカウントにはスループットの上限がなく、テーブルあたり 10,000, 000 操作/秒以上に対応 (プロビジョニングされたスループット モード)。 |

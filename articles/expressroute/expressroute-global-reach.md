@@ -36,7 +36,7 @@ ExpressRoute Global Reach は以下の場所でサポートされています。
 > [異なる地政学的地域](expressroute-locations-providers.md#locations)間で ExpressRoute Global Reach を有効にするには、**Premium SKU** の回線を使用する必要があります。
 
 * オーストラリア
-* Canada
+* カナダ
 * フランス
 * ドイツ
 * 香港特別行政区
@@ -51,7 +51,7 @@ ExpressRoute Global Reach は以下の場所でサポートされています。
 * スウェーデン
 * スイス
 * イギリス
-* United States
+* アメリカ
 
 ## <a name="next-steps"></a>次のステップ
 - [Global Reach の FAQ](expressroute-faqs.md#globalreach) を確認します。

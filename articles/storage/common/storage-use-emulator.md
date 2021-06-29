@@ -19,7 +19,7 @@ ms.locfileid: "106277115"
 Microsoft Azure Storage Emulator は、ローカル開発のために Azure の Blob service、Queue サービス、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
 
 > [!IMPORTANT]
-> Azure Storage エミュレーターは現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage エミュレーターよりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
+> Azure Storage Emulator は現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage Emulator よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
 
 ## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターを入手する
 
@@ -170,7 +170,7 @@ Azure ストレージ アカウントのリソースをアドレス指定する�
 Version 3.0 以降、コンソール ウィンドウは、ストレージ エミュレーターを起動すると表示されます。 エミュレーターを開始および停止するには、コンソール ウィンドウのコマンド ラインを使用します。 コマンド ラインからは、状態を照会する、他の操作を実行することもできます。
 
 > [!NOTE]
-> Microsoft Azure コンピューティング エミュレーターがインストール済みの場合は、ストレージ エミュレーターの起動時にシステム トレイ アイコンが表示されます。 このアイコンを右クリックするとメニューが表示され、直感的な方法でストレージ エミュレーターを起動および停止できます。
+> Microsoft Azure Compute Emulator がインストール済みの場合は、ストレージ エミュレーターの起動時にシステム トレイ アイコンが表示されます。 このアイコンを右クリックするとメニューが表示され、直感的な方法でストレージ エミュレーターを起動および停止できます。
 >
 >
 
@@ -186,7 +186,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 | --- | --- | --- | --- |
 | **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
-| **状態** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
+| **Status** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
 | **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*:BLOB データを消去します。 <br/>*queue*:キュー データを消去します。 <br/>*table*:テーブル データを消去します。 <br/>*all*:すべてのサービスのすべてのデータを消去します。 |
 | **Init** |エミュレーターを設定するために、1 回限りの初期化を行います。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*:SQL インスタンスをホストしているサーバーを指定します。 <br/>*-sqlinstance instanceName*:既定のサーバー インスタンスで使用される SQL インスタンスの名前を指定します。 <br/>*-forcecreate*:SQL データベースが既に存在していても、強制的に作成します。 <br/>*-skipcreate*:SQL データベースの作成をスキップします。 これは -forcecreate に優先します。<br/>*-reserveports*:サービスに関連付けられている HTTP ポートの予約を試行します。<br/>*-unreserveports*:サービスに関連付けられている HTTP ポートの予約の削除を試行します。 これは -reserveports に優先します。<br/>*-inprocess*:新しいプロセスを生成せずに、現在のプロセスで初期化を行います。 ポートの予約を変更する場合は、管理者特権のアクセス許可で現在のプロセスを起動する必要があります。 |
 

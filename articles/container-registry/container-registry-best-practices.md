@@ -25,7 +25,7 @@ ms.locfileid: "107784139"
 
 ## <a name="geo-replicate-multi-region-deployments"></a>Geo レプリケーション転送を使用した複数リージョンへのデプロイ
 
-複数のリージョンにコンテナーをデプロイする場合は、Azure Container Registry の [Geo レプリケーション](container-registry-geo-replication.md)機能をご使用ください。 ローカル データ センターから世界各国の顧客にサービスを提供する場合であれ、開発チームの拠点が分散している場合であれ、レジストリを Geo レプリケーション転送することにより、レジストリの管理を省力化し、待ち時間を最小限に抑えることができます。 また、画像がプッシュされた場合など、特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成できます。
+複数のリージョンにコンテナーをデプロイする場合は、Azure Container Registry の [Geo レプリケーション](container-registry-geo-replication.md)機能をご使用ください。 ローカル データ センターから世界各国の顧客にサービスを提供する場合であれ、開発チームの拠点が分散している場合であれ、レジストリを Geo レプリケーション転送することにより、レジストリの管理を省力化し、待ち時間を最小限に抑えることができます。 また、イメージがプッシュされた場合など、特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成できます。
 
 geo レプリケーションは、[Premium](container-registry-skus.md) レジストリで使用できます。 Geo レプリケーションの使用方法については、[Azure Container Registry の Geo レプリケーション](container-registry-tutorial-prepare-registry.md)に関する 3 部構成のチュートリアルを参照してください。
 
@@ -33,7 +33,7 @@ geo レプリケーションは、[Premium](container-registry-skus.md) レジ�
 
 デプロイの近くにイメージを配置する以外に、イメージ自体の特性がプル パフォーマンスに影響を与える可能性があります。
 
-* **イメージ サイズ** - 不要な [レイヤー](container-registry-concepts.md#manifest)を削除したり、レイヤーのサイズを縮小したりして、画像のサイズを最小化します。 イメージ サイズを縮小する 1 つの方法は、[マルチステージの Docker ビルド](https://docs.docker.com/develop/develop-images/multistage-build/)方法を使用して、必要なランタイム コンポーネントのみを含めることです。 
+* **イメージ サイズ** - 不要な [レイヤー](container-registry-concepts.md#manifest)を削除したり、レイヤーのサイズを縮小したりして、イメージのサイズを最小化します。 イメージ サイズを縮小する 1 つの方法は、[マルチステージの Docker ビルド](https://docs.docker.com/develop/develop-images/multistage-build/)方法を使用して、必要なランタイム コンポーネントのみを含めることです。 
 
   また、より軽量なベース OS イメージを含めることができるかどうかも確認します。 特定のベース イメージをキャッシュする Azure Container Instances などのデプロイ環境を使用する場合は、キャッシュされたイメージの 1 つのイメージ レイヤーをスワップできるかどうかを確認します。 
 * **レイヤー数** - 使用されるレイヤーの数を調整します。 数が少なすぎると、ホストでのレイヤーの再利用とキャッシュの恩恵を受けられません。 多すぎると、デプロイ環境でのプルと圧縮解除に時間がかかります。 レイヤーの数は、5 ～ 10 が最適です。

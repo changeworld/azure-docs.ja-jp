@@ -37,5 +37,5 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 埋め込みデバイス開発の概要
+    - text: 組み込みデバイス開発の概要
       url: quickstart-device-development.md

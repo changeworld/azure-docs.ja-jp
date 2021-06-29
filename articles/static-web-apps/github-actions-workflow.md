@@ -27,7 +27,7 @@ GitHub リポジトリを Azure Static Web Apps にリンクすると、その�
 生成されたワークフロー ファイルを表示するには、次の手順に従います。
 
 1. GitHub でアプリのリポジトリを開きます。
-1. _[コード]_ タブで、`.github/workflows` フォルダーをクリックします。
+1. _[Code]_ タブで、`.github/workflows` フォルダーをクリックします。
 1. `azure-static-web-apps-<RANDOM_NAME>.yml` のような名前のファイルをクリックします。
 
 リポジトリ内の YAML ファイルは、次の例のようになります。

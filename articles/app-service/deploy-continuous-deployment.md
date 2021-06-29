@@ -105,7 +105,7 @@ BitBucket 統合では、ビルドの自動化のために App Service ビルド
 
 GitHub Actions ビルド プロバイダーは、[GitHub の CI/CD](#configure-deployment-source) 用のオプションであり、CI/CD を設定するために次の操作を実行します。
 
-- Github Actions ワークフロー ファイルを GitHub リポジトリに保管して、App Service のビルドとデプロイのタスクを処理します。
+- GitHub Actions ワークフロー ファイルを GitHub リポジトリに保管して、App Service のビルドとデプロイのタスクを処理します。
 - アプリの発行プロファイルを GitHub シークレットとして追加します。 ワークフロー ファイルは、このシークレットを使用して App Service に対する認証を行います。
 - [ワークフロー実行ログ](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)から情報をキャプチャし、それをアプリの "**デプロイ センター**" の **[ログ]** タブに表示します。
 

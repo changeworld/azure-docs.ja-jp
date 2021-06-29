@@ -65,7 +65,7 @@ ms.locfileid: "104608097"
 >- PolyBase または COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込むときに、ソースまたはステージング BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合は、Synapse の要求に従ってマネージド ID 認証を使用する必要があります。 構成の前提条件の詳細については、「[マネージド ID の認証](#managed-identity)」を参照してください。
 
 >[!NOTE]
->Azure HDInsight および Azure Machine Learning のアクティビティは、Azure BLOB ストレージ アカウント キーを使用する認証のみをサポートします。
+>Azure HDInsight および Azure Machine Learning のアクティビティは、Azure Blob Storage アカウント キーを使用する認証のみをサポートします。
 
 ### <a name="account-key-authentication"></a>アカウント キー認証
 
@@ -228,7 +228,7 @@ Azure Blob Storage のリンクされたサービスでは、次のプロパテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureBlobStorage** に設定する必要があります。 | はい |
-| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 | はい |
+| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure Blob Storage サービス エンドポイントを指定します。 | はい |
 | accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/><br/>データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 | いいえ |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
@@ -285,12 +285,12 @@ Azure Storage 認証の全般的な情報については、「[Azure Active Dire
 >[!IMPORTANT]
 >PolyBase または COPY ステートメントを使用して (ソースまたはステージングとしての) BLOB ストレージから Azure Synapse Analytics にデータを読み込む場合に、BLOB ストレージに対してマネージド ID 認証を使用するときは、必ず[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)の手順 1 から 3 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントを使用して Blob Storage を構成する場合は、さらに Synapse の要求に従って、Azure Storage アカウントで、 **[ファイアウォールと仮想ネットワーク]** 設定メニューの **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** をオンにする必要があります。
 
-Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
+Azure Blob Storage のリンクされたサービスでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureBlobStorage** に設定する必要があります。 | はい |
-| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 | はい |
+| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure Blob Storage サービス エンドポイントを指定します。 | はい |
 | accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/><br/>データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 | いいえ |
 

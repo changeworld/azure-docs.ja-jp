@@ -56,7 +56,7 @@ https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-lates
 
 または、Azure portal を使用することもできます。  
 
-## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>netlist ファイルを Azure BLOB ストレージにアップロードする  
+## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>netlist ファイルを Azure Blob Storage にアップロードする  
 
 ファイルをコピーするには、いくつかの方法があります。az ストレージ アップロード コマンドレットの使用例を次に示します。 az コマンドは、Linux と Windows の両方で実行できます。 "BLOB" 名には任意の名前を選択できますが、xclbin 拡張子は変更しないようにしてください。 
 

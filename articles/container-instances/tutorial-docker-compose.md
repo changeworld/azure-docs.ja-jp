@@ -174,7 +174,7 @@ az acr repository show --name <acrName> --repository azure-vote-front
 
 [!INCLUDE [container-instances-create-docker-context](../../includes/container-instances-create-docker-context.md)]
 
-## <a name="deploy-application-to-azure-container-instances"></a>アプリケーションを Azure Container instances にデプロイする
+## <a name="deploy-application-to-azure-container-instances"></a>アプリケーションを Azure Container Instances にデプロイする
 
 次に、ACI コンテキストに変更します。 以降の Docker コマンドは、このコンテキストで実行されます。
 

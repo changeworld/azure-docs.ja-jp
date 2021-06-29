@@ -33,7 +33,7 @@ ms.locfileid: "102427013"
 > * アクセスが不要になった場合に GitHub AE のユーザーを削除する
 > * Azure AD と GitHub AE の間でユーザー属性の同期を維持する
 > * GitHub AE でグループとグループ メンバーシップをプロビジョニングする
-> * [Github AE](./github-ae-tutorial.md) へのシングル サインオン (推奨)
+> * [GitHub AE](./github-ae-tutorial.md) へのシングル サインオン (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 

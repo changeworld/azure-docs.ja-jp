@@ -96,7 +96,7 @@ Power Automate は [Power Platform](/power-platform/) のサービスであり�
 
 ### <a name="ai-builder"></a>AI Builder 
 
-Microsoft Power Platform の機能である [AI Builder](/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder を使用すると、ポイント アンド クリック エクスペリエンスによりソリューションに AI の機能を組み込むことができます。 Form Recognizer、Text Analytics、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自のコグニティブ サービスを作成する必要はありません。 
+Microsoft Power Platform の機能である [AI Builder](/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder を使用すると、ポイント アンド クリック エクスペリエンスによりソリューションに AI の機能を組み込むことができます。 Form Recognizer、Text Analytics、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自の Cognitive Services を作成する必要はありません。 
 
 * **対象ユーザー**: ビジネス ユーザー (アナリスト)、SharePoint 管理者
 * **利点**:ポイント アンド クリック エクスペリエンスにより AI の機能を組み込むターンキー ソリューション。 コーディングやデータ サイエンスのスキルは必要ありません。

@@ -32,7 +32,7 @@ ms.locfileid: "107763885"
 
 ### <a name="get-registry-credentials"></a>レジストリ資格情報を取得する
 
-[2 つ目のチュートリアル](container-instances-tutorial-prepare-acr.md)で作成したようなプライベート Azure コンテナー レジストリでホストされるイメージをデプロイする場合は、レジストリにアクセスするための資格情報を指定する必要があります。 
+[2 つ目のチュートリアル](container-instances-tutorial-prepare-acr.md)で作成したようなプライベート Azure Container Registry でホストされるイメージをデプロイする場合は、レジストリにアクセスするための資格情報を指定する必要があります。 
 
 レジストリへの "*プル*" アクセス許可を持った Azure Active Directory のサービス プリンシパルを作成して構成することが、多くのシナリオにおいてベスト プラクティスとなります。 必要なアクセス許可を持つサービス プリンシパルを作成するためのサンプル スクリプトについては、「[Azure Container Instances から Azure Container Registry の認証を受ける](../container-registry/container-registry-auth-aci.md)」を参照してください。 "*サービス プリンシパル ID*" と "*サービス プリンシパル パスワード*" を書き留めておいてください。 これらの資格情報は、コンテナーをデプロイするときにレジストリにアクセスするために使用します。
 

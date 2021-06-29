@@ -46,7 +46,7 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |オーストリア|AT|
 |ベルギー|BE|
 |ブラジル|BR|
-|Canada|CA|
+|カナダ|CA|
 |チリ|CL|
 |デンマーク|DK|
 |フィンランド|FI|
@@ -76,7 +76,7 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |台湾|TW|
 |トルコ|TR|
 |イギリス|GB|
-|United States|US|
+|アメリカ|US|
 
 
 ## <a name="markets"></a>市場
@@ -88,9 +88,9 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |オーストリア|ドイツ語|de-AT|
 |ベルギー|オランダ語|nl-BE|
 |ベルギー|フランス語|fr-BE|
-|ブラジル|Portuguese|pt-BR|
-|Canada|英語|en-CA|
-|Canada|フランス語|fr-CA|
+|ブラジル|ポルトガル語|pt-BR|
+|カナダ|英語|en-CA|
+|カナダ|フランス語|fr-CA|
 |チリ|スペイン語|es-CL|
 |デンマーク|デンマーク語|da-DK|
 |フィンランド|フィンランド語|fi-FI|
@@ -120,8 +120,8 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |台湾|Traditional Chinese|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
-|United States|英語|ja-JP|
-|United States|スペイン語|es-US|
+|アメリカ|英語|en-US|
+|アメリカ|スペイン語|es-US|
 
 ## <a name="next-steps"></a>次の手順
 Bing News Search エンドポイントの詳細については、[News Image Search API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)を参照してください。

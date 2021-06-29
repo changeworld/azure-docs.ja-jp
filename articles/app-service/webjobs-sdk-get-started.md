@@ -18,7 +18,7 @@ ms.locfileid: "91652042"
 
 この記事では、Visual Studio 2019 を使用し、Azure WebJobs SDK プロジェクトを作成し、それをローカルで実行し、[Azure App Service](overview.md) にデプロイする方法について説明します。 バージョン 3.x の WebJobs SDK は、.NET Core と .NET Framework の両方のコンソール アプリをサポートしています。 WebJobs SDK の使用方法については、「[イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法](webjobs-sdk-how-to.md)」を参照してください。
 
-この記事では、.NET Core コンソール アプリとして Webjobs をデプロイする方法を示します。 .NET Framework コンソール アプリケーションとして Webjobs をデプロイするには、「[.NET Framework コンソール アプリとしての WebJobs](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)」を参照してください。 .NET Framework だけをサポートする WebJobs SDK バージョン 2.x に興味がある場合、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」を参照してください。
+この記事では、.NET Core コンソール アプリとして Webjobs をデプロイする方法を示します。 .NET Framework コンソール アプリケーションとして Webjobs をデプロイするには、「[.NET Framework コンソール アプリとしての WebJobs](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)」を参照してください。 .NET Framework だけをサポートする WebJobs SDK バージョン 2.x に興味がある場合、「[Visual Studio を使用して WebJobs を開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -431,7 +431,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure にデプロイする
 
-デプロイ中、関数を実行するアプリ サービス インスタンスを作成します。 .NET Core コンソール アプリを Azure で App Service に発行すると、Web ジョブとして自動的に実行されます。 発行に関する詳細については、「[Visual Studio を使用して Web ジョブを開発してデプロイする](webjobs-dotnet-deploy-vs.md)」を参照してください。
+デプロイ中、関数を実行するアプリ サービス インスタンスを作成します。 .NET Core コンソール アプリを Azure で App Service に発行すると、WebJobs として自動的に実行されます。 発行に関する詳細については、「[Visual Studio を使用して WebJobs を開発してデプロイする](webjobs-dotnet-deploy-vs.md)」を参照してください。
 
 [!INCLUDE [webjobs-publish-net-core](../../includes/webjobs-publish-net-core.md)]
 
@@ -454,7 +454,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. "*Hello Azure!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します
 
-   Web ジョブで実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* " テキストが含まれます。
+   WebJobs で実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* " テキストが含まれます。
 
 ## <a name="add-an-input-binding"></a>入力バインディングの追加
 

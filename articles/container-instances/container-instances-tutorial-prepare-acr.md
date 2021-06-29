@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - イメージをデプロイするようにコンテナー レジストリを準備する
-description: Azure Container Instances チュートリアル 2/3 - Azure コンテナー レジストリの準備とイメージのプッシュ
+description: Azure Container Instances チュートリアル 2/3 - Azure Container Registry の準備とイメージのプッシュ
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc, devx-track-azurecli
@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/20/2021
 ms.locfileid: "107786983"
 ---
-# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>チュートリアル:Azure コンテナー レジストリを作成してコンテナー イメージをプッシュする
+# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>チュートリアル:Azure Container Registry を作成してコンテナー イメージをプッシュする
 
 これは 3 つのパートで構成されるチュートリアルの 2 番目のタスクです。 チュートリアルの[パート 1](container-instances-tutorial-prepare-app.md) では、Node.js Web アプリケーションの Docker コンテナー イメージを作成しました。 このチュートリアルでは、このイメージを Azure Container Registry にプッシュします。 コンテナー イメージを作成していない場合は、[チュートリアル 1 - コンテナー イメージの作成](container-instances-tutorial-prepare-app.md)に関するページに戻ってください。
 
@@ -105,7 +105,7 @@ v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05
 
 ## <a name="list-images-in-azure-container-registry"></a>Azure Container Registry のイメージの一覧表示
 
-先ほどプッシュしたイメージが確かに対象の Azure コンテナー レジストリに存在することを確認し、[az acr repository list][az-acr-repository-list] コマンドを使って、レジストリ内のイメージを一覧表示します。 `<acrName>` を、コンテナー レジストリの名前に置き換えます。
+先ほどプッシュしたイメージが確かに対象の Azure Container Registry に存在することを確認し、[az acr repository list][az-acr-repository-list] コマンドを使って、レジストリ内のイメージを一覧表示します。 `<acrName>` を、コンテナー レジストリの名前に置き換えます。
 
 ```azurecli
 az acr repository list --name <acrName> --output table

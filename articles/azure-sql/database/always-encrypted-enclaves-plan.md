@@ -37,9 +37,9 @@ Intel SGX は、ハードウェアベースの高信頼実行環境テクノロ�
 > [!IMPORTANT]
 > データベースに対して DC シリーズのハードウェアの世代を構成する前に、DC シリーズのリージョン別の提供状況を確認し、そのパフォーマンスの制限を理解するようにしてください。 詳細については、[DC シリーズ](service-tiers-vcore.md#dc-series)に関する記事を参照してください。
 
-## <a name="plan-for-attestation-in-azure-sql-database"></a>Azure SQL データベースでの構成証明を計画する
+## <a name="plan-for-attestation-in-azure-sql-database"></a>Azure SQL Database での構成証明を計画する
 
-[Microsoft Azure Attestation](../../attestation/overview.md) (プレビュー) は、DC シリーズのハードウェアの世代を使用した Azure SQL データベース内の Intel SGX エンクレーブを含む、高信頼実行環境 (TEE) を証明するためのソリューションです。
+[Microsoft Azure Attestation](../../attestation/overview.md) (プレビュー) は、DC シリーズのハードウェアの世代を使用した Azure SQL Database 内の Intel SGX エンクレーブを含む、高信頼実行環境 (TEE) を証明するためのソリューションです。
 
 Azure SQL Database 内で Intel SGX エンクレーブを証明するために Azure Attestation を使用するには、次のことを行う必要があります。
 
@@ -59,7 +59,7 @@ Azure SQL Database での Always Encrypted に対する Intel SGX エンクレ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure SQL データベースに対して Intel SGX を有効にする](always-encrypted-enclaves-enable-sgx.md)
+- [Azure SQL Database に対して Intel SGX を有効にする](always-encrypted-enclaves-enable-sgx.md)
 
 ## <a name="see-also"></a>関連項目
 

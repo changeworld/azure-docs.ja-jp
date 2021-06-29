@@ -1,6 +1,6 @@
 ---
 title: GitHub リポジトリから Azure Cosmos DB にノートブックをインポートして実行する
-description: Github に接続して、GitHub リポジトリから Azure Cosmos アカウントにノートブックをインポートする方法について説明します。 インポートした後は、それらを実行して編集し、変更内容を GitHub に保存することができます。
+description: GitHub に接続して、GitHub リポジトリから Azure Cosmos アカウントにノートブックをインポートする方法について説明します。 インポートした後は、それらを実行して編集し、変更内容を GitHub に保存することができます。
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
@@ -17,7 +17,7 @@ ms.locfileid: "101690653"
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>GitHub リポジトリから Azure Cosmos DB にノートブックをインポートする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos アカウントの[ノートブック サポートを有効にする](enable-notebooks.md)と、新しいノートブックを作成したり、ローカル コンピューターから新しいノートブックをアップロードしたり、GitHub アカウントから既存のノートブックをインポートしたりできます。 この記事では、ノートブック ワークスペースを Github に接続して、GitHub リポジトリから Azure Cosmos アカウントにノートブックをインポートする方法について説明します。 インポートした後は、それらを実行し、変更を加え、変更内容を GitHub に保存することができます。
+Azure Cosmos アカウントの[ノートブック サポートを有効にする](enable-notebooks.md)と、新しいノートブックを作成したり、ローカル コンピューターから新しいノートブックをアップロードしたり、GitHub アカウントから既存のノートブックをインポートしたりできます。 この記事では、ノートブック ワークスペースを GitHub に接続して、GitHub リポジトリから Azure Cosmos アカウントにノートブックをインポートする方法について説明します。 インポートした後は、それらを実行し、変更を加え、変更内容を GitHub に保存することができます。
 
 ## <a name="get-notebooks-from-github"></a>GitHub からノートブックを取得する
 

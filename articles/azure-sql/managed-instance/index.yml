@@ -23,7 +23,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: SQL マネージド インスタンスの作成
+    - text: SQL Managed Instance の作成
       url: instance-create-quickstart.md
   - linkListType: video
     links:

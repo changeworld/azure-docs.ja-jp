@@ -34,7 +34,7 @@ ms.locfileid: "98742082"
 アプリケーションでは、 [キューを中心とした作業パターン](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>代替アーキテクチャ:App Service と WebJobs
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web Apps](../app-service/index.yml) で実行し、バックエンド用に [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ご自身のシナリオに最適なサービスを選択する方法の詳細については、「[Azure App Service、Cloud Services、および Virtual Machines の比較](/azure/architecture/guide/technology-choices/compute-decision-tree)」を参照してください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web Apps](../app-service/index.yml) で実行し、バックエンド用に [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 機能を使用する方法があります。 WebJobs を使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure WebJobs SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ご自身のシナリオに最適なサービスを選択する方法の詳細については、「[Azure App Service、Cloud Services、および Virtual Machines の比較](/azure/architecture/guide/technology-choices/compute-decision-tree)」を参照してください。
 
 ## <a name="what-youll-learn"></a>学習内容
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
@@ -80,7 +80,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 6. Visual Studio 2015 以上を使用している場合は、ContosoAdsWeb プロジェクトのアプリケーションの *Web.config* ファイルと ContosoAdsCloudService プロジェクトの *ServiceConfiguration.Local.cscfg* ファイルで SQL Server 接続文字列を変更します。 いずれの場合も、"(localdb)\v11.0" を "(localdb)\MSSQLLocalDB" に変更します。
 7. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-    クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure "*コンピューティング エミュレーター*" と Azure "*ストレージ エミュレーター*" が自動的に起動されます。 コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。 ストレージ エミュレーターは、 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) を使用して、Azure クラウド ストレージをシミュレートします。
+    クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure "*Compute Emulator*" と Azure "*Storage Emulator*" が自動的に起動されます。 Compute Emulator は、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。 ストレージ エミュレーターは、 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) を使用して、Azure クラウド ストレージをシミュレートします。
 
     クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。 エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 

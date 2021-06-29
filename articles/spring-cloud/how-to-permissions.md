@@ -29,7 +29,7 @@ ms.locfileid: "104877554"
     * アプリを再起動する
     * ログ ストリームを取得する
     * アプリや構成に変更を加えることはできない
-* **Azure Pipelines/Jenkins/Github アクション ロール**:
+* **Azure Pipelines/Jenkins/GitHub Actions ロール**:
     * 作成、読み取り、更新、削除の操作を実行できる
     * サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成できる:Terraform または ARM テンプレートを使用した Azure Pipelines、Jenkins、または GitHub Actions
 
@@ -194,7 +194,7 @@ ms.locfileid: "104877554"
 5. **[確認と作成]** をクリックします。
 
 ## <a name="define-azure-pipelinesprovisioning-role"></a>Azure Pipelines/プロビジョニング ロールを定義する
-この Jenkins/Github アクション ロールを使用すると、サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成することができます。 このロールは、コードをリリースまたはデプロイするためのものです。
+この Jenkins/GitHub Actions ロールを使用すると、サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成することができます。 このロールは、コードをリリースまたはデプロイするためのものです。
 
 1. サブスクリプション、リソース グループと進む手順を繰り返して、[アクセス制御 (IAM)] にアクセスします。
 

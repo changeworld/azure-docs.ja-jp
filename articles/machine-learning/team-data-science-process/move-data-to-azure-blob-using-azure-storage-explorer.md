@@ -36,7 +36,7 @@ Azure Storage Explorer は、Windows、MacOS、Linux で Azure Storage のデー
 
 * Azure サブスクリプションを設定するには、 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 * ストレージ アカウントの作成と、アカウントとキー情報の取得の手順については、[Azure ストレージ アカウントについて](../../storage/common/storage-account-create.md)のページを参照してください。 ストレージ アカウントのアクセス キーをメモしておきます。Azure Storage Explorer ツールでアカウントに接続する際に、このキーが必要になります。
-* Azure ストレージ エクスプローラー ツールは、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)のページからダウンロードできます。 インストール時に既定値をそのまま使用します。
+* Azure Storage Explorer ツールは、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)のページからダウンロードできます。 インストール時に既定値をそのまま使用します。
 
 <a id="explorer"></a>
 
