@@ -59,7 +59,7 @@
               href: custom-enterprise-app-permissions.md
             - name: アプリへの同意のアクセス許可
               href: custom-consent-permissions.md
-        - name: アプリの管理社ロールを委任する
+        - name: アプリの管理者ロールを委任する
           href: delegate-app-roles.md
     - name: ロールをグループに割り当てる
       items:
