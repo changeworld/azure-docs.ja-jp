@@ -83,9 +83,9 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |オーストリア|ドイツ語|de-AT|
 |ベルギー|オランダ語|nl-BE|
 |ベルギー|フランス語|fr-BE|
-|ブラジル|Portuguese|pt-BR|
-|Canada|英語|en-CA|
-|Canada|フランス語|fr-CA|
+|ブラジル|ポルトガル語|pt-BR|
+|カナダ|英語|en-CA|
+|カナダ|フランス語|fr-CA|
 |チリ|スペイン語|es-CL|
 |デンマーク|デンマーク語|da-DK|
 |フィンランド|フィンランド語|fi-FI|
@@ -116,5 +116,5 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |台湾|Traditional Chinese|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
-|United States|英語|ja-JP|
-|United States|スペイン語|es-US|
+|アメリカ|英語|en-US|
+|アメリカ|スペイン語|es-US|
