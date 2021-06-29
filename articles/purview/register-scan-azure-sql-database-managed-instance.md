@@ -34,7 +34,7 @@ Azure Purview では、Azure SQL Managed Instance の[ビュー](/sql/relational
 
 - Purview アカウントをまだお持ちでない場合は、新たに作成します。
 
-- [Azure SQL マネージド インスタンスのパブリック エンドポイントを構成する](../azure-sql/managed-instance/public-endpoint-configure.md)
+- [Azure SQL Managed Instance のパブリック エンドポイントを構成する](../azure-sql/managed-instance/public-endpoint-configure.md)
     > [!Note]
     > Purview では **プライベート エンドポイントはまだサポートされていない** ため、組織はパブリック エンドポイントを許可できる必要があります。 プライベート エンドポイントを使用する場合、スキャンは正常に実行されません。
 
