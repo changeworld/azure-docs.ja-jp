@@ -118,7 +118,7 @@ Azure SQL Database では、ファイルにアクセスできない CRYPTOGRAPHI
 
 **推奨事項**   
 Azure SQL Database では、複数のデータベースにまたがるクエリはサポートされていません。 次のアクションを推奨します。 
-- Azure SQL Database に依存データベースを移行し、エラスティック データベース クエリ (現時点ではプレビュー) 機能を使用して、複数の Azure SQL データベースにクエリを実行します。 
+- Azure SQL Database に依存データベースを移行し、エラスティック データベース クエリ (現時点ではプレビュー) 機能を使用して、複数の Azure SQL Database にクエリを実行します。 
 - 依存データセットを他のデータベースから、移行するデータベースに移動します。 
 - Azure SQL Managed Instance に移行します。
 - Azure Virtual Machines 上の SQL Server に移行します。 
@@ -219,7 +219,7 @@ Azure SQL Database では、NTFS ファイル システムに、テキスト ド
 **推奨事項**   
 Azure SQL Database では、リンク サーバー機能はサポートされていません。 リンク サーバーが必要なくなるようにするには、次のアクションが推奨されます。 
 - リモートの SQL サーバーから依存データベースを特定し、これらを移行するデータベースに移動することを検討します。 
-- Azure に依存データベースを移行し、エラスティック データベース クエリ (プレビュー) 機能を使用して、複数の Azure SQL データベースにクエリを実行できるようにします。 
+- Azure に依存データベースを移行し、エラスティック データベース クエリ (プレビュー) 機能を使用して、複数の Azure SQL Database にクエリを実行できるようにします。 
 
 詳細情報: [Azure SQL Database エラスティック クエリ (プレビュー) を参照](../../database/elastic-query-overview.md) 
 
