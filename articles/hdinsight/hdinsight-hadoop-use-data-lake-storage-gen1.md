@@ -19,7 +19,7 @@ ms.locfileid: "98945403"
 
 HDInsight クラスターでデータを分析するには、[`Azure Blob storage`](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)、または [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) のいずれかにデータを格納します。 いずれのストレージ オプションでも、計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
 
-この記事では、HDInsight クラスターでの Data Lake Storage Gen1 の動作について説明します。 HDInsight クラスターでの Azure BLOB ストレージの動作については、「[Azure HDInsight クラスターで Azure BLOB ストレージを使用する](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。 HDInsight クラスターの作成について詳しくは、[HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+この記事では、HDInsight クラスターでの Data Lake Storage Gen1 の動作について説明します。 HDInsight クラスターでの Azure Blob Storage の動作については、「[Azure HDInsight クラスターで Azure Blob Storage を使用する](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。 HDInsight クラスターの作成について詳しくは、[HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
 > [!NOTE]  
 > Data Lake Storage Gen1 へのアクセスには必ずセキュリティで保護されたチャネルが使われるため、`adls` ファイルシステム スキーム名はありません。 常に `adl` を使用します。
@@ -33,7 +33,7 @@ Apache Hadoop は、既定のファイル システムの概念をサポート�
 HDInsight クラスターでは、2 つの方法で Data Lake Storage Gen1 を使用できます。
 
 * 既定のストレージとして
-* 既定のストレージが Azure BLOB ストレージのときの追加ストレージとして
+* 既定のストレージが Azure Blob Storage のときの追加ストレージとして
 
 現時点では、Data Lake Storage Gen1 を既定ストレージおよび追加のストレージ アカウントとして使用することは、HDInsight クラスターの一部の種類/バージョンでのみサポートされています。
 
