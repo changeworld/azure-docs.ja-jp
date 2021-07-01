@@ -62,7 +62,7 @@ api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
 Content-Type: application/json
 ```
 
-Postman で、次のスクリーンショットのように要求を作成します。 コマンドとして **GET** を選択し、URL を入力して、 **[送信]** をクリックします。 このコマンドは Azure Cognitive Search に接続し、インデックス コレクションを読み取り、接続が成功すると HTTP 状態コード 200 を返します。 ご使用のサービスにインデックスが既に作成されている場合、応答にはインデックスの定義も含まれます。
+Postman で、次のスクリーンショットのように要求を作成します。 コマンドとして **GET** を選択し、URL を入力して、 **[Send]\(送信\)** をクリックします。 このコマンドは Azure Cognitive Search に接続し、インデックス コレクションを読み取り、接続が成功すると HTTP 状態コード 200 を返します。 ご使用のサービスにインデックスが既に作成されている場合、応答にはインデックスの定義も含まれます。
 
 ![Postman の要求 URL とヘッダー](media/search-get-started-rest/postman-url.png "Postman の要求 URL とヘッダー")
 
@@ -80,7 +80,7 @@ Postman でこれを行うには:
 
 3. 要求の本文にインデックス定義 (コピーできるコードを下に示します) を指定します。
 
-4. **[送信]** をクリックします。
+4. **[Send]\(送信\)** をクリックします。
 
 ![要求本文内の JSON ドキュメントのインデックス作成](media/search-get-started-rest/postman-request.png "要求本文内の JSON ドキュメントのインデックス作成")
 
@@ -134,7 +134,7 @@ Postman でこれを行うには:
 
 3. 要求の本文に JSON ドキュメント (コピーできるコードを下に示します) を指定します。
 
-4. **[送信]** をクリックします。
+4. **[Send]\(送信\)** をクリックします。
 
 ![要求本文内の JSON ドキュメント](media/search-get-started-rest/postman-docs.png "要求本文内の JSON ドキュメント")
 
@@ -245,7 +245,7 @@ Postman でこれを行うには:
 
 2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2020-06-30` をコピーします。
 
-3. **[送信]** をクリックします。
+3. **[Send]\(送信\)** をクリックします。
 
 このクエリは空であり、検索結果ではドキュメントの数が返されます。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーンショットのようになります。 状態コードは 200 になります。
 
@@ -253,7 +253,7 @@ Postman でこれを行うには:
 
 構文について大まかに把握するため、その他のクエリ例をいくつか試してください。 文字列の検索、逐語的な $filter クエリの実行、結果セットの制限、特定のフィールドへの検索範囲の設定などを行うことができます。
 
-現在の URL を次のものに置き換え、毎回 **[送信]** をクリックして結果を表示します。
+現在の URL を次のものに置き換え、毎回 **[Send]\(送信\)** をクリックして結果を表示します。
 
 ```
 # Query example 1 - Search on restaurant and wifi
