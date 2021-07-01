@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 6/16/2021
 ms.author: cavoeg
-ms.openlocfilehash: cec3b32fc2c56769cf910cf9317e45648cc59174
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3e2d0c051ff882e43b04b2aea4357e78d79e67dc
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295743"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135953"
 ---
 # <a name="features"></a>特徴
 
@@ -35,14 +35,14 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | オプティミスティック ロック付きの update | はい       | はい       | はい       |                                                     |
 | update (条件付き)           | はい       | はい       | はい       |                                                     |
 | patch                          | いいえ        | いいえ        | いいえ        |                                                     |
-| delete                         | はい       | はい       | はい       |  下記のメモを参照してください。                                   |
+| delete                         | はい       | はい       | はい       |  以下の「注」を参照してください。                                   |
 | delete (条件付き)           | はい       | はい        | はい        |                                                     |
 | history                        | はい       | はい       | はい       |                                                     |
 | create                         | はい       | はい       | はい       | POST/PUT の両方をサポートします                               |
 | create (条件付き)           | はい       | はい       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| 検索                         | Partial   | Partial   | Partial   | 「 [FHIR 検索の概要」を](overview-of-search.md)参照してください。                           |
-| chained search                 | Partial       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
-| reverse chained search         | Partial       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
+| 検索                         | Partial   | Partial   | Partial   | FHIR [検索の概要に関するページを参照してください](overview-of-search.md)。                           |
+| chained search                 | Partial       | はい       | 部分的   | 以下の注 2 を参照してください。                                   |
+| reverse chained search         | Partial       | はい       | 部分的   | 以下の注 2 を参照してください。                                   |
 | capabilities                   | はい       | はい       | はい       |                                                     |
 | batch (バッチ)                          | はい       | はい       | はい       |                                                     |
 | transaction                    | いいえ        | はい       | いいえ        |                                                     |
@@ -56,7 +56,7 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
  **注 2**
 * CosmosDB でのチェーンおよびリバース チェーン FHIR 検索の MVP サポートを追加しました。 
 
-  Cosmos によってAzure API for FHIRされたオープンソースの FHIR サーバーでは、チェーン検索とリバース チェーン検索は MVP 実装です。 この実装では、Cosmos DBで連鎖検索を実行するために、検索式について説明し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 クエリから 100 を超える結果が返された場合は、エラーがスローされます。 既定では、チェーン検索は機能フラグの背後に置かされます。 オブジェクトでチェーン検索を使用するには、Cosmos DBを使用します `x-ms-enable-chained-search: true` 。 詳細については [、「PR 1695」を参照してください](https://github.com/microsoft/fhir-server/pull/1695)。
+  Azure API for FHIR と Cosmos によってサポートされるオープンソースの FHIR サーバーでは、チェーン検索とリバース チェーン検索は MVP 実装です。 Cosmos DB でチェーン検索を実行するために、この実装では検索式について説明し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 クエリから 100 を超える結果が返された場合は、エラーがスローされます。 既定では、チェーン検索は機能フラグの背後に置かされます。 DB でチェーン検索を使用するには、Cosmosを使用します `x-ms-enable-chained-search: true` 。 詳細については [、「PR 1695」を参照してください](https://github.com/microsoft/fhir-server/pull/1695)。
 
 ## <a name="extended-operations"></a>拡張操作
 
@@ -70,7 +70,7 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | $convert-data          | Yes       | はい       | はい       |         |
 | $validate              | はい       | はい       | はい       |         |
 | $member一致          | はい       | はい       | はい       |         |
-| $patientすべて    | いいえ        | いいえ        | はい       |         |
+| $patientすべて    | はい       | はい       | はい       |         |
 
 ## <a name="persistence"></a>永続化
 
