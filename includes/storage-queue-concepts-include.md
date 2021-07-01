@@ -23,7 +23,7 @@ Azure Queue サービスには、次のコンポーネントが含まれます�
 ![Azure Queue サービス コンポーネント](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
 * **ストレージ アカウント:** Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの詳細については、「[ストレージ アカウントの概要](../articles/storage/common/storage-account-overview.md)」を参照してください。
-* **キュー:** キューは、メッセージのセットを格納します。 すべてのメッセージはキューに 格納されている必要があります。 キュー名は小文字で入力する必要があります。 キューの名前付け規則については、「 [Naming Queues and Metadata (キューとメタデータの名前付け規則)](/rest/api/storageservices/Naming-Queues-and-Metadata)」を参照してください。
+* **キュー:** キューは、メッセージのセットを格納します。 すべてのメッセージはキューに 格納されている必要があります。 キュー名は小文字で入力する必要があります。 キューの名前付け規則については、「[Naming Queues and Metadata (キューとメタデータの名前付け規則)](/rest/api/storageservices/Naming-Queues-and-Metadata)」を参照してください。
 * **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。 メッセージをキューで保持できる最長時間は 7 日間です。 バージョン 2017-07-29 以降では、最大有効期間を任意の正の数にすることができます。また、-1 は、メッセージが期限切れにならないことを示します。 このパラメーターを省略すると、既定の有効期間は 7 日になります。
 * **URL 形式**: キューは、次の URL 形式を使用してアドレス指定できます:   http://`<storage account>`.queue.core.windows.net/`<queue>`
 
