@@ -51,6 +51,19 @@
       items:
         - name: Azure IoT Hub を通じてデバイス データを受信する
           href: device-data-through-iot-hub.md
+    - name: 相互運用性と患者アクセス
+      expanded: false
+      items:
+        - name: CMS 相互運用性と患者アクセスに関する規則の概要
+          href: cms-tutorial-introduction.md
+        - name: CARIN Blue Button 実装ガイド
+          href: carin-implementation-guide-blue-button-tutorial.md
+        - name: Da Vinci 採用医薬品集
+          href: davinci-drug-formulary-tutorial.md
+        - name: Da Vinci PDex
+          href: davinci-pdex-tutorial.md
+        - name: Da Vinci Plan Net
+          href: davinci-plan-net.md
 - name: 操作方法ガイド
   expanded: false
   items:
@@ -70,7 +83,7 @@
     - name: 設定の構成
       expanded: false
       items:
-        - name: 追加の Azure API for FHIR 設定を構成する
+        - name: 別の Azure API for FHIR 設定を構成する
           href: azure-api-for-fhir-additional-settings.md
         - name: Azure RBAC を構成する
           href: configure-azure-rbac.md
@@ -97,22 +110,29 @@
           href: how-to-run-a-reindex.md
         - name: Azure API for FHIR を検索する
           href: search-samples.md
-    - name: プロファイルの検証
-      href: validation-against-profiles.md
-    - name: データのエクスポート
-      expanded: false
+    - name: Operations
+      expand: false
       items:
+        - name: プロファイルの検証
+          href: validation-against-profiles.md
         - name: データのエクスポート
-          href: export-data.md
-        - name: 匿名化エクスポート
-          href: de-identified-export.md
-        - name: データを Synapse にエクスポートする
-          href: export-to-synapse.md
-    - name: データの変換
-      expanded: false
-      items:
-        - name: $convert-data と FHIR Converter 拡張機能のテンプレート
-          href: convert-data.md
+          expanded: false
+          items:
+            - name: データのエクスポート
+              href: export-data.md
+            - name: 匿名化エクスポート
+              href: de-identified-export.md
+            - name: データを Synapse に移動する
+              href: move-to-synapse.md
+        - name: データの変換
+          expanded: false
+          items:
+            - name: $convert-data と FHIR Converter 拡張機能のテンプレート
+              href: convert-data.md
+        - name: FHIR の patient-everything
+          href: patient-everything.md
+        - name: $member-match 操作
+          href: tutorial-member-match.md
     - name: ID オブジェクト ID を見つける
       href: find-identity-object-ids.md
     - name: 診断ログと指標
@@ -149,7 +169,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: fhir-faq.md
+      href: fhir-faq.yml
     - name: サポートされている機能
       href: fhir-features-supported.md
     - name: GitHub プロジェクト
