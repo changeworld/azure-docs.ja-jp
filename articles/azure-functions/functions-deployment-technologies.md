@@ -197,7 +197,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 | C# スクリプト |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript (Node.js)JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (プレビュー) | | | | | | |
 | PowerShell (プレビュー) |✔|✔|✔| | | |
 | TypeScript (Node.js) | | | | | | |
