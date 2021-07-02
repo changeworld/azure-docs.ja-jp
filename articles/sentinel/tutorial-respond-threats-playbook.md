@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2021
 ms.author: yelevin
-ms.openlocfilehash: b2a98e92630fcdc46228cc36579cfe9787b92daf
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: af5e0e6a8f019d0b35d73b49f6efb45c2195d62d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786647"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072633"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する
 
@@ -159,7 +159,7 @@ Azure Sentinel に新しいプレイブックを作成するには、これら�
 
 1. このオートメーション ルールで実行するアクションを選択します。 **[Assign owner]\(所有者の割り当て\)** 、 **[状態の変更]** 、 **[重大度の変更]** 、 **[タグの追加]** 、 **[プレイブックの実行]** などのアクションを選択できます。 アクセスは、必要な数だけ追加できます。
 
-1. **[プレイブックの実行]** アクションを追加した場合、ボックスの一覧から使用可能なプレイブックを選択するよう求められます。 オートメーション ルールから実行できるのは、**インシデント トリガー** で開始されるプレイブックのみであるため、一覧には、それらのみが表示されます。
+1. **[プレイブックの実行]** アクションを追加した場合、ボックスの一覧から使用可能なプレイブックを選択するよう求められます。 オートメーション ルールから実行できるのは、**インシデント トリガー** で開始されるプレイブックのみであるため、一覧には、それらのみが表示されます。<a name="permissions-to-run-playbooks"></a>
 
     > [!IMPORTANT]
     > オートメーション ルールからプレイブックを実行するには、Azure Sentinel に明示的なアクセス許可が付与されている必要があります。 ドロップダウン リストでプレイブックが "淡色表示" される場合、そのプレイブックのリソース グループに対するアクセス許可が Sentinel にはありません。 **[Manage playbook permissions]\(プレイブックのアクセス許可の管理\)** リンクをクリックしてアクセス許可を割り当ててください。
@@ -170,6 +170,22 @@ Azure Sentinel に新しいプレイブックを作成するには、これら�
     >    1. プレイブックのテナントにある Azure Sentinel のナビゲーション メニューから **[設定]** を選択します。
     >    1. **[設定]** ブレードで、 **[設定]** タブ、 **[Playbook permissions]\(プレイブックのアクセス許可\)** 展開コントロールの順に選択します。
     >    1. **[アクセス許可の構成]** ボタンをクリックして前述の **[アクセス許可の管理]** パネルを開き、そこでの説明に沿って続行します。
+    > - **MSSP** シナリオで、サービス プロバイダー テナントへのサインイン中に作成された自動化ルールから [顧客テナントでプレイブックを実行する](automate-incident-handling-with-automation-rules.md#permissions-in-a-multi-tenant-architecture)必要がある場合、「**_両方のテナント_ *_」でプレイブックを実行するためのアクセス許可を Azure Sentinel に付与する必要があります。「_* 顧客**」テナントで、前の箇条書きにあるマルチテナント デプロイの手順に従います。 **サービス プロバイダー** テナントで、Azure Security Insights アプリを Azure Lighthouse オンボード テンプレートに追加する必要があります。
+    >    1. Azure portal で、 **[Azure Active Directory]** に移動します。
+    >    1. **[エンタープライズ アプリケーション]** をクリックします。
+    >    1. **[アプリケーションの種類]** を選択し、 **[Microsoft アプリケーション]** でフィルター処理します。
+    >    1. 検索ボックスに、「**Azure Security Insights**」と入力します。
+    >    1. **[オブジェクト ID]** フィールドをコピー します。 この追加の承認を、既存の Azure Lighthouse の委任に追加する必要があります。
+    >
+    >    **Azure Sentinel Automation 共同作成者** ロールには、固定 GUID である `f4c81013-99ee-4d62-a7ee-b3f1f648599a` があります。 Azure Lighthouse 承認のサンプルは、パラメーター テンプレートでは次のようになります。
+    >    
+    >    ```json
+    >    {
+    >        "principalId": "<Enter the Azure Security Insights app Object ID>", 
+    >        "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+    >        "principalIdDisplayName": "Azure Sentinel Automation Contributors" 
+    >    }
+    >    ```
 
 1. 必要に応じてオートメーション ルールの有効期限を設定します。
 

@@ -12,24 +12,24 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2021
-ms.openlocfilehash: d1a8cc9a615474685222d0339ec948401fb8cdff
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 45d9104c5669b3b0adef2c32757076097656ae87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128012"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967898"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-offline-using-dms"></a>チュートリアル: DMS を使用して MySQL を Azure Database for MySQL にオフラインで移行する
 
 Azure Database Migration Service を使用すると、高速データ移行機能によって、オンプレミスの MySQL インスタンスから [Azure Database for MySQL](../mysql/index.yml) に対し、1 回限りの完全データベース移行を実行できます。 このチュートリアルでは、Azure Database Migration Service のオフライン移行アクティビティを使用して、サンプル データベースを MySQL 5.7 のオンプレミス インスタンスから Azure Database for MySQL (v5.7) に移行します。 この記事は、ソースとして MySQL データベース インスタンスを、ターゲットとして Azure Database for MySQL を想定していますが、ソース サーバーの名前と資格情報さえ変更すれば Azure Database for MySQL 間の移行にも使用できます。 また、MySQL サーバーの下位バージョン (v5.6 以上) から上位バージョンへの移行にも対応します。
 
 > [!IMPORTANT]
-> オンライン移行では、[データイン レプリケーション](/azure/mysql/concepts-data-in-replication)と共に、[MyDumper/MyLoader](https://centminmod.com/mydumper.html) などのオープンソース ツールを使用できます。 
+> オンライン移行では、[データイン レプリケーション](../mysql/concepts-data-in-replication.md)と共に、[MyDumper/MyLoader](https://centminmod.com/mydumper.html) などのオープンソース ツールを使用できます。 
 
 [!INCLUDE [preview features callout](../../includes/dms-boilerplate-preview.md)]
 
 > [!NOTE]
-> この移行エクスペリエンスを PowerShell スクリプトで実現したバージョンについては、[Azure Database for MySQL へのオフライン移行のスクリプト制御](https://docs.microsoft.com/azure/dms/migrate-mysql-to-azure-mysql-powershell)に関するページを参照してください。
+> この移行エクスペリエンスを PowerShell スクリプトで実現したバージョンについては、[Azure Database for MySQL へのオフライン移行のスクリプト制御](./migrate-mysql-to-azure-mysql-powershell.md)に関するページを参照してください。
 
 > [!NOTE]
 > Amazon Relational Database Service (RDS) for MySQL および Amazon Relational Database Service (RDS) for Amazon Aurora (MySQL ベース) も移行元としてサポートされます。
@@ -50,6 +50,7 @@ Azure Database Migration Service を使用すると、高速データ移行機�
 
 * アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free)。
 * バージョン 5.7 の MySQL データベースをオンプレミスに用意します。 ない場合は、[MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.7 をダウンロードしてインストールしてください。
+* MySQL オフライン移行は、Premium DMS SKU でのみサポートされています。
 * [Azure Database for MySQL でインスタンスを作成します](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md)。 Workbench アプリケーションを使用してデータベースを接続、作成する方法の詳細については、[MySQL Workbench を使用した接続とデータの照会](../mysql/connect-workbench.md)に関するページを参照してください。 Azure Database for MySQL のバージョンは、オンプレミスの MySQL のバージョンと同じかそれ以上である必要があります。 たとえば、MySQL 5.7 は Azure Database for MySQL 5.7 に移行したり、8 にアップグレードしたりすることができます。 
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
@@ -157,7 +158,7 @@ GROUP BY SchemaName
   
 3. **[移行サービスの作成]** 画面で、サービスの名前、サブスクリプション、新規または既存のリソース グループを指定します。
 
-4. 価格レベルを選択し、ネットワーク画面に移動します。 オフライン移行機能は、Standard と Premium の両方の価格レベルで使用できます。
+4. 価格レベルを選択し、ネットワーク画面に移動します。 オフライン移行機能は、Premium の価格レベルでのみ使用できます。
 
     コストと価格レベルの詳細については、[価格に関するページ](https://aka.ms/dms-pricing)を参照してください。
 

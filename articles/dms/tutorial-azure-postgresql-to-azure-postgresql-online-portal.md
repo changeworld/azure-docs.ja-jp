@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 996523d507f0a4f2850e936df39a38769bc47cde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f372e72b423db17e1c11907b4a41d65c9fba2fd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091297"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950793"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用し、Azure DB for PostgreSQL - 単一サーバーを Azure DB for PostgreSQL - 単一サーバーにオンラインで移行または更新する
 
@@ -40,7 +40,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
 
 > [!IMPORTANT]
-> Azure Database for PostgreSQL からの移行は、PostgreSQL バージョン 10 以降でサポートされています。 また、このチュートリアルを使用して、ある Azure Database for PostgreSQL インスタンスから別の Azure Database for PostgreSQL インスタンスまたは Hyperscale (Citus) インスタンスに移行することもできます。
+> Azure Database for PostgreSQL からの移行は、PostgreSQL バージョン 9.x 以降でサポートされています。 また、このチュートリアルを使用して、ある Azure Database for PostgreSQL インスタンスから別の Azure Database for PostgreSQL インスタンスまたは Hyperscale (Citus) インスタンスに移行することもできます。 PostgreSQL 9.5 および 9.6 から移行するには、ソース インスタンスに[追加の論理レプリケーション特権](#run-the-migration)が必要です。 
 
 ## <a name="prerequisites"></a>前提条件
 

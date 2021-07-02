@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0a8dfdea8ad743d0355daa16cc10f60bef96c213
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94888506"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081859"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -32,7 +32,7 @@ ms.locfileid: "94888506"
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 > [!NOTE] 
-> 必ず汎用 v2 Standard ストレージ アカウントを作成してください。 静的 Web サイトは、他の種類のストレージ アカウントでは使用できません。
+> 汎用 v2 Standard ストレージ アカウントだけでなく、階層型名前空間が有効になっているストレージ アカウントでも、静的 Web サイトを使用できます。
 
 このチュートリアルでは [Visual Studio Code](https://code.visualstudio.com/download) (プログラマ向け無料ツール) を使用して、静的な Web サイトを構築し、それを Azure Storage アカウントにデプロイします。
 
