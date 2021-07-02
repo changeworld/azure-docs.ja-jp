@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 7e8525dbebb42e1f387ee8f0c192efd5e64c9453
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e2038ce9d14f4a80cf1a67321f3991c6d6f88bc4
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426042"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558388"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Synapse ワークスペースを監視する
 
@@ -53,4 +53,4 @@ Synapse Studio を開き、 **[監視]** ハブに移動します。 ここに�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Knowledge Center を探索する](get-started-knowledge-center.md)
+> [ナレッジ センターを探索する](get-started-knowledge-center.md)

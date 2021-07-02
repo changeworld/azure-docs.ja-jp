@@ -96,6 +96,8 @@
                   href: container-registry-auto-purge.md
             - name: ACR webhook の使用
               href: container-registry-webhook.md
+            - name: レジストリを別のリージョンに移動する
+              href: manual-regional-move.md
         - name: セキュリティと認証
           items:
             - name: プライベート エンドポイントを使用したアクセスの制限
@@ -122,12 +124,16 @@
                   href: container-registry-repository-scoped-permissions.md
                 - name: Azure Container Instances からの認証
                   href: container-registry-auth-aci.md
-                - name: プル シークレットによる Kubernetes からの認証
-                  href: container-registry-auth-kubernetes.md
-                - name: Azure Kubernetes Service (AKS) からの認証
-                  href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-                - name: リポジトリスコープ トークンによる認証 (プレビュー)
-                  href: container-registry-repository-scoped-permissions.md
+                - name: Kubernetes からの認証
+                  items:
+                    - name: Kubernetes シナリオ
+                      href: authenticate-kubernetes-options.md
+                    - name: Azure Kubernetes Service (AKS) にレジストリをアタッチする
+                      href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+                    - name: AKS からのテナント間認証
+                      href: authenticate-aks-cross-tenant.md
+                    - name: Kubernetes プル シークレットを使用した認証
+                      href: container-registry-auth-kubernetes.md
             - name: Azure ロールベースのアクセス制御
               href: container-registry-roles.md
               displayName: 'permissions, authorization'

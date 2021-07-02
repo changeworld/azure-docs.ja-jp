@@ -181,18 +181,30 @@
               href: how-to-deploy-cli-at-scale.md
             - name: Visual Studio Code
               href: how-to-deploy-vscode-at-scale.md
-    - name: デプロイの監視と診断
+    - name: 監視と診断
       items:
         - name: IoT Edge デプロイの監視
           href: how-to-monitor-iot-edge-deployments.md
         - name: モジュール ツインの監視
           href: how-to-monitor-module-twins.md
-        - name: EdgeAgent ダイレクト メソッド
+        - name: edgeAgent ダイレクト メソッドを使用する
           href: how-to-edgeagent-direct-method.md
-        - name: IoT Edge のログを取得する
+        - name: ダイレクト メソッドを使用してログを取得する
           href: how-to-retrieve-iot-edge-logs.md
         - name: 組み込みのメトリックにアクセスする
           href: how-to-access-built-in-metrics.md
+        - name: Azure Monitor の統合
+          items:
+            - name: メトリックの収集と転送
+              href: how-to-collect-and-transport-metrics.md
+            - name: キュレーションされた視覚化を探索する
+              href: how-to-explore-curated-visualizations.md
+            - name: アラート ルールの作成
+              href: how-to-create-alerts.md
+            - name: カスタム メトリックを追加する
+              href: how-to-add-custom-metrics.md
+            - name: FAQ とトラブルシューティング
+              href: how-to-troubleshoot-monitoring-and-faq.md
     - name: ゲートウェイとしての IoT Edge デバイスの使用
       items:
         - name: IoT デバイスのゲートウェイ
@@ -239,18 +251,22 @@
               href: how-to-continuous-integration-continuous-deployment-classic.md
     - name: トラブルシューティング
       items:
-        - name: 標準的な診断手順
+        - name: IoT Edge デバイスの診断
           href: troubleshoot.md
-        - name: よくあるエラーの解決方法
+        - name: Azure portal でのトラブルシューティング
+          href: troubleshoot-in-portal.md
+        - name: 一般的なエラーを解決する
           href: troubleshoot-common-errors.md
-- name: リファレンス
+- name: 関連項目
   items:
+    - name: PowerShell 関数
+      items:
+        - name: IoT Edge for Linux on Windows
+          href: reference-iot-edge-for-linux-on-windows-functions.md
+        - name: IoT Edge for Windows
+          href: reference-windows-scripts.md
     - name: テスト証明書を作成する
       href: how-to-create-test-certificates.md
-    - name: Windows デバイス管理スクリプト
-      href: reference-windows-scripts.md
-    - name: IoT Edge for Linux on Windows 関数
-      href: reference-iot-edge-for-linux-on-windows-functions.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース

@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68669418a62daad2c2c5d1b9f44f66c1a5b7ebb8
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98881030"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904087"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する
 
@@ -56,13 +56,13 @@ AzCopy V10 実行可能ファイルをダウンロードします。
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [macOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 AzCopy ファイルをコンピューターの任意の場所に配置します。 ファイルの場所をシステム パス変数に追加して、コンピューター上の任意のフォルダーからこの実行可能ファイルを参照できるようにします。
 
 ## <a name="authenticate-with-azure-ad"></a>Azure AD による認証
 
-まず、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)ロールを自分の ID に割り当てます。 「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](./storage-auth-aad-rbac-portal.md)」を参照してください。
+まず、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)ロールを自分の ID に割り当てます。 「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。
 
 次に、コマンド プロンプトを開き、次のコマンドを入力して、Enter キーを押します。
 

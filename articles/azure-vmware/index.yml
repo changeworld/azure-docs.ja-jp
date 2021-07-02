@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 05/11/2021
-  ms.openlocfilehash: b70f47f5cba7782862ddd2e81e6743830f2a8c1d
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 28f73f52b98edba523fd36203d6fef863c4e9d1a
+  ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110452085"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112021485"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -28,14 +28,14 @@ landingContent:
     links:
     - text: プライベート クラウドとクラスター
       url: concepts-private-clouds-clusters.md
-    - text: プライベート クラウドのネットワークと相互接続
+    - text: ネットワークと相互接続
       url: concepts-networking.md
-    - text: プライベート クラウドのストレージ
+    - text: ストレージ
       url: concepts-storage.md
-    - text: プライベート クラウドのアクセスと ID
+    - text: アクセスと ID
       url: concepts-identity.md
-    - text: プライベート クラウドのモニターと修復
-      url: concepts-private-clouds-clusters.md#host-monitoring-and-remediation
+    - text: 監視と保護
+      url: concepts-monitor-protection.md
     - text: API Management
       url: concepts-api-management.md
     - text: ハブ アンド スポーク
@@ -45,25 +45,25 @@ landingContent:
   - linkListType: reference
     links:
     - text: 全般
-      url: /azure/azure-vmware/faq
+      url: ./faq.yml
     - text: 顧客とのコミュニケーション
-      url: /azure/azure-vmware/faq#customer-communication
+      url: /azure/azure-vmware/faq.yml#customer-communication
     - text: 構成とセットアップ
-      url: /azure/azure-vmware/faq#configuration-and-setup
+      url: /azure/azure-vmware/faq.yml#configuration-and-setup
     - text: VMware ソフトウェア
-      url: /azure/azure-vmware/faq#vmware-software
+      url: /azure/azure-vmware/faq.yml#vmware-software
     - text: Compute
-      url: /azure/azure-vmware/faq#compute
+      url: /azure/azure-vmware/faq.yml#compute
     - text: ネットワークと相互接続
-      url: /azure/azure-vmware/faq#networking-and-interconnectivity
-    - text: Storage
-      url: /azure/azure-vmware/faq#storage
+      url: /azure/azure-vmware/faq.yml#networking-and-interconnectivity
+    - text: ストレージ
+      url: /azure/azure-vmware/faq.yml#storage
     - text: ホスト、クラスター、およびプライベート クラウド
-      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
+      url: /azure/azure-vmware/faq.yml#hosts,-clusters,-and-private-clouds
     - text: ID 管理
-      url: /azure/azure-vmware/faq#identity-management
+      url: /azure/azure-vmware/faq.yml#identity-management
     - text: 課金とサポート
-      url: /azure/azure-vmware/faq#billing-and-support
+      url: /azure/azure-vmware/faq.yml#billing-and-support
 - title: はじめに
   linkLists:
   - linkListType: deploy
@@ -107,21 +107,21 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure VMware Solution の評価を作成する
-      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: Azure VMware Solution のホスト クォータを要求する
       url: request-host-quota-azure-vmware-solution.md
     - text: 予約インスタンスを使用してコストを削減する
       url: reserved-instance.md
   - linkListType: how-to-guide
     links:
-    - text: DHCP の構成と管理
+    - text: DHCP を構成する
       url: configure-dhcp-azure-vmware-solution.md
     - text: L2 拡張 VMware HCX ネットワークで DHCP を構成する
       url: configure-l2-stretched-vmware-hcx-networks.md
-    - text: NSX ネットワーク コンポーネントの構成
+    - text: Azure を使用して NSX コンポーネントを構成する
       url: configure-nsx-network-components-azure-portal.md
     - text: GitHub Enterprise Server を構成する
-      url: github-enterprise-server.md
+      url: ./configure-github-enterprise-server.md
     - text: パブリック インターネット アクセスを有効にする
       url: enable-public-internet-access.md
     - text: vWAN でサイト間 VPN を構成する
@@ -132,10 +132,10 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Security Center を使用して VM を保護する
+    - text: VM を保護、監視、管理する
+      url: integrate-azure-native-services.md
+    - text: Azure Security Center を統合する
       url: azure-security-integration.md
-    - text: アプリの監視と管理
-      url: lifecycle-management-of-azure-vmware-solution-vms.md
     - text: Azure NetApp Files を統合する
       url: netapp-files-with-azure-vmware-solution.md
     - text: Azure Application Gateway を使用して Web アプリを保護する
@@ -149,11 +149,11 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: VMware VM のバックアップ
-      url: /azure/backup/backup-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+      url: ../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: VMware VM の復元
-      url: /azure/backup/restore-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+      url: ../backup/restore-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: Azure Backup ワークロードの監視
-      url: /azure/backup/backup-azure-monitoring-built-in-monitor?context=/azure/azure-vmware/context/context
+      url: ../backup/backup-azure-monitoring-built-in-monitor.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
 - title: VMware ソリューション
   linkLists:
   - linkListType: how-to-guide
@@ -164,6 +164,8 @@ landingContent:
       url: azure-vmware-solution-horizon.md
     - text: コンテンツ ライブラリから VM をデプロイする
       url: deploy-vm-content-library.md
+    - text: VMware HCX を使用してディザスター リカバリーをデプロイする
+      url: deploy-disaster-recovery-using-vmware-hcx.md
 - title: VMware のエコシステム
   linkLists:
   - linkListType: reference
@@ -200,8 +202,10 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: EA および CSP サブスクリプションを移動する
+    - text: Azure VMware Solution のサブスクリプションを移動する
       url: move-ea-csp-subscriptions.md
+    - text: リージョン間で Azure VMware Solution を移動する
+      url: move-azure-vmware-solution-across-regions.md
 - title: トラブルシューティング
   linkLists:
   - linkListType: reference
