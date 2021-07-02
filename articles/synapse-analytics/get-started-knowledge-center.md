@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Synapse Knowledge Center の探索を開始する
-description: このチュートリアルでは、Synapse Knowledge Center を使用する方法について説明します。
+title: 'チュートリアル: Synapse ナレッジ センターの探索を開始する'
+description: このチュートリアルでは、Synapse ナレッジ センターを使用する方法について説明します。
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,25 +10,25 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: f36d5deb93f141bb7467a50d4b5dba7f3df1ea92
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: ba6023ccc1582650e74da483aeefc48d2a305bef
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517012"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554754"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
-このチュートリアルでは、Synapse Studio Knowledge Center を使用する方法について説明します。
+このチュートリアルでは、Synapse Studio の **ナレッジ センター** を使用する方法について説明します。
 
-## <a name="finding-to-the-knowledge-center"></a>Knowledge Center へのアクセス
+## <a name="finding-the-knowledge-center"></a>ナレッジ センターへのアクセス
 
-Synapse Studio で Knowledge Center を検索するには、次の 2 つの方法があります。
+Synapse Studio で **ナレッジ センター** を見つけるには、次の 2 つの方法があります。
 
   1. ページ右上付近にある [Home]\(ホーム\) ハブの **[Learn]\(詳細\)** をクリックします。
-  2. 上部のメニュー バーで、 **[?]** 、 **[Knowledge Center]** の順にクリックします。
+  2. 上部のメニュー バーで、 **[?]** 、 **[Knowledge center]\(ナレッジ センター\)** の順にクリックします。
 
-いずれかの方法を選択して、 **[Knowledge Center]** を開きます。
+いずれかの方法を選択して、**ナレッジ センター** を開きます。
 
 ## <a name="exploring-the-knowledge-center"></a>Knowledge Center の探索
 
@@ -53,7 +53,7 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 
 ## <a name="gallery-a-collection-of-sample-datasets-and-sample-code"></a>ギャラリー: サンプル データセットとサンプル コードのコレクション
 
-1. **[Knowledge Center]** に移動し、 **[ギャラリーを参照]** をクリックします。
+1. **[Knowledge center]\(ナレッジ センター\)** に移動し、 **[Browse gallery]\(ギャラリーを参照\)** をクリックします。
 1. 上部にある **[SQL スクリプト]** タブを選択します。
 1. **[Load the New York Taxicab dataset]\(ニューヨークのタクシー データセットを読み込む\)** データ インジェスト サンプルを選択し、 **[続行]** をクリックします。
 1. **[SQL プール]** で、 **[既存のプールを選択する]** を選択して **[SQLPOOL1]** を選択し、前に作成した **SQLPOOL1** データベースを選択します。

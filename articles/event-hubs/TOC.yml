@@ -151,6 +151,8 @@
       items:
         - name: Event Hubs の接続文字列を取得する
           href: event-hubs-get-connection-string.md
+        - name: Premium 名前空間の処理ユニットを構成する
+          href: configure-processing-units-premium-namespace.md
         - name: イベントにカスタム データを追加する
           href: add-custom-data-event.md
         - name: スキーマ レジストリの作成
@@ -211,8 +213,8 @@
           href: apache-kafka-frequently-asked-questions.yml
     - name: 管理および監視
       items:
-        - name: Azure 監視による Event Hubs の監視
-          href: event-hubs-metrics-azure-monitor.md
+        - name: Azure Event Hubs の監視
+          href: monitor-event-hubs.md
         - name: 診断ログの設定
           href: event-hubs-diagnostic-logs.md
         - name: Event Hubs を使用して Azure Diagnostics データをストリーミングする
@@ -253,6 +255,8 @@
           href: move-cluster-across-regions.md
 - name: リファレンス
   items:
+    - name: データ参照を監視する
+      href: monitor-event-hubs-reference.md
     - name: SDK
       href: sdks.md
     - name: .NET

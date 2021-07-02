@@ -37,22 +37,6 @@
           href: quickstart-control-device-python.md
         - name: Android
           href: quickstart-control-device-android.md
-    - name: デバイス ストリームを使用した通信 (プレビュー)
-      items:
-        - name: .NET
-          href: quickstart-device-streams-echo-csharp.md
-        - name: Node.js
-          href: quickstart-device-streams-echo-nodejs.md
-        - name: C
-          href: quickstart-device-streams-echo-c.md
-    - name: デバイス ストリームを使用した SSH/RDP (プレビュー)
-      items:
-        - name: .NET
-          href: quickstart-device-streams-proxy-csharp.md
-        - name: Node.js
-          href: quickstart-device-streams-proxy-nodejs.md
-        - name: C
-          href: quickstart-device-streams-proxy-c.md
     - name: ARM テンプレートを使用したメッセージの自動ルーティング
       displayName: Resource Manager
       href: horizontal-arm-route-messages.md
@@ -128,8 +112,6 @@
       href: iot-hub-event-grid-routing-comparison.md
     - name: デバイス構成のベスト プラクティス
       href: iot-hub-configuration-best-practices.md
-    - name: Azure IoT SDK プラットフォームのサポート
-      href: iot-hub-device-sdk-platform-support.md
     - name: IoT Hub デバイス ストリームの概要 (プレビュー)
       href: iot-hub-device-streams-overview.md
     - name: 開発者ガイド
@@ -187,8 +169,16 @@
           href: iot-hub-devguide-quotas-throttling.md
         - name: 価格の例
           href: iot-hub-devguide-pricing.md
-        - name: デバイス SDK とサービス SDK
-          href: iot-hub-devguide-sdks.md
+        - name: IoT Hub SDK
+          items:
+            - name: SDK の概要
+              href: iot-hub-devguide-sdks.md
+            - name: SDK プラットフォームのサポート
+              href: iot-hub-device-sdk-platform-support.md
+            - name: SDK を使用せずに開発する
+              href: iot-hub-devguide-no-sdk.md
+            - name: 接続と信頼できるメッセージングの管理
+              href: iot-hub-reliability-features-in-sdks.md
         - name: MQTT サポート
           href: iot-hub-mqtt-support.md
         - name: MQTT 5 サポート (プレビュー)
@@ -227,10 +217,7 @@
     - name: 開発
       items:
         - name: デバイス SDK とサービス SDK の使用
-          href: iot-hub-devguide-sdks.md
           items:
-            - name: Azure IoT SDK プラットフォームのサポート
-              href: iot-hub-device-sdk-platform-support.md
             - name: C 用 Azure IoT device SDK の使用
               href: iot-hub-device-sdk-c-intro.md
               items:
@@ -244,12 +231,8 @@
               href: iot-hub-devguide-develop-for-constrained-devices.md
             - name: モバイル デバイス向けの開発
               href: iot-hub-how-to-develop-for-mobile-devices.md
-            - name: 接続と信頼できるメッセージングの管理
-              href: iot-hub-reliability-features-in-sdks.md
             - name: Android Things プラットフォーム向けの開発
               href: iot-hub-how-to-android-things.md
-        - name: Azure IoT SDK を使用せずに開発する
-          href: iot-hub-devguide-no-sdk.md
         - name: ハブ ルートからの Avro データのクエリ
           href: iot-hub-query-avro-data.md
         - name: C2D メッセージの送信
@@ -542,7 +525,7 @@
         - name: IoT サービスの SDK
           href: ./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT デバイス SDK
-          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+          href: ../iot-develop/about-iot-sdks.md
     - name: Azure IoT サンプル
       items:
         - name: C# (.NET)

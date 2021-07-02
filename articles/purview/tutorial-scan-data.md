@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 16692ac75f0ab6df0c8ee1bebef393848ca066b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb11033e0f4fcff171825d579e62e071f66b1cea
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676545"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745891"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) でデータをスキャンする
 
@@ -192,7 +192,7 @@ Azure Purview アカウントを作成すると、そのアカウントと同じ
 
 ### <a name="scan-your-data-sources"></a>データ ソースをスキャンする
 
-1. [Azure portal](https://portal.azure.com) で Azure Purview リソースに移動し、 *[Open Purview Studio]\(Purview Studio を開く\)* を選択します。 Purview Studio のホーム ページに自動的に移動します。
+1. 前提条件として作成した Azure Purview インスタンスの名前を [Azure portal](https://portal.azure.com) で検索して選択し、 *[Purview Studio を開く]\(Open Purview Studio\)* を選択します。 Purview Studio のホーム ページに自動的に移動します。
 
 1. カタログの Web ページで **[Sources]\(ソース\)** を選択し、 **[登録]** を選択します。 次に、 **[Azure Blob Storage]** 、 **[続行]** の順に選択します。
 

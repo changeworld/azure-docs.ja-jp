@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 415c980390faae86e27efa6b6f63ec0334d6d0f0
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509505"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560224"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して複数のデータ ソースのデータにインデックスを付ける
 
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[キー]** ページからメモ帳に接続文字列をコピーします。 これは、後の手順で **appsettings.json** に対して必要になります。 推奨されるデータベース名 "hotel-rooms-db" を使用していない場合は、データベース名もコピーしてください。
 
-### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
+### <a name="azure-blob-storage"></a>Azure Blob Storage
 
 1. [Azure portal](https://portal.azure.com) にサインインし、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 

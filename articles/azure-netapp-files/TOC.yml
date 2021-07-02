@@ -33,8 +33,14 @@
           href: performance-impact-kerberos.md
         - name: Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス
           href: performance-oracle-single-volumes.md
-        - name: SMB のパフォーマンスに関する FAQ
-          href: azure-netapp-files-smb-performance.md
+        - name: Azure NetApp Files のパフォーマンス リファレンス
+          items:
+            - name: Linux NFS マウント オプションのベスト プラクティス
+              href: performance-linux-mount-options.md
+            - name: Linux コンカレンシーのベスト プラクティス
+              href: performance-linux-concurrency-session-slots.md
+            - name: SMB パフォーマンスのベスト プラクティス
+              href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp Files のコスト モデル
       href: azure-netapp-files-cost-model.md
     - name: ボリューム クォータについて
@@ -69,6 +75,8 @@
       href: azure-netapp-files-faqs.md
     - name: Azure アプリケーション整合性スナップショット ツールとは
       href: azacsnap-introduction.md
+    - name: Storage サービスのアドオン
+      href: storage-service-add-ons.md
     - name: ボリュームのハード クォータを変更する意味
       href: volume-hard-quota-guidelines.md
 - name: 操作方法ガイド

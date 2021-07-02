@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f1e30b424510da18016309b456f5dc58c3ab0ff0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7b616fa010fa6446008b10989552db9bc988ba72
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110074342"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019620"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -19,6 +19,7 @@ ms.locfileid: "110074342"
 |[App Service アプリでは、Azure 仮想ネットワークに対する RFC 1918 以外の送信トラフィックを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F33228571-70a4-4fa1-8ca1-26d0aba8d6ef) |既定では、リージョンの Azure Virtual Network (VNET) 統合が使用される場合、アプリでは、そのそれぞれの仮想ネットワークにのみ RFC1918 トラフィックが送信されます。 API を使用して "vnetRouteAllEnabled" を true に設定すると、Azure Virtual Network へのすべての送信トラフィックが有効になります。 この設定では、App Service アプリから送信されるあらゆるトラフィックで、ネットワーク セキュリティ グループやユーザー定義ルートなどの機能を利用できます。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_VnetRouteAllEnabled_Audit.json) |
 |[App Service Environment では、TLS 1.0 および 1.1 を無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd6545c6b-dd9d-4265-91e6-0b451e2f1c50) |TLS 1.0 と 1.1 は古いプロトコルであり、最新の暗号アルゴリズムはサポートしていません。 TLS 1.0 と 1.1 の受信トラフィックを無効にすると、App Service Environment でアプリを守ることになります。 |Audit、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_HostingEnvironment_DisableTls_Audit.json) |
 |[App Service Environment では内部暗号化を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb74e86f-d351-4b8d-b034-93da7391c01f) |InternalEncryption を true に設定すると、App Service Environment のフロント エンドと worker の間で、ページファイル、worker ディスク、内部ネットワーク トラフィックが暗号化されます。 詳細については、[https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-custom-settings#enable-internal-encryption](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-custom-settings#enable-internal-encryption) を参照してください。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_HostingEnvironment_InternalEncryption_Audit.json) |
+|[App Service ではパブリック ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd79ab062-dffd-4318-8344-f70de714c0bc) |パブリック ネットワーク アクセスを無効にすると、パブリック インターネットにアプリ サービスが公開されないため、セキュリティが向上します。 プライベート エンドポイントを作成すると、アプリ サービスの公開を制限できます。 詳細については、[https://aka.ms/app-service-private-endpoint](https://aka.ms/app-service-private-endpoint) を参照してください。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_App_PrivateEndpoint_Audit.json) |
 |[API アプリで認証が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4ebc54a-46e1-481a-bee2-d4411e95d828) |Azure App Service 認証は、匿名の HTTP 要求が API アプリに到達するのを防いだり、トークンを保持するものを API アプリへの到達前に認証したりできる機能です |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Authentication_ApiApp_Audit.json) |
 |[関数アプリで認証が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc75248c1-ea1d-4a9c-8fc9-29a6aabd5da8) |Azure App Service 認証は、匿名の HTTP 要求が関数アプリに到達するのを防いだり、トークンを保持するものを関数アプリへの到達前に認証したりできる機能です |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Authentication_functionapp_Audit.json) |
 |[Web アプリで認証が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95bccee9-a7f8-4bec-9ee9-62c3473701fc) |Azure App Service 認証は、匿名の HTTP 要求が Web アプリに到達するのを防いだり、トークンを保持するものを Web アプリへの到達前に認証したりできる機能です |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Authentication_WebApp_Audit.json) |

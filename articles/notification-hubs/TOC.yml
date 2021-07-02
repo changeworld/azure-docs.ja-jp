@@ -86,6 +86,8 @@
       href: samples.md
     - name: PowerShell
       href: samples-powershell.md
+    - name: UWP React Native サンプルの概要
+      href: uwp-react.md
 - name: 概念
   items:
     - name: トランスポート層セキュリティ (TLS)
@@ -168,7 +170,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: notification-hubs-push-notification-faq.md
+      href: notification-hubs-push-notification-faq.yml
     - name: Google GCM から FCM に移行する
       href: notification-hubs-gcm-to-fcm.md
     - name: SDK

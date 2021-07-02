@@ -7,18 +7,18 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/26/2021
+ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fa1250189c5ba11426ac993bed8fde398ae37ea2
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: fb04dbe5cdfab523e8af9a057cc4477f58b1b525
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001468"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565340"
 ---
-# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
+# <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -46,13 +46,13 @@ ms.locfileid: "108001468"
 
 ::: zone pivot="b2c-user-flow"
 - まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
-- Azure AD B2C と通信できるように、自分が作成した[テナントにアプリケーションを登録](tutorial-register-applications.md)します。
+- [Web アプリケーションを登録](tutorial-register-applications.md)し、[ID トークンの暗黙的な許可を有効に](tutorial-register-applications.md#enable-id-token-implicit-grant)します。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
 - まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
-- Azure AD B2C と通信できるように、自分が作成した[テナントにアプリケーションを登録](tutorial-register-applications.md)します。
+- [Web アプリケーションを登録](tutorial-register-applications.md)し、[ID トークンの暗黙的な許可を有効に](tutorial-register-applications.md#enable-id-token-implicit-grant)します。
 - [Facebook アプリケーションを作成します](identity-provider-facebook.md#create-a-facebook-application)。 [Facebook アカウントを使用したサインアップとサインインの設定](identity-provider-facebook.md)に関する記事に記載されている前提条件と手順の再設定はスキップしてください。 Facebook アプリケーションがなくてもカスタム ポリシーを使用できますが、カスタム ポリシーでソーシャル ログインを有効にする方法を見せる目的でこのチュートリアルで使用されています。
 
 ::: zone-end
@@ -327,7 +327,9 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
 1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
 
+
 ::: zone-end
+
 ## <a name="next-steps"></a>次のステップ
 
 この記事で学習した内容は次のとおりです。
@@ -341,3 +343,5 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 
 > [!div class="nextstepaction"]
 > [チュートリアル: Azure AD B2C を使用して Web アプリケーションで認証を有効にする >](tutorial-web-app-dotnet.md)
+
+「[Azure AD B2C アーキテクチャ詳細情報シリーズ](https://www.youtube.com/playlist?list=PLOPotgzC07IKXXCTZcrpuLWbVe3y51kfm)」の詳細情報もご覧ください。

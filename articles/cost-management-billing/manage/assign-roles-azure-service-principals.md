@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 05/01/2021
 ms.author: banders
-ms.openlocfilehash: cb6a7d8411c2be6d76718b79c6fc1339a6600ce5
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 395f6804e0fdea88e65879817b83b9a8aabdd0f1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905506"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748069"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる
 
@@ -77,7 +77,7 @@ SPN のオブジェクト ID とアプリのテナント ID も必要です。 �
 
 ## <a name="assign-enrollment-account-role-permission-to-the-spn"></a>SPN に登録アカウントのロールのアクセス許可を割り当てる
 
-1. REST API に関する記事「[ロールの割り当て - Put](/rest/api/billing/2019-10-01-preview/roleassignments/put)」をお読みください。 記事を読んでいる間に、 **[使ってみる]** を選択して、SPN の使用を開始します。
+1. REST API に関する記事「[ロールの割り当て - Put](/rest/api/billing/2019-10-01-preview/role-assignments/put)」をお読みください。 記事を読んでいる間に、 **[使ってみる]** を選択して、SPN の使用を開始します。
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/put-try-it.png" alt-text="Put に関する記事の中の [使ってみる] オプションを示したスクリーンショット。" lightbox="./media/assign-roles-azure-service-principals/put-try-it.png" :::
 
@@ -91,13 +91,13 @@ SPN のオブジェクト ID とアプリのテナント ID も必要です。 �
 
    - `billingRoleAssignmentName`: このパラメーターは一意の GUID であり、指定が必要です。 GUID は、PowerShell コマンド [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) を使って生成できます。 [Online GUID / UUID Generator](https://guidgenerator.com/) Web サイトを使って一意の GUID を生成することもできます。
 
-   - `api-version`: **2019-10-01-preview** バージョンを使用します。 [「ロールの割り当て - Put」の「例」](/rest/api/billing/2019-10-01-preview/roleassignments/put#examples)のところにある要求本文のサンプルを使用します。
+   - `api-version`: **2019-10-01-preview** バージョンを使用します。 [「ロールの割り当て - Put」の「例」](/rest/api/billing/2019-10-01-preview/role-assignments/put#examples)のところにある要求本文のサンプルを使用します。
 
       要求の本文には、使用する必要のある 3 つのパラメーターを含む JSON コードが含まれています。
 
       | パラメーター | 参照先 |
       | --- | --- |
-      | `properties.principalId` | 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
+      | `properties.principalId` | これはオブジェクト ID の値です。 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
       | `properties.principalTenantId` | 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/24f8edb6-1668-4659-b5e2-40bb5f3a7d7e` |
 
@@ -121,7 +121,7 @@ EA 購入者ロールについては、登録リーダーのものと同じ手�
 
 ## <a name="assign-the-department-reader-role-to-the-spn"></a>SPN に部署リーダー ロールを割り当てる
 
-1. REST API に関する記事「[登録部署のロールの割り当て - Put](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put)」をお読みください。 記事を読んでいる間に、 **[使ってみる]** を選択します。
+1. REST API に関する記事「[登録部署のロールの割り当て - Put](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put)」をお読みください。 記事を読んでいる間に、 **[使ってみる]** を選択します。
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="「登録部署のロールの割り当て - Put」の記事の [使ってみる] オプションを示したスクリーンショット。" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
 
@@ -141,13 +141,13 @@ EA 購入者ロールについては、登録リーダーのものと同じ手�
 
       :::image type="content" source="./media/assign-roles-azure-service-principals/department-id.png" alt-text="部署 ID の例を示したスクリーンショット。" lightbox="./media/assign-roles-azure-service-principals/department-id.png" :::
 
-   - `api-version`: **2019-10-01-preview** バージョンを使用します。 「[登録部署のロールの割り当て - Put](/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put)」にあるサンプルを使用します。
+   - `api-version`: **2019-10-01-preview** バージョンを使用します。 「[登録部署のロールの割り当て - Put](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put)」にあるサンプルを使用します。
 
       要求の本文には、使用する必要のある 3 つのパラメーターを含む JSON コードが含まれています。
 
       | パラメーター | 参照先 |
       | --- | --- |
-      | `properties.principalId` | 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
+      | `properties.principalId` | これはオブジェクト ID の値です。 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
       | `properties.principalTenantId` | 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/db609904-a47f-4794-9be8-9bd86fbffd8a` |
 
@@ -165,13 +165,13 @@ EA 購入者ロールについては、登録リーダーのものと同じ手�
 
 ## <a name="assign-the-subscription-creator-role-to-the-spn"></a>SPN にサブスクリプション作成者ロールを割り当てる
 
-1. 記事「[登録アカウントのロールの割り当て - Put](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)」をお読みください。 読んでいる間に、 **[使ってみる]** を選択して、SPN にサブスクリプション作成者ロールを割り当てます。
+1. 記事「[登録アカウントのロールの割り当て - Put](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put)」をお読みください。 読んでいる間に、 **[使ってみる]** を選択して、SPN にサブスクリプション作成者ロールを割り当てます。
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="「登録アカウントのロールの割り当て - Put」の記事の [使ってみる] オプションを示したスクリーンショット。" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
 
 1. 自分のアカウント資格情報を使用して、割り当てる登録アクセス権があるテナントにサインインします。
 
-1. API 要求の一環として、次のパラメーターを指定します。 記事[「登録アカウントのロールの割り当て - Put」の「URI パラメーター」](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#uri-parameters)をお読みください。
+1. API 要求の一環として、次のパラメーターを指定します。 記事[「登録アカウントのロールの割り当て - Put」の「URI パラメーター」](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put#uri-parameters)をお読みください。
 
    - `billingAccountName`: このパラメーターは、**課金アカウント ID** です。 これは、Azure portal の **[コストの管理と請求] の [概要]** ページで見つけることができます。
 
@@ -185,13 +185,13 @@ EA 購入者ロールについては、登録リーダーのものと同じ手�
 
       :::image type="content" source="./media/assign-roles-azure-service-principals/account-id.png" alt-text="アカウント ID を示したスクリーンショット。" lightbox="./media/assign-roles-azure-service-principals/account-id.png" :::
 
-   - `api-version`: **2019-10-01-preview** バージョンを使用します。 [「登録部署のロールの割り当て - Put」の「例」](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put#putenrollmentdepartmentadministratorroleassignment)のところにあるサンプルを使用します。
+   - `api-version`: **2019-10-01-preview** バージョンを使用します。 [「登録部署のロールの割り当て - Put」の「例」](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put#examples)のところにあるサンプルを使用します。
 
       要求の本文には、使用する必要のある 3 つのパラメーターを含む JSON コードが含まれています。
 
       | パラメーター | 参照先 |
       | --- | --- |
-      | `properties.principalId` | 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
+      | `properties.principalId` | これはオブジェクト ID の値です。 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
       | `properties.principalTenantId` | 「[SPN とテナント ID を特定する](#find-your-spn-and-tenant-id)」を参照してください。 |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountID}/enrollmentAccounts/196987/billingRoleDefinitions/a0bcee42-bf30-4d1b-926a-48d21664ef71` |
 
