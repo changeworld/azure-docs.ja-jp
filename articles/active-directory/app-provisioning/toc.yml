@@ -18,6 +18,8 @@
       href: customize-application-attributes.md
     - name: アプリ固有のプロビジョニングに関するチュートリアル
       href: /azure/active-directory/saas-apps
+    - name: Azure AD ECMA Connector Host 汎用 SQL コネクタ
+      href: tutorial-ecma-sql-connector.md
 - name: 概念
   expanded: true
   items:
@@ -29,6 +31,10 @@
       href: plan-cloud-hr-provision.md
     - name: Azure Monitor でのログ記録を理解する
       href: application-provisioning-log-analytics.md
+    - name: オンプレミス アプリケーションのプロビジョニング アーキテクチャ
+      href: on-premises-application-provisioning-architecture.md
+    - name: 式ビルダーについて
+      href: expression-builder.md
 - name: 操作方法ガイド
   expanded: true
   items:
@@ -53,7 +59,7 @@
         - name: レポートのプロビジョニング
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: MS Graph を使用した構成の自動化
-      href: /graph/application-provisioning-configure-api
+      href: application-provisioning-configuration-api.md
     - name: アプリケーションのプロビジョニングのトラブルシューティング
       items:
         - name: 既知の問題
@@ -66,8 +72,24 @@
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: ソース属性が存在しない
           href: user-provisioning-sync-attributes-for-mapping.md
+        - name: ECMA Connector Host のトラブルシューティング
+          href: on-premises-ecma-troubleshoot.md
         - name: プロビジョニング ログ
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: オンプレミス アプリのプロビジョニング
+      items:
+        - name: ECMA Connector Host の前提条件
+          href: on-premises-ecma-prerequisites.md
+        - name: ECMA Connector Host のインストール
+          href: on-premises-ecma-install.md
+        - name: ECMA Connector Host の構成
+          href: on-premises-ecma-configure.md
+        - name: 汎用 SQL コネクタの構成
+          href: on-premises-sql-connector-configure.md
+        - name: SCIM 対応アプリへのオンプレミス アプリケーションのプロビジョニング
+          href: on-premises-scim-provisioning.md
+        - name: MIM Sync からコネクタを移行する
+          href: on-premises-migrate-microsoft-identity-manager.md
 - name: リファレンス
   items:
     - name: SCIM 2.0 プロトコルへの準拠

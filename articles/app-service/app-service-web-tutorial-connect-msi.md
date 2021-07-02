@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: fb13e5015a589efc575d5a7bbb8b662fc23b72be
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 465e5c3c1f95004ec8fc3e46bd24274f18330e2a
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076403"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576504"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル:マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
@@ -138,6 +138,9 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 
 ### <a name="modify-aspnet-core"></a>ASP.NET Core を変更する
 
+> [!NOTE]
+> **Microsoft.Azure.Services.AppAuthentication** は、新しい Azure SDK での使用は非推奨になりました。 これは、.NET、Java、TypeScript、Python 向けに提供されている新しい **Azure ID クライアント ライブラリ** に置き換えられています。新規の開発ではすべて、これを使用する必要があります。 `Azure Identity` への移行方法の詳細については、[AppAuthentication から Azure.Identity への移行ガイダンス](/dotnet/api/overview/azure/app-auth-migration)に関する記事を参照してください。
+
 Visual Studio で、パッケージ マネージャー コンソールを開き、NuGet パッケージ [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) を追加します。
 
 ```powershell
@@ -182,6 +185,9 @@ Azure アプリのマネージド ID を有効にするには、Cloud Shell で 
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
 ```
 
+> [!NOTE]
+> [デプロイ スロット](deploy-staging-slots.md)のマネージド ID を有効にするには、`--slot <slot-name>` を追加し、 *\<slot-name>* にスロットの名前を使用します。
+
 出力の例を次に示します。
 
 <pre>
@@ -222,7 +228,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* は、Azure AD のマネージド ID の名前です。 ID がシステムによって割り当てられる場合は常に、App Service アプリと同じ名前になります。 Azure AD グループのアクセス許可を付与するには、代わりにグループの表示名を使用します (たとえば、*myAzureSQLDBAccessGroup*)。
+*\<identity-name>* は、Azure AD のマネージド ID の名前です。 ID がシステムによって割り当てられる場合は常に、App Service アプリと同じ名前になります。 [デプロイ スロット](deploy-staging-slots.md)の場合、システムによって割り当てられた ID の名前は、 *\<app-name>/slots/\<slot-name>* です。 Azure AD グループのアクセス許可を付与するには、代わりにグループの表示名を使用します (たとえば、*myAzureSQLDBAccessGroup*)。
 
 「`EXIT`」と入力して Cloud Shell プロンプトに戻ります。
 

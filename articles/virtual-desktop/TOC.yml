@@ -1,12 +1,12 @@
-- name: Windows Virtual Desktop
+- name: Azure Virtual Desktop
   href: index.yml
 - name: 概要
   items:
-    - name: Windows Virtual Desktop とは
+    - name: Azure Virtual Desktop とは
       href: overview.md
     - name: 新機能
       href: whats-new.md
-    - name: Windows Virtual Desktop (クラシック) のドキュメント
+    - name: Azure Virtual Desktop (クラシック) のドキュメント
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: チュートリアル
   items:
@@ -22,7 +22,7 @@
   items:
     - name: 手動で移行する
       href: manual-migration.md
-    - name: Windows Virtual Desktop リソースに接続する
+    - name: Azure Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する
           href: connect-windows-7-10.md
@@ -76,7 +76,7 @@
           href: configure-host-pool-load-balancing.md
         - name: 個人用デスクトップの割り当ての種類
           href: configure-host-pool-personal-desktop-assignment-type.md
-    - name: Windows Virtual Desktop ライセンスを使用する
+    - name: Azure Virtual Desktop ライセンスを使用する
       href: apply-windows-license.md
     - name: セッション ホスト イメージをカスタマイズする
       items:
@@ -109,9 +109,11 @@
         - name: MSIXMGR ツールを設定する
           href: app-attach-msixmgr.md
     - name: Microsoft Teams の使用
-      href: teams-on-wvd.md
+      href: teams-on-avd.md
     - name: Azure AD の Multi-Factor Authentication を設定する
       href: set-up-mfa.md
+    - name: AD FS シングル サインオンを構成する
+      href: configure-adfs-sso.md
     - name: 自動更新を構成する
       href: configure-automatic-updates.md
     - name: 言語パックをインストールする
@@ -120,7 +122,7 @@
       href: azure-advisor.md
     - name: 推奨事項を解決する
       href: azure-advisor-recommendations.md
-    - name: Windows Virtual Desktop 向けの Azure Monitor を使用する
+    - name: Azure Virtual Desktop 向けの Azure Monitor を使用する
       href: azure-monitor.md
     - name: ディザスター リカバリー プランを設定する
       href: disaster-recovery.md
@@ -140,9 +142,9 @@
       href: rbac.md
     - name: 認証
       href: authentication.md
-    - name: Windows Virtual Desktop の環境
+    - name: Azure Virtual Desktop 環境
       href: environment-setup.md
-    - name: Windows Virtual Desktop エージェント
+    - name: Azure Virtual Desktop エージェント
       href: agent-overview.md
     - name: ネットワーク接続
       items:
@@ -160,7 +162,7 @@
           href: proxy-server-support.md
         - name: ユーザー接続の待ち時間の特定
           href: connection-latency.md
-    - name: Windows Virtual Desktop における委任されたアクセス
+    - name: Azure Virtual Desktop における委任されたアクセス
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法
       href: host-pool-load-balancing.md
@@ -168,7 +170,7 @@
       href: fslogix-containers-azure-files.md
     - name: FSLogix プロファイル コンテナー用のストレージ オプション
       href: store-fslogix-profile.md
-    - name: Windows Virtual Desktop に関する FAQ
+    - name: Azure Virtual Desktop に関する FAQ
       href: faq.md
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
       href: windows-10-multisession-faq.yml
@@ -200,11 +202,11 @@
       href: troubleshoot-vm-configuration.md
     - name: リモート デスクトップ サービスの接続
       href: troubleshoot-service-connection.md
-    - name: Windows Virtual Desktop エージェント
+    - name: Azure Virtual Desktop エージェント
       href: troubleshoot-agent.md
     - name: リモート デスクトップ クライアントの問題
       href: troubleshoot-client.md
-    - name: Windows Virtual Desktop PowerShell
+    - name: Azure Virtual Desktop PowerShell
       href: troubleshoot-powershell.md
     - name: グラフィックスのパフォーマンスの問題の診断
       href: remotefx-graphics-performance-counters.md

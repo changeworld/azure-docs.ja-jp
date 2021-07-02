@@ -1,7 +1,7 @@
 ---
-title: .NET Core を使用して Media Services でライブ ストリーム配信を行う
+title: .NET 5.0 を使用して Media Services でライブ ストリーム配信を行う
 titleSuffix: Azure Media Services
-description: .NET Core を使用してライブ イベントをストリーム配信する方法について説明します。
+description: .NET 5.0 を使用してライブ イベントをストリーム配信する方法について説明します
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 06/13/2019
 ms.author: inhenkel
-ms.openlocfilehash: 504378dac7d868dd8c3fcdb5be778aa25c9766bf
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: d471431da7cc738f9ef908897ccab34343cc4c4b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713200"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470431"
 ---
-# <a name="tutorial-stream-live-with-media-services-by-using-net-core"></a>チュートリアル: .NET Core を使用して Media Services でライブ ストリーム配信を行う
+# <a name="tutorial-stream-live-with-media-services-by-using-net-50"></a>チュートリアル: .NET 5.0 を使用して Media Services でライブ ストリーム配信を行う
 
 Azure Media Services では、[ライブ イベント](/rest/api/media/liveevents)がライブ ストリーミング コンテンツの処理を受け持ちます。 ライブ イベントは入力エンドポイントであり、その取り込み URL をライブ エンコーダーに対して指定します。 ライブ イベントは、ライブ エンコーダーから入力ストリームを受け取り、1 つまたは複数の[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、ライブ イベントはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します。 
 
-このチュートリアルでは、.NET Core を使用してライブ イベントの *パススルー* タイプを作成、管理する方法について説明します。 このチュートリアルでは、次のことについて説明します。
+このチュートリアルでは、.NET 5.0 を使用してライブ イベントの *パススルー* タイプを作成する方法について説明します。 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
 > * サンプル アプリをダウンロードする。
@@ -43,7 +43,8 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
 
 このチュートリアルを完了するには、以下のものが必要です。
 
-- Visual Studio Code または Visual Studio をインストールします。
+- [Visual Studio Code for Windows/macOS/Linux](https://code.visualstudio.com/)、または [Visual Studio 2019 for Windows/Mac](https://visualstudio.microsoft.com/) をインストールします。
+- [.NET 5.0 SDK](https://dotnet.microsoft.com/download) をインストールします。
 - [Media Services アカウントを作成する](./account-create-how-to.md) **API アクセス** の詳細情報 (JSON 形式) をコピーするか、Media Services アカウントに接続するうえで必要な値をこのサンプルで使用する *.env* ファイルの書式に保存しておくようにしてください。
 - [Azure CLI を使用した Azure Media Services API へのアクセス](./access-api-howto.md)に関するページの手順に従い、資格情報を保存します。 これらは、このサンプルで API にアクセスする際や、 *.env* ファイルの書式に入力する際に必要になります。 
 
@@ -80,16 +81,25 @@ git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>ライブ ストリーミングを実行するコードを確認する
 
-このセクションでは、*LiveEventWithDVR* プロジェクトの [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) ファイルに定義されている関数を調べます。
+このセクションでは、*LiveEventWithDVR* プロジェクトの [Authentication.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Common_Utils/Authentication.cs) ファイルと [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) ファイルで定義されている関数を調べます。
 
 サンプルをクリーンアップせずに複数回実行しても名前の競合が発生しないように、サンプルは各リソースに対して一意のサフィックスを作成します。
 
 
 ### <a name="start-using-media-services-apis-with-the-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 
-.NET で Media Services API の使用を始めるには、`AzureMediaServicesClient` オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure Active Directory を使用して Azure に接続するために必要な資格情報を指定する必要があります。 この記事の冒頭で複製したコードの `GetCredentialsAsync` 関数により、ローカルの構成ファイル (*appsettings.json*) またはリポジトリのルートにある *.env* 環境変数ファイルの中で指定されている資格情報に基づいて `ServiceClientCredentials` オブジェクトが作成されます。
+.NET で Media Services API の使用を始めるには、`AzureMediaServicesClient` オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure Active Directory を使用して Azure に接続するために必要な資格情報を指定する必要があります。 もう 1 つのオプションは対話型認証を使用する方法で、これは `GetCredentialsInteractiveAuthAsync` に実装されています。
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
+
+この記事の冒頭で複製したコードの `GetCredentialsAsync` 関数により、ローカルの構成ファイル (*appsettings.json*) またはリポジトリのルートにある *.env* 環境変数ファイルの中で指定されている資格情報に基づいて `ServiceClientCredentials` オブジェクトが作成されます。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#GetCredentialsAsync)]
+
+対話型認証の場合、`GetCredentialsInteractiveAuthAsync` 関数により、対話型認証と、ローカル構成ファイル (*appsettings.json*) またはリポジトリのルートにある *.env* 環境変数ファイルで指定された接続パラメーターに基づいて、`ServiceClientCredentials` オブジェクトが作成されます。 その場合、AADCLIENTID と AADSECRET は、構成ファイルまたは環境変数ファイルでは必要ではありません。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
+
 
 ### <a name="create-a-live-event"></a>ライブ イベントを作成する
 

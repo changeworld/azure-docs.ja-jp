@@ -1,27 +1,27 @@
 ---
-title: Windows Virtual Desktop のホスト プール Azure portal - Azure
-description: Azure portal を使用して Windows Virtual Desktop のホスト プールを作成する方法。
+title: Azure Virtual Desktop ホスト プール - Azure portal - Azure
+description: Azure portal を使用して Azure Virtual Desktop ホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
 ms.date: 03/10/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1003ab20f839469235d6bd7949ec3b2df4dd4f25
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 96e5fbf825c0550001ae9b0a38517e753b3a8d0f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447983"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756259"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[この記事](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)を参照してください。 Windows Virtual Desktop (classic) を使用して作成したオブジェクトは、Azure portal では管理できません。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)を参照してください。 Azure Virtual Desktop (クラシック) を使用して作成したオブジェクトは、Azure portal では管理できません。
 
-ホスト プールは、Windows Virtual Desktop 環境内にある 1 つまたは複数の同一の仮想マシン (VM) をまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
+ホスト プールは、Azure Virtual Desktop 環境内にある 1 つ以上の同一の仮想マシン (VM) をまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
 
-この記事では、Azure portal を使用して Windows Virtual Desktop 環境のホスト プールを作成するためのセットアップ プロセスについて説明します。 この方法では、ブラウザーベースのユーザー インターフェイスを使って Windows Virtual Desktop にホスト プールを作成し、Azure サブスクリプション内の VM を使用してリソース グループを作成し、それらの VM を Azure Active Directory (AD) ドメインに参加させて、VM を Windows Virtual Desktop に登録します。
+この記事では、Azure portal を使用して Azure Virtual Desktop 環境のホスト プールを作成するためのセットアップ プロセスについて説明します。 この方法では、ブラウザーベースのユーザー インターフェイスを使って Azure Virtual Desktop にホスト プールを作成し、Azure サブスクリプション内の VM を使用してリソース グループを作成し、それらの VM を Azure Active Directory (AD) ドメインに参加させて、VM を Azure Virtual Desktop に登録します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "106447983"
 - VM イメージ名
 - VM 構成
 - ドメインとネットワークのプロパティ
-- Windows Virtual Desktop のホスト プールのプロパティ
+- Azure Virtual Desktop ホスト プールのプロパティ
 
 次の情報も把握しておく必要があります。
 
@@ -39,7 +39,7 @@ ms.locfileid: "106447983"
 
 さらに、Microsoft.DesktopVirtualization リソースプロバイダーが登録されていることを確認します。 まだ行っていない場合は、 **[サブスクリプション]** に移動し、お使いのサブスクリプションの名前を選択して、 **[リソース プロバイダー]** を選択します。 DesktopVirtualization を検索し、[Microsoft.DesktopVirtualization] を選択して、[登録] を選択します。
 
-Azure Resource Manager テンプレートを使用して Windows Virtual Desktop ホスト プールを作成するときに、Azure ギャラリー、マネージド イメージ、またはアンマネージド イメージから仮想マシンを作成できます。 VM イメージの作成方法については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」、および「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」をご覧ください。
+Azure Resource Manager テンプレートを使用して Azure Virtual Desktop ホスト プールを作成するときに、Azure ギャラリー、マネージド イメージ、またはアンマネージド イメージから仮想マシンを作成できます。 VM イメージの作成方法については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」、および「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」をご覧ください。
 
 Azure サブスクリプションをまだお持ちでない場合は、これらの手順に従う前に、必ず[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
@@ -52,9 +52,9 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
    >[!NOTE]
    > US Gov ポータルにサインインする場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
 
-2. 検索バーに「**Windows Virtual Desktop**」と入力し、[サービス] にある **[Windows Virtual Desktop]** を見つけて選択します。
+2. 検索バーに「**Azure Virtual Desktop**」と入力し、[サービス] にある **[Azure Virtual Desktop]** を見つけて選択します。
 
-3. **Windows Virtual Desktop** の概要ページで、 **[Create a host pool]\(ホスト プールの作成\)** を選択します。
+3. **[Azure Virtual Desktop]** の概要ページで、 **[ホスト プールの作成]** を選択します。
 
 4. **[基本]** タブのプロジェクトの詳細で、正しいサブスクリプションを選択します。
 
@@ -208,7 +208,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
 ## <a name="next-steps"></a>次のステップ
 
-ホスト プールを作成できたので、次は RemoteApp プログラムを設定できます。 Windows Virtual Desktop でアプリを管理する方法について学習するために、次のチュートリアルに進んでください。
+ホスト プールを作成できたので、次は RemoteApp プログラムを設定できます。 Azure Virtual Desktop でアプリを管理する方法について詳しく学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [アプリ グループの管理に関するチュートリアル](./manage-app-groups.md)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: a9bfb4beea2c2bec1b819d228215cfff65e37fe4
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 88674255c98559a06c33bd5030aefba9184ada58
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110259"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538734"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>チュートリアル:ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -48,6 +48,8 @@ ms.locfileid: "106110259"
 * 単一の VNet を最大 16 本の ExpressRoute 回線にリンクできます。 次のプロセスを使用して、接続先の各 ExpressRoute 回線の新しい接続オブジェクトを作成します。 ExpressRoute 回線は、同じサブスクリプション、異なるサブスクリプション、または両方の組み合わせにすることができます。
 
 * ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクすることができます。 Premium アドオンを使用すると、選択した帯域幅に応じて、10 を超える仮想ネットワークを ExpressRoute 回線に接続することもできます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。
+
+* ExpressRoute 回線からターゲットの ExpressRoute 仮想ネットワークゲートウェイへの接続を作成するために、ローカルまたはピアリングされた仮想ネットワークからアドバタイズされるアドレス空間の数は、**200** 個以下である必要があります。 接続が正常に作成されたら、ローカルまたはピアリングされた仮想ネットワークに最大 1,000 個のアドレス空間をさらに追加できます。
 
 * 手順をより理解するため、開始する前に[ビデオを参照](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)できます。
 

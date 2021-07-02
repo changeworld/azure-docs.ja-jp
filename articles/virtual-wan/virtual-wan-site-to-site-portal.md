@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
-description: このチュートリアルでは、Azure Virtual WAN を使用して Azure へのサイト間 VPN 接続を作成する方法を学習します。
+description: Azure Virtual WAN を使用して Azure へのサイト間 VPN 接続を作成する方法を学習します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 03/05/2021
+ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 365952beca96b91d312eab209c5332fca2d4842b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2752d437800840181062f7a9c07d37620e06677a
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061878"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578311"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "106061878"
 > 通常、多くのサイトがある場合は、[Virtual WAN パートナー](https://aka.ms/virtualwan)を利用してこの構成を作成します。 ただし、ネットワークに慣れていて、独自の VPN デバイスの構成に熟練している場合は、この構成を自分で作成することができます。
 >
 
-![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan.png)
+:::image type="content" source="./media/virtual-wan-about/virtualwan.png" alt-text="Virtual WAN のネットワーク図を示すスクリーンショット。":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -233,7 +233,7 @@ VPN ゲートウェイの設定は、 **[表示/構成]** を選択すること�
 * VPN Gateway の既定の BGP IP アドレス (Azure によって割り当てられます)
 * カスタム BGP IP アドレスの構成オプション: このフィールドは APIPA (Automatic Private IP Addressing) 用に予約されています。 Azure では、169.254.21.* から 169.254.22.* の範囲の BGP IP がサポートされます。 Azure では、これらの範囲の BGP 接続が受け入れられますが、既定の BGP IP を使用して接続がダイヤルされます。
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="構成を表示する" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="[編集] ボタンが強調表示されている [VPN Gateway の編集] ページを示すスクリーンショット。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 

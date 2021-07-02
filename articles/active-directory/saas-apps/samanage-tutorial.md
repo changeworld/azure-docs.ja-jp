@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 6dcd5612bd2c5957ae0a397c3463dbb42445a754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d10ff0f9ca4fde80557341c0b5d29b3f7c26c970
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956045"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982830"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>チュートリアル:Azure Active Directory と SolarWinds Service Desk (旧称 Samanage) の統合
 
@@ -32,6 +32,9 @@ ms.locfileid: "104956045"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * SolarWinds でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -134,7 +137,7 @@ SolarWinds に対して Azure AD SSO を構成してテストするには、次�
  
     a. **[Enable Single Sign-On with SAML (SAML でのシングル サインオンを有効にする)]** をクリックします。  
  
-    b. **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。    
+    b. **[Identity Provider URL]\(ID プロバイダー URL\)** ボックスに、`https://YourAccountName.samanage.com` のような値を入力します。
  
     c. **[Login URL]\(ログイン URL\)** が Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** と一致することを確認します。
  
