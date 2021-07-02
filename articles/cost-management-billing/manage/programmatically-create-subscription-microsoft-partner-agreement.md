@@ -9,16 +9,16 @@ ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 69d8910ffe0e45c4c47a035d5c32e71f19d9e04a
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 768cc936964d216ce3f477fde48071aa0eb39162
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870663"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902071"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-partner-agreement-with-the-latest-apis"></a>最新の API を使用してプログラムで Microsoft Partner Agreement の Azure サブスクリプションを作成する
 
-この記事は、最新の API バージョンを使用してプログラムで Microsoft Partner Agreement の Azure サブスクリプションを作成する場合に役に立ちます。 古いプレビュー バージョンをまだ使用している場合は、「[プレビュー API を使用してプログラムで Azure サブスクリプションを作成する](programmatically-create-subscription-preview.md)」を参照してください。 
+この記事は、最新の API バージョンを使用してプログラムで Microsoft Partner Agreement の Azure サブスクリプションを作成する場合に役に立ちます。 古いプレビュー バージョンをまだ使用している場合は、「[レガシ API を使用してプログラムで Azure サブスクリプションを作成する](programmatically-create-subscription-preview.md)」を参照してください。 
 
 この記事では、Azure Resource Manager を使用してプログラムからサブスクリプションを作成する方法について説明します。
 

@@ -10,12 +10,12 @@ metadata:
   author: timlt
   ms.author: timlt
   ms.date: 01/11/2021
-  ms.openlocfilehash: 29872aa965c7c539cd4e5e4e3c66b90ba63562ed
-  ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+  ms.openlocfilehash: ba80c9c40beed46222d72903983d74ee9500b3a2
+  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108795675"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111888754"
 landingContent:
 - title: IoT デバイスの開発の概要
   linkLists:
@@ -39,5 +39,19 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 埋め込みデバイス開発の概要
-      url: quickstart-device-development.md
+    - text: MXCHIP AZ3166 を Azure IoT に接続する
+      url: quickstart-devkit-mxchip-az3166.md
+    - text: MXCHIP AZ3166 を Azure IoT Hub に接続する
+      url: quickstart-devkit-mxchip-az3166-iot-hub.md
+    - text: Microchip ATSAME54-XPro を Azure IoT に接続する
+      url: quickstart-devkit-microchip-atsame54-xpro.md
+    - text: NXP MIMXRT1050-EVKB を Azure IoT に接続する
+      url: quickstart-devkit-nxp-mimxrt1050-evkb.md
+    - text: NXP MIMXRT1060-EVK を Azure IoT に接続する
+      url: quickstart-devkit-nxp-mimxrt1060-evk.md
+    - text: Renesas RX65N-2MB を Azure IoT に接続する
+      url: quickstart-devkit-renesas-rx65n-2mb.md
+    - text: Renesas RX65N Cloud Kit を Azure IoT に接続する
+      url: quickstart-devkit-renesas-rx65n-cloud-kit.md
+    - text: ST Microelectronics B-L475E/L4S5I-IOT01A を Azure IoT に接続する
+      url: quickstart-devkit-stm-b-l475e.md

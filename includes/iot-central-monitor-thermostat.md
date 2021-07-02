@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 26aefab9b4637c3f3f6b0f0d1195068e2cd770ab
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 76f8c8819bf67405023980a6fd0e48f997926938
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001821"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111896987"
 ---
 <!-- All needs updating -->
 Azure IoT Central アプリケーションのオペレーターとして、次のことを実行できます。

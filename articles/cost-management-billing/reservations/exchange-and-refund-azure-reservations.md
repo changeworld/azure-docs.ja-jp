@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: 3e8f50efd04364483c32ecb8ef5020bdd053e55b
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d45682a3ccdc67cdbff8ef0c1edd542817875fbc
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515483"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891556"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -65,6 +65,7 @@ Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予�
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
 
 Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** を選択します。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
+別のサイズ、シリーズ、リージョン、または支払いの頻度に交換する場合、新しい予約の期間はリセットされます。 
 
 ## <a name="how-transactions-are-processed"></a>トランザクションの処理方法
 

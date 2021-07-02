@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/11/2021
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 708baa83ca919adcc374be36c229ce3ff30da384
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3652fbeee10f8ddad538446087f399ca625f6b07
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100362942"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578308"
 ---
 1. 仮想 WAN のポータル ページの **[接続]** セクションで、 **[VPN サイト]** を選択して VPN サイト ページを開きます。
 1. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
 1. **[VPN サイトを作成する]** ページの **[基本]** タブで、次のフィールドを入力します。
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-basics.png" alt-text="[基本] タブ" lightbox="./media/virtual-wan-tutorial-site-include/site-basics.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-basics.png" alt-text="[基本] タブが開いている [VPN サイトの作成] ページを示すスクリーンショット。" lightbox="./media/virtual-wan-tutorial-site-include/site-basics.png":::
 
     * **[リージョン]** - 旧称は場所。 これは、このサイト リソースを作成する場所です。
     * **[名前]** - オンプレミスのサイトの呼称。
@@ -31,7 +31,7 @@ ms.locfileid: "100362942"
       >
 1. ブランチにある物理的なリンクに関する情報を追加するには、 **[リンク]** を選択します。 Virtual WAN パートナーの CPE デバイスがある場合は、システムから設定されたブランチ情報のアップロードの一部として、この情報が Azure と交換されるかどうかを確認します。
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-links.png" alt-text="[リンク] タブ" lightbox="./media/virtual-wan-tutorial-site-include/site-links.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-links.png" alt-text="[リンク] タブが開いている [VPN サイトの作成] ページを示すスクリーンショット。" lightbox="./media/virtual-wan-tutorial-site-include/site-links.png":::
 
    * **[リンク名]** - VPN サイトで物理リンクに付ける名前を指定します。 例: mylink1。
    * **[リンク速度]** - これは、ブランチの場所での VPN デバイスの速度です。 例:50。50 Mbps は、ブランチ サイトの VPN デバイスの速度を示します。
@@ -49,4 +49,4 @@ ms.locfileid: "100362942"
 1. フィールドの入力が完了したら、 **[確認と作成]** を選択し、サイトを確認して作成します。
 1. 目的の仮想ハブに移動し、 **[ハブの関連付け]** の選択を解除して VPN サイトをハブに接続します。
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/connect.png" alt-text="このハブに接続する" lightbox="./media/virtual-wan-tutorial-site-include/connect.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/connect.png" alt-text="[Connect to this hub]\(このハブに接続する\) を示すスクリーンショット。" lightbox="./media/virtual-wan-tutorial-site-include/connect.png":::

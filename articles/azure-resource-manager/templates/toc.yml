@@ -4,14 +4,10 @@
   items:
     - name: ARM テンプレートとは
       href: overview.md
-    - name: Bicep の概要
-      href: bicep-overview.md
 - name: クイックスタート
   items:
     - name: JSON テンプレートを作成する - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Bicep テンプレートを作成する - VS Code
-      href: quickstart-create-bicep-use-visual-studio-code.md
     - name: JSON テンプレートを作成する - ポータル
       href: quickstart-create-templates-use-the-portal.md
     - name: テンプレート スペックを作成する
@@ -40,38 +36,6 @@
           href: template-tutorial-add-tags.md
         - name: 10 - パラメーター ファイルを使用する
           href: template-tutorial-use-parameter-file.md
-    - name: 初心者向け Bicep
-      items:
-        - name: 1 - 最初のテンプレートを作成する
-          displayName: Bicep
-          href: bicep-tutorial-create-first-bicep.md
-        - name: 2 - パラメーターを追加する
-          displayName: Bicep
-          href: bicep-tutorial-add-parameters.md
-        - name: 3 - テンプレート関数を追加する
-          displayName: Bicep
-          href: bicep-tutorial-add-functions.md
-        - name: 4 - 変数を追加する
-          displayName: Bicep
-          href: bicep-tutorial-add-variables.md
-        - name: 5 - 出力を追加する
-          displayName: Bicep
-          href: bicep-tutorial-add-outputs.md
-        - name: 6 - エクスポートしたテンプレートを使用する
-          displayName: Bicep
-          href: bicep-tutorial-export-template.md
-        - name: 7 - クイックスタート テンプレートを使用する
-          displayName: Bicep
-          href: bicep-tutorial-quickstart-template.md
-        - name: 8 - タグを追加する
-          displayName: Bicep
-          href: bicep-tutorial-add-tags.md
-        - name: 9 - パラメーター ファイルを使用する
-          displayName: Bicep
-          href: bicep-tutorial-use-parameter-file.md
-        - name: 10 - モジュールを追加する
-          displayName: Bicep
-          href: bicep-tutorial-add-modules.md
     - name: デプロイ
       items:
         - name: 1 - ローカル テンプレートをデプロイする
@@ -325,45 +289,34 @@
 - name: 概念
   items:
     - name: テンプレートのベスト プラクティス
-      href: template-best-practices.md
-    - name: Bicep
-      items:
-        - name: Bicep をインストールする
-          href: bicep-install.md
-        - name: JSON と Bicep の間で変換する
-          href: bicep-decompile.md
-        - name: JSON と Bicep を比較する
-          href: compare-template-syntax.md
+      href: best-practices.md
     - name: データ型
       href: data-types.md
     - name: よく寄せられる質問
       href: frequently-asked-questions.md
     - name: クラウドの一貫性を実現するテンプレート
-      href: templates-cloud-consistency.md
+      href: template-cloud-consistency.md
     - name: デプロイ モード
       href: deployment-modes.md
     - name: デプロイ履歴の削除
       href: deployment-history-deletions.md
-    - name: 完全モードの削除
-      href: complete-mode-deletion.md
+    - name: デプロイ完了モードの削除
+      href: deployment-complete-mode-deletion.md
 - name: 方法
   items:
     - name: テンプレートの作成
       items:
         - name: JSON 構造体
           displayName: 'parameters,variables,resources,outputs,condition'
-          href: template-syntax.md
-        - name: Bicep 構造体
-          displayName: 'parameters,variables,resources,outputs,condition'
-          href: bicep-file.md
+          href: syntax.md
         - name: テンプレート式を記述する
           href: template-expressions.md
         - name: パラメーター
-          href: template-parameters.md
+          href: parameters.md
         - name: 変数
-          href: template-variables.md
+          href: variables.md
         - name: ユーザー定義関数
-          href: template-user-defined-functions.md
+          href: user-defined-functions.md
         - name: リソース
           items:
             - name: リソースの宣言
@@ -373,13 +326,13 @@
             - name: 条件付きデプロイ
               href: conditional-resource-deployment.md
             - name: リソースの依存関係を設定する
-              href: define-resource-dependency.md
+              href: resource-dependency.md
             - name: リソースの場所を設定する
               href: resource-location.md
             - name: テンプレートの拡張機能を使用する
-              href: add-resource-extensions.md
+              href: resource-extensions.md
         - name: 出力
-          href: template-outputs.md
+          href: outputs.md
         - name: デプロイ スクリプト
           displayName: custom script
           href: deployment-script-template.md
@@ -390,8 +343,6 @@
             - name: テンプレートをモジュール化する
               displayName: 'linked templates, nested templates'
               href: linked-templates.md
-            - name: Bicep モジュール
-              href: bicep-modules.md
         - name: 複数のインスタンスの作成
           items:
             - name: リソース
@@ -441,7 +392,7 @@
             - name: 複数のスコープにまたがる関数
               href: scope-functions.md
         - name: what-if のデプロイ
-          href: template-deploy-what-if.md
+          href: deploy-what-if.md
         - name: エラー発生時の再デプロイ
           displayName: rollback
           href: rollback-on-error.md
@@ -467,7 +418,7 @@
         - name: テンプレート スペックの作成とデプロイ
           href: template-specs.md
         - name: ポータルのテンプレート ギャラリーを変換する
-          href: convert-to-template-spec.md
+          href: template-spec-convert.md
     - name: CI/CD
       items:
         - name: パイプラインを使用したリソース マネージャー テンプレート
@@ -530,8 +481,6 @@
       items:
         - name: すべての関数
           href: template-functions.md
-        - name: Any 関数 (Bicep)
-          href: template-functions-any.md
         - name: 配列関数
           href: template-functions-array.md
         - name: 比較関数
@@ -550,16 +499,6 @@
           href: template-functions-resource.md
         - name: 文字列関数
           href: template-functions-string.md
-    - name: Bicep 演算子
-      items:
-        - name: すべての演算子
-          href: bicep-operators.md
-        - name: 比較演算子
-          href: bicep-operators-comparison.md
-        - name: 論理演算子
-          href: bicep-operators-logical.md
-        - name: 数値演算子
-          href: bicep-operators-numeric.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell

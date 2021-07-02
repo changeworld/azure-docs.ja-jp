@@ -126,6 +126,8 @@
           href: migrate-support-matrix-physical-migration.md
         - name: レプリケーション アプライアンスの要件
           href: migrate-replication-appliance.md
+        - name: VMware エージェントレス移行のアーキテクチャ
+          href: concepts-vmware-agentless-migration.md
         - name: Hyper-V 移行アーキテクチャ
           href: hyper-v-migration-architecture.md
         - name: エージェントベースの VMware 移行のアーキテクチャ
@@ -134,8 +136,11 @@
   items:
     - name: Azure Migrate プロジェクトの作成と管理
       href: create-manage-projects.md
-    - name: プライベート リンクで Azure Migrate を使用する
+    - name: プライベート エンドポイントで Azure Migrate を使用する
       href: how-to-use-azure-migrate-with-private-endpoints.md
+      items:
+        - name: ネットワーク接続のトラブルシューティング
+          href: troubleshoot-network-connectivity.md
     - name: ISV ツール/Movere を使用するための準備
       href: prepare-isv-movere.md
     - name: 発見

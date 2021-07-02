@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/04/2021
+ms.date: 05/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 41e08c1278cf6ea3041ad419703ac86f6995f451
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: fa207bb2d915ad307a04f633139cd49beddfbb24
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109665259"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580097"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-autodesk-sso"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Autodesk SSO の統合
 
@@ -63,7 +63,7 @@ Autodesk SSO に対して Azure AD SSO を構成してテストするには、�
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Autodesk SSO の SSO の構成](#configure-autodesk-sso-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+1. **[Autodesk SSO の構成](#configure-autodesk-sso)** - アプリケーション側でシングル サインオン設定を構成します。
     1. **[Autodesk SSO のテスト ユーザーの作成](#create-autodesk-sso-test-user)** - Autodesk SSO で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
@@ -86,7 +86,7 @@ Autodesk SSO に対して Azure AD SSO を構成してテストするには、�
     c. **[サインオン URL]** ボックスに、URL として「`https://autodesk-prod.okta.com/sso/saml2/`」と入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[Autodesk SSO クライアント サポート チーム](mailto:apps.email@autodesk.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[Autodesk SSO クライアント サポート チーム](https://knowledge.autodesk.com/contact-support)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. Autodesk SSO アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをご自分の SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -133,9 +133,9 @@ Autodesk SSO に対して Azure AD SSO を構成してテストするには、�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-autodesk-sso-sso"></a>Autodesk SSO SSO の構成
+## <a name="configure-autodesk-sso"></a>Autodesk SSO の構成
 
-**Autodesk SSO** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Autodesk SSO サポート チーム](mailto:apps.email@autodesk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Autodesk SSO** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Autodesk SSO サポート チーム](https://knowledge.autodesk.com/contact-support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-autodesk-sso-test-user"></a>Autodesk SSO のテスト ユーザーの作成
 
@@ -147,6 +147,6 @@ Autodesk SSO をテストするには、Autodesk コンソールを開き、 **[
 
 ## <a name="next-steps"></a>次の手順
 
-Autodesk SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Autodesk SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 

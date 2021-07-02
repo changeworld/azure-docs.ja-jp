@@ -220,7 +220,7 @@
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
             - name: プログラムによる MPA サブスクリプションの作成
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: プログラムによるサブスクリプションの作成 - プレビュー API
+            - name: プログラムによるサブスクリプションの作成 - レガシ API
               href: manage/programmatically-create-subscription-preview.md
         - name: Enterprise Agreement サブスクリプションの管理
           items:

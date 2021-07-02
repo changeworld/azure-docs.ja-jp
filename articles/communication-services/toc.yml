@@ -1,211 +1,216 @@
-- name: Azure Communication Services のドキュメント
-  href: index.yml
-- name: 概要
-  expanded: true
-  items:
-    - name: Azure Communication Services とは
-      href: overview.md
-    - name: サポート オプションとヘルプ オプション
-      href: support.md
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: Communication Services のリソースを作成する
-      href: quickstarts/create-communication-resource.md
-    - name: アクセス トークンを作成して管理する
-      href: quickstarts/access-tokens.md
-    - name: マネージド ID の使用
-      href: quickstarts/managed-identity.md
-    - name: CLI からマネージド ID を設定する
-      href: quickstarts/managed-identity-from-cli.md
-    - name: チャット
-      items:
-        - name: チャットをアプリに追加する
-          href: quickstarts/chat/get-started.md
-        - name: チャット アプリを Teams の会議に参加させる
-          href: quickstarts/chat/meeting-interop.md
-    - name: テレフォニーと SMS
-      items:
-        - name: 電話番号の取得
-          href: quickstarts/telephony-sms/get-phone-number.md
-        - name: 電話番号を Azure に移植する
-          href: quickstarts/telephony-sms/port-phone-number.md
-        - name: 電話の呼び出しのアプリへの追加
-          href: quickstarts/voice-video-calling/pstn-call.md
-        - name: SMS メッセージの送信
-          href: quickstarts/telephony-sms/send.md
-        - name: SMS イベントの処理
-          href: quickstarts/telephony-sms/handle-sms-events.md
-        - name: Azure Logic Apps での SMS の送信
-          href: quickstarts/telephony-sms/logic-app.md
-    - name: 音声およびビデオによる通話
-      items:
-        - name: 音声通話をアプリに追加する
-          href: quickstarts/voice-video-calling/getting-started-with-calling.md
-        - name: ビデオ通話をアプリに追加する
-          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-        - name: Calling SDK を使用する
-          href: quickstarts/voice-video-calling/calling-client-samples.md
-        - name: 通話アプリを Teams の会議に参加させる
-          href: quickstarts/voice-video-calling/get-started-teams-interop.md
-    - name: UI ライブラリ
-      items:
-        - name: 複合の概要
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-composites--page'
-        - name: ステートフル クライアントの概要
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-stateful-client--page'
-        - name: UI コンポーネントの概要
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-ui-components--page'
-- name: チュートリアル
-  expanded: false
-  items:
-    - name: Azure Functions を使用して、信頼される認証サービスを構築する
-      href: tutorials/trusted-service-tutorial.md
-    - name: C# を使用して HMAC 署名で HTTP 要求に署名する
-      href: tutorials/hmac-header-tutorial.md
-    - name: Communication Services 用の Web アプリを準備する (Node.js)
-      href: tutorials/building-app-start.md
-    - name: Postman で ACS の SMS API に署名して要求を行う
-      href: tutorials/postman-tutorial.md
-- name: 概念
-  expanded: false
-  items:
-    - name: チャット
-      items:
-        - name: Chat SDK の概要
-          href: concepts/chat/sdk-features.md
-        - name: チャットに関する概念
-          href: concepts/chat/concepts.md
-    - name: テレフォニーと SMS
-      items:
-        - name: SMS SDK の概要
-          href: concepts/telephony-sms/sdk-features.md
-        - name: SMS に関する概念
-          href: concepts/telephony-sms/concepts.md
-        - name: テレフォニーの概念
-          href: concepts/telephony-sms/telephony-concept.md
-        - name: 電話番号の種類
-          href: concepts/telephony-sms/plan-solution.md
-        - name: Azure 直接ルーティングのインフラストラクチャ要件
-          href: concepts/telephony-sms/sip-interface-infrastructure.md
-        - name: SMS に関する FAQ
-          href: concepts/telephony-sms/sms-faq.md
-        - name: メッセージング ポリシー
-          href: concepts/telephony-sms/messaging-policy.md
-    - name: 音声およびビデオによる通話
-      items:
-        - name: 既知の問題
-          href: concepts/known-issues.md
-        - name: Calling SDK の概要
-          href: concepts/voice-video-calling/calling-sdk-features.md
-        - name: 音声とビデオの概念
-          href: concepts/voice-video-calling/about-call-types.md
-        - name: ネットワークの要件
-          href: concepts/voice-video-calling/network-requirements.md
-        - name: 通話のフロー
-          href: concepts/call-flows.md
-        - name: 通話フローのトポロジ
-          href: concepts/detailed-call-flows.md
-    - name: UI ライブラリ
-      items:
-        - name: UI ライブラリの概要
-          href: concepts/ui-library/ui-library-overview.md
-        - name: UI ライブラリのユース ケース
-          href: concepts/ui-library/ui-library-use-cases.md
-    - name: SDK と REST API
-      href: concepts/sdk-options.md
-    - name: クライアントとサーバーのアーキテクチャ
-      href: concepts/client-and-server-architecture.md
-    - name: ID モデル
-      href: concepts/identity-model.md
-    - name: 認証
-      href: concepts/authentication.md
-    - name: プライバシー
-      href: concepts/privacy.md
-    - name: 価格
-      href: concepts/pricing.md
-    - name: プッシュ通知
-      href: concepts/notifications.md
-    - name: Teams の相互運用性
-      href: concepts/teams-interop.md
-    - name: サービス イベント (EventGrid)
-      href: ../event-grid/event-schema-communication-services.md
-      maintainContext: true
-    - name: ログ記録と診断
-      href: concepts/logging-and-diagnostics.md
-    - name: メトリック
-      href: concepts/metrics.md
-    - name: トラブルシューティング
-      href: concepts/troubleshooting-info.md
-- name: サンプル
-  items:
-    - name: 概要
-      href: samples/overview.md
-    - name: グループ通話のヒーロー サンプル
-      href: samples/calling-hero-sample.md
-    - name: グループ チャットのヒーロー サンプル
-      href: samples/chat-hero-sample.md
-    - name: Web 呼び出しのサンプル
-      href: samples/web-calling-sample.md
-- name: リファレンス
-  items:
-    - name: リファレンス ドキュメントの概要
-      href: concepts/reference.md
-    - name: Azure CLI
-      href: /cli/azure/communication
-    - name: REST API のドキュメント
-      href: /rest/api/communication/
-    - name: ライブラリの呼び出し
-      items:
-        - name: 呼び出し (JavaScript)
-          href: /javascript/api/azure-communication-services/@azure/communication-calling/
-        - name: 呼び出し (Android/Java)
-          href: /java/api/com.azure.android.communication.calling?view=communication-services-java-android
-        - name: 呼び出し (iOS)
-          href: /objectivec/communication-services/calling/
-    - name: チャット ライブラリ
-      items:
-        - name: チャット (JavaScript)
-          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-chat'
-        - name: チャット (.NET)
-          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
-        - name: チャット (Android/Java)
-          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
-        - name: チャット (Python)
-          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-chat'
-        - name: チャット (iOS)
-          href: 'https://azure.github.io/azure-sdk-for-ios/AzureCommunicationChat/index.html'
-    - name: SMS ライブラリ
-      items:
-        - name: SMS (JavaScript)
-          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-sms'
-        - name: SMS (.NET)
-          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
-        - name: SMS (Android/Java)
-          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
-        - name: SMS (Python)
-          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-sms'
-    - name: Identity ライブラリ
-      items:
-        - name: Identity (JavaScript)
-          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-identity'
-        - name: Identity (.NET)
-          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationidentity'
-        - name: Identity (Android/Java)
-          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-identity'
-        - name: Identity (Python)
-          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-identity'
-    - name: 共通ライブラリ
-      items:
-        - name: 共通 (JavaScript)
-          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-common'
-        - name: 共通 (.NET)
-          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
-        - name: 共通 (Android/Java)
-          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
-        - name: 共通 (Python)
-          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-common'
-- name: リソース
-  items:
-    - name: リリース ノート
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'
+items:
+  - name: Azure Communication Services のドキュメント
+    href: index.yml
+  - name: 概要
+    expanded: true
+    items:
+      - name: Azure Communication Services とは
+        href: overview.md
+      - name: サポート オプションとヘルプ オプション
+        href: support.md
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: Communication Services のリソースを作成する
+        href: quickstarts/create-communication-resource.md
+      - name: アクセス トークンを作成して管理する
+        href: quickstarts/access-tokens.md
+      - name: マネージド ID の使用
+        href: quickstarts/managed-identity.md
+      - name: CLI からマネージド ID を設定する
+        href: quickstarts/managed-identity-from-cli.md
+      - name: SDK 利用統計情報を Application Insights にエクスポートする
+        href: quickstarts/telemetry-application-insights.md
+      - name: リレー トークンを取得する
+        href: quickstarts/relay-token.md
+      - name: チャット
+        items:
+          - name: チャットをアプリに追加する
+            href: quickstarts/chat/get-started.md
+          - name: チャット アプリを Teams の会議に参加させる
+            href: quickstarts/chat/meeting-interop.md
+      - name: テレフォニーと SMS
+        items:
+          - name: 電話番号の取得
+            href: quickstarts/telephony-sms/get-phone-number.md
+          - name: 電話番号を Azure に移植する
+            href: quickstarts/telephony-sms/port-phone-number.md
+          - name: 電話の呼び出しのアプリへの追加
+            href: quickstarts/voice-video-calling/pstn-call.md
+          - name: SMS メッセージの送信
+            href: quickstarts/telephony-sms/send.md
+          - name: SMS イベントの処理
+            href: quickstarts/telephony-sms/handle-sms-events.md
+          - name: Azure Logic Apps での SMS の送信
+            href: quickstarts/telephony-sms/logic-app.md
+      - name: 音声およびビデオによる通話
+        items:
+          - name: 音声通話をアプリに追加する
+            href: quickstarts/voice-video-calling/getting-started-with-calling.md
+          - name: ビデオ通話をアプリに追加する
+            href: quickstarts/voice-video-calling/get-started-with-video-calling.md
+          - name: Calling SDK を使用する
+            href: quickstarts/voice-video-calling/calling-client-samples.md
+          - name: 通話アプリを Teams の会議に参加させる
+            href: quickstarts/voice-video-calling/get-started-teams-interop.md
+      - name: UI ライブラリ
+        items:
+          - name: 複合の概要
+            href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-composites--page'
+          - name: ステートフル クライアントの概要
+            href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-statefulclient--page'
+          - name: UI コンポーネントの概要
+            href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-uicomponents--page'
+  - name: チュートリアル
+    expanded: false
+    items:
+      - name: Azure Functions を使用して、信頼される認証サービスを構築する
+        href: tutorials/trusted-service-tutorial.md
+      - name: C# を使用して HMAC 署名で HTTP 要求に署名する
+        href: tutorials/hmac-header-tutorial.md
+      - name: Communication Services 用の Web アプリを準備する (Node.js)
+        href: tutorials/building-app-start.md
+      - name: Postman で ACS の SMS API に署名して要求を行う
+        href: tutorials/postman-tutorial.md
+  - name: 概念
+    expanded: false
+    items:
+      - name: チャット
+        items:
+          - name: Chat SDK の概要
+            href: concepts/chat/sdk-features.md
+          - name: チャットに関する概念
+            href: concepts/chat/concepts.md
+      - name: テレフォニーと SMS
+        items:
+          - name: SMS SDK の概要
+            href: concepts/telephony-sms/sdk-features.md
+          - name: SMS に関する概念
+            href: concepts/telephony-sms/concepts.md
+          - name: テレフォニーの概念
+            href: concepts/telephony-sms/telephony-concept.md
+          - name: 電話番号の種類
+            href: concepts/telephony-sms/plan-solution.md
+          - name: Azure 直接ルーティングのインフラストラクチャ要件
+            href: concepts/telephony-sms/sip-interface-infrastructure.md
+          - name: SMS に関する FAQ
+            href: concepts/telephony-sms/sms-faq.md
+          - name: メッセージング ポリシー
+            href: concepts/telephony-sms/messaging-policy.md
+      - name: 音声およびビデオによる通話
+        items:
+          - name: Calling SDK の概要
+            href: concepts/voice-video-calling/calling-sdk-features.md
+          - name: 音声とビデオの概念
+            href: concepts/voice-video-calling/about-call-types.md
+          - name: ネットワークの要件
+            href: concepts/voice-video-calling/network-requirements.md
+          - name: 通話のフロー
+            href: concepts/call-flows.md
+          - name: 通話フローのトポロジ
+            href: concepts/detailed-call-flows.md
+          - name: 既知の問題
+            href: concepts/known-issues.md
+      - name: UI ライブラリ
+        items:
+          - name: UI ライブラリの概要
+            href: concepts/ui-library/ui-library-overview.md
+          - name: UI ライブラリのユース ケース
+            href: concepts/ui-library/ui-library-use-cases.md
+      - name: SDK と REST API
+        href: concepts/sdk-options.md
+      - name: クライアントとサーバーのアーキテクチャ
+        href: concepts/client-and-server-architecture.md
+      - name: ID モデル
+        href: concepts/identity-model.md
+      - name: 認証
+        href: concepts/authentication.md
+      - name: プライバシー
+        href: concepts/privacy.md
+      - name: 価格
+        href: concepts/pricing.md
+      - name: プッシュ通知
+        href: concepts/notifications.md
+      - name: Teams の相互運用性
+        href: concepts/teams-interop.md
+      - name: サービス イベント (EventGrid)
+        href: ../event-grid/event-schema-communication-services.md
+        maintainContext: true
+      - name: ログ記録と診断
+        href: concepts/logging-and-diagnostics.md
+      - name: メトリック
+        href: concepts/metrics.md
+      - name: トラブルシューティング
+        href: concepts/troubleshooting-info.md
+  - name: サンプル
+    items:
+      - name: 概要
+        href: samples/overview.md
+      - name: グループ通話のヒーロー サンプル
+        href: samples/calling-hero-sample.md
+      - name: グループ チャットのヒーロー サンプル
+        href: samples/chat-hero-sample.md
+      - name: Web 呼び出しのサンプル
+        href: samples/web-calling-sample.md
+  - name: リファレンス
+    items:
+      - name: リファレンス ドキュメントの概要
+        href: concepts/reference.md
+      - name: Azure CLI
+        href: /cli/azure/communication
+      - name: REST API のドキュメント
+        href: /rest/api/communication/
+      - name: ライブラリの呼び出し
+        items:
+          - name: 呼び出し (JavaScript)
+            href: /javascript/api/azure-communication-services/@azure/communication-calling/
+          - name: 呼び出し (Android/Java)
+            href: /java/api/com.azure.android.communication.calling?view=communication-services-java-android
+          - name: 呼び出し (iOS)
+            href: /objectivec/communication-services/calling/
+      - name: チャット ライブラリ
+        items:
+          - name: チャット (JavaScript)
+            href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-chat'
+          - name: チャット (.NET)
+            href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
+          - name: チャット (Android/Java)
+            href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
+          - name: チャット (Python)
+            href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-chat'
+          - name: チャット (iOS)
+            href: 'https://azure.github.io/azure-sdk-for-ios/AzureCommunicationChat/index.html'
+      - name: SMS ライブラリ
+        items:
+          - name: SMS (JavaScript)
+            href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-sms'
+          - name: SMS (.NET)
+            href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
+          - name: SMS (Android/Java)
+            href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
+          - name: SMS (Python)
+            href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-sms'
+      - name: Identity ライブラリ
+        items:
+          - name: Identity (JavaScript)
+            href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-identity'
+          - name: Identity (.NET)
+            href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationidentity'
+          - name: Identity (Android/Java)
+            href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-identity'
+          - name: Identity (Python)
+            href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-identity'
+      - name: 共通ライブラリ
+        items:
+          - name: 共通 (JavaScript)
+            href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-common'
+          - name: 共通 (.NET)
+            href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
+          - name: 共通 (Android/Java)
+            href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
+          - name: 共通 (Python)
+            href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-common'
+  - name: リソース
+    items:
+      - name: リリース ノート
+        href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

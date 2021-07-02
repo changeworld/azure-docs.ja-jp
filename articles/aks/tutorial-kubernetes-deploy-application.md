@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry に格納されているカスタム イメージを使用して、複数コンテナーのアプリケーションをクラスターにデプロイします。
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
-ms.custom: mvc
-ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/24/2021
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 9632b3cb2e0e3b46cb024df0cc6dddd6829aed05
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98250181"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697925"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
@@ -31,17 +31,37 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 このチュートリアルを完了するには、事前に作成した `azure-vote-all-in-one-redis.yaml` Kubernetes マニフェスト ファイルが必要です。 このファイルは、前のチュートリアルでは、アプリケーションのソース コードと共にダウンロードされました。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。 これらの手順を完了しておらず、順番に進めたい場合は、[チュートリアル 1 - コンテナー イメージを作成する][aks-tutorial-prepare-app]に関するページから開始してください。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 このチュートリアルでは、Azure CLI バージョン 2.0.53 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+このチュートリアルでは、Azure PowerShell バージョン 5.9.0 以降を実行している必要があります。 バージョンを確認するには、`Get-InstalledModule -Name Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell ][azure-powershell-install]のインストールに関するページをご覧ください。
+
+---
 
 ## <a name="update-the-manifest-file"></a>マニフェスト ファイルを更新する
 
 これらのチュートリアルでは、Azure Container Registry (ACR) インスタンスがサンプル アプリケーション用のコンテナー イメージを格納しています。 アプリケーションをデプロイするには、Kubernetes マニフェスト ファイル内のイメージ名を、ACR ログイン サーバー名が含まれるように更新する必要があります。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 次のように、[az acr list][az-acr-list] コマンドを使用して、ACR ログイン サーバー名を取得します。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+次のように、[Get-AzContainerRegistry][get-azcontainerregistry] コマンドレットを使用して、ACR ログイン サーバー名を取得します。
+
+```azurepowershell
+(Get-AzContainerRegistry -ResourceGroupName myResourceGroup -Name <acrName>).LoginServer
+```
+
+---
 
 最初のチュートリアルで複製した git repo のサンプル マニフェスト ファイルは、*microsoft* というログイン サーバー名を使用します。 現在の場所が、複製された *azure-voting-app-redis* ディレクトリ内であることを確認し、テキスト エディター (`vi` など) でマニフェスト ファイルを開きます。
 
@@ -140,3 +160,5 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 [azure-cli-install]: /cli/azure/install-azure-cli
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [kubernetes-service]: concepts-network.md#services
+[azure-powershell-install]: /powershell/azure/install-az-ps
+[get-azcontainerregistry]: /powershell/module/az.containerregistry/get-azcontainerregistry

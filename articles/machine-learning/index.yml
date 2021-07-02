@@ -1,71 +1,67 @@
 ### YamlMime:Landing
 title: Azure Machine Learning のドキュメント
-summary: Azure Machine Learning を使用した機械学習モデルのトレーニング、デプロイ、管理、AutoML の使用、およびパイプラインの大規模な実行方法について説明します。  チュートリアル、コード例、API リファレンスなどで方法を紹介します。
+summary: Azure Machine Learning を使用して、モデルをトレーニングおよびデプロイし、機械学習のライフサイクルを管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
 metadata:
   title: Azure Machine Learning のドキュメント
-  description: Azure Machine Learning を使用した機械学習モデルのトレーニング、デプロイ、管理、AutoML の使用、およびパイプラインの大規模な実行方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
+  description: Azure Machine Learning を使用して、モデルをトレーニングおよびデプロイし、機械学習のライフサイクルを管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
   ms.topic: landing-page
   ms.collection: collection
-  ms.author: larryfr
-  author: BlackMist
-  ms.date: 09/21/2020
-  ms.custom: contperf-fy21q1
-  ms.openlocfilehash: bbf934ef45f66a009c198a5ab0a47b871b419d85
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.author: sgilley
+  author: sdgilley
+  ms.date: 06/11/2021
+  ms.custom: jordan-changes
+  ms.openlocfilehash: 8ca3c770daa74b2f9f8f8dfd2edd0e22b6659538
+  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108740917"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112030073"
 landingContent:
-- title: 作業を開始しましょう。コード ファースト
+- title: '概要: モデルのトレーニング'
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Azure Machine Learning の利用を開始
+    - text: リソースを設定する
       url: quickstart-create-resources.md
-    - text: ML パイプラインを使用したバッチ推論 (Python)
-      url: tutorial-pipeline-batch-scoring-classification.md
-- title: 作業を開始しましょう。コードが少ないか、またはありません
+    - text: Python SDK でトレーニングする
+      url: tutorial-1st-experiment-hello-world.md
+    - text: v2 CLI を使用してトレーニングする (プレビュー)
+      url: how-to-train-cli.md
+- title: その他のモデル トレーニング オプション
   linkLists:
-  - linkListType: overview
+  - linkListType: how-to-guide
     links:
-    - text: Azure Machine Learning Studio
-      url: overview-what-is-machine-learning-studio.md
-    - text: 自動 ML (AutoML) とは
-      url: concept-automated-ml.md
-    - text: ドラッグ アンド ドロップ デザイナーとは
-      url: concept-designer.md
-  - linkListType: tutorial
-    links:
-    - text: はじめに (AutoML)
+    - text: ハイパーパラメーター スイープを使用してモデルを最適化する
+      url: how-to-tune-hyperparameters.md
+    - text: マルチステップ ML パイプラインを作成する
+      url: how-to-create-machine-learning-pipelines.md
+    - text: AutoML を使用してトレーニングする
       url: tutorial-first-experiment-automated-ml.md
-    - text: はじめに (デザイナー)
+    - text: デザイナーを使用してトレーニングする
       url: tutorial-designer-automobile-price-train-score.md
-  - linkListType: reference
-    links:
-    - text: デザイナーのアルゴリズムとモジュール
-      url: algorithm-module-reference/module-reference.md
-- title: Azure への ML モデルの持ち込み
+- title: モデルをデプロイする
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: モデルをクラウドにデプロイする
+    - text: モデルをデプロイする方法
       url: how-to-deploy-and-where.md
-    - text: MLflow モデルの追跡
-      url: how-to-use-mlflow.md
-- title: モデルの展開と管理 (MLOps)
+    - text: マネージド オンライン スコアリング (プレビュー)
+      url: how-to-deploy-managed-online-endpoints.md
+    - text: マネージド バッチ スコアリング (プレビュー)
+      url: how-to-use-batch-endpoint.md
+- title: ML ライフサイクルを管理する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: MLOps とは
+    - text: ML 実験を追跡する
+      url: how-to-track-monitor-analyze-runs.md
+    - text: ML ライフサイクル管理 (MLOps)
       url: concept-model-management-and-deployment.md
-    - text: デプロイの方法と場所
-      url: how-to-deploy-and-where.md
-    - text: MLflow モデルのデプロイ
-      url: how-to-deploy-mlflow-models.md
+- title: リファレンス ドキュメント
+  linkLists:
   - linkListType: reference
     links:
     - text: Python SDK

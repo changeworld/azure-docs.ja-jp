@@ -5,20 +5,20 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 05/25/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9f07a4f9c42923ac42735155fb0da21dee3a2353
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 6811b899aa87a5b0c1987f2e86c07d8646a86ef4
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632369"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901279"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>最新の API を使用してプログラムで Azure Enterprise Agreement サブスクリプションを作成する
 
-この記事は、最新の API バージョンを使用してプログラムで Enterprise Agreement (EA) 課金アカウントの Azure EA サブスクリプションを作成する場合に役に立ちます。 古いプレビュー バージョンをまだ使用している場合は、「[プレビュー API を使用してプログラムで Azure サブスクリプションを作成する](programmatically-create-subscription-preview.md)」を参照してください。 
+この記事は、最新の API バージョンを使用してプログラムで Enterprise Agreement (EA) 課金アカウントの Azure EA サブスクリプションを作成する場合に役に立ちます。 古いプレビュー バージョンをまだ使用している場合は、「[レガシ API を使用してプログラムで Azure サブスクリプションを作成する](programmatically-create-subscription-preview.md)」を参照してください。 
 
 この記事では、Azure Resource Manager を使用してプログラムからサブスクリプションを作成する方法について説明します。
 
@@ -28,13 +28,16 @@ ms.locfileid: "109632369"
 
 ## <a name="prerequisites"></a>前提条件
 
-サブスクリプションを作成するには、登録アカウントの所有者ロールが必要です。 そのロールを取得する方法は 2 つあります。
+サブスクリプションを作成するには、登録アカウントの所有者ロールがユーザーに必要です。 そのロールを取得する方法は 2 つあります。
 
 * 登録のエンタープライズ管理者は、ユーザーを[アカウント所有者に設定](https://ea.azure.com/helpdocs/addNewAccount)できます (サインインが必要)。これにより、ユーザーは登録アカウントの所有者になります。
-* 登録アカウントの既存の所有者が、[アクセス許可を付与](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)できます。 同様に、サービス プリンシパルを使用して EA サブスクリプションを作成する場合は、[そのサービス プリンシパルにサブスクリプションを作成する権限を付与する](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)必要があります。  
-    SPN を使用してサブスクリプションを作成している場合は [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) または [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) を使用して、Azure AD アプリケーション登録の ObjectId をサービス プリンシパルの ObjectId として使用します。 EA ロールの割り当て API 要求の詳細については、「[Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる](assign-roles-azure-service-principals.md)」を参照してください。 このページには、SPN に割り当てることができるロール (およびロール定義 ID) の一覧が含まれています。
+* 登録アカウントの既存の所有者が、[アクセス許可を付与](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)できます。 
+
+サービス プリンシパル (SPN) を使用して EA サブスクリプションを作成するには、登録アカウントの所有者が[そのサービス プリンシパルにサブスクリプションを作成する権限を付与する](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)必要があります。 SPN を使用してサブスクリプションを作成するときに、[Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) または [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) を使用して、Azure AD アプリケーション登録の ObjectId をサービス プリンシパルの ObjectId として使用します。 EA ロールの割り当て API 要求の詳細については、「[Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる](assign-roles-azure-service-principals.md)」を参照してください。 この記事には、SPN に割り当てることができるロール (およびロール定義 ID) の一覧が記載されています。
+
   > [!NOTE]
-  > 登録アカウントに対する所有者アクセス許可の付与には、必ず正しい API バージョンを使用してください。 この記事およびその中で記載されている API では、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API を使用します。 より新しい API を使用するために移行する場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) を使用して、所有者のアクセス許可を再度付与する必要があります。 [2015-07-01 バージョン](grant-access-to-create-subscription.md)を使用して行った以前の構成が、より新しい API で使用できるよう自動的に変換されることはありません。
+  > - 登録アカウントに対する所有者アクセス許可の付与には、必ず正しい API バージョンを使用してください。 この記事およびその中で記載されている API では、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API を使用します。 
+  > - 新しい API を使用するために移行している場合、[2015-07-01 バージョン](grant-access-to-create-subscription.md)を使用して行った以前の構成が新しい API で使用できるよう自動的に変換されることはありません。
 
 ## <a name="find-accounts-you-have-access-to"></a>アクセスできるアカウントを検索します。
 

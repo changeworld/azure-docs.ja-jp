@@ -154,6 +154,8 @@
           href: howto-password-ban-bad-on-premises-faq.yml
         - name: エージェントのバージョン履歴
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: Microsoft Authenticator セットアップの微調整 (プレビュー)
+      href: how-to-nudge-authenticator-app.md
     - name: 一時アクセス パス (プレビュー) の使用
       href: howto-authentication-temporary-access-pass.md
     - name: SMS ベースの認証を使用する

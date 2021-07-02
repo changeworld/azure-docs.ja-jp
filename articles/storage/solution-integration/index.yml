@@ -12,12 +12,12 @@ metadata:
   author: beber-msft
   ms.author: beber
   ms.date: 03/15/2021
-  ms.openlocfilehash: c1a80811c53d26028a7c3f0585bdc0cbc7c126e0
-  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+  ms.openlocfilehash: 9d577f173b3f93ad5e4967b9a2bb73b55b0c8592
+  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "109482041"
+  ms.lasthandoff: 06/02/2021
+  ms.locfileid: "110794718"
 landingContent:
 - title: 分析とビッグ データに関するパートナー
   linkLists:
@@ -57,9 +57,13 @@ landingContent:
     links:
     - text: DobiMigrate ファースト ステップ ガイド
       url: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
+    - text: Komprise ファースト ステップ ガイド
+      url: ./validated-partners/data-management/komprise-quick-start-guide.md
 - title: プライマリおよびセカンダリ ストレージに関するパートナー
   linkLists:
   - linkListType: overview
     links:
     - text: プライマリおよびセカンダリ ストレージに関する検証済みパートナー
       url: .\validated-partners\primary-secondary-storage\partner-overview.md
+    - text: ISV ファイル サービス
+      url: .\validated-partners\primary-secondary-storage\isv-file-services.md

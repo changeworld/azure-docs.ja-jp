@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/25/2021
+ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 28e77ecafc32f5b71ff2141aadb00ab484e0067a
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: dd032056360262c95540c3147aceeea8f4566c9c
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001954"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576044"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Cornerstone Single Sign-On の統合
 
@@ -31,7 +31,7 @@ ms.locfileid: "108001954"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Cornerstone Single Sign-On でのシングル サインオン (SSO) が有効なサブスクリプション。
+* シングル サインオン (SSO) が有効な Cornerstone サブスクリプション。
 
 > [!NOTE]
 > この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
@@ -41,18 +41,18 @@ ms.locfileid: "108001954"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Cornerstone Single Sign-On では、**SP** Initiated SSO がサポートされます。
-* Cornerstone Single Sign-On では、[自動化されたユーザー プロビジョニング](cornerstone-ondemand-provisioning-tutorial.md)がサポートされます。
+
 * この特定の一覧にある 1 つまたは複数の製品を統合する場合は、ギャラリーから、この Cornerstone OnDemand Single Sign-On アプリを使用する必要があります。
 
     以下のソリューションが提供されています。
 
-    1. Learning Management (LMS)
-    2. Performance Management (EPM)
-    3. Succession Planning
-    4. Recruiting (ATS)
-    5. Extended Enterprise
-    6. Human Resources
-    7. Employee Content
+    1. 採用
+    2. 学習
+    3. 開発
+    4. Content
+    5. パフォーマンス
+    6. キャリア
+    7. HR
 
 ## <a name="adding-cornerstone-single-sign-on-from-the-gallery"></a>ギャラリーからの Cornerstone Single Sign-On の追加
 
@@ -75,7 +75,7 @@ Cornerstone Single Sign-On で Azure AD SSO を構成してテストするには
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 2. **[Cornerstone Single Sign-On の SSO の構成](#configure-cornerstone-single-sign-on-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Cornerstone Single Sign-On のテスト ユーザーの作成](#create-cornerstone-single-sign-on-test-user)** - Cornerstone Single Sign-On で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+    1. **[Cornerstone Single Sign-On のテスト ユーザーの作成](#create-cornerstone-single-sign-on-test-user)** - Cornerstone で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -97,7 +97,7 @@ Cornerstone Single Sign-On で Azure AD SSO を構成してテストするには
     c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<PORTAL_NAME>.csod.com/samldefault.aspx?ouid=<OUID>`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の応答 URL、識別子、およびサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Cornerstone Single Sign-On クライアント サポート チーム](mailto:moreinfo@csod.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の応答 URL、識別子、およびサインオン URL でこれらの値を更新します。 これらの値を取得するには、Cornerstone のコンサルティング チームまたはパートナーに連絡する必要があります。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -133,11 +133,12 @@ Cornerstone Single Sign-On で Azure AD SSO を構成してテストするには
 
 ## <a name="configure-cornerstone-single-sign-on-sso"></a>Cornerstone Single Sign-On SSO の構成
 
-**Cornerstone Single Sign-On** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Cornerstone Single Sign-On サポート チーム](mailto:moreinfo@csod.com)に送信するか、パートナーまでお問い合わせください。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Cornerstone Single Sign-On** 側でシングル サインオンを構成するには、Cornerstone のコンサルティング チームまたはパートナーに連絡する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-cornerstone-single-sign-on-test-user"></a>Cornerstone Single Sign-On のテスト ユーザーの作成
 
-このセクションの目的は、Cornerstone Single Sign-On で B.Simon というユーザーを作成することです。 Cornerstone Single Sign-On では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./cornerstone-ondemand-provisioning-tutorial.md)をご覧ください。
+このセクションでは、Cornerstone で Britta Simon というユーザーを作成します。 Cornerstone Single Sign-On プラットフォームにユーザーを追加するには、Cornerstone のコンサルティング チームと協力するか、パートナーに連絡します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+
 
 ## <a name="test-sso"></a>SSO のテスト 
 

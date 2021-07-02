@@ -2,19 +2,19 @@
 author: IngridAtMicrosoft
 ms.service: media-services
 ms.topic: include
-ms.date: 03/18/2021
+ms.date: 05/17/2021
 ms.author: inhenkel
 ms.custom: portal
-ms.openlocfilehash: e31453d8027929213c4723d5cde801a02337230b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: baf6d399ec9fa06fb4c58b83d1dde0685a90d5b3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581239"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060140"
 ---
 ### <a name="delete-a-resource-group-with-the-cli"></a>CLI を使用してリソース グループを削除する
 
 
 ```azurecli
-az group delete --name amsResourceGroup
+az group delete --name <your-resource-group-name>
 ```
