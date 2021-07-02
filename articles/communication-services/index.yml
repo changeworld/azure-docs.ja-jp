@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 03/10/2021
-  ms.openlocfilehash: ec0a4ebaebecf9cf5fac95ca1b3bded1ba759958
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 9c07d4334d6137fc6bef9a9edecf6566d97c4cd6
+  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110092280"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111903385"
 landingContent:
 - title: Azure Communication Services について
   linkLists:
@@ -36,6 +36,8 @@ landingContent:
       url: quickstarts/create-communication-resource.md
     - text: ユーザー アクセス トークンを作成して管理する
       url: quickstarts/access-tokens.md
+    - text: リレー トークンを取得する
+      url: quickstarts/relay-token.md
   - linkListType: concept
     links:
     - text: クライアントとサーバーのアーキテクチャ
@@ -52,10 +54,10 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 音声およびビデオによる通話をアプリに追加する
+    - text: 音声通話をアプリに追加する
       url: quickstarts/voice-video-calling/getting-started-with-calling.md
-    - text: Calling SDK を使用する
-      url: quickstarts/voice-video-calling/calling-client-samples.md
+    - text: ビデオ通話をアプリに追加する
+      url: quickstarts/voice-video-calling/get-started-with-video-calling.md
   - linkListType: concept
     links:
     - text: 音声とビデオの概念

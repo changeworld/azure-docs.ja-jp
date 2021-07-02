@@ -140,8 +140,8 @@
               items:
                 - name: 構成の表示
                   href: show-configuration-postgresql-hyperscale-server-group.md
-                - name: スケールアウト - ワーカー ノードの追加
-                  href: scale-out-postgresql-hyperscale-server-group.md
+                - name: ワーカー ノードのスケールアウト/スケールイン
+                  href: scale-out-in-postgresql-hyperscale-server-group.md
                 - name: メモリと仮想コアのスケールアップ/スケールダウン
                   href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
                 - name: サーバー パラメーターの構成

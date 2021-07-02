@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 60b58f7cf67a22e019ff186e4e1811ff5b001d84
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 193adb6e3eb01b71e2023aba5a1a3868b547a106
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714454"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440018"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -30,7 +30,7 @@ ms.locfileid: "107714454"
 > * Azure への完全な移行を実行します。
 
 > [!NOTE]
-> チュートリアルでは、概念実証をすばやく設定できるように、シナリオの最も簡単なデプロイ パスを示します。 チュートリアルではできるだけ既定のオプションを使用しており、使用可能な設定とパスをすべて示しているわけではありません。 
+> チュートリアルでは、概念実証をすばやく設定できるように、シナリオの最も簡単なデプロイ パスを示します。 チュートリアルではできるだけ既定のオプションを使用しており、使用可能な設定とパスをすべて示しているわけではありません。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
@@ -59,14 +59,14 @@ Azure Migrate プロジェクトがない場合は、プロジェクトを作成
 
     - 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。
     - サブスクリプションの所有者でない場合は、所有者と協力してロールを割り当てます。
-    
+
 ### <a name="assign-azure-account-permissions"></a>Azure アカウントのアクセス許可を割り当てる
 
 仮想マシンの共同作成者ロールをアカウントに割り当てて、以下を行うためのアクセス許可を持てるようにします。
 
 - 選択したリソース グループ内に VM を作成する。
 - 選択した仮想ネットワーク内に VM を作成する。
-- Azure マネージド ディスクに書き込む。 
+- Azure マネージド ディスクに書き込む。
 
 
 ### <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
@@ -75,7 +75,7 @@ Azure Migrate プロジェクトがない場合は、プロジェクトを作成
 
 ## <a name="prepare-for-migration"></a>移行を準備する
 
-サポートの要件とアクセス許可を確認し、レプリケーション アプライアンスをデプロイするための準備を行います。 
+サポートの要件とアクセス許可を確認し、レプリケーション アプライアンスをデプロイするための準備を行います。
 
 ### <a name="prepare-an-account-to-discover-vms"></a>VM を検出するためのアカウントを準備する
 
@@ -125,7 +125,7 @@ Azure Migrate Server Migration は、移行対象の VM を検出するために
 
 ### <a name="check-vmware-requirements"></a>VMware の要件を確認する
 
-VMware サーバーと VM が、Azure への移行の要件に準拠していることを確認します。 
+VMware サーバーと VM が、Azure への移行の要件に準拠していることを確認します。
 
 1. VMware サーバーの要件を[確認](migrate-support-matrix-vmware-migration.md#vmware-requirements-agent-based)します。
 2. 移行のための VM の要件を[確認](migrate-support-matrix-vmware-migration.md#vm-requirements-agent-based)します。
@@ -139,7 +139,7 @@ VMware サーバーと VM が、Azure への移行の要件に準拠している
 
 ## <a name="set-up-the-replication-appliance"></a>レプリケーション アプライアンスを設定する
 
-この手順では、ダウンロードした Open Virtualization Application (OVA) テンプレートを使用してアプライアンスを設定する方法について説明します。 この方法が使用できない場合は、[スクリプトを使用](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance)してアプライアンスを設定してください。 
+この手順では、ダウンロードした Open Virtualization Application (OVA) テンプレートを使用してアプライアンスを設定する方法について説明します。 この方法が使用できない場合は、[スクリプトを使用](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance)してアプライアンスを設定してください。
 
 ### <a name="download-the-replication-appliance-template"></a>レプリケーション アプライアンスのテンプレートをダウンロードする
 
@@ -159,7 +159,7 @@ VMware サーバーと VM が、Azure への移行の要件に準拠している
     ![Recovery Services コンテナーの作成](./media/tutorial-migrate-vmware-agent/create-resources.png)  
 
     > [!NOTE]
-    > Azure Migrate プロジェクトの作成時に、その接続方法としてプライベート エンドポイントを選択した場合、Recovery Services コンテナーも、プライベート エンドポイント接続用に構成されます。 レプリケーション アプライアンスからプライベート エンドポイントに到達できることを確認してください。[**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
+    > Azure Migrate プロジェクトの作成時に、その接続方法としてプライベート エンドポイントを選択した場合、Recovery Services コンテナーも、プライベート エンドポイント接続用に構成されます。 レプリケーション アプライアンスからプライベート エンドポイントに到達できることを確認してください。[**詳細情報**](troubleshoot-network-connectivity.md)
 
 
 8. **[新しいレプリケーション アプライアンスをインストールしますか?]** で、 **[レプリケーション アプライアンスのインストール]** を選択します。
@@ -173,7 +173,7 @@ VMware サーバーと VM が、Azure への移行の要件に準拠している
 OVF テンプレートのダウンロード後、それを VMware にインポートして、Windows Server 2016 を稼働させている VMware VM 上にレプリケーション アプリケーションを作成します。
 
 1. VMware vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
-2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択し、 **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** ウィザードを起動します。 
+2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択し、 **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** ウィザードを起動します。
 3. **[Select source]\(ソースの選択\)** で、ダウンロードした OVF の場所を入力します。
 4. **[Review details]\(詳細の確認\)** で、 **[Next]\(次へ\)** を選択します。
 5. **[Select name and folder]\(名前とフォルダーの選択\)** および **[Select configuration]\(構成の選択\)** は、既定の設定のままにします。
@@ -250,11 +250,11 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 9. 移行したい各 VM を確認します。 その後、 **[次へ:ターゲット設定]** をクリックします。
 10. **[ターゲット設定]** で、サブスクリプションと、移行先となるターゲット リージョンを選択し、移行後に Azure VM が配置されるリソース グループを指定します。
 11. **[仮想ネットワーク]** で、移行後に Azure VM の参加先となる Azure VNet およびサブネットを選択します。  
-12. プロジェクト用に自動的に作成されたキャッシュ ストレージ アカウントを使用する場合、 **[キャッシュ ストレージ アカウント]** のオプションは既定のままにします。 レプリケーションのキャッシュ ストレージ アカウントとして別のストレージ アカウントを指定したい場合は、ドロップ ダウンを使用してください。 <br/> 
+12. プロジェクト用に自動的に作成されたキャッシュ ストレージ アカウントを使用する場合、 **[キャッシュ ストレージ アカウント]** のオプションは既定のままにします。 レプリケーションのキャッシュ ストレージ アカウントとして別のストレージ アカウントを指定したい場合は、ドロップ ダウンを使用してください。 <br/>
     > [!NOTE]
     >
     > - Azure Migrate プロジェクトの接続方法としてプライベート エンドポイントを選択した場合、Recovery Services コンテナーに、キャッシュ ストレージ アカウントへのアクセス権を付与します。 [**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
-    > - プライベート ピアリングによる ExpressRoute を使用してレプリケートするには、キャッシュ ストレージ アカウント用のプライベート エンドポイントを作成します。 [**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+    > - プライベート ピアリングによる ExpressRoute を使用してレプリケートするには、キャッシュ ストレージ アカウント用のプライベート エンドポイントを作成します。 [**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional)
 13. **[可用性オプション]** で、以下を選択します。
     -  可用性ゾーン。移行されたマシンをリージョン内の特定の可用性ゾーンにピン留めします。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションを選択した場合は、[コンピューティング] タブで選択した各マシンに使用する可用性ゾーンを指定する必要があります。このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。
     -  可用性セット。移行されたマシンを可用性セットに配置します。 このオプションを使用するには、選択されたターゲット リソース グループに 1 つ以上の可用性セットが必要です。
@@ -266,7 +266,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
    > [!NOTE]
    > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
-  
+
 15. **[Azure ハイブリッド特典]** で、
 
     - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 続けて、 **[次へ]** をクリックします。
@@ -276,14 +276,14 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 16. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)に準拠している必要があります。
 
-   - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。 
-    - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。 
+   - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
+    - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
     - **可用性ゾーン**:使用する可用性ゾーンを指定します。
     - **可用性セット**:使用する可用性セットを指定します。
 
 17. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
     - レプリケーションからディスクを除外できます。
-    - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
+    - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。
 
 18. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
 
@@ -293,10 +293,10 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 ## <a name="track-and-monitor"></a>追跡して監視する
 
-1. ポータルの通知で、ジョブの状態を追跡します。 
+1. ポータルの通知で、ジョブの状態を追跡します。
 
     ![ジョブの追跡](./media/tutorial-migrate-vmware-agent/jobs.png)
-    
+
 2. レプリケーションの状態を監視するには、**サーバーをレプリケートしています** をクリックします (**Azure Migrate:Server Migration** 内)。
 
     ![レプリケーションを監視します](./media/tutorial-migrate-vmware-agent/replicate-servers.png)
@@ -311,7 +311,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 差分レプリケーションが開始されるとき、Azure への完全な移行を実行する前に、VM のテスト移行を実行できます。 各マシンで少なくとも 1 回は、移行前にこれを実行することを強くお勧めします。
 
-- テスト移行を実行すると、移行が想定どおりに動作することが確認されます。オンプレミスのマシンに影響はなく、稼働状態が維持され、レプリケーションが続行されます。 
+- テスト移行を実行すると、移行が想定どおりに動作することが確認されます。オンプレミスのマシンに影響はなく、稼働状態が維持され、レプリケーションが続行されます。
 - テスト移行では、レプリケートされたデータを使用して Azure VM を作成することによって、移行がシミュレートされます (通常は、自分の Azure サブスクリプション内の非運用 VNet に移行されます)。
 - レプリケートされたテスト Azure VM を使用して、移行を検証し、アプリのテストを実行して、完全な移行前に問題に対処することができます。
 
@@ -332,7 +332,10 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
     ![移行のクリーンアップ](./media/tutorial-migrate-vmware-agent/clean-up.png)
-
+    > [!NOTE]
+    > SQL Server を実行しているサーバーを SQL VM RP に登録できるようになりました。これにより、SQL IaaS Agent 拡張機能を使用した自動修正、自動バックアップ、簡略化されたライセンス管理を利用できるようになります。
+    >- **[管理]**  >  **[Replicating servers]\(レプリケートしているサーバー\)**  >  **[Machine containing SQL server]\(SQL サーバーを含むマシン\)**  >  **[コンピューティングとネットワーク]** を選択し、 **[はい]** を選択して SQL VM RP に登録します。
+    >- アクティブなソフトウェア アシュアランスまたは SQL Server サブスクリプションの対象となっている SQL Server インスタンスがあり、移行するマシンに特典を適用する場合は、[SQL Server の Azure ハイブリッド特典] を選択します。
 
 ## <a name="migrate-vms"></a>VM の移行
 
@@ -344,7 +347,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 2. **[マシンのレプリケート]** で VM を右クリックし、 **[移行]** を選択します。
 3. **[移行]**  >  **[仮想マシンをシャットダウンし、データ損失のない計画された移行を実行しますか]** で、 **[はい]**  >  **[OK]** の順に選択します。
-    - データの損失を最小限にするため、既定では、オンプレミスの VM が Azure Migrate によってシャットダウンされます。 
+    - データの損失を最小限にするため、既定では、オンプレミスの VM が Azure Migrate によってシャットダウンされます。
     - VM をシャットダウンしたくない場合は、 **[いいえ]** を選択します
 4. VM に対して移行ジョブが開始されます。 Azure 通知でジョブを追跡します。
 5. ジョブが完了したら、 **[仮想マシン]** ページで VM を表示して管理できます。
@@ -361,7 +364,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 5. 移行された Azure VM インスタンスにトラフィックを切り替えます。
 6. ローカル VM インベントリからオンプレミスの VM を削除します。
 7. ローカル バックアップからオンプレミスの VM を削除します。
-8. Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。 
+8. Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。
 
 ## <a name="post-migration-best-practices"></a>移行後のベスト プラクティス
 

@@ -1,30 +1,30 @@
 ---
 title: Azure Storage を使用してクラウドに画像データをアップロードする | Microsoft Docs
 description: Web アプリで Azure Blob Storage を使用して、ストレージ アカウントにアプリ データを格納します。 このチュートリアルでは、Azure Storage に画像を格納したりその画像を表示したりする Web アプリを作成します。
-author: twooley
+author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 06/24/2020
-ms.author: twooley
+ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f751b93a7d298763da5a37a54f400d6fc56a58e3
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a2a73c081a24d0efc8197a2d6808f4dfee94481a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277965"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591676"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル:Azure Storage を使用してクラウドに画像データをアップロードする
 
-このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Web アプリをデプロイする方法について説明します。 この Web アプリは、Azure Blob Storage クライアント ライブラリを使用してストレージ アカウントに画像をアップロードします。 終了すると、Azure Storage に画像を格納して表示する Web アプリが完成します。
+このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Web アプリをデプロイする方法について説明します。 この Web アプリでは、Azure Blob Storage クライアント ライブラリを使用してストレージ アカウントに画像をアップロードします。 終了すると、Azure Storage に画像を格納して表示する Web アプリが完成します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 ![.NET の画像サイズ変更アプリ](media/storage-upload-process-images/figure2.png)
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 ![JavaScript の画像サイズ変更アプリ](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
@@ -158,7 +158,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>GitHub リポジトリからサンプル アプリをデプロイする
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。
 
@@ -176,7 +176,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。
 
@@ -196,7 +196,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>Web アプリの設定を構成する
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 このサンプル Web アプリでは、[.NET 用 Azure Storage API](/dotnet/api/overview/azure/storage) シリーズを使用して、画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
 
@@ -216,7 +216,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 このサンプル Web アプリでは、[JavaScript 用の Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)を使用して画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
 
@@ -240,7 +240,7 @@ Web アプリのデプロイと構成が済むと、アプリで画像のアッ�
 
 Web アプリをテストするには、発行したアプリの URL に移動します。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 **[写真のアップロード]** 領域を選択し、ファイルを指定してアップロードするか、ファイルを領域にドラッグします。 正常にアップロードされると、画像は表示されなくなります。 **[Generated Thumbnails]** セクションは、後でこのチュートリアルの中でテストするまで空のままになります。
 
@@ -282,7 +282,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (String, String) コンストラクター](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 **[Choose File]** を選択してファイルを選び、 **[Upload Image]** をクリックします。 **[Generated Thumbnails]** セクションは、後でこのチュートリアルの中でテストするまで空のままになります。
 
@@ -382,7 +382,7 @@ router.post('/', uploadStrategy, async (req, res) => {
     await blockBlobClient.uploadStream(stream,
       uploadOptions.bufferSize, uploadOptions.maxBuffers,
       { blobHTTPHeaders: { blobContentType: "image/jpeg" } });
-    res.render('success', { message: 'File uploaded to Azure Blob storage.' });
+    res.render('success', { message: 'File uploaded to Azure Blob Storage.' });
   } catch (err) {
     res.render('error', { message: err.message });
   }
@@ -411,11 +411,11 @@ module.exports = router;
 
 アプリに戻って、**thumbnails** コンテナーにアップロードした画像が表示されていることを確認します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 ![新しい画像が表示された .NET 画像サイズ変更アプリ](media/storage-upload-process-images/figure2.png)
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 ![新しい画像が表示された Node.js 画像サイズ変更アプリ](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 

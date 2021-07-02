@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 03/16/2021
-  ms.openlocfilehash: 95b9b1d9ea947017f87b209eaa1b9995b08192b4
-  ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+  ms.date: 06/02/2021
+  ms.openlocfilehash: 1efbad4bf3d35bab919dd564926fe5cbcf3e1202
+  ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/02/2021
-  ms.locfileid: "106219214"
+  ms.lasthandoff: 06/04/2021
+  ms.locfileid: "111411793"
 landingContent:
 - title: Azure Policy について
   linkLists:
@@ -33,10 +33,12 @@ landingContent:
       url: ./concepts/assignment-structure.md
     - text: 除外の構造
       url: ./concepts/exemption-structure.md
-  - linkListType: video
+  - linkListType: architecture
     links:
-    - text: Build 2018 での Azure Policy
-      url: https://channel9.msdn.com/events/Build/2018/THR2030
+    - text: クラウド導入フレームワーク (ガバナンス)
+      url: /azure/cloud-adoption-framework/govern/
+    - text: エンタープライズ規模のランディング ゾーン
+      url: /azure/cloud-adoption-framework/ready/enterprise-scale/
 - title: はじめに
   linkLists:
   - linkListType: quickstart

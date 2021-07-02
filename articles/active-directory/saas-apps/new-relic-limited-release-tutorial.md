@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: ba6a06b51a9fd3a4efec98d5a713d1a791e9a321
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 96794d2ab07f9fe352f611c7d0cf511067928bee
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136915"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413197"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と New Relic の統合
 
@@ -31,7 +31,7 @@ ms.locfileid: "108136915"
 開始するには、以下が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* シングル サインオン (SSO) が有効な New Relic サブスクリプション。
+* [New Relic One アカウント/ユーザー モデル](https://docs.newrelic.com/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models)の New Relic 組織 (Pro または Enterprise エディション)。 詳細については、[New Relic の要件](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more)を参照してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -76,11 +76,8 @@ New Relic に対して Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、 **[識別子]** および **[応答 URL]** の値を入力します。
 
-   * これらの値は、New Relic **My Organization** アプリケーションを使用して取得します。 このアプリケーションを使用するには、次の手順を実行します。
-      1. New Relic に[サインイン](https://login.newrelic.com/)します。
-      1. 上部のメニューで、 **[Apps]\(アプリ\)** を選択します。
-      1. **[Your apps]\(ご使用のアプリ\)** セクションで、 **[My Organization]**  >  **[Authentication domains]\(認証ドメイン\)** を選択します。
-      1. Azure AD SSO を接続する認証ドメインを選択します (複数の認証ドメインがある場合)。 ほとんどの企業では、**Default (既定値)** という認証ドメインしかありません。 認証ドメインが 1 つしかない場合は、何も選択する必要はありません。
+   * これらの値は、[New Relic の認証ドメイン UI](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#ui) から取得します。 そこから、次の手順に従います。 
+      1. 複数の認証ドメインがある場合は、Azure AD SSO を接続するものを選択します。 ほとんどの企業では、**Default (既定値)** という認証ドメインしかありません。 認証ドメインが 1 つしかない場合は、何も選択する必要はありません。
       1. **[Authentication]\(認証\)** セクションの **[Assertion consumer URL]\(アサーション コンシューマー URL\)** には、 **[Reply URL]\(応答 URL\)** に使用する値が含まれています。
       1. **[Authentication]\(認証\)** セクションの **[Our entity ID]\(自分たちのエンティティ ID\)** には、 **[Identifier]\(識別子\)** に使用する値が含まれています。
 
@@ -119,13 +116,11 @@ New Relic に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-new-relic-sso"></a>New Relic SSO の構成
 
-次の手順に従って、New Relic で SSO を構成します。
+次の手順に従って、New Relic で SSO を構成します。 
 
 1. New Relic に[サインイン](https://login.newrelic.com/)します。
 
-1. 上部のメニューで、 **[Apps]\(アプリ\)** を選択します。
-
-1. **[Your apps]\(ご使用のアプリ\)** セクションで、 **[My Organization]**  >  **[Authentication domains]\(認証ドメイン\)** を選択します。
+1. [認証ドメイン UI](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#ui) に移動します。 
 
 1. Azure AD SSO を接続する認証ドメインを選択します (複数の認証ドメインがある場合)。 ほとんどの企業では、**Default (既定値)** という認証ドメインしかありません。 認証ドメインが 1 つしかない場合は、何も選択する必要はありません。
 
@@ -143,9 +138,7 @@ New Relic に対して Azure AD SSO を構成してテストするには、次�
 
 1. New Relic に[サインイン](https://login.newrelic.com/)します。
 
-1. 上部のメニューで、 **[Apps]\(アプリ\)** を選択します。
-
-1. **[Your apps]\(ご使用のアプリ\)** セクションで、 **[User Management]\(ユーザー管理\)** を選択します。
+1. [**ユーザー管理** ＵＩ](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#where) に移動します。
 
 1. **[ユーザーの追加]** を選択します。
 
@@ -175,4 +168,8 @@ New Relic に対して Azure AD SSO を構成してテストするには、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-New Relic を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+完了したら、[**ユーザー管理** UI](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#where) に移動してユーザーが表示されているか見ることで、New Relic に追加されたことを確認できます。 
+
+次に、ユーザーを特定の New Relic アカウントまたはロールに割り当てる必要があります。 詳細については、[ユーザー管理の概念](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#understand-concepts)に関するセクションを参照してください。 
+
+New Relic の認証ドメイン UI では、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御など、[その他の設定](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#session-mgmt)を構成できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 583124e9e3ca657ee13e4726eda981ae26022856
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6c9d2e82e048a8693175974d6ef664d67e9deac8
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138519"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652654"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>チュートリアル: 既存のカスタム ドメインを Azure Spring Cloud にマップする
 
@@ -89,7 +89,7 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 1. 上部のメニューで、 **[生成/インポート]** をクリックします。
 1. **[証明書の作成]** ダイアログの **[証明書の作成方法]** で、[`Import`] を選択します。
 1. **[証明書ファイルのアップロード]** で、証明書の場所に移動し、選択します。
-1. **[パスワード]** で、証明書の秘密キーを入力します。
+1. **[パスワード]** では、パスワードで保護された証明書ファイルをアップロードする場合、ここにパスワードを指定します。 それ以外の場合は空白のまま残します。 証明書ファイルが正常にインポートされると、このパスワードはキー コンテナーによって削除されます。
 1. **Create** をクリックしてください。
 
     ![証明書のインポート 1](./media/custom-dns-tutorial/import-certificate-a.png)

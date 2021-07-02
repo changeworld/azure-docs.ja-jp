@@ -1,7 +1,7 @@
 ---
-title: イメージの分類チュートリアル:モデルをトレーニングする
+title: 'チュートリアル: Jupyter Notebook の例をトレーニングする'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用し、Python Jupyter Notebook で scikit-learn を使用して画像の分類モデルをトレーニングします。 このチュートリアルは、2 部構成の第 1 部です。
+description: Azure Machine Learning を使用し、クラウドベースの Python Jupyter Notebook で scikit-learn を使用して画像分類モデルをトレーニングします。 このチュートリアルは、2 部構成の第 1 部です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,15 +9,15 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 04/26/2021
-ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 41f7870bdab36de69251bb1274472ec16d05d0a5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: seodec18, devx-track-python, contperf-fy21q4
+ms.openlocfilehash: 544b3ac4702f8ecaa66735f8e0b836cc6f004f42
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773865"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028255"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
+# <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>チュートリアル: Jupyter Notebook の例を使用して画像分類モデルをトレーニングする 
 
 このチュートリアルでは、機械学習モデルのトレーニングをリモートのコンピューティング リソース上で行います。 Python Jupyter Notebook 内の Azure Machine Learning に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
 
@@ -124,7 +124,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>ワークスペースに接続する
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、詳細情報が `ws` という名前のオブジェクトに読み込まれます。
+既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace.from_config()` は、**config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクト内に読み込みます。  コンピューティング インスタンスでは、このファイルのコピーがルート ディレクトリに保存されます。  コードを別の場所で実行する場合は、[ファイルを作成する](how-to-configure-environment.md#workspace)必要があります。
 
 ```python
 # load workspace configuration from the config.json file in the current folder.

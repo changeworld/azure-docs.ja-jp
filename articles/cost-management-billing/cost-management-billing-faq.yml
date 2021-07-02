@@ -7,14 +7,14 @@ metadata:
   ms.reviewer: adwise
   ms.service: cost-management-billing
   ms.topic: conceptual
-  ms.date: 04/15/2021
+  ms.date: 05/21/2021
   ms.author: banders
-  ms.openlocfilehash: 4d56dcf2d6aed950723170f542a45f5ab5a9e405
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: 36dff080da94b899680222eb1dd7c7955f1e093b
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108765613"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111962730"
 title: Azure Cost Management + Billing についてよくあるご質問 (FAQ)
 summary: ''
 sections:
@@ -32,15 +32,18 @@ sections:
   - question: なぜ請求されるのですか? 私が使用しているのは Azure 無料アカウントです。
     answer: >
       無料サービスには制限があります。 おそらく、無料の制限を超過していると思われます。 「[Azure 無料アカウントでの課金を避ける](manage/avoid-charges-free-account.md)」を参照してください。
-  - question: 請求書の見方を教えてください。
+  - question: 課金と調整料金を把握するにはどうすればよいですか?
     answer: >
-      Azure Web サイトから Azure サブスクリプションを購入した場合は、[個々の Azure サブスクリプションの課金書を確認する](understand/review-individual-bill.md)方法に関するページを参照してください。
+      Azure Web サイトから Azure サブスクリプションを購入した場合は、[個々の Azure サブスクリプションの課金書を確認する](understand/review-individual-bill.md)方法に関するチュートリアルを参照してください。 このチュートリアルでは、請求書の料金と使用したサービスがどのように関係するかを説明します。
   - question: 料金をすぐに確認するにはどうすればよいですか?
     answer: >
       [コスト分析を使用してコストを調査および分析する](costs/quick-acm-cost-analysis.md)方法に関するページを参照してください。
   - question: 想定外の料金が課金されています。 これらの確認方法を教えてください。
     answer: >
       「[想定外の料金を分析する](understand/analyze-unexpected-charges.md)」を参照してください。
+  - question: 課金情報を変更するにはどうすればよいですか?
+    answer: >
+      「[課金情報の変更](manage/change-azure-account-profile.md)」を参照してください。
   - question: Azure サブスクリプションを取り消すにはどうすればよいですか?
     answer: >
       「[Azure サブスクリプションの取り消し](manage/cancel-azure-subscription.md)」を参照してください。
@@ -95,10 +98,10 @@ sections:
       はい。[Power BI Desktop を使用して Cost Management データに接続する](/power-bi/connect-data/desktop-connect-azure-cost-management)か、[EA 用の Cost Management Power BI アプリ](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)を使用することができます。
   - question: Cost Management ではどのような種類のプランがサポートされていますか?
     answer: >
-      「[サポートされている Microsoft Azure プラン](/azure/cost-management-billing/costs/understand-cost-mgt-data#supported-microsoft-azure-offers)」を参照してください。
+      「[サポートされている Microsoft Azure プラン](./costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)」を参照してください。
   - question: Azure Cost Management でコストと使用状況データが表示されるまでにどれくらいかかりますか?
     answer: >
-      「[コストと使用状況データの更新と保有](/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention)」を参照してください。
+      「[コストと使用状況データの更新と保有](./costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)」を参照してください。
   - question: コストに関連するすべての情報を Azure Cost Management で見つけることはできますか?
     answer: >
       「[Cost Management に含まれるコスト](costs/understand-cost-mgt-data.md#costs-included-in-cost-management)」を参照してください。
@@ -140,7 +143,7 @@ sections:
     answer: >
       割引を表示するには、いくつかの方法があります。
 
-      -  EA をご利用のお客様の場合は、EA 用の Azure Cost Management Power BI アプリを使用して、[[RI Savings]\(RI の節約\) レポート](/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md)を表示できます。
+      -  EA をご利用のお客様の場合は、EA 用の Azure Cost Management Power BI アプリを使用して、[[RI Savings]\(RI の節約\) レポート](./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md#reports-available-with-the-app)を表示できます。
 
       -  [使用量 + 請求金額] データ ファイルを使用して、手動で[予約による割引を判定](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)します。
   - question: 十分に活用されていない予約を表示するにはどうすればよいですか?
@@ -151,7 +154,7 @@ sections:
       詳細については、「[Azure Reservation コストのチャージバック](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json)」を参照してください。
   - question: スポット VM に対して発生した料金を表示するにはどうすればよいですか?
     answer: >
-      「[スポット VM の料金を表示する](/azure/cost-management-billing/costs/cost-analysis-common-uses#view-your-spot-vm-charges)」を参照してください。
+      「[スポット VM の料金を表示する](./costs/cost-analysis-common-uses.md#view-your-spot-vm-charges)」を参照してください。
   - question: 予約の詳細レポートを取得するにはどうすればよいですか?
     answer: >
       API のドキュメントを参照して、[予約の詳細レポートを生成](/rest/api/cost-management/generatereservationdetailsreport)します。

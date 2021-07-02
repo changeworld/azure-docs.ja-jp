@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: 6203e20f007fc170447d0c145bbaab942834d907
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 86122297340197ede15e99b8ac3f4ff2f61713b1
+  ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110378371"
+  ms.lasthandoff: 06/07/2021
+  ms.locfileid: "111555868"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -62,20 +62,6 @@ landingContent:
       url: search-create-app-portal.md
     - text: 画像およびアプリ ファイルからテキストを抽出する
       url: cognitive-search-quickstart-blob.md
-- title: 任意のデータのインデックス作成
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: インデックスを定義する
-      url: search-what-is-an-index.md
-    - text: データのインポート
-      url: search-what-is-data-import.md
-  - linkListType: reference
-    links:
-    - text: インデックスを作成する (REST)
-      url: /rest/api/searchservice/create-index
-    - text: インデクサーを作成する (REST)
-      url: /rest/api/searchservice/create-indexer
 - title: AI によるエンリッチ
   linkLists:
   - linkListType: concept
@@ -98,6 +84,22 @@ landingContent:
     links:
     - text: 組み込みのスキル
       url: cognitive-search-predefined-skills.md
+- title: 任意のデータのインデックス作成
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: インデックスを定義する
+      url: search-what-is-an-index.md
+    - text: データのインポート
+      url: search-what-is-data-import.md
+    - text: Power Query コネクタを使用してインデックスを付ける
+      url: search-how-to-index-power-query-data-sources.md
+  - linkListType: reference
+    links:
+    - text: インデックスを作成する (REST)
+      url: /rest/api/searchservice/create-index
+    - text: インデクサーを作成する (REST)
+      url: /rest/api/searchservice/create-indexer
 - title: クエリ データ
   linkLists:
   - linkListType: concept
