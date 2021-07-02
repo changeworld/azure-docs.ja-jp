@@ -58,8 +58,10 @@
         - name: Azure Arc (プレビュー)
           items:
             - name: コード プロジェクトを発行する
+              displayName: 'Arc, container, Kubernetes'
               href: create-first-function-arc-cli.md
             - name: Linux コンテナーを発行する
+              displayName: 'Arc, container, Kubernetes'
               href: create-first-function-arc-custom-container.md
     - name: データベースへの接続
       items:
@@ -352,6 +354,8 @@
           href: functions-manually-run-non-http.md
         - name: 関数アプリで依存関係を使用する
           href: bring-dependency-to-functions.md
+        - name: Python worker 拡張機能の開発
+          href: develop-python-worker-extensions.md
     - name: 配置
       items:
         - name: 継続的なデプロイ

@@ -1,21 +1,17 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 06/04/2020
+ms.date: 05/18/2021
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: 164620bdcee7ac546468354f999dcb3ad96ecf4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba804f75309b8cc05af4cf927a3eef6c1774d31a
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84731025"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110459465"
 ---
-Visual Studio の Azure Functions プロジェクト テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
+Visual Studio の Azure Functions プロジェクト テンプレートを使用すると、Azure の関数アプリに発行できる C# クラス ライブラリ プロジェクトを作成できます。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 1. Visual Studio メニューで、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。
 
@@ -27,9 +23,9 @@ Visual Studio の Azure Functions プロジェクト テンプレートでは、
 
     | 設定      | 値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Functions ランタイム** | **Azure Functions v3 <br />(.NET Core)** | この値は、.NET Core 3.x をサポートする Azure Functions のバージョン 3.x ランタイムを使用する関数プロジェクトを作成します。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../articles/azure-functions/functions-versions.md)」をご覧ください。   |
+    | **.NET バージョン** | **.NET Core 3 (LTS)** | この値は、.NET Core 3.x をサポートする Azure Functions のバージョン 3.x ランタイムを使用する関数プロジェクトを作成します。 Azure Functions 1.x では、.NET Framework がサポートされます。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../articles/azure-functions/functions-versions.md)」をご覧ください。   |
     | **関数テンプレート** | **HTTP トリガー** | この値は、HTTP 要求によってトリガーされる関数を作成します。 |
-    | **ストレージ アカウント (AzureWebJobsStorage)**  | **ストレージ エミュレーター** | Azure Function にはストレージ アカウントが必要であるため、プロジェクトを Azure に発行するときに割り当てられるか、作成されます。 HTTP トリガーによって、Azure Storage アカウントの接続文字列が使用されることはありません。その他のすべてのトリガーの種類には、有効な Azure Storage アカウントの接続文字列が必要です。  |
+    | **ストレージ アカウント (AzureWebJobsStorage)**  | **ストレージ エミュレーター** | Azure の関数アプリにはストレージ アカウントが必要であるため、プロジェクトを Azure に発行する際に割り当てられるか、作成されます。 HTTP トリガーによって、Azure Storage アカウントの接続文字列が使用されることはありません。その他のすべてのトリガーの種類には、有効な Azure Storage アカウントの接続文字列が必要です。  |
     | **承認レベル** | **Anonymous** | 作成される関数を、すべてのクライアントがキーを使用せずにトリガーできます。 この承認設定により、新しい関数のテストが容易になります。 キーと承認の詳細については、「[承認キー](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)」と [HTTP と Webhook のバインド](../articles/azure-functions/functions-bindings-http-webhook.md)に関するページをご覧ください。 |
     
     

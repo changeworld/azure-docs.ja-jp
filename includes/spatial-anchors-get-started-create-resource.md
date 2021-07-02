@@ -4,12 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: 2c85e26d5a9115b00621c4099e3ed36afb224e3f
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: eb9b77e42a46ba735a5721907f9d3a7890a34131
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107880544"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111896714"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Spatial Anchors リソースを作成する
 
@@ -34,7 +35,7 @@ ms.locfileid: "107880544"
   [!INCLUDE [resource group intro text](resource-group.md)]
 
 * リソースを配置する場所 (リージョン) を選択します。
-* **[新規]** を選択して、リソースの作成を開始します。
+* **[作成]** を選択して、リソースの作成を開始します。
 
 ![リソースを作成するための [Spatial Anchors] ウィンドウのスクリーンショット。](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
@@ -46,13 +47,13 @@ ms.locfileid: "107880544"
 
 リソースの **[アカウント ID]** 値は後で使用するためにテキスト エディターにコピーしておきます。
 
-![[リソース プロパティ] ウィンドウのスクリーンショット。](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
+![[リソース プロパティ] ウィンドウのスクリーンショット。](./media/spatial-anchors-get-started-create-resource/view-resource-accountid.png)
 
 また、リソースの **[アカウント ドメイン]** 値を後で使用するためにテキスト エディターにコピーします。
 
 ![リソースのアカウント ドメイン値を示すスクリーンショット。](./media/spatial-anchors-get-started-create-resource/view-resource-domain.png)
 
-**[設定]** で **[キー]** を選択します。 **[主キー]** 値の **[アカウント キー]** を後で使用するためにテキスト エディターにコピーします。
+**[設定]** で **[アクセス キー]** を選択します。 **[主キー]** 値の **[アカウント キー]** を後で使用するためにテキスト エディターにコピーします。
 
 ![アカウントの [キー] ウィンドウのスクリーンショット。](./media/spatial-anchors-get-started-create-resource/view-account-key.png)
 

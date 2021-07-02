@@ -62,6 +62,8 @@
       href: remote-work-support.md
     - name: ネットワーク規則内の FQDN
       href: fqdn-filtering-network-rules.md
+    - name: DNS プロキシの詳細
+      href: dns-details.md
     - name: セキュリティ ベースライン
       href: /security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json
     - name: アクティブ FTP のサポート
@@ -136,7 +138,7 @@
     - name: よく寄せられる質問
       href: firewall-faq.yml
     - name: テンプレートの作成
-      href: ../azure-resource-manager/templates/template-syntax.md
+      href: ../azure-resource-manager/templates/syntax.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: コミュニティ テンプレート

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: 5a581652bfd084118b47b5693a2b2ca9e92feda9
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 187808cacd40d2be0b122263e4c10672ef90fff3
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751187"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412459"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate の検出および評価を使用して Google Cloud Platform (GCP) インスタンスを検出する
 
@@ -87,7 +87,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         * パフォーマンス ログ ユーザー。
 * **Linux サーバー** の場合:
     * 検出する Linux サーバーのルート アカウントが必要です。 ルート アカウントを提供できない場合は、[サポート マトリックス](migrate-support-matrix-physical.md#physical-server-requirements)の代替手順を参照してください。
-    * Azure Migrate では、AWS インスタンスを検出するときにパスワード認証が使用されます。 AWS インスタンスは、既定ではパスワード認証をサポートしていません。 インスタンスを検出するには、パスワード認証を有効にする必要があります。
+    * Azure Migrate では、GCP インスタンスを検出するときにパスワード認証が使用されます。 GCP インスタンスは、既定ではパスワード認証をサポートしていません。 インスタンスを検出するには、パスワード認証を有効にする必要があります。
         1. 各 Linux マシンにサインインします。
         2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
         3. ファイルで、**PasswordAuthentication** 行を見つけ、値を **yes** に変更します。

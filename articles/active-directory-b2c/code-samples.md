@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5c9c72a56b356aad3b9d948d49caf4c8de99a47e
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 4cc7bff05f7235843a05802dcd54d46e339318df
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070751"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575427"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 
@@ -47,9 +47,10 @@ ms.locfileid: "108070751"
 
 | サンプル | 説明 |
 |--------| ----------- |
-| [ms-identity-javascript-react-tutorial](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/2-call-api-b2c) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL React を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。 |
-| [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。 |
-| [javascript-nodejs-management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | B2C ディレクトリ内のユーザーを管理するために Microsoft Graph を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。|
+| [ms-identity-javascript-angular-tutorial](https://github.com/Azure-Samples/ms-identity-javascript-angular-tutorial/tree/main/3-Authorization-II/2-call-api-b2c) | Web API を呼び出す Angular シングルページ アプリケーション (SPA)。 認証は、MSAL Angular を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。 |
+| [ms-identity-javascript-react-tutorial](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/2-call-api-b2c) | Web API を呼び出す React シングルページ アプリケーション (SPA)。 認証は、MSAL React を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。 |
+| [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Web API を呼び出す VanillaJS シングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。 |
+| [javascript-nodejs-management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | B2C ディレクトリ内のユーザーを管理するために Microsoft Graph を呼び出す VanillaJS シングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。|
 
 ## <a name="consoledaemon-apps"></a>コンソールまたはデーモン アプリ
 

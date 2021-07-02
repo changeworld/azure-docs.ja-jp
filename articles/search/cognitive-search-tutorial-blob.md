@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 878bdc1224134f7b9de684635cde77d057b221a7
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94738052"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555994"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -185,7 +185,7 @@ Azure Cognitive Search では、エンリッチメントはインデックス作
 
    | スキル                 | 説明    |
    |-----------------------|----------------|
-   | [エンティティの認識](cognitive-search-skill-entity-recognition.md) | BLOB コンテナーのコンテンツから、人、組織、および場所の名前を抽出します。 |
+   | [エンティティの認識](cognitive-search-skill-entity-recognition-v3.md) | BLOB コンテナーのコンテンツから、人、組織、および場所の名前を抽出します。 |
    | [言語検出](cognitive-search-skill-language-detection.md) | コンテンツの言語を検出します。 |
    | [テキスト分割](cognitive-search-skill-textsplit.md)  | キー フレーズの抽出スキルを呼び出す前に、大きいコンテンツを小さいチャンクに分割します。 キー フレーズ抽出は、50,000 文字以下の入力を受け入れます。 いくつかのサンプル ファイルは、分割してこの制限内に収める必要があります。 |
    | [キー フレーズ抽出](cognitive-search-skill-keyphrases.md) | 上位のキー フレーズを抜き出します。 |

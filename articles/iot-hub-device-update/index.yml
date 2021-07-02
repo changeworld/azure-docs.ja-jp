@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: c098c6baa5cb976b02c8e736318f6019790ae090
-  ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+  ms.openlocfilehash: b143fb6ea1ee4c91e743bb71b3788dd2e43cd2e4
+  ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/10/2021
-  ms.locfileid: "109715450"
+  ms.lasthandoff: 06/04/2021
+  ms.locfileid: "111409867"
 landingContent:
 - title: Device Update について
   linkLists:
@@ -80,6 +80,8 @@ landingContent:
       url: /python/api/azure-mgmt-deviceupdate/
   - linkListType: reference
     links:
+    - text: データ プレーン - .NET
+      url: /dotnet/api/azure.iot.deviceupdate?view=azure-dotnet-preview&preserve-view=true
     - text: データ プレーン - JavaScript
       url: /javascript/api/@azure/iot-device-update/?view=azure-node-preview&preserve-view=true
     - text: データ プレーン - Java

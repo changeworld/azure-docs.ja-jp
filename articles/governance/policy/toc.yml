@@ -305,6 +305,8 @@
   items:
     - name: GitHub - Azure Policy サンプル
       href: 'https://github.com/Azure/azure-policy'
+    - name: エンタープライズ規模 - リファレンス実装
+      href: 'https://github.com/Azure/Enterprise-Scale#enterprise-scale---reference-implementation'
     - name: コミュニティ ツール
       items:
         - name: GitHub - コミュニティ ポリシー リポジトリ

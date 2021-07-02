@@ -18,8 +18,6 @@
   items:
     - name: LUIS ポータルを使用する
       href: luis-get-started-create-app.md
-    - name: ブラウザーの使用
-      href: luis-get-started-get-intent-from-browser.md
     - name: クライアント ライブラリと REST API の使用
       href: client-libraries-rest-api.md
 - name: サンプル
@@ -82,18 +80,14 @@
       href: luis-get-started-get-intent-from-browser.md
     - name: 移行
       items:
-        - name: 概要
-          href: migration.md
-        - name: 複合エンティティからの移行
-          href: migrate-from-composite-entity.md
-        - name: 作成リソースへの移行
-          href: luis-migration-authoring.md
-        - name: V3 API への移行
-          href: luis-migration-api-v3.md
         - name: V3 Authoring API に移行する
           href: luis-migration-authoring-entities.md
         - name: V3 Prediction API に移行する
           href: luis-migration-api-v3.md
+        - name: 複合エンティティからの移行
+          href: migrate-from-composite-entity.md
+        - name: 作成リソースへの移行
+          href: luis-migration-authoring.md
         - name: V2 API への移行
           href: luis-migration-api-v1-to-v2.md
     - name: アプリの管理
@@ -171,10 +165,6 @@
       items:
         - name: エンドポイントの発言の確認
           href: luis-concept-review-endpoint-utterances.md
-    - name: テスト
-      items:
-        - name: 対話型テスト
-          href: luis-concept-test.md
     - name: データ管理
       items:
         - name: データ コレクション
@@ -196,14 +186,12 @@
       displayName: import
     - name: LUIS を使用した DevOps プラクティスの適用
       items:
-        - name: DevOps の使用
-          href: luis-how-to-devops-with-github.md
+        - name: 継続的インテグレーションと継続的デリバリー (CI/CD) のワークフロー
+          href: luis-concept-devops-automation.md
         - name: LUIS のソース管理およびブランチ戦略
           href: luis-concept-devops-sourcecontrol.md
         - name: DevOps のテスト
           href: luis-concept-devops-testing.md
-        - name: CI/CD ワークフロー
-          href: luis-concept-devops-automation.md
 - name: チュートリアル
   items:
     - name: 分解可能なアプリの作成
@@ -356,8 +344,6 @@
           items:
             - name: 機械学習エンティティ
               href: reference-entity-machine-learned-entity.md
-            - name: 複合エンティティ
-              href: reference-entity-composite.md
             - name: リスト エンティティ
               href: reference-entity-list.md
             - name: Pattern.any エンティティ

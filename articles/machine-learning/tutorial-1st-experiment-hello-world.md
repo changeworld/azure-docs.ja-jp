@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:"Hello world!" を実行する Python スクリプト
+title: 'チュートリアル: Python スクリプトを使ってみる'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 入門シリーズの第 1 部では、簡単な "Hello world!" Python スクリプトをクラウドに送信する方法について説明します。 Python script to the cloud.
+description: Azure Machine Learning で Python スクリプトを初めて使ってみます。 これは、3 部構成の入門シリーズのパート 1 です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,25 +10,25 @@ author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
-ms.custom: devx-track-python
-ms.openlocfilehash: d50105b88c7c719aa1d89aaa3f29fad43abc0a28
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: ccc28c5a20fd31d3200f6473210150587fd5b4ad
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740815"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028633"
 ---
-# <a name="tutorial-run-a-hello-world-python-script-part-1-of-3"></a>チュートリアル:"Hello world!" Python スクリプトを実行する (パート 2/4) Python script (part 1 of 3)
+# <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>チュートリアル: Azure Machine Learning で Python スクリプトを使ってみる (パート 1/3)
 
-このチュートリアルでは、Azure Machine Learning SDK for Python を使用して、Python の "Hello World" スクリプトを送信および実行する方法について説明します。  スクリプトを入手してください。
+このチュートリアルでは、Azure Machine Learning を使用して、初めての Python スクリプトをクラウドで実行します。 このチュートリアルは、"*3 部構成のチュートリアル シリーズのパート 1*" です。
 
-このチュートリアルは、"*3 部構成のチュートリアル シリーズのパート 1*" であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 
+このチュートリアルでは、機械学習モデルのトレーニングの複雑さを回避しています。 クラウドで、"Hello World" Python スクリプトを実行します。 Azure Machine Learning で実行を構成して作成するために、コントロール スクリプトを使用する方法について説明します。
 
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * "Hello world!" Python スクリプトをローカルで作成して実行する。 Python script.
-> * Azure Machine Learning に "Hello world" を送信する Python コントロール スクリプトを作成する。 to Azure Machine Learning.
+> * "Hello world!" Python スクリプトをローカルで作成して実行する。 (訳文なし)
+> * Azure Machine Learning に "Hello world" を送信する Python コントロール スクリプトを作成する。 (訳文なし)
 > * コントロール スクリプトでの Azure Machine Learning の概念を理解する。
 > * "Hello World" スクリプトを送信して実行する  スクリプトを入手してください。
 > * クラウドでのコード出力を表示する。
@@ -129,7 +129,7 @@ print(aml_url)
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) は、`hello.py` コードをラップしてワークスペースに渡します。 名前に示されているように、このクラスを使用して、Azure Machine Learning で _スクリプト_ を _実行_ する方法を _構成_ できます。 スクリプトを実行するコンピューティング ターゲットも指定します。 このコードでは、ターゲットは[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスターです。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) は、`hello.py` コードをラップしてワークスペースに渡します。 名前に示されているように、このクラスを使用して、Azure Machine Learning で _スクリプト_ を _実行_ する方法を _構成_ できます。 スクリプトを実行するコンピューティング ターゲットも指定します。 このコードでは、ターゲットは[セットアップ チュートリアル](./quickstart-create-resources.md)で作成したコンピューティング クラスターです。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -157,6 +157,9 @@ print(aml_url)
 **[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択してコントロール スクリプトを実行すると、[セットアップ チュートリアル](quickstart-create-resources.md)で作成したコンピューティング クラスターで `hello.py` が実行されます。
 
 ターミナルで、認証のためにサインインを求められる場合があります。  コードをコピーし、リンクをクリックしてこの手順を完了してください。
+
+> [!TIP]
+> コンピューティング クラスターの作成が完了すると、"UserError: Required Docker image not found...(ユーザー エラー: 必要な Docker イメージが見つかりません)" というエラーが表示される場合があります。この場合、5 分ほど待機し、再試行してください。  コンピューティング クラスターでは、ノードを起動する準備が整うまでに、多くの時間が必要になる場合があります。
 
 > [!div class="nextstepaction"]
 > [クラウドでコードを送信しました](?success=submit-to-cloud#monitor) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
