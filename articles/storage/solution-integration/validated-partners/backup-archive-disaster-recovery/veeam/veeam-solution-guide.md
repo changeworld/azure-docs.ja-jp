@@ -169,9 +169,9 @@ Azure をバックアップ ターゲットとして使用する場合は、[Azu
 
      1. 追加の[セキュリティに関するベスト プラクティス](../../../../../storage/blobs/security-recommendations.md)を構成します。
 
-8. Veaam Backup and Replication 管理コンソールで、 **[Backup Infrastructure]\(バックアップ インフラストラクチャ\)** に移動し、概要ウィンドウで右クリックし、 **[Add Backup Repository]\(バックアップ リポジトリの追加\)** を選択して構成ウィザードを開きます。 ダイアログ ボックスで、**オブジェクト ストレージ** ->  **[Microsoft Azure Blob Storage]**  ->  **[Azure Blob Storage]** の順に選択します。
+8. Veaam Backup and Replication 管理コンソールで、 **[Backup Infrastructure]\(バックアップ インフラストラクチャ\)** に移動し、概要ウィンドウで右クリックし、 **[Add Backup Repository]\(バックアップ リポジトリの追加\)** を選択して構成ウィザードを開きます。 ダイアログ ボックスで、**[Object storage]** ->  **[Microsoft Azure Blob Storage]**  ->  **[Azure Blob Storage]** の順に選択します。
 
-    ![Veeam リポジトリ ウィザードでのオブジェクト ストレージの選択を示します。](../media/veeam-repo-a.png)
+    ![Veeam リポジトリ ウィザードでの Object storage の選択を示します。](../media/veeam-repo-a.png)
 
     ![Veeam リポジトリ ウィザードでの Microsoft Azure Blob Storage の選択を示します。](../media/veeam-repo-b.png)
 
