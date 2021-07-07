@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d63399d0f492f85a4a2d57a595a6d8ef5b606d92
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 52ed294146edbd70f21af4f706ad68f3aa6662dc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599521"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076818"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -56,16 +56,7 @@ Anomaly Detector を利用すると、時系列データ全体で異常を自動
 
 Anomaly Detector API を呼び出す方法については、こちらの [ Notebook](https://aka.ms/adNotebook) をお試しください。 この Jupyter Notebook では、API 要求を送信して結果を視覚化する方法について説明しています。
 
-Notebook を実行するには、次の手順を完了します。
-
-1. 有効な Anomaly Detector API サブスクリプション キーと API エンドポイントを取得します。 下のセクションに新規登録方法があります。
-1. 右上隅でサインインし、[複製] を選択します。
-1. 複製操作を完了する前に、ダイアログ ボックスの [パブリック] オプションをオフにします。そうしないと、すべてのサブスクリプション キーを含め、ノートブックはパブリックになります。
-1. **[Run on free compute]\(無料のコンピューティングで実行\)** を選択します
-1. いずれかのノートブックを選択します。
-1. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。
-1. `endpoint` 変数を自分のエンドポイントに変更します。 例: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. 上部のメニュー バーで **[セル]** 、 **[すべてを実行]** の順に選択します。
+Notebook を実行するには、有効な Anomaly Detector API **サブスクリプション キー** と **API エンドポイント** を取得する必要があります。 ノートブックで、有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加し、`endpoint` 変数をエンドポイントに変更します。
 
 ## <a name="workflow"></a>ワークフロー
 

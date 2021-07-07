@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 7cb52dba88d94ed52baa8272c7f20fed4bcde0fd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 90e1b951cd3990df3615cdcf33a4d659f693b5ee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787547"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064884"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
 
@@ -77,6 +77,8 @@ DPS を使用すると、次のことが可能になります。
 ## <a name="implement-the-device"></a>デバイスを実装する
 
 IoT Central デバイス テンプレートには、その種類のデバイスで実装されるべき動作を指定する "_モデル_" が含まれています。 動作には、テレメトリ、プロパティ、コマンドが含まれます。
+
+モデルの編集に関するベスト プラクティスの詳細については、「[既存のデバイス テンプレートを編集する](howto-edit-device-template.md)」を参照してください。
 
 > [!TIP]
 > モデルは、[Digital Twins Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) JSON ファイルとして IoT Central からエクスポートできます。

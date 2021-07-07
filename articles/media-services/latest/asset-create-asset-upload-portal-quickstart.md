@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 036db7999ce6d5fd84ad6210aa50206e2b031b2f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6c6dd03956329fd85862b7e211c24966f7eec64f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369357"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495213"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>クイック スタート:ポータルでコンテンツをアップロード、エンコード、およびストリーム配信する
 
@@ -36,7 +36,7 @@ ms.locfileid: "110369357"
 
         現在、Azure portal を使用して、TTML および WebVTT クローズド キャプション ファイルを生成することができます。 これらの形式のファイルを使用して、聴覚障がいを持つユーザーがオーディオ ファイルとビデオ ファイルにアクセスできるようにします。 また、コンテンツからキーワードを抽出することもできます。
 
-        ビデオおよびオーディオ ファイルから分析情報を抽出できるリッチなエクスペリエンスを実現するには、Media Services v3 プリセットを使用します (「[チュートリアル: Media Services v3 を使用してビデオを分析する](analyze-videos-tutorial.md)」を参照してください)。 <br/>より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。    
+        ビデオおよびオーディオ ファイルから分析情報を抽出できるリッチなエクスペリエンスを実現するには、Media Services v3 プリセットを使用します (「[チュートリアル: Media Services v3 を使用してビデオを分析する](analyze-videos-tutorial.md)」を参照してください)。 <br/>より詳細な分析情報が必要な場合は [Video Analyzer for Media](../../azure-video-analyzer/video-analyzer-for-media-docs/index.yml) を直接使用します。    
 * コンテンツが処理されると、メディア コンテンツをクライアント プレーヤーに配信できます。 出力資産内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター** を作成する必要があります。 **ストリーミング ロケーター** を作成するときは、**ストリーミング ポリシー** を指定する必要があります。 **ストリーミング ポリシー** を使用して、**ストリーミング ロケーター** のためのストリーミング プロトコルと暗号化オプション (該当する場合) を定義できます。
     
     レビュー:

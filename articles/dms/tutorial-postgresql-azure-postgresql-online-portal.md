@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: d28c45b2d0fc1a123f44020f42c4d2c59c593cb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d81e43958bf9d4bb8cc20d57ba7ca7a49387f07
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709922"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070032"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -110,54 +110,9 @@ Azure Database Migration Service を使用して、アプリケーションへ�
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental citus < dvdrentalSchema.sql
     ```
 
-4. 外部キー削除スクリプトを抽出し、ターゲット (Azure Database for PostgreSQL) に追加するには、PgAdmin または psql で次のスクリプトを実行します。
+   > [!NOTE]
+   > 移行サービスにより、外部キーの有効化/無効化が内部的に処理され、信頼性のある堅牢なデータ移行が確保されるようトリガーされます。 そのため、ターゲット データベース スキーマの変更は検討する必要はありません。
 
-   > [!IMPORTANT]
-   > スキーマに外部キーがあると、移行の初回の読み込みと継続的同期が失敗します。
-
-    ```
-    SELECT Q.table_name
-        ,CONCAT('ALTER TABLE ', table_schema, '.', table_name, STRING_AGG(DISTINCT CONCAT(' DROP CONSTRAINT ', foreignkey), ','), ';') as DropQuery
-            ,CONCAT('ALTER TABLE ', table_schema, '.', table_name, STRING_AGG(DISTINCT CONCAT(' ADD CONSTRAINT ', foreignkey, ' FOREIGN KEY (', column_name, ')', ' REFERENCES ', foreign_table_schema, '.', foreign_table_name, '(', foreign_column_name, ')' ), ','), ';') as AddQuery
-    FROM
-        (SELECT
-        S.table_schema,
-        S.foreignkey,
-        S.table_name,
-        STRING_AGG(DISTINCT S.column_name, ',') AS column_name,
-        S.foreign_table_schema,
-        S.foreign_table_name,
-        STRING_AGG(DISTINCT S.foreign_column_name, ',') AS foreign_column_name
-    FROM
-        (SELECT DISTINCT
-        tc.table_schema,
-        tc.constraint_name AS foreignkey,
-        tc.table_name,
-        kcu.column_name,
-        ccu.table_schema AS foreign_table_schema,
-        ccu.table_name AS foreign_table_name,
-        ccu.column_name AS foreign_column_name
-        FROM information_schema.table_constraints AS tc
-        JOIN information_schema.key_column_usage AS kcu ON tc.constraint_name = kcu.constraint_name AND tc.table_schema = kcu.table_schema
-        JOIN information_schema.constraint_column_usage AS ccu ON ccu.constraint_name = tc.constraint_name AND ccu.table_schema = tc.table_schema
-    WHERE constraint_type = 'FOREIGN KEY'
-        ) S
-        GROUP BY S.table_schema, S.foreignkey, S.table_name, S.foreign_table_schema, S.foreign_table_name
-        ) Q
-        GROUP BY Q.table_schema, Q.table_name;
-    ```
-
-5. クエリの結果内の外部キー削除 (2 列目) を実行します。
-
-6. ターゲット データベース内のトリガーを無効にするには、以下のスクリプトを実行します。
-
-   > [!IMPORTANT]
-   > データ内のトリガー (insert または update) により、ソースからデータがレプリケートされる前にターゲットにデータの整合性が適用されます。 そのため、移行時は **ターゲットの** すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを再度有効にすることをお勧めします。
-
-    ```
-    SELECT DISTINCT CONCAT('ALTER TABLE ', event_object_schema, '.', event_object_table, ' DISABLE TRIGGER ', trigger_name, ';')
-    FROM information_schema.triggers
-    ```
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 

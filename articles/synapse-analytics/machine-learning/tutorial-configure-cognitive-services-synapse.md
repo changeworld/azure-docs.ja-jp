@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 3ab861caca0ef6f58c2c1bc722412774deb725ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da1760def8f2c036854839787b1051e8f52358d0
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98936676"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809654"
 ---
 # <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>チュートリアル:Azure Synapse Analytics で Cognitive Services を使用するための前提条件
 
@@ -65,17 +65,17 @@ Azure portal で [Anomaly Detector](https://ms.portal.azure.com/#create/Microsof
    ![シークレットを作成するための選択を示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
 
    > [!IMPORTANT]
-   > このシークレット名を覚えておくか、書き留めておいてください。 後で Azure Synapse Studio から Cognitive Services に接続するときに使用します。
+   > このシークレット名を覚えておくか、書き留めておいてください。 後で Synapse Studio から Cognitive Services に接続するときに使用します。
 
 ## <a name="create-an-azure-key-vault-linked-service-in-azure-synapse"></a>Azure Synapse で Azure Key Vault リンク サービスを作成する
 
-1. Azure Synapse Studio でワークスペースを開きます。 
+1. Synapse Studio でワークスペースを開きます。 
 2. **[管理]**  >  **[リンクされたサービス]** に移動します。 先ほど作成したキー コンテナーを参照して、**Azure Key Vault** リンク サービスを作成します。 
 3. **[テスト接続]** ボタンを選択して、接続を確認します。 接続が緑色の場合は、 **[作成]** を選択し、 **[すべて公開]** を選択して変更を保存します。
 
 ![新しいリンク サービスとしての Azure Key Vault を示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
 
-これで、Azure Synapse Studio で Azure Cognitive Services エクスペリエンスを使用するためのチュートリアルのいずれかに進む準備ができました。
+これで、Synapse Studio で Azure Cognitive Services エクスペリエンスを使用するチュートリアルのいずれかに進む準備ができました。
 
 ## <a name="next-steps"></a>次の手順
 

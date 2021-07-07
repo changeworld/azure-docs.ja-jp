@@ -3,18 +3,18 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/27/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 40c683d98a13bf4810ec4575af3fba5ae64961f0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 7278211ee47ec4a291a7934fee4b56fae0d8dfc4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946993"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790385"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -110,7 +110,13 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 パートナーはスコープを使用して、Microsoft 顧客契約にオンボードされている顧客に関連付けられたコストを管理します。 スコープにより、パートナーは特定の顧客の課税前コストを請求通貨で表示できます。 特定のサブスクリプション、リソース グループ、またはリソースの課税前コストをフィルター処理することもできます。
 
-顧客スコープには、現在の CSP オファーに載っている顧客は含まれません。 このスコープには、Microsoft 顧客契約がある顧客のみが含まれます。 現在の CSP オファー顧客のエンタイトルメント コスト (Azure 使用量ではない) は、顧客フィルターを適用したときに課金アカウント スコープと課金プロファイル スコープで確認できます。 このスコープで設定される予算は請求通貨になります。
+顧客スコープには、現在の CSP オファーに載っている顧客は含まれません。 このスコープには、Microsoft 顧客契約がある顧客のみが含まれます。
+
+現在の CSP オファー顧客のエンタイトルメント コスト (Azure 使用量ではない) は、顧客フィルターを適用したときに課金アカウント スコープと課金プロファイル スコープで確認できます。 このスコープで設定される予算は請求通貨になります。
+
+顧客スコープでコストを表示するには、パートナー テナントの [コスト分析] に移動し、スコープ ピッカーを選択して、スコープの一覧から特定の顧客を選択します。 *Contoso Services* 顧客の例を次に示します。
+
+:::image type="content" source="./media/get-started-partners/customer-scope.png" alt-text="顧客スコープの選択を示すスクリーンショット。" lightbox="./media/get-started-partners/customer-scope.png" :::
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Cost Management での課金スコープへのパートナー アクセス
 
@@ -147,7 +153,7 @@ Azure portal で、"*パートナー テナント*" にサインインし、 **[
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>顧客テナントのサブスクリプション コストを表示する
 
-サブスクリプションのコストを表示するには、顧客の Azure テナントで **[コストの管理と請求]** を開きます。 必要なサブスクリプションで **[コスト分析]** を選択し、コストの確認を開始します。 各サブスクリプションの消費コストは、個別に顧客テナントで確認できます。
+サブスクリプションのコストを表示するには、顧客の Azure テナントで **[コストの管理と請求]** を開きます。 **[コスト分析]** 、必要なサブスクリプションの順に選択し、コストの確認を開始します。 各サブスクリプションの消費コストは、個別に顧客テナントで確認できます。
 
 [![顧客としてコスト分析を表示する](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 

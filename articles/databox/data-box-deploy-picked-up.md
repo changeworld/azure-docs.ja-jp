@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 05/07/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 86609d42a7c8f0e78df6b3a0019d97c951b5d378
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539113"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736239"
 ---
 ::: zone target="docs"
 
@@ -344,14 +344,14 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ::: zone target="docs"
 
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload.md)]
 
 ::: zone-end
 -->
 
 ## <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
 
-米国政府、日本、シンガポール、韓国、インド、南アフリカ、イギリス、西ヨーロッパ、オーストラリアで Data Box を使用しており、注文の作成時に自己管理の出荷を選択した場合は、次の手順に従います。
+米国政府、日本、シンガポール、韓国、インド、南アフリカ、イギリス、西ヨーロッパ、オーストラリアまたはブラジルで Data Box をお使いの方で、ご自分の注文の作成時に自己管理による出荷を選択した場合は、次の手順に従います。
 
 1. この手順が正常に完了したら、Data Box のローカル Web UI の **[発送準備]** ページに表示される承認コードをメモしておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
@@ -363,8 +363,12 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
     Body:
         1. Order name  
         2. Authorization code available after Prepare to Ship has completed [Yes/No]  
-        3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+        3. Contact name of the person dropping off. You will need to display a government-approved ID during the drop off.
     ```
+
+   > [!NOTE]
+   > - 返送に必要な情報は地域によって異なります。 
+   > - ブラジルで Data Box を返す場合、[Azure Data Box の自己管理型の発送の使用](data-box-portal-customer-managed-shipping.md)に関するページで詳細な手順をご確認ください。 
 
 ::: zone target="chromeless"
 
@@ -387,4 +391,3 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
-

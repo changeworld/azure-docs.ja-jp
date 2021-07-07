@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: bcfa0f792f77a7e02b8be5e33e2a728297655bf4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d88f3ed4dbeafc935e58096fb094518b8b0274b4
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140589"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411505"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault について
 
@@ -23,7 +23,7 @@ Azure Key Vault は、次の問題の解決に役立ちます。
 
 - **シークレットの管理** - Azure Key Vault を使用すると、トークン、パスワード、証明書、API キー、その他のシークレットを安全に格納し、それらへのアクセスを厳密に制御できます。
 - **キー管理** - Azure Key Vault は、キー管理ソリューションとしても使用できます。 Azure Key Vault により、データの暗号化に使用される暗号化キーの作成と制御が簡単になります。 
-- **証明書の管理** - Azure Key Vault は、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートの Transport Layer Security/Secure Sockets Layer (TLS/SSL) 証明書を簡単にプロビジョニング、管理、デプロイすることができるサービスでもあります。
+- **証明書の管理** - Azure Key Vault は、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートの Transport Layer Security/Secure Sockets Layer (TLS/SSL) 証明書を簡単に登録、管理、デプロイすることができるサービスでもあります。
 
 Azure Key Vault には 2 つのサービス レベルがあります。ソフトウェア キーを使用して暗号化する Standard レベルと、ハードウェア セキュリティ モジュール (HSM) で保護されたキーを含む Premium レベルです。 Standard レベルと Premium レベルの比較については、[Azure Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
 

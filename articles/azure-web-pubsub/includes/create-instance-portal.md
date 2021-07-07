@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: include
 ms.date: 03/11/2021
-ms.openlocfilehash: 72e3c56b4f8fdaeec94bff60be45aadfb9b09e76
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: e147d6f954009f8ed4267f8b947438e2e60da0b4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166953"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110486844"
 ---
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -21,11 +21,13 @@ Azure アカウントで Azure portal ([https://portal.azure.com/](https://porta
 
 アプリケーションは Azure 内の Web PubSub サービス インスタンスに接続します。
 
-1. Azure portal の左上にある [新規] ボタンを選択します。 [新規] 画面で、検索ボックスに「*Web PubSub*」と入力して Enter キーを押します。
+1. Azure portal の左上にある [新規] ボタンを選択します。 [新規] 画面で、検索ボックスに「*Web PubSub*」と入力して Enter キーを押します。 (Azure Web PubSub を `Web` カテゴリから検索することもできます)。
 
-1. 検索結果の **[Web PubSub]** を選択し、 **[作成]** を選択します。
+:::image type="content" source="../media/create-instance-portal/search-web-pubsub-in-portal.png" alt-text="Azure Web PubSub をポータルで検索しているスクリーンショット。":::
 
-1. 次の設定を入力します。
+2. 検索結果の **[Web PubSub]** を選択し、 **[作成]** を選択します。
+
+3. 次の設定を入力します。
 
     | 設定      | 推奨値  | 説明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -36,4 +38,4 @@ Azure アカウントで Azure portal ([https://portal.azure.com/](https://porta
     | **[価格レベル]** | 無料 | Azure Web PubSub サービスを無料でお試しください。 |
     | **[ユニット数]** |  適用なし | ユニット数は、Web PubSub サービス インスタンスで受け入れることができる接続の数を示します。 Standard レベルでのみ構成可能です。 |
 
-1. **[作成]** を選択して Web PubSub サービス インスタンスのデプロイを開始します。
+4. **[作成]** を選択して Web PubSub サービス インスタンスのデプロイを開始します。

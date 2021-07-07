@@ -6,15 +6,15 @@ author: nmurav
 manager: jken
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 3/23/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c7ec360d961c0960dc941c48626c3aeb3f7367ec
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 377d6783fb73c2d03f7e4dde7b352abe1eaef993
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289014"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110801"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>Azure Communication Services で高品質なメディアを確保する
 
@@ -47,7 +47,7 @@ Azure Communication Services の同時メディア セッションとその他�
 |500 kbps|360 p、30 fps のグループ ビデオ通話|
 |1.2 Mbps|720 p (HD 解像度)、30 fps の HD グループ ビデオ通話| 
 
-以下に示すのは、Android および iOS ネイティブ SDK の帯域幅要件です。
+以下に示すのは、Windows、Android、iOS のネイティブ SDK の帯域幅要件です。
 
 |帯域幅|シナリオ|
 |:--|:--|

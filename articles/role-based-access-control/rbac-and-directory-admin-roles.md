@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/31/2021
+ms.date: 05/20/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: bd5533f4bc8420ee6d8900e8a17dfe7099d7945f
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d339f058e94f27c26b4d5ae9bfcce4c66f279554
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107199"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463633"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -44,13 +44,13 @@ Azure のロールをよりよく理解するには、歴史の一部を知る�
 
 | 従来のサブスクリプション管理者 | 制限 | アクセス許可 | Notes |
 | --- | --- | --- | --- |
-| アカウント管理者 | 1 Azure アカウントに 1 人 | <ul><li>[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で課金を管理する</li><li>アカウントのすべてのサブスクリプションを管理する</li><li>新しいサブスクリプションを作成する</li><li>サブスクリプションを取り消す</li><li>サブスクリプションの課金を変更する</li><li>サービス管理者を変更する</li></ul> | 概念的には、サブスクリプションの課金の所有者です。 |
+| アカウント管理者 | 1 Azure アカウントに 1 人 | <ul><li>[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) にアクセスして、課金を管理できる</li><li>アカウント内のすべてのサブスクリプションの課金を管理する</li><li>新しいサブスクリプションを作成する</li><li>サブスクリプションを取り消す</li><li>サブスクリプションの課金を変更する</li><li>サービス管理者を変更する</li><li>サービス管理者またはサブスクリプション所有者のロールを持っていない限り、サブスクリプションを取り消すことはできない</li></ul> | 概念的には、サブスクリプションの課金の所有者です。 |
 | サービス管理者 | 1 Azure サブスクリプションに 1 人 | <ul><li>[Azure portal](https://portal.azure.com) でサービスを管理する</li><li>サブスクリプションを取り消す</li><li>共同管理者ロールにユーザーを割り当てる</li></ul> | 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。<br>サービス管理者は、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。<br>サービス管理者には、Azure portal へのフル アクセス権が与えられます。 |
 | 共同管理者 | サブスクリプションあたり 200 人 | <ul><li>サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできない</li><li>共同管理者ロールにユーザーを割り当てる。ただし、サービス管理者を変更することはできない</li></ul> | 共同管理者は、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。 |
 
 Azure portal では、 **[従来の管理者]** タブを使用して、共同管理者を管理したり、サービス管理者を表示したりできます。
 
-![Azure portal での Azure の従来のサブスクリプション管理者](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
+![Azure portal での Azure の従来のサブスクリプション管理者](./media/shared/classic-administrators.png)
 
 Azure portal では、お使いのサブスクリプションのプロパティ ブレードで、サービス管理者を表示または変更したり、アカウント管理者を表示したりすることができます。
 
@@ -85,11 +85,11 @@ Azure RBAC は Azure portal と Azure Resource Manager API の組み合わせの
 
 Azure portal では、Azure RBAC を使用したロールの割り当てが **[アクセス制御 (IAM)]** ブレードに表示されます。 このブレードは、管理グループ、サブスクリプション、リソース グループ、各種リソースなど、ポータル全体で表示されます。
 
-![Azure portal のアクセス制御 (IAM) ブレード](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
+![Azure portal のアクセス制御 (IAM) ブレード](./media/shared/sub-role-assignments.png)
 
 **[ロール]** タブをクリックすると、組み込みロールとカスタム ロールの一覧が表示されます。
 
-![Azure portal での組み込みロール](./media/rbac-and-directory-admin-roles/roles-list.png)
+![Azure portal での組み込みロール](./media/shared/roles-list.png)
 
 詳細については、[Azure portal を使用して Azure ロールを割り当てる方法](role-assignments-portal.md)に関するページを参照してください。
 

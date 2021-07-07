@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cf6553cd7c59febd19f9654e31188f127b8eb065
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 3fd6aa705a2220483534761c185ca7cac01e148e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276758"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110093612"
 ---
 # <a name="teams-interoperability"></a>Teams の相互運用性
 
@@ -22,6 +22,12 @@ ms.locfileid: "106276758"
 
 > [!IMPORTANT]
 > [チームのテナント相互運用性](../concepts/teams-interop.md)を有効または無効にするには、[このフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)を完成させてください。
+
+> [!NOTE]
+> Azure Communication Services と Microsoft Teams の間の相互運用性により、アプリケーションとユーザーは、Teams の呼び出し、会議、チャットに参加できます。 アプリケーションの開発者は、Teams の呼び出しまたは会議で記録または文字起こしが有効になったら、そのことをユーザーに通知する責任があります。 記録または文字起こしが開始され、この事実をアプリケーションのユーザー インターフェイスを通じてリアルタイムでユーザーに通知する必要があることは、Azure Communication Services API によって開発者に示されます。 この義務に準拠していないことが原因で発生したすべてのコストと損害について、開発者は Microsoft の補償する必要があります。
+
+> [!NOTE]
+> Azure API と SDK を使用しているときは合、VoIP とチャットの使用だけが Azure リソースに課金されます。 Azure Communication Services と対話する Teams クライアントは無料です。
 
 Azure Communication Services を使用すると、Microsoft Teams と対話するカスタム会議エクスペリエンスを作成できます。 Communication Services ソリューションのユーザーは、音声、ビデオ、チャット、画面共有を通じて、Teams の参加者と対話することができます。
 
@@ -52,3 +58,8 @@ Communication Services のチームの相互運用機能は、現在プライベ
 
 > [!div class="nextstepaction"]
 > [通話アプリを Teams の会議に参加させる](../quickstarts/voice-video-calling/get-started-teams-interop.md)
+
+詳細については、次の記事を参照してください。
+
+- [UI ライブラリ](./ui-library/ui-library-overview.md)について確認する
+- [UI ライブラリの機能](./ui-library/ui-library-use-cases.md)について確認する

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e0299a6fc7de0592397c20ec5c434fc2ebbcb28d
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 20c6b7286ca769de97e0b694a3b9bf37583678bc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206513"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070914"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して .NET Web アプリを構築する 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -33,7 +33,8 @@ Azure Cosmos DB は、あらゆる規模に対応する、オープン API を�
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>サンプル アプリを実行するための前提条件
 
-サンプルを実行するためには、[Visual Studio](https://www.visualstudio.com/downloads/) および有効な Azure CosmosDB アカウントが必要です。
+* [Visual Studio](https://www.visualstudio.com/downloads/)
+* Azure Cosmos DB アカウント。
 
 まだ Visual Studio を持っていない場合は、 **[ASP.NET および Web の開発]** ワークロードがセットアップと共にインストールされた状態で [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードします。
 
@@ -48,35 +49,33 @@ Azure Cosmos DB は、あらゆる規模に対応する、オープン API を�
 
 ## <a name="clone-the-sample-app"></a>サンプル アプリの複製
 
-最初に、GitHub からサンプル アプリをダウンロードします。 
+GitHub 対応のコマンド ウィンドウ ([Git bash](https://git-scm.com/downloads) など) で次のコマンドを実行します。
 
-1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+```bash
+mkdir "C:\git-samples"
+cd "C:\git-samples"
+git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
+```
 
-    ```bash
-    mkdir "C:\git-samples"
-    ```
+上のコマンドでは以下の操作が行われます。
 
-2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
-
-    ```bash
-    cd "C:\git-samples"
-    ```
-
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
-
-    ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
-    ```
+1. サンプル用の *C:\git-samples* ディレクトリが作成されます。 ご利用のオペレーティング システムに適したフォルダーが選択されます。
+1. 現在のディレクトリが *C:\git-samples* フォルダーに変更されます。
+1. サンプルが *C:\git-samples* フォルダーに複製されます。
 
 git を使いたくない場合は、[プロジェクトを ZIP ファイルとしてダウンロード](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started/archive/master.zip)することもできます。
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+1. Visual Studio の **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+1. NuGet の **[参照]** ボックスに「*MongoDB.Driver*」と入力します。
+1. 結果から、**MongoDB.Driver** ライブラリをインストールします。 これにより、MongoDB.Driver パッケージとすべての依存関係がインストールされます。
 
-次のスニペットはすべて DAL ディレクトリ内の Dal.cs ファイルからのものです。
+以下の手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認してください。 そうでない場合は、「[接続文字列を更新する](#update-the-connection-string)」に進んでください。
 
-* クライアントを初期化します。
+次のスニペットは、*DAL/Dal.cs* ファイルからのものです。
+
+* 次のコードにより、クライアントが初期化されます。
 
     ```cs
         MongoClientSettings settings = new MongoClientSettings();
@@ -93,7 +92,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
         MongoClient client = new MongoClient(settings);
     ```
 
-* データベースとコレクションを取得します。
+* 次のコードにより、データベースとコレクションが取得されます。
 
     ```cs
     private string dbName = "Tasks";
@@ -103,13 +102,13 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
     var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
     ```
 
-* すべてのドキュメントを取得します。
+* 次のコードにより、すべてのドキュメントが取得されます。
 
     ```cs
     collection.Find(new BsonDocument()).ToList();
     ```
 
-タスクを作成して、コレクションに挿入します。
+次のコードにより、タスクが作成され、コレクションに挿入されます。
 
    ```csharp
     public void CreateTask(MyTask task)
@@ -125,36 +124,38 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
         }
     }
    ```
-   同様に、[collection.UpdateOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.updateOne/index.html) メソッドと [collection.DeleteOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.deleteOne/index.html) メソッドを使用して、ドキュメントの更新と削除を実行できます。 
+   同様に、[collection.UpdateOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.updateOne/index.html) メソッドと [collection.DeleteOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.deleteOne/index.html) メソッドを使用して、ドキュメントの更新と削除を実行できます。
 
-## <a name="update-your-connection-string"></a>接続文字列を更新する
+## <a name="update-the-connection-string"></a>接続文字列を更新する
 
-ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
+Azure portal から接続文字列情報をコピーします。
 
-1. [Azure portal](https://portal.azure.com/) で Cosmos アカウントを使用して、左側のナビゲーションにある **[接続文字列]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
+1. [Azure portal](https://portal.azure.com/) で Cosmos アカウントを選択して、左側のナビゲーションにある **[接続文字列]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
 
-2. **DAL** ディレクトリ内の **Dal.cs** ファイルを開きます。 
+2. *DAL/Dal.cs* ファイルを開きます。
 
-3. ポータルの **username** 値をコピーし (コピー ボタンを使用して)、**Dal.cs** ファイル内の **username** の値に設定します。 
+3. ポータルから **username** 値をコピーし (コピー ボタンを使用)、**Dal.cs** ファイル内の **username** の値に設定します。
 
-4. 次に、ポータルの **host** 値をコピーし、**Dal.cs** ファイル内の **host** の値に設定します。 
+4. ポータルから **host** 値をコピーし、**Dal.cs** ファイル内の **host** の値に設定します。
 
-5. 最後に、ポータルの **password** 値をコピーし、**Dal.cs** ファイル内の **password** の値に設定します。 
+5. ポータルから **password** 値をコピーし、**Dal.cs** ファイル内の **password** の値に設定します。
 
-これで、Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
-    
+<!-- TODO Store PW correctly-->
+> [!WARNING]
+> パスワードや他の機密データをソース コードに入れないでください。
+
+これで、Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。
+
 ## <a name="run-the-web-app"></a>Web アプリの実行
 
-1. Visual Studio の **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
+1. Ctrl + F5 キーを押して、アプリを実行します。 既定のブラウザーがアプリと共に起動されます。 
+1. ブラウザーで、 **[作成]** をクリックし、タスク リスト アプリで、いくつか新しいタスクを作成します。
 
-2. NuGet の **[参照]** ボックスに「*MongoDB.Driver*」と入力します。
-
-3. 結果から、**MongoDB.Driver** ライブラリをインストールします。 これにより、MongoDB.Driver パッケージとすべての依存関係がインストールされます。
-
-4. Ctrl + F5 キーを押してアプリケーションを実行します。 ブラウザーにアプリが表示されます。 
-
-5. ブラウザーで、 **[作成]** をクリックし、タスク リスト アプリで、いくつか新しいタスクを作成します。
-
+<!-- 
+## Deploy the app to Azure 
+1. In VS, right click .. publish
+2. This is so easy, why is this critical step missed?
+-->
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]

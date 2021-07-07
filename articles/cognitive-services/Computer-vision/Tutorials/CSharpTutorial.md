@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 82e21f57a22da43f904ac9a12afb016c257e5055
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: dd2ceaa97a456d72227d6180596aeccc9e00a614
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289698"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453900"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
@@ -40,7 +40,7 @@ Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマ
 
 ## <a name="get-the-sample-app"></a>サンプル アプリを入手する
 
-Computer Vision のサンプル アプリは、GitHub の `Microsoft/Cognitive-Vision-Windows` リポジトリから入手できます。 このリポジトリには、Git サブモジュールとして `Microsoft/Cognitive-Common-Windows` リポジトリも含まれています。 コマンド ラインから `git clone --recurse-submodules` コマンドを使用するか、または GitHub Desktop を使用し、サブモジュールも含めて、このリポジトリを再帰的に複製できます。
+Computer Vision のサンプル アプリは、GitHub の [Microsoft/Cognitive-Vision-Windows リポジトリ](https://github.com/microsoft/Cognitive-Vision-Windows)から入手できます。 このリポジトリには、Git サブモジュールとして `Microsoft/Cognitive-Common-Windows` リポジトリも含まれています。 コマンド ラインから `git clone --recurse-submodules` コマンドを使用するか、または GitHub Desktop を使用し、サブモジュールも含めて、このリポジトリを再帰的に複製できます。
 
 たとえば、Computer Vision サンプル アプリのリポジトリをコマンド プロンプトから再帰的に複製するには、次のコマンドを実行します。
 

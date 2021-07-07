@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/25/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: 6221de7a9cffe5ba4d2e1ed8cc8e47c372b6b578
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a15a841e24d1464741c115684ed639609576a314
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373720"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796579"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する 
 
@@ -59,11 +59,11 @@ ms.locfileid: "110373720"
   
 | エンドポイント (DNS) | 説明 |  
 | ----------------- | ------------- |  
-| `https://management.azure.com`                                                                                 | エージェントが Azure に接続し、クラスターを登録するために必要です。                                                        |  
-| `https://<region>.dp.kubernetesconfiguration.azure.com` | エージェントが状態をプッシュして構成情報をフェッチするためのデータ プレーン エンドポイント。                                      |  
-| `https://login.microsoftonline.com`                                                                            | Azure Resource Manager トークンをフェッチし、更新するために必要です。                                                                                    |  
-| `https://mcr.microsoft.com`                                                                            | Azure Arc エージェント用のコンテナー イメージをプルするために必要です。                                                                  |  
-| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  システムによって割り当てられたマネージド サービス ID (MSI) 証明書をプルするために必要です。                                                                  |
+| `https://management.azure.com` (Azure Cloud の場合)、`https://management.usgovcloudapi.net` (Azure US Government の場合) | エージェントが Azure に接続し、クラスターを登録するために必要です。 |  
+| `https://<region>.dp.kubernetesconfiguration.azure.com` (Azure Cloud の場合)、`https://<region>.dp.kubernetesconfiguration.azure.us` (Azure US Government の場合) | エージェントが状態をプッシュして構成情報をフェッチするためのデータ プレーン エンドポイント。 |  
+| `https://login.microsoftonline.com` (Azure Cloud の場合)、`https://login.microsoftonline.us` (Azure US Government の場合) | Azure Resource Manager トークンをフェッチし、更新するために必要です。 |  
+| `https://mcr.microsoft.com` | Azure Arc エージェント用のコンテナー イメージをプルするために必要です。                                                                  |  
+| `https://<region-code>.his.arc.azure.com` (Azure Cloud の場合)、`https://usgv.his.arc.azure.us` (Azure US Government の場合) |  システムによって割り当てられたマネージド サービス ID (MSI) 証明書をプルするために必要です。 Azure クラウド リージョンの `<region-code>` マッピング: `eus` (米国東部)、`weu` (西ヨーロッパ)、`wcus` (米国中西部)、`scus` (米国中南部)、`sea` (東南アジア)、`uks` (英国南部)、`wus2` (米国西部 2)、`ae` (オーストラリア東部)、`eus2` (米国東部 2)、`ne` (北ヨーロッパ)、`fc` (フランス中部)。 |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. Azure Arc 対応 Kubernetes 用のプロバイダーを登録する
 
@@ -142,14 +142,14 @@ Helm release deployment succeeded
 > location パラメーターを指定せずに上記のコマンドを実行すると、リソース グループと同じ場所に Azure Arc 対応 Kubernetes リソースが作成されます。 Azure Arc 対応 Kubernetes リソースを別の場所に作成するには、`az connectedk8s connect` コマンドの実行時に `--location <region>` または `-l <region>` のいずれかを指定します。
 
 > [!NOTE]
-> サービス プリンシパルを使用して Azure CLI にログインしている場合は、クラスターを Azure Arc に接続するときにカスタムの場所機能を有効にするために、サービス プリンシパルに対する[追加のアクセス許可](troubleshooting.md#enable-custom-locations-using-service-principal)が必要です。
+> サービス プリンシパルを使用して Azure CLI にログインしている場合は、クラスターでカスタムの場所の機能を有効にするために、[追加のパラメーター](troubleshooting.md#enable-custom-locations-using-service-principal)を設定する必要があります。
 
 ## <a name="4-verify-cluster-connection"></a>4. クラスターの接続を確認する
 
 次のコマンドを実行します。  
 
 ```azurecli-interactive
-az connectedk8s list -resource-group AzureArcTest -output table
+az connectedk8s list --resource-group AzureArcTest --output table
 ```
 
 出力:

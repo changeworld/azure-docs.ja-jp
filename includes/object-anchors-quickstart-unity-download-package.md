@@ -2,20 +2,20 @@
 author: craigktreasure
 ms.service: azure-object-anchors
 ms.topic: include
-ms.date: 02/18/2021
+ms.date: 06/10/2021
 ms.author: crtreasu
-ms.openlocfilehash: ada83d6263ef033208200d810c53c5f045acc9a7
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 8ad55355307cfc8656b6f6bf9b074d90daf7e2e8
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104316"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006900"
 ---
 次の手順は、Unity 用 Azure Object Anchors パッケージのダウンロードです。
 
 # <a name="download-with-web-browser"></a>[Web ブラウザーを使用してダウンロードする](#tab/unity-package-web-ui)
 
-[ここ](https://aka.ms/aoa/unity-sdk/package)で Unity 用 Azure Object Anchors パッケージを見つけます。 目的のバージョンを選択し、 **[Download]\(ダウンロード\)** ボタンを使用してパッケージをダウンロードします。
+[ここで](https://aka.ms/aoa/unity-sdk/package) Unity 用 Azure Object Anchors パッケージ (`com.microsoft.azure.object-anchors.runtime`) を見つけます。 目的のバージョンを選択し、 **[Download]\(ダウンロード\)** ボタンを使用してパッケージをダウンロードします。
 
 # <a name="download-with-npm"></a>[NPM を使用してダウンロードする](#tab/unity-package-npm)
 

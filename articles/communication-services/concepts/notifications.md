@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1a2d4059f701a45d982f2045dea5e8dfe4e12a20
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: efb74a654990c45dbb0bf4358a01f335fe118e15
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286350"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110765"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
 

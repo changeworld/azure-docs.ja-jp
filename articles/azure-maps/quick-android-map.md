@@ -10,12 +10,12 @@ services: azure-maps
 manager: cpendle
 ms.custom: mvc
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 2a67f432b126fb164b1b099b772646a679c28837
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 56882d71be8e015cf6f931c1869664ae42d2d0a2
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323496"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091323"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>クイックスタート: Azure Maps を使用して Android アプリを作成する
 
@@ -113,7 +113,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     3. 依存関係のブロックを更新し、最新の Azure Maps Android SDK の新しい実装の依存関係の行を追加します。
 
         ```gradle
-        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
+        implementation "com.azure.android:azure-maps-control:1.0.0"
         ```
 
         > [!Note]
@@ -123,7 +123,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 3. メイン アクティビティにマップ フラグメントを追加します (res \> layout \> activity\_main.xml)。
 
     ```xml
-    <com.microsoft.azure.maps.mapcontrol.MapControl
+    <com.azure.android.maps.control.MapControl
         android:id="@+id/mapcontrol"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -157,11 +157,11 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     package com.example.myapplication;
     
     import androidx.appcompat.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
+    import com.azure.android.maps.control.AzureMaps;
+    import com.azure.android.maps.control.MapControl;
+    import com.azure.android.maps.control.layer.SymbolLayer;
+    import com.azure.android.maps.control.options.MapStyle;
+    import com.azure.android.maps.control.source.DataSource;
     
     public class MainActivity extends AppCompatActivity {
         
@@ -267,10 +267,10 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
     import androidx.appcompat.app.AppCompatActivity
     import android.os.Bundle
-    import com.microsoft.azure.maps.mapcontrol.AzureMap
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps
-    import com.microsoft.azure.maps.mapcontrol.MapControl
-    import com.microsoft.azure.maps.mapcontrol.events.OnReady
+    import com.azure.android.maps.control.AzureMap
+    import com.azure.android.maps.control.AzureMaps
+    import com.azure.android.maps.control.MapControl
+    import com.azure.android.maps.control.events.OnReady
     
     class MainActivity : AppCompatActivity() {
     

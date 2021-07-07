@@ -2,19 +2,19 @@
 title: 通話 (音声またはビデオ) およびチャットの価格シナリオ
 titleSuffix: An Azure Communication Services concept document
 description: Communication Services の価格モデルについて説明します。
-author: mikben
-manager: jken
+author: nmurav
+manager: nmurav
 services: azure-communication-services
-ms.author: mikben
+ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0615d95c922ef3f04618d9f2339e82b53bd359df
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 038b4df78ca7f10b0ec0e9dfe224f6aca2430e82
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763687"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986302"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
@@ -51,16 +51,16 @@ Alice が、仕事仲間の Bob と Charlie とグループ通話を行いまし
 Alice は、Bob の `+1-425` で始まる米国の電話番号に対し、アプリから PSTN 通話を行います。
 
 - Alice は JS SDK を使用してアプリを作成しました。
-- この通話は合計 5 分間続きます。
+- この通話は合計 10 分間続きます。
 
 **コストの計算**
 
 - アプリから Communication Services サーバーへの VoIP レッグの参加者 1 名 (Alice) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04
-- Communication Services サーバーから米国電話番号への PSTN 発信レッグの参加者 1 名 (Charlie) x 10 分 x $0.013 (1 参加者レッグ、1 分あたり) = $0.13
+- Communication Services サーバーから米国の電話番号への PSTN 発信レッグの参加者 1 名 (Bob) x 10 分 x $0.013 (1 参加者レッグ、1 分あたり) = $0.13
 
 注: `+1-425` に対する米国の混合料金は $0.013 です。 詳細については、 https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) のリンクを参照してください。
 
-**グループ通話の総コスト**: $0.04 + $0.13 = $0.17
+**通話の総コスト**: $0.04 + $0.13 = $0.17
 
 
 ### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>価格の例: JS SDK と 1 PSTN レッグを使用してグループ音声通話を行う
@@ -154,7 +154,7 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 
 #### <a name="united-states-calling-prices"></a>米国の通話価格
 
-次の価格には、通信に必要な税と料金が含まれています (2021 年 6 月 30 日まで)。
+次の価格には、通信に必要な税と料金が含まれています。
 
 |数値型   |電話をかける   |電話を受ける|
 |--------------|-----------|------------|
@@ -163,7 +163,7 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 
 #### <a name="other-calling-destinations"></a>その他の通話の宛先
 
-次の価格には、通信に必要な税と料金が含まれています (2021 年 6 月 30 日まで)。
+次の価格には、通信に必要な税と料金が含まれています。
 
 |発信先   |1 分あたりの価格|
 |-----------|------------|
@@ -177,7 +177,7 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 
 SMS の価格は従量課金制です。 価格は、メッセージの宛先に基づく、メッセージごとの料金となっています。 メッセージは、無料電話番号から米国内の電話番号に送信することができます。 SMS メッセージの送信にローカル (固定) 電話番号は使用できないので注意してください。
 
-次の価格には、通信に必要な税と料金が含まれています (2021 年 6 月 30 日まで)。
+次の価格には、通信に必要な税と料金が含まれています。
 
 |国   |メッセージを送信する|メッセージを受信する|
 |-----------|------------|------------|

@@ -1,5 +1,5 @@
 ---
-title: 'クイックスタート: ASP.NET Core Web アプリに "Microsoft アカウントでサインイン" を追加する | Azure'
+title: 'クイックスタート: ASP.NET Core Web アプリに "Microsoft ID でサインイン" を追加する | Azure'
 titleSuffix: Microsoft identity platform
 description: このクイックスタートでは、OpenID Connect を使用して、ASP.NET Core Web アプリに Microsoft サインインを実装する方法について説明します
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e7296b04e3e912e96ac8c2ed77b44288324c262f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb58a86aad4e0298f12c917d475520ee44501c00
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578704"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494425"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 

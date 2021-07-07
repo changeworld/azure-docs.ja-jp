@@ -6,18 +6,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/07/2021
+ms.date: 05/28/2021
 ms.custom: references_regions
-ms.openlocfilehash: f636089ff37bd87802ac0335b65d20dc446290d3
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 57776654087e6e07b8515d76c955cb82ce1e07bf
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517930"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787768"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
 サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。 まだ一般提供されていない機能の包括的な一覧を確認するには、[プレビュー段階の機能の一覧](search-api-preview.md)に関するページを参照してください。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+|機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
+|------------------------------------|--------------|---------------|
+| [Power Query コネクタのサポート (プレビュー)](search-how-to-index-power-query-data-sources.md) | インデクサーで、他のクラウド プラットフォームからインデックスを作成できるようになりました。 インデクサーを使用してインデックス作成に外部データ ソースをクロールする場合、Power Query コネクタを使用して Amazon Redshift、Elasticsearch、PostgreSQL、Salesforce オブジェクト、Salesforce レポート、Smartsheet、Snowflake に接続できるようになりました。 </br></br>[お知らせ (テクニカルコミュニティのブログ)](https://techcommunity.microsoft.com/t5/azure-ai/azure-cognitive-search-indexers-allow-you-to-ingest-data-from/ba-p/2381988)  | パブリック プレビュー ([リクエストによる)](https://aka.ms/azure-cognitive-search/indexer-preview)、REST api-version=2020-06-30-Preview と Azure portal を使用。 |
+|[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) | インデクサーで使用される ADLS Gen2 データ ソースの一般提供が開始されました。 | 一般提供、REST api-version=2020-06-30 と Azure portal を使用。 |
+|[MySQL のサポート (プレビュー)](search-howto-index-mysql.md) | インデクサーベースのインデックス作成のために、Azure MySQL のプレビュー データ ソースのサポートを発表します。 | パブリック プレビュー、REST api-version=2020-06-30-Preview、[.NET SDK 11.2.1](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype.mysql)、および Azure portal。 |
+| [スペル チェックとセマンティック結果のためのその他の queryLanguage](/rest/api/searchservice/preview-api/search-documents#queryLanguage) | スペル チェックまたは queryType=semantic を呼び出すクエリ要求の場合、queryLanguage を英語以外の [38 の言語](/rest/api/searchservice/preview-api/search-documents#queryLanguage)に設定できるようになりました。 </br></br>[お知らせ (テクニカルコミュニティのブログ)](https://techcommunity.microsoft.com/t5/azure-ai/introducing-multilingual-support-for-semantic-search-on-azure/ba-p/2385110) | パブリック プレビュー ([要求による](https://aka.ms/SemanticSearchPreviewSignup))。 </br></br>[ドキュメントの検索 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview、[Azure.Search.Documents 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2)、または Azure portal の [Search エクスプローラー](search-explorer.md)を使用します。 </br></br>[リージョンとレベル](semantic-search-overview.md#availability-and-pricing)の制限が適用されます。 |
+| [二重暗号化の可用性](search-security-manage-encryption-keys.md#double-encryption) | カスタマー マネージド キーを使用して暗号化された検索インデックスとオブジェクトについては、サポートされているすべてのリージョンに二重暗号化 (静的ディスクと一時ディスクの両方の暗号化) が実装されました。 | すべてのリージョンで、[サービスの作成日](search-security-manage-encryption-keys.md#double-encryption)が適用されます。 |
 
 ## <a name="april-2021"></a>2021 年 4 月
 

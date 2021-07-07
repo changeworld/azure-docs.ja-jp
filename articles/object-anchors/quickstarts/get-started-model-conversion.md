@@ -4,25 +4,25 @@ description: このクイックスタートでは、3D モデルから Object An
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/22/2021
+ms.date: 06/10/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: bb2de2c9076ae17598b761ba7dc2c17286d1352d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 592affde83e468c409c25204fa389471a77abcce
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750791"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005593"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>クイック スタート: 3D モデルから Object Anchors モデルを作成する
 
-Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Reality エクスペリエンスを実現する AI モデルに変換するマネージド クラウド サービスです。 このクイックスタートでは、C# と .NET Core SDK を使用して 3D モデルから Object Anchors モデルを作成する方法について説明します。
+Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Reality エクスペリエンスを実現する AI モデルに変換するマネージド クラウド サービスです。 このクイックスタートでは、[Azure Object Anchors の .NET 用変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre) を使用して 3D モデルから Object Anchors モデルを作成する方法について説明します。
 
 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Object Anchors アカウントを作成する
-> * 3D モデルを変換して Object Anchors モデルを作成する
+> * Object Anchors アカウントを作成します。
+> * [Azure Object Anchors の .NET 用変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre) ([NuGet](https://www.nuget.org/packages/Azure.MixedReality.ObjectAnchors.Conversion/)) を使用して、3D モデルを変換して Object Anchors モデルを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -143,3 +143,6 @@ Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Realit
 
 > [!div class="nextstepaction"]
 > [HoloLens DirectX](get-started-hololens-directx.md)
+
+> [!div class="nextstepaction"]
+> [変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)

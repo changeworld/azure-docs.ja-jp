@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:独自のデータを使用する
+title: 'チュートリアル: データをアップロードしてモデルをトレーニングする'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 入門シリーズの第 3 部では、リモート トレーニングの実行で独自のデータを使用する方法について説明します。
+description: リモート トレーニングの実行で独自のデータをアップロードして使用する方法。 これは、3 部構成の入門シリーズのパート 3 です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,27 +10,23 @@ author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/29/2021
-ms.custom: tracking-python, contperf-fy21q3
-ms.openlocfilehash: 2b6659e533edac33e992c2648140760888a6b32c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: tracking-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: dbbd71a40419ee3472b01be11c101567e6945634
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785585"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028219"
 ---
-# <a name="tutorial-use-your-own-data-part-3-of-3"></a>チュートリアル:独自のデータを使用する (3 部構成中の第 3 部)
+# <a name="tutorial-upload-data-and-train-a-model-part-3-of-3"></a>チュートリアル: データをアップロードしてモデルをトレーニングする (3/3)
 
-このチュートリアルでは、独自のデータをアップロードし、それを使用することで、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。
+このチュートリアルでは、独自のデータをアップロードし、それを使用することで、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。 このチュートリアルは、"*3 部構成のチュートリアル シリーズのパート 3*" です。  
 
-このチュートリアルは、"*3 部構成のチュートリアル シリーズのパート 3*" であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは次のパートで完了した作業を基にしています。このシリーズの[第 1 部: "Hello World!" の実行](tutorial-1st-experiment-hello-world.md)および[第 2 部: モデルのトレーニング](tutorial-1st-experiment-sdk-train.md)に関するページを参照してください。
+「[パート 2: モデルをトレーニングする](tutorial-1st-experiment-sdk-train.md)」では、`PyTorch` のサンプル データを使用して、クラウドでモデルをトレーニングしました。  また、PyTorch API の `torchvision.datasets.CIFAR10` メソッドを使用してデータをダウンロードしました。 このチュートリアルでは、ダウンロードしたデータを使用して、Azure Machine Learning で独自のデータを処理するワークフローについて説明します。
 
-[第 2 部: モデルのトレーニング](tutorial-1st-experiment-sdk-train.md)では、PyTorch API 内の組み込みの `torchvision.datasets.CIFAR10` メソッドを使用してデータをダウンロードしました。 ただし、多くの場合、リモート トレーニングの実行では独自のデータを使用することになります。 この記事では、Azure Machine Learning で独自のデータを操作するのに使用できるワークフローについて説明します。
-
-このチュートリアルでは、次のことを行いました。
+このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
-> * ローカル ディレクトリ内のデータを使用するようにトレーニング スクリプトを構成する。
-> * トレーニング スクリプトをローカルでテストする。
 > * Azure にデータをアップロードする。
 > * コントロール スクリプトを作成する。
 > * 新しい Azure Machine Learning の概念を理解する (パラメーター、データセット、データストアの受け渡し)。
@@ -176,7 +172,7 @@ optimizer = optim.SGD(
 >[!NOTE] 
 > Azure Machine Learning を使用すると、自分のデータが格納される他のクラウドベースのデータストアに接続できます。 詳細については、[データストアに関するドキュメント](./concept-data.md)を参照してください。  
 
-1. **get-started** フォルダーに、*upload-data.py* という新しい Python コントロール スクリプトを作成します。
+1. **get-started** フォルダー内に新しい Python 制御スクリプトを作成します ( **/src** フォルダー "*ではなく*"、**get-started** フォルダーです。注意してください)。  スクリプトに *upload-data.py* という名前を付け、このコードをファイルにコピーします。
     
     ```python
     # upload-data.py
@@ -250,6 +246,9 @@ if __name__ == "__main__":
     print("")
     print(aml_url)
 ```
+
+> [!TIP]
+> コンピューティング クラスターの作成時に別の名前を使用した場合は、`compute_target='cpu-cluster'` コード内の名前も調整してください。
 
 ### <a name="understand-the-code-changes"></a>コードの変更を理解する
 

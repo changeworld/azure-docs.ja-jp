@@ -2,13 +2,13 @@
 title: Azure VMware Solution のネットワークと接続
 description: Azure VMware Solution のネットワークと接続の説明。
 ms.topic: include
-ms.date: 03/13/2021
-ms.openlocfilehash: 96dd93f1db5dc3ddcbb883313e19c6aed8a256da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: 66ea12565aa84661a4019e5685a5544792591b0c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462586"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350780"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->
 
@@ -18,5 +18,7 @@ Azure VMware Solution は、オンプレミスおよび Azure ベースのリソ
 
 ExpressRoute Global Reach は、プライベート クラウドをオンプレミス環境に接続するために使用されます。 この接続には、サブスクリプション内にオンプレミスへの ExpressRoute 回線がある仮想ネットワークが必要です。
 
-プライベート クラウドにデプロイされた仮想マシン (VM) は、Azure Virtual WAN パブリック IP 機能を使用してインターネットからアクセスできます。  新しいプライベート クラウドのインターネット アクセスは、既定で無効になっています。 詳細については、「[Azure VMware Solution でパブリック IP 機能を使用する方法](../public-ip-usage.md)」を参照してください。
+プライベート クラウドにデプロイされた仮想マシン (VM) は、Azure Virtual WAN パブリック IP 機能を使用してインターネットからアクセスできます。  新しいプライベート クラウドのインターネット アクセスは、既定で無効になっています。 詳細については、[Azure VMware Solution でパブリック インターネット アクセスを有効にする](../enable-public-internet-access.md)方法に関する記事を参照してください。
+
+
 

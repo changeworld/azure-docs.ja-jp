@@ -1,5 +1,5 @@
 ---
-title: 'クイックスタート: ユニバーサル Windows プラットフォーム デスクトップ アプリでユーザーのサインインと Microsoft Graph の呼び出しを行う | Azure'
+title: 'クイックスタート: Windows デスクトップ アプリでユーザーのサインインと Microsoft Graph の呼び出しを行う | Azure'
 description: このクイックスタートでは、Windows デスクトップ .NET (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォームによって保護されている API を呼び出す方法について説明します。
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: eb5bf0bc6e211d83d2de2eb8d327ee6b2d577721
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 29ec031fe462e44c1f00d383d667c45b0b16f60b
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075017"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536552"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
 

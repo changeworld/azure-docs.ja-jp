@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: このガイドでは、Azure 関数を使用して、Azure BLOB ストレージ コンテナーにアップロードされたドキュメントの処理をトリガーする方法について説明します。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6a8f3cf5b98361f96df26da923ff6bff7a604d23
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c458740f3b8b321631b4c9e8fec5d30e8286eb6e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374000"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893482"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>チュートリアル: Azure 関数を使用して格納済みドキュメントを処理する
 
@@ -166,7 +166,7 @@ def main(myblob: func.InputStream):
 > [!IMPORTANT]
 > Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Form Recognizer リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
 >
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、[Cognitive Services のセキュリティ](../cognitive-services-security.md)に関する記事を参照してください。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、セキュリティで保護された方法を使用して資格情報を格納し、アクセスします。 詳細については、[Cognitive Services のセキュリティ](../cognitive-services-security.md)に関する記事を参照してください。
 
 次に、サービスに対してクエリを実行してから返されたデータを取得するコードを追加します。 
 

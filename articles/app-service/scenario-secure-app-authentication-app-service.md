@@ -11,12 +11,12 @@ ms.date: 04/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a99b017bf619bb7b3312f71a156b4d535b4067b3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223195"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075864"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>チュートリアル:Azure App Service で実行されている Web アプリに認証を追加する
 
@@ -69,6 +69,10 @@ App Service では組み込みの認証と承認がサポートされている�
 
 これで、App Service の認証と承認によってアプリが保護されるようになりました。
 
+> [!NOTE]
+> 他のテナントからのアカウントを許可するには、[認証] ブレードから [ID プロバイダー] を編集し、[発行者の URL] を [https://login.microsoftonline.com/common/v2.0 ] に変更します。
+>
+
 ## <a name="verify-limited-access-to-the-web-app"></a>Web アプリへの制限付きアクセスを確認する
 
 App Service の認証および承認モジュールを有効にしたときに、Azure AD テナントにアプリの登録が作成されました。 アプリの登録には、Web アプリと同じ表示名が付けられています。 設定を確認するには、ポータル メニューから **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。 作成されたアプリの登録を選択します。 概要で、 **[Supported account types]\(サポートされているアカウントの種類\)** が **[所属する組織のみ]** に設定されていることを確認します。
@@ -81,7 +85,7 @@ App Service の認証および承認モジュールを有効にしたときに�
 
 このチュートリアルを完了し、Web アプリや関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の作業を行う方法を学びました。
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 3873a15c6a56d6ee4944cc596f447c966c275950
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a44cbbf110ac2789b03b411f074f068451c70e2c
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313446"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858133"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>クイック スタート: JavaScript 用 Face クライアント ライブラリ
 
@@ -213,10 +213,10 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、JavaScript 用の Face クライアント ライブラリを使用して基本的な顔認識タスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
+このクイックスタートでは、JavaScript 用の Face クライアント ライブラリを使用して基本的な顔認識タスクを行う方法について学習しました。 次に、さまざまな顔検出モデルと、ユース ケースに適したモデルを指定する方法について学習します。
 
 > [!div class="nextstepaction"]
-> [Face API リファレンス (JavaScript)](/javascript/api/@azure/cognitiveservices-face/)
+> [顔検出モデル バージョンを指定する](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [Face サービスとは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js) にあります。

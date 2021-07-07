@@ -5,14 +5,14 @@ ms.service: data-factory
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-ms.custom: seo-lt-2019
-ms.date: 04/29/2021
-ms.openlocfilehash: 68a15e14b585184bd956c3ac8f79cdd5eac5d76c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.date: 05/19/2021
+ms.openlocfilehash: dde4c234a6a0459441a601813f4f4a42dfbbff1c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788069"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665470"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "109788069"
 
 この機能を使用すると、[Azure-SSIS IR を仮想ネットワークに参加](./join-azure-ssis-integration-runtime-virtual-network.md)させずに、オンプレミスのデータや実行タスクにアクセスすることができます。 この機能は、企業ネットワークの構成が複雑すぎるかポリシーの制限が厳しすぎて Azure-SSIS IR を導入できない場合に役立ちます。
 
-この機能は、現時点では、SSIS データ フロー タスクと SQL 実行タスクでのみ有効にすることができます。 
+この機能は、現時点では、SSIS データ フロー タスクと、SQL およびプロセス実行タスクでのみ有効にすることができます。 
 
 データ フロー タスクでこの機能を有効にすると、該当する場合は、次の 2 つのステージング タスクに分割されます。 
 * **オンプレミスのステージング タスク**:このタスクでは、セルフホステッド IR 上のオンプレミスのデータ ストアに接続するデータ フロー コンポーネントが実行されます。 これは、データをオンプレミスのデータ ストアから Azure BLOB ストレージのステージング領域に、またはその逆に移動します。
@@ -30,7 +30,7 @@ ms.locfileid: "109788069"
 
 データ フロー タスクを使用してオンプレミスからクラウドにデータを移動した場合、最初と 2 番目のステージング タスクは、それぞれオンプレミスとクラウドのステージング タスクになります。 データ フロー タスクを使用してクラウドからオンプレミスにデータを移動した場合、最初と 2 番目のステージング タスクは、それぞれクラウドとオンプレミスのステージング タスクになります。 データ フロー タスクを使用してオンプレミスからオンプレミスにデータを移動した場合、最初と 2 番目のステージング タスクは、両方ともオンプレミスのステージング タスクになります。 データ フロー タスクを使用してクラウドからクラウドにデータを移動した場合、この機能は適用されません。
 
-この機能は、SQL 実行タスクで有効になり、セルフホステッド IR で実行されます。 
+この機能は、SQL およびプロセス実行タスクで有効になり、セルフホステッド IR で実行されます。 
 
 この機能の他の利点や機能としては、まだ Azure-SSIS IR でサポートされていないリージョンでのセルフホステッド IR の設定が可能になったり、データ ソースのファイアウォールでのセルフホステッド IR のパブリック静的 IP アドレスが許可されたりすることなどがあります。
 
@@ -49,13 +49,14 @@ ms.locfileid: "109788069"
   SQL Server 用の OLEDB ドライバーの最新バージョン (MSOLEDBSQL) を使用する場合は、[64 ビット版をダウンロードします](https://www.microsoft.com/download/details.aspx?id=56730)。  
   
   PostgreSQL、MySQL、Oracle などの他のデータベース システム用の OLEDB/ODBC/ADO.NET ドライバーを使用する場合は、それらの Web サイトから 64 ビット版をダウンロードできます。
+- パッケージで Azure Feature Pack のデータ フロー コンポーネントを使用する場合は、セルフホステッド IR がインストールされているのと同じマシンに [SQL Server 2017 用の Azure Feature Pack をダウンロードしてインストールします](https://www.microsoft.com/download/details.aspx?id=54798) (まだインストールしていない場合)。
 - セルフホステッド IR がインストールされているのと同じコンピューターに、[64 ビット版の Visual C++ (VC) ランタイムをダウンロードしてインストールします](https://www.microsoft.com/download/details.aspx?id=40784) (まだ行っていない場合)。
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>オンプレミスのタスクで Windows 認証を有効にする
 
-セルフホステッド IR 上のオンプレミスのステージング タスク/SQL 実行タスクが Windows 認証を必要とする場合は、[Azure-SSIS IR で windows 認証機能も構成](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)する必要があります。 
+セルフホステッド IR 上のオンプレミスのステージング タスクと、SQL およびプロセス実行タスクが Windows 認証を必要とする場合は、[Azure-SSIS IR で windows 認証機能も構成](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)する必要があります。 
 
-オンプレミスのステージング タスク/SQL 実行タスクは、セルフホステッド IR サービス アカウント (既定では *NT SERVICE\DIAHostService*) を使用して起動され、データ ストアには Windows 認証アカウントを使用してアクセスされます。 どちらのアカウントにも、特定のセキュリティ ポリシーが割り当てられている必要があります。 セルフホステッド IR コンピューターで、 **[ローカル セキュリティ ポリシー]**  >  **[ローカル ポリシー]**  >  **[ユーザー権利の割り当て]** を選択し、次の操作を行います。
+オンプレミスのステージング タスクと、SQL およびプロセス実行タスクは、セルフホステッド IR サービス アカウント (既定では *NT SERVICE\DIAHostService*) を使用して起動し、データ ストアには Windows 認証アカウントを使用してアクセスします。 どちらのアカウントにも、特定のセキュリティ ポリシーが割り当てられている必要があります。 セルフホステッド IR コンピューターで、 **[ローカル セキュリティ ポリシー]**  >  **[ローカル ポリシー]**  >  **[ユーザー権利の割り当て]** を選択し、次の操作を行います。
 
 1. *[プロセスのメモリ クォータの増加]* ポリシーと *[プロセス レベル トークンの置き換え]* ポリシーをセルフホステッド IR サービス アカウントに割り当てます。 これは、既定のサービス アカウントを使用してセルフホステッド IR をインストールするときに自動的に実行されます。 そうでない場合は、手動でこれらのポリシーを割り当てます。 別のサービス アカウントを使用する場合は、同じポリシーを割り当てます。
 
@@ -129,36 +130,36 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-use-a-proxy"></a>SSIS パッケージでプロキシを使用できるようにする
 
-最新の SSDT を Visual Studio の SSIS Projects 拡張機能またはスタンドアロン インストーラのいずれかとして使用すると、サポートされているデータ フロー コンポーネントの接続マネージャーに新しい `ConnectByProxy` プロパティおよび SQL 実行タスクに `ExecuteOnProxy` プロパティを見つけることができます。
+最新の SSDT を Visual Studio の SSIS Projects 拡張機能またはスタンドアロンのインストーラのいずれかとして使用すると、サポートされているデータ フロー コンポーネントの接続マネージャーでは新しい `ConnectByProxy` プロパティを、SQL およびプロセス実行タスクでは `ExecuteOnProxy` プロパティを見つけることができます。
 * [Visual Studio 用の SSIS プロジェクト拡張機能をダウンロードする](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [スタンドアロン インストーラーをダウンロードする](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
 オンプレミスでデータにアクセスするコンポーネントを持つデータ フロー タスクを含む新しいパッケージを設計する場合、`ConnectByProxy` プロパティを有効にするには、関連する接続マネージャーの **[プロパティ]** ウィンドウでこれを "*True*" に設定します。
 
-オンプレミスで実行する SQL 実行タスクを含む新しいパッケージを設計する場合、`ExecuteOnProxy` プロパティを有効にするには、関連するタスク自身の **[プロパティ]** ウィンドウでこれを "*True*" に設定します。
+オンプレミスで実行する SQL およびプロセス実行タスクを含む新しいパッケージを設計する場合、`ExecuteOnProxy` プロパティを有効にするには、関連するタスク自身の **[プロパティ]** ペインでこれを *True* に設定します。
 
-![ConnectByProxy プロパティを有効にする](media/self-hosted-integration-runtime-proxy-ssis/shir-proxy-properties.png)
+![ConnectByProxy および ExecuteOnProxy プロパティを有効にする](media/self-hosted-integration-runtime-proxy-ssis/shir-proxy-properties.png)
 
 また、既存のパッケージを実行する場合も、それらを 1 つずつ手動で変更することなく、`ConnectByProxy`/`ExecuteOnProxy` プロパティを有効にできます。 2 つのオプションがあります。
 - **オプション A**: Azure-SSIS IR で実行する、最新の SSDT を備えたこれらのパッケージを含むプロジェクトを開いて、再構築し、再デプロイする。 SSMS からパッケージを実行するときに **[パッケージの実行**] ポップアップ ウィンドウの **[接続マネージャー]** タブに表示される、関連する接続マネージャーに対して *True* に設定することで `ConnectByProxy` プロパティを有効にできます。
 
-  ![ConnectByProxy プロパティを有効にする 2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
+  ![ConnectByProxy および ExecuteOnProxy プロパティを有効にする 2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
   また、Data Factory パイプラインでパッケージを実行するときに [SSIS パッケージの実行アクティビティ](./how-to-invoke-ssis-package-ssis-activity.md)の **[接続マネージャー]** タブに表示される、関連する接続マネージャーに対して *True* に設定することで `ConnectByProxy` プロパティを有効にできます。
   
-  ![ConnectByProxy プロパティを有効にする 3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
+  ![ConnectByProxy および ExecuteOnProxy プロパティを有効にする 3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- **オプション B:** SSIS IR で実行するこれらのパッケージを含むプロジェクトを再デプロイする。 プロパティ パス `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`/`\Package\YourExecuteSQLTaskName.Properties[ExecuteOnProxy]` を指定し、SSMS からパッケージを実行するときに **[パッケージの実行]** ポップアップ ウィンドウの **[詳細]** タブでプロパティ オーバーライドとして *True* に設定することで `ConnectByProxy`/`ExecuteOnProxy` プロパティを有効にできます。
+- **オプション B:** SSIS IR で実行するこれらのパッケージを含むプロジェクトを再デプロイする。 次に、プロパティ パス `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`/`\Package\YourExecuteSQLTaskName.Properties[ExecuteOnProxy]`/`\Package\YourExecuteProcessTaskName.Properties[ExecuteOnProxy]` を指定し、SSMS からパッケージを実行するときに **[パッケージの実行]** ポップアップ ウィンドウの **[詳細]** タブでプロパティ オーバーライドとして *True* に設定することで `ConnectByProxy`/`ExecuteOnProxy` プロパティを有効にできます。
 
-  ![ConnectByProxy プロパティを有効にする 4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
+  ![ConnectByProxy および ExecuteOnProxy プロパティを有効にする 4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  プロパティ パス `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`/`\Package\YourExecuteSQLTaskName.Properties[ExecuteOnProxy]` を指定し、Data Factory パイプラインでパッケージを実行するときに [SSIS パッケージ実行アクティビティ](./how-to-invoke-ssis-package-ssis-activity.md)の **[プロパティのオーバーライド]** タブでプロパティ オーバーライドとして *True* に設定することで `ConnectByProxy`/`ExecuteOnProxy` プロパティを有効にできます。
+  また、プロパティ パス `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`/`\Package\YourExecuteSQLTaskName.Properties[ExecuteOnProxy]`/`\Package\YourExecuteProcessTaskName.Properties[ExecuteOnProxy]` を指定し、Data Factory パイプラインでパッケージを実行するときに [SSIS パッケージ実行アクティビティ](./how-to-invoke-ssis-package-ssis-activity.md)の **[プロパティのオーバーライド]** タブでプロパティ オーバーライドとして *True* に設定することで `ConnectByProxy`/`ExecuteOnProxy` プロパティを有効にできます。
   
-  ![ConnectByProxy プロパティを有効にする 5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
+  ![ConnectByProxy および ExecuteOnProxy プロパティを有効にする 5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
 ## <a name="debug-the-on-premises-tasks-and-cloud-staging-tasks"></a>オンプレミス タスクとクラウドのステージング タスクをデバッグする
 
-セルフホステッド IR では、ランタイム ログは *C:\ProgramData\SSISTelemetry* フォルダー内にあり、オンプレミスのステージング タスク/SQL 実行タスクの実行ログは *C:\ProgramData\SSISTelemetry\ExecutionLog* フォルダー内にあります。 クラウドにあるステージング タスクの実行ログは、パッケージを格納した場所が SSISDB であるかどうかや、[Azure Monitor の統合](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)などを有効にするかどうかに応じて、SSISDB 内、指定されたロギング ファイル パス、または Azure Monitor にあります。オンプレミスのステージング タスクの一意の ID も、クラウドにあるステージング タスクの実行ログ内にあります。 
+セルフホステッド IR では、ランタイム ログは *C:\ProgramData\SSISTelemetry* フォルダー内にあり、オンプレミスのステージング タスクと、SQL およびプロセス実行タスクの実行ログは *C:\ProgramData\SSISTelemetry\ExecutionLog* フォルダー内にあります。 クラウドにあるステージング タスクの実行ログは、パッケージを格納した場所が SSISDB であるかどうかや、[Azure Monitor の統合](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)などを有効にするかどうかに応じて、SSISDB 内、指定されたロギング ファイル パス、または Azure Monitor にあります。オンプレミスのステージング タスクの一意の ID も、クラウドにあるステージング タスクの実行ログ内にあります。 
 
 ![1 番目のステージング タスクの一意の ID](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -166,7 +167,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="billing-for-the-on-premises-tasks-and-cloud-staging-tasks"></a>オンプレミス タスクとクラウドのステージング タスクの請求
 
-セルフホステッド IR で実行されるオンプレミスのステージング タスク/SQL 実行タスクは、セルフホステッド IR で実行されるあらゆるデータ移動アクティビティが課金されるのと同じように、個別に課金されます。 これは、[Azure Data Factory データ パイプラインの価格](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)に関するページに記載されています。
+セルフホステッド IR で実行されるオンプレミスのステージング タスクと SQL およびプロセス実行タスクは、セルフホステッド IR で実行されるあらゆるデータ移動アクティビティが課金されるのと同じように、個別に課金されます。 これは、[Azure Data Factory データ パイプラインの価格](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)に関するページに記載されています。
 
 Azure-SSIS IR で実行されるクラウドにあるステージング タスクは個別に課金されませんが、実行中の Azure-SSIS IR は、[Azure-SSIS IR の価格](https://azure.microsoft.com/pricing/details/data-factory/ssis/)に関する記事の指定どおりに課金されます。
 

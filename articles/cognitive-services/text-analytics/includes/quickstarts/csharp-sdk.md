@@ -6,21 +6,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/19/2021
+ms.date: 06/11/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 1fd102f0f94f1ce53bebfba94d4f4c1a1f9e3812
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 31a7eccb1f4b0c26640af1321b9779014f663fb4
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765144"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083839"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-[v3.1 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [v3.1 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.5) | [v3.1 サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3.1 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [v3.1 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.7) | [v3.1 サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
 
@@ -45,7 +45,7 @@ Visual Studio IDE を使用して新しい .NET Core コンソール アプリ�
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-**ソリューション エクスプローラー** でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択して `Azure.AI.TextAnalytics` を検索します。 **[プレリリースを含める]** チェック ボックスをオンにし、バージョン `5.1.0-beta.5` を選択して、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
+**ソリューション エクスプローラー** でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択して `Azure.AI.TextAnalytics` を検索します。 **[プレリリースを含める]** チェック ボックスをオンにし、バージョン `5.1.0-beta.7` を選択して、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
 
 # <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
 
@@ -214,7 +214,7 @@ Document sentiment: Positive
         Neutral score: 0.77
 ```
 
-### <a name="opinion-mining"></a>意見マイニング
+## <a name="opinion-mining"></a>意見マイニング
 
 前に作成したクライアントを受け取る `SentimentAnalysisWithOpinionMiningExample()` という新しい関数を作成し、その `AnalyzeSentimentBatch()` 関数を `AnalyzeSentimentOptions` バッグの `IncludeOpinionMining` オプションで呼び出します。 返される `AnalyzeSentimentResultCollection` オブジェクトには、`Response<DocumentSentiment>` を表す `AnalyzeSentimentResult` のコレクションが含まれます。 `SentimentAnalysis()` と `SentimentAnalysisWithOpinionMiningExample()` の違いは、後者には、個々の文の `SentenceOpinion`、つまり分析されたターゲットおよび関連する評価を示す情報が含まれることです。 エラーが発生した場合は、`RequestFailedException` がスローされます。
 
@@ -429,7 +429,78 @@ Named Entities:
                 Score: 0.80,    Length: 9,      Offset: 34
 ```
 
-### <a name="entity-linking"></a>エンティティ リンク設定
+### <a name="personally-identifiable-information-recognition"></a>個人を特定できる情報の認識
+
+前に作成したクライアントを受け取る `RecognizePIIExample()` という新しい関数を作成し、その `RecognizePiiEntities()` 関数を呼び出して、結果を反復処理します。 返される `PiiEntityCollection` は、検出された PII エンティティの一覧を表します。 エラーが発生した場合は、`RequestFailedException` がスローされます。
+
+```csharp
+static void RecognizePIIExample(TextAnalyticsClient client)
+{
+    string document = "A developer with SSN 859-98-0987 whose phone number is 800-102-1100 is building tools with our APIs.";
+
+    PiiEntityCollection entities = client.RecognizePiiEntities(document).Value;
+
+    Console.WriteLine($"Redacted Text: {entities.RedactedText}");
+    if (entities.Count > 0)
+    {
+        Console.WriteLine($"Recognized {entities.Count} PII entit{(entities.Count > 1 ? "ies" : "y")}:");
+        foreach (PiiEntity entity in entities)
+        {
+            Console.WriteLine($"Text: {entity.Text}, Category: {entity.Category}, SubCategory: {entity.SubCategory}, Confidence score: {entity.ConfidenceScore}");
+        }
+    }
+    else
+    {
+        Console.WriteLine("No entities were found.");
+    }
+}
+```
+
+### <a name="output"></a>出力
+
+```console
+Redacted Text: A developer with SSN *********** whose phone number is ************ is building tools with our APIs.
+Recognized 2 PII entities:
+Text: 859-98-0987, Category: U.S. Social Security Number (SSN), SubCategory: , Confidence score: 0.65
+Text: 800-102-1100, Category: Phone Number, SubCategory: , Confidence score: 0.8
+```
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+前に作成したクライアントを受け取る `EntityRecognitionExample()` という新しい関数を作成し、その `RecognizeEntities()` 関数を呼び出して、結果を反復処理します。 返される `Response<IReadOnlyCollection<CategorizedEntity>>` オブジェクトには、検出されたエンティティの一覧が含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
+
+```csharp
+static void EntityRecognitionExample(TextAnalyticsClient client)
+{
+    var response = client.RecognizeEntities("I had a wonderful trip to Seattle last week.");
+    Console.WriteLine("Named Entities:");
+    foreach (var entity in response.Value)
+    {
+        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
+        Console.WriteLine($"\t\tScore: {entity.ConfidenceScore:F2}\n");
+    }
+}
+```
+
+### <a name="output"></a>出力
+
+```console
+Named Entities:
+        Text: trip,     Category: Event,        Sub-Category:
+                Score: 0.61
+
+        Text: Seattle,  Category: Location,     Sub-Category: GPE
+                Score: 0.82
+
+        Text: last week,        Category: DateTime,     Sub-Category: DateRange
+                Score: 0.80
+```
+
+--- 
+
+## <a name="entity-linking"></a>エンティティ リンク設定
+
+# <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
 前に作成したクライアントを受け取る `EntityLinkingExample()` という新しい関数を作成し、その `RecognizeLinkedEntities()` 関数を呼び出して、結果を反復処理します。 返される `Response<LinkedEntityCollection>` オブジェクトには、検出されたエンティティ `LinkedEntity` のコレクションが含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。 リンクされたエンティティは一意に識別されるため、同じエンティティの出現は、`LinkedEntityMatch` オブジェクトの一覧として `LinkedEntity` オブジェクトの下にグループ化されます。
 
@@ -515,80 +586,7 @@ Linked Entities:
                 Offset: 116
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>個人を特定できる情報の認識
-
-前に作成したクライアントを受け取る `RecognizePIIExample()` という新しい関数を作成し、その `RecognizePiiEntities()` 関数を呼び出して、結果を反復処理します。 返される `PiiEntityCollection` は、検出された PII エンティティの一覧を表します。 エラーが発生した場合は、`RequestFailedException` がスローされます。
-
-```csharp
-static void RecognizePIIExample(TextAnalyticsClient client)
-{
-    string document = "A developer with SSN 859-98-0987 whose phone number is 800-102-1100 is building tools with our APIs.";
-
-    PiiEntityCollection entities = client.RecognizePiiEntities(document).Value;
-
-    Console.WriteLine($"Redacted Text: {entities.RedactedText}");
-    if (entities.Count > 0)
-    {
-        Console.WriteLine($"Recognized {entities.Count} PII entit{(entities.Count > 1 ? "ies" : "y")}:");
-        foreach (PiiEntity entity in entities)
-        {
-            Console.WriteLine($"Text: {entity.Text}, Category: {entity.Category}, SubCategory: {entity.SubCategory}, Confidence score: {entity.ConfidenceScore}");
-        }
-    }
-    else
-    {
-        Console.WriteLine("No entities were found.");
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Redacted Text: A developer with SSN *********** whose phone number is ************ is building tools with our APIs.
-Recognized 2 PII entities:
-Text: 859-98-0987, Category: U.S. Social Security Number (SSN), SubCategory: , Confidence score: 0.65
-Text: 800-102-1100, Category: Phone Number, SubCategory: , Confidence score: 0.8
-```
-
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-
-> [!NOTE]
-> バージョン `3.0` の新機能:
-> * エンティティ リンク設定がエンティティの認識から切り離されました。
-
-
-前に作成したクライアントを受け取る `EntityRecognitionExample()` という新しい関数を作成し、その `RecognizeEntities()` 関数を呼び出して、結果を反復処理します。 返される `Response<IReadOnlyCollection<CategorizedEntity>>` オブジェクトには、検出されたエンティティの一覧が含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
-
-```csharp
-static void EntityRecognitionExample(TextAnalyticsClient client)
-{
-    var response = client.RecognizeEntities("I had a wonderful trip to Seattle last week.");
-    Console.WriteLine("Named Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tScore: {entity.ConfidenceScore:F2}\n");
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Named Entities:
-        Text: trip,     Category: Event,        Sub-Category:
-                Score: 0.61
-
-        Text: Seattle,  Category: Location,     Sub-Category: GPE
-                Score: 0.82
-
-        Text: last week,        Category: DateTime,     Sub-Category: DateRange
-                Score: 0.80
-```
-
-### <a name="entity-linking"></a>エンティティ リンク設定
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 前に作成したクライアントを受け取る `EntityLinkingExample()` という新しい関数を作成し、その `RecognizeLinkedEntities()` 関数を呼び出して、結果を反復処理します。 返される `Response<IReadOnlyCollection<LinkedEntity>>` は、検出されたエンティティの一覧を表します。 エラーが発生した場合は、`RequestFailedException` がスローされます。 リンクされたエンティティは一意に識別されるため、同じエンティティの出現は、`LinkedEntityMatch` オブジェクトの一覧として `LinkedEntity` オブジェクトの下にグループ化されます。
 
@@ -656,10 +654,9 @@ Linked Entities:
                 Score: 0.33
 ```
 
---- 
+---
 
-
-### <a name="key-phrase-extraction"></a>キー フレーズの抽出
+## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
@@ -720,6 +717,8 @@ Key phrases:
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>分析操作で API を非同期的に使用する
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
+
+分析操作を使用して、NER、キー フレーズ抽出、感情分析、および PII 検出の非同期バッチ要求を実行できます。 次のサンプルは、1 つの操作の基本的な例を示しています。 より高度なサンプルについては、[GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md) を参照してください。
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
@@ -815,8 +814,6 @@ Recognized Entities
     ConfidenceScore: 0.9
     SubCategory: 
 ```
-
-また、分析操作を使用して、PII とキー フレーズ抽出を検出することもできます。 GitHub の[分析のサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)を参照してください。
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 

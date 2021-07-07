@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/23/2021
 ms.custom: devx-track-csharp
 ms.devlang: .NET
-ms.openlocfilehash: 800d89f22d54b185111f7385ebe07771f228d8cf
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: d38259b55c490d06885ea9fce4094fabcee68a37
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981968"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469890"
 ---
 # <a name="3---deploy-the-search-enabled-net-website"></a>3 - 検索が有効な .NET Web サイトをデプロイする
 
@@ -30,20 +30,25 @@ ms.locfileid: "107981968"
 
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-create-static-web-app-resource-advanced.png" alt-text="サブスクリプション名を右クリックし、**[Create Static Web App (Advanced)]\(静的 Web アプリの作成 (詳細設定)\)** を選択します。":::
 
+1. どのブランチからデプロイするかを確認するポップアップ ウィンドウが VS Code で表示された場合は、既定のブランチ （通常は **master** または **main**） を選択します。 
+
+    この設定により、そのブランチにコミットした変更だけが静的 Web アプリにデプロイされます。 
+
+1. ポップアップ ウィンドウが表示されて変更をコミットするよう求められた場合は、これをしないでください。 一括インポート手順で作成されたシークレットは、リポジトリにコミットしないでください。 
+
+    変更をロールバックするには、VS Code のアクティビティ バーで [ソース管理] アイコンを選択してから、変更された各ファイルを [変更] の一覧で選択して、 **[変更の破棄]** アイコンを選択します。
+
 1. プロンプトに従って、次の情報を指定します。
 
     |Prompt|Enter|
     |--|--|
-    |静的 Web アプリを作成する方法|既存の GitHub リポジトリを使用します|
-    |組織の選択|"_独自_" の GitHub の別名を組織として選択します。|
-    |リポジトリの選択|一覧から **azure-search-dotnet-samples** を選択します。 |
-    |リポジトリのブランチの選択|一覧から **master** を選択します。 |
     |新しい静的 Web アプリの名前の入力。|自分のリソースに一意の名前を作成します。 たとえば `joansmith-azure-search-dotnet-samples` のように、リポジトリ名の先頭に自分の名前を追加できます。 |
     |新しいリソース用のリソース グループの選択。|このチュートリアル用に作成したリソース グループを使用します。|
+    |SKU の選択| このチュートリアル用に無料の SKU を選択します。|
     |既定のプロジェクト構造を構成するためのビルド プリセットの選択。|[**カスタム**] を選択します。|
-    |アプリケーション コードの場所の選択|`search-website`|
-    |Azure 関数コードの場所の選択|`search-website/api`|
-    |ビルド出力のパスの入力|build|
+    |アプリケーション コードの場所の選択|`search-website`<br><br>これは、リポジトリのルートから Azure 静的 Web アプリまでのパスです。 |
+    |Azure 関数コードの場所の選択|`search-website/api`<br><br>これは、リポジトリのルートから Azure 関数アプリまでのパスです。 |
+    |ビルド出力のパスの入力|`build`<br><br>これは、Azure 静的 Web アプリから、生成されたファイルまでのパスです。|
     |新しいリソースの場所の選択。|近くのリージョンを選択します。|
 
 1. リソースが作成されたら、通知から **[Open Actions in GitHub]\(GitHub でアクションを開く\)** を選択します。 これにより、自分がフォークしたリポジトリを参照するブラウザー ウィンドウが開きます。 
