@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 9337d1c2767923e6dc7c6b267e0c180b460a116e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: 3c58814943d844ec1e644412eef926745e2df620
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359423"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572391"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 
@@ -239,10 +239,6 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 
 * クラウド監視に Standard Load Balancer と Azure Storage を使用する場合は、サービス エンドポイントを作成します。 詳細については、[仮想ネットワークからのアクセスの許可](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)に関するページを参照してください。
 
-## <a name="for-more-information"></a>詳細情報
-
-詳細については、「[Azure VM での AlwaysOn 可用性グループの手動構成](availability-group-manually-configure-tutorial.md)」をご覧ください。
-
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット
 
 Azure Virtual Machines 用の内部ロード バランサーを作成するには、次の PowerShell コマンドレットを使用します。
@@ -253,3 +249,13 @@ Azure Virtual Machines 用の内部ロード バランサーを作成するに�
 * [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerBackendAddressPoolConfig) は、ロード バランサー用のバックエンド アドレス プール構成を作成します。 
 * [New-AzLoadBalancerProbeConfig](/powershell/module/Azurerm.Network/New-AzureRmLoadBalancerProbeConfig) は、ロード バランサー用のプローブの構成を作成します。
 * [Remove-AzLoadBalancer](/powershell/module/Azurerm.Network/Remove-AzureRmLoadBalancer) は、Azure リソース グループからロード バランサーを削除します。
+
+## <a name="next-steps"></a>次の手順 
+
+
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)

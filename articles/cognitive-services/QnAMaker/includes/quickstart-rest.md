@@ -3,12 +3,12 @@ title: クイック スタート:cURL と REST を使用してナレッジ ベ�
 description: このクイックスタートでは、REST API を使用してナレッジ ベースを作成、公開し、クエリを実行する方法について説明します。
 ms.date: 1/22/2021
 ms.topic: quickstart
-ms.openlocfilehash: d4c832c4a96ee1419b9e2f0accc1b86e9394ee02
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 45af4dbe28720a614cc64cb7567ec8f96f3f40cb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701291"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110486828"
 ---
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -17,19 +17,19 @@ ms.locfileid: "98701291"
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 * 最新バージョンの [cURL](https://curl.haxx.se/)。 クイックスタートでは、いくつかのコマンド ライン スイッチが使用されています。これらのスイッチについては、[cURL のドキュメント](https://curl.haxx.se/docs/manpage.html)を参照してください。
-* キーとリソース名を使用するには、[QnA Maker リソース](../How-To/set-up-qnamaker-service-azure.md)が必要です。 リソースの作成時にリソースの **名前** を入力した後に、キーが作成されています。 リソース名は、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
+* キーとリソース名を使用するには、[QnA Maker リソース](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v1#create-a-new-qna-maker-service)が必要です。 リソースの作成時にリソースの **名前** を入力した後に、キーが作成されています。 リソース名は、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > 以降に掲載した BASH の例では、行連結文字として `\` を使用しています。 ご利用のコンソールまたはターミナルで異なる行連結文字が使用されている場合は、この文字を使用してください。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 * 最新バージョンの [cURL](https://curl.haxx.se/)。 クイックスタートでは、いくつかのコマンド ライン スイッチが使用されています。これらのスイッチについては、[cURL のドキュメント](https://curl.haxx.se/docs/manpage.html)を参照してください。
-* キーとリソース名を使用するには、[QnA Maker リソース](../How-To/set-up-qnamaker-service-azure.md)が必要です。 リソースの作成時にリソースの **名前** を入力した後に、キーが作成されています。 リソース名は、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
+* カスタム質問と回答には、API キーとエンドポイントを生成するために、カスタム質問と回答の機能を有効にした [Text Analytics リソース](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v2#create-a-new-qna-maker-service)が必要です。 リソースの作成時に選択した **名前** が、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
 
-    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.1`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2`
 
 > [!CAUTION]
 > 以降に掲載した BASH の例では、行連結文字として `\` を使用しています。 ご利用のコンソールまたはターミナルで異なる行連結文字が使用されている場合は、この文字を使用してください。
@@ -72,22 +72,22 @@ QnA Maker から返される cURL の応答には `operationId` が含まれて�
 }
 ```
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 
 REST API と cURL を使用してナレッジ ベースを作成するには、次の情報が必要です。
 
 |Information|cURL の構成|目的|
 |--|--|--|
-|QnA Maker リソースの名前|URL|URL の構築用|
-|QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
+|Text Analytics リソース名 (カスタム質問と回答が有効)|URL|URL の構築用|
+|Text Analytics リソース キー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|Text Analytics サービスの認証を行う|
 |ナレッジ ベースを表す JSON|`-d` パラメーター|JSON の[例](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON のサイズ (バイト単位)|`Content-Size` ヘッダーの `-h` パラメーター||
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、JSON の値、JSON のサイズに合わせて編集してください。
 
 ```bash
-curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/create \
+curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/create \
 -X POST \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
 -H "Content-Type:application/json" \
@@ -140,21 +140,21 @@ cURL の応答には状態が含まれています。 操作の状態が成功�
    "operationId": "f293f218-d080-48f0-a766-47993e9b26a8"
 }
 ```
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 
 ナレッジ ベースを作成するとき、操作は非同期で実行されるため、その状態を判別する情報が応答には含まれています。
 
 |Information|cURL の構成|目的|
 |--|--|--|
-|QnA Maker リソースの名前|URL|URL の構築用|
+|Text Analytics リソース名 (カスタム質問と回答が有効)|URL|URL の構築用|
 |操作 ID|URL ルート|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
-|QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
+|Text Analytics リソース キー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|Text Analytics サービスの認証を行う|
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、操作 ID に合わせて編集してください。
 
 ```bash
-curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/operations/REPLACE-WITH-YOUR-OPERATION-ID \
+curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/operations/REPLACE-WITH-YOUR-OPERATION-ID \
 -X GET \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
 ```
@@ -202,24 +202,20 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 
 応答状態は、結果を伴わない 204 です。 cURL コマンドの詳細出力を表示するには、`-v` コマンド ライン パラメーターを使用してください。 これには HTTP の状態が含まれます。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-ナレッジ ベースにクエリを実行する前に、次のことを行う必要があります。
-* ナレッジ ベースを公開する
-* ランタイム エンドポイント キーを取得する
-
-このタスクでは、ナレッジ ベースを公開します。 ランタイム エンドポイント キーの取得は、[別のタスク](#get-published-knowledge-bases-runtime-endpoint-key)です。
+ナレッジ ベースに質問する前に、ナレッジ ベースを公開する必要があります。
 
 |Information|cURL の構成|目的|
 |--|--|--|
-|QnA Maker リソースの名前|URL|URL の構築用|
-|QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
+|Text Analytics リソース名 (カスタム質問と回答が有効)|URL|URL の構築用|
+|Text Analytics リソース キー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|Text Analytics サービスの認証を行う|
 |ナレッジ ベース ID|URL ルート|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、ナレッジ ベース ID に合わせて編集してください。
 
 ```bash
-curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
+curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
 -v \
 -X POST \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY" \
@@ -266,40 +262,9 @@ cURL の応答には、ランタイム エンドポイント キーが含まれ�
   "lastStableVersion": "4.0.6"
 }
 ```
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-ナレッジ ベースにクエリを実行する前に、次のことを行う必要があります。
-* ナレッジ ベースを公開する
-* ランタイム エンドポイント キーを取得する
-
-このタスクでは、ランタイム エンドポイント キーを取得します。 ナレッジ ベースの公開は、[別のタスク](#publish-knowledge-base)です。
-
-ランタイム エンドポイント キーは、QnA Maker リソースを使用するすべてのナレッジ ベースに共通するキーです。
-
-|Information|cURL の構成|目的|
-|--|--|--|
-|QnA Maker リソースの名前|URL|URL の構築用|
-|QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
-
-cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名とリソース キーに合わせて編集してください。
-
-```bash
-curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/endpointkeys \
--X GET \
--H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"
-```
-
-
-cURL の応答には、ランタイム エンドポイント キーが含まれています。 ナレッジ ベースから回答を取得するためのクエリを実行する際は、これらのキーのうち 1 つだけを使用します。
-
-```json
-{
-  "primaryEndpointKey": "93e88a14-694a-44d5-883b-184a68aa8530",
-  "secondaryEndpointKey": "92c98c16-ca31-4294-8626-6c57454a5063",
-  "installedVersion": "4.0.5",
-  "lastStableVersion": "4.0.6"
-}
-```
+これは、顧客の質問と回答には適用されません。
 
 ---
 
@@ -330,14 +295,12 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 
 成功の応答には、上位の回答が含まれるほか、クライアント アプリケーション (チャット ボットなど) がユーザーに回答を表示する際に必要となる情報も含まれます。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
-
-ナレッジ ベースからの回答の取得は、ナレッジ ベースの管理とは別のランタイムから行います。 これは独立したランタイムであるため、ランタイム キーを使用して認証する必要があります。
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 |Information|cURL の構成|目的|
 |--|--|--|
-|QnA Maker リソースの名前|URL|URL の構築用|
-|QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
+|Text Analytics リソース名 (カスタム質問と回答が有効)|URL|URL の構築用|
+|Text Analytics リソース キー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|Text Analytics サービスの認証を行う|
 |ナレッジ ベース ID|URL ルート|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 |クエリを表す JSON|`-d` パラメーター|JSON の[要求本文のパラメーター](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)と[例](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON のサイズ (バイト単位)|`Content-Size` ヘッダーの `-h` パラメーター||
@@ -345,7 +308,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、ナレッジ ベース ID に合わせて編集してください。
 
 ```bash
-curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID/generateAnswer \
+curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID/generateAnswer \
 -X POST \
 -H "Content-Type:application/json" \
 -H "Content-Size:159" \
@@ -381,20 +344,20 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamake
 
 応答状態は、結果を伴わない 204 です。 cURL コマンドの詳細出力を表示するには、`-v` コマンド ライン パラメーターを使用してください。 これには HTTP の状態が含まれます。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 ナレッジ ベースの使用を終了したら、それを削除します。
 
 |Information|cURL の構成|目的|
 |--|--|--|
-|QnA Maker リソースの名前|URL|URL の構築用|
-|QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
+|Text Analytics リソース名 (カスタム質問と回答が有効)|URL|URL の構築用|
+|Text Analytics リソース キー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|Text Analytics サービスの認証を行う|
 |ナレッジ ベース ID|URL ルート|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、ナレッジ ベース ID に合わせて編集してください。
 
 ```bash
-curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.1/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
+curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID \
 -X DELETE \
 -v \
 -H "Ocp-Apim-Subscription-Key: REPLACE-WITH-YOUR-RESOURCE-KEY"

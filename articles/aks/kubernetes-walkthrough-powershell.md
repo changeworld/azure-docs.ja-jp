@@ -5,18 +5,18 @@ services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b61c791390200beac4a18422a4de58dd94fa711
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f96ecd00b72f1853fe25b497283ea48ebdf55d7
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492899"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747799"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Kubernetes Service クラスターをデプロイする
 
 Azure Kubernetes Service (AKS) は、クラスターをすばやくデプロイおよび管理することができる、マネージド Kubernetes サービスです。 このクイックスタートでは次の作業を行います。
-* PowerShell を使用して AKS クラスターをデプロイします。 
-* このクラスターで、Web フロント エンドと Redis インスタンスが含まれている複数コンテナー アプリケーションを実行します。 
+* PowerShell を使用して AKS クラスターをデプロイします。
+* このクラスターで、Web フロント エンドと Redis インスタンスが含まれている複数コンテナー アプリケーションを実行します。
 * アプリケーションを実行するクラスターとポッドの正常性を監視します。
 
 Windows Server ノード プールの作成の詳細については、[Windows Server コンテナーをサポートする AKS クラスターの作成][windows-container-powershell]に関するページを参照してください。
@@ -41,9 +41,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[Azure リソース グループ](../azure-resource-manager/management/overview.md)は、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所の指定を求めるプロンプトが表示されます。 この場所は次のとおりです。 
+[Azure リソース グループ](../azure-resource-manager/management/overview.md)は、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所の指定を求めるプロンプトが表示されます。 この場所は次のとおりです。
 * リソース グループ メタデータのストレージの場所。
-* リソースの作成時に別のリージョンを指定しない場合に、Azure でリソースが実行される場所です。 
+* リソースの作成時に別のリージョンを指定しない場合に、Azure でリソースが実行される場所です。
 
 次の例では、**myResourceGroup** という名前のリソース グループを **米国東部** リージョンに作成します。
 
@@ -65,12 +65,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-1. `ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。 
+1. `ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。
     * 詳細については、「[簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)」を参照してください。
 
-1. [New-AzAks][new-azaks] コマンドレットを使用して AKS クラスターを作成します。 Azure Monitor for containers は既定で有効になっています。
+1. [New-AzAksCluster][new-azakscluster] コマンドレットを使用して AKS クラスターを作成します。 Azure Monitor for containers は既定で有効になっています。
 
-    次の例では、**myAKSCluster** という名前のクラスターを 1 つのノードで作成します。 
+    次の例では、**myAKSCluster** という名前のクラスターを 1 つのノードで作成します。
 
     ```azurepowershell-interactive
     New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -83,7 +83,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
-Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使います。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 
+Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使います。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。
 
 1. `Install-AzAksKubectl` コマンドレットを使用して `kubectl` をローカルにインストールします。
 
@@ -112,11 +112,11 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-[Kubernetes のマニフェスト ファイル][kubernetes-deployment]では、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 
+[Kubernetes のマニフェスト ファイル][kubernetes-deployment]では、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。
 
 このクイックスタートでは、マニフェストを使用して、[Azure Vote アプリケーション][azure-vote-app]を実行するために必要なすべてのオブジェクトを作成します。 このマニフェストには、次の 2 つの [Kubernetes デプロイ][kubernetes-deployment]が含まれています。
 * サンプルの Azure Vote Python アプリケーション。
-* Redis インスタンス。 
+* Redis インスタンス。
 
 次の 2 つの [Kubernetes サービス][kubernetes-service]も作成されます。
 * Redis インスタンスの内部サービス。
@@ -256,7 +256,7 @@ Azure Vote アプリが動作していることを確認するには、Web ブ�
 
 ![Azure Kubernetes Service にデプロイされた投票アプリ](./media/kubernetes-walkthrough-powershell/voting-app-deployed-in-azure-kubernetes-service.png)
 
-Azure Monitor for containers によってキャプチャされたクラスター ノードとポッドの正常性メトリックを Azure portal で確認します。 
+Azure Monitor for containers によってキャプチャされたクラスター ノードとポッドの正常性メトリックを Azure portal で確認します。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
@@ -268,14 +268,14 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 > [!NOTE]
 > クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。
-> 
+>
 > マネージド ID を使用した場合、ID はプラットフォームによって管理されるので、削除する必要はありません。
 
 ## <a name="get-the-code"></a>コードの入手
 
 このクイック スタートでは、Kubernetes のデプロイを作成するために、既存のコンテナー イメージを使用しました。 関連するアプリケーション コード、Dockerfile、Kubernetes マニフェスト ファイルは、[GitHub で入手できます。][azure-vote-app]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Kubernetes クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。 AKS クラスターの [Kubernetes Web ダッシュボードにアクセス][kubernetes-dashboard]します。
 
@@ -296,7 +296,7 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [install-azure-powershell]: /powershell/azure/install-az-ps
 [new-azresourcegroup]: /powershell/module/az.resources/new-azresourcegroup
-[new-azaks]: /powershell/module/az.aks/new-azaks
+[new-azakscluster]: /powershell/module/az.aks/new-azakscluster
 [import-azakscredential]: /powershell/module/az.aks/import-azakscredential
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services

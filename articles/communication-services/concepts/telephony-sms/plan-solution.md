@@ -6,16 +6,16 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 7ab843b9e30d1b72c46c6e44d3a272f3b1c72083
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 150daaa834cefbb3f74e6711fea500138774f2de
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016439"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111089"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
 

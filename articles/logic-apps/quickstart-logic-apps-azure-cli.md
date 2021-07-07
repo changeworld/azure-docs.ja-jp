@@ -1,20 +1,20 @@
 ---
-title: クイック スタート - マルチテナント Azure Logic Apps と Azure CLI でのワークフローを作成および管理する
-description: CLI を使用して、マルチテナント Azure Logic Apps でロジック アプリワークフローを作成し、リスト、表示 (取得)、更新、削除などの操作でロジックを管理します。
+title: クイック スタート - マルチテナント Azure Logic Apps で Azure CLI を使用してワークフローを作成して管理する
+description: CLI を使用して、マルチテナント Azure Logic Apps でロジック アプリ ワークフローを作成して管理します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 05/25/2021
-ms.openlocfilehash: 4a848b560fd0302690f1e52661b165182082dd9b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 533a3001068c2bfa6a6902e486d6a1acf468d246
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375931"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617262"
 ---
-# <a name="quickstart-create-and-manage-workflows-in-multi-tenant-azure-logic-apps-using-the-azure-cli"></a>クイック スタート - マルチテナント Azure Logic Apps でのワークフローを、Azure CLI を使用して作成および管理する
+# <a name="quickstart-create-and-manage-workflows-using-azure-cli-in-multi-tenant-azure-logic-apps"></a>クイック スタート - マルチテナント Azure Logic Apps で Azure CLI を使用してワークフローを作成して管理する
 
 このクイックスタートでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/logic) (`az logic`) を使用してロジック アプリを作成し、管理する方法について説明します。 ロジック アプリ ワークフロー定義用の JSON ファイルを使用して、コマンド ラインからロジック アプリを作成することができます。 その後、コマンド ラインから、`list`、`show` (`get`)、`update`、`delete` などの操作を実行してロジック アプリを管理できます。
 

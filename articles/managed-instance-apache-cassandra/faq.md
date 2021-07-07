@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 1ba2b7d648c86912118b83a566bf2eb0800baee2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6953ffb5542e2a0d8acb9e404b2df0f923a08145
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747640"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744019"
 ---
 # <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra-preview"></a>Azure Managed Instance for Apache Cassandra についてよく寄せられる質問 (プレビュー)
 
@@ -45,6 +45,10 @@ Azure Managed Instance for Apache Cassandra は、Azure Cosmos DB チームに�
 ### <a name="what-are-the-storage-and-throughput-limits-of-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra のストレージとスループットの制限を教えてください
 
 これらの制限は、選択した仮想マシンの SKU によって異なります。
+
+### <a name="how-are-cassandra-repairs-carried-out-in-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra では、Cassandra の修復はどのように実行されますか?
+
+[cassandra-reaper.io](http://cassandra-reaper.io/) を使用します。 これは自動的に実行されるように設定されています。
 
 ### <a name="what-is-the-cost-of-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra のコストを教えてください
 

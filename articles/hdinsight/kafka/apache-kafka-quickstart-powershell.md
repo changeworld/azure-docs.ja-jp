@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 7f29ba5291ab80ef4a4d323e23741c333796c7a8
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3234c21e9cff55decfc35fd5b6f8d0feee6a3577
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691147"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280209"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>クイックスタート: PowerShell を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "110691147"
 
 このクイック スタートでは、Azure PowerShell を使って [Apache Kafka](https://kafka.apache.org) クラスターを作成する方法について説明します。 Kafka を使って、付属のユーティリティでメッセージを送受信する方法についても説明します。
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
 
 Kafka API は、同じ仮想ネットワーク内のリソースによってのみアクセスできます。 このクイック スタートでは、SSH を使って直接クラスターにアクセスします。 他のサービス、ネットワーク、または仮想マシンを Kafka に接続するには、まず、仮想ネットワークを作成してから、ネットワーク内にリソースを作成する必要があります。 詳しくは、[仮想ネットワークを使用した Apache Kafka への接続](apache-kafka-connect-vpn-gateway.md)に関するドキュメントをご覧ください。
 

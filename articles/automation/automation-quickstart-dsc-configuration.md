@@ -7,12 +7,12 @@ keywords: dsc, 構成, オートメーション
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93760823363b7582133727a7e5b0dc0f2a97a6d0
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86186080"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992173"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Desired State Configuration を使用して VM を構成する
 
@@ -62,7 +62,7 @@ State Configuration 機能は、コンピューターでさまざまな方法で
 テキスト エディターで次のように入力し、**AMPServer.ps1** としてローカルに保存します。
 
 ```powershell-interactive
-configuration LAMPServer {
+configuration 'LAMPServer' {
    Import-DSCResource -module "nx"
 
    Node localhost {

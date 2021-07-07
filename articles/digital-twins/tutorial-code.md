@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 1cfed11eec3758586519eeb33b396a41b768e693
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 68afdb1c0ab74f5d05fd13a9fe8868cb9e2ac4aa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075503"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460260"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -80,7 +80,7 @@ dotnet add package Azure.Identity
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="サンプル コードのスニペット。&quot;using System;&quot; ステートメントが 1 つあり、DigitalTwinsCodeTutorial という名前空間があり、その名前空間に Program というクラスがあり、そのクラスに Main メソッドがあり、&quot;static void Main(string[] args)&quot; という標準シグネチャが使用されています。Main メソッドには Hello World 出力ステートメントが含まれています。" lightbox="media/tutorial-code/starter-template.png":::
+        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="コード エディターでのサンプル コードのスニペットのスクリーンショット。" lightbox="media/tutorial-code/starter-template.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -180,7 +180,7 @@ dotnet run
 
 これで、コマンド ウィンドウで `dotnet run` を使用してプログラムを実行すると、エラー コードが返されることがわかります。 モデル作成コードからの出力には、このエラーが表示されます。
 
-:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="プログラムの出力。&quot;409:Service request failed.状態:409 (Conflict).&quot; (409: サービス要求が失敗しました。状態: 409 (競合)) というメッセージが表示され、その後に、dtmi:example:SampleModel;1 が既に存在することを示すエラー出力が続きます":::
+:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="プログラム出力が示されているコンソールのスクリーンショット。エラー &quot;409: サービスへの要求が失敗しました。状態: 409 (競合)。&quot; になります。":::
 
 この時点以降、このチュートリアルでは、サービス メソッドへのすべての呼び出しを try/catch ハンドラー内にラップします。
 
@@ -228,7 +228,7 @@ dotnet run
 
 コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 このような出力ステートメントで、作成したすべてのリレーションシップの一覧が表示されます。
 
-:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="&quot;Twin sampleTwin-0 is connected to: contains->sampleTwin-1, -contains->sampleTwin-2&quot; (ツイン サンプル Twin-0 が接続されています: contains->sampleTwin-1, -contains->sampleTwin-2) というメッセージを示すプログラム出力" lightbox="media/tutorial-code/list-relationships.png":::
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="プログラムの出力を示すコンソールのスクリーンショット。ツインのリレーションシップの一覧のメッセージが表示されます。" lightbox="media/tutorial-code/list-relationships.png":::
 
 ### <a name="query-digital-twins"></a>デジタル ツインのクエリ
 

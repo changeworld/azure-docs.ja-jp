@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 05/24/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像識別子、画像認識アプリ、Custom Vision
-ms.openlocfilehash: 12877f2d43f9b8f864871e5a5ab050aa0eeb61e2
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e245c4882a06d5053e8781a48469d104bcaced23
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814603"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454788"
 ---
 # <a name="what-is-custom-vision"></a>Custom Vision とは
 
@@ -27,7 +27,7 @@ Azure Custom Vision は、独自の画像識別子を構築、デプロイ、改
 
 ## <a name="what-it-does"></a>実行内容
 
-Custom Vision サービスでは、画像の分析に機械学習アルゴリズムを使用します。 開発者は、着目する特性を備えた画像グループと、それを欠いた画像グループを提出します。 提出時に自分で画像にラベルを付けます。 次に、アルゴリズムをこのデータでトレーニングし、同じ画像に対するテストを行って、アルゴリズム自体の精度を計算します。 アルゴリズムのトレーニング後、テスト、再トレーニングを行い、最終的にはアルゴリズムを画像認識アプリ内で使用して、新しい画像を分類することができます。 オフラインで使用するために、モデル自体をエクスポートすることもできます。
+Custom Vision サービスでは、画像の分析に機械学習アルゴリズムを使用します。 開発者は、着目する特性を備えた画像グループと、それを欠いた画像グループを提出します。 提出時に自分で画像にラベルを付けます。 次に、アルゴリズムをこのデータでトレーニングし、同じ画像に対するテストを行って、アルゴリズム自体の精度を計算します。 アルゴリズムをトレーニングした後、テスト、再トレーニングを行い、最終的にアルゴリズムを画像認識アプリ内で使用して、新しい画像を分類することができます。 オフラインで使用するために、モデル自体をエクスポートすることもできます。
 
 ### <a name="classification-and-object-detection"></a>分類とオブジェクトの検出
 

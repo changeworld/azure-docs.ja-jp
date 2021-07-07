@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:サーバーレス SQL プールを使用して Azure Synapse Studio で Azure Open Datasets を分析する
-description: このチュートリアルでは、サーバーレス SQL プールを使用してさまざまな Azure Open Datasets を組み合わせることで探索的データ分析を簡単に実行し、Azure Synapse Studio で結果を視覚化する方法について説明します。
+title: 'チュートリアル: サーバーレス SQL プールを使用して Synapse Studio で Azure Open Datasets を分析する'
+description: このチュートリアルでは、サーバーレス SQL プールを使用してさまざまな Azure Open Datasets を組み合わせることで探索的データ分析を簡単に実行し、Synapse Studio で結果を視覚化する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f9bab7ca85275f914b8421cb4eb7517396ff8a
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: eed38a5dfeafee6a951ea745f3fa12ba11a36699
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685011"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813724"
 ---
 # <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>チュートリアル:サーバーレス SQL プールを使用してデータ レイクを探索および分析する
 

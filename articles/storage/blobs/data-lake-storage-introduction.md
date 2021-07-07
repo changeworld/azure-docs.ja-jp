@@ -8,16 +8,16 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 1c4d04e25bf8f7d981c998baafb468f04b66eaf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b197d91893cc419913ace60fe30beca88484bfd2
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879900"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590956"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
-‎Azure Data Lake Storage Gen2 は、ビッグ データ分析専用の機能セットであり、[Azure Blob Storage](storage-blobs-introduction.md) に基づいて構築されています。 
+‎Azure Data Lake Storage Gen2 は、[Azure Blob Storage](storage-blobs-introduction.md) をベースに構築された、ビッグ データ分析専用の一連の機能です。 
 
 Data Lake Storage Gen2 は、Azure Blob Storage と [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) の機能を集約したものです。 たとえば、Data Lake Storage Gen2 では、ファイル システム セマンティクス、ファイルレベルのセキュリティ、スケーリングが提供されます。 これらの機能は Blob Storage に基づいて構築されているため、高可用性およびディザスター リカバリー機能を備えた低コストの階層型ストレージも利用できます。
 

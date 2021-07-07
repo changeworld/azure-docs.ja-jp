@@ -1,5 +1,5 @@
 ---
-title: Azure Purview に SAP S/4HANA ソースを登録してスキャン (プレビュー) を設定する
+title: Azure Purview に SAP S/4HANA ソースを登録してスキャンを設定する
 description: この記事では、Azure Purview に SAP S/4HANA ソースを登録し、スキャンを設定する方法について、概要を説明します。
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: e7030d1b692777b7497ffe464a70d3a80cab9647
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: a061f3afbfb3a114ec22bcfba123aa326b6ac3fd
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992361"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067098"
 ---
-# <a name="register-and-scan-a-sap-s4hana-source-preview"></a>SAP S/4HANA ソースを登録してスキャンする (プレビュー)
+# <a name="register-and-scan-a-sap-s4hana-source"></a>SAP S/4HANA ソースを登録してスキャンする
 
 この記事では、Purview に SAP S/4HANA ソースを登録し、スキャンを設定する方法について、概要を説明します。
 

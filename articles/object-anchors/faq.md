@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 1430095861b4e8232127fe6d22b87afe5babcf67
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 31b46475af345ec4eed3a8d5787bf859918048ef
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750737"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985852"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Azure Object Anchors についてよく寄せられる質問
 
@@ -35,15 +35,15 @@ Azure Object Anchors を使用すると、アプリケーションで 3D モデ�
 
 **Q: モデルの変換で処理できるオブジェクトの最大ディメンションはどれくらいですか?**
 
-**A:** CAD モデルの各次元は 10 メートル未満である必要があります。
+**A:** CAD モデルの各次元は 10 メートル未満である必要があります。 詳細については、[資産の要件](overview.md)に関するページを参照してください。
 
 **Q: 変換で処理できる CAD モデルの最大サイズはどれくらいですか?**
 
-**A:** モデルのファイル サイズは 150 MB 未満である必要があります。
+**A:** モデルのファイル サイズは 150 MB 未満である必要があります。 詳細については、[資産の要件](overview.md)に関するページを参照してください。
 
 **Q: どのような CAD 形式がサポートされますか?**
 
-**A:** 現在、`fbx`、`ply`、`obj`、`glb`、および `gltf` のファイルの種類がサポートされています。
+**A:** 現在、`fbx`、`ply`、`obj`、`glb`、および `gltf` のファイルの種類がサポートされています。 詳細については、[資産の要件](overview.md)に関するページを参照してください。
 
 **Q: モデル変換サービスで必要となる重力方向と単位とは何ですか? それらを調べるにはどうすればよいですか?**
 
@@ -63,7 +63,7 @@ Azure Object Anchors を使用すると、アプリケーションで 3D モデ�
 
 **Q: Object Anchors ではどのようなデバイスがサポートされていますか?**
 
-**A:** HoloLens 2 です 
+**A:** HoloLens 2 です。
 
 **Q: HoloLens ではどの OS ビルドを実行する必要がありますか?**
 
@@ -89,6 +89,10 @@ Azure Object Anchors を使用すると、アプリケーションで 3D モデ�
  8. オブジェクトの検出を開始し、推定された姿勢に基づいてレンダリングを視覚化します。
  9. 姿勢が正確に安定したら、バッテリ寿命を保つために、検出されたオブジェクトをロックする、または追跡を停止します。
 
+**Q: HoloLens Unity アプリケーションで Object Anchors Unity SDK を使用できるようにするには、どのバージョンの Mixed Reality Toolkit (MRTK) を使用する必要がありますか?**
+
+**A:** Azure Object Anchors Unity SDK は、Mixed Reality Toolkit に一切依存していないため、任意のバージョンを自由に使用できます。 詳細については、「[Unity 用 MRTK の概要](/windows/mixed-reality/develop/unity/mrtk-getting-started)」を参照してください。
+
 **Q: 推定された姿勢はどの程度正確ですか?**
 
 **A:** オブジェクトのサイズ、素材、環境などによって異なります。小さいオブジェクトの場合、誤差 2 cm 以内で姿勢を推定することが可能です。 車のような大きなオブジェクトの場合、誤差は最大 2-8 cm になることがあります。
@@ -103,7 +107,7 @@ Azure Object Anchors を使用すると、アプリケーションで 3D モデ�
 
 **Q: Object Anchors で同時に検出できる、異なるオブジェクトの数はいくつですか?**
 
-**A:** 現時点では、一度に 1 個のオブジェクト モデルの検出がサポートされています。 
+**A:** 現時点では、一度に 1 個のオブジェクト モデルの検出がサポートされています。
 
 **Q: Object Anchors では、同じオブジェクト モデルの複数のインスタンスを検出することはできますか?**
 
@@ -115,10 +119,11 @@ Azure Object Anchors を使用すると、アプリケーションで 3D モデ�
 
 * ポスターをいくつか追加して、部屋に十分なテクスチャがあるようにします。
 * オブジェクトをより完全にスキャンします。
-* 前述のようにモデルのパラメーターを調整します。
+* 下記のようにモデルのパラメーターを調整します。
 * 検索領域として、オブジェクトの全体または大部分を含む狭い境界ボックスを指定します。
 * 空間マッピングのキャッシュをクリアし、オブジェクトを再スキャンします。
 * 診断情報をキャプチャし、Microsoft にデータを送信します。
+* `ObjectQuery` クラスから `MinSurfaceCoverage` プロパティを調整します。 詳細については、「[難しいオブジェクトを検出する方法](detect-difficult-object.md)」を参照してください。
 
 **Q: オブジェクトのクエリ パラメーターはどのように選択すればよいですか?**
 
@@ -128,6 +133,7 @@ Azure Object Anchors を使用すると、アプリケーションで 3D モデ�
 * 通常はオブジェクト モデルの既定の `ObjectQuery.MinSurfaceCoverage` が適切です。それ以外の場合は、迅速な検出を行うためにより小さな値を使用します。
 * オブジェクトが直立状態である必要がある場合は、`ObjectQuery.ExpectedMaxVerticalOrientationInDegrees` に小さい値を使用します。
 * アプリでは、常に検出用に `1:1` のオブジェクト モデルを使用する必要があります。 推定されたスケールは、理想的には誤差 1% 以内で 1 に近い必要があります。 アプリでは、`ObjectQuery.MaxScaleChange` を `0` または `0.1` に設定してスケールの推定を無効または有効にし、インスタンスの姿勢を定性的に評価することができます。
+* 詳細については、「[難しいオブジェクトを検出する方法](detect-difficult-object.md)」を参照してください。
 
 **Q: HoloLens から Object Anchors の診断データを取得するにはどうすればよいですか?**
 

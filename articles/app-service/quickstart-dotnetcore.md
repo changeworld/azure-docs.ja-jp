@@ -3,19 +3,19 @@ title: 'クイックスタート: ASP.NET Web アプリをデプロイする'
 description: 初めての ASP.NET アプリをデプロイして、Azure App Service で Web アプリを実行する方法について説明します。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/30/2021
+ms.date: 06/08/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-ide
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 482bf6d29fbc1e982ee4d17099d82915ff3a0241
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3b3abdf40d5aa9d56421361237432ddf08c0c016
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762463"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746539"
 ---
 <!-- NOTES:
 
@@ -38,9 +38,6 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 # <a name="quickstart-deploy-an-aspnet-web-app"></a>クイックスタート: ASP.NET Web アプリをデプロイする
 
 このクイックスタートでは、初めての ASP.NET Web アプリを作成し、[Azure App Service](overview.md) にデプロイする方法について説明します。 App Service はさまざまなバージョンの .NET アプリをサポートし、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 ASP.NET Web アプリはクロスプラットフォームであり、Linux でも Windows でもホストすることができます。 完了すると、App Service ホスティング プランと、デプロイされた Web アプリケーションを含む App Service とで構成される、Azure リソース グループを作成できます。
-
-> [!TIP]
-> .NET Core 3.1 は、最新の長期サポート (LTS) リリースの .NET です。 詳細については、[.NET のサポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -110,12 +107,15 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
+> [!TIP]
+> .NET Core 3.1 は、最新の長期サポート (LTS) リリースの .NET です。 詳細については、[.NET のサポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に関するページを参照してください。
+
 :::zone target="docs" pivot="development-environment-vs"
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
-1. **[新しいプロジェクトの作成]** で **[ASP.NET Web Core App]\(ASP.NET Web Core アプリ\)** を検索して選択し、 **[次へ]** を選択します。
+1. **[新しいプロジェクトの作成]** で、 **[ASP.NET Core Web アプリ]** を検索して選択し、 **[次へ]** を選択します。
 1. **[新しいプロジェクトの構成]** で、アプリケーションに _MyFirstAzureWebApp_ という名前を付け、 **[次へ]** を選択します。
 
    :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="ASP.NET Core 3.1 Web アプリを構成する" border="true":::
@@ -132,7 +132,7 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
-1. **[新しいプロジェクトの作成]** で **[ASP.NET Web Core App]\(ASP.NET Web Core アプリ\)** を検索して選択し、 **[次へ]** を選択します。
+1. **[新しいプロジェクトの作成]** で、 **[ASP.NET Core Web アプリ]** を検索して選択し、 **[次へ]** を選択します。
 1. **[新しいプロジェクトの構成]** で、アプリケーションに _MyFirstAzureWebApp_ という名前を付け、 **[次へ]** を選択します。
 
    :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="Visual Studio - ASP.NET 5.0 Web アプリを構成する。" border="true":::

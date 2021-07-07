@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7528d1f29b293e1efadde84fac9fa8d95f8f5076
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: da026012c4084783d30f548cbdffc8951d74bcd6
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371331"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751219"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してビューを作成および使用する
 
@@ -119,6 +119,8 @@ FROM
 
 > [!div class="mx-imgBorder"]
 >![Yellow Taxi Delta Lake フォルダー](./media/shared/yellow-taxi-delta-lake.png)
+
+パーティション分割された Delta Lake データのクエリを実行する場合は、`OPENROWSET` 関数内で `WITH` 句を使用しないでください。 プレビューの既知の問題により、`WITH` 句では基になるパーティション分割列の値が正しく返されません。 (ビューなしで) `WITH` 句と共に `OPENROWSET` 関数を直接使用すると、パーティションの削除が正常に機能します。  
 
 ## <a name="use-a-view"></a>ビューの使用
 

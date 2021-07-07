@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: d683507e8c35db5af3ef7e91674f6a55254e22e2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 90c044593ac02f2c906fb2347d731168b25af5af
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132425"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813868"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>チュートリアル:Azure Static Web Apps での Blazor を使用した静的 Web アプリのビルド
 
@@ -61,51 +61,47 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
 
 1. GitHub にサインインしていることを確認し、次の場所に移動して新しいリポジトリを作成します。
    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
-1. リポジトリの名前を **my-first-static-blazor-app** に設定します
+1. ご自分のリポジトリに **my-first-static-blazor-app** という名前を付けます。
 
 ## <a name="create-a-static-web-app"></a>静的 Web アプリを作成する
 
 リポジトリが作成されたので、Azure portal から静的 Web アプリを作成します。
 
-1. [Azure Portal](https://portal.azure.com) に移動します
-1. **[リソースの作成]** を選択します
-1. **[Static Web Apps]** を探します
-1. **[Static Web Apps (プレビュー)]** を選択します
-1. **[作成]**
-
-_[基本]_ セクションで、新しいアプリを構成し、それを GitHub リポジトリにリンクすることから始めます。
-
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="[基本] タブ":::
-
-1. お使いの "_Azure サブスクリプション_" を選択します
-1. "_リソース グループ_" を選択するか、新しく作成します
-1. アプリに **my-first-static-blazor-app** という名前を付けます。
-   - 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
-1. 最も近い "_リージョン_" を選択します
-1. **[Free]** _SKU_ を選択します
-1. **[GitHub アカウントでサインイン]** ボタンを選択し、GitHub で認証します
-
-GitHub にサインインした後、リポジトリ情報を入力します。
-
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="リポジトリの詳細":::
-
-1. 希望する "_組織_" を選択します
-1. _[リポジトリ]_ ドロップダウンから **[my-first-static-blazor-app]** を選択します。
-1. _[ブランチ]_ ドロップダウンから **[main]** を選択します
-
-   リポジトリが表示されない場合は、GitHub で Azure Static Web Apps を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]、[アプリケーション]、[認可された OAuth アプリ]** の順に移動して、 **[Azure Static Web Apps]** 、 **[許可]** の順に選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
-
-1. _[ビルドの詳細]_ セクションで、Blazor 固有の構成の詳細を追加します。
-
-   - _[ビルドのプリセット]_ ドロップダウンから **[Blazor]** を選択し、すべての既定値を保持します。
-
-1. **[Review + create]\(レビュー + 作成\)** を選択します。
-
-   :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="[確認および作成] ボタン":::
-
+1. [Azure Portal](https://portal.azure.com) に移動します。
+1. **[リソースの作成]** を選択します。
+1. **Static Web Apps** を検索します。
+1. **Static Web Apps** を選択します。
 1. **［作成］** を選択します
+1. _[基本]_ タブで、次の値を入力します。
 
-   :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="[作成] ボタン":::
+    | プロパティ | 値 |
+    | --- | --- |
+    | _サブスクリプション_ | Azure サブスクリプション名。 |
+    | _リソース グループ_ | **my-blazor-group**  |
+    | _名前_ | **my-first-static-blazor-app** |
+    | _[プランの種類]_ | **Free** |
+    | _Azure Functions API のリージョンとステージング環境_ | 最も近いリージョンを選択します。 |
+    | _ソース_ | **GitHub** |
+
+1. **[GitHub でサインイン]** を選択し、GitHub で認証します。
+
+1. 次の GitHub 値を入力します。
+
+    | プロパティ | 値 |
+    | --- | --- |
+    | _組織_ | ご自分の希望する GitHub 組織を選択します。 |
+    | _リポジトリ_ | **my-first-static-blazor-app** を選択します。 |
+    | _ブランチ_ | **[main]\(メイン\)** を選択します。 |
+
+1. _[Build Details]\(ビルドの詳細\)_ セクションで、 _[Build Presets]\(ビルドのプリセット\)_ ドロップダウンから **[Blazor]** を選択し、既定値をそのままにします。
+
+### <a name="review-and-create"></a>[Review and create] (確認および作成)
+
+1. **[確認および作成]** ボタンを選択して、詳細がすべて正しいことを確認します。
+
+1. **[作成]** を選択して、App Service Static Web App の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
+
+1. デプロイが完了したら、 **[リソースに移動]** をクリックします。
 
 1. **[リソースに移動]** を選択します。
 
@@ -129,11 +125,11 @@ Static Web Apps の概要ウィンドウには、Web アプリとの対話に役
 
 このアプリケーションを引き続き使用しない場合は、次の手順を使用して Azure Static Web Apps インスタンスを削除することができます。
 
-1. [Azure portal](https://portal.azure.com) を開きます。
-1. 上部の検索バーから **my-first-static-blazor-app** を検索します。
-1. アプリ名を選択します
-1. **[削除]** ボタンを選択します
-1. **[はい]** を選択して、削除操作を確定します
+1. [Azure Portal](https://portal.azure.com)を開きます。
+1. 上部の検索バーから「**my-blazor-group**」を検索します。
+1. グループ名を選択します。
+1. **[削除]** ボタンを選択します。
+1. **[はい]** を選択して、削除操作を確定します。
 
 ## <a name="next-steps"></a>次のステップ
 

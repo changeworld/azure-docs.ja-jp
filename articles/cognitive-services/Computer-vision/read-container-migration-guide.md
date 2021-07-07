@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 05/24/2021
 ms.author: aahi
-ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: d648acb3ff9a1f7c2076a4b7c1fcf9755a9ea05d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284687"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465195"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR コンテナーへの移行
 
@@ -35,7 +35,7 @@ Read v3.2 コンテナーは、Computer Vision API のバージョン 3 を使�
 * `/vision/v3.2-preview.1/read/analyze`
 * `/vision/v3.2-preview.1/read/syncAnalyze`
 
-クラウドベースの Read API のバージョン 3 を使用するようにアプリケーションを更新する方法の詳細については、[Computer Vision v3 REST API 移行ガイド](./upgrade-api-versions.md)を参照してください。 この情報は、コンテナーにも適用されます。 同期操作はコンテナーでのみサポートされていることに注意してください。
+クラウドベースの Read API のバージョン 3 を使用するようにアプリケーションを更新する方法の詳細については、[Computer Vision v3 REST API 移行ガイド](./upgrade-api-versions.md)を参照してください。 この情報は、コンテナーにも適用されます。 同期操作はコンテナーでのみサポートされています。
 
 ## <a name="memory-requirements"></a>メモリ要件
 
@@ -69,7 +69,7 @@ Read v3.2 コンテナーは、Computer Vision API のバージョン 3 を使�
 | Azure キュー | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | 実稼働 |
 | RabbitMQ    | 利用不可 | 実稼働 |
 
-冗長性を高めるために、Read v3.x コンテナーは可視性タイマーを使用して、複数コンテナーのセットアップの実行時にクラッシュが発生した場合でも要求を正常に処理できるようにします。 
+冗長性を高めるため、Read v3.x コンテナーでは、可視性タイマーを使用して、複数コンテナーのセットアップの実行時にクラッシュが発生した場合に要求を正常に処理できるようになっています。 
 
 タイマーを `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` に設定します。これにより、別のワーカーが処理しているときにメッセージが非表示になる時間を設定できます。 ページが冗長的に処理されないようにするには、タイムアウト期間を 120 秒に設定することをお勧めします。 既定値は 30 秒です。
 

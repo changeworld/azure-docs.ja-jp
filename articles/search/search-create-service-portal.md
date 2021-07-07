@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2021
-ms.openlocfilehash: 83e206a5fd7b34da0b0ac8590d5271a554855d3e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/03/2021
+ms.openlocfilehash: 713d2216029fb88716d157d9db7b2010d3f32720
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580739"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526274"
 ---
 # <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>ポータルで Azure Cognitive Search サービスを作成する
 
 [Azure Cognitive Search](search-what-is-azure-search.md) は、カスタム アプリにフルテキスト検索エクスペリエンスを追加する際に使用される Azure リソースです。 データや二次的な処理を提供する他の Azure サービス、ネットワーク サーバー上のアプリ、他のクラウド プラットフォーム上で実行されているソフトウェアと簡単に統合できます。
 
-検索サービスは、[Azure portal](https://portal.azure.com/) を使用して作成できます。この記事ではこれを取り上げます。 また、[Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[Management REST API](/rest/api/searchmanagement/)、または [Azure Resource Manager サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)を使用することもできます。
+検索サービスは、[Azure portal](https://portal.azure.com/) を使用して作成できます。この記事ではこれを取り上げます。 また、[Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[Management REST API](/rest/api/searchmanagement/)、または [Azure Resource Manager サービス テンプレート](https://azure.microsoft.com/resources/templates/azure-search-create/)を使用することもできます。
 
 [![アニメーション GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -83,25 +83,25 @@ ms.locfileid: "106580739"
 
 ## <a name="choose-a-location"></a>場所を選択する
 
-Azure Cognitive Search は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」に記載されているように、ほとんどのリージョンで利用できます。 一般に、複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
+Azure Cognitive Search は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」に記載されているように、ほとんどのリージョンで利用できます。 
 
-+ [AI エンリッチメント](cognitive-search-concept-intro.md)を使用するには、Cognitive Services が Azure Cognitive Search と同じ物理リージョンに存在する必要があります。 ごくわずかですが、どちらか一方が提供されていないリージョンがあります。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」ページで、縦にチェック マークが 2 つ並んでいれば、両方の機能が利用できます。 どちらも利用できなければ、チェックマークは表示されません。
+原則として、複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
+
++ [AI エンリッチメント](cognitive-search-concept-intro.md)を使用するには、Cognitive Services が Azure Cognitive Search と同じ物理リージョンに存在する必要があります。 ごくわずかですが、どちらか一方が提供されて "*いない*" リージョンがあります。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」ページで、縦にチェック マークが 2 つ並んでいれば、両方の機能が利用できます。 どちらも利用できなければ、チェックマークは表示されません。
 
   :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="リージョン別の提供状況" border="true":::
 
 + 事業継続とディザスター リカバリー (BCDR) の要件は、[リージョン ペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)に複数の検索サービスを作成することによって満たすことができます。 たとえば、北米で活動している場合は、各検索サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
 
-いくつかの機能は、リージョンによっては利用が制限されています。 制限事項については、機能のドキュメントを参照してください。
-
-+ [二重暗号化](search-security-overview.md#double-encryption)
+リージョンに基づいて提供が制限されている機能を以下に示します。 サポートされているリージョンについては、機能の記事に記載されています。 
 
 + [可用性ゾーン (「パフォーマンスのためのスケール」)](search-performance-optimization.md#availability-zones)
 
 ## <a name="choose-a-pricing-tier"></a>Choose a pricing tier
 
-Azure Cognitive Search は現在、[複数の価格レベル](https://azure.microsoft.com/pricing/details/search/) (Free、Basic、Standard、ストレージ最適化) で提供されています。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 ガイダンスについては、[価格レベルの選択](search-sku-tier.md) に関する記事を参照してください。
+Azure Cognitive Search は現在、[複数の価格レベル](https://azure.microsoft.com/pricing/details/search/) (Free、Basic、Standard、ストレージ最適化) で提供されています。 レベルごとに独自の [容量と制限](search-limits-quotas-capacity.md)があります。 また、選択したレベルが特定の機能の使用可否に影響することもあります。 ガイダンスについては、「[階層による機能の使用の可否](search-sku-tier.md#feature-availability-by-tier)」を参照してください。
 
-運用環境のワークロードでは Basic と Standard が最も一般的な選択肢ですが、ほとんどのお客様は Free サービスから始めています。 レベルごとの主な違いは、パーティション サイズと速度、そして作成できるオブジェクトの数に対する制限です。
+運用環境では、Basic と Standard が最も一般的な選択肢ですが、評価目的で最初は無料サービスから始めるお客様も多数います。 課金対象のレベルごとの主な違いは、パーティション サイズと速度、そして作成できるオブジェクトの数に対する制限です。
 
 サービスの作成後に価格レベルを変更することはできないことに注意してください。 高いレベルまたは低いレベルが必要な場合は、サービスを作成し直す必要があります。
 

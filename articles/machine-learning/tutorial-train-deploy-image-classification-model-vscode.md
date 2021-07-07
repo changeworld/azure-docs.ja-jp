@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 05/25/2021
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efe19d39914e2efc4ac4dcc39d9b0f036ac626b3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 80090bf8743c78a66e38250dbfbb89beb70e66c2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371014"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457581"
 ---
 # <a name="train-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code 拡張機能 (プレビュー) を使用して画像分類 TensorFlow モデルをトレーニングする
 
@@ -68,9 +68,9 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
       team: ml-team
     ```
 
-    このテンプレートによって、`WestUS2` リージョン内に `TeamWorkspace` という名前のワークスペースが作成されます。 テンプレートで定義されている残りのオプションによって、ワークスペースのフレンドリ名、説明、およびタグが指定されます。
+    この仕様ファイルによって、`WestUS2` リージョン内に `TeamWorkspace` という名前のワークスペースが作成されます。 仕様ファイルに定義されている残りのオプションによって、ワークスペースのフレンドリ名、説明、およびタグが指定されます。
 
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。 リソースを作成するには、YAML 仕様ファイルで定義されている構成オプションを使用し、2.0 CLI を使用してジョブを送信します。 この時点で、Azure に対して、新しいワークスペースと依存リソースをアカウントに作成するように要求が行われます。 数分後、ご利用のサブスクリプションのノードに新しいワークスペースが表示されます。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。 リソースを作成するには、YAML 仕様ファイルで定義されている構成オプションを使用し、2.0 CLI を使用してジョブを送信します。 この時点で、Azure に対して、新しいワークスペースと依存リソースをアカウントに作成するように要求が行われます。 数分後、ご利用のサブスクリプションのノードに新しいワークスペースが表示されます。
 1. `TeamWorkspace` を既定のワークスペースとして設定します。 これにより、作成したリソースとジョブが既定でこのワークスペースに配置されます。 Visual Studio Code ステータス バーの **[Set Azure ML Workspace]\(Azure ML ワークスペースの設定\)** ボタンを選択し、画面の指示に従って `TeamWorkspace` を既定のワークスペースとして設定します。
 
 ワークスペースの詳細については、[VS Code でリソースを管理する方法](how-to-manage-resources-vscode.md)に関する記事を参照してください。
@@ -98,11 +98,11 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     idle_time_before_scale_down: 120
     ```
 
-    このテンプレートは、最大 3 つの Standard _NC12 VM ノードで `gpu-cluster` という名前の GPU クラスターを作成します。このノードは、非アクティブ状態が 120 秒続くと自動的に 0 ノードにスケールダウンします。
+    この仕様ファイルでは、最大 3 つの Standard _NC12 VM ノードを使用して `gpu-cluster` という名前の GPU クラスターが作成されます。これは、非アクティブ状態が 120 秒続くと自動的に 0 ノードにスケールダウンします。
 
     VM サイズの詳細については、「[Azure の Linux 仮想マシンのサイズ](../virtual-machines/sizes.md)」を参照してください。
 
-1. テンプレート ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。
 
 数分後、ワークスペースの *[コンピューティング] > [コンピューティング クラスター]* ノードに新しいコンピューティング先が表示されます。
 
@@ -110,7 +110,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 
 トレーニング プロセス中は、トレーニング データを処理し、分類の対象となる数字ごとに、データに埋め込まれたパターンを学習することによって TensorFlow モデルがトレーニングされます。
 
-ワークスペースやコンピューティング先と同様に、トレーニング ジョブはリソース テンプレートを使用して定義されます。 このサンプルでは、テンプレートは次のような *job.yml* ファイルで定義されています。
+ワークスペースやコンピューティング先と同様に、トレーニング ジョブはリソース テンプレートを使用して定義されます。 このサンプルでは、仕様は次のような *job.yml* ファイルに定義されています。
 
 ```yml
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
@@ -125,7 +125,7 @@ experiment_name: tensorflow-mnist-example
 description: Train a basic neural network with TensorFlow on the MNIST dataset.
 ```
 
-このテンプレートは、*train.py* Python スクリプト内のコードを実行する、先ほど作成された `gpu-cluster` コンピューティング先に `tensorflow-mnist-example` というトレーニング ジョブ送信します。 使用される環境は、トレーニング スクリプトの実行に必要な TensorFlow とその他のソフトウェア依存関係を含む、Azure Machine Learning によって提供されるキュレーション環境の 1 つです。 キュレーション環境の詳細については、「[Azure Machine Learning のキュレーションされた環境](resource-curated-environments.md)」を参照してください。
+この仕様ファイルによって、*train.py* Python スクリプト内のコードを実行する、先ほど作成された `gpu-cluster` コンピューティング先に `tensorflow-mnist-example` というトレーニング ジョブが送信されます。 使用される環境は、トレーニング スクリプトの実行に必要な TensorFlow とその他のソフトウェア依存関係を含む、Azure Machine Learning によって提供されるキュレーション環境の 1 つです。 キュレーション環境の詳細については、「[Azure Machine Learning のキュレーションされた環境](resource-curated-environments.md)」を参照してください。
 
 トレーニング ジョブを送信するには:
 

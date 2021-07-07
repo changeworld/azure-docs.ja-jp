@@ -1,5 +1,5 @@
 ---
-title: Azure Purview に SAP ECC ソースを登録してスキャン (プレビュー) を設定する
+title: Azure Purview に SAP ECC ソースを登録してスキャンを設定する
 description: この記事では、Azure Purview に SAP ECC ソースを登録し、スキャンを設定する方法について、概要を説明します。
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: bc35f79bae0cd75b24b119e951f27b289ebef704
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: c4126a99b38021ea7399bb486b8942423f0a809c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108007360"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067116"
 ---
-# <a name="register-and-scan-sap-ecc-source-preview"></a>SAP ECC ソースを登録してスキャンする (プレビュー)
+# <a name="register-and-scan-sap-ecc-source"></a>SAP ECC ソースを登録してスキャンする
 
 この記事では、Purview に SAP ECC ソースを登録し、スキャンを設定する方法について、概要を説明します。
 

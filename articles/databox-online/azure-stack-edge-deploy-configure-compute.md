@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Stack Edge Pro のコンピューティングを使用してデータのフィルター処理、分析を行う | Microsoft Docs'
-description: Azure Stack Edge Pro でコンピューティング ロールを構成し、Azure への送信前にこれを使用してデータを変換する方法を説明します。
+title: Azure Stack Edge Pro FPGA のデータをコンピューティングを使用してフィルター処理、分析するためのチュートリアル
+description: Azure Stack Edge Pro FPGA にコンピューティング ロールを構成し、それを使用して、Azure に送信する前にデータを変換する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: e521305f517a697c8d71c692f2581f2cce380980
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d059fdb0eb273459a22a5be66408445d216c757a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058801"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474857"
 ---
-# <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro でデータを変換する
+# <a name="tutorial-transform-the-data-with-azure-stack-edge-pro-fpga"></a>チュートリアル: Azure Stack Edge Pro FPGA でデータを変換する
 
-このチュートリアルでは、お客様の Azure Stack Edge Pro デバイスでコンピューティング ロールを構成する方法について説明します。 コンピューティング ロールを構成すると、Azure に送信する前に Azure Stack Edge Pro でデータを変換できるようになります。
+このチュートリアルでは、お客様の Azure Stack Edge Pro FPGA デバイスでコンピューティング ロールを構成する方法について説明します。 コンピューティング ロールを構成すると、Azure に送信する前に Azure Stack Edge Pro FPGA でデータを変換できるようになります。
 
 この手順の所要時間はおおよそ 10 分から 15 分です。
 
@@ -32,14 +32,14 @@ ms.locfileid: "106058801"
  
 ## <a name="prerequisites"></a>前提条件
 
-お客様の Azure Stack Edge Pro デバイスでコンピューティング ロールを設定する前に、次のことを確認してください。
+Azure Stack Edge Pro FPGA デバイスでコンピューティング ロールを設定する前に、次のことを確認してください。
 
-- [Azure Stack Edge Pro の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、お客様の Azure Stack Edge Pro デバイスをアクティブ化していること。
+- [Azure Stack Edge Pro FPGA の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、お客様の Azure Stack Edge Pro FPGA デバイスをアクティブ化していること。
 
 
 ## <a name="configure-compute"></a>コンピューティングを構成する
 
-Azure Stack Edge Pro でコンピューティングを構成するために、IoT Hub リソースを作成します。
+Azure Stack Edge Pro FPGA でコンピューティングを構成するために、IoT Hub リソースを作成します。
 
 1. Azure portal で、Azure Stack Edge リソースの **[概要]** に移動します。 右ペインで **[IoT Edge]** を選択します。
 
@@ -105,9 +105,9 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
 ## <a name="add-a-module"></a>モジュールを追加する
 
-カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 この Edge デバイスにはカスタム モジュールがありません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページを参照してください。
+カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 この Edge デバイスにはカスタム モジュールがありません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro FPGA デバイス用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページを参照してください。
 
-このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
+このセクションでは、[Azure Stack Edge Pro FPGA 用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
 
 1. **[IoT Edge] > [モジュール]** に移動します。 デバイスのコマンド バーで、 **[+ モジュールの追加]** を選択します。
 2. **[Configure and add module]\(モジュールの構成と追加\)** ブレードで、以下の値を入力します。
@@ -115,7 +115,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
     
     |フィールド  |値  |
     |---------|---------|
-    |名前     | モジュールの一意の名前。 このモジュールは、お客様の Azure Stack Edge Pro に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
+    |名前     | モジュールの一意の名前。 このモジュールは、Azure Stack Edge Pro FPGA に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
     |イメージの URI     | モジュールの対応するコンテナー イメージのイメージ URI。        |
     |資格情報が必要です     | チェック ボックスをオンにすると、一致する URL が含まれているモジュールの取得にユーザー名とパスワードが使用されます。        |
     |Input share (入力共有)     | 入力共有を選択します。 この例では、Edge ローカル共有が入力共有です。 ここで使用されるモジュールによって、Edge ローカル共有から Edge 共有にファイルが移動され、そこでクラウドにアップロードされます。        |
@@ -169,7 +169,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 > * コンピューティング モジュールを追加する
 > * データ変換を検証して転送する
 
-お客様の Azure Stack Edge Pro デバイスを管理する方法については、次を参照してください。
+Azure Stack Edge Pro FPGA デバイスを管理する方法については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [ローカル Web UI を使用して Azure Stack Edge Pro を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [ローカル Web UI を使用して Azure Stack Edge Pro FPGA を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)

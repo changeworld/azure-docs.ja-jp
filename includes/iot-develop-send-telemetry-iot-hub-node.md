@@ -7,20 +7,20 @@ ms.topic: include
 ms.date: 05/05/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 9544e662fde8f39303ea8bbafd7556d9e3b5af07
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 501b1383bbc4fb3e20a675b3dca7186d0fe4548e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109518296"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112039912"
 ---
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料でアカウントを 1 つ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)作成してください。
 - [Git](https://git-scm.com/downloads).
 - [Node.js](https://nodejs.org) バージョン 10 以降。 ノードのバージョンを確認するには、`node --version` を実行します。
 - Azure CLI。 このクイックスタートで Azure CLI コマンドを実行するには、2 つのオプションがあります。
-    - ブラウザーで CLI コマンドを実行する対話型シェルである Azure Cloud Shell を使用します。 何もインストールする必要がないため、このオプションをお勧めします。 Cloud Shell を初めて使用する場合は、[Azure portal](https://portal.azure.com) にログインします。 [Cloud Shell のクイックスタート](/azure/cloud-shell/quickstart)の手順に従って、**Cloud Shell を起動** し、**Bash 環境を選択** します。
-    - 必要に応じて、お使いのローカル コンピューターで Azure CLI を実行します。 このクイックスタートには、Azure CLI バージョン 2.0.76 以降が必要です。 バージョンを確認するには、`az --version` を使用します。 [Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページの手順に従って、Azure CLI をインストールまたはアップグレードした後、実行して、ログインします。 初回使用時にインストールを求められたら、Azure CLI 拡張機能をインストールします。
+    - ブラウザーで CLI コマンドを実行する対話型シェルである Azure Cloud Shell を使用します。 何もインストールする必要がないため、このオプションをお勧めします。 Cloud Shell を初めて使用する場合は、[Azure portal](https://portal.azure.com) にログインします。 [Cloud Shell のクイックスタート](../articles/cloud-shell/quickstart.md)の手順に従って、**Cloud Shell を起動** し、**Bash 環境を選択** します。
+    - 必要に応じて、お使いのローカル コンピューターで Azure CLI を実行します。 Azure CLI が既にインストールされている場合は、`az upgrade` を実行して、CLI と拡張機能を最新バージョンにアップグレードします。 Azure CLI のインストール方法については、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関する記事を参照してください。
 
 [!INCLUDE [iot-hub-include-create-hub-cli](iot-hub-include-create-hub-cli.md)]
 

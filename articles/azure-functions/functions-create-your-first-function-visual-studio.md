@@ -1,34 +1,42 @@
 ---
-title: クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
-description: このクイックスタートでは、Visual Studio を使用して、HTTP によってトリガーされる Azure Function を作成して発行する方法について学習します。
+title: 'クイック スタート: Visual Studio を使用して Azure で初めての C# 関数を作成する'
+description: このクイックスタートでは、Visual Studio を使用して、.NET Core 3.1 で実行されて C# HTTP でトリガーされる関数を作成し、Azure Functions に発行する方法について説明します。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 09/30/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
+ms.date: 05/18/2021
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f, contperf-fy21q3-portal
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: d691ee60f624f75c89e44e905e5343bf9c71fd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b76d9cf86a1bb00ea73c396ce1e563374a834f89
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701417"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459466"
 ---
-# <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
+# <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>クイック スタート: Visual Studio を使用して Azure で初めての C# 関数を作成する
 
-この記事では、Visual Studio を使用して、HTTP 要求に応答する C# クラス ライブラリベースの関数を作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。  
+Azure Functions を使用すると、Azure のサーバーレス環境で C# コードを実行できます。 
 
+この記事では、次のことについて説明します。
+
+> [!div class="checklist"]
+> * Visual Studio を使用して、C# クラス ライブラリ (.NET Core 3.1) プロジェクトを作成します。
+> * HTTP 要求に応答する関数を作成します。 
+> * コードをローカル環境で実行して、関数の動作を確認します。
+> * コード プロジェクトを Azure Functions にデプロイします。 
+ 
 このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
+ 
+作成するプロジェクトは、.NET Core 3.1 で実行されます。 代わりに .NET 5.0 で実行されるプロジェクトを作成する場合は、「[Azure Functions を使用した .NET 5 関数の開発と発行](dotnet-isolated-process-developer-howtos.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、まず、[Visual Studio 2019](https://azure.microsoft.com/downloads/) をインストールします。 インストール時に **[Azure の開発]** ワークロードを確実に選択してください。 代わりに Visual Studio 2017 を使用して Azure Functions プロジェクトを作成する場合は、まず、[最新の Azure Functions ツール](functions-develop-vs.md#check-your-tools-version)をインストールする必要があります。
++ [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 インストール時に必ず **[Azure の開発]** ワークロードを選択してください。 
 
-![Azure 開発ワークロードと共に Visual Studio をインストールする](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
-
-[Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/dotnet/)を作成してください。
++ [Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)。 アカウントをまだ持っていない場合は、始める前に[無料アカウントを作成](https://azure.microsoft.com/free/dotnet/)してください。
 
 ## <a name="create-a-function-app-project"></a>関数アプリ プロジェクトを作成する
 
@@ -42,10 +50,14 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 1. **エクスプローラー** で Function1.cs ファイルを右クリックし、`HttpExample.cs` という名前に変更します。
 
-1. コードで Function1 クラスの名前を "HttpExample" に変更します。
+1. コードで、Function1 クラスの名前を `HttpExample` に変更します。
 
 1. `Run` という名前の `HttpTrigger` メソッドで、`FunctionName` メソッド属性の名前を `HttpExample` に変更します。
 
+関数の定義は次のコードのようになります。
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="13-18"::: 
+ 
 関数の名前の変更が済んだので、この関数をローカル コンピューターでテストできるようになりました。
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する

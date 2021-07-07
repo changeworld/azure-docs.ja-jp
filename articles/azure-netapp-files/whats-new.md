@@ -12,20 +12,42 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 05/06/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: c1c0545d333a27c9a7d78f0363dc00a905bd4aa6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 768b2f4a9b993e4824fbcebe7a96d7f62a90c934
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481861"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078314"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
 
-## <a name="may-2021"></a>2021 年 5 月
+## <a name="june-2021"></a>2021 年 6 月
+
+* [Azure NetApp Files ストレージ サービス アドオン](storage-service-add-ons.md)
+
+    新しい Azure NetApp Files の **[Storage service add-ons]\(ストレージ サービス アドオン\)** メニュー オプションは、Azure NetApp Files ストレージ サービスでサポートされているサードパーティ製エコシステム アドオンのための Azure portal の "起動パッド" となるものです。 この新しいポータル メニュー オプションを使用すると、アドオン タイルをクリックしてランディング ページを開き、アドオンにすばやくアクセスすることができます。  
+
+    **NetApp アドオン** は、 **[Storage service add-ons]\(ストレージ サービス アドオン\)** に導入されたアドオンの最初のカテゴリです。 ここから **[NetApp Cloud Compliance]** にアクセスできます。 **[NetApp Cloud Compliance]** タイルをクリックすると、新しいブラウザーが開き、アドオンのインストール ページに移動します。 
+
+* 機能は一般提供 (GA) になりました   
+
+    次の Azure NetApp Files 機能が一般提供になりました。 この機能を使用する前に登録する必要はなくなりました。
+    * [スナップショット ポリシー](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
+    * [手動 QoS 容量プール](manual-qos-capacity-pool-introduction.md)
+
+* [1 つのサブスクリプションあたり、リージョンごとに 1 つの Active Directory に対する複数アカウントの共有 AD サポート](create-active-directory-connections.md#shared_ad) (プレビュー)   
+
+    これまで、Azure NetApp Files はリージョンごとに 1 つの Active Directory (AD) のみをサポートしており、AD にアクセスするように構成できる NetApp アカウントは 1 つのみでした。 新しい **共有 AD** 機能を使用すると、同じサブスクリプションで同じリージョンに属する NetApp アカウントのいずれかによって作成された AD 接続を、すべての NetApp アカウントで共有できます。 たとえば、この機能を使用すると、サブスクリプションとリージョンが同じであるすべての NetApp アカウントに共通の AD 構成を使用して、SMB ボリューム、NFSv4.1 Kerberos ボリューム、またはデュアル プロトコル ボリュームを作成できます。 この機能を使用すると、同じサブスクリプションで同じリージョンであるすべての NetApp アカウントの AD 接続を確認できるようになります。
+
+## <a name="may-2021"></a>2021 年 5 月 
+
+* Azure NetApp Files Application Consistent Snapshot ツール [(AzAcSnap)](azacsnap-introduction.md) が一般提供になりました。 
+
+    AzAcSnap は、Linux 環境 (SUSE、RHEL など) におけるサードパーティ データベース (SAP HANA) のデータ保護を簡略化できるコマンドライン ツールです。 このツールに関する最新の変更点については、[AzAcSnap のリリース ノート](azacsnap-release-notes.md)を参照してください。   
 
 * [容量プールの課金タグのサポート](manage-billing-tags.md)   
 
@@ -122,7 +144,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
     Azure NetApp Files で、Azure NetApp Files サービスとユーザー指定の Active Directory Domain Services ドメイン コントローラーとの間の LDAP 参照をセキュリティで保護する LDAP 署名がサポートされるようになりました。 現在、この機能はプレビュー段階にあります。
 
-* [AD 認証の AES 暗号化](azure-netapp-files-create-volumes-smb.md) (プレビュー)
+* [AD 認証の AES 暗号化](create-active-directory-connections.md#create-an-active-directory-connection) (プレビュー)
 
     Azure NetApp Files で、SMB ボリュームの AES 暗号化を有効にする、DC への LDAP 接続で AES 暗号化がサポートされるようになりました。 現在、この機能はプレビュー段階にあります。 
 
