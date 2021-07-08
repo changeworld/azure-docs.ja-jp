@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9ff33fa1600043aaae8b8ffc6c1f9dc5252bd65
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737118"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111420808"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Azure PowerShell を使用した Azure の仮想マシンのバックアップ
 
@@ -149,6 +149,10 @@ Azure VM のバックアップを有効にし、バックアップ ポリシー�
     ```
 
 2. ジョブの状態が **Completed** の場合、VM が保護されていて、完全な復旧ポイントが格納されています。
+
+## <a name="manage-vm-backups"></a>VM バックアップの管理
+
+ポリシーの変更、ポリシーの編集など、その他のアクションを実行する場合は、 [VM のバックアップの管理](backup-azure-vms-automation.md#manage-azure-vm-backups)に関するセクションを参照してください。
 
 ## <a name="clean-up-the-deployment"></a>デプロイをクリーンアップする
 

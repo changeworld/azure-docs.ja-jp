@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: f453370530359bc967316957b717f40904f6e392
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 18746da524c4b045471031af2330d9daba4bfcc0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125987"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949352"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure Dedicated HSM サービスのトラブルシューティング
 
@@ -52,11 +52,11 @@ Dedicated HSM ではデプロイ用に CLI と PowerShell がサポートされ�
 
 ### <a name="hsm-deployment-race-condition"></a>HSM デプロイの競合状態
 
-デプロイ用に支給される標準の ARM テンプレートには、HSM と ExpressRoute ゲートウェイに関連したリソースが含まれています。 ネットワーク リソースは HSM を正しくデプロイするための依存関係であり、タイミングがきわめて重要になる場合があります。  場合によっては、依存関係の問題に関連したデプロイ エラーが発生することもありますが、デプロイを再実行することで問題が解決することがよくあります。 そうでない場合でも、リソースを削除してから再デプロイすると、ほとんどの場合は成功します。 これを試しても問題が解決しない場合は、Azure portal からサポート リクエストを上げてください。その際、問題の種類には "Issues configuring the Azure setup (Azure セットアップの構成の問題)" を選択します。
+デプロイ用に支給される標準の ARM テンプレートには、HSM と [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)に関連したリソースが含まれています。 ネットワーク リソースは HSM を正しくデプロイするための依存関係であり、タイミングがきわめて重要になる場合があります。  場合によっては、依存関係の問題に関連したデプロイ エラーが発生することもありますが、デプロイを再実行することで問題が解決することがよくあります。 そうでない場合でも、リソースを削除してから再デプロイすると、ほとんどの場合は成功します。 これを試しても問題が解決しない場合は、Azure portal からサポート リクエストを上げてください。その際、問題の種類には "Issues configuring the Azure setup (Azure セットアップの構成の問題)" を選択します。
 
 ### <a name="hsm-deployment-using-terraform"></a>Terraform を使用した HSM のデプロイ
 
-オートメーション環境として、一部のお客様は、このサービスへの登録時に支給される ARM テンプレートではなく Terraform を使用してきました。 この方法で HSM はデプロイできませんが、依存ネットワーク リソースをデプロイすることはできます。 Terraform には、HSM のデプロイだけを担う最小限の ARM テンプレートを呼び出すためのモジュールがあります。  この場合、HSM をデプロイする前に、ネットワーク リソース (必要な ExpressRoute ゲートウェイなど) が完全にデプロイされるよう注意を払う必要があります。 デプロイが完了し、必要に応じて統合されているかどうかは、次の CLI コマンドを使用してテストできます。 山かっこのプレースホルダーは、実際の名前に置き換えてください。 "provisioningState が成功した" という結果を確認します。
+オートメーション環境として、一部のお客様は、このサービスへの登録時に支給される ARM テンプレートではなく Terraform を使用してきました。 この方法で HSM はデプロイできませんが、依存ネットワーク リソースをデプロイすることはできます。 Terraform には、HSM のデプロイだけを担う最小限の ARM テンプレートを呼び出すためのモジュールがあります。  この場合、HSM をデプロイする前に、ネットワーク リソース (必要な [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)など) が完全にデプロイされるよう注意を払う必要があります。 デプロイが完了し、必要に応じて統合されているかどうかは、次の CLI コマンドを使用してテストできます。 山かっこのプレースホルダーは、実際の名前に置き換えてください。 "provisioningState が成功した" という結果を確認します。
 
 ```azurecli
 az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/providers/Microsoft.Network/virtualNetworkGateways/<myergateway>
@@ -79,7 +79,7 @@ Dedicated HSM のデプロイには、ネットワーク リソースへの依�
 
 ### <a name="provisioning-expressroute"></a>ExpressRoute のプロビジョニング
 
-Dedicated HSM では、ユーザーのプライベート IP アドレス空間と Azure データセンターにある物理 HSM の間の通信のための "トンネル" として ExpressRoute ゲートウェイが使用されます。  VNet ごとにゲートウェイは 1 つという制限があるため、ExpressRoute 経由でオンプレミス リソースへの接続を必要とするお客様は、その接続には別の VNet を使用する必要があります。  
+Dedicated HSM では、ユーザーのプライベート IP アドレス空間と Azure データセンターにある物理 HSM の間の通信のための "トンネル" として [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)が使用されます。  VNet ごとにゲートウェイは 1 つという制限があるため、ExpressRoute 経由でオンプレミス リソースへの接続を必要とするお客様は、その接続には別の VNet を使用する必要があります。  
 
 ### <a name="hsm-private-ip-address"></a>HSM のプライベート IP アドレス
 
@@ -116,7 +116,7 @@ HSM に間違った資格情報を入力すると、破壊的な結果を招く�
 
 ### <a name="hsm-networking-configuration"></a>HSM のネットワーク構成
 
-HSM 内のネットワークを構成する際は注意が必要です。  HSM では、ExpressRoute ゲートウェイを介した、お客様のプライベート IP アドレス空間から HSM への直接接続が使用されます。  この通信チャネルはお客様の通信専用であり、Microsoft にはアクセス権がありません。 このネットワーク パスに影響が及ぶようなやり方で HSM を構成すると、その HSM との通信がすべて遮断されます。  この場合、Azure portal を通じて Microsoft にサポート リクエストを送信し、デバイスをリセットしてもらう以外に方法はありません。 このリセット手順では、HSM が初期状態に戻されるため、すべての構成とキー マテリアルが失われます。  構成をやり直して、デバイスを HA グループに参加させれば、キー マテリアルがレプリケートされます。  
+HSM 内のネットワークを構成する際は注意が必要です。  HSM には、[ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)を介した、お客様のプライベート IP アドレス空間から HSM への直接接続があります。  この通信チャネルはお客様の通信専用であり、Microsoft にはアクセス権がありません。 このネットワーク パスに影響が及ぶようなやり方で HSM を構成すると、その HSM との通信がすべて遮断されます。  この場合、Azure portal を通じて Microsoft にサポート リクエストを送信し、デバイスをリセットしてもらう以外に方法はありません。 このリセット手順では、HSM が初期状態に戻されるため、すべての構成とキー マテリアルが失われます。  構成をやり直して、デバイスを HA グループに参加させれば、キー マテリアルがレプリケートされます。  
 
 ### <a name="hsm-device-reboot"></a>HSM デバイスの再起動
 

@@ -29,6 +29,8 @@
       href: hsm-protected-keys-byok.md
     - name: バックアップと復元
       href: backup-restore.md
+    - name: 論理的な削除と消去保護を使用した回復の管理
+      href: recovery.md
 - name: 概念
   items:
     - name: セキュリティ ドメイン
@@ -39,6 +41,8 @@
       href: access-control.md
     - name: ローカル RBAC の組み込みロール
       href: built-in-roles.md
+    - name: マネージド HSM の論理的な削除
+      href: soft-delete-overview.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

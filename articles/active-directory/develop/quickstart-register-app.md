@@ -8,16 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/04/2021
+ms.date: 06/14/2021
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
-ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 48d214dfc256a1ed8b770df2ff54646de17b80fe
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 546e7bafe34352ff8968ce1df7cd3386f60eae59
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748747"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075495"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -31,6 +30,10 @@ Microsoft ID プラットフォームは、登録済みのアプリケーショ�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- Azure アカウントには、Azure Active Directory (Azure AD) でアプリケーションを管理するためのアクセス許可が必要です。 次の Azure AD ロールには、いずれも必要なアクセス許可が含まれています。
+  - [アプリケーション管理者](../roles/permissions-reference.md#application-administrator)
+  - [アプリケーション開発者](../roles/permissions-reference.md#application-developer)
+  - [クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)
 - [テナントの設定](quickstart-create-new-tenant.md)に関するクイックスタートを完了していること。
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
@@ -113,7 +116,7 @@ Microsoft ID プラットフォームは、登録済みのアプリケーショ�
 
 ### <a name="add-a-certificate"></a>証明書を追加する
 
-資格情報の種類としては、証明書 ("_公開キー_" と呼ばれることもあります) が推奨されます。 クライアント シークレットよりも確実性が高くなります。 アプリケーションにおける認証方法として証明書を使用する方法について詳しくは、「[Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報](active-directory-certificate-credentials.md)」を参照してください。
+証明書は、"_公開キー_" とも呼ばれ、クライアント シークレットより安全であると見なされるため、推奨される資格情報の種類です。 アプリケーションにおける認証方法として証明書を使用する方法について詳しくは、「[Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報](active-directory-certificate-credentials.md)」を参照してください。
 
 1. Azure portal の **[アプリの登録]** で、対象のアプリケーションを選択します。
 1. **[証明書およびシークレット]**  >  **[証明書のアップロード]** の順に選択します。
@@ -122,18 +125,20 @@ Microsoft ID プラットフォームは、登録済みのアプリケーショ�
 
 ### <a name="add-a-client-secret"></a>クライアント シークレットの追加
 
-クライアント シークレットは、"_アプリケーション パスワード_" とも呼ばれます。 これは、アプリが自身の身元を示すために証明書の代わりに使用できる文字列値です。 2 種類の資格情報のうち、より使いやすいのはクライアント シークレットです。 多くの場合は開発時に使用されますが、証明書より安全性が低いと見なされています。 運用環境で実行するアプリケーションでは、証明書を使用してください。
+クライアント シークレットは、"_アプリケーション パスワード_" とも呼ばれ、アプリで自身を識別するために証明書の代わりに使用できる文字列値です。
 
-アプリケーションのセキュリティに関する推奨事項について詳しくは、「[Microsoft ID プラットフォームのベスト プラクティスと推奨事項](identity-platform-integration-checklist.md#security)」を参照してください。
+クライアント シークレットは、証明書の資格情報よりも安全性が低いと見なされます。 アプリケーション開発者は、ローカル アプリの開発時に、その使いやすさからクライアント シークレットを使用することがあります。 ただし、運用環境で実行しているアプリケーションには、証明書の資格情報を使用する必要があります。
 
 1. Azure portal の **[アプリの登録]** で、対象のアプリケーションを選択します。
 1. **[証明書およびシークレット]**  >  **[新しいクライアント シークレット]** の順に選択します。
 1. クライアント シークレットの説明を追加します。
-1. 期間を選択します。
+1. シークレットの有効期限を選択するか、カスタムの有効期間を指定します。
+    - クライアント シークレットの有効期間は、2 年間 (24 か月) 以下に制限されています。 24 か月を超えるカスタムの有効期間を指定することはできません。
+    - Microsoft では、有効期限の値は 12 か月未満に設定することをお勧めしています。
 1. **[追加]** を選択します。
 1. クライアント アプリケーションのコードで使用できるように、"_シークレットの値を記録します_"。 このページからの移動後は、このシークレットの値は "_二度と表示されません_"。
 
-セキュリティ上の理由から、Microsoft は 24 か月を超えるクライアント シークレットの作成を制限しており、これを 12 か月未満の値に設定することを強くお勧めします。
+アプリケーションのセキュリティに関する推奨事項については、「[Microsoft ID プラットフォームのベスト プラクティスと推奨事項](identity-platform-integration-checklist.md#security)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

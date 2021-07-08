@@ -2,21 +2,21 @@
 title: アプリケーション認証を AD FS から Azure Active Directory に移動する
 description: Azure Active Directory を使用して Active Directory フェデレーション サービス (AD FS) を置き換え、ユーザーがすべてのアプリケーションにシングル サインオンできるようにする方法について説明します。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: baselden
-ms.openlocfilehash: 4e9bedc63a3b1d53222c732b6611d132249b07c6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 616550188687823438187e1e09c90d5d3c6c6835
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320801"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078817"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -326,7 +326,7 @@ Azure AD でユーザーの場所に基づいて MFA 規則を指定します。
 
 1. [新しい条件付きアクセス ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)を作成します。
 1. **[割り当て]** を **[すべてのユーザー]** に設定します。
-1. [Azure AD でネームド ロケーションを構成します](../reports-monitoring/quickstart-configure-named-locations.md)。 それ以外の場合は、企業ネットワーク内部からのフェデレーションが信頼されます。
+1. [Azure AD でネームド ロケーションを構成します](../conditional-access/location-condition.md)。 それ以外の場合は、企業ネットワーク内部からのフェデレーションが信頼されます。
 1. **条件規則** を構成して、MFA を適用する場所を指定します。
 
     ![条件ルールの [場所] ウィンドウを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
@@ -365,7 +365,7 @@ Azure AD で組み込みのポリシーを実装するには、[新しい条件�
 
 | オプション | Azure AD で許可オプションを構成する方法| Azure AD で除外オプションを構成する方法 |
 | - | - | - |
-| 特定のネットワークから| Azure AD の[ネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)にマッピングします| [信頼できる場所](../conditional-access/location-condition.md)に対しては **[除外]** オプションを使用します |
+| 特定のネットワークから| Azure AD の[ネームド ロケーション](../conditional-access/location-condition.md)にマッピングします| [信頼できる場所](../conditional-access/location-condition.md)に対しては **[除外]** オプションを使用します |
 | 特定のグループから| [ユーザーやグループの割り当てを設定します](assign-user-or-group-access-portal.md)| ユーザーおよびグループで **[除外]** オプションを使用します |
 | 特定の信頼レベルのデバイスから| [割り当て] > [条件] の下にある **[デバイスの状態]** コントロールから設定します| デバイスの状態の条件で **[除外]** オプションを使用し、 **[すべてのデバイス]** を含めます |
 | 要求の特定の要求で| この設定を移行することはできません| この設定を移行することはできません |

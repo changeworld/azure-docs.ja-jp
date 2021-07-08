@@ -3,12 +3,12 @@ title: 'クイック スタート: カスタム コンテナー内で Azure Arc 
 description: カスタムの Linux コンテナー内に最初の関数アプリをデプロイすることによって、Azure Arc で Azure Functions の使用を開始します。
 ms.topic: quickstart
 ms.date: 05/11/2021
-ms.openlocfilehash: 073ec52bc1b48ad285140a56fb4514ed315097e3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 28079b9a7821350736647d49815c541f6a79d119
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386627"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525644"
 ---
 # <a name="create-your-first-function-on-azure-arc-using-a-custom-container-preview"></a>カスタム コンテナーを使用して Azure Arc に最初の関数を作成する (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "110386627"
 # <a name="c"></a>[C\#](#tab/csharp)
 
 + [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.0.3245 以降。
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 + [Docker](https://docs.docker.com/install/)  
 + [Docker ID](https://hub.docker.com/signup)
@@ -32,7 +32,7 @@ ms.locfileid: "110386627"
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 + [Node.js](https://nodejs.org/) バージョン 12。 Node.js バージョン 10 もサポートされます。
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.0.3245 以降。
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 + [Docker](https://docs.docker.com/install/)  
 + [Docker ID](https://hub.docker.com/signup)
@@ -40,7 +40,7 @@ ms.locfileid: "110386627"
 # <a name="python"></a>[Python](#tab/python)
 
 + [Azure Functions でサポートされているバージョンの Python](supported-languages.md#languages-by-runtime-version)
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.0.3245 以降。
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 + [Docker](https://docs.docker.com/install/)  
 + [Docker ID](https://hub.docker.com/signup)
@@ -93,7 +93,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     ```
     ---
 
-    `--docker` オプションによって、プロジェクトの `Dockerfile` が生成されます。これにより、Azure Functions および選択されたランタイムで使用するための適切なカスタム コンテナーが定義されます。 
+    `--docker` オプションによって、プロジェクトの `Dockerfile` が生成されます。これにより、Azure Functions および選択されたランタイムで使用するための適切なカスタム コンテナーが定義されます。
 
 1. プロジェクト フォルダーに移動します。
 
@@ -101,7 +101,9 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     cd LocalFunctionProj
     ```
 
-    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 既定では、*local.settings.json* ファイルは *.gitignore* ファイルのソース管理から除外されます。 この除外は、Azure からダウンロードされたシークレットがファイルに含まれている可能性があるためです。
+    このフォルダーには、プロジェクト用の Dockerfile の他のファイルが含まれています。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 既定では、*local.settings.json* ファイルは *.gitignore* ファイルのソース管理から除外されます。 この除外は、Azure からダウンロードされたシークレットがファイルに含まれている可能性があるためです。
+
+1. 生成された `Dockerfile` を開き、基本イメージの `3.0` タグを見つけます。 `3.0` タグがある場合は、`3.0.15885` タグに置き換えます。 たとえば、JavaScript アプリケーションでは、`FROM mcr.microsoft.com/azure-functions/node:3.0.15885` を持つように Docker ファイルを変更する必要があります。 このバージョンの基本イメージでは、Azure Arc 対応の Kubernetes クラスターへのデプロイがサポートされています。 
 
 1. 次のコマンドを使用して、関数をプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前 (HttpExample) で、`--template` 引数は関数のトリガー (HTTP) を指定します。
 

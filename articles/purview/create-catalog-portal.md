@@ -9,12 +9,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 158eed6d287fa384023defbb20a7a1c39ea3d838
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7c75e550c1987302559fb07e3785686244d128a0
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728592"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060986"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>クイックスタート: Azure portal で Azure Purview アカウントを作成する
 
@@ -87,7 +87,7 @@ ms.locfileid: "107728592"
 
     1. 作成したカスタム ポリシーを使用して、[ポリシーの割り当てを作成](../governance/policy/assign-policy-portal.md)します。
 
-        [ ![ポリシーの割り当ての作成方法を示すスクリーンショット](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
+       :::image type="content" source="./media/create-catalog-portal/policy-assignment.png" alt-text="ポリシーの割り当ての作成方法を示すスクリーンショット" lightbox="./media/create-catalog-portal/policy-assignment.png":::
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -125,8 +125,12 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
     1. **リソース グループ** を選択します。
     1. カタログの **Purview アカウント名** を入力します。 スペースと記号は使用できません。
     1. **[場所]** を選択し、 **[次へ: 構成]** を選択します。
-1. **[構成]** タブで必要な **[プラットフォーム サイズ]** を選択します。選択できる値は 4 CU (容量ユニット) と 16 CU です。 **タグ** を選択します。
-1. **[タグ]** タブで、必要に応じて 1 つまたは複数のタグを追加できます。 これらのタグは Azure portal でのみ使用されます。Azure Purview では使用されません。 
+1. **[構成]** タブで必要な **[プラットフォーム サイズ]** を選択します。選択できる値は 4 CU (容量ユニット) と 16 CU です。 必要に応じて、Azure Purview マネージド リソース グループに別の名前を指定します。 **タグ** を選択します。
+
+    > [!Note] 
+    > [マネージド リソース グループ](create-catalog-portal.md#azure-purview-managed-resources)には、マネージド ストレージ アカウントと、Azure Purview アカウントによって使用される専用の EventHub 名前空間が含まれます。
+
+3. **[タグ]** タブで、必要に応じて 1 つまたは複数のタグを追加できます。 これらのタグは Azure portal でのみ使用されます。Azure Purview では使用されません。 
 
     > [!Note] 
     > **Azure Policy** をご利用の場合で、かつ「**前提条件**」に記載したような例外を追加する必要がある場合は、適切なタグを追加する必要があります。 たとえば、`resourceBypass` タグを追加することができます。:::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="Purview アカウントにタグを追加する。":::
@@ -167,6 +171,13 @@ Azure Purview アカウントの **Purview データ キュレーター** デー
 1. **[選択]** で、割り当てたいサービス プリンシパル、Azure Active Directory グループ、ユーザーの名前を入力し、その名前を結果ペインでクリックします。
 
 1. **[Save]** をクリックします。
+
+## <a name="azure-purview-managed-resources"></a>Azure Purview マネージド リソース
+Azure Purview アカウントのデプロイ中に、新しい Azure Storage アカウントと新しい EventHub 名前空間を持つ新しいマネージド リソース グループも、Azure サブスクリプション内の Azure Purview アカウントと共にデプロイされます。 デプロイ時に、必要に応じてマネージド リソース グループに対して別の名前付け規則を選択できます。
+
+これらのリソースは、Azure Purview アカウントの操作に不可欠であり、情報が Azure Purview データ カタログに取り込まれるまで一時的なデータを格納するために使用されます。 
+
+拒否の割り当ては、すべてのプリンシパルのマネージド リソース グループに自動的に追加され、Azure Purview マネージド ID は、Azure Purview がリソース グループ内のリソース (ストレージ アカウント、イベント ハブ名前空間) を管理できるようにする唯一の除外として使用されます。したがって、マネージド リソース グループ、マネージド リソース、またはデータ プレーン内のそれらのコンテンツを削除または変更することはできません。ただし、マネージド リソース グループとそのコンテンツは、Purview アカウントが削除されると自動的に削除されます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

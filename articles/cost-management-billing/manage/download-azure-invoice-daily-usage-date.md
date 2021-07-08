@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: 96ebde17272929cca424a4dddce55b194c974157
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a2f4bab7f0d2f28cdefcecd82ad9a2285cd9b41a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750601"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451911"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 
@@ -93,7 +93,7 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 
     ![手順 3 オプトイン フローを示すスクリーン ショット](./media/download-azure-invoice-daily-usage-date/invoicearticlestep03.png)
 
-以上の手順を実行してもメールが届かない場合は、[プロファイルの通信設定](https://account.windowsazure.com/profile)のメール アドレスが正しいことを確認してください。
+以上の手順を実行してもメールが届かない場合は、Microsoft アカウント センターで[プロファイルの通信設定](https://account.microsoft.com/profile)のメール アドレスが正しいことを確認してください。
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>サブスクリプションの請求書のメールによる取得をオプトアウトする
 

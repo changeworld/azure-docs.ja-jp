@@ -3,22 +3,22 @@ title: Azure Defender for DNS - 利点と機能
 description: Azure Defender for DNS の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 12/07/2020
+ms.date: 05/12/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: dffb505719e6778adfdd8e99f62790df9ebd615a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 321488297c4307260e96b047a3dbe44a0b8399bc
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100697"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846502"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>Azure Defender for DNS の概要
 
 [Azure DNS](../dns/dns-overview.md) は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
-Azure Defender for DNS は、次の方法によってクラウド リソースをいっそう強固に保護します。
+Azure Defender for DNS により、次の方法によって Azure DNS に接続されているリソースの保護が強化されます。
 
 - Azure リソースからのすべての DNS クエリを継続的に監視する
 - 高度なセキュリティ分析を実行して不審なアクティビティについてアラートする
@@ -27,14 +27,14 @@ Azure Defender for DNS は、次の方法によってクラウド リソース�
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for DNS** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>Azure Defender for DNS の利点
 
-Azure Defender for DNS は、次のような問題からの保護対策となります。
+Azure Defender for DNS により、Azure DNS に接続されているリソースは、次のような問題から保護されます。
 
 - Azure リソースからのデータ流出 (DNS トンネリングを使用)
 - C&C サーバーを使用したマルウェアの通信

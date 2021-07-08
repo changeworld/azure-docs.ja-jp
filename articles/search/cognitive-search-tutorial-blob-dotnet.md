@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cbfa01788f1897264b4197798aa5879cf724db3
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 93b5d7059c1d19b3e5130a8e6d360655fa210aba
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104770956"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555954"
 ---
 # <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル: .NET と AI を使用して Azure BLOB から検索可能なコンテンツを生成する
 
-Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオ向けに新しいコンテンツを作成することができます。 
+Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオ向けに新しいコンテンツを作成できます。 
 
 このチュートリアルでは、次の内容を学習します。
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="download-sample-data"></a>サンプル データをダウンロードする
 
-このサンプル データは、コンテンツの種類が異なる 14 個のファイルで構成されます。これらのファイルは、後続の手順で Azure Blob Storage にアップロードします。
+このサンプル データは、コンテンツの種類が異なる 14 個のファイルで構成されます。これらは、後続の手順で Azure Blob Storage にアップロードされます。
 
 1. こちらの [OneDrive フォルダー](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)を開き、左上隅の **[ダウンロード]** をクリックして、コンピューターにファイルをコピーします。 
 
@@ -297,7 +297,7 @@ SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerC
 
 * [テキスト分割](cognitive-search-skill-textsplit.md)。キー フレーズ抽出スキルとエンティティ認識スキルを呼び出す前に、大きいコンテンツを小さいチャンクに分割します。 キー フレーズ抽出およびエンティティ認識では、50,000 字以内の入力を受け取ります。 いくつかのサンプル ファイルは、分割してこの制限内に収める必要があります。
 
-* [エンティティの認識](cognitive-search-skill-entity-recognition.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
+* [エンティティの認識](cognitive-search-skill-entity-recognition-v3.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
 
 * [キー フレーズ抽出](cognitive-search-skill-keyphrases.md)。上位のキー フレーズを抜き出します。
 

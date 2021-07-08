@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: 0111e0a37f1684ab764160d64231ea5dde2547a6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5a335525bef3509f547bbccc478ec9402ad05e28
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758989"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109815056"
 ---
-# <a name="what-is-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューとは
+# <a name="what-is-azure-static-web-apps"></a>Azure Static Web Apps とは
 
 Azure Static Web Apps は、コード リポジトリから Azure にフル スタックの Web アプリを自動的にビルドしてデプロイするサービスです。
 
@@ -31,7 +31,7 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 ## <a name="key-features"></a>主要な機能
 
 - HTML、CSS、JavaScript、画像などの静的コンテンツの **Web ホスティング**。
-- Azure Functions によって提供される **統合 API** サポート。
+- 標準アカウントを使用して既存の Azure Functions アプリをリンクするオプションを備えた Azure Functions によって提供される **統合 API** サポート。
 - リポジトリの変更によってビルドとデプロイがトリガーされる **ファーストクラスの GitHub 統合および Azure DevOps 統合**。
 - コンテンツをユーザーの近くに配置する、**グローバルに分散** された静的コンテンツ。
 - 自動的に更新される **無料の SSL 証明書**。

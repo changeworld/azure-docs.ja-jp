@@ -1,18 +1,15 @@
 ---
 title: クイック スタート - レジストリを作成する - PowerShell
 description: Azure Container Registry で PowerShell を使用してプライベート Docker レジストリを作成する方法を簡単に説明します
-ms.date: 01/22/2019
+ms.date: 06/03/2021
 ms.topic: quickstart
-ms.custom:
-- mvc
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: bd9b93e22081c43dfa3fd934f13da3713120aadb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - mvc - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 794b82817ce092fac34512c0faec097ecab53dc5
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537384"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439946"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してプライベート コンテナー レジストリを作成する
 
@@ -58,23 +55,16 @@ $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 このクイックスタートでは、作業を簡略化するために、[Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] コマンドを使用して、レジストリ上の管理者ユーザーを有効にします。 運用環境のシナリオでは、レジストリ アクセス用に別の[認証方法](container-registry-authentication.md) (サービス プリンシパルなど) を使用する必要があります。 
+コンテナー イメージをプッシュしたりプルしたりするには、[Connect-AzContainerRegistry][connect-azcontainerregistry] コマンドレットを使用してあらかじめレジストリにログインしておく必要があります。 次の例では、`Connect-AzAccount` コマンドレットを使用して Azure に認証する際、ログインで使用したのと同じ資格情報を使用しています。
+
+> [!NOTE]
+> 次の例で、`$registry.Name` の値はリソース名です。完全修飾レジストリ名ではありません。
 
 ```powershell
-$creds = Get-AzContainerRegistryCredential -Registry $registry
-```
-
-次に、[docker login][docker-login] を実行してログインします。
-
-```powershell
-$creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
+Connect-AzContainerRegistry -Name $registry.Name
 ```
 
 このコマンドは、完了すると `Login Succeeded` を返します。
-
-> [!TIP]
-> Azure CLI には、`az acr login` コマンドが用意されています。このコマンドは、docker 資格情報を渡さずに[個別の ID](container-registry-authentication.md#individual-login-with-azure-ad) を使用してコンテナー レジストリにログインするための便利な方法です。
-
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 
@@ -108,7 +98,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 <!-- Links - internal -->
 [Connect-AzAccount]: /powershell/module/az.accounts/connect-azaccount
-[Get-AzContainerRegistryCredential]: /powershell/module/az.containerregistry/get-azcontainerregistrycredential
 [Get-Module]: /powershell/module/microsoft.powershell.core/get-module
 [New-AzContainerRegistry]: /powershell/module/az.containerregistry/New-AzContainerRegistry
 [New-AzResourceGroup]: /powershell/module/az.resources/new-azresourcegroup
@@ -116,3 +105,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md
+[connect-azcontainerregistry]: /powershell/module/az.containerregistry/connect-azcontainerregistry

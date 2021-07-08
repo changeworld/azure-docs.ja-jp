@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 04/26/2021
-ms.openlocfilehash: e53823539194fe1082621f458e8b5b3d493c191d
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: b16c69d4a51026d3eafcb6449dd3042703269118
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166948"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371620"
 ---
 # <a name="azure-web-pubsub-service-faq"></a>Azure Web PubSub サービスの FAQ
 
@@ -20,6 +20,22 @@ ms.locfileid: "108166948"
 ## <a name="is-azure-web-pubsub-service-ready-for-production-use"></a>Azure Web PubSub サービスは運用環境に対応していますか?
 
 Azure Web PubSub サービスはパブリック プレビュー段階であり、確約された SLA はありません。 
+
+## <a name="how-do-i-choose-between-azure-signalr-service-and-azure-web-pubsub-service"></a>Azure SignalR Service と Azure Web PubSub サービスのどちらかを選択するにはどうすればよいですか?
+
+[Azure SignalR Service](https://azure.microsoft.com/services/signalr-service) と [Azure Web PubSub サービス](https://azure.microsoft.com/services/web-pubsub)はどちらも、大規模で高可用性を備えたリアルタイムの Web アプリケーションを簡単に構築するのに役立ち、お客様はメッセージング インフラストラクチャの管理ではなくビジネス ロジックに集中できます。 一般に、既に SignalR ライブラリを使用してリアルタイム アプリケーションを構築している場合は、Azure SignalR Service を選択できます。 代わりに、WebSocket とパブリッシュ/サブスクライブ パターンに基づいてリアルタイム アプリケーションを構築する汎用ソリューションを探している場合は、Azure Web PubSub サービスを選択できます。 Azure Web PubSub サービスは、Azure SignalR Service に代わるものでは **ありません**。 これらは異なるシナリオをターゲットにしています。
+
+以下のような場合は、Azure SignalR Service の方が適しています。  
+
+- ASP.NET または ASP.NET Core SignalR を既に使用していて、主に .NET を使用しているか、.NET エコシステム (Blazor など) と統合する必要がある。
+- お使いのプラットフォームで使用できる SignalR クライアントがある。 
+- さまざまな呼び出しパターン (RPC やストリーミング)、トランスポート (WebSocket、サーバー送信イベント、および長いポーリング) をサポートする確立されたプロトコルと、自分の代わりに接続の有効期間を管理するクライアントが必要である。 
+
+次のような状況には、Azure Web PubSub サービスの方が適しています。  
+
+- WebSocket テクノロジに基づいてリアルタイム アプリケーションを構築するか、WebSocket を介してパブリッシュ/サブスクライブする必要がある。
+- 独自のサブプロトコルを構築したり、WebSocket を介して既存の高度なプロトコル (MQTT、WebSocket 経由の AMQP など) を使用したい。 
+- 構成されたバックエンドを経由せずにクライアントにメッセージを送信するといった、軽量のサーバーを探している。  
 
 ##  <a name="where-does-my-data-reside"></a>データはどこに存在するか?
 

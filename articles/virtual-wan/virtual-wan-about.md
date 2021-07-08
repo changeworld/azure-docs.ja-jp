@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: ab54192480a1c36a27c175254d6d4d275b67c8b7
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 6bce9d2c39b792923f3c85e5eb42734f1a116a66
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835328"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076351"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
@@ -65,9 +65,7 @@ Azure リージョンは、接続先として選択できるハブとして機�
 
 * **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
 
-## <a name="types-of-connectivity"></a><a name="connectivity"></a>接続の種類
-
-Virtual WAN では、次の種類の接続を使用できます。サイト間 VPN、ユーザー VPN (ポイント対サイト)、および ExpressRoute です。
+## <a name="connectivity"></a><a name="connectivity"></a>接続
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>サイト間 VPN 接続
 
@@ -129,7 +127,7 @@ Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機�
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 
-[!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+よく寄せられる質問については、「[Virtual WAN の FAQ](virtual-wan-faq.md)」を参照してください。
 
 ## <a name="whats-new"></a><a name="new"></a>新機能
 

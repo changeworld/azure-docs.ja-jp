@@ -9,16 +9,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 05/16/2021
 ms.author: Zhchia
-ms.openlocfilehash: 94de0ca0a5393c891e567e558cbbadd0ca1f453b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84024ad57af3ca650c69bfda0eda672aee313793
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97832084"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814660"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Oracle Cloud Infrastructure Console を構成する
+> [!NOTE]
+> カスタムおよび BYOA アプリケーションの Oracle Cloud Infrastructure Console または Oracle IDCS との統合はサポートされていません。 このチュートリアルで説明している、ギャラリー アプリケーションの使用はサポートされています。 ギャラリー アプリケーションは、Oracle SCIM サーバーと連携するようにカスタマイズされています。 
 
 このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Oracle Cloud Infrastructure Console と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、ユーザーとグループの [Oracle Cloud Infrastructure Console](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton) へのプロビジョニングおよびプロビジョニング解除が、Azure AD プロビジョニング サービスを使用して自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 

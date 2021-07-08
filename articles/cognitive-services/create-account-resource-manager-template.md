@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 04/28/2021
+ms.date: 06/04/2021
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: b67639c5a6f55c45e42e3a17187356caf32451a6
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: b9fcd3d5eac8ddda890201bf5608e6e412f5d826
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278454"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004315"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Services リソースを作成する
 
@@ -27,6 +27,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 * 1 つのキーとエンドポイントを使用して複数の Azure Cognitive Services にアクセスします。
 * ご利用の複数のサービスの課金を統合します。
+* [!INCLUDE [terms-azure-portal](./includes/quickstarts/terms-azure-portal.md)]
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -40,7 +41,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/cognitive-services-universalkey/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.cognitiveservices/cognitive-services-universalkey/azuredeploy.json":::
 
@@ -135,6 +136,8 @@ az group delete --name $resourceGroupName
 ```
 
 ---
+
+削除されたリソースを復旧する必要がある場合は、[削除された Cognitive Services リソースの復旧](manage-resources.md)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 

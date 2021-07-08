@@ -2,15 +2,15 @@
 title: Linux Python アプリを構成する
 description: Azure portal と Azure CLI の両方を使用して、Web アプリが実行される Python コンテナーを構成する方法について説明します。
 ms.topic: quickstart
-ms.date: 03/16/2021
+ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 605d1e0f67ac959d2c7325e04e2fd10d9d2419be
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: db1650c61ae9e70955fd945527ff049e2663a174
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829496"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018065"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -104,7 +104,7 @@ App Service で Linux の Python アプリを実行、ビルドする方法の�
 1. **ソース リポジトリ**: ソース コードを GitHub などの適切なリポジトリに保持します。これにより、このプロセスの後半で継続的なデプロイを設定することができます。
     1. App Service が必要なパッケージを自動的にインストールできるようにするには、*requirements.txt* ファイルがリポジトリのルートにある必要があります。    
 
-1. **データベース**:アプリがデータベースに依存している場合は、Azure 上に必要なリソースをプロビジョニングします。 「[チュートリアル:PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの作成に関するセクション](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure)の例を参照してください。
+1. **データベース**: アプリがデータベースに依存している場合は、Azure 上にも必要なリソースをプロビジョニングします。 「[チュートリアル:PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの作成に関するセクション](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure)の例を参照してください。
 
 1. **App Service リソース**: 対象のアプリケーションをホストするためのリソース グループ、App Service プラン、および App Service Web アプリを作成します。 これは、Azure CLI コマンド `az webapp up` を使用してコードの初期デプロイを実行することで最も簡単に行うことができます。[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、コードのデプロイに関するセクション](tutorial-python-postgresql-app.md#4-deploy-the-code-to-azure-app-service)を参照してください。 リソース グループ、App Service プラン、および Web アプリの名前を、対象のアプリケーションにより適した名前に置き換えます。
 

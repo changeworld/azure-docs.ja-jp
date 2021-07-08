@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Remote Access VPN の統合 | Microsoft Docs'
-description: Azure Active Directory と Check Point Remote Access VPN の間でシングル サインオンを構成する方法について説明します。
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Remote Secure Access VPN の統合 | Microsoft Docs'
+description: Azure Active Directory と Check Point Remote Secure Access VPN の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c619398b357833aa5b5d996a255fb1df7bd3bb6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 39072747cd2e6b9daa62f02b198a201c5b1782ea
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776085"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451467"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-access-vpn"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Remote Access VPN の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Remote Secure Access VPN の統合
 
-このチュートリアルでは、Check Point Remote Access VPN と Azure Active Directory (Azure AD) を統合する方法について説明します。 Check Point Remote Access VPN と Azure AD を統合すると、次のことができます。
+このチュートリアルでは、Check Point Remote Secure Access VPN と Azure Active Directory (Azure AD) を統合する方法について説明します。 Check Point Remote Secure Access VPN と Azure AD を統合すると、次のことができます。
 
-* Check Point Remote Access VPN にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Check Point Remote Access VPN に自動的にサインインできるように設定できます。
+* Check Point Remote Secure Access VPN にアクセスできるユーザーを Azure AD で制御する。
+* ユーザーが自分の Azure AD アカウントを使用して Check Point Remote Secure Access VPN に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -31,44 +31,44 @@ ms.locfileid: "108776085"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Check Point Remote Access VPN でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Check Point Remote Secure Access VPN でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Check Point Remote Access VPN では、**SP** Initiated SSO がサポートされます。
+* Check Point Remote Secure Access VPN では、**SP** Initiated SSO がサポートされます。
 
-## <a name="adding-check-point-remote-access-vpn-from-the-gallery"></a>ギャラリーからの Check Point Remote Access VPN の追加
+## <a name="adding-check-point-remote-secure-access-vpn-from-the-gallery"></a>ギャラリーからの Check Point Remote Secure Access VPN の追加
 
-Azure AD への Check Point Remote Access VPN の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Check Point Remote Access VPN を追加する必要があります。
+Azure AD への Check Point Remote Secure Access VPN の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Check Point Remote Secure Access VPN を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Check Point Remote Access VPN**」と入力します。
-1. 結果のパネルから **[Check Point Remote Access VPN]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Check Point Remote Secure Access VPN**」と入力します。
+1. 結果のパネルから **[Check Point Remote Secure Access VPN]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso-for-check-point-remote-access-vpn"></a>Check Point Remote Access VPN の Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-check-point-remote-secure-access-vpn"></a>Check Point Remote Secure Access VPN の Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、Check Point Remote Access VPN に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Check Point Remote Access VPN の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Check Point Remote Secure Access VPN に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Check Point Remote Secure Access VPN の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Check Point Remote Access VPN に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
+Check Point Remote Secure Access VPN に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Check Point Remote Access VPN の SSO の構成](#configure-check-point-remote-access-vpn-sso)** - ユーザーがこの機能を使用できるようにします。
+1. **[Check Point Remote Secure Access VPN SSO の構成](#configure-check-point-remote-secure-access-vpn-sso)** - ユーザーがこの機能を使用できるようにします。
 
-    1. **[Check Point Remote Access VPN のテスト ユーザーの作成](#create-check-point-remote-access-vpn-test-user)** - Check Point Remote Access VPN で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    1. **[Check Point Remote Secure Access VPN のテスト ユーザーの作成](#create-check-point-remote-secure-access-vpn-test-user)** - Check Point Remote Secure Access VPN で B.Simon に対応するユーザーを作成し、Azure AD のユーザーにリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. Azure portal の **Check Point Remote Access VPN** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Check Point Remote Secure Access VPN** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
@@ -83,13 +83,13 @@ Check Point Remote Access VPN に対して Azure AD SSO を構成してテスト
     c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<GATEWAY_IP>/saml-vpn/`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Check Point Remote Access VPN クライアント サポート チーム](mailto:support@checkpoint.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Check Point Remote Secure Access VPN クライアント サポート チーム](mailto:support@checkpoint.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-1. **[Check Point Remote Access VPN のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Check Point Remote Secure Access VPN のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -107,17 +107,17 @@ Check Point Remote Access VPN に対して Azure AD SSO を構成してテスト
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に Check Point Remote Access VPN へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Check Point Remote Secure Access VPN へのアクセスを許可することで、Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[Check Point Remote Access VPN]** を選択します。
+1. アプリケーションの一覧で **[Check Point Remote Secure Access VPN]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-check-point-remote-access-vpn-sso"></a>Check Point Remote Access VPN の SSO の構成
+## <a name="configure-check-point-remote-secure-access-vpn-sso"></a>Check Point Remote Secure Access VPN SSO の構成
 
 ### <a name="configure-an-external-user-profile-object"></a>外部ユーザー プロファイル オブジェクトを構成する
 
@@ -309,9 +309,9 @@ Windows クライアントで、この動作を変更して Internet Explorer �
             `sudo launchctl start com.checkpoint.epc.service`
 
 
-### <a name="create-check-point-remote-access-vpn-test-user"></a>Check Point Remote Access VPN テスト ユーザーを作成します
+### <a name="create-check-point-remote-secure-access-vpn-test-user"></a>Check Point Remote Secure Access VPN テスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Check Point Remote Access VPN に作成します。 [Check Point Remote Access VPN サポート チーム](mailto:support@checkpoint.com)と連携して、Check Point Remote Access VPN プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Britta Simon というユーザーを Check Point Remote Secure Access VPN に作成します。 [Check Point Remote Secure Access VPN サポート チーム](mailto:support@checkpoint.com)と連携して、Check Point Remote Secure Access VPN プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -327,6 +327,6 @@ Windows クライアントで、この動作を変更して Internet Explorer �
 
 ## <a name="next-steps"></a>次のステップ
 
-Check Point Remote Access VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Check Point Remote Secure Access VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9eb35c892db113807d3c401306485a836a1d970b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: df34d0ad7aa2c8249f013d430cedd72dd86eb6a2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947431"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451999"
 ---
 # <a name="what-is-optical-character-recognition"></a>光学式文字認識とは
 
@@ -42,7 +42,7 @@ Computer Vision の [Read API](https://centraluseuap.dev.cognitive.microsoft.com
 
 * サポートされているファイル形式: JPEG、PNG、BMP、PDF、TIFF
 * PDF ファイルと TIFF ファイルの場合は、最大 2,000 ページ (Free レベルの場合は最初の 2 ページのみ) が処理されます。
-* ファイル サイズは 50 MB 未満 (Free レベルの場合は 4 MB)、寸法は 50 x 50 ピクセル以上 10,000 x 10,000 ピクセル以下にする必要があります。 
+* ファイル サイズは 50 MB 未満 (Free レベルの場合は 6 MB)、寸法は 50 x 50 ピクセル以上 10,000 x 10,000 ピクセル以下にする必要があります。 
 
 ## <a name="supported-languages"></a>サポートされている言語
 読み取り API では、印刷スタイルのテキストとして合計 73 言語がサポートされています。 [OCR でサポートされている言語](./language-support.md#optical-character-recognition-ocr)の完全な一覧を参照してください。 手書きスタイルの OCR は、英語でのみサポートされています。
@@ -67,10 +67,6 @@ Read API には次の機能があります。
 Read 3.x クラウド API は、統合が簡単で、すぐに生産性を上げることができるため、ほとんどのお客様にとって推奨される選択肢です。 Azure と Computer Vision サービスがスケール、パフォーマンス、データ セキュリティ、コンプライアンスのニーズに対応する一方で、お客様は顧客のニーズを満たすことに集中できます。
 
 オンプレミスでのデプロイの場合、[Read Docker コンテナー (プレビュー)](./computer-vision-how-to-install-containers.md) を使用すると、独自のローカル環境に新しい OCR 機能をデプロイできます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
-
-## <a name="ocr-api"></a>OCR API
-
-従来の [OCR API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20d) では、古い認識モデルが使用されており、画像のみがサポートされ、同期的に実行されて、検出されたテキストは直ちに返されます。 サポートされている言語の一覧については、[サポートされている言語](./language-support.md#optical-character-recognition-ocr)の OCR の列を参照してください。
 
 > [!WARNING]
 > Computer Vision 2.0 RecognizeText 操作は非推奨になる予定であり、この記事で取り上げている新しい [Read API](#read-api) がその代わりになります。 既存顧客の皆様には、[読み取り操作をご利用いただくように](upgrade-api-versions.md)お願いします。

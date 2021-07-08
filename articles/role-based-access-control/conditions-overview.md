@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.subservice: conditions
 ms.topic: overview
 ms.workload: identity
-ms.date: 05/06/2021
+ms.date: 05/13/2021
 ms.author: rolyon
-ms.openlocfilehash: 8f2849500d46c48f62ee203b7e40176b618f514c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 6919a5b94d9122f16084933574ffc88f8c9f1249
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489807"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847420"
 ---
 # <a name="what-is-azure-attribute-based-access-control-azure-abac-preview"></a>Azure の属性ベースのアクセス制御 (Azure ABAC) とは (プレビュー)
 
@@ -85,6 +85,10 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 
 ![条件によりアクセスが許可されないようすを示した図。](./media/conditions-overview/condition-access-multiple.png)
 
+条件は、Azure portal で次のように表示されます。
+
+![[式の作成] セクション。BLOB インデックス タグの値が表示されています。](./media/shared/condition-expressions.png)
+
 条件をコードで示すと、次のようになります。
 
 ```
@@ -96,12 +100,16 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     )
     OR
     (
-        @Resource[Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags:Project<$key_case_sensitive$>] StringEquals 'Cascade'
+        @Resource[Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags:Project<$key_case_sensitive$>] StringEqualsIgnoreCase 'Cascade'
     )
 )
 ```
 
 条件の形式の詳細については、「[Azure のロールの割り当て条件の形式と構文](conditions-format.md)」を参照してください。
+
+## <a name="conditions-and-privileged-identity-management-pim"></a>条件と Privileged Identity Management (PIM)
+
+Privileged Identity Management (PIM) を使用して、資格のあるロールの割り当てに条件を追加することもできます。 PIM を使用する場合、エンド ユーザーは、資格のあるロールの割り当てをアクティブ化して、特定のアクションを実行するためのアクセス許可を取得する必要があります。 PIM で条件を使用すると、きめ細かな条件を使用してリソースへのユーザーのアクセスを制限できるだけでなく、PIM を使用して、期限付きの設定、承認ワークフロー、監査証跡などでそれを保護することもできます。 詳細については、「[Privileged Identity Management で Azure リソース ロールを割り当てる](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)」を参照してください。
 
 ## <a name="terminology"></a>用語
 
@@ -118,5 +126,5 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure のロールの割り当て条件のよくあるご質問 (プレビュー)](conditions-faq.md)
-- [Azure のロールの割り当て条件の例 (プレビュー)](../storage/common/storage-auth-abac-examples.md)
-- [チュートリアル: Azure portal を使用してロールの割り当て条件を追加し、BLOB へのアクセスを制限する (プレビュー)](../storage/common/storage-auth-abac-portal.md)
+- [Azure ロール割り当て条件の例 (プレビュー)](../storage/common/storage-auth-abac-examples.md)
+- [チュートリアル: Azure portal を使用して BLOB へのアクセスを制限するロール割り当て条件を追加する (プレビュー)](../storage/common/storage-auth-abac-portal.md)

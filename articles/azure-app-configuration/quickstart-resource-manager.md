@@ -4,16 +4,16 @@ titleSuffix: Azure App Configuration
 description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure App Configuration ストアを作成する方法について説明します。
 author: GrantMeStrength
 ms.author: jken
-ms.date: 10/16/2020
+ms.date: 06/09/2021
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 2bdd989f79a8a24e47698e187bfc45559e873237
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 15e0bc45bc4fea645ff0ccf7b17110ce4361a9a0
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763975"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983422"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure App Configuration ストアを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "108763975"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.appconfiguration%2Fapp-configuration-store-kv%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,14 +35,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/)からのものです。 2 つのキー値を含む新しい App Configuration ストアを作成します。 その後、`reference` 関数を使用して、2 つのキー値リソースの値を出力します。 このようにしてキーの値を読み取ることで、それをテンプレート内の他の場所で使用することができます。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/app-configuration-store-kv/)からのものです。 2 つのキー値を含む新しい App Configuration ストアを作成します。 その後、`reference` 関数を使用して、2 つのキー値リソースの値を出力します。 このようにしてキーの値を読み取ることで、それをテンプレート内の他の場所で使用することができます。
 
 このクイックスタートでは、`copy` 要素を使用して、キー値リソースのインスタンスを複数作成します。 `copy` 要素の詳細については、「[ARM テンプレートでのリソースの反復処理](../azure-resource-manager/templates/copy-resources.md)」を参照してください。
 
 > [!IMPORTANT]
 > このテンプレートには、App Configuration リソース プロバイダー バージョン `2020-07-01-preview` 以降が必要です。 このバージョンでは、キー値の読み取りに `reference` 関数が使用されます。 以前のバージョンでキー値の読み取りに使用されていた `listKeyValue` 関数は、バージョン `2020-07-01-preview` 以降では使用できません。
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.appconfiguration/app-configuration-store-kv/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
@@ -67,18 +67,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
 > ```
 
+> [!NOTE]
+> アクセス キー認証が無効になっている場合、ARM テンプレート内でのキー値データへのアクセスが無効になるという制限があります。 詳細については、[アクセス キー認証の無効化](./howto-disable-access-key-authentication.md#limitations)に関する記事を参照してください。
+
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、2 つのキー値を含む App Configuration ストアが作成されます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.appconfiguration%2Fapp-configuration-store-kv%2Fazuredeploy.json)
 
 次の PowerShell コマンドレットを使用してテンプレートをデプロイすることもできます。 キー値は、PowerShell コンソールの出力に表示されます。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-configuration-store-kv/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.appconfiguration/app-configuration-store-kv/azuredeploy.json"
 
 $resourceGroupName = "${projectName}rg"
 
@@ -110,5 +113,5 @@ Write-Host "Press [ENTER] to continue..."
 
 App Configuration ストアに機能フラグや Key Vault 参照を追加する方法については、以下の ARM テンプレートの例を参照してください。
 
-- [101-app-configuration-store-ff](https://azure.microsoft.com/resources/templates/101-app-configuration-store-ff/)
-- [101-app-configuration-store-keyvaultref](https://azure.microsoft.com/resources/templates/101-app-configuration-store-keyvaultref/)
+- [app-configuration-store-ff](https://azure.microsoft.com/resources/templates/app-configuration-store-ff/)
+- [app-configuration-store-keyvaultref](https://azure.microsoft.com/resources/templates/app-configuration-store-keyvaultref/)

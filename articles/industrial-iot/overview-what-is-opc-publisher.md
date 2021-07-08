@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: conceptual
 ms.date: 3/22/2021
-ms.openlocfilehash: 6df39c93e9bcfca522ac61a863c87269216cc592
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 5b91828999d1b8650d8d645d11e62919ddd76090
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816172"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677982"
 ---
 # <a name="what-is-the-opc-publisher"></a>OPC Publisher とは
 
@@ -28,6 +28,9 @@ HTTPS、AMQP、MQTT など、Azure IoT Hub クライアント SDK でサポー�
 
 - ご利用のネットワーク上にある既存の OPC UA サーバーに接続する OPC UA "*クライアント*"。
 - 発行されている内容の管理に使用できる ポート 62222 上の OPC UA "*サーバー*"。同じことをできる直接のメソッドが IoT Hub に用意されています。
+> [!NOTE]
+> ビルドイン OPC UA サーバーは、バージョン2.5 以下でのみ使用できます。
+
 
 GitHub から [OPC Publisher のリファレンス実装](https://github.com/Azure/iot-edge-opc-publisher)をダウンロードできます。
 

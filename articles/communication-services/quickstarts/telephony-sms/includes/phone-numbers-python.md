@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: e62aed02a0ad5f26ec8fd0a79de5e91269386095
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 61648bc0eab3aba4806cf4594e6fe222ac77f93f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450237"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993222"
 ---
+> [!NOTE]
+> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/phone-numbers-quickstart) にあります
+
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -53,6 +56,8 @@ pip install azure-identity
 ```
 
 `DefaultAzureCredential` オブジェクトを作成するためには、あらかじめ `AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET`、`AZURE_TENANT_ID` を環境変数とし、登録済みの Azure AD アプリケーションから対応する値を取得して設定しておく必要があります。
+
+これらの環境変数を取得する方法については、[CLI からのマネージド ID の設定に関するクイックスタート](../../managed-identity-from-cli.md)に従ってください。
 
 `azure-identity` ライブラリのインストール後、クライアントの認証に進むことができます。
 
@@ -111,7 +116,7 @@ try:
         calling = PhoneNumberCapabilityType.INBOUND,
         sms = PhoneNumberCapabilityType.INBOUND_OUTBOUND
     )
-    search_poller = self.phone_number_client.begin_search_available_phone_numbers(
+    search_poller = phone_numbers_client.begin_search_available_phone_numbers(
         "US",
         PhoneNumberType.TOLL_FREE,
         PhoneNumberAssignmentType.APPLICATION,
@@ -226,5 +231,5 @@ print('Status of the operation: ' + release_poller.status())
 コンソールのプロンプトから、phone_numbers_sample.py ファイルが格納されているディレクトリに移動し、次の Python コマンドを実行してアプリを実行します。
 
 ```console
-./phone_numbers_sample.py
+python phone_numbers_sample.py
 ```

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: a7a010e3c60d6b96947597878fcd870e9845b2b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a17356495eea160134f80d57527a814b8fda4ee
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98746139"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560296"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>チュートリアル:Azure Storage に格納されている JSON BLOB のインデックスを REST で作成する
 

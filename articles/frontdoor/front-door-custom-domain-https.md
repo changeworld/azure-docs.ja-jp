@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/26/2021
+ms.date: 06/10/2021
 ms.author: duau
-ms.openlocfilehash: 4291a7d46c723f799cf9d09ca0e7a3f6d614971f
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 7f2a5faebb56cfb12a62a8bdae4e6b7e56e88b57
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389742"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004711"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -75,7 +75,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 
 ### <a name="option-2-use-your-own-certificate"></a>オプション 2:独自の証明書を使用する
 
-独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure Front Door では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 TLS/SSL 証明書を作成するときには、許可された証明機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA のリストについては、「[Azure Front Door でカスタム HTTPS を有効にするために許可された認証機関](front-door-troubleshoot-allowed-ca.md)」を参照してください。
+独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure Front Door では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 TLS/SSL 証明書を作成する場合は、[Microsoft の信頼された CA リスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)の一部である許可された証明機関 (CA) を使用した完全な証明書チェーンを作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。  完全なチェーンを持たない証明書が提示された場合、その証明書が関係する要求は、期待通り動作することが保証されません。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault のアカウントと証明書を準備する
  
@@ -87,7 +87,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 証明書は、**シークレット** ではなく **証明書** オブジェクトとしてアップロードします。
 
 > [!NOTE]
-> 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。
+> 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。 証明書にはリーフ証明書と中間証明書を含む完全な証明書チェーンが必要であり、ルート CA は [Microsoft の信頼された CA リスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)の一部である必要があります。
 
 #### <a name="register-azure-front-door"></a>Azure Front Door を登録する
 
@@ -152,7 +152,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| 名前            | Type  | 値                 |
+| 名前            | 種類  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -209,7 +209,7 @@ postmaster@&lt;your-domain-name.com&gt;
 | | ドメインの所有権の検証要求が期限切れになりました (お客様から 6 日以内に返答がなかったようです)。 ドメインで HTTPS が有効になることはありません。 * |
 | | ドメインの所有権の検証要求が、お客様により拒否されました。 ドメインで HTTPS が有効になることはありません。 * |
 | 3 証明書のプロビジョニング | 証明機関は現在、ドメインで HTTPS を有効にする際に必要な証明書の発行処理を進めています。 |
-| | 証明書の発行が完了しました。現在、証明書を Front Door にデプロイしています。 このプロセスには最長で 1 時間かかることがあります。 |
+| | 証明書の発行が完了しました。現在、証明書を Front Door にデプロイしています。 このプロセスは、完了するまでに数分から 1 時間かかる場合があります。 |
 | | Front Door に証明書が正常にデプロイされました。 |
 | 4 完了 | ドメインで HTTPS を有効にしました。 |
 

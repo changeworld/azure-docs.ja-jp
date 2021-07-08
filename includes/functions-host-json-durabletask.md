@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0605b5a882dcfa09b2435476a37d116f8c47286
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607093"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350487"
 ---
 [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md) の構成設定。
 
@@ -103,7 +103,7 @@ ms.locfileid: "105607093"
 |---------|---------|----------|
 |hubName|DurableFunctionsHub|代替[タスク ハブ](../articles/azure-functions/durable/durable-functions-task-hubs.md)名を使用すると、複数の Durable Functions アプリケーションが同じストレージ バックエンドを使用している場合でも、これらのアプリケーションを互いに分離できます。|
 |controlQueueBatchSize|32|コントロール キューから一度にプルするメッセージの数。|
-|controlQueueBufferThreshold| **従量課金プラン**: 32 <br> **専用プランまたは Premium プラン**: 256 |一度にメモリにバッファー処理できる制御キュー メッセージの数。その時点で、ディスパッチャーは、追加のメッセージがデキューされるまで待機します。|
+|controlQueueBufferThreshold| **Python の従量課金プラン**: 32 <br> **JavaScript および C# の従量課金プラン**: 128 <br> **専用プランまたは Premium プラン**: 256 |一度にメモリにバッファー処理できる制御キュー メッセージの数。その時点で、ディスパッチャーは、追加のメッセージがデキューされるまで待機します。|
 |partitionCount |4|コントロール キューのパーティション数。 1 から 16 までの正の整数を使用できます。|
 |controlQueueVisibilityTimeout |5 分|デキューされたコントロール キュー メッセージの表示タイムアウト。|
 |workItemQueueVisibilityTimeout |5 分|デキューされた作業項目キュー メッセージの表示タイムアウト。|

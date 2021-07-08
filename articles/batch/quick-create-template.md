@@ -1,21 +1,23 @@
 ---
 title: Azure クイック スタート - Batch アカウントの作成 - Azure Resource Manager テンプレート
 description: このクイックスタートでは、ARM テンプレートを使用して Batch アカウントを作成する方法を示します。
-ms.date: 08/17/2020
+ms.date: 05/25/2021
 ms.topic: quickstart
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: ae481d6dd9a21281c2026eb9a3609094a09ad475
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: d28a60fd3476877bf79fa8ea542db074c565fc89
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838395"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005683"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Batch アカウントを作成する
 
-コンピューティング リソース (コンピューティング ノードのプール) や Batch ジョブを作成するには、Batch アカウントが必要です。 Azure Storage アカウントと Batch アカウントをリンクできます。これは、アプリケーションをデプロイしたり、ほとんどの実際のワークロードの入力データと出力データを格納したりする場合に役立ちます。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用し、ストレージなどの Batch アカウントを作成する方法を示します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
+Azure Batch の使用を開始するには、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、ストレージなどの Batch アカウントを作成します。 コンピューティング リソース (コンピューティング ノードのプール) や Batch ジョブを作成するには、Batch アカウントが必要です。 Azure Storage アカウントと Batch アカウントをリンクできます。これは、アプリケーションをデプロイしたり、ほとんどの実際のワークロードの入力データと出力データを格納したりする場合に役立ちます。
+
+このクイックスタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,7 +33,7 @@ ms.locfileid: "109838395"
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/batchaccount-with-storage/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.batch/batchaccount-with-storage/azuredeploy.json":::
 
@@ -48,7 +50,7 @@ ms.locfileid: "109838395"
 
 1. 次の値を選択または入力します。
 
-   ![Resource Manager テンプレート、Batch アカウントの作成、ポータルのデプロイ](media/quick-create-template/batch-template.png)
+   :::image type="content" source="media/quick-create-template/batch-template.png" alt-text="Resource Manager テンプレート、Batch アカウントの作成、ポータルのデプロイ":::
 
    - **サブスクリプション**: Azure サブスクリプションを選択します。
    - **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。
@@ -56,9 +58,8 @@ ms.locfileid: "109838395"
    - **Batch アカウント名**: 既定値をそのまま使用します。
    - **ストレージ アカウントの SKU**: ストレージ アカウントの種類を選択します。 たとえば、**Standard_LRS** です。
    - **[場所]** :リソースがリソース グループと同じ場所に配置されるように、既定値のままにします。
-   - 上記の使用条件に同意する: **選択します**。
 
-1. **[購入]** を選択します。
+1. **[Review + create]\(確認と作成\)** を選択し、次に **[作成]** を選択します。
 
 数分後に、Batch アカウントが正常に作成されたという通知が表示されます。
 
@@ -70,7 +71,7 @@ Azure portal で作成したリソース グループに移動して、デプロ
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-後続の[チュートリアル](./tutorial-parallel-dotnet.md)に引き続き取り組む場合は、これらのリソースをそのまま残しておくことをお勧めします。 または、不要になった場合は、[リソース グループを削除](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group)できます。これにより、Batch アカウントと作成したストレージ アカウントも削除されます。
+この[チュートリアル](./tutorial-parallel-dotnet.md)をさらに継続する場合は、これらのリソースをそのまま残しておくことをお勧めします。 または、不要になった場合は、[リソース グループを削除](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group)できます。これにより、Batch アカウントと作成したストレージ アカウントも削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

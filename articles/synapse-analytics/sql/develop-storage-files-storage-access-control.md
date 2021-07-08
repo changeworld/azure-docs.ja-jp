@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4419c9d64eac6eb468c5eb4414a3c9b844d7d8a7
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a93e63207bbbe9a2ac65823b3c22773f6cd97cf8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181726"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676857"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -28,7 +29,7 @@ ms.locfileid: "108181726"
 
 Synapse Analytics ワークスペースのサーバーレス SQL プールでは、Azure Data Lake ストレージに格納されているファイルの内容を読み取ることができます。 SQL クエリを実行するユーザーがファイルを読み取ることができるようにするには、ストレージに対するアクセス許可を構成する必要があります。 ファイルへのアクセスを有効にするには、次の 3 つの方法があります。
 - **[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md)** を使用すると、ストレージが配置されているテナント内の一部の Azure AD ユーザーにロールを割り当てることができます。 閲覧者には、ストレージ アカウントに対する `Storage Blob Data Reader`、`Storage Blob Data Contributor`、`Storage Blob Data Owner` のいずれかの RBAC の役割が必要です。 Azure Storage にデータを書き込むユーザーは、`Storage Blob Data Writer` または `Storage Blob Data Owner` のロールを持っている必要があります。 `Storage Owner` ロールは、ユーザーが `Storage Data Owner` でもあることを意味するものではないことに注意してください。
-- **アクセス制御リスト (ACL)** を使用すると、Azure Storage 内のファイルとディレクトリに対してきめ細かな[読み取り (R)、書き込み (W)、実行 (X) アクセス許可](../../storage/blobs/data-lake-storage-access-control.md#levels-of-permission)を定義できます。 ACL は Azure AD ユーザーに割り当てることができます。 閲覧者が Azure Storage のパスにあるファイルを読み取る場合は、ファイル パス内のすべてのフォルダーに対する実行 (X) ACL と、ファイルに対する読み取り (R) ACL を保持している必要があります。 [ストレージ レイヤーで ACL アクセス許可を設定する方法をご確認ください](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)。
+- **アクセス制御リスト (ACL)** を使用すると、Azure Storage 内のファイルとディレクトリに対してきめ細かな [読み取り (R)、書き込み (W)、実行 (X) アクセス許可](../../storage/blobs/data-lake-storage-access-control.md#levels-of-permission)を定義できます。 ACL は Azure AD ユーザーに割り当てることができます。 閲覧者が Azure Storage のパスにあるファイルを読み取る場合は、ファイル パス内のすべてのフォルダーに対する実行 (X) ACL と、ファイルに対する読み取り (R) ACL を保持している必要があります。 [ストレージ レイヤーで ACL アクセス許可を設定する方法をご確認ください](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)。
 - **Shared Access Signature (SAS)** を使用すると、閲覧者は、時間制限付きのトークンを使用して Azure Data Lake ストレージ上のファイルにアクセスできます。 閲覧者は、Azure AD ユーザーとして認証される必要はありません。 SAS トークンには、閲覧者に付与されたアクセス許可と、トークンが有効である期間が含まれています。 SAS トークンは、同じ Azure AD テナントに属している必要さえもない任意のユーザーに対して時間制限付きアクセスを許可する場合に適しています。 SAS トークンは、ストレージ アカウントまたは特定のディレクトリに対して定義できます。 [Shared Access Signature を使用して Azure Storage リソースへの制限付きアクセスを許可する方法](../../storage/common/storage-sas-overview.md)の詳細をご確認ください。
 
 別の方法として、匿名アクセスを許可することで、ファイルを公開することもできます。 非公開のデータがある場合は、この方法を使用しないでください。 
@@ -102,18 +103,19 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 \* ファイアウォールで保護されていないストレージには、SAS トークンと Azure AD ID を使用してアクセスできます。
 
+## <a name="firewall-protected-storage"></a>ファイアウォールで保護されたストレージ
 
-### <a name="querying-firewall-protected-storage"></a>ファイアウォールで保護されたストレージのクエリ
-
+[リソース インスタンス ルール](../../storage/common/storage-network-security.md?tabs=azure-portal#grant-access-from-azure-resource-instances-preview)を作成することによって、特定のサーバーレス SQL プールへのアクセスを許可するようにストレージ アカウントを構成できます。
 ファイアウォールで保護されているストレージにアクセスする場合に、**ユーザー ID** または **マネージド ID** を使用できます。
 
 > [!NOTE]
 > ストレージに対するファイアウォール機能はパブリック プレビュー段階であり、すべてのパブリック クラウド リージョンで利用できます。 
 
-#### <a name="user-identity"></a>ユーザー ID
+
+### <a name="user-identity"></a>[ユーザー ID](#tab/user-identity)
 
 ファイアウォールで保護されているストレージにユーザー ID を使用してアクセスするには、Azure portal UI または PowerShell モジュール Az.Storage を使用します。
-#### <a name="configuration-via-azure-portal"></a>Azure portal による構成
+### <a name="configuration-via-azure-portal"></a>Azure portal による構成
 
 1. Azure portal で、お使いのストレージ アカウントを検索します。
 1. [設定] セクションの下の [ネットワーク] に移動します。
@@ -122,7 +124,7 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 1. インスタンス名として、ワークスペースの名前を選択します。
 1. [保存] をクリックします。
 
-#### <a name="configuration-via-powershell"></a>PowerShell を使用した構成
+### <a name="configuration-via-powershell"></a>PowerShell を使用した構成
 
 ストレージ アカウントのファイアウォールを構成し、Synapse ワークスペースの例外を追加するには、次の手順に従います。
 
@@ -189,8 +191,19 @@ SAS トークンを使用したアクセスを有効にするには、データ�
         }
     ```
 
-#### <a name="managed-identity"></a>マネージド ID
+### <a name="shared-access-signature"></a>[共有アクセス署名](#tab/shared-access-signature)
+
+共有アクセス署名を使用して、ファイアウォールで保護されたストレージにアクセスすることはできません。
+
+### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
+
 [信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [Azure ロール](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
+
+### <a name="anonymous-access"></a>[匿名アクセス](#tab/public-access)
+
+匿名アクセスを使用して、ファイアウォールで保護されたストレージにアクセスすることはできません。
+
+---
 
 ## <a name="credentials"></a>資格情報
 

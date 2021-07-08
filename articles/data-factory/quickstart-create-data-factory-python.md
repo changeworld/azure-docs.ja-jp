@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/12/2021
+ms.date: 05/27/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 665944688533b4efa6e0e14077ae7df22d352d50
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dbc82773128aec58202821827be16bdf5d80260a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123629"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665178"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -40,7 +40,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (省略可)。
 
-* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 このリンク先の手順に従ってアプリケーションを作成し、同じ記事の手順に従ってこのアプリケーションを **共同作成者** ロールに割り当てます。 記事に示されているように後の手順で使用するために、**アプリケーション ID (以下のサービス プリンシパル ID)、認証キー (以下のクライアント シークレット)、およびテナント ID** の値をメモしておきます。
+* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 このリンク先の手順に従い、認証オプション 2 (アプリケーション シークレット)　を使用してアプリケーションを作成し、同じ記事の手順に従ってこのアプリケーションを **共同作成者** ロールに割り当てます。 記事に示されているように、後の手順で使用するために、**アプリケーション (クライアント) ID、クライアント シークレット値、およびテナント ID** の値をメモしておきます。
 
 ## <a name="create-and-upload-an-input-file"></a>入力ファイルを作成およびアップロードする
 
@@ -139,7 +139,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
         df_name = '<factory name>'
 
         # Specify your Active Directory client ID, client secret, and tenant ID
-        credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        credentials = ClientSecretCredential(client_id='<Application (client) ID>', client_secret='<client secret value>', tenant_id='<tenant ID>') 
         
         # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
         # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD
@@ -475,4 +475,4 @@ adf_client.factories.delete(rg_name, df_name)
 
 ## <a name="next-steps"></a>次のステップ
 
-このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。
+このサンプルのパイプラインは、Azure Blob Storage 内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。

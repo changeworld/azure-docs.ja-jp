@@ -3,12 +3,12 @@ title: NSX-T ネットワーク セグメントを追加する
 description: Azure VMware Solution 用の NSX-T ネットワーク セグメントを追加する手順。
 ms.topic: include
 ms.date: 03/13/2021
-ms.openlocfilehash: 477533887629a88f72426a33ed38278636e72fef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 10b04c8000b8ef440a2a729be671630b4382f3a8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064477"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794956"
 ---
 <!-- Used in configure-dhcp-azure-vmware-solution.md and tutorial-nsx-t-network-segment.md -->
 
@@ -24,7 +24,7 @@ ms.locfileid: "110064477"
 
    :::image type="content" source="../media/nsxt/nsxt-create-segment-specs.png" alt-text="セグメント名、接続されているゲートウェイ、種類、トランスポート ゾーンを設定し、[Set Subnets]\(サブネットの設定\) を選択します。":::
 
-1. ゲートウェイの IP アドレスを入力し、 **[Add]\(追加\)** を選択します。 
+1. ゲートウェイ IP アドレスを入力し、 **[Add]\(追加\)** を選択します。 
 
    >[!IMPORTANT]
    >IP アドレスは、重複しない RFC1918 アドレス ブロック上に存在する必要があります。これで新しいセグメント上の VM への接続が確保されます。

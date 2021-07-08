@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/23/2021
-ms.openlocfilehash: aa65989953f761ff915383fcb59da7f36ea98dab
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.date: 06/10/2021
+ms.openlocfilehash: 13f5bb8245ecc57c01d4236dfea7c9e4a2f7ae75
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600484"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986320"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center (無料) と有効化された Azure Defender
 Azure Defender は、最初の 30 日間は無料で利用できます。 30 日経過した時点で、サービスの利用を継続することを選択した場合、使用量に応じた課金が自動的に開始されます。
@@ -70,7 +70,7 @@ Security Center には 2 つのプランがあります。
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>サブスクリプションで Azure Defender を有効にするにはどうすればよいですか? 
 以下に示すどの方法でも、ご利用のサブスクリプションに対して Azure Defender を有効にすることができます。 
 
-| メソッド                                          | Instructions                                                                                                                                       |
+| メソッド                                          | 手順                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure portal の Azure Security Center ページ | [Azure Defender を有効にする](enable-azure-defender.md)                                                                                                  |
 | REST API                                        | [Pricings API](/rest/api/securitycenter/pricings)                                                                                                  |
@@ -87,7 +87,9 @@ Security Center には 2 つのプランがあります。
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Microsoft Defender for Endpoint のライセンスが既にある場合、Azure Defender の割引を受けることができますか?
 Microsoft Defender for Endpoint のライセンスを既に取得している場合は、Azure Defender ライセンスのその部分について料金を支払う必要はありません。
 
-割引を確認するには、Security Center のサポート チームに連絡し、関連するライセンスごとに、関連するワークスペース ID、リージョン、ライセンス情報を提示してください。
+割引をリクエストするには、Security Center のサポート チームに連絡し、関連するワークスペース ID、リージョン、および該当するワークスペース内のマシンに適用される Microsoft Defender for Endpoint ライセンスの数をお伝えください。
+
+割引は承認日から有効となり、さかのぼって適用されることはありません。
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>私のサブスクリプションでは Azure Defender for servers が有効になっています。実行していないサーバーは課金されますか? 
 いいえ。 サブスクリプションで [Azure Defender for servers](defender-for-servers-introduction.md) を有効にしても、割り当て解除済みの電源状態のマシンは課金されません。 マシンは電源の状態に基づいて課金されます。次の表を参照してください。
@@ -110,7 +112,7 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、"セキュリティ" または "マルウェア対策" ソリューションがインストールされている各ワークスペースが課金の対象となります。 
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Log Analytics エージェントが複数のワークスペースにレポートする場合、それらすべてで 500 MB 無料のデータ インジェストが利用できるのですか?
-はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、500 MB 分のデータ インジェストが無料になります。 これはノード単位、レポート先ワークスペース単位、日単位で計算され、"セキュリティ" または "マルウェア対策" ソリューションがインストールされているどのワークスペースでも利用できます。 500 MB を超えて取り込まれたデータについては課金の対象となります。
+はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、500 MB 分のデータ インジェストが無料になります。 これはノード単位、レポート先ワークスペース単位、日単位で計算され、"セキュリティ" または "マルウェア対策" ソリューションがインストールされているどのワークスペースでも利用できます。 500 MB の制限を超えて取り込まれたデータについては課金の対象となります。
 
 ### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>500 MB 無料のデータ インジェストの計算対象は、ワークスペース全体ですか、それとも厳密にマシン単位ですか?
 ワークスペースに接続されている各マシンについて、1 日あたり 500 MB のデータ インジェストが無料で提供されます。 具体的には、Azure Security Center によって直接収集されたセキュリティ データのタイプが対象となります。
@@ -120,7 +122,6 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 ### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>500 MB のデータの 1 日あたりの許容量には、、どの種類のデータが含まれますか?
 
 Security Center の課金は、Log Analytics の課金と密接に関連しています。 Security Center では、[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category#security)の次のサブセットに対して 1 日当たり 500 MB/ノードの許容量を示しています。
-- WindowsEvent
 - SecurityAlert
 - SecurityBaseline
 - SecurityBaselineSummary
@@ -128,7 +129,6 @@ Security Center の課金は、Log Analytics の課金と密接に関連して�
 - SecurityEvent
 - WindowsFirewall
 - MaliciousIPCommunication
-- LinuxAuditLog
 - SysmonEvent
 - ProtectionStatus
 - ワークスペースで Update Management ソリューションが実行されていないか、ソリューションのターゲット設定が有効になっている場合は、Update と UpdateSummary のデータの種類
