@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 82c5cbc2b938ef8cd27a17da394b467a7f5ba8aa
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 030aadf55f692b19109582fb85320023159005a3
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755605"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569424"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "108755605"
 
 ## <a name="overview"></a>概要
 
-Azure VM 上の SQL Server では、Windows Server フェールオーバー クラスタリング (WSFC) の機能を使用して、サーバー インスタンス レベルでの冗長性によるローカル高可用性を実現します。すなわち、フェールオーバー クラスター インスタンスです。 FCI は、WSFC (または単にクラスター) ノード全体に、場合によっては複数のサブネットにまたがってインストールされる SQL Server の 1 つのインスタンスです。 ネットワーク上では、FCI は 1 台のコンピューター上で実行されている SQL Server のインスタンスのように見えます。 ただし、現在の WSFC ノードが使用できなくなった場合、FCI によって 1 つのノードから別のノードへのフェールオーバーが提供されます。
+Azure VM 上の SQL Server では、[Windows Server フェールオーバー クラスタリング (WSFC)](hadr-windows-server-failover-cluster-overview.md) の機能を使用して、サーバー インスタンス レベルでの冗長性によるローカル高可用性を実現します。すなわち、フェールオーバー クラスター インスタンスです。 FCI は、WSFC (または単にクラスター) ノード全体に、場合によっては複数のサブネットにまたがってインストールされる SQL Server の 1 つのインスタンスです。 ネットワーク上では、FCI は 1 台のコンピューター上で実行されている SQL Server の単一インスタンスのように見えます。 ただし、現在の WSFC ノードが使用できなくなった場合、FCI によって 1 つのノードから別のノードへのフェールオーバーが提供されます。
 
 この記事の残りの部分では、Azure VM 上の SQL Server と共に使用する場合のフェールオーバー クラスター インスタンスの違いに焦点を当てます。 フェールオーバー クラスタリング テクノロジの詳細については、次を参照してください。 
 
@@ -148,9 +148,11 @@ Microsoft パートナーの共有記憶域とデータ レプリケーション
 
 ## <a name="connectivity"></a>接続
 
-Azure Virtual Machines 上の SQL Server を使用するフェールオーバー クラスター インスタンスでは、[分散ネットワーク名 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) または[仮想ネットワーク名 (VNN) と Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を使用して、現在どのノードでクラスター化されたリソースが所有されているかに関係なく、SQL Server インスタンスにトラフィックをルーティングします。 特定の機能と DNN を SQL Server FCI と共に使用する場合は、追加の考慮事項があります。 詳細については、[DNN と SQL Server FCI の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関する記事をご覧ください。 
+フェールオーバー クラスター インスタンスに対して、仮想ネットワーク名または分散ネットワーク名を構成できます。 [この 2 つの違いを確認](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)してから、フェールオーバー クラスター インスタンスに対して[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)または[仮想ネットワーク名](failover-cluster-instance-vnn-azure-load-balancer-configure.md)をデプロイします。
 
-クラスター接続オプションの詳細については、[HADR 接続を Azure VM 上の SQL Server にルーティングする方法](hadr-cluster-best-practices.md#connectivity)に関する記事をご覧ください。 
+可能であれば、分散ネットワーク名を使用することをお勧めします。これにより、フェールオーバーが高速になり、ロード バランサーの管理にかかるオーバーヘッドとコストが削減されます。 
+
+DNN を使用すると、ほとんどの SQL Server 機能は FCI に対して透過的に機能しますが、特定の機能については、特別な考慮が必要となる場合があります。 詳細については、[FCI と DNN の相互運用性](failover-cluster-instance-dnn-interoperability.md)に関する記事をご覧ください。 
 
 ## <a name="limitations"></a>制限事項
 
@@ -176,7 +178,9 @@ Azure Virtual Machines では、次の理由により、クラスター共有ボ
 
 [クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)を確認した後、[FCI 用に SQL Server VM を準備する](failover-cluster-instance-prepare-vm.md)ことができます。 
 
-詳細については、次を参照してください。 
 
-- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+

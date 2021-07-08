@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/15/2021
+ms.date: 05/25/2021
 ms.custom: designer
-ms.openlocfilehash: 1846b5478c824caa954b85ea6346d773f46b279c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 73cc893815cf591812c95c8d8b092a4b58697917
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315671"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457650"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>チュートリアル:デザイナーで機械学習モデルをデプロイする
 
@@ -56,8 +56,8 @@ ms.locfileid: "108315671"
     * **[Web Service Input]\(Web サービスの入力\)** モジュールと **[Web Service Output]\(Web サービスの出力\)** モジュールが追加されます。 ユーザー データがパイプラインに入力される位置と、データが返される位置が、これらのモジュールによって示されます。
 
     > [!NOTE]
-    > 既定では、**Web サービスの入力** としては、予測パイプラインの作成に使用されたトレーニング データと同じデータ スキーマが期待されます。 このシナリオでは、価格がスキーマに含まれます。 ただし、価格は予測の間に要因としては使用されません。
-    >
+    > 既定で、 **[Web Service Input]\(Web サービスの入力\)** では、同じダウンストリーム ポートに接続するモジュール出力データと同じデータ スキーマが予期されます。 このサンプルでは、 **[Web Service Input]\(Web サービスの入力\)** と **[Automobile price data (Raw)]\(自動車価格データ (未加工)\)** は同じダウンストリーム モジュールに接続します。そのため、 **[Web Service Input]\(Web サービスの入力\)** では、 **[Automobile price data (Raw)]\(自動車価格データ (未加工)\)** と同じデータ スキーマが予期され、ターゲット変数列 `price` がスキーマに含まれます。
+    > ただし、通常、データにスコアを付けるときは、ターゲット変数の値はわかりません。 このような場合は、 **[Select Columns in Dataset]\(データセット内の列の選択\)** モジュールを使用して、推論パイプライン内のターゲット変数列を削除できます。 ターゲット変数列を削除する **[Select Columns in Dataset]\(データセット内の列の選択\)** の出力が、 **[Web Service Intput]\(Web サービスの入力\)** モジュールの出力と同じポートに接続されていることを確認してください。
 
 1. **[送信]** を選択し、パート 1 で使用したものと同じコンピューティング先と実験を使用します。
 

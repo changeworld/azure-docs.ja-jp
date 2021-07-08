@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 05/07/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 542eed34f2be05cce3829baab2f07a5c58413ba0
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: b590468b0e1f036a8b60143ff23e4a54b01802a8
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526298"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714496"
 ---
 ::: zone target="docs"
 
@@ -213,7 +213,7 @@ ms.locfileid: "99526298"
 
 | 連絡先情報 | 詳細 |
 |---|---|
-|名前:       | Bao Ying|
+|名前:       | `Bao Ying`|
 |役職 | OneCall 上級代表者 |
 |Phone:      | 400.889.6066 内線3693 |
 |電子メール:     | [ying.bao@fedex.com](mailto:ying.bao@fedex.com) |
@@ -222,26 +222,32 @@ ms.locfileid: "99526298"
 
 | 連絡先情報 | 詳細 |
 |---|---|
-|名前:       | He Xun|
+|名前:       | `He Xun`|
 |役職 | OneCall 代表者 |
 |Phone:      | 400.889.6066 内線3603 |
 |電子メール:     | [739951@fedex.com](mailto:739951@fedex.com) |
 
 ### <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
 
-米国政府、日本、シンガポール、韓国、イギリス、西ヨーロッパ、オーストラリア、南アフリカ、またはインドで Data Box Disk を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
+米国政府、日本、シンガポール、韓国、イギリス、西ヨーロッパ、オーストラリア、南アフリカ、インド、またはブラジルで Data Box Disk をお使いの方で、ご自分の注文の作成時に自己管理による配送オプションを選択した場合は、次の手順に従います。
 
 1. Azure portal 上で対象の注文の **[概要]** ブレードにアクセスします。 **[集配のスケジュール]** を選択したときに表示される手順に目を通します。 注文の配送時に使用される認証コードが表示されていると思います。
 
 2. デバイスを返送する準備が整ったら、次のテンプレートを使用して Azure Data Box オペレーション チームにメールを送信します。
 
-    ```
-    To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
-    Body:
-     a. Order name
-     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop-off.
-    ```
+   ```
+   To: adbops@microsoft.com
+   Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
+   Body:
+   1. Order name
+   2. Contact name of the person dropping off. You will need to display a government-approved ID during the drop-off.
+   ```
+
+   > [!NOTE]
+   > - 返送に必要な情報は地域によって異なります。 
+   > - ブラジルで Data Box Disk を返す場合、[Azure Data Box Disk の自己管理型の発送の使用](data-box-disk-portal-customer-managed-shipping.md)に関するページで詳細な手順をご確認ください。
+  
+
 3. Azure Data Box オペレーション チームがお客様と連絡を取り、Azure データセンターへの配送を手配します。
 
 ---

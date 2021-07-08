@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 04/02/2021
+ms.date: 06/10/2021
 ms.author: aahi
-ms.openlocfilehash: b1af48aa2aad3daa37a3ca4073d44574b5b05e6c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c9ff3bdc7e7076846ffb44239bf5654512f88eea
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742123"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967974"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>例:Text Analytics を使用して言語を検出する
 
@@ -303,3 +303,4 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 * [Text Analytics の概要](../overview.md)
 * [Text Analytics クライアント ライブラリの使用](../quickstarts/client-libraries-rest-api.md)
 * [新機能](../whats-new.md)
+* [モデルのバージョン](../concepts/model-versioning.md)

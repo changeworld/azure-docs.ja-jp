@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL での T-SQL 機能の違い
+title: Synapse SQL プールの T-SQL 機能
 description: Synapse SQL で使用できる Transact-SQL 機能の一覧。
 services: synapse analytics
 author: jovanpop-msft
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 407c677eb6ae851c2c7d05602ca0ce1458ca80e1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 100da2e8b259c31daa6b0e72c8d2c4c2b0cb1d51
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144567"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569712"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -73,7 +73,7 @@ Synapse SQL で使用されるクエリ言語では、従量課金モデルに�
 
 ## <a name="security"></a>Security
 
-Synapse SQL では、組み込みのセキュリティ機能を使用し、データをセキュリティで保護してアクセスを制御できます。 次の表は、Synapse SQL 消費モデル間の大まかな違いを比較したものです。
+Synapse SQL プールを使用すると、組み込みのセキュリティ機能を使用し、データをセキュリティで保護してアクセスを制御できます。 次の表は、Synapse SQL 消費モデル間の大まかな違いを比較したものです。
 
 |   | 専用 | サーバーレス |
 | --- | --- | --- |
@@ -87,15 +87,16 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **Storage のアクセス キー認証** | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用 | いいえ |
 | **Storage の [マネージド ID](../security/synapse-workspace-managed-identity.md) 認証** | はい。[マネージド サービス ID 資格情報](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest&preserve-view=true)を使用 | はい。`Managed Identity` 資格情報を使用。 |
 | **Storage のアプリケーション ID 認証** | [はい](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) | いいえ |
-| **アクセス許可 - オブジェクトレベル** | はい。ユーザーへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。サポートされているシステム オブジェクトでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
-| **アクセス許可 - スキーマレベル** | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
-| **アクセス許可 - [データベースレベル](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)** | はい | はい |
-| **アクセス許可 - [サーバーレベル](/sql/relational-databases/security/authentication-access/server-level-roles)** | いいえ | はい。sysadmin とその他のサーバーロールがサポートされています |
-| **アクセス許可 - [列レベルのセキュリティ](../sql-data-warehouse/column-level-security.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)** | はい | はい |
-| **ロールまたはグループ** | はい (データベース スコープ) | はい (サーバーとデータベースの両方のスコープ) |
-| **セキュリティと ID の関数** | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SESSION_CONTEXT`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`REVERT`。 セキュリティ関数は、外部データのクエリを実行するために使用できません (クエリで使用できる変数に結果を格納します)。  |
-| **DATABASE SCOPED CREDENTIAL** | はい | はい |
+| **サーバー レベルのロール** | いいえ | はい。sysadmin、public、およびその他のサーバー ロールがサポートされています |
 | **サーバー スコープの資格情報** | いいえ | はい |
+| **アクセス許可 - [サーバーレベル](/sql/relational-databases/security/authentication-access/server-level-roles)** | いいえ | はい |
+| **データベース スコープ ロール** | はい | はい |
+| **DATABASE SCOPED CREDENTIAL** | はい | はい |
+| **アクセス許可 - [データベースレベル](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)** | はい | はい |
+| **アクセス許可 - スキーマレベル** | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
+| **アクセス許可 - オブジェクトレベル** | はい。ユーザーへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。サポートされているシステム オブジェクトでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
+| **アクセス許可 - [列レベルのセキュリティ](../sql-data-warehouse/column-level-security.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)** | はい | はい |
+| **セキュリティと ID の関数** | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SESSION_CONTEXT`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`REVERT`。 セキュリティ関数は、外部データのクエリを実行するために使用できません (クエリで使用できる変数に結果を格納します)。  |
 | **行レベルのセキュリティ** | [はい](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | いいえ |
 | **透過的なデータ暗号化 (TDE)** | [はい](../../azure-sql/database/transparent-data-encryption-tde-overview.md) | いいえ | 
 | **データの検出と分類** | [はい](../../azure-sql/database/data-discovery-and-classification-overview.md) | いいえ |
@@ -135,7 +136,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **Azure Blob Storage** | はい | はい |
 | **Azure SQL (リモート)** | いいえ | いいえ |
 | **Azure CosmosDB トランザクション ストレージ** | いいえ | いいえ |
-| **Azure CosmosDB 分析ストレージ** | いいえ | はい。[Synapse Link (プレビュー)](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) を使用 ([パブリック プレビュー](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json#limitations)) |
+| **Azure CosmosDB 分析ストレージ** | いいえ | はい。[Synapse Link](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) を使用 |
 | **Apache Spark テーブル (ワークスペース内)** | いいえ | [メタデータ同期](develop-storage-files-spark-tables.md)を使用した PARQUET テーブルのみ |
 | **Apache Spark テーブル (リモート)** | いいえ | いいえ |
 | **Databricks テーブル (リモート)** | いいえ | いいえ |
@@ -153,7 +154,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **Hive RC** | [はい](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true) | いいえ |
 | **JSON** | はい | [はい](query-json-files.md) |
 | **Avro** | いいえ | いいえ |
-| **[Delta-lake](https://delta.io/)** | いいえ | いいえ |
+| **[Delta-lake](https://delta.io/)** | いいえ | [はい](query-delta-lake-format.md) |
 | **[CDM](/common-data-model/)** | いいえ | いいえ |
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 10/26/2020
+ms.date: 05/17/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ef04c964f0037fcf36fe376084df75ffa0034957
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 013a59c703d5275278e905314357f32acc211f93
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027562"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067764"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>チュートリアル:個々の Azure サブスクリプションの課金書を確認する
 
@@ -122,13 +122,13 @@ Azure portal でのコスト分析も、料金の検証に役立ちます。 請
 
 ![請求書の使用料金](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-marketplace-services-are-billed-separately"></a>外部のマーケットプレース サービスは個別に請求されます。
+## <a name="external-marketplace-services"></a>外部のマーケットプレース サービス
 
 <a name="external"></a>
 
 外部サービス (マーケットプレース) 料金は、サードパーティ ソフトウェア ベンダーによって作成されたリソースに対する金額です。 このようなリソースは Azure Marketplace から入手して利用できます。 たとえば、Barracuda Firewall はサードパーティによって提供される Azure Marketplace リソースです。 このファイアウォールと対応する測定に関するすべての料金は、外部サービス料金として表示されます。
 
-外部サービスの料金は個別に請求されます。 これらの料金は、Azure の請求書には表示されません。
+外部サービスの料金は、別の請求書に表示されます。
 
 ### <a name="resources-are-billed-by-usage-meters"></a>リソースは使用量メーターによって請求される
 

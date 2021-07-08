@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 8fef4bbc0c0e77c1e152b8c2c44254e091b0e5a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5259294734b3b0c33835759beadb2ad4e1089a9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392546"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744721"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 
@@ -36,6 +36,12 @@ Azure Data Factory は、このようなデータ シナリオを解決するプ
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
 Data Factory には、包括的なエンド ツー エンドのプラットフォームをデータ エンジニアに提供する、相互接続された一連のシステムが含まれています。
+
+このビジュアル ガイドは、Data Factory アーキテクチャの概要を示しています。
+
+:::image type="content" source="media\introduction\data-factory-visual-guide-small.png" alt-text="Azure Data Factory の完全なシステム アーキテクチャを 1 つの高解像度画像で示した詳細なビジュアル ガイド。" lightbox="media\introduction\data-factory-visual-guide.png":::
+
+詳細を表示するには、前の画像をクリックして拡大するか、[高解像度画像](/azure/data-factory/media/introduction/data-factory-visual-guide.png#lightbox)を参照してください。 
 
 ### <a name="connect-and-collect"></a>接続と収集
 

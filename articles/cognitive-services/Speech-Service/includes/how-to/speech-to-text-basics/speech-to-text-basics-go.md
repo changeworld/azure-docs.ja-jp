@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: bced384e8ba88fb83499e78c4e0d60e811ae32df
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 618074d696804171ee5e05655c1e15557789fac9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99215005"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110166298"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -99,7 +99,7 @@ func main() {
 }
 ```
 
-次のコマンドを実行して、Github でホストされるコンポーネントにリンクされる、go.mod ファイルを作成します。
+次のコマンドを実行して、GitHub でホストされるコンポーネントにリンクされる、go.mod ファイルを作成します。
 
 ```cmd
 go mod init quickstart
@@ -179,7 +179,7 @@ func main() {
 }
 ```
 
-次のコマンドを実行して、Github でホストされるコンポーネントにリンクされる、go.mod ファイルを作成します。
+次のコマンドを実行して、GitHub でホストされるコンポーネントにリンクされる、go.mod ファイルを作成します。
 
 ```cmd
 go mod init quickstart

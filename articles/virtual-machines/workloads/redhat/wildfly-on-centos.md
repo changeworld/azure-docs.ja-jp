@@ -11,12 +11,12 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: bad9331a6d9a0c0936b1458e3aa4a84559e4a107
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7c80634e78a8c37551a57fc8597831898646ef8e
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533567"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900937"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>クイックスタート: CentOS 8 上の WildFly
 
@@ -73,7 +73,7 @@ Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであ�
     ```
 
     ```
-    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/wildfly/wildfly-standalone-centos8/azuredeploy.json
     ```
     
 - Azure CLI を使う - 次のコマンドを実行してテンプレートをデプロイします (Azure クロスプラットフォーム コマンドライン インターフェイスのインストールと構成に関する詳細については、[Azure クロスプラットフォーム コマンドライン](/cli/azure/install-azure-cli)に関するページを参照してください)。
@@ -83,14 +83,14 @@ Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであ�
     ```
 
     ```
-    az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/wildfly/wildfly-standalone-centos8/azuredeploy.json
     ```
 
-- Azure portal を使う - <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">ここ</a>をクリックして Azure portal にログインし、テンプレートをデプロイします。
+- Azure portal を使う - <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fwildfly%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">ここ</a>をクリックして Azure portal にログインし、テンプレートをデプロイします。
 
 ## <a name="arm-template"></a>ARM テンプレート
 
-<a href="https://github.com/Azure/azure-quickstart-templates/tree/master/wildfly-standalone-centos8" target="_blank"> WildFly 18 on CentOS 8 (stand-alone VM)</a> - リソース グループ (RG) 内に CentOS 8 VM 上の WildFly 18.0.1.Final のスタンドアロン ノードを作成するためのクイックスタート テンプレートです。VM のプライベート IP、仮想ネットワーク、および診断ストレージ アカウントが含まれています。 また、WildFly 上に JBoss-EAP on Azure という名前のサンプル Java アプリケーションもデプロイされます。
+<a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wildfly/wildfly-standalone-centos8" target="_blank"> WildFly 18 on CentOS 8 (stand-alone VM)</a> - リソース グループ (RG) 内に CentOS 8 VM 上の WildFly 18.0.1.Final のスタンドアロン ノードを作成するためのクイックスタート テンプレートです。VM のプライベート IP、仮想ネットワーク、および診断ストレージ アカウントが含まれています。 また、WildFly 上に JBoss-EAP on Azure という名前のサンプル Java アプリケーションもデプロイされます。
 
 ## <a name="resource-links"></a>リソース リンク
 

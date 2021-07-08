@@ -1,7 +1,7 @@
 ---
 title: 'クイックスタート: ARM テンプレートを使用して共有サービスにルーティングする'
 titleSuffix: Azure Virtual WAN
-description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、すべての VNet とブランチがアクセスするワークロードがある共有サービス VNet にアクセスするためのルートを設定する方法を示します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、すべての VNet とブランチがアクセスするワークロードがある共有サービス VNet にアクセスするためのルートを設定する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: c954db5c75f1cf32833ec5ecb270ef3c4b57c10b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ff23bf626fe252547d3449cfe318c073e9cc9b6c
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110093180"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026311"
 ---
 # <a name="quickstart-route-to-shared-services-vnets-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して共有サービス VNet にルーティングする
 
@@ -33,7 +33,7 @@ ms.locfileid: "110093180"
 
 ## <a name="review-the-template"></a><a name="review"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templatesvirtual-wan-with-route-tables)からのものです。 この記事のテンプレートは長いため、ここでは表示できません。 テンプレートを確認するには、[azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-route-tables/azuredeploy.json) を参照してください。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/virtual-wan-with-route-tables)からのものです。 この記事のテンプレートは長いため、ここでは表示できません。 テンプレートを確認するには、[azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-route-tables/azuredeploy.json) を参照してください。
 
 このクイックスタートでは、ゲートウェイや VNet 接続をすべて含む、Azure Virtual WAN のマルチハブ デプロイを作成します。 入力パラメーターの数は、意図的に最小限に抑えています。 IP アドレス スキームは、テンプレート内の変数を編集することで変更できます。 このシナリオについては、[共有サービス VNet のシナリオ](scenario-shared-services-vnet.md)に関する記事で詳しく説明されています。
 

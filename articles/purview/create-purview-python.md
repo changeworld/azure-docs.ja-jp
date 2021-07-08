@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/02/2021
-ms.openlocfilehash: f8ac611d25507913d6d5f2e2dd289ea52ce4ae9f
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: ec1f8890d9626ca1ed96f538bd464da7c30caf17
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387150"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983790"
 ---
 # <a name="quickstart-create-a-purview-account-using-python"></a>クイックスタート: Python を使用して Purview アカウントを作成する
 
@@ -69,7 +69,7 @@ ms.locfileid: "106387150"
 
 2. PurviewManagementClient クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、Purview アカウントの作成と削除、名前の可用性やその他のリソース プロバイダー操作の確認を行います。
  
- ```python
+    ```python
     def main():
     
     # Azure subscription ID
@@ -92,9 +92,9 @@ ms.locfileid: "106387150"
 
 ## <a name="create-a-purview-account"></a>Purview アカウントを作成する
 
-**Purview アカウント** を作成する次のコードを **Main** メソッドに追加します。 リソース グループが既に存在する場合は、最初の `create_or_update` ステートメントをコメント アウトします。
+1. **Purview アカウント** を作成する次のコードを **Main** メソッドに追加します。 リソース グループが既に存在する場合は、最初の `create_or_update` ステートメントをコメント アウトします。
 
-```python
+   ```python
     # create the resource group
     # comment out if the resource group already exits
     resource_client.resource_groups.create_or_update(rg_name, rg_params)
@@ -118,15 +118,14 @@ ms.locfileid: "106387150"
             print("Error in creating Purview account")
             break
         time.sleep(30)      
-        
-```
+      ```
 
-プログラムの実行時に **main** メソッドを呼び出す次のステートメントを追加します。
+2. プログラムの実行時に **main** メソッドを呼び出す次のステートメントを追加します。
 
-```python
-# Start the main method
-main()
-```
+   ```python
+   # Start the main method
+   main()
+   ```
 
 ## <a name="full-script"></a>完全なスクリプト
 

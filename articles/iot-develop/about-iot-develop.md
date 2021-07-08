@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 01/11/2021
-ms.openlocfilehash: 38c21ff71971868f6597856c4048ec179faf4e01
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7b23569b07893ebbecf86336a40e52cd8627851a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759438"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590074"
 ---
 # <a name="what-is-azure-iot-device-and-application-development"></a>Azure IoT デバイスとアプリケーションの開発とは
 
@@ -73,6 +73,5 @@ Azure IoT デバイスまたはサービス SDK の選択方法の詳細につ�
 アプリケーション プラットフォームとツールの選択方法の詳細については、「[概要: Azure IoT デバイス開発者向けの接続オプション](concepts-overview-connection-options.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-次のクイックスタート シリーズのうち、自分の開発上の役割に最も関係の深いものを選択します。 これらの記事には、デバイスをホストする Azure IoT アプリケーションの作成、SDK の使用、デバイスの接続、テレメトリの送信について、基本事項が示されています。  
-- デバイス アプリケーション開発の場合: [デバイスから Azure IoT Central へのテレメトリの送信に関するクイックスタート](quickstart-send-telemetry-central.md)
-- 組み込みデバイス開発の場合: 「[Azure IoT 組み込みデバイス開発の概要](quickstart-device-development.md)」
+組み込み開発またはアプリケーション開発のクイックスタート シリーズの中から、自分の開発上の役割に最も関係の深いものを選択します。 これらの記事には、デバイスをホストする Azure IoT アプリケーションの作成、SDK の使用、デバイスの接続、テレメトリの送信について、基本事項が示されています。  
+- [Azure IoT デバイスの開発](index.yml)

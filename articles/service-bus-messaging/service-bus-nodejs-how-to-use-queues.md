@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: d2c861757b72f630f88d62ba50723ed1b6fc25ed
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fb84dd12dd8e7a5b60d77e7a4895ae5b5d67cde6
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462354"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652274"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Azure Service Bus キューとの間でメッセージを送受信する (JavaScript)
 このチュートリアルでは、JavaScript プログラムの [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して、Service Bus キューとの間でメッセージを送受信する方法について説明します。
@@ -37,7 +37,7 @@ npm install @azure/service-bus
 次のサンプル コードは、キューにメッセージを送信する方法を示しています。
 
 1. [Visual Studio Code](https://code.visualstudio.com/) など、お好みのエディターを開きます。
-2. `send.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードによって、キューにメッセージが送信されます。 メッセージには、ラベル (Scientist) と本文 (Einstein) が含まれています。
+2. `send.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードは、科学者の名前をメッセージとしてキューに送信します。
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus");
@@ -208,6 +208,6 @@ Azure portal の Service Bus 名前空間の **[概要]** ページで、**受�
 次のドキュメントおよびサンプルを参照してください。 
 
 - [JavaScript 用の Azure Service Bus クライアント ライブラリ](https://www.npmjs.com/package/@azure/service-bus)
-- [JavaScript のサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [TypeScript のサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [JavaScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/v7/javascript)
+- [TypeScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/v7/typescript)
 - [API リファレンス ドキュメント](/javascript/api/overview/azure/service-bus)

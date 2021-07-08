@@ -7,12 +7,12 @@ ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2ad3ab8c39d9f9a29e74bd139fb5ddd1e5faeff9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 563d8f3035eb889a2b9d25d563ef57373e4e3aff
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755162"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537176"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -183,7 +183,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 :::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="AWS オプションを示す資産インベントリ ページのリソースの種類のフィルター"::: 
 
 
-## <a name="aws-in-security-center-faq"></a>Security Center の AWS に関する FAQ
+## <a name="faq---aws-in-security-center"></a>Security Center の AWS に関する FAQ
 
 ### <a name="what-operating-systems-for-my-ec2-instances-are-supported"></a>自身の EC2 インスタンスのではどのオペレーティングシステムがサポートされていますか?
 
