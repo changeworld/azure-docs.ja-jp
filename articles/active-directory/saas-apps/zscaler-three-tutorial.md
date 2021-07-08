@@ -9,42 +9,42 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 089a47632fe173edd233545ff096ff5226c02511
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: d30b4e60ef93b8dccc7e9ed4966eeb7d9570df43
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803190"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096993"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zscaler Three の統合
 
 このチュートリアルでは、Zscaler Three と Azure Active Directory (Azure AD) を統合する方法について説明します。 Zscaler Three を Azure AD に統合すると、次のことができます。
 
-- Zscaler Three にアクセスするユーザーを Azure AD で制御する。
-- ユーザーが自分の Azure AD アカウントで Zscaler Three に自動的にサインインできるようにする。
-- 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
+* Zscaler Three にアクセスするユーザーを Azure AD で制御する。
+* ユーザーが自分の Azure AD アカウントで Zscaler Three に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
 
-- Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-- Zscaler Three でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Zscaler Three でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-- Zscaler Three では、**SP** によって開始される SSO がサポートされます
+* Zscaler Three では、**SP** によって開始される SSO がサポートされます。
 
-- Zscaler Three では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Zscaler Three では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-zscaler-three-from-the-gallery"></a>ギャラリーからの Zscaler Three の追加
+## <a name="add-zscaler-three-from-the-gallery"></a>ギャラリーから Zscaler Three を追加する
 
 Azure AD への Zscaler Three の統合を構成するには、管理対象の SaaS アプリ一覧に Zscaler Three をギャラリーから追加する必要があります。
 
@@ -80,7 +80,7 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-   **[サインオン URL]** テキスト ボックスに URL として「`https://login.zscalerthree.net/sfc_sso`」と入力します。
+   **[サインオン URL]** テキスト ボックスに、URL として「`https://login.zscalerthree.net/sfc_sso`」と入力します。
 
 1. Zscaler Three アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -121,17 +121,11 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で、 **[Zscaler Three]** を選択します。
-1. **[ユーザーとグループ]** ダイアログの一覧から **[Britta Simon]** などのユーザーを選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-   ![[ユーザーとグループ] ダイアログ ボックスを示すスクリーンショット。ここでユーザーを選択できます。](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
-
-1. **[ロールの選択]** ダイアログで、一覧から適切なユーザー ロールを選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-   ![[ロールの選択] ダイアログ ボックスを示すスクリーンショット。ここでユーザー ロールを選択できます。](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
-
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンを選択します。
-
-   ![[割り当ての追加] ダイアログ ボックスを示すスクリーンショット。ここで [割り当て] を選択できます。](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-zscaler-three-sso"></a>Zscaler Three の SSO の構成
 
@@ -147,7 +141,7 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 
 4. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
 
-   ![Zscaler One サイトのスクリーンショット。説明されている手順が示されています。](./media/zscaler-three-tutorial/ic800206.png "管理")
+   ![Zscaler One サイトのスクリーンショット。説明されている手順が示されています。](./media/zscaler-three-tutorial/settings.png "管理")
 
    a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
 
@@ -155,7 +149,7 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 
 5. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。
 
-   ![ユーザーと認証の管理](./media/zscaler-three-tutorial/ic800208.png "[ユーザーと認証の管理]")
+   ![ユーザーと認証の管理](./media/zscaler-three-tutorial/authentication.png "[ユーザーと認証の管理]")
 
    a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** を貼り付けます。
 
@@ -175,9 +169,9 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 
 6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
-   ![[Activate]\(アクティブ化\) が選択された [Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。](./media/zscaler-three-tutorial/ic800207.png)
+   ![[Activate]\(アクティブ化\) が選択された [Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。](./media/zscaler-three-tutorial/user.png)
 
-   a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
+   a. 左下付近の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
    b. **[アクティブ化]** をクリックします。
 
@@ -189,17 +183,17 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 
 2. **[ツール]** メニューの **[インターネット オプション]** を選択し、 **[インターネット オプション]** ダイアログを開きます。
 
-   ![[インターネット オプション]](./media/zscaler-three-tutorial/ic769492.png "[インターネット オプション]")
+   ![[インターネット オプション]](./media/zscaler-three-tutorial/tools.png "[インターネット オプション]")
 
 3. **[接続]** タブをクリックします。
 
-   ![接続](./media/zscaler-three-tutorial/ic769493.png "接続")
+   ![接続](./media/zscaler-three-tutorial/setup.png "接続")
 
 4. **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
 
 5. [プロキシ サーバー] セクションで、次の手順を実行します。
 
-   ![[プロキシ サーバー]](./media/zscaler-three-tutorial/ic769494.png "プロキシ サーバー")
+   ![[プロキシ サーバー]](./media/zscaler-three-tutorial/server.png "プロキシ サーバー")
 
    a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
@@ -222,13 +216,13 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler Three のサインオン URL にリダイレクトされます。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler Three のサインオン URL にリダイレクトされます。 
 
-- Zscaler Three のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Zscaler Three のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Three] タイルをクリックすると、Zscaler Three のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Three] タイルをクリックすると、Zscaler Three のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

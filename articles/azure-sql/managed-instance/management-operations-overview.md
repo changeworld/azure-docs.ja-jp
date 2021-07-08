@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance 管理操作の所要時間とベスト プラクティスについて説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
 author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
-ms.date: 07/10/2020
-ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.date: 06/08/2021
+ms.openlocfilehash: 9a4df35d102b3304a65ad7c9a5c750bd70d3d64c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285286"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745855"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -125,7 +125,7 @@ SQL Managed Instance は、**更新操作中の利用が可能です**。ただ�
 |古い SQL インスタンスのクリーンアップ |古い SQL プロセスが仮想クラスターから削除されます。 |
 
 > [!NOTE]
-> インスタンスをスケーリングすると、未使用キャパシティの解放と、場合によってはキャパシティの最適化プロセスが、基盤となる仮想クラスターに適用され、作成操作にもスケーリング操作にも参加しなかったインスタンスに影響が生じることがあります。 
+> インスタンスのスケーリングが完了すると、未使用キャパシティの解放と、場合によってはキャパシティの最適化プロセスが、基盤となる仮想クラスターに適用されます。これはスケーリング操作に参加しなかった同じサブネットのインスタンスに影響を与え、フェイルオーバーを引き起こす可能性があります。 
 
 
 ## <a name="management-operations-cross-impact"></a>管理操作の相互影響

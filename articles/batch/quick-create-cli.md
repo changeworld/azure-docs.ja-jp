@@ -2,14 +2,14 @@
 title: クイックスタート - Azure CLI で最初の Batch ジョブを実行する
 description: このクイックスタートでは、Azure CLI で Batch アカウントを作成し、Batch ジョブを実行する方法を示します。
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 05/25/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8d3005233320a7ba0d00f186944a0a8c0c456647
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: eba9bf9fd290c4483fc9caa0efa4f05adbeb08ef
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765307"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476143"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する
 
@@ -72,7 +72,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>コンピューティング ノードのプールの作成
 
-Batch アカウントが用意できたら、[az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) コマンドを使用して、Linux コンピューティング ノードのサンプル プールを作成します。 次の例では、Ubuntu 16.04 LTS を実行している *Standard_A1_v2* サイズの 2 つのノードで構成される、*mypool* という名前のプールを作成します。 推奨されるノード サイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
+Batch アカウントが用意できたら、[az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) コマンドを使用して、Linux コンピューティング ノードのサンプル プールを作成します。 次の例では、Ubuntu 16.04 LTS を実行している 2 つの *Standard_A1_v2* ノードで構成される、*mypool* という名前のプールを作成します。 推奨されるノード サイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
  
 ```azurecli-interactive
 az batch pool create \
@@ -103,9 +103,9 @@ az batch job create \
 
 ## <a name="create-tasks"></a>タスクの作成
 
-ここで、[az batch task create](/cli/azure/batch/task#az_batch_task_create) コマンドを使用して、ジョブで実行するいくつかのタスクを作成します。 この例では、同じタスクを 4 つ作成します。 各タスクで `command-line` を実行してコンピューティング ノードで Batch 環境変数を表示した後、90 秒待ちます。 Batch を使用する場合、このコマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
+ここで、[az batch task create](/cli/azure/batch/task#az_batch_task_create) コマンドを使用して、ジョブで実行するいくつかのタスクを作成します。 この例では、同じタスクを 4 つ作成します。 各タスクで `command-line` を実行してコンピューティング ノードで Batch 環境変数を表示した後、90 秒待ちます。 Batch を使用する場合、このコマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトを計算ノードにデプロイする複数の方法が用意されています。
 
-次の Bash スクリプトでは、4 つの並列タスク (*mytask1* - *mytask4*) を作成します。
+次の Bash スクリプトでは、4 つの並列タスク (*mytask1* から *mytask4*) を作成します。
 
 ```azurecli-interactive
 for i in {1..4}

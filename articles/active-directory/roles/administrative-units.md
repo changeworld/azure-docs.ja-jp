@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f2c290c69fcadd594d6cbd5879e7d9f5304a42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7071d180efe9f7da088f30106c879fd10ed9051
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558017"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087114"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory の管理単位
 
@@ -40,7 +40,7 @@ ms.locfileid: "102558017"
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
-管理単位を使用するには、各管理単位の管理者に Azure Active Directory Premium ライセンスが必要です。また、管理単位のメンバーに Azure Active Directory Free ライセンスが必要です。 詳細については、「 [Azure AD Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
+管理単位を使用するには、各管理単位の管理者に Azure AD Premium P1 ライセンスが必要です。また、管理単位のメンバーに Azure AD Free ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
 
 ## <a name="manage-administrative-units"></a>管理単位の管理
 
@@ -64,7 +64,7 @@ ms.locfileid: "102558017"
 
 ## <a name="currently-supported-scenarios"></a>現在サポートされているシナリオ
 
-グローバル管理者または特権ロール管理者は、Azure AD ポータルを使用して、次のことを行うことができます。
+グローバル管理者または特権ロール管理者は、Azure portal を使用して、次のことを行うことができます。
 
 - 管理単位を管理する
 - 管理単位にユーザーとグループをメンバーとして追加する
@@ -79,7 +79,7 @@ ms.locfileid: "102558017"
 
 ### <a name="administrative-unit-management"></a>管理単位管理
 
-| アクセス許可 |   Graph および PowerShell   | Azure AD ポータル | Microsoft 365 管理センター |
+| アクセス許可 |   Graph および PowerShell   | Azure portal | Microsoft 365 管理センター |
 | --- | --- | --- | --- |
 | 管理単位の作成と削除   |    サポートされています    |   サポートされています   |    サポートされていません |
 | 管理単位のメンバーの個別の追加および削除    |   サポートされています    |   サポートされています   |    サポートされていません |
@@ -89,7 +89,7 @@ ms.locfileid: "102558017"
 
 ### <a name="user-management"></a>[ユーザー管理]
 
-| アクセス許可 |   Graph および PowerShell   | Azure AD ポータル | Microsoft 365 管理センター |
+| アクセス許可 |   Graph および PowerShell   | Azure portal | Microsoft 365 管理センター |
 | --- | --- | --- | --- |
 | ユーザー プロパティ、パスワード、およびライセンスに対する、管理単位スコープでの管理   |    サポートされています     |  サポートされています   |   サポートされています |
 | ユーザー サインインに対する、管理単位スコープでのブロックとブロック解除    |   サポートされています   |    サポートされています   |    サポートされています |
@@ -97,12 +97,12 @@ ms.locfileid: "102558017"
 
 ### <a name="group-management"></a>グループ管理
 
-| アクセス許可 |   Graph および PowerShell   | Azure AD ポータル | Microsoft 365 管理センター |
+| アクセス許可 |   Graph および PowerShell   | Azure portal | Microsoft 365 管理センター |
 | --- | --- | --- | --- |
 | グループ プロパティおよびメンバーの管理単位スコープでの管理     |  サポートされています   |    サポートされています    |  サポートされていません |
 | グループ ライセンスに対する、管理単位スコープでの管理   |    サポートされています  |    サポートされています   |   サポートされていません |
 
-管理単位では、管理アクセス許可にのみスコープが適用されます。 メンバーまたは管理者が[既定のユーザー アクセス許可](../fundamentals/users-default-permissions.md)を使用して管理単位外の他のユーザー、グループ、またはリソースを参照するのを妨げられることはありません。 Microsoft 365 管理センターでは、スコープ管理者の管理単位外のユーザーは除外されます。ただし、Azure AD ポータル、PowerShell、およびその他の Microsoft サービスで他のユーザーを参照することはできます。
+管理単位では、管理アクセス許可にのみスコープが適用されます。 メンバーまたは管理者が[既定のユーザー アクセス許可](../fundamentals/users-default-permissions.md)を使用して管理単位外の他のユーザー、グループ、またはリソースを参照するのを妨げられることはありません。 Microsoft 365 管理センターでは、スコープ管理者の管理単位外のユーザーは除外されます。ただし、Azure portal、PowerShell、およびその他の Microsoft サービスで他のユーザーを参照することはできます。
 
 ## <a name="next-steps"></a>次のステップ
 

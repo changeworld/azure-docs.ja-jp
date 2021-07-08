@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e32c5f02191e4bd60ad4334884df34ce0bc0537
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100008385"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537455"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続
 
@@ -134,7 +134,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="GCP オプションを示す資産インベントリ ページのリソースの種類のフィルター"::: 
 
 
-## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続に関する FAQ
+## <a name="faq---connecting-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続に関する FAQ
 
 ### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>複数の GCP 組織を Security Center に接続できますか?
 はい。 Security Center の GCP コネクタは、"*組織*" レベルで Google Cloud リソースを接続します。 

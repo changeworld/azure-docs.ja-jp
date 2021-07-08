@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/04/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: b1cff29834f60e11818324a94624e0e6dd0ee43e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 70fc2edbf9ae342f91913f0345db3bb1ac0332a3
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100387"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592638"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>クイックスタート: デバイスから Azure IoT Hub にテレメトリを送信する
 
@@ -85,9 +85,9 @@ ms.locfileid: "110100387"
 
 このクイックスタートでは、クラウドに対してデバイスを安全に接続し、device-to-cloud テレメトリを送信するための Azure IoT アプリケーションの基本的なワークフローについて説明しました。 Azure CLI を使用して、Azure IoT ハブとデバイス インスタンスを作成しました。 次に、Azure IoT device SDK を使用して、シミュレートされたデバイスを作成し、ハブに接続して、テレメトリを送信しました。 さらに、Azure portal を使用して、テレメトリを監視しました。
 
-次の手順では、次の記事を参照して、Azure IoT を使用してデバイス ソリューションを構築する方法について確認します。 
+次のステップでは、次のクイックスタート シリーズを参照して、Azure IoT を使用してデバイス ソリューションを構築する方法について確認します。
 
 > [!div class="nextstepaction"]
 > [テレメトリを IoT Central に送信する](quickstart-send-telemetry-central.md)
 > [!div class="nextstepaction"]
-> [埋め込み開発の概要](quickstart-device-development.md)
+> [クイックスタート: MXCHIP AZ3166 Devkit を IoT Central に接続する](quickstart-devkit-mxchip-az3166.md)

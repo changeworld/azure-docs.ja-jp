@@ -6,19 +6,19 @@ ms.author: sidram
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/22/2020
-ms.openlocfilehash: 9939130782594c03a497d98ce6cd9b33b28eadec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/20/2021
+ms.openlocfilehash: 1741c48d98e18053bbb87f46f0223a3fd12d6091
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718405"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476597"
 ---
 # <a name="create-and-delete-managed-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics クラスターでマネージド プライベート エンドポイントを作成および削除する
 
 クラスターで実行されている Azure Stream Analytics ジョブを接続して、ファイアウォールまたは Azure Virtual Network (VNet) の内側にあるリソースの入力と出力を行うことができます。 最初に、Stream Analytics クラスター内のリソース (Azure Event Hub、Azure SQL Database など) 用のマネージド プライベート エンドポイントを作成します。 次に、入力または出力からのプライベート エンドポイント接続を承認します。
 
-接続を承認すると、Stream Analytics クラスターで実行されているすべてのジョブが、プライベート エンドポイント経由でリソースにアクセスできるようになります。 この記事では、Stream Analytics クラスターでプライベート エンドポイントを作成および削除する方法を説明します。 Azure SQL Database、Azure Storage、Azure Data Lake Storage Gen2、Azure Event Hubs、Azure Service Bus のプライベート エンドポイントを作成できます。 他のサービスのプライベート エンドポイントは、間もなく追加される予定です。 
+接続を承認すると、Stream Analytics クラスターで実行されているすべてのジョブが、プライベート エンドポイント経由でリソースにアクセスできるようになります。 この記事では、Stream Analytics クラスターでプライベート エンドポイントを作成および削除する方法を説明します。 Azure SQL Database、Azure Synapse SQL Database、Azure Cosmos DB、Azure Storage、Azure Data Lake Storage Gen2、Azure Event Hubs、Azure IoT Hubs、Azure Service Bus のプライベート エンドポイントを作成できます。
 
 ## <a name="create-managed-private-endpoint-in-stream-analytics-cluster"></a>Stream Analytics クラスター内にマネージド プライベート エンドポイントを作成する
 

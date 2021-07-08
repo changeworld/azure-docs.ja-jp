@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: overview
 ms.workload: identity
-ms.date: 05/06/2021
+ms.date: 05/17/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 4428e349277bc8a1482f80620b178b098eb44b2f
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9126b3a915f9d457b51a69a4cef9a79003597c31
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480575"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091138"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC) とは
 
@@ -84,11 +84,17 @@ Azure では、4 つのレベル ([管理グループ](../governance/management-
 
 詳細については、[Azure ロールを割り当てる手順](role-assignments-steps.md)を参照してください。
 
+## <a name="groups"></a>グループ
+
+ロールの割り当ては、グループに対して推移的です。つまり、ユーザーがあるグループのメンバーであり、そのグループがロール割り当てのある別のグループのメンバーである場合、そのユーザーにそのロールの割り当てのアクセス許可が与えられます。
+
+![グループに対するロールの割り当てが推移的である状況を示す図。](./media/overview/rbac-groups-transitive.png)
+
 ## <a name="multiple-role-assignments"></a>複数のロールの割り当て
 
 複数のロールの割り当てが重複しているとどうなるでしょうか。 Azure RBAC は加算方式のモデルであるため、自分で行ったロール割り当ての合計が自分の実際のアクセス許可になります。 ここで、ユーザーにサブスクリプション スコープの共同作成者ロールとリソース グループの閲覧者ロールが付与されている例を考えてみましょう。 共同作成者アクセス許可と閲覧者アクセス許可を足すと、実質的にサブスクリプションの共同作成者ロールになります。 そのため、この場合、閲覧者ロールの割り当ては効果がありません。
 
-![複数のロールの割り当てが重なっている状況を示す図。](./media/overview/rbac-multiple-roles.png)
+![複数のロールの割り当てが重複している状況を示す図。](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>拒否割り当て
 

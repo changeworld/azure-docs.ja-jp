@@ -5,16 +5,16 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 04/28/2021
+ms.date: 05/11/2021
 ms.author: cshoe
-ms.openlocfilehash: 0f572d49867fe9149416664a405309253dd01af2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 179fa0e247b2c875a4d32eac312d240ae768c009
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202941"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190554"
 ---
-# <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>チュートリアル:Jekyll サイトを Azure Static Web Apps プレビューに公開する
+# <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps"></a>チュートリアル:Jekyll サイトを Azure Static Web Apps に公開する
 
 この記事では、[Jekyll](https://jekyllrb.com/) Web アプリケーションを作成して [Azure Static Web Apps](overview.md) にデプロイする方法を説明します。
 
@@ -91,59 +91,49 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 ### <a name="create-the-application"></a>アプリケーションを作成する
 
-1. [Azure Portal](https://portal.azure.com) に移動します。
+1. [Azure Portal](https://portal.azure.com) に移動します
+1. **[リソースの作成]** を選択します
+1. **[Static Web Apps]** を探します
+1. **[Static Web Apps]** を選択します
+1. **[作成]**
+1. _[基本]_ タブで、次の値を入力します。
 
-1. **[リソースの作成]** をクリックします。
+    | プロパティ | 値 |
+    | --- | --- |
+    | _サブスクリプション_ | Azure サブスクリプション名。 |
+    | _リソース グループ_ | **jekyll-static-app**  |
+    | _名前_ | **jekyll-static-app** |
+    | _[プランの種類]_ | **Free** |
+    | _Azure Functions API のリージョンとステージング環境_ | 最も近いリージョンを選択します。 |
+    | _ソース_ | **GitHub** |
 
-1. **Static Web Apps** を検索します。
+1. **[GitHub でサインイン]** を選択し、GitHub で認証します。
 
-1. **[Static Web Apps (プレビュー)]** をクリックします。
+1. 次の GitHub 値を入力します。
 
-1. **Create** をクリックしてください。
+    | プロパティ | 値 |
+    | --- | --- |
+    | _組織_ | 自分の希望する GitHub 組織を選択します。 |
+    | _リポジトリ_ | **[jekyll-static-app]** を選択します。 |
+    | _ブランチ_ | **[main]\(メイン\)** を選択します。 |
 
-1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
+1. _[Build Details]_ セクションで、 _[Build Presets]_ ドロップダウンから **[Custom]** を選択し、既定値をそのままにします。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 _[新しいリソース グループ名]_ に「**jekyll-static-app**」と入力し、 **[OK]** を選択します。
+1. _[App location]\(アプリの場所\)_ ボックスに「 **./** 」と入力します。
 
-1. 次に、 _[名前]_ ボックスに対象のアプリの名前を入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。
+1. _[Api location]\(API の場所\)_ ボックスはからのままにします。
 
-1. _[リージョン]_ で、近くの使用可能なリージョンを選択します。
-
-1. _[SKU]_ で、 **[Free]** を選択します。
-
-1. _[デプロイの詳細]_ で、 _[ソース]_ に **[GitHub]** を選択します。
-
-1. **[GitHub でサインイン]** ボタンをクリックします。
-
-1. リポジトリを作成した **[組織]** を選択します。
-
-1. _[リポジトリ]_ として **jekyll-static-app** を選択します。
-
-1. _[ブランチ]_ では、**main** を選択します。
-
-### <a name="build"></a>Build
-
-次に、ビルド プロセスがアプリのビルドに使用する構成設定を追加します。 次の設定では、GitHub アクション ワークフロー ファイルが構成されます。
-
-1. _[ビルドのプリセット]_ で **[カスタム]** を選択します。
-
-1. _[App location]\(アプリの場所\)_ を「 **/** 」に設定します。
-
-1. _[出力場所]_ を **[_site]** に設定します。
-
-   この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
-
-   :::image type="content" source="./media/publish-jekyll/github-actions-inputs.png" alt-text="GitHub Actions の入力":::
+1. _[Output location]\(出力の場所\)_ ボックスに、「 **_site**」と入力します。
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
-1. **[確認および作成]** ボタンをクリックして、詳細がすべて正しいことを確認します。
+1. **[確認および作成]** ボタンを選択して、詳細がすべて正しいことを確認します。
 
-1. **[作成]** をクリックして、Azure Static Web Apps の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
+1. **[作成]** を選択して、App Service Static Web App の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
 
-1. GitHub アクションが完了するのを待ちます。
+1. デプロイが完了したら、 **[リソースに移動]** をクリックします。
 
-1. Azure portal で新しく作成された Azure Static Web Apps リソースの _[概要]_ ウィンドウに移動し、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。
+1. リソース画面で、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。 GitHub アクションが完了するまで 1 - 2 分かかることがあります。
 
    :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="デプロイされたアプリケーション":::
 
@@ -156,7 +146,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 ```yaml
 - name: Build And Deploy
    id: builddeploy
-   uses: Azure/static-web-apps-deploy@v0.0.1-preview
+   uses: Azure/static-web-apps-deploy@v1
    with:
       azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
       repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
@@ -165,7 +155,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
       # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
       app_location: "/" # App source code path
       api_location: "" # Api source code path - optional
-      output_location: "_site_" # Built app content directory - optional
+      output_location: "_site" # Built app content directory - optional
       ###### End of Repository/Build Configurations ######
    env:
       JEKYLL_ENV: production
