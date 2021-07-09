@@ -11,10 +11,12 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: サインイン レポートのダウンロード
-      href: quickstart-download-sign-in-report.md
-    - name: 監査レポートのダウンロード
-      href: quickstart-download-audit-report.md
+    - name: 監査ログのフィルター処理
+      href: quickstart-filter-audit-log.md
+    - name: サインインの分析
+      href: quickstart-analyze-sign-in.md
+    - name: Graph API を使用したログへのアクセス
+      href: quickstart-access-log-with-graph-api.md
     - name: ストレージ アカウントへのログのルーティング
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: チュートリアル

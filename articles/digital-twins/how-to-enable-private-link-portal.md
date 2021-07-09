@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 68c76c92f37ae424bd7e8bc85557e6c204ba742e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6243fce7ad7f83b747e678a25eb20aaea7a4cf76
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734203"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616208"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>Private Link を使用してプライベート アクセスを有効にする (プレビュー):Azure portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "108734203"
 
 ## <a name="prerequisites"></a>前提条件
 
-プライベート エンドポイントをセットアップする前に、エンドポイントをデプロイできる [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)  が必要です。 VNet がまだない場合は、Azure Virtual Network のいずれかの[クイックスタート](../virtual-network/quick-create-portal.md)に従って、これを設定できます。
+プライベート エンドポイントをセットアップする前に、エンドポイントをデプロイできる [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)  が必要です。 VNet がまだない場合は、[Azure Virtual Network のいずれかのクイックスタート](../virtual-network/quick-create-portal.md)に従って、これを設定できます。
 
 ## <a name="add-a-private-endpoint-for-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンス用のプライベート エンドポイントを追加する 
 
@@ -51,7 +51,7 @@ Private Link のオプションは、インスタンスのセットアップの 
 
 これによって追加される **[プライベート エンドポイント接続]** というセクションで、プライベート エンドポイントの詳細を構成できます。 **[+ 追加]** ボタンをクリックして続けます。
 
-:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-1.png" alt-text="Azure Digital Twins の [リソースの作成] ダイアログの [ネットワーク] タブが表示されている Azure portal のスクリーンショット。タブ名、[接続方法] の [プライベート エンドポイント] オプション、新しいプライベート エンドポイント接続を作成するための [+ 追加] ボタンが強調して示されています。" lightbox="media/how-to-enable-private-link/create-instance-networking-1.png":::
+:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-1.png" alt-text="新しい Azure Digital Twins インスタンスの [ネットワーク] タブを示す Azure portal のスクリーンショット。プライベート エンドポイントを作成する方法が強調表示されています。[追加] ボタンが強調表示されています。" lightbox="media/how-to-enable-private-link/create-instance-networking-1.png":::
 
 これにより、新しいプライベート エンドポイントの詳細を入力するページが開きます。
 
@@ -65,9 +65,9 @@ Private Link のオプションは、インスタンスのセットアップの 
 
 構成オプションを設定した後、 **[OK]** を選択して完了します。
 
-これにより、Azure Digital Twins インスタンスのセットアップの **[ネットワーク]** タブに戻ります。そこの [プライベート エンドポイント接続] の下に、新しいエンドポイントが表示されているはずです。
+これにより、Azure Digital Twins インスタンスのセットアップの **[ネットワーク]** タブに戻ります。そこの **[プライベート エンドポイント接続]** の下に、新しいエンドポイントが表示されているはずです。
 
-:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-2.png" alt-text="Azure Digital Twins の [リソースの作成] ダイアログの [ネットワーク] タブが表示されている Azure portal のスクリーンショット。新しいプライベート エンドポイント接続とナビゲーション ボタンが強調して示されています ([確認および作成]、[前へ]、[次: 詳細])。" lightbox="media/how-to-enable-private-link/create-instance-networking-2.png":::
+:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-2.png" alt-text="新しく作成されたプライベート エンドポイントがある Azure Digital Twins の [ネットワーク] タブが表示されている Azure portal のスクリーンショット。" lightbox="media/how-to-enable-private-link/create-instance-networking-2.png":::
 
 その後、下部にあるナビゲーション ボタンを使用して、インスタンスの残りのセットアップを続けることができます。
 
@@ -83,7 +83,7 @@ Private Link のオプションは、インスタンスのセットアップの 
 
 1. **[+ プライベート エンドポイント]** を選択して、 **[プライベート エンドポイントの作成]** の設定を開きます。
 
-    :::image type="content" source="media/how-to-enable-private-link/add-endpoint-digital-twins.png" alt-text="Azure Digital Twins インスタンスの [Networking (preview)]\(ネットワーク (プレビュー)\) ページが表示されている Azure portal のスクリーンショット。[プライベート エンドポイント接続] タブが強調表示され、[+ プライベート エンドポイント] ボタンも強調表示されています。" lightbox="media/how-to-enable-private-link/add-endpoint-digital-twins.png":::
+    :::image type="content" source="media/how-to-enable-private-link/add-endpoint-digital-twins.png" alt-text="既存の Azure Digital Twins インスタンスの [ネットワーク] ページが表示されている Azure portal のスクリーンショット。プライベート エンドポイントの作成方法が強調表示されています。" lightbox="media/how-to-enable-private-link/add-endpoint-digital-twins.png":::
 
 1.  **[基本]**  タブで、プロジェクトの **[サブスクリプション]** と **[リソース グループ]** 、およびエンドポイントの **[名前]** と **[リージョン]** を入力または選択します。 リージョンは、使用している VNet のリージョンと同じにする必要があります。
 
@@ -137,7 +137,7 @@ Azure Digital Twins インスタンスの構成によって、すべてのパブ
 
     :::row:::
         :::column:::
-            :::image type="content" source="media/how-to-enable-private-link/network-flag-portal.png" alt-text="Azure Digital Twins インスタンスの [Networking (preview)]\(ネットワーク (プレビュー)\) ページが表示されている Azure portal のスクリーンショット。[パブリック アクセス] タブが強調表示され、パブリック ネットワーク アクセスを許可するかどうかを選択するオプションも強調表示されています。" lightbox="media/how-to-enable-private-link/network-flag-portal.png":::
+            :::image type="content" source="media/how-to-enable-private-link/network-flag-portal.png" alt-text="Azure Digital Twins インスタンスの [ネットワーク] ページが表示されている Azure portal のスクリーンショット。パブリック アクセスの切り替え方法が強調表示されています。" lightbox="media/how-to-enable-private-link/network-flag-portal.png":::
         :::column-end:::
         :::column:::
         :::column-end:::

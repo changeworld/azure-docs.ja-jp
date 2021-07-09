@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 8884dce5fed3b5c5125f0169521429658b80a7e9
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 0cbd7415f3b6f79a6c7231c7caa7ed947b9bdc24
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108333418"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110164141"
 ---
 Python 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -23,7 +23,7 @@ Python 用 Anomaly Detector (多変量) クライアント ライブラリは、
 * 個々の時系列では得られる情報が少なく、すべての信号に着目して問題を検出する必要がある。
 * システム正常性をさまざまな側面から測定する数十個から数百個にのぼる各種センサーを使用して高価な物理資産の予測メンテナンスを行う。
 
-[ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [サンプル コード](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py) | [Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
+[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [サンプル コード](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,6 +36,15 @@ Python 用 Anomaly Detector (多変量) クライアント ライブラリは、
 
 
 ## <a name="setting-up"></a>設定
+
+### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
+
+Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
+
+```console
+pip install pandas
+pip install --upgrade azure-ai-anomalydetector
+```
 
 ### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
 
@@ -52,20 +61,17 @@ from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import HttpResponseError
 ```
 
-環境変数としてのキー、時系列データ ファイルへのパス、およびサブスクリプションの Azure の場所の変数を作成します。 たとえば、「 `westus2` 」のように入力します。
+環境変数としてのキー、時系列データ ファイルへのパス、およびサブスクリプションの Azure の場所の変数を作成します。 
+
+> [!NOTE]
+> 常に、2 つのキーのいずれかを使用できます。 これは、セキュリティ保護されたキーのローテーションを可能にするためです。 このクイックスタートでは、1 番目のキーを使用します。 
 
 ```python
 subscription_key = "ANOMALY_DETECTOR_KEY"
 anomaly_detector_endpoint = "ANOMALY_DETECTOR_ENDPOINT"
 ```
 
-### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
-Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
-
-```console
-pip install --upgrade azure-ai-anomalydetector
-```
 
 ## <a name="code-examples"></a>コード例
 
@@ -95,6 +101,8 @@ Anomaly Detector 多変量 API シリーズを使用するには、最初に独�
 各 CSV ファイルには、モデルのトレーニングに使用する異なる変数に基づいて名前を付ける必要があります。 たとえば、"temperature.csv" や "humidity.csv" などです。 すべての CSV ファイルは、サブフォルダーを使用しないで 1 つの ZIP ファイルに圧縮する必要があります。 ZIP ファイルには任意の名前を付けることができます。 ZIP ファイルは Azure Blob Storage にアップロードする必要があります。 その ZIP ファイルの BLOB SAS (Shared Access Signature) URL を生成したら、それをトレーニングに使用できます。 Azure Blob Storage から SAS URL を生成する方法については、このドキュメントを参照してください。
 
 ```python
+class MultivariateSample():
+
 def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None):
     self.sub_key = subscription_key
     self.end_point = anomaly_detector_endpoint
@@ -105,11 +113,7 @@ def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None
     self.ad_client = AnomalyDetectorClient(AzureKeyCredential(self.sub_key), self.end_point)
     # </client>
 
-    if not data_source:
-        # Datafeed for test only
-        self.data_source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS"
-    else:
-        self.data_source = data_source
+    self.data_source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS"
 ```
 
 ## <a name="train-the-model"></a>モデルをトレーニングする
@@ -187,6 +191,9 @@ def detect(self, model_id, start_time, end_time, max_tryout=500):
 
 ## <a name="export-model"></a>モデルをエクスポートする
 
+> [!NOTE]
+> エクスポート コマンドは、コンテナー化された環境で Anomaly Detector 多変量モデルを実行できるようにするために使用することを目的としています。 現在、これは多変量ではサポートされていませんが、今後サポートが追加される予定です。
+
 モデルをエクスポートしたい場合は、`export_model` を使用します。その際、エクスポートするモデルの ID を渡します。
 
 ```python
@@ -253,4 +260,14 @@ if __name__ == '__main__':
 `python` コマンドとファイル名を使用してアプリケーションを実行します。
 
 
-[!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+
+* [ポータル](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
+## <a name="next-steps"></a>次のステップ
+
+* [Anomaly Detector API とは](../../overview-multivariate.md)
+* [Anomaly Detector API を使用する場合のベスト プラクティス](../../concepts/best-practices-multivariate.md) 

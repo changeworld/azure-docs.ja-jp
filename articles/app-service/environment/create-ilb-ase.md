@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be936bf8799d3e16679cf337e2425543163fe8f3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009553"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063300"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
 
@@ -129,7 +129,7 @@ SCM サイト名をクリックすると、Azure Portal 内の Kudu コンソー
 
 インターネット ベースの CI システム (GitHub や Azure DevOps など) は、ビルド エージェントがインターネットにアクセス可能であり、かつ ILB ASE と同じネットワーク上に存在すれば、引き続き機能します。 したがって、Azure DevOps の場合、ビルド エージェントが ILB ASE と同じ VNET 上に作成されていれば (サブネットは異なっていてもかまいません)、Azure DevOps git からコードをプルして ILB ASE にデプロイできます。 独自のビルド エージェントを作成しない場合は、プル モデルを使用している CI システム (Dropbox など) を使用する必要があります。
 
-ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 このドメインは、アプリの発行プロファイルとアプリのポータル ブレード ( **[概要]**  >  **[要点]** 、 **[プロパティ]** など) に表示されます。 ILB ASE のドメイン サフィックスが " *&lt;ASE 名&gt;.appserviceenvironment.net*" で、アプリの名前が *mytest* である場合、FTP では "*mytest.&lt;ASE 名&gt;.appserviceenvironment.net*" となり、Web デプロイでは *mytest.scm.contoso.net* となります。
+ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 このドメインは、アプリの発行プロファイルとアプリのポータル ブレード ( **[概要]**  >  **[要点]** 、 **[プロパティ]** など) に表示されます。 ILB ASE のドメイン サフィックスが " *&lt;ASE 名&gt;.appserviceenvironment.net*" で、アプリの名前が *mytest* である場合、FTP では "*mytest.&lt;ASE 名&gt;.appserviceenvironment.net*" となり、MSDeploy のデプロイでは *mytest.scm.contoso.net* となります。
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>WAF デバイスを使用して ILB ASE を構成する ##
 

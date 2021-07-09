@@ -7,15 +7,15 @@ metadata:
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
-  author: rayne-wiselman
-  ms.author: raynew
+  author: JYOTHIRMAISURI
+  ms.author: v-jysur
   ms.date: 11/19/2019
-  ms.openlocfilehash: 35dc762e7114664bb39182107e78d0c3778458b3
-  ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+  ms.openlocfilehash: 9fc3c96c9953810e259cbf72159d87a3130bdf66
+  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/15/2021
-  ms.locfileid: "100521579"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112029749"
 landingContent:
 - title: Site Recovery について
   linkLists:

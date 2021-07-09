@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b9833035aa83f739b2edad7cfea9fd6cd959a69
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625034"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032341"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -22,10 +22,10 @@ ms.locfileid: "98625034"
 
 "*建設現場の管理者が、建設区域の境界を出入りする機材を追跡する必要があります。それらの境界を機材が出入りするたびに、メール通知が作業管理者に送信されます。* "
 
-建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次のことを行いました。
+建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
-> * 監視対象の建設現場区域を定義する[ジオフェンシング GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](/rest/api/maps/data/uploadpreview) を使用して、ジオフェンスをポリゴン座標として自分の Azure Maps アカウントにアップロードします。
+> * 監視対象の建設現場区域を定義する[ジオフェンシング GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](/rest/api/maps/data-v2/upload-preview) を使用して、ジオフェンスをポリゴン座標として自分の Azure Maps アカウントにアップロードします。
 > * 機材がジオフェンス領域を出入りしたときにトリガーされ、メール通知を建設現場の作業管理者に送信する 2 つの[ロジック アプリ](../event-grid/handler-webhooks.md#logic-apps)を設定する。
 > * [Azure Event Grid](../event-grid/overview.md) を使用して Azure Maps ジオフェンスの enter イベントと exit イベントをサブスクライブする。 ここでは、2 つのロジック アプリに定義された HTTP エンドポイントを呼び出す Webhook イベントのサブスクリプションを 2 つ設定します。 これらのロジック アプリから、ジオフェンスを出入りする機材に関する適切なメール通知が送信されます。
 > * 機材がジオフェンス領域を出入りしたときに、[Search Geofence Get API](/rest/api/maps/spatial/getgeofence) を使用して通知を受信する。
@@ -42,7 +42,7 @@ ms.locfileid: "98625034"
 このチュートリアルでは、`FeatureCollection` を含んだジオフェンシング GeoJSON データをアップロードします。 `FeatureCollection` には、建設現場内の多角形領域を定義する 2 つのジオフェンスが含まれています。 1 つ目のジオフェンスには、時間の有効期限や制限はありません。 2 つ目のジオフェンスは、照会できる期間が作業時間 (太平洋標準時の午前 9 時から午後 5 時) に限られ、2022 年 1 月 1 日を過ぎると無効となります。 GeoJSON 形式の詳細については、「[ジオフェンシング GeoJSON データ](geofence-geojson.md)」を参照してください。
 
 >[!TIP]
->ジオフェンシング データはいつでも更新することができます。 詳細については、[Data Upload API](/rest/api/maps/data/uploadpreview) に関するページをご覧ください。
+>ジオフェンシング データはいつでも更新することができます。 詳細については、[Data Upload API](/rest/api/maps/data-v2/upload-preview) に関するページをご覧ください。
 
 1. Postman アプリを開きます。 上部にある **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。 コレクションに名前を付け、 **[作成]** を選択します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "98625034"
 3. ビルダー タブで **POST** HTTP メソッドを選択し、次の URL を入力して、ジオフェンシング データを Azure Maps にアップロードします。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```HTTP
-    https://atlas.microsoft.com/mapData/upload?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     URL パス内の `geojson` パラメーターは、アップロードするデータの形式を表します。
@@ -144,42 +144,37 @@ ms.locfileid: "98625034"
    }
    ```
 
-5. **[Send]\(送信\)** を選択し、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Location** キーの値である `status URL` をコピーします。
+5. **[Send]\(送信\)** を選択し、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Operation-Location** キーの値である `status URL` をコピーします。
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
+    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
     ```
 
 6. API 呼び出しの状態を確認するには、`status URL` に対して **GET** HTTP 要求を作成します。 認証のために、プライマリ サブスクリプション キーを URL に追加する必要があります。 **GET** 要求は次の URL のようになります。
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={Subscription-key}
+   https://us.atlas.microsoft.com/mapData/<operationId>?api-version=2.0&subscription-key={Subscription-key}
    ```
 
-7. **GET** HTTP 要求が正常に完了すると、`resourceLocation` が返されます。 `resourceLocation` には、アップロードされたコンテンツの一意の `udid` が格納されます。 このチュートリアルの最後のセクションで Get Geofence API に対するクエリを実行できるように、この `udid` を保存します。 次の手順では任意で、`resourceLocation` URL を使用してこのリソースからメタデータを取得できます。
+7. 要求が正常に完了したら、応答ウィンドウの **[Headers]\(ヘッダー\)** タブを選択します。 **Resource-Location** キーの値である `resource location URL` をコピーします。  `resource location URL` には、アップロードされたデータの一意の識別子 (`udid`) が含まれています。 このチュートリアルの最後のセクションで Get Geofence API に対するクエリを実行できるように、`udid` を保存します。 次の手順では任意で、`resource location URL` を使用してこのリソースからメタデータを取得できます。
 
-      ```json
-      {
-          "status": "Succeeded",
-          "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
-      }
-      ```
+    :::image type="content" source="./media/tutorial-geofence/resource-location-url.png" alt-text="リソースの場所の URL をコピーします。":::
 
-8. コンテンツ メタデータを取得するには、手順 7 で取得した `resourceLocation` URL で **GET** HTTP 要求を作成します。 認証のために、プライマリ サブスクリプション キーを URL に必ず追加します。 **GET** 要求は次の URL のようになります。
+8. コンテンツ メタデータを取得するには、手順 7 で取得した `resource location URL` で **GET** HTTP 要求を作成します。 認証のために、プライマリ サブスクリプション キーを URL に必ず追加します。 **GET** 要求は次の URL のようになります。
 
     ```http
-   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-9. **GET** HTTP 要求が正常に完了すると、手順 7. の `resourceLocation` に指定した `udid` が応答本文に含まれます。 また、今後コンテンツにアクセスしてダウンロードする場所、およびコンテンツに関するその他のメタデータも含まれます。 全体的な応答の例を次に示します。
+9. 要求が正常に完了したら、応答ウィンドウの **[Headers]\(ヘッダー\)** タブを選択します。 メタデータは、次の JSON フラグメントのようになります。
 
     ```json
     {
         "udid": "{udid}",
-        "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
-        "created": "7/15/2020 6:11:43 PM +00:00",
-        "updated": "7/15/2020 6:11:45 PM +00:00",
-        "sizeInBytes": 1962,
+        "location": "https://us.atlas.microsoft.com/mapData/6ebf1ae1-2a66-760b-e28c-b9381fcff335?api-version=2.0",
+        "created": "5/18/2021 8:10:32 PM +00:00",
+        "updated": "5/18/2021 8:10:37 PM +00:00",
+        "sizeInBytes": 946901,
         "uploadStatus": "Completed"
     }
     ```

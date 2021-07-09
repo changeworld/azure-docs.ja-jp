@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Windows Virtual Desktop のドキュメント
+title: Azure Virtual Desktop のドキュメント
 summary: 任意のデバイスに仮想デスクトップ エクスペリエンスとリモート アプリを提供します。 Microsoft 365 と Azure を連携させ、ユーザーに唯一のマルチセッション Windows 10 エクスペリエンス (優れたスケーリングと IT コストの削減) を提供します。
 metadata:
-  title: Windows Virtual Desktop のドキュメント
-  description: Windows Virtual Desktop for Azure は、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
+  title: Azure Virtual Desktop のドキュメント
+  description: Azure 用の Azure Virtual Desktop は、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
@@ -11,44 +11,48 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: 4e0d8bdc1506fc8eb4c6087a6b01011fade3c77f
-  ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+  ms.openlocfilehash: 89123da71dc47d3fb302ab6c82e26baf3df94357
+  ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/06/2021
-  ms.locfileid: "106446793"
+  ms.lasthandoff: 06/09/2021
+  ms.locfileid: "111757627"
 landingContent:
-- title: Windows Virtual Desktop について
+- title: Azure Virtual Desktop について
   linkLists:
   - linkListType: overview
     links:
-    - text: Windows Virtual Desktop とは
+    - text: Azure Virtual Desktop とは
       url: overview.md
-- title: Windows Virtual Desktop の概要
+- title: Azure Virtual Desktop の概要
   linkLists:
   - linkListType: tutorial
     links:
     - text: Azure Marketplace を使用してホスト プールを作成する
       url: create-host-pools-azure-marketplace.md
-    - text: Windows Virtual Desktop のアプリ グループを管理する
+    - text: Azure Virtual Desktop のアプリ グループを管理する
       url: manage-app-groups.md
     - text: サービスの更新プログラムを検証するためのホスト プールを作成する
       url: create-validation-host-pool.md
     - text: サービス アラートを設定する
       url: set-up-service-alerts.md
-- title: Windows Virtual Desktop (クラシック) の概要
+- title: Azure Virtual Desktop (クラシック) の概要
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Windows Virtual Desktop でテナントを作成する
+    - text: Azure Virtual Desktop でテナントを作成する
       url: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
-    - text: Azure Marketplace を使用してホスト プールを作成する
-      url: create-host-pools-azure-marketplace.md
-    - text: Windows Virtual Desktop のアプリ グループを管理する
-      url: manage-app-groups.md
     - text: PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
       url: ./virtual-desktop-fall-2019/create-service-principal-role-powershell.md
-- title: Windows Virtual Desktop に接続する
+    - text: Azure Marketplace を使用してホスト プールを作成する
+      url: ./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md
+    - text: Azure Virtual Desktop のアプリ グループを管理する
+      url: ./virtual-desktop-fall-2019/manage-app-groups-2019.md
+    - text: サービスの更新プログラムを検証するためのホスト プールを作成する
+      url: ./virtual-desktop-fall-2019/create-validation-host-pool-2019.md
+    - text: サービス アラートを設定する
+      url: ./virtual-desktop-fall-2019/set-up-service-alerts-2019.md
+- title: Azure Virtual Desktop へ接続する
   linkLists:
   - linkListType: how-to-guide
     links:

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4ca6989a6c446c543c35d8e35e5e27aefef118c2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ced6f28bb7174bc3510de9025569646210e87782
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205685"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475708"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
@@ -32,7 +32,7 @@ Azure Digital Twins を使用すると、サービス インスタンスのロ�
 
 2. メニューから **[診断設定]** 、 **[診断設定を追加する]** の順に選択します。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが表示されたスクリーンショット" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Azure portal の [診断設定] ページと追加するボタンが表示されたスクリーンショット。" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. 次のページで、以下の値を入力します。
      * **診断設定の名前**:診断設定の名前を付けます。
@@ -53,7 +53,7 @@ Azure Digital Twins を使用すると、サービス インスタンスのロ�
     
 4. 新しい設定を保存します。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="診断設定ページを示すスクリーンショット。ここで、ユーザーは、診断設定の名前を入力し、[カテゴリの詳細] および [宛先の詳細] のチェックボックスをいくつか選択しています。[保存] ボタンが強調表示されています。" lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Azure portal の [診断設定] ページが表示されたスクリーンショット。ここで、ユーザーは診断設定の情報を入力します。" lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
 
 新しい設定は、10 分ほどで有効になります。 その後、インスタンスの **[診断設定]** ページ上の構成されたターゲットにログが表示されます。 
 
@@ -351,14 +351,14 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
 
 2. メニューから **[ログ]** を選択して、ログ クエリ ページを開きます。 ページが開き、 *[クエリ]* というウィンドウが表示されます。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Azure Digital Twins インスタンスの [ログ] ページが示されているスクリーンショット。DigitalTwin API 待機時間やモデル API 待機時間など、さまざまなログ オプションに基づく名前が付けられた構築済みクエリを示す [クエリ] ウィンドウが重なっている。" lightbox="media/troubleshoot-diagnostics/logs.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Azure portal で Azure Digital Twins インスタンスの [ログ] ページが表示されたスクリーンショット。[クエリ] ウィンドウが重ねて表示され、事前構築済みクエリが表示されています。" lightbox="media/troubleshoot-diagnostics/logs.png":::
 
     これらは、さまざまなログ用に記述された構築済みのサンプル クエリです。 クエリの 1 つを選択してクエリ エディターに読み込み、それを実行してインスタンスのこれらのログを確認できます。
 
     また、カスタム クエリ コードを記述したり編集したりできる、クエリ エディター ページに直接移動するために何も実行せずに *[クエリ]* ウィンドウを閉じることもできます。
 
 3. *[クエリ]* ウィンドウを閉じた後、クエリ エディターのメイン ページが表示されます。 ここでは、サンプル クエリのテキストを表示および編集したり、独自のクエリを最初から記述したりすることができます。
-    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Azure Digital Twins インスタンスの [ログ] ページが示されているスクリーンショット。[クエリ] ウィンドウが表示されなくなり、代わりに別のログの一覧、編集可能なクエリ コードを示す編集ペイン、および [クエリの履歴] を示すペインが表示されている。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Azure portal で Azure Digital Twins インスタンスの [ログ] ページが表示されたスクリーンショット。これには、ログ、クエリ コード、クエリ履歴の一覧が含まれます。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
 
     左側のペインでは、 
     - *[テーブル]* タブに、クエリで使用できるさまざまな Azure Digital Twins の [ログ カテゴリ](#log-categories)が表示されています。 

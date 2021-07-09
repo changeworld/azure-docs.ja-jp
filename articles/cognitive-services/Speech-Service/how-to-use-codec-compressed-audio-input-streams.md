@@ -12,16 +12,16 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: db902019b4fb1237c8403c719862d8fca4ba4f28
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 183679eb9c4eb2480736dfb4cec8a343c67d0ed7
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772525"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854497"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Speech SDK でコーデック圧縮オーディオを使用する
+# <a name="use-codec-compressed-audio-input"></a>コーデック圧縮音声入力の使用
 
-Speech Service SDK は、圧縮オーディオ形式を受け入れることができます。 これにより、オーディオが圧縮解除された後、ネットワークを介して生の PCM として Speech Service に送信されます。
+Speech SDK と Speech CLI では、GStreamer を使用して圧縮されたオーディオ形式を受け入れることもできます。 GStreamer によってオーディオの圧縮が解除された後、ネットワークを介して RAW PCM として Speech サービスに送信されます。
 
 プラットフォーム | 言語 | サポートされている GStreamer のバージョン
 | :--- | ---: | :---:
@@ -32,7 +32,7 @@ Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.
 ## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>圧縮されたオーディオ入力に必要な Speech SDK バージョン
 * RHEL 8 と CentOS 8 では、Speech SDK バージョン 1.10.0 以降が必要です
 * Windows では、Speech SDK バージョン 1.11.0 以降が必要です。
-* Windows と Android 上の最新の gstreamer には、Speech SDK バージョン 1.16.0 以降。
+* Windows と Android 上の最新の GStreamer には、Speech SDK バージョン 1.16.0 以降。
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 

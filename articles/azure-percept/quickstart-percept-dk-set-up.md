@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 94c1bc1b5dc61ac30d2adfb1bc42e13128de054d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3bc89555f3526048f2e4876724503d0137f21fbf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105554"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964384"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK を設定し、最初の AI モデルをデプロイする
 
@@ -170,7 +170,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 
 1. **[View your device stream]\(デバイス ストリームの表示\)** をクリックします。 デバイスのビデオ ストリームを表示するのが初めてである場合、新しいモデルがデプロイされているという通知が右上隅に表示されます。 これには数分かかることがあります。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/view-stream.png" alt-text="ビデオ ストリームを表示します。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-1-start-video-stream.png" alt-text="ビデオ ストリームを表示します。":::
 
     モデルがデプロイされると、 **[ストリームを表示します]** リンクを含んだもう 1 つの通知が表示されます。 リンクをクリックすると、Azure Percept Vision カメラからのビデオ ストリームが新しいブラウザー ウィンドウに表示されます。 開発キットには、多くの一般的な物体の物体検出を自動的に実行する AI モデルが事前に読み込まれています。
 
@@ -178,7 +178,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 
 1. Azure Percept Studio には、サンプル AI モデルも数多く備わっています。 開発キットにサンプル モデルをデプロイするためには、デバイス ページに戻って **[サンプル モデルのデプロイ]** をクリックします。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/deploy-sample-model.png" alt-text="事前構築済みモデルについて説明します。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-04-explore-prebuilt.png" alt-text="事前構築済みモデルについて説明します。":::
 
 1. ライブラリからサンプル モデルを選択し、 **[デバイスへのデプロイ]** をクリックします。
 

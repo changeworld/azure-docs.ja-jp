@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: b8c9610ca7043ed6b8baa86e35ea76c74ed75bba
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f434d20a79baf7c0b0210e3eb790b50a153d2d7a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883996"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969028"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -111,14 +111,12 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 
 次のバージョンについては、各アクションが Azure Migrate によって自動的に実行されます。
 
-- Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x (移行中に Azure Linux VM エージェントも自動的にインストールされます)
-- Cent OS 7.7、7.6、7.5、7.4、7.0、6.x (移行中に Azure Linux VM エージェントも自動的にインストールされます)
-- SUSE Linux Enterprise Server 12 SP1+
-- SUSE Linux Enterprise Server 15 SP1
+- Red Hat Enterprise Linux 8、7.9、7.8、7.7、7.6、7.5、7.4、7.0、6.x (移行中に Azure Linux VM エージェントも自動的にインストールされます)
+- Cent OS 8、7.7、7.6、7.5、7.4、6.x (移行中に Azure Linux VM エージェントも自動的にインストールされます)
+- SUSE Linux Enterprise Server 15 SP0、15 SP1、12、11
 - Ubuntu 19.04、19.10、18.04LTS、16.04LTS、14.04LTS (移行中に Azure Linux VM エージェントも自動的にインストールされます)
-- Ubuntu 18.04LTS、16.04LTS
 - Debian 9、8、7
-- Oracle Linux 7.7、7.7-CI
+- Oracle Linux 6、7.7、7.7-CI 
 
 その他のバージョンでは、表に記載された情報に従ってマシンを準備してください。  
 

@@ -1,18 +1,18 @@
 ---
 title: 'チュートリアル:Azure Bastion ホストを作成する:Windows VM: ポータル'
-description: この記事では、Azure Bastion ホストを作成して Windows VM に接続する方法について学習します。
+description: Azure Bastion ホストを作成し、Windows VM に接続する方法について説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
 ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 772cc22a0f8163e0d99599ebf1f4cdfd1ab1d103
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2479b736809bbbe0dc2810b168dada6536ab8f91
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128195"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110540490"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>チュートリアル:Bastion を構成し、ブラウザーを介して Windows VM に接続する
 

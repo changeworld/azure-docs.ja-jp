@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 91a204015f24bafad27a83d7c65be3b7c04807e7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d33dbacc6ea7e0d363c1b2f803f08f4ee1e211a3
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078294"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615952"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Device Provisioning Service (DPS) を使用して Azure Digital Twins でデバイスを自動管理する
 
@@ -31,7 +31,7 @@ ms.locfileid: "110078294"
 
 このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含む **デバイス シミュレーター** も使用します。 デバイス シミュレーターは次の場所にあります: [Azure Digital Twins と IoT Hub の統合のサンプル](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 サンプルのリンクに移動し、タイトルの下にある **[Browse Code]\(コードの参照\)** ボタンを選択して、お使いのマシン上でサンプル プロジェクトを取得します。 これにより、サンプル用の GitHub リポジトリに移動します。 **[Code]\(コード\)** ボタンと、 **[Download ZIP]\(ZIP のダウンロード\)** を選択することによって、.ZIP ファイルとしてダウンロードできます。 
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png" alt-text="GitHub にある digital-twins-iothub-integration リポジトリのスクリーンショット。[Code]\(コード\) ボタンが選択され、生成された小さなダイアログ ボックスで、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png" alt-text="zip としてダウンロードする手順を強調表示した GitHub の digital-twins-iothub-integration リポジトリを示すスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png":::
 
 ダウンロードしたフォルダーを解凍します。
 
@@ -39,21 +39,25 @@ ms.locfileid: "110078294"
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
-次の図は、Azure Digital Twins と Device Provisioning Service を使用したこのソリューションのアーキテクチャを示しています。 これにはデバイスのプロビジョニングと廃止の両方のフローが示されています。
+このソリューションには、デバイス プロビジョニング サービスを使用して、Azure Digital Twins でデバイスをプロビジョニングおよび廃止する手順が含まれています。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/flows.png" alt-text="エンドツーエンドのシナリオでのデバイスと複数の Azure サービスの図。サーモスタット デバイスと DPS との間でデータが送受信されます。データは DPS から IoT Hub にも送信されます。また、&quot;Allocation&quot; というラベルの付いた Azure 関数を通じて Azure Digital Twins にも送信されます。手動の &quot;デバイスの削除&quot; アクションからは、データが IoT Hub > Event Hubs > Azure Functions > Azure Digital Twins の順に送信されます。" lightbox="media/how-to-provision-using-device-provisioning-service/flows.png":::
+ソリューションにデバイスを割り当てるためには、サーモスタット デバイスと DPS の間でデータが流れます。 その後、データは DPS から IoT Hub に流れ、Azure 関数を介して Azure Digital Twins に流れます。
 
-この記事は、次の 2 つのセクションに分かれています。
+デバイスを廃止するためには、手動削除のデバイスからのデータが、IoT Hub、Event Hubs、Azure 関数を介して Azure Digital Twins に流れます。
+
+次の図は、このアーキテクチャを示しています。
+
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/flows.png" alt-text="データ フローが示されたエンドツーエンド シナリオでのデバイスと複数の Azure サービスの図。" lightbox="media/how-to-provision-using-device-provisioning-service/flows.png":::
+
+この記事は、それぞれこの完全なアーキテクチャの一部に焦点を当てた 2 つのセクションに分かれています。
 * [Device Provisioning Service を使用してデバイスを自動プロビジョニングする](#auto-provision-device-using-device-provisioning-service)
 * [IoT Hub ライフサイクル イベントを使用してデバイスを自動的に廃止する](#auto-retire-device-using-iot-hub-lifecycle-events)
-
-アーキテクチャの各ステップの詳細については、この記事で後述する個々のセクションを参照してください。
 
 ## <a name="auto-provision-device-using-device-provisioning-service"></a>Device Provisioning Service を使用してデバイスを自動プロビジョニングする
 
 このセクションでは、Device Provisioning Service を Azure Digital Twins に接続し、以下のパスを使用してデバイスを自動プロビジョニングします。 これは、[先ほど](#solution-architecture)示したアーキテクチャの全体図からの抜粋です。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/provision.png" alt-text="プロビジョニングのフローの図 -- ソリューション アーキテクチャ図の抜粋。フローのセクションが数字でラベル付けされています。サーモスタット デバイスと DPS との間でデータが送受信されます (1 はデバイスから DPS へ、5 は DPS からデバイスへ)。データは DPS から IoT Hub にも送信されます (4)。また、&quot;Allocation&quot; というラベルの付いた Azure 関数 (2) を通じて Azure Digital Twins (3) にも送信されます。" lightbox="media/how-to-provision-using-device-provisioning-service/provision.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/provision.png" alt-text="プロビジョニング フローの図 - サーモスタットから Azure Digital Twins へのデータに続くソリューション アーキテクチャ図の抜粋。" lightbox="media/how-to-provision-using-device-provisioning-service/provision.png":::
 
 プロセス フローの説明は次のとおりです。
 1. デバイスから DPS エンドポイントへの通信によって、同一性を証明する識別情報が渡されます。
@@ -71,15 +75,15 @@ ms.locfileid: "110078294"
 Device Provisioning Service のインスタンスを作成します。これが IoT デバイスのプロビジョニングに使用されます。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[クイック スタート:Azure portal で IoT Hub Device Provisioning Service を設定する](../iot-dps/quick-setup-auto-provision.md)」。
 
 次の Azure CLI コマンドを実行すると、デバイス プロビジョニング サービスが作成されます。 デバイスプロビジョニングサービスの名前、リソースグループ、およびリージョンを指定する必要があります。 デバイス プロビジョニング サービスがサポートされているリージョンを確認するには、「[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)」ページを参照してください。
-このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
+このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、[Azure CLI がマシンにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
 
 ```azurecli-interactive
-az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region>
+az iot dps create --name <Device-Provisioning-Service-name> --resource-group <resource-group-name> --location <region>
 ```
 
 ### <a name="add-a-function-to-use-with-device-provisioning-service"></a>デバイス プロビジョニング サービスで使用する関数を追加する
 
-「[前提条件](#prerequisites)」セクションで作成した関数アプリプロジェクト内で、デバイス プロビジョニング サービスと共に使用する新しい関数を作成します。 この関数は、Device Provisioning Service によって、新しいデバイスをプロビジョニングする[カスタム割り当てポリシー](../iot-dps/how-to-use-custom-allocation-policies.md)内で使用されます。
+[「前提条件」セクション](#prerequisites)で作成した関数アプリ プロジェクト内に、デバイス プロビジョニング サービスと共に使用する新しい関数を作成します。 この関数は、Device Provisioning Service によって、新しいデバイスをプロビジョニングする[カスタム割り当てポリシー](../iot-dps/how-to-use-custom-allocation-policies.md)内で使用されます。
 
 まず、コンピューター上の Visual Studio で 関数アプリのプロジェクトを開き、次の手順に従います。
 
@@ -120,13 +124,13 @@ Visual Studio の関数アプリ プロジェクトに、種類が *HTTP トリ�
 
 詳細を保存してください。                  
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="[カスタム (Azure 関数を使用)] とセクション [デバイスをハブに割り当てる方法を選択してください] および [このグループを割り当てることができる IoT ハブを選択する] で IoT ハブを選択する、カスタム登録グループ詳細のウィンドウのスクリーンショット。また、サブスクリプション、ドロップダウンから関数アプリを選択し、[DpsAdtAllocationFunc] を選択します。" lightbox="media/how-to-provision-using-device-provisioning-service/link-enrollment-group-to-iot-hub-and-function-app.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="Azure portal の [カスタム登録グループの詳細] ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/link-enrollment-group-to-iot-hub-and-function-app.png":::
 
 登録を作成した後、登録の **主キー** は、この記事のデバイス シミュレーターを構成するために後で使用されます。
 
 ### <a name="set-up-the-device-simulator"></a>デバイス シミュレーターの設定
 
-このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含むデバイス シミュレーターを使用します。 デバイス シミュレーターは、「[前提条件](#prerequisites)」セクションでダウンロードした[Azure Digital Twins と IoT Hub の統合のサンプル](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)にあります。
+このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含むデバイス シミュレーターを使用します。 デバイス シミュレーターは、[「前提条件」セクション](#prerequisites)でダウンロードした[Azure Digital Twins と IoT Hub の統合のサンプル](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)にあります。
 
 #### <a name="upload-the-model"></a>モデルのアップロード
 
@@ -148,22 +152,22 @@ npm install
 
 * PROVISIONING_IDSCOPE: この値を取得するには、 [Azure portal](https://portal.azure.com/)でデバイス プロビジョニング サービスに移動し、メニュー オプションの [*概要*] を選択して、フィールド [*ID スコープ*] を探します。
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/id-scope.png" alt-text="[デバイス プロビジョニングの概要] ページの Azure portal ビューのスクリーンショット。 ID スコープ値をコピーします。" lightbox="media/how-to-provision-using-device-provisioning-service/id-scope.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/id-scope.png" alt-text="[デバイス プロビジョニングの概要] ページの Azure portal ビューのスクリーンショット。ID スコープ値が強調表示されています。" lightbox="media/how-to-provision-using-device-provisioning-service/id-scope.png":::
 
 * PROVISIONING_REGISTRATION_ID: デバイスの登録 ID を選択できます。
 * ADT_MODEL_ID: `dtmi:contosocom:DigitalTwins:Thermostat;1`
 * PROVISIONING_SYMMETRIC_KEY: これは、前に設定した登録の主キーです。 この値を再度取得するには、Azure portal で デバイス プロビジョニング サービスに移動し、 *[登録の管理]* を選択してから、前に作成した登録グループを選択して、*主キー* をコピーします。
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/sas-primary-key.png" alt-text="デバイス プロビジョニング サービスの [登録の管理] ページの Azure portal ビューのスクリーンショット。 SAS 主キーの値をコピーします。" lightbox="media/how-to-provision-using-device-provisioning-service/sas-primary-key.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/sas-primary-key.png" alt-text="デバイス プロビジョニング サービスの [登録の管理] ページの Azure portal ビューのスクリーンショット。 SAS 主キーの値が強調表示されています。" lightbox="media/how-to-provision-using-device-provisioning-service/sas-primary-key.png":::
 
 ここで、上記の値を使用して、.env ファイルの設定を更新します。
 
 ```cmd
 PROVISIONING_HOST = "global.azure-devices-provisioning.net"
-PROVISIONING_IDSCOPE = "<Device Provisioning Service Scope ID>"
-PROVISIONING_REGISTRATION_ID = "<Device Registration ID>"
+PROVISIONING_IDSCOPE = "<Device-Provisioning-Service-Scope-ID>"
+PROVISIONING_REGISTRATION_ID = "<Device-Registration-ID>"
 ADT_MODEL_ID = "dtmi:contosocom:DigitalTwins:Thermostat;1"
-PROVISIONING_SYMMETRIC_KEY = "<Device Provisioning Service enrollment primary SAS key>"
+PROVISIONING_SYMMETRIC_KEY = "<Device-Provisioning-Service-enrollment-primary-SAS-key>"
 ```
 
 ファイルを保存して閉じます。
@@ -177,14 +181,14 @@ node .\adt_custom_register.js
 ```
 
 デバイスが登録されて IoT Hub に接続され、メッセージの送信が開始されるのがわかります。
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/output.png" alt-text="デバイスの登録とメッセージの送信を示すコマンド ウィンドウのスクリーンショット" lightbox="media/how-to-provision-using-device-provisioning-service/output.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/output.png" alt-text="デバイスの登録とメッセージの送信を示すコマンド ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/output.png":::
 
 ### <a name="validate"></a>検証
 
-この記事でフローを設定した結果として、デバイスは Azure Digital Twins に自動的に登録されます。 次の [Azure Digital Twins CLI](concepts-cli.md) コマンドを使用して、作成した Azure Digital Twins インスタンス内のデバイスのツインを検索します。
+この記事でフローを設定した結果として、デバイスは Azure Digital Twins に自動的に登録されます。 次の [Azure Digital Twins CLI](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_show) コマンドを使用して、作成した Azure Digital Twins インスタンス内のデバイスのツインを検索します。
 
 ```azurecli-interactive
-az dt twin show --dt-name <Digital Twins instance name> --twin-id "<Device Registration ID>"
+az dt twin show --dt-name <Digital-Twins-instance-name> --twin-id "<Device-Registration-ID>"
 ```
 
 Azure Digital Twins インスタンス内にデバイスのツインがあることを確認します。
@@ -194,7 +198,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 
 このセクションでは、次のパスを使用してデバイスを自動的に廃止するために、IoT Hub ライフサイクル イベントを Azure Digital Twins に接続します。 これは、[先ほど](#solution-architecture)示したアーキテクチャの全体図からの抜粋です。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/retire.png" alt-text="デバイス廃止のフローの図 -- ソリューション アーキテクチャ図の抜粋。フローのセクションが数字でラベル付けされています。この図では、サーモスタット デバイスは Azure サービスに接続していない状態で示されています。手動の &quot;デバイスの削除&quot; アクションからは、データが IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure Digital Twins (3) の順に送信されます。" lightbox="media/how-to-provision-using-device-provisioning-service/retire.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/retire.png" alt-text="デバイス廃止フローの図 -- デバイス削除から Azure Digital Twins へのデータに続くソリューション アーキテクチャ図の抜粋。" lightbox="media/how-to-provision-using-device-provisioning-service/retire.png":::
 
 プロセス フローの説明は次のとおりです。
 1. 外部または手動のプロセスによって、IoT Hub 内のデバイスの削除がトリガーされます。
@@ -210,7 +214,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 「[イベント ハブを作成する](../event-hubs/event-hubs-create.md)」クイックスタートに記載されている手順に従います。 イベントハブに *lifecycleevents* という名前を付けます。 このイベント ハブ名は、次のセクションで IoT Hub ルートと Azure 関数を設定するときに使用します。
 
 次のスクリーンショットは、イベント ハブの作成を示しています。
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/create-event-hub-lifecycle-events.png" alt-text="[Azure portal] ウィンドウのスクリーンショット。 lifecycleevents という名前のイベント ハブを作成します。" lightbox="media/how-to-provision-using-device-provisioning-service/create-event-hub-lifecycle-events.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/create-event-hub-lifecycle-events.png" alt-text="[Azure portal] ウィンドウのスクリーンショット。lifecycleevents という名前のイベント ハブを作成する方法が示されています。" lightbox="media/how-to-provision-using-device-provisioning-service/create-event-hub-lifecycle-events.png":::
 
 #### <a name="create-sas-policy-for-your-event-hub"></a>イベント ハブの SAS ポリシーを作成する
 
@@ -220,25 +224,25 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 2. **[追加]** を選択します。 開いた [*SAS ポリシーの追加*] ウィンドウで、任意のポリシー名を入力し、[*リッスン*] チェックボックスを選択します。
 3. **［作成］** を選択します
     
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png" alt-text="イベント ハブの SAS ポリシーを追加する Azure portal のスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png" alt-text="イベント ハブの SAS ポリシーの追加方法が示されている Azure portal のスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png":::
 
 #### <a name="configure-event-hub-with-function-app"></a>関数アプリを使用してイベント ハブを構成する
 
-次に、「[前提条件](#prerequisites)」セクションで設定した Azure 関数アプリを、新しいイベント ハブで動作するように構成します。 これを行うには、イベント ハブの接続文字列を使用して、関数アプリ内に環境変数を設定します。
+次に、[「前提条件」セクション](#prerequisites)で設定した Azure 関数アプリを、新しいイベント ハブで動作するように構成します。 これを行うには、イベント ハブの接続文字列を使用して、関数アプリ内に環境変数を設定します。
 
 1. 先ほど作成したポリシーを開き、 **[接続文字列-主キー]** の値をコピーします。
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png" alt-text="接続文字列-主キーをコピーする Azure portal のスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png" alt-text="接続文字列-主キーをコピーする方法が示されている Azure portal のスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png":::
 
-2. 次の Azure CLI コマンドを使用して、関数アプリの設定に変数として接続文字列を追加します。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
+2. 次の Azure CLI コマンドを使用して、関数アプリの設定に変数として接続文字列を追加します。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、[Azure CLI がマシンにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
 
     ```azurecli-interactive
-    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" --resource-group <resource group> --name <your App Service (function app) name>
+    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event-Hubs-SAS-connection-string-Listen>" --resource-group <resource-group> --name <your-App-Service-function-app-name>
     ```
 
 ### <a name="add-a-function-to-retire-with-iot-hub-lifecycle-events"></a>IoT Hub ライフサイクル イベントを使用してインベントリから削除する関数を追加する
 
-「[前提条件](#prerequisites)」セクションで作成した関数アプリ プロジェクト内で、IoT Hub ライフサイクル イベントを使用して既存のデバイスをインベントリから削除する新しい関数を作成します。
+[「前提条件」セクション](#prerequisites)で作成した関数アプリ プロジェクト内に、IoT Hub ライフサイクル イベントを使用して既存のデバイスを削除する新しい関数を作成します。
 
 ライフサイクル イベントの詳細については、IoT Hub の「[非テレメトリ イベント](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)」を参照してください。 Azure Functions で Event Hubs を使用する方法の詳細については、"[Azure Functions に対する Azure Event Hubs トリガー](../azure-functions/functions-bindings-event-hubs-trigger.md)" に関するページを参照してください。
 
@@ -248,7 +252,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
      
 Visual Studio の関数アプリ プロジェクトに、*イベント ハブ トリガー* 型の新しい関数を追加します。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png" alt-text="関数アプリ プロジェクトにイベント ハブ トリガー型の Azure 関数を追加する Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png" alt-text="関数アプリ プロジェクトにイベント ハブ トリガー型の Azure 関数を追加する方法が示されている Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png":::
 
 #### <a name="step-2-fill-in-function-code"></a>手順 2: 関数コードを入力する
 
@@ -269,11 +273,11 @@ Visual Studio の関数アプリ プロジェクトに、*イベント ハブ �
 まず、IoT ハブでイベント ハブ エンドポイントを作成する必要があります。 次に、IoT ハブにルートを追加して、ライフサイクルイベントをこのイベント ハブ エンドポイントに送信します。
 イベント ハブ エンドポイントを作成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/)で、「[前提条件](#prerequisites)」セクションで作成した IoT ハブに移動し、左側のメニューオプションで **[メッセージ ルーティング]** を選択します。
+1. [Azure portal](https://portal.azure.com/)で、[「前提条件」セクション](#prerequisites)で作成した IoT ハブに移動し、左側のメニュー オプションで **[メッセージ ルーティング]** を選択します。
 2. **[カスタム エンドポイント]** タブを選択します。
 3. **[+ 追加]** を選択し、 **[イベント ハブ]** を選択して、イベント ハブ型のエンドポイントを追加します。
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png" alt-text="イベント ハブ カスタム エンドポイントを追加するための Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png" alt-text="イベント ハブ カスタム エンドポイントを追加する方法が示されている Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png":::
 
 4. 開いた [*イベント ハブ エンドポイントを追加*] ウィンドウで次の値を選択します。
     * **エンドポイント名**: エンドポイント名を選択します。
@@ -281,13 +285,13 @@ Visual Studio の関数アプリ プロジェクトに、*イベント ハブ �
     * **イベント ハブ インスタンス**: 前の手順で作成したイベント ハブ名を選択します。
 5. **［作成］** を選択します このウィンドウを開いたままにして、次の手順でルートを追加します。
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-event-hub-endpoint.png" alt-text="イベント ハブ エンドポイントを追加するための Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/add-event-hub-endpoint.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-event-hub-endpoint.png" alt-text="イベント ハブ エンドポイントを追加する方法が示されている Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/add-event-hub-endpoint.png":::
 
 次に、前の手順で作成したエンドポイントに接続するルートを追加し、削除イベントを送信するルーティング クエリを追加します。 これらの手順に従って、ルートを作成します。
 
 1. [*ルート*] タブに移動し、 **[追加]** を選択してルートを追加します。
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-message-route.png" alt-text="イベントを送信するためのルートを追加する Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/add-message-route.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-message-route.png" alt-text="イベントを送信するためのルートを追加する方法が示されている Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/add-message-route.png":::
 
 2. 開いた [*ルートの追加*] ページで、次の値を選択します。
 
@@ -298,7 +302,7 @@ Visual Studio の関数アプリ プロジェクトに、*イベント ハブ �
 
 3. **[保存]** を選択します。
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/lifecycle-route.png" alt-text="[Azure portal] ウィンドウのスクリーンショット。ライフサイクル イベントを送信するためのルートを追加します。" lightbox="media/how-to-provision-using-device-provisioning-service/lifecycle-route.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/lifecycle-route.png" alt-text="ライフサイクル イベントを送信するためのルートを追加する方法が示されている Azure portal ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/lifecycle-route.png":::
 
 このフローを終了すると、デバイスを廃止するための、エンドツーエンドのすべてのものが設定されます。
 
@@ -312,14 +316,14 @@ Visual Studio の関数アプリ プロジェクトに、*イベント ハブ �
 2. [この記事の前半](#auto-provision-device-using-device-provisioning-service)で選択したデバイス登録 ID を持つデバイスが表示されます。 または、Azure Digital Twins にツインがある場合は、削除するその他のデバイスを選択して、デバイスが削除された後にツインが自動的に削除されることを確認できます。
 3. デバイスを選択し、 **[削除]** を選択します。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/delete-device-twin.png" alt-text="IoT デバイスからデバイス ツインを削除する Azure portal のスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/delete-device-twin.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/delete-device-twin.png" alt-text="IoT デバイスからデバイス ツインを削除する方法が示されている Azure portal のスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/delete-device-twin.png":::
 
 Azure Digital Twins に反映された変更が表示されるまでに数分かかる場合があります。
 
-次の [Azure Digital Twins CLI](concepts-cli.md) コマンドを使用して、Azure Digital Twins インスタンス内のデバイスのツインが削除されたことを確認します。
+次の [Azure Digital Twins CLI](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_show) コマンドを使用して、Azure Digital Twins インスタンス内のデバイスのツインが削除されたことを確認します。
 
 ```azurecli-interactive
-az dt twin show --dt-name <Digital Twins instance name> --twin-id "<Device Registration ID>"
+az dt twin show --dt-name <Digital-Twins-instance-name> --twin-id "<Device-Registration-ID>"
 ```
 
 デバイスのツインが Azure Digital Twins インスタンス内に見つからなくなったことがわかります。

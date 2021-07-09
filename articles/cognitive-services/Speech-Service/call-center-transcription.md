@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f83948fe0805229c0f01accb9e2b51112da599aa
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021968"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838179"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
 
@@ -103,7 +103,7 @@ Microsoft 社内では以上のテクノロジを利用し、バッチ モード
 
 会話をリアルタイムで文字起こしすることを必要とする企業もあります。 リアルタイムの文字起こしは、センチメント監視のためにキーワードを特定し、会話に関連するコンテンツとリソースの検索をトリガーしたり、アクセシビリティを改善したり、ネイティブ スピーカーではない顧客やエージェントのために翻訳を提供したりする目的で利用できます。
 
-リアルタイムの文字起こしを必要とする場合、[Speech SDK](speech-sdk.md) の利用をお勧めします。 現在のところ、[20 を超える言語](language-support.md)で音声テキスト変換を利用できます。また、この SDK は C++、C#、Java、Python、Node.js、Objective-C、JavaScript で利用できます。 各言語のサンプルが [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) にあります。 最新ニュースや更新情報については、[リリース ノート](releasenotes.md)をご覧ください。
+リアルタイムの文字起こしを必要とする場合、[Speech SDK](speech-sdk.md) の利用をお勧めします。 現在のところ、[20 を超える言語](language-support.md)で音声テキスト変換を利用できます。また、この SDK は C++、C#、Java、Python、JavaScript、Objective-C、Go で利用できます。 各言語のサンプルが [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) にあります。 最新ニュースや更新情報については、[リリース ノート](releasenotes.md)をご覧ください。
 
 次の図に示すように、Microsoft 社内では以上のテクノロジを利用し、Microsoft カスタマー コールをリアルタイムで分析しています。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f8c95fb0af8db0fd975388a9fc6286ef2a5ebf9c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 82c24a38d8b693bb931be75b3be5d3bfaaa2d38f
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079070"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615663"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -42,7 +42,7 @@ Azure Digital Twins インスタンスは、環境のライブ データによ�
 
 ここではまず、Azure Digital Twins インスタンス (図の **セクション A**) を作成します。その後、デジタル ツインへのテレメトリ データ フロー (**矢印 B**) を設定し、さらに、ツイン グラフ全体へのデータの反映 (**矢印 C**) を設定します。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="ビルディング シナリオ全体を表す図。データがデバイスから IoT Hub へと流れ、Azure Functions を経て (矢印 B) Azure Digital Twins インスタンス (セクション A) に到達した後、Event Grid を介して別の Azure Functions に到達して処理 (矢印 C) されるようすを表しています":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="さまざまな Azure サービスを介してデバイスと Azure Digital Twins の間を流れるデータが示された完全なビルディング シナリオの図。":::
 
 このシナリオに取り組むためには、先ほどダウンロードしておいた、あらかじめ作成されたサンプル アプリのコンポーネントとやり取りする必要があります。
 
@@ -57,11 +57,11 @@ Azure Digital Twins インスタンスは、環境のライブ データによ�
 
 まず、サンプル プロジェクトの *AdtSampleApp* ソリューションを使用して、エンド ツー エンド シナリオの Azure Digital Twins 部分 (**セクション A**) を構築します。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="ビルディング シナリオの全体図からセクション A (Azure Digital Twins インスタンス) を抜粋して強調したもの":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="Azure Digital Twins インスタンス セクションが強調表示された、完全なビルディング シナリオからの抜粋図。":::
 
 _**AdtE2ESample**_ プロジェクトが開いている Visual Studio ウィンドウで、ツール バーにあるこのボタンでプロジェクトを実行します。
 
-:::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="Visual Studio のスタート ボタン (SampleClientApp プロジェクト)":::
+:::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="SampleClientApp プロジェクトが開いている、Visual Studio のスタート ボタンのスクリーンショット。":::
 
 コンソール ウィンドウが表示されて認証が行われ、コマンドを待つ状態となります。 このコンソールで、次のコマンドを実行して、サンプル Azure Digital Twins ソリューションをインスタンス化します。
 
@@ -76,7 +76,7 @@ SetupBuildingScenario
 
 それらがリレーションシップを介して接続され、以下の[ツイン グラフ](concepts-twins-graph.md)が形成されます。 ツイン グラフは、エンティティの相互作用や相互関係を含め、環境を全体として表します。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="floor1 に room21 が含まれ、room21 に thermostat67 が含まれていることを示すグラフ" border="false":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="floor1 に room21 が含まれ、room21 に thermostat67 が含まれていることが示された図。" border="false":::
 
 作成されたツインは、次のコマンドを実行し、接続されている Azure Digital Twins インスタンスに、そこに含まれるすべてのデジタル ツインを照会することで確認できます。
 
@@ -85,7 +85,7 @@ Query
 ```
 
 >[!TIP]
-> この簡略化された方法は、_**AdtE2ESample**_ プロジェクトの一部として提供されています。 このサンプル コードのコンテキスト外では、[クエリ API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](concepts-cli.md)を使用して、インスタンス内のすべてのツインに対していつでもクエリを実行できます。
+> この簡略化された方法は、_**AdtE2ESample**_ プロジェクトの一部として提供されています。 このサンプル コードのコンテキスト外では、[クエリ API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)を使用して、インスタンス内のすべてのツインに対していつでもクエリを実行できます。
 >
 > インスタンス内のすべての Digital Twins を取得するための完全なクエリの本文を次に示します。
 > 
@@ -109,11 +109,11 @@ _**AdtE2ESample**_ プロジェクトが開かれた状態の Visual Studio ウ�
 
 *[ソリューション エクスプローラー]* ペインで、_**[SampleFunctionsApp]** > [依存関係]_ の順に展開します。 *[パッケージ]* を右クリックし、 *[NuGet パッケージの管理]* を選択します。
 
-:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp プロジェクトの [NuGet パッケージの管理]" border="false":::
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="SampleFunctionsApp プロジェクトの [NuGet パッケージの管理] メニュー ボタンが表示されている Visual Studio のスクリーンショット。" border="false":::
 
 これで、NuGet パッケージ マネージャーが開かれます。 *[更新]* タブを選択し、更新するパッケージがある場合は、 *[すべてのパッケージを選択]* ボックスをオンにします。 次に、 *[更新]* を選択します。
 
-:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: NuGet パッケージ マネージャーですべてのパッケージを更新するように選択する":::
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="NuGet パッケージ マネージャーですべてのパッケージを更新するための選択方法が示されている Visual Studio のスクリーンショット。":::
 
 ### <a name="publish-the-app"></a>アプリの発行
 
@@ -134,14 +134,14 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 1. 次のコマンドを使用して、関数のシステム マネージド ID の詳細を確認します。 出力の **principalId** フィールドを書き留めてください。
 
     ```azurecli-interactive 
-    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-function-app-name>   
     ```
 
     >[!NOTE]
     > 結果が空の場合は、ID の詳細を表示する代わりに、次のコマンドを使用して関数の新しいシステム マネージド ID を作成します。
     > 
     >```azurecli-interactive    
-    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>    
+    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-function-app-name>  
     >```
     >
     > これで、出力には、次の手順で必要な **principalId** 値を含む、ID の詳細が表示されます。 
@@ -161,7 +161,7 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 次のコマンドを実行して、プレースホルダーにリソースの詳細を設定します。
 
 ```azurecli-interactive
-az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
+az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-function-app-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
 
 出力は、Azure 関数の設定の一覧です。ここには、**ADT_SERVICE_URL** というエントリが含まれているはずです。
@@ -175,7 +175,7 @@ Azure Digital Twins グラフは、実デバイスからのテレメトリによ
 
 これが行われるのは、エンド ツー エンド シナリオの以下の部分 (**矢印 B**) です。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="ビルディング シナリオの全体図から矢印 B (Azure Digital Twins に至る前の要素、つまりデバイス、IoT Hub、1 つ目の Azure 関数) を抜粋して強調したもの":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Azure Digital Twins の前の要素を示すセクションが強調表示された、完全なビルディング シナリオ図からの抜粋の図。":::
 
 このデバイス接続を設定するためには、次の操作を行う必要があります。
 1. シミュレートされたデバイスを管理する IoT ハブを作成します。
@@ -206,18 +206,18 @@ IoT ハブに付けた **名前** は保存しておいてください。 これ
 
 [Azure portal](https://portal.azure.com/) の上部の検索バーで、新しく作成した IoT ハブの名前を検索して、その IoT ハブに移動します。 ハブ メニューから *[イベント]* を選択し、 *[+ イベント サブスクリプション]* を選択します。
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="Azure portal: IoT Hub のイベント サブスクリプション":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="IoT Hub イベント サブスクリプションが示された Azure portal のスクリーンショット。":::
 
 *[イベント サブスクリプションの作成]* ページが表示されます。
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure portal: イベント サブスクリプションの作成":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="イベント サブスクリプションの作成方法が示された Azure portal のスクリーンショット。":::
 
 各フィールドに次のように入力します (既定値が入力されるフィールドは省略しています)。
 * *[イベント サブスクリプションの詳細]*  >  **[名前]** : イベント サブスクリプションに名前を付けます。
 * *[トピックの詳細]*  >  **[システム トピック名]** : システム トピックに使用する名前を指定します。 
 * *[イベントの種類]*  >  **[イベントの種類のフィルター]** : メニュー オプションから *[Device Telemetry]\(デバイス テレメトリ\)* を選択します。
 * *[エンドポイントの詳細]*  >  **[エンドポイントのタイプ]** : メニュー オプションから *[Azure 関数]* を選択します。
-* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[Select an endpoint]\(エンドポイントを選択する\)* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure portal のイベント サブスクリプション: Azure 関数の選択" border="false":::
+* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[Select an endpoint]\(エンドポイントを選択する\)* リンクを選択します。 これによって、 *[Azure 関数の選択]* ウィンドウが開きます。:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure 関数を選択するためのウィンドウが示された Azure portal イベント サブスクリプションのスクリーンショット" border="false":::。
     - **サブスクリプション**、**リソース グループ**、**関数アプリ**、**関数** (*ProcessHubToDTEvents*) を入力します。 そのいくつかは、サブスクリプションの選択後に自動的に入力されます。
     - **[選択の確認]** を選択します。
 
@@ -269,11 +269,11 @@ deviceConnectionString = <your-device-connection-string>
 
 今度は、設定したデータ シミュレーションの結果を確認するために、ツール バーにある次のボタンで **DeviceSimulator** プロジェクトを実行します。
 
-:::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="Visual Studio のスタート ボタン (DeviceSimulator プロジェクト)":::
+:::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="DeviceSimulator プロジェクトが開いた、Visual Studio のスタート ボタンのスクリーンショット。":::
 
 コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらのメッセージは IoT Hub に送信され、そこで Azure 関数によって収集されて処理されます。
 
-:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="送信中の温度テレメトリを示すデバイス シミュレーターのコンソール出力":::
+:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="送信中の温度テレメトリが示されたデバイス シミュレーターのコンソール出力のスクリーンショット。":::
 
 このコンソールで行うべき作業は他にありませんが、次のステップに取り組む間、コンソールは実行したままにしておいてください。
 
@@ -294,7 +294,7 @@ ObserveProperties thermostat67 Temperature
 >[!NOTE]
 > デバイスからのデータがツインに伝達されるまでに数秒かかることがあります。 最初のいくつかの温度の測定値は、データが到着し始めるまで 0 と表示される場合があります。
 
-:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="デジタル ツイン thermostat67 からの温度メッセージのログを表示するコンソール出力":::
+:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="デジタル ツイン thermostat67 からの温度メッセージのログが表示されたコンソール出力のスクリーンショット。":::
 
 正しく動作していることを確認したら、どちらのプロジェクトも実行を停止してかまいません。 Visual Studio のウィンドウは開いたままにしてください。以降、引き続きこのチュートリアルで使用します。
 
@@ -304,7 +304,7 @@ ObserveProperties thermostat67 Temperature
 
 そのために、ここでは *ProcessDTRoutedData* という Azure 関数を使用して、Thermostat ツインが更新されたときに、接続された Room ツインを更新します。 これが行われるのは、エンド ツー エンド シナリオの以下の部分 (**矢印 C**) です。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="ビルディング シナリオの全体図から矢印 C (Azure Digital Twins の後の要素、つまり Event Grid と 2 つ目の Azure 関数) を抜粋して強調したもの":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Azure Digital Twins の後の要素を示すセクションが強調表示された、完全なビルディング シナリオ図からの抜粋図。":::
 
 このデータ フローを設定するためには、次の操作を行う必要があります。
 1. インスタンスを Event Grid に接続する Event Grid エンドポイントを Azure Digital Twins に作成します。
@@ -348,7 +348,7 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 出力から `provisioningState` フィールドを探し、その値が "Succeeded" になっていることを確認します。 また、エンドポイントがまだ作成されているという意味で、"Provisioning" と表示される場合もあります。 この場合は、数秒待ってからコマンドを再実行して、正常に完了したことを確認します。
 
-:::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="エンドポイントの provisioningState が Succeeded であることを示すクエリの結果":::
+:::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="provisioningState が Succeeded のエンドポイントが示された、Azure portal の Cloud Shell におけるエンドポイント クエリ結果のスクリーンショット。":::
 
 **イベント グリッド トピック** と Azure Digital Twins の Event Grid **エンドポイント** に付けた名前は保存しておいてください。 これらは後で使用します。
 
@@ -373,7 +373,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 [Azure portal](https://portal.azure.com/) の上部の検索バーで、Event Grid トピックの名前を検索してそのトピックに移動します。 *[+ イベント サブスクリプション]* を選択します。
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure portal: Event Grid イベント サブスクリプション":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Event Grid イベント サブスクリプションの作成方法が示された Azure portal のスクリーンショット。":::
 
 このイベント サブスクリプションを作成する手順は、このチュートリアルの中で先ほど 1 つ目の Azure 関数から IoT Hub をサブスクライブしたときと同様です。 ただし今回は、リッスンするイベントの種類として "*デバイス テレメトリ*" を指定する必要はありません。また、接続先となる Azure 関数も異なります。
 
@@ -392,7 +392,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 先ほどデバイス シミュレーターを実行したときと同様に、コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらのイベントは、前半に設定したフローをたどって thermostat67 ツインを更新した後、後半に設定したフローをたどって room21 ツインを thermostat67 と同じ状態に更新します。
 
-:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="送信中の温度テレメトリを示すデバイス シミュレーターのコンソール出力":::
+:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="送信中の温度テレメトリが示されたデバイス シミュレーターのコンソール出力のスクリーンショット。":::
 
 このコンソールで行うべき作業は他にありませんが、次のステップに取り組む間、コンソールは実行したままにしておいてください。
 
@@ -406,7 +406,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 "*Azure Digital Twins インスタンスから*" のライブ更新された温度が 2 秒ごとにコンソールにログされていることを確認できます。 thermostat67 への変更に合わせて room21 の温度が更新されていることがわかります。
 
-:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="thermostat と room からの温度メッセージのログを示すコンソール出力":::
+:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="thermostat と room からの温度メッセージのログが示されたコンソール出力のスクリーンショット。":::
 
 正しく動作していることを確認したら、どちらのプロジェクトも実行を停止してかまいません。 また、チュートリアルはこれで完了なので、Visual Studio ウィンドウも閉じてかまいません。
 
@@ -418,7 +418,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 2. シミュレートされたデバイスのテレメトリが IoT Hub に送信されます。IoT Hub では、Azure 関数 *ProcessHubToDTEvents* がテレメトリ イベントをリッスンします。 Azure 関数 *ProcessHubToDTEvents* は、これらのイベント内の情報を使用して、thermostat67 の *Temperature* プロパティを設定します (図の **矢印 B**)。
 3. Azure Digital Twins のプロパティ変更イベントが Event Grid トピックにルーティングされます。Event Grid トピックでは、Azure 関数 *ProcessDTRoutedData* がイベントをリッスンしています。 Azure 関数 *ProcessDTRoutedData* は、これらのイベント内の情報を使用して、room21 の *Temperature* プロパティを設定します (図の **矢印 C**)。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="ビルディング シナリオ全体を表す図。データがデバイスから IoT Hub へと流れ、Azure Functions を経て (矢印 B) Azure Digital Twins インスタンス (セクション A) に到達した後、Event Grid を介して別の Azure Functions に到達して処理 (矢印 C) されるようすを表しています":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="さまざまな Azure サービスを介してデバイスと Azure Digital Twins の間を流れるデータが示された完全なビルディング シナリオの図。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

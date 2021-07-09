@@ -6,16 +6,16 @@ author: peiliu
 manager: vravikumar
 services: azure-communication-services
 ms.author: peiliu
-ms.date: 06/30/2021
+ms.date: 06/01/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 60b322d83db3e8fd3b59cd960ee0168b028c9762
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 8c9468510e68f29816e52e74cb9a311e3834f107
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110996"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111593132"
 ---
 # <a name="quickstart-using-azure-opentelemetry-exporter-to-export-sdk-telemetry-data-to-application-insights"></a>クイックスタート: Azure OpenTelemetry Exporter を使用して SDK テレメトリ データを Application Insights にエクスポートする
 

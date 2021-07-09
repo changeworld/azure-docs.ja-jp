@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 282777a692b7b0fe54415ef09c2cf1879868dd3b
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010694"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854434"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -28,7 +28,7 @@ Security Center では、サブスクリプション内の Azure Resource Manage
 
 **コンテナー レジストリ用 Azure Defender** には、Azure Resource Manager ベースの Azure Container Registry レジストリ内のイメージをスキャンし、画像の脆弱性をより詳細に把握するための脆弱性スキャナーが含まれています。 統合されたスキャナーは、業界トップレベルの脆弱性スキャン ベンダーである Qualys を使用しています。
 
-Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 コンテナーの Security Center の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-compute)を参照してください。
+Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 コンテナーの Security Center の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-container)を参照してください。
 
 Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 Security Center には、報告された各脆弱性の詳細と、重要度の分類が表示されます。 また、各イメージで検出された特定の脆弱性を修復する方法についてのガイダンスも提供されます。
 
@@ -65,7 +65,7 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 
 
-## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure Container Registry のイメージ スキャンに関する FAQ
+## <a name="faq---azure-container-registry-image-scanning"></a>FAQ - Azure Container Registry のイメージ スキャン
 
 ### <a name="how-does-security-center-scan-an-image"></a>Security Center ではどのような方法でイメージがスキャンされますか。
 Security Center は、レジストリからイメージをプルし、Qualys スキャナーを使用してそれを分離されたサンドボックス内で実行します。 スキャナーにより、既知の脆弱性の一覧が抽出されます。
@@ -88,6 +88,8 @@ Security Center では、スキャナーによる検出結果がフィルター�
 ### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>レジストリに含まれていないイメージに関する脆弱性に対して、Security Center の警告が表示されるのはなぜですか。
 レジストリにプッシュまたはプルされたすべてのイメージに対して、Security Center による脆弱性評価が提供されています。 イメージの中には、既にスキャンされたイメージのタグを再利用しているものもあります。 たとえば、ダイジェストにイメージを追加するたびに "Latest" (最新) タグを再割り当てする場合があります。 このような場合は、"古い" イメージは引き続きレジストリに存在し、そのダイジェストによってプルされる可能性があります。 イメージにセキュリティの調査結果があり、プルされた場合は、セキュリティの脆弱性が明らかになります。
 
+### <a name="what-should-i-do-if-the-scan-results-for-my-image-arent-shown"></a>イメージのスキャン結果が表示されない場合はどうすればよいですか。
+数分待っても結果が表示されない場合は、イメージをもう一度プッシュして新しいスキャンをトリガーしてみてください。 引き続き表示されない場合は、サポート チームにお問い合わせください。 
 
 ## <a name="next-steps"></a>次のステップ
 

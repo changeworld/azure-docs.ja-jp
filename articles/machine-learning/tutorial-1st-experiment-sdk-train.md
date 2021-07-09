@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:初めての機械学習モデルをトレーニングする - Python
+title: 'チュートリアル: 初めての Python 機械学習モデルをトレーニングする '
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 入門シリーズの第 2 部では、機械学習モデルをトレーニングする方法について説明します。
+description: Azure Machine Learning で機械学習モデルをトレーニングする方法。 これは、3 部構成の入門シリーズのパート 2 です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
-ms.custom: devx-track-python, contperf-fy21q3
-ms.openlocfilehash: 65ff353469b884948e3de83e4b3ecafd1272cca5
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.custom: devx-track-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q
+ms.openlocfilehash: 616723e66dceeb3c0de21b36e3af3039dafbe63e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809510"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028273"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-2-of-3"></a>チュートリアル: 初めての機械学習モデルをトレーニングする (パート 2/3)
 
-このチュートリアルでは、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。
+このチュートリアルでは、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。  このチュートリアルは、*3 部構成のチュートリアル シリーズのパート 2* です。
 
-このチュートリアルは、"*3 部構成のチュートリアル シリーズのパート 2*" であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは次のパートで完了した作業を基にしています。このシリーズの[第 1 部: "Hello world!" の実行](tutorial-1st-experiment-hello-world.md) です。
+ このシリーズの「[パート 1: "Hello World" の実行](tutorial-1st-experiment-hello-world.md)」 では、コントロール スクリプトを使用してクラウドでジョブを実行する方法について学習しました。  
 
 このチュートリアルでは、機械学習モデルをトレーニングするスクリプトを送信して、次のステップに進みます。 この例は、Azure Machine Learning を使用することで、ローカル デバッグとリモート実行との間で一貫した動作がどのように容易になるかを理解するのに役立ちます。
 
@@ -351,7 +351,7 @@ Azure Machine Learning のメトリックは次のとおりです。
 
 ## <a name="next-steps"></a>次の手順
 
-このセッションでは、基本的な "Hello world!" スクリプトから、 特定の Python 環境を実行する必要がある、より現実的なトレーニング スクリプトにアップグレードしました。 Azure Machine Learning 環境を使用してローカルの Conda 環境をクラウドに移動する方法を確認しました。 最後に、数行のコードでメトリックを Azure Machine Learning にログする方法を確認しました。
+このセッションでは、基本的な "Hello world!" スクリプトから、 特定の Python 環境を実行する必要がある、より現実的なトレーニング スクリプトにアップグレードしました。 キュレーションされた Azure Machine Learning 環境を使用する方法について確認しました。 最後に、数行のコードでメトリックを Azure Machine Learning にログする方法を確認しました。
 
 Azure Machine Learning 環境を作成する方法は他にもあります。たとえば、[pip requirements.txt ファイルから](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-)、または[既存のローカル Conda 環境から](/python/api/azureml-core/azureml.core.environment.environment#from-existing-conda-environment-name--conda-environment-name-)作成することができます。
 

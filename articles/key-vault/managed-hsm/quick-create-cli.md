@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 06/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b29a292dae570d368f54f65773ce72a54de2e2d
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91756820"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413989"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする
 
@@ -63,11 +63,11 @@ Managed HSM リソースを作成するには、次の入力を指定する必�
 - Azure の場所。
 - 初期管理者のリスト。
 
-次の例では、**ContosoMHSM** という名前の HSM を、リソース グループ **ContosoResourceGroup** に作成して、**米国東部 2** に配置し、**現在サインインしているユーザー** を唯一の管理者としています。
+次の例では、**ContosoMHSM** という名前の HSM を、**米国東部 2** に存在するリソース グループ **ContosoResourceGroup** に作成します。**現在サインインしているユーザー** が唯一の管理者であり、論理的な削除に対して **28 日間の保持期間** が設定されています。 マネージド HSM の論理的な削除の詳細については、[こちら](soft-delete-overview.md)をお読みください。
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
-az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid
+az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid --retention-days 28
 ```
 
 > [!NOTE]

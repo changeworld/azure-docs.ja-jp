@@ -10,12 +10,12 @@ ms.author: petrodeg
 ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: d0c2884b9c080c214cbebd666cbf4df62a8efcf2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f493cfc21ff3f5e2aa122bbbc08f24e1a759558e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382850"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480947"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)
 
@@ -50,6 +50,8 @@ az ml endpoint create -n <endpoint-name> -f <spec_file.yaml> --local
 
 - Docker では、新しいコンテナー イメージをビルドするか、ローカルの Docker キャッシュから既存のイメージをプルします。 仕様ファイルの環境部分に一致する既存のイメージがある場合は、それが使用されます。
 - Docker では、モデルやコード ファイルなど、マウントされているローカルの成果物を使用して、新しいコンテナーを起動します。
+
+詳細については、「[マネージド オンライン エンドポイントを使用して機械学習モデルをローカルにデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-using-local-endpoints)」を参照してください。
 
 ## <a name="get-container-logs"></a>コンテナー ログを取得する
 
@@ -164,7 +166,10 @@ az ml endpoint get-logs
 
 デプロイの一部として提供される `score.py` を実行するために、Azure では `score.py` に必要なすべてのリソースを含むコンテナーを作成し、そのコンテナーでスコアリング スクリプトを実行します。  このシナリオのエラーは、実行中にこのコンテナーがクラッシュしたため、スコアリングを実行できなかったことを意味します。 このエラーは、次の場合に発生します。
 
-- `score.py` にエラーがある。
+- `score.py` にエラーがある。 `get--logs` を使用すると、一般的な問題を診断できます。
+    - インポートされたパッケージは、conda 環境には存在しません
+    - 構文エラー
+    - `init()` メソッドのエラー
 - readiness probe または liveness probe が正しく設定されていない。
 - 依存関係が不足しているなど、コンテナーの環境設定にエラーがある。
 

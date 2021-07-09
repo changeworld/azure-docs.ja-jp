@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 03/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 1fd42f7b2da82da17dc19f2a57ea9b64f78f3fe0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5cccfb2b750e9ea1a167f8bbbddcb2621bd19b5b
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049747"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008086"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity-with-mrtk"></a>クイック スタート: Azure Object Anchors を使用する HoloLens アプリを MRKT を使用した Unity で作成する
 
@@ -110,3 +110,6 @@ Unity で `quickstarts/apps/unity/mrtk` プロジェクトを開きます。
 
 > [!div class="nextstepaction"]
 > [FAQ](../faq.md)
+
+> [!div class="nextstepaction"]
+> [変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)

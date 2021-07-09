@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/18/2020
-ms.openlocfilehash: 2dd06a7b4c8e6296cda747d17fd3d5be5db0af6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: 31316a5d0688c7cee0bc15f6e7cebdea23d0f29d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018890"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097096"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 LUIS ポータル内または LUIS オーサリング [API](developer-reference-resource.md) を使用して LUIS アプリを作成できます。
@@ -44,13 +44,12 @@ LUIS アプリを作成するにはいくつかの方法があります。 LUIS 
 ## <a name="create-new-app-in-luis"></a>LUIS で新しいアプリを作成する
 
 1. **[マイ アプリ]** ページ上で、ご自身の **[サブスクリプション]** 、 **[作成リソース]** 、 **[+ 作成]** の順に選択します。 
-
-> [!div class="mx-imgBorder"]
-> ![LUIS アプリの一覧](./media/create-app-in-portal.png)
+    
+    :::image type="content" source="media/create-app-in-portal.png" alt-text="LUIS アプリの一覧" lightbox="media/create-app-in-portal.png":::
 
 1. ダイアログ ボックスに、`Pizza Tutorial` など、アプリケーションの名前を入力します。
 
-    ![[新しいアプリの作成] ダイアログ ボックス](./media/create-pizza-tutorial-app-in-portal.png)
+    :::image type="content" source="media/create-pizza-tutorial-app-in-portal.png" alt-text="[新しいアプリの作成] ダイアログ ボックス" lightbox="media/create-pizza-tutorial-app-in-portal.png":::
 
 1. アプリケーション カルチャを選択し、 **[完了]** を選択します。 説明と予測リソースは現時点では任意です。 ポータルの **[管理]** セクションでいつでも設定できます。
 
@@ -59,8 +58,7 @@ LUIS アプリを作成するにはいくつかの方法があります。 LUIS 
 
     アプリが作成されると、LUIS ポータルに **[意図]** 一覧が表示されます。この一任には、自動的に作成された `None` 意図が含まれています。 これで空のアプリが作成されました。
 
-    > [!div class="mx-imgBorder"]
-    > ![None 意図が作成されており、サンプル発話のない意図リスト](media/pizza-tutorial-new-app-empty-intent-list.png)
+    :::image type="content" source="media/pizza-tutorial-new-app-empty-intent-list.png" alt-text="None 意図があり、発話の例のない [意図] 一覧" lightbox="media/pizza-tutorial-new-app-empty-intent-list.png":::
 
 ## <a name="other-actions-available-on-my-apps-page"></a>[マイ アプリ] ページで利用可能なその他のアクション
 

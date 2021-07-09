@@ -1,14 +1,14 @@
 ---
 title: クラウドでの Azure Batch による大規模な並列ジョブの実行
-description: 大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。
+description: 大規模な並列および HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。
 ms.topic: overview
-ms.date: 07/30/2020
-ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: 9061da0b479f77353554ef1c9eb311f22220f02d
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743102"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007123"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは
 
@@ -22,7 +22,7 @@ Batch と Azure 内の他の HPC ソリューション オプションとの比�
 
 ## <a name="run-parallel-workloads"></a>並列ワークロードの実行
 
-Batch は本質的に並列 (「驚異的並列」とも呼ばれています) なワークロードと効果的に連動します。 本質的に並列なワークロードでは、アプリケーションを独立して実行することができ、各インスタンスが作業の一部を完了します。 アプリケーションは、実行時にいくつかの共通データにアクセスする場合がありますが、アプリケーションの他のインスタンスとは通信しません。 そのため、本質的に並列なワークロードは、大規模で実行できます。可能な規模は、アプリケーションを同時に実行するために使用できるコンピューティング リソースの量によって決まります。
+Batch は本質的に並列 (「驚異的並列」とも呼ばれています) なワークロードと効果的に連動します。 これらのワークロードでは、アプリケーションを独立して実行することができ、各インスタンスが作業の一部を完了します。 アプリケーションは、実行時にいくつかの共通データにアクセスする場合がありますが、アプリケーションの他のインスタンスとは通信しません。 そのため、本質的に並列なワークロードは、大規模で実行できます。可能な規模は、アプリケーションを同時に実行するために使用できるコンピューティング リソースの量によって決まります。
 
 Batch で実行できる本質的に並列なワークロードの例を、次にいくつか示します。
 
@@ -43,14 +43,11 @@ Batch で実行できる本質的に並列なワークロードの例を、次�
 - 流体力学
 - マルチノード AI トレーニング
 
-密接に結合されたジョブの多くは、Batch を使用して並列で実行できます。 たとえば、パイプを流れる液体について、パイプの幅を変化させて複数のシミュレーションを実行します。
+密接に結合されたジョブの多くは、Batch を使用して並列で実行できます。 たとえば、パイプを流れる液体について、パイプの幅を変化させて複数のシミュレーションを実行することができます。
 
 ## <a name="additional-batch-capabilities"></a>その他の Batch 機能
 
-Azure Batch では、より高レベルで、ワークロード固有の機能も使用できます。
-
-- Batch は、Autodesk Maya、3ds Max、Arnold、V-Ray などのレンダリング ツールでの大規模な[レンダリング ワークロード](batch-rendering-service.md)をサポートしています。 
-- R ユーザーは、[doAzureParallel R パッケージ](https://github.com/Azure/doAzureParallel)をインストールして、Batch プールに対する R アルゴリズムの実行を容易にスケールアウトすることができます。
+Batch は、Autodesk Maya、3ds Max、Arnold、V-Ray などのレンダリング ツールでの大規模な[レンダリング ワークロード](batch-rendering-service.md)をサポートしています。 
 
 また、Batch ジョブを、[Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) などのツールで管理されているより大きな Azure ワークフローの一部として実行して、データを変換することができます。
 
@@ -76,12 +73,15 @@ Batch の一般的なシナリオでは、3D シーンの画像のレンダリ�
 プール、ノード、ジョブ、タスクなどの機能の概要については、「[Batch サービスのワークフローとリソース](batch-service-workflow-features.md)」を参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
 
 ## <a name="in-region-data-residency"></a>リージョンのデータ所在地
+
 Azure Batch によって、顧客データがデプロイされているリージョン外に移動されたり格納されたりすることはありません。 
 
 ## <a name="next-steps"></a>次のステップ
 
 以下のクイック スタートのいずれかに従って、実際に Azure Batch を使ってみましょう。
+
 - [Azure CLI で最初の Batch ジョブを実行する](quick-create-cli.md)
 - [Azure Portal で最初の Batch ジョブを実行する](quick-create-portal.md)
 - [.NET API を使用して最初の Batch ジョブを実行する](quick-run-dotnet.md)
 - [Python API を使用して最初の Batch ジョブを実行する](quick-run-python.md)
+- [ARM テンプレートを使用して Batch アカウントを作成する](quick-create-template.md)

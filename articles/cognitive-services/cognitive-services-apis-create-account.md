@@ -8,14 +8,14 @@ manager: nitinme
 keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 06/04/2021
 ms.author: aahi
-ms.openlocfilehash: de855e53f6d54c9175963b34d8cd3da572e02790
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: fb28a431f9f2f136d177a5d51398bc2427a7134d
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736540"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540159"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して Cognitive Services リソースを作成する
 
@@ -114,6 +114,8 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 **[リソース グループ]** を選択して、リソース グループの一覧を表示します。
 2. 削除するリソースが含まれているリソース グループを見つけます
 3. リソース グループの一覧を右クリックします。 **[リソース グループの削除]** を選択し、確認します。
+
+削除されたリソースを復旧する必要がある場合は、[削除された Cognitive Services リソースの復旧](manage-resources.md)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 

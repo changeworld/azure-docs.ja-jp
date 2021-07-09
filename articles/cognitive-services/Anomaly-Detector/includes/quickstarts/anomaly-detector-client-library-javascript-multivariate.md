@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 30aeace7bfd4743d76948b7a24dcdc4830c27bcb
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 087640433d592c7e2885e68240e98e7283bf3407
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108333332"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165783"
 ---
 JavaScript 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 これらの手順に従ってパッケージをインストールすれば、サービスによって提供されるアルゴリズムが使用できるようになります。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -60,6 +60,10 @@ const { AzureKeyCredential } = require('@azure/core-auth');
 ```
 
 自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 サンプル データ ファイル用にもう 1 つの変数を作成します。
+
+> [!NOTE]
+> 常に、2 つのキーのいずれかを使用できます。 これは、セキュリティ保護されたキーのローテーションを可能にするためです。 このクイックスタートでは、1 番目のキーを使用します。 
+   
 
 ```javascript
 const apiKey = "YOUR_API_KEY";
@@ -174,6 +178,9 @@ while (result_status != 'READY'){
 
 ## <a name="export-model"></a>モデルをエクスポートする
 
+> [!NOTE]
+> エクスポート コマンドは、コンテナー化された環境で Anomaly Detector 多変量モデルを実行できるようにするために使用することを目的としています。 現在、これは多変量ではサポートされていませんが、今後サポートが追加される予定です。
+
 トレーニング済みのモデルをエクスポートするには、`exportModel` 関数を使用します。
 
 ```javascript
@@ -203,6 +210,14 @@ console.log("New model has been deleted.")
 node index.js
 ```
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+
+* [ポータル](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Anomaly Detector (多変量) のベスト プラクティス](../../concepts/best-practices-multivariate.md)
+* [Anomaly Detector API とは](../../overview-multivariate.md)
+* [Anomaly Detector API を使用する場合のベスト プラクティス](../../concepts/best-practices-multivariate.md) 

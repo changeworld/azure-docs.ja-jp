@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Always Encrypted のドキュメント
+summary: Always Encrypted のドキュメントを紹介します
+metadata:
+  title: Always Encrypted のドキュメント
+  description: SQL Server、Azure SQL Database、Azure SQL Managed Instance 用の Always Encrypted のドキュメントを紹介します
+  ms.service: sql-db-mi
+  ms.subservice: security
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: VanMSFT
+  ms.author: vanto
+  ms.reviewer: 
+  ms.date: 01/15/2021
+  ms.openlocfilehash: 5abf79ca2e650f45f0ad29c34ab799d660c015f8
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111965466"
+landingContent:
+- title: Always Encrypted の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Always Encrypted とは
+      url: /sql/relational-databases/security/encryption/always-encrypted-database-engine
+- title: Always Encrypted の概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Always Encrypted のキー管理
+      url: /sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted
+    - text: Always Encrypted による暗号
+      url: /sql/relational-databases/security/encryption/always-encrypted-cryptography
+- title: Always Encrypted のチュートリアル
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Key Vault を使用した Always Encrypted の構成
+      url: always-encrypted-azure-key-vault-configure.md
+    - text: Windows 証明書ストアを使用して Always Encrypted を構成する
+      url: always-encrypted-certificate-store-configure.md
+- title: Always Encrypted の構成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Configure Always Encrypted using PowerShell
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-using-powershell
+    - text: SQL Server Management Studio を使用した Always Encrypted の構成
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-using-sql-server-management-studio
+- title: Always Encrypted キーの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Always Encrypted の列マスター キーを作成して保存する
+      url: /sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted
+    - text: SQL Server Management Studio を使用して Always Encrypted キーをプロビジョニングする
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-ssms
+    - text: SQL Server Management Studio を使用して Always Encrypted キーを交換する
+      url: /sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-ssms
+    - text: PowerShell を使用して Always Encrypted キーをプロビジョニングする
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell
+    - text: PowerShell を使用して Always Encrypted キーをローテーションする
+      url: /sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell
+- title: Always Encrypted 列を構成する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Always Encrypted ウィザードを使用して列暗号化を構成する
+      url: /sql/relational-databases/security/encryption/always-encrypted-wizard
+    - text: DAC パッケージでの Always Encrypted を使用した列暗号化の構成
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-using-dacpac
+- title: Always Encrypted 列に対してクエリを実行する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: SQL Server Management Studio で Always Encrypted を使用した列のクエリを実行する
+      url: /sql/relational-databases/security/encryption/always-encrypted-query-columns-ssms
+    - text: Azure Data Studio で Always Encrypted を使用した列のクエリを実行する
+      url: /sql/relational-databases/security/encryption/always-encrypted-query-columns-ads
+- title: Always Encrypted を使用してデータを移行する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Always Encrypted を使用したデータベースのエクスポートとインポート
+      url: /sql/relational-databases/security/encryption/always-encrypted-migrate-using-bacpac
+    - text: Always Encrypted を使用したデータベースのバックアップと復元
+      url: /sql/relational-databases/security/encryption/always-encrypted-migrate-using-backup-restore
+    - text: SQL Server インポートおよびエクスポート ウィザードで Always Encrypted を使用して列間でデータを移行する
+      url: /sql/relational-databases/security/encryption/always-encrypted-migrate-using-import-export-wizard
+    - text: Always Encrypted を使用した暗号化データの列への一括読み込み
+      url: /sql/relational-databases/security/encryption/migrate-sensitive-data-protected-by-always-encrypted
+    - text: Azure Data Factory での Always Encrypted の使用
+      url: ../../data-factory/connector-azure-sql-database.md#using-always-encrypted
+- title: Always Encrypted を使用したアプリケーションの開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Always Encrypted を使用したアプリケーションの開発
+      url: /sql/relational-databases/security/encryption/always-encrypted-client-development

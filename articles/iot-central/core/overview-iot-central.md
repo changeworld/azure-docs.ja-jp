@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: 88f59c1b3fc1014cef5035845f1f2e8616bea908
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: ed15d75836f3642622f963ac8c0185c1520bce2b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739910"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281307"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -34,7 +34,7 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 
 この IoT Central ドキュメントでは、IoT Central アプリケーションと対話する 4 種類のユーザー ロールに言及しています。
 
-- "_ソリューション ビルダー_": [アプリケーションの作成](quick-deploy-iot-central.md)、[ルールとアクションの構成](quick-configure-rules.md)、[他のサービスとの統合の定義](howto-export-data.md)のほか、オペレーターおよびデバイス開発者向けのアプリケーションのカスタマイズを行う役割を担います。
+- "_ソリューション ビルダー_": [アプリケーションの作成](quick-deploy-iot-central.md)、[ルールとアクションの構成](quick-configure-rules.md)、[他のサービスとの統合の定義](quick-export-data.md)のほか、オペレーターおよびデバイス開発者向けのアプリケーションのカスタマイズを行う役割を担います。
 - "_オペレーター_": アプリケーションに接続される [デバイスを管理](howto-manage-devices.md)します。
 - "_管理者_": 管理タスクを担います (アプリケーション内での [ユーザー ロールとアクセス許可](howto-administer.md)の管理など)。
 - "_デバイス開発者_": アプリケーションに接続されるデバイスまたは [IoT Edge モジュール](concepts-iot-edge.md)で [実行するコードを作成](concepts-telemetry-properties-commands.md)します。
@@ -77,8 +77,6 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 - IoT Central でデバイス テンプレートを設計し、そのデバイス モデルをデバイス コードに実装します。
 - Visual Studio Code を使用してデバイス モデルを作成し、モデルをリポジトリに発行します。 モデルからデバイス コードを実装し、デバイスを IoT Central アプリケーションに接続します。 IoT Central によって、リポジトリからデバイス モデルが検索され、単純なデバイス テンプレートが自動的に作成されます。
 - Visual Studio Code を使用してデバイス モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス モデルを手動でインポートし、IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、ダッシュボードを追加します。
-
-最初のデバイスを作成して接続する方法のチュートリアルについては、[シミュレートされたデバイスの追加](quick-create-simulated-device.md)に関するクイックスタートを参照してください。
 
 ### <a name="customize-the-ui"></a>UI のカスタマイズ
 

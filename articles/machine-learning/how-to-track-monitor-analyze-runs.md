@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: how-to
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f61e1a604c9296f85bbfd508f39dcbc74e256caf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 564b193a355ecc7bc11bef874c80ddc881c362cb
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098724"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895950"
 ---
 # <a name="start-monitor-and-track-run-history"></a>実行履歴の開始、監視および追跡
 
@@ -182,7 +182,8 @@ ms.locfileid: "110098724"
     
     # <a name="studio"></a>[スタジオ](#tab/azure-studio)
     
-    ---
+    ---    
+   
 ## <a name="custom-view"></a>カスタム ビュー 
     
 自分の実行をスタジオで表示するには、次のようにします。 
@@ -195,17 +196,18 @@ ms.locfileid: "110098724"
     
 1. このページでは、比較する実行を選択したり、グラフを追加したり、フィルターを適用して、カスタマイズすることが可能です。 これらの変更は **カスタム ビュー** として保存できるので、簡単に作業に戻ることができます。 ワークスペースのアクセス許可を持つユーザーは、カスタム ビューを編集、または表示できます。 また、 **[共有ビュー]** を選択すると、カスタム ビューをチームメンバーと共有して、連携を強化できます。   
 
-1. 実行ログを表示するには、特定の実行を選択し、自分の実行の診断ログとエラー ログを **[Outputs + logs]** \(出力 + ログ\) タブから確認します。    
+1. 実行ログを表示するには、特定の実行を選択し、自分の実行の診断ログとエラー ログを **[Outputs + logs]** \(出力 + ログ\) タブから確認します。
 
-:::image type="content" source="media/how-to-track-monitor-analyze-runs/custom-views.gif" alt-text="スクリーンショット: カスタム ビューを作成する":::
+:::image type="content" source="media/how-to-track-monitor-analyze-runs/custom-views-2.gif" alt-text="スクリーンショット: カスタム ビューを作成する":::
     
+
 ## <a name="run-description"></a>実行の説明 
 
 実行に実行の説明を追加し、その実行に関するコンテキストおよび情報をより多く指定できます。 また、実行の一覧でこれらの説明を検索し、実行の一覧の列として実行の説明を追加することもできます。 
 
 自分の実行の **[実行の詳細]** ページに移動し、編集または鉛筆アイコンを選択して、自分の実行の説明を追加、編集、または削除します。 お使いの既存のカスタム ビューまたは新しいカスタム ビューに変更を保存すると、この変更を実行の一覧に保存できます。 実行の説明には、下に示すように、イメージを埋め込んだり、ディープ リンクを設定したりすることができる Markdown 形式がサポートされています。
 
-:::image type="content" source="media/how-to-track-monitor-analyze-runs/run-description.gif" alt-text="スクリーンショット: 実行の説明を作成する"::: 
+:::image type="content" source="media/how-to-track-monitor-analyze-runs/run-description-2.gif" alt-text="スクリーンショット: 実行の説明を作成する"::: 
 
 ## <a name="tag-and-find-runs"></a>実行のタグ付けおよび検索
 
@@ -347,7 +349,7 @@ Studio で実行をキャンセルするには、次の手順を使用します�
 
 1. キャンセルするパイプラインの実行番号を選択します。
 
-1. ツール バーで、 **[キャンセル]** を選択します
+1. ツール バーで、 **[キャンセル]** を選択します。
 
 ---
 
