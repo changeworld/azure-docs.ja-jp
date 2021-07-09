@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: a5a7af768875efd4733070b85bacd1916f897f27
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: b30fee5d269a633173b8524ed6c902517063b2a2
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063782"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985996"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
@@ -43,9 +43,9 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
 - Azure Sentinel は、中国およびドイツ (ソブリン) リージョンを除く、[Log Analytics のほとんどの GA リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)のワークスペースで実行できます。 Log Analytics の新しいリージョンでは、Azure Sentinel サービスのオンボードに時間がかかる場合があります。 
 
-- インシデント、ブックマーク、分析ルールなど、Azure Sentinel によって生成されたデータには、顧客の Log Analytics ワークスペースをソースとする顧客データが含まれている可能性があります。 Azure Sentinel で生成されたこのデータは、ワークスペースが配置されている地理的な場所に応じて、次の表に示す地理的な場所に保存されます。
+- インシデント、ブックマーク、分析ルールなど、Azure Sentinel によって生成されたデータには、顧客の Log Analytics ワークスペースをソースとする顧客データが含まれている可能性があります。 Azure Sentinel で生成されたこのデータは、ワークスペースが配置されている地理的な場所またはリージョンに応じて、次の表に示す地理的な場所またはリージョンに保存されます。
 
-    | ワークスペースの地理的な場所 | Azure Sentinel で生成されたデータの地理的な場所 |
+    | ワークスペースの地理的な場所またはリージョン | Azure Sentinel で生成されたデータの地理的な場所またはリージョン |
     | --- | --- |
     | United States<br>インド<br>ブラジル<br>アフリカ<br>韓国<br>アラブ首長国連邦 | United States |
     | ヨーロッパ<br>フランス<br>スイス | ヨーロッパ |
@@ -53,7 +53,13 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
     | イギリス | イギリス |
     | Canada | Canada |
     | 日本 | 日本 |
+    | 東南アジア (シンガポール) | 東南アジア (シンガポール)* |
     |
+    
+    \* 東南アジアにはペアのリージョンはありません。
+
+    > [!IMPORTANT]
+    > - 機械学習 (ML) エンジンを利用する特定の規則を有効にすることで、機械学習エンジンがこれらの規則を処理するために必要な場合に、**Azure Sentinel ワークスペースの地理的な場所以外で取り込まれた関連データをコピーするためのアクセス許可を Microsoft に付与** します。
 
 ## <a name="enable-azure-sentinel"></a>Azure Sentinel を有効にする <a name="enable"></a>
 

@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: quickstart
 ms.reviewer: jrasnick, garye
-ms.date: 09/25/2020
+ms.date: 06/09/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05f83f71f67691322242a215fb7f6c11a0384e74
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98219455"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902755"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>クイック スタート:Synapse で Azure Machine Learning のリンクされたサービスを新規作成する
 
@@ -26,18 +26,51 @@ ms.locfileid: "98219455"
 
 - Azure Machine Learning モデル レジストリから機械学習モデルをコピーすることで、予測によってデータを強化し、Synapse SQL プールでモデルにスコアを付けます。 詳細については、「[チュートリアル: Synapse SQL プール向けの機械学習モデル スコアリング ウィザード](tutorial-sql-pool-model-scoring-wizard.md)」を参照してください。
 
+## <a name="two-types-of-authentication"></a>2 種類の認証
+Azure Synapse で Azure ML リンク サービスを作成する際に使用できる ID には 2 種類あります。
+* Synapse ワークスペースのマネージド ID
+* サービス プリンシパル
+
+以下のセクションでは、これら 2 種類の認証を使用して Azure ML リンク サービスを作成する方法について説明します。
+
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
 - ADLS Gen2 ストレージ アカウントが既定のストレージとして構成されている [Synapse Analytics ワークスペース](../get-started-create-workspace.md)。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ共同作成者** である必要があります。
 - [Azure Machine Learning ワークスペース](../../machine-learning/how-to-manage-workspace.md)。
-- リンクされたサービスの作成に使用できるサービス プリンシパルとシークレットを作成するには、アクセス許可 (またはアクセス許可を持つユーザーからの要求) が必要です。 このサービス プリンシパルには Azure Machine Learning ワークスペースの共同作成者ロールが割り当てられている必要があることに注意してください。
+- サービス プリンシパルの使用を選択した場合、リンク サービスの作成に使用できるサービス プリンシパルとシークレットを作成するには、アクセス許可 (またはアクセス許可を持つユーザーからの要求) が必要です。 このサービス プリンシパルには Azure Machine Learning ワークスペースの共同作成者ロールが割り当てられている必要があることに注意してください。
+- [Azure ポータル](https://portal.azure.com/)
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
+## <a name="create-a-linked-service-using-the-synapse-workspace-managed-identity"></a>Synapse ワークスペース マネージド ID を使用してリンク サービスを作成する
 
-[Azure ポータル](https://portal.azure.com/)
+このセクションでは、[Azure Synapse ワークスペース マネージド ID](../security/synapse-workspace-managed-identity.md) を使用して、Azure Synapse で Azure ML リンク サービスを作成する方法について説明します。
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+### <a name="give-msi-permission-to-the-azure-ml-workspace"></a>Azure ML ワークスペースに MSI アクセス許可を付与する
+
+1. Azure portal で Azure Ml ワークスペース リソースに移動し、 **[アクセス制御]** を選択します
+
+1. ロールの割り当てを作成し、Synapse ワークスペース マネージド サービス ID (MSI) を Azure Machine Learning ワークスペースの "*共同作成者*" として追加します。 これは、Azure Machine Learning ワークスペースが属しているリソース グループの所有者である必要があることに注意してください。 Synapse WS MSI が見つからない場合は、Synapse ワークスペースの名前を検索してください。
+
+### <a name="create-an-azure-ml-linked-service"></a>Azure ML リンク サービスを作成する
+1. 新しい Azure Machine Learning のリンクされたサービスを作成する Synapse ワークスペースで、 **[管理]**  >  **[リンクされたサービス]** に移動し、タイプを "Azure Machine Learning" として新しいリンクされたサービスを作成します。
+
+   ![リンクされたサービスの作成](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-create-linked-service-00a.png)
+
+2. 以下をフォームに入力します。
+
+    - リンク先の Azure ML ワークスペースの詳細を指定します。 たとえば、サブスクリプションとワークスペース名の詳細です。
+    
+    - [認証方法] として **[マネージド ID]** を選択します
+  
+3. **[接続のテスト]** をクリックして、構成が正しいかどうかを確認します。 接続テストが成功した場合は、 **[保存]** をクリックします。
+
+   接続テストに失敗した場合は、Azure Synapse ワークスペース MSI にこの Azure ML ワークスペースへのアクセスするためのアクセス許可があることを確認して、再試行します。
+
+## <a name="create-a-linked-service-using-a-service-principal"></a>サービス プリンシパルを使用してリンク サービスを作成する
+
+このセクションでは、サービス プリンシパルを使用して Azure ML リンク サービスを作成する方法について説明します。
+
+### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 この手順では、新しいサービス プリンシパルを作成します。 既存のサービス プリンシパルを使用する場合は、次の手順をスキップできます。
 1. Azure portal を開きます。 
@@ -58,7 +91,7 @@ ms.locfileid: "98219455"
 
    ![共同作成者ロールの割り当て](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-createsp-00c.png)
 
-## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
+### <a name="create-an-azure-ml-linked-service"></a>Azure ML リンク サービスを作成する
 
 1. 新しい Azure Machine Learning のリンクされたサービスを作成する Synapse ワークスペースで、 **[管理]**  ->  **[リンクされたサービス]** に移動し、タイプを "Azure Machine Learning" として新しいリンクされたサービスを作成します。
 
@@ -66,12 +99,16 @@ ms.locfileid: "98219455"
 
 2. 以下をフォームに入力します。
 
-   - サービス プリンシパル ID: これはアプリケーションの **アプリケーション (クライアント) ID** です。
+    - リンク先の Azure ML ワークスペースの詳細を指定します。 たとえば、サブスクリプションとワークスペース名の詳細です。
+
+    - [認証方法] として **[サービス プリンシパル]** を選択します。
+
+    - サービス プリンシパル ID: これはアプリケーションの **アプリケーション (クライアント) ID** です。
   
      > [!NOTE]
      > アプリケーションの名前ではありません。 この ID は、アプリケーションの ID の概要ページで確認できます。 これは、"81707eac-ab38-406u-8f6c-10ce76a568d5" のような長い文字列になります。
 
-   - サービス プリンシパルのキー: 前のセクションで生成したシークレットです。
+    - サービス プリンシパルのキー: 前のセクションで生成したシークレットです。
 
 3. **[接続のテスト]** をクリックして、構成が正しいかどうかを確認します。 接続テストが成功した場合は、 **[保存]** をクリックします。
 

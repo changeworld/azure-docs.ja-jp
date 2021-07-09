@@ -150,6 +150,8 @@
           href: cdn-troubleshoot-compression.md
         - name: 許可された証明機関
           href: cdn-troubleshoot-allowed-ca.md
+        - name: サブスクリプション オファーと帯域幅調整
+          href: subscription-offerings.md
 - name: リファレンス
   items:
     - name: Standard のルール エンジンのリファレンス

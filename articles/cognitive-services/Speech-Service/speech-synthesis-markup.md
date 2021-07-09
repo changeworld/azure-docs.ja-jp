@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3e0bcef30d13403d8067c41568b7ee321fb46995
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 3ba2dad93778e9d4482fa00c854a73dbc616d290
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377194"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750409"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -106,77 +106,6 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 |-----------|-------------|---------------------|
 | `name` | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | 必須 |
 
-> [!IMPORTANT]
-> 複数の音声はワード境界機能に対応していません。 複数の音声を使用するには、ワード境界機能を無効にする必要があります。
-
-### <a name="disable-word-boundary"></a>ワード境界を無効にする
-
-Speech SDK 言語に基づき、`SpeechConfig` オブジェクトのインスタンスで `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` プロパティを `false` に設定します。
-
-# <a name="c"></a>[C#](#tab/csharp)
-
-詳細については、<a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a> を参照してください。
-
-```csharp
-speechConfig.SetProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="c"></a>[C++](#tab/cpp)
-
-詳細については、<a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a> を参照してください。
-
-```cpp
-speechConfig->SetProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-詳細については、<a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a> を参照してください。
-
-```java
-speechConfig.setProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-詳細については、<a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a> を参照してください。
-
-```python
-speech_config.set_property_by_name(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-詳細については、<a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a> を参照してください。
-
-```javascript
-speechConfig.setProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
-
-詳細については、<a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
-
-```objectivec
-[speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-詳細については、<a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
-
-```swift
-speechConfig!.setPropertyTo(
-    "false", byName: "SpeechServiceResponse_Synthesis_WordBoundaryEnabled")
-```
-
----
-
 **例**
 
 ```xml
@@ -202,10 +131,10 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
-* `zh-CN-YunxiNeural` 
-* `zh-CN-XiaohanNeural` 
-* `zh-CN-XiaomoNeural` 
-* `zh-CN-XiaoxuanNeural` 
+* `zh-CN-YunxiNeural`
+* `zh-CN-XiaohanNeural`
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
 * `zh-CN-XiaoruiNeural`
 
 ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 現在、話し方の調整は、中国語 (標準、簡体字) のニューラル音声でサポートされています。
@@ -228,7 +157,7 @@ speechConfig!.setPropertyTo(
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> 現時点では、`styledegree` でサポートされているのは、中国語 (標準、簡体字) のニューラル音声のみです。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。 
+> 現時点では、`styledegree` でサポートされているのは、中国語 (標準、簡体字) のニューラル音声のみです。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。
 
 **属性**
 
@@ -375,10 +304,12 @@ speechConfig!.setPropertyTo(
 
 ## <a name="adjust-speaking-languages"></a>読み上げ言語を調整する
 
-> [!IMPORTANT]
->  ニューラル音声用の読み上げ言語のみを調整できます。
-> `<lang xml:lang>` 要素を使用して、1 つの音声でさまざまな言語 (英語、スペイン語、中国語など) を流暢に読み上げられるようにします。 これは、Speech Service に固有の省略可能な要素です。 この要素がない場合、音声で読み上げられるのはその第一言語となります。
-> 現在、これらのニューラル音声に対しては、読み上げ言語の調整がサポートされています: `en-US-JennyMultilingualNeural` 上記の変更は文章レベルと単語レベルで適用されます。 言語がサポートされていない場合、このサービスからオーディオ ストリームは返されません。
+ニューラル音声用の読み上げ言語を調整できます。
+`<lang xml:lang>` 要素を使用して、1 つの音声でさまざまな言語 (英語、スペイン語、中国語など) を流暢に読み上げられるようにします。 これは、Speech Service に固有の省略可能な要素です。 この要素がない場合、音声で読み上げられるのはその第一言語となります。
+現在、これらのニューラル音声に対しては、読み上げ言語の調整がサポートされています: `en-US-JennyMultilingualNeural` 上記の変更は文章レベルと単語レベルで適用されます。 言語がサポートされていない場合、このサービスからオーディオ ストリームは返されません。
+
+> [!NOTE]
+> 現在、 `<lang xml:lang>` 要素は、`prosody` および `break` 要素と互換性がありません。この要素では、ピッチ、輪郭、速さ、期間、ボリュームなど、一時停止や韻律を調整することはできません。
 
 **構文**
 
@@ -396,20 +327,20 @@ speechConfig!.setPropertyTo(
 
 | 音声                            | ロケール言語           | Description                                                 |
 |----------------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-JennyMultilingualNeural`  | `lang="en-us"`            | en-US ロケール (この音声のプライマリ ロケールである) を読み上げます |
-|                                  | `lang="en-ca"`            | en-CA ロケール言語を読み上げます                                  |
-|                                  | `lang="en-au"`            | en-AU ロケール言語を読み上げます                                  |
-|                                  | `lang="en-gb"`            | en-GB ロケール言語を読み上げます                                  |
-|                                  | `lang="de-de"`            | de-DE ロケール言語を読み上げます                                  |
-|                                  | `lang="fr-fr"`            | fr-FR ロケール言語を読み上げます                                  |
-|                                  | `lang="fr-ca"`            | fr-CA ロケール言語を読み上げます                                  |
-|                                  | `lang="es-es"`            | es-ES ロケール言語を読み上げます                                  |
-|                                  | `lang="es-mx"`            | es-MX ロケール言語を読み上げます                                  |
-|                                  | `lang="zh-cn"`            | zh-CN ロケール言語を読み上げます                                  |
-|                                  | `lang="ko-kr"`            | ko-KR ロケール言語を読み上げます                                  |
-|                                  | `lang="ja-jp"`            | ja-JP ロケール言語を読み上げます                                  |
-|                                  | `lang="it-it"`            | it-IT ロケール言語を読み上げます                                  |
-|                                  | `lang="pt-br"`            | pt-BR ロケール言語を読み上げます                                  |
+| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | en-US ロケール (この音声のプライマリ ロケールである) を読み上げます |
+|                                  | `lang="en-CA"`            | en-CA ロケール言語を読み上げます                                  |
+|                                  | `lang="en-AU"`            | en-AU ロケール言語を読み上げます                                  |
+|                                  | `lang="en-GB"`            | en-GB ロケール言語を読み上げます                                  |
+|                                  | `lang="de-DE"`            | de-DE ロケール言語を読み上げます                                  |
+|                                  | `lang="fr-FR"`            | fr-FR ロケール言語を読み上げます                                  |
+|                                  | `lang="fr-CA"`            | fr-CA ロケール言語を読み上げます                                  |
+|                                  | `lang="es-ES"`            | es-ES ロケール言語を読み上げます                                  |
+|                                  | `lang="es-MX"`            | es-MX ロケール言語を読み上げます                                  |
+|                                  | `lang="zh-CN"`            | zh-CN ロケール言語を読み上げます                                  |
+|                                  | `lang="ko-KR"`            | ko-KR ロケール言語を読み上げます                                  |
+|                                  | `lang="ja-JP"`            | ja-JP ロケール言語を読み上げます                                  |
+|                                  | `lang="it-IT"`            | it-IT ロケール言語を読み上げます                                  |
+|                                  | `lang="pt-BR"`            | pt-BR ロケール言語を読み上げます                                  |
 
 **例**
 
@@ -420,10 +351,10 @@ speechConfig!.setPropertyTo(
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
     <voice name="en-US-JennyMultilingualNeural">
         I am looking forward to the exciting things.
-        <lang xml:lang="es-mx">
+        <lang xml:lang="es-MX">
             Estoy deseando que lleguen las cosas emocionantes.
         </lang>
-        <lang xml:lang="de-de">
+        <lang xml:lang="de-DE">
             Ich freue mich auf die spannenden Dinge.
         </lang>
     </voice>
@@ -625,8 +556,8 @@ A good place to start is by trying out the slew of educational apps that are hel
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
   <lexeme>
-    <grapheme>😀</grapheme> 
-    <alias>test emoji</alias> 
+    <grapheme>😀</grapheme>
+    <alias>test emoji</alias>
   </lexeme>
 </lexicon>
 ```

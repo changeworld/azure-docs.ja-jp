@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/15/2021
+ms.date: 06/10/2021
 ms.author: aahi
-ms.openlocfilehash: 903147b6c9f102b83f65d67cf41d4df0c62c7b54
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 3fdd5db4abc2b16153f6758827e152337887a095
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280566"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962791"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -35,7 +35,7 @@ PII 機能は NER の一部であり、電話番号、メール アドレス、�
 
 ## <a name="named-entity-recognition-features-and-versions"></a>固有表現認識の機能とバージョン
 
-| 機能                                                         | NER v3.0 | NER v3.1-preview.4 |
+| 機能                                                         | NER v3.0 | NER v3.1-preview.5 |
 |-----------------------------------------------------------------|--------|----------|
 | 単一要求およびバッチ要求のメソッド                          | X      | X        |
 | 複数のカテゴリに対応する拡張されたエンティティの認識           | X      | X        |
@@ -47,8 +47,8 @@ PII 機能は NER の一部であり、電話番号、メール アドレス、�
 
 名前付きエンティティの認識 v3 では、複数の種類に対応する拡張された検出が提供されます。 現在、NER v3.0 は、[一般エンティティ カテゴリ](../named-entity-types.md)に含まれるエンティティを認識できます。
 
-固有表現認識 v3.1-preview.4 には、v3.0 の検出機能と、次のものが含まれています。 
-* `v3.1-preview.4/entities/recognition/pii` エンドポイントを使用して、個人情報 (`PII`) を検出する機能。 
+固有表現認識 v3.1-preview.5 には、v3.0 の検出機能と、次のものが含まれています。 
+* `v3.1-preview.5/entities/recognition/pii` エンドポイントを使用して、個人情報 (`PII`) を検出する機能。 
 * 機密性の高い医療情報 (`PHI`) を検出する省略可能な `domain=phi` パラメーター。
 * `/analyze` エンドポイントを使用した[非同期操作](text-analytics-how-to-call-api.md)。
 
@@ -74,38 +74,38 @@ POST 要求を作成します。 次のリンクにある [Postman](text-analyti
 
 #### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
 
-固有表現認識 `v3.1-preview.4` では、NER、PII、およびエンティティ リンク設定の要求に対して個別のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
+固有表現認識 `v3.1-preview.5` では、NER、PII、およびエンティティ リンク設定の要求に対して個別のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
 
 **エンティティ リンク設定**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/linking`
 
-[`Linking` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesLinking)
+[`Linking` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesLinking)
 
 **名前付きエンティティの認識**
-* 一般的なエンティティ- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/general`
+* 一般的なエンティティ- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/general`
 
-[`General` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionGeneral)
+[`General` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesRecognitionGeneral)
 
 **個人を特定できる情報 (PII)**
-* 個人 (`PII`) 情報 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii`
+* 個人 (`PII`) 情報 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii`
 
 また、オプションの `domain=phi` パラメーターを使用すると、テキスト内の医療 (`PHI`) 情報を検出することもできます。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi`
 
-`v3.1-preview.4` 以降では、JSON 応答に `redactedText` プロパティが含まれます。これには、変更された入力テキストが含まれ、検出された PII エンティティは、そのエンティティ内の各文字が `*` に置き換えられます。
+`v3.1-preview.5` 以降では、JSON 応答に `redactedText` プロパティが含まれます。これには、変更された入力テキストが含まれ、検出された PII エンティティは、そのエンティティ内の各文字が `*` に置き換えられます。
 
-[`PII` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionPii)
+[`PII` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesRecognitionPii)
 
 API は、指定されたドキュメントの言語につい て、[一覧表示さ れたエンティティのカテゴリ](../named-entity-types.md?tabs=personal)を検出しようとします。 検出および返されるエンティティを指定する場合は、オプションの pii-categories パラメーターを適切なエンティティ カテゴリと共に使用します。 このパラメーターを使用すると、ドキュメントの言語に対して既定で有効になっていないエンティティを検出することもできます。 たとえば、英語のテキストで発生する可能性があるフランス語版のドライバーのライセンス番号などです。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
 
 **非同期操作**
 
-`v3.1-preview.4` 以降、`/analyze` エンドポイントを使用して、NER とエンティティ リンク設定の要求を非同期的に送信できます。
+`v3.1-preview.5` 以降、`/analyze` エンドポイントを使用して、NER とエンティティ リンク設定の要求を非同期的に送信できます。
 
-* 非同期操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze`
+* 非同期操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/analyze`
 
 非同期要求の送信の詳細については、[Text Analytics API の呼び出し方法](text-analytics-how-to-call-api.md)に関するページを参照してください。
 
@@ -489,4 +489,5 @@ PII の応答の例:
 
 * [Text Analytics の概要](../overview.md)
 * [Text Analytics クライアント ライブラリの使用](../quickstarts/client-libraries-rest-api.md)
+* [モデルのバージョン](../concepts/model-versioning.md)
 * [新機能](../whats-new.md)

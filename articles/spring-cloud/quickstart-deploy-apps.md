@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: cf143af4bba7b26aa1fec5ed6e18ab41fbc65dd5
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: fc005e8d94a0c6ddb7f21de05872f12bdb7f2177
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664836"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965122"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -209,6 +209,13 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
 
 ## <a name="create-and-deploy-apps-on-azure-spring-cloud"></a>アプリを作成して Azure Spring Cloud にデプロイする
 
+1. 前のクイックスタートで次のコマンドを実行していない場合は、CLI の既定値を設定します。
+
+    ```azurecli
+    az configure --defaults group=<resource group name> spring-cloud=<service name>  
+    az spring-cloud config-server git set -n <service instance name> --uri https://github.com/azure-samples/spring-petclinic-microservices-config
+    ```
+
 1. PetClinic の 2 つのコア マイクロサービス (API ゲートウェイと顧客サービス) を作成します。
 
     ```azurecli
@@ -229,7 +236,7 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
     az spring-cloud app list -o table
     ```
 
-    ```txt
+    ```azurecli
         Name               Location    ResourceGroup    Production Deployment    Public Url                                           Provisioning Status    CPU    Memory    Running Instance    Registered Instance    Persistent Storage
     -----------------  ----------  ---------------  -----------------------  ---------------------------------------------------  ---------------------  -----  --------  ------------------  ---------------------  --------------------
     api-gateway        eastus      xxxxxx-sp         default                  https://<service name>-api-gateway.azuremicroservices.io   Succeeded              1      2         1/1                 1/1                    -     
@@ -275,7 +282,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 1. 親 POM を含む PetClinic のルート フォルダー内で次のコマンドを実行して、構成を生成します。 既に Azure CLI でサインインしている場合、コマンドは資格情報を自動的に取得します。 そうでない場合は、プロンプトの指示に従ってサインインします。 詳細については、[wiki ページ](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)を参照してください。
 
     ```azurecli
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.3.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.5.0:config
     ```
     
     選択を求めるメッセージが表示されます。
@@ -291,7 +298,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
             <plugin>
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-spring-cloud-maven-plugin</artifactId>
-                <version>1.3.0</version>
+                <version>1.5.0</version>
                 <configuration>
                     <subscriptionId>xxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx</subscriptionId>
                     <clusterName>v-spr-cld</clusterName>
@@ -310,7 +317,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     
 ## <a name="verify-the-services"></a>サービスを確認する
 
-デプロイ コマンドが成功すると、"https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io" の形式の URL が返されます。  これを使用して、実行中のサービスに移動します。
+デプロイ コマンドが成功すると、"https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io" の形式の URL が返されます。 これを使用して、実行中のサービスに移動します。
 
 ![PetClinic にアクセスする](media/build-and-deploy/access-customers-service.png)
 
@@ -342,7 +349,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     ![プロジェクトのインポート](media/spring-cloud-intellij-howto/import-project-1-pet-clinic.png)
 
 ### <a name="deploy-api-gateway-app-to-azure-spring-cloud"></a>api-gateway アプリを Azure Spring Cloud にデプロイする
-Azure にデプロイするには、Azure アカウントで Azure Toolkit for IntelliJ にサインインし、自分のサブスクリプションを選択する必要があります。 サインインの詳細については、「[インストールとサインイン](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
+Azure にデプロイするには、Azure アカウントで Azure Toolkit for IntelliJ にサインインし、自分のサブスクリプションを選択する必要があります。 サインインの詳細については、「[インストールとサインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
 1. IntelliJ のプロジェクト エクスプローラーでプロジェクトを右クリックし、 **[Azure]**  ->  **[Deploy to Azure Spring Cloud]\(Azure Spring Cloud にデプロイ\)** を選択します。
 

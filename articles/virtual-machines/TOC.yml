@@ -155,6 +155,8 @@
               href: sizes-compute.md
             - name: Fsv2 シリーズ
               href: fsv2-series.md
+            - name: FX シリーズ
+              href: fx-series.md
         - name: メモリ最適化
           items:
             - name: 概要
@@ -206,6 +208,8 @@
               href: ncv3-series.md
             - name: NCasT4_v3 シリーズ
               href: nct4-v3-series.md
+            - name: NDasrA100_v4 シリーズ
+              href: nda100-v4-series.md
             - name: ND シリーズ
               href: nd-series.md
             - name: NDv2 シリーズ
@@ -790,13 +794,13 @@
         - name: リソース マネージャーのテンプレート
           items:
             - name: Shared Image Gallery を作成する
-              href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+              href: 'https://azure.microsoft.com/resources/templates/sig-create/'
             - name: Shared Image Gallery にイメージ定義を作成する
-              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+              href: 'https://azure.microsoft.com/resources/templates/sig-image-definition-create/'
             - name: Shared Image Gallery にイメージのバージョンを作成する
-              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+              href: 'https://azure.microsoft.com/resources/templates/sig-image-version-create/'
             - name: イメージ バージョンから VM を作成する
-              href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+              href: 'https://azure.microsoft.com/resources/templates/vm-from-sig/'
         - name: Ansible
           href: /azure/developer/ansible/vm-configure-from-azure-shared-image-gallery?tabs=ansible
         - name: 共有イメージのトラブルシューティングを行う
@@ -809,7 +813,7 @@
           href: managed-disk-from-image-version.md
         - name: 購入プラン情報
           href: marketplace-images.md
-    - name: Image Builder (プレビュー)
+    - name: Image Builder
       items:
         - name: 概要
           displayName: 'Image builder, images, building'
@@ -965,6 +969,8 @@
       href: disks-shared-enable.md
     - name: 暗号化
       items:
+        - name: ディスク暗号化の概要
+          href: disk-encryption-overview.md
         - name: サーバー側暗号化
           items:
             - name: サーバー側暗号化の概要
@@ -1039,7 +1045,9 @@
                 - name: ディスク暗号化のトラブルシューティング
                   href: ./linux/disk-encryption-troubleshooting.md
                 - name: ディスク暗号化の FAQ
-                  href: ./linux/disk-encryption-faq.md
+                  href: ./linux/disk-encryption-faq.yml
+                - name: 以前のバージョンから現在のバージョンへのアップグレード
+                  href: ./linux/disk-encryption-upgrade.md
                 - name: ディスク暗号化 - 以前のバージョン
                   items:
                     - name: 概要
@@ -1070,7 +1078,7 @@
                 - name: ディスク暗号化のトラブルシューティング
                   href: ./windows/disk-encryption-troubleshooting.md
                 - name: ディスク暗号化の FAQ
-                  href: ./windows/disk-encryption-faq.md
+                  href: ./windows/disk-encryption-faq.yml
                 - name: ディスク暗号化 - 以前のバージョン
                   items:
                     - name: 概要
@@ -1258,7 +1266,7 @@
               displayName: Find unattached disks
               href: disks-find-unattached-portal.md
         - name: ディスクに関する FAQ
-          href: faq-for-disks.md
+          href: faq-for-disks.yml
     - name: コード サンプル
       items:
         - name: CLI
@@ -1453,12 +1461,18 @@
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
         - name: OS イメージ アップグレードのメンテナンス コントロール
           items:
-            - name: 概要 (プレビュー)
+            - name: 概要
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
               href: virtual-machine-scale-sets-maintenance-control.md
-            - name: PowerShell (プレビュー)
+            - name: PowerShell
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
               href: virtual-machine-scale-sets-maintenance-control-powershell.md
+            - name: CLI
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control-cli.md
+            - name: ポータル
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control-portal.md
     - name: VM ゲストの自動パッチ適用 (プレビュー)
       items:
         - name: 概要
@@ -1827,6 +1841,6 @@
     - name: よく寄せられる質問
       items:
         - name: Linux
-          href: ./linux/faq.md
+          href: ./linux/faq.yml
         - name: Windows
-          href: ./windows/faq.md
+          href: ./windows/faq.yml

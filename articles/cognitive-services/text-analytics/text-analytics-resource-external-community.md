@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74e01ffe3ed846ebc56a82d352894e8424bb3f7a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94365009"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748009"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service の外部/コミュニティ コンテンツ
 
@@ -27,7 +27,7 @@ ms.locfileid: "94365009"
 
 + [Using Text Analytics Key Phrase Cognitive Services API from PowerShell (PowerShell から Text Analytics Key Phrase Cognitive Services API を使用する) (AutomationNext ブログ)](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [R Quick tip: Microsoft Cognitive Services’ Text Analytics API (R クイック ヒント: Microsoft Cognitive Services の Text Analytics API) (R Bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [R クイック ヒント: Azure Cognitive Services の Text Analytics API (R Bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
 + [Sentiment analysis in Logic App using SQL Server data (SQL Server データを利用したロジック アプリの感情分析) (TechNet ブログ)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
@@ -43,13 +43,13 @@ ms.locfileid: "94365009"
 
 + [Logic App to detect sentiment and extract key phrases from your text](https://www.youtube.com/watch?v=jVN9NObAzgk) (テキストから感情を検出し、キー フレーズを抽出するロジック アプリ)
 
-+ [Sentiment Analysis using Power BI and Microsoft Cognitive Services](https://www.youtube.com/watch?v=gJ1j3N7Y75k) (Power BI と Microsoft Cognitive Services を利用した感情分析)
++ [Power BI と Azure Cognitive Services を利用した感情分析](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
 
-+ [Text analytics extract key phrases using Power BI and Microsoft Cognitive Services](https://www.youtube.com/watch?v=R_-1TB2BF14) (Power BI と Microsoft Cognitive Services を利用したテキスト分析のキー フレーズ抽出)
++ [Power BI と Azure Cognitive Services を利用したテキスト分析のキー フレーズ抽出](https://www.youtube.com/watch?v=R_-1TB2BF14)
 
 ## <a name="next-steps"></a>次のステップ
 
-今回取り上げなかった機能やユースケースをお探しですか。 [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) でご要望またはご投票ください。 
+今回取り上げなかった機能やユースケースをお探しですか。 [フィードバック ツール](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)を使用して、ご要望をお伝えいただくか、投票してください。 
 
 ## <a name="see-also"></a>関連項目
 

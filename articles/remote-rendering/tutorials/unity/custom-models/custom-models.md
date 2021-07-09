@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a278b6e725488d6107e6b0819e002d1dafe4774
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 7c3e5adfbadf7188b8fccf97b277f4c2377cd552
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591665"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964062"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>チュートリアル:インターフェイスとカスタム モデル
 
@@ -77,13 +77,17 @@ MRTK とチュートリアル アセットがプロジェクトに追加され�
 1. **AppMenu** プレハブをシーンにドラッグします。
 1. このシーンに *Text Mesh Pro* アセットを追加するのは今回が初めてなので、おそらく、**TMP Importer** のダイアログが表示されます。 画面の指示に従って **[Import TMP Essentials]\(TMP の必須パッケージをインポート\)** を選択します。 その後、インポーターのダイアログを閉じてください。サンプルや追加パッケージは必要ありません。
 1. **AppMenu** は、セッションへの接続に同意するためのモーダルに自動的に接続して表示するよう構成されているため、前に設定しておいたバイパスは削除してかまいません。 **RemoteRenderingCoordinator** GameObject で、 **[On Requesting Authorization]\(承認要求時\)** イベントの [-] ボタンをクリックして、以前に実装した承認のバイパスを削除してください。
- ![バイパスを削除する](./media/remove-bypass-event.png)
+
+    ![バイパスを削除する](./media/remove-bypass-event.png).
+
 1. Unity エディターの **[Play]\(再生\)** を押して、ビュー コントローラーをテストします。
 1. エディターで MRTK が構成されたら、WASD キーを使用してビューの位置を変更したり、マウスの右ボタンを押しながらマウスを移動することでビューの方向を変更したりすることができます。 シーン内を少し動き回ってみて、コントロールの感触を確かめてください。
 1. デバイスで、手のひらを上げることで、**AppMenu** を呼び出すことができます。Unity エディターでは、ホットキーの "M" を使用します。
 1. メニューが見えなくなった場合は、"M" キーを押してメニューを呼び出します。 操作しやすいよう、このメニューはカメラの近くに配置されます。
 1. これで、承認は **AppMenu** の右側に要求として表示されるようになります。それ以降は、これを使用して、リモート レンダリング セッションの管理をアプリに承認します。
- ![承認の UI](./media/authorize-request-ui.png)
+
+    ![承認の UI](./media/authorize-request-ui.png)
+
 1. Unity の再生を停止して、チュートリアルを続行します。
 
 ## <a name="manage-model-state"></a>モデルの状態を管理する
@@ -257,15 +261,26 @@ MRTK とチュートリアル アセットがプロジェクトに追加され�
 
 ## <a name="load-the-test-model"></a>テスト モデルを読み込む
 
-もう一度テスト モデルを読み込んで、新しいスクリプトをテストしてみましょう。 スクリプトを含み、テスト モデルの親となるゲーム オブジェクトを作成します。
+もう一度テスト モデルを読み込んで、新しいスクリプトをテストしてみましょう。 スクリプトを含み、テスト モデルの親となるゲーム オブジェクトを追加します。 また、モデルが含まれる仮想ステージも作成します。 ステージは、[WorldAnchor](/windows/mixed-reality/develop/unity/spatial-anchors-in-unity?tabs=worldanchor) を使用して、実際の世界を基準として固定されたままになります。 モデル自体を後で動かせるように、固定ステージを使用します。
 
-1. シーンに新しい空のゲーム オブジェクトを作成し、**TestModel** という名前を付けます。
+1. シーンに新しい空のゲーム オブジェクトを作成し、**ModelStage** という名前を付けます。
+1. **ModelStage** に WorldAnchor コンポーネントを追加します。
+
+    ![WorldAnchor コンポーネントを追加する](./media/add-world-anchor-component.png)
+
+1. **ModelStage** の子として新しい空のゲーム オブジェクトを作成し、**TestModel** という名前を付けます。
 1. *RemoteRenderedModel* スクリプトを **TestModel** に追加します。
-![RemoteRenderedModel コンポーネントを追加する](./media/add-remote-rendered-model-script.png)
+
+    ![RemoteRenderedModel コンポーネントを追加する](./media/add-remote-rendered-model-script.png)
+
 1. [`Model Display Name`] と [`Model Path`] に、それぞれ「*TestModel*」と「*builtin://Engine*」を入力します。
-![モデルの詳細を指定する](./media/add-model-script.png)
+
+    ![モデルの詳細を指定する](./media/add-model-script.png)
+
 1. カメラの前の位置 **x = 0、y = 0、z = 3** に、**TestModel** オブジェクトを配置します。
-![オブジェクトを配置する](./media/test-model-position.png)
+
+    ![オブジェクトを配置する](./media/test-model-position.png)
+
 1. **AutomaticallyLoad** がオンになっていることを確認します。
 1. Unity エディターで **[Play]\(再生\)** を押してアプリケーションをテストします。
 1. アプリがセッションを作成できるように *[Connect]\(接続\)* ボタンをクリックして承認することで、セッションに接続し、自動的にモデルを読み込むようになります。
@@ -286,7 +301,9 @@ MRTK とチュートリアル アセットがプロジェクトに追加され�
 
 1. 新しい空の GameObject をシーンに作成し、カスタム モデルと同様の名前を付けます。
 1. 新しく作成した GameObject に *RemoteRenderedModel* スクリプトを追加します。
- ![RemoteRenderedModel コンポーネントを追加する](./media/add-remote-rendered-model-script.png)
+
+    ![RemoteRenderedModel コンポーネントを追加する](./media/add-remote-rendered-model-script.png)
+
 1. `Model Display Name` に、カスタム モデルの適切な名前を入力します。
 1. 前の取り込み手順で作成した、モデルの *Shared Access Signature (SAS)* URI を `Model Path` に入力します。
 1. カメラの前の **x = 0, y = 0, z = 3** の位置に GameObject を配置します。

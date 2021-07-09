@@ -5,17 +5,17 @@ description: Form Recognizer 事前構築済み ID API を使用した ID ドキ
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9ab936f90fb890d50e6e476e216b327ed26fc4f5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f829de878b512ae6a8c8f8747e7c61456027cd68
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374853"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890674"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Form Recognizer 事前構築済み身分証明書類 (ID) モデル
 
@@ -54,16 +54,16 @@ Form Recognizer IDs サービスを試してみるには、オンラインのサ
 
 ### <a name="fields-extracted"></a>抽出されるフィールド
 
-|名前| 型 | 説明 | 値 |
+|名前| 種類 | 説明 | 値 (標準化された出力) |
 |:-----|:----|:----|:----|
-|  国 | country | ISO 3166 標準に準拠した国番号 | "USA" |
+|  CountryRegion | countryRegion | ISO 3166 標準に準拠した国または地域コード | "USA" |
 |  DateOfBirth | date | YYYY-MM-DD 形式の DOB | "1980-01-01" |
 |  DateOfExpiration | date | YYYY-MM-DD 形式の有効期限日 | "2019-05-05" |
 |  DocumentNumber | string | 関連するパスポート番号、運転免許証番号など | "340020013" |
 |  FirstName | string | 該当する場合は、抽出された名とミドルネームのイニシャル | "JENNIFER" |
 |  LastName | string | 抽出された姓 | "BROOKS" |
-|  Nationality | country | ISO 3166 標準に準拠した国番号 | "USA" |
-|  Sex | gender | "M"、"F"、"X" という値が抽出される可能性があります | "F" |
+|  Nationality | countryRegion | ISO 3166 標準に準拠した国または地域コード | "USA" |
+|  Sex | string | "M"、"F"、"X" という値が抽出される可能性があります | "F" |
 |  MachineReadableZone | object | それぞれ 44 文字の 2 行を含む抽出されたパスポート MRZ | "P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816" |
 |  DocumentType | string | ドキュメントの種類 (例: パスポート、運転免許証) | "passport" |
 |  Address | string | 抽出された住所 (運転免許証) | "123 STREET ADDRESS YOUR CITY WA 99999-1234"|
@@ -87,10 +87,6 @@ ID API からは次の情報も返されます。
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-locales"></a>サポート対象のロケール
-
- **あらかじめ構築された ID v2.1** では、**en-us** ロケールで ID ドキュメントがサポートされています。
-
 ## <a name="supported-identity-document-types"></a>サポートされている ID ドキュメントの種類
 
 * **あらかじめ構築された ID v2.1** では、世界各国のパスポートと米国の運転免許証から主要な値が抽出されます。
@@ -100,7 +96,7 @@ ID API からは次の情報も返されます。
   >
   > 現在サポートされている ID の種類として、世界各国のパスポートと米国の運転免許証があります。 Microsoft では、ID のサポートを世界各国の他の ID ドキュメントに拡張することを積極的に模索しています。
 
-## <a name="post-analyze-id-document"></a>ID 分析ドキュメントの投稿
+## <a name="the-analyze-id-document-operation"></a>Analyze ID Document 操作
 
 [ID 分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7daad1f2612c46f5822)操作に ID の画像または PDF を入力として渡すと、目的の値が抽出されます。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
@@ -108,13 +104,13 @@ ID API からは次の情報も返されます。
 |:-----|:----|
 |Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="get-analyze-id-document-result"></a>ID ドキュメントの分析結果の取得
+## <a name="the-get-analyze-id-document-result-operation"></a>Get Analyze ID Document Result 操作
 
 <!---
 Need to update this with updated APIM links when available
 -->
 
-2 つ目の手順により、[**ID 分析ドキュメント結果の取得**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)を呼び出します。 この操作には、ID 分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
+2 番目の手順では、[**Get Analyze ID Document Result**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) 操作を呼び出します。 この操作には、ID 分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
@@ -129,11 +125,11 @@ Need to update this with updated APIM links when available
 
 ### <a name="sample-json-output"></a>サンプル JSON 出力
 
-成功した JSON 応答の例を次に示します。`readResults` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `documentResults` ノードには、モデルによって検出された ID 値が格納されます。 このノードには、名、姓、ドキュメント番号などの便利なキーと値のペアがあります。
+成功した JSON 応答の例 を次に示します (わかりやすくするために出力が短縮されています)。`readResults` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `documentResults` ノードには、モデルによって検出された ID 値が格納されます。 このノードには、名、姓、ドキュメント番号などの便利なキーと値のペアがあります。
 
 ```json
 {
-   "status": "succeeded",
+  "status": "succeeded",
   "createdDateTime": "2021-03-04T22:29:33Z",
   "lastUpdatedDateTime": "2021-03-04T22:29:36Z",
   "analyzeResult": {
@@ -175,6 +171,8 @@ Need to update this with updated APIM links when available
               }
             ],
           ...
+          }
+        ]
       }
     ],
 
@@ -187,9 +185,9 @@ Need to update this with updated APIM links when available
           1
         ],
         "fields": {
-          "Country": {
-            "type": "country",
-            "valueCountry": "USA",
+          "CountryRegion": {
+            "type": "countryRegion",
+            "valueCountryRegion": "USA",
             "text": "USA"
           },
           "DateOfBirth": {
@@ -218,12 +216,12 @@ Need to update this with updated APIM links when available
             "text": "BROOKS"
           },
           "Nationality": {
-            "type": "country",
-            "valueCountry": "USA",
+            "type": "countryRegion",
+            "valueCountryRegion": "USA",
             "text": "USA"
           },
           "Sex": {
-            "type": "gender",
+            "type": "string",
             "valueGender": "F",
             "text": "F"
           },
