@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7c60addd80f7ed027870744d12975fd76983b2f5
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608772"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813832"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>チュートリアル:Synapse Studio で Apache Spark ジョブ定義を作成する
 
-このチュートリアルでは、Azure Synapse Studio を使用して Apache Spark ジョブ定義を作成し、サーバーレス Apache Spark プールに送信する方法を示します。
+このチュートリアルでは、Synapse Studio を使用して Apache Spark ジョブ定義を作成し、それらをサーバーレス Apache Spark プールに送信する方法を示します。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 > [!div class="checklist"]
@@ -45,7 +45,7 @@ ms.locfileid: "105608772"
 
 このセクションでは、PySpark (Python) 用の Apache Spark ジョブ定義を作成します。
 
-1. [Azure Synapse Studio](https://web.azuresynapse.net/) を開きます。
+1. [Synapse Studio](https://web.azuresynapse.net/) を開きます。
 
 2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)に移動して、**python.zip のサンプル ファイル** をダウンロードし、圧縮パッケージを解凍して、**wordcount.py** ファイルと **shakespeare.txt** ファイルを抽出します。 
 

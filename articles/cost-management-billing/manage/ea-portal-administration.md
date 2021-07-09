@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 787f902311437e6ca8a679299ef7a28b34cee4ab
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 09e719408926c071777a7022264c10f14531067f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728412"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075522"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -52,7 +52,7 @@ ms.locfileid: "107728412"
 
 #### <a name="if-your-enterprise-administrator-cant-help-you"></a>エンタープライズ管理者のサポートが得られない場合
 
-エンタープライズ管理者が支援できない場合は、[Azure エンタープライズ ポータルのサポート リクエスト](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)を作成します。 次の情報を指定します。
+エンタープライズ管理者が支援できない場合は、[Azure のサポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成します。 次の情報を指定します。
 
 - 加入契約番号
 - 追加するメール アドレスと認証の種類 (職場、学校、または Microsoft アカウント)

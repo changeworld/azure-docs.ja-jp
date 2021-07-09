@@ -2,17 +2,17 @@
 title: IoT Hub からテレメトリを取り込む
 titleSuffix: Azure Digital Twins
 description: IoT Hub からデバイスのテレメトリ メッセージを取り込む方法について説明します。
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ac55c3cdc041ab724c80b1042db9d988d2e988fc
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8160a2fdb35062c678fc1a9f2e629cca7885224d
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783691"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438998"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure Digital Twins に IoT Hub テレメトリを取り込む
 
@@ -25,8 +25,10 @@ Azure Digital Twins にデータを取り込むプロセスは、[Azure Function
 ## <a name="prerequisites"></a>前提条件
 
 この例を続行する前に、前提条件として次のリソースを設定する必要があります。
-* **IoT ハブ** 手順については、[この IoT Hub のクイック スタート](../iot-hub/quickstart-send-telemetry-cli.md)の「*IoT Hub の作成*」のセクションを参照してください。
+* **IoT ハブ** 手順については、この [ IoT Hub のクイック スタート](../iot-hub/quickstart-send-telemetry-cli.md)の「*IoT Hub の作成*」のセクションを参照してください。
 * デバイス テレメトリを受信する **Azure Digital Twins インスタンス**。 手順については、[方法: Azure Digital Twins インスタンスと認証の設定](./how-to-set-up-instance-portal.md)に関するページを参照してください。
+
+この記事では、**Visual Studio** も使用します。 最新バージョンは、[Visual Studio のダウンロード](https://visualstudio.microsoft.com/downloads/) ページからダウンロードできます。
 
 ### <a name="example-telemetry-scenario"></a>テレメトリのシナリオ例
 
@@ -39,7 +41,7 @@ Azure Digital Twins にデータを取り込むプロセスは、[Azure Function
 
 サーモスタット デバイスから温度テレメトリ イベントが送信されるたびに、関数によってそのテレメトリが処理され、デジタル ツインの *temperature* プロパティが更新されます。 このシナリオの概要を次の図に示します。
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="IoT Hub を通じて温度テレメトリを Azure の関数に送信する IoT Hub デバイスの図。これにより、Azure Digital Twins 内にあるツインの temperature プロパティが更新されます。" border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="温度テレメトリを Azure の関数に送信する IoT Hub デバイスの図。これにより、Azure Digital Twins 内にあるツインの temperature プロパティが更新されます。" border="false":::
 
 ## <a name="add-a-model-and-twin"></a>モデルとツインの追加
 
@@ -52,16 +54,8 @@ Azure Digital Twins にデータを取り込むプロセスは、[Azure Function
 次に、**このモデルを使用して 1 つのツインを作成** します。 次のコマンドを使用して thermostat67 という名前のサーモスタット ツインを作成して、初期温度値を 0.0 に設定します。
 
 ```azurecli-interactive
-az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
+az dt twin create  --dt-name <instance-name> --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}'
 ```
-
-> [!Note]
-> PowerShell 環境で Cloud Shell を使用している場合は、値が正しく解析されるようにするために、インライン JSON フィールド上で引用符文字をエスケープすることが必要になる場合があります。 この変更によってツインを作成するコマンドを次に示します。
->
-> ツインの更新:
-> ```azurecli-interactive
-> az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{\"Temperature\": 0.0,}' --dt-name {digital_twins_instance_name}
-> ```
 
 ツインが正常に作成されると、コマンドからの CLI 出力は次のようになります。
 ```json
@@ -97,7 +91,7 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 * [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/)
 * [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
 
-新しいプロジェクトを使用して Visual Studio で生成したサンプル関数 *Function1.cs* の名前を *IoTHubtoTwins.cs* に変更します。 ファイル内のコードを次のコードに置き換えます。
+Visual Studio で生成したサンプル関数 *Function1.cs* の名前を *IoTHubtoTwins.cs* に変更します。 ファイル内のコードを次のコードに置き換えます。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
@@ -129,7 +123,7 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
   1. **[エンドポイントのタイプ]** では、 _[Azure 関数]_ を選択します。
   1. **[エンド ポイント]** では、 _[エンドポイントの選択]_ リンクを使用して、エンドポイントに使用する Azure 関数を選択します。
     
-:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="イベント サブスクリプションの詳細を作成する Azure portal のスクリーンショット":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="イベント サブスクリプションの詳細を作成する Azure portal のスクリーンショット。":::
 
 _[Azure 関数の選択]_ ページが開いたら、次の詳細を確認または入力します。
  1. **サブスクリプション**:Azure サブスクリプション。
@@ -146,7 +140,7 @@ _[作成]_ ボタンを選択してイベント サブスクリプションを�
 
 ## <a name="send-simulated-iot-data"></a>シミュレートされた IoT データの送信
 
-新しいイングレス機能をテストするには、デバイス シミュレーターを使用します。このデバイス シミュレーターについては、"[チュートリアル: エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)" に関するページを参照してください。 このチュートリアルは、[こちらの C# で記述された Azure Digital Twins のエンドツーエンドのサンプル プロジェクト](/samples/azure-samples/digital-twins-samples/digital-twins-samples)を使用して進められます。 このリポジトリでは、**DeviceSimulator** プロジェクトを使用します。
+新しいイングレス機能をテストするには、デバイス シミュレーターを使用します。このデバイス シミュレーターについては、"[チュートリアル: エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)" に関するページを参照してください。 このチュートリアルは、こちらの [C# で記述された Azure Digital Twins のエンドツーエンドのサンプル プロジェクト](/samples/azure-samples/digital-twins-samples/digital-twins-samples)を使用して進められます。 このリポジトリでは、**DeviceSimulator** プロジェクトを使用します。
 
 このエンド ツー エンドのチュートリアルでは、次の手順を実行します。
 1. [シミュレートされたデバイスを IoT Hub に登録する](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
@@ -157,7 +151,7 @@ _[作成]_ ボタンを選択してイベント サブスクリプションを�
 上記のデバイス シミュレーターを実行中に、デジタル ツインの温度値が変化します。 Azure CLI で、次のコマンドを実行して、温度値を確認します。
 
 ```azurecli-interactive
-az dt twin query --query-command "select * from digitaltwins" --dt-name {digital_twins_instance_name}
+az dt twin query --query-command "select * from digitaltwins" --dt-name <Digital-Twins-instance-name>
 ```
 
 出力には、次のような温度値が含まれている必要があります。
@@ -167,18 +161,14 @@ az dt twin query --query-command "select * from digitaltwins" --dt-name {digital
   "result": [
     {
       "$dtId": "thermostat67",
-      "$etag": "W/\"0000000-1e83-4f7f-b448-524371f64691\"",
+      "$etag": "W/\"dbf2fea8-d3f7-42d0-8037-83730dc2afc5\"",
       "$metadata": {
         "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
         "Temperature": {
-          "ackCode": 200,
-          "ackDescription": "Auto-Sync",
-          "ackVersion": 1,
-          "desiredValue": 69.75806974934324,
-          "desiredVersion": 1
+          "lastUpdateTime": "2021-06-03T17:05:52.0062638Z"
         }
       },
-      "Temperature": 69.75806974934324
+      "Temperature": 70.20518558807913
     }
   ]
 }
@@ -189,4 +179,4 @@ az dt twin query --query-command "select * from digitaltwins" --dt-name {digital
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins を使用したデータのイングレスとエグレスについて確認します。
-* [概念:他のサービスとの統合](concepts-integration.md)
+* [概念: データのイングレスとエグレス](concepts-data-ingress-egress.md)

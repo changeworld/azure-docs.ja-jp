@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/28/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: aba837ab590ae941e161e10e88782dcce944c085
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b38b5303f21cb31115a2279648c8d631e31aa8bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760465"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459316"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>チュートリアル: サーバーレス SQL プールを使用して論理データ ウェアハウスを作成する
 
@@ -88,8 +88,10 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
 ```sql
 CREATE EXTERNAL FILE FORMAT ParquetFormat WITH (  FORMAT_TYPE = PARQUET );
 GO
-CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = CSV );
+CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = DELIMITEDTEXT );
 ```
+
+詳細については、[こちらの記事](develop-tables-external-tables.md?tabs=native#syntax-for-create-external-file-format)をご覧ください。
 
 ## <a name="explore-your-data"></a>データを調査する
 
@@ -98,7 +100,7 @@ CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = CSV );
 ```sql
 select top 10  *
 from openrowset(bulk 'latest/ecdc_cases.parquet',
-                data_source = 'ecdc_cases'
+                data_source = 'ecdc_cases',
                 format='parquet') as a
 ```
 
@@ -177,11 +179,23 @@ FROM OPENROWSET(
 ## <a name="access-and-permissions"></a>アクセスおよびアクセス許可
 
 最後の手順として、LDW にアクセスできるデータベース ユーザーを作成し、外部テーブルとビューのデータを選択するためのアクセス許可をそれらのユーザーに与える必要があります。
-新しいユーザーを追加して、データの読み取りアクセス許可を与える方法は、次のスクリプトでご覧いただけます。
+次のスクリプトでは、Azure AD ID を使用して認証される新しいユーザーを追加する方法を確認できます。
 
 ```sql
 CREATE USER [jovan@contoso.com] FROM EXTERNAL PROVIDER;
 GO
+```
+
+Azure AD プリンシパルの代わりに、ログイン名とパスワードで認証する SQL プリンシパルを作成できます。
+
+```sql
+CREATE LOGIN [jovan] WITH PASSWORD = 'My Very strong Password ! 1234';
+CREATE USER [jovan] FROM LOGIN [jovan];
+```
+
+どちらの場合も、ユーザーにアクセス許可を割り当てることができます。
+
+```sql
 DENY ADMINISTER DATABASE BULK OPERATIONS TO [jovan@contoso.com]
 GO
 GRANT SELECT ON SCHEMA::ecdc_adls TO [jovan@contoso.com]
@@ -202,6 +216,31 @@ GO
 ```sql
 GRANT CONTROL TO [jovan@contoso.com]
 ```
+
+### <a name="role-based-security"></a>ロール ベース セキュリティ
+
+個々の用途にアクセス許可を割り当てる代わりに、ロールにユーザーを整理し、ロール レベルでアクセス許可を管理することをお勧めします。
+次のコード サンプルでは、COVID-19 ケースを分析できるユーザーを表す新しいロールを作成し、このロールに 3 人のユーザーを追加します。
+
+```sql
+CREATE ROLE CovidAnalyst;
+
+ALTER ROLE CovidAnalyst ADD MEMBER [jovan@contoso.com];
+ALTER ROLE CovidAnalyst ADD MEMBER [milan@contoso.com];
+ALTER ROLE CovidAnalyst ADD MEMBER [petar@contoso.com];
+```
+
+グループに属しているすべてのユーザーにアクセス許可を割り当てることができます。
+
+```sql
+GRANT SELECT ON SCHEMA::ecdc_cosmosdb TO [CovidAnalyst];
+GO
+DENY SELECT ON SCHEMA::ecdc_adls TO [CovidAnalyst];
+GO
+DENY ADMINISTER DATABASE BULK OPERATIONS TO [CovidAnalyst];
+```
+
+このロール ベース セキュリティのアクセス制御により、セキュリティ規則の管理を簡略化できる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,19 +3,19 @@ title: 空間分析操作
 titleSuffix: Azure Cognitive Services
 description: 空間分析操作。
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: 37ac7573a1794c97c81fe5364204f85ff14d9fa6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 08d2e50df2365c327d16d3232fd3edc0544e3ffd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538076"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745801"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -70,6 +70,8 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | VIDEO_DECODE_GPU_INDEX| ビデオ フレームをデコードする GPU。 既定では 0 です。 `VICA_NODE_CONFIG`、`DETECTOR_NODE_CONFIG` などの他のノード構成の `gpu_index` と同じである必要があります。|
 | INPUT_VIDEO_WIDTH | ビデオまたはストリームのフレーム幅を入力します (例: 1920)。 これは省略可能なフィールドですが、指定されている場合、フレームは縦横比を維持しながらこのディメンションに合わせてスケーリングされます。|
 | DETECTOR_NODE_CONFIG | 検出ノードを実行する GPU を示す JSON。 これは、`"{ \"gpu_index\": 0 }",` という形式になっている必要があります。|
+| CAMERA_CONFIG | 複数のカメラ用に調整されたカメラ パラメーターを示す JSON です。 使用したスキルに調整が必要であり、カメラ パラメーターが既にある場合は、この構成を使用して直接指定することができます。 `"{ \"cameras\": [{\"source_id\": \"endcomputer.0.persondistancegraph.detector+end_computer1\", \"camera_height\": 13.105561256408691, \"camera_focal_length\": 297.60003662109375, \"camera_tiltup_angle\": 0.9738943576812744}] }"` は次の形式にする必要があります。`source_id` は、各カメラを識別するために使用されます。 発行されたイベントの `source_info` から取得できます。 このメソッドは、`DETECTOR_NODE_CONFIG` で `do_calibration=false` の場合にのみ有効になります。|
+| TRACKER_NODE_CONFIG | トラッカー ノードで速度を計算するかどうかを示す JSON です。 これは、`"{ \"enable_speed\": false }",` という形式になっている必要があります。|
 | SPACEANALYTICS_CONFIG | 後述するゾーンとラインの JSON 構成。|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` を使用すると、ビデオ ストリームでフェイス マスクを着用している人を検出できるようになり、`False` を使用すると無効になります。 既定では、この構成は無効です。 フェイス マスクの検出には、入力ビデオ幅パラメーターを 1920 `"INPUT_VIDEO_WIDTH": 1920` にする必要があります。 検出された人物がカメラに向いていないか、カメラから離れすぎている場合、フェイス マスク属性は返されません。 詳細については、[カメラの配置](spatial-analysis-camera-placement.md)に関するガイドを参照してください。 |
 
@@ -88,7 +90,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | Type| 説明|
+| 名前 | 種類| 説明|
 |---------|---------|---------|
 | `gpu_index` | string| この操作が実行される GPU インデックス。|
 | `do_calibration` | string | 調整がオンになっていることを示します。 **cognitiveservices.vision.spatialanalysis-persondistance** が正しく機能するには、`do_calibration` が true である必要があります。 do_calibration は、既定では True に設定されています。 |
@@ -98,6 +100,20 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `calibration_quality_check_one_round_sample_collect_num` | INT | サンプル コレクションのラウンドごとに収集する新しいデータ サンプルの最小数。 既定値は `10` です。 `enable_recalibration=True` の場合のみ使用されます。|
 | `calibration_quality_check_queue_max_size` | INT | カメラ モデルの調整時に格納するデータ サンプルの最大数。 既定値は `1000` です。 `enable_recalibration=True` の場合のみ使用されます。|
 | `enable_breakpad`| [bool] | デバッグ用のクラッシュ ダンプを生成するために使用される breakpad を有効にするかどうかを示します。 既定値は `false` です。 `true` に設定した場合は、コンテナー `createOptions` の `HostConfig` 部分に `"CapAdd": ["SYS_PTRACE"]` も追加する必要があります。 既定では、クラッシュ ダンプは [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter アプリにアップロードされます。クラッシュ ダンプを独自の AppCenter アプリにアップロードする場合は、環境変数 `RTPT_APPCENTER_APP_SECRET` をアプリのアプリ シークレットでオーバーライドできます。
+| `enable_orientation` | bool | 検出された人の向きを計算するかどうかを示します。 `enable_orientation` は既定で False に設定されます。 |
+
+
+### <a name="speed-parameter-settings"></a>速度パラメーターの設定
+トラッカー ノードのパラメーター設定を使用して、速度計算を構成できます。
+```
+{
+"enable_speed": true,
+}
+```
+| Name | 種類| 説明|
+|---------|---------|---------|
+| `enable_speed` | bool | 検出された人の速度を計算するかどうかを示します。 `enable_speed` は既定で false に設定されます。 速度と向きの両方に最適な推定値を設定することを強くお勧めします。 |
+
 
 ## <a name="spatial-analysis-operations-configuration-and-output"></a>空間分析操作の構成と出力
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>cognitiveservices.vision.spatialanalysis-personcount のゾーン構成
@@ -120,7 +136,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | Type| 説明|
+| 名前 | 種類| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -165,7 +181,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | Type| 説明|
+| 名前 | 種類| 説明|
 |---------|---------|---------|
 | `lines` | list| ラインのリスト。|
 | `name` | string| このラインのフレンドリ名。|
@@ -211,11 +227,12 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | Type| 説明|
+| 名前 | 種類| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
 | `polygon` | list| 各値のペアは、多角形の頂点の x、y を表します。 多角形は、人の追跡または人数のカウントを行う領域を表します。 浮動小数点値は、左上隅を基準とした頂点の位置を表します。 x、y の絶対値を計算するには、これらの値とフレーム サイズを乗算します。 
+| `target_side` | INT| `polygon` によって定義されたゾーンの辺を指定します。これにより、ゾーン内で人が辺に向いている時間を測定します。 'dwellTimeForTargetSide' では、その推定時間が出力されます。 各辺は、ゾーンを表す多角形の 2 つの頂点の間の番号付きのエッジです。 たとえば、多角形の最初の 2 つの頂点間のエッジは、最初の辺である 'side'=1 を表します。 `target_side` の値の範囲は `[0,N-1]` です。`N` は `polygon` の辺の数です。 これフィールドは必須ではありません。  |
 | `threshold` | float| その人がゾーン内のこのピクセル数よりも大きい場合にイベントが送信されます。 既定値は、type が zonecrossing の場合は 48、time が DwellTime の場合は 16 です。 これらは、最大の精度を実現するために推奨される値です。  |
 | `type` | string| **cognitiveservices.vision.spatialanalysis-personcrossingpolygon** の場合、これは `zonecrossing` または `zonedwelltime` である必要があります。|
 | `trigger`|string|イベントを送信するためのトリガーの種類。<br>サポートされている値: "event": だれかがゾーンに入ったときまたはゾーンから出たときに発生します。|
@@ -246,7 +263,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | Type| 説明|
+| 名前 | 種類| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -536,6 +553,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `properties` | collection| 値のコレクション|
 | `trackinId` | string| 検出された人の一意識別子|
 | `status` | string| ラインを越える方向 ("CrossLeft" または "CrossRight") 方向は、そのラインの "終わり" に向かって "開始" 位置に立つことを想像することに基づいています。 CrossRight は左から右に交差しています。 CrossLeft は右から左に交差しています。|
+| `orientationDirection` | string| 検出された人がラインを越える向きの方向。 "Left"、"Right"、または "Straigh" を指定できます。 この値は、`DETECTOR_NODE_CONFIG`で `True` に`enable_orientation` が設定されている場合に出力されます。 |
 | `zone` | string | 越えられたラインの "name" フィールド|
 
 | Detections フィールド名 | Type| 説明|
@@ -545,6 +563,9 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `region` | collection| 値のコレクション|
 | `type` | string| 領域の種類|
 | `points` | collection| 領域の種類が RECTANGLE の場合の、左上と右下のポイント |
+| `groundOrientationAngle` | float| 推論された地上平面での人の向きの時計回りの角度 |
+| `mappedImageOrientation` | float| 2D イメージ空間における人の向きの時計回りの予測角度 |
+| `speed` | float| 検出された人の推定速度。 単位は `foot per second (ft/s)` です。|
 | `confidence` | float| アルゴリズムの信頼度|
 | `face_mask` | float | 範囲 (0-1) の属性信頼度値は、検出された人がフェイス マスクを着用していることを示します |
 | `face_nomask` | float | 範囲 (0-1) の属性信頼度値は、検出された人がフェイス マスクを着用して **いない** ことを示します |
@@ -635,7 +656,8 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
                 "trackingId": "afcc2e2a32a6480288e24381f9c5d00e",
                 "status": "Exit",
                 "side": "1",
-              "durationMs": 7132.0
+                      "dwellTime": 7132.0,
+                      "dwellFrames": 20            
             },
             "zone": "queuecamera"
         }
@@ -666,7 +688,12 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
                 ]
             },
             "confidence": 0.6267998814582825,
-            "metadataType": ""
+            "metadataType": "",
+             "metadata": { 
+                     "groundOrientationAngle": 1.2,
+                     "mappedImageOrientation": 0.3,
+                     "speed": 1.2
+               },
         }
     ],
     "schemaVersion": "1.0"
@@ -682,7 +709,11 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `trackinId` | string| 検出された人の一意識別子|
 | `status` | string| 多角形を越える方向 ("Enter" または "Exit")|
 | `side` | INT| 人が越えた多角形の辺の数。 各辺は、ゾーンを表す多角形の 2 つの頂点の間の番号付きのエッジです。 多角形にある最初の 2 つの頂点間のエッジは、最初の辺を表します。 オクルージョンが原因でイベントが特定の側に関連付けられていない場合、'Side' は空です。 たとえば、人の姿が消えたにも関わらずゾーンの辺を横切る姿が見られなかった際に出たことが検出されたり、ゾーン内に人の姿が見られるにも関わらず、辺を横切っているのが見られなかった際に入りが発生したりなどです。|
-| `durationMs` | float | 人がゾーンで過ごした時間を表すミリ秒数。 このフィールドは、イベントの種類が _personZoneDwellTimeEvent_ の場合に指定されます。|
+| `dwellTime` | float | 人がゾーンで過ごした時間を表すミリ秒数。 このフィールドは、イベントの種類が personZoneDwellTimeEvent の場合に指定されます。|
+| `dwellFrames` | INT | 人がゾーン内にいたフレーム数。 このフィールドは、イベントの種類が personZoneDwellTimeEvent の場合に指定されます。|
+| `dwellTimeForTargetSide` | float | 人がゾーン内にいて `target_side` に向いていた時間を表すミリ秒数。 このフィールドは、`DETECTOR_NODE_CONFIG ` で `enable_orientation` が `True` にあり、`target_side` の値が `SPACEANALYTICS_CONFIG` に設定されている場合に指定されます。|
+| `avgSpeed` | float| ゾーン内の人の平均速度。 単位は `foot per second (ft/s)` です。|
+| `minSpeed` | float| ゾーン内の人の最小速度。 単位は `foot per second (ft/s)` です。|
 | `zone` | string | 越えられたゾーンを表す多角形の "name" フィールド|
 
 | Detections フィールド名 | Type| 説明|
@@ -692,6 +723,9 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `region` | collection| 値のコレクション|
 | `type` | string| 領域の種類|
 | `points` | collection| 領域の種類が RECTANGLE の場合の、左上と右下のポイント |
+| `groundOrientationAngle` | float| 推論された地上平面での人の向きの時計回りの角度 |
+| `mappedImageOrientation` | float| 2D イメージ空間における人の向きの時計回りの予測角度 |
+| `speed` | float| 検出された人の推定速度。 単位は `foot per second (ft/s)` です。|
 | `confidence` | float| アルゴリズムの信頼度|
 | `face_mask` | float | 範囲 (0-1) の属性信頼度値は、検出された人がフェイス マスクを着用していることを示します |
 | `face_nomask` | float | 範囲 (0-1) の属性信頼度値は、検出された人がフェイス マスクを着用して **いない** ことを示します |
@@ -1034,7 +1068,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
       }
   }
   ```
-| 名前 | Type| 説明|
+| 名前 | 種類| 説明|
 |---------|---------|---------|
 | `batch_size` | INT | すべてのカメラの解像度が同じ場合は、`batch_size` をその操作で使用されるカメラの数に設定します。それ以外の場合は、`batch_size` を 1 に設定するか、既定値 (1) のままにします。これは、バッチがサポートされないことを示します。 |
 

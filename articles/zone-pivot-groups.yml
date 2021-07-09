@@ -392,10 +392,10 @@ groups:
   pivots:
   - id: development-environment-vscode
     title: Visual Studio Code
+  - id: development-environment-vs
+    title: Visual Studio
   - id: development-environment-cli
     title: コマンド ライン
-  - id: development-environment-vs
-    title: Visual Studio
 - id: bring-third-party-dependency-programming-functions
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -794,7 +794,7 @@ groups:
     title: Python
 - id: app-service-ide
   title: 開発環境
-  prompt: 開発エクスペリエンスを選択する
+  prompt: 開発環境を選択する
   pivots:
   - id: development-environment-vs
     title: Visual Studio
@@ -1200,10 +1200,54 @@ groups:
     title: Python
   - id: programming-language-java
     title: Java
+- id: facility-ontology-schema
+  title: Creator Facility Ontology
+  prompt: Facility Ontology バージョンの選択
+  pivots:
+  - id: facility-ontology-v1
+    title: Facility Ontology 1.0
+  - id: facility-ontology-v2
+    title: Facility Ontology 2.0
+- id: how-to-troubleshoot-monitoring-and-faq-zpg
+  title: Azure Monitor for IoT Edge に関する FAQ
+  prompt: トピックの選択
+  pivots:
+  - id: metrics-collection
+    title: メトリックの収集
+  - id: custom-metrics
+    title: カスタム メトリック
+  - id: alerts
+    title: アラート
+  - id: workbooks
+    title: Workbooks
+- id: identity-mi-methods
+  title: マネージド ID のメソッド
+  prompt: オプションを選択する。
+  pivots:
+  - id: identity-mi-methods-azp
+    title: Azure portal
+  - id: identity-mi-methods-azcli
+    title: Azure CLI
+  - id: identity-mi-methods-powershell
+    title: PowerShell
+  - id: identity-mi-methods-arm
+    title: リソース マネージャー
+  - id: identity-mi-methods-rest
+    title: REST
+- id: identity-mi-method-sub
+  title: マネージド ID のメソッド サブセット
+  prompt: オプションを選択する。
+  pivots:
+  - id: identity-mi-methods-sub-azp
+    title: Azure portal
+  - id: identity-mi-methods-sub-azcli
+    title: Azure CLI
+  - id: identity-mi-methods-sub-powershell
+    title: PowerShell
 metadata:
-  ms.openlocfilehash: adcb769a1cf52dc86ee60349463caa078fb31a4b
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 0a7eb15f89dccdc97443a2c14107aa7bdb6fdba4
+  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110373529"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111902233"

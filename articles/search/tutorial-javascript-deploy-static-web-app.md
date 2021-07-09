@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: c3f4d883dcc9b79ddab77bb8779e52e629226631
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 021f7aeda86f5ff9f11eb2991a74c6ad37a203e6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950362"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469785"
 ---
 # <a name="3---deploy-the-search-enabled-website"></a>3 - 検索が有効な Web サイトをデプロイする
 
@@ -26,6 +26,15 @@ ms.locfileid: "107950362"
 ## <a name="create-a-static-web-app-in-visual-studio-code"></a>Visual Studio Code で静的 Web アプリを作成する
 
 1. アクティビティ バーから **[Azure]** を選択し、サイド バーから **[Static Web Apps]** を選択します。 
+
+1. どのブランチからデプロイするかを確認するポップアップ ウィンドウが VS Code で表示された場合は、既定のブランチ （通常は **master** または **main**） を選択します。 
+
+    この設定により、そのブランチにコミットした変更だけが静的 Web アプリにデプロイされます。 
+
+1. ポップアップ ウィンドウが表示されて変更をコミットするよう求められた場合は、これをしないでください。 一括インポート手順で作成されたシークレットは、リポジトリにコミットしないでください。 
+
+    変更をロールバックするには、VS Code のアクティビティ バーで [ソース管理] アイコンを選択してから、変更された各ファイルを [変更] の一覧で選択して、 **[変更の破棄]** アイコンを選択します。
+
 1. サブスクリプション名を右クリックし、 **[Create Static Web App (Advanced)]\(静的 Web アプリの作成 (詳細設定)\)** を選択します。    
 
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-create-static-web-app-resource-advanced.png" alt-text="サブスクリプション名を右クリックし、**[Create Static Web App (Advanced)]\(静的 Web アプリの作成 (詳細設定)\)** を選択します。":::
@@ -34,16 +43,13 @@ ms.locfileid: "107950362"
 
     |Prompt|Enter|
     |--|--|
-    |静的 Web アプリを作成する方法|既存の GitHub リポジトリを使用します|
-    |組織の選択|"_独自_" の GitHub の別名を組織として選択します。|
-    |リポジトリの選択|一覧から **azure-search-javascript-samples** を選択します。 |
-    |リポジトリのブランチの選択|一覧から **master** を選択します。 |
     |新しい静的 Web アプリの名前の入力。|自分のリソースに一意の名前を作成します。 たとえば `joansmith-azure-search-javascript-samples` のように、リポジトリ名の先頭に自分の名前を追加できます。 |
     |新しいリソース用のリソース グループの選択。|このチュートリアル用に作成したリソース グループを使用します。|
+    |SKU の選択| このチュートリアル用に無料の SKU を選択します。|
     |既定のプロジェクト構造を構成するためのビルド プリセットの選択。|[**カスタム**] を選択します。|
-    |アプリケーション コードの場所の選択|`search-website`|
-    |Azure 関数コードの場所の選択|`search-website/api`|
-    |ビルド出力のパスの入力|build|
+    |アプリケーション コードの場所の選択|`search-website`<br><br>これは、リポジトリのルートから Azure 静的 Web アプリまでのパスです。 |
+    |Azure 関数コードの場所の選択|`search-website/api`<br><br>これは、リポジトリのルートから Azure 関数アプリまでのパスです。 |
+    |ビルド出力のパスの入力|`build`<br><br>これは、Azure 静的 Web アプリから、生成されたファイルまでのパスです。|
     |新しいリソースの場所の選択。|近くのリージョンを選択します。|
 
 1. リソースが作成されたら、通知から **[Open Actions in GitHub]\(GitHub でアクションを開く\)** を選択します。 これにより、自分がフォークしたリポジトリを参照するブラウザー ウィンドウが開きます。 

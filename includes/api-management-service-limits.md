@@ -6,19 +6,19 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 02/19/2021
+ms.date: 06/09/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 0614e6fb1df13332cb05dcb7bb9b0f07a1764d23
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 0c01e797d74cd058bed94ee3bf8d52b927fd36cc
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107251499"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889809"
 ---
 | リソース | 制限 |
 | ---------------------------------------------------------------------- | -------------------------- |
-| スケール ユニットの最大数 | リージョンあたり 10<sup>1</sup> |
+| スケール ユニットの最大数 | リージョンあたり 12 個<sup>1</sup> |
 | キャッシュ サイズ | ユニットあたり 5 GiB<sup>2</sup> |
 | HTTP 機関あたりのバックエンドの同時接続<sup>3</sup> | ユニットあたり 2,048<sup>4</sup> |
 | キャッシュする応答の最大サイズ | 2 MiB |

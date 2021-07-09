@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 04/13/2021
-ms.openlocfilehash: 9fe4f21a5c9e9e26a2f94b8a60cba47916842fe3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 05/18/2021
+ms.openlocfilehash: b6d007d3020d3fa2b001178bd23d721ea6a6aa6b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501792"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067836"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
@@ -87,7 +87,19 @@ ms.locfileid: "107501792"
 
 5. データセットに `pizza test` という名前を付け、 **[完了]** を選択します。
 
-6. **[実行]** ボタンを選択します。 バッチ テストが実行された後、 **[結果を表示する]** を選択します。 
+6. **[実行]** ボタンを選択します。 
+
+7. バッチテストが完了すると、次の列が表示されます。
+
+    | 列 | 説明 |
+    | -------- | ------------- |
+    | State | テストの状態。 **[結果の表示]** はテストが完了した後にのみ表示されます。 |
+    | 名前 | テストに指定した名前。 |
+    | サイズ | このバッチ テスト ファイル内のテスト数。 |
+    | [最終実行] | このバッチ テスト ファイルを最後に実行した日付。 |
+    | 最終結果 | テスト内の成功した予測数。 |
+
+8. テストの詳細な結果を表示するには、 **[結果の表示]** を選択します。 
 
     > [!TIP]
     > * **[ダウンロード]** を選択すると、アップロードしたものと同じファイルがダウンロードされます。

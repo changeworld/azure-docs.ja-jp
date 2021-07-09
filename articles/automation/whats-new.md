@@ -1,18 +1,17 @@
 ---
 title: Azure Automation の新着情報
 description: 毎月更新される Azure Automation に対する重要な更新。
+services: automation
 ms.subservice: ''
 ms.topic: overview
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/09/2021
+ms.date: 06/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: f8b4d6965a8a1f046fd2459ce9fe5cce8ea45443
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6eae4a65412ad922724d4c35b7628b15698ba841
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531080"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982936"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure Automation の新着情報
 
@@ -23,6 +22,36 @@ Azure Automation には継続的に改善が施されています。 常に最�
 - バグの修正
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="support-for-automation-and-state-configuration-available-in-west-us-3"></a>米国西部 3 で利用可能な Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+詳細については、「[Azure でのデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/)」を参照して、ドロップダウン リストから該当する地域を選択してください。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="startstop-vms-during-off-hours-v1"></a>Start/Stop VMs during off-hours (v1)
+
+**種類:** 変更の計画
+
+Start/Stop VMs during off-hours (v1) は、2022 年 5 月 21 日に非推奨となる予定です。 お客様は、Start/Stop VMs v2 (プレビュー) への移行を評価し、計画を立てる必要があります。 詳細については、「[Start/Stop VMs v2 (プレビュー) の概要](../azure-functions/start-stop-vms/overview.md)」を参照してください。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="support-for-update-management-and-change-tracking"></a>Update Management と Change Tracking のサポート
+
+**種類:** 新機能
+
+リージョン マッピングが更新され、ノルウェー東部、アラブ首長国連邦北部、米国中北部、ブラジル南部、韓国中部で Update Management と Change Tracking がサポートされるようになりました。 詳細については、「[サポートされるマッピング](./how-to/region-mappings.md#supported-mappings)」を参照してください。
+
+### <a name="support-for-system-assigned-managed-identities"></a>システム割り当てのマネージド ID のサポート
+
+**種類:** 新機能
+
+Azure Automation で、Azure パブリックおよび Gov リージョンのクラウドおよびハイブリッド ジョブに対して、[システム割り当てのマネージド ID](./automation-security-overview.md#managed-identities-preview) がサポートされるようになりました。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-system-assigned-managed-identities/)を参照してください。
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -38,7 +67,7 @@ Azure Automation に 5 つの新しい組み込みポリシーが追加されま
 - Azure Automation アカウントでのプライベート エンドポイント接続の構成
 - Automation アカウントでプライベート エンドポイント接続を有効にする必要がある。
 
-詳細については、[ポリシー リファレンス](./policy-reference.md)の記事を参照してください。
+詳細については、[ポリシー リファレンス](./policy-reference.md)を参照してください。
 
 ### <a name="support-for-automation-and-state-configuration-declared-ga-in-south-india"></a>インド南部での GA を宣言された Automation と State Configuration のサポート
 
@@ -58,7 +87,7 @@ Azure Automation に 5 つの新しい組み込みポリシーが追加されま
 
 アラブ首長国連邦中部でプロセスの自動化および構成管理機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/)を参照してください。
 
-### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2--norway-west-and-france-south"></a>オーストラリア中部 2、ノルウェー西部、フランス南部で利用可能な Automation と State Configuration のサポート
+### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2-norway-west-and-france-south"></a>オーストラリア中部 2、ノルウェー西部、フランス南部で利用可能な Automation と State Configuration のサポート
 
 **種類:** 新機能
 
@@ -74,13 +103,13 @@ Windows または Linux マシンで Hybrid Runbook Worker を設定する Azure
 
 **種類:** 新機能
 
-詳細については、[ARM テンプレートからの Webhook の使用](./automation-webhooks.md#use-a-webhook-from-an-arm-template)に関するセクションを参照してください。
+詳細については、「[ARM テンプレートから Webhook を使用する](./automation-webhooks.md#use-a-webhook-from-an-arm-template)」を参照してください。
 
 ### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure Update Management で、Centos 8.x、Red Hat Enterprise Linux Server 8.x、および SUSE Linux Enterprise Server 15 がサポートされるようになりました
 
 **種類:** 新機能
 
-詳細については、サポートされている Linux オペレーティングシステムの[完全な一覧](./update-management/overview.md#supported-operating-systems)を参照してください。
+詳細については、サポートされている Linux オペレーティングシステムの[完全な一覧](./update-management/operating-system-requirements.md)を参照してください。
 
 ### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>ブラジル南部および東南アジアでのリージョン内データ所在地のサポート 
 
@@ -128,11 +157,11 @@ Automation アカウントと State Configuration がスイス西部リージョ
 
 Hybrid Runbook Worker 機能では、CentOS 8.x、REHL 8.x、SLES 15 の各ディストリビューションは、Hybrid Runbook Worker でのプロセスの自動化についてのみサポートされています。 これらの変更を反映するドキュメントの最新版については、[サポートされるオペレーティング システム](automation-linux-hrw-install.md#supported-linux-operating-systems)に関するセクションを参照してください。
 
-### <a name="update-management-and-change-tracking-availability-in-australia-east-east-asia-west-us-and-central-us-regions"></a>オーストラリア東部、東アジア、米国西部、米国中部リージョンで使用できるようになった Update Management と Change Tracking
+### <a name="update-management-and-change-tracking-availability-in-australia-east-east-asia-west-us-and-central-us-regions"></a>オーストラリア東部、東アジア、米国西部、米国中部の各リージョンで使用できるようになった Update Management と Change Tracking
 
 **種類:** 新機能
 
-Automation アカウント、変更履歴とインベントリ、Update Management を、オーストラリア東部、東アジア、米国西部、米国中部の各リージョンで使用できるようになりました。 
+Automation アカウント、変更履歴とインベントリ、Update Management が、オーストラリア東部、東アジア、米国西部、米国中部の各リージョンで使用できるようになりました。 
 
 ### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>US Government クラウドでの Python 3 Runbook のパブリック プレビューの導入
 
@@ -180,7 +209,7 @@ Automation State Configuration を使用して Oracle Linux 6 マシンおよび
 
 **種類:** 新機能
 
-Azure Automation のパブリック プレビューで、Python 3 のクラウドおよびハイブリッド Runbook 実行が、Azure グローバル クラウドのすべてのリージョンでサポートされました。 詳細については、[お知らせ]((https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/) を参照してください。
+Azure Automation のパブリック プレビューで、Python 3 のクラウドおよびハイブリッド Runbook 実行が、Azure グローバル クラウドのすべてのリージョンでサポートされました。 詳しくは、お知らせ (https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/) ) をご覧ください。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -244,7 +273,7 @@ Automation Hybrid Runbook Worker は、Windows Server 2008 R2 オペレーティ
 
 **種類:** 新機能
 
-Update Management は、Windows Server 2008 R2 オペレーティング システムの評価とパッチ適用をサポートしています。 これらの変更を反映するドキュメントの最新版については、[サポートされるオペレーティング システム](update-management/overview.md#clients)に関するセクションを参照してください。
+Update Management は、Windows Server 2008 R2 オペレーティング システムの評価とパッチ適用をサポートしています。 これらの変更を反映するドキュメントの最新版については、[サポートされるオペレーティング システム](update-management/operating-system-requirements.md)に関するセクションを参照してください。
 
 ### <a name="automation-diagnostic-logs-schema-update"></a>Automation の診断ログのスキーマを更新
 

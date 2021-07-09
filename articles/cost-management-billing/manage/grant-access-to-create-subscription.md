@@ -6,21 +6,21 @@ ms.service: cost-management-billing
 ms.subservice: billing
 ms.reviewer: andalmia
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 06/09/2021
 ms.author: banders
-ms.openlocfilehash: 039e728f6518d21ddfb9c7c359a6cf2ec743f232
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 897c9d851227a59e6ab8e6a35829e113b980c2e4
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185106"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902503"
 ---
-# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)
+# <a name="grant-access-to-create-azure-enterprise-subscriptions-legacy"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (レガシ)
 
-[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)を結んでいる Azure の顧客は、自分のアカウントに課金されるサブスクリプションを別のユーザーまたはサービス プリンシパルが作成することを許可できます。 この記事では、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用して、サブスクリプションの作成機能を共有する方法と、サブスクリプションの作成を監査する方法について説明します。 共有するアカウントに所有者ロールが必要です。
+[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結している Azure の顧客は、自分のアカウントに課金されるサブスクリプションを作成する権限を別のユーザーまたはサービス プリンシパルに付与できます。 この記事では、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用して、サブスクリプションの作成機能を共有する方法と、サブスクリプションの作成を監査する方法について説明します。 共有するアカウントに所有者ロールが必要です。
 
 > [!NOTE]
-> この API は、[サブスクリプション作成用のプレビュー API](programmatically-create-subscription-preview.md) との組み合わせでのみ正しく動作します。 [GA バージョン](programmatically-create-subscription-enterprise-agreement.md)を使用したい場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) の最新の API バージョンを使用してください。 より新しい API を使用するために移行する場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) を使用して、所有者のアクセス許可を再度付与する必要があります。 以下の API を使用する以前の構成が、より新しい API で使用できるよう自動的に変換されることはありません。
+> この API は、[サブスクリプション作成用のレガシ API](programmatically-create-subscription-preview.md) との組み合わせでのみ正しく動作します。 レガシ API を使用する特定のニーズがない限り、最新 API バージョン [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put) に関する[最新 GA バージョン](programmatically-create-subscription-enterprise-agreement.md)の情報を使用する必要があります。 より新しい API を使用するために移行する場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put) を使用して、所有者のアクセス許可を再度付与する必要があります。 以下の API を使用する以前の構成が、より新しい API で使用できるよう自動的に変換されることはありません。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

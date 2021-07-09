@@ -1,25 +1,26 @@
 ---
-title: 'クイックスタート: Azure Machine Learning の利用を開始する'
+title: 'クイックスタート: ワークスペース リソースを作成する'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の利用を開始します。  ワークスペースをセットアップし、コンピューティング リソースを追加して開発環境を作成します。
+description: 機械学習モデルをトレーニングするために使用できる Azure Machine Learning ワークスペースとクラウド リソースを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 04/26/2021
+ms.date: 06/10/2021
 adobe-target: true
-ms.openlocfilehash: 596c6252b1ed7a0aa4d6f9554e6b417ccf131755
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: d12b9229fdf4b8cfe32a9db375b9c0943ce53507
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785314"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033457"
 ---
-# <a name="quickstart-create-resources-youll-need-to-get-started-with-azure-machine-learning"></a>クイックスタート: Azure Machine Learning の利用を開始するために必要なリソースを作成する
+# <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>クイックスタート: Azure Machine Learning の利用を開始するために必要なワークスペース リソースを作成する
 
-このクイックスタートでは、ワークスペースを作成して、そこにコンピューティング リソースを追加します。 Azure Machine Learning の利用を開始するために必要な環境がすべて整います。  
+このクイックスタートでは、ワークスペースを作成し、そのワークスペースにコンピューティング リソースを追加します。 Azure Machine Learning の利用を開始するために必要な環境がすべて整います。  
 
 ワークスペースは機械学習アクティビティの最上位のリソースで、Azure Machine Learning を使用するときに作成する成果物を表示したり管理したりするための一元的な場所となります。 機械学習モデルのトレーニング、デプロイ、自動化、管理、追跡に使用できる、あらかじめ構成されたクラウドベースの環境は、コンピューティング リソースから得られます。
 

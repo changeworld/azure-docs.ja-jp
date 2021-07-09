@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/19/2021
+ms.date: 06/11/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 72ca331546d53f85ca82f33ec6a02558d91f1c1e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 98e8d7862f1270977ed3eb3ab71605e440d53520
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765111"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083794"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-[v3 リファレンス ドキュメント](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 パッケージ (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3 リファレンス ドキュメント](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 パッケージ (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics/v/5.1.0-beta.6) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.1.0-beta.6/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
@@ -64,7 +64,7 @@ npm init
 `@azure/ai-text-analytics` NPM パッケージをインストールします。
 
 ```console
-npm install --save @azure/ai-text-analytics@5.1.0-beta.5
+npm install --save @azure/ai-text-analytics@5.1.0-beta.6
 ```
 
 > [!TIP]
@@ -124,7 +124,7 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 
 ## <a name="code-examples"></a>コード例
 
-* [クライアント認証](#client-authentication)
+* [クライアント認証](#authenticate-the-client)
 * [感情分析](#sentiment-analysis) 
 * [オピニオン マイニング](#opinion-mining)
 * [言語検出](#language-detection)
@@ -133,7 +133,7 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 * 個人を特定できる情報
 * [キー フレーズ抽出](#key-phrase-extraction)
 
-## <a name="client-authentication"></a>クライアント認証
+## <a name="authenticate-the-client"></a>クライアントを認証する
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
@@ -201,7 +201,57 @@ ID: 0
                 Positive: 0.21  Negative: 0.02  Neutral: 0.77
 ```
 
-### <a name="opinion-mining"></a>意見マイニング
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+分析するドキュメントを含む文字列の配列を作成します。 クライアントの `analyzeSentiment()` メソッドを呼び出し、返される `SentimentBatchResult` オブジェクトを取得します。 結果の一覧を反復処理し、各ドキュメントの ID、ドキュメント レベルのセンチメントと信頼度スコアを出力します。 各ドキュメントの結果には、文レベルのセンチメントと、オフセット、長さ、および信頼度スコアが含まれます。
+
+```javascript
+async function sentimentAnalysis(client){
+
+    const sentimentInput = [
+        "I had the best day of my life. I wish you were there with me."
+    ];
+    const sentimentResult = await client.analyzeSentiment(sentimentInput);
+
+    sentimentResult.forEach(document => {
+        console.log(`ID: ${document.id}`);
+        console.log(`\tDocument Sentiment: ${document.sentiment}`);
+        console.log(`\tDocument Scores:`);
+        console.log(`\t\tPositive: ${document.confidenceScores.positive.toFixed(2)} \tNegative: ${document.confidenceScores.negative.toFixed(2)} \tNeutral: ${document.confidenceScores.neutral.toFixed(2)}`);
+        console.log(`\tSentences Sentiment(${document.sentences.length}):`);
+        document.sentences.forEach(sentence => {
+            console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
+            console.log(`\t\tSentences Scores:`);
+            console.log(`\t\tPositive: ${sentence.confidenceScores.positive.toFixed(2)} \tNegative: ${sentence.confidenceScores.negative.toFixed(2)} \tNeutral: ${sentence.confidenceScores.neutral.toFixed(2)}`);
+        });
+    });
+}
+sentimentAnalysis(textAnalyticsClient)
+```
+
+コンソール ウィンドウで `node index.js` を使用してコードを実行します。
+
+### <a name="output"></a>出力
+
+```console
+ID: 0
+        Document Sentiment: positive
+        Document Scores:
+                Positive: 1.00  Negative: 0.00  Neutral: 0.00
+        Sentences Sentiment(2):
+                Sentence sentiment: positive
+                Sentences Scores:
+                Positive: 1.00  Negative: 0.00  Neutral: 0.00
+                Sentence sentiment: neutral
+                Sentences Scores:
+                Positive: 0.21  Negative: 0.02  Neutral: 0.77
+```
+
+---
+
+## <a name="opinion-mining"></a>意見マイニング
+
+# <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
 オピニオン マイニングを使用した感情分析を行うには、分析するドキュメントを含む文字列の配列を作成します。 クライアントの `analyzeSentiment()` メソッドに別途オプション フラグ `includeOpinionMining: true` を渡して呼び出し、返される `SentimentBatchResult` オブジェクトを取得します。 結果の一覧を反復処理し、各ドキュメントの ID、ドキュメント レベルのセンチメントと信頼度スコアを出力します。 各ドキュメントの結果には、前述した文レベルのセンチメントだけでなく、アスペクトおよびオピニオン レベルのセンチメントも含まれます。
 
@@ -283,49 +333,7 @@ sentimentAnalysisWithOpinionMining(textAnalyticsClient)
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-分析するドキュメントを含む文字列の配列を作成します。 クライアントの `analyzeSentiment()` メソッドを呼び出し、返される `SentimentBatchResult` オブジェクトを取得します。 結果の一覧を反復処理し、各ドキュメントの ID、ドキュメント レベルのセンチメントと信頼度スコアを出力します。 各ドキュメントの結果には、文レベルのセンチメントと、オフセット、長さ、および信頼度スコアが含まれます。
-
-```javascript
-async function sentimentAnalysis(client){
-
-    const sentimentInput = [
-        "I had the best day of my life. I wish you were there with me."
-    ];
-    const sentimentResult = await client.analyzeSentiment(sentimentInput);
-
-    sentimentResult.forEach(document => {
-        console.log(`ID: ${document.id}`);
-        console.log(`\tDocument Sentiment: ${document.sentiment}`);
-        console.log(`\tDocument Scores:`);
-        console.log(`\t\tPositive: ${document.confidenceScores.positive.toFixed(2)} \tNegative: ${document.confidenceScores.negative.toFixed(2)} \tNeutral: ${document.confidenceScores.neutral.toFixed(2)}`);
-        console.log(`\tSentences Sentiment(${document.sentences.length}):`);
-        document.sentences.forEach(sentence => {
-            console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
-            console.log(`\t\tSentences Scores:`);
-            console.log(`\t\tPositive: ${sentence.confidenceScores.positive.toFixed(2)} \tNegative: ${sentence.confidenceScores.negative.toFixed(2)} \tNeutral: ${sentence.confidenceScores.neutral.toFixed(2)}`);
-        });
-    });
-}
-sentimentAnalysis(textAnalyticsClient)
-```
-
-コンソール ウィンドウで `node index.js` を使用してコードを実行します。
-
-### <a name="output"></a>出力
-
-```console
-ID: 0
-        Document Sentiment: positive
-        Document Scores:
-                Positive: 1.00  Negative: 0.00  Neutral: 0.00
-        Sentences Sentiment(2):
-                Sentence sentiment: positive
-                Sentences Scores:
-                Positive: 1.00  Negative: 0.00  Neutral: 0.00
-                Sentence sentiment: neutral
-                Sentences Scores:
-                Positive: 0.21  Negative: 0.02  Neutral: 0.77
-```
+この機能はバージョン 3.0 では使用できません。
 
 ---
 
@@ -395,10 +403,6 @@ ID: 0
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-> [!NOTE]
-> バージョン `3.1`:
-> * エンティティ リンク設定は、NER から切り離された要求です。
-
 分析するドキュメントを含む文字列の配列を作成します。 クライアントの `recognizeEntities()` メソッドを呼び出し、`RecognizeEntitiesResult` オブジェクトを取得します。 結果の一覧を反復処理し、エンティティ名、タイプ、サブタイプ、オフセット、長さ、およびスコアを出力します。
 
 ```javascript
@@ -442,60 +446,6 @@ Document ID: 1
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
         Score: 0.25
-```
-
-### <a name="entity-linking"></a>Entity Linking
-
-分析するドキュメントを含む文字列の配列を作成します。 クライアントの `recognizeLinkedEntities()` メソッドを呼び出し、`RecognizeLinkedEntitiesResult` オブジェクトを取得します。 結果の一覧を反復処理し、エンティティ名、ID、データ ソース、URL、および一致を出力します。 `matches` 配列内の各オブジェクトには、その一致のオフセット、長さ、およびスコアが含まれています。
-
-```javascript
-async function linkedEntityRecognition(client){
-
-    const linkedEntityInput = [
-        "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800. During his career at Microsoft, Gates held the positions of chairman, chief executive officer, president and chief software architect, while also being the largest individual shareholder until May 2014."
-    ];
-    const entityResults = await client.recognizeLinkedEntities(linkedEntityInput);
-
-    entityResults.forEach(document => {
-        console.log(`Document ID: ${document.id}`);
-        document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
-            console.log(`\tMatches:`)
-            entity.matches.forEach(match => {
-                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
-        })
-        });
-    });
-}
-linkedEntityRecognition(textAnalyticsClient);
-```
-
-コンソール ウィンドウで `node index.js` を使用してコードを実行します。
-
-### <a name="output"></a>出力
-
-```console
-Document ID: 0
-        Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
-        Matches:
-                Text: Altair 8800       Score: 0.88
-        Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
-        Matches:
-                Text: Bill Gates        Score: 0.63
-                Text: Gates     Score: 0.63
-        Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
-        Matches:
-                Text: Paul Allen        Score: 0.60
-        Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
-        Matches:
-                Text: Microsoft         Score: 0.55
-                Text: Microsoft         Score: 0.55
-        Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
-        Matches:
-                Text: April 4   Score: 0.32
-        Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
-        Matches:
-                Text: BASIC     Score: 0.33
 ```
 
 ### <a name="personally-identifying-information-pii-recognition"></a>個人を特定できる情報 (PII) の認識
@@ -537,10 +487,6 @@ Redacted Text:  The employee's phone number is **************.
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-> [!NOTE]
-> バージョン `3.0`:
-> * エンティティ リンク設定は、NER から切り離された要求です。
-
 分析するドキュメントを含む文字列の配列を作成します。 クライアントの `recognizeEntities()` メソッドを呼び出し、`RecognizeEntitiesResult` オブジェクトを取得します。 結果の一覧を反復処理し、エンティティ名、タイプ、サブタイプ、オフセット、長さ、およびスコアを出力します。
 
 ```javascript
@@ -586,7 +532,13 @@ Document ID: 1
         Score: 0.25
 ```
 
-### <a name="entity-linking"></a>Entity Linking
+
+---
+
+
+## <a name="entity-linking"></a>エンティティ リンク設定
+
+# <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
 分析するドキュメントを含む文字列の配列を作成します。 クライアントの `recognizeLinkedEntities()` メソッドを呼び出し、`RecognizeLinkedEntitiesResult` オブジェクトを取得します。 結果の一覧を反復処理し、エンティティ名、ID、データ ソース、URL、および一致を出力します。 `matches` 配列内の各オブジェクトには、その一致のオフセット、長さ、およびスコアが含まれています。
 
@@ -640,6 +592,59 @@ Document ID: 0
                 Text: BASIC     Score: 0.33
 ```
 
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+分析するドキュメントを含む文字列の配列を作成します。 クライアントの `recognizeLinkedEntities()` メソッドを呼び出し、`RecognizeLinkedEntitiesResult` オブジェクトを取得します。 結果の一覧を反復処理し、エンティティ名、ID、データ ソース、URL、および一致を出力します。 `matches` 配列内の各オブジェクトには、その一致のオフセット、長さ、およびスコアが含まれています。
+
+```javascript
+async function linkedEntityRecognition(client){
+
+    const linkedEntityInput = [
+        "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800. During his career at Microsoft, Gates held the positions of chairman, chief executive officer, president and chief software architect, while also being the largest individual shareholder until May 2014."
+    ];
+    const entityResults = await client.recognizeLinkedEntities(linkedEntityInput);
+
+    entityResults.forEach(document => {
+        console.log(`Document ID: ${document.id}`);
+        document.entities.forEach(entity => {
+            console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
+            console.log(`\tMatches:`)
+            entity.matches.forEach(match => {
+                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
+        })
+        });
+    });
+}
+linkedEntityRecognition(textAnalyticsClient);
+```
+
+コンソール ウィンドウで `node index.js` を使用してコードを実行します。
+
+### <a name="output"></a>出力
+
+```console
+Document ID: 0
+        Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
+        Matches:
+                Text: Altair 8800       Score: 0.88
+        Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
+        Matches:
+                Text: Bill Gates        Score: 0.63
+                Text: Gates     Score: 0.63
+        Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
+        Matches:
+                Text: Paul Allen        Score: 0.60
+        Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
+        Matches:
+                Text: Microsoft         Score: 0.55
+                Text: Microsoft         Score: 0.55
+        Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
+        Matches:
+                Text: April 4   Score: 0.32
+        Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
+        Matches:
+                Text: BASIC     Score: 0.33
+```
 
 ---
 
@@ -710,6 +715,8 @@ ID: 0
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
+分析操作を使用して、NER、キー フレーズ抽出、感情分析、および PII 検出の非同期バッチ要求を実行できます。 次のサンプルは、1 つの操作の基本的な例を示しています。 GitHub には、[JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript/beginAnalyzeActions.js) と [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src/beginAnalyzeActions.ts) のより高度なサンプルがあります。
+
 [!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
 `beginAnalyze()` 関数を呼び出す `analyze_example()` という名前の新しい関数を作成します。 この操作の実行には時間がかかり、結果に対してポーリングされます。
@@ -723,7 +730,7 @@ async function analyze_example(client) {
   const actions = {
     recognizeEntitiesActions: [{ modelVersion: "latest" }],
   };
-  const poller = await client.beginAnalyzeBatchActions(documents, actions, "en");
+  const poller = await client.beginAnalyzeActions(documents, actions, "en");
 
   console.log(
     `The analyze batch actions operation was created on ${poller.getOperationState().createdOn}`
@@ -767,15 +774,13 @@ The analyze batch actions operation results will expire on Sat Mar 13 2021 09:53
         - Entity Paul Allen of type Person
 ```
 
-分析操作を使用して PII を検出したり、リンクされたエンティティを認識したり、キー フレーズ抽出を実行したりすることもできます。 GitHub で「[JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript) と [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) のサンプルを分析する」を参照してください。
+分析操作を使用して、NER、キー フレーズ抽出、感情分析、PII の検出を実行することもできます。 GitHub で「[JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript/beginAnalyzeActions.js) と [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) のサンプルを分析する」を参照してください。
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 この機能はバージョン 3.0 では使用できません。
 
 ---
-
-## <a name="run-the-application"></a>アプリケーションの実行
 
 クイック スタート ファイルで `node` コマンドを使用して、アプリケーションを実行します。
 

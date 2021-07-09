@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: a195567117378a118b9bea8d15a7cb0a661d284a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9bfb125a9906c89fb7c607ce241a9b7696b805bc
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303527"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537597"
 ---
-# <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
+# <a name="language-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語のサポート
 
 Translator を使用すると、90 のテキスト翻訳言語および方言の間で翻訳を行うことができます。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator の V3 を使用して既定で提供されます。
 
@@ -129,6 +129,9 @@ Translator を使用すると、90 のテキスト翻訳言語および方言の
 
 > [!NOTE]
 > 言語コード`pt`は、既定では`pt-br`、ポルトガル語 (ブラジル) になります。
+
+> [!NOTE]
+> 現在、コンテナーでは次の言語を使用できません: サモア語、タヒチ語、クリンゴン語、クリンゴン語 (plqaD)、タイ語。
 
 ### <a name="detect"></a>Detect
 

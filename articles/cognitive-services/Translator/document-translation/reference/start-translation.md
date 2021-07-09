@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 820b5f39192fffa0ec54b44c6016965599d85a8c
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2896c5c78acb98c798f85684ef6f800f82549b06
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863697"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412711"
 ---
 # <a name="start-translation"></a>翻訳の開始
 
@@ -31,7 +31,7 @@ ms.locfileid: "107863697"
 
 `POST` 要求の送信先は次のとおりです。
 ```HTTP
-POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches
+POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches
 ```
 
 [カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について説明します。
@@ -51,7 +51,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 ## <a name="request-body-batch-submission-request"></a>要求本文: バッチ送信要求
 
-|名前|Type|説明|
+|名前|種類|説明|
 |--- |--- |--- |
 |inputs|BatchRequest[]|下に示される BatchRequest。 ドキュメントまたはドキュメントを含むフォルダーの入力リストです。 メディアの種類: "application/json"、"text/json"、"application/*+json"。|
 
@@ -59,17 +59,17 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 入力バッチの翻訳要求に関する定義。
 
-|名前|Type|必須|説明|
+|名前|種類|必須|説明|
 |--- |--- |--- |--- |
 |source|SourceInput[]|はい|下に示される inputs.source。 入力ドキュメントのソースです。|
-|storageType|StorageInputType[]|はい|下に示される inputs.storageType。 入力ドキュメントのソース文字列のストレージ型です。|
+|storageType|StorageInputType[]|False|下に示される inputs.storageType。 入力ドキュメントのソース文字列のストレージ型です。 1 つのドキュメントを翻訳する場合にのみ必要です。|
 |ターゲット|TargetInput[]|はい|下に示される inputs.target。 出力先の場所です。|
 
 **inputs.source**
 
 入力ドキュメントのソースです。
 
-|名前|Type|必須|説明|
+|名前|種類|必須|説明|
 |--- |--- |--- |--- |
 |filter|DocumentFilter[]|いいえ|下に示される DocumentFilter[]。|
 |filter.prefix|string|いいえ|翻訳対象のソースパス内のドキュメントをフィルター処理するための、大文字と小文字を区別するプレフィックス文字列。 たとえば、Azure ストレージ BLOB の URI を使用する場合は、プレフィックスを使用して、翻訳対象のサブフォルダーを制限します。|
@@ -92,17 +92,17 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 完成した翻訳済みドキュメントの宛先。
 
-|名前|Type|必須|説明|
+|名前|種類|必須|説明|
 |--- |--- |--- |--- |
 |category|string|いいえ|翻訳要求のカテゴリまたはカスタム システム。|
 |用語集|Glossary[]|いいえ|下に示される用語集。 用語集の一覧。|
 |glossaries.format|string|いいえ|フォーマットします。|
 |glossaries.glossaryUrl|string|True (用語集を使用する場合)|用語集の場所。 format パラメーターが指定されていない場合は、ファイル拡張子を使用して書式設定を抽出します。 翻訳言語のペアが用語集に存在しない場合は、適用されません。|
 |glossaries.storageSource|StorageSource|いいえ|上に示される StorageSource。|
+|glossaries.version|string|いいえ|バージョン (省略可能)。 指定しない場合は、既定値が使用されます。|
 |targetUrl|string|True|ドキュメントを含むフォルダーまたはコンテナーの場所。|
 |language|string|True|2 文字のターゲット言語コード。 [言語コードの一覧](../../language-support.md)に関するページを参照してください。|
 |storageSource|StorageSource []|いいえ|上に示される StorageSource []。|
-|version|string|いいえ|バージョン。|
 
 ## <a name="example-request"></a>要求の例
 
@@ -115,11 +115,11 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
                     "language": "fr"
                 }
             ]
@@ -137,15 +137,15 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
-                    "language": "fr"
-     "glossaries": [
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
+                    "language": "fr",
+                    "glossaries": [
                         {
-                            "glossaryUrl": https://my.blob.core.windows.net/glossaries/en-fr.xlf?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=BsciG3NWoOoRjOYesTaUmxlXzyjsX4AgVkt2AsxJ9to%3D,
+                            "glossaryUrl": "https://my.blob.core.windows.net/glossaries/en-fr.xlf?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=BsciG3NWoOoRjOYesTaUmxlXzyjsX4AgVkt2AsxJ9to%3D",
                             "format": "xliff",
                             "version": "1.2"
                         }
@@ -167,14 +167,14 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D,
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D",
                 "filter": {
                     "prefix": "MyFolder/"
                 }
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
                     "language": "fr"
                 }
             ]
@@ -196,15 +196,15 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
         {
             "storageType": "File",
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
                     "language": "es"
                 },
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
                     "language": "de"
                 }
             ]
@@ -229,13 +229,14 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 ## <a name="error-response"></a>エラー応答
 
-|名前|Type|説明|
+|名前|種類|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|
-|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
+|innerError|InnerTranslationError|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
 |inner.Errorcode|string|コード エラー文字列を取得します。|
 |innerError.message|string|高レベルのエラー メッセージを取得します。|
+|innerError.target|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合は "documents" または "document id" になります。|
 
 ## <a name="examples"></a>例
 
@@ -246,7 +247,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 ジョブ ID は、POST メソッドの応答ヘッダー Operation-Location URL 値で確認できます。 URL の最後のパラメーターは、操作のジョブ ID ("/operation/" に続く文字列) です。
 
 ```HTTP
-Operation-Location: https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0.preview.1/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55
+Operation-Location: https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55
 ```
 
 ### <a name="example-error-response"></a>エラー応答の例

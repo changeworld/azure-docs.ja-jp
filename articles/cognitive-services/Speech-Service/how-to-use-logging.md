@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 611d41b166a283dffd36729c0f4516ff80ecd35f
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 73e42ac1f076b67d31cbad0823ea63db40045c1e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803082"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746035"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Speech SDK のログの有効化
 
@@ -68,18 +68,15 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-UWP アプリケーションのファイル アクセス許可の詳細については、[こちら](/windows/uwp/files/file-access-permissions)を参照してください。
-
-### <a name="universal-windows-platform-uwp-on-unity"></a>Unity 上のユニバーサル Windows プラットフォーム (UWP)
-
-Unity と UWP アプリケーション内で、次のようにアプリケーション永続フォルダーにログ ファイルを作成できます。
+Unity UWP アプリケーションでは、次のように、アプリケーションの永続データ パス フォルダーを使用してログ ファイルを作成できます。
 
 ```csharp
 #if ENABLE_WINMD_SUPPORT
-        string logFile = Application.persistentDataPath + "/logFile.txt";
-        config.SetProperty(PropertyId.Speech_LogFilename, logFile);
+    string logFile = Application.persistentDataPath + "/logFile.txt";
+    config.SetProperty(PropertyId.Speech_LogFilename, logFile);
 #endif
 ```
+UWP アプリケーションのファイル アクセス許可の詳細については、「[ファイル アクセス許可](/windows/uwp/files/file-access-permissions)」を参照してください。
 
 ### <a name="android"></a>Android
 
@@ -103,11 +100,21 @@ config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 </manifest>
 ```
 
+Unity Android アプリケーションでは、次のように、アプリケーションの永続データ パス フォルダーを使用してログ ファイルを作成できます。
+
+```csharp
+string logFile = Application.persistentDataPath + "/logFile.txt";
+config.SetProperty(PropertyId.Speech_LogFilename, logFile);
+```
+さらに、Android 用の Unity Player 設定の書き込みアクセス許可を "External (SDCard)" に設定する必要もあります。 ログは、AndroidStudio Device File Explorer などのツールを使用して取得できるディレクトリに書き込まれます。 正確なディレクトリ パスは Android デバイスによって異なる場合がありますが、場所は通常、`sdcard/Android/data/your-app-packagename/files` ディレクトリです。
+
 Android アプリケーションのデータおよびファイル ストレージの詳細については、[こちら](https://developer.android.com/guide/topics/data/data-storage.html)を参照してください。
 
 #### <a name="ios"></a>iOS
 
-アプリケーション サンド ボックス内のディレクトリにのアクセスできます。 ファイルは、ドキュメント ディレクトリ、ライブラリ ディレクトリ、および一時ディレクトリ内に作成できます。 ドキュメント ディレクトリ内のファイルは、ユーザーに対して使用可能にすることができます。 次のコード スニペットは、アプリケーションのドキュメント ディレクトリ内にログ ファイルを作成することを示しています。
+アプリケーション サンド ボックス内のディレクトリにのアクセスできます。 ファイルは、ドキュメント ディレクトリ、ライブラリ ディレクトリ、および一時ディレクトリ内に作成できます。 ドキュメント ディレクトリ内のファイルは、ユーザーに対して使用可能にすることができます。 
+
+iOS で Objective-C を使用している場合は、次のコード スニペットを使用して、アプリケーション ドキュメント ディレクトリにログ ファイルを作成します。
 
 ```objc
 NSString *filePath = [
@@ -123,6 +130,14 @@ NSString *filePath = [
 <true/>
 <key>LSSupportsOpeningDocumentsInPlace</key>
 <true/>
+```
+
+iOS で Swift を使用している場合は、次のコード スニペットを使用してログを有効にしてください。
+```swift
+let documentsDirectoryPathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
+let logFilePath = documentsDirectoryPath.appendingPathComponent("swift.log")
+self.speechConfig!.setPropertyTo(logFilePath!.absoluteString, by: SPXPropertyId.speechLogFilename)
 ```
 
 iOS ファイル システムの詳細については、[こちら](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html)を参照してください。

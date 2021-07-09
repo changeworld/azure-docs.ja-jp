@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 540631db87807312f96c96ddd5b8144d4e22ff91
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a63390073f92625788dfbf43fc1183cc1812024a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095574"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460329"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -32,7 +32,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 次の図は、Azure Digital Twins の特徴を持つ大規模な IoT ソリューションを使用したイベント データのフローを示しています。
 
-:::image type="content" source="media/concepts-route-events/routing-workflow.png" alt-text="Azure Digital Twins は、エンドポイントを介して複数のダウンストリーム サービスにデータをルーティングします" border="false":::
+:::image type="content" source="media/concepts-route-events/routing-workflow.png" alt-text="エンドポイントを介して複数のダウンストリーム サービスにデータをルーティングする Azure Digital Twins の図。" border="false":::
 
 イベント ルートの一般的なダウンストリーム ターゲットは、TSI、Azure Maps、ストレージ、分析ソリューションなどのリソースです。
 
@@ -95,7 +95,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 いずれかの条件が満たされた場合、イベントは削除されるか、配信不能になります。 既定では、各エンドポイントは配信不能を有効に **しません**。 この処理を有効にするには、エンドポイントの作成時に、配信不能イベントを保持するようにストレージ アカウントを指定する必要があります。 その後で、このストレージ アカウントからイベントをプルして配信を解決できます。
 
-配信不能の場所を設定するには、コンテナーを含むストレージ アカウントが必要です。 エンドポイントの作成時に、このコンテナーの URL を指定します。 配信不能メッセージは、コンテナーの URL として、SAS トークンで提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 完全な形式の URL は次の形式になります: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+配信不能の場所を設定するには、コンテナーを含むストレージ アカウントが必要です。 エンドポイントの作成時に、このコンテナーの URL を指定します。 配信不能メッセージは、コンテナーの URL として、SAS トークンで提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 完全な形式の URL は次の形式になります: `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>`
 
 SAS トークンの詳細については、次を参照してください:[共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)
 

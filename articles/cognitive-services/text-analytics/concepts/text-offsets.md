@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/09/2020
+ms.date: 05/18/2021
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 348805670187f2362eb17dae40aa94e70f1daa24
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932376"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084684"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Text Analytics API の出力でのテキスト オフセット
 
@@ -26,7 +26,7 @@ ms.locfileid: "98932376"
 
 ## <a name="offsets-in-the-api-response"></a>API 応答のオフセット 
 
-[名前付きエンティティの認識](../how-tos/text-analytics-how-to-entity-linking.md)や[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)などの API 応答でオフセットが返されるときは、次の点に注意してください。
+[固有表現認識](../how-tos/text-analytics-how-to-entity-linking.md)や[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)などの API 応答でオフセットが返されるときは、次の点に注意してください。
 
 * 応答内の要素は、呼び出されたエンドポイントに固有のものである可能性があります。 
 * HTTP POST/GET ペイロードは [UTF-8](https://www.w3schools.com/charsets/ref_html_utf8.asp) でエンコードされます。これは、クライアント側コンパイラまたはオペレーティング システムの既定の文字エンコードである場合もそうでない場合もあります。
@@ -42,11 +42,11 @@ Text Analytics API では、便宜上、これらのテキスト要素も返さ�
 
 ## <a name="offsets-in-api-version-31-preview"></a>API バージョン 3.1-preview のオフセット
 
-API バージョン 3.1-preview.1 以降では、オフセットを返すすべての Text Analytics API エンドポイントで `stringIndexType` パラメーターがサポートされます。 このパラメーターは、要求された文字列反復スキームに一致するように、API 出力内の `offset` と `length` 属性を調整します。 現時点では以下の 3 種類がサポートされています。
+API バージョン 3.1 では、オフセットを返すすべての Text Analytics API エンドポイントで `stringIndexType` パラメーターがサポートされます。 このパラメーターは、要求された文字列反復スキームに一致するように、API 出力内の `offset` と `length` 属性を調整します。 現時点では以下の 3 種類がサポートされています。
 
 1. `textElement_v8` (既定値): [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) 標準の定義に従って書記素を繰り返します
 2. `unicodeCodePoint`: Python 3 の既定のスキームである[Unicode コード ポイント](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564)を繰り返します
-3. `utf16CodeUnit`: Javascript、Java、.NET の既定のスキームである[UTF-16 コード単位](https://unicode.org/faq/utf_bom.html#UTF16)を繰り返します
+3. `utf16CodeUnit`: Javascript、Java、.NET の既定のスキームである [UTF-16 コード単位](https://unicode.org/faq/utf_bom.html#UTF16)を繰り返します
 
 要求された `stringIndexType` が、選択したプログラミング環境に一致する場合は、標準の substring または slice メソッドを使用して部分文字列を抽出できます。 
 

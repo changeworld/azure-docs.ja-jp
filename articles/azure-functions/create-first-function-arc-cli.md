@@ -3,12 +3,12 @@ title: 'クイックスタート: Azure Arc で関数アプリを作成する'
 description: 最初の関数アプリをデプロイすることによって、Azure Arc で Azure Functions の使用を開始します。
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: 8e65eeaae942eafa34a89054ff06951f2bde8741
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: da00cc070e14490bcd3f4661d30b65bd97553c2e
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371975"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528470"
 ---
 # <a name="create-your-first-function-on-azure-arc-preview"></a>Azure Arc で初めての関数を作成する (プレビュー)
 
@@ -26,19 +26,19 @@ ms.locfileid: "110371975"
 # <a name="c"></a>[C\#](#tab/csharp)
 
 + [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.0.3245 以降。
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 + [Node.js](https://nodejs.org/) バージョン 12。 Node.js バージョン 10 もサポートされます。
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.0.3245 以降。
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
 # <a name="python"></a>[Python](#tab/python)
 
 + [Azure Functions でサポートされているバージョンの Python](supported-languages.md#languages-by-runtime-version)
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.0.3245 以降。
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
 ---

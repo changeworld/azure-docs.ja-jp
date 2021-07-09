@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9752b97e2f9bcff2f08dd2a280014e2c3d4a06c6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92543816"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470272"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL 単一サーバー
 
@@ -61,7 +61,7 @@ Microsoft が管理するデータセンターのグローバル ネットワー
 
 単一サーバー サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 データ (バックアップを含む) と、クエリの実行中に作成される一時ファイルは暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステム マネージド (既定) または[カスタマー マネージド](concepts-data-encryption-mysql.md)にできます。 サービスでは、既定で適用されるトランスポート層セキュリティ (SSL/TLS) を使用して、動作中のデータが暗号化されます。 このサービスでは、TLS バージョン 1.2、1.1、1.0 がサポートされており、[TLS の最低バージョン](concepts-ssl-connection-security.md)を適用することができます。 
 
-このサービスを使用すると、[プライベート リンク](concepts-data-access-security-private-link.md)を使用してサーバーにプライベート アクセスでき、[高度な脅威防止](concepts-data-access-and-security-threat-protection.md)の機能が提供されます。 高度な脅威防止では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出できます。
+このサービスを使用すると、[プライベート リンク](concepts-data-access-security-private-link.md)を使用してサーバーにプライベート アクセスすることができ、オプションの[オープンソース リレーショナル データベース用 Azure Defender](../security-center/defender-for-databases-introduction.md) プランを通じて脅威からの保護が提供されます。 Azure Defender により、データベースへのアクセスやその悪用を試みる、異常で有害と考えられる不自然な動作が検出されます。
 
 ネイティブ認証に加えて、単一サーバー サービスでは [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 認証がサポートされています。 Azure AD 認証は、Azure AD で定義および管理されている ID を使用して MySQL サーバーに接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Azure サービスを一元管理でき、アクセスの制御が簡素化および一元化されます。
 

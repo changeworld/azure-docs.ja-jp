@@ -10,22 +10,24 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 8476c4891cef9d9055b16c7ac574e569ecf5b3f2
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 355e692d6091cee443608c2239173c873bb8e1a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864866"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453547"
 ---
 # <a name="get-documents-status"></a>ドキュメント状態の取得
 
-ドキュメント状態の取得メソッドは、バッチ ドキュメント翻訳要求内のすべてのドキュメントの状態を返します。
+応答内のドキュメントの数がページング限度を超える場合は、サーバー側のページングが使用されます。 ページ分割された応答は結果の一部を示しており、応答の中に継続トークンが含まれています。 継続トークンがない場合は、他にページがないことを意味します。
 
-応答に含まれるドキュメントは、ドキュメント ID で降順に並べ替えられます。 応答内のドキュメントの数がページング限度を超える場合は、サーバー側のページングが使用されます。 ページ分割された応答は結果の一部を示しており、応答の中に継続トークンが含まれています。 継続トークンがない場合は、追加ページがないことを意味します。
+$top、$skip、$maxpagesize のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。
 
-$top と $skip のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。 サーバーでは、クライアントによって指定された値が受け入れられます。 ただし、異なるページ サイズや継続トークンを含む応答を処理できるようクライアントを準備する必要があります。
+$top は、ユーザーがすべてのページで返すレコードの総数を示します。 $skip は、指定した並べ替え方法に基づいて、サーバーによって保持されているドキュメントの状態の一覧からスキップするレコードの数を示します。 既定では、降順の開始時刻で並べ替えを行います。 $maxpagesize は、1 つのページで返される項目の最大数です。 $top 経由で要求された項目が多い場合 (または $top が指定されていない場合に返される項目が多い場合)、次のページへのリンク @nextLink が含まれます。
 
-$top と $skip の両方が含まれているとき、サーバーでは、最初に $skip がコレクションに適用され、それから $top が適用される必要があります。
+$orderBy クエリ パラメーターを使用して、返されたリスト ("$orderBy=createdDateTimeUtc asc" や "$orderBy=createdDateTimeUtc desc" など) を並べ替えることができます。 既定の並べ替えは createdDateTimeUtc で降順です。 一部のクエリ パラメーターを使用して、返された一覧をフィルター処理できます (例: "status=Succeeded,Cancelled" は、成功したドキュメントと取り消されたドキュメントのみを返します)。 createdDateTimeUtcStart と createdDateTimeUtcEnd は、組み合わせて、または個別に使用して、返されたリストをフィルター処理する datetime の範囲を指定できます。 サポートされているフィルター処理クエリ パラメーターは (status, IDs, createdDateTimeUtcStart, createdDateTimeUtcEnd) です。
+
+$top と $skip の両方が含まれているとき、サーバーでは、最初に $skip がコレクションに適用され、それから $top が適用される必要があります。 
 
 > [!NOTE]
 > サーバーが $top または $skip を受け入れられない場合、サーバーでは、クエリ オプションを無視するだけではなく、そのことを通知するエラーをクライアントに返す必要があります。 これにより、返されるデータについてクライアントが憶測を立てるリスクが軽減されます。
@@ -34,7 +36,7 @@ $top と $skip の両方が含まれているとき、サーバーでは、最�
 
 `GET` 要求の送信先は次のとおりです。
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}/documents
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}/documents
 ```
 
 [カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について説明します。
@@ -48,11 +50,17 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-|Query parameter (クエリ パラメーター)|必須|説明|
-|--- |--- |--- |
-|id|はい|操作 ID。|
-|$skip|いいえ|コレクション内の $skip エントリをスキップします。 $top と $skip の両方が指定されている場合、$skip が先に適用されます。|
-|$top|いいえ|コレクション内の $top エントリを受け取ります。 $top と $skip の両方が指定されている場合、$skip が先に適用されます。|
+|Query parameter (クエリ パラメーター)|/|必須|型|説明|
+|--- |--- |--- |--- |--- |
+|id|path|True|string|操作 ID。|
+|$maxpagesize|query|×|integer int32|$maxpagesize は、1 つのページで返される項目の最大数です。 $top 経由で要求された項目が多い場合 (または $top が指定されていない場合に返される項目が多い場合)、次のページへのリンク @nextLink が含まれます。 クライアントは、$maxpagesize の設定を指定することによって、特定のページ サイズのサーバー駆動のページングを要求できます。 指定したページ サイズがサーバーの既定のページ サイズよりも小さい場合、サーバーでは、この設定を優先する必要があります。|
+|$orderBy|query|×|array|コレクションの並べ替えクエリです (例: ' CreatedDateTimeUtc asc '、' CreatedDateTimeUtc desc ')。|
+|$skip|query|×|integer int32|$skip は、指定した並べ替え方法に基づいて、サーバーによって保持されているレコードの一覧からスキップするレコードの数を示します。 既定では、降順の開始時刻で並べ替えを行います。 クライアントは $top と $skip のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。 クライアントによって $top と $skip の両方が指定されている場合き、サーバーでは、最初に $skip がコレクションに適用され、それから $top が適用される必要があります。 注: サーバーが $top または $skip を受け入れられない場合、サーバーでは、クエリ オプションを無視するだけではなく、そのことを通知するエラーをクライアントに返す必要があります。|
+|$top|query|×|integer int32|$top は、ユーザーがすべてのページで返すレコードの総数を示します。 クライアントは $top と $skip のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。 クライアントによって $top と $skip の両方が指定されている場合、サーバーでは、最初に $skip がコレクションに適用され、それから $top が適用される必要があります。 注: サーバーが $top または $skip を受け入れられない場合、サーバーでは、クエリ オプションを無視するだけではなく、そのことを通知するエラーをクライアントに返す必要があります。|
+|createdDateTimeUtcEnd|query|×|string date-time|項目を取得する終了日時。|
+|createdDateTimeUtcStart|query|×|string date-time|項目を取得する開始日時。|
+|ids|query|×|array|フィルター処理で使用する ID。|
+|statuses|query|×|array|フィルター処理で使用する状態。|
 
 ## <a name="request-headers"></a>要求ヘッダー
 
@@ -82,29 +90,31 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 成功した応答では、次の情報が返されます。
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |@nextLink|string|次のページの URL。 追加のページがない場合は Null。|
-|value|DocumentStatusDetail []|下に一覧表示されている個々のドキュメントの詳細な状態。|
+|value|DocumentStatus []|下に一覧表示されている個々のドキュメントの詳細な状態。|
 |value.path|string|ドキュメントまたはフォルダーの場所。|
+|value.sourcePath|string|ソース ドキュメントの場所。|
 |value.createdDateTimeUtc|string|操作が作成された日時。|
-|value.lastActionDateTimeUt|string|操作の状態が更新された日時。|
+|value.lastActionDateTimeUtc|string|操作の状態が更新された日時。|
 |value.status|status|ジョブまたはドキュメントの可能な状態の一覧。<ul><li>Canceled</li><li>Cancelling</li><li>失敗</li><li>NotStarted</li><li>実行中</li><li>成功</li><li>ValidationFailed</li></ul>|
 |value.to|string|ターゲット言語。|
-|value.progress|string|翻訳の進行状況 (利用可能な場合)。|
+|value.progress|数値|翻訳の進行状況 (利用可能な場合)。|
 |value.id|string|ドキュメント ID。|
 |value.characterCharged|整数 (integer)|API によって課金される文字数。|
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|
-|ターゲット (target)|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合は "documents" または "document id" になります。|
-|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
+|ターゲット (target)|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合は "documents" または "document ID" になります。|
+|innerError|InnerTranslationError|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
 |innerError.code|string|コード エラー文字列を取得します。|
 |innerError.message|string|高レベルのエラー メッセージを取得します。|
+|innerError.target|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合 "documents" または "document ID" となります。|
 
 ## <a name="examples"></a>例
 
@@ -117,6 +127,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
   "value": [
     {
       "path": "https://myblob.blob.core.windows.net/destinationContainer/fr/mydoc.txt",
+      "sourcePath": "https://myblob.blob.core.windows.net/sourceContainer/fr/mydoc.txt",
       "createdDateTimeUtc": "2020-03-26T00:00:00Z",
       "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
       "status": "Running",
@@ -126,7 +137,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
       "characterCharged": 0
     }
   ],
-  "@nextLink": "https://westus.cognitiveservices.azure.com/translator/text/batch/v1.0.preview.1/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55/documents?$top=5&$skip=15"
+  "@nextLink": "https://westus.cognitiveservices.azure.com/translator/text/batch/v1.0/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55/documents?$top=5&$skip=15"
 }
 ```
 

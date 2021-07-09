@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cc5ed68fa7a26a347f0cb85c94bb0b7b79ccb055
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608087"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059175"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
@@ -69,15 +69,14 @@ Speech SDK を使用した[音声アシスタント](voice-assistants.md)によ�
 
 #### <a name="keyword-recognition"></a>キーワード認識
 
-Speech SDK では、[キーワード認識](./custom-keyword-basics.md)の概念をサポートしています。 キーワード認識では、音声でキーワードを識別した後、キーワードを聞くとアクションが行われます。 たとえば、「やあ、Cortana」という音声により、Cortana アシスタントがアクティブになります。
+Speech SDK では、[キーワード認識](custom-keyword-basics.md)の概念をサポートしています。 キーワード認識では、音声でキーワードを識別した後、キーワードを聞くとアクションが行われます。 たとえば、「やあ、Cortana」という音声により、Cortana アシスタントがアクティブになります。
 
 **キーワード認識** は、次のプラットフォームで使用できます。
 
   - C++/Windows および Linux
   - C#/Windows および Linux
   - Python/Windows および Linux
-  - Java/Windows および Linux および Android (Speech Devices SDK)
-  - キーワード認識機能は、どのような種類のマイクでも動作する可能性がありますが、公式のキーワード認識サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています
+  - Java/Windows および Linux および Android
 
 ### <a name="meeting-scenarios"></a>ミーティングのシナリオ
 

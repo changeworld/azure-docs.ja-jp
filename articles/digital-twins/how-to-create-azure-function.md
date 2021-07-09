@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8aaa1b2865b1d0f39e6cb224c3979b4f53eeee81
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2ce667363c2bd3251eba1a0e4829c60d99d3a4bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066720"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456602"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -40,7 +40,7 @@ Visual Studio 2019 で、 **[ファイル]**  >  **[新規作成]**  >  **[プ�
 
 関数アプリの名前を指定し、 __[作成]__ を選択します。
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="新しいプロジェクトを構成するためのダイアログが表示されている Visual Studio のスクリーンショット。プロジェクト名、保存場所、新しいソリューションを作成するための選択肢、ソリューション名などの設定があります。":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="新しいプロジェクトを構成するためのダイアログが表示されている Visual Studio のスクリーンショット (プロジェクト名、場所、新しいソリューションを作成するための選択肢など)。":::
 
 関数アプリの種類として **[イベント グリッド トリガー]** を選択し、 __[作成]__ を選択します。
 
@@ -107,7 +107,7 @@ Visual Studio 2019 で、 **[ファイル]**  >  **[新規作成]**  >  **[プ�
     > [!Note] 
     > 発行された関数のリストに関数が表示されるまでに、数分待つか、ページを数回更新する必要がある場合があります。
 
-    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Azure portal で発行された関数の表示。" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Azure portal で発行された関数が表示されているスクリーンショット。" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
 
 Azure Digital Twins にアクセスするために、関数アプリには、Azure Digital Twins インスタンスにアクセスできるアクセス許可を持つシステム マネージド ID が必要です。 次はその設定をします。
 
@@ -132,14 +132,14 @@ Azure CLI または Azure portal を使用して、関数アプリに対する�
 1. 次のコマンドを使用して、関数のシステム マネージド ID の詳細を確認します。 出力の `principalId` フィールドを書き留めてください。
 
     ```azurecli-interactive 
-    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>   
+    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-function-app-name> 
     ```
 
     >[!NOTE]
     > 結果が空で、ID の詳細が表示されない場合は、次のコマンドを使用して、関数の新しいシステム マネージド ID を作成します。
     > 
     >```azurecli-interactive    
-    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>    
+    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-function-app-name>  
     >```
     >
     > 出力には、次の手順に必要な `principalId` 値を含む、ID の詳細が表示されます。 
@@ -158,7 +158,7 @@ Azure CLI または Azure portal を使用して、関数アプリに対する�
 > Azure Digital Twins インスタンスの URL を作成するには、インスタンスのホスト名の先頭に *https://* を追加します。 インスタンスのすべてのプロパティと共にホスト名を表示するには、`az dt show --dt-name <your-Azure-Digital-Twins-instance>` を実行します。
 
 ```azurecli-interactive 
-az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
+az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-function-app-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
@@ -224,7 +224,7 @@ az functionapp config appsettings set --resource-group <your-resource-group> --n
 
 1. 開いたウィンドウで、コピーしたホスト名の値を使用してアプリケーション設定を作成します。
     * **[名前]** : ADT_SERVICE_URL
-    * **[値]** : https://{your-azure-digital-twins-host-name}
+    * **[値]** : https://<your-Azure-Digital-Twins-host-name>
     
     __[OK]__ を選択して、アプリケーションの設定を作成します。
     
@@ -232,11 +232,11 @@ az functionapp config appsettings set --resource-group <your-resource-group> --n
 
 1. 設定を作成すると、 __[アプリケーションの設定]__ タブに表示されます。**ADT_SERVICE_URL** がリストに表示されていることを確認します。 次に、 __[保存]__ を選択して、新しいアプリケーション設定を保存します。
 
-    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure portal のスクリーンショット。[アプリケーションの設定] タブで、新しい [A D T SERVICE U R L] 設定が強調表示され、[保存] ボタンも強調表示されています。":::
+    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure portal のスクリーンショット。[アプリケーションの設定] タブで、新しい [A D T SERVICE URL] 設定 と [保存] ボタンの両方が強調表示されています。":::
 
 1. アプリケーション設定に加えた変更を有効にするには、アプリケーションを再起動する必要があるため、確認のメッセージが表示されたら、 __[続行]__ を選択してアプリケーションを再起動します。
 
-    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure portal のスクリーンショット。アプリケーション設定を変更するとアプリケーションが再起動されるというメモが表示されています。[続行] ボタンが強調表示されています。":::
+    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure portal のスクリーンショット。アプリケーション設定を変更するとアプリケーションが再起動されるというメモが表示されています。":::
 
 ---
 

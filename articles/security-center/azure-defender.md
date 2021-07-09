@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1337167b13b05122aa38b3142a849129171bdc4d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2c8147399f37f5f9fe2b3c01bc2c273ffc59be31
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140301"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469609"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender の概要
 
@@ -41,6 +41,7 @@ Azure Security Center の **価格と設定** の領域から Azure Defender を
 - [Azure Defender for Key Vault](defender-for-key-vault-introduction.md)
 - [Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)
 - [Azure Defender for DNS](defender-for-dns-introduction.md)
+- [オープンソース リレーショナル データベース用 Azure Defender](defender-for-databases-introduction.md)
 
 これらのプランについてはそれぞれ、Security Center のドキュメントで個別に説明されています。
 

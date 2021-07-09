@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
-ms.openlocfilehash: 84f95e4c1d24ee100efbd0572dfe0dc88aca22d3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 863611b762de5b7ec535b20a71880b523d0fc166
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369488"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892222"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker での保存データの暗号化
 
@@ -30,7 +30,7 @@ QnA Maker では、Azure Search から CMK のサポートが使用されます�
 
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-カスタム質問と回答によって [Azure Search からの CMK サポート](../../search/search-security-manage-encryption-keys.md)が使用され、Azure 検索インデックスに格納されているデータを暗号化するため、与えられた CMK を自動的に関連付けます。
+カスタム質問と回答によって [Azure Search からの CMK サポート](../../search/search-security-manage-encryption-keys.md)が使用され、Azure 検索インデックスに格納されているデータを暗号化するため、与えられた CMK が自動的に関連付けられます。
 
 ---
 
@@ -83,7 +83,7 @@ QnA Maker サービスでは、Azure Search サービスから CMK が使用さ�
 
 ## <a name="encryption-of-data-in-transit"></a>転送中のデータの暗号化
 
-QnA Maker ポータルは、ユーザーのブラウザー上で実行されます。 どのアクションでも、各コグニティブ サービス API への直接呼び出しがトリガーされます。 そのため、QnA Maker では転送中のデータに対応しています。
+QnA Maker ポータルは、ユーザーのブラウザー上で実行されます。 どのアクションでも、各 Cognitive Service API への直接呼び出しがトリガーされます。 そのため、QnA Maker では転送中のデータに対応しています。
 ただし、QnA Maker ポータル サービスは米国西部でホストされており、まだ米国以外のお客様にとっては最適な状況ではありません。 
 
 ## <a name="next-steps"></a>次のステップ

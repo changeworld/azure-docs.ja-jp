@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: ee7ccb126eb04e168ccc213f0429d41a76a8bc2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 704697a88a723182c2dbbcb2f25eb18df7be34c1
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103021315"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430353"
 ---
 **データの収集量と保持期間** 
 
@@ -37,7 +37,7 @@ ms.locfileid: "103021315"
 
 | カテゴリ | 制限 | 説明 |
 |:---|:---|:---|
-| ログ クエリによって返されるレコードの最大数 | 10,000 | クエリでクエリ スコープ、時間範囲、およびフィルターを使用して、結果を減らします。 |
+| ログ クエリによって返されるレコードの最大数 | 30,000 | クエリでクエリ スコープ、時間範囲、およびフィルターを使用して、結果を減らします。 |
 
 
 **データ コレクター API**
@@ -52,7 +52,7 @@ ms.locfileid: "103021315"
 | カテゴリ | 制限 | 説明 |
 |:---|:---|:---|
 | 1 つのクエリで返されるレコードの最大数 | 500,000 | |
-| 返されるデータの最大サイズ | 64,000,000 バイト (~61 MiB)| |
+| 返されるデータの最大サイズ | 104 MB 以下 (100 MiB 以下)| |
 | クエリの最大実行時間 | 10 分 | 詳細については、[タイムアウト](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts)に関するページをご覧ください。  |
 | 最大要求レート | Azure AD ユーザーまたはクライアントの IP アドレスごとに、30 秒あたり 200 件の要求 | 詳細については、[レート制限](https://dev.loganalytics.io/documentation/Using-the-API/Limits)に関するページをご覧ください。 |
 
@@ -61,6 +61,7 @@ ms.locfileid: "103021315"
 | カテゴリ | 制限 | 説明 |
 |:---|:---|:---|
 | レコードの最大数 | 500,000 | |
+| 返されるデータの最大サイズ | 104 MB 以下 (100 MiB 以下) | |
 | クエリ タイムアウトの最大値 | 110 秒 | |
 | グラフ | | [ログ] ページとコネクタの視覚化で使用されているグラフ ライブラリは異なり、現在、コネクタでは一部機能が使用できません。 |
 

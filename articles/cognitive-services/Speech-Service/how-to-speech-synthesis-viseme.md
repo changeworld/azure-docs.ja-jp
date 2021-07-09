@@ -12,12 +12,12 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 630e05b50f153b816f74a9df1f5783c0e36cb53e
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7ef3e07eb1585aaa87986fd682b4db00c53e66f3
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734632"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810680"
 ---
 # <a name="get-facial-pose-events"></a>表情イベントを取得する
 
@@ -35,7 +35,10 @@ ms.locfileid: "109734632"
 
 ## <a name="get-viseme-events-with-the-speech-sdk"></a>Speech SDK を使用して口形素イベントを取得する
 
-口形素イベントを作成するには、入力テキストを一連の音素シーケンスとそれに対応する口形素シーケンスに変換します。 音声オーディオの各口形素の開始時間を推定します。 口形素イベントには、口形素 ID のシーケンスが含まれており、それぞれに口形素が現れるオーディオへのオフセットがあります。 これらのイベントは、入力テキストを話す人をシミュレートする、口のアニメーションを駆動できます。
+口形素イベントを作成するには、TTS サービスでは、入力テキストを一連の音素シーケンスとそれに対応する口形素シーケンスに変換します。
+その後、音声オーディオの各口形素の開始時間が推定されます。
+口形素イベントには、口形素 ID のシーケンスが含まれており、それぞれに口形素が現れるオーディオへのオフセットがあります。
+これらのイベントは、入力テキストを話す人をシミュレートする、口のアニメーションを駆動できます。
 
 | パラメーター | 説明 |
 |-----------|-------------|

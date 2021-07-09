@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c914b2b6db65e6956db830e16351f13144ab5aa
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100096431"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572205"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
 
@@ -320,4 +320,9 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [異なるリージョンの Azure Virtual Machines に SQL Server AlwaysOn 可用性グループを構成する](availability-group-manually-configure-multiple-regions.md)
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)

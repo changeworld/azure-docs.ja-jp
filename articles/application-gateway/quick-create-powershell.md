@@ -5,22 +5,25 @@ description: このクイックスタートでは、Azure PowerShell を使用�
 services: application-gateway
 author: vhorne
 ms.author: victorh
-ms.date: 01/19/2021
+ms.date: 06/14/2021
 ms.topic: quickstart
 ms.service: application-gateway
 ms.custom: devx-track-azurepowershell - mvc - mode-api
-ms.openlocfilehash: a50c264829ce08b409b52b321ca9c31b3688aed9
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 66c28c68dccad7874d65c7c4c1c9c78cc2ea13da
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320621"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072255"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure Application Gateway による Web トラフィックの転送
 
 このクイックスタートでは、Azure PowerShell を使用してアプリケーション ゲートウェイを作成します。 さらに、それをテストし、正しく動作することを確認します。 
 
 アプリケーション ゲートウェイは、アプリケーション Web トラフィックをバックエンド プール内の特定のリソースに転送します。 リスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 わかりやすくするために、この記事では、パブリック フロントエンド IP アドレス、アプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、基本要求ルーティング規則、およびバックエンド プール内の 2 つの仮想マシンを使用する簡単な設定を使用します。
+
+:::image type="content" source="media/quick-create-portal/application-gateway-qs-resources.png" alt-text="アプリケーション ゲートウェイ リソース":::
+
 
 また、[Azure CLI](quick-create-cli.md) または [Azure portal](quick-create-portal.md) を使用してこのクイックスタートを完了することもできます。
 
@@ -59,15 +62,15 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myAGSubnet `
-  -AddressPrefix 10.0.1.0/24
+  -AddressPrefix 10.21.0.0/24
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
-  -AddressPrefix 10.0.2.0/24
+  -AddressPrefix 10.21.1.0/24
 New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myVNet `
-  -AddressPrefix 10.0.0.0/16 `
+  -AddressPrefix 10.21.0.0/16 `
   -Subnet $agSubnetConfig, $backendSubnetConfig
 New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `

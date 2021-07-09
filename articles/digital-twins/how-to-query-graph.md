@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 67d09eb3420143c362914a7903b181a419d7a388
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f279ea2011b37c01b1ef9ec67a2b5642f7e640b8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786881"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078096"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -167,10 +167,7 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 ## <a name="filter-results-specify-return-set-with-projections"></a>結果のフィルター処理: プロジェクションを使用して戻り値のセットを指定する
 
-`SELECT` ステートメントでプロジェクションを使用すると、クエリによって返される列を選択できます。
-
->[!NOTE]
->現時点では、複合プロパティはサポートされていません。 プロジェクションのプロパティが有効であることを確認するには、`IS_PRIMITIVE` チェックでプロジェクションを結合します。
+`SELECT` ステートメントでプロジェクションを使用すると、クエリによって返される列を選択できます。 プロジェクションは、プリミティブおよび複合プロパティの両方でサポートされるようになりました。 Azure Digital Twins によるプロジェクションの詳細については、[SELECT 句のリファレンス ドキュメント](reference-query-clause-select.md#select-columns-with-projections)を参照してください。
 
 プロジェクションを使用してツインとリレーションシップを返すクエリの例を次に示します。 次のクエリでは、ID が "*ABC*" の "Factory" が "*Factory.customer*" のリレーションシップを介して "Consumer" と関連付けられており、そのリレーションシップが "*Edge*" として表されるシナリオから、"Consumer"、"Factory"、"Edge" がプロジェクションされています。
 
@@ -233,11 +230,11 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 API を直接呼び出すか、Azure Digital Twins で使用可能な [SDK](concepts-apis-sdks.md#overview-data-plane-apis) のいずれかを使用することができます。
 
-次のコード スニペットは、クライアント アプリからの [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 呼び出しを示しています。
+次のコード スニペットは、クライアント アプリからの [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼び出しを示しています。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-この呼び出しで使用されるクエリでは、デジタル ツインの一覧が返されます。これは、上記の例で [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) オブジェクトによって表されています。 各クエリのデータの戻り値の型は、`SELECT` ステートメントで指定する項目によって異なります。
+この呼び出しで使用されるクエリでは、デジタル ツインの一覧が返されます。これは、上記の例で [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) オブジェクトによって表されています。 各クエリのデータの戻り値の型は、`SELECT` ステートメントで指定する項目によって異なります。
 * `SELECT * FROM ...` で始まるクエリでは、デジタル ツイン (`BasicDigitalTwin` オブジェクトとして、または独自に作成した他のカスタム デジタル ツインの種類としてシリアル化可能) の一覧が返されます。
 * `SELECT <A>, <B>, <C> FROM ...` の形式で始まるクエリでは、キー `<A>`、`<B>`、`<C>` を含むディクショナリが返されます。
 * カスタム データを返すように、他の形式の `SELECT` ステートメントを作成できます。 独自のクラスを作成して、細かくカスタマイズされた結果セットが処理されるようにすることを検討してください。 

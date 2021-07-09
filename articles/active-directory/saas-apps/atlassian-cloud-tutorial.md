@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b76f5ec2cffde60379b12a0ad7d623ebe9a06c2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94330571"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473191"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
 
@@ -41,8 +41,8 @@ ms.locfileid: "94330571"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
-* Atlassian Cloud では、**SP と IDP** によって開始される SSO がサポートされます
-* Atlassian Cloud では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](atlassian-cloud-provisioning-tutorial.md)がサポートされます
+* Atlassian Cloud では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Atlassian Cloud では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](atlassian-cloud-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>ギャラリーからの Atlassian Cloud の追加
 
@@ -187,6 +187,9 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
       c. 最終的な属性マッピングは、次のようになります。
 
       ![画像 4](./media/atlassian-cloud-tutorial/default-attributes-2.png)
+
+ > [!NOTE]
+ > 複数のセキュリティ ポリシーを設定するには、左側のドロワーから **[認証ポリシー]** オプションを選択します。 認証ポリシーを使用すると、組織内のさまざまなユーザーと構成のセットに対して認証設定を指定できます。 それにより、Atlassian 組織にアクセスするユーザーが偽りでないことが確認されます。 詳細については、「[認証ポリシー](https://support.atlassian.com/security-and-access-policies/docs/understand-authentication-policies/)」を参照してください。
      
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -247,7 +250,7 @@ Azure AD ユーザーが Atlassian Cloud にサインインできるようにす
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [Atlassian Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Atlassian Cloud] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Atlassian Cloud に自動的にサインインされるはずです。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

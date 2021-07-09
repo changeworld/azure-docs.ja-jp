@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 31c99fbac936ab6ec96d6e24bc824d9cb2069e0f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c48f62d193af953ec080fcd559c9d7593428d99e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078780"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454626"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
@@ -28,9 +28,10 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 [!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
-また、Azure Digital Twins Explorer サンプルを使用して、グラフに変更を加えることもできます。このサンプルでは、ツインとグラフを視覚化し、バックグラウンドで SDK を利用できます。 次のセクションでは、このサンプルについて詳しく説明します。
-
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="サンプルのモデルとツインが表示されている Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
+
 
 ## <a name="create-relationships"></a>リレーションシップの作成
 
@@ -198,7 +199,7 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 
 このプログラムのコンソール出力は次のようになります。 
 
-:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="ツインの詳細、ツインの受信および発信リレーションシップが表示されているコンソール出力。" lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
+:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="ツインの受信および発信リレーションシップを含めたツインの詳細が表示されているコンソール出力のスクリーンショット。" lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
 
 > [!TIP]
 > ツイン グラフは、ツイン間にリレーションシップを作成する概念です。 ツイン グラフの視覚的表現を表示する場合は、この記事の "[視覚化](how-to-manage-graph.md#visualization)" に関するセクションを参照してください。 

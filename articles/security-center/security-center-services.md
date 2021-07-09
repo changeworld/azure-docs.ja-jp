@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 02/16/2021
+ms.date: 05/13/2021
 ms.author: memildin
-ms.openlocfilehash: 070f35dc3efea4a3f05ec36cc3860fa589aa87e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b68a9946908697d6e9113af586a134b0b3d8784a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437912"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468341"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -125,6 +125,7 @@ ms.locfileid: "102437912"
 |[Azure Defender for DNS](defender-for-dns-introduction.md)|-|-|
 |[Azure Defender for container registries](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
 |[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔|✔|
+|[オープンソース リレーショナル データベース用 Azure Defender](defender-for-databases-introduction.md)|-|-|
 |[Kubernetes ワークロード保護](kubernetes-workload-protections.md)|✔|✔|
 |||
 

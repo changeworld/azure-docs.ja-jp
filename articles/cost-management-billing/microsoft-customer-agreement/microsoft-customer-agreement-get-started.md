@@ -6,15 +6,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 04/29/2021
+ms.date: 05/21/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: 60d42598da2e0b7f29bfea832d27dc5156761556
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 9ef2d08f3cbc557cfa914c13298b1675afbf455c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322061"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458690"
 ---
 # <a name="key-next-steps-after-accepting-your-microsoft-customer-agreement"></a>Microsoft 顧客契約への同意後に重要となる次のステップ
 
@@ -96,6 +96,10 @@ Azure サービスの利用を開始すると、各月の 5 日に、Microsoft �
 1. 更新後、 **[保存]** を選択します。
 
 [課金アカウントの設定を更新する方法の詳細](/microsoft-store/update-microsoft-store-for-business-account-settings)をご覧ください。
+
+## <a name="cancel-support-plan"></a>サポート プランをキャンセルする
+
+[以前のサポート プランをキャンセル](../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json#cancel-a-prior-support-plan)する方法について説明します。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 

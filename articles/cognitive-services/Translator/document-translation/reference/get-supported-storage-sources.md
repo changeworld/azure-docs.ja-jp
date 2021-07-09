@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 03203206da6ae3ea9a1174aebafda0b58e22ea41
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: b0cd1c179de36147169239ab50785a9d93dfa5bb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864849"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458761"
 ---
 # <a name="get-supported-storage-sources"></a>サポートされるストレージ ソースの取得
 
@@ -25,7 +25,7 @@ ms.locfileid: "107864849"
 
 `GET` 要求の送信先は次のとおりです。
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/storagesources
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/storagesources
 ```
 
 [カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について説明します。
@@ -58,20 +58,21 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 ### <a name="successful-get-supported-storage-sources-response"></a>サポートされるストレージ ソースの取得の成功した応答
 一覧の基本データ型が、サポートされるストレージ ソースの取得 API で返されます。
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |value|string []|オブジェクトの一覧です。|
 
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|
-|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
+|innerError|InnerTranslationError|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
 |innerError.code|string|コード エラー文字列を取得します。|
 |innerError.message|string|高レベルのエラー メッセージを取得します。|
+|innerError.target|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合は "documents" または "document id" になります。|
 
 ## <a name="examples"></a>例
 

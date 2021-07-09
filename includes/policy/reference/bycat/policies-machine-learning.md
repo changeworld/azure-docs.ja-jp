@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cb1059d77c2c75e2dbb395483e37c8467c83ce2a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 66c74e5615718fff2ccffe4239ba8cb5dc27fd20
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762365"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019764"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -25,3 +25,5 @@ ms.locfileid: "108762365"
 |[プライベート エンドポイントを使用して Azure Machine Learning ワークスペースを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7838fd83-5cbb-4b5d-888c-bfa240972597) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークが Azure サービスに接続されます。 プライベート エンドポイントを Azure Machine Learning ワークスペースにマッピングすると、データ漏えいのリスクを軽減できます。 プライベート リンクの詳細については、[https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateEndpoint_DeployIfNotExists.json) |
 |[\[プレビュー\]: 指定した Azure Machine Learning コンピューティングにトレーニング コード用のコード署名を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a6f7384-63de-11ea-bc55-0242ac130003) |指定された Azure Machine Learning コンピューティングにトレーニング コード用のコード署名を提供します。ワークスペースで割り当てることができます。 詳細については、[https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) を参照してください。 |enforceSetting、無効 |[2.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedSigningKey_EnforceSetting.json) |
 |[\[プレビュー\]: 指定の Azure Machine Learning コンピューティングの完全ログに使用されるようにログ フィルターの式とデータストアを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d413020-63de-11ea-bc55-0242ac130003) |指定の Azure Machine Learning コンピューティングの完全ログに使用されるログ フィルターの式とデータストアを指定します。ワークスペースで割り当てることができます。 詳細については、[https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) を参照してください。 |enforceSetting、無効 |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedLogFilter_EnforceSetting.json) |
+|[Machine Learning コンピューティングを構成してローカル認証方法を無効にする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6f9a2d0-cff7-4855-83ad-4cd750666512) |ローカル認証方法を無効にして、Machine Learning コンピューティングで Azure Active Directory ID を認証専用で要求するようにします。 詳細については、[https://aka.ms/azure-ml-aad-policy](https://aka.ms/azure-ml-aad-policy) を参照してください。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/MachineLearningServices_DisableLocalAuth_Modify.json) |
+|[Machine Learning コンピューティングでローカル認証方法を無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe96a9a5f-07ca-471b-9bc5-6a0f33cbd68f) |ローカル認証方法を無効にすると、Machine Learning コンピューティングで Azure Active Directory ID を認証専用で求めることにより、セキュリティが向上します。 詳細については、[https://aka.ms/azure-ml-aad-policy](https://aka.ms/azure-ml-aad-policy) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/MachineLearningServices_DisableLocalAuth_Audit.json) |

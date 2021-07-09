@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 4c6e82af46a012ad53dfa1cc1db1252ef2c0443e
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 69172956d36aa4b43c88858a65771fdb183a39f6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864939"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453617"
 ---
 # <a name="get-document-status"></a>ドキュメント状態の取得
 
@@ -25,7 +25,7 @@ ms.locfileid: "107864939"
 
 `GET` 要求の送信先は次のとおりです。
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}/documents/{documentId}
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}/documents/{documentId}
 ```
 
 [カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について説明します。
@@ -67,26 +67,28 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ### <a name="successful-get-document-status-response"></a>成功したドキュメント状態の取得の応答
 
-|名前|Type|[説明]|
+|名前|型|[説明]|
 |--- |--- |--- |
 |path|string|ドキュメントまたはフォルダーの場所。|
+|sourcePath|string|ソース ドキュメントの場所。|
 |createdDateTimeUtc|string|操作が作成された日時。|
 |lastActionDateTimeUtc|string|操作の状態が更新された日時。|
 |status|String|ジョブまたはドキュメントの可能な状態の一覧: <ul><li>Canceled</li><li>Cancelling</li><li>失敗</li><li>NotStarted</li><li>実行中</li><li>成功</li><li>ValidationFailed</li></ul>|
-|to|string|ターゲット言語の 2 文字の言語コード。 言語リストを参照。|
+|to|string|ターゲット言語の 2 文字の言語コード。 [言語リストを参照。](../../language-support.md)|
 |progress|number|翻訳の進行状況 (利用可能な場合)|
 |id|string|ドキュメント ID。|
 |characterCharged|整数 (integer)|API によって課金される文字数。|
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|
-|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
+|innerError|InnerTranslationError|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
 |innerError.code|string|コード エラー文字列を取得します。|
 |innerError.message|string|高レベルのエラー メッセージを取得します。|
+|innerError.target|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合は "documents" または "document id" になります。|
 
 ## <a name="examples"></a>例
 
@@ -96,6 +98,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 ```JSON
 {
   "path": "https://myblob.blob.core.windows.net/destinationContainer/fr/mydoc.txt",
+  "sourcePath": "https://myblob.blob.core.windows.net/sourceContainer/fr/mydoc.txt",
   "createdDateTimeUtc": "2020-03-26T00:00:00Z",
   "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
   "status": "Running",

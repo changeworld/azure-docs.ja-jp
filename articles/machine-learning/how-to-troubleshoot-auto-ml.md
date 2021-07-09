@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/08/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python, automl, references_regions
-ms.openlocfilehash: 6f64d3511da8fbf953a50eab44702c7356ad3c5b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0eda886537f0cfd6819ca69c53b4cafa44746636
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140481"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540693"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>Python での自動 ML 実験のトラブルシューティング
 
@@ -148,8 +148,16 @@ PyJWT のバージョンは次のようにして確認できます。
     1. コマンド シェルで `pip uninstall PyJWT` を実行し、確認のために「`y`」を入力します。
     1. `pip install 'PyJWT<2.0.0'` を使用してインストールします。
   
+
+## <a name="data-access"></a>データ アクセス
+ 
+自動 ML の実行では、AzureFile ストレージに接続するファイル データストアに適切な認証資格情報があることを確認する必要があります。 それ以外の場合、次のメッセージが表示されます。 [データ アクセス認証の資格情報を更新する](how-to-train-with-datasets.md#azurefile-storage)方法について説明します。
+
+エラー メッセージ: `Could not create a connection to the AzureFileService due to missing credentials. Either an Account Key or SAS token needs to be linked the default workspace blob store.`
+
 ## <a name="databricks"></a>Databricks
 [Databricks を使用して自動 ML 実験を構成する方法](how-to-configure-databricks-automl-environment.md#troubleshooting)に関する記事を参照してください。
+
 
 ## <a name="forecasting-r2-score-is-always-zero"></a>R2 スコアの予測が常にゼロになる
 

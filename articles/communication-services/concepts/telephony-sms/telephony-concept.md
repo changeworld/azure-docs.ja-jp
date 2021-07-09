@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e698abbdad4b45a58f14e350e1f2b268a7de371
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5fba53125e22eed6797db7ada6b99e679e136ea8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324493"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092406"
 ---
 # <a name="telephony-concepts"></a>テレフォニーの概念
 
@@ -40,7 +40,9 @@ Azure Communication Services の Calling SDK を使用すると、アプリケ�
 - 音声通話 (PSTN) は Azure Communication Services の外で稼動しているため、オンプレミス環境のデプロイやメンテナンスは必要ありません。
 - 注: サードパーティの PBX、アナログ デバイス、その他のセッション ボーダー コントローラー (SBC) でサポートされるサードパーティのテレフォニー機器との相互運用性を確保するために、必要であれば、サポートされている SBC を Azure 直接ルーティング経由で接続することもできます。
 
-この方法を選択する場合は、Azure Communication Services への接続が中断されないようにする必要があります。
+この方法を選択する場合は、Azure Communication Services への接続が中断されないようにする必要があります。  
+
+クラウド通話の場合、発信呼び出しは対象の国に応じて分単位の料金で請求されます。 [PSTN 通話の現在の料金一覧](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)を参照してください。
 
 ### <a name="azure-direct-routing"></a>Azure 直接ルーティング
 

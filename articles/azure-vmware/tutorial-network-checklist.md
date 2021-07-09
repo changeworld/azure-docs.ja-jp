@@ -2,13 +2,13 @@
 title: チュートリアル - ネットワーク計画のチェックリスト
 description: Azure VMware Solution のネットワーク接続とネットワーク ポートのネットワーク要件について説明します。
 ms.topic: tutorial
-ms.date: 04/23/2021
-ms.openlocfilehash: 2e7854100df7e19ec8cfcc9b6de647fa8ed31d38
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 06/08/2021
+ms.openlocfilehash: 5719ec1a2495c6a225c35ec46cdf19506a10ba6f
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945451"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017273"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware Solution のネットワーク計画のチェックリスト 
 
@@ -52,7 +52,13 @@ Azure VMware Solution プライベート クラウドでは、次に示すよう
 | プライベート クラウドの管理  | `/26`  | `10.10.0.0/26`   |
 | HCX 管理の移行       | `/26`  | `10.10.0.64/26`  |
 | 予約済み Global Reach     | `/26`  | `10.10.0.128/26` |
-| 予約済み ExpressRoute     | `/27`  | `10.10.0.192/27` |
+| NSX-T DNS サービス         | `/32`  | `10.10.0.192/32` |
+| 予約済み                  | `/32`  | `10.10.0.193/32` |
+| 予約済み                  | `/32`  | `10.10.0.194/32` |
+| 予約済み                  | `/32`  | `10.10.0.195/32` |
+| 予約済み                  | `/30`  | `10.10.0.196/30` |
+| 予約済み                  | `/29`  | `10.10.0.200/29` |
+| 予約済み                  | `/28`  | `10.10.0.208/28` |
 | ExpressRoute ピアリング      | `/27`  | `10.10.0.224/27` |
 | ESXi の管理           | `/25`  | `10.10.1.0/25`   |
 | vMotion ネットワーク           | `/25`  | `10.10.1.128/25` |
@@ -85,9 +91,8 @@ Azure VMware Solution プライベート クラウドでは、次に示すよう
 | オンプレミスの vCenter ネットワーク | プライベート クラウドの管理ネットワーク | TCP | 8000 |  オンプレミスの vCenter Server からプライベート クラウドの vCenter への VM の vMotion   |     
 
 ## <a name="dhcp-and-dns-resolution-considerations"></a>DHCP と DNS の解決に関する考慮事項
-プライベート クラウド環境で実行されるアプリケーションとワークロードには、ルックアップと IP アドレスの割り当てのための名前解決と DHCP サービスが必要です。 これらのサービスを提供するために、DHCP と DNS の適切なインフラストラクチャが必要です。 仮想マシンを構成して、ご自分のプライベート クラウド環境でこれらのサービスを提供することができます。  
 
-ブロードキャスト DHCP トラフィックを WAN 経由でオンプレミスにルーティングして戻すのではなく、NSX に組み込まれている DHCP サービスを使用するか、プライベート クラウドのローカル DHCP サーバーを使用します。
+[!INCLUDE [dhcp-dns-in-azure-vmware-solution-description](includes/dhcp-dns-in-azure-vmware-solution-description.md)]
 
 
 ## <a name="next-steps"></a>次の手順

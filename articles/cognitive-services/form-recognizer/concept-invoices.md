@@ -5,17 +5,17 @@ description: Form Recognizer API を使用した請求書分析に関連する�
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: effe9a1f4959748ee04fadff2bd733c52c14a790
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fc00e651cf8ec61a884864c57c0cafd2551f1a38
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374870"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890692"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
 
@@ -78,7 +78,9 @@ JSON 出力には、次の 3 つの部分があります。
 
 請求書サービスでは、テキスト、テーブルのほか、26 個の請求書フィールドを抽出します。 次に示すのは、JSON の出力応答で請求書から抽出されるフィールドです (以下の出力では、こちらの[サンプル請求書](media/sample-invoice.jpg)が使用されています)。
 
-|名前| 型 | 説明 | Text | 値 (標準化された出力) |
+### <a name="key-value-pairs"></a>キーと値のペア 
+
+|Name| 種類 | 説明 | Text | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | string | 請求対象の顧客 | Microsoft Corp |  |
 | CustomerId | string | 顧客の参照 ID | CID-12345 |  |
@@ -107,13 +109,15 @@ JSON 出力には、次の 3 つの部分があります。
 | ServiceEndDate | date | サービス期間の最後の日 (たとえば、公共料金サービス期間) | 11/14/2019 | 2019-11-14 |
 | PreviousUnpaidBalance | 数値 | 明示的な以前の未払い残高 | $500.00 | 500 |
 
+### <a name="line-items"></a>品目
+
 次に示すのは、JSON の出力応答で請求書から抽出される品目です (以下の出力では、こちらの[サンプル請求書](./media/sample-invoice.jpg)が使用されています)
 
-|名前| 型 | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
+|Name| 種類 | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | アイテム | string | 品目の完全な文字列テキスト行 | 3/4/2021 A123 Consulting Services 2 hours $30.00 10% $60.00 | |
 | Amount | 数値 | 品目の金額 | $60.00 | 100 |
-| Description | string | 請求書の明細項目の説明テキスト | コンサルティング サービス | コンサルティング サービス |
+| 説明 | string | 請求書の明細項目の説明テキスト | コンサルティング サービス | コンサルティング サービス |
 | 数量 | 数値 | この請求書明細項目の数量 | 2 | 2 |
 | UnitPrice | 数値 | この項目の 1 つの単位の正味価格または総価格 (請求書の総請求書の設定によって異なります) | $30.00 | 30 |
 | ProductCode | string| 特定の品目に関連付けられている製品コード、製品番号、または SKU | A123 | |
@@ -121,6 +125,7 @@ JSON 出力には、次の 3 つの部分があります。
 | Date | 日付| 各品目に対応する日付。 多くの場合、これは品目が発送された日付です | 3/4/2021| 2021-03-04 |
 | 税 | 数値 | 各品目に関連付けられている税。 使用可能な値には、課税額、税金 (%)、税金 (Y/N) などがあります | 10% | |
 
+抽出された請求書キー値のペアと品目は、JSON 出力の documentResults セクションに含まれています。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,15 +6,15 @@ author: v-amallick
 manager: carmonm
 ms.service: backup
 ms.topic: include
-ms.date: 10/18/2018
+ms.date: 06/01/2021
 ms.author: v-amallick
 ms.custom: include file
-ms.openlocfilehash: c126c349897016a00753b402b696c60fdd7b1b2e
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: 7d354ce3e69f075d2f523a75ba96f9a6efb7d797
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106294132"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783579"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -24,23 +24,21 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 1. [Azure Portal](https://portal.azure.com/) でサブスクリプションにサインインします。
 
-1. 左側のメニューから、 **[すべてのサービス]** を選択します。
+1. Azure portal で **バックアップ センター** を検索し、 **[バックアップ センター]** ダッシュボードにナビゲートします。
 
-    ![[すべてのサービス] を選択する](./media/backup-create-rs-vault/click-all-services.png)
+    ![バックアップ センターを選択する](../includes/media/backup-create-rs-vault/backup-center-search-backup-center.png)
 
-1. **[すべてのサービス]** ダイアログ ボックスに、「*Recovery Services*」と入力します。 入力に従って、リソースの一覧がフィルター処理されます。 リソースの一覧から **[Recovery Services コンテナー]** を選択します。
+1. **[概要]** タブから **[+Vault]\(+コンテナー\)** を選択します。
 
-    ![[Recovery Services コンテナー] と入力して選択する](./media/backup-create-rs-vault/all-services.png)
+    ![コンテナーの作成](./media/backup-create-rs-vault/backup-center-create-vault.png) 
 
-    サブスクリプションに Recovery Services コンテナーの一覧が表示されます。
+1. **[Recovery Services コンテナー]** を選択し、 **[続行]** をクリックします。
 
-1. **[Recovery Services コンテナー]** ダッシュボードで **[追加]** を選択します。
+    ![Recovery Services コンテナーの選択](./media/backup-create-rs-vault/backup-center-select-recovery-services-vault.png) 
 
-    ![[Recovery Services コンテナー] を追加する](./media/backup-create-rs-vault/add-button-create-vault.png)
+1. **[Recovery Services コンテナー]** ダイアログ ボックスが開きます。 **[名前]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[場所]** に値を入力します。
 
-    **[Recovery Services コンテナー]** ダイアログ ボックスが開きます。 **[名前]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[場所]** に値を入力します。
-
-    ![[Recovery Services コンテナー] を構成する](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+    ![[Recovery Services コンテナー] を構成する](./media/backup-create-rs-vault/backup-center-add-vault-details.png)
 
    - **Name**:コンテナーを識別するフレンドリ名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 文字以上で、50 文字以下の名前を指定します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
    - **サブスクリプション**:使用するサブスクリプションを選択します。 1 つのサブスクリプションのみのメンバーの場合は、その名前が表示されます。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (推奨) のサブスクリプションを使用してください。 職場または学校アカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。

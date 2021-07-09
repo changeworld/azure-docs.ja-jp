@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f108062c04292c322d07980155fea9c8808beb0a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 07fbe0cff104c25eca6db2750c2db692429ada65
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326743"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786516"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>チュートリアル:Bing 地図から Web サービスを移行する
 
@@ -44,7 +44,7 @@ Azure Maps と Bing 地図では、どちらの場合も REST Web サービス�
 | Spatial Data Services (SDS)           | [検索](/rest/api/maps/search) + [ルート](/rest/api/maps/route) + その他の Azure サービス |
 | タイム ゾーン                             | [タイム ゾーン](/rest/api/maps/timezone)  |
 | トラフィック インシデント                     | [トラフィック インシデントの詳細](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
-| Elevation                             | [Elevation (プレビュー)](/rest/api/maps/elevation)
+| Elevation                             | [昇格](/rest/api/maps/elevation)
 
 次のサービス API は、Azure Maps では現在使用できません。
 
@@ -53,7 +53,7 @@ Azure Maps と Bing 地図では、どちらの場合も REST Web サービス�
 
 Azure Maps には、必要になる可能性のある追加の REST Web サービスがいくつか用意されています。
 
--   [Azure Maps Creator (プレビュー)](./creator-indoor-maps.md) - 建物や空間のプライベートなデジタル ツインを独自に作成できます。
+-   [Azure Maps Creator](./creator-indoor-maps.md) - 建物や空間のプライベートなデジタル ツインを独自に作成できます。
 -   [Spatial Operations](/rest/api/maps/spatial) - ジオフェンシングなどの複雑な空間計算や空間演算をサービスにオフロードします。
 -   [マップ タイル](/rest/api/maps/render/getmaptile) - Azure Maps のラスターおよびベクター タイル形式の道路タイルとイメージ タイルにアクセスできます。
 -   [バッチ ルート指定](/rest/api/maps/route/postroutedirectionsbatchpreview) - 1 つのバッチで一定期間にわたり最大 1,000 件のルート要求を実行できます。 処理の高速化のため、ルートはサーバー上で並列に計算されます。
@@ -281,8 +281,8 @@ Azure Maps では、[ルートの道順](/rest/api/maps/route/postroutedirection
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints` - Post 要求の本文にこれらのポイントを渡します  |
 | `interpolate`              | N/A                                                                 |
-| `includeSpeedLimit`        | なし                                                                 |
-| `includeTruckSpeedLimit`   | なし                                                                 |
+| `includeSpeedLimit`        | N/A                                                                 |
+| `includeTruckSpeedLimit`   | N/A                                                                 |
 | `speedUnit`                | N/A                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` - ドキュメント「[Azure Maps による認証](./azure-maps-authentication.md)」も参照してください。 |
@@ -343,7 +343,7 @@ Azure Maps には、静的マップ イメージにデータを重ねてレン�
 | `mapLayer` (`ml`)        | N/A                                            |
 | `mapSize` (`ms`)         | `width` および `height` - 最大 8192 x 8192 のサイズを指定できます。 |
 | `declutterPins` (`dcl`)  | N/A                                            |
-| `dpi`                    | なし                                            |
+| `dpi`                    | N/A                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | N/A                                            |
 | `pitch`                  | 該当なし - ストリート ビューはサポートされていません。                |

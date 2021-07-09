@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: overview
 ms.date: 3/22/2021
-ms.openlocfilehash: ce582f810f483f2e5d3fdda2c3379ecad3842d51
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 902cd7c9cf0f682541be86e82a1d51525ad5b3f9
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813274"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678033"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>産業用 IoT (IIoT) の概要
 
@@ -21,9 +21,9 @@ Microsoft Azure Industrial Internet of Things (IIoT) は、製造工業の作業
 
 ## <a name="discover-register-and-manage-your-industrial-assets-with-azure"></a>Azure を使用して産業用資産を検出、登録、管理する
 
-Azure Industrial IoT を使用すると、工場のオペレーターは、製造施設のネットワーク内の OPC UA 対応サーバーを検出し、Azure IoT Hub に登録できます。 運用担当者は、製造施設で発生するイベントをサブスクライブして、世界中のどこからでも、それらのイベントに対応することができます。また、アラートやアラームを受信し、リアルタイムで対応することも可能です。
+Azure Industrial IoT プラットフォームを使用すると、工場のオペレーターは、製造施設のネットワーク内の OPC UA 対応サーバーを検出し、Azure IoT Hub に登録できます。 運用担当者は、製造施設で発生するイベントをサブスクライブして、世界中のどこからでも、それらのイベントに対応することができます。また、アラートやアラームを受信し、リアルタイムで対応することも可能です。
 
-IIoT には、OPC UA の機能を実装する一連のマイクロサービスが備わっています。 マイクロサービスの REST API は、OPC UA サービスのエッジ側をミラー化します。 これらは、Azure Active Directory (AAD) によってサポートされる OAUTH 認証と認可を使用して保護されます。 これにより、クラウド アプリケーションで、サーバーのアドレス空間の参照、変数の読み取り/書き込み、HTTPS と単純な OPC UA JSON ペイロードを使用したメソッドの実行が可能になります。 エッジ サービスは Azure IoT Edge モジュールとして実装され、オンプレミスで実行されます。 クラウド マイクロサービスは、REST インターフェイスを備える ASP.NET マイクロサービスとして実装され、マネージド Azure Kubernetes Services で、または Azure App Service 上でのスタンドアロンで実行されます。 IIoT では、Microsoft Container Registry (MCR) に事前に構築された Docker コンテナーを提供することにより、エッジ サービスとクラウド サービスの両方で、この顧客向け手順を排除しました。 エッジ サービスとクラウド サービスは互いを利用しており、一緒に使用する必要があります。 IIoT には、1 つのコマンドでプラットフォーム全体をデプロイできる、使いやすいデプロイ スクリプトも用意されています。
+IIoT には、OPC UA の機能を実装する一連のマイクロサービスが備わっています。 マイクロサービスの REST API は、OPC UA サービスのエッジ側をミラー化します。 これにより、クラウド アプリケーションで、サーバーのアドレス空間の参照、変数の読み取りまたは書き込み、HTTPS と単純な OPC UA JSON ペイロードを使用したメソッドの実行が可能になります。 エッジ サービスは Azure IoT Edge モジュールとして実装され、オンプレミスで実行されます。 クラウド マイクロサービスは、REST インターフェイスを備える ASP.NET マイクロサービスとして実装され、マネージド Azure Kubernetes Services で、または Azure App Service 上でのスタンドアロンで実行されます。 エッジとクラウド サービスの両方に対して、IIoT では、Microsoft Container Registry (MCR) に事前に構築された Docker コンテナーを用意しています。 エッジ サービスとクラウド サービスは互いを利用しており、一緒に使用する必要があります。 IIoT には、1 つのコマンドでプラットフォーム全体をデプロイできる、使いやすいデプロイ スクリプトも用意されています。
 
 加えて REST API は、その公開されている Open API 仕様 (Swagger) を通じて、あらゆるプログラミング言語から使用することができます。 つまり、OPC UA をクラウド管理ソリューションに統合する際、開発者は、そのスキルや関心、アーキテクチャの選択にマッチしたテクノロジを自由に選ぶことができます。 たとえば、アラームやイベント ダッシュボードに対応したアプリケーションを開発するフル スタックの Web 開発者は、OPC UA SDK、C、C++、Java、C# に習熟しなくても、イベントに反応するロジックを JavaScript や TypeScript で記述できます。
 
@@ -40,7 +40,7 @@ Azure IIoT のソリューションは、特定のコンポーネントから構
 - **産業用エッジ モジュール。**
 
 ### <a name="iot-hub"></a>IoT Hub
-[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/ は、IoT アプリケーションとそれが管理するデバイスとの間で行われる安全な双方向通信のための中央メッセージ ハブとして機能します。 これは、オープンソースの SDK と複数のプロトコルをサポートするオープンで柔軟な、サービスとしてのクラウド プラットフォーム (PaaS) です。 
+[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) は、IoT アプリケーションとそれによって管理されるデバイスとの間で行われる安全な双方向通信のための中央メッセージ ハブとして機能します。 これは、オープンソースの SDK と複数のプロトコルをサポートするオープンで柔軟な、サービスとしてのクラウド プラットフォーム (PaaS) です。 
 
 産業データやビジネス データを IoT ハブに集約することで、データを安全に保管し、そのデータに基づいてビジネス分析や効率分析を行い、それからレポートを生成することができます。 統合されたデータに対して、[Power BI](https://powerbi.microsoft.com) など、Microsoft Azure のサービスやツールを適用することもできます。
 
@@ -57,7 +57,10 @@ IoT Edge デバイスは、Edge ランタイムと Edge モジュールで構成
 - **Discovery**: 探索プログラム ID によって表される検出モジュールは、エッジに検出サービス (OPC UA サーバー検出を含む) を提供します。 検出が構成され、有効になっている場合、このモジュールにより、スキャン プローブの結果が IoT Edge および IoT Hub テレメトリ パスを介してオンボード サービスに送信されます。 このサービスで、結果が処理され、レジストリ内のすべての関連する ID が更新されます。
 
 ## <a name="next-steps"></a>次のステップ
-産業用 IoT の概要を学んだので、Industrial IoT Platform と OPC Publisher について確認できます。
+Industrial IoT の概要を学習したので、OPC Publisher の詳細を確認するか、IIoT プラットフォームのデプロイを開始できます。
 
 > [!div class="nextstepaction"]
 > [OPC Publisher とは](overview-what-is-opc-publisher.md)
+
+> [!div class="nextstepaction"]
+> [Industrial IoT プラットフォームをデプロイする](tutorial-deploy-industrial-iot-platform.md)

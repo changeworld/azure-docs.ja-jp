@@ -3,20 +3,21 @@ title: Azure VMware Solution をデプロイして構成する
 description: 計画ステージで収集した情報を使用して、Azure VMware Solution プライベート クラウドをデプロイして構成する方法について説明します。
 ms.topic: tutorial
 ms.custom: contperf-fy21q4, devx-track-azurecli
-ms.date: 04/23/2021
-ms.openlocfilehash: fe03713a8bb8cd2304e75c828b27d479eb83c0e0
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.date: 05/19/2021
+ms.openlocfilehash: 824ab46b81a913bc7b1768e56e05025ee8208d17
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751439"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473770"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
 この記事では、[計画セクション](production-ready-deployment-steps.md)の情報を使用して、Azure VMware Solution をデプロイおよび構成します。 
 
->[!IMPORTANT]
->必ず先に[計画セクション](production-ready-deployment-steps.md)に目を通してください。
+この図は、Azure VMware Solution のデプロイ ワークフローを示したものです。 
+
+:::image type="content" source="media/deploy-azure-vmware-solution-workflow.png" alt-text="Azure VMware Solution のデプロイ ワークフローの図。" lightbox="media/deploy-azure-vmware-solution-workflow.png" border="false":::
 
 ## <a name="step-1-register-the-microsoftavs-resource-provider"></a>手順 1. **Microsoft.AVS** リソース プロバイダーを登録する
 

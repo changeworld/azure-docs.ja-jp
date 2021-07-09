@@ -1,26 +1,28 @@
 ---
-title: 'チュートリアル: 自動機械学習による回帰'
+title: 'チュートリアル: AutoML - 回帰モデルをトレーニングする'
 titleSuffix: Azure Machine Learning
-description: Python SDK を使用してコードを記述し、回帰モデルを自動的に生成する自動機械学習の実験を作成します。
+description: Azure Machine Learning の自動 ML を使用して Azure Machine Learning Python SDK で NYC タクシーの料金を予測する回帰モデルをトレーニングします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: aniththa
-ms.author: anumamah
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 08/14/2020
+ms.date: 06/11/2021
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 7dc42c305ff8cd7320d711574e4095141041d8b4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 243dd16cc70a77a0d1da0adf190dc92d83ad1ab4
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773883"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033439"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
+# <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>チュートリアル: AutoML と Python を使用して回帰モデルをトレーニングする
 
-このチュートリアルでは、Azure Machine Learning SDK の自動機械学習を使用して、ニューヨーク市のタクシー運賃を予測する[回帰モデル](concept-automated-ml.md#regression)を作成します。 このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。
+このチュートリアルでは、Azure Machine Learning の自動 ML を使用して Azure Machine Learning Python SDK で回帰モデルをトレーニングする方法について説明します。 この回帰モデルでは、NYC タクシーの料金を予測します。 
+
+このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。 
 
 ![フロー図](./media/tutorial-auto-train-models/flow2.png)
 
@@ -31,10 +33,11 @@ ms.locfileid: "108773883"
 > * 自動機械学習回帰モデルをトレーニングする
 > * モデルの精度を計算する
 
-他のタイプのモデルについても、自動機械学習を試してみましょう。 
+コードなしの AutoML の場合は、次のチュートリアルを試してください。 
 
-* 「[チュートリアル: Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)」(ノー コードの例)
-* 「[チュートリアル: 自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)」(ノー コードの例)
+* [チュートリアル: コードなし分類モデルをトレーニングする](tutorial-first-experiment-automated-ml.md)
+
+* [チュートリアル:自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)
 
 ## <a name="prerequisites"></a>前提条件
 

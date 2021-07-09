@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 589e7ea53f6f247d18d4a2b532af3c87a8b0230c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 73b115ad6f49d943c423c7490df347afce7c5869
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787889"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668424"
 ---
 # <a name="adopting-an-industry-ontology"></a>業界オントロジの採用
 
@@ -20,7 +20,9 @@ ms.locfileid: "109787889"
 
 結果として、業界標準に基づいて学習または構築された、あるいはそれを直接使用する、一連のオープンソースの DTDL ベースのオントロジが提供されます。 このオントロジは、ダウンストリームの開発者のニーズを満たすように設計されており、業界で広く採用または拡張される可能性があります。
 
-現時点では、Microsoft は、パートナーと提携して[スマート ビル](#realestatecore-smart-building-ontology)のオントロジと[スマート シティ](#smart-cities-ontology)のオントロジを開発しています。これにより、これらの業界の標準に基づいてモデリングするための共通基盤が得られ、再発明が回避されます。 
+現時点では、Microsoft はパートナーと協力して、[スマート ビル](#realestatecore-smart-building-ontology)、[スマート シティ](#smart-cities-ontology)、[エネルギー グリッド](#energy-grid-ontology)のオントロジを開発しました。これにより、これらの業界標準に基づいてモデリングするための共通基盤が提供され、新たに考案する必要がなくなります。 
+
+各オントロジでは、初期のモデル セットに焦点が絞られています。 オントロジの作成者は、初期のユース ケース セットを拡張し、既存のモデルを改良するために強力してくれるユーザーの参加を歓迎します。 
 
 ## <a name="realestatecore-smart-building-ontology"></a>RealEstateCore スマート ビル オントロジ
 
@@ -40,11 +42,19 @@ Microsoft は、不動産所有者、ソフトウェア ベンダー、研究機
 
 Microsoft は、[Open Agile Smart Cities (OASC)](https://oascities.org/) および [Sirus](https://sirus.be/) と共同で、[ETSI CIM NGSI-LD](https://www.etsi.org/committee/cim) を始めとする、スマート シティに関する DTDL ベースのオントロジを提供しています。 ETSI NGSI-LD に加え、Saref4City、CityGML、ISO なども評価しています。
 
-現在のリリースのオントロジでは、初期のモデル セットに焦点を絞っています。 オントロジの作成者は、初期のユース ケース セットを拡張し、既存のモデルを改良するために強力してくれるユーザーの参加を歓迎します。 
-
 オントロジと、その使用方法、参加方法について詳しくは、このオントロジの GitHub のリポジトリ ([Azure/opendigitaltwins-smartcities](https://github.com/Azure/opendigitaltwins-smartcities)) を参照してください。 
 
 スマート シティに関するパートナーシップとアプローチの詳細については、[Digital Twins のスマート シティ オントロジ](https://techcommunity.microsoft.com/t5/internet-of-things/smart-cities-ontology-for-digital-twins/ba-p/2166585)に関するブログ記事とそこに掲載されている動画も参照してください。
+
+## <a name="energy-grid-ontology"></a>エネルギー グリッド オントロジ
+
+*このオントロジは次のリポジトリから入手してください:* [エネルギー グリッド用の Digital Twins Definition Language (DTDL) オントロジ](https://github.com/Azure/opendigitaltwins-energygrid/)。
+
+このオントロジは、エネルギーのユース ケース (グリッド資産の監視、停電と影響の分析、シミュレーション、予測メンテナンス) に対応するデジタル ツイン ソリューションの開発を加速させ、エネルギー グリッドのデジタル変革と近代化を促進するソリューション プロバイダーを支援するために作成されました。 これは、エネルギー グリッド資産管理、電力システム運用モデリング、物理的エネルギー商品市場のグローバル標準である [Common Information Model (CIM)](https://cimug.ucaiug.org/) を手直ししたものです。
+
+オントロジと、その使用方法、参加方法について詳しくは、このオントロジの GitHub のリポジトリ ([Azure/opendigitaltwins-energygrid](https://github.com/Azure/opendigitaltwins-energygrid/)) を参照してください。 
+
+エネルギー グリッドに関するパートナーシップとアプローチの詳細については、[Digital Twins のエネルギー グリッド オントロジ](https://techcommunity.microsoft.com/t5/internet-of-things/energy-grid-ontology-for-digital-twins-is-now-available/ba-p/2325134)に関するブログ記事も参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

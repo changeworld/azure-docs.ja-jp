@@ -7,16 +7,16 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 04b582b5ef31e61039c5513ea2a4aa60f1c638e7
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 5303289cd0629fea1c78e4ae746427e875f80520
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121339"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891637"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>クイックスタート: Go で Azure Cache for Redis を使用する
 
-この記事では、[Azure Cache for Redis](./cache-overview.md) の [HASH](https://redis.io/topics/data-types-intro#redis-hashes) データ構造に基づくユーザー情報を保存および取得する REST API を Go で構築する方法について説明します。 
+この記事では、[Azure Cache for Redis](./cache-overview.md) の [HASH](https://redis.io/topics/data-types-intro#redis-hashes) データ構造に基づくユーザー情報を保存および取得する REST API を Go で構築する方法について説明します。
 
 ## <a name="skip-to-the-code-on-github"></a>GitHub のコードにスキップする
 
@@ -30,6 +30,7 @@ ms.locfileid: "102121339"
 - [curl](https://curl.se/) などの HTTP クライアント
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスを作成する
+
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
@@ -49,7 +50,7 @@ func main() {
 ...
 ```
 
-次に、Azure Cache for Redis との接続を確立します。 [tls.Config](https://golang.org/pkg/crypto/tls/#Config) が使用されていることに注意してください。Azure Cache for Redis では、[最低限必要なバージョンとして TLS 1.2](cache-remove-tls-10-11.md) を使用してセキュリティで保護された接続のみを受け入れます。
+次に、Azure Cache for Redis との接続を確立します。 [tls.Config](https://golang.org/pkg/crypto/tls/#Config) を使用します。Azure Cache for Redis では、[最低限必要なバージョンとして TLS 1.2](cache-remove-tls-10-11.md) を使用してセキュリティで保護された接続のみを受け入れます。
 
 ```go
 ...
@@ -64,9 +65,9 @@ if err != nil {
 ...
 ```
 
-接続が成功すると、`POST` および `GET` 操作を処理するように [HTTP ハンドラー](https://golang.org/pkg/net/http/#HandleFunc)が構成され、HTTP サーバーが起動されます。 
+接続が成功すると、`POST` および `GET` 操作を処理するように [HTTP ハンドラー](https://golang.org/pkg/net/http/#HandleFunc)が構成され、HTTP サーバーが起動されます。
 
-> [!NOTE] 
+> [!NOTE]
 > [gorilla mux ライブラリ](https://github.com/gorilla/mux)は、ルーティングに使用されます (ただし、これは必須というわけではなく、このサンプル アプリケーションに標準ライブラリを使用することもできました)。
 >
 
@@ -80,7 +81,7 @@ router.HandleFunc("/users/{userid}", uh.getUser).Methods(http.MethodGet)
 log.Fatal(http.ListenAndServe(":8080", router))
 ```
 
-`userHandler` 構造体は、`createUser` および `getUser` メソッドによって使用される [redis.Client](https://pkg.go.dev/github.com/go-redis/redis/v8#Client) をカプセル化します。簡潔にするために、これらのメソッドのコードは含まれていません。 
+`userHandler` 構造体は、`createUser` および `getUser` メソッドによって使用される [redis.Client](https://pkg.go.dev/github.com/go-redis/redis/v8#Client) をカプセル化します。簡潔にするために、これらのメソッドのコードは含まれていません。
 
 - `createUser`: (ユーザー情報を含む) JSON ペイロードを受け入れ、それを `HASH` として Azure Cache for Redis に保存します。
 - `getUser`: `HASH` からユーザー情報を取得します。見つからない場合は、HTTP `404` 応答を返します。
@@ -125,7 +126,7 @@ func (uh userHandler) getUser(rw http.ResponseWriter, r *http.Request) {
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-このアプリケーションは、接続と資格情報を環境変数の形式で受け取ります。 
+このアプリケーションは、接続と資格情報を環境変数の形式で受け取ります。
 
 1. [Azure portal](https://portal.azure.com/) で、Azure Cache for Redis インスタンスの **ホスト名** と **アクセス キー** ([アクセス キー] から入手可能) を取得します。
 
@@ -167,7 +168,7 @@ HTTP サーバーはポート `8080` で起動します。
     ```
 
     返される JSON 応答は次のようになります。
-    
+
     ```json
     {
         "email": "foo1@bar",
@@ -193,15 +194,15 @@ HTTP サーバーはポート `8080` で起動します。
 このクイック スタートで作成した Azure リソース グループとリソースを使い終わった場合は、課金されないようにそれらを削除することができます。
 
 > [!IMPORTANT]
-> リソース グループを削除すると元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 保持したい既存のリソース グループに Azure Cache for Redis インスタンスを作成した場合は、キャッシュの **[概要]** ページから **[削除]** を選択して、キャッシュのみを削除できます。 
+> リソース グループを削除すると元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 保持したい既存のリソース グループに Azure Cache for Redis インスタンスを作成した場合は、キャッシュの **[概要]** ページから **[削除]** を選択して、キャッシュのみを削除できます。
 
 リソース グループとその Redis Cache for Azure インスタンスを削除するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com) から、 **[リソース グループ]** を検索して選択します。
-1. **[名前でフィルター]** テキストボックスに、キャッシュ インスタンスを含むリソース グループの名前を入力し、検索結果からそれを選択します。 
+1. **[名前でフィルター]** テキストボックスに、キャッシュ インスタンスを含むリソース グループの名前を入力し、検索結果からそれを選択します。
 1. リソース グループ ページで **[リソース グループの削除]** を選択します。
 1. リソース グループの名前を入力してから、 **[削除]** を選択します。
-   
+
    ![Azure Cache for Redis のリソース グループを削除する](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 ## <a name="next-steps"></a>次のステップ

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e7b4bbafd5630c2c116e002ee6ebafaa5444ce2d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d9050b0b414ef6ca49f9376e20498b14a8952480
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369322"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072579"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -279,7 +279,14 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>Search Service の `testkb` インデックスを削除してしまいました。どうしたらいいですか。</b></summary>
 
-**回答**: 古いデータを回復することはできません。 新しい QnA Maker リソースを作成し、ナレッジ ベースを再度作成してください。
+**回答**: Search Service で `testkb` インデックスを削除した場合は、最後に発行されたナレッジ ベースのデータを復元できます。 GitHub で提供されている回復ツールの [Restoretestkbindex](https://github.com/pchoudhari/QnAMakerBackupRestore/tree/master/RestoreTestKBFromProd) を使用してください。 
+
+</details>
+
+<details>
+<summary><b>次のエラーが発生しました: QnA Maker App Service の CORS 設定で https://www.qnamaker.ai が許可されているかどうか、または組織固有のネットワーク制限があるかどうかを確認してください。これを解決するにはどうすればよいですか。</b></summary>
+
+**回答**: [App Service] ブレードの [API] セクションで、CORS 設定を "*" または "https://www.qnamaker.ai" に更新します。 それでも問題が解決しない場合は、組織固有の制限を確認してください。
 
 </details>
 
@@ -360,9 +367,9 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 </details>
 
 <details>
-<summary><b>Search Service の `testkb` インデックスを削除してしまいました。どうしたらいいですか。</b></summary>
+<summary><b>Search Service の `testkbv2` インデックスを削除してしまいました。どうしたらいいですか。</b></summary>
 
-**回答**: 古いデータを回復することはできません。 新しい QnA Maker リソースを作成し、ナレッジ ベースを再度作成してください。
+**回答**: Search Service で `testkbv2` インデックスを削除した場合は、最後に発行されたナレッジ ベースのデータを復元できます。 GitHub で提供されている回復ツールの [Restoretestkbindex](https://github.com/pchoudhari/QnAMakerBackupRestore/tree/master/RestoreTestKBFromProd) を使用してください。 
 
 </details>
 

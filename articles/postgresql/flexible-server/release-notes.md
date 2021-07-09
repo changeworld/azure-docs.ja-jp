@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 04/26/2021
-ms.openlocfilehash: ad417bc44de7d13594f003f7aa1e39b2308204ed
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.date: 05/25/2021
+ms.openlocfilehash: 4ed84ab94173961412a7769da89136c39413a92e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064865"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983080"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>リリース ノート - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -21,6 +21,12 @@ ms.locfileid: "108064865"
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
 
+## <a name="release-may-25-2021"></a>リリース: 2021 年 5 月 25 日
+
+* [PostgreSQL メジャー バージョン 13 ](./concepts-supported-versions.md)のサポート。
+* 拡張機能 (pg_partman、pg_cron、pgaudit など) のサポート。 各メジャー バージョンでサポートされているバージョンについては、[拡張機能のページ](./concepts-extensions.md)を参照してください。
+* 複数のバグ修正、安定性とパフォーマンスの向上。
+
 ## <a name="release-april-26-2021"></a>リリース: 2021 年 4 月 26 日
 
 * 新たなサーバー作成での[最新の PostgreSQL マイナー バージョン](./concepts-supported-versions.md) 12.6 および 11.11 のサポート。
@@ -28,7 +34,7 @@ ms.locfileid: "108064865"
 * 特定の時点に復旧操作中に可用性ゾーンを選択できるようになりました。
 * オーストラリア東部、カナダ中部、およびフランス中部を含む新しい[リージョン](./overview.md#azure-regions)のサポート。
 * [組み込みの PgBouncer](./concepts-pgbouncer.md) 接続プーラーのサポート。 
-* [pglogical](https://github.com/2ndQuadrant/pglogical) 拡張機能バージョン 2.3.2 のサポート。
+<!--- * Support for [pglogical](https://github.com/2ndQuadrant/pglogical) extension version 2.3.2. -->
 * パブリック プレビューでの[インテリジェント パフォーマンス](concepts-query-store.md)。
 * 複数のバグ修正、安定性とパフォーマンスの向上。
 

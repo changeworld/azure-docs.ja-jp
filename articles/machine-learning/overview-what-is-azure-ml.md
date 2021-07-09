@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 086c1f6ebd1b9e448a8f5e229bc6706493729422
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 89d839a9b507530eb0b3fc763b2fbba36208f79c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762895"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081895"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -44,8 +44,6 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 + Jupyter Notebook: [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)を使用するか、独自のノートブックを作成して、<a href="/python/api/overview/azure/ml/intro" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
 
-+ R スクリプトまたはノートブックでは、<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK for R</a> を使用して独自のコードを書いたり、デザイナーで R モジュールを使用したりします。
-
 + [多くのモデルのソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
 + [Visual Studio Code 用の Machine Learning 拡張機能 (プレビュー)](how-to-set-up-vs-code-remote.md) は、機械学習プロジェクトの構築と管理を目的としたフル機能の開発環境を提供します。
@@ -58,9 +56,9 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 [MLflow を使用してメトリックを追跡し、モデルをデプロイする](how-to-use-mlflow.md)ことや、Kubeflow を使用して[エンドツーエンドのワークフロー パイプラインを構築する](https://www.kubeflow.org/docs/azure/)こともできます。
 
-## <a name="build-ml-models-in-python-or-r"></a>Python または R で ML モデルを構築する
+## <a name="build-ml-models-in-with-the-python-sdk"></a>Python SDK を使用して ML モデルを構築する
 
-Azure Machine Learning の <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> または <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> を使用してローカル コンピューターでトレーニングを開始します。 その後、クラウドにスケールアウトすることができます。 
+Azure Machine Learning の <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> を使用してローカル コンピューターでトレーニングを開始します。 その後、クラウドにスケールアウトすることができます。 
 
 クラウドのパワーと、Azure Machine Learning コンピューティングや [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) などの利用可能な多数の[コンピューティング先](how-to-create-attach-compute-studio.md)と[高度なハイパーパラメーター調整サービス](how-to-tune-hyperparameters.md)を活用することで、高品質のモデルを手早く構築できます。
 
@@ -134,7 +132,7 @@ Azure Storage アカウントやコンピューティング先などのリソー
   + [Visual Studio Code でリソースを管理する](how-to-manage-resources-vscode.md)
   + [Visual Studio Code を使用して画像分類モデルのトレーニングとデプロイを行う](tutorial-train-deploy-image-classification-model-vscode.md)
   + [デザイナーのドラッグ アンド ドロップ機能を使用して、トレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md) 
-  + [Machine Learning CLI を使用して、モデルをトレーニングおよびデプロイする](tutorial-train-deploy-model-cli.md)
+  + [Machine Learning CLI を使用してモデルをトレーニングする](how-to-train-cli.md)
 
 - 機械学習シナリオを構築、最適化、および管理する[機械学習パイプライン](concept-ml-pipelines.md)について学習します。
 
