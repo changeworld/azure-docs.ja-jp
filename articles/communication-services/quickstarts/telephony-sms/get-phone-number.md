@@ -5,17 +5,17 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 zone_pivot_groups: acs-azp-java-net-python-csharp-js
-ms.openlocfilehash: 269967db4daed2bb3c42e668e2b36d74f8b0f45c
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: fb5aafa3146c2935a3092ec1660aec86d1e086a7
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904588"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110933"
 ---
 # <a name="quickstart-manage-phone-numbers"></a>クイックスタート: 電話番号を管理する
 

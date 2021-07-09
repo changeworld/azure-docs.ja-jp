@@ -10,12 +10,12 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a93e63207bbbe9a2ac65823b3c22773f6cd97cf8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ca738136984941b050c0ae3a7c2408273724b1cd
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676857"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379278"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -97,11 +97,9 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 | 承認の種類  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | サポートされています\*      | サポートされていません   | サポートされています\*     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | サポートされています      | サポートされていません   | サポートされています     |
 | [Managed Identity](?tabs=managed-identity#supported-storage-authorization-types) | サポートされています      | サポートされています        | サポートされています     |
-| [ユーザー ID](?tabs=user-identity#supported-storage-authorization-types)    | サポートされています\*      | サポートされています\*        | サポートされています\*     |
-
-\* ファイアウォールで保護されていないストレージには、SAS トークンと Azure AD ID を使用してアクセスできます。
+| [ユーザー ID](?tabs=user-identity#supported-storage-authorization-types)    | サポートされています      | サポートされています        | サポートされています     |
 
 ## <a name="firewall-protected-storage"></a>ファイアウォールで保護されたストレージ
 

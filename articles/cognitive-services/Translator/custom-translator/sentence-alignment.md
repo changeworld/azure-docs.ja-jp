@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 04/19/2021
 ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: f286e2bcded99ad59b706bd7e6d8b2b29f4b4c0a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d775496ad9490cfac81eecc9c08ef7beddea73dc
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292364"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968128"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>並列ドキュメントの文のペアリングとアライン
 
@@ -46,7 +46,8 @@ Custom Translator では、一度に 1 文ずつ、文の翻訳が学習され�
 > - トレーニングの 10,000 の文の最小数が満たされていない場合、トレーニングは開始されず、失敗します。
 > - チューニングとテストは省略可能です。 これらを指定しないと、確認とテストに使用するためのトレーニングからの適切な比率がシステムで削除されます。
 > - モデルは、辞書データのみを使用してトレーニングすることができます。 「[辞書とは](./what-is-dictionary.md)」を参照してください。
-> - 辞書に含まれている文が 25 万を超える場合、 **[ドキュメント トランスレーター](../document-translation/overview.md)** の方が適している可能性があります。
+> -  辞書に含まれている文が 25 万を超える場合、Document Translator の方が適している可能性があります。 [Document Translator](../document-translation/overview.md) に関するページを参照してください。
+> - Free (F0) サブスクリプション トレーニングの上限は 200 万文字です。 
 
 ## <a name="next-steps"></a>次のステップ
 

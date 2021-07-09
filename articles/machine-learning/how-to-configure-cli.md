@@ -10,16 +10,16 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 19534a5b55ea666233bb1a9b66916791e934908a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e93985b6583f164e1ea497f5d8cad7352b60f556
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476615"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755557"
 ---
 # <a name="install-set-up-and-use-the-20-cli-preview"></a>2\.0 CLI (プレビュー) をインストール、設定、および使用する
 
-[Azure CLI](/cli/azure/) に対する `ml` 拡張機能 (プレビュー) は、Azure Machine Learning の次世代インターフェイスです。 これにより、コマンド ラインからモデルをトレーニングおよびデプロイできます。また、モデルのライフサイクルを追跡しながらデータ サイエンスのスケールアップとスケールアウトを加速する機能もあります。
+[Azure CLI](/cli/azure/) に対する `ml` 拡張機能 (プレビュー) は、Azure Machine Learning の拡張インターフェイスです。 これにより、コマンド ラインからモデルをトレーニングおよびデプロイできます。また、モデルのライフサイクルを追跡しながらデータ サイエンスのスケールアップとスケールアウトを加速する機能もあります。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
@@ -43,11 +43,11 @@ az version
 
 インストールされた Azure CLI 拡張機能を確認します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_extension_list":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_list":::
 
 `azure-cli-ml` 拡張機能など、`ml` 名前空間を使用する競合する拡張機能がインストールされていないことを確認します。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_extension_remove":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_remove":::
 
 ここで、`ml` 拡張機能をインストールします。
 
@@ -55,11 +55,11 @@ az version
 
 help コマンドを実行してインストールを確認し、使用可能なサブコマンドを調べます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_ml_verify":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_verify":::
 
 拡張機能を最新バージョンにアップグレードすることができます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_ml_update":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_update":::
 
 ## <a name="set-up"></a>設定
 
@@ -71,7 +71,7 @@ az login
 
 複数の Azure サブスクリプションにアクセスできる場合は、アクティブなサブスクリプションを設定できます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_account_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_account_set":::
 
 まだ存在していない場合は、Azure リソース グループを作成できます。
 
@@ -106,13 +106,13 @@ Python を使用してローカルで hello world を実行するには、`jobs`
 
 ジョブを送信して、ログをコンソール出力にストリーミングし、Azure Machine Learning スタジオで実行を開きます。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="hello_world":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/hello-world.sh" id="hello_world":::
 
 > [!IMPORTANT]
 > Docker イメージがローカルにプルされ、Azure ML ジョブが実行されるため、初回の実行には数分かかる場合があります。 後続の実行では、イメージがローカルにキャッシュされ、より迅速に完了します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Visual Studio Code Azure Machine Learning 拡張機能をセットアップする](how-to-setup-vs-code.md)
 - [Machine Learning CLI 拡張機能 (プレビュー) を使用してモデルをトレーニングする](how-to-train-cli.md)
+- [Visual Studio Code Azure Machine Learning 拡張機能をセットアップする](how-to-setup-vs-code.md)
 - [Azure Machine Learning Visual Studio Code 拡張機能を使用して画像分類 TensorFlow モデルをトレーニングする](tutorial-train-deploy-image-classification-model-vscode.md)

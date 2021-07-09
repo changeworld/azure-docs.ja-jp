@@ -8,20 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/17/2021
+ms.date: 06/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 21f072747c9184fa15fd7e3477c0b4009cd885fc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 63063ef205b456c368cec2d5c1a8ce1f456aaa59
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376240"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756475"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
 
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="general-api-updates"></a>一般的な API の更新
+
+* キー フレーズ抽出用の新しいモデル バージョン `2021-06-01`。簡体字中国語のサポートが追加されます。
+* [固有表現認識](how-tos/text-analytics-how-to-entity-linking.md) v3.x の `2021-06-01` モデル バージョンでは、次のものが提供されます。 
+  * "*スキル*" エンティティ カテゴリの AI 品質が向上し、言語サポートが拡張されました。 
+  * "*スキル*" エンティティ カテゴリのスペイン語、フランス語、ドイツ語、イタリア語、ポルトガル語のサポートが追加されました
+* 非同期操作と Text Analytics for Health がすべてのリージョンで利用できるようになりました 
+
+### <a name="text-analytics-for-health-updates"></a>正常性更新プログラムの Text Analytics
+
+* Text Analytics for Health のプレビューを使用するために申し込む必要がなくなりました。
+* `/health` エンドポイントの新しいモデルバージョン`2021-05-15`と、次を提供するオンプレミスのコンテナー
+    * 5 つの新しいエンティティ型: `ALLERGEN`、`CONDITION_SCALE`、`COURSE`、`EXPRESSION`、`MUTATION_TYPE`
+    * 14 の新しい関係のタイプ
+    * 新しいエンティティ型に対して拡張されたアサーション検出
+    * ALLERGEN エンティティ型のリンク サポート
+
+ 
 ## <a name="may-2021"></a>2021 年 5 月
 
 * Text Analytics リソースから [Custom question answering](../qnamaker/custom-question-answering.md) (旧称QnA maker) にアクセスできるようになりました。 

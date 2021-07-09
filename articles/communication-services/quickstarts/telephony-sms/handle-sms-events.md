@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fb46adc6de32befd554047eded18ca16ab76dde1
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 04b0ee4feb74553fc3b24910da338ba02864ec28
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286764"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109164"
 ---
 # <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>クイックスタート: 配信レポートと受信メッセージの SMS イベントを処理する
 
@@ -114,7 +114,6 @@ Communication Services サブスクリプションをクリーンアップして
 > [SMS を送信する](../telephony-sms/send.md)
 
 次のことも実行できます。
-
 
  - [イベント処理の概念の詳細を確認する](../../../event-grid/event-schema-communication-services.md)
  - [Event Grid の詳細を確認する](../../../event-grid/overview.md)

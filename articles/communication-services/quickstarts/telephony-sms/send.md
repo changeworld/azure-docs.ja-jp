@@ -6,17 +6,17 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: ee6892af2a7ea119eb4110fa28301b08320f8b9f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7ef417530aadc4fd0be79f3715ee5d9ad4a71e6d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726398"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111971"
 ---
 # <a name="quickstart-send-an-sms-message"></a>クイック スタート:SMS メッセージを送信する
 

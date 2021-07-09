@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 710800bdb1dc4a9a2d0bc69493fe1d89d279ff78
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7a1ba0ab0759a5c765497aac4346fa7d72dae96c
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734293"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616191"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure Digital Twins のクエリ ユニット 
 
@@ -31,7 +31,7 @@ Azure Digital Twins でサポートされているクエリ操作を実行する
 
 Azure Digital Twins の[クエリ API](/rest/api/digital-twins/dataplane/query) を使用してクエリを実行するとき、応答ヘッダーを検証して、クエリで消費した QU の数を追跡できます。 Azure Digital Twins から返された応答内の "query-charge" を探します。
 
-Azure Digital Twins の [SDK](concepts-apis-sdks.md) を使用すると、ページング可能な応答から query-charge ヘッダーを抽出できます。 このセクションでは、デジタル ツインをクエリする方法と、ページング可能な応答を反復処理して query-charge ヘッダーを抽出する方法を示します。 
+[Azure Digital Twins の SDK](concepts-apis-sdks.md) を使用すると、ページング可能な応答から query-charge ヘッダーを抽出できます。 このセクションでは、デジタル ツインをクエリする方法と、ページング可能な応答を反復処理して query-charge ヘッダーを抽出する方法を示します。 
 
 次のコード スニペットは、クエリ API を呼び出すと発生するクエリ料金を抽出する方法を示しています。 まず応答ページを反復処理して query-charge ヘッダーにアクセスした後、各ページ内のデジタル ツイン結果を反復処理します。 
 

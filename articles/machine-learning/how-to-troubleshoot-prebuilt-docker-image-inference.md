@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: c36e1221c77d7f2b285419be705990405965c005
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 598c578c445cbd7dc7086f22e3c8d4885d67b112
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382847"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537333"
 ---
 # <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>推論用の事前構築済み Docker イメージに関するトラブルシューティング (プレビュー)
 
@@ -47,7 +47,7 @@ docker run -it -v $(pwd):/var/azureml-app -e AZUREML_EXTRA_REQUIREMENTS_TXT="req
 
 ## <a name="enable-local-debugging"></a>ローカル デバッグを有効にする
 
-ローカル推論サーバーを使用すると、エントリ スクリプト (`score.py`) をすばやくデバッグできます。 基になるスコア スクリプトにバグがある場合、サーバーはモデルの初期化やサービスの提供に失敗します。 代わりに、例外と、問題が発生した場所がスローされます。
+ローカル推論サーバーを使用すると、エントリ スクリプト (`score.py`) をすばやくデバッグできます。 基になるスコア スクリプトにバグがある場合、サーバーはモデルの初期化やサービスの提供に失敗します。 代わりに、例外と、問題が発生した場所がスローされます。 [Azure Machine Learning 推論 HTTP サーバーの詳細](how-to-inference-server-http.md)
 
 ## <a name="for-common-model-deployment-issues"></a>一般的なモデル デプロイの問題
 

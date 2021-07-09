@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fdcbf2622ef92b7659ae55547b1afb4bcdfa236d
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 9fecf4e32da13964f8c27dc559c78921b22bcb4c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104508"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110164825"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -309,7 +309,11 @@ speechConfig.SpeechRecognitionLanguage = "it-IT";
 フレーズ リストには、単一の単語または完全なフレーズを追加できます。 認識中、フレーズのリスト内のエントリは、発話の途中にエントリが現れた場合でも単語またはフレーズの認識を強化するために使用されます。 
 
 > [!IMPORTANT]
-> フレーズのリストの機能は、en-US、de-DE、en-AU、en-CA、en-GB、es-ES、es-MX、fr-CA、fr-FR、it-IT、ja-JP、ko-KR、pt-BR、zh-CN の言語で使用できます。
+> フレーズ リスト機能は、en-US、de-DE、en-AU、en-CA、en-GB、en-IN、es-ES、fr-FR、it-IT、ja-JP、pt-BR、zh-CN の言語で使用できます。
+>
+> 他のロケールの場合や、フレーズの数が多い場合は、精度を向上させるために[カスタム モデルをトレーニングする](../../../custom-speech-overview.md)方が適している可能性があります。
+>
+> カスタム エンドポイントでフレーズ リスト機能を使用しないでください。 代わりに、フレーズを含むカスタム モデルをトレーニングします。
 
 フレーズ リストを使用するには、まず [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar) オブジェクトを作成します。次に、[`AddPhrase`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase) を使用して特定の単語と語句を追加します。
 

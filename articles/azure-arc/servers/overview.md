@@ -2,20 +2,23 @@
 title: Azure Arc 対応サーバーの概要
 description: Azure Arc 対応サーバーを使用して、Azure の外部でホストされているサーバーを Azure リソースと同じように管理する方法について説明します。
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
-ms.date: 04/21/2021
+ms.date: 05/26/2021
 ms.topic: overview
-ms.openlocfilehash: 324f6cc29bd9e4eca1a20413032c213c2618a11e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 307d09f23c5c1e74e2e4c81d77a3521652598fa4
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831998"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585496"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
 Azure Arc 対応サーバーを使用すると、Azure の "*外部*" で、企業ネットワーク上で、または他のクラウド プロバイダー上でホストされている Windows または Linux の物理サーバーと仮想マシンを管理できます。 この管理エクスペリエンスは、ネイティブ Azure 仮想マシンの管理方法と一致するように設計されています。 ハイブリッド マシンは、Azure に接続されると接続済みマシンになり、Azure 内のリソースとして扱われます。 接続された各マシンは、リソース ID を持ち、リソース グループに含まれ、Azure Policy やタグの適用などの標準的な Azure のコンストラクトを利用できます。 顧客のオンプレミスのインフラストラクチャを管理するサービス プロバイダーは、[Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) と Azure Arc を使用して、ネイティブの Azure リソースで現在行っているのと同じように、複数のお客様の環境で各自のハイブリッド マシンを管理できます。
 
 Azure の外部でホストされているハイブリッド マシンでこのエクスペリエンスを実現するには、Azure への接続を予定している各マシンに Azure Connected Machine エージェントがインストールされている必要があります。 このエージェントは他の機能をまったく持たず、Azure [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)に代わるものでもありません。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook やソリューション (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-introduction.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
+
+>[!NOTE]
+> [Azure Monitor エージェント](../../azure-monitor/agents/azure-monitor-agent-overview.md) (AMA) は、現在プレビュー段階であり、Connected Machine エージェントに代わるものではありません。 Azure Monitor エージェントは、Windows と Linux の両方のマシンで、Log Analytics エージェント、診断拡張機能、および Telegraf エージェントの後継となります。 新しいエージェントの詳細については、Azure Monitor に関するドキュメントを参照してください。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 

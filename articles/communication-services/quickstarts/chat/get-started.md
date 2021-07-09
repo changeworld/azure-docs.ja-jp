@@ -6,16 +6,16 @@ author: fanche
 manager: phans
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: 6d3f9f7fd30d2c6b1cbc3882a41546593ee1c156
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dfe1e6d0d357eb77a8000123c6e9d5de606dafe9
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726666"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113369"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>クイック スタート:チャットをアプリに追加する
 

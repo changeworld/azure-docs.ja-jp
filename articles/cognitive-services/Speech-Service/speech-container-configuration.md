@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 400770a99e12bfb200b3e480d1546a26ce2aca6c
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96012171"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495248"
 ---
 # <a name="configure-speech-service-containers"></a>Speech Service コンテナーを構成する
 
@@ -253,9 +253,9 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="speech-language-detection"></a>[音声言語検出](#tab/lid)
+## <a name="speech-language-identification"></a>[音声言語識別](#tab/lid)
 
-### <a name="basic-example-for-speech-language-detection"></a>音声言語検出の基本的な例
+### <a name="basic-example-for-speech-language-identification"></a>音声言語識別の基本的な例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
@@ -265,7 +265,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-speech-language-detection"></a>音声言語検出のログの例
+### <a name="logging-example-for-speech-language-identification"></a>音声言語識別のログ記録の例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
