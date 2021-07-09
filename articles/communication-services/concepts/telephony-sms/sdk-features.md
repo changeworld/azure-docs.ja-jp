@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/26/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0fe6f43811c3a7e990646a75e8db11d93fa01f3c
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: bf93a892a810bd59110a0545c29bc2b11b40d893
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016457"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112169"
 ---
 # <a name="sms-sdk-overview"></a>SMS SDK の概要
 

@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.custom: references_regions
-ms.openlocfilehash: da6d19a20a31e4cc4c4fac5bb704cb193611dbbc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6e8f9a26836be14d4952ba309933511635ff673a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382651"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982648"
 ---
 # <a name="qna-maker-managed-is-now-renamed-to-custom-question-answering"></a>QnA Maker マネージドからカスタム質問と回答への名前の変更
 
@@ -41,7 +41,7 @@ QnA Maker 作成フローから QnA Maker マネージド リソースを作成�
 
 - 既存のすべての QnA Maker マネージド (プレビュー) リソースは、これまでと同様に引き続き機能します。 現時点では、これらのリソースに必要なアクションはありません。
 - カスタム質問と回答 (プレビュー) の作成フローが主な変更です。 サービス、ポータル、エンドポイント、SDK などは、以前と同じままです。
-- カスタム質問と回答 (プレビュー) は、引き続き無料のパブリック プレビューとして提供されます。
+- カスタム質問と回答 (プレビュー) は、引き続き無料のパブリック プレビューとして提供されます。 この機能は Text Analytics Standard リソースの一部としてのみ使用できます。 Text Analytics リソースの価格レベルを free に変更しないでください。
 - カスタム質問と回答 (プレビュー) は、次のリージョンで使用できます。
     - 米国中南部
     - 北ヨーロッパ
@@ -51,5 +51,4 @@ QnA Maker 作成フローから QnA Maker マネージド リソースを作成�
 
 * [QnA Maker クライアント ライブラリの概要](./quickstarts/quickstart-sdk.md)
 * [QnA Maker ポータルの概要](./quickstarts/create-publish-knowledge-base.md)
-
 

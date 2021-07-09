@@ -3,17 +3,17 @@ title: Azure Cost Management と AWS の統合セットアップをする
 description: この記事では、Azure Cost Management で AWS のコストと使用状況レポートの統合を設定して構成する方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/10/2021
+ms.date: 06/08/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: e1d332ba3ff2da50db9f59ce844844ac4c87cc0b
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 098766674e3bd665bb533fbf4d78fe1b0b1aebda
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738448"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756043"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
@@ -27,7 +27,7 @@ AWS レポートの統合を設定する方法の詳細については、[Cost M
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>AWS でコストと使用状況レポートを作成する
 
-コストと使用状況レポートの使用は、AWS のコストを収集して処理するための AWS で推奨される方法です。 詳細については、「[AWS Cost and Usage Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html)」 (AWS のコストと使用状況レポート) というドキュメントを参照してください。
+コストと使用状況レポートの使用は、AWS のコストを収集して処理するための AWS で推奨される方法です。 Cost Management クロス クラウド コネクタでは、管理 (統合) アカウント レベルで構成されたコストと使用状況レポートがサポートされています。 詳細については、「[AWS Cost and Usage Report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html)」 (AWS のコストと使用状況レポート) というドキュメントを参照してください。
 
 AWS の Billing and Cost Management コンソールの **[Cost & Usage Reports]\(コストと使用状況レポート\)** ページを使用して、以下の手順でコストと使用状況レポートを作成します。
 
@@ -53,6 +53,9 @@ AWS の Billing and Cost Management コンソールの **[Cost & Usage Reports]\
     レポート名をメモしておきます。 これは後の手順で使用します。
 
 AWS で Amazon S3 バケットへのレポートの配信が開始されるまで、最大で 24 時間かかる場合があります。 配信が開始された後、AWS では、少なくとも 1 日 1 回は AWS のコストと使用状況レポート ファイルが更新されます。 配信の開始を待たずに、AWS 環境の構成を続行することができます。
+
+> [!NOTE]
+> メンバー (リンク済み) アカウント レベルで構成されたコストと使用状況レポートは、現在サポートされていません。
 
 ## <a name="create-a-role-and-policy-in-aws"></a>AWS でロールとポリシーを作成する
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b0a046441466efeef559544814f5471b5802b1d4
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: ff00d61c5f53d0c702e16d8223a330cb09ee619e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714838"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465402"
 ---
 # <a name="detect-domain-specific-content"></a>ドメイン固有のコンテンツの検出
 
@@ -137,6 +137,8 @@ ms.locfileid: "109714838"
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="use-the-api"></a>API の使用
 
-[画像の分類](concept-categorizing-images.md)に関する概念を学習する。
+この機能は、[Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API を介して利用できます。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 **details** クエリ パラメーターに `Celebrities` または `Landmarks` を含めます。 その後、完全な JSON 応答が得られたら、`"details"` セクションのコンテンツを対象に文字列を解析します。
+
+* [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)

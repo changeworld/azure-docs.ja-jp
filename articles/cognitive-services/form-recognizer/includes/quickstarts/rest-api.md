@@ -1,20 +1,20 @@
 ---
-title: 'クイックスタート: Form Recognizer の REST API'
+title: 'クイックスタート: Azure Form Recognizer REST API'
 description: Form Recognizer の REST API を使用して、カスタム ドキュメントからキーと値のペアとテーブル データを抽出するフォーム処理アプリを作成します。
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/12/2021
+ms.date: 05/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 1a18dbeb1c2a55c469b392cba0949d419d55ad18
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6c89977cc05238006dcd6c0cc5f7133c049ea7f3
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374189"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894376"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -22,9 +22,10 @@ ms.locfileid: "110374189"
 <!-- markdownlint-disable MD034 -->
 
 > [!NOTE]
-> このガイドでは、cURL を使用して REST API 呼び出しを実行します。
+>
+> * このクイックスタートでは、cURL を使用して REST API 呼び出しを実行し、Azure Form Recognizer API バージョン **2.1** を対象としています。
 
-|[Form Recognizer REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)|[Azure REST API リファレンス](/rest/api/azure/)|
+| [Form Recognizer REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm) | [Azure REST API リファレンス](/rest/api/azure/) |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,36 +33,35 @@ ms.locfileid: "110374189"
 * [PowerShell バージョン 6.0 以降](/powershell/scripting/install/installing-powershell-core-on-windows)、または同様のコマンド ライン アプリケーション。
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます (*sample_data.zip* をダウンロードして展開します)。
-* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
   * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
   * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
-* レシートの画像の URL。 このクイックスタートでは、[サンプルの画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)を使用できます。
-* 名刺の画像の URL。 このクイックスタートでは、[サンプルの画像](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg)を使用できます。
-* 請求書の画像の URL。 このクイックスタートでは、[サンプル ドキュメント](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)を使用できます。
+* **レシートの画像** の URL。 このクイックスタートでは、[サンプルの画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)を使用できます。
+* **名刺の画像** の URL。 このクイックスタートでは、[サンプルの画像](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg)を使用できます。
+* **請求書の画像** の URL。 このクイックスタートでは、[サンプル ドキュメント](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)を使用できます。
+* **ID ドキュメントの画像** の URL。 [サンプル画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)を使用できます。
 
 ## <a name="analyze-layout"></a>レイアウトを分析する
 
 Form Recognizer を使用すると、ドキュメント内の表、選択マーク、テキスト、構造を分析して抽出できます。モデルをトレーニングする必要はありません。 レイアウトの抽出の詳細については、[レイアウトの概念ガイド](../../concept-layout.md)を参照してください。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 1. `\"{your-document-url}` を、サンプル URL のいずれかに置き換えます。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+curl -v -i POST "https://{endpoint}/formrecognizer/v2.1/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
+#### <a name="operation-location"></a>Operation-Location
 
-```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
-```
+**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる結果 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。
 
----
+https://<span></span>cognitiveservice/formrecognizer/v2.1/layout/analyzeResults/ **{resultId}** 
 
-**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる操作 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。 次の例では、`analyzeResults/` の後ろの文字列が操作 ID です。
+次の例では、URL の一部として、`analyzeResults/` の後の文字列が結果 ID になります。
 
 ```console
 https://cognitiveservice/formrecognizer/v2/layout/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -71,24 +71,16 @@ https://cognitiveservice/formrecognizer/v2/layout/analyzeResults/54f0b076-4e38-4
 
 **[Analyze Layout](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)** API を呼び出した後に **[Get Analyze Layout Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeLayoutResult)** API を呼び出して、操作の状態と抽出されたデータを取得します。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
-1. `{resultId}` を、前の手順の操作 ID に置き換えます。
+1. `{resultId}` を、前の手順の結果 ID に置き換えます。
 <!-- markdownlint-disable MD024 -->
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{endpoint}/formrecognizer/v2.1/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
-
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
----
 
 ### <a name="examine-the-results"></a>結果を確認する
 
@@ -97,12 +89,12 @@ JSON コンテンツを含む `200 (success)` 応答が返されます。
 次の請求書の画像とそれに対応する JSON 出力をご覧ください。
 
 * `"readResults"` ノードには、あらゆるテキスト行が、ページ上の対応する境界ボックスの配置と共に表示されます。
-* `"selectionMarks"` ノード (v2.1 の場合) には、すべての選択マーク (チェック ボックス、ラジオ マーク) と、その状態が "選択済み" と "未選択" のどちらであるかが示されます。
+* `selectionMarks` ノードには、すべての選択マーク (チェック ボックス、ラジオ マーク) と、その状態が "選択済み" と "未選択" のどちらであるかが示されます。
 * 抽出された表は、`"pageResults"` セクションに含まれています。 それぞれの表について、テキスト、行インデックス、列インデックス、行スパン、列スパン、境界ボックスなどが抽出されます。
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="表を含む Contoso プロジェクト ステートメント ドキュメント。":::
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="response-body"></a>応答本文
 
 この出力は、簡素化するために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json)を参照してください。
 
@@ -225,162 +217,45 @@ JSON コンテンツを含む `200 (success)` 応答が返されます。
 }
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-この出力は、簡素化するために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json)を参照してください。
-
-```json
-{
-    "status": "succeeded",
-    "createdDateTime": "2020-08-20T20:36:52Z",
-    "lastUpdatedDateTime": "2020-08-20T20:36:58Z",
-    "analyzeResult": {
-        "version": "2.0.0",
-        "readResults": [
-            {
-                "page": 1,
-                "language": "en",
-                "angle": 0,
-                "width": 8.5,
-                "height": 11,
-                "unit": "inch",
-                "lines": [
-                    {
-                        "boundingBox": [
-                            0.5826,
-                            0.4411,
-                            2.3387,
-                            0.4411,
-                            2.3387,
-                            0.7969,
-                            0.5826,
-                            0.7969
-                        ],
-                        "text": "Contoso, Ltd.",
-                        "words": [
-                            {
-                                "boundingBox": [
-                                    0.5826,
-                                    0.4411,
-                                    1.744,
-                                    0.4411,
-                                    1.744,
-                                    0.7969,
-                                    0.5826,
-                                    0.7969
-                                ],
-                                "text": "Contoso,",
-                                "confidence": 1
-                            },
-                            {
-                                "boundingBox": [
-                                    1.8448,
-                                    0.4446,
-                                    2.3387,
-                                    0.4446,
-                                    2.3387,
-                                    0.7631,
-                                    1.8448,
-                                    0.7631
-                                ],
-                                "text": "Ltd.",
-                                "confidence": 1
-                            }
-                        ]
-                    },
-                    ...
-                ]
-            }
-        ],
-        "pageResults": [
-            {
-                "page": 1,
-                "tables": [
-                    {
-                        "rows": 5,
-                        "columns": 5,
-                        "cells": [
-                            {
-                                "rowIndex": 0,
-                                "columnIndex": 0,
-                                "text": "Training Date",
-                                "boundingBox": [
-                                    0.5133,
-                                    4.2167,
-                                    1.7567,
-                                    4.2167,
-                                    1.7567,
-                                    4.4492,
-                                    0.5133,
-                                    4.4492
-                                ],
-                                "elements": [
-                                    "#/readResults/0/lines/14/words/0",
-                                    "#/readResults/0/lines/14/words/1"
-                                ]
-                            },
-                            ...
-                        ]
-                    },
-                    ...
-                ]
-            }
-        ]
-    }
-}
-```
-
----
-
 ## <a name="analyze-receipts"></a>領収書を分析する
 
 このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。 レシートの分析を開始するには、下の cURL コマンドを使用して **[Analyze Receipt](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your receipt URL}` を、レシートの画像の URL アドレスに置き換えます。
 1. `{subscription key>` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
+#### <a name="operation-location"></a>Operation-Location
 
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
-```
+**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる結果 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。
 
----
+*https://<span></span>cognitiveservice/formrecognizer/v2.1/prebuilt/receipt/analyzeResults/**{resultId}* **
 
-**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる操作 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。 次の例では、`operations/` の後ろの文字列が操作 ID です。
+次の例では、`operations/` の後の文字列が結果 ID です。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-### <a name="get-the-receipt-results"></a>レシートの結果を取得する
+### <a name="get-receipt-results"></a>レシートの結果を取得する
 
 **Analyze Receipt** API を呼び出した後に **[Get Analyze Receipt Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeReceiptResult)** API を呼び出して、操作の状態と抽出されたデータを取得します。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
-1. `{operationId}` を、前の手順の操作 ID に置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `{resultId}` を、前の手順の結果 ID に置き換えます。
 1. `{subscription key}` は、実際のサブスクリプション キーで置き換えてください。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -X GET "https://{endpoint}/formrecognizer/v2.1/prebuilt/receipt/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
-
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
----
 
 ### <a name="examine-the-response"></a>結果の確認
 
@@ -391,6 +266,8 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 次のレシートの画像とそれに対応する JSON 出力をご覧ください。
 
 ![Contoso ストアのレシート](../../media/contoso-allinone.jpg)
+
+#### <a name="response-body"></a>応答本文
 
 この出力は、読みやすくするために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)を参照してください。
 
@@ -721,19 +598,25 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 
 ## <a name="analyze-business-cards"></a>名刺を分析する
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
-
 このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。 名刺の分析を開始するには、下の cURL コマンドを使用して **[Analyze Business Card](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your business card URL}` を、レシートの画像の URL アドレスに置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 
+#### <a name="request"></a>Request
+
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
 ```
 
-**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる操作 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。
+#### <a name="operation-location"></a>Operation-Location
+
+**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる結果 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。
+
+_https://<span></span>cognitiveservice/formrecognizer/v2.1/prebuilt/businessCard/analyzeResults/ **{resultId}**_
+
+次の例では、URL の一部として、`analyzeResults/` の後の文字列が結果 ID になります。
 
 ```console
 https://cognitiveservice/formrecognizer/v2.1/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -743,12 +626,12 @@ https://cognitiveservice/formrecognizer/v2.1/prebuilt/businessCard/analyzeResult
 
 **Analyze Business Card** API を呼び出した後に **[Get Analyze Business Card Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeBusinessCardResult)** API を呼び出して、操作の状態と抽出されたデータを取得します。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
-1. `{resultId}` を、前の手順の操作 ID に置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `{resultId}` を、前の手順の結果 ID に置き換えます。
 1. `{subscription key}` は、実際のサブスクリプション キーで置き換えてください。
 
 ```bash
-curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer/v2.1/prebuilt/businessCard/analyzeResults/{resultId}"
+curl -v -X GET https://{endpoint}/formrecognizer/v2.1/prebuilt/businessCard/analyzeResults/{resultId}"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
@@ -765,18 +648,18 @@ JSON 出力で `200 (Success)` 応答を受信します。
 ```json
 {
     "status": "succeeded",
-    "createdDateTime": "2020-06-04T08:19:29Z",
-    "lastUpdatedDateTime": "2020-06-04T08:19:35Z",
+    "createdDateTime":"2021-02-09T18:14:05Z",
+    "lastUpdatedDateTime":"2021-02-09T18:14:10Z",
     "analyzeResult": {
-        "version": "2.1.1",
+        "version": "2.1.0",
         "readResults": [
             {
-                "page": 1,
-                "angle": -17.0956,
-                "width": 4032,
-                "height": 3024,
-                "unit": "pixel"
-            }
+             "page":1,
+             "angle":-16.6836,
+             "width":4032,
+             "height":3024,
+             "unit":"pixel"
+          }
         ],
         "documentResults": [
             {
@@ -876,28 +759,27 @@ JSON 出力で `200 (Success)` 応答を受信します。
 
 このスクリプトでは、**Analyze Business Card** 操作が完了するまで、コンソールに応答が出力されます。
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
-
----
-
 ## <a name="analyze-invoices"></a>請求書を分析する
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+Form Recognizer を使用して、指定された請求書ドキュメントからフィールド テキストとセマンティック値を抽出できます。  請求書の分析を開始するには、下の cURL コマンドを使用します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。 請求書の分析を開始するには、下の cURL コマンドを使用して **[Analyze Invoice](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
-請求書の分析を開始するには、下の cURL コマンドを使用します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。 コマンドを実行する前に、次の変更を行います。
-
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your invoice URL}` を、請求書ドキュメントの URL アドレスで置き換えます。
 1. `{subscription key}` は、実際のサブスクリプション キーで置き換えてください。
 
+#### <a name="request"></a>Request
+
 ```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
+curl -v -i POST https://{endpoint}/formrecognizer/v2.1/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
 ```
 
-**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる操作 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。
+#### <a name="operation-location"></a>Operation-Location
+
+**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる結果 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。
+
+ _https://<span></span>cognitiveservice/formrecognizer/v2.1/prebuilt/receipt/analyzeResults/ **{resultId}**_
+
+次の例では、URL の一部として、`analyzeResults/` の後の文字列が結果 ID になります。
 
 ```console
 https://cognitiveservice/formrecognizer/v2.1/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -905,14 +787,16 @@ https://cognitiveservice/formrecognizer/v2.1/prebuilt/invoice/analyzeResults/54f
 
 ### <a name="get-invoice-results"></a>請求書の結果を取得する
 
-**[Analyze Invoice](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)** API を呼び出した後に **[Get Analyze Invoice Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9acb78c40a2533aee83)** API を呼び出して、操作の状態と抽出されたデータを取得します。 コマンドを実行する前に、次の変更を行います。
+**Analyze Invoice** API を呼び出した後に **[Get Analyze Invoice Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9acb78c40a2533aee83)** API を呼び出して、操作の状態と抽出されたデータを取得します。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
-1. `{resultId}` を、前の手順の操作 ID に置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `{resultId}` を、前の手順の結果 ID に置き換えます。
 1. `{subscription key}` は、実際のサブスクリプション キーで置き換えてください。
 
+#### <a name="request"></a>Request
+
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1/prebuilt/invoice/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{endpoint}/formrecognizer/v2.1/prebuilt/invoice/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 ### <a name="examine-the-response"></a>結果の確認
@@ -926,6 +810,8 @@ JSON 出力で `200 (Success)` 応答を受信します。
 次の請求書ドキュメントとそれに対応する JSON 出力をご覧ください。
 
 * [サンプル請求書](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+#### <a name="response-body"></a>応答本文
 
 この JSON コンテンツは、読みやすくするために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-invoice-output.json)を参照してください。
 
@@ -1083,52 +969,44 @@ JSON 出力で `200 (Success)` 応答を受信します。
 }
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
+## <a name="analyze-identity-id-documents"></a>身分証明書を分析する
 
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
-
----
-
-## <a name="analyze-identity-documents"></a>身分証明書を分析する
-
-### <a name="v21"></a>[v2.1](#tab/2-1)
-
-身分証明書の分析を開始するには、下の cURL コマンドを使用します。 身分証明書の分析の詳細については、[身分証明書の概念ガイド](../../concept-identification-cards.md)を参照してください。 身分証明書の分析を開始するには、次の cURL コマンドを使用して **[Analyze ID Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
+身分証明書の分析を開始するには、下の cURL コマンドを使用します。 身分証明書の分析の詳細については、[身分証明書の概念ガイド](../../concept-identification-cards.md)を参照してください。 身分証明書の分析を開始するには、下の cURL コマンドを使用して **[Analyze ID Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your ID document URL}` を、レシートの画像の URL アドレスに置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 
+#### <a name="request"></a>Request
+
 ```bash
-curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your  ID document URL}'}"
+curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your identity document URL}'}"
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
+#### <a name="operation-location"></a>Operation-Location
 
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
+**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる結果 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。
 
----
+_https://<span></span>cognitiveservice/formrecognizer/v2.1/prebuilt/documentId/analyzeResults/ **{resultId}**_
 
-**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値に含まれる結果 ID を使用して、非同期操作の状態のクエリを実行し、結果を取得できます。 次の例では、`analyzeResults/` の後ろの文字列が結果 ID です。
+次の例では、`analyzeResults/` の後の文字列が結果 ID です。
 
 ```console
-https://westus.api.cognitive.microsoft.com/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/0c6cb19e-538f-4b8d-98b7-e105c9995ba6
+https://westus.api.cognitive.microsoft.com/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/83d0137b-28e1-4051-98ce-42bd21f77ae0
 ```
 
 ### <a name="get-the-analyze-id-document-result"></a>Analyze ID Document の結果を取得する
 
-**Analyze ID Document** API を呼び出した後に **[Get Analyze Id Document Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7daad1f2612c46f5822)** API を呼び出して、操作の状態と抽出されたデータを取得します。  コマンドを実行する前に、次の変更を行います。
+**Analyze ID Document** API を呼び出した後に **[Get Analyze ID Document Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeBusinessCardResult)** API を呼び出して、操作の状態と抽出されたデータを取得します。  コマンドを実行する前に、次の変更を行います。
 
 1. `{endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
-1. `{resultId}` を、前の手順の操作 ID に置き換えます。
+1. `{resultId}` を、前の手順の結果 ID に置き換えます。
 1. `{subscription key}` は、実際のサブスクリプション キーで置き換えてください。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -X GET "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -X GET "https://{endpoint}/formrecognizer/v2.1/prebuilt/businessCard/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 ### <a name="examine-the-response"></a>結果の確認
@@ -1141,6 +1019,8 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 サンプルの身分証明書とそれに対応する JSON 出力を以下に示します
 
 * :::image type="content" source="https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg" alt-text="サンプルの運転免許証":::
+
+#### <a name="response-body"></a>応答本文
 
 ```json
 {
@@ -1184,9 +1064,9 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
               "page": 1,
               "confidence": 0.965
             },
-            "Country": {
-              "type": "country",
-              "valueCountry": "USA",
+            "CountryRegion": {
+              "type": "countryRegion",
+              "valueCountryRegion": "USA",
               "confidence": 0.99
             },
             "DateOfBirth": {
@@ -1280,8 +1160,8 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
               "confidence": 0.99
             },
             "Sex": {
-              "type": "gender",
-              "valueGender": "M",
+              "type": "string",
+              "valueString": "M",
               "text": "M",
               "boundingBox": [
                 226,
@@ -1303,13 +1183,6 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
   }
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
-
----
-
 ## <a name="train-a-custom-model"></a>カスタム モデルをトレーニングする
 
 カスタム モデルをトレーニングするには、Azure Storage BLOB 内にトレーニング データのセットが必要です。 同じ種類または構造の入力済みフォーム (PDF ドキュメントや画像) が少なくとも 5 つ必要です。 トレーニング データをまとめるためのヒントとオプションについては、[カスタム モデル用のトレーニング データ セットの作成](../../build-training-data-set.md)に関する記事を参照してください。
@@ -1323,27 +1196,29 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 
 Azure BLOB コンテナー内のドキュメントを使用して Form Recognizer モデルをトレーニングするには、次の cURL コマンドを実行して、 **[Train Custom Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/TrainCustomModelAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 1. `{SAS URL}` を Azure Blob ストレージ コンテナーの共有アクセス署名 (SAS) URL に置き換えます。 [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
+#### <a name="location"></a>場所
 
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+**Location** ヘッダーで `201 (Success)` 応答を受信します。 このヘッダーの値に含まれる、新しくトレーニングされたモデルのモデル ID を使用して、操作の状態のクエリを実行し、結果を取得できます。
+
+_https://{endpoint}/formrecognizer/v2.1/custom/models/ **{modelId}**_
+
+次の例では、URL の一部として、`models/` の後の文字列がモデル ID になります。
+
+```console
+https://westus.api.cognitive.microsoft.com/formrecognizer/v2.1/custom/models/77d8ecad-b8c1-427e-ac20-a3fe4af503e9
 ```
-
----
-
-**Location** ヘッダーで `201 (Success)` 応答を受信します。 このヘッダーの値は、トレーニング中の新しいモデルの ID です。
 
 ### <a name="train-a-model-with-labels"></a>ラベルを使用してモデルをトレーニングする
 
@@ -1351,166 +1226,84 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Conte
 
 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 1. `{SAS URL}` を Azure Blob ストレージ コンテナーの共有アクセス署名 (SAS) URL に置き換えます。 [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
+curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
+#### <a name="location"></a>場所
 
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
+**Location** ヘッダーで `201 (Success)` 応答を受信します。 このヘッダーの値に含まれる、新しくトレーニングされたモデルのモデル ID を使用して、操作の状態のクエリを実行し、結果を取得できます。
+
+_https://{endpoint}/formrecognizer/v2.1/custom/models/ **{modelId}**_
+
+次の例では、URL の一部として、`models/` の後の文字列がモデル ID になります。
+
+```console
+https://westus.api.cognitive.microsoft.com/formrecognizer/v2.1/custom/models/4da0bf8e-5325-467c-93bb-9ff13d5f72a2
 ```
-
----
-
-**Location** ヘッダーで `201 (Success)` 応答を受信します。 このヘッダーの値は、トレーニング中の新しいモデルの ID です。
 
 ### <a name="get-training-results"></a>トレーニング結果を取得する
 
-トレーニング操作の開始後、新しい操作 **[Get Custom Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModel)** を使用して、トレーニングの状態を確認します。 この API 呼び出しにモデル ID を渡して、トレーニングの状態を確認します。
+トレーニング操作の開始後、 **[Get Custom Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModel)** を使用して、トレーニングの状態を確認します。 この API 要求にモデル ID を渡して、トレーニングの状態を確認します。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。
 1. `{subscription key}` は、実際のサブスクリプション キーで置き換えてください
 1. `{model ID}` を、前の手順で受信したモデル ID で置き換えます
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
----
-
-次の形式の JSON 本文を含む `200 (Success)` 応答が送られてきます。 `"status"` フィールドに注目します。 トレーニングが完了すると、この値は `"ready"` になります。 モデルのトレーニングが完了していない場合は、コマンドを再実行して、サービスに対して再度クエリを実行する必要があります。 呼び出しの間隔は 1 秒以上あけることをお勧めします。
-
-`"modelId"` フィールドには、トレーニング中のモデルの ID が含まれています。 これは、次の手順で必要になります。
-
-```json
-{
-  "modelInfo":{
-    "status":"ready",
-    "createdDateTime":"2019-10-08T10:20:31.957784",
-    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
-    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
-  },
-  "trainResult":{
-    "trainingDocuments":[
-      {
-        "documentName":"invoices\\Invoice_1.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_2.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_3.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_4.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_5.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      }
-    ],
-    "errors":[
-
-    ]
-  },
-  "keys":{
-    "0":[
-      "Address:",
-      "Invoice For:",
-      "Microsoft",
-      "Page"
-    ]
-  }
-}
+curl -X GET "https://{endpoint}/formrecognizer/v2.1/custom/models/{modelId}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 ## <a name="analyze-forms-with-a-custom-model"></a>カスタム モデルを使用してフォームを分析する
 
 次に、新しくトレーニングしたモデルを使用してドキュメントを分析し、そこからキーと値のペアおよびテーブルを抽出します。 次の cURL コマンドを実行して、 **[Analyze Form](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `{endpoint}` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
 1. `{model ID}` を、前のセクションで受信したモデル ID で置き換えます。
 1. `{SAS URL}` を、Azure Storage にある実際のファイルの SAS URL に置き換えます。 「トレーニング」セクションの手順に従いますが、取得するのは、BLOB コンテナー全体の SAS URL ではなく、分析対象となる特定のファイルの SAS URL です。
 1. `{subscription key}` は、実際のサブスクリプション キーで置き換えてください。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.1/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+curl -v "https://{endpoint}/formrecognizer/v2.1/custom/models/{modelId}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
+**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値には、分析操作の結果を追跡するために使用する結果 ID が含まれます。
 
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+_https://<span></span>cognitiveservice/formrecognizer/v2.1/custom/models/{modelId}/analyzeResults/ **{resultId}**_
+
+次の例では、URL の一部として、`analyzeResults/` の後の文字列が結果 ID になります。
+
+```console
+https://cognitiveservice/formrecognizer/v2/layout/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
----
-
-**Operation-Location** ヘッダーを含む `202 (Success)` 応答を受信します。 このヘッダーの値は、分析操作の結果を追跡するために使用する結果 ID を含みます。 次の手順で使用できるように、この結果 ID を保存します。
+次の手順で使用できるように、この結果 ID を保存します。
 
 ### <a name="get-the-analyze-results"></a>分析結果を取得する
 
 分析操作の結果を照会するには、Get **[Analyze Form Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeFormResult)** API を呼び出します。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `{endpoint}` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
 1. `{result ID}` を、前のセクションで受信した ID で置き換えます。
 1. `{subscription key}` は、実際のサブスクリプション キーで置き換えてください。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -X GET "https://{endpoint}/formrecognizer/v2.1/custom/models/{modelId}/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
-
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
----
 
 次の形式の JSON 本文を含む `200 (Success)` 応答が送られてきます。 出力は、簡素化するために一部省略されています。 下部の近くにある `"status"` フィールドにご注意ください。 分析操作が完了すると、ここに `"succeeded"` 値が表示されます。 分析操作が完了していない場合は、コマンドを再実行して、サービスに対して再度クエリを実行する必要があります。 呼び出しの間隔は 1 秒以上あけることをお勧めします。
 
@@ -1518,7 +1311,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/ana
 
 このサンプル JSON 出力は、簡素化するために一部省略されています。 [GitHub で完全なサンプル出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json)を参照してください。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="response-body"></a>応答本文
 
 ```JSON
 {
@@ -1663,137 +1456,6 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/ana
 }
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T00:46:25Z",
-  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
-  "analyzeResult": {
-    "version": "2.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0153,
-              0.275,
-              8.0944,
-              0.275,
-              8.0944,
-              0.7125,
-              5.0153,
-              0.7125
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0153,
-                  0.275,
-                  6.2278,
-                  0.275,
-                  6.2278,
-                  0.7125,
-                  5.0153,
-                  0.7125
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3292,
-                  0.275,
-                  8.0944,
-                  0.275,
-                  8.0944,
-                  0.7125,
-                  6.3292,
-                  0.7125
-                ]
-              }
-            ]
-          },
-        ...
-        ]
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9722,
-                1.0264,
-                7.3417,
-                1.0264,
-                7.3417,
-                1.1931,
-                6.9722,
-                1.1931
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-         ...
-        ],
-        "tables": [
-          {
-            "rows": 4,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6931,
-                  4.2444,
-                  1.5681,
-                  4.2444,
-                  1.5681,
-                  4.4125,
-                  0.6931,
-                  4.4125
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ],
-        "clusterId": 0
-      }
-    ],
-    "documentResults": [],
-    "errors": []
-  }
-}
-```
-
----
-
 ### <a name="improve-results"></a>結果を改善する
 
 [!INCLUDE [improve results](../../includes/improve-results-unlabeled.md)]
@@ -1804,24 +1466,17 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/ana
 
 次のコマンドでは、 **[List Custom Models](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModels)** API を使用して、サブスクリプションに属しているすべてのカスタム モデルのリストを返します。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+#### <a name="request"></a>Request
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1/custom/models?op=full"
+curl -v -X GET "https://{endpoint}/formrecognizer/v2.1/custom/models?op=full"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
----
+#### <a name="response-body"></a>応答本文
 
 次のような JSON データを含む `200` 成功応答が返されます。 `"modelList"` 要素には、作成したすべてのモデルとその情報が含まれています。
 
@@ -1848,23 +1503,17 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
 
 特定のカスタム モデルに関する詳細情報を取得するために、次のコマンドでは、 **[Get Custom Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModel)** API を使用します。
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 1. `{modelId}` を、検索するカスタム モデルの ID で置き換えます。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+### <a name="request"></a>Request
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{endpoint}/formrecognizer/v2.1/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
----
+#### <a name="request-body"></a>要求本文
 
 次のような JSON データを含む `200` 成功応答が返されます。
 
@@ -1909,33 +1558,23 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" 
 ### <a name="delete-a-model-from-the-resource-account"></a>リソース アカウントからモデルを削除する
 
 ID を参照して、アカウントからモデルを削除することもできます。 このコマンドは **[Delete Custom Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/DeleteCustomModel)** API を呼び出して、前のセクションで使用したモデルを削除します。
-code
 
-1. `{Endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
+1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 1. `{modelId}` を、検索するカスタム モデルの ID で置き換えます。
 
-### <a name="v21"></a>[v2.1](#tab/2-1)
+### <a name="request"></a>Request
 
 ```bash
-curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X DELETE "https://{endpoint}/formrecognizer/v2.1/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
-
-### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```bash
-curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
----
 
 モデルが削除対象としてマークされたことを示す `204` 成功応答が返されます。 モデル成果物は、48 時間以内に削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Form Recognizer REST API を使用してモデルをトレーニングし、さまざまな方法でフォームを分析しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを参照します。
+このクイックスタートでは、Form Recognizer REST API を使用してモデルをトレーニングし、さまざまな方法でフォームを分析しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを探索します。
 
 > [!div class="nextstepaction"]
 > [REST API リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)
 
-* [Form Recognizer とは](../../overview.md)

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7dcfc5d990d1ea75da20aa324f8361a7fc930c14
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 76d6574be61b7d1cd92733496d335c64d64bf7a1
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967269"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031393"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>Azure Virtual Desktop とは
 
@@ -107,11 +107,11 @@ Azure Virtual Desktop の構成要素には、お客様がユーザーに配信�
 
 次のリモート デスクトップ クライアントは、Azure Virtual Desktop をサポートします。
 
-* [Windows デスクトップ](connect-windows-7-10.md)
-* [Web](connect-web.md)
-* [macOS](connect-macos.md)
-* [iOS](connect-ios.md)
-* [Android](connect-android.md)
+* [Windows デスクトップ](./user-documentation/connect-windows-7-10.md)
+* [Web](./user-documentation/connect-web.md)
+* [macOS](./user-documentation/connect-macos.md)
+* [iOS](./user-documentation/connect-ios.md)
+* [Android](./user-documentation/connect-android.md)
 * Microsoft Store クライアント
 
 > [!IMPORTANT]

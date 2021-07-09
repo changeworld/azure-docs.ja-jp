@@ -8,12 +8,13 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 5aa15204d646278abfb669466a34f11543e338f2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8a0294e205dd8a22f9847140511cbce634322c4a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091218"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285231"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。
@@ -160,7 +161,7 @@ az vm create \
 
 この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create/)に従って、ロード バランサーと仮想マシンをデプロイし、ネットワーク インターフェイスを使用して仮想マシンをバックエンド プールに追加します。
 
-この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool)に従って、ロード バランサーと仮想マシンをデプロイし、IP アドレスを使用して仮想マシンをバックエンド プールに追加します。
+この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-ip-configured-backend-pool)に従って、ロード バランサーと仮想マシンをデプロイし、IP アドレスを使用して仮想マシンをバックエンド プールに追加します。
 
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する
@@ -314,10 +315,12 @@ IP アドレスで構成されたバックエンド プールには、次の制�
   * バックエンド プール内の IP アドレスの上限は 100 個
   * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
   * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
-  * この機能は Azure portal では現在サポートされていない
   * この機能では、ACI コンテナーは現在サポートされていない
   * Application Gateway などのロード バランサーやサービスは、ロード バランサーのバックエンド プールに配置できない
   * インバウンド NAT 規則を IP アドレスで指定することはできない
+
+>[!Important]
+> バックエンド プールが IP アドレス別に構成されている場合、既定の送信が有効な Basic ロード バランサーとして動作します。 既定でセキュリティで保護された構成の場合と、送信のニーズが厳しいアプリケーションの場合は、バックエンド プールを NIC 別に構成します。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Load Balancer のバックエンド プール管理についてと、IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する方法について学習しました。

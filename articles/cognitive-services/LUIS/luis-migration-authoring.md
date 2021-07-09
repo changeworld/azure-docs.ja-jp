@@ -10,18 +10,18 @@ ms.custom: seodec18, contperf-fy21q2
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/14/2020
-ms.openlocfilehash: 54c0d8aa8ba17beb5a2f5a51c4a19795f767733a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 05/28/2021
+ms.openlocfilehash: cf40cea7e92cdb36f489943d5af2ef140bd92a9e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089437"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706902"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
 > [!IMPORTANT]
->  12 月 3 日以降、既存の LUIS ユーザーが LUIS アプリケーションのオーサリングを続行するには、移行プロセスを完了する必要があります。
+>  2020 年 12 月 3 日時点で、既存の LUIS ユーザーが LUIS アプリケーションのオーサリングを続行するには、移行プロセスを完了している必要があります。
 
 Language Understanding (LUIS) のオーサリング認証が、メール アカウントから Azure リソースに変更されました。 ご使用のアカウントの移行がまだ済んでいない場合は、この記事で移行の方法をご確認ください。  
 

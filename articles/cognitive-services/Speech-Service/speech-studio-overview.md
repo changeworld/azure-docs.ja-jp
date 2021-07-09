@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2021
 ms.author: trbye
-ms.openlocfilehash: 069cc8c28930d4c5e124700cac8e07c18c81d79d
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: ddf7b85f5775ee25a260f19ae81e43afff95facb
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109665608"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902340"
 ---
 # <a name="what-is-speech-studio"></a>Speech Studio とは
 
@@ -41,7 +41,8 @@ Azure アカウントと音声サービス サブスクリプションを作成�
 * **リアルタイム音声テキスト変換**: コードを使用せずにオーディオ ファイルをドラッグ アンド ドロップすることで、音声テキスト変換をすばやくテストします。 これはオーディオ サンプルでの音声テキスト変換のしくみを確認するためのデモ ツールですが、使用可能なすべての機能を調べるには、音声テキスト変換の[概要](speech-to-text.md)を参照してください。
 * **Custom Speech**: Custom Speech を使用すると、特定のボキャブラリ セットと話し方に合わせて調整された音声認識モデルを作成できます。 基本音声認識モデルを使用する場合と異なり、Custom Speech モデルは、パブリックにアクセスできないので、独自の競争上の強みの一部になります。 サンプル オーディオのアップロードを開始して、Custom Speech モデルを作成するには、[クイックスタート](how-to-custom-speech-test-and-train.md)を参照してください。
 * **発音評価**: 発音評価によりスピーチの発音が評価され、話された音声の正確性と流暢性に関するフィードバックが話者に提供されます。 Speech Studio には、コーディングなしでこの機能をすばやくテストするサンドボックスが用意されていますが、アプリケーションの Speech SDK でこの機能を使用する方法については[ハウツー](how-to-pronunciation-assessment.md)記事を参照してください。
-* **Custom Voice**: Custom Voice を使用すると、テキスト読み上げ用の独自のカスタム音声を作成できます。 Speech Studio でオーディオ ファイルを指定し、対応する文字起こしを作成してから、アプリケーションでカスタム音声を使用します。 カスタム音声を作成してエンドポイント経由で使用する方法に関する[ハウツー](how-to-custom-voice-create-voice.md)記事を参照してください。 Custom Voice は [REST API](rest-text-to-speech.md) からのみ使用できることに注意してください。
+* **音声ギャラリー**: 自然に話すアプリとサービスを構築します。 70 の言語とバリエーションで 170 を超える音声から選択できます。 豊富な表現力と人間のようなニューラル音声でシナリオを実現します。
+* **Custom Voice**: Custom Voice を使用すると、テキスト読み上げ用の独自のカスタム音声を作成できます。 Speech Studio でオーディオ ファイルを指定し、対応する文字起こしを作成してから、アプリケーションでカスタム音声を使用します。 カスタム音声を作成してエンドポイント経由で使用する方法に関する[ハウツー](how-to-custom-voice-create-voice.md)記事を参照してください。 
 * **Audio Content Creation**: [Audio Content Creation](how-to-audio-content-creation.md) は、オーディオブック、ニュース放送、ビデオ ナレーション、チャットボットなどのさまざまなシナリオ向けの非常に自然なオーディオ コンテンツを作成できる、使いやすいツールです。 Speech Studio を使用すると、作成したオーディオ ファイルをエクスポートして、アプリケーションで使用できます。
 * **Custom Keyword**: Custom Keyword は、製品を音声でアクティブにできる単語または短い語句です。 Speech Studio で Custom Keyword を作成し、アプリケーションに [Speech SDK で使用](custom-keyword-basics.md)するバイナリ ファイルを生成します。
 * **Custom Commands**: Custom Commands を使用すると、音声優先の対話エクスペリエンス向けに最適化された、機能が豊富な音声コマンド処理アプリを簡単に構築できます。 これにより、Speech Studio でのコーディング不要な作成エクスペリエンスと、自動ホスティング モデルが提供され、複雑度が比較的低くなるので、音声コマンド処理シナリオに最適なソリューションの構築に専念できるようになります。 Custom Commands アプリケーションの構築に関する[ハウツー](how-to-develop-custom-commands-application.md) ガイドを参照してください。また、[Custom Commands アプリケーションと Speech SDK の統合](how-to-custom-commands-setup-speech-sdk.md)に関するガイドも参照してください。

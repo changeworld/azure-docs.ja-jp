@@ -11,26 +11,26 @@ author: rsethur
 ms.date: 05/13/2021
 ms.topic: how-to
 ms.custom: how-to
-ms.openlocfilehash: 8c14523d1d566086eff73693d6500947ccda7ba4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 85b587dcaed162a0372f03240f9c4cb33d7507c1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382795"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969059"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-with-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)
 
-マネージド オンライン エンドポイント (プレビュー) を使用すると、基盤となるインフラストラクチャを作成、管理することなくモデルをデプロイすることができます。 この記事では、まずローカル コンピューターにモデルをデプロイして、発生するエラーをデバッグした後、それを Azure にデプロイしてテストします。 ログを確認して、サービス レベル アグリーメント (SLA) を監視する方法についても説明します。 最初はモデルに取り組み、最終的には、オンライン (リアルタイム) スコアリングに使用できるスケーラブルな HTTPS/REST エンドポイントを完成させます。
+マネージド オンライン エンドポイント (プレビュー) を使用すると、基盤となるインフラストラクチャを作成、管理する必要なしにモデルをデプロイすることができます。 この記事では、まずローカル コンピューターにモデルをデプロイして、発生するエラーをデバッグした後、それを Azure にデプロイしてテストします。 ログを確認して、サービス レベル アグリーメント (SLA) を監視する方法についても説明します。 最初はモデルに取り組み、最終的には、オンライン (リアルタイム) スコアリングに使用できるスケーラブルな HTTPS/REST エンドポイントを完成させます。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning を使用するためには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure Machine Learning を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 * Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[2.0 CLI (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
 
-* Azure リソース グループがあること、また、そのリソース グループにおける `Contributor` アクセス権がご自身 (またはご使用のサービス プリンシパル) に割り当てられていることが必要です。 上記の記事に従って ML 拡張機能を構成していれば、そのようなリソース グループが得られます。 
+* Azure リソース グループがあること、また、そのリソース グループにおける `Contributor` アクセス権が自分 (または使用するサービス プリンシパル) に割り当てられていることが必要です。 上記の記事に従って ML 拡張機能を構成していれば、そのようなリソース グループが得られます。 
 
 * Azure Machine Learning ワークスペースが必要です。 上記の記事に従って ML 拡張機能を構成していれば、そのようなワークスペースが得られます。
 
@@ -86,10 +86,10 @@ Windows オペレーティング システムを使用する場合は、代わ�
 | $schema    | [省略可能] YAML スキーマ。 上の例のスキーマをブラウザーで表示すると、YAML ファイルで使用可能なすべてのオプションを確認できます。|
 | name       | エンドポイントの名前。 Azure リージョン レベルで一意である必要があります。|
 | traffic | エンドポイントから各デプロイに転送するトラフィックの割合 (%)。 トラフィックの値は合計して 100 になる必要があります |
-| auth_mode | キー ベース認証には `key` を、Azure Machine Learning トークンベース認証には `aml_token` を使用します。 `key` には有効期限がありませんが、`aml_token` には有効期限があります。 `az ml endpoint list-keys` コマンドを使用して最新のトークンを取得してください。 |
+| auth_mode | キー ベース認証には `key` を、Azure Machine Learning トークンベース認証には `aml_token` を使用します。 `key` には有効期限がありませんが、`aml_token` には有効期限があります。 `az ml endpoint get-credentials` コマンドを使用して最新のトークンを取得してください。 |
 | deployments | エンドポイントに作成されるデプロイの一覧を含みます。 このケースでは、`blue` という名前のデプロイが 1 つあるだけです。 複数のデプロイの詳細については、「[オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md)」を参照してください|
 
-`deployment` の属性:
+`deployments` の属性:
 
 | Key | 説明 |
 | --- | --- |
@@ -102,6 +102,8 @@ Windows オペレーティング システムを使用する場合は、代わ�
 | scale_settings.scale_type | 現在、この値は `manual` である必要があります。 エンドポイントとデプロイの作成後にスケールアップまたはスケールダウンするには、YAML で `instance_count` を更新し、`az ml endpoint update -n $ENDPOINT_NAME --file <yaml filepath>` コマンドを実行します。|
 | scale_settings.instance_count | デプロイ内のインスタンスの数。 想定されるワークロードに基づく値を指定します。 高可用性を確保するために、Microsoft では `3` 以上に設定することを推奨しています。 |
 
+YAML スキーマの詳細については、[オンライン エンドポイント YAML リファレンス](reference-online-endpoint-yaml.md)に関するドキュメントを参照してください。
+
 > [!Note]
 > マネージド エンドポイントの代わりに Azure Kubernetes Service (AKS) をコンピューティング先として使用するには:
 > 1. [Azure ML スタジオを使用して](how-to-create-attach-compute-studio.md#whats-a-compute-target)、AKS クラスターを作成し、Azure Machine Learning ワークスペースにコンピューティング先としてアタッチします
@@ -110,7 +112,7 @@ Windows オペレーティング システムを使用する場合は、代わ�
 
 ### <a name="registering-your-model-and-environment-separately"></a>モデルと環境を別々に登録する
 
- この例では、モデルと環境のプロパティ (`name`、`version`、およびアップロードするファイルの `local_path`) をインラインで指定します。 バックグラウンドで CLI がファイルをアップロードし、モデルと環境を自動的に登録します。 運用環境ではベスト プラクティスとして、モデルと環境を別々に登録し、登録済みの名前とバージョンを YAML で指定することをお勧めします。 その形式は `model:azureml:my-model:1` または `environment:azureml:my-env:1` です。
+ この例では、モデルと環境のプロパティ (`name`、`version`、およびアップロードするファイルの `local_path`) をインラインで指定します。 バックグラウンドで CLI がファイルをアップロードし、モデルと環境を自動的に登録します。 運用環境ではベスト プラクティスとして、モデルと環境を別々に登録し、登録済みの名前とバージョンを YAML で指定することをお勧めします。 その形式は `model: azureml:my-model:1` または `environment: azureml:my-env:1` です。
 
  登録するためには、`model` と `environment` の YAML 定義を別々の YAML ファイルに抽出し、`az ml model create` コマンドと `az ml environment create` コマンドを使用します。 これらのコマンドの詳細については、`az ml model create -h` と `az ml environment create -h` を実行してください。
 
@@ -127,7 +129,7 @@ Windows オペレーティング システムを使用する場合は、代わ�
 ## <a name="understand-the-scoring-script"></a>スコアリング スクリプトを理解する
 
 > [!Tip]
-> マネージド オンライン エンドポイントのスコアリング スクリプトの形式は、以前のバージョンの CLI や Python SDK で使用されている形式と同じです
+> マネージド オンライン エンドポイントのスコアリング スクリプトの形式は、以前のバージョンの CLI や Python SDK で使用されている形式と同じです。
 
 上記の YAML にあるように、`code_configuration.scoring_script` には、`init()` 関数と `run()` 関数が含まれている必要があります。 この例では、この [score.py ファイル](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/model-1/onlinescoring/score.py)を使用します。 `init()` 関数は、コンテナーの初期化 (起動) 時に呼び出されます。 この初期化は、通常、デプロイが作成または更新された直後に実行されます。 この例のようにモデルをメモリにキャッシュするなど、グローバルな初期化処理を実行するロジックが、ここには記述されます。 `run()` 関数は、エンドポイントが呼び出されるたびに呼び出されて、実際のスコアリングまたは予測を実行します。 この例では、JSON 入力からデータを抽出し、`scikit-learn` モデルの `predict()` メソッドを呼び出して結果を返します。
 
@@ -137,13 +139,12 @@ Windows オペレーティング システムを使用する場合は、代わ�
 
 > [!Note]
 > * ローカルにデプロイするには、[Docker エンジン](https://docs.docker.com/engine/install/)をインストールしておく必要があります
-> * Docker エンジンが実行されている必要があります。 通常は、開始時にエンジンも起動します。起動しない場合は、[こちらでトラブルシューティング](https://docs.docker.com/config/daemon/#start-the-daemon-manually)を行ってください
+> * Docker エンジンが実行されている必要があります。 通常は、開始時にエンジンも起動します。 起動しない場合は、[こちらでトラブルシューティング](https://docs.docker.com/config/daemon/#start-the-daemon-manually)を行ってください。
 
 > [!Important]
 > ローカル エンドポイント デプロイの目的は、Azure へのデプロイ前にコードと構成を検証してデバッグすることです。 ローカル デプロイには、次の制限があります。
 > - ローカル エンドポイントでは、トラフィック ルール、認証、スケール設定、プローブ設定がサポート **されません**。 
-> - ローカル エンドポイントでサポートされるデプロイは、エンドポイントごとに 1 つだけです。
-> - 現在、ローカル デプロイでは、モデルと環境をインラインで指定する必要があります (サンプル YAML を参照)。 つまり、ローカル デプロイでは、Azure Machine Learning ワークスペースに登録されているモデルや環境の参照を使用することはできません。 
+> - ローカル エンドポイントでサポートされるデプロイは、エンドポイントごとに 1 つだけです。 つまり、ローカル デプロイでは、Azure Machine Learning ワークスペースに登録されているモデルや環境の参照を使用することはできません。 
 
 ### <a name="deploy-the-model-locally"></a>モデルをローカルにデプロイする
 
@@ -190,9 +191,9 @@ az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
 
 YAML 構成をクラウドにデプロイするには、次のコマンドを実行します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="deploy" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="deploy" :::
 
-基になる環境とイメージが初めて構築されるものであるかどうかに応じて、このデプロイには 8 分から 14 分程度かかる場合があります。 その後、同じ環境を使用したデプロイは、それよりも短時間で完了します。
+基になる環境とイメージが初めて構築されるものであるかどうかに応じて、このデプロイには最大で 15 分かかる場合があります。 その後、同じ環境を使用したデプロイは、それよりも短時間で完了します。
 
 > [!Tip]
 > CLI コンソールをブロックしたくない場合は、コマンドに `--no-wait` フラグを追加してください。 ただし、この場合、デプロイ状態が対話的に表示されなくなります。
@@ -204,7 +205,7 @@ YAML 構成をクラウドにデプロイするには、次のコマンドを実
 
 `show` コマンドには、エンドポイントとデプロイの両方について `provisioning_status` があります。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="get_status" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_status" :::
 
 `list` コマンドを使用すると、すべてのエンドポイントを表形式でワークスペースに一覧表示できます。
 
@@ -216,9 +217,7 @@ az ml endpoint list --output table
 
 エラーが発生することなくモデルがデプロイされたかどうかを、ログを見て確認します。
 
-```azurecli
-az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_logs" :::
 
 既定では、ログが推論サーバーからプルされます。 (モデルやコードといったアセットをコンテナーにマウントする) storage-initializer からのログを表示したい場合は、`--container storage-initializer` フラグを追加します。
 
@@ -226,13 +225,13 @@ az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
 
 `invoke` コマンドまたは任意の REST クライアントを使用してエンドポイントを呼び出し、データをスコアリングすることができます。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint" :::
 
 ここでも、先ほど紹介した `get-logs` コマンドを使用して、呼び出しログを確認できます。
 
 REST クライアントを使用するには、`scoring_uri` のほか、認証キーと認証トークンが必要です。 `scoring_uri` は、`show` コマンドの出力から得られます。
  
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="get_scoring_uri" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_scoring_uri" :::
 
 `--query` を使用して、必要な属性だけをフィルターで選択していることに注意してください。 `--query` の詳細については、[Azure CLI コマンドの出力のクエリ](/cli/azure/query-azure-cli)に関するページを参照してください。
 
@@ -284,7 +283,7 @@ az ml endpoint delete -n $ENDPOINT_NAME --deployment blue
 
 ### <a name="optional-integrate-with-log-analytics"></a>[省略可能] Log Analytics と統合する
 
-`get-logs` コマンドで取得できるのは、自動的に選択されたインスタンスの直近数百行のログだけです。 一方、Log Analytics は、ログを永続的に保存して分析する手段となります。 まず、「[Azure portal で Log Analytics ワークスペースを作成する](/azure/azure-monitor/logs/quick-create-workspace#create-a-workspace)」の手順に従って、Log Analytics ワークスペースを作成します。
+`get-logs` コマンドで取得できるのは、自動的に選択されたインスタンスの直近数百行のログだけです。 一方、Log Analytics は、ログを永続的に保存して分析する手段となります。 まず、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md#create-a-workspace)」の手順に従って、Log Analytics ワークスペースを作成します。
 
 次に、Azure portal で:
 
@@ -306,9 +305,9 @@ az ml endpoint delete -n $ENDPOINT_NAME --deployment blue
 
 今後使用する予定がない場合、以下のコマンドでデプロイを削除してください (エンドポイントとそこにあるすべてのデプロイが削除されます)。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>次の手順
 
-- [オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md)|
+- [オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md)
 - [マネージド オンライン エンドポイントのデプロイのトラブルシューティング](how-to-troubleshoot-managed-online-endpoints.md)

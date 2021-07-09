@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6370e8646c561ae88e27acf4355bfa2e4bf66f98
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d44e73b7d4c2988fb26c947100faac2ebcbe8f8f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078427"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474596"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure Digital Twins インスタンスと認証を設定する (CLI)
 
@@ -51,7 +51,7 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> --resource-g
 
 インスタンスが正常に作成された場合、Cloud Shell の結果は次のようになり、作成したリソースに関する情報が出力されます。
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="リソース グループと Azure Digital Twins インスタンスが正常に作成されたコマンド ウィンドウ":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="Azure portal でリソース グループと Azure Digital Twins インスタンスが正常に作成された Cloud Shell ウィンドウのスクリーンショット。":::
 
 Azure Digital Twins インスタンスの **hostName**、**name**、**resourceGroup** を出力から確認します。 これらはすべて、認証および関連する Azure リソースを設定するために、Azure Digital Twins インスタンスを引き続き操作する場合に必要になる可能性がある重要な値です。 他のユーザーがこのインスタンスに対してプログラミングする場合は、これらの値をそのユーザーと共有する必要があります。
 
@@ -87,7 +87,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 >
 > [Azure Active Directory ユーザーの Azure portal ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)を使用して、ユーザー アカウントを選択し、その詳細を開きます。 そのユーザーの "*ObjectID*" をコピーします。
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="[オブジェクト ID] フィールドで GUID が強調表示されている、Azure portal のユーザー ページの表示" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="[オブジェクト ID] フィールドで GUID が強調表示されている、Azure portal のユーザー ページのスクリーンショット。" lightbox="media/includes/user-id.png":::
 >
 > 次に、前述の `assignee` パラメーターにユーザーの "*オブジェクト ID*" を使用して、ロールの割り当てリスト コマンドを繰り返します。
 

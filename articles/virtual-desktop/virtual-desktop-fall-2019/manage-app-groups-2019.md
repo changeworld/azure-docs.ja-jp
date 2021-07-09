@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop (クラシック) のアプリ グループを管理する - Azure
-description: Windows Virtual Desktop (クラシック) のテナントを Azure Active Directory (AD) に設定する方法を学習します。
+title: Azure Virtual Desktop (クラシック) のアプリ グループを管理する - Azure
+description: Azure Virtual Desktop (クラシック) のテナントを Azure Active Directory (AD) に設定する方法を学習します。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0b95c87ad447b92532bc6c456c06eb85162c7247
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b4c0f4733ec1d80db4b2181ed292f702926e0e75
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444413"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754009"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) のアプリ グループを管理する
+# <a name="tutorial-manage-app-groups-for-azure-virtual-desktop-classic"></a>チュートリアル: Azure Virtual Desktop (クラシック) のアプリ グループを管理する
 
 >[!IMPORTANT]
->これは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしない Windows Virtual Desktop (クラシック) を対象としたコンテンツです。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../manage-app-groups.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../manage-app-groups.md)を参照してください。
 
-Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
+Azure Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -26,7 +26,7 @@ Windows Virtual Desktop の新しいホスト プール向けに作成される�
 > * RemoteApp グループを作成する。
 > * RemoteApp プログラムへのアクセスを許可する。
 
-作業を開始する前に、PowerShell セッションで使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだの場合のみ)。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
+作業を開始する前に、PowerShell セッションで使用する [Azure Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだ行っていない場合)。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

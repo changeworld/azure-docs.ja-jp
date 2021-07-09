@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 2d1b5e490b7c8212e6103e3d169c1b5491d01dde
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: f9f787af8cad8dffa728e29fd3a13defc8e160ca
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167432"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494871"
 ---
 # <a name="pronunciation-assessment"></a>発音評価
 
@@ -34,7 +34,7 @@ ms.locfileid: "106167432"
 
 下のサンプルでは、`PronunciationAssessmentConfig` を作成し、それを `SpeechRecognizer` に適用します。
 
-次のスニペットからは、自分のアプリで自動言語検出を使用する方法を確認できます。
+次のスニペットでは、自分のアプリで言語識別を使用する方法を確認できます。
 
 ::: zone pivot="programming-language-csharp"
 

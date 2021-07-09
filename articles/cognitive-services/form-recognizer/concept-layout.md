@@ -5,17 +5,17 @@ description: Form Recognizer API を使用したレイアウト分析に関連�
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 453df5f88613d5e7b4257583af2778a389ae2dba
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: edf8c0282b96685623e1d1ed01cbed84adfe728f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374769"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890710"
 ---
 # <a name="form-recognizer-layout-service"></a>Form Recognizer レイアウト サービス
 
@@ -32,7 +32,7 @@ Layout API を使用すると、非常に優れた精度でドキュメントか
 Form Recognizer のレイアウト サービスを試してみるには、オンラインのサンプル UI ツールにアクセスしてください。
 
 > [!div class="nextstepaction"]
-> [Form Recognizer を試す](https://fott-preview.azurewebsites.net)
+> [Form Recognizer を試す](https://aka.ms/fott-2.1-ga)
 
 Form Recognizer Layout API を試すには、Azure サブスクリプション ([無料で作成](https://azure.microsoft.com/free/cognitive-services)) と [Form Recognizer リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) エンドポイントおよびキーが必要です。
 
@@ -48,19 +48,7 @@ Form Recognizer Layout API を試すには、Azure サブスクリプション (
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
-
-### <a name="natural-reading-order-output-latin-only"></a>自然な読み取り順序の出力 (ラテンのみ)
-
-`readingOrder` クエリ パラメーターを使用し、テキスト行の出力順序を指定できます。 次の例に示すように、`natural` を使用して、よりわかりやすい読み取り順序の出力を行います。 この機能は、ラテン語系の言語でのみサポートされています。
-
-:::image type="content" source="./media/layout-reading-order-example.png" alt-text="レイアウトの読み取り順序の例" lightbox="../Computer-vision/Images/ocr-reading-order-example.png":::
-
-### <a name="select-page-numbers-or-ranges-for-text-extraction"></a>テキスト抽出のページ番号または範囲の選択
-
-ページが複数にわたる大きなドキュメントの場合、`pages` クエリ パラメーターを使用し、テキスト抽出対象として特定のページ番号またはページ範囲を示します。 次の例は、10 ページを含むドキュメントを示しています。ここには、すべてのページ (1 から 10) と選択したページ (3 から 6) の両方に対して抽出されたテキストがあります。
-
-:::image type="content" source="./media/layout-select-pages.png" alt-text="レイアウトが選択されたページの出力":::
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/layout/analyzeResults/{resultId}' |
 
 ## <a name="the-get-analyze-layout-result-operation"></a>レイアウト分析結果取得操作
 
@@ -74,13 +62,7 @@ Form Recognizer Layout API を試すには、Azure サブスクリプション (
 
 **status** フィールドの値が `succeeded` である場合、JSON の応答には、抽出されたレイアウト、テキスト、テーブル、選択マークが含まれます。 抽出されるデータには、抽出されたテキスト行と単語、境界ボックス、手書きの指示があるテキスト外観、テーブル、選択マークと選択または非選択の指示が含まれます。
 
-### <a name="handwritten-classification-for-text-lines-latin-only"></a>テキスト行の手書き分類 (ラテンのみ)
-
-応答では、各テキスト行が手書きスタイルであるかどうかと、信頼度スコアが分類されます。 この機能は、ラテン語系の言語でのみサポートされています。 次の例は、画像内のテキストの手書き分類を示しています。
-
-:::image type="content" source="./media/layout-handwriting-classification.png" alt-text="手書きの分類の例":::
-
-### <a name="sample-json-output"></a>サンプル JSON 出力
+## <a name="sample-json-output"></a>サンプル JSON 出力
 
 "*レイアウト分析結果取得*" 操作への応答は、抽出されたすべての情報が含まれるドキュメントの構造化表現になります。
 [サンプルのドキュメント ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-layout.pdf)と、その構造化された出力である[サンプルのレイアウト出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-layout-output.json)を参照してください。
@@ -90,25 +72,47 @@ JSON 出力には次の 2 つの部分があります。
 * `readResults` ノードには、認識されたすべてのテキストと選択マークが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。
 * `pageResults` ノードには、境界ボックスで抽出されたテーブルとセル、信頼度、および "readResults" 内の行と単語への参照が格納されます。
 
-## <a name="example-output"></a>出力例
+## <a name="features"></a>特徴
 
-### <a name="text"></a>テキスト
-
-Layout API により、ドキュメントと画像から、複数のテキストの角度や色でテキストが抽出されます。 この対象になるのは、ドキュメント、FAX、印刷および手書きのテキスト (英語のみ)、混合モードの写真です。 テキストは、行、単語、境界ボックス、信頼度スコア、スタイル (手書きなど) に関して提供される情報と共に抽出されます。 すべてのテキスト情報は、JSON 出力の `readResults` セクションに含まれています。
-
-### <a name="tables-with-headers"></a>ヘッダーが含まれるテーブル
+### <a name="tables-and-table-headers"></a>テーブルとテーブル ヘッダー
 
 Layout API では、JSON 出力の `pageResults` セクションにテーブルが抽出されます。 ドキュメントは、スキャンされたもの、写真、またはデジタル化されたもののいずれでもかまいません。 テーブルは、セルまたは列が結合されている複雑なものや、罫線があるもの、またはないもの、不規則な角度のものも含まれます。 抽出されるテーブル情報には、列と行の数、行の範囲、列の範囲が含まれます。 境界ボックスのある各セルは、ヘッダーの一部として認識されているかどうかにかかわらず、情報と共に出力されます。 モデル予測ヘッダー セルは、複数の行にまたがることがあるうえ、必ずしもテーブルの最初の行であるとは限りません。 これらは、回転されたテーブルに対しても機能します。 各テーブル セルには、`readResults` セクションの個々の単語への参照を含むフル テキストも含まれます。
 
-![テーブルの例](./media/layout-table-header-demo.gif)
+:::image type="content" source="./media/layout-table-headers-example.png" alt-text="レイアウトのテーブル ヘッダーの出力":::
 
 ### <a name="selection-marks"></a>選択マーク
 
 Layout API により、ドキュメントから選択マークも抽出されます。 抽出される選択マークには、境界ボックス、信頼度、状態 (選択または非選択) が含まれます。 選択マークの情報は、JSON 出力の `readResults` セクションに抽出されます。
 
+:::image type="content" source="./media/layout-selection-marks.png" alt-text="レイアウト選択マークの出力":::
+
+### <a name="text-lines-and-words"></a>テキスト行と単語
+
+Layout API により、ドキュメントと画像から、複数のテキストの角度や色でテキストが抽出されます。 この対象になるのは、ドキュメント、FAX、印刷および手書きのテキスト (英語のみ)、混合モードの写真です。 テキストは、行、単語、境界ボックス、信頼度スコア、スタイル (手書きなど) に関して提供される情報と共に抽出されます。 すべてのテキスト情報は、JSON 出力の `readResults` セクションに含まれています。
+
+:::image type="content" source="./media/layout-text-extraction.png" alt-text="レイアウトのテキスト抽出の出力":::
+
+### <a name="natural-reading-order-for-text-lines-latin-only"></a>テキスト行に自然言語の読み取り順序を使用 (ラテン語系のみ)
+
+`readingOrder` クエリ パラメーターを使用し、テキスト行の出力順序を指定できます。 次の例に示すように、`natural` を使用して、よりわかりやすい読み取り順序の出力を行います。 この機能は、ラテン語系の言語でのみサポートされています。
+
+:::image type="content" source="./media/layout-reading-order-example.png" alt-text="レイアウトの読み取り順序の例" lightbox="../Computer-vision/Images/ocr-reading-order-example.png":::
+
+### <a name="handwritten-classification-for-text-lines-latin-only"></a>テキスト行の手書き分類 (ラテンのみ)
+
+応答では、各テキスト行が手書きスタイルであるかどうかと、信頼度スコアが分類されます。 この機能は、ラテン語系の言語でのみサポートされています。 次の例は、画像内のテキストの手書き分類を示しています。
+
+:::image type="content" source="./media/layout-handwriting-classification.png" alt-text="手書きの分類の例":::
+
+### <a name="select-page-numbers-or-ranges-for-text-extraction"></a>テキスト抽出のページ番号または範囲の選択
+
+ページが複数にわたる大きなドキュメントの場合、`pages` クエリ パラメーターを使用し、テキスト抽出対象として特定のページ番号またはページ範囲を示します。 次の例は、10 ページを含むドキュメントを示しています。ここには、すべてのページ (1 から 10) と選択したページ (3 から 6) の両方に対して抽出されたテキストがあります。
+
+:::image type="content" source="./media/layout-select-pages-for-text.png" alt-text="レイアウトが選択されたページの出力":::
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Form Recognizer のサンプル UI ツール](https://fott-preview.azurewebsites.net/)を使用し、独自のレイアウト抽出を試してみてください
+* [Form Recognizer のサンプル UI ツール](https://aka.ms/fott-2.1-ga)を使用し、独自のレイアウト抽出を試してみてください
 * 選択した開発言語でのレイアウト抽出を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md#analyze-layout)を行います。
 
 ## <a name="see-also"></a>関連項目

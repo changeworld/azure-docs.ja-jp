@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: e3b7da30f54b9d9468b46a2cd0972a3397e5cdce
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 46348fe35f425811e2ff03208feeae6ab7a112bd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865109"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453582"
 ---
 # <a name="cancel-translation"></a>翻訳の取り消し
 
@@ -26,7 +26,7 @@ ms.locfileid: "107865109"
 `DELETE` 要求の送信先は次のとおりです。
 
 ```DELETE HTTP
-https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}
+https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}
 ```
 
 [カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について説明します。
@@ -42,7 +42,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 |Query parameter (クエリ パラメーター)|必須|説明|
 |-----|-----|-----|
-|id|はい|操作 ID。|
+|id|はい|操作の ID。|
 
 ## <a name="request-headers"></a>要求ヘッダー
 
@@ -70,7 +70,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 成功した応答では、次の情報が返されます。
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |id|string|操作の ID。|
 |createdDateTimeUtc|string|操作が作成された日時。|
@@ -87,14 +87,15 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|
 |ターゲット (target)|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合 "documents" または "document id" となります。|
-|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
+|innerError|InnerTranslationError|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
 |innerError.code|string|コード エラー文字列を取得します。|
-|inner.Eroor.message|string|高レベルのエラー メッセージを取得します。|
+|innerError.message|string|高レベルのエラー メッセージを取得します。|
+|innerError.target|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合 "documents" または "document ID" となります。|
 
 ## <a name="examples"></a>例
 

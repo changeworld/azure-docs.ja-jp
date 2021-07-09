@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 3392cc5f3ee9daef1ae8397f6829f4ca7a42373a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8dfe8711733efeb33561531c85925111799daba
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98871402"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479307"
 ---
 # <a name="limits-and-quotas"></a>制限とクォータ
 
@@ -23,13 +23,13 @@ Custom Vision Service にはキーの層が 2 つあります。 Azure portal �
 
 プロジェクトあたりトレーニング画像数とプロジェクトあたりタグ数は、S0 プロジェクトの場合、時間の経過と共に増えることが予想されます。
 
-|要素|**F0**|**S0**|
+|要素|**F0 (free)**|**S0 (standard)**|
 |-----|-----|-----|
 |プロジェクト|2|100|
 |プロジェクトあたりのトレーニング画像 |5,000|100,000|
 |予測/月|10,000 |無制限|
 |タグ/プロジェクト|50|500|
-|イテレーション |10|10|
+|イテレーション |20|20|
 |タグあたりの最小ラベル付き画像、分類 (50+ 推奨) |5|5|
 |タグあたりの最小ラベル付き画像、物体検出 (50+ 推奨)|15|15|
 |予測画像の保存期間|30 日|30 日|

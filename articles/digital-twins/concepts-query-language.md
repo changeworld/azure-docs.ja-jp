@@ -8,12 +8,12 @@ ms.date: 4/22/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e311a39a68a5fb03c68a1685996a8e0fbde206e8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8a5a092da37b453b719669109bd4924b032c0604
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734347"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616225"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
 
@@ -31,7 +31,7 @@ Azure Digital Twins クエリ言語を使用し、次に応じて、デジタル
 * relationships
   - リレーションシップのプロパティ
 
-クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) を使用します。 API を使用する方法の 1 つとして、Azure Digital Twins のいずれかの [SDK](concepts-apis-sdks.md#overview-data-plane-apis) を使用する方法があります。
+クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) を使用します。 API を使用する方法の 1 つとして、[Azure Digital Twins のいずれかの SDK](concepts-apis-sdks.md#overview-data-plane-apis) を使用する方法があります。
 
 [!INCLUDE [digital-twins-query-reference.md](../../includes/digital-twins-query-reference.md)]
 

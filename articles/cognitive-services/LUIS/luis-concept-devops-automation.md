@@ -1,16 +1,19 @@
 ---
-title: LUIS アプリの継続的ワークフロー
+title: LUIS アプリの継続的インテグレーションと継続的デリバリーのワークフロー
 description: Language Understanding (LUIS) 用に DevOps の CI/CD ワークフローを実装する方法。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/5/2020
-ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.author: aahi
+author: aahill
+ms.manager: nitinme
+ms.openlocfilehash: 550af8bda0768738dc2162a0dc0bf767d1c54741
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932530"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783032"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUIS DevOps の継続的インテグレーションと継続的デリバリーのワークフロー
 
@@ -34,6 +37,9 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 継続的インテグレーションと継続的デリバリーの目標は、"メインはいつでもリリース可能な状態である" ことの保証です。 LUIS アプリの場合、これは、必要であればメイン ブランチの LUIS アプリから任意のバージョンを取得して運用環境にリリースできるという意味です。
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>LUIS の自動化ワークフローを構築するためのツール
+
+> [!TIP]
+> DevOps を実装するための完全なソリューションは、[LUIS DevOps テンプレートのリポジトリ](#apply-devops-to-luis-app-development-using-github-actions)で確認できます。
 
 ビルド自動化ワークフローの作成に使用できる、さまざまなビルド自動化テクノロジがあります。 これらすべてのテクノロジで必要なのは、コマンド ライン インターフェイス (CLI) または REST 呼び出しを使用してステップをスクリプト化し、ビルド サーバーで実行できることです。
 
@@ -96,7 +102,26 @@ CI/CD ワークフローの CD ジョブは、ビルドと自動ユニット テ
 
 一般に、継続的デリバリーは、開発やステージングなど、運用以外の環境に対してのみ実行することを推奨します。 ほとんどのチームでは、運用環境へのデプロイに手動のレビューと承認プロセスが必要です。 運用環境へのデプロイの場合、必ず開発チームの主要担当者がサポートできるとき、またはトラフィックの少ない時間帯に実行することをお勧めします。
 
+
+## <a name="apply-devops-to-luis-app-development-using-github-actions"></a>GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する
+
+LUIS の DevOps およびソフトウェア エンジニアリングのベスト プラクティスを実装する完全なソリューションについては、[LUIS DevOps テンプレート リポジトリ](https://github.com/Azure-Samples/LUIS-DevOps-Template)にアクセスしてください。 このテンプレート リポジトリを使用すると、CI/CD ワークフローとプラクティスの組み込みサポートを備えた独自のリポジトリを作成できます。これにより、独自のプロジェクトで LUIS を使用した[ソース管理](luis-concept-devops-sourcecontrol.md)、自動ビルド、[テスト](luis-concept-devops-testing.md)、リリース管理が可能になります。
+
+[LUIS DevOps テンプレート リポジトリ](https://github.com/Azure-Samples/LUIS-DevOps-Template)では、次を行う方法を説明しています。
+
+* **テンプレート リポジトリの複製** - テンプレートを独自の GitHub リポジトリにコピーします。
+* **LUIS リソースの構成** - 継続的インテグレーション ワークフローによって使用される [LUIS 作成と予測リソースを Azure](./luis-how-to-azure-subscription.md) で作成します。
+* **CI/CD ワークフローの構成** - CI/CD ワークフローのパラメーターを構成し、[GitHub シークレット](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)に保存します。
+* **["開発者の内部ループ"](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow) の手順の確認** - 開発者は、開発ブランチで作業している間にサンプル LUIS アプリのアップデートを行い、アップデートをテストした後、変更を提案してレビューの承認を求めるための pull request を出します。
+* **CI/CD ワークフローの実行** - [継続的インテグレーション ワークフローを実行し、GitHub アクションを使用して LUIS アプリをビルドしてテスト](#build-automation-workflows-for-luis)します。
+* **自動テストの実行** - アプリの品質を評価するために、[LUIS アプリの自動バッチ テスト](luis-concept-devops-testing.md)を実行します。
+* **LUIS アプリの展開** - [継続的デリバリー (CD) ジョブ](#continuous-delivery-cd)を実行して、LUIS アプリを公開します。
+* **独自のプロジェクトでリポジトリを使用する** - 独自の LUIS アプリケーションでリポジトリを使用する方法について説明します。
+
 ## <a name="next-steps"></a>次のステップ
 
-* [GitHub で DevOps for LUIS を実装する](luis-how-to-devops-with-github.md)方法を学ぶ
 * [NLU.DevOps を使用した GitHub Actions ワークフロー](https://github.com/Azure-Samples/LUIS-DevOps-Template/blob/master/docs/4-pipeline.md)を記述する方法を学ぶ
+
+* 独自のプロジェクトに DevOps を適用するには、[LUIS DevOps テンプレート リポジトリ](https://github.com/Azure-Samples/LUIS-DevOps-Template)を使用します。
+* [LUIS のソース管理およびブランチ戦略](luis-concept-devops-sourcecontrol.md)
+* [LUIS DevOps のテスト](luis-concept-devops-testing.md)

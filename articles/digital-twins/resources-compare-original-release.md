@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/28/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e45f6078bd2cd078202cbe30462614961cfa7404
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e03552bc3be1a4d124a46c437b60ac2d4e466940
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203651"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476773"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-original-version-2018"></a>新しい Azure Digital Twins と以前のバージョン (2018) との違い 元のバージョン (2018) とどのように違うか
 
@@ -40,8 +40,8 @@ Azure Digital Twins の最初のパブリック プレビューは、2018 年 10
 
 Azure Digital Twins の制限の一覧については、「[Aure Digital Twins サービスの制限](reference-service-limits.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* クイックスタートで現在のリリースの使用について詳しく確認します。[クイック スタート:サンプル シナリオを精査する](quickstart-azure-digital-twins-explorer.md)"。
+* クイック スタート「[クイック スタート: Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)」で、現在のリリースの使用方法について学習します。
 
 * または、最初に主要な概念について[概念: カスタム モデル](concepts-models.md)に関するページを参照してください。

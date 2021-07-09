@@ -2,17 +2,17 @@
 title: Azure Time Series Insights と統合する
 titleSuffix: Azure Digital Twins
 description: Azure Digital Twins から Azure Time Series Insights へのイベント ルートを設定する方法について説明します。
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8f87b373d640a330006b6b3675376ce46c1c02ae
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b4dad7e5de44701b946c3d7b9412d5d3095c5736
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078762"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615800"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -50,7 +50,7 @@ Time Series Insights との関係を設定する前に、次のリソースを�
 イベント ハブを作成する前に、まず、Azure Digital Twins インスタンスからイベントを受信するイベント ハブ名前空間を作成します。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[クイック スタート:Azure portal を使用したイベント ハブの作成](../event-hubs/event-hubs-create.md)」。 イベント ハブがサポートされているリージョンを確認するには、"[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs)" に関するページを参照してください。
 
 ```azurecli-interactive
-az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> --location <region>
+az eventhubs namespace create --name <name-for-your-Event-Hubs-namespace> --resource-group <your-resource-group> --location <region>
 ```
 
 > [!TIP]
@@ -77,7 +77,7 @@ Twins ハブを設定するには、このセクションの次の手順を実�
 次の CLI コマンドを使用して **Twins ハブ** を作成します。 Twins ハブの名前を指定します。
 
 ```azurecli-interactive
-az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-above>
+az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-above>
 ```
 
 ### <a name="create-twins-hub-authorization-rule"></a>Twins ハブの承認規則を作成する
@@ -85,7 +85,7 @@ az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <
 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az_eventhubs_eventhub_authorization_rule_create)を作成します。 規則の名前を指定します。
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-twins-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above>
+az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-twins-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above>
 ```
 
 ### <a name="create-twins-hub-endpoint"></a>Twins ハブのエンドポイントを作成する
@@ -93,7 +93,7 @@ az eventhubs eventhub authorization-rule create --rights Listen Send --name <nam
 イベント ハブを Azure Digital Twins インスタンスにリンクする Azure Digital Twins [エンドポイント](concepts-route-events.md#create-an-endpoint)を作成します。 Twins ハブのエンドポイントの名前を指定します。
 
 ```azurecli-interactive
-az dt endpoint create eventhub --dt-name <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-event-hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
+az dt endpoint create eventhub --dt-name <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-Event-Hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
 ```
 
 ### <a name="create-twins-hub-event-route"></a>Twins ハブのイベント ルートを作成する
@@ -111,7 +111,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint
 Twins ハブに対して上で作成した承認規則を使用して、[Twins イベント ハブの接続文字列](../event-hubs/event-hubs-get-connection-string.md)を取得します。
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above> --name <your-twins-hub-auth-rule-from-earlier>
+az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above> --name <your-twins-hub-auth-rule-from-earlier>
 ```
 この記事の後半で Twins ハブ アプリの設定を構成するために、結果から **primaryConnectionString** 値をメモしておきます。
 
@@ -129,7 +129,7 @@ Time Series ハブを設定するには、こちらの手順を実行します�
 次のコマンドを使用して、**Time Series ハブ** を作成します。 Time Series ハブの名前を指定します。
 
 ```azurecli-interactive
- az eventhubs eventhub create --name <name-for-your-time-series-hub> --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier>
+ az eventhubs eventhub create --name <name-for-your-time-series-hub> --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier>
 ```
 
 ### <a name="create-time-series-hub-authorization-rule"></a>Time Series ハブの承認規則を作成する
@@ -137,7 +137,7 @@ Time Series ハブを設定するには、こちらの手順を実行します�
 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az_eventhubs_eventhub_authorization_rule_create)を作成します。 Time Series ハブの承認規則の名前を指定します。
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-time-series-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-above>
+az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-time-series-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-above>
 ```
 
 ### <a name="get-time-series-hub-connection-string"></a>Time Series ハブの接続文字列を取得する
@@ -145,7 +145,7 @@ az eventhubs eventhub authorization-rule create --rights Listen Send --name <nam
 Time Series ハブに対して上で作成した承認規則を使用して、[Time Series ハブの接続文字列](../event-hubs/event-hubs-get-connection-string.md)を取得します。
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-earlier> --name <your-time-series-hub-auth-rule-from-earlier>
+az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-earlier> --name <your-time-series-hub-auth-rule-from-earlier>
 ```
 この記事の後半で Time Series ハブ アプリの設定を構成するために、結果から **primaryConnectionString** 値をメモしておきます。
 
@@ -200,13 +200,13 @@ Time Series Insights へのデバイス テレメトリ イベントを更新す
 前に保存した Twins ハブの **primaryConnectionString** 値を使用して、Twins ハブの接続文字列が含まれたアプリ設定を関数アプリに作成します。
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-function-app-name>
 ```
 
 前に保存した Time Series ハブの **primaryConnectionString** 値を使用して、Time Series ハブの接続文字列が含まれたアプリ設定を関数アプリに作成します。
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-function-app-name>
 ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Azure Time Series Insights インスタンスを作成して接続する
@@ -226,9 +226,9 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
 
     このページの他のプロパティは、既定値のまま使用できます。 **[Next : Event Source >]\(次へ: イベント ソース >\)** ボタンを選択します。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="Time Series Insights 環境を作成する Azure portal のスクリーンショット。サブスクリプション、リソース グループ、場所をそれぞれのドロップダウンから選択し、環境の名前を選択します。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="Time Series Insights 環境を作成する方法を示す Azure portal のスクリーンショット (パート 1/3)。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
         
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="Time Series Insights 環境を作成する Azure portal のスクリーンショット。Gen2(L1) 価格レベルが選択されており、Time Series ID プロパティの名前は $dtId です。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="Time Series Insights 環境を作成する方法を示す Azure portal のスクリーンショット (パート 2/3)。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
 
 2. *[イベント ソース]* タブで、次のフィールドを選択します。
 
@@ -244,16 +244,16 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
     
     **[確認と作成]** ボタンを選択して、すべての詳細を確認します。 次に、 **[確認と作成]** ボタンをもう一度選択して、Time Series 環境を作成します。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png" alt-text="Time Series Insights 環境を作成する Azure portal のスクリーンショット。上記のイベント ハブ情報を使用してイベント ソースを作成しています。また、新しいコンシューマー グループも作成しています。" lightbox="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png" alt-text="Time Series Insights 環境を作成する方法を示す Azure portal のスクリーンショット (パート 3/3)。" lightbox="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png":::
 
 ## <a name="send-iot-data-to-azure-digital-twins"></a>IoT データを Azure Digital Twins に送信する
 
 Time Series Insights へのデータの送信を開始するには、変化するデータ値を使用した Azure Digital Twins のデジタル ツイン プロパティの更新を開始する必要があります。
 
-次の CLI コマンドを使用して、「前提条件」セクションでインスタンスに追加した [Thermostat67](#prerequisites) ツインの *Temperature* プロパティを更新します。
+次の CLI コマンドを使用して、[「前提条件」セクション](#prerequisites)でインスタンスに追加した thermostat67 ツインの *Temperature* プロパティを更新します。
 
 ```azurecli-interactive
-az dt twin update --dt-name <your-azure-digital-twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
+az dt twin update --dt-name <your-Azure-Digital-Twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
 ```
 
 **異なる Temperature 値を使用して少なくともさらに 4 回コマンドを繰り返し**、後で Time Series Insights 環境で観察できるいくつかのデータ ポイントを作成します。
@@ -268,19 +268,19 @@ az dt twin update --dt-name <your-azure-digital-twins-instance-name> --twin-id t
 
 1. [Azure portal](https://portal.azure.com) で、前に作成した Time Series 環境名を検索します。 左側のメニュー オプションから *[概要]* を選択して、*Time Series Insights Explorer URL* を表示します。 URL を選択すると、Time Series Insights 環境に反映された気温の変化が表示されます。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights 環境の [概要] タブで Time Series Insights Explorer の URL を選択する Azure portal のスクリーンショット。" lightbox="media/how-to-integrate-time-series-insights/view-environment.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights 環境の [概要] タブで Time Series Insights Explorer の URL が表示されている Azure portal のスクリーンショット。" lightbox="media/how-to-integrate-time-series-insights/view-environment.png":::
 
 2. エクスプローラーで、左側に Azure Digital Twins インスタンス内のツインが表示されます。 thermostat67 ツインを選択し、*Temperature* プロパティを選択して、 **[追加]** を選択します。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="thermostat67 を選択し、Temperature プロパティを選択して、[追加] を選択する、Time Series Insights エクスプローラーのスクリーンショット。" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="thermostat67 を選択し、Temperature プロパティを選択し、[追加] を選択する手順が強調表示された、Time Series Insights エクスプローラーのスクリーンショット。" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
 
 3. これで、下に示すように、サーモスタットからの初期温度読み取りが表示されます。 
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="初期温度データを表示する TSI エクスプローラーのスクリーンショット。68 から 85 までのランダムな値です。" lightbox="media/how-to-integrate-time-series-insights/initial-data.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="初期温度データがある Time Series Insights エクスプローラーのスクリーンショット。68 から 85 までのランダムな値が表示されています。" lightbox="media/how-to-integrate-time-series-insights/initial-data.png":::
 
 シミュレーションをさらに長時間実行させておくと、表示は次のようになります。
 
-:::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="各ツインの温度データが異なる色の 3 本の平行線でグラフ化されている TSI エクスプローラーのスクリーンショット。" lightbox="media/how-to-integrate-time-series-insights/day-data.png":::
+:::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="各ツインの温度データが異なる色の 3 本の平行線でグラフ化されている Time Series Insights エクスプローラーのスクリーンショット。" lightbox="media/how-to-integrate-time-series-insights/day-data.png":::
 
 ## <a name="next-steps"></a>次のステップ
 

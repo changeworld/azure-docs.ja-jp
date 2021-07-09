@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 47299467c51d128a228e4120eb8e0d0ff4deebc4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0a9b92eb4d49274c23d89674e6f97f906dc28b43
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456464"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616140"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Private Link を使用してプライベート アクセスを有効にする (プレビュー):Azure CLI
 
@@ -28,7 +28,7 @@ ms.locfileid: "110456464"
 
 ## <a name="prerequisites"></a>前提条件
 
-プライベート エンドポイントをセットアップする前に、エンドポイントをデプロイできる [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)  が必要です。 VNet がまだない場合は、Azure Virtual Network のいずれかの[クイックスタート](../virtual-network/quick-create-portal.md)に従って、これを設定できます。
+プライベート エンドポイントをセットアップする前に、エンドポイントをデプロイできる [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)  が必要です。 VNet がまだない場合は、[Azure Virtual Network のいずれかのクイックスタート](../virtual-network/quick-create-portal.md)に従って、これを設定できます。
 
 ## <a name="manage-private-endpoints-for-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンス用のプライベート エンドポイントを管理する 
 

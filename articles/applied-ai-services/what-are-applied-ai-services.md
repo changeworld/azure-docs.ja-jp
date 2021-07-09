@@ -2,7 +2,7 @@
 title: Azure Applied AI Services とは
 titleSuffix: Azure Applied AI Services
 description: Applied AI Services の説明。
-keywords: applied ai services, artifical intelligence, applied ai, ai services, cognitive search, applied ai features
+keywords: AI サービスの適用、人工知能、適用された AI、AI サービス、コグニティブ検索、適用された AI 機能
 author: jeffme
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 05/04/2021
 ms.author: jeffme
-ms.openlocfilehash: 10c6dc0643a8b2e84985697212912bc5854c0613
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b4c22f8b6825b2955ba7c50e2ef1ff5f3ee00464
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387688"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958183"
 ---
 # <a name="what-are-azure-applied-ai-services"></a>Azure Applied AI Services とは
 
@@ -51,17 +51,17 @@ AI で読書理解を深め、読書力を高めます。 Azure Immersive Reader
 
 あらかじめ用意されている会話部品を利用して、すぐにビジネスに生かせる、カスタマイズ可能で洗練された会話サービスを素早く作成します。  Azure Bot Service Composer は、開発者や分野横断的なチームがボット開発を行うための、オープンソースのグラフィカルな作成キャンバスです。 Composer には LUIS や QnA Maker などの言語理解サービスが組み込まれており、言語生成技術を利用して洗練されたボット応答を作成できます。 Azure Bot Service は、Azure Cognitive Services の Speech/Telephony、LUIS、QnA Maker を利用して開発されています。
 
-[Azure Bot Service について詳しく知る](https://docs.microsoft.com/composer/)
+[Azure Bot Service について詳しく知る](/composer/)
 
 ## <a name="azure-video-analyzer"></a>Azure Video Analyzer 
 
 動画や AI の専門家でなくても、ビデオ インテリジェンスによって、自動化された業務用アプリを作成できます。  Azure Video Analyzer は、AI を利用した動画ソリューションおよびアプリケーションを作るためのサービスです。 ソースに近い位置でデータを処理し、好みの AI を使用して、ビデオ ストリームからリアルタイムでビジネス インサイトを生成できます。 エッジまたはクラウドで興味のある動画を記録し、それを他のデータと組み合わせて、ビジネスの意思決定に利用します。  Azure Video Analyzer は、Azure Cognitive Services の Spatial Analysis を利用して開発されています。  Azure Video Analyzer for Media は、Azure Cognitive Services の Face、Speech, Translation, Text Analytics、Custom Vision、Textual Content Moderation を利用して開発されています。  
 
-[Azure Video Analytics について詳しく知る](https://aka.ms/video-analyzer-hub)
+[Azure Video Analytics について詳しく知る](../azure-video-analyzer/index.yml)
 
 ## <a name="certifications-and-compliance"></a>認定資格とコンプライアンス
 
-Applied AI Services は CSA STAR Certification、FedRAMP Moderate、HIPAA BAA などの認定を受けています。 自分で監査したり、セキュリティを確認する目的で認定資格を[ダウンロード](https://aka.ms/applied-ai-download-certifications "download")できます。
+Applied AI Services は CSA STAR Certification、FedRAMP Moderate、HIPAA BAA などの認定を受けています。 自分で監査したり、セキュリティを確認する目的で認定資格を[ダウンロード](/samples/browse/?redirectedfrom=TechNet-Gallery "download")できます。
 
 プライバシーやデータ管理は[セキュリティ センター](https://servicetrust.microsoft.com/ "トラスト センター")で確認できます。
 
@@ -70,5 +70,5 @@ Applied AI Services は CSA STAR Certification、FedRAMP Moderate、HIPAA BAA �
 Applied AI Services では、インテリジェント アプリケーション作成のサポートについて、複数のオプションを提供しています。 Applied AI Services には、独自の質問にも対応してもらえる、開発者の頼れるコミュニティがあります。 利用できるすべてのオプションについては、次をご覧ください。
 
 - [UserVoice にフィードバックを送信する](https://aka.ms/AppliedAIUserVoice)
-- [Microsoft Q&A で質問をする](https://aka.ms/AppliedAIMSFTQandA)
+- [Microsoft Q&A で質問をする](/answers/topics/azure-applied-ai-services.html)
 - [StackOverflow でトラブルシューティングをする](https://aka.ms/AppliedAIStackOverflow)

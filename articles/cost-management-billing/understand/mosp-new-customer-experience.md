@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 05/20/2021
 ms.author: banders
-ms.openlocfilehash: 4f7179a5ad35b4d3ca9a92119fb7b492e2aff779
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b4a4bd73672b36e8301d33618701a5d6b43926a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122528"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474875"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>更新された Azure 課金アカウントの使用を開始する
 
@@ -115,7 +115,7 @@ ms.locfileid: "106122528"
 
 **移行後の最初の月の請求書**
 
-自分のアカウントが更新されると、その日に、既にある未請求料金が確定し、通常の請求書受領日にそれらの料金の請求書が届きます。 たとえば、請求期間がその月の 5 日から翌月の 4 日までの Azure sub 01 と、請求期間がその月の 10 日から翌月の 9 日までの Azure sub 02 という 2 つの Azure サブスクリプションを John が所有しているとします。 John は通常、その月の 5 日に、両方の Azure サブスクリプションの請求書を受領します。 ここでもし John のアカウントが 4 月 4 日に更新された場合、3 月 5 日から 4 月 4 日までの Azure sub 01 の料金と、3 月 10 日から 4 月 4 日までの Azure sub 02 の料金が確定します。 John は 2 つの請求書 (サブスクリプションごとに 1 つ) を 4 月 5 日に受領することになります。 アカウントの更新後、John の請求期間はカレンダー月が基準となり、カレンダー月の初日からそのカレンダー月の末日までに発生したすべての料金が対象となります。  前カレンダー月の料金の請求書は、各月の 9 日に入手可能となります。 そのため上の例で言えば、John が次回、請求書を受領するのは 5 月 5 日で、その請求期間は 4 月 5 日から 4 月 30 日となります。 
+自分のアカウントが更新されると、その日に、既にある未請求料金が確定し、通常の請求書受領日にそれらの料金の請求書が届きます。 たとえば、請求期間がその月の 5 日から翌月の 4 日までの Azure sub 01 と、請求期間がその月の 10 日から翌月の 9 日までの Azure sub 02 という 2 つの Azure サブスクリプションを John が所有しているとします。 John は通常、その月の 5 日に、両方の Azure サブスクリプションの請求書を受領します。 ここでもし John のアカウントが 4 月 4 日に更新された場合、3 月 5 日から 4 月 4 日までの Azure sub 01 の料金と、3 月 10 日から 4 月 4 日までの Azure sub 02 の料金が確定します。 John は 2 つの請求書 (サブスクリプションごとに 1 つ) を 4 月 5 日に受領することになります。 アカウントの更新後、John の請求期間はカレンダー月が基準となり、カレンダー月の初日からそのカレンダー月の末日までに発生したすべての料金が対象となります。 前カレンダー月の料金の請求書は、各月の最初の数日の間に入手可能となります。 そのため上の例で言えば、John が次回、請求書を受領するのは 5 月の初めで、その請求期間は 4 月 5 日から 4 月 30 日までとなります。
 
 
 **新しい Billing API シリーズと Cost Management API シリーズ**

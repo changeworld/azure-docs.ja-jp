@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: 59d2d561945ed55f3140099117c2f8dc9d8cc766
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a91053f9a21aebf1a99c35a3a982fd3ad5514d04
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084558"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475657"
 ---
 # <a name="authentication-failed"></a>認証に失敗しました
 
@@ -21,19 +21,11 @@ ms.locfileid: "110084558"
 
 Azure Digital Twins Explorer アプリケーションを設定して実行したとき、アプリで認証を行おうとすると次のエラー メッセージが表示されます。
 
-:::image type="content" source="media/troubleshoot-error-azure-digital-twins-explorer-authentication/authentication-error.png" alt-text="Azure Digital Twins Explorer のエラー メッセージのスクリーンショット: Authentication failed. If you are running the app locally, please make sure that you are logged in to Azure on your host machine, or example by running 'az login' in a command prompt, by signing into Visual Studio or VS Code or by setting environment variables. If you need more information, please see the readme, or look up DefaultAzureCredential in the Azure.Identity documentation. If you are running adt-explorer hosted in the cloud, please make sure that your hosting Azure Function has a system-assigned managed identity set up. See the readme for more information. \(認証に失敗しました。アプリをローカルで実行している場合は、コマンド プロンプトで &quot;az login&quot; を実行するか、Visual Studio または VS Code にサインインするか、環境変数を設定するかして、ホスト コンピューターで Azure にログインしていることをご確認ください。詳細情報が必要な場合は、readme を参照するか、Azure.Identity のドキュメントで DefaultAzureCredential を参照してください。クラウドでホストされている adt-explorer を実行している場合は、ホストしている Azure 関数に、システム割り当てのマネージド ID が設定されていることをご確認ください。詳細については、readme を参照してください。\)":::
+:::image type="content" source="media/troubleshoot-error-azure-digital-twins-explorer-authentication/authentication-error.png" alt-text="Azure Digital Twins Explorer の認証失敗エラー メッセージのスクリーンショット。":::
 
 ## <a name="causes"></a>原因
 
 ### <a name="cause-1"></a>原因 #1
-
-Azure Digital Twins Explorer アプリケーションで使用されている [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) (`Azure.Identity` ライブラリの一部) により、ローカル環境内で資格情報が検索されます。
-
-エラー テキストで示されているように、このエラーは、`DefaultAzureCredential` によって取得されるローカル資格情報を提供していない場合に、発生するおそれがあります。
-
-Azure Digital Twins Explorer でローカル資格情報を使用する方法の詳細については、Azure Digital Twins の "サンプル シナリオの検討のクイックスタート" に関する記事の「*[ローカル Azure 資格情報を設定する](./quickstart-azure-digital-twins-explorer.md#set-up-local-azure-credentials)*」セクションを参照してください。
-
-### <a name="cause-2"></a>原因 #2
 
 このエラーは、Azure Digital Twins インスタンスで必要な Azure のロールベースのアクセス制御 (Azure RBAC) のアクセス許可が Azure アカウントに設定されていない場合にも、発生するおそれがあります。 インスタンス内のデータにアクセスするには、読み取りまたは管理を行おうとしているインスタンスで、それぞれ、**Azure Digital Twins データ リーダー** または **Azure Digital Twins データ所有者** のロールが必要です。 
 
@@ -42,18 +34,6 @@ Azure Digital Twins のセキュリティとロールの詳細については、
 ## <a name="solutions"></a>ソリューション
 
 ### <a name="solution-1"></a>解決策 #1
-
-最初に、必要な資格情報をアプリケーションに提供していることを確認します。
-
-#### <a name="provide-local-credentials"></a>ローカルの資格情報を提供する
-
-`DefaultAzureCredential` により、ローカルの Azure サインインからの情報を使用して、サービスに対する認証が行われます。 Azure の資格情報を提供するには、ローカル [Azure CLI](/cli/azure/install-azure-cli) ウィンドウで、または Visual Studio か Visual Studio Code で、Azure アカウントにサインインします。
-
-`DefaultAzureCredential` によって受け付けられる資格情報の種類と、試行される順序を確認するには、[DefaultAzureCredential に関する Azure ID のドキュメント](/dotnet/api/overview/azure/identity-readme#defaultazurecredential)を参照してください。
-
-ローカル環境で適切な Azure アカウントに既にサインインしているのに問題が解決されない場合は、次の解決策に進んでください。
-
-### <a name="solution-2"></a>解決策 #2
 
 データを読み取るだけの場合は、Azure Digital Twins インスタンスに対する **Azure Digital Twins データ リーダー** ロールが、またデータを管理しようとしている場合は、インスタンスに対する **Azure Digital Twins データ所有者** ロールが、Azure ユーザーにあることを確認します。
 

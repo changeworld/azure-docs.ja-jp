@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 70ece71d1f342ac355878afd592964525ac962fe
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: b93ab0d76bd1e40368803f47df7a2eddc27b2d2d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016637"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112790"
 ---
 # <a name="call-flow-basics"></a>通話フローの基礎
 

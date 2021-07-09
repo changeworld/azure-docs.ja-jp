@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5224804b1e0d306bfca8e9e42511ad908a3bb5c1
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: db58b523f1280847815587a5037c2348335482b6
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787745"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616174"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
-Azure Digital Twins では、セキュリティのために、デプロイ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 この処理には、**Azure ロールベースのアクセス制御 (Azure RBAC)** と呼ばれるきめ細かいロールおよびアクセス許可の管理戦略が使用されています。 Azure RBAC の一般的な原則については、[こちら](../role-based-access-control/overview.md)を参照してください。
+Azure Digital Twins では、セキュリティのために、デプロイ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 この処理には、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と呼ばれるきめ細かいロールおよびアクセス許可の管理戦略が使用されています。
 
 Azure Digital Twins では、保存データの暗号化もサポートされています。
 
@@ -102,7 +102,7 @@ Azure Digital Twins のシステムマネージド ID を有効にし、それ�
 
 プライベート エンドポイントでは、Azure VNet アドレス空間の IP アドレスが使用されます。 プライベート ネットワーク上のクライアントと Azure Digital Twins インスタンス間のネットワーク トラフィックは、VNet と Microsoft バックボーン ネットワーク上のプライベート リンクを経由します。これにより、パブリック インターネットに露出されることがなくなります。 このシステムを視覚化すると、次のようになります。
 
-:::image type="content" source="media/concepts-security/private-link.png" alt-text="PowerGrid 社のネットワークを示している図。インターネット/パブリック クラウドへのアクセスがない保護された VNET であり、Private Link 経由で CityOfTwins と呼ばれる Azure Digital Twins インスタンスに接続している。":::
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="ネットワークを示している図。パブリック クラウドへのアクセスがない保護された VNET であり、Private Link 経由で Azure Digital Twins インスタンスに接続している。":::
 
 Azure Digital Twins インスタンス用のプライベート エンドポイントを構成することで、Azure Digital Twins インスタンスをセキュリティで保護してパブリックに露出されないようにするだけでなく、VNet からのデータの流出を回避できます。
 

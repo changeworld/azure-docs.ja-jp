@@ -1,5 +1,5 @@
 ---
-title: Azure Purview に Teradata ソースを登録してスキャン (プレビュー) を設定する
+title: Azure Purview に Teradata ソースを登録してスキャンを設定する
 description: この記事では、Azure Purview に Teradata ソースを登録し、スキャンを設定する方法について、概要を説明します。
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ce5f1e9a7ab493bf7989a55fccb5ef696433d771
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048104"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066972"
 ---
-# <a name="register-and-scan-teradata-source-preview"></a>Teradata ソースを登録し、スキャンする (プレビュー)
+# <a name="register-and-scan-teradata-source"></a>Teradata ソースを登録してスキャンする
 
 この記事では、Purview に Teradata ソースを登録し、スキャンを設定する方法について、概要を説明します。
 

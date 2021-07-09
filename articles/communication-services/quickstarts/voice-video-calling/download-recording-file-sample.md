@@ -6,15 +6,15 @@ author: joseys
 manager: anvalent
 services: azure-communication-services
 ms.author: joseys
-ms.date: 04/14/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 486dbc4e3bafe34fad9f6eeb00460ee6b9bf5613
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e7a114c5ce31ff4df96648ba2545c2222ba4893d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292812"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111611"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>Event Grid を使用した通話の記録とダウンロード
 
@@ -34,7 +34,7 @@ Azure Event Grid を使用して Azure Communication Services の通話を記録
 
 独自のカスタム Webhook を作成することで、これらのイベント通知を受け取ることができます。 この Webhook をイベント サービスに正常にサブスクライブするには、Webhook が検証コードを使用して受信メッセージに応答することが重要です。
 
-```
+```csharp
 [HttpPost]
 public async Task<ActionResult> PostAsync([FromBody] object request)
   {
@@ -63,7 +63,6 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
   }
 ```
 
-
 上記のコードは、`Microsoft.Azure.EventGrid` NuGet パッケージに依存しています。 Event Grid エンドポイントの検証の詳細については、[エンドポイントの検証に関するドキュメント](../../../event-grid/receive-events.md#endpoint-validation)を参照してください
 
 次に、この Webhook を `recording` イベントにサブスクライブします。
@@ -81,7 +80,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 ## <a name="notification-schema"></a>通知スキーマ
 記録をダウンロードできるようになると、次のイベント スキーマを使用して Communication Services リソースから通知が送信されます。 記録のドキュメント ID は、各 `recordingChunk` の `documentId` フィールドからフェッチできます。
 
-```
+```json
 {
     "id": string, // Unique guid for event
     "topic": string, // Azure Communication Services resource id
@@ -130,7 +129,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 
 `HttpClient` を作成し、次に示す `HmacAuthenticationUtils` を使用して必要なヘッダーを追加します。
 
-```
+```csharp
   var client = new HttpClient();
 
   // Set Http Method
@@ -156,7 +155,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
   // Hash the content of the request.
   var contentHashed = HmacAuthenticationUtils.CreateContentHash(serializedPayload);
 
-  // Add HAMC headers.
+  // Add HMAC headers.
   HmacAuthenticationUtils.AddHmacHeaders(request, contentHashed, accessKey, method);
 
   // Make a request to the Azure Communication Services APIs mentioned above
@@ -168,7 +167,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 
 **コンテンツ ハッシュを作成する**
 
-```
+```csharp
 public static string CreateContentHash(string content)
 {
     var alg = SHA256.Create();
@@ -191,7 +190,7 @@ public static string CreateContentHash(string content)
 
 **HMAC ヘッダーを追加する**
 
-```
+```csharp
 public static void AddHmacHeaders(HttpRequestMessage requestMessage, string contentHash, string accessKey)
 {
     var utcNowString = DateTimeOffset.UtcNow.ToString("r", CultureInfo.InvariantCulture);

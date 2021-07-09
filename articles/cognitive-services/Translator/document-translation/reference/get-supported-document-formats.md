@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: e47f3363a9e09a3e371c751e0bdd1143cfc72314
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 06fc48f8e90a0851613b2fe44410557c89862ac5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864903"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453513"
 ---
 # <a name="get-supported-document-formats"></a>サポートされるドキュメントの形式の取得
 
@@ -25,7 +25,7 @@ ms.locfileid: "107864903"
 
 `GET` 要求の送信先は次のとおりです。
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/documents/formats
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/documents/formats
 ```
 
 [カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について説明します。
@@ -59,23 +59,25 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 成功した応答では、次の情報が返されます。
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |value|FileFormat []|FileFormat [] には、下に示す詳細が含まれます。|
-|value.format|string[]|この形式がサポートされているコンテンツの種類。|
+|value.contentTypes|string[]|この形式がサポートされているコンテンツの種類。|
+|value.defaultVersion|string|何も指定されていない場合は既定のバージョンです。|
 |value.fileExtensions|string[]|この形式がサポートされているファイル拡張子。|
-|value.contentTypes|string[]|形式の名前。|
-|value.versions|String[]|サポートされているバージョン。|
+|value.format|string|形式の名前。|
+|value.versions|string [] | サポートされているバージョン。|
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|Type|説明|
+|名前|型|説明|
 |--- |--- |--- |
  |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|
-|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
+|innerError|InnerTranslationError|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
 |innerError.code|string|コード エラー文字列を取得します。|
 |innerError.message|string|高レベルのエラー メッセージを取得します。|
+|innerError.target|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合は "documents" または "document id" になります。|
 
 ## <a name="examples"></a>例
 
@@ -86,78 +88,184 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ```JSON
 {
-  "value": [
-    {
-      "format": "PlainText",
-      "fileExtensions": [
-        ".txt"
-      ],
-      "contentTypes": [
-        "text/plain"
-      ],
-      "versions": []
-    },
-    {
-      "format": "PortableDocumentFormat",
-      "fileExtensions": [
-        ".pdf"
-      ],
-      "contentTypes": [
-        "application/pdf"
-      ],
-      "versions": []
-    },
-    {
-      "format": "OpenXmlPresentation",
-      "fileExtensions": [
-        ".pptx"
-      ],
-      "contentTypes": [
-        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-      ],
-      "versions": []
-    },
-    {
-      "format": "OpenXmlSpreadsheet",
-      "fileExtensions": [
-        ".xlsx"
-      ],
-      "contentTypes": [
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      ],
-      "versions": []
-    },
-    {
-      "format": "OutlookMailMessage",
-      "fileExtensions": [
-        ".msg"
-      ],
-      "contentTypes": [
-        "application/vnd.ms-outlook"
-      ],
-      "versions": []
-    },
-    {
-      "format": "HtmlFile",
-      "fileExtensions": [
-        ".html"
-      ],
-      "contentTypes": [
-        "text/html"
-      ],
-      "versions": []
-    },
-    {
-      "format": "OpenXmlWord",
-      "fileExtensions": [
-        ".docx"
-      ],
-      "contentTypes": [
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-      ],
-      "versions": []
-    }
-  ]
+    "value": [
+        {
+            "format": "PlainText",
+            "fileExtensions": [
+                ".txt"
+            ],
+            "contentTypes": [
+                "text/plain"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenXmlWord",
+            "fileExtensions": [
+                ".docx"
+            ],
+            "contentTypes": [
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenXmlPresentation",
+            "fileExtensions": [
+                ".pptx"
+            ],
+            "contentTypes": [
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenXmlSpreadsheet",
+            "fileExtensions": [
+                ".xlsx"
+            ],
+            "contentTypes": [
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OutlookMailMessage",
+            "fileExtensions": [
+                ".msg"
+            ],
+            "contentTypes": [
+                "application/vnd.ms-outlook"
+            ],
+            "versions": []
+        },
+        {
+            "format": "HtmlFile",
+            "fileExtensions": [
+                ".html",
+                ".htm"
+            ],
+            "contentTypes": [
+                "text/html"
+            ],
+            "versions": []
+        },
+        {
+            "format": "PortableDocumentFormat",
+            "fileExtensions": [
+                ".pdf"
+            ],
+            "contentTypes": [
+                "application/pdf"
+            ],
+            "versions": []
+        },
+        {
+            "format": "XLIFF",
+            "fileExtensions": [
+                ".xlf"
+            ],
+            "contentTypes": [
+                "application/xliff+xml"
+            ],
+            "versions": [
+                "1.0",
+                "1.1",
+                "1.2"
+            ]
+        },
+        {
+            "format": "TSV",
+            "fileExtensions": [
+                ".tsv",
+                ".tab"
+            ],
+            "contentTypes": [
+                "text/tab-separated-values"
+            ],
+            "versions": []
+        },
+        {
+            "format": "CSV",
+            "fileExtensions": [
+                ".csv"
+            ],
+            "contentTypes": [
+                "text/csv"
+            ],
+            "versions": []
+        },
+        {
+            "format": "RichTextFormat",
+            "fileExtensions": [
+                ".rtf"
+            ],
+            "contentTypes": [
+                "application/rtf"
+            ],
+            "versions": []
+        },
+        {
+            "format": "WordDocument",
+            "fileExtensions": [
+                ".doc"
+            ],
+            "contentTypes": [
+                "application/msword"
+            ],
+            "versions": []
+        },
+        {
+            "format": "PowerpointPresentation",
+            "fileExtensions": [
+                ".ppt"
+            ],
+            "contentTypes": [
+                "application/vnd.ms-powerpoint"
+            ],
+            "versions": []
+        },
+        {
+            "format": "ExcelSpreadsheet",
+            "fileExtensions": [
+                ".xls"
+            ],
+            "contentTypes": [
+                "application/vnd.ms-excel"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenDocumentText",
+            "fileExtensions": [
+                ".odt"
+            ],
+            "contentTypes": [
+                "application/vnd.oasis.opendocument.text"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenDocumentPresentation",
+            "fileExtensions": [
+                ".odp"
+            ],
+            "contentTypes": [
+                "application/vnd.oasis.opendocument.presentation"
+            ],
+            "versions": []
+        },
+        {
+            "format": "OpenDocumentSpreadsheet",
+            "fileExtensions": [
+                ".ods"
+            ],
+            "contentTypes": [
+                "application/vnd.oasis.opendocument.spreadsheet"
+            ],
+            "versions": []
+        }
+    ]
 }
 ```
 

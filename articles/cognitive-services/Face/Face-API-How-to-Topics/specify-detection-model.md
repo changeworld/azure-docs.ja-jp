@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 72fd005ce44d116f86d9a0b4c0d1932e2e4facfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da05251dab17aeb086be53a8583110dd5f12d7b3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102425772"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541636"
 ---
 # <a name="specify-a-face-detection-model"></a>顔検出モデルを指定する
 
@@ -102,8 +102,8 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 |---------|---------|---|
 |すべての顔検出操作に対する既定の選択です。 | 2019 年 5 月にリリースされ、すべての顔検出操作でオプションとして利用可能です。 |  2021 年 2 月にリリースされ、すべての顔検出操作でオプションとして利用可能です。
 |小さい顔、横顔、不鮮明な顔には最適化されていません。  | 小さい顔、横顔、不鮮明な顔での精度が向上しています。 | より小さい顔 (64x64 ピクセル) や回転した顔の向きなど、さらに精度が向上しました。
-|検出呼び出しで主な顔の属性 (頭部姿勢、年齢、感情など) が指定されている場合は、それらを返します。 |  顔の属性を返しません。     | 検出呼び出しで "faceMask" と "noseAndMouthCovered" の各属性が指定されている場合は、それらを返します。
-|検出呼び出しで顔のランドマークが指定されている場合は、それらを返します。   | 顔のランドマークを返しません。  | 顔のランドマークを返しません。
+|検出呼び出しで主な顔の属性 (頭部姿勢、年齢、感情など) が指定されている場合は、それらを返します。 |  顔の属性を返しません。     | 検出呼び出しでマスクと頭部姿勢の各属性が指定されている場合は、それらを返します。
+|検出呼び出しで顔のランドマークが指定されている場合は、それらを返します。   | 顔のランドマークを返しません。  | 検出呼び出しで顔のランドマークが指定されている場合は、それらを返します。
 
 検出モデルのパフォーマンスを比較する最良の方法は、それらをサンプル データセットで使用することです。 さまざまな画像、特に多数の顔や識別しづらい顔に対して、それぞれの検出モデルを使用して [Face - Detect] API を呼び出すことをお勧めします。 各モデルによって返される顔の数に注意してください。
 

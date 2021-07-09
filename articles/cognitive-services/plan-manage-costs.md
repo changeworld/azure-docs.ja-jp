@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: db99fa5caff27a24aa04e4780b25ade3f7c25496
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d686ea40b08139b9d16ade16d6e401db8300db0f
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101699931"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081121"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Azure Cognitive Services のコストを計画および管理する
 
@@ -37,6 +37,29 @@ Cognitive Services を追加する前に、[Azure 料金計算ツール](https:/
 ## <a name="understand-the-full-billing-model-for-cognitive-services"></a>Cognitive Services の詳細な課金モデルを理解する
 
 Cognitive Services は、新しいリソースをデプロイするときに[コストが発生する](https://azure.microsoft.com/pricing/details/cognitive-services/) Azure インフラストラクチャ上で実行されます。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 デプロイされたリソースに変更を加える場合は、このコストを管理する必要があります。 
+
+### <a name="how-youre-charged-for-cognitive-services"></a>Cognitive Services に対する課金方法
+
+Cognitive Services リソースを作成または使用すると、使用するサービスに基づいて、次の測定に対して課金される場合があります。
+
+| サービス | 測定 | 課金情報 | 
+|---------|-------|---------------------|
+| **Vision** | | |
+| [Computer Vision](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/) | Free または Standard (S1) | トランザクションの数によって請求されます。 トランザクションあたりの料金は、機能 (読み取り、OCR、空間分析) によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)に関するページを参照してください。 |
+| [Custom Vision](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) | Free または Standard | <li>予測はトランザクションの数によって請求されます。</li><li>トレーニングはコンピューティング時間によって請求されます。</li><li>画像ストレージには、イメージの数 (イメージあたり最大 6 MB) によって請求されます。</li>|
+| [Face](https://azure.microsoft.com/pricing/details/cognitive-services/face-api/) | Free または Standard | トランザクションの数によって請求されます。 |
+| **Speech** | | |
+| [Speech サービス](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) | Free または Standard | 請求金額は、機能 (音声テキスト変換、テキスト読み上げ、音声翻訳、話者認識) によって異なります。 主に、トランザクション数または文字数によって請求されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。 |
+| **Language** | | |
+| [Language Understanding (LUIS)](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) | 無料オーサリング、無料予測、Standard | トランザクションの数によって請求されます。 トランザクションあたりの料金は、機能 (音声要求、テキスト要求) によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)に関するページを参照してください。 |
+| [QnA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/) | Free または Standard | サブスクリプション料金は月単位で請求されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)に関するページを参照してください。 | 
+| [Text Analytics](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | Free または Standard | テキスト レコードの数によって請求されます。 | 
+| [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/) | Free、従量課金制 (S1)、ボリューム割引 (S2、S3、S4、C2、C3、C4、D3) | 価格は測定と機能によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/translator/)に関するページを参照してください。 <li>テキスト翻訳は、翻訳された文字数によって請求されます。</li><li>ドキュメント翻訳は、翻訳された文字数によって請求されます。</li><li>カスタム翻訳は、ソースとターゲットのトレーニング データの文字によって請求されます。</li> |  
+| **Decision** | | |
+| [Anomaly Detector](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/) | Free または Standard | トランザクションの数によって請求されます。 | 
+| [Content Moderator](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/) | Free または Standard | トランザクションの数によって請求されます。 |
+| [Personalizer](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/) | Free または Standard (S0) | トランザクションごとに月単位で請求されます。 ストレージとトランザクション クォータがあります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/)に関するページを参照してください。 | 
+
 
 ### <a name="costs-that-typically-accrue-with-cognitive-services"></a>Cognitive Services で通常発生するコスト
 

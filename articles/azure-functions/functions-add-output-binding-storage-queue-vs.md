@@ -1,15 +1,15 @@
 ---
 title: Visual Studio を使用して関数を Azure Storage に接続する
 description: Visual Studio を使用して、出力バインドを追加して C# クラス ライブラリ関数を Azure Storage に接続する方法を説明します。
-ms.date: 07/22/2019
+ms.date: 05/30/2021
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28748b7b9d0622d62baeb0de144adcd89c061a72
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185132"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790924"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio を使用して関数を Azure Storage に接続する
 
@@ -33,7 +33,7 @@ ms.locfileid: "96185132"
 
 1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。 
 
-1. **[アクション]** で **[Azure App Service の設定を編集する]** を選択します。 
+1. **[ホスティング]** の下の **[発行]** タブで、3 つのドット ( **...** ) を展開し、 **[Azure App Service の設定を管理する]** を選択します。 
 
     ![アプリケーション設定を編集する](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 

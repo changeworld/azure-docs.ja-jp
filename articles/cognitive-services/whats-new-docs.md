@@ -1,52 +1,86 @@
 ---
 title: Cognitive Services:ドキュメントの最新情報
-description: 2020 年 2 月 1 日から 2020 年 2 月 28 日までの Azure Cognitive Services ドキュメントの最新情報。
+description: 2021 年 5 月 1 日から 2021 年 5 月 31 日までの Cognitive Services ドキュメント更新情報
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 03/08/2021
-ms.openlocfilehash: 75efcbd5a037729570da6912d7929951aa5b73e0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/14/2021
+ms.openlocfilehash: f8a9706fac53ad5ea44a53f44317b18956f57504
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376154"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078871"
 ---
-# <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Cognitive Services ドキュメント: 2021 年 2 月 1 日から 2021 年 2 月 28 日までの最新情報
+# <a name="cognitive-services-docs-whats-new-for-may-1-2021---may-31-2021"></a>Cognitive Services ドキュメント: 2021 年 5 月 1 日から 2021 年 5 月 31 日までの更新情報
 
-2021 年 2 月 1 日から 2021 年 2 月 28 日までの Azure Cognitive Services ドキュメントの更新情報へようこそ。 この記事では、この期間中にドキュメントに加えられた大きな変更の一部を一覧で示します。
-
-## <a name="cognitive-services"></a>Cognitive Services
-
-### <a name="new-articles"></a>新しい記事
-
-- [Azure Cognitive Services 用の Azure Policy 規制コンプライアンス コントロール](security-controls-policy.md)
+2021 年 5 月 1 日から 2021 年 5 月 31 日までの Cognitive Services ドキュメントの更新情報へようこそ。 この記事では、この期間中にドキュメントに加えられた大きな変更の一部を一覧で示します。
 
 ## <a name="containers"></a>コンテナー
 
 ### <a name="new-articles"></a>新しい記事
 
-- [Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)](./containers/container-faq.yml)
+- [Translator コンテナーをインストールして実行する](translator/containers/translator-how-to-install-container.md)
+- [Translator Docker コンテナーを構成する](translator/containers/translator-container-configuration.md)
+- [コンテナー: Translator の Translate メソッド](translator/containers/translator-container-supported-parameters.md)
+
+
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Azure Cognitive Services コンテナー イメージ タグとリリース ノート](./containers/container-image-tags.md)
+- [Azure Cognitive Services コンテナー イメージ タグとリリース ノート](/azure/cognitive-services/containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
+### <a name="new-articles"></a>新しい記事
+
+- [リファレンス: Azure Form Recognizer クライアント ライブラリ v3.0.0 および REST API v2.0](/azure/cognitive-services/form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
+
 ### <a name="updated-articles"></a>更新された記事
 
-- [サンプル ラベル付けツールのデプロイ](./form-recognizer/deploy-label-tool.md)
-- [Form Recognizer とは](./form-recognizer/overview.md)
-- [サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング](./form-recognizer/label-tool.md)
+- [Form Recognizer の事前構築済みの名刺モデル](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
+- [クイックスタート: クライアント ライブラリ SDK または REST API の概要](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+- [Form Recognizer の新機能](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [Form Recognizer のランディング ページ](/azure/cognitive-services/form-recognizer/form-recognizer.md)
+
+## <a name="translator"></a>Translator
+
+### <a name="new-articles"></a>新しい記事
+
+- [よく寄せられる質問 - Translator API](translator/translator-faq.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+#### <a name="document-translation-is-now-ga"></a>ドキュメント変換が GA になりました
+- [ドキュメント変換を使ってみる](translator/document-translation/get-started-with-document-translation.md)
+- 9 つの参照ページすべてが更新され、プレビュー パラメーターが REST API エンドポイントから削除されました。
+## <a name="personalizer"></a>Personalizer
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Personalizer の新機能](/azure/cognitive-services/personalizer/whats-new.md)
 
 ## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Text Analytics API v3 の言語のサポート](./text-analytics/language-support.md)
-- [Text Analytics REST API を呼び出す方法](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [チュートリアル:Power BI を Text Analytics Cognitive Service と統合する](/azure/cognitive-services/text-analytics/tutorials/tutorial-power-bi-key-phrases.md)
+- [Text Analytics と Power Automate を使用して Excel 内の情報を抽出する](/azure/cognitive-services/text-analytics/tutorials/extract-excel-information.md)
+- [Text Analytics REST API を呼び出す方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [Text Analytics で固有表現抽出
+を使用する方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Text Analytics API の新機能](/azure/cognitive-services/text-analytics/whats-new.md)
+
+## <a name="community-contributors"></a>コミュニティの共同作成者
+
+上記の期間中、Cognitive Services ドキュメントへのご協力をいただいた方々です。 よろしくお願いいたします。 [新機能ランディング ページ](index.yml)の「参加する」にあるリンクに従って投稿する方法について説明します。
+
+- [enzocanoo](https://github.com/enzocanoo) - Enzo Cano (2)
+- [hyoshioka0128](https://github.com/hyoshioka0128) - Hiroshi Yoshioka (2)
+- [sassdawe](https://github.com/sassdawe) - DavidSass (1)
+- [SzymonSel](https://github.com/SzymonSel) - Szymon Seliga (1)
+- [thomash0815](https://github.com/thomash0815) (1)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]
