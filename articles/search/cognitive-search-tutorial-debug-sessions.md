@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/02/2021
-ms.openlocfilehash: ed988baec46152d55cf63aec09fce7a298157212
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0560c7e1f8770dd27d8ad462d10a2668d69d5865
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509152"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559250"
 ---
 # <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>チュートリアル:デバッグ セッションを使用してスキルセットをデバッグする
 
@@ -46,7 +46,7 @@ Azure portal の **デバッグ セッション** には、スキルセットの
 
 ## <a name="set-up-your-data"></a>自分のデータを設定する
 
-このセクションでは、Azure BLOB ストレージにサンプル データ セットを作成し、インデクサーとスキルセットに作業用コンテンツを用意します。
+このセクションでは、Azure Blob Storage にサンプル データ セットを作成し、インデクサーとスキルセットに作業用コンテンツを用意します。
 
 1. 19 個のファイルから成る[サンプル データ (clinical-trials-pdf-19) をダウンロード](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19)してください。
 
@@ -107,7 +107,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. (一意の `metadata_storage_path` フィールドによって識別される) 特定のドキュメントのフィールドを返す `$select=metadata_storage_path, organizations, locations&$count=true` クエリ文字列を入力します。
 1. **[検索]** をクリックしてクエリを実行します。19 個のドキュメントがすべて返され、"organizations" と "locations" について空の値が表示されます。
 
-これらのフィールドには、(BLOB のコンテンツ内のあらゆる組織と場所を検出するために使用される) スキルセットの[エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)を通じて値が設定されているはずでした。 次の演習では、デバッグ セッションを使用して、問題の原因を特定します。
+これらのフィールドには、(BLOB のコンテンツ内のあらゆる組織と場所を検出するために使用される) スキルセットの[エンティティ認識スキル](cognitive-search-skill-entity-recognition-v3.md)を通じて値が設定されているはずでした。 次の演習では、デバッグ セッションを使用して、問題の原因を特定します。
 
 エラーと警告を調査する別の方法は、Azure portal を使用することです。
 
@@ -277,7 +277,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 

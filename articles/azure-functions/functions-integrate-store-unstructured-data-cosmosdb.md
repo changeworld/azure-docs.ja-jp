@@ -4,12 +4,12 @@ description: Azure Functions と Cosmos DB を使用して非構造化データ�
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90a85cad60696ad692d39d19ad123ecfd6f7dc30
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91661161"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236573"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure Functions と Azure Cosmos DB を使用して非構造化データを格納する
 
@@ -30,7 +30,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 出力バインディングを作成する前に、SQL API を使用する Azure Cosmos DB アカウントが必要です。
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../cosmos-db/includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-an-output-binding"></a>出力バインディングを追加する
 
