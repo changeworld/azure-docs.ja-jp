@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 9494bcc9941491bbb82c6a948dce720cb9e51424
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 693a102c988d87dc4ed6ac9f0f4cb2176ec78ca5
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502285"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059996"
 ---
 # <a name="configure-azure-static-web-apps"></a>Azure Static Web Apps を構成する
 
@@ -26,6 +26,9 @@ Azure Static Web Apps の構成は、次の設定を制御する _staticwebapp.c
 - グローバル HTTP ヘッダーの定義
 - カスタムの MIME の種類
 
+> [!NOTE]
+> ルーティングを構成するのに以前使用されていた [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) は非推奨となっています。 この記事の説明のとおりに _staticwebapp.config.json_ を使用して、静的 Web アプリのルーティングやその他の設定を構成してください。
+
 ## <a name="file-location"></a>ファイルの場所
 
 _staticwebapp.config.json_ の推奨される場所は、[ワークフロー ファイル](./github-actions-workflow.md)で `app_location` として設定されたフォルダー内です。 ただし、このファイルは、アプリケーションのソース コード フォルダー内の任意の場所に配置できます。
@@ -33,7 +36,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 詳細については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
 
 > [!IMPORTANT]
-> _staticwebapp.config.json_ がある場合、[_routers.json_ ファイル](./routes.md)は無視されます。
+> _staticwebapp.config.json_ がある場合、非推奨の [_routers.json_ ファイル](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated))は無視されます。
 
 ## <a name="routes"></a>ルート
 

@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 1eceb842947abd8975036c3145c1da755ef59526
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 60d65e530c9d98ac86f8d958072d2f26a68836fe
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766771"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350946"
 ---
 ## <a name="configure-the-sample-project"></a>サンプル プロジェクトを構成する
 
 次に、Azure Digital Twins インスタンスとやり取りするサンプル クライアント アプリケーションを設定します。
 
-マシン上で、[Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)からダウンロードしたファイルに移動します (まだの場合は解凍します)。
+マシン上で、以前に [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)からダウンロードしたファイルに移動します (まだの場合は解凍します)。
 
 フォルダー内の _AdtSampleApp_ に移動します。 Visual Studio 2019 で _**AdtE2ESample.sln**_ を開きます。 
 
@@ -34,7 +34,7 @@ Visual Studio で _[SampleClientApp] > **[appsettings.json]**_ ファイルを�
 
 次に、*SampleClientApp* をビルドしたときに *appsettings.json* ファイルが出力ディレクトリにコピーされるように構成します。 そのためには、*appsettings.json* ファイルを右クリックし、 **[プロパティ]** を選択します。 **[プロパティ]** インスペクターで、 *[出力ディレクトリにコピー]* プロパティを探します。 まだ設定されてない場合は、その値を **[新しい場合はコピーする]** に変更します。
 
-:::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Visual Studio ウィンドウの [ソリューション エクスプローラー] ペイン (appsettings.json が強調表示されている) とプロパティ ペイン ([出力ディレクトリにコピー] プロパティが [新しい場合はコピーする] に設定されている)" border="false" lightbox="../articles/digital-twins/media/includes/copy-config.png":::
+:::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Visual Studio の Solution Explorer の appsettings.json で、[プロパティ] の [出力ディレクトリにコピー] プロパティが強調表示されているスクリーンショット。" border="false" lightbox="../articles/digital-twins/media/includes/copy-config.png":::
 
 _**AdtE2ESample**_ プロジェクトは、Visual Studio で開いたままにしておいてください。チュートリアルで引き続き使用します。
 

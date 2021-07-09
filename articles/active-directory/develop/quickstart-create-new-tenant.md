@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: cb4995c0c71d0bcebb3cdd8ec471a92b7820cb9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef84b1ac1a1d7f1b1c9c629c4e6eb2606f2441c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100535163"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854848"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
@@ -69,7 +69,7 @@ Azure AD テナントがまだない場合や、開発用の新しいテナン�
 新しいテナントを作成するには、次の情報を入力します。
 
 - **組織名**
-- **初期ドメイン** - このドメインは、*.onmicrosoft.com の一部です。 ドメインは後でカスタマイズできます。
+- **初期ドメイン** - 初期ドメイン `<domainname>.onmicrosoft.com` を編集または削除することはできません。 後からカスタマイズしたドメイン名を追加することができます。
 - **国または地域**
 
 > [!NOTE]

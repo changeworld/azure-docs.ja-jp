@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: c654153340586004415b9d2fd8744fb539726960
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0d9e3d4c9ec9eab75ce5917e9ea20011653ff133
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369409"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790196"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -60,15 +60,31 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="metadata-limits"></a>メタデータの制限
 
-メタデータは、テキストベースの "キー:値" のペアとして表示されます (`product:windows 10` など)。 これは小文字で格納され、比較されます。
+メタデータは、テキストベースの "キー:値" のペアとして表示されます (`product:windows 10` など)。 これは小文字で格納され、比較されます。 メタデータ フィールドの最大数は、 **[Azure Cognitive Search レベルの制限](../../search/search-limits-quotas-capacity.md)** に基づきます。
 
-### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Cognitive Search の価格レベル
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-ナレッジ ベースごとのメタデータ フィールドの最大数は、 **[Azure Cognitive Search レベルの制限](../../search/search-limits-quotas-capacity.md)** に基づきます。
+GA バージョンの場合、テスト インデックスはすべてのナレッジ ベースで共有されます。このため、この制限は、QnA Maker サービス内のすべてのナレッジ ベースに適用されます。
 
 |**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |QnA Maker サービスごとの最大のメタデータ フィールド数 (すべてのナレッジ ベースにわたって)|1,000|100*|1,000|1,000|1,000|1,000|
+
+# <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
+
+1 つのサービスで複数の言語のナレッジ ベースを使用する場合は、ナレッジ ベースごとに専用のテスト インデックスがあります。 そのため、この制限は、QnA Maker サービス内のナレッジ ベースごとに適用されます。
+
+|**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|---|---|---|---|---|---|----|
+|QnA Maker サービスごとの最大のメタデータ フィールド数 (ナレッジ ベースごと)|1,000|100*|1,000|1,000|1,000|1,000|
+
+複数の言語にナレッジ ベースを含むオプションを選択しない場合は、QnA Maker サービス内のすべてのナレッジ ベースに制限が適用されます。
+
+|**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|---|---|---|---|---|---|----|
+|QnA Maker サービスごとの最大のメタデータ フィールド数 (すべてのナレッジ ベースにわたって)|1,000|100*|1,000|1,000|1,000|1,000|
+
+---
 
 ### <a name="by-name-and-value"></a>名前と値
 

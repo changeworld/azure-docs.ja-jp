@@ -8,20 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/11/2021
+ms.date: 06/07/2021
 ms.author: aahi
-ms.custom: references_regions
-ms.openlocfilehash: 80a943d235783852f57832363b5af8048f010575
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 37dd6eddc302062d756df79a03bd13cfc8c881e1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599436"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757177"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
 
 > [!IMPORTANT] 
-> Text Analytics for Health は、"現状のまま"、"保証なしで" 提供されるプレビュー機能です。 そのため、**Text Analytics for Health (プレビュー) は、運用環境に実装またはデプロイして使用しないでください。** Text Analytics for Health は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、マイクロソフトからはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、Text Analytics for Health の使用に関するすべての責任を持ちます。 Microsoft では、Text Analytics for Health またはその機能に関連して提供されるすべての資料が、すべての医療目的に対して十分であること、またはすべての人の健康的または医療的な要件を満たすことについて、いっさい保証しません。 
+> Text Analytics for Health は、"現状のまま"、"保証なしで" 提供されるプレビュー機能です。 そのため、Text Analytics for Health (プレビュー) は、運用環境に実装またはデプロイして使用しないでください。 Text Analytics for Health は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、マイクロソフトからはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、Text Analytics for Health の使用に関するすべての責任を持ちます。 お客様は [UMLS Metathesaurus 使用許諾契約書付録](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html)または将来の同等のリンクに対して設定された条項に基づいて、使用する予定のすべてのソース ボキャブラリを個別にライセンスする必要があります。 お客様は、地理的または他の適用される制限を含め、これらのライセンス条項に準拠する責任を負います。
 
 
 Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストからの、関連する医療情報の抽出とラベル付けが行われる、Text Analytics API サービスの機能です。  このサービスを利用するには、次の 2 つの方法があります。 
@@ -74,22 +73,9 @@ Text Analytics for Health では、統一医療言語システム ([UMLS](https:
 
 サポートされているすべてのエンティティの一覧については、Text Analytics for Health によって返される[エンティティのカテゴリ](../named-entity-types.md?tabs=health)を参照してください。 信頼度スコアの詳細については、[Text Analytics の透明性に関するメモ](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context)をご覧ください。 
 
-### <a name="supported-languages-and-regions"></a>サポートされている言語とリージョン
+### <a name="supported-languages"></a>サポートされている言語
 
 Text Analytics for Health では、英語のドキュメントのみがサポートされます。 
-
-現在、Text Analytics for Health のホストされた Web API は、次のリージョンでのみ利用できます: 米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。
-
-## <a name="request-access-to-the-public-preview"></a>パブリック プレビューへのアクセスを要求する
-
-Text Analytics for Health のパブリック プレビューへのアクセスを要求するには、[Cognitive Services 要求フォーム](https://aka.ms/csgate)に記入して送信します。 Text Analytics for Health の使用には課金されません。 
-
-このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、そのフォームは Azure Cognitive Services チームによって確認されます。その後、チームから決定事項がメールで届きます。
-
-> [!IMPORTANT]
-> * このフォームでは、Azure サブスクリプション ID に関連付けられているメール アドレスを使用する必要があります。
-> * 使用する Azure リソースは、承認された Azure サブスクリプション ID で作成されている必要があります。 
-> * Microsoft からのアプリケーションの状態に関する更新については、電子メール (受信トレイと迷惑フォルダーの両方) を確認してください。
 
 ## <a name="using-the-docker-container"></a>Docker コンテナーの使用 
 
@@ -116,12 +102,9 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>ホストされた非同期 Web API に対する API 要求を作成する
 
-コンテナーとホストされた Web API の両方について、POST 要求を作成する必要があります。 [Postman](text-analytics-how-to-call-api.md)、cURL コマンド、または [Text Analytics for Health のホストされた API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)の **API テスト コンソール** を使用して、POST 要求をすばやく作成し、目的のリージョンのホストされた Web API に送信することができます。 
+コンテナーとホストされた Web API の両方について、POST 要求を作成する必要があります。 [Postman](text-analytics-how-to-call-api.md)、cURL コマンド、または [Text Analytics for Health のホストされた API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Health)の **API テスト コンソール** を使用して、POST 要求をすばやく作成し、目的のリージョンのホストされた Web API に送信することができます。 API v3.1-preview.5 エンドポイントでは、`loggingOptOut` ブール型クエリ パラメーターを使用して、トラブルシューティングのためにログ記録を有効にできます。  要求クエリで指定されていない場合、既定値は TRUE です。
 
-> [!NOTE]
-> 非同期 `/analyze` と `/health` の両方のエンドポイントは、次のリージョンでのみ使用できます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。  これらのエンドポイントへの要求を成功させるには、これらのリージョンのいずれかでリソースが作成されていることを確認してください。
-
-次に示すのは、Text Analytics for Health API 要求の POST 本文に添付される JSON ファイルの例です。
+POST 要求を `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs` に送信します。次に示すのは、Text Analytics for Health API 要求の POST 本文に添付される JSON ファイルの例です。
 
 ```json
 example.json
@@ -141,11 +124,11 @@ example.json
 
 この POST 要求は非同期操作にジョブを送信するために使用されるので、応答オブジェクトにテキストはありません。  ただし、ジョブと出力の状態を確認するための GET 要求を行うには、応答ヘッダーの operation-location KEY 値が必要です。  POST 要求の応答ヘッダーの operation-location KEY 値の例を次に示します。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs/<jobID>`
 
 ジョブの状態を確認するには、POST 応答の operation-location KEY ヘッダー値の URL に対して GET 要求を行います。  ジョブの状態を反映するには、次の状態が使用されます: `NotStarted`、`running`、`succeeded`、`failed`、`rejected`、`cancelling`、`cancelled`。  
 
-`NotStarted` または `running` 状態のジョブは、GET 要求と同じ URL に対する DELETE HTTP 呼び出しを使用して取り消すことができます。  DELETE 呼び出しの詳細については、[Text Analytics for Health のホストされた API のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob)に関するページを参照してください。
+`NotStarted` または `running` 状態のジョブは、GET 要求と同じ URL に対する DELETE HTTP 呼び出しを使用して取り消すことができます。  DELETE 呼び出しの詳細については、[Text Analytics for Health のホストされた API のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/CancelHealthJob)に関するページを参照してください。
 
 GET 要求の応答の例を次に示します。  出力を取得に使用できるのは `expirationDateTime` (ジョブが作成されてから 24 時間) が経過するまでです。それを過ぎると、出力は消去されます。
 
@@ -302,7 +285,7 @@ GET 要求の応答の例を次に示します。  出力を取得に使用で�
 [Postman を使用](text-analytics-how-to-call-api.md)するか、次の cURL 要求の例を使用して、デプロイしたコンテナーにクエリを送信します。`serverURL` 変数は適切な値に置き換えます。  コンテナーへの URL での API のバージョンは、ホストされた API とは異なることに注意してください。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -522,6 +505,18 @@ Text Analytics for Health は、さまざまな概念間の関係を認識しま
 
 **ABBREVIATION**
 
+**BODY_SITE_OF_CONDITION**
+
+**BODY_SITE_OF_TREATMENT**
+
+**COURSE_OF_CONDITION**
+
+**COURSE_OF_EXAMINATION**
+
+**COURSE_OF_MEDICATION**
+
+**COURSE_OF_TREATMENT**
+
 **DIRECTION_OF_BODY_STRUCTURE**
 
 **DIRECTION_OF_CONDITION**
@@ -532,17 +527,31 @@ Text Analytics for Health は、さまざまな概念間の関係を認識しま
 
 **DOSAGE_OF_MEDICATION**
 
+**EXAMINATION_FINDS_CONDITION**
+
+**EXPRESSION_OF_GENE**
+
+**EXPRESSION_OF_VARIANT**
+
 **FORM_OF_MEDICATION**
+
+**FREQUENCY_OF_CONDITION**
 
 **FREQUENCY_OF_MEDICATION**
 
 **FREQUENCY_OF_TREATMENT**
+
+**MUTATION_TYPE_OF_GENE**
+
+**MUTATION_TYPE_OF_VARIANT**
 
 **QUALIFIER_OF_CONDITION**
 
 **RELATION_OF_EXAMINATION**
 
 **ROUTE_OF_MEDICATION** 
+
+**SCALE_OF_CONDITION**
 
 **TIME_OF_CONDITION**
 
@@ -561,6 +570,8 @@ Text Analytics for Health は、さまざまな概念間の関係を認識しま
 **VALUE_OF_CONDITION**  
 
 **VALUE_OF_EXAMINATION**
+
+**VARIANT_OF_GENE**
 
 > [!NOTE]
 > * CONDITION を参照する関係は、DIAGNOSIS エンティティ型または SYMPTOM_OR_SIGN エンティティ型のいずれかを参照できます。

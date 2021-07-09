@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1fcf8c681f4fad65209c27663045d4974be633f7
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: bfd3429531f1473e099e3296ebfebd50c6d4d864
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833251"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787914"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -314,7 +314,7 @@ ms.locfileid: "107833251"
 <details>
 <summary>HTTP 404 (Not Found) エラーが表示されます。</summary>
 <ul>
-<li>構成されているカスタム ドメインに A レコードまたは CNAME レコードがない。</li>
+<li>構成されているカスタム ドメインに A レコードまたは CNAME レコードがない。  <a href="https://www.nslookup.io/">オンライン DNS 検索</a>ツールを使用して、DNS レコードが公開されていることを確認します。</li>
 <li>クライアントのブラウザーが、ドメインの古い IP アドレスをキャッシュしている。 キャッシュをクリアして、DNS 解決をもう一度テストします。 Windows コンピューターでは、<code>ipconfig /flushdns</code> でキャッシュをクリアします。</li>
 </ul>
 </details>

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 5efc74ec150dcd18181404d93dc2142552a2c792
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 6c991188c266d2e169a7a1d50f4c2ea61f3a51f3
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108807471"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350602"
 ---
 Azure Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 サブスクリプションの上限まで制限を引き上げるには、サポートにお問い合わせください。
 
@@ -21,11 +21,10 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 
 | リソース | 既定の制限 | 上限 |
 | -------- | ------------- | ------------- |
-| リソース グループあたりのデータ ファクトリ | 800 | 800 |
 | データ ファクトリ内のエンティティ (パイプライン、データセット、トリガー、リンクされたサービス、プライベート エンドポイント、統合ランタイムなど) の合計数 | 5,000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 1 つのサブスクリプションでの Azure-SSIS Integration Runtime の CPU コア数の合計 | 256 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | データ ファクトリあたりの同時実行パイプラインの実行数 (ファクトリ内のすべてのパイプライン間で共有) | 10,000  | 10,000 |
-| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)あたり、サブスクリプションあたりの同時実行外部アクティビティの実行数<br><small>外部アクティビティは統合ランタイムで管理されますが、リンクされたサービスで実行されます (Databricks、ストアド プロシージャ、HDInsight、Web などを含む)。この制限は、セルフホステッド IR には適用されません。</small> | 3,000 | 3,000 |
+| [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)あたり、サブスクリプションあたりの同時実行外部アクティビティの実行数<br><small>外部アクティビティは統合ランタイムで管理されますが、リンクされたサービス (Databricks、ストアド プロシージャ、Web など) で実行されます。この制限は、セルフホステッド IR には適用されません。</small> | 3,000 | 3,000 |
 | [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)あたり、サブスクリプションあたりの同時実行パイプライン アクティビティの実行数 <br><small>パイプライン アクティビティは統合ランタイムで実行されます (Lookup、GetMetadata、Delete を含む)。この制限は、セルフホステッド IR には適用されません。</small> | 1,000 | 1,000                                                        |
 | [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)あたり、サブスクリプションあたりの同時実行オーサリング操作数<br><small>接続のテスト、フォルダー一覧とテーブル一覧の参照、データのプレビューを含みます。この制限は、セルフホステッド IR には適用されません。</small> | 200 | 200                                                          |
 | [Azure Integration Runtime リージョン](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)あたり、サブスクリプションあたりの同時実行データ統合単位<sup>1</sup>の消費| リージョン グループ 1<sup>2</sup>: 6,000<br>リージョン グループ 2<sup>2</sup>: 3,000<br>リージョン グループ 3<sup>2</sup>: 1,500 | リージョン グループ 1<sup>2</sup>: 6,000<br/>リージョン グループ 2<sup>2</sup>: 3,000<br/>リージョン グループ 3<sup>2</sup>: 1,500 |

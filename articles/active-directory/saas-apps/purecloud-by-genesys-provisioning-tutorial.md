@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: bbb9b47e42ce195a98801ee08d177efd409c597e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4643efd197734ff7f12fb7806e474e0419843ed
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181664"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078570"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>チュートリアル:PureCloud by Genesys を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -100,27 +100,36 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から PureCloud by Genesys に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性を使用して、更新処理で PureCloud by Genesys のユーザー アカウントとの照合が行われます。 [一致する対象の属性](../app-provisioning/customize-application-attributes.md)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に PureCloud by Genesys API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-     |属性|Type|
-     |---|---|
-     |userName|String|
+     |属性|Type|フィルター処理のサポート|
+     |---|---|---|
+     |userName|String|&check;|
      |active|Boolean|
      |displayName|String|
      |emails[type eq "work"].value|String|
      |title|String|
      |phoneNumbers[type eq "mobile"].value|String|
      |phoneNumbers[type eq "work"].value|String|
+     |phoneNumbers[type eq "work2"].value|String|
+     |phoneNumberss[type eq "work3"].value|String|
+     |phoneNumbers[type eq "work4"].value|String|
+     |phoneNumbers[type eq "home"].value|String|
+     |phoneNumbers[type eq "microsoftteams"].value|String|
+     |roles|String|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
-     
+     |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘microsoftteams’].value|String|     
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘ringcentral’].value|String|    
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘zoomphone].value|String|
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to PureCloud by Genesys]\(Azure Active Directory グループを PureCloud by Genesys に同期する\)** を選択します。
 
 11. **[属性マッピング]** セクションで、Azure AD から PureCloud by Genesys に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で PureCloud by Genesys のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。 PureCloud by Genesys では、グループの作成と削除はサポートされません。サポートされるのはグループの更新のみです。
 
-      |属性|Type|
-      |---|---|
-      |displayName|String|
+      |属性|Type|フィルター処理のサポート|
+      |---|---|---|
+      |displayName|String|&check;|
       |externalId|String|
       |members|リファレンス|
 
@@ -149,9 +158,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 ## <a name="change-log"></a>ログの変更
 
-09/10 - エンタープライズ属性 "employeeNumber" のサポートが追加されました。
+* 09/10/2020 - エンタープライズ属性 **employeeNumber** のサポートが追加されました。
+* 05/18/2021 - コア属性 **phoneNumbers[type eq "work2"]** 、**phoneNumbers[type eq "work3"]** 、**phoneNumbers[type eq "work4"]** 、**phoneNumbers[type eq "home"]** 、**phoneNumbers[type eq "microsoftteams"]** およびロールのサポートが追加されました。 また、カスタム拡張属性 **urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘microsoftteams’]** 、**urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘zoomphone]** 、**urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘ringcentral’]** のサポートが追加されました。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="more-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

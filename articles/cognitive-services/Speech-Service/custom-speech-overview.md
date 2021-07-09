@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: a4b528a0a8abac2cad9b68ed145c5cc137efba26
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: 2eaf5a6a01b8ed0cb2a82f13c2d4d33ce88d5938
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664350"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100417"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
-[Custom Speech](https://aka.ms/customspeech) は、アプリケーションや製品での Microsoft の音声テキスト変換の正確性を評価して改善するために使用できる、UI ベースのツールです。 作業を始めるにあたって必要なのは、少数のテスト オーディオ ファイルだけです。 この記事のリンクに従って、カスタム音声テキスト変換エクスペリエンスの作成を開始しましょう。
+Custom Speech では、アプリケーションや製品での Microsoft の音声テキスト変換の正確性を評価したり、改善したりできます。 この記事のリンクに従って、カスタム音声テキスト変換エクスペリエンスの作成を開始しましょう。
 
 ## <a name="whats-in-custom-speech"></a>Custom Speech の内容
 

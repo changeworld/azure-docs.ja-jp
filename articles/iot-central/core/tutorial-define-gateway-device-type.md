@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: d1a730a20ef2ab0fe5e455ef86a428aa1d83fc19
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 55cd7c86ae4f0110618745459cea48abe5e144d0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683931"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084576"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>チュートリアル - Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
 
@@ -115,14 +115,14 @@ ms.locfileid: "109683931"
 
 1. **[スマート ビルディング ゲートウェイ デバイス]** テンプレートで、 **[クラウドのプロパティ]** を選択します。
 
-1.  下表の情報に従って、ゲートウェイ デバイス テンプレートに 2 つのクラウド プロパティを追加します。
+1. 下表の情報に従って、ゲートウェイ デバイス テンプレートに 2 つのクラウド プロパティを追加します。
 
     | Display name      | セマンティックの種類 | スキーマ |
     | ----------------- | ------------- | ------ |
     | Last Service Date | なし          | Date   |
     | Customer Name     | なし          | String |
 
-2. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ### <a name="create-views"></a>ビューの作成
 
@@ -151,7 +151,9 @@ ms.locfileid: "109683931"
 
 3. **[Publish a Device Template]\(デバイス テンプレートの発行\)** ダイアログで、 **[発行]** を選択します。
 
-デバイス テンプレートを公開すると、 **[デバイス]** ページに表示され、オペレーターが確認できるようになります。 発行済みのデバイス テンプレートでは、新しいバージョンを作成せずにデバイス モデルを編集することはできません。 ただし、発行されたデバイス テンプレートで、クラウド プロパティ、カスタマイズ、およびビューを更新できます。 これらの更新によって新しいバージョンが作成されることはありません。 変更完了後に **[公開]** を選択すると、変更内容がオペレーターにプッシュされます。
+デバイス テンプレートを公開すると、 **[デバイス]** ページに表示され、オペレーターが確認できるようになります。 オペレーターはテンプレートを利用し、デバイス インスタンスを作成したり、ルールと監視を確立したりできます。 発行後のテンプレートを編集すると、アプリケーション全体で動作に影響を与えることがあります。
+
+発行後にデバイス テンプレートを変更する方法の詳細については、「[既存のデバイス テンプレートを編集する](howto-edit-device-template.md)」を参照してください。
 
 ## <a name="create-the-simulated-devices"></a>シミュレートされたデバイスを作成する
 

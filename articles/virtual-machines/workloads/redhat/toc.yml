@@ -8,8 +8,16 @@
       href: redhat-imagelist.md
 - name: Red Hat Java クイックスタート
   items:
-    - name: VM/VMSS での JBoss EAP と RHEL
+    - name: VM での JBoss EAP と RHEL
       href: jboss-eap-on-rhel.md
+    - name: JBoss EAP マーケットプレース イメージ
+      href: jboss-eap-marketplace-image.md
+    - name: Azure での JBoss EAP のベスト プラクティス
+      href: jboss-eap-on-azure-best-practices.md
+    - name: JBoss EAP を Azure VM に移行する
+      href: jboss-eap-on-azure-migration.md
+    - name: JBoss EAP を App Service に移行する
+      href: /azure/developer/java/migration/migrate-jboss-eap-to-jboss-eap-on-azure-app-service.md
     - name: VM での WildFly と CentOS
       href: wildfly-on-centos.md
 - name: Azure の Red Hat Update Infrastructure

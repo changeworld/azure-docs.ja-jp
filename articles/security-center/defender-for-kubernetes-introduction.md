@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c500c7b7afb36ffbe04fb63551c3a7d17c1347d9
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: acf038d6e1ead94bdfb2e00ffe225e566faa6c44
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029082"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854902"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の概要
 
@@ -44,7 +44,7 @@ Azure Security Center と AKS は、「[Security Center のコンテナーのセ
 
 Azure Defender for Kubernetes は、クラスターのログを監視することで、**クラスターレベルの脅威の防止** を提供します。
 
-Azure Defender for Kubernetes によって監視されるセキュリティ イベントの例として、Kubernetes ダッシュボードの公開、高い特権ロールの作成、機密性の高いマウントの作成などがあります。 クラスター レベルのアラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-akscluster)を参照してください。
+Azure Defender for Kubernetes によって監視されるセキュリティ イベントの例として、Kubernetes ダッシュボードの公開、高い特権ロールの作成、機密性の高いマウントの作成などがあります。 クラスター レベルのアラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-k8scluster)を参照してください。
 
 > [!TIP]
 > コンテナーのアラートをシミュレートするには、[こちらのブログ記事](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)の手順に従います。
@@ -57,7 +57,7 @@ Azure Defender for Kubernetes によって監視されるセキュリティ イ�
 
 
 
-## <a name="azure-defender-for-kubernetes---faq"></a>Azure Defender for Kubernetes - よくあるご質問
+## <a name="faq---azure-defender-for-kubernetes"></a>FAQ - Azure Defender for Kubernetes
 
 ### <a name="can-i-still-get-cluster-protections-without-the-log-analytics-agent"></a>Log Analytics エージェントを使用しなくてもクラスターの保護を利用できますか。
 

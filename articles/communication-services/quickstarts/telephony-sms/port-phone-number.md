@@ -5,16 +5,16 @@ author: mikben
 manager: mikben
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/20/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: b4357b8d4fe1d7184fc2dcfab2008dc6e0f334fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f138e0ee79e0d8adf03ba51c1197813402920a19
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729738"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112043"
 ---
 # <a name="quickstart-port-a-phone-number"></a>クイックスタート: 電話番号を移行する
 

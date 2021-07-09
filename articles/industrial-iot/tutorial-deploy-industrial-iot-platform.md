@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 87a7295c785c08fcf3faffc20d34ceef45144848
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 995ee04e913ad4e363045e0aacc295aaec25f3e6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787408"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677928"
 ---
 # <a name="tutorial-deploy-the-azure-industrial-iot-platform"></a>チュートリアル: Azure Industrial IoT プラットフォームをデプロイする
 
@@ -56,25 +56,27 @@ ms.locfileid: "104787408"
 
 2. ガイド付きデプロイを開始すると、スクリプトによって、Azure アカウント、サブスクリプション、対象のリソースおよびグループ、アプリケーション名などの必要な情報が収集されます。
 
-Windows の場合:
-    ```
-    .\deploy
-    ```
+    Windows の場合:
+        ```
+        .\deploy -version <version>
+        ```
 
-Linux または Mac の場合:
-    ```
-    ./deploy.sh
-    ```
+    Linux または Mac の場合:
+        ```
+        ./deploy.sh -version <version>
+        ```
+
+    \<version> を、デプロイするバージョンに置き換えます。
 
 3. マイクロサービスと UI は、認証を必要とする Web アプリケーションです。そのためには、AAD に 3 つのアプリを登録する必要があります。 必要な権限がない場合は、次の 2 つの解決策があります。
 
-- AAD 管理者に依頼して、アプリケーションに対してテナント全体の管理者の同意を付与します
-- AAD 管理者は、AAD アプリケーションを作成できます。 deploy/scripts フォルダーには、デプロイとは別に AAD 登録を実行する aad- register.ps1 スクリプトが含まれています。 スクリプトの出力は、デプロイの一部として使用される関連情報を含むファイルであり、- aadConfig 引数を使用して、同じフォルダー内の deploy.ps1 スクリプトに渡す必要があります。
-    ```bash
-    cd deploy/scripts
-    ./aad-register.ps1 -Name <application-name> -Output aad.json
-    ./deploy.ps1 -aadConfig aad.json
-    ```
+    - AAD 管理者に依頼して、アプリケーションに対してテナント全体の管理者の同意を付与します
+    - AAD 管理者は、AAD アプリケーションを作成できます。 deploy/scripts フォルダーには、デプロイとは別に AAD 登録を実行する aad- register.ps1 スクリプトが含まれています。 スクリプトの出力は、デプロイの一部として使用される関連情報を含むファイルであり、- aadConfig 引数を使用して、同じフォルダー内の deploy.ps1 スクリプトに渡す必要があります。
+        ```bash
+        cd deploy/scripts
+        ./aad-register.ps1 -Name <application-name> -Output aad.json
+        ./deploy.ps1 -aadConfig aad.json
+        ```
 
 ステージング、ロールバック、スケーリング、回復性を必要とする運用環境のデプロイでは、プラットフォームを [Azure Kubernetes Service (AKS)](https://github.com/Azure/Industrial-IoT/blob/master/docs/deploy/howto-deploy-aks.md) にデプロイできます
 

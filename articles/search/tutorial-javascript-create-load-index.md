@@ -7,15 +7,15 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 05/21/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: ef48074c5346374b12eb5a3a3aea50b2c753a082
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 5ce85cf6a238ce3291d7e296ba74e735970c5e64
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950300"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469872"
 ---
 # <a name="2---create-and-load-search-index-with-javascript"></a>2 - JavaScript を使用して検索インデックスを作成して読み込む
 
@@ -96,6 +96,14 @@ Visual Studio Code 拡張機能を使用して、自分の Search リソース�
 1. [インデックス]、[ドキュメント]、`good-books` の順に展開してから、ドキュメントを選択して、ドキュメント固有のデータをすべて表示します。
  
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-search-extension-view-docs.png" lightbox="media/tutorial-javascript-create-load-index/visual-studio-code-search-extension-view-docs.png" alt-text="[インデックス]、&quot;good-books&quot; の順に展開してから、ドキュメントを選択します。":::
+
+## <a name="rollback-bulk-import-file-changes"></a>一括インポート ファイルの変更をロールバックする
+
+次の git コマンドを VS Code 統合ターミナルの `bulk-insert` ディレクトリで使用して、変更をロールバックします。 これらはチュートリアルを続ける上で必要ありません。これらのシークレットをリポジトリに保存したりプッシュしたりしないでください。 
+
+```git
+git checkout .
+```
 
 ## <a name="copy-your-search-resource-name"></a>Search リソース名をコピーする
 

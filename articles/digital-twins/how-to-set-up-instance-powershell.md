@@ -8,12 +8,12 @@ ms.date: 12/16/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fc7d1ca00f77ca5056c1ffd263c7bc810cd564bc
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: c52cd013d1a5d2cbde0ab88eac24d2fd3ef77d46
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783767"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613529"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>Azure Digital Twins インスタンスと認証を設定する (PowerShell)
 
@@ -37,10 +37,10 @@ ms.locfileid: "109783767"
        1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して、Azure アカウントに接続します。
     * Azure Cloud Shell を使用する場合は、次のようにします。
         1. Cloud Shell の詳細については、[Azure Cloud Shell の概要](../cloud-shell/overview.md)に関するページを参照してください。
-        1. ブラウザーで[このリンク](https://shell.azure.com)を開き、Cloud Shell ウィンドウを開きます。
+        1. [ブラウザーで Cloud Shell ウィンドウを開きます](https://shell.azure.com)。
         1. Cloud Shell アイコン バーで、PowerShell バージョンを実行するように設定されていることを確認します。
     
-            :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ":::
+            :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell バージョンの選択が表示されている、Azure portal の Cloud Shell ウィンドウのスクリーンショット。":::
     
 1. 複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプションを選択します。
 
@@ -127,9 +127,9 @@ Get-AzADUser -UserPrincipalName <Azure-AD-user-principal-name-of-user-to-assign>
 
 ```azurepowershell-interactive
 $Params = @{
-  ObjectId = '<Azure-AD-user-object-id-of-user-to-assign>'
+  ObjectId = '<Azure-AD-user-object-ID-of-user-to-assign>'
   RoleDefinitionName = 'Azure Digital Twins Data Owner'
-  Scope = '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DigitalTwins/digitalTwinsInstances/<name-for-your-Azure-Digital-Twins-instance>'
+  Scope = '/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.DigitalTwins/digitalTwinsInstances/<name-for-your-Azure-Digital-Twins-instance>'
 }
 New-AzRoleAssignment @Params
 ```

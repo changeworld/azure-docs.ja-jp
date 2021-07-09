@@ -7,17 +7,17 @@ ms.manager: nitinme
 ms.author: aahi
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 04/21/2021
-ms.openlocfilehash: 957da9d5d26e5e7eaf27433807f700f4d3243765
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 05/28/2021
+ms.openlocfilehash: 6eb5e54f2c1d8a4e7d05204fcfa111ddcb9f951a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897687"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692675"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 
-クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。
+クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。 現在、移行を完了する期限はありません。
 
 **一般公開状態** - この V3 API には、V2 API から大幅に変更された JSON の要求と応答が含まれています。
 

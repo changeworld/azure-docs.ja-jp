@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: b6b15d39616db88af9c8ccebd1d739c734a714c8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9f6fe063faa9abfa59d7999da17940aae9ccd264
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373159"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463182"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>チュートリアル: GitOps を使用して Azure Arc 対応 Kubernetes クラスターに構成をデプロイする 
 
@@ -181,6 +181,9 @@ Flux オペレーターは、SSH 接続を確立する前に Git リポジトリ
 Flux でリポジトリに書き込む必要がなく、`--git-user` または `--git-email` が設定されていない場合は、`--git-readonly` が自動的に設定されます。
 
 詳細については、[Flux のドキュメント](https://aka.ms/FluxcdReadme)を参照してください。
+
+>[!NOTE]
+> Flux の既定では、git リポジトリの `master` ブランチから同期されます。 ただし、新しい git リポジトリには `main` という名前のルート ブランチがあり、その場合は `--git-branch=main` を --operator-params で設定する必要があります。 
 
 > [!TIP]
 > 構成は、Azure portal の Azure Arc 対応 Kubernetes リソースの **[GitOps]** タブで作成できます。

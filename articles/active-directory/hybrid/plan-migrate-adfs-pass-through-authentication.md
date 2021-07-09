@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10c4c0e6e40636e4803e054155d6fdaa12a9366
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba41c8e7c63888212a9a59c33e0d7efb2b9fb54d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858554"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965965"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパススルー認証に移行する
 
@@ -144,7 +144,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 認証を行うユーザーが企業ネットワーク内に存在する場合、AD FS によって **InsideCorporateNetwork** 要求が発行されます。 その後、この要求を Azure AD に渡すことができます。 要求は、ユーザーのネットワークの場所に基づいて多要素認証をバイパスするために使用されます。 現在、AD FS でこの機能を利用できるかどうかを判断する方法については、「[フェデレーション ユーザー用の信頼できる IP](../authentication/howto-mfa-adfs.md)」を参照してください。
 
-ドメインがパススルー認証に変換された後、**InsideCorporateNetwork** 要求は使用できません。 この機能の代わりに、[Azure AD のネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)を使用できます。
+ドメインがパススルー認証に変換された後、**InsideCorporateNetwork** 要求は使用できません。 この機能の代わりに、[Azure AD のネームド ロケーション](../conditional-access/location-condition.md)を使用できます。
 
 ネームド ロケーションを構成した後は、ネットワークの **[すべての信頼できる場所]** または **[MFA の信頼できる IP]** の値を含めるか除外するために構成されたすべての条件付きアクセス ポリシーを、新しいネームド ロケーションを反映するように更新する必要があります。
 

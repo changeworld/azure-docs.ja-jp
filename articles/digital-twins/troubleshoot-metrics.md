@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ffae474f6de5de7715585f0606a9630b136a2c37
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ae3c214cb1e1d58098dddd29a31d6403aa2e42c6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092136"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475623"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -28,18 +28,18 @@ ms.locfileid: "110092136"
 
     インスタンスのメニューから、 **[メトリック]** を選択します。
    
-    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Azure Digital Twins の [メトリック] ページが示されているスクリーンショット":::
+    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Azure portal で Azure Digital Twins の [メトリック] ページが表示されたスクリーンショット。":::
 
     このページには、Azure Digital Twins インスタンスのメトリックが表示されます。 また、リストから表示したいメトリックを選択して、メトリックのカスタム ビューを作成することもできます。
     
 3. メトリック データを Event Hubs エンドポイントまたは Azure Storage のアカウントに送信するように選択するには、メニューから **[診断設定]** 、 **[診断設定の追加]** の順に選択します。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが示されているスクリーンショット":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Azure portal で [診断設定] ページと追加するボタンが表示されたスクリーンショット。":::
 
     このプロセスの詳細については、[トラブルシューティング: 診断の設定](troubleshoot-diagnostics.md)に関するページを参照してください。
 
 4. メニューから **[アラート]** を選択し、 **[+ 新しいアラート ルール]** を選択することで、メトリック データのアラートを設定できます。
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="[アラート] ページと追加するボタンを示すスクリーンショット":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Azure portal で [アラート] ページと追加するボタンが表示されたスクリーンショット。":::
 
     このプロセスの詳細については、[トラブルシューティング: アラートの設定](troubleshoot-alerts.md)に関するページを参照してください。
 

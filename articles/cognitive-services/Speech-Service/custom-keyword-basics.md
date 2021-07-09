@@ -12,12 +12,12 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1ec49ca9ee9d0adcbae97eae2e4093274a524c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021951"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099642"
 ---
 # <a name="get-started-with-custom-keyword"></a>Custom Keyword の概要
 
@@ -39,7 +39,7 @@ ms.locfileid: "95021951"
 
 1. [[カスタム キーワード]](https://aka.ms/sdsdk-wakewordportal) ページで **[新しいプロジェクト]** を作成します。 
 
-1. **[名前]** と任意で **[説明]** を入力し、言語を選択します。 プロジェクトは言語あたり 1 つ必要になります。現在のところ、サポートは `en-US` 言語に限定されています。
+1. **[名前]** と任意で **[説明]** を入力し、言語を選択します。 言語ごとに 1 つのプロジェクトが必要であり、現在、サポートは英語 (米国) と中国語 (標準、簡体字) に制限されています。
 
     ![キーワード プロジェクトについて説明する](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "95021951"
 
 1. 新しいキーワード モデルを作成するには、 **[モデルのトレーニング]** をクリックします。
 
-1. モデルの **[名前]** 、 **[説明]** (省略可能)、および任意の **[キーワード]** を入力し、 **[次へ]** をクリックします。 効果的なキーワードを選択する方法については、[ガイドライン](./custom-keyword-overview.md#choose-an-effective-keyword)を参照してください。
+1. モデルの **[名前]** 、 **[説明]** (省略可能)、および任意の **[キーワード]** を入力し、 **[次へ]** をクリックします。 効果的なキーワードを選択する方法については、[ガイドライン](keyword-recognition-guidelines.md#choosing-an-effective-keyword)を参照してください。
 
     ![キーワードを入力する](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "95021951"
 
 1. ダウンロードしたファイルは `.zip` アーカイブです。 アーカイブを抽出すると、`.table` 拡張子を持つファイルが表示されます。 これは、次のセクションの SDK で使用するファイルであるため、パスをメモしておいてください。 ファイル名にはキーワード名が反映されます。たとえば、**Activate device** というキーワードのファイル名は `Activate_device.table` になります。
 
-## <a name="use-a-keyword-model-with-the-sdk"></a>SDK でのキーワード モデルの使用
+## <a name="use-a-keyword-model-with-the-speech-sdk"></a>Speech SDK でのキーワード モデルの使用
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
@@ -77,6 +77,7 @@ ms.locfileid: "95021951"
 [!INCLUDE [ObjectiveC/Swift Basics include](includes/how-to/keyword-recognition/keyword-basics-objc.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-カスタム キーワードを [Speech Devices SDK クイックスタート](./speech-devices-sdk-quickstart.md?pivots=platform-android)でテストする。
+> [!div class="nextstepaction"]
+> [Speech SDK を取得する](speech-sdk.md)

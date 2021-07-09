@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/13/2021
+ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 650df4d85d01b9617e094faf4cf7952da1f8eb9f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ac95a6eecba6311f81b4dc871775c99698be2244
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134513"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467203"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cerby"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Cerby の統合
 
@@ -96,13 +96,14 @@ Cerby に対して Azure AD SSO を構成してテストするには、次の手
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Cerby クライアント サポート チーム](mailto:help@cerby.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. Cerby アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[Name]\(名前\)** の既定値は **user.userprincipalname** ですが、Cerby では、これをユーザーの名にマップすることが求められます。 そのため、一覧の **user.givenname** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![image](common/default-attributes.png)
 
-1. **[Cerby のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -129,7 +130,7 @@ Cerby に対して Azure AD SSO を構成してテストするには、次の手
 
 ## <a name="configure-cerby-sso"></a>Cerby の SSO の構成
 
-**Cerby** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Cerby サポート チーム](mailto:help@cerby.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+Cerby 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Cerby サポート チーム](mailto:help@cerby.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-cerby-test-user"></a>Cerby のテスト ユーザーの作成
 

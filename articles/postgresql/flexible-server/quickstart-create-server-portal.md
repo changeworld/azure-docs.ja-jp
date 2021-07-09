@@ -6,13 +6,13 @@ ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/22/2020
-ms.openlocfilehash: 6d10298b016cbcf362af2d272f9fa822db6e569d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/02/2021
+ms.openlocfilehash: b4fed0e26043e645ece4f35af8b721d858426672
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604755"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111406993"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>クイック スタート:Azure portal 内で Azure Database for PostgreSQL - フレキシブル サーバーを作成する
 
@@ -51,7 +51,10 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
     ---|---|---
     サブスクリプション|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択します。
     Resource group|*myresourcegroup*| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
-    サーバー名 |*mydemoserver*|Azure Database for PostgreSQL サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 *postgres.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 3 文字以上 63 文字以内にする必要があります。
+    ワークロードの種類|既定の SKU の選択|[開発] (バースト可能 SKU)、[実稼働 (小規模/中規模)​] (汎用 SKU)、[実稼働 (大規模)] (メモリ最適化された SKU) のいずれかを選択できます。 SKU とストレージをさらにカスタマイズするには、 *[サーバーの構成]* リンクをクリックします。
+    可用性ゾーン|好みの AZ|サーバーを展開する可用性ゾーンを選択できます。 これは、アプリケーションと併置する場合に便利です。 *[優先設定なし]* を選択した場合は、既定の AZ が選択されます。
+    高可用性|ゾーン冗長デプロイを有効にする| このオプションを選択すると、プライマリと同じ構成のスタンバイ サーバーが、同じリージョン内の別の可用性ゾーンに自動的にプロビジョニングされます。 注: サーバー作成後でも高可用性を有効または無効にできます。
+    サーバー名 |*mydemoserver-pg*|Azure Database for PostgreSQL サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 *postgres.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 3 文字以上 63 文字以内にする必要があります。
     管理者ユーザー名 |*myadmin*| サーバーに接続するときに使用する独自のログイン アカウント。 管理者のログイン名に **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest**、または **public** は使用できません。 **pg_** で始めることはできません。
     Password |お使いのパスワード| サーバー管理者アカウントの新しいパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
     場所|ユーザーに最も近いリージョン| ユーザーに最も近い場所。
@@ -70,6 +73,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="[現在のクライアント IP アドレスを追加する] を選択する":::
 
+    プライベート アクセスを選択した場合 
 6. **[確認および作成]** を選択して、選択内容を確認します。 **[作成]** を選択して、サーバーをプロビジョニングします。 この操作には数分かかることがあります。
 
 7. ツール バーの **[通知]** アイコン (ベル) を選択して、デプロイ プロセスを監視します。 デプロイが完了したら、 **[ダッシュボードにピン留めする]** を選択できます。これにより、このサーバーのタイルが、サーバーの **[概要]** ページへのショートカットとして、Azure Portal ダッシュボードに作成されます。 **[リソースに移動]** を選択すると、サーバーの **[概要]** ページが開きます。
@@ -103,7 +107,7 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
    たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mydemoserver.postgres.database.azure.com** にある既定のデータベース **postgres** に接続します。 パスワードの入力を求められたら、選択した `<server_admin_password>` を入力します。
   
    ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin --dbname=postgres
+   psql --host=mydemoserver-pg.postgres.database.azure.com --port=5432 --username=myadmin --dbname=postgres
    ```
 
    接続されると、sql コマンドの入力を求める postgres プロンプトが psql ユーティリティによって表示されます。 初回接続時の出力には、使用している psql のバージョンが Azure Database for PostgreSQL サーバー側のバージョンと異なることが原因で、警告が表示されることがあります。
@@ -111,13 +115,14 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
    psql の出力例: 
 
    ```bash
-   psql (11.3, server 12.1)
-   WARNING: psql major version 11, server major version 12.
-            Some psql features might not work.
-   SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+   psql (12.3 (Ubuntu 12.3-1.pgdg18.04+1), server 13.2)
+   WARNING: psql major version 12, server major version 13.
+         Some psql features might not work.
+   SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
    Type "help" for help.
 
    postgres=>
+
    ```
 
    > [!TIP]
