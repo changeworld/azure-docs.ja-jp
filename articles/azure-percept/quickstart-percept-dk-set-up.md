@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 1b844eb66a287e103e453e242bec407b2f3a38e6
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 94c1bc1b5dc61ac30d2adfb1bc42e13128de054d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788411"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105554"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK を設定し、最初の AI モデルをデプロイする
 
@@ -64,7 +64,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
     > [!WARNING]
     > Azure Percept DK Wi-Fi のアクセスポイントに接続している間は、ホスト コンピューターのインターネット接続が一時的に失われます。 アクティブなビデオ会議通話や Web ストリーミングといったネットワークベースのエクスペリエンスは中断されます。
 
-1. 開発キットの Wi-Fi アクセス ポイントに接続すると、ホスト コンピューターで自動的に新しいブラウザー ウィンドウのアドレス バーに「**your.new.device/** 」が入力され、セットアップ エクスペリエンスが起動します。 タブが自動的に開かない場合は、[http://10.1.1.1](http://10.1.1.1) に移動してセットアップ エクスペリエンスを起動してください。 Azure Percept で使用する予定の Azure アカウント資格情報でブラウザーがサインインしていることを確認してください。
+1. 開発キットの Wi-Fi アクセス ポイントに接続すると、ホスト コンピューターで自動的に新しいブラウザー ウィンドウのアドレス バーに「**your.new.device/** 」が入力され、セットアップ エクスペリエンスが起動します。 タブが自動的に開かない場合は、Web ブラウザーで [http://10.1.1.1](http://10.1.1.1) に移動してセットアップ エクスペリエンスを起動してください。 Azure Percept で使用する予定の Azure アカウント資格情報でブラウザーがサインインしていることを確認してください。
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-01-welcome.png" alt-text="ウェルカム ページ。":::
 
@@ -148,7 +148,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 1. **[デバイスのセットアップが完了しました]** ページが表示されたら、開発キットは正常に IoT ハブにリンクされ、必要なソフトウェアがダウンロードされています。 開発キットは正常に IoT ハブにリンクされ、必要なソフトウェアがダウンロードされています。 開発キットが Wi-Fi アクセス ポイントから自動的に切断されて、これら 2 つの通知が表示されます。
 
     > [!NOTE]
-    > このセットアップ プロセスの一環として構成される IoT Edge コンテナーでは、90 日後に期限切れになる証明書を使用します。 証明書は、IoT Edge を再起動することによって自動的に再生成できます。 詳細については、「[IoT Edge デバイスで証明書を管理する](https://docs.microsoft.com/azure/iot-edge/how-to-manage-device-certificates)」を参照してください。
+    > このセットアップ プロセスの一環として構成される IoT Edge コンテナーでは、90 日後に期限切れになる証明書を使用します。 証明書は、IoT Edge を再起動することによって自動的に再生成できます。 詳細については、「[IoT Edge デバイスで証明書を管理する](../iot-edge/how-to-manage-device-certificates.md)」を参照してください。
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="セットアップ エクスペリエンスの切断に関する警告。":::
 
@@ -170,7 +170,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 
 1. **[View your device stream]\(デバイス ストリームの表示\)** をクリックします。 デバイスのビデオ ストリームを表示するのが初めてである場合、新しいモデルがデプロイされているという通知が右上隅に表示されます。 これには数分かかることがあります。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-1-start-video-stream.png" alt-text="ビデオ ストリームを表示します。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/view-stream.png" alt-text="ビデオ ストリームを表示します。":::
 
     モデルがデプロイされると、 **[ストリームを表示します]** リンクを含んだもう 1 つの通知が表示されます。 リンクをクリックすると、Azure Percept Vision カメラからのビデオ ストリームが新しいブラウザー ウィンドウに表示されます。 開発キットには、多くの一般的な物体の物体検出を自動的に実行する AI モデルが事前に読み込まれています。
 
@@ -178,7 +178,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 
 1. Azure Percept Studio には、サンプル AI モデルも数多く備わっています。 開発キットにサンプル モデルをデプロイするためには、デバイス ページに戻って **[サンプル モデルのデプロイ]** をクリックします。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-04-explore-prebuilt.png" alt-text="事前構築済みモデルについて説明します。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/deploy-sample-model.png" alt-text="事前構築済みモデルについて説明します。":::
 
 1. ライブラリからサンプル モデルを選択し、 **[デバイスへのデプロイ]** をクリックします。
 

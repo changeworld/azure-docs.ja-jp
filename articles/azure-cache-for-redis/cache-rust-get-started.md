@@ -7,16 +7,22 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 17f38d79b75179d7a54ca5ed1d20dff18d0a0363
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: acbf5933f01a465ad1855c049796901da5d1ff90
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121101"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059736"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>クイックスタート: Rust で Azure Cache for Redis を使用する
 
-この記事では、[Rust プログラミング言語](https://www.rust-lang.org/)を使用して [Azure Cache for Redis](./cache-overview.md) を操作する方法について説明します。 [String](https://redis.io/topics/data-types-intro#redis-strings)、[Hash](https://redis.io/topics/data-types-intro#redis-hashes)、[List](https://redis.io/topics/data-types-intro#redis-lists) など、Redis でよく用いられるデータ構造の例を、 Redis 向け [redis-rs](https://github.com/mitsuhiko/redis-rs) ライブラリを使用して紹介します。 このクライアントは、高レベルと低レベルの両方の API を公開しています。この記事で提示されているサンプル コードを頼りに、その両方のスタイルの動作をご確認いただけます。
+この記事では、[Rust プログラミング言語](https://www.rust-lang.org/)を使用して [Azure Cache for Redis](./cache-overview.md) を操作する方法について説明します。 よく使用される Redis データ構造についても説明します。 
+
+* [String](https://redis.io/topics/data-types-intro#redis-strings) 
+* [ハッシュ](https://redis.io/topics/data-types-intro#redis-hashes) 
+* [リスト](https://redis.io/topics/data-types-intro#redis-lists) 
+
+このサンプルの Redis には、[redis-rs](https://github.com/mitsuhiko/redis-rs) ライブラリを使用します。 このクライアントでは、高レベルと低レベルの両方の API が公開され、両方のスタイルの動作を確認できます。
 
 ## <a name="skip-to-the-code-on-github"></a>GitHub のコードにスキップする
 
@@ -39,7 +45,7 @@ ms.locfileid: "102121101"
 
 Azure Cache for Redis への接続を確立するには、`connect` 関数を使用します。 ホスト名とパスワード (アクセス キー) をそれぞれ `REDIS_HOSTNAME` および `REDIS_PASSWORD` という環境変数で渡す必要があります。 接続 URL の形式は `rediss://<username>:<password>@<hostname>` です。Azure Cache for Redis は、[TLS バージョン 1.2 以上](cache-remove-tls-10-11.md)を使用した安全な接続しか受け付けません。
 
-[redis::Client::open](https://docs.rs/redis/0.19.0/redis/struct.Client.html#method.open) の呼び出しで基本的な検証が実行されると同時に、[get_connection()](https://docs.rs/redis/0.19.0/redis/struct.Client.html#method.get_connection) によって実際の接続が開始されます。パスワードの誤りなどなんらかの理由で接続に失敗した場合は、プログラムが停止します。
+[redis::Client::open](https://docs.rs/redis/0.19.0/redis/struct.Client.html#method.open) を呼び出すと基本的な検証が行われ、実際の接続は [get_connection()](https://docs.rs/redis/0.19.0/redis/struct.Client.html#method.get_connection) によって開始されます。 何らかの理由で接続が失敗した場合、プログラムは停止します。 たとえば、正しくないパスワードはそのような原因の 1 つとして考えられます。
 
 ```rust
 fn connect() -> redis::Connection {
@@ -56,7 +62,11 @@ fn connect() -> redis::Connection {
 }
 ```
 
-`basics` 関数には、[SET](https://redis.io/commands/set)、[GET](https://redis.io/commands/get)、[INCR](https://redis.io/commands/incr) の各コマンドが含まれています。 `SET` と `GET` には、低レベルの API が使用され、これによって `foo` という名前のキーの値を設定および取得します。 `INCRBY` コマンドは、高レベルの API を使用して実行されます。つまり、[incr](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.incr) によって、`counter` という名前のキーの値をインクリメント (増分値は `2`) した後、[get](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.get) を呼び出してそれを取得します。
+`basics` 関数によって、[SET](https://redis.io/commands/set)、[GET](https://redis.io/commands/get)、[INCR](https://redis.io/commands/incr) の各コマンドがカバーされます。 
+
+`SET` と `GET` には、低レベルの API が使用され、これによって `foo` という名前のキーの値を設定および取得します。 
+
+`INCRBY` コマンドは、高レベルの API を使用して実行されます。つまり、[incr](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.incr) によって `counter` という名前のキーの値が `2` だけインクリメントされた後、[get](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.get) の呼び出しによってそれが取得されます。
 
 ```rust
 fn basics() {
@@ -83,7 +93,7 @@ fn basics() {
 }
 ```
 
-以下のコード スニペットでは、Redis の `HASH` データ構造の機能を示しています。 [HSET](https://redis.io/commands/hset) は、Redis ドライバー (クライアント) に関する情報 (`name`、`version`、`repo`) を格納するために、低レベルの API を使用して呼び出されます。 たとえば、Rust ドライバー (このサンプル コードで使用されているもの) の詳細情報が [BTreeMap](https://doc.rust-lang.org/std/collections/struct.BTreeMap.html) 形式でキャプチャされて、低レベルの API に渡されます。 その後、その取得には、[HGETALL](https://redis.io/commands/hgetall) が使用されます。
+以下のコード スニペットでは、Redis の `HASH` データ構造の機能を示しています。 [HSET](https://redis.io/commands/hset) は、Redis ドライバー (クライアント) に関する情報 (`name`、`version`、`repo`) を格納するために、低レベルの API を使用して呼び出されます。 たとえば、Rust ドライバー (このサンプル コードで使用されているもの) の詳細情報が [BTreeMap](https://doc.rust-lang.org/std/collections/struct.BTreeMap.html) 形式でキャプチャされて、低レベルの API に渡されます。 その後、[HGETALL](https://redis.io/commands/hgetall) を使用してそれが取得されます。
 
 また、`HSET` は、高レベルの API を使用して実行することもできます。その際、タプルの配列を受け取る [hset_multiple](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.hset_multiple) を使用します。 その後、[hget](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.hget) を実行して、単一の属性の値 (この場合は `repo`) を取得します。
 
@@ -130,7 +140,7 @@ fn hash() {
 }
 ```
 
-以下の関数では、`LIST` データ構造の使い方を確認できます。 [LPUSH](https://redis.io/commands/lpush) を (低レベルの API で) 実行してリストにエントリを追加し、高レベルの [lpop](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.lpop) メソッドを使用して、そのエントリをリストから取得します。 次に、[rpush](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.rpush) メソッドを使用して、2 つのエントリをリストに追加した後、低レベルの [lrange](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.lrange) メソッドを使用してそれらを取得します。
+以下の関数では、`LIST` データ構造の使い方を確認できます。 [LPUSH](https://redis.io/commands/lpush) を (低レベルの API で) 実行してリストにエントリを追加し、高レベルの [lpop](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.lpop) メソッドを使用して、そのエントリをリストから取得します。 次に、[rpush](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.rpush) メソッドを使用して 2 つのエントリをリストに追加した後、低レベルの [lrange](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.lrange) メソッドを使用してそれらを取得します。
 
 ```rust
 fn list() {
@@ -197,7 +207,7 @@ fn set() {
 }
 ```
 
-以下の `sorted_set` 関数では、ソート済みセットのデータ構造を示します。 [ZADD](https://redis.io/commands/zadd) を (低レベルの API を使用して) 呼び出し、プレーヤー (`player-1`) のランダムな整数スコアを追加します。 次に、[zadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.zadd) メソッド (高レベルの API) を使用して、他のプレーヤー (`player-2` から `player-5`) と (ランダムに生成した) それぞれのスコアを追加します。 ソート済みセット内のエントリ数を [ZCARD](https://redis.io/commands/zcard) を使用して算出し、それを [ZRANGE](https://redis.io/commands/zrange) コマンド (低レベルの API を使用して呼び出します) に対する上限として使用して、プレーヤーとそのスコアを昇順で一覧表示します。
+以下の `sorted_set` 関数では、ソート済みセットのデータ構造を示します。 低レベルの API を使用して [ZADD](https://redis.io/commands/zadd) を呼び出し、プレーヤー (`player-1`) にランダムな整数スコアを追加します。 次に、[zadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.zadd) メソッド (高レベルの API) を使用して、他のプレーヤー (`player-2` から `player-5`) と (ランダムに生成した) それぞれのスコアを追加します。 並べ替えられたセット内のエントリの数は、[ZCARD](https://redis.io/commands/zcard) を使用して決定されます。 それを (低レベルの API を使用して呼び出される) [ZRANGE](https://redis.io/commands/zrange) コマンドに対する上限として使用して、プレーヤーとそのスコアを昇順で一覧表示します。
 
 ```rust
 fn sorted_set() {
@@ -247,7 +257,7 @@ fn sorted_set() {
     md "C:\git-samples"
     ```
 
-1. Git ターミナル ウィンドウ (Git Bash など) を開きます。 `cd` コマンドを使用して、サンプル アプリを複製する新しいフォルダーに移動します。
+1. Git ターミナル ウィンドウ (Git Bash など) を開きます。 `cd` を使用して、サンプル アプリをクローンする新しいフォルダーに移動します。
 
     ```bash
     cd "C:\git-samples"
@@ -328,7 +338,7 @@ fn sorted_set() {
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイック スタートで作成した Azure リソース グループとリソースを使い終わった場合は、課金されないようにそれらを削除することができます。
+リソース グループとリソースは、使い終わったら削除してかまいません。 このクイックスタートで作成したものを削除することで、それらに対する課金を回避できます。
 
 > [!IMPORTANT]
 > リソース グループを削除すると元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 保持したい既存のリソース グループに Azure Cache for Redis インスタンスを作成した場合は、キャッシュの **[概要]** ページから **[削除]** を選択して、キャッシュのみを削除できます。 
@@ -336,7 +346,7 @@ fn sorted_set() {
 リソース グループとその Redis Cache for Azure インスタンスを削除するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com) から、 **[リソース グループ]** を検索して選択します。
-1. **[名前でフィルター]** テキストボックスに、キャッシュ インスタンスを含むリソース グループの名前を入力し、検索結果からそれを選択します。 
+1. **[名前でフィルターしてください]** テキスト ボックスに、キャッシュ インスタンスが含まれているリソース グループの名前を入力します。 次に、それを検索結果から選択します。 
 1. リソース グループ ページで **[リソース グループの削除]** を選択します。
 1. リソース グループの名前を入力してから、 **[削除]** を選択します。
    

@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: a1e2833d49d519d563937783a64db6573414bad2
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 45a9a0821dec98637ade4940bee915483d5e9aa1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109805448"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112041676"
 ---
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 このセクションでは、Azure CLI を使用して IoT ハブとリソース グループを作成します。  Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 IoT ハブは、IoT アプリケーションとデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。
@@ -19,8 +19,14 @@ ms.locfileid: "109805448"
 IoT ハブとリソース グループを作成するには、次のようにします。
 
 1. CLI アプリを起動します。  このクイックスタートの以降の部分で CLI コマンドを実行するには、コマンド構文をコピーして CLI アプリに貼り付け、変数の値を編集して Enter キーを押します。
-    - Cloud Shell を使用する場合は、CLI コマンドの **[Try It]\(試してみる\)** ボタンを選択すると、分割されたブラウザー ウィンドウで Cloud Shell を起動できます。 または、別のウィンドウで Cloud Shell を開くには、[[Cloud Shell]](https://shell.azure.com/bash) のリンクを右クリックし、新しいタブで開くオプションを選択します。
-    - Azure CLI をローカルで使用している場合は、CLI コンソール アプリを起動し、Azure CLI にログインします。
+    - Cloud Shell を使用する場合は、CLI コマンドの **[Try It]\(試してみる\)** ボタンを選択すると、分割されたブラウザー ウィンドウで Cloud Shell が起動します。 また、別のブラウザー タブで [Cloud Shell](https://shell.azure.com/bash) を開くこともできます。
+    - Azure CLI をローカルで使用している場合は、CLI コンソール アプリを起動し、Azure CLI にサインインします。
+
+1. [az extension add](/cli/azure/extension?view=azure-cli-latest#az_extension_add) を実行して、*azure-iot* 拡張機能をインストールするか、最新バージョンにアップグレードします。
+
+    ```azurecli-interactive
+    az extension add --upgrade --name azure-iot
+    ```
 
 1. CLI アプリで [az group create](/cli/azure/group#az_group_create) コマンドを実行してリソース グループを作成します。 次のコマンドは、*myResourceGroup* という名前のリソース グループを *eastus* という場所に作成します。 
     >[!NOTE]
