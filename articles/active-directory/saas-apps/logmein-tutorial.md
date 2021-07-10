@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2021
 ms.author: jeedes
-ms.openlocfilehash: e5b28c70f19d651212cc7af54968ce60c6daeb38
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 09c46efab8eea797b10b2724c3c19c7b1b34c87f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125411"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467705"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logmein"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と LogMeIn の統合
 
@@ -80,6 +80,9 @@ LogMeIn に対する Azure AD SSO を構成してテストするには、次の�
 
     a. **[サインオン URL]** テキスト ボックスに、URL として「`https://authentication.logmeininc.com/login?service=https%3A%2F%2Fmyaccount.logmeininc.com`」と入力します。
 
+1. LogMeIn アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **[Unique User Identifier]\(一意のユーザー ID\)** は **user.userprincipalname** にマップされています。 LogMeIn アプリケーションでは、 **[Unique User Identifier]\(一意のユーザー ID\)** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+
+    ![image](common/default-attributes.png)
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 

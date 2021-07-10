@@ -5,13 +5,13 @@ author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 11/09/2020
-ms.openlocfilehash: 034f90adc46b541377f62ac66ea721a30ed48637
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 06/01/2021
+ms.openlocfilehash: a66af648abc0ae48c0a4fcc7eb33ab7c1351c41b
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742051"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371906"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>クイック スタート:データのコピー ツールを使用してデータをコピーする
 
@@ -57,48 +57,48 @@ ms.locfileid: "108742051"
 
 1. 作成が完了すると、 **[Data Factory]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
-:::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
-
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
+    
 ## <a name="start-the-copy-data-tool"></a>データのコピー ツールの起動
 
-1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。 
+1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
 
    ![[データのコピー] タイル](./media/doc-common-process/get-started-page.png)
 
-1. データのコピー ツールの **[プロパティ]** ページで、パイプラインの名前とその説明を指定できます。 **[次へ]** を選択します。 
+1. データのコピー ツールの **[プロパティ]** ページで、 **[タスクの種類]** に **[組み込みコピー タスク]** を選択して、 **[次へ]** を選択します。
 
    ![[プロパティ] ページ](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
+
 1. **[ソース データ ストア]** ページで、次の手順を実行します。
 
-    a. **[+ 新しい接続の作成]** をクリックして、接続を追加します。
+    1. **[+ 新しい接続の作成]** をクリックして、接続を追加します。
 
-    b. ソース接続用に作成するリンクされたサービスの種類を選択します。 このチュートリアルでは、**Azure Blob Storage** を使用します。 ギャラリーからそれを選択し、 **[続行]** を選択します。
+    1. ソース接続用に作成するリンクされたサービスの種類を選択します。 このチュートリアルでは、**Azure Blob Storage** を使用します。 ギャラリーからそれを選択し、 **[続行]** を選択します。
     
-    ![BLOB を選択する](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
+       ![BLOB を選択する](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ページで、リンクされたサービスの名前を指定します。 **[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択し、接続をテストして、 **[作成]** を選択します。 
+    1. **[新しい接続 (Azure Blob Storage)]** ページで、接続の名前を指定します。 **[Azure サブスクリプション]** の一覧から Azure サブスクリプションを選択し、 **[ストレージ アカウント名]** の一覧からストレージ アカウントを選択し、接続をテストしてから **[作成]** を選択します。 
 
-    ![Azure BLOB ストレージ アカウントの構成](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
+       ![Azure BLOB ストレージ アカウントの構成](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
-    d. 新しく作成したリンクされたサービスをソースとして選択し、 **[次へ]** をクリックします。
+    1. **[接続]** ブロックで新しく作成した接続を選択します。
+    1. **[ファイルまたはフォルダー]** セクションで **[参照]** を選択して、**adftutorial/input** フォルダーに移動します。**emp.txt** ファイルを選択し、 **[OK]** をクリックします。
+    1. ファイルをそのままコピーするため、 **[Binary copy]\(バイナリ コピー\)** チェック ボックスをオンにし、 **[次へ]** を選択します。
 
+       :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/source-data-store.png" alt-text="[ソース データ ストア] ページを示すスクリーンショット。":::
 
-1. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
+1. **[コピー先データ ストア]** ページで、次の手順を実行します。
+    1. **[接続]** ブロックで作成した **[AzureBlobStorage]** 接続を選択します。
 
-   a. **[参照]** をクリックして、**adftutorial/input** フォルダーに移動します。**emp.txt** ファイルを選択し、 **[選択]** をクリックします。 
+    1. **[フォルダー パス]** セクションで、フォルダー パスに「**adftutorial/output**」と入力します。
 
-   d. ファイルをそのままコピーするため、 **[Binary copy]\(バイナリ コピー\)** チェック ボックスをオンにし、 **[次へ]** を選択します。 
+       :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/destination-data-store.png" alt-text="[コピー先データ ストア] ページを示すスクリーンショット。":::
 
-   ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
+    1. 他の設定は既定値のままにして、 **[次へ]** を選択します。
 
+1. **[設定]** ページで、パイプラインの名前と説明を指定し、 **[次へ]** を選択して他の既定の構成を使用します。 
 
-1. **[Destination data store]\(コピー先データ ストア\)** ページで、作成した **Azure Blob Storage** のリンクされたサービスを選択し、 **[次へ]** を選択します。 
-
-1. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、フォルダー パスとして「**adftutorial/output**」と入力し、 **[次へ]** を選択します。 
-
-   ![[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/configure-sink-path.png) 
-
-1. **[設定]** ページで、 **[次へ]** を選択して、既定の構成を使用します。 
+    :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/settings.png" alt-text="設定ページを示すスクリーンショット。":::
 
 1. **[概要]** ページで、すべての設定を確認し、 **[次へ]** を選択します。 
 

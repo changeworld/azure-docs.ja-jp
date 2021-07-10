@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9ebc6e266c93e55bc250e8450356f8b695dd9080
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 37aa8c954f847002ad69fa17ee1f025049ec9bb6
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714994"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785779"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用して IoT 空間分析を実装する
 
@@ -24,7 +24,7 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 
 > [!div class="checklist"]
 > * 車の追跡データをログに記録するための Azure ストレージ アカウントを作成します。
-> * データ アップロード API を使用して Azure Maps Data Service (プレビュー) にジオフェンスをアップロードします。
+> * Data Upload API を使用して Azure Maps Data Service にジオフェンスをアップロードします。
 > * Azure IoT Hub でハブを作成して、デバイスを登録します。
 > * Azure Functions で関数を作成し、Azure Maps 空間分析に基づいてビジネス ロジックを実装します。
 > * Azure Event Grid 経由で Azure 関数から IoT デバイス テレメトリ イベントをサブスクライブします。
@@ -126,33 +126,28 @@ Azure Maps Data Upload API を使用してジオフェンスをアップロー�
 3. ビルダー タブで **POST** HTTP メソッドを選択し、次の URL を入力して、ジオフェンスを Data Upload API にアップロードします。 `{subscription-key}` を実際のプライマリ サブスクリプション キーに必ず置き換えてください。
 
     ```HTTP
-    https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     URL パス内の `dataFormat` パラメーターに対する `geojson` 値は、アップロードするデータの形式を表します。
 
 4. 入力形式として **[本文]**  >  **[raw]\(未加工\)** を選択し、ドロップダウンリストから **[JSON]** を選択します。 [JSON データ ファイルを開き](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)、JSON を body セクションにコピーします。 **[Send]** を選択します。
 
-5. **[Send]\(送信\)** を選択し、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Location** キーの値である `status URL` をコピーします。
+5. **[Send]\(送信\)** を選択し、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Operation-Location** キーの値である `status URL` をコピーします。
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
+    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
     ```
 
 6. API 呼び出しの状態を確認するには、`status URL` に対して **GET** HTTP 要求を作成します。 認証のために、プライマリ サブスクリプション キーを URL に追加する必要があります。 **GET** 要求は次の URL のようになります。
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={subscription-key}
+   https://us.atlas.microsoft.com/mapData/<operationId>/status?api-version=2.0&subscription-key={subscription-key}
    ```
-   
-7. **GET** HTTP 要求が正常に完了すると、`resourceLocation` が返されます。 `resourceLocation` には、アップロードされたコンテンツの一意の `udid` が格納されます。 このチュートリアルで後ほど使用するので、この `udid` をコピーしておきます。
 
-      ```json
-      {
-          "status": "Succeeded",
-          "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
-      }
-      ```
+7. 要求が正常に完了したら、応答ウィンドウの **[Headers]\(ヘッダー\)** タブを選択します。 **Resource-Location** キーの値である `resource location URL` をコピーします。  `resource location URL` には、アップロードされたデータの一意の識別子 (`udid`) が含まれています。 このチュートリアルで後から使用するので、`udid`をコピーしておきます。
+
+    :::image type="content" source="./media/tutorial-iot-hub-maps/resource-location-url.png" alt-text="リソースの場所の URL をコピーする。":::
 
 ## <a name="create-an-iot-hub"></a>IoT ハブを作成する
 

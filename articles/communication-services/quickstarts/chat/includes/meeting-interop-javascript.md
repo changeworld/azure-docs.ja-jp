@@ -5,13 +5,29 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8efdb20b463e9021f298597cd94dabbdbf9e62c0
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 2fb04acd75d607772b6582882b98f9ed222f070c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109663869"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430053"
 ---
+このクイックスタートでは、JavaScript 用 Azure Communication Services Chat SDK を使用して Teams 会議でチャットする方法について説明します。
+
+> [!NOTE]
+> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting) にあります
+
+## <a name="prerequisites"></a>前提条件 
+
+*  [Teams のデプロイ](/deployoffice/teams-install)。 
+* 実際に動作する[チャット アプリ](../get-started.md)。 
+
+## <a name="enable-teams-interoperability"></a>Teams の相互運用性を有効にする 
+
+ゲスト ユーザーとして Teams に参加している Communication Services ユーザーは、Teams の会議通話に参加したときにのみ会議のチャットにアクセスできます。 Communication Services ユーザーを Teams の会議通話に追加する方法については、[Teams の相互運用性](../../voice-video-calling/get-started-teams-interop.md)に関するドキュメントを参照してください。
+
+この機能を使用するには、両方のエンティティの所有組織のメンバーである必要があります。
+
 ## <a name="joining-the-meeting-chat"></a>会議チャットへの参加 
 
 Teams の相互運用性が有効になると、Communication Services ユーザーは、Calling SDK を使用して外部ユーザーとして Teams の通話に参加できます。 通話に参加すると、会議チャットにも参加者として追加されます。会議チャットでは、通話の他のユーザーとメッセージを送受信できます。 ユーザーは、通話に参加する前に送信されたチャット メッセージにはアクセスできません。 会議に参加してチャットを開始するには、次の手順に従います。
@@ -62,7 +78,7 @@ npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-d
 
 index.html のコードを次のスニペットに置き換えます。
 ページの上部にあるテキスト ボックスは、Teams 会議のコンテキストと会議スレッド ID を入力するために使用されます。 [Join Teams Meeting]\(Teams の会議に参加\) ボタンは、指定した会議に参加するために使用します。
-ページの下部にチャットのポップアップが表示されます。 これは、会議スレッドでメッセージを送信するために使用でき、ACS ユーザーがメンバーである間にそのスレッドで送信されたメッセージがリアルタイムで表示されます。
+ページの下部にチャットのポップアップが表示されます。 これは、会議スレッドでメッセージを送信するために使用でき、Communication Services ユーザーがメンバーである間にそのスレッドで送信されたメッセージがリアルタイムで表示されます。
 
 ```html
 <!DOCTYPE html>
@@ -327,9 +343,9 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 ブラウザーを開き、http://localhost:8080/ に移動します。 次のように表示されます。
 
-:::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
+:::image type="content" source="../join-teams-meeting-chat-quickstart.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
 
-Teams 会議のリンクとスレッド ID を各テキスト ボックスに挿入します。 Teams 会議に参加するには、 *[Join Teams Meeting]\(Teams の会議に参加\)* を押します。 ACS ユーザーが会議への参加を許可されたら、Communication Services アプリケーション内からチャットを行うことができます。 チャットを開始するには、ページの下部にあるボックスに移動します。
+Teams 会議のリンクとスレッド ID を各テキスト ボックスに挿入します。 Teams 会議に参加するには、 *[Join Teams Meeting]\(Teams の会議に参加\)* を押します。 Communication Services ユーザーが会議への参加を許可されたら、Communication Services アプリケーション内からチャットを行うことができます。 チャットを開始するには、ページの下部にあるボックスに移動します。
 
 > [!NOTE] 
-> 現在、Teams との相互運用性のシナリオでは、メッセージの送受信と編集のみがサポートされています。 入力インジケーターや、Communication Services ユーザーが Teams 会議に他のユーザーを追加または削除するなどの機能は、まだサポートされていません。  
+> 現在、Teams との相互運用性のシナリオでは、メッセージの送受信と編集のみがサポートされています。 入力インジケーターや、Communication Services ユーザーが Teams 会議に他のユーザーを追加または削除するなどの機能は、まだサポートされていません。
