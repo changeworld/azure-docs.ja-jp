@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 94dab0124a1f5e0144aab2e271fbf89e02111d3a
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 25342ef6f7a79d91e91c59b88639318bfbf824e8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206801"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072930"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>クイック スタート:Azure IoT Central でデバイスのルールとアクションを構成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "108206801"
 
     :::image type="content" source="media/quick-configure-rules/condition.png" alt-text="ルールの条件を示すスクリーンショット":::
 
-1. ルールがトリガーされたときに実行するメール アクションを追加するには、 **[+ 電子メール]** を選択します。
+1. ルールがトリガーされたときに実行する電子メール アクションを追加するには、 **[アクション]** セクションで **[+ 電子メール]** を選択します。
 
 1. 次の表の情報を使用してアクションを定義してから、 **[完了]** を選択します。
 

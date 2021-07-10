@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 80f3af135f32bcb8fefd2d786da767e32a2f9368
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 55dcda4c323700caa030fb87768d36a702d1c501
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203669"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476756"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure Digital Twins のトラブルシューティング: 警告
 
@@ -36,7 +36,7 @@ Azure Digital Twins インスタンスに対してアラートを有効にする
 
 4. _[アラート ルールの作成]_ ボタンを選択して、アラート ルールを作成します。
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="スコープ、条件、アクション グループ、アラート ルールの詳細に関するセクションが表示された [アラート ルールの作成] ページを示すスクリーンショット" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="スコープ、条件、アクション グループ、アラート ルールの詳細に関するセクションが表示された [アラート ルールの作成] ページを示す Azure portal のスクリーンショット。" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 これらのフィールドへの入力方法のガイド付きチュートリアルについては、「[Microsoft Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」をご覧ください。 以下に、Azure Digital Twins の手順の例をいくつか示します。
 
@@ -44,19 +44,19 @@ Azure Digital Twins インスタンスに対してアラートを有効にする
 
 Azure Digital Twins で使用できるアラート シグナルの種類を示す *条件の選択* プロセスからの抜粋を次に示します。 このページでは、シグナルの種類をフィルター処理し、一覧から目的のシグナルを選択できます。
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="最初の [シグナル ロジックの構成] ページを示すスクリーンショット。メトリックまたはアクティビティ ログを選択する [シグナルの種類] ボックスとその下の選択可能なメトリックの一覧が強調表示されています":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="最初の [シグナル ロジックの構成] ページを示す Azure portal のスクリーンショット。[シグナルの種類] ボックスとメトリックの一覧が強調表示されています。":::
 
 シグナルを選択すると、アラートのロジックを構成するように求められます。 ディメンションをフィルター処理したり、アラートのしきい値を設定したり、条件をチェックする頻度を設定したりできます。 平均ルーティング エラー率メトリックが 5% を超えた場合のアラートの設定例を次に示します。
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="2 つ目の [シグナル ロジックの構成] ページを示すスクリーンショット。このページには、メトリックの履歴が表示され、Event Grid 操作などのディメンションをフィルター処理するための領域や、&quot;平均値は 5 より大きい&quot; などのアラート ロジックを定義するためのセクションがあります":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="2 つ目の [シグナル ロジックの構成] ページを示す Azure portal のスクリーンショット。":::
 
 ### <a name="verify-success"></a>成功を確認する
 
 アラートを設定すると、インスタンスの *[アラート]* ページに表示されます。
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="[アラート] ページと追加するボタンを示すスクリーンショット。1 つのアラートが構成されています" lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="[アラート] ページと追加するボタンを示す Azure portal のスクリーンショット。1 つのアラートが構成されています。" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Monitor でのアラートについて詳しくは、「[Microsoft Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」を参照してください。
 * Azure Digital Twins のメトリックについては、[トラブルシューティング: Azure Monitor でメトリックを表示する方法](troubleshoot-metrics.md)に関するページを参照してください。

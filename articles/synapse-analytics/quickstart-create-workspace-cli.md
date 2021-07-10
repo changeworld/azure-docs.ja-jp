@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d2b0bbe7bb1fbfcc3de0ef39fe0b31b11b6ff10
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676454"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407671"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Synapse ワークスペースを作成する
 

@@ -20,6 +20,12 @@ items:
         href: manage-kafka-dotnet.md
   - name: チュートリアル
     items:
+      - name: 大規模な Azure データ ソースのオンボード
+        items:
+          - name: 大規模な Azure データ ソースの準備チェック
+            href: tutorial-data-sources-readiness.md
+          - name: 大規模な Azure Purview MSI 構成
+            href: tutorial-msi-configuration.md
       - name: スタート キット
         items:
           - name: データのスキャン
@@ -196,6 +202,8 @@ items:
     items:
       - name: サポートされている分類
         href: supported-classifications.md
+      - name: Azure Purview 製品用語集
+        href: reference-purview-glossary.md
       - name: ABAP 関数のデプロイ ガイド
         href: abap-functions-deployment-guide.md
   - name: リソース

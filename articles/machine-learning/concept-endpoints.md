@@ -10,14 +10,14 @@ ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
 ms.date: 05/25/2021
-ms.openlocfilehash: 472af8cdb377ea5eb1be15ebcfadabb38311545a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bc1983a16ba2ec85dc943e10d7b2220b0de1dc88
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382663"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408535"
 ---
-# <a name="what-are-azure-machine-learning-endpoints-preview"></a>Azure Machine Learning エンドポイント (プレビュー) とは
+# <a name="what-are-azure-machine-learning-endpoints-preview"></a>Azure Machine Learning エンドポイント (プレビュー) とは 
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
@@ -140,7 +140,7 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 :::image type="content" source="media/concept-endpoints/endpoint-deployment-costs.png" alt-text="エンドポイントとデプロイのコスト グラフのスクリーンショット":::
 
 - コストを表示する 
-    - マネージド オンライン エンドポイントを使用すると、[エンドポイントとデプロイのレベルでコストを監視](how-to-view-online-endpoints-costs.md)できます
+    - マネージド オンライン エンドポイントを使用すると、[エンドポイントとデプロイのレベルでコストを監視](how-to-view-online-endpoints-costs.md)できます。
 
 ステップバイステップのチュートリアルについては、[マネージド オンライン エンドポイントをデプロイする方法](how-to-deploy-managed-online-endpoints.md)に関するページを参照してください。
 

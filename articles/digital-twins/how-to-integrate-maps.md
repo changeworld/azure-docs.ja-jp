@@ -2,18 +2,18 @@
 title: Azure Maps と統合する
 titleSuffix: Azure Digital Twins
 description: Azure Maps フロア ガイドを更新するために、ツイン グラフと Azure Digital Twins の通知を使用できる関数を Azure Functions で作成する方法を確認します。
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: b2b6e045a86fff7ba8a0d88a938fae93a0c6812a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 69a02db3eafa9c75808eece69ce8ed676adf0ab2
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790453"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615817"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
 
@@ -37,7 +37,7 @@ ms.locfileid: "109790453"
 
 次の図は、このチュートリアルの屋内マップの統合要素が、より大きなエンドツーエンドの Azure Digital Twins シナリオに該当する場所を示しています。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-integration-topology.png" alt-text="屋内マップの統合部分が強調表示されている、エンドツーエンドのシナリオにおける Azure サービスのビュー" lightbox="media/how-to-integrate-maps/maps-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-maps/maps-integration-topology.png" alt-text="Indoor Maps の統合部分が強調表示されている、エンドツーエンドのシナリオにおける Azure サービスの図。" lightbox="media/how-to-integrate-maps/maps-integration-topology.png":::
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>ツインの更新時にマップを更新する関数を作成する
 
@@ -67,7 +67,7 @@ ms.locfileid: "109790453"
     >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli) を使用します。 この件の詳細については、「[トラブルシューティング: Azure Digital Twins の既知の問題](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
 
     ```azurecli-interactive
-    az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
+    az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-a-function-to-update-maps"></a>マップを更新する関数を作成する
@@ -83,8 +83,8 @@ ms.locfileid: "109790453"
 関数アプリで 2 つの環境変数を設定する必要があります。 1 つは [Azure Maps のプライマリ サブスクリプション キー](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)で、もう 1 つは [Azure Maps の状態セット ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset) です。
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <your-App-Service-(function-app)-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
-az functionapp config appsettings set --name <your-App-Service-(function-app)-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
+az functionapp config appsettings set --name <your-App-Service-function-app-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
+az functionapp config appsettings set --name <your-App-Service-function-app-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
 ```
 
 ### <a name="view-live-updates-on-your-map"></a>マップでライブ更新を表示する
@@ -92,14 +92,14 @@ az functionapp config appsettings set --name <your-App-Service-(function-app)-na
 ライブ更新温度を表示するには、以下の手順に従います。
 
 1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ([チュートリアル:エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照)。 この手順は、「[シミュレーションを構成して実行する](././tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションにあります。
-2. [**Azure Maps Indoor** モジュール](../azure-maps/how-to-use-indoor-module.md)を使用して、Azure Maps Creator で作成された屋内マップをレンダリングします。
+2. [Azure Maps Indoor モジュール](../azure-maps/how-to-use-indoor-module.md)を使用して、Azure Maps Creator で作成された屋内マップをレンダリングします。
     1. 「[例: Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)」 (Indoor Maps の「[チュートリアル: Azure Maps の Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md)」に含まれるセクション) の HTML をローカル ファイルにコピーします。
     1. ローカル HTML ファイルの "*サブスクリプション キー*"、*tilesetId*、*statesetID* を、実際の値に置き換えます。
     1. ブラウザーでそのファイルを開きます。
 
 どちらのサンプルでも、互換性のある範囲で温度が送信されるので、マップには約 30 秒ごとに 121 号室の更新の色が表示されるはずです。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="121 号室がオレンジ色で表示されているオフィス マップ":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="121 号室がオレンジ色で表示されているオフィス マップのスクリーンショット。":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Azure Digital Twins にマップ情報を格納する
 

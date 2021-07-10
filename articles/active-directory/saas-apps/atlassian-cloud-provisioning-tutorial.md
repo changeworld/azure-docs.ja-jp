@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 691d35267c255c933a8098b99301fbb795a3cd0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 172ffe8b5028032c38f5c86a7289cef4250653a4
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181069"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614951"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>チュートリアル:Atlassian Cloud を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -104,7 +104,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Atlassian Cloud]** を選択します。
 
-9. **[属性マッピング]** セクションで、Azure AD から Atlassian Cloud に同期されるユーザー属性を確認します。 **[Matching]** プロパティとして選択されている属性は、更新処理で Atlassian Cloud のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+9. **[属性マッピング]** セクションで、Azure AD から Atlassian Cloud に同期されるユーザー属性を確認します。
+   メール属性は、Atlassian Cloud アカウントと Azure AD アカウントを照合するのに使用されます。
+   **[保存]** ボタンをクリックして変更をコミットします。
 
    |属性|Type|
    |---|---|
@@ -116,7 +118,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Atlassian Cloud]** を選択します。
 
-11. **[属性マッピング]** セクションで、Azure AD から Atlassian Cloud に同期されるグループ属性を確認します。 **[Matching]** プロパティとして選択されている属性は、更新処理で Atlassian Cloud のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+11. **[属性マッピング]** セクションで、Azure AD から Atlassian Cloud に同期されるグループ属性を確認します。
+    表示名属性は、Atlassian Cloud グループと Azure AD グループを照合するために使用されます。
+    **[保存]** ボタンをクリックして変更をコミットします。
 
       |属性|Type|
       |---|---|
@@ -134,7 +138,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
-16. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 

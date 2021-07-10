@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/13/2021
+ms.date: 05/28/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37118a84468743053e6f825bf982b3073c5545d3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 739c20cb39db5fda3a182bc4c5379d0bc9c4d06e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060808"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690329"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセス
 
@@ -26,7 +26,7 @@ Azure AD Identity Protection と条件付きアクセスを使用して、Azure 
 ![B2C テナントにおける条件付きアクセス](media/conditional-access-identity-protection-overview/conditional-access-b2c.png)
 
 > [!NOTE]
-> 条件付きアクセスを使用するには、Azure AD B2C Premium P2 が必要です。
+> 危険なサインインのポリシーを作成するには、Azure AD B2C **Premium 2** が必要です。 **Premium P1** のテナントでは、場所、アプリケーション、ユーザーベース、またはグループベースのポリシーに基づいてポリシーを作成できます。 詳細については、「[Azure AD B2C 価格レベルを変更する](billing.md#change-your-azure-ad-pricing-tier)」を参照してください。
 
 ## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセスの利点  
 

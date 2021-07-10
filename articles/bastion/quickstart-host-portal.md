@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: Azure Bastion を構成し、プライベート IP アドレスとブラウザーを使用して VM に接続する'
 titleSuffix: Azure Bastion
-description: このクイックスタートの記事では、仮想マシンから Azure Bastion ホストを作成し、ブラウザーを使用してプライベート IP アドレスで VM に安全に接続する方法について説明します。
+description: 仮想マシンから Azure Bastion ホストを作成し、ブラウザーを使用してプライベート IP アドレスで VM に安全に接続する方法について説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 53f09eed89f9667611ed4d5e0268c889609d560a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: e51d8633418a0a00afb8a6055c05f9c77d93f3cb
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553568"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110540455"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>クイックスタート: ブラウザーを使用してプライベート IP アドレスで VM に安全に接続する
 

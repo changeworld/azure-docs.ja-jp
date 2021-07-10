@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 8d23fd6b1b16f794e504b68f3b88d50b04922ba9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f56d1c305f5d18d82ae79781a7b60fd6b429357b
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068034"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613820"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -34,7 +34,7 @@ ms.locfileid: "110068034"
 
 このサンプル スクリプトは PowerShell で記述されています。 これは、[Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをマシンにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[コードの参照]* ボタンを選択します。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、.zip 形式でこれをダウンロードできます。
 
-:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリの図。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/includes/download-repo-zip.png":::
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="zip としてダウンロードするための手順を強調表示した GitHub のデジタル ツインのサンプル リポジトリを示すスクリーンショット。" lightbox="media/includes/download-repo-zip.png":::
 
 これにより、.zip フォルダーが **digital-twins-samples-master.zip** としてお使いのマシンにダウンロードされます。 お使いのコンピューター上のフォルダーに移動してこれを解凍し、ファイルを抽出します。
 
@@ -55,11 +55,11 @@ ms.locfileid: "110068034"
  
 2. Cloud Shell アイコン バーで、PowerShell バージョンを実行するように設定されていることを確認します。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell バージョンの選択が表示されている、Azure portal の Cloud Shell ウィンドウのスクリーンショット。":::
 
 1. [ファイルのアップロード/ダウンロード] アイコンを選択し、[アップロード] を選択します。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] アイコンが選択されていることを示す Cloud Shell ウィンドウ":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] アイコンの選択が表示されている、Azure portal の Cloud Shell ウィンドウのスクリーンショット。":::
 
     お使いのマシン上の _**deploy.ps1**_ ファイルに移動し (_digital-twins-samples-master > scripts > **deploy.ps1**_)、[開く] を選択します。 これにより、そのファイルが Cloud Shell にアップロードされ、Cloud Shell ウィンドウで実行できるようになります。
 
@@ -79,12 +79,12 @@ ms.locfileid: "110068034"
 
 このスクリプトからの出力ログの抜粋を次に示します。
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="デプロイ スクリプトの実行による入力と出力のログを示す Cloud Shell ウィンドウ" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="デプロイ スクリプトの実行による入力と出力のログを示す Azure portal の Cloud Shell ウィンドウのスクリーンショット。" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 スクリプトが正常に完了した場合は、最終的な出力として `Deployment completed successfully` が表示されます。 それ以外の場合は、エラー メッセージに対処してから、スクリプトを再実行します。 それにより、既に完了した手順はバイパスされ、前に中断された時点から再び入力の要求が開始されます。
 
 > [!NOTE]
-> このスクリプトは現在、Azure Digital Twins 内の必要な管理ロール (*Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)* ) を、Cloud Shell からスクリプトを実行している同じユーザーに割り当てています。 このロールを、このインスタンスを管理するだれか他のユーザーに割り当てる必要がある場合は、Azure portal ([手順](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) または CLI ([手順](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) を使用してこれを実行できます。
+> このスクリプトは現在、Azure Digital Twins 内の必要な管理ロール (*Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)* ) を、Cloud Shell からスクリプトを実行している同じユーザーに割り当てています。 このロールを、このインスタンスを管理するだれか他のユーザーに割り当てる必要がある場合は、[Azure portal の手順](how-to-set-up-instance-portal.md#set-up-user-access-permissions)または [CLI の手順](how-to-set-up-instance-cli.md#set-up-user-access-permissions)を使用してこれを実行できます。
 
 >[!NOTE]
 >現在のところ、スクリプト化されたセットアップには **既知の問題** があります。一部のユーザー (特に、個人の [Microsoft アカウント (MSA) のユーザー](https://account.microsoft.com/account)) に対して、**_Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)_ へのロールの割り当てを作成できない** ことがあります。
@@ -111,7 +111,7 @@ ms.locfileid: "110068034"
 
 [[Azure Digital Twins] ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances)からインスタンスの名前を選択して、インスタンスの *[概要]* ページを開きます。 その *[名前]* 、 *[リソース グループ]* 、 *[ホスト名]* をメモします。 これらは、後でそのインスタンスを識別して接続するために必要になる場合があります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="インスタンスの [概要] ページの重要な値の強調表示":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Azure Digital Twins インスタンスの [概要] ページで重要な値が強調表示されている Azure portal のスクリーンショット。":::
 
 ### <a name="verify-user-role-assignment"></a>ユーザー ロールの割り当てを確認する
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: f14883632e2a6cb741f86c7393bad3fb2305b397
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 94e060176b921529a42e28e8c735b0f1cdda5293
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161377"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075080"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
@@ -23,9 +23,9 @@ ms.locfileid: "108161377"
 
 このツールは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) に基づいています。 これにより、音声の特徴、音声スタイル、話す速度、発音、韻律などのテキスト読み上げ出力属性をリアルタイムまたはバッチ合成で調整できます。
 
-50 種類近くの言語にわたる 150 以上の事前構築済みの音声に簡単にアクセスできます。これには、最先端のニューラル TTS 音声や自分のカスタム音声 (作成済みの場合) が含まれます。
+60 種類以上の言語にわたる 150 以上の事前構築済みの音声に簡単にアクセスできます。これには、最先端のニューラル TTS 音声や自分のカスタム音声 (作成済みの場合) が含まれます。
 
-Audio Content Creation の[ビデオ チュートリアル](https://www.youtube.com/watch?v=O1wIJ7mts_w)を参照してください。
+Audio Content Creation の[ビデオ チュートリアル](https://youtu.be/ygApYuOOG6w)を参照してください。
 
 ## <a name="how-to-get-started"></a>開始方法
 
@@ -49,8 +49,10 @@ Azure アカウントにサインアップしたら、Speech サービスにア�
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>手順 3 - Azure アカウントと音声リソースを使用して Audio Content Creation にログインする
 
 1. Azure アカウントと音声リソースを取得したら、 **[Get started]\(作業の開始\)** をクリックして [Audio Content Creation](https://aka.ms/audiocontentcreation) にログインできます。
-2. **[Speech resource]\(音声リソース\)** ページが表示されます。 作業する音声リソースを選択します。 **[Go to Studio]\(Studio に移動\)** をクリックして、オーディオの作成を開始します。 ここで **[新規作成]** をクリックして、新しい音声リソースを作成することもできます。 Audio Content Creation ツールに次回ログインすると、ユーザーは現在の音声リソースの下のオーディオ作業ファイルに直接リンクされます。
-3. 上部のナビゲーションにある **[設定]** オプションを使用して、いつでも音声リソースを変更できます。
+2. ホーム ページでは、Speech Studio ですべての製品が一覧表示されます。 **[Audio Content Creation]** をクリックして開始します。
+3. **[Speech Studio へようこそ]** ページが表示され、そこで音声サービスについて設定できます。 Azure サブスクリプションと、作業する音声リソースを選択します。 **[リソースを使用する]** をクリックして設定を完了します。 Audio Content Creation ツールに次回ログインすると、ユーザーは現在の音声リソースの下のオーディオ作業ファイルに直接リンクされます。 Azure サブスクリプションの詳細と状態については、[Azure portal](https://portal.azure.com/) で確認できます。 Azure サブスクリプションの所有者または管理者であれば、使用可能な音声リソースがない場合に、 **[新しいリソースの作成]** をクリックして Speech Studio で新しい音声リソースを作成することもできます。 特定の Azure サブスクリプションのユーザー ロールである場合は、新しい音声リソースを作成するアクセス許可が付与されていない可能性があります。 音声リソースへのアクセスを取得するには、管理者にお問い合わせください。 
+4. 上部のナビゲーションにある **[設定]** オプションを使用して、いつでも音声リソースを変更できます。
+5. ディレクトリを切り替える場合は、 **[設定]** またはプロファイルに移動して操作してください。 
 
 ## <a name="how-to-use-the-tool"></a>ツールの使用方法
 
@@ -64,8 +66,9 @@ Azure アカウントにサインアップしたら、Speech サービスにア�
    > [!NOTE]
    > カスタム ニューラル音声には、ゲート アクセスを使用できます。これにより、自然な音声と同じような高品位の音声を作成できます。 詳細については、[ゲート プロセス](./text-to-speech.md)に関するページを参照してください。
 
-4. **[play]\(再生\)** アイコン (三角形) をクリックして、既定の合成出力をプレビューします。 次に、発音、切れ目、高低、速さ、抑揚、音声スタイルなどを調整して、出力を改善します。 オプションの完全な一覧については、「[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md)」を参照してください。 次の[ビデオ](https://www.youtube.com/watch?v=O1wIJ7mts_w)で、Audio Content Creation を使用して音声出力を微調整する方法を示します。
-5. [チューニングした音声を保存してエクスポートします](#export-tuned-audio)。 チューニング トラックをシステムに保存すると、作業を続行して出力を反復処理することができます。 出力に問題がなければ、エクスポート機能を使用して音声作成タスクを作成できます。 エクスポート タスクの状態を監視し、ご使用のアプリや製品で使用するための出力をダウンロードすることができます。
+4. プレビューするコンテンツを選択し、**再生** アイコン (三角形) をクリックして、既定の合成出力をプレビューします。 テキストに変更を加えた場合は、**停止** アイコンをクリックしてから、**再生** アイコンをもう一度クリックして、変更されたスクリプトでオーディオを再生成する必要があります。 
+5. 発音、切れ目、ピッチ、速さ、抑揚、音声スタイルなどを調整して、出力を改善します。 オプションの完全な一覧については、「[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md)」を参照してください。 次の[ビデオ](https://youtu.be/ygApYuOOG6w)で、Audio Content Creation を使用して音声出力を微調整する方法を示します。
+6. [チューニングした音声を保存してエクスポートします](#export-tuned-audio)。 チューニング トラックをシステムに保存すると、作業を続行して出力を反復処理することができます。 出力に問題がなければ、エクスポート機能を使用して音声作成タスクを作成できます。 エクスポート タスクの状態を監視し、ご使用のアプリや製品で使用するための出力をダウンロードすることができます。
 
 ## <a name="create-an-audio-tuning-file"></a>音声チューニング ファイルを作成する
 
@@ -73,7 +76,7 @@ Audio Content Creation ツールにコンテンツを取り込むには、2 つ�
 
 **オプション 1:**
 
-1. 右上にある **[新しいファイル]** アイコンをクリックして、新しいオーディオ チューニング ファイルを作成します。
+1. 新しい音声チューニング ファイルを作成するには、 **[新規]**  >  **[ファイル]** をクリックします。
 2. 編集ウィンドウに内容を入力するか貼り付けます。 各ファイルの文字数は最大 20,000 文字です。 スクリプトが 20,000 文字を超えている場合は、オプション 2 を使用して、内容を複数のファイルに自動的に分割できます。
 3. 忘れずに保存してください。
 
@@ -127,6 +130,9 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 複数のユーザーが Audio Content Creation を使用する場合は、そのユーザーに Azure サブスクリプションと音声リソースへのアクセス権を付与できます。 ユーザーを Azure サブスクリプションに追加した場合、そのユーザーはその Azure サブスクリプションの下のすべてのリソースにアクセスできます。 しかし、ユーザーをある音声リソースのみに追加した場合、ユーザーはその音声リソースにしかアクセスできず、この Azure サブスクリプションの下の他のリソースにはアクセスできません。 音声リソースへのアクセス権を持つユーザーは、Audio Content Creation を使用できます。
 
+ユーザーは [Microsoft アカウント](https://account.microsoft.com/account)を用意する必要があります。 ユーザーが Microsoft アカウントを持っていなくても、数分で作成できます。 ユーザーは、既存の電子メールを使用して Microsoft アカウントとリンクさせることも、新しい Outlook メールを作成して Microsoft アカウントとして使用することもできます。
+
+
 ### <a name="add-users-to-a-speech-resource"></a>ユーザーを音声リソースに追加する
 
 ユーザーを音声リソースに追加して Audio Content Creation を使用できるようにするには、これらの手順に従います。
@@ -134,13 +140,13 @@ Welcome to use Audio Content Creation to customize audio output for your product
 1. [Azure portal](https://portal.azure.com/) で **[Cognitive Services]** を検索し、ユーザーを追加する音声リソースを選択します。
 2. **[アクセス制御 (IAM)]** をクリックします。 **[ロールの割り当て]** タブをクリックして、このサブスクリプションのすべてのロールの割り当てを表示します。
     :::image type="content" source="media/audio-content-creation/access-control-roles.png" alt-text="[ロールの割り当て] タブ":::
-1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。 [ロール] ドロップダウン リストで、 **[Cognitive Service User]\(Cognitive Service ユーザー\)** ロールを選択します。 この音声リソースの所有権をユーザーに付与する場合は、 **[所有者]** ロールを選択します。
-1. リストからユーザーを選択します。 一覧にユーザーが表示されない場合には、[選択] ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。 ユーザーがこのディレクトリに存在しない場合は、そのユーザーの [Microsoft アカウント](https://account.microsoft.com/account) (Azure Active Directory によって信頼されている) を入力できます。
-1. **[保存]** をクリックしてロールを割り当てます。 しばらくすると、そのユーザーには、音声リソース スコープで Cognitive Service ユーザー ロールが割り当てられます。
+3. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。 [ロール] ドロップダウン リストで、 **[Cognitive Service User]\(Cognitive Service ユーザー\)** ロールを選択します。 この音声リソースの所有権をユーザーに付与する場合は、 **[所有者]** ロールを選択します。
+4. リストからユーザーを選択します。 一覧にユーザーが表示されない場合には、[選択] ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。 ユーザーがこのディレクトリに存在しない場合は、そのユーザーの [Microsoft アカウント](https://account.microsoft.com/account) (Azure Active Directory によって信頼されている) を入力できます。
+5. **[保存]** をクリックしてロールを割り当てます。 ユーザーは招待メールを受け取ります。 電子メールで **[招待を承諾]**  >  **[Azure への参加を承諾]** をクリックし、招待を受け入れます。 その後、ユーザーは Azure portal にリダイレクトされます。 ユーザーが Azure portal で行う必要のあるアクションはありません。
+6. しばらくすると、そのユーザーには、音声リソース スコープで Cognitive Service ユーザー ロールが割り当てられます。 ユーザーは [[Audio Content Creation]](https://aka.ms/audiocontentcreation) ページにアクセスするか、最新の情報に更新し、開始する音声リソースを選択できます。 
 
     :::image type="content" source="media/audio-content-creation/add-role-first.png" alt-text="ロールの追加ダイアログ":::
 
-1. 追加したユーザーには、招待メールが送信されます。 ユーザーが **[Accept invitation]\(招待を受け入れる\)**  >  **[Accept to join Azure]\(Azure への参加を承諾する\)** をクリックすると、[Audio Content Creation](https://aka.ms/audiocontentcreation) を使用できるようになります。
 
 同じ音声リソース内にいるユーザーは、Audio Content Creation スタジオでお互いの作業を見ることができます。 個々のユーザーに Audio Content Creation で固有のプライベート ワークプレースを使用させたい場合は、各ユーザーに対して[新しい音声リソースを作成](#step-2---create-a-speech-resource)し、各ユーザーにその音声リソースへの一意のアクセス権を付与してください。
 
@@ -156,7 +162,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 いずれかのユーザーが他のユーザーにアクセス権を付与できるようにする場合は、そのユーザーに音声リソースの所有者ロールを付与し、そのユーザーを Azure ディレクトリ閲覧者として設定する必要があります。
 1. ユーザーを音声リソースの所有者として追加します。 [ユーザーを音声リソースに追加する方法](#add-users-to-a-speech-resource)を参照してください。
     :::image type="content" source="media/audio-content-creation/add-role.png" alt-text="ロールの所有者フィールド":::
-1. 左上にある折りたたまれたメニューを選択します。 **[Azure Active Directory]** をクリックして、 **[ユーザー]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) で、左上にある折りたたまれたメニューを選択します。 **[Azure Active Directory]** をクリックして、 **[ユーザー]** をクリックします。
 1. ユーザーの Microsoft アカウントを検索し、ユーザーの詳細ページに移動します。 **[割り当てられたロール]** をクリックします。
 1. **[割り当ての追加]**  ->  **[ディレクトリ閲覧者]** をクリックします。
 

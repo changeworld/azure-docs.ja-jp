@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f8448b7abcc16d2151ec10dbab9028eb8c4e984
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f37699e9710acc9e4098fd38f0d9da0f50e65a58
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099283"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953972"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
@@ -87,10 +87,10 @@ Azure 関数で、次のようにマネージド ID の資格情報を使用で�
 
 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。 対話型認証が必要な場合には、これを `DefaultAzureCredential` の代わりに使用できます。
 
-対話型のブラウザー資格情報を使用するには、Azure Digital Twins API へのアクセス許可がある **アプリの登録** が必要になります。 このアプリの登録を設定する手順については、[方法:アプリ登録の作成](how-to-create-app-registration.md)に関するページを参照してください。 アプリの登録が設定されたら、次のものが必要になります。
-* アプリの登録の "*アプリケーション (クライアント) ID*" ([確認の手順](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* アプリの登録の "*ディレクトリ (テナント) ID*" ([確認の手順](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* Azure Digital Twins インスタンスの URL ([確認の手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+対話型のブラウザー資格情報を使用するには、Azure Digital Twins API へのアクセス許可がある **アプリの登録** が必要になります。 このアプリの登録を設定する手順については、[方法:アプリ登録の作成](./how-to-create-app-registration-portal.md)に関するページを参照してください。 アプリの登録が設定されたら、次のものが必要になります。
+* [アプリの登録のアプリケーション (クライアント) ID](./how-to-create-app-registration-portal.md#collect-client-id-and-tenant-id)
+* [アプリの登録のディレクトリ (テナント) ID](./how-to-create-app-registration-portal.md#collect-client-id-and-tenant-id)
+* [Azure Digital Twins インスタンスの URL](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)
 
 `InteractiveBrowserCredential` を使用して認証された SDK クライアントを作成するコードの例を次に示します。
 

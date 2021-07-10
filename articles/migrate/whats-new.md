@@ -7,16 +7,22 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 3f49c0acc99f82cc2986ca896d40b3998cf47c5c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: dadde132effe24fa1cdffd8830139573de4ee5d4
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835004"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439982"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
+## <a name="update-june-2021"></a>更新 (2021 年 6 月)
+- Azure Migrate を使用すると、SQL Server を実行するサーバーをレプリケーション時に SQL VM RP に登録して、SQL IaaS Agent 拡張機能を自動的にインストールできます。 この機能は、エージェントレス VMware、エージェントレス Hyper-V、エージェントベースの移行で使用できます。
+
+## <a name="update-may-2021"></a>更新 (2021 年 5 月)
+- OS ディスクが 4 TB までの VM と物理サーバーの移行が、エージェントベースの移行方法を使用してサポートされるようになりました。
 
 ## <a name="update-march-2021"></a>更新 (2021 年 3 月)
 - Azure Migrate アプライアンスでの複数のサーバー資格情報の指定によるインストールされているアプリケーション (ソフトウェア インベントリ) の検出、エージェントレスの依存関係分析、および VMware 環境の SQL Server インスタンスおよびデータベースの検出のサポート。 [詳細情報](tutorial-discover-vmware.md#provide-server-credentials)
@@ -59,7 +65,7 @@ ms.locfileid: "107835004"
 
 ## <a name="update-april-2020"></a>更新 (2020 年 4 月)
 
-Azure Migrate では、Azure Government へのデプロイがサポートされます。 
+Azure Migrate では、Azure Government へのデプロイがサポートされます。
 
 - VMware VM、Hyper-V VM、物理サーバーを検出して評価することができます。
 - VMware VM、Hyper-V VM、物理サーバーを Azure に移行できます。

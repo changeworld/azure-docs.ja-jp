@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/6/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 20afd0a696a2bbeda0e2fa8bb114ecb8b5b6a76b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f62e07bbc5b61ce07299f1d617b8aea1b331024e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205541"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475592"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Azure Digital Twins のトラブルシューティング: リソース ヘルス
 
@@ -30,7 +30,7 @@ Azure Resource Health は、Azure Digital Twins インスタンスが稼働し�
 
 2. インスタンスのメニューから、 *[サポートとトラブルシューティング]* の下にある _**[リソース正常性]**_ を選択します。 リソース正常性の履歴を確認できるページが表示されます。 
 
-    :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="[リソース正常性] ページを示すスクリーンショット。過去 9 日間の日時レポートが表示された [正常性の履歴] セクションがあります。毎日、&quot;使用可能&quot; の状態が示されています。":::
+    :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="[リソース正常性] ページが表示されているスクリーンショット。過去 9 日間の日次レポートが表示された [正常性の履歴] セクションがあります。":::
 
 上の図では、このインスタンスは "*使用可能*" と示されており、過去 9 日間分あります。 "*使用可能*" 状態と、表示される可能性のあるその他の状態の種類の詳細については、[Azure リソースの正常性の概要](../service-health/resource-health-overview.md)に関するページを参照してください。
 

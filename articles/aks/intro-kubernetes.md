@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 02/24/2021
 ms.custom: mvc
-ms.openlocfilehash: 1cddd39d0b95e021478235fcdafbacd40eb4097c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 315230a19967e4006e378b836b0ea70f6b5c19b9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105257"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094296"
 ---
 # <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
@@ -117,13 +117,9 @@ HTTP アプリケーション ルーティング アドオンを利用すると�
 
 ## <a name="development-tooling-integration"></a>開発ツールの統合
 
-Kubernetes には、AKS とシームレスに連携する開発および管理ツールの豊富なエコシステムがあります。 これらのツールには、Helm や Visual Studio Code 用 Kubernetes 拡張機能が含まれます。   
+Kubernetes には、AKS とシームレスに連携する開発および管理ツールの豊富なエコシステムがあります。 これらのツールには、Helm や Visual Studio Code 用 Kubernetes 拡張機能が含まれます。 
 
-Azure には、Azure Dev Spaces や DevOps Starter など、Kubernetes の効率化に役立つツールがいくつか用意されています。  
-
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
-
-Azure Dev Spaces は、高速で反復的な Kubernetes 開発エクスペリエンスをチームに提供します。 最小限の構成で、AKS 内で直接、コンテナーの実行とデバッグを行えます。 始める際には、[Azure Dev Spaces][azure-dev-spaces] に関するページを参照してください。
+Azure には、DevOps Starter など、Kubernetes の効率化に役立つツールがいくつか用意されています。  
 
 ### <a name="devops-starter"></a>DevOps Starter
 

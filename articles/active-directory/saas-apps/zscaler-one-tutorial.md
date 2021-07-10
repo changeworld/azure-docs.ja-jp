@@ -9,40 +9,42 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 05/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 3513a8546ab7da997c270713b0c0752726c80c35
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 0223b78ac34d2cfffa6a307f220c4d207c7f8b15
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804054"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>チュートリアル: Azure Active Directory と Zscaler One の統合
 
-このチュートリアルでは、Zscaler One と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Zscaler One と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Zscaler One と Azure Active Directory (Azure AD) を統合する方法について説明します。 Zscaler One を Azure AD に統合すると、次のことを実行できます。
 
-- Zscaler One にアクセスするユーザーを Azure AD で管理できます。
-- ユーザーが自分の Azure AD アカウントを使用して Zscaler One に自動的にサインイン (シングル サインオン) できるようにすることができます。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Zscaler One にアクセスできるユーザーを Azure AD で制御できます。
+* あなたのユーザーが、自分の Azure AD アカウントを使用して Zscaler One に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Zscaler One と Azure AD の統合を構成するには、次の項目が必要です。
+開始するには、次が必要です。
 
-- Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-- Zscaler One でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Zscaler One でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-- Zscaler One では、**SP** によって開始される SSO がサポートされます
+* Zscaler One では、**SP** initiated SSO がサポートされます。
 
-- Zscaler One では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Zscaler One では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-zscaler-one-from-the-gallery"></a>ギャラリーからの Zscaler One の追加
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
+## <a name="add-zscaler-one-from-the-gallery"></a>ギャラリーからの Zscaler One の追加
 
 Azure AD への Zscaler One の統合を構成するには、管理対象の SaaS アプリ一覧に Zscaler One をギャラリーから追加する必要があります。
 
@@ -78,7 +80,7 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-   **[サインオン URL]** ボックスに、ユーザーが Zscaler One アプリケーションへのサインオンに使用する URL を入力します。
+   a. **[サインオン URL]** ボックスに、ユーザーが Zscaler One アプリケーションへのサインオンに使用する URL を入力します。
 
    > [!NOTE]
    > 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Zscaler One クライアント サポート チーム](https://www.zscaler.com/company/contact)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -89,7 +91,7 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 
 1. その他に、Zscaler One アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-   | Name     | ソース属性   |
+   | 名前     | ソース属性   |
    | -------- | ------------------ |
    | memberOf | user.assignedroles |
 
@@ -154,7 +156,7 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 
 4. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
 
-   ![Zscaler One サイトのスクリーンショット。説明されている手順が示されています。](./media/zscaler-one-tutorial/ic800206.png "管理")
+   ![Zscaler One サイトのスクリーンショット。説明されている手順が示されています。](./media/zscaler-one-tutorial/settings.png "管理")
 
    a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
 
@@ -162,7 +164,7 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 
 5. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
 
-   ![ユーザーと認証の管理](./media/zscaler-one-tutorial/ic800208.png "[ユーザーと認証の管理]")
+   ![ユーザーと認証の管理](./media/zscaler-one-tutorial/users.png "[ユーザーと認証の管理]")
 
    a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** を貼り付けます。
 
@@ -182,9 +184,9 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 
 6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
-   ![[Activate]\(アクティブ化\) が選択された [Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。](./media/zscaler-one-tutorial/ic800207.png)
+   ![[Activate]\(アクティブ化\) が選択された [Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。](./media/zscaler-one-tutorial/authentication.png)
 
-   a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
+   a. 左下付近の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
    b. **[アクティブ化]** をクリックします。
 
@@ -196,17 +198,17 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 
 2. **[ツール]** メニューの **[インターネット オプション]** を選択し、 **[インターネット オプション]** ダイアログを開きます。
 
-   ![[インターネット オプション]](./media/zscaler-one-tutorial/ic769492.png "[インターネット オプション]")
+   ![[インターネット オプション]](./media/zscaler-one-tutorial/connection.png "[インターネット オプション]")
 
 3. **[接続]** タブをクリックします。
 
-   ![接続](./media/zscaler-one-tutorial/ic769493.png "接続")
+   ![接続](./media/zscaler-one-tutorial/configuration.png "接続")
 
 4. **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
 
 5. [プロキシ サーバー] セクションで、次の手順を実行します。
 
-   ![[プロキシ サーバー]](./media/zscaler-one-tutorial/ic769494.png "プロキシ サーバー")
+   ![[プロキシ サーバー]](./media/zscaler-one-tutorial/server.png "プロキシ サーバー")
 
    a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
@@ -227,16 +229,16 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、[Zscaler One のサポート チーム](https://www.zscaler.com/company/contact)にお問い合わせください。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler One のサインオン URL にリダイレクトされます。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler One のサインオン URL にリダイレクトされます。 
 
-- Zscaler One のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Zscaler One のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler One] タイルをクリックすると、Zscaler One のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler One] タイルをクリックすると、Zscaler One のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Zscaler One を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Zscaler One を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

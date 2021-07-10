@@ -3,13 +3,13 @@ title: オンプレミス環境を Azure VMware Solution にピアリングす�
 description: Azure VMware Solution のプライベート クラウドに対する ExpressRoute Global Reach ピアリングを作成する方法について説明します。
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
-ms.date: 04/27/2021
-ms.openlocfilehash: fb0d8bc8391c96449cdf260c543cfed1af1125f5
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.date: 05/14/2021
+ms.openlocfilehash: 2b2fdf739b8e690b3210e1ba975ef14125e51c11
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176110"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086862"
 ---
 # <a name="peer-on-premises-environments-to-azure-vmware-solution"></a>オンプレミス環境を Azure VMware Solution にピアリングする
 
@@ -33,7 +33,7 @@ ExpressRoute Global Reach を使用して 2 つの ExpressRoute 回線間の接�
 - ExpressRoute プロバイダーのサービスを含め、すべてのゲートウェイで 4 バイトの自律システム番号 (ASN) がサポートされていることを確認します。 Azure VMware Solution では、4 バイトのパブリック ASN を使用してルートをアドバタイズします。
 
 
-## <a name="create-an-expressroute-authorization-key-in-the-on-premises-expressroute-circuit"></a>オンプレミスの ExpressRoute 回線で ExpressRoute 承認キーを作成する
+## <a name="create-an-expressroute-auth-key-in-the-on-premises-expressroute-circuit"></a>オンプレミスの ExpressRoute 回線で ExpressRoute 承認キーを作成する
 
 1. **[ExpressRoute 回線]** ブレードの [設定] で、 **[承認]** を選択します。
 

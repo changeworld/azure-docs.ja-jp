@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d2b80dfa091d6a2b892c8baf8e9c35084c5bee4e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: caed40f91ef6a6c1e8bdb353c6548aee699dbc07
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076390"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110795430"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>チュートリアル:Google マップから Web サービスを移行する
 
@@ -50,7 +50,7 @@ Azure Maps と Google マップでは、どちらの場合も REST Web サービ
 | Speed Limits            | 「[座標の逆ジオコーディング](#reverse-geocode-a-coordinate)」セクションを参照してください。         |         
 | 静的マップ              | [Render](/rest/api/maps/render/getmapimage)                       |                         
 | タイム ゾーン               | [タイム ゾーン](/rest/api/maps/timezone)                              |                         
-| Elevation               | [Elevation (プレビュー)](/rest/api/maps/elevation)                   | 
+| Elevation               | [昇格](/rest/api/maps/elevation)                   | 
 
 次のサービス API は、Azure Maps では現在使用できません。
 
@@ -203,7 +203,7 @@ Azure Maps のルート指定サービスでは、ルート指定の計算用と
 
 - [**ルート計算**](/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多くのルート オプションを使用する場合は、URL 要求が長くなりすぎて問題が発生することがないように POST 要求が推奨されます。 Azure Maps の POST Route Direction には、数千の[サポート ポイント](/rest/api/maps/route/postroutedirections#supportingpoints)を受け取り、それらを使用してポイント間の論理ルート パスを再作成するオプションがあります (Snap to Road)。 
 - [**ルートのバッチ処理**](/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
-- [**Mobility Service (プレビュー)**](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
+- [**Mobility Service (プレビュー)** ](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
 
 次の表では、Google マップ API パラメーターと、それに相当する Azure Maps の API パラメーターを相互参照で示しています。
 

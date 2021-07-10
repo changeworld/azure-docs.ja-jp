@@ -7,15 +7,15 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 04/23/2021
+ms.date: 05/21/2021
 ms.custom: devx-track-csharp
 ms.devlang: dotnet
-ms.openlocfilehash: b7bbf9f1ec572680f02e4b6d3adca6d807b45f83
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7822f86b52bf3b8fce9ee144797d8a9b83d90a9b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981981"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469854"
 ---
 # <a name="2---create-and-load-search-index-with-net"></a>2 - .NET を使用して検索インデックスを作成して読み込む
 
@@ -103,6 +103,14 @@ Visual Studio Code 拡張機能を使用して、自分の Search リソース�
 
 > [!CAUTION]
 > Azure 関数内で自分の Search 管理者キーを使用したくなるかもしれませんが、それでは最小特権の原則に沿っていません。 Azure 関数では、クエリ キーを使用して最小特権に準拠します。 
+
+## <a name="rollback-bulk-import-file-changes"></a>一括インポート ファイルの変更をロールバックする
+
+次の git コマンドを VS Code 統合ターミナルの `bulk-insert` ディレクトリで使用して、変更をロールバックします。 これらはチュートリアルを続ける上で必要ありません。これらのシークレットをリポジトリに保存したりプッシュしたりしないでください。 
+
+```git
+git checkout .
+```
 
 ## <a name="next-steps"></a>次のステップ
 
