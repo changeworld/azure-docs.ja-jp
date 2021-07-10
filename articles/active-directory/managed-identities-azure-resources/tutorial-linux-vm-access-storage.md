@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: ''
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/23/2020
+ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e927415e0a1d2ce7d52e602eddfffb0eae5387b5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98131272"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076566"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする 
 
@@ -76,21 +77,12 @@ ms.locfileid: "98131272"
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>VM に Azure Storage コンテナーへのアクセスを許可する 
 
-VM のマネージド ID を使用して、Azure Storage Blob のデータを取得できます。
+VM のマネージド ID を使用して、Azure Storage Blob のデータを取得できます。 Azure リソースのマネージド ID は、Azure AD 認証をサポートするリソースの認証に使用することができます。  お使いのストレージ アカウントを含むリソース グループのスコープで、マネージド ID に [storage-blob-data-reader](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) ロールを割り当てることによって、アクセス権を付与します。
+ 
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 >[!NOTE]
 > ストレージのレビューにアクセス許可を付与するために使用できるさまざまなロールの詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」を参照してください。
-
-1. 新たに作成したストレージ アカウントに戻ります。  
-2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
-3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します。
-4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者]** を選択します。 
-5. 次のドロップダウンで、 **[アクセスの割り当て先]** として **[仮想マシン]** を選択します。  
-6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、 **[リソース グループ]** を **[すべてのリソース グループ]** に設定します。  
-7. **[選択]** で、VM を選択し、 **[保存]** をクリックします。
-
-    ![アクセス許可の割り当て](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
-
 ## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>アクセス トークン取得し、それを使用して Azure Storage を呼び出す
 
 Azure Storage は Azure AD 認証をネイティブにサポートするため、マネージド ID を使用して取得したアクセス トークンを直接受け入れることができます。 これは Azure Storage の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。

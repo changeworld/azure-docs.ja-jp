@@ -16,12 +16,12 @@ ms.date: 12/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759781fd61cd42d05f2823d390e99d128dd2fcac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83aa5f4527885fbb0a02c70857cdd8409f0fa554
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96512394"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892726"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>特権アクセス Azure AD グループの管理機能 (プレビュー)
 
@@ -36,7 +36,7 @@ Privileged Identity Management (PIM) では、特権アクセス グループの
 
 ## <a name="activate-multiple-role-assignments-in-a-single-request"></a>1 つの要求で複数のロール割り当てをアクティブ化する
 
-特権アクセス グループ (プレビュー) を使用すると、ワークロード固有の管理者に対して、単一の Just-In-Time 要求で複数のロールへのクイック アクセスを付与できます。 たとえば、階層 3 の Office 管理者が、毎日インシデントを徹底的に調査するために、Exchange 管理者、Office アプリ管理者、Teams 管理者、および Search 管理者のロールに対する Just-In-Time アクセスを必要とするものとします。 これまでであれば、4 つの連続した要求が必要であり、これは時間がかかるプロセスです。 代わりに、"Tier 3 Office Admins" という名前のロール割り当て可能グループを作成し、前述の 4 つのロール (または任意の Azure AD 組み込みロール) にそれを割り当てて、グループの [アクティビティ] セクションで特権アクセスを有効にすることができます。 特権アクセスを有効にすると、グループのメンバーに対して Just-In-Time の設定を構成し、管理者と所有者を適格として割り当てることができます。 管理者がグループに昇格すると、4 つの Azure AD ロールすべてのメンバーになります。
+特権アクセス グループ (プレビュー) を使用すると、ワークロード固有の管理者に対して、単一の Just-In-Time 要求で複数のロールへのクイック アクセスを付与できます。 たとえば、階層 0 の Office 管理者が、毎日インシデントを徹底的に調査するために、Exchange 管理者、Office アプリ管理者、Teams 管理者、および Search 管理者のロールに対する Just-In-Time アクセスを必要とするものとします。 これまでであれば、4 つの連続した要求が必要であり、これは時間がかかるプロセスです。 代わりに、"Tier 0 Office Admins" という名前のロール割り当て可能グループを作成し、前述の 4 つのロール (または任意の Azure AD 組み込みロール) にそれを割り当てて、グループの [アクティビティ] セクションで特権アクセスを有効にすることができます。 特権アクセスを有効にすると、グループのメンバーに対して Just-In-Time の設定を構成し、管理者と所有者を適格として割り当てることができます。 管理者がグループに昇格すると、4 つの Azure AD ロールすべてのメンバーになります。
 
 ## <a name="extend-and-renew-group-assignments"></a>グループの割り当てを延長および更新する
 

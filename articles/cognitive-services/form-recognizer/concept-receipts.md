@@ -5,17 +5,17 @@ description: Form Recognizer API を使用したレシート分析に関連す�
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9d37811c89cd42053333bfb8ddc17dfbb47b907c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f6fccecca72e106f42ccd185a7c2cb3ba9fe4a53
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374694"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887808"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form Recognizer の事前構築済みレシート モデル
 
@@ -58,9 +58,9 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 
 ### <a name="fields-extracted"></a>抽出されるフィールド
 
-|名前| 型 | 説明 | Text | 値 (標準化された出力) |
+|名前| 種類 | 説明 | Text | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
-| ReceiptType | string | 販売レシートの種類 | Itemized |  |
+| ReceiptType | string | 販売レシートの種類 |  | Itemized |
 | MerchantName | string | レシートを発行しているマーチャントの名前 | Contoso |  |
 | MerchantPhoneNumber | phoneNumber | マーチャントの電話番号の一覧 | 987-654-3210 | +19876543210 |
 | MerchantAddress | string | マーチャントの住所の一覧 | 123 Main St Redmond WA 98052 |  |
@@ -72,7 +72,7 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 | ヒント | 数値 | 購入者によって追加されたチップ | $1.00 | 1.00 |
 | 項目 | オブジェクトの配列 | 抽出された品目 (名前、数量、単価、および合計価格) | |
 | 名前 | string | 項目名 | Surface Pro 6 | |
-| 数量 | 数値 | 各品目の数量 | 1 | |
+| 数量 | 数値 | 各品目の数量 | 1 | 1 |
 | 価格 | 数値 | 各品目単位の個別価格 | $999.00 | 999.00 |
 | 合計価格 | 数値 | 品目の合計価格 | $999.00 | 999.00 |
 
@@ -91,17 +91,12 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 ## <a name="supported-locales"></a>サポート対象のロケール
 
 * **あらかじめ構築されたレシート v2.0** では、**en-us** ロケールでのレシートがサポートされています
-* **あらかじめ構築されたレシート v2.1** では、次の英語のレシート ロケールのサポートが追加されています。
-
-* **en-au**
-* **en-ca**
-* **en-gb**
-* **en-in**
+* **あらかじめ構築されたレシート v2.1** では、次の英語のレシート ロケールのサポートが追加されています: **en-au**、**en-ca**、**en-gb**、**en-in**
 
   > [!NOTE]
   > 言語の入力
   >
-  > あらかじめ構築されたレシート v2.1 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (en-au)、カナダ (en-ca)、英国 (en-gb)、インド (en-in) の英語で書かれた各レシートについては、ロケールを指定することで、より良い結果を得ることができます。 v2.1 でロケールが指定されていない場合、このモデルは既定で en-us モデルになります。
+  > あらかじめ構築されたレシート v2.1 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (en-au)、カナダ (en-ca)、英国 (en-gb)、インド (en-in) の英語で書かれた各レシートについては、ロケールを指定することで、より良い結果を得ることができます。 v2.1 でロケールが指定されていない場合、このモデルでは、ロケールが自動的に検出されます。
 
 ## <a name="the-analyze-receipt-operation"></a>Analyze Receipt の操作
 
@@ -130,7 +125,7 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 
 Get Analyze Receipt Result 操作への応答は、抽出されたすべての情報が含まれるレシートの構造化表現になります。  [サンプルのレシート ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg)と、その構造化された出力である[サンプルのレシート出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)を参照してください。
 
-成功した JSON 応答の例を次に示します。
+成功した JSON 応答の例を次に示します (わかりやすくするために出力が短縮されています)。
 * `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。
 * `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切なキーと値のペアが存在する場所です。
 

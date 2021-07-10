@@ -3,12 +3,12 @@ title: 'Azure Monitor ドキュメント: 2021 年 5 月の最新情報'
 description: 2021 年 5 月の Azure Monitor ドキュメントの最新情報。
 ms.topic: conceptual
 ms.date: 06/03/2021
-ms.openlocfilehash: 543cfc80cac144b4ff729338442b5169e0f3a5e1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 26fe99f92656940616f09419674a02c046214dd0
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747457"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292287"
 ---
 # <a name="azure-monitor-docs-whats-new-for-may-2021"></a>Azure Monitor ドキュメント: 2021 年 5 月の最新情報
 
@@ -18,7 +18,7 @@ Azure Monitor ドキュメントの最新情報 (2021 年 5 月) をご覧いた
 
 **更新された記事**
 
-- [Azure Monitor についてよくあるご質問](faq.md)
+- [Azure Monitor についてよくあるご質問](faq.yml)
 - [Azure Monitor パートナーとの統合](partners.md)
 
 ## <a name="alerts"></a>警告

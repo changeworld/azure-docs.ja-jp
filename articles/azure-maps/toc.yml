@@ -67,10 +67,14 @@
       href: choose-pricing-tier.md
     - name: 屋内マップ用の Creator
       items:
+        - name: Creator サービスの地理的スコープ
+          href: creator-geographic-scope.md
         - name: 屋内マップの概念
           href: creator-indoor-maps.md
         - name: 変換エラーと警告の描画
           href: drawing-conversion-error-codes.md
+    - name: 保存データの暗号化
+      href: ../security/fundamentals/encryption-atrest.md
     - name: 対象範囲
       items:
         - name: 対象範囲
@@ -300,6 +304,8 @@
       items:
         - name: Drawing パッケージの要件
           href: drawing-requirements.md
+        - name: 描画パッケージ ガイド
+          href: drawing-package-guide.md
         - name: 動的マップの StylesObject
           href: schema-stateset-stylesobject.md
         - name: 車両消費モデル
@@ -310,10 +316,12 @@
           href: geofence-geojson.md
         - name: サポートされている検索カテゴリ
           href: supported-search-categories.md
+        - name: Facility Ontology
+          href: creator-facility-ontology.md
     - name: REST
       items:
         - name: データ サービス
-          href: /rest/api/maps/data
+          href: /rest/api/maps/data-v2
         - name: 標高サービス
           href: /rest/api/maps/elevation
         - name: 位置情報サービス
@@ -339,17 +347,17 @@
         - name: Maps Creator サービス
           items:
             - name: エイリアス サービス
-              href: /rest/api/maps/alias
+              href: /rest/api/maps/v2/alias
             - name: 変換サービス
-              href: /rest/api/maps/conversion
+              href: /rest/api/maps/v2/conversion
             - name: データセット サービス
-              href: /rest/api/maps/dataset
+              href: /rest/api/maps/v2/dataset
             - name: 機能の状態サービス
-              href: /rest/api/maps/featurestate
+              href: /rest/api/maps/v2/feature-state
             - name: タイルセット サービス
-              href: /rest/api/maps/tileset
+              href: /rest/api/maps/v2/tileset
             - name: WFS サービス
-              href: /rest/api/maps/wfs
+              href: /rest/api/maps/v2/wfs
         - name: Maps アカウント管理
           href: /rest/api/maps-management
     - name: JavaScript
