@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e948b96022972dcf702ac5a4d8be85c9afe16e7
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1adb0e96fd67a993f39be709a990ef6f5892e806
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365979"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295401"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>テンプレートを使用して Azure 仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -50,7 +50,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 Azure portal とスクリプトを使う場合と同じように、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) テンプレートを使うと、Azure リソース グループによって定義された新しいリソースまたは変更されたリソースをデプロイすることができます。 ローカルとポータル ベースの両方を含むテンプレートの編集やデプロイでは、次のような複数のオプションが使用できます。
 
-   - [Azure Marketplace のカスタム テンプレート](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)を使用します。これにより、最初からテンプレートを作成したり、既存の共通テンプレートまたは[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)に基づいてテンプレートを作成したりできます。
+   - [Azure Marketplace のカスタム テンプレート](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)を使用します。これにより、最初からテンプレートを作成したり、既存の共通テンプレートまたは[クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)に基づいてテンプレートを作成したりできます。
    - [元のデプロイ](../../azure-resource-manager/templates/export-template-portal.md)または[デプロイの現在の状態](../../azure-resource-manager/templates/export-template-portal.md)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
    - ローカルの [JSON エディター (VS Code など)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) を使用してから、PowerShell または CLI を使用してアップロードおよびデプロイします。
    - Visual Studio の [Azure リソース グループ プロジェクト](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)を使用して、テンプレートを作成およびデプロイします。  

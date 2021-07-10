@@ -4,12 +4,12 @@ description: クイック スタート:イベント ハブとコンシューマ�
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 06/08/2021
-ms.openlocfilehash: a65fc2359393839491d5d2109fadabd77b08ec22
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f4c34b268726f72183928754b9691be53b6adb33
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965166"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112296121"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用したイベント ハブの作成
 
@@ -106,7 +106,7 @@ Write-Host "Press [ENTER] to continue ..."
 [5]: ./media/event-hubs-quickstart-powershell/metrics.png
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/syntax.md
-[Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
+[Azure Quickstart Templates]:  https://azure.microsoft.com/resources/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/management/manage-resources-powershell.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/management/manage-resources-cli.md
-[Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
+[Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.eventhub/event-hubs-create-event-hub-and-consumer-group/

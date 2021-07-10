@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: b845ecabe74040e154886476a8ba28efecc99325
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2ffb38d334aa5b0abefa3398a5c2a7608f448025
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868863"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965311"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -34,7 +34,7 @@ Azure Dedicated HSM では、完全な管理制御と完全な管理責任が備
 
 ![複数リージョン デプロイ](media/tutorial-deploy-hsm-cli/high-availability-architecture.png)
 
-このチュートリアルでは、既存の仮想ネットワーク (上の VNET 1 を参照) に対する、HSM のペアと必須の ExpressRoute ゲートウェイ (上の Subnet 1 を参照) の統合を中心に説明しています。  他のすべてのリソースは、標準の Azure リソースです。 同じ統合プロセスを、上の VNET 3 における Subnet 4 の HSM に使用できます。
+このチュートリアルでは、既存の仮想ネットワーク (上の VNET 1 を参照) に対する、HSM のペアと必須の [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) (上の Subnet 1 を参照) の統合を中心に説明しています。  他のすべてのリソースは、標準の Azure リソースです。 同じ統合プロセスを、上の VNET 3 における Subnet 4 の HSM に使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +51,7 @@ Azure Dedicated HSM は現在、Azure portal では使用できません。 サ�
 
 ## <a name="provisioning-a-dedicated-hsm"></a>専用 HSM のプロビジョニング
 
-HSM のプロビジョニングと、ExpressRoute ゲートウェイを介した既存の仮想ネットワークへの統合は、SSH を使用して検証されます。 この検証は、追加の構成アクティビティに備えて、HSM デバイスの到達可能性と基本的な可用性を確保するために役立ちます。
+HSM のプロビジョニングと、[ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)を介した既存の仮想ネットワークへの統合は、SSH を使用して検証されます。 この検証は、追加の構成アクティビティに備えて、HSM デバイスの到達可能性と基本的な可用性を確保するために役立ちます。
 
 ### <a name="validating-feature-registration"></a>機能登録の検証
 

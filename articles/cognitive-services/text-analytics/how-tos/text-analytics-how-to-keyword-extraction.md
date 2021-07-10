@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: fdf24fdc56d39d93fed0009e2fadbafd7f97db6c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e25851bc9d3cba6e71056a6fb6a24ff9a0cee6ce
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280498"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968061"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
@@ -131,7 +131,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。
 
-v3.1-preview.2 エンドポイントからのキー フレーズ抽出の出力例を次に示します。
+v3.1-preview エンドポイントからのキー フレーズ抽出の出力例を次に示します。
 
 ### <a name="synchronous-result"></a>同期の結果
 
@@ -269,3 +269,4 @@ v3.1-preview.2 エンドポイントからのキー フレーズ抽出の出力�
 * [Text Analytics の概要](../overview.md)
 * [Text Analytics クライアント ライブラリの使用](../quickstarts/client-libraries-rest-api.md)
 * [新機能](../whats-new.md)
+* [モデルのバージョン](../concepts/model-versioning.md)

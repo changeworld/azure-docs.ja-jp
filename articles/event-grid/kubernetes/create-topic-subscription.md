@@ -6,12 +6,12 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: quickstart
-ms.openlocfilehash: c0e2a4422cea681a3bccee0739b8c26350803eb8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d29583cecb1498c10320a844923067a48693480a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386983"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030307"
 ---
 # <a name="route-cloud-events-to-webhooks-with-azure-event-grid-on-kubernetes"></a>Kubernetes 上の Azure Event Grid でクラウド イベントを Webhook にルーティングする
 このクイックスタートでは、Kubernetes 上の Event Grid でトピックを作成し、トピックのサブスクリプションを作成し、サンプル イベントをトピックに送信してシナリオをテストします。 
@@ -23,7 +23,7 @@ ms.locfileid: "110386983"
 
 1. [Kubernetes クラスターを Azure Arc に接続する](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。
 1. [Kubernetes クラスターに Event Grid 拡張機能をインストールする](install-k8s-extension.md)。 この拡張機能によって、Event Grid を Kubernetes クラスターにデプロイします。 
-1. [カスタムの場所を作成する](../../azure-arc/kubernetes/custom-locations.md)。 カスタムの場所はクラスター内の名前空間を表し、トピックとイベント サブスクリプションがデプロイされる場所です。
+1. [カスタムの場所を作成する](../../azure-arc/kubernetes/custom-locations.md)。 カスタムの場所はクラスター内の名前空間を表し、トピックとイベント サブスクリプションをデプロイする場所となります。
 
 ## <a name="create-a-topic"></a>トピックを作成する
 
@@ -99,11 +99,12 @@ CLI コマンドの詳細については、「[`az eventgrid event-subscription 
     ```azurecli
     az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv
     ```
-3. 次のコンテンツを使用して **evt.json** という名前のファイルを作成します。 
+1. 次の **Curl** コマンドを実行して、イベントを送信します。 コマンドを実行する前に、手順 1 および 2 で指定したエンドポイントの URL とキーを指定します。 
 
-    ```json
-    [{
-          "specVersion": "1.0",
+    ```bash
+    curl  -k -X POST -H "Content-Type: application/cloudevents-batch+json" -H "aeg-sas-key: <KEY_FROM_STEP_2>" -g <ENDPOINT_URL_FROM_STEP_1> \
+    -d  '[{ 
+          "specversion": "1.0",
           "type" : "orderCreated",
           "source": "myCompanyName/us/webCommerceChannel/myOnlineCommerceSiteBrandName",
           "id" : "eventId-n",
@@ -115,13 +116,48 @@ CLI コマンドの詳細については、「[`az eventgrid event-subscription 
              "orderType" : "PO",
              "reference" : "https://www.myCompanyName.com/orders/123"
           }
-    }]
+    }]'
     ```
-4. 次の **Curl** コマンドを実行して、イベントを送信します。 コマンドを実行する前に、手順 1 および 2 で指定したエンドポイントの URL とキーを指定します。 
+    
+    手順 1 のトピック エンドポイント URL がプライベート IP アドレスの場合 (Event Grid ブローカーのサービスの種類が ClusterIP の場合など)、クラスター内の別のポッド内から **Curl** を実行して、その IP アドレスにアクセスできます。 たとえば、次の手順を実行できます。
 
-    ```
-    curl -k -X POST -H "Content-Type: application/cloudevents-batch+json" -H "aeg-sas-key: <KEY FROM STEP 2>" -g -d @evt.json <ENDPOINT URL from STEP 1>
-    ```
+    1. 次の構成でマニフェスト ファイルを作成します。 必要に応じて、``dnsPolicy`` を調整することもできます。 詳細については、「[サービスとポッドの DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)」を参照してください。
+    
+        ```yml
+        apiVersion: v1
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true
+        kind: Pod
+        metadata: 
+          name: test-pod
+        spec: 
+          containers: 
+            - 
+              name: nginx
+          emptyDir: {}
+          image: nginx
+          volumeMounts: 
+            - 
+              mountPath: /usr/share/nginx/html
+              name: shared-data
+          volumes: 
+            - 
+              name: shared-data  
+        ```
+    1. ポッドを作成します。
+        ```bash
+            kubectl apply -f <name_of_your_yaml_manifest_file>
+        ```
+    1. ポッドが実行されていることを確認します。
+        ```bash
+            kubectl get pod test-pod
+        ```
+    1. コンテナーからシェル セッションを開始します。
+        ```bash
+            kubectl exec --stdin --tty test-pod -- /bin/bash
+        ```
+
+    この時点で、クラスター内の実行中のコンテナーからのシェル セッションが開始され、前の手順で説明した **Curl** コマンドを実行できます。
 
     > [!NOTE]
     > プログラミング言語を使用してクラウド イベントを送信する方法については、次のサンプルを参照してください。 
