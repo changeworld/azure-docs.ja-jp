@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: db6aafc8c9db7a67c9ee70d524d17a642d03dfd8
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b1fcf708a7275c60e3f6e7fc15f2247fb088bc47
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259066"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077304"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Communication Services でのトラブルシューティング
 
@@ -160,8 +160,20 @@ Android 用に開発する場合、ログは `.blog` ファイルに格納され
 
 Android Studio で、シミュレーターとデバイスの両方から [View]\(表示\) > [Tool Windows]\(ツール ウィンドウ\) > [Device File Explorer]\(デバイス ファイル エクスプローラー\) を選択して、デバイス ファイル エクスプローラーに移動します。 `.blog` ファイルはアプリケーションのディレクトリ内にあり、`/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` のように表示されるはずです。 このファイルをサポート リクエストに添付できます。
 
-
 ---
+
+## <a name="enable-and-access-call-logs-windows"></a>呼び出しログを有効にしてアクセスする (Windows)
+
+Windows 用に開発する場合、ログは `.blog` ファイルに格納されます。 ログは暗号化されているため、直接表示できないことに注意してください。
+
+これらは、アプリがどこにローカル データを保持しているかを調べることでアクセスできます。 UWP アプリがどこにローカル データを保持しているかを調べるには、さまざまな方法があり、次の手順はこれらの方法の 1 つにすぎません。
+1. Windows コマンド プロンプトを開きます (Windows キー + R キー)
+2. 「`cmd.exe`」と入力します
+3. 「`where /r %USERPROFILE%\AppData acs*.blog`」と入力します
+4. アプリケーションのアプリ ID が、前のコマンドによって返されたものと一致するかどうかを確認してください。
+5. 「`start `」の後に手順 3 で返されたパスを入力して、ログが含まれているフォルダーを開きます。 例: `start C:\Users\myuser\AppData\Local\Packages\e84000dd-df04-4bbc-bf22-64b8351a9cd9_k2q8b5fxpmbf6`
+6. `*.blog` と `*.etl` のすべてのファイルを Azure サポート リクエストに添付してください。
+
 
 ## <a name="calling-sdk-error-codes"></a>Calling SDK のエラー コード
 
@@ -169,7 +181,7 @@ Azure Communication Services の Calling SDK では、通話の問題のトラ�
 
 | エラー コード | 説明 | 実行するアクション |
 | -------- | ---------------| ---------------|
-| 403 | 禁止または認証エラー。 | Communication Services トークンが有効であり、有効期限が切れていないことを確認します。 |
+| 403 | 禁止または認証エラー。 | Communication Services トークンが有効であり、有効期限が切れていないことを確認します。 Teams の相互運用性を使用している場合は、Teams テナントがプレビュー アクセス許可リストに追加されていることを確認します。 [チームのテナント相互運用性](https://docs.microsoft.com/azure/communication-services/concepts/teams-interop)を有効または無効にするには、[このフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)を完成させてください。|
 | 404 | 通話が見つかりません。 | 通話先の番号 (または参加している通話) が存在することを確認します。 |
 | 408 | 通話コントローラーがタイムアウトしました。 | ユーザー エンドポイントからのプロトコル メッセージの待機中に通話コントローラーがタイムアウトしました。 クライアントが接続され、使用可能であることを確認します。 |
 | 410 | ローカル メディア スタックまたはメディア インフラストラクチャ エラー。 | サポートされている環境で最新の SDK を使用していることを確認します。 |
@@ -180,6 +192,17 @@ Azure Communication Services の Calling SDK では、通話の問題のトラ�
 | 490、491、496、487、498 | ローカル エンドポイント ネットワークの問題。 | ネットワークを確認します。 |
 | 500、503、504 | Communication Services インフラストラクチャ エラー。 | Azure portal からサポート リクエストを提出します。 |
 | 603 | Communication Services のリモート参加者によって、通話がグローバルに拒否されました。 | 想定されている動作です。 |
+
+## <a name="chat-sdk-error-codes"></a>Chat SDK のエラー コード
+
+Azure Communication Services の Chat SDK では、チャットの問題のトラブルシューティングに役立てるために次のエラー コードを使用しています。 エラー コードは、エラー応答の `error.code` プロパティを通じて公開されます。
+
+| エラー コード | 説明 | 実行するアクション |
+| -------- | ---------------| ---------------|
+| 401 | 権限がありません | Communication Services トークンが有効であり、有効期限が切れていないことを確認します。 |
+| 403 | Forbidden | 要求のイニシエーターがリソースへのアクセス権を持っていることを確認してください。 |
+| 429 | 要求が多すぎます | クライアント側アプリケーションで、このシナリオがユーザーフレンドリな方法で処理されていることを確認してください。 エラーが解決しない場合は、サポート リクエストを提出してください。 |
+| 503 | サービス利用不可 | Azure portal からサポート リクエストを提出します。 |
 
 ## <a name="related-information"></a>関連情報
 - [ログと診断](logging-and-diagnostics.md)

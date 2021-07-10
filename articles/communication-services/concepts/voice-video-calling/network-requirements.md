@@ -6,15 +6,15 @@ author: nmurav
 manager: jken
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 06/30/2021
+ms.date: 3/23/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 377d6783fb73c2d03f7e4dde7b352abe1eaef993
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 2fa9cbba571fa5603607c5efea7f49a5822726e9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110801"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089418"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>Azure Communication Services で高品質なメディアを確保する
 

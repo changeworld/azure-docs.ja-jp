@@ -1,7 +1,7 @@
 ---
-title: 自動 ML 分類モデルを作成する
+title: 'チュートリアル: コードなし分類モデルを AutoML でトレーニングする'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の自動機械学習 (自動 ML) インターフェイスを使用して、コードを記述せずに分類モデルをトレーニングしてデプロイする
+description: スタジオ UI で Azure Machine Learning 自動 ML を使用して、コードを 1 行も記述せずに分類モデルをトレーニングします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 12/21/2020
+ms.date: 06/11/2021
 ms.custom: automl
-ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: e088184cadea64b769faf75c6455b720f45d91cc
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210848"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028723"
 ---
-# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
+# <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする
 
-Azure Machine Learning スタジオで自動機械学習を使用して、1 行のコードも記述せずに[単純な分類モデル](concept-automated-ml.md#classification)を作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
+Azure Machine Learning スタジオで Azure Machine Learning 自動 ML を使用して、コードなし AutoML により分類モデルをトレーニングする方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
 
 自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
 
@@ -35,7 +35,7 @@ Azure Machine Learning スタジオで自動機械学習を使用して、1 行�
 他のタイプのモデルについても、自動機械学習を試してみましょう。
 
 * ノー コードの予測の例については、[需要予測と AutoML に関するチュートリアル](tutorial-automated-ml-forecast.md)を参照してください。
-* コード ファーストの回帰モデルの例については、「[チュートリアル: 自動機械学習を使用してタクシー料金を予測する](tutorial-auto-train-models.md)」を参照してください。
+* 回帰モデルの Code First の例については、[チュートリアル: AutoML での回帰モデル](tutorial-auto-train-models.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
-ms.openlocfilehash: a9a6c2b0a106b08d8aad880b0b5f18879ac5645b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: b44c41eb4fdf10adca7a20ec65d1b3a4418777c9
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206261"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235151"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>クイックスタート: Azure Cosmos DB の MongoDB 用 API に Rust アプリケーションを接続する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -315,7 +315,7 @@ fn delete_todo(self, todo_id: &str) {
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+[!INCLUDE [cosmosdb-delete-resource-group](includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

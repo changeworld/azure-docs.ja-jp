@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/19/2020
+ms.date: 05/27/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6bc8b6cc18f4a4bc41cabf7f8fefe78a5aaf7827
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1894f38a92fe839dcf44cc3265aa1ca25c05d6f6
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94427849"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111564925"
 ---
 1. [Azure portal](https://portal.azure.com) で、 **[Search resources, services, and docs]\(ソース、サービス、ドキュメントの検索\) (G+/)** に、「**仮想ネットワーク ゲートウェイ**」と入力します。 検索結果で **仮想ネットワーク ゲートウェイ** を見つけて、それを選択します。
 
@@ -37,7 +37,7 @@ ms.locfileid: "94427849"
    * **[リージョン]** :このリソースを作成するリージョンを選択します。 ゲートウェイのリージョンは、仮想ネットワークと同じである必要があります。
    * **[ゲートウェイの種類]** : **[VPN]** を選択します。 VPN Gateway では、仮想ネットワーク ゲートウェイの種類として **VPN** を使用します。
    * **VPN の種類**:構成に指定されている VPN の種類を選択します。 ほとんどの構成で [VPN の種類] は [ルート ベース] にする必要があります。
-   * **SKU**:ゲートウェイの SKU をドロップダウンから選択します。 ドロップダウン リストに表示される SKU は、選択した VPN の種類によって異なります。 ゲートウェイの SKU の詳細については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
+   * **SKU**:ゲートウェイの SKU をドロップダウンから選択します。 ドロップダウン リストに表示される SKU は、選択した VPN の種類によって異なります。 使用する機能をサポートする SKU を選択してください。 ゲートウェイの SKU の詳細については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
    * **世代**: VPN ゲートウェイの世代については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
    * **仮想ネットワーク**:ドロップダウンから、このゲートウェイの追加先の仮想ネットワークを選択します。
    * **[ゲートウェイ サブネットのアドレス範囲]** : このフィールドは、VNet にゲートウェイ サブネットがない場合にのみ表示されます。 可能であれば、範囲を /27 以上 (/26、/25 など) に指定してください。 /28 より小さい範囲を作成することはお勧めしません。 既にゲートウェイ サブネットがある場合は、仮想ネットワークから GatewaySubnet の詳細を表示できます。 範囲を表示するには、 **[サブネット]** をクリックします。 範囲を変更する場合は、GatewaySubnet を削除して再作成できます。

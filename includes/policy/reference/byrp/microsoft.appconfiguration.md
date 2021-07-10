@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1cffd9b843372976c5aad06a92896d26e39b73d0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: abd6b847dcbe5264b18c7a80ecd483428e8816a3
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075658"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112039416"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -18,5 +18,7 @@ ms.locfileid: "110075658"
 |[App Configuration はカスタマー マネージド キーを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F967a4b4b-2da9-43c1-b7d0-f98d0d74d0b1) |カスタマー マネージド キーは、暗号化キーを管理できるようにすることで、データ保護を強化します。 これは、多くの場合、コンプライアンス要件を満たすために必要となります。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/CustomerManagedKey_Audit.json) |
 |[App Configuration ではプライベート リンクをサポートする SKU を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89c8a434-18f0-402c-8147-630a8dea54e0) |サポートされる SKU を使用すると、Azure Private Link により、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート リンク プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 サービス全体ではなく、アプリ構成インスタンスにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクからも保護されます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_AllowedSku_Audit.json) |
 |[App Configuration ではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca610c1d-041c-4332-9d88-7ed3094967c7) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート リンク プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 サービス全体ではなく、アプリ構成インスタンスにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクからも保護されます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_Audit.json) |
+|[App Configuration ストアでは、ローカル認証方法を無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb08ab3ca-1062-4db3-8803-eec9cae605d6) |ローカル認証方法を無効にすると、App Configuration ストアで Azure Active Directory ID を認証専用で求めることにより、セキュリティが向上します。 詳細については、[https://go.microsoft.com/fwlink/?linkid=2161954](https://go.microsoft.com/fwlink/?linkid=2161954) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/DisableLocalAuth_Audit.json) |
+|[ローカル認証方法を無効にするように App Configuration ストアを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72bc14af-4ab8-43af-b4e4-38e7983f9a1f) |ローカルの認証方法を無効にして、App Configuration ストアで Azure Active Directory ID を認証専用で要求するようにします。 詳細については、[https://go.microsoft.com/fwlink/?linkid=2161954](https://go.microsoft.com/fwlink/?linkid=2161954) を参照してください。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/DisableLocalAuth_Modify.json) |
 |[App Configuration でパブリック ネットワーク アクセスを無効に構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F73290fa2-dfa7-4bbb-945d-a5e23b75df2c) |App Configuration のパブリック ネットワーク アクセスを無効にして、パブリック インターネット経由ではアクセスできないようにします。 この構成は、データ漏えいリスクへの対策として役立ちます。 プライベート エンドポイントを作成することによってリソースの露出を制限することもできます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_PublicNetworkAccess_Modify.json) |
 |[App Configuration のプライベート エンドポイントの構成](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F614ffa75-862c-456e-ad8b-eaa1b0844b07) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 アプリ構成インスタンスにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクが軽減されます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_Deploy.json) |

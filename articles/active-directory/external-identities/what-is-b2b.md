@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/19/2021
+ms.date: 05/27/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b5d12012d69451044ac64f3d52a428aa161bc4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 6382f7ab801b649982d289a34e083a7897fc40e6
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317309"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110584983"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) の企業間 (B2B) コラボレーションは
 
 > [!IMPORTANT]
 > - **2021 年の下半期から** Google の [Web ビュー サインイン サポートが非推奨になります](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
-> - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+> - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様には、一般提供が開始された、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>パートナーの ID を使用してパートナーとコラボレーションする
 

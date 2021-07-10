@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 76d4eb08ba9cc0394610fdd00f6faba02278e8e3
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: d1dbac6df2e4cc4f872cece3f519dbd7d65e2af4
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258012"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440036"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
 
@@ -48,7 +48,7 @@ Weather Service (プレビュー) API の中には、データをメトリック
 |20      |パーセント             |
 |21      |float               |
 |22      |整数 (integer)             |
-
+|31      |MicrogramsPerCubicMeterOfAir             |
 
 ## <a name="weather-icons"></a>天気アイコン
 

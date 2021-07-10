@@ -8,30 +8,48 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mbaldwin
 ms.date: 04/15/2021
-ms.openlocfilehash: 1110d1441c63f3af1f7c31b9ac090c9693b36be1
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: dd6dd17db52ea0ecbd2793f62bf319ce36321f98
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387655"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752104"
 ---
 # <a name="quickstart-create-an-microsoft-azure-confidential-ledger-with-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して Microsoft Azure Confidential Ledger を作成する
 
-[Microsoft Azure Confidential Ledger](overview.md) は、機密データ レコードを管理するための、安全性が非常に高い新しいサービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイして新しい台帳を作成する過程を中心に取り上げます。
+[Microsoft Azure Confidential Ledger](overview.md) は、機密データ レコードを管理するための、安全性が非常に高い新しいサービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して新しい台帳を作成する方法を説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-confidential-ledger-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.confidentialledger%2Fconfidential-ledger-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
+### <a name="azure-subscription"></a>Azure サブスクリプション
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+### <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
+
+[!INCLUDE [Register the microsoft.ConfidentialLedger resource provider](../../includes/confidential-ledger-register-rp.md)]
+
+### <a name="obtain-your-principal-id"></a>プリンシパル ID の取得
+
+テンプレートにはプリンシパル ID が必要です。 プリンシパル ID を取得するには、`--show-mine` フラグを付けて Azure CLI [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) コマンドを実行します。
+
+```azurecli-interactive
+az ad sp list --show-mine -o table
+```
+
+プリンシパル ID が "ObjectId" 列に表示されます。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates)からのものです。
+
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.confidentialledger/confidential-ledger-create/azuredeploy.json":::
 
 テンプレート内に定義されている Azure リソース:
 
@@ -41,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure にサインインし、テンプレートを開くには次の画像を選択します。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-confidential-ledger-create%2Fazuredeploy.json)
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.confidentialledger%2Fconfidential-ledger-create%2Fazuredeploy.json)
 
 1. 次の値を選択または入力します。
 
@@ -49,6 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     - **台帳名**: 台帳の名前を選択します。 台帳名はグローバルに一意である必要があります。
     - **[場所]** :場所を選択します。 たとえば、**East US** などとします。
+    - **PrincipalId**: 上記の「[前提条件](#obtain-your-principal-id)」セクションでメモしたプリンシパル ID を指定します。
 
 1. **[購入]** を選択します。 Confidential Ledger リソースが正常にデプロイされると、通知を受け取ります。
 
@@ -86,5 +105,3 @@ Write-Host "Press [ENTER] to continue..."
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、ARM テンプレートを使用して Confidential Ledger リソースを作成し、デプロイを検証しました。 サービスの詳細については、「[Microsoft Azure Confidential Ledger の概要](overview.md)」を参照してください。
-
-

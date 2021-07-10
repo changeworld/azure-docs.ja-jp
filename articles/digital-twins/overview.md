@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 050512da539e08d029786983fbda46da0fea27ce
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8213bd8e819e3a6c4a84a95f7c996912ac28ec2b
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789625"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539429"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
@@ -46,11 +46,9 @@ DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plu
 
 Azure Digital Twins のデジタル モデルは、現実世界のライブの最新の表現です。 カスタム DTDL モデルのリレーションシップを使用して、ご自分の環境を表す **ライブ グラフ** にツインを接続します。
 
-Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [Azure Digital Twins explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) を使用して確認できます。
+Azure Digital Twins グラフは [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) で視覚化できます。これには、グラフと対話するための次のインターフェイスが用意されています。
 
-次に、視覚化の例を示します。
-
-:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="デジタル ツインを表すノードのグラフが表示された Azure Digital Twins explorer サンプル アプリケーションのスクリーンショット" lightbox="media/includes/azure-digital-twins-explorer.png":::
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="デジタル ツインを表すノードのグラフが表示された Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
 
 Azure Digital Twins では、そのグラフをデータ処理とビジネス ロジックで最新の状態に保つための豊富な **イベント システム** を提供しています。 [Azure Functions](../azure-functions/functions-overview.md) などの外部のコンピューティング リソースを接続して、このデータ処理を柔軟でカスタマイズされた方法で行うことができます。
 
@@ -64,16 +62,17 @@ Azure Digital Twins を使用してこの目的のための新しい IoT Hub を
 
 また、REST API や [Logic Apps](../logic-apps/logic-apps-overview.md) などのその他のサービスへのコネクタを使用して、他のデータ ソースから Azure Digital Twins を駆動することもできます。
 
-### <a name="output-to-tsi-storage-and-analytics"></a>TSI、ストレージ、分析への出力
+### <a name="output-to-adx-tsi-storage-and-analytics"></a>ADX、TSI、ストレージ、分析への出力
 
 Azure Digital Twins モデルのデータは、追加の分析またはストレージのために下流の Azure サービスにルーティングできます。 これは、[イベント ハブ](../event-hubs/event-hubs-about.md)、[Event Grid](../event-grid/overview.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) を使用して、目的のデータ フローを駆動する、**イベント ルート** を通じて提供されます。
 
 イベント ルートでは、次のようなことが可能です。
+* デジタル ツイン データを ADX に送信し、[Azure Data Explorer (ADX) 用の Azure Digital Twins クエリ プラグイン](concepts-data-explorer-plugin.md)を使用してクエリを実行する
+* [Azure Digital Twins を Time Series Insights (TSI) に接続して](how-to-integrate-time-series-insights.md)、各ツインの時系列の履歴を追跡する
+* Time Series Insights のタイム シリーズ モデルを Azure Digital Twins のソースと合わせる
 * [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md) に Azure Digital Twins データを格納する
 * [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) またはその他の Microsoft Data Analytics ツールを使用して Azure Digital Twins データを分析する
 * より大きなワークフローと Logic Apps を統合する
-* Azure Digital Twins を Time Series Insights に接続して、各ツインの時系列の履歴を追跡する
-* Time Series Insights のタイム シリーズ モデルを Azure Digital Twins のソースと合わせる
 
 これは、Azure Digital Twins が大規模なソリューションに接続し、これらの分析情報を継続的に使用するためのカスタム ニーズをサポートするもう 1 つの方法です。
 
@@ -86,7 +85,7 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 * モデルの構成、トポロジの作成、ツイン グラフからの分析情報の抽出によって Azure Digital Twins インスタンスを駆動する 1 つ以上のクライアント アプリ。
 * Azure Digital Twins によって生成されるイベントや、デバイスなどの接続されたデータ ソースを処理するための 1 つ以上の外部コンピューティング リソース。 コンピューティング リソースを提供する一般的な方法の 1 つは、[Azure Functions](../azure-functions/functions-overview.md) を使用することです。
 * デバイス管理と IoT データ ストリーム機能を提供する IoT ハブ。
-* ワークフロー統合 ([Logic Apps](../logic-apps/logic-apps-overview.md)、コールド ストレージ、時系列統合、分析など) のタスクを処理するダウンストリーム サービス。
+* ワークフロー統合 ([Logic Apps](../logic-apps/logic-apps-overview.md)、コールド ストレージ、Azure Data Explorer、時系列統合、分析など) のタスクを処理するダウンストリーム サービス。
 
 次の図は、大規模な Azure IoT ソリューションのコンテキスト内で Azure Digital Twins が存在する場所を示しています。
 
@@ -102,6 +101,6 @@ Azure Digital Twins の **サービスの制限** については、「[Azure Di
 
 ## <a name="next-steps"></a>次のステップ
 
-* クイックスタートを使用して、Azure Digital Twins の使用について詳しく確認します。[クイック スタート:サンプル シナリオを精査する](quickstart-azure-digital-twins-explorer.md)"。
+* クイック スタート「[クイック スタート: Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)」で、Azure Digital Twins の使用方法について学習します。
 
 * または、Azure Digital Twins の概念についての[概念: カスタム モデル](concepts-models.md)に関するページを参照してください。

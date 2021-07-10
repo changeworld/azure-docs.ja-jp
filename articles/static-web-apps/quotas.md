@@ -1,37 +1,32 @@
 ---
-title: Azure Static Web Apps のプレビューのクォータ
-description: Azure Static Web Apps のプレビューに関連付けられているクォータについて説明します
+title: Azure Static Web Apps のクォータ
+description: Azure Static Web Apps に関連付けられているクォータについて説明します
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e3538e90a6dea69c703f56871fde86a18557a022
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 12666d69f6dcab043e909dbb2b49276644a70d76
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095171"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069564"
 ---
-# <a name="quotas-in-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューのクォータ
+# <a name="quotas-in-azure-static-web-apps"></a>Azure Static Web Apps のクォータ
 
-Azure Static Web Apps のプレビューには、次のクォータがあります。
+Azure Static Web Apps には、次のクォータがあります。
 
-> [!IMPORTANT]
-> Azure Static Web Apps はパブリック プレビュー段階であり、運用環境での使用は想定されていません。
-
-| 機能                     | Free プラン        |
-|-----------------------------|------------------|
-| 含まれる帯域幅          | 100 GB/月 |
-| 超過帯域幅           | 使用不可      |
-| Azure サブスクリプションあたりのアプリ数 | 10               |
-| アプリのサイズ                    | 250 MB           |
-| 実稼働前の環境数 | 3                |
-| カスタム ドメイン              | 1                |
-| 承認 (カスタム ロールとルーティング規則を使用) | カスタム ロールに属することができるエンドユーザーは最大 25 名 |
-| Azure Functions             | 利用可能        |
-| SLA                         | なし             |
+| 機能                     | Free プラン        | Standard プラン |
+|-----------------------------|------------------|---------------|
+| 含まれる帯域幅          | サブスクリプションあたり 1 か月 100 GB | サブスクリプションあたり 1 か月 100 GB |
+| 超過帯域幅           | 使用不可      | GB あたり $0.20 |
+| Azure サブスクリプションあたりのアプリ数 | 10               | 無制限 |
+| アプリのサイズ                    | 250 MB           | 500 MB |
+| 実稼働前の環境数 | 3                | 10 |
+| カスタム ドメイン              | アプリあたり 2        | アプリあたり 5 |
+| 承認 (カスタム ロールとルーティング規則を使用) | カスタム ロールに属することができるエンドユーザーは最大 25 名 | カスタム ロールに属することができるエンドユーザーは最大 25 名 |
 
 ## <a name="github-storage"></a>GitHub ストレージ
 

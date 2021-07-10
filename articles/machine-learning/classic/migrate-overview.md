@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fafb9f7e84263c33cf1b15a52742ec9cd0380a40
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7bb7c3a2d19b4dbb84d09829e2ed181a62ef7fbe
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311857"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901297"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Azure Machine Learning への移行
 
@@ -134,7 +134,6 @@ Azure Machine Learning では、**データセット** はワークスペース�
 
 スタジオ (クラシック) では、作業の処理ロジックを **実験** に含めました。 ドラッグ アンド ドロップ モジュールを使用して実験を作成しました。
 
-
 ![automobile-price-classic-experiment](./media/migrate-overview/studio-classic-experiment.png)
 
 Azure Machine Learning では、作業の処理ロジックを **パイプライン** に含めます。 パイプラインは、ドラッグ アンド ドロップ モジュールを使用するか、コードを記述すして作成できます。
@@ -143,14 +142,13 @@ Azure Machine Learning では、作業の処理ロジックを **パイプライ
 
 ### <a name="web-service-endpoint"></a>Web サービス エンドポイント
 
-スタジオ (クラシック) では、リアルタイムの予測に **要求/応答 API** が使用されました。 バッチの予測または再トレーニングには、**バッチ実行 API** が使用されました。
+スタジオ (クラシック) では、**リアルタイム予測に REQUEST/RESPOND API** を使用し、バッチ予測や再トレーニングには **BATCH EXECUTION API** が使用されました。
 
 ![automobile-price-classic-webservice](./media/migrate-overview/studio-classic-web-service.png)
 
-Azure Machine Learning では、リアルタイムの予測に **リアルタイム エンドポイント** が使用されます。 バッチの予測や再トレーニングには、**パイプライン エンドポイント** が使用されます。
+Azure Machine Learning では、リアルタイムの予測に **リアルタイム エンドポイント** を使用し、バッチ予測や再トレーニングには **パイプライン エンドポイント** を使用します。
 
 ![automobile-price-aml-endpoint](./media/migrate-overview/aml-endpoint.png)
-
 
 ## <a name="next-steps"></a>次のステップ
 

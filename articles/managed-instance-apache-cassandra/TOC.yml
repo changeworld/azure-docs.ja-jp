@@ -26,9 +26,21 @@
       href: compare-cosmosdb-managed-instance.md
 - name: 操作方法ガイド
   items:
+    - name: 移行
+      items:
+        - name: ライブ マイグレーション
+          items:
+            - name: デュアル書き込みプロキシの使用
+              href: dual-write-proxy-migration.md
+        - name: オフライン移行
+          items:
+            - name: Apache Spark の使用
+              href: spark-migration.md
     - name: Azure CLI で管理する
       displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
+    - name: 必要なアウトバウンド ネットワーク規則
+      href: network-rules.md
     - name: Grafana を使用して Prometheus のメトリックを視覚化する
       href: visualize-prometheus-grafana.md
 - name: リファレンス

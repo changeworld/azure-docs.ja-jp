@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: afa2811fe6e0dab3bc5c114febeec8aae25bd891
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 67d8ef5bf6960ca03d8d2d36efbe4461e1124190
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765577"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695236"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -73,7 +73,7 @@ Cost Management 共同作成者は、最低限の特権を持つ推奨ロール�
 - **コスト データのエクスポートをスケジュールする** – Cost Management 共同作成者は、ストレージ アカウントにデータをコピーするエクスポートをスケジュールするために、ストレージ アカウントを管理するアクセス権も必要です。 コスト データのエクスポート先となるストレージ アカウントを含むリソース グループに対して、[ストレージ アカウントの共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)を付与することを検討してください。
 - **コスト削減の推奨事項を表示する** – Cost Management 閲覧者と Cost Management 共同作成者は、コストの推奨事項を *表示する* ためのアクセス権を既定で所有しています。 ただし、コストの推奨事項に従って操作するためのアクセスでは、個々のリソースに対するアクセス権が必要です。 コストの推奨事項に従って操作したい場合は、[サービス固有のロール](../../role-based-access-control/built-in-roles.md#all)の付与を検討してください。
 
-管理グループは、Enterprise Agreement (EA)、従量課金制 (PAYG)、または Microsoft 社内サブスクリプションが含まれている場合にのみサポートされます。 Microsoft 顧客契約または Azure Active Directory サブスクリプションなど、その他のサブスクリプションの種類が含まれる管理グループでは、コストを表示することができません。 サブスクリプションが混在している場合は、サポートされていないサブスクリプションを管理グループ階層の別の ARM に移動させ、サポートされているサブスクリプションの Cost Management を有効にします。 例として、ルート管理グループの下に **Azure AD** および **My Org** という 2 つの管理グループを作成します。Azure AD サブスクリプションを **Azure AD** 管理グループに移動させ、**My Org** 管理グループを使用してコストを表示および管理します。
+管理グループは、3,000 件までの Enterprise Agreement (EA)、従量課金制 (PAYG)、または Microsoft 社内のサブスクリプションが含まれている場合にのみサポートされます。 3,000 件を超えるサブスクリプションが含まれている管理グループ、またはその他のプランの種類のサブスクリプション (Microsoft 顧客契約や Azure Active Directory のサブスクリプションなど) では、コストを表示できません。 サブスクリプションが混在している場合は、サポートされていないサブスクリプションを管理グループ階層の別の ARM に移動させ、サポートされているサブスクリプションの Cost Management を有効にします。 例として、ルート管理グループの下に **Azure AD** および **My Org** という 2 つの管理グループを作成します。Azure AD サブスクリプションを **Azure AD** 管理グループに移動させ、**My Org** 管理グループを使用してコストを表示および管理します。
 
 ### <a name="feature-behavior-for-each-role"></a>ロールごとの機能の動作
 

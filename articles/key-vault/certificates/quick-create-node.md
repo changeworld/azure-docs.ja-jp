@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 3f933a564e62bf3aae1ec05c6dde048100c22967
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 069238a6feb4425aba1da48b89d26128d6d54775
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815848"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846988"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>クイックスタート: JavaScript 用 Azure Key Vault 証明書クライアント ライブラリ (バージョン 4)
 
@@ -262,7 +262,7 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 次のコマンドを実行して、アプリを実行します。
 
-```azurecli
+```cmd
 npm install
 npm index.js
 ```

@@ -2,13 +2,13 @@
 title: 'クイック スタート: Azure Arc で Web アプリを作成する'
 description: Azure Arc 上の App Service の使用を開始して最初の Web アプリをデプロイします。
 ms.topic: quickstart
-ms.date: 05/11/2021
-ms.openlocfilehash: b57c5e80ecef87901221c3ead49419f3cce89302
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/02/2021
+ms.openlocfilehash: b9292af90c50712ef99496ce6078c4c34b5e5d01
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387112"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984880"
 ---
 # <a name="create-an-app-service-app-on-azure-arc-preview"></a>Azure Arc で App Service アプリを作成する (プレビュー)
 
@@ -28,36 +28,35 @@ ms.locfileid: "110387112"
 az group create --name myResourceGroup --location eastus 
 ```
 
-<!-- ## 2. Create an App Service plan
-
-Run the following command and replace `<environment-name>` with the name of the App Service Kubernetes environment (see [Prerequisites](#prerequisites)).
-
-```azurecli-interactive
-az appservice plan create --resource-group myResourceGroup --name myAppServicePlan --custom-location <environment-name> --kube-sku K1
-``` 
-
-Currently does not work
-
--->
-
 ## <a name="2-get-the-custom-location"></a>2. カスタムの場所を取得する
 
 [!INCLUDE [app-service-arc-get-custom-location](../../includes/app-service-arc-get-custom-location.md)]
 
 
-## <a name="3-create-an-app"></a>3. アプリを作成する
+## <a name="3-create-an-app-service-plan"></a>3. App Service プランを作成する
+
+前の手順で取得した `$customLocationId` を置き換えて、次のコマンドを実行します。
+
+```azurecli-interactive
+az appservice plan create -g myResourceGroup -n myPlan \
+    --custom-location $customLocationId \
+    --per-site-scaling --is-linux --sku K1
+``` 
+
+## <a name="4-create-an-app"></a>4. アプリを作成する
 
 次の例では Node.js アプリを作成します。 `<app-name>` をクラスター内で一意の名前で置き換えます (有効な文字は、`a-z`、`0-9`、および `-` です)。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes --linux`](/cli/azure/webapp) を実行します。
 
 ```azurecli-interactive
  az webapp create \
+    --plan myPlan
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \
     --runtime 'NODE|12-lts'
 ```
 
-## <a name="4-deploy-some-code"></a>4. コードをデプロイする
+## <a name="5-deploy-some-code"></a>5. コードをデプロイする
 
 > [!NOTE]
 > `az webapp up` は、パブリック プレビュー期間中はサポートされていません。
@@ -71,7 +70,7 @@ zip -r package.zip .
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app-name> --src package.zip
 ```
 
-## <a name="5-get-diagnostic-logs-using-log-analytics"></a>5. Log Analytics を使用して診断ログを取得する
+## <a name="6-get-diagnostic-logs-using-log-analytics"></a>6. Log Analytics を使用して診断ログを取得する
 
 > [!NOTE]
 > Log Analytics を使用するには、[App Service 拡張機能 をインストールする](manage-create-arc-environment.md#install-the-app-service-extension)ときに有効にしておく必要があります。 Log Analytics なしで拡張機能をインストールした場合は、この手順をスキップします。

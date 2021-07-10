@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 2099d190ca896a5c8124cdd6b605037256a5ab48
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: ce0fab219f49427892f5ffe47c595edb26fea010
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489384"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796014"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-the-azure-portal-preview"></a>チュートリアル: Azure portal を使用してロールの割り当て条件を追加し、BLOB へのアクセスを制限する (プレビュー)
 
@@ -153,17 +153,15 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 
     [式] セクションが展開されます。
 
-1. [属性ソース] の一覧で **[リソース]** を選択します。
+1. 次の式の設定を行います。
 
-1. [属性] の一覧で、 **[Blob index tags [Values in key]]\(Blob インデックス タグ [キー内の値]\)** を選択します。
-
-    この属性を選択すると、条件によって確認されるタグ キーを指定できる [キー] ボックスが追加されます。
-
-1. [キー] ボックスに「**Project**」と入力します。
-
-1. [演算子] の一覧で、 **[StringEqualsIgnoreCase]** を選択します。
-
-1. [値] ボックスに「**Cascade**」と入力します。
+    | 設定 | 値 |
+    | --- | --- |
+    | Attribute source (属性ソース) | リソース |
+    | 属性 | Blob index tags [Values in key] (BLOB インデックス タグ [キー内の値]) |
+    | キー | Project |
+    | 演算子 | StringEqualsIgnoreCase |
+    | 値 | Cascade |
 
     ![BLOB インデックス タグの [Build expression]\(式の作成\) セクションのスクリーンショット。](./media/storage-auth-abac-portal/condition-expressions.png)
 
@@ -251,7 +249,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 
 1. 作成したユーザーを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure のロールの割り当て条件の例](storage-auth-abac-examples.md)
 - [Azure Storage での Azure のロールの割り当て条件のアクションと属性 (プレビュー)](storage-auth-abac-attributes.md)

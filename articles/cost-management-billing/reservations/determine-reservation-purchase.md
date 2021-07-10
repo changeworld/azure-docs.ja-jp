@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 05/25/2021
 ms.author: banders
-ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 80c0627cdc2169ce3301ee56a449442387d8f6e1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684747"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481104"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>購入する予約を判断する
 
@@ -52,7 +52,7 @@ Promo シリーズの VM は予約割引が適用されないので、分析対�
 - **MeterName** から **vCore** をフィルターで抽出します。
 - **MeterSubCategory** から、名前に _Compute_ が含まれるすべての使用量レコードをフィルターで抽出します。
 
-**AdditionalInfo** から **vCores** の値を取得します。 これは使用された仮想コアの数を示します。 この数量は、**仮想コア**の数にデータベースの使用時間数を乗じたものです。
+**AdditionalInfo** から **vCores** の値を取得します。 これは使用された仮想コアの数を示します。 この数量は、**仮想コア** の数にデータベースの使用時間数を乗じたものです。
 
 これらのデータから、次の項目についての一定の使用量を把握することができます。
 
@@ -97,7 +97,7 @@ Azure portal の [予約] に移動し、100 DWU の倍数単位で Azure Synaps
 
 ## <a name="recommendations-in-the-cost-management-power-bi-app"></a>Cost Management Power BI アプリにおける推奨情報
 
-マイクロソフト エンタープライズ契約および Microsoft 顧客契約のお客様は、VM RI カバレッジ レポートを利用して VM と購入の推奨情報を得ることができます。 カバレッジ レポートには、合計使用量と、予約インスタンスによってカバーされる使用量が表示されます。
+マイクロソフト エンタープライズ契約のお客様は、VM RI カバレッジ レポートを利用して VM と購入の推奨情報を得ることができます。 カバレッジ レポートには、合計使用量と、予約インスタンスによってカバーされる使用量が表示されます。
 
 1. [Cost Management アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)を入手します。
 2. VM RI カバレッジ レポートに移動します。購入するスコープに応じて共有スコープまたは単一スコープを選択してください。
