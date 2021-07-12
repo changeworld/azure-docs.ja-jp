@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 02/24/2021
-ms.openlocfilehash: 7124014821c79fa37aa04da8909e3b4ac3bcb4fb
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 06/07/2021
+ms.openlocfilehash: 4f7900c4abc37df776c231ac9d70a09862f6d49f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492496"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748403"
 ---
 # <a name="quickstart-enable-azure-defender"></a>クイックスタート: Azure Defender を有効にする
 
@@ -32,7 +32,7 @@ Azure Defender を使用して Azure サブスクリプション全体を保護�
 
 - **Azure Defender for Storage accounts** は、サブスクリプション レベルまたはリソース レベルで有効にすることができます
 - **Azure Defender for SQL** は、サブスクリプション レベルまたはリソース レベルで有効にすることができます
-- **Azure Database for MariaDB、MySQL、PostgreSQL** の脅威の防止は、リソース レベルでのみ有効にできます
+- **オープンソースのリレーショナル データベース用 Azure Defender** は、リソース レベルでのみ有効にできます
 
 ### <a name="to-enable-azure-defender-on-your-subscriptions-and-workspaces"></a>サブスクリプションとワークスペースで Azure Defender を有効にするには:
 
@@ -64,6 +64,21 @@ Azure Defender を使用して Azure サブスクリプション全体を保護�
         :::image type="content" source="./media/enable-azure-defender/upgrade-selected-workspaces-and-subscriptions.png" alt-text="[作業の開始] ページから、選択したすべてのワークスペースとサブスクリプションをアップグレードする":::
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="disable-azure-defender"></a>Azure Defender を無効にする
 
-Azure Defender を有効にした後は、[Azure Security Center からのエージェントと拡張機能の自動プロビジョニング](security-center-enable-data-collection.md)に関するページに説明されている、必要なエージェントと拡張機能による自動データ収集を有効にします。
+サブスクリプションに対して Azure Defender を無効にする必要がある場合、手順は同じですが、 **[Azure Defender オフ]** を選択します。
+ 
+1. Security Center のメニューから、 **[価格と設定]** を選択します。
+1. 関連するサブスクリプションを選択します。
+1. サブスクリプションで Azure Defender が有効になっている場合は、**Azure Defender プラン** を開き、 **[Azure Defender off]\(Azure Defender をオフ\)** を選択します。
+
+    :::image type="content" source="./media/enable-azure-defender/disable-plans.png" alt-text="Azure Defender を有効または無効にする":::
+
+1. **[保存]** を選択します。
+
+> [!NOTE]
+> Azure Defender を無効にすると、1 つのプランを無効にしたか、すべてのプランを一度に無効にしたかどうかに関係なく、データ収集が短時間継続される場合があります。 
+
+## <a name="next-steps"></a>次の手順
+
+Azure Defender を有効にしたので、[エージェントと拡張機能の自動プロビジョニング](security-center-enable-data-collection.md)で説明されている、必要なエージェントと拡張機能による自動データ収集を有効にします。

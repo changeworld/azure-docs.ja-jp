@@ -3,27 +3,29 @@ title: Azure Automation の Start/Stop VMs during off-hours の概要
 description: この記事では、VM を日程に基づいて開始または停止し、Azure Monitor ログでそれらを事前に監視する Start/Stop VMs during off-hours 機能について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2020
+ms.date: 05/25/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b28367aa242d5fab71dc5046ff6188c634883f03
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 0ac3a2dccecf50b53917d878535ce62e124f8f8e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834518"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479550"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
 Start/Stop VMs during off-hours 機能は、有効になっている Azure VM を開始または停止するものです。 ユーザー定義のスケジュールでマシンを開始または停止し、Azure Monitor ログを介して分析情報を取得し、[アクション グループ](../azure-monitor/alerts/action-groups.md)を使用してオプションのメールを送信することができます。 この機能は、ほとんどのシナリオにおいて、Azure Resource Manager とクラシック VM の両方で有効にできます。
 
+> [!NOTE]
+> このバージョン (v1) をインストールする前に、現在プレビュー段階にある[次のバージョン](../azure-functions/start-stop-vms/overview.md)について知っておいてください。 新しいバージョン (v2) では、これと同じ機能がすべて提供されますが、Azure の新しいテクノロジを活用するように設計されています。 これにより、単一の開始/停止インスタンスからの複数サブスクリプションのサポートなど、お客様からの要望が多かったいくつかの機能が追加されます。 
+>
+> Start/Stop VMs during off-hours (v1) は、2022 年 5 月 21 日に非推奨となる予定です。 
+
 この機能では、[Start-AzVm](/powershell/module/az.compute/start-azvm) コマンドレットを使用して VM を開始します。 VM を停止するためには、[Stop-AzVM](/powershell/module/az.compute/stop-azvm) を使用します。
 
 > [!NOTE]
-> Runbook は、新しい Azure Az モジュール コマンドレットを使用するように更新されていますが、AzureRM プレフィックス エイリアスを使用します。
-
-> [!NOTE]
-> Start/Stop VMs during off-hours は、利用可能な最新バージョンの Azure モジュールをサポートするように更新されています。 AzureRM から Az モジュールに移行したため、この機能の更新版 (Marketplace から入手可能) では、AzureRM モジュールはサポートされません。
+> Start/Stop VMs during off-hours は、利用可能な最新バージョンの Azure モジュールをサポートするように更新されています。 AzureRM から Az モジュールに移行したため、この機能の更新版 (Marketplace から入手可能) では、AzureRM モジュールはサポートされません。 Runbook は、新しい Azure Az モジュール コマンドレットを使用するように更新されていますが、AzureRM プレフィックス エイリアスを使用します。
 
 この機能は、VM のコストを最適化する必要があるユーザー向けに、分散型で低コストの自動化オプションを提供します。 この機能は次の目的で使用できます。
 
@@ -36,14 +38,11 @@ Start/Stop VMs during off-hours 機能は、有効になっている Azure VM �
 - 任意のリージョンの VM が管理されますが、Azure Automation アカウントと同じサブスクリプションでのみ使用できます。
 - Log Analytics ワークスペース、Azure Automation アカウント、Alerts がサポートされているリージョンの Azure と Azure Government で利用できます。 現在、Azure Government の各リージョンでは電子メール機能はサポートされていません。
 
-> [!NOTE]
-> このバージョンをインストールする前に、現在プレビュー段階にある [次のバージョン](https://github.com/microsoft/startstopv2-deployments)について知っておいてください。  新しいバージョン (V2) では、これと同じ機能がすべて提供されますが、Azure の新しいテクノロジを活用するように設計されています。 これにより、単一の開始/停止インスタンスからの複数サブスクリプションのサポートなど、お客様からの要望が多かったいくつかの機能が追加されます。
-
 ## <a name="prerequisites"></a>前提条件
 
 - Start/Stop VMs during off hours 機能の Runbook は [Azure 実行アカウント](./automation-security-overview.md#run-as-accounts)と連動します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
 
-- Runbook ジョブ ログとジョブ ストリーム結果をクエリおよび分析目的でワークスペースに格納する [Azure Monitor Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)。 Automation アカウントは新規または既存の Log Analytics ワークスペースにリンクできます。いずれのリソースも同じリソース グループに属する必要があります。
+- Runbook ジョブ ログとジョブ ストリーム結果をクエリおよび分析目的でワークスペースに格納する [Azure Monitor Log Analytics ワークスペース](../azure-monitor/logs/design-logs-deployment.md)。 Automation アカウントと Log Analytics ワークスペースは、同じサブスクリプション内にあり、サポートされているリージョンに存在する必要があります。 ワークスペースは、既に存在している必要があります。この機能のデプロイ中に新しいワークスペースを作成することはできません。
 
 Start/Stop VMs during off-hours 機能には、別の Automation アカウントを使用することをお勧めします。 多くの場合、Azure モジュールのバージョンがアップグレードされ、そのパラメーターが変更される可能性があります。 この機能は同じペースでアップグレードされないため、使用するコマンドレットの新しいバージョンでは動作しない可能性があります。 更新後のモジュールを運用 Automation アカウントにインポートする前に、テスト Automation アカウントにインポートして互換性問題がないことを確認することをお勧めします。
 

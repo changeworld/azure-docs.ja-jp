@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 05/25/2021
 ms.topic: tutorial
 ms.custom: tutorial
-ms.openlocfilehash: 6e8f176df9a87f10af89b71d35b1d5577a223424
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 731d9a64c9ef144e8e51e9bce319a031056958ae
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382182"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071553"
 ---
 # <a name="tutorial-access-azure-resources-with-a-managed-online-endpoint-and-system-managed-identity-preview"></a>チュートリアル: マネージド オンライン エンドポイントとシステム マネージド ID (プレビュー) を使用して Azure リソースにアクセスする
 
@@ -45,6 +45,7 @@ ms.locfileid: "110382182"
 * Azure Machine Learning ワークスペースが必要です。 上記の記事に従って ML 拡張機能を構成していれば、そのようなワークスペースが得られます。
 
 * スコアリングとデプロイの準備が整ったトレーニング済みの機械学習モデル。
+
 
 ## <a name="set-the-defaults-for-azure-cli"></a>Azure CLI の既定値を設定する
 
@@ -77,13 +78,13 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 作成するエンドポイント、ワークスペース、ワークスペースの場所について、それぞれの変数名を構成します。 次のコードは、これらの値をエンドポイントの環境変数としてエクスポートするものです。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="set_variables" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="set_variables" :::
 
 次に、BLOB ストレージ アカウント、BLOB コンテナー、ファイルに付けたい名前を指定します。 ここでこれらの変数名を定義しておいて、次のセクションの `az storage account create` コマンドや `az storage container create` コマンドから参照することになります。
 
 次のコードは、それらの値を環境変数としてエクスポートするものです。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="configure_storage_names" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="configure_storage_names" :::
 
 
 これらの変数をエクスポートした後、テキスト ファイルをローカルに作成します。 エンドポイントがデプロイされると、スコアリング スクリプトは、エンドポイントの作成時に生成されるシステム割り当てマネージド ID を使用して、このテキスト ファイルにアクセスします。
@@ -94,15 +95,15 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 まず、ストレージ アカウントを作成します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_account" :::
 
 次に、ストレージ アカウントに BLOB コンテナーを作成します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_container" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_container" :::
 
 その後、テキスト ファイルを BLOB コンテナーにアップロードします。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="upload_file_to_storage" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="upload_file_to_storage" :::
 
 ## <a name="create-a-managed-online-endpoint"></a>マネージド オンライン エンドポイントを作成する
 
@@ -113,11 +114,11 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 >[!IMPORTANT]
 > システム割り当てマネージド ID は不変であり、作成後は変更できません。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_endpoint" :::
 
 エンドポイントの状態を次のようにして確認します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
 
 ## <a name="give-storage-permission-to-system-assigned-managed-identity"></a>システム割り当てマネージド ID にストレージへのアクセス許可を与える
@@ -126,11 +127,11 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 エンドポイントに対して作成されたシステム割り当てマネージド ID を取得します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="get_system_identity" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="get_system_identity" :::
 
 ここから、システム割り当てマネージド ID に、ご使用のストレージへのアクセス許可を与えることができます。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="give_permission_to_user_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="give_permission_to_user_storage_account" :::
 
 ## <a name="scoring-script-to-access-azure-resource"></a>Azure リソースにアクセスするためのスコアリング スクリプト
 
@@ -144,18 +145,18 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 基になる環境とイメージが初めて構築されるものであるかどうかに応じて、このデプロイには 8 分から 14 分程度かかる場合があります。 その後、同じ環境を使用したデプロイは、それよりも短時間で完了します。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="deploy" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="deploy" :::
 
 デプロイの状態を確認します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deploy_Status" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deploy_Status" :::
 
 > [!NOTE]
 > スコアリング スクリプトの init メソッドは、システム割り当てマネージド ID トークンを使用して、ストレージ アカウントからファイルを読み取ります。 
 
 init メソッドの出力をチェックするには、次のコードでデプロイ ログを確認します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deployment_log" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deployment_log" :::
 
 このコマンドが完了すると、モデル、環境、エンドポイントが自分の Azure Machine Learning ワークスペースに登録されます。
 
@@ -167,15 +168,15 @@ init メソッドの出力をチェックするには、次のコードでデプ
 
 エンドポイントを呼び出すには、次を実行します。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="test_endpoint" :::
 
 
 ## <a name="delete-the-endpoint-and-storage-account"></a>エンドポイントとストレージ アカウントを削除する
 
 デプロイしたエンドポイントとストレージを今後使用する予定がない場合は、コストを節約するためにそれらを削除してください。 エンドポイントを削除すると、そこに関連付けられているデプロイもすべて削除されます。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_endpoint" :::
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_storage_account" :::
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -191,3 +192,4 @@ init メソッドの出力をチェックするには、次のコードでデプ
 
 * CLI の使用について詳しくは、「[Azure Machine Learning 用の CLI 拡張機能を使用する](reference-azure-machine-learning-cli.md)」を参照してください。
 * 特定のデータのみを返すように JSON クエリを調整する方法については、[Azure CLI コマンドの出力の照会](/cli/azure/query-azure-cli)に関するページを参照してください。
+* YAML スキーマの詳細については、[オンライン エンドポイント YAML リファレンス](reference-online-endpoint-yaml.md)に関するドキュメントを参照してください。

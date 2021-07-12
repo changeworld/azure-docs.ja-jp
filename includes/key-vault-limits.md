@@ -2,14 +2,14 @@
 author: amitbapat
 ms.service: key-vault
 ms.topic: include
-ms.date: 03/09/2021
+ms.date: 05/28/2021
 ms.author: ambapat
-ms.openlocfilehash: 9ecfcff00e6f44f5c739513c063baaa3fa02a3db
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 3539e222407fee63a829e80db986f2b0eed02e24
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753302"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111761375"
 ---
 Azure Key Vault サービスでは、コンテナーとマネージド HSM という 2 つのリソースの種類がサポートされています。 次の 2 つのセクションでは、それぞれのサービスの制限について説明します。
 
@@ -62,6 +62,12 @@ Azure Key Vault サービスでは、コンテナーとマネージド HSM と�
 > [!NOTE]
 > バージョン数が上記の制限を超えるキー、シークレット、または証明書オブジェクトをバックアップしようとすると、エラーが発生します。 キー、シークレット、または証明書の以前のバージョンを削除することはできません。 
 
+### <a name="limits-on-count-of-keys-secrets-and-certificates"></a>キー、シークレット、および証明書の数に関する制限:
+
+Key Vault では、コンテナーに格納できるキー、シークレット、または証明書の数は制限されません。 コンテナーに関するトランザクション制限を考慮して、操作が調整されないようにする必要があります。
+
+Key Vault では、シークレット、キー、または証明書に対するバージョン数は制限されませんが、多数のバージョン (500 個以上) を格納すると、バックアップ操作のパフォーマンスに影響を与える可能性があります。 「[Azure Key Vault のバックアップ](../articles/key-vault/general/backup.md)」を参照してください。
+
 #### <a name="azure-private-link-integration"></a>Azure Private Link の統合
 
 > [!NOTE]
@@ -72,7 +78,7 @@ Azure Key Vault サービスでは、コンテナーとマネージド HSM と�
 | キー コンテナーあたりのプライベート エンドポイント | 64 |
 | サブスクリプションあたりのプライベート エンドポイントのあるキー コンテナー | 400 |
 
-### <a name="resource-type-managed-hsm-preview"></a>リソースの種類: マネージド HSM (プレビュー)
+### <a name="resource-type-managed-hsm"></a>リソースの種類: マネージド HSM
 
 このセクションでは、リソースの種類 `managed HSM` のサービスの制限について説明します。
 
@@ -80,7 +86,7 @@ Azure Key Vault サービスでは、コンテナーとマネージド HSM と�
 
 |アイテム|制限|
 |----|------:|
-リージョンごとのサブスクリプションあたりの HSM インスタンスの数|1 (プレビュー期間中)
+リージョンごとのサブスクリプションあたりの HSM インスタンスの数|1 
 HSM プールあたりのキー数|5000
 キーあたりのバージョン数|100
 HSM あたりのカスタム ロール定義の数|50
