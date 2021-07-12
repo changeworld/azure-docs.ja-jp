@@ -5,15 +5,15 @@ author: manoskow
 manager: jken
 services: azure-communication-services
 ms.author: manoskow
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b1fcf708a7275c60e3f6e7fc15f2247fb088bc47
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 06ba8675b0d393b85ef5748df6d0250257324808
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077304"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108605"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Communication Services でのトラブルシューティング
 

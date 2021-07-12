@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9fd77ec4f72555e2d326a07831abe2648a68fbaf
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 1f01d6efc29d4d275762ce7f5699c036ee885ba9
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592054"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112691"
 ---
 # <a name="chat-sdk-overview"></a>Chat SDK の概要 
 

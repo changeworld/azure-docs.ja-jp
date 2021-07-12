@@ -6,15 +6,15 @@ author: chpalm
 manager: chpalm
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3fd6aa705a2220483534761c185ca7cac01e148e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 142b4635bed6361987c21173245bb4d4e7557f90
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110093612"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108101"
 ---
 # <a name="teams-interoperability"></a>Teams の相互運用性
 
@@ -43,13 +43,11 @@ Teams の相互運用性によって、ユーザーと Teams の会議とをつ�
 
 ![Teams の相互運用のアーキテクチャ](./media/call-flows/teams-interop.png)
 
-Teams の会議に備わっている特定の機能 (挙手、集合モード、ブレイクアウト ルームなど) は Teams ユーザーしか利用できませんが、オーディオ、ビデオ、チャット、画面共有という会議の主要な機能には、カスタム アプリケーションからアクセスできます。 通話中に、ミーティングへのチャットはカスタム アプリケーション ユーザーにアクセスできるようになります。 参加する前に、または呼び出しを終了した後にメッセージを送受信することはできません。 
+予定されている Teams の会議に Communication Services ユーザーが参加できるのは、匿名での参加が[会議の設定](/microsoftteams/meeting-settings-in-teams)で有効にされている場合に限られます。 
+
+Teams の会議に備わっている特定の機能 (挙手、集合モード、ブレイクアウト ルームなど) は Teams ユーザーしか利用できませんが、オーディオ、ビデオ、チャット、画面共有という会議の主要な機能には、カスタム アプリケーションからアクセスできます。 通話中に、ミーティングへのチャットはカスタム アプリケーション ユーザーにアクセスできるようになります。 参加する前に、または呼び出しを終了した後にメッセージを送受信することはできません。 会議がチャネルに対してスケジュールされている場合、Communication Services ユーザーは、チャットに参加することも、メッセージを送受信することもできません。
 
 Communication Services ユーザーが Teams の会議に参加すると、Calling SDK を通じて指定された表示名が Teams のユーザーに表示されます。 その他の点では、Communication Services ユーザーと Teams の匿名ユーザーが同様に扱われます。  カスタム アプリケーションでは、Teams の会議を保護するためにユーザー認証などのセキュリティ対策について考慮する必要があります。 匿名ユーザーを会議に参加させることによって生じるセキュリティへの影響に留意し、[Teams のセキュリティ ガイド](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)を利用して、匿名ユーザーに提供する機能を構成してください。
-
-Communication Services のチームの相互運用機能は、現在プライベート プレビュー段階です。 一般提供の段階では、Communication Services のユーザーは "外部アクセス ユーザー" と同様に扱われます。 外部アクセスの詳細については、「[Microsoft Teams で組織外のユーザーと電話、チャット、共同作業を行う](/microsoftteams/communicate-with-users-from-other-organizations)」を参照してください。
-
-予定されている Teams の会議に Communication Services ユーザーが参加できるのは、匿名での参加が[会議の設定](/microsoftteams/meeting-settings-in-teams)で有効にされている場合に限られます。 会議がチャネルに対してスケジュールされている場合、Communication Services ユーザーは、チャットに参加することも、メッセージを送受信することもできません。
 
 ## <a name="teams-in-government-clouds-gcc"></a>Government Clouds (GCC) のチーム
 現時点では、Azure Communication Services の相互運用性は、[Microsoft 365 government clouds (GCC)](/MicrosoftTeams/plan-for-government-gcc) を使用するチーム デプロイとは互換性がありません。 

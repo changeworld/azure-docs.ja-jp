@@ -5,15 +5,15 @@ description: Azure Communication Services における通話フローのトポ�
 author: nmurav
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f25f7504c8962643176785f62e0d5d33928726bb
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b2a9f53dd2513baaa60ba39b2eaae7b11fe9f4b8
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325447"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112709"
 ---
 # <a name="call-flow-topologies"></a>通話フローのトポロジ
 この記事では、Azure Communication Services における通話フローのトポロジについて説明します。 この記事は、管理下のネットワーク内に Communication Services を統合することを検討しているエンタープライズのお客様にぜひお勧めします。 Communication Services における通話フローの概要については、[通話フローの概念に関するドキュメント](./call-flows.md)を参照してください。

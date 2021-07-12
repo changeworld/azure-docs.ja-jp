@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 779f1bead820af99b7f0bba859518eaa5d0ea2fc
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 712bac2b0fd7f7fee7f5370c98ecefde0e0e1c36
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286648"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119895"
 ---
 # <a name="quickstart-provision-an-azure-spring-cloud-service"></a>クイックスタート: Azure Spring Cloud サービスをプロビジョニングする
 
@@ -78,11 +78,11 @@ az extension add --name spring-cloud
 1. 既定のリソース グループ名とサービス インスタンス名を設定して、後続のコマンドでこれらの値を繰り返し指定しなくてよいようにします。
 
    ```azurecli
-   az configure --defaults group=<resource group name>
+   az config set defaults.group=<resource group name>
    ```
 
    ```azurecli
-   az configure --defaults spring-cloud=<service instance name>
+   az config set defaults.spring-cloud=<service instance name>
    ```
 ::: zone-end
 
@@ -160,7 +160,7 @@ Azure Spring Cloud のインスタンス化は、Azure portal または Azure CL
 1. 次のコマンドを使用して、既定のリソース グループ名と Spring Cloud サービス名を設定します。
 
     ```azurecli
-    az configure --defaults group=<resource group name> spring-cloud=<service name>
+    az config set defaults.group=<resource group name> defaults.spring-cloud=<service name>
     ```
 ---
 ::: zone-end
