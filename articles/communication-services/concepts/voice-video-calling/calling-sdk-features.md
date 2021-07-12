@@ -6,17 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 298e22388290d16b2dec76aabc9f32ad493ed341
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 7173c625ef56ea9e4d4d43d90adc18ba4fe167ab
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986284"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109289"
 ---
 # <a name="calling-sdk-overview"></a>Calling SDK の概要
+
+[!INCLUDE [SDP Plan B Deprecation Notice](../../includes/plan-b-sdp-deprecation.md)]
 
 Calling SDK を使用すると、エンド ユーザーのデバイスで音声とビデオの通信エクスペリエンスを実現できます。 このページでは、プラットフォームとブラウザーのサポート情報を含め、通話機能について詳しく説明します。 すぐに開始するには、[通話のクイックスタート](../../quickstarts/voice-video-calling/getting-started-with-calling.md)または[通話のヒーロー サンプル](../../samples/calling-hero-sample.md)をご覧ください。 
 

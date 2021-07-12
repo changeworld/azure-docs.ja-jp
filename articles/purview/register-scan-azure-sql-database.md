@@ -6,13 +6,13 @@ ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 05/08/2021
-ms.openlocfilehash: 47cc0eeb052d980e5c33061dc4721e2f819b3b34
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.date: 06/08/2021
+ms.openlocfilehash: da265e1be47a7ee1a98f6e8169f2531110b5c772
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109654924"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756601"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -28,7 +28,6 @@ Azure SQL Database データ ソースでは、以下の機能がサポートさ
 
 ### <a name="known-limitations"></a>既知の制限事項
 
-> * Azure Purview では、Azure SQL Database の[ビュー](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)のスキャンはサポートされていません。
 > * Azure Purview の [スキーマ] タブでは 300 を超える列がサポートされておらず、"Additional-Columns-Truncated (その他の列は切り詰められています)" と表示されます。 
 
 ## <a name="prerequisites"></a>必須コンポーネント
@@ -90,13 +89,13 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 サービス プリンシパルまたはマネージド ID には、データベース、スキーマ、およびテーブルのメタデータを取得するためのアクセス許可が必要です。 また、分類用のサンプリングを行うために、テーブルに対してクエリを実行できる必要もあります。
 
 - [Azure SQL での Azure AD 認証を構成して管理する](../azure-sql/database/authentication-aad-configure.md)
-- マネージド ID を使用している場合、Purview アカウントには独自のマネージド ID があります。これは基本的に、作成時の Purview の名前です。 「[Azure SQL Database にサービス プリンシパル ユーザーを作成する](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database)」のチュートリアルに従い、Purview の正確なマネージド ID または独自のサービス プリンシパルを使用して、Azure SQL Database に Azure AD ユーザーを作成する必要があります。 ID に適切なアクセス許可 ( `db_owner` または `db_datareader`) を割り当てる必要があります。 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
+- マネージド ID を使用している場合、Purview アカウントには独自のマネージド ID があります。これは基本的に、作成時の Purview の名前です。 「[Azure SQL Database にサービス プリンシパル ユーザーを作成する](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database)」のチュートリアルに従い、Purview の正確なマネージド ID または独自のサービス プリンシパルを使用して、Azure SQL Database に Azure AD ユーザーを作成する必要があります。 ID に適切なアクセス許可 (`db_datareader` など) を割り当てる必要があります。 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
     GO
     
-    EXEC sp_addrolemember 'db_owner', [Username]
+    EXEC sp_addrolemember 'db_datareader', [Username]
     GO
     ```
 

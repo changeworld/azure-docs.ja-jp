@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: daveba
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2020
+ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4555baf658f720bc92e882e141b71f3b8050a1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66624f0304065c21ecde9de261bebad3300bbd26
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093778"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077990"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Windows VM のシステム割り当てマネージド ID を使用して Resource Manager にアクセスする
 
@@ -42,17 +43,9 @@ ms.locfileid: "101093778"
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Resource Manager で VM にリソース グループへのアクセスを許可する
 
-Azure リソースのマネージド ID を使用すると、Azure AD 認証をサポートするリソースに対して認証するためのアクセス トークンをコードで取得できます。  Azure Resource Manager は、Azure AD の認証をサポートします。  最初に、Resource Manager のリソース (ここでは、VM が含まれているリソース グループ) へのアクセスをこの VM のシステム割り当てマネージド ID に許可する必要があります。  
-
-1.  **リソース グループ** のタブに移動します。 
-2.  **Windows VM** 用に作成した特定の **リソース グループ** を選択します。 
-3.  左側のパネルの **[アクセス制御 (IAM)]** に移動します。 
-4.  **Windows VM** 用の新しいロールの割り当てについて **[ロール割り当ての追加]** を実行します。  **[閲覧者]** として **[ロール]** を選択します。 
-5.  次のドロップダウンで、 **[アクセスの割り当て先]** として **[仮想マシン]** リソースを選択します。 
-6.  次に、 **[サブスクリプション]** ドロップダウンに適切なサブスクリプションが表示されていることを確認します。 **[リソース グループ]** で **[すべてのリソース グループ]** を選択します。 
-7.  最後に、**[選択]** の一覧で使用する Windows VM を選択し、**[保存]** をクリックします。
-
-    ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
+Azure リソースのマネージド ID を使用すると、Azure AD 認証をサポートするリソースに対して認証するためのアクセス トークンをコードで取得でき、Azure Resource Manager で Azure AD 認証がサポートされます。  Resource Manager のリソース (ここでは、VM を作成したリソース グループ) へのアクセスをこの VM のシステム割り当てマネージド ID に許可する必要があります。 **Windows VM** 用に作成したリソース グループのスコープで、[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールをマネージド ID に割り当てます。
+ 
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure Resource Manager を呼び出す 
 
