@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: b49ded912037c8935b67e64d4e4bb09402576bc7
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 63b02b66b68e40ae9ae209979d6464d97c30caf3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203633"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967910"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>サービス要求が失敗しました。 状態:403 (許可されていません)
 
@@ -29,7 +29,7 @@ ms.locfileid: "108203633"
 
 ### <a name="cause-2"></a>原因 #2
 
-[アプリ登録](how-to-create-app-registration.md)で認証を行っている Azure Digital Twins と通信するためにクライアント アプリを使用している場合は、Azure Digital Twins サービスに対するアクセス許可がアプリ登録で設定されていないという理由で、このエラーが発生することがあります。
+[アプリ登録](./how-to-create-app-registration-portal.md)で認証を行っている Azure Digital Twins と通信するためにクライアント アプリを使用している場合は、Azure Digital Twins サービスに対するアクセス許可がアプリ登録で設定されていないという理由で、このエラーが発生することがあります。
 
 アプリ登録には、Azure Digital Twins API に対するアクセス許可が構成されている必要があります。 その後、アプリ登録に対してクライアント アプリが認証されると、そのアプリ登録に構成されたアクセス許可が付与されます。
 
@@ -74,19 +74,19 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 先ほど作成したアプリ登録がこの一覧に表示されます。 それを選択すると、その詳細が開かれます。
 
-:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Azure portal のアプリの登録ページ":::
+:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Azure portal のアプリの登録ページのスクリーンショット。":::
 
 最初に、Azure Digital Twins のアクセス許可の設定が登録時に正しく設定されたことを確認します。 これを行うには、メニュー バーから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、`requiredResourceAccess` の下のこれらのフィールドを探します。 値は、次のスクリーンショットの値と一致している必要があります。
 
-:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Azure AD アプリ登録のためのマニフェストのポータル ビュー":::
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Azure portal の Azure AD アプリ登録のマニフェストのスクリーンショット。":::
 
 次に、メニュー バーから *[API のアクセス許可]* を選択して、このアプリ登録に Azure Digital Twins に対する読み取り/書き込みアクセス許可が含まれていることを確認します。 次のようなエントリが表示されます。
 
-:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Azure Digital Twins に対する '読み取り/書き込みアクセス' を示す、Azure AD アプリ登録のための API のアクセス許可のポータル ビュー":::
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Azure Digital Twins に対して 'Read/Write Access' が表示されている、Azure portal の Azure AD アプリ登録の API のアクセス許可のスクリーンショット。":::
 
 #### <a name="fix-issues"></a>問題を修正する
 
-これが説明とは異なる表示になっている場合は、"[アプリ登録を作成する方法](how-to-create-app-registration.md)" に関するページを参照して、アプリ登録を設定する方法の手順に従います。
+これが説明とは異なる表示になっている場合は、"[アプリ登録を作成する方法](./how-to-create-app-registration-portal.md)" に関するページを参照して、アプリ登録を設定する方法の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 

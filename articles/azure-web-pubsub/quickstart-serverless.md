@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 03/11/2021
-ms.openlocfilehash: 41d60c8e565655793dd33393f41876438c7eab66
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 573e0dc028391c2eea9d412bfe68c07a2e95aec3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166956"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963134"
 ---
 # <a name="quickstart-create-a-serverless-simple-chat-application-with-azure-functions-and-azure-web-pubsub-service"></a>クイックスタート: Azure Functions と Azure Web PubSub サービスを使用してシンプルなサーバーレス チャット アプリケーションを作成する 
 
@@ -58,7 +58,7 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
   クローンしたリポジトリの */samples/functions/js/simplechat* フォルダーを開きます。 *local.settings.json* を編集して、サービスの接続文字列を追加します。
   これらの変更を *local.settings.json* に加えたら、ファイルを保存します。
     - プレース ホルダー *<connection-string>* は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
-    - **`AzureWebJobsStorage`** の設定には、これが必須となります。[Azure Functions には Azure ストレージ アカウントが必要](https://docs.microsoft.com/azure/azure-functions/storage-considerations)であるためです。
+    - **`AzureWebJobsStorage`** の設定には、これが必須となります。[Azure Functions には Azure ストレージ アカウントが必要](../azure-functions/storage-considerations.md)であるためです。
         - Azure ストレージ エミュレーターがローカルで実行されている場合、"UseDevelopmentStorage=true" という元の設定を維持します。
         - Azure ストレージの接続文字列がある場合は、その値に置き換えます。
  

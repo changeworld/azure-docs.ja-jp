@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba261609772e380e85de084096a3242f2f92fd49
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 17411f3c0a12e544d3204b2194e53d9565b164a9
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108734311"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061904"
 ---
 # <a name="what-is-an-ontology"></a>オントロジとは 
 
@@ -54,11 +54,12 @@ DTDL を使用した業界標準のオントロジを統合するための戦略
 1. 上で選択したオントロジ統合戦略を進めます。自分のオントロジに基づいて、モデルを[採用](concepts-ontologies-adopt.md)、[変換](concepts-ontologies-convert.md)、または[作成](concepts-models.md)します。
     1. 必要に応じて、オントロジを[拡張](concepts-ontologies-extend.md)して、自分のニーズに合わせてカスタマイズします。
 1. モデルを[検証](how-to-parse-models.md)して、それが有効な DTDL ドキュメントであることを確認します。
-1. [API](how-to-manage-model.md#upload-models) または [Azure Digital Twins のモデル アップローダー](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)のようなサンプルを使用して、完成したモデルを Azure Digital Twins にアップロードします。
+1. [API](how-to-manage-model.md#upload-models) または [Azure Digital Twins のモデル アップローダー](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels)のようなサンプルを使用して、完成したモデルを Azure Digital Twins にアップロードします。
 
 この後、Azure Digital Twins インスタンスで自分のモデルを使用できるようになります。 
 
-[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) や [Azure Digital Twins Model Visualizer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) などのサンプルを使用してそれらを視覚化できます。また、それらを使用した[デジタル ツイン](concepts-twins-graph.md)の作成に進むこともできます。
+>[!TIP]
+> [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) または [Azure Digital Twins Model Visualizer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) を使用して、オントロジ内のモデルを視覚化できます。
 
 ## <a name="next-steps"></a>次のステップ
 

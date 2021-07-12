@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 05/03/2021
+ms.date: 06/14/2021
 ms.author: memildin
-ms.openlocfilehash: 485140be1e28c645da056d9a0ee2d38aaa4659af
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fff347c230b148548db94e97afd6a1ef3254f231
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755083"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062588"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -26,12 +26,189 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 > 6 か月以上前の項目を探す場合は、「[Azure Security Center の最新情報のアーカイブ](release-notes-archive.md)」をご覧ください。
 
 
+## <a name="june-2021"></a>2021 年 6 月
+
+6 月の更新プログラムには次のものが含まれます。
+
+- [Azure Defender for Key Vault の新しいアラート](#new-alert-for-azure-defender-for-key-vault)
+- [既定では無効になっているカスタマー マネージド キー (CMK) を使用して暗号化するための推奨事項](#recommendations-to-encrypt-with-customer-managed-keys-cmks-disabled-by-default)
+- [Kubernetes アラートのプレフィックスを "AKS_" から "K8S_" に変更](#prefix-for-kubernetes-alerts-changed-from-aks_-to-k8s_)
+- ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#deprecated-two-recommendations-from-apply-system-updates-security-control)
+
+
+### <a name="new-alert-for-azure-defender-for-key-vault"></a>Azure Defender for Key Vault の新しいアラート
+
+Azure Defender for Key Vault で提供される脅威の保護を拡張するために、次のアラートを追加しました。
+
+| アラート (アラートの種類)                                                                 | 説明                                                                                                                                                                                                                                                                                                                                                      | MITRE の方針 | 重大度 |
+|------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
+| Access from a suspicious IP address to a key vault (疑わしい IP アドレスからのキー コンテナーへのアクセス)<br>(KV_SuspiciousIPAccess)  | キー コンテナーが、Microsoft 脅威インテリジェンスによって疑わしい IP アドレスとして識別された IP によって正常にアクセスされました。 これは、お使いのインフラストラクチャが侵害を受けたことを示しているおそれがあります。 さらに詳しく調査することをお勧めします。 [Microsoft の脅威インテリジェンス機能](https://go.microsoft.com/fwlink/?linkid=2128684)の詳細に関するページを参照してください。 | 資格情報アクセス                            | Medium   |
+|||
+
+詳細については、次を参照してください。
+- [Azure Defender for Key Vault の概要](defender-for-resource-manager-introduction.md)
+- [Azure Defender の Key Vault アラートに対応する](defender-for-key-vault-usage.md)
+- [Azure Defender for Key Vault で提供されるアラートの一覧](alerts-reference.md#alerts-azurekv)
+
+
+### <a name="recommendations-to-encrypt-with-customer-managed-keys-cmks-disabled-by-default"></a>既定では無効になっているカスタマー マネージド キー (CMK) を使用して暗号化するための推奨事項
+
+Security Center には、カスタマー マネージド キーを使用して保存データを暗号化するための次のような複数の推奨事項があります。
+
+- コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
+- Azure Cosmos DB アカウントでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
+- Azure Machine Learning ワークスペースは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
+
+Azure のデータは、プラットフォーム マネージド キーを使用して自動的に暗号化されるため、カスタマー マネージド キーの使用は、組織が適用を選択した特定のポリシーに準拠するために必要な場合にのみ適用する必要があります。
+
+この変更に伴い、CMK を使用するための推奨事項は、**既定では無効** になりました。 組織に関係がある場合は、対応するセキュリティ ポリシーの *Effect* パラメーターを **AuditIfNotExists** または **Enforce** に変更することにより、有効にすることができます。 詳細については、「[セキュリティ ポリシーの有効化](tutorial-security-policy.md#enable-a-security-policy)」を参照してください。
+
+この変更は、次の例で示すように、新しいプレフィックス **[必要に応じて有効にする]** を使用して推奨事項の名前に反映されています。
+
+- [必要に応じて有効にする] ストレージ アカウントでは、カスタマー マネージド キーを使用して保存データを暗号化する必要がある
+- [必要に応じて有効にする] コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
+- [必要に応じて有効にする] Cosmos DB アカウントでは、カスタマー マネージド キーを使用して保存データを暗号化する必要がある
+
+:::image type="content" source="media/upcoming-changes/customer-managed-keys-disabled.png" alt-text="Security Center の CMK に関する推奨事項は、既定では無効になります。" lightbox="media/upcoming-changes/customer-managed-keys-disabled.png":::
+
+
+### <a name="prefix-for-kubernetes-alerts-changed-from-aks_-to-k8s_"></a>Kubernetes アラートのプレフィックスを "AKS_" から "K8S_" に変更
+
+オンプレミスおよびマルチ クラウド環境でホストされている Kubernetes クラスターを保護するため、Azure Defender for Kubernetes が最近拡張されました。 詳細については、「[Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)](release-notes.md#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview)」をご覧ください。
+
+Azure Defender for Kubernetes によって提供されるセキュリティ アラートが Azure Kubernetes Service 上のクラスターに制限されなくなったという事実を反映するために、アラートの種類のプレフィックスを "AKS_" から "K8S_" に変更しました。 必要に応じて、名前と説明も更新されています。 たとえば、このアラートです。
+
+|アラート (アラートの種類)|説明|
+|----|----|
+|Kubernetes penetration testing tool detected (Kubernetes 侵入テスト ツールが検出されました)<br>(**AKS** _PenTestToolsKubeHunter)|Kubernetes 監査ログ分析によって、**AKS** クラスターでの Kubernetes 侵入テスト ツールの使用が検出されました。 この動作は、正当である可能性もありますが、攻撃者はこのような公開ツールを悪意のある目的で使用する可能性があります。
+|||
+
+変更後:
+
+|アラート (アラートの種類)|説明|
+|----|----|
+|Kubernetes penetration testing tool detected (Kubernetes 侵入テスト ツールが検出されました)<br>(**K8S** _PenTestToolsKubeHunter)|Kubernetes 監査ログ分析によって、**Kubernetes** クラスターでの Kubernetes 侵入テスト ツールの使用が検出されました。 この動作は、正当である可能性もありますが、攻撃者はこのような公開ツールを悪意のある目的で使用する可能性があります。|
+|||
+
+"AKS_" から始まるアラートを参照する抑制ルールは自動的に変換されています。 SIEM エクスポート、またはアラートの種類別に Kubernetes アラートを参照するカスタム自動化スクリプトを設定している場合は、それらを新しいアラートの種類で更新する必要があります。
+
+Kubernetes アラートの完全な一覧については、[Kubernetes クラスターのアラート](alerts-reference.md#alerts-k8scluster)に関するセクションをご覧ください。
+
+### <a name="deprecated-two-recommendations-from-apply-system-updates-security-control"></a>"システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化
+
+次の 2 つの推奨事項は非推奨になりました。
+
+- **クラウド サービス ロールの OS バージョンを更新する必要がある** - Azure では既定で、ゲスト OS は、サービス構成 (.cscfg) に指定した Windows Server 2016 などの OS ファミリ内でサポートされている最新のイメージに定期的に更新されます。
+- **Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある** - この推奨事項の評価は、目標とする広範囲には及んでいません。 推奨事項は、よりお客様のセキュリティ ニーズに合った強化バージョンに置き換えられる予定です。
+
+
 ## <a name="may-2021"></a>2021 年 5 月
 
 5 月の更新プログラムには次のものが含まれます。
 
+- [Azure Defender for DNS および Azure Defender for Resource Manager を一般提供 (GA) としてリリース](#azure-defender-for-dns-and-azure-defender-for-resource-manager-released-for-general-availability-ga)
+- [オープンソースのリレーショナル データベース向け Azure Defender を一般提供 (GA) としてリリース](#azure-defender-for-open-source-relational-databases-released-for-general-availability-ga)
+- [Azure Defender for Resource Manager の新しいアラート](#new-alerts-for-azure-defender-for-resource-manager)
+- [GitHub ワークフローおよび Azure Defender を使用したコンテナー イメージの CI/CD 脆弱性スキャン (プレビュー)](#cicd-vulnerability-scanning-of-container-images-with-github-workflows-and-azure-defender-preview)
+- [一部の推奨事項に使用できる Resource Graph クエリを増加](#more-resource-graph-queries-available-for-some-recommendations)
 - [SQL データ分類の推奨事項の重要度を変更](#sql-data-classification-recommendation-severity-changed)
+- [トラステッド起動機能を有効にするための新しい推奨事項 (プレビュー段階)](#new-recommendations-to-enable-trusted-launch-capabilities-in-preview)
+- [Kubernetes クラスターを強化するための新しい推奨事項 (プレビュー段階)](#new-recommendations-for-hardening-kubernetes-clusters-in-preview)
 - [Assessments API を 2 つの新しいフィールドで拡張](#assessments-api-expanded-with-two-new-fields)
+- [資産インベントリでクラウド環境フィルターを取得](#asset-inventory-gets-a-cloud-environment-filter)
+
+
+### <a name="azure-defender-for-dns-and-azure-defender-for-resource-manager-released-for-general-availability-ga"></a>Azure Defender for DNS および Azure Defender for Resource Manager を一般提供 (GA) としてリリース
+
+これら 2 つのクラウドネイティブの広範な脅威保護計画が GA になりました。
+
+これらの新しい保護により、脅威アクターからの攻撃に対する回復性が強化され、Azure Defender によって保護される Azure リソースの数が大幅に増加します。
+
+- **Azure Defender for Resource Manager** - 組織で実行されるすべてのリソース管理操作を自動的に監視します。 詳細については、次を参照してください。
+    - [Azure Defender for Resource Manager の概要](defender-for-resource-manager-introduction.md)
+    - [Azure Defender for Resource Manager アラートに対応する](defender-for-resource-manager-usage.md)
+    - [Azure Defender for Resource Manager で提供されるアラートの一覧](alerts-reference.md#alerts-resourcemanager)
+
+- **Azure Defender for DNS** - Azure リソースからのすべての DNS クエリを継続的に監視します。 詳細については、次を参照してください。
+    - [Azure Defender for DNS の概要](defender-for-dns-introduction.md)
+    - [Azure Defender for DNS アラートに対応する](defender-for-dns-usage.md)
+    - [Azure Defender for DNS で提供されるアラートの一覧](alerts-reference.md#alerts-dns)
+
+これらの計画を有効にするプロセスを簡略化するには、次の推奨事項を使用します。
+
+- **Azure Defender for Resource Manager を有効にする必要がある**
+- **Azure Defender for DNS を有効にする必要がある**
+
+> [!NOTE]
+> Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページ https://aka.ms/pricing-security-center を参照してください。
+
+
+### <a name="azure-defender-for-open-source-relational-databases-released-for-general-availability-ga"></a>オープンソースのリレーショナル データベース向け Azure Defender を一般提供 (GA) としてリリース
+
+Azure Security Center では、オープンソースのリレーショナル データベースに対応するために、新しいバンドルを使用して SQL 保護のオファーを拡張します。
+
+- **Azure SQL データベース サーバー向け Azure Defender** - Azure ネイティブの SQL Server を保護します
+- **マシン上の SQL サーバー向け Azure Defender** - ハイブリッド、マルチクラウド、およびオンプレミスの環境で SQL サーバーに対して同様の保護を拡張します
+- **オープンソースのリレーショナル データベース向け Azure Defender** - MySQL、PostgreSQL、MariaDB 単一サーバー向けの Azure Defender を防御します。
+
+オープンソースのリレーショナル データベース向け Azure Defender では、サーバーに対するセキュリティ上の脅威を常に監視し、MySQL、PostgreSQL、MariaDB 向けの Azure Defender に対する潜在的な脅威を示す異常なデータベース アクティビティを検出します。 いくつかの例を次に示します。
+
+- **ブルート フォース攻撃の詳細な検出** - オープンソースのリレーショナル データベース向け Azure Defender により、ブルート フォース攻撃の試行および成功について詳細な情報が提供されます。 これにより、調査を行い、お使いの環境に対する攻撃の性質や状態について理解を深め、対処することができます。
+- **動作アラートの検出** - オープンソースのリレーショナル データベース向け Azure Defender により、データベースに対するアクセス パターンの変更など、サーバーに対する疑わしいおよび不測の動作が警告されます。
+- **脅威インテリジェンスベースの検出** - Azure Defender では、Microsoft の脅威インテリジェンスと膨大なナレッジ ベースを活用して脅威アラートが表示されるため、それらに対処することができます。
+
+詳細については、「[オープンソースのリレーショナル データベース向け Azure Defender の概要](defender-for-databases-introduction.md)」を参照してください。
+
+### <a name="new-alerts-for-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の新しいアラート
+
+Azure Defender for Resource Manager によって提供される脅威保護を拡張するために、次のアラートを追加しました。
+
+| アラート (アラートの種類)                                                                                                                                                | 説明                                                                                                                                                                                                                                                                                                                                                                                                                              | MITRE の方針 | 重大度 |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------:|----------|
+|**Permissions granted for an RBAC role in an unusual way for your Azure environment (Preview) \(Azure 環境の通常の方法とは異なる方法で RBAC ロールに付与されたアクセス許可 \(プレビュー\)\)**<br>(ARM_AnomalousRBACRoleAssignment)|割り当て時間、任命者の場所、担当者、認証方法、割り当てられたエンティティ、使用されるクライアントソフトウェア、割り当ての範囲が異常であるため、テナント内の同じ任命者によって実行された、または同じ担当者に対して実行された他の割り当てとは異なる RBAC ロール割り当てが、Azure Defender for Resource Manager によって検出されました。 この操作は、組織内の正当なユーザーによって実行された可能性があります。 または、組織内のアカウントが侵害されたこと、および脅威アクターが、自分が所有する追加のユーザー アカウントにアクセス許可を付与しようとしていることを示している場合もあります。|侵入の拡大、防御回避|Medium|
+|**Privileged custom role created for your subscription in a suspicious way (Preview) \(疑わしい方法でサブスクリプション用に作成された特権付きカスタム ロール \(プレビュー\)\)**<br>(ARM_PrivilegedRoleDefinitionCreation)|Azure Defender for Resource Manager によって、サブスクリプション内で、疑わしい方法で作成された特権付きカスタム ロールの定義が検出されました。 この操作は、組織内の正当なユーザーによって実行された可能性があります。 または、組織内のアカウントが侵害されたこと、および脅威アクターが、将来検出を回避するために使用する特権ロールを作成しようとしていることを示している場合もあります。|侵入の拡大、防御回避|低|
+|**Azure Resource Manager operation from suspicious IP address (Preview) \(疑わしい IP アドレスからの Azure Resource Manager の操作 \(プレビュー\)\)**<br>(ARM_OperationFromSuspiciousIP)|Azure Defender for Resource Manager によって、脅威インテリジェンス フィードで疑わしいとしてマークされている IP アドレスからの操作が検出されました。|実行|Medium|
+|**Azure Resource Manager operation from suspicious proxy IP address (Preview) \(疑わしいプロキシ IP アドレスからの Azure Resource Manager の操作 \(プレビュー\)\)**<br>(ARM_OperationFromSuspiciousProxyIP)|Azure Defender for Resource Manager によって、TOR などのプロキシ サービスに関連付けられた IP アドレスからのリソース管理操作が検出されました。 この動作は正当である可能性もありますが、悪意のあるアクティビティで脅威アクターがソース IP を隠そうとするときに多く見られます。|防御回避|Medium|
+||||
+
+詳細については、次を参照してください。
+- [Azure Defender for Resource Manager の概要](defender-for-resource-manager-introduction.md)
+- [Azure Defender for Resource Manager アラートに対応する](defender-for-resource-manager-usage.md)
+- [Azure Defender for Resource Manager で提供されるアラートの一覧](alerts-reference.md#alerts-resourcemanager)
+
+
+### <a name="cicd-vulnerability-scanning-of-container-images-with-github-workflows-and-azure-defender-preview"></a>GitHub ワークフローおよび Azure Defender を使用したコンテナー イメージの CI/CD 脆弱性スキャン (プレビュー)
+
+コンテナー レジストリ向け Azure Defender により、DevSecOps チームは、GitHub アクション ワークフローを監視できます。
+
+Trivy を利用した、コンテナー イメージのための新しい脆弱性スキャン機能により、開発者は、イメージをコンテナー レジストリにプッシュする "*前*" に、コンテナー イメージ内の一般的な脆弱性をスキャンできます。
+
+コンテナー スキャン レポートは Azure Security Center に要約されるため、セキュリティ チームは、脆弱なコンテナーイメージのソースと、それらが生成されたワークフローとリポジトリについて、より詳細な分析情報を入手して理解を深めることができます。
+
+詳細については、「[CI/CD ワークフローで脆弱なコンテナー イメージを特定する](defender-for-container-registries-cicd.md)」を参照してください。
+
+### <a name="more-resource-graph-queries-available-for-some-recommendations"></a>一部の推奨事項に使用できる Resource Graph クエリを増加
+
+Security Center のすべての推奨事項には、 **[クエリを開く]** から Azure Resource Graph を使用して、影響を受けるリソースの状態に関する情報を表示するためのオプションがあります。 この強力な機能の詳細については、「[Azure Resource Graph Explorer (ARG) で推奨事項データを確認する](security-center-recommendations.md#review-recommendation-data-in-azure-resource-graph-explorer-arg)」を参照してください。
+
+Security Center には、VM、SQL サーバーとそのホスト、コンテナー レジストリでセキュリティ上の脆弱性をスキャンするための脆弱性スキャンが組み込まれています。 結果は、各リソースの種類ごとに個別のすべての結果が単一のビューに収集され、推奨事項として返されます。 推奨事項は次のとおりです。
+
+- Azure Container Registry イメージの脆弱性を修復する必要がある (Qualys を利用)
+- 仮想マシンの脆弱性を修復する必要がある
+- SQL データベースでは脆弱性の検出結果を解決する必要がある
+- マシン上の SQL サーバーでは脆弱性の検出結果を解決する必要がある
+
+この変更に伴い、 **[クエリを開く]** ボタンを使用して、セキュリティの結果を示すクエリを開くこともできます。
+
+:::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="[クエリを開く] ボタンを使用して、より詳細なクエリを実行し、脆弱性スキャナー関連の推奨事項に関するセキュリティの結果を表示できるようになりました":::
+
+**[クエリを開く]** ボタンを使用すると、関連するその他の推奨事項に関する追加のオプションも表示できます。
+
+Security Center の脆弱性スキャナーの詳細については、次のページを参照してください。
+
+- [Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価スキャナー](deploy-vulnerability-assessment-vm.md)
+- [SQL サーバーに対して Azure Defender の統合された脆弱性評価スキャナーを使用する](defender-for-sql-on-machines-vulnerability-assessment.md)
+- [コンテナー レジストリ向け Azure Defender の統合された脆弱性評価スキャナー](defender-for-container-registries-usage.md)
 
 ### <a name="sql-data-classification-recommendation-severity-changed"></a>SQL データ分類の推奨事項の重要度を変更
 
@@ -40,9 +217,40 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 これは、「[SQL データ分類の推奨事項を改善](upcoming-changes.md#enhancements-to-sql-data-classification-recommendation)」で発表された、この推奨事項に対する継続的な変更の一環として行われたものです。 
 
 
+### <a name="new-recommendations-to-enable-trusted-launch-capabilities-in-preview"></a>トラステッド起動機能を有効にするための新しい推奨事項 (プレビュー段階)
+
+Azure からは、[第 2 世代](../virtual-machines/generation-2.md)の VM のセキュリティを向上させるためのシームレスな方法として、トラステッド起動が提供されています。 トラステッド起動により、高度で永続的な攻撃手法から保護されます。 トラステッド起動は、個別に有効にできる、複数の連携するインフラストラクチャ テクノロジで構成されています。 テクノロジごとに、高度な脅威に対する防御の別のレイヤーが提供されます。 詳細については、「[Azure 仮想マシンのトラステッド起動](../virtual-machines/trusted-launch.md)」を参照してください。
+
+> [!IMPORTANT]
+> トラステッド起動を使用するには、新しい仮想マシンを作成する必要があります。 最初に作成されたときにトラステッド起動が有効にされていない既存の仮想マシンで、トラステッド起動を有効にすることはできません。
+> 
+> トラステッド起動は、現在パブリック プレビュー段階にあります。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+
+Security Center の推奨事項「**vTPM should be enabled on supported virtual machines \(サポートされる仮想マシンで vTPM を有効にする必要がある\)** 」により、Azure VM で vTPM が確実に使用されます。 この仮想化バージョンのハードウェア トラステッド プラットフォーム モジュールでは、VM のブート チェーン全体 (UEFI、OS、システム、ドライバー) を測定することにより、構成証明を有効にします。
+
+vTPM を有効にすると、**Guest Attestation 拡張機能** により、セキュア ブートをリモートで検証できます。 次の推奨事項により、この拡張機能が確実にデプロイされます。
+
+- **セキュア ブートを、サポートしている Windows 仮想マシンで有効にする必要があります**
+- **Guest Attestation 拡張機能を、サポートしている Windows 仮想マシンにインストールする必要があります**
+- **サポートされている Windows 仮想マシンのスケール セットに Guest Attestation 拡張機能をインストールする必要がある**
+- **Guest Attestation 拡張機能を、サポートしている Linux 仮想マシンにインストールする必要があります**
+- **サポートされている Linux 仮想マシンのスケール セットに Guest Attestation 拡張機能をインストールする必要がある**
+
+詳細については、「[Azure 仮想マシンのトラステッド起動](../virtual-machines/trusted-launch.md)」を参照してください。 
+
+### <a name="new-recommendations-for-hardening-kubernetes-clusters-in-preview"></a>Kubernetes クラスターを強化するための新しい推奨事項 (プレビュー段階)
+
+次の推奨事項を使用すると、Kubernetes クラスターをさらに強化できます。
+
+- **Kubernetes クラスターで既定の名前空間を使用しない** - ConfigMap、Pod、Secret、Service、ServiceAccount という種類のリソースを無許可アクセスから保護するために、Kubernetes クラスターで既定の名前空間を使用しないようにします。
+- **Kubernetes クラスターでは、API 資格情報の自動マウントを無効にする必要がある** - 侵害されたおそれがある Pod リソースにより、Kubernetes クラスターに対して API コマンドが実行されるのを防ぐには、API 資格情報の自動マウントを無効にします。
+- **Kubernetes クラスターでは、CAPSYSADMIN セキュリティ機能を許可しない**
+
+お使いのコンテナー化された環境を Security Center で保護する方法については、「[Security Center のコンテナーのセキュリティ](container-security.md)」を参照してください。
+
 ### <a name="assessments-api-expanded-with-two-new-fields"></a>Assessments API を 2 つの新しいフィールドで拡張
 
-[Assessments REST API](https://docs.microsoft.com/rest/api/securitycenter/assessments) に次の 2 つのフィールドを追加しました。
+[Assessments REST API](/rest/api/securitycenter/assessments) に次の 2 つのフィールドを追加しました。
 
 - **FirstEvaluationDate** - 推奨事項が作成されて最初に評価された日時。 ISO 8601 形式の UTC 時刻として返されます。
 - **StatusChangeDate** –推奨事項の状態が最後に変更された日時。 ISO 8601 形式の UTC 時刻として返されます。
@@ -55,12 +263,26 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 |----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | REST API の呼び出し        | GET https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Security/assessments?api-version=2019-01-01-preview& $expand=statusEvaluationDates |
 | Azure Resource Graph | `securityresources`<br>`where type == "microsoft.security/assessments"`                                                                                                |
-| ワークフローの自動化  | Log Analytics ワークスペース データで、2 つの専用フィールドが利用できるようになります                                                                                                       |
+| 連続エクスポート    | Log Analytics ワークスペース データで、2 つの専用フィールドが利用できるようになります                                                                                            |
 | [CSV エクスポート](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations) | CSV ファイルには、2 つのフィールドが含まれています                                                        |
 |                      |                                                                                                                                                                        |
 
 
-[Assessments REST API](https://docs.microsoft.com/rest/api/securitycenter/assessments) の詳細をご覧ください。
+[Assessments REST API](/rest/api/securitycenter/assessments) の詳細をご覧ください。
+
+
+### <a name="asset-inventory-gets-a-cloud-environment-filter"></a>資産インベントリでクラウド環境フィルターを取得
+
+Security Center の資産インベントリのページには、表示されるリソースの一覧をすばやく絞り込むために多数のフィルターが用意されています。 詳細については、「[資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)」を参照してください。
+
+新しいフィルターには、Security Center のマルチクラウド機能と接続しているクラウド アカウントに応じて、一覧を絞り込むためのオプションが用意されています。
+
+:::image type="content" source="media/asset-inventory/filter-environment.png" alt-text="インベントリの環境フィルター":::
+
+マルチクラウド機能の詳細については、次のページを参照してください。
+
+- [Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)
+- [Azure Security Center への GCP アカウントの接続](quickstart-onboard-gcp.md)
 
 
 ## <a name="april-2021"></a>2021 年 4 月
@@ -150,7 +372,7 @@ Windows サーバー上のサーバーに Azure Defender を有効にした場�
 - **Azure Defender for Resource Manager を有効にする必要がある** - Defender for Resource Manager は組織内のリソース管理操作を自動的に監視します。 Azure Defender では、脅威を検出し、疑わしいアクティビティについて警告します。
 - **Azure Defender for DNS を有効にする必要がある** - Defender for DNS では、Azure リソースからのすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。
 
-Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページを参照してください: https://aka.ms/pricing-security-center。
+Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページ https://aka.ms/pricing-security-center を参照してください。
 
 > [!TIP]
 > プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
@@ -678,7 +900,7 @@ Security Center のデータを表示するアクセス許可がないユーザ�
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>フィルター処理された推奨事項一覧の CSV エクスポート 
 
-2020 年 11 月には、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](release-notes-archive.md#recommendations-list-now-includes-filters)」を参照してください)。 12 月には、それらのフィルターを拡張しました (「[環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)」を参照してください)。 
+2020 年 11 月には、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](release-notes-archive.md#recommendations-list-now-includes-filters)」を参照してください)。 12 月には、それらのフィルターを拡張しました (「[環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加](release-notes-archive.md#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)」を参照してください)。 
 
 今回は、フィルター処理された一覧に表示されている推奨事項のみが CSV エクスポートの対象となるよう、 **[Download to CSV]\(CSV にダウンロード\)** ボタンの動作を変更しています。 
 
@@ -704,177 +926,7 @@ Azure Policy への影響は 1 つだけで、準拠しているリソースの�
 
 :::image type="content" source="media/release-notes/export-frequency.png" alt-text="連続エクスポートの頻度を選択する":::
 
-- **ストリーミング** - リソースの正常性状態が更新されたときに評価がリアルタイムで送信されます (更新がなければデータは送信されません)。
+- **ストリーミング** – リソースの正常性状態が更新されると、評価が送信されます (更新がなければ、データは送信されません)。
 - **スナップショット** - 規制コンプライアンスの全評価を対象に現在の状態のスナップショットが毎週送信されます (セキュア スコアと規制コンプライアンス データの週単位のスナップショットに関するプレビュー機能)。
 
 この機能の全容については、「[Security Center のデータを連続的にエクスポートする](continuous-export.md)」を参照してください。
-
-## <a name="december-2020"></a>2020 年 12 月
-
-12 月の更新プログラムには次のものが含まれます。
-
-- [マシン上の SQL サーバー向け Azure Defender の一般提供開始](#azure-defender-for-sql-servers-on-machines-is-generally-available)
-- [Azure Synapse Analytics の専用 SQL プールに対する Azure Defender for SQL のサポートの一般提供開始](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
-- [グローバル管理者が自分にテナントレベルのアクセス許可を付与できるようになりました](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
-- [2 つの新しい Azure Defender プラン: Azure Defender for DNS と Azure Defender for Resource Manager (プレビュー段階)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
-- [Azure portal の新しいセキュリティ アラート ページ (プレビュー)](#new-security-alerts-page-in-the-azure-portal-preview)
-- [Azure SQL Database と SQL Managed Instance における Security Center エクスペリエンスの刷新](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
-- [資産インベントリ ツールとフィルターの更新](#asset-inventory-tools-and-filters-updated)
-- [SSL 証明書を要求する Web アプリに関する推奨事項がセキュリティ スコアの対象から除外](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
-- [環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
-- [連続エクスポートで新しいデータ型が利用可能になり、deployifnotexist ポリシーが改善](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
-
-
-### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>マシン上の SQL サーバー向け Azure Defender の一般提供開始
-
-Azure Security Center には、2 つの SQL Server 用 Azure Defender プランが用意されています。
-
-- **Azure SQL データベース サーバー向け Azure Defender** - Azure ネイティブの SQL Server を保護します 
-- **マシン上の SQL サーバー向け Azure Defender** - ハイブリッド、マルチクラウド、およびオンプレミスの環境で SQL サーバーに対して同様の保護を拡張します
-
-本発表以降は、**Azure Defender for SQL** によって、データベースとそのデータが場所にかかわらず保護されます。
-
-Azure Defender for SQL には、脆弱性評価機能が用意されています。 脆弱性評価ツールには、次の高度な機能が含まれています。
-
-- **ベースライン構成** (新機能) を使用すると、脆弱性スキャンの結果を、実際のセキュリティ問題を示す可能性があるものにインテリジェントに絞り込むことができます。 ベースラインのセキュリティ状態を確立した後は、脆弱性評価ツールによって、そのベースラインからの逸脱のみがレポートされます。 ベースラインに一致する結果は、それ以降のスキャンで合格と見なされます。 これにより、ユーザーとアナリストは、重要な問題に注意を集中できます。
-- **詳細なベンチマーク情報** は、検出された結果や、それらとリソースの関連性を "*把握する*" のに役立ちます。
-- **修復スクリプト** は、特定されたリスクを軽減するのに役立ちます。
-
-[Azure Defender for SQL](defender-for-sql-introduction.md) についてさらに詳しく学習します。
-
-
-### <a name="azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available"></a>Azure Synapse Analytics の専用 SQL プールに対する Azure Defender for SQL のサポートの一般提供開始
-
-Azure Synapse Analytics (以前の SQL DW) は、エンタープライズ データ ウェアハウスとビッグ データの分析を兼ね備えた分析サービスです。 専用 SQL プールは、Azure Synapse のエンタープライズ データ ウェアハウス機能です。 詳細については、[Azure Synapse Analytics (以前の SQL DW) の概要](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)に関するページを参照してください。
-
-Azure Defender for SQL では、次のものを使用して専用 SQL プールを保護します。
-
-- **高度な脅威保護** - 脅威と攻撃を検出します 
-- **脆弱性評価機能** - セキュリティに関する構成ミスを特定して修復します
-
-Azure Defender for SQL での Azure Synapse Analytics SQL プールのサポートは、Azure Security Center 内の Azure SQL データベース バンドルに自動的に追加されます。 Azure portal の [Synapse ワークスペース] ページに、新しい [Azure Defender for SQL] タブが表示されます。
-
-[Azure Defender for SQL](defender-for-sql-introduction.md) についてさらに詳しく学習します。
-
-
-### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>グローバル管理者が自分にテナントレベルのアクセス許可を付与できるようになりました
-
-Azure Active Directory ロールが **グローバル管理者** であるユーザーは、テナント全体の責任を持つ場合がありますが、Azure Security Center でその組織全体の情報を表示するための Azure アクセス許可がありません。 
-
-テナントレベルのアクセス許可を自分に割り当てるには、「[テナント全体のアクセス許可を自分に付与する](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself)」セクションの手順に従います。
-
-
-### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>2 つの新しい Azure Defender プラン: Azure Defender for DNS と Azure Defender for Resource Manager (プレビュー段階)
-
-Azure 環境向けに、2 つの新しいクラウドネイティブ範囲の脅威防止機能が追加されました。
-
-これらの新しい保護により、脅威アクターからの攻撃に対する回復性が強化され、Azure Defender によって保護される Azure リソースの数が大幅に増加します。
-
-- **Azure Defender for Resource Manager** - 組織で実行されるすべてのリソース管理操作を自動的に監視します。 詳細については、次を参照してください。
-    - [Azure Defender for Resource Manager の概要](defender-for-resource-manager-introduction.md)
-    - [Azure Defender for Resource Manager アラートに対応する](defender-for-resource-manager-usage.md)
-    - [Azure Defender for Resource Manager で提供されるアラートの一覧](alerts-reference.md#alerts-resourcemanager)
-
-- **Azure Defender for DNS** - Azure リソースからのすべての DNS クエリを継続的に監視します。 詳細については、次を参照してください。
-    - [Azure Defender for DNS の概要](defender-for-dns-introduction.md)
-    - [Azure Defender for DNS アラートに対応する](defender-for-dns-usage.md)
-    - [Azure Defender for DNS で提供されるアラートの一覧](alerts-reference.md#alerts-dns)
-
-
-### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Azure portal の新しいセキュリティ アラート ページ (プレビュー)
-
-Azure Security Center のセキュリティ アラート ページは、次の機能を提供できるように再設計されました。
-
-- **アラートのトリアージ エクスペリエンスの向上** - アラートに対応する労力を減らし、最も関連性の高い脅威に焦点を絞りやすくするために、一覧にはカスタマイズ可能なフィルターとグループ化のオプションが追加されました
-- **アラート一覧への情報の追加** - MITRE ATT & ACK の戦術など
-- **サンプル アラートを作成するためのボタン** - Azure Defender の機能を評価し、アラートの構成 (SIEM 統合、メール通知、ワークフローの自動化) をテストします。すべての Azure Defender プランでサンプル アラートを作成できます
-- **Azure Sentinel のインシデント エクスペリエンスとの連携** - 両方の製品を使用するお客様は、より簡単に 2 つを切り替えることによって、どちらの製品からも、もう一方の製品が提供する情報を取得しやすくなりました
-- 長大なアラート一覧の **パフォーマンス向上**
-- アラート一覧の **キーボードによるナビゲーション**
-- **Azure Resource Graph のアラート** - Azure Resource Graph (すべてのリソースを対象とする、Kusto に似た API) のアラートにクエリを実行できます。 これは、独自のアラート ダッシュボードを作成している場合にも役立ちます。 [Azure Resource Graph の詳細についてさらに学習します](../governance/resource-graph/index.yml)。
-
-新しいエクスペリエンスにアクセスするには、セキュリティ アラート ページの上部にあるバナーの "今すぐ試す" リンクを使用します。
-
-:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー":::
-
-新しいアラート エクスペリエンスでサンプル アラートを作成するには、「[Azure Defender のサンプル アラートを生成する](security-center-alert-validation.md#generate-sample-azure-defender-alerts)」を参照してください。
-
-
-### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance における Security Center エクスペリエンスの刷新 
-
-SQL 内の Security Center エクスペリエンスでは、Security Center と Azure Defender for SQL の次の機能にアクセスできます。
-
-- **セキュリティに関する推奨事項** - Security Center では、接続されているすべての Azure リソースのセキュリティの状態を定期的に分析して、潜在的なセキュリティの構成ミスを特定します。 そのうえで、それらの脆弱性を修復し、組織のセキュリティ体制を改善する方法に関する推奨事項を提供します。
-- **セキュリティ アラート** - SQL インジェクション、ブルートフォース攻撃、特権の悪用などの脅威がないか、Azure SQL アクティビティを継続的に監視する検出サービス。 このサービスは、Security Center で詳細なアクション指向のセキュリティ アラートをトリガーし、Microsoft の Azure ネイティブ SIEM ソリューションである Azure Sentinel を使用して調査を継続するためのオプションを提供します。
-- **調査結果** – Azure SQL 構成を継続的に監視し、脆弱性を修復するのに役立つ脆弱性評価サービスです。 評価スキャンでは、Azure SQL のセキュリティ状態の概要が詳細なセキュリティ調査結果と一緒に示されます。     
-
-:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure Security Center の SQL 用セキュリティ機能が Azure SQL 内から利用可能":::
-
-
-### <a name="asset-inventory-tools-and-filters-updated"></a>資産インベントリ ツールとフィルターの更新
-
-Azure Security Center のインベントリ ページが更新され、次の変更が加えられました。
-
-- **[Guides and feedback]\(ガイドとフィードバック\)** がツール バーに追加されました。 これにより、関連する情報やツールへのリンクがあるペインが開きます。 
-- **サブスクリプション フィルター** が、リソースで使用可能な既定のフィルターに追加されました。
-- 現在のフィルター オプションを Azure Resource Graph クエリとして開くための **[クエリを開く]** リンク (以前は "Resource Graph エクスプローラーで表示" という名前でした)。
-- 各フィルターの **演算子オプション**。 "=" に加えて他の論理演算子も選択できるようになりました。 たとえば、タイトルに "encrypt" という文字列が含まれているアクティブな推奨事項があるすべてのリソースを検索することができます。 
-
-    :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="資産インベントリのフィルターでの演算子オプションのコントロール":::
-
-インベントリの詳細については、「[資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)」を参照してください。
-
-
-### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>SSL 証明書を要求する Web アプリに関する推奨事項がセキュリティ スコアの対象から除外
-
-推奨事項 "Web apps should request an SSL certificate for all incoming requests (Web アプリではすべての受信要求に対して SSL 証明書を要求する必要がある)" が、 **[Manage access and permissions]\(アクセスおよびアクセス許可の管理\)** (最大 4 ポイントに相当) セキュリティ コントロールから **[Implement security best practices]\(セキュリティのベスト プラクティスを実装する\)** (ポイントなしに相当) に移動されました。 
-
-Web アプリが証明書を要求するようにすることで、確実にセキュリティが向上します。 ただし、公開されている Web アプリの場合は関係ありません。 HTTPS ではなく HTTP 経由でサイトにアクセスする場合は、クライアント証明書を受信しません。 したがって、アプリケーションにクライアント証明書が必要な場合は、HTTP 経由でのアプリケーションへの要求を許可しないでください。 詳細については、「[Azure App Service に対する TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md)」を参照してください。
-
-この変更により、この推奨事項は、スコアに影響を与えない、推奨のベスト プラクティスになりました。 
-
-各セキュリティ コントロールに含まれる推奨事項については、「[セキュリティ コントロールとその推奨事項](secure-score-security-controls.md#security-controls-and-their-recommendations)」を参照してください。
-
-
-### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加
-
-Azure Security Center では、接続されているすべてのリソースを監視し、セキュリティの推奨事項を生成します。 これらの推奨事項を使用して、ハイブリッド クラウドの体制を強化し、組織、業界、および国に関連するポリシーと標準へのコンプライアンス状況を追跡します。
-
-Security Center のカバレッジと機能が拡張されるにつれて、セキュリティに関する推奨事項の一覧が毎月増えていきます。 たとえば、「[Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項](release-notes-archive.md#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)」を参照してください。
-
-一覧が増加するのに伴い、最も関心のあるものを見つけることができるように、フィルターを使用して推奨事項を絞り込む機能が求められるようになりました。 11 月に、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](release-notes-archive.md#recommendations-list-now-includes-filters)」を参照してください)。
-
-この月に追加されたフィルターには、次の条件で推奨事項の一覧を絞り込むためのオプションがあります。
-
-- **環境** - AWS、GCP、または Azure リソース (または任意の組み合わせ) の推奨事項を表示します
-- **重大度** - Security Center によって設定された重大度分類に従って推奨事項を表示します
-- **応答アクション** - Security Center の応答オプションの可用性に応じて推奨事項を表示します (修正、拒否、強制)
-
-    > [!TIP]
-    > 応答アクション フィルターは、 **[Quick fix available (Yes/No)]\(クイック修正を使用できます (はい/いいえ)\)** フィルターに置き換わるものです。 
-    > 
-    > これらの応答オプションの詳細については、次を参照してください。
-    > - [修正ボタン](security-center-remediate-recommendations.md#fix-button)
-    > - [適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)
-
-:::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="セキュリティ コントロールにグループ化された推奨事項" lightbox="./media/release-notes/added-recommendations-filters.png":::
-
-### <a name="continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies"></a>連続エクスポートで新しいデータ型が利用可能になり、deployifnotexist ポリシーが改善
-
-Azure Security Center の連続エクスポート ツールを使用すると、環境内の他の監視ツールで使用するために Security Center の推奨事項とアラートをエクスポートできます。
-
-連続エクスポートを使用して、エクスポートする "内容" とエクスポート先の "場所" を完全にカスタマイズできます。 詳細については、「[Security Center のデータを連続的にエクスポートする](continuous-export.md)」を参照してください。
-
-これらのツールは、次の点で強化および拡張されました。
-
-- **連続エクスポートの deployifnotexist ポリシーの強化**。 これらのポリシーで、以下のことが可能になりました。
-
-    - **構成が有効になっているかどうかの確認。** 有効になっていない場合、ポリシーによって非準拠として表示され、準拠しているリソースが作成されます。 提供されている Azure Policy テンプレートの詳細については、「[連続エクスポートを設定する](continuous-export.md#set-up-a-continuous-export)」の [Azure ポリシーを使用して大規模にデプロイする] タブを参照してください。
-
-    - **セキュリティ調査結果のエクスポートのサポート。** Azure Policy テンプレートを使用する場合、調査結果が含まれるように連続エクスポートを構成できます。 これは、"サブ" 推奨事項 (たとえば、脆弱性評価スキャナーからの調査結果) や、"親" 推奨事項 "システム更新プログラムをマシンにインストールする必要がある" に対する特定のシステム更新プログラムを含む推奨事項をエクスポートする場合に関連します。
-    
-    - **セキュリティ スコア データのエクスポートのサポート。**
-
-- **規制コンプライアンス評価データの追加 (プレビュー)。** 任意のカスタム イニシアティブを含め、規制コンプライアンス評価の更新を Log Analytics ワークスペースまたはイベント ハブに連続的にエクスポートできるようになりました。 この機能は、各国のクラウドまたはソブリン クラウドでは使用できません。
-
-    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="連続エクスポート データに規制コンプライアンス評価情報を含めるためのオプション。":::

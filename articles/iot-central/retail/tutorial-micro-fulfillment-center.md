@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 78536867efa4894f1041a340b9d6347a4e030a69
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: d70a15456ecc688b6bc8137223d36164545c0123
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685659"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956203"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>チュートリアル:マイクロフルフィルメント センター アプリケーション テンプレートを展開して調べる
 
@@ -57,6 +57,8 @@ ms.locfileid: "109685659"
 
     ![Azure IoT Central の [新しいアプリケーション] ページのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc.png)
 
+    ![Azure IoT Central の [課金情報] のスクリーンショット](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc-billing.png)
+
 ## <a name="walk-through-the-application"></a>アプリケーションを調べる 
 
 アプリケーション テンプレートのデプロイが正常に完了したら、**Northwind Traders マイクロフルフィルメント センター ダッシュボード** が表示されます。 Northwind Traders は、この Azure IoT Central アプリケーションでマイクロフルフィルメント センターを管理している架空の小売業者です。 このオペレーター ダッシュボードには、このテンプレートのデバイスに関する情報とテレメトリ、および実行可能な一連のコマンド、ジョブ、アクションが表示されます。 ダッシュボードは、論理的に 2 つのセクションに分かれています。 左側ではフルフィルメント建造物内の環境条件を監視でき、右側では施設内の搬送ロボットの正常性を監視することができます。  
@@ -66,11 +68,11 @@ ms.locfileid: "109685659"
    * フルフィルメント建造物内の見取り図や搬送ロボットの場所を表示する。
    * 制御システムのリセット、搬送機のファームウェアの更新、ネットワークの再構成などのコマンドをトリガーする。
 
-     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (上半分) のスクリーンショット。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (上半分) のスクリーンショット。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard-1.png)
    * オペレーターがフルフィルメント センター内の状態を監視するために使用できるダッシュボードの例を確認する。 
    * フルフィルメント センター内のゲートウェイ デバイスで実行されているペイロードの正常性を監視する。    
 
-     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (下半分) のスクリーンショット。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (下半分) のスクリーンショット。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard-2.png)
 
 ## <a name="device-template"></a>デバイス テンプレート
 [デバイス テンプレート] タブを選択すると、このテンプレートには 2 種類のデバイスが含まれていることがわかります。 
