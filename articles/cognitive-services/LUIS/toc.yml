@@ -12,7 +12,7 @@
     - name: 新機能
       href: whats-new.md
     - name: LUIS の FAQ
-      href: troubleshooting.md
+      href: troubleshooting.yml
       displayName: 'Troubleshooting, import'
 - name: LUIS のクイックスタート
   items:

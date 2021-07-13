@@ -11,12 +11,12 @@ metadata:
   author: MashaMSFT
   ms.author: mathoma
   ms.date: 05/27/2020
-  ms.openlocfilehash: a33f9268dce514c7b7d9522d4a1c58e57befa122
-  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+  ms.openlocfilehash: eaaf290081ac67b333321d1a782b288dd43d94cd
+  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/29/2021
-  ms.locfileid: "110688230"
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112294600"
 landingContent:
 - title: Azure VM 上の SQL Server
   linkLists:
@@ -116,8 +116,8 @@ landingContent:
     links:
     - text: Azure portal
       url: windows/sql-vm-create-portal-quickstart.md
-    - text: Azure CLI のサンプル
-      url: /cli/azure/sql/vm
+    - text: Azure CLI
+      url: /cli/azure/azure-cli-reference-for-sql#sql-virtual-machines-references
     - text: PowerShell のサンプル
       url: windows/sql-vm-create-powershell-quickstart.md
     - text: Resource Manager テンプレートのサンプル
@@ -139,7 +139,7 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: /cli/azure/sql
+      url: /cli/azure/azure-cli-reference-for-sql#sql-virtual-machines-references
     - text: PowerShell
       url: /powershell/module/az.sql
     - text: REST API

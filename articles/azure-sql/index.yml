@@ -14,12 +14,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 45e35a554bd00344574b4d1efe19377f2e0ae2e5
-  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+  ms.openlocfilehash: 93d0a0f8942d4624bae9e8de93675e7ad2959493
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/29/2021
-  ms.locfileid: "110707463"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112454728"
 landingContent:
 - title: Azure SQL データベース
   linkLists:
@@ -27,8 +27,6 @@ landingContent:
     links:
     - text: 新機能
       url: database/doc-changes-updates-release-notes.md?tabs=single-database
-    - text: フィードバックがある場合は、 アンケートにご協力ください。
-      url: https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456
   - linkListType: overview
     links:
     - text: SQL Database とは
@@ -184,7 +182,7 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: /cli/azure/sql
+      url: /cli/azure/azure-cli-reference-for-sql
     - text: PowerShell
       url: /powershell/module/az.sql
     - text: REST API

@@ -17,7 +17,7 @@
     - name: 容量制限
       href: sql-data-warehouse-service-capacity-limits.md
     - name: よく寄せられる質問
-      href: sql-data-warehouse-overview-faq.md
+      href: sql-data-warehouse-overview-faq.yml
     - name: リリース ノート
       items:
         - name: 最新のリリース
@@ -266,7 +266,7 @@
           href: sql-data-warehouse-concept-resource-utilization-query-activity.md
         - name: データ保護
           href: backup-and-restore.md
-        - name: Recommendations
+        - name: 推奨事項
           href: sql-data-warehouse-concept-recommendations.md
         - name: トラブルシューティング
           href: sql-data-warehouse-troubleshoot.md

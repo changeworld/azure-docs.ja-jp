@@ -9,12 +9,12 @@ metadata:
   author: yegu-ms
   ms.author: yegu
   ms.date: 12/16/2019
-  ms.openlocfilehash: 2655c1a5b3a99422a71a2acc18671d9fdd31baa5
-  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+  ms.openlocfilehash: d6a3179e21d9e0c4bf4cbb83410af9945bbb46c0
+  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93099999"
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113109451"
 landingContent:
 - title: Azure Cache for Redis について
   linkLists:
@@ -39,7 +39,7 @@ landingContent:
     - text: Azure Cache for Redis のベスト プラクティス
       url: cache-best-practices.md
     - text: よく寄せられる質問
-      url: cache-faq.md
+      url: cache-faq.yml
 - title: クイック スタート:Azure Cache for Redis
   linkLists:
   - linkListType: quickstart

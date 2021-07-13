@@ -25,6 +25,8 @@
           href: security-controls-policy.md
         - name: セキュリティの概要
           href: security-overview.md
+        - name: Private Link ネットワーク
+          href: private-link-security.md
 - name: 操作方法ガイド
   items:
     - name: 配置

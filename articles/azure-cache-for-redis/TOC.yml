@@ -111,11 +111,11 @@
         - name: Azure Cache for Redis への移行
           href: cache-migration-guide.md
         - name: 計画に関する FAQ
-          href: cache-planning-faq.md
+          href: cache-planning-faq.yml
     - name: ビルド
       items:
         - name: 開発に関する FAQ
-          href: cache-development-faq.md
+          href: cache-development-faq.yml
     - name: 自動化
       items:
         - name: Azure PowerShell を使用したデプロイと管理
@@ -145,7 +145,7 @@
         - name: TLS 1.0 および 1.1 の削除
           href: cache-remove-tls-10-11.md
         - name: 管理に関する FAQ
-          href: cache-management-faq.md
+          href: cache-management-faq.yml
     - name: モニター
       items:
         - name: Azure Portal での監視
@@ -153,7 +153,7 @@
         - name: 例外のアラートを設定する
           href: cache-how-to-monitor.md#operations-and-alerts
         - name: 監視に関する FAQ
-          href: cache-monitor-troubleshoot-faq.md
+          href: cache-monitor-troubleshoot-faq.yml
     - name: スケール
       items:
         - name: 別のサイズとレベルに更新する
@@ -171,7 +171,7 @@
         - name: データ損失に関するトラブルシューティング
           href: cache-troubleshoot-data-loss.md
         - name: トラブルシューティングに関する FAQ
-          href: cache-monitor-troubleshoot-faq.md
+          href: cache-monitor-troubleshoot-faq.yml
 - name: リファレンス
   items:
     - name: Azure Cache for Redis のサンプル
@@ -198,7 +198,7 @@
 - name: リソース
   items:
     - name: Azure Cache for Redis に関する FAQ
-      href: cache-faq.md
+      href: cache-faq.yml
     - name: ビデオ
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft Q&A 質問ページ

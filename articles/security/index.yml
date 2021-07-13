@@ -143,13 +143,13 @@ conceptualContent:
       links:
         - url: ../sentinel/overview.md
           itemType: overview
-          text: Azure Sentinel プレビューの概要
+          text: Azure Sentinel とは
         - url: ../sentinel/quickstart-onboard.md
           itemType: quickstart
-          text: Azure Sentinel プレビューのオンボード
+          text: Azure Sentinel のオンボード
         - url: ../sentinel/quickstart-get-visibility.md
           itemType: quickstart
-          text: Azure Sentinel プレビューでの作業の開始
+          text: Azure Sentinel の概要
       footerLink:
         url: ../sentinel/index.yml
         text: 詳細情報

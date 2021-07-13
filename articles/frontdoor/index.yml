@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: duongau
   ms.author: duau
-  ms.date: 09/09/2020
-  ms.openlocfilehash: 7b7e5cae5e34fceaf3d18c7c90bd9cb8c201eac5
-  ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+  ms.date: 06/30/2021
+  ms.openlocfilehash: 82e80e35f666e9819213e9acba6c03608e996957
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112006961"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113432394"
 landingContent:
 - title: Azure Front Door について
   linkLists:
@@ -23,6 +23,10 @@ landingContent:
     links:
     - text: Azure Front Door とは
       url: front-door-overview.md
+  - linkListType: learn
+    links:
+    - text: Azure Front Door の概要
+      url: /learn/modules/intro-to-azure-front-door/
 - title: Azure Front Door Standard/Premium (プレビュー) について
   linkLists:
   - linkListType: overview

@@ -118,8 +118,6 @@
   items:
     - name: 開発
       items:
-        - name: IoT Hub に対する MXChip IoT DevKit の接続
-          href: how-to-connect-mxchip-iot-devkit.md
         - name: デバイスから追加データを送信する方法
           href: how-to-send-additional-data.md
         - name: カスタム割り当てポリシーを使用したデバイスのプロビジョニング

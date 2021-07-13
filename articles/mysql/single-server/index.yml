@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/20/2020
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 372c13e841d3d87bd2bd6952fe96507b02cb2980
-  ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+  ms.openlocfilehash: 9fd917d6d95b0c688a1271e903f89d4fd3f218b0
+  ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110191434"
+  ms.lasthandoff: 06/19/2021
+  ms.locfileid: "112379422"
 landingContent:
 - title: シングル サーバーについて
   linkLists:
@@ -23,8 +23,8 @@ landingContent:
       url: ../single-server-overview.md
   - linkListType: whats-new
     links:
-    - text: ブログを確認する
-      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+    - text: シングル サーバーの新機能
+      url: ../single-server-whats-new.md
 - title: 作業開始
   linkLists:
   - linkListType: quickstart

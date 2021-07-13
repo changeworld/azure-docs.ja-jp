@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 05/12/2021
-  ms.openlocfilehash: 0320b1a6bb5b412e16995194e9e181ca0ac9e6dd
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 6559d16fc9314ff134eb92f540e4b6ff4acd1f96
+  ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110469416"
+  ms.lasthandoff: 07/05/2021
+  ms.locfileid: "113297516"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -67,7 +67,7 @@ landingContent:
     - text: リソースを推奨事項から除外する
       url: exempt-resource.md
     - text: 時間の経過に伴うスコアの追跡
-      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-report
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-workbook
 - title: 脅威の軽減
   linkLists:
   - linkListType: how-to-guide

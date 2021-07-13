@@ -1,4 +1,4 @@
-- name: Azure DB for MariaDB のドキュメント
+- name: Azure Database for MariaDB のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
@@ -154,7 +154,7 @@
     - name: TLS の構成
       href: howto-tls-configurations.md
     - name: Azure Defender による脅威保護
-      href: ../security-center/defender-for-databases-introduction.md
+      href: ../security-center/defender-for-databases-usage.md?toc=/azure/mariadb/toc.json&bc=/azure/mariadb/breadcrumb/toc.json
     - name: 監査の概念
       href: concepts-audit-logs.md
     - name: 監査ログの構成

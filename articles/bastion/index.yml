@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 10/20/2020
-  ms.openlocfilehash: ca2a302fe97b43c6f67aedc8307b5b3a896f9697
-  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+  ms.date: 06/30/2021
+  ms.openlocfilehash: 26d33e364935cef45edae8e4e62491d06a859afa
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/27/2021
-  ms.locfileid: "108069851"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113598362"
 landingContent:
 - title: Azure Bastion について
   linkLists:
@@ -27,6 +27,10 @@ landingContent:
     links:
     - text: Azure Bastion に関する FAQ
       url: bastion-faq.md
+  - linkListType: learn
+    links:
+    - text: Azure Bastion の概要
+      url: /learn/modules/intro-to-azure-bastion/
   - linkListType: video
     links:
     - text: Azure Bastion
@@ -45,6 +49,10 @@ landingContent:
       url: bastion-connect-vm-ssh.md
     - text: 仮想マシンへの接続 (Windows)
       url: bastion-connect-vm-rdp.md
+  - linkListType: learn
+    links:
+    - text: Azure Bastion を使用して VM に接続する
+      url: /learn/modules/connect-vm-with-azure-bastion/
   - linkListType: video
     links:
     - text: Azure Bastion の操作

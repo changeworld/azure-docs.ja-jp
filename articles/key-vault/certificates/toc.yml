@@ -50,7 +50,7 @@
     - name: Key Vault と DigiCert CA の統合
       href: how-to-integrate-certificate-authority.md
     - name: トラブルシューティング - 証明書のインポート
-      href: import-cert-faqs.md
+      href: import-cert-faqs.yml
     - name: キー コンテナーからの証明書のエクスポート
       href: how-to-export-certificate.md
 - name: リファレンス

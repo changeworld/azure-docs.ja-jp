@@ -338,7 +338,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: api-management-faq.md
+      href: api-management-faq.yml
     - name: 価格
       href: 'https://aka.ms/apimpricing'
     - name: 製品の更新

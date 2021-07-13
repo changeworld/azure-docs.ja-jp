@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 08/28/2019
-  ms.openlocfilehash: 9fbb5a5963e74e07ac4cdfff9fe4fb88a1366874
-  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+  ms.date: 07/07/2021
+  ms.openlocfilehash: e574def67a2b2c3e2b559241d2b16eff2387f0ac
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/07/2021
-  ms.locfileid: "107029439"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113595023"
 landingContent:
 - title: VPN Gateway について
   linkLists:
@@ -37,7 +37,7 @@ landingContent:
     links:
     - text: VPN Gateway を使用して、ご利用のオンプレミス ネットワークを Azure に接続する
       url: /learn/modules/connect-on-premises-network-with-vpn-gateway/
-- title: はじめに
+- title: 開始
   linkLists:
   - linkListType: tutorial
     links:

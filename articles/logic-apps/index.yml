@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 03/24/2021
-  ms.openlocfilehash: e49682f79efb102ccf71a184b77b74e0c6df3fbc
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 536cb1aac1d2fa309f4530d150ade8f9eb5dc9d2
+  ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110372983"
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112321722"
 landingContent:
 - title: Azure Logic Apps について
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: テンプレート:スケジュールに基づいてタイマー ジョブを実行する
-      url: https://azure.microsoft.com/resources/templates/301-logicapps-jobscheduler/
+      url: https://azure.microsoft.com/resources/templates/logicapps-jobscheduler/
   - linkListType: learn
     links:
     - text: データを自動的にルーティングして処理する
