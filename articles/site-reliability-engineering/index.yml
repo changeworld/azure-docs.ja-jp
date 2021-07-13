@@ -51,9 +51,9 @@ productDirectory:
           text: 書籍
         - url: resources/events.md
           text: events
-        - url: articles/code.md
+        - url: articles/code.yml
           text: 'よくあるご質問: SRE とコーディング'
-        - url: articles/devops.md
+        - url: articles/devops.yml
           text: 'よくあるご質問: SRE と DevOps'
         - url: resources/links.md
           text: リンクと要約

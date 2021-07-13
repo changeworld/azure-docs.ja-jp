@@ -81,7 +81,7 @@
     - name: Azure AD Connect クラウド プロビジョニング エージェントのバージョン履歴
       href: reference-version-history.md
     - name: Azure AD Connect クラウド同期の FAQ
-      href: reference-cloud-sync-faq.md
+      href: reference-cloud-sync-faq.yml
     - name: AADCloudSyncTools PowerShell モジュール
       href: reference-powershell.md
     - name: 同期される属性

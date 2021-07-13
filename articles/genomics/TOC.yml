@@ -24,7 +24,7 @@
 - name: リソース
   items:
     - name: 一般的な質問
-      href: frequently-asked-questions-genomics.md
+      href: frequently-asked-questions-genomics.yml
     - name: トラブルシューティング ガイド
       href: troubleshooting-guide-genomics.md
     - name: サポート要求を提出する

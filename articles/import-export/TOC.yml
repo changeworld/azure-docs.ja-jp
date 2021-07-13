@@ -10,7 +10,7 @@
     - name: 要件を確認する
       href: storage-import-export-requirements.md
     - name: よく寄せられる質問
-      href: storage-import-export-service-faq.md
+      href: storage-import-export-service-faq.yml
 - name: 方法
   expanded: true
   items:

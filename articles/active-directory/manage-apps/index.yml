@@ -9,15 +9,15 @@ metadata:
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 09/28/2020
-  author: iantheninja
+  author: davidmu1
   manager: CelesteDG
-  ms.author: iangithinji
-  ms.openlocfilehash: f7e1956f1c4f1469c9c46c60ace44c19e53c59ca
-  ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+  ms.author: davidmu
+  ms.openlocfilehash: dcf1452d69ffcbb7c0c4cf37ecd3e7a4ee403aeb
+  ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "108317597"
+  ms.lasthandoff: 07/08/2021
+  ms.locfileid: "113508187"
 landingContent:
 - title: アプリ管理について
   linkLists:

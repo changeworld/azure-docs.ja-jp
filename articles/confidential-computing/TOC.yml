@@ -23,7 +23,7 @@
         - name: 機密ノードと Azure CLI
           href: confidential-nodes-aks-get-started.md
         - name: AKS 上の機密ノードに関する FAQ
-          href: confidential-nodes-aks-faq.md
+          href: confidential-nodes-aks-faq.yml
 - name: 概念
   expanded: true
   items:
@@ -34,7 +34,7 @@
         - name: 仮想マシン上のソリューション
           href: virtual-machine-solutions.md
         - name: コンフィデンシャル コンピューティング VM に関する FAQ
-          href: faq.md
+          href: faq.yml
     - name: コンテナー コンピューティング
       expanded: true
       items:

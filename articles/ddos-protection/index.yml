@@ -6,16 +6,16 @@ metadata:
   keywords: azure ddos protection standard
   author: aletheatoh
   ms.author: yitoh
-  ms.date: 09/04/2019
+  ms.date: 06/30/2021
   ms.service: ddos-protection
   ms.topic: landing-page
   ms.custom: azure-ddos-protection
-  ms.openlocfilehash: dd35b0eb4800ae830c59d39a11be016804c83826
-  ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+  ms.openlocfilehash: f3ebe21893d090116b5302278998862ee24a9350
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/08/2021
-  ms.locfileid: "107102945"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113436066"
 landingContent:
 - title: Azure DDoS Protection Standard について
   linkLists:
@@ -23,6 +23,10 @@ landingContent:
     links:
     - text: Azure DDoS Protection Standard とは
       url: ddos-protection-overview.md
+  - linkListType: learn
+    links:
+    - text: Azure DDoS Protection の概要
+      url: /learn/modules/introduction-azure-ddos-protection/
   - linkListType: architecture
     links:
     - text: Azure DDoS Protection Standard の機能
