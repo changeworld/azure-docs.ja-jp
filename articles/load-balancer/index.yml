@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: ddf8ec846ff153b7b1d71e0a0d06d36d659cbf7e
-  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+  ms.openlocfilehash: ded78056168ec246d297a5ed4141fa5d124d6dc7
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/07/2021
-  ms.locfileid: "107029099"
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113032707"
 landingContent:
 - title: Load Balancer について
   linkLists:
@@ -117,4 +117,4 @@ landingContent:
     - text: ARM テンプレート
       url: /azure/templates/microsoft.network/loadbalancers#quickstart-templates
     - text: よく寄せられる Load Balancer の質問
-      url: load-balancer-faqs.md
+      url: load-balancer-faqs.yml

@@ -73,7 +73,7 @@
   items:
     - name: パイプライン
       href: pipeline.md
-    - name: パイプライン拡張機能
+    - name: パイプライン拡張
       href: pipeline-extension.md
     - name: ビデオ記録
       href: video-recording.md
@@ -101,6 +101,8 @@
           href: deploy-iot-edge-device.md
         - name: IoT Edge for Linux on Windows にデプロイする
           href: deploy-iot-edge-linux-on-windows.md
+        - name: Azure Stack Edge へのデプロイ
+          href: deploy-on-stack-edge.md
     - name: 再生
       items:
         - name: 記録の再生
@@ -157,6 +159,8 @@
       href: 'https://azure.microsoft.com/updates/?category=media'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
+    - name: 対応リージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
     - name: FAQ
       href: faq-edge.md
     - name: クォータと制限
