@@ -11,12 +11,12 @@ metadata:
   ms.author: victorh
   ms.date: 05/03/2021
   ms.custom: e2e-hybrid
-  ms.openlocfilehash: 92b3d0f54da7a4abc6aa78a2b7189442544f0ad1
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: cec6930c8ef68717cfa0685a0b3b4bb585229864
+  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108745015"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113438604"
 landingContent:
 - title: Azure Firewall について
   linkLists:
@@ -30,6 +30,10 @@ landingContent:
       url: rule-processing.md
     - text: よく寄せられる質問
       url: firewall-faq.yml
+  - linkListType: learn
+    links:
+    - text: Azure Firewall の概要
+      url: /learn/modules/introduction-azure-firewall/
   - linkListType: whats-new
     links:
     - text: 新機能

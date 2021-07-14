@@ -74,7 +74,7 @@
         - name: ルートまたは頂点のドメインのオンボード
           href: onboard-apex-domain.md
         - name: 国またはリージョンごとにアクセスを制限する
-          href: cdn-restrict-access-by-country.md
+          href: cdn-restrict-access-by-country-region.md
         - name: ファイル圧縮によるパフォーマンスの向上
           href: cdn-improve-performance.md
         - name: エンドポイントのマルチオリジン
