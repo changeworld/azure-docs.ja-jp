@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 12/01/2020
-  ms.openlocfilehash: e44376c783a2c233b19b98526d457361e3408b93
-  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+  ms.openlocfilehash: 3f0b7b778aa92661130fc132af33b7aa88550e97
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "109516886"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112452568"
 landingContent:
 - title: Azure Synapse Analytics について
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
     - text: 用語
       url: overview-terminology.md
     - text: よく寄せられる質問
-      url: overview-faq.md
+      url: overview-faq.yml
 - title: Synapse SQL
   linkLists:
   - linkListType: overview

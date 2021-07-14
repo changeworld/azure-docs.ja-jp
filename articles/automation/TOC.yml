@@ -214,8 +214,6 @@
                   href: automation-dsc-config-from-server.md
                 - name: 構成を複合リソースに変換する
                   href: automation-dsc-create-composite.md
-                - name: 準拠していないサーバーを修復する
-                  href: automation-dsc-remediate.md
         - name: 変更履歴とインベントリ
           items:
             - name: 概要

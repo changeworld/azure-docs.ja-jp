@@ -2,14 +2,13 @@
 title: Batch プールでマネージド ID を構成する
 description: Batch プールでユーザー割り当てマネージド ID を有効にする方法と、ノード内でマネージド ID を使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: d69e983a4b17298150942c924a3c694e2cceaf72
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.date: 05/25/2021
+ms.openlocfilehash: 243cf375b3ebf8bd64d73022ba44c3224b58872d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967253"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457772"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Batch プールでマネージド ID を構成する
 
@@ -18,9 +17,9 @@ ms.locfileid: "105967253"
 このトピックでは、Batch プールでユーザー割り当てマネージド ID を有効にする方法と、ノード内でマネージド ID を使用する方法について説明します。
 
 > [!IMPORTANT]
-> ユーザー割り当てマネージド ID を使用する Azure Batch プールに対するサポートは、現在、次のリージョンを対象にパブリック プレビュー段階にあります。米国西部 2、米国中南部、米国東部、US Gov アリゾナ、US Gov バージニア。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> マネージド ID を使用するには、[仮想マシンの構成](nodes-and-pools.md#virtual-machine-configuration)を使用してプールを構成する必要があります。
+>
+> マネージド ID を使用したプールの作成は、[Batch .NET 管理ライブラリ](/dotnet/api/overview/azure/batch#management-library)を使って実行できますが、現在、[Batch .NET クライアント ライブラリ](/dotnet/api/overview/azure/batch#client-library)ではサポートされていません。
 
 ## <a name="create-a-user-assigned-identity"></a>ユーザー割り当て ID を作成する
 
@@ -29,9 +28,6 @@ ms.locfileid: "105967253"
 ## <a name="create-a-batch-pool-with-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID を使用して Batch プールを作成する
 
 1 つ以上のユーザー割り当てマネージド ID を作成したら、[Batch .NET 管理ライブラリ](/dotnet/api/overview/azure/batch#management-library)を使用して、そのマネージド ID で Batch プールを作成できます。
-
-> [!IMPORTANT]
-> マネージド ID を使用するには、[仮想マシンの構成](nodes-and-pools.md#virtual-machine-configuration)を使用してプールを構成する必要があります。
 
 ```csharp
 var poolParameters = new Pool(name: "yourPoolName")
@@ -72,9 +68,6 @@ var pool = await managementClient.Pool.CreateWithHttpMessagesAsync(
     parameters: poolParameters,
     cancellationToken: default(CancellationToken)).ConfigureAwait(false);    
 ```
-
-> [!NOTE]
-> マネージド ID を使用したプールの作成は、現在、[Batch .NET クライアント ライブラリ](/dotnet/api/overview/azure/batch#client-library)ではサポートされていません。
 
 ## <a name="use-user-assigned-managed-identities-in-batch-nodes"></a>Batch ノードでユーザー割り当てマネージド ID を使用する
 

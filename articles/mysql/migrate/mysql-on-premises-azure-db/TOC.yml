@@ -36,5 +36,25 @@
           href: 13-security.md
         - name: まとめ
           href: 14-summary.md
-        - name: 付録
-          href: 15-appendix.md
+    - name: サンプル アプリケーション
+      href: 15-appendix.md
+    - name: リソース
+      items:
+        - name: mysqldump または phpmyadmin でデータを移行する
+          href: ../../concepts-migrate-dump-restore.md
+          displayName: 'migrate, mysqldump'
+        - name: dbForge Studio for MySQL を使用したデータの移行
+          href: ../../concepts-migrate-dbforge-studio-for-mysql.md
+          displayName: 'migrate, dbforge'
+        - name: MySQL Workbench を使用してデータを移行する
+          href: ../../concepts-migrate-import-export.md
+          displayName: 'import , migrate, export'
+        - name: MySQL Workbench を使用して RDS MySQL データを移行する
+          href: ../../how-to-migrate-rds-mysql-workbench.md
+          displayName: 'import , migrate, export'
+        - name: DMS を使用した最小限のダウンタイムでの移行
+          href: ../../howto-migrate-online.md
+          displayName: 'migrate, dms, database migration service'
+        - name: 一般的なエラーのトラブルシューティング
+          href: ../../howto-troubleshoot-common-errors.md
+          displayName: 'SUPER privilege, DBA role, Access is denied'

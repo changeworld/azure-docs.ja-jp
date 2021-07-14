@@ -55,7 +55,7 @@
         - name: 禁止されたアクション
           href: forbidden-actions.md
         - name: よく寄せられる質問
-          href: cloudsimple-faq.md
+          href: cloudsimple-faq.yml
     - name: チュートリアル
       items:
         - name: CloudSimple サービスを作成する

@@ -128,7 +128,7 @@
     - name: クォータと制限
       href: quotas-limitations.md
     - name: FAQ
-      href: faq.md
+      href: faq.yml
     - name: 運用環境の準備状況とベスト プラクティス
       href: production-readiness.md
     - name: 透明性と責任ある AI の原則

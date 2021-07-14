@@ -72,7 +72,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: ddos-faq.md
+      href: ddos-faq.yml
     - name: 価格
       href: 'https://azure.microsoft.com/en-us/pricing/details/ddos-protection/'
     - name: リージョン別の提供状況
