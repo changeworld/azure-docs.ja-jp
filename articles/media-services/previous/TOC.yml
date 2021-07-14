@@ -400,7 +400,7 @@
     - name: トラブルシューティング
       items:
         - name: よく寄せられる質問
-          href: media-services-frequently-asked-questions.md
+          href: media-services-frequently-asked-questions.yml
         - name: ライブ ストリーミングのトラブルシューティング ガイド
           href: media-services-troubleshooting-live-streaming.md
         - name: エラー コード

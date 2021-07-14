@@ -5,12 +5,12 @@ metadata:
   ms.service: service-fabric
   ms.topic: landing-page
   ms.date: 05/10/2021
-  ms.openlocfilehash: 7fc89c669c88f65abfd89a98a321dd976696cd57
-  ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+  ms.openlocfilehash: a61eb06e81b32426cc90b58fe4a7234746aeb172
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/10/2021
-  ms.locfileid: "109683869"
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113032635"
 landingContent:
 - title: Service Fabric について
   linkLists:
@@ -55,7 +55,7 @@ landingContent:
     - text: Service Fabric の管理対象クラスターについて
       url: overview-managed-cluster.md
     - text: Service Fabric の管理対象クラスターの FAQ
-      url: faq-managed-cluster.md
+      url: faq-managed-cluster.yml
   - linkListType: quickstart
     links:
     - text: 管理対象クラスターを作成する

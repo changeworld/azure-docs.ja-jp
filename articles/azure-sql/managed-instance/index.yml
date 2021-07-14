@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: 
   ms.date: 05/27/2020
-  ms.openlocfilehash: 96a72f5600e3866eece693b6617e20ec977c9a30
-  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+  ms.openlocfilehash: e9ce725300d96cd713c8c7a726d12c1cdf4973ec
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/29/2021
-  ms.locfileid: "110697196"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112467367"
 landingContent:
 - title: Azure SQL Managed Instance
   linkLists:
@@ -25,8 +25,6 @@ landingContent:
     links:
     - text: 新機能
       url: ../database/doc-changes-updates-release-notes.md?tabs=managed-instance
-    - text: フィードバックがある場合は、 アンケートにご協力ください。
-      url: https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456
   - linkListType: quickstart
     links:
     - text: SQL マネージド インスタンスの作成
@@ -110,7 +108,7 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: /cli/azure/sql
+      url: /cli/azure/azure-cli-reference-for-sql#sql-managed-instance-references
     - text: PowerShell
       url: /powershell/module/az.sql
     - text: REST API

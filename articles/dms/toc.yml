@@ -47,12 +47,10 @@
       items:
         - name: Azure Database for MySQL へ (オフライン)
           href: tutorial-mysql-azure-mysql-offline-portal.md
-        - name: Azure Database for MySQL へ (オンライン)
-          href: tutorial-mysql-azure-mysql-online.md
     - name: RDS MySQL の移行
       items:
         - name: Azure Database for MySQL へ
-          href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
+          href: tutorial-mysql-azure-mysql-offline-portal.md
     - name: PostgreSQL の移行
       items:
         - name: Azure DB for PostgreSQL へ (ポータル)
@@ -139,8 +137,6 @@
           items:
             - name: SQL Managed Instance
               href: known-issues-azure-sql-db-managed-instance-online.md
-            - name: Azure DB for MySQL
-              href: known-issues-azure-mysql-online.md
             - name: PostgreSQL から Azure DB for PostgreSQL
               href: known-issues-azure-postgresql-online.md
             - name: MongoDB から Azure Cosmos DB の MongoDB 用 API
@@ -160,6 +156,6 @@
         - name: オンライン移行を監視してカットオーバーを実行する
           href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
         - name: Oracle を Azure SQL DB に移行する
-          href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
+          href: /azure/postgresql/howto-migrate-from-oracle
         - name: MongoDB を Azure Cosmos DB に移行する
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'

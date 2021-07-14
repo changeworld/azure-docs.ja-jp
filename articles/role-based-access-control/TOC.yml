@@ -100,6 +100,8 @@
           href: conditions-role-assignments-cli.md
         - name: REST API
           href: conditions-role-assignments-rest.md
+        - name: ARM テンプレート
+          href: conditions-role-assignments-template.md
         - name: 条件のトラブルシューティング
           href: conditions-troubleshoot.md
     - name: ロールの割り当てを削除する

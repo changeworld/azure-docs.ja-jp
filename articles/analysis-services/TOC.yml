@@ -44,7 +44,7 @@
     - name: サポートされるデータ ソース
       href: analysis-services-datasource.md
     - name: ネットワーク接続に関する FAQ
-      href: analysis-services-network-faq.md
+      href: analysis-services-network-faq.yml
 - name: 操作方法
   items:
     - name: サーバー
