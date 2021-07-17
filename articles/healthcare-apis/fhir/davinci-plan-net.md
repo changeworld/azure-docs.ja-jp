@@ -1,6 +1,6 @@
 ---
 title: チュートリアル-Da ヴィンチ Plan Net-Azure API for FHIR
-description: このチュートリアルでは、Da ヴィンチ支払人データ交換実装ガイドの Touchstone テストに合格するように、FHIR 用の Azure API を設定する手順について説明します。
+description: このチュートリアルでは、fhir 用の Azure API を設定して、Da ヴィンチ支払人データ Exchange 実装ガイドの Touchstone テストに合格する手順について説明します。
 services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
@@ -9,14 +9,14 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: modillon
 ms.date: 06/25/2021
-ms.openlocfilehash: b91fc4d01a9279d6f2ce58b15fc8b8c00790ea57
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: bb7b7e3813a317aa1b1a9f97ab4f80650eb2fd1e
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113012943"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285904"
 ---
-# <a name="da-vinci-plan-net"></a>Da ヴィンチ Plan Net
+# <a name="da-vinci-plan-net"></a>Da Vinci Plan Net
 
 このチュートリアルでは、Da ヴィンチ PDEX 支払人 Network (Plan-Net) 実装ガイドの [Touchstone](https://touchstone.aegis.net/touchstone/) テストに合格するように、FHIR 用の Azure API を設定する手順について説明します。
 
@@ -26,7 +26,7 @@ ms.locfileid: "113012943"
 
 ## <a name="define-search-parameters"></a>検索パラメーターの定義
 
-Da ヴィンチ Plan-Net IG の一部として、医療サービス、保険プラン、専門家の役割、組織、組織の関連リソースに対して、6つの [新しい検索パラメーター](https://docs.microsoft.com/azure/healthcare-apis/fhir/how-to-do-custom-search) を定義する必要があります。 これらの6つはすべて、機能ステートメントでテストされています。
+Da ヴィンチ Plan-Net IG の一部として、医療サービス、保険プラン、専門家の役割、組織、組織の関連リソースに対して、6つの [新しい検索パラメーター](./how-to-do-custom-search.md) を定義する必要があります。 これらの6つはすべて、機能ステートメントでテストされています。
 
 * [医療サービスの範囲](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1/SearchParameter-healthcareservice-coverage-area.html)
 * [保険契約の範囲](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1/SearchParameter-insuranceplan-coverage-area.html)
@@ -42,7 +42,7 @@ Da ヴィンチ Plan-Net IG に必要な残りの検索パラメーターは、�
 
 ## <a name="store-profiles"></a>ストアプロファイル
 
-検索パラメーターを定義する以外に、このテストに合格するために [必要なプロファイルと拡張機能](https://docs.microsoft.com/azure/healthcare-apis/fhir/validation-against-profiles#storing-profiles) を読み込む必要があります。 Da ヴィンチ Plan-Net IG の一部として使用されるプロファイルは9つあります。
+検索パラメーターを定義する以外に、このテストに合格するために [必要なプロファイルと拡張機能](./validation-against-profiles.md#storing-profiles) を読み込む必要があります。 Da ヴィンチ Plan-Net IG の一部として使用されるプロファイルは9つあります。
 
 * [プラン-Net エンドポイント](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1/StructureDefinition-plannet-Endpoint.html)
 * [プラン-Net 医療サービス](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1/StructureDefinition-plannet-HealthcareService.html)
@@ -75,9 +75,9 @@ Da ヴィンチ Plan-Net IG に必要な残りの検索パラメーターは、�
 > [!NOTE]
 > 提供されるサンプルリソースを使用して、クエリテストの成功率を98% にする必要があります。
 
-> * FHIR サーバーに対して、次のいずれかのテストが失敗する原因となっている GitHub の問題が発生しています: [リソースが基本条件と _include 条件の両方を満たしている場合は、複数回返されます。問題 #2037 ·microsoft/fhir-サーバー (github.com)](https://github.com/microsoft/fhir-server/issues/2037)
+> * fhir サーバーに対して、いずれかのテストが失敗する原因となっている未解決の GitHub の問題があります:[リソースが基本条件と _include 条件の両方を満たしている場合は、複数回返されます。問題 #2037 ·microsoft/fhir-サーバー (github.com)](https://github.com/microsoft/fhir-server/issues/2037)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Da ヴィンチ PDEX 支払人 Network (Plan-Net) 実装ガイドの Touchstone テストに合格するように、FHIR 用の Azure API を設定する方法について説明します。 次に、すべての Azure API for FHIR 機能について学習できます。
 
