@@ -41,7 +41,7 @@ ms.locfileid: "106281459"
 
 ## <a name="download-postman-files"></a>Postman ファイルをダウンロードする
 
-Postman コレクションと環境ファイルを含む GitHub リポジトリを複製します。
+Postman コレクションと環境ファイルを含む GitHub リポジトリをクローンします。
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
@@ -56,7 +56,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
 4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
-2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
+2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` をクローンしたときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
 6. **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境が追加されています。
 
     > [!Note]
@@ -71,7 +71,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 ### <a name="configure-the-collection"></a>コレクションの構成
 
 1. **[インポート]** をクリックしてコレクション ファイルをインポートします。
-1. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Media Services v3.postman_collection.json` ファイルを参照します。
+1. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` をクローンしたときにダウンロードされた `Media Services v3.postman_collection.json` ファイルを参照します。
 3. **Media Services v3.postman_collection.json** ファイルを選択します。
 
     ![ファイルをインポートする](./media/develop-with-postman/postman-import-collection.png)
