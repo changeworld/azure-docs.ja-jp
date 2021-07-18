@@ -28,7 +28,7 @@ ms.locfileid: "101661479"
 > * [Python](create-cassandra-python.md)
 >  
 
-このクイックスタートでは、GitHub から例を複製することで、.NET と Azure Cosmos DB の [Cassandra API](cassandra-introduction.md) を使用してプロファイル アプリを作成する方法を示します。 このクイック スタートでは、Web ベースの Azure portal を使用して Azure Cosmos DB アカウントを作成する方法も示します。
+このクイックスタートでは、GitHub から例をクローンすることで、.NET と Azure Cosmos DB の [Cassandra API](cassandra-introduction.md) を使用してプロファイル アプリを作成する方法を示します。 このクイック スタートでは、Web ベースの Azure portal を使用して Azure Cosmos DB アカウントを作成する方法も示します。
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、テーブル、キーと値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
@@ -38,7 +38,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 さらに、次のものが必要です。 
 * まだ Visual Studio 2019 をインストールしていない場合は、**無料** の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
-* [Git](https://www.git-scm.com/) をインストールして例を複製します。
+* [Git](https://www.git-scm.com/) をインストールして例をクローンします。
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
@@ -46,9 +46,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 [!INCLUDE [cosmos-db-create-dbaccount-cassandra](../../includes/cosmos-db-create-dbaccount-cassandra.md)]
 
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-次は、コードを使った作業に移りましょう。 GitHub から Cassandra API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+次は、コードを使った作業に移りましょう。 GitHub から Cassandra API アプリをクローンし、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. コマンド プロンプトを開きます。 `git-samples` という名前の新しいフォルダーを作成します。 その後、コマンド プロンプトを閉じます。
 
@@ -62,7 +62,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-getting-started.git
