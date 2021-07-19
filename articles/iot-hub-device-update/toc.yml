@@ -47,6 +47,8 @@ items:
         href: import-concepts.md
       - name: インポートに関連するスキーマ
         href: import-schema.md
+      - name: Device Update の制限
+        href: device-update-limits.md
   - name: 操作方法ガイド
     items:
       - name: Device Update アカウントの作成

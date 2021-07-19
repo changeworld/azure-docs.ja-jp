@@ -46,9 +46,9 @@
     - name: NAT Gateway
       items:
         - name: NAT ゲートウェイ パブリック ロード バランサーを統合する
-          href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+          href: ../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
         - name: NAT ゲートウェイ内部ロード バランサーを統合する
-          href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+          href: ../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: IP ベースのバックエンド
       items:
         - name: IP ベースのバックエンドを備えたパブリック ロード バランサーを作成する - ポータル
@@ -75,14 +75,16 @@
       href: skus.md
     - name: 正常性の監視
       items:
+        - name: ロード バランサーを監視する
+          href: monitor-load-balancer.md
+        - name: 監視データのリファレンス
+          href: monitor-load-balancer-reference.md
         - name: 正常性プローブ
           href: load-balancer-custom-probe-overview.md
         - name: Load Balancer 用の Azure Monitor 分析情報
           href: load-balancer-insights.md
         - name: Standard Load Balancer のメトリックと診断
           href: load-balancer-standard-diagnostics.md
-        - name: Load Balancer 用の Azure Monitor のログ
-          href: load-balancer-monitor-log.md
         - name: REST を使用して Load Balancer のメトリックを取得する
           href: load-balancer-query-metrics-rest-api.md
     - name: 高可用性ポート
@@ -220,4 +222,4 @@
     - name: 製品の更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
     - name: よく寄せられる質問
-      href: load-balancer-faqs.md
+      href: load-balancer-faqs.yml

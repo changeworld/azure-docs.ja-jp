@@ -1,0 +1,46 @@
+- name: Azure プライベート マルチアクセス エッジ コンピューティングのドキュメント
+  href: index.yml
+  items:
+    - name: 概要
+      expanded: true
+      items:
+        - name: Azure プライベート MEC とは
+          href: overview.md
+        - name: Azure プライベート MEC のパートナー ソリューション
+          href: partner-programs.md
+    - name: Metaswitch 5G Fusion Core を使用したエッジ接続
+      items:
+        - name: 概要
+          items:
+            - name: Fusion Core とは
+              href: metaswitch-fusion-core-overview.md
+        - name: 操作方法ガイド
+          items:
+            - name: Fusion Core を Azure Stack Edge にデプロイする
+              href: deploy-metaswitch-fusion-core-solution.md
+    - name: Affirmed Private Network Service を使用したプライベート ネットワーク
+      items:
+        - name: 概要
+          items:
+            - name: Azure 上の Affirmed Private Network Service とは
+              href: affirmed-private-network-service-overview.md
+        - name: 操作方法ガイド
+          items:
+            - name: Affirmed Private Network Service を Azure にデプロイする
+              href: deploy-affirmed-private-network-service-solution.md
+    - name: 関連項目
+      items:
+        - name: Azure Network Function Manager
+          href: ../network-function-manager/index.yml
+    - name: リソース
+      items:
+        - name: Azure プライベート MEC の製品ページ
+          href: 'https://go.microsoft.com/fwlink/?linkid=2165610'
+        - name: Network Function Manager の製品ページ
+          href: 'https://go.microsoft.com/fwlink/?linkid=2166098'
+        - name: Azure Marketplace
+          href: 'https://azuremarketplace.microsoft.com/marketplace/'
+        - name: Azure のロードマップ
+          href: 'https://azure.microsoft.com/roadmap/?category=networking'
+        - name: ブログ
+          href: 'https://azure.microsoft.com/blog/topics/networking'

@@ -54,12 +54,18 @@
       href: ./tutorials/create-share-query.md
 - name: サンプル
   items:
-    - name: 初歩的なクエリ
-      displayName: 'query language, data explorer, count, list, show'
-      href: ./samples/starter.md
-    - name: 詳細なクエリ
-      displayName: 'query language, data explorer, list, regex'
-      href: ./samples/advanced.md
+    - name: 言語の例
+      items:
+        - name: 初歩的なクエリ
+          displayName: 'query language, data explorer, count, list, show'
+          href: ./samples/starter.md
+        - name: 詳細なクエリ
+          displayName: 'query language, data explorer, list, regex'
+          href: ./samples/advanced.md
+    - name: カテゴリ別のインデックス
+      href: ./samples/samples-by-category.md
+    - name: テーブル別のインデックス
+      href: ./samples/samples-by-table.md
 - name: 概念
   items:
     - name: クエリ言語を理解する

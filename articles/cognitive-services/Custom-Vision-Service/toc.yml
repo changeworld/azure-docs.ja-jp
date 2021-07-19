@@ -47,6 +47,8 @@
       items:
         - name: モバイルへのモデルのエクスポート
           href: export-your-model.md
+        - name: プログラムを使用してモデルをエクスポートする
+          href: export-programmatically.md
         - name: Windows ML での ONNX モデルの使用
           href: custom-vision-onnx-windows-ml.md
         - name: Python での TensorFlow モデルの実行

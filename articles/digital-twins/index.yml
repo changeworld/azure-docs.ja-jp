@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: 4eba6315029b9dd720e47fc46d7fa64a0ee8fba9
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: dfadcc06559a789712c4c2a59ab991e74570b3e7
+  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110477952"
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112280461"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -81,7 +81,7 @@ landingContent:
       url: concepts-apis-sdks.md
   - linkListType: how-to-guide
     links:
-    - text: Postman で要求を行う
+    - text: Postman で API 要求を行う
       url: how-to-use-postman.md
 - title: コード サンプルを確認する
   linkLists:

@@ -6,7 +6,7 @@
       href: lab-services-overview.md
 - name: クイックスタート
   items:
-    - name: はじめに
+    - name: 作業開始
       href: get-started-manage-labs.md
 - name: チュートリアル
   items:
@@ -52,8 +52,10 @@
               href: class-type-database-management.md
             - name: 自然言語処理でのディープ ラーニング
               href: class-type-deep-learning-natural-language-processing.md
-            - name: 倫理的ハッキング
+            - name: Hyper-V を使用した倫理的ハッキング
               href: class-type-ethical-hacking.md
+            - name: VirtualBox を使用した倫理的ハッキング
+              href: class-type-ethical-hacking-virtualbox.md
             - name: MATLAB
               href: class-type-matlab.md
             - name: GNS3 を使用したネットワーク
@@ -205,4 +207,4 @@
     - name: テクニカル コミュニティ フォーラム
       href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: よく寄せられる質問
-      href: classroom-labs-faq.md
+      href: classroom-labs-faq.yml

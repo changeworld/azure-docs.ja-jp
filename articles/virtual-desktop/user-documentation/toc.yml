@@ -1,0 +1,18 @@
+- name: Azure Virtual Desktop にアクセスする
+  href: index.yml
+- name: 操作方法
+  items:
+    - name: Windows デスクトップ クライアントを使用して接続する
+      href: connect-windows-7-10.md
+    - name: Web クライアントに接続する
+      href: connect-web.md
+    - name: Android クライアントに接続する
+      href: connect-android.md
+    - name: macOS クライアントに接続する
+      href: connect-macos.md
+    - name: iOS クライアントに接続する
+      href: connect-ios.md
+    - name: Microsoft Store クライアントを使用した接続
+      href: connect-microsoft-store.md
+    - name: シン クライアントを使用して接続する
+      href: linux-overview.md

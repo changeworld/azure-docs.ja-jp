@@ -7,11 +7,11 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: VM 設定を使用してホストを作成する
+    - name: VM 設定から Bastion を構成する
       href: quickstart-host-portal.md
 - name: チュートリアル
   items:
-    - name: ホストの作成と Windows VM への接続
+    - name: Bastion の構成と接続
       href: tutorial-create-host-portal.md
 - name: 概念
   items:
@@ -29,7 +29,7 @@
           href: /security/benchmark/azure/baselines/bastion-security-baseline?toc=/azure/bastion/TOC.json
 - name: 操作方法ガイド
   items:
-    - name: ホストを作成する
+    - name: Bastion を構成する
       items:
         - name: Azure portal
           href: tutorial-create-host-portal.md
@@ -55,12 +55,14 @@
           href: bastion-vm-full-screen.md
     - name: NSG を使用する
       href: bastion-nsg.md
-    - name: 診断ログの構成とアクセス
-      href: diagnostic-logs.md
-    - name: セッションの監視と管理
-      href: session-monitoring.md
-    - name: メトリック、監視、アラート
-      href: howto-metrics-monitor-alert.md
+    - name: 正常性の監視
+      items:
+        - name: Azure Bastion の監視
+          href: howto-metrics-monitor-alert.md
+        - name: 診断ログの構成とアクセス
+          href: diagnostic-logs.md
+        - name: セッションの監視と管理
+          href: session-monitoring.md
     - name: トラブルシューティング
       href: troubleshoot.md
 - name: リファレンス

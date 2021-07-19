@@ -251,7 +251,7 @@
         - name: Load Balancer - パブリック
           href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: NAT Gateway
-          href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+          href: ../../virtual-network/nat-gateway/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: プライベート エンドポイント
           href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Private Link サービス
@@ -293,7 +293,7 @@
     - name: データ型
       href: data-types.md
     - name: よく寄せられる質問
-      href: frequently-asked-questions.md
+      href: frequently-asked-questions.yml
     - name: クラウドの一貫性を実現するテンプレート
       href: template-cloud-consistency.md
     - name: デプロイ モード
@@ -346,16 +346,16 @@
         - name: 複数のインスタンスの作成
           items:
             - name: リソース
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy'
               href: copy-resources.md
             - name: Properties
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy'
               href: copy-properties.md
             - name: 変数
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy'
               href: copy-variables.md
             - name: 出力
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy'
               href: copy-outputs.md
     - name: テンプレートのデプロイ
       items:
@@ -413,6 +413,8 @@
           href: test-toolkit.md
         - name: テスト ケース
           href: test-cases.md
+        - name: CreateUiDefinition テスト ケース
+          href: createuidefinition-test-cases.md
     - name: テンプレート スペック
       items:
         - name: テンプレート スペックの作成とデプロイ

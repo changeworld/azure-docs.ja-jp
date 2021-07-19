@@ -31,6 +31,8 @@
       href: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
     - name: Komprise ファースト ステップ ガイド
       href: ./validated-partners/data-management/komprise-quick-start-guide.md
+    - name: StorageX ファースト ステップ ガイド
+      href: ./validated-partners/data-management/storagex-quick-start-guide.md
   expanded: false
 - name: プライマリおよびセカンダリ ストレージに関するパートナー
   items:

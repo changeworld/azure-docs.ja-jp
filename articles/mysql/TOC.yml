@@ -7,6 +7,10 @@
       href: overview.md
     - name: 適切な MySQL オプションの選択
       href: select-right-deployment-type.md
+    - name: シングル サーバーの新機能
+      href: single-server-whats-new.md
+    - name: フレキシブル サーバーの新機能
+      href: flexible-server/whats-new.md
     - name: バージョンのサポート ポリシー
       href: concepts-version-policy.md
       displayName: version policy
@@ -21,8 +25,6 @@
           href: single-server-overview.md
         - name: サポートされているバージョン
           href: concepts-supported-versions.md
-        - name: シングル サーバーの新機能
-          href: single-server-whats-new.md
         - name: 価格レベル
           items:
             - name: 価格レベル
@@ -144,10 +146,8 @@
               items:
                 - name: SSL の構成
                   href: concepts-ssl-connection-security.md
-            - name: Advanced Threat Protection
-              items:
-                - name: Azure Defender による脅威保護
-                  href: ../security-center/defender-for-databases-introduction.md
+            - name: Azure Defender による脅威保護
+              href: ../security-center/defender-for-databases-usage.md?toc=/azure/mysql/toc.json&bc=/azure/mysql/breadcrumb/toc.json
             - name: 保存時の暗号化
               items:
                 - name: データの暗号化
@@ -583,6 +583,9 @@
     - name: mysqldump または phpmyadmin でデータを移行する
       href: concepts-migrate-dump-restore.md
       displayName: 'migrate, mysqldump'
+    - name: mydumper または myloader を使用して大規模なデータベースを Azure Database for MySQL に移行する
+      href: concepts-migrate-mydumper-myloader.md
+      displayName: 'migrate, mydumper/myloader'
     - name: dbForge Studio for MySQL を使用したデータの移行
       href: concepts-migrate-dbforge-studio-for-mysql.md
       displayName: 'migrate, dbforge'
@@ -592,6 +595,9 @@
     - name: MySQL Workbench を使用して RDS MySQL データを移行する
       href: how-to-migrate-rds-mysql-workbench.md
       displayName: 'import , migrate, export'
+    - name: Azure DB for MySQL – シングル サーバーを Azure DB for MySQL – フレキシブル サーバーに移行する
+      href: howto-migrate-single-flexible-minimum-downtime.md
+      displayName: 'migrate, Single to Flexible'
     - name: DMS を使用した最小限のダウンタイムでの移行
       href: howto-migrate-online.md
       displayName: 'migrate, dms, database migration service'

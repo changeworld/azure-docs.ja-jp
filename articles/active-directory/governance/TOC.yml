@@ -88,10 +88,16 @@
               href: entitlement-management-access-package-approval-policy.md
             - name: ライフサイクルの設定の変更
               href: entitlement-management-access-package-lifecycle-policy.md
+            - name: 職務の分離を構成する
+              href: entitlement-management-access-package-incompatible.md
             - name: 要求を表示する
               href: entitlement-management-access-package-requests.md
+            - name: 要求を再処理する
+              href: entitlement-management-reprocess-access-package-requests.md
             - name: 割り当ての表示、追加、削除
               href: entitlement-management-access-package-assignments.md
+            - name: 割り当てを再処理する
+              href: entitlement-management-reprocess-access-package-assignments.md
             - name: 非表示または削除
               href: entitlement-management-access-package-edit.md
         - name: 承認者

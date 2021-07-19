@@ -13,16 +13,13 @@ metadata:
   author: TerryLanfear
   ms.author: terrylan
   manager: rkarlin
-  ms.date: 02/28/2021
+  ms.date: 06/14/2021
 conceptualContent:
   title: コンプライアンス認証
   items:
     - title: グローバル
       links:
-        - url: ../governance/policy/concepts/regulatory-compliance.md
-          itemType: concept
-          text: Azure Policy の規制コンプライアンス (プレビュー)
-        - url: /azure/compliance/offerings/offering-cis-benchmarks
+        - url: /compliance/regulatory/offering-cis-benchmark
           itemType: concept
           text: CIS ベンチマーク
         - url: /azure/compliance/offerings/offering-csa-star-attestation
@@ -66,7 +63,7 @@ conceptualContent:
         - url: /azure/compliance/offerings/offering-iso-9001
           itemType: concept
           text: ISO 9001
-        - url: /azure/compliance/offerings/offering-wcag
+        - url: /compliance/regulatory/offering-wcag-2-1
           itemType: concept
           text: WCAG
     - title: 米国政府
@@ -79,7 +76,7 @@ conceptualContent:
           text: CNSSI 1253
         - url: /azure/compliance/offerings/offering-dfars
           itemType: concept
-          text: DFARS
+          text: DFARS と CMMC
         - url: /azure/compliance/offerings/offering-dod-il2
           itemType: concept
           text: DoD IL2
@@ -98,88 +95,94 @@ conceptualContent:
         - url: /azure/compliance/offerings/offering-ear
           itemType: concept
           text: EAR
-    - title: 米国政府
-      links:
         - url: /azure/compliance/offerings/offering-fedramp
           itemType: concept
           text: FedRAMP
-        - url: /azure/compliance/offerings/offering-ferpa
-          itemType: concept
-          text: FERPA
+    - title: 米国政府
+      links:
         - url: /azure/compliance/offerings/offering-fips-140-2
           itemType: concept
-          text: FIPS 140-2
+          text: FIPS 140
         - url: /azure/compliance/offerings/offering-irs-1075
           itemType: concept
           text: IRS 1075
         - url: /azure/compliance/offerings/offering-itar
           itemType: concept
           text: ITAR
+        - url: /azure/compliance/offerings/offering-ndaa-section-889
+          itemType: concept
+          text: NDAA 第 889 条
+        - url: /azure/compliance/offerings/offering-nist-800-161
+          itemType: concept
+          text: NIST 800-161
         - url: /azure/compliance/offerings/offering-nist-800-171
           itemType: concept
           text: NIST 800-171
         - url: /azure/compliance/offerings/offering-nist-800-53
           itemType: concept
           text: NIST 800-53
+        - url: /azure/compliance/offerings/offering-nist-800-63
+          itemType: concept
+          text: NIST 800-63
         - url: /azure/compliance/offerings/offering-nist-csf
           itemType: concept
           text: NIST CSF
-        - url: /azure/compliance/offerings/offering-section-508-vpats
+        - url: /compliance/regulatory/offering-section-508-vpats
           itemType: concept
           text: 第 508 条 VPAT
     - title: 金融サービス
       links:
-        - url: /azure/compliance/offerings/offering-23-nycrr-500
+        - url: /compliance/regulatory/offering-23-nycrr-part-500
           itemType: concept
           text: 23 NYCRR Part 500 (米国)
-        - url: /azure/compliance/offerings/offering-afm-dnb-netherlands
+        - url: /compliance/regulatory/offering-afm-dnb-netherlands
           itemType: concept
           text: AFM と DNB (オランダ)
-        - url: /azure/compliance/offerings/offering-amf-acpr-france
+        - url: /compliance/regulatory/offering-amf-acpr-france
           itemType: concept
           text: AMF と ACPR (フランス)
-        - url: /azure/compliance/offerings/offering-apra-australia
+        - url: /compliance/regulatory/offering-apra-australia
           itemType: concept
           text: APRA (オーストラリア)
-        - url: /azure/compliance/offerings/offering-cftc-1-31-us
+        - url: /compliance/regulatory/offering-cftc-1-31-us
           itemType: concept
           text: CFTC 1.31 (米国)
-        - url: /azure/compliance/offerings/offering-eba-eu
+        - url: /compliance/regulatory/offering-eba-eu
           itemType: concept
           text: EBA (EU)
         - url: /azure/compliance/offerings/offering-fca-pra-uk
           itemType: concept
           text: FCA と PRA (英国)
-        - url: /azure/compliance/offerings/offering-ffiec-us
+        - url: /compliance/regulatory/offering-ffiec-us
           itemType: concept
           text: FFIEC (米国)
-        - url: /azure/compliance/offerings/offering-finma-switzerland
+        - url: /compliance/regulatory/offering-finma-switzerland
           itemType: concept
           text: FINMA (スイス)
     - title: 金融サービス
       links:
-        - url: /azure/compliance/offerings/offering-finra-4511-us
+        - url: /compliance/regulatory/offering-finra-4511
           itemType: concept
           text: FINRA 4511 (米国)
-        - url: /azure/compliance/offerings/offering-fisc-japan
+        - url: /compliance/regulatory/offering-fisc-japan
           itemType: concept
           text: FISC (日本)
-        - url: /azure/compliance/offerings/offering-fsa-denmark
+        - url: /compliance/regulatory/offering-fsa-denmark
           itemType: concept
           text: FSA (デンマーク)
-        - url: /azure/compliance/offerings/offering-glba-us
+        - url: /compliance/regulatory/offering-glba
           itemType: concept
           text: GLBA (米国)
-        - url: /azure/compliance/offerings/offering-knf-poland
+        - url: /compliance/regulatory/offering-knf-poland
           itemType: concept
           text: KNF (ポーランド)
-        - url: /azure/compliance/offerings/offering-mas-abs-singapore
+        - url: /compliance/regulatory/offering-mas-abs-singapore
           itemType: concept
           text: MAS と ABS (シンガポール)
-        - url: /azure/compliance/offerings/offering-nbb-fsma-belgium
+        - url: /compliance/regulatory/offering-nbb-fsma-belgium
           itemType: concept
           text: NBB と FSMA (ベルギー)
-        - url: /azure/compliance/offerings/offering-osfi-canada
+        - url: /compliance/regulatory/offering-osfi-canada
           itemType: concept
           text: OSFI (カナダ)
     - title: 金融サービス
@@ -193,26 +196,29 @@ conceptualContent:
         - url: /azure/compliance/offerings/offering-pci-dss
           itemType: concept
           text: PCI DSS
-        - url: /azure/compliance/offerings/offering-rbi-irdai-india
+        - url: /compliance/regulatory/offering-rbi-irdai-india
           itemType: concept
           text: RBI と IRDAI (インド)
-        - url: /azure/compliance/offerings/offering-sec-17a-4-us
+        - url: /compliance/regulatory/offering-sec-17a-4
           itemType: concept
           text: SEC 17a-4 (米国)
         - url: /azure/compliance/offerings/offering-sec-reg-sci-us
           itemType: concept
           text: SEC 規則の SCI (米国)
-        - url: /azure/compliance/offerings/offering-sox-us
+        - url: /compliance/regulatory/offering-sox
           itemType: concept
           text: SOX (米国)
-        - url: /azure/compliance/offerings/offering-trusight
+        - url: /compliance/regulatory/offering-trusight
           itemType: concept
           text: TruSight
     - title: 医療とライフ サイエンス
       links:
-        - url: /azure/compliance/offerings/offering-asip-hds-france
+        - url: /compliance/regulatory/offering-hds-france
           itemType: concept
           text: ASIP HDS (フランス)
+        - url: /azure/compliance/offerings/offering-epcs-us
+          itemType: concept
+          text: EPCS (米国)
         - url: /azure/compliance/offerings/offering-gxp
           itemType: concept
           text: GxP (FDA 21 CFR Part 11)
@@ -225,10 +231,10 @@ conceptualContent:
         - url: /azure/compliance/offerings/offering-mars-e-us
           itemType: concept
           text: MARS-E (米国)
-        - url: /azure/compliance/offerings/offering-nen-7510-netherlands
+        - url: /compliance/regulatory/offering-nen-7510-netherlands
           itemType: concept
           text: NEN 7510 (オランダ)
-    - title: 自動車、エネルギー、メディア、通信
+    - title: 自動車、教育、エネルギー、メディア、通信
       links:
         - url: /azure/compliance/offerings/offering-cdsa
           itemType: concept
@@ -239,6 +245,9 @@ conceptualContent:
         - url: /azure/compliance/offerings/offering-fact-uk
           itemType: concept
           text: FACT (英国)
+        - url: /compliance/regulatory/offering-ferpa
+          itemType: concept
+          text: FERPA (米国)
         - url: /azure/compliance/offerings/offering-mpa
           itemType: concept
           text: MPA
@@ -253,13 +262,13 @@ conceptualContent:
           text: TISAX
     - title: 地域 - 南北アメリカ
       links:
-        - url: /azure/compliance/offerings/offering-argentina-pdpa
+        - url: /compliance/regulatory/offering-pdpa-argentina
           itemType: concept
           text: アルゼンチンの PDPA
         - url: /azure/compliance/offerings/offering-canada-privacy-laws
           itemType: concept
           text: カナダのプライバシーに関する法律
-        - url: /azure/compliance/offerings/offering-us-ccpa
+        - url: /compliance/regulatory/offering-ccpa
           itemType: concept
           text: 米国の CCPA
     - title: 地域 - アジア太平洋
@@ -276,19 +285,22 @@ conceptualContent:
         - url: /azure/compliance/offerings/offering-china-tcs
           itemType: concept
           text: 中国の TCS
-        - url: /azure/compliance/offerings/offering-india-meity
+        - url: /compliance/regulatory/offering-meity-india
           itemType: concept
           text: インドの MeitY
-        - url: /azure/compliance/offerings/offering-japan-cs-gold-mark
+        - url: /compliance/regulatory/offering-cs-mark-gold-japan
           itemType: concept
           text: 日本の CS ゴールドマーク
-        - url: /azure/compliance/offerings/offering-japan-my-number-act
+        - url: /compliance/regulatory/offering-ismap
+          itemType: concept
+          text: 日本の ISMAP
+        - url: /compliance/regulatory/offering-my-number-act-japan
           itemType: concept
           text: 日本のマイナンバー法
         - url: /azure/compliance/offerings/offering-korea-k-isms
           itemType: concept
           text: 韓国の K-ISMS
-        - url: /azure/compliance/offerings/offering-new-zealand-ispc
+        - url: /compliance/regulatory/offering-nz-cc-framework-nz
           itemType: concept
           text: ニュージーランドの ISPC
         - url: /azure/compliance/offerings/offering-singapore-mtcs
@@ -296,27 +308,41 @@ conceptualContent:
           text: シンガポールの MTCS
     - title: 地域 - ヨーロッパ、中近東およびアフリカ
       links:
-        - url: /azure/compliance/offerings/offering-eu-en-301-549
+        - url: /azure/compliance/offerings/offering-eu-cloud-coc
+          itemType: concept
+          text: EU の Cloud CoC
+        - url: /compliance/regulatory/offering-en-301-549-eu
           itemType: concept
           text: EU の EN 301 549
         - url: /azure/compliance/offerings/offering-eu-enisa-iaf
           itemType: concept
           text: ENISA の IAF
-        - url: /azure/compliance/offerings/offering-eu-gdpr
+        - url: /compliance/regulatory/gdpr
           itemType: concept
           text: EU の GDPR
-        - url: /azure/compliance/offerings/offering-eu-model-clauses
+        - url: /compliance/regulatory/offering-eu-model-clauses
           itemType: concept
           text: 欧州連合モデル条項
         - url: /azure/compliance/offerings/offering-germany-c5
           itemType: concept
           text: ドイツの C5
-        - url: /azure/compliance/offerings/offering-netherlands-bir-2012
+        - url: /azure/compliance/offerings/offering-germany-it-grundschutz-workbook
+          itemType: concept
+          text: ドイツの IT Grundschutz ブック
+        - url: /compliance/regulatory/offering-bir-2012-netherlands
           itemType: concept
           text: オランダの BIR 2012
-        - url: /azure/compliance/offerings/offering-spain-ens-high
+    - title: 地域 - ヨーロッパ、中近東およびアフリカ
+      links:
+        - url: /compliance/regulatory/offering-russia-data-localization
+          itemType: concept
+          text: ロシアの個人データの法律
+        - url: /compliance/regulatory/offering-ens-spain
           itemType: concept
           text: スペインの ENS High
+        - url: /compliance/regulatory/offering-lopd-spain
+          itemType: concept
+          text: スペインの LOPD
         - url: /azure/compliance/offerings/offering-uae-desc
           itemType: concept
           text: UAE の DESC
@@ -337,29 +363,29 @@ additionalContent:
         - title: 監査レポートと証明書
           summary: Azure portal で ホーム」 > Security Center > 規制コンプライアンス の順に移動してアクセス可能
           links:
-            - text: Cyber Essentials PLUS (英国)
+            - text: ISO 20000-1、22301、27001、27017、27018、27701、9001
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
-            - text: ENS High (スペイン)
+            - text: SOC 1、2、3
+              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
+            - text: PCI DSS および PCI 3DS
+              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
+            - text: HITRUST
+              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
+            - text: FedRAMP SSP (NIST 800-53 コントロールを含む)
+              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
+            - text: 英国の Cyber Essentials Plus
+              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
+            - text: スペインの ENS High
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
             - text: GSMA
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
             - text: ASIP HDS (フランス)
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
-            - text: HITRUST
+            - text: オーストラリアの IRAP
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
-            - text: IRAP (オーストラリア)
-              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
-            - text: ISO 9001、20000-1、22301、27001、27017、27018、27701
-              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
-            - text: MTCS (シンガポール)
-              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
-            - text: FedRAMP SSP (NIST 800-53 コントロールを含む)
+            - text: シンガポールの MTCS
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
             - text: OSPAR (シンガポール)
-              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
-            - text: PCI DSS および PCI 3DS
-              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
-            - text: SOC 1、2、3
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
         - title: プライバシーと GDPR
           links:
@@ -421,12 +447,12 @@ additionalContent:
               url: 'https://servicetrust.microsoft.com/ViewPage/TrustDocumentsV3'
         - title: 実装とマッピング
           links:
+            - text: Azure Policy の規制コンプライアンス (プレビュー)
+              url: ../governance/policy/concepts/regulatory-compliance.md
             - text: BIR-2012 ベースライン カバレッジ ユーザー ガイド
               url: 'https://servicetrust.microsoft.com/ViewPage/TrustDocuments?command=Download&downloadType=Document&downloadId=f49ee594-6c56-4b6f-93c1-646850798354&docTab=6d000410-c9e9-11e7-9a91-892aae8839ad_Compliance_Guides'
-            - text: CIS Azure の基礎
-              url: 'https://azure.microsoft.com/mediahandler/files/resourcefiles/cis-microsoft-azure-foundations-security-benchmark/CIS_Microsoft_Azure_Foundations_Benchmark_v1.0.0.pdf'
-            - text: CJIS クラウド コンピューティング マッピング
-              url: 'https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=f33bf55e-1f0e-41e4-a442-7182365833a0&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_GRC_Assessment_Reports'
+            - text: CIS Azure Foundations Benchmark
+              url: 'https://www.cisecurity.org/benchmark/azure/'
             - text: CSA CAIQ
               url: 'https://azure.microsoft.com/resources/microsoft-azure-responses-to-cloud-security-alliance-consensus-assessments-initiative-questionnaire-v301/'
             - text: FERPA 実装ガイド
@@ -436,7 +462,7 @@ additionalContent:
             - text: GxP ガイドライン
               url: 'https://azure.microsoft.com/resources/microsoft-azure-gxp-guidelines-april/'
             - text: HITRUST のお客様の責任マトリックス
-              url: 'https://servicetrust.microsoft.com/ViewPage/Blueprint?command=Download&downloadType=Document&downloadId=3ccde498-4761-4be0-be8b-cd8d379a3a4f&docTab=fc060920-cdb8-11e7-bacf-0bf52b09d912_Healthcare_Blueprint'
+              url: 'https://go.hitrustalliance.net/SR-Custom-Matrix-Microsoft-Azure'
         - title: 実装とマッピング
           links:
             - text: ISO 27001 セキュリティ コントロール
@@ -449,10 +475,10 @@ additionalContent:
               url: 'https://azure.microsoft.com/resources/microsoft-azure-nerc-cip-standards-and-cloud-computing/'
             - text: NZ GCIO クラウド コンピューティングに関する考慮事項
               url: 'https://azure.microsoft.com/resources/microsoft-azure-response-to-nz-gcio-cloud-computing-information-security-privacy-considerations'
-            - text: PCI 3DS の共同責任
-              url: 'https://download.microsoft.com/download/b/5/e/b5e4adc3-56c1-4e02-b7a0-81adb7d50a0b/PCI3DS_Azure_Shared_Responsibility_Matrix.xlsx'
-            - text: PCI DSS 3.2.1 責任マトリックス
-              url: 'https://download.microsoft.com/download/2/2/e/22e4f646-04e1-445c-92ed-724a6166e321/PCI_DSS_3.2.1_Azure_Shared_Responsibility_Matrix.xlsx'
+            - text: PCI 3DS の共同責任マトリックス
+              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
+            - text: PCI DSS の共同責任マトリックス
+              url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'
             - text: SCI ガイダンス
               url: 'https://azure.microsoft.com/resources/microsoft-azure-regulation-systems-compliance-and-integrity-sci-cloud-implementation-guide/'
             - text: SOX ガイダンス

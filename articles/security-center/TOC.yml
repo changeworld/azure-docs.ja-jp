@@ -174,8 +174,11 @@
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc, Azure Defender'
         - name: オープンソースのリレーショナル データベース用 Azure Defender の概要
-          displayName: 'PG, PostgreSQL, MySQL, MariaDB'
+          displayName: 'PG, PostgreSQL, MySQL, MariaDB, Azure Defender, OS RDBs, OSRDB'
           href: defender-for-databases-introduction.md
+        - name: Defender for OS RDB を有効にしてアラートに応答する
+          displayName: 'PG, PostgreSQL, MySQL, MariaDB, open-source relational databases, Azure Defender, OS RDBs, OSRDB'
+          href: defender-for-databases-usage.md
         - name: SQL リソースの脆弱性をスキャンする
           href: defender-for-sql-on-machines-vulnerability-assessment.md
           displayName: 'hybrid, arc, Azure Defender, VA, registry, vulnerabilities'

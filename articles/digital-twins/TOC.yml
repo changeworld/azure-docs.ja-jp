@@ -113,7 +113,7 @@
           href: how-to-query-graph.md
     - name: クライアント アプリの開発
       items:
-        - name: Postman で要求を行う
+        - name: Postman で API 要求を行う
           href: how-to-use-postman.md
         - name: Azure SignalR Service と統合する
           href: how-to-integrate-azure-signalr.md
@@ -135,12 +135,8 @@
               href: how-to-manage-routes-portal.md
             - name: API と CLI
               href: how-to-manage-routes-apis-cli.md
-        - name: ルーティング イベントのマネージド ID を有効にする
-          items:
-            - name: ポータル
-              href: how-to-enable-managed-identities-portal.md
-            - name: CLI
-              href: how-to-enable-managed-identities-cli.md
+        - name: マネージド ID を使用してイベントをルーティングする
+          href: how-to-route-with-managed-identity.md
         - name: Azure Maps と統合する
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する

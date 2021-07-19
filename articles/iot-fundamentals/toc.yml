@@ -12,7 +12,11 @@
       href: iot-support-help.md
     - name: IoT 用語集
       href: iot-glossary.md
-- name: Security
+- name: 操作方法ガイド
+  items:
+    - name: スマートフォンのデバイス アプリを使用する
+      href: iot-phone-app-how-to.md
+- name: セキュリティ
   items:
     - name: 推奨事項
       href: security-recommendations.md

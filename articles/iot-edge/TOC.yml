@@ -123,14 +123,16 @@
           items:
             - name: IoT Edge for Linux をインストールする
               href: how-to-install-iot-edge.md
-            - name: IoT Edge for Linux on Windows を実行する
+            - name: IoT Edge for Linux on Windows をインストールする
               href: how-to-install-iot-edge-on-windows.md
-        - name: ランタイムの更新
+        - name: IoT Edge を更新する
           href: how-to-update-iot-edge.md
         - name: デバイス証明書の管理
           href: how-to-manage-device-certificates.md
         - name: Windows VM の入れ子になった仮想化を構成する
           href: nested-virtualization.md
+        - name: Linux on Windows 用に GPU アクセラレーションを構成する
+          href: gpu-acceleration.md
     - name: 代替デバイスのシナリオ
       items:
         - name: Windows コンテナーを使用して IoT Edge を実行する
@@ -145,6 +147,8 @@
           items:
             - name: Linux
               href: how-to-auto-provision-simulated-device-linux.md
+            - name: Windows 上の Linux コンテナー
+              href: how-to-auto-provision-tpm-linux-on-windows.md
             - name: Windows
               href: how-to-auto-provision-simulated-device-windows.md
         - name: X.509 証明書の構成証明

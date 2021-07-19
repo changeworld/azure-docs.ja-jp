@@ -12,12 +12,12 @@ metadata:
   author: beber-msft
   ms.author: beber
   ms.date: 03/15/2021
-  ms.openlocfilehash: 9d577f173b3f93ad5e4967b9a2bb73b55b0c8592
-  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+  ms.openlocfilehash: 89a8004096a691965f08fe14169324021e18b5e4
+  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/02/2021
-  ms.locfileid: "110794718"
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112287445"
 landingContent:
 - title: 分析とビッグ データに関するパートナー
   linkLists:
@@ -59,6 +59,8 @@ landingContent:
       url: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
     - text: Komprise ファースト ステップ ガイド
       url: ./validated-partners/data-management/komprise-quick-start-guide.md
+    - text: StorageX ファースト ステップ ガイド
+      url: ./validated-partners/data-management/storagex-quick-start-guide.md
 - title: プライマリおよびセカンダリ ストレージに関するパートナー
   linkLists:
   - linkListType: overview

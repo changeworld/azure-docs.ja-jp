@@ -11,14 +11,14 @@ metadata:
   ms.collection: performance
   author: WilliamDAssafMSFT
   ms.author: wiassaf
-  ms.reviewer: sstein
-  ms.date: 03/10/2020
-  ms.openlocfilehash: c5e6be0781b6c65e4c45c7f0cee5689db890ac33
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.reviewer: 
+  ms.date: 07/01/2021
+  ms.openlocfilehash: 51c5c876a9564593aebb1969a123932f98a80b19
+  ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96490467"
+  ms.lasthandoff: 07/02/2021
+  ms.locfileid: "113218243"
 landingContent:
 - title: 監視とパフォーマンスのチューニングの概要
   linkLists:
@@ -28,8 +28,14 @@ landingContent:
       url: monitor-tune-overview.md
   - linkListType: learn
     links:
-    - text: Microsoft Azure のデータベース監視に関するプレイブック
-      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+    - text: パフォーマンスのためのデータベース構成
+      url: /learn/modules/configure-databases-performance/
+    - text: クエリ パフォーマンスを最適化する
+      url: /learn/paths/optimize-query-performance-sql-server/
+    - text: 運用リソースの監視と最適化
+      url: /learn/paths/monitor-optimize-operational-resources-sql-server/
+    - text: 保護、監視、および調整
+      url: /learn/modules/protect-monitor-tuning-migrated-database/
 - title: Azure SQL Database のインテリジェントなパフォーマンスに関する推奨事項
   linkLists:
   - linkListType: concept

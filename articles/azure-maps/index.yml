@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 60124b557513cdab7ea588fe731ff839becf36f2
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: 0f2f5ff726fb723e6481d03e5d8019be45fb9100
+  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112030397"
+  ms.lasthandoff: 07/06/2021
+  ms.locfileid: "113303960"
 landingContent:
 - title: Azure Maps について
   linkLists:
@@ -150,14 +150,12 @@ landingContent:
       url: android-map-add-line-layer.md
     - text: 多角形レイヤーを追加する
       url: how-to-add-shapes-to-android-map.md
+    - text: ヒート マップ レイヤーを追加する
+      url: map-add-heat-map-layer-android.md
+    - text: ポイント データのクラスタリング
+      url: clustering-point-data-android-sdk.md
     - text: データドリブンのスタイルの式を使用する
       url: data-driven-style-expressions-android-sdk.md
-    - text: マップにタイル レイヤーを追加する
-      url: how-to-add-tile-layer-android-map.md
-    - text: マップに図形を追加する
-      url: how-to-add-shapes-to-android-map.md
-    - text: トラフィック データを表示する
-      url: how-to-show-traffic-android.md
 - title: Location Based Services を使用した開発
   linkLists:
   - linkListType: concept
@@ -226,6 +224,12 @@ landingContent:
       url: power-bi-visual-understanding-layers.md
     - text: アクセスを管理する
       url: power-bi-visual-manage-access.md
+- title: Power Apps での Azure Maps
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 対話型マップ コンポーネント
+      url: /powerapps/maker/canvas-apps/geospatial-component-map
 - title: モビリティ サービスを使用した開発
   linkLists:
   - linkListType: concept
@@ -249,7 +253,7 @@ landingContent:
     - text: Weather Service の概念
       url: weather-services-concepts.md
     - text: Weather Service の FAQ
-      url: weather-services-faq.md
+      url: weather-services-faq.yml
   - linkListType: tutorial
     links:
     - text: Azure Notebooks (Python) を使用した気象データの分析

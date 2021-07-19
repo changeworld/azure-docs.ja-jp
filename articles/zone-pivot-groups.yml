@@ -26,6 +26,14 @@ groups:
     title: Flask
   - id: python-framework-django
     title: Django
+- id: postgres-server-options
+  title: PostgreSQL サーバー
+  prompt: PostgreSQL SKU を選択する
+  pivots:
+  - id: postgres-single-server
+    title: シングル サーバー
+  - id: postgres-flexible-server
+    title: フレキシブル サーバー (プレビュー)
 - id: programming-languages-set-one
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -872,6 +880,14 @@ groups:
     title: JavaScript
   - id: programming-language-csharp
     title: C#
+- id: acs-csharp-java
+  title: Java と C# のピボット
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-csharp
+    title: C#
 - id: acs-plat-azp-azcli-net-ps
   title: JS と C# のピボット
   prompt: プログラミング言語を選択する
@@ -1245,9 +1261,9 @@ groups:
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
 metadata:
-  ms.openlocfilehash: 0a7eb15f89dccdc97443a2c14107aa7bdb6fdba4
-  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.openlocfilehash: d6ef125a7b5cd8a3122e9a965eda0f71f99c0d69
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111902233"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113594663"

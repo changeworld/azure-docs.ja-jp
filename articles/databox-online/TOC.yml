@@ -9,7 +9,7 @@
           href: azure-stack-edge-gpu-overview.md
     - name: クイックスタート
       items:
-        - name: はじめに
+        - name: 作業開始
           href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:
@@ -218,6 +218,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Azure Resource Manager (プレビュー) を構成する
           items:
+            - name: ローカル Azure Resource Manager とは
+              href: azure-stack-edge-gpu-local-resource-manager-overview.md
             - name: Azure PowerShell 経由で接続する
               href: azure-stack-edge-gpu-connect-resource-manager.md
             - name: Azure Resource Manager パスワードを設定する
@@ -280,20 +282,30 @@
                   items:
                     - name: VM コンソールに接続する
                       href: azure-stack-edge-gpu-connect-virtual-machine-console.md
+                    - name: VM ゲスト ログを収集する
+                      href: azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md
                     - name: VM イメージのアップロード
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
                     - name: VM のデプロイ
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
                     - name: GPU 拡張機能の問題
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
-        - name: 証明書の管理
+        - name: 証明書について
           items:
-            - name: 要件
+            - name: 証明書の概要
+              href: azure-stack-edge-gpu-certificates-overview.md
+            - name: 要件を確認する
               href: azure-stack-edge-gpu-certificate-requirements.md
-            - name: 独自のものを使用する
+            - name: 証明書の作成
+              items:
+                - name: Azure PowerShell を使用する
+                  href: azure-stack-edge-gpu-create-certificates-powershell.md
+                - name: Azure Stack 適合性チェッカー ツールを使用する
+                  href: azure-stack-edge-gpu-create-certificates-tool.md
+            - name: デバイスにアップロードする証明書を準備する
+              href: azure-stack-edge-gpu-prepare-certificates-device-upload.md
+            - name: アップロード、インポート、有効期限の表示
               href: azure-stack-edge-gpu-manage-certificates.md
-            - name: Azure Stack 適合性チェッカー ツールを使用して作成する
-              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: 証明書エラーのトラブルシューティングを行う
               href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Edge コンピューティングを管理する

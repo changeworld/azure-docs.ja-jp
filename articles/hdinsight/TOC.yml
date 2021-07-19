@@ -210,6 +210,8 @@
               href: ./hdinsight-log-management.md
             - name: ストレージ アカウントを追加する
               href: ./hdinsight-hadoop-add-storage.md
+            - name: ストレージ アカウントのアクセス キーを更新する
+              href: ./hdinsight-rotate-storage-keys.md
             - name: Apache Hadoop ジョブのデータのアップロード
               href: ./hdinsight-upload-data.md
             - name: 複数の HDInsight クラスターと Data Lake Storage
@@ -313,7 +315,7 @@
             - name: Azure HDInsight のリリース ノート (アーカイブ)
               href: ./hdinsight-release-notes-archive.md
         - name: よく寄せられる質問 (FAQ)
-          href: ./hdinsight-faq.md
+          href: ./hdinsight-faq.yml
         - name: クラスター構成できめ細かなロールベースのアクセスに移行する
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: Linux での HDInsight の使用方法
@@ -660,7 +662,7 @@
         - name: パフォーマンスのチューニング
           href: ./kafka/apache-kafka-performance-tuning.md
         - name: Kafka に関する FAQ
-          href: ./kafka/kafka-faq.md
+          href: ./kafka/kafka-faq.yml
     - name: 操作方法ガイド
       items:
         - name: 開発
@@ -891,7 +893,7 @@
       items:
         - name: Hive LLAP ワークロード管理コマンド
           href: ./interactive-query/workload-management-commands.md
-- name: ML サービス
+- name: ML Services (廃止)
   items:
     - name: 概要
       items:

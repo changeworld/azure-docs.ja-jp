@@ -22,8 +22,8 @@
           href: tutorial-deploy-industrial-iot-platform.md
         - name: IIoT コンポーネントの構成
           href: tutorial-configure-industrial-iot-components.md
-        - name: IIoT データを ADX にプルする
-          href: tutorial-industrial-iot-azure-data-explorer.md
+        - name: 産業用 IoT を使用して Azure Data Explorer にデータをプルする
+          href: tutorial-data-explorer-import.md
         - name: Time Series Insights を使用してデータを視覚化および分析する
           href: tutorial-visualize-data-time-series-insights.md
 - name: リファレンス

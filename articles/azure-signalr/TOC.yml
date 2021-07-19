@@ -82,7 +82,7 @@
       href: signalr-concept-authenticate-oauth.md
     - name: イベント処理
       href: signalr-concept-event-grid-integration.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/signalr-security-baseline?toc=/azure/azure-signalr/TOC.json
@@ -126,6 +126,8 @@
           href: signalr-howto-troubleshoot-guide.md
         - name: トラブルシューティング方法
           href: signalr-howto-troubleshoot-method.md
+        - name: ライブ トレース ツールを使用したトラブルシューティング
+          href: signalr-howto-troubleshoot-live-trace.md
 - name: References
   items:
     - name: Azure CLI
@@ -152,7 +154,7 @@
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=signalr-service'
     - name: FAQ
-      href: signalr-resource-faq.md
+      href: signalr-resource-faq.yml
     - name: SignalR Service のサブスクリプション レベルの制限
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits
     - name: 価格

@@ -149,16 +149,16 @@
       items:
         - name: セキュリティの概要
           href: search-security-overview.md
+        - name: 外部データへのアクセスをセキュリティで保護する
+          href: search-indexer-securing-resources.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-        - name: 保護されたコンテンツへのアクセス
-          href: search-indexer-securing-resources.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/cognitive-search-security-baseline?toc=/azure/search/TOC.json
 - name: 操作方法ガイド
   items:
-    - name: 管理
+    - name: サービス管理
       items:
         - name: レベルの選択
           href: search-sku-tier.md
@@ -184,6 +184,38 @@
           href: search-howto-move-across-regions.md
         - name: 共有プライベート リンク リソースの作成に関する問題のトラブルシューティング
           href: troubleshoot-shared-private-link-resources.md
+    - name: Security
+      items:
+        - name: データの暗号化
+          items:
+            - name: カスタマー マネージド キー
+              href: search-security-manage-encryption-keys.md
+            - name: 暗号化情報
+              href: search-security-get-encryption-keys.md
+        - name: 受信セキュリティ
+          items:
+            - name: キーベースの認証
+              href: search-security-api-keys.md
+            - name: ロール ベースの承認
+              href: search-security-rbac.md
+            - name: IP ファイアウォールの構成
+              href: service-configure-firewall.md
+            - name: プライベート エンドポイントの作成
+              href: service-create-private-endpoint.md
+        - name: アウトバウンド セキュリティ (インデクサー)
+          items:
+            - name: IP 範囲でのデータ アクセス
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: システム ID を使用したデータ アクセス
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: プライベート エンドポイント経由のデータ アクセス
+              href: search-indexer-howto-access-private.md
+        - name: ドキュメント レベルのセキュリティ
+          items:
+            - name: セキュリティ フィルター
+              href: search-security-trimming-for-azure-search.md
+            - name: ユーザー ID でフィルター処理する
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: 開発
       items:
         - name: API のバージョン
@@ -240,7 +272,7 @@
           href: index-add-language-analyzers.md
         - name: カスタム アナライザーの追加
           href: index-add-custom-analyzers.md
-    - name: データ
+    - name: データのインポート
       items:
         - name: データ インポートの概要
           href: search-what-is-data-import.md
@@ -274,10 +306,14 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
-        - name: Power Query データ ソース
-          href: search-how-to-index-power-query-data-sources.md
-        - name: SharePoint Online
-          href: search-howto-index-sharepoint-online.md
+        - name: トラブルシューティング ガイダンス
+          href: search-indexer-troubleshooting.md
+        - name: インデクサーのエラーと警告のトラブルシューティング
+          href: cognitive-search-common-errors-warnings.md
+    - name: データ ソース (インデクサー)
+      items:
+        - name: データ ソース ギャラリー
+          href: search-data-sources-gallery.md
         - name: Azure BLOB
           items:
             - name: BLOB を検索する
@@ -308,35 +344,35 @@
               href: search-howto-index-cosmosdb-gremlin.md
         - name: Azure Data Lake Storage Gen2
           href: search-howto-index-azure-data-lake-storage.md
-        - name: Azure SQL Databases
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Azure SQL Managed Instance
-          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-        - name: Azure SQL Server VM
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Azure MySQL
           href: search-howto-index-mysql.md
-        - name: インデクサーに関する問題のトラブルシューティング
-          href: search-indexer-troubleshooting.md
-        - name: インデクサーのエラーと警告のトラブルシューティング
-          href: cognitive-search-common-errors-warnings.md
-    - name: スキルセット
+        - name: Azure SQL
+          items:
+            - name: Azure SQL Databases
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Azure SQL Managed Instance
+              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+            - name: Azure SQL Server VM
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Power Query データ ソース
+          href: search-how-to-index-power-query-data-sources.md
+        - name: SharePoint Online
+          href: search-howto-index-sharepoint-online.md
+    - name: スキルセット (インデクサー)
       items:
         - name: Cognitive Services リソースをアタッチする
           href: cognitive-search-attach-cognitive-services.md
-        - name: スキルセット
-          items:
-            - name: スキルセットを定義する
-              href: cognitive-search-defining-skillset.md
-            - name: 注釈を参照する
-              href: cognitive-search-concept-annotations-syntax.md
-            - name: インデックスのフィールドにマップする
-              href: cognitive-search-output-field-mapping.md
-            - name: イメージ ファイルの処理
-              href: cognitive-search-concept-image-scenarios.md
-            - name: キャッシュ (インクリメンタル) エンリッチメント
-              href: search-howto-incremental-index.md
-        - name: カスタム スキル
+        - name: スキルセットを定義する
+          href: cognitive-search-defining-skillset.md
+        - name: 注釈を参照する
+          href: cognitive-search-concept-annotations-syntax.md
+        - name: インデックスのフィールドにマップする
+          href: cognitive-search-output-field-mapping.md
+        - name: イメージ ファイルの処理
+          href: cognitive-search-concept-image-scenarios.md
+        - name: キャッシュ (インクリメンタル) エンリッチメント
+          href: search-howto-incremental-index.md
+        - name: カスタム スキルを使用する
           items:
             - name: カスタム スキルを統合する
               href: cognitive-search-custom-skill-interface.md
@@ -442,38 +478,6 @@
           href: search-howto-monitor-indexers.md
         - name: クライアント側の操作を監視する
           href: search-traffic-analytics.md
-    - name: Security
-      items:
-        - name: ロールを割り当てる
-          href: search-security-rbac.md
-        - name: データの暗号化
-          items:
-            - name: カスタマー マネージド キー
-              href: search-security-manage-encryption-keys.md
-            - name: キー情報の取得
-              href: search-security-get-encryption-keys.md
-        - name: 受信セキュリティ
-          items:
-            - name: API キー認証
-              href: search-security-api-keys.md
-            - name: IP ファイアウォールの構成
-              href: service-configure-firewall.md
-            - name: プライベート エンドポイントの作成
-              href: service-create-private-endpoint.md
-        - name: アウトバウンド セキュリティ (インデクサー)
-          items:
-            - name: IP 範囲に対するアクセス
-              href: search-indexer-howto-access-ip-restricted.md
-            - name: 信頼されたサービスの例外によるアクセス
-              href: search-indexer-howto-access-trusted-service-exception.md
-            - name: プライベート エンドポイント経由のアクセス
-              href: search-indexer-howto-access-private.md
-        - name: ドキュメント レベルのセキュリティ
-          items:
-            - name: セキュリティ フィルター
-              href: search-security-trimming-for-azure-search.md
-            - name: ユーザー ID でフィルター処理する
-              href: search-security-trimming-for-azure-search-with-aad.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -484,14 +488,10 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: Search API (安定)
+        - name: Search API
           href: /rest/api/searchservice
-        - name: Search API (プレビュー)
-          href: /rest/api/searchservice/index-preview
-        - name: Management API (安定)
+        - name: 管理 API
           href: /rest/api/searchmanagement
-        - name: Management API (プレビュー)
-          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: Search API
@@ -602,13 +602,15 @@
       href: 'https://azure.microsoft.com/support/community/?product=search'
     - name: パートナーの紹介
       href: resource-partners-knowledge-mining.md
+    - name: パートナー データ ソース (使用条件)
+      href: search-data-sources-terms-of-use.md
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: フィードバック フォーラム (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: コンプライアンスと認定資格
       href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'
-    - name: ドキュメントのリンク (ナレッジ マイニング)
+    - name: ドキュメント リンク (AI エンリッチメント)
       href: cognitive-search-resources-documentation.md
     - name: デモ サイト
       items:
@@ -627,7 +629,7 @@
         - name: 開発者向けコース (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
     - name: よく寄せられる質問
-      href: search-faq-frequently-asked-questions.md
+      href: search-faq-frequently-asked-questions.yml
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/search/'
     - name: ビデオ

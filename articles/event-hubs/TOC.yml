@@ -58,6 +58,8 @@
   items:
     - name: Event Hubs データ ストリームでデータの異常を視覚化する
       href: event-hubs-tutorial-visualize-anomalies.md
+    - name: Stream Analytics を使用して不正な通話のデータを分析する
+      href: ../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/event-hubs/TOC.json
     - name: キャプチャされたデータを Azure Synapse Analytics に格納する
       href: store-captured-data-data-warehouse.md
     - name: Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する

@@ -10,12 +10,12 @@ metadata:
   author: mimcco
   ms.author: mimcco
   ms.date: 03/25/2021
-  ms.openlocfilehash: 1a18b819a96f8f84fb7d8e96b61f0b2d9f33709a
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 193f3a17263ff0c3f164d04fe6a6a766208dd5bc
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110098868"
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113031483"
 landingContent:
 - title: Azure Percept とは
   linkLists:
@@ -117,6 +117,8 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
+    - text: 更新プログラム パッケージを選択する
+      url: how-to-select-update-package.md
     - text: 無線 (OTA) での更新を設定する
       url: how-to-set-up-over-the-air-updates.md
     - text: デバイスを無線 (OTA) で更新する

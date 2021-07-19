@@ -82,6 +82,8 @@
           href: howto-sspr-windows.md
     - name: Azure AD の Multi-Factor Authentication
       items:
+        - name: 計画ガイド
+          href: concept-mfa-plan.md
         - name: デプロイ ガイド
           href: howto-mfa-getstarted.md
         - name: 設定の構成
@@ -160,6 +162,8 @@
       href: howto-authentication-temporary-access-pass.md
     - name: SMS ベースの認証を使用する
       href: howto-authentication-sms-signin.md
+    - name: SMS ベースの認証でサポートされているアプリ
+      href: how-to-authentication-sms-supported-apps.md
     - name: 双方向 SMS のサポート終了
       href: how-to-authentication-two-way-sms-unsupported.md
     - name: メール アドレスのサインインを使用する
@@ -187,6 +191,14 @@
           href: howto-mfa-reporting-datacollection.md
     - name: MFA サーバー
       items:
+        - name: MFA サーバーを Azure AD MFA に移行する
+          items:
+            - name: 概要
+              href: how-to-migrate-mfa-server-to-azure-mfa.md
+            - name: Azure MFA とユーザー認証に移行する
+              href: how-to-migrate-mfa-server-to-azure-mfa-user-authentication.md
+            - name: フェデレーションを使用して Azure MFA に移行する
+              href: how-to-migrate-mfa-server-to-azure-mfa-with-federation.md
         - name: オンプレミスでの MFA のデプロイ
           href: howto-mfaserver-deploy.md
         - name: ユーザー ポータルのインストール

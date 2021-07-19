@@ -8,12 +8,12 @@ metadata:
   author: rboucher
   ms.author: robb
   ms.date: 10/08/2019
-  ms.openlocfilehash: 956f55572823bc4e00ddebe86a6466abdf0161dd
-  ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+  ms.openlocfilehash: ec1b6ab45cd0cd674445077d3e77bdb1675df9fb
+  ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2021
-  ms.locfileid: "107862329"
+  ms.lasthandoff: 06/25/2021
+  ms.locfileid: "112914195"
 landingContent:
 - title: Azure Monitor について
   linkLists:
@@ -69,8 +69,8 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: 無料の Pluralsight トレーニング - Azure 管理者
-      url: https://go.microsoft.com/fwlink/?linkid=2012827
+    - text: Microsoft Learn ラーニング パス
+      url: /learn/paths/monitor-usage-performance-availability-resources-azure-monitor/
 - title: リファレンス - CLI
   linkLists:
   - linkListType: reference

@@ -322,6 +322,8 @@
             - name: ADAL から MSAL へのアプリの移行
               href: msal-migration.md
               displayName: migration
+            - name: ADAL を使用するすべてのアプリを一覧表示する
+              href: howto-get-list-of-all-active-directory-auth-library-apps.md
             - name: 各国のクラウドと MSAL
               href: msal-national-cloud.md
               displayName: 'china, germany, gov, 21vianet'
@@ -337,11 +339,17 @@
             - name: ADFS による統合
               href: msal-net-adfs-support.md
             - name: MSAL.NET への移行
-              href: msal-net-migration.md
-            - name: ブローカーを使用する Xamarin Android アプリの MSAL.NET への移行
-              href: msal-net-migration-android-broker.md
-            - name: ブローカーを使用する Xamarin iOS アプリの MSAL.NET への移行
-              href: msal-net-migration-ios-broker.md
+              items:
+                - name: ADAL.NET から MSAL.NET に移行する
+                  href: msal-net-migration.md
+                - name: 機密クライアント アプリを MSAL.NET に移行する
+                  href: msal-net-migration-confidential-client.md
+                - name: ブローカーを使用する Xamarin Android アプリの MSAL.NET への移行
+                  href: msal-net-migration-android-broker.md
+                - name: ブローカーを使用する Xamarin iOS アプリの MSAL.NET への移行
+                  href: msal-net-migration-ios-broker.md
+                - name: ADAL.NET と MSAL.NET の違い
+                  href: msal-net-differences-adal-net.md
             - name: Web ブラウザーの考慮事項
               href: msal-net-web-browsers.md
             - name: MSAL.NET におけるエラーと例外の処理
@@ -684,7 +692,7 @@
         - name: 一般的なプロビジョニングのシナリオ
           href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: MS Graph を使用した構成の自動化
-          href: /graph/application-provisioning-configure-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
+          href: /azure/active-directory/app-provisioning/application-provisioning-configuration-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
 - name: リソース
   items:
     - name: ビデオ

@@ -151,7 +151,7 @@
               href: concepts-connectivity-architecture.md
               displayName: 'security, architecture'
             - name: Azure Defender による脅威保護
-              href: ../security-center/defender-for-databases-introduction.md
+              href: ../security-center/defender-for-databases-usage.md?toc=/azure/postgresql/toc.json&bc=/azure/postgresql/breadcrumb/toc.json
               displayName: 'security, advanced threat protection'
             - name: Azure AD 認証
               href: concepts-aad-authentication.md
@@ -528,10 +528,12 @@
                   href: flexible-server/how-to-manage-firewall-portal.md
                 - name: Azure CLI
                   href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL
+            - name: TLS/SSL/SCRAM
               items:
                 - name: TLS/SSL を使用して接続する
                   href: flexible-server/how-to-connect-tls-ssl.md
+                - name: SCRAM を使用して接続する
+                  href: flexible-server/how-to-connect-scram.md
         - name: サーバー パラメーターの構成
           items:
             - name: Azure portal
@@ -695,6 +697,8 @@
           items:
             - name: Azure portal
               href: howto-hyperscale-maintenance.md
+        - name: サーバー グループを再起動する
+          href: howto-hyperscale-restart.md
         - name: モニター
           items:
             - name: メトリックに基づいたアラートの作成

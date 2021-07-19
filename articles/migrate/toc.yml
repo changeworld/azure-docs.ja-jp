@@ -79,7 +79,11 @@
         - name: ASP.NET アプリのコンテナー化と AKS への移行
           href: tutorial-app-containerization-aspnet-kubernetes.md
         - name: Java Web アプリのコンテナー化と AKS への移行
-          href: tutorial-containerize-java-kubernetes.md
+          href: tutorial-app-containerization-java-kubernetes.md
+        - name: ASP.NET アプリのコンテナー化と App Service への移行
+          href: tutorial-app-containerization-aspnet-app-service.md
+        - name: Java Web アプリのコンテナー化と App Service への移行
+          href: tutorial-app-containerization-java-app-service.md
 - name: 概念
   items:
     - name: 全般
@@ -128,6 +132,9 @@
           href: migrate-replication-appliance.md
         - name: VMware エージェントレス移行のアーキテクチャ
           href: concepts-vmware-agentless-migration.md
+          items:
+            - name: VMware のエージェントレス移行の準備をする
+              href: prepare-for-agentless-migration.md
         - name: Hyper-V 移行アーキテクチャ
           href: hyper-v-migration-architecture.md
         - name: エージェントベースの VMware 移行のアーキテクチャ
@@ -235,11 +242,15 @@
           href: troubleshoot-project.md
     - name: 発見
       items:
-        - name: Azure Migrate アプライアンスと検出のトラブルシューティング
-          href: troubleshoot-appliance-discovery.md
+        - name: Azure Migrate アプライアンスのトラブルシューティング
+          href: troubleshoot-appliance.md
+        - name: 検出に関するトラブルシューティング
+          href: troubleshoot-discovery.md
+        - name: 依存関係の視覚化に関するトラブルシューティング
+          href: troubleshoot-dependencies.md
     - name: アクセス
       items:
-        - name: 評価と依存関係の視覚化のトラブルシューティング
+        - name: 評価に関するトラブルシューティング
           href: troubleshoot-assessment.md
     - name: Migrate
       items:

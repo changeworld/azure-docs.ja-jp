@@ -45,6 +45,8 @@
       href: concept-activity-logs-azure-monitor.md
     - name: レポートと監視のデプロイを計画する
       href: plan-monitoring-and-reporting.md
+    - name: サインイン診断のシナリオ
+      href: concept-sign-in-diagnostics-scenarios.md
 - name: 操作方法ガイド
   expanded: true
   items:

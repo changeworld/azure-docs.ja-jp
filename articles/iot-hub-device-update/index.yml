@@ -11,12 +11,12 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: b143fb6ea1ee4c91e743bb71b3788dd2e43cd2e4
-  ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+  ms.openlocfilehash: 9427d361e3ce8e972efb1ce8924502bc0b45bd78
+  ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/04/2021
-  ms.locfileid: "111409867"
+  ms.lasthandoff: 07/11/2021
+  ms.locfileid: "113600714"
 landingContent:
 - title: Device Update について
   linkLists:
@@ -44,12 +44,14 @@ landingContent:
       url: device-update-plug-and-play.md
     - text: デバイス更新の認証と認可について
       url: device-update-control-access.md
-    - text: デバイス更新エージェントについて
+    - text: Device Update エージェントについて
       url: device-update-agent-overview.md
-    - text: デバイス更新のインポートについて
+    - text: Device Update のインポートについて
       url: import-concepts.md
-    - text: デバイス更新のグループについて
+    - text: Device Update のグループについて
       url: device-update-groups.md
+    - text: Device Update の制限について
+      url: device-update-limits.md
 - title: 開発者ガイド
   linkLists:
   - linkListType: how-to-guide

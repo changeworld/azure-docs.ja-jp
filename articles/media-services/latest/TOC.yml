@@ -97,6 +97,8 @@
       items:
         - name: Python 基本エンコード
           href: encode-basic-encoding-python-quickstart.md
+        - name: イベントベースの顔編集
+          href: face-redaction-event-based-python-quickstart.md
     - name: Azure portal
       items:
         - name: カスタマー マネージド キーまたは BYOK のチュートリアル
@@ -226,6 +228,8 @@
           href: stream-streaming-policy-concept.md
         - name: コンテンツ キー ポリシー
           href: drm-content-key-policy-concept.md
+        - name: キー配信 IP 許可リスト
+          href: drm-content-protection-key-delivery-ip-allow.md
     - name: 監視
       items:
         - name: Azure Monitor による監視
@@ -452,6 +456,9 @@
           href: asset-publish-cli-how-to.md
     - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: 'https://docs.microsoft.com/security/benchmark/azure/baselines/media-services-security-baseline'
+          displayName: 'security, baseline'
         - name: Azure RBAC
           href: security-rbac-concept.md
         - name: ストレージ アクセス キーをロールする
@@ -470,6 +477,9 @@
           href: security-access-storage-managed-identity-cli-tutorial.md
         - name: 関数アプリに Media Services アカウントへのアクセス権を付与する
           href: security-function-app-managed-identity-cli-tutorial.md
+        - name: プライベート リンクを使用して Media Services とストレージ アカウントを作成する
+          href: security-private-link-how-to.md
+          displayName: 'security, private link, links, firewall'
     - name: メディア プレイヤーの使用
       items:
         - name: Azure Media Player のフル セットアップ

@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: 組織向け Azure Defender for IoT のドキュメント
+summary: Azure Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
+metadata:
+  title: 組織向け Azure Defender for IoT のドキュメント
+  description: Azure Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
+  services: service
+  ms.service: defender-for-iot
+  ms.topic: landing-page
+  ms.collection: M365-security-compliance
+  author: elazark
+  ms.author: v-ekrieg
+  manager: raynew
+  ms.date: 06/17/2021
+  ms.openlocfilehash: f1294221f5a144489f9a23e16b18f70a4d0ca3f1
+  ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113013967"
+landingContent:
+- title: 組織向け Azure Defender for IoT について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 組織向け Azure Defender for IoT とは
+      url: overview.md
+    - text: 組織向けエージェントレス ソリューション アーキテクチャ
+      url: architecture.md
+- title: 開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: システムの前提条件
+      url: quickstart-system-prerequisites.md
+    - text: 組織向け Azure Defender for IoT の使用を開始する
+      url: concept-key-concepts.md
+- title: 操作方法
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Defender for IoT のネットワーク設定について
+      url: how-to-set-up-your-network.md
+    - text: オンプレミス管理コンソールをアクティブにしてセットアップする
+      url: how-to-activate-and-set-up-your-on-premises-management-console.md
+    - text: センサーをアクティブ化してセットアップする
+      url: how-to-activate-and-set-up-your-sensor.md
+- title: ドキュメントの最新情報
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 組織向けの新機能
+      url: release-notes.md

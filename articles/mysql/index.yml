@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 94f0a30c070578a441940b701a7110f1b0bf76fe
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 320ff38fecdab0cfd0a689e483a76a8422888085
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110464131"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112457482"
 landingContent:
 - title: Azure Database for MySQL について
   linkLists:
@@ -35,10 +35,12 @@ landingContent:
     links:
     - text: シングル サーバーとは
       url: single-server-overview.md
-    - text: シングル サーバーの新機能
-      url: single-server-whats-new.md
     - text: すべてのシングル サーバーのドキュメントを見る
       url: single-server/index.yml
+  - linkListType: whats-new
+    links:
+    - text: シングル サーバーの新機能
+      url: single-server-whats-new.md
   - linkListType: concept
     links:
     - text: サーバーの概念
@@ -61,6 +63,10 @@ landingContent:
       url: flexible-server/overview.md
     - text: すべてのフレキシブル サーバーのドキュメントを見る
       url: flexible-server/index.yml
+  - linkListType: whats-new
+    links:
+    - text: フレキシブル サーバーの新機能
+      url: flexible-server/whats-new.md
   - linkListType: concept
     links:
     - text: サーバーの概念
@@ -95,6 +101,24 @@ landingContent:
       url: flexible-server/connect-php.md
     - text: Python を使用してフレキシブル サーバーに接続する
       url: flexible-server/connect-python.md
+- title: 移行
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Database for MySQL の移行ガイド
+      url: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
+    - text: dbForge Studio for MySQL
+      url: concepts-migrate-dbforge-studio-for-mysql.md
+    - text: ダンプと復元
+      url: concepts-migrate-dump-restore.md
+    - text: インポートとエクスポート
+      url: concepts-migrate-import-export.md
+    - text: MySQL Workbench を使用して Amazon RDS for MySQL を移行する
+      url: how-to-migrate-rds-mysql-workbench.md
+    - text: 最小限のダウンタイムでの移行
+      url: howto-migrate-online.md
+    - text: 移行中または移行後の一般的なエラー
+      url: howto-troubleshoot-common-errors.md
 - title: データの管理と移行
   linkLists:
   - linkListType: concept

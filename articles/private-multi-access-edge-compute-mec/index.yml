@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Azure プライベート マルチアクセス エッジ コンピューティングのドキュメント
+summary: Azure プライベート マルチアクセス エッジ コンピューティング (MEC) ソリューションを使用すると、オペレーターとシステム インテグレーターが、エンタープライズ エッジでハイ パフォーマンス、低待機時間の接続、および IoT アプリケーションを提供できるようになります。
+metadata:
+  title: Azure プライベート マルチアクセス エッジ コンピューティングのドキュメント
+  description: Azure プライベート マルチアクセス エッジ コンピューティング (MEC) ソリューションを使用すると、オペレーターとシステム インテグレーターが、エンタープライズ エッジでハイ パフォーマンス、低待機時間の接続、および IoT アプリケーションを提供できるようになります。
+  ms.service: private-multi-access-edge-compute-mec
+  ms.topic: landing-page
+  author: kumud
+  ms.author: KumudD
+  ms.date: 06/15/2021
+  ms.openlocfilehash: 57bd78341606ee1b15afbd3a37363fa6d84f95a0
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112458364"
+landingContent:
+- title: Azure プライベート MEC について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure プライベート MEC とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: パートナー ソリューション
+      url: partner-programs.md
+- title: Metaswitch ソリューションを使用したエッジ接続
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Fusion Core とは
+      url: metaswitch-fusion-core-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Stack Edge デバイスに Fusion Core をデプロイする
+      url: deploy-metaswitch-fusion-core-solution.md
+- title: Azure 上の Affirmed Private Network Service について
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 上の Affirmed Private Network Service とは
+      url: affirmed-private-network-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure に Affirmed Private Network Service をデプロイする
+      url: deploy-affirmed-private-network-service-solution.md
+- title: Azure Network Function Manager について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Network Function Manager とは
+      url: ../network-function-manager/overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: ネットワーク機能をデプロイする
+      url: ../network-function-manager/deploy-functions.md

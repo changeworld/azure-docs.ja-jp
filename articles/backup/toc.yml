@@ -238,6 +238,12 @@
               href: backup-managed-disks-ps.md
             - name: 復元
               href: restore-managed-disks-ps.md
+        - name: CLI の場合
+          items:
+            - name: バックアップ
+              href: backup-managed-disks-cli.md
+            - name: 復元
+              href: restore-managed-disks-cli.md
     - name: Azure Blob のバックアップ
       items:
         - name: 概要
@@ -254,6 +260,20 @@
               href: backup-blobs-storage-account-ps.md
             - name: 復元
               href: restore-blobs-storage-account-ps.md
+        - name: CLI の場合
+          items:
+            - name: バックアップ
+              href: backup-blobs-storage-account-cli.md
+            - name: 復元
+              href: restore-blobs-storage-account-cli.md
+        - name: REST API を使用する
+          items:
+            - name: BLOB ポリシー
+              href: backup-azure-dataprotection-use-rest-api-create-update-blob-policy.md
+            - name: バックアップ
+              href: backup-azure-dataprotection-use-rest-api-backup-blobs.md
+            - name: 復元
+              href: backup-azure-dataprotection-use-rest-api-restore-blobs.md
     - name: Azure ファイル共有のバックアップ
       items:
         - name: 概要
@@ -334,6 +354,8 @@
               href: backup-azure-sql-mabs.md
             - name: システムの状態とベア メタル回復の保護
               href: backup-mabs-system-state-and-bmr.md
+            - name: バックアップ前およびバックアップ後スクリプトの使用
+              href: pre-backup-post-backup-scripts.md
         - name: Azure Backup Server からデータを回復する
           href: backup-azure-alternate-dpm-server.md
         - name: Azure Backup Server を使用して VMware VM を復元する
@@ -440,6 +462,8 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: Azure Backup ジョブの管理
               href: backup-azure-arm-userestapi-managejobs.md
+        - name: Azure Data Protection REST API の使用
+          href: backup-azure-dataprotection-use-rest-api-create-update-backup-vault.md
         - name: ARG を使用したバックアップ情報のクエリ
           href: query-backups-using-azure-resource-graph.md
         - name: Resource Manager テンプレート
