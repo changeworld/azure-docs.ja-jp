@@ -57,6 +57,8 @@
       href: point-to-site-about.md
     - name: ポイント対サイト VPN ルーティングについて
       href: vpn-gateway-about-point-to-site-routing.md
+    - name: NAT と VPN Gateway について
+      href: nat-overview.md
     - name: 可用性ゾーンのゾーン冗長ゲートウェイについて
       href: about-zone-redundant-vnet-gateways.md
     - name: セキュリティ
@@ -225,6 +227,8 @@
               href: vpn-gateway-about-forced-tunneling.md
         - name: VNET ピアリングのゲートウェイ転送を構成する
           href: vpn-gateway-peering-gateway-transit.md
+    - name: VPN Gateway 用に NAT を構成する
+      href: nat-howto.md
     - name: ローカル ネットワーク ゲートウェイを変更する
       items:
         - name: Azure portal
@@ -241,10 +245,10 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'サンプル:Cisco ASA デバイス (IKEv2/BGP なし)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
-    - name: 監視とアラート
+    - name: 正常性の監視
       items:
-        - name: VPN Gateway メトリックを表示する
-          href: vpn-gateway-howto-view-virtual-network-gateway-metrics.md
+        - name: VPN Gateway の監視
+          href: monitor-vpn-gateway.md
         - name: メトリックに基づいたアラートの設定
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: リソース ログに基づいたアラートの設定

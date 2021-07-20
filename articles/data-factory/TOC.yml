@@ -113,6 +113,8 @@
           items:
             - name: ADLS Gen2 を使用するレイクへのデータ取り込みのベスト プラクティス
               href: tutorial-data-flow-write-to-lake.md
+            - name: 列名を動的に設定する
+              href: tutorial-data-flow-dynamic-columns.md
             - name: Delta Lake を使用してレイク内のデータを変換する
               href: tutorial-data-flow-delta-lake.md
             - name: マッピング データ フローを使用してデータを変換する
@@ -476,6 +478,8 @@
           href: delete-activity.md
         - name: データのコピー ツール
           href: copy-data-tool.md
+        - name: メタデータ駆動型のデータのコピー
+          href: copy-data-tool-metadata-driven.md
         - name: フォーマットと圧縮のサポート
           href: supported-file-formats-and-compression-codecs.md
           displayName: zip
@@ -881,7 +885,7 @@
           href: ssis-integration-runtime-management-troubleshoot.md
           displayName: timeout
         - name: Azure-SSIS IR でのパッケージ実行
-          href: ssis-integration-runtime-ssis-activity-faq.md
+          href: ssis-integration-runtime-ssis-activity-faq.yml
           displayName: 'retry, timeout'
         - name: Azure-SSIS IR での接続性の診断
           href: ssis-integration-runtime-diagnose-connectivity-faq.md
@@ -927,3 +931,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: サポート オプション
       href: 'https://azure.microsoft.com/support/options/'
+    - name: 制限
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits

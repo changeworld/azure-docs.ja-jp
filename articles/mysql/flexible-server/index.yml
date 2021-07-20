@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/21/2020
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 63dfa9e9087f30a479df9b1ae3d0a654c956f902
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: 6ffbc8d8d5813ef428ce8dbff2ebb53e9f4617e1
+  ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102043032"
+  ms.lasthandoff: 06/19/2021
+  ms.locfileid: "112380412"
 landingContent:
 - title: フレキシブル サーバー (プレビュー) について
   linkLists:
@@ -31,8 +31,8 @@ landingContent:
       url: tutorial-php-database-app.md
   - linkListType: whats-new
     links:
-    - text: ブログを確認する
-      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
+    - text: フレキシブル サーバーの新機能
+      url: whats-new.md
 - title: 管理する
   linkLists:
   - linkListType: concept

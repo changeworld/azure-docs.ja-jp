@@ -33,6 +33,8 @@
       href: concepts-legacy.md
     - name: マーケティングの概念
       href: concepts-marketing.md
+    - name: ソフトウェアのレベル
+      href: how-to-software-levels.md
 - name: 操作方法ガイド
   items:
     - name: 公開済みのデバイスを編集する方法

@@ -10,12 +10,12 @@ metadata:
   author: ekpgh
   ms.author: v-erkel
   ms.date: 11/07/2019
-  ms.openlocfilehash: a31fb7a2878766e960e602e5167df4f92a978f25
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: d2101ad354a67e79356d6f2fb5a41eecea2f5936
+  ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87061300"
+  ms.lasthandoff: 07/09/2021
+  ms.locfileid: "113587591"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:
@@ -35,8 +35,10 @@ landingContent:
       url: hpc-cache-add-storage.md
     - text: クライアントをマウントする
       url: hpc-cache-mount.md
-    - text: キャッシュを管理および監視する
+    - text: キャッシュを管理する
       url: hpc-cache-manage.md
+    - text: キャッシュ メトリックを表示する
+      url: metrics.md
   - linkListType: concept
     links:
     - text: 集約された名前空間を計画する
@@ -51,6 +53,8 @@ landingContent:
       url: hpc-cache-support-ticket.md
     - text: ストレージ ターゲットを編集する
       url: hpc-cache-edit-storage.md
+    - text: ストレージ ターゲットを管理する
+      url: manage-storage-targets.md
     - text: ファイアウォール設定を回避して BLOB ストレージ ターゲットを作成する
       url: hpc-cache-blob-firewall-fix.md
     - text: NFS ストレージ ターゲットの作成のトラブルシューティング

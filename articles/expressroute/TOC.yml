@@ -148,6 +148,10 @@
           href: expressroute-network-insights.md
         - name: ExpressRoute の監視、メトリック、およびアラート
           href: expressroute-monitoring-metrics-alerts.md
+        - name: ExpressRoute の監視
+          href: monitor-expressroute.md
+        - name: メンテナンス アラートを表示および構成する
+          href: maintenance-alerts.md
         - name: ExpressRoute に使用する Network Performance Monitor の構成
           href: how-to-npm.md
         - name: カスタム アラートを構成して、アドバタイズされるルートを監視する
@@ -208,6 +212,8 @@
           href: expressroute-troubleshooting-arp-classic.md
 - name: リファレンス
   items:
+    - name: データ参照を監視する
+      href: monitor-expressroute-reference.md
     - name: Azure PowerShell
       href: /powershell/module/az.network#expressroute
     - name: Azure CLI

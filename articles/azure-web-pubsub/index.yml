@@ -9,12 +9,12 @@ metadata:
   author: yjin81
   ms.author: yajin1
   ms.date: 01/27/2021
-  ms.openlocfilehash: 468e003f209f4d1acd3f1f6cb80d8ca166495672
-  ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+  ms.openlocfilehash: e983c957135f247276d87de749dc13a6a05ed9a7
+  ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/28/2021
-  ms.locfileid: "108166790"
+  ms.lasthandoff: 07/02/2021
+  ms.locfileid: "113217019"
 landingContent:
 - title: Azure Web PubSub サービスについて
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: ライブ デモを体験する
+    - text: チャットルーム ライブ デモを開始する
       url: quickstart-live-demo.md
     - text: 単純なチャットルーム サーバーレス アプリケーションから始める
       url: quickstart-serverless.md

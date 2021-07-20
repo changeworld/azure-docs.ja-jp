@@ -11,7 +11,7 @@ items:
       - name: 用語
         href: overview-terminology.md
       - name: よく寄せられる質問
-        href: overview-faq.md
+        href: overview-faq.yml
   - name: クイックスタート
     expanded: true
     items:
@@ -214,8 +214,6 @@ items:
           - name: 専用 SQL プール
             href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             displayname: overview
-          - name: アーキテクチャ
-            href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           - name: 機能の概要
             href: sql/overview-features.md
           - name: リソース使用量モデル
@@ -981,7 +979,7 @@ items:
                 href: ../data-factory/copy-activity-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: コピー アクティビティの監視
                 href: ../data-factory/copy-activity-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 削除アクティビティを使用したファイルの削除
+              - name: Delete アクティビティを使用してファイルを削除する
                 href: ../data-factory/delete-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: データのコピー ツール
                 href: ../data-factory/copy-data-tool.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1014,13 +1012,13 @@ items:
                 href: synapse-notebook-activity.md
               - name: Synapse SQL プール ストアド プロシージャ アクティビティ
                 href: ./data-integration/sql-pool-stored-procedure-activity.md
-              - name: Azure 関数アクティビティ
+              - name: Azure Functions アクティビティ
                 href: ../data-factory/control-flow-azure-function-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: カスタム アクティビティ
                 href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Databricks Jar アクティビティ
                 href: ../data-factory/transform-data-databricks-jar.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Databricks ノートブック アクティビティ
+              - name: Databricks Notebook アクティビティ
                 href: ../data-factory/transform-data-databricks-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Databricks Python アクティビティ
                 href: ../data-factory/transform-data-databricks-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1038,11 +1036,11 @@ items:
                 href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: HDInsight Streaming アクティビティ
                 href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Machine Learning パイプラインの実行アクティビティ
+              - name: Machine Learning のパイプラインの実行アクティビティ
                 href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Machine Learning Studio (classic) のバッチ実行アクティビティ
+              - name: Machine Learning Studio (クラシック) のバッチの実行アクティビティ
                 href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Machine Learning Studio (classic) の更新リソース アクティビティ
+              - name: Machine Learning Studio (クラシック) のリソースの更新アクティビティ
                 href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: ストアド プロシージャ アクティビティ
                 href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1050,25 +1048,25 @@ items:
                 href: ../data-factory/compute-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           - name: 制御フロー
             items:
-              - name: 変数アクティビティの追加
+              - name: 変数追加アクティビティ
                 href: ../data-factory/control-flow-append-variable-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: パイプラインの実行アクティビティ
                 href: ../data-factory/control-flow-execute-pipeline-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: アクティビティのフィルター処理
+              - name: Filter アクティビティ
                 href: ../data-factory/control-flow-filter-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: For Each アクティビティ
                 href: ../data-factory/control-flow-for-each-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: メタデータの取得アクティビティ
                 href: ../data-factory/control-flow-get-metadata-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: If 条件アクティビティ
+              - name: If Condition アクティビティ
                 href: ../data-factory/control-flow-if-condition-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: ルックアップ アクティビティ
                 href: ../data-factory/control-flow-lookup-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 変数アクティビティの設定
+              - name: 変数の設定アクティビティ
                 href: ../data-factory/control-flow-set-variable-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Until アクティビティ
                 href: ../data-factory/control-flow-until-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 検証アクティビティ
+              - name: Validation アクティビティ
                 href: ../data-factory/control-flow-validation-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Wait アクティビティ
                 href: ../data-factory/control-flow-wait-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1168,6 +1166,8 @@ items:
         items:
           - name: Azure Synapse の機械学習とは
             href: machine-learning/what-is-machine-learning.md
+          - name: Azure Synapse Analytics での Cognitive Services
+            href: machine-learning/overview-cognitive-services.md
       - name: クイックスタート
         items:
           - name: ギャラリーからサンプル ノートブックを使用する

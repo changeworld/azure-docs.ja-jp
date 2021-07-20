@@ -193,6 +193,8 @@
                   href: database/authentication-aad-directory-readers-role-tutorial.md
                 - name: Azure AD のみの認証を有効化する
                   href: database/authentication-azure-ad-only-authentication-tutorial.md
+                - name: Azure AD のみの認証を有効にしてサーバーを作成する
+                  href: database/authentication-azure-ad-only-authentication-create-server.md
             - name: BYOK を使用した TDE の構成
               href: database/transparent-data-encryption-byok-configure.md
             - name: Always Encrypted
@@ -291,6 +293,10 @@
               href: database/service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
+            - name: ハイパースケール レプリカ
+              href: database/service-tier-hyperscale-replicas.md
+            - name: ハイパースケール レプリカに関する FAQ
+              href: database/service-tier-hyperscale-named-replicas-faq.yml
             - name: 仮想コア
               href: database/service-tiers-sql-database-vcore.md
         - name: コストの計画と管理
@@ -300,7 +306,7 @@
       items:
         - name: データベースの作成
           items:
-            - name: Azure portal
+            - name: Azure portal、PowerShell、Az CLI
               href: database/single-database-create-quickstart.md
             - name: ARM テンプレート
               displayName: Resource Manager
@@ -354,6 +360,10 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: SQLite をサーバーレスに移行する
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+        - name: スケール アウト
+          items:
+            - name: 名前付きレプリカのセキュリティを構成する
+              href: database/hyperscale-named-replica-security-configure.md
     - name: 移行ガイド
       items:
         - name: Access から
@@ -486,7 +496,7 @@
             - name: シャード データの移動
               href: database/elastic-scale-overview-split-and-merge.md
             - name: エラスティック ツールに関する FAQ
-              href: database/elastic-scale-faq.md
+              href: database/elastic-scale-faq.yml
     - name: 方法
       href: database/how-to-content-reference-guide.md
       items:
@@ -757,7 +767,7 @@
             - name: Azure portal
               href: managed-instance/instance-create-quickstart.md
             - name: PowerShell
-              href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+              href: managed-instance/create-configure-managed-instance-powershell-quickstart.md
             - name: ARM テンプレート
               displayName: Resource Manager
               href: managed-instance/create-template-quickstart.md
@@ -1133,10 +1143,10 @@
                 - name: HADR の構成
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
                   displayName: 'failover cluster instance, fci, availability group, ag, always on'
-                - name: ベースラインの収集
-                  href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
                 - name: アプリケーション パターン
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: ベースラインの収集
+                  href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: 管理
               items:
                 - name: SQL IaaS Agent 拡張機能
@@ -1175,8 +1185,6 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 記憶域を UltraSSD に移行する
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: SQL 脆弱性評価を有効にする
-                  href: ../security-center/defender-for-sql-on-machines-vulnerability-assessment.md
                 - name: SQL IaaS Agent 拡張機能をインストールする
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
@@ -1261,7 +1269,7 @@
             - name: Azure PowerShell
               href: /powershell/azure/
             - name: Azure CLI
-              href: /cli/azure/
+              href: /cli/azure/azure-cli-reference-for-sql
             - name: T-SQL
               href: /sql/t-sql/language-reference
             - name: SQL Server ドライバー
@@ -1344,7 +1352,7 @@
     - name: T-SQL 言語のリファレンス
       href: /sql/t-sql/language-reference
     - name: Azure CLI
-      href: /cli/azure/sql
+      href: /cli/azure/azure-cli-reference-for-sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql
     - name: .NET

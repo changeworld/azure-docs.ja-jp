@@ -1,0 +1,32 @@
+- name: Network Function Manager のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Network Function Manager について
+      href: overview.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: デバイス リソースを作成する
+      href: create-device.md
+    - name: ネットワーク機能をデプロイする
+      href: deploy-functions.md
+- name: 概念
+  expanded: true
+  items:
+    - name: パートナー
+      href: partners.md
+    - name: よく寄せられる質問
+      href: faq.md
+- name: リソース
+  expanded: true
+  items:
+    - name: Network Function Manager の製品ページ
+      href: 'https://go.microsoft.com/fwlink/?linkid=2166098'
+    - name: Azure プライベート MEC のドキュメント
+      href: 'https://go.microsoft.com/fwlink/?linkid=2165316'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/networking'

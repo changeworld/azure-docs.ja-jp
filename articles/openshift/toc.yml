@@ -48,6 +48,8 @@
           href: configure-azure-ad-ui.md
         - name: ARO クラスターのプル シークレットを更新する
           href: howto-add-update-pull-secret.md
+        - name: Azure Red Hat OpenShift (ARO) クラスターのサービス プリンシパルの資格情報をローテーションする
+          href: howto-service-principal-credential-rotation.md
     - name: バックアップと復元
       items:
         - name: Velero を使用してクラスター アプリケーションのバックアップを作成する
@@ -120,7 +122,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: openshift-faq.md
+      href: openshift-faq.yml
     - name: トラブルシューティング
       href: troubleshoot.md
     - name: ARO 4 のサポート ポリシー

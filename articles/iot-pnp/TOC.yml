@@ -55,10 +55,10 @@
   items:
     - name: IoT エクスプローラーをインストールして使用する
       href: howto-use-iot-explorer.md
-    - name: DTDL 作成ツールをインストールして使用する
-      href: howto-use-dtdl-authoring-tools.md
     - name: デジタル ツインを管理する
       href: howto-manage-digital-twin.md
+    - name: デバイスを IoT プラグ アンド プレイに変換する
+      href: howto-convert-to-pnp.md
     - name: IoT プラグ アンド プレイ ブリッジのサンプルを接続する方法
       href: howto-use-iot-pnp-bridge.md
     - name: IoT プラグ アンド プレイ ブリッジのビルドとデプロイ

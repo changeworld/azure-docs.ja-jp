@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/09/2019
   ms.author: aahi
-  ms.openlocfilehash: 668994c366013fdd05a71bc2f4131178cab4e002
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 17fea68286e457c7da41eaaae54414e1c56fa606
+  ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110095700"
+  ms.lasthandoff: 07/09/2021
+  ms.locfileid: "113551040"
 landingContent:
 - title: Text Analytics API について
   linkLists:
@@ -148,8 +148,8 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: REST API (v3.1 プレビュー)
-      url: https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/
+    - text: REST API (v3.1)
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1
     - text: REST API (v3.0)
       url: https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0
     - text: .NET クライアント ライブラリ

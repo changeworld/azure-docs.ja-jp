@@ -34,6 +34,8 @@
       href: faq.md
     - name: GitOps を使用した CI/CD ワークフロー
       href: conceptual-gitops-ci-cd.md
+    - name: 内部ループの開発者エクスペリエンス
+      href: conceptual-inner-loop-gitops.md
 - name: 操作方法ガイド
   items:
     - name: サービス プリンシパルを使用してクラスターを接続する
@@ -64,6 +66,8 @@
           href: custom-locations.md
         - name: IoT ワークロードをデプロイする
           href: deploy-azure-iot-edge-workloads.md
+        - name: Arc 対応機械学習
+          href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: トラブルシューティング
       href: Troubleshooting.md
 - name: リファレンス

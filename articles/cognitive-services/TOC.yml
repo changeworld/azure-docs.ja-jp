@@ -70,6 +70,8 @@
           href: ./encryption/cognitive-services-encryption-keys-portal.md
         - name: Cognitive Services に対する要求の認証
           href: authentication.md
+        - name: データ損失防止を構成する
+          href: cognitive-services-data-loss-prevention.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/cognitive-services-security-baseline?toc=/azure/cognitive-services/TOC.json
         - name: Azure Policy によるセキュリティ制御

@@ -59,6 +59,18 @@
               href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: AI の責任ある使用
       items:
+        - name: 音声テキスト変換
+          items:
+            - name: わかりやすさに関するメモ
+              items:
+                - name: 音声テキスト変換のユース ケース
+                  href: /legal/cognitive-services/speech-service/speech-to-text/transparency-note?context=/azure/cognitive-services/speech-service/context/context
+                - name: 特性と制限
+                  href: /legal/cognitive-services/speech-service/speech-to-text/characteristics-and-limitations?context=/azure/cognitive-services/speech-service/context/context
+            - name: 統合と責任ある使用
+              href: /legal/cognitive-services/speech-service/speech-to-text/guidance-integration-responsible-use?context=/azure/cognitive-services/speech-service/context/context
+            - name: データ、プライバシー、セキュリティ
+              href: /legal/cognitive-services/speech-service/speech-to-text/data-privacy-security?context=/azure/cognitive-services/speech-service/context/context
         - name: 発音評価
           items:
             - name: わかりやすさに関するメモ
@@ -105,9 +117,11 @@
           href: language-support.md#speech-to-text
         - name: リージョンのサポート
           href: regions.md#speech-to-text-text-to-speech-and-translation
+        - name: インジェスト クライアント
+          href: ingestion-client.md
         - name: 音声テキスト変換のよくあるご質問
           displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
-          href: faq-stt.md
+          href: faq-stt.yml
 - name: テキスト読み上げ
   items:
     - name: テキスト読み上げのドキュメント
@@ -499,8 +513,8 @@
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
         - name: コンテナーの FAQ
-          href: speech-container-faq.md
-        - name: すべての Cognitive Services コンテナーのドキュメント
+          href: speech-container-faq.yml
+        - name: Cognitive Services コンテナーのドキュメント
           href: ../containers/index.yml
           maintainContext: true
     - name: 移行

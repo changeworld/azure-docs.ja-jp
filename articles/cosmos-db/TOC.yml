@@ -698,6 +698,10 @@
               href: how-to-define-unique-keys.md
             - name: トランザクション バッチ操作の実行
               href: transactional-batch.md
+        - name: 推奨する運用方法
+          items:
+            - name: .NET
+              href: best-practice-dotnet.md
         - name: パフォーマンス
           items:
             - name: クエリ
@@ -769,6 +773,8 @@
                   href: troubleshoot-dot-net-sdk-request-header-too-large.md
                 - name: 要求タイムアウトのトラブルシューティング
                   href: troubleshoot-dot-net-sdk-request-timeout.md
+                - name: 低速な要求のトラブルシューティング
+                  href: troubleshoot-dot-net-sdk-slow-request.md
                 - name: サービス利用不可のトラブルシューティング
                   href: troubleshoot-service-unavailable.md
             - name: .Java
@@ -915,7 +921,7 @@
               href: sql-api-sdk-java-spring-v2.md
             - name: Spring Data コネクタ v3
               href: sql-api-sdk-java-spring-v3.md
-            - name: Spark 3 OLTP コネクタ (プレビュー)
+            - name: Spark 3 OLTP コネクタ
               href: sql-api-sdk-java-spark-v3.md
             - name: Spark 2 OLTP コネクタ
               href: sql-api-sdk-java-spark.md
@@ -930,7 +936,7 @@
         - name: REST (データ プレーン)
           href: /rest/api/cosmos-db/
         - name: REST (管理プレーン)
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sql-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -1014,6 +1020,8 @@
           href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 一般的な問題のトラブルシューティング
           href: cassandra-troubleshoot.md
+        - name: 診断ログを使用して監視する
+          href: queries-cassandra.md
         - name: Cassandra と Spark
           items:
             - name: はじめに
@@ -1048,7 +1056,7 @@
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandraresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandra-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -1125,6 +1133,8 @@
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Database Migration Service (オフライン)
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Azure Databricks と Spark (オフライン)
+              href: mongodb-migrate-databricks.md
             - name: 移行後ガイド
               href: mongodb-post-migration.md
         - name: API バージョン 4.0 または 3.6 にアップグレードする
@@ -1153,6 +1163,8 @@
         - name: 容量計画ツールを使用して RU/秒を見積もる
           displayName: 'request units, RUs, RU, capacity'
           href: mongodb/estimate-ru-capacity-planner.md
+        - name: 書き込みパフォーマンスを最適化する
+          href: mongodb/optimize-write-performance.md
         - name: コンテナーの作成 - MongoDB API
           href: how-to-create-container-mongodb.md
         - name: スループットのプロビジョニング - MongoDB API
@@ -1161,6 +1173,8 @@
         - name: 要求ユニット使用量を確認する
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-mongodb.md
+        - name: 診断ログを使用して監視する
+          href: queries-mongo.md
         - name: クエリ パフォーマンスのトラブルシューティング
           href: mongodb-troubleshoot-query.md
         - name: 一般的な問題のトラブルシューティング
@@ -1182,7 +1196,7 @@
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongodbresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongo-db-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -1250,6 +1264,8 @@
           href: how-to-access-system-properties-gremlin.md
         - name: グラフ データの視覚化
           href: graph-visualization.md
+        - name: 診断ログを使用して監視する
+          href: queries-gremlin.md
         - name: Spring Data の格納と管理
           href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Resource Manager テンプレートを使用して管理する
@@ -1266,7 +1282,7 @@
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlinresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlin-resources
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
         - name: Azure CLI
@@ -1330,8 +1346,6 @@
         - name: 要求ユニット使用量を確認する
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-table.md
-        - name: Table Storage の設計ガイド
-          href: table-storage-design-guide.md
         - name: Resource Manager テンプレートを使用して管理する
           href: templates-samples-table.md
           displayName: ARM
@@ -1480,6 +1494,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: 基本的なクエリを使用した問題のトラブルシューティング
               href: cosmosdb-monitor-logs-basic-queries.md
+            - name: 高度なクエリを使用した問題のトラブルシューティング
+              href: cosmos-db-advanced-queries.md
             - name: コントロール プレーン ログの監査
               href: audit-control-plane-logs.md
         - name: アラートを構成する

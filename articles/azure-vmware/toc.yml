@@ -18,40 +18,40 @@
       href: tutorial-deploy-vmware-hcx.md
 - name: チュートリアル
   items:
-    - name: 1 - ネットワーク計画のチェックリスト
-      href: tutorial-network-checklist.md
-    - name: 2 - プライベート クラウドを作成する
-      href: tutorial-create-private-cloud.md
-    - name: 3 - プライベート クラウドへのアクセス
+    - name: プライベート クラウドへのアクセス
       href: tutorial-access-private-cloud.md
-    - name: 4 - ネットワークを構成する
+    - name: ネットワークを構成する
       href: tutorial-configure-networking.md
-    - name: 5 - NSX-T ネットワーク セグメントの作成
+    - name: プライベート クラウドを作成する
+      href: tutorial-create-private-cloud.md
+    - name: NSX-T ネットワーク セグメントの作成
       href: tutorial-nsx-t-network-segment.md
-    - name: 6 - オンプレミスからプライベート クラウドへのピアリング
-      href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 7 - VMware HCX をデプロイして構成する
-      href: tutorial-deploy-vmware-hcx.md
-    - name: 8 - プライベート クラウドでクラスターを拡大または縮小する
-      href: tutorial-scale-private-cloud.md
-    - name: 9 - プライベート クラウドを削除する
+    - name: プライベート クラウドを削除する
       href: tutorial-delete-private-cloud.md
+    - name: VMware HCX をデプロイして構成する
+      href: tutorial-deploy-vmware-hcx.md
+    - name: プライベート クラウドでクラスターを拡大または縮小する
+      href: tutorial-scale-private-cloud.md
+    - name: ネットワーク計画のチェックリスト
+      href: tutorial-network-checklist.md
+    - name: オンプレミスからプライベート クラウドへのピアリング
+      href: tutorial-expressroute-global-reach-private-cloud.md
 - name: 概念
   items:
-    - name: プライベート クラウドとクラスター
-      href: concepts-private-clouds-clusters.md
-    - name: ネットワークと相互接続
-      href: concepts-networking.md
-    - name: ストレージ
-      href: concepts-storage.md
     - name: アクセスと ID
       href: concepts-identity.md
-    - name: 監視と保護
-      href: concepts-monitor-protection.md
     - name: API Management
       href: concepts-api-management.md
     - name: ハブ アンド スポーク
       href: concepts-hub-and-spoke.md
+    - name: 監視と保護
+      href: concepts-monitor-protection.md
+    - name: ネットワークと相互接続
+      href: concepts-networking.md
+    - name: プライベート クラウドとクラスター
+      href: concepts-private-clouds-clusters.md
+    - name: ストレージ
+      href: concepts-storage.md
 - name: 操作方法ガイド
   items:
     - name: Azure VMware Solution の評価を作成する
@@ -60,33 +60,53 @@
       href: request-host-quota-azure-vmware-solution.md
     - name: 予約インスタンスを使用してコストを削減する
       href: reserved-instance.md
+    - name: ネットワークを構成する
+      items:
+        - name: DHCP を構成する
+          href: configure-dhcp-azure-vmware-solution.md
+        - name: L2 拡張 VMware HCX ネットワークで DHCP を構成する
+          href: configure-l2-stretched-vmware-hcx-networks.md
+        - name: Azure を使用して NSX コンポーネントを構成する
+          href: configure-nsx-network-components-azure-portal.md
+        - name: GitHub Enterprise Server を構成する
+          href: ./configure-github-enterprise-server.md
+        - name: パブリック インターネット アクセスを有効にする
+          href: enable-public-internet-access.md
+        - name: vWAN でサイト間 VPN を構成する
+          href: configure-site-to-site-vpn-gateway.md
+    - name: Windows Server フェールオーバー クラスターの構成
+      href: configure-windows-server-failover-cluster.md
+    - name: cloudadmin 資格情報のローテーション
+      href: rotate-cloudadmin-credentials.md
+    - name: 同じリージョン内の複数のプライベート クラウドを接続する
+      href: connect-multiple-private-clouds-same-region.md
     - name: リソースの移動
       items:
         - name: Azure VMware Solution のサブスクリプションを移動する
           href: move-ea-csp-subscriptions.md
         - name: リージョン間で Azure VMware Solution リソースを移動する
           href: move-azure-vmware-solution-across-regions.md
-    - name: DHCP を構成する
-      href: configure-dhcp-azure-vmware-solution.md
-    - name: L2 拡張 VMware HCX ネットワークで DHCP を構成する
-      href: configure-l2-stretched-vmware-hcx-networks.md
-    - name: Azure を使用して NSX コンポーネントを構成する
-      href: configure-nsx-network-components-azure-portal.md
-    - name: GitHub Enterprise Server を構成する
-      href: ./configure-github-enterprise-server.md
-    - name: パブリック インターネット アクセスを有効にする
-      href: enable-public-internet-access.md
-    - name: vWAN でサイト間 VPN を構成する
-      href: configure-site-to-site-vpn-gateway.md
-    - name: Windows Server フェールオーバー クラスターの構成
-      href: configure-windows-server-failover-cluster.md
-    - name: cloudadmin 資格情報のローテーション
-      href: rotate-cloudadmin-credentials.md
-    - name: 障害復旧
+    - name: Azure のネイティブ統合
       items:
-        - name: VMware HCX を使用してディザスター リカバリーをデプロイする
-          href: deploy-disaster-recovery-using-vmware-hcx.md
-        - name: Azure Site Recovery へのディザスター リカバリー
+        - name: VM を保護、監視、管理する
+          href: integrate-azure-native-services.md
+        - name: Azure Security Center を統合する
+          href: azure-security-integration.md
+        - name: Azure NetApp Files を統合する
+          href: netapp-files-with-azure-vmware-solution.md
+        - name: Azure Application Gateway を使用して Web アプリを保護する
+          href: protect-azure-vmware-solution-with-application-gateway.md
+        - name: ワークロードのバランスを取るために Traffic Manager をデプロイする
+          href: deploy-traffic-manager-balance-workloads.md
+        - name: アラートを構成してメトリックを使用する
+          href: configure-alerts-for-azure-vmware-solution.md
+        - name: Azure Backup Server を使用してバックアップする
+          items:
+            - name: Backup Server の設定
+              href: set-up-backup-server-for-azure-vmware-solution.md
+            - name: Backup Server を使用したプライベート クラウドのバックアップ
+              href: backup-azure-vmware-solution-virtual-machines.md
+        - name: Azure Site Recovery を使用したディザスター リカバリー
           items:
             - name: Azure を準備する
               href: ../site-recovery/avs-tutorial-prepare-azure.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
@@ -102,20 +122,6 @@
               href: ../site-recovery/avs-tutorial-reprotect.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
             - name: Azure からのフェールバック
               href: ../site-recovery/avs-tutorial-failback.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
-    - name: Azure のネイティブ統合
-      items:
-        - name: VM を保護、監視、管理する
-          href: integrate-azure-native-services.md
-        - name: Azure Security Center を統合する
-          href: azure-security-integration.md
-        - name: Azure NetApp Files を統合する
-          href: netapp-files-with-azure-vmware-solution.md
-        - name: Azure Application Gateway を使用して Web アプリを保護する
-          href: protect-azure-vmware-solution-with-application-gateway.md
-        - name: ワークロードのバランスを取るために Traffic Manager をデプロイする
-          href: deploy-traffic-manager-balance-workloads.md
-        - name: アラートを構成してメトリックを使用する
-          href: configure-alerts-for-azure-vmware-solution.md
     - name: VMware ソリューション
       items:
         - name: vRealize Operations を構成する
@@ -124,6 +130,10 @@
           href: azure-vmware-solution-horizon.md
         - name: コンテンツ ライブラリから VM をデプロイする
           href: deploy-vm-content-library.md
+        - name: VMware HCX を使用してディザスター リカバリーをデプロイする
+          href: deploy-disaster-recovery-using-vmware-hcx.md
+        - name: VMware HCX アプライアンスをアップグレードする
+          href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
     - name: VMware のエコシステム
       items:
         - name: VM のバックアップ ソリューション
@@ -132,6 +142,10 @@
           href: ecosystem-migration-vms.md
 - name: リソース
   items:
+    - name: ラーニング パス
+      items:
+        - name: Azure VMware Solution で VMware ワークロードを実行する
+          href: /learn/paths/run-vmware-workloads-azure-vmware-solution/
     - name: トラブルシューティング
       items:
         - name: デプロイの失敗のサポート リクエストをオープンする
@@ -141,27 +155,29 @@
     - name: よく寄せられる質問
       items:
         - name: 全般
-          href: faq.yml
+          href: ./faq.yml
         - name: 顧客とのコミュニケーション
-          href: /azure/azure-vmware/faq.yml#customer-communication
+          href: /azure/azure-vmware/faq#customer-communication
         - name: 構成とセットアップ
-          href: /azure/azure-vmware/faq.yml#configuration-and-setup
+          href: /azure/azure-vmware/faq#configuration-and-setup
         - name: VMware ソフトウェア
-          href: /azure/azure-vmware/faq.yml#vmware-software
+          href: /azure/azure-vmware/faq#vmware-software
         - name: サード パーティのバックアップ ソリューション
-          href: /azure/azure-vmware/faq.yml#third-party-backup-and-recovery
+          href: /azure/azure-vmware/faq#third-party-backup-and-recovery
         - name: Compute
-          href: /azure/azure-vmware/faq.yml#compute
+          href: /azure/azure-vmware/faq#compute
         - name: ネットワークと相互接続
-          href: /azure/azure-vmware/faq.yml#networking-and-interconnectivity
+          href: /azure/azure-vmware/faq#networking-and-interconnectivity
         - name: ストレージ
-          href: /azure/azure-vmware/faq.yml#storage
+          href: /azure/azure-vmware/faq#storage
         - name: ホスト、クラスター、およびプライベート クラウド
-          href: '/azure/azure-vmware/faq.yml#hosts,-clusters,-and-private-clouds'
+          href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'
         - name: ID 管理
-          href: /azure/azure-vmware/faq.yml#identity-management
+          href: /azure/azure-vmware/faq#identity-management
+        - name: CSP とマルチテナント
+          href: /azure/azure-vmware/faq#csp-and-multi-tenancy
         - name: 課金とサポート
-          href: /azure/azure-vmware/faq.yml#billing-and-support
+          href: /azure/azure-vmware/faq#billing-and-support
     - name: ビデオ
       items:
         - name: 再生リスト

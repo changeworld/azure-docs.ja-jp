@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 02/03/2021
-  ms.openlocfilehash: e27705b9b4a8120861b605cdc9cf33a16f7ad577
-  ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+  ms.openlocfilehash: 7f0ac9bc80068830d02636ba85f1846b4e86c690
+  ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2021
-  ms.locfileid: "105045231"
+  ms.lasthandoff: 06/21/2021
+  ms.locfileid: "112422833"
 landingContent:
 - title: Azure のセキュリティについて
   linkLists:
@@ -53,6 +53,8 @@ landingContent:
       url: management-monitoring-overview.md
     - text: 脅威の防止
       url: threat-detection.md
+    - text: ID 侵害から回復する
+      url: recover-from-identity-compromise.md
 - title: クラウド ソリューションをセキュリティで保護するためのベスト プラクティス
   linkLists:
   - linkListType: concept

@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Machine Learning Studio (クラシック) のドキュメント
+title: Machine Learning Studio (クラシック) のドキュメント
 summary: Machine Learning Studio (クラシック) は、予測分析ソリューションを構築、テスト、デプロイする際に使用できるドラッグ アンド ドロップ ツールです。
 metadata:
   title: Machine Learning Studio (クラシック) のドキュメント - Azure
@@ -12,12 +12,12 @@ metadata:
   ms.author: peterlu
   author: peterclu
   ms.date: 03/05/2020
-  ms.openlocfilehash: 27be00a986b27f4203e2cbfce568603aa7880802
-  ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+  ms.openlocfilehash: 34cebaa3b352d64ba5ebeadbc1fc84c5e53bfefe
+  ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/14/2021
-  ms.locfileid: "100520342"
+  ms.lasthandoff: 06/24/2021
+  ms.locfileid: "112581252"
 landingContent:
 - title: Studio (クラシック) を使ってみる
   linkLists:

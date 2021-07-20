@@ -152,6 +152,8 @@
       href: howto-backup-config-store.md
     - name: マネージド ID を使用して App Configuration にアクセスする
       href: howto-integrate-azure-managed-service-identity.md
+    - name: 新しい Spring Boot ライブラリに更新する
+      href: howto-convert-to-the-new-spring-boot.md
 - name: リファレンス
   items:
     - name: クライアント ライブラリ

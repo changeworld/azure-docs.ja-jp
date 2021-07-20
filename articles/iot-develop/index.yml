@@ -10,12 +10,12 @@ metadata:
   author: timlt
   ms.author: timlt
   ms.date: 01/11/2021
-  ms.openlocfilehash: ba80c9c40beed46222d72903983d74ee9500b3a2
-  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+  ms.openlocfilehash: 14587a7e9748c7df799ef798ff03ee2380b76cdc
+  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111888754"
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113112061"
 landingContent:
 - title: IoT デバイスの開発の概要
   linkLists:
@@ -53,5 +53,5 @@ landingContent:
       url: quickstart-devkit-renesas-rx65n-2mb.md
     - text: Renesas RX65N Cloud Kit を Azure IoT に接続する
       url: quickstart-devkit-renesas-rx65n-cloud-kit.md
-    - text: ST Microelectronics B-L475E/L4S5I-IOT01A を Azure IoT に接続する
+    - text: STMicroelectronics B-L475E/L4S5I-IOT01A を Azure IoT に接続する
       url: quickstart-devkit-stm-b-l475e.md

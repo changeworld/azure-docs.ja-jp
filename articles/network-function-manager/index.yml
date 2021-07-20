@@ -1,0 +1,36 @@
+### YamlMime:Landing
+title: Network Function Manager のドキュメント (プレビュー)
+summary: Azure Network Function Manager では、Azure Stack Edge デバイスへのネットワーク機能のデプロイに関する Azure Marketplace エクスペリエンスが提供されます。
+metadata:
+  title: Network Function Manager のドキュメント (プレビュー)
+  description: Network Function Manager について説明します。
+  ms.service: vnf-manager
+  ms.topic: landing-page
+  author: cherylmc
+  ms.author: cherylmc
+  ms.date: 06/09/2021
+  ms.openlocfilehash: c2d71775890c3cafca81f5f4b8bf93c35587905a
+  ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/16/2021
+  ms.locfileid: "112240534"
+landingContent:
+- title: Network Function Manager について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Network Function Manager とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Network Function Manager に関する FAQ
+      url: faq.md
+- title: 開始
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: デバイス リソースを作成する
+      url: create-device.md
+    - text: ネットワーク機能をデプロイする
+      url: deploy-functions.md

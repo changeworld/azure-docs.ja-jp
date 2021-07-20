@@ -193,6 +193,9 @@
     - name: Azure Remote Rendering
       tocHref: /azure/remote-rendering/
       topicHref: /azure/remote-rendering/
+    - name: Azure Object Understanding
+      tocHref: /azure/object-understanding/
+      topicHref: /azure/object-understanding/
     - name: Container Registry
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
@@ -609,9 +612,6 @@
         - name: Studio (クラシック)
           tocHref: /azure/machine-learning/studio
           topicHref: /azure/machine-learning/studio/
-        - name: Team Data Science Process
-          tocHref: /azure/machine-learning/team-data-science-process
-          topicHref: /azure/machine-learning/team-data-science-process/overview
         - name: データ サイエンス仮想マシン
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/
@@ -629,8 +629,8 @@
           tocHref: /azure/media-services/previous/
           topicHref: /azure/media-services/previous/
         - name: Video Indexer
-          tocHref: /azure/media-services/video-indexer/
-          topicHref: /azure/media-services/video-indexer/
+          tocHref: /azure/azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview
+          topicHref: /azure/azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview
         - name: Azure Media Player
           tocHref: /azure/media-services/azure-media-player/
           topicHref: /azure/media-services/azure-media-player/
@@ -735,6 +735,10 @@
         - name: Virtual Network
           tocHref: /azure/virtual-network/
           topicHref: /azure/virtual-network/
+          items:
+            - name: NAT Gateway
+              tocHref: /azure/virtual-network/nat-gateway
+              topicHref: /azure/virtual-network/nat-gateway
         - name: Virtual WAN
           tocHref: /azure/virtual-wan/
           topicHref: /azure/virtual-wan/
@@ -744,6 +748,9 @@
         - name: Web アプリケーション ファイアウォール
           tocHref: /azure/web-application-firewall/
           topicHref: /azure/web-application-firewall/
+    - name: Network Function Manager
+      tocHref: /azure/network-function-manager/
+      topicHref: /azure/network-function-manager/
     - name: ノートブック
       tocHref: /azure/notebooks/
       topicHref: /azure/notebooks/azure-notebooks-overview
@@ -765,6 +772,9 @@
     - name: Power BI ワークスペース コレクション
       tocHref: /azure/power-bi-workspace-collections/
       topicHref: /azure/power-bi-workspace-collections/
+    - name: プライベート マルチアクセス エッジ コンピューティング
+      tocHref: /azure/private-multi-access-edge-compute-mec/
+      topicHref: /azure/private-multi-access-edge-compute-mec/
     - name: Private Link
       tocHref: /azure/private-link/
       topicHref: /azure/private-link/

@@ -7,7 +7,7 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: ライブ デモを試す
+    - name: チャットルーム ライブ デモを試す
       href: quickstart-live-demo.md
     - name: 単純なチャットルーム サーバーレス アプリケーションから始める
       href: quickstart-serverless.md

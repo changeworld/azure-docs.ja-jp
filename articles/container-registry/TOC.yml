@@ -139,8 +139,6 @@
               displayName: 'permissions, authorization'
             - name: コンテンツの信頼
               href: container-registry-content-trust.md
-            - name: Security Center を使用したイメージのスキャン
-              href: ../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json
         - name: レジストリと他の Azure サービス
           expanded: false
           items:
@@ -157,6 +155,13 @@
               href: monitor-service.md
             - name: Azure Policy を使用したコンプライアンスの監査
               href: container-registry-azure-policy.md
+            - name: コンテナー イメージをスキャンする
+              expanded: false
+              items:
+                - name: Azure Defender を使用してスキャンする
+                  href: scan-images-defender.md
+                - name: GitHub Actions を使用してスキャンする
+                  href: github-action-scan.md
         - name: トラブルシューティング
           expanded: false
           items:

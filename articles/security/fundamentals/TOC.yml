@@ -1,5 +1,7 @@
 - name: 基礎のドキュメント
   href: index.yml
+- name: システムの ID 侵害からの復旧
+  href: recover-from-identity-compromise.md
 - name: 概要
   items:
     - name: Azure のセキュリティの概要

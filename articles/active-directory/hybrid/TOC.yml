@@ -217,7 +217,7 @@
         - name: パススルー認証の概要
           href: how-to-connect-pta-quick-start.md
         - name: パススルー認証に関する FAQ
-          href: how-to-connect-pta-faq.md
+          href: how-to-connect-pta-faq.yml
         - name: Azure AD Connect "構成しない" による PTA の無効化
           href: how-to-connect-pta-disable-do-not-configure.md
     - name: フェデレーション サービスを管理する
@@ -244,12 +244,14 @@
           href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
         - name: AD FS 証明書の緊急ローテーション
           href: how-to-connect-emergency-ad-fs-certificate-rotation.md
+        - name: フェデレーション構成の変更を監視する
+          href: how-to-connect-monitor-federation-changes.md
     - name: シングル サインオンの管理
       items:
         - name: シングル サインオンの概要
           href: how-to-connect-sso-quick-start.md
         - name: シングル サインオンに関する FAQ
-          href: how-to-connect-sso-faq.md
+          href: how-to-connect-sso-faq.yml
     - name: Azure AD Connect Health を管理する
       items:
         - name: Azure AD Connect Health の操作
@@ -357,9 +359,9 @@
     - name: アカウントとアクセス許可
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect の FAQ
-      href: reference-connect-faq.md
+      href: reference-connect-faq.yml
     - name: Azure AD Connect Health の FAQ
-      href: reference-connect-health-faq.md
+      href: reference-connect-health-faq.yml
     - name: Azure Government のハイブリッド ID に関する考慮事項
       href: reference-connect-government-cloud.md
     - name: Azure AD Connect のユーザー プライバシー
@@ -378,6 +380,8 @@
       href: how-to-connect-fed-compatibility.md
     - name: TLS 1.2 の適用
       href: reference-connect-tls-enforcement.md
+    - name: ADSync リファレンス
+      href: reference-connect-adsync.md
     - name: ADSyncConfig リファレンス
       href: reference-connect-adsyncconfig.md
     - name: ADSyncTools リファレンス

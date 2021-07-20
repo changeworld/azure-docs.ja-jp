@@ -21,6 +21,8 @@
       href: role-management.md
     - name: マネージド HSM への安全なアクセス
       href: secure-your-managed-hsm.md
+    - name: プライベート エンドポイントを使用する
+      href: private-link.md
     - name: マネージド HSM のログの設定
       href: logging.md
     - name: 障害復旧
@@ -64,14 +66,16 @@
       displayName: ARM
 - name: リソース
   items:
+    - name: サードパーティのソリューション
+      href: third-party-solutions.md
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-key-vault
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: 利用可能なリージョン
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault&regions=all'
     - name: サービス レベル アグリーメント (SLA)
-      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault-managed-hsm/v1_0/'
     - name: サービスの制限
       href: ../general/service-limits.md
     - name: サービスの状態

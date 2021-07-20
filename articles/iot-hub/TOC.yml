@@ -7,24 +7,10 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: テレメトリを送信する
-      items:
-        - name: はじめに
-          href: quickstart-send-telemetry-cli.md
-        - name: C
-          href: quickstart-send-telemetry-c.md
-        - name: Node.js
-          href: quickstart-send-telemetry-node.md
-        - name: .NET
-          href: quickstart-send-telemetry-dotnet.md
-        - name: Java
-          href: quickstart-send-telemetry-java.md
-        - name: Python
-          href: quickstart-send-telemetry-python.md
-        - name: Android
-          href: quickstart-send-telemetry-android.md
-        - name: iOS
-          href: quickstart-send-telemetry-ios.md
+    - name: CLI を使用したコード不要クイックスタート
+      href: quickstart-send-telemetry-cli.md
+    - name: SDK を使用してテレメトリを送信する
+      href: ../iot-develop/quickstart-send-telemetry-iot-hub.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
     - name: デバイスの制御
       items:
         - name: Node.js
@@ -173,8 +159,6 @@
           items:
             - name: SDK の概要
               href: iot-hub-devguide-sdks.md
-            - name: SDK プラットフォームのサポート
-              href: iot-hub-device-sdk-platform-support.md
             - name: SDK を使用せずに開発する
               href: iot-hub-devguide-no-sdk.md
             - name: 接続と信頼できるメッセージングの管理
@@ -373,18 +357,6 @@
               href: iot-hub-raspberry-pi-kit-node-get-started.md
             - name: C での Raspberry Pi
               href: iot-hub-raspberry-pi-kit-c-get-started.md
-            - name: Arduino での MXChip IoT DevKit
-              href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-        - name: MXChip IoT DevKit の使用
-          items:
-            - name: Azure Cognitive Services を使用して音声メッセージを翻訳する
-              href: iot-hub-arduino-iot-devkit-az3166-translator.md
-            - name: Azure Functions を使用して Twitter メッセージを取得する
-              href: iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md
-            - name: Eclipse Paho API を使用して MQTT サーバーにメッセージを送信する
-              href: iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md
-            - name: Azure Functions で磁気センサーを監視してメール通知を送信する
-              href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: IoT の拡張シナリオ
       items:
         - name: VS Code 用の Azure IoT Tools を使用したクラウド デバイス メッセージングの管理

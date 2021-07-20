@@ -13,16 +13,14 @@ items:
     items:
       - name: Communication Services のリソースを作成する
         href: quickstarts/create-communication-resource.md
-      - name: アクセス トークンを作成して管理する
-        href: quickstarts/access-tokens.md
-      - name: マネージド ID の使用
-        href: quickstarts/managed-identity.md
-      - name: CLI からマネージド ID を設定する
+      - name: ID およびアクセス
+        items:
+          - name: アクセス トークンを作成して管理する
+            href: quickstarts/access-tokens.md
+          - name: マネージド ID の使用
+            href: quickstarts/managed-identity.md
+          - name: CLI からマネージド ID を設定する
         href: quickstarts/managed-identity-from-cli.md
-      - name: SDK 利用統計情報を Application Insights にエクスポートする
-        href: quickstarts/telemetry-application-insights.md
-      - name: リレー トークンを取得する
-        href: quickstarts/relay-token.md
       - name: チャット
         items:
           - name: チャットをアプリに追加する
@@ -45,14 +43,18 @@ items:
             href: quickstarts/telephony-sms/logic-app.md
       - name: 音声およびビデオによる通話
         items:
-          - name: 音声通話をアプリに追加する
+          - name: 音声通話をクライアント アプリに追加する
             href: quickstarts/voice-video-calling/getting-started-with-calling.md
-          - name: ビデオ通話をアプリに追加する
+          - name: ビデオ通話をクライアント アプリに追加する
             href: quickstarts/voice-video-calling/get-started-with-video-calling.md
           - name: Calling SDK を使用する
             href: quickstarts/voice-video-calling/calling-client-samples.md
-          - name: 通話アプリを Teams の会議に参加させる
+          - name: 通話クライアント アプリを Teams の会議に参加させる
             href: quickstarts/voice-video-calling/get-started-teams-interop.md
+          - name: サービスを通話に参加させる
+            href: quickstarts/voice-video-calling/call-automation-api-sample.md
+          - name: 通話を記録する
+            href: quickstarts/voice-video-calling/call-recording-sample.md
       - name: UI ライブラリ
         items:
           - name: 複合の概要
@@ -61,15 +63,19 @@ items:
             href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-statefulclient--page'
           - name: UI コンポーネントの概要
             href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-uicomponents--page'
+      - name: TURN のリレーにアクセスする
+        href: quickstarts/relay-token.md
   - name: チュートリアル
     expanded: false
     items:
       - name: Azure Functions を使用して、信頼される認証サービスを構築する
         href: tutorials/trusted-service-tutorial.md
-      - name: C# を使用して HMAC 署名で HTTP 要求に署名する
-        href: tutorials/hmac-header-tutorial.md
+      - name: SDK 利用統計情報を Application Insights にエクスポートする
+        href: quickstarts/telemetry-application-insights.md
       - name: Communication Services 用の Web アプリを準備する (Node.js)
         href: tutorials/building-app-start.md
+      - name: C# を使用して HMAC 署名で HTTP 要求に署名する
+        href: tutorials/hmac-header-tutorial.md
       - name: Postman で ACS の SMS API に署名して要求を行う
         href: tutorials/postman-tutorial.md
   - name: 概念
@@ -93,6 +99,10 @@ items:
             href: concepts/telephony-sms/plan-solution.md
           - name: Azure 直接ルーティングのインフラストラクチャ要件
             href: concepts/telephony-sms/sip-interface-infrastructure.md
+          - name: Azure ダイレクト ルーティング認定のセッション ボーダー コントローラー
+            href: concepts/telephony-sms/certified-session-border-controllers.md
+          - name: セッション ボーダー コントローラーをペアリングし、音声ルーティングを構成する
+            href: concepts/telephony-sms/direct-routing-provisioning.md
           - name: SMS に関する FAQ
             href: concepts/telephony-sms/sms-faq.md
           - name: メッセージング ポリシー
@@ -101,14 +111,20 @@ items:
         items:
           - name: Calling SDK の概要
             href: concepts/voice-video-calling/calling-sdk-features.md
-          - name: 音声とビデオの概念
+          - name: 音声およびビデオの用語
             href: concepts/voice-video-calling/about-call-types.md
-          - name: ネットワークの要件
+          - name: 通話の自動化
+            href: concepts/voice-video-calling/call-automation-apis.md
+          - name: 通話レコーディング
+            href: concepts/voice-video-calling/call-recording.md
+          - name: ネットワークの推奨事項
             href: concepts/voice-video-calling/network-requirements.md
           - name: 通話のフロー
             href: concepts/call-flows.md
           - name: 通話フローのトポロジ
             href: concepts/detailed-call-flows.md
+          - name: Web のベスト プラクティス
+            href: concepts/best-practices.md
           - name: 既知の問題
             href: concepts/known-issues.md
       - name: UI ライブラリ
