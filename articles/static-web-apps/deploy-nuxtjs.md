@@ -27,18 +27,18 @@ ms.locfileid: "97563468"
 
 ## <a name="set-up-a-nuxtjs-app"></a>Nuxt.js アプリを設定する
 
-`create-nuxt-app` を使用して、新しい Nuxt.js プロジェクトを設定できます。 このチュートリアルでは、新しいプロジェクトではなく、既存のリポジトリを複製することで始めます。 このリポジトリは、動的 Nuxt.js アプリを静的サイトとしてデプロイする方法がわかるように設定されています。
+`create-nuxt-app` を使用して、新しい Nuxt.js プロジェクトを設定できます。 このチュートリアルでは、新しいプロジェクトではなく、既存のリポジトリをクローンすることで始めます。 このリポジトリは、動的 Nuxt.js アプリを静的サイトとしてデプロイする方法がわかるように設定されています。
 
 1. お使いの GitHub アカウントに、テンプレート リポジトリから新しいリポジトリを作成します。
 1. [http://github.com/staticwebdev/nuxtjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nuxtjs-starter/generate) に移動します
 1. リポジトリに **nuxtjs-starter** という名前を設定します
-1. 次に、新しいリポジトリをお使いのコンピューターに複製します。 <YOUR_GITHUB_ACCOUNT_NAME> は、必ず自分のアカウント名に置き換えてください。
+1. 次に、新しいリポジトリをお使いのコンピューターにクローンします。 <YOUR_GITHUB_ACCOUNT_NAME> は、必ず自分のアカウント名に置き換えてください。
 
     ```bash
     git clone http://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/nuxtjs-starter
     ```
 
-1. 新しく複製された Nuxt.js アプリに移動します。
+1. 新しくクローンされた Nuxt.js アプリに移動します。
 
    ```bash
    cd nuxtjs-starter
