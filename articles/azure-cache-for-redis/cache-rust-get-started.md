@@ -237,9 +237,9 @@ fn sorted_set() {
 }
 ```
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-最初に、GitHub からアプリケーションを複製します。
+最初に、GitHub からアプリケーションをクローンします。
 
 1. コマンド プロンプトを開き、`git-samples` という名前の新しいフォルダーを作成します。
 
@@ -247,13 +247,13 @@ fn sorted_set() {
     md "C:\git-samples"
     ```
 
-1. Git ターミナル ウィンドウ (Git Bash など) を開きます。 `cd` コマンドを使用して、サンプル アプリを複製する新しいフォルダーに移動します。
+1. Git ターミナル ウィンドウ (Git Bash など) を開きます。 `cd` コマンドを使用して、サンプル アプリをクローンする新しいフォルダーに移動します。
 
     ```bash
     cd "C:\git-samples"
     ```
 
-1. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+1. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-redis-cache-rust-quickstart.git
