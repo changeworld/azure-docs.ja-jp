@@ -1,10 +1,10 @@
 ### YamlMime:Yaml
-ms.openlocfilehash: c4f4cb549e1c91b390370b38aba3e211a2453084
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: d67eefeb88752d32518c46ff76ea2127ef968182
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "111907744"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687332"
 metadata:
   title: メンテナンス期間に関する FAQ
   description: Azure SQL Database とマネージド インスタンスのメンテナンス期間を構成する方法についてよく寄せられる質問です。
@@ -43,7 +43,7 @@ sections:
       During a maintenance update, databases are fully available and accessible but some of the maintenance updates require a reconfiguration as Azure takes SQL Databases offline for a short time to apply the maintenance updates (generally a few seconds in duration). Planned maintenance updates occur once every 35 days on average, which means customer can expect approximately one planned maintenance event per month per Azure SQL Database and managed instance, and only during the maintenance window slots selected by the customer.
   - question: Are there any prerequisites for configuring maintenance window?
     answer: >
-      In case of managed instance [additional IP addresses](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios) are needed temporarily, as in scaling vCores scenario for corresponding service tier.
+      In case of managed instance [additional IP addresses](../managed-instance/vnet-subnet-determine-size.md#update-scenarios) are needed temporarily, as in scaling vCores scenario for corresponding service tier.
   - question: In which regions is choosing a maintenance window available?
     answer: >
       For a list of available regions, see [Maintenance window availability](maintenance-window.md#availability).
