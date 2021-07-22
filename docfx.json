@@ -1035,15 +1035,17 @@
           "IoT",
           "Azure IoT Hub"
         ],
-        "articles/iot-pnp/**/*.md": [
+        "articles/iot-develop/**/*.md": [
           "Azure",
           "IoT",
-          "IoT Plug and Play"
+          "IoT Plug and Play",
+          "IoT device devloper"
         ],
-        "articles/iot-pnp/**/*.yml": [
+        "articles/iot-develop/**/*.yml": [
           "Azure",
           "IoT",
-          "IoT Plug and Play"
+          "IoT Plug and Play",
+          "IoT device devloper"
         ],
         "articles/managed-instance-apache-cassandra/**/*.md": [
           "Azure",
