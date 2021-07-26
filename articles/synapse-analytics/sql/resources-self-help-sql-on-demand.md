@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab08832927aeb969175968b8330b4ab54fc887bf
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 848f5f13218fde513bf48575c2f9bb298521d3ad
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071301"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214751"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -41,7 +41,7 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 
 ### <a name="query-fails-because-file-cannot-be-opened"></a>ファイルを開くことができないため、クエリが失敗する
 
-"File cannot be opened because it does not exist or it is used by another process" (ファイルが存在しないか、別のプロセスで使用されているため、開くことができません) というエラーでクエリが失敗したときに、ファイルが存在し、かつ別のプロセスで使用されていないことが確認されている場合は、サーバーレス SQL プールがファイルにアクセスできないことを意味します。 この問題は通常、ファイルにアクセスする権限が Azure Active Directory ID にないために発生します。 サーバーレス SQL プールでは、既定で、Azure Active Directory ID を使用してファイルへのアクセスを試みます。 この問題を解決するには、ファイルにアクセスするための適切な権限を持っている必要があります。 最も簡単な方法は、クエリの対象となるストレージ アカウントに対する "ストレージ BLOB データ共同作成者" ロールを自分に付与することです。 
+"File cannot be opened because it does not exist or it is used by another process" (ファイルが存在しないか、別のプロセスで使用されているため、開くことができません) というエラーでクエリが失敗したときに、ファイルが存在し、かつ別のプロセスで使用されていないことが確認されている場合は、サーバーレス SQL プールがファイルにアクセスできないことを意味します。 この問題が発生するのは、通常、Azure Active Directory ID にファイルへのアクセス権がないか、ファイアウォールによってファイルへのアクセスがブロックされているためです。 サーバーレス SQL プールでは、既定で、Azure Active Directory ID を使用してファイルへのアクセスを試みます。 この問題を解決するには、ファイルにアクセスするための適切な権限を持っている必要があります。 最も簡単な方法は、クエリの対象となるストレージ アカウントに対する "ストレージ BLOB データ共同作成者" ロールを自分に付与することです。 
 - [詳細については、ストレージの Azure Active Directory アクセス制御に関する完全なガイドを参照してください](../../storage/common/storage-auth-aad-rbac-portal.md)。 
 - [「Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する」を参照してください](develop-storage-files-storage-access-control.md)。
 
@@ -438,7 +438,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
 WITH ( FORMAT_TYPE = PARQUET)
 ```
 
-### <a name="operation-operation-name-is-not-allowed-for-a-replicated-database"></a>操作 [[操作名]] は、レプリケートされたデータベースに対して許可されない
+### <a name="operation-is-not-allowed-for-a-replicated-database"></a>操作はレプリケートされたデータベースでは許可されていません。
    
 データベースで SQL オブジェクトやユーザーを作成したり、アクセス許可を変更したりしようとしている場合、"操作 CREATE USER はレプリケートされたデータベースでは許可されていません" のようなエラーが発生する可能性があります。 このエラーは、[Spark プールと共有されている](../metadata/database.md)データベースでオブジェクトを作成しようとすると返されます。 Apache Spark プールからレプリケートされたデータベースは読み取り専用です。 レプリケートされたデータベースに T-SQL を使用して新しいオブジェクトを作成することはできません。
 
@@ -464,6 +464,14 @@ Synapse SQL では、次の場合、トランザクション ストアにある�
 
 `WITH` 句で指定されている値が分析ストレージ内の基になる Cosmos DB の型と一致せず、暗黙的に変換できません。 スキーマで `VARCHAR` 型を使用してください。
 
+### <a name="performance-issues"></a>パフォーマンスの問題
+
+予期しないパフォーマンスの問題が発生している場合は、次のようなベスト プラクティスを適用していることを確認してください。
+- クライアント アプリケーション、サーバーレス プール、および Cosmos DB 分析ストレージを[同じリージョン](best-practices-serverless-sql-pool.md#colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool)に配置したことを確認する。
+- [最適なデータ型](best-practices-serverless-sql-pool.md#use-appropriate-data-types)で `WITH` 句を使用していることを確認する。
+- 文字列述語を使ってデータをフィルター処理するときに、[Latin1_General_100_BIN2_UTF8 照合順序](best-practices-serverless-sql-pool.md#use-proper-collation-to-utilize-predicate-pushdown-for-character-columns)を使用していることを確認する。
+- キャッシュされる可能性があるクエリを繰り返している場合は、[クエリ結果を Azure Data Lake Storage に格納するために CETAS](best-practices-serverless-sql-pool.md#use-cetas-to-enhance-query-performance-and-joins) を使用してみる。
+
 ## <a name="delta-lake"></a>Delta Lake
 
 Delta Lake のサポートは、現在、サーバーレス SQL プールでのパブリック プレビュー中です。 プレビュー中に発生する可能性がある既知の問題があります。
@@ -471,10 +479,9 @@ Delta Lake のサポートは、現在、サーバーレス SQL プールでの�
   - ルート フォルダーには、`_delta_log` という名前のサブフォルダーが必要です。 `_delta_log` フォルダーがない場合、クエリは失敗します。 そのフォルダーがない場合は、Apache Spark プールを使用して [Delta Lake に変換する](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta)必要があるプレーンな Parquet ファイルを参照しています。
   - パーティション スキーマを記述するためにワイルドカードを指定しないでください。 Delta Lake パーティションは、Delta Lake クエリによって自動的に識別されます。 
 - Apache Spark プールで作成された Delta Lake テーブルは、サーバーレス SQL プールでは同期されません。 T-SQL 言語を使用して、Apache Spark プールの Delta Lake テーブルのクエリを実行することはできません。
-- 外部テーブルでは、パーティション分割はサポートされていません。 パーティションの除去を利用するには、Delta Lake フォルダーの[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)を使用します。
-  - Delta Lake の[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)には、`WITH` 句を含む `OPENROWSET` 関数があってはなりません。 プレビューでの既知の問題のため、スキーマ推論を使用し、`WITH` 句を削除する必要があります。
-- サーバーレス SQL プールでは、タイム トラベル クエリまたは Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)または[履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
-- サーバーレス SQL プールでは、`null` または空の値が含まれるパーティションのある Delta Lake データ セットはサポートされていません。 サーバーレス SQL プールでそれを読み取る必要がある場合は、データ セット内の `null` 値または空の値を更新します。
+- 外部テーブルでは、パーティション分割はサポートされていません。 パーティションの除去を利用するには、Delta Lake フォルダーの[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)を使用します。 以下の既知の問題と回避策を参照してください。
+- サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)でこの機能に投票することができます
+- サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)または[履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
 - Delta Lake のサポートは、専用 SQL プールでは使用できません。 Delta Lake ファイルのクエリにはサーバーレス プールを使用していることを確認してください。
 
 [Azure Synapse フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=171048)でアイデアや機能強化を提案できます。
@@ -488,7 +495,28 @@ Msg 13807, Level 16, State 1, Line 6
 Content of directory on path 'https://.....core.windows.net/.../_delta_log/*.json' cannot be listed.
 ```
 
-`_delta_log` フォルダーが存在することを確認します (Delta Lake 形式に変換されていないプレーンな Parquet ファイルのクエリを実行している可能性があります)。 `_delta_log` フォルダーが存在する場合は、基になる Delta Lake フォルダーに対する読み取りおよび一覧表示の両方のアクセス許可を持っていることを確認します。
+`_delta_log` フォルダーが存在することを確認します (Delta Lake 形式に変換されていないプレーンな Parquet ファイルのクエリを実行している可能性があります)。
+
+`_delta_log` フォルダーが存在する場合は、基になる Delta Lake フォルダーに対する読み取りおよび一覧表示の両方のアクセス許可を持っていることを確認します。
+FORMAT='CSV' を使用して直接 \*.json ファイルを読み取ってみます (URI を BULK パラメーターに含める)。
+
+```sql
+select top 10 * 
+from openrowset(BULK 'https://.....core.windows.net/.../_delta_log/*.json', 
+FORMAT='csv', FIELDQUOTE = '0x0b', FIELDTERMINATOR ='0x0b', ROWTERMINATOR = '0x0b') with (line varchar(max)) as logs
+```
+
+このクエリが失敗した場合、呼び出し元には、基になるストレージ ファイルを読み取るためのアクセス許可がありません。 
+
+最も簡単な方法は、クエリの対象となるストレージ アカウントに対する "ストレージ BLOB データ共同作成者" ロールを自分に付与することです。 
+- [詳細については、ストレージの Azure Active Directory アクセス制御に関する完全なガイドを参照してください](../../storage/common/storage-auth-aad-rbac-portal.md)。 
+- [「Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する」を参照してください](develop-storage-files-storage-access-control.md)。
+
+### <a name="partitioning-column-returns-null-values"></a>パーティション分割列から NULL 値が返される
+
+パーティション分割された Delta Lake フォルダーを読み取る `OPENROWSET` 関数でビューを使用している場合は、パーティション分割列の実際の列値の代わりに `NULL` 値を取得することがあります。 既知の問題により、`WITH` 句を持つ `OPENROWSET` 関数ではパーティション分割列を読み取ることができません。 Delta Lake の[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)には、`WITH` 句を含む `OPENROWSET` 関数があってはなりません。 スキーマを明示的に指定しない `OPENROWSET` 関数を使用する必要があります。
+
+**回避策:** ビューで使用される `OPENROWSET` 関数から `WITH` 句を削除します。
 
 ### <a name="query-failed-because-of-a-topology-change-or-compute-container-failure"></a>トポロジの変更またはコンピューティング コンテナーの障害が原因でクエリが失敗する
 
@@ -499,19 +527,42 @@ CREATE DATABASE mydb
     COLLATE Latin1_General_100_BIN2_UTF8;
 ```
 
+master データベースを介して実行されるクエリは、この問題の影響を受けます。
+
+**回避策:** `Latin1_General_100_BIN2_UTF8` データベース照合順序を持つカスタム データベースに対してクエリを実行します。
+
 ### <a name="column-of-type-varchar-is-not-compatible-with-external-data-type-parquet-column-is-of-nested-type"></a>"VARCHAR" 型の列は、外部データ型 "Parquet 列が入れ子にされた型" と互換性がありません
 
-WITH 句を指定せずに (自動スキーマ推論を使用)、入れ子になった型の列が含まれる Delta Lake ファイルを読み取ろうとしています。 スキーマの自動推論は、Delta Lake の入れ子になった列では機能しません。 `WITH` 句を使用し、入れ子になった列に `VARCHAR` 型を明示的に割り当てます。
+WITH 句を指定せずに (自動スキーマ推論を使用)、入れ子になった型の列が含まれる Delta Lake ファイルを読み取ろうとしています。 スキーマの自動推論は、Delta Lake の入れ子になった列では機能しません。
+
+**回避策**: `WITH` 句を使用し、入れ子になった列に `VARCHAR` 型を明示的に割り当てます。
 
 ### <a name="cannot-find-value-of-partitioning-column-in-file"></a>ファイルのパーティション分割列の値が見つからない 
 
-Delta Lake データ セットのパーティション分割列に、`NULL` 値がある可能性があります。 現在、これはサーバーレス SQL プールではサポートされていません。 この場合、次のようなエラーが表示されます。
+Delta Lake データ セットのパーティション分割列に、`NULL` 値がある可能性があります。 これらのパーティションは `HIVE_DEFAULT_PARTITION` フォルダーに格納されます。 現在、これはサーバーレス SQL プールではサポートされていません。 この場合、次のようなエラーが表示されます。
 
 ```
-Resolving Delta logs on path 'https://....core.windows.net/.../' failed with error: Cannot find value of partitioning column '<column name>' in file 'https://......core.windows.net/...../<column name>=__HIVE_DEFAULT_PARTITION__/part-00042-2c0d5c0e-8e89-4ab8-b514-207dcfd6fe13.c000.snappy.parquet'.
+Resolving Delta logs on path 'https://....core.windows.net/.../' failed with error:
+Cannot find value of partitioning column '<column name>' in file 
+'https://......core.windows.net/...../<column name>=__HIVE_DEFAULT_PARTITION__/part-00042-2c0d5c0e-8e89-4ab8-b514-207dcfd6fe13.c000.snappy.parquet'.
 ```
 
-Apache Spark プールを使用して Delta Lake データ セットを更新し、パーティション分割列の `null` ではなく、何らかの値 (空の文字列または `"null"`) を使用してみてください。
+**回避策:** Apache Spark プールを使用して Delta Lake データ セットを更新し、パーティション分割列の `"null"` ではなく、何らかの値 (空の文字列または `null`) を使用してみてください。
+
+## <a name="constraints"></a>制約
+
+ワークロードに影響する可能性があるいくつかの一般的なシステム制約があります。
+
+| プロパティ | 制限事項 |
+|---|---|
+| サブスクリプションあたりの Synapse ワークスペースの最大数 | 20 |
+| サーバーレス プールあたりのデータベースの最大数 | 20 (Apache Spark プールから同期されたデータベースを含まない) |
+| Apache Spark プールから同期されたデータベースの最大数 | 制限なし |
+| データベースあたりのデータベース オブジェクトの最大数 | データベース内のすべてのオブジェクトの合計数は 2,147,483,647 を超えることはできません ([SQL Server データベース エンジンでの制限事項](/sql/sql-server/maximum-capacity-specifications-for-sql-server#objects)に関するページを参照) |
+| 識別子の最大長 (文字数) | 128 ([SQL Server データベース エンジンでの制限事項](/sql/sql-server/maximum-capacity-specifications-for-sql-server#objects)に関するページを参照)|
+| 最大クエリ期間 | 30 分 |
+| 結果セットの最大サイズ | 80 GB (現在実行中のすべての同時クエリ間で共有) |
+| 最大コンカレンシー | 制限はなく、クエリの複雑さとスキャンされたデータの量によって異なります。 1 つのサーバーレス SQL プールで、軽量クエリを実行している 1,000 個のアクティブ セッションを同時に処理できますが、クエリがより複雑な場合、または大量のデータをスキャンする場合は数が減少します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

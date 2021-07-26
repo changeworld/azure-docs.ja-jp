@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 311b6a603d0c68699155510797f1dd75e3cf915a
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 1c18b31e8eb77c6dea2d3cf3a3e99c09d4a7e8b6
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655386"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236051"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>クイックスタート: Node.js で Azure Cache for Redis を使用する
 
@@ -125,7 +125,7 @@ node redistest.js
 クイックスタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイックスタートで作成した Azure リソースを削除することができます。
 
 > [!IMPORTANT]
-> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
+> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホストするためのリソースを、保持するリソースが含まれる既存のリソース グループ内に作成した場合、リソース グループを削除する代わりに、左側で各リソースを個別に削除できます。
 >
 
 [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。

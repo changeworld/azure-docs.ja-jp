@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 06/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6eae4a65412ad922724d4c35b7628b15698ba841
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: bd2bd39839645aa0511a00cc7a6c87c711e33e2b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982936"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294753"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure Automation の新着情報
 
@@ -24,6 +24,14 @@ Azure Automation には継続的に改善が施されています。 常に最�
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
 
 ## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="security-update-for-log-analytics-contributor-role"></a>Log Analytics 共同作成者のセキュリティ更新プログラム
+
+**種類:** 変更の計画
+
+Microsoft は、Log Analytics 共同作成者ロールから Automation アカウントの権限を削除する予定です。 現在、組み込みの [Log Analytics 共同作成者](./automation-role-based-access-control.md#log-analytics-contributor) ロールは特権をサブスクリプションの [Contributor](./../role-based-access-control/built-in-roles.md#contributor) ロールに昇格させることができます。 Automation アカウントの実行アカウントは最初、サブスクリプションの共同作成者権限で構成されるため、攻撃者がそれを利用し、サブスクリプションの共同作成者として新しい Runbook を作成し、コードを実行できます。
+
+このセキュリティ リスクの結果として、Log Analytics 共同作成者ロールを利用して Automation ジョブを実行しないことをお勧めします。 代わりに、Azure Automation 共同作成者カスタム ロールを作成し、Automation アカウント関連のアクションに利用してください。 実装手順については、[Azure Automation 共同作成者カスタム ロール](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)に関するページを参照してください。
 
 ### <a name="support-for-automation-and-state-configuration-available-in-west-us-3"></a>米国西部 3 で利用可能な Automation と State Configuration のサポート
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: bcb37c624f53d961020de022569a621ca1dfaba1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8ec795e7ad54d2101573d857fa52b5aaad0ed71d
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788995"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032395"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して IoT Hub デバイス プロビジョニング サービス (DPS) を設定する
 
@@ -25,7 +25,7 @@ ms.locfileid: "107788995"
 
 自分の環境が前提条件を満たしていて、ARM テンプレートを既に使い慣れている場合は、下の **[Deploy to Azure]\(Azure にデプロイ\)** ボタンを選択すると、Azure portal でデプロイ用のテンプレートが開きます。
 
-[![概要の [Deploy to Azure]\(Azure にデプロイ\)](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-iothub-device-provisioning%2fazuredeploy.json)
+[![概要の [Deploy to Azure]\(Azure にデプロイ\)](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2Fquickstarts%2Fmicrosoft.devices%2Fiothub-device-provisioning%2fazuredeploy.json)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,12 +34,12 @@ ms.locfileid: "107788995"
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/iothub-device-provisioning/)からのものです。
 
 > [!NOTE]
 > 現在、新しい DPS リソースで加入契約を作成するための ARM テンプレートのサポートはありません。 その機能を希望する声が多く寄せられていることから現在、実装を検討中です。
 
-:::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.devices/iothub-device-provisioning/azuredeploy.json":::
 
 上記のテンプレートでは、次の 2 つの Azure リソースが定義されています。
 
@@ -53,7 +53,7 @@ ms.locfileid: "107788995"
 
 1. 次の画像を選択して Azure にサインインし、デプロイ用のテンプレートを開きます。 このテンプレートにより、新しい IoT ハブと DPS リソースが作成されます。 ハブは DPS リソースにリンクされます。
 
-    [![ポータルの手順の [Deploy to Azure]\(Azure にデプロイ\)](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-iothub-device-provisioning%2fazuredeploy.json)
+    [![ポータルの手順の [Deploy to Azure]\(Azure にデプロイ\)](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2Fquickstarts%2Fmicrosoft.devices%2Fiothub-device-provisioning%2fazuredeploy.json)
 
 2. 次の値を選択または入力し、 **[Review + Create]\(確認および作成\)** をクリックします。
 
@@ -114,7 +114,7 @@ Azure アカウントにサインインしてサブスクリプションを選�
     ```azurecli-interactive
     read -p "Enter a project name that is used for generating resource names:" projectName &&
     read -p "Enter the location (i.e. centralus):" location &&
-    templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-iothub-device-provisioning/azuredeploy.json" &&
+    templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.devices/iothub-device-provisioning/azuredeploy.json" &&
     resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
     az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&

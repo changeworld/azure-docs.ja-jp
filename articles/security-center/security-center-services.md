@@ -5,14 +5,15 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 05/13/2021
+ms.date: 06/17/2021
+ms.custom: references_regions
 ms.author: memildin
-ms.openlocfilehash: b68a9946908697d6e9113af586a134b0b3d8784a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 05b535a0aabe0108c0a9abcedef166293541d407
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468341"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005476"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -98,41 +99,65 @@ ms.locfileid: "110468341"
 
 
 
-## <a name="feature-support-in-government-clouds"></a>Government クラウドでの機能のサポート
+## <a name="feature-support-in-government-and-sovereign-clouds"></a>政府機関クラウドとソブリン クラウドでの機能のサポート
 
-| サービスまたは機能 | US Gov | China Gov |
-|------|:----:|:----:|
-|[Just-In-Time VM アクセス](security-center-just-in-time.md) (1)|✔|✔|
-|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md) (1)|✔|✔|
-|[適応型アプリケーション制御](security-center-adaptive-application.md) (1)|✔|✔|
-|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md) (1)|-|-|
-|[Docker ホストのセキュリティ強化機能](harden-docker-hosts.md) (1)|✔|✔|
-|[マシンに対する統合された脆弱性評価](deploy-vulnerability-assessment-vm.md) (1)|-|-|
-|[Microsoft Defender for Endpoint](harden-docker-hosts.md) (1)|✔|-|
-|[AWS アカウントを接続する](quickstart-onboard-aws.md) (1)|-|-|
-|[GCP アカウントを接続する](quickstart-onboard-gcp.md) (1)|-|-|
-|[連続エクスポート](continuous-export.md)|✔|✔|
-|[ワークフローの自動化](workflow-automation.md)|✔|✔|
-|[推奨事項の除外規則](exempt-resource.md)|-|-|
-|[アラートの抑制ルール](alerts-suppression-rules.md)|✔|✔|
-|[セキュリティ アラートのメール通知](security-center-provide-security-contact-details.md)|✔|✔|
-|[資産インベントリ](asset-inventory.md)|✔|✔|
-|[Azure Defender for App Service](defender-for-app-service-introduction.md)|-|-|
-|[Azure Defender for Storage](defender-for-storage-introduction.md)|✔|-|
-|[Azure Defender for SQL](defender-for-sql-introduction.md)|✔|✔ (2)|
-|[Azure Defender for Key Vault](defender-for-key-vault-introduction.md)|-|-|
-|[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)|-|-|
-|[Azure Defender for DNS](defender-for-dns-introduction.md)|-|-|
-|[Azure Defender for container registries](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
-|[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔|✔|
-|[オープンソース リレーショナル データベース用 Azure Defender](defender-for-databases-introduction.md)|-|-|
-|[Kubernetes ワークロード保護](kubernetes-workload-protections.md)|✔|✔|
-|||
+| 機能とサービス                                                                                                                                                             | Azure          | 米国政府                  | Azure 中国   |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|---------------|
+| **Security Center の無料機能**                                                                                                                                           |                |                                |               |
+| - [連続エクスポート](/azure/security-center/continuous-export)                                                                                                             | GA             | GA                             | GA            |
+| - [ワークフローの自動化](/azure/security-center/continuous-export)                                                                                                           | GA             | GA                             | GA            |
+| - [推奨事項の除外規則](/azure/security-center/exempt-resource)                                                                                                  | パブリック プレビュー | 利用不可                  | 利用不可 |
+| - [アラートの抑制ルール](/azure/security-center/alerts-suppression-rules)                                                                                                | GA             | GA                             | GA            |
+| - [セキュリティ アラートのメール通知](/azure/security-center/security-center-provide-security-contact-details)                                                        | GA             | GA                             | GA            |
+| - [エージェントと拡張機能の自動プロビジョニング](/azure/security-center/security-center-enable-data-collection)                                                              | GA             | GA                             | GA            |
+| - [資産インベントリ](/azure/security-center/asset-inventory)                                                                                                                 | GA             | GA                             | GA            |
+| - [Azure Security Center のブック ギャラリーの Azure Monitor ブック レポート](/azure/security-center/custom-dashboards-azure-workbooks)                                  | GA             | GA                             | GA            |
+| **Azure Defender のプランと拡張機能**                                                                                                                                     |                |                                |               |
+| - [Azure Defender for servers](/azure/security-center/defender-for-servers-introduction)                                                                                    | GA             | GA                             | GA            |
+| - [Azure Defender for App Service](/azure/security-center/defender-for-app-service-introduction)                                                                            | GA             | 利用不可                  | 利用不可 |
+| - [Azure Defender for DNS](/azure/security-center/defender-for-dns-introduction)                                                                                            | GA             | 利用不可                  | 利用不可 |
+| - [コンテナー レジストリ用 Azure Defender](/azure/security-center/defender-for-container-registries-introduction) <sup>[1](#footnote1)</sup>                               | GA             | GA  <sup>[2](#footnote2)</sup> | GA  <sup>[2](#footnote2)</sup> |
+| - [CI/CD ワークフロー内の画像をスキャンするコンテナー レジストリ用 Azure Defender](/azure/security-center/defender-for-container-registries-cicd) <sup>[3](#footnote3)</sup> | パブリック プレビュー | 利用不可                  | 利用不可 |
+| - [Azure Defender for Kubernetes](/azure/security-center/defender-for-kubernetes-introduction) <sup>[4](#footnote4)</sup>                                                   | GA             | GA                             | GA            |
+| - [Azure Arc 対応 Kubernetes クラスター用 Azure Defender 拡張機能](/azure/security-center/defender-for-kubernetes-azure-arc) <sup>[5](#footnote5)</sup>                 | パブリック プレビュー | 利用不可                  | 利用不可 |
+| - [Azure SQL データベース サーバー用 Azure Defender](/azure/security-center/defender-for-sql-introduction)                                                                     | GA             | GA                             | GA  <sup>[9](#footnote9)</sup> |
+| - [Azure Defender for SQL servers on machines](/azure/security-center/defender-for-sql-introduction)                                                                        | GA             | GA                             | 利用不可 |
+| - [オープンソース リレーショナル データベース用 Azure Defender](/azure/security-center/defender-for-databases-introduction)                                                         | GA             | 利用不可                  | 利用不可 |
+| - [Azure Defender for Key Vault](/azure/security-center/defender-for-key-vault-introduction)                                                                                | GA             | 利用不可                  | 利用不可 |
+| - [Azure Defender for Resource Manager](/azure/security-center/defender-for-resource-manager-introduction)                                                                  | GA             | パブリック プレビュー                 | 利用不可 |
+| - [Azure Defender for Storage](/azure/security-center/defender-for-storage-introduction) <sup>[6](#footnote6)</sup>                                                         | GA             | GA                             | 利用不可 |
+| - [Threat protection for Cosmos DB](/azure/security-center/other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                       | パブリック プレビュー | 利用不可                  | 利用不可 |
+| - [Kubernetes ワークロード保護](/azure/security-center/kubernetes-workload-protections)                                                                                  | GA             | GA                             | GA            |
+| **Azure Defender for servers features** <sup>[7](#footnote7)</sup>                                                                                                          |                |                                |               |
+| - [Just-In-Time VM アクセス](/azure/security-center/security-center-just-in-time)                                                                                             | GA             | GA                             | GA            |
+| - [ファイルの整合性の監視](/azure/security-center/security-center-file-integrity-monitoring)                                                                             | GA             | GA                             | GA            |
+| - [適応型アプリケーション制御](/azure/security-center/security-center-adaptive-application)                                                                              | GA             | GA                             | GA            |
+| - [アダプティブ ネットワークのセキュリティ強化機能](/azure/security-center/security-center-adaptive-network-hardening)                                                                           | GA             | 利用不可                  | 利用不可 |
+| - [Docker ホストのセキュリティ強化機能](/azure/security-center/harden-docker-hosts)                                                                                                       | GA             | GA                             | GA            |
+| - [マシンに対する統合された脆弱性評価](/azure/security-center/deploy-vulnerability-assessment-vm)                                                             | GA             | 利用不可                  | 利用不可 |
+| - [規制へのコンプライアンス ダッシュボードおよびレポート](/azure/security-center/security-center-compliance-dashboard) <sup>[8](#footnote8)</sup>                                       | GA             | GA                             | GA            |
+| - [Microsoft Defender for Endpoint のデプロイと統合ライセンス](/azure/security-center/security-center-wdatp)                                                         | GA             | GA                             | 利用不可 |
+| - [AWS アカウントを接続する](/azure/security-center/quickstart-onboard-aws)                                                                                                      | GA             | 利用不可                  | 利用不可 |
+| - [GCP アカウントを接続する](/azure/security-center/quickstart-onboard-gcp)                                                                                                      | GA             | 利用不可                  | 利用不可 |
+|                                                                                                                                                                             |                |                                |
 
-(1) **Azure Defender for servers** が必要
+<sup><a name="footnote1" /></a>1</sup> 部分的に GA: 脆弱性スキャンで発見された特定の項目を無効にする機能はパブリック プレビュー段階です。
 
-(2) 部分的
+<sup><a name="footnote2" /></a>2</sup> Azure Gov 上のコンテナー レジストリの脆弱性スキャンは、スキャン オン プッシュ機能でのみ実行できます。
 
+<sup><a name="footnote3" /></a>3</sup> コンテナー レジストリ用 Azure Defender が必要です。
+
+<sup><a name="footnote4" /></a>4</sup> 部分的に GA: Arc 対応クラスターのサポートはパブリック プレビュー段階であり、Azure Government では使用できません。
+
+<sup><a name="footnote5" /></a>5</sup> Azure Defender for Kubernetes が必要です。
+
+<sup><a name="footnote6" /></a>6</sup> 部分的に GA: Azure Defender for Storage の脅威保護アラートの一部はパブリック プレビュー段階です。
+
+<sup><a name="footnote7" /></a>7</sup> これらの機能には、すべて [Azure Defender for servers](/azure/security-center/defender-for-servers-introduction) が必要です。
+
+<sup><a name="footnote8" /></a>8</sup> クラウドの種類ごとに提供される標準が異なる場合があります。
+ 
+<sup><a name="footnote9" /></a>9</sup> 部分的に GA: SQL サーバーのアラートと脆弱性評価のサブセット。 Behavioral Threat Protection は使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

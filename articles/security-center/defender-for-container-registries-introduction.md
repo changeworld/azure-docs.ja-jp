@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 282777a692b7b0fe54415ef09c2cf1879868dd3b
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: f11a9391b0a4f467cba41724b1d15493f1393201
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854434"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992137"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -53,14 +53,14 @@ Security Center では、スキャナーによる検出結果がフィルター�
  
 通常、スキャンは 2 分以内に完了しますが、最大で 15 分かかる場合もあります。 結果は、Security Center の推奨事項として、次のように表示されます。
 
-[![Azure Container Registry (ACR) でホストされるイメージで検出された脆弱性に関する Azure Security Center の推奨事項のサンプル](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![Azure コンテナー レジストリ (ACR) でホストされるイメージで検出された脆弱性に関する Azure Security Center の推奨事項のサンプル。](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 
 ## <a name="how-does-security-center-work-with-azure-container-registry"></a>Security Center では Azure Container Registry がどのように使用されていますか。
 
 コンポーネントの概要図、および Security Center でレジストリを保護する利点を次に示します。
 
-![Azure Security Center と Azure Container Registry (ACR) の概要](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+![Azure Security Center と Azure Container Registry (ACR) の概要。](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 
 
@@ -88,8 +88,6 @@ Security Center では、スキャナーによる検出結果がフィルター�
 ### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>レジストリに含まれていないイメージに関する脆弱性に対して、Security Center の警告が表示されるのはなぜですか。
 レジストリにプッシュまたはプルされたすべてのイメージに対して、Security Center による脆弱性評価が提供されています。 イメージの中には、既にスキャンされたイメージのタグを再利用しているものもあります。 たとえば、ダイジェストにイメージを追加するたびに "Latest" (最新) タグを再割り当てする場合があります。 このような場合は、"古い" イメージは引き続きレジストリに存在し、そのダイジェストによってプルされる可能性があります。 イメージにセキュリティの調査結果があり、プルされた場合は、セキュリティの脆弱性が明らかになります。
 
-### <a name="what-should-i-do-if-the-scan-results-for-my-image-arent-shown"></a>イメージのスキャン結果が表示されない場合はどうすればよいですか。
-数分待っても結果が表示されない場合は、イメージをもう一度プッシュして新しいスキャンをトリガーしてみてください。 引き続き表示されない場合は、サポート チームにお問い合わせください。 
 
 ## <a name="next-steps"></a>次のステップ
 

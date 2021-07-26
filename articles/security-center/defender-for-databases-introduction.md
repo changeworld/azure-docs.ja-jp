@@ -7,12 +7,12 @@ ms.date: 05/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: eb460fc214cd9dfb65e1ef500cfc3c152452030e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: eddab19cb46d27d0d48d1f2376cd9507b28cefc8
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483208"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003622"
 ---
 # <a name="introduction-to-azure-defender-for-open-source-relational-databases"></a>オープンソース リレーショナル データベース用 Azure Defender の概要
 
@@ -33,7 +33,7 @@ Azure Defender により、データベースへのアクセスやその悪用�
 | PostgreSQL の保護されたバージョン:  | 単一サーバー - 汎用とメモリ最適化。 詳細については、[PostgreSQL の価格レベル](../postgresql/concepts-pricing-tiers.md)に関する記事を参照してください。   |
 | MySQL の保護されたバージョン:       | 単一サーバー - 汎用とメモリ最適化。 詳細については、[MySQL の価格レベル](../mysql/concepts-pricing-tiers.md)に関する記事を参照してください。                        |
 | MariaDB の保護されたバージョン:     | 汎用とメモリ最適化。 詳細については、[MariaDB の価格レベル](../mariadb/concepts-pricing-tiers.md)に関する記事を参照してください。                      |
-| クラウド:                            | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov) |
+| クラウド:                            | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) National/Sovereign (US Gov、Azure China) |
 |                                    |                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-open-source-relational-databases"></a>オープンソース リレーショナル データベース用 Azure Defender の利点

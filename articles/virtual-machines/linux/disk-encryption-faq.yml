@@ -10,12 +10,12 @@ metadata:
   ms.author: mbaldwin
   ms.date: 06/05/2019
   ms.custom: seodec18
-  ms.openlocfilehash: 2c16b3b0f75a00d045edbfebdeaf12216074b92f
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.openlocfilehash: ad41c27a7a0c3c3de92938fafd9d05b119a52379
+  ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112063709"
+  ms.lasthandoff: 06/21/2021
+  ms.locfileid: "112416467"
 title: Linux VM に対する Azure Disk Encryption に関する FAQ
 summary: >
   この記事では、Linux 仮想マシン (VM) に対する Azure Disk Encryption についてよく寄せられる質問 (FAQ) への回答を示します。 このサービスの詳細については、「[Azure Disk Encryption の概要](disk-encryption-overview.md)」をご覧ください。
@@ -143,6 +143,9 @@ sections:
 
 
       XFS データ ディスクの暗号化は、EncryptFormatAll パラメーターが使用されている場合にのみサポートされます。 ボリュームが再フォーマットされ、そのボリューム上の以前のデータがすべて消去されます。 詳細については、「[EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)」を参照してください。
+  - question: >
+      OS パーティションのサイズは変更できますか?
+    answer: "ADE で暗号化された OS ディスクのサイズは現在のところ変更できません。\n          \n"
   - question: "暗号化された VM をバックアップおよび復元することはできますか。 \n"
     answer: "Azure Backup には、同じサブスクリプションおよびリージョン内の暗号化された VM をバックアップおよび復元するメカニズムが用意されています。  手順については、「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する](../../backup/backup-azure-vms-encryption.md)」をご覧ください。  暗号化された VM を別のリージョンに復元することは、現在サポートされていません。  \n"
   - question: >
