@@ -33,7 +33,7 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら
 
 ## <a name="about-out-of-the-box-detections"></a>難しい設定の要らない検出機能について
 
-難しい設定の要らない検出機能をすべて表示するには、 **[Analytics]** 、 **[Rule templates]\(ルール テンプレート\)** の順に選択します。 このタブには、すべての Azure Sentinel 組み込み規則が含まれています。
+難しい設定の要らない検出機能をすべて表示するには、 **[Analytics]\(分析\)** 、 **[Rule templates]\(ルール テンプレート\)** の順に選択します。 このタブには、すべての Azure Sentinel 組み込み規則が含まれています。
 
    :::image type="content" source="media/tutorial-detect-built-in/view-oob-detections.png" alt-text="Azure Sentinel の組み込みの検出機能を利用して脅威を検出する":::
 
