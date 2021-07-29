@@ -9,29 +9,37 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 03/10/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ad8cce8375ecd670a481541a091e36aacb41240
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: fa9a7b08f792c36ecf0f65e37f2f9e9c551bca8c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505294"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088140"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory で管理単位のグループを追加して管理する
 
 Azure Active Directory (Azure AD) では、きめ細かい管理スコープで制御するために、グループを管理単位に追加できます。
 
-管理単位の管理に PowerShell や Microsoft Graph を使用するよう準備するには、「[はじめに](admin-units-manage.md#get-started)」を参照してください。
+## <a name="prerequisites"></a>前提条件
+
+- 管理単位の各管理者に対する Azure AD Premium P1 または P2 ライセンス
+- 管理単位のメンバーに対する Azure AD Free ライセンス
+- 特権ロール管理者またはグローバル管理者
+- PowerShell を使用する場合は、AzureAD モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合は、管理者の同意
+
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="add-groups-to-an-administrative-unit"></a>管理単位にグループを追加する
 
 管理単位にグループを追加するには、Azure portal、PowerShell、または Microsoft Graph を使用します。
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 管理単位には、グループを個別で割り当てることしかできません。 グループを一括操作として割り当てるオプションはありません。 Azure portal では、次の 2 つの方法のいずれかを使用して、管理単位にグループを割り当てることができます。
 
@@ -60,7 +68,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
   1. 管理単位に割り当てる 1 つまたは複数のグループを選択し、 **[選択]** ボタンを選択します。
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 次の例では、`Add-AzureADMSAdministrativeUnitMember` コマンドレットを使用して、グループを管理単位に追加します。 管理単位のオブジェクト ID と追加するグループのオブジェクト ID を引数として指定できます。 実際の環境に合わせて、必要に応じて強調表示されているセクションを変更します。
 
@@ -71,7 +79,7 @@ $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
 Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $GroupObj.ObjectId
 ```
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 次のコマンドを実行します。
 
@@ -81,7 +89,7 @@ Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $GroupOb
 POST /administrativeUnits/{admin-unit-id}/members/$ref
 ```
 
-Body
+本文
 
 ```http
 {
@@ -99,7 +107,7 @@ Body
 
 ## <a name="view-a-list-of-groups-in-an-administrative-unit"></a>管理単位内のグループの一覧を表示する
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 1. Azure portal で、**Azure AD** に移動します。
 
@@ -109,7 +117,7 @@ Body
 
    ![[グループ] ウィンドウのスクリーンショット。管理単位内のグループの一覧が示されています。](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 管理単位のすべてのメンバーの一覧を表示するには、次のコマンドを実行します。 
 
@@ -130,7 +138,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 ```
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 次のコマンドを実行します。
 
@@ -140,7 +148,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 GET /directory/administrativeUnits/{admin-unit-id}/members/$/microsoft.graph.group
 ```
 
-Body
+本文
 
 ```http
 {}
@@ -148,7 +156,7 @@ Body
 
 ## <a name="view-a-list-of-administrative-units-for-a-group"></a>グループの管理単位の一覧を表示する
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 1. Azure portal で、**Azure AD** に移動します。
 
@@ -160,7 +168,7 @@ Body
 
    ![[管理単位] ウィンドウのスクリーンショット。グループが割り当てられている管理単位の一覧が表示されています。](./media/admin-units-add-manage-groups/list-group-au.png)
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 次のコマンドを実行します。
 
@@ -168,7 +176,7 @@ Body
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
 ```
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 次のコマンドを実行します。
 
@@ -178,7 +186,7 @@ https://graph.microsoft.com/v1.0/groups/{group-id}/memberOf/$/Microsoft.Graph.Ad
 
 ## <a name="remove-a-group-from-an-administrative-unit"></a>管理単位からグループを削除する
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 次の 2 つの方法のいずれかを使用して、Azure portal で管理単位からグループを削除できます。
 
@@ -200,7 +208,7 @@ https://graph.microsoft.com/v1.0/groups/{group-id}/memberOf/$/Microsoft.Graph.Ad
 
     ![[グループ] ウィンドウのスクリーンショット。管理単位内のグループの一覧が示されています。](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 次のコマンドを実行します。
 
@@ -208,7 +216,7 @@ https://graph.microsoft.com/v1.0/groups/{group-id}/memberOf/$/Microsoft.Graph.Ad
 Remove-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitId -MemberId $memberGroupObjId
 ```
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 次のコマンドを実行します。
 

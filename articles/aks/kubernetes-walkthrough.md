@@ -13,12 +13,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: 8adfd1a6e26a3381653ca9a794b124e201b9d481
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 9814037b9a4ace0a5f39d6ab0b01d1d940fb00fa
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106723"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991984"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -38,6 +38,7 @@ Windows Server ノード プールの作成の詳細については、[Windows S
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - この記事では、Azure CLI のバージョン 2.0.64 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+- クラスターの作成に使用している ID には、適切な最小限のアクセス許可が与えられています。 AKS のアクセスと ID の詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション](concepts-identity.md)」を参照してください。
 
 > [!NOTE]
 > このクイックスタートのコマンドを、Azure Cloud Shell ではなくローカルで実行する場合は、管理者としてコマンドを実行してください。

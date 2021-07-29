@@ -13,12 +13,12 @@ ms.custom:
 - seo-java-september2019
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 7128ff1e20439c57d3e6212f29e6f871997584c6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 107e56ccb105981d112ad765f95c85a884994355
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538601"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234737"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>クイックスタート: Java で Azure Cache for Redis を使用する
 
@@ -158,7 +158,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。 
 
 > [!IMPORTANT]
-> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
+> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホストするためのリソースを、保持するリソースが含まれる既存のリソース グループ内に作成した場合、リソース グループを削除する代わりに、左側で各リソースを個別に削除できます。
 >
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。

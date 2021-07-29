@@ -5,27 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 06/15/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77305f9f2216adba8fb46cf2d4ee6b0da8c10e5f
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955401"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105995"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
 Identity Protection は、組織が次の 3 つの主要なタスクを実行できるツールです。
 
-- ID ベースのリスクの検出と修復を自動化します。
-- ポータルのデータを使用してリスクを調査します。
-- 詳細な分析のために、サードパーティ製ユーティリティにリスク検出データをエクスポートします。
+- [ID ベースのリスクの検出と修復を自動化します](howto-identity-protection-configure-risk-policies.md)。
+- ポータルのデータを使用して[リスクを調査](howto-identity-protection-investigate-risk.md)します。
+- [リスク検出データを SIEM にエクスポートします](../../sentinel/connect-azure-ad-identity-protection.md)。
 
 Identity Protection は、Azure AD により組織について、Microsoft アカウントによりコンシューマー領域について、そして Xbox によりゲームについて得られた学習内容を使用して、ユーザーを保護します。 Microsoft は、脅威を特定し顧客を保護するために、1 日あたり 6 兆 5000 億の信号を分析します。
 
@@ -45,22 +45,17 @@ Microsoft の ID セキュリティと保護チームを主導する Alex Weiner
 
 ## <a name="risk-detection-and-remediation"></a>リスクの検出と修復
 
-Identity Protection は、次の分類のリスクを識別します。
+Identity Protection によって次のようなさまざまな種類のリスクが特定されます。
 
-| リスク検出の種類 | 説明 |
-| --- | --- |
-| 匿名 IP アドレス | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)。 |
-| 特殊な移動 | ユーザーの最近のサインインに基づき特殊と判断された場所からのサインイン。 |
-| マルウェアにリンクした IP アドレス | マルウェアにリンクした IP アドレスからのサインイン |
-| 通常とは異なるサインイン プロパティ | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。 |
-| 資格情報の漏洩 | ユーザーの有効な資格情報が漏洩したことを示します。 |
-| パスワード スプレー | ブルート フォースを束ねた手法で、複数のユーザー名が共通のパスワードを使用して攻撃されていることを示します。 |
-| Azure AD 脅威インテリジェンス | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました。 |
-| 初めての国 | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) によって検出されます。 |
-| 匿名 IP アドレスからのアクティビティ | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) によって検出されます。 |
-| 受信トレイからの疑わしい転送 | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) によって検出されます。 |
+- 匿名 IP アドレスの使用
+- 特殊な移動
+- マルウェアにリンクした IP アドレス
+- 通常とは異なるサインイン プロパティ
+- 漏洩した資格情報
+- パスワード スプレー
+- その他...
 
-これらのリスクとその計算方法の詳細については、「[リスクとは](concept-identity-protection-risks.md)」を説明する記事を参照してください。
+上記とその他のリスクに関する詳細 (計算方法や計算するタイミングなど) は「[リスクとは](concept-identity-protection-risks.md)」という記事に記載されています。
 
 リスク シグナルは、Azure AD Multi-Factor Authentication の実行、セルフサービス パスワード リセットを使用したパスワードのリセット、管理者がアクションを実行するまでのブロックなど、修復作業をトリガーすることができます。
 

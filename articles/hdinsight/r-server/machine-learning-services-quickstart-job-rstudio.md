@@ -4,15 +4,17 @@ description: このクイックスタートでは、RStudio Server を使用し�
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
-ms.custom: mvc
-ms.openlocfilehash: 8abd485bff885868d7865cf273cb161974106013
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7c50088b1e54c289107a040141a62cd312cb942e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104862835"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299431"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>クイックスタート: RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark と Apache Hadoop MapReduce を使用して、分散計算を実行できます。 ML Services では、コンピューティング コンテキストを設定することによって呼び出しの実行方法が制御されます。 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、RevoScaleR の並列化された分散関数を実行できます。 また、RevoScaleR の Hadoop Map Reduce または Apache Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
@@ -141,7 +143,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
     
       ---
     
-      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

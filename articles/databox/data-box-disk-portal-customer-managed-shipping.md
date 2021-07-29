@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/08/2021
+ms.date: 06/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6323a077596a7ed13384bfbaace929b270c2d3f5
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 66ff9018371de309b61824895492335e0d3bb763
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754481"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112517656"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal で Azure Data Box Disk の自己管理型の発送を使用する
 
@@ -64,7 +64,7 @@ Data Box Disk を注文するときに、自己管理型の発送オプション
    - Order name
    - Company name
    - Company legal name (if different) 
-   - Tax ID 
+   - CNPJ (Business Tax ID, format: 00.000.000/0000-00) or CPF (Individual Tax ID, format: 000.000.000-00)
    - Address 
    - Country 
    - Phone number 
@@ -83,11 +83,11 @@ Data Box Disk を注文するときに、自己管理型の発送オプション
 
    デバイスを受け取るユーザーは、以下を用意する必要があります。
 
-   * データセンターへの来訪に関する Microsoft Operations からの確認メールのコピー。
+   * データセンターに来訪するための、Microsoft Operations からの確認メールのコピー。
 
-   * 承認コード。 参照番号は、受け取りまたは返却に対して固有であり、データセンターで検証されます。
+   * 承認コード。 参照番号は、受け取りまたは返却ごとに固有であり、データセンターでの確認に使用されます。
 
-   * 政府発行の写真付きの ID。 ID はデータセンターで検証されます。受け取りをスケジュールするとき、デバイスを受け取るユーザーの名前と詳細を提供する必要があります。
+   * 政府発行の写真付きの ID。 ID はデータセンターでの確認に使用されます。受け取りのスケジュールを設定する際に、デバイスを受け取るユーザーの名前と詳細を指定する必要があります。
 
    > [!NOTE]
    > スケジュールした予約を忘れた場合、新しい予約をスケジュールする必要があります。

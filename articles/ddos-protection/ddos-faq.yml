@@ -1,0 +1,87 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure DDoS Protection Standard のよくあるご質問
+  description: Azure DDoS Protection Standard についてよく寄せられる質問です。DDoS 攻撃に対する防御に役立ちます。
+  services: virtual-network
+  documentationcenter: na
+  author: aletheatoh
+  ms.service: virtual-network
+  ms.devlang: na
+  ms.topic: article
+  ms.tgt_pltfrm: na
+  ms.workload: infrastructure-services
+  ms.date: 10/28/2020
+  ms.author: yitoh
+  ms.openlocfilehash: 54f412f1ec416ab1ab8c1c13f338565e7b97720d
+  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113107187"
+title: Azure DDoS Protection Standard のよくあるご質問
+summary: この記事では、Azure DDoS Protection Standard についてよく寄せられる質問にお答えします。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      分散型サービス拒否 (DDoS) 攻撃とはどのようなものですか?
+    answer: >
+      分散型サービス拒否 (DDoS) は、アプリケーションで処理できるより多くの要求が攻撃者によってアプリケーションに送信される攻撃の一種です。 結果として、リソースが枯渇し、アプリケーションの可用性と顧客にサービスを提供できる機能に影響するようになります。 この数年で、業界では攻撃が大幅に増加しており、攻撃はますます高度で大規模になっています。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
+  - question: >
+      Azure DDoS Protection Standard サービスとはどのようなものですか?
+    answer: >
+      Azure DDoS Protection Standard は、アプリケーションの設計に関するベスト プラクティスと組み合わせることにより、DDoS 攻撃から保護するための強化された DDoS 軽減機能が提供されます。 この機能は、仮想ネットワーク内にあるお客様固有の Azure リソースを保護するために、自動的に調整されます。 保護は新規または既存の仮想ネットワークで簡単に有効にでき、アプリケーションやリソースの変更は必要ありません。 ログ、アラート、テレメトリなど、基本サービスにはない利点がいくつかあります。 詳細については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 
+  - question: >
+      価格体系について
+    answer: "DDoS 保護プランには、1 か月あたり $2,944 の固定月額料金が適用されます。これは、最大 100 のパブリック IP アドレスに対応しています。 追加のリソースを保護すると、1 か月あたりリソースごとに $30 の追加料金が発生します。 \n\nテナントの場合、複数のサブスクリプションに対して 1 つの DDoS 保護プランを使用できるため、複数の DDoS 保護プランを作成する必要はありません。\n\nDDoS 防御の VNet に Application Gateway と WAF が展開されるとき、WAF に対する追加の課金はありません。Application Gateway に対しては[低い非 WAF 料金](https://azure.microsoft.com/pricing/details/application-gateway/)を支払います。 これは Application Gateway v1 および v2 SKU に適用されます。\n\n詳細については、[Azure DDoS Protection Standard の価格](https://azure.microsoft.com/pricing/details/ddos-protection/)に関するページを参照してください。\n"
+  - question: >
+      サービスにゾーン回復性はありますか?
+    answer: >
+      はい。 既定では、Azure DDoS Protection はゾーン回復性を備えています。
+  - question: >
+      サービスにゾーン回復性を構成するにはどのようにすればよいですか?
+    answer: >
+      ゾーン回復性を有効にするために、顧客による構成は必要ありません。 Azure DDoS Protection リソースのゾーン回復性は、既定で使用でき、サービス自体によって管理されます。
+  - question: >
+      サービス レイヤー (レイヤー 7) での保護とはどのようなものですか?
+    answer: >
+      お客様は、Azure DDoS Protection サービスと Web Application Firewall (WAF) を組み合わせて使用し、ネットワーク レイヤー (レイヤー 3 と 4、Azure DDoS Protection Standard によって提供されます) とアプリケーション レイヤー (レイヤー 7、WAF によって提供されます) の両方で保護を行うことができます。 WAF オファリングには、Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に加えて、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) で利用できるサードパーティの Web アプリケーション ファイアウォール オファリングが含まれています。
+  - question: >
+      このサービスを使用しないと Azure のサービスが安全ではくなりますか?
+    answer: "Azure で実行されているサービスは、Azure のインフラストラクチャを保護するために導入されている Azure DDoS Protection Basic によって本質的に保護されています。 ただし、インフラストラクチャに対する保護の場合、ほとんどのアプリケーションで処理できる容量よりはるかに高いしきい値を持ち、テレメトリやアラートが提供されないため、トラフィック量がプラットフォームによって無害であると認識されても、それを受信するアプリケーションにとっては壊滅的になる可能性があります。 \n\nAzure DDoS Protection Standard サービスにオンボードすることで、アプリケーションには、攻撃とアプリケーション固有のしきい値を検出するための専用の監視が提供されます。 サービスは、予想されるトラフィック量に合わせて調整されたプロファイルを使用して保護され、DDoS 攻撃に対する防御は、はるかに厳しくなります。\n"
+  - question: >
+      どのようなリソースの種類が保護対象としてサポートされていますか?
+    answer: >
+      現在、ARM ベースの VNET でのパブリック IP が、保護されるリソースの唯一の種類です。 PaaS サービス (マルチテナント) は、現時点ではサポートされていません。 詳細については、[Azure DDoS Protection Standard の参照アーキテクチャ](ddos-protection-reference-architectures.md)に関する記事を参照してください。
+  - question: >
+      クラシックおよび RDFE の保護されたリソースはサポートされていますか?
+    answer: >
+      プレビューでは、ARM ベースの保護されたリソースのみがサポートされています。 クラシックおよび RDFE のデプロイの VM はサポートされていません。 現在、クラシックおよび RDFE リソースのサポートは計画されていません。詳細については、[Azure DDoS Protection Standard の参照アーキテクチャ](ddos-protection-reference-architectures.md)に関する記事を参照してください。
+  - question: >
+      DDoS Protection を使用して PaaS のリソースを保護することはできますか?
+    answer: >
+      マルチテナント、単一 VIP PaaS サービスに接続されているパブリック IP は現在サポートされていません。 サポートされていないリソースの例には、ストレージ VIP、イベントハブ VIP、App または Cloud Services アプリケーションなどがあります。詳細については、[Azure DDoS Protection Standard の参照アーキテクチャ](ddos-protection-reference-architectures.md)に関する記事を参照してください。
+  - question: >
+      DDoS Protection を使用してオンプレミスのリソースを保護することはできますか?
+    answer: "DDoS Protection を有効にするには、サービスのパブリック エンドポイントが、Azure の VNet に関連付けられている必要があります。 設計の例には次ものが含まれます。\n- Azure の Web サイト (IaaS) と、オンプレミスのデータセンターのバックエンド データベース。 \n- Azure の Application Gateway (App Gateway と WAF で DDoS Protection が有効) と、オンプレミス データセンターの Web サイト。\n\n詳細については、[Azure DDoS Protection Standard の参照アーキテクチャ](ddos-protection-reference-architectures.md)に関する記事を参照してください。\n"
+  - question: >
+      Azure の外部にあるドメインを登録し、VM や ELB などの保護されたリソースにそれを関連付けることはできますか?
+    answer: "パブリック IP のシナリオの場合、アプリケーションは、関連付けられたパブリック IP が Azure でホストされている限り、関連付けられているドメインがどこで登録またはホストされているかに関係なく、DDoS Protection サービスによってサポートされます。 \n"
+  - question: >
+      VNet やパブリック IP に適用される DDoS ポリシーを、手動で構成することはできますか?
+    answer: >
+      いいえ、現時点では残念ながらポリシーのカスタマイズは利用できません。
+  - question: >
+      特定の IP アドレスを許可リストまたはブロックリストに登録することはできますか?
+    answer: >
+      いいえ、現時点では残念ながら手動で構成することはできません。
+  - question: >
+      どうすれば DDoS Protection をテストできますか?
+    answer: >
+      [シミュレーションによるテスト](test-through-simulations.md)に関する記事を参照してください。
+  - question: >
+      メトリックがポータルに読み込まれるまでにどれくらいの時間がかかりますか?
+    answer: "メトリックは、5 分以内にポータルに表示されるはずです。 リソースが攻撃を受けている場合、他のメトリックはポータルに表示され始めるまでに 5 分から 7 分かかります。 \n"
+  - question: >
+      サービスによって顧客データは保存されますか?
+    answer: いいえ、Azure DDoS Protection によって顧客データが保存されることはありません。

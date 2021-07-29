@@ -1,0 +1,116 @@
+### YamlMime:FAQ
+metadata:
+  title: IoT ソリューション アクセラレータに関してよく寄せられる質問 - Azure | Microsoft Docs
+  description: この記事では、IoT ソリューション アクセラレータに関してよく寄せられる質問に回答します。 GitHub リポジトリへのリンクも含まれています。
+  author: dominicbetts
+  manager: timlt
+  ms.service: iot-accelerators
+  services: iot-accelerators
+  ms.topic: conceptual
+  ms.date: 02/15/2018
+  ms.author: dobett
+  ms.openlocfilehash: e9f23e7a509e800a1481f2fd67675a16d3d185a2
+  ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113799242"
+title: IoT ソリューション アクセラレータに関してよく寄せられる質問
+summary: >
+  コネクテッド ファクトリ固有の [FAQ](iot-accelerators-faq-cf.yml) に関するページもご覧ください。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      ソリューション アクセラレータのソース コードはどこで入手できますか。
+    answer: >
+      ソース コードは、次の GitHub リポジトリに格納されています。
+
+
+      * [接続済みファクトリ ソリューション アクセラレータ](https://github.com/Azure/azure-iot-connected-factory)
+  - question: >
+      リモート監視と予測メンテナンスのソリューション アクセラレータはどこで入手できますか?
+    answer: >
+      2020 年 12 月 10 日の時点で、リモート監視と予測メンテナンスのアクセラレータは [Azure IoT Solution Accelerators ](https://www.azureiotsolutions.com/Accelerators)のサイトから削除され、新しいデプロイでは利用できなくなりました。 両方のアクセラレータの GitHub リポジトリがアーカイブされました。 コードにはだれでもアクセスできますが、リポジトリに新しい投稿が寄せられることはありません。
+  - question: >
+      デバイス シミュレーション ソリューション アクセラレータはどこで見つかりますか?
+    answer: >
+      そのアクセラレータの GitHub リポジトリはアーカイブされています。 コードにはだれでもアクセスできますが、リポジトリに新しい投稿が寄せられることはありません。
+  - question: >
+      既存のリモート監視と予測メンテナンスのデプロイはどうなりますか?
+    answer: >
+      リモート監視と予測メンテナンスのソリューション アクセラレータが削除されても、既存のデプロイは影響を受けず、引き続き機能します。 フォークされたリポジトリも影響を受けません。 GitHub のマスター リポジトリはアーカイブされています。
+  - question: >
+      削除されたソリューション アクセラレータに関する情報はどこで入手できますか?
+    answer: >
+      前のバージョンのサイトの次のページを参照してください。
+
+
+      * [リモート監視](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+
+      * [予測メンテナンス](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+
+      * [デバイスのシミュレーション](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+  - question: >
+      ソリューション アクセラレータ用のデバイス クライアントの開発では、どの SDK を使用できますか?
+    answer: >
+      [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub リポジトリで、異なる言語 (C、.NET、Java、Node.js、Python) IoT デバイス SDK へのリンクを見つけることができます。
+
+
+      DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub リポジトリで、リソースとサンプルを見つけることができます。
+  - question: >
+      サービス管理者が自分のサブスクリプションと特定の Azure AD テナントの間のディレクトリ マッピングを変更するには どうすればよいですか
+    answer: >
+      「[既存のサブスクリプションを Azure AD ディレクトリに追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)」をご覧ください
+  - question: >
+      組織アカウントでログインするときにサービス管理者または共同管理者を変更するにはどうすればよいですか
+    answer: >
+      [組織アカウントでログインしたときのサービス管理者および共同管理者の変更](https://azure.microsoft.com/support/changing-service-admin-and-co-admin)に関するサポート記事をご覧ください。
+  - question: >
+      次のエラーが表示されるのはなぜですか。 「お使いのアカウントにはソリューションを作成する適切なアクセス許可がありません。 アカウント管理者に確認するか、別のアカウントを使用してください。」
+    answer: >
+      次の図を見てみましょう。
+
+
+      ![アクセス許可のフローチャート](media/iot-accelerators-faq/flowchart.png)
+
+
+      > [!NOTE]
+
+      > 自分が Azure AD テナントの全体管理者になっていることとサブスクリプションの共同管理者になっていることを確認した後もエラーが表示される場合は、ユーザーを削除してから必要なアクセス許可を再度割り当てるよう、アカウント管理者に依頼してください。 その場合はまず、ユーザーを全体管理者として追加したうえで、Azure サブスクリプションの共同管理者としてそのユーザーを追加することになります。 問題が解決しない場合は、[ヘルプとサポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
+  - question: >
+      Azure サブスクリプションがあるのに次のエラーが表示されるのはなぜですか。 「構成済みソリューションを作成するには Azure サブスクリプションが必要です。 数分で無料試用版のアカウントを作成することができます。」
+    answer: >
+      Azure サブスクリプションが確かにある場合は、サブスクリプションのテナント マッピングを調べ、ドロップダウンで正しいテナントが選択されていることを確認してください。 テナントが正しいことを確認したら、上の図に従って、サブスクリプションとこの Azure AD テナントのマッピングを確認してください。
+  - question: >
+      Azure portal でのリソース グループの削除と、azureiotsolutions.com のソリューション アクセラレータで削除をクリックすることの違いは何ですか?
+    answer: >
+      * [azureiotsolutions.com](https://www.azureiotsolutions.com/) でソリューション アクセラレータを削除すると、ソリューション アクセラレータの作成時にデプロイしたすべてのリソースが削除されます。 リソース グループにリソースを追加してある場合、それらも削除されます。
+
+      * [Azure Portal](https://portal.azure.com) でリソース グループを削除した場合は、そのリソース グループ内のリソースのみが削除されます。 さらに、ソリューション アクセラレータに関連付けられている Azure Active Directory アプリケーションを削除する必要があります。
+  - question: >
+      Azure IoT ソリューション アクセラレータで既存の投資の活用を続行できますか?
+    answer: >
+      はい。 現在存在しているすべてのソリューションは、Azure サブスクリプションで動作を続行し、ソース コードは GitHub で利用可能であり続けます。
+  - question: >
+      サブスクリプションでプロビジョニングできる IoT Hub インスタンスはいくつですか?
+    answer: >
+      既定では、[サブスクリプションごとに 10 個の IoT Hub](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits) をプロビジョニングできます。 この上限は、[Azure サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を作成して引き上げることができます。 このため、ソリューション アクセラレータごとに新しい IoT ハブをプロビジョニングするため、特定のサブスクリプションでプロビジョニングできるソリューション アクセラレータの数は最大 10 個になります。
+  - question: >
+      サブスクリプションには何個の Azure Cosmos DB インスタンスをプロビジョニングできますか?
+    answer: >
+      50 個です。 [Azure サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を作成してこの上限を引き上げることができますが、既定では、サブスクリプションごとにプロビジョニングできる Cosmos DB インスタンスは 50 個のみです。
+  - question: >
+      Microsoft Azure for DreamSpark があれば、ソリューション アクセラレータを作成できますか?
+    answer: >
+      > [!NOTE]
+
+      > Microsoft Azure for DreamSpark は現在、学生向けの Microsoft Imagine として知られています。
+
+
+      現時点では、[Microsoft Azure for DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) アカウントを使用して、ソリューション アクセラレータを作成することはできません。 ただし、[Azure の無料試用版アカウント](https://azure.microsoft.com/free/)を数分で作成して、ソリューション アクセラレータを作成できるようにすることは可能です。
+  - question: >
+      Azure AD テナントを削除するにはどうすればよいですか。
+    answer: >
+      [Azure AD テナントの削除方法](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)に関する Eric Golpe のブログ記事を参照してください。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nIoT ソリューション アクセラレータの他の機能についても学習できます。\n\n* [接続済みファクトリ ソリューション アクセラレータの展開](quickstart-connected-factory-deploy.md)\n* [徹底的な IoT セキュリティ](../iot-fundamentals/iot-security-ground-up.md)"
