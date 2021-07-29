@@ -4,14 +4,14 @@ description: Azure Monitor Application Insights の自動インストルメン�
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
-ms.date: 05/31/2020
+ms.date: 05/17/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: df6271f8c036d708b93d7312076f3eee585cfcba
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1c9d3e10ebf02016a0188617567cb2e4e2eeb036
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287286"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092712"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Azure Monitor Application Insights の自動インストルメンテーションまたはコードなしアタッチとは
 
@@ -25,12 +25,13 @@ Application Insights は、さまざまなリソース プロバイダーと統�
 
 |環境/リソース プロバイダー          | .NET            | .NET Core       | Java            | Node.js         | Python          |
 |---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-|Azure App Service on Windows           | GA、OnBD*       | GA、オプトイン      | 進行中     | 進行中     | サポートされていません   |
-|Azure App Service on Linux             | 該当なし             | サポートされていません   | 進行中     | パブリック プレビュー  | サポートされていません   |
+|Azure App Service on Windows           | GA、OnBD*       | GA、オプトイン      | パブリック プレビュー  | パブリック プレビュー  | サポートされていません   |
+|Azure App Service on Linux             | 該当なし             | サポートされていません   | パブリック プレビュー  | パブリック プレビュー  | サポートされていません   |
 |Azure Functions - 基本                | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       |
 |Azure Functions Windows - 依存関係 | サポートされていません   | サポートされていません   | パブリック プレビュー  | サポートされていません   | サポートされていません   |
+|Azure Spring Cloud                     | サポートされていません   | サポートされていません   | パブリック プレビュー  | サポートされていません   | サポートされていません   |
 |Azure Kubernetes Service               | 該当なし             | 設計中       | エージェント経由   | 設計中       | サポートされていません   |
-|Azure VM Windows                      | パブリック プレビュー  | サポートされていません   | サポートされていません   | サポートされていません   | サポートされていません   |
+|Azure VM Windows                      | パブリック プレビュー  | サポートされていません   | エージェント経由 | サポートされていません   | サポートされていません   |
 |オンプレミスの VM Windows                | GA、オプトイン      | サポートされていません   | エージェント経由   | サポートされていません   | サポートされていません   |
 |スタンドアロン エージェント - 任意の環境            | サポートされていません   | サポートされていません   | GA              | サポートされていません   | サポートされていません   |
 
@@ -40,35 +41,24 @@ Application Insights は、さまざまなリソース プロバイダーと統�
 
 ### <a name="windows"></a>Windows
 
-#### <a name="net"></a>.NET
-Azure App Service on Windows でのアプリケーション監視は [.NET アプリケーション](./azure-web-apps.md?tabs=net) .NET で使用可能であり、既定で有効です。
+Azure App Service on Windows でのアプリケーション監視は、 **[.NET](./azure-web-apps.md?tabs=net)** (既定で有効)、 **[.NET Core](./azure-web-apps.md?tabs=netcore)** 、 **[Java](./azure-web-apps.md?tabs=java)** (パブリック プレビュー)、 **[Node.js](./azure-web-apps.md?tabs=nodejs)** アプリケーションで使用できます。 Python アプリを監視するには、[SDK](./opencensus-python.md) をコードに追加します。
 
-#### <a name="netcore"></a>.NETCore
-[.NETCore アプリケーション](./azure-web-apps.md?tabs=netcore)の監視をワンクリックで有効にできます。
-
-#### <a name="java"></a>Java
-App Service on Windows での Java アプリケーション監視のためのポータル統合は現在利用できませんが、アプリを App Service にデプロイする前にコードに変更を加えることなく、Application Insights [Java 3.0 スタンドアロン エージェント](./java-in-process-agent.md)をアプリケーションに追加できます。 Application Insights Java 3.0 エージェントは一般提供されています。
-
-#### <a name="nodejs"></a>Node.js
-現時点では Windows 上の Node.js アプリケーションの監視をポータルから有効にすることはできません。 Node.js アプリケーションを監視するには、[SDK](./nodejs.md) を使用します。
+> [!NOTE]
+> App Service におけるアプリケーションの監視は、現在、Windows コードベース アプリケーションで使用できます。 App Service における Windows コンテナーのアプリの監視は、Application Insights との統合を通してまだサポートされていません。
 
 ### <a name="linux"></a>Linux
+App Service 内で Linux で実行されている **[Java](./azure-web-apps.md?tabs=java)** および **[Node.js](./azure-web-apps.md?tabs=nodejs)** アプリの監視は、ポータルを使用して有効にできます。この 2 つの言語用の機能はパブリック プレビューであり、すべてのリージョンで利用できます。 
 
-#### <a name="netcore"></a>.NETCore
-Linux で実行中の .NETCore アプリケーションを監視するには、[SDK](./asp-net-core.md) を使用します。
-
-#### <a name="java"></a>Java 
-App Service on Linux での Java アプリケーション監視をポータルから有効にすることはできませんが、アプリを App Service にデプロイする前に、[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)をアプリに追加できます。 Application Insights Java 3.0 エージェントは一般提供されています。
-
-#### <a name="nodejs"></a>Node.js
-[App Service on Linux での Node.js アプリケーションの監視](./azure-web-apps.md?tabs=nodejs)はパブリック プレビュー段階であり、Azure portal で有効にすることができ、すべてのリージョンで利用可能です。 
-
-#### <a name="python"></a>Python
-SDK を使用して [Python アプリを監視します](./opencensus-python.md) 
+その他の言語 ([.NET Core](./asp-net-core.md) と [Python](./opencensus-python.md)) の場合は、SDK を使用します。
 
 ## <a name="azure-functions"></a>Azure Functions
 
-Azure Functions の基本的な監視は、ログ、パフォーマンス、エラー データ、HTTP 要求を収集するために、既定で有効になっています。 Java アプリケーションでは、分散トレースを使用した高度な監視を有効にし、エンドツーエンドのトランザクションの詳細を取得することができます。 Java 用のこの機能はパブリック プレビュー段階であり、[Azure portal で有効にする](./monitor-functions.md)ことができます。
+Azure Functions の基本的な監視は、ログ、パフォーマンス、エラー データ、HTTP 要求を収集するために、既定で有効になっています。 Java アプリケーションでは、分散トレースを使用した高度な監視を有効にし、エンドツーエンドのトランザクションの詳細を取得することができます。 Java 用のこの機能は Windows でパブリック プレビュー段階であり、[Azure portal で有効にする](./monitor-functions.md)ことができます。
+
+## <a name="azure-spring-cloud"></a>Azure Spring Cloud
+
+### <a name="java"></a>Java 
+Azure Spring Cloud で実行されている Java アプリのアプリケーション監視はポータルに統合されており、Azure portal から直接 Application Insights を有効にできます。これは既存および新規作成のどちらの Azure Spring Cloud リソースにも当てはまります。  
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

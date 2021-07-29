@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 06/10/2021
-ms.openlocfilehash: 13f5bb8245ecc57c01d4236dfea7c9e4a2f7ae75
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 52ecc8a66dfa13747daf2b4b7fd227ef7ab5a3b2
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986320"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237167"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center (無料) と有効化された Azure Defender
 Azure Defender は、最初の 30 日間は無料で利用できます。 30 日経過した時点で、サービスの利用を継続することを選択した場合、使用量に応じた課金が自動的に開始されます。
@@ -54,11 +54,11 @@ Security Center は、次の 2 つのモードで提供されます。
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Security Center で組織内のどのユーザーが Azure Defender の変更を有効にしたかは、どのようにして追跡できますか?
 Azure サブスクリプションには、価格設定を変更する許可が与えられた管理者が複数設定されていることがあります。 変更を行ったユーザーを見つけるには、Azure アクティビティ ログを使用します。
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="価格変更イベントを示す Azure アクティビティ ログ":::
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="価格変更イベントを示す Azure アクティビティ ログ。":::
 
 **[イベント開始者]** 列の一覧にユーザーの情報が表示されない場合は、イベントの JSON から適切な情報を探してください。
 
-:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure アクティビティ ログの JSON エクスプローラー":::
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure アクティビティ ログの JSON エクスプローラー。":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>Security Center ではどのようなプランが提供されていますか? 
@@ -70,7 +70,7 @@ Security Center には 2 つのプランがあります。
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>サブスクリプションで Azure Defender を有効にするにはどうすればよいですか? 
 以下に示すどの方法でも、ご利用のサブスクリプションに対して Azure Defender を有効にすることができます。 
 
-| メソッド                                          | 手順                                                                                                                                       |
+| Method                                          | 手順                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure portal の Azure Security Center ページ | [Azure Defender を有効にする](enable-azure-defender.md)                                                                                                  |
 | REST API                                        | [Pricings API](/rest/api/securitycenter/pricings)                                                                                                  |
@@ -103,7 +103,7 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 | 割り当て解除中 | 過渡的な状態です。 完了すると、VM は割り当て解除済みと表示されます。                                                                             | 課金されません            |
 | 割り当て解除済み  | VM は正常に停止され、ホストから削除されました。                                                                                  | 課金されません            |
 
-:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="割り当て解除状態のマシンを示す Azure Virtual Machines":::
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="割り当て解除状態のマシンを示す Azure Virtual Machines。":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Log Analytics エージェントがインストールされていないマシンは課金されますか?
 はい。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、そのサブスクリプション内のマシンには、Log Analytics エージェントがインストールされていなくても一連の保護が適用されます。

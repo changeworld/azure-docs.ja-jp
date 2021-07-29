@@ -9,33 +9,41 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101f1452f547f195288e2d22bc516880100c7735
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: ba7c3459d5df540304b0595ac6aacf039c558d6c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107496828"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094656"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory で管理単位のユーザーを追加して管理する
 
 Azure Active Directory (Azure AD) では、きめ細かい管理スコープで制御するために、ユーザーを管理単位に追加できます。
 
-管理単位の管理に PowerShell や Microsoft Graph を使用するよう準備するには、「[はじめに](admin-units-manage.md#get-started)」を参照してください。
+## <a name="prerequisites"></a>前提条件
+
+- 管理単位の各管理者に対する Azure AD Premium P1 または P2 ライセンス
+- 管理単位のメンバーに対する Azure AD Free ライセンス
+- 特権ロール管理者またはグローバル管理者
+- PowerShell を使用する場合は、AzureAD モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合は、管理者の同意
+
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="add-users-to-an-administrative-unit"></a>管理単位にユーザー追加する
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 ユーザーは管理単位に個別に割り当てるか、一括操作で割り当てることができます。
 
 - ユーザー プロファイルから個別に割り当てる:
 
-   1. 特権ロール管理者のアクセス許可で [Azure AD 管理センター](https://portal.azure.com)にサインインします。
+   1. [Azure AD 管理センター](https://portal.azure.com)にサインインします。
 
    1. **[ユーザー]** を選択し、管理単位に割り当てるユーザーを選択してユーザーのプロファイルを開きます。
    
@@ -47,7 +55,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 - 管理単位から個別に割り当てる:
 
-   1. 特権ロール管理者のアクセス許可で [Azure AD 管理センター](https://portal.azure.com)にサインインします。
+   1. [Azure AD 管理センター](https://portal.azure.com)にサインインします。
    1. **[管理単位]** を選択し、ユーザーを割り当てる管理単位を選択します。
    1. **[すべてのユーザー]** を選択し、 **[メンバーの追加]** を選択します。 **[メンバーの追加]** ペインで、管理単位に割り当てる 1 人以上のユーザーを選択します。
 
@@ -55,7 +63,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 - 一括操作としてユーザーを割り当てる:
 
-   1. 特権ロール管理者のアクセス許可で [Azure AD 管理センター](https://portal.azure.com)にサインインします。
+   1. [Azure AD 管理センター](https://portal.azure.com)にサインインします。
 
    1. **[管理単位]** を選択します。
 
@@ -65,7 +73,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
       ![一括操作としてユーザーを管理単位に割り当てるための [ユーザー] ペインのスクリーンショット。](./media/admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 PowerShell では、次の例の `Add-AzureADAdministrativeUnitMember` コマンドレットを使用して、ユーザーを管理単位に追加します。 ユーザーが追加される管理単位のオブジェクト ID と、追加するユーザーのオブジェクト ID が、引数として使用されます。 必要に応じて、実際の環境用に強調表示されているセクションを変更します。
 
@@ -76,7 +84,7 @@ Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $userObj
 ```
 
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 プレースホルダーをテスト情報に置き換え、次のコマンドを実行します。
 
@@ -86,7 +94,7 @@ Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $userObj
 POST /administrativeUnits/{admin-unit-id}/members/$ref
 ```
 
-Body
+本文
 
 ```http
 {
@@ -104,7 +112,7 @@ Body
 
 ## <a name="view-a-list-of-administrative-units-for-a-user"></a>ユーザーの管理単位の一覧を表示する
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal では、次の操作を行うことでユーザーのプロファイルを開くことができます。
 
@@ -116,7 +124,7 @@ Azure portal では、次の操作を行うことでユーザーのプロファ�
 
    ![ユーザーが割り当てられている管理単位のスクリーンショット。](./media/admin-units-add-manage-users/list-user-admin-units.png)
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 次のコマンドを実行します。
 
@@ -127,7 +135,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 > [!NOTE]
 > 既定では、`Get-AzureADAdministrativeUnitMember` では管理単位の 100 人のメンバーのみが返されます。 さらに多くのメンバーを取得するために、`"-All $true"` を追加できます。
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 プレースホルダーをテスト情報に置き換え、次のコマンドを実行します。
 
@@ -137,7 +145,7 @@ https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.Admi
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>管理単位から単一のユーザーを削除する
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 2 つの方法のいずれかで、管理単位からユーザーを削除できます。 
 
@@ -153,7 +161,7 @@ https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.Admi
   
      ![管理単位レベルでユーザーを削除する方法を示しているスクリーンショット。](./media/admin-units-add-manage-users/admin-units-remove-user.png)
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 次のコマンドを実行します。
 
@@ -161,7 +169,7 @@ https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.Admi
 Remove-AzureADMSAdministrativeUnitMember -Id $adminUnitId -MemberId $memberUserObjId
 ```
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 プレースホルダーをテスト情報に置き換え、次のコマンドを実行します。
 

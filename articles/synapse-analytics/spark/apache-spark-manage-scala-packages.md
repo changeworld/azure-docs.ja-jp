@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: bed5c6b1b1cf21de0105e0eeb2096d359177c115
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098708"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109815002"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Scala および Java パッケージを管理する
 
@@ -45,7 +45,7 @@ Azure Synapse Analytics の Apache Spark には、一般的なデータ エン�
 ## <a name="pool-libraries"></a>プール ライブラリ
 Spark アプリケーションで使用したい Scala および Java パッケージを見つけたら、Spark プールにインストールすることができます。 プール レベルのライブラリは、プールで実行されているすべてのノートブックおよびジョブで使用できます。
 
-Spark プール ライブラリを更新するには、Azure Synapse Studio または Azure portal に移動します。 ここでは、インストールするワークスペース ライブラリを選択できます。 
+Spark プール ライブラリを更新するには、Synapse Studio または Azure portal に移動します。 ここでは、インストールするワークスペース ライブラリを選択できます。 
 
 変更が保存された後、Spark ジョブによってインストールが実行され、結果として得られた環境は後で再利用するためにキャッシュされます。 ジョブが完了すると、新しい Spark ジョブまたはノートブック セッションで、更新されたプール ライブラリが使用されます。 
 
@@ -53,8 +53,8 @@ Spark プール ライブラリを更新するには、Azure Synapse Studio ま�
 > - インストールするパッケージが大きいか、インストールに時間がかかる場合、これは Spark インスタンスのアップタイムに影響します。
 > - PySpark、Python、Scala/Java、.NET、または Spark のバージョンの変更はサポートされていません。
 
-#### <a name="manage-packages-from-azure-synapse-studio-or-azure-portal"></a>Azure Synapse Studio または Azure portal からパッケージを管理する
-Spark プール ライブラリは、Azure Synapse Studio または Azure portal から管理できます。 
+#### <a name="manage-packages-from-synapse-studio-or-azure-portal"></a>Synapse Studio または Azure portal からパッケージを管理する
+Spark プール ライブラリは、Synapse Studio または Azure portal から管理できます。 
 
 Spark プールのライブラリを更新または追加するには:
 1. Azure portal から Azure Synapse Analytics ワークスペースに移動します。

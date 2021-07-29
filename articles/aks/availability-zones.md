@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: 6123b040be8076c3b05f0dc81e6ac707dc38d0ed
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 13a14854f373ca7297e454ddbdc9f475849dc0b8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017854"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100542"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -57,6 +57,12 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 Azure マネージド ディスクを使用するボリュームは、現在、ゾーン冗長リソースではありません。 ボリュームをゾーン間で接続することはできず、ターゲット ポッドをホストする特定のノードと同じゾーンに併置する必要があります。
 
 Kubernetes では、バージョン 1.12 以降で、Azure 可用性ゾーンが認識されています。 ユーザーは、複数ゾーンの AKS クラスターで Azure マネージド ディスクを参照して PersistentVolumeClaim オブジェクトをデプロイすることができます。また、適切な可用性ゾーン内にこの PVC を要求するあらゆるポッドの[スケジュール設定が Kubernetes によって管理](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones)されます。
+
+### <a name="azure-resource-manager-templates-and-availability-zones"></a>Azure Resource Manager テンプレートと可用性ゾーン
+
+AKS クラスターを *作成* するときに、`"availabilityZones": null` などの構文を使用して[テンプレート内に null 値][arm-template-null]を明示的に定義すると、Resource Manager テンプレートでは、そのプロパティが存在しないかのように処理されます。これは、クラスターで可用性ゾーンが有効にならないことを意味します。 また、可用性ゾーン プロパティを省略した Resource Manager テンプレートを使用してクラスターを作成すると、可用性ゾーンは無効になります。
+
+既存のクラスターで可用性ゾーンの設定を更新することはできないため、Resource Manager テンプレートを使用して AKS クラスターを更新するときは動作が異なります。  テンプレートで可用性ゾーンに対して null 値を明示的に設定し、クラスターを *更新* した場合、クラスターに対して可用性ゾーンの変更は加えられません。 ただし、`"availabilityZones": []` のような構文で可用性ゾーン プロパティを省略した場合、デプロイでは既存の AKS クラスターで可用性ゾーンを無効にしようとして、**失敗** します。
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS クラスターの可用性ゾーンの概要
 
@@ -205,6 +211,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool#az_aks_nodepool_add
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [vmss-zone-balancing]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing
+[arm-template-null]: ../azure-resource-manager/templates/template-expressions.md#null-values
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

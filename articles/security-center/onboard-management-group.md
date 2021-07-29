@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 01036343e2585adf7c09ad3f0d236948a537fc29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea5522cfd8f407ffd7259335706cc69555ce2329
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016561"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238237"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>管理グループ内のすべてのサブスクリプションで Security Center を有効にする
 
@@ -22,18 +22,18 @@ Azure Policy を使用すると、同じ管理グループ (MG) 内のすべて�
 
 1. **セキュリティ管理者** のアクセス許可を持つユーザーとして Azure Policy を開き、 **[Enable Azure Security Center on your subscription]\(サブスクリプションで Azure Security Center を有効にする\)** 定義を検索します。
 
-    :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Azure Policy の [Enable Azure Security Center on your subscription]\(サブスクリプションで Azure Security Center を有効にする\) 定義":::
+    :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Azure Policy の [Enable Azure Security Center on your subscription]\(サブスクリプションで Azure Security Center を有効にする\) 定義。":::
 
 1. **[割り当て]** を選択し、スコープが MG レベルに設定されていることを確認します。
 
-    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="[Enable Azure Security Center on your subscription]\(サブスクリプションで Azure Security Center を有効にする\) 定義の割り当て":::
+    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="[Enable Azure Security Center on your subscription]\(サブスクリプションで Azure Security Center を有効にする\) 定義の割り当て。":::
 
     > [!TIP]
     > スコープ以外に必要なパラメーターはありません。
 
 1. **[Create a remediation task]\(修復タスクを作成する\)** を選択して、Security Center が有効になっていない既存のサブスクリプションすべてがオンボードされるようにします。
 
-    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Azure Policy の [Enable Azure Security Center on your subscription]\(サブスクリプションで Azure Security Center を有効にする\) 定義に対する修復タスクの作成":::
+    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Azure Policy の [Enable Azure Security Center on your subscription]\(サブスクリプションで Azure Security Center を有効にする\) 定義に対する修復タスクの作成。":::
 
 1. 定義が割り当てられると、次のようになります。
 

@@ -1,0 +1,77 @@
+### YamlMime:FAQ
+metadata:
+  title: 'パートナー向けの FAQ: クラウド ソリューション プロバイダー プログラムの StorSimple'
+  description: パートナー向けの StorSimple と CSP について、一般的な質問にお答えします。
+  services: storsimple
+  documentationcenter: NA
+  author: alkohli
+  manager: timlt
+  editor: ''
+  ms.assetid: 
+  ms.service: storsimple
+  ms.devlang: NA
+  ms.topic: article
+  ms.tgt_pltfrm: NA
+  ms.workload: TBD
+  ms.date: 02/08/2017
+  ms.author: alkohli
+  ms.openlocfilehash: 31b1cad28190df853d6dc11fbcea7fbedc0e0036
+  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113094949"
+title: クラウド ソリューション プロバイダー プログラムの StorSimple:よく寄せられる質問
+summary: "\n## <a name=\"overview\"></a>概要\nStorSimple パートナーが Azure Portal で StorSimple Virtual Array をデプロイまたは管理する際に生じる可能性のある質問とその回答を以下に示します。\n"
+sections:
+- name: StorSimple と CSP モデル
+  questions:
+  - question: >
+      StorSimple をクラウド ソリューション プロバイダー (CSP) プログラムの一環として所持することには、どのような意味がありますか。
+    answer: "CSP の StorSimple を所持すると、CSP パートナーは StorSimple Virtual Array を顧客に再販売できます。 このモデルでは、CSP パートナーは、Microsoft のクラウド サービスの直接プロビジョニング、課金、サポートを利用しながら、エンド ツー エンドの顧客ライフサイクルを所有できます。 \n\n詳細については、[CSP プログラムにおける StorSimple](https://www.microsoft.com/en-us/server-cloud/products/storsimple/) に関するページを参照してください。 \n"
+  - question: >
+      StorSimple は使用量ベースですか。それとも、Microsoft 365 と Enterprise Mobility Suite (EMS) のようにシート ライセンスに基づいていますか。
+    answer: "StorSimple は使用量ベースのサービスです。 CSP ルート経由で StorSimple Virtual Array を調達した顧客は、Virtual Array と Azure の使用量を支払います。これは CSP の請求書で別個の項目として請求されます。 \n"
+  - question: "StorSimple のビジネス モデルは、Microsoft 365 や Enterprise Mobility Suite といった他のサービスのビジネス モデルと似ていますか。 \n"
+    answer: "はい。 このモデルは、Azure における使用量ベースの他のサービスと同様に、卸売り割引モデルです。 StorSimple の卸売り割引は、他の Azure サービスの割引と似ています。 このモデルでは、StorSimple Virtual Array を使用して販売を拡大し、Azure の使用を後押しする機会が CSP パートナーに提供されます。  \n"
+  - question: >
+      リリース当初にはどの StorSimple SKU が使用できますか。
+    answer: "スタンドアロンの StorSimple サービスと同じ SKU が使用できます。 \n"
+  - question: >
+      EA で Microsoft から直接購入した StorSimple と CSP の一環として購入した StorSimple の間では、違いがありますか。
+    answer: "いいえ。 CSP の場合、顧客は StorSimple Virtual Array (SVA) のほかにも、CSP パートナーによって提供されるその他のサービスを 1 つの請求書で購入できます。 StorSimple 8000 シリーズの物理デバイスを調達する場合、顧客は EA ルートを経由する必要があることに注意してください。 \n"
+  - question: >
+      リリース当初に CSP 用の StorSimple を利用できるのはどの市場ですか。
+    answer: >
+      CSP 用の StorSimple Virtual Array は、現在 StorSimple が利用可能なすべての市場で利用できます。 詳細については、[StorSimple が利用可能なリージョンの一覧](https://azure.microsoft.com/regions/services/)を参照してください。
+  - question: "StorSimple と CSP でパートナーが提供できるのはどのような種類のソリューションですか。 \n"
+    answer: "複数のソリューションを提供できます。\n\n- パートナーは、StorSimple Virtual Array を再販売できます。 \n- パートナーは、StorSimple を基に構築されたソリューションのほか、その他の Azure サービスやサードパーティ製ソフトウェアを提供できます。 詳細については、[StorSimple 関連のソリューションの例](./storsimple-disaster-recovery-using-azure-site-recovery.md)を確認してください。\n- パートナーは管理されたサービスを提供することで、新しいビジネス モデルを発見することもできます。\n"
+  - question: >
+      StorSimple CSP パートナーが受けられるインセンティブは何ですか。 自分に CSP プログラムのインセンティブを受ける資格があるか知りたいのですが。
+    answer: >
+      インセンティブの詳細については、[CSP プログラムのインセンティブ](https://partner.microsoft.com/cloud-solution-provider/program-details)に関するページを参照してください。
+- name: パートナーとしての StorSimple のデプロイと管理
+  questions:
+  - question: "CSP で StorSimple Virtual Array を管理する方法を教えてください。 \n"
+    answer: >
+      パートナー センターを通じて StorSimple Virtual Array サブスクリプションを顧客のアカウントに追加できます。 さらに、Azure Portal を使用してユーザーをサブスクリプションに追加できます。
+  - question: "Azure Portal を使うアプローチは、CSP の他のサービスと同じですか。 \n"
+    answer: "はい。 CSP の StorSimple Virtual Array の場合、パートナーが Azure Portal にアクセスする方法として最も便利なのは、顧客とサブスクリプションを管理できる[パートナー センター](https://partnercenter.microsoft.com/)を経由する方法です。 StorSimple のサブスクリプションを管理するには、パートナーまたは (付与されたアクセス許可によっては) 顧客が Azure Portal にログインする必要があります。 \n"
+  - question: "CSP の StorSimple 用の新しいポータルが Microsoft によって用意される予定はありますか。 \n"
+    answer: >
+      いいえ。 CSP の StorSimple Virtual Array は Azure Portal を使用して管理できるようになります。
+  - question: "スタンドアロンの StorSimple サブスクリプションを顧客のためにプロビジョニングしました。 デバイスの管理に Azure Portal を使用する必要はありますか。 \n"
+    answer: "はい。 \n"
+  - question: >
+      Microsoft アカウント チームは、CSP を介した StorSimple の販売の結果として補償の対象となりますか。
+    answer: >
+      はい。 パートナーの販売担当役員と最終顧客に対応する顧客アカウント チームは、CSP 販売について支払いを受けます。 パートナーは、差別化された価値とサービスを率先して販売するよう期待されます。
+- name: StorSimple と CSP のサポート
+  questions:
+  - question: >
+      CSP パートナーが StorSimple をデプロイして管理する際に追加のサポートを得られるフォーラムはありますか。
+    answer: >
+      CSP フォーラムの StorSimple のグループに参加することで、よく寄せられる質問への回答を得られます。 最初に、[Azure Advisor Yammer グループ](https://www.yammer.com/azureadvisors)に参加する必要があります。 次に、**StorSimple パートナー アドバイザー** というグループを探して参加してください。
+  - question: "CSP の StorSimple ではサポートのしくみはどうなっていますか。 \n"
+    answer: "CSP の StorSimple のサポート モデルは、CSP の他の Azure サービスのものと同じです。 詳細については、[CSP のカスタマー サポート](/partner-center/csp-overview)に関するページをご覧ください。\n\nCSP の StorSimple の詳細については、以下を参照してください。\n\n- [Microsoft クラウド ソリューション プロバイダー プログラム](https://partner.microsoft.com/Membership)\n- [パートナー センター](https://partnercenter.microsoft.com/) \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nStorSimple をデプロイする準備ができている場合は、[CSP での StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。"

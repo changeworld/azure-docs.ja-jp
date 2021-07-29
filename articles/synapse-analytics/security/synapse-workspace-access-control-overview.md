@@ -1,5 +1,5 @@
 ---
-title: Synapse ワークスペースのアクセス制御の概要
+title: Azure Synapse ワークスペースのアクセス制御の概要
 description: この記事では、Synapse ワークスペースとそこに含まれるリソースとコード成果物へのアクセスを制御するために使用されるメカニズムについて説明します。
 services: synapse-analytics
 author: RonyMSFT
@@ -9,26 +9,26 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20614b1c397bdf24e807d48d3de33f0033da14bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 574211bc426d97c5bd734dcf348b66ecce1b3ff8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100105115"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217811"
 ---
-# <a name="synapse-access-control"></a>Synapse アクセス制御 
+# <a name="azure-synapse-access-control"></a>Azure Synapse アクセス制御 
 
-この記事では、Synapse のコンピューティング リソースとデータへのアクセスを制御するために使用できるメカニズムについて概説します。  
+この記事では、Azure Synapse のコンピューティング リソースとデータへのアクセスを制御するために使用できるメカニズムについて概説します。  
 
 ## <a name="overview"></a>概要
 
-Synapse は、以下を統合する包括的できめ細かなアクセス制御システムを提供します。 
+Azure Synapse は、以下を統合する包括的できめ細かなアクセス制御システムを提供します。 
 - リソースを管理し、ストレージ内のデータにアクセスするための **Azure ロール**。 
 - コードへのライブ アクセスと実行を管理するための **Synapse ロール**。 
 - SQL プール内のデータへのデータ プレーン アクセスのための **SQL ロール**。 
 - 継続的インテグレーションと継続的デプロイのサポートを含む、ソース コード管理のための **Git アクセス許可**。  
 
-Synapse ロールは、さまざまなスコープで適用できるアクセス許可のセットを提供します。 この細分性により、管理者、開発者、セキュリティ担当者、およびオペレーターに対して、コンピューティング リソースとデータへの適切なアクセス権を簡単に付与できます。
+Azure Synapse ロールは、さまざまなスコープで適用できるアクセス許可のセットを提供します。 この細分性により、管理者、開発者、セキュリティ担当者、およびオペレーターに対して、コンピューティング リソースとデータへの適切なアクセス権を簡単に付与できます。
 
 アクセス制御は、対象者の職務に合ったセキュリティ グループを使用することで簡素化できます。 アクセスを管理するには、適切なセキュリティ グループのユーザーを追加するか削除するだけで済みます。
 

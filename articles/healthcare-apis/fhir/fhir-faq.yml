@@ -72,11 +72,11 @@ sections:
     answer: "カスタム FHIR リソースは使用できません。 カスタム FHIR リソースが必要な場合、拡張機能を使用して[基本的なリソース](http://www.hl7.org/fhir/basic.html)の上にカスタム リソースを構築できます。 \n"
   - question: >
       拡張機能は、Azure API for FHIR でサポートされていますか?
-    answer: "有効な FHIR JSON データをサーバーに読み込むことができます。 拡張機能を定義する構造定義を格納する場合は、これを構造定義リソースとして保存できます。 拡張機能を検索するには、 [独自の検索パラメーターを定義](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fhealthcare-apis%2Ffhir%2Fhow-to-do-custom-search&data=04%7C01%7Cv-stevewohl%40microsoft.com%7Cc6a08c7f0c86433f248c08d925377d85%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637581742517376233%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=Ws%2FVQ2N33sMagzs393hmR67M9dNaL6WCLXyxXtor6PM%3D&reserved=0)する必要があります。 \n"
+    answer: "有効な FHIR JSON データをサーバーに読み込むことができます。 拡張機能を定義する構造定義を格納する場合は、これを構造定義リソースとして保存できます。 拡張機能を検索するには、独自の検索パラメーター [を定義する必要があります](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fhealthcare-apis%2Ffhir%2Fhow-to-do-custom-search&data=04%7C01%7Cv-stevewohl%40microsoft.com%7Cc6a08c7f0c86433f248c08d925377d85%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637581742517376233%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=Ws%2FVQ2N33sMagzs393hmR67M9dNaL6WCLXyxXtor6PM%3D&reserved=0)。 \n"
   - question: >
       _count にはどのような制限がありますか?
     answer: >
-      _Count の現在の制限は1000です。 _Count を1000よりも大きい値に設定すると、バンドルに1000レコードのみが表示されるという警告が表示されます。
+      この値の現在の_countは 1000 です。 _count を 1000 を超える値に設定すると、バンドルに 1,000 件のレコードだけが表示されるという警告が表示されます。
   - question: >
       グループ エクスポート機能に制限はありますか?
     answer: >
@@ -102,7 +102,7 @@ sections:
   - question: >
       Azure API for FHIR でリソースを検索するときの既定の並べ替えは何ですか?
     answer: >
-      最終更新日での並べ替えをサポートしています (_sort=_lastUpdated)。 サポートされているその他の検索パラメーターの詳細については、「 [FHIR 検索の概要](overview-of-search.md)」を参照してください。
+      最終更新日での並べ替えをサポートしています (_sort=_lastUpdated)。 サポートされているその他の検索パラメーターの詳細については [、「FHIR Search の概要」を参照してください](overview-of-search.md)。
   - question: "Azure API for FHIR で $everything はサポートされていますか? \n"
     answer: "いいえ。 現時点では、$everything はサポートされていません。 ただし、2 つの API 呼び出しで実現できます。 たとえば、Patient$everything を取得するには、最初に /Patient/[ID] を使用して患者レコードを取得し、2 回目の呼び出しで /Patient/[ID]/* を使用してすべての患者データを取得します。\n\n詳細については、こちらの[コミュニティの投稿](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)を参照してください。 \n"
   - question: >

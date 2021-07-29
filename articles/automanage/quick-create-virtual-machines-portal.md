@@ -10,12 +10,12 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 7121d83f9401fe985966324afe6a61cf8396b2bb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: d0c319fa9579f68c7f429283327f43869c4ab2b1
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534068"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006052"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>クイック スタート:Azure portal で仮想マシンに対して Azure Automanage を有効にする
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 [Azure portal](https://aka.ms/AutomanagePortal-Ignite21) にサインインします。
 
-## <a name="enable-automanage-for-a-single-vm"></a>単一の VM に対して Automanage を有効にする
+## <a name="enable-automanage-for-a-single-machine"></a>単一のマシンに対して Automanage を有効にする
 
 1. 有効にする仮想マシンを参照します。
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="単一の VM を有効にする。":::
 
-## <a name="enable-automanage-for-multiple-vms"></a>複数の VM に対して Automanage を有効にする
+## <a name="enable-automanage-for-multiple-machines"></a>複数のマシンに対して Automanage を有効にする
 
 1. 検索バーで、 **[Automanage – Azure machine best practices]\(Automanage - Azure マシンのベスト プラクティスの有効化)** を検索して選択します。
 
@@ -60,13 +60,15 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     :::image type="content" source="media\quick-create-virtual-machine-portal\zero-vm-list-view.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)":::
 
 3. **[マシンの選択]** ブレードで次のようにします。
-    1. 実際の **サブスクリプション** と **リソース グループ** で VM のリストにフィルターをかけます。
+    1. 実際の **サブスクリプション** と **リソース グループ** でリストをフィルター処理します。
     1. オンボードする各仮想マシンのチェック ボックスをオンにします。
     1. **[選択]** ボタンをクリックします。
+    > [!NOTE]
+    > Azure VM と Arc 対応サーバーの両方を選択できます。
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="使用可能な VM のリストから既存の VM を選択します。":::
 
-4. **[環境]** で、環境の種類として **[Dev/Test]** または **[運用]** を選択します。 
+4. **[環境]** で、環境の種類として **[Dev/Test]** または **[運用]** を選択します。
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="環境を選択します。":::
 
@@ -76,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="運用環境を参照する。":::
 
-5. 既定では、構成設定に対して **[Azure のベスト プラクティス]** 設定が選択されています。 これを変更するには、新しい設定を作成するか、既存のものを選択します。 
+5. 既定では、構成設定に対して **[Azure のベスト プラクティス]** 設定が選択されています。 これを変更するには、新しい設定を作成するか、既存のものを選択します。
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="設定を作成する。":::
 
