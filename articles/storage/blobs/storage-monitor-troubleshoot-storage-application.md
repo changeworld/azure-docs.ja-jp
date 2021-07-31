@@ -105,7 +105,7 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 ![Microsoft Message Analyzer - イベントの表示](media/storage-monitor-troubleshoot-storage-application/figure5.png)
 
-[ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)は、 **$logs** コンテナーやそこに含まれているログなど、ストレージ アカウントを操作するために使用できるもう 1 つのツールです。
+[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)は、 **$logs** コンテナーやそこに含まれているログなど、ストレージ アカウントを操作するために使用できるもう 1 つのツールです。
 
 ## <a name="next-steps"></a>次のステップ
 
