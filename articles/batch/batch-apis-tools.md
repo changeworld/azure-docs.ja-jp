@@ -75,7 +75,7 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 - [Azure ポータル](https://portal.azure.com/):Azure portal では、Batch プール、ジョブ、タスクを作成、監視、削除できます。 ジョブの実行時にこれらをはじめとする各種リソースの状態情報を確認できるほか、プールのコンピューティング ノードからファイルをダウンロードすることもできます。 たとえばトラブルシューティングの際に、失敗したタスクの `stderr.txt` をダウンロードすることができます。 コンピューティング ノードへのログインに使用できるリモート デスクトップ (RDP) ファイルをダウンロードすることもできます。
 - [Azure Batch Explorer](https://azure.github.io/BatchExplorer/): Batch Explorer (旧称: BatchLabs) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Mac、Linux、または Windows 用の[インストール パッケージ](https://azure.github.io/BatchExplorer/)をダウンロードしてください。
 - [Azure Batch Shipyard](https://github.com/Azure/batch-shipyard): Batch Shipyard は、コンテナーベースのバッチ処理と HPC ワークロードを Azure Batch に対してプロビジョニング、実行、監視できるようにするツールです。
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/): 厳密には Azure Batch ツールではありませんが、ストレージ エクスプローラーは Batch ソリューションの開発とデバッグで役に立つツールです。
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/): 厳密には Azure Batch ツールではありませんが、Storage Explorer は Batch ソリューションの開発とデバッグで役に立つツールです。
 
 ## <a name="additional-resources"></a>その他のリソース
 
