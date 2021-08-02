@@ -1,26 +1,26 @@
 ---
-title: Windows Virtual Desktop のホスト プールの負荷分散 - Azure
-description: Windows Virtual Desktop 環境でのホスト プールの負荷分散方法について説明します。
+title: Azure Virtual Desktop のホスト プールの負荷分散 - Azure
+description: Azure Virtual Desktop 環境でのホスト プールの負荷分散方法について説明します。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ed0cf568ca8d011beb7150f23c0187bbe262d5f0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 54cbd03283814fd21a95dfe7578173f3481c4cd8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446776"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757609"
 ---
 # <a name="host-pool-load-balancing-methods"></a>ホスト プールの負荷分散方法
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/host-pool-load-balancing-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/host-pool-load-balancing-2019.md)を参照してください。
 
-Windows Virtual Desktop では 2 つの負荷分散方法がサポートされます。 それぞれの方法では、ユーザーがホスト プール内のリソースに接続するときにそのユーザーのセッションをホストするセッション ホストが決定されます。
+Azure Virtual Desktop では 2 つの負荷分散方法がサポートされます。 それぞれの方法では、ユーザーがホスト プール内のリソースに接続するときにそのユーザーのセッションをホストするセッション ホストが決定されます。
 
-Windows Virtual Desktop では以下の負荷分散方法を使用できます。
+Azure Virtual Desktop では以下の負荷分散方法を使用できます。
 
 - 幅優先の負荷分散では、ホスト プール内のセッション ホスト間でユーザー セッションを均等に分散させることができます。
 - 深さ優先の負荷分散では、セッション ホストをホスト プール内のユーザー セッションで飽和状態にすることができます。 最初のセッションがそのセッション制限のしきい値に達すると、新しいユーザー接続はロード バランサーによってホスト プール内の次のセッション ホストに制限に達するまで送られ、以下同様に送られます。

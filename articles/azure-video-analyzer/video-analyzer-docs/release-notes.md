@@ -3,12 +3,12 @@ title: Azure Video Analyzer リリース ノート - Azure
 description: このトピックでは、Azure Video Analyzer のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: ffb6381fafd4aabed3bd27b14f4778d23fa7441e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ef1c395bb10000599f901e62cf77b3573146aeee
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387831"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591226"
 ---
 # <a name="azure-video-analyzer-release-notes"></a>Azure Video Analyzer リリース ノート
 
@@ -23,13 +23,30 @@ ms.locfileid: "110387831"
 
 <hr width=100%>
 
+## <a name="june-3-2021"></a>2021 年 6 月 3 日
+
+モジュールの 2021 年 6 月の更新に関するこのリリース タグは次のとおりです。
+
+```
+     mcr.microsoft.com/media/video-analyzer:1.0.1
+```
+> [!NOTE]
+> クイックスタートおよびチュートリアルでは、配置マニフェストで 1 のタグ (video-analyzer:1) を使用します。 そのため、新しいタグがリリースされると、このようなマニフェストを再配置するだけで、エッジとデバイスでモジュールが更新されます。
+
+### <a name="module-updates"></a>モジュールの更新
+* RTSP カメラに接続するための資格情報内の Unicode 文字をサポートします
+* デバッグ モードで詳細なログを有効にする更新
+
+<hr width=100%>
+
 ## <a name="may-25-2021"></a>2021 年 5 月 25 日
 
 このリリースは、Azure Video Analyzer の最初のパブリック プレビュー リリースです。 リリース タグは、次のとおりです。
 
 ```
-     mcr.microsoft.com/media/video-analyzer:1.0.0
+mcr.microsoft.com/media/video-analyzer:1.0.0
 ```
+
 > [!NOTE]
 > クイックスタートおよびチュートリアルでは、配置マニフェストで 1 のタグ (video-analyzer:1) を使用します。 そのため、新しいタグがリリースされると、このようなマニフェストを再配置するだけで、エッジとデバイスでモジュールが更新されます。
 

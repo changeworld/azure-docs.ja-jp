@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 9efa376acd29758e6bb71930b5a6382e484fd3d7
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 92ba9ea8b63671112b6f9e16a984b50439c9d45d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795116"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072039"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -37,20 +37,34 @@ NFS ボリュームを作成するには、[NFS ボリュームの作成](azure-
 ## <a name="considerations"></a>考慮事項
 
 * 「[Active Directory 接続の要件](create-active-directory-connections.md#requirements-for-active-directory-connections)」を満たしていることを確認します。 
+* Active Directory (AD) に `pcuser` アカウントを作成し、そのアカウントが有効になっていることを確認します。 このアカウントは、既定のユーザーとして機能します。 これは、NTFS セキュリティ スタイルで構成されたデュアルプロトコル ボリュームにアクセスするための UNIX ユーザーのマッピングに使用されます。 `pcuser` アカウントは、AD にユーザーが存在しない場合にのみ使用されます。 ユーザーが AD に POSIX 属性が設定されたアカウントを持っている場合、そのアカウントが認証に使用され、`pcuser` アカウントにはマップされません。 
 * DNS サーバーに逆引き参照ゾーンを作成してから、その逆引き参照ゾーンに AD ホストマシンのポインター (PTR) レコードを追加します。 そうしないと、デュアルプロトコル ボリュームの作成は失敗します。
+* Active Directory 接続の **[LDAP を使用するローカル NFS ユーザーを許可する]** オプションは、ローカル ユーザーに不定期および一時的なアクセスを提供することを目的としています。 このオプションを有効にすると、LDAP サーバーからのユーザー認証と検索が機能しなくなります。 そのため、Active Directory 接続ではこのオプションを "*無効*" にしておく必要があります。ただし、ローカル ユーザーが LDAP が有効になっているボリュームにアクセスする必要がある場合は除きます。 その場合は、ボリュームにローカル ユーザー アクセスが不要になったら、すぐにこのオプションを無効にする必要があります。 ローカル ユーザー アクセスの管理については、「[LDAP を使用するローカル NFS ユーザーにデュアルプロトコル ボリュームへのアクセスを許可する](#allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume)」を参照してください。
 * NFS クライアントが最新であり、オペレーティング システムの最新の更新プログラムが実行されていることを確認します。
-* デュアル プロトコル ボリュームでは、現在 Azure Active Directory Domain Services (AADDS) はサポートされていません。 AADDS を使用している場合は、LDAP over TLS を有効にしないでください。
+* デュアルプロトコル ボリュームでは、Active Directory Domain Services (ADDS) と Azure Active Directory Domain Services (AADDS) の両方がサポートされています。 
+* デュアルプロトコル ボリュームでは、AADDS での TLS 経由の LDAP の使用はサポートされていません。 [TLS 経由の LDAP に関する考慮事項](configure-ldap-over-tls.md#considerations)に関するセクションを参照してください。
 * デュアル プロトコル ボリュームで使用される NFS のバージョンは、NFSv3 です。 そのため、次の考慮事項が適用されます。
     * デュアル プロトコルは、NFS クライアントからの Windows ACL 拡張属性 `set/get` をサポートしていません。
     * NFS クライアントは、NTFS セキュリティ スタイルのアクセス許可を変更することはできません。また、Windows クライアントは、UNIX 形式のデュアル プロトコル ボリュームのアクセス許可を変更することはできません。   
 
-    次の表は、セキュリティ スタイルとその効果について説明しています。  
+        次の表は、セキュリティ スタイルとその効果について説明しています。  
+        
+        | セキュリティ スタイル    | アクセス許可を変更できるクライアント   | クライアントが使用できるアクセス許可  | 結果の有効なセキュリティ スタイル    | ファイルにアクセスできるクライアント     |
+        |-  |-  |-  |-  |-  |
+        | `Unix`    | NFS   | NFSv3 モード ビット   | UNIX  | NFS と Windows   |
+        | `Ntfs`    | Windows   | NTFS ACL     | NTFS  |NFS と Windows|
+
+    * 名前マッピングが発生する方向 (Windows から UNIX、または UNIX から Windows) は、使用されるプロトコルと、ボリュームに適用されるセキュリティ スタイルによって異なります。 Windows クライアントには、常に Windows から UNIX への名前マッピングが必要です。 ユーザーがレビュー アクセス許可に適用されるかどうかは、セキュリティ スタイルによって異なります。 逆に、NFS クライアントでは、NTFS セキュリティ スタイルが使用されている場合にのみ、UNIX から Windows への名前マッピングを使用する必要があります。 
+
+        次の表は、名前マッピングとセキュリティ スタイルについて説明しています。  
     
-    | セキュリティ スタイル    | アクセス許可を変更できるクライアント   | クライアントが使用できるアクセス許可  | 結果の有効なセキュリティ スタイル    | ファイルにアクセスできるクライアント     |
-    |-  |-  |-  |-  |-  |
-    | `Unix`    | NFS   | NFSv3 モード ビット   | UNIX  | NFS と Windows   |
-    | `Ntfs`    | Windows   | NTFS ACL     | NTFS  |NFS と Windows|
-* NFS を使用して NTFS セキュリティ スタイル ボリュームをマウントする UNIX ユーザーは、UNIX `root` の場合は Windows ユーザー `root`、その他のすべてのユーザーの場合は `pcuser` として認証されます。 NFS の使用中、ボリュームをマウントする前に、これらのユーザー アカウントが Active Directory に存在していることを確認してください。 
+        |     Protocol          |     セキュリティ スタイル          |     名前マッピングの方向          |     適用されるアクセス許可          |
+        |-|-|-|-|
+        |  SMB  |  `Unix`  |  Windows から UNIX  |  UNIX (モード ビットまたは NFSv4.x ACL)  |
+        |  SMB  |  `Ntfs`  |  Windows から UNIX  |  NTFS ACL (Windows SID アクセス共有に基づく)  |
+        |  NFSv3  |  `Unix`  |  なし  |  UNIX (モード ビットまたは NFSv4.x ACL) <br><br>  NFSv4.x ACL は、NFSv4.x 管理クライアントを使用して適用でき、NFSv3 クライアントによって受け入れられる点に注意してください。  |
+        |  NFS  |  `Ntfs`  |  UNIX から Windows  |  NTFS ACL (マップされた Windows ユーザー SID に基づく)  |
+
 * 大規模なトポロジがあり、デュアル プロトコル ボリュームを使用した `Unix` セキュリティ スタイル、または拡張グループを使用した LDAP を使用する場合、Azure NetApp Files がトポロジ内のすべてのサーバーにはアクセスできなくなる可能性があります。  この状況が発生した場合は、アカウント チームに問い合わせて支援を受けてください。  <!-- NFSAAS-15123 --> 
 * デュアルプロトコル ボリュームを作成するために、サーバー ルート CA 証明書は必要ありません。 これは、LDAP over TLS が有効になっている場合にのみ必要です。
 
@@ -106,14 +120,18 @@ NFS ボリュームを作成するには、[NFS ボリュームの作成](azure-
 3. **[プロトコル]** をクリックし、次のアクションを実行します。  
     * ボリュームのプロトコルの種類として **[dual-protocol (NFSv3 and SMB)]\(デュアルプロトコル (NFSv3 と SMB)\)** を選択します。   
 
-    * ボリュームの **ボリューム パス** を指定します。   
-    このボリューム パスは、共有ボリュームの名前です。 名前は英字で始める必要があり、各サブスクリプションと各リージョン内で一意である必要があります。  
+    * 一意の **ボリューム パス** を指定します。 このパスは、マウント ターゲットを作成するときに使用されます。 パスの要件は、次のとおりです。  
+
+        - リージョン内の各サブネットにおいて一意である必要があります。 
+        - 英文字で始まる必要があります。
+        - 文字、数字、ダッシュ (`-`) だけで構成する必要があります。 
+        - 長さが 80 文字以内である必要があります。
 
     * 使用する **セキュリティ スタイル** を指定します。NTFS (既定値) または UNIX です。
 
     * デュアルプロトコル ボリュームに対して SMB3 プロトコル暗号化を有効にする場合は、 **[SMB3 プロトコルの暗号化を有効にする]\(Enable SMB3 Protocol Encryption\)** を選択します。   
 
-        この機能により、移動中の SMB3 データに対してのみ暗号化が有効になります。 NFSv3 の移動中データは暗号化されません。 SMB3 暗号化を使用していない SMB クライアントは、このボリュームにアクセスできません。 保存データは、この設定に関係なく暗号化されます。 詳細については、「[SMB 暗号化に関する FAQ](azure-netapp-files-faqs.md#smb-encryption-faqs)」を参照してください。 
+        この機能により、移動中の SMB3 データに対してのみ暗号化が有効になります。 NFSv3 の移動中データは暗号化されません。 SMB3 暗号化を使用していない SMB クライアントは、このボリュームにアクセスできません。 保存データは、この設定に関係なく暗号化されます。 詳細については、「[SMB 暗号化](azure-netapp-files-smb-performance.md#smb-encryption)」を参照してください。 
 
         **SMB3 の暗号化** 機能は現在、プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
 
@@ -144,7 +162,10 @@ NFS ボリュームを作成するには、[NFS ボリュームの作成](azure-
 
 ## <a name="allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume"></a>LDAP を使用するローカル NFS ユーザーにデュアルプロトコル ボリュームへのアクセスを許可する 
 
-Windows LDAP サーバー上に存在しないローカル NFS クライアント ユーザーが、拡張グループが有効になっている LDAP を持つ デュアルプロトコル ボリュームにアクセスできるようにすることができます。 これを行うには、次のように、 **[LDAP を使用するローカル NFS ユーザーを許可する]** オプションを有効にします。
+Active Directory 接続で **[LDAP を使用するローカル NFS ユーザーを許可する]** オプションを使用すると、Windows LDAP サーバーに存在しないローカル NFS クライアント ユーザーが、拡張グループが有効になっている LDAP を持つデュアルプロトコル ボリュームにアクセスできます。 
+
+> [!NOTE] 
+> このオプションを有効にする前に、[考慮事項](#considerations)を理解する必要があります。 
 
 1. **[Active Directory 接続]** をクリックします。  既存の Active Directory 接続で、コンテキスト メニュー (3 つのドット `…`) をクリックし、 **[編集]** を選択します。  
 
@@ -164,7 +185,19 @@ LDAP ユーザーおよび LDAP グループには、次の属性を設定する
     `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
 * LDAP グループに必要な属性:   
     `objectClass: posixGroup`, `gidNumber: 555`
+* すべてのユーザーとグループには、それぞれ一意の `uidNumber` と `gidNumber` が必要です。 
 
+### <a name="access-active-directory-attribute-editor"></a>Active Directory 属性エディターにアクセスする 
+
+Windows システムでは、次のように Active Directory 属性エディターにアクセスできます。  
+
+1. **[スタート]** をクリックし、 **[Windows 管理ツール]** に移動し、 **[Active Directory ユーザーとコンピューター]** をクリックして [Active Directory ユーザーとコンピューター] ウィンドウを開きます。  
+2.  表示するドメイン名をクリックし、内容を展開します。  
+3.  高度な属性エディターを表示するには、Active Directory ユーザー コンピューターの **[表示]** メニューの **[高度な機能]** オプションを有効にします。   
+    ![[高度な機能] メニューで属性エディターにアクセスする方法を示しているスクリーンショット。](../media/azure-netapp-files/attribute-editor-advanced-features.png) 
+4. 左側のウィンドウで **[ユーザー]** をダブルクリックして、ユーザーの一覧を表示します。
+5. 特定のユーザーをダブルクリックすると、その **[属性エディター]** タブが表示されます。
+ 
 ## <a name="configure-the-nfs-client"></a>NFS クライアントを構成する 
 
 NFS クライアントを構成するには、「[Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md)」の手順に従います。  

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 65ee741ee928a4883def68a5c0b6d20beee441c7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fca6e59d3aa5b95db0b9ad28f652226ae2eb30ba
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609209"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556531"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search の機能
 
@@ -32,7 +32,7 @@ Azure Cognitive Search は、フルテキスト検索エンジン、検索イン
 | カテゴリ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 特徴 |
 |-------------------|----------|
 |インデックス作成中の AI 処理 | イメージおよびテキスト分析のための [**AI エンリッチメント**](cognitive-search-concept-intro.md)をインデックス作成パイプラインに適用して、生のコンテンツからテキスト情報を抽出できます。 [組み込みのスキル](cognitive-search-predefined-skills.md)の例には、光学式文字認識 (スキャン済みの JPEG を検索可能にする)、エンティティ認識 (組織、名前、または場所を識別する)、キー フレーズ認識などがあります。 [カスタム スキルをコーディング](cognitive-search-create-custom-skill-example.md)してパイプラインにアタッチすることもできます。 [Azure Machine Learning で作成されたスキルを統合](./cognitive-search-tutorial-aml-custom-skill.md)することもできます。 |
-| 検索以外のシナリオでの分析と使用のためのエンリッチされたコンテンツの格納 | [**ナレッジ ストア**](knowledge-store-concept-intro.md) は、インデックス作成パイプラインの代替出力です。 トークン化された用語をインデックスに送信する代わりに、構成に応じて、Azure Blob Storage またはTable Storage に格納されているナレッジ ストアに、インデックス作成パイプラインによって作成された強化されたドキュメントを送信できます。 ナレッジ ストアは、AI ベースのインデックス作成 (スキルセット) から作成されます。 ナレッジ ストアの目的は、下流の分析または処理をサポートすることです。 ナレッジ ストアに新しい情報と構造を追加したら、それを機械学習処理に使用したり、Power BI から接続してデータを探索したりすることができます。<br/><br/> |
+| 検索以外のシナリオでの分析と使用のためのエンリッチされたコンテンツの格納 | [**ナレッジ ストア**](knowledge-store-concept-intro.md) は、インデックス作成パイプラインの代替出力です。 トークン化された用語をインデックスに送信する代わりに、構成に応じて、Azure Blob Storage または Table Storage に格納されているナレッジ ストアに、インデックス作成パイプラインによって作成された強化されたドキュメントを送信できます。 ナレッジ ストアは、AI ベースのインデックス作成 (スキルセット) から作成されます。 ナレッジ ストアの目的は、下流の分析または処理をサポートすることです。 ナレッジ ストアに新しい情報と構造を追加したら、それを機械学習処理に使用したり、Power BI から接続してデータを探索したりすることができます。<br/><br/> |
 | キャッシュされたコンテンツ | [**インクリメンタル エンリッチメント (プレビュー)**](cognitive-search-incremental-indexing-conceptual.md) では、パイプラインに対する特定の編集によって変更されたドキュメントのみに処理が制限され、パイプラインの変更されていない部分に対してはキャッシュされたコンテンツが使用されます。 |
 
 ## <a name="query-and-user-experience"></a>クエリとユーザー エクスペリエンス

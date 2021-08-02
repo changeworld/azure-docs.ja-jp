@@ -1,6 +1,6 @@
 ---
-title: テスト オファーの作成
-description: Microsoft パートナー センターのコマーシャル マーケットプレイス プログラムで、運用オファーをテストするために、別個の開発オファーを作成する方法。
+title: テスト SaaS オファーを作成する
+description: Azure Marketplace で運用プランをテストするための別の開発プランを作成します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 04/20/2021
-ms.openlocfilehash: 318eebcca3053be2164a1fc52905f36f26b11a6d
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 3c71dc08f58c73cf1fe35d4c2b42d30b30867a1e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331126"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559036"
 ---
-# <a name="create-a-test-offer"></a>テスト オファーの作成
+# <a name="create-a-test-saas-offer"></a>テスト SaaS オファーを作成する
 
 運用オファーとは別の環境で開発する場合は、個別のテストおよび開発 (DEV) オファーと、個別の運用 (PROD) オファーを作成します。 別個の DEV オファーを使用する利点の詳細については、「[SaaS オファーの計画](plan-saas-offer.md#test-offer)」を参照してください。
 

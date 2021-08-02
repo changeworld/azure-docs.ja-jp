@@ -3,12 +3,12 @@ title: レジストリのパフォーマンスのトラブルシューティン�
 description: レジストリのパフォーマンスに関する一般的な問題の現象、原因、および対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8557c8c342919073099a14be91c743b65c4d7fbc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148414"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069078"
 ---
 # <a name="troubleshoot-registry-performance"></a>レジストリのパフォーマンスのトラブルシューティング
 
@@ -99,11 +99,11 @@ nslookup myregistry.azurecr.io
 
 レジストリ リソースへのアクセス許可がある場合は、[レジストリ環境の正常性を確認](container-registry-check-health.md)します。 エラーが報告された場合は、対処法について[エラー リファレンス](container-registry-health-error-reference.md)を確認してください。
 
-レジストリで[リソース ログの収集](container-registry-diagnostics-audit-logs.md)が有効になっている場合は、ContainterRegistryRepositoryEvents ログを確認します。 このログには、プッシュ イベントやプル イベントなどの操作に関する情報が格納されています。 ログで[リポジトリレベルの操作エラー](container-registry-diagnostics-audit-logs.md#repository-level-operation-failures)のクエリを実行します。 
+レジストリで[リソース ログの収集](monitor-service.md)が有効になっている場合は、ContainterRegistryRepositoryEvents ログを確認します。 このログには、プッシュ イベントやプル イベントなどの操作に関する情報が格納されています。 ログで[リポジトリレベルの操作エラー](monitor-service.md#repository-level-operation-failures)のクエリを実行します。 
 
 関連リンク:
 
-* [診断の評価と監査のためのログ](container-registry-diagnostics-audit-logs.md)
+* [Azure Container Registry を監視する](monitor-service.md)
 * [Container Registry に関する FAQ](container-registry-faq.md)
 * [Azure Container Registry のベスト プラクティス](container-registry-best-practices.md)
 

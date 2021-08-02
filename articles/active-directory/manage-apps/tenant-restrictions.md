@@ -2,22 +2,22 @@
 title: テナント制限を使用して SaaS アプリへのアクセスを管理する - Azure AD
 description: テナント制限を使用して、どのユーザーが自分の Azure AD テナントに基づいてアプリにアクセスできるかを管理する方法。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 4/6/2021
-ms.author: iangithinji
+ms.date: 6/2/2021
+ms.author: mtillman
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ae7a6fec007818da584dc7e22658890dd2bea6
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: c443f3084c465e1a8f2358c1b8db365e576b04f5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517048"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082237"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -29,7 +29,7 @@ ms.locfileid: "109517048"
 
 この記事では Microsoft 365 のテナント制限に重点を置いていますが、この機能は、シングル サインオンのためにユーザーを Azure AD に送信するすべてのアプリを保護します。 Microsoft 365 で使用される Azure AD テナントとは異なるテナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることをご確認ください (たとえば、B2B コラボレーション シナリオ内など)。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) をご覧ください。
 
-さらに、テナント制限機能では、OneDrive、Hotmail、Xbox.com などの[すべての Microsoft コンシューマー アプリケーション (MSA アプリ) の使用をブロック](#blocking-consumer-applications-public-preview)できるようになりました。  これは、`login.live.com` エンドポイントに対して別のヘッダーを使用します。これについては、ドキュメントの最後で詳細に説明します。
+さらに、テナント制限機能では、OneDrive、Hotmail、Xbox.com などの[すべての Microsoft コンシューマー アプリケーション (MSA アプリ) の使用をブロック](#blocking-consumer-applications)できるようになりました。  これは、`login.live.com` エンドポイントに対して別のヘッダーを使用します。これについては、ドキュメントの最後で詳細に説明します。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -197,7 +197,7 @@ Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture 
 
 具体的な詳細については、ご使用のプロキシ サーバーのドキュメントを参照してください。
 
-## <a name="blocking-consumer-applications-public-preview"></a>コンシューマー アプリケーションのブロック (パブリック プレビュー)
+## <a name="blocking-consumer-applications"></a>顧客のアプリケーションをブロックする
 
 [OneDrive](https://onedrive.live.com/) または [Microsoft Learn](/learn/) など、コンシューマー アカウントと組織アカウントの両方をサポートする Microsoft のアプリケーションは、同じ URL でホストされる場合があります。  これは、仕事の目的でその URL にアクセスする必要があるユーザーは、個人的な使用のためにもアクセスできることを意味しますが、運用上のガイドラインでは、許可されない場合があります。
 

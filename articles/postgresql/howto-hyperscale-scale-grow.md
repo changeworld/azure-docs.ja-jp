@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 04/07/2021
-ms.openlocfilehash: 905224119b9df4e4003b1736443406e9548a49e3
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 9746c6509673d3268a4afa15bcbeee9fa676d8c1
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012531"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554410"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Hyperscale (Citus) サーバー グループをスケーリングする
 
@@ -42,6 +42,15 @@ Azure Database for PostgreSQL - Hyperscale (Citus) では、増加した負荷�
 新しいノードを追加するだけでなく、既存のノードの能力を増強することもできます。 計算処理能力の調整 (増減) は、パフォーマンス実験のほか、トラフィック需要の短期的変更または長期的変更に役立つ場合があります。
 
 すべてのワーカー ノードの仮想コアを変更するには、 **[構成 (ワーカー ノードあたり)]** の下の **[仮想コア]** スライダーを調整します。 コーディネーター ノードの仮想コアは、個別に調整することができます。 **[構成 (コーディネーター ノード)]** の **[仮想コア]** スライダーを調整します。
+
+## <a name="increase-storage-on-nodes"></a>ノードの記憶域を増やす
+
+新しいノードを追加するだけでなく、既存のノードのディスク領域を増強することもできます。 ディスク領域を増やすと、ワーカー ノードを追加する前に、既存のワーカー ノードでさらに多くのことができるようになります。
+
+すべてのワーカー ノードのストレージを変更するには、 **[構成 (ワーカー ノードあたり)]** の下の **[ストレージ]** スライダーを調整します。 コーディネーター ノードのストレージは、個別に調整することができます。 **[構成 (コーディネーター ノード)]** の **[ストレージ]** スライダーを調整します。
+
+> [!NOTE]
+> ノードあたりのストレージの数は、いったん増やして保存すると、スライダーを使用して減らすことはできません。
 
 ## <a name="next-steps"></a>次の手順
 

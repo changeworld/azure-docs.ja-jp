@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 608f9bb63082be132769964a14142996eb9b3564
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 437b6621687597e56c63b9afb146c67657650e71
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755569"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569280"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>FCI 用に仮想マシンを準備する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -138,8 +138,10 @@ Azure Marketplace から作成された仮想マシンには、アタッチさ�
 - [Premium ファイル共有を使用して FCI を構成する](failover-cluster-instance-premium-file-share-manually-configure.md)
 - [記憶域スペース ダイレクトを使用して FCI を構成する](failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 
-詳細については、[Azure VM 上の SQL Server を使用した FCI](failover-cluster-instance-overview.md) および[サポートされる HADR 構成](hadr-cluster-best-practices.md)の概要に関する記事をご覧ください。 
 
-追加情報については、次を参照してください。 
-- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)

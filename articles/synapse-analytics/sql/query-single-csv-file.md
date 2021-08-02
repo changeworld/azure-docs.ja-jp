@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f2f0cdf307e91fb40c55d4a98139bad1a5eca886
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8400713ea04c3f26d18fc032b5b0d0f3b8c65068
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462591"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061922"
 ---
 # <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
@@ -179,7 +179,8 @@ FROM OPENROWSET(
         DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIELDTERMINATOR =',',
-        FIRSTROW = 2
+        FIRSTROW = 2,
+        HEADER_ROW = TRUE
     )
     WITH (
         [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
@@ -191,6 +192,8 @@ WHERE
     country_name = 'Luxembourg'
     AND year = 2017;
 ```
+
+オプション `HEADER_ROW = { TRUE | FALSE }` を使用すると、CSV ファイルの最初の行がヘッダー行として読み取られ、その値が既定の名前 (C1、C2 など) の代わりに列名として表示されます。
 
 ## <a name="custom-quote-character"></a>カスタム引用符文字
 

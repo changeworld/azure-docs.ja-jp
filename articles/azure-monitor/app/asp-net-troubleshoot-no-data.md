@@ -4,26 +4,26 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2a301efe2ea7c6c74d503fda4a9bbf63f8ce7f80
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311228"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061580"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
 *Application Insights で、アプリによって生成されているイベントのごく一部しか表示されません。*
 
-* 同じ部分が常に表示される場合は、アダプティブ [サンプリング](./sampling.md)が原因である可能性があります。 これを確認するには、([概要] ブレードから) [検索] を開き、要求やその他のイベントのインスタンスを確認します。 プロパティ セクションの下部で、[...] をクリックし、すべてのプロパティの詳細を取得します。 要求数が > 1 の場合は、サンプリングが実行中です。
-* それ以外の場合、料金プランの [データ速度の上限](./pricing.md#limits-summary) に達してる可能性があります。 これらの制限は分単位で適用されます。
+* 同じ部分が常に表示される場合は、アダプティブ [サンプリング](../../azure-monitor/app/sampling.md)が原因である可能性があります。 これを確認するには、([概要] ブレードから) [検索] を開き、要求やその他のイベントのインスタンスを確認します。 すべてのプロパティの詳細を表示するには、 **[プロパティ]** セクションの下部にある省略記号 **[...]** を選択します。 要求数が 1 より大きい場合は、サンプリングが実行中です。
+* 料金プランの[データ速度の上限](../../azure-monitor/app/pricing.md#limits-summary)に達してる可能性があります。 これらの制限は分単位で適用されます。
 
-*データがランダムに失われます。*
+"*データがランダムに失われます。* "
 
-* [テレメトリ チャネル](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)でデータ損失がないか確認してください
+* [テレメトリ チャネル](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)でデータ損失がないか確認してください。
 
-* テレメトリ チャネル [GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)で既知の問題がないか確認してください
+* テレメトリ チャネル [GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)で既知の問題がないか確認してください。
 
 *アプリが停止する直前、コンソール アプリや Web アプリでデータが失われます。*
 
@@ -34,17 +34,16 @@ ms.locfileid: "107311228"
 インターネット インフォメーション サービス (IIS) は、IIS に到達したすべての要求の数をログに記録します。これは本質的に、アプリケーションに到達した要求の総数とは異なる可能性があります。 このため、SDK によって収集された要求カウントが IIS ログの合計数と一致するとは限りません。 
 
 ## <a name="no-data-from-my-server"></a>サーバーからデータを取得できない
-*Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。開発用コンピューターでは正常に機能していました。*
-
-* おそらく、ファイアウォールの問題でしょう。 [Application Insights がデータを送信できるようにファイアウォールの例外を設定](./ip-addresses.md)してください。
-* IIS サーバーに、前提条件である .NET 拡張機能 4.5 および ASP.NET 4.5 がない可能性があります。
+* Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。 開発用コンピューターでは正常に機能していました。*
+* これはおそらくファイアウォールの問題です。 [Application Insights がデータを送信できるようにファイアウォールの例外を設定](../../azure-monitor/app/ip-addresses.md)してください。
+* IIS サーバーに、.NET 拡張機能 4.5 または ASP.NET 4.5 などの前提条件がない可能性があります。
 
 *既存のアプリを監視するために、Web サーバーに [Status Monitor をインストール](./monitor-performance-live-website-now.md)したのですが、結果がまったく表示されません。*
 
 * 「 [Status Monitor のトラブルシューティング](./monitor-performance-live-website-now.md#troubleshoot)」を参照してください。
 
 > [!IMPORTANT]
-> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+> インストルメンテーション キーよりも、[接続文字列](./sdk-connection-string.md?tabs=net)を使用することをお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 接続文字列により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException:ファイルまたはアセンブリ Microsoft.AspNet TelemetryCorrelation を読み込めませんでした
@@ -186,7 +185,7 @@ Application Insights をインストールしているとき、またはログ �
 [依存関係のテレメトリ](./asp-net-dependencies.md)に関する記事と[例外のテレメトリ](asp-net-exceptions.md)に関する記事をご覧ください。
 
 ## <a name="no-performance-data"></a>パフォーマンス データが表示されない
-パフォーマンス データ (CPU、IO レートなど) は、[Java Web サービス](./java-collectd.md)、[Windows デスクトップ アプリ](./windows-desktop.md)、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](./monitor-performance-live-website-now.md)、[Azure Cloud Services](./app-insights-overview.md) で使用できます。 パフォーマンス データは、[設定] の [サーバー] の下にあります。
+パフォーマンス データ (CPU、IO レートなど) は、[Java Web サービス](java-2x-collectd.md)、[Windows デスクトップ アプリ](./windows-desktop.md)、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](./monitor-performance-live-website-now.md)、[Azure Cloud Services](./app-insights-overview.md) で使用できます。 パフォーマンス データは、[設定] の [サーバー] の下にあります。
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>サーバーにアプリを発行して以来、(サーバー) データが得られない
 * すべての Microsoft. ApplicationInsights DLL が Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll と一緒にサーバーにコピーされたことを確認します。
@@ -282,7 +281,7 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 詳細については、以下を参照してください。
 - [PerfView でのパフォーマンス トレースの記録](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
-- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
+- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/troubleshooting/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>dotnet-trace を使用してログを収集する
 

@@ -1,40 +1,40 @@
 ---
-title: Windows Virtual Desktop (classic) 上の Windows 7 仮想マシン - Azure
-description: Windows Virtual Desktop (classic) 環境における Windows 7 仮想マシン (VM) の問題を解決する方法。
+title: Azure Virtual Desktop (クラシック) 上の Windows 7 仮想マシン - Azure
+description: Azure Virtual Desktop (クラシック) 環境の Windows 7 仮想マシン (VM) の問題を解決する方法。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 99c1c76092714c58fd13d9ce51ef850971d80c86
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 2d0ea39dc4a0b217c35322e0aefc477996402a0f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444124"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753865"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (classic) での Windows 7 仮想マシンのトラブルシューティング
+# <a name="troubleshoot-windows-7-virtual-machines-in-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック) での Windows 7 仮想マシンのトラブルシューティング
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (classic) に適用されます。
+>このコンテンツは、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。
 
-この記事は、Windows Virtual Desktop セッション ホスト仮想マシン (VM) の構成中に発生する問題を解決するときにご利用ください。
+この記事は、Azure Virtual Desktop セッション ホスト仮想マシン (VM) の構成時に発生する問題のトラブルシューティングを行うときに使用してください。
 
 ## <a name="known-issues"></a>既知の問題
 
-Windows Virtual Desktop 上の Windows 7 では、次の機能はサポートされていません。
+Azure Virtual Desktop 上の Windows 7 では、次の機能はサポートされていません。
 
 - 仮想化アプリケーション (RemoteApp)
 - タイム ゾーン リダイレクト
 - 自動 DPI スケール
 
-Windows Virtual Desktop では、Windows 7 の完全なデスクトップのみを仮想化できます。
+Azure Virtual Desktop では、Windows 7 の完全なデスクトップのみを仮想化できます。
 
 自動 DPI スケールはサポートされていませんが、リモート デスクトップ クライアントのアイコンを右クリックして、 **[解像度]** を選択すると、仮想マシンの解像度を手動で変更できます。
 
 ## <a name="error-cant-access-the-remote-desktop-user-group"></a>エラー:リモート デスクトップ ユーザー グループにアクセスできない
 
-Windows Virtual Desktop でリモート デスクトップ ユーザー グループ内のお客様またはお客様のユーザーの資格情報を見つけられない場合は、次のようなエラー メッセージのいずれかが表示されることがあります。
+Azure Virtual Desktop でリモート デスクトップ ユーザー グループのお客様またはそのユーザーの資格情報が見つからない場合、次のエラー メッセージのいずれかが表示されることがあります。
 
 - "このユーザーはリモート デスクトップ ユーザー グループのメンバーではありません"
 - "リモート デスクトップ サービスを経由してサインインするためのアクセス許可を得る必要があります"

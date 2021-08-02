@@ -1,5 +1,5 @@
 ---
-title: Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成する (プレビュー)
+title: Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成する
 description: Windows で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
@@ -7,36 +7,23 @@ ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
-ms.colletion: windows
-ms.openlocfilehash: 0a53e8de8dd832e793ae12034c96ce9fe634ed7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.collection: windows
+ms.openlocfilehash: 619821c87c4897c93e6a0344a98335cf4f95a53b
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694106"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112070833"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>プレビュー:Windows で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
+# <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>Windows で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 
 この記事では、[共有イメージ ギャラリー](../shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json) です。 
 
-> [!IMPORTANT]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="register-the-features"></a>機能の登録
-プレビュー中に Azure Image Builder を使用するには、新しい機能を登録する必要があります。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-機能の登録の状態を確認します。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
-```
+Azure Image Builder を使用するには、機能を登録する必要があります。
 
 登録を確認します。
 
@@ -63,7 +50,7 @@ az provider register -n Microsoft.Network
 
 [イメージの作成と共有イメージ ギャラリーへの配布](image-builder-gallery.md)に関するページの手順を使用して共有イメージ ギャラリーを作成した場合、必要な変数は既に作成されています。 それ以外の場合は、この例で使用するいくつかの変数を設定してください。
 
-プレビューの Image Builder では、ソース マネージド イメージと同じリソース グループ内にのみ、カスタム イメージを作成できます。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
+Image Builder では、ソース マネージド イメージと同じリソース グループ内にのみ、カスタム イメージを作成できます。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example

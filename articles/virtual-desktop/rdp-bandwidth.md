@@ -1,23 +1,23 @@
 ---
-title: 帯域幅要件のリモート デスクトップ プロトコル Windows Virtual Desktop - Azure
+title: Azure Virtual Desktop のリモート デスクトップ プロトコル帯域幅の要件 - Azure
 titleSuffix: Azure
-description: Windows Virtual Desktop の RDP 帯域幅要件について説明します。
+description: Azure Virtual Desktop 用 RDP 帯域幅の要件について説明します。
 author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 6fe12c985f5d9a519380d1d9b5a7d6c2820630c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b43a76e417505d4894396503ca93fc87f508d4c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932337"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753163"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>リモート デスクトップ プロトコル (RDP) の帯域幅の要件
 
 リモート デスクトップ プロトコル (RDP) は、さまざまな手法を使用して、クライアント デバイスへのサーバーのリモート グラフィックス配信を完全に実現する高度なテクノロジです。 RDP は、ユース ケース、コンピューティング リソースの可用性、およびネットワーク帯域幅に応じて、さまざまなパラメーターを動的に調整して、最適なユーザー エクスペリエンスを実現します。
 
-リモート デスクトップ プロトコルは、複数の動的仮想チャネル (DVC) を、異なるネットワーク トランスポート経由で送信される 1 つのデータ チャネルに多重化します。 リモート グラフィックス、入力、デバイス リダイレクト、印刷などのために、個別の DVC があります。 Windows Virtual Desktop パートナーは、DVC インターフェイスを使用する拡張機能も使用できます。
+リモート デスクトップ プロトコルは、複数の動的仮想チャネル (DVC) を、異なるネットワーク トランスポート経由で送信される 1 つのデータ チャネルに多重化します。 リモート グラフィックス、入力、デバイス リダイレクト、印刷などのために、個別の DVC があります。 Azure Virtual Desktop パートナーは、DVC インターフェイスを使用する拡張機能も使用できます。
 
 RDP を介して送信されるデータの量は、ユーザーの利用状況によって異なります。 たとえば、ユーザーはほとんどのセッションで基本的なテキスト コンテンツを操作し、最小帯域幅を消費しますが、その後、200 ページのドキュメントの印刷をローカル プリンターに生成できます。 この印刷ジョブでは、大量のネットワーク帯域幅が使用されます。
 
@@ -147,6 +147,6 @@ New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" 
 
 ## <a name="next-steps"></a>次のステップ
 
-* Windows Virtual Desktop の帯域幅の要件の詳細については、[Windows Virtual Desktop のリモート デスクトップ プロトコル (RDP) 帯域幅の要件の概要](rdp-bandwidth.md)に関するトピックを参照してください。
-* Windows Virtual Desktop のネットワーク接続の詳細については、「[Windows Virtual Desktop のネットワーク接続について](network-connectivity.md)」を参照してください。
-* Windows Virtual Desktop のサービス品質 (QoS) の使用を開始するには、「[Windows Virtual Desktop のサービス品質 (QoS) を実装する](rdp-quality-of-service-qos.md)」を参照してください。
+* Azure Virtual Desktop 用帯域幅の要件の詳細については、[Azure Virtual Desktop のリモート デスクトップ プロトコル (RDP) 帯域幅の要件の概要](rdp-bandwidth.md)に関するトピックをご覧ください。
+* Azure Virtual Desktop のネットワーク接続の詳細については、「[Azure Virtual Desktop のネットワーク接続について](network-connectivity.md)」を参照してください。
+* Azure Virtual Desktop 用サービス品質 (QoS) の使用を開始するには、[Azure Virtual Desktop 用サービス品質 (QoS) の実装](rdp-quality-of-service-qos.md)に関するページをご覧ください。

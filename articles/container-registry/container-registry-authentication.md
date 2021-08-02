@@ -3,18 +3,23 @@ title: レジストリ認証オプション
 description: Azure Active Directory ID でのサインイン、サービス プリンシパルの使用、オプションの管理者資格情報の使用など、非公開の Azure コンテナー レジストリのための認証オプション。
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: 097a322260e4c4f55d4e0d7e3e107abdd15a3b8a
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 542d8ec2516c0eb202ebeeb194977011c234b1dc
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831638"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540373"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Azure コンテナー レジストリでの認証
 
 Azure コンテナー レジストリでの認証には複数の方法があり、それぞれ 1 つ以上のレジストリ使用シナリオに適用できます。
 
-[個々のログイン](#individual-login-with-azure-ad)によって直接レジストリに対して認証を受けるなどの方法が推奨されます。またはアプリケーションやコンテナー オーケストレーターで Azure Active Directory (Azure AD) [サービス プリンシパル](#service-principal)を使用して無人 ("ヘッドレス") 認証を実行することができます。
+推奨される方法は次のとおりです。
+
+* [個々のログイン](#individual-login-with-azure-ad)を使用して、レジストリに対する認証を直接行います
+* アプリケーションとコンテナー オーケストレーターは、Azure Active Directory (Azure AD) の[サービス プリンシパル](#service-principal)を使用して、自動 ("ヘッドレス") 認証を実行できます
+
+Azure Kubernetes Service (AKS) または別の Kubernetes クラスターでコンテナー レジストリを使用する場合は、「[Kubernetes から Azure Container Registry で認証を受けるシナリオ](authenticate-kubernetes-options.md)」を参照してください。
 
 ## <a name="authentication-options"></a>認証オプション
 
@@ -24,10 +29,11 @@ Azure コンテナー レジストリでの認証には複数の方法があり�
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [個人の AD ID](#individual-login-with-azure-ad)                | Azure CLI の `az acr login`                              | 開発者、テスト担当者による対話型のプッシュ/プル                                    | はい                              | AD トークンを 3 時間ごとに更新する必要がある     |
 | [AD サービス プリンシパル](#service-principal)                  | `docker login`<br/><br/>Azure CLI の `az acr login`<br/><br/> API またはツールのレジストリ ログイン設定<br/><br/> [Kubernetes のプル シークレット](container-registry-auth-kubernetes.md)                                           | CI/CD パイプラインからの無人プッシュ<br/><br/> Azure または外部サービスへの無人プル  | はい                              | SP パスワードの既定の有効期限は 1 年である       |                                                           
-| [AKS との統合](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | AKS クラスターが作成または更新されたときにレジストリをアタッチする  | AKS クラスターへの無人プル                                                  | いいえ、プル アクセスのみ             | AKS クラスターでしか使用できない            |
 | [Azure リソースのマネージド ID](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI の  `az acr login`                                        | Azure CI/CD パイプラインからの無人プッシュ<br/><br/> Azure サービスへの無人プル<br/><br/>   | はい                              | [Azure リソースのマネージド ID をサポートする](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)厳選した Azure サービスからのみ使用              |
+| [AKS クラスターのマネージド ID](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | AKS クラスターが作成または更新されたときにレジストリをアタッチする  | 同じサブスクリプションまたは別のサブスクリプション内の AKS クラスターへの自動プル                                                 | いいえ、プル アクセスのみ             | AKS クラスターでしか使用できない            |
+| [AKS クラスターのサービス プリンシパル](authenticate-aks-cross-tenant.md)                    | AKS クラスターが作成または更新されたときに有効にする  | 別の AD テナントのレジストリからの AKS クラスターへの自動プル                                                  | いいえ、プル アクセスのみ             | AKS クラスターでしか使用できない            |
 | [管理者ユーザー](#admin-account)                            | `docker login`                                          | 個人の開発者またはテスト担当者による対話型のプッシュ/プル<br/><br/>レジストリから Azure App Service または Azure Container Instances へのイメージのポータル展開                      | いいえ、常にプルおよびプッシュ アクセス  | レジストリごとに 1 つのアカウント (複数のユーザーの場合は推奨されません)         |
-| [リポジトリをスコープとしたアクセス トークン](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>Azure CLI の `az acr login`   | 個人の開発者またはテスト担当者によるリポジトリへの対話型のプッシュ/プル<br/><br/> 個々のシステムまたは外部デバイスによるリポジトリへの無人プッシュ/プル                  | Yes                              | 現時点では AD ID と統合されていない  |
+| [リポジトリをスコープとしたアクセス トークン](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>Azure CLI の `az acr login`<br/><br/> [Kubernetes のプル シークレット](container-registry-auth-kubernetes.md)    | 個人の開発者またはテスト担当者によるリポジトリへの対話型のプッシュ/プル<br/><br/> 個々のシステムまたは外部デバイスによるリポジトリからの自動プル                  | Yes                              | 現時点では AD ID と統合されていない  |
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD での個々のログイン
 
@@ -49,7 +55,7 @@ Azure ID で `az acr login` を使用すると、[Azure ロールベースのア
 
 ### <a name="az-acr-login-with---expose-token"></a>az acr login with --expose-token
 
-場合によっては、お使いの環境で Docker デーモンが実行されていない場合に `az acr login` での認証が必要になることがあります。 たとえば、Azure Cloud Shell のスクリプトで `az acr login` を実行することが必要になる場合があります。この場合 Docker CLI は提供されますが、Docker デーモンは実行されません。
+場合によっては、お使いの環境で Docker デーモンが実行されていない場合に、`az acr login` での認証が必要になります。 たとえば、Azure Cloud Shell のスクリプトで `az acr login` を実行することが必要になる場合があります。この場合 Docker CLI は提供されますが、Docker デーモンは実行されません。
 
 このシナリオでは、最初に `--expose-token` パラメーターを指定して `az acr login` を実行します。 このオプションは、Docker CLI を使用してログインするのではなく、アクセス トークンを公開します。
 

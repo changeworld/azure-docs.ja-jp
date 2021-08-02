@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 970c0a2705bc9a559eb531c8b44780053343a712
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 00ee1b6e9772100cbc4abf9c79260a231bbd27af
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209717"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755143"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>プレビュー: Azure Automanage for virtual machines
 
@@ -32,6 +32,8 @@ Azure Automanage for virtual machines サービスを使用すると、Azure で
 ご利用の仮想マシンを Azure Automanage にオンボードすると、各ベスト プラクティス サービスが推奨される設定に自動的に構成されます。 ベスト プラクティスは、サービスごとに異なります。 たとえば、Azure Backup の場合、仮想マシンを 1 日に 1 回バックアップして 6 か月保持する、といったベスト プラクティスが考えられます。
 
 また、Azure Automanage を使用すると、ドリフトが自動的に監視され、検出されると修正されます。 つまり、仮想マシンが Azure Automanage にオンボードされた場合、Azure のベスト プラクティスに従って自動的に構成されるだけでなく、ライフサイクル全体を通してそれらのベスト プラクティスに準拠し続けるように、マシンが自動的に監視されます。 仮想マシンがそれらのプラクティスからドリフトつまり逸脱した場合 (たとえば、サービスがオフボードされた場合) は、修正が行われ、マシンは望ましい状態に戻されます。
+
+VM が配置されている geography 外で、Automanage によって顧客データが格納/処理されることはありません。 SoutheastAsia リージョンでは、SoutheastAsia 外で、Automanage によってデータが格納/処理されることはありません。
 
 ## <a name="prerequisites"></a>前提条件
 

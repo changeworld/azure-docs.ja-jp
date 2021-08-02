@@ -1,22 +1,22 @@
 ---
 title: Microsoft Endpoint Configuration Manager を構成する - Azure
-description: Windows Virtual Desktop 上の Windows 10 Enterprise マルチセッションにソフトウェア更新プログラムを展開するように、Microsoft Endpoint Configuration Manager を構成する方法。
+description: Azure Virtual Desktop 上の Windows 10 Enterprise マルチセッションにソフトウェア更新プログラムを展開するように、Microsoft Endpoint Configuration Manager を構成する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: femila
-ms.openlocfilehash: fe2da5c60c06e5617d130940af4909c52272d551
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 8266473553288584a534e8833d8c50dcb2ec40cf
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448170"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754549"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Microsoft Endpoint Configuration Manager を構成する
 
-この記事では、Windows 10 Enterprise マルチセッションを実行している Windows Virtual Desktop ホストに更新プログラムを自動的に適用するように、Microsoft Endpoint Configuration Manager を構成する方法について説明します。
+この記事では、Windows 10 Enterprise マルチセッションを実行している Azure Virtual Desktop ホストに更新プログラムを自動的に適用するように、Microsoft Endpoint Configuration Manager を構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

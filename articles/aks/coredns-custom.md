@@ -6,12 +6,12 @@ author: palma21
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jpalma
-ms.openlocfilehash: 5b13931bc6a13d988c21f728b996c51270769e0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff7862636ec96db525e4a6920b35dbc1ce6be6d7
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368683"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076242"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service で CoreDNS をカスタマイズする
 
@@ -181,6 +181,24 @@ data:
     test.override: | # you may select any name here, but it must end with the .override file extension
           hosts example.hosts example.org { # example.hosts must be a file
               10.0.0.1 example.org
+              fallthrough
+          }
+```
+
+インラインを使用してホスト テーブル内に 1 行以上を指定するには、次のようにします。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom # this is the name of the configmap you can overwrite with your changes
+  namespace: kube-system
+data:
+    test.override: | # you may select any name here, but it must end with the .override file extension
+          hosts { 
+              10.0.0.1 example1.org
+              10.0.0.2 example2.org
+              10.0.0.3 example3.org
               fallthrough
           }
 ```

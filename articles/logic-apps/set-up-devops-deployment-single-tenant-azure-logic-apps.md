@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: bd35af7ac6602bba7e23bd10eda2f2b0fdff71db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 41cc4c174028ff23cdcc248c6b10d746e5669349
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379761"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751237"
 ---
 # <a name="set-up-devops-deployment-for-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps 用に DevOps のデプロイを設定する
 
@@ -115,14 +115,13 @@ Logic Apps デザイナーで接続を作成するときのネットワーク �
 
 ### <a name="build-your-project"></a>プロジェクトをビルドする
 
-ロジック アプリのプロジェクトの種類に基づいてビルド パイプラインを設定するには、対応するアクションに従います。
+ロジック アプリのプロジェクトの種類に基づいてビルド パイプラインを設定するには、次の表に記載した対応するアクションを実行します。
 
-* Nuget ベース: NuGet ベースのプロジェクト構造は、次の.NET Framework に基づきます。 これらのプロジェクトをビルドするには、.NET Standard のビルド手順に従ってください。 詳細については、「[Create a NuGet package using MSBuild](/nuget/create-packages/creating-a-package-msbuild)」\(MSBuild ドキュメントを使用した NuGet パッケージの作成\)を参照してください。
-
-* バンドルベース: 拡張機能のバンドルベースのプロジェクトは言語固有ではないので言語固有のビルド手順は必要ありません。 任意のメソッドを使用して、プロジェクトファイルを zip 圧縮できます。
-
-  > [!IMPORTANT]
-  > .Zip ファイルには、すべてのワークフロー フォルダー、host.json、connections.js などの構成ファイル、およびその他の関連ファイルが含まれていることを確認します。
+| プロジェクトの種類 | 説明と手順 |
+|--------------|-----------------------|
+| Nuget ベース | NuGet ベースのプロジェクト構造は、.NET Framework に基づきます。 これらのプロジェクトをビルドするには、.NET Standard のビルド手順に従ってください。 詳細については、「[Create a NuGet package using MSBuild](/nuget/create-packages/creating-a-package-msbuild)」\(MSBuild ドキュメントを使用した NuGet パッケージの作成\)を参照してください。 |
+| バンドルベース | 拡張機能のバンドルベースのプロジェクトは言語固有ではないため、言語固有のビルド手順は必要ありません。 任意のメソッドを使用して、プロジェクトファイルを zip 圧縮できます。 <p><p>**重要**: .zip ファイルに、すべてのワークフロー フォルダー、host.json、connections.json などの構成ファイル、および他の関連ファイルなど、実際のビルド成果物が含まれていることを確認してください。 |
+|||
 
 ### <a name="release-to-azure"></a>Azure へのリリース
 
@@ -135,48 +134,146 @@ Azure にデプロイするリリース パイプラインを設定するには�
 
 Github のデプロイでは、[GitHub Actions](https://docs.github.com/actions) (Azure Functions の GitHub Actions など) を使用してロジック アプリをデプロイできます。 この操作を行うには、次の情報を渡す必要があります。
 
-* 自社ビルド成果物
-* デプロイに使用するロジック アプリの名前
-* 自社発行プロファイル
+- デプロイに使用するロジック アプリの名前
+- すべてのワークフロー フォルダー、host.json、connections.json などの構成ファイル、および他の関連ファイルなど、実際のビルド成果物が含まれている .zip ファイル。
+- [発行プロファイル](../azure-functions/functions-how-to-github-actions.md#generate-deployment-credentials) (認証に使用される)
 
 ```yaml
 - name: 'Run Azure Functions Action'
   uses: Azure/functions-action@v1
   id: fa
   with:
-   app-name: {your-logic-app-name}
-   package: '{your-build-artifact}.zip'
-   publish-profile: {your-logic-app-publish-profile}
+   app-name: 'MyLogicAppName'
+   package: 'MyBuildArtifact.zip'
+   publish-profile: 'MyLogicAppPublishProfile'
 ```
 
 詳細については、「[Continuous delivery by using GitHub Action](../azure-functions/functions-how-to-github-actions.md)」\(GitHub アクションを使用することによる継続的デリバリー)ドキュメントを参照してください。
 
 #### <a name="azure-devops"></a>[Azure DevOps](#tab/azure-devops)
 
-Azure DevOps デプロイの場合、Azure Pipelines で [Azure Function App Deploy タスク](/devops/pipelines/tasks/deploy/azure-function-app)を使用してロジック アプリをデプロイできます。 この操作を行うには、次の情報を渡す必要があります。
+Azure DevOps デプロイの場合、Azure Pipelines で [Azure Function App Deploy タスク](/azure/devops/pipelines/tasks/deploy/azure-function-app?view=azure-devops&preserve-view=true)を使用してロジック アプリをデプロイできます。 この操作を行うには、次の情報を渡す必要があります。
 
-* 自社ビルド成果物
-* デプロイに使用するロジック アプリの名前
-* 自社発行プロファイル
+- デプロイに使用するロジック アプリの名前
+- すべてのワークフロー フォルダー、host.json、connections.json などの構成ファイル、および他の関連ファイルなど、実際のビルド成果物が含まれている .zip ファイル。
+- [発行プロファイル](../azure-functions/functions-how-to-github-actions.md#generate-deployment-credentials) (認証に使用される)
 
 ```yaml
 - task: AzureFunctionApp@1
   displayName: 'Deploy logic app workflows'
   inputs:
-     azureSubscription: '{your-service-connection}'
+     azureSubscription: 'MyServiceConnection'
      appType: 'workflowapp'
-     appName: '{your-logic-app-name}'
-     package: '{your-build-artifact}.zip'
+     appName: 'MyLogicAppName'
+     package: 'MyBuildArtifact.zip'
      deploymentMethod: 'zipDeploy'
 ```
 
-詳細については、「[Deploy an Azure Function using Azure Pipelines](/devops/pipelines/targets/azure-functions-windows)」\(Azure Pipelines を使用する Azure 関数のデプロイ\) ドキュメントを参照してください。
+詳細については、「[Deploy an Azure Function using Azure Pipelines](/azure/devops/pipelines/targets/azure-functions-windows)」\(Azure Pipelines を使用する Azure 関数のデプロイ\) ドキュメントを参照してください。
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-他のデプロイ ツールを使用する場合は、シングルテナントの Azure Logic Apps の Azure CLI コマンドを使用してロジック アプリをデプロイできます。 たとえば、zip 形式の成果物を Azure リソース グループにデプロイするには、次の CLI コマンドを実行します。
+他のデプロイ ツールを使用する場合は、Azure CLI を使用してシングルテナント ベースのロジック アプリをデプロイできます。 始める前に、次の項目が必要になります。
 
-`az logicapp deployment source config-zip -g {your-resource-group} --name {your-logic-app-name} --src {your-build-artifact}.zip`
+- ローカル コンピューターにインストールされた最新の Azure CLI 拡張機能。
+
+  - この拡張機能がない場合は、[ご使用のオペレーティング システムまたはプラットフォームのインストール ガイド](/cli/azure/install-azure-cli)を確認してください。
+
+  - 最新バージョンかどうかが不明な場合は、[環境と CLI のバージョンを確認する手順](#check-environment-cli-version)に従ってください。
+
+- "*プレビュー*" 版のシングルテナント Azure Logic Apps (Standard) Azure CLI 用拡張機能。
+
+  この拡張機能がない場合は、[拡張機能をインストールする手順](#install-logic-apps-cli-extension)に従ってください。 シングルテナント Azure Logic Apps は一般提供されていますが、シングルテナント Azure Logic Apps の Azure CLI 用拡張機能はまだプレビュー段階です。
+
+- ロジック アプリをデプロイするために使用する Azure リソース グループ。
+
+  このリソース グループがない場合は、[リソース グループを作成する手順](#create-resource-group)に従ってください。
+
+- データと実行履歴の保持のためにロジック アプリで使用する Azure ストレージ アカウント。
+
+  このストレージ アカウントがない場合は、[ストレージ アカウントを作成する手順](/cli/azure/storage/account#az_storage_account_create)に従ってください。
+
+<a name="check-environment-cli-version"></a>
+
+##### <a name="check-environment-and-cli-version"></a>環境と CLI バージョンを確認する
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 ターミナルまたはコマンド ウィンドウで、[`az login`](/cli/azure/authenticate-azure-cli) コマンド を実行してサブスクリプションがアクティブであることを確認します。
+
+   ```azurecli-interactive
+   az login
+   ```
+
+1. ターミナルまたはコマンド ウィンドウで、`az` コマンドに次の必須パラメーターを設定して実行して、Azure CLI のバージョンを確認します。
+
+   ```azurecli-interactive
+   az --version
+   ```
+
+1. 最新の Azure CLI バージョンがない場合は、[オペレーティング システムまたはプラットフォーム用のインストール ガイド](/cli/azure/install-azure-cli)に従ってインストールを更新してください。
+
+   最新バージョンの詳細については、[最新のリリース ノート](/cli/azure/release-notes-azure-cli?tabs=azure-cli)を参照してください。
+
+<a name="install-logic-apps-cli-extension"></a>
+
+##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>Azure Logic Apps (Standard) の Azure CLI 用拡張機能をインストールする
+
+"*プレビュー*" 版のシングルテナント Azure Logic Apps (Standard) の Azure CLI 用拡張機能をインストールするには、`az extension add` コマンドに次の必須パラメーターを設定して実行します。
+
+```azurecli-interactive
+az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
+```
+
+<a name="create-resource-group"></a>
+
+#### <a name="create-resource-group"></a>リソース グループの作成
+
+ロジック アプリのリソース グループをまだ設定していない場合は、`az group create` コマンド を実行してグループを作成します。 Azure アカウントの既定のサブスクリプションをまだ設定していない場合は、`--subscription` パラメーターでサブスクリプション名または識別子を使用してください。 そうでない場合は、`--subscription` パラメーターを使用する必要はありません。
+
+> [!TIP]
+> 既定のサブスクリプションを設定するには、次のコマンドを実行し、`MySubscription` をご自分のサブスクリプション名または識別子に置き換える必要があります。
+>
+> `az account set --subscription MySubscription`
+
+たとえば、次のコマンドは `MyResourceGroupName` という名前のリソース グループを、`MySubscription` という名前の Azure サブスクリプションを使用して `eastus` の場所に作成します。
+
+```azurecli
+az group create --name MyResourceGroupName 
+   --subscription MySubscription 
+   --location eastus
+```
+
+リソース グループが正常に作成されると、出力に `provisioningState` が `Succeeded` として示されます。
+
+```output
+<...>
+   "name": "testResourceGroup",
+   "properties": {
+      "provisioningState": "Succeeded"
+    },
+<...>
+```
+
+<a name="deploy-logic-app"></a>
+
+##### <a name="deploy-logic-app"></a>ロジック アプリをデプロイする
+
+zip 形式の成果物を Azure リソース グループにデプロイするには、次の必須パラメーターを使用して `az logicapp deployment` コマンドを実行します。
+
+> [!IMPORTANT]
+> zip ファイルにプロジェクトの成果物がルート レベルで含まれていることを確認します。 これらの成果物には、すべてのワークフロー フォルダー、host.json、connections.js などの構成ファイル、および他の関連ファイルが含まれます。 余分なフォルダーを追加したり、プロジェクト構造にまだ存在しないフォルダーに成果物を含めたりしないでください。 たとえば次の一覧は MyBuildArtifacts.zip ファイル構造の例を示しています。
+>
+> ```output
+> MyStatefulWorkflow1-Folder
+> MyStatefulWorkflow2-Folder
+> connections.json
+> host.json
+> ```
+
+```azurecli-interactive
+az logicapp deployment source config-zip --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --src MyBuildArtifact.zip
+```
 
 ---
 
@@ -188,7 +285,7 @@ Azure DevOps デプロイの場合、Azure Pipelines で [Azure Function App Dep
 
 ## <a name="next-steps"></a>次の手順
 
-* [シングルテナントの Azure Logic Apps への DevOps のデプロイ](devops-deployment-single-tenant-azure-logic-apps.md)
+- [シングルテナントの Azure Logic Apps への DevOps のデプロイ](devops-deployment-single-tenant-azure-logic-apps.md)
 
 シングルテナント Azure Logic Apps でのエクスペリエンスについてご意見をお聞かせください。
 

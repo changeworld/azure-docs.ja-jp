@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 04/27/2021
-ms.openlocfilehash: e5745f195fe7620aeb7ffe009c13c52cd5f02e62
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 72f58258f427c5a9414bd7627d4d121c6a89c365
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228642"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060860"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF での CI-CD、Azure DevOps、および GitHub の問題のトラブルシューティング 
 
@@ -233,6 +233,27 @@ package.json フォルダーが有効ではないため、次のセクション�
 ```
 次のように、DataFactory が customCommand に含まれている必要があります: *'run build validate $(Build.Repository.LocalPath)/DataFactory/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'* 。 上位ステージ用に生成された YAML ファイルに、必要な JSON アーティファクトがあることを確認します。
 
+### <a name="git-repository-or-purview-connection-disconnected"></a>Git リポジトリまたは Purview 接続が切断される
+
+#### <a name="issue"></a>問題
+Data Factory をデプロイすると、Git リポジトリまたは Purview 接続が切断されます。
+
+#### <a name="cause"></a>原因
+グローバル パラメーターをデプロイするために **[Include in ARM template]\(ARM テンプレートに含める\)** を選択している場合、お使いのファクトリが ARM テンプレートに含まれます。 その結果、他のファクトリ プロパティはデプロイ時に削除されます。
+
+#### <a name="resolution"></a>解決方法
+CI/CD でのグローバル パラメーターで説明されているように、 **[Include in ARM template]\(ARM テンプレートに含める\)** を選択解除し、PowerShell を使用してグローバル パラメーターをデプロイします。 
+ 
+### <a name="extra--left--displayed-in-published-json-file"></a>発行された JSON ファイルに左の "[" が余分に表示される
+
+#### <a name="issue"></a>問題
+DevOps を使用して ADF を発行すると、左の "[" がもう 1 つ表示されます。 ADF によって DevOps の ARMTemplate に、左の "[" がもう 1 つ自動的に追加されます。 
+
+#### <a name="cause"></a>原因
+[ は ARM 用に予約された文字であるため、"[" をエスケープするために追加の [ が自動的に追加されます。
+
+#### <a name="resolution"></a>解決方法
+これは、CI/CD の ADF 発行プロセス時の通常の動作です。
 
 ## <a name="next-steps"></a>次のステップ
 

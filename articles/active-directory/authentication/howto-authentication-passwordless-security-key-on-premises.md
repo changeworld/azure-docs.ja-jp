@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef56db4ef67515d14f8462db2975e68a1a86f238
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 367d2679b360bfc90d84609384c61c9b66ba3706
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959859"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538325"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -106,6 +106,10 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 このコマンドで、Azure AD Kerberos サーバーのプロパティが出力されます。 プロパティを確認して、すべてが適切な順序であることを確認できます。
 
+> [!NOTE]
+
+資格情報を指定して別のドメインに対して実行すると、NTLM を使用して接続され、失敗します。 ユーザーが AD 回避策の "Protected Users" セキュリティ グループの一部である場合、ADConnect ボックスに別のドメイン ユーザーを使用してログインし、-domainCredential を指定しないでください。 現在のログオン ユーザーの kerebros チケットが使用されます。 whoami /groups を実行して確認し、ユーザーが上記のコマンドを実行するために必要な特権が AD にあるか検証できます
+ 
 | プロパティ | 説明 |
 | --- | --- |
 | id | AD DS DC オブジェクトの一意の ID。 この ID は、"スロット" または "ブランチ ID" と呼ばれることもあります。 |

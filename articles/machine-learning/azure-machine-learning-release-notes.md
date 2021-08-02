@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 332be773bca07acf178bd0754d3dad12f4879f51
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 3d7ba65e6965ff488ead6094376bea7142eb5ec9
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371138"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590596"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -27,6 +27,28 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
 ### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>Azure Machine Learning の 2.0 CLI (プレビュー) を発表
 
 Azure CLI に対する `ml` 拡張機能は、Azure Machine Learning の次世代インターフェイスです。 これにより、コマンド ラインからモデルをトレーニングおよびデプロイできます。また、モデルのライフサイクルを追跡しながらデータ サイエンスのスケールアップとスケールアウトを加速する機能もあります。 [インストールして開始する](how-to-configure-cli.md)。
+
+## <a name="2021-06-07"></a>2021 年 6 月 7 日
+
+### <a name="azure-machine-learning-sdk-for-python-v1300"></a>Azure Machine Learning SDK for Python v1.30.0
++ **バグの修正と機能強化**
+  + **azureml-core**
+    + 破壊的変更が 0.17.5 でリリースされたため、依存関係 `ruamel-yaml` を 0.17.5 未満に固定します。
+    + `aml_k8s_config` プロパティは、`KubernetesCompute` アタッチの `namespace`、`default_instance_type`、`instance_types` パラメーターで置き換えられます。
+    + ワークスペース同期キーが実行時間の長い操作に変更されました。
+  + **azureml-automl-runtime**
+    + ビッグデータでの実行が `Elements of y_test cannot be NaN` で失敗する可能性がある問題を修正しました。
+  + **azureml-mlflow**
+    + MLFlow デプロイ プラグインは、署名のないモデルに対してバグ修正を行います。
+  + **azureml-pipeline-steps**
+    + ParallelRunConfig: process_count_per_node のドキュメントを更新します。
+  + **azureml-train-automl-runtime**
+    + MM 推論時のカスタム定義分位点のサポート
+    + バッチの推論中に forecast_quantiles をサポートします。
+  + **azureml-contrib-automl-pipeline-steps**
+    + MM 推論時のカスタム定義分位点のサポート
+    + バッチの推論中に forecast_quantiles をサポートします。
+
 
 ### <a name="azure-machine-learning-sdk-for-python-v1290"></a>Azure Machine Learning SDK for Python v1.29.0
 + **バグの修正と機能強化**

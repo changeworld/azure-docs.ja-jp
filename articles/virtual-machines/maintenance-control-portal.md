@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 0dea30723a3ebe1598d6304ac3c98bfe1b55b466
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcd0992347033fa355db1f952e775a5077fecabe
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563015"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554563"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>メンテナンス コントロールと Azure portal を使用して更新を制御する
 
@@ -24,28 +24,34 @@ ms.locfileid: "102563015"
 1. Azure portal にサインインします。
 
 1. **[メンテナンス構成]** を探します。
-
-   ![[メンテナンス構成] を開く方法を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-search.png)
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-search-bar.png" alt-text="[メンテナンス構成] を開く方法を示すスクリーンショット":::
 
 1. **[追加]** をクリックします。
 
-   ![メンテナンス構成を追加する方法を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-add.png)
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-add-2.png" alt-text="メンテナンス構成を追加する方法を示すスクリーンショット":::
 
-1. サブスクリプションとリソース グループを選択し、構成の名前を指定して、リージョンを選択します。 **[次へ]** をクリックします。
+1. [基本] タブで、サブスクリプションとリソース グループを選択し、構成の名前を指定します。リージョンを選択し、スコープとして *[ホスト]* を選択します。 **[次へ]** をクリックします。
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics-tab.png" alt-text="[メンテナンス構成] の基本を示すスクリーンショット":::
 
-   ![[メンテナンス構成] の基本を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics.png)
+1. [スケジュール] タブで、Azure でリソースに更新プログラムを適用するスケジュールされた期間を宣言します。 開始日、メンテナンス期間、繰り返しを設定します。 日程計画された期間を作成すると、更新プログラムを手動で適用する必要がなくなります。 **[次へ]** をクリックします。 
+
+    > [!IMPORTANT]
+    > メンテナンス **期間** は、"*2 時間*" 以上である必要があります。 メンテナンスの **繰り返し** は、少なくとも 35 日に 1 回繰り返すように設定する必要があります。 
+
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-schedule-tab.png" alt-text="メンテナンス構成のスケジュールを示すスクリーンショット":::
+
+1. [割り当て] タブで、今すぐリソースを割り当てるか、この手順をスキップし、メンテナンス構成の展開後にリソースを割り当てます。 **[次へ]** をクリックします。
 
 1. タグと値を追加します。 **[次へ]** をクリックします。
-
-   ![メンテナンス構成にタグを追加する方法を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags.png)
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags-tab.png" alt-text="メンテナンス構成にタグを追加する方法を示すスクリーンショット":::
 
 1. 概要を確認します。 **Create** をクリックしてください。
 
-   ![メンテナンス構成を作成する方法を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-create.png)
-
 1. デプロイが完了したら、 **[リソースに移動]** をクリックします。
 
-   ![[メンテナンス構成] の展開完了を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-deployment-complete.png)
 
 ## <a name="assign-the-configuration"></a>構成を割り当てる
 

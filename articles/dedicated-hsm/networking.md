@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 14f7a88e756123b807852d78b6511939b81fd9db
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cd87d2261ab89b521829d1049a0c17db125a14f3
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126059"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063416"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure の専用 HSM のネットワーク
 
@@ -41,10 +41,9 @@ Azure の専用 HSM は、きわめて安全なネットワーク環境を必要
 
 サブネットは、仮想ネットワークを個別のアドレス空間に分割し、サブネット内に配置された Azure リソースから使用できるようにするものです。 専用 HSM は、仮想ネットワークのサブネットにデプロイされます。 お客様のサブネットにデプロイされた専用 HSM デバイスにはそれぞれ、このサブネットからプライベート IP アドレスが割り当てられます。 HSM デバイスのデプロイ先となるサブネットは、次のサービスに対して明示的に委任されている必要があります。Microsoft.HardwareSecurityModules/dedicatedHSMs。 これにより、サブネットへのデプロイに使用される特定のアクセス許可が HSM サービスに与えられます。 専用 HSM への委任に伴い、サブネットに対していくらかポリシーの制限が生じます。 現在、委任されたサブネットでは、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) がサポートされません。 したがって、サブネットを専用 HSM に委任すると、そのサブネットは HSM リソースのデプロイにしか使用できなくなります。 お客様の他のリソースをサブネットにデプロイしようとしても失敗します。
 
-
 ### <a name="expressroute-gateway"></a>ExpressRoute ゲートウェイ
 
-現在のアーキテクチャにはある要件があり、HSM デバイスを Azure に統合できるようにするには、HSM デバイスの配置先となるお客様のサブネットに ER ゲートウェイを構成する必要があります。 Azure にあるお客様の HSM デバイスにオンプレミスの場所を接続する目的でこの ER ゲートウェイを利用することはできません。
+HSM デバイスを設置して Azure との連携を有効にする必要がある顧客サブネットで、[ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)を構成することが、現在のアーキテクチャの要件の 1 つです。 この [ExpressRoute ゲートウェイ](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)では、オンプレミスの場所を、Azure 上の顧客の HSM デバイスに接続することはできません。
 
 ## <a name="connecting-your-on-premises-it-to-azure"></a>オンプレミスの IT を Azure に接続する
 
@@ -105,7 +104,7 @@ Dedicated HSM VNet に存在する HSM NIC では、ネットワーク セキュ
 
 NVA プロキシ ソリューションを追加すると、トランジットまたは DMZ ハブ内の NVA ファイアウォールを HSM NIC の前に論理的に配置できるようになるため、必要な既定の拒否ポリシーが提供されます。 この例では、この目的のために Azure Firewall を使用し、次の要素を設定する必要があります。
 1. DMZ ハブ VNet のサブネット "AzureFirewallSubnet" にデプロイされた Azure Firewall
-2. Azure ILB プライベート エンドポイントに向かうトラフィックを Azure Firewall に送信する UDR を含むルーティング テーブル。 このルーティング テーブルは、ユーザーの ExpressRoute 仮想ゲートウェイが存在する GatewaySubnet に適用されます
+2. Azure ILB プライベート エンドポイントに向かうトラフィックを Azure Firewall に送信する UDR を含むルーティング テーブル。 このルーティング テーブルは、顧客の [ExpressRoute Virtual Gateway](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) が存在する GatewaySubnet に適用されます
 3. 信頼できる発信元範囲と、TCP ポート 1792 でリッスンしている Azure IBL プライベート エンドポイント間の転送を許可する、AzureFirewall 内のネットワーク セキュリティ規則。 このセキュリティ ロジックにより、Dedicated HSM サービスに対して必要な "既定の拒否" ポリシーが追加されます。 つまり、信頼できる発信元 IP 範囲のみが Dedicated HSM サービスへのアクセスを許可されます。 その他のすべての範囲はドロップされます。  
 4. オンプレミスに向かうトラフィックを Azure Firewall に送信する UDR を含むルーティング テーブル。 このルーティング テーブルは、NVA プロキシ サブネットに適用されます。 
 5. プロキシ NVA サブネットに適用される NSG では、発信元として Azure Firewall のサブネット範囲のみが信頼され、TCP ポート 1792 を介した HSM NIC IP アドレスへの転送のみが許可されます。 
@@ -141,7 +140,7 @@ Command Result : 0 (Success)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [よく寄せられる質問](faq.md)
+- [よく寄せられる質問](faq.yml)
 - [サポート可能性](supportability.md)
 - [高可用性](high-availability.md)
 - [物理的なセキュリティ](physical-security.md)

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ab51a22abd5dac99a1a1bd3be5324e5d57c8e12e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a0eca49f600855e3fa092ed45e2ee314284ec474
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145611"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079771"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "108145611"
 
 Azure はいくつかの業界規制および標準に準拠しているため、ユーザーは仮想マシンで実行されている SQL Server を使用して、標準に準拠しているソリューションを構築できます。 Azure での法規制遵守に関する情報については、 [Azure トラスト センター](https://azure.microsoft.com/support/trust-center/)を参照してください。
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+総合的な情報は、このシリーズ記事 ([チェックリスト](performance-guidelines-best-practices-checklist.md)、[VM のサイズ](performance-guidelines-best-practices-vm-size.md)、[ストレージ](performance-guidelines-best-practices-storage.md)、[HADR の構成](hadr-cluster-best-practices.md)、[ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)) の他の記事をご覧ください。 
 
 ## <a name="control-access-to-the-sql-virtual-machine"></a>SQL 仮想マシンへのアクセスを制御する
 
@@ -109,6 +109,14 @@ SQL Server が既定以外のポートをリッスンしている場合は、接
 
 ## <a name="next-steps"></a>次のステップ
 
-パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)」をご覧ください。
+詳細については、このシリーズの他の記事を参照してください。
 
-Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)」をご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+- [クイック チェックリスト](performance-guidelines-best-practices-checklist.md)
+- [VM サイズ](performance-guidelines-best-practices-vm-size.md)
+- [Storage](performance-guidelines-best-practices-storage.md)
+- [Security](security-considerations-best-practices.md)
+- [HADR の設定](hadr-cluster-best-practices.md)
+- [ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)
+
+Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)」をご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。
+

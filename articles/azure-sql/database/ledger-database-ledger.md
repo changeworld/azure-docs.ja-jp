@@ -1,6 +1,6 @@
 ---
 title: データベース台帳
-description: この記事では、Azure SQL Database の台帳データベース テーブルと関連ビューに関する情報を提供します
+description: この記事では、Azure SQL Database の台帳データベースのテーブルと、関連するビューについての情報を提供します。
 ms.custom: ''
 ms.date: 05/25/2021
 ms.service: sql-database
@@ -9,34 +9,36 @@ ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 031674854af41877483ece5c3969a0208a7a8167
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 01fad48fccb956ab44cd54e67120ac5f7425cacd
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388352"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080113"
 ---
 # <a name="what-is-the-database-ledger"></a>データベース台帳とは
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database の台帳は **パブリック プレビュー** 段階です。
+> Azure SQL Database 台帳は現在パブリック プレビュー版であり、米国中西部で利用できます。
 
-データベース台帳では、ブロックチェーンと [Merkle ツリー データ構造](/archive/msdn-magazine/2018/march/blockchain-blockchain-fundamentals)が論理的に使用されます。 データベース台帳では、台帳テーブルに更新が行われる間、時間の経過と共に変化するデータベースの状態を段階的にキャプチャします。 これを実現するために、データベース台帳にはすべてのトランザクションのエントリが格納され、トランザクションに関するメタデータ (コミット タイムスタンプやトランザクションを実行したユーザーの ID など) だけでなく、各台帳テーブルで更新された行の Merkle ツリー ルートもキャプチャされます。 これらのエントリは、将来整合性を検証するために、開封明示のデータ構造に追加されます。
+データベース台帳は、Azure SQL Database の台帳機能の一部です。 データベース台帳では、時間と共に変化するデータベースの状態を差分によって把握しつつ、台帳テーブルを更新します。 ブロックチェーンと[マークル ツリーデータ構造](/archive/msdn-magazine/2018/march/blockchain-blockchain-fundamentals)を論理的に使用します。 
 
-:::image type="content" source="media/ledger/merkle-tree.png" alt-text="sql ledger merkle tree":::
+データベースの状態を把握するため、データベース台帳には、すべてのトランザクションのエントリを保存します。 コミットのタイムスタンプやそれを実行したユーザーの ID など、トランザクションのメタデータも保存します。 各台帳テーブルのマークル ツリーのルートのデータも保存します。 これらのエントリは、将来整合性を検証するために、開封明示のデータ構造に追加されます。
+
+:::image type="content" source="media/ledger/merkle-tree.png" alt-text="台帳機能のマークル ツリーを表す図。":::
 
 Azure SQL Database 台帳でデータの整合性を提供する方法について詳しくは、「[ダイジェストの管理とデータベースの検証](ledger-digest-management-and-database-verification.md)」を参照してください。
 
 ## <a name="where-are-database-transaction-and-block-data-stored"></a>データベース トランザクションとブロック データの格納先
 
-トランザクションとブロックに関するデータは、2 つの新しいシステム カタログ ビューの行として物理的に格納されます。
+トランザクションとブロックのデータは、 次の 2 つのシステム カタログ ビューの行に物理的に保存します。
 
-- [**sys.database_ledger_transactions**](/sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql) - 台帳内の各トランザクションの情報を含む行を保持します (このトランザクションが属するブロックの ID やブロック内のトランザクションの序数など)。 
-- [**sys.database_ledger_blocks**](/sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql) - 台帳内のすべてのブロックの行を保持します (ブロック内のトランザクションに対する Merkle ツリーのルート、ブロックチェーンを形成するための前のブロックのハッシュなど)。
+- [sys.database_ledger_transactions](/sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql): データベース台帳での各トランザクションの情報を含む行を管理します。 その情報には、このトランザクションが属するブロックの ID や、このトランザクションのブロック内での序数が含まれます。 
+- [sys.database_ledger_blocks](/sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql): 台帳のすべてのブロックに対応する行を管理します。ブロック内のトランザクションのマークル ツリーのルートや、ブロックチェーン形成のための直前のブロックのハッシュなどの情報を含みます。
 
-データベース台帳を表示するには、次の T-SQL ステートメントを [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) で実行します。
+データベース台帳を見るには、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) で次の T-SQL 文を実行します。
 
 > [!IMPORTANT]
 > データベース台帳を表示するには、**VIEW LEDGER CONTENT** アクセス許可が必要です。 台帳テーブルに関連するアクセス許可の詳細については、[アクセス許可](/sql/relational-databases/security/permissions-database-engine#asdbpermissions)に関するページを参照してください。 
@@ -49,14 +51,21 @@ SELECT * FROM sys.database_ledger_blocks
 GO
 ```
 
-下に示すのは、データベース台帳のブロックチェーン内の 1 つのブロックを構成する 4 つのトランザクションで構成される台帳テーブルの例です。
+次に挙げる台帳テーブルのサンプルは 4 つのトランザクションで構成されています。これらのトランザクションにより、データベース台帳のブロックチェーンのブロック 1 つが構成されます。
 
-:::image type="content" source="media/ledger/database-ledger-1.png" alt-text="台帳テーブルの例":::
+:::image type="content" source="media/ledger/database-ledger-1.png" alt-text="台帳テーブルのサンプルのスクリーンショット。":::
 
-ブロックは 30 秒ごとに、またはユーザーが [sys.sp_generate_database_ledger_digest](/sql/relational-databases/system-stored-procedures/sys-sp-generate-database-ledger-digest-transact-sql) ストアド プロシージャの実行によってデータベース ダイジェストを手動で生成した場合に閉じられます。 ブロックが閉じられると、新しいトランザクションが新しいブロックに挿入されます。 次に、ブロック生成プロセスは、"*閉じた*" ブロックに属するすべてのトランザクションを、インメモリ キューと [sys.database_ledger_transactions](/sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql) システム カタログ ビューの両方から取得し、これらのトランザクションの Merkle ツリー ルートと前のブロックのハッシュを計算して、[sys.database_ledger_blocks](/sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql) システム カタログ ビューで閉じられたブロックを永続化します。 これは通常のテーブル更新であるため、その持続性はシステムによって自動的に保証されます。 1 つのブロック チェーンを維持するために、この操作はシングルスレッドですが、効率的でもあります。なぜなら、トランザクション情報に対してハッシュを計算するだけで、非同期的に実行されるので、トランザクションのパフォーマンスに影響しないためです。   
+ブロックは 30 秒ごとに閉じるか、またはユーザーが手動で [sys.sp_generate_database_ledger_digest](/sql/relational-databases/system-stored-procedures/sys-sp-generate-database-ledger-digest-transact-sql) ストアド プロシージャを実行してデータベースのダイジェストを生成したときに閉じます。 
+
+ブロックが閉じられると、新しいトランザクションが新しいブロックに挿入されます。 それ以降のブロック生成プロセスは、次のようになります。
+
+1. *閉じた* ブロックに属するすべてのトランザクションを、メモリ内のキューと [sys.database_ledger_transactions](/sql/relational-databases/system-catalog-views/sys-database-ledger-transactions-transact-sql) システム カタログ ビューの両方から取得します。
+1. これらのトランザクションのマークル ツリーのルートと、直前のブロックのハッシュを計算します。
+1. 閉じたブロックを [sys.database_ledger_blocks](/sql/relational-databases/system-catalog-views/sys-database-ledger-blocks-transact-sql) システム カタログ ビューに保存します。 
+
+このテーブル更新は定期的に実行され、システムの持続性が自動的に保証されます。 ブロックのチェーン 1 本を管理するのに、この操作がシングル スレッドで実行されます。 ただし、トランザクション情報に関わるハッシュだけを計算すればよく、非同期で実行することから、これは効率的なやり方であるといえます。 トランザクションのパフォーマンスには影響がありません。   
 
 ## <a name="next-steps"></a>次の手順
 
-- [ダイジェストの管理とデータベースの検証](ledger-digest-management-and-database-verification.md)
 - [Azure SQL Database 台帳の概要](ledger-overview.md) 
 - [セキュリティ カタログ ビュー (Transact-SQL)](/sql/relational-databases/system-catalog-views/security-catalog-views-transact-sql)

@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop のアプリ グループを管理する PowerShell - Azure
-description: PowerShell を使用して Windows Virtual Desktop アプリ グループを管理する方法。
+title: Azure Virtual Desktop のアプリ グループを管理する PowerShell - Azure
+description: PowerShell を使用して Azure Virtual Desktop アプリ グループを管理する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1652048da8084007bc86a6793f14f10b4a1f2e0f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a900d1d92509fab7b777ca5864a51c7699cb294e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446045"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749077"
 ---
 # <a name="manage-app-groups-using-powershell"></a>PowerShell を使用してアプリ グループを管理する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
 
-Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
+Azure Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 

@@ -10,20 +10,20 @@ ms.custom: deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
-ms.openlocfilehash: 667174fbf36b7113d49ea5c5d700e2e3a7f41949
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/20/2021
+ms.openlocfilehash: 60978d2be1fdad5acf8ec00535ab844e6afd52b0
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367222"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111557164"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances にモデルをデプロイする
 
-Azure Machine Learning を使用して Azure Container Instances (ACI) にモデルを Web サービスとしてデプロイする方法を説明します。 次のいずれかの条件に当てはまる場合に Azure Container Instances を使用します。
+Azure Machine Learning を使用して Azure Container Instances (ACI) にモデルを Web サービスとしてデプロイする方法を説明します。 次の場合に、Azure Container Instances を使用します。
 
-- モデルを迅速にデプロイおよび検証する必要があります。 事前に ACI コンテナーを作成する必要はありません。 これらはデプロイ プロセスの一部として作成されます。
-- 開発中のモデルをテストします。 
+- 独自の Kubernetes クラスターを管理したくない場合
+- サービスのレプリカが 1 つしかなくても問題ない場合 (アップタイムに影響する可能性があります)
 
 ACI の利用可能なクォータとリージョンについては、[Azure Container Instances のクォータとリージョンの可用性](../container-instances/container-instances-quotas.md)に関する記事を参照してください。
 
@@ -89,7 +89,7 @@ print(service.state)
 CLI を使用してデプロイするには、次のコマンドを使用します。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。 このサービスに付ける名前に `myservice` を置き換えます。
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]

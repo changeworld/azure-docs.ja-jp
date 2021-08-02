@@ -1,26 +1,27 @@
 ---
-title: 仮想ネットワークの分離とセキュリティの概要
+title: 仮想ネットワークの分離とプライバシーの概要
 titleSuffix: Azure Machine Learning
-description: 分離された Azure Virtual Network を Azure Machine Learning と共に使用して、ワークスペース リソースとコンピューティング環境をセキュリティで保護します。
+description: 独立した Azure Virtual Network (VNet) を使用して、Azure Machine Learning ワークスペース リソースとコンピューティング環境を保護します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 03/02/2021
+ms.date: 06/11/2021
 ms.topic: how-to
-ms.custom: devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: e6b8a4bbbe596ec06f7f9b445dbaa439e1207e46
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack
+ms.openlocfilehash: c5e5461163b28ff53e77121a8e48dc478887ea6c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888712"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081067"
 ---
-# <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
+<!-- # Virtual network isolation and privacy overview -->
+# <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する
 
-この記事では、仮想ネットワーク (VNet) を使用して Azure Machine Learning のネットワーク通信をセキュリティで保護する方法について説明します。 この記事では、完全な仮想ネットワークを構成する方法を示すシナリオ例を使用します。
+仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースとコンピューティング環境を保護します。 この記事では、完全な仮想ネットワークを構成する方法を示すシナリオ例を使用します。
 
 この記事は、Azure Machine Learning ワークフローをセキュリティで保護する手順を説明する全 5 パートからなるシリーズのパート 1 です。 まずは、この概要に関する記事を読み、概念を理解しておくことを強くお勧めします。 
 

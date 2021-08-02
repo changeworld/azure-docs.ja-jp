@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 0e37e6740613c7d025a461b1b3f1497880a50124
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 36d45cf5b972feaecb8563f28e931cb344dcc36d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634565"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080383"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -139,7 +139,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 > この構成には単一のプライベート DNS ゾーンが必要です。 異なる仮想ネットワークに対して同じ名前を使って複数のゾーンを作成する場合、手作業で DNS レコードをマージする必要があります。
 
 > [!IMPORTANT]
-> 別のサブスクリプションのハブおよびスポーク モデルでプライベート エンドポイントを使用している場合は、ハブで同じプライベート DNS ゾーンを再利用します。
+> 異なるサブスクリプション、または同じサブスクリプション内で、ハブ アンド スポーク モデルのプライベート エンドポイントを使用している場合、同じプライベート DNS ゾーンを、ゾーンから DNS 解決が必要なクライアントを含むすべてのスポークおよびハブ仮想ネットワークにリンクします。
 
 このシナリオには、[ハブおよびスポーク](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) ネットワーク トポロジがあります。 スポーク ネットワークによってプライベート エンドポイントが共有されます。 スポーク仮想ネットワークは同じプライベート DNS ゾーンにリンクされます。 
 
@@ -147,7 +147,7 @@ DNS は、プライベート エンドポイント IP アドレスを正常に�
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>DNS フォワーダーを使用しているオンプレミスのワークロード
 
-オンプレミスのワークロードでプライベート エンドポイントの FQDN を解決するには、DNS フォワーダーを使用して、Azure で Azure サービス [パブリック DNS ゾーン](#azure-services-dns-zone-configuration)を解決します。
+オンプレミスのワークロードでプライベート エンドポイントの FQDN を解決するには、DNS フォワーダーを使用して、Azure で Azure サービス [パブリック DNS ゾーン](#azure-services-dns-zone-configuration)を解決します。 [DNS フォワーダー](/windows-server/identity/ad-ds/plan/reviewing-dns-concepts#resolving-names-by-using-forwarding)は、プライベート DNS ゾーンにリンクされている仮想ネットワークで実行されている仮想マシンで、他の仮想ネットワークまたはオンプレミスからの DNS クエリをプロキシできます。 クエリが Azure DNS に仮想ネットワークから生成される必要があるため、これが必要になります。 DNS プロキシのオプションには、DNS サービスを実行する Windows、DNS サービスを実行する Linux、[Azure Firewall](../firewall/dns-settings.md) があります。
 
 次のシナリオは、Azure に DNS フォワーダーがあるオンプレミス ネットワーク用です。 このフォワーダーにより、サーバーレベルのフォワーダー経由の DNS クエリが、Azure で提供される DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) に解決されます。 
 

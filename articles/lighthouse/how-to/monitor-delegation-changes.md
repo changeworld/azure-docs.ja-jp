@@ -1,14 +1,15 @@
 ---
 title: 管理テナントでの委任変更を監視する
-description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
+description: 管理テナントへの Azure Lighthouse のすべての委任アクティビティを監視する方法について説明します。
 ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 4280e83ef0fc44310aabc2d8d5d9e04044322d4d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2472e7519a6c45ff62fb0c0280f0886b4aa0ff4d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786157"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077702"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 

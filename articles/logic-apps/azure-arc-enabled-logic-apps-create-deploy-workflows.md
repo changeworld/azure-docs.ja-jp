@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 2eabd6462edd609d70fc302ce2d0d64cb99dbdc3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/03/2021
+ms.openlocfilehash: a3ccea075dd4ce4bce06b31fdbe6dc2a55812ebc
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475364"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754081"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>Azure Arc 対応 Logic Apps を使用してシングルテナント ベースのロジック アプリ ワークフローを作成してデプロイする (プレビュー)
 
@@ -39,20 +39,21 @@ Azure Arc 対応 Logic Apps と Azure portal を使用すると、運用およ�
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-- Azure Arc 対応 Kubernetes クラスターと、Azure Logic Apps、Azure App Service、Azure Functions をホストして実行できる "*カスタムの場所*" を備えた Kubernetes 環境。 Kubernetes 環境、カスタムの場所、ロジック アプリ リソースには、同じ場所を使用するようにしてください。
+- Azure Arc 対応 Kubernetes クラスターと、Azure Logic Apps、Azure App Service、Azure Functions をホストして実行できる "*カスタムの場所*" を備えた Kubernetes 環境。
 
-  たとえば、西ヨーロッパでデプロイして実行するには、3 つのリソースすべてについて、場所として西ヨーロッパを使用します。
+  > [!IMPORTANT]
+  > Kubernetes 環境、カスタムの場所、ロジック アプリには、同じリソースの場所を使用するようにしてください。
 
-  また、Kubernetes クラスターで App Service バンドル拡張機能を作成するときに、ロジック アプリ ワークフローを実行するために[既定のスケーリング動作を変更](#change-scaling)することもできます。 Azure CLI コマンド [ **`az k8s-extension create`**](/cli/azure/k8s-extension) を使用して拡張機能を作成する場合は、構成設定 `keda.enabled=true` を必ず含めてください。
+  Kubernetes クラスターで App Service バンドル拡張機能を作成するときに、ロジック アプリ ワークフローを実行するために[既定のスケーリング動作を変更](#change-scaling)することもできます。 Azure CLI コマンド [ **`az k8s-extension create`**](/cli/azure/k8s-extension) を使用して拡張機能を作成する場合は、構成設定 `keda.enabled=true` を必ず含めてください。
 
   `az k8s-extension create {other-command-options} --configuration-settings "keda.enabled=true"`
 
   詳細については、次のドキュメントを確認してください。
 
-  * [Azure Arc の App Service、Functions、および Logic Apps (プレビュー)](../app-service/overview-arc-integration.md)
-  * [Azure Arc 対応 Kubernetes のクラスター拡張機能](../azure-arc/kubernetes/conceptual-extensions.md)
-  * [Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)](../app-service/manage-create-arc-environment.md)
-  * [既定のスケーリング動作の変更](#change-scaling)
+  - [Azure Arc の App Service、Functions、および Logic Apps (プレビュー)](../app-service/overview-arc-integration.md)
+  - [Azure Arc 対応 Kubernetes のクラスター拡張機能](../azure-arc/kubernetes/conceptual-extensions.md)
+  - [Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)](../app-service/manage-create-arc-environment.md)
+  - [既定のスケーリング動作の変更](#change-scaling)
 
 - 独自の Azure Active Directory (Azure AD) ID
 
@@ -62,15 +63,22 @@ Azure Arc 対応 Logic Apps と Azure portal を使用すると、運用およ�
   > マネージド ID のサポートは、Azure Arc 対応 Logic Apps では現在使用できません。
 
   Azure CLI を使用して Azure Active Directory (Azure AD) アプリの登録を作成するには、こちらの手順を実行します。
-    1. [`az ad sp create`](/cli/azure/ad/sp#az_ad_sp_create) コマンドを使用して、アプリの登録を作成します。
-    1. すべての詳細を確認するには、[`az ad sp show`](/cli/azure/ad/sp#az_ad_sp_show) コマンドを実行します。
-    1. 両方のコマンドの出力から、クライアント ID、オブジェクト ID、テナント ID、およびクライアント シークレットの値を見つけて保存します。これらは、後で使用するために保持しておく必要があります。
+
+  1. [`az ad sp create`](/cli/azure/ad/sp#az_ad_sp_create) コマンドを使用して、アプリの登録を作成します。
+
+  1. すべての詳細を確認するには、[`az ad sp show`](/cli/azure/ad/sp#az_ad_sp_show) コマンドを実行します。
+
+  1. 両方のコマンドの出力から、クライアント ID、オブジェクト ID、テナント ID、およびクライアント シークレットの値を見つけて保存します。これらは、後で使用するために保持しておく必要があります。
 
   Azure portal を使用して Azure Active Directory (Azure AD) アプリの登録を作成するには、こちらの手順を実行します。
-    1. [Azure portal](../active-directory/develop/quickstart-register-app.md) を使用して、新しい Azure AD アプリの登録を作成します。
-    1. 作成が完了したら、ポータルで新しいアプリの登録を見つけます。
-    1. 登録メニューで、 **[概要]** を選択し、クライアント ID、テナント ID、およびクライアント シークレットの値を保存します。
-    1. オブジェクト ID を検索するには、 **[ローカル ディレクトリでのマネージド アプリケーション]** フィールドの横にあるアプリ登録の名前を選択します。 プロパティ ビューからオブジェクト ID をコピーします。
+
+  1. [Azure portal](../active-directory/develop/quickstart-register-app.md) を使用して、新しい Azure AD アプリの登録を作成します。
+
+  1. 作成が完了したら、ポータルで新しいアプリの登録を見つけます。
+
+  1. 登録メニューで、 **[概要]** を選択し、クライアント ID、テナント ID、およびクライアント シークレットの値を保存します。
+
+  1. オブジェクト ID を検索するには、 **[ローカル ディレクトリでのマネージド アプリケーション]** フィールドの横にあるアプリ登録の名前を選択します。 プロパティ ビューからオブジェクト ID をコピーします。
 
 ## <a name="create-and-deploy-logic-apps"></a>ロジック アプリを作成してデプロイする
 
@@ -78,12 +86,29 @@ Azure CLI、Visual Studio Code、Azure portal のどれを使用するかに基�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-#### <a name="prerequisites"></a>前提条件
+始める前に、次の項目が必要になります。
 
-- ご利用のローカル コンピューターに [Azure CLI](/cli/azure/install-azure-cli) がインストールされていること。
+- ローカル コンピューターにインストールされた最新の Azure CLI 拡張機能。
+
+  - この拡張機能がない場合は、[ご使用のオペレーティング システムまたはプラットフォームのインストール ガイド](/cli/azure/install-azure-cli)を確認してください。
+
+  - 最新バージョンかどうかが不明な場合は、[環境と CLI のバージョンを確認する手順](#check-environment-cli-version)に従ってください。
+
+- "*プレビュー*" 版の Azure Logic Apps (Standard) の Azure CLI 用拡張機能。
+
+  Azure Logic Apps は一般提供されていますが、シングルテナント Azure Logic Apps の拡張機能はまだプレビュー段階です。
+
 - ロジック アプリを作成する [Azure リソース グループ](#create-resource-group)。
 
-開始する前に、お使いの環境を確認します。
+  このリソース グループがない場合は、[リソース グループを作成する手順](#create-resource-group)に従ってください。
+
+- データと実行履歴の保持のためにロジック アプリで使用する Azure ストレージ アカウント。
+
+  このストレージ アカウントを持っていない場合は、ロジック アプリの作成時にこのアカウントを作成するか、[手順に従ってストレージ アカウント](/cli/azure/storage/account#az_storage_account_create)を作成することができます。
+
+<a name="check-environment-cli-version"></a>
+
+#### <a name="check-environment-and-cli-version"></a>環境と CLI バージョンを確認する
 
 1. Azure portal にサインインします。 次のコマンドを実行して、サブスクリプションがアクティブであることを確認します。
 
@@ -101,28 +126,36 @@ Azure CLI、Visual Studio Code、Azure portal のどれを使用するかに基�
 
 1. 最新バージョンを使用していない場合は、[オペレーティング システムまたはプラットフォーム用のインストール ガイド](/cli/azure/install-azure-cli)に従ってインストールを更新します。
 
-#### <a name="install-logic-apps-extension"></a>Logic Apps 拡張機能をインストールする
+<a name="install-logic-apps-cli-extension"></a>
 
-Azure CLI 用の Logic Apps 拡張機能のプレビュー バージョンをインストールします。
+##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>Azure Logic Apps (Standard) の Azure CLI 用拡張機能をインストールする
 
-```azurecli
+"*プレビュー*" 版のシングルテナント Azure Logic Apps (Standard) の Azure CLI 用拡張機能をインストールするには、次のコマンドを実行します。
+
+```azurecli-interactive
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
 
+<a name="create-resource-group"></a>
+
 #### <a name="create-resource-group"></a>リソース グループの作成
 
-ロジック アプリのリソース グループがまだない場合は、コマンド `az group create` を実行してグループを作成します。 ご自分のサブスクリプション名または識別子を持つ `--subscription` パラメーターを必ず使用してください。 たとえば、次のコマンドを実行すると、場所 `eastus` に `MyResourceGroupName` という名前のリソース グループが作成されます。
-
-```azurecli
-az group create --name MyResourceGroupName --location eastus --subscription MySubscription
-```
+ロジック アプリのリソース グループがまだない場合は、コマンド `az group create` を実行してグループを作成します。 Azure アカウントの既定のサブスクリプションをまだ設定していない場合は、`--subscription` パラメーターでサブスクリプション名または識別子を使用してください。 そうでない場合は、`--subscription` パラメーターを使用する必要はありません。
 
 > [!TIP]
-> ご自分の Azure アカウントに既定のサブスクリプションを設定している場合は、`--subscription` パラメーターを使用する必要はありません。
 > 既定のサブスクリプションを設定するには、次のコマンドを実行し、`MySubscription` をご自分のサブスクリプション名または識別子に置き換える必要があります。
+>
 > `az account set --subscription MySubscription`
 
-リソース グループが正常に作成された場合、出力には、`provisioningState` が `Succeeded` として示されます。
+たとえば、次のコマンドは `MyResourceGroupName` という名前のリソース グループを、`MySubscription` という名前の Azure サブスクリプションを使用して `eastus` の場所に作成します。
+
+```azurecli
+az group create --name MyResourceGroupName 
+   --subscription MySubscription 
+   --location eastus
+```
+
+リソース グループが正常に作成されると、出力に `provisioningState` が `Succeeded` として示されます。
 
 ```output
 <...>
@@ -135,18 +168,7 @@ az group create --name MyResourceGroupName --location eastus --subscription MySu
 
 #### <a name="create-logic-app"></a>ロジック アプリを作成する
 
-Azure CLI を使用して Azure Arc 対応ロジック アプリを作成するには、次のようにコマンド `az logicapp create` を実行します。
-
-```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --custom-location MyCustomLocation 
-   --subscription MySubscription
-```
-
-> [!IMPORTANT]
-> カスタムの場所および Kubernetes 環境と同じリソースの場所 (Azure リージョン) を必ず使用してください。 ロジック アプリのリソースの場所、カスタムの場所、Kubernetes 環境はすべて同じである必要があります。 この値は、カスタムの場所の "*名前*" と "*同じではありません*"。
-
-コマンドで次の必須パラメーターを必ず指定してください。
+Azure Arc 対応ロジック アプリを作成するには、次の必須パラメーターを指定してコマンド `az logicapp create` を実行します。 ロジック アプリのリソースの場所、カスタムの場所、Kubernetes 環境はすべて同じである必要があります。
 
 | パラメーター | 説明 |
 |------------|-------------|
@@ -155,20 +177,26 @@ az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName
 | `--storage-account -s` | ロジック アプリで使用する[ストレージ アカウント](/cli/azure/storage/account)。 同じリソース グループ内のストレージ アカウントの場合は、文字列値を使用します。 別のリソース グループ内のストレージ アカウントの場合は、リソース ID を使用します。 |
 |||
 
-プライベート Azure Container Registry イメージを使用して Azure Arc でロジック アプリを作成するには、次のように `az logicapp create` を実行します。
+```azurecli
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation
+```
+
+プライベート Azure Container Registry イメージを使用して Azure Arc 対応ロジック アプリを作成するには、次の必須パラメーターを指定して `az logicapp create` コマンドを実行します。
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --subscription MySubscription
-   --custom-location MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    --deployment-container-image-name myacr.azurecr.io/myimage:tag
-   --docker-registry-server-password passw0rd 
-   --docker-registry-server-user MyUser
+   --docker-registry-server-password MyPassword 
+   --docker-registry-server-user MyUsername
 ```
 
 #### <a name="show-logic-app-details"></a>ロジック アプリの詳細を表示する
 
-Azure Arc 対応ロジック アプリの詳細を表示するには、次のようにコマンド `az logicapp show` を実行します。
+Azure Arc 対応ロジック アプリの詳細を表示するには、次の必須パラメーターを指定してコマンド `az logicapp show` を実行します。
 
 ```azurecli
 az logicapp show --name MyLogicAppName 
@@ -177,13 +205,22 @@ az logicapp show --name MyLogicAppName
 
 #### <a name="deploy-logic-app"></a>ロジック アプリをデプロイする
 
-Kudu の zip デプロイを使用してロジック アプリをデプロイするには、コマンド `az logicapp deployment source config-zip` を実行します。 次に例を示します。
+[Azure App Service の Kudu zip のデプロイ](../app-service/resources-kudu.md)を使用して Azure Arc 対応ロジック アプリをデプロイするには、次の必須パラメーターを指定してコマンド `az logicapp deployment source config-zip` を実行します。
+
+> [!IMPORTANT]
+> zip ファイルにプロジェクトの成果物がルート レベルで含まれていることを確認します。 これらの成果物には、すべてのワークフロー フォルダー、host.json、connections.js などの構成ファイル、および他の関連ファイルが含まれます。 余分なフォルダーを追加したり、プロジェクト構造にまだ存在しないフォルダーに成果物を含めたりしないでください。 たとえば次の一覧は MyBuildArtifacts.zip ファイル構造の例を示しています。
+>
+> ```output
+> MyStatefulWorkflow1-Folder
+> MyStatefulWorkflow2-Folder
+> connections.json
+> host.json
+> ```
 
 ```azurecli
 az logicapp deployment source config-zip --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --src C:\uploads\v22.zip 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --src MyBuildArtifact.zip
 ```
 
 #### <a name="start-logic-app"></a>ロジック アプリを起動する
@@ -217,17 +254,14 @@ az logicapp restart --name MyLogicAppName
 
 Azure Arc 対応ロジック アプリを削除するには、次の必須パラメーターを指定してコマンド `az logicapp delete` を実行します。
 
-次に例を示します。 
-
 ```azurecli
-az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --subscription MySubscription
+az logicapp delete --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Visual Studio Code で、ロジック アプリ ワークフローをエンドツーエンドで作成、デプロイ、および監視できます。 シングルテナントの Azure Logic Apps と Azure Arc 対応 Logic Apps との間で、実行されるロジック アプリ ワークフロー開発のデザイナー エクスペリエンスに変更や違いはありません。
-
-#### <a name="create-and-deploy-logic-app-workflows"></a>ロジック アプリ ワークフローを作成してデプロイする
 
 1. ロジック アプリ プロジェクトを作成するには、[Visual Studio Code を使用したシングルテナントのAzure Logic Apps での統合ワークフローの作成](create-single-tenant-workflows-visual-studio-code.md)に関するドキュメントに記載されている前提条件と手順に従います。
 
@@ -260,16 +294,14 @@ Visual Studio Code で、ロジック アプリ ワークフローをエンド�
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-#### <a name="create-and-deploy-logic-app-workflows"></a>ロジック アプリ ワークフローを作成してデプロイする
-
 ポータルベースのデザイナーの編集機能は、現在、Azure Arc 対応 Logic Apps 向けに開発中です。 ポータル ベースのデザイナーを使用してロジック アプリを作成、デプロイ、表示することはできますが、デプロイ後にポータルで編集することはできません。 現時点では、Visual Studio Code でローカルにロジック アプリ プロジェクトを作成および編集してから、Visual Studio Code、Azure CLI、または自動デプロイを使用してデプロイできます。
 
-1. [ポータルで **Logic App (Standard)** リソースを作成](create-single-tenant-workflows-azure-portal.md)しますが、先ほど作成したカスタムの場所をアプリの場所として必ず使用してください。
+1. Azure portal で [**ロジック アプリ (Standard)** リソースを作成します](create-single-tenant-workflows-azure-portal.md)。 ただし、 **[発行]** の宛先には **[Docker コンテナー]** を選択します。 **[リージョン]** には、アプリの場所として先ほど作成したカスタムの場所を選択します。
+
+   既定では、**Logic App (Standard)** リソースはシングルテナントの Azure Logic Apps で実行されます。 ただし、Azure Arc 対応 Logic Apps の場合、ロジック アプリ リソースは Kubernetes 環境用に作成したカスタムの場所で実行されます。 また、App Service プランは自動的に作成されるため、作成する必要はありません。
 
    > [!IMPORTANT]
    > ロジック アプリのリソースの場所、カスタムの場所、Kubernetes 環境はすべて同じである必要があります。
-
-   既定では、**Logic App (Standard)** リソースはシングルテナントの Azure Logic Apps で実行されます。 ただし、Azure Arc 対応 Logic Apps の場合、ロジック アプリ リソースは Kubernetes 環境用に作成したカスタムの場所で実行されます。 また、App Service プランは自動的に作成されるため、作成する必要はありません。
 
 1. [Visual Studio Code を使用し、ロジック アプリを編集してデプロイします](create-single-tenant-workflows-visual-studio-code.md)。
 
@@ -358,7 +390,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) には、マ�
 }
 ```
 
-詳細については、[Microsoft.Web/connections/accesspolicies (ARM テンプレート)](/templates/microsoft.web/connections?tabs=json) のドキュメントを参照してください。 
+詳細については、[Microsoft.Web/connections/accesspolicies (ARM テンプレート)](/azure/templates/microsoft.web/connections?tabs=json) のドキュメントを参照してください。 
 
 #### <a name="azure-portal"></a>Azure portal
 
@@ -369,7 +401,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) には、マ�
 1. **[API 接続]** で接続を選択します。この例では `office365` です。
 
 1. 接続のメニューの **[設定]** で、 **[アクセス ポリシー]**  >  **[追加]** を選択します。
- 
+
 1. **[アクセス ポリシーの追加]** ペインの検索ボックスで、以前に保存したクライアント ID を検索して選択します。
 
 1. 終了したら、 **[追加]** を選択します。
@@ -400,7 +432,7 @@ Azure Arc 対応ロジック アプリをビルドしてデプロイするため
 
 #### <a name="arm-template"></a>ARM テンプレート
 
-次の例は、ARM テンプレートで使用できる Azure Arc 対応 Logic Apps リソース定義のサンプルを示しています。 詳細については、[Microsoft.Web/sites template format (JSON)](/templates/microsoft.web/sites?tabs=json) のドキュメントを参照してください。
+次の例は、ARM テンプレートで使用できる Azure Arc 対応 Logic Apps リソース定義のサンプルを示しています。 詳細については、[Microsoft.Web/sites template format (JSON)](/azure/templates/microsoft.web/sites?tabs=json) のドキュメントを参照してください。
 
 ```json
 {
@@ -483,7 +515,7 @@ Docker レジストリとコンテナー イメージを参照するには、こ
 
 #### <a name="arm-template"></a>ARM テンプレート
 
-次の例は、ARM テンプレートで使用できる Azure Arc 対応 Logic Apps リソース定義のサンプルを示しています。 詳細については、[Microsoft.Web/sites template format (ARM テンプレート)](/templates/microsoft.web/sites?tabs=json) のドキュメントを参照してください。
+次の例は、ARM テンプレートで使用できる Azure Arc 対応 Logic Apps リソース定義のサンプルを示しています。 詳細については、[Microsoft.Web/sites template format (ARM テンプレート)](/azure/templates/microsoft.web/sites?tabs=json) のドキュメントを参照してください。
 
 ```json
 {
@@ -568,7 +600,7 @@ Docker レジストリとコンテナー イメージを参照するには、こ
 
 #### <a name="arm-template"></a>ARM テンプレート
 
-次の例は、アプリのデプロイで使用できる App Service プランのリソース定義のサンプルを示しています。 詳細については、[Microsoft.Web/serverfarms template format (ARM テンプレート)](/templates/microsoft.web/serverfarms?tabs=json) のドキュメントを参照してください。
+次の例は、アプリのデプロイで使用できる App Service プランのリソース定義のサンプルを示しています。 詳細については、[Microsoft.Web/serverfarms template format (ARM テンプレート)](/azure/templates/microsoft.web/serverfarms?tabs=json) のドキュメントを参照してください。
 
 ```json
 {
@@ -634,12 +666,12 @@ Azure Arc 対応 Logic Apps では、ジョブ キューの長さによってス
 
 #### <a name="azure-cli"></a>Azure CLI
 
-新しいロジック アプリの場合は、Azure CLI コマンド `az logicapp create` を実行します。次に例を示します。
+新しいロジック アプリを作成するには、次のパラメーターを指定してコマンド `az logicapp create` を実行します。
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName 
-   --name MyLogicAppName --storage-account MyStorageAccount 
-   --custom-location --subscription MySubscription  MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    [--plan MyHostingPlan] [--min-worker-count 1] [--max-worker-count 4]
 ```
 
@@ -647,9 +679,8 @@ az logicapp create --resource-group MyResourceGroupName
 
 ```azurecli
 az logicapp config appsettings set --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --settings "K8SE_APP_MAX_INSTANCE_COUNT=10" 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription
+   --settings "K8SE_APP_MAX_INSTANCE_COUNT=10"
 ```
 
 #### <a name="azure-portal"></a>Azure portal
@@ -657,7 +688,9 @@ az logicapp config appsettings set --name MyLogicAppName
 シングルテナント ベースのロジック アプリの設定で、こちらの手順に従って、`K8SE_APP_MAX_INSTANCE_COUNT` の設定値を追加または編集します。
 
 1. Azure portal で、シングルテナント ベースのロジック アプリを検索して開きます。
+
 1. ロジック アプリ メニューの **[設定]** で、 **[構成]** を選択します。
+
 1. **[構成]** ペインの **[アプリケーション設定]** で、新しいアプリケーション設定を追加するか、既に追加されている場合は既存の値を編集します。
 
    1. **[新しいアプリケーション設定]** を選択し、必要な最大値を指定した設定 `K8SE_APP_MAX_INSTANCE_COUNT` を追加します。
@@ -674,19 +707,20 @@ az logicapp config appsettings set --name MyLogicAppName
 
 #### <a name="azure-cli"></a>Azure CLI
 
-既存のロジック アプリ リソースの場合は、Azure CLI コマンド `az logicapp scale` を実行します。次に例を示します。
+既存のロジック アプリのリソースの場合は、次のパラメーターを指定してコマンド `az logicapp scale` を実行します。
 
 ```azurecli
-az logicapp scale --name MyLogicAppName --resource-group MyResourceGroupName 
-   --instance-count 5 --subscription MySubscription
+az logicapp scale --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --instance-count 5 
 ```
 
-新しいロジック アプリの場合は、Azure CLI コマンド `az logicapp create` を実行します。次に例を示します。
+新しいロジック アプリを作成するには、次のパラメーターを指定してコマンド `az logicapp create` を実行します。
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --custom-location 
-   --subscription MySubscription MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    [--plan MyHostingPlan] [--min-worker-count 2] [--max-worker-count 4]
 ```
 
@@ -695,8 +729,11 @@ az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName
 シングルテナント ベースのロジック アプリの設定で、こちらの手順に従って **[Scale Out]** プロパティの値を変更します。
 
 1. Azure portal で、シングルテナント ベースのロジック アプリを検索して開きます。
+
 1. ロジック アプリのメニューの **[設定]** で、 **[Scale Out]** を選択します。
+
 1. **[Scale Out]** ペインで、最小インスタンス スライダーを目的の値にドラッグします。
+
 1. 完了したら、変更を保存します。
 
 ## <a name="troubleshoot-problems"></a>問題のトラブルシューティング
@@ -705,37 +742,36 @@ az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName
 
 ### <a name="access-app-settings-and-configuration"></a>アプリの設定と構成にアクセスする
 
-アプリの設定にアクセスするには、次の Azure CLI コマンドを実行します。
+アプリの設定にアクセスするには、次のパラメーターを指定してコマンド `az logicapp config appsettings` を実行します。
 
 ```azurecli
 az logicapp config appsettings list --name MyLogicAppName 
    --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
-アプリの設定を構成するには、次のようにコマンド `az logicapp config appsettings set` を実行します。 ご自分の設定の名前と値を持つ `--settings` パラメーターを必ず使用してください。
+アプリの設定を構成するには、次のパラメーターを指定してコマンド `az logicapp config appsettings set` を実行します。 ご自分の設定の名前と値を持つ `--settings` パラメーターを必ず使用してください。
 
 ```azurecli
 az logicapp config appsettings set --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --settings "MySetting=1" 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --settings "MySetting=1"
 ```
 
-アプリの設定を削除するには、次のようにコマンド `az logicapp config appsettings delete` を実行します。 削除する設定の名前を持つ `--setting-names` パラメーターを必ず使用してください。
+アプリの設定を削除するには、次のパラメーターを指定してコマンド `az logicapp config appsettings delete` を実行します。 削除する設定の名前を持つ `--setting-names` パラメーターを必ず使用してください。
 
 ```azurecli
 az logicapp config appsettings delete --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --setting-names MySetting 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription
+   --setting-names MySetting
 ```
 
 ### <a name="view-logic-app-properties"></a>ロジック アプリのプロパティを表示する
 
-アプリの情報とプロパティを表示するには、次の Azure CLI コマンドを実行します。 
+アプリの情報とプロパティを表示するには、次のパラメーターを指定してコマンド `az logicapp show` を実行します。
 
 ```azurecli
-az logicapp show --name MyLogicAppName --resource-group MyResourceGroupName --subscription MySubscription
+az logicapp show --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
 ### <a name="monitor-workflow-activity"></a>ワークフロー アクティビティを監視する
@@ -754,4 +790,4 @@ az logicapp show --name MyLogicAppName --resource-group MyResourceGroupName --su
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Arc 対応 Logic Apps](azure-arc-enabled-logic-apps-overview.md) の詳細情報
+- [Azure Arc 対応 Logic Apps について](azure-arc-enabled-logic-apps-overview.md)

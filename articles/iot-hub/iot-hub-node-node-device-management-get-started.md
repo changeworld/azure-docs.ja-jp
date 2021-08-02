@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 774a8fa05dd5044a07450deb675a6761de9869a3
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 8d551de4e467d602c40fc40889bfc36e5cf69a1d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890638"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075603"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>デバイス管理の開始 (Node.js)
 
@@ -58,7 +58,7 @@ ms.locfileid: "107890638"
 
 * シミュレート対象デバイスの再起動をトリガーします。
 
-* 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスとデバイスの最後の再起動時間を識別できるようにします。
+* 報告されたプロパティを使用して、デバイス ツイン クエリで、デバイスと、それらが最後に再起動された時間を特定できるようにします。
 
 1. **manageddevice** という名前の空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
 

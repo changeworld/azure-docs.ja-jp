@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 47d8acd26d1cfa9c41c2cc8770f7c7f81a3e2930
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595993"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592108"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー
 
@@ -322,7 +322,7 @@ Azure Functions のタイマー トリガーに使用できる NCRONTAB 式の�
 | `0 30 9 * Jan Mon` | 1 月の毎週月曜日の午前 9時 30分 |
 
 > [!NOTE]
-> NCRONTAB 式には、**6 フィールド** 形式が必要です。 6 番目のフィールド位置は、式の先頭に配置される秒の値です。 5 フィールド CRON 式は Azure ではサポートされていません。
+> NCRONTAB 式は、**5 フィールド** と **6 フィールド** の両方の形式をサポートしています。 6 番目のフィールド位置は、式の先頭に配置される秒の値です。
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB タイム ゾーン
 

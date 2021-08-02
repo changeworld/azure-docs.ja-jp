@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 06/14/2021
 ms.author: surmb
-ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 785741c029fa3b44fffca5140906689f478fb247
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397622"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081229"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway インフラストラクチャの構成
 
@@ -35,7 +35,13 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 Application Gateway (Standard または WAF) SKU では、最大 32 のインスタンス (32 のインスタンス IP アドレス + 1 つのプライベート フロントエンド IP + 5 つの予約済み Azure) をサポートできます。そのため、最小サブネット サイズは /26 をお勧めします。
 
-Application Gateway (Standard_v2 または WAF_v2) SKU では、最大 125 のインスタンス (125 のインスタンス IP アドレス + 1 つのプライベート フロントエンド IP + 5 つの予約済み Azure) をサポートできます。そのため、最小サブネット サイズは /24 をお勧めします。
+Application Gateway (Standard_v2 または WAF_v2) SKU では、最大 125 のインスタンス (125 のインスタンス IP アドレス + 1 つのプライベート フロントエンド IP + 5 つの予約済み Azure) をサポートできます。 最小サブネット サイズは /24 をお勧めします。
+
+> [!IMPORTANT]
+> Application Gateway v2 SKU のデプロイでは /24 サブネットは必須ではありませんが、強くお勧めします。 これは、Application Gateway v2 で拡張とメンテナンスのアップグレードの自動スケール用に十分な領域を確保するためです。 予想される最大トラフィックの処理に必要なインスタンス数に対応するための、十分なアドレス空間が Application Gateway v2 サブネットにあることを確認する必要があります。 最大インスタンス数を指定する場合、そのサブネットには少なくともその数のアドレスに対応する容量が必要です。 インスタンス数に関するキャパシティ プランニングについては、[インスタンス数の詳細](understanding-pricing.md#instance-count)に関する記事を参照してください。
+
+> [!TIP]
+> 同じ仮想ネットワーク内にある既存の Application Gateway のサブネットを変更することができます。 これを行うには、Azure PowerShell または Azure CLI を使用します。 詳細については、「[Application Gateway に関してよく寄せられる質問](application-gateway-faq.yml#can-i-change-the-virtual-network-or-subnet-for-an-existing-application-gateway)」を参照してください
 
 ## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 

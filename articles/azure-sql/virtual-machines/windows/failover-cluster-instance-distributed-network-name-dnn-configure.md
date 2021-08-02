@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d27223906727af3b45617c7162f5c5da5133d2e3
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358318"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569518"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>フェールオーバー クラスター インスタンス用に DNN を構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,6 +47,7 @@ FCI デプロイでは、VNN は引き続き存在しますが、クライアン
 - 分散ネットワーク名が[お客様の HADR ソリューションに適切な接続オプション](hadr-cluster-best-practices.md#connectivity)であると判断済みであること。
 - [フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)を構成済みであること。 
 - 最新バージョンの [PowerShell](/powershell/azure/install-az-ps) をインストール済みであること。 
+- DNN リスナーに接続するクライアントは、接続文字列の `MultiSubnetFailover=True` パラメーターをサポートする必要があります。 
 
 ## <a name="create-dnn-resource"></a>DNN リソースを作成する 
 
@@ -203,6 +204,10 @@ Get-ClusterResource "virtual IP address" | Set-ClusterParameter
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での SQL Server の HADR 機能について詳しくは、[可用性グループ](availability-group-overview.md)と[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関する記事をご覧ください。 また、高可用性とディザスター リカバリー用に環境を構成するための[ベスト プラクティス](hadr-cluster-best-practices.md)を学習することもできます。 
+詳細については、以下をご覧ください。
 
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
 

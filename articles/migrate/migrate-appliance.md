@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: d7fc04e65e2b79d43c48acd5a8c621f28d5c0403
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 7a660b6da0d391e7e2671302432c937b5142f4b0
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714670"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747727"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -42,9 +42,6 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 次の表は、VMware の Azure Migrate アプライアンス要件をまとめたものです。
 
-> [!Note]
-> VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
-
 **要件** | **VMware**
 --- | ---
 **アクセス許可** | アプライアンス構成マネージャーにローカルまたはリモートでアクセスするには、アプライアンス サーバーの管理者特権を持つローカルまたはドメインのユーザー アカウントが必要です。
@@ -56,7 +53,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **OVA の確認** | ハッシュ値を確かめて、プロジェクトからダウンロードした OVA テンプレートを[確認](tutorial-discover-vmware.md#verify-security)します。
 **PowerShell スクリプト** | PowerShell インストーラー スクリプトを使用してアプライアンスをデプロイする方法については、こちらの[記事](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)を参照してください。<br/><br/> 
 **ハードウェアとネットワークの要件** |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したサーバーで実行する必要があります。<br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/><br/> OVA テンプレートを使用してアプライアンスをデプロイする場合は、ハードウェア要件を満たすサーバーを作成するために、vCenter Server に十分なリソースが必要です。<br/><br/> 既存のサーバーでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/>_(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_
-**VMware の要件** | アプライアンスを vCenter Server のサーバーとしてデプロイする場合は、5.5、6.0、6.5、または 6.7 を実行している vCenter Server と、バージョン 5.5 以降を実行している ESXi ホストにデプロイする必要があります。<br/><br/> 
+**VMware の要件** | アプライアンスをサーバーとして vCenter Server にデプロイする場合は、5.5、6.0、6.5、6.7、または 7.0 を実行している vCenter Server と、バージョン 5.5 以降を実行している ESXi ホストにデプロイする必要があります。<br/><br/> 
 **VDDK (エージェントレス移行)** | アプライアンスを利用してエージェントレスでサーバーを移行するには、VMware vSphere VDDK をアプライアンス サーバーにインストールする必要があります。
 
 ## <a name="appliance---hyper-v"></a>アプライアンス - Hyper-V
@@ -144,28 +141,8 @@ management.azure.com | アプライアンスで Azure Migrate と通信するた
 aka.ms/* (省略可能) | aka リンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
 download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します。
 *.servicebus.windows.net | **VMware のエージェントレス移行のために使用**<br/><br/> アプライアンスと Azure Migrate サービスの間の通信。
-*.vault.azure.net | **VMware のエージェントレス移行のために使用**<br/><br/>  レプリケートするサーバーの、ここへのアクセス権を確保します。
 *.hypervrecoverymanager.windowsazure.com | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
-*.blob.core.windows.net |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
-
-### <a name="government-cloud-urls-for-private-link-connectivity"></a>プライベート リンク接続用の Government クラウドの URL   
-
-アプライアンスは、プライベート リンク アクセスに加えて、次の URL (直接またはプロキシ経由) にアクセスする必要があります。 
-
-**URL** | **詳細**  
---- | --- |
-*.portal.azure.us  | Azure Portal に移動します。
-graph.windows.net | Azure サブスクリプションにサインインします。
-login.microsoftonline.us  | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
-management.usgovcloudapi.net | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
-*.services.visualstudio.com (省略可能) | 内部監視に使用するアプライアンス ログをアップロードします。
-aka.ms/* (省略可能) | aka リンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
-download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します。
-*.servicebus.usgovcloudapi.net  | **VMware のエージェントレス移行のために使用**<br/><br/> アプライアンスと Azure Migrate サービスの間の通信。 
-*.vault.usgovcloudapi.net | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Key Vault でシークレットを管理します。
-*.hypervrecoverymanager.windowsazure.us | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
-*.blob.core.usgovcloudapi.net  |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
-*.applicationinsights.us (省略可能) | 内部監視に使用するアプライアンス ログをアップロードします。  
+*.blob.core.windows.net |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。 <br/>ストレージ アカウント (キャッシュ ストレージ アカウントとゲートウェイ ストレージ アカウントの両方) にプライベート エンドポイントがアタッチされている場合、これは省略可能であり、必須ではありません。
 
 ## <a name="collected-data---vmware"></a>収集されるデータ - VMware
 
@@ -280,7 +257,7 @@ VMware 環境で検出された各 Windows サーバーからアプライアン�
 --- | --- | ---
 名前  | Win32_operatingsystem  | Caption
 Version  | Win32_operatingsystem  | Version
-アーキテクチャ  | Win32_operatingsystem  | OSArchitecture
+Architecture  | Win32_operatingsystem  | OSArchitecture
 
 #### <a name="linux-server-software-inventory-data"></a>Linux サーバー ソフトウェア インベントリ データ
 
@@ -299,14 +276,11 @@ VMware 環境で検出された各 Linux サーバーからアプライアンス
 **データ**  | **コマンド**
 --- | ---
 名前 <br/> version | 次の 1 つ以上のファイルから収集されます。<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version
-アーキテクチャ | uname
+Architecture | uname
 
 ### <a name="sql-server-instances-and-databases-data"></a>SQL Server インスタンスおよびデータベースのデータ
 
 アプライアンスにより、SQL Server インスタンスとデータベースに関するデータが収集されます。
-
-> [!Note]
-> VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
 
 #### <a name="sql-database-metadata"></a>SQL データベースのメタデータ
 
@@ -505,13 +479,13 @@ NIC の MAC アドレス | Win32_NetworkAdapterConfiguration | MACAddress
 **データ** | **コマンド**
 --- | ---
 FQDN | cat /proc/sys/kernel/hostname, hostname -f
-プロセッサ コア数 |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
+プロセッサ コア数 |  cat/proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
 割り当てられたメモリ | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
 BIOS のシリアル番号 | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}'
 BIOS の GUID | cat /sys/class/dmi/id/product_uuid
 ブートの種類 | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
 OS の名前/バージョン | OS のバージョンと名前について、以下のファイルにアクセスします。<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
-OS アーキテクチャ | Uname -m
+OS アーキテクチャ | uname -m
 ディスク数 | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
 ブート ディスク | df /boot \| sed -n 2p \| awk '{print $1}'
 ディスク サイズ | fdisk -l \| egrep 'Disk.*bytes' \| egrep $disk: \| awk '{print $5}'

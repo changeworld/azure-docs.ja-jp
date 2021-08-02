@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: b5f4218cfcd5f9ccfbe43efac46e2f70fdc30905
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43a71f6260f688a1e9cc5e39e0c61f81d2265eb3
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99574959"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559644"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>オンプレミスの SQL Server の登録とスキャン
 
@@ -109,7 +109,35 @@ SQL アカウントには、**master** データベースへのアクセス権�
 
 5. フレンドリ名とサーバー エンドポイントを指定し、 **[完了]** を選択してデータ ソースを登録します。 たとえば、SQL Server の FQDN が **foobar.database.windows.net** の場合は、サーバー エンドポイントとして *foobar* を入力します。
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+
+新しいスキャンを作成して実行するには、次の操作を行います。
+
+1. Purview Studio の左側のペインで **[Data Map]** タブを選択します。
+
+1. 登録した SQL Server のソースを選択します。
+
+1. **[新しいスキャン]** 選択する
+
+1. 対象のデータ ソースに接続するための資格情報を選択します。
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-set-up-scan.png" alt-text="スキャンを設定する":::
+
+1. リストから適切な項目を選択することによって、特定のテーブルに対するスキャンの範囲を指定することができます。
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scope-your-scan.png" alt-text="スキャンの範囲を指定する":::
+
+1. スキャンのルール セットを選びます。 システム既定のルール セット、既存のカスタム ルール セットのどちらかを選ぶか、新しいルール セットをインラインで作成できます。
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scan-rule-set.png" alt-text="スキャン ルール セット":::
+
+1. スキャン トリガーを選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/trigger-scan.png" alt-text="trigger":::
+
+1. スキャンを確認し、 **[保存および実行]** を選択します。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

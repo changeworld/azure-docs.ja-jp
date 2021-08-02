@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9822dfe50fa50fdd70f4e09e188188cad0f9b8f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 96cd715a16c06dd6e35d042a6938de083ec262a9
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438218"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556786"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 
@@ -148,5 +148,5 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 * [Azure Security Center でのセキュリティ インシデントの処理](security-center-incident.md)
 * [Azure Security Center の検出機能](./security-center-alerts-overview.md)
 * [Azure Security Center を使用したパートナー ソリューションの監視](./security-center-partner-integration.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+* [Azure Security Center の FAQ](faq-general.yml) -- このサービスの使用に関してよく寄せられる質問を確認できます。
 * [Azure セキュリティ ブログ](/archive/blogs/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

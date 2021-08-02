@@ -3,12 +3,12 @@ title: バックアップ コンテナーの概要
 description: バックアップ コンテナーの概要。
 ms.topic: conceptual
 ms.date: 04/19/2021
-ms.openlocfilehash: e2d720da9474a35870de01559201d22c9e5b567f
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 6748121bd85fe6dc26a09c038ab305bcf06e3902
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739082"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565962"
 ---
 # <a name="backup-vaults-overview"></a>バックアップ コンテナーの概要
 
@@ -48,21 +48,20 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 ### <a name="create-backup-vault"></a>バックアップ コンテナーの作成
 
 1. 検索ボックスに「**バックアップ コンテナー**」と入力します。
-1. **[サービス]** で **[バックアップ コンテナー]** を選択します。
-1. **[バックアップ コンテナー]** ページで、 **[追加]** を選択します。
-1. **[基本]** タブの **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認し、 **[新しいリソース グループの作成]** を選択します。 名前として「*myResourceGroup*」と入力します。
+2. **[サービス]** で **[バックアップ コンテナー]** を選択します。
+3. **[バックアップ コンテナー]** ページで、 **[追加]** を選択します。
+4. **[基本]** タブの **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認し、 **[新しいリソース グループの作成]** を選択します。 名前として「*myResourceGroup*」と入力します。
 
-  ![新しいリソース グループの作成](./media/backup-vault-overview/new-resource-group.png)
+    ![新しいリソース グループの作成](./media/backup-vault-overview/new-resource-group.png)
 
-1. **[インスタンスの詳細]** で、 **[バックアップ コンテナー名]** に「*myVault*」と入力し、 **[リージョン]** で任意のリージョン (この例では *[米国東部]* ) を選択します。
-1. 次に、 **[ストレージ冗長]** を選択します。 コンテナーに項目を保護した後で、ストレージ冗長を変更することはできません。
-1. プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き既定の **geo 冗長** 設定を使用することをお勧めします。
-1. プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、 **[ローカル冗長]** を選択します。これにより、Azure ストレージのコストを削減できます。
-1. [geo](../storage/common/storage-redundancy.md#geo-redundant-storage) 冗長と[ローカル](../storage/common/storage-redundancy.md#locally-redundant-storage)冗長の詳細をご確認ください。
+5. **[インスタンスの詳細]** で、 **[バックアップ コンテナー名]** に「*myVault*」と入力し、 **[リージョン]** で任意のリージョン (この例では *[米国東部]* ) を選択します。
+6. 次に、 **[ストレージ冗長]** を選択します。 コンテナーに項目を保護した後で、ストレージ冗長を変更することはできません。
+7. プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き既定の **geo 冗長** 設定を使用することをお勧めします。
+8. プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、 **[ローカル冗長]** を選択します。これにより、Azure Storage のコストを削減できます。 [geo](../storage/common/storage-redundancy.md#geo-redundant-storage) 冗長と[ローカル](../storage/common/storage-redundancy.md#locally-redundant-storage)冗長の詳細をご確認ください。
 
-  ![ストレージ冗長を選択する](./media/backup-vault-overview/storage-redundancy.png)
+    ![ストレージ冗長を選択する](./media/backup-vault-overview/storage-redundancy.png)
 
-1. ページの下部にある [確認と作成] ボタンを選択します。
+9. ページの下部にある [確認と作成] ボタンを選択します。
 
     ![[確認と作成] を選択する](./media/backup-vault-overview/review-and-create.png)
 
@@ -80,6 +79,10 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 依存関係を削除せずにコンテナーを削除しようとすると、次のエラー メッセージが表示されます。
 
 >Cannot delete the Backup vault as there are existing backup instances or backup policies in the vault. (既存のバックアップ インスタンスまたはバックアップ ポリシーがバックアップ コンテナー内に存在するため、このコンテナーを削除できません。) Delete all backup instances and backup policies that are present in the vault and then try deleting the vault. (コンテナー内に存在するすべてのバックアップ インスタンスとバックアップ ポリシーを削除してから、コンテナーの削除をもう一度お試しください。)
+
+バックアップ コンテナーを削除する前に、**バックアップ センター** の **データソースの種類** のフィルター オプションで、削除する必要がある既存のバックアップ インスタンスまたはポリシーを忘れないようにしてください。
+
+![データ ソースの種類](./media/backup-vault-overview/datasource-types.png)
 
 ### <a name="proper-way-to-delete-a-vault"></a>コンテナーを削除する正しい方法
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 06/08/2021
 ms.author: b-juche
-ms.openlocfilehash: 476bed754c6ccc2cab1cd9c97b52873a9b430770
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 46db9181657e5271f5aee567365e1f616caddc3f
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480325"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061508"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -58,9 +58,9 @@ ms.locfileid: "110480325"
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM とストレージ間のネットワーク トラフィックは暗号化できますか?
 
-NFSv4.1 クライアントと Azure NetApp Files ボリューム間のデータ トラフィックは、AES-256 暗号化を使用した Kerberos を使用して暗号化できます。 詳細については、「[Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する](configure-kerberos-encryption.md)」を参照してください。   
+Azure NetApp Files のデータ トラフィックは、パブリック エンドポイントが提供されず、データ トラフィックは顧客所有の VNet 内に留まっているので、設計上、本質的にセキュリティが確保されています。 既定では、転送中のデータは暗号化されません。 ただし、(NFS または SMB クライアントを実行している) Azure VM から Azure NetApp Files へのデータ トラフィックは、Azure VM 間のトラフィックと同様に安全です。 
 
-NFSv3 または SMB3 クライアントから Azure NetApp Files ボリュームへのデータ トラフィックは暗号化されません。 ただし、(NFS または SMB クライアントを実行している) Azure VM から Azure NetApp Files へのトラフィックは、Azure VM 間のトラフィックと同様に安全です。 このトラフィックは、Azure データセンター ネットワークに対してローカルです。 
+NFSv3 プロトコルでは暗号化がサポートされていないため、この転送中のデータを暗号化することはできません。 ただし、NFSv4.1 と SMB3 による転送中のデータの暗号化は、必要に応じて有効にすることができます。 NFSv4.1 クライアントと Azure NetApp Files ボリューム間のデータ トラフィックは、AES-256 暗号化を使用した Kerberos を使用して暗号化できます。 詳細については、「[Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する](configure-kerberos-encryption.md)」を参照してください。 SMB3 クライアントと Azure NetApp Files ボリュームの間のデータ トラフィックは、SMB 3.0 では AES-CCM アルゴリズムを使用して、SMB 3.1.1 接続では AES-GCM アルゴリズムを使用して、暗号化できます。 詳細については、「[Azure NetApp Files の SMB ボリュームを作成する](azure-netapp-files-create-volumes-smb.md)」を参照してください。 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>ストレージは保存時に暗号化できますか?
 
@@ -130,6 +130,18 @@ Azure NetApp Files には、ボリュームのパフォーマンス メトリッ
 
 NFSv 4.1 のセキュリティ オプション、テスト済みのパフォーマンス ベクトル、予想されるパフォーマンスへの影響については、[NFSv 4.1 ボリュームでの Kerberos のパフォーマンスへの影響](performance-impact-kerberos.md)に関するページを参照してください。 
 
+### <a name="does-azure-netapp-files-support-smb-direct"></a>Azure NetApp Files では SMB ダイレクトはサポートされていますか?
+
+いいえ。Azure NetApp Files では SMB ダイレクトはサポートされていません。 
+
+### <a name="is-nic-teaming-supported-in-azure"></a>Azure では NIC チーミングはサポートされていますか?
+
+NIC チーミングは Azure ではサポートされていません。 Azure 仮想マシンでは複数のネットワーク インターフェイスがサポートされていますが、それらは物理的な構成ではなく論理的な構成を表します。 そのため、フォールト トレランスは提供されません。  また、Azure 仮想マシンで利用できる帯域幅は、個々のネットワーク インターフェイスではなく、マシン自体に対して計算されます。
+
+### <a name="are-jumbo-frames-supported"></a>ジャンボ フレームはサポートされていますか?
+
+Azure 仮想マシンでは、ジャンボ フレームはサポートされていません。
+
 ## <a name="nfs-faqs"></a>NFS に関する FAQ
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Azure VM が起動または再起動されたときに、ボリュームが自動的にマウントされるようにしたいと考えています。  NFS の永続ボリュームのホストを構成するにはどうすればよいですか?
@@ -184,9 +196,9 @@ Azure NetApp Files では、SMB 2.1 と SMB 3.1 (SMB 3.0 のサポートを含�
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>サポートされている Active Directory 接続はいくつですか?
 
-Azure NetApp Files は、AD 接続が異なる NetApp アカウントにある場合でも、1 つの "*リージョン*" で複数の Active Directory (AD) 接続をサポートしていません。 ただし、AD 接続が異なるリージョンにある場合に限り、1 つの "*サブスクリプション*" で複数の AD 接続を使用できます。 1 つのリージョンに複数の AD 接続が必要な場合は、別のサブスクリプションを使用してこれを行うことができます。 
+Active Directory (AD) 接続を構成できるのは、サブスクリプションごとおよびリージョンごとに 1 つだけです。 詳細については、「[Active Directory 接続の要件](create-active-directory-connections.md#requirements-for-active-directory-connections)」を参照してください。 
 
-AD 接続は、NetApp アカウントごとに構成され、作成された NetApp アカウントを介してのみ表示されます。
+ただし、同じサブスクリプションと同じリージョンにある複数の NetApp アカウントを、いずれかの NetApp アカウントで作成された共通の AD サーバーにマップすることができます。 「[同じサブスクリプションとリージョンにある複数の NetApp アカウントを AD 接続にマップする](create-active-directory-connections.md#shared_ad)」を参照してください。 
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files で Azure Active Directory はサポートされていますか? 
 
@@ -214,43 +226,6 @@ Azure NetApp Files では、Windows Server 2008r2SP1-2019 バージョンの Act
 
 いいえ。 ただし、Azure NetApp Files SMB 共有は、DFS 名前空間 (DFS-N) のフォルダー ターゲットとして使用できます。   
 Azure NetApp Files SMB 共有を DFS-N のフォルダー ターゲットとして使用するには、[DFS のフォルダー ターゲット追加](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)に関する記事の手順に従って、Azure NetApp Files SMB 共有のマウント ポイントの汎用名前付け規則 (UNC) パスを設定します。  
-
-### <a name="smb-encryption-faqs"></a>SMB 暗号化に関する FAQ
-
-このセクションでは、SMB 暗号化 (SMB 3.0 および SMB 3.1.1) に関してよく寄せられる質問に回答します。
-
-#### <a name="what-is-smb-encryption"></a>SMB 暗号化とは  
-
-[SMB 暗号化](/windows-server/storage/file-server/smb-security)は、SMB データをエンド ツー エンドで暗号化し、信頼できないネットワークで発生する傍受からデータを保護できます。 SMB 暗号化は、SMB 3.0 以上でサポートされています。 
-
-#### <a name="how-does-smb-encryption-work"></a>SMB 暗号化は、どのように機能しますか。
-
-要求をストレージに送信するときに、クライアントは要求を暗号化します。この暗号化がストレージによって解除されます。 応答は、同様にサーバーによって暗号化され、クライアントによって暗号化が解除されます。
-
-#### <a name="which-clients-support-smb-encryption"></a>SMB 暗号化をサポートしているのは、どのクライアントですか。
-
-SMB 暗号化は、Windows 10、および Windows 2012 以降のバージョンでサポートされています。
-
-#### <a name="with-azure-netapp-files-at-what-layer-is-smb-encryption-enabled"></a>Azure NetApp Files では、どのレイヤーで SMB 暗号化が有効になっていますか。  
-
-SMB 暗号化は共有レベルで有効になっています。
-
-#### <a name="what-forms-of-smb-encryption-are-used-by-azure-netapp-files"></a>Azure NetApp Files では、どのような形式の SMB 暗号化が使用されますか。
-
-SMB 3.0 では AES-CCM アルゴリズムが、SMB 3.1.1 では AES-GCM アルゴリズムが採用されています。
-
-#### <a name="is-smb-encryption-required"></a>SMB 暗号化は必須ですか。
-
-SMB 暗号化は必須ではありません。 そのため、ユーザーが Azure NetApp Files で有効にするように要求した場合に、特定の共有に対してのみ有効になります。 Azure NetApp Files 共有がインターネットに公開されることはありません。 特定の VNet 内から、VPN または ExpressRoute 経由でのみアクセスできます。したがって、Azure NetApp Files 共有は本質的にセキュリティで保護されています。 SMB 暗号化を有効にするかどうかは、ユーザーが選択します。 この機能を有効にする前に、パフォーマンスの低下が予想されることを理解しておいてください。
-
-#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>SMB 暗号化により、どのような影響がクライアント ワークロードに対して予想されますか。
-
-SMB 暗号化は、クライアント (メッセージの暗号化と復号化のための CPU オーバーヘッド) とストレージ (スループットの低下) の両方に影響を与えますが、次の表は、ストレージに対する影響のみを示しています。 ワークロードを運用環境にデプロイする前に、自分のアプリケーションのパフォーマンスに対する暗号化の影響をテストする必要があります。
-
-|     I/O プロファイル       |     影響        |
-|-  |-  |
-|     ワークロードの読み取りと書き込み      |     10% ～ 15%        |
-|     メタデータ集中型        |     5%    |
 
 ## <a name="capacity-management-faqs"></a>容量管理に関する FAQ
 

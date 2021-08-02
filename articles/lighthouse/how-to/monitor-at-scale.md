@@ -1,14 +1,14 @@
 ---
 title: 委任されたリソースを大規模に監視する
-description: 管理下にある顧客テナント全体を対象に、スケーラブルな方法で効率よく Azure Monitor ログを使用する方法について説明します。
+description: Azure Lighthouse は、すべての顧客テナントで、スケーラブルな方法により、Azure Monitor のログを使用するのに役立ちます。
 ms.date: 05/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 9490d439b0614c0191843c0a25322f6c0183aa3f
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 29f78eb677b17193876ec45250e639cb9086cf6b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751313"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082309"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 06/08/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb1504e406e5edb25cea01fa2add5751257802e8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725591"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744451"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory の認証方法 - 電話オプション
 
@@ -57,7 +57,7 @@ SSPR または Azure AD Multi-Factor Authentication で音声通話の確認を�
 Azure AD の電話認証で問題が発生した場合は、次のトラブルシューティングの手順を確認してください。
 
 * サインイン中の [You've hit our limit on verification calls]\(確認呼び出しの上限に達しました\) エラー メッセージまたは [You've hit our limit on text verification codes]\(テキスト確認コードの上限に達しました\) エラー メッセージ
-   * Microsoft は、同じユーザーが短時間に認証の試行を繰り返し行うことを制限する場合があります。 この制限は、Microsoft Authenticator または確認コードには適用されません。 これらの制限に達した場合は、Authenticator アプリまたは確認コードを使用するか、数分後にもう一度サインインを試行することができます。
+   * Microsoft では、同じユーザーが短時間に認証の試行を繰り返すことを制限する場合があります。 この制限は、Microsoft Authenticator または確認コードには適用されません。 これらの制限に達した場合は、Authenticator アプリまたは確認コードを使用するか、数分後にもう一度サインインを試行することができます。
 * サインイン中に「申し訳ありませんが、アカウントの確認に問題が生じています」というエラー メッセージ
    * Microsoft では、音声または SMS 認証の失敗した試行回数が多いことが原因で、同じユーザー、電話番号、または組織によって実行される音声または SMS 認証の試行を制限したりブロックしたりすることがあります。 このエラーが発生した場合は、Authenticator アプリや確認コードなどの別の方法を試したり、管理者に連絡してサポートを受けたりすることができます。
 * 1 つのデバイスで発信者 ID がブロックされる。

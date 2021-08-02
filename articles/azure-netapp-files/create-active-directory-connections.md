@@ -12,29 +12,31 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 27c2ab96106bbfcc05b8fa12daf9b6f7b816c5c7
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e6bc27674cadc8798afa3f9f9297b0d573d7ce64
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579990"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071060"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
-Azure NetApp Files のいくつかの機能では、Active Directory 接続が必要です。  たとえば、[SMB ボリューム](azure-netapp-files-create-volumes-smb.md)または[デュアルプロトコル ボリューム](create-volumes-dual-protocol.md)を作成するには、Active Directory 接続が必要です。  この記事では、Azure NetApp Files の Active Directory 接続を作成および管理する方法について説明します。
+Azure NetApp Files のいくつかの機能では、Active Directory 接続が必要です。  たとえば、[SMB ボリューム](azure-netapp-files-create-volumes-smb.md)、[NFSv4.1 Kerberos ボリューム](configure-kerberos-encryption.md)、または[デュアルプロトコル ボリューム](create-volumes-dual-protocol.md)を作成するには、事前に Active Directory 接続を用意する必要があります。  この記事では、Azure NetApp Files の Active Directory 接続を作成および管理する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に  
 
-あらかじめ容量プールを設定しておく必要があります。   
-[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)   
-サブネットが Azure NetApp Files に委任されている必要があります。  
-[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)
+* あらかじめ容量プールを設定しておく必要があります。 「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。   
+* サブネットが Azure NetApp Files に委任されている必要があります。 「[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)」を参照してください。
 
 ## <a name="requirements-for-active-directory-connections"></a>Active Directory 接続の要件
 
- Active Directory 接続の要件は次のとおりです。 
+* Active Directory (AD) 接続を構成できるのは、サブスクリプションごとおよびリージョンごとに 1 つだけです。   
+
+    Azure NetApp Files は、AD 接続が異なる NetApp アカウントにある場合でも、1 つの "*リージョン*" で複数の AD 接続をサポートしていません。 ただし、AD 接続が異なるリージョンにある場合は、1 つのサブスクリプションで複数の AD 接続を使用できます。 1 つのリージョンに複数の AD 接続が必要な場合は、別のサブスクリプションを使用してこれを行うことができます。  
+
+    AD 接続は、それが作成された NetApp アカウントを介してのみ表示されます。 ただし、共有 AD 機能を有効にすると、同じサブスクリプションおよび同じリージョン内の NetApp アカウントが、いずれかの NetApp アカウントで作成された AD サーバーを使用できるようになります。 「[同じサブスクリプションとリージョンにある複数の NetApp アカウントを AD 接続にマップする](#shared_ad)」を参照してください。 この機能を有効にすると、同じサブスクリプションおよび同じリージョンにあるすべての NetApp アカウントの AD 接続を確認できるようになります。 
 
 * 使用する管理者アカウントは、指定する組織単位 (OU) パスにマシン アカウントを作成できる必要があります。  
 
@@ -134,6 +136,8 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
 1. NetApp アカウントで **[Active Directory 接続]** をクリックし、 **[参加]** をクリックします。  
 
+    Azure NetApp Files でサポートされるのは、同じリージョンおよび同じサブスクリプション内で 1 つの Active Directory 接続のみです。 Active Directory が同じサブスクリプションおよびリージョン内の別の NetApp アカウントによって既に構成されている場合、お使いの NetApp アカウントで異なる Active Directory を構成して参加することはできません。 ただし、共有 AD 機能を有効にすると、同じサブスクリプションと同じリージョン内の複数の NetApp アカウントで Active Directory 構成を共有できるようになります。 「[同じサブスクリプションとリージョンにある複数の NetApp アカウントを AD 接続にマップする](#shared_ad)」を参照してください。
+
     ![Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
 2. [Active Directory に参加します] ウィンドウで、使用するドメイン サービスに基づいて、次の情報を指定します。  
@@ -166,8 +170,10 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         ![Active Directory に参加する](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
     * **AES の暗号化**   
-        このチェックボックスをオンにすると、SMB ボリュームに対して AES の暗号化が有効になります。 要件については、「[Active Directory 接続の要件](#requirements-for-active-directory-connections)」を参照してください。 
-
+        AD 認証で AES 暗号化を有効にする場合、または [SMB ボリュームの暗号化](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)が必要な場合は、このチェックボックスをオンにします。   
+        
+        要件については、「[Active Directory 接続の要件](#requirements-for-active-directory-connections)」を参照してください。  
+  
         ![Active Directory の AES の暗号化](../media/azure-netapp-files/active-directory-aes-encryption.png)
 
         **AES の暗号化** 機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
@@ -243,7 +249,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+        また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。  
 
     * **ユーザー名** や **パスワード** などの資格情報
 
@@ -255,6 +261,28 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
     ![作成された Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
+## <a name="map-multiple-netapp-accounts-in-the-same-subscription-and-region-to-an-ad-connection"></a><a name="shared_ad"></a>同じサブスクリプションとリージョンにある複数の NetApp アカウントを AD 接続にマップする  
+
+共有 AD 機能を使用すると、同じサブスクリプションで同じリージョンに属する NetApp アカウントのいずれかによって作成された Active Directory (AD) 接続を、すべての NetApp アカウントで共有できます。 たとえば、この機能を使用すると、サブスクリプションとリージョンが同じであるすべての NetApp アカウントに共通の AD 構成を使用して、[SMB ボリューム](azure-netapp-files-create-volumes-smb.md)、[NFSv4.1 Kerberos ボリューム](configure-kerberos-encryption.md)、または[デュアルプロトコル ボリューム](create-volumes-dual-protocol.md)を作成できます。 この機能を使用すると、同じサブスクリプションで同じリージョンであるすべての NetApp アカウントの AD 接続を確認できるようになります。   
+
+現在、この機能はプレビュー段階にあります。 初めて使用する前に、機能を登録する必要があります。 登録が完了すると、機能が有効になり、バックグラウンドで動作します。 UI コントロールは必要ありません。 
+
+1. 機能を登録します。 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSharedAD
+    ```
+
+2. 機能の登録の状態を確認します。 
+
+    > [!NOTE]
+    > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSharedAD
+    ```
+また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+ 
 ## <a name="next-steps"></a>次のステップ  
 
 * [SMB ボリュームを作成する](azure-netapp-files-create-volumes-smb.md)

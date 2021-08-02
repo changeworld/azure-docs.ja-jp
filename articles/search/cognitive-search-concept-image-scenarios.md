@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68186c5294c0a3a2f376a93ef1902307780f48bb
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419593"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538281"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
 
@@ -90,7 +90,7 @@ ImageAction は、[インデクサー定義](/rest/api/searchservice/create-inde
 
 ## <a name="image-related-skills"></a>画像関連のスキル
 
-画像を入力として取得するコグニティブ スキルは、組み込みで 2 つ用意されています。[OCR](cognitive-search-skill-ocr.md) と[画像分析](cognitive-search-skill-image-analysis.md)です。 
+画像を入力として受け入れるために、カスタム スキルまたは組み込みのスキルを使用できます。 組み込みのスキルには、[OCR](cognitive-search-skill-ocr.md) と[画像分析](cognitive-search-skill-image-analysis.md)が含まれます。 
 
 現在のところ、これらのスキルは、ドキュメント クラッキング ステップから生成された画像に対してのみ機能します。 そのため、サポートされている入力は `"/document/normalized_images"` のみです。
 
@@ -102,6 +102,21 @@ ImageAction は、[インデクサー定義](/rest/api/searchservice/create-inde
 
 [OCR スキル](cognitive-search-skill-ocr.md)では、JPG、PNG、ビットマップなどの画像ファイルからテキストを抽出できます。 テキストのほかに、レイアウト情報を抽出することもできます。 このレイアウト情報によって、特定された各文字列の境界ボックスが提供されます。
 
+### <a name="custom-skills"></a>カスタム スキル
+
+画像をカスタム スキルに渡したり、そこから返したりすることもできます。 スキルセットは、カスタム スキルに渡される画像を Base64 でエンコードします。 カスタム スキル内で画像を使用するには、カスタム スキルへの入力として `/document/normalized_images/*/data` を設定します。 カスタム スキル コード内で、文字列を画像に変換する前に Base64 でデコードします。 スキルセットに画像を返す場合は、画像をスキルセットに返す前に Base64 でエンコードします。
+
+ 画像は、次のプロパティを持つオブジェクトとして返されます。
+
+```json
+ { 
+  "$type": "file", 
+  "data": "base64String" 
+ }
+```
+
+[Azure Search Python サンプル](https://github.com/Azure-Samples/azure-search-python-samples) リポジトリには、イメージを強化するカスタム スキルの Python で実装された完全なサンプルがあります。
+
 ## <a name="embedded-image-scenario"></a>埋め込み画像のシナリオ
 
 一般的なシナリオとして挙げられるのは、すべてのファイル コンテンツ (テキストと画像由来テキストの両方) を含んだ、1 つの文字列を作成するケースです。これは次の手順で実行されます。  
@@ -112,7 +127,8 @@ ImageAction は、[インデクサー定義](/rest/api/searchservice/create-inde
 
 次に示すのは、ドキュメントのテキスト コンテンツを含んだ、*merged_text* フィールドを作成するスキルセットの例です。 これには、各埋め込み画像から OCR 処理されたテキストも含まれています。 
 
-#### <a name="request-body-syntax"></a>要求本文の構文
+### <a name="request-body-syntax"></a>要求本文の構文
+
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -213,13 +229,15 @@ OCR ステップは正規化された画像に対して実行されるため、�
             return original;
         }
 ```
+
 ## <a name="passing-images-to-custom-skills"></a>カスタム スキルに画像を渡す
 
 画像を操作するためにカスタム スキルが必要なシナリオでは、画像をカスタム スキルに渡したり、スキルからテキストまたは画像が返されるようにしたりできます。 [Python サンプル](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) image-processing で、ワークフローを示しています。 次のスキルセットはサンプルからのものです。
 
 次のスキルセットでは、(ドキュメント解析中に取得した) 正規化された画像を取得し、画像のスライスを出力します。
 
-#### <a name="sample-skillset"></a>サンプル スキルセット
+### <a name="sample-skillset"></a>サンプル スキルセット
+
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -253,7 +271,7 @@ OCR ステップは正規化された画像に対して実行されるため、�
 }
 ```
 
-#### <a name="custom-skill"></a>カスタム スキル
+### <a name="custom-skill"></a>カスタム スキル
 
 カスタム スキル自体は、スキルセットの外部にあります。 この場合、まずカスタム スキル形式で要求レコードのバッチをループ処理してから、base64 エンコード文字列を画像に変換するのは Python コードです。
 
@@ -268,6 +286,7 @@ for value in values:
   jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
   # you now have an image to work with
 ```
+
 同様に、画像を返すには、JSON オブジェクト内で `file` の `$type` プロパティを使用して base64 エンコード文字列を返します。
 
 ```python
@@ -286,6 +305,7 @@ def base64EncodeImage(image):
 ```
 
 ## <a name="see-also"></a>参照
+
 + [インデクサーの作成 (REST)](/rest/api/searchservice/create-indexer)
 + [画像分析スキル](cognitive-search-skill-image-analysis.md)
 + [OCR スキル](cognitive-search-skill-ocr.md)

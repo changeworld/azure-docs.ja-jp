@@ -1,5 +1,5 @@
 ---
-title: Azure Table Storage のコンテンツを検索する
+title: Azure Table Storage を検索する
 titleSuffix: Azure Cognitive Search
 description: Azure Table Storage に格納されているデータのインデックスを Azure Cognitive Search インデクサーで作成する方法について説明します。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3994ee7e87670adb6ffbe2aa6f7279d11afa146
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91275185"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111557056"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Cognitive Search を使用して Azure Table Storage からテーブルにインデックスを作成する方法
 

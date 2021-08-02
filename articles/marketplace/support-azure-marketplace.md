@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 04/14/2020
-ms.openlocfilehash: 02e64c6c6e5ab2ef77f02959ada6f95d1042b76d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/14/2021
+ms.openlocfilehash: 0173d6e897c122d53d8f64c1d0110ab7ddfa68ed
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94488759"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075918"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースのサポート
 
@@ -26,7 +26,8 @@ Microsoft コマーシャル マーケットプレースの発行元としての
 
 | サポート窓口 | 説明 | 可用性 |  
 |:--- |:--- |:--- |  
-| 詳細については、[Marketplace のサポート](https://aka.ms/marketplacepublishersupport) にある [インシデントの作成] ページを参照してください</li> </ul> | パートナー センターのサポート。 | 24x5 がサポートされています。 |  
+| 詳細については、[Marketplace のサポート](https://aka.ms/marketplacepublishersupport) にある [インシデントの作成] ページを参照してください</li> </ul> | パートナー センターのサポート。 | 24x5 がサポートされています。 |
+|
 
 ## <a name="technical"></a>技術  
 
@@ -39,12 +40,12 @@ Microsoft コマーシャル マーケットプレースの発行元としての
 
 | サポート窓口 | 説明 | 可用性 |  
 |:--- |:--- |:--- |
-| 電子メール： [gtm@microsoft.com](mailto:gtm@microsoft.com) | GTM の特典とプログラムに関する質問へのサポート。 | 営業時間は、太平洋標準時ゾーンで示されています。 |  
-| 電子メール： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure ロゴの使用とブランド化に関する質問にお答えします。 |  |  
+| 電子メール： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure ロゴの使用とブランド化に関する質問にお答えします。 |  |
+|
+
+Marketplace Rewards に関する質問は、[パートナー センターのサポート](https://partner.microsoft.com/support/v2/?stage=1)にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [コマーシャル マーケットプレース公開ガイドのページ](index.yml)を参照してください。
-* 詳細については、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](support.md)」を参照してください。
-
----
+- [コマーシャル マーケットプレース パブリッシャー ガイドのページ](index.yml)にアクセスする
+- [コマーシャル マーケットプレース プログラムに関するパートナー センターのサポート](support.md)について知る

@@ -5,15 +5,15 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 06/07/2021
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
-ms.openlocfilehash: c6856a0cb70123f1a3570b611c81660a592fdc1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8dd8e1da81d6c906e29caf155edc8c2b9e44ea9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98027775"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755539"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
 [!INCLUDE[appliesto-all-apis-except-table](includes/appliesto-all-apis-except-table.md)]
@@ -78,9 +78,9 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 * 変更フィードには、コンテナー内の項目に対して行われた挿入操作と更新操作が含まれています。 削除の代わりに、ドキュメントなどの項目内で "論理的な削除" フラグを設定することで削除をキャプチャできます。 または、[TTL 機能](time-to-live.md)を使用して項目の有効期間を設定することもできます。 たとえば、24 時間に設定し、そのプロパティの値を使用して削除をキャプチャします。 この場合は、TTL の有効期限よりも短い期間に含まれる変更を処理する必要があります。
 
-* 項目に加えられた変更はそれぞれ変更フィード内に 1 回だけ出現し、クライアントがそれらのチェックポイント処理ロジックを管理しなければなりません。 チェックポイントの管理の複雑さを回避する必要がある場合は、変更フィード プロセッサによって、自動チェックポイント処理と "最低 1 回" というセマンティクスが提供されます。 [変更フィードと変更フィード プロセッサの併用](change-feed-processor.md)に関するページを参照してください。
-
 * 変更ログには、特定の項目の最新の変更のみが含まれます。 途中の変更は利用できない場合があります。
+
+* 変更ログに含まれる各変更はそれぞれ変更フィード内に 1 回だけ出現し、クライアントがそれらのチェックポイント処理ロジックを管理しなければなりません。 チェックポイントの管理の複雑さを回避する必要がある場合は、変更フィード プロセッサによって、自動チェックポイント処理と "最低 1 回" というセマンティクスが提供されます。 [変更フィードと変更フィード プロセッサの併用](change-feed-processor.md)
 
 * 変更フィードは論理パーティション キーの値ごとに変更日時順に並べ替えられます。 パーティション キーの値が異なる場合、順序は保証されません。
 

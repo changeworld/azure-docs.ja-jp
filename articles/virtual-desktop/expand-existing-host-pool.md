@@ -1,22 +1,22 @@
 ---
 title: 新しいセッション ホストで既存のホスト プールを拡張する - Azure
-description: Windows Virtual Desktop で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
+description: Azure Virtual Desktop で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9c73d7434a002a5efc7d058095eb9743a7f3ebf8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 446052190df59f6dc53ac6a39cd4bc120752fa41
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446827"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757735"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>新しいセッション ホストで既存のホスト プールを拡張する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)を参照してください。
 
 ホスト プール内の使用率を上げた場合、新しいセッション ホストで既存のホスト プールを拡張して、新しい負荷を処理する必要がある場合があります。
 
@@ -41,7 +41,7 @@ ms.locfileid: "106446827"
 
 1. Azure portal にサインインします。
 
-2. **[Windows Virtual Desktop]** を検索して選択します。
+2. **[Azure Virtual Desktop]** を検索して選択します。
 
 3. 画面の左側にあるメニューで、 **[ホスト プール]** を選択し、仮想マシンを追加するホスト プールの名前を選択します。
 
@@ -71,7 +71,7 @@ ms.locfileid: "106446827"
 
 ## <a name="next-steps"></a>次のステップ
 
-既存のホスト プールを拡張したので、Windows Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
+既存のホスト プールを拡張したので、Azure Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
 
 - [Windows デスクトップ クライアントを使用して接続する](./connect-windows-7-10.md)
 - [Web クライアントに接続する](./connect-web.md)

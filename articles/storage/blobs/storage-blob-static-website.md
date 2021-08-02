@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: bbb996362df1f99a8702de310bc11f6828cc303a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10caff631d59085aa2bbfcd573c3e3114b0306f7
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008452"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560872"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -108,6 +108,9 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 
 複数の地域で Web サイトをホストすることを計画している場合は、リージョンのキャッシュに [Content Delivery Network](../../cdn/index.yml) を使用することをお勧めします。 各リージョンで異なるコンテンツを提供する場合は、[Azure Front Door](../../frontdoor/index.yml) を使用します。 これにより、フェールオーバー機能も提供されます。 カスタム ドメインを使用する予定の場合、[Azure Traffic Manager](../../traffic-manager/index.yml) はお勧めしません。 Azure Storage でのカスタム ドメイン名の確認方法が原因で問題が発生する可能性があります。
 
+## <a name="permissions"></a>アクセス許可
+
+静的 Web サイトを有効にできるようになるためのアクセス許可は、Microsoft.Storage/storageAccounts/blobServices/write または共有キーです。  このアクセスを提供する組み込みのロールに、ストレージ アカウント共同作成者が含まれます。  
 
 ## <a name="pricing"></a>価格
 

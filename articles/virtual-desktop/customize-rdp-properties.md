@@ -1,24 +1,25 @@
 ---
 title: PowerShell を使用した RDP プロパティのカスタマイズ - Azure
-description: PowerShell コマンドレットを使用して Windows Virtual Desktop 用の RDP プロパティをカスタマイズする方法。
+description: PowerShell コマンドレットを使用して Azure Virtual Desktop 用の RDP プロパティをカスタマイズする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 06409903e77923176ac5fab4dd27bf918ea0d9d9
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 545d748d521d623bdbaa21ccafd8c52c6508bf03
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331804"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750265"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル (RDP) プロパティをカスタマイズする
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)を参照してください。
 
-マルチ モニター エクスペリエンスやオーディオ リダイレクトなど、ホスト プールのリモート デスクトップ プロトコル (RDP) のプロパティをカスタマイズすると、ニーズに基づいてユーザーに最適なエクスペリエンスを提供できます。 Azure portal を使用するか、**Update-AzWvdHostPool** コマンドレットで *-CustomRdpProperty* パラメーターを使用して、Windows Virtual Desktop の RDP プロパティをカスタマイズできます。
+マルチ モニター エクスペリエンスやオーディオ リダイレクトなど、ホスト プールのリモート デスクトップ プロトコル (RDP) のプロパティをカスタマイズすると、ニーズに基づいてユーザーに最適なエクスペリエンスを提供できます。 Azure portal を使用するか、**Update-AzWvdHostPool** コマンドレットで *-CustomRdpProperty* パラメーターを使用して、Azure Virtual Desktop の RDP プロパティをカスタマイズできます。
 
 サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)」を参照してください。
 
@@ -39,16 +40,16 @@ RDP ファイルには、既定で次のプロパティがあります。
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、[Windows Virtual Desktop PowerShell モジュールの設定](powershell-module.md)に関するページの手順に従って、PowerShell モジュールを設定し、Azure にサインインしてください。
+作業を開始する前に、[Azure Virtual Desktop PowerShell モジュールの設定](powershell-module.md)に関するページの手順に従って、PowerShell モジュールを設定し、Azure にサインインしてください。
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>Azure portal で RDP プロパティを構成する
 
 Azure portal で RDP プロパティを構成するには
 
 1. <https://portal.azure.com> で Azure にサインインします。
-2. 検索バーに「**windows virtual desktop**」と入力します。
-3. サービスの下で **[Windows Virtual Desktop]** を選択します。
-4. [Windows Virtual Desktop] ページで、画面の左側にあるメニューの **[ホスト プール]** を選択します。
+2. 検索バーに「**Azure Virtual Desktop**」と入力します。
+3. [サービス] の下にある **[Azure Virtual Desktop]** を選択します。
+4. [Azure Virtual Desktop] ページで、画面の左側にあるメニューの **[ホスト プール]** を選択します。
 5. 更新する **ホスト プールの名前** を選択します。
 6. 画面の左側にあるメニューで **[RDP プロパティ]** を選択します。
 7. 必要なプロパティを設定します。
@@ -129,7 +130,7 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 ## <a name="next-steps"></a>次のステップ
 
-特定のホスト プールの RDP プロパティをカスタマイズしたので、Windows Virtual Desktop クライアントにサインインして、それらをユーザー セッションの一部としてテストできます。 次の攻略ガイドでは、選択したクライアントを使用してセッションに接続する方法を説明します。
+特定のホスト プールの RDP プロパティをカスタマイズしたので、Azure Virtual Desktop クライアントにサインインして、それらをユーザー セッションの一部としてテストできます。 次の攻略ガイドでは、選択したクライアントを使用してセッションに接続する方法を説明します。
 
 - [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10.md)
 - [Web クライアントに接続する](connect-web.md)

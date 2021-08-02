@@ -3,20 +3,20 @@ title: Azure の SQL データ同期とは
 description: この概要では、クラウドおよびオンプレミスの複数のデータベース間でデータを同期できる、Azure の SQL データ同期について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: data sync, sqldbrb=1, fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 08/20/2019
-ms.openlocfilehash: 7746e05583057b3ed313a55699cae711c560f061
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: c3a2be7a00c6718dd33b573faec4a619cbf5a1bb
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803946"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074847"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -153,6 +153,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - 異なるサブスクリプション間でのサーバーの移動はサポートされていません。 
 - 2 つの主キーでケースだけが違っている (例: Foo と foo) 場合、データ同期ではこのシナリオがサポートされません。
 - テーブルの切り捨ては、データ同期でサポートされている操作ではありません (変更は追跡されません)。
+- ハイパースケール データベースはサポートされていません。 
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 

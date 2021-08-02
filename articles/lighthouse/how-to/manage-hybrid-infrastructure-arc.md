@@ -1,14 +1,14 @@
 ---
 title: Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
-description: Azure の外部で顧客のマシンと Kubernetes クラスターを効果的に管理する方法について説明します。
+description: Azure Lighthouse は、Azure の外にある顧客のマシンと Kubernetes クラスターを効果的に管理するのに役立ちます。
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: da7f016b507f8f876d27f6924f87f078a7806563
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: edb9553288ff909e5a5f51bf1440c29914672cb9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563601"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082084"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
 

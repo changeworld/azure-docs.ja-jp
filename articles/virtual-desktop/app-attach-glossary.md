@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop の MSIX アプリのアタッチの用語集 - Azure
+title: Azure Virtual Desktop の MSIX アプリのアタッチの用語集 - Azure
 description: MSIX アプリのアタッチの用語と概念の用語集。
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cd038a0632823e4833e75596378f9b25c386d9d0
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 66f3cc71c27ff80991f3cded1957f90e622f447f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330532"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745675"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 
@@ -65,15 +65,15 @@ MSIX パッケージを展開するには、次のようにします。
 
 MSIX パッケージをアップロードには、拡張された MSIX パッケージを含む VHD(x) または [CIM](#cim) を MSIX 共有にアップロードすることが含まれます。
 
-Windows Virtual Desktop では、アップロードは MSIX 共有ごとに 1 回行われます。 パッケージをアップロードすると、同じサブスクリプション内のすべてのホスト プールから参照できるようになります。
+Azure Virtual Desktop では、アップロードは MSIX 共有ごとに 1 回行われます。 パッケージをアップロードすると、同じサブスクリプション内のすべてのホスト プールから参照できるようになります。
 
 ## <a name="add-an-msix-package"></a>MSIX パッケージを追加する
 
-Windows Virtual Desktop で、MSIX パッケージは、追加されるとホスト プールにリンクされます。
+Azure Virtual Desktop で、MSIX パッケージは、追加されるとホスト プールにリンクされます。
 
 ## <a name="publish-an-msix-package"></a>MSIX パッケージを公開する 
 
-Windows Virtual Desktop では、公開された MSIX パッケージは、Active Directory Domain Services (AD DS) または Azure Active Directory (Azure AD) のユーザーまたはユーザー グループに割り当てられる必要があります。
+Azure Virtual Desktop では、公開された MSIX パッケージは、Active Directory Domain Services (AD DS) または Azure Active Directory (Azure AD) のユーザーまたはユーザー グループに割り当てられる必要があります。
 
 ## <a name="staging"></a>ステージング
 
@@ -90,11 +90,11 @@ Windows Virtual Desktop では、公開された MSIX パッケージは、Activ
 
 ### <a name="regular-registration"></a>通常登録
 
-通常登録では、ユーザーに割り当てられた各アプリケーションは完全に登録されます。 登録は、ユーザーがセッションにサインインするときに行われます。これは、Windows Virtual Desktop の使用を開始するのにかかる時間に影響を与える可能性があります。
+通常登録では、ユーザーに割り当てられた各アプリケーションは完全に登録されます。 登録は、ユーザーがセッションにサインインするときに行われます。これは、Azure Virtual Desktop の使用を開始するのにかかる時間に影響を与える可能性があります。
 
 ### <a name="delayed-registration"></a>遅延登録
 
-遅延登録では、ユーザーに割り当てられた各アプリケーションは部分的にのみ登録されます。 部分的な登録とは、[スタート] メニューのタイルとファイルのダブルクリックの関連付けが登録されることを意味します。 登録は、ユーザーがセッションにサインインする間に行われます。そのため、Windows Virtual Desktop の使用を開始するのにかかる時間への影響は最小限に抑えられます。 登録が完了するのは、ユーザーが MSIX パッケージ内のアプリケーションを実行した場合のみです。
+遅延登録では、ユーザーに割り当てられた各アプリケーションは部分的にのみ登録されます。 部分的な登録とは、[スタート] メニューのタイルとファイルのダブルクリックの関連付けが登録されることを意味します。 登録は、ユーザーがセッションにサインインする間に行われます。そのため、Azure Virtual Desktop の使用を開始するのにかかる時間への影響は最小限に抑えられます。 登録が完了するのは、ユーザーが MSIX パッケージ内のアプリケーションを実行した場合のみです。
 
 遅延登録は現在、MSIX アプリのアタッチの既定の構成です。
 

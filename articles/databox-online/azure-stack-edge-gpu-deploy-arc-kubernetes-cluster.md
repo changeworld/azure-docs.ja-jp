@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 06/11/2021
 ms.author: alkohli
-ms.openlocfilehash: c845f5d5daf79a51b7d3f3305a4f005cabe6886d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9eef9a99dbf27100fdb6e1fd731ace380f7ba4fb
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373001"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072849"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
 
@@ -142,16 +142,18 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
+    Azure パブリック以外のクラウドを使用している場合は、`CloudEnvironment` パラメーターを追加します。 このパラメーターは、`AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、`AZUREGERMANCLOUD`、および `AZUREUSGOVERNMENTCLOUD` に設定できます。
 
     > [!NOTE]
     > - お使いのデバイスに Azure Arc を展開するには、[Azure Arc でサポートされているリージョン](../azure-arc/kubernetes/overview.md#supported-regions)を使用していることを確認してください。 
     > - `az account list-locations` コマンドを使用して、`Set-HcsKubernetesAzureArcAgent` コマンドレットで渡す正確な場所の名前を確認します。 場所の名前は通常、スペースなしの形式が使用されます。
+    > - `ClientId` と `ClientSecret` は必須パラメーターです。 `ClientSecret` は、セキュリティで保護された文字列です。
     
     たとえば次のようになります。
    
     ```powershell
     [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b&quot; -ClientSecret &quot;<password>"
-        [10.128.44.240]: PS>
+    [10.128.44.240]: PS>
     ```
     
     Azure portal で、前のコマンドで指定した名前でリソースを作成する必要があります。

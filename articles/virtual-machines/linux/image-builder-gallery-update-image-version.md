@@ -1,5 +1,5 @@
 ---
-title: Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する (プレビュー)
+title: Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 description: Linux で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
@@ -9,14 +9,14 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: 0887051ffa396f1eac8bc00dc2437b8e92bec45a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9508da2002035ee413d557c0cd48474b6e10e0d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695636"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071247"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>プレビュー:Linux で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
+# <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>Linux で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 
 この記事では、[共有イメージ ギャラリー](../shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
 
@@ -24,17 +24,7 @@ ms.locfileid: "101695636"
 
 
 ## <a name="register-the-features"></a>機能の登録
-プレビュー中に Azure Image Builder を使用するには、新しい機能を登録する必要があります。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-機能の登録の状態を確認します。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
-```
+Azure Image Builder を使用するには、機能を登録する必要があります。
 
 登録を確認します。
 

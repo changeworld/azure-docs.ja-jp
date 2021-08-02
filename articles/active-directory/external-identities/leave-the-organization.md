@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc07e038ef382a44c4672b2d63c49d8f5a961cda
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 239778455f049822bd92a92c811fcacad270ae3e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486327"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076512"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>ゲスト ユーザーとして組織を脱退する
 
@@ -29,19 +29,17 @@ ms.locfileid: "109486327"
 
 組織を脱退するには、以下の手順を実行します。
 
-1. 次のいずれかの手順を実行して、[アクセス パネル プロファイル] ページに移動します。
-   
-   - [Azure portal](https://portal.azure.com) で右上の自分の名前をクリックし、**[View account]\(アカウントの表示\)** を選択します。
-   - [アクセス パネル](https://myapps.microsoft.com)を開き、右上の自分の名前をクリックし、 **[組織]** の横で **[アカウントの表示]** を選択します。
- 
- 
-2. **[組織の管理]** を選択します。
-  ![アクセス パネルのユーザー設定のスクリーンショット](media/leave-the-organization/manage-organizations.png) 
-  
-3. **Organizations** のところで脱退する組織を確認し、**Leave organization** を選択します。
+1. 次のいずれかを実行して、 **[マイ アカウント]** ページに移動します。
+- 職場または学校アカウントを使用している場合は、 https://myaccount.microsoft.com にアクセスしてサインインします。
+- 個人アカウントを使用している場合は、 https://myapps.microsoft.com にアクセスしてサインインし、右上にあるアカウント アイコンをクリックして、 **[アカウントの表示]** を選択します。
+   > [!NOTE]
+   > 個人アカウントを使用している場合は、別の方法として、テナント名またはテナント ID を URL に追加して (例: `https://myaccount.microsoft.com?tenantId=wingtiptoys.onmicrosoft.com`、`https://myaccount.microsoft.com?tenantId=ab123456-cd12-ef12-gh12-ijk123456789` など)、[マイ アカウント] ページに直接アクセスすることもできます。
+
+2. **Organizations** のところで脱退する組織を確認し、**Leave organization** を選択します。
 
    ![ユーザー インタフェースにある組織を脱退するオプションのスクリーンショット](media/leave-the-organization/leave-org.png)
-4. 確認を求められたら、**Leave** を選択します。
+3. 確認を求められたら、**Leave** を選択します。
+
 > [!NOTE]
    > ホーム組織から脱退することはできません。
 

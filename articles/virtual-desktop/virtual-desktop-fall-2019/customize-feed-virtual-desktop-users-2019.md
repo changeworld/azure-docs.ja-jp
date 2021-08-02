@@ -1,26 +1,26 @@
 ---
-title: Windows Virtual Desktop (クラシック) ユーザー用のフィードをカスタマイズする - Azure
-description: PowerShell コマンドレットを使用して Windows Virtual Desktop (クラシック) ユーザー用のフィードをカスタマイズする方法。
+title: Azure Virtual Desktop (クラシック) ユーザーのフィードをカスタマイズする - Azure
+description: PowerShell コマンドレットを使用して、Azure Virtual Desktop (クラシック) ユーザーのフィードをカスタマイズする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5653ba4b1bcaab9e7b82dae3fe0842cbc7fb86b9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 7a28185d16f0bc7787eccc76a9f4a0a98d5c6a38
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445110"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754153"
 ---
-# <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>Windows Virtual Desktop (クラシック) ユーザー用のフィードをカスタマイズする
+# <a name="customize-feed-for-azure-virtual-desktop-classic-users"></a>Azure Virtual Desktop (クラシック) ユーザーのフィードをカスタマイズする
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../customize-feed-for-virtual-desktop-users.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../customize-feed-for-virtual-desktop-users.md)を参照してください。
 
 フィードは、RemoteApp とリモート デスクトップのリソースがユーザーの認識可能な方法で表示されるようにカスタマイズすることができます。
 
-まず、まだ行っていない場合は、PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
+まず、PowerShell セッション内で使用する [Azure Virtual Desktop PowerShell モジュールをダウンロードしてインポート](/powershell/windows-virtual-desktop/overview/)します (まだ行っていない場合)。 その後、次のコマンドレットを実行して、ご自分のアカウントにサインインします。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -72,7 +72,7 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 
 ## <a name="next-steps"></a>次のステップ
 
-これでフィードをユーザーに合わせてカスタマイズしたので、Windows Virtual Desktop クライアントにサインインして、それを試すことができます。これを行うには、Windows Virtual Desktop への接続方法に関するページに進みます。
+ユーザーに合わせてフィードをカスタマイズしたので、Azure Virtual Desktop クライアントにサインインしてそれを試すことができます。これを行うには、Azure Virtual Desktop への接続方法に関する記事に進みます。
 
  * [Windows 10 または Windows 7 から接続する](connect-windows-7-10-2019.md)
  * [Web ブラウザーから接続する](connect-web-2019.md)

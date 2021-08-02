@@ -2,21 +2,21 @@
 title: アプリを Azure Active Directory に移行するためのリソース | Microsoft Docs
 description: アプリケーションのアクセスと認証を Azure Active Directory (Azure AD) に移行するために役立つリソース。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 02/29/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: baselden
-ms.openlocfilehash: 2d01c174bbfa522700773b87737b1e3da2de422e
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 1f167abc4fca3bd8d96a9fbc7a932ea296da96d0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376649"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076944"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>アプリケーションを Azure Active Directory に移行するためのリソース
 
@@ -33,3 +33,4 @@ ms.locfileid: "107376649"
 | [Deployment plan: Enabling Single Sign-on to a SaaS app with Azure AD](https://aka.ms/SSODPDownload) (デプロイ計画: Azure AD による SaaS アプリに対するシングル サインオンの有効化) | シングル サインオン (SSO) は、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリとリソースにアクセスできる機能です。 たとえば、サインインした後、ユーザーは、2 回目の認証 (パスワードの入力など) なしで Microsoft Office から SalesForce や Box に移動できます。 
 | [Deployment plan: Extending apps to Azure AD with Application Proxy](https://aka.ms/AppProxyDPDownload) (デプロイ計画: アプリケーション プロキシによる Azure AD へのアプリの拡張)| 従業員のノート PC やその他のデバイスからオンプレミスのアプリケーションにアクセスするには、従来は仮想プライベート ネットワーク (VPN) または非武装地帯 (DMZ) が必要でした。 これらのソリューションは、複雑でセキュリティ保護が困難であるだけでなく、設定と管理にコストがかかります。 Azure AD アプリケーション プロキシは、オンプレミス アプリケーションに簡単にアクセスできるようにします。 |
 | [デプロイ計画](../fundamentals/active-directory-deployment-plans.md) | 多要素認証、条件付きアクセス、ユーザーのプロビジョニング、シームレス SSO、セルフサービス パスワード リセットなどの機能をデプロイするためのデプロイ計画を見つけてください。 |
+| [Symantec SiteMinder から Azure AD へのアプリの移行](https://azure.microsoft.com/mediahandler/files/resourcefiles/migrating-applications-from-symantec-siteminder-to-azure-active-directory/Migrating-applications-from-Symantec-SiteMinder-to-Azure-Active-Directory.pdf) | Symantec SiteMinder から Azure AD へのアプリケーションの移行の手順を説明する例と共に、アプリケーションの移行および統合オプションに関するステップ バイ ステップ ガイダンスを提供します。 |

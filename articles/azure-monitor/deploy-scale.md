@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: cc55cd17a547b9c63f2c26479d5797fae016d8d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 422ba2ecaed8803a49c0a82b85d821d3f55c9bbd
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044070"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071998"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Policy を使用して大規模に Azure Monitor をデプロイする
 Azure Monitor の一部の機能は構成を 1 回または限られた回数行うだけで済みますが、それ以外の機能については監視するリソースごとに繰り返す必要があります。 この記事では、Azure Policy を使用して Azure Monitor を大規模に実装し、監視がすべての Azure リソースに対して確実に一貫して正確に構成されるようにする方法について説明します。
@@ -41,6 +41,29 @@ Azure Policy には、Azure Monitor に関連するいくつかの定義があ�
 3. **[種類]** で *[組み込み]* を選択し、 **[カテゴリ]** で *[監視]* を選択します。
 
   ![監視カテゴリおよび組み込みの種類のポリシー定義の一覧を示す Azure portal 内の [Azure Policy Definitions]\(Azure Policy 定義\) ページのスクリーンショット。](media/deploy-scale/builtin-policies.png)
+
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor エージェント (プレビュー)
+[Azure Monitor エージェント](agents/azure-monitor-agent-overview.md) は、Azure 仮想マシンのゲスト オペレーティング システムから監視データを収集し、Azure Monitor に送ります。 [データ収集ルール](agents/data-collection-rule-overview.md) を使用することで、各エージェントからどのデータを収集するかを構成し、大規模な収集を管理できます。また、全体のマシンのうち一部だけに対し、スコープ別に独自の構成を行うこともできます。  
+下のポリシーとポリシー イニシアチブにより、仮想マシンを作成するたびに自動的にエージェントをインストールし、それをデータ収集ルールに関連付けることができます。
+
+### <a name="built-in-policy-initiatives"></a>組み込みのポリシー イニシアチブ
+エージェントのインストールに必要なものを[こちら](agents/azure-monitor-agent-install.md#prerequisites)で確認します。 
+
+ポリシー イニシアチブには Windows および Linux 仮想マシン用があり、それぞれ、次のことを実行する個別のポリシーによって構成されます。
+- Azure Monitor エージェント拡張機能を仮想マシンにインストールする
+- 仮想マシンとデータ収集ルールの関連付けを作成し、デプロイする
+
+  ![[Azure ポリシー定義] ページの一部のスクリーンショット。Azure Monitor エージェントを構成するための 2 つの組み込みポリシー イニシアチブが表示されている。](media/deploy-scale/built-in-ama-dcr-initiatives.png)  
+
+### <a name="built-in-policy"></a>組み込みポリシー  
+必要に応じ、各ポリシー イニシアチブから個別のポリシーを選んで使用することもできます。 例えば、エージェントを自動でインストールするだけであれば、次のイニシアチブの最初のポリシーだけを使用すればいいでしょう。  
+
+  ![[Azure ポリシー定義] ページの一部のスクリーンショット。Azure Monitor エージェントを構成するためのイニシアチブに含まれるポリシーが表示されている。](media/deploy-scale/built-in-ama-dcr-policy.png)  
+
+### <a name="remediation"></a>Remediation
+イニシアチブとポリシーは、作成時に、各仮想マシンに適用されます。 [修復タスク](../governance/policy/how-to/remediate-resources.md)では、イニシアチブのポリシー定義を **既存のリソースに** デプロイすることで、作成済みのリソースに対して Azure Monitor エージェントを構成できます。 Azure portal を使用して割り当てを作成するときに、修復タスクを同時に作成することができます。 修復の詳細については、「[Azure Policy を使って準拠していないリソースを修復する](../governance/policy/how-to/remediate-resources.md)」を参照してください。
+
+![AMA のイニシアチブ修復](media/deploy-scale/built-in-ama-dcr-remediation.png)
 
 
 ## <a name="diagnostic-settings"></a>診断設定

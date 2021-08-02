@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 5ef5f465cbb8dfd044482bfad1eb72f1aa78df39
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 869693765463589c3e94aef9a1cee17867117c5d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783731"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072679"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>自動化ルールで Azure Sentinel でのインシデント処理を自動化する
 
@@ -34,7 +34,7 @@ ms.locfileid: "109783731"
 
 オートメーション ルールとは、Azure Sentinel における新しい概念です。 この機能により、ユーザーはインシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 自動化ルールにより、Azure Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。
 
-## <a name="components"></a>コンポーネント
+## <a name="components"></a>Components
 
 自動化ルールは、次のいくつかのコンポーネントで構成されています。
 
@@ -42,7 +42,7 @@ ms.locfileid: "109783731"
 
 自動化ルールは、インシデントの作成によってトリガーされます。 
 
-確認する – [Azure Sentinel で組み込みの分析ルールを使用して脅威を検出する](tutorial-detect-threats-built-in.md)のチュートリアルで説明されているように、インシデントは、4 種類の分析ルールによってアラートから作成されます。
+確認する – [Azure Sentinel で組み込みの分析ルールを使用して脅威を検出する](tutorial-detect-threats-built-in.md)のチュートリアルで説明されているように、インシデントは、複数の種類の分析ルールによってアラートから作成されます。
 
 ### <a name="conditions"></a>条件
 
@@ -62,7 +62,7 @@ ms.locfileid: "109783731"
 
 - インシデントにタグを追加する – これは、インシデントをサブジェクト、攻撃者、またはその他の共通点別に分類する場合に便利です。
 
-また、外部システムを含むものも含めて、より複雑な対応アクションを実行するために、[プレイブック](tutorial-respond-threats-playbook.md)を実行するアクションを定義できます。 自動化ルールで使用できるのは、[インシデント トリガー](automate-responses-with-playbooks.md#azure-logic-apps-basic-concepts)によってアクティブ化されたプレイブックのみです。 複数のプレイブック、プレイブックとその他のアクションの組み合わせ、および実行順序を含めるようなアクションを定義することができます。
+また、外部システムを含むものも含めて、より複雑な対応アクションを実行するために、プ [**レイブックを実行する**](tutorial-respond-threats-playbook.md)アクションを定義できます。 自動化ルールで使用できるのは、[**インシデント トリガー**](automate-responses-with-playbooks.md#azure-logic-apps-basic-concepts)によってアクティブ化されたプレイブック **のみ** です。 複数のプレイブック、プレイブックとその他のアクションの組み合わせ、および実行順序を含めるようなアクションを定義することができます。
 
 ### <a name="expiration-date"></a>有効期限
 
@@ -132,12 +132,27 @@ Azure Sentinel 自動化ルールでプレイブックを実行すると、こ�
 
 自動化ルールを構成し、 **[プレイブックの実行]** アクションを追加すると、プレイブックのドロップダウン リストが表示されます。 Azure Sentinel がアクセス許可を持たないプレイブックは、使用不可として (「淡色表示」で) 表示されます。 **[プレイブックのアクセス許可の管理]** リンクを選択すると、Azure Sentinel のアクセス許可を、プレイブックのリソース グループにすぐに付与できます。
 
-> [!NOTE]
-> **マルチテナント アーキテクチャにおけるアクセス許可**
->
-> 自動化ルールでは、クロスワークスペースおよびマルチテナント デプロイが完全にサポートされています (マルチテナントの場合は、[Azure Lighthouse](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse)を使用します)。
->
-> そのため、Azure Sentinel デプロイでマルチテナント アーキテクチャを使用している場合 (たとえば、MSSP の場合)、1 つのテナントに自動化ルールを実行して、別のテナントに存在するプレイブックを実行できます。ただし、プレイブックを実行するための Sentinel は、自動化ルールが定義されているテナントではなく、プレイブックが存在するテナントで定義される必要があります。
+#### <a name="permissions-in-a-multi-tenant-architecture"></a>マルチテナント アーキテクチャにおけるアクセス許可
+
+自動化ルールでは、クロスワークスペースおよび[マルチテナント デプロイ](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse)が完全にサポートされています (マルチテナントの場合は、[Azure Lighthouse](../lighthouse/index.yml) を使用します)。
+
+そのため、Azure Sentinel デプロイでマルチテナント アーキテクチャを使用している場合、1 つのテナントに自動化ルールを実行して、別のテナントに存在するプレイブックを実行できます。ただし、プレイブックを実行するための Sentinel は、自動化ルールが定義されているテナントではなく、プレイブックが存在するテナントで定義される必要があります。
+
+顧客テナント内でサービス プロバイダー テナントによって Azure Sentinel ワークスペースが管理される、マネージド セキュリティ サービス プロバイダー (MSSP) の特殊なケースでは、注意が必要なシナリオが 2 つあります。
+
+- **顧客テナント内に作成された自動化ルールが、サービス プロバイダー テナント内に配置されているプレイブックを実行するように構成されている。** 
+
+    このアプローチは、通常、プレイブック内の知的所有権を保護するために使用されます。 このシナリオは、特に何もしなくても機能します。 自動化ルール内でプレイブック アクションを定義しているとき、( **[プレイブックのアクセス許可の管理]** ウィンドウを使用して) プレイブックが配置されている関連リソース グループに対して Azure Sentinel アクセス許可を付与する段階になると、サービス プロバイダー テナントに属するリソース グループが表示されるので、ここから選択できます。 [プロセス全体については、こちらをご覧ください](tutorial-respond-threats-playbook.md#respond-to-incidents)。
+
+- **(サービス プロバイダー テナントへのサインイン中に) 顧客ワークスペース内に作成された自動化ルールが、顧客テナント内に配置されているプレイブックを実行するように構成されている**。
+
+    この構成は、知的所有権を保護する必要がない場合に使用されます。 このシナリオを機能させるには、プレイブックを実行するためのアクセス許可が、**両方のテナント** 内の Azure Sentinel に付与されている必要があります。 顧客テナント内では、上記のシナリオと同様、_ *[プレイブックのアクセス許可の管理]* * ウィンドウ内でそれらを付与します。 サービス プロバイダー テナント内で関連するアクセス許可を付与するには、プレイブックが存在するリソース グループに対して、**Azure Sentinel Automation 共同作成者** ロールを使用して、**Azure Security Insights** アプリへのアクセス権を付与する追加の Azure Lighthouse 委任を追加する必要があります。
+
+    シナリオは次のようになります。
+
+    :::image type="content" source="./media/automate-incident-handling-with-automation-rules/automation-rule-multi-tenant.png" alt-text="マルチテナント自動化ルールのアーキテクチャ":::
+
+    この設定方法については、[こちらの手順](tutorial-respond-threats-playbook.md#permissions-to-run-playbooks)を参照してください。
 
 ## <a name="creating-and-managing-automation-rules"></a>自動化ルールの作成と管理
 

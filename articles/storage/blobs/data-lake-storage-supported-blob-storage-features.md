@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 06/09/2021
 ms.author: normesta
-ms.openlocfilehash: 5c9eb1aa2e88019609f5ab26c2e995e4e43063ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 25fe02ea4103dec2539e429fd2c9aac4274cdd45
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640820"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074793"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能
 
@@ -40,7 +40,7 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |ライフサイクル管理ポリシー (BLOB の削除)|一般公開|一般公開|[Azure Blob Storage のライフサイクルの管理](storage-lifecycle-management-concepts.md)|
 |Azure Monitor へのログイン|プレビュー |プレビュー|[Azure Storage の監視](./monitor-blob-storage.md)|
 |スナップショット|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[BLOB のスナップショット](snapshots-overview.md)|
-|静的な Web サイト|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Azure Storage での静的な Web サイトのホスティング](storage-blob-static-website.md)|
+|静的な Web サイト|プレビュー<div role="complementary" aria-labelledby="preview-form"></div>|プレビュー<div role="complementary" aria-labelledby="preview-form"></div>|[Azure Storage での静的な Web サイトのホスティング](storage-blob-static-website.md)|
 |不変ストレージ|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)|
 |コンテナーの論理的な削除|プレビュー|プレビュー|[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)|
 |Azure Storage インベントリ|プレビュー|プレビュー|[Azure Storage インベントリを使用して BLOB データを管理する (プレビュー)](blob-inventory.md)|
@@ -54,6 +54,8 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |Change Feed|まだサポートされていません|まだサポートされていません|[Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)|
 |オブジェクト レプリケーション|まだサポートされていません|まだサポートされていません|[ブロック BLOB のオブジェクト レプリケーションを構成する](object-replication-configure.md)|
 |BLOB バージョン管理|まだサポートされていません|まだサポートされていません|[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)|
+|ポイントインタイム リストア|まだサポートされていません|まだサポートされていません|[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)|
+|BLOB インデックス タグ|まだサポートされていません|まだサポートされていません|[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する](storage-manage-find-blobs.md)|
 
 <div id="preview-form"><sup>1</sup>Data Lake Storage Gen2 でスナップショット、不変ストレージ、または静的 Web サイトを使用するには、この<a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>フォーム</a>に記入して、プレビューに登録する必要があります。  </div>
 <div id="preview-form-2"><sup>2</sup>カスタム ドメイン名は、BLOB サービスまたは静的な Web サイトのエンドポイントにのみマップできます。 Data Lake ストレージ エンドポイントはサポートされていません</a>。  </div>

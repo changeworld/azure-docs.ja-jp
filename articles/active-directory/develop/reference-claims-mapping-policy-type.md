@@ -10,21 +10,21 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/16/2021
+ms.date: 06/03/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 56e855bafa70360711f3e30a7c4527091af7b34c
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 66af0fa248f3ead5755ed3fb27cd3bfd6bb19452
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107601225"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060896"
 ---
 # <a name="claims-mapping-policy-type"></a>要求のマッピング ポリシーの種類
 
 Azure AD では、**ポリシー** オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
-要求のマッピング ポリシーは、**ポリシー** オブジェクトの一種であり、これで、特定のアプリケーションに対して発行された[トークンに出力される要求を変更](active-directory-claims-mapping.md)します。
+要求のマッピング ポリシーは、**ポリシー** オブジェクトの一種であり、これで、特定のアプリケーションに対して発行された [トークンに出力される要求を変更](active-directory-claims-mapping.md)します。
 
 ## <a name="claim-sets"></a>要求セット
 
@@ -33,7 +33,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | 要求セット | 説明 |
 |---|---|
 | コア要求セット | ポリシーに関係なく、すべてのトークンに提示されます。 また、この要求は制限付きと見なされ、変更できません。 |
-| 基本要求セット | コア要求セットの他にトークンに対して既定で出力される要求が含まれます。 要求のマッピング ポリシーを使用して基本要求を省略したり変更したりできます。 |
+| 基本要求セット | コア要求セットの他にトークンに対して既定で出力される要求が含まれます。 要求のマッピング ポリシーを使用して、[基本要求を省略したり変更したりする](active-directory-claims-mapping.md#omit-the-basic-claims-from-tokens)ことができます。 |
 | 制限付き要求セット | ポリシーを使用して変更することはできません。 データ ソースを変更できず、要求を生成するときに変換が適用されません。 |
 
 ### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>表 1:JSON Web トークン (JWT) 制限付き要求セット
@@ -412,6 +412,6 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 ## <a name="next-steps"></a>次の手順
 
-- PowerShell を使用して、テナント内の特定のアプリケーションのトークンに出力される要求をカスタマイズする方法については、「[方法: テナント内の特定のアプリのトークンに出力される要求をカスタマイズする (プレビュー)](active-directory-claims-mapping.md)」を参照してください。
+- PowerShell を使用して、テナント内の特定のアプリケーションのトークンに出力される要求をカスタマイズする方法については、「[方法: テナント内の特定のアプリのトークンに出力される要求をカスタマイズする](active-directory-claims-mapping.md)」を参照してください
 - SAML トークンで発行された要求を Azure portal でカスタマイズする方法については、「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)」を参照してください。
 - 拡張属性の詳細については、[要求でのディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。

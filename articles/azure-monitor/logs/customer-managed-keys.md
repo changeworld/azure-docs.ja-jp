@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 04/21/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: dff35243db327d2b224855e1f65e8e98296d8c8e
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: fc66f79e09021a10c2dde3cc973cd608baeedc32
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752267"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061616"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -79,7 +79,7 @@ Azure Monitor は、マネージド ID を使用して Azure Key Vault にアク
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -176,7 +176,7 @@ Key Vault でアクセス ポリシーを作成し、クラスターにアクセ
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -261,7 +261,7 @@ Content-type: application/json
 
 > [!IMPORTANT]
 > - データへのアクセスを失効させる方法としては、キーを無効にするか、Key Vault でアクセス ポリシーを削除することをお勧めします。
-> - クラスターの `identity` `type` を "None" に設定すると、データへのアクセスが失効しますが、クラスターで `identity` を再設定するときにサポート リクエストを開かないと失効を取り消すことができないため、この方法はお勧めできません。
+> - クラスターの `identity` `type` を `None` に設定すると、データへのアクセスも失効しますが、サポートに連絡しない限り取り消すことができないため、この方法はお勧めできません。
 
 クラスター ストレージは常に 1 時間以内にキーのアクセス許可の変更に対応し、ストレージは使用できなくなります。 クラスターにリンクされているワークスペースに取り込まれた新しいデータは、すべて削除されて復旧できなくなり、データにはアクセスできず、これらのワークスペースへのクエリは失敗します。 クラスターおよびワークスペースが削除されていない限り、以前に取り込まれたデータはストレージに残ります。 アクセスできないデータは、データ保持ポリシーによって管理され、リテンション期間に達すると削除されます。 過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 これはキーの失効操作で削除され、アクセスできなくなります。
 
@@ -300,7 +300,7 @@ Bring Your Own Storage (BYOS) を使用して、それをワークスペース�
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -344,7 +344,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -427,7 +427,7 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   - クラスターを作成したときに、「<リージョン名> ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加すると、二重暗号化なしでクラスターを作成できます。
   - クラスターの作成後に、二重暗号化の設定を変更することはできません。
 
-  - クラスターにユーザー割り当てマネージド ID が設定されている場合、`UserAssignedIdentities` を `None` に設定すると、クラスターが中断され、データにアクセスできなくなりますが、サポート リクエストを開かずに、失効を元に戻して、クラスターをアクティブ化することはできません。 この制限は、システム割り当てマネージド ID には適用されません。
+  - クラスターの `identity` `type` を `None` acks に設定すると、データへのアクセスも失効しますが、サポートに連絡しない限り取り消すことができないため、この方法はお勧めできません。 データへのアクセスを失効させる方法としては、[キーの失効](#key-revocation)をお勧めします。
 
   - Key Vault がプライベート リンク (VNet) に配置されている場合は、ユーザー割り当てマネージド ID を持つカスタマー マネージド キーを使用できません。 このシナリオでは、システム割り当てマネージド ID を使用できます。
 

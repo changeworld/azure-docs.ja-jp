@@ -8,12 +8,12 @@ ms.date: 05/04/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 78dff59e1cd902b6f503d9dc75213d0bd4822baa
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 0ab6ddcf3566164746dce8e0b9ff4b4a2aa32b84
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634727"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537983"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -267,11 +267,17 @@ Windows の場合:
 
 IoT Edge セキュリティ デーモンが実行されている場合は、コンテナーのログを参照して問題を検出します。 デプロイされたコンテナーから開始して、IoT Edge ランタイムを形成しているコンテナーである edgeAgent および edgeHub を確認します。 通常、IoT Edge エージェントのログでは、各コンテナーのライフサイクルについての情報が提供されます。 IoT Edge ハブのログでは、メッセージングとルーティングについての情報が提供されます。
 
-```cmd
-iotedge logs <container name>
-```
+コンテナーのログは、いくつかの場所から取得できます。
 
-また、デバイス上のモジュールへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-module-logs)の呼び出しを使用して、そのモジュールのログを Azure Blob Storage にアップロードすることもできます。
+* IoT Edge デバイスで、次のコマンドを実行してログを表示します。
+
+  ```cmd
+  iotedge logs <container name>
+  ```
+
+* Azure portal では、組み込みのトラブルシューティング ツールを使用します。 [Azure portal から IoT Edge デバイスを監視しトラブルシューティングを行う](troubleshoot-in-portal.md)
+
+* [Uploadmodulelogs ダイレクトメソッド](how-to-retrieve-iot-edge-logs.md#upload-module-logs)を使用して、モジュールのログを Azure Blob Storage にアップロードします。
 
 ## <a name="clean-up-container-logs"></a>コンテナー ログをクリーンナップする
 
@@ -359,6 +365,8 @@ IoT Hub デバイスと IoT デバイスの間で送信されたメッセージ�
 
 ログとメッセージの情報を調べた後は、コンテナーの再起動を試みることもできます。
 
+IoT Edge デバイスで、次のコマンドを使用してモジュールを再起動します。
+
 ```cmd
 iotedge restart <container name>
 ```
@@ -368,6 +376,8 @@ IoT Edge ランタイム コンテナーを再起動する:
 ```cmd
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
+
+Azure portal からリモートでモジュールを再起動することもできます。 詳細については、[「Azure portal から IoT Edge デバイスを監視およびトラブルシューティングする」](troubleshoot-in-portal.md)を参照してください。
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>ファイアウォール規則とポート構成規則を確認する
 

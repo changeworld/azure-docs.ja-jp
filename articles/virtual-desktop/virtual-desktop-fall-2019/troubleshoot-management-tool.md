@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop (クラシック) 管理ツール - Azure
-description: Windows Virtual Desktop (クラシック) 管理ツールに関する問題のトラブルシューティング方法。
+title: Azure Virtual Desktop (クラシック) 管理ツール - Azure
+description: Azure Virtual Desktop (クラシック) 管理ツールに関する問題のトラブルシューティング方法。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 430ab72a3eb0cd41d707ff0eb5d10d8b97162d53
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f567a42d5363f24178594a5e98678e6794eb224e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444243"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753991"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Windows Virtual Desktop (クラシック) 管理ツールのトラブルシューティング
+# <a name="troubleshoot-the-azure-virtual-desktop-classic-management-tool"></a>Azure Virtual Desktop (クラシック) 管理ツールのトラブルシューティング
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。
 
-この記事では、Windows Virtual Desktop 管理ツールのデプロイ中に発生する可能性のある問題とその解決方法について説明します。
+この記事では、Azure Virtual Desktop 管理ツールのデプロイ中に発生する可能性のある問題とその解決方法について説明します。
 
 ## <a name="error-management-tool-services-configured-but-automated-setup-fails"></a>エラー:管理ツール サービスは構成されているが、自動セットアップが失敗する
 
@@ -37,7 +37,7 @@ ms.locfileid: "106444243"
 
 1. Azure Active Directory ユーザー プリンシパル名用に作成したユーザーのサブスクリプション レベルが "共同作成者" であることを確認します。
 2. UPN アカウントを使用して <portal.azure.com> にサインインし、アカウント設定を確認し、多要素認証が有効ではないことを確認します。 有効な場合は無効にします。
-3. Windows Virtual Desktop の [同意] ページにアクセスし、サーバーおよびクライアント アプリに同意済みであることを確認します。
+3. Azure Virtual Desktop の [同意] ページにアクセスし、サーバーおよびクライアント アプリに同意済みであることを確認します。
 4. 問題が引き続き発生する場合は、「[管理ツールをデプロイする](manage-resources-using-ui.md)」のチュートリアルを参照してください。
 
 ## <a name="error-job-with-specified-id-already-exists"></a>エラー:指定された ID のジョブが既に存在する
@@ -59,5 +59,5 @@ ms.locfileid: "106444243"
 ## <a name="next-steps"></a>次のステップ
 
 - エスカレーション トラックの詳細については、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview-2019.md)」を参照してください。
-- Windows Virtual Desktop ツールの問題の報告方法については、「[Remote Desktop Services 用の ARM テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」を参照してください。
+- Azure Virtual Desktop ツールの問題の報告方法については、「[Remote Desktop Services 用の ARM テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」を参照してください。
 - 管理ツールをデプロイする方法については、「[管理ツールをデプロイする](manage-resources-using-ui.md)」を参照してください。

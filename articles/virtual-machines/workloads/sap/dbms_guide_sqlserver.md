@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/08/2021
+ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b05d6c5cc520dd83318203b0bf6d0d7c0ab18382
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 92f92580fdfab00e6629ac53774f57abe59828f1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127208"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755305"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -475,7 +475,7 @@ Microsoft は Windows Server 2016 で[記憶域スペース ダイレクト](/wi
 ### <a name="sql-server-log-shipping"></a>SQL Server ログ配布
 高可用性 (HA) のメソッドの 1 つは、SQL Server ログ配布です。 HA 構成に参加している VM で名前解決を行えているのであれば、何も問題はありません。 Azure でのセットアップは、ログ配布の設定とログ配布に関する原則に関連してオンプレミスで実行されるセットアップとは異なります。 記事「[ログ配布について (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server)」で SQL Server のログ配布の詳細を確認できます。
 
-1 つの Azure リージョン内で高可用を達成する目的で、SQL Server のログ配布機能が Azure で使用されることはほとんどありませんでした。 ただし、以下のシナリオでは、SAP ユーザーは Azure と適切に連携してログ配布を使用していました。
+1 つの Azure リージョン内で高可用を達成する目的で、SQL Server のログ配布機能が Azure で使用されることはほとんどありませんでした。 ただし、以下のシナリオでは、SAP ユーザーは Azure と適切に連携するログ配布を使用していました。
 
 - ある Azure リージョンから別の Azure リージョンへのディザスター リカバリー シナリオ
 - オンプレミスから Azure リージョンへのディザスター リカバリー構成
@@ -513,12 +513,17 @@ Azure VM の SQL Server で Always On をデプロイする方法の詳細につ
 >[!NOTE]
 > 可用性グループ リスナーの仮想 IP アドレスに Azure Load Balancer を構成する場合は、DirectServerReturn が構成されていることを確認します。 このオプションを構成すると、SAP アプリケーション レイヤーと DBMS レイヤーの間のネットワーク ラウンド トリップの待機時間が短縮されます。 
 
+>[!NOTE]
+>[Azure 仮想マシン上の SQL Server Always On 可用性グループの概要](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)に関するページで、SQL Server の [Direct Network Name (DNN) リスナー](../../../azure-sql/virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md)についてご確認ください。 この新機能は、SQL Server 2019 CU8 で導入されました。 この新機能により、可用性グループ リスナーの仮想 IP アドレスを処理する、Azure ロード バランサーの使用が廃止されます。
+
+
 SQL Server Always On は、Azure for SAP ワークロードのデプロイで使用される最も一般的な高可用性とディザスター リカバリー機能です。 ほとんどのユーザーは、単一の Azure リージョン内で高可用性のために Always On を使用しています。 デプロイが 2 つのノードのみに制限されている場合、接続には 2 つの選択肢があります。
 
-- 可用性グループ リスナーを使用します。 可用性グループ リスナーを使用する場合、Azure Load Balancer をデプロイする必要があります。 この方法は、既定のデプロイ方法です。 SAP アプリケーションは、単一のノードとではなく、可用性グループ リスナーと接続するように構成されます。
-- SQL Server データベース ミラーリングの接続パラメーターを使用します。 この場合、両方のノードに名前を付ける方法で SAP アプリケーションの接続を構成する必要があります。 このような SAP 側構成の詳細については、SAP Note [#965908](https://launchpad.support.sap.com/#/notes/965908) を参照してください。 このオプションを使用する場合、可用性グループ リスナーを構成する必要はありません。 また、SQL Server の高可用性のために Azure Load Balancer を構成する必要はありません。 その結果、SQL Server インスタンスへの着信トラフィックは Azure Load Balancer 経由でルーティングされないので、SAP アプリケーション レイヤーと DBMS レイヤーの間のネットワーク待機時間は短くなります。 ただし、このオプションは、可用性グループを 2 つのインスタンスにまたがるように制限する場合にのみ機能する点に注意してください。 
+- 可用性グループ リスナーを使用します。 可用性グループ リスナーを使用する場合、Azure Load Balancer をデプロイする必要があります。 
+- 代わりに、[Direct Network Name (DNN) リスナー](../../../azure-sql/virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md)を使用できる SQL Server 2019 CU8 以降のリリースを使用します。 これにより、Azure ロード バランサーの要件が排除されます。
+- SQL Server データベース ミラーリングの接続パラメーターを使用します。 この場合、両方のノードに名前を付ける方法で SAP アプリケーションの接続を構成する必要があります。 このような SAP 側構成の詳細については、SAP Note [#965908](https://launchpad.support.sap.com/#/notes/965908) を参照してください。 このオプションを使用する場合、可用性グループ リスナーを構成する必要はありません。 また、SQL Server の高可用性のために Azure Load Balancer を構成する必要はありません。 ただし、このオプションは、可用性グループを 2 つのインスタンスにまたがるように制限する場合にのみ機能する点に注意してください。 
 
-Azure リージョン間にディザスター リカバリー機能のために SQL Server Always On 機能を利用しているお客様はごく少数です。 一部のユーザーは、セカンダリ レプリカからバックアップを実行する機能も使用しています。 
+かなりの数の顧客が、Azure リージョン間のディザスター リカバリー機能に対して SQL Server Always On 機能を利用しています。 一部のユーザーは、セカンダリ レプリカからバックアップを実行する機能も使用しています。 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server Transparent Data Encryption
 SAP SQL Server データベースを Azure にデプロイするときに、SQL Server [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) を使用しているお客様はたくさんいます。 SQL Server TDE 機能は SAP によって完全にサポートされています (SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493) を参照)。 
@@ -535,7 +540,7 @@ SAP SQL Server データベースをオンプレミスから Azure に移行す�
 SAP ワークロードがない、またはほとんどない TDE 暗号化のアプリケーションを扱う場合、SAP データベースに TDE を適用する処理をオンプレミスで実行するか、Azure で実行するかについて、実際の構成でテストすることをお勧めします。 TDE が適用された後のインフラストラクチャのオーバープロビジョニングとインフラストラクチャの縮小という点で、Azure の方が柔軟です。
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault の使用
-Azure は、暗号キーを格納する [Key Vault](https://azure.microsoft.com/services/key-vault/) のサービスを提供しています。 一方、SQL Server は、TDE 証明書のストアとして Azure Key Vault を利用するコネクタを用意しています。
+Azure は、暗号キーを格納する [Key Vault](https://azure.microsoft.com/services/key-vault/) のサービスを提供しています。 一方、SQL Server は、TDE 証明書のストアとして Azure Key Vault を使用するコネクタを用意しています。
 
 Azure Key Vault を SQL Server TDE に使用する方法の詳細については、以下のドキュメントを参照してください。
 

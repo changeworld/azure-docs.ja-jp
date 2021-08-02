@@ -5,13 +5,13 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 01/04/2021
-ms.openlocfilehash: 4dc718f21f2ef3beabc31821bd60b571ac07be05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: c0f81c5abdffe307550d2b0b3e1f86f67f867f5a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018753"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591298"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする (プレビュー)
 
@@ -63,6 +63,9 @@ Stream Analytics ジョブでマネージド ID を使用してイベント ハ�
 1. **[保存]** を選択し、変更が伝搬されるまで 1 分ほど待機します。
 
 また、このロールをイベント ハブ名前空間レベルで付与することもできます。これにより、その下に作成されたすべてのイベント ハブにアクセス許可が自然に伝搬されます。 つまり、名前空間の下にあるすべてのイベント ハブを、Stream Analytics ジョブでマネージド ID 認証リソースとして使用できます。
+
+> [!NOTE]
+> グローバル レプリケーションまたはキャッシュの待機時間が原因で、アクセス許可が取り消されたり付与されたりすると、遅延が発生することがあります。 変更は 8 分以内に反映される必要があります。
 
 ## <a name="create-anevent-hub-input-or-output"></a>イベント ハブの入力または出力を作成する  
 

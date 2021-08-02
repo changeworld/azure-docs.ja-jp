@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 13becdf8c49d9affe8c2946d6147707fbe954437
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: bf4a019c9f40475750fd508a56f7f8903e0a2876
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889324"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538866"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -68,6 +68,13 @@ ms.locfileid: "107889324"
 * Azure Data Lake Storage Gen2
 * Azure SQL データベース
 
+### <a name="firewall-settings"></a>ファイアウォールの設定
+
+Azure ストレージ アカウントなど、一部のストレージ サービスには、その特定のサービス インスタンスのパブリック エンドポイントに適用されるファイアウォール設定があります。 通常、この設定を使用すると、パブリック インターネットの特定の IP アドレスからのアクセスを許可または禁止できます。 Azure Machine Learning スタジオを使用している場合、__これはサポートされません__。 Azure Machine Learning SDK または CLI を使用している場合にサポートされます。
+
+> [!TIP]
+> Azure Machine Learning スタジオは、Azure Firewall サービスを使用している場合にサポートされます。 詳細については、[ファイアウォールの内側でのワークスペースの使用](how-to-access-azureml-behind-firewall.md)に関する記事を参照してください。
+
 ### <a name="configure-datastores-to-use-workspace-managed-identity"></a>ワークスペースのマネージド ID を使用するようにデータストアを構成する
 
 [サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)のいずれかが設定されている仮想ネットワークに Azure ストレージ アカウントを追加した後、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) 認証を使用するようにデータストアを構成する必要があります。 これにより、Studio でストレージ アカウント内のデータにアクセスできるようになります。
@@ -84,7 +91,7 @@ Azure Machine Learning では、[データストア](concept-data.md#datastores)
 
     ![ワークスペースのマネージド ID を有効にする方法を示すスクリーンショット](./media/how-to-enable-studio-virtual-network/enable-managed-identity.png)
 
-この手順により、Azure RBAC を使用して、ワークスペースのマネージド ID がストレージ サービスに __閲覧者__ として追加されます。 __閲覧者__ のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。 変更が有効になるまでに最大 10 分かかる場合があります。
+この手順により、Azure RBAC を使用して、ワークスペースのマネージド ID がストレージ サービスに __閲覧者__ として追加されます。 __閲覧者__ アクセス権では、ワークスペースはリソースを表示できますが、変更を加えることはできません。
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>既定のストレージ アカウントでマネージド ID 認証を有効にする
 
@@ -134,11 +141,11 @@ __Azure Blob ストレージ__ では、ワークスペース マネージド ID
 
 Azure RBAC を使用するには、ワークスペース マネージド ID を [BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のロールに追加します。 詳細については、[Azure のロールベースのアクセス制御](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)に関するページを参照してください。
 
-ACL を使用する場合は、他のセキュリティ原則の場合と同様に、ワークスペース マネージド ID にアクセス権を割り当てることができます。 詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
+ACL を使用する場合は、他のセキュリティ プリンシパルと同様に、ワークスペース マネージド ID にアクセス権を割り当てることができます。 詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 
 ### <a name="azure-data-lake-storage-gen1-access-control"></a>Azure Data Lake Storage Gen1 のアクセスの制御
 
-Azure Data Lake Storage Gen1 では、POSIX スタイルのアクセス制御リストのみをサポートしています。 他のセキュリティ原則の場合と同様に、ワークスペース マネージド ID にリソースに対するアクセス権を割り当てることができます。 詳細については、「[Azure Data Lake Storage Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。
+Azure Data Lake Storage Gen1 では、POSIX スタイルのアクセス制御リストのみをサポートしています。 他のセキュリティ プリンシパルと同様に、ワークスペース マネージド ID にリソースへのアクセス権を割り当てることができます。 詳細については、「[Azure Data Lake Storage Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。
 
 ### <a name="azure-sql-database-contained-user"></a>Azure SQL Database 包含ユーザー
 

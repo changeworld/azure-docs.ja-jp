@@ -1,28 +1,28 @@
 ---
-title: MongoDB Atlas のデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB Atlas のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
+title: MongoDB Atlas のデータをコピーする、または MongoDB Atlas にデータをコピーする
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB Atlas からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから MongoDB Atlas にデータをコピーする方法について説明します。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 517f32a526ed6695c7890a330359f52667367979
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 06/01/2021
+ms.openlocfilehash: 07e3d801f1f8d6cfebd6c31daf00d92ccc7b8444
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487675"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747493"
 ---
-# <a name="copy-data-from-mongodb-atlas-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB Atlas のデータをコピーする
+# <a name="copy-data-from-or-to-mongodb-atlas-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB Atlas のデータをコピーする、または MongoDB Atlas にデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB Atlas データベースのデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB Atlas データベースのデータをコピーする方法、および MongoDB Atlas にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-MongoDB Atlas データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+MongoDB Atlas データベースからサポートされる任意のシンク データ ストアにデータをコピーしたり、サポートされる任意のソース データ ストアから MongoDB Atlas データベースにデータをコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 具体的には、この MongoDB Atlas コネクタは **4.2 までのバージョン** をサポートしています。
 
@@ -96,7 +96,7 @@ MongoDB Atlas のリンクされたサービスでは、次のプロパティが
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、MongoDB Atlas ソースでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、MongoDB Atlas ソースおよびシンクでサポートされるプロパティの一覧を示します。
 
 ### <a name="mongodb-atlas-as-source"></a>ソースとしての MongoDB Atlas
 
@@ -153,13 +153,66 @@ MongoDB Atlas のリンクされたサービスでは、次のプロパティが
 ]
 ```
 
-## <a name="export-json-documents-as-is"></a>JSON ドキュメントをそのままエクスポートする
+### <a name="mongodb-atlas-as-sink"></a>シンクとしての MongoDB Atlas
 
-この MongoDB Atlas コネクタを使用すると、JSON ドキュメントを MongoDB コレクションからさまざまなファイルベースのストアまたは Azure Cosmos DB にそのままエクスポートできます。 このようなスキーマに依存しないコピーを実現するには、データセットの "構造" ("*スキーマ*" とも呼ばれる) のセクションと、コピー アクティビティでのスキーマ マッピングをスキップします。
+コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | Copy アクティビティのシンクの **type** プロパティには **MongoDbAtlasSink** を設定する必要があります。 |はい |
+| writeBehavior |MongoDB Atlas にデータを書き込む方法について説明します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**: 元のドキュメントにも列のマッピングによっても `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBatchSize | **writeBatchSize** プロパティにより、各バッチで書き込むドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。 |いいえ<br />(既定値は **10,000**) |
+| writeBatchTimeout | タイムアウトするまでに一括挿入操作の完了を待つ時間です。許容される値は期間です。 | いいえ<br/>(既定値は **00:30:00** - 30 分) |
+
+>[!TIP]
+>JSON ドキュメントをそのままインポートするには、「[JSON ドキュメントをインポートまたはエクスポートする](#import-and-export-json-documents)」セクションを参照してください。表形式のデータからコピーするには、「[スキーマ マッピング](#schema-mapping)」を参照してください。
+
+**例**
+
+```json
+"activities":[
+    {
+        "name": "CopyToMongoDBAtlas",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Document DB output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "MongoDbAtlasSink",
+                "writeBehavior": "upsert"
+            }
+        }
+    }
+]
+```
+
+## <a name="import-and-export-json-documents"></a>JSON ドキュメントのインポートとエクスポート
+
+この MongoDB Atlas コネクタを使用すると、簡単に次を実行できます。
+
+* 2 つの MongoDB Atlas コレクション間でドキュメントをそのままコピーします。
+* Azure Cosmos DB、Azure Blob Storage、Azure Blob ストレージ、Azure Data Lake Store 、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースからMongoDB Atlas に JSON ドキュメントをインポートします。
+* JSON ドキュメントをMongoDB Atlas コレクションからさまざまなファイル ベースのストアにエクスポートします。
+
+このようなスキーマに依存しないコピーを実現するには、データセットの "構造" ("*スキーマ*" とも呼ばれる) のセクションと、コピー アクティビティでのスキーマ マッピングをスキップします。
+
 
 ## <a name="schema-mapping"></a>スキーマ マッピング
 
-MongoDB Atlas から表形式のシンクにデータをコピーするには、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)に関する記事をご覧ください。
+MongoDB Atlas から表形式のシンクにデータをコピーする、またはシンクから MongoDB Atlas にデータをコピーするには、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
