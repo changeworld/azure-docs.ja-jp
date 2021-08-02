@@ -16,7 +16,7 @@ ms.lasthandoff: 03/30/2021
 ms.locfileid: "102560057"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する
-Azure Diagnostics の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure Resource Manager テンプレートの一部として拡張機能を組み込むことにより、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](../windows/template-description.md#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure Diagnostics の拡張機能を追加する方法について説明します。  
+Azure Diagnostics の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure Resource Manager テンプレートの一部として拡張機能を組み込むことにより、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure Resource Manager テンプレートの作成](../windows/template-description.md#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure Diagnostics の拡張機能を追加する方法について説明します。  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>VM のリソースの定義に Azure Diagnostics の拡張機能を追加する
 Windows 仮想マシンで診断の拡張機能を有効にするには、Resource Manager テンプレートで拡張機能を VM リソースとして追加する必要があります。
@@ -72,7 +72,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、Resour
 
 *typeHandlerVersion* は使用する拡張機能のバージョンを指定します。 *autoUpgradeMinorVersion* マイナー バージョンを **true** に設定すると、使用可能な拡張機能の最新マイナー バージョンが得られます。 新機能とバグの修正がすべて含まれる、最新の診断の拡張機能を常に使用できるように、 *autoUpgradeMinorVersion* は常に **true** に設定することを強くお勧めします。 
 
-*settings* 要素には、拡張機能 (パブリック構成とも呼ばれます) からの設定および読み取りが可能な拡張機能の構成プロパティが含まれています。 *xmlcfg* プロパティには、診断ログの xml ベースの構成や、診断エージェントによって収集されるパフォーマンス カウンターなどが含まれます。 xml スキーマ自体の詳細については、「 [診断構成スキーマ](../../azure-monitor/agents/diagnostics-extension-schema-windows.md) 」を参照してください。 一般的な方法としては、Azure リソース マネージャー テンプレートに実際の xml 構成を変数として格納してから、これを連結および base64 エンコードして *xmlcfg* の値を設定します。 xml を変数として格納する方法の詳細については、「 [診断構成の変数](#diagnostics-configuration-variables) 」のセクションを参照してください。 *storageAccount* プロパティは、診断データの転送先となるストレージ アカウントの名前を指定します。 
+*settings* 要素には、拡張機能 (パブリック構成とも呼ばれます) からの設定および読み取りが可能な拡張機能の構成プロパティが含まれています。 *xmlcfg* プロパティには、診断ログの xml ベースの構成や、診断エージェントによって収集されるパフォーマンス カウンターなどが含まれます。 xml スキーマ自体の詳細については、「 [診断構成スキーマ](../../azure-monitor/agents/diagnostics-extension-schema-windows.md) 」を参照してください。 一般的な方法としては、Azure Resource Manager テンプレートに実際の xml 構成を変数として格納してから、これを連結および base64 エンコードして *xmlcfg* の値を設定します。 xml を変数として格納する方法の詳細については、「 [診断構成の変数](#diagnostics-configuration-variables) 」のセクションを参照してください。 *storageAccount* プロパティは、診断データの転送先となるストレージ アカウントの名前を指定します。 
 
 *protectedSettings* (プライベート構成とも呼ばれる) のプロパティは設定できますが、設定後に読み取ることができません。 *protectedSettings* が書き込み専用であるという性質は、診断データが書き込まれるストレージ アカウント キーのような機密情報を格納する場合に役立ちます。    
 
@@ -172,4 +172,4 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、Resour
 ## <a name="next-steps"></a>次の手順
 * 診断の拡張機能を備えた Windows 仮想マシンの完全なサンプル テンプレートについては、「[201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)」を参照してください   
 * [Azure PowerShell](../windows/ps-template.md) または [Azure コマンド ライン](../linux/create-ssh-secured-vm-from-template.md)を使用した Azure Resource Manager テンプレートのデプロイ
-* [Azure リソース マネージャーのテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)
