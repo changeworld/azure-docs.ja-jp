@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 06/11/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ac9b0f07697c7f8c6a5d733e29270b1652bad5e2
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 57942fa7e5bbb0d7fc504a55c73db433c56c3ce5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753743"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075081"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -38,28 +38,28 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
   - 監視対象 VM の数
   - 各監視対象 VM から収集されるデータの種類 
   
-従量課金制モデルに加えて、Log Analytics には **容量予約** レベルがあります。これにより、従量課金制の料金と比較して 25 % も節約できます。 容量予約の価格を選択すると、1 日あたり 100 GB から予約を購入できます。 予約レベルを超過する使用 (超過分) については、1 GB につき現在の容量予約レベルで提供されている同じ価格で請求されます。 容量予約レベルには、31 日間のコミットメント期間があります。 コミットメント期間中は、より高いレベルの容量予約レベルに変更できます (これにより 31 日間のコミットメント期間が再スタートされます) が、コミットメント期間が終了するまでは、従量課金制または低い容量予約レベルに戻ることはできません。 容量予約レベルの課金は 1 日単位で行われます。 Log Analytics の従量課金制および容量予約の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。 
+従量課金制モデルに加えて、Log Analytics には **コミットメント レベル** があります。これにより、従量課金制の料金と比較して 30% も節約できます。 コミットメント レベルの価格を使用すると、従量課金制の価格より低い価格でデータ インジェストを 100 GB/日から購入することを確約できます。 コミットメント レベルを超える使用量 (超過分) については、現在のコミットメント レベルで提供されている同じ GB あたりの価格で請求されます。 コミットメント レベルには、31 日間のコミットメント期間があります。 コミットメント期間中、より高いコミットメント レベルに変更できます (これにより 31 日間のコミットメント期間が再スタートされます) が、コミットメント期間が終了するまでは、従量課金制または低いコミットメント レベルに戻ることはできません。 コミットメント レベルの課金は 1 日単位で行われます。 Log Analytics の従量課金制とコミットメント レベルの価格については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。 
 
 > [!NOTE]
-> 2021 年 5 月上旬まで、容量予約の超過分は従量課金制で請求されていました。 この変更により、1 GB につき現在の容量予約レベルと同じ価格で超過分が請求されるようになり、大きな予約レベルを持つユーザーが予約レベルを微調整する必要性が軽減されます。 
+> 2021 年 6 月 2 日以降、**容量予約** は **コミットメント レベル** に呼称が変更されました。 コミットメント レベルを超えて収集されたデータ (超過分) は、現在のコミットメント レベルと同じ GB あたりの料金で課金されるようになり、以前の従量課金制料金での課金方法と比較してコストが下がりました。また、大きなデータ ボリュームを持つユーザーがコミットメント レベルを微調整する必要性も低下しました。 さらに、より大規模な 3 つの新しいコミットメント レベル (1000、2000、および 5000 GB/日) が追加されました。 
 
-イベントのデータ サイズは、すべての価格レベルで、このイベントの Log Analytics に格納されているプロパティの文字列形式から計算されます。データがエージェントから送信されたか、インジェスト プロセス中に追加されたかは関係ありません。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](custom-fields.md)が含まれます。 一部の [Log Analytics 標準プロパティ](./log-standard-columns.md)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 AzureActivity、Heartbeat、Usage 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように `_IsBillable` プロパティを使用できます。 使用量は GB (1.0E9 バイト) 単位でレポートされます。 
+すべての価格レベルにおいて、イベントのデータ サイズは、データがエージェントから送信されたか、インジェスト プロセス中に追加されたかに関係なく、Log Analytics に格納されているこのイベントのプロパティの文字列表記から計算されます。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](custom-fields.md)が含まれます。 一部の [Log Analytics 標準プロパティ](./log-standard-columns.md)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 AzureActivity、Heartbeat、Usage 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように `_IsBillable` プロパティを使用できます。 使用量は GB (1.0E9 バイト) 単位でレポートされます。 
 
 また、[Azure Defender (Security Center)](https://azure.microsoft.com/pricing/details/azure-defender/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)、[構成管理](https://azure.microsoft.com/pricing/details/automation/)などの一部のソリューションには、独自の価格モデルがあります。 
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics 専用クラスター
 
-Log Analytics 専用クラスターは、ワークスペースのコレクションを単一の管理された Azure Data Explorer クラスターに集約し、[カスタマー マネージド キー](customer-managed-keys.md)などの高度なシナリオをサポートします。  Log Analytics 専用クラスターには、1000 GB/日以上に構成されている必要がある容量予約価格モデルを使用します。 この容量レベルでは、従量課金制の価格と比較して、25% の割引があります。 予約レベルを超える使用量は、従量課金制で請求されます。 クラスターの容量予約には、予約レベルが増加した後の 31 日間のコミットメント期間があります。 コミットメント期間中は、容量予約レベルを下げることはできませんが、いつでも増やすことができます。 ワークスペースがクラスターに関連付けられている場合、それらのワークスペースのデータ インジェストの課金は、構成されている容量予約レベルを使用したクラスター レベルで行われます。 詳細については、[Log Analytics クラスターの作成](customer-managed-keys.md#create-cluster)と、[それへのワークスペースの関連付け](customer-managed-keys.md#link-workspace-to-cluster)に関するページを参照してください。 容量予約の価格情報については、[Azure Monitor の価格に関するページ]( https://azure.microsoft.com/pricing/details/monitor/)を参照してください。  
+[Log Analytics 専用クラスター](logs-dedicated-clusters.md)では、1 つのマネージド Azure Data Explorer クラスターにワークスペースのコレクションが集約され、[カスタマー マネージド キー](customer-managed-keys.md)などの高度なシナリオがサポートされます。  Log Analytics 専用クラスターでは、1000 GB/日以上に構成される必要があるコミットメント レベル価格モデルが使用されます。 このクラスターのコミットメント レベルには、コミットメント レベルが上がった後に 31 日間のコミットメント期間があります。 コミットメント期間中は、コミットメント レベルを下げることはできませんが、上げることはいつでも可能です。 ワークスペースがクラスターに関連付けられている場合、それらのワークスペースのデータ インジェストの課金は、構成されているコミットメント レベルを使用してクラスター レベルで行われます。 詳細については、[Log Analytics クラスターの作成](customer-managed-keys.md#create-cluster)と、[それへのワークスペースの関連付け](customer-managed-keys.md#link-workspace-to-cluster)に関するページを参照してください。 コミットメント レベルの価格情報については、[Azure Monitor の価格ページ]( https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。
 
-クラスター容量予約レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成します。 `Capacity` は GB 単位で指定し、1000 GB/日以上の値を 100 GB/日の単位で設定できます。 詳細は「[Azure Monitor のカスタマー マネージド キー](customer-managed-keys.md#create-cluster)」にあります。 クラスターで 2000 GB/日を超える予約が必要な場合は、[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) にお問い合わせください。
+クラスターのコミットメント レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成されます。 `Capacity` は GB 単位で指定され、1,000、2,000、5,000 GB/日 の値を設定できます。 詳細については、「[クラスターの作成](logs-dedicated-clusters.md#creating-a-cluster)」を参照してください。
 
-クラスターでの使用については、2 つの課金モードがあります。 これらは、[ご自分のクラスターを構成する](customer-managed-keys.md#customer-managed-key-operations)ときに、`billingType` パラメーターで指定できます。 次の 2 つのモードがあります。 
+クラスターでの使用については、2 つの課金モードがあります。 これらは、[クラスターの作成](logs-dedicated-clusters.md#creating-a-cluster)時に `billingType` パラメーターによって指定することも、作成後に設定することもできます。 次の 2 つのモードがあります。 
 
-1. **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Azure Defender (Security Center)](../../security-center/index.yml) からのノードごとの割り当ては、クラスター内のすべてのワークスペースで集計されるデータのこの集計の前にワークスペース レベルで適用されることに注意してください。 
+1. **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Azure Defender (Security Center)](../../security-center/index.yml) からのノードごとの割り当ては、クラスター内のすべてのワークスペースで行われるこのデータ集計の前にワークスペース レベルで適用されます。 
 
-2. **ワークスペース**: ご使用のクラスターの容量予約コストは、クラスター内のワークスペースに比例します (各ワークスペースに対する [Azure Defender (Security Center)](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも少ない場合、ワークスペースごとに容量予約分として取り込まれたデータに対して有効な 1 GB あたりの容量予約料金で課金され、容量予約の未使用分についてはクラスター リソースに課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも多い場合、ワークスペースごとにその日に取り込まれたデータの容量予約分について課金され、ワークスペースごとに容量予約を超えて取り込まれたデータ分について課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約を超えている場合、クラスター リソースに課金されることはありません。
+2. **ワークスペース**: クラスターのコミットメント レベル コストは、(各ワークスペースに対する [Azure Defender (Security Center)](../../security-center/index.yml) からのノードごとの割り当てを考慮した後に) 各ワークスペースのデータ インジェスト ボリュームによって、クラスター内のワークスペースに比例して割り当てられます。1 日の間にクラスターに取り込まれたデータ ボリュームの合計がコミットメント レベルよりも少ない場合は、ワークスペースごとにコミットメント レベルとして取り込まれたデータに対して有効な 1 GB あたりのコミットメント レベル料金で課金され、コミットメント レベルの未使用分についてはクラスター リソースに課金されます。 1 日の間にクラスターに取り込まれたデータ ボリュームの合計がコミットメント レベルよりも多い場合は、ワークスペースごとに、その日に取り込まれたデータの割合に基づいてコミットメント レベルの割合で課金され、コミットメント レベルを超えて取り込まれたデータの割合についてワークスペースごとに課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計がコミットメント レベルを超えている場合、クラスター リソースに課金されることはありません。
 
-クラスター課金オプションでは、データ保有はワークスペースごとに課金されます。 クラスターが作成されると、ワークスペースがそのクラスターに関連付けられているかどうかに関係なく、クラスターの課金が開始されることに注意してください。 また、クラスターに関連付けられているワークスペースの価格レベルはなくなりました。
+クラスター課金オプションでは、データ保有はワークスペースごとに課金されます。 クラスターが作成されると、ワークスペースがそのクラスターに関連付けられているかどうかに関係なく、クラスターの課金が開始されます。 クラスターに関連付けられたワークスペースには、独自の価格レベルはなくなります。
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>ご利用の環境を管理するためのコストの見積もり 
 
@@ -81,9 +81,9 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>ご自分の Azure 請求書での Log Analytics の使用状況の表示 
 
-Azure では、[Azure Cost Management と課金](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 まず、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/cluster)。これにより、Log Analytics の支出を追跡できます。 次に、[グループ化] で [測定カテゴリ] または [測定] を選択します。  Azure Defender (Security Center) や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行うことに注意してください。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
+Azure では、[Azure Cost Management と課金](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 まず、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/cluster)。これにより、Log Analytics の支出を追跡できます。 次に、[グループ化] で [測定カテゴリ] または [測定] を選択します。 Azure Defender (Security Center) や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行います。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
 
-[Azure portal から使用状況をダウンロード](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)することで、使用状況をさらに詳しく理解できます。 ダウンロードしたスプレッドシートでは、Azure リソースごとに (たとえば、Log Analytics ワークスペース)、1 日あたりの使用量を確認することができます。 この Excel スプレッドシートでは、ご利用の Log Analytics ワークスペースからの使用状況を検索できます。それには、まず、"測定カテゴリ" 列でフィルター処理を行って "Log Analytics"、"洞察と分析" (従来の価格レベルの一部で使用)、"Azure Monitor" (容量予約の価格レベルで使用) を表示し、次に "インスタンス ID" 列に対するフィルター "contains workspace" または "contains cluster" (後者の場合は、Log Analytics クラスターの使用量を含めます) を追加します。 使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
+[Azure portal から使用状況をダウンロード](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)することで、使用状況をさらに詳しく理解できます。 ダウンロードしたスプレッドシートで、Azure リソースごとに (たとえば、Log Analytics ワークスペース)、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Log Analytics ワークスペースからの使用状況を検索できます。それには、まず、"測定カテゴリ" 列でフィルター処理を行って "Log Analytics"、"洞察と分析" (一部のレガシ価格レベルで使用)、"Azure Monitor" (コミットメント レベルの価格レベルで使用) を表示し、次に "インスタンス ID" 列に対するフィルター "contains workspace" または "contains cluster" (後者の場合は、Log Analytics クラスターの使用量を含める) を追加します。 使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
 
 ## <a name="changing-pricing-tier"></a>価格レベルの変更
 
@@ -91,17 +91,48 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 1. Azure portal で、ワークスペースから **[使用量と推定コスト]** を開きます。このワークスペースでは、使用可能な各価格レベルの一覧が表示されます。
 
-2. それぞれの価格レベルについての推定コストを確認します。 この見積もりは、過去 31 日間の使用量に基づいているため、このコストの見積もりは、通常の使用状況を表す直近の 31 日間に依存します。 次の例では、過去 31 日間のデータ パターンに基づいて、このワークスペースのコストが 100 GB/日の容量予約レベル (#2) と比較して従量課金制レベル (#1) ではどれほど低くなるかを確認することができます。  
+2. それぞれの価格レベルについての推定コストを確認します。 この見積もりは、過去 31 日間の使用量に基づいているため、このコストの見積もりは、通常の使用状況を表す直近の 31 日間に依存します。 下の例では、過去 31 日間のデータ パターンに基づいて、このワークスペースのコストが 100 GB/日のコミットメント レベル (#2) と比較して従量課金制レベル (#1) ではどれほど低くなるかを確認することができます。  
 
 :::image type="content" source="media/manage-cost-storage/pricing-tier-estimated-costs.png" alt-text="価格レベル":::
     
 3. 過去 31 日間の使用量に基づいて推定コストを確認した後、価格レベルを変更する場合は、 **[選択 ]** をクリックします。  
 
-`sku` パラメーター (Azure Resource Manager テンプレートの `pricingTier`) を使用して [Azure Resource Manager 経由で価格レベルを設定](./resource-manager-workspace.md)することもできます。 
+### <a name="changing-pricing-tier-via-arm"></a>ARM を使用した価格レベルの変更
+
+また、価格レベルを設定する `sku` オブジェクトや、価格レベルが `capacityresrvation` の場合は `capacityReservationLevel` パラメーターを使用して、[Azure Resource Manager から価格レベルを設定](./resource-manager-workspace.md)することもできます。 (詳細については、[ARM を使用したワークスペース プロパティの設定](/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces?tabs=json#workspacesku-object)に関する記事を参照してください)。次に示すのは、ワークスペースを 300 GB/日のコミットメント レベルに設定するサンプル ARM テンプレートです (ARM では `capacityreservation` と呼ばれます)。 
+
+```
+{
+  "$schema": https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#,
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "name": "YourWorkspaceName",
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2020-08-01",
+      "location": "yourWorkspaceRegion",
+      "properties": {
+                    "sku": {
+                      "name": "capacityreservation",
+                      "capacityReservationLevel": 300
+                    }
+      }
+    }
+  ]
+}
+```
+
+PowerShell 経由でこのテンプレートを使用するには、[Azure Az PowerShell モジュールをインストール](/powershell/azure/install-az-ps)した後、`Connect-AzAccount` を使用して Azure にログインし、`Select-AzSubscription -SubscriptionId YourSubscriptionId` を使用してワークスペースが含まれているサブスクリプションを選択し、(template.json という名前のファイルに保存されている) テンプレートを適用します。
+
+```
+New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -TemplateFile "template.json"
+```
+
+価格レベルを従量課金制などの他の値 (SKU では `pergb2018` と呼ばれます) に設定するには、`capacityReservationLevel` プロパティを省略します。 詳細については、[ARM テンプレートの作成](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)、[テンプレートへのリソースの追加](../../azure-resource-manager/templates/template-tutorial-add-resource.md)、[テンプレートの適用](../resource-manager-samples.md)に関する記事を参照してください。 
 
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
-2018 年 4 月 2 日より前に Log Analytics ワークスペースまたはその中の Application Insights リソースがあったサブスクリプション、あるいは 2019 年 2 月 1 日より前に開始したマイクロソフト エンタープライズ契約にリンクされているサブスクリプションは、引き続きレガシ価格レベルにアクセスして利用できます: **Free**、**スタンドアロン (GB あたり)** 、**ノードごと (OMS)** 。  Free 価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります ([Azure Defender (Security Center)](../../security-center/index.yml) によって収集されるセキュリティ データの種類を除く)。また、データ保有は 7 日に制限されます。 Free 価格レベルでは、評価のみが目的として意図されています。 スタンドアロンまたはノードごとの価格レベルのワークスペースには、30 日から 730 日までのユーザーが構成可能な保持が含まれています。
+2018 年 4 月 2 日に Log Analytics ワークスペースまたは Application Insights リソースが含まれていたか、2019 年 2 月 1 日より前に開始され、まだアクティブな Enterprise Agreement にリンクされているサブスクリプションは、レガシ価格レベル (**無料試用版**、**スタンドアロン (GB 単位)** 、および **ノードごと (OMS)** ) を引き続き利用できます。 Free 価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります ([Azure Defender (Security Center)](../../security-center/index.yml) によって収集されるセキュリティ データの種類を除く)。また、データ保有は 7 日に制限されます。 無料試用版価格レベルは、評価目的専用です。 スタンドアロンまたはノードごとの価格レベルのワークスペースには、30 日から 730 日までのユーザーが構成可能な保持が含まれています。
 
 スタンドアロン価格レベルでの使用量は、取り込まれたデータ ボリューム単位で請求されます。 これは **Log Analytics** サービス上で報告され、メーターには "分析対象データ" という名前が付けられています。 
 
@@ -114,17 +145,17 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 > [!TIP]
 > ワークスペースで **ノードごとの** 価格レベルにアクセスできるが、従量課金制レベルよりもコストが低いかどうか知りたい場合は、[次のクエリを使用](#evaluating-the-legacy-per-node-pricing-tier)して、推奨事項を簡単に取得できます。 
 
-2016 年 4 月より前に作成されたワークスペースの場合、元の **Standard** と **Premium** の価格レベルにもアクセスできます。これらのデータ保持は、それぞれ 30 日と 365 日に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 これらの従来のレベルでのデータ インジェストのメーターは、"分析対象データ" と呼ばれています。
+2016 年 4 月より前に作成されたワークスペースの場合、元の **Standard** と **Premium** の価格レベルにもアクセスできます。これらのデータ保有は、それぞれ 30 日と 365 日に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 これらの従来のレベルでのデータ インジェストのメーターは、"分析対象データ" と呼ばれています。
 
 また、従来の Log Analytics レベルの使用と [Azure Defender (Security Center)](../../security-center/index.yml) に対する使用量の請求方法の間にもいくつかの動作があります。 
 
 1. ワークスペースが従来の Standard レベルまたは Premium レベルの場合、Azure Defender はノードごとではなく Log Analytics データ インジェストに対してのみ課金されます。
 2. ワークスペースが従来のノードごとのレベルの場合、Azure Defender は、現在の [Azure Defender ノードベースの価格モデル](https://azure.microsoft.com/pricing/details/security-center/)を使用して課金されます。 
-3. 他の価格レベル (容量予約を含む) では、2017 年 6 月 19 日より前に Azure Defender が有効になっている場合、Azure Defender は Log Analytics データ インジェストに対してのみ課金されます。 それ以外の場合、Azure Defender は、現在の Azure Defender ノードベースの価格モデルを使用して課金されます。
+3. 他の価格レベル (コミットメント レベルを含む) では、2017 年 6 月 19 日より前に Azure Defender が有効になっている場合、Azure Defender は Log Analytics データ インジェストに対してのみ課金されます。 それ以外の場合、Azure Defender は、現在の Azure Defender ノードベースの価格モデルを使用して課金されます。
 
 価格レベルの制限に関する詳細は、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)」にあります。
 
-レガシ価格レベルには、リージョンベースの価格がありません。  
+レガシ価格レベルには、リージョンベースの価格はありません。  
 
 > [!NOTE]
 > OMS E1 Suite、OMS E2 Suite、または OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の *ノード単位* の価格レベルを選択します。
@@ -149,13 +180,13 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 保持期間が短縮された場合、新しい保持設定よりも古いデータが削除されるまでには、数日の猶予期間があります。 
 
-**[データ保有期間]** ページでは、30、31、60、90、120、180、270、365、550、および 730 日の保有期間設定を使用できます。 別の設定が必要な場合は、[Azure Resource Manager](./resource-manager-workspace.md) で `retentionInDays` パラメーターを使用して構成できます。 データの保持期間を 30 日に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用して、(数日の猶予期間を除去し) より古いデータの即時消去をトリガーできます。 これは、即時のデータ削除が不可欠なコンプライアンス関連のシナリオに役立ちます。 この即時消去機能は、Azure Resource Manager 経由でのみ公開されています。 
+**[データ保有期間]** ページでは、30、31、60、90、120、180、270、365、550、および 730 日の保有期間設定を使用できます。 別の設定が必要な場合は、[Azure Resource Manager](./resource-manager-workspace.md) で `retentionInDays` パラメーターを使用して構成できます。 データ保持期間を 30 日に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用して、(猶予期間を除去し) 古いデータの即時消去をトリガーできます。 これは、即時のデータ削除が不可欠なコンプライアンス関連のシナリオに役立ちます。 この即時消去機能は、Azure Resource Manager 経由でのみ公開されています。 
 
 30 日の保持期間があるワークスペースでは、実際には 31 日間分のデータを保持することができます。 データを 30 日間しか保持しないことが不可欠な場合は、Azure Resource Manager を使用して保持期間を 30 日に設定したうえで、`immediatePurgeDataOn30Days` パラメーターを指定します。  
 
-既定では、2 種類のデータ `Usage` と `AzureActivity` が少なくとも 90 日間保持され、この 90 日間の保持に対しては課金されません。 ワークスペースの保持期間が 90 日を超えた場合、これらのデータの種類の保持期間も長くなります。  これらのデータの種類は、データ インジェスト料金の対象にもなりません。 
+既定では、2 種類のデータ `Usage` と `AzureActivity` は少なくとも 90 日間保持され、この 90 日間の保持に対しては課金されません。 ワークスペースの保持期間が 90 日を超えた場合、これらのデータの種類の保持期間も長くなります。  これらのデータの種類は、データ インジェスト料金の対象にもなりません。 
 
-ワークスペース ベースの Application Insights リソース (`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents`、`AppTraces`) のデータの種類も既定で 90 日間保持され、この 90 日間の保持に対しては課金されません。 保持期間は、データの種類別のリテンション期間によって調整できます。 
+ワークスペースベースの Application Insights のリソース (`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents`、`AppTraces`) のデータの種類も既定で 90 日間保持され、この 90 日間の保持に対しては課金されません。 保持期間は、データの種類別のリテンション期間によって調整できます。 
 
 Log Analytics [消去 API](/rest/api/loganalytics/workspacepurge/purge) はデータ保有の課金に影響せず、非常に限られたケースでの使用が意図されています。 データ保有の課金を減らすには、ワークスペースか特定のデータ型に対してリテンション期間を短縮する必要があります。 
 
@@ -231,7 +262,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 1. ワークスペースの左ウィンドウから **[使用量と推定コスト]** を選びます。
 2. 選択したワークスペースの **[使用とコストの見積もり]** ページの上部にある **[Data Cap]\(データの上限\)** をクリックします。 
-3. 日次上限が既定で **[オフ]** になっていますか。 有効にするには、 **[オン]** をクリックし、GB/日でデータ ボリュームの制限を設定します。
+3. 日次上限は既定では **[オフ]** になっています。有効にするには、 **[オン]** をクリックし、GB/日でデータ ボリュームの制限を設定します。
 
 :::image type="content" source="media/manage-cost-storage/set-daily-volume-cap-01.png" alt-text="Log Analytics のデータ制限の構成":::
     
@@ -270,7 +301,7 @@ Usage
 - ターゲット:お客様の Log Analytics リソースを選択します
 - 条件: 
    - シグナル名: カスタム ログ検索
-   - 検索クエリ: `_LogOperation | where Operation == "Data collection Status" | where Detail contains "OverQuota"`
+   - 検索クエリ: `_LogOperation | where Operation == "Data collection Stopped" | where Detail contains "OverQuota"`
    - ベース: 結果の数
    - 条件: より大きい
    - しきい値: 0
@@ -284,8 +315,10 @@ Usage
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>使用量が予想よりも多い理由のトラブルシューティング
 
 使用量が多くなる原因は、次のいずれかまたは両方です。
-- 予想よりも多くのノードが Log Analytics ワークスペースにデータを送信している
-- 予想よりも多くのデータが Log Analytics ワークスペースに送信されている (新しいソリューションの使用を開始したか、既存のソリューションの構成を変更したことが原因である可能性があります)。
+- 予想よりも多くのノードが Log Analytics ワークスペースにデータを送信している: 「[データを送信するノードについて理解する](#understanding-nodes-sending-data)」を参照してください。
+- 予想よりも多くのデータが Log Analytics ワークスペースに送信されている (新しいソリューションの使用を開始したか、既存のソリューションの構成を変更したことが原因である可能性があります): 「[取り込まれたデータ ボリュームについて理解する](#understanding-ingested-data-volume)」を参照してください。 
+
+`Usage` レコードを使用して多数のデータ インジェストが報告されている ([下記](#data-volume-by-solution)を参照) が、[データ型](#data-volume-for-specific-events)で直接 `_BilledSize` を合計したときに同じ結果が確認できない場合は、大幅に到着が遅延しているデータがある可能性があります。 この診断方法の詳細については、[こちら](#late-arriving-data)を参照してください。 
 
 ## <a name="understanding-nodes-sending-data"></a>データを送信するノードについて理解する
 
@@ -461,8 +494,24 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 > [!WARNING]
 > 使用状況データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなります。 これらは、**Computer** と、取り込みに関連するフィールド (**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped**、および **AverageProcessingTimeMs**) です。
 
+## <a name="late-arriving-data"></a>到着遅延データ   
 
-### <a name="querying-for-common-data-types"></a>一般的なデータ型のクエリを実行する
+古いタイムスタンプでデータが取り込まれる状況が発生することがあります。 たとえば、通信に問題があるためにエージェントが Log Analytics と通信できない場合や、ホストの時刻や日時が正しくない場合があります。 これは、`Usage` データ型によって報告される取り込まれたデータと、イベントが生成されたタイムスタンプである `TimeGenerated` によって指定された特定の日の生データの `_BilledSize` を合計するクエリとの間の明らかな不一致によって示される可能性があります。
+
+到着遅延データの問題を診断するには、`TimeGenerated` 列に加えて、`_TimeReceived` 列 ([詳細情報](./log-standard-columns.md#_timereceived)) を使用します。 `_TimeReceived` は、レコードが Azure クラウド内の Azure Monitor インジェスト ポイントによって受信された時刻です。 たとえば、`Usage` レコードを使用しているとき、2021 年 5 月 2 日に `W3CIISLog` データの大量の取り込みデータ ボリュームを観察した場合、この取り込まれたデータのタイムスタンプを識別するクエリは次のようになります。 
+
+```Kusto
+W3CIISLog
+| where TimeGenerated > datetime(1970-01-01)
+| where _TimeReceived >= datetime(2021-05-02) and _TimeReceived < datetime(2021-05-03) 
+| where _IsBillable == true
+| summarize BillableDataMB = sum(_BilledSize)/1.E6 by bin(TimeGenerated, 1d)
+| sort by TimeGenerated asc 
+```
+
+`where TimeGenerated > datetime(1970-01-01)` は、単に、すべてのデータを調べる手掛かりを Log Analytics ユーザー インターフェイスに提供する目的で存在します。  
+
+## <a name="querying-for-common-data-types"></a>一般的なデータ型のクエリを実行する
 
 特定のデータ型のデータのソースについてさらに詳しく調べるための、いくつかの便利なクエリの例を次に示します。
 
@@ -557,7 +606,7 @@ union
 
 ## <a name="evaluating-the-legacy-per-node-pricing-tier"></a>従来のノードごとの価格レベルの評価
 
-従来の **ノードごとの** 価格レベルにアクセスできるワークスペースで、そのレベルのほうが適しているのか、または現在の **従量課金制** または **容量予約** レベルのほうが適しているのかを判断することは、多くの場合、お客様が評価するのは容易ではありません。  これには、ノードごとの価格レベルでの監視対象ノードあたりの固定費とそれに含まれる 500 MB/ノード/日のデータ割り当てと、従量課金制 (GB 単位) レベルでの取り込まれたデータのみに対して支払うコストとの間のトレードオフを理解することが伴います。 
+従来の **ノードごとの** 価格レベルにアクセスできるワークスペースで、そのレベルのほうが適しているのか、または現在の **従量課金制** または **コミットメント レベル** のほうが適しているのかの判断は、多くの場合、お客様が評価するのは容易ではありません。  これには、ノードごとの価格レベルでの監視対象ノードあたりの固定費とそれに含まれる 500 MB/ノード/日のデータ割り当てと、従量課金制 (GB 単位) レベルでの取り込まれたデータのみに対して支払うコストとの間のトレードオフを理解することが伴います。 
 
 この評価を容易にするために、次のクエリを使用して、ワークスペースの使用パターンに基づいて最適な価格レベルの推奨設定を作成できます。  このクエリでは、監視対象ノードとワークスペースに取り込まれた過去 7 日間のデータに注目し、各日でどの価格レベルが最適であるかが評価されます。 クエリを使用するには、以下を指定する必要があります。
 
@@ -575,11 +624,14 @@ let workspaceHasSecurityCenter = false;  // Specify if the workspace has Azure S
 let PerNodePrice = 15.; // Enter your montly price per monitored nodes
 let PerNodeOveragePrice = 2.30; // Enter your price per GB for data overage in the Per Node pricing tier
 let PerGBPrice = 2.30; // Enter your price per GB in the Pay-as-you-go pricing tier
-let CarRes100Price = 196.; // Enter your price for the 100 GB/day Capacity Reservation
-let CarRes200Price = 368.; // Enter your price for the 200 GB/day Capacity Reservation
-let CarRes300Price = 540.; // Enter your price for the 300 GB/day Capacity Reservation
-let CarRes400Price = 704.; // Enter your price for the 400 GB/day Capacity Reservation
-let CarRes500Price = 865.; // Enter your price for the 500 GB/day Capacity Reservation
+let CommitmentTier100Price = 196.; // Enter your price for the 100 GB/day commitment tier
+let CommitmentTier200Price = 368.; // Enter your price for the 200 GB/day commitment tier
+let CommitmentTier300Price = 540.; // Enter your price for the 300 GB/day commitment tier
+let CommitmentTier400Price = 704.; // Enter your price for the 400 GB/day commitment tier
+let CommitmentTier500Price = 865.; // Enter your price for the 500 GB/day commitment tier
+let CommitmentTier1000Price = 1700.; // Enter your price for the 1000 GB/day commitment tier
+let CommitmentTier2000Price = 3320.; // Enter your price for the 2000 GB/day commitment tier
+let CommitmentTier5000Price = 8050.; // Enter your price for the 5000 GB/day commitment tier
 // ---------------------------------------
 let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
 let StartDate = startofday(datetime_add("Day",-1*daysToEvaluate,now()));
@@ -614,27 +666,32 @@ union *
 | extend billableGB = iff(workspaceHasSecurityCenter,
              (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*ASCnodesPerDay, 0.)), DataGB )
 | extend PerGBDailyCost = billableGB * PerGBPrice
-| extend CapRes100DailyCost = CarRes100Price + max_of(billableGB - 100, 0.)* PerGBPrice
-| extend CapRes200DailyCost = CarRes200Price + max_of(billableGB - 200, 0.)* PerGBPrice
-| extend CapRes300DailyCost = CarRes300Price + max_of(billableGB - 300, 0.)* PerGBPrice
-| extend CapRes400DailyCost = CarRes400Price + max_of(billableGB - 400, 0.)* PerGBPrice
-| extend CapResLevel500AndAbove = max_of(floor(billableGB, 100),500)
-| extend CapRes500AndAboveDailyCost = CarRes500Price*CapResLevel500AndAbove/500 + max_of(billableGB - CapResLevel500AndAbove, 0.)* PerGBPrice
+| extend CommitmentTier100DailyCost = CommitmentTier100Price + max_of(billableGB - 100, 0.)* CommitmentTier100Price/100.
+| extend CommitmentTier200DailyCost = CommitmentTier200Price + max_of(billableGB - 200, 0.)* CommitmentTier200Price/200.
+| extend CommitmentTier300DailyCost = CommitmentTier300Price + max_of(billableGB - 300, 0.)* CommitmentTier300Price/300.
+| extend CommitmentTier400DailyCost = CommitmentTier400Price + max_of(billableGB - 400, 0.)* CommitmentTier400Price/400.
+| extend CommitmentTier500DailyCost = CommitmentTier500Price + max_of(billableGB - 500, 0.)* CommitmentTier500Price/500.
+| extend CommitmentTier1000DailyCost = CommitmentTier1000Price + max_of(billableGB - 1000, 0.)* CommitmentTier1000Price/1000.
+| extend CommitmentTier2000DailyCost = CommitmentTier2000Price + max_of(billableGB - 2000, 0.)* CommitmentTier2000Price/2000.
+| extend CommitmentTier5000DailyCost = CommitmentTier5000Price + max_of(billableGB - 5000, 0.)* CommitmentTier5000Price/5000.
 | extend MinCost = min_of(
-    PerNodeDailyCost,PerGBDailyCost,CapRes100DailyCost,CapRes200DailyCost,
-    CapRes300DailyCost, CapRes400DailyCost, CapRes500AndAboveDailyCost)
+    PerNodeDailyCost,PerGBDailyCost,CommitmentTier100DailyCost,CommitmentTier200DailyCost,
+    CommitmentTier300DailyCost, CommitmentTier400DailyCost, CommitmentTier500DailyCost, CommitmentTier1000DailyCost, CommitmentTier2000DailyCost, CommitmentTier5000DailyCost)
 | extend Recommendation = case(
     MinCost == PerNodeDailyCost, "Per node tier",
     MinCost == PerGBDailyCost, "Pay-as-you-go tier",
-    MinCost == CapRes100DailyCost, "Capacity Reservation (100 GB/day)",
-    MinCost == CapRes200DailyCost, "Capacity Reservation (200 GB/day)",
-    MinCost == CapRes300DailyCost, "Capacity Reservation (300 GB/day)",
-    MinCost == CapRes400DailyCost, "Capacity Reservation (400 GB/day)",
-    MinCost == CapRes500AndAboveDailyCost, strcat("Capacity Reservation (",CapResLevel500AndAbove," GB/day)"),
+    MinCost == CommitmentTier100DailyCost, "Commitment tier (100 GB/day)",
+    MinCost == CommitmentTier200DailyCost, "Commitment tier (200 GB/day)",
+    MinCost == CommitmentTier300DailyCost, "Commitment tier (300 GB/day)",
+    MinCost == CommitmentTier400DailyCost, "Commitment tier (400 GB/day)",
+    MinCost == CommitmentTier500DailyCost, "Commitment tier (500 GB/day)",
+    MinCost == CommitmentTier1000DailyCost, "Commitment tier (1000 GB/day)",
+    MinCost == CommitmentTier2000DailyCost, "Commitment tier (2000 GB/day)",
+    MinCost == CommitmentTier5000DailyCost, "Commitment tier (5000 GB/day)",
     "Error"
 )
 | project day, nodesPerDay, ASCnodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, 
-    CapRes100DailyCost, CapRes200DailyCost, CapRes300DailyCost, CapRes400DailyCost, CapRes500AndAboveDailyCost, Recommendation 
+    CommitmentTier100DailyCost, CommitmentTier200DailyCost, CommitmentTier300DailyCost, CommitmentTier400DailyCost, CommitmentTier500DailyCost, CommitmentTier1000DailyCost, CommitmentTier2000DailyCost, CommitmentTier5000DailyCost, Recommendation 
 | sort by day asc
 //| project day, Recommendation // Comment this line to see details
 | sort by day asc
@@ -689,13 +746,9 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 データ収集が停止したときに通知が届くようにするには、"*日次データ上限の作成*" アラートで説明されている手順を使用して、データ収集が停止したときに通知されるようにします。 [アクション グループの追加](../alerts/action-groups.md)に関する記事に記載されている手順を使用して、アラート ルールに電子メール、webhook、または Runbook アクションを構成します。 
 
-## <a name="late-arriving-data"></a>到着遅延データ   
-
-接続の問題が原因でエージェントが Log Analytics と通信できない場合や、ホストの時刻と日付または時刻が正しくない場合などに、非常に古いタイムスタンプのあるデータが取り込まれる状況が発生する可能性があります。 これらの問題を診断するには、`TimeGenerated` 列に加えて、`_TimeReceived` 列 ([詳細情報](./log-standard-columns.md#_timereceived)) を使用します。 `TimeReceived` は、そのレコードが Azure クラウド内の Azure Monitor インジェスト ポイントによって受信された時刻です。  
-
 ## <a name="limits-summary"></a>制限の概要
 
-追加の Log Analytics の制限がいくつかあり、その一部は Log Analytics 価格レベルに依存します。 詳細は「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)」にあります。
+Log Analytics の追加の制限があり、その一部は Log Analytics 価格レベルに依存します。 詳細は「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)」にあります。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.openlocfilehash: c223b5dd75ac82706a2b35268813391899170f73
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 05/24/2021
+ms.openlocfilehash: 35822fb47add5c355ad9461b09e8e910f0a5a1fd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071543"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480376"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -17,6 +17,19 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - 最新のリリース
 - 既知の問題
 - バグの修正
+
+## <a name="may-2021"></a>2021 年 5 月
+
+バージョン 1.6
+
+### <a name="new-features"></a>新機能
+
+- SUSE Enterprise Linux 12 のサポートを追加しました
+- ゲスト構成エージェントがバージョン 1.26.12.0 に更新され、次のものが含まれるようになりました。
+
+   - ポリシーは個別のプロセスで実行されます。
+   - 拡張機能検証用の V2 署名サポートが追加されました。
+   - データ ログのマイナーな更新。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -49,7 +62,7 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 
 ### <a name="new-feature"></a>新機能
 
-Windows Server 2008 R2 のサポートを追加。
+Windows Server 2008 R2 SP1 のサポートを追加。
 
 ### <a name="fixed"></a>固定
 

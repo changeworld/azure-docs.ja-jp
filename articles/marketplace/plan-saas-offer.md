@@ -1,5 +1,5 @@
 ---
-title: Microsoft コマーシャル マーケットプレースの SaaS オファーを計画する方法
+title: Microsoft コマーシャル マーケットプレースの SaaS オファーを計画する方法 - Azure Marketplace
 description: Microsoft パートナー センターのコマーシャル マーケットプレース プログラムを使用して、Microsoft AppSource、Azure Marketplace、またはクラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) オファーを計画する方法。
 author: mingshen-ms
 ms.author: mingshen
@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2021
-ms.openlocfilehash: b9b2270034853832f6795203dfaa60b6809a89ba
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 05/25/2021
+ms.openlocfilehash: 92edc1e2e2ae1e359cfd951a239e30d506d2452c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138951"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692010"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
 
@@ -49,15 +49,13 @@ _[問い合わせ]_ リスト オプションには、技術的な要件はあ�
 
 _[今すぐ入手 (無料)]_ 、 _[無料試用版]_ 、 _[Sell through Microsoft]\(Microsoft を通じた販売\)_ リスト オプションには、次の技術的な要件があります。
 
-- SaaS アプリケーションは、マルチテナント ソリューションである必要があります。
-- ユーザーを認証するために、Microsoft アカウント (MSA) と [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) の両方を有効にすることができます。
-- ランディング ページを作成する必要があります。 ユーザーは、オファーを購入するとランディング ページにリダイレクトされます。 これは、必要とされる追加のプロビジョニングやセットアップがあればユーザーが終えるのに役立ちます。 ランディング ページの作成に関するガイダンスについては、次の記事を参照してください。
+- サイトでの購入者を認証するために、Microsoft アカウント (MSA) と [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) の両方を有効にする必要があります。 Azure AD アカウントを持つ購入者が、Azure AD を使用してシングル サインオン (SSO) でアプリケーションにサインインできるようにする必要があります。
+- オファーを購入した顧客を対象に、シームレスなサインインとオンボード エクスペリエンスを提供するランディング ページを作成する必要があります。 ランディング ページは、顧客が、必要な追加のプロビジョニングやセットアップを完了するのに役立ちます。 ランディング ページの作成に関するガイダンスについては、次の記事を参照してください。
   - [取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する](azure-ad-transactable-saas-landing-page.md)
   - [コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する](azure-ad-free-or-trial-landing-page.md)
 
 これらの追加の技術的な要件は、" _[Sell through Microsoft]\(Microsoft を通じた販売\)_ " (取引可能) リスト オプションにのみ適用されます。
 
-- 購入ユーザーがランディング ページにアクセスするには、Azure AD およびシングル サインオン (SSO) ID の管理と認証が必要です。 詳細なガイダンスについては、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](azure-ad-saas.md)」を参照してください。
 - [SaaS フルフィルメント API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) を使用して、Azure Marketplace と Microsoft AppSource を統合する必要があります。 SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、削除する必要があります。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 収集されたフィールドの使用方法を示す図と詳細な説明については、この [API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) に関するドキュメントをご覧ください。
 - オファーに対して少なくとも 1 つのプランを作成する必要があります。 プランの価格は、公開する前に選択する価格モデル ("_定額_" または "_ユーザーごと_") に基づきます。 [プラン](#plans)の詳細については、この記事の後半で説明します。
 - 顧客は、いつでもオファーをキャンセルできます。
@@ -114,12 +112,12 @@ SaaS オファーが IT ソリューション (Azure Marketplace) とビジネ�
 | 従量制課金 | パブリック プラン | プライベート プラン | 次で利用可能: |
 |---|---|---|---|
 | はい             | はい         | いいえ           | Azure Marketplace と Azure portal |
-| はい             | はい         | Yes          | Azure Marketplace と Azure portal* |
+| はい             | はい         | はい          | Azure Marketplace と Azure portal* |
 | はい             | いいえ          | はい          | Azure portal のみ |
 | いいえ              | いいえ          | はい          | Azure portal のみ |
 |||||
 
-&#42; このオファーのプライベート プランは、Azure portal 経由でのみ利用可能です
+&#42; このオファーのプライベート プランは、Azure portal 経由でのみ利用可能です。
 
 たとえば、従量制課金とプライベート プランのみ (パブリックプランなし) のオファーを購入するのは、Azure portal のお客様のみになります。 詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](private-offers.md)」を参照してください。
 
@@ -149,12 +147,13 @@ Microsoft 365 との統合により、SaaS オファーでは、Teams アプリ�
 製品がリンクされた場合、AppSource で検索すると、SaaS とリンクされたすべてのアドインの両方を含む結果が 1 つ返されます。顧客は、SaaS オファーの製品詳細ページとリンクされたアドイン間を移動できます。IT 管理者は Microsoft 365 管理センター内の統合されて接続されたエクスペリエンスを通じて、SaaS とリンクされたアドインの両方を同じプロセス内で確認およびデプロイできます。 詳細については、[Microsoft 365 アプリのテストとデプロイ - Microsoft 365 管理](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps)に関する記事を参照してください。
 
 ### <a name="microsoft-365-integration-support-limitations"></a>Microsoft 365 統合サポートの制限事項
+
 単一の E2E ソリューションとしての検出は、すべてのケースにおいて AppSource でサポートされますが、Microsoft 365 管理センターを介した前述の E2E ソリューションの簡略化されたデプロイについては、次のシナリオではサポートされません。
 
+   - "Contact me (お問い合わせ)" リストのみのオファー。 
    - 同じアドインが複数の SaaS オファーにリンクされている。
    - SaaS オファーがアドインにリンクされているが、Microsoft Graph と統合されていないため、AAD アプリ ID は提供されていない。
   - SaaS オファーはアドインにリンクされているが、Microsoft Graph 統合用に提供された AAD アプリ ID が複数の SaaS オファー間で共有されている。
-
  
 ## <a name="offer-listing-details"></a>オファー登録情報の詳細
 
@@ -221,12 +220,12 @@ Microsoft 365 との統合により、SaaS オファーでは、Teams アプリ�
 
 - **メディア - スクリーンショット**: オファーがどのように機能するかを示す、次の要件を含むスクリーンショットを 1 つ以上最大 5 つ追加する必要があります。
   - 1280 x 720 ピクセル
-  - .png ファイル
+  - PNG ファイルの種類
   - キャプションを含める必要があります
 - **メディア - ビデオ** (省略可能): オファーのデモを行い、次の要件を満たす最大 4 つのビデオを追加できます。
   - 名前
   - URL:YouTube または Vimeo のみでホストされる必要があります。
-  - サムネイル: 1280 x 720 .png ファイル
+  - サムネイル: 1280 x 720 PNG ファイル
 
 > [!Note]
 > オファーは、一般的な[コマーシャル マーケットプレースの認定ポリシー](/legal/marketplace/certification-policies#100-general)と、コマーシャル マーケットプレースに公開される[サービスとしてのソフトウェアのポリシー](/legal/marketplace/certification-policies#1000-software-as-a-service-saas)を満たしている必要があります。
@@ -321,7 +320,7 @@ Microsoft がサポートするマーケティングおよびセールス チャ
 
 - **CSP を通して再販する**: このオプションを使用して、Microsoft クラウド ソリューションプロバイダー (CSP) パートナーがバンドルされたオファーの一部としてソリューションを再販できるようにします。 このプログラムの詳細については、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」を参照してください。
 
-- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 共同販売の資格の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](./co-sell-configure.md)」を参照してください。
+- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 共同販売の資格の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 評価のためにオファーを準備する方法の詳細については、「[パートナー センターの [共同販売] オプション](co-sell-configure.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

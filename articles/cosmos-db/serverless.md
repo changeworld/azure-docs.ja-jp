@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: 146a1dba3e13ac594e3b4d9edc358d46b0d54201
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 26858ca04af7a96896229c44757fa963ae362f1c
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378493"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534174"
 ---
 # <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB サーバーレス
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,12 +41,12 @@ Azure Cosmos DB サーバーレスは、アイドル時間が長く、**断続�
 
 ## <a name="using-serverless-resources"></a>サーバーレス リソースの使用
 
-サーバーレスは、Azure Cosmos アカウントの新しい種類です。つまり、新しいアカウントを作成するときに、**プロビジョニングされたスループット** と **サーバーレス** のどちらかを選択する必要があります。 サーバーレスの使用を開始するには、新しいサーバーレス アカウントを作成する必要があります。 プレビュー リリース中は、新しいサーバーレス アカウントを作成する唯一の方法として、[Azure portal を使用](create-cosmosdb-resources-portal.md)します。 既存アカウントとサーバーレス モードとの間の移行は、現在サポートされていません。
+サーバーレスは、Azure Cosmos アカウントの新しい種類です。つまり、新しいアカウントを作成するときに、**プロビジョニングされたスループット** と **サーバーレス** のどちらかを選択する必要があります。 サーバーレスの使用を開始するには、新しいサーバーレス アカウントを作成する必要があります。 既存アカウントとサーバーレス モードとの間の移行は、現在サポートされていません。
 
 サーバーレス アカウントで作成されたコンテナーはすべて、サーバーレス コンテナーです。 サーバーレス コンテナーでは、プロビジョニングされたスループット モードで作成されたコンテナーと同じ機能が公開されているため、まったく同じ方法でデータの読み取り、書き込み、クエリを実行できます。 ただし、サーバーレス アカウントとコンテナーには固有の特性もあります。
 
 - サーバーレス アカウントは、1 つの Azure リージョンでのみ実行できます。 サーバーレス アカウントを作成した後で、そのアカウントに Azure リージョンを追加することはできません。
-- サーバーレス アカウントで [Synapse Link プレビュー機能](synapse-link.md)を有効にすることはできません。
+- サーバーレス アカウントで [Synapse Link 機能](synapse-link.md)を有効にすることはできません。
 - サーバーレス コンテナーでは、スループットのプロビジョニングは必要ないため、次の記述が該当します。
     - サーバーレス コンテナーを作成するときにスループットを渡すことはできず、これを行うとエラーが返されます。
     - サーバーレス コンテナーでスループットを読み取りまたは更新することはできず、これを行うとエラーが返されます。

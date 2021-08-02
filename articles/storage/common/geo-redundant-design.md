@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f0d29e55e0bf1a88f5fb787b96b5bc549107fe8f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035103"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469399"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>geo 冗長性を使用して高可用性アプリケーションを設計する
 
@@ -148,11 +148,11 @@ Azure Storage クライアント ライブラリは、どのエラーが再試�
 
 * ストレージ要求に渡す [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) オブジェクトの [**Retrying**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) イベントにハンドラーを追加します。この方法はこの記事で紹介しているほか、付属のサンプルでも使用されています。 これらのイベントはクライアントが要求を再試行するたびに呼び出されるので、プライマリ エンドポイントで再試行可能なエラーが発生した頻度を追跡できます。
 
-    # <a name="net-v12"></a>[.NET v12](#tab/current)
+    # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/current)
 
     現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
-    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+    # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/legacy)
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -166,11 +166,11 @@ Azure Storage クライアント ライブラリは、どのエラーが再試�
 
 * カスタム再試行ポリシーの [**Evaluate**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) メソッドで、再試行が行われるたびにカスタム コードを実行することができます。 これは、再試行の発生を記録するだけでなく、再試行の動作を見直す機会にもなります。
 
-    # <a name="net-v12"></a>[.NET v12](#tab/current)
+    # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/current)
 
     現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
-    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+    # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -233,12 +233,11 @@ geo 冗長ストレージは、プライマリ リージョンからセカンダ
 
 [Fiddler](https://www.telerik.com/fiddler) を使用すると、スクリプトで HTTP 応答をインターセプトして変更することができます。 このスクリプトは、プライマリ エンドポイントからの応答を識別し、その HTTP 状態コードを、ストレージ クライアント ライブラリが再試行できないエラーとして認識するコードに変更します。 下のコード スニペットは、**employeedata** テーブルに対する読み取り要求への応答をインターセプトして 502 ステータスを返す、Fiddler スクリプトの簡単な例を示しています。
 
-
-# <a name="java-v12"></a>[Java v12](#tab/current)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/current)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
-# <a name="java-v11"></a>[Java v11](#tab/legacy)
+# <a name="java-v11-sdk"></a>[Java v11 SDK](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {

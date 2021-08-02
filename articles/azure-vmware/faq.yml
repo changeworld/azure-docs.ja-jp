@@ -1,0 +1,224 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Azure VMware Solution に関する FAQ
+  description: Azure VMware Solution についてよく寄せられる質問にお答えします。
+  ms.topic: troubleshooting
+  ms.custom: contperf-fy21q4
+  ms.date: 05/25/2021
+  ms.openlocfilehash: cd72bb3dd857d91ae486555a7fae3cdce0b5eec2
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111953002"
+title: Azure VMware Solution についてよく寄せられる質問
+summary: この記事では、Azure VMware Solution についてよく寄せられる質問に回答します。
+sections:
+- name: 全般
+  questions:
+  - question: Azure VMware Solution とは
+    answer: 企業によるビジネスの機敏性の向上、コスト削減、イノベーションの促進のための IT 近代化戦略の追及を受けて、ハイブリッド クラウド プラットフォームが顧客のデジタル変革の主要な手段として登場しました。 Azure VMware Solution は、VMware の Software Defined Data Center (SDDC) ソフトウェアと Microsoft Azure グローバル クラウド サービス エコシステムを組み合わせたものです。 Azure VMware Solution は、パフォーマンス、可用性、セキュリティ、およびコンプライアンスの要件を満たすために管理されます。 詳細については、「[Azure VMware Solution とは](introduction.md)」を参照してください。
+  - question: 現在、Azure VMware Solution はどこで利用できますか?
+    answer: このサービスは新しいリージョンに継続的に追加されています。 詳細については、[サービスの利用可能性に関する最新の情報](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)を参照してください。
+  - question: Azure VMware Solution インスタンスで実行されるワークロードは、Azure サービスと統合できますか?
+    answer: Azure VMware Solution のお客様はすべての Azure サービスを利用できるようになります。 特定のサービスのパフォーマンスと可用性の制限については、ケースバイケースで対処する必要があります。
+  - question: Azure VMware Solution と互換性のあるゲスト オペレーティング システムには、どのようなものがありますか?
+    answer: ゲスト オペレーティング システムと vSphere との互換性に関する情報については、「[VMware Compatibility Guide](https://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&details=1&releases=485&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc&testConfig=16)」を参照してください。 Azure VMware Solution で実行されている vSphere のバージョンを特定するには、「[VMware ソフトウェアのバージョン](concepts-private-clouds-clusters.md#vmware-software-versions)」を参照してください。
+  - question: 変更制御プロセスはどのようなものですか?
+    answer: サービス自体に加えられた更新は、Microsoft Azure の標準的な変更管理プロセスに従います。 お客様は、ワークロード管理タスクと関連する変更管理プロセスについて責任を持ちます。
+  - question: このバージョンは、Azure VMware Solution by CloudSimple とどのように違いますか?
+    answer: 新しい Azure VMware Solution では、Microsoft と VMware の間に直接クラウド プロバイダー パートナーシップがあります。 新しいソリューションは、Microsoft によって完全に設計、構築、サポートされ、VMware によって保証されます。 アーキテクチャ上、ソリューションは専用の Azure インフラストラクチャで実行されている VMware テクノロジ スタックと一貫しています。
+- name: 顧客とのコミュニケーション
+  questions:
+  - question: Azure でサービス正常性通知が Azure サブスクリプションに送信されるときに、アラートを受け取ることはできますか?
+    answer: >
+      [!INCLUDE [customer-communications](includes/customer-communications.md)]
+- name: 構成とセットアップ
+  questions:
+  - question: クラスターに最初の 3 つのノードをプロビジョニングするには、どのくらいの時間がかかりますか?
+    answer: 現在、プロビジョニングには約 3 から 4 時間かかる場合があります。  既存のクラスターまたは同じクラスターに単一ノードを追加するのにかかる時間は、30 分から 45 分です。
+- name: VMware ソフトウェア
+  questions:
+  - question: Azure VMware Solution の VM は VMRC で管理できますか?
+    answer: はい。 インストールされるシステムがプライベート クラウドの vCenter にアクセスでき、パブリック DNS を使用して ESXi ホスト名を解決している場合は管理できます。
+  - question: Azure VMware Solution の VM で VMRC をインストールして使用するための特別な手順はありますか?
+    answer: いいえ。 VM の前提条件を満たすには、[VMware によって提供される手順](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)に従ってください。
+  - question: オンプレミスで実行される vRealize スイートを使用できますか?
+    answer: 特定の統合およびユース ケースは、ケースバイケースで評価されます。
+  - question: オンプレミス環境から Azure VMware Solution のプライベート クラウドに vSphere VM を移行できますか?
+    answer: はい。 標準クロス vCenter [vMotion の要件](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952)が満たされる場合、VM 移行と vMotion を使用して VM をプライベート クラウドに移動できます。
+  - question: オンプレミス環境では、特定のバージョンの vSphere が必要ですか?
+    answer: どのクラウド環境にも VMware HCX が付属しているため、vMotion のオンプレミス環境では vSphere 5.5 以降が必要です。
+  - question: VMware HCX は VPN でサポートされますか?
+    answer: いいえ。帯域幅と待機時間の要件があるためサポートされません。
+  - question: プライベート クラウドで使用される VMware ソフトウェアのバージョンは何ですか?
+    answer: >
+      [!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+  - question: Azure VMware Solution プライベート クラウドで、VMware ソフトウェア (ESXi、vCenter、PSC、NXS) のパッチ、更新、またはアップグレードは、どれくらいの頻度で行われますか?
+    answer: >
+      [!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
+  - question: プライベート クラウドでは VMware NSX は使用されますか? その場合、サポートされているバージョンは何ですか?
+    answer: はい。Azure VMware Solution のプライベート クラウドでは、ソフトウェア定義のネットワークのために NSX-T 2.5 が使用されます。 | NSX-T が NSX のサポートされている唯一のバージョンです。
+  - question: オンプレミス環境またはプライベート クラウドに接続するネットワークでは NSX が必要ですか?
+    answer: いいえ。オンプレミスでは NSX を使用する必要はありません。
+  - question: VMware Horizon 8 2012 は、Azure VMware Solution と互換性がありますか?
+    answer: はい。
+  - question: vSphere Web Client の既定のタイムアウト値を変更できますか?
+    answer: はい。 タイムアウト値の変更については、「[Configure the vSphere Web Client Timeout Value](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-975412DE-CDCB-49A1-8E2A-0965325D33A5.html)」(vSphere Web Client のタイムアウト値を構成する) を参照してください。
+- name: 移行
+  questions:
+  - question: Sentinel Appliance サービスを使用している場合、HCX Manager の [Sentinel Management]\(Sentinel 管理タブ\) を表示できないのはなぜですか?
+    answer: '[Sentinel Management]\(Sentinel 管理タブ\) タブを使用すると、Sentinel ソフトウェアをダウンロードできます。  これは、HCX Enterprise ライセンスがアクティブ化されていて、デプロイされた Sentinel Gateway (SGW) と Sentinel Data Receiver (SDR) のペアでサービス メッシュをデプロイしてある場合に、HCX Interconnect インターフェイスに表示されます。 また、従来のオンプレミスからクラウドへのデプロイでは、Sentinel タブは、クラウド マネージャーではなくコネクタにのみ表示されます。'
+  - question: オンプレミス側でシン プロビジョニングを使用して作成された VM を Azure VMware Solution に移行する場合、VM はシン状態が維持されますか?
+    answer: いいえ。 ただし、VM をシックとして移行する場合は、UI と PowerCLI の組み合わせを使用して、個々の VM と個々の VMDK のポリシーを変更できます。
+- name: Compute
+  questions:
+  - question: 各種ホストの CPU の仕様はどのようになっていますか?
+    answer: サーバーには、デュアル 18 コア 2.3 GHz Intel CPU が搭載されています。
+  - question: 各ホストにはどのくらいのメモリがありますか?
+    answer: サーバーには 576 GB の RAM が搭載されています。
+  - question: Azure VMware Solution では、入れ子になった仮想化ソリューションとしての ESXi/ESX の実行はサポートされますか?
+    answer: いいえ。 VMware では、入れ子になった仮想化は正式にはサポートされていません。
+- name: サードパーティのバックアップと回復
+  questions:
+  - question: cloudadmin 拡張特権は、Azure VMware Solution でサポートされますか?
+    answer: いいえ。 現在、cloudadmin 拡張特権はサポートされておらず、当面はサポートされる予定もありません。
+  - question: Azure VMware Solution と連係する独立系ソフトウェア ベンダー (ISV) のバックアップ ソリューションにはどのようなものがありますか?
+    answer: Commvault、Veritas、Veeam の各社は Azure VMware Solution と連係するように自社のバックアップ ソリューションを拡張しています。  ただし、HotAdd トランスポート モードで VMware vStorage API for Data Protection (VADP) を使用するバックアップ ソリューションは、Azure VMware Solution ですぐに動作します。 詳細については、[Azure VMware Solution VM のバックアップ ソリューション](ecosystem-back-up-vms.md)に関する記事を参照してください。
+  - question: ISV バックアップ ソリューションのサポートはどのようなものですか?
+    answer: これらのバックアップ ソリューションはお客様がインストールおよび管理するため、それぞれの ISV にサポートを依頼することができます。
+- name: ネットワークと相互接続
+  questions:
+  - question: Azure Bastion を使用して AVS VMware Solution VM に接続することはできますか?
+    answer: Azure Bastion は、Azure VMware Solution がインターネットに公開されないようにジャンプ ボックスに接続する場合に推奨されるサービスです。 Azure VMware Solution の VM は Azure IaaS オブジェクトではないため、Azure Bastion を使用してそれらの VM に接続することはできません。
+  - question: 各 ESXi ホストで使用できるネットワーク帯域幅はどれくらいですか?
+    answer: Azure VMware Solution の各 ESXi ホストは、4 つの 25 Gbps NIC、ESXi のシステム トラフィック用にプロビジョニングされた 2 つの NIC、ワークロードのトラフィック用にプロビジョニングされた 2 つの NIC で構成されています。
+  - question: SNMP インフラストラクチャのログは共有されますか?
+    answer: 不正解です。
+  - question: ExpressRoute では、MTU が 1500 を超えるパケットはサポートされていますか?
+    answer: いいえ。
+  - question: Azure VMware Solution VM で内部 Azure Load Balancer 使用できますか?
+    answer: いいえ。 内部 Azure Load Balancer では、Azure IaaS VM のみがサポートされます。 Azure Load Balancer は IP ベースのバックエンド プールをサポートしていません。Azure VMware Solution VM が Azure オブジェクトではない Azure VM または仮想マシン スケール セット オブジェクトのみです。
+  - question: 既存の ExpressRoute ゲートウェイを使用して、Azure VMware Solution に接続できますか?
+    answer: はい。 仮想ネットワークあたり 4 つの ExpressRoute 回路という上限を超えない限り、既存の ExpressRoute ゲートウェイを使用して Azure VMware Solution に接続できます。 オンプレミスから ExpressRoute 経由で Azure VMware Solution にアクセスするには、ExpressRoute Global Reach が必要です。これは、ExpressRoute ゲートウェイでは、それに接続されている回路との間で推移的なルーティングが提供されないためです。
+  - question: Azure VMware Solution で 4 バイトのパブリック自律システム番号 (ASN) が使用されるのはなぜですか?
+    answer: Azure VMware Solution では、公式に登録された 4 バイトのパブリック ASN を使用することで、お客様がオンプレミスで Azure VMware Solution への顧客のルーティング パスに使用するプライベート ASN との競合が起きないことを保証しています。
+  - question: オンプレミスの ExpressRoute キャリア パートナー/ISP が 4 バイトの ASN をサポートしていない場合、ExpressRoute を使用して Azure VMware Solution に接続するにはどうすればよいですか?
+    answer: ExpressRoute 経由で Azure VMware Solution に接続する唯一の方法は、お客様の環境およびオンプレミスの ExpressRoute キャリア パートナー/ISP が、BGP プレフィックス ASN パス アドバタイズメントにおいて、4 バイト ASN をサポートしているか、4 バイトから 2 バイト ASN への下位互換性を有していることです。
+  - question: オンプレミス環境にプライベート クラウドを組み込むには、どのようなネットワーク IP アドレスを計画する必要がありますか?
+    answer: Azure VMware Solution のプライベート クラウドをデプロイするには、/22 プライベート ネットワーク アドレス空間が 1 つ必要です。 このプライベート アドレス空間は、サブスクリプションの他の仮想ネットワーク、またはオンプレミス ネットワークと重複しないようにする必要があります。
+  - question: オンプレミス環境から Azure VMware Solution のプライベート クラウドにはどのように接続しますか?
+    answer: "次の 2 つの方法のいずれかでサービスに接続できます。 \n\n- ExpressRoute 経由でプライベート クラウドにピアリングされる、Azure 仮想ネットワークにデプロイされた VM またはアプリケーション ゲートウェイを使用する。\n- オンプレミスのデータセンターから Azure ExpressRoute 回線への ExpressRoute Global Reach を使用する。\n"
+  - question: オンプレミスの通信で vWAN で VPN S2S を使用する場合に、HCX がサポート対象外であることに対する回避策として、公共のインターネット通信を介して HCX を使用できますか?
+    answer: 現在、VMware HCX でサポートされる方法は ExpressRoute のみです。
+  - question: ワークロード VM をインターネットまたは Azure サービス エンドポイントに接続するにはどうすればよいですか?
+    answer: >
+      Azure portal で、プライベート クラウドのインターネット接続を有効にします。 NSX-T Manager を使用して、NSX-T T1 ルーターと論理スイッチを作成します。 次に、vCenter を使用して、論理スイッチによって定義されたネットワーク セグメントに VM をデプロイします。 この VM は、インターネットと Azure サービスにネットワーク アクセスできます。
+
+
+      > [!NOTE]
+
+      > プライベート クラウドのデプロイの一部として T0 ルーターが作成され構成されます。
+
+      > この論理ルーターまたは NSX-T エッジ ノード VM を変更すると、プライベート クラウドへの接続に影響する可能性があります。
+  - question: インターネットからプライベート クラウド内の論理ネットワーク上の VM へのアクセスを制限する必要はありますか?
+    answer: いいえ。 インターネットからプライベート クラウドへの直接的なインバウンド ネットワーク トラフィックは、既定では許可されません。  ただし、Azure VMware Solution のプライベート クラウド用に Azure portal の[パブリック IP](./enable-public-internet-access.md) オプションを使用して、Azure VMware Solution VM をインターネットに公開することはできます。
+  - question: 論理ネットワーク上の VM からインターネットへのインターネット アクセスを制限する必要はありますか?
+    answer: はい。 NSX-T Manager を使用して、インターネットへの VM のアクセスを制限するファイアウォールを作成する必要があります。
+  - question: DNS サービスの IP と DHCP サーバーの IP には、どの範囲の IP を使用できますか?
+    answer: IP アドレス範囲は、サブスクリプションやオンプレミス ネットワークにある他の仮想ネットワークで使用されている IP 範囲と重複しないようにする必要があります。
+  - question: Azure VMware Solution では、Azure Virtual WAN でホストされた ExpressRoute ゲートウェイを使用できますか?
+    answer: はい。
+  - question: ExpressRoute Global Reach 経由で Azure Virtual WAN を使用して、オンプレミスと Azure VMware Solution の間にトランジット接続を確立できますか?
+    answer: Azure Virtual WAN では、接続されている 2 つの ExpressRoute 回線と Virtual WAN 以外の ExpressRoute ゲートウェイの間に推移的なルーティングは提供されません。 ExpressRoute Global Reach を使用すると、オンプレミスと Azure VMware Solution の接続が可能になりますが、Virtual WAN ハブではなく Microsoft のグローバル ネットワークを通過します。
+- name: ストレージ
+  questions:
+  - question: 重複除去の設定に適切なストレージ ポリシーは何ですか?
+    answer: VM テンプレートに "*thin_provision*" ストレージ ポリシーを使用します。  既定値は "*thick_provision*" です。
+  - question: 各ホストのストレージ容量はどのくらいですか?
+    answer: 各 ESXi ホストには、2 つの vSAN ディスク グループがあり、15.2 TB の容量階層と 3.2 TB の NVMe キャッシュ階層 (各ディスクグループで 1.6 TB) があります。
+  - question: vSAN データストアに保存されるデータは保存時に暗号化されますか?
+    answer: はい。vSAN データストアでは、Azure Key Vault に格納されているキーを使用して、保存データの暗号化が既定で使用されます。 この暗号化ソリューションは KMS ベースで、キーの管理のために vCenter の操作をサポートしています。  ホストがクラスターから削除されると、SSD 上のデータはすぐに無効になります。
+  - question: 作成の間に、データストアまたはクラスターの名前を変更できますか?
+    answer: いいえ。データストアまたはクラスターの名前は変更できません。 クラスター名は、非プライマリ クラスターのポータル以外のデプロイ メカニズムを使用して構成できます。
+  - question: vSAN でのハードウェア障害のフォールト トレランスは何ですか?
+    answer: "オブジェクト領域の予約がシック プロビジョニングに設定された FTT-1、RAID-1 (ミラーリング) が、SDDC の既定のストレージ ポリシーです。\n\n:::image type=\"content\" source=\"media/vsphere-vm-storage-policies.png\" alt-text=\"VSphere クライアント VM ストレージ ポリシーを示すスクリーンショット。\":::  \n"
+  - question: シック プロビジョニングが Azure VMware Solution での既定の vSAN ポリシーであるのはなぜですか?
+    answer: シック プロビジョニングは予約済みまたは事前割り当て済みのストレージ領域です。  シック プロビジョニングにより、領域が既に予約されているために vSAN データストアがいっぱいになっている場合でもシステムを機能できるようにすることで、システムが保護されます。 たとえば、シック プロビジョニングで 10 GB の仮想ディスクを作成するとします。 その場合、仮想ディスク ストレージ容量全部が、仮想ディスクが作成される物理ストレージに事前に割り当てられ、そこに割り当てられているすべての領域がデータストアで消費されます。  他の VM がデータストアの領域を共有することはできません。 シン プロビジョニングされた仮想ディスクは、最初に必要とする領域を消費し、データストアで使用されるデータ領域需要に合わせて大きくなります。
+  - question: 既定の vSAN ポリシーがシック プロビジョニングの場合でも、シン プロビジョニングを使用して Azure VMware Solution に新しい VM を作成できますか?
+    answer: はい。 既定 (thick_provision) 以外では、VM を FTT1 シン プロビジョニングで作成できます。
+  - question: 最大で何個の vSAN ディスクが故障しても、データ損失が発生しませんか?
+    answer: これは、計画している SDDC (プライベート クラウド) 内でのアプリケーション ワークロードの実行方法によって異なります。 Microsoft はこれらの障害を定期的に管理し、インフラストラクチャの観点からそのようなイベントが検出されると、ハードウェアを交換します。 既定としては、FFT-1 の設定が使用され、単一ホストの障害に対応します。
+  - question: vSAN に対してはどのような種類のアラートが予想されますか?
+    answer: Microsoft は、容量消費量が 75% を超えたときにアラートを出します。 代わりに、Azure Monitor に統合されている容量消費量メトリックを監視することもできます。
+  - question: ホストごとに 15.4 TB の生 SSD ストレージを提供するため、ディスク グループは何台の 1.6 TB NVMe ドライブで構成されますか?
+    answer: '[AV36 SKU](https://azure.microsoft.com/pricing/details/azure-vmware/) には、2 個の 1.6 TB NVMe キャッシュと 8 個の 1.9 TB 生ストレージ容量が含まれています。 これらは、2 つのディスク グループに分割されます。'
+  - question: ディスク グループの RAID 構成は何ですか?
+    answer: ディスク グループは RAID で構成されていません。 そうではなく、単なるディスクの集合 (JBOD) であり、[vSAN によって直接制御](https://core.vmware.com/vsan-learn-and-evaluate)されます。
+- name: ホスト、クラスター、およびプライベート クラウド
+  questions:
+  - question: 使用できるホストの種類は複数ありますか?
+    answer: いいえ。 使用できる種類は 1 つだけです。
+  - question: プライベート クラウドのリソースを管理するために現在使用しているのと同じツールを使用しますか?
+    answer: はい。 デプロイといくつかの管理操作のために Azure portal を使用します。 vSphere と NSX-T のリソースを管理するために vCenter と NSX Manager を使用します。
+  - question: オンプレミスの vCenter を使用してプライベート クラウドを管理できますか?
+    answer: 初期の Azure VMware Solution は、オンプレミス環境とプライベート クラウド環境全体に対して単一の管理エクスペリエンスをサポートしていません。 プライベート クラウド クラスターは、プライベート クラウドに対してローカルな vCenter および NSX Manager を使用して管理します。
+  - question: クラスターがスケールアップされた後、ワークロードの需要が減った場合、スケールダウンすることはできますか?
+    answer: はい。プライベート クラウドにクォータが割り当てられている限り、クラスターをスケールアウトすることができます。 ワークロードの需要が低下したら、クラスターからノードを削除してスケールダウンすることができます。 これは、Azure VMware Solution ポータルで行うことができます。
+  - question: 基盤となるインフラストラクチャは共有されていますか?
+    answer: いいえ。プライベート クラウド ホストとクラスターは専用であり、使用前と使用後に安全に消去されます。
+  - question: クラスターあたりのホストの最小数と最大数はどれくらいですか?
+    answer: クラスターは、3 個 (最小) と 16 個 (最大) の ESXi ホストの間でスケーリングできます。 試用版クラスターは、3 台のホストに制限されます。
+  - question: プライベート クラウド クラスターはスケーリングできますか?
+    answer: はい。クラスターは、3 個 (最小) と 16 個 (最大) の ESXi ホストの間でスケーリングします。
+  - question: 試用版クラスターとはどのようなものですか?
+    answer: 試用版クラスターは、Azure VMware Solution プライベート クラウドの 1 か月間の評価に使用される 3 台のホストに制限されます。
+- name: ID 管理
+  questions:
+  - question: 新しい Azure VMware Solution プライベート クラウドでは、どのようなアカウントと特権が取得されますか?
+    answer: vCenter の cloudadmin ユーザーの資格情報と、NSX-T Manager の管理者アクセス権が提供されます。 また、Azure Active Directory を組み込むために使用できる CloudAdmin グループもあります。 詳細については、[アクセスと ID の概念](concepts-identity.md)に関するページを参照してください。
+  - question: ESXi ホストに管理者アクセスできますか?
+    answer: いいえ。ESXi への管理者アクセスは、ソリューションのセキュリティ要件を満たすために制限されています。
+  - question: vCenter にはどのような特権とアクセス許可がありますか?
+    answer: CloudAdmin ロールの特権が付与されます。 詳細については、[アクセスと ID の概念](concepts-identity.md)に関するページを参照してください。
+  - question: NSX-T Manager にはどのような特権とアクセス許可がありますか?
+    answer: >
+      NSX-T に対する完全な管理者特権があり、オンプレミスの NSX-T データセンターと同様に、vSphere ロールベースのアクセス制御を管理できます。 詳細については、[アクセスと ID の概念](concepts-identity.md)に関するページを参照してください。
+
+
+      > [!NOTE]
+
+      > プライベート クラウドのデプロイの一部として T0 ルーターが作成され構成されます。 この論理ルーターまたは NSX-T エッジ ノード VM を変更すると、プライベート クラウドへの接続に影響する可能性があります。
+  - question: 資格情報を変更するにはどうすればいいですか?
+    answer: 資格情報のリセットについては、[Azure VMware Solution 用の vSphere 資格情報のリセット](rotate-cloudadmin-credentials.md)に関する記事を参照してください。
+  - question: cloudadmin 拡張特権は、Azure VMware Solution でサポートされますか?
+    answer: いいえ。 現在、cloudadmin 拡張特権はサポートされておらず、サポートする予定もありません。
+- name: 課金とサポート
+  questions:
+  - question: 障害発生時のディスク交換についての SLA はありますか?
+    answer: ディスクに問題があるホストはすべて置き換えられます。 Azure VMware Solution サービスの全体的な SLA 可用性は 99.9 です。
+  - question: Azure VMware Solution の価格体系はどのようになっていますか?
+    answer: 価格に関する一般的な質問については、Azure VMware Solution の[価格](https://azure.microsoft.com/pricing/details/azure-vmware)に関するページを参照してください。
+  - question: Microsoft CSP から Azure VMware Solution を購入できますか。
+    answer: はい。顧客は CSP で管理されている Azure サブスクリプション内に Azure VMware Solution をデプロイできます。
+  - question: Azure VMware Solution のサポート提供元はどこですか?
+    answer: >-
+      Azure VMware Solution のサポートは、Microsoft が提供します。 [サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信できます。
+
+      クラウド ソリューション プロバイダー (CSP) で管理されているサブスクリプションの場合は、他の Azure サービス用の CSP と同様に、ソリューション プロバイダーから第 1 レベルのサポートが提供されます。
+  - question: Azure VMware Solution のプライベート クラウドを作成するにはどのアカウントが必要ですか?
+    answer: Azure サブスクリプションの Azure アカウントが必要です。
+  - question: Red Hat ソリューションは Azure VMware Solution でサポートされていますか?
+    answer: Microsoft と Red Hat は、Azure プラットフォームで実行される Red Hat エコシステムの統合されたコンタクト ポイントを提供する、同じ場所に配置されている統合されたサポート チームを共有しています。  Red Hat Enterprise Linux で動作する他の Azure platform サービスと同様に、Azure VMware Solution はクラウド アクセスと統合サポートの配下にあります。 Red Hat Enterprise Linux は、Azure 内の Azure VMware Solution 上で実行することがサポートされています。
+  - question: VMware HCX Enterprise を利用できますか? 利用できる場合、コストはどのくらいですか?
+    answer: VMware HCX Enterprise は、Azure VMware Solution で、*プレビュー* の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX Enterprise はプレビュー段階ですが、無料の機能/サービスであり、プレビュー サービスの利用規約が適用されます。 VMware HCX Enterprise サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 サービスを停止またはオプトアウトすることができます。
+  - question: Azure VMware Solution に対するホスト クォータの増量はどのようにリクエストすればよいですか?
+    answer: 既存のプライベート クラウドのホストを追加する場合でも、新しいプライベート クラウドを作成する場合でも、ホストを割り当てるにはサポート チケットを送信する必要があります。  詳細については、「[Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)」を参照してください。
+  - question: 予約インスタンスは、CSP プログラムを通じて購入できますか?
+    answer: はい。 CSP は顧客のために予約インスタンスを購入できます。 詳細については、[予約インスタンスを使用したコスト節約](reserved-instance.md)に関するページを参照してください。
+  - question: Azure VMware Solution では CSP パートナーをホストするためのマルチテナントは提供されますか?
+    answer: いいえ。 現時点では、Azure VMware Solution ではマルチテナントは提供されていません。
+  - question: オンプレミスと ExpressRoute 経由の Azure VMware Solution 間のトラフィックでは、従量制課金接続プランでの送信データ転送料金が発生しますか?
+    answer: Azure VMware Solution の ExpressRoute 回線のトラフィックは、どのような方法でも課金されません。 オンプレミスに接続している ExpressRoute 回線から Azure へのトラフィックは、ExpressRoute 価格プランに従って課金されます。
+  - question: L2 拡張機能を使用するオンプレミスの VM 環境から移行するときは、AV36 インスタンス以外のライセンスとリソースを調達する必要がありますか?
+    answer: NO

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 04/13/2021
+ms.date: 05/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87516ddcce32ab205b13139c057a2ab999146b74
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 3d13b1f515d5585c6378e48eb64feed59615cdef
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376360"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616917"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -66,6 +66,7 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | 初めての国 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) によって検出されます。 この検出では、新しい場所や頻度の低い場所を判断する際に、過去にアクティビティが発生した場所が考慮されます。 異常検出エンジンにより、組織内のユーザーが以前に使用したことのある場所に関する情報が格納されます。 |
 | 匿名 IP アドレスからのアクティビティ | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) によって検出されます。 この検出は、匿名プロキシ IP アドレスとして識別された IP アドレスからユーザーがアクティブだったことを示します。 |
 | 受信トレイからの疑わしい転送 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) によって検出されます。 この検出は、ユーザーがすべてのメールのコピーを外部のアドレスに転送する受信トレイ ルールを作成した場合などの疑わしいメール転送ルールを探します。 |
+| Azure AD 脅威インテリジェンス | オフライン | このリスク検出の種類は、Microsoft の内部および外部の脅威インテリジェンスのソースに基づいて、特定のユーザーにとって異常であったり、既知の攻撃パターンに一致したりするサインイン アクティビティを示します。 |
 
 ### <a name="other-risk-detections"></a>その他のリスク検出
 
@@ -109,6 +110,10 @@ Microsoft では、次のようなさまざまな場所で、漏洩した資格�
 #### <a name="how-often-does-microsoft-process-new-credentials"></a>Microsoft では、どのくらいの頻度で新しい資格情報を処理していますか?
 
 資格情報は、通常は 1 日に複数のバッチで検出された直後に処理されます。
+
+### <a name="locations"></a>場所
+
+リスク検出の場所は、IP アドレス検索によって特定されます。
 
 ## <a name="next-steps"></a>次のステップ
 

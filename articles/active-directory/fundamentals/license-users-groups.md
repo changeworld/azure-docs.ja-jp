@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1e8ea30ddfcaeff1a177a14a0b1d911d14b76b4
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97504408"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526090"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでのライセンスの割り当てと削除
 
@@ -49,8 +49,6 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 1. **[Azure Active Directory]** を選択し、**[ライセンス]** を選択します。
 
-    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="購入したサービス数と割り当てられたライセンスを示す [ライセンス] ページ":::
-
 1. **[すべての製品]** を選択して [すべての製品] ページを表示し、ライセンス プランの **[合計]** 、 **[割り当て済み]** 、 **[利用可能]** 、 **[まもなく有効期限切れ]** の数を確認します。
 
     :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="サービス ライセンス プランおよび関連付けられているライセンス情報が含まれたサービス ページ":::
@@ -72,11 +70,9 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 1. **[製品]** ページで、ユーザーに割り当てる必要があるライセンス プラン名を選択します。
 
-    ![サービス ライセンス プランが強調表示されたサービス ページ](media/license-users-groups/license-products-blade-with-product-highlight.png)
+1. ライセンスプランを選択したら、 **[割り当て]** を選択します。
 
-1. ライセンス プランの概要ページで、**[割り当て]** を選択します。
-
-    ![[割り当て] オプションが強調表示されているサービス ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+    ![[サービス] ページ。ライセンス プランの選択と割り当てのオプションが強調表示されています](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
 1. **[割り当て]** ページで **[ユーザーとグループ]** を選択し、ライセンスを割り当てるユーザーを検索して選択します。
 

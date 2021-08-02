@@ -1,6 +1,6 @@
 ---
-title: 組み込みロール Windows Virtual Desktop - Azure
-description: Azure RBAC で使用可能な Windows Virtual Desktop の組み込みロールの概要について説明します。
+title: 組み込みロール Azure Virtual Desktop - Azure
+description: Azure RBAC で使用可能な Azure Virtual Desktop の組み込みロールの概要について説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1094004bc523a59c3fcf7eb77c6f11bc4554080
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f19035ea08e95d5535903467ddbc11fc53c0deb7
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445858"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753109"
 ---
-# <a name="built-in-roles-for-windows-virtual-desktop"></a>Windows Virtual Desktop の組み込みロール
+# <a name="built-in-roles-for-azure-virtual-desktop"></a>Azure Virtual Desktop の組み込みロール
 
-Windows Virtual Desktop では、Azure ロールベースのアクセス制御 (RBAC) を使用して、ユーザーと管理者にロールを割り当てます。 これらのロールにより、特定のタスクを実行するための管理者権限が付与されます。 Azure RBAC の組み込みロールの詳細については、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
+Azure Virtual Desktop では、Azure ロールベースのアクセス制御 (RBAC) を使用して、ユーザーと管理者にロールを割り当てます。 これらのロールにより、特定のタスクを実行するための管理者権限が付与されます。 Azure RBAC の組み込みロールの詳細については、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
-Azure の標準の組み込みロールは、所有者、共同作成者、および閲覧者です。 一方 Windows Virtual Desktop には、ホスト プール、アプリ グループ、およびワークスペースの管理者ロールを分けるための追加のロールがあります。 この分離により、管理タスクをより細かく制御できます。 これらのロールには、Azure の標準ロールと最小限の特権の手法に準拠した名前が付けられています。
+Azure の標準の組み込みロールは、所有者、共同作成者、および閲覧者です。 一方 Azure Virtual Desktop には、ホスト プール、アプリ グループ、およびワークスペースの管理者ロールを分けるための追加のロールがあります。 この分離により、管理タスクをより細かく制御できます。 これらのロールには、Azure の標準ロールと最小限の特権の手法に準拠した名前が付けられています。
 
-Windows Virtual Desktop には、特定の所有者ロールはありません。 しかし、サービス オブジェクトには標準の所有者ロールを使用できます。
+Azure Virtual Desktop には、特定の所有者ロールはありません。 しかし、サービス オブジェクトには標準の所有者ロールを使用できます。
 
 ## <a name="desktop-virtualization-contributor"></a>デスクトップ仮想化共同作成者
 

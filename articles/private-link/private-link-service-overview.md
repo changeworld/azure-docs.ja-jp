@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 7983a80da8a5ca9d900e44515b5e078cc9d70d79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8d8d83441e77e1d3bb7153fb5af9071310e82ec
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684188"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086106"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
@@ -28,6 +28,12 @@ Azure Private Link サービスは、Azure Private Link を使用する独自の
 
 
 *図:Azure Private Link サービスのワークフロー。*
+
+### <a name="rbac-permissions"></a>RBAC アクセス許可
+
+以下に示すのは、Private Link サービスを作成するユーザーに必要な具体的な RBAC アクセス許可です。 カスタム ロールの詳細については、「[カスタム ロールの作成手順](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)」を参照してください。
+
+Microsoft.Resources/subscriptions/resourcegroups/resources/read Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/read Microsoft.Network/virtualNetworks/subnets/write Microsoft.Network/virtualNetworks/subnets/join/action Microsoft.Network/privateEndpoints/read Microsoft.Network/privateEndpoints/write Microsoft.Network/locations/availablePrivateEndpointTypes/read Microsoft.Network/privateLinkServices/read Microsoft.Network/privateLinkServices/write Microsoft.Network/privateLinkServices/privateEndpointConnections/read Microsoft.Network/privateLinkServices/privateEndpointConnections/write Microsoft.Network/networkSecurityGroups/join/action Microsoft.Network/loadBalancers/read Microsoft.Network/loadBalancers/write
 
 ### <a name="create-your-private-link-service"></a>Private Link サービスを作成する
 
@@ -124,9 +130,11 @@ Private Link サービスの公開対象 (可視性設定により制御) のコ
 ## <a name="limitations"></a>制限事項
 
 Private Link サービスを使用する場合の既知の制限事項は次のとおりです。
-- Standard Load Balancer でのみサポートされる 
+- Standard Load Balancer でのみサポートされる。 Basic Load Balancer ではサポートされない。  
+- VM/VMSS を使用するときに NIC によってバックエンド プールが構成されている Standard Load Balancer でのみサポートされる。
 - IPv4 トラフィックのみがサポートされる
 - TCP および UDP トラフィックのみがサポートされる
+
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure PowerShell を使用してプライベート リンク サービスを作成する](create-private-link-service-powershell.md)

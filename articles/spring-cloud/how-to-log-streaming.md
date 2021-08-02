@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: df58be32123f662ae2a2782d6ebb7f19bd5c339c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b87f3221e62db6999dd67f475055f699a74c4c2a
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134936"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495162"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
 
@@ -79,7 +79,7 @@ az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-p
 アプリ インスタンスの詳細は、Azure portal から取得することもできます。  Azure Spring Cloud サービスの左側のナビゲーション ウィンドウで **[アプリ]** を選択した後、 **[App Instances]\(アプリ インスタンス\)** を選択します。
 
 ### <a name="continuously-stream-new-logs"></a>新しいログを継続的にストリーミングする
-既定では、`az spring-cloud ap log tail` は、アプリ コンソールにストリーミングされた既存のログのみを出力し、終了します。 新しいログをストリーミングする場合は、次のように -f (--follow) を追加します。  
+既定では、`az spring-cloud app logs` は、アプリ コンソールにストリーミングされた既存のログのみを出力し、終了します。 新しいログをストリーミングする場合は、次のように -f (--follow) を追加します。  
 
 ```azurecli
 az spring-cloud app logs -n auth-service -f
@@ -88,6 +88,39 @@ az spring-cloud app logs -n auth-service -f
 ```azurecli
 az spring-cloud app logs -h 
 ```
+
+### <a name="format-json-structured-logs"></a>JSON の構造化されたログの書式設定
+
+> [!NOTE]
+> spring-cloud 拡張機能バージョン 2.4.0 以降が必要です。
+
+アプリに対して[構造化されたアプリケーション ログ](./structured-app-log.md)が有効になっている場合、そのログは JSON 形式で出力されます。 これにより読み取りが困難になります。 `--format-json` 引数を使用すると、JSON ログを人が判読できる形式に書式設定できます。
+
+```shell
+# Raw JSON log
+$ az spring-cloud app logs -n auth-service
+{"timestamp":"2021-05-26T03:35:27.533Z","logger":"com.netflix.discovery.DiscoveryClient","level":"INFO","thread":"main","mdc":{},"message":"Disable delta property : false"}
+{"timestamp":"2021-05-26T03:35:27.533Z","logger":"com.netflix.discovery.DiscoveryClient","level":"INFO","thread":"main","mdc":{},"message":"Single vip registry refresh property : null"}
+
+# Formatted JSON log
+$ az spring-cloud app logs -n auth-service --format-json
+2021-05-26T03:35:27.533Z  INFO [           main] com.netflix.discovery.DiscoveryClient   : Disable delta property : false
+2021-05-26T03:35:27.533Z  INFO [           main] com.netflix.discovery.DiscoveryClient   : Single vip registry refresh property : null
+```
+
+`--format-json` 引数は、キーワード引数である[文字列の書式設定構文](https://docs.python.org/3/library/string.html#format-string-syntax)を使用して、省略可能なカスタマイズされた形式を取ることもできます。
+
+```shell
+# Custom format
+$ az spring-cloud app logs -n auth-service --format-json="{message}{n}"
+Disable delta property : false
+Single vip registry refresh property : null
+```
+
+> 使用されている既定の形式は次のとおりです
+> ```
+> {timestamp} {level:>5} [{thread:>15.15}] {logger{39}:<40.40}: {message}{n}{stackTrace}
+> ```
 
 ## <a name="next-steps"></a>次のステップ
 * [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](./quickstart-logs-metrics-tracing.md)

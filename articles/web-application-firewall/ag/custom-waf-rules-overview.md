@@ -7,12 +7,13 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 9a5f64687937479d65f94010bbe4f0a5f1cf5ca2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dcce15618159b9d6a06a513435f0e091e02a2b2c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548225"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411254"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール v2 カスタム規則
 
@@ -22,7 +23,7 @@ Azure Application Gateway の Web アプリケーション ファイアウォー
 
 たとえば、範囲 192.168.5.4/24 内の IP アドレスからのすべての要求をブロックできます。 この規則では、演算子は *IPMatch*、matchValues は IP アドレス範囲 (192.168.5.4/24)、アクションはトラフィックのブロックです。 規則の名前と優先度も設定します。
 
-カスタム規則は、セキュリティ ニーズに対応する、より高度な規則を作成するための複合ロジックの使用をサポートします。 たとえば、(条件 1 **かつ** 条件 2) **または** 条件 3) のようなものです。 これは、条件 1 **かつ** 条件 2 が満たされている場合、**または** 条件 3 が満たされている場合、WAF はカスタム規則で指定されたアクションを実行することを意味します。
+カスタム規則は、セキュリティ ニーズに対応する、より高度な規則を作成するための複合ロジックの使用をサポートします。 たとえば、((条件 1 **かつ** 条件 2) **または** 条件 3) のようなものです。 これは、条件 1 **かつ** 条件 2 が満たされている場合、**または** 条件 3 が満たされている場合、WAF はカスタム規則で指定されたアクションを実行することを意味します。
 
 同じ規則内の異なる一致条件は常に "**かつ**" を使用して結合されます。 たとえば、特定の IP アドレスからのトラフィックを、特定のブラウザーが使用している場合にのみブロックします。
 

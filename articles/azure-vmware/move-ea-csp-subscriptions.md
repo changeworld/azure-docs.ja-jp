@@ -4,12 +4,12 @@ description: この記事では、Azure VMware Solution サブスクリプショ
 ms.custom: subject-moving-resources
 ms.topic: how-to
 ms.date: 04/26/2021
-ms.openlocfilehash: 0cd06eb72f8ed93cc5a491070baded76f9dc9f6f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 02f35efe90d4670c4ab38155f129ec0d61c1b03d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145568"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966705"
 ---
 # <a name="move-azure-vmware-solution-subscription-to-another-subscription"></a>Azure VMware Solution サブスクリプションを別のサブスクリプションに移動する
 
@@ -64,9 +64,7 @@ ms.locfileid: "108145568"
 ## <a name="next-steps"></a>次のステップ
 各項目の詳細情報
 
-- [ネットワーク リソースの移動ガイダンス](/azure/azure-resource-manager/management/move-limitations/networking-move-limitations)
-- [仮想マシンの移動に関するガイダンス](/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)
-- [App Service リソースの移動に関するガイダンス](/azure/azure-resource-manager/management/move-limitations/app-service-move-limitations)
-
-
-
+- [リージョン間で Azure VMware Solution を移動する](move-azure-vmware-solution-across-regions.md)
+- [ネットワーク リソースの移動ガイダンス](../azure-resource-manager/management/move-limitations/networking-move-limitations.md)
+- [仮想マシンの移動に関するガイダンス](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md)
+- [App Service リソースの移動に関するガイダンス](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)

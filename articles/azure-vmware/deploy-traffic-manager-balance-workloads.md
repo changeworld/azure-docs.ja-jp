@@ -3,12 +3,12 @@ title: Azure VMware Solution ワークロードを分散するために Traffic 
 description: Traffic Manager を Azure VMware Solution と統合して、異なるリージョンにある複数のエンドポイント間でアプリケーションのワークロードを分散する方法について説明します。
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 029bb9512bd19effd1c7aeb5104c7bb6d7ccdca5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: d00f699c094995dad15d4ab5558fcd838ed33128
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876924"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087006"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Azure VMware Solution ワークロードを分散するために Traffic Manager をデプロイする
 
@@ -96,7 +96,7 @@ ms.locfileid: "107876924"
 3. 以下の情報を入力した後、 **[作成]** を選びます。
 
    - [プロファイル名]
-   - ルーティング方法 ([重み付け](../traffic-manager/traffic-manager-routing-methods.md)を使用
+   - ルーティング方法 ([重み付け](../traffic-manager/traffic-manager-routing-methods.md) を使用)
    - サブスクリプション
    - Resource group
 

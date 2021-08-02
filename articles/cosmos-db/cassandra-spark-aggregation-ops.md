@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5939690d3f2c0bb9affa3e2fb425b909b96cf002
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a65a106f5d45eabf80df9866cd464954fcc7ebf4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93087623"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464990"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API テーブルに対する集計操作 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -30,9 +30,10 @@ import org.apache.spark.sql.cassandra._
 //Spark connector
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
+import org.apache.spark.sql.functions._
 
-//CosmosDB library for multiple retry
-import com.microsoft.azure.cosmosdb.cassandra
+//if using Spark 2.x, CosmosDB library for multiple retry
+//import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
 spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
@@ -40,15 +41,22 @@ spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
 spark.conf.set("spark.cassandra.auth.password","YOUR_ACCOUNT_KEY")
-spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+// if using Spark 2.x
+// spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+
 //Throughput-related...adjust as needed
 spark.conf.set("spark.cassandra.output.batch.size.rows", "1")
-spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10")
+//spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10") // Spark 2.x
+spark.conf.set("spark.cassandra.connection.remoteConnectionsPerExecutor", "10") // Spark 3.x
 spark.conf.set("spark.cassandra.output.concurrent.writes", "1000")
 spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
+
+> [!NOTE]
+> Spark 3.0 以降を使用している場合は、Cosmos DB ヘルパーと接続ファクトリをインストールする必要はありません。 また、Spark 3 コネクタでは `connections_per_executor_max` の代わりに `remoteConnectionsPerExecutor` を使う必要があります (上記参照)。 接続関連のプロパティが、上記のノートブック内で定義されていることがわかります。 次の構文を使用すると、クラスター レベル (Spark コンテキストの初期化) で定義しなくても、この方法で接続プロパティを定義できます。 ただし、spark コンテキストを必要とする操作 (例: 下記に示す一部の操作での `CassandraConnector(sc)`) を使用する場合は、接続プロパティをクラスター レベルで定義する必要があります。
+
 ## <a name="sample-data-generator"></a>サンプル データ ジェネレーター
 
 ```scala
@@ -79,7 +87,7 @@ sc.cassandraTable("books_ks", "books").count
 
 **出力:**
 ```bash
-res48: Long = 5
+count: Long = 5
 ```
 
 ### <a name="dataframe-api"></a>データフレーム API
@@ -128,6 +136,7 @@ readBooksDF.createOrReplaceTempView("books_vw")
 ### <a name="sql"></a>SQL
 
 ```sql
+%sql
 select * from books_vw;
 select count(*) from books_vw where book_pub_year > 1900;
 select count(book_id) from books_vw;
@@ -216,7 +225,8 @@ spark
 ### <a name="sql"></a>SQL
 
 ```sql
-select min(book_price) from books_vw;
+%sql
+select avg(book_price) from books_vw;
 ```
 
 **出力:**
@@ -256,6 +266,7 @@ spark
 ### <a name="sql"></a>SQL
 
 ```sql
+%sql
 select max(book_price) from books_vw;
 ```
 **出力:**

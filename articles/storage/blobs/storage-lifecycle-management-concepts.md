@@ -1,20 +1,20 @@
 ---
 title: Azure Blob Storage アクセス層の自動化によるコストの最適化
 description: ホット、クール、アーカイブの各階層間でデータを移動するための自動ルールを作成します。
-author: twooley
-ms.author: twooley
+author: tamram
+ms.author: tamram
 ms.date: 04/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 03688ea659d3bd06040b6821bd213b65870e5c6e
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 19a828621f298759b87d8b0d4ca627d3ab7d27c3
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632765"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071283"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob Storage アクセス層の自動化によるコストの最適化
 
@@ -86,12 +86,6 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 1. **[Base blobs]\(ベース BLOB\)** を選択して、ルールの条件を設定します。 次の例では、BLOB が 30 日間変更されない場合、BLOB はクール ストレージに移動されます。
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure portal の [ライフサイクル管理] の [Base blobs]\(ベース BLOB\) ページ":::
-
-   **[最終アクセス日時]** オプションは、次のリージョンにおいてプレビューで使用できます。
-
-    - フランス中部
-    - カナダ東部
-    - カナダ中部
 
    > [!IMPORTANT]
    > 最終アクセス時刻追跡プレビューは、非運用環境のみで使用されます。 運用環境のサービス レベル契約(SLA) は現在使用できません。
@@ -327,7 +321,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 | blobIndexMatch | 照合する BLOB インデックス タグ キーと値条件で構成されるディクショナリ値の配列。 各ルールには、最大 10 個の BLOB インデックス タグ条件を定義できます。 たとえば、ルールとして `https://myaccount.blob.core.windows.net/` の下にあるすべての BLOB を `Project = Contoso` に一致させたい場合、blobIndexMatch は `{"name": "Project","op": "==","value": "Contoso"}` になります。 | blobIndexMatch を定義していない場合、ルールはストレージ アカウント内のすべての BLOB に適用されます。 | いいえ |
 
 > [!NOTE]
-> BLOB インデックスはパブリック プレビュー中であり、**カナダ中部**、**カナダ東部**、**フランス中部**、および **フランス南部** リージョンで利用できます。 この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
+> BLOB インデックスはパブリック プレビューの段階です。  この機能と既知の問題と制限の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
 
 ### <a name="rule-actions"></a>ルールのアクション
 

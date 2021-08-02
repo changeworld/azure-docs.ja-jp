@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 06/09/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daecd065779919defc66d9668a6d5d7b972d60be
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93340228"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892006"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,6 +69,9 @@ ms.locfileid: "93340228"
 ## <a name="error-handling"></a>エラー処理
 
 変更フィード プロセッサには、ユーザー コード エラーに対する回復性があります。 つまり、デリゲートの実装にハンドルされない例外がある場合 (ステップ #4)、その特定の変更バッチを処理しているスレッドは停止され、新しいスレッドが作成されます。 新しいスレッドでは、そのパーティション キー値範囲に対してリース ストアで保持されている最新時点が確認され、そこから処理が再開されて、同じ変更バッチがデリゲートに効率的に送信されます。 デリゲートによって変更が正しく処理されるまで、この動作が続けられます。また、デリゲートのコードで例外がスローされると、そのバッチが再試行されるため、変更フィード プロセッサでは "少なくとも 1 回" が保証されます。
+
+> [!NOTE]
+> 変更のバッチが再試行されないシナリオは 1 つだけです。 最初に発生したデリゲートの実行でエラーが発生した場合、リース ストアには再試行時に使用される以前の保存状態がありません。 このような場合、再試行では [最初の開始構成](#starting-time)が使用されますが、最後のバッチが含まれていない場合もあります。
 
 変更フィード プロセッサが同じバッチの変更を継続的に再試行して "行き詰まる" ことがないように、例外が発生した場合に、ドキュメントに書き込むためのデリゲート コードのロジックを配信不能キューに追加する必要があります。 このように設計することで、今後の変更の処理を継続しながら、未処理の変更を追跡できます。 配信不能キューは、別の Cosmos コンテナーである可能性があります。 問題になるのは、データ ストア自体ではなく、ただ未処理の変更が永続化されることだけです。
 

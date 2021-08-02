@@ -6,13 +6,13 @@ ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.openlocfilehash: 66ed42b79e4f6b5bac7fcb76b95a04257a437daf
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 05/17/2021
+ms.openlocfilehash: 09ed5297bb6432640d6cce7674c2246088823d37
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733156"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750607"
 ---
 # <a name="supported-data-stores"></a>サポートされているデータ ストア
 
@@ -28,14 +28,17 @@ Purview では、次のデータ ストアがサポートされています。 �
 ||[Azure Data Lake Storage Gen1](register-scan-adls-gen1.md)|○| はい| はい| はい| はい| ○|
 ||[Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)|○| はい| はい| はい| はい| ○|
 ||[Azure SQL Database](register-scan-azure-sql-database.md)|○| はい| いいえ| はい| はい| ○|
-||[Azure SQL Database マネージド インスタンス](register-scan-azure-sql-database-managed-instance.md)|はい| はい| いいえ| はい| はい| ○|
-||[Azure Synapse Analytics (以前の SQL DW)](register-scan-azure-synapse-analytics.md)|○| はい| いいえ| はい| はい| ○|
-|データベース|[Oracle DB](register-scan-oracle-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
+||[Azure SQL Database マネージド インスタンス](register-scan-azure-sql-database-managed-instance.md)|はい| はい| いいえ| はい| はい| はい|
+||[Azure 専用 SQL プール (以前の SQL DW)](register-scan-azure-synapse-analytics.md)|はい| はい| いいえ| はい| はい| はい|
+||[Azure Synapse Analytics (ワークスペース)](register-scan-synapse-workspace.md)|はい| はい| いいえ| はい| はい| ○|
+|データベース|[Hive メタストア DB](register-scan-oracle-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
+||[Oracle DB](register-scan-oracle-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 ||[SQL Server](register-scan-on-premises-sql-server.md)|○| はい| いいえ| はい| はい| はい|
 ||[Teradata](register-scan-teradata-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 |Power BI|[Power BI](register-scan-power-bi-tenant.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 |サービスとアプリ|[SAP ECC](register-scan-sapecc-source.md)|はい| はい| いいえ| はい| はい| はい|
 ||[SAP S4HANA](register-scan-saps4hana-source.md)|はい| はい| いいえ| はい| はい| はい|
+|マルチクラウド|[Amazon S3](register-scan-amazon-s3.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 
 ## <a name="scan-regions"></a>スキャンのリージョン
 Purview スキャナーが実行されるすべての Azure データ ソース (データセンター) リージョンの一覧を次に示します。 Azure データ ソースがこの一覧にないリージョンにある場合、スキャナーは Purview インスタンスのリージョンで実行されます。

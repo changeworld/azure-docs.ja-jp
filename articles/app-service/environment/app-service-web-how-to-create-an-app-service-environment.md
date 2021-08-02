@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2be7d6401790fdd3799d3019ca1575cddd8e7e66
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96005209"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027445"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 の作成方法 
 
@@ -81,5 +81,5 @@ App Service Environment v1 の使用を開始するには、「[App Service Envi
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ILBASE]: app-service-environment-with-internal-load-balancer.md
-[ILBAseTemplate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/
+[ILBAseTemplate]: https://azure.microsoft.com/resources/templates/web-app-ase-create/
 [ASEfromTemplate]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

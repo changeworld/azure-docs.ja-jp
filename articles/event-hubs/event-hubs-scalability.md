@@ -2,19 +2,19 @@
 title: スケーラビリティ - Azure Event Hubs | Microsoft Docs
 description: この記事では、パーティションとスループット ユニットを使用して Azure Event Hubs をスケーリングする方法について説明します。
 ms.topic: article
-ms.date: 03/16/2021
-ms.openlocfilehash: acfc300ff7e6bd77c570c68bda50a731df10409c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/26/2021
+ms.openlocfilehash: ef894e0f14c140691b43da121a1983017ab03150
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367093"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616464"
 ---
 # <a name="scaling-with-event-hubs"></a>Event Hubs によるスケーリング
 
 Event Hubs によるスケーリングに影響する 2 つの要素があります。
-*   スループット ユニット
-*   [   パーティション]
+* スループット ユニット (Standard レベル) または処理ユニット (Premium レベル) 
+* [   パーティション]
 
 ## <a name="throughput-units"></a>スループット ユニット
 
@@ -42,7 +42,10 @@ Event Hubs の **自動インフレ** 機能は、使用量のニーズに合わ
 
 プロセッシング ユニットで取り込みおよびストリーミングできる量は、プロデューサー、コンシューマー、取り込みと処理の速度など、さまざまな要因によって異なります。 十分なパーティションがあり、ストレージが調整要因とならない場合、1 つのプロセッシング ユニットでは、約 5 から 10 MB/秒のイングレスと 10 から 20 MB/秒のエグレスのコア容量を提供できます。  
 
+Premium レベルの名前空間の PU の構成については、「[処理ユニットの構成](configure-processing-units-premium-namespace.md)」を参照してください。
 
+> [!NOTE]
+> クォータと制限の詳細については、「[Azure Event Hubs - クォータと制限](event-hubs-quotas.md)」を参照してください。
 
 ## <a name="partitions"></a>[パーティション]
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
@@ -53,5 +56,5 @@ Event Hubs の **自動インフレ** 機能は、使用量のニーズに合わ
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-- [スループット単位の自動スケール](event-hubs-auto-inflate.md)
-- [Event Hubs サービスの概要](./event-hubs-about.md)
+- [Standard レベルの名前空間のスループット ユニットを自動的にスケーリングする](event-hubs-auto-inflate.md)
+- [Premium レベル名前空間の処理ユニットを構成する](configure-processing-units-premium-namespace.md)

@@ -2,14 +2,14 @@
 title: Service Bus 名前空間を別のリージョンに移動する | Microsoft Docs
 description: この記事では、Azure Service Bus 名前空間を現在のリージョンから別のリージョンに移動する方法について説明します。
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 06/08/2021
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 573ea96437cf6cb76854ffa417fd3ad3fb86138b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a752e845cf4b819e327bc922fc13199b79ab8d3
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88860428"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811448"
 ---
 # <a name="move-an-azure-service-bus-namespace-to-another-region"></a>Azure Service Bus 名前空間を別のリージョンに移動する
 既存の Service Bus 名前空間を、あるリージョンから別のリージョンに移動するシナリオには、さまざまなものがあります。 たとえば、テスト用に同じ構成で名前空間を作成することができます。 [ディザスター リカバリー計画](service-bus-geo-dr.md)の一部として、別のリージョンにセカンダリ名前空間を作成することもできます。
@@ -30,7 +30,7 @@ ms.locfileid: "88860428"
 
 1. [Azure portal](https://portal.azure.com) にサインインする
 2. **[すべてのリソース]** を選択し、Service Bus 名前空間を選択します。
-3. **[設定]**  >  **[テンプレートのエクスポート]** を選択します。
+3. **[Service Bus 名前空間]** ページで、左側のメニューにある **[オートメーション]** の **[テンプレートのエクスポート]** を選択します。 
 4. **[テンプレートのエクスポート]** ページで **[ダウンロード]** を選択します。
 
     :::image type="content" source="./media/move-across-regions/download-template.png" alt-text="Resource Manager テンプレートをダウンロードする":::

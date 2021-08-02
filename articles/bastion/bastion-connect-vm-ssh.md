@@ -1,18 +1,18 @@
 ---
 title: Azure Bastion を使用して Linux VM に接続する
-description: この記事では、Azure Bastion を使用して Linux 仮想マシンに接続する方法について説明します。
+description: Azure Bastion を使用して Linux 仮想マシンに接続する方法について説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: a5cda5d4d447bc04f853ea4a9abd15be75e7e177
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6f9add11b6632d1ee26041ade0ade45ec58716d
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588625"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538083"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Linux 仮想マシンに SSH 接続する
 

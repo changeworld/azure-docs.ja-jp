@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 06/14/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94077a1c6329aa1fecf9593f2df41fa77afc8a44
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a46d77b088d854bdd6ee8781b545d1236f357853
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765919"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071481"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
-Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) により、ユーザーは、管理者やヘルプ デスクが関与することなく、自分のパスワードを変更またはリセットできるようになります。 ユーザーはアカウントがロックされた場合やパスワードを忘れた場合でも、画面の指示に従って自分自身のブロックを解除して、作業に戻ることができます。 この機能により、ユーザーが自分のデバイスやアプリケーションにサインインできなくなった場合のヘルプ デスクの問い合わせが減り、生産性の喪失も軽減されます。
+Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) により、ユーザーは、管理者やヘルプ デスクが関与することなく、自分のパスワードを変更またはリセットできるようになります。 ユーザーはアカウントがロックされた場合やパスワードを忘れた場合でも、画面の指示に従って自分自身のブロックを解除して、作業に戻ることができます。 この機能により、ユーザーが自分のデバイスやアプリケーションにサインインできなくなった場合のヘルプ デスクの問い合わせが減り、生産性の喪失も軽減されます。 「[Azure AD の SSPR を有効にして構成する方法](https://www.youtube.com/watch?v=rA8TvhNcCvQ)」の動画をぜひご覧ください。
 
 > [!IMPORTANT]
 > 概念に関するこの記事では、セルフサービスによるパスワードのリセットのしくみを管理者向けに説明します。 既にセルフサービス パスワード リセットの登録が済んでいて、ご自分のアカウントに戻る必要があるエンド ユーザーは、[https://aka.ms/sspr](https://aka.ms/sspr) にアクセスしてください。
@@ -105,7 +105,7 @@ SSPR で使用できる認証方法は次のとおりです。
 * モバイル アプリ コード
 * Email
 * 携帯電話
-* 会社電話
+* 会社電話 (有料サブスクリプションを使用するテナントでのみ使用可能)
 * セキュリティの質問
 
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にした認証方法を自分で登録した場合のみです。

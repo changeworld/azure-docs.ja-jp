@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: 45c6945818016618252e69554c62391691d2fb6a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 10c946010fa3caba14130c3c7055c711323ad93c
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368858"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110498294"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -111,7 +111,7 @@ ms.locfileid: "110368858"
 | `status code` | Integer | 要求の状態コード |
 |||
 
-| status code | Description |
+| status code | 説明 |
 |-------------|-------------|
 | 200 | [OK] |
 | 202 | 承認済み |
@@ -121,6 +121,82 @@ ms.locfileid: "110368858"
 | 404 | 見つかりません |
 | 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
 |||
+
+<a name="single-tenant-authentication"></a>
+
+## <a name="authentication-for-single-tenant-environment"></a>シングル テナント環境の認証
+
+シングル テナント Azure Logic Apps に **ロジック アプリ (Standard)** リソースがある場合に、次の認証の種類で HTTP 操作を使用する場合は、対応する認証の種類に対する追加のセットアップ手順を必ず完了してください。 そうでない場合、呼び出しは失敗します。
+
+* [TSL/SSL 証明書](#tsl-ssl-certificate-authentication): アプリ設定を追加し、`WEBSITE_LOAD_ROOT_CERTIFICATES`、TSL/SSL 証明書の拇印の拇印を指定します。
+
+* [クライアントの証明書または Azure Active Directory Open Authentication (Azure AD OAuth) の「Certificate」資格情報の種類 ](#client-certificate-authentication) を使用します。アプリの設定である `WEBSITE_LOAD_USER_PROFILE` を追加し、値を `1` に設定します。
+
+<a name="tsl-ssl-certificate-authentication"></a>
+
+### <a name="tslssl-certificate-authentication"></a>TSL/SSL 証明書認証
+
+1. ロジック アプリ リソースのアプリ設定で、[アプリ設定の追加または更新](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)、`WEBSITE_LOAD_ROOT_CERTIFICATES` を行います。
+
+1. 設定値には、信頼できるルート証明書として TSL/SSL 証明書のサムプリントを指定します。
+
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+
+たとえば、Visual Studio Code で作業している場合は、次の手順を実行します。
+
+1. ロジック アプリ プロジェクトの **local.settings.json** ファイルを開きます。
+
+1. `Values` JSON オブジェクトで、`WEBSITE_LOAD_ROOT_CERTIFICATES` 設定を追加または更新します。
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         <...>
+      }
+   }
+   ```
+
+詳細については、次のドキュメントを確認してください。
+
+* [シングルテナントの Azure Logic Apps でロジック アプリのホストとアプリの設定を編集する](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [非公開のクライアント証明書 - Azure App Service](../app-service/environment/certificates.md#private-client-certificate)
+
+<a name="client-certificate-authentication"></a>
+
+### <a name="client-certificate-or-azure-ad-oauth-with-certificate-credential-type-authentication"></a>クライアント証明書、または「Certificate」資格情報の種類の認証を使用した Azure AD OAuth
+
+1. ロジック アプリ リソースのアプリ設定で、[アプリ設定の追加または更新](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)、`WEBSITE_LOAD_USER_PROFILE` を行います。
+
+1. 設定値として `1` と入力します。
+
+   `"WEBSITE_LOAD_USER_PROFILE": "1"`
+
+たとえば、Visual Studio Code で作業している場合は、次の手順を実行します。
+
+1. ロジック アプリ プロジェクトの **local.settings.json** ファイルを開きます。
+
+1. `Values` JSON オブジェクトで、`WEBSITE_LOAD_USER_PROFILE` 設定を追加または更新します。
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_USER_PROFILE": "1",
+         <...>
+      }
+   }
+   ```
+
+詳細については、次のドキュメントを確認してください。
+
+* [シングルテナントの Azure Logic Apps でロジック アプリのホストとアプリの設定を編集する](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [非公開のクライアント証明書 - Azure App Service](../app-service/environment/certificates.md#private-client-certificate)
 
 ## <a name="content-with-multipartform-data-type"></a>マルチパート/フォームデータ型のコンテンツ
 
@@ -193,41 +269,6 @@ HTTP 要求の本文に form-urlencoded データを提供するには、デー�
      !["非同期パターン" 設定](./media/connectors-native-http/asynchronous-pattern-setting.png)
 
 * HTTP アクションの基になる JavaScript Object Notation (JSON) 定義では、暗黙的に非同期操作パターンに従います。
-
-<a name="tsl-ssl-certificate-authentication"></a>
-
-## <a name="tslssl-certificate-authentication"></a>TSL/SSL 証明書認証
-
-シングルテナント Azure Logic Apps に **ロジックアプリ (Standard)** リソースがあり、HTTP 操作および TSL/SSL 証明書を使用してワークフローから HTTPS エンドポイントを呼び出して認証を試みた場合、次の手順を実行しなければ、呼び出しは失敗します。
-
-1. ロジック アプリ リソースのアプリ設定で、[アプリ設定 (`WEBSITE_LOAD_ROOT_CERTIFICATES`) を追加または更新](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)します。
-
-1. 設定値には、信頼できるルート証明書として TSL/SSL 証明書のサムプリントを指定します。
-
-   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
-
-たとえば、Visual Studio Code で作業している場合は、次の手順を実行します。
-
-1. ロジック アプリ プロジェクトの **local.settings.json** ファイルを開きます。
-
-1. `Values` JSON オブジェクトで、`WEBSITE_LOAD_ROOT_CERTIFICATES` 設定を追加または更新します。
-
-   ```json
-   {
-      "IsEncrypted": false,
-      "Values": {
-         <...>
-         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
-         <...>
-      }
-   }
-   ```
-
-詳細については、次のドキュメントを確認してください。
-
-* [シングルテナントの Azure Logic Apps でロジック アプリのホストとアプリの設定を編集する](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
-* [非公開のクライアント証明書 - Azure App Service](../app-service/environment/certificates.md#private-client-certificate)
 
 <a name="disable-asynchronous-operations"></a>
 

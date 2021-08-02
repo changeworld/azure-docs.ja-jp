@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/29/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 52f332f2c92f97123dc9ab3234edcbdeda410da9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 77f5a00676dc2809dfa43c0787700731f429bc28
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108121153"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110574788"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>自己署名ルート証明書の作成
 

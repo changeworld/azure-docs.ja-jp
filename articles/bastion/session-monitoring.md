@@ -1,18 +1,18 @@
 ---
-title: Azure Bastion のセッションの監視と管理 |Microsoft Docs
-description: この記事では、進行中のセッションを選択し、それを強制切断または削除する方法について説明します。
+title: Azure Bastion セッションの監視と管理
+description: 進行中のセッションを選択し、それを強制切断または削除する方法について説明します。
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: charwen
-ms.openlocfilehash: beb4f8fc5b9e22bc3e2bdd4732c8321dfcd70780
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: cherylmc
+ms.openlocfilehash: 6b0df7ae98c3718ddfadf9e13354b4f961585c98
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90980723"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110540438"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure Bastion のセッションの監視と管理
 

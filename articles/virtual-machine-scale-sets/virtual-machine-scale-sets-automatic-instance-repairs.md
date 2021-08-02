@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: e1505a1a901472f0ce1a93ae71ba8ea0364b7b8d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: af63d27f60c3e3fa8f6aa95cd30d1f93114d4078
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754157"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031171"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets の自動インスタンス修復
 
@@ -38,7 +38,7 @@ Azure Virtual Machine Scale Sets の自動インスタンス修復を有効に�
 
 **スケール セット内のインスタンスの最大数**
 
-この機能は、現在、インスタンスの最大数が 500 個のスケール セットに対してのみ使用できます。 スケール セットは、1 つの配置グループまたは複数の配置グループとしてデプロイできます。ただし、スケール セットに対して自動インスタンス修復が有効になっている場合、インスタンス数は 200 を超えることはできません。
+この機能は、現在、インスタンスの最大数が 500 個のスケール セットに対してのみ使用できます。 スケール セットは、1 つの配置グループまたは複数の配置グループとしてデプロイできます。ただし、スケール セットに対して自動インスタンス修復が有効になっている場合、インスタンス数は 500 を超えることはできません。
 
 **API バージョン**
 

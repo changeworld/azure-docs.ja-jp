@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 39990a557315c3fcc79f2b9dab59f25f758ab2bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 21cb737cf6168f44c1e71815d90139a04ba1d37b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443116"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697093"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU のアクセス、電源、接続モードを管理する
 
@@ -37,7 +38,9 @@ ms.locfileid: "102443116"
 
 Azure Stack Edge Pro デバイスへのアクセスは、デバイスのパスワードを使用して制御されます。 パスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイスのパスワードをリセットすることもできます。
 
-デバイス ディスク上のデータへのアクセスは、保存時の暗号化キーによっても制御されます。
+デバイス ディスク上のデータへのアクセスは、保存時の暗号化キーによっても制御されます。 
+
+デバイスのローカル Web UI から HTTP または HTTPS 経由でリモート PowerShell セッションを開くことによって、デバイスにアクセスできます。
 
 ### <a name="change-device-password"></a>デバイスのパスワードを変更する
 
@@ -96,6 +99,21 @@ Azure Stack Edge Pro R と Azure Stack Edge Mini R デバイスでは、デバ�
     `.json` キー ファイルを安全な場所に保存します。 このファイルは、将来発生する可能性があるデバイスの復旧作業を容易にするために使用されます。
 
     ![スクリーンショットに、[デバイスのパスワードをリセットします] ダイアログ ボックスが表示されてます。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+## <a name="enable-device-access-via-remote-powershell-over-http"></a>HTTP 経由でのリモート PowerShell を介したデバイス アクセスを有効にする
+
+HTTP または HTTPS 経由で、デバイスへのリモート PowerShell セッションを開くことができます。 既定では、HTTPS 経由で PowerShell セッションを介してデバイスにアクセスします。 ただし、信頼されたネットワークであれば、HTTP 経由でリモート PowerShell を有効にすることができます。
+
+ローカル UI で次の手順に従って、HTTP 経由でリモート PowerShell を有効にします。
+
+1. デバイスのローカル UI で、ページの右上隅から **[設定]** に移動します。
+1. **[有効]** を選択すると、HTTP 経由でデバイスのリモート PowerShell セッションを開くことができます。 この設定は、信頼されたネットワークでのみ有効にする必要があります。
+
+    ![スクリーンショットは、HTTP 経由でリモート PowerShell を有効にする設定を示しています。](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/enable-remote-powershell-http-1.png)
+
+1. **[適用]** を選択します。
+
+これで、HTTP 経由でデバイスの PowerShell インターフェイスに接続できるようになりました。 詳細については、[デバイスの PowerShell インターフェイスへの接続](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface)に関する記事を参照してください。
 
 ## <a name="manage-resource-access"></a>リソース アクセスの管理
 

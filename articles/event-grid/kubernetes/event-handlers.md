@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 740930a342706eeaf3adc3b0e8ad1e01e4c70932
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 838084204ed2c1979f618bb2bfe644d1f88cd51e
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386628"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536501"
 ---
 # <a name="event-handlers-destinations-in-event-grid-on-kubernetes"></a>Kubernetes 上の Event Grid でのイベント ハンドラーと送信先
 イベント ハンドラーは、エンドポイントを公開するすべてのシステムであり、Event Grid によって送信されるイベントの送信先です。 イベントを受信するイベント ハンドラーはそれに対して動作し、イベント ペイロードを使用して何らかのロジックを実行します。それにより、新しいイベントが発生することがあります。
@@ -79,18 +79,18 @@ WebHook エンドポイントに発行するには、`endpointType` を `WebHook
 
 Azure Event Grid クラウド エンドポイントに発行するには、`endpointType` を `WebHook` に設定し、以下を指定します。
 
-* **endpointUrl**: クラウド内の Azure Event Grid トピック URL
+* **endpointUrl**: クラウド内の Azure Event Grid トピック URL。API バージョン パラメーターは **2018-01-01** に設定され、`aeg-sas-key` は URL エンコードされた SAS キーに設定されています。 
 
    ```json
-        {
-          "properties": {
+    {
+        "properties": {
             "destination": {
-              "endpointType": "WebHook",
-              "properties": {
-                 "endpointUrl": "<your-event-grid-cloud-topic-endpoint-url>?api-version=2018-01-01",
-              }
+                "endpointType": "WebHook",
+                "properties": {
+                    "endpointUrl": "<your-event-grid-cloud-topic-endpoint-url>?api-version=2018-01-01&aeg-sas-key=urlencoded(sas-key-value)"
+                }
             }
-          }
+        }
     }
    ```
 

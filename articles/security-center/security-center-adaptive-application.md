@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 9e2dcace673a1c7215634434f9e89ddc6b953a63
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: f8d0871f07168e0d7a2fbda90df4209ab7e5a28e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834622"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748501"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 

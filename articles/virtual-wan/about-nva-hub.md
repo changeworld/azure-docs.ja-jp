@@ -1,20 +1,20 @@
 ---
 title: Azure Virtual WAN:ハブのネットワーク仮想アプライアンスの概要
-description: この記事では、Virtual WAN ハブのネットワーク仮想アプライアンスについて説明します。
+description: Virtual WAN ハブのネットワーク仮想アプライアンスについて説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.author: scottnap
-ms.openlocfilehash: 36987789487e97f42a51ff509df58ee0ff2dd2ed
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 68e5216257fd32237f3d67f05f0e17a0b8e16dbd
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951254"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411910"
 ---
-# <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブのネットワーク仮想アプライアンスについて (プレビュー)
+# <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub"></a>Azure Virtual WAN ハブのネットワーク仮想アプライアンスの概要
 
 Azure Virtual WAN は、ネットワーク パートナーと協力して、仮想ハブ内の Azure VPN ゲートウェイに顧客構内設備 (CPE) を簡単に接続できる自動化を構築しました。 Azure は厳選したネットワーク パートナーと協力して、お客様がサード パーティのネットワーク仮想アプライアンス (NVA) を仮想ハブに直接デプロイできるように取り組んでいます。 これにより、ブランチ CPE を仮想ハブにある同じブランドの NVA に接続したいお客様は、独自のエンドツーエンド SD-WAN 機能を活用できるようになります。
 
@@ -73,7 +73,7 @@ Virtual WAN ハブを Azure 仮想ネットワークに接続するためには�
 
 ## <a name="supported-regions"></a><a name="regions"></a>サポートされているリージョン
 
-仮想ハブの NVA は、以下のリージョンで、プレビューとして利用できます。
+仮想ハブの NVA は、以下のリージョンで利用できます。
 
 |地理的リージョン | Azure Azure リージョン|
 |---|---|
@@ -85,35 +85,10 @@ Virtual WAN ハブを Azure 仮想ネットワークに接続するためには�
 | オーストラリア | オーストラリア南東部、オーストラリア東部、オーストラリア中部、オーストラリア中部 2|
 | アフリカ | 南アフリカ北部 |
 | インド | インド南部、インド西部、インド中部 | 
-## <a name="faq"></a>よく寄せられる質問
 
-### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>ネットワーク アプライアンス パートナーとして、提供する NVA をハブに追加したいと思っています。  このパートナー プログラムに参加することはできますか?
+## <a name="nva-faq"></a>NVA の FAQ
 
-残念ながら、現時点では、新しいパートナー オファーをオンボードするキャパシティがございません。 11 月にもう一度ご確認ください。
-
-### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Azure Marketplace から Virtual WAN ハブに任意の NVA をデプロイすることはできますか?
-
-現時点で Virtual WAN ハブにデプロイできるのは、[Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer)、[Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview)、[VMware Sd-WAN](https://aka.ms/vmwareMarketplaceLink) のみになります。
-
-### <a name="what-is-the-cost-of-the-nva"></a>NVA のコストはいくらですか?
-
-NVA ベンダーから NVA のライセンスを購入する必要があります。  Barracuda ライセンスの Barracuda CloudGen WAN NVA については、[Barracuda の CloudGen WAN のページ](https://www.barracuda.com/products/cloudgenwan)を参照してください。 現在 Cisco では、CISCO から直性購入する必要がある BYOL (ライセンス持ち込み) のライセンス モデルのみが提供されています。 また、Microsoft からは消費した NVA インフラストラクチャ ユニットと、使用したその他のリソースについても料金が発生します。 詳細については、[価格の概念](pricing-concepts.md)に関するページを参照してください。
-
-### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>NVA を Basic ハブにデプロイすることはできますか?
-
-いいえ。 NVA をデプロイする場合は、Standard ハブを使用する必要があります。
-
-### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>NVA をセキュリティで保護されたハブにデプロイすることはできますか?
-
-はい。 パートナーの NVA は、Azure Firewall を使用してハブにデプロイすることができます。
-
-### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>ブランチ オフィス内のすべての Barracuda デバイスをハブの CloudGen WAN NVA に接続することはできますか?
-
-いいえ。 Barracuda CloudGen WAN は、Barracuda CPE デバイスのみと互換性があります。 CloudGen WAN の要件の詳細については、[Barracuda の CloudGen WAN のページ](https://www.barracuda.com/products/cloudgenwan)を参照してください。 Cisco の場合、互換性がある SD-WAN デバイスがいくつかあります。 互換性がある CPI については、[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) のドキュメントを参照してください。
-
-### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>ハブの NVA ではどのようなルーティング シナリオがサポートされていますか?
-
-ハブの NVA では、Virtual WAN でサポートされているすべてのルーティング シナリオがサポートされています。
+[!INCLUDE [NVA FAQ](../../includes/virtual-wan-nva-hub-faq.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

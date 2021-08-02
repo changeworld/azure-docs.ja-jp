@@ -7,20 +7,116 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 05/04/2021
+ms.date: 06/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 58dd7baa612e2dcf302ce87b2d77cd0e71f90187
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fc4dd4bcdb18b33fa9c6098c32e0aefecb7c46ee
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763849"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439640"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>リリースノート - Azure Arc 対応データ サービス (プレビュー)
 
 この記事では、Azure Arc 対応データ サービスで最近リリースされた、または強化された機能と機能強化について説明します。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+## <a name="may-2021"></a>2021 年 5 月
+
+このプレビュー リリースは、2021 年 6 月 2 日に公開されています。
+
+この記事で紹介しているテクノロジはプレビュー機能であり、「[Microsoft Azure プレビューの追加利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に従うことを条件として提供されます。
+
+### <a name="breaking-change"></a>互換性に影響する変更点
+
+- Kubernetes ネイティブ デプロイ テンプレートが変更されました。 .Yml テンプレートを更新してください。
+    - データ コントローラー、ブートラップ、SQL マネージド インスタンスのテンプレートを更新しました: [GitHub microsoft/azure-arc pr 574](https://github.com/microsoft/azure_arc/pull/574)
+    - PostgreSQL Hyperscale のテンプレートを更新しました: [GitHub microsoft/azure-arc pr 574](https://github.com/microsoft/azure_arc/pull/574)
+
+### <a name="whats-new"></a>新機能
+
+#### <a name="platform"></a>プラットフォーム
+
+- Azure portal から、データ コントローラー、SQL マネージド インスタンス、および PostgreSQL Hyperscale サーバー グループを作成および削除します。 
+- Azure Arc データ サービスを削除するときにポータル アクションを検証します。 たとえば、データ コントローラーを使用してデプロイされた SQL マネージド インスタンスがある場合に、そのデータ コントローラーを削除しようとすると、ポータルによって警告が表示されます。
+- Azure portal を使用して、Arc 対応のデータ コントローラーを展開するときに、カスタム設定をサポートするカスタム構成プロファイルを作成します。
+- 必要に応じて、直接接続モードでログを Azure Log Analytics ワークスペースに自動的にアップロードします。
+
+####    <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
+
+このリリースでは次の特徴と機能が導入されます。
+
+- データ コントローラーが直接接続モード用に構成されている場合は、Azure portal から Azure Arc PostgreSQL Hyperscale を削除します。
+- Azure portal で、Azure Database for PostgreSQL デプロイ ページから Azure Arc 対応 PostgreSQL Hyperscale をデプロイします。 「[Azure Database for PostgreSQL デプロイ オプションを選択する - Microsoft Azure](https://ms.portal.azure.com/#create/Microsoft.PostgreSQLServer)」を参照してください。
+- Azure portal から Azure Arc 対応 PostgreSQL Hyperscale をデプロイするときに、ストレージ クラスと Postgres 拡張機能を指定します。
+- Azure Arc 対応 PostgreSQL Hyperscale で ワーカー ノードの数を減らします。 この操作 (ワーカーノードの数を増やすスケールアウトに対して、スケールインと呼ばれる) は `azdata` コマンド ラインから実行できます。
+
+#### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
+
+- Arc 対応 SQL Managed Instance の新しい [Azure CLI 拡張機能](/cli/azure/azure-cli-extensions-overview) にも `azdata arc sql mi <command>` と同じコマンドがあります。 Arc 対応 SQL Managed Instance のコマンドはすべて、`az sql mi-arc` にあります。 Arc 関連の `azdata` コマンドはすべて非推奨となり、今後のリリースで Azure CLI に移行します。
+
+   拡張機能の追加するには:
+  
+   ```azurecli
+   az extension add --source https://azurearcdatacli.blob.core.windows.net/cli-extensions/arcdata-0.0.1-py2.py3-none-any.whl -y
+   az sql mi-arc --help
+   ```
+
+- Transact-SQL を使用するフェールオーバーを手動でトリガーします。 次の 2 つのコマンドを順に実行します。
+
+   1. プライマリ レプリカのエンドポイント接続で、次のコマンドを実行します。
+   
+      ```sql
+       ALTER AVAILABILITY GROUP current SET (ROLE = SECONDARY);
+      ```
+
+   1. セカンダリ レプリカのエンドポイント接続で、次のコマンドを実行します。
+   
+      ```sql
+      ALTER AVAILABILITY GROUP current SET (ROLE = PRIMARY);
+      ```
+    
+- `BACKUP` 設定を使用しない場合、Transact-SQL の `COPY_ONLY` コマンドはブロックされます。 これで、ポイントインタイム リストアの機能がサポートされます。
+
+### <a name="known-issues"></a>既知の問題
+
+#### <a name="platform"></a>プラットフォーム
+
+- Azure portal を使用して、接続されているクラスター上にデータ コントローラー、SQL マネージド インスタンス、または PostgreSQL Hyperscale サーバー グループを作成できます。 その他の Azure Arc 対応データ サービス ツールを使用したデプロイはサポートされていません。 具体的には、このリリースでは、次のツールのいずれかを使用して直接接続モードでデータ コントローラーをデプロイすることはできません。
+   - Azure Data Studio
+   - Azure Data CLI (`azdata`)
+   - Kubernetes ネイティブ ツール (`kubectl`)
+
+   「[Azure Arc データ コントローラーをデプロイする | 直接接続モード](deploy-data-controller-direct-mode.md)」では、ポータルでデータ コントローラーを作成する方法について説明しています。 
+
+- 引き続き `kubectl` を使用して Kubernetes クラスター上にリソースを直接作成することはできますが、その場合は Azure portal に反映されません。
+
+- 直接接続モードで、`azdata arc dc upload` を使用して使用状況、メトリック、およびログをアップロードすることは、現在ブロックされています。 使用状況は自動的にアップロードされます。 間接接続モードで作成されたデータ コントローラーのアップロードは引き続き機能します。
+- `–proxy-cert <path-t-cert-file>` 経由でプロキシを使用する場合、直接接続モードでの使用状況データの自動アップロードは成功しません。
+- Azure Arc 対応 SQL Managed Instance や Azure Arc 対応 PostgreSQL Hyperscale は GB18030 認定ではありません。
+- 現時点では、kubernetes クラスターごとに直接接続モードで 1 つの Azure Arc データ コントローラーのみがサポートされています。
+
+#### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
+
+- 現時点では、ポイントインタイム リストアは NFS ストレージではサポートされていません。
+- `pg_cron` 拡張機能を同時に有効にし、構成することはできません。 これには、2 つのコマンドを使用する必要があります。 1 つは有効化のコマンドで、もう 1 つは構成するコマンドです。 次に例を示します。
+
+   1. 拡張機能の有効化:
+   
+      ```console
+      azdata arc postgres server edit -n myservergroup --extensions pg_cron 
+      ```
+
+   1. サーバー グループを再起動します。
+
+   1. 拡張機能の構成:
+   
+      ```console
+      azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
+      ```
+
+   再起動が完了する前に 2 つ目のコマンドを実行すると、失敗します。 そのような場合は、しばらく待ってから、2 つ目のコマンドをもう一度実行してください。
+
+- サーバー グループの構成を編集して追加の拡張機能を有効にするときに `--extensions` パラメーターに無効な値を渡すと、有効な拡張機能の一覧がサーバー グループの作成時の設定に誤ってリセットされ、ユーザーは追加の拡張機能を作成できなくなります。 そのような場合に使用できる唯一の回避策は、サーバー グループを削除して再デプロイすることです。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -47,47 +143,6 @@ ms.locfileid: "108763849"
 
 - データベースを 3 つのレプリカを持つ SQL Managed Instance に復元すると、それが可用性グループに自動的に追加されます。 
 - 3 つのレプリカと共にデプロイされた SQL Managed Instance で、読み取り専用のセカンダリ エンドポイントに接続します。 読み取り専用のセカンダリ接続エンドポイントを表示するには、`azdata arc sql endpoint list` を使用します。
-
-### <a name="known-issues"></a>既知の問題
-
-- Azure portal を使用して、直接接続モードでデータ コントローラーを作成できます。 その他の Azure Arc 対応データ サービス ツールを使用したデプロイはサポートされていません。 具体的には、このリリースでは、次のツールのいずれかを使用して直接接続モードでデータ コントローラーをデプロイすることはできません。
-   - Azure Data Studio
-   - Azure Data CLI (`azdata`)
-   - Kubernetes ネイティブ ツール (`kubectl`)
-
-   「[Azure Arc データ コントローラーをデプロイする | 直接接続モード](deploy-data-controller-direct-mode.md)」では、ポータルでデータ コントローラーを作成する方法について説明しています。 
-
-- 直接接続モードで、`azdata arc dc upload` を使用して使用状況、メトリック、およびログをアップロードすることは、現在ブロックされています。 使用状況は自動的にアップロードされます。 間接接続モードで作成されたデータ コントローラーのアップロードは引き続き機能します。
-- `–proxy-cert <path-t-cert-file>` 経由でプロキシを使用する場合、直接接続モードでの使用状況データの自動アップロードは成功しません。
-- Azure Arc 対応 SQL Managed Instance や Azure Arc 対応 PostgreSQL Hyperscale は GB18030 認定ではありません。
-- 現時点では、kubernetes クラスターごとに直接接続モードで 1 つの Azure Arc データ コントローラーのみがサポートされています。
-
-#### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
-
-- 直接モードでの Azure Arc 対応 SQL Managed Instance のデプロイは、Azure portal からのみ行うことができ、azdata、Azure Data Studio、kubectl などのツールからは使用できません。
-
-#### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
-
-- 現時点では、ポイントインタイム リストアは NFS ストレージではサポートされていません。
-- `pg_cron` 拡張機能を同時に有効にし、構成することはできません。 これには、2 つのコマンドを使用する必要があります。 1 つは有効化のコマンドで、もう 1 つは構成するコマンドです。 次に例を示します。
-
-   1. 拡張機能の有効化:
-   
-      ```console
-      azdata arc postgres server edit -n myservergroup --extensions pg_cron 
-      ```
-
-   1. サーバー グループを再起動します。
-
-   1. 拡張機能の構成:
-   
-      ```console
-      azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
-      ```
-
-   再起動が完了する前に 2 つ目のコマンドを実行すると、失敗します。 そのような場合は、しばらく待ってから、2 つ目のコマンドをもう一度実行してください。
-
-- サーバー グループの構成を編集して追加の拡張機能を有効にするときに `--extensions` パラメーターに無効な値を渡すと、有効な拡張機能の一覧がサーバー グループの作成時の設定に誤ってリセットされ、ユーザーは追加の拡張機能を作成できなくなります。 そのような場合に使用できる唯一の回避策は、サーバー グループを削除して再デプロイすることです。
 
 ## <a name="march-2021"></a>2021 年 3 月
 

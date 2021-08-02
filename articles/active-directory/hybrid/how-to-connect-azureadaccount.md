@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e4f31c560fe3dd91689b361ed520e466fd52da1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a16e571478428ef1eb068236369b6e9af9f19e1
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85360012"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853696"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Azure AD コネクタ アカウント パスワードの変更
 Azure AD コネクタ アカウントは、無料のサービスであると想定されています。 その資格情報をリセットする必要がある場合、このトピックが役立ちます。 たとえば、グローバル管理者が PowerShell を使用してアカウントのパスワードを誤ってリセットしてしまった場合などです。
@@ -30,11 +30,12 @@ Azure AD コネクタ アカウントは、無料のサービスであると想�
 ## <a name="reset-the-credentials"></a>資格情報をリセットする
 Azure AD コネクタのアカウントが認証の問題のために Azure AD に接続できない場合、パスワードをリセットすることができます。
 
-1. Azure AD Connect 同期サーバーにサインインし、PowerShell を起動します。
-2. `Add-ADSyncAADServiceAccount` を実行します。
-   ![PowerShell コマンドレット addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
-3. Azure AD グローバル管理者の資格情報を指定します。
+1. Azure AD Connect 同期サーバーにサインインし、PowerShell を開きます。
+2. Azure AD グローバル管理者の資格情報を指定するには、`$credential = Get-Credential` を実行します。
+3. コマンドレット `Add-ADSyncAADServiceAccount -AADCredential $credential` を実行します。
 
+   コマンドレットが成功すると、PowerShell コマンド プロンプトが表示されます。 
+   
 このコマンドレットは、Azure AD と同期エンジンの両方で、サービス アカウントのパスワードをリセットして更新します。
 
 ## <a name="known-issues-these-steps-can-solve"></a>上記の手順で解決できる既知の問題

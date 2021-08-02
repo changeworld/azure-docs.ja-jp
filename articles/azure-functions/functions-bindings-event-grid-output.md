@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ebf502fc2ae83651e8f69472b3b2042cef723d8
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97094678"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537246"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions の Azure Event Grid 出力バインディング
 
@@ -28,6 +28,8 @@ ms.locfileid: "97094678"
 ## <a name="example"></a>例
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="c-2x-and-higher"></a>C# (2.x 以降)
 
 次の例は、メソッドの戻り値を出力として使用してメッセージを Event Grid のカスタム トピックに書き込む [C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -53,6 +55,64 @@ public static async Task Run(
     {
         var myEvent = new EventGridEvent("message-id-" + i, "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
         await outputEvents.AddAsync(myEvent);
+    }
+}
+```
+
+### <a name="version-3x-preview"></a>バージョン 3.x (プレビュー)
+
+次の例は、`CloudEvent` にバインドする Functions 3.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
+
+```cs
+using System.Threading.Tasks;
+using Azure.Messaging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+
+namespace Azure.Extensions.WebJobs.Sample
+{
+    public static class CloudEventBindingFunction
+    {
+        [FunctionName("CloudEventBindingFunction")]
+        public static async Task<IActionResult> RunAsync(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [EventGrid(TopicEndpointUri = "EventGridEndpoint", TopicKeySetting = "EventGridKey")] IAsyncCollector<CloudEvent> eventCollector)
+        {
+            CloudEvent e = new CloudEvent("IncomingRequest", "IncomingRequest", await req.ReadAsStringAsync());
+            await eventCollector.AddAsync(e);
+            return new OkResult();
+        }
+    }
+}
+```
+
+次の例は、`EventGridEvent` にバインドする Functions 3.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
+
+```cs
+using System.Threading.Tasks;
+using Azure.Messaging.EventGrid;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+
+namespace Azure.Extensions.WebJobs.Sample
+{
+    public static class EventGridEventBindingFunction
+    {
+        [FunctionName("EventGridEventBindingFunction")]
+        public static async Task<IActionResult> RunAsync(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [EventGrid(TopicEndpointUri = "EventGridEndpoint", TopicKeySetting = "EventGridKey")] IAsyncCollector<EventGridEvent> eventCollector)
+        {
+            EventGridEvent e = new EventGridEvent(await req.ReadAsStringAsync(), "IncomingRequest", "IncomingRequest", "1.0.0");
+            await eventCollector.AddAsync(e);
+            return new OkResult();
+        }
     }
 }
 ```
@@ -343,9 +403,15 @@ Event Grid 出力バインディングは、Python では使用できません�
 
 `out EventGridEvent paramName` などのメソッド パラメーターを使用してメッセージを送信します。 複数のメッセージを書き込むには、`out EventGridEvent` の代わりに `ICollector<EventGridEvent>` または `IAsyncCollector<EventGridEvent>` を使用します。
 
+### <a name="additional-types"></a>その他の型 
+3\.0.0 以降のバージョンの Event Grid 拡張機能を使用するアプリでは、[Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 名前空間の `EventGridEvent` 型を使用します。 また、[Azure. Messaging](/dotnet/api/azure.messaging.cloudevent) 名前空間の `CloudEvent` 型にバインドすることもできます。
+
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 `out EventGridEvent paramName` などのメソッド パラメーターを使用してメッセージを送信します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 複数のメッセージを書き込むには、`out EventGridEvent` の代わりに `ICollector<EventGridEvent>` または `IAsyncCollector<EventGridEvent>` を使用します。
+
+### <a name="additional-types"></a>その他の型 
+3\.0.0 以降のバージョンの Event Grid 拡張機能を使用するアプリでは、[Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 名前空間の `EventGridEvent` 型を使用します。 また、[Azure. Messaging](/dotnet/api/azure.messaging.cloudevent) 名前空間の `CloudEvent` 型にバインドすることもできます。
 
 # <a name="java"></a>[Java](#tab/java)
 

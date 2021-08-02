@@ -6,18 +6,18 @@ ms.service: cache
 ms.topic: reference
 ms.date: 09/28/2020
 ms.author: yegu
-ms.openlocfilehash: b30e83b89b25e6400b8c7e0419406631fa1edcd0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21ee51ac53147482210aa0bda410e11d12e5f479
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91491708"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413791"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Azure Cache for Redis の新機能
 
 ## <a name="azure-tls-certificate-change"></a>Azure TLS 証明書の変更
 
-Microsoft では、異なる証明機関 (CA) のセットからの TLS サーバー証明書を使用するように、Azure サービスが更新されています。 この変更は、2020 年 8 月 13 日から 2020 年 10 月 26 日 (推定) のフェーズでロール アウトされます。 Azure では、現在の CA 証明書が [CA/ブラウザー フォーラムのベースライン要件の 1 つに準拠していない](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)ため、この変更が行われます。 この問題は 2020 年 7 月 1 日に報告され、世界中の複数の一般的な公開キー基盤 (PKI) プロバイダーに適用されます。 現在、Azure サービスで使用されている TLS 証明書の多くは、*Baltimore CyberTrust Root* PKI に由来します。 Azure Cache for Redis サービスは、引き続き Baltimore CyberTrust Root に結び付けられます。 これは TLS サーバー証明書ですが、TLS サーバー証明書は、2020 年 10 月 12 日以降、新しい中間証明機関 (ICA) によって発行されます。
+Microsoft では、異なる証明機関 (CA) のセットからの TLS サーバー証明書を使用するように、Azure サービスが更新されています。 この変更は、2020 年 8 月 13 日から 2020 年 10 月 26 日 (推定) のフェーズでロール アウトされます。 Azure では、[現在の CA 証明書が CA/ブラウザー フォーラムのベースライン要件の 1 つにでない](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)ため、この変更が行われます。 この問題は 2020 年 7 月 1 日に報告され、世界中の複数の一般的な公開キー基盤 (PKI) プロバイダーに適用されます。 現在、Azure サービスで使用されている TLS 証明書の多くは、*Baltimore CyberTrust Root* PKI に由来します。 Azure Cache for Redis サービスは、引き続き Baltimore CyberTrust Root に結び付けられます。 これは TLS サーバー証明書ですが、TLS サーバー証明書は、2020 年 10 月 12 日以降、新しい中間証明機関 (ICA) によって発行されます。
 
 > [!NOTE]
 > この変更は、パブリック [Azure リージョン](https://azure.microsoft.com/global-infrastructure/geographies/)のサービスに限定されます。 ソブリン (中国など) や政府のクラウドは除外されます。
@@ -37,7 +37,9 @@ Microsoft では、異なる証明機関 (CA) のセットからの TLS サー�
 
 ### <a name="what-actions-should-i-take"></a>どのような対応が必要ですか?
 
-アプリケーションでオペレーティング システムの証明書ストアを使用する場合、またはその他の間で Baltimore ルートをピン留めする場合は、何もする必要はありません。 一方、アプリケーションで中間証明書またはリーフ TLS 証明書をピン留めする場合は、次のルートをピン留めすることをお勧めします。
+アプリケーションでオペレーティング システムの証明書ストアを使用する場合、またはその他の間で Baltimore ルートをピン留めする場合は、何もする必要はありません。 
+
+アプリケーションで中間証明書またはリーフ TLS 証明書をピン留めする場合は、次のルートをピン留めすることをお勧めします。
 
 | Certificate | Thumbprint |
 | ----- | ----- |

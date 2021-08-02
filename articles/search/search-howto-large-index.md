@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c754c47bda03987c00b763d39c608f9de3d84deb
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358394"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558815"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
 
@@ -98,7 +98,7 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 
 + スケジューラを使用すると、インデックス作成を一定の間隔で配分して行い、時間をかけて徐々に行うことができます。
 + スケジュール済みのインデックス作成は、最後の既知の停止ポイントから再開することができます。 24 時間の範囲内でデータ ソースが完全にクロールされていない場合、中断されたところから 2 日目にインデクサーによってインデックス作成が再開されます。
-+ データをより小さな個々のデータ ソースにパーティション分割することにより、並列処理が実現されます。 ソース データは、Azure BLOB ストレージ内の複数のコンテナーなど、より小さなコンポーネントに分割してから、対応する複数の[データ ソース オブジェクト](/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成して、並列でインデックスを作成することができます。
++ データをより小さな個々のデータ ソースにパーティション分割することにより、並列処理が実現されます。 ソース データは、Azure Blob Storage 内の複数のコンテナーなど、より小さなコンポーネントに分割してから、対応する複数の[データ ソース オブジェクト](/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成して、並列でインデックスを作成することができます。
 
 > [!NOTE]
 > インデクサーはデータ ソース固有のものです。そのため、インデクサー アプローチの使用は、Azure 上で選択される次のデータ ソースに対してのみ有効です。[SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Table Storage](search-howto-indexing-azure-tables.md)、[Cosmos DB](search-howto-index-cosmosdb.md)。
@@ -144,7 +144,7 @@ Push API と同様に、インデクサーを使用すると、バッチごと�
 
 2. サービス内の検索単位数と同じ数のインデクサーを並列で実行できます。 **[設定]**  >  **[スケール]** で、並列処理用の [レプリカを増やす](search-capacity-planning.md)かパーティションを増やします (インデクサー ワークロードごとに 1 つのレプリカまたはパーティションを追加します)。 既存のクエリ量は十分な数に設定します。 インデックス作成のためのクエリ ワークロードを犠牲にすることは、適切なトレードオフではありません。
 
-3. Azure Cognitive Search インデクサーが到達可能なレベルの複数のコンテナーにデータを分割します。 これには、Azure SQL Database 内の複数のテーブル、Azure BLOB ストレージ内の複数のコンテナー、または複数のコレクションが考えられます。 テーブルまたはコンテナーごとに 1 つのデータ ソース オブジェクトを定義します。
+3. Azure Cognitive Search インデクサーが到達可能なレベルの複数のコンテナーにデータを分割します。 これには、Azure SQL Database 内の複数のテーブル、Azure Blob Storage 内の複数のコンテナー、または複数のコレクションが考えられます。 テーブルまたはコンテナーごとに 1 つのデータ ソース オブジェクトを定義します。
 
 4. 並列実行する複数のインデクサーを作成し、スケジュールを設定します。
 

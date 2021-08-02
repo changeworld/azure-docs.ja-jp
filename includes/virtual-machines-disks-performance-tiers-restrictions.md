@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/18/2021
+ms.date: 05/13/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7151c110fd50f7485aa0b130832aace4f3143ad9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5915d8628254f24343571c1adc254c548558415
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101750272"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077710"
 ---
 - 現在、この機能は Premium SSD でのみサポートされています。
 - ディスクのレベルを変更する前に、VM の割り当てを解除するか、実行中の VM からディスクを切断する必要があります。
@@ -22,9 +22,13 @@ ms.locfileid: "101750272"
 
 ## <a name="change-performance-tier-without-downtime-preview"></a>ダウンタイムなしでパフォーマンス レベルを変更する (プレビュー)
 
-通常、パフォーマンス レベルを変更するには、VM の割り当てを解除するか、ディスクをデタッチする必要があります。 しかし、このプレビュー機能を有効にすれば、レベルを変更するために VM の割り当てを解除したり、ディスクをデタッチしたりする必要はありません。 プレビューには、[こちら](https://aka.ms/liveperftiersignup)からサインアップできます。
+通常、パフォーマンス レベルを変更するには、VM の割り当てを解除するか、ディスクをデタッチする必要があります。 しかし、このプレビュー機能を有効にすれば、レベルを変更するために VM の割り当てを解除したり、ディスクをデタッチしたりする必要はありません。
 
 このプレビューには、次の制限事項があります。
-- 提供されるリージョンは EastUS2EUAP のみです。
+- 米国中西部リージョンでのみご利用いただけます。
 - 現在、共有ディスクでは使用できません。
-- ダウンタイムなしでパフォーマンス レベルを変更するには、`2020-12-01` API を含む Azure Resource Manager テンプレートを使用する必要があります。
+- ダウンタイムなしでレベルを変更するには、次のいずれかの方法を使用する必要があります。
+    - `2020-12-01` API を含む Azure Resource Manager テンプレートを使用してダウンタイムなしでパフォーマンス レベルを変更する。
+    - 次のリンクを使用して Azure portal にアクセスします[https://aka.ms/diskPerfTiersPreview](https://aka.ms/diskPerfTiersPreview)。
+    - 最新の Azure CLI。
+- 現在、Azure PowerShell モジュールでは使用できません。

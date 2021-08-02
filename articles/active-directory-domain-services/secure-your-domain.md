@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 05/27/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 367657b803ce50cd923c08b4b7b58dc3f945e1f4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6f344496bab8f2864c8ccbdff4f98b57e1d6f432
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748991"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613260"
 ---
 # <a name="harden-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインの強化
 
@@ -47,7 +47,7 @@ ms.locfileid: "108748991"
 1. **Azure AD Domain Services** を検索して選択します。
 1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com* )。
 1. 左側で、**セキュリティの設定** を選択します。
-1. 次の設定に対して **無効** をクリックします。
+1. 次の設定に対して **[有効]** または **[無効]** をクリックします。
    - **TLS 1.2 のみモード**
    - **NTLM 認証**
    - **オンプレミスからの NTLM パスワード同期**
@@ -55,6 +55,15 @@ ms.locfileid: "108748991"
    - **Kerberos 防御**
 
    ![脆弱な暗号と NTLM パスワード ハッシュ同期を無効するセキュリティの設定のスクリーンショット](media/secure-your-domain/security-settings.png)
+
+## <a name="assign-azure-policy-compliance-for-tls-12-usage"></a>TLS 1.2 Azure Policy のコンプライアンスを割り当てる
+
+**セキュリティ設定** に加えて、Microsoft Azure Policy には、TLS 1.2 の使用を強制する **コンプライアンス** 設定があります。 ポリシーは、割り当てられるまで影響を受けません。 ポリシーが割り当てられると、 **[コンプライアンス]** に表示されます。
+
+- 割り当てが **[監査]** の場合、Azure AD DS インスタンスが準拠すればコンプライアンスが報告されます。
+- 割り当てが **[拒否]** の場合、TLS 1.2 が必要ない場合、コンプライアンスにより Azure AD DS インスタンスが作成されず、TLS 1.2 が必要になるまで Azure AD DS インスタンスを更新できません。
+
+![コンプライアンス設定のスクリーンショット](media/secure-your-domain/policy-tls.png)
 
 ## <a name="use-powershell-to-harden-your-domain"></a>PowerShell を使用してドメインを強化する
 

@@ -1,19 +1,19 @@
 ---
 title: Always-On VPN ユーザー トンネルの構成
 titleSuffix: Azure Virtual WAN
-description: この記事では、Virtual WAN に対して Always On VPN ユーザー トンネルを構成する方法について説明します
+description: Virtual WAN に対して Always On VPN ユーザー トンネルを構成する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: e83ca64d2b0e50ec02007a3cd878e6bf034d0961
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65cddc3c850ada4e89e23da4d900afbd7476ce13
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91313588"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579720"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Virtual WAN に Always On VPN ユーザー トンネルを構成する
 

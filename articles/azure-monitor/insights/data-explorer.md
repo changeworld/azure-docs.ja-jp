@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: a8aae2dc03ba87e9782cdf3952be1bfc4a1aae75
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 274d907c4fd8d09e444b938447365a4df64af3e4
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767043"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061634"
 ---
 # <a name="azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (プレビュー)
 
@@ -114,7 +114,7 @@ Azure Data Explorer Insights では、ログとメトリックを組み合わせ
 
 **[テーブル]** タブには、クラスター内のテーブルの最新および過去のプロパティが表示されます。 最も多くの領域を消費しているテーブルを確認し、増加の過程を、テーブル サイズ、ホット データ、行数で経時的に追跡できます。
 
-**[キャッシュ]** タブでは、実際のクエリのルックバック パターンを分析し、構成済みのキャッシュ ポリシーと比較できます (テーブルごと)。 最も多くのクエリで使用されているテーブルと、まったく照会されていないテーブルを特定し、キャッシュ ポリシーを適宜調整できます。 特定のテーブルについて、キャッシュ ポリシーの特定の推奨事項を Azure Advisor で取得できます (現時点では、キャッシュに関する推奨事項は、[Azure Advisor メイン ダッシュボード](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) からのみ利用できます)。推奨事項は、過去 30 日間の実際のクエリのルックバックと、少なくとも 95% のクエリに対して最適化されていないキャッシュ ポリシーに基づいています。 Azure Advisor のキャッシュ削減の推奨事項は、"データの制限がある" クラスター (つまり、CPU 使用率とインジェスト使用率が低いにもかかわらず、データ容量が大きいために、スケールインまたはスケールダウンできなかったクラスター) で利用できます。
+**[キャッシュ]** タブでは、実際のクエリのルックバック ウィンドウ パターンを分析し、構成済みのキャッシュ ポリシーと比較できます (テーブルごと)。 最も多くのクエリで使用されているテーブルと、まったく照会されていないテーブルを特定し、キャッシュ ポリシーを適宜調整できます。 特定のテーブルについて、キャッシュ ポリシーの特定の推奨事項を Azure Advisor で取得できます (現時点では、キャッシュに関する推奨事項は、[Azure Advisor メイン ダッシュボード](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) からのみ利用できます)。推奨事項は、過去 30 日間の実際のクエリのルックバック ウィンドウと、少なくとも 95% のクエリに対して最適化されていないキャッシュ ポリシーに基づいています。 Azure Advisor のキャッシュ削減の推奨事項は、"データの制限がある" クラスター (つまり、CPU 使用率とインジェスト使用率が低いにもかかわらず、データ容量が大きいために、スケールインまたはスケールダウンできなかったクラスター) で利用できます。
 
 [![キャッシュの詳細のスクリーンショット](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 

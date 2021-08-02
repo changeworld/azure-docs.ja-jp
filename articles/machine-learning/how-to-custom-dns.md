@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 04/01/2021
+ms.date: 06/04/2021
 ms.topic: how-to
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: d0b62baf596250e75d9aa6c4a6210790a7211ce7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: contperf-fy21q3, devx-track-azurepowershell
+ms.openlocfilehash: 616354174f5eb4bdae8e4b76379106e309c0dd14
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764841"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969092"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "108764841"
 
 - [Azure プライベート エンドポイントの DNS ゾーン構成](../private-link/private-endpoint-dns.md)に関する知識。
 
-- [Azure プライベート DNS](/azure/dns/private-dns-privatednszone) に関する知識
+- [Azure プライベート DNS](../dns/private-dns-privatednszone.md) に関する知識
 
 - 必要に応じて、[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -165,7 +165,10 @@ $workspaceDns.CustomDnsConfigs | format-table
 1. 表示される __[プライベート エンドポイント]__ 列のリンクを選択します。
 1. ワークスペースのプライベート エンドポイントの完全修飾ドメイン名 (FQDN) と IP アドレスのリストがページの下部にあります。
 
-:::image type="content" source="./media/how-to-custom-dns/private-endpoint-custom-dns.png" alt-text="ポータルの FQDN のリスト":::
+    :::image type="content" source="./media/how-to-custom-dns/private-endpoint-custom-dns.png" alt-text="ポータルの FQDN のリスト":::
+
+    > [!TIP]
+    > ページ下部に DNS 設定が表示されない場合は、ページ左側にある __DNS 構成__ リンクを使用して FQDN を表示します。
 
 ---
 

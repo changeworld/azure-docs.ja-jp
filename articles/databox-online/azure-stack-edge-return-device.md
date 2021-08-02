@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro デバイスを返却する | Microsoft Docs
-description: データをワイプして Azure Stack Edge Pro デバイスを返却してから、そのデバイスに関連付けられているリソースを削除する方法について説明します。
+title: Azure Stack Edge デバイスの返却
+description: データをワイプして Azure Stack Edge デバイスを返却してから、そのデバイスに関連付けられているリソースを削除する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: cb11d7d3b2da9ab793cb18814e4021ea7afeb806
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab087747bbc6ee9edcb072223c2edf3465ba4cba
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443592"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460550"
 ---
-# <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスを返却する
+# <a name="return-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスを返却する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、データをワイプして、ご利用の Azure Stack Edge Pro デバイスを返却する方法について説明します。 デバイスを返却した後、デバイスと関連付けられたリソースを削除することもできます。
+この記事では、データをワイプして、ご利用の Azure Stack Edge デバイスを返却する方法について説明します。 デバイスを返却した後、デバイスと関連付けられたリソースを削除することもできます。
 
 この記事では、次のことについて説明します。
 
@@ -50,7 +50,7 @@ ms.locfileid: "102443592"
 
 返却プロセスを開始するには、次の手順を行います。
 
-1. Azure portal で Azure Stack Edge Pro または Data Box Gateway リソースにアクセスします。 **[概要]** で、右ペインのコマンド バーに移動し、 **[デバイスの返却]** を選択します。 
+1. Azure portal で Azure Stack Edge または Data Box Gateway リソースにアクセスします。 **[概要]** で、右ペインのコマンド バーに移動し、 **[デバイスの返却]** を選択します。 
 
     ![デバイスの返却 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -81,11 +81,11 @@ ms.locfileid: "102443592"
 
     ![デバイスの返却 4](media/azure-stack-edge-return-device/return-device-4.png) 
 
-6. デバイスの返却の詳細がキャプチャされたら、Azure Stack Edge Pro 運用チームにメールで通知できます。 メール アプリケーションがインストールされ、構成されていることを前提として、メール アプリケーションを使用できます。 また、データをコピーして作成し、メールを送信することもできます。
+6. デバイスの返却の詳細がキャプチャされたら、Azure Stack Edge 運用チームにメールで通知できます。 メール アプリケーションがインストールされ、構成されていることを前提として、メール アプリケーションを使用できます。 また、データをコピーして作成し、メールを送信することもできます。
 
     ![デバイスの返却 5](media/azure-stack-edge-return-device/return-device-5.png) 
 
-7. Azure Stack Edge Pro 運用チームがメールを受信すると、返送ラベルが送られてきます。 このラベルを受け取ったら、運送業者とデバイスの集荷をスケジュールできます。 
+7. Azure Stack Edge 運用チームがメールを受信すると、返送ラベルが送られてきます。 このラベルを受け取ったら、運送業者とデバイスの集荷をスケジュールできます。 
 
 ## <a name="schedule-a-pickup"></a>集荷をスケジュールする
 
@@ -102,20 +102,20 @@ ms.locfileid: "102443592"
     2. 電話で、印刷ラベルに表示されている返送追跡番号を伝えます。
     3. 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
 
-    集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Azure Stack Edge Pro を持ち込むこともできます。
+    集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Azure Stack Edge を持ち込むこともできます。
 
 ## <a name="delete-the-resource"></a>リソースを削除する
 
 デバイスが Azure データセンターに到着した後、デバイスは破損や改ざんの兆候がないかを検証されます。
 
-- デバイスがそのまま良好な状態で到着した場合、課金メーターはそのリソースに対して停止されます。 Azure Stack Edge Pro 運用チームが、デバイスが返却されたことを確認するためにご連絡します。 その後、Azure portal でデバイスと関連付けられたリソースを削除することができます。
+- デバイスがそのまま良好な状態で到着した場合、課金メーターはそのリソースに対して停止されます。 Azure Stack Edge 運用チームが、デバイスが返却されたことを確認するためにご連絡します。 その後、Azure portal でデバイスと関連付けられたリソースを削除することができます。
 - デバイスが大幅に破損して到着した場合、罰金が適用される可能性があります。 詳細については、[紛失または破損しているデバイスに関する FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) に関するページと[製品のサービス使用条件](https://www.microsoft.com/licensing/product-licensing/products)に関するページを参照してください。  
 
 
 次の場合に Azure portal でデバイスを削除できます。
 
 - 注文後、デバイスが Microsoft によって準備される前。
-- デバイスを Microsoft に返送し、Azure Stack Edge Pro 運用チームからデバイスが返されたことを確認する連絡があった後。 返されたデバイスが Azure データセンターでの物理的な検査に合格するまで、運用チームが連絡することはありません。
+- デバイスを Microsoft に返送し、Azure Stack Edge 運用チームからデバイスが返されたことを確認する連絡があった後。 返されたデバイスが Azure データセンターでの物理的な検査に合格するまで、運用チームが連絡することはありません。
 
 別のサブスクリプションまたは場所に対してデバイスを有効にしている場合、Microsoft によって 1 営業日以内に新しいサブスクリプションまたは場所に注文が移動されます。 注文が移動された後、このリソースを削除できます。
 
@@ -135,4 +135,4 @@ Azure portal でデバイスとリソースを削除するには、次の手順�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack Edge Pro デバイスを交換する](azure-stack-edge-replace-device.md)方法について説明します。
+- [Azure Stack Edge デバイスを交換する](azure-stack-edge-replace-device.md)方法について説明します。

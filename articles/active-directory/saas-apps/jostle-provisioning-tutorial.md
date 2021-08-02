@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2021
 ms.author: Zhchia
-ms.openlocfilehash: 385a61b3bda6c75b6fb87a5655fadb45080b7f08
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c302f7731c111c0718ac7c4d5889208020cc09a8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124151"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067593"
 ---
 # <a name="tutorial-configure-jostle-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するよう Jostle を構成する
 
@@ -96,6 +96,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 このセクションでは、Azure AD でのユーザーとグループの割り当てに基づいて Jostle アプリでユーザーとグループを作成、更新、無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
+> [!NOTE]
+> Jostle への自動ユーザー プロビジョニングの詳細については、[Azure との統合によるユーザー プロビジョニング](https://forum.jostle.us/hc/en-us/articles/360056368534-User-Provisioning-Azure-Integration)に関するページを参照してください。
+
 ### <a name="to-configure-automatic-user-provisioning-for-jostle-in-azure-ad"></a>Azure AD で Jostle の自動ユーザー プロビジョニングを構成するには、以下の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
@@ -106,7 +109,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![アプリケーションの一覧の [Jostle] リンク](common/all-applications.png)
 
-1. **[プロビジョニング]** タブを選択します。
+1. **[プロビジョニング]** タブを選択し、 **[Get Started]\(作業の開始\)** を選択します。
 
     ![[プロビジョニング] タブ](common/provisioning.png)
 
@@ -118,13 +121,13 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![トークン](common/provisioning-testconnection-tenanturltoken.png)
 
-1. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** フィールドに入力します。 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+1. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** フィールドに入力します。 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。 ただし、プロビジョニングの失敗通知は Jostle からも送信されるので、これは省略可能です。
 
     ![通知用メール](common/provisioning-notification-email.png)
 
 1. **[保存]** を選択します。
 
-1. **[Mappings]\(マッピング\)** セクションで、 **[Synchronize Azure Active Directory Users to Jostle]\(Azure Active Directory ユーザーを Jostle に同期する\)** を選択します。
+1. **[マッピング]** セクションの **[Provision Azure Active Directory Users to Jostle]\(Azure Active Directory ユーザーを Jostle にプロビジョニングする\)** を選択します。
 
 1. **[Attribute Mapping]\(属性マッピング\)** セクションで、Azure AD から Jostle に同期されたユーザー属性を確認します。 **照合** プロパティとして選択された属性は、更新の操作を行う場合に Jostle のユーザー アカウントを照合する際に使用されます。 [照合するターゲット属性](../app-provisioning/customize-application-attributes.md)を変更する場合は、Jostle API がその属性に基づくユーザーのフィルター処理をサポートしていることを確認する必要があります。 すべての変更をコミットするには、 **[保存]** を選択します。
 
@@ -147,7 +150,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
-1. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Jostle にプロビジョニングするユーザーまたはグループを定義します。
+1. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Jostle にプロビジョニングするユーザーまたはグループを定義します。Jostle では、 **[スコープ]** を [割り当てられたユーザーとグループのみを同期する] に設定する必要があります。
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a633a7656a287c0b8df050b6d14afb73c27a7460
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: df14f8fef3c5f71d5d80756eb629fc3ce5f16a74
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382141"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534567"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
@@ -25,7 +25,7 @@ ms.locfileid: "106382141"
 この記事では、Web アプリケーションと Web API に対してアクセス トークンを要求する方法を示します。 Azure AD B2C でのトークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](tokens-overview.md)」を参照してください。
 
 > [!NOTE]
-> **Web API チェーン (On-Behalf-Of) は Azure AD B2C でサポートされていません。** 多くのアーキテクチャには、別のダウンストリーム Web API を呼び出す必要がある Web API が含まれており、どちらも、Azure AD B2C によってセキュリティ保護されています。 このシナリオは、Web API バック エンドのある (つまり、別のサービスを呼び出す) クライアントで一般的なものです。 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JWT Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。 ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。
+> **Web API チェーン (On-Behalf-Of) は Azure AD B2C でサポートされていません。** 多くのアーキテクチャには、別のダウンストリーム Web API を呼び出す必要がある Web API が含まれており、どちらも、Azure AD B2C によってセキュリティ保護されています。 このシナリオは、Web API バック エンドのある (つまり、別のサービスを呼び出す) クライアントで一般的なものです。 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JWT Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。 ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。 On-Behalf-Of は Azure AD に登録しているアプリケーションで使用するサービスですが、Azure AD B2C に登録しているアプリケーションでは、トークンを発行しているテナントの種類 (Azure AD または Azure AD B2C) を問わず、使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -1,15 +1,15 @@
 ---
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: include
-ms.date: 03/10/2021
-ms.author: jingwang
-ms.openlocfilehash: 699be9fde25a7dc2736f182edaac08ca56d6de47
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/01/2021
+ms.author: jianleishen
+ms.openlocfilehash: 0082bac41a615d078854ccfc76524c41db14c595
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165932"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111761597"
 ---
 | カテゴリ              | データ ストア                                                   | [コピー アクティビティ](../copy-activity-overview.md) (ソース/シンク) | [マッピング データ フロー](../concepts-data-flow-overview.md) (ソース/シンク) | [ルックアップ アクティビティ](../control-flow-lookup-activity.md) | [メタデータの取得アクティビティ](../control-flow-get-metadata-activity.md)/[検証アクティビティ](../control-flow-validation-activity.md) | [削除アクティビティ](../delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -52,14 +52,14 @@ ms.locfileid: "110165932"
 | &nbsp;                | [SAP テーブル](../connector-sap-table.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Snowflake](../connector-snowflake.md) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Spark](../connector-spark.md)         | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| &nbsp;                | [SQL Server](../connector-sql-server.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            |                                                              |
+| &nbsp;                | [SQL Server](../connector-sql-server.md) | ✓/✓                                                           | ✓/✓ <small>[マネージド VNET](../managed-virtual-network-private-endpoint.md) を使用                                                             | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Sybase](../connector-sybase.md)       | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Teradata](../connector-teradata.md)   | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Vertica](../connector-vertica.md)     | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | **NoSQL**             | [Cassandra](../connector-cassandra.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Couchbase (プレビュー)](../connector-couchbase.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| &nbsp;                | [MongoDB](../connector-mongodb.md)     | ✓/−                                                          |                                                              |                                                              |                                                              |                                                              |
-| &nbsp;                | [MongoDB Atlas](../connector-mongodb-atlas.md) | ✓/−                                                          |                                                              |                                                              |                                                              |                                                              |
+| &nbsp;                | [MongoDB](../connector-mongodb.md)     | ✓/✓                                                          |                                                              |                                                              |                                                              |                                                              |
+| &nbsp;                | [MongoDB Atlas](../connector-mongodb-atlas.md) | ✓/✓                                                          |                                                              |                                                              |                                                              |                                                              |
 | **[最近使ったファイル]**              | [Amazon S3](../connector-amazon-simple-storage-service.md) | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;              | [Amazon S3 互換ストレージ](../connector-amazon-s3-compatible-storage.md) | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [ファイル システム](../connector-file-system.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |

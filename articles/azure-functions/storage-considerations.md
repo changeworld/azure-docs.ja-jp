@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 8c7f5ef6e1e9c354806994e5116e40523d660e9e
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 41e78acf37f2f5b9cc0346384fc4964187945386
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627710"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026455"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -18,7 +18,7 @@ Azure Functions では、Function App インスタンスを作成するときに
 |ストレージ サービス  | 機能の使用法  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | バインドの状態と関数キーを管理します。  <br/>[Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)からも使用されます。 |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | [従量課金プラン](consumption-plan.md)や [Premium プラン](functions-premium-plan.md)で、関数アプリ コードを格納して実行するために使用されるファイル共有。 |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | [従量課金プラン](consumption-plan.md)や [Premium プラン](functions-premium-plan.md)で、関数アプリ コードを格納して実行するために使用されるファイル共有。 <br/>Azure Files は既定で設定されていますが、特定の条件では、[Azure Files を使わずにアプリを作成](#create-an-app-without-azure-files)することもできます。 |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。       |
 
@@ -66,6 +66,19 @@ Function App を作成するときは、BLOB、キュー、テーブル スト�
 すべての顧客データを 1 つのリージョン内に留める必要がある場合、関数アプリに関連付けられているストレージ アカウントは、[リージョン内冗長性](../storage/common/storage-redundancy.md)が与えられたアカウントにする必要があります。 リージョン内で冗長性を持つストレージ アカウントは、[Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) でも使用される必要があります。
 
 プラットフォームで管理されるその他の顧客データは、内部負荷分散型の App Service Environment (ASE) でホストしているとき、そのリージョン内にのみ格納されます。 詳細については、[ASE のゾーン冗長性](../app-service/environment/zone-redundancy.md#in-region-data-residency)に関するページを参照してください。
+
+## <a name="create-an-app-without-azure-files"></a>Azure Files を使わずにアプリを作成する
+
+Premium と Linux 以外の Consumption プランでは、高スケールの共有ファイル システムとして、Azure Files が既定で設定されています。 このファイル システムは、それらのプラットフォームでログ ストリーミングなどの機能を実現するためにも使用しますが、主な用途は、デプロイした機能のペイロードを安定的に送信することです。 [外部パッケージの URL を使用してアプリをデプロイするときは](./run-functions-from-deployment-package.md)、そのアプリのコンテンツを、読み取り専用の別のファイルシステムから提供します。その場合、必要なければ Azure Files を使用しなくてもかまいません。 この場合、書き込み可能なファイルシステムを用意することになりますが、すべての関数アプリのインスタンスでこれを共有することは保証できません。
+
+Azure Files を使わない場合、次のことを考慮する必要があります。
+
+* 外部パッケージ URL からデプロイする必要があります。
+* 書き込み可能な共有ファイル システムに依存した運用はできません。
+* アプリで Functions のランタイム v1 を使用できません。
+* Azure portal などのクライアントのログ ストリーミングで、既定のログがファイル システムのログになります。 これの代わりに、Application Insights のログを使用するべきです。
+
+上の点に問題がなければ、Azure Files を使用せずにアプリを作成できます。 アプリケーションの設定 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` を指定せずに、関数アプリを作成してください。
 
 ## <a name="mount-file-shares"></a>ファイル共有をマウントする
 

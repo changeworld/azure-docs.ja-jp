@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで基本的な NGINX
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: 3abd39d35142dac158b208e69a4c24ddbd4eae2a
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 79267ce3a6a126caa46eb8445551d85c67f7b976
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108007306"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565682"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "108007306"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、[Helm 3][helm] を使用し、NGINX イングレス コントローラーをインストールします。 最新リリースの Helm を使用していること、および *ingress-nginx* の Helm リポジトリにアクセスできることを確認します。
+この記事では、[Helm 3][helm] を使用して、[サポートされているバージョンの Kubernetes][aks-supported versions] に NGINX イングレス コントローラーをインストールします。 最新リリースの Helm を使用していること、および *ingress-nginx* の Helm リポジトリにアクセスできることを確認します。 この記事に記載されている手順は、以前のバージョンの Helm グラフ、NGINX イングレス コントローラー、または Kubernetes と互換性がない可能性があります。
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -170,7 +170,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress
-  namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -206,7 +205,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static
-  namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -228,7 +226,7 @@ spec:
 `kubectl apply -f hello-world-ingress.yaml` コマンドを使用してイングレス リソースを作成します。
 
 ```
-$ kubectl apply -f hello-world-ingress.yaml
+$ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 ingress.extensions/hello-world-ingress created
 ingress.extensions/hello-world-ingress-static created
@@ -322,3 +320,4 @@ kubectl delete namespace ingress-basic
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-supported versions]: supported-kubernetes-versions.md

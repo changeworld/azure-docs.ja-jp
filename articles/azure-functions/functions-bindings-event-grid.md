@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bbe52f6902d1c0803727fe325b51a238e46c0ff1
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: f346995e47c0156f546722031ebaa8734239549c
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228552"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536710"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions における Azure Event Grid のバインド
 
@@ -50,7 +50,7 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 #### <a name="event-grid-extension-3x-and-higher"></a>Event Grid 拡張機能 3.x 以降
 
-Event Grid のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.1)として入手できます。 .NET アプリケーションの場合、バインドできる型が変更されます。これにより、`Microsoft.Azure.EventGrid.Models` の型が [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) の新しい型に置き換えられます。
+Event Grid のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.2)として入手できます。 .NET アプリケーションの場合、バインドできる型が変更されます。これにより、`Microsoft.Azure.EventGrid.Models` の型が [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) の新しい型に置き換えられます。 [クラウド イベント](/dotnet/api/azure.messaging.cloudevent)は、新しい Event Grid 拡張機能でもサポートされています。
 
 > [!NOTE]
 > このプレビュー パッケージは拡張機能バンドルに含まれていないため、手動でインストールする必要があります。 .NET アプリの場合は、パッケージへの参照を追加します。 その他のすべてのアプリの種類については、[拡張機能の更新]に関する記事を参照してください。

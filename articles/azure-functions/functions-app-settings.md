@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b1a3563d766f0f4636086024a1f23d157e8e9a06
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: eb595d666641003c813573a70ab7365732e0a386
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228606"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983152"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -18,12 +18,12 @@ ms.locfileid: "108228606"
 
 [host.json](functions-host-json.md) ファイルと [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
 
-> [!NOTE]  
+> [!NOTE]
 > アプリケーション設定を使用して、host.json ファイル自体を変更することなく、host.json 設定値をオーバーライドできます。 これは、特定の環境の特定の host.json 設定を構成または変更する必要がある場合に便利です。 これにより、プロジェクトを再発行しなくても、host.json 設定を変更できます。 詳細については、[host.json のリファレンスに関する記事](functions-host-json.md#override-hostjson-values)をご覧ください。 関数アプリの設定に変更を加えるためには、関数アプリを再起動する必要があります。
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights のインストルメンテーション キー。 `APPINSIGHTS_INSTRUMENTATIONKEY` または `APPLICATIONINSIGHTS_CONNECTION_STRING` のいずれかのみを使用してください。 Application Insights がソブリン クラウドで実行されている場合は、`APPLICATIONINSIGHTS_CONNECTION_STRING` を使用します。 詳細については、[Azure Functions で監視を構成する](configure-monitoring.md)方法に関するページを参照してください。 
+Application Insights のインストルメンテーション キー。 `APPINSIGHTS_INSTRUMENTATIONKEY` または `APPLICATIONINSIGHTS_CONNECTION_STRING` のいずれかのみを使用してください。 Application Insights がソブリン クラウドで実行されている場合は、`APPLICATIONINSIGHTS_CONNECTION_STRING` を使用します。 詳細については、[Azure Functions で監視を構成する](configure-monitoring.md)方法に関するページを参照してください。
 
 |Key|値の例|
 |---|------------|
@@ -33,10 +33,10 @@ Application Insights のインストルメンテーション キー。 `APPINSIG
 
 Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRUMENTATIONKEY` ではなく `APPLICATIONINSIGHTS_CONNECTION_STRING` を使用します。
 
-+ お使いの関数アプリで接続文字列を使用した追加のカスタマイズ サポートが必要な場合。 
++ お使いの関数アプリで接続文字列を使用した追加のカスタマイズ サポートが必要な場合。
 + カスタム エンドポイントを必要とするソブリン クラウドで Application Insights インスタンスが実行されている場合。
 
-詳細については、[接続文字列](../azure-monitor/app/sdk-connection-string.md)に関するページを参照してください。 
+詳細については、[接続文字列](../azure-monitor/app/sdk-connection-string.md)に関するページを参照してください。
 
 |Key|値の例|
 |---|------------|
@@ -53,7 +53,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
-この設定は、文字 `%2F` がバックエンド URL に挿入されたときにこれをルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
+この設定は、文字 `%2F` がバックエンド URL に挿入されたときにこれをルート パラメーターでスラッシュとしてデコードするかどうかを制御します。
 
 |Key|値|説明|
 |-|-|-|
@@ -159,7 +159,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-関数アプリをホストする Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (`~`) は、そのメジャー バージョンの最新バージョンを使用することを意味します (例: "~3")。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "3.0.12345") を使用します。 既定値は "~3" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](functions-versions.md)」をご覧ください。
+関数アプリをホストする Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (`~`) は、そのメジャー バージョンの最新バージョンを使用することを意味します (例: "~3")。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "3.0.12345") を使用します。 既定値は "~3" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](functions-versions.md)」をご覧ください。 `~4` の値を使用すると、プレビュー バージョンの Azure Functions を実行して .NET 6.0 プレビューを使用できます。 詳細については、[Azure Functions v4 の早期プレビュー](https://aka.ms/functions-dotnet6earlypreview-wiki)に関するページを参照してください。
 
 |Key|値の例|
 |---|------------|
@@ -167,7 +167,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 
-この設定により、関数アプリはバージョン 3.x ランタイムでバージョン 2.x 互換モードで実行できるようになります。 この設定は、[関数アプリをランタイムのバージョン 2.x から 3.x にアップグレードする](functions-versions.md#migrating-from-2x-to-3x)ときに問題が発生した場合にのみ使用してください。 
+この設定により、関数アプリはバージョン 3.x ランタイムでバージョン 2.x 互換モードで実行できるようになります。 この設定は、[関数アプリをランタイムのバージョン 2.x から 3.x にアップグレードする](functions-versions.md#migrating-from-2x-to-3x)ときに問題が発生した場合にのみ使用してください。
 
 >[!IMPORTANT]
 > この設定は、アプリケーションをバージョン 3.x で正常に動作するように更新するときに、短期的な回避策としてのみ使用することを目的としています。 [2.x ランタイムがサポートされている](functions-versions.md)限り、この設定はサポートされます。 この設定を使用せずにバージョン 3.x でアプリを実行できない問題が発生した場合は、[問題を報告](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)してください。
@@ -188,7 +188,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、`dotnet`)。 Azure Functions Runtime のバージョン 2.x 以降では、特定の関数アプリでサポートできる言語は 1 つだけです。   
+ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、`dotnet`)。 Azure Functions Runtime のバージョン 2.x 以降では、特定の関数アプリでサポートできる言語は 1 つだけです。
 
 |Key|値の例|
 |---|------------|
@@ -205,11 +205,11 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 | `powershell` | [PowerShell](functions-reference-powershell.md) |
 | `python` | [Python](functions-reference-python.md) |
 
-## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod 
+## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod
 
-PowerShell 関数アプリの管理対象の依存関係のバックグラウンド更新期間を制御します。既定値は `7.00:00:00` (毎週) です。 
+PowerShell 関数アプリの管理対象の依存関係のバックグラウンド更新期間を制御します。既定値は `7.00:00:00` (毎週) です。
 
-各 PowerShell ワーカー プロセスは、そのプロセスの開始時に PowerShell ギャラリーでモジュールのアップグレードのチェックを開始し、その後は `MDMaxBackgroundUpgradePeriod` ごとにチェックします。 PowerShell ギャラリーで利用可能になった新しいモジュール バージョンは、ファイル システムにインストールされ、PowerShell ワーカーが使用できるになります。 この値を小さくすると、関数アプリは新しいモジュール バージョンを早く取得できますが、アプリ リソースの使用量 (ネットワーク I/O、CPU、ストレージ) も増加します。 この値を大きくすると、アプリ リソースの使用量は減少しますが、アプリへの新しいモジュール バージョンの配信が遅れる可能性があります。 
+各 PowerShell ワーカー プロセスは、そのプロセスの開始時に PowerShell ギャラリーでモジュールのアップグレードのチェックを開始し、その後は `MDMaxBackgroundUpgradePeriod` ごとにチェックします。 PowerShell ギャラリーで利用可能になった新しいモジュール バージョンは、ファイル システムにインストールされ、PowerShell ワーカーが使用できるになります。 この値を小さくすると、関数アプリは新しいモジュール バージョンを早く取得できますが、アプリ リソースの使用量 (ネットワーク I/O、CPU、ストレージ) も増加します。 この値を大きくすると、アプリ リソースの使用量は減少しますが、アプリへの新しいモジュール バージョンの配信が遅れる可能性があります。
 
 |Key|値の例|
 |---|------------|
@@ -219,11 +219,11 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 ## <a name="mdnewsnapshotcheckperiod"></a>MDNewSnapshotCheckPeriod
 
-管理対象の依存関係のアップグレードがインストールされているかどうかを各 PowerShell ワーカーが確認する頻度を指定します。 既定の頻度は `01:00:00` (毎時) です。 
+管理対象の依存関係のアップグレードがインストールされているかどうかを各 PowerShell ワーカーが確認する頻度を指定します。 既定の頻度は `01:00:00` (毎時) です。
 
-新しいモジュール バージョンがファイル システムにインストールされたら、すべての PowerShell ワーカー プロセスを再起動する必要があります。 PowerShell ワーカーを再起動すると、現在の関数の実行が中断される可能性があるため、アプリの可用性がその影響を受けます。 すべての PowerShell ワーカー プロセスが再起動されるまで、関数呼び出しでは、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが使用される可能性があります。 すべての PowerShell ワーカーの再起動は `MDNewSnapshotCheckPeriod` 以内に完了します。 
+新しいモジュール バージョンがファイル システムにインストールされたら、すべての PowerShell ワーカー プロセスを再起動する必要があります。 PowerShell ワーカーを再起動すると、現在の関数の実行が中断される可能性があるため、アプリの可用性がその影響を受けます。 すべての PowerShell ワーカー プロセスが再起動されるまで、関数呼び出しでは、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが使用される可能性があります。 すべての PowerShell ワーカーの再起動は `MDNewSnapshotCheckPeriod` 以内に完了します。
 
-各 `MDNewSnapshotCheckPeriod` 内で、PowerShell ワーカーにより、管理対象の依存関係のアップグレードがインストールされているかどうかが確認されます。 アップグレードがインストールされると、再起動が開始されます。 この値を大きくすると、再起動による中断の頻度は減少します。 ただし、大きくすることにより、関数呼び出しで古いまたは新しいモジュール バージョンが非決定的に使用される可能性がある期間が長くなる恐れもあります。 
+各 `MDNewSnapshotCheckPeriod` 内で、PowerShell ワーカーにより、管理対象の依存関係のアップグレードがインストールされているかどうかが確認されます。 アップグレードがインストールされると、再起動が開始されます。 この値を大きくすると、再起動による中断の頻度は減少します。 ただし、大きくすることにより、関数呼び出しで古いまたは新しいモジュール バージョンが非決定的に使用される可能性がある期間が長くなる恐れもあります。
 
 |Key|値の例|
 |---|------------|
@@ -234,9 +234,9 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 ## <a name="mdminbackgroundupgradeperiod"></a>MDMinBackgroundUpgradePeriod
 
-管理対象の依存関係のアップグレードに関する前回のチェックの後、別のアップグレード チェックが開始されるまでの期間。既定値は `1.00:00:00` (毎日) です。 
+管理対象の依存関係のアップグレードに関する前回のチェックの後、別のアップグレード チェックが開始されるまでの期間。既定値は `1.00:00:00` (毎日) です。
 
-ワーカーの頻繁な再起動によってモジュールのアップグレードが過剰にならないように、任意のワーカーで直近 `MDMinBackgroundUpgradePeriod` 以内にモジュールのアップグレード確認が開始されているときは、その確認は行われません。 
+ワーカーの頻繁な再起動によってモジュールのアップグレードが過剰にならないように、任意のワーカーで直近 `MDMinBackgroundUpgradePeriod` 以内にモジュールのアップグレード確認が開始されているときは、その確認は行われません。
 
 |Key|値の例|
 |---|------------|
@@ -246,13 +246,31 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
-この設定の値は、Python アプリのカスタム パッケージ インデックス URL を示します。 この設定は、追加のパッケージ インデックスにあるカスタム依存関係を使用してリモート ビルドを実行する必要がある場合に使用します。   
+この設定の値は、Python アプリのカスタム パッケージ インデックス URL を示します。 この設定は、追加のパッケージ インデックスにあるカスタム依存関係を使用してリモート ビルドを実行する必要がある場合に使用します。
 
 |Key|値の例|
 |---|------------|
 |PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
 
 詳細については、Python 開発者リファレンスの「[カスタムの依存関係](functions-reference-python.md#remote-build-with-extra-index-url)」を参照してください。
+
+## <a name="python_isolate_worker_dependencies"></a>PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES
+
+この構成は Python 関数アプリに固有です。 モジュール読み込み順序の優先順位を定義します。 Python 関数アプリでモジュール競合に関する問題が生じたとき (protobuf、tensorflow、grpcio をプロジェクトで使用しているときなど)、このアプリ設定を `1` に構成すると問題が解決します。 既定では、この値は `0` に設定されます。
+
+|キー|値|説明|
+|---|-----|-----------|
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|0| Python ライブラリを内部 Python ワーカーの依存関係から読み込むことを優先します。 requirements.txt で定義されているサードパーティ ライブラリはシャドウされる場合があります。 |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|1| Python ライブラリを requirements.txt で定義されているアプリケーションのパッケージから読み込むことを優先します。 これにより、ライブラリが内部 Python ワーカーのライブラリと衝突することがなくなります。 |
+
+## <a name="python_enable_worker_extensions"></a>PYTHON\_ENABLE\_WORKER\_EXTENSIONS
+
+この構成は Python 関数アプリに固有です。 これを `1` に設定することで、ワーカーは requirements.txt で定義されている [Python ワーカー拡張機能](functions-reference-python.md#python-worker-extensions)で読み込みが可能になります。 これにより、関数アプリはサードパーティ製パッケージによって提供される新機能にアクセスできます。 また、アプリでの関数の読み込みと呼び出しの動作が変更される場合もあります。 選択する拡張機能は、それを使用するリスクが生じるので、信頼できるものであることを確認してください。 Azure Functions は、あらゆる拡張機能に対して明示的な保証をしません。 拡張機能の使い方については、拡張機能のマニュアル ページまたは readme ドキュメントを参照してください。既定では、この値は `0` に設定されます。
+
+|キー|値|説明|
+|---|-----|-----------|
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|0| Python ワーカー拡張機能を無効にします。 |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|1| Python ワーカーが requirements.txt から拡張機能を読み込めるようにします。 |
 
 ## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
 
@@ -264,7 +282,7 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 ## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
-"_この設定は現在プレビューの段階です。_ "  
+"_この設定は現在プレビューの段階です。_ "
 
 この設定は、Azure Functions スケール コントローラーからのログ記録を制御します。 詳細については、[スケール コントローラーのログ](functions-monitoring.md#scale-controller-logs)に関するセクションを参照してください。
 
@@ -284,7 +302,7 @@ Windows 上で実行されているイベント ドリブン スケーリング 
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。 
+Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
@@ -304,19 +322,19 @@ Windows 上のイベント ドリブン スケーリング プラン内の関数
 
 Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
 
-デプロイ中に Azure Resource Manager テンプレートを使用して関数アプリを作成する場合、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。   
+デプロイ中に Azure Resource Manager テンプレートを使用して関数アプリを作成する場合、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 
-IP アドレスの解決時にアプリによって使用される DNS サーバーを設定します。 この設定は、[Azure DNS Private Zones](functions-networking-options.md#azure-dns-private-zones) や[プライベート エンドポイント](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)など、特定のネットワーク機能を使用する場合に必要になることがよくあります。   
+IP アドレスの解決時にアプリによって使用される DNS サーバーを設定します。 この設定は、[Azure DNS Private Zones](functions-networking-options.md#azure-dns-private-zones) や[プライベート エンドポイント](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)など、特定のネットワーク機能を使用する場合に必要になることがよくあります。
 
 |Key|値の例|
 |---|------------|
 |WEBSITE\_DNS\_SERVER|168.63.129.16|
 
-## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING 
+## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING
 
-圧縮のために既定の gzip 圧縮ではなく、Brotli エンコーディングが使用されるかどうかを制御します。 `WEBSITE_ENABLE_BROTLI_ENCODING` が `1` に設定されている場合は Brotli エンコーディングが使用され、それ以外の場合は gzip エンコーディングが使用されます。 
+圧縮のために既定の gzip 圧縮ではなく、Brotli エンコーディングが使用されるかどうかを制御します。 `WEBSITE_ENABLE_BROTLI_ENCODING` が `1` に設定されている場合は Brotli エンコーディングが使用され、それ以外の場合は gzip エンコーディングが使用されます。
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
@@ -331,8 +349,8 @@ IP アドレスの解決時にアプリによって使用される DNS サーバ
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-"_Windows のみ_"。  
-Windows で関数アプリを実行するときに使用する Node.js のバージョンを設定します。 チルダ (~) を使用して、ランタイムがターゲット メジャー バージョンの利用可能な最新バージョンを使用するようにする必要があります。 たとえば、`~10` に設定すると、最新バージョンの Node.js 10 が使用されます。 メジャー バージョンがチルダ付きで対象になっている場合は、マイナー バージョンを手動で更新する必要はありません。 
+"_Windows のみ_"。
+Windows で関数アプリを実行するときに使用する Node.js のバージョンを設定します。 チルダ (~) を使用して、ランタイムがターゲット メジャー バージョンの利用可能な最新バージョンを使用するようにする必要があります。 たとえば、`~10` に設定すると、最新バージョンの Node.js 10 が使用されます。 メジャー バージョンがチルダ付きで対象になっている場合は、マイナー バージョンを手動で更新する必要はありません。
 
 |Key|値の例|
 |---|------------|
@@ -350,7 +368,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 ## <a name="website_time_zone"></a>WEBSITE\_TIME\_ZONE
 
-関数アプリのタイムゾーンを設定できます。 
+関数アプリのタイムゾーンを設定できます。
 
 |Key|OS|値の例|
 |---|--|------------|
@@ -361,7 +379,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 ## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
 
-アプリからのすべての送信トラフィックが仮想ネットワーク経由でルーティングされるかどうかを示します。 設定値が `1` の場合は、すべてのトラフィックが仮想ネットワーク経由でルーティングされることを示します。 [リージョンでの仮想ネットワーク統合](functions-networking-options.md#regional-virtual-network-integration)の機能を使用する場合は、この設定が必要です。 また、[仮想ネットワーク NAT ゲートウェイを使用して静的な送信 IP アドレスを定義する](functions-how-to-use-nat-gateway.md)場合にも使用されます。 
+アプリからのすべての送信トラフィックが仮想ネットワーク経由でルーティングされるかどうかを示します。 設定値が `1` の場合は、すべてのトラフィックが仮想ネットワーク経由でルーティングされることを示します。 [リージョンでの仮想ネットワーク統合](functions-networking-options.md#regional-virtual-network-integration)の機能を使用する場合は、この設定が必要です。 また、[仮想ネットワーク NAT ゲートウェイを使用して静的な送信 IP アドレスを定義する](functions-how-to-use-nat-gateway.md)場合にも使用されます。
 
 |Key|値の例|
 |---|------------|

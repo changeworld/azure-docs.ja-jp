@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 513f262f5d09cf56c4506a4f20c9aa41507c2abd
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 3fa167233c5afe7b50b2794f6c0fff5458e9acf7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515279"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089058"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -26,13 +26,13 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 任意のプラットフォームでライブ Web アプリケーションを監視するための拡張可能なアプリケーション パフォーマンス管理 (APM) サービス。 |
 | [Container insights](containers/container-insights-overview.md) | Azure Kubernetes Service (AKS) でホストされている Azure Container Instances またはマネージド Kubernetes クラスターにデプロイされたコンテナー ワークロードのパフォーマンスを監視します。 |
-| [Azure Monitor for Cosmos DB](insights/cosmosdb-insights-overview.md) | すべての Azure Cosmos DB リソースの全体的なパフォーマンス、エラー、容量、操作上の正常性のビューを、統一された対話型エクスペリエンスで提供します。 |
-| [Azure Monitor for Networks (プレビュー)](insights/network-insights-overview.md) | すべてのネットワーク リソースの正常性とメトリックの包括的ビューを提供します。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。 |
-[Azure Monitor for Resource Groups (プレビュー)](insights/resource-group-insights.md) |  個別のリソースで発生した問題をトリアージおよび診断する一方で、リソース グループ全体の正常性とパフォーマンスに関するコンテキストを提供します。 |
-| [Azure Monitor for Storage](insights/storage-insights-overview.md) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 |
+| [Cosmos DB 分析情報](insights/cosmosdb-insights-overview.md) | すべての Azure Cosmos DB リソースの全体的なパフォーマンス、エラー、容量、操作上の正常性のビューを、統一された対話型エクスペリエンスで提供します。 |
+| [Networks 分析情報 (プレビュー)](insights/network-insights-overview.md) | すべてのネットワーク リソースの正常性とメトリックの包括的ビューを提供します。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。 |
+[リソース グループ分析情報 (プレビュー)](insights/resource-group-insights.md) |  個別のリソースで発生した問題をトリアージおよび診断する一方で、リソース グループ全体の正常性とパフォーマンスに関するコンテキストを提供します。 |
+| [ストレージ分析情報](insights/storage-insights-overview.md) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 |
 | [VM insights](vm/vminsights-overview.md) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 |
-| [Azure Monitor for Key Vault (プレビュー)](./insights/key-vault-insights-overview.md) | キー コンテナーの要求、パフォーマンス、エラー、および待ち時間の統合ビューを提供することで、キー コンテナーの包括的な監視を実現します。 |
-| [Azure Monitor for Azure Cache for Redis (プレビュー)](insights/redis-cache-insights-overview.md) |  全体のパフォーマンス、エラー、容量、および操作の正常性を、統一された対話形式で表示できます。 |
+| [Key Vault 分析情報 (プレビュー)](./insights/key-vault-insights-overview.md) | キー コンテナーの要求、パフォーマンス、エラー、および待ち時間の統合ビューを提供することで、キー コンテナーの包括的な監視を実現します。 |
+| [Azure Cache for Redis 分析情報 (プレビュー)](insights/redis-cache-insights-overview.md) |  全体のパフォーマンス、エラー、容量、および操作の正常性を、統一された対話形式で表示できます。 |
 
 
 ### <a name="core-solutions"></a>コア ソリューション

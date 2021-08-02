@@ -1,17 +1,17 @@
 ---
-title: Web サイトの可用性と応答性を監視する - Azure Monitor
+title: URL ping テストを使用して可用性を監視する - Azure Monitor
 description: Application Insights で ping テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 05/25/2021
 ms.reviewer: sdash
-ms.openlocfilehash: eba55212b4b40a364f37d6f86d41a25a1564281a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e7e52cb5db6db5fbd1e73713d3d3558be9e859f0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108767331"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968392"
 ---
-# <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
+# <a name="monitor-availability-with-url-ping-tests"></a>URL ping テストを使用して可用性を監視する
 
 "URL ping テスト" という名前は、少し間違っています。 明確に言うと、このテストでは、サイトの可用性をチェックするために ICMP (インターネット制御メッセージ プロトコル) を使用しません。 代わりに、より高度な HTTP 要求機能を使用して、エンドポイントが応答しているかどうかが検証されます。 また、その応答に関連付けられているパフォーマンスも測定され、依存する要求の解析などの高度な機能と結合されたカスタム成功基準を設定する機能が追加されて、再試行が可能になります。
 
@@ -64,6 +64,15 @@ Azure Resource Manager を使用して可用性 URL の ping テストをデプ�
 | USGov テキサス    | usgov-tx-azr        |
 | USDoD 東部     | usgov-ddeast-azr    |
 | USDoD 中部  | usgov-ddcentral-azr |
+
+### <a name="azure-china"></a>Azure 中国
+
+| 表示名   | 作成名     |
+|----------------|---------------------|
+| 中国東部     | mc-cne-azr          |
+| 中国東部 2   | mc-cne2-azr         |
+| 中国北部    | mc-cnn-azr          |
+| 中国北部 2  | mc-cnn2-azr         |
 
 #### <a name="azure"></a>Azure
 
@@ -144,4 +153,4 @@ Azure Resource Manager を使用して可用性 URL の ping テストをデプ�
 * [可用性のアラート](availability-alerts.md)
 * [複数ステップ Web テスト](availability-multistep.md)
 * [トラブルシューティング](troubleshoot-availability.md)
-* [Azure Resource Manager テンプレートの Web テスト](https://docs.microsoft.com/azure/templates/microsoft.insights/webtests?tabs=json)
+* [Azure Resource Manager テンプレートの Web テスト](/azure/templates/microsoft.insights/webtests?tabs=json)

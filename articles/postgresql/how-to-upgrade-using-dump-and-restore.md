@@ -1,21 +1,24 @@
 ---
-title: ダンプと復元を使用したアップグレード - Azure Database for PostgreSQL - 単一サーバー
-description: データベースのダンプと復元を使用したオフライン アップグレード方法による、上位バージョンの Azure Database for PostgreSQL - 単一サーバーへの移行について説明します。
+title: ダンプと復元を使用したアップグレード - Azure Database for PostgreSQL
+description: データベースのダンプと復元を使用したオフライン アップグレード方法による、上位バージョンの Azure Database for PostgreSQL への移行について説明します。
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/10/2020
-ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/02/2021
+ms.openlocfilehash: d528d75bd26bf17ca0da20447848d315e2dc9057
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493663"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111406879"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースのアップグレード
 
-次の方法を使用してデータベースを上位のメジャー バージョンへ移行し、Azure Database for PostgreSQL - 単一サーバーにデプロイされている PostgreSQL サーバーをアップグレードできます。
+>[!NOTE]
+> このドキュメントで説明する概念は、Azure Database for PostgreSQL (単一サーバー) と Azure Database for PostgreSQL (フレキシブル サーバー (プレビュー)) の両方に適用されます。 
+
+次の方法を使用してデータベースを上位のメジャー バージョンへ移行し、Azure Database for PostgreSQL にデプロイされている PostgreSQL サーバーをアップグレードできます。
 * PostgreSQL [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) と [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) を使用した **オフライン** の方法。データを移行するためのダウンタイムが発生します。 このドキュメントでは、このアップグレードまたは移行の方法について説明します。
 * [Database Migration Service](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS) を使用した **オンライン** の方法。 この方法では、移行におけるダウンタイムが短縮され、ターゲット データベースとソースの同期が維持され、カットオーバーのタイミングを選択できます。 ただし、DMS を使用するために対処する必要があるいくつかの前提条件と制限があります。 詳細については、[DMS のドキュメント](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)をご覧ください。 
 
@@ -41,8 +44,8 @@ ms.locfileid: "96493663"
  
 この攻略ガイドの手順を実行するには、以下が必要です。
 
-- 9\.5、9.6、または 10 を実行している、アップグレード対象の **ソース** PostgreSQL データベース
-- **ターゲット** PostgreSQL データベース サーバーと目的のメジャー バージョンの [Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)。 
+- アップグレードするエンジンの下位バージョンを実行している **移行元の** PostgreSQL データベース サーバー。
+- 目的のメジャー バージョンの [Azure Database for PostgreSQL サーバー (単一サーバー)](quickstart-create-server-database-portal.md) または [Azure Database for PostgreSQL (フレキシブル サーバー)](./flexible-server/quickstart-create-server-portal.md) を実行している **移行先の** PostgreSQL データベース サーバー。 
 - ダンプおよび復元コマンドを実行する PostgreSQL クライアント システム。
   - PostgreSQL がインストールされており、[pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) および [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) コマンドライン ユーティリティがインストールされている Linux または Windows クライアントを使用できます。 
   - または、[Azure Cloud Shell](https://shell.azure.com) を使用するか、[Azure portal](https://portal.azure.com) の右上にあるメニュー バーで Azure Cloud Shell をクリックすることもできます。 ダンプおよび復元コマンドを実行する前に、ご利用のアカウントにログインする (`az login`) 必要があります。
@@ -71,6 +74,9 @@ ms.locfileid: "96493663"
  | ターゲット サーバー (v11) | pg-11.postgres.database.azure.com |
  | 対象になるデータベース | bench5gb |
  | ターゲット ユーザー名 | pg@pg-11 |
+
+>[!NOTE]
+> フレキシブル サーバーでは、PostgreSQL バージョン 11 以降がサポートされます。 また、フレキシブル サーバーのユーザー名には @<servername> は必要ありません。
 
 ## <a name="upgrade-your-databases-using-offline-migration-methods"></a>オフラインの移行方法を使用してデータベースをアップグレードする
 このセクションで説明するいずれかの方法を選択してアップグレードできます。 タスクを実行する際に次のヒントを使用できます。
@@ -164,5 +170,5 @@ PostgreSQL クライアントがない場合、または Azure Cloud Shell を�
 ## <a name="next-steps"></a>次のステップ
 
 - ターゲット データベースの機能に問題がなければ、古いデータベース サーバーを削除できます。 
-- ソース サーバーと同じデータベース エンドポイントを使用する場合、古いソース データベース サーバーを削除した後、古いデータベース サーバー名を使用して読み取りレプリカを作成できます。 安定した状態が確立されたら、レプリカを停止することができます。これにより、レプリカ サーバーが独立したサーバーに昇格されます。 詳細については、「[レプリケーション](./concepts-read-replicas.md)」を参照してください。
+- Azure Database for PostgreSQL (単一サーバーのみ)。 ソース サーバーと同じデータベース エンドポイントを使用する場合、古いソース データベース サーバーを削除した後、古いデータベース サーバー名を使用して読み取りレプリカを作成できます。 レプリケーションの安定した状態が確立されたら、レプリカを停止できます。これにより、レプリカ サーバーが独立したサーバーに昇格されます。 詳細については、「[レプリケーション](./concepts-read-replicas.md)」を参照してください。
 - これらのコマンドは､運用環境で使用する前にテスト環境でテスト､検証してください。

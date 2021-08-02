@@ -11,12 +11,12 @@ ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa358b0c9d7747584deabe761160d3bcbcde8feb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12eebf9c43dff9b3a83458051f5a3980b5afcbe0
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593182"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888988"
 ---
 # <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期用 AADCloudSyncTools PowerShell モジュール
 
@@ -45,7 +45,7 @@ AADCloudSyncTools モジュールをインストールして使用するには�
 5. モジュールに関する情報が表示されます。
 6. 次に、AADCloudSyncTools モジュールの前提条件をインストールするには、`Install-AADCloudSyncToolsPrerequisites` を実行します
 7. 最初の実行時に、PoweShellGet モジュールが存在しない場合は、インストールされます。 新しい PowershellGet モジュールを読み込むには、PowerShell ウィンドウを閉じ、管理者特権で新しい PowerShell セッションを開きます。 
-8. 手順 3 を使用してモジュールを再度インポートします。
+8. 手順 2 を使用してモジュールを再度インポートします。
 9. `Install-AADCloudSyncToolsPrerequisites` を実行して MSAL および AzureAD モジュールをインストールします
 11. すべての前提要件が正常にインストールされているはずです ![モジュールのインストール](media/reference-powershell/install-1.png)
 

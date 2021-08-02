@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 114245030ba2356861b83a580f103d3b84c0eae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b30c98bbaf7f7806feecdbccd2c8736d431943c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100600986"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854344"
 ---
 # <a name="grid-visualizations"></a>グリッドの視覚化
 

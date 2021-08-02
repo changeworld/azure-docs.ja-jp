@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 500587dc6564aa55eb430365eb67bb958bbd2482
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf352cf9ce944ef3f1bb2702fda249deb6ce186e
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519981"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407725"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Kubernetes ツールを使用した Azure Arc データ コントローラーの作成
 
@@ -39,8 +39,7 @@ Kubernetes ツールを使用して Azure Arc データ コントローラーを
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
 kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete crd postgresql-11s.arcdata.microsoft.com 
-kubectl delete crd postgresql-12s.arcdata.microsoft.com
+kubectl delete crd postgresqls.arcdata.microsoft.com 
 ```
 
 ## <a name="overview"></a>概要
@@ -92,33 +91,20 @@ kubectl get pod --namespace arc
 - イメージのプル シークレットをブートストラップ コンテナーに追加します。 以下の例を参照してください。
 - ブートストラップ イメージのイメージの場所を変更します。 以下の例を参照してください。
 
-次の例は、Kubernetes ドキュメントに記載されているように、イメージのプル シークレット名 `regcred` を作成したことを前提としています。
+次の例では、イメージ プル シークレット名 `arc-private-registry` を作成した場合を想定しています。
 
 ```yaml
-#just showing only the relevant part of the bootstrapper.yaml template file here
-containers:
-      - env:
-        - name: ACCEPT_EULA
-          value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-dec-2020  <-- template value to change
-        image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
-        imagePullPolicy: IfNotPresent
-        name: bootstrapper
-        resources: {}
-        securityContext:
-          runAsUser: 21006
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
+#Just showing only the relevant part of the bootstrapper.yaml template file here
+    spec:
+      serviceAccountName: sa-bootstrapper
+      nodeSelector:
+        kubernetes.io/os: linux
       imagePullSecrets:
-      - name: regcred
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      serviceAccount: sa-mssql-controller
-      serviceAccountName: sa-mssql-controller
-      terminationGracePeriodSeconds: 30
-
+      - name: arc-private-registry #Create this image pull secret if you are using a private container registry
+      containers:
+      - name: bootstrapper
+        image: mcr.microsoft.com/arcdata/arc-bootstrapper:latest #Change this registry location if you are using a private container registry.
+        imagePullPolicy: Always
 ```
 
 ## <a name="create-a-secret-for-the-data-controller-administrator"></a>データ コントローラー管理者のシークレットを作成する
@@ -196,7 +182,12 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 次の例は、完成したデータ コントローラーの yaml ファイルを示しています。 お客様の要件と、上記の情報に基づいて、実際の環境に合わせて例を更新します。
 
-```yaml
+```yml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-mssql-controller
+---
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: datacontroller
 metadata:
@@ -205,11 +196,11 @@ metadata:
 spec:
   credentials:
     controllerAdmin: controller-login-secret
-    #dockerRegistry: arc-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
+    dockerRegistry: arc-private-registry #Create a registry secret named 'arc-private-registry' if you are going to pull from a private registry instead of MCR.
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-dec-2020 
+    imageTag: latest
     registry: mcr.microsoft.com
     repository: arcdata
   security:
@@ -220,18 +211,18 @@ spec:
   services:
   - name: controller
     port: 30080
-    serviceType: LoadBalancer
+    serviceType: LoadBalancer # Modify serviceType based on your Kubernetes environment
   - name: serviceProxy
     port: 30777
-    serviceType: LoadBalancer
+    serviceType: LoadBalancer # Modify serviceType based on your Kubernetes environment
   settings:
     ElasticSearch:
       vm.max_map_count: "-1"
     azure:
-      connectionMode: Indirect
-      location: eastus
-      resourceGroup: myresourcegroup
-      subscription: c82c901a-129a-435d-86e4-cc6b294590ae
+      connectionMode: indirect
+      location: eastus # Choose a different Azure location if you want
+      resourceGroup: <your resource group>
+      subscription: <your subscription GUID>
     controller:
       displayName: arc
       enableBilling: "True"
@@ -240,11 +231,11 @@ spec:
   storage:
     data:
       accessMode: ReadWriteOnce
-      className: default
+      className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
       size: 15Gi
     logs:
       accessMode: ReadWriteOnce
-      className: default
+      className: default # Use default configured storage class or modify storage class based on your Kubernetes environment
       size: 10Gi
 ```
 
@@ -275,10 +266,10 @@ kubectl get pods --namespace arc
 次のようなコマンドを実行して、特定のポッドの作成状態を確認することもできます。  これは特に、何らの問題をトラブルシューティングするのに役立ちます。
 
 ```console
-kubectl describe po/<pod name> --namespace arc
+kubectl describe pod/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/control-2g7bl --namespace arc
+#kubectl describe pod/control-2g7bl --namespace arc
 ```
 
 Azure Data Studio 用の Azure Arc 拡張機能には、Azure Arc 対応 Kubernetes をセットアップし、SQL Managed Instance のサンプル yaml ファイルを含む git リポジトリを監視するように構成する方法を順を追って説明するノートブックが用意されています。 すべてが接続されると、新しい SQL Managed Instance が Kubernetes クラスターにデプロイされます。

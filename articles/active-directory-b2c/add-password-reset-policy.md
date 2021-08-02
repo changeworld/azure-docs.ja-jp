@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 05/24/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2865138aeca012d30692e708a61e459492f03ccc
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 81bdc8550f57a7c1c4992825cd231a9bb3cad4ce
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750701"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457478"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードのリセット フローを設定する
 
@@ -28,8 +28,13 @@ ms.locfileid: "109750701"
 
 [サインアップとサインイン](add-sign-up-and-sign-in-policy.md)の体験では、ユーザーは **[パスワードを忘れた場合]** リンクを使用して自分のパスワードをリセットできます。 パスワードのリセット フローでは、次の手順を実行します。
 
-1. ユーザーはサインアップおよびサインイン ページで、 **[パスワードを忘れた場合]** リンクをクリックします。 Azure AD B2C によってパスワードのリセット フローが開始されます。 
-2. ユーザーは、時間限定のワン タイム パスコードを入力して、電子メール アドレスを確認します。
+1. ユーザーはサインアップおよびサインイン ページで、 **[パスワードを忘れた場合]** リンクをクリックします。 Azure AD B2C によってパスワードのリセット フローが開始されます。
+2. ユーザーはメール アドレスを入力し、 **[確認コードを送信する]** を選択します。 Azure AD B2C から、ユーザーに確認コードが送信されます。
+
+* ユーザーは、メール ボックスを開き、確認コードをコピーする必要があります。 その後、ユーザーは Azure AD B2C パスワードのリセット ページで確認コードを入力し、 **[コードの確認]** を選択します。
+
+> [!NOTE]
+> メールの検証が完了した後でも、ユーザーは **[メールの変更]** を選択し、もう一方のメールを入力して、最初からメールの検証をやり直すことができます。
 3. ユーザーは次に、新しいパスワードを入力できます。
 
 ![パスワードのリセット フロー](./media/add-password-reset-policy/password-reset-flow.png)

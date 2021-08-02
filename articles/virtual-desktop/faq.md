@@ -1,21 +1,22 @@
 ---
-title: Windows Virtual Desktop に関する FAQ - Azure
-description: Windows Virtual Desktop のよく寄せられる質問とベスト プラクティス。
+title: Azure Virtual Desktop に関する FAQ - Azure
+description: Azure Virtual Desktop のよく寄せられる質問とベスト プラクティス。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 1f5e4cb0d2db30c6b07370be137506f3fe26837f
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 604f7ac3d06ceb9ea981deb6aba4e9f208f06e20
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505299"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757717"
 ---
-# <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop の FAQ
+# <a name="azure-virtual-desktop-faq"></a>Azure Virtual Desktop に関する FAQ
 
-この記事では、よく寄せられる質問に回答し、Windows Virtual Desktop のベスト プラクティスについて説明します。
+この記事では、Azure Virtual Desktop について、よく寄せられる質問に回答し、ベスト プラクティスについて説明します。
 
 ## <a name="what-are-the-minimum-admin-permissions-i-need-to-manage-objects"></a>オブジェクトを管理するために必要な、最少管理者権限は何ですか。
 
@@ -40,7 +41,7 @@ ms.locfileid: "106505299"
 }
 ```
 
-## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Windows Virtual Desktop では Azure Active Directory モデルの分割はサポートされていますか。
+## <a name="does-azure-virtual-desktop-support-split-azure-active-directory-models"></a>Azure Virtual Desktop では、Azure Active Directory モデルの分割はサポートされていますか。
 
 ユーザーがアプリ グループに割り当てられると、サービスにより単純な Azure ロールの割り当てが行われます。 そのため、ユーザーの Azure Active Directory (AD) とアプリ グループの Azure AD は同じ場所にある必要があります。 ホスト プール、アプリ グループ、ワークスペースなどのすべてのサービス オブジェクトも、ユーザーと同じ Azure AD に含まれている必要があります。
 
@@ -84,23 +85,23 @@ Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty
 CustomRdpProperty : audiocapturemode:i:0;audiomode:i:0;drivestoredirect:s:;redirectclipboard:i:1;redirectcomports:i:0;redirectprinters:i:1;redirectsmartcards:i:1;screen modeid:i:2;
 ```
 
-## <a name="does-windows-virtual-desktop-support-guest-users"></a>Windows Virtual Desktop ではゲスト ユーザーはサポートされていますか。
+## <a name="does-azure-virtual-desktop-support-guest-users"></a>Azure Virtual Desktop では、ゲスト ユーザーはサポートされていますか。
 
-Windows Virtual Desktop では Azure AD ゲスト ユーザー アカウントはサポートされていません。 たとえば、ゲスト ユーザーのグループが Microsoft 365 E3 (ユーザーごと)、Windows E3 (ユーザーごと) または WIN VDA ライセンスを会社で使用しているにも関わらず、別の会社の Azure AD のゲスト ユーザーであるとします。 もう一方の会社では、Azure AD と Active Directory の両方で、ゲスト ユーザーのユーザー オブジェクトをローカル アカウントのように管理します。
+Azure Virtual Desktop では、Azure AD ゲスト ユーザー アカウントはサポートされていません。 たとえば、ゲスト ユーザーのグループが Microsoft 365 E3 (ユーザーごと)、Windows E3 (ユーザーごと) または WIN VDA ライセンスを会社で使用しているにも関わらず、別の会社の Azure AD のゲスト ユーザーであるとします。 もう一方の会社では、Azure AD と Active Directory の両方で、ゲスト ユーザーのユーザー オブジェクトをローカル アカウントのように管理します。
 
-サード パーティのベネフィットになるように、独自のライセンスを使用することはできません。 また、Windows Virtual Desktop では、現在 Microsoft アカウント (MSA) はサポートされていません。
+サード パーティのベネフィットになるように、独自のライセンスを使用することはできません。 また、Azure Virtual Desktop では、Microsoft アカウント (MSA) は現在サポートされていません。
 
 ## <a name="why-dont-i-see-the-client-ip-address-in-the-wvdconnections-table"></a>WVDConnections テーブルにクライアント IP アドレスが表示されないのはなぜですか。
 
 現在、Web クライアントの IP アドレスを収集する信頼性の高い方法がないため、テーブルにはその値が含まれていません。
 
-## <a name="how-does-windows-virtual-desktop-handle-backups"></a>Windows Virtual Desktop でバックアップはどのように処理されますか。
+## <a name="how-does-azure-virtual-desktop-handle-backups"></a>Azure Virtual Desktop でバックアップはどのように処理されますか。
 
 Azure には、バックアップを処理するための複数のオプションがあります。 Azure Backup、Site Recovery、およびスナップショットを使用できます。
 
-## <a name="does-windows-virtual-desktop-support-third-party-collaboration-apps"></a>Windows Virtual Desktop ではサード パーティのコラボレーション アプリはサポートされていますか。
+## <a name="does-azure-virtual-desktop-support-third-party-collaboration-apps"></a>Azure Virtual Desktop では、サード パーティのコラボレーション アプリはサポートされていますか。
 
-Windows Virtual Desktop は、現在 Teams 向けに最適化されています。 Microsoft では現在、Zoom のようなサード パーティ コラボレーション アプリはサポートしていません。 サード パーティの組織は、お客様に互換性ガイドラインを提供する責任を負います。 Windows Virtual Desktop では、Skype for Business もサポートされていません。
+現在、Azure Virtual Desktop は Teams に最適化されています。 Microsoft では現在、Zoom のようなサード パーティ コラボレーション アプリはサポートしていません。 サード パーティの組織は、お客様に互換性ガイドラインを提供する責任を負います。 Azure Virtual Desktop では、Skype for Business もサポートされていません。
 
 ## <a name="can-i-change-from-pooled-to-personal-host-pools"></a>プールから個人用ホスト プールに変更できますか。
 
@@ -129,21 +130,21 @@ FSLogix の制限事項またはクォータは、ユーザー プロファイ�
 
 - VM のプレフィックス名と VM の数は 15 文字未満です。 詳細については、「[Azure リソースの名前付け規則と制限事項](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)」を参照してください。
 
-## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>Azure Lighthouse を使用して Windows Virtual Desktop 環境を管理できますか?
+## <a name="can-i-manage-azure-virtual-desktop-environments-with-azure-lighthouse"></a>Azure Lighthouse を使用して Azure Virtual Desktop 環境を管理できますか。
 
-Azure Lighthouse では、Windows Virtual Desktop 環境の管理は完全にはサポートされていません。 Lighthouse では現在、Azure AD テナント間でのユーザー管理がサポートされていないため、Lighthouse のお客様はユーザーを管理するために使用する Azure AD にサインインする必要があります。
+Azure Lighthouse では、Azure Virtual Desktop 環境の管理は完全にはサポートされていません。 Lighthouse では現在、Azure AD テナント間でのユーザー管理がサポートされていないため、Lighthouse のお客様はユーザーを管理するために使用する Azure AD にサインインする必要があります。
 
-また、Windows Virtual Desktop サービスで CSP サンドボックス サブスクリプションを使用することもできません。 詳細については、「[統合サンドボックス アカウント](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)」を参照してください。
+また、Azure Virtual Desktop サービスで CSP サンドボックス サブスクリプションを使用することもできません。 詳細については、「[統合サンドボックス アカウント](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)」を参照してください。
 
 最後に、CSP の所有者アカウントからリソース プロバイダーを有効にした場合、CSP の顧客アカウントでリソース プロバイダーを変更することはできません。
 
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>登録の問題を防ぐには、VM をどれくらいの頻度でオンにする必要がありますか?
 
-Windows Virtual Desktop サービス内のホスト プールに VM を登録した後は、VM がアクティブになるたびに、エージェントによって VM のトークンが定期的に更新されます。 登録トークンの証明書の有効期間は 90 日間です。 この 90 日間の制限のために、マシンがトークンを最新の情報に更新し、エージェントとサイド バイ サイド スタック コンポーネントを更新できるように、90 日ごとに 20 分間 VM をオンラインにすることをお勧めします。 この期限内に VM をオンにすれば、登録トークンが期限切れになったり、無効になったりするのを回避できます。 90 日を過ぎた後に VM を起動し、登録に関する問題が発生した場合は、[Windows Virtual Desktop エージェントのトラブルシューティング ガイド](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved)に記載されている手順に従って、ホスト プールから VM を削除し、エージェントを再インストールした後、VM をプールに再登録してください。
+Azure Virtual Desktop サービス内のホスト プールに VM を登録した後は、VM がアクティブになるたびに、エージェントによって VM のトークンが定期的に更新されます。 登録トークンの証明書の有効期間は 90 日間です。 この 90 日間の制限のために、マシンがトークンを最新の情報に更新し、エージェントとサイド バイ サイド スタック コンポーネントを更新できるように、90 日ごとに 20 分間 VM をオンラインにすることをお勧めします。 この期限内に VM をオンにすれば、登録トークンが期限切れになったり、無効になったりするのを回避できます。 90 日を過ぎた後に VM を起動し、登録に関する問題が発生した場合は、[Azure Virtual Desktop エージェントのトラブルシューティング ガイド](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved)に記載されている手順に従って、ホスト プールから VM を削除し、エージェントを再インストールした後、VM をプールに再登録してください。
 
 ## <a name="can-i-set-availability-options-when-creating-host-pools"></a>ホスト プールの作成時に可用性オプションを設定できますか?
 
-はい。 Windows Virtual Desktop ホスト プールには、VM を作成するときに可用性セットまたは可用性ゾーンのいずれかを選択するオプションがあります。 これらの可用性オプションは、Azure Compute で使用されるものと同じです。 ホスト プールに作成する VM のゾーンを選択すると、そのゾーンに作成するすべての VM に自動的に設定が適用されます。 ホスト プールの VM を複数のゾーンに分散する場合は、「[Azure portal を使用して仮想マシンを追加する](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal)」の指示に従って、作成する新しい VM ごとに新しいゾーンを手動で選択する必要があります。
+はい。 Azure Virtual Desktop ホスト プールには、VM を作成するときに可用性セットまたは可用性ゾーンのいずれかを選択するオプションがあります。 これらの可用性オプションは、Azure Compute で使用されるものと同じです。 ホスト プールに作成する VM のゾーンを選択すると、そのゾーンに作成するすべての VM に自動的に設定が適用されます。 ホスト プールの VM を複数のゾーンに分散する場合は、「[Azure portal を使用して仮想マシンを追加する](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal)」の指示に従って、作成する新しい VM ごとに新しいゾーンを手動で選択する必要があります。
 
 ## <a name="which-availability-option-is-best-for-me"></a>どの可用性オプションが最適ですか?
 

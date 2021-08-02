@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 04/28/2021
+ms.date: 06/02/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7269309a3ed682da4d67e2509508276a3133601e
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 9f80b91695af6350376d5fcd97732e1a056278a9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109516868"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413089"
 ---
 # <a name="configure-and-optimize-vms"></a>VM の構成と最適化
 
@@ -22,13 +22,14 @@ ms.locfileid: "109516868"
 ## <a name="vm-images"></a>VM イメージ
 InfiniBand (IB) 対応の VM では、RDMA を有効にするために適切なドライバーが必要です。
 - Marketplace の [CentOS-HPC VM イメージ](#centos-hpc-vm-images)は、適切な IB ドライバーを使用して事前構成されています。
+  - CentOS-HPC バージョン 7.9 VM イメージは、さらに Nvidia GPU ドライバーも使用して事前構成されています。 
 - Marketplace の [Ubuntu-HPC VM イメージ](#ubuntu-hpc-vm-images)は、適切な IB ドライバーと GPU ドライバーを使用して事前構成されています。
 
 これらの VM イメージ (VMI) は、基本の CentOS および Ubuntu マーケットプレース VM イメージに基づいています。 これらの VM イメージを基本の CentOS Marketplace イメージから作成するときに使用されるスクリプトについては、[azhpc-images リポジトリ](https://github.com/Azure/azhpc-images/tree/master/centos)を参照してください。
 
 GPU 対応の [N シリーズ](../../sizes-gpu.md) VM では、適切な GPU ドライバーがさらに必要です。 これは、次の方法で入手できます。
-- Nvidia GPU ドライバーと GPU コンピューティング ソフトウェア スタック (CUDA、NCCL) が事前構成された [Ubuntu-HPC VM イメージ](#ubuntu-hpc-vm-images)を使用します。
-- [VM 拡張機能](../../extensions/hpccompute-gpu-linux.md)を通じて GPU ドライバーを追加します
+- Nvidia GPU ドライバーと GPU コンピューティング ソフトウェア スタック (CUDA、NCCL) を使用して事前構成された、[Ubuntu-HPC VM イメージ](#ubuntu-hpc-vm-images)と [CentOS-HPC VM イメージ](#centos-hpc-vm-images) バージョン 7.9 を使用します。
+- [VM 拡張機能](../../extensions/hpccompute-gpu-linux.md)を通じて GPU ドライバーを追加します。
 - GPU ドライバーを[手動で](../../linux/n-series-driver-setup.md)インストールします。
 - Marketplace のその他一部の VM イメージには、Nvidia からの VM イメージなど、Nvidia GPU ドライバーがプレインストールされています。
 
@@ -36,18 +37,25 @@ GPU 対応の [N シリーズ](../../sizes-gpu.md) VM では、適切な GPU ド
 また、ワークロード固有のカスタマイズと構成を使用して[カスタム VM イメージ](../../linux/tutorial-custom-images.md)を作成し、それらを繰り返し再使用することをお勧めします。
 
 ### <a name="vm-sizes-supported-by-the-hpc-vm-images"></a>HPC VM イメージでサポートされる VM サイズ
+
+#### <a name="infiniband-ofed-support"></a>InfiniBand OFED のサポート
 最新の Azure HPC マーケットプレースのイメージには、Mellanox OFED 5.1 以降が含まれています。これは ConnectX3-Pro InfiniBand カードをサポートしていません。 これらの VM イメージでは、ConnextX-5 以降の InfiniBand カードのみをサポートしています。 これは、これらの HPC VM イメージでの InfiniBand OFED のサポート マトリックスで、次の VM サイズに対応します。
 - [H シリーズ](../../sizes-hpc.md): HB、HC、HBv2、HBv3
 - [N シリーズ](../../sizes-gpu.md): NDv2、NDv4
 
-N シリーズ (NDv2 および NDv4 VM サイズ) での GPU サポートに関しては、現在、Nvidia GPU ドライバーと GPU コンピューティング ソフトウェア スタック (CUDA、NCCL) が事前構成されているのは [Ubuntu-HPC VM イメージ](#ubuntu-hpc-vm-images)のみであることに注意してください。 
+#### <a name="gpu-driver-support"></a>GPU ドライバーのサポート
+現在、Nvidia GPU ドライバーと GPU コンピューティング ソフトウェア スタック (CUDA、NCCL) を使用して事前構成された、[Ubuntu-HPC VM イメージ](#ubuntu-hpc-vm-images)と [CentOS-HPC VM イメージ](#centos-hpc-vm-images) バージョン 7.9 のみ。
 
-上記すべての VM サイズでは "Gen 2" VM をサポートしていますが、一部の古いサイズでは "Gen 1" VM もサポートしていることにも注意してください。
+サポートされている HPC VM イメージでの GPU ドライバーの VM サイズ サポート マトリックスは、次のとおりです。
+- [N シリーズ](../../sizes-gpu.md): Nvidia GPU ドライバーと GPU コンピューティング ソフトウェア スタック (CUDA、NCCL) で NDv2、NDv4 VM サイズがサポートされています。
+- [N シリーズ](../../sizes-gpu.md)の他の "NC" および "ND" VM サイズは、Nvidia GPU ドライバーでサポートされています。
+
+上記すべての VM サイズでは "Gen 2" VM をサポートしていますが、一部の古いサイズでは "Gen 1" VM もサポートしていることにも注意してください。 "Gen 2" のサポートは、VMI URN またはバージョンの末尾に "01" が付いていることによっても示されています。
 
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM イメージ
 
 #### <a name="sr-iov-enabled-vms"></a>SR-IOV 対応の VM
-SR-IOV 対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の場合、バージョン 7.6 以降の CentOS-HPC VM イメージが適しています。 これらの VM イメージは最適化され、RDMA 用の Mellanox OFED ドライバー、一般的に使用されているさまざまな MPI ライブラリ、科学コンピューティング パッケージが事前に読み込まれています。
+SR-IOV 対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の場合、バージョン 7.6 以降の CentOS-HPC VM イメージが適しています。 これらの VM イメージは最適化され、RDMA 用の Mellanox OFED ドライバー、一般的に使用されているさまざまな MPI ライブラリ、科学コンピューティング パッケージが事前に読み込まれています。 上の [VM サイズ サポート マトリックス](#vm-sizes-supported-by-the-hpc-vm-images)を参照してください。
 - VM イメージの使用可能なバージョンまたは最新バージョンは、[CLI](/cli/azure/vm/image#az_vm_image_list) または [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) を使用して、次の情報と共に一覧表示できます。
    ```bash
    "publisher": "OpenLogic",
@@ -55,6 +63,9 @@ SR-IOV 対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の
    ```
 - CentOS-HPC バージョン 7.6 以降の VM イメージを基本の CentOS Marketplace イメージから作成するときに使用されるスクリプトについては、[azhpc-images リポジトリ](https://github.com/Azure/azhpc-images/tree/master/centos)を参照してください。
 - さらに、CentOS-HPC バージョン 7.6 以降の VM イメージに含まれる内容の詳細と、イメージのデプロイ方法については、[Tech Community の記事](https://techcommunity.microsoft.com/t5/azure-compute/azure-hpc-vm-images/ba-p/977094)をご覧ください。
+
+> [!NOTE] 
+> CentOS-HPC VM イメージのうち、現時点ではバージョン 7.9 VM イメージだけが、Nvidia GPU ドライバーと GPU コンピューティング ソフトウェア スタック (CUDA、NCCL) も使用して事前構成されています。
 
 > [!NOTE] 
 > FDR InfiniBand (NCv3 以前など) を備えた SR-IOV 対応 N シリーズ VM サイズには、次の CentOS-HPC VM イメージ以前のバージョンを Marketplace から使用できます。
@@ -72,7 +83,7 @@ SR-IOV 非対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances)�
 > SR-IOV 非対応 VM 用のこれらの CentOS ベースの HPC イメージでは、カーネルの更新は **yum** 構成ファイルで無効になっています。 これは、NetworkDirect Linux RDMA ドライバーが RPM パッケージとして配布されており、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があるためです。
 
 ### <a name="ubuntu-hpc-vm-images"></a>Ubuntu-HPC VM イメージ
-SR-IOV 対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の場合、Ubuntu-HPC VM イメージのバージョン 18.04 が適しています。 これらの VM イメージは最適化され、RDMA 用の Mellanox OFED ドライバー、Nvidia GPU ドライバー、GPU コンピューティング ソフトウェア スタック (CUDA、NCCL)、一般的に使用されているさまざまな MPI ライブラリ、科学コンピューティング パッケージが事前に読み込まれています。
+SR-IOV 対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の場合、Ubuntu-HPC VM イメージ バージョン 18.04 および 20.04 が適しています。 これらの VM イメージは最適化され、RDMA 用の Mellanox OFED ドライバー、Nvidia GPU ドライバー、GPU コンピューティング ソフトウェア スタック (CUDA、NCCL)、一般的に使用されているさまざまな MPI ライブラリ、科学コンピューティング パッケージが事前に読み込まれています。 上の [VM サイズ サポート マトリックス](#vm-sizes-supported-by-the-hpc-vm-images)を参照してください。
 - VM イメージの使用可能なバージョンまたは最新バージョンは、[CLI](/cli/azure/vm/image#az_vm_image_list) または [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-hpc?tab=overview) を使用して、次の情報と共に一覧表示できます。
    ```bash
    "publisher": "Microsoft-DSVM",

@@ -1,26 +1,24 @@
 ---
 title: Edge Secured-Core 認定の要件
-description: Edge Secured-Core 認定プログラムの要件
+description: Edge Secured-Core 認定の要件
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Secured-core Certification Requirements
 ms.service: certification
-ms.openlocfilehash: c52a1fe215223d8aceca19f2f382a999f8b470de
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6a4e969c592e844164d2f031914740e24fdc8f99
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131713"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540260"
 ---
-# <a name="azure-certified-device---edge-secured-core-preview"></a>Azure Certified Device - Edge Secured-Core (プレビュー) #
-
-## <a name="edge-secured-core-certification-requirements"></a>Edge Secured-Core 認定の要件 ##
+# <a name="edge-secured-core-certification-requirements-preview"></a>Edge Secured-Core 認定の要件 (プレビュー) #
 
 このドキュメントでは、認定を完了するために、満たす必要があるデバイス固有の機能と要件について概説し、Edge Secured-Core ラベルを使用して Azure IoT デバイス カタログにデバイスを一覧表示します。
 
-### <a name="program-purpose"></a>プログラムの目的 ###
+## <a name="program-purpose"></a>プログラムの目的 ##
 Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレーティング システムを実行する IoT デバイス向けの Azure Certified Device プログラムの増分認定です。このプログラムにより、デバイス パートナーは、追加の一連のセキュリティ基準を満たすことで、デバイスを差別化できます。 この基準を満たすデバイスは、次のことが可能になります。
 1. ハードウェアベースのデバイス ID 
 2. システムの整合性を適用できる 
@@ -28,7 +26,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 4. 保存データを保護する
 5. 転送中のデータを保護する
 6. 組み込みのセキュリティ エージェントとセキュリティ強化
-### <a name="requirements"></a>必要条件 ###
+## <a name="requirements"></a>必要条件 ##
 
 ---
 |名前|SecuredCore.Built-in.Security|

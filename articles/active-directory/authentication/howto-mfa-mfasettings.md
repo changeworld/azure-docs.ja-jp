@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 5a65480cbfa279614250ddeaf7d565b112333a05
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 45efa0e955040931516924a1a8a8576a1a8bf12f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285558"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744505"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -61,7 +61,7 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 ### <a name="block-a-user"></a>ユーザーのブロック
 
-ユーザーをブロックするには、次の手順を実行します。
+ユーザーをブロックするには、次の手順を実行するか、[この短いビデオ](https://www.youtube.com/watch?v=WdeE1On4S1o&feature=youtu.be)をご覧ください
 
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ユーザーのブロック/ブロック解除]** の順に移動します。
 1. **[追加]** を選択してユーザーをブロックします。

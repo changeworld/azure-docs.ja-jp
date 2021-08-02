@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
-ms.openlocfilehash: e4be6e297fafb3184224806f0bde4db468ce3b79
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 92e7f2af175182886dbc5904c5a50b485ca87d64
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788201"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681211"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -191,6 +192,9 @@ dmgcmd ACTION args...
     2. 必要に応じて、 **[認証キーの表示]** を選択してキー テキストを表示します。
 
     3. **[登録]** を選択します。
+
+> [!NOTE]
+> リリース ノートは、同じ [Microsoft 統合ランタイムのダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=39717)上で入手できます。
 
 ## <a name="service-account-for-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのサービス アカウント
 

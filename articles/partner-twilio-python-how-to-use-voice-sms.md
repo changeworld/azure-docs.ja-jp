@@ -1,6 +1,6 @@
 ---
-title: Twilio を使用して音声通話と SMS を実行する方法 (Python) - Microsoft Docs
-description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Python で記述されています。
+title: Twilio を使用して音声通話と SMS を実行する方法 (Python) | Microsoft Docs
+description: Azure で Twilio API サービスを使用して、音声通話と SMS メッセージの送信を行う方法を説明します。 コード サンプルは Python で記述されています。
 services: ''
 documentationcenter: python
 author: georgewallace
@@ -13,54 +13,58 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: fc1400ef97c93e356b3b2d34fb9cfb29b792c3fc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6d2f2b9cd145a2472ccc9ed24fd78f30107db710
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135583"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463811"
 ---
-# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
-このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
+# <a name="use-twilio-for-voice-and-sms-capabilities-in-python"></a>Python で Twilio を使用して、音声通話と SMS メッセージの送信を行う
+この記事では、Azure で Twilio API サービスを使用して、よくあるプログラミング作業を行う方法を説明します。 ここで取り上げるシナリオは、音声通話とショート メッセージ サービス (SMS) メッセージの送信です。 
+
+Twilio の詳細とアプリケーションで音声と SMS を使用する方法については、「 [次の手順](#NextSteps) 」を参照してください。
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>Twilio とは
-Twilio は、開発者がアプリケーションに音声、VoIP、およびメッセージングを埋め込むことを可能にし、ビジネス コミュニケーションを強化していきます。 必要なすべてのインフラストラクチャをクラウド ベースのグローバル環境で仮想化し、Twilio 通信 API プラットフォームを通じてそれを公開します。 アプリケーションは構築しやすく、スケーラビリティも優れています。 従量課金制の柔軟性と、クラウドの信頼性の利点を活用できます。
+開発者は Twilio を使用して、音声通話、ボイス オーバー IP (VoIP)、メッセージ送信機能をアプリケーションに組み込むことができます。 開発者は、必要なすべてのインスラストラクチャをバーチャル化してクラウドベースのグローバル環境に配置し、Twilio API プラットフォームで取り扱うことができます。 アプリケーションは構築しやすく、スケーラビリティも優れています。
 
-**Twilio Voice** を使用すると、アプリケーションで音声通話の発着信処理を行うことができます。
-**Twilio SMS** を使用すると、アプリケーションでテキスト メッセージの送受信を行うことができます。
-**Twilio Client** では、任意の電話、タブレット、またはブラウザーから VoIP 通話を行うことができ、WebRTC がサポートされています。
+Twilio のコンポーネントには次のものが含まれます。
 
-## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio の料金および特別プラン
-Azure ユーザーには、Twilio アカウントをアップグレードする際に、[特別プラン][special_offer]として $10 の Twilio クレジットが提供されます。 この Twilio クレジットは、任意の Twilio 使用に対して利用できます。$10 のクレジットは、約 1,000 件の SMS メッセージの送信、または最大で 1,000 分の受信音声に相当します (ご利用の電話番号の場所と、メッセージまたは通話の相手の場所に応じて異なります)。 この [Twilio クレジット][special_offer]を利用して開始します。
+- **Twilio Voice**: アプリケーションで音声通話の発信と受信ができます。
+- **Twilio SMS**: アプリケーションでテキスト メッセージの送受信ができます。
+- **Twilio Client**: あらゆるスマートフォン、タブレット、ブラウザーから VoIP の発信ができます。 WebRTC のリアルタイム通信の仕様をサポートしています。
 
-Twilio は、従量課金制サービスです。 セットアップ料金は不要で、いつでもアカウントを閉じることができます。 詳細については、 [Twilio の料金のページ][twilio_pricing]をご覧ください。
+## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio の価格と特別プラン
+Azure の顧客は、[特別プラン][special_offer]として、Twilio アカウントをアップグレードすると、$10 の Twilio クレジットを受け取れます。 このクレジットは、Twilio のあらゆるサービスで使用できます。 電話番号の属する地域と宛先の地域によりますが、$10 のクレジットを使用すれば、1,000 件の SMS メッセージを送信したり、1,000 分相当の音声通話を受信したりできます。
+
+Twilio は、従量課金制サービスです。 セットアップ料金はかからず、アカウントはいつでも削除できます。 詳細については、 [Twilio の料金のページ][twilio_pricing]をご覧ください。
 
 ## <a name="concepts"></a><a id="Concepts"></a>概念
-Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。 クライアント ライブラリは複数の言語で使用できます。一覧については、[Twilio API ライブラリ][twilio_libraries]に関するページを参照してください。
+Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。 クライアント ライブラリは、複数の言語で使用できます。 [Twilio API ライブラリ][twilio_libraries]のページでリストを確認できます。
 
 Twilio API の主要な側面として、Twilio 動詞と Twilio Markup Language (TwiML) が挙げられます。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 動詞
-API では、Twilio 動詞を使用します。たとえば、 **&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
-
-Twilio 動詞の一覧を次に示します。 他の動詞と機能については、 [Twilio Markup Language のドキュメント][twiml]を参照してください。
+API では、Twilio に命令するのに動詞を使用します。ここに、いくつか例を挙げます。
 
 * **&lt;Dial&gt;** : 呼び出し元を別の電話に接続します。
 * **&lt;Gather&gt;** : 電話キーパッドに入力された数字を収集します。
 * **&lt;Hangup&gt;** : 通話を終了します。
 * **&lt;Pause&gt;** : 何も行わずに指定された秒数待機します。
 * **&lt;Play&gt;** : 音声ファイルを再生します。
-* **&lt;Queue&gt;** : 呼び出し元のキューに追加します。
+* **&lt;Queue&gt;** : 通話発信者のキューに追加します。
 * **&lt;Record&gt;** : 呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
 * **&lt;Redirect&gt;** : 通話または SMS の制御を別の URL の TwiML に転送します。
 * **&lt;Reject&gt;** : Twilio 番号への着信通話を拒否します。課金はされません。
-* **&lt;Say&gt;** : テキストを音声に変換して返します。
+* **&lt;Say&gt;** : テキストを音声に変換し、通話時に再生します。
 * **&lt;Sms&gt;** : SMS メッセージを送信します。
 
-### <a name="twiml"></a><a id="TwiML"></a>TwiML
-TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで、通話または SMS をどのように処理するかを Twilio に通知します。
+[Twilio Markup Language のドキュメント][twiml]で他の動詞と機能について説明します。
 
-たとえば、次の TwiML は、テキスト **Hello World** を音声に変換します。
+### <a name="twiml"></a><a id="TwiML"></a>TwiML
+TwiML は、Twilio 動詞を使用する XML ベースの命令の集まりであり、音声通話または SMS メッセージの処理方法を Twilio に指示します。
+
+例として、次の TwiML では、**Hello World** というテキストを音声に変換します。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -69,55 +73,51 @@ TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで�
   </Response>
 ```
 
-アプリケーションで Twilio API を呼び出す場合は、API パラメーターの 1 つである URL によって TwiML 応答が返されます。 開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。 また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、`TwiMLResponse` オブジェクトを使用することもできます。
-
-Twilio 動詞、その属性、および TwiML の詳細については、[TwiML][twiml] に関するページを参照してください。 Twilio API の詳細については、[Twilio API][twilio_api] に関するページを参照してください。
+アプリケーションで [Twilio API][twilio_api] を呼び出すときは、TwiML 応答を返す URL を API パラメーターの 1 つに指定します。 開発目的であれば、アプリケーションで TwiML 応答を行うために、Twilio が提供する URL を使用できます。 自前の URL をホストして TwiML 応答を生成することもできます。その他、`TwiMLResponse` オブジェクトを使う方法もあります。
 
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Twilio アカウントを作成する
-Twilio アカウントを取得する準備ができたら、[Twilio のサインアップ ページ][try_twilio]でサインアップします。 無料アカウントで始め、後でアカウントをアップグレードすることができます。
+Twilio アカウントを取得する準備ができたら、[Twilio のサインアップ ページ][try_twilio]でサインアップします。 最初に無料アカウントを取得し、後からアカウントをアップグレードできます。
 
-Twilio アカウントにサインアップすると、アカウント SID と認証トークンが発行されます。 Twilio API を呼び出すには、この両方が必要になります。 自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。 アカウント SID と認証トークンは、[Twilio Console][twilio_console]の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
+Twilio にサインアップしてアカウントを取得すると、アカウント セキュリティ ID (SID) と認証トークンを受け取ります。 Twilio API 呼び出しを行うには、この両方が必要です。 自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。 アカウント SID と認証トークンは、[Twilio Console][twilio_console] の **[ACCOUNT SID]\(アカウント SID\)** 、 **[AUTH TOKEN]\(認証トークン\)** というラベルが付いた欄で見ることができます。
 
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Python アプリケーションを作成する
-Twilio サービスを利用し、Azure 上で実行される Python アプリケーションは、Twilio サービスを利用するその他の Python アプリケーションと何ら違いはありません。 Twilio サービスは REST ベースであり、Python からいくつかの方法で呼び出すことができますが、この記事では、[GitHub の Python 用 Twilio ライブラリ][twilio_python]を使って Twilio サービスを呼び出す方法を説明します。 Python 用の Twilio ライブラリの使用の詳細については、[https://www.twilio.com/docs/libraries/python][twilio_lib_docs] を参照してください。
+Azure で Twilio を使用して動作する Python アプリケーションは、Twilio を使用する他の Python アプリケーションと変わりません。 Twilio のサービスは REST ベースであり、Python から呼び出す方法はいくつかありますが、この記事では、[GitHub の Python 用 Twilio ライブラリ][twilio_python]を用いて Twilio のサービスを使用する方法を説明します。 このライブラリの使用方法の詳細は、[Twilio の Python ライブラリのドキュメント][twilio_lib_docs]をご覧ください。
 
-最初に、新しい Python Web アプリケーションのホストとして機能する[新しい Azure Linux VM を設定][azure_vm_setup]します。 仮想マシンの実行が開始したら、次に説明するように、アプリケーションをパブリック ポートで公開する必要があります。
+最初に、新しい Python Web アプリケーションのホストになる、[新しい Azure Linux 仮想マシンを設定します][azure_vm_setup]。 仮想マシンを実行できたら、公開ポートでアプリケーションを公開する必要があります。
 
-### <a name="add-an-incoming-rule"></a>受信ルールの追加
+受信の規則を追加します。
   1. [[ネットワーク セキュリティ グループ]][azure_nsg] ページに移動します。
-  2. 仮想マシンに対応するネットワーク セキュリティ グループを選択します。
-  3. **ポート 80** の **[Outgoing Rule (発信ルール)]** を追加します。 すべてのアドレスからの着信を許可してください。
+  2. 仮想マシンに対応するネットワーク セキュリティ グループを選びます。
+  3. **80 番ポート** を **送信の規則** 情報に追加します。 あらゆるアドレスによる呼び出しの受信を許可します。
 
-### <a name="set-the-dns-name-label"></a>DNS 名のラベルの設定
+DNS 名ラベルを設定します。
   1. [[パブリック IP アドレス]][azure_ips] ページに移動します。
-  2. 目的の仮想マシンに対応するパブリック IP を選択します。
-  3. **[構成]** セクションで **[DNS 名ラベル]** を設定します。 この例では、*your-domain-label*.centralus.cloudapp.azure.com のようになります。
+  2. 仮想マシンに対応するパブリック IP アドレスを選択します。
+  3. **[構成]** セクションで **DNS 名ラベル** の情報を設定します。 この例では、 *\<your-domain-label\>.centralus.cloudapp.azure.com* となっています。
 
-SSH から仮想マシンに接続できるようになると、任意の Web フレームワークをインストールできます (Python でよく知られている Web フレームワークは [Flask](http://flask.pocoo.org/) や [Django](https://www.djangoproject.com) です)。 いずれも `pip install` コマンドを実行するだけでインストールできます。
+SSH で仮想マシンに接続できたら、好みの Web フレームワークをインストールできます。 Python では [Flask](http://flask.pocoo.org/) と [Django](https://www.djangoproject.com) の 2 つが特によく知られています。 どちらも `pip install` コマンドでインストールできます。
 
-仮想マシンがポート 80 のみでトラフィックを許可するように構成したことに留意してください。 つまり、このポートを使用するようにアプリケーションを構成します。
+80 番ポートでのみ通信を許可するよう仮想マシンを構成したことを覚えておいてください。 アプリケーションは、このポートを使うように構成します。
 
-## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>Twilio ライブラリを使用するアプリケーションの構成
+## <a name="configure-your-application-to-use-the-twilio-library"></a><a id="configure_app"></a>Twilio ライブラリを使用するようアプリケーションを構成する
 Python 用 Twilio ライブラリを使用するようにアプリケーションを構成するには、次の 2 つの方法があります。
 
-* Pip パッケージとして Python 用 Twilio ライブラリをインストールします。 インストールには、次のコマンドを使用できます。
+* 次のコマンドにより、Python 用 Twilio ライブラリの Pip パッケージをインストールします。
    
   `$ pip install twilio`
 
-    \- または -
-
-* GitHub ([https://github.com/twilio/twilio-python][twilio_python]) から Python 用の Twilio ライブラリをダウンロードし、それを次のようにインストールします。
+* [GitHub の Python 用 Twilio ライブラリ][twilio_python]をダウンロードし、このようにインストールします。
 
   `$ python setup.py install`
 
-Python 用 Twilio ライブラリをインストールしたら、Python ファイルで `import` を行うことができます。
+Python 用 Twilio ライブラリをインストールしたら、Python ファイルでインポートできるようになります。
 
-  `import twilio`
+`import twilio`
 
-詳細については、「[twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md)」を参照してください。
+詳しくは、[GitHub で Twilio の readme](https://github.com/twilio/twilio-python/blob/master/README.md) をご覧ください。
 
-## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>方法: 発信通話する
-次のコードでは、発信通話を行う方法を示します。 このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。 コードを実行する前に、**from_number** および **to_number** の電話番号の値を置き換えて、Twilio アカウントの **from_number** の電話番号を確認します。
+## <a name="make-an-outgoing-call"></a><a id="howto_make_call"></a>発信通話する
+次の例で、音声通話を発信する方法を示します。 このコードではまた、TwiML 応答を返すのに、Twilio が提供するサイトを使用しています。 `from_number` と `to_number` の電話番号は、適切な番号に入れ替えてください。 コードを実行する前に、Twilio のアカウントで、`from_number` の電話番号の確認手続きを行う必要があります。
 
 ```python
 from urllib.parse import urlencode
@@ -130,7 +130,7 @@ account_sid = "your_twilio_account_sid"
 auth_token = "your_twilio_authentication_token"
 
 # The number of the phone initiating the call.
-# This should either be a Twilio number or a number that you've verified
+# This should either be a Twilio number or a number that you've verified.
 from_number = "NNNNNNNNNNN"
 
 # The number of the phone receiving call.
@@ -153,12 +153,12 @@ print(call.sid)
 ```
 
 > [!IMPORTANT]
-> 電話番号は、「+」と国コードで書式設定する必要があります。 たとえば、+16175551212 (E.164 形式) です。 Twilio は、書式設定されていない米国の電話番号も受け入れます。 たとえば、(415) 555-1212 や 415-555-1212 です。
+> 電話番号は、プラス記号と国番号を付けた形式にする必要があります。 `+16175551212` は 1 つの例です (E.164 形式)。 米国の電話番号については、`(415) 555-1212` や `415-555-1212` のように、形式を合わせていないものも Twilio で使用できます。
 
-既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。 代わりに独自のサイトを使用して TwiML 応答を返すことができます。詳細については、「[方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)」を参照してください。
+このコードでは、TwiML 応答を返すのに、Twilio が提供するサイトを使用しています。 独自のサイトを代わりに使用して TwiML 応答を返すこともできます。 詳しくは、「[独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)」をご覧ください。
 
-## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>方法: SMS メッセージを送信する
-次のコードは、`TwilioRestClient` クラスを使用して SMS メッセージを送信する方法を示しています。 試用アカウントで SMS メッセージを送信できるように、**from_number** の番号が Twilio から提供されます。 コードを実行する前に、Twilio アカウントの **to_number** の番号を確認する必要があります。
+## <a name="send-an-sms-message"></a><a id="howto_send_sms"></a>SMS メッセージの送信
+次の例で、`TwilioRestClient` クラスを使用して SMS メッセージを送信する方法を示します。 Twilio では、試用アカウントに対し、SMS メッセージを送信するための `from_number` 用の番号を提供しています。 コードを実行する前に、Twilio アカウントの `to_number` の番号を確認する必要があります。
 
 ```python
 # Import the Twilio Python Client.
@@ -168,7 +168,7 @@ from twilio.rest import TwilioRestClient
 account_sid = "your_twilio_account_sid"
 auth_token = "your_twilio_authentication_token"
 
-from_number = "NNNNNNNNNNN"  # With trial account, texts can only be sent from your Twilio number.
+from_number = "NNNNNNNNNNN"  # With a trial account, texts can only be sent from your Twilio number.
 to_number = "NNNNNNNNNNN"
 message = "Hello world."
 
@@ -181,10 +181,13 @@ message = client.messages.create(to=to_number,
                                     body=message)
 ```
 
-## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 上の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています。 (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を含む `<Response>` 要素が表示されます。)
+## <a name="provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>独自の Web サイトで TwiML 応答を返す
+Twilio では、アプリケーションから Twilio API の呼び出しを行うと、TwiML 応答を返すのに使用する URL に要求を送信します。 上の例では、Twilio が提供する URL [https://twimlets.com/message][twimlet_message_url] を使用しています。 
 
-Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自のサイトを作成できます。 XML 応答を返すサイトは任意の言語で作成できます。このトピックでは、Python を使用して TwiML を作成するとします。
+> [!NOTE]
+> TwiML はTwilio で使うよう設計されていますが、ブラウザーで見ることもできます。 例えば、[https://twimlets.com/message][twimlet_message_url] にアクセスすると、空の `<Response>` 要素を見ることができます。 もう 1 つの例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] にアクセスすると、`<Say>` 要素を含む `<Response>` 要素を見ることができます。
+
+Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自のサイトを作成できます。 XML 応答を返すサイトはどの言語でも作成できます。 この記事では、Python で TwiML を作成することを想定しています。
 
 次の例では、通話時の TwiML 応答で " **Hello World** " というテキストが読み上げられます。
 
@@ -207,7 +210,7 @@ def hello(request):
     return HttpResponse(xml, content_type='text/xml')
 ```
 
-この例からわかるように、TwiML 応答は XML ドキュメントにすぎません。 Python 用 Twilio ライブラリには、TwiML を生成するクラスが用意されています。 次の例では、前の例と同じ応答が生成されますが、Python 用 Twilio ライブラリの `twiml` モジュールを使用しています。
+上の例でも分かるように、TwiML 応答は XML ドキュメントそのものです。 Python 用 Twilio ライブラリには、TwiML を生成するクラスが用意されています。 次の例では、前に示した応答に相当するものを生成しますが、ここでは Python 用 Twilio ライブラリの `twiml` モジュールを使用します。
 
 ```python
 from twilio import twiml
@@ -217,9 +220,9 @@ response.say("Hello world.")
 print(str(response))
 ```
 
-TwiML の詳細については、[https://www.twilio.com/docs/api/twiml][twiml_reference] を参照してください。
+TwiML の詳細は、[TwiML の参考ドキュメント][twiml_reference]をご覧ください。
 
-TwiML 応答を返すように Python アプリケーションを設定したら、その Python アプリケーションの URL を、`client.calls.create` メソッドに渡します。 たとえば、**MyTwiML** という名前の Web アプリケーションを、Azure でホストされるサービスにデプロイした場合、次の例のようにその URL を webhook として使用できます。
+TwiML 応答を返すよう Python アプリケーションを設定したら、そのアプリケーションの URL を、`client.calls.create` メソッドに渡します。 例えば、*MyTwiML* という名前の Web アプリケーションを、Azure でホストするサービスにデプロイしているとすると、次の例に示すように、そのアプリケーションの URL を Webhook として使用できます。
 
 ```python
 from twilio.rest import TwilioRestClient
@@ -230,7 +233,7 @@ from_number = "NNNNNNNNNNN"
 to_number = "NNNNNNNNNNN"
 url = "http://your-domain-label.centralus.cloudapp.azure.com/MyTwiML/"
 
-# Initialize the Twilio client.
+# Initialize the Twilio Client.
 client = TwilioRestClient(account_sid, auth_token)
 
 # Make the call.
@@ -240,14 +243,14 @@ call = client.calls.create(to=to_number,
 print(call.sid)
 ```
 
-## <a name="how-to-use-additional-twilio-services"></a><a id="AdditionalServices"></a>方法: その他の Twilio サービスを使用する
-ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API に関するドキュメント][twilio_api]を参照してください。
+## <a name="use-additional-twilio-services"></a><a id="AdditionalServices"></a>その他の Twilio サービスを使用する
+ここに示す例の他にも、Twilio では、Azure アプリケーションで Twilio の他の機能を使用できる Web ベースの API を用意しています。 詳細については、[Twilio API に関するドキュメント][twilio_api]を参照してください。
 
 ## <a name="next-steps"></a><a id="NextSteps"></a>次のステップ
-これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [Twilio のセキュリティ ガイドライン][twilio_security_guidelines]
-* [Twilio のハウツー ガイドとコード例のページ][twilio_howtos]
+* [Twilio の使い方ガイドとサンプルコード][twilio_howtos]
 * [Twilio のクイックスタート チュートリアル][twilio_quickstarts]
 * [GitHub 上の Twilio に関するページ][twilio_on_github]
 * [Twilio に関するサポートへの連絡のページ][twilio_support]

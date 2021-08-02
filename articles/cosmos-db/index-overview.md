@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 05/04/2021
 ms.author: tisande
-ms.openlocfilehash: fec7ed32b236dd0a5f9c0663209b5c2f44e05b29
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 00b119d993b549340467bf3892f3ffc5cf7b76dd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166741"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755442"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -202,7 +202,7 @@ Azure Cosmos DB でのインデックスのさまざまな使用方法をまと�
 | 正確なインデックス スキャン | 必要なインデックス値のバイナリ検索と、一致する項目のみのトランザクション データ ストアからの読み込み | 範囲の比較 (>、<、<=、>=)、StartsWith | インデックス シークと比較して、インデックス付けされたプロパティのカーディナリティの分だけ少し増えます | クエリ結果内の項目数に基づいて増加します |
 | 拡張インデックス スキャン | インデックス値の最適化された検索 (ただし、バイナリ検索よりは非効率的) と、一致する項目のみのトランザクション データ ストアからの読み込み | StartsWith (大文字と小文字の区別なし)、StringEquals (大文字と小文字の区別なし) | インデックス付けされたプロパティのカーディナリティの分だけ少し増えます | クエリ結果内の項目数に基づいて増加します |
 | フル インデックス スキャン    | インデックス値の個別のセットの読み取りと、一致する項目のみのトランザクション データ ストアからの読み込み                                              | Contains、EndsWith、RegexMatch、LIKE                                    | インデックス付けされたプロパティのカーディナリティに基づいて、直線的に増加します | クエリ結果内の項目数に基づいて増加します |
-| フル スキャン          | すべての項目の読み込み                                               | Upper、Lower                                    | なし                                                          | コンテナー内の項目数に基づいて増加します |
+| フル スキャン          | トランザクション データ ストアからすべての項目を読み込みます                                          | Upper、Lower                                    | なし                                                          | コンテナー内の項目数に基づいて増加します |
 
 クエリを作成するときは、インデックスを可能な限り効率的に使用するフィルター述語を使用する必要があります。 たとえば、ユース ケースに `StartsWith` または `Contains` のいずれかを使用できる場合は、`StartsWith` を選択する必要があります。そうすれば、フル インデックス スキャンではなく、正確なインデックス スキャンが実行されます。
 
@@ -249,10 +249,10 @@ Azure Cosmos DB では、逆インデックスが使用されます。 インデ
 | /locations/0/country    | ドイツ | 1          |
 | /locations/0/country    | アイルランド | 2          |
 | /locations/0/city       | ベルリン  | 1          |
-| /locations/0/city       | ダブリン  | 1          |
+| /locations/0/city       | ダブリン  | 2          |
 | /locations/1/country    | フランス  | 1          |
 | /locations/1/city       | Paris   | 1          |
-| /headquarters/country   | ベルギー | 2          |
+| /headquarters/country   | ベルギー | 1、2        |
 | /headquarters/employees | 200     | 2          |
 | /headquarters/employees | 250     | 1          |
 
@@ -299,10 +299,10 @@ WHERE company.headquarters.employees > 200
 ```sql
 SELECT *
 FROM company
-WHERE StartsWith(company.headquarters.country, "United", true)
+WHERE STARTSWITH(company.headquarters.country, "United", true)
 ```
 
-クエリ述語 (大文字と小文字が区別される "United" で始まる国に本社がある項目のフィルター処理) は、`headquarters/country` パスの拡張インデックス スキャンを使用して評価できます。 拡張インデックス スキャンを実行する操作が備える最適化によって、すべてのインデックス ページをスキャンする必要はありませんが、正確なインデックス スキャンのバイナリ検索よりはコストが多少高くなります。
+クエリ述語 (大文字と小文字が区別されない "United" で始まる国に本社がある項目のフィルター処理) は、`headquarters/country` パスの拡張インデックス スキャンを使用して評価できます。 拡張インデックス スキャンを実行する操作が備える最適化によって、すべてのインデックス ページをスキャンする必要はありませんが、正確なインデックス スキャンのバイナリ検索よりはコストが多少高くなります。
 
 たとえば、大文字と小文字の区別なしで `StartsWith` を評価する場合は、クエリ エンジンにより、大文字と小文字の値の可能性のあるさまざまな組み合わせで、インデックスがチェックされます。 この最適化により、クエリ エンジンでインデックス ページの大部分を読み取らずに済むようになります。 すべてのインデックス ページの読み取りを避けるために使用できる最適化は、システム関数によって異なるため、これらは拡張インデックス スキャンとして広く分類されています。 
 
@@ -313,12 +313,12 @@ WHERE StartsWith(company.headquarters.country, "United", true)
 ```sql
 SELECT *
 FROM company
-WHERE Contains(company.headquarters.country, "United")
+WHERE CONTAINS(company.headquarters.country, "United")
 ```
 
 クエリ述語 ("United" が含まれる国に本社がある項目のフィルター処理) は、`headquarters/country` パスのインデックス スキャンを使用して評価できます。 正確なインデックス スキャンとは異なり、フル インデックス スキャンでは、常に、可能な値の個別のセットがスキャンされて、結果が存在するインデックス ページが特定されます。 この場合、`Contains` がインデックスで実行されます。 インデックス スキャンでのインデックス検索の時間と RU 料金は、パスのカーディナリティが増えるにつれて増加します。 つまり、クエリ エンジンでスキャンする必要がある、個別の可能な値が増えるにつれて、フル インデックス スキャンの実行に伴う待機時間と RU 料金が高くなります。  
 
-たとえば、town と country という 2 つのプロパティで考えてみましょう。 town のカーディナリティは 5,000 で、country のカーディナリティは 200 です。 次の 2 つのクエリ例には、`town` プロパティに対してインデックス スキャンを行う [Contains](sql-query-contains.md) システム関数が含まれています。 1 番目のクエリの方が 2 番目のクエリより多くの RU が使用されます。これは、town のカーディナリティの方が country より高いためです。
+たとえば、town と country という 2 つのプロパティで考えてみましょう。 town のカーディナリティは 5,000 で、country のカーディナリティは 200 です。 次の 2 つのクエリ例には、`town` プロパティに対してフル インデックス スキャンを行う [Contains](sql-query-contains.md) システム関数が含まれています。 1 番目のクエリの方が 2 番目のクエリより多くの RU が使用されます。これは、town のカーディナリティの方が country より高いためです。
 
 ```sql
     SELECT *
@@ -348,7 +348,7 @@ FROM company
 WHERE company.headquarters.employees = 200 AND CONTAINS(company.headquarters.country, "United")
 ```
 
-このクエリを実行するには、クエリ エンジンで、`headquarters/employees` に対する正確なインデックス シークと、`headquarters/country` に対するフル インデックス スキャンを行う必要があります。 クエリ エンジンには内部ヒューリスティックがあり、クエリ フィルター式を可能な限り効率的に評価するために使用されます。 この場合は、クエリ エンジンによって、インデックス シークを最初に実行することにより、不要なインデックス ページを読み取る必要がなくなります。 たとえば、等値フィルターと一致するのが 50 項目のみの場合、クエリ エンジンで `Contains` を評価する必要があるのは、それら 50 項目が含まれるインデックス ページだけです。 コンテナー全体のフル インデックス スキャンは必要ありません。
+このクエリを実行するには、クエリ エンジンで、`headquarters/employees` に対するインデックス シークと、`headquarters/country` に対するフル インデックス スキャンを行う必要があります。 クエリ エンジンには内部ヒューリスティックがあり、クエリ フィルター式を可能な限り効率的に評価するために使用されます。 この場合は、クエリ エンジンによって、インデックス シークを最初に実行することにより、不要なインデックス ページを読み取る必要がなくなります。 たとえば、等値フィルターと一致するのが 50 項目のみの場合、クエリ エンジンで `Contains` を評価する必要があるのは、それら 50 項目が含まれるインデックス ページだけです。 コンテナー全体のフル インデックス スキャンは必要ありません。
 
 ## <a name="index-utilization-for-scalar-aggregate-functions"></a>スカラー集計関数でのインデックスの使用
 
@@ -363,7 +363,7 @@ WHERE company.headquarters.employees = 200 AND CONTAINS(company.headquarters.cou
 ```sql
 SELECT *
 FROM company
-WHERE Contains(company.headquarters.country, "United")
+WHERE CONTAINS(company.headquarters.country, "United")
 ```
 
 `Contains` システム関数によって擬陽性の一致がいくつか返される可能性があるため、読み込まれた各項目がフィルター式と一致するかどうかをクエリ エンジンで検証する必要があります。 この例では、クエリ エンジンで余分に読み込む必要があるのは数項目だけなので、インデックスの使用と RU 料金に対する影響は最小限に抑えられます。
@@ -373,7 +373,7 @@ WHERE Contains(company.headquarters.country, "United")
 ```sql
 SELECT COUNT(1)
 FROM company
-WHERE Contains(company.headquarters.country, "United")
+WHERE CONTAINS(company.headquarters.country, "United")
 ```
 
 最初の例と同様に、`Contains` システム関数からは、擬陽性の一致が返されることがあります。 ただし、`SELECT *` クエリとは異なり、`Count` クエリでは、読み込まれた項目のフィルター式を評価して、すべてのインデックスの一致を検証することはできません。 `Count` クエリはインデックスに排他的に依存する必要があるため、フィルター式で擬陽性の一致が返される可能性がある場合は、クエリ エンジンによってフル スキャンが実行されます。

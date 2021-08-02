@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 42dac9edc91d7cb935e8c20398c4d31343b358e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c356ea88d23bf431df2b7785003ef23d28b5c598
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559683"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572443"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Windows 用の AMD GPU ドライバー拡張機能
 
@@ -33,8 +34,8 @@ ms.locfileid: "102559683"
 
 | Distribution | Version |
 |---|---|
-| Windows 10 EMS | ビルド 1903 |
-| Windows 10 | ビルド 1809 |
+| Windows 10 EMS | ビルド 1909 |
+| Windows 10 | ビルド 1909 |
 | Windows Server 2016 | コア |
 | Windows Server 2019 | コア |
 

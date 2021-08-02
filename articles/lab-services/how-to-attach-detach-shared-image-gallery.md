@@ -3,12 +3,12 @@ title: Azure Lab Services で共有イメージ ギャラリーをアタッチ�
 description: この記事では、Azure Lab Services で共有イメージ ギャラリーをクラスルーム ラボにアタッチする方法について説明します。
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: 99b944ad85e311cd66b0a1cec4e585de37f83500
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a460e25d59d2c5fcde341212e7912882f5fe111
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98786403"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190697"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーをアタッチまたはデタッチする
 この記事では、共有イメージ ギャラリーをラボ アカウントにアタッチしたり、ラボ アカウントからデタッチしたりする方法について説明します。 
@@ -88,5 +88,7 @@ ms.locfileid: "98786403"
 
 ## <a name="next-steps"></a>次のステップ
 共有イメージ ギャラリーにラボ イメージを保存したり、共有イメージ ギャラリーのイメージを使用して VM を作成したりする方法については、[共有イメージ ギャラリーの使用方法](how-to-use-shared-image-gallery.md)に関するページを参照してください。
+
+ラボのコンテキストの外部にある共有イメージ ギャラリーに Windows カスタム イメージを移動するには、「[カスタム イメージを共有イメージ ギャラリーに移動する](upload-custom-image-shared-image-gallery.md)」を参照してください。
 
 共有イメージ ギャラリー全般の詳細については、[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に関するページを参照してください。

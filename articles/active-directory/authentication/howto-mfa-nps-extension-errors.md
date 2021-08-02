@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: fa3a2366f007ff1481e7c84f049e606586392037
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b95286169df2960d8e7297a493354b8f01e2f667
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742954"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029695"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
-Azure AD Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 NPS 拡張機能のログは、NPS 拡張機能がインストールされているサーバーで **[カスタム ビュー]**  >  **[サーバー ロール]**  >  **[Network Policy and Access Services]\(ネットワーク ポリシーと Access Services\)** を選択すると表示されるイベント ビューアーで確認できます。
+Azure AD Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 NPS 拡張機能のログは、NPS 拡張機能がインストールされているサーバー上で **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[AzureMfa]**  >  **[AuthN]**  >  **[AuthZ]** を選択すると表示されるイベント ビューアーで確認できます。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>一般的なエラーのトラブルシューティング手順
 

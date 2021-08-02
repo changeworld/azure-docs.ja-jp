@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 3f94b22d4f439769b27d38943603f7c726bfc40d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f0f75a305a411e49a29124599dfa90aa0aee9056
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468410"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004280"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
 Microsoft コマーシャル マーケットプレースに発行した後は、オファーが成功していることを確認する必要があります。 オファーの成長を加速させるために必要なセールス、技術、マーケティングのベネフィットが用意されています。
 
-オファーが Microsoft AppSource または Azure Marketplace で有効になったら、[パートナー センター](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace)に進み、資格のあるマーケティング、セールス、技術のベネフィットにアクセスし、アクティベートします。 Marketplace 報酬ベネフィットは、商用マーケットプレースでのエンゲージメントと売上に基づいて提供されます。 エンゲージメントが多いほど、見返りも多くなります。
+オファーが Microsoft AppSource または Azure Marketplace で有効になったら、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165457)に進み、資格のあるマーケティング、セールス、技術のベネフィットにアクセスし、アクティベートします。 Marketplace 報酬ベネフィットは、商用マーケットプレースでのエンゲージメントと売上に基づいて提供されます。 エンゲージメントが多いほど、見返りも多くなります。
 
 ## <a name="marketplace-rewards"></a>Marketplace 報酬
 
@@ -38,10 +38,10 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 プログラムのすべてのベネフィットの詳細については、こちらの [Marketplace Rewards プログラムのプレゼンテーション](https://aka.ms/marketplacerewards)をご覧ください。
 
-## <a name="getting-started-is-easy"></a>簡単に使用を開始できます。
+## <a name="getting-started-is-easy"></a>簡単に使用を開始する
 
 1. Microsoft AppSource または Azure Marketplace でオファーを発行します。
-2. パートナー センターで [Marketplace Rewards](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) にアクセスし、 **[Enroll in Marketplace Rewards Program]\(Marketplace Rewards プログラムに登録する\)** を選択します。
+2. パートナー センターで [Marketplace Rewards](https://go.microsoft.com/fwlink/?linkid=2165388) にアクセスし、 **[Enroll in Marketplace Rewards Program]\(Marketplace Rewards プログラムに登録する\)** を選択します。
 3. 営業とマーケティングのベネフィットを有効にするには、会社のマーケティングの連絡先を割り当てます。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
 4. マーケティングの連絡先情報を追加または更新するには、[Marketplace Rewards] ページの [Sales and Marketing benefits]\(営業とマーケティングのベネフィット\) タブの上部に移動し、 **[Add, update, or change]\(追加、更新、または変更\)** を選択します。  続けて次の作業を行います。
     1. 一覧からユーザーを選択します。 割り当てるユーザーが一覧にない場合は、 **[アカウント設定]** で新しいユーザーを追加できます。
@@ -50,7 +50,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
     1. マーケティングの連絡先を更新した後、使用を開始するベネフィットに対して **[アクティブにする]** を選択します。 ベネフィットをアクティブにすると、1 週間以内に Rewards チームのメンバーからマーケティングの連絡先に連絡を差し上げます。
 
 > [!NOTE]
-> オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。<br><br>所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://aka.ms/marketplacepublishersupport)でサポート チケットを発行することができます。
+> オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。<br><br>所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://go.microsoft.com/fwlink/?linkid=2165533)でサポート チケットを発行することができます。
 
 コマーシャル マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 リストのすべての項目が、リソースとベスト プラクティスに関するセルフサービスのメールの一部として、基本レベルの最適化に関する推奨事項とプロモーションを受け取ります。
 

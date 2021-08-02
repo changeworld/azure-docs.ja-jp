@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/05/2021
+ms.date: 05/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2083df29754a8791848fd125136b04d1d7a06fb3
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 86a055bade77f92912134a295f7576e545fe7124
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713218"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467151"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD External Identities の課金モデル
 
@@ -64,7 +64,9 @@ Azure AD テナントでは、ゲスト ユーザーの共同作業の使用量�
 7. [Link subscription]\(サブスクリプションのリンク\) ペインで、 **[サブスクリプション]** と **[リソース グループ]** を選択します。 次に、**[適用]** を選択します。
 
    > [!NOTE]
-   > サブスクリプションが表示されていない場合は、[サブスクリプションをテナントに関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)ことができます。 または、 **[サブスクリプションをまだお持ちでない場合は、こちらで作成できます]** のリンクを選択して、新しいサブスクリプションを追加することもできます。
+   >
+   > * Premium P1 機能と Premium P2 機能の両方で、1 か月あたり最初の 50,000 人の MAU については無料となります。 MAU の総数を確認するために、Microsoft では同じサブスクリプションにリンクされているすべてのテナント (Azure AD と Azure AD B2C の両方) の MAU を結合します。
+    >* サブスクリプションが表示されていない場合は、[サブスクリプションをテナントに関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)ことができます。 または、 **[サブスクリプションをまだお持ちでない場合は、こちらで作成できます]** のリンクを選択して、新しいサブスクリプションを追加することもできます。
 
     ![サブスクリプションとリソース グループを選択する](media/external-identities-pricing/link-subscription-resource.png)
 

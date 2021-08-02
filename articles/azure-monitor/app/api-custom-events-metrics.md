@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c43ecced4c87deda3e3d92a470d6694dfd1813e2
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 75576056162bf869c20706bed22c31785a8ea2a0
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331522"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060302"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -40,7 +40,7 @@ Application Insights SDK の参照がまだない場合:
 
   * [ASP.NET プロジェクト](./asp-net.md)
   * [ASP.NET Core プロジェクト](./asp-net-core.md)
-  * [Java プロジェクト](./java-get-started.md)
+  * [Java プロジェクト](./java-in-process-agent.md)
   * [Node.js プロジェクト](./nodejs.md)
   * [各 Web ページの JavaScript](./javascript.md)
 * デバイスまたは Web サーバー コードに次を追加します。
@@ -59,7 +59,7 @@ Application Insights SDK の参照がまだない場合:
 
 [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) アプリと [.NET/.NET Core 向けの非 HTTP/ワーカー](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) アプリの場合、それぞれのドキュメントに説明されているとおり、依存関係インジェクション コンテナーから `TelemetryClient` のインスタンスを取得することが推奨されます。
 
-AzureFunctions v2 + または Azure WebJobs v3 + を使用する場合は、このドキュメント (https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher ) に従ってください。
+AzureFunctions v2 以降または Azure WebJobs v3 以降を使用する場合は、[このドキュメント](../../azure-functions/functions-monitoring.md)に従ってください。
 
 *C#*
 
@@ -397,7 +397,7 @@ try
 }
 catch (ex)
 {
-    appInsights.trackException(ex);
+    appInsights.trackException({exception: ex});
 }
 ```
 
@@ -417,7 +417,7 @@ catch (ex)
 SDK が多数の例外を自動的にキャッチするため、常に TrackException を明示的に呼び出す必要はありません。
 
 * ASP.NET:[例外をキャッチするコードを記述します](./asp-net-exceptions.md)。
-* Java EE:[例外は自動的にキャッチされます](./java-get-started.md#exceptions-and-request-failures)。
+* Java EE:[例外は自動的にキャッチされます](./java-in-process-agent.md)。
 * JavaScript:例外は自動的にキャッチされます。 自動コレクションを無効にする場合は、Web ページに挿入するコード スニペットに次の行を追加します。
 
 ```javascript
@@ -458,7 +458,7 @@ TrackTrace を使用すると、Application Insights に "階層リンクの追�
 
 .NET [ログ アダプター](./asp-net-trace-logs.md)では、この API を使用してポータルにサードパーティのログを送信します。
 
-Java の [Log4J や Logback などの標準ロガー](./java-trace-logs.md)では、Application Insights Log4j または Logback アペンダーを使用してポータルにサードパーティのログを送信します。
+Java では、[Application Insights Java エージェント](java-in-process-agent.md)によってログが自動収集され、ポータルに送信されます。
 
 *C#*
 
@@ -602,11 +602,11 @@ finally
 
 サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](./asp-net-dependencies.md)が含まれています。 このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。
 
-Java では、[Java エージェント](./java-agent.md)を使用して、特定の依存関係呼び出しを自動的に追跡できます。
+Java では、[Application Insights Java エージェント](java-in-process-agent.md)を使用して、多くの依存関係呼び出しを自動的に追跡することができます。
 
-この呼び出しは、自動追跡ではキャッチされない呼び出しを追跡する場合、またはエージェントをインストールしない場合に使用します。
+この呼び出しは、自動追跡ではキャッチされない呼び出しを追跡する場合に使用します。
 
-C# の標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) を編集し、`DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。 Java では、標準の依存関係を自動的に収集したくない場合は Java エージェントをインストールしないでください。
+C# の標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) を編集し、`DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。 Java の場合は、「[特定の自動収集テレメトリの抑制](./java-standalone-config.md#suppressing-specific-auto-collected-telemetry)」を参照してください。
 
 ### <a name="dependencies-in-analytics"></a>Analytics での依存関係
 

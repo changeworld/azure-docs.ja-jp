@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 3/30/2021
+ms.date: 6/4/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: eb75450527fc31d6ea4a9f9d60d676718ad79bda
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 8efc5f44c1383ebcde397b810ba69c547afd692f
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167585"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555452"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 
@@ -35,21 +35,23 @@ ms.locfileid: "106167585"
 
 ## <a name="upcoming-changes"></a>今後の変更
 
-### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>バグの修正: Azure AD によって、state パラメーターが 2 回 URL エンコードされることはなくなりました。
+### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>デバイス コード フロー UX にアプリの確認プロンプトが含まれるようになります
 
-**発効日**: 2021 年 5 月
+**発効日**: 2021 年 6 月。
 
-**影響を受けるエンドポイント**: v1.0 および v2.0 
+**影響を受けるエンドポイント**: v2.0 および v1.0
 
-**影響を受けるプロトコル**: `/authorize` エンドポイントにアクセスするすべてのフロー (暗黙のフローおよび承認コードフロー)
+**影響を受けるプロトコル**: [デバイス コード フロー](v2-oauth2-device-code.md)
 
-Azure AD の承認応答でバグが見つかり、修正されました。 認証の `/authorize` 段階では、応答に要求からの `state` パラメーターが含まれます。これにより、アプリの状態が維持され、CSRF 攻撃を防ぐことができます。 `state` パラメーターがエンコードされた応答に、このパラメーターを挿入する前に、Azure AD により、誤ってこのパラメーターがもう一度 URL エンコードされます。  これにより、アプリケーションが Azure AD からの応答を誤って拒否する可能性があります。 
+セキュリティを強化するために、デバイス コード フローが更新され、ユーザーが期待するアプリにサインインしているという検証を行うプロンプトが追加されました。 これは、フィッシング攻撃を防ぐために追加されます。
 
-Azure AD によるこのパラメーターのダブルエンコードがなくなり、アプリで結果を正しく解析できるようになります。 この変更はすべてのアプリケーションに対して行われます。 
+表示されるプロンプトは次のように表示されます。
+
+:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="&quot;Azure CLI にサインインしようとしていますか?&quot; という新しいプロンプト。":::
 
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>条件付きアクセスは、明示的に要求されたスコープに対してのみトリガーされる
 
-**発効日**: 2021 年 5 月。ロールアウトは、4 月から徐々に開始されます。 
+**発効日**: 2021 年 8 月。ロールアウトは、4 月から徐々に開始されます。 
 
 **影響を受けるエンドポイント**: v2.0
 
@@ -71,8 +73,19 @@ Azure AD によるこのパラメーターのダブルエンコードがなく�
 
 次に、アプリがその 3 つのスコープのいずれか (たとえば、`scope=tasks.read`) に対して最後の要求を行うと、Azure AD では、ユーザーが `files.readwrite` に必要な条件付きアクセス ポリシーを既に完了していることを確認し、3 つすべてのアクセス許可が含まれたトークンを再び発行します。 
 
-
 ## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>バグの修正: Azure AD によって、state パラメーターが 2 回 URL エンコードされることはなくなりました
+
+**発効日**: 2021 年 5 月
+
+**影響を受けるエンドポイント**: v1.0 および v2.0
+
+**影響を受けるプロトコル**: `/authorize` エンドポイントにアクセスするすべてのフロー (暗黙のフローおよび承認コードフロー)
+
+Azure AD の承認応答でバグが見つかり、修正されました。 認証の `/authorize` 段階では、応答に要求からの `state` パラメーターが含まれます。これにより、アプリの状態が維持され、CSRF 攻撃を防ぐことができます。 `state` パラメーターがエンコードされた応答に、このパラメーターを挿入する前に、Azure AD により、誤ってこのパラメーターがもう一度 URL エンコードされます。  これにより、アプリケーションが Azure AD からの応答を誤って拒否する可能性があります。 
+
+Azure AD によるこのパラメーターのダブルエンコードがなくなり、アプリで結果を正しく解析できるようになります。 この変更はすべてのアプリケーションに対して行われます。 
 
 ### <a name="azure-government-endpoints-are-changing"></a>Azure Government エンドポイントの変更
 

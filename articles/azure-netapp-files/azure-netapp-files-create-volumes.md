@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 393163cadf1907ac5bbb769ea2644bea190773ed
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: d8e8daba3806ad651f66324f362eb2573111dd80
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794324"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112070905"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
@@ -102,11 +102,12 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
 
 3. **[プロトコル]** をクリックし、次のアクションを実行します。  
     * ボリュームのプロトコルの種類として **[NFS]** を選択します。   
-    * 新しいボリュームのエクスポート パスを作成する際に使用する **ファイル パス** を指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。
 
-        ファイル パス名には、文字、数字、ハイフン ("-") のみを含めることができます。 長さは 16 文字から 40 文字でなければなりません。 
-
-        ファイルのパスは、各サブスクリプションと各リージョン内で一意である必要があります。 
+    * ボリュームに対する一意の **ファイル パス** を指定します。 このパスは、マウント ターゲットを作成するときに使用されます。 パスの要件は、次のとおりです。   
+        - リージョン内の各サブネット内で一意である必要があります。 
+        - 英文字で始まる必要があります。
+        - 文字、数字、ダッシュ (`-`) だけで構成する必要があります。 
+        - 長さが 80 文字以内である必要があります。
 
     * ボリュームの NFS バージョン ( **[NFSv3]** または **[NFSv4.1]** ) を選択します。  
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/10/2021
+ms.date: 05/17/2021
 ms.author: b-juche
-ms.openlocfilehash: 695dd379e0b9f02f5ec6a08f2a037d071259d2b7
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: effca5e663f91489bc534934d26faec8c18e7460
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734517"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090625"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Azure NetApp Files 用に NFS クライアントを構成する
 
@@ -258,9 +258,42 @@ ms.locfileid: "109734517"
 `root@cbs-k8s-varun4-04:/home/cbs# getent passwd hari1`   
 `hari1:*:1237:1237:hari1:/home/hari1:/bin/bash`   
 
+## <a name="configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes"></a>ホスト名が同じ 2 つの VM が NFSv 4.1 ボリュームにアクセスするように構成する 
+
+このセクションでは、ホスト名が同じ 2 つの VM が Azure NetApp Files NFSv 4.1 ボリュームにアクセスするように構成する方法について説明します。 この手順は、ディザスター リカバリー (DR) テストを実施するとき、テスト システムのホスト名をプライマリ DR システムのホスト名と同じにする必要がある場合に役立ちます。 この手順は、同じ Azure NetApp Files ボリュームにアクセスしている 2 つの VM 上のホスト名が同じときにのみ必要です。  
+
+NFSv4. x では、各クライアントが "*一意*" の文字列を使用して、サーバーに対して自身を特定する必要があります。 1 つのクライアントと 1 つのサーバーの間で共有されるファイルのオープンおよびロック状態は、この ID に関連付けられています。 堅牢な NFSv4. x 状態回復と透過的な状態移行をサポートするには、この ID 文字列が、クライアントの再起動後も変更されないようにする必要があります。
+
+1. 次のコマンドを使用して、VM クライアント上に `nfs4_unique_id` 文字列を表示します。
+    
+    `# systool -v -m nfs | grep -i nfs4_unique`     
+    `    nfs4_unique_id      = ""`
+
+    DR システムなど、ホスト名が同じ追加 VM 上で同じボリュームをマウントするには、`nfs4_unique_id` を作成して、Azure NetApp Files NFS サービスに対して自身を一意に特定できるようにします。  この手順を使用すると、サービスが、同じホスト名の 2 つの VM を区別して、両方の VM 上で NFSv 4.1 ボリュームのマウントを有効にできます。  
+
+    この手順は、テスト DR システム上でのみ実行する必要があります。 一貫性を確保するために、関連する各仮想マシン上で一意の設定の適用を検討することができます。
+
+2. テスト DR システム上で、次の行を `nfsclient.conf` ファイルに追加します。このファイルは通常、`/etc/modprobe.d/` 内にあります。
+
+    `options nfs nfs4_unique_id=uniquenfs4-1`  
+
+    文字列 `uniquenfs4-1` は、サービスに接続する VM 全体で一意である限り、任意の英数字の文字列にできます。
+
+    NFS クライアント設定の構成方法については、ディストリビューションのドキュメントをご確認ください。
+
+    変更を有効にするために VM を再起動します。
+
+3. テスト DR システム上で、`nfs4_unique_id` が、VM が再起動された後も設定されていることを確認します。       
+
+    `# systool -v -m nfs | grep -i nfs4_unique`   
+    `   nfs4_unique_id      = "uniquenfs4-1"`   
+
+4. 通常どおり、両方の VM 上に [NFSv 4.1 ボリュームをマウント](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)します。
+
+    これでホスト名が同じ両方の VM が NFSv 4.1 ボリュームをマウントし、アクセスできるようになります。  
 
 ## <a name="next-steps"></a>次のステップ  
 
 * [Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Azure NetApp Files のデュアルプロトコル ボリュームを作成する](create-volumes-dual-protocol.md)
-
+* [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) 

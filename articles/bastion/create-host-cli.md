@@ -1,18 +1,18 @@
 ---
 title: Azure CLI を使用して Bastion ホストを作成する | Azure Bastion
-description: この記事では、Bastion ホストを作成および削除する方法について説明します
+description: Azure CLI で bastion ホストを作成、削除する方法を説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8654b557de8242910c665596ca8bfd29fe86d1ff
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 4944ae62bda23f33aa30011314826beb499ac791
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106578826"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534756"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure CLI を使用して Azure Bastion ホストを作成する
 

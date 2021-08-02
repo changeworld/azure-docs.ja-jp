@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 965103c090c86311db1c2c5f796445f2b68c1671
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 4a40ed7f9b5fd2b39e617ef40becf5f979a22eea
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481231"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072174"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB の MongoDB 用 API との間でデータを双方向にコピーする
 

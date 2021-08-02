@@ -1,19 +1,19 @@
 ---
 title: ブロック BLOB ストレージのパフォーマンス レベル - Azure Storage
 description: Azure ブロック BLOB ストレージの Premium と Standard のパフォーマンス レベルの違いについて説明します。
-author: twooley
-ms.author: twooley
-ms.date: 11/12/2019
+author: normesta
+ms.author: normesta
+ms.date: 05/17/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 93e6fcc11703fc24d97bc19ab9cc0d2129ff666f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: faf26ce78e0d6137c93e150d31bd49b9e72b6b8b
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143325"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655104"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -26,14 +26,14 @@ Azure ブロック BLOB ストレージには、次の 2 つの異なるパフ�
 
 この異なるパフォーマンス レベルでは、次の条件が該当する必要があります。
 
-| 領域 |Standard パフォーマンス  |Premium パフォーマンス  |
-|---------|---------|---------|
-|利用可能なリージョン     |   すべてのリージョン      | [一部のリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
-|サポートされる[ストレージ アカウントの種類](../common/storage-account-overview.md#types-of-storage-accounts)     |     汎用 v2、BlobStorage、汎用 v1    |    BlockBlobStorage     |
-|[高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) をサポート     |    はい (4 MiB を超える MiB PutBlock または PutBlock のサイズ)     |    はい (256 KiB を超える MiB PutBlock または PutBlock のサイズ)    |
-|冗長性     |     「[ストレージ アカウントの種類](../common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。   |  現在、ローカル冗長ストレージ (LRS) とゾーン冗長ストレージ (ZRS) のみをサポートしています。<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+| 領域 | Standard パフォーマンス | Premium パフォーマンス |
+|--|--|--|
+| 利用可能なリージョン | すべてのリージョン | [一部のリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=storage) |
+| サポートされる[ストレージ アカウントの種類](../common/storage-account-overview.md#types-of-storage-accounts) | 汎用 v2、汎用 v1、レガシ BLOB | Premium ブロック BLOB |
+| [高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) をサポート | はい (4 MiB を超える MiB PutBlock または PutBlock のサイズ) | はい (256 KiB を超える MiB PutBlock または PutBlock のサイズ) |
+| 冗長性 | 「[ストレージ アカウントの種類](../common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。 | 現在、ローカル冗長ストレージ (LRS) とゾーン冗長ストレージ (ZRS) のみをサポートしています。<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div> |
 
-<div id="zone-redundant-storage"><sup>1</sup> ゾーン冗長ストレージ (ZRS) は、一部のリージョンで Premium パフォーマンス ブロック BLOB ストレージ アカウントに使用できます。</div>
+<div id="zone-redundant-storage"><sup>1</sup> ゾーン冗長ストレージ (ZRS) は、一部のリージョンで Premium ブロック BLOB ストレージ アカウントに使用できます。</div>
 
 コストに関して、Premium パフォーマンスは、トランザクション率が高いアプリケーションのワークロードの[総ストレージ コストを低減](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/)するよう価格が最適化されています。
 
@@ -63,7 +63,7 @@ Standard パフォーマンスでは、最もコスト効率の高い方法で�
 
 ## <a name="migrate-from-standard-to-premium"></a>Standard から Premium に移行する
 
-既存の Standard パフォーマンス ストレージ アカウントを Premium パフォーマンスのブロック BLOB ストレージ アカウントに変換することはできません。 Premium パフォーマンス ストレージ アカウントに移行するには、BlockBlobStorage アカウントを作成し、データを新しいアカウントに移行する必要があります。 詳細については、「[ブロック BLOB ストレージ アカウントの作成](../common/storage-account-create.md)」を参照してください。
+既存の Standard パフォーマンス ストレージ アカウントを Premium パフォーマンスのブロック BLOB ストレージ アカウントに変換することはできません。 Premium パフォーマンス ストレージ アカウントに移行するには、Premium ブロック BLOB アカウントを作成し、データを新しいアカウントに移行する必要があります。 詳細については、「[ブロック BLOB ストレージ アカウントの作成](../common/storage-account-create.md)」を参照してください。
 
 ストレージ アカウント間で BLOB をコピーするには、最新バージョンの [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) コマンドライン ツールを使用できます。 データの移動と変換には、Azure Data Factory などの他のツールを使用することもできます。
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
-ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e70361b747cac10b602efcf590963b707c7d5da7
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96530937"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559000"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーとスキルセットを使用して暗号化された BLOB にインデックスを付ける方法
 
@@ -117,7 +117,7 @@ Postman をインストールして設定します。
 1. [Postman コレクション ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json)をダウンロードします。
 1. **[File]\(ファイル\)**  >  **[Import]\(インポート\)** を選択して、ソース コードを Postman にインポートします。
 1. **[Collections]\(コレクション\)** タブを選択し、 **[...]** (省略記号) ボタンを選択します。
-1. **[編集]** を選択します。 
+1. **[Edit]\(編集\)** を選択します。 
    
    ![ナビゲーションを示す Postman アプリ](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Postman の [Edit]\(編集\) メニューに移動する")
 1. **[Edit]\(編集\)** ダイアログ ボックスで、 **[Variables]\(変数\)** タブを選択します。 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2a4e58201557d64602cc0740b83373ce53c8f69
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7c3197a8eb9f6734cdd04d609ea0f59465ffa86d
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070679"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535513"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
@@ -28,7 +28,7 @@ ms.locfileid: "108070679"
 
 シングルページ アプリケーションをサポートするための推奨される方法は、[OAuth 2.0 認証コード フロー (PKCE あり)](./authorization-code-flow.md) です。
 
-[MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) のような一部のフレームワークでは、暗黙的な許可フローのみがサポートされます。 このような場合、Azure Active Directory B2C (Azure AD B2C) では、OAuth 2.0 認可の暗黙的な許可フローがサポートされます。 これらのフローについては、[OAuth 2.0 仕様の セクション 4.2](https://tools.ietf.org/html/rfc6749) で説明されています。 暗黙的フローでは、アプリは Azure Active Directory (Azure AD) 承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、ページ リダイレクトまたはポップアップ ボックスを使って、JavaScript クライアント内ですべて行われます。
+[MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) のような一部のフレームワークでは、暗黙的な許可フローのみがサポートされます。 このような場合、Azure Active Directory B2C (Azure AD B2C) では、OAuth 2.0 認可の暗黙的な許可フローがサポートされます。 このフローは [OAuth 2.0 の仕様のセクション 4.2](https://tools.ietf.org/html/rfc6749) で説明されています。 暗黙的フローでは、アプリは Azure Active Directory (Azure AD) 承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、ページ リダイレクトまたはポップアップ ボックスを使って、JavaScript クライアント内ですべて行われます。
 
 Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純な認証と承認以上まで拡張されます。 Azure AD B2C には、[ポリシー パラメーター](user-flow-overview.md)が導入されています。 ポリシー パラメーターと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理のユーザー フローなどのポリシーをアプリに追加できます。 この記事の HTTP 要求例では、**{tenant}.onmicrosoft.com** を例として使用します。 実際のテナントがあり、ユーザー フローも作成済みである場合は、`{tenant}` を実際のテナントの名前に置き換えてください。
 

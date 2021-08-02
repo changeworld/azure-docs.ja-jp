@@ -4,16 +4,16 @@ description: "\"見つかりません\" 例外を診断して修正する方法�
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 07/13/2020
+ms.date: 05/26/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 22cce2c620d23ab477de5d92bb8c6d4f5ef5a493
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b9a78c1adeb5aa833c7c60be1dc4e553ae7d5393
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425126"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538847"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB の "見つかりません" 例外を診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,6 +37,12 @@ HTTP 状態コード 404 は、リソースがもう存在しないことを表�
 #### <a name="solution"></a>解決方法:
 1. Azure Cosmos DB の既定のアカウント整合性は、セッション整合性です。 項目が作成または更新されると、応答により、セッション トークンが返されます。これを SDK インスタンス間で渡すことで、読み取り要求がその変更を含むレプリカから読み取っていることが保証されます。
 1. [整合性レベル](./consistency-levels.md)を[より強力なレベル](./consistency-levels.md)に変更します。
+
+### <a name="reading-throughput-for-a-container-or-database-resource"></a>コンテナーまたはデータベースのスループットを見る
+PowerShell または Azure CLI で *not found* (見つかりません) というエラー メッセージが出る。
+
+#### <a name="solution"></a>解決方法 :
+スループットの情報は、データベース単位、コンテナー単位またはその両方で用意できます。 *not found* (見つかりません) というエラーが出る場合は、親データベース リソースまたは子コンテナー リソースでスループットの確認を試みてください。
 
 ### <a name="invalid-partition-key-and-id-combination"></a>パーティション キーと ID の組み合わせが無効
 パーティション キーと ID の組み合わせが無効です。

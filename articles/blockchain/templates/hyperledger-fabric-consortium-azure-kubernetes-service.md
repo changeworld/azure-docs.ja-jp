@@ -5,12 +5,12 @@ ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: contperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: 03f19d1922c011c1b5304b66488e9fa8de703bf9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 76c18d7b11a4ac48a7ebaa77f0ae683b8de9ca44
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478315"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422212"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Azure Kubernetes Service (AKS) に Hyperledger Fabric コンソーシアムをデプロイする
 
@@ -20,6 +20,11 @@ Hyperledger Fabric on Azure Kubernetes Service (AKS) テンプレートを使用
 
 - Hyperledger Fabric と、Hyperledger Fabric ブロックチェーン ネットワークの構成要素を形成するコンポーネントについての、実用的な知識が得られます。
 - 運用シナリオ用に Azure Kubernetes Service に Hyperledger Fabric コンソーシアム ネットワークをデプロイして構成する方法がわかります。
+
+>[!IMPORTANT] 
+>
+>このテンプレートでは Azure Kubernetes Service バージョン 1.18.x 以下のみをサポートしています。 Docker から "containerd" への実行時環境の [Kubernetes での最近の更新](https://kubernetes.io/blog/2020/12/02/dont-panic-kubernetes-and-docker/)により、チェーンコード コンテナーは機能しません。お客様は、HLF 2.2x でのみ可能なサービスとして外部チェーンコードを実行する必要があります。 AKS v1.18.x が Azure でサポートされるまで、このテンプレートは、[こちらの](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service)手順に従ってデプロイできます。
+
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
@@ -80,7 +85,7 @@ Hyperledger Fabric ネットワーク コンポーネントのデプロイを始
     - **マネージド ディスク**: 元帳およびピア ノードのワールド ステート データベースに対する永続的なストアを提供する Azure Managed Disks サービスのインスタンス。
     - **[パブリック IP]** : クラスターとの通信のためにデプロイされる AKS クラスターのエンドポイント。
 
-    次の詳細を入力します。 
+    次の詳細を入力します。
 
     ![[AKS クラスターの設定] タブを示すスクリーンショット。](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
@@ -113,7 +118,7 @@ Hyperledger Fabric ネットワーク コンポーネントのデプロイを始
 > 提供されているスクリプトは、デモンストレーション、開発、テストのシナリオのみに使用できます。 このスクリプトによって作成されるチャネルとコンソーシアムには、デモ、開発、テストのシナリオを簡素化するための基本的な Hyperledger Fabric ポリシーがあります。 運用環境の設定では、ネイティブ Hyperledger Fabric API を使用し、組織のコンプライアンスのニーズに合わせて、チャネルおよびコンソーシアムの Hyperledger Fabric ポリシーを更新することをお勧めします。
 
 
-Azure Hyperledger Fabric スクリプトを実行するすべてのコマンドは、Azure Bash コマンド ライン インターフェイス (CLI) を使用して実行できます。 Azure portal の右上隅にある ![[Hyperledger Fabric on Azure Kubernetes Service Template]\(Hyperledger Fabric on Azure Kubernetes Service テンプレート\)](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) オプションを使用して、Azure Cloud Shell にサインインできます。 コマンド プロンプトで「`bash`」と入力して Enter キーを押すことよって Bash CLI に切り替えるか、Cloud Shell のツール バーで **[Bash]** を選択します。
+Azure Hyperledger Fabric スクリプトを実行するすべてのコマンドは、Azure Bash コマンド ライン インターフェイス (CLI) を使用して実行できます。 Azure portal の右上隅にある ![[Azure Kubernetes Service における Hyperledger Fabric テンプレート]](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) オプションを使用して、Azure Cloud Shell にサインインできます。 コマンド プロンプトで「`bash`」と入力して Enter キーを押すことよって Bash CLI に切り替えるか、Cloud Shell のツール バーで **[Bash]** を選択します。
 
 詳細については、[Azure Cloud Shell](../../cloud-shell/overview.md) に関する記事を参照してください。
 
@@ -149,7 +154,7 @@ npm run setup
 
 #### <a name="set-environment-variables-for-the-orderer-organizations-client"></a>orderer 組織クライアントの環境変数を設定する
 
-```bash
+```azurecli
 ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
 ORDERER_ORG_RESOURCE_GROUP=<ordererOrgResourceGroup>
 ORDERER_ORG_NAME=<ordererOrgName>
@@ -159,7 +164,7 @@ CHANNEL_NAME=<channelName>
 
 #### <a name="set-environment-variables-for-the-peer-organizations-client"></a>ピア組織クライアントの環境変数を設定する
 
-```bash
+```azurecli
 PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
 PEER_ORG_RESOURCE_GROUP=<peerOrgResourceGroup>
 PEER_ORG_NAME=<peerOrgName>
@@ -171,7 +176,7 @@ CHANNEL_NAME=<channelName>
 
 #### <a name="set-environment-variables-for-an-azure-storage-account"></a>Azure ストレージ アカウントの環境変数を設定する
 
-```bash
+```azurecli
 STORAGE_SUBSCRIPTION=<subscriptionId>
 STORAGE_RESOURCE_GROUP=<azureFileShareResourceGroup>
 STORAGE_ACCOUNT=<azureStorageAccountName>
@@ -181,7 +186,7 @@ STORAGE_FILE_SHARE=<azureFileShareName>
 
 次のコマンドを使用して、Azure ストレージ アカウントを作成します。 Azure ストレージ アカウントが既にある場合は、このステップをスキップします。
 
-```bash
+```azurecli
 az account set --subscription $STORAGE_SUBSCRIPTION
 az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
@@ -189,14 +194,14 @@ az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $ST
 
 次のコマンドを使用して、Azure ストレージ アカウントにファイル共有を作成します。 ファイル共有が既にある場合は、このステップをスキップします。
 
-```bash
+```azurecli
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
 ```
 
 次のコマンドを使用して、Azure ファイル共有の接続文字列を生成します。
 
-```bash
+```azurecli
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
 AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN
@@ -209,15 +214,15 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 
 orderer 組織の場合:
 
-```bash
+```azurecli
 ./azhlf adminProfile import fromAzure -o $ORDERER_ORG_NAME -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION
-./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME   
+./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ./azhlf msp import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ```
 
 ピア組織の場合:
 
-```bash
+```azurecli
 ./azhlf adminProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ./azhlf connectionProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
@@ -225,41 +230,41 @@ orderer 組織の場合:
 
 ### <a name="create-a-channel"></a>チャネルの作成
 
-orderer 組織のクライアントから、次のコマンドを使用して、orderer 組織のみが含まれるチャネルを作成します。  
+orderer 組織のクライアントから、次のコマンドを使用して、orderer 組織のみが含まれるチャネルを作成します。
 
-```bash
+```azurecli
 ./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
 
 ### <a name="add-a-peer-organization-for-consortium-management"></a>コンソーシアム管理用のピア組織を追加する
 
 >[!NOTE]
-> コンソーシアム操作を始める前に、クライアント アプリケーションの初期セットアップを確実に完了します。  
+> コンソーシアム操作を始める前に、クライアント アプリケーションの初期セットアップを確実に完了します。
 
-チャネルおよびコンソーシアムにピア組織を追加するには、以下のコマンドをこの順序で実行します。 
+チャネルおよびコンソーシアムにピア組織を追加するには、以下のコマンドをこの順序で実行します。
 
-1.  ピア組織のクライアントで、Azure Storage にピア組織の MSP をアップロードします。
+1.    ピア組織のクライアントで、Azure Storage にピア組織の MSP をアップロードします。
 
-      ```bash
+      ```azurecli
       ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
       ```
-2.  orderer 組織のクライアントで、Azure Storage からピア組織の MSP をダウンロードします。 次のコマンドを実行して、チャネルとコンソーシアムにピア組織を追加します。
+2.    orderer 組織のクライアントで、Azure Storage からピア組織の MSP をダウンロードします。 次のコマンドを実行して、チャネルとコンソーシアムにピア組織を追加します。
 
-      ```bash
+      ```azurecli
       ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ./azhlf channel join -c  $CHANNEL_NAME -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ```
 
-3.  orderer 組織のクライアントで、Azure Storage に orderer 接続プロファイルをアップロードして、ピア組織がこの接続プロファイルを使用して orderer ノードに接続できるようにします。
+3.    orderer 組織のクライアントで、Azure Storage に orderer 接続プロファイルをアップロードして、ピア組織がこの接続プロファイルを使用して orderer ノードに接続できるようにします。
 
-      ```bash
+      ```azurecli
       ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ```
 
-4.  ピア組織のクライアントで、orderer の接続プロファイルを Azure Storage からダウンロードします。 次のコマンドを実行して、チャネルにピア ノードを追加します。
+4.    ピア組織のクライアントで、orderer の接続プロファイルを Azure Storage からダウンロードします。 次のコマンドを実行して、チャネルにピア ノードを追加します。
 
-      ```bash
+      ```azurecli
       ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ./azhlf channel joinPeerNodes -o $PEER_ORG_NAME  -u $PEER_ADMIN_IDENTITY -c $CHANNEL_NAME --ordererOrg $ORDERER_ORG_NAME
       ```
@@ -273,7 +278,7 @@ orderer 組織のクライアントから、次のコマンドを使用して、
 >[!NOTE]
 > このコマンドを実行する前に、コンソーシアムの管理コマンドを使用して、ピア組織をチャネルに確実に追加します。
 
-```bash
+```azurecli
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
@@ -285,48 +290,48 @@ orderer 組織のクライアントから、次のコマンドを使用して、
 ## <a name="chaincode-management-commands"></a>チェーンコード管理コマンド
 
 >[!NOTE]
-> チェーンコード操作を始める前に、クライアント アプリケーションの初期セットアップを確実に完了します。  
+> チェーンコード操作を始める前に、クライアント アプリケーションの初期セットアップを確実に完了します。
 
 ### <a name="set-the-chaincode-specific-environment-variables"></a>チェーンコード固有の環境変数を設定する
 
-```bash
+```azurecli
 # Peer organization name where the chaincode operation will be performed
 ORGNAME=<PeerOrgName>
-USER_IDENTITY="admin.$ORGNAME"  
-# If you are using chaincode_example02 then set CC_NAME=â€œchaincode_example02â€
-CC_NAME=<chaincodeName>  
-# If you are using chaincode_example02 then set CC_VERSION=â€œ1â€ for validation
+USER_IDENTITY="admin.$ORGNAME"
+# If you are using chaincode_example02 then set CC_NAME="chaincode_example02"
+CC_NAME=<chaincodeName>
+# If you are using chaincode_example02 then set CC_VERSION="1" for validation
 CC_VERSION=<chaincodeVersion>
-# Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
-# Default value is 'golang'  
-CC_LANG=<chaincodeLanguage>  
+# Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'
+# Default value is 'golang'
+CC_LANG=<chaincodeLanguage>
 # CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
-# If you are using chaincode_example02 to validate then CC_PATH=â€œ/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/goâ€
-CC_PATH=<chaincodePath>  
-# Channel on which chaincode will be instantiated/invoked/queried  
-CHANNEL_NAME=<channelName>  
+# If you are using chaincode_example02 to validate then CC_PATH="/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go"
+CC_PATH=<chaincodePath>
+# Channel on which chaincode will be instantiated/invoked/queried
+CHANNEL_NAME=<channelName>
 ```
 
-### <a name="install-chaincode"></a>チェーンコードをインストールする  
+### <a name="install-chaincode"></a>チェーンコードをインストールする
 
-ピア組織にチェーンコードをインストールするには、次のコマンドを実行します。  
+ピア組織にチェーンコードをインストールするには、次のコマンドを実行します。
 
-```bash
-./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION  
+```azurecli
+./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
 
 ```
-このコマンドによって、`ORGNAME` 環境変数に設定されているピア組織のすべてのピア ノードにチェーンコードがインストールされます。 チャネルにピア組織が 2 つ以上ある場合、そのすべてにチェーンコードをインストールするには、ピア組織ごとにこのコマンドを個別に実行します。  
+このコマンドによって、`ORGNAME` 環境変数に設定されているピア組織のすべてのピア ノードにチェーンコードがインストールされます。 チャネルにピア組織が 2 つ以上ある場合、そのすべてにチェーンコードをインストールするには、ピア組織ごとにこのコマンドを個別に実行します。
 
-次の手順に従います。  
+次の手順に従います。
 
-1.  `peerOrg1` に従って `ORGNAME` と `USER_IDENTITY` を設定し、`./azhlf chaincode install` コマンドを実行します。  
-2.  `peerOrg2` に従って `ORGNAME` と `USER_IDENTITY` を設定し、`./azhlf chaincode install` コマンドを実行します。  
+1.    `peerOrg1` に従って `ORGNAME` と `USER_IDENTITY` を設定し、`./azhlf chaincode install` コマンドを実行します。
+2.    `peerOrg2` に従って `ORGNAME` と `USER_IDENTITY` を設定し、`./azhlf chaincode install` コマンドを実行します。
 
-### <a name="instantiate-chaincode"></a>チェーンコードをインスタンス化する  
+### <a name="instantiate-chaincode"></a>チェーンコードをインスタンス化する
 
-ピア クライアント アプリケーションから次のコマンドを実行して、チャネルでチェーンコードをインスタンス化します。  
+ピア クライアント アプリケーションから次のコマンドを実行して、チャネルでチェーンコードをインスタンス化します。
 
-```bash
+```azurecli
 ./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
@@ -336,7 +341,7 @@ CHANNEL_NAME=<channelName>
 
 次に例を示します。
 
-```bash
+```azurecli
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
 ```
@@ -345,34 +350,34 @@ CHANNEL_NAME=<channelName>
 有効な JSON として `<transientArgs>` を文字列形式で渡します。 特殊文字があればエスケープ処理します。 例: `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
-> チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。 トランザクションが orderer に正常に送信された後、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 その後、チャネル内のすべてのピア組織のすべてのピア ノードで、チェーンコードがインスタンス化されます。  
+> チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。 トランザクションが orderer に正常に送信された後、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 その後、チャネル内のすべてのピア組織のすべてのピア ノードで、チェーンコードがインスタンス化されます。
 
-### <a name="invoke-chaincode"></a>チェーンコードを呼び出す  
+### <a name="invoke-chaincode"></a>チェーンコードを呼び出す
 
-ピア組織のクライアントから、次のコマンドを実行してチェーンコード関数を呼び出します。  
+ピア組織のクライアントから、次のコマンドを実行してチェーンコード関数を呼び出します。
 
-```bash
-./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
+```azurecli
+./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>
 ```
 
-`<invokeFunction>` と `<invokeFuncArgs>` で、それぞれ呼び出し関数名とスペース区切りの引数リストを渡します。 引き続き chaincode_example02.go の例を使用し、呼び出し操作を実行するには、`<invokeFunction>` を `invoke` に設定し、`<invokeFuncArgs>` を `"a" "b" "10"` に設定します。  
+`<invokeFunction>`と`<invokeFuncArgs>`では、それぞれ、呼び出し関数名とスペース区切りの引数リストが渡されます。 引き続き chaincode_example02.go を使用すると、呼び出し操作を実行するために、`<invokeFunction>` を `invoke` に、`<invokeFuncArgs>` を `"a" "b" "10"` に設定しています。
 
 >[!NOTE]
-> チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。 トランザクションが orderer に正常に送信された後、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 その後、チャネル内のすべてのピア組織のすべてのピア ノードで、ワールド ステートが更新されます。  
+> チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。 トランザクションが orderer に正常に送信された後、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 その後、チャネル内のすべてのピア組織のすべてのピア ノードで、ワールド ステートが更新されます。
 
 
-### <a name="query-chaincode"></a>チェーンコードのクエリを実行する  
+### <a name="query-chaincode"></a>チェーンコードのクエリを実行する
 
-次のコマンドを実行して、チェーンコードのクエリを行います。  
+次のコマンドを実行して、チェーンコードのクエリを行います。
 
-```bash
-./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
+```azurecli
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>
 ```
 保証ピアは、チェーンコードがインストールされ、トランザクションの実行のために呼び出されるピアです。 現在のピア組織のピア ノード名を含むように、`<endorsingPeers>` を設定する必要があります。 特定のチェーンコードとチャネルの組み合わせに対する保証ピアを、スペースで区切って列記します。 たとえば、 `-p "peer1" "peer3"`と指定します。
 
-*azhlfTool* を使用してチェーンコードをインストールする場合は、保証ピア引数への値としてピア ノード名を渡します。 チェーンコードは、その組織のすべてのピア ノードにインストールされます。 
+*azhlfTool* を使用してチェーンコードをインストールする場合は、保証ピア引数への値としてピア ノード名を渡します。 チェーンコードは、その組織のすべてのピア ノードにインストールされます。
 
-`<queryFunction>` と `<queryFuncArgs>` で、それぞれクエリ関数名とスペース区切りの引数リストを渡します。 ここでも chaincode_example02.go チェーンコードを例にすると、ワールド ステートの値 "a" のクエリを実行するには、`<queryFunction>` を `query` に設定し、`<queryArgs>` を `"a"` に設定します。  
+`<queryFunction>` と `<queryFuncArgs>` では、それぞれ、クエリ関数名とスペース区切りの引数リストを渡します。 ここでも chaincode_example02.go チェーンコードを例にすると、ワールド ステートの値 "a" のクエリを実行するには、`<queryFunction>`を `query` に設定し、`<queryArgs>` を "a" に設定します。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
@@ -380,7 +385,7 @@ CHANNEL_NAME=<channelName>
 
 次のコマンドを実行して、テンプレートのデプロイのバージョンを確認します。 テンプレートがデプロイされているリソース グループに従って、環境変数を設定します。
 
-```bash
+```azurecli
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 ```
@@ -417,8 +422,8 @@ kubectl get pods -n hlf
 
 Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
 
-- [Microsoft Q&A ページ](/answers/topics/azure-blockchain-workbench.html) 
-   
+- [Microsoft Q&A ページ](/answers/topics/azure-blockchain-workbench.html)
+
   ブロックチェーン テンプレートに関するエンジニアリング サポートは、デプロイに関する問題に限定されています。
 - [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
