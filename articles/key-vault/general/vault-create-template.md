@@ -212,7 +212,7 @@ Write-Host "Press [ENTER] to continue..."
 ## <a name="resources"></a>リソース
 
 - [Azure Key Vault の概要](../general/overview.md)を確認します。
-- [Azure リソース マネージャー](../../azure-resource-manager/management/overview.md)の詳細を確認します。
+- [Azure Resource Manager](../../azure-resource-manager/management/overview.md)の詳細を確認します。
 - 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を確認する
 
 ## <a name="next-steps"></a>次の手順
