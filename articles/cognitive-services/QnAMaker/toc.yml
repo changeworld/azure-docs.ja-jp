@@ -4,6 +4,10 @@
   items:
     - name: QnA Maker とは
       href: Overview/overview.md
+    - name: 言語のサポート
+      href: Overview/language-support.md
+    - name: 料金と制限
+      href: 'https://aka.ms/qnamaker-pricing'
     - name: 新機能
       href: whats-new.md
     - name: カスタム質問と回答 (プレビュー)
@@ -16,41 +20,20 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: クライアント ライブラリまたは REST API
           href: Quickstarts/quickstart-sdk.md
-- name: チュートリアル
+- name: サンプル
+  href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face&terms=qna-maker'
+- name: AI の責任ある使用
   items:
-    - name: Azure Bot Service を使用した FAQ ボットの作成
-      href: Tutorials/create-faq-bot-with-azure-bot-service.md
-    - name: ボットのカスタマイズ
+    - name: 透明性に関するメモ
       items:
-        - name: FAQ ボットに複数のドメインを追加する
-          href: Tutorials/create-faq-bot-for-multiple-domains.md
-    - name: Power 仮想エージェントとの統合
-      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
-- name: 概念
-  items:
-    - name: ナレッジ ベースの計画
-      href: Concepts/plan.md
-    - name: QnA Maker のリソースの計画
-      href: Concepts/azure-resources.md
-    - name: データ ソースとコンテンツ
-      href: Concepts/data-sources-and-content.md
-    - name: Azure ロールベースのアクセス制御 (Azure RBAC)
-      href: Concepts/role-based-access-control.md
-    - name: 正確な回答
-      href: reference-precise-answering.md
-    - name: アクティブ ラーニングを有効にする
-      href: How-To/use-active-learning.md
-    - name: ランカー プロセス
-      displayName: 'DefaultAnswer, Default answer'
-      href: Concepts/query-knowledge-base.md
-    - name: 開発ライフサイクル
-      href: Concepts/development-lifecycle-knowledge-base.md
-      displayName: 'version control, test, index, publish, monitor usage, create'
-    - name: ベスト プラクティス
-      href: Concepts/best-practices.md
-      displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-    - name: QnA Maker と LUIS の使用
-      href: choose-natural-language-processing-service.md
+        - name: QnA Maker のユース ケース
+          href: /legal/cognitive-services/qnamaker/transparency-note-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
+        - name: 特性と制限
+          href: /legal/cognitive-services/qnamaker/characteristics-and-limitations-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
+    - name: 統合と責任ある使用
+      href: /legal/cognitive-services/qnamaker/guidance-integration-responsible-use-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
+    - name: データ、プライバシー、セキュリティ
+      href: /legal/cognitive-services/qnamaker/data-privacy-security-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
 - name: 操作方法ガイド
   items:
     - name: QnA Maker のリソースを管理する
@@ -111,44 +94,52 @@
           href: encrypt-data-at-rest.md
         - name: Azure AD 認証を使用する
           href: ../authentication.md?context=/azure/cognitive-services/qnamaker/context/context
-- name: AI の責任ある使用
+- name: 概念
   items:
-    - name: 透明性に関するメモ
+    - name: ナレッジ ベースの計画
+      href: Concepts/plan.md
+    - name: QnA Maker のリソースの計画
+      href: Concepts/azure-resources.md
+    - name: データ ソースとコンテンツ
+      href: Concepts/data-sources-and-content.md
+    - name: Azure ロールベースのアクセス制御 (Azure RBAC)
+      href: Concepts/role-based-access-control.md
+    - name: 正確な回答
+      href: reference-precise-answering.md
+    - name: アクティブ ラーニングを有効にする
+      href: How-To/use-active-learning.md
+    - name: ランカー プロセス
+      displayName: 'DefaultAnswer, Default answer'
+      href: Concepts/query-knowledge-base.md
+    - name: 開発ライフサイクル
+      href: Concepts/development-lifecycle-knowledge-base.md
+      displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: ベスト プラクティス
+      href: Concepts/best-practices.md
+      displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
+    - name: QnA Maker と LUIS の使用
+      href: choose-natural-language-processing-service.md
+- name: チュートリアル
+  items:
+    - name: Azure Bot Service を使用した FAQ ボットの作成
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
+    - name: Power 仮想エージェントとの統合
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: FAQ ボットをカスタマイズする
       items:
-        - name: QnA Maker のユース ケース
-          href: /legal/cognitive-services/qnamaker/transparency-note-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
-        - name: 特性と制限
-          href: /legal/cognitive-services/qnamaker/characteristics-and-limitations-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
-    - name: 統合と責任ある使用
-      href: /legal/cognitive-services/qnamaker/guidance-integration-responsible-use-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
-    - name: データ、プライバシー、セキュリティ
-      href: /legal/cognitive-services/qnamaker/data-privacy-security-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
+        - name: マルチターン プロンプトを使用してガイド付きの会話を作成する
+          href: Tutorials/guided-conversations.md
+        - name: ボットに複数のドメインを追加する
+          href: Tutorials/create-faq-bot-for-multiple-domains.md
+        - name: アクティブ ラーニングを使用してナレッジ ベースを強化する
+          href: Tutorials/active-learning.md
+        - name: 複数の言語のナレッジ ベースを追加する
+          href: Tutorials/multiple-languages.md
+        - name: 同意語を追加して関連性を向上させる
+          href: Tutorials/adding-synonyms.md
 - name: リファレンス
   items:
-    - name: 言語のサポート
-      href: Overview/language-support.md
-    - name: 制限
-      href: limits.md
-    - name: 信頼度スコア
-      href: Concepts/confidence-score.md
-    - name: トラブルシューティング
-      href: troubleshooting.md
-    - name: セキュリティで保護された SharePoint ファイルの追加
-      href: How-To/add-sharepoint-datasources.md
-      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-    - name: サービス構成
-      href: reference-app-service.md
-    - name: コンテンツ形式のガイドライン
-      href: reference-document-format-guidelines.md
-    - name: 表示形式
-      href: reference-markdown-format.md
-    - name: プライベート リンク
-      href: reference-private-endpoint.md
-    - name: Batch のテスト形式
-      href: reference-tsv-format-batch-testing.md
-    - name: 暗号化
-      href: encrypt-data-at-rest.md
-    - name: REST API リファレンス
+    - name: REST API
       items:
         - name: QnA Maker 4.0
           href: /rest/api/cognitiveservices/qnamaker4.0/alterations
@@ -196,6 +187,27 @@
           items:
             - name: Gem
               href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
+    - name: 制限
+      href: limits.md
+    - name: 信頼度スコア
+      href: Concepts/confidence-score.md
+    - name: トラブルシューティング
+      href: troubleshooting.md
+    - name: セキュリティで保護された SharePoint ファイルの追加
+      href: How-To/add-sharepoint-datasources.md
+      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: サービス構成
+      href: reference-app-service.md
+    - name: コンテンツ形式のガイドライン
+      href: reference-document-format-guidelines.md
+    - name: 表示形式
+      href: reference-markdown-format.md
+    - name: プライベート リンク
+      href: reference-private-endpoint.md
+    - name: Batch のテスト形式
+      href: reference-tsv-format-batch-testing.md
+    - name: 暗号化
+      href: encrypt-data-at-rest.md
 - name: リソース
   items:
     - name: エンタープライズ対応
@@ -208,11 +220,11 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 料金と制限
-      href: 'https://aka.ms/qnamaker-pricing'
     - name: 検索
       href: /search/index?search=QnAMaker
     - name: ブログ
       href: 'https://blog.botframework.com/category/QnAMaker/'
+    - name: プライバシーと Cookie
+      href: 'https://privacy.microsoft.com/privacystatement'
 - name: QnA Maker ポータル
   href: 'https://www.qnamaker.ai'

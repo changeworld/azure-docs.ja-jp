@@ -1,18 +1,18 @@
 ---
 title: Azure App Configuration を使用して Spring Boot に機能フラグを追加するためのクイックスタート
 description: Spring Boot アプリに機能フラグを追加し、Azure App Configuration を使用して管理する
-author: AlexandraKemperMS
+author: mrm9084
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 08/06/2020
-ms.author: alkemper
+ms.date: 06/25/2021
+ms.author: mametcal
 ms.custom: devx-track-java
-ms.openlocfilehash: e931b974fc48d07237b2698e7782c48be20745d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f683f570fe085753f1ebd81b859b86f70b1e9e49
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96930716"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037744"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -58,18 +58,16 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 1. テキスト エディターで *pom.xml* ファイルを開き、`<dependencies>` の一覧に以下を追加します。
 
-    **Spring Cloud 1.1.x**
-
     ```xml
     <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-        <version>1.1.5</version>
+        <groupId>com.azure.spring</groupId>
+        <artifactId>azure-spring-cloud-appconfiguration-config-web</artifactId>
+        <version>2.0.0-beta.2</version>
     </dependency>
     <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.5</version>
+        <groupId>com.azure.spring</groupId>
+        <artifactId>azure-spring-cloud-feature-management-web</artifactId>
+        <version>2.0.0</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -77,27 +75,9 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     </dependency>
     ```
 
-    **Spring Cloud 1.2.x**
-
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-        <version>1.2.7</version>
-    </dependency>
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.7</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    ```
-
-> [!Note]
-> Spring Web に依存しない非 Web 機能管理ライブラリが存在します。 相違点については、GitHub の[ドキュメント](https://github.com/microsoft/spring-cloud-azure)を参照してください。
+> [!NOTE]
+> * 旧版の Spring Boot をサポートする必要がある場合、[以前のアプリ構成ライブラリ](https://github.com/Azure/azure-sdk-for-java/blob/spring-cloud-starter-azure-appconfiguration-config_1.2.9/sdk/appconfiguration/spring-cloud-starter-azure-appconfiguration-config/README.md) ページと[以前の機能フラグ ライブラリ](https://github.com/Azure/azure-sdk-for-java/blob/spring-cloud-starter-azure-appconfiguration-config_1.2.9/sdk/appconfiguration/spring-cloud-azure-feature-management/README.md) ページを参照してください。
+> * Spring Web に依存しない非 Web 機能管理ライブラリが存在します。 相違点については、GitHub の[ドキュメント](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/appconfiguration/azure-spring-cloud-feature-management)を参照してください。
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
@@ -163,7 +143,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     import org.springframework.stereotype.Controller;
     import org.springframework.ui.Model;
 
-    import com.microsoft.azure.spring.cloud.feature.manager.FeatureManager;
+    import com.azure.spring.cloud.feature.manager.FeatureManager;
     import org.springframework.web.bind.annotation.GetMapping;
 
 

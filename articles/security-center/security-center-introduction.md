@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: fb505c42cda53db549cd5187972ad6fabfdf7ca4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b700cd6a9b17abcd86cfb31b1d2c65fefe226d79
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137095"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237392"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -64,11 +64,11 @@ Azure Security Center を使用すると、セキュリティ体制を強化で�
 
 これは、ワークロードがセキュリティで保護されていることを把握し、確実にするための基本的なセキュリティです。まず、セキュリティ ポリシーを適切に調整して配置することから始めます。 Security Center のすべてのポリシーは Azure Policy 制御を基礎にして構築されているため、**世界レベルのポリシー ソリューション** のすべての範囲と柔軟性を利用できます。 Security Center では、管理グループ、サブスクリプション全体、さらにはテナント全体に対して実行するようにポリシーを設定できます。
 
-:::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="ポリシー管理ページ":::
+:::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="ポリシー管理ページ。":::
 
 Security Center を使用すると、**シャドウ IT のサブスクリプションを特定する** ことができます。 ダッシュボードで **未カバー** のラベルが付いたサブスクリプションを見ると、新しくサブスクリプションが作成されたときにすぐに把握できます。また、ポリシーによって保護され、Azure Security Center によって保護されていることを確認できます。
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Security Center のポリシー ダッシュボード":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Security Center のポリシー ダッシュボード。":::
 
 ### <a name="continuous-assessments"></a>継続的な評価
 
@@ -76,13 +76,13 @@ Security Center では、ワークロード全体に展開されている新し�
 
 Security Center では、全体的なセキュリティ体制に対する各推奨事項の重要度が理解しやすいよう、推奨事項がセキュリティ コントロールにグループ化され、各コントロールには **セキュア スコア** 値が追加されます。 これは、**セキュリティ作業の優先度付け** を可能にするうえで重要です。
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center のセキュア スコア":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center のセキュア スコア。":::
 
 ### <a name="network-map"></a>ネットワーク マップ
 
 ネットワークのセキュリティ状態を継続的に監視するために Security Center に用意されている最も強力なツールの 1 つとして、**ネットワーク マップ** があります。 このマップを使用すると、ワークロードのトポロジを確認できるため、各ノードが正しく構成されているかどうかを確認できます。 ノードがどのように接続されているかを確認できます。これにより、攻撃者がネットワークに侵入しやすくなる可能性がある望ましくない接続をブロックすることができます。
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center のネットワーク マップ":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center のネットワーク マップ。":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>推奨されるコントロールを構成してセキュリティを最適化し、強化する
@@ -93,7 +93,7 @@ Azure Security Center が持つ価値の中心は、その推奨事項にあり�
 
 推奨事項を利用すると、各リソースの攻撃対象領域を減らすことができます。 これには、Azure 仮想マシン、Azure 以外のサーバー、SQL や Storage アカウントなどの Azure PaaS サービスなどが含まれます。リソースの種類によって評価方法は異なり、固有の基準があります。
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Security Center の推奨事項例":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Security Center の推奨事項例。":::
 
 ## <a name="protect-against-threats"></a>脅威からの保護
 

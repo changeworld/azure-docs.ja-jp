@@ -11,12 +11,12 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: 89123da71dc47d3fb302ab6c82e26baf3df94357
-  ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+  ms.openlocfilehash: 98e0983c84e543dd67301f057cb3f50e8f66d441
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/09/2021
-  ms.locfileid: "111757627"
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113033355"
 landingContent:
 - title: Azure Virtual Desktop について
   linkLists:
@@ -52,17 +52,19 @@ landingContent:
       url: ./virtual-desktop-fall-2019/create-validation-host-pool-2019.md
     - text: サービス アラートを設定する
       url: ./virtual-desktop-fall-2019/set-up-service-alerts-2019.md
-- title: Azure Virtual Desktop へ接続する
+- title: ユーザー向けの Azure Virtual Desktop
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Windows デスクトップ クライアント
-      url: connect-windows-7-10.md
-    - text: Web クライアント
-      url: connect-web.md
-    - text: Android クライアント
-      url: connect-android.md
-    - text: macOS クライアント
-      url: connect-macos.md
-    - text: iOS クライアント
-      url: connect-ios.md
+    - text: Windows Desktop を使用して接続する
+      url: ./user-documentation/connect-windows-7-10.md
+    - text: Web クライアントに接続する
+      url: ./user-documentation/connect-web.md
+    - text: Android を使用して接続する
+      url: ./user-documentation/connect-android.md
+    - text: macOS を使用して接続する
+      url: ./user-documentation/connect-macos.md
+    - text: iOS を使用して接続する
+      url: ./user-documentation/connect-ios.md
+    - text: Linux またはシン クライアントを使用して接続する
+      url: ./user-documentation/linux-overview.md

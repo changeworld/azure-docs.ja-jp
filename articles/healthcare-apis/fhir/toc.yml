@@ -166,6 +166,8 @@
       items:
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
+        - name: Azure API for FHIR の自動スケーリング
+          href: autoscale-azure-api-fhir.md
 - name: リソース
   items:
     - name: よく寄せられる質問

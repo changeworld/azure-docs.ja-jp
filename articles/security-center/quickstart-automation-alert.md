@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 1214cfaa0d534edc47cdcadd98ab0a3ead4d2f46
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 856cef0da55b12e808565d25ffe2ac92db4762eb
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985636"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238128"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して特定のセキュリティ アラートへの自動応答を作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "111985636"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.security%2fsecuritycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
+[![Azure にデプロイする。](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.security%2fsecuritycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ Azure Security Center のワークフロー自動化機能を使用するため�
 
 - **ポータル**:
 
-  [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.security%2fsecuritycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
+  [![Azure にデプロイする。](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.security%2fsecuritycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
   このデプロイ オプションの詳細については、「[デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする](../azure-resource-manager/templates/deploy-to-azure-button.md)」をご覧ください。
 
@@ -73,7 +73,7 @@ Azure portal を使用して、ワークフローの自動化がデプロイさ�
 1. [Azure portal](https://portal.azure.com) から **Security Center** を開きます。
 1. 上部のメニュー バーからフィルター アイコンを選択し、新しいワークフロー自動化をデプロイした特定のサブスクリプションを選択します。
 1. Security Center のサイドバーから **[ワークフローの自動化]** を開き、新しい自動化を確認します。
-    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="構成済みの自動化の一覧" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="構成済みの自動化の一覧。" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > サブスクリプションに多数のワークフロー自動化がある場合は、 **[名前でフィルター]** オプションを使用します。
 
@@ -84,7 +84,7 @@ Azure portal を使用して、ワークフローの自動化がデプロイさ�
 1. [Azure portal](https://portal.azure.com) から **Security Center** を開きます。
 1. 上部のメニュー バーからフィルター アイコンを選択し、新しいワークフロー自動化をデプロイした特定のサブスクリプションを選択します。
 1. Security Center のサイドバーから **[ワークフローの自動化]** を開き、削除する自動化を見つけます。
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="ワークフローの自動化を削除する手順" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="ワークフローの自動化を削除する手順。" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. 削除する項目のチェック ボックスをオンにします。
 1. ツール バーから **[削除]** を選択します。
 

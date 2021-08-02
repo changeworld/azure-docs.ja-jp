@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
 ms.date: 06/07/2021
-ms.openlocfilehash: 4f7900c4abc37df776c231ac9d70a09862f6d49f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: bc8449950134ba8c247c57df06b7495a48558def
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748403"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238580"
 ---
 # <a name="quickstart-enable-azure-defender"></a>クイックスタート: Azure Defender を有効にする
 
@@ -54,14 +54,14 @@ Azure Defender を使用して Azure サブスクリプション全体を保護�
 
         **[アップグレード]** タブに、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。
 
-        :::image type="content" source="./media/enable-azure-defender/get-started-upgrade-tab.png" alt-text="[はじめに] ページの [アップグレード] タブ"::: 
+        :::image type="content" source="./media/enable-azure-defender/get-started-upgrade-tab.png" alt-text="[はじめに] ページの [アップグレード] タブ。"::: 
 
     1. **[Azure Defender を有効にするサブスクリプションとワークスペースを選択してください]** ボックスの一覧で、アップグレードするサブスクリプションとワークスペースを選択し、 **[アップグレード]** を選択して Azure Defender を有効にします。
 
        - 試用版の対象にならないサブスクリプションやワークスペースを選択した場合、次の手順でそれらがアップグレードされ、課金が開始されます。
        - 無料試用版の対象となるワークスペースを選択した場合、次の手順で試用版が開始されます。
 
-        :::image type="content" source="./media/enable-azure-defender/upgrade-selected-workspaces-and-subscriptions.png" alt-text="[作業の開始] ページから、選択したすべてのワークスペースとサブスクリプションをアップグレードする":::
+        :::image type="content" source="./media/enable-azure-defender/upgrade-selected-workspaces-and-subscriptions.png" alt-text="[作業の開始] ページから、選択したすべてのワークスペースとサブスクリプションをアップグレードする。":::
 
 
 ## <a name="disable-azure-defender"></a>Azure Defender を無効にする
@@ -72,13 +72,13 @@ Azure Defender を使用して Azure サブスクリプション全体を保護�
 1. 関連するサブスクリプションを選択します。
 1. サブスクリプションで Azure Defender が有効になっている場合は、**Azure Defender プラン** を開き、 **[Azure Defender off]\(Azure Defender をオフ\)** を選択します。
 
-    :::image type="content" source="./media/enable-azure-defender/disable-plans.png" alt-text="Azure Defender を有効または無効にする":::
+    :::image type="content" source="./media/enable-azure-defender/disable-plans.png" alt-text="Azure Defender を有効または無効にする。":::
 
 1. **[保存]** を選択します。
 
 > [!NOTE]
 > Azure Defender を無効にすると、1 つのプランを無効にしたか、すべてのプランを一度に無効にしたかどうかに関係なく、データ収集が短時間継続される場合があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Defender を有効にしたので、[エージェントと拡張機能の自動プロビジョニング](security-center-enable-data-collection.md)で説明されている、必要なエージェントと拡張機能による自動データ収集を有効にします。

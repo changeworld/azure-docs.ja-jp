@@ -7,12 +7,12 @@ ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 563d8f3035eb889a2b9d25d563ef57373e4e3aff
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 8721b9d25ce8d512dae31352db343af6385dadda
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537176"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005530"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -42,7 +42,7 @@ AWS アカウントを Security Center にオンボードすると、AWS Securit
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者**<br>所有者がサービス プリンシパルの詳細を提供する場合は、**共同作成者** も AWS アカウントに接続できます|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) National/Sovereign (US Gov、Azure China)|
 |||
 
 
@@ -73,7 +73,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 
 #### <a name="create-an-iam-role-for-security-center"></a>Security Center の IAM ロールを作成する
 1. アマゾン ウェブ サービス コンソールの **[セキュリティ、アイデンティティ、コンプライアンス]** の **[IAM]** を選択します。
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS サービス":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS サービス。":::
 
 1. **[ロール]** 、 **[ロールの作成]** の順に選択します。
 1. **[別の AWS アカウント]** を選択します。
@@ -138,7 +138,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
     1. サブスクリプションが正しいことを確認します。 これは、コネクタと AWS Security Hub の推奨事項が追加されるサブスクリプションです。
     1. 「[手順 2. AWS で Security Center に対する認証を設定する](#step-2-set-up-authentication-for-security-center-in-aws)」で選択した認証オプションに応じて、次の操作を行います。
         - **[Assume Role]\(ロールを想定\)** を選択し、「[Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます。
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Azure portal で AWS 接続ウィザードの関連フィールドに ARN ファイルを貼り付ける":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Azure portal で AWS 接続ウィザードの関連フィールドに ARN ファイルを貼り付ける。":::
 
             OR
 

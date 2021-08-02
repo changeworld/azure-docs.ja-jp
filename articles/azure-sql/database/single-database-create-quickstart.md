@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: 51c7f4fe8a82e1960e51312d8d806cbff5ba0a0c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 98d692c304c4d25412dcaf26fd0779b1b446e252
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693078"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218063"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
@@ -27,6 +27,7 @@ ms.locfileid: "110693078"
 ## <a name="prerequisite"></a>前提条件
 
 - 有効な Azure サブスクリプション アカウントがない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+- 選択した作成方法に基づき、[Azure PowerShell](/powershell/azure/install-az-ps) か [Azure CLI](/cli/azure/install-azure-cli-windows) の最新版が必要になることがあります。 
 
 ## <a name="create-a-single-database"></a>単一データベースを作成する
 
