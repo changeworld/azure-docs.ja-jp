@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b23b4a60795dc01667df3c6a9efa8e9cde4aeda9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92369813"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409903"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
@@ -30,7 +30,7 @@ ms.locfileid: "92369813"
 これらの課題を受けて、Azure AD はグループベース ライセンス機能が搭載されました。 この機能により、1 つのグループに 1 つ以上の製品ライセンスを割り当てることができます。 グループに含まれるメンバー全員に、Azure AD からライセンスが割り当てられるようになります。 新しいメンバーがグループに参加すると、適切なライセンスが割り当てられます。 グループから抜けると、割り当てられていたライセンスが削除されます。 このライセンス管理により、組織や部門の構造におけるユーザー単位の変化を反映するように、PowerShell でライセンス管理を自動化する必要はなくなります。
 
 ## <a name="licensing-requirements"></a>ライセンスの要件
-グループベースのライセンスを使用するには、次のいずれかのライセンスが必要です。
+グループ ベースのライセンスの **恩恵を受けるすべてのユーザーそれぞれに** 対して、次のいずれかのライセンスが必要です。
 
 - Azure AD Premium P1 以上の有料または試用版のサブスクリプション
 

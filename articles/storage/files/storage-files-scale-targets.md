@@ -4,15 +4,15 @@ description: Azure Files のスケーラビリティとパフォーマンスの�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 05/28/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bdcee6b8ced45dba34309724e5a634cbb60a6d37
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 78ecf275a9c607273aef16e6351224709f230959
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818820"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690534"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 [Azure Files](storage-files-introduction.md) はクラウドで、SMB および NFS ファイル システム プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、Azure Files と Azure File Sync のスケーラビリティとパフォーマンスのターゲットについて説明します。
@@ -35,7 +35,7 @@ Azure では、お客様のさまざまなストレージ シナリオに対し�
 | ストレージ アカウントの最大容量 | 5 PiB<sup>1</sup> | 100 TiB (プロビジョニング済み) |
 | 最大ファイル共有数 | 無制限 | 無制限、すべての共有の合計プロビジョニング済みサイズは、ストレージ アカウントの最大容量よりも少なくする必要があります |
 | 最大同時要求レート | 20,000 IOPS<sup>1</sup> | 100,000 IOPS |
-| 最大イングレス | <ul><li>US/Europe: 9,536 MiB/秒<sup>1</sup></li><li>その他のリージョン (LRS/ZRS): 9536 MiB/秒<sup>1</sup></li><li>その他のリージョン (GRS): 4,768 GiB/秒<sup>1</sup></li></ul> | 4,136 MiB/秒 |
+| 最大イングレス | <ul><li>US/Europe: 9,536 MiB/秒<sup>1</sup></li><li>その他のリージョン (LRS/ZRS): 9536 MiB/秒<sup>1</sup></li><li>その他のリージョン (GRS): 4,768 MiB/秒<sup>1</sup></li></ul> | 4,136 MiB/秒 |
 | 最大エグレス | 47,683 MiB/秒<sup>1</sup> | 6,204 MiB/秒 |
 | 仮想ネットワーク規則の最大数 | 200 | 200 |
 | IP アドレス規則の最大数 | 200 | 200 |

@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 76d81aa92643002bc5cd2b8859941af8e7440c87
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579365"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421870"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -143,9 +143,14 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 > [!NOTE]
 >
-> [上記](#step-1-generate-and-download-script-to-browse-and-recover-files)の手順 1 でダウンロードしたスクリプト ファイルには、ファイルの名前に **geo-name** が含まれています。 その **geo-name** を使用して、URL を置き換えます。 ダウンロードしたスクリプトの名前は次で始まります:\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
-> そのため、たとえば、スクリプト ファイル名が *ContosoVM_wcus_12345678* の場合、**geo-name** は *wcus* であるため、URL は次のようになります:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
+> バックアップされた VM が Windows の場合、生成されたパスワードに geo 名が示されます。<br><br>
+> たとえば、生成されたパスワードが *ContosoVM_wcus_GUID* の場合、geo 名は wcus で、URL は <https://pod01-rec2.wcus.backup.windowsazure.com> になります。<br><br>
 >
+>
+> バックアップ VM が Linux の場合、[上記](#step-1-generate-and-download-script-to-browse-and-recover-files)の手順 1 でダウンロードしたスクリプト ファイルには、ファイルの名前に **geo-name** が含まれています。 その **geo-name** を使用して、URL を置き換えます。 ダウンロードしたスクリプトの名前は次で始まります:\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
+> そのため、たとえば、スクリプト ファイル名が *ContosoVM_wcus_12345678* の場合、**geo-name** は *wcus* であるため、URL は次のようになります:<https://pod01-rec2.wcus.backup.windowsazure.com><br><br>
+>
+
 
 Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するコンピューターに目的のコンポーネントが存在しない場合は、コンポーネントをインストールするためのアクセス許可をスクリプトから求められます。 同意して、必要なコンポーネントをインストールします。
 

@@ -1,22 +1,23 @@
 ---
-title: Azure Image Builder テンプレートを作成する (プレビュー)
+title: Azure Image Builder テンプレートを作成する
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
-author: danielsollondon
-ms.author: danis
-ms.date: 05/04/2021
+author: kof-f
+ms.author: kofiforson
+ms.date: 05/24/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 94083c8811d92d05a68295f9ac75f38123b3f771
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 07dfd9eb2dab9ae8c7e7a024bbf09c641e0910e4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732598"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967237"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
+# <a name="create-an-azure-image-builder-template"></a>Azure Image Builder テンプレートを作成する 
 
 Azure Image Builder では、.json ファイルを使って Image Builder サービスに情報を渡します。 この記事では、独自のテンプレートを作成できるように、json ファイルの各セクションについて説明します。 完全な .json ファイルの例を確認するには、[Azure Image Builder の GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts) をご覧ください。
 
@@ -55,7 +56,7 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
 
 ## <a name="type-and-api-version"></a>種類と API のバージョン
 
-`type` はリソースの種類であり、`"Microsoft.VirtualMachineImages/imageTemplates"` にする必要があります。 `apiVersion` は API の変化に合わせて時間と共に変わりますが、プレビューでは `"2020-02-14"` にする必要があります。
+`type` はリソースの種類であり、`"Microsoft.VirtualMachineImages/imageTemplates"` にする必要があります。 `apiVersion` は、API の変更に伴って経時的に変わりますが、現時点では `"2020-02-14"` にする必要があります。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -64,18 +65,16 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
 
 ## <a name="location"></a>場所
 
-location は、カスタム イメージを作成するリージョンです。 Image Builder プレビューでは、次のリージョンがサポートされています。
+location は、カスタム イメージを作成するリージョンです。 次のリージョンがサポートされています。
 
 - 米国東部
 - 米国東部 2
 - 米国中西部
 - 米国西部
 - 米国西部 2
+- 米国中南部
 - 北ヨーロッパ
 - 西ヨーロッパ
-- 米国中南部
-
-近日公開予定 (2021 年中旬):
 - 東南アジア
 - オーストラリア南東部
 - オーストラリア東部
@@ -89,21 +88,23 @@ location は、カスタム イメージを作成するリージョンです。 
 ### <a name="data-residency"></a>データ所在地
 Azure VM Image Builder サービスでは、顧客が単一リージョンのデータ所在地の要件が厳しいリージョンでの構築を要求した場合に、そのリージョンの外部に顧客のデータが保存されたり、外部で処理されたりすることはありません。 データ所在地の要件が設けられているリージョンでサービスが停止した場合は、別のリージョンや地域にテンプレートを作成する必要があります。
 
+### <a name="zone-redundancy"></a>ゾーン冗長
+配布ではゾーン冗長がサポートされており、VHD は既定でゾーン冗長ストレージ アカウントに配布されます。Shared Image Gallery バージョンでは、[ZRS ストレージ](../disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview) がサポートされます (指定されている場合)。
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
-既定では、Image Builder では "Standard_D1_v2" ビルド VM が使用され、`source` で指定したイメージから構築されます。 これはオーバーライド可能で、次の理由から行う場合があります:
+既定では、Image Builder では "Standard_D1_v2" ビルド VM が使用されます。これは、`source` で指定したイメージから構築されます。 これはオーバーライド可能で、次の理由から行う場合があります:
 1. より大きなメモリや CPU、および大きなファイル (GB) の処理が必要なカスタマイズの実行。
 2. Windows ビルドの実行。"Standard_D2_v2" または同等の VM サイズを使用する必要があります。
-3. [VM の分離](https://docs.microsoft.com/azure/virtual-machines/isolation)が必要。
+3. [VM の分離](../isolation.md)が必要。
 4. 特定のハードウェアを必要とするイメージのカスタマイズ (GPU VM の場合は GPU VM サイズが必要になるなど)。 
-5. ビルド VM の残りの部分でエンド ツー エンドの暗号化が必要。ローカル一時ディスクを使用しないサポート ビルド [VM](https://docs.microsoft.com/azure/virtual-machines/azure-vms-no-temp-disk) サイズを指定する必要があります。
+5. ビルド VM の残りの部分でエンド ツー エンドの暗号化が必要。ローカル一時ディスクを使用しないサポート ビルド [VM](../azure-vms-no-temp-disk.md) サイズを指定する必要があります。
  
 これは省略可能です。
 
 
 ## <a name="proxy-vm-size"></a>プロキシ VM サイズ
-プロキシ VM は、Azure Image Builder Service とビルド VM の間でコマンドを送信するために使用されます。これは、既存の VNET を指定するときにのみ展開されます。詳細については、ネットワーク オプションに関する[ドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking#why-deploy-a-proxy-vm)を参照してください。
+プロキシ VM は、Azure Image Builder Service とビルド VM の間でコマンドを送信するために使用されます。これは、既存の VNET を指定するときにのみ展開されます。詳細については、ネットワーク オプションに関する[ドキュメント](image-builder-networking.md#why-deploy-a-proxy-vm)を参照してください。
 ```json
  {
     "proxyVmSize": "Standard A1_v2"
@@ -142,7 +143,7 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
     "dependsOn": [],
 ```
 
-詳しくは、「[リソースの依存関係を定義する](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)」をご覧ください。
+詳しくは、「[リソースの依存関係を定義する](../../azure-resource-manager/templates/resource-dependency.md#dependson)」をご覧ください。
 
 ## <a name="identity"></a>ID
 
@@ -177,7 +178,7 @@ API ではイメージ ビルド用のソースを定義する "SourceType" が�
 
 
 > [!NOTE]
-> 既存の Windows カスタム イメージを使用する場合は、単一の Windows イメージで Sysprep コマンドを最大で 8 回実行できます。詳細については、[sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) に関するドキュメントを参照してください。
+> 既存の Windows カスタム イメージを使用する場合、1 つの Windows 7 または Windows Server 2008 R2 イメージで Sysprep コマンドを最大 3 回実行できます。それ以降のバージョンでは、1 つの Windows イメージで最大 1001 回実行できます。詳細については、[sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) のドキュメントを参照してください。
 
 ### <a name="platformimage-source"></a>PlatformImage ソース 
 Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](../image-builder-overview.md#os-support)を参照してください。 
@@ -303,7 +304,7 @@ customize セクションは配列です。 Azure Image Builder では、カス�
  
 ### <a name="shell-customizer"></a>シェル カスタマイザー
 
-シェル カスタマイザーではシェル スクリプトの実行がサポートされ、スクリプトは IB がアクセスできるようにパブリックにアクセス可能である必要があります。
+シェル カスタマイザーでは、シェル スクリプトの実行がサポートされています。 シェル スクリプトには、パブリックにアクセスできる必要があります。または、Image Builder からアクセスするには、[MSI](./image-builder-user-assigned-identity.md) が構成されている必要があります。
 
 ```json
     "customize": [ 
@@ -421,7 +422,7 @@ OS のサポート: Windows と Linux
 
 ### <a name="file-customizer"></a>ファイル カスタマイザー
 
-ファイル カスタマイザーを使うと、Image Builder で GitHub または Azure Storage からファイルをダウンロードできます。 ビルド成果物に依存するイメージ ビルド パイプラインがある場合、ファイル カスタマイザーを設定して、成果物をビルド共有からダウンロードし、イメージに移動することができます。  
+ファイル カスタマイザーを使用すると、Image Builder で GitHub リポジトリまたは Azure Storage からファイルをダウンロードできます。 ビルド成果物に依存するイメージ ビルド パイプラインがある場合は、ファイル カスタマイザーを設定して、成果物をビルド共有からダウンロードし、イメージに移動できます。  
 
 ```json
      "customize": [ 
@@ -450,14 +451,14 @@ OS のサポート: Linux、Windows
 - Linux OS – Image builder で書き込むことができる唯一のパスは /tmp です。
 - Windows – パスの制限はありませんが、パスが存在する必要があります。
  
- 
-ファイルのダウンロードまたは指定されたディレクトリへの格納を行おうとしてエラーが発生した場合、そのカスタマイズ ステップは失敗し、customization.log にそれが記録されます。
+
+ファイルのダウンロードや指定されたディレクトリへの配置を試みたときにエラーが発生した場合、カスタマイズ ステップは失敗し、customization.log にそれが記録されます。
 
 > [!NOTE]
-> ファイル カスタマイザーは、小さいファイルのダウンロード (20 MB 未満) にのみ適しています。 大きいファイルをダウンロードする場合は、スクリプトまたはインライン コマンド (ファイルをダウンロードするための使用コード) を使用します。たとえば、Linux の場合は `wget` または `curl`、Windows の場合は `Invoke-WebRequest` などがあります。
+> ファイル カスタマイザーは、小さいファイルのダウンロード (20 MB 未満) にのみ適しています。 大きいファイルをダウンロードする場合は、スクリプトまたはインライン コマンドを使用してから、ファイルをダウンロードするコード (Linux の `wget` または `curl`、Windows の `Invoke-WebRequest` など) を使用します。
 
 ### <a name="windows-update-customizer"></a>Windows Update カスタマイザー
-このカスタマイザーは、Packer の[コミュニティ Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) に基づいて構築されたオープン ソース プロジェクトで、Packer コミュニティによって管理されています。 Microsoft では、Image Builder サービスを使ってプロビジョナーをテストおよび検証し、問題の調査を支援して、解決に取り組んでいきますが、正式にはこのオープン ソース プロジェクトをサポートしていません。 Windows Update Provisioner の詳細なドキュメントとヘルプについては、プロジェクトのリポジトリを参照してください。
+このカスタマイザーは、Packer の[コミュニティ Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) に基づいて構築されたオープン ソース プロジェクトで、Packer コミュニティによって管理されています。 Microsoft では、Image Builder サービスを使ってプロビジョナーをテストおよび検証し、問題の調査を支援して、解決に取り組んでいきますが、正式にはこのオープン ソース プロジェクトをサポートしていません。 Windows Update Provisioner の詳細なドキュメントとヘルプについては、プロジェクト リポジトリを参照してください。
 
 ```json
      "customize": [
@@ -471,10 +472,11 @@ OS のサポート: Linux、Windows
                 "updateLimit": 20
             }
                ], 
-OS support: Windows
 ```
 
-カスタマイズのプロパティ:
+OS のサポート: Windows
+
+カスタマイザーのプロパティ:
 - **type**  – WindowsUpdate。
 - **searchCriteria** - 省略可能。インストールされている更新プログラムの種類を定義します (推奨、重要 など)。既定値は、BrowseOnly=0 and IsInstalled=0 (推奨) です。
 - **filters** – 省略可能。更新プログラムを含めるか除外するフィルターを指定できます。

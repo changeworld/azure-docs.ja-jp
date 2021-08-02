@@ -3,12 +3,12 @@ title: Azure Lab Services のラボの使用設定を構成する
 description: ラボの学生数の構成、学生のラボへの登録、学生が VM を使用できる時間数の制御などを行う方法について説明します。
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7c0fb7b0228ee17705af2dfd70279f6fc7bda3c
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791965"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190718"
 ---
 # <a name="add-and-manage-lab-users"></a>ラボ ユーザーを追加および管理する
 
@@ -156,6 +156,9 @@ CSV テキスト ファイルは、コンマ区切り (CSV) の表形式デー�
     **[ユーザー]** ウィンドウには、ラボに登録した学生の一覧が表示されます。  
 
     ![登録されたユーザーの一覧](./media/tutorial-track-usage/registered-users.png)
+
+    > [!NOTE] 
+    > [ラボを再発行する](how-to-create-manage-template.md#publish-the-template-vm)か[学生の VM をリセットした](how-to-set-virtual-machine-passwords.md#reset-vms)場合、学生はラボの VM に登録されたままになります。  ただし、VM のコンテンツは削除され、VM はテンプレート VM のイメージを使用して再作成されます。
 
 ## <a name="set-quotas-for-users"></a>ユーザーのクォータを設定する
 

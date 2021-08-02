@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 15386baa369b18678ef84ebed8144d358fa8177f
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565918"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839367"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>トラステッド起動を有効にして VM をデプロイする (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "107565918"
 
 > [!IMPORTANT]
 > トラステッド起動は、現在パブリック プレビュー段階にあります。
-> 
+>
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 >
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
@@ -32,23 +32,23 @@ ms.locfileid: "107565918"
 トラステッド起動を有効にして仮想マシンを作成します。
 
 1. Azure [Portal](https://aka.ms/TL_preview) にサインインします。
-   > [!NOTE] 
+   > [!NOTE]
    > ポータルのリンクは、トラステッド起動プレビューに固有のものです。
-   >  
+   >
 2. 「**仮想マシン**」を検索します。
 3. **[サービス]** で、 **[仮想マシン]** を選択します。
 4. **[仮想マシン]** ページで、 **[追加]** を選択してから、 **[仮想マシン]** を選択します。
 5. **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
 6. **[リソース グループ]** で **[新規作成]** を選択し、リソース グループの名前を入力するか、ドロップダウンから既存のリソース グループを選択します。
 7. **[インスタンスの詳細]** で、仮想マシンの名前を入力し、[トラステッド起動](trusted-launch.md#public-preview-limitations)がサポートされているリージョンを選択します。
-8. **[イメージ]** で、Gen 2 の[トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 次のメッセージが表示されていることを確認します: **This image supports trusted launch preview. Configure in the Advanced tab. (このイメージは、トラステッド起動のプレビューをサポートしています。[詳細設定] タブで設定してください。)**
+8. **[イメージ]** で、Gen 2 の [トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 次のメッセージが表示されていることを確認します: **This image supports trusted launch preview. Configure in the Advanced tab. (このイメージは、トラステッド起動のプレビューをサポートしています。[詳細設定] タブで設定してください。)**
    > [!TIP]
    > ドロップダウンに目的の Gen 2 バージョンのイメージが表示されない場合は、 **[すべてのイメージを表示]** を選択し、 **[VM 生成]** フィルターを変更して Gen 2 のイメージのみを表示するようにします。 一覧でイメージを見つけて、 **[選択]** ドロップダウンを使用して Gen 2 バージョンを選択します。
 
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="これがトラステッド起動をサポートする第 2 世代イメージであることを確認するメッセージを示すスクリーンショット。":::
 
 13. トラステッド起動がサポートされている VM サイズを選択します。 [サポートされているサイズ](trusted-launch.md#public-preview-limitations)の一覧を参照してください。
-14. **[管理者アカウント]** の情報を入力した後、 **[受信ポートの規則]** を指定します。 
+14. **[管理者アカウント]** の情報を入力した後、 **[受信ポートの規則]** を指定します。
 1. ページの上部にある **[詳細設定]** タブを選択してそれに切り替えます。
 1. **[VM の生成]** セクションまで下にスクロールします。 **[Gen 2]** が選択されていることを確認します。
 1. 引き続き **[詳細設定]** タブで、 **[Trusted launch]\(トラステッド起動\)** まで下にスクロールして、 **[Trusted launch]\(トラステッド起動\)** チェック ボックスをオンにします。 これにより、さらに [Secure boot]\(セキュア ブート\) と [vTPM] の 2 つのオプションが表示されるようになります。 自分のデプロイに合った適切なオプションを選択します。
@@ -61,23 +61,21 @@ ms.locfileid: "107565918"
     :::image type="content" source="media/trusted-launch/validation.png" alt-text="トラステッド起動のオプションが含まれる検証ページのスクリーンショット。":::
 
 
-VM がデプロイされるまでに数分かかります。 
+VM がデプロイされるまでに数分かかります。
 
 ## <a name="deploy-using-a-template"></a>テンプレートを使用したデプロイ
 
 クイックスタート テンプレートを使用して、トラステッド起動 VM をデプロイできます。
 
-**Linux**:    
-[![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+**Linux**: [![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
-**Windows**:    
-[![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+**Windows**: [![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>表示および更新する
 
 ポータルで VM の **[概要]** ページに移動することにより、既存の VM に対するトラステッド起動の構成を表示できます。
 
-トラステッド起動の構成を変更するには、左側のメニューで **[設定]** セクションの **[構成]** を選択します。 **[Trusted Launch]\(トラステッド起動\)** セクションでは、セキュア ブートと vTPM を有効または無効にすることができます。 終わったら、ページの上部にある **[保存]** を選択します。 
+トラステッド起動の構成を変更するには、左側のメニューで **[設定]** セクションの **[構成]** を選択します。 **[Trusted Launch]\(トラステッド起動\)** セクションでは、セキュア ブートと vTPM を有効または無効にすることができます。 終わったら、ページの上部にある **[保存]** を選択します。
 
 :::image type="content" source="media/trusted-launch/configuration.png" alt-text="トラステッド起動の構成を変更する方法のスクリーンショット。":::
 
@@ -87,24 +85,24 @@ VM が実行中の場合、トラステッド起動の変更された構成を�
 ## <a name="verify-secure-boot-and-vtpm"></a>セキュア ブートと vTPM を確認する
 
 仮想マシンでセキュア ブートと vTPM が有効になっていることを検証できます。
-    
+
 ### <a name="linux-validate-if-secure-boot-is-running"></a>Linux: セキュア ブートが実行されているかどうかを検証する
 
-VM に SSH で接続して、次のコマンドを実行します。 
+VM に SSH で接続して、次のコマンドを実行します。
 
 ```bash
 mokutil --sb-state
 ```
 
 セキュア ブートが有効になっている場合、コマンドからは次が返されます。
- 
+
 ```bash
-SecureBoot enabled 
+SecureBoot enabled
 ```
 
 ### <a name="linux-validate-if-vtpm-is-enabled"></a>Linux: vTPM が有効になっているかどうかを検証する
 
-VM に SSH で接続します。 tpm0 デバイスが存在するかどうかを調べます。 
+VM に SSH で接続します。 tpm0 デバイスが存在するかどうかを調べます。
 
 ```bash
 ls /dev/tpm0
@@ -130,7 +128,7 @@ ls: cannot access '/dev/tpm0': No such file or directory
 
 ## <a name="enable-the-azure-security-center-experience"></a>Azure Security Center のエクスペリエンスを有効にする
 
-トラステッド起動の VM に関する情報が Azure Security Center に表示されるようにするには、いくつかのポリシーを有効にする必要があります。 ポリシーを有効にする最も簡単な方法は、この [Resource Manager テンプレート](https://github.com/prash200/azure-quickstart-templates/tree/master/101-asc-trustedlaunch-policies)をサブスクリプションにデプロイすることです。 
+トラステッド起動の VM に関する情報が Azure Security Center に表示されるようにするには、いくつかのポリシーを有効にする必要があります。 ポリシーを有効にする最も簡単な方法は、この [Resource Manager テンプレート](https://github.com/prash200/azure-quickstart-templates/tree/master/101-asc-trustedlaunch-policies)をサブスクリプションにデプロイすることです。
 
 サブスクリプションにポリシーをデプロイするには、下のボタンを選択してください。
 
@@ -139,7 +137,7 @@ ls: cannot access '/dev/tpm0': No such file or directory
 テンプレートは、サブスクリプションごとに 1 回だけデプロイする必要があります。 サポートされているすべての VM に、`GuestAttestation` および `AzureSecurity` 拡張機能が自動的にインストールされます。 エラーが発生する場合は、もう一度テンプレートを再デプロイしてみてください。
 
 トラステッド起動の VM で vTPM とセキュア ブートに関する推奨事項を入手するには、[サブスクリプションへのイニシアティブの追加](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)に関するページを参照してください。
- 
+
 ## <a name="sign-things-for-secure-boot-on-linux"></a>Linux でセキュア ブートに関するものに署名する
 
 場合によっては、UEFI のセキュア ブートに関するものに署名することが必要になります。  たとえば、Ubuntu では「[How to sign things for Secure Boot](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot)」(セキュア ブートに関するものに署名する方法) の説明に従うことが必要になる場合があります。 このような場合、お使いの VM の MOK ユーティリティ登録キーを入力する必要があります。 これを行うには、Azure シリアル コンソールを使用して MOK ユーティリティにアクセスする必要があります。
@@ -152,7 +150,7 @@ ls: cannot access '/dev/tpm0': No such file or directory
 1. ログインしたら、`mokutil` を使用して公開キーの `.der` ファイルをインポートします。
 
     ```bash
-    sudo mokutil –import <path to public key.der> 
+    sudo mokutil –import <path to public key.der>
     ```
 1. 「`sudo reboot`」と入力して、Azure シリアル コンソールからマシンを再起動します。 10 秒のカウントダウンが開始されます。
 1. 上方向キーまたは下方向キーを押してカウントダウンを中断し、UEFI コンソール モードで待ちます。 タイマーを中断しないと、ブート プロセスが続行され、MOK のすべての変更が失われます。

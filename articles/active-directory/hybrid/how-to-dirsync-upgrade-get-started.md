@@ -16,15 +16,17 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa45294de4ef644c20ef66b7163706dca9759d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3278e210daf1995366ff4d18cf5a3d3d8f7b344d
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996527"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538933"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect:DirSync からのアップグレード
 Azure AD Connect は DirSync の後継のツールです。 このトピックでは、DirSync からアップグレードする方法について説明します。 以下の手順は、Azure AD Connect の別のリリースまたは Azure AD Sync からのアップグレードには使用できません。
+
+DirSync と Azure AD Sync はサポートされておらず、動作しなくなります。 これらをまだ使用している場合は、AADConnect にアップグレードして、同期プロセスを再開する必要があります。
 
 Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](how-to-connect-install-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。 特に、以下の領域は DirSync とは異なるため、確認が必要です。
 

@@ -2,13 +2,13 @@
 title: Azure Backup エージェントのトラブルシューティング
 description: この記事では、Azure Backup エージェントのインストールと登録のトラブルシューティング方法について説明します。
 ms.topic: troubleshooting
-ms.date: 07/15/2019
-ms.openlocfilehash: 8320edbe2f9f5ae495246eb26276023b1b902764
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.date: 06/04/2021
+ms.openlocfilehash: dfe0f994ee6b57aa745930aee31142c996a87e26
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324781"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954345"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -21,7 +21,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 - [MARS エージェントが最新であることを確認します](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)。
 - [MARS エージェントと Azure の間にネットワーク接続が存在することを確認します](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)。
 - MARS が (サービス コンソールで) 実行されていることを確認します。 必要な場合は、再起動して操作をやり直します。
-- [スクラッチ フォルダーの場所に 5% から 10% の空きボリューム領域があることを確認します](/azure/backup/backup-azure-file-folder-backup-faq#what-s-the-minimum-size-requirement-for-the-cache-folder-)。
+- [スクラッチ フォルダーの場所に 5% から 10% の空きボリューム領域があることを確認します](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)。
 - [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認します](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)。
 - バックアップ ジョブが警告付きで完了した場合は、「[バックアップ ジョブが警告付きで完了した](#backup-jobs-completed-with-warning)」を参照してください
 - スケジュールされたバックアップが失敗したが、手動バックアップは機能する場合は、「[バックアップがスケジュールに従って実行されない](#backups-dont-run-according-to-schedule)」を参照してください。
@@ -42,7 +42,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 | 原因 | 推奨アクション |
 | ---     | ---    |
 | **コンテナーの資格情報が有効ではありません** <br/> <br/> コンテナー資格情報ファイルが、壊れている、期限が切れている、または *.vaultCredentials* と異なるファイル拡張子を持っている可能性があります。 (たとえば、登録の時刻より 10 日間以上前にダウンロードされている可能性があります。)| Azure portal で Recovery Services コンテナーから[新しい資格情報をダウンロード](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-)します。 その後、必要に応じて次の手順に従います。 <ul><li> MARS を既にインストールして登録している場合は、Microsoft Azure Backup エージェント MMC コンソールを開きます。 次に、 **[アクション]** ウィンドウで **[サーバーの登録]** を選択して、新しい資格情報での登録を完了します。 <br/> <li> 新規インストールに失敗した場合は、新しい資格情報で再度インストールしてみてください。</ul> **注**: 複数のコンテナー資格情報ファイルがダウンロードされている場合、次の 10 日間の間は最新のファイルのみが有効になります。 新しいコンテナー資格情報ファイルをダウンロードすることをお勧めします。
-| **プロキシ サーバー/ファイアウォールによって登録がブロックされています** <br/>or <br/>**インターネットに接続されていません** <br/><br/> マシンまたはプロキシ サーバーでインターネット接続が制限されていて、必要な URL へのアクセスが許可されていない場合、登録は失敗します。| 次の手順を実行します。<br/> <ul><li> IT チームと連携して、システムでインターネットに接続できることを確認します。<li> プロキシ サーバーがない場合は、エージェントを登録するときにプロキシのオプションが選択されていないことを確認します。 [プロキシ設定を確認します](#verifying-proxy-settings-for-windows)。<li> ファイアウォール/プロキシ サーバーがある場合は、ネットワーク チームと連携して、以下の URL と IP アドレスにアクセスできることを確認します。<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP アドレス**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>上記のトラブルシューティングの手順が完了したら、もう一度登録してみてください。<br></br> Azure ExpressRoute 経由で接続している場合は、「[Azure ExpressRoute のサポート](backup-support-matrix-mars-agent.md#azure-expressroute-support)」の説明に従って設定が構成されていることを確認してください。
+| **プロキシ サーバー/ファイアウォールによって登録がブロックされています** <br/>or <br/>**インターネットに接続されていません** <br/><br/> マシンのインターネット アクセスが制限されており、ファイアウォール、プロキシ、およびネットワークの設定による FQDN とパブリック IP アドレスへのアクセスの許可が確実に行われていない場合、登録は失敗します。| 次の手順を実行します。<br/> <ul><li> IT チームと連携して、システムでインターネットに接続できることを確認します。<li> プロキシ サーバーがない場合は、エージェントを登録するときにプロキシのオプションが選択されていないことを確認します。 [プロキシ設定を確認します](#verifying-proxy-settings-for-windows)。<li> ファイアウォールまたはプロキシ サーバーがある場合は、ネットワーク チームと協力して、次の FQDN とパブリック IP アドレスへのアクセスを許可します。 下記のすべての URL と IP アドレスへのアクセスには、ポート 443 で HTTPS プロトコルが使用されます。<br/> <br> **URL**<br> `www.msftncsi.com` <br> `www.msftconnecttest.com` <br> \*.microsoft.com <br> \*.windowsazure.com <br> \*.microsoftonline.com <br>\*.windows.net<br><br>**IP アドレス**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/><li>米国政府機関のお客様の場合は、次の URL にアクセスできることを確認してください。<br><br> `www.msftncsi.com` <br> \*.microsoft.com <br> \*.windowsazure.us <br> \*.microsoftonline.us <br> `*.windows.net` <br> \*.usgovcloudapi.net</li></ul></ul>上記のトラブルシューティングの手順が完了したら、もう一度登録してみてください。<br></br> Azure ExpressRoute 経由で接続している場合は、「[Azure ExpressRoute のサポート](../backup/backup-support-matrix-mars-agent.md#azure-expressroute-support)」の説明に従って設定が構成されていることを確認してください。
 | **ウイルス対策ソフトウェアによって登録をブロックされています** | サーバーにウイルス対策ソフトウェアがインストールされている場合は、以下のファイルとフォルダーのウイルス対策スキャンに必要な除外ルールを追加します。 <br/><ul> <li> CBengine.exe <li> CSC.exe<li> スクラッチ フォルダー。 この既定の場所は C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
 ### <a name="additional-recommendations"></a>その他の推奨事項
@@ -99,7 +99,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
   | エラー コード             | 理由                                             | Recommendations                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | ファイルまたはディレクトリが壊れているため、読み取ることができません。 | ソース ボリュームで **chkdsk** を実行します。                             |
-  | 0x80070002、0x80070003 | 指定されたファイルが見つかりません。         | [スクラッチ フォルダーがいっぱいになっていないことを確認します](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  スクラッチ領域が構成されているボリュームが存在するかどうか (削除されていないかどうか) を確認します  <br><br>   [マシンにインストールされているウイルス対策から MARS エージェントが除外されていることを確認します](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070002、0x80070003 | 指定されたファイルが見つかりません。         | [スクラッチ フォルダーがいっぱいになっていないことを確認します](/azure/backup/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)  <br><br>  スクラッチ領域が構成されているボリュームが存在するかどうか (削除されていないかどうか) を確認します  <br><br>   [マシンにインストールされているウイルス対策から MARS エージェントが除外されていることを確認します](/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
   | 0x80070005             | アクセスが拒否されました                                    | [ウイルス対策ソフトまたはその他のサードパーティ製ソフトウェアによってアクセスがブロックされているかどうかを確認します](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
   | 0x8007018b             | クラウド ファイルへのアクセスが拒否されました。                | OneDrive ファイル、Git ファイル、またはコンピューター上でオフライン状態になる可能性のあるその他のファイル |
 
@@ -117,13 +117,13 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 | エラー  | 考えられる原因 | 推奨アクション |
 |---------|---------|---------|
-|<br />ライセンス認証は正常に完了しませんでした。 サービスの内部エラー [0x1FC07] が発生したため、現在の操作を実行できませんでした。 しばらくしてから操作を再試行してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。     | <li> 十分な領域のないボリュームにスクラッチ フォルダーがあります。 <li> スクラッチ フォルダーが誤って移動されました。 <li> OnlineBackup.KEK ファイルが見つかりません。         | <li>[最新バージョン](https://aka.ms/azurebackup_agent)の MARS エージェントにアップグレードしてください。<li>バックアップ データの合計サイズの 5% ～ 10% の空き領域があるボリュームに、スクラッチ フォルダーまたはキャッシュの場所を移動します。 キャッシュの場所を正しく移動する方法については、「[ファイルとフォルダーのバックアップに関する一般的な質問](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)」の手順を参照してください。<li> OnlineBackup.KEK ファイルが存在することを確認します。 <br>*スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。        |
+|<br />ライセンス認証は正常に完了しませんでした。 サービスの内部エラー [0x1FC07] が発生したため、現在の操作を実行できませんでした。 しばらくしてから操作を再試行してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。     | <li> 十分な領域のないボリュームにスクラッチ フォルダーがあります。 <li> スクラッチ フォルダーが誤って移動されました。 <li> OnlineBackup.KEK ファイルが見つかりません。         | <li>[最新バージョン](https://aka.ms/azurebackup_agent)の MARS エージェントにアップグレードしてください。<li>バックアップ データの合計サイズの 5% ～ 10% の空き領域があるボリュームに、スクラッチ フォルダーまたはキャッシュの場所を移動します。 キャッシュの場所を正しく移動する方法については、「[ファイルとフォルダーのバックアップに関する一般的な質問](/azure/backup/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)」の手順を参照してください。<li> OnlineBackup.KEK ファイルが存在することを確認します。 <br>*スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>暗号化のパスフレーズが正しく構成されていません
 
 | エラー  | 考えられる原因 | 推奨アクション |
 |---------|---------|---------|
-| <br />エラー 34506。 このコンピューター用に保存されている暗号化のパスフレーズは、正しく構成されていません。    | <li> 十分な領域のないボリュームにスクラッチ フォルダーがあります。 <li> スクラッチ フォルダーが誤って移動されました。 <li> OnlineBackup.KEK ファイルが見つかりません。        | <li>[最新バージョン](https://aka.ms/azurebackup_agent)の MARS エージェントにアップグレードしてください。<li>バックアップ データの合計サイズの 5% ～ 10% の空き領域があるボリュームに、スクラッチ フォルダーまたはキャッシュの場所を移動します。 キャッシュの場所を正しく移動する方法については、「[ファイルとフォルダーのバックアップに関する一般的な質問](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)」の手順を参照してください。<li> OnlineBackup.KEK ファイルが存在することを確認します。 <br>*スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。         |
+| <br />エラー 34506。 このコンピューター用に保存されている暗号化のパスフレーズは、正しく構成されていません。    | <li> 十分な領域のないボリュームにスクラッチ フォルダーがあります。 <li> スクラッチ フォルダーが誤って移動されました。 <li> OnlineBackup.KEK ファイルが見つかりません。        | <li>[最新バージョン](https://aka.ms/azurebackup_agent)の MARS エージェントにアップグレードしてください。<li>バックアップ データの合計サイズの 5% ～ 10% の空き領域があるボリュームに、スクラッチ フォルダーまたはキャッシュの場所を移動します。 キャッシュの場所を正しく移動する方法については、「[ファイルとフォルダーのバックアップに関する一般的な質問](/azure/backup/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)」の手順を参照してください。<li> OnlineBackup.KEK ファイルが存在することを確認します。 <br>*スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>バックアップがスケジュールに従って実行されません
 

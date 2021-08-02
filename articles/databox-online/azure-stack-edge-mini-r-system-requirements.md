@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 829f89f716a29f09f88a2e02b257aba1b207d072
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31183be893a9216f33adc4f5e25a55cfb3545db8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102634194"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099570"
 ---
 # <a name="azure-stack-edge-mini-r-system-requirements"></a>Azure Stack Edge Mini R のシステム必要条件
 
@@ -107,6 +107,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 | https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |
 | https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) | 
 | https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             | 
+| https://\*.docker.com              | StorageClass (必須)                             |
 
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure Government 用のゲートウェイの URL パターン
 

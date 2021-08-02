@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 07/06/2020
-ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/03/2021
+ms.openlocfilehash: 856a72be8e1bb69f86c2a96b8e7b57e964d26dfa
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94492091"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410245"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
@@ -30,21 +30,23 @@ ms.locfileid: "94492091"
 
 ## <a name="online-store-listing-details"></a>オンライン ストアの掲載の詳細
 
-さまざまなオンライン ストアのカテゴリと業界が、さまざまなオファーの種類に適用されます。
+次の表は、さまざまなオンライン ストア (Azure Marketplace と Microsoft AppSource) に適用できるカテゴリと業界を含むプランの種類を示しています。
 
-| オンライン ストア | Categories <br>(オンライン ストア別) | Categories <br>(オンライン ストア別) | 業界 <br> (AppSource の場合) |
+| プランの種類 | Azure Marketplace のカテゴリ | AppSource のカテゴリ | AppSource の業界 |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **オファリング タイプ**   |  **Azure Marketplace**  | **AppSource**  |
-| Azure アプリ | X | |
-| コンテナー | X | |
-| コンサルティング サービス | | | X |
-| Dynamics 365 for Customer Engagement & Power Platform | | X | X |
-| Dynamics 365 Finance & Supply Chain Management | | X | X | 
+| Azure Application     | X |   |   |
+| Azure Container       | X |   |   |
+| Azure Virtual Machine | X |   |   |
+| コンサルティング サービス    | X<sup>*</sup> |   | X<sup>*</sup> |
+| Dynamics 365 Customer Engagement および PowerApps | | X | X |
+| Dynamics 365 for Operations | | X | X |
 | Dynamics 365 Business Central | | X | X |
-| IoT Edge のモジュール | X | |
-| Power BI | | X | X |
+| IoT Edge モジュール | X | |  |
+| 管理されたサービス | X | |  |
+| Power BI アプリ | | X | X |
 | SaaS | X | X | X |
-| Azure Virtual Machine |  X |    |
+
+* このプランは、主要な製品に基づいて、関連するオンライン ストアに発行されます。 主要な製品が Azure の場合は、Azure Marketplace に移動します。 それ以外の場合は、AppSource に発行されます。
 
 ### <a name="categories"></a>Categories
 
@@ -63,22 +65,24 @@ Microsoft AppSource と Azure Marketplace は、さまざまな種類のソリ�
 
 マーケットプレースの顧客がプランを表示および購入する方法にトランザクション機能がどのように影響するかについての詳細は、[コマーシャル マーケットプレースでの取引](marketplace-commercial-transaction-capabilities-and-considerations.md)を参照してください。 SaaS オファーでは、オファーのトランザクション機能だけでなく、選択するカテゴリによって、オファーが発行されるオンライン ストアが決まります。
 
+次の表は、さまざまなオンラインストア (Azure Marketplace と Microsoft AppSource) に適用できるオプションの組み合わせを示しています。
 
-| SaaS プラン    | SaaS プラン   | SaaS プラン  | SaaS プラン   | SaaS プラン   | SaaS プラン   | SaaS プラン    | 該当するオンライン ストア| 該当するオンライン ストア |
-|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
-| 従量制課金 | Microsoft 365 アドイン | [Contact me (お問い合わせ)] | トランザクション (少なくとも 1 つのプラン) | プライベート専用プラン | パブリック専用プラン | パブリック & プライベート プラン | AppSource | Azure Marketplace |
-|  | X |  |  |  |  |  | X |  |
-| X |  |  | X | X |  |  |  | X |
-| X |  |  | X |  | X |  |  | X |
-| X |  |  | X |  |  | X |  | X<sup>2</sup> |
-|  |  |  | X | X |  |  |  | X |
-|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
-|  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1、2</sup> |
-|  |  | X |  |  |  |  | X<sup>1</sup> | X<sup>1</sup> | 
+| 従量制課金 | Microsoft 365 アドイン | プライベート専用プラン | パブリック専用プラン | パブリック & プライベート プラン | 該当するオンライン ストア |
+|:-------------:|:---:|:--------:|:---------:|:---------------------:|:-------------:|
+|  | X |  |  |  | AppSource |
+| X |  | X |  |  | Azure Marketplace |
+| X |  |  | X |  | Azure Marketplace |
+| X |  |  |  | X | Azure Marketplace<sup>2</sup> |
+|  |  | X |  |  | Azure Marketplace |
+|  |  |  | X |  | AppSource<sup>1</sup><br>Azure Marketplace<sup>1</sup> |
+|  |  |  |  | X | AppSource<sup>1</sup><br>Azure Marketplace<sup>1、2</sup> |
+|  |  |  |  | X | AppSource<sup>1</sup><br>Azure Marketplace<sup>1</sup> |
 
 1. カテゴリ/サブカテゴリと業界の選択によって異なります
 2. プライベート プランを含むオファーは Azure portal に発行されます
 
+> [!NOTE]
+> 一覧表示プランと取引可能なプランの両方を同じオファーに含めることはできません。
 
 ### <a name="industries"></a>業界
 

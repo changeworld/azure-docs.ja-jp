@@ -1,18 +1,18 @@
 ---
-title: 体験版とは Microsoft コマーシャル マーケットプレース
-description: Marketplace 体験版機能の説明
+title: Microsoft AppSource の体験版とは
+description: Microsoft AppSource の体験版機能の説明。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 06/19/2020
-ms.openlocfilehash: e44d5d94a8dc172962a26f3e0dae9ccbb7f8a865
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 12/08/2020
+ms.openlocfilehash: 5fba64beff10f59be42776cc87cf6f37922295dd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818892"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949073"
 ---
 # <a name="what-is-a-test-drive"></a>体験版とは
 
@@ -61,7 +61,7 @@ ms.locfileid: "107818892"
 ホストされた体験版では、体験版のユーザー プロビジョニングおよびプロビジョニング解除を実行するサービスを Microsoft がホストして管理するので、セットアップの複雑さが解消されます。 Microsoft AppSource にオファーがある場合は、体験版を構築して Dynamics AX/CRM インスタンスに接続します。 次の AppSource オファーの種類を使用できます。
 
 - 販売、サービス、プロジェクト サービス、フィールド サービスなどの Customer Engagement システムでは、[Dynamics 365 for Customer Engagement and Power Apps](dynamics-365-customer-engage-offer-setup.md) を使用します。
-- 財務、運用、製造、サプライ チェーンなどの Finance and Operations エンタープライズ リソース計画システムでは、[Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) を使用します。
+- 財務、運用、製造、サプライ チェーンなどの Finance and Operations エンタープライズ リソース計画システムでは、[Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) を使用します。
 
 ### <a name="logic-app-test-drive"></a>ロジック アプリの体験版
 
@@ -94,6 +94,6 @@ ms.locfileid: "107818892"
 - [体験版のベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF、ポップアップ ブロックがオフになっていることを確認してください)
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 - [体験版の技術的な構成](test-drive-technical-configuration.md)

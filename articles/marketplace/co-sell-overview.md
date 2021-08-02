@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 4/15/2021
-ms.openlocfilehash: ff67d5150e6bb95e900d3a81e0025216ffb19471
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bb4a0cd58c316a9e40a3346d4f5417fe911c2c0e
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133387"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111420970"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft のセールス チームとパートナーによる共同販売の概要
 
@@ -79,7 +79,7 @@ Business Applications 共同販売インセンティブ対象 (Standard およ�
 
 - マーケットプレース サービス料金は 20% から 10% に引き下げられます。 この割引は、コマーシャル マーケットプレースを通じて販売される貴社の IaaS (サービスとしてのインフラストラクチャ) ソリューションまたは SaaS (サービスとしてのソフトウェア) ソリューションに適用されます。 詳細については、「[コマーシャル マーケットプレースのサービス料金](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees)」を参照してください。
 - クラウド ソリューション プロバイダー (CSP) パートナーは、10% のインセンティブを受けて貴社の IaaS ソリューションまたは SaaS プランを販売します。 CSP プログラムについて詳しくは、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」をご覧ください。
-- Azure Marketplace を介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となるお客様には、Azure portal で **Azure 特典対象** とマークされたプランが表示されます。 詳細については、「[Azure の消費コミットメントのベネフィット](azure-consumption-commitment-benefit.md)」を参照してください。
+- Azure Marketplace を介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となるお客様には、Azure portal で **Azure 特典対象** とマークされたプランが表示されます。 MACC プログラムで顧客にもたらされるメリットと、MACC に対して有効になっているソリューションを見つける方法の詳細については、「[Azure の消費コミットメントのベネフィット](/marketplace/azure-consumption-commitment-benefit)」を参照してください。 パブリッシャーが取引可能なオファーを MACC に登録する方法の詳細については、[Azure の消費コミットメントの登録](azure-consumption-commitment-enrollment.md)に関するページを参照してください。
 - "_Azure IP 共同販売インセンティブ対象_" ステータスを達成する、または [Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)に登録していてステータスが共同販売の準備完了であるプランには、オンライン ストア ([Azure Marketplace](https://azuremarketplace.microsoft.com/) と [AppSource](https://appsource.microsoft.com/)) のプラン リスト ページに **Microsoft 推奨ソリューション** バッジが表示されます。  プランが対応する状態になってから、優先されるソリューション バッジがオンライン ストアに表示されるまでに最大で 30 日間かかることがあります。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。
 
 共同販売の準備完了および共同販売インセンティブ対象ステータスを取得する方法については、[共同販売の準備完了および共同販売インセンティブ対象の要件](co-sell-requirements.md)に関するページを参照してください。

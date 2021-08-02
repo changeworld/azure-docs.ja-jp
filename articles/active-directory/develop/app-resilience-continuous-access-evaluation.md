@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 5b00cca584958f3e7d741a2a4f9e6669ff0d241e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 970985193245a4d7482979c2fc753c2c0b67834b
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904318"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111406735"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>継続的アクセス評価が有効になった API をアプリケーションで使用する方法
 
 [継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md) (CAE) は、トークンの有効期間ではなく[重要なイベント](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)と[ポリシー評価](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)に基づいてアクセス トークンを破棄できる、Azure AD の機能です。 一部のリソース API については、リスクとポリシーがリアルタイムで評価されるため、トークンの有効期間を最大 28 時間まで延長することができます。 このような有効期間が長いトークンは Microsoft Authentication Library (MSAL) によって事前に更新されるため、アプリケーションの復元性が向上します。
 
-この記事では、CAE 対応 API をアプリケーションで使用する方法について説明します。
+この記事では、CAE 対応 API をアプリケーションで使用する方法について説明します。 MSAL を使用していないアプリケーションでは、CAE を使用するための [要求のチャレンジ、要求要求、およびクライアント機能](claims-challenge.md) のサポートを追加できます。
 
 ## <a name="implementation-considerations"></a>実装時の注意事項
 
@@ -114,6 +114,7 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 ユーザーをアプリケーションにサインインさせてから、Azure portal を使用してユーザーのセッションを取り消すことで、アプリケーションをテストできます。 CAE 対応の API が次にアプリで呼び出されたとき、ユーザーは再認証を行うように求められます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-詳細については、「[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)」を参照してください。
+- [継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)の概念の概要
+- [要求のチャレンジ、クレーム要求、およびクライアントの能力](claims-challenge.md)

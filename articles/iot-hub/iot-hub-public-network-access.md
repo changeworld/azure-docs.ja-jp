@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 509bcf6de4a53171f91a84f328671dbbc5de2001
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ece547ac7032e4629a2df48c34b0412ecdc15f54
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766361"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072120"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>IoT ハブのパブリック ネットワーク アクセスの管理
 

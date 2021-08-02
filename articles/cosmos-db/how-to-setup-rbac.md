@@ -4,14 +4,14 @@ description: Azure Active Directory を使用して Azure Cosmos DB アカウン
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 06/08/2021
 ms.author: thweiss
-ms.openlocfilehash: 35e3d4668fc3a5eb260bc187ec1cb6177f91911b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 246f21bb0cd4718b08c8d8a872b1707a1fea5994
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378476"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958919"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>Azure Active Directory を使用して Azure Cosmos DB アカウントのロールベースのアクセス制御を構成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,9 +113,9 @@ Azure Cosmos DB では、次の 2 つの組み込みロール定義が公開さ�
     - `/dbs/<database-name>/colls/<container-name>` (コンテナーレベル)。
 
 > [!NOTE]
-> 後述する操作は、現在のところ以下で使用できます。
-> - Azure PowerShell: [Az.CosmosDB バージョン 2.0.1-preview](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
-> - Azure CLI: ['cosmosdb-preview' 拡張機能バージョン 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+> 後述する操作は、以下で使用できます。
+> - Azure PowerShell: [Az.CosmosDB バージョン 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) 以降
+> - [Azure CLI](/cli/azure/install-azure-cli): バージョン 2.24.0 以上
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell の使用
 
@@ -278,7 +278,7 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 
-Azure Resource Manager テンプレートを使用してロールの定義を作成する方法のリファレンスと例については、[こちらのページ](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/sqlresources2/createupdatesqlroledefinition)を参照してください。
+Azure Resource Manager テンプレートを使用してロールの定義を作成する方法のリファレンスと例については、[こちらのページ](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/createupdatesqlroledefinition)を参照してください。
 
 ## <a name="create-role-assignments"></a><a id="role-assignments"></a> ロールの割り当ての作成
 
@@ -299,9 +299,9 @@ Azure Resource Manager テンプレートを使用してロールの定義を作
 > サービス プリンシパルのロール割り当てを作成する場合は、**Azure Active Directory** portal ブレードの **[エンタープライズ アプリケーション]** セクションにある **[オブジェクト ID]** を使用してください。
 
 > [!NOTE]
-> 後述する操作は、現在のところ以下で使用できます。
-> - Azure PowerShell: [Az.CosmosDB バージョン 2.0.1-preview](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
-> - Azure CLI: ['cosmosdb-preview' 拡張機能バージョン 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+> 後述する操作は、以下で使用できます。
+> - Azure PowerShell: [Az.CosmosDB バージョン 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) 以降
+> - [Azure CLI](/cli/azure/install-azure-cli): バージョン 2.24.0 以上
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell の使用
 
@@ -310,12 +310,12 @@ ID にロールを割り当てます。
 ```powershell
 $resourceGroupName = "<myResourceGroup>"
 $accountName = "<myCosmosAccount>"
-$readOnlyRoleDefinitionId = "<roleDefinitionId>" // as fetched above
+$readOnlyRoleDefinitionId = "<roleDefinitionId>" # as fetched above
 $principalId = "<aadPrincipalId>"
 New-AzCosmosDBSqlRoleAssignment -AccountName $accountName `
     -ResourceGroupName $resourceGroupName `
     -RoleDefinitionId $readOnlyRoleDefinitionId `
-    -Scope $accountName `
+    -Scope "/" `
     -PrincipalId $principalId
 ```
 
@@ -326,14 +326,14 @@ ID にロールを割り当てます。
 ```azurecli
 resourceGroupName='<myResourceGroup>'
 accountName='<myCosmosAccount>'
-readOnlyRoleDefinitionId = '<roleDefinitionId>' // as fetched above
+readOnlyRoleDefinitionId = '<roleDefinitionId>' # as fetched above
 principalId = '<aadPrincipalId>'
 az cosmosdb sql role assignment create --account-name $accountName --resource-group $resourceGroupName --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 
-Azure Resource Manager テンプレートを使用してロールの割り当てを作成する方法のリファレンスと例については、[こちらのページ](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/sqlresources2/createupdatesqlroleassignment)を参照してください。
+Azure Resource Manager テンプレートを使用してロールの割り当てを作成する方法のリファレンスと例については、[こちらのページ](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/createupdatesqlroleassignment)を参照してください。
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>Azure AD を使用して SDK を初期化する
 
@@ -400,9 +400,12 @@ Azure Cosmos DB RBAC は現在、`2021-03-15` バージョンの REST API でサ
 ## <a name="use-data-explorer"></a>データ エクスプローラーの使用
 
 > [!NOTE]
-> Azure portal で公開されているデータ エクスプローラーでは、まだ Azure Cosmos DB RBAC がサポートされていません。 データの探索に Azure AD ID を使用するには、代わりに [Azure Cosmos DB Explorer](https://cosmos.azure.com/) を使用する必要があります。
+> Azure portal で公開されているデータ エクスプローラーでは、まだ Azure Cosmos DB RBAC がサポートされていません。 データの探索に Azure AD ID を使用するには、代わりに [Azure Cosmos DB Explorer](https://cosmos.azure.com/?feature.enableAadDataPlane=true) を使用する必要があります。
 
-自身のアカウントに格納されているデータを参照すると、[Azure Cosmos DB Explorer](https://cosmos.azure.com/) は最初に、ログインしているユーザーに代わってアカウントの主キーの取得を試み、このキーを使用してデータにアクセスします。 そのユーザーによる主キーのフェッチが許可されていない場合、データへのアクセスには、代わりに Azure AD ID が使用されます。
+[Azure Cosmos DB Explorer](https://cosmos.azure.com/?feature.enableAadDataPlane=true) に特定の `?feature.enableAadDataPlane=true` クエリ パラメーターでアクセスしてサインインすると、データにアクセスする際に次のロジックが使用されます。
+
+1. アカウントの主キーをフェッチする要求が、サインインした ID に代わって試行されます。 この要求が成功すると、アカウントのデータは主キーを使用してアクセスされます。
+1. サインインした ID がアカウントの主キーのフェッチを許可されていない場合、この ID がデータ アクセスを認証するために直接使用されます。 このモードでは、ID に[適切なロールの定義を割り当て](#role-assignments)てデータにアクセスできるようにしなければなりません。
 
 ## <a name="audit-data-requests"></a>監査データの要求
 

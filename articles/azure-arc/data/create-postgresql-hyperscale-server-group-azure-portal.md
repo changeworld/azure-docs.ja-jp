@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 04/28/2021
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 5cc99acf303b99e138edd0418d2d49824bbf27fe
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 905bfa7093fc21dfe472742e03d938cbfcaee43a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108294052"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407581"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group-from-the-azure-portal"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを Azure portal から作成する
 
@@ -63,16 +63,47 @@ Azure Arc 対応 Postgres Hyperscale サーバー グループを Azure portal �
 > [!IMPORTANT]
 > Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを "*間接*" 接続モードを使用するよう構成された Azure Arc データ コントローラーにデプロイした場合は、それを Azure portal から操作することはできません。 
 
-直接接続モードが有効になっている Arc データ コントローラーをデプロイした後に、以下を行います。
-1. ブラウザーを開いて、次の URL に移動します: [https://portal.azure.com](https://portal.azure.com)
+直接接続モードに対応する Arc データ コントローラーをデプロイすると、Azure Arc 対応 Postgres Hyperscale のサーバー グループをデプロイするために、以下の 3 つのオプションのいずれかを選択できます。
+
+### <a name="option-1-deploy-from-the-azure-marketplace"></a>オプション 1: Azure Marketplace からデプロイする
+1. ブラウザーで次の URL [https://portal.azure.com](https://portal.azure.com) を開きます
 2. ページ上部の [検索] ウィンドウで「*azure arc postgres*」を Azure マーケットプレースで検索して、 **[Azure Database for PostgreSQL server groups - Azure Arc]\(Azure Database for PostgreSQL サーバー グループ - Azure Arc\)** を選択します。
 3. 開いたページで、左上隅にある **[+ 作成]** をクリックします。 
 4. フォームに、他の Azure リソースをデプロイするように入力します。
 
+### <a name="option-2-deploy-from-the-azure-database-for-postgresql-deployment-option-page"></a>オプション 2: Azure Database for PostgreSQL のデプロイ オプション ページからデプロイする
+1. ブラウザーで次の URL https://ms.portal.azure.com/#create/Microsoft.PostgreSQLServer を開きます。
+2. 右下隅のタイルをクリックします。 「Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)」というタイトルになっています。
+3. フォームに、他の Azure リソースをデプロイするように入力します。
 
-### <a name="important-parameters-you-should-consider-are"></a>考慮する必要がある重要なパラメーターを以下に示します。
+### <a name="option-3-deploy-from-the-azure-arc-center"></a>オプション 3: Azure Arc センターからデプロイする
+1. ブラウザーで次の URL https://ms.portal.azure.com/#blade/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/overview を開きます
+1. ページの中央から、 *[Azure サービスのデプロイ]* というタイトルのタイルの下にある [デプロイ] をクリックし、[PostgreSQL Hyperscale (プレビュー)]というタイトルのタイルの [デプロイ] をクリックします。
+2. または、左側ページのナビゲーション ウィンドウの [サービス] セクションで [PostgreSQL Hyperscale (プレビュー)] をクリックし、ウィンドウ左上の [＋作成] をクリックします。
 
-- スケールアウトによるパフォーマンスの向上を目的としてデプロイしようとしている **ワーカー ノードの数**。 先へ進む前に、[Postgres Hyperscale の概念](concepts-distributed-postgres-hyperscale.md)に関するページを参照してください。 たとえば、デプロイするサーバー グループに 2 つのワーカー ノードがある場合、デプロイによって 3 つのポッドが作成されます。1 つがコーディネーター ノードまたはインスタンス用で、2 つがワーカー ノードまたはインスタンス用 (各ワーカーに 1 つ) です。
+
+#### <a name="important-parameters-you-should-consider"></a>考慮する必要がある重要なパラメーター
+
+- スケールアウトによるパフォーマンスの向上を目的としてデプロイしようとしている **ワーカー ノードの数**。 ここに進む前に、[Postgres Hyperscale の概念](concepts-distributed-postgres-hyperscale.md)に関するページを参照してください。 次の表は、サポートされている値の範囲と、それを使用して取得できる Postgres デプロイの形式を示しています。 たとえば、2 つのワーカー ノードを含むサーバー グループをデプロイする場合は、2 を指定します。 これで 3 つのポッドが作成されます。1 つはコーディネーター ノード/インスタンス用、2 つはワーカー ノード/インスタンス用です (各ワーカーに 1 つ)。
+
+
+
+|以下のものが必要です。   |デプロイするサーバー グループの形状   |指定するワーカー ノードの数   |Note   |
+|---|---|---|---|
+|アプリケーションのスケーラビリティ ニーズを満たすための、Postgres のスケールアウト形式。   |3 つ以上の Postgres インスタンス (コーディネーターが 1 つで、ワーカーが 2 つ以上)。   |n 個 (n は 2 以上)。   |Hyperscale 機能を提供する Citus 拡張機能が読み込まれます。   |
+|最小限のコストでアプリケーションの機能検証を行うための、Postgres Hyperscale の基本形式。 パフォーマンスとスケーラビリティの検証には無効です。 その場合は、上のような種類のデプロイメントを使用する必要があります。   |コーディネーターでもありワーカーでもある 1 つの Postgres インスタンス。   |0 個。読み込む拡張機能の一覧に Citus を追加します。   |Hyperscale 機能を提供する Citus 拡張機能が読み込まれます。   |
+|必要に応じてスケールアウトできる Postgres の単純なインスタンス。   |1 つの Postgres インスタンス。 コーディネーターとワーカーのセマンティックはまだ認識されていません。 デプロイ後にスケールアウトするには、構成を編集してワーカー ノードの数を増やし、データを分散させます。   |0   |Hyperscale 機能を提供する Citus 拡張機能はデプロイに存在しますが、まだ読み込まれていません。   |
+|   |   |   |   |
+
+1 つのワーカーを指定することはできますが、これを使用することはお勧めしません。 このデプロイでは、あまり大きな価値は得られません。 これにより、Postgres の 2 つのインスタンス (1 つのコーディネーターと 1 つのワーカー) が取得されます。 この設定では、1 つのワーカーがデプロイされるため、実際にはデータをスケールアウトできません。 そのため、パフォーマンスとスケーラビリティは向上しません。 今後のリリースでは、このデプロイのサポートは削除される予定です。
+
+- サーバー グループで使おうとしている **ストレージ クラス**。 ストレージ クラスはデプロイ後に変更することはできないため、サーバー グループをデプロイする時点で設定することが重要です。 もしデプロイ後にストレージ クラスを変更するとすれば、データの抽出、サーバー グループの削除、新しいサーバー グループの作成、データのインポートが必要になります。 データ、ログ、バックアップ用に使用するストレージ クラスを指定することもできます。 既定では、ストレージ クラスを指定しない場合、データ コントローラーのストレージ クラスが使用されます。
+    - データ用のストレージ クラスを設定するには、パラメーター `--storage-class-data` または `-scd` を指定し、その後にストレージ クラスの名前を指定します。
+    - ログ用のストレージ クラスを設定するには、パラメーター `--storage-class-logs` または `-scl` を指定し、その後にストレージ クラスの名前を指定します。
+    - バックアップ用のストレージ クラスを設定するには: Azure Arc 対応 PostgreSQL Hyperscale のこのプレビューでは、実行しようとしているバックアップ/復元操作の種類に応じて、ストレージ クラスを設定する方法が 2 つあります。 Microsoft は、このエクスペリエンスの簡素化に取り組んでいます。 ストレージ クラスまたはボリューム要求マウントのいずれかを指定します。 ボリューム要求マウントは、(同じ名前空間内の) 既存の永続的ボリューム要求と、コロンで区切られたボリュームの種類 (およびボリュームの種類に応じたオプションのメタデータ) のペアです。 永続的ボリュームは、PostgreSQL サーバー グループの各ポッドにマウントされます。
+        - 実行する予定があるのはデータベースの完全復元だけである場合は、パラメーター `--storage-class-backups` または `-scb` を設定し、その後にストレージ クラスの名前を指定します。
+        - データベースの完全復元とポイントインタイム リストアの両方を行う予定の場合は、パラメーター `--volume-claim-mounts` または `-vcm` を設定し、その後にボリューム要求の名前とボリュームの種類を指定します。
+
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -88,7 +119,7 @@ Azure Arc 対応 Postgres Hyperscale サーバー グループを Azure portal �
 
     > \*上記のドキュメントの「**Azure portal にサインインする**」と「**Azure Database for PostgreSQL - Hyperscale (Citus) を作成する**」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
-- [Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
+- [Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-in-postgresql-hyperscale-server-group.md)
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)
 - [永続ボリューム要求の拡張](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes リソース モデル](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e044920953d0b635e7fe92f07b2cd69c0d8f5ee7
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 1b4394c7338aabb63654a1462a97518aaff9ada3
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888586"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408517"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
@@ -177,6 +177,9 @@ run.wait_for_completion(show_output=True)
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
+* **AttributeError: 'RoundTripLoader'** オブジェクトに属性 'comment_handling' はありません: このエラーは、 `ruamel-yaml` の新しいバージョン (v0.17.5) から発生します。`azureml-core` の依存関係により、`azureml-core` に対する変更が破損しています。 このエラーを解決するには、 `pip uninstall ruamel-yaml` を実行して別のバージョンの `ruamel-yaml` をインストールすることで `ruamel-yaml` をアンインストールしてください。サポートされているバージョンはv0.15.35 から v0.17.4 (包括的) です。 `pip install "ruamel-yaml>=0.15.35,<0.17.5"` を実行してください。
+
 
 * **実行が `jwt.exceptions.DecodeError` で失敗する**:正確なエラー メッセージ: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。 
     

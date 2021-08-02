@@ -4,14 +4,14 @@ description: Azure Data Factory の UI にあるデータのコピー ツール�
 author: dearandyxu
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 06/01/2021
 ms.author: yexu
-ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68bfa62817d971ce8c8127f44f43576431a499fc
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100372996"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372014"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,7 +54,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 
 ![ファイルの設定](./media/copy-data-tool/file-format-settings.png)
 
-検出後:
+検出が完了したら、 **[Preview data (データのプレビュー)]** を選択します。
 
 ![検出されたファイルの設定とプレビュー](./media/copy-data-tool/after-detection.png)
 
@@ -88,7 +88,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 
 **[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに 2016/03/01/02 と表示されます。 
 
-次に、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
+次に、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 **ファイル読み込みの動作** のセクションで **増分読み込み: 時間的に分割されたフォルダ/ファイル名** を選択し、**プロパティ** ページで **スケジュール** または **タンブリング ウィンドウ** を選択すると、これら4つの変数の形式を選択するドロップダウン リストが表示されます。
 
 ![ファイルまたはフォルダーのフィルター処理](./media/copy-data-tool/filter-file-or-folder.png)
 

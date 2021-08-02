@@ -8,25 +8,30 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ced586db1b4e417e623431c137c43dac8ba56f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d62e723f42838343798603517ca430d727ff517
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466646"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787837"
 ---
 # <a name="assign-azure-ad-roles-to-users"></a>Azure AD ロールをユーザーに割り当てる
 
 Azure AD 管理者センターで、管理者ロールのすべてのメンバーを表示して管理できるようになりました。 ロールの割り当てを頻繁に管理する場合は、このエクスペリエンスが望ましいでしょう。 この記事では、Azure AD 管理センターを使用して Azure AD ロールを割り当てる方法について説明します。
 
+## <a name="prerequisites"></a>前提条件
+
+- 特権ロール管理者または全体管理者
+- Azure AD Premium P2 ライセンス (Privileged Identity Management (PIM) を使用する場合)
+
 ## <a name="assign-a-role"></a>ロールの割り当て
 
-1. グローバル管理者または特権ロール管理者のアクセス許可を使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 
 1. **[Azure Active Directory]** を選択します。
 
@@ -48,9 +53,9 @@ Azure AD 管理者センターで、管理者ロールのすべてのメンバ�
 
 ## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) を使用して追加の管理機能を追加するには、 **[PIM で管理]** を選択します。 特権ロール管理者は、割り当てを "永続的" (ロールで常にアクティブ) から "有資格" (昇格された場合にのみ、ロールに存在) に変更することができます。 Privileged Identity Management を備えていない場合でも、 **[PIM で管理]** を選択して、引き続き試用版にサインアップできます。 Privileged Identity Management には、[Azure AD Premium P2 ライセンス プラン](../privileged-identity-management/subscription-requirements.md)が必要です。
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) を使用して追加の管理機能を追加するには、 **[PIM で管理]** を選択します。 特権ロール管理者は、割り当てを "永続的" (ロールで常にアクティブ) から "有資格" (昇格された場合にのみ、ロールに存在) に変更することができます。 Privileged Identity Management を備えていない場合でも、 **[PIM で管理]** を選択して、引き続き試用版にサインアップできます。 Privileged Identity Management には、[Azure AD Premium P2 ライセンス](../privileged-identity-management/subscription-requirements.md)が必要です。
 
-![[ユーザー管理者 - 割り当て] ページで選択された "PIM で管理" アクションを示すスクリーンショット](./media/manage-roles-portal/member-list-pim.png)
+![[ユーザー管理者 - 割り当て] ページで選択された [PIM で管理] アクションを示すスクリーンショット](./media/manage-roles-portal/member-list-pim.png)
 
 全体管理者または特権ロール管理者の場合は、簡単にメンバーを追加または削除したり、一覧をフィルター処理したり、メンバーを選択してそのユーザーが割り当てられているアクティブ ロールを表示したりすることができます。
 

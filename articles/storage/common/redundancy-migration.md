@@ -6,17 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 06/09/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 222518f21cb9940efd4fbf266b9248e4b0414f43
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d060a066c80f10fb9d887db90bde434cc89922a5
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316329"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901632"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -46,7 +45,6 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 
 <sup>1</sup> 1 回限りのエグレス料金が発生します。<br />
 <sup>2</sup> ストレージ アカウントにアーカイブ層の BLOB が含まれる場合、LRS から GRS への移行はサポートされません。<br />
-<sup>3</sup> ZRS から GZRS/RA-GZRS への変換またはその逆の変換は、次のリージョンではサポートされていません: 米国東部 2、米国東部、西ヨーロッパ。
 
 > [!CAUTION]
 > (RA-)GRS または (RA-)GZRS アカウントに対して[アカウントのフェールオーバー](storage-disaster-recovery-guidance.md)を実行した場合、アカウントはフェールオーバー後の新しいプライマリ リージョンでローカル冗長 (LRS) になります。 フェールオーバーによって作成される LRS アカウントに対する ZRS または GZRS へのライブ マイグレーションは、サポートされていません。 これは、いわゆるフェールバック操作の場合にも当てはまります。 たとえば、RA-GZRS からセカンダリ リージョンの LRS へのアカウントのフェールオーバーを実行してから、それをもう一度 RA-GRS に構成し、元のプライマリ リージョンへの別のアカウントのフェイルオーバーを実行した場合、プライマリ リージョンの RA-GZRS への元のライブ マイグレーションについて、サポートに問い合わせることはできません。 代わりに、ZRS または GZRS への手動移行を実行する必要があります。
@@ -148,7 +146,7 @@ Microsoft はお客様のライブ マイグレーションの要求に速やか
 1. **[詳細]** タブで必要な追加情報を入力し、 **[確認および作成]** を選択して、サポート チケットを確認し、送信します。 サポート担当者から連絡があり、お客様が必要なサポートを提供します。
 
 > [!NOTE]
-> Premium ファイル共有 (FileStorage アカウント) は、LRS と ZRS でのみ使用できます。
+> Premium ファイル共有は、LRS と ZRS でのみ使用できます。
 >
 > GZRS ストレージ アカウントでは、現在アーカイブ層はサポートされていません。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
 >
@@ -197,7 +195,7 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 データがレプリケートされる方法の変更に関連するコストは、変換のパスによって異なります。 Azure Storage の冗長性のオファリングは、コストが最小から最大の順に、LRS、ZRS、GRS、RA-GRS、GZRS、RA-GZRS となっています。
 
-たとえば、LRS "*から*" 他の種類のレプリケーションに移行する場合、より高度な冗長性レベルに移行するので、追加料金が発生します。 GRS または RA-GRS "*に*" 移行する場合、(プライマリ リージョン内の) データがリモートのセカンダリ リージョンにレプリケートされているため、エグレス帯域幅の料金がかかります。 この料金は初回セットアップ時に 1 回だけかかる料金です。 データがコピーされた後に、追加の移行料金はかかりません。 帯域幅の料金の詳細については、[Azure Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
+たとえば、LRS "*から*" 他の種類のレプリケーションに移行する場合、より高度な冗長性レベルに移行するので、追加料金が発生します。 GRS または RA-GRS "*への*" 移行では、ストレージ アカウント全体がセカンダリ リージョンにレプリケートされるため、移行時にエグレス帯域幅の料金が発生します。 それ以降のプライマリ リージョンへの書き込みでも、セカンダリ リージョンへの書き込みをレプリケートするためのエグレス帯域幅の料金が発生します。 帯域幅の料金の詳細については、[Azure Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
 ストレージ アカウントを GRS から LRS に移行した場合、追加のコストは発生しませんが、レプリケートされたデータはセカンダリ ロケーションから削除されます。
 

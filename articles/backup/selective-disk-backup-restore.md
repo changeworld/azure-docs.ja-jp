@@ -2,14 +2,14 @@
 title: Azure 仮想マシンの選択的なディスク バックアップと復元
 description: この記事では、Azure 仮想マシン バックアップ ソリューションを使用した選択的なディスク バックアップと復元について説明します。
 ms.topic: conceptual
-ms.date: 05/03/2021
-ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 296aea2e11dede1cd0eeaeb222e954c40cb99d3f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/13/2021
+ms.custom: references_regions , devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: cee95941aa091f77fe128457434a66398188a0a4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745651"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678204"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
@@ -22,7 +22,7 @@ Azure Backup では、仮想マシン バックアップ ソリューション�
 1. 1 つのディスクのみ、またはディスクのサブセットの重要なデータのバックアップを行い、バックアップ ストレージのコストを最小限に抑えるために、VM に接続されている残りのディスクをバックアップしない場合。
 2. VM またはデータの一部について、他のバックアップ ソリューションがある場合。 たとえば、データベースまたはデータを別のワークロード バックアップ ソリューションを使用してバックアップし、残りのデータまたはディスクに対して Azure VM レベルのバックアップを使用して、使用可能な最適な機能を活用した効率的で堅牢なシステムを構築できます。
 
-PowerShell または Azure CLI を使用すると、Azure VM の選択的なディスク バックアップを構成できます。  スクリプトを使用すると、LUN 番号を使用してデータ ディスクを含めたり除外したりすることができます。  現時点では、Azure portal を介して選択的なディスク バックアップを構成する機能は、**OS ディスクのみバックアップ** オプションに制限されています。 そのため、OS ディスクとともに Azure VM のバックアップを構成し、それに接続されているすべてのデータ ディスクを除外することができます。
+PowerShell または Azure CLI を使用すると、Azure VM の選択的なディスク バックアップを構成できます。 スクリプトを使用すると、LUN 番号を使用してデータ ディスクを含めたり除外したりすることができます。 現時点では、Azure portal を介して選択的なディスク バックアップを構成する機能は、**OS ディスクのみバックアップ** オプションに制限されています。 そのため、OS ディスクとともに Azure VM のバックアップを構成し、それに接続されているすべてのデータ ディスクを除外することができます。
 
 >[!NOTE]
 > OS ディスクは既定で VM バックアップに追加されるため、除外することはできません。
@@ -322,6 +322,8 @@ Azure portal を使用してバックアップを有効にした場合は、**OS
 **新しい VM の作成** および **既存のものを置き換える** 復元オプションは、選択的なディスクのバックアップ機能が有効になっている VM ではサポートされません。
 
 現在、Azure VM バックアップでは、Ultra Disk または共有ディスクが接続されている VM はサポートされていません。 ディスクを除外して VM をバックアップするこのような場合は、選択的ディスク バックアップを使用することはできません。
+
+Azure VM のバックアップ中にディスクの除外または選択的ディスクを使用する場合は、" _[保護を停止し、バックアップ データを保持します](backup-azure-manage-vms.md#stop-protection-and-retain-backup-data)_ "。 このリソースのバックアップを再開する場合は、ディスク除外の設定をもう一度設定する必要があります。
 
 ## <a name="billing"></a>課金
 

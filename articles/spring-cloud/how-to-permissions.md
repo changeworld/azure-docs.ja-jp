@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8bc17ef020ae61a18f5259a956c7b5d3b3998a4d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877554"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463582"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Azure Spring Cloud でアクセス許可を使用する方法
 この記事では、Azure Spring Cloud リソースに対するアクセス許可を委任するカスタム ロールを作成する方法を示します。 カスタム ロールは、さまざまな標準アクセス許可を使用して [Azure 組み込みロール](../role-based-access-control/built-in-roles.md)を拡張するものです。
@@ -29,7 +29,7 @@ ms.locfileid: "104877554"
     * アプリを再起動する
     * ログ ストリームを取得する
     * アプリや構成に変更を加えることはできない
-* **Azure Pipelines/Jenkins/Github アクション ロール**:
+* **Azure Pipelines、Jenkins、GitHub アクション ロール**:
     * 作成、読み取り、更新、削除の操作を実行できる
     * サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成できる:Terraform または ARM テンプレートを使用した Azure Pipelines、Jenkins、または GitHub Actions
 
@@ -194,7 +194,7 @@ ms.locfileid: "104877554"
 5. **[確認と作成]** をクリックします。
 
 ## <a name="define-azure-pipelinesprovisioning-role"></a>Azure Pipelines/プロビジョニング ロールを定義する
-この Jenkins/Github アクション ロールを使用すると、サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成することができます。 このロールは、コードをリリースまたはデプロイするためのものです。
+この Jenkins または GitHub アクション ロールを使用すると、サービス インスタンス内にある Azure Spring Cloud とアプリで、すべてを作成し、構成することができます。 このロールは、コードをリリースまたはデプロイするためのものです。
 
 1. サブスクリプション、リソース グループと進む手順を繰り返して、[アクセス制御 (IAM)] にアクセスします。
 

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: ebc8405a2afe9a6e2d802b68c59142f6fbf01de5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d5e9b449aaff6bb14283184c2182d0e9de2ef0c5
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288114"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407563"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -80,7 +80,18 @@ azdata arc postgres server create --help
 
 - デプロイしようとしている **PostgreSQL エンジンのバージョン**: 既定ではバージョン 12 です。 バージョン 12 をデプロイするには、このパラメーターを省略するか、パラメーターとして `--engine-version 12` または `-ev 12` のいずれかを渡します。 バージョン 11 をデプロイするには、`--engine-version 11` または `-ev 11` を指定します。
 
-- スケールアウトによるパフォーマンスの向上を目的としてデプロイしようとしている **ワーカー ノードの数**。 ここに進む前に、[Postgres Hyperscale の概念](concepts-distributed-postgres-hyperscale.md)に関するページを参照してください。 デプロイするワーカー ノードの数を指定するには、パラメーター `--workers` または `-w` を使用し、その後に 2 以上の整数を指定します。 たとえば、2 つのワーカー ノードを含むサーバー グループをデプロイする場合は、`--workers 2` または `-w 2` を指定します。 これで 3 つのポッドが作成されます。1 つはコーディネーター ノード/インスタンス用、2 つはワーカー ノード/インスタンス用です (各ワーカーに 1 つ)。
+- スケールアウトによるパフォーマンスの向上を目的としてデプロイしようとしている **ワーカー ノードの数**。 ここに進む前に、[Postgres Hyperscale の概念](concepts-distributed-postgres-hyperscale.md)に関するページを参照してください。 デプロイするワーカー ノードの数を指定するには、パラメーター `--workers` または `-w` を使用し、その後に整数を指定します。 次の表は、サポートされている値の範囲と、それを使用して取得できる Postgres デプロイの形式を示しています。 たとえば、2 つのワーカー ノードを含むサーバー グループをデプロイする場合は、`--workers 2` または `-w 2` を指定します。 これで 3 つのポッドが作成されます。1 つはコーディネーター ノード/インスタンス用、2 つはワーカー ノード/インスタンス用です (各ワーカーに 1 つ)。
+
+
+
+|以下のものが必要です。   |デプロイするサーバー グループの形状   |使用する -w パラメーター   |Note   |
+|---|---|---|---|
+|アプリケーションのスケーラビリティ ニーズを満たすための、Postgres のスケールアウト形式。   |3 つ以上の Postgres インスタンス (コーディネーターが 1 つで、ワーカーが 2 つ以上)。   |-w n, with n>=2 を使用する。   |ハイパースケール機能を提供する Citus 拡張機能が読み込まれます。   |
+|最小限のコストでアプリケーションの機能検証を行うための、Postgres Hyperscale の基本形式。 パフォーマンスとスケーラビリティの検証には無効です。 その場合は、上のような種類のデプロイメントを使用する必要があります。   |コーディネーターでもありワーカーでもある 1 つの Postgres インスタンス。   |-w 0 を使用して、Citus 拡張機能を読み込む。 コマンド ラインからデプロイする場合は、パラメー -w 0 --extensions Citus を使用します。   |ハイパースケール機能を提供する Citus 拡張機能が読み込まれます。   |
+|必要に応じてスケールアウトできる Postgres の単純なインスタンス。   |1 つの Postgres インスタンス。 コーディネーターとワーカーのセマンティックはまだ認識されていません。 デプロイ後にスケールアウトするには、構成を編集してワーカー ノードの数を増やし、データを分散させます。   |-w 0 を使用するか、-w を指定しません。   |Hyperscale 機能を提供する Citus 拡張機能はデプロイに存在しますが、まだ読み込まれていません。   |
+|   |   |   |   |
+
+-w 1 を使用すると機能しますが、使用はお勧めしません。 このデプロイでは、あまり大きな価値は提供されません。 これにより、Postgres の 2 つのインスタンス (1 つのコーディネーターと 1 つのワーカー) が取得されます。 この設定では、1 つのワーカーがデプロイされるため、実際にはデータをスケールアウトできません。 そのため、パフォーマンスとスケーラビリティは向上しません。 今後のリリースでは、このデプロイのサポートは削除される予定です。
 
 - サーバー グループで使おうとしている **ストレージ クラス**。 ストレージ クラスはデプロイ後に変更することはできないため、サーバー グループをデプロイする時点で設定することが重要です。 もしデプロイ後にストレージ クラスを変更するとすれば、データの抽出、サーバー グループの削除、新しいサーバー グループの作成、データのインポートが必要になります。 データ、ログ、バックアップ用に使用するストレージ クラスを指定することもできます。 既定では、ストレージ クラスを指定しない場合、データ コントローラーのストレージ クラスが使用されます。
     - データ用のストレージ クラスを設定するには、パラメーター `--storage-class-data` または `-scd` を指定し、その後にストレージ クラスの名前を指定します。
@@ -246,7 +257,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
     > \*上記のドキュメントの「**Azure portal にサインインする**」と「**Azure Database for PostgreSQL - Hyperscale (Citus) を作成する**」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
-- [Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
+- [Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-in-postgresql-hyperscale-server-group.md)
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)
 - [永続ボリューム要求の拡張](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes リソース モデル](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

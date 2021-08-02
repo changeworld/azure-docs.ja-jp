@@ -5,17 +5,17 @@ description: 独自の暗号化キーを使用して、ストレージ アカウ
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/30/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 07f8faf503bdea6be8263afa6240594956b61391
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: cd2a265c5d4c339fa6e50338949cbf643314a3ee
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059447"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371324"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure Storage の暗号化のためのカスタマー マネージド キー
 
@@ -45,8 +45,18 @@ ms.locfileid: "106059447"
 1. Azure Key Vault 管理者が、ストレージ アカウントに関連付けられているマネージド ID に暗号化キーへのアクセス許可を付与します。
 2. Azure Storage 管理者が、ストレージ アカウントのカスタマー マネージド キーを使用して暗号化を構成します。
 3. Azure Storage は、ストレージ アカウントに関連付けられているマネージド ID を使用して、Azure Active Directory 経由で Azure Key Vault へのアクセスを認証します。
-4. Azure Storage は、Azure Key Vault のカスタマー キーを使用してアカウント暗号化キーをラップします。
+4. Azure Storage は、Azure Key Vault のカスタマー マネージド キーを使用してアカウント暗号化キーをラップします。
 5. 読み取り/書き込み操作の場合、Azure Storage は Azure Key Vault に要求を送信して、暗号化と暗号化解除の操作を実行するためにアカウント暗号化キーをラップ解除します。
+
+ストレージ アカウントに関連付けられているマネージド ID が、Azure Key Vault のカスタマー マネージド キーにアクセスするためには、少なくとも次のアクセス許可を持っている必要があります。
+
+- *wrapkey*
+- *unwrapkey*
+- *get*  
+
+キーのアクセス許可の詳細については、「[キーの種類、アルゴリズム、および操作](../../key-vault/keys/about-keys-details.md#key-access-control)」を参照してください。
+
+Azure Policy には、ストレージ アカウントに、Blob Storage と Azure Files のワークロードに対してカスタマー マネージド キーの使用を要求する組み込みのポリシーがあります。 詳細については、「[Azure Policy の組み込みのポリシー定義](../../governance/policy/samples/built-in-policies.md#storage)」の「**ストレージ**」セクションを参照してください。
 
 ## <a name="customer-managed-keys-for-queues-and-tables"></a>キューとテーブルのカスタマー マネージド キー
 

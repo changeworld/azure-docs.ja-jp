@@ -15,14 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c4bcfb6c2814fb6b2e1260dad2a0546de21c5ae8
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: d6b132fbb3aed541cc602537df1d40fa0d47702a
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992108"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421852"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Azure Sentinel を有効にしたら、まずデータ ソースを接続する必要があります。 Azure Sentinel には、Microsoft 365 Defender (以前の Microsoft Threat Protection) ソリューション、Microsoft 365 ソース (Office 365 を含む)、Azure AD、Microsoft Defender for Identity (以前の Azure ATP)、Microsoft Cloud App Security など、すぐに使用でき、リアルタイム統合を提供する、Microsoft ソリューション用のコネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (CEF)、Syslog または REST-API を使用して、使用中のデータ ソースを Azure Sentinel に接続することもできます。
 
@@ -46,23 +48,28 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 - **サービス間の統合**:<br> AWS や Microsoft サービスなどの一部のサービスはネイティブに接続されるので、標準統合用の Azure 基盤を利用して、ほんの数回のクリックで次のソリューションを接続できます。
     - [アマゾン ウェブ サービス - CloudTrail](connect-aws.md)
     - [Azure Active Directory](connect-azure-active-directory.md) - 監査ログとサインイン ログ
+    - [Azure Active Directory Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure アクティビティ](connect-azure-activity.md)
-    - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure DDoS Protection](connect-azure-ddos-protection.md)
+    - Azure Security Center からの [Azure Defender アラート](connect-azure-security-center.md)
     - [Azure Defender for IoT](connect-asc-iot.md) (以前の Azure Security Center for IoT)
-    - [Azure Information Protection](connect-azure-information-protection.md)
     - [Azure Firewall](connect-azure-firewall.md)
-    - [Azure Security Center](connect-azure-security-center.md) - Azure Defender ソリューションからのアラート
+    - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Key Vault](connect-azure-key-vault.md)
+    - [Azure Kubernetes Service (AKS)](connect-azure-kubernetes-service.md)
+    - [Azure SQL Databases](connect-azure-sql-logs.md)
+    - [Azure Storage アカウント](connect-azure-storage-account.md)
     - [Azure Web Application Firewall (WAF)](connect-azure-waf.md) (以前の Microsoft WAF)
-    - [Cloud App Security](connect-cloud-app-security.md)
     - [ドメイン ネーム サーバー](connect-dns.md)
+    - [Dynamics 365](connect-dynamics-365.md)
     - [Microsoft 365 Defender](connect-microsoft-365-defender.md) - M365D のインシデントと Defender for Endpoint の生データが含まれます
+    - [Microsoft Cloud App Security](connect-cloud-app-security.md)
     - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前の Microsoft Defender Advanced Threat Protection)
     - [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure Advanced Threat Protection)
     - [Microsoft Defender for Office 365](connect-office-365-advanced-threat-protection.md) (以前の Office 365 Advanced Threat Protection)
-    - [Office 365](connect-office-365.md) (現在は Teams も対象)
+    - [Office 365](connect-office-365.md) (Teams を含む)
     - [Windows ファイアウォール](connect-windows-firewall.md)
-    - [Windows セキュリティ イベント](connect-windows-security-events.md)
+    - (Windows) [セキュリティ イベント](connect-windows-security-events.md)
 
 - **API による外部ソリューション**:一部のデータ ソースは、接続されるデータ ソースによって提供される API を使用して接続されます。 通常、ほとんどのセキュリティ テクノロジでは、イベント ログの取得に使用できる API のセットが提供されています。API を使用して、Azure Sentinel に接続し、特定の種類のデータを収集して、Azure Log Analytics に送信します。 API を使用して接続されるアプライアンスは次のとおりです。
     

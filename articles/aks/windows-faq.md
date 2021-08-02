@@ -5,12 +5,12 @@ description: Windows Server ノード プールとアプリケーション ワ�
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 192306d2aeb9abddef641c0b55adaacaf8442de2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5d3d78eb20a9ca8b663fa0cf381fcce1bd528345
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065712"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463306"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS の Windows Server ノード プールに関してよく寄せられる質問
 
@@ -175,6 +175,22 @@ az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Windows コンテナーで Kubernetes Web ダッシュボードを使用できますか?
 
 はい。[Kubernetes Web ダッシュボード][kubernetes-dashboard] を使用して Windows コンテナーに関する情報にアクセスできますが、現時点では、Kubernetes Web ダッシュボードから直接、実行中の Windows コンテナーに、*kubectl exec* を実行することはできません。 実行中の Windows コンテナーへの接続の詳細については、「[メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する][windows-rdp]」を参照してください。
+
+## <a name="how-do-i-change-the-time-zone-of-a-running-container"></a>実行中のコンテナーのタイム ゾーンの変更方法を教えてください
+
+実行中の Windows Server コンテナーのタイム ゾーンを変更するには、PowerShell セッションを使用して実行中のコンテナーに接続します。 次に例を示します。
+    
+```azurecli-interactive
+kubectl exec -it CONTAINER-NAME -- powershell
+```
+
+実行中のコンテナーで、[Set-TimeZone](/powershell/module/microsoft.powershell.management/set-timezone) を使用して、実行中のコンテナーのタイム ゾーンを設定します。 次に例を示します。
+
+```powershell
+Set-TimeZone -Id "Russian Standard Time"
+```
+
+実行中のコンテナーの現在のタイム ゾーンまたは使用可能なタイム ゾーンの一覧を表示するには、[Get-TimeZone](/powershell/module/microsoft.powershell.management/get-timezone) を使用します。
 
 ## <a name="what-if-i-need-a-feature-thats-not-supported"></a>サポートされていない機能が必要な場合はどうすればよいですか?
 

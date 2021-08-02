@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2020
+ms.date: 04/30/2021
 ms.author: Zhchia
-ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9608a3a9e086cc6c03dc80f0666becbcbc06290
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673302"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688387"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Adobe Identity Management を構成する
 
@@ -42,6 +42,7 @@ ms.locfileid: "97673302"
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * 検証済みドメインでの [Adobe Admin Console](https://adminconsole.adobe.com/) におけるフェデレーション ディレクトリ。
+* ユーザー プロビジョニングに関する [adobe ドキュメント](https://helpx.adobe.com/enterprise/admin-guide.html/enterprise/using/add-azure-sync.ug.html)を確認する 
 
 > [!NOTE]
 > 組織でユーザー同期ツールまたは UMAPI 統合を使用している場合は、最初に統合を一時停止する必要があります。 次に、Azure Portal からのユーザー管理を自動化するために Azure AD 自動プロビジョニングを追加します。 Azure AD 自動プロビジョニングが構成されて実行されたら、ユーザー同期ツールまたは UMAPI 統合を完全に削除できます。

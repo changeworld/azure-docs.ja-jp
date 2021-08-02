@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Business-to-Customer (B2C) の新機能
 description: Azure Active Directory Business-to-Customer (B2C) の新規および更新されたドキュメント。
-ms.date: 06/04/2021
+ms.date: 06/02/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,33 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: ee4e371a17a717bbb3a520301478b92e65deecc2
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 1c68040022da094090e3fcd870b8a615fc045dcd
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802254"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409417"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C:新機能
 
 Azure Active Directory B2C のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 B2C サービスの新機能については、「[Azure Active Directory の新着情報](../active-directory/fundamentals/whats-new.md)」を参照してください。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure Active Directory B2C カスタム ポリシーで OAuth2 カスタム エラーの技術プロファイルを定義する](oauth2-error-technical-profile.md)
+- [Azure Active Directory B2C を使用してサンプル Web アプリケーションで認証を構成する](configure-authentication-sample-web-app.md)
+- [Azure Active Directory B2C のオプションを使用してサンプル Web アプリケーションで認証を構成する](enable-authentication-web-application-options.md)
+- [Azure Active Directory B2C を使用して独自の Web アプリケーションで認証を有効にする](enable-authentication-web-application.md)
+- [Azure Active Directory B2C TLS と暗号スイートの要件](https-cipher-tls-requirements.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する](conditional-access-user-flow.md)
+- [Azure AD B2C の資格情報攻撃を軽減する](threat-management.md)
+- [Azure Active Directory B2C サービスの制限と制約](service-limits.md)
+
 
 ## <a name="april-2021"></a>2021 年 4 月
 

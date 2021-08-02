@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 6/09/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 52fa6f05db5452a2e7b8ec4f93d65525873c8c7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 383f9653de208bd00710f7a85788b60193986442
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020572"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967553"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics ジョブ用の .NET Standard ユーザー定義関数を開発する (プレビュー)
 
@@ -26,7 +26,7 @@ Azure Stream Analytics では、イベント データのストリームを介�
 * 米国東部 2
 * 西ヨーロッパ
 
-別のリージョンでこの機能を使用することに関心がある場合は、[アクセスを要求する](https://aka.ms/ccodereqregion)ことができます。
+別のリージョンでこの機能を使用することに関心がある場合は、[アクセスを要求する](https://aka.ms/ccodereqregion)ことができます。  ただし、[Stream Analytics クラスター](./cluster-overview.md)を使用する場合、このようなリージョンの制限はありません。
 
 ## <a name="package-path"></a>パッケージ パス
 
@@ -266,6 +266,8 @@ SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
 * .NET Standard UDF は Visual Studio Code または Visual Studio でのみ作成でき、Azure に発行できます。 Azure portal の **[関数]** には、.NET Standard UDF の読み取り専用バージョンが表示されます。 .NET Standard 関数の作成は、Azure portal ではサポートされていません。
 
 * Azure portal で .NET Standard UDF を使用すると、ポータルのクエリ エディターにエラーが表示されます。 
+
+* 外部の REST エンドポイントの呼び出し (IP の逆引き参照の実行、外部ソースからの参照データのプルなど)
 
 * カスタム コードは Azure Stream Analytics エンジンとコンテキストを共有するため、名前空間/dll_name が Azure Stream Analytics コードと競合するものをカスタム コードで参照することはできません。 たとえば、*Newtonsoft Json* を参照することはできません。
 

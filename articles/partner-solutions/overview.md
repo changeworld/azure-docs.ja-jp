@@ -4,14 +4,14 @@ description: Azure でパートナーから提供されるソリューション�
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 02/12/2021
+ms.date: 05/25/2021
 ms.author: tomfitz
-ms.openlocfilehash: cab246cf19e8a2e3f9e7b08019cd836e3d085266
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 208f8d4e8d0fc8b688f45af5e8164b41c3eba768
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736051"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464096"
 ---
 # <a name="extend-azure-with-solutions-from-partners"></a>パートナーのソリューションを使用して Azure を拡張する
 
@@ -23,3 +23,4 @@ ms.locfileid: "101736051"
 | :--- | :--- |
 | [Apache Kafka for Confluent Cloud](./apache-kafka-confluent-cloud/overview.md) | Apache Kafka が提供するフル マネージドのイベント ストリーミング プラットフォーム |
 | [Datadog](./datadog/overview.md) | サーバー、クラウド、メトリック、アプリを 1 か所で監視します。 |
+| [Elastic](./elastic/overview.md) | Azure 環境の正常性とパフォーマンスを監視します。 |

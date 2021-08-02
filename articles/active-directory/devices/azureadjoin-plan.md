@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 383bd00bb0daf165f37ed98e48a5d36708367920
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2eb74dccb01bb599a40bbf9c606661d4661a37f3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130865"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953623"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -164,7 +164,7 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 デバイスがドメイン コントローラーへのアクセス権を持つ場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得します。 
 
-**推奨事項:** [Azure AD アプリのプロキシ](../manage-apps/application-proxy.md)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
+**推奨事項:** [Azure AD アプリのプロキシ](../app-proxy/application-proxy.md)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
 
 ### <a name="on-premises-network-shares"></a>オンプレミスのネットワーク共有
 
@@ -185,6 +185,11 @@ Azure AD 参加済みデバイスでは、マシンの認証に依存するオ�
 Azure AD 参加済みデバイスにリモート デスクトップ接続を行うには、ホスト マシンが Azure AD 参加済みまたは Hybrid Azure AD 参加済みである必要があります。 参加していないデバイスまたは Windows 以外のデバイスからのリモート デスクトップはサポートされていません。 詳しくは、[Azure AD に参加しているリモート PC への接続](/windows/client-management/connect-to-remote-aadj-pc)に関する記事をご覧ください
 
 Windows 10 2004 更新プログラム以降、ユーザーは Azure AD 登録済み Windows 10 デバイスから Azure AD 参加済みデバイスへのリモート デスクトップも使用できるようになります。 
+
+### <a name="radius-and-wi-fi-authentication"></a>RADIUS と Wi-Fi 認証
+
+現在、Azure AD に参加しているデバイスでは Wi-Fi アクセス ポイントに接続するための RADIUS 認証がサポートされていません。これは、RADIUS がオンプレミスのコンピューター オブジェクトの存在に依存するためです。 代わりに、Intune 経由でプッシュされる証明書またはユーザー資格情報を使用して Wi-Fi に対する認証を行います。 
+
 
 ## <a name="understand-your-provisioning-options"></a>プロビジョニングのオプションを把握する
 **注**:Azure AD 参加済みデバイスは、システム準備ツール (Sysprep) または同様のイメージング ツールを使用してデプロイすることはできません

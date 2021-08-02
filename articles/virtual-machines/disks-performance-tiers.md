@@ -4,16 +4,16 @@ description: Azure PowerShell モジュールまたは Azure CLI を使用し、
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 05/13/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 32f589be39740d62ef77967867522688d29a3618
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043679"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673501"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Azure PowerShell モジュールまたは Azure CLI を使用してパフォーマンス レベルを変更します
 
@@ -117,8 +117,39 @@ $disk.Tier
 
 ## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>ダウンタイムなしでディスクのパフォーマンス レベルを変更する (プレビュー)
 
-ダウンタイムなしでパフォーマンス レベルを変更することもできるため、レベルを変更するために VM の割り当てを解除したり、ディスクをデタッチしたりする必要はありません。 詳細とプレビューのサインアップ リンクについては、「[ダウンタイムなしでディスクのパフォーマンス レベルを変更する (プレビュー)](#change-performance-tier-without-downtime-preview)」セクションを参照してください。
+ダウンタイムなしでパフォーマンス レベルを変更することもできるため、レベルを変更するために VM の割り当てを解除したり、ディスクをデタッチしたりする必要はありません。
 
+### <a name="prerequisites"></a>前提条件
+
+ご使用のディスクが「[ダウンタイムなしでパフォーマンス レベルを変更する (プレビュー)](#change-performance-tier-without-downtime-preview)」セクションに記載されている要件を満たしている必要があります。そうでない場合は、パフォーマンス レベルを変更するとダウンタイムが発生します。
+
+ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、お使いのサブスクリプションに対してこの機能を有効にしてください。
+
+1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name LiveTierChange
+    ```
+ 
+1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name LiveTierChange
+    ```
+
+### <a name="update-the-performance-tier-of-a-disk-without-downtime-via-azure-cli"></a>Azure CLI を使用してダウンタイムなしでディスクのパフォーマンス レベルを更新する
+
+次のスクリプトでは、ベースライン レベルよりも高いディスク レベルが更新されます。 `<yourResourceGroupNameHere>`、`<yourDiskNameHere>`、および `<yourDesiredPerformanceTier>` を置き換えてから、スクリプトを実行してください。
+
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+ 
+az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
+```
+
+### <a name="update-the-performance-tier-of-a-disk-without-downtime-via-arm-template"></a>ARM テンプレートを使用してダウンタイムなしでディスクのパフォーマンス レベルを更新する
 
 次のスクリプトは、サンプル テンプレート [CreateUpdateDataDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json) を使用して、ベースライン レベルよりも高いディスクのレベルを更新します。 `<yourSubScriptionID>`、`<yourResourceGroupName>`、`<yourDiskName>`、`<yourDiskSize>`、`<yourDesiredPerformanceTier>` を置き換えてから、スクリプトを実行します。
 
@@ -139,10 +170,20 @@ region=EastUS2EUAP
 --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
 ```
 
-パフォーマン スレベルの変更は、完了までに最大 15 分かかる場合があります。 ディスクのレベルが変更されたことを確認するには、次のコマンドを使用します。
+## <a name="confirm-your-disk-has-changed-tiers"></a>ディスクのレベルが変更されたことを確認する
+
+パフォーマン スレベルの変更は、完了までに最大 15 分かかる場合があります。 ディスクのレベルが変更されたことを確認するには、次の方法のいずれかを使用します。
+
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 
 ```cli
 az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli
+az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
 ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 620274962f56173ff7e729d2a71c3ee50a277489
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 00dd677610924fba58f8b0c6c709b162dd2088bf
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733496"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794173"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>IoT Central アプリケーションでユーザーとロールを管理する
 
@@ -29,13 +29,13 @@ ms.locfileid: "108733496"
 
 1. IoT Central アプリケーションにユーザーを追加するには、 **[管理]** セクションの **[ユーザー]** ページに移動します。
 
-  :::image type="content" source="media/howto-manage-users-roles/manage-users-pnp.png" alt-text="ユーザーの管理":::
+    :::image type="content" source="media/howto-manage-users-roles/manage-users-pnp.png" alt-text="[ユーザーの管理] のスクリーンショット。":::
 
-1. **[Users] (ユーザー)** ページで、 **[+ Add user] (+ ユーザーの追加)** を選択してユーザーを追加します。
+1. **[Users (ユーザー)]** ページで、 **[+ Assign user (+ ユーザーの割り当て)]** を選択してユーザーを追加します。
 
 1. **ロール** ドロップダウン メニューからユーザーに対するロールを選択します。 ロールの詳細については、この記事の「[ロールの管理](#manage-roles)」セクションを参照してください。
 
-  :::image type="content" source="media/howto-manage-users-roles/add-user-pnp.png" alt-text="ユーザーを追加してロールを選択します。":::
+    :::image type="content" source="media/howto-manage-users-roles/add-user-pnp.png" alt-text="ユーザーを追加し、ロールを選択するスクリーンショット。":::
 
   > [!NOTE]
   > 他のユーザーを追加する権限が付与されるカスタム ロールのユーザーは、自分のロールと同じかそれよりも低い権限を持つロールにのみユーザーを追加できます。
@@ -58,8 +58,8 @@ ms.locfileid: "108733496"
 
 ロールを使用すると、組織内のだれが IoT Central でさまざまなタスクを実行できるかを制御できます。 アプリケーションのユーザーに割り当てることができる組み込みロールが 3 つあります。 より詳細な制御が必要な場合は、[カスタム ロールの作成](#create-a-custom-role)を行うこともできます。
 
-> [!div class="mx-imgBorder"]
-> ![ロールの選択の管理](media/howto-manage-users-roles/manage-roles-pnp.png)
+:::image type="content" source="media/howto-manage-users-roles/manage-roles-pnp.png" alt-text="ロールの管理選択のスクリーンショット。":::
+
 
 ### <a name="administrator"></a>管理者
 
@@ -81,8 +81,8 @@ ms.locfileid: "108733496"
 
 組み込みロールにユーザーを追加するのと同じ方法で、ユーザーをカスタム ロールに追加できます。
 
-> [!div class="mx-imgBorder"]
-> ![カスタム ロールの作成](media/howto-manage-users-roles/create-custom-role-pnp.png)
+:::image type="content" source="media/howto-manage-users-roles/create-custom-role-pnp.png" alt-text="カスタム ロールをビルドするためのスクリーンショット。":::
+
 
 ### <a name="custom-role-options"></a>カスタム ロールのオプション
 

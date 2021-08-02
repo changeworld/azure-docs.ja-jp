@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL Database および SQL managed Instance の予約容量を購入して計算コストを節約する方法について説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: sstein
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 10/13/2020
-ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e4f1ba5d15921f30319b001474351d637a0e338
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602509"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413755"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>予約容量を使用してリソースのコストを節約する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -88,6 +88,9 @@ SQL Database で DTU ベース (Basic、Standard、または Premium) のデー�
 ## <a name="next-steps"></a>次のステップ
 
 仮想コアの予約割引は、容量予約の範囲と属性に一致するデータベースまたはマネージド インスタンスの数に自動的に適用されます。 容量予約のスコープは、[Azure portal](https://portal.azure.com)、PowerShell、Azure CLI、または API で更新できます。
+
+- 仮想コア モデルの Azure SQL Database の詳細については、「[仮想コア モデルの概要 - Azure SQL Database](service-tiers-sql-database-vcore.md)」を参照してください。
+- 仮想コア モデルの Azure SQL Managed Instance サービス レベルの詳細については、「[仮想コア モデルの概要 - Azure SQL Managed Instance](../managed-instance/service-tiers-managed-instance-vcore.md)」 を参照してください。
 
 容量予約を管理する方法については、[予約容量の管理](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)に関するページを参照してください。
 

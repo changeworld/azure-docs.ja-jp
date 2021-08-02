@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 2d3c946bc2f98b0c06fe33dcaaa77a5399f6d56b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 734986d2c9b372214a54c1308e4ca445940c5f65
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782731"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111808927"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターの停止と起動
 
@@ -27,6 +27,7 @@ AKS ワークロードは、継続的に実行する必要がない場合があ�
 - この機能は、Virtual Machine Scale Sets でサポートされているクラスターでのみサポートされています。
 - 停止した AKS クラスターのクラスターの状態は、最大 12 か月間保持されます。 クラスターの停止期間が 12 か月間を超えた場合、クラスターの状態を回復することはできません。 詳細については、[AKS のポリシーのサポート](support-policies.md)に関するページを参照してください。
 - 停止された AKS クラスターの起動または削除のみを行うことができます。 スケールやアップグレードなどの操作を実行するには、まずクラスターを起動します。
+- プライベート クラスターにリンクされている、ユーザーがプロビジョニングした PrivateEndpoints は、停止した AKS クラスターを開始するときに削除して再作成する必要があります。
 
 ## <a name="stop-an-aks-cluster"></a>AKS クラスターを停止する
 
@@ -83,6 +84,9 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
 `provisioningState` に `Starting` が表示されている場合は、クラスターがまだ完全に起動していないことを意味します。
+
+> [!NOTE]
+> クラスター オートスケーラーを使用している場合、クラスターのバックアップを開始するとき、現在のノード数が、設定した最小と最大の範囲値の間にないことがあります。 これは正しい動作です。 クラスターは、ワークロードを実行するために必要なノード数で開始します。これは、オートスケーラー設定の影響を受けません。 クラスターでスケーリング操作を実行すると、最小値と最大値は現在のノード数に影響し、クラスターはいずれはその必要範囲に入り、クラスターを停止するまでそこにとどまります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: how-to
 ms.custom: synapse-azureml
-ms.openlocfilehash: a54a78bebe6dc0a1fc49a32aa2d82203b7da5028
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 046a38da67db86592e91f103f3139b425e59f6a0
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077106"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578900"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)
 
@@ -35,21 +35,23 @@ ms.locfileid: "110077106"
 
 Apache Spark プールは、Azure Synapse Analytics ワークスペースで作成して管理します。 Apache Spark プールを Azure Machine Learning ワークスペースと統合するには、[Azure Synapse Analytics ワークスペースにリンク](how-to-link-synapse-ml-workspaces.md)する必要があります。 
 
-**[リンクされたサービス]** ページを使用して、Azure Machine Learning スタジオ UI 経由で Apache Spark プールをアタッチできます。 この操作は **[コンピューティング]** ページで **[コンピューティングをアタッチする]** オプションを使用して行うこともできます。
-
-また、SDK (下記を参照) または ARM テンプレート (次の「[ARM テンプレートの例](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)」を参照) を使用して Apache Spark プールをアタッチすることもできます。 
-
-コマンド ラインを使用して、ARM テンプレートに従い、リンクされたサービスを追加し、次のコードを使用して Apache Spark プールをアタッチできます。
-
-```azurecli
-az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"
-```
+Azure Machine Learning ワークスペースと Azure Synapse Analytics ワークスペースをリンクさせたら、以下を経由で Apache Synapse Spark プールをアタッチできます。 
+* [Azure Machine Learning Studio](how-to-link-synapse-ml-workspaces.md#attach-a-pool-via-the-studio)
+* Python SDK ([以下で詳しく説明します](#attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning))
+* Azure Resource Manager (ARM) テンプレート (この [ARM テンプレートの例](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)を参照してください)。 
+    * コマンド ラインを使用して、ARM テンプレートに従い、リンクされたサービスを追加し、次のコードを使用して Apache Spark プールをアタッチできます。
+    ```azurecli
+    az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"
+    ```
 
 > [!Important]
 > Azure Synapse Analytics ワークスペースに正常にリンクするには、Azure Synapse Analytics ワークスペース リソースに所有者ロールがある必要があります。 Azure portal でご自身のアクセス権を確認してください。
-> リンクされたサービスには、ユーザーによって作成されるときにシステム割り当て ID (SAI) が付与されます。 このリンク サービス SAI に Synapse Studio からの "Synapse Apache Spark 管理者" ロールを割り当てて、これが Spark ジョブを送信できるようにする必要があります (「[Synapse Studio で Synapse RBAC ロールの割り当てを管理する方法](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)」を参照してください)。 また、Azure Machine Learning ワークスペースのユーザーに、リソース管理の Azure portal からの "共同作成者" ロールを付与する必要があります。
+>
+> リンクされたサービスには、ユーザーによって作成されるときにシステム割り当てマネージド ID (SAI) が付与されます。 このリンク サービス SAI に Synapse Studio からの "Synapse Apache Spark 管理者" ロールを割り当てて、これが Spark ジョブを送信できるようにする必要があります (「[Synapse Studio で Synapse RBAC ロールの割り当てを管理する方法](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)」を参照してください)。 
+> 
+> また、Azure Machine Learning ワークスペースのユーザーに、リソース管理の Azure portal からの "共同作成者" ロールを付与する必要があります。
 
-## <a name="create-or-retrieve-the-link-between-your-azure-synapse-analytics-workspace-and-your-azure-machine-learning-workspace"></a>Azure Synapse Analytics ワークスペースと Azure Machine Learning ワークスペースの間のリンクを作成または取得する
+## <a name="retrieve-the-link-between-your-azure-synapse-analytics-workspace-and-your-azure-machine-learning-workspace"></a>Azure Synapse Analytics ワークスペースと Azure Machine Learning ワークスペースの間のリンクを取得する
 
 次のようなコードを使用して、ワークスペース内のリンクされたサービスを取得できます。
 

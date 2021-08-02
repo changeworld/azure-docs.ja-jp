@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した Azure VM のディザスター リカ
 description: Azure Site Recovery を使用したセカンダリ リージョンへの Azure VM ディザスター リカバリーのサポートの概要を説明します。
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: fe3424b8905569076a1fe6e4d29352581db3bec8
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: a6b8177ea0abc3a2406937373fc6569b42ffd053
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109665034"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960964"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -266,9 +266,11 @@ Standard SSD | サポートされています |
 クールおよびホット ストレージ | サポートされていません | VM ディスクは、クールおよびホット ストレージではサポートされません
 記憶域スペース | サポートされています |
 NVMe ストレージ インターフェイス | サポートされていません
+ホストでの暗号化 | サポートされています | [ここをクリックして](../virtual-machines/disks-enable-host-based-encryption-portal.md)、ホストでの暗号化を使用して暗号化がエンドツーエンドの VM を作成します。
 保存時の暗号化 (SSE) | サポートされています | SSE はストレージ アカウントでの既定の設定です。
 保存時の暗号化 (CMK) | サポートされています | マネージド ディスクでは、ソフトウェア キーと HSM キーの両方がサポートされています
 保存時の二重暗号化 | サポートされています | [Windows](../virtual-machines/disk-encryption.md) および [Linux](../virtual-machines/disk-encryption.md) でサポートされているリージョンの詳細について参照してください
+FIPS 暗号化 | サポートされていません
 Windows OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 | アンマネージド ディスクを使用する VM はサポートされていません。 <br/><br/> HSM で保護されたキーはサポートされていません。 <br/><br/> 1 つのディスク上の個々のボリュームの暗号化はサポートされていません。 |
 Linux OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 | アンマネージド ディスクを使用する VM はサポートされていません。 <br/><br/> HSM で保護されたキーはサポートされていません。 <br/><br/> 1 つのディスク上の個々のボリュームの暗号化はサポートされていません。 <br><br> レプリケーションの有効化に関する既知の問題。 [詳細情報。](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS キーのローテーション | サポートされていません | ストレージ アカウントの SAS キーがローテーションされている場合は、レプリケーションを無効にしてからもう一度有効にする必要があります。 |

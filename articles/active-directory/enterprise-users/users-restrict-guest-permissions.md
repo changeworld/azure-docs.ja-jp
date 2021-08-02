@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 01/14/2020
+ms.date: 06/01/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b93da489d1d2cbaa96ea8ed99b096ea8b7af45e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f1b9ceb41300d8a53d192602812f1e3c04017609
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746155"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371465"
 ---
-# <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)
+# <a name="restrict-guest-access-permissions-in-azure-active-directory"></a>Azure Active Directory でゲストのアクセス許可を制限する
 
-Azure Active Directory (Azure AD) を使用すると、Azure AD 内の組織で外部のゲスト ユーザーに表示される内容を制限することができます。 既定では、ゲスト ユーザーは Azure AD で制限されたアクセス許可レベルに設定されますが、メンバー ユーザーの既定値は、既定のユーザー アクセス許可の完全なセットになります。 これは、Azure AD 組織の外部コラボレーション設定における新しいゲスト ユーザーのアクセス許可レベルのプレビューであり、さらに制限されたアクセスが可能になります。そのため、ゲスト アクセスの選択肢は次のようになります。
+Azure Active Directory (Azure AD) を使用すると、Azure AD 内の組織で外部のゲスト ユーザーに表示される内容を制限することができます。 既定では、ゲスト ユーザーは Azure AD で制限されたアクセス許可レベルに設定されますが、メンバー ユーザーの既定値は、ユーザー アクセス許可の完全なセットになります。 これは、Azure AD 組織の外部コラボレーション設定における新しいゲスト ユーザーのアクセス許可レベルであり、さらに制限されたアクセスが可能になります。そのため、ゲスト アクセスのレベルは次のようになります。
 
 アクセス許可レベル         | アクセス レベル | 値
 ----------------         | ------------ | -----

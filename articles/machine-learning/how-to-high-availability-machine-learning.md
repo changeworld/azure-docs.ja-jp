@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: 7114d01ec165b3c31632b0465f3a98dd834ce1e8
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 1cdc286376d53bcf6491cd6d29f74a62df8b68fb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804386"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967677"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>事業継続とディザスター リカバリーのためのフェールオーバー
 
@@ -150,12 +150,12 @@ Azure Machine Learning での実行は、実行仕様によって定義されま
       > スタジオ デザイナーで作成されたパイプラインは、現在コードとしてエクスポートできません。
 
 * 構成をコードとして管理します。
-    * ワークスペースへの参照をハードコーディングすることは避けてください。 代わりに、[構成ファイル](how-to-configure-environment.md#workspace)を使用してワークスペース インスタンスへの参照を構成し、[Workspace.from_config()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace#remarks) を使用してワークスペースを初期化します。 プロセスを自動化するには、[Azure CLI 機械学習向け拡張機能](reference-azure-machine-learning-cli.md)のコマンドである [az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder#ext_azure_cli_ml_az_ml_folder_attach) を使用します。
-    * [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig) や [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)) などの実行の送信ヘルパーを使用します。
-    * [Environments.save_to_directory()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)#save-to-directory-path--overwrite-false-) を使用して、環境の定義を保存します。
+    * ワークスペースへの参照をハードコーディングすることは避けてください。 代わりに、[構成ファイル](how-to-configure-environment.md#workspace)を使用してワークスペース インスタンスへの参照を構成し、[Workspace.from_config()](/python/api/azureml-core/azureml.core.workspace.workspace#remarks) を使用してワークスペースを初期化します。 プロセスを自動化するには、[Azure CLI 機械学習向け拡張機能](reference-azure-machine-learning-cli.md)のコマンドである [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext_azure_cli_ml_az_ml_folder_attach) を使用します。
+    * [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) や [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)) などの実行の送信ヘルパーを使用します。
+    * [Environments.save_to_directory()](/python/api/azureml-core/azureml.core.environment(class)#save-to-directory-path--overwrite-false-) を使用して、環境の定義を保存します。
     * カスタム Docker イメージを使用する場合は、Dockerfile を使用します。
-    * [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)) クラスを使用して、ソリューションで使用されるデータ [パス](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath)のコレクションを定義します。
-    * [Inferenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig) クラスを使用して、モデルを推論エンドポイントとしてデプロイします。
+    * [Dataset](/python/api/azureml-core/azureml.core.dataset(class)) クラスを使用して、ソリューションで使用されるデータ [パス](/python/api/azureml-core/azureml.data.datapath)のコレクションを定義します。
+    * [Inferenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) クラスを使用して、モデルを推論エンドポイントとしてデプロイします。
 
 ## <a name="initiate-a-failover"></a>フェールオーバーの開始
 
@@ -178,12 +178,12 @@ Azure Machine Learning では、ワークスペース インスタンス間で�
 
 | アーティファクト | エクスポート | [インポート] |
 | ----- | ----- | ----- |
-| モデル | [az ml model download --model-id {ID} --target-dir {PATH}](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download) | [az ml model register –name {NAME} --path {PATH}](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model) |
-| 環境 | [az ml environment download -n {NAME} -d {PATH}](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment#ext_azure_cli_ml_az_ml_environment_download) | [az ml environment register -d {PATH}](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment#ext_azure_cli_ml_az_ml_environment_register) |
-| Azure ML パイプライン (コード生成) | [az ml pipeline get --path {PATH}](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline#ext_azure_cli_ml_az_ml_pipeline_get) | [az ml pipeline create --name {NAME} -y {PATH}](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline#ext_azure_cli_ml_az_ml_pipeline_create)
+| モデル | [az ml model download --model-id {ID} --target-dir {PATH}](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download) | [az ml model register –name {NAME} --path {PATH}](/cli/azure/ext/azure-cli-ml/ml/model) |
+| 環境 | [az ml environment download -n {NAME} -d {PATH}](/cli/azure/ext/azure-cli-ml/ml/environment#ext_azure_cli_ml_az_ml_environment_download) | [az ml environment register -d {PATH}](/cli/azure/ext/azure-cli-ml/ml/environment#ext_azure_cli_ml_az_ml_environment_register) |
+| Azure ML パイプライン (コード生成) | [az ml pipeline get --path {PATH}](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext_azure_cli_ml_az_ml_pipeline_get) | [az ml pipeline create --name {NAME} -y {PATH}](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext_azure_cli_ml_az_ml_pipeline_create)
 
 > [!TIP]
-> * "__登録済みのデータセット__" は、ダウンロードしたり移動したりすることができません。 これには中間パイプライン データセットなど、Azure ML によって生成されたデータセットが含まれます。 ただし、両方のワークスペースからアクセスできたり、基になるデータ ストレージがレプリケートされたりする共有ファイルの場所を参照するデータセットは、両方のワークスペースに登録できます。 データセットを登録するには、[az ml dataset register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset#ext_azure_cli_ml_az_ml_dataset_register) を使用します。
+> * "__登録済みのデータセット__" は、ダウンロードしたり移動したりすることができません。 これには中間パイプライン データセットなど、Azure ML によって生成されたデータセットが含まれます。 ただし、両方のワークスペースからアクセスできたり、基になるデータ ストレージがレプリケートされたりする共有ファイルの場所を参照するデータセットは、両方のワークスペースに登録できます。 データセットを登録するには、[az ml dataset register](/cli/azure/ext/azure-cli-ml/ml/dataset#ext_azure_cli_ml_az_ml_dataset_register) を使用します。
 >
 > * "__実行の出力__" は、ワークスペースに関連付けられた既定のストレージ アカウントに格納されます。 サービス停止時にスタジオ UI から実行の出力にアクセスできなくなる可能性がありますが、このときストレージ アカウントを使用して、データに直接アクセスできます。 BLOB に格納されているデータの操作の詳細については、「[Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する](../storage/blobs/storage-quickstart-blobs-cli.md)」を参照してください。
 ## <a name="next-steps"></a>次のステップ

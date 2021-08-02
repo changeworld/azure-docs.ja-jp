@@ -2,14 +2,14 @@
 title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 00ca0579ee47ae38e40e966c818acfb7b48f6c5f
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 8feda70f346347a3559e2696d2912d2a976b0a63
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015593"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890307"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -49,6 +49,12 @@ Azure では、セキュリティ更新プログラムが夜間スケジュー�
 ### <a name="windows-server-nodes"></a>Windows Server ノード
 
 Windows Server ノードでは、Windows Update が自動的に実行され、最新の更新プログラムが適用されることはありません。 Windows Update のリリース サイクルと独自の検証プロセス前後の定期的スケジュールで、AKS クラスター内のクラスターと Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server イメージと修正プログラムを実行するノードが作成されて、古いノードが削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
+
+### <a name="are-there-additional-security-threats-relevant-to-aks-that-customers-should-be-aware-of"></a>顧客が知っておく必要がある、AKS に関連するセキュリティ上の新たな脅威はありますか?
+
+Microsoft では、[Azure Security Center](https://azure.microsoft.com/services/security-center/) などのサービスを通じて、ワークロードをセキュリティで保護するために実行できる追加のアクションに関するガイダンスを提供しています。 お客様が知っておく必要がある、AKS と Kubernetes に関連するセキュリティ上の新たな脅威の一覧については、次の記事を参照してください。
+
+* [Kubeflow を標的とした新たな大規模キャンペーン](https://techcommunity.microsoft.com/t5/azure-security-center/new-large-scale-campaign-targets-kubeflow/ba-p/2425750) - 2021 年 6 月 8 日
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?
 
@@ -199,7 +205,7 @@ AKS には、このような構成に耐え、そこから復旧するための�
 
 ## <a name="can-i-use-custom-vm-extensions"></a>カスタム VM 拡張機能を使用できますか?
 
-Log Analytics エージェントは、Microsoft によって管理される拡張機能であるため、サポートされています。 それ以外は、いいえです。AKS はマネージド サービスであり、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントをインストールするには、Kubernetes API とメカニズムを使用します。 たとえば、必要なコンポーネントをインストールするには、デーモンセットを使用します。
+いいえ。AKS はマネージド サービスであり、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントをインストールするには、Kubernetes API とメカニズムを使用します。 たとえば、必要なコンポーネントをインストールするには、デーモンセットを使用します。
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS によって、クラスターのリージョン外に格納される顧客データはありますか?
 
@@ -277,6 +283,9 @@ spec:
 
 この問題は Kubernetes v1.20 で解決されました。詳細については、[Kubernetes 1.20:ボリュームの権限変更の詳細制御](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/)に関するページを参照してください。
 
+## <a name="can-i-use-fips-cryptographic-libraries-with-deployments-on-aks"></a>AKS へのデプロイで FIPS 暗号化ライブラリを使用できますか?
+
+現在、FIPS 対応ノードは、Linux ベースのノード プールでプレビューで利用できます。 詳細については、「[FIPS 対応ノード プール (プレビュー) を追加する](use-multiple-node-pools.md#add-a-fips-enabled-node-pool-preview)」を参照してください。
 
 <!-- LINKS - internal -->
 

@@ -6,14 +6,14 @@ services: media-services
 author: Juliako
 manager: femila
 ms.topic: article
-ms.date: 05/06/2021
+ms.date: 05/25/2021
 ms.author: juliako
-ms.openlocfilehash: 620ebb81462f807b46c12aeee596e8873c99a1e4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1c4b96bf7874c5ade93601f7ff40238ef04cb7ee
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386783"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966673"
 ---
 # <a name="video-analyzer-for-media-frequently-asked-questions"></a>Video Analyzer for Media についてよく寄せられる質問
 
@@ -102,6 +102,12 @@ Video Analyzer for Media を利用できる Azure リージョンについては
 
 複数のオーディオ ストリームがある場合、Video Analyzer for Media では最初に検出されたストリームだけが処理されます。 Video Analyzer for Media で処理されるオーディオ ストリームでは、さまざまなチャネル (存在する場合) が取得され、モノとしてまとめて処理されます。 ストリーム/チャネルの操作では、インデックスを付ける前に、ファイルに ffmpeg コマンドを使用できます。
 
+### <a name="can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall"></a>Media Services アカウントに接続されているストレージ アカウントを、ファイアウォールの内側に配置することはできますか。
+
+有料の Video Analyzer for Media アカウントでは、ストレージ アカウントに接続されている指定の Media Services アカウントが使用されます。 現在、ファイアウォールの内側にある接続されたストレージ アカウントを使用するには、正確な手順を Video Analyzer for Media のサポートに問い合わせる必要があります。 
+
+Azure portal で新しいサポート リクエストを開くには、[サポート リクエスト](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)に移動してください。
+
 ### <a name="what-is-the-sla-for-video-analyzer-for-media"></a>Video Analyzer for Media の SLA はどうなっていますか。
 
 Video Analyzer for Media については Azure Media Service の SLA が適用されます。[SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) に関するページを参照してください。 SLA は Video Analyzer for Media の有料アカウントのみに適用され、無料試用版には適用されません。
@@ -136,7 +142,7 @@ Video Analyzer for Media については Azure Media Service の SLA が適用�
 
 はい、コンテンツとその分析情報は、その Azure リージョン内に保持されます (シンガポールとブラジル南部リージョンを除く)。ただし、複数の Azure リージョンが使用されるように Azure サブスクリプションを手動構成した場合を除きます。
 
-リージョン内の顧客データは、BCDR のために、[ペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)にレプリケートされます。
+リージョン内の顧客データは、BCDR のために、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md#azure-regional-pairs)にレプリケートされます。
 
 ### <a name="what-is-the-privacy-policy-for-video-analyzer-for-media"></a>Video Analyzer for Media のプライバシー ポリシーはどうなっていますか。
 

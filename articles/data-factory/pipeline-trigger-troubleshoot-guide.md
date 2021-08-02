@@ -7,12 +7,12 @@ ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: d9827eab8c9d6187c78a979591f2c7ee0cad99e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aaaa9f2e82bb8db0ce4851359d7fb97d475f4e98
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741889"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812737"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプライン オーケストレーションおよびトリガーのトラブルシューティング
 
@@ -190,6 +190,16 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 * 長いキューが生成される可能性のある、マッピング データ フローに関するエラー メッセージが表示される場合は、[データ フローのトラブルシューティング ガイド](./data-flow-troubleshoot-guide.md)に関するページを参照してください。
 * 長いキューが生成される可能性のある、Databricks、カスタム アクティビティ、HDI などの他のアクティビティに関するエラー メッセージが表示される場合は、[アクティビティのトラブルシューティング ガイド](./data-factory-troubleshoot-guide.md)に関するページを参照してください。
 * 長いキューが生成される可能性のある、SSIS パッケージの実行に関するエラー メッセージが表示される場合は、Azure-SSIS の[パッケージ実行トラブルシューティング ガイド](./ssis-integration-runtime-ssis-activity-faq.md)および [Integration Runtime 管理トラブルシューティング ガイド](./ssis-integration-runtime-management-troubleshoot.md)に関するページで詳細を確認してください。
+
+### <a name="error-message---codebadrequest-messagenull"></a>エラー メッセージ - "code":"BadRequest", "message":"null"
+
+**原因**
+
+これは、management.azure.com にヒットした JSON ペイロードが破損しているために発生するユーザー エラーです。 ユーザー呼び出しが ADF サービス レイヤーに到達しなかったため、ログは保存されません。
+
+**解像度**
+
+Edge/Chrome ブラウザーの **開発者ツール** を使用して、ADF ポータルから API 呼び出しのネットワーク トレースを実行します。 問題のある JSON ペイロードが表示されます。これは、特殊文字 ($ など)、スペース、およびその他の種類のユーザー入力が原因である可能性があります。 文字列式を修正したら、ブラウザーで残りの ADF 使用状況呼び出しに進みます。
 
 
 ## <a name="next-steps"></a>次のステップ

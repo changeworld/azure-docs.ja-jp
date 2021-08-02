@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
-ms.date: 05/25/2021
-ms.openlocfilehash: fe14c28d817d9c0a2e832d331af9130c935affb8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/04/2021
+ms.openlocfilehash: 6e3fd0c2dafd9d174b79206cb5482450fee74f8e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386436"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984050"
 ---
 # <a name="run-the-emulator-on-docker-for-linux-preview"></a>Docker for Linux 上でエミュレーターを実行する (プレビュー)
 
@@ -67,27 +67,13 @@ Azure Cosmos DB Emulator はローカルの開発者ワークステーション�
     ```bash
     curl -k https://$ipaddr:8081/_explorer/emulator.pem > emulatorcert.crt
     ```
-    また、自己署名エミュレーター証明書をダウンロードする上記のエンドポイントは、エミュレーター エンドポイントが別のアプリケーションから要求を受信する準備ができているときのシグナル通知に使用することもできます。
 
-1. ご利用の Linux ディストリビューションの、カスタム証明書が格納されているフォルダーに CRT ファイルをコピーします。 一般に、Debian ディストリビューションでは `/usr/local/share/ca-certificates/` に格納されます。
-
-   ```bash
-   cp YourCTR.crt /usr/local/share/ca-certificates/
-   ```
-
-1. TLS/SSL 証明書を更新します。これによって `/etc/ssl/certs/` フォルダーが更新されます。
-
-   ```bash
-   update-ca-certificates
-   ```
-
-Java ベースのアプリケーションの場合は、証明書を [Java の信頼されたストア](local-emulator-export-ssl-certificates.md)にインポートする必要があります。
 
 ## <a name="consume-the-endpoint-via-ui"></a><a id="consume-endpoint-ui"></a>UI を介してエンドポイントを使用する
 
 エミュレーターは、そのエンドポイントへの接続をセキュリティで保護するために自己署名証明書を使用しており、手動で信頼する必要があります。 目的の Web ブラウザーを使用して UI を介してエンドポイントを使用するには、次の手順を使用します。
 
-1. 必ず、エミュレーターの自己署名証明書をダウンロードしてください
+1. エミュレーターの自己署名証明書がダウンロードされていることを確認してください。
 
    ```bash
    curl -k https://$ipaddr:8081/_explorer/emulator.pem > emulatorcert.crt
@@ -99,7 +85,9 @@ Java ベースのアプリケーションの場合は、証明書を [Java の�
 
 1. *emulatorcert.crt* がキーチェーンに読み込まれたら、**localhost** 名をダブルクリックし、信頼設定を **[Always Trust]** に変更します。
 
-1. これで `https://localhost:8081/_explorer/index.html` または `https://{your_local_ip}:8081/_explorer/index.html` を参照すると、エミュレーターの接続文字列を取得できます。
+1. これで、`https://localhost:8081/_explorer/index.html` または `https://{your_local_ip}:8081/_explorer/index.html` を参照して、エミュレーターへの接続文字列を取得できます。
+
+必要に応じて、アプリケーションで SSL 検証を無効にすることができます。 これは、開発目的でのみ推奨されます。運用環境で実行するときは無効にしないでください。
 
 ## <a name="run-the-linux-emulator-on-linux-os"></a><a id="run-on-linux"></a>Linux OS で Linux Emulator を実行する
 
@@ -189,9 +177,35 @@ sudo apt-get install net-tools
 
 - エミュレーターの自己署名証明書が[キーチェーン](#consume-endpoint-ui)に適切に追加されていることを確認します。
 
-- エミュレーターの自己署名証明書が予期された場所に適切にインポートされていることを確認します。
-  - .NET: [証明書に関するセクション](#run-on-linux)を参照してください
-  - Java: [Java 証明書ストアに関するセクション](#run-on-linux)を参照してください
+- Java アプリケーションの場合、[Java 証明書ストア セクション](#run-on-linux)に証明書をインポートしたことを確認します。
+
+- .NET アプリケーションの場合、SSL 検証を無効にすることができます。
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1+](#tab/ssl-netstd21)
+
+.NET Standard 2.1 以降と互換性のあるフレームワークで実行されているアプリケーションの場合は、`CosmosClientOptions.HttpClientFactory` を活用できます。
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET Standard 2.0](#tab/ssl-netstd20)
+
+.NET Standard 2.0 と互換性のあるフレームワークで実行されているアプリケーションの場合は、`CosmosClientOptions.HttpClientFactory` を活用できます。
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+---
+
+#### <a name="my-nodejs-app-is-reporting-a-self-signed-certificate-error"></a>Node.js アプリから自己署名証明書エラーが報告される
+
+コンテナーの IP アドレスなど、`localhost` 以外のアドレスを使用してエミュレーターに接続しようとすると、証明書がインストールされている場合でも、Node.js で証明書の自己署名に関するエラーが発生します。
+
+`NODE_TLS_REJECT_UNAUTHORIZED` 環境変数を `0` に設定することによって、TLS 検証を無効にすることができます。
+
+```bash
+NODE_TLS_REJECT_UNAUTHORIZED=0
+```
+
+このフラグは、Node.js の TLS を無効にするため、ローカル開発にのみ推奨されます。 詳細については、[Node.js に関するドキュメント](https://nodejs.org/api/cli.html#cli_node_tls_reject_unauthorized_value)および [Cosmos DB Emulator 証明書に関するドキュメント](local-emulator-export-ssl-certificates.md#how-to-use-the-certificate-in-nodejs)を参照してください。
 
 #### <a name="the-docker-container-failed-to-start"></a>Docker コンテナーを開始できない
 

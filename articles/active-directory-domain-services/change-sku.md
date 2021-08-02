@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 320bd87aa78d26cee44c48f27365febd1dd426ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bdf660d57f4fa8cb3a804ff55028dc442f96b8b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96620292"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786138"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>既存の Azure Active Directory Domain Services マネージド ドメインの SKU を変更する
 
@@ -42,7 +42,7 @@ Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォ
 
 次に例を示します。
 
-* *Premium* SKU に 2 つのフォレストの信頼を作成した場合、*Standard* SKU に変更することはできません。 *Standard* SKU は、フォレストの信頼をサポートしていません。
+* *Standard* SKU に下げることはできません。 Azure AD DS リソース フォレストでは、*Standard* SKU はサポートされていません。 
 * また、*Premium* SKU に 7 つの信頼を作成した場合、*Enterprise* SKU に変更することはできません。 *Enterprise SKU* は、最大 5 つの信頼をサポートしています。
 
 これらの制限の詳細については、[Azure AD DS SKU の機能と制限][concepts-sku]に関する記事を参照してください。

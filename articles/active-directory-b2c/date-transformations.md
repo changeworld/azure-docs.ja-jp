@@ -10,12 +10,13 @@ ms.topic: reference
 ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: b2c-support
+ms.openlocfilehash: ccf8c5fceea71c3781ae420c1c36c629ebb97a7b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85202553"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783821"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -31,7 +32,7 @@ ms.locfileid: "85202553"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | string | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
 | InputClaim | rightOperand | string | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
-| InputParameter | AssertIfEqualTo | boolean | 左オペランドが右オペランドと等しい場合にこのアサーションを渡すかどうかを指定します。 |
+| InputParameter | AssertIfEqualTo | boolean | 左オペランドが右オペランドと等しい場合にこのアサーションでエラーをスローするかどうかを指定します。 左オペランドが右オペランドと等しく、値が `true` に設定されている場合、エラーがスローされます。 指定できる値は `true`(既定値) または`false`です。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 右オペランドがない場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | INT | 2 つの日時の間で時刻が等しいと見なすことができるミリ秒数を指定します (たとえば、時刻の誤差を説明)。 |
 
@@ -39,7 +40,7 @@ ms.locfileid: "85202553"
 
 ![AssertStringClaimsAreEqual の実行](./media/date-transformations/assert-execution.png)
 
-次の例では、`currentDateTime` 要求を `approvedDateTime` 要求と比較します。 `currentDateTime` が `approvedDateTime` より後の場合にエラーがスローされます。 変換で、値が 5 分間 (30,000 ミリ秒) の差以内である場合に等価として扱われます。
+次の例では、`currentDateTime` 要求を `approvedDateTime` 要求と比較します。 `currentDateTime` が `approvedDateTime` より後の場合にエラーがスローされます。 変換で、値が 5 分間 (30,000 ミリ秒) の差以内である場合に等価として扱われます。 `AssertIfEqualTo` が `false` に設定されているので、値が等しい場合、エラー はスローされません。
 
 ```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -54,6 +55,10 @@ ms.locfileid: "85202553"
   </InputParameters>
 </ClaimsTransformation>
 ```
+
+> [!NOTE]
+> 上記の例では、`AssertIfEqualTo`入力パラメーターを削除し、`currentDateTime` が `approvedDateTime` と等しい場合、エラーがスローされます。 `AssertIfEqualTo`既定値は `true` です。
+>
 
 `login-NonInteractive` 検証技術プロファイルによって、`AssertApprovedDateTimeLaterThanCurrentDateTime` 要求変換が呼び出されます。
 ```xml

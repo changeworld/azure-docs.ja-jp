@@ -3,15 +3,15 @@ title: Azure Automation の Runbook の種類
 description: この記事では、Azure Automation で使用できる Runbook の種類と、使用する種類を決定する際の考慮事項について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 05/17/2021
+ms.date: 06/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9528443e7e89ecb91db70736d2051f813b130cce
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c64a712cc916cad0f6f6fec77f33fcb422f834fb
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073182"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982972"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
@@ -121,12 +121,15 @@ Python 3 の Runbook は、次の Azure グローバル インフラストラク
 
 * Python スクリプトについて理解している必要があります。
 * サードパーティ製ライブラリを使用するには、Automation アカウントに[パッケージをインポートする](python-packages.md)必要があります。
-* PowerShell/PowerShell ワークフローで **Start-AutomationRunbook**  コマンドレットを使用して Python 3 Runbook (プレビュー) を開始することはできません。 この制限を回避するには、Az.Automation モジュールから **Start-AzAutomationRunbook** コマンドレットを使用するか、または AzureRm.Automation モジュールから  **Start-AzureRmAutomationRunbook** コマンドレットを使用します。  
+* PowerShell/PowerShell ワークフロー内で **Start-AutomationRunbook**  コマンドレットを使用して、Python 3 Runbook (プレビュー) を開始することはできません。 この制限を回避するには、Az.Automation モジュールから **Start-AzAutomationRunbook** コマンドレットを使用するか、または AzureRm.Automation モジュールから  **Start-AzureRmAutomationRunbook** コマンドレットを使用します。  
 * Azure Automation では  **sys.stderr** がサポートされていません。
 
 ### <a name="known-issues"></a>既知の問題
 
-Python 3 のジョブが例外メッセージ *invalid interpreter executable path* (無効なインタープリターの実行可能ファイルのパス) で失敗することがあります。 この例外は、ジョブが遅延している場合、開始して 10 分以上経っている場合、または **Start-AutomationRunbook** を使用して Python 3 Runbook を開始している場合に発生することがあります。 ジョブが遅延している場合は、Runbook を再度開始するだけで十分です。
+クラウド ジョブの場合、Python 3 のジョブが例外メッセージ `invalid interpreter executable path` で失敗することがあります。 この例外は、ジョブが遅延している場合、開始して 10 分以上経っている場合、または **Start-AutomationRunbook** を使用して Python 3 Runbook を開始している場合に発生することがあります。 ジョブが遅延している場合は、Runbook を再度開始するだけで十分です。 次の手順を使用すると、ハイブリッド ジョブが問題なく動作します。
+
+1. `PYTHON_3_PATH` という新しい環境変数を作成し、インストール フォルダーを指定します。 たとえば、インストール フォルダーが `C:\Python3` の場合、このパスを変数に追加する必要があります。
+1. 環境変数の設定後に、マシンを再起動してください。
 
 ## <a name="next-steps"></a>次のステップ
 

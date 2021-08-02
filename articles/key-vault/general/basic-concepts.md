@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 863f98e643a7978856c03f5efe95736e6787f977
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: a8f0088077d5b7d0ec9fbc4336ee68a3459845b1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814408"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411811"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault の基本的な概念
 
@@ -32,7 +32,7 @@ Azure Key Vault は、シークレットを安全に保管し、それにアク�
 
 - **Managed HSM Crypto Officer とユーザー**:Managed HSM でキーを使用して暗号操作を実行するユーザーまたはサービス プリンシパルに通常割り当てられる組み込みロール。 Crypto User は新しいキーを作成できますが、キーを削除することはできません。
 
-- **Managed HSM Crypto サービスの暗号化**:顧客が管理するキーで保存データを暗号化するためのサービス アカウント管理サービス ID (ストレージ アカウントなど) に通常割り当てられる組み込みロール。
+- **Managed HSM 暗号化サービスの暗号化ユーザー**: 顧客が管理するキーで保存データを暗号化するためのサービス アカウント管理サービス ID (ストレージ アカウントなど) に通常割り当てられる組み込みロール。
 
 - **リソース**:リソースは、Azure を通じて使用できる、管理可能な要素です。 一般的な例として、仮想マシン、ストレージ アカウント、Web アプリ、データベース、仮想ネットワークなどがあります。 他にもさまざまなリソースが存在します。
 
@@ -53,6 +53,11 @@ Key Vault で操作を行うには、まず、それを認証する必要があ�
 - **サービス プリンシパルと証明書**:サービス プリンシパルと、Key Vault にアクセスできる関連証明書を使用することができます。 アプリケーションの所有者または開発者が証明書をローテーションする必要があるため、この手法はお勧めできません。
 - **サービス プリンシパルとシークレット:** サービス プリンシパルとシークレットを使用して Key Vault に対する認証を行うことはできますが、これはお勧めできません。 Key Vault に対する認証で使用されるブートストラップ シークレットを自動的にローテーションするのは困難です。
 
+## <a name="encryption-of-data-in-transit"></a>転送中のデータの暗号化
+
+Azure Key Vault では、Azure Key Vault とクライアント間をデータが移動するときにデータを保護するために、[トランスポート層セキュリティ](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) プロトコルが強制されます。 クライアントは、Azure Key Vault との TLS 接続をネゴシエートします。 TLS には、強力な認証、メッセージの機密性、整合性 (メッセージの改ざん、傍受、偽造の検出が有効)、相互運用性、アルゴリズムの柔軟性、デプロイと使用のしやすさといったメリットがあります。
+
+[Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) は、顧客のクライアント システムと Microsoft クラウド サービスとの間の接続を一意のキーで保護します。 接続には RSA ベースの 2,048 ビット長の暗号化キーも使用します。 この組み合わせにより、転送中のデータの傍受やデータへのアクセスを困難にしています。
 
 ## <a name="key-vault-roles"></a>Key Vault の役割
 

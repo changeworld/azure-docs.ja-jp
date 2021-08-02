@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 447f85657abadb688cc9415b54ba765561daa374
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 3fa07445b667d59fba81040c70a111c4a0f94670
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161755"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580046"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure Virtual WAN に移行する
 

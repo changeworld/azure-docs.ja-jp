@@ -4,14 +4,14 @@ description: この記事では、Azure Automation についてよく寄せら�
 services: automation
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 06/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ab4ce9b8691f27fe392d2e3099677d45900d2e3
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 9e9168f7ef3cf49f4c13fdc67807061f23b6b402
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834230"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984016"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation についてよく寄せられる質問
 
@@ -33,7 +33,7 @@ Red Hat Enterprise Linux で、除外するパッケージ名は `redhat-release
 
 Update Management では更新プログラムの強化がクラウドで実行されるため、Update Management で一部の更新プログラムに対して、セキュリティへの影響ありというフラグを設定できますが、ローカル マシンにはその情報がありません。 重大な更新プログラムを Linux マシンに適用する場合、そのマシンにセキュリティへの影響ありとマークされていない更新プログラムが存在する可能性があり、そのため、これらの更新プログラムは適用されません。 ただし、Update Management には関連する更新プログラムに関する追加情報があるため、そのマシンは引き続き非対応として報告されることがあります。
 
-更新プログラムの分類ごとの更新プログラムのデプロイは、RTM バージョンの CentOS では動作しません。 CentOS に更新プログラムを正しくデプロイするには、更新プログラムが確実に適用されるように、すべての分類を選択します。 SUSE では、分類として **[他の更新プログラム]** のみを選択すると、その他のセキュリティ更新プログラムが zypper (パッケージ マネージャー) に関連している場合、またはその依存関係がまず必要になる場合は、それらがインストールされることがあります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行してから、更新プログラムのログでデプロイを確認する必要があります。
+更新プログラムの分類ごとの更新プログラムのデプロイは、RTM バージョンの CentOS では動作しません。 CentOS に更新プログラムを正しくデプロイするには、更新プログラムが確実に適用されるように、すべての分類を選択します。 SUSE では、分類として **[他の更新プログラム]** のみを選択すると、その他のセキュリティ更新プログラムが zypper (パッケージ マネージャー) に関連している場合、またはその依存関係がまず必要になる場合に、それらの更新プログラムがインストールされる可能性があります。 この動作は、zypper の制限です。 場合によっては、更新プログラムのデプロイを再実行してから、更新プログラムのログでデプロイを確認する必要があります。
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>Azure テナントの境界を越えて更新プログラムをデプロイすることはできますか?
 
@@ -59,23 +59,59 @@ Windows Hybrid Runbook Worker 上のハイブリッド ジョブの場合、使�
 
 ### <a name="can-python-2-and-python-3-runbooks-run-in-same-automation-account"></a>Python 2 と Python 3 の Runbook は同じ Automation アカウントで実行できますか?
 
-はい。同じ Automation アカウントで Python 2 と Python 3 の Runbook を使用することについて、制限はありません。  
+はい。Python 2 と Python 3 の Runbook を同じ Automation アカウントで使用することに制限はありません。  
 
 ### <a name="what-is-the-plan-for-migrating-existing-python-2-runbooks-and-packages-to-python-3"></a>既存の Python 2 Runbook およびパッケージの Python 3 への移行に関して、どのような予定がありますか?
 
-Azure Automation では、Python 2 Runbook およびパッケージを Python 3 に移行する予定はありません。 この移行は、ご自身で実行していただく必要があります。 既存および新しい Python 2 Runbook とパッケージは、引き続き機能します。
+Azure Automation では、Python 2 Runbook およびパッケージを Python 3 に移行する予定はありません。 この移行は、お客様ご自身で実行する必要があります。 既存および新しい Python 2 Runbook とパッケージは、引き続き機能します。
 
 ### <a name="what-are-the-packages-supported-by-default-in-python-3-environment"></a>Python 3 環境では、既定でどのようなパッケージがサポートされますか?
 
 Azure パッケージ 4.0.0 が Python 3 Automation 環境に既定でインストールされます。 より新しいバージョンの Azure パッケージを手動でインポートし、既定のバージョンを上書きすることができます。
 
-### <a name="what-if-i-run-a-python-3-runbook-that-references-a-python-2-package-or-vice-versa"></a>Python 2 パッケージを参照する Python 3 Runbook (またはその逆) を実行した場合、どうなりますか?
+### <a name="what-if-i-run-a-python-3-runbook-that-references-a-python-2-package-or-the-other-way-around"></a>Python 2 パッケージを参照する Python 3 Runbook (またはその逆) を実行した場合、どうなりますか?
 
 Python 2 と Python 3 の実行環境は異なります。 Python 2 Runbook を実行している間は Python 2 パッケージのみをインポートでき、Python 3 についても同様です。
 
 ### <a name="how-do-i-differentiate-between-python-2-and-python-3-runbooks-and-packages"></a>Python 2 と Python 3 の Runbook およびパッケージを区別するにはどうすればよいですか?
 
 Python 3 は新しい Runbook の定義であり、これによって Python 2 と Python 3 の Runbook を区別できます。 同様に、別のパッケージの種類が Python 3 パッケージに導入されています。
+
+### <a name="how-does-a-hybrid-runbook-worker-know-which-version-of-python-to-run-when-both-python2-and-python3-are-installed"></a>Python2 と Python3 の両方がインストールされている場合、Hybrid Runbook Worker は実行する Python のバージョンをどのようにして認識しますか?
+
+Windows Runbook Worker では、Python 2 Runbook を実行するときに、`PYTHON_2_PATH` 環境変数が最初に検索され、それが有効な実行可能ファイルを参照しているかどうかが検証されます。 たとえば、インストール フォルダーが `C:\Python2` の場合、`C:\Python2\python.exe` が有効なパスであるかどうかがチェックされます。 見つからない場合は、`PATH` 環境変数が検索され、同様のチェックが実行されます。
+
+Python 3 の場合、`PYTHON_3_PATH` 環境変数が最初に検索された後、`PATH` 環境変数にフォールバックされます。
+
+Python の 1 つのバージョンだけを使用する場合は、`PATH` 変数にインストール パスを追加できます。 Runbook Worker で両方のバージョンを使用する場合は、`PYTHON_2_PATH` と `PYTHON_3_PATH` をそれらのバージョンのモジュールの場所に設定します。
+
+### <a name="how-does-a-hybrid-runbook-worker-locate-the-python-interpreter"></a>Hybrid Runbook Worker では Python インタープリターをどのようにして見つけますか?
+
+Python モジュールの検索は、前述のように環境変数によって制御されます。
+
+### <a name="is-python-3-supported-in-source-control"></a>ソース管理で Python 3 はサポートされていますか?
+
+いいえ。 ソース管理は、Python 3 では現在サポートされていません。 既定では、Python Runbook は Python 2 Runbook として同期されます。
+
+### <a name="how-can-a-runbook-author-know-what-python-packages-are-available-in-an-azure-sandbox"></a>Runbook 作成者は、Azure サンドボックスで使用可能な Python パッケージをどのようにして確認できますか?
+
+次のコードを使用して、既定のインストール済みモジュールのリストを表示します。
+
+```python
+#!/usr/bin/env python3
+
+import pkg_resources
+installed_packages = pkg_resources.working_set
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+   for i in installed_packages])
+
+for package in installed_packages_list:
+    print(package)
+```
+
+### <a name="how-can-a-runbook-author-set-which-version-of-a-package-module-to-be-used-if-there-are-multiple-modules"></a>複数のモジュールがある場合、Runbook 作成者は、使用するパッケージ モジュールのバージョンをどのようにして設定すればよいですか?
+
+Automation アカウントに Python パッケージをインポートすることで、既定のバージョンをオーバーライドできます。 Automation アカウントにインポートされたバージョンが優先されます。
 
 ## <a name="next-steps"></a>次のステップ
 

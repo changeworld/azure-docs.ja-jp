@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights のクラシック リソース�
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 329cfed646a2dbc2a417c1468895de62088058f6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 3d6092d694d1c99ff7755dfcbec5c0edbfb7567f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316697"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077304"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>ワークスペースベースの Application Insights リソースに移行する
 
@@ -41,7 +41,7 @@ ms.locfileid: "108316697"
 
 既存のリソースを移行する必要がなく、代わりにワークスペースベースの Application Insights リソースを新しく作成する場合は、[ワークスペースベースのリソースの作成ガイド](create-workspace-resource.md)を使用してください。
 
-## <a name="pre-requisites"></a>前提条件 
+## <a name="pre-requisites"></a>前提条件
 
 - アクセス制御モードとして **`use resource or workspace permissions`** 設定が指定されている Log Analytics ワークスペース。 
 
@@ -76,6 +76,9 @@ ms.locfileid: "108316697"
 ![ワークスペース名](./media/create-workspace-resource/workspace-name.png)
 
 青いリンク テキストをクリックすると、関連付けられている Log Analytics ワークスペースに移動します。このワークスペースでは、新しい統合ワークスペース クエリ環境を利用できます。
+
+> [!NOTE]
+> ワークスペース ベースの Application Insights リソースに移行した後は、Application Insights の上限を使用するのではなく、[ワークスペースの日次上限](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)を使用してインジェストとコストを制限することをお勧めします。
 
 ## <a name="understanding-log-queries"></a>ログ クエリについて
 

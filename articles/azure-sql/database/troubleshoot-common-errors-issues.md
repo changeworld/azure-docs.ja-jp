@@ -3,19 +3,19 @@ title: Azure SQL Database との接続に関する一般的な問題のトラブ
 description: Azure SQL Database の接続の問題をトラブルシューティングし、Azure SQL Database または Azure SQL Managed Instance 固有のその他の問題を解決する手順について説明します
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: development
+ms.subservice: connect
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5953099567edc3ef0f09ae07fd2708b1ce748dd9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233374"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413611"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -248,13 +248,13 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 このエラー メッセージが繰り返し表示される場合は、これらの手順に従って問題を解決してみてください。
 
-1. sys.dm_exec_requests ビューを確認し、開いているセッションで total_elapsed_time 列の値が大きいものがないか調べます。 次の SQL スクリプトを実行して、この確認を行います。
+1. `sys.dm_exec_requests`高い値を持つオープン セッションを表示する`total_elapsed_time`列を選択します。 次の SQL スクリプトを実行して、この確認を行います。
 
    ```sql
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 動的管理関数と問題のあるクエリの session_id を使用して、ヘッド ブロッカーの **入力バッファー** を特定します。次に例を示します。
+2. [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 動的管理関数と問題のあるクエリの `session_id` を使用して、ヘッド ブロッカーの入力バッファーを特定します。次に例を示します。
 
    ```sql 
    SELECT * FROM sys.dm_exec_input_buffer (100,0);
@@ -262,7 +262,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 3. クエリを調整します。
 
-    > [!Note]
+    > [!NOTE]
     > Azure SQL Database におけるブロッキングのトラブルシューティングの詳細については、「[Azure SQL Database のブロックの問題の概要と解決策](understand-resolve-blocking.md)」を参照してください。
 
 また、クエリのバッチ処理も検討してください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](../performance-improve-use-batching.md)」を参照してください。
@@ -289,6 +289,10 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
   > [!NOTE]
   > インデックスの再構築の場合は、更新されるフィールドの平均サイズを、平均インデックス サイズに置き換える必要があります。
+
+  > [!NOTE]
+  > Azure SQL Database と Azure SQL Managed Instance でのフル トランザクション ログのトラブルシューティングの特定詳細については、「[Azure SQL Database と Azure SQL Managed Instance でのトランザクション ログ エラーのトラブルシューティング](troubleshoot-transaction-log-errors-issues.md)」を参照してください。
+
 
 ### <a name="error-40553-the-session-has-been-terminated-because-of-excessive-memory-usage"></a>エラー 40553:メモリの使用量が多すぎるため、セッションを終了しました
 
@@ -396,3 +400,8 @@ ClientConnectionId:<Client connection ID>
 
 - [Azure SQL Database 接続アーキテクチャ](./connectivity-architecture.md)
 - [Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御](./network-access-controls-overview.md)
+
+## <a name="see-also"></a>関連項目
+
+- [Azure SQL Database および Azure SQL Managed Instance のトランザクション エラーのトラブルシューティング](troubleshoot-transaction-log-errors-issues.md)
+- [SQL Database と SQL Managed Instance での一時的な接続エラーのトラブルシューティング](troubleshoot-common-connectivity-issues.md)

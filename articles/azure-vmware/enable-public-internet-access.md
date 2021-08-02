@@ -3,21 +3,22 @@ title: Azure VMware Solution でパブリック インターネット アクセ�
 description: この記事では、Azure Virtual WAN でパブリック IP 機能を使用する方法について説明します。
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: e5d4d73bf65842946e9c0f0c16869779e2e6f787
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c3900462862bea94bbad4f21cb2dcd7e439ba674
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108777001"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954385"
 ---
-# <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Azure VMware Solution でパブリック IP 機能を使用する方法
+# <a name="enable-public-internet-access-in-azure-vmware-solution"></a>Azure VMware Solution でパブリック インターネット アクセスを有効にする
 
-パブリック IP は、Azure VMware Solution 接続の新機能です。 これにより、Web サーバー、仮想マシン (VM)、およびパブリック ネットワーク経由でアクセス可能なホストなどのリソースが作成されます。 
+パブリック IP は、Azure VMware Solution 接続の機能です。 これにより、Web サーバー、仮想マシン (VM)、およびパブリック ネットワーク経由でアクセス可能なホストなどのリソースが作成されます。 
 
 パブリック インターネット アクセスは、次の 2 つの方法で有効にします。 
 
-- アプリケーションは、HTTP/HTTPS トラフィックの Application Gateway ロード バランサーでホストおよび公開することができます。
-- Azure Virtual WAN でパブリック IP 機能を使用して公開されます。
+- HTTP/HTTPS トラフィック用の Application Gateway ロード バランサーでアプリケーションをホスティングし、公開します。
+
+- Azure Virtual WAN でパブリック IP 機能を使用して公開します。
 
 Azure VMware Solution のプライベート クラウド デプロイの一環として、パブリック IP 機能を有効にすると、オートメーションで必要なコンポーネントが作成されて有効になります。
 
@@ -32,7 +33,9 @@ Azure VMware Solution のプライベート クラウド デプロイの一環�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure VMware Solution 環境
+
 - Azure VMware Solution 環境で実行されている Web サーバー。
+
 - Virtual WAN ハブのデプロイ用の重複しない新しい IP 範囲 (通常は `/24`)。
 
 ## <a name="reference-architecture"></a>参照アーキテクチャ
@@ -162,4 +165,4 @@ Web サーバーによって、その要求が受信され、要求された情�
 Azure VMware Solution でパブリック IP 機能を使用する方法について理解したので、次の事項の学習に進むことができます。
 
 - [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md) でパブリック IP アドレスを使用する。
-- [Azure VMware Solution への IPSec トンネルを作成する](create-ipsec-tunnel.md)。
+- [Azure VMware Solution への IPSec トンネルを作成する](./configure-site-to-site-vpn-gateway.md)。

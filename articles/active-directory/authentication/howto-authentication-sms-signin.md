@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b84d55e2d3a2f49a870c1e57eeed3c5c0caeba4a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 25ee91482ac17ac5e91715f5dfe6191c6ed4007a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530411"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982706"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Azure Active Directory を使用して SMS ベース認証用にユーザーを構成して有効にする 
 
@@ -38,14 +38,15 @@ ms.locfileid: "107530411"
     * [Enterprise Mobility + Security (EMS) E3 または E5][ems-licensing] または [Microsoft 365 (M365) E3 または E5][m365-licensing]
     * [Office 365 F3][o365-f3]
 
-## <a name="limitations"></a>制限事項
+## <a name="known-issues"></a>既知の問題
 
-SMS ベースの認証には、次の制限事項が適用されます。
+既知の問題の一部をここに挙げます。
 
 * 現在、SMS ベース認証には Azure AD Multi-Factor Authentication との互換性はありません。
 * Teams を除き、SMS ベース認証には、ネイティブな Office アプリケーションとの互換性はありません。
 * B2B アカウントの場合、SMS ベース認証はお勧めしません。
 * フェデレーション ユーザーは、ホーム テナントでは認証されません。 クラウドでのみ認証されます。
+* 既定のサインイン方法を電話番号に対するテキスト メッセージまたは音声通話にしている場合は、多要素認証時に、SMS コードか音声呼び出しを自動的に発信します。 2021 年 6 月現在、一部のアプリでは、**テキスト メッセージ** と **音声通話** のどちらかを選ぶよう、最初にユーザーに求めます。 このオプションにより、さまざまなアプリに対して必要以上に多くのセキュリティ コードを送信しなくて済みます。 既定のサインイン方法を Microsoft Authenticator アプリにしている場合は ([この方法を強くお勧めします](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752))、アプリから自動的に通知を送信します。
 
 ## <a name="enable-the-sms-based-authentication-method"></a>SMS ベースの認証方法を有効にする
 

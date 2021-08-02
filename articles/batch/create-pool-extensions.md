@@ -3,12 +3,12 @@ title: Batch プールで拡張機能を使用する
 description: 拡張機能は、プロビジョニング後の構成とバッチ計算ノードでのセットアップを容易にする小規模なアプリケーションです。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1bf9847af57347c143ee3d790d89988ba7cd48e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 406de8ea1c781ac742e7ca3fff8f84f03727a031
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416615"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476108"
 ---
 # <a name="use-extensions-with-batch-pools"></a>Batch プールで拡張機能を使用する
 
@@ -20,14 +20,14 @@ ms.locfileid: "100416615"
 
 - 拡張機能が使用されているプールでは[仮想マシン構成](nodes-and-pools.md#virtual-machine-configuration)を使用する必要があります。
 - CustomScript 拡張機能の種類は Azure Batch サービス用に予約されているため、オーバーライドできません。
+- 一部の拡張機能では、適切に機能するために、コンピューティング ノードのコンテキストでアクセス可能なプールレベルのマネージド ID が必要な場合があります。 拡張機能に該当する場合は、「[Batch プールでマネージド ID を構成する](managed-identity-pools.md)」を参照してください。
 
 ### <a name="supported-extensions"></a>サポートされる拡張機能
 
-次の拡張機能は、現在 Batch プールを作成するときにインストールできます。 
+次の拡張機能は、現在 Batch プールを作成するときにインストールできます。
 
 - [Linux](../virtual-machines/extensions/key-vault-linux.md) と [Windows ](../virtual-machines/extensions/key-vault-windows.md) の両方に対応した Azure Key Vault 拡張機能
 - [Linux](../virtual-machines/extensions/oms-linux.md) と [Windows](../virtual-machines/extensions/oms-windows.md) の両方に対応したログ分析および監視拡張機能
-- Azure セキュリティ パック
 
 サポート リクエストを開いて、追加のパブリッシャーや拡張機能の種類に対するサポートを要請できます。
 

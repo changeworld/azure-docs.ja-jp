@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/30/2021
+ms.date: 06/09/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc65fb99eebc5493331fed1b68b534a424f52b4b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2761262950c2a10709ccfa37b35a2d3e4c556359
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768087"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903489"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -80,6 +80,9 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 このセクションでは、SAP データ ソースへの Microsoft Power BI の統合と、SAP BW への Azure Data Factory の統合に関するドキュメントを紹介します。
 
 ## <a name="change-log"></a>変更履歴
+- 2021 年 6 月 9 日: 「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」の M192 ---_ v2 の VM SKU 名を修正
+- 2021 年 5 月 26 日: [SLES 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-suse.md)、[RHEL で ANF を使用した SAP HANA スケールアップの HA](./sap-hana-high-availability-netapp-files-red-hat.md)、および [RHEL 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関する記事を変更し、ANF 上で HANA を実行するために OS を準備するための構成を追加  
+- 2021 年 5 月 13 日: [Azure の SLES での Pacemaker のセットアップ](./high-availability-guide-suse-pacemaker.md)に関する記事を変更し、リソース エージェント azure-events の動作を明確化 
 - 2021 年 4 月 30 日: パッケージ python3-azure-mgmt-compute のバージョンに Azure Fence Agent との互換性のない変更が加えられた事に関する警告を含めるよう [Azure の SUSE に Pacemaker をセットアップする](./high-availability-guide-suse-pacemaker.md)方法に関する記事を変更 (SLES 15)  
 - 2021 年 4 月 27 日: [WSFC とファイル共有を使用した SAP ASCS/SCS インスタンス](./sap-high-availability-guide-wsfc-file-share.md)に関するページを変更し、重要な SAP ノートへのリンクを前提条件のセクションに追加
 - 2021 年 4 月 27 日: 「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」で、新しい Msv2 および Mdsv2 VM を HANA ストレージ構成に追加

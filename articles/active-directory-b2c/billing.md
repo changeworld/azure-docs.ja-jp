@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 02/01/2021
+ms.date: 05/28/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 623799b894846034dcf3f58a4bd6e53c56d526df
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99225210"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690493"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
@@ -27,22 +27,23 @@ Azure Active Directory B2C (Azure AD B2C) の価格は、1 か月間に認証ア
 
 ## <a name="what-do-i-need-to-do"></a>何をする必要がありますか?
 
-MAU の課金を利用するには、Azure AD B2C テナントを Azure サブスクリプションにリンクする必要があります。 また、Azure AD B2C Premium P2 の機能 (リスクベースの条件付きアクセスなど) を使用する場合は、Azure AD B2C テナントを別の価格レベルに切り替えることが必要になる場合もあります。
+MAU の課金を利用するには、Azure AD B2C テナントを Azure サブスクリプションにリンクする必要があります。 また、Azure AD B2C Premium P2 の機能 (リスクベースの条件付きアクセス ポリシーなど) を使用する場合は、Azure AD B2C テナントを別の価格レベルに切り替えることが必要になる場合もあります。
 
-|テナントが以下の場合  |以下を実行する必要があります。  |
+|テナントが以下の場合:  |以下を実行する必要があります。  |
 |---------|---------|
 | 既に MAU 単位で課金されている Azure AD B2C テナント     | 何もしない。 ユーザーが Azure AD B2C テナントから認証を受けると、MAU ベースの課金モデルを使用して自動的に課金されます。        |
 | サブスクリプションにまだリンクされていない Azure AD B2C テナント     |  [Azure AD B2C テナントをサブスクリプションにリンク](#link-an-azure-ad-b2c-tenant-to-a-subscription)して MAU の課金をアクティブ化します。     |
 | 2019 年 11 月 1 日より前にサブスクリプションにリンクされた Azure AD B2C テナント    | [MAU の課金に切り替える (推奨)](#switch-to-mau-billing-pre-november-2019-azure-ad-b2c-tenants)か、認証ごとの課金モデルをそのまま継続します。     |
-| Azure AD B2C テナントであり、さらに Premium の機能 (リスクベースの条件付きアクセスなど) を使用する    | 使用する機能をサポートしている [Azure AD 価格レベルに変更](#change-your-azure-ad-pricing-tier)します。        |
+| Azure AD B2C テナントであり、さらに Premium の機能 (リスクベースの条件付きアクセス ポリシーなど) を使用する    | 使用する機能をサポートしている [Azure AD 価格レベルに変更](#change-your-azure-ad-pricing-tier)します。        |
 |  |  |
 
 ## <a name="about-the-monthly-active-users-mau-billing-model"></a>月間アクティブ ユーザー数 (MAU) の課金モデルについて
 
 MAU の課金は、**2019 年 11 月 1 日** に Azure AD B2C テナントに対して実施されました。 その日以降に作成され、サブスクリプションにリンクされた Azure AD B2C テナントは、MAU 単位で課金されてきました。 サブスクリプションにリンクされていない Azure AD B2C テナントがある場合は、ここで作成する必要があります。 2019 年 11 月 1 日より前にサブスクリプションにリンクされていた既存の Azure AD B2C テナントがある場合は、月間アクティブ ユーザー数 (MAU) の課金モデルにアップグレードすることをお勧めしますが、認証ごとの課金モデルをそのまま継続することもできます。
   
-また、Azure AD B2C テナントは、使用する機能に基づいて、適切な Azure 価格レベルにリンクされている必要があります。 Premium 機能には、Azure AD B2C [Premium P1 または P2 価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)が必要です。 新しい機能を使用するときに、価格レベルのアップグレードが必要になることがあります。 たとえば、条件付きアクセスでは、テナントに対して Azure AD B2C Premium P2 価格レベルを選択する必要があります。
-
+また、Azure AD B2C テナントは、使用する機能に基づいて、適切な Azure 価格レベルにリンクされている必要があります。 Premium 機能には、Azure AD B2C [Premium P1 または P2 価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)が必要です。 新しい機能を使用するときに、価格レベルのアップグレードが必要になることがあります。 たとえば、リスクベースの条件付きアクセス ポリシーでは、テナントに対して Azure AD B2C Premium P2 価格レベルを選択する必要があります。
+> [!NOTE]
+>  Premium P1 機能と Premium P2 機能の両方で、1 か月あたり最初の 50,000 人の MAU については無料となります。 MAU の総数を確認するために、Microsoft では同じサブスクリプションにリンクされているすべてのテナント (Azure AD と Azure AD B2C の両方) の MAU を結合します。
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Azure AD B2C テナントをサブスクリプションにリンクする
 
 Azure Active Directory B2C (Azure AD B2C) の使用料金は、Azure サブスクリプションに課金されます。 ターゲットの Azure サブスクリプション内に Azure AD B2C *リソース* を作成して、Azure AD B2C テナントを Azure サブスクリプションに明示的にリンクする必要があります。 1 つの Azure サブスクリプションで、仮想マシン、ストレージ アカウント、Logic Apps などの他の Azure リソースと共に、複数の Azure AD B2C リソースを作成できます。 サブスクリプション内のすべてのリソースを表示するには、サブスクリプションが関連付けられている Azure Active Directory (Azure AD) テナントに移動します。
@@ -74,7 +75,7 @@ Azure AD B2C テナントについてこれらの手順を完了すると、Azur
 
 ## <a name="change-your-azure-ad-pricing-tier"></a>Azure AD 価格レベルを変更する
 
-テナントは、Azure AD B2C テナントで使用する機能に基づいて、適切な Azure 価格レベルにリンクされている必要があります。 Premium 機能には、[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)に関するページで説明されているように、Azure AD B2C Premium P1 または P2 が必要です。 場合によっては、新しい機能を使用するときに、価格レベルのアップグレードが必要になることがあります。 たとえば、Azure AD B2C で Identity Protection、リスクベースの条件付きアクセス、Premium P2 の将来の機能などを 使用する場合は、テナントに対して Azure AD B2C Premium P2 価格レベルを選択する必要があります。
+テナントは、Azure AD B2C テナントで使用する機能に基づいて、適切な Azure 価格レベルにリンクされている必要があります。 Premium 機能には、[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)に関するページで説明されているように、Azure AD B2C Premium P1 または P2 が必要です。 場合によっては、新しい機能を使用するときに、価格レベルのアップグレードが必要になることがあります。 たとえば、Identity Protection、リスクベースの条件付きアクセス ポリシー、Azure AD B2C で今後提供される Premium P2 の機能などを使用する場合は、テナントに対して Azure AD B2C Premium P2 価格レベルを選択する必要があります。
 
 価格レベルを変更するには、次の手順に従います。
 

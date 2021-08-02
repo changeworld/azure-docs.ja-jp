@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 4/27/2021
+ms.date: 05/28/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60473d034820627605616c0bc280f1f105f4b3e5
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cdd4fe2f749f36fe0016e0cba71093cd6083dda8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124110"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783787"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールのアクセス レビューを作成する
 
@@ -32,15 +32,15 @@ ms.locfileid: "108124110"
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]PIM のライセンスの詳細は「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」をご覧ください。
 
 > [!Note]
->  現時点では、アクセス レビューのスコープを、Azure AD へのアクセス権を持つサービス プリンシパルと、テナントで Azure Active Directory Premium P2 エディションがアクティブになっている Azure リソース ロール (プレビュー) に設定できます。 サービス プリンシパルのライセンス モデルは、この機能の一般提供のために終了する予定です。このため、追加のライセンスが必要になる場合があります。
+> 現時点では、アクセス レビューのスコープを、Azure AD へのアクセス権を持つサービス プリンシパルと、テナントで Azure Active Directory Premium P2 エディションがアクティブになっている Azure リソース ロール (プレビュー) に設定できます。 サービス プリンシパルのライセンス モデルは、この機能の一般提供のために終了する予定です。このため、追加のライセンスが必要になる場合があります。
 
 ## <a name="prerequisites"></a>前提条件
 
-[特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)
+[全体管理者](../roles/permissions-reference.md#global-administrator)
 
 ## <a name="open-access-reviews"></a>アクセス レビューを開く
 
-1. 特権ロール管理者ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. 全体管理者ロールを割り当てられたユーザーとして、[Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[Identity Governance]** を選択します。
  
@@ -73,16 +73,16 @@ ms.locfileid: "108124110"
 12. **[ロール メンバーシップをレビュー]** で、レビューする特権 Azure AD ロールを選択します。 
 
     > [!NOTE]
-    > - ここで選択されるロールには、[永続的なロールと資格のあるロール](../privileged-identity-management/pim-how-to-add-role-to-user.md)の両方が含まれます。
     > - 複数のロールを選択すると、複数のアクセス レビューが作成されます。 たとえば、5 つのロールを選択すると、5 つの別々のアクセス レビューが作成されます。
     > - グループが割り当てられているロールの場合、レビュー対象のロールにリンクされている各グループのアクセスは、アクセス レビューの一部としてレビューされます。
     **Azure AD ロール** のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
 
-    ![選択できる Azure AD ロールを一覧表示する [レビューのメンバーシップ] ウィンドウ](./media/pim-how-to-start-security-review/review-membership.png)
+    > [!NOTE]
+    > 複数のロールを選択すると、複数のアクセス レビューが作成されます。 たとえば、5 つのロールを選択すると、5 つの別々のアクセス レビューが作成されます。
 
-    **Azure リソース ロール** のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次の図に示します。
+1. **[割り当ての種類]** で、プリンシパルがロールに割り当てられた方法によってレビューの範囲を指定します。 (レビューが作成されたときのアクティブ化の状態に関係なく) 対象の割り当てをレビューする場合は **[(Preview) eligible assignments only]\((プレビュー) 対象の割り当てのみ\)** 、アクティブな割り当てをレビューする場合は **[(Preview) active assignments only]\((プレビュー) アクティブな割り当て\)** を選択します。 種類に関係なくすべての割り当てをレビューするには、 **[アクティブおよび対象のすべての割り当て]** を選択します。
 
-    ![選択できる Azure リソース ロールを一覧表示する [レビューのメンバーシップ] ウィンドウ](./media/pim-how-to-start-security-review/review-membership-azure-resource-roles.png)
+     ![割り当ての種類のレビュー担当者の一覧](./media/pim-how-to-start-security-review/assignment-type-select.png)
 
 13. **[レビュー担当者]** セクションで、全ユーザーをレビューする担当者 (複数可) を選びます。 メンバー自身にそのアクセス権をレビューしてもらうことができます。
 
@@ -107,7 +107,7 @@ ms.locfileid: "108124110"
     - **[アクセスを承認する]** - ユーザーのアクセスを承認します
     - **[推奨事項の実行]** - ユーザーの継続的なアクセスの拒否または承認に関するシステムの推奨事項を実行します
 
-1. 追加のユーザーやグループ (プレビュー) にも通知を送信して、レビューの完了を知らせることができます。 この機能により、レビュー作成者以外の利害関係者も、通知を受け取ってレビューの進行状況を把握できます。 この機能を使用するには **[ユーザーまたはグループの選択]** を選択し、完了通知を受け取るユーザーまたはグループを追加します。
+1. レビュー完了の更新を受け取るために、追加のユーザーまたはグループに通知を送信することができます (プレビュー)。 この機能により、レビュー作成者以外の利害関係者も、通知を受け取ってレビューの進行状況を把握できます。 この機能を使用するには **[ユーザーまたはグループの選択]** を選択し、完了通知を受け取るユーザーまたはグループを追加します。
 
     ![完了時設定 - 通知を受け取るユーザーを追加します](./media/pim-how-to-start-security-review/upon-completion-settings-additional-receivers.png) 
 

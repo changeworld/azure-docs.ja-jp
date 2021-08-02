@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d00ec82b5b66b2c413337f0c4efe803fc1013ab9
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88213454"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847873"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis のタイムアウトのトラブルシューティング
 
@@ -50,6 +50,8 @@ StackExchange.Redis は、同期操作のために `synctimeout` という名前
 | wr |アクティブなライターが存在します (6 個の未送信要求は無視されていないことを示します)。バイト数/アクティブなライター数 |
 | in |アクティブなリーダーはなく、NIC で読み取ることができるバイト数はゼロです。これは、"バイト数/アクティブなリーダー数" で表されます。 |
 
+前の例外の例では、`IOCP` セクションと `WORKER` セクションのそれぞれに、`Min` 値より大きい `Busy` 値が含まれています。 この違いは、`ThreadPool` の設定を調整する必要があることを意味します。 スレッド プールがバースト時にすばやくスケールアップするように、[ThreadPool 設定を構成できます](cache-management-faq.md#important-details-about-threadpool-growth)。
+
 次の手順を使用して、考えられる根本原因を調査できます。
 
 1. ベスト プラクティスとして、StackExchange.Redis クライアントを使用するときに、次のパターンを使用して接続していることを確認します。
@@ -74,10 +76,10 @@ StackExchange.Redis は、同期操作のために `synctimeout` という名前
 
 1. サーバーとクライアント アプリケーションが Azure の同じリージョン内に存在することを確認します。 たとえば、キャッシュは米国東部にあるが、クライアントが米国西部にあり、要求が `synctimeout` の間隔内に完了しない場合はタイムアウトになることがあります。あるいは、ローカルの開発用コンピューターからデバッグしている場合はタイムアウトになることがあります。 
 
-    キャッシュとクライアントを同じ Azure リージョン内に配置することを強くお勧めします。 リージョン間呼び出しを含むシナリオの場合は、接続文字列に `synctimeout` プロパティを含めて、`synctimeout` の間隔を既定の 5000 ミリ秒間隔より大きい値に設定する必要があります。 次の例は、Azure Cache for Redis によって提供された StackExchange.Redis 用の接続文字列 (`synctimeout` は 2000 ミリ秒) のスニペットを示しています。
+    キャッシュとクライアントを同じ Azure リージョン内に配置することを強くお勧めします。 リージョン間呼び出しを含むシナリオの場合は、接続文字列に `synctimeout` プロパティを含めて、`synctimeout` の間隔を既定の 5000 ミリ秒間隔より大きい値に設定する必要があります。 次の例は、Azure Cache for Redis によって提供された StackExchange.Redis 用の接続文字列 (`synctimeout` は 8,000 ミリ秒) のスニペットを示しています。
 
     ```output
-    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    synctimeout=8000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
     ```
 
 1. 最新バージョンの [StackExchange.Redis NuGet パッケージ](https://www.nuget.org/packages/StackExchange.Redis/)を使用するようにしてください。 タイムアウトの信頼性を高めるため、コードに示されるバグは常に修正されています。したがって、最新バージョンを使用することが重要です。

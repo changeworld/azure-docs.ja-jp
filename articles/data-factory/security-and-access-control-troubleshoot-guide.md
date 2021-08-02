@@ -4,14 +4,14 @@ description: Azure Data Factory でのセキュリティとアクセス制御に
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/24/2021
+ms.date: 05/31/2021
 ms.author: lle
-ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff95f5c3f8d978d58146529825adee94f82eaf07
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568037"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782895"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティング
 
@@ -188,6 +188,18 @@ ADF では引き続きマネージド VNet IR を使用できますが、[マネ
 
 - マネージド VNet IR を使用する場合は、ソース側と同じようにシンク側でもプライベート エンドポイントを有効にします。
 - パブリック エンドポイントを引き続き使用する場合は、ソースとシンクに対してマネージド VNet IR を使用するのではなく、パブリック IR のみに切り替えることができます。 パブリック IR に切り替えた場合でも、マネージド VNet IR がまだ存在する場合は、ADF でマネージド VNet IR が引き続き使用される可能性があります。
+
+## <a name="sharing-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの共有
+
+### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>異なるテナントからのセルフホステッド IR の共有がサポートされない 
+
+#### <a name="symptoms"></a>現象
+
+Azure Data Factory の UI からセルフホステッド IR を共有しようとしているときに、(異なるテナントにある) 他のデータ ファクトリに気付くことがありますが、異なるテナントにあるデータ ファクトリ間でそれを共有することはできません。
+
+#### <a name="cause"></a>原因
+
+複数のテナントにまたがってセルフホステッド IR を共有することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,17 +6,20 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: fd0b3ada5fec283562cee9727e3f805a7d34c532
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 09b4e6ebe14f5650be5bc92302acc51b1c6e99a5
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479051"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985762"
 ---
 # <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアの Azure Private Link を構成する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 この記事では、Azure Cosmos DB 分析ストアのマネージド プライベート エンドポイントを設定する方法について説明します。 トランザクション ストアを使用している場合は、[トランザクション ストアのプライベート エンドポイント](how-to-configure-private-endpoints.md)に関する記事を参照してください。 [マネージド プライベート エンドポイント](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)を使用して、Azure Cosmos DB 分析ストアのネットワーク アクセスを、Azure Synapse ワークスペースに関連付けられたマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。
+
+> [!NOTE]
+> Cosmos DB に対してプライベート DNS ゾーンを使用している場合、分析ストアのサブリソースに対して Synapse マネージド プライベート エンドポイントを作成するには、まず、Cosmos DB の仮想ネットワークにリンクされている分析ストアに対して DNS ゾーン (`privatelink.analytics.cosmos.azure.com`) を作成する必要があります。
 
 ## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>分析ストアのプライベート エンドポイントを有効にする
 

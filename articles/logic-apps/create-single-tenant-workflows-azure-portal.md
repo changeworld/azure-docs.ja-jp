@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: 8058f6a912981f44205a6a2739fe2be54141d3dd
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 63b3de255269d921f38374adc246fb923fdda100
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368199"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497108"
 ---
 # <a name="create-an-integration-workflow-using-single-tenant-azure-logic-apps-and-the-azure-portal"></a>シングルテナントの Azure Logic Apps と Azure portal を使用して統合ワークフローを作成する
 
@@ -76,11 +76,11 @@ ms.locfileid: "110368199"
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | ロジック アプリに使用する Azure サブスクリプション。 |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | ロジック アプリと関連リソースを作成する Azure リソース グループ。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows-RG` という名前のリソース グループを作成します。 |
    | **ロジック アプリ名** | はい | <*ロジック アプリ名*> | ロジック アプリに使用する名前。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows` という名前のロジック アプリを作成します。 <p><p>**注**:**ロジック アプリ (Standard)** リソースには Azure Functions の機能が利用され、同じアプリ名前付け規則が使用されるため、ロジック アプリの名前には `.azurewebsites.net` というサフィックスが自動的に付けられます。 |
-   | **発行** | はい | <*デプロイ環境*> | ロジック アプリのデプロイ先。 既定では、 **[ワークフロー]** が現在利用可能な唯一のポータル オプションであり、シングルテナント Azure Logic Apps にデプロイされます。 <p><p>**注**: Azure により、最初のワークフローを追加する必要がある空のロジック アプリ リソースが作成されます。 |
-   | **[リージョン]** | はい | <*Azure-region*> | リソース グループとリソースを作成するときに使用する Azure リージョン。 <p><p>この例では **米国西部** を使用します。 |
+   | **発行** | はい | <*デプロイ環境*> | ロジック アプリのデプロイ先。 既定では、シングル テナント Azure Logic Apps にデプロイするための **ワークフロー** が選択されています。 Azure により、最初のワークフローを追加する必要がある空のロジック アプリ リソースが作成されます。 <p><p>**注**: 現時点では、**Docker コンテナー** オプションを使用するには Azure Arc enabled Kubernetes クラスター上に [*カスタムの場所*](../azure-arc/kubernetes/conceptual-custom-locations.md) が必要です。これは、[Azure Arc enabled Logic Apps (プレビュー)](azure-arc-enabled-logic-apps-overview.md) で使用できます。 ロジック アプリのリソースの場所、カスタムの場所、クラスターはすべて同じである必要があります。 |
+   | **[リージョン]** | はい | <*Azure-region*> | リソース グループやリソースを作成する際に使用する場所です。 **[Docker コンテナー]** を選択した場合は、カスタムの場所を選択します。 <p><p>この例では、サンプル ロジック アプリを Azure にデプロイし、**米国西部** を使用します。 |
    |||||
 
-   次に例を示します。
+   次の例は、 **[ロジックアプリの作成 (標準)]** ページを示しています。
 
    ![Azure portal と [ロジック アプリの作成] ページが示されているスクリーンショット。](./media/create-single-tenant-workflows-azure-portal/create-logic-app-resource-portal.png)
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 19b3595228c29814e42af88696972fd81b156190
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b50169586ef29e579d52985ee8b7822a63560d0
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443048"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982433"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes ダッシュボードを使用して Azure Stack Edge Pro GPU デバイスを監視する
 
@@ -121,4 +121,5 @@ Kubernetes メトリック サーバーには、[ポッドの水平オートス�
 
 ## <a name="next-steps"></a>次のステップ
 
-[デバイスの問題をトラブルシューティングする](azure-stack-edge-gpu-troubleshoot.md)方法を学習する。
+[Azure Monitor を使用して監視](azure-stack-edge-gpu-enable-azure-monitor.md)する方法を確認する。
+[診断を実行してログを収集](azure-stack-edge-gpu-troubleshoot.md)する方法を確認する。

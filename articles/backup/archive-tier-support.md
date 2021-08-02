@@ -2,13 +2,14 @@
 title: アーカイブ層のサポート (プレビュー)
 description: Azure Backup のアーカイブ層のサポートについて説明します
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 7a42b8702cfdda14a18aa3cdd4e084ed78767b0a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 06/03/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c817e5e0fbed7ebe6c659a91e180820de3fdc677
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012150"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410101"
 ---
 # <a name="archive-tier-support-preview"></a>アーカイブ層のサポート (プレビュー)
 
@@ -77,19 +78,29 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 
         `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
 
+1. 表示する復旧ポイントの日付範囲を追加します。 たとえば、過去 124 日から過去 95 日の間の復旧ポイントを表示する場合は、次のコマンドを使用します。
+
+   ```azurepowershell
+    $startDate = (Get-Date).AddDays(-124)
+    $endDate = (Get-Date).AddDays(-95) 
+
+    ```
+    >[!NOTE]
+    >開始日と終了日の間隔は、30 日を超えない必要があります。<br><br>異なる時間範囲の復旧ポイントを表示するには、必要に応じて開始日と終了日を変更します。
 ## <a name="use-powershell"></a>PowerShell の使用
 
 ### <a name="check-archivable-recovery-points"></a>アーカイブ可能な復旧ポイントを確認する
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $true -TargetTier VaultArchive
 ```
 
-これにより、アーカイブに移動する準備ができている特定のバックアップ項目に関連するすべての復旧ポイントが一覧表示されます。
+これにより、アーカイブに移動する準備ができている特定のバックアップ項目に関連するすべての復旧ポイントが一覧表示されます (開始日から終了日まで)。 また、開始日と終了日を変更することもできます。
 
 ### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>復旧ポイントをアーカイブに移動できない理由を確認する
 
 ```azurepowershell
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $false -TargetTier VaultArchive
 $rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
 ```
 
@@ -119,8 +130,10 @@ $RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivabl
 ### <a name="move-to-archive"></a>アーカイブに移動する
 
 ```azurepowershell
-Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[2] -SourceTier VaultStandard -DestinationTier VaultArchive
+Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[0] -SourceTier VaultStandard -DestinationTier VaultArchive
 ```
+
+ここで、`$rp[0]` は一覧の最初の復旧ポイントです。 他の復旧ポイントを移動する場合は、`$rp[1]`、`$rp[2]` などを使用します。
 
 このコマンドは、アーカイブ可能な復旧ポイントをアーカイブに移動します。 これによって返されるジョブを使用して、ポータルと PowerShell の両方から移動操作を追跡することができます。
 
@@ -129,7 +142,7 @@ Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp
 このコマンドは、アーカイブされたすべての復旧ポイントを返します。
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
 ```
 
 ### <a name="restore-with-powershell"></a>PowerShell で復元する
@@ -149,7 +162,7 @@ Azure 仮想マシン用のさまざまな復元方法について詳しくは�
 Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RehydratePriority "Standard" -RehydrateDuration 15 -RecoveryPoint $rp -StorageAccountName "SampleSA" -StorageAccountResourceGroupName "SArgName" -TargetResourceGroupName $vault.ResourceGroupName -VaultId $vault.ID
 ```
 
-SQL Server を復元するには、[これらの手順](backup-azure-sql-automation.md#restore-sql-dbs)に従ってください。 必要な追加パラメーターは、**RehydrationPriority** と **RehydrationDuration** です。
+SQL Server を復元するには、[これらの手順](backup-azure-sql-automation.md#restore-sql-dbs)に従ってください。 `Restore-AzRecoveryServicesBackupItem` コマンドには、2 つの追加パラメーター **RehydrationDuration** および **RehydrationPriority** が必要です。
 
 ### <a name="view-jobs-from-powershell"></a>ジョブを PowerShell から表示する
 
@@ -291,6 +304,12 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ### <a name="what-will-happen-to-archive-recovery-points-if-i-stop-protection-and-retain-data"></a>保護を停止してデータを保持すると、アーカイブの復旧ポイントはどうなりますか?
 
 復旧ポイントは、いつまでもアーカイブされたままになります。 詳細については、[復旧ポイントに対する保護の停止の影響](manage-recovery-points.md#impact-of-stop-protection-on-recovery-points)に関するページをご覧ください。
+
+### <a name="is-cross-region-restore-supported-from-archive-tier"></a>Archive レベルからのリージョンをまたがる復元はサポートされていますか
+
+GRS コンテナー内のデータを Standard レベルから Archive レベルに移動すると、データは GRS アーカイブに移動されます。 リージョンをまたがる復元が有効になっている場合でも、そうなります。 バックアップ データが Archive レベルに移動された後は、ペア リージョンにデータを復元することはできません。 ただし、リージョンの障害時には、セカンダリ リージョンのバックアップ データを復元に使用できるようになります。 
+
+プライマリ リージョンの Archive レベルの復旧ポイントから復元している間、復旧ポイントは Standard レベルにコピーされ、プライマリ リージョンとセカンダリ リージョンの両方でリハイドレート期間に従って保持されます。 これらのリハイドレート復旧ポイントから、リージョンをまたがる復元を実行できます。
 
 ## <a name="next-steps"></a>次のステップ
 

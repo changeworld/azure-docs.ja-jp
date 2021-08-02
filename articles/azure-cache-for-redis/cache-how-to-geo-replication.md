@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 0be2bb59b46dc827001d89f8e0f1be23f35a714d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 534efc4723c0a526bd8d607299bbf3ec4effaa86
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536093"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895012"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Premium Azure Cache for Redis インスタンスの geo レプリケーションを構成する
 
@@ -33,6 +33,9 @@ geo レプリケーションによって 2 つの Premium Azure Cache for Redis 
 - セカンダリ リンク キャッシュがプライマリ リンク キャッシュと同じキャッシュ サイズであるか、またはそれより大きいキャッシュ サイズである。
 - 両方のキャッシュが作成され、実行状態になっている。
 
+> [!NOTE]
+> Azure リージョン間のデータ転送は、標準の[帯域幅レート](https://azure.microsoft.com/pricing/details/bandwidth/)で課金されます。
+
 geo レプリケーションでは一部の機能がサポートされていません。
 
 - 永続化は geo レプリケーションではサポートされていません。
@@ -42,7 +45,7 @@ geo レプリケーションでは一部の機能がサポートされていま�
 
 geo レプリケーションを構成した後、次の制限が、リンク キャッシュ ペアに適用されます。
 
-- セカンダリ リンク キャッシュは読み取り専用です。読み取ることはできますが、データを書き込むことはできません。 geo セカンダリ インスタンスからの読み取りを選択した場合、次の点に注意することが重要です。geo プライマリと geo セカンダリの間で完全なデータ同期 (geo プライマリまたは geo セカンダリが更新されたときと、一部の再起動シナリオ時に発生) が行われているときは必ず、geo プライマリと geo セカンダリの間の完全なデータ同期が完了するまで、geo セカンダリ インスタンスはそれに対するどんな Redis 操作についてもエラー (完全なデータ同期が進行中であることを表示) をスローします。 geo セカンダリから読み取るアプリケーションは、geo セカンダリがこのようなエラーをスローするたびに geo プライマリにフォールバックするように構築する必要があります。 
+- セカンダリ リンク キャッシュは読み取り専用です。読み取ることはできますが、データを書き込むことはできません。 geo セカンダリ インスタンスからの読み取りを選択した場合は、次の点に注意することが重要です。geo プライマリと geo セカンダリの間で完全データ同期 (geo プライマリまたは geo セカンダリが更新されたときと、一部の再起動シナリオで発生) が実行されているときは必ず、geo プライマリと geo セカンダリの間の完全データ同期が完了するまで、geo セカンダリ インスタンスはそれに対する Redis 操作で (完全データ同期が進行中であることを示す) エラーをスローします。 geo セカンダリから読み取るアプリケーションは、geo セカンダリがこのようなエラーをスローするたびに geo プライマリにフォールバックするように構築する必要があります。 
 - リンクが追加される前にセカンダリ リンク キャッシュにあったデータはすべて削除されます。 ただし、geo レプリケーションが後で削除された場合、レプリケートされたデータはセカンダリ リンク キャッシュに残ります。
 - キャッシュがリンクされている間は、どちらのキャッシュも[スケーリング](cache-how-to-scale.md)できません。
 - キャッシュでクラスタリングが有効になっている場合は、[シャードの数を変更](cache-how-to-premium-clustering.md)できません。
@@ -152,7 +155,7 @@ geo レプリケーションは、Premium レベルのキャッシュにのみ�
   - VNET が同じリージョンに存在する場合は、[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN Gateway VNET 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用してそれらを接続できます。
   - VNET がさまざまなリージョンに存在する場合は、VNET ピアリングを使用した geo レプリケーションがサポートされますが、Basic 内部ロード バランサーの制約のため、VNET 1 (リージョン 1) のクライアント VM で DNS 名を使用して VNET 2 (リージョン 2) のキャッシュにアクセスすることはできなくなります。 VNET ピアリングの制約の詳細については、[Virtual Network - ピアリングの要件と制約](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)に関するページを参照してください。 推奨されるソリューションは、VPN Gateway VNET 間接続の使用です。
   
-[この Azure テンプレート](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)を使用すると、2 つの geo レプリケートされたキャッシュを VPN Gateway VNET 間接続で接続された VNET にすばやくデプロイできます。
+[この Azure テンプレート](https://azure.microsoft.com/resources/templates/redis-vnet-geo-replication/)を使用すると、2 つの geo レプリケートされたキャッシュを VPN Gateway VNET 間接続で接続された VNET にすばやくデプロイできます。
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Redis の geo レプリケーションのレプリケーション スケジュールは何ですか
 

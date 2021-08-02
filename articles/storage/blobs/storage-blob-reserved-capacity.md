@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f130e2367ed2fa4c9095479e9ff9d9722b010e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600916"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098544"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>予約容量を使用して BLOB ストレージのコストを最適化する
 
@@ -49,7 +49,7 @@ Azure Storage の予約容量は、汎用 v2 (GPv2) アカウントおよび Blo
 すべての種類の冗長性の予約がサポートされています。 冗長オプションの詳細については、[Azure Storage の冗長性](../common/storage-redundancy.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Azure Storage の予約容量は、Premium Storage アカウント、汎用 v1 (GPv1) ストレージ アカウント、Azure Data Lake Storage Gen1、ページ BLOB、Azure Queue storage、Azure Table Storage、または Azure Files では使用できません。  
+> Azure Storage の予約容量は、Premium Storage アカウント、汎用 v1 (GPv1) ストレージ アカウント、Azure Data Lake Storage Gen1、ページ BLOB、Azure Queue Storage、Azure Table Storage では使用できません。 Azure Files の予約容量については、「[予約容量を使用して Azure Files のコストを最適化する](../files/files-reserve-capacity.md)」を参照してください。  
 
 ### <a name="security-requirements-for-purchase"></a>購入のセキュリティ要件
 

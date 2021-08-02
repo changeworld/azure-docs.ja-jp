@@ -1,7 +1,7 @@
 ---
 title: Azure AD テナントのアプリ要求をカスタマイズする (PowerShell)
 titleSuffix: Microsoft identity platform
-description: このページでは、Azure Active Directory の要求のマッピングについて説明します。
+description: 特定の Azure Active Directory テナントのアプリケーションに対するトークンに組み込むクレーム (属性情報) をカスタマイズする方法を説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -10,37 +10,39 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 06/10/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e77155f8a6efd3916ae90fcb562d688bb5b5126f
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bb44904379e7a9b784f4e2d9bb7c93673718ed37
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598892"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983044"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
+# <a name="customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant"></a>テナントに存在する特定のアプリに対するトークンに組み込むクレームをカスタマイズする
+
+テナント管理者は、自身のテナントの特定のアプリケーションに対するトークンに組み込むクレームをカスタマイズできます。 要求のマッピング ポリシーを使用すると、次の操作を行うことができます。
+
+- トークンに組み込むクレームを選ぶ。
+- まだ存在しない種類のクレームを作成する。
+- 特定のクレームに入れるデータのソースを指定、変更する。
+
+クレームのカスタマイズでは、WS-Fed、SAML、OAuth、OpenID Connect のプロトコルに対するクレームマッピング ポリシーを構成できます。
 
 > [!NOTE]
-> この機能は、現在ポータルで提供されている[要求のカスタマイズ](active-directory-saml-claims-customization.md)に取って代わり、そのカスタマイズに優先します。 このドキュメントで詳しく説明している Graph/PowerShell の方法に加えて、ポータルを使用して、同じアプリケーションの要求をカスタマイズすると、そのアプリケーションに対して発行されたトークンは、ポータルの構成を無視します。 このドキュメントで詳しく説明した方法で行った構成は、ポータルには反映されません。
+> これは、Azure portal で提供している[クレームのカスタマイズ](active-directory-saml-claims-customization.md)の後継機能です。 同一のアプリケーションに対し、このドキュメントで詳述する Microsoft Graph または Powershell を利用した方法に加えて、Azure portal でもクレームをカスタマイズした場合、そのアプリケーションのトークンでは、Azure portal での構成は無視されます。 このドキュメントで詳しく説明した方法で行った構成は、ポータルには反映されません。
 
-> [!NOTE]
-> この機能は現在パブリック プレビューの段階です。 変更を元に戻すか、削除できるように準備しておいてください。 機能は、パブリック プレビュー期間中、すべての Azure Active Directory (Azure AD) サブスクリプションで使用できます。 ただし、この機能が一般公開された後は、機能の一部で Azure AD Premium サブスクリプションが必要になる場合があります。 この機能は、WS-Fed、SAML、OAuth、OpenID Connect の各プロトコルについて、要求のマッピング ポリシーの構成をサポートしています。
+この記事では、[クレームマッピング ポリシーの種類](reference-claims-mapping-policy-type.md)の使用方法が分かるように、いくつかの使用方法を説明します。
 
-この機能は、テナント管理者が、テナントの特定のアプリケーションに対するトークンに出力された要求をカスタマイズするときに使用します。 要求のマッピング ポリシーを使用すると、次の操作を行うことができます。
-
-- トークンに含める要求を選択する。
-- まだ存在しない要求の種類を作成する。
-- 特定の要求で出力されたデータのソースを選択または変更する。
-
-この記事では、[要求のマッピング ポリシーの種類](reference-claims-mapping-policy-type.md)を使用する方法を理解するうえで役に立つ、一般的なシナリオをいくつか取り上げて説明します。
-
-要求のマッピングポリシーを作成するときに、トークンのディレクトリ スキーマ拡張属性から要求を出力することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
+クレームマッピング ポリシーを作成するときは、トークンのディレクトリ スキーマ拡張属性からクレームを発信するよう設定することもできます。 `ClaimsSchema` 要素の *ID* ではなく、拡張属性の *ExtensionID* を使用します。  拡張属性の詳細については、[ディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-次の例では、サービス プリンシパルのポリシーを作成、更新、リンク、および削除します。 要求のマッピング ポリシーは、サービス プリンシパル オブジェクトにのみ割り当てることができます。 Azure AD に慣れていない場合は、こうした例を確認する前に、[Azure AD テナントを取得する方法](quickstart-create-new-tenant.md)について学習することをお勧めします。
+次の例では、サービス プリンシパルのポリシーを作成、更新、リンク、および削除します。 クレームマッピング ポリシーは、サービス プリンシパル オブジェクトにのみ割り当てることができます。 Azure AD に慣れていない場合は、こうした例を確認する前に、[Azure AD テナントを取得する方法](quickstart-create-new-tenant.md)について学習することをお勧めします。
+
+> [!NOTE]
+> クレームマッピング ポリシーを構成するには、[パブリック プレビュー版 Azure AD PowerShell モジュール](https://www.powershellgallery.com/packages/AzureADPreview)が必要です。 PowerShell モジュールはプレビュー版なので、機能が取り下げられたり、変更が取り消されたりする場合があることにご注意ください。 
 
 使用を開始するには、次の手順を実行します。
 
@@ -60,7 +62,7 @@ ms.locfileid: "107598892"
 
 この例では、リンク サービス プリンシパルに対して発行されたトークンから、[基本要求セット](reference-claims-mapping-policy-type.md#claim-sets)を削除するポリシーを作成します。
 
-1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、トークンから基本要求セットを削除します。
+1. クレームマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、トークンから基本要求セットを削除します。
    1. ポリシーを作成するには、このコマンドを実行します。
 
       ``` powershell
@@ -83,7 +85,7 @@ ms.locfileid: "107598892"
 
 この例では、リンクされたサービス プリンシパルに対して発行されたトークンに、EmployeeID と TenantCountry を追加するポリシーを作成します。 EmployeeID は、SAML トークンと JWT の両方で名前要求の種類として出力されます。 TenantCountry は、SAML トークンと JWT の両方で国/リージョン要求の種類として出力されます。 この例では、操作を続行し、トークンに基本要求セットを含めます。
 
-1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
+1. クレームマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
    1. ポリシーを作成するには、次のコマンドを実行します。
 
       ``` powershell
@@ -107,7 +109,7 @@ ms.locfileid: "107598892"
 
 この例では、リンクされたサービス プリンシパルに対して発行された JWT に、カスタム要求 "JoinedData" を出力するポリシーを作成します。 この要求には、ユーザー オブジェクトの extensionattribute1 属性に格納されたデータと ".sandbox" を結合して作成された値が追加されます。 この例では、トークンで基本要求セットを除外します。
 
-1. 要求のマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
+1. クレームマッピング ポリシーを作成します。 このポリシーは、特定のサービス プリンシパルにリンクされ、EmployeeID 要求と TenantCountry 要求をトークンに追加します。
    1. ポリシーを作成するには、次のコマンドを実行します。
 
       ``` powershell
@@ -129,7 +131,7 @@ ms.locfileid: "107598892"
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
-トークンを受信するアプリケーションは、クレーム値が Azure AD によって正式に発行され、改ざんできないという事実に依存します。 ただし、クレーム マッピング ポリシーを使用してトークンの内容を変更すると、これらの想定が正しくなくなる可能性があります。 アプリケーションは、悪意のあるアクターによって作成されたクレーム マッピング ポリシーからそれ自体を保護するために、トークンがクレーム マッピング ポリシーの作成者によって変更されたことを明示的に認識する必要があります。 これは、次の方法で実現できます。
+トークンを受信するアプリケーションは、クレーム値が Azure AD によって正式に発行され、改ざんできないという事実に依存します。 ただし、クレームマッピング ポリシーによってトークンの内容を変更すると、この前提は通用しなくなります。 悪意のある目的で作成されたクレームマッピング ポリシーからアプリケーションを保護するため、アプリケーションでは、クレームマッピング ポリシーの作成者がトークンを変更したことを、明示的に確認する必要があります。 これは、次の方法で実現できます。
 
 - カスタム署名キーを構成する
 - マップされたクレームを受け入れるようにアプリケーション マニフェストを更新する。
@@ -156,6 +158,6 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[要求のマッピング ポリシーの種類](reference-claims-mapping-policy-type.md)に関するリファレンス記事を参照してください。
+- 詳しくは、[クレームマッピング ポリシーの種類](reference-claims-mapping-policy-type.md)に関する参考記事をご覧ください。
 - SAML トークンで発行された要求を Azure portal でカスタマイズする方法については、「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)」を参照してください。
 - 拡張属性の詳細については、[要求でのディレクトリ スキーマ拡張属性の使用](active-directory-schema-extensions.md)に関するページをご覧ください。

@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
-ms.reviewer: mathoma
+ms.reviewer: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 77aec881cdf934888356dd276cad7d0698d56ad1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 4c6e1f052dd23621e269b59fb573216f68e49cfb
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136232"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784387"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-virtual-machines"></a>移行ガイド:SQL Server から Azure Virtual Machines 上の SQL Server
 

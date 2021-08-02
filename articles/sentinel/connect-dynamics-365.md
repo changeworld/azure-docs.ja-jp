@@ -12,22 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 06/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 018368b6284cf39edec01f0a9a943b8ea15c85d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d2a9c69108211b1342c553731c28785e1f2cc79
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98103884"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421798"
 ---
 # <a name="connect-dynamics-365-activity-logs-to-azure-sentinel"></a>Dynamics 365 アクティビティ ログを Azure Sentinel に接続する
 
 [Dynamics 365](/office365/servicedescriptions/microsoft-dynamics-365-online-service-description) Common Data Service (CDS) アクティビティ コネクタは、管理者、ユーザー、サポートのアクティビティ、および Microsoft Social Engagement のログ イベントに関する分析情報を提供します。 Dynamics 365 CRM のログを Azure Sentinel に接続すると、このデータをブックで表示したり、それを使用してカスタム アラートを作成したり、それを活用して調査プロセスを改善したりすることができます。 この新しい Azure Sentinel コネクタは、Office Management API から Dynamics CDS データを収集します。 Power Platform で監査される Dynamics CDS アクティビティの詳細については、[アクティビティ ログの有効化と使用](/power-platform/admin/enable-use-comprehensive-auditing)に関するページを参照してください。
 
-> [!IMPORTANT]
->
-> Dynamics 365 Common Data Service (CDS) アクティビティ コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +43,7 @@ ms.locfileid: "98103884"
 
 1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。
 
-1. **データ コネクタ** ギャラリーから、 **[Dynamics 365 (Preview)]\(Dynamics 365 (プレビュー)\)** を選択し、プレビュー ペインで **[コネクタ ページを開く]** を選択します。
+1. **Data connectors (データ コネクタ)** ギャラリーから **[Dynamics 365]** を選択し、プレビュー ペインで **[Open connector page (コネクタ ページを開く)]** を選択します。
 
 1. **[手順]** タブの **[構成]** で **[接続]** をクリックします。 
 

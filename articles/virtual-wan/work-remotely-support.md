@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual WAN とリモートでの作業
-description: このページでは、COVID-19 の世界的流行により、Azure Virtual WAN を利用してリモートで作業できるようにする方法について説明します。
+description: COVID-19 の世界的流行により、Azure Virtual WAN を利用してリモートで作業できるようにする方法について説明します。
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb3af5f19e81ccf21a9ca38fe45514aa0bdf471e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023494"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580252"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure Virtual WAN とリモート作業のサポート
 

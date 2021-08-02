@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2021
 ms.author: aldomel
-ms.openlocfilehash: 232b83fef2da312828f4f9f332ab2505e3a68100
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 3f17e24bb63a60fc542806da848f85e7d0279bba
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503645"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984952"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -126,7 +126,7 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 
 #### <a name="known-issues-april-2021"></a>既知の問題 (2021 年 4 月)
 
-BGP ルートが存在する場合、またはサブネットにサービス エンドポイントが構成されている場合、ルートが正しい優先順位で評価されない可能性があります。 これらのシナリオに対する修正プログラムは現在作成中です </br>
+BGP ルートが存在する場合、またはサブネットにサービス エンドポイントが構成されている場合、ルートが正しい優先順位で評価されない可能性があります。 この機能は、現在、デュアル スタック (IPv4 + IPv6) 仮想ネットワークでは機能しません。 これらのシナリオに対する修正プログラムは現在作成中です </br>
 
 
 > [!NOTE] 

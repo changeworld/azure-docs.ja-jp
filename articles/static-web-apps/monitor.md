@@ -1,22 +1,25 @@
 ---
-title: Azure Static Web Apps プレビューの監視
-description: Azure Static Web Apps プレビューで要求、エラー、およびトレース情報を監視する
+title: Azure Static Web Apps の監視
+description: Azure Static Web Apps で要求、エラー、およびトレース情報を監視する
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 4/23/2021
 ms.author: cshoe
-ms.openlocfilehash: 474b612d835ab415f9607f737ef219acc2e99152
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8c97c3c008dda4269b282e89af7badda889588fe
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077670"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497575"
 ---
 # <a name="monitor-azure-static-web-apps"></a>Azure Static Web Apps の監視
 
 API の要求、エラー、およびトレース情報を監視するには、[Application Insights](../azure-monitor/app/app-insights-overview.md) を有効にします。
+
+> [!IMPORTANT]
+> Application Insights には、Azure Static Web Apps からは[独立した価格モデル](https://azure.microsoft.com/pricing/details/monitor)があります。
 
 > [!NOTE]
 > Application Insights を Azure Static Web Apps で使用するには、[API](./add-api.md) を使用したアプリケーションが必要です。
@@ -71,6 +74,27 @@ API の要求、エラー、およびトレース情報を監視するには、[
 1. **[実行]** ボタンを選択します。
 
 :::image type="content" source="media/monitoring/azure-static-web-apps-application-insights-traces.png" alt-text="Application Insights トレースの表示":::
+
+## <a name="limit-logging"></a>ログ記録を制限する
+
+場合によっては、エラーと警告の詳細をキャプチャしつつも、ログ記録を制限したい場合があります。その場合は、Azure Functions アプリの _host.json_ ファイルを次のように変更します。
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingSettings": {
+              "isEnabled": true
+            },
+            "enableDependencyTracking": false
+        },
+        "logLevels": {
+            "default": "Warning"
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

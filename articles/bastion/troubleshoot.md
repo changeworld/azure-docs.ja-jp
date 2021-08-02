@@ -1,18 +1,18 @@
 ---
 title: Azure Bastion のトラブルシューティング | Microsoft Docs
-description: この記事では、Azure Bastion のトラブルシューティング方法について説明します。
+description: Azure Bastion のトラブルシューティング方法について説明します。
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: bf6cde94374133e10b077ac799be0b85ae02bcb7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 740b228855a11623600d8724eeff7ad865538e74
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773397"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004189"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング
 
@@ -24,7 +24,7 @@ ms.locfileid: "108773397"
 
 **A:** NSG を作成して *AzureBastionSubnet* に適用する場合は、NSG に必要な規則を追加済みであることを確認してください。 必要な規則の一覧については、「[NSG アクセスと Azure Bastion を使用する](./bastion-nsg.md)」を参照してください。 これらの規則を追加しないと、NSG の作成/更新は失敗します。
 
-NSG 規則の例については、[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-bastion-nsg/)を参照してください。
+NSG 規則の例については、[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azure-bastion-nsg/)を参照してください。
 詳細については、[Azure Bastion の NSG のガイダンス](bastion-nsg.md)に関する記事を参照してください。
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Azure Bastion に SSH キーを使用できません
@@ -77,7 +77,7 @@ The key's randomart image is:
 
 ## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure portal の黒い画面
 
-**Q:** Azure Bastion を使用して接続しようとすると、ターゲット VM に接続できず、Azure portal に黒い画面が表示されます。
+**質問:** Azure Bastion を使用して接続しようとすると、ターゲット VM に接続できず、Azure portal に黒い画面が表示されます。
 
 **A:** これは、ネットワーク接続の問題が Web ブラウザーと Azure Bastion 間 (クライアントのインターネット ファイアウォールによって WebSockets トラフィックがブロックされる場合など) または Azure Bastion とターゲット VM 間に存在する場合に発生します。 ほとんどの場合、AzureBastionSubnet、または仮想ネットワーク内の RDP/SSH トラフィックをブロックしているターゲット VM サブネットに適用された NSG が関わっています。 クライアントのインターネット ファイアウォールで WebSocket トラフィックを許可し、ターゲット VM サブネットで NSG を確認します。
 

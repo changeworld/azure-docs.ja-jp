@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7d64684b5e8e73e82b6d778a193de617301a14eb
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 8f11c6d02649f85eddc39aa151ab7df3d8b72ab6
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123201"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797684"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較
 
@@ -45,7 +45,7 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
 | コントリビューション フィードの最大集約帯域幅|60 Mbps|該当なし|
 | コントリビューション内の各レイヤーにおける最大ビットレート |20 Mbps|20 Mbps|
 | 複数言語オーディオ トラックのサポート|はい|いいえ|
-| サポートされている入力ビデオ コーデック |H.264/AVC と H.265/HEVC|H.264/AVC|
+| サポートされている入力ビデオ コーデック |H.264/AVC (RTMP と Smooth)、または H.265/HEVC (Smooth Streaming の取り込みのみ)|H.264/AVC (RTMP とSmooth Streaming の取り込み)|
 | サポートされている出力ビデオ コーデック|入力と同じ|H.264/AVC|
 | サポートされているビデオ ビット深度、入力、出力|HDR 10/HLG を含む最大 10 ビット|8 ビット|
 | サポートされている入力オーディオ コーデック|AAC-LC、HE-AAC v1、HE-AAC v2|AAC-LC、HE-AAC v1、HE-AAC v2|

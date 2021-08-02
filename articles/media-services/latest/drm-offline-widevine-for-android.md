@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.workload: media
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 297520764272e2d6df54fe3a8ad734088163638d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: c5d8d5d5dbbe8e79591c735e4a6fa77f47ff9b2f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068543"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793357"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Media Services v3 を使用した Android 用のオフラインの Widevine ストリーミング
 
@@ -50,7 +50,7 @@ Android デバイスに Widevine 用のオフライン DRM を実装する前に
     - [DRM 動的暗号化とライセンス配信サービスの使用](drm-protect-with-drm-tutorial.md)
 - [https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git ) を複製します。
 
-    [.NET を使用した DRM の暗号化](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)に関する記事にあるコードを変更して Widevine の構成を追加する必要があります。  
+    [.NET を使用した DRM の暗号化](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/EncryptWithDRM)に関する記事にあるコードを変更して Widevine の構成を追加する必要があります。  
 - Widevine DRM のオフライン再生をサポートする機能を持つオープンソースのビデオ プレーヤー SDK である Google ExoPlayer SDK for Android についてよく理解します。 
     - [ExoPlayer SDK](https://github.com/google/ExoPlayer)
     - [ExoPlayer 開発者ガイド](https://google.github.io/ExoPlayer/guide.html)
@@ -58,7 +58,7 @@ Android デバイスに Widevine 用のオフライン DRM を実装する前に
 
 ## <a name="configure-content-protection-in-azure-media-services"></a>Azure Media Services でコンテンツ保護を構成する
 
-[GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) メソッドには、次の必要なステップが存在します。
+[GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L192) メソッドには、次の必要なステップが存在します。
 
 1. コンテンツキー配信がライセンス配信サービスで承認される方法を指定します。 
 
@@ -91,7 +91,7 @@ Android デバイスに Widevine 用のオフライン DRM を実装する前に
 
 ## <a name="enable-offline-mode"></a>オフライン モードを有効にする
 
-Widevine ライセンスの **オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](drm-widevine-license-template-concept.md)を構成する必要があります。 [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) に示すように、**policy_overrides** オブジェクトで **can_persist** プロパティを **true** に設定します (既定値は false)。 
+Widevine ライセンスの **オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](drm-widevine-license-template-concept.md)を構成する必要があります。 [ConfigureWidevineLicenseTemplate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L452) 内で示すように、**policy_overrides** オブジェクト内で **can_persist** プロパティを **true** に設定します (既定値は false)。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#ConfigureWidevineLicenseTempate)]
 

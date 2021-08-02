@@ -4,19 +4,19 @@ description: トランザクション上一貫性のある Azure SQL Database �
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sashan
-ms.reviewer: wiassaf
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 895219622999334c4d5a91e7af922ae9d54f30a5
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 325a2feb0cf29a03a88249e2d0ac3a22f685d498
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073955"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694556"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
@@ -182,6 +182,7 @@ AS COPY OF source_server_name.source_database_name;
 
 > [!TIP]
 > T-SQL を使用するデータベースのコピーでは、異なる Azure テナント内のサブスクリプションからのデータベースのコピーがサポートされています。 これは、SQL 認証ログインを使用して対象サーバーにログインする場合にのみサポートされます。
+> ソースまたはターゲットのどちらかの論理サーバー上で [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/support-for-azure-ad-user-creation-on-behalf-of-azure-ad/ba-p/2346849) 認証がアクティブ (有効) になっている場合、別の Azure テナント内の論理サーバー上でのデータベース コピーの作成はサポートされていません。
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>コピー操作の進行状況を監視する
 

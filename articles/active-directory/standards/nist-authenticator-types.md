@@ -13,50 +13,50 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 113dddb371faab784e96acc2076180118af7cfd8
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: f878e18a914b0319657790864d02832bf91fbe36
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108294046"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889654"
 ---
 # <a name="nist-authenticator-types-and-aligned-azure-active-directory-methods"></a>NIST Authenticator の種類と連携された Azure Active Directory の方法
 
 請求者がサブスクライバーに関連付けられている複数の Authenticator のいずれかのコントロールをアサートすると、認証プロセスが開始されます。 サブスクライバーは、個人または別のエンティティである場合があります。
 
-| NIST Authenticator の種類| Azure AD の認証方法 |
+| National Institute of Standards and Technology (NIST) Authenticator の種類| Azure Active Directory (Azure AD) 認証方法 |
 | - | - |
 |  記憶シークレット <br> (自分が知っているもの)|  パスワード (クラウド アカウント)  <br>パスワード (フェデレーション)<br> パスワード (パスワード ハッシュ同期)<br>パスワード (パススルー認証) |
 |ルックアップ シークレット <br> (自分が持っているもの)| なし。 ルックアップ シークレットは、システムに保持されていない定義データによるものです。 |
 |帯域外 <br>(自分が持っているもの)| 電話 (SMS) - 推奨されません |
 | 単一要素ワンタイム パスワード <br>‎(自分が持っているもの)| Microsoft Authenticator アプリ (ワンタイム パスワード)  <br>単一要素ワンタイム パスワード ‎(OTP 製造元経由)<sup data-htmlnode="">1</sup> | 
 | 多要素ワンタイム パスワード<br>(自分が持っているもの + 自分が知っているものまたは自分自身)| 多要素ワンタイム パスワード ‎(OTP 製造元経由) <sup data-htmlnode="">1</sup>| 
-|単一要素暗号化ソフトウェア<br>(自分が持っているもの)|準拠モバイル デバイス <br> Microsoft Authenticator アプリ (通知) <br> Hybrid Azure AD 参加済み <sup data-htmlnode="">2</sup> (*ソフトウェア TPM を使用*)<br> Azure AD 参加済み <sup data-htmlnode="">2</sup> (*ソフトウェア TPM を使用*) |
-| 単一要素暗号化ハードウェア <br>(自分が持っているもの) | Azure AD 参加済み <sup data-htmlnode="">2</sup> (*ハードウェア TPM を使用*) <br> Hybrid Azure AD 参加済み <sup data-htmlnode="">2</sup> (*ハードウェア TPM を使用*)|
-|多要素の暗号化ソフトウェア<br>(自分が持っているもの + 自分が知っているものまたは自分自身) | iOS 用の Microsoft Authenticator アプリ (パスワードレス)<br> Windows Hello for Business (*ソフトウェア TPM を使用*) |
-|多要素の暗号化ハードウェア <br>(自分が持っているもの + 自分が知っているものまたは自分自身) |Android 用の Microsoft Authenticator アプリ (パスワードレス)<br> Windows Hello for Business (*ハードウェア TPM を使用*)<br> スマートカード (フェデレーション ID プロバイダー) <br> FIDO 2 セキュリティ キー |
+|単一要素暗号化ソフトウェア<br>(自分が持っているもの)|準拠モバイル デバイス <br> Microsoft Authenticator アプリ (通知) <br> Hybrid Azure AD 参加済み<sup data-htmlnode="">2</sup> (ソフトウェア TPM を使用)<br> Azure AD 参加済み <sup data-htmlnode="">2</sup> (ソフトウェア TPM を使用) |
+| 単一要素暗号化ハードウェア <br>(自分が持っているもの) | Azure AD 参加済み <sup data-htmlnode="">2</sup> (ハードウェア TPM を使用) <br> Hybrid Azure AD 参加済み <sup data-htmlnode="">2</sup> (ハードウェア TPM を使用)|
+|多要素の暗号化ソフトウェア<br>(自分が持っているもの + 自分が知っているものまたは自分自身) | iOS 用の Microsoft Authenticator アプリ (パスワードレス)<br> ソフトウェア TPM と Windows Hello for Business |
+|多要素の暗号化ハードウェア <br>(自分が持っているもの + 自分が知っているものまたは自分自身) |Android 用の Microsoft Authenticator アプリ (パスワードレス)<br> Windows Hello for Business (ハードウェア TPM を使用)<br> スマートカード (フェデレーション ID プロバイダー) <br> FIDO 2 セキュリティ キー |
 
 
 <sup data-htmlnode="">1</sup> 30 秒または 60 秒の種類がある OATH-TOTP SHA-1 トークン。
 
-<sup data-htmlnode="">2</sup> デバイスの参加状態の詳細については、[Azure AD デバイス ID のドキュメント](https://docs.microsoft.com/azure/active-directory/devices/)を参照してください。 
+<sup data-htmlnode="">2</sup> デバイスの参加状態の詳細については、[Azure AD デバイス ID のドキュメント](../devices/index.yml)を参照してください。 
 
 ## <a name="why-sms-isnt-recommended"></a>SMS が推奨されない理由 
 
-SMS テキスト メッセージは NIST 標準を満たしていますが、NIST では推奨されません。 デバイス スワップ、SIM の変更、数値の移植、およびその他の動作のリスクによって、問題が発生する可能性があります。 これらのアクションが悪意を持って行われると、安全でないエクスペリエンスになる可能性があります。 それらは推奨されていませんが、ハッカーにとってより多くの労力が必要になるため、パスワードのみを使用するよりは悪くありません。 
+SMS テキスト メッセージは NIST 標準を満たしていますが、NIST では推奨されません。 デバイス スワップ、SIM の変更、電話番号のポーティング、およびその他の動作のリスクによって、問題が発生する可能性があります。 これらのアクションが悪意を持って行われると、安全でないエクスペリエンスになる可能性があります。 SMS テキスト メッセージは推奨されていませんが、ハッカーにとってより多くの労力が必要になるため、パスワードのみを使用するよりは悪くありません。 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 [NIST の概要](nist-overview.md)
 
-[AAL の詳細](nist-about-authenticator-assurance-levels.md)
+[AAL について確認する](nist-about-authenticator-assurance-levels.md)
 
 [認証の基本](nist-authentication-basics.md)
 
-[NIST Authenticator の種類](nist-authenticator-types.md)
+[NIST 認証システムの種類](nist-authenticator-types.md)
 
 [Azure AD を使用して NIST AAL1 を達成する](nist-authenticator-assurance-level-1.md)
 
 [Azure AD を使用して NIST AAL2 を達成する](nist-authenticator-assurance-level-2.md)
 
-[Azure AD を使用して NIST AAL3 を達成する](nist-authenticator-assurance-level-3.md) 
+[Azure AD を使用して NIST AAL3 を達成する](nist-authenticator-assurance-level-3.md)

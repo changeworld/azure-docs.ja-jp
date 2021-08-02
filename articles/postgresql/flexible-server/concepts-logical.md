@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/22/2021
-ms.openlocfilehash: eb54ad3e5e7d3db5fc1a399c473de81531e27178
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 06/10/2021
+ms.openlocfilehash: e3e468b774503b42fd46e66492f09982e8d1d9a6
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988588"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982270"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの論理レプリケーションと論理デコード
 
@@ -21,7 +21,7 @@ ms.locfileid: "107988588"
 Azure Database for PostgreSQL - フレキシブル サーバーでは、次の論理データの抽出とレプリケーションの手法がサポートされています。
 1. **論理レプリケーション**
    1. データ オブジェクトをレプリケートする、PostgreSQL の[ネイティブ論理レプリケーション](https://www.postgresql.org/docs/12/logical-replication.html)を使用する。 論理レプリケーションを使用すると、テーブル レベルのデータ レプリケーションなど、データ レプリケーションをきめ細かく制御できます。
-   2. 論理ストリーミング レプリケーションと、データベースの初期スキーマのコピー、TRUNCATE のサポート、DDL のレプリケート機能などの追加機能を提供する [pglogical](https://github.com/2ndQuadrant/pglogical) 拡張機能を使用する。
+   <!--- 2. Using [pglogical](https://github.com/2ndQuadrant/pglogical) extension that provides logical streaming replication and additional capabilities such as copying initial schema of the database, support for TRUNCATE, ability to replicate DDL etc. -->
 2. 先書きログ (WAL) の内容を [デコード](https://www.postgresql.org/docs/12/logicaldecoding-explanation.html)することで実施される **論理デコード**。 
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>論理レプリケーションと論理デコードの比較
@@ -43,10 +43,13 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、次の�
 
 ## <a name="pre-requisites-for-logical-replication-and-logical-decoding"></a>論理レプリケーションと論理デコードの前提条件
 
-1. サーバー パラメーター `wal_level` を `logical` に設定します。
-2. サーバーを再起動して `wal_level` の変更を適用します。
-3. PostgreSQL のインスタンスで、接続しているリソースからのネットワーク トラフィックが許可されていることを確認します。
-4. 管理者ユーザーのレプリケーションのアクセス許可を付与します。
+1. ポータルのサーバー パラメーターのページに移動します。
+2. サーバー パラメーター `wal_level` を `logical` に設定します。
+<!---
+3. If you want to use pglogical extension, search for the `shared_preload_libaries` parameter, and select `pglogical` from the drop-down box. Also update `max_worker_processes` parameter value to at least 16. -->
+3. 変更を保存し、サーバーを再起動して `wal_level` の変更を適用します。
+4. PostgreSQL のインスタンスで、接続しているリソースからのネットワーク トラフィックが許可されていることを確認します。
+5. 管理者ユーザーのレプリケーションのアクセス許可を付与します。
    ```SQL
    ALTER ROLE <adminname> WITH REPLICATION;
    ```
@@ -86,36 +89,62 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、次の�
    ```SQL
    SELECT * FROM basic;
    ```
+   パブリッシャーのテーブルに行を追加し、サブスクライバーで変更を表示することができます。
 
-パブリッシャーのテーブルに行を追加し、サブスクライバーで変更を表示することができます。
+   データが見られない場合は、`azure_pg_admin` のログイン権限を有効にして表の内容を確認します。 
+   ```SQL 
+   ALTER ROLE azure_pg_admin login;
+   ```
+
 
 [論理レプリケーション](https://www.postgresql.org/docs/current/logical-replication.html)の詳細については、PostgreSQL のドキュメントを参照してください。
 
+<!---
+### pglogical extension
 
-### <a name="pglogical-extension"></a>pglogical 拡張機能
+Here is an example of configuring pglogical at the provider database server and the subscriber. Please refer to pglogical extension documentation for more details. Also make sure you have performed pre-requisite tasks listed above.
 
-プロバイダー データベース サーバーとサブスクライバーで pglogical を構成する例を次に示します。 詳細については、pglogical 拡張機能のドキュメントを参照してください。
-
-1. プロバイダーとサブスクライバーの両方のデータベース サーバーに pglogical 拡張機能をインストールします。
+1. Install pglogical extension in the database in both the provider and the subscriber database servers.
     ```SQL
+   \C myDB
    CREATE EXTENSION pglogical;
    ```
-2. プロバイダー データベース サーバーで、プロバイダー ノードを作成します。
+2. At the **provider** (source/publisher) database server, create the provider node.
    ```SQL
-   select pglogical.create_node( node_name := 'provider1', dsn := ' host=myProviderDB.postgres.database.azure.com port=5432 dbname=myDB');
+   select pglogical.create_node( node_name := 'provider1', 
+   dsn := ' host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
    ```
-3. testUser スキーマのテーブルを既定のレプリケーション セットに追加します。
-    ```SQL
+3. Create a replication set.
+   ```SQL
+   select pglogical.create_replication_set('myreplicationset');
+   ```
+4. Add all tables in the database to the replication set.
+   ```SQL
+   SELECT pglogical.replication_set_add_all_tables('myreplicationset', '{public}'::text[]);
+   ```
+
+   As an alternate method, ou can also add tables from a specific schema (for example, testUser) to a default replication set.
+   ```SQL
    SELECT pglogical.replication_set_add_all_tables('default', ARRAY['testUser']);
    ```
-4. サブスクライバー サーバーで、サブスクライバー ノードを作成します。
+
+5. At the **subscriber** database server, create a subscriber node.
    ```SQL
-   select pglogical.create_node( node_name := 'subscriber1', dsn := ' host=mySubscriberDB.postgres.database.azure.com port=5432 dbname=myDB');
+   select pglogical.create_node( node_name := 'subscriber1', 
+   dsn := ' host=mySubscriberServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPasword' );
    ```
-5. サブスクリプションを作成して、同期とレプリケーションのプロセスを開始します。
+6. Create a subscription to start the synchronization and the replication process.
     ```SQL
-   select pglogical.create_subscription( subscription_name := 'subscription1', provider_dsn := ' host=myProviderDB.postgres.database.azure.com port=5432 dbname=myDB');
+   select pglogical.create_subscription (
+   subscription_name := 'subscription1',
+   replication_sets := array['myreplicationset'],
+   provider_dsn := 'host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
    ```
+7. You can then verify the subscription status.
+   ```SQL
+   SELECT subscription_name, status FROM pglogical.show_subscription_status();
+   ```
+-->
 ### <a name="logical-decoding"></a>論理デコード
 論理デコードは、ストリーミング プロトコルまたは SQL インターフェイスを介して使用できます。 
 

@@ -7,22 +7,22 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 04/20/2021
-ms.openlocfilehash: f11f1d5601a61bbd9b8729b478c278db8d3e73dc
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 85668f07512e8aaa925b924ef0e631fe89b5c3fa
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812420"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005701"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>ホストされた体験版の詳細な構成
 
-この記事では、Dynamics 365 for Customer Engagement または Dynamics 365 for Operations 用のホストされた体験版を構成する方法について説明します。
+この記事では、Dynamics 365 for Customer Engagement & Power Apps または Dynamics 365 for Operations 用のホストされた体験版を構成する方法について説明します。
 
-## <a name="configure-for-dynamics-365-customer-engagement"></a>Dynamics 365 Customer Engagement 用に構成する
+## <a name="configure-for-dynamics-365-customer-engagement--power-apps"></a>Dynamics 365 Customer Engagement & Power Apps 用に構成する
 
-1. [パートナー センター](https://partner.microsoft.com/)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 2. 上記のリンクにアクセスできない場合は、[こちら](https://appsource.microsoft.com/partners/list-an-app)でアプリケーションを公開する要求を送信する必要があります。 要求が確認されると、公開プロセスを始めるためのアクセスが許可されます。
-3. 既存の **Dynamics 365 for Customer Engagement** オファーを検索するか、新しい **Dynamics 365 for Customer Engagement** オファーを作成します。
+3. 既存の **Dynamics 365 for Customer Engagement & Power Apps** オファーを検索するか、新しい **Dynamics 365 for Customer Engagement & Power Apps** オファーを作成します。
 4. **[体験版を有効にする]** チェック ボックスをオンにし、 **[体験版の種類]** を選択して (下の説明を参照)、 **[保存]** を選択します。
 
     [![[体験版を有効にする] チェック ボックスの選択。](media/test-drive/enable-test-drive-check-box.png)](media/test-drive/enable-test-drive-check-box.png#lightbox)
@@ -61,9 +61,10 @@ ms.locfileid: "107812420"
 
 ## <a name="configure-for-dynamics-365-operations"></a>Dynamics 365 Operations 用に構成する
 
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 2. 上記のリンクにアクセスできない場合は、[こちら](https://appsource.microsoft.com/partners/list-an-app)でアプリケーションを公開する要求を送信する必要があります。 要求が確認されると、公開プロセスを始めるためのアクセスが許可されます。
 3. 既存の **Dynamics 365 for Operations** オファーを検索するか、新しい **Dynamics 365 for Operations** オファーを作成します。
-4. **[体験版を有効にする]** チェック ボックスをオンにし、 **[体験版の種類]** を選択して (下の説明を参照)、 **[保存]** を選択します。
+4. **[体験版を有効にする]** チェック ボックスをオンにし、 **[体験版の種類]** を選択して (下の説明を参照)、 **[下書きの保存]** を選択します。
 
     [![[体験版を有効にする] チェック ボックスをオンにする。](media/test-drive/enable-test-drive-check-box-operations.png)](media/test-drive/enable-test-drive-check-box-operations.png#lightbox)
 

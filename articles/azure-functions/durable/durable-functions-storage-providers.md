@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 090db9c84786735071ef82e60ab2234fb01d5d6e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf50f0bdc3c8e654a3d2f780bb7f0c32533948eb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387168"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465802"
 ---
 # <a name="durable-functions-storage-providers"></a>Durable Functions ストレージ プロバイダー
 
@@ -39,7 +39,7 @@ Azure Storage ストレージ プロバイダーの DTFx コンポーネント�
 > [!NOTE]
 > Azure Storage プロバイダーを使用する場合、標準の汎用 Azure Storage アカウントが必要です。 他のストレージ アカウント タイプはどれもサポートされていません。 従来の v1 汎用ストレージ アカウントを使用することを強くお勧めします。これは、新しい v2 ストレージ アカウントでは、Durable Functions のワークロードに対して料金が大幅に高額になる可能性があるためです。 Azure Storage アカウントの種類について詳しくは、「[ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」ドキュメントを参照してください。
 
-## <a name=""></a><a name="netherite">Netherite (プレビュー)</a>
+## <a name="netherite-preview"></a><a name="netherite"></a>Netherite (プレビュー)
 
 Netherite ストレージ バックエンドは、[Microsoft Research](https://www.microsoft.com/research) によって設計および開発されました。 これは、[Azure ページ BLOB](../../storage/blobs/storage-blob-pageblob-overview.md) 上で [Azure Event Hubs](../../event-hubs/event-hubs-about.md) と [FASTER](https://www.microsoft.com/research/project/faster/) データベース テクノロジを使用します。 Netherite の設計により、他のプロバイダーと比較して、オーケストレーションとエンティティのスループット処理を大幅に向上できます。 一部のベンチマーク シナリオでは、既定の Azure Storage プロバイダーと比較して、桁違いのスループットが記録されました。
 
@@ -55,7 +55,7 @@ Netherite ストレージ プロバイダーの使用を開始する方法など
 > [!NOTE]
 > _Netherite_ という名前は、[Minecraft](https://minecraft.fandom.com/wiki/Netherite) の世界が元になっています。
 
-## <a name=""></a><a name="mssql">Microsoft SQL Server (MSSQL) (プレビュー)</a>
+## <a name="microsoft-sql-server-mssql-preview"></a><a name="mssql"></a>Microsoft SQL Server (MSSQL) (プレビュー)
 
 Microsoft SQL Server (MSSQL) ストレージ プロバイダーは、すべての状態を Microsoft SQL Server データベースに保存します。 これは、SQL Server のオンプレミスとクラウドホステッドの両方のデプロイ ([Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) を含む) と互換性があります。
 

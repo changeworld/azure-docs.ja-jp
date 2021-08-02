@@ -6,17 +6,20 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c355939191e6da9a9408edde02deac97d69c9bbf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b61e1e0b185355c06d10648f267895e819162318
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084432"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969706"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Azure Cache for Redis のゾーン冗長性を有効にする
 この記事では、Azure portal を使用してゾーン冗長の Azure Cache インスタンスを構成する方法について説明します。
 
 Azure Cache for Redis の Standard、Premium、および Enterprise の各レベルでは、2 つの専用仮想マシン (VM) で各キャッシュをホストすることにより、組み込みの冗長性が提供されます。 これらの VM は、[Azure の障害と更新のドメイン](../virtual-machines/availability.md)に個別に配置されているため、可用性は高いですが、データセンター レベルの障害の影響を受けやすくなっています。 Azure Cache for Redis では、Premium および Enterprise の各レベルでのゾーン冗長もサポートされています。 ゾーン冗長キャッシュは、複数の[可用性ゾーン](../availability-zones/az-overview.md)に分散している VM 上で実行されます。 これにより、回復性と可用性が向上します。
+
+> [!NOTE]
+> Azure Availability Zones 間のデータ転送は、標準の[帯域幅レート](https://azure.microsoft.com/pricing/details/bandwidth/)で課金されます。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
@@ -51,7 +54,7 @@ Azure Cache for Redis の Standard、Premium、および Enterprise の各レベ
 1. 他のオプションは既定の設定のままにします。 
 
     > [!NOTE]
-    > ゾーン冗長のサポートは、現在、非クラスター化および geo レプリケートされていないキャッシュでのみ機能します。 また、プライベート リンク、スケーリング、データ永続化、インポート/エクスポートはサポートされていません。
+    > ゾーン冗長性では、AOF 永続化がサポートされず、現在 geo レプリケーションも使用できません。
     >
 
 1. **Create** をクリックしてください。 
@@ -61,6 +64,29 @@ Azure Cache for Redis の Standard、Premium、および Enterprise の各レベ
     > [!NOTE]
     > 可用性ゾーンは、キャッシュの作成後に変更することはできません。
     >
+
+## <a name="zone-redundancy-faq"></a>ゾーン冗長性に関する FAQ
+
+- [Premium キャッシュを作成するときにゾーン冗長性を有効にできないのはなぜですか](#why-cant-i-enable-zone-redundancy-when-creating-a-premium-cache)
+- [キャッシュの作成中に 3 つのゾーンすべてを選択できないのはなぜですか](#why-cant-i-select-all-three-zones-during-cache-create)
+- [ゾーン冗長性を使用できるように既存の Premium キャッシュを更新することはできますか](#can-i-update-my-existing-premium-cache-to-use-zone-redundancy)
+- [Azure Availability Zones 間でデータをレプリケートするコストはどれくらいですか](#how-much-does-it-cost-to-replicate-my-data-across-azure-availability-zones)
+
+### <a name="why-cant-i-enable-zone-redundancy-when-creating-a-premium-cache"></a>Premium の作成時に、ゾーン冗長性を有効にできないのはなぜですか
+
+ゾーン冗長性は、Availability Zones がある Azure リージョンでのみ使用できます。 最新 の一覧については、「[Azure のリージョンと Availability Zones](../availability-zones/az-region.md#azure-services-supporting-availability-zones)」を参照してください。
+
+### <a name="why-cant-i-select-all-three-zones-during-cache-create"></a>キャッシュの作成中に 3 つのゾーンすべてを選択できないのはなぜですか
+
+Premium キャッシュには、既定で 1 つのプライマリ ノードと 1 つのレプリカ ノードがあります。 複数の Availability Zones にゾーン冗長性を構成するには、作成するキャッシュに[レプリカを追加](cache-how-to-multi-replicas.md)する必要があります。
+
+### <a name="can-i-update-my-existing-premium-cache-to-use-zone-redundancy"></a>ゾーン冗長性を使用できるように既存の Premium キャッシュを更新することはできますか
+
+いいえ、現在これはサポートされていません。
+
+### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-availability-zones"></a>Azure Availability Zones 間でデータをレプリケートするコストはどれくらいですか
+
+複数の Availability Zones で構成されたゾーン冗長性を使用する場合、データは 1 つのゾーンのプライマリ キャッシュ ノードからもう一方のゾーンの別ノードにレプリケートされます。 データ転送料金は、選択した Availability Zones 間で移動するデータのネットワーク エグレス コストです。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Cache for Redis の機能について

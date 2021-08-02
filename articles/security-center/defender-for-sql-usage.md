@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: a497e5bc9d04577f4b4f9d373aa68d07b5a08043
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b375ad72d3ef459635c4a786391ef7b9836d8a99
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905056"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411588"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines を有効にする 
 
@@ -40,15 +40,23 @@ ms.locfileid: "107905056"
 
 このプランを有効にするには:
 
-[手順 1. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする:](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
+[手順 1. エージェント拡張機能をインストールする](#step-1-install-the-agent-extension)
 
-[手順 2. Security Center の価格と設定ページで、オプションのプランを有効にする:](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
+[手順 2. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする:](#step-2-provision-the-log-analytics-agent-on-your-sql-servers-host)
+
+[手順 3. Security Center の価格と設定ページで、オプションのプランを有効にする:](#step-3-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
 
-### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>手順 1. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする
+### <a name="step-1-install-the-agent-extension"></a>手順 1. エージェント拡張機能をインストールする
+
+- **Azure VM 上の SQL Server** - 「[SQL Server VM を SQL IaaS Agent 拡張機能に登録する](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)」で説明されているように、SQL Server VM を SQL IaaS Agent 拡張機能に登録します。
+
+- **Azure Arc 上の SQL Server** - [Azure Arc のドキュメント](../azure-arc/servers/manage-vm-extensions.md)で説明されているインストール方法に従って、Azure Arc エージェントをインストールします。
+
+### <a name="step-2-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>手順 2. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする
 
 - **Azure VM 上の SQL Server** - SQL マシンが Azure VM でホストされている場合は、[Log Analytics エージェントの自動プロビジョニングを有効にする <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)ことができます。 または、手動の手順に従って [Azure Stack Hub VM をオンボードする](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)こともできます。
-- **Azure Arc 上の SQL Server** - SQL Server が [Azure Arc](../azure-arc/index.yml) 対応サーバーによって管理されている場合は、Security Center のレコメンデーション [Log Analytics agent should be installed on your Windows-based Azure Arc machines (Preview)] (Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要があります (プレビュー)) を使用して、Log Analytics エージェントをデプロイできます。 または、[Azure Arc のドキュメント](../azure-arc/servers/manage-vm-extensions.md)に記載されたインストール方法に従うこともできます。
+- **Azure Arc 上の SQL Server** - SQL Server が [Azure Arc](../azure-arc/index.yml) 対応サーバーによって管理されている場合は、Security Center のレコメンデーション [Log Analytics agent should be installed on your Windows-based Azure Arc machines (Preview)] (Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要があります (プレビュー)) を使用して、Log Analytics エージェントをデプロイできます。
 
 - **オンプレミスの SQL Server** - SQL Server が Azure Arc を使用しないオンプレミスの Windows マシンでホストされている場合は、Azure に接続するためのオプションが 2 つあります。
     
@@ -57,7 +65,7 @@ ms.locfileid: "107905056"
     - **Azure Arc を使用せずに Windows マシンを接続する** - Azure Arc を使用せずに Windows マシンで実行されている SQL Server を接続する場合は、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/agents/agent-windows.md)」の手順に従ってください。
 
 
-### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>手順 2. Security Center の価格と設定ページで、オプションのプランを有効にする
+### <a name="step-3-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>手順 3. Security Center の価格と設定ページで、オプションのプランを有効にする
 
 1. Security Center のメニューで、 **[価格と設定]** ページを開きます。
 
@@ -86,7 +94,7 @@ ms.locfileid: "107905056"
 
 ## <a name="explore-and-investigate-security-alerts"></a>セキュリティ通知について調査する
 
-Azure Defender for SQL のアラートは、Security Center のアラート ページ、リソースのセキュリティ タブ、[Azure Defender ダッシュボード](azure-defender-dashboard.md)、またはアラート メールの直接リンクで使用できます。
+Azure Defender for SQL のアラートは、Security Center のアラート ページ、マシンのセキュリティ ページ、[Azure Defender ダッシュボード](azure-defender-dashboard.md)、またはアラート メールの直接リンクで使用できます。
 
 1. アラートを表示するには、Security Center のメニューで **[セキュリティ アラート]** を選択し、アラートを選択します。
 

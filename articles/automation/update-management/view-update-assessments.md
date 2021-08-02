@@ -3,14 +3,14 @@ title: Azure Automation 更新プログラムの評価を表示する
 description: この記事では、Update Management のデプロイに関して、更新プログラムの評価を表示する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 09/17/2020
+ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 39df5888a330a92ae043e34c3043da5b1f566345
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 270a48181e8eceb7b5e851f9bc69bb5a41428573
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221683"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964458"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Update Management で更新プログラムの評価を表示する
 
@@ -46,6 +46,9 @@ Automation アカウントからの Arc 対応サーバーを含め、すべて�
 
 [ ![更新ステータスの表示](./media/view-update-assessments/missing-updates.png)](./media/view-update-assessments/missing-updates-expanded.png#lightbox)
 
+> [!NOTE]
+> Windows Defender の定義の更新状態について表示される情報は、Log Analytics ワークスペースからまとめられた最後のデータに基づいており、最新ではない可能性があります。 この動作の詳細については、「[Windows Defender の更新プログラムが常に "見つからない" と表示される](../troubleshoot/update-management.md#windows-defender-update-missing-status)」を参照してください。
+ 
 更新プログラムのほかの場所をクリックすると、[ログ検索] ペインが開きます。 その更新プログラムについて、ログ検索のクエリが事前に定義されています。 詳細情報を表示するには、このクエリを変更するか、独自のクエリを作成します。
 
 [ ![ログのクエリ結果の表示](./media/view-update-assessments/logsearch-results.png)](./media/view-update-assessments/logsearch-results-expanded.png#lightbox)

@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 37e6777f206e980e7ea37c00559ad6988c38cc7b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2cd15836e69ca5174822de95e3fced3a9659096f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738991"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971078"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -43,7 +43,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 
 
 
-### <a name="vm-requirements-agentless"></a>VM の要件 (エージェントレス)
+### <a name="vm-requirements-agentless"></a>VM の要件 (エージェントレス) 
 
 次の表は、VMware VM のエージェントレス移行の要件をまとめたものです。
 
@@ -51,10 +51,10 @@ VMware VM は、次のいくつかの方法で移行できます。
 --- | ---
 **サポートされているオペレーティング システム** | Azure でサポートされている [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](../virtual-machines/linux/endorsed-distros.md) オペレーティング システムを移行できます。
 **Azure での Windows VM** | 場合によっては、移行前に VM に[いくつかの変更を加える](prepare-for-migration.md#verify-required-changes-before-migrating)必要があります。 
-**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8、9 <br/> Oracle Linux 7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
+**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 8、7.9、7.8、7.7、7.6、7.5、7.4、7.0、6.x <br/> - Cent OS 8、7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 11、12、15 SP0、15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8、9 <br/> Oracle Linux 6、7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
 **Linux ブート** | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。
 **UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。 
-**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 32 TB。
+**ディスク サイズ** | Gen 1 VM と Gen 2 VM の場合は最大 2 TB の OS ディスク。データ ディスクの場合は 32 TB。
 **ディスクの制限** |  VM あたり最大 60 台のディスク。
 **暗号化されたディスクまたはボリューム** | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。
 **共有ディスク クラスター** | サポートされていません。
@@ -131,7 +131,7 @@ vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナ�
 **UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。 
 **UEFI - セキュア ブート**         | 移行はサポートされません。
 **ターゲット ディスク** | VM は、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
-**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 32 TB。
+**ディスク サイズ** | Gen 1 VM の場合は最大 2 TB の OS ディスク、Gen 2 VM の場合は最大 4 TB の OS ディスク。データ ディスクの場合は 32 TB。
 **ディスクの制限** |  VM あたり最大 63 台のディスク。
 **暗号化されたディスクまたはボリューム** | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。
 **共有ディスク クラスター** | サポートされていません。

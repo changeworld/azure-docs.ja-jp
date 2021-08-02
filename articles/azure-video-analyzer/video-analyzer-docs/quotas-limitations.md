@@ -3,13 +3,13 @@ title: Azure Video Analyzer のクォータと制限事項 - Azure
 description: この記事では、Azure Video Analyzer のクォータと制限事項について説明します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 03/26/2021
-ms.openlocfilehash: ca70737fd9bcf571dd4f0ca729bbe50b540de90e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/26/2021
+ms.openlocfilehash: d4bc488411319832b59540fb1392b5d3259cef69
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387855"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652189"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>Azure Video Analyzer のクォータと制限事項
 
@@ -44,6 +44,7 @@ ms.locfileid: "110387855"
    * HTTP または gRPC 拡張プロセッサの下流で使用することはできません。
 * シグナル ゲート プロセッサ
    * RTSP ソースのすぐ下流にある必要があります。
+   * HTTP または gRPC 拡張プロセッサの上流で使用することはできません。
 * オブジェクトトラッカーのプロセッサ
    * HTTP または gRPC 拡張プロセッサの直下の下流にある必要があります。 拡張プロセッサで、ライブ ビデオのすべてのフレームに AI モデルを適用してはなりません。
 * ライン クロッシング プロセッサ

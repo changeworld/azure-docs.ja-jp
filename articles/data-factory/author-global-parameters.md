@@ -5,13 +5,14 @@ ms.service: data-factory
 ms.topic: conceptual
 author: minhe-msft
 ms.author: hemin
-ms.date: 03/15/2021
-ms.openlocfilehash: 3598ede0cab3c001854d0ba46501692935397923
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 05/12/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b699b7929709fd9ae9e206d6a50291f02aca2a18
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905394"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675245"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 
@@ -46,17 +47,18 @@ ms.locfileid: "107905394"
 * ARM テンプレートにグローバル パラメーターを含める
 * PowerShell スクリプトを使用してグローバル パラメーターをデプロイする
 
-ほとんどのユース ケースでは、ARM テンプレートにグローバル パラメーターを含めることをお勧めします。 これは、[CI/CD ドキュメント](continuous-integration-deployment.md)に記載されているソリューションとネイティブに統合されます。グローバル パラメーターは、環境によって変わることが多いため、既定で ARM テンプレート パラメーターとして追加されます。 **管理** ハブから有効にして、ARM テンプレートにグローバル パラメーターを含めることができます。
-
-> [!NOTE]
-> **ARM テンプレートに含める** 構成は、"Git モード" でのみ使用できます。 現在は "ライブ モード" または "Data Factory" モードのため、これは無効です。 
-
-> [!WARNING]
->パラメーター名に '-' を使用することはできません。 エラーコード "{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=The expression >'pipeline().globalParameters.myparam-dbtest-url' is not valid: .....}" が表示されます。 ただし、パラメーター名に ‘_’ を使用することはできます。
+一般的なユース ケースでは、ARM テンプレートにグローバル パラメーターを含めることをお勧めします。 これは、[CI/CD のドキュメント](continuous-integration-deployment.md)で説明されているソリューションとネイティブに統合されます。自動発行および Purview 接続の場合は、**PowerShell スクリプト** による方法を使用する必要があります。 PowerShell スクリプトによる方法の詳細については、後で説明します。 グローバル パラメーターは、環境によって変わることが多いため、既定で ARM テンプレート パラメーターとして追加されます。 **管理** ハブから有効にして、ARM テンプレートにグローバル パラメーターを含めることができます。
 
 ![ARM テンプレートに含める](media/author-global-parameters/include-arm-template.png)
 
-ARM テンプレートにグローバル パラメーターを追加すると、他の環境でのカスタマー マネージド キーや git 構成など、その他のファクトリレベル設定をオーバーライドできるファクトリレベル設定が追加されます。 UAT や PROD などの管理者特権環境でこれらの設定を有効にしている場合は、以下で説明する手順で、PowerShell スクリプトを使用してグローバル パラメーターをデプロイすることをお勧めします。
+> [!NOTE]
+> **ARM テンプレートに含める** 構成は、"Git モード" でのみ使用できます。 現在は "ライブ モード" または "Data Factory" モードのため、これは無効です。 自動発行または Purview 接続の場合は、グローバル パラメーターを含める方法は使用せず、PowerShell スクリプトによる方法を使用してください。 
+
+> [!WARNING]
+>パラメーター名に '-' を使用することはできません。 エラーコード "{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=The expression >'pipeline().globalParameters.myparam-dbtest-url' is not valid: .....}" が表示されます。 ただし、パラメーター名に ‘_’ を使用することはできます。 
+
+ARM テンプレートにグローバル パラメーターを追加すると、他の環境でのカスタマー マネージド キーや git 構成など、その他のファクトリレベル設定をオーバーライドできるファクトリレベル設定が追加されます。 UAT や PROD などの管理者特権環境でこれらの設定を有効にしている場合は、以下で説明する手順で、PowerShell スクリプトを使用してグローバル パラメーターをデプロイすることをお勧めします。 
+
 
 ### <a name="deploying-using-powershell"></a>PowerShell を使用したデプロイ
 

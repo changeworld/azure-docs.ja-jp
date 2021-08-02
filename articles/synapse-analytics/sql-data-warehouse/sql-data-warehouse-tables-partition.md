@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8a59c24100b433719ccfd3a9ea1b6a676695d381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed9a5c63fa86e1fac6abd9ac023bb48abd2f196d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673436"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459650"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>専用 SQL プールでのテーブルのパーティション分割
 

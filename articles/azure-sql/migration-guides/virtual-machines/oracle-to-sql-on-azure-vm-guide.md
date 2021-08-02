@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 2133f3da926dfd1e92d911004393893f58d27db6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d7c315694b5b25597abdacce74813b3578682f89
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136454"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111972047"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>移行ガイド: Oracle から Azure Virtual Machines 上の SQL Serverへ
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -265,6 +265,7 @@ SSMA を使用する代わりに、SQL Server Integration Services (SSIS) を使
 | [SSMA Oracle 評価コレクションと統合の自動化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | このリソースのセットでは、エントリとして .csv ファイル (プロジェクト フォルダー内の sources.csv) を使用して、コンソール モードで SSMA 評価を実行するために必要な XML ファイルが生成されます。 既存の Oracle インスタンスのインベントリを取得することによって、source.csv ファイルを用意します。 出力ファイルは、AssessmentReportGeneration_source_1.xml、ServersConnectionFile.xml、および VariableValueFile.xml です。|
 | [Oracle データベースの移行時の SSMA の問題と考えられる解決方法](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Oracle では、WHERE 句に非スカラー条件を割り当てることができます。 SQL Server では、この種類の条件はサポートされません。 そのため、SSMA for Oracle では、WHERE 句に非スカラー条件が含まれるクエリは変換されません。 代わりに、エラー O2SS0001 が生成されます。 このホワイト ペーパーでは、この問題とその解決方法について詳しく説明しています。          |
 | [Oracle から SQL Server への移行に関するハンドブック](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | このドキュメントは、Oracle スキーマを最新バージョンの SQL Server に移行する場合に関連するタスクに焦点を当てています。 移行で機能の変更が必要になる場合、データベースを使用するアプリケーションを変更したときに発生する影響について慎重に考慮する必要があります。                                                     |
+|[Oracle から SQL Server へのデータベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA for Oracle Tester は、データベース オブジェクトの変換とデータ移行を自動的に検証するために推奨されるツールであり、データベース比較機能のスーパーセットです。<br /><br />別のデータ検証オプションを探している場合は、データベース比較ユーティリティを使用して、すべてのまたは選択したテーブル、行、および列の行または列レベルまでデータを比較できます。|
 
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主な目的は、Microsoft Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトのために、障害を取り除き、複雑な最新化を加速することです。

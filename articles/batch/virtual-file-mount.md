@@ -4,12 +4,12 @@ description: 仮想ファイル システムを Batch プールにマウント�
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 460501e30b5afd2eb7a1f67b1162b9820830454a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105750"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968141"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>仮想ファイル システムを Batch プールにマウントする
 
@@ -76,7 +76,7 @@ new PoolAddParameter
 }
 ```
 
-### <a name="azure-blob-file-system"></a>Azure Blob ファイル システム
+### <a name="azure-blob-container"></a>Azure BLOB コンテナー
 
 もう 1 つの選択肢は、[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) を介して Azure Blob ストレージを使用することです。 BLOB ファイル システムをマウントするには、ストレージ アカウントに `AccountKey` または `SasKey` が必要です。 これらのキーの取得については、「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」または「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。 blobfuse の使用に関する詳細とヒントについては、「blobfuse」を参照してください。
 
@@ -97,7 +97,7 @@ new PoolAddParameter
                 AccountName = "StorageAccountName",
                 ContainerName = "containerName",
                 AccountKey = "StorageAccountKey",
-                SasKey = "",
+                SasKey = "SasKey",
                 RelativeMountPath = "RelativeMountPath",
                 BlobfuseOptions = "-o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 "
             },
@@ -108,7 +108,7 @@ new PoolAddParameter
 
 ### <a name="network-file-system"></a>ネットワーク ファイル システム
 
-ネットワーク ファイル システム (NFS) をプール ノードにマウントして、Azure Batch が従来のファイル システムにアクセスできるようにすることができます。 これは、クラウドにデプロイされる単一の NFS サーバー、または仮想ネットワーク経由でアクセスされるオンプレミスの NFS サーバーの場合があります。 または、[Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) 分散型インメモリ キャッシュ ソリューションをデータ集中型ハイ パフォーマンス コンピューティング (HPC) タスクで使用することもできます
+ネットワーク ファイル システム (NFS) をプール ノードにマウントして、Azure Batch が従来のファイル システムにアクセスできるようにすることができます。 これは、クラウドにデプロイされる単一の NFS サーバー、または仮想ネットワーク経由でアクセスされるオンプレミスの NFS サーバーの場合があります。 NFS マウントでは、データ集約型のハイ パフォーマンス コンピューティング (HPC) タスク向けの [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) 分散型インメモリ キャッシュ ソリューションと、[Azure BLOB 用 NFS](../storage/blobs/network-file-system-protocol-support.md) や [Azure Files 用 NFS](../storage/files/storage-files-how-to-mount-nfs-shares.md) などの他の標準的な NFS 準拠インターフェイスがサポートされています。
 
 ```csharp
 new PoolAddParameter
@@ -122,7 +122,7 @@ new PoolAddParameter
             {
                 Source = "source",
                 RelativeMountPath = "RelativeMountPath",
-                MountOptions = "options ver=1.0"
+                MountOptions = "options ver=3.0"
             },
         }
     }
@@ -131,7 +131,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>共通インターネット ファイル システム
 
-プール ノードへの[共通インターネット ファイル システム (CIFS)](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) のマウントは、従来のファイル システムへのアクセスを提供するもう 1 つの方法です。 CIFS は、ネットワーク サーバーのファイルとサービスを要求するためのオープンなクロスプラットフォーム メカニズムを提供するファイル共有プロトコルです。 CIFS は、インターネットおよびイントラネット ファイル共有のための[サーバー メッセージ ブロック (SMB)](/windows-server/storage/file-server/file-server-smb-overview) プロトコルの拡張バージョンに基づいており、Windows ノードに外部ファイル システムをマウントするために使用できます。
+プール ノードへの[共通インターネット ファイル システム (CIFS)](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) のマウントは、従来のファイル システムへのアクセスを提供するもう 1 つの方法です。 CIFS は、ネットワーク サーバーのファイルとサービスを要求するためのオープンなクロスプラットフォーム メカニズムを提供するファイル共有プロトコルです。 CIFS は、インターネットおよびイントラネット ファイル共有用の[サーバー メッセージ ブロック (SMB)](/windows-server/storage/file-server/file-server-smb-overview) プロトコルの拡張バージョンに基づいています。
 
 ```csharp
 new PoolAddParameter
@@ -160,36 +160,28 @@ new PoolAddParameter
 
 デバッグのためにログ ファイルを取得するには、[OutputFiles](batch-task-output-files.md) を使用して `*.log` ファイルをアップロードします。 `*.log` ファイルには、`AZ_BATCH_NODE_MOUNTS_DIR` の場所にあるファイル システムのマウントに関する情報が含まれています。 マウント ログ ファイルの形式は、マウントごとに `<type>-<mountDirOrDrive>.log` となります。 たとえば、`test` というマウント ディレクトリの `cifs` マウントでは、`cifs-test.log` という名前のマウント ログ ファイルが作成されます。
 
-## <a name="supported-skus"></a>サポートされている SKU
+## <a name="support-matrix"></a>サポート マトリックス
 
-| Publisher | プラン | SKU | Azure Files 共有 | blobfuse | NFS マウント | CIFS マウント |
-|---|---|---|---|---|---|---|
-| batch (バッチ) | rendering-centos73 | rendering | :heavy_check_mark: <br>注:CentOS 7.7 との互換性</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canonical | UbuntuServer | 16.04-LTS、18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>注:CentOS 7.4 と互換性があります。 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>注:A_8 または 9 ストレージをサポートします</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | ubuntu-server-container | 16.04 LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS-HPC | 7.4、7.3、7.1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7.6 | :x: | :x: | :x: | :x: |
-| Windows | WindowsServer | 2012、2016、2019 | :heavy_check_mark: | :x: | :x: | :x: |
+Azure Batch では、それぞれのパブリッシャーとオファー用に生成されるノード エージェントに対して、次の仮想ファイル システムの種類がサポートされています。
+
+| OS の種類 | Azure Files 共有 | Azure BLOB コンテナー | NFS マウント | CIFS マウント |
+|---|---|---|---|---|
+| Linux | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Windows | :heavy_check_mark: | :x: | :x: | :x: |
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 
 [仮想ネットワーク内の Azure Batch プール](batch-virtual-network.md)で仮想ファイル マウントを使用するときは、次の要件を考慮して、必要なトラフィックがブロックされないようにしてください。
 
-- **Azure ファイル**:
+- **Azure ファイル共有**:
   - "storage" サービス タグとの間のトラフィックに TCP ポート 445 を開く必要があります。 詳細については、[Windows での Azure ファイル共有の使用](../storage/files/storage-how-to-use-files-windows.md#prerequisites)に関する記事を参照してください。
-- **blobfuse**:
+- **Azure BLOB コンテナー**:
   - "storage" サービス タグとの間のトラフィックに TCP ポート 443 を開く必要があります。
   - blobfuse および gpg パッケージをダウンロードするために、VM が https://packages.microsoft.com にアクセスできる必要があります。 構成によっては、追加のパッケージをダウンロードするために他の URL へのアクセスも必要な場合があります。
 - **Network File System (NFS)** :
   - ポート 2049 (既定値。構成によって他の要件になる場合もあります) へのアクセスが必要です。
   - NFS 共通 (Debian または Ubuntu 用)、または NFS ユーティリティ (CentOS 用) のパッケージをダウンロードするには、VM が適切なパッケージ マネージャーにアクセスできる必要があります。 この URL は、使用している OS バージョンによって異なる場合があります。 構成によっては、追加のパッケージをダウンロードするために他の URL へのアクセスも必要な場合があります。
+  - Azure BLOB または Azure Files を NFS 経由でマウントするには、ストレージ アカウントと同じ仮想ネットワークの指定されたサブネットを共有するコンピューティング ノードなど、追加のネットワーク要件が必要になる場合があります。
 - **共通インターネット ファイル システム (CIFS)** :
   - TCP ポート 445 へのアクセスが必要です。
   - CIFS ユーティリティ パッケージをダウンロードするには、VM が適切なパッケージ マネージャーにアクセスできる必要があります。 この URL は、使用している OS バージョンによって異なる場合があります。
