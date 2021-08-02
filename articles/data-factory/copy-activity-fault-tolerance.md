@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 0fe1470661c006399ea176af1112d271524b2a1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb3a7b66d27fcf7669d3d2f863f104a46387e90f
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390965"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902485"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -246,7 +246,7 @@ Timestamp, Level, OperationName, OperationItem, Message
 
 ## <a name="copying-tabular-data-legacy"></a>表形式データのコピー (レガシ):
 
-次に示すのは、表形式のデータのみをコピーする際にフォールト トレランスを有効にする従来の方法です。 新しいパイプラインまたはアクティビティを作成している場合は、代わりに[こちら](#copying-tabular-data)から始めることをお勧めします。
+次の方法は、表形式データのみをコピーする際にフォールト トレランスを有効にする従来の方法です。 新しいパイプラインまたはアクティビティを作成している場合は、代わりに[こちら](#copying-tabular-data)から始めることをお勧めします。
 
 ### <a name="configuration"></a>構成
 次の例では、コピー アクティビティで互換性のない行をスキップするように構成する JSON 定義について説明します。

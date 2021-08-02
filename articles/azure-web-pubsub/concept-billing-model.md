@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 03/29/2021
-ms.openlocfilehash: 0d1ba3de5686e161fbd118f78bd4734034dbc1bb
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: c7a7aaa47d40c9d49065f71bc9bebc998adbfc12
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108167033"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410479"
 ---
 # <a name="billing-model-of-azure-web-pubsub-service"></a>Azure Web PubSub サービスの課金モデル
 
@@ -60,7 +60,7 @@ Azure Web PubSub サービスの課金モデルは、ユニットの数と送信
 
 たとえば、Azure Web PubSub サービスと Azure Functions を使用するアプリケーションがあるとします。 1 人のユーザーが 4 KB のデータをグループ内の 10 個の接続にブロードキャストします。 この場合、サービスから Functions へのアップストリームは 4 KB で、サービスから 10 個の接続へのブロードキャストは 40 KB であることがわかります。
 
-> 課金対象の送信トラフィック = 4 KB + 40 KB = 44 KB
+> 課金の送信トラフィック = 4 KB (アップストリーム トラフィック) + 4 KB * 10 (クライアント トラフィックへのサービス ブロードキャスト) = 44 KB
 
 > 相当するメッセージ数 = 44 KB / 2 KB = 22
 

@@ -1,7 +1,7 @@
 ---
 title: MLOps:ML モデル管理
 titleSuffix: Azure Machine Learning
-description: 'Azure Machine Learning (MLOps) を使用したモデル管理について説明します。 モデルをデプロイ、管理、および監視して、継続的に向上させます。 '
+description: 'Azure Machine Learning (MLOps) を使用したモデル管理について説明します。 モデルのデプロイ、管理、系列追跡、監視を行って継続的に改善します。 '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88a2dc2e38861cff540cfa1fcdc0b3f6e9651b04
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508012"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439910"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
+# <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps: Azure Machine Learning を使用したモデルの管理、デプロイ、系列追跡、監視
 
 この記事では、Azure Machine Learning を使用して、モデルのライフサイクルを管理する方法について説明します。 Azure Machine Learning では、Machine Learning Operations (MLOps) の手法を使用します。 MLOps によって、機械学習ソリューションの品質と一貫性が向上します。 
 
@@ -27,14 +27,14 @@ Machine Learning 操作 (MLOps) は、ワークフローの効率を向上させ
 
 * モデルのより迅速な実験と開発
 * 実稼働環境へのモデルのより迅速なデプロイ
-* 品質保証
+* 品質保証とエンド ツー エンドの系列追跡
 
 Azure Machine Learning で提供される MLOps 機能は次のとおりです。
 
 - **再現可能な ML パイプラインを作成する**。 Machine Learning パイプラインを使用すると、データの準備、トレーニング、およびスコア付けプロセスに対して、反復可能かつ再利用可能な手順を定義できます。
 - モデルのトレーニングとデプロイのために **再利用可能なソフトウェア環境を作成する**。
 - **どこからでもモデルの登録、パッケージ化、デプロイを行う**。 モデルを使用するために必要な関連メタデータを追跡することもできます。
-- **エンドツーエンドの ML ライフサイクルのために管理データを取得する**。 ログに記録される情報には、モデルを公開しているユーザー、変更が行われた理由、モデルがいつ実稼働環境にデプロイされたか、または使用されたかが含まれます。
+- **エンドツーエンドの ML ライフサイクルのために管理データを取得する**。 ログに記録される系列情報には、モデルを公開しているユーザー、変更が行われた理由、モデルが運用環境にいつデプロイされたか、または使用されたかを含めることができます。
 - **ML ライフサイクルにおけるイベントについて通知とアラートを行う**。 たとえば、実験の完了、モデルの登録、モデル デプロイ、データ ドリフトの検出などです。
 - **運用および ML 関連の問題について ML アプリケーションを監視する**。 トレーニングと推論の間でのモデル入力の比較、モデル固有のメトリックの調査、および ML インフラストラクチャに関する監視とアラートの提供を行います。
 - **Azure Machine Learning と Azure Pipelines を使用して、エンド ツー エンドの ML ライフサイクルを自動化する**。 パイプラインの使用により、頻繁にモデルを更新し、新しいモデルをテストし、他のアプリケーションやサービスとともに新しい ML モデルを継続的にロールアウトすることができます。

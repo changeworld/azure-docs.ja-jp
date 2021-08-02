@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, sstein
+author: NikaKinska
+ms.author: nnikolic
+ms.reviewer: mathoma, wiassaf
 ms.date: 03/03/2021
-ms.openlocfilehash: 1362d8c1f15b64b9d76b28fd354cdae8919504b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 77dfee73496dda4bf1f6f3616fe9ac5846e6766c
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558280"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591748"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のために Azure portal で自動チューニングを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: a0644342c417cb06c257372e526fff55df62f9b9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 389460e79dbcc9c6ba9480540d7f361382ef5987
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095430"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021089"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
@@ -86,28 +86,29 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 | **サポートされている VM シリーズ**  | **制限事項** | **カテゴリ** | **サポートしているもの** |
 |------------|------------|------------|------------|
-| D | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |
-| DDSv4 | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |
-| Dv2 | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |
-| Dv3 | [なし] :| 汎用 | コンピューティングのクラスターとインスタンス |
-| DSv2 | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |
-| DSv3 | [なし] :| 汎用 | コンピューティングのクラスターとインスタンス |
-| EAv4 | [なし] : | メモリ最適化 | コンピューティングのクラスターとインスタンス |
-| Ev3 | [なし] : | メモリ最適化 | コンピューティングのクラスターとインスタンス |
-| FSv2 | [なし] : | コンピューティング最適化 | コンピューティングのクラスターとインスタンス |
-| H | [なし] : | ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
-| HB | 承認が必要。 | ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
-| HBv2 | 承認が必要。 |  ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
-| HCS | 承認が必要。 |  ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
-| M | 承認が必要。 | メモリ最適化 | コンピューティングのクラスターとインスタンス |
-| NC | [なし] : |  GPU | コンピューティングのクラスターとインスタンス |
-| NC Promo | [なし] : | GPU | コンピューティングのクラスターとインスタンス |
-| NCsv2 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
-| NCsv3 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
-| NDs | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
-| NDv2 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
-| NV | [なし] : | GPU | コンピューティングのクラスターとインスタンス |
-| NVv3 | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [DDSv4](../virtual-machines/ddv4-ddsv4-series.md#ddsv4-series) | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |
+| [Dv2](../virtual-machines/dv2-dsv2-series.md#dv2-series) | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |
+| [Dv3](../virtual-machines/dv3-dsv3-series.md#dv3-series) | [なし] :| 汎用 | コンピューティングのクラスターとインスタンス |
+| [DSv2](../virtual-machines/dv2-dsv2-series.md#dsv2-series) | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |
+| [DSv3](../virtual-machines/dv3-dsv3-series.md#dsv3-series) | [なし] :| 汎用 | コンピューティングのクラスターとインスタンス |
+| [EAv4](../virtual-machines/eav4-easv4-series.md) | [なし] : | メモリ最適化 | コンピューティングのクラスターとインスタンス |
+| [Ev3](../virtual-machines/ev3-esv3-series.md) | [なし] : | メモリ最適化 | コンピューティングのクラスターとインスタンス |
+| [FSv2](../virtual-machines/fsv2-series.md) | [なし] : | コンピューティング最適化 | コンピューティングのクラスターとインスタンス |
+| [H](../virtual-machines/h-series.md) | [なし] : | ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
+| [HB](../virtual-machines/hb-series.md) | 承認が必要。 | ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
+| [HBv2](../virtual-machines/hbv2-series.md) | 承認が必要。 |  ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
+| [HC](../virtual-machines/hc-series.md) | 承認が必要。 |  ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
+| [M](../virtual-machines/m-series.md) | 承認が必要。 | メモリ最適化 | コンピューティングのクラスターとインスタンス |
+| [NC](../virtual-machines/nc-series.md) | [なし] : |  GPU | コンピューティングのクラスターとインスタンス |
+| [NC Promo](../virtual-machines/nc-series.md) | [なし] : | GPU | コンピューティングのクラスターとインスタンス |
+| [NCv2](../virtual-machines/ncv2-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [NCv3](../virtual-machines/ncv3-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [ND](../virtual-machines/nd-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [NDv2](../virtual-machines/ndv2-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [NV](../virtual-machines/nv-series.md) | [なし] : | GPU | コンピューティングのクラスターとインスタンス |
+| [NVv3](../virtual-machines/nvv3-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [NCT4_v3](../virtual-machines/nct4-v3-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [NDA100_v4](../virtual-machines/nda100-v4-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
 
 
 これらの VM シリーズは Azure Machine Learning でサポートされていますが、すべての Azure リージョンで使用できるとは限りません。 VM シリーズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)」を参照してください。
@@ -117,6 +118,22 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 > * [REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
 > * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
 >
+
+GPU 対応のコンピューティング ターゲットを使用する場合は、トレーニング環境に適切な CUDA ドライバーがインストールされていることを確認することが重要です。 次の表を使用して、使用する適切な CUDA バージョンを決定します。
+
+| **GPU アーキテクチャ**  | **Azure VM シリーズ** | **サポートされている CUDA のバージョン** |
+|------------|------------|------------|
+| Ampere | NDA100_v4 | 11.0+ |
+| Turing | NCT4_v3 | 10.0 以降 |
+| Volta | NCv3、NDv2 | 9.0 以上 |
+| Pascal | NCv2、ND | 9.0 以上 |
+| Maxwell | NV、NVv3 | 9.0 以上 |
+| Kepler | NC、NC Promo| 9.0 以上 |
+
+CUDA のバージョンとハードウェアに互換性があることを確認するだけでなく、CUDA のバージョンが、使用している機械学習フレームワークのバージョンと互換性があることを確認します。 
+
+- PyTorch の場合は、[こちら](https://pytorch.org/get-started/previous-versions/)で互換性を確認できます。 
+- Tensorflow の場合は、[こちら](https://www.tensorflow.org/install/source#gpu)で互換性を確認できます。
 
 ### <a name="compute-isolation"></a>コンピューティングの分離
 

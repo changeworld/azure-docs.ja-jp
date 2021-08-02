@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 3db9f8d895b4c13b5f969859f422e7b566722ffc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6b9bf8aea031b7dce88fbaa096d8e5996e1d6f57
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783073"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189764"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -188,6 +188,115 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 継続的インテグレーション パイプラインなど、現在 kubectl で使用できない非対話型シナリオがいくつかあります。 [`kubelogin`](https://github.com/Azure/kubelogin) を使用して、非対話型サービス プリンシパル サインインでクラスターにアクセスできます。
 
+## <a name="disable-local-accounts-preview"></a>ローカル アカウントを無効にする (プレビュー)
+
+AKS クラスターをデプロイすると、既定でローカル アカウントが有効になります。 RBAC または Azure Active Directory 統合を有効にしている場合でも、監査できないバックドア オプションとして、`--admin` アクセスが原則的に存在します。 これを踏まえて、AKS には、`disable-local` フラグを使用してローカル アカウントを無効にする機能が用意されています。 また、機能がクラスターで有効になっているかどうかを示すために、マネージド クラスター API に `properties.disableLocalAccounts` フィールドが追加されています。
+
+> [!NOTE]
+> Azure AD 統合が有効になっているクラスターであっても、`aad-admin-group-object-ids` によって指定されたグループに属するユーザーは、管理者以外の資格情報を使用して引き続きアクセスできます。 Azure AD 統合が有効になっておらず、かつ `properties.disableLocalAccounts` が true に設定されていないクラスターでは、ユーザーの資格情報も管理者の資格情報も取得することはできません。
+
+### <a name="register-the-disablelocalaccountspreview-preview-feature"></a>`DisableLocalAccountsPreview` プレビュー機能を登録する
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+ローカル アカウントを使用せずに AKS クラスターを使用するには、サブスクリプションで `DisableLocalAccountsPreview` 機能フラグを有効にする必要があります。 最新バージョンの Azure CLI および `aks-preview` 拡張機能を使用していることを確認してください。
+
+次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`DisableLocalAccountsPreview` 機能フラグを登録します。
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "DisableLocalAccountsPreview"
+```
+
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/DisableLocalAccountsPreview')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="create-a-new-cluster-without-local-accounts"></a>ローカル アカウントを使用せずに新しいクラスターを作成する
+
+ローカル アカウントを使用せずに新しい AKS クラスターを作成するには、`disable-local` フラグを指定して [az aks create][az-aks-create] コマンドを使用します。
+
+```azurecli-interactive
+az aks create -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+```
+
+出力で、`properties.disableLocalAccounts` フィールドが true に設定されていることをチェックして、ローカル アカウントが無効になっていることを確認します。
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": true,
+    ...
+}
+```
+
+管理者資格情報を取得しようとすると、機能によってアクセスを妨げられていることを示すエラー メッセージが表示され、失敗します。
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Operation failed with status: 'Bad Request'. Details: Getting static credential is not allowed because this cluster is set to disable local accounts.
+```
+
+### <a name="disable-local-accounts-on-an-existing-cluster"></a>既存のクラスターでローカル アカウントを無効にする
+
+既存の AKS クラスターでローカル アカウントを無効にするには、`disable-local` フラグを指定して [az aks update][az-aks-update] コマンドを使用します。
+
+```azurecli-interactive
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+```
+
+出力で、`properties.disableLocalAccounts` フィールドが true に設定されていることをチェックして、ローカル アカウントが無効になっていることを確認します。
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": true,
+    ...
+}
+```
+
+管理者資格情報を取得しようとすると、機能によってアクセスを妨げられていることを示すエラー メッセージが表示され、失敗します。
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Operation failed with status: 'Bad Request'. Details: Getting static credential is not allowed because this cluster is set to disable local accounts.
+```
+
+### <a name="re-enable-local-accounts-on-an-existing-cluster"></a>既存のクラスターでローカル アカウントを再度有効にする
+
+AKS では、`enable-local` フラグを使用して、既存のクラスターでローカル アカウントを再度有効にすることもできます。
+
+```azurecli-interactive
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --enable-local
+```
+
+出力で、`properties.disableLocalAccounts` フィールドが false に設定されていることをチェックして、ローカル アカウントが再度有効になっていることを確認します。
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": false,
+    ...
+}
+```
+
+管理者資格情報の取得を試みると、成功します。
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Merged "<cluster-name>-admin" as current context in C:\Users\<username>\.kube\config
+```
+
 ## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Azure AD と AKS で条件付きアクセスを使用する
 
 Azure AD を AKS クラスターと統合する場合、[条件付きアクセス][aad-conditional-access]を使用してクラスターへのアクセスを制御することもできます。
@@ -327,3 +436,7 @@ Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
 [aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-aks-update]: /cli/azure/aks#az_aks_update

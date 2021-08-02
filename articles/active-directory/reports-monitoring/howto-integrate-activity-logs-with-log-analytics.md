@@ -4,7 +4,7 @@ description: Azure Active Directory のログを Azure Monitor ログと統合�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 06/11/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f328ed44252f7fb314552d6d05df9806f59d972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c29b631d3002f0c79fb2dd1b1f26dfa65051368c
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591121"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018967"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 
@@ -63,7 +63,11 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 ## <a name="licensing-requirements"></a>ライセンスの要件
 
-この機能を使用するには、Azure AD Premium P1 または P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+この機能を使用するには、Azure AD Premium P1 または P2 テナントが必要です。 テナントのライセンスの種類は、**Azure Active Directory** の「 **[概要](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)** 」ページで確認できます。
+
+![テナント情報](./media/howto-integrate-activity-logs-with-log-analytics/tenant-information.png)
+ 
+アクティビティ データが Premium テナントに格納される期間を知りたい場合は、「[Azure AD にデータが保存される期間](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)」を参照してください。
 
 ## <a name="send-logs-to-azure-monitor"></a>ログを Azure Monitor に送信する
 

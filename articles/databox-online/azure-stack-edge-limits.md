@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro の制限 | Microsoft Docs
-description: Azure Stack Edge Pro を配置して操作するときの制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
+title: Azure Stack Edge Pro FPGA の制限 | Microsoft Docs
+description: Azure Stack Edge Pro FPGA を配置して操作するときの制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f10b6e1a621f9851ba5654f01a621551cf25f6e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91992766"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080958"
 ---
-# <a name="azure-stack-edge-pro-limits"></a>Azure Stack Edge Pro の制限
+# <a name="azure-stack-edge-pro-fpga-limits"></a>Azure Stack Edge Pro FPGA の制限
 
-Microsoft Azure Stack Edge Pro ソリューションを配置および操作するときは、以下の制限事項を考慮してください。 
+Microsoft Azure Stack Edge Pro FPGA ソリューションを配置および操作するときは、以下の制限事項を考慮してください。 
 
 ## <a name="azure-stack-edge-service-limits"></a>Azure Stack Edge サービスの制限
 
@@ -25,7 +25,7 @@ Microsoft Azure Stack Edge Pro ソリューションを配置および操作す�
 
 ## <a name="azure-stack-edge-device-limits"></a>Azure Stack Edge デバイスの制限
 
-次の表では、Azure Stack Edge Pro デバイスの制限について説明します。 
+次の表で、Azure Stack Edge Pro FPGA デバイスの制限について説明します。 
 
 次の表では、Azure Stack Edge デバイスの制限について説明します。
 
@@ -57,4 +57,4 @@ Microsoft Azure Stack Edge Pro ソリューションを配置および操作す�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge Pro の配置を準備する](azure-stack-edge-deploy-prep.md)
+- [Azure Stack Edge Pro FPGA のデプロイを準備する](azure-stack-edge-deploy-prep.md)

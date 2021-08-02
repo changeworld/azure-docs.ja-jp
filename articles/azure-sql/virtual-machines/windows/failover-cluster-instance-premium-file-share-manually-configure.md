@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: hadr
-ms.custom: na
+ms.custom: na, devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 19d2ea7b042cb6b28936bbfe92764b497ad4487c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7ca6fdf685da74b8b0e10875a2bd16d66a7b4c60
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769581"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020308"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium ファイル共有を使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,24 +46,21 @@ Premium ファイル共有は、記憶域スペース ダイレクト (SSD) に�
 ## <a name="mount-premium-file-share"></a>Premium ファイル共有をマウントする
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 そして、ストレージ アカウントに移動します。
-1. **[ファイル サービス]** の **[ファイル共有]** に移動し、SQL ストレージに使用する Premium ファイル共有を選択します。
+1. **[データ ストレージ]** の **[ファイル共有]** に移動し、SQL ストレージに使用する Premium ファイル共有を選択します。
 1. **[接続]** を選択して、ファイル共有の接続文字列を表示します。
-1. ドロップダウン リストで使用するドライブ文字を選択し、両方のコード ブロックをメモ帳にコピーします。
+1. ドロップダウン リストで、使用するドライブ文字を選択し、認証方法として **ストレージ アカウント キー** を選択して、メモ帳などのテキスト エディターにコード ブロックをコピーします。
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="ファイル共有接続ポータルから両方の PowerShell コマンドをコピーする":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="ファイル共有接続ポータルから PowerShell コマンドをコピーする":::
 
 1. リモート デスクトップ プロトコル (RDP) を使用して、SQL Server FCI がサービス アカウントに使用するアカウントで SQL Server VM に接続します。
 1. 管理 PowerShell コマンド コンソールを開きます。
-1. ポータルで作業していたときに保存したコマンドを実行します。
-1. エクスプローラーまたは **[ファイル名を指定して実行]** ダイアログ ボックス (Windows + R キーを押す) を使用して、共有に移動します。 ネットワークパス `\\storageaccountname.file.core.windows.net\filesharename` を使用します。 たとえば、`\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare` のように指定します。
-
+1. 前にファイル共有ポータルからテキスト エディターにコピーしたコマンドを実行します。
+1. エクスプローラーまたは **[ファイル名を指定して実行]** ダイアログ ボックス (キーボード上の Windows + R キー) を使用して、共有に移動します。 ネットワークパス `\\storageaccountname.file.core.windows.net\filesharename` を使用します。 たとえば、`\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare` のように指定します。
 1. 新しく接続されたファイル共有に、SQL データ ファイルを配置するフォルダーを少なくとも 1 つ作成します。
 1. クラスターに参加する各 SQL Server VM で、この手順を繰り返します。
 
   > [!IMPORTANT]
   > - バックアップ ファイル用に別のファイル共有を使用して、この共有の 1 秒間の入出力操作数 (IOPS) と領域の容量をデータとログ ファイル用に確保することを検討してください。 バックアップ ファイルには、Premium または Standard のいずれのファイル共有も使用できます。
-  > - Windows 2012 R2 以前を使用している場合は、同じ手順に従って、ファイル共有監視として使用するファイル共有をマウントします。 
-  > 
 
 
 ## <a name="add-windows-cluster-feature"></a>Windows クラスター機能を追加する
@@ -86,34 +83,6 @@ Premium ファイル共有は、記憶域スペース ダイレクト (SSD) に�
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-## <a name="validate-cluster"></a>クラスターを検証する
-
-UI または PowerShell を使用して、クラスターを検証します。
-
-UI を使用してクラスターを検証するには、いずれかの仮想マシンで次の手順を実行します。
-
-1. **[サーバー マネージャー]** で、 **[ツール]** を選択し、 **[フェールオーバー クラスター マネージャー]** を選択します。
-1. **[フェールオーバー クラスター マネージャー]** で、 **[操作]** を選択し、 **[構成の検証]** を選択します。
-1. **[次へ]** を選択します。
-1. **[サーバーまたはクラスターの選択]** で、両方の仮想マシンの名前を入力します。
-1. **[テスト オプション]** で、 **[選択するテストのみを実行する]** を選択します。 
-1. **[次へ]** を選択します。
-1. 次に示すように、 **[テストの選択]** で、 **[ストレージ]** と **[記憶域スペース ダイレクト]** を除くすべてのテストを選択します。
-
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="クラスター検証テストを選択する":::
-
-1. **[次へ]** を選択します。
-1. **[確認]** で、 **[次へ]** を選択します。
-
-**構成の検証** ウィザードにより、検証テストが実行されます。
-
-PowerShell を使用してクラスターを検証するには、いずれかの仮想マシンの管理者 PowerShell セッションから次のスクリプトを実行します。
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
-   ```
-
-クラスターの検証後、フェールオーバー クラスターを作成します。
 
 
 ## <a name="create-failover-cluster"></a>フェールオーバー クラスターを作成する
@@ -145,10 +114,39 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ---
 
-
 ## <a name="configure-quorum"></a>クォーラムを構成する
 
-ビジネス ニーズに最も適したクォーラム ソリューションを構成します。 [ディスク監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)、[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)、または[ファイル共有監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)を構成できます。 詳細については、[SQL Server VM でのクォーラム](hadr-cluster-best-practices.md#quorum)に関する記事をご覧ください。 
+ディスク監視は最も回復力のあるクォーラム オプションですが、Azure 共有ディスクが必要で、これにより Premium ファイル共有で構成されている場合、フェールオーバー クラスター インスタンスに制限がいくつか適用されます。 そのため、クラウド監視は、Azure VM 上の SQL Server 向けのこの種類のクラスター構成に推奨されるクォーラム ソリューションです。 そうでない場合、ファイル共有監視を構成します。 
+
+クラスターに多数の投票がある場合は、ビジネス ニーズに最適な[クォーラム ソリューション](hadr-cluster-quorum-configure-how-to.md)を構成します。 詳細については、[SQL Server VM でのクォーラム](hadr-windows-server-failover-cluster-overview.md#quorum)に関する記事をご覧ください。 
+
+## <a name="validate-cluster"></a>クラスターの検証
+
+UI または PowerShell を使用して、クラスターを検証します。
+
+UI を使用してクラスターを検証するには、いずれかの仮想マシンで次の手順を実行します。
+
+1. **[サーバー マネージャー]** で、 **[ツール]** を選択し、 **[フェールオーバー クラスター マネージャー]** を選択します。
+1. **[フェールオーバー クラスター マネージャー]** で、 **[操作]** を選択し、 **[構成の検証]** を選択します。
+1. **[次へ]** を選択します。
+1. **[サーバーまたはクラスターの選択]** で、両方の仮想マシンの名前を入力します。
+1. **[テスト オプション]** で、 **[選択するテストのみを実行する]** を選択します。 
+1. **[次へ]** を選択します。
+1. 次に示すように、 **[テストの選択]** で、 **[ストレージ]** と **[記憶域スペース ダイレクト]** を除くすべてのテストを選択します。
+
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="クラスター検証テストを選択する":::
+
+1. **[次へ]** を選択します。
+1. **[確認]** で、 **[次へ]** を選択します。
+
+**構成の検証** ウィザードにより、検証テストが実行されます。
+
+PowerShell を使用してクラスターを検証するには、いずれかの仮想マシンの管理者 PowerShell セッションから次のスクリプトを実行します。
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
+
 
 
 ## <a name="test-cluster-failover"></a>クラスターのフェールオーバーをテストする
@@ -208,9 +206,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>接続の構成 
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を作成できます。あるいは、SQL Server 2019 CU2 (以降) と Windows Server 2016 (以降) を使用している場合、代わりに[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)機能を使用できます。 
-
-クラスター接続オプションの詳細については、[HADR 接続を Azure VM 上の SQL Server にルーティングする方法](hadr-cluster-best-practices.md#connectivity)に関する記事をご覧ください。 
+フェールオーバー クラスター インスタンスに対して、仮想ネットワーク名または分散ネットワーク名を構成できます。 [この 2 つの違いを確認](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)してから、フェールオーバー クラスター インスタンスに対して[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)または[仮想ネットワーク名](failover-cluster-instance-vnn-azure-load-balancer-configure.md)をデプロイします。
 
 ## <a name="limitations"></a>制限事項
 
@@ -226,8 +222,10 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 Premium ファイル共有がお客様に適した FCI 記憶域ソリューションでない場合は、代わりに [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)または[記憶域スペース ダイレクト](failover-cluster-instance-storage-spaces-direct-manually-configure.md)を使用して FCI を作成することを検討してください。 
 
-詳細については、[Azure VM 上の SQL Server を使用した FCI](failover-cluster-instance-overview.md) および[クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)の概要に関する記事をご覧ください。 
+詳細については、以下をご覧ください。
 
-詳細については、次を参照してください。 
-- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
+

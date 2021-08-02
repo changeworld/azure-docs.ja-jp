@@ -4,19 +4,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL Database と SQL Managed Instance の割引に既存の SQL Server ライセンスを使用します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=4
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: sashan, moslake
 ms.date: 02/16/2021
-ms.openlocfilehash: b5f85e0dcb8ca70d5773b8f1c3b53e0b449ef013
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8557c24b1f6ef46559f57d09c6e273dd4041272
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779203"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018173"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure ハイブリッド特典 - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,8 +33,8 @@ ms.locfileid: "107779203"
 Azure ハイブリッド特典では、SQL Server データベース エンジン自体には既存の SQL Server ライセンスを使用して、基になる Azure インフラストラクチャに対してのみ支払うか (基本コンピューティングの価格)、または基になるインフラストラクチャと SQL Server ライセンスの両方に対して支払うか (ライセンス込みの価格) を選択できます。
 
 ライセンス モデルは、Azure portal で選択または変更できます。 
-- 新しいデータベースの場合は、作成時に **[基本]** タブの **[データベースの構成]** を選択し、コストを削減するオプションを選択します。
-- 既存のデータベースの場合は、 **[設定]** メニューの **[構成]** を選択し、コストを削減するオプションを選択します。
+- 新しく作成するデータベースでは、作成時に、 **[基本]** タブで **[データベースの構成]** をクリックし、 **[コストの節約]** オプションを選びます。
+- 既存のデータベースでは、 **[設定]** で **[コンピューティング + ストレージ]** を選択し、 **[コストの節約]** オプションを選びます。
 
 次のいずれかの API を使用して、新規または既存のデータベースを構成することもできます。
 

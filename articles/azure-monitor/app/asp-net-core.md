@@ -4,12 +4,12 @@ description: ASP.NET Core Web アプリケーションの可用性、パフォ�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: be4cbe5f95fa6901ae4299662750c232d4700a8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 488203b9b2e9a45cd85e72a1516418401502eb20
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711503"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082578"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -25,7 +25,7 @@ ms.locfileid: "101711503"
 * **デプロイ方法**: フレームワーク依存、自己完結型。
 * **Web サーバー**: IIS (インターネット インフォメーション サーバー)、Kestrel。
 * **ホスティング プラットフォーム**: Azure App Service、Azure VM、Docker、Azure Kubernetes Service (AKS) などの Web Apps 機能。
-* **.NET Core バージョン**:正式に [サポートされている](https://dotnet.microsoft.com/download/dotnet-core)すべての .NET Core バージョン。
+* **.Net Core バージョン**: プレビューではない、正式にサポートされているすべての [.NET Core バージョン](https://dotnet.microsoft.com/download/dotnet-core)。
 * **IDE**: Visual Studio、VS Code、コマンド ライン。
 
 > [!NOTE]
@@ -37,7 +37,7 @@ ms.locfileid: "101711503"
 - 有効な Application Insights インストルメンテーション キー。 Application Insights にテレメトリを送信するには、このキーが必要です。 インストルメンテーション キーを取得するために新しい Application Insights リソースを作成する必要がある場合は、「[Application Insights リソースの作成](./create-new-resource.md)」をご覧ください。
 
 > [!IMPORTANT]
-> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+> インストルメンテーション キーよりも、[接続文字列](./sdk-connection-string.md?tabs=net)を使用することをお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 接続文字列により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Application Insights のサーバー側テレメトリを有効にする (Visual Studio)
@@ -317,7 +317,7 @@ Application Insights では、テレメトリ モジュールを使用して、�
 * `DependencyTrackingTelemetryModule` - 送信 HTTP 呼び出しと SQL 呼び出しから [DependencyTelemetry](./asp-net-dependencies.md) を収集します。
 * `PerformanceCollectorModule` - Windows PerformanceCounters を収集します。
 * `QuickPulseTelemetryModule` - Live Metrics ポータルで表示するテレメトリを収集します。
-* `AppServicesHeartbeatTelemetryModule` - アプリケーションがホストされる Azure App Service Environment について、(カスタム メトリックとして送信される) ハート ビートを収集します。
+* `AppServicesHeartbeatTelemetryModule` - アプリケーションがホストされる Azure App Service 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
 * `AzureInstanceMetadataTelemetryModule` - アプリケーションがホストされる Azure VM 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
 * `EventCounterCollectionModule` - [EventCounter](eventcounters.md) を収集します。 このモジュールは新機能であり、SDK バージョン 2.8.0 以降で使用できます。
 

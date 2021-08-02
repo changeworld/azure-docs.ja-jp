@@ -8,27 +8,36 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e585624cac534634f4927fcbb61993ca98aab4a6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98742949"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085890"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Azure Active Directory でクラウド グループにロールを割り当てる
 
 このセクションでは、IT 管理者が Azure Active Directory (Azure AD) ロールを Azure AD グループに割り当てる方法について説明します。
 
-## <a name="using-azure-ad-admin-center"></a>Azure AD 管理センターの使用
+## <a name="prerequisites"></a>前提条件
+
+- Azure AD Premium P1 または P2 ライセンス
+- 特権ロール管理者または全体管理者
+- PowerShell を使用する場合の AzureADPreview モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
+
+詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+
+## <a name="azure-portal"></a>Azure portal
 
 Azure AD ロールにグループを割り当てることは、ロールが割り当て可能なグループのみを使用できる点を除いて、ユーザーとサービス プリンシパルの割り当てに似ています。 Azure portal には、ロールを割り当て可能なグループのみが表示されます。
 
-1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
+1. [Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
 
 1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択し、割り当てるロールを選択します。
 
@@ -44,7 +53,7 @@ Azure AD ロールにグループを割り当てることは、ロールが割�
 
 ロールのアクセス許可の割り当ての詳細については、[ユーザーに管理者および管理者以外のロールを割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)方法に関するページを参照してください。
 
-## <a name="using-powershell"></a>PowerShell の使用
+## <a name="powershell"></a>PowerShell
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>ロールに割り当てることができるグループを作成する
 
@@ -64,7 +73,7 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Helpdesk 
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope '/' -RoleDefinitionId $roleDefinition.Id -PrincipalId $group.Id 
 ```
 
-## <a name="using-microsoft-graph-api"></a>Microsoft Graph API の使用
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 ### <a name="create-a-group-that-can-be-assigned-azure-ad-role"></a>Azure AD ロールを割り当てることができるグループを作成する
 

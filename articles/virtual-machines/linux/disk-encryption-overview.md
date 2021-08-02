@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11ddb2e76123c1181efffea3ef66a517bb5124a2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 5b84526f6f3193fc47bc211fcdec71bb5e27390f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207377"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077682"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -102,9 +102,13 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | SUSE | SLES HPC 12-SP3 | 12-SP3 | SUSE:SLES-HPC:12-SP3:latest | データ ディスクのみ |
 
 > [!NOTE]
-> RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい Azure Disk Encryption の実装がサポートされます。  
+> RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい Azure Disk Encryption の実装がサポートされます。
 >
 > ADE は、RHEL のサブスクリプション持ち込み Gold Image でもサポートされています。ただし、サブスクリプションが登録された **後** でのみサポートされます。 詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)」を参照してください。
+> 
+> 特定のオファーの種類に対する ADE サポートは、発行元によって提供される有効期限の終了日を超えて拡張されません。 
+> 
+> レガシ ADE ソリューション (AAD 資格情報を使用) は、新しい VM には推奨されません。また、RHEL 7.8 より後の RHEL バージョンと互換性がありません。
 
 ## <a name="additional-vm-requirements"></a>追加の VM 要件
 

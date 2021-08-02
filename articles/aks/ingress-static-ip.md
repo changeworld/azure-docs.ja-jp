@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターの静的パブリッ
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: 6e03d69cbdf3837610e3b165c88c9680d7a1cc6a
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 13313c09427e23139d35951357158d69d98fa511
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006982"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452330"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の静的パブリック IP アドレスを使用してイングレス コントローラーを作成する
 
@@ -29,7 +29,9 @@ ms.locfileid: "108006982"
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-この記事では、[Helm 3][helm] を使用して、NGINX イングレス コントローラーおよび cert-manager をインストールします。 最新リリースの Helm を使用しており、*ingress-nginx* および *jetstack* の Helm リポジトリにアクセスできることを確認します。 アップグレード手順については、[Helm のインストール ドキュメント][helm-install]を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
+この記事では [Helm 3][helm] を使用して、[サポートされているバージョンの Kubernetes][aks-supported versions] に NGINX イングレス コントローラーをインストールします。 最新リリースの Helm を使用しており、*ingress-nginx* および *jetstack* の Helm リポジトリにアクセスできることを確認します。 この記事に記載されている手順は、以前のバージョンの Helm グラフ、NGINX イングレス コントローラー、または Kubernetes と互換性がない可能性があります。
+
+Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。 アップグレード手順については、「[Helm のインストール ドキュメント」を参照してください。Helm の構成と使用について詳しくは、「Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール」を参照してください。][helm-install]
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -502,3 +504,4 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eas
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-static-ip]: static-ip.md
+[aks-supported versions]: supported-kubernetes-versions.md
