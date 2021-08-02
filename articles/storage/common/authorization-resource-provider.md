@@ -76,6 +76,6 @@ Azure デプロイ モデルの詳細については、「[Resource Manager デ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
+- [Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)
 - [Azure Storage リソース プロバイダーのスケーラビリティ ターゲット](scalability-targets-resource-provider.md)
