@@ -4,29 +4,30 @@ description: この記事では、Azure Security Center でセキュリティ �
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/24/2021
+ms.date: 05/25/2021
 ms.author: memildin
-ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b48adf5e6c2c7b91e98ef410c71802b5d47d2845
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101326"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459791"
 ---
 # <a name="manage-security-policies"></a>セキュリティ ポリシーの管理
 
 この記事では、セキュリティ ポリシーの構成方法と、それの Security Center での表示方法について説明します。 
 
-## <a name="who-can-edit-security-policies"></a>セキュリティ ポリシーを編集できるユーザーは誰ですか。
+イニシアティブ、ポリシー、および推奨事項の関係を理解するには、「[セキュリティ ポリシー、イニシアチブ、および推奨事項とは](security-policy-concept.md)」を参照してください
 
-REST API 経由または Windows PowerShell を使用して、Azure Policy ポータルからセキュリティ ポリシーを編集できます。
+## <a name="who-can-edit-security-policies"></a>セキュリティ ポリシーを編集できるユーザーは誰ですか。
 
 Security Center では Azure ロールベースのアクセス制御 (Azure RBAC) が使用されています。RBAC が提供する組み込みのロールは、Azure ユーザー、グループ、およびサービスに割り当てることができます。 ユーザーが Security Center を開くと、アクセスできるリソースに関する情報のみが表示されます。 これは、リソースのサブスクリプションに対して、"*所有者*"、"*共同作成者*"、または "*閲覧者*" のロールがユーザーに割り当てられていることを意味します。 次の 2 つの固有の Security Center ロールもあります。
 
 - **セキュリティ閲覧者**: 推奨事項、アラート、ポリシー、正常性などの Security Center 項目を表示する権利を持っています。 変更は行えません。
 - **セキュリティ管理者**:*セキュリティ閲覧者* と同じ表示権利を持っています。 セキュリティポリシーを更新し、アラートを無視することもできます。
+
+REST API 経由または Windows PowerShell を使用して、Azure Policy ポータルからセキュリティ ポリシーを編集できます。
 
 ## <a name="manage-your-security-policies"></a>セキュリティ ポリシーの管理
 
@@ -81,27 +82,48 @@ Security Center の規制コンプライアンス ツールで適用した規制
 
     :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でポリシー管理プロセスの開始":::
 
-2. 推奨設定を無効にするサブスクリプションまたは管理グループを選択します。
+1. 推奨事項 (およびポリシー) を無効にするサブスクリプションまたは管理グループを選択します。
 
    > [!NOTE]
-   > 管理グループでは、そのポリシーがそのサブスクリプションに適用されることに注意してください。 そのため、サブスクリプションのポリシーを無効にしても、そのサブスクリプションが同じポリシーを使用する管理グループに属している場合は、そのポリシーの推奨事項は引き続き表示されます。 ポリシーは管理レベルから引き続き適用され、推奨事項は引き続き生成されます。
+   > 管理グループがそのポリシーをそのサブスクリプションに適用することに注意してください。 そのため、サブスクリプションのポリシーを無効にしても、そのサブスクリプションが同じポリシーを使用する管理グループに属している場合は、そのポリシーの推奨事項は引き続き表示されます。 ポリシーは管理レベルから引き続き適用され、推奨事項は引き続き生成されます。
 
-1. **[有効なポリシーの表示]** を選択します。
+1. **[Security Center の既定のポリシー]** 、 **[業界および規制の基準]** 、または **[カスタム イニシアティブ]** セクションで、無効にするポリシーが含まれている関連イニシアティブを選択します。
 
-    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="サブスクリプションに割り当てられた有効なポリシーを開く方法":::
+1. **[パラメーター]** セクションを開き、無効にする推奨事項を呼び出すポリシーを検索します。
 
-1. 割り当てられたポリシーを選択します。
-
-   ![ポリシーの選択](./media/tutorial-security-policy/security-policy.png)
-
-1. **[パラメーター]** セクションで、推奨事項を呼び出すポリシーのうち、無効にするものを検索します。次に、ドロップダウン リストから **[無効]** を選択します。
+1. ドロップダウン リストで、対応するポリシーの値を **[無効]** に変更します。
 
    ![ポリシーの無効化](./media/tutorial-security-policy/disable-policy.png)
 
 1. **[保存]** を選択します。
 
    > [!NOTE]
-   > ポリシー無効化の変更が有効になるまでに、最大 12 時間かかる場合があります。
+   > 変更が有効になるまでに、最大 12 時間かかることがあります。
+
+
+## <a name="enable-a-security-policy"></a>セキュリティ ポリシーの有効化
+
+イニシアティブの一部のポリシーは、既定で無効になっている場合があります。 たとえば、Azure セキュリティ ベンチマーク イニシアティブでは、一部のポリシーが、組織の特定の規制やコンプライアンスの要件を満たしている場合にのみ有効にされるように提供されています。 このようなポリシーには、カスタマー マネージド キーを使用して保存データを暗号化するための推奨事項 ("コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要があります" など) が含まれます。
+
+無効にしたポリシーを有効にし、リソースに対して評価されるようにするには、次のようにします。
+
+1. Security Center 内の **[Policy & Compliance]\(ポリシーとコンプライアンス\)** セクションで **[セキュリティ ポリシー]** を選択します。
+
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でポリシー管理プロセスの開始":::
+
+1. 推奨事項 (およびポリシー) を有効にするサブスクリプションまたは管理グループを選択します。
+
+1. **[Security Center の既定のポリシー]** 、 **[業界および規制の基準]** 、または **[カスタム イニシアティブ]** セクションで、有効にするポリシーが含まれている関連イニシアティブを選択します。
+
+1. **[パラメーター]** セクションを開き、無効にする推奨事項を呼び出すポリシーを検索します。
+
+1. ドロップダウン リストで、対応するポリシーの値を **[AuditIfNotExists]** または **[Enforce]** に変更します。
+
+1. **[保存]** を選択します。
+
+   > [!NOTE]
+   > 変更が有効になるまでに、最大 12 時間かかることがあります。
+
 
 ## <a name="next-steps"></a>次のステップ
 このページでは、セキュリティ ポリシーについて説明しました。 関連情報については、次のページを参照してください。

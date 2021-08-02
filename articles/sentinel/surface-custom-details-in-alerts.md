@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 45f0ef5366d97c275c40d4d436020dbaf3501d42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97cd4d51da70b9b1cca501c7f04a3b0ccfc51305
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456169"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059682"
 ---
 # <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>Azure Sentinel でアラートに含まれるカスタム イベントの詳細を表示する 
 
@@ -39,13 +39,13 @@ ms.locfileid: "102456169"
 
 1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
-1. スケジュールされたクエリ ルールを選択し、 **[編集]** をクリックします。 または、画面の上部にある **[作成] &#10132; [スケジュール済みクエリ ルール]** をクリックして新しいルールを作成します。
+1. スケジュールされたクエリ ルールを選択し、 **[編集]** をクリックします。 または、画面の上部にある **[作成] > [スケジュール済みクエリ ルール]** をクリックして新しいルールを作成します。
 
 1. **[ルールのロジックを設定]** タブをクリックします。
 
-1. **[Alert enhancement]\(アラートの拡張\)** セクションで、 **[Custom details]\(カスタムの詳細\)** を選択します。
+1. **[Alert enhancement (Preview)]\(アラート集約 (プレビュー\))** セクションで、 **[Custom details]\(カスタムの詳細\)** を展開します。
 
-    :::image type="content" source="media/surface-custom-details-in-alerts/alert-enhancement.png" alt-text="カスタムの詳細の検索と選択":::
+    :::image type="content" source="media/surface-custom-details-in-alerts/alert-enrichment.png" alt-text="カスタムの詳細の検索と選択":::
 
 1. 展開された **[Custom details]\(カスタムの詳細\)** セクションで、表示する詳細に対応するキーと値のペアを追加します。
 
@@ -63,7 +63,7 @@ ms.locfileid: "102456169"
 
     > [!NOTE]
     > 
-    >**サービスの制限**
+    > **サービスの制限**
     > - 1 つの分析ルールで **最大 20 個のカスタムの詳細** を定義できます。
     >
     > - すべてのカスタム詳細のサイズ制限は、まとめて **2 KB** です。

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 54bee74fcab02a487b9e950d0ea8f8a45a38601a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fb9c9f460b46f8dec741f4c22460cbe9d44c6a0e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760907"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791113"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -182,7 +182,7 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 1. デバイス テンプレートが IoT Central アプリケーション内でまだ公開されていない場合は、IoT Centralにおいて[パブリック モデル リポジトリ](https://github.com/Azure/iot-plugandplay-models)でデバイス モデルが検索されます。 モデルが見つかると、それを使用して基本のデバイス テンプレートが生成されます。
 1. パブリック モデル リポジトリでモデルが見つからない場合、デバイスは **関連付けなし** としてマークされます。 オペレーターは、デバイスのデバイス テンプレートを作成し、関連付けられていないデバイスを新しいデバイス テンプレートに移行できます。
 
-次のスクリーンショットは、IoT Central でデバイス テンプレートのモデル ID を表示する方法を示しています。 デバイス テンプレートでコンポーネントを選択し、 **[ID の表示]** を選択します。
+次のスクリーンショットは、IoT Central でデバイス テンプレートのモデル ID を表示する方法を示しています。 デバイス テンプレート内でコンポーネントを選択し、 **[ID の編集]** を選択します。
 
 :::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="サーモスタット デバイス テンプレート内のモデル ID を表示するスクリーンショット。":::
 

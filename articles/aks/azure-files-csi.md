@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2595dc95e4e7f489553548b7cfbf4f64bb9c82af
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 1355f6e6120f77ead063bb9246bf1c2864341373
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166129"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007573"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 
@@ -198,36 +198,7 @@ Filesystem                                                                      
 
  このオプションは、インプレース データ更新を使用するランダム アクセス ワークロードに合わせて最適化されており、完全な POSIX ファイル システムのサポートを提供します。 このセクションでは、AKS クラスター上で NFS 共有を Azure File CSI ドライバーと共に使用する方法について説明します。
 
-プレビュー段階での[制限事項](../storage/files/storage-files-compare-protocols.md#limitations)と[利用可能なリージョン](../storage/files/storage-files-compare-protocols.md#regional-availability)を必ず確認してください。
-
-### <a name="register-the-allownfsfileshares-preview-feature"></a>`AllowNfsFileShares` プレビュー機能を登録する
-
-NFS 4.1 を活用するファイル共有を作成するには、お使いのサブスクリプションで `AllowNfsFileShares` 機能フラグを有効にする必要があります。
-
-`AllowNfsFileShares` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.Storage* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Storage
-```
-
-### <a name="create-a-storage-account-for-the-nfs-file-share"></a>NFS ファイル共有のストレージ アカウントを作成する
-
-NFS 共有をサポートするために、次の構成で [`Premium_LRS` Azure ストレージ アカウントを作成](../storage/files/storage-how-to-create-file-share.md)します。
-- アカウントの種類: FileStorage
-- 安全な転送が必須 (HTTPS トラフィックのみを有効にする): false
-- [ファイアウォールと仮想ネットワーク] でお使いのエージェント ノードの仮想ネットワークを選択します。そのため、MC_ リソース グループにストレージ アカウントを作成することが適している場合があります。
+[制限事項](../storage/files/storage-files-compare-protocols.md#limitations)と[利用可能なリージョン](../storage/files/storage-files-compare-protocols.md#regional-availability)を必ず確認してください。
 
 ### <a name="create-nfs-file-share-storage-class"></a>NFS ファイル共有のストレージ クラスを作成する
 
@@ -240,8 +211,6 @@ metadata:
   name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
-  resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
-  storageAccount: EXISTING_STORAGE_ACCOUNT_NAME
   protocol: nfs
 ```
 
@@ -250,15 +219,15 @@ parameters:
 ```console
 $ kubectl apply -f nfs-sc.yaml
 
-storageclass.storage.k8s.io/azurefile-csi created
+storageclass.storage.k8s.io/azurefile-csi-nfs created
 ```
 
 ### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>NFS でサポートされるファイル共有を使用してデプロイを作成する
 
-[kubectl apply][kubectl-apply] コマンドを使用して次のコマンドをデプロイすることにより、タイムスタンプをファイル `data.txt` に保存する[ステートフル セット](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml)の例をデプロイできます。
+[kubectl apply][kubectl-apply] コマンドを使用して次のコマンドをデプロイすることにより、タイムスタンプをファイル `data.txt` に保存する[ステートフル セット](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/nfs/statefulset.yaml)の例をデプロイできます。
 
 ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/nfs/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

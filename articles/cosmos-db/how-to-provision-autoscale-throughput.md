@@ -6,14 +6,14 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 05/18/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2f47e86b89244cdc2ac41d72203a51b0d91effdb
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: ce17b54905861759c437c2df735dd5515991b507
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227472"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456619"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB - SQL API のデータベースまたはコンテナーで、自動スケーリングのスループットをプロビジョニングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "108227472"
 
 1. Azure Cosmos DB アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
 
-1. **[新しいコンテナー]** を選択します。 データベース、コンテナー、およびパーティション キーの名前を入力します。 **[スループット]** で **[自動スケーリング]** オプションを選択し、データベースまたはコンテナーをスケーリングする、[最大スループット (RU/秒)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) を設定します。
+1. **[新しいコンテナー]** を選択します。 データベース、コンテナー、およびパーティション キーの名前を入力します。 データベースまたはコンテナー スループットで **[自動スケーリング]** オプションを選択し、データベースまたはコンテナーをスケーリングする、[最大スループット (RU/秒)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) を設定します。
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="コンテナーの作成と、自動スケーリングによってプロビジョニングされたスループットの構成":::
 
@@ -39,9 +39,6 @@ ms.locfileid: "108227472"
 共有スループット データベースで自動スケーリングをプロビジョニングするには、新しいデータベースを作成する際に **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** オプションを選択します。 
 
 ### <a name="enable-autoscale-on-existing-database-or-container"></a>既存のデータベースまたはコンテナーで自動スケーリングを有効にする
-
-> [!IMPORTANT]
-> 現在のリリースでは、自動スケーリングと標準 (手動) のプロビジョニングされたスループットの間での移行は、Azure portal でのみ行うことができます。 
 
 1. [Azure portal](https://portal.azure.com) または [Azure Cosmos DB Explorer](https://cosmos.azure.com/) にサインインします。
 
@@ -54,14 +51,14 @@ ms.locfileid: "108227472"
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="既存のコンテナーで自動スケーリングを有効にする":::
 
 > [!NOTE]
-> 既存のデータベースまたはコンテナーで自動スケーリングを有効にする場合、最大 RU/s の開始値は、現在の手動でプロビジョニングされたスループットの設定とストレージに基づいて、システムによって決定されます。 操作が完了したら、必要に応じて最大 RU/s を変更できます。 [詳細情報。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
+> 既存のデータベースまたはコンテナーで自動スケーリングを有効にする場合、最大 RU/s の開始値は、現在の手動でプロビジョニングされたスループットの設定とストレージに基づいて、システムによって決定されます。 操作が完了したら、必要に応じて最大 RU/s を変更できます。 [詳細情報。](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-) 
 
 ## <a name="azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET V3 SDK
 
 [バージョン 3.9 以上](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)の Azure Cosmos DB .NET SDK for SQL API を使用して、自動スケーリング リソースを管理します。 
 
 > [!IMPORTANT]
-> .NET SDK を使用して新しい自動スケーリング リソースを作成できます。 この SDK は、自動スケーリングと標準 (手動) のスループットとの間と移行をサポートしていません。 現在、この移行シナリオは Azure portal でのみサポートされています。 
+> .NET SDK を使用して新しい自動スケーリング リソースを作成できます。 この SDK は、自動スケーリングと標準 (手動) のスループットとの間と移行をサポートしていません。 現在、この移行シナリオは [Azure portal](#enable-autoscale-on-existing-database-or-container)、[CLI](#azure-cli)、および [PowerShell](#azure-powershell) でのみサポートされています。
 
 ### <a name="create-database-with-shared-throughput"></a>共有スループットのデータベースを作成する
 
@@ -118,8 +115,7 @@ await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThrou
 [バージョン 4.0 以上](https://mvnrepository.com/artifact/com.azure/azure-cosmos)の Azure Cosmos DB Java SDK for SQL API を使用して、自動スケーリング リソースを管理できます。
 
 > [!IMPORTANT]
-> Java SDK を使用して新しい自動スケーリング リソースを作成できます。 この SDK は、自動スケーリングと標準 (手動) のスループットとの間と移行をサポートしていません。 現在、この移行シナリオは Azure portal でのみサポートされています。
-
+> Java SDK を使用して新しい自動スケーリング リソースを作成できます。 この SDK は、自動スケーリングと標準 (手動) のスループットとの間と移行をサポートしていません。 現在、この移行シナリオは [Azure portal](#enable-autoscale-on-existing-database-or-container)、[CLI](#azure-cli)、および [PowerShell](#azure-powershell) でのみサポートされています。
 ### <a name="create-database-with-shared-throughput"></a>共有スループットのデータベースを作成する
 
 # <a name="async"></a>[非同期](#tab/api-async)
@@ -249,18 +245,18 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Azure Resource Manager テンプレートを使用すると、すべての Azure Cosmos DB API に対して、データベースまたはコンテナー レベルのリソースへの自動スケーリングのスループットをプロビジョニングできます。 サンプルについては、「[Azure Cosmos DB の Azure Resource Manager テンプレート](./templates-samples-sql.md)」を参照してください。
+Azure Resource Manager テンプレートを使用すると、すべての Azure Cosmos DB API に対して、新しいデータベースまたはコンテナー レベルのリソースへの自動スケーリングのスループットをプロビジョニングできます。 サンプルについては、「[Azure Cosmos DB の Azure Resource Manager テンプレート](./templates-samples-sql.md)」を参照してください。 仕様により、Azure Resource Manager テンプレートを使用して、既存のリソースのプロビジョニングされたスループットと自動スケーリングのスループットの間で移行を行うことはできません。 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用すると、すべての Azure Cosmos DB API に対して、データベースまたはコンテナー レベルのリソースへの自動スケーリングのスループットをプロビジョニングできます。 サンプルについては、「[Azure Cosmos DB の Azure CLI サンプル](cli-samples.md)」を参照してください。
+Azure CLI テンプレートを使用すると、すべての Azure Cosmos DB API に対して、新しいデータベースまたはコンテナー レベルのリソースへの自動スケーリングのスループットをプロビジョニングしたり、既存のリソースで自動スケーリングを有効にしたりできます。 サンプルについては、「[Azure Cosmos DB の Azure CLI サンプル](cli-samples.md)」を参照してください。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell を使用すると、すべての Azure Cosmos DB API に対して、データベースまたはコンテナー レベルのリソースへの自動スケーリングのスループットをプロビジョニングできます。 サンプルについては、「[Azure Cosmos DB 用 Azure PowerShell サンプル](powershell-samples.md)」を参照してください。
+Azure PowerShell を使用すると、すべての Azure Cosmos DB API に対して、新しいデータベースまたはコンテナー レベルのリソースへの自動スケーリングのスループットをプロビジョニングしたり、既存のリソースで自動スケーリングを有効にしたりできます。 サンプルについては、「[Azure Cosmos DB 用 Azure PowerShell サンプル](powershell-samples.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [自動スケーリングでプロビジョニングされたスループットの利点](provision-throughput-autoscale.md#benefits-of-autoscale)について学ぶ。
 * [手動と自動スケーリングのスループットのどちらを選択するか](how-to-choose-offer.md)について学ぶ。
-* [自動スケーリングに関する FAQ](autoscale-faq.md) を確認する。
+* [自動スケーリングに関する FAQ](autoscale-faq.yml) を確認する。

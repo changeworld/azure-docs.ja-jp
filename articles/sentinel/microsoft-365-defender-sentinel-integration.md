@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 164bb6ca0c84120dbef2ab8307e723ed5723cf2f
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 13fb05fe04988320c46755b38bfc952b7265d30d
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992001"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059906"
 ---
 # <a name="microsoft-365-defender-integration-with-azure-sentinel"></a>Microsoft 365 Defender と Azure Sentinel の統合
 
@@ -74,9 +74,10 @@ Microsoft 365 Defender 統合が接続されると、すべてのコンポーネ
 
 - 両方のメカニズムを一緒に使用することは完全にサポートされており、新しい Microsoft 365 Defenderインシデント作成ロジックへの移行を容易にすることができます。 しかし、これにより、同じアラートに対して **重複したインシデント** が作成されます。
 
-- 同じアラートに対して重複するインシデントを作成しないようにするには、Microsoft 365 defender に接続する場合は、Microsoft 365 製品 (Defender for Endpoint、Defender for Identity、Defender for Office 365 - 以下のCloud App Security を参照) の **Microsoft インシデント作成ルール** をすべて無効にすることをお勧めします。 これを行うには、コネクタのページでインシデントの作成を無効にします。 これを行うと、インシデント作成ルールによって適用されたフィルターが Microsoft 365 Defender インシデント統合に適用されないことに注意してください。
+- 同じインシデントに対し 2 つの警告を出さないため、Microsoft 365 Defender に接続するときは、Microsoft 365 製品 (Defender for Endpoint、Defender for Identity、Defender for Office 365、Cloud App Security) に対しては **Microsoft インシデント作成ルール** をすべて無効にすることをお勧めします。 これを行うには、コネクタのページでインシデントの作成を無効にします。 これを行うと、インシデント作成ルールによって適用されたフィルターが Microsoft 365 Defender インシデント統合に適用されないことに注意してください。
 
-- Microsoft Cloud App Security アラートの場合、すべてのアラートの種類が現在 Microsoft 365 Defender にオンボードされているわけではありません。 すべての Cloud App Security アラートのインシデントを確実に取得するには、[Microsoft 365 Defender に "*オンボードされていない*" アラートの種類](microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md)に対して **Microsoft インシデント作成ルール** を保持または作成する必要があります。
+    > [!NOTE]
+    > これで、Microsoft Cloud App Security のすべての種類の警告が、Microsoft 365 Defender にオンボードされます。
 
 ### <a name="working-with-microsoft-365-defender-incidents-in-azure-sentinel-and-bi-directional-sync"></a>Azure Sentinel と双方向同期での Microsoft 365 Defender インシデントの処理
 

@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 28325a1bbda1b2d4a4bb060ae3e79057275ee42a
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 804166beebf4f12e246a27122bd44c611972a488
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106582047"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438002"
 ---
 # <a name="tips-for-better-performance-in-azure-cognitive-search"></a>Azure Cognitive Search でのパフォーマンス向上のためのヒント
 
@@ -24,7 +24,7 @@ ms.locfileid: "106582047"
 
 ## <a name="index-size-and-schema"></a>インデックスのサイズとスキーマ
 
-クエリは、インデックスが小さいほど実行速度が上がります。 これは、スキャンするフィールド数が少なくなることも一因ですが、今後のクエリに備えてシステムがコンテンツをキャッシュする方法にも起因しています。 最初のクエリの後、一部のコンテンツは、検索がより効率的に行われるメモリの中に残ります。 インデックスのサイズは時間と共に大きくなる傾向があるため、ベスト プラクティスの 1 つは、インデックスの構成 (スキーマとドキュメントの両方) を定期的に見直して、コンテンツを削減する機会を探ることです。 ただし、インデックスが適正なサイズに設定されている場合は、[レプリカを追加](search-capacity-planning.md#adjust-capacity)するかサービス レベルをアップグレードして、容量を増やすだけで調整できます。 「["ヒント: Standard S2 レベルにアップグレードする"]](#tip-upgrade-to-a-standard-s2-tier)」セクションでは、スケールアップとスケールアウトの決定を評価する方法について説明しています。
+クエリは、インデックスが小さいほど実行速度が上がります。 これは、スキャンするフィールド数が少なくなることも一因ですが、今後のクエリに備えてシステムがコンテンツをキャッシュする方法にも起因しています。 最初のクエリの後、一部のコンテンツは、検索がより効率的に行われるメモリの中に残ります。 インデックスのサイズは時間と共に大きくなる傾向があるため、ベスト プラクティスの 1 つは、インデックスの構成 (スキーマとドキュメントの両方) を定期的に見直して、コンテンツを削減する機会を探ることです。 ただし、インデックスが適正なサイズに設定されている場合は、[レプリカを追加](search-capacity-planning.md#adjust-capacity)するかサービス レベルをアップグレードして、容量を増やすだけで調整できます。 [「ヒント: Standard S2 レベルにアップグレードする」](#tip-upgrade-to-a-standard-s2-tier)セクションでは、スケールアップとスケールアウトの決定を評価する方法について説明しています。
 
 スキーマの複雑さがインデックス作成とクエリのパフォーマンスに悪影響を及ぼすこともあります。 フィールド属性が多すぎると、制限事項や処理要件が増えます。 [複合型](search-howto-complex-data-types.md)では、インデックス作成とクエリに時間がかかります。 次のいくつかのセクションでは、各条件について詳しく説明します。
 

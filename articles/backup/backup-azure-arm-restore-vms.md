@@ -3,13 +3,13 @@ title: Azure portal を使用して VM を復元する
 description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します。たとえば、リージョンをまたがる復元機能があります。
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: 0f3a715f4fef85b90fd8f06558a8cfdab1ca8900
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.date: 05/01/2021
+ms.openlocfilehash: 26efe6cafc5829cedcb7bb74f8ea796256d45d10
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739046"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966792"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -53,13 +53,20 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 ## <a name="select-a-restore-point"></a>復元ポイントを選択
 
-1. 復元する VM に関連付けられているコンテナーで、 **[バックアップ アイテム]**  >  **[Azure 仮想マシン]** を選択します。
-1. VM を選択します。 既定では、VM ダッシュボードには過去 30 日間の復旧ポイントが表示されます。 30 日前よりも古い復旧ポイントを表示することや、日付、時間範囲、スナップショット整合性の種類をフィルターにして復旧ポイントを探すことができます。
-1. VM を復元するには、 **[VM の復元]** を選択します。
+1. Azure portal の **バックアップ センター** に移動し、 **[概要]** タブで **[復元]** をクリックします。
 
-    ![復元ポイント](./media/backup-azure-arm-restore-vms/restore-point.png)
+    ![[復元] に移動する](./media/backup-azure-arm-restore-vms/select-restore.png)
 
-1. 復旧に使用する復元ポイントを選択します。
+1. **[データソースの種類]** で **[Azure 仮想マシン]** を選び、[バックアップ インスタンス] を選択します。
+
+    ![データソースの種類を選択する](./media/backup-azure-arm-restore-vms/virtual-machine-as-datasource.png)
+
+1. VM を選んで **[続行]** をクリックします。
+1. 次に表示される画面で、復旧に使用する復元ポイントを選びます。
+
+    ![仮想マシンの復元ポイントを選ぶ](./media/backup-azure-arm-restore-vms/restore-point.png)
+
+
 
 ## <a name="choose-a-vm-restore-configuration"></a>VM の復元の構成を選択する
 
@@ -116,7 +123,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 1. テンプレートで提供されている VM 設定をカスタマイズするには、 **[テンプレートの編集]** を選択します。 さらにカスタマイズを追加する場合は、 **[パラメーターの編集]** を選択します。
     - カスタム テンプレートからのリソースのデプロイに関する[詳細情報](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
-    - テンプレートの作成に関する[詳細情報](../azure-resource-manager/templates/template-syntax.md)。
+    - テンプレートの作成に関する[詳細情報](../azure-resource-manager/templates/syntax.md)。
 
    ![テンプレート デプロイの読み込み](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
@@ -165,10 +172,6 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 ![復元する VM の選択](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
 ![復元ポイントの選択](./media/backup-azure-arm-restore-vms/sec-rp.png)
-
-![復元の構成](./media/backup-azure-arm-restore-vms/rest-config.png)
-
-![復元進行中通知をトリガーする](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 - VM を復元して作成する方法については、「[VMの作成](#create-a-vm)」を参照してください。
 - ディスクとして復元するには、「[ディスクを復元する](#restore-disks)」を参照してください。

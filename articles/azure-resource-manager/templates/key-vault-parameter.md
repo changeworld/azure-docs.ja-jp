@@ -2,14 +2,14 @@
 title: Key Vault のシークレットとテンプレート
 description: デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。
 ms.topic: conceptual
-ms.date: 04/23/2021
+ms.date: 05/17/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f91c45792843ab62361bf47628a45529758b4029
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 1cf3b1f3433b47d029876e9676b85c5de776d455
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754193"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110795705"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
@@ -67,7 +67,7 @@ $secret = Set-AzKeyVaultSecret -VaultName ExampleVault -Name 'ExamplePassword' -
 
 ---
 
-キー コンテナーの所有者には、シークレットを作成するためのアクセスが自動的に付与されています。 シークレットを操作しているユーザーが、そのキー コンテナーの所有者でない場合、次を使用してアクセス許可を付与します。
+キー コンテナーの所有者には、シークレットを作成するためのアクセスが自動的に付与されています。 別のユーザーにシークレットの作成を許可する必要がある場合は、次を使用します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -91,6 +91,8 @@ Set-AzKeyVaultAccessPolicy `
 
 ---
 
+シークレットを取得するテンプレートをユーザーがデプロイしている場合、アクセス ポリシーは必要ありません。 ユーザーがシークレットを直接使用する必要がある場合にのみ、アクセス ポリシーにユーザーを追加します。 デプロイのアクセス許可については、次のセクションで定義します。
+
 キー コンテナーの作成とシークレットの追加の詳細については、次を参照してください。
 
 - [CLI を使用したシークレットの設定と取得](../../key-vault/secrets/quick-create-cli.md)
@@ -99,11 +101,13 @@ Set-AzKeyVaultAccessPolicy `
 - [.NET を使用したシークレットの設定と取得](../../key-vault/secrets/quick-create-net.md)
 - [Node.js を使用したシークレットの設定と取得](../../key-vault/secrets/quick-create-node.md)
 
-## <a name="grant-access-to-the-secrets"></a>シークレットへのアクセスを許可する
+## <a name="grant-deployment-access-to-the-secrets"></a>シークレットへのデプロイ アクセスを付与する
 
-テンプレートをデプロイするユーザーには、そのリソース グループとキー コンテナーのスコープで `Microsoft.KeyVault/vaults/deploy/action` のアクセス許可がある必要があります。 このアクセスは、[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールが許可します。 キー コンテナーの作成者である場合は、その所有者であり、そのアクセス許可を持っています。
+テンプレートをデプロイするユーザーには、そのリソース グループとキー コンテナーのスコープで `Microsoft.KeyVault/vaults/deploy/action` のアクセス許可がある必要があります。 Azure Resource Manager は、このアクセス権を確認することによって、未承認のユーザーがキー コンテナーのリソース ID を渡してシークレットにアクセスすることを防ぎます。 シークレットへの書き込みアクセスを付与せずに、ユーザーにデプロイ アクセスを付与できます。
 
-次の手順は、最小限のアクセス許可を持つロールを作成する方法と、ユーザーを割り当てる方法を示します。
+このアクセスは、[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールが許可します。 キー コンテナーの作成者である場合は、その所有者であり、そのアクセス許可を持っています。
+
+他のユーザーには、`Microsoft.KeyVault/vaults/deploy/action` アクセス許可を付与します。 次の手順は、最小限のアクセス許可があるロールを作成する方法と、それをユーザーに割り当てる方法を示しています。
 
 1. カスタム ロール定義の JSON ファイルを作成します。
 
@@ -164,8 +168,6 @@ Set-AzKeyVaultAccessPolicy `
 
 次のテンプレートでは、管理者パスワードを含む SQL サーバーがデプロイされます。 パスワード パラメーターは、セキュリティで保護された文字列に設定されます。 しかし、テンプレートには値がどこから来ているかが指定されていません。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -199,29 +201,6 @@ Set-AzKeyVaultAccessPolicy `
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param adminLogin string
-
-@secure()
-param adminPassword string
-
-param sqlServerName string
-
-resource sqlServer 'Microsoft.Sql/servers@2020-11-01-preview' = {
-  name: sqlServerName
-  location: resourceGroup().location
-  properties: {
-    administratorLogin: adminLogin
-    administratorLoginPassword: adminPassword
-    version: '12.0'
-  }
-}
-```
-
----
 
 ここで、前のテンプレートのためにパラメーター ファイルを作成します。 このパラメーター ファイルで、テンプレート内のパラメーターの名前に一致するパラメーターを指定します。 パラメーター値のために、キー コンテナーのシークレットを参照します。 シークレットを参照するには、Key Vault のリソース識別子とシークレットの名前を渡します。
 
@@ -400,9 +379,6 @@ New-AzResourceGroupDeployment `
   }
 }
 ```
-
-> [!NOTE]
-> Bicep バージョン 0.3.255 の時点では、`reference` キーワードがサポートされていないため、キー コンテナー シークレットを取得するにはパラメーター ファイルが必要です。 サポートを追加するための作業が進められています。詳細については、[GitHub issue 1028](https://github.com/Azure/bicep/issues/1028) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

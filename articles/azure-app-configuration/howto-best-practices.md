@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c322ebcbda0d123a9048e92971e20c6b7c7c5fee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371551"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064506"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス
 
@@ -92,8 +92,10 @@ App Configuration はリージョン単位のサービスです。 リージョ�
 
 ## <a name="client-applications-in-app-configuration"></a>App Configuration でのクライアント アプリケーション 
 
-App Configuration に過剰な要求があると、調整や超過分料金が発生する可能性があります。 アプリケーションでは、現在利用できるキャッシュとインテリジェントな更新を利用して、送信される要求の数が最適化されます。 このプロセスは、構成ストアへの直接接続を避けることにより、大量のクライアント アプリケーションでミラー化できます。 代わりにクライアント アプリケーションはカスタム サービスに接続し、このサービスによって構成ストアとの通信が行われます。 このプロキシ ソリューションを使用することで、クライアント アプリケーションが構成ストアの調整制限に近づかないようにすることができます。 詳細については、[FAQ](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration) に関するページを参照してください。  
+クライアント アプリケーションで App Configuration を使用するときは、2 つの重要な要素を考慮する必要があります。 まず、クライアント アプリケーションで接続文字列を使用する場合、App Configuration ストアのアクセス キーを一般に公開するというリスクを負うことになります。 次に、標準的なスケールのクライアント アプリケーションでも、App Configuration ストアに対する要求が過剰に行われる場合がないとはいえず、それが超過料金や帯域幅調整を招く可能性があります。 帯域幅調整の詳細については、[FAQ](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration) を参照してください。
+
+これらの問題に対処するために、クライアント アプリケーションと App Configuration ストアとの間にはプロキシサービスを使用することをお勧めします。 プロキシ サービスであれば、認証情報の漏えいというセキュリティの問題を伴うことなく、App Configuration ストアに対する認証を安全に行うことができます。 プロキシ サービスは、いずれかの App Configuration プロバイダー ライブラリを使用して作成できるので、組み込みのキャッシュ機能と更新機能を活用して App Configuration に送信される要求のボリュームを最適化することができます。 App Configuration プロバイダーの使用について詳しくは、クイックスタートとチュートリアルの記事を参照してください。 プロキシ サービスでは、そのキャッシュからクライアント アプリケーションに構成が提供されるので、このセクションで前述した 2 つの問題のリスクを回避することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [キーと値](./concept-key-value.md)
+* [キーと値](./concept-key-value.md) 

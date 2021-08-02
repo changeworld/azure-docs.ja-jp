@@ -3,12 +3,12 @@ title: Azure DevTest Labs で環境を Azure Pipelines に統合する
 description: Azure DevTest Labs 環境を Azure DevOps の継続的インテグレーション (CI) および継続的デリバリー (CD) パイプラインに統合する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 18f334fe85b6a38c38fc41d55c711ee6d6629760
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85483025"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006133"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>環境を Azure DevOps CI/CD パイプラインに統合する
 Azure DevOps Services (旧称 Visual Studio Team Services) にインストールされている Azure DevTest Labs タスク拡張機能を使用して、継続的インテグレーション (CI)/継続的デリバリー (CD) のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 これらの拡張機能により、特定のテスト タスク用に[環境](devtest-lab-test-env.md)をすばやく展開し、テストの終了時に削除するのがより簡単になります。 
@@ -26,8 +26,8 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、[Azure De
 
 1. まだラボがない場合は[ラボを作成します](devtest-lab-create-lab.md)。 
 2. 記事「[Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する](devtest-lab-create-environment-from-arm.md)」の手順に従って、ラボを構成し、環境テンプレートを作成します。
-3. この例では、既存の Azure クイック スタート テンプレート [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/) を使用します。
-4. **201-web-app-redis-cache-sql-database** フォルダーを、手順 2 で構成したリポジトリ内の **ArmTemplate** フォルダーにコピーします。
+3. この例では、既存の Azure クイック スタート テンプレート [https://azure.microsoft.com/resources/templates/web-app-redis-cache-sql-database](https://azure.microsoft.com/resources/templates/web-app-redis-cache-sql-database) を使用します。
+4. **web-app-redis-cache-sql-database** フォルダーを、ステップ 2 で構成したリポジトリ内の **ArmTemplate** フォルダーにコピーします。
 
 ## <a name="create-a-release-definition"></a>リリース定義の作成
 リリース定義を作成するには、次の手順を行います。

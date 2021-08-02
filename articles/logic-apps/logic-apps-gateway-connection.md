@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: 49da5d7f045ed06ba16696ebd16ad212b9d140d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 490750fecf1634f8d0bbcd92bd71cdf3cb531c71
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763311"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888592"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -170,7 +170,7 @@ Azure サブスクリプションに関連付けられているすべての API 
 
 * お使いの Azure アカウントは、1 つの [Azure AD テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)だけに属していません。 ゲートウェイのインストール時に使用したものと同じ Azure AD テナントまたはディレクトリを使用していることを確認してください。
 
-* ゲートウェイ リソースとゲートウェイのインストールが、同じリージョンに存在していません。 ただし、ロジック アプリの場所は、ゲートウェイ リソースの場所と異なっていてもかまいません。
+* ゲートウェイ リソースとゲートウェイのインストールが、同じリージョンに存在していません。 ゲートウェイのインストールで、Azure でゲートウェイ リソースを作成するリージョンと同じリージョンが使用されている必要があります。 ただし、ロジック アプリの場所は、ゲートウェイ リソースの場所と異なっていてもかまいません。
 
 * ゲートウェイのインストールは、別のゲートウェイ リソースに既に関連付けられています。 各ゲートウェイ リソースは、1 つの Azure アカウントおよびサブスクリプションのみリンクできる、1 つのゲートウェイ インストールにだけリンクできます。 そのため、別のゲートウェイ リソースと既に関連付けられているゲートウェイ インストールを選択することはできません。 これらのインストールは、 **[インストール名]** の一覧に表示されません。
 

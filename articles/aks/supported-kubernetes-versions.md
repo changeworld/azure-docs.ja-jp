@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: c86166c2e38e3fec251707626f5cf9ebab938299
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f2f1c01ec323452997f5e7ab8f20e13e1d572a72
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209213"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438200"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -143,12 +143,18 @@ az aks get-versions --location eastus --output table
 
 |  K8s バージョン | アップストリームのリリース  | AKS プレビュー  | AKS GA  | サポート終了 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.18  | 2020 年 3 月 23 日  | 2020 年 5 月   | 2020 年 8 月  | 1.21 GA | 
+| 1.18  | 2020 年 3 月 23 日  | 2020 年 5 月   | 2020 年 8 月  | *1.21 GA | 
 | 1.19  | 2020 年 8 月 4 日  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA | 
 | 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
 | 1.21  | 2021 年 4 月 8 日 | 2021 年 5 月   | 2021 年 6 月  | 1.24 GA |
+| 1.22  | 2021 年 8 月 4 日 | 2021 年 9 月   | 2021 年 10 月  | 1.25 GA |
+| 1.23  | 2021 年 12 月 | 2022 年 1 月   | 2022 年 2 月  | 1.26 GA |
 
-
+>[!NOTE]
+>AKS バージョン 1.18 は、2021 年 7 月 31 日まで引き続き使用できます。 この日付以降、AKS は通常の 3 つのバージョンのウィンドウのサポートに戻ります。 2021 年 6 月 30 日から 7 月 31 日までのサポートはスコープ内で制限されます。そのため、次の点に注意することが重要です。 ユーザーの制限の一覧を次に示します。
+> - 1\.18 での新しいクラスターとノードプールの作成。
+> - 1\.18 クラスターでの CRUD 操作。
+> - Kubernetes 以外に関連するプラットフォームの問題についての Azure のサポート。 プラットフォームの問題には、Azure で実行されているネットワーク、ストレージ、またはコンピューティングに関する問題が含まれます。 K8s の修正プログラムの適用とトラブルシューティングに関するサポート リクエストは、サポートされているバージョンにアップグレードする必要があります。
 
 ## <a name="faq"></a>よく寄せられる質問
 

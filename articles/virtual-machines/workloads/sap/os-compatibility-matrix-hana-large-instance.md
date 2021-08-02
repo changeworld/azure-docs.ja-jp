@@ -1,24 +1,25 @@
 ---
 title: SAP HANA (L インスタンス) のオペレーティング システムの互換性マトリックス |Microsoft Docs
-description: 互換性マトリックスでは、さまざまなバージョンのオペレーティング システムとさまざまな種類のハードウェア (L インスタンス) との互換性を表します
+description: 互換性マトリックスは、さまざまなバージョンのオペレーティング システムとさまざまな種類のハードウェア (L インスタンス) の互換性を表します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: sasarava
+author: Ajayan1008
 manager: hrushib
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/21/2020
-ms.author: sasarava
+ms.date: 05/18/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccfdffc4e488de7f3cecb150305596743b3a9e44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad1eb1428493d8488e803560e0dc421765aab465
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675399"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579448"
 ---
 # <a name="compatible-operating-systems-for-hana-large-instances"></a>HANA L インスタンスと互換性があるオペレーティング システム
 
@@ -34,6 +35,7 @@ ms.locfileid: "101675399"
 
   
 ### <a name="persistent-memory-skus"></a>永続メモリ SKU
+
   | オペレーティング システム | 可用性 | SKU                             |
   |------------------|--------------|----------------------------------|
   | SLES 12 SP4      | 利用可能    | S224oo、S224om、S224ooo、S224oom |
@@ -48,11 +50,11 @@ ms.locfileid: "101675399"
   | SLES 15 SP1             | 利用可能           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S896m、S960m |
   | RHEL 7.6                | 利用可能           | S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S896m、S960m |
 
-## <a name="related-documents"></a>関連ドキュメント
+## <a name="next-steps"></a>次のステップ
 
-- [利用可能な SKU](hana-available-skus.md) に関する詳細を確認する
-- [オペレーティング システムのアップグレード](os-upgrade-hana-large-instance.md)に関する詳細を確認する
-  
+各項目の詳細情報
 
-  
+- [利用可能な SKU](hana-available-skus.md)
+- [オペレーティング システムのアップグレード](os-upgrade-hana-large-instance.md)
+- [HANA L インスタンスのサポートされるシナリオ](hana-supported-scenario.md)
   

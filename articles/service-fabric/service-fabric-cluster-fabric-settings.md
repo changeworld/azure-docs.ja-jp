@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ef89cb50770eecb7b61798562ba6228f0ecd0071
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255973"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479823"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -490,7 +490,7 @@ ms.locfileid: "107255973"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodeCapacityCollectionMap |静的|さまざまなメトリックのノード容量のコレクション。 |
+|PropertyGroup |NodeCapacityCollectionMap | 動的 |さまざまなメトリックのノード容量のコレクション。 Service Fabric 8.1 では動的、それ以前のバージョンでは "*静的*" となっています。 |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
 
@@ -503,7 +503,7 @@ ms.locfileid: "107255973"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodePropertyCollectionMap |静的|ノードのプロパティの文字列キーと値のペアのコレクション。 |
+|PropertyGroup |NodePropertyCollectionMap | 動的 |ノードのプロパティの文字列キーと値のペアのコレクション。 Service Fabric 8.1 では動的、それ以前のバージョンでは "*静的*" となっています。 |
 
 ## <a name="paas"></a>Paas
 

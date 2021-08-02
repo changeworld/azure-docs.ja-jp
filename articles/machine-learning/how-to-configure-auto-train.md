@@ -1,41 +1,40 @@
 ---
-title: 自動 ML の実験を作成する
+title: Python で自動 ML を設定する
 titleSuffix: Azure Machine Learning
-description: 自動機械学習の実験のデータ ソース、計算、および構成設定を定義する方法について説明します。
+description: Azure Machine Learning Python SDK で Azure Machine Learning 自動 ML を使用して AutoML トレーニングを設定する方法を説明します。
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/29/2020
+ms.date: 06/11/2021
 ms.topic: how-to
-ms.custom: devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: a198e49e540d728a65021cf5b45436fc1654cb25
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack
+ms.openlocfilehash: dff2e9c0c1de1b92f0d00d5dc50aeb7dadca348f
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905218"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030901"
 ---
-# <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
+# <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
+このガイドでは、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) で Azure Machine Learning 自動 ML を使用して AutoML トレーニングを設定する方法を説明します。 自動 ML では、ユーザーに代わってアルゴリズムとハイパーパラメーターを選択し、デプロイ可能なモデルを生成します。 これらの実験を構成するときは、いくつかのオプションを使用できます。
 
-このガイドでは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) を使用して、自動機械学習の実験のさまざまな構成設定を定義する方法について説明します。 自動機械学習は、アルゴリズムとハイパーパラメーターを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションはいくつかあります。
+エンドツーエンドの例は、[AutoML による回帰モデルのトレーニングのチュートリアル](tutorial-auto-train-models.md)に関する記事をご覧ください。
 
-自動機械学習の実験のエンド ツー エンドの例については、[チュートリアル: 自動機械学習を使用した分類モデルのトレーニング](tutorial-auto-train-models.md)に関する記事を参照してください。
-
-自動機械学習で使用できる構成オプション:
+自動 ML で使用できる構成オプション
 
 * 実験の種類を選択する:分類、回帰、または時系列予測
 * データ ソース、形式、およびデータのフェッチ
 * コンピューティング先を選択する: ローカルまたはリモート
 * 自動機械学習の実験の設定
-* 自動機械学習の実験を実行する
+* 自動 ML の実験を実行する
 * モデル メトリックを探索する
 * モデルを登録して展開する
 
-コードを使用しないエクスペリエンスを希望する場合は、[Azure Machine Learning Studio で自動化された機械学習の実験を作成する](how-to-use-automated-ml-for-ml-models.md)こともできます。
+ノーコードで行いたい場合は、[Azure Machine Learning スタジオでノーコードの Auto ML トレーニングを設定する](how-to-use-automated-ml-for-ml-models.md)こともできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -112,7 +111,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="compute-to-run-experiment"></a>実験を実行するために計算する
 
-次に、モデルをトレーニングする場所を決定します。 自動機械学習のトレーニング実験は、次のコンピューティング オプションで実行できます。 [ローカルおよびリモートのコンピューティングの長所と短所](concept-automated-ml.md#local-remote)のオプションについて説明します。 
+次に、モデルをトレーニングする場所を決定します。 自動 ML トレーニングの実験は、次のコンピューティング オプションで実行できます。 [ローカルおよびリモートのコンピューティングの長所と短所](concept-automated-ml.md#local-remote)のオプションについて説明します。 
 
 * ローカル デスクトップやノート PC などの **ローカル** コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。 ローカル コンピューティングの例については、[このノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)を参照してください。 
  
@@ -126,7 +125,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="configure-your-experiment-settings"></a>実験の設定を構成する
 
-自動機械学習の実験を構成するために使用できるオプションがいくつかあります。 これらのパラメーターは、`AutoMLConfig` オブジェクトをインスタンス化することによって設定します。 パラメーターの完全な一覧については、「[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)」をご覧ください。
+自動 ML 実験を構成するときは、いくつかのオプションを使用できます。 これらのパラメーターは、`AutoMLConfig` オブジェクトをインスタンス化することによって設定します。 パラメーターの完全な一覧については、「[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)」をご覧ください。
 
 次に例をいくつか示します。
 
@@ -154,7 +153,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
    ```
 
 
-1. 予測タスクには、追加の設定が必要です。詳細については、「[時系列予測モデルを自動トレーニングする](how-to-auto-train-forecast.md)」の記事を参照してください。 
+1. 予測タスクには追加の設定が必要です。詳しくは、[時系列予測用に AutoML を設定する](how-to-auto-train-forecast.md)方法に関する記事をご覧ください。 
 
     ```python
     time_series_settings = {
@@ -184,7 +183,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 次の表は、サポートされるモデルをタスクの種類別にまとめたものです。 
 
 > [!NOTE]
-> 自動 ML で作成されたモデルを [ONNX モデル](concept-onnx.md)にエクスポートする予定がある場合は、* で示されたアルゴリズムのみを ONNX 形式に変換できます。 [モデルの ONNX への変換](concept-automated-ml.md#use-with-onnx)の詳細についてご確認ください。 <br> <br> また、ONNX では現在、分類と回帰のタスクのみがサポートされていることにもご注意ください。 
+> 自動 ML で作成したモデルを [ONNX モデル](concept-onnx.md) としてエクスポートすることを予定している場合、ONNX 形式に変換できるのは * の付いたアルゴリズムだけであることにご注意ください。 [モデルの ONNX への変換](concept-automated-ml.md#use-with-onnx)の詳細についてご確認ください。 <br> <br> また、ONNX では現在、分類と回帰のタスクのみがサポートされていることにもご注意ください。 
 
 分類 | 回帰 | 時系列予測
 |-- |-- |--
@@ -208,7 +207,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ### <a name="primary-metric"></a>主要メトリック
 `primary metric` パラメーターによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
 
-自動機械学習を最適化するための主要メトリックの選択は、多くの要因に基づきます。 最優先の考慮事項としてお勧めするのは、ビジネス ニーズを最も適切に表すメトリックを選択することです。 次に、メトリックがデータセット プロファイル (データのサイズ、範囲、クラスの分布など) に適しているかどうかを考慮します。
+自動 ML で何を primary metric (主要メトリック) に選ぶべきかは、多くの要素に左右されます。 最優先の考慮事項としてお勧めするのは、ビジネス ニーズを最も適切に表すメトリックを選択することです。 次に、メトリックがデータセット プロファイル (データのサイズ、範囲、クラスの分布など) に適しているかどうかを考慮します。
 
 これらのメトリックの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
 
@@ -222,7 +221,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="primary-metrics-for-classification-scenarios"></a>分類シナリオの主要メトリック 
 
-`accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、小さいデータセット、非常に大きいクラス傾斜 (クラスの不均衡) があるデータセットに対して、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されない可能性があります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動機械学習の完了後、ビジネス ニーズに最も適したメトリックに基づいて、優先されるモデルを選択できます。
+`accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、小さいデータセット、非常に大きいクラス傾斜 (クラスの不均衡) があるデータセットに対して、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されない可能性があります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動 ML が完了したら、業務上の必要に最も適したメトリックを基準にして、最適なモデルを選ぶことができます。
 
 | メトリック | ユース ケースの例 |
 | ------ | ------- |
@@ -258,7 +257,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="data-featurization"></a>データの特徴付け
 
-すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる特定のアルゴリズムをサポートできるように、データが *自動的にスケーリングおよび正規化* されます。 このスケーリングと正規化は特徴量化と呼ばれます。 詳細とコード例については、[AutoML での特徴量化](how-to-configure-auto-features.md#)に関するページを参照してください。 
+大きさの基準が異なる特徴量を使用する場合に影響を受ける *特定の* アルゴリズムが適切に機能するよう、自動 ML のすべての実験では、自動的にデータを係数で乗じて正規化します。 このスケーリングと正規化は特徴量化と呼ばれます。 詳細とコード例については、[AutoML での特徴量化](how-to-configure-auto-features.md#)に関するページを参照してください。 
 
 `AutoMLConfig` オブジェクトで実験を構成するときに、設定 `featurization` の有効と無効を切り替えることができます。 次の表は、[AutoMLConfig プロジェクト](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)の特徴量化で許可されている設定です。 
 
@@ -498,7 +497,7 @@ print_model(model_from_aml)
 
 ## <a name="monitor-automated-machine-learning-runs"></a><a name="monitor"></a> 自動機械学習の実行を監視する
 
-自動機械学習の実行の場合、前回の実行のグラフにアクセスするには、`<<experiment_name>>` を適切な実験名に置き換えます。
+自動 ML の実行で、前回の実行のグラフにアクセスするには、`<<experiment_name>>` を適切な実験名に置き換えます。
 
 ```python
 from azureml.widgets import RunDetails
@@ -543,7 +542,7 @@ model = remote_run.register_model(model_name = model_name,
 
 モデルの解釈機能を使用すると、モデルで予測が行われた理由や、基になる特徴の重要度の値を把握できます。 SDK には、トレーニングと推論時間の両方で、ローカル モデルとデプロイされたモデルについて、モデルの解釈可能性の特徴を有効にするためのさまざまなパッケージが含まれています。
 
-特に自動化された機械学習の実験で解釈可能性の特徴を有効にする方法のコード サンプルについては、その[方法](how-to-machine-learning-interpretability-automl.md)を参照してください。
+自動 ML の実験で解釈可能性の機能を有効にする方法を示すサンプル コードは、[説明記事](how-to-machine-learning-interpretability-automl.md)に掲載しています。
 
 自動機械学習ではない SDK の他の領域で、モデルの説明と特徴の重要度を有効にする方法の一般情報については、解釈可能性の[概念](how-to-machine-learning-interpretability.md)に関する記事を参照してください。
 

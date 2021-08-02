@@ -5,22 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 06/03/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ce39e23208398f6060103345a6c6cb3541834abc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d159ffa3dc75dc3917e8b82ee7b86f1e9e7ea7c6
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90606784"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527113"
 ---
-クライアント証明書をインストールするときに、クライアント証明書のエクスポート時に作成されたパスワードが必要になります。
+1. .pfx 証明書ファイルを探して、お使いの Mac にコピーします。 証明書を Mac に送るにはいくつかの方法があります。 たとえば、証明書ファイルを電子メールで送信できます。
+1. 証明書を Mac にコピーしたら、証明書をダブルクリックして **[証明書の追加]** ボックスを開き、 **[追加]** をクリックしてインストールを開始します。
 
-1. .pfx 証明書ファイルを探して、お使いの Mac にコピーします。 証明書を Mac に送る方法はさまざまなものがあります。たとえば、証明書ファイルをメールで送信することができます。
-2. 証明書を Mac にコピーしたら、証明書をダブルクリックして **[証明書の追加]** ボックスを開き、 **[追加]** をクリックしてインストールを開始します。
+   :::image type="content" source="./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png" alt-text="[証明書の追加] ボックスを示すスクリーンショット。":::
+1. クライアント証明書をエクスポートしたときに作成したパスワードを入力します。 パスワードは、証明書の秘密キーを保護するためのものです。 **[OK]** をクリックしてインストールを完了します。
 
-   ![証明書の追加](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
-3. クライアント証明書をエクスポートしたときに作成したパスワードを入力します。 パスワードは、証明書の秘密キーを保護するためのものです。 **[OK]** をクリックしてインストールを完了します。
-
-   ![パスワードの入力を求めるダイアログ ボックスを示すスクリーンショット。](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)
+   :::image type="content" source="./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png" alt-text="パスワードの入力を求めるダイアログ ボックスを示すスクリーンショット。" border="false":::

@@ -13,18 +13,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8a3015fa2c078232ca9c37c2b0ce0ded313c859
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: d037f93b1381fcd7f1816104f6fd7b2e1200c852
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480835"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438938"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)
 
-Azure Active Directory (Azure AD) には、Azure AD の組み込みロールにクラウド グループを割り当てることができるパブリック プレビューが導入されています。 この機能を使用すると、グループを使用して、グローバルおよび特権ロールの管理者の労力を最小限に抑えながら、Azure AD で管理者アクセス権を付与することができます。
+Azure Active Directory (Azure AD) には、Azure AD の組み込みロールにクラウド グループを割り当てることができるパブリック プレビューが導入されています。 この機能を使用すると、グループを使用して、グローバル管理者と特権ロール管理者の労力を最小限に抑えながら、Azure AD で管理者アクセス権を付与できます。
 
-次の例を考えてみましょう。Contoso は、Azure AD 組織内の従業員のパスワードを管理およびリセットするために、地域を超えて従業員を雇っています。 特権ロール管理者またはグローバル管理者に対して、各ユーザーにヘルプデスク管理者ロールを割り当てるよう依頼する代わりに、Contoso_Helpdesk_Administrators グループを作成して、これをロールに割り当てることができます。 ユーザーがこのグループに参加すると、このロールが間接的に割り当てられます。 その後、既存のガバナンス ワークフローによって、グループのメンバーシップの承認プロセスと監査を行い、正当なユーザーのみがグループのメンバーとなり、ヘルプデスク管理者ロールに割り当てられるようにすることができます。
+次の例を考えてみましょう。Contoso は、Azure AD 組織内の従業員のパスワードを管理およびリセットするために、地域を超えて従業員を雇っています。 特権ロール管理者またはグローバル管理者に対して、各ユーザーにヘルプデスク管理者ロールを個別に割り当てるよう依頼する代わりに、Contoso_Helpdesk_Administrators グループを作成し、これをロールに割り当てることができます。 ユーザーがこのグループに参加すると、このロールが間接的に割り当てられます。 その後、既存のガバナンス ワークフローによって、グループのメンバーシップの承認プロセスと監査を行い、正当なユーザーだけがグループのメンバーとなり、ヘルプデスク管理者ロールに割り当てられるようにすることができます。
 
 ## <a name="how-this-feature-works"></a>この機能のしくみ
 
@@ -37,14 +37,14 @@ Azure Active Directory (Azure AD) には、Azure AD の組み込みロールに�
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>ロールに割り当てるための特別なグループの作成を強制する理由
 
-グループにロールが割り当てられている場合、グループ メンバーシップを管理できるすべての IT 管理者は、そのロールのメンバーシップを間接的に管理することもできます。 たとえば、グループ Contoso_User_Administrators がユーザー アカウント管理者ロールに割り当てられているとします。 グループ メンバーシップを変更できる Exchange 管理者は、自身を Contoso_User_Administrators グループに追加して、この方法でユーザー アカウント管理者になることができます。このように、管理者は、あなたが意図しない方法で特権を昇格させることができます。
+グループにロールが割り当てられている場合、グループ メンバーシップを管理できるすべての IT 管理者は、そのロールのメンバーシップを間接的に管理することもできます。 たとえば、Contoso_User_Administrators グループにユーザー管理者ロールが割り当てられているとします。 グループ メンバーシップを変更できる Exchange 管理者は、自身を Contoso_User_Administrators グループに追加することで、ユーザー管理者になることができます。 このように、管理者は、あなたが意図しない方法で特権を昇格させることができます。
 
 Azure AD を使用すると、グループに対して isAssignableToRole という新しいプロパティを使用して、ロールに割り当てられたグループを保護することができます。 作成時に isAssignableToRole プロパティが "true" に設定されていたクラウド グループのみをロールに割り当てることができます。 このプロパティは変更できません。このプロパティを "true" に設定してグループを作成した後は、それを変更できません。 既存のグループにこのプロパティを設定することはできません。 潜在的な違反が発生しないようにするために、グループをロールに割り当てる方法が設計されています。
 
-- グローバル管理者と特権ロール管理者のみが、("isAssignableToRole" プロパティを有効にして) ロール割り当て可能なグループを作成できます。
+- グローバル管理者と特権ロール管理者だけが、("isAssignableToRole" プロパティを有効にして) ロール割り当て可能なグループを作成できます。
 - Azure AD 動的グループにすることはできません。つまり、メンバーシップの種類が "割り当て済み" である必要があります。 動的なグループの自動作成により、不要なアカウントがグループに追加され、そのロールに割り当てられる可能性があります。
-- 既定では、グローバル管理者と特権ロール管理者のみが、ロール割り当て可能なグループのメンバーシップを管理できますが、グループ所有者を追加することによって、ロール割り当て可能なグループの管理を委任できます。
-- 特権の昇格を防ぐために、ロール割り当て可能なグループのメンバーと所有者の資格情報は、特権認証管理者またはグローバル管理者のみが変更できます。
+- 既定では、ロール割り当て可能なグループのメンバーシップを管理できるのは、グローバル管理者と特権ロール管理者だけですが、グループ所有者を追加して、ロール割り当て可能なグループの管理を委任することができます。
+- 特権の昇格を防ぐために、ロール割り当て可能なグループのメンバーと所有者の資格情報を変更したり、MFA をリセットしたりできるのは、特権認証管理者またはグローバル管理者に限られます。
 - 入れ子にすることはできません。 グループは、ロール割り当て可能なグループのメンバーとして追加することはできません。
 
 ## <a name="limitations"></a>制限事項
@@ -66,9 +66,9 @@ Azure AD を使用すると、グループに対して isAssignableToRole とい
 
 これらの問題は現在修正中です。
 
-## <a name="required-license-plan"></a>必要とされるライセンス プラン
+## <a name="license-requirements"></a>ライセンスの要件
 
-この機能を使用するには、Azure AD 組織で利用可能な Azure AD Premium P1 ライセンスが必要です。 Just-In-Time ロールのアクティブ化に Privileged Identity Management も使用するには、利用可能な Azure AD Premium P2 ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般提供されている Free および Premium プランの機能比較](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)に関するページをご覧ください。
+この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 Just-In-Time のロールのアクティブ化に Privileged Identity Management も使用するには、Azure AD Premium P2 ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

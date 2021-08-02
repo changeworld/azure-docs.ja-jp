@@ -2,14 +2,14 @@
 title: プールの VM サイズとイメージを選択する
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズと OS バージョンを選択する方法
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 06/01/2021
 ms.custom: seodec18
-ms.openlocfilehash: 6de7decbf40eede74dd7b92f9f1139e1b31450c8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b5314d3672da87ac1d2fadca61046348a369e218
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126257"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789119"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズとイメージを選択する
 
@@ -35,7 +35,7 @@ Azure Batch プールのノード サイズを選択するときは、Azure で�
 | Dv4、Dsv4 | サポートされていません |
 | Ev3、Esv3 | E64is_v3 を除くすべてのサイズ |
 | Eav4、Easv4 | すべてのサイズ |
-| Edv4、Edsv4 |  すべてのサイズ |
+| Edv4、Edsv4 |  Standard_E20d_v4、Standard_E20ds_v4、Standard_E80ids_v4 以外のすべてのサイズ |
 | Ev4、Esv4 | サポートされていません |
 | F、Fs | すべてのサイズ |
 | Fsv2 | すべてのサイズ |
@@ -43,7 +43,7 @@ Azure Batch プールのノード サイズを選択するときは、Azure で�
 | H | すべてのサイズ |
 | HB | すべてのサイズ |
 | HBv2 | すべてのサイズ |
-| HBv3 | Standard_HB120rs_v3 (その他のサイズはまだ使用できません) |
+| HBv3 | すべてのサイズ |
 | HC | すべてのサイズ |
 | Ls | すべてのサイズ |
 | Lsv2 | すべてのサイズ |
@@ -55,6 +55,7 @@ Azure Batch プールのノード サイズを選択するときは、Azure で�
 | NCasT4_v3 | すべてのサイズ |
 | ND | すべてのサイズ |
 | NDv2 | なし - まだ使用できません |
+| NP | すべてのサイズ |
 | NV | すべてのサイズ |
 | NVv3 | すべてのサイズ |
 | NVv4 | すべてのサイズ |

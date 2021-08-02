@@ -3,12 +3,12 @@ title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル �
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: 8d346aeef74e1f67d3d525c061d40314ee5342aa
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0c1c053378c8c2dec1f769fe489eb823ea81390f
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531008"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438740"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -404,12 +404,7 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>次のステップ
-
-AMQP の詳細については、次のリンクを参照してください。
-
-* [Service Bus AMQP の概要]
-* [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]
-* [Windows Server 用 Service Bus の AMQP]
+AMQP の詳細については、[「Azure Service Bus AMQP の概要」](service-bus-amqp-overview.md)を参照してください。
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png
@@ -417,6 +412,3 @@ AMQP の詳細については、次のリンクを参照してください。
 [3]: ./media/service-bus-amqp-protocol-guide/amqp3.png
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
-[Service Bus AMQP の概要]: service-bus-amqp-overview.md
-[パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: 
-[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

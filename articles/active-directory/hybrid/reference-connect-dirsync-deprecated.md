@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53d9e2ea10aefc96c2d4d72ad0020704ba48709b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96cc89d386540f2ebe979e5000c6d50ac6e31100
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539418"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476317"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory Sync と Azure Active Directory Sync のアップグレード
-Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Microsoft 365 を接続するための最適な方法です。 Windows Azure Active Directory Sync (DirSync) および Azure AD Sync (AADSync) は非推奨となり、2017 年 4 月 13 日以降はサポートされなくなったので、Azure AD Connect へアップグレードする絶好の機会です。
+Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Microsoft 365 を接続するための最適な方法です。 Windows Azure Active Directory Sync (DirSync) および Azure AD Sync (AADSync) は非推奨となり、動作しなくなっているため、Azure AD Connect へアップグレードする絶好の機会です。
 
-非推奨となるこの 2 つの ID 同期ツールは、単一フォレスト顧客用 (DirSync) および複数フォレストとその他の高度なユーザー用 (Azure AD Sync) に提供されていました。 これらの古いツールは、すべてのシナリオで使用できるAzure AD Connect という単一のソリューションに代わりました。 Azure AD Connect は、新機能、機能強化、および新しいシナリオのサポートを提供します。 Azure AD と Microsoft 365 に対してオンプレミスの ID データの同期を継続するには、Azure AD Connect にアップグレードすることを強くお勧めします。 2017 年 12 月 31 日を過ぎると、Microsoft はこれらの古いバージョンの動作を保証しません。
+非推奨となるこの 2 つの ID 同期ツールは、単一フォレスト顧客用 (DirSync) および複数フォレストとその他の高度なユーザー用 (Azure AD Sync) に提供されていました。 これらの古いツールは、すべてのシナリオで使用できるAzure AD Connect という単一のソリューションに代わりました。 Azure AD Connect は、新機能、機能強化、および新しいシナリオのサポートを提供します。 Azure AD と Microsoft 365 に対してオンプレミスの ID データの同期を継続するには、Azure AD Connect にアップグレードする必要があります。 
 
 DirSync の最終リリースは 2014 年 7 月、Azure AD Sync の最新リリースは 2015 年 5 月にリリースされています。
 

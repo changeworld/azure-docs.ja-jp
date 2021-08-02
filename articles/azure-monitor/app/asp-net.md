@@ -4,12 +4,12 @@ description: オンプレミスまたは Azure でホストされている ASP.N
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7cc1038e662950e8f7207d3cf4d9bf9e45f90e1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97028990"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097266"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を構成する
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [Application Insights のワークスペースベースのリソース](create-workspace-resource.md)を作成します。
 
 > [!IMPORTANT]
-> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+> インストルメンテーション キーよりも、[接続文字列](./sdk-connection-string.md?tabs=net)を使用することをお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 接続文字列により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 
 ## <a name="create-a-basic-aspnet-web-app"></a>基本的な ASP.NET Web アプリを作成する

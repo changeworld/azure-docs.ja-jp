@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 05/18/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6b2b8e3374c362f937aa5cfe106e8da9f9aa39f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47e3ea0a8ea5dc8dbb01d532a52436ed581311e7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96548003"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089899"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス グループ管理の設定 
 
@@ -43,14 +43,22 @@ Azure portal で、または Azure AD PowerShell を使用してセキュリテ�
 
 ## <a name="make-a-group-available-for-user-self-service"></a>グループをユーザーのセルフ サービスに使用できるようにする
 
-1. ディレクトリのグローバル管理者のアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[グループ]** を選択し、 **[全般]** 設定を選択します。
-1. **[所有者はアクセス パネルでのグループ メンバーシップの要求を管理できる]** を **[はい]** に設定します。
-1. **[アクセス パネルでのグループへのアクセスを制限する]** を **[いいえ]** に設定します。
-1. **[ユーザーは Azure Portal でセキュリティ グループを作成できる]** または **[ユーザーは Azure Portal で Microsoft 365 グループを作成することができる]** を次の値に設定した場合
+1. ディレクトリの全体管理者ロールまたは特権ロール管理者のロールが割り当てられているアカウントを使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 
-    - **[はい]** :Azure AD 組織内のすべてのユーザーが、新しいセキュリティ グループを作成したりそれらのグループにメンバーを追加したりできるようになります。 これらの新しいグループは、他のすべてのユーザーのアクセス パネルにも表示されるようになります。 グループのポリシー設定で許可されている場合、他のユーザーはこれらのグループへの参加要求を作成できます
+1. **[グループ]** を選択し、 **[全般]** 設定を選択します。
+
+    ![Azure Active Directory グループの全般設定](./media/groups-self-service-management/groups-settings-general.png)
+
+1. **[所有者はアクセス パネルでのグループ メンバーシップの要求を管理できる]** を **[はい]** に設定します。
+
+1. **[アクセス パネルのグループ機能にアクセスするユーザー機能を制限する]** を **[いいえ]** に設定します。
+
+1. **[ユーザーは Azure portal、API、または PowerShell でセキュリティ グループを作成できる]** または **[ユーザーは Azure portal、API、または PowerShell で Microsoft 365 グループを作成できる]** を次の値に設定した場合
+
+    - **[はい]** :Azure AD 組織内のすべてのユーザーが、新しいセキュリティ グループを作成したり、Azure portal、API または PowerShell 内のそれらのグループにメンバーを追加したりできるようになります。 これらの新しいグループは、他のすべてのユーザーのアクセス パネルにも表示されるようになります。 グループのポリシー設定で許可されている場合、他のユーザーはこれらのグループへの参加要求を作成できます。
     - **[いいえ]** :ユーザーはグループを作成できず、所有している既存のグループを変更することもできません。 ただし、それらのグループのメンバーシップの管理と、他のユーザーからのグループへの参加要求の承認は、引き続き行うことができます。
+
+    これらの設定は最近変更され、API と PowerShell のサポートが追加されました。 この変更の詳細については、次のセクション「[グループ設定の変更](#groups-setting-change)」を参照してください。
 
 また、**Azure portal でメンバーをグループの所有者として割り当てることができる所有者** を使用して、ユーザーのセルフサービスのグループ管理よりも詳細なアクセス制御を実現することもできます。
 
@@ -58,6 +66,37 @@ Azure portal で、または Azure AD PowerShell を使用してセキュリテ�
 
 > [!NOTE]
 > ユーザーが セキュリティ グループまたは Microsoft 365 グループへの参加を要求したり、所有者がメンバーシップ要求を承認または拒否するように要求するには、Azure Active Directory Premium (P1 または P2) ライセンスが必要です。 Azure Active Directory Premium ライセンスがない場合でも、ユーザーはアクセス パネルでグループを管理できますが、アクセス パネルで所有者の承認を必要とするグループを作成することはできません。また、グループに参加するように要求することもできません。
+
+## <a name="groups-setting-change"></a>グループ設定の変更
+
+現在のセキュリティ グループと Microsoft 365 グループの設定は非推奨となり、置き換えられる予定です。 現在の設定は、Azure portal でのグループ作成のみを制御し、API や PowerShell には適用されないので置き換えられます。 新しい設定は、Azure portal でのグループの作成と、API と PowerShell の制御に対応しています。
+
+| 非推奨の設定 | 新しい設定 |
+| --- | --- |
+| ユーザーは Azure Portal でセキュリティ グループを作成できる | ユーザーは Azure portal、API、または PowerShell でセキュリティ グループを作成できる |
+| ユーザーは Azure portal で Microsoft 365 グループを作成することができる | ユーザーは Azure portal、API、または PowerShell で Microsoft 365 グループを作成できる |
+
+現在の設定が完全に非推奨となるまで、両方の設定が Azure ポータルに表示されます。 この新しい設定は、**2021 年 5 月** が終わるまでに構成する必要があります。 セキュリティ グループの設定を構成するには、全体管理者または特権ロール管理者のロールが割り当てられている必要があります。 
+
+![Azure Active Directory セキュリティ グループ設定の変更](./media/groups-self-service-management/security-groups-setting.png)
+
+次の表は、選択する値を決定するのに役立ちます。
+
+| 目的: | 選択する値 |
+| --- | --- |
+| ユーザーが、Azure portal、API、または PowerShell を使用してグループを作成できる | 両方の設定を **[はい]** に設定します。 変更が有効になるまでに最大 15 分かかる場合があります。 |
+| ユーザーは、Azure portal、API、または PowerShell を使用してグループを作成 **できない** | 両方の設定を **[いいえ]** に設定します。 変更が有効になるまでに最大 15 分かかる場合があります。 |
+| ユーザーは、Azure portal を使用してグループを作成することができるが、API や PowerShell は使用できない | サポートされていません |
+| ユーザーは、API や PowerShell を使用してグループを作成できるが、Azure portal は使用できない | サポートされていません |
+
+以下の表は、これらの設定の値を変えた場合の動作を示しています。 非推奨の設定と新しい設定を異なる値に設定することは推奨されていません。
+
+| ユーザーは、Azure portal を使用してグループを作成できる | ユーザーが、Azure portal、API、または PowerShell を使用してグループを作成できる | テナントへの影響 |
+| :---: | :---: | --- |
+| Yes | Yes | ユーザーは、Azure portal、API、または PowerShell を使用してグループを作成できます。 変更が有効になるまでに最大 15 分かかる場合があります。|
+| いいえ | いいえ | ユーザーは、Azure portal、API、または PowerShell を使用してグループを作成 **できません**。 変更が有効になるまでに最大 15 分かかる場合があります。 |
+| はい | いいえ | ユーザーは、Azure portal、API、または PowerShell を使用してグループを作成 **できません**。 これらの設定を別の値に設定することはお勧めしません。 変更が有効になるまでに最大 15 分かかる場合があります。 |
+| いいえ | はい | **[ユーザーは、Azure portal を使用してグループを作成できる]** 設定が **2021 年 6 月** に完全に非推奨になるまでは、ユーザーは API または PowerShell を使用してグループを作成できますが、Azure portal では作成できません。 **2021 年 6 月** から、 **[ユーザーが、Azure portal、API、または PowerShell を使用してグループを作成できる]** 設定が有効になり、ユーザーは Azure portal、API、または PowerShell を使用してグループを作成できるようになります。 |
 
 ## <a name="next-steps"></a>次のステップ
 

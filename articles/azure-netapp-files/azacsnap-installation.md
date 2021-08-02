@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 05/19/2021
 ms.author: phjensen
-ms.openlocfilehash: 16e758ac520c8584a11c88c0823fac7cfec43c0b
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0eae929d60ce852e7a98f12430de796aa664d86f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226302"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481452"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールをインストールする
 
@@ -42,6 +42,12 @@ ms.locfileid: "108226302"
 1. **HANA をインストールする**: HANA のインストール手順については、「[HANA データベースへの SAP NetWeaver のインストール](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)」を参照してください。
 1. **[ストレージとの通信を有効にする](#enable-communication-with-storage)** (詳細については、別のセクションを参照): お客様は秘密および公開キーのペアを使用して SSH を設定し、ストレージ バックエンドでの設定のために Microsoft Operations に対してスナップショット ツールが実行される予定の各ノードの公開キーを提供する必要があります。
    1. **Azure NetApp Files の場合 (詳細については別のセクションを参照)** : お客様はサービス プリンシパル認証ファイルを生成する必要があります。
+      
+      > [!IMPORTANT]
+      > Azure NetApp Files との通信を検証するときに、通信が失敗するか、タイムアウトになることがあります。AzAcSnap を実行しているシステムから次のアドレスと TCP/IP ポートへのアウトバウンド トラフィックがファイアウォール ルールによってブロックされていないことを確認してください。
+      > - (https://)management.azure.com:443
+      > - (https://)login.microsoftonline.com:443
+      
    1. **Azure L インスタンスの場合 (詳細については別のセクションを参照)** : お客様は秘密および公開キーのペアを使用して SSH を設定し、ストレージ バックエンドでの設定のために Microsoft Operations に対してスナップショット ツールが実行される予定の各ノードの公開キーを提供する必要があります。
 
       SSH を使用してノードのいずれかに接続し、これをテストします (例: `ssh -l <Storage UserName> <Storage IP Address>`)。

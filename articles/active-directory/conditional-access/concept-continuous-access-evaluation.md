@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 374fa4db4441dc82f9d14eef9cdd7589a9a82fad
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c615c3b57d0c4ebfdbffdc1461f2289d4b8c4256
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126851"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438272"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -137,6 +137,9 @@ CAE 対応クライアントを使用していない場合でも、[構成可能
 > [!WARNING]
 > 継続的アクセス評価を無効にするには **[プレビューの有効化]** を選択して **[プレビューの無効化]** を選択し、それから **[保存]** を選択します。
 
+> [!NOTE]
+>[**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) を使用して Microsoft Graph のクエリを実行し、テナント内の CAE の構成を確認できます。 HTTP 200 応答と関連する応答の本文を見ると、テナント内で CAE が有効か無効かがわかります。 Microsoft Graph から HTTP 404 応答が返される場合、CAE は構成されていません。
+
 ![Azure portal で CAE プレビューを有効にする](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -191,4 +194,6 @@ Office 更新プログラム チャネルの詳細については、[Microsoft 3
 
 ## <a name="next-steps"></a>次のステップ
 
-[継続的アクセス評価の発表](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
+- [継続的アクセス評価の発表](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
+- [継続的アクセス評価が有効になった API をアプリケーションで使用する方法](../develop/app-resilience-continuous-access-evaluation.md)
+- [要求のチャレンジ、クレーム要求、およびクライアントの能力](../develop/claims-challenge.md)

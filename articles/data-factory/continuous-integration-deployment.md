@@ -6,13 +6,14 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.openlocfilehash: fad2fce019848c752217f15aaba8ba4c28a7c874
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.date: 05/12/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b8502363d7868b32bf2576742ca443b673c5123
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177377"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971977"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -161,9 +162,15 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
 ### <a name="updating-active-triggers"></a>アクティブなトリガーを更新する
 
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+
+>[!WARNING]
+>最新バージョンの PowerShell および Data Factory モジュールを使用しない場合は、コマンドの実行中に逆シリアル化エラーが発生する可能性があります。 
+>
+
 アクティブなトリガーを更新しようとした場合、デプロイは失敗します。 アクティブなトリガーを更新するには、手動でそれらを停止し、デプロイ後に再起動する必要があります。 これは、Azure Powershell タスクを使用して実行できます。
 
-1.  リリースの **[タスク]** タブで、 **[Azure PowerShell]** タスクを追加します。 タスク バージョン 4.* を選択します。 
+1.  リリースの **[タスク]** タブで、 **[Azure PowerShell]** タスクを追加します。 タスク バージョンとして最新の Azure PowerShell バージョンを選択します。 
 
 1.  お使いのファクトリがあるサブスクリプションを選択します。
 
@@ -618,6 +625,8 @@ Data Factory のスクリプトは、必ず CI/CD パイプラインのデプロ
 
 Git が構成されていない場合は、 **[ARM テンプレート]** 一覧の **[ARM テンプレートのエクスポート]** を使用して、リンクされたテンプレートにアクセスできます。
 
+リソースをデプロイするときには、デプロイが増分更新と完全更新のどちらであるかを指定する必要があります。 これら 2 つのモードの違いは、テンプレートにないリソース グループの既存のリソースを Resource Manager が処理する方法にあります。 「[デプロイ モード](../azure-resource-manager/templates/deployment-modes.md)」を確認してください。
+
 ## <a name="hotfix-production-environment"></a>運用環境への修正プログラムの適用
 
 ファクトリを運用環境にデプロイし、すぐに修正が必要なバグがあることが判明したが現在のコラボレーション ブランチをデプロイできない場合、修正プログラムのデプロイが必要なことがあります。 この方法は、クイック修正エンジニアリングまたは QFE と呼ばれています。
@@ -687,7 +696,14 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> サンプルのデプロイ前とデプロイ後のスクリプト
 
-次のサンプル スクリプトは、トリガーをデプロイ前に停止し、デプロイ後に再起動するために使用できます。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 Azure DevOps の git リポジトリにスクリプトを保存し、バージョン 4.* で Azure PowerShell タスクを介して参照します。
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+
+>[!WARNING]
+>最新バージョンの PowerShell および Data Factory モジュールを使用しない場合は、コマンドの実行中に逆シリアル化エラーが発生する可能性があります。 
+>
+
+次のサンプル スクリプトは、トリガーをデプロイ前に停止し、デプロイ後に再起動するために使用できます。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 Azure DevOps の git リポジトリにスクリプトを保存し、Azure PowerShell タスク、最新の Azure PowerShell バージョンを介して参照します。
+
 
 デプロイ前スクリプトを実行する場合は、 **[スクリプトの引数]** フィールドで、次のパラメーターのバリエーションを指定する必要があります。
 

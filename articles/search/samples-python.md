@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 0d09851cf8e68cead4a67615aaa792512482f351
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: fc27ed68f5dedefa0b4bf77a206faa15c94f083f
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955124"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018317"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の Python コード サンプル
 
@@ -49,8 +49,9 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | サンプル | 記事 |
 |---------|---------|
 | [クイックスタート](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Quickstart) | [クイック スタート:.Python で検索インデックスを作成する](search-get-started-python.md)に関する記事のソース コード。 この記事では、サンプル データを使用して検索インデックスを作成、読み込み、クエリを実行するための基本的なワークフローについて説明します。 |
+| [search-website](https://github.com/azure-samples/azure-search-python-samples/tree/master/search-website) | 「[チュートリアル: Web アプリに検索を追加する](tutorial-python-overview.md)」のソース コード。 アプリをホストして検索要求を処理するためのリッチ クライアントとコンポーネントを含む、エンドツーエンド検索アプリを示します。|
 | [tutorial-ai-enrichment](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)  | 「[チュートリアル:Python と AI を使用して Azure Blob から検索可能なコンテンツを生成する](cognitive-search-tutorial-blob-python.md)」のソース コード。 この記事では、コグニティブ スキルセットを使用して BLOB インデクサーを作成する方法について説明します。このスキルセットにより、生コンテンツを作成および変換して、検索したり利用したりできるようにします。 |
 | [AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)  | 「[例:Python を使用してカスタム スキルを作成する](cognitive-search-custom-skill-python.md)」のソース コード。 この記事では、インデクサーおよびスキルセットと Azure Machine Learning のディープ ラーニング モデルの統合について説明します。 |
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?languages=python&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> GitHub で製品、サービス、言語でフィルター処理された Microsoft コード サンプルを検索するために、[サンプル ブラウザー](/samples/browse/?languages=python&products=azure-cognitive-search)をお試しください。

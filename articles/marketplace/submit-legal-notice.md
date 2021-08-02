@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 03/08/2021
-ms.openlocfilehash: 36bda5d241a1d383e7773abeda8a9889fb24086e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3935afe1c174ace2492d2d81c6ef10d3d934d26d
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133027"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008041"
 ---
 # <a name="notifying-microsoft-regarding-the-publisher-agreement"></a>Publisher Agreement について Microsoft に通知する
 
@@ -20,7 +20,7 @@ ms.locfileid: "108133027"
 
 ## <a name="submit-notice-regarding-the-publisher-agreement"></a>Publisher Agreement に関する通知を送信する
 
-1. パートナー センター サポートの「[契約または法律に関する質問](https://partner.microsoft.com/support/?stage=2&topicid=05a1a389-1256-d441-89c9-a140217de6b9)」セクションにアクセスします。
+1. パートナー センター サポートの「[契約または法律に関する質問](https://go.microsoft.com/fwlink/?linkid=2157631)」セクションにアクセスします。
 
 1. **[問題の詳細を指定]** を選択します (必要な場合は、最初にパートナー センターにサインインします)。
 
@@ -45,4 +45,4 @@ ms.locfileid: "108133027"
 ## <a name="next-steps"></a>次のステップ
 
 - 質問がある場合は、サポート エージェントから連絡させていただくことがあります。
-- [Microsoft Publisher Agreement](/legal/marketplace/msft-publisher-agreement) (PDF) を確認します。
+- [Microsoft Publisher Agreement](/legal/marketplace/msft-publisher-agreement) を確認する。

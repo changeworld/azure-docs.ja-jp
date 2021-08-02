@@ -1,5 +1,5 @@
 ---
-title: 既定の VNET で Azure Image Builder を使用して Windows VM を作成する (プレビュー)
+title: 既定の VNET で Azure Image Builder を使用して Windows VM を作成する
 description: 既定の VNET で Azure Image Builder を使用して Windows VM を作成する
 author: cynthn
 ms.author: cynthn
@@ -9,36 +9,18 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.reviewer: danis
-ms.openlocfilehash: 3695732f81463efcadb3d8d8b49e367501cb6e29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 12ec69f3976cb156bc04bf2ed7b79b1fd775b142
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034083"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031092"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Windows VM の Azure Image Builder を使用して既存の Azure VNET へのアクセスを許可する
 
 この記事では、Azure Image Builder を使用して、VNET 上の既存のリソースにアクセスできる、基本的なカスタマイズされた Windows イメージを作成する方法について説明します。 作成したビルド VM は、サブスクリプションに指定した新規または既存の VNET にデプロイされます。 既存の Azure VNET を使用する場合、Azure Image Builder サービスでは、パブリック ネットワーク接続は必要ありません。
 
-> [!IMPORTANT]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="register-the-features"></a>機能の登録
-
-まず、Azure Image Builder サービスに登録する必要があります。 登録すると、ステージング リソース グループを作成、管理、削除するためのアクセス許可がこのサービスに付与されます。 このサービスには、イメージのビルドに必要なグループにリソースを追加する権限もあります。
-
-```powershell-interactive
-# Register for Azure Image Builder Feature
-
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-
-Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-
-# wait until RegistrationState is set to 'Registered'
-```
 ## <a name="set-variables-and-permissions"></a>変数とアクセス許可の設定 
 
 一部の情報は、繰り返し使用します。 そのような情報を格納する変数をいくつか作成します。

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/11/2021
+ms.date: 05/28/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: d45c64a75da4acb0be3efacc73ebf51d3fec2b3e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 1674e3aae978c16b8ef736dc6605bd30e7201e10
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109782831"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962025"
 ---
 # <a name="known-issues-for-application-provisioning-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション プロビジョニングの既知の問題
 アプリのプロビジョニングを使用するときに注意する必要がある既知の問題。 UserVoice のアプリケーション プロビジョニング サービスに関するフィードバックを提供することができます。[Azure AD のアプリケーションのプロビジョニングの UserVoice](https://aka.ms/appprovisioningfeaturerequest) ページを参照してください。 Microsoft では、サービスを改善するために UserVoice を注意深く確認しています。 
@@ -98,6 +98,40 @@ UI のソース属性ドロップダウンにスキーマの拡張機能が表�
 **マネージャーがプロビジョニングされない**
 
 ユーザーとそのマネージャーが両方ともプロビジョニング対象となっている場合は、ユーザーがプロビジョニングされた後でマネージャーが更新されます。 ただし初日に、ユーザーはプロビジョニング対象でもマネージャーが対象外となっている場合、マネージャーを参照せずにユーザーがプロビジョニングされます。 その後マネージャーがプロビジョニング対象となっても、プロビジョニングを再開し、サービスによってすべてのユーザーがもう一度評価されるまで、マネージャーの参照は更新されません。 
+
+## <a name="on-premises-application-provisioning"></a>オンプレミス アプリケーションのプロビジョニング
+次の情報は、Azure AD ECMA コネクタ ホストとオンプレミス アプリケーションのプロビジョニングに関する既知の制限事項の最新の一覧です。
+
+### <a name="application-and-directories"></a>アプリケーションとディレクトリ
+次のアプリケーションとディレクトリは、まだサポートされていません。
+
+**AD DS - (オンプレミスのプロビジョニング プレビューを使用した Azure AD からのユーザーまたはグループの書き戻し)**
+   - ユーザーが Azure AD Connect によって管理されている場合、権限のあるソースはオンプレミスの Active Directory です。 そのため、Azure AD でユーザー属性を変更することはできません。 このプレビューでは、Azure AD Connect によって管理されるユーザーの権限のソースは変更されません。
+   - Azure AD Connect とオンプレミスのプロビジョニングを使用して AD DS にグループまたはユーザーをプロビジョニングしようとすると、ループが作成される可能性があります。この場合、Azure AD Connect はクラウドのプロビジョニング サービスによって行われた変更を上書きできます。 Microsoft では、グループまたはユーザーの書き戻し専用の機能に取り組んでいます。  [ここで](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/16887037-enable-user-writeback-to-on-premise-ad-from-azure) UserVoice のフィードバックに賛成投票して、プレビューの状態を追跡します。 または、Azure AD から AD へのユーザーまたはグループの書き戻しに [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) を使用することもできます。
+
+**SQL 以外のコネクタ**
+   - Azure AD ECMA コネクタ ホストは、汎用 SQL (GSQL) コネクタで正式にサポートされています。 Web サービス コネクタやカスタム ECMA コネクタなどの他のコネクタを使用することはできますが、**まだサポートされていません**。
+
+**Azure Active Directory**
+   - オンプレミスのプロビジョニングでは、既に Azure AD にあるユーザーを使用して、サードパーティのアプリケーションにプロビジョニングすることができます。 **サードパーティ製アプリケーションのディレクトリにユーザーを持ち込むことはできません。** ユーザーは、ネイティブの HR 統合、Azure AD Connect、MIM、Microsoft Graph を利用して、ユーザーをディレクトリに取り込む必要があります。
+
+### <a name="attributes-and-objects"></a>属性とオブジェクト 
+次の属性とオブジェクトはサポートされていません。
+   - 複数値の属性
+   - 参照属性 (manager など)。
+   - グループ
+   - 複雑なアンカー (ObjectTypeName+UserName など)。
+   - オンプレミスのアプリケーションは Azure AD とフェデレーションされないことがあり、ローカル パスワードが必要になることがあります。 オンプレミスのプロビジョニング プレビューでは、Azure AD とサードパーティのアプリケーション間での **ワンタイム パスワードのプロビジョニングまたはパスワードの同期はサポートされていません**。
+   - export_password' 仮想属性、SetPassword、および ChangePassword 操作はサポートされていません
+
+#### <a name="ssl-certificates"></a>SSL 証明書の数
+   - 現在、Azure AD ECMA コネクタ ホストでは、Azure によって信頼されている SSL 証明書、またはプロビジョニング エージェントを使用する必要があります。 証明書のサブジェクトは Azure AD ECMA コネクタ ホストがインストールされているホスト名と一致する必要があります。
+
+#### <a name="anchor-attributes"></a>アンカー属性
+   - 現在、Azure AD ECMA コネクタ ホストでは、アンカー属性の変更 (名前の変更) またはアンカーを形成するには複数の属性が必要となるターゲット システムはサポートされていません。 
+
+#### <a name="attribute-discovery-and-mapping"></a>属性の検出とマッピング
+   - ターゲット アプリケーションがサポートする属性が検出され、Azure portal の属性マッピングに表示されます。 新しく追加された属性は引き続き検出されます。 ただし、属性の型が変更されており (たとえば、文字列からブール値)、属性がマッピングの一部である場合、型は Azure portal で自動的に変更されません。 ユーザーは [マッピング] の [詳細設定] にアクセスし、属性の種類を手動で更新する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 - [プロビジョニングのしくみ](how-provisioning-works.md)

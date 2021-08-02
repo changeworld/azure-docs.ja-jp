@@ -9,23 +9,32 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 04/14/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24bf5df84015ada6b62c35fdd29571c66e06ebd
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 932fc71617846f2839767546a8fac00a3d16008c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505260"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792257"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>スコープ付きロールを管理単位に割り当てる
 
 Azure Active Directory (Azure AD) では、きめ細かい管理制御を行うために、1 つ以上の管理単位に制限されたスコープでユーザーを Azure AD ロールに割り当てることができます。
 
-管理単位の管理に PowerShell や Microsoft Graph を使用するよう準備するには、「[はじめに](admin-units-manage.md#get-started)」を参照してください。
+## <a name="prerequisites"></a>前提条件
+
+- 管理単位の各管理者に対する Azure AD Premium P1 または P2 ライセンス
+- 管理単位のメンバーに対する Azure AD Free ライセンス
+- 特権ロール管理者または全体管理者
+- PowerShell を使用する場合は、AzureAD モジュール
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
+
+詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+
 
 ## <a name="available-roles"></a>使用可能なロール
 
@@ -50,7 +59,7 @@ Role  |  説明
 
 Azure portal、PowerShell、または Microsoft Graph を使用して、スコープ付きロールを割り当てることができます。
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 1. Azure portal で、**Azure AD** に移動します。
 
@@ -69,7 +78,7 @@ Azure portal、PowerShell、または Microsoft Graph を使用して、スコ�
 > [!Note]
 > Azure AD Privileged Identity Management (PIM) を使用して管理単位でロールを割り当てるには、「[PIM で Azure AD ロールを割り当てる](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope)」を参照してください。
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $adminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
@@ -82,7 +91,7 @@ Add-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id -RoleId $role.ObjectId -R
 
 強調表示されているセクションを、特定の環境で必要なように変更できます。
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 要求
 
@@ -90,7 +99,7 @@ Add-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id -RoleId $role.ObjectId -R
 POST /directory/administrativeUnits/{admin-unit-id}/scopedRoleMembers
 ```
     
-Body
+本文
 
 ```http
 {
@@ -105,7 +114,7 @@ Body
 
 Azure portal、PowerShell、または Microsoft Graph を使用して、スコープ付き管理者の一覧を表示できます。
 
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
+### <a name="azure-portal"></a>Azure portal
 
 [Azure AD の管理単位セクション](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)に、管理単位スコープを使用して作成されたすべてのロール割り当てを表示できます。 
 
@@ -115,7 +124,7 @@ Azure portal、PowerShell、または Microsoft Graph を使用して、スコ�
 
 1. **[ロールと管理者]** を選択し、ロールを開いて管理単位内の割り当てを表示します。
 
-### <a name="use-powershell"></a>PowerShell の使用
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
@@ -124,7 +133,7 @@ Get-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id | fl *
 
 強調表示されているセクションを、ご利用の環境で必要なように変更できます。
 
-### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 要求
 

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 3dcb66c0659c8d76ab53c7537f1b9a4343bd17a1
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: c39417697dd88d3faa64ce47493ab5e7c08faa0d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987472"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481349"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -37,7 +37,7 @@ VM イメージをレンダリングする Azure Marketplace は、事前イン�
 
 Windows のイメージと CentOS のイメージがあります。  [Azure Marketplace](https://azuremarketplace.microsoft.com) で、VM イメージは「batch rendering」と検索することで見つかります。
 
-プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](./tutorial-rendering-cli.md)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
+Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
 
 | Publisher | プラン | Sku | バージョン |
 |---------|---------|---------|--------|
@@ -98,7 +98,5 @@ Azure Marketplace の VM イメージが使用されている場合は、ベス�
 
 ## <a name="next-steps"></a>次の手順
 
-Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
-
-* [Azure CLI を使用したレンダリング](./tutorial-rendering-cli.md)
-* [Batch Explorer を使用したレンダリング](./tutorial-rendering-batchexplorer-blender.md)
+* [Batch でレンダリング アプリケーションを使用する](batch-rendering-applications.md)方法について説明します。
+* [アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション](batch-rendering-storage-data-movement.md)について説明します。

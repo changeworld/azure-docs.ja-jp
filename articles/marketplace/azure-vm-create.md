@@ -1,20 +1,20 @@
 ---
 title: Azure Marketplace で仮想マシン オファーを作成します。
-description: Microsoft コマーシャル マーケットプレースで仮想マシン オファーを作成する方法について説明します。
+description: Azure Marketplace で仮想マシン オファーを作成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/08/2021
-ms.openlocfilehash: f0c1d9d528ed4fbf61786042fb6fb34f05fec5d5
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 626ee3d9fb7ec193e1384712a03c23feefef67af
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812595"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525032"
 ---
-# <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で仮想マシン オファーを作成する方法
+# <a name="create-a-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で仮想マシン オファーを作成する
 
 この記事では、[Azure Marketplace](https://azuremarketplace.microsoft.com/) 向けに Azure 仮想マシン オファーを作成する方法について説明します。 オペレーティング システム、仮想ハード ディスク (VHD)、最大 16 個のデータ ディスクが含まれる Windows ベースと Linux ベースの両方の仮想マシンに対応しています。
 
@@ -33,7 +33,7 @@ ms.locfileid: "107812595"
     ![左側のペインのメニュー オプションと [新しいオファー] ボタンを示すスクリーンショット。](./media/create-vm/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
-> ご自分のオファーを発行した後にパートナー センターで行った編集は、そのオファーを再発行しないと Azure Marketplace に反映されません。 変更後は常にオファーを再発行するようにしてください。
+> パートナー センターで発行済みのオファーを編集した場合、そのオファーを再発行するまで Azure Marketplce での表示には反映されません。 変更後は常にオファーを再発行するようにしてください。
 
 **[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
 
@@ -47,22 +47,22 @@ ms.locfileid: "107812595"
 
 **[作成]** を選択してオファーを生成し、続行します。 パートナー センターで **[オファーのセットアップ]** ページが開きます。
 
-## <a name="enable-a-test-drive-optional"></a>体験版を有効にする (省略可能)
+## <a name="test-drive-optional"></a>体験版 (省略可能)
 
 体験版は、構成済み環境に一定時間アクセスできるようにすることで、潜在顧客に対してオファーを紹介するのに最適な方法です。 体験版を提供すると、コンバージョン率が向上し、質の高い潜在顧客を獲得できます。 体験版の詳細については、「[体験版とは](./what-is-test-drive.md)」を参照してください。
 
 > [!TIP]
 > 体験版は、無料試用版とは異なります。 体験版または無料試用版のいずれかまたは両方を提供できます。 これらはどちらも、ソリューションを一定期間、顧客に提供します。 ただし、体験版には、実際の実装シナリオの中で製品の主な機能や利点を体験できる実践的なセルフガイド ツアーも含まれます。
 
-体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 体験版は後で構成します。 体験版では CRM を構成する必要があります (次のセクションを参照してください)。
+体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 体験版は後で構成します。 体験版では CRM を構成する必要があります (次のセクションを参照してください)。 オファーから体験版を削除するには、このチェック ボックスをオフにします。
 
-## <a name="configure-customer-leads-management"></a>潜在顧客管理の構成
+## <a name="customer-leads"></a>潜在顧客
 
 [!INCLUDE [Customer leads](includes/customer-leads.md)] 
 
 左側のナビゲーション メニューの次のタブである **[プロパティ]** に進む前に、 **[下書きの保存]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [仮想マシン オファーのプロパティを構成する方法](azure-vm-create-properties.md)
+- [仮想マシン オファーのプロパティの構成](azure-vm-create-properties.md)
 - [オファーの掲載のベスト プラクティス](gtm-offer-listing-best-practices.md)

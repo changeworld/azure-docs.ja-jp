@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: gahllevy
-ms.openlocfilehash: 1e9062b111c30efa90b98c4ebcee710b1d975a1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3852aec23a6ad894cd3f89c09c9013564fad4c4e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99507932"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062904"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>Azure Cosmos DB API for MongoDB の操作のレート制限エラーを回避する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -38,28 +38,42 @@ Azure Cosmos DB API for MongoDB の操作は、コレクションのスループ
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
 1. ご利用のアカウントで SSR が既に有効になっているかどうかを確認します。
-```bash
-az cosmosdb show --name accountname --resource-group resourcegroupname
-```
-2. ご利用のデータベース アカウント内のすべてのコレクションに対して SSR を **有効にします**。 この変更が有効になるまで、最大 15 分かかる場合があります。
-```bash
-az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
-```
-次のコマンドは、機能の一覧から "DisableRateLimitingResponses" を削除することによって、データベース アカウント内のすべてのコレクションに対して SSR を **無効** にします。 この変更が有効になるまで、最大 15 分かかる場合があります。
-```bash
-az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo
-```
+
+   ```azurecli-interactive
+   az cosmosdb show --name accountname --resource-group resourcegroupname
+   ```
+
+1. ご利用のデータベース アカウント内のすべてのコレクションに対して SSR を **有効にします**。 この変更が有効になるまで、最大 15 分かかる場合があります。
+
+   ```azurecli-interactive
+   az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
+   ```
+
+1. 次のコマンドは、機能の一覧から `DisableRateLimitingResponses` を削除することによって、データベース アカウント内のすべてのコレクションに対してサーバー側の再試行を **無効** にします。 この変更が有効になるまで、最大 15 分かかる場合があります。
+
+   ```azurecli-interactive
+   az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo
+   ```
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
-* 要求はどのように再試行されますか。
-    * 60 秒のタイムアウトに達するまで、要求は継続的に (繰り返し) 再試行されます。 タイムアウトに達すると、クライアントに [ExceededTimeLimit 例外 (50)](mongodb-troubleshoot.md) が返されます。
-*  SSR の効果を監視するにはどうすればよいですか。
-    *  [Cosmos DB メトリック] ウィンドウでは、サーバー側で再試行されたレート制限エラー (429) を確認できます。 SSR が有効になっている場合、これらのエラーはサーバー側で処理され再試行されるため、クライアントには返されないことにご注意ください。 
-    *  [Cosmos DB リソース ログ](cosmosdb-monitor-resource-logs.md)内で、"estimatedDelayFromRateLimitingInMilliseconds" を含むログ エントリを検索することができます。
-*  SSR を適用すると、整合性レベルに影響がありますか。
-    *  SSR を適用しても、要求の整合性に影響はありません。 要求は、レート制限を受けた場合 (429 エラー)、サーバー側で再試行されます。 
-*  クライアントに返される可能性のある種類のエラーは、SSR の影響を受けますか。
-    *  いいえ。SSR の影響を受けるのは、レート制限エラー (429) のみであり、これらはサーバー側で再試行されます。 この機能を使用すると、クライアント アプリケーション内でレート制限エラーを処理しなくてもよくなります。 [他のエラー](mongodb-troubleshoot.md)はすべて、クライアントに返されます。 
+
+### <a name="how-are-requests-retried"></a>要求はどのように再試行されますか。
+
+60 秒のタイムアウトに達するまで、要求は継続的に (繰り返し) 再試行されます。 タイムアウトに達すると、クライアントに [ExceededTimeLimit 例外 (50)](mongodb-troubleshoot.md) が返されます。
+
+### <a name="how-can-i-monitor-the-effects-of-a-server-side-retry"></a>サーバー側の再試行の影響はどのように監視するのですか。
+
+[Cosmos DB メトリック] ウィンドウでは、サーバー側で再試行されたレート制限エラー (429) を確認できます。 SSR が有効になっている場合、これらのエラーはサーバー側で処理され再試行されるため、クライアントには返されないことにご注意ください。
+
+[Cosmos DB リソース ログ](cosmosdb-monitor-resource-logs.md)内で、*estimatedDelayFromRateLimitingInMilliseconds* を含むログ エントリを検索することができます。
+
+### <a name="will-server-side-retry-affect-my-consistency-level"></a>サーバー側の再試行を適用すると、整合性レベルに影響がありますか。
+
+サーバー側の再試行を適用しても、要求の整合性に影響はありません。 要求は、レート制限を受けた場合 (429 エラー)、サーバー側で再試行されます。
+
+### <a name="does-server-side-retry-affect-any-type-of-error-that-my-client-might-receive"></a>クライアントに返される可能性のある種類のエラーは、サーバー側の再試行の影響を受けますか。
+
+いいえ。サーバー側の再試行の影響を受けるのは、レート制限エラー (429) のみであり、これらはサーバー側で再試行されます。 この機能を使用すると、クライアント アプリケーション内でレート制限エラーを処理しなくてもよくなります。 [他のエラー](mongodb-troubleshoot.md)はすべて、クライアントに返されます。
 
 ## <a name="next-steps"></a>次の手順
 

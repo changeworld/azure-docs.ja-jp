@@ -5,16 +5,17 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: d849c3d611cefab7db20197d3c43dd9faefe9b47
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 28bb55b24cdc758906ab9aff5746e4c5d4c7bfc3
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097896"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059708"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB コア (SQL) API リソースを管理する
+
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 この記事では、ご利用の Azure Cosmos DB アカウント、データベース、およびコンテナーのデプロイと管理に役立つ Azure Resource Manager テンプレートの使用方法について説明します。
@@ -27,6 +28,7 @@ ms.locfileid: "110097896"
 > * スループットの値を変更するには、RU/秒を更新してテンプレートを再配置します。
 > * Azure Cosmos アカウントに対して場所の追加または削除を行う場合、他のプロパティを同時に変更することはできません。 これらの操作は個別に行う必要があります。
 > * Azure Cosmos DB リソースの名前を変更することはできません。これは、Azure Resource Manager とリソース URI が連携する方法に違反するためです。
+> * データベース単位でスループットをプロビジョニングし、すべてのコンテナー間で共有するには、データベースのオプションのプロパティにスループットの値を設定します。
 
 以下の Azure Cosmos DB リソースを作成するには、次のサンプル テンプレートを新しい json ファイルにコピーします。 必要に応じて、異なる名前と値を持つ同じリソースの複数のインスタンスをデプロイするときに使用するパラメーター json ファイルを作成することもできます。 Azure Resource Manager テンプレートをデプロイするには、[Azure portal](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、および [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md) を含むさまざまな方法があります。
 

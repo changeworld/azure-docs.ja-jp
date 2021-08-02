@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 4ece05601efb515b3eab0f884aeff3d8add1bed0
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7371bc023cc13278c0d1382ac1ac60ee42a39f0b
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128903"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809142"
 ---
-# <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio でのソース管理
+# <a name="source-control-in-synapse-studio"></a>Synapse Studio でのソース管理
 
-既定では、Azure Synapse Studio は Synapse サービスに対して直接作成を行います。 Synapse Studio では、ソース管理に Git を使用したコラボレーションが必要である場合、ワークスペースを Git リポジトリ、Azure DevOps、または GitHub に関連付けることができます。 
+既定では、Synapse Studio は Synapse サービスに対して直接作成を行います。 Synapse Studio では、ソース管理に Git を使用したコラボレーションが必要である場合、ワークスペースを Git リポジトリ、Azure DevOps、または GitHub に関連付けることができます。 
 
 この記事では、Git リポジトリが有効になっている Synapse ワークスペースを構成し、それで作業する方法について説明します。 また、いくつかのベスト プラクティスとトラブルシューティング ガイドも提供します。
 
 > [!NOTE]
-> Azure Synapse Studio Git 統合は、Azure Government クラウドでは利用できません。
+> Synapse Studio Git 統合は、Azure Government クラウドでは利用できません。
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>Synapse Studio で Git リポジトリを構成する 
 
@@ -176,7 +176,7 @@ Synapse Studio に関連付けられた各 Git リポジトリには、コラボ
 }
 ```
 
-Azure Synapse Studio では、一度に 1 つの発行ブランチのみ使用できます。 新しい発行ブランチを指定しても、以前の発行ブランチは削除されません｡ 以前の発行ブランチを削除する場合は、それを手動で削除します。
+Synapse Studio では、一度に 1 つの発行ブランチのみ使用できます。 新しい発行ブランチを指定しても、以前の発行ブランチは削除されません｡ 以前の発行ブランチを削除する場合は、それを手動で削除します。
 
 
 ### <a name="publish-code-changes"></a>コード変更の発行

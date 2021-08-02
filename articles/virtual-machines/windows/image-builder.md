@@ -1,5 +1,5 @@
 ---
-title: Azure Image Builder で Windows VM を作成する (プレビュー)
+title: Azure Image Builder で Windows VM を作成する
 description: Azure Image Builder で Windows VM を作成します。
 author: kof-f
 ms.author: kofiforson
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: cd941868cd03a456ba78b57bcfeae5f8adfb59f4
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 6eaa59521a864b3d93d4c79706ca8ec7ff100d70
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107948205"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030973"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>プレビュー:Azure Image Builder で Windows VM を作成する
+# <a name="create-a-windows-vm-with-azure-image-builder"></a>Azure Image Builder で Windows VM を作成する
 
 この記事では、Azure VM Image Builder を使用して、カスタマイズされた Windows イメージを作成する方法について説明します。 この記事の例では、イメージのカスタマイズに[カスタマイザー](../linux/image-builder-json.md#properties-customize)を使用します。
 - PowerShell (ScriptUri) - [PowerShell スクリプト](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)をダウンロードし、実行します。
@@ -33,24 +33,14 @@ ms.locfileid: "107948205"
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json) です。 
 
 
-> [!IMPORTANT]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+> [!NOTE]
+> Windows ユーザーの場合、以下の Azure CLI の例は、Bash を使用して [Azure Cloud Shell](https://shell.azure.com) で実行できます。
 
 
 ## <a name="register-the-features"></a>機能の登録
 
-プレビュー中に Azure Image Builder を使用するには、新しい機能を登録する必要があります。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-機能の登録の状態を確認します。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
-```
+Azure Image Builder を使用するには、機能を登録する必要があります。
 
 登録を確認します。
 

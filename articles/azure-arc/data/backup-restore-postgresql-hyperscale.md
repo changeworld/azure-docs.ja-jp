@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 8b3304c673e8606667246a7d0df9ad8f3be11d9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad0fbacdfe8b6205dd32ecd75e5291b504adcac
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686701"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407779"
 ---
 # <a name="back-up-and-restore-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのバックアップと復元
 
@@ -90,6 +90,9 @@ a304c6ef99694645a2a90ce339e94714  backup12072020-0822pm  9.1 MiB    Done     202
 
 ## <a name="restore-a-backup"></a>バックアップを復元する
 このセクションでは、完全復元やポイントインタイム リストアを実行する方法を示します。 完全バックアップを復元するときには、バックアップの内容全体を復元することになります。 ポイントインタイム リストアを実行するときには、指定した時点まで復元することになります。 この時点より後に実行されたトランザクションは一切復元されません。
+
+> [!CAUTION]
+> 復元できるのは、バックアップの作成時と同じ数のワーカー ノードを持つサーバー グループのみです。 バックアップの作成後にワーカー ノードの数を増やしたり減らしたりした場合は、復元する前に、ワーカー ノードの数を増やしたり減らしたり、新しいサーバー グループを作成したりして、バックアップの内容と一致させる必要があります。 ワーカー ノードの数が一致しない場合、復元は失敗します。
 
 ### <a name="restore-a-full-backup"></a>完全バックアップを復元する
 バックアップの内容全体を復元するには、次のコマンドを実行します。
@@ -215,5 +218,5 @@ azdata arc postgres backup delete --help
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- サーバー グループの[スケール アウト (ワーカー ノードの追加)](scale-out-postgresql-hyperscale-server-group.md) について確認する
+- サーバー グループの[スケール アウト (ワーカー ノードの追加)](scale-out-in-postgresql-hyperscale-server-group.md) について確認する
 - サーバー グループの[スケールアップまたはスケール ダウン (メモリ/仮想コアの増減)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) について確認する

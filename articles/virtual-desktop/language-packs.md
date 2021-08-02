@@ -1,21 +1,21 @@
 ---
-title: Windows Virtual Desktop の Windows 10 VM に言語パックをインストールする - Azure
-description: Windows Virtual Desktop で Windows 10 マルチセッション VM の言語パックをインストールする方法について説明します。
+title: Azure Virtual Desktop の Windows 10 VM に言語パックをインストールする - Azure
+description: Azure Virtual Desktop で Windows 10 マルチセッション VM の言語パックをインストールする方法について説明します。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 87a12ec80c19e34cfb1bebfe29d14b118ae1eb93
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 63565af9775779d89c44384e0bd45c8d01e4147c
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317237"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006547"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 マルチセッション イメージへの言語パックの追加
 
-Windows Virtual Desktop は、ユーザーがいつでも、どこにいてもデプロイできるサービスです。 そのため、Windows 10 Enterprise マルチセッション イメージに表示される言語をユーザーがカスタマイズできるようにすることが重要です。
+Azure Virtual Desktop は、ユーザーがいつでも、どこにいてもデプロイできるサービスです。 そのため、Windows 10 Enterprise マルチセッション イメージに表示される言語をユーザーがカスタマイズできるようにすることが重要です。
 
 ユーザーの言語ニーズに対応するには、次の 2 つの方法があります。
 
@@ -34,28 +34,30 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
      
      - 言語 ISO:
         - [Windows 10 バージョン 1903 または 1909 言語パック ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
-        - [Windows 10 バージョン 2004 または 20H2 言語パック ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10 バージョン 2004、20H2 または 21H1 言語パック ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
      - FOD ディスク 1 ISO:
         - [Windows 10 バージョン 1903 または 1909 FOD ディスク 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
-        - [Windows 10 バージョン 2004 または 20H2 FOD ディスク 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10 バージョン 2004、20H2 または 21H1 FOD ディスク 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         
      - 受信トレイ アプリ ISO:
         - [Windows 10 バージョン 1903 または 1909 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10 バージョン 2004 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
         - [Windows 10 バージョン 20H2 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
+        - [Windows 10 バージョン 21H1 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/sg/19041.928.210407-2138.vb_release_svc_prod1_amd64fre_InboxApps.iso)
      
      - Local Experience Pack (LXP) ISO ファイルを使用してイメージをローカライズする場合は、最適な言語エクスペリエンスのために適切な LXP ISO をダウンロードする必要もあります
         - Windows 10 バージョン 1903 または 1909 を使用している場合:
           - [Windows 10 バージョン 1903 または 1909 LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_1903_32_64_ARM64_MultiLng_LngPkAll_LXP_ONLY.iso)
-        - Windows 10 バージョン 2004 または 20H2 を使用している場合は、「[Windows 10 での言語の追加: 既知の問題](/windows-hardware/manufacture/desktop/language-packs-known-issue)」の情報を使用して、次の LXP ISO からご自分に適したものを見つけてください。
-          - [Windows 10 バージョン 2004 または 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
-          - [Windows 10 バージョン 2004 または 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
-          - [Windows 10 バージョン 2004 または 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
-          - [Windows 10 バージョン 2004 または 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
-          - [Windows 10 バージョン 2004 または 20H2 **1C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
-          - [Windows 10 バージョン 2004 または 20H2 **2C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
-          - [Windows 10 バージョン 2004 または 20H2 **4B** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2104B.iso)
+        - Windows 10 バージョン 2004、20H2、または 21H1 を使用している場合は、「[Windows 10 での言語の追加: 既知の問題](/windows-hardware/manufacture/desktop/language-packs-known-issue)」の情報を使用して、次の LXP ISO からご自分に適したものを見つけてください。
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **1C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **2C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **4B** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2104B.iso)
+          - [Windows 10 バージョン 2004、20H2、または 21H1 **5C** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2105C.iso)
 
 - Azure ファイル共有または Windows ファイル サーバー仮想マシン上のファイル共有
 
@@ -231,7 +233,7 @@ Sysprep を実行するには、次のようにします。
 
 2. 「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」の手順に従って、VM を停止してから、それをマネージド イメージにキャプチャします。
 
-3. これで、カスタマイズしたイメージを使用して Windows Virtual Desktop ホスト プールをデプロイできるようになりました。 ホスト プールのデプロイ方法の詳細については、「[チュートリアル: Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
+3. これで、カスタマイズしたイメージを使用して Azure Virtual Desktop ホスト プールをデプロイできるようになりました。 ホスト プールのデプロイ方法の詳細については、「[チュートリアル: Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
 
 ## <a name="enable-languages-in-windows-settings-app"></a>Windows 設定アプリで言語を有効にする
 
@@ -247,7 +249,7 @@ $LanguageList.Add("zh-cn")
 Set-WinUserLanguageList $LanguageList -force
 ```
 
-ユーザーは言語設定を変更した後、Windows Virtual Desktop セッションからサインアウトし、変更を有効にするためにもう一度サインインする必要があります。 
+ユーザーは言語設定を変更した後、変更を有効にするために、Azure Virtual Desktop セッションからサインアウトし、もう一度サインインする必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

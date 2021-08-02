@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 85a4d6390087100d8d9521f6ac20dbace3a711eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: 073095d590e61d9e7e561339c17501f0ccee844d
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955943"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018659"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の JavaScript コード サンプル
 
@@ -56,10 +56,11 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 
 | サンプル | 記事 |
 |---------|---------|
-| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | 次の記事のソース コード。"[クイック スタート:JavaScript で検索インデックスを作成する](search-get-started-javascript.md)" のような記事。 この記事では、サンプル データを使用して検索インデックスを作成、読み込み、クエリするための基本的なワークフローについて説明します。 |
+| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | 次の記事のソース コード。"[クイック スタート:JavaScript で検索インデックスを作成する](search-get-started-javascript.md)" のような記事。 サンプル データを使用して検索インデックスの作成、読み込み、クエリを行うための基本的なワークフローについて説明します。 |
+| [search-website](https://github.com/azure-samples/azure-search-javascript-samples/tree/master/search-website) | 「[チュートリアル: Web アプリに検索を追加する](tutorial-javascript-overview.md)」のソース コード。 アプリをホストして検索要求を処理するためのリッチ クライアントとコンポーネントを含む、エンドツーエンド検索アプリを示します。|
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?languages=javascript&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> GitHub で製品、サービス、言語でフィルター処理された Microsoft コード サンプルを検索するために、[サンプル ブラウザー](/samples/browse/?languages=javascript&products=azure-cognitive-search)を試してください。
 
 ## <a name="other-samples"></a>その他のサンプル
 

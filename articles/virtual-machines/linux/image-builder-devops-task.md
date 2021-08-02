@@ -1,5 +1,5 @@
 ---
-title: Azure Image Builder サービスの DevOps タスク
+title: 'プレビュー: Azure Image Builder サービスの DevOps タスク'
 description: アプリケーションと OS をインストールして構成できるように、ビルド成果物を VM イメージに挿入する Azure DevOps タスク。
 author: danielsollondon
 ms.author: danis
@@ -8,14 +8,15 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: d02a5c6bc194009d459647721dab16be0dcade84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7055aa967058e1592f757c2dabf7890b1da76632
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670474"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441800"
 ---
-# <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder サービスの DevOps タスク
+# <a name="azure-image-builder-service-devops-task-preview"></a>Azure Image Builder サービスの DevOps タスク (プレビュー)
 
 この記事では、アプリケーションと OS をインストールして構成できるように、Azure DevOps タスクを使用してビルド成果物を VM イメージに挿入する方法について説明します。
 
@@ -28,6 +29,9 @@ Azure VM Image Builder (AIB) には、次の 2 つの DevOps タスクがあり�
 * ["不安定な" AIB タスク](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)。最新の更新プログラムと機能を取り入れ、お客様にそれらのテストを許可してから、"安定した" タスクに昇格させることができます。 問題が報告されず、テレメトリにも問題がない場合は、約 1 週間後にタスク コードを "安定" に昇格させます。 
 
 ## <a name="prerequisites"></a>前提条件
+
+> [!NOTE]
+> AIB タスクは、現在、Windows の再起動をサポートしていません。管理者特権でのコマンドを管理者として実行しています。つまり、Windows Virtual Desktop のシナリオや、上記を必要とする Windows のカスタマイズには適していません。 Image Builder で DevOps を使用する場合は、テンプレートを Azure Resource Manager タスクに入れ子にする必要があります。そのためには、AZ CLI または PowerShell タスクを使用します。
 
 * [Visual Studio Marketplace から安定した DevOps タスク](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)をインストールします。
 * VSTS DevOps アカウントを取得し、ビルド パイプラインを作成しておく必要があります。

@@ -7,31 +7,31 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: b1497144364a519a9e8abb6029a2e7c38f0c07f5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 75b2dd041e4c693258c39fbf0f32f76c1085a966
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776566"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949880"
 ---
 # <a name="support-and-troubleshooting-for-azure-vms"></a>Azure VM のサポートとトラブルシューティング
 
 ここでは、Azure Virtual Machines ソリューションを開発する際にヘルプを求める方法を示します。
 
-## <a name="self-help-troubleshooting-content"></a>セルフ ヘルプのトラブルシューティングに関するコンテンツ
+## <a name="self-help-troubleshooting"></a>セルフ ヘルプのトラブルシューティング
 <div class='icon is-large'>
-    <img alt='Self help content' src='https://docs.microsoft.com/media//common/i_article.svg'>
+    <img alt='Self help content' src='./media/logos/doc-logo.png'>
 </div>
 
 Azure Virtual Machines の使用時に発生する可能性のある問題を特定、診断、修正する方法に関する記事は多数あります。 これらの記事を使用して、デプロイのエラー、予期しない再起動、接続の問題などのトラブルシューティングを行います。 
 
-セルフ ヘルプのトラブルシューティングに関するコンテンツの完全な一覧については、[Azure Virtual Machine のトラブルシューティングに関するドキュメント](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines)を参照してください
+セルフ ヘルプのトラブルシューティングに関するコンテンツの完全な一覧については、[Azure Virtual Machine のトラブルシューティングに関するドキュメント](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)を参照してください
 
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Microsoft Q&A に質問を投稿する
 
 <div class='icon is-large'>
-    <img alt='Microsoft Q&A' src='./media/microsoft-logo.png'>
+    <img alt='Microsoft Q&A' src='./media/logos/microsoft-logo.png'>
 </div>   
 
 製品に関する技術的な質問については、Azure に関するコミュニティ サポートの場である [Microsoft Q&A](/answers/products/azure) をぜひご利用ください。Microsoft のエンジニアや Azure Most Valuable Professional (MVP)、エキスパート コミュニティからすばやく、信頼できる回答が得られます。 
@@ -42,20 +42,20 @@ Azure Virtual Machines の使用時に発生する可能性のある問題を特
 | 領域 | タグ |
 |-------|----------------------|
 | [Azure Virtual Machines](./linux/overview.md) | [azure-virtual-machines](/answers/topics/azure-virtual-machines.html) | 
-| [Azure SQL Virtual Machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/) | [azure-sql-virtual-machines](/answers/topics/azure-sql-virtual-machines.html)| 
-| [Azure 仮想マシンのバックアップ](backup-recovery.md) | [azure-virtual-machine-backup](/answers/topics/azure-virtual-machine-backup.html) | 
-| [Azure 仮想マシン拡張機能](./extensions/overview.md) | [azure-virtual-machine-extension](/answers/topics/azure-virtual-machine-extension.html)| 
-| [Azure 仮想マシン イメージ](shared-image-galleries.md) | [azure-virtual-machine-images](/answers/topics/azure-virtual-machine-images.html) | 
-| [Azure 仮想マシンの移行](classic-vm-deprecation.md) | [azure-virtual-machine-migration](/answers/topics/azure-virtual-machine-migration.html) | 
-| [Azure 仮想マシンの監視](../azure-monitor/vm/monitor-vm-azure.md) | [azure-virtual-machine-monitoring](/answers/topics/azure-virtual-machine-monitoring.html) |
-| [Azure 仮想マシンのネットワーク](network-overview.md) | [azure-virtual-machine-networking](/answers/topics/azure-virtual-machine-networking.html) | 
-| [Azure 仮想マシンのストレージ](managed-disks-overview.md) | [azure-virtual-machine-storage](/answers/topics/azure-virtual-machine-storage.html) | 
-| [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) | [azure-virtual-machine-scale-set](/answers/topics/azure-virtual-machine-scale-set.html) | 
+| [Azure SQL Virtual Machines](../azure-sql/virtual-machines/index.yml) | [azure-sql-virtual-machines](/answers/topics/azure-sql-virtual-machines.html)| 
+| [Azure 仮想マシンのバックアップ](backup-recovery.md) | [azure-virtual-machine-backup](/answers/questions/36892/azure-virtual-machine-backups.html) | 
+| [Azure 仮想マシン拡張機能](./extensions/overview.md) | [azure-virtual-machine-extension](/answers/topics/azure-virtual-machines-extension.html)| 
+| [Azure 仮想マシン イメージ](shared-image-galleries.md) | [azure-virtual-machine-images](/answers/topics/azure-virtual-machines-images.html) | 
+| [Azure 仮想マシンの移行](classic-vm-deprecation.md) | [azure-virtual-machine-migration](/answers/topics/azure-virtual-machines-migration.html) | 
+| [Azure 仮想マシンの監視](../azure-monitor/vm/monitor-vm-azure.md) | [azure-virtual-machine-monitoring](/answers/topics/azure-virtual-machines-monitoring.html) |
+| [Azure 仮想マシンのネットワーク](network-overview.md) | [azure-virtual-machine-networking](/answers/topics/azure-virtual-machines-networking.html) | 
+| [Azure 仮想マシンのストレージ](managed-disks-overview.md) | [azure-virtual-machine-storage](/answers/topics/azure-virtual-machines-storage.html) | 
+| [Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) | [azure-virtual-machine-scale-set](/answers/topics/azure-virtual-machines-scale-set.html) | 
 
 ## <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
 <div class='icon is-large'>
-    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
+    <img alt='Azure support' src='./media/logos/azure-logo.png'>
 </div>
 
 クラウドへの移行を始めたばかりの開発者の方も、ビジネスクリティカルで戦略的なアプリケーションの展開を行う大企業のお客様も、さまざな [Azure サポート オプションをご確認し、最適なプランをお選びください](https://azure.microsoft.com/support/plans)。 Azure ユーザーは、Azure portal でサポート要求を作成し、管理できます。
@@ -68,7 +68,7 @@ Azure Virtual Machines の使用時に発生する可能性のある問題を特
 ## <a name="create-a-github-issue"></a>GitHub の issue を作成する
 
 <div class='icon is-large'>
-    <img alt='GitHub-image' src='../active-directory/develop/media/common/github.svg'>
+    <img alt='GitHub-image' src='./media/logos/github-logo.png'>
 </div>
 
 Azure Virtual Machines の開発と管理に使用される言語とツールに関するヘルプが必要な場合は、該当する GitHub のリポジトリで問題を開いてください。
@@ -91,7 +91,7 @@ Azure Virtual Machines の開発と管理に使用される言語とツールに
 ## <a name="submit-feature-requests-on-azure-feedback"></a>Azure フィードバックで機能のリクエストを送信する
 
 <div class='icon is-large'>
-    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
+    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
 </div>
 
 新機能を要求するには、Azure フィードバックに投稿します。 Azure Virtual Machines を改善するアイデアをぜひ共有してください。
@@ -103,7 +103,7 @@ Azure Virtual Machines の開発と管理に使用される言語とツールに
 ## <a name="stay-informed-of-updates-and-new-releases"></a>更新プログラムと新しいリリースに関する最新情報を入手する
 
 <div class='icon is-large'>
-    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+    <img alt='Stay informed' src='./media/logos/updates-logo.png'>
 </div>
 
 重要な製品の更新プログラム、ロードマップ、および発表については、「[Azure の更新情報](https://azure.microsoft.com/updates/?category=compute)」で確認できます。
@@ -113,4 +113,4 @@ Azure Virtual Machines に関するニュースと情報は、[Azure ブログ](
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/)の詳細情報
+[Azure 仮想マシン](./index.yml)の詳細情報

@@ -7,13 +7,13 @@ ms.subservice: extensions
 author: mgoedtel
 ms.author: magoedte
 ms.collection: linux
-ms.date: 03/29/2019
-ms.openlocfilehash: d28f0a34f47942bba8776a0acd0bfe3aaf25df12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.openlocfilehash: 97f557ec45530de3f42dd61ee1cded57fd7c33a0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566306"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793748"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux 用 Azure Monitor Dependency 仮想マシン拡張機能
 
@@ -134,6 +134,29 @@ az vm extension set \
     --publisher Microsoft.Azure.Monitoring.DependencyAgent \
     --version 9.5 
 ```
+
+## <a name="automatic-upgrade-preview"></a>自動アップグレード (プレビュー)
+マイナー バージョンの依存関係拡張機能を自動的にアップグレードする新しい機能が、パブリック プレビューで利用できるようになりました。 この機能を有効にするには、次の構成変更を実行する必要があります。
+
+-   「[プレビュー アクセスの有効化](../automatic-extension-upgrade.md#enabling-preview-access)」に示されているいずれかの方法を使用して、サブスクリプションの機能を有効にします。
+- `enableAutomaticUpgrade` 属性をテンプレートに追加します。
+
+Dependency Agent 拡張機能バージョン管理スキームは、次の形式に従います。
+
+```
+<MM.mm.bb.rr> where M = Major version number, m = minor version number, b = bug number, r = revision number.
+```
+
+`enableAutomaticUpgrade` と `autoUpgradeMinorVersion` の属性の組み合わせによって、サブスクリプション内の仮想マシンのアップグレードの処理方法が決定されます。
+
+| enableAutomaticUpgrade | autoUpgradeMinorVersion | 結果 |
+|:---|:---|:---|
+| true | false | 新しいバージョンの bb.rr が存在する場合は、依存関係エージェントをアップグレードします。 たとえば、9.6.0.1355 を実行しており、新しいバージョンが 9.6.2.1366 になる場合、有効なサブスクリプションの仮想マシンは 9.6.2.1366 にアップグレードされます。 |
+| true | true |  これにより、新しいバージョンの mm.bb.rr または bb.rr が存在する場合、依存関係エージェントがアップグレードされます。 たとえば、9.6.0.1355 を実行しており、新しいバージョンが 9.7.1.1416 になる場合、有効なサブスクリプションの仮想マシンは 9.7.1.1416 にアップグレードされます。 また、9.6.0.1355 を実行しており、新しいバージョンが 9.6.2.1366 になる場合、有効なサブスクリプションの仮想マシンは 9.6.2.1366 にアップグレードされます。 |
+| false | true または false | 自動アップグレードが無効です。
+
+> [!IMPORTANT]
+> テンプレートに `enableAutomaticUpgrade` を追加する場合は、API バージョン 2019-12-01 以降を使用してください。
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 

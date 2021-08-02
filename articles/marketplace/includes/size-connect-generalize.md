@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: e119d40cd0b8f482d33c3c86c644cf6a0846390a
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7d94bd0a4a9fb50cb211fd227c3022a46beef502
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727135"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527545"
 ---
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 
@@ -55,17 +55,39 @@ VM の準備ができたら、Azure Shared Image Gallery でキャプチャで�
 8. **[確認と作成]** を選択して、選択内容を確認します。
 9. 検証に合格したら、 **[作成]** を選択します。
 
-アクセス権を付与するには、次のようにします。
+## <a name="set-the-right-permissions"></a>適切なアクセス許可を選択する
 
-1. Shared Image Gallery にアクセスします。
+お使いのパートナー センター アカウントが、Shared Image Gallery をホストしているサブスクリプションの所有者であれば、それ以外のアクセス許可は必要ありません。
+
+サブスクリプションへの読み取りアクセス権のみを持っている場合は、次の 2 つのオプションのいずれかを使用します。
+
+### <a name="option-one--ask-the-owner-to-grant-owner-permission"></a>オプション 1 – 所有者に所有者のアクセス許可を付与するよう依頼する
+
+所有者が所有者のアクセス許可を付与するための手順:
+
+1. Azure Shared Image Gallery (SIG) にアクセスします。
 2. 左側のパネルで **[アクセス制御 (IAM)]** を選択します。
-3. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択します。
-4. **[ロール]** または **[所有者]** を選択します。
-5. **[アクセス権の割り当て先]** で、 **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** を選択します。
-6. イメージを公開するユーザーの Azure メールを選択します。
-7. **[保存]** を選択します。
+3. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択します。<br>
+    :::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="[ロールの割り当ての追加] ウィンドウが表示されます。":::
+1. **[ロール]** で、 **[所有者]** を選択します。
+1. **[アクセスの割り当て先]** で、 **[User, group, or service principle]\(ユーザー、グループ、またはサービス プリンシパル\)** を選択します。
+1. **[選択]** の場合、イメージを公開するユーザーの Azure メールアドレスを入力します。
+1. **[保存]** を選択します。
 
-:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="ロール割り当ての追加ウィンドウを表示します。":::
+### <a name="option-two--run-a-command"></a>オプション 2 – コマンドを実行する
+
+所有者にこれらのコマンドのいずれかを実行するよう依頼します (どちらの場合も、Shared Image Gallery を作成したサブスクリプションの SusbscriptionId を使用します)。
+
+```azurecli
+az login
+az provider register --namespace Microsoft.PartnerCenterIngestion --subscription {subscriptionId}
+```
+ 
+```powershell
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId {subscriptionId}
+Register-AzResourceProvider -ProviderNamespace Microsoft.PartnerCenterIngestion
+```
 
 > [!NOTE]
 > パートナー センターで SIG イメージを公開できるようになったため、SAS URI を生成する必要はありません。 ただし、それでも SAS URI の生成手順を参照する必要がある場合は、「[VM イメージの SAS URI を生成する方法](../azure-vm-get-sas-uri.md)」を参照してください。

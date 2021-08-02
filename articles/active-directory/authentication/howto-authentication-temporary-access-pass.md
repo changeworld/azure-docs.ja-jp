@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/26/2021
+ms.date: 06/11/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f0473a266cffb083a82ffc9afb333da7eecf59c
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 471cf0ae11910b74f6aabd8fd858ed6f6dd2f31c
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015701"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029767"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>パスワードレスの認証方法を登録するように Azure AD で一時アクセス パスを構成する (プレビュー)
 
@@ -141,8 +141,8 @@ Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -
 
 - ユーザーは一時アクセス パスを 1 つだけ持つことができます。 パスコードは一時アクセス パスの開始時から終了時にかけて使用できます。
 - ユーザーが新しい一時アクセス パスを必要とする場合:
-  - 既存の一時アクセス パスが有効な場合、管理者は既存の一時アクセス パスを削除し、ユーザーの新しいパスを作成する必要があります。 有効な一時アクセス パスを削除すると、そのユーザーのセッションが取り消されます。 
-  - 既存の一時アクセス パスの有効期限が切れている場合、新しい一時アクセス パスにより既存の一時アクセス パスがオーバーライドされ、ユーザーのセッションは取り消されません。
+  - 既存の一時アクセス パスが有効な場合、管理者は既存の一時アクセス パスを削除し、ユーザーの新しいパスを作成する必要があります。 
+  - 既存の一時アクセス パスの有効期限が切れている場合、新しい一時アクセス パスにより既存の一時アクセス パスがオーバーライドされます。
 
 オンボードと復旧の NIST 標準の詳細については、「[Nist Special Publication 800-63](https://pages.nist.gov/800-63-3/sp800-63a.html#sec4)」を参照してください。
 
@@ -154,7 +154,7 @@ Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -
 - ゲスト ユーザーは一時アクセス パスを使用してサインインすることはできません。
 - 一時アクセス パスはパブリック プレビューの段階にあり、現在のところ、Azure for US Government ではご利用いただけません。
 - セルフサービス パスワード リセット (SSPR) 登録ポリシー *または* [Identity Protection の多要素認証登録ポリシー](../identity-protection/howto-identity-protection-configure-mfa-policy.md)の対象ユーザーは、一時アクセス パスを使用してサインインした後、認証方法を登録する必要があります。 これらのポリシーの対象ユーザーは、[統合された登録の中断モード](concept-registration-mfa-sspr-combined.md#combined-registration-modes)にリダイレクトされます。 現在、このエクスペリエンスでは、FIDO2 と電話によるサインインの登録はサポートされていません。 
-- 一時アクセス パスは、ネットワーク ポリシー サーバー (NPS) 拡張機能と Active Directory フェデレーション サービス (AD FS) アダプター、または Windows の設定/ Out of Box Experience (OOBE) の際には使用できません。 
+- 一時アクセス パスは、ネットワーク ポリシー サーバー (NPS) 拡張機能と Active Directory フェデレーション サービス (AD FS) アダプターでは、または Windows の設定および Out-of-Box-Experience (OOBE) とオートパイロットの間は、使用できません。 
 - テナントでシームレス SSO が有効になっている場合は、ユーザーにパスワードの入力が求められます。 ユーザーが一時アクセス パスを使用してサインインできるように、 **[代わりに一時アクセス パスを使用する]** リンクが使用可能になります。
 
   ![[代わりに一時アクセス パスを使用する] のスクリーンショット](./media/how-to-authentication-temporary-access-pass/alternative.png)

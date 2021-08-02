@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: e4698a1c1576d15042dd050e0123b83dba39a3e3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 98f09b35bb51f4f93c7bf326683a333e79845de2
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064753"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810762"
 ---
 # <a name="azure-front-door-standardpremium-preview-rule-set-actions"></a>Azure Front Door Standard/Premium (プレビュー) のルール セットのアクション
 
@@ -326,6 +326,54 @@ Azure Front Door のルール セットでは、次のアクションを使用�
     destination: '/redirection'
     preserveUnmatchedPath: false
     '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRewriteActionParameters'
+  }
+}
+```
+
+---
+
+## <a name="origin-group-override"></a><a name="OriginGroupOverride"></a> 配信元グループのオーバーライド
+
+**配信元グループのオーバーライド** アクションを使用して、要求のルーティング先となる配信元グループを変更します。
+
+### <a name="properties"></a>プロパティ
+
+| プロパティ | サポート状況の値 |
+|----------|------------------|
+| 配信元グループ | 要求のルーティング先となる配信元グループ。 これは、Front Door エンドポイント ルートに指定された構成よりも優先されます。 |
+
+### <a name="example"></a>例
+
+この例では、Front Door エンドポイント ルートの構成にかかわらず、マッチしたすべての要求を `SecondOriginGroup` という配信元グループにルーティングします。
+
+# <a name="portal"></a>[ポータル](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-actions/origin-group-override.png" alt-text="配信元グループのオーバーライド アクションを示すポータルのスクリーンショット。":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "OriginGroupOverride",
+  "parameters": {
+    "originGroup": {
+      "id": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Cdn/profiles/<profile-name>/originGroups/SecondOriginGroup"
+    },
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleOriginGroupOverrideActionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'OriginGroupOverride'
+  parameters: {
+    originGroup: {
+      id: '/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Cdn/profiles/<profile-name>/originGroups/SecondOriginGroup'
+    }
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleOriginGroupOverrideActionParameters'
   }
 }
 ```

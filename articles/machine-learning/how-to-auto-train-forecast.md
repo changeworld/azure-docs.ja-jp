@@ -1,7 +1,7 @@
 ---
-title: 時系列予測モデルを自動トレーニングする
+title: 時系列予測用に AutoML を設定する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用して、自動化された機械学習で時系列予測回帰モデルをトレーニングする方法について説明します。
+description: Azure Machine Learning Python SDK で時系列予測モデルをトレーニングするために、Azure Machine Learning 自動 ML を設定します。
 services: machine-learning
 author: nibaccam
 ms.author: nibaccam
@@ -9,18 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl
-ms.date: 08/20/2020
-ms.openlocfilehash: ae5aacf48fdc038e485226476509e14c551bfbfa
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 06/11/2021
+ms.openlocfilehash: d2c4f759f6b2f7ef769148c99dfcbfb738b19f5e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785207"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030866"
 ---
-# <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
+# <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Python で時系列予測モデルをトレーニングするために、AutoML を設定する
 
-
-この記事では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) の自動機械学習 (AutoML) を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+この記事では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) で、Azure Machine Learning 自動 ML を使用して時系列予測モデルをトレーニングするために、AutoML を設定する方法を説明します。
 
 これを行うには、次の手順を実行します。 
 
@@ -29,7 +28,7 @@ ms.locfileid: "109785207"
 > * [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトで特定の時系列パラメーターを構成します。
 > * 時系列データで予測を実行します。
 
-コードの作成経験が少ない場合は、「[チュートリアル:自動機械学習を使用して自転車シェアリング需要を予測する](tutorial-automated-ml-forecast.md)」で [Azure Machine Learning Studio](https://ml.azure.com/) の自動機械学習を使用して、時系列の予測を行う方法について参照してください。
+[Azure Machine Learning スタジオ](https://ml.azure.com/)の自動 ML を使用して、ロー コードで時系列予測を行う例は、「[チュートリアル:自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)」をご覧ください。
 
 従来の時系列メソッドとは異なり、自動 ML では過去の時系列値が "ピボット" され、他の予測子と共にリグレッサーの追加のディメンションになります。 このアプローチでは、トレーニング中に複数のコンテキスト変数とそれらの相互関係を組み込みます。 複数の要因が予測に影響を与える可能性があるため、この方法は実際の予測シナリオに適しています。 たとえば、売上の予測では、履歴による傾向とのインタラクション、為替レート、および価格のすべてが、売上の結果に貢献します。 
 
@@ -43,7 +42,7 @@ ms.locfileid: "109785207"
 
 ## <a name="preparing-data"></a>データの準備
 
-AutoML 内での予測回帰タスクの種類と回帰タスクの種類の最も重要な違いは、有効な時系列を表す機能がデータに含まれるという点です。 通常の時系列には、明確に定義され一貫した頻度があり、連続した期間のすべてのサンプル ポイントで値があります。 
+自動 ML の予測回帰タスクと回帰タスクの最大の違いは、有効な時系列を表す特徴量がデータに含まれているかどうかです。 通常の時系列には、明確に定義され一貫した頻度があり、連続した期間のすべてのサンプル ポイントで値があります。 
 
 ファイル `sample.csv` の次のスナップショットを見てください。
 このデータ セットは、A と B の 2 つの異なる店舗を持つ会社の日別の売上データです。 
@@ -418,4 +417,4 @@ day_datetime,store,week_of_year
 * [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 * [解釈可能性: 自動機械学習のモデルの説明 (プレビュー)](how-to-machine-learning-interpretability-automl.md) について学習する。 
 * [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。
-* 自動機械学習を使用して実験を作成するためのエンド ツー エンドの例については、[チュートリアル](tutorial-auto-train-models.md)に従ってください。
+* 自動機械学習で実験を作成するエンドツーエンドの例は、[回帰モデルのトレーニングのチュートリアル](tutorial-auto-train-models.md)に関する記事をご覧ください。

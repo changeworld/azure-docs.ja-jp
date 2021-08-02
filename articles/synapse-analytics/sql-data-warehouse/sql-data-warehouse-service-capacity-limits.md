@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9bdc4b2fed40817c7173468180e34de1ed0506fb
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: d915577cd6729ead60a00250e186fb2df444b3b1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962681"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029173"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールの容量制限
 
@@ -28,7 +28,7 @@ Azure Synapse Analytics の専用 SQL プールのさまざまなコンポーネ
 |:--- |:--- |:--- |
 | [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの専用 SQL プールに対する最大 DWU  | Gen1:DW6000<br></br>Gen2:DW30000c |
 | [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、[サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)し、要求の種類として *[クォータ]* を選択します。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9 を掛けます。 次に例を示します。<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW7500c x 9 = 67,500 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
-| データベース接続 |同時に開かれる最大セッション数 |1024<br/><br/>同時に開かれるセッションの数は、選択した DWU によって異なります。 DWU600c 以降では、最大で 1,024 の開かれているセッションがサポートされます。 DWU500c 以前では、同時に開かれるセッションの上限が 512 です。 同時に実行できるクエリ数については、制限があるので注意してください。 コンカレンシーの制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
+| データベース接続 |同時に開かれる最大セッション数 |1024<br/><br/>同時に開かれるセッションの数は、選択した DWU によって異なります。 DWU1000c 以降では、最大で 1,024 の開かれているセッションがサポートされます。 DWU500c 以前では、同時に開かれるセッションの上限が 512 です。 同時に実行できるクエリ数については、制限があるので注意してください。 コンカレンシーの制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |
 | [ワークロードの管理](resource-classes-for-workload-management.md) |同時クエリの最大数 |128<br/><br/>  最大 128 個の同時実行クエリが実行され、残りのクエリはキューに入れられます。<br/><br/>同時実行クエリの数は、ユーザーがより高いリソース クラスに割り当てられるか、または [Data Warehouse ユニット](memory-concurrency-limits.md)の設定が下げられたときに減少する場合があります。 一部のクエリ (DMV クエリなど) は、常に実行を許可され、同時実行クエリの制限に影響しません。 コンカレント クエリの情報については、[コンカレンシーの最大値](memory-concurrency-limits.md)に関する記事を参照してください。 |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |DW100c あたり 399 GB です。 DWU1000c では、tempdb のサイズは 3.99 TB になります。 |

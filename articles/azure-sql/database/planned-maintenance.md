@@ -3,20 +3,20 @@ title: Azure メンテナンス イベントの計画
 description: Azure SQL データベースおよび Azure SQL Managed Instance で計画メンテナンス イベントを準備する方法について説明します。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 3/23/2021
-ms.openlocfilehash: 76b094cbaf75c093afef308d85f549786928287d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7de0db8245908e8342abbbe6a8f7cc4f2359e7f5
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128399"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017867"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Azure SQL Database および Azure SQL Managed Instance 内のデータベース
 
 Azure SQL Database サービスと Azure SQL Managed Instance サービスのセキュリティ、コンプライアンス、安定、パフォーマンスを維持するため、サービス コンポーネントによる更新がほぼ連続して行われています。 最新で堅牢なサービス アーキテクチャと、[ホット パッチ](https://aka.ms/azuresqlhotpatching)のような革新的なテクノロジにより、ほとんどの更新は完全に透過的であり、サービスの可用性に影響を与えることはありません。 ただし、いくつかの更新の種類では、サービスが短時間中断し、特別な処理が必要になる場合があります。 
 
-データベースごとに、Azure SQL Database および Azure SQL Managed Instance で、1 つのレプリカがプライマリであるデータベース レプリカのクォーラムが維持されます。 常にプライマリ レプリカがオンラインでサービスを提供する必要があり、1 つ以上のセカンダリ レプリカが正常な状態である必要があります。 計画メンテナンス中は、データベース クォーラムのメンバーは一度に 1 つずつオフラインになります。これは、1 つの対応するプライマリ レプリカと 1 つ以上のセカンダリ レプリカをオンラインの状態に保ち、クライアントのダウンタイムが発生しないようにするためです。 プライマリ レプリカをオフラインにする必要がある場合、再構成プロセスが発生し、1 つのセカンダリ レプリカが新しいプライマリになります。  
+計画メンテナンス中は、データベース クォーラムのメンバーは 1 つずつオフラインになります。これは、対応するプライマリ レプリカを 1 つ確保するためです。 Business Critical データベースおよび Premium データベースについては、クライアントのダウンタイムが発生しないように、少なくとも 1 つのセカンダリ レプリカもオンラインになります。 プライマリ レプリカをオフラインにする必要がある場合は、再構成プロセスが発生します。 Business Critical データベースおよび Premium データベースについては、セカンダリ レプリカの 1 つが新しいプライマリ レプリカになります。 General Purpose データベース、Standard データベース、Basic データベースについては、十分な空き容量がある別のステートレス コンピューティング ノードにプライマリ レプリカが移動します。
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>計画メンテナンス イベント時に予期されること
 

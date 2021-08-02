@@ -6,20 +6,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 05/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1cfb89358cf733cb17fe4a496f1799dc0952fc4f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: f5b67a1843dd363c727122d77c4c9d574e90a4ab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286440"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760483"
 ---
 # <a name="create-an-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Active Directory (AD) テナントを作成する
 
-VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 一連のユーザーがそれぞれ異なる VPN ゲートウェイに接続できるようにしたい場合、複数のアプリを AD に登録し、それらを異なる VPN ゲートウェイにリンクさせる方法が考えられます。 この記事では、P2S OpenVPN 認証用の Azure AD テナントを設定し、ユーザーとグループにそれぞれ異なるアクセスを許可するように、複数のアプリを作成して Azure AD に登録する方法について説明します。
+ポイント対サイトを使用して VNet に接続する場合は、使用するプロトコルを選択できます。 使用するプロトコルによって、使用できる認証オプションが決まります。 OpenVPN プロトコルを使用する場合、Azure Active Directory 認証を使用できます。 一連のユーザーがそれぞれ異なる VPN ゲートウェイに接続できるようにしたい場合、複数のアプリを AD に登録し、それらを異なる VPN ゲートウェイにリンクさせる方法が考えられます。 この記事では、P2S OpenVPN 用の Azure AD テナントを設定し、ユーザーとグループにそれぞれ異なるアクセスを許可するように、複数のアプリを作成して Azure AD に登録する方法について説明します。 ポイント対サイト プロトコルと認証の詳細については、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
 
-[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
+[!INCLUDE [OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
 

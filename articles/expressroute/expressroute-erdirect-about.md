@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: duau
-ms.openlocfilehash: 56d6a76991c4386be45b2c18f4edb3d363e58fa5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd890c8e8d72609d109fa466e260dd7315fd553b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027144"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441224"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
@@ -69,7 +69,7 @@ Microsoft Azure ExpressRoute を使用すると、接続プロバイダーによ
 
 ## <a name="circuit-skus"></a>回線 SKU
 
-ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、100 Gbps ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps の回線 SKU がサポートされるようになりました。 物理ポート ペアは、**100 Gbps または 10 Gbps** のみであり、複数の仮想回線を備えることができます。 回線のサイズ:
+ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、100 Gbps ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。 物理ポート ペアは、**100 Gbps または 10 Gbps** のみであり、複数の仮想回線を備えることができます。 回線のサイズ:
 
 | **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
 | --- | --- |

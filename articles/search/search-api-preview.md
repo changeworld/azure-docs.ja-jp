@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: e0bbc9fc1e6259b70e1f1d46b545300a568601d2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: ca4210465039044587e61d5df92db1385f1be052
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109800"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469837"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 
@@ -23,6 +23,8 @@ ms.locfileid: "106109800"
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
+|  [**Power Query コネクタ**](search-how-to-index-power-query-data-sources.md) | インデクサー データ ソース | インデクサーで、他のクラウド プラットフォームからインデックスを作成できるようになりました。 インデクサーを使用してインデックス作成に外部データ ソースをクロールする場合、Power Query コネクタを使用して Amazon Redshift、Elasticsearch、PostgreSQL、Salesforce オブジェクト、Salesforce レポート、Smartsheet、Snowflake に接続できるようになりました。 | バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースにアクセスするには、api-version=2020-06-30-Preview または Azure portal の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用します。|
+|  [**MySQL インデクサー データ ソース**](search-howto-index-mysql.md) | インデクサー データ ソース | Azure MySQL データ ソースからコンテンツとメタデータのインデックスを作成します。| バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースにアクセスするには、api-version=2020-06-30-Preview、[.NET SDK 11.2.1](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype.mysql)、Azure portal の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用します。 |
 | [**セマンティック検索**](semantic-search-overview.md) | 関連性 (スコアリング) | 結果、キャプション、および回答のセマンティック ランク付け。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/preview-api/search-documents) および Search Explorer (ポータル)。 |
 | [**スペル チェック**](cognitive-search-aml-skill.md) | クエリ | 単純、完全、およびセマンティック クエリのクエリ用語入力に対するスペル修正 (オプション)。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/preview-api/search-documents) |
 | [**SharePoint Online インデクサー**](search-howto-index-sharepoint-online.md) | インデクサー データ ソース | SharePoint コンテンツのインデクサーベースのインデックス作成用の新しいデータソースです。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/preview-api/create-indexer) |
@@ -33,7 +35,6 @@ ms.locfileid: "106109800"
 | [**PII 検出スキル**](cognitive-search-skill-pii-detection.md) | AI エンリッチメント (スキルセット) | 入力テキストから個人情報を抽出する、インデックス作成中に使用されるコグニティブ スキルです。ユーザーには、さまざまな方法でこの情報をそのテキストからマスクするためのオプションが提供されます。 | このプレビュー スキルを参照するには、ポータルのスキルセット エディターを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Skillset (REST)](/rest/api/searchservice/create-skillset) を使用します。 |
 | [**インクリメンタル エンリッチメント**](cognitive-search-incremental-indexing-conceptual.md) | インデクサーの構成| エンリッチメント パイプラインにキャッシュが追加され、スキルセットや別のオブジェクトに対する更新など、目的の変更によってコンテンツが変更されない場合に既存の出力を再利用できます。 キャッシュは、スキルセットによって生成されるエンリッチされたドキュメントにのみ適用されます。| この構成設定を追加するには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の[Create Indexer (REST)](/rest/api/searchservice/create-indexer) を使用します。 |
 | [**Cosmos DB インデクサー:MongoDB API、Gremlin API、Cassandra API**](search-howto-index-cosmosdb.md) | インデクサー データ ソース | Cosmos DB には、SQL の API が一般公開されていますが、MongoDB、Gremlin、Cassandra 用の API はプレビュー段階です。 | Gremlin と Cassandra のみでは、バックエンドでご自分のサブスクリプションがサポートされるように、[最初にサインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)します。 MongoDB データ ソースは、ポータルで構成できます。 それ以外の場合、3 つのすべての API のデータ ソースは、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用して構成できます。 |
-|  [**Azure Data Lake Storage Gen2 インデクサー**](search-howto-index-azure-data-lake-storage.md) | インデクサー データ ソース | Azure Data Lake Storage Gen2 の内容とメタデータからインデックスを作成します。| バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースにアクセスするには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用します。 |
 | [**moreLikeThis**](search-more-like-this.md) | クエリ | 特定のドキュメントに関連する別のドキュメントを検索します。 この機能は、以前のプレビューからありました。 | このクエリ パラメーターを、api-version=2020-06-30-Preview、2019-05-06-Preview、2016-09-01-Preview または 2017-11-11-Preview の [Search Documents (REST)](/rest/api/searchservice/search-documents) 呼び出しに追加します。 |
 
 ## <a name="how-to-call-a-preview-rest-api"></a>プレビューの REST API を呼び出す方法

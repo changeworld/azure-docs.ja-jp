@@ -3,12 +3,12 @@ title: 信頼された Azure サービスを使用してネットワーク制限
 description: 信頼された Azure サービス インスタンスが、ネットワーク制限付きコンテナー レジストリに安全にアクセスしてイメージをプルまたはプッシュできるようにする
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 4b0d7feb223bcfcec4e8b2c786b211f4e3c3c3eb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 77ea904e73df1b423c99e6039c4e0756fcade34e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785872"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474988"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>信頼されたサービスがネットワーク制限付きコンテナー レジストリに安全にアクセスできるようにする (プレビュー)
 

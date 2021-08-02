@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2de1dc71579e6915a54e3815edd2858532ba263
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ee77fd8ee7f9b209fa1639c787295e380e8dce0b
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075935"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901999"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
 
@@ -31,7 +31,7 @@ OAuth 2.0 コード付与フローの概要については、「[OAuth 2.0 コ�
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Azure AD のセキュリティ プリンシパルにロールを割り当てる
 
-Azure Storage アプリケーションからセキュリティ プリンシパルの認証を行うには、最初に、そのセキュリティ プリンシパルの Azure ロールベースのアクセス制御 (Azure RBAC) 設定を構成します。 コンテナーとキューのアクセス許可を含む組み込みのロールは、Azure Storage によって定義されます。 Azure ロールがセキュリティ プリンシパルに割り当てられると、そのセキュリティ プリンシパルはそのリソースへのアクセス権を付与されます。 詳細については、[Azure RBAC を使用した Azure BLOB とキューのデータへのアクセス権の管理](./storage-auth-aad-rbac-portal.md)に関するページをご覧ください。
+Azure Storage アプリケーションからセキュリティ プリンシパルの認証を行うには、最初に、そのセキュリティ プリンシパルの Azure ロールベースのアクセス制御 (Azure RBAC) 設定を構成します。 コンテナーとキューのアクセス許可を含む組み込みのロールは、Azure Storage によって定義されます。 Azure ロールがセキュリティ プリンシパルに割り当てられると、そのセキュリティ プリンシパルはそのリソースへのアクセス権を付与されます。 詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>アプリケーションを Azure AD テナントに登録する
 
@@ -127,7 +127,7 @@ Microsoft パブリック クラウドの場合、基本 Azure AD 機関は次�
 
 コード サンプルを実行するには、Azure Active Directory と同じサブスクリプション内にストレージ アカウントを作成します。 次に、そのストレージ アカウント内にコンテナーを作成します。 サンプル コードでは、このコンテナーにブロック BLOB が作成されます。
 
-次に、サンプル コードを実行するユーザー アカウントに、**ストレージ BLOB データ共同作成者** ロールを明示的に割り当てます。 Azure portal でこのロールを割り当てる方法については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](storage-auth-aad-rbac-portal.md)」をご覧ください。
+次に、サンプル コードを実行するユーザー アカウントに、**ストレージ BLOB データ共同作成者** ロールを明示的に割り当てます。 Azure portal でこのロールを割り当てる方法については、「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。
 
 > [!NOTE]
 > Azure ストレージ アカウントを作成するとき、Azure AD を介してデータにアクセスするためのアクセス許可は自動的に割り当てられません。 Azure Storage の Azure ロールを自分自身に明示的に割り当てる必要があります。 これは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいはコンテナーまたはキューのレベルで割り当てることができます。
@@ -293,5 +293,5 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ## <a name="next-steps"></a>次のステップ
 
 - [Microsoft ID プラットフォーム](../../active-directory/develop/index.yml)
-- [Azure RBAC を使用してストレージ データへのアクセス権を管理する](./storage-auth-aad-rbac-portal.md)
+- [BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)
 - [Azure リソースに対するマネージド ID を使用して BLOB およびキューへのアクセスを認証する](storage-auth-aad-msi.md)

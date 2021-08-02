@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: 493f6759f63f023572f38647076e04425acf9d6a
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 169f0b76e1009931d51339fe6b058ca24608af30
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581533"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061050"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Azure Cognitive Search の可用性とビジネス継続性
 
@@ -44,15 +44,19 @@ Free レベルに対して、SLA は提供されません。 詳細について�
 現在、Azure Cognitive Search では、次のいずれかのリージョンで作成された Standard レベル以上の検索サービスの Availability Zones がサポートされます。
 
 + オーストラリア東部 (2021 年 1 月 30 日以降に作成)
++ ブラジル南部 (2021 年 5 月 2 日以降に作成)
 + カナダ中部 (2021 年 1 月 30 日以降に作成)
 + 米国中部 (2020 年 12 月 4 日以降に作成)
 + 米国東部 (2021 年 1 月 27 日以降に作成)
 + 米国東部 2 (2021 年 1 月 30 日以降に作成)
 + フランス中部 (2020 年 10 月 23 日以降に作成)
++ ドイツ中西部 (2021 年 5 月 3 日以降に作成)
 + 東日本 (2021 年 1 月 30 日以降に作成)
 + 北ヨーロッパ (2021 年 1 月 28 日以降に作成)
++ 米国中南部 (2021 年 4 月 30 日以降に作成)
 + 東南アジア (2021 年 1 月 31 日以降に作成)
 + 英国南部 (2021 年 1 月 30 日以降に作成)
++ US Gov バージニア (2021 年 4 月 30 日以降に作成)
 + 西ヨーロッパ (2021 年 1 月 29 日以降に作成)
 + 米国西部 2 (2021 年 1 月 30 日以降に作成)
 

@@ -3,12 +3,12 @@ title: Windows セキュリティを使用して Windows 上で実行される�
 description: Windows セキュリティを使用して、Windows 上で実行されるスタンドアロン クラスターでノード間またはクライアントとノード間のセキュリティを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: a34c7084a9faaf0d676d4f6c68da53b2bc84f01b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b0de9799e09b0f5812c85380191bb24b0a12c7a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574613"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110781669"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Windows セキュリティを使用して Windows 上のスタンドアロン クラスターを保護する
 Service Fabric クラスターへの未承認のアクセスを防ぐには、クラスターをセキュリティで保護する必要があります。 クラスターで運用環境のワークロードが実行されている場合は、セキュリティが特に重要となります。 この記事では、*ClusterConfig.JSON* ファイルで Windows セキュリティを使用して、ノード間およびクライアントとノード間のセキュリティを構成する方法について説明します。  このプロセスは、[Windows 上で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事のセキュリティの構成手順に対応しています。 Service Fabric における Windows セキュリティの使用の詳細については、[クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事をご覧ください。
@@ -43,14 +43,11 @@ gMSA は、推奨されるセキュリティ モデルです。 [Microsoft.Azure
 | ClusterCredentialType |ノード間通信の Windows セキュリティを有効にするには、*Windows* に設定します。  | 
 | ServerCredentialType |クライアントとノード間通信の Windows セキュリティを有効にするには、*Windows* に設定します。 |
 | WindowsIdentities |クラスターとクライアントの ID が含まれます。 |
-| ClustergMSAIdentity |ノード間のセキュリティを構成します。 グループ管理サービス アカウント。 |
+| ClustergMSAIdentity |ノード間のセキュリティを構成します。 グループ管理サービス アカウント。 mysfgmsa@mydomain 形式である必要があります。 |
 | ClusterSPN |gMSA アカウントの登録済み SPN|
 | ClientIdentities |クライアントとノードの間のセキュリティを構成します。 クライアントのユーザー アカウントの配列です。 |
 | ID |クライアント ID のドメイン ユーザー (domain\username) を追加します。 |
 | IsAdmin |true に設定すると、ドメイン ユーザーが管理者クライアント アクセスを持つことを示し、false に設定すると、ユーザー クライアント アクセスを持つことを示します。 |
-
-> [!NOTE]
-> ClustergMSAIdentity 値の形式は、"mysfgmsa@mydomain" にする必要があります。
 
 [ノード間のセキュリティ](service-fabric-cluster-security.md#node-to-node-security)は、Service Fabric が gMSA で実行する必要があるときに、**ClustergMSAIdentity** を設定することによって構成されます。 ノード間の信頼関係を構築するには、各ノードが互いを認識する必要があります。 これを行うには 2 つの方法があります。クラスター内のすべてのノードを含むグループ管理サービス アカウントを指定する方法と、クラスター内のすべてのノードのドメイン コンピューター グループを指定する方法です。 強くお勧めするのは、[グループ管理サービス アカウント (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) を使用する方法です。特に、クラスターが大きい場合 (ノードが 10 個以上) またはクラスターの拡大と縮小が予想される場合には、この方法が推奨されます。  
 この方法なら、メンバーの追加と削除に必要なアクセス権がクラスター管理者から付与されたドメイン グループを作成する必要がありません。 これらのアカウントは、パスワードの自動管理でも役立ちます。 詳細については、「[グループ管理サービス アカウントの概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))」を参照してください。  

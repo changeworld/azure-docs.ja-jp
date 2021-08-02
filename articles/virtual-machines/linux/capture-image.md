@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: dff0425c119015d69ef994540e03e56dfc2decb6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b77702ea78d9b44da7843d08b2f32adeecfb9383
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744589"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440612"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "108744589"
 
 バックアップやデバッグのために既存の Linux VM のコピーを作成する方法、またはオンプレミス VM から特別な Linux VHD をアップロードする方法については、「[カスタム ディスク イメージをアップロードして Linux VM を作成する](upload-vhd.md)」を参照してください。  
 
-**Azure VM Image Builder (パブリック プレビュー)** サービスを使用して、ご自身のカスタム イメージを作成することができます。ツールの学習やビルド パイプラインのセットアップは必要なく、イメージ構成を用意するだけで、Image Builder によってイメージが作成されます。 詳細については、[Azure VM Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。
+**Azure VM Image Builder** を使用して、ご自身のカスタム イメージを作成することができます。ツールの学習やビルド パイプラインのセットアップは必要なく、イメージ構成を用意するだけで、Image Builder によってイメージが作成されます。 詳細については、[Azure VM Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。
 
 イメージを作成する前に、次の項目が必要です。
 

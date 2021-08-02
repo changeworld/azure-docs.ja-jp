@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/30/2020
+ms.date: 06/11/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 22a1a4b99717df32a40ea69ebb65a3a8e14ee2b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19b9cfc6ad6467b2779abb3561899fd3bd8d037e
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102511140"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112040143"
 ---
 一部の種類のディスクでのみ、共有ディスクを有効にできます。 現在のところ、Ultra ディスクと Premium SSD のみで共有ディスクを有効にできます。 共有ディスクが有効になっているマネージド ディスクはそれぞれ、次の制約を受けます。制限はディスクの種類別に整理されています。
 
@@ -25,6 +25,7 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 
 - Azure Resource Manager または SDK サポートに現在、制限されています。 
 - Windows Server フェールオーバー クラスターの一部のバージョンでは、ベーシック ディスクのみを使用できます。詳細については、「[フェールオーバー クラスタリングのハードウェア要件と記憶域オプション](/windows-server/failover-clustering/clustering-requirements)」を参照してください。
+- [サーバー側暗号化](../articles/virtual-machines/disk-encryption.md)のみがサポートされており、[Azure Disk Encryption](../articles/virtual-machines/windows/disk-encryption-overview.md) は現在サポートされていません。
 
 共有 Ultra ディスクは、既定で、Ultra ディスクをサポートするすべてのリージョンで利用でき、それらを使用するためのアクセスに対してサインアップする必要はありません。
 
@@ -38,7 +39,8 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 - [近接配置グループ (PPG)](../articles/virtual-machines/windows/proximity-placement-groups.md) を使用する場合は、ディスクを共有するすべての仮想マシンが同じ PPG に含まれている必要があります。
 - Windows Server フェールオーバー クラスターの一部のバージョンでは、ベーシック ディスクのみを使用できます。詳細については、「[フェールオーバー クラスタリングのハードウェア要件と記憶域オプション](/windows-server/failover-clustering/clustering-requirements)」を参照してください。
 - Azure Site Recovery のサポートは、まだ使用できません。
-- Azure Backup は [Azure ディスク バックアップ (プレビュー)](../articles/backup/disk-backup-overview.md) を通じて利用できます。
+- Azure Backup は [Azure ディスク バックアップ](../articles/backup/disk-backup-overview.md) を通じて利用できます。
+- [サーバー側暗号化](../articles/virtual-machines/disk-encryption.md)のみがサポートされており、[Azure Disk Encryption](../articles/virtual-machines/windows/disk-encryption-overview.md) は現在サポートされていません。
 
 #### <a name="regional-availability"></a>リージョン別の提供状況
 

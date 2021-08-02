@@ -6,12 +6,12 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9a79a9f863e4deaee27ddfbfdcefd3511fac5032
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 3b4a98e37c16feeb2ad8203caaeb5bc231761379
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752177"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004225"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -22,7 +22,7 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 - **[カスタマー マネージド キー](../logs/customer-managed-keys.md)** - お客様によって指定、管理されるキーを利用してクラスター データを暗号化します。
 - **[Lockbox](../logs/customer-managed-keys.md#customer-lockbox-preview)** - お客様は、Microsoft サポート エンジニアのデータ アクセス要求を制御できます。
 - **[二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。
-- **[マルチワークスペース](../logs/cross-workspace-query.md)** - お客様が運用に複数のワークスペースを使用している場合、専用クラスターの使用をお勧めします。 すべてのワークスペースが同じクラスター上にある場合は、クロスワークスペース クエリの実行速度が速くなります。 割り当てられた容量予約レベルですべてのクラスターのインジェストが考慮されるため、専用クラスターを使用する方がコスト効率が高くなる可能性もあります。その一部が小さく、容量予約の割引の対象になっていない場合でも、すべてのワークスペースに適用されます。
+- **[マルチワークスペース](../logs/cross-workspace-query.md)** - お客様が運用に複数のワークスペースを使用している場合、専用クラスターの使用をお勧めします。 すべてのワークスペースが同じクラスター上にある場合は、クロスワークスペース クエリの実行速度が速くなります。 割り当てられたコミットメント レベルですべてのクラスターのインジェストが考慮されるため、専用クラスターを使用する方がコスト効率が高くなる可能性もあります。その一部が小さく、コミットメント レベル割引の対象になっていない場合でも、すべてのワークスペースに適用されます。
 
 専用クラスターでは、1 日あたり少なくとも 1 TB のデータ インジェストの容量を使用してコミットを行う必要があります。 専用クラスターへの移行は簡単です。 データの損失やサービスの中断はありません。 
 
@@ -39,17 +39,17 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 
 ## <a name="cluster-pricing-model"></a>クラスターの価格モデル
 
-Log Analytics 専用クラスターには、1000 GB/日以上の容量予約価格モデルを使用します。 予約レベルを超える使用量は、従量課金制で請求されます。  容量予約の価格情報については、[Azure Monitor の価格に関するページ]( https://azure.microsoft.com/pricing/details/monitor/)を参照してください。  
+Log Analytics 専用クラスターには、1,000 GB/日以上のコミットメント レベル価格モデルを使用します。 そのレベルを超える使用量は、有効な 1 GB あたりのコミットメント レベル料金で課金されます。  コミットメント レベル価格情報については、[Azure Monitor の価格ページ]( https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。  
 
-クラスター容量予約レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成します。 `Capacity` は GB 単位で指定し、1000 GB/日以上の値を 100 GB/日の単位で設定できます。
+クラスター コミットメント レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成されます。 `Capacity` は GB 単位で指定し、1 日あたり 1,000 GB、2,000 GB、5,000 GB のいずれかの値を設定できます。
 
 クラスターでの使用については、2 つの課金モードがあります。 これらは、ご自分のクラスターを構成するときに、`billingType` パラメーターで指定できます。 
 
 1. **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 
 
-2. **ワークスペース**: ご使用のクラスターの容量予約コストは、クラスター内のワークスペースに比例します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。
+2. **ワークスペース**: ご使用のクラスターのコミットメント レベル コストは、各ワークスペースのデータ インジェスト量に応じて、クラスター内のワークスペースに比例的に帰属します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。この価格モデルの詳細については、[こちら]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)をご覧ください。 
 
-ワークスペースで従来のノードごとの価格レベルが使用されている場合、クラスターにリンクされると、クラスターの容量予約に対するデータ インジェストに基づいて課金され、ノードごとには課金されなくなります。 Azure Security Center からのノードごとのデータ割り当ては引き続き適用されます。
+ワークスペースで従来のノードごとの価格レベルが使用されている場合、クラスターにリンクされると、クラスターのコミットメント レベルに対するデータ インジェストに基づいて課金され、ノードごとには課金されなくなります。 Azure Security Center からのノードごとのデータ割り当ては引き続き適用されます。
 
 Log Analytics 専用クラスターの課金の詳細については、[こちら]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)をご覧ください。
 
@@ -77,7 +77,7 @@ Authorization: Bearer <token>
 - **ClusterName**:管理目的で使用されます。 この名前はユーザーには公開されません。
 - **ResourceGroupName**:すべての Azure リソースと同様に、クラスターはリソース グループに属します。 クラスターは通常、組織内の多くのチームによって共有されるため、中央の IT リソース グループを使用することをお勧めします。 設計に関するその他の考慮事項については、「[Azure Monitor ログのデプロイの設計](../logs/design-logs-deployment.md)」を参照してください。
 - **[場所]** :クラスターは特定の Azure リージョンにあります。 このクラスターにリンクできるのは、このリージョンにあるワークスペースだけです。
-- **SkuCapacity**:"*クラスター*" リソースを作成するときに、"*容量予約*" レベル (sku) を指定する必要があります。 "*容量予約*" レベルは、1 日あたり 1,000 GB から 3,000 GB の範囲で指定できます。 必要に応じて、後から 100 刻みで更新できます。 1 日あたり 3,000 GB を超える容量予約レベルが必要な場合は、LAIngestionRate@microsoft.com までお問い合わせください。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
+- **SkuCapacity**: クラスター リソースを作成するとき、コミットメント レベル (SKU) を指定する必要があります。 コミットメント レベルは、1 日あたり 1,000 GB、2,000 GB、5,000 GB のいずれかに設定できます。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページをご覧ください。 コミットメント レベルは、以前は容量予約と呼ばれていたことに注意してください。 
 
 "*クラスター*" リソースを作成した後、*sku*、*keyVaultProperties、*billingType* などの追加のプロパティを編集できます。 詳細については、以下を参照してください。
 
@@ -299,8 +299,8 @@ Authorization: Bearer <token>
 
 - **keyVaultProperties** - Azure Key Vault のキーを更新します。 「[キー識別子の詳細を使用してクラスターを更新する](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details)」をご覧ください。 これには次のパラメーターが含まれています。*KeyVaultUri*、*KeyName*、*KeyVersion*。 
 - **billingType** - *billingType* プロパティによって、"*クラスター*" リソースとそのデータの課金の帰属が決まります。
-  - **クラスター** (既定) - クラスターの容量予約コストは、"*クラスター*" リソースに帰属します。
-  - **ワークスペース** - クラスターの容量予約コストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データが容量予約を下回る場合に使用量の一部が "*クラスター*" リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
+  - **クラスター** (既定) - クラスターのコストは、"*クラスター*" リソースに帰属します。
+  - **ワークスペース** - クラスターのコストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データがコミットメント レベルを下回る場合に使用量の一部が "*クラスター*" リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
   - **Identity** - キー コンテナーへの認証に使用する ID。 System-assigned (システム割り当て) または User-assigned (ユーザー割り当て) のいずれかです。
 
 >[!IMPORTANT]
@@ -396,9 +396,9 @@ Authorization: Bearer <token>
 
 
 
-### <a name="update-capacity-reservation-in-cluster"></a>クラスターの "容量予約" を更新する
+### <a name="update-commitment-tier-in-cluster"></a>クラスター内のコミットメント レベルを更新する
 
-リンクされたワークスペースへのデータ量が時間の経過と共に変化し、容量予約のレベルを適切に更新することが必要になる場合があります。 容量は GB 単位で指定し、1000 GB/日以上の値を 100 GB/日の単位で設定できます。 完全な REST 要求本文を指定する必要はなく、SKU を含める必要があることに注意してください。
+リンクされたワークスペースへのデータ量が時間の経過と共に変化し、コミットメント レベルを適切に更新する必要があります。 このレベルは GB 単位で指定し、1 日あたり 1,000 GB、2,000 GB、5,000 GB のいずれかの値を設定できます。 完全な REST 要求本文を指定する必要はなく、SKU を含める必要があることに注意してください。
 
 **CLI**
 

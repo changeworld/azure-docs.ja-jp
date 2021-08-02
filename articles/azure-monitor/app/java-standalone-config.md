@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 1f28ee0cb174c02ba05d93ac0c8eba309bfc3872
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 314e2cf6991a33fb50ee14b9e54f9d47069dc20c
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739819"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027895"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -39,14 +39,14 @@ ms.locfileid: "108739819"
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-Application Insights Java 3.0 は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.0.3.jar` と同じディレクトリに配置されていることが想定されています。
+Application Insights Java 3.x は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.1.1.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
 * `applicationinsights.configuration.file` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.0.3.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.1.1.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 
@@ -331,7 +331,8 @@ Application Insights Java 3.0.3 以降、このテレメトリのキャプチャ
 
 ## <a name="heartbeat"></a>Heartbeat
 
-Application Insights Java 3.0 は、既定では 15 分ごとにハートビート メトリックを送信します。 ハートビート メトリックを使用してアラートをトリガーする場合は、このハートビートの頻度を増やすことができます。
+Application Insights Java 3.x は、既定では 15 分ごとにハートビート メトリックを送信します。
+ハートビート メトリックを使用してアラートをトリガーする場合は、このハートビートの頻度を増やすことができます。
 
 ```json
 {
@@ -346,7 +347,7 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 
 ## <a name="http-proxy"></a>HTTP Proxy
 
-アプリケーションがファイアウォールの背後にあり、Application Insights に直接接続できない場合 ([Application Insights によって使用される IP アドレス](./ip-addresses.md)に関するページを参照)、HTTP プロキシを使用するように Application Insights Java 3.0 を構成できます。
+アプリケーションがファイアウォールの背後にあり、Application Insights に直接接続できない場合 ([Application Insights によって使用される IP アドレス](./ip-addresses.md)に関するページを参照)、HTTP プロキシを使用するように Application Insights Java 3.x を構成できます。
 
 ```json
 {
@@ -357,7 +358,7 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 }
 ```
 
-Application Insights Java 3.0 では、グローバル システム プロパティの `https.proxyHost` と `https.proxyPort` (および必要に応じて `http.nonProxyHosts`) が設定されている場合、それらが考慮されます。
+Application Insights Java 3.x では、グローバル システム プロパティの `https.proxyHost` と `https.proxyPort` (および必要に応じて `http.nonProxyHosts`) が設定されている場合、それらが考慮されます。
 
 ## <a name="metric-interval"></a>メトリックの間隔
 
@@ -401,11 +402,11 @@ Application Insights Java 3.0 では、グローバル システム プロパテ
 
 ## <a name="self-diagnostics"></a>自己診断
 
-"自己診断" では、Application Insights Java 3.0 からの内部ログを参照します。
+"自己診断" では、Application Insights Java 3.x からの内部ログを参照します。
 
 この機能は、Application Insights 自体の問題を発見して診断する場合に役立ちます。
 
-Application Insights Java 3.0 は、既定では `applicationinsights.log` ファイルとコンソールの両方に `INFO` レベルでログを記録します。これらは次の構成に対応します。
+Application Insights Java 3.x は、既定では `applicationinsights.log` ファイルとコンソールの両方に `INFO` レベルでログを記録します。これらは次の構成に対応します。
 
 ```json
 {
@@ -425,7 +426,7 @@ Application Insights Java 3.0 は、既定では `applicationinsights.log` フ�
 
 `level` には、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` のいずれかを指定できます。
 
-`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.0.3.jar` があるディレクトリを基準にして解決されます。
+`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.1.1.jar` があるディレクトリを基準にして解決されます。
 
 `maxSizeMb` は、ロールオーバーされる前のログ ファイルの最大サイズです。
 

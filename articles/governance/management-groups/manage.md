@@ -1,14 +1,14 @@
 ---
 title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
-ms.date: 05/01/2021
+ms.date: 06/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 31d63cf493ae548b8172071c133655900d8c3be7
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a42800bb40f0c94de9b852eb77b3b87b698bdb09
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753815"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020945"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -199,14 +199,16 @@ az account management-group show --name 'Contoso' -e -r
 
 管理グループまたはサブスクリプションを移動して別の管理グループの子にする場合、3 つのルールが true として評価される必要があります。
 
-移動操作を行う際は、次のことが必要です。
+移動アクションを実行する場合は、次の各レイヤーでアクセス許可が必要です。
 
-- 子のサブスクリプションまたは管理グループに対する、管理グループの書き込みアクセス許可とロールの割り当ての書き込みアクセス許可。
-  - 組み込みロールの例: **所有者**
-- 移動先の親管理グループに対する、管理グループの書き込みアクセス権限。
-  - 組み込みロールの例: **所有者**、**共同作成者**、**管理グループ共同作成者**
-- 既存の親管理グループに対する、管理グループの書き込みアクセス権限。
-  - 組み込みロールの例: **所有者**、**共同作成者**、**管理グループ共同作成者**
+- 子サブスクリプションまたは管理グループ
+  - `Microsoft.management/managementgroups/write`
+  - `Microsoft.management/managementgroups/subscription/write` (サブスクリプションの場合のみ)
+  - `Microsoft.Authorization/roleassignment/write`
+- ターゲット親管理グループ
+  - `Microsoft.management/managementgroups/write`
+- 現在の親管理グループ
+  - `Microsoft.management/managementgroups/write`
 
 **例外**: ターゲットまたは既存の親管理グループがルート管理グループである場合、この管理の要件は必要ありません。 すべての新しい管理グループとサブスクリプションは既定でルート管理グループに追加されるため、項目を移動するためにこのグループに対するアクセス許可は不要です。
 

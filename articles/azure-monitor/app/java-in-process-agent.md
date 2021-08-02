@@ -6,24 +6,28 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b32b1fb3e0e21374fab2068d337440003005b1e7
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ec48ea7bacbc0bffdd260d7c3b06660e8e7f03c1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291318"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029317"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
+> [!NOTE]
+> 古い 2.x ドキュメントを探している場合は、[こちら](./java-2x-get-started.md) を参照してください。
+
 Java のコード不要のアプリケーション監視は、シンプルさがすべてです。コードの変更がなく、いくつかの構成変更を行うだけで、Java エージェントを有効にすることができます。
 
- Java エージェントは、任意の環境で動作し、すべての Java アプリケーションを監視できます。 つまり、Java アプリを実行しているのが、VM、オンプレミス、AKS、Windows、Linux などのいずれであっても、Java 3.0 エージェントがアプリを監視します。
+Java エージェントは、任意の環境で動作し、すべての Java アプリケーションを監視できます。 つまり、Java アプリを実行しているのが、VM、オンプレミス、AKS、Windows、Linux などのいずれであっても、Application Insights Java エージェントがアプリを監視します。
 
-3\.0 エージェントによって要求、依存関係、ログがすべて独自に自動収集されるため、アプリケーションに Application Insights Java SDK を追加する必要がなくなりました。
+Application Insights Java 3.x エージェントによって要求、依存関係、ログがすべて独自に自動収集されるため、アプリケーションに Application Insights Java 2.x SDK を追加する必要がなくなりました。
 
-アプリケーションからカスタム テレメトリを送信することはできます。 3\.0 エージェントによって、自動収集されたすべてのテレメトリと連動して、追跡と関連付けが行われます。
+アプリケーションからカスタム テレメトリを送信することはできます。
+3\.x エージェントによって、自動収集されたすべてのテレメトリと連動して、追跡と関連付けが行われます。
 
-3\.0 エージェントは、Java 8 以降をサポートしています。
+3\.x エージェントは、Java 8 以降をサポートしています。
 
 ## <a name="quickstart"></a>クイック スタート
 
@@ -34,11 +38,18 @@ Java のコード不要のアプリケーション監視は、シンプルさが
 >
 > ファイル名自体がすべて小文字になったのに加えて、JSON 構造体が完全に変更されたため、すべての[構成オプション](./java-standalone-config.md)を注意深く確認してください。
 
-[applicationinsights-agent-3.0.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar) をダウンロードする
+> [!WARNING]
+> **3.0.x からアップグレードする場合**
+>
+> 操作名と要求テレメトリ名の先頭には、http メソッド (`GET`、`POST` など) が付けられます。
+> これは、プレフィックスが付いていない以前の値に依存している場合には、カスタム ダッシュボードまたは警告に影響する可能性があります。
+> 詳細については、[3.1.0 のリリース ノート](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.0) を参照してください。
+
+[applicationinsights-agent-3.1.1.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.1.1/applicationinsights-agent-3.1.1.jar) をダウンロードする
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.1.1.jar` を追加します
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
@@ -54,7 +65,7 @@ Application Insights リソースをまだ持っていない場合は、[リソ�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.3.jar` と同じディレクトリに配置します。
+または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.1.1.jar` と同じディレクトリに配置します。
 
 ```json
 {
@@ -139,8 +150,10 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * [Communication Chat](/java/api/overview/azure/communication-chat-readme) 1.0.0+
 * [Communication Common](/java/api/overview/azure/communication-common-readme) 1.0.0+
 * [Communication Identity](/java/api/overview/azure/communication-identity-readme) 1.0.0+
-* [Communication Sms](/java/api/overview/azure/communication-sms-readme) 1.0.0+
+* [Communication Phone Numbers](/java/api/overview/azure/communication-phonenumbers-readme) 1.0.0+
+* [Communication SMS](/java/api/overview/azure/communication-sms-readme) 1.0.0+
 * [Cosmos DB](/java/api/overview/azure/cosmos-readme) 4.13.0+
+* [Digital Twins - Core](/java/api/overview/azure/digitaltwins-core-readme) 1.1.0+
 * [Event Grid](/java/api/overview/azure/messaging-eventgrid-readme) 4.0.0+
 * [Event Hubs](/java/api/overview/azure/messaging-eventhubs-readme) 5.6.0+
 * [Event Hubs - Azure Blob Storage チェックポイント ストア](/java/api/overview/azure/messaging-eventhubs-checkpointstore-blob-readme) 1.5.1+
@@ -150,6 +163,13 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * [Key Vault - キー](/java/api/overview/azure/security-keyvault-keys-readme) 4.2.6+
 * [Key Vault - シークレット](/java/api/overview/azure/security-keyvault-secrets-readme) 4.2.6+
 * [Service Bus](/java/api/overview/azure/messaging-servicebus-readme) 7.1.0+
+* [Storage - Blobs](/java/api/overview/azure/storage-blob-readme) 12.11.0+
+* [Storage - Blobs Batch](/java/api/overview/azure/storage-blob-batch-readme) 12.9.0+
+* [Storage - Blobs Cryptography](/java/api/overview/azure/storage-blob-cryptography-readme) 12.11.0+
+* [Storage - Common](/java/api/overview/azure/storage-common-readme) 12.11.0+
+* [Storage - Files Data Lake](/java/api/overview/azure/storage-file-datalake-readme) 12.5.0+
+* [Storage - Files Shares](/java/api/overview/azure/storage-file-share-readme) 12.9.0+
+* [Storage - Queues](/java/api/overview/azure/storage-queue-readme) 12.9.0+
 * [Text Analytics](/java/api/overview/azure/ai-textanalytics-readme) 5.0.4+
 
 [//]: # "上記の名前とリンクは https://azure.github.io/azure-sdk/releases/latest/java.html"
@@ -166,20 +186,20 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 [//]: # "  }"
 [//]: # "  var version = versionBadge.textContent.trim()"
 [//]: # "  var link = stableRow.querySelectorAll('a')[2].href"
-[//]: # "  str += '* [' + name + '](' + link + ') ' + version"
+[//]: # "  str += '* [' + name + '](' + link + ') ' + version + '\n'"
 [//]: # "}"
 [//]: # "console.log(str)"
 
 ## <a name="send-custom-telemetry-from-your-application"></a>アプリケーションからカスタム テレメトリを送信する
 
-3\.0 以降での目標は、標準 API を使用してカスタム テレメトリを送信できるようにすることです。
+Application Insights Java 3.x での目標は、標準 API を使用してカスタム テレメトリを送信できるようにすることです。
 
 現時点では、Micrometer、一般的なログ記録フレームワーク、および Application Insights Java 2.x SDK をサポートしています。
-Application Insights Java 3.0 を使用すると、これらの API を使用して送信されたテレメトリが自動的にキャプチャされ、自動収集されたテレメトリと関連付けられます。
+Application Insights Java 3.x を使用すると、これらの API を使用して送信されたテレメトリが自動的にキャプチャされ、自動収集されたテレメトリと関連付けられます。
 
 ### <a name="supported-custom-telemetry"></a>サポートされているカスタム テレメトリ
 
-次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk) を通じてサポートされます。
+次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.x エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk) を通じてサポートされます。
 
 |                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
 |---------------------|------------|---------------------|---------|
@@ -191,9 +211,9 @@ Application Insights Java 3.0 を使用すると、これらの API を使用し
 | **要求**        |            |                     |  Yes    |
 | **トレース**          |            |  はい                |  はい    |
 
-現時点では、Application Insights 3.0 を使用した SDK をリリースする予定はありません。
+現時点では、Application Insights 3.x を使用した SDK をリリースする予定はありません。
 
-Application Insights Java 3.0 では、Application Insights Java 2.x SDK に送信されるテレメトリを既にリッスンしています。 この機能は、既存の 2.x ユーザーのアップグレード ストーリーの重要な部分であり、OpenTelemetry API が GA になるまでの、カスタム テレメトリ サポートの重要なギャップを埋めるものです。
+Application Insights Java 3.x では、Application Insights Java 2.x SDK に送信されるテレメトリを既にリッスンしています。 この機能は、既存の 2.x ユーザーのアップグレード ストーリーの重要な部分であり、OpenTelemetry API が GA になるまでの、カスタム テレメトリ サポートの重要なギャップを埋めるものです。
 
 ### <a name="send-custom-metrics-using-micrometer"></a>Micrometer を使用してカスタム　メトリックを送信する
 
@@ -226,17 +246,17 @@ Log4j、Logback、java.util.logging は自動的にインストルメント化�
 既定では、INFO レベル以上でログ記録が実行された場合にのみ、ログが収集されます。
 このレベルを変更する方法については、[構成オプション](./java-standalone-config.md#auto-collected-logging)に関する記事を参照してください。
 
-カスタム ディメンションをログに添付する場合は、[Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。また、Application Insights Java 3.0 を使用すると、トレースおよび例外テレメトリでそれらの MDC プロパティがカスタム ディメンションとして自動的にキャプチャされます。
+カスタム ディメンションをログに添付する場合は、[Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。また、Application Insights Java 3.x を使用すると、トレースおよび例外テレメトリでそれらの MDC プロパティがカスタム ディメンションとして自動的にキャプチャされます。
 
 ### <a name="send-custom-telemetry-using-the-2x-sdk"></a>2\.x SDK を使用してカスタム テレメトリを送信する
 
-アプリケーションに `applicationinsights-core-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+アプリケーションに `applicationinsights-core-2.6.3.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.x でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
@@ -298,13 +318,13 @@ try {
 > [!NOTE]
 > この機能は、3.0.2 以降にのみ存在します
 
-アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+アプリケーションに `applicationinsights-web-2.6.3.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.x でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
@@ -322,13 +342,13 @@ requestTelemetry.getProperties().put("mydimension", "myvalue");
 > [!NOTE]
 > この機能は、3.0.2 以降にのみ存在します
 
-アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+アプリケーションに `applicationinsights-web-2.6.3.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.x でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
@@ -346,13 +366,13 @@ requestTelemetry.getContext().getUser().setId("myuser");
 > [!NOTE]
 > この機能は、3.0.2 以降にのみ存在します
 
-アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+アプリケーションに `applicationinsights-web-2.6.3.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.x でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
@@ -370,13 +390,13 @@ requestTelemetry.setName("myname");
 > [!NOTE]
 > この機能は、3.0.3 以降にのみ存在します
 
-アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+アプリケーションに `applicationinsights-web-2.6.3.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.x でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 

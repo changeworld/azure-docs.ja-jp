@@ -6,12 +6,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 05/25/2021
-ms.openlocfilehash: 5fbf0d8f713785c7ec37e48fbf78e6d95a21ca4b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 5bbdcd8032fbb4d20af2e681bf703c3d62985fe0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379579"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971614"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Azure Logic Apps のコストを計画および管理する
 
@@ -59,7 +59,7 @@ Azure Logic Apps サービスでは、作成および使用するリソースに
 
 #### <a name="storage-operations-and-costs"></a>ストレージ操作とコスト
 
-Azure Logic Apps では、すべてのストレージ操作に [Azure Storage](/storage) を使用します。 マルチテナントの Azure Logic Apps では、すべてのストレージの使用およびコストがロジック アプリに関連付けられます。 [データ保持とストレージ消費](../logic-apps/logic-apps-pricing.md#data-retention)によって[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)を使用するコストが発生します。 たとえば、実行履歴からの入力と出力はバックグラウンド ストレージに保持されます。これは、ロジック アプリから独立して作成、管理、アクセスするストレージ リソースとは異なります。
+Azure Logic Apps では、すべてのストレージ操作に [Azure Storage](../storage/index.yml) を使用します。 マルチテナントの Azure Logic Apps では、すべてのストレージの使用およびコストがロジック アプリに関連付けられます。 [データ保持とストレージ消費](../logic-apps/logic-apps-pricing.md#data-retention)によって[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)を使用するコストが発生します。 たとえば、実行履歴からの入力と出力はバックグラウンド ストレージに保持されます。これは、ロジック アプリから独立して作成、管理、アクセスするストレージ リソースとは異なります。
 
 シングルテナントの Azure Logic Apps では、独自の Azure [ストレージ アカウント](../azure-functions/storage-considerations.md#storage-account-requirements)を使用できます。 この機能により、Logic Apps のデータの管理のしやすさと柔軟性が向上します。 "*ステートフル*" ワークフローで操作を実行すると、Azure Logic Apps ランタイムによってストレージ トランザクションが作成されます。 たとえば、キューはスケジュール設定に使用され、テーブルと BLOB はワークフローの状態の格納に使用されます。 ストレージのコストは、ワークフローのコンテンツに基づいて変化します。 トリガー、アクション、ペイロードが異なると、ストレージ操作とニーズも異なります。 ストレージ トランザクションは、[Azure Storage の価格モデル](https://azure.microsoft.com/pricing/details/storage/)に従います。 ストレージ コストは、Azure の請求書に個別に一覧表示されます。
 
@@ -121,13 +121,13 @@ Azure アカウントまたはサブスクリプションのコストを事前�
 
 Azure で作成または使用開始したリソースに対するコストの発生が始まったら、こちらの方法でそれらのコストを確認および監視できます。
 
-* Azure Monitor を使用して、[ロジック アプリの実行とストレージの消費を監視する](#monitor-billing-metrics)
+* Azure Monitor を使用して、[ロジック アプリの実行とストレージの使用を監視する](#monitor-billing-metrics)
 
 * [Azure Cost Management and Billing](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) を使用して[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を実行する
 
 <a name="monitor-billing-metrics"></a>
 
-### <a name="monitor-logic-app-executions-and-storage-consumption"></a>ロジック アプリの実行とストレージの消費を監視する
+### <a name="monitor-logic-app-executions-and-storage-usage"></a>ロジック アプリの実行とストレージの使用を監視する
 
 Azure Monitor を使用すると、特定のロジック アプリの、これらのメトリックを表示できます。
 

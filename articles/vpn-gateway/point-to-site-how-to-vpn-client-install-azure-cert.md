@@ -6,22 +6,26 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 06/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: faa2d1924b0953bbf8da660ac7702c959fe7b272
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d4ab1009b38d250a39455a9e8a470cd7f1156793
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292236"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527112"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>P2S 証明書認証接続用のクライアント証明書のインストール
 
-ポイント対サイトの Azure 証明書認証を使用して仮想ネットワークに接続するすべてのクライアントには、クライアント証明書が必要です。 この記事は、P2S を使って VNet に接続するときに認証に使用されるクライアント証明書をインストールする際に役立ちます。
+P2S VPN ゲートウェイが証明書認証を要求するように構成されている場合、各クライアントにはクライアント証明書がローカルにインストールされている必要があります。 クライアント証明書は、自己署名ルート証明書からも、エンタープライズ CA ソリューションを使って生成されたルート証明書からも生成することができます。 
 
-## <a name="acquire-a-client-certificate"></a><a name="generate"></a>クライアント証明書の取得
+クライアント証明書を生成すると、通常、証明書は生成されたクライアント コンピューターに自動的にインストールされます。 別のクライアント コンピューターから VNet に接続する場合は、接続するコンピューターにクライアント証明書をインストールする必要があります。 これは、そのコンピューター上の VPN クライアントの構成に加えて行います。
 
-接続元となるクライアントのオペレーティング システムがどのようなものであっても、クライアント証明書は必ず必要になります。 クライアント証明書は、エンタープライズ CA ソリューションを使って生成されたルート証明書からも、自己署名ルート証明書からも生成することができます。 クライアント証明書を生成する方法については、[PowerShell](vpn-gateway-certificates-point-to-site.md)、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)、または [Linux](vpn-gateway-certificates-point-to-site-linux.md) の手順を参照してください。 
+複数の方法を使用して、自己署名証明書を生成およびエクスポートできます。 詳細については、次の記事を参照してください。
+
+* [PowerShell](vpn-gateway-certificates-point-to-site.md)
+* [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
+* [Linux](vpn-gateway-certificates-point-to-site-linux.md) 
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 

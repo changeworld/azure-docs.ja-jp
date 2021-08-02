@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 05/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99d8fbf65cdfd4a56f4e7bec197131a1274b0beb
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91628266"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110612803"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>条件付きアクセス:サインイン リスクベースの条件付きアクセス
 
@@ -24,7 +24,7 @@ ms.locfileid: "91628266"
 
 サインイン リスクは、特定の認証要求が ID 所有者によって承認されていない可能性があることを表します。 Azure AD Premium P2 のライセンスを所持する組織では、[Azure AD Identity Protection のサインイン リスク検出](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)を組み込んだ条件付きアクセス ポリシーを作成できます。
 
-このポリシーを割り当てることができる場所は 2 つあります。 組織は、セキュリティで保護されたパスワードの変更を必要とするサインイン リスクベースの条件付きアクセス ポリシーを有効にするために、次のいずれかのオプションを選択する必要があります。
+このポリシーを構成できる場所は 2 つあります。1 つは条件付きアクセスで、もう 1 つは Identity Protection です。 拡張診断データ、レポート専用モードの統合、Graph API のサポート、ポリシーで他の条件付きアクセス属性を使用する機能など、多くのコンテキストを提供するときは、条件付きアクセス ポリシーを使用した構成をお勧めします。
 
 ## <a name="enable-with-conditional-access-policy"></a>条件付きアクセス ポリシーを有効にする
 

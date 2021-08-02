@@ -1,15 +1,15 @@
 ---
 title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の操作中に大きなデータ セット内のレコードを取得、書式設定、ページング、およびスキップする方法について説明します。
-ms.date: 05/01/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 44fb92287eada08a573d6ff70cea5d33612cfa23
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d860ea4af08c8982e2205bb98c82b5475734d35c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751897"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099174"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -88,7 +88,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 
 Resource Graph クエリの結果は _Table_ と _ObjectArray_ の 2 つの形式で提供されます。 この形式は、要求オプションの一部として **resultFormat** パラメーターを使用して構成されます。 _Table_ 形式は **resultFormat** の既定値です。
 
-既定では、Azure CLI の結果は JSON で提供されます。 Azure PowerShell の結果は、既定では **PSCustomObject** になりますが、`ConvertTo-Json` コマンドレットを使用してすぐに JSON に変換することができます。 他の SDK のために、_ObjectArray_ 形式を出力するようにクエリ結果を構成できます。
+既定では、Azure CLI の結果は JSON で提供されます。 Azure PowerShell の結果は **PSResourceGraphResponse** オブジェクトですが、 **[データ]** プロパティで `ConvertTo-Json` コマンドレットを使用してすばやく JSON に変換することができます。 他の SDK のために、_ObjectArray_ 形式を出力するようにクエリ結果を構成できます。
 
 ### <a name="format---table"></a>形式 - Table
 

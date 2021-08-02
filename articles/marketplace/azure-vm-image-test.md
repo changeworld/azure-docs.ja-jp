@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace の Azure 仮想イメージをテストする
-description: Azure Marketplace で Azure 仮想マシン オファーをテストして送信する方法について学習します。
+description: Azure Marketplace で Azure 仮想マシン オファーをテストして送信します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 467b7d605b57c479d84fc995b4e0dc53b3ac5275
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c885f7e953849825c9a0ef87f68df6e9e2d3360a
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558297"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528578"
 ---
 # <a name="test-a-virtual-machine-image"></a>仮想マシン イメージをテストする
 

@@ -1,31 +1,30 @@
 ---
-title: AutoML を使用して、モデルとデプロイを作成する
+title: スタジオ UI を使用して自動 ML を設定する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning スタジオを使用して自動機械学習モデルを作成、確認、デプロイする。
+description: Azure Machine Learning スタジオで Azure Machine Learning の自動 ML を使用して、コードを 1 行も記述せずに自動 ML トレーニングの実行を設定する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 12/20/2020
-ms.topic: conceptual
-ms.custom: how-to, automl
-ms.openlocfilehash: 5718e0e3732f57b46500f9d2cdb1165e883ca44f
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.date: 06/11/2021
+ms.topic: how-to
+ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 3bf83c31c10245cb64a047c9d856489a4e0ce71a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575583"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030757"
 ---
-# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
+# <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>スタジオ UI を使用してコード不要の自動 ML トレーニングを設定する 
 
+この記事では、[ Azure Machine Learning スタジオ](overview-what-is-machine-learning-studio.md)で Azure Machine Learning の自動 ML を使用して、コードを 1 行も記述せずに自動 ML トレーニングの実行を設定する方法について説明します。
 
-この記事では、Azure Machine Learning Studio で 1 行のコードも使わずに、自動化された機械学習モデルを作成、確認、およびデプロイする方法について説明します。
-
-自動機械学習は、特定のデータに使用する最適な機械学習アルゴリズムを選択するプロセスです。 このプロセスにより、機械学習モデルを迅速に生成できます。 [自動化された機械学習の詳細については、こちらを参照してください](concept-automated-ml.md)。
+自動機械学習 (自動 ML) は、特定のデータに使用する最適な機械学習アルゴリズムが自動的に選択されるプロセスです。 このプロセスにより、機械学習モデルを迅速に生成できます。 [Azure Machine Learning での自動機械学習の実装の詳細を参照してください](concept-automated-ml.md)。
  
-エンド ツー エンドの例については、[Azure Machine Learning の自動 ML インターフェイスでの分類モデルの作成に関するチュートリアル](tutorial-first-experiment-automated-ml.md)をお試しください。 
+エンド ツー エンドの例については、[自動 ML によるコードなし分類モデルのトレーニングに関するチュートリアル](tutorial-first-experiment-automated-ml.md)を試してください。 
 
 Python コードベースのエクスペリエンスでは、Azure Machine Learning SDK を使用して、[自動化された機械学習の実験を構成する](how-to-configure-auto-train.md)こともできます。
 
@@ -47,7 +46,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
  これが初めて実行する実験である場合、空のリストとドキュメントへのリンクが表示されます。 
 
-そうではない場合、SDK で作成された実験を含む最近の自動機械学習の実験のリストが表示されます。 
+それ以外の場合は、SDK で作成されたものも含め、最近の自動 ML 実験の一覧が表示されます。 
 
 ## <a name="create-and-run-experiment"></a>実験を作成して実行する
 
@@ -179,6 +178,14 @@ Included | トレーニングに含める列を指定します。
 完成したモデルのいずれかをドリルダウンして、 **[モデル]** タブのモデルの概要や、 **[視覚化]** タブのパフォーマンス メトリック グラフなど、トレーニングの実行の詳細を表示します。[グラフの詳細については、こちらを参照してください](how-to-understand-automated-ml.md)。
 
 [![イテレーションの詳細](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+
+
+[データ変換] タブには、このモデルを生成するために適用されたデータ前処理、特徴エンジニアリング、スケーリング手法、機械学習アルゴリズムの図が表示されます。
+
+>[!IMPORTANT]
+> [データ変換] タブはプレビュー段階にあります。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)と見なされ、随時変更される可能性があります。
+
+![データの変換](./media/how-to-use-automated-ml-for-ml-models/data-transformation.png)
 
 ## <a name="model-explanations-preview"></a>モデルの説明 (プレビュー)
 

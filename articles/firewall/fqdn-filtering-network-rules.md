@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 06/11/2021
 ms.author: victorh
-ms.openlocfilehash: f7196c7715ad5d2c02759040b780b96218e1655e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f28092c050e58c6ef90a3faf07034be21198008a
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94695947"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017201"
 ---
 # <a name="use-fqdn-filtering-in-network-rules"></a>ネットワーク ルールでの FQDN フィルタリング
 
@@ -32,8 +32,9 @@ ms.locfileid: "94695947"
 - HTTP/S および MSSQL のアプリケーション ルールでの FQDN フィルタリングは、アプリケーション レベルの透過プロキシと SNI ヘッダーに基づいています。 そのため、同じ IP アドレスに解決される 2 つの FQDN を区別できます。 これは、ネットワーク ルールでの FQDN フィルタリングには当てはまりません。 
 
    可能な場合は、常にアプリケーション ルールを使用してください。
-     - プロトコルが HTTP/S または MSSQL の場合は、FQDN フィルタリングにアプリケーション ルールを使用します。
-   - HTTP/S または MSSQL 以外のその他のプロトコルの場合は、FQDN フィルタリングにアプリケーション ルールまたはネットワーク ルールを使用できます。
+  - プロトコルが HTTP/S または MSSQL の場合は、FQDN フィルタリングにアプリケーション ルールを使用します。
+  - AzureBackup、HDInsight などのサービスの場合は、FQDN タグが含まれるアプリケーション ルールを使用します。
+  - 他のプロトコルの場合は、FQDN フィルタリング用のネットワーク規則を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

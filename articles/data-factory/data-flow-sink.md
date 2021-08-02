@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/06/2021
-ms.openlocfilehash: ee5ccd377ccfe65a061f3fda8967a90501737953
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 8996e7a30756877b5329ef959b86529bdfcbd943
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632657"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789664"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -47,10 +47,11 @@ ms.locfileid: "109632657"
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br/>[Common Data Model](format-common-data-model.md#sink-properties)<br>[区切りテキスト](format-delimited-text.md#mapping-data-flow-properties) <br>[Delta](format-delta.md) <br>[JSON](format-json.md#mapping-data-flow-properties) <br/>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br>-/✓ <br>✓/- <br>-/✓ <br>✓/-<br>✓/✓ <br>✓/- |
 | [Azure Database for MySQL](connector-azure-database-for-mysql.md) |  | ✓/✓ |
 | [Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md) |  | ✓/✓ |
-| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/✓ |
 | [Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
+| [SQL Server](connector-sql-server.md) | | ✓/✓ |
 
 これらのコネクタに固有の設定は、 **[設定]** タブ上にあります。これらの設定に関する情報とデータ フロー スクリプトの例は、コネクタのドキュメントに記載されています。
 
@@ -88,6 +89,8 @@ Azure Data Factory から、[90 を超えるネイティブ コネクタ](connec
 
 > [!NOTE]
 > キャッシュ シンクは、キャッシュ参照を使用してそれを参照する変換から、完全に独立したデータ ストリームに存在する必要があります。 また、キャッシュ シンクは、最初に書き込まれるシンクである必要があります。 
+
+**アクティビティ出力への書き込み** キャッシュされたシンクは、必要に応じて、出力データを次のパイプライン アクティビティの入力に書き込むことができます。 これにより、データ ストアにデータを保持することなく、データ フロー アクティビティからデータをすばやく簡単に渡すことができます。
 
 ## <a name="field-mapping"></a>フィールドのマッピング
 

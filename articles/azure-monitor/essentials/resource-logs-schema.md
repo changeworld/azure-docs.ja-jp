@@ -3,12 +3,12 @@ title: Azure リソース ログでサポートされているサービスとス
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
 ms.date: 05/10/2021
-ms.openlocfilehash: 5021f6fcfdd981989e2c30edb7605bd080725142
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 5d9ae1cd9ca1d5f71d4ad2baff95159bf0e2e7f8
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715504"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026437"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -47,7 +47,7 @@ ms.locfileid: "109715504"
 
 | サービス | スキーマとドキュメント |
 | --- | --- |
-| Azure Active Directory | [概要](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、[監査ログ スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)、および[サインイン スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [概要](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、[監査ログ スキーマ](../../active-directory/reports-monitoring/overview-reports.md)、および[サインイン スキーマ](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Azure Analysis Services - 診断ログを設定する](../../analysis-services/analysis-services-logging.md) |
 | API Management | [API Management のリソース ログ](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
 | App Service | [App Service ログ](../../app-service/troubleshoot-diagnostic-logs.md)
@@ -55,6 +55,7 @@ ms.locfileid: "109715504"
 | Azure Automation |[Azure Automation のログ分析](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch のログ記録](../../batch/batch-diagnostics.md) |
 | Cognitive Services | [Azure Cognitive Services のログ記録](../../cognitive-services/diagnostic-logging.md) |
+| Container Instances | [Azure Container Instances のログ記録](../../container-instances/container-instances-log-analytics.md#log-schema) |
 | Container Registry | [Azure Container Registry のログ記録](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [CDN の Azure ログ](../../cdn/cdn-azure-diagnostic-logs.md) |
 | Cosmos DB | [Azure Cosmos DB のログ](../../cosmos-db/monitor-cosmos-db.md) |

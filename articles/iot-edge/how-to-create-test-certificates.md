@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ea7d44cc704e6937a0d3f396b8eea3f298a02931
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 724c02f56b49957934deefe9f4733cda57620987
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772317"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019991"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -119,7 +119,7 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
 
 ### <a name="set-up-on-linux"></a>Linux での設定
 
-Windows デバイスでデモ用の証明書を作成するには、生成スクリプトを複製し、ローカルで実行されるように bash でスクリプトを設定する必要があります。
+Linux デバイスでデモ証明書を作成するには、生成スクリプトを複製し、bash でローカルに実行されるようにスクリプトを設定する必要があります。
 
 1. デモ用の証明書を生成するスクリプトが含まれている IoT Edge git リポジトリを複製します。
 
@@ -362,7 +362,7 @@ IoT Hub で認証できるように、IoT デバイスにはデバイス証明�
 
 ### <a name="ca-signed-certificates"></a>CA 署名証明書
 
-自己署名証明書を使用して IoT デバイスを認証する場合は、お使いのソリューションのルート CA 証明書を IoT Hub にアップロードする必要があります。
+CA によって署名された証明書を使用して IoT デバイスを認証する場合は、ソリューションのルート CA 証明書を IoT Hub にアップロードする必要があります。
 次に、ルート CA 証明書を所有している IoT Hub を証明するための検証を実行します。
 最後に、同じルート CA 証明書を使用して、IoT デバイスが IoT Hub で認証できるように、そのデバイスに配置するデバイス証明書を作成します。
 

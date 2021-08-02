@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a0121ac255d526d429b12eacf2a853c3dfed8b62
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043730"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461830"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Java による Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -154,11 +154,11 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 ### <a name="blob-service-encryption"></a>Blob service 暗号化
 **BlobEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -183,11 +183,11 @@ blob.download(outputStream, null, options, null);
 ### <a name="queue-service-encryption"></a>Queue サービス暗号化
 **QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -212,11 +212,11 @@ CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 
 ### <a name="using-the-resolver"></a>リゾルバーの使用
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -253,11 +253,11 @@ TableResult result = currentTable.execute(operation, retrieveOptions, null);
 ### <a name="using-attributes"></a>属性の使用
 前述のように、エンティティで TableEntity を実装した場合、getter プロパティおよび setter プロパティは、 **EncryptionResolver** を指定するのではなく、[Encrypt] 属性で修飾できます。
 
-# <a name="java-v12"></a>[Java v12](#tab/java)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
-# <a name="java-v8"></a>[Java v8](#tab/java8)
+# <a name="java-v8-sdk"></a>[Java v8 SDK](#tab/java8)
 
 ```java
 private string encryptedProperty1;

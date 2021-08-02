@@ -3,22 +3,70 @@ title: Azure Automation Update Management に関する問題のトラブルシ�
 description: この記事では、Azure Automation Update Management に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 04/18/2021
+ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5d73f7232afc9dcd6f7e069297efac763c242f7b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 0f773bdedcbcb014e15436732e489f9b15900f58
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164257"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951793"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
-この記事では、Update Management 機能をマシンにデプロイするときに発生する可能性がある問題について説明します。 根本的な問題を特定するためのハイブリッド Runbook Worker エージェント用のエージェント トラブルシューティング ツールがあります。 トラブルシューティング ツールの詳細については、「[Windows Update エージェントの問題をトラブルシューティングする](update-agent-issues.md)」と「[Linux Update エージェントに関する問題のトラブルシューティング](update-agent-issues-linux.md)」を参照してください。 その他の機能のデプロイについては、[「機能のデプロイに関する問題のトラブルシューティング」](onboarding.md)を参照してください。
+この記事では、Update Management 機能を使用してマシンの更新プログラムを評価および管理するときに発生する可能性がある問題について説明します。 根本的な問題の特定に役立つ、Hybrid Runbook Worker エージェントのエージェント トラブルシューティング ツールがあります。 トラブルシューティング ツールの詳細については、「[Windows Update エージェントの問題をトラブルシューティングする](update-agent-issues.md)」と「[Linux Update エージェントに関する問題のトラブルシューティング](update-agent-issues-linux.md)」を参照してください。 その他の機能のデプロイについては、[「機能のデプロイに関する問題のトラブルシューティング」](onboarding.md)を参照してください。
 
 >[!NOTE]
 >Windows マシンに Update Management をデプロイしているときに問題が発生した場合は、Windows イベント ビューアーを開き、ローカル コンピューターの **[アプリケーションとサービス ログ]** の下にある **Operations Manager** イベント ログを確認します。 イベント ID が 4502 でイベントの詳細に `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` が含まれるイベントを探します。
+
+## <a name="scenario-windows-defender-update-always-show-as-missing"></a><a name="windows-defender-update-missing-status"></a>シナリオ: Windows Defender の更新プログラムが常に "見つからない" と表示される
+
+### <a name="issue"></a>問題
+
+Windows Defender の定義更新プログラム (**KB2267602**) が、インストール時の評価では常に "見つからない" と表示され、Windows Update の履歴に基づく検証時には "最新" と表示されます。
+
+### <a name="cause"></a>原因
+
+定義更新プログラムは 1 日に複数回公開されます。 そのため、同じ日に公開され、更新プログラム ID とバージョンが異なる KB2267602 の複数のリリースが表示される可能性があります。
+
+Update Management の評価は、11 時間に 1 回実行されます。 この例では、午前 10 時に評価が実行され、その時点でバージョン 1.237.316.0 が利用可能でした。 Log Analytics ワークスペースで **Update** テーブルを検索すると、**UpdateState** が **Needed** と表示された状態で定義更新プログラム 1.237.316.0 が表示されます。 スケジュールされたデプロイが数時間後 (たとえば、午後 1 時) に実行され、その時点でバージョン 1.237.316.0 が引き続き利用可能であるか、新しいバージョンが利用可能である場合、その新しいバージョンがインストールされ、**UpdateRunProgress** テーブルに書き込まれるレコードにこれが反映されます。 ただし、**Update** テーブルでは、次の評価が実行されるまで、引き続きバージョン 1.237.316.0 が **Needed** と表示されます。 評価が再度実行されたときには、利用可能な新しい定義更新プログラムがない可能性があるため、**Update** テーブルに、定義更新プログラムのバージョン 1.237.316.0 が見つからないと表示されたり、必要に応じて利用可能な新しいバージョンが表示されたりすることはありません。 定義更新プログラムの頻度により、ログ検索で複数のバージョンが返される可能性があります。 
+
+### <a name="resolution"></a>解決方法
+
+次のログ クエリを実行して、インストールされている定義更新プログラムが正しく報告されていることを確認します。 このクエリでは、**Updates** テーブルの KB2267602 の生成時刻、バージョン、更新プログラム ID が返されます。 *Computer* の値をマシンの完全修飾名に置き換えます。
+
+```kusto
+Update
+| where TimeGenerated > ago(14h) and OSType != "Linux" and (Optional == false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((
+    Heartbeat
+    | where TimeGenerated > ago(12h) and OSType =~ "Windows" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Computer, SourceComputerId, UpdateID
+| where UpdateState =~ "Needed" and Approved != false and Computer == "<computerName>"
+| render table
+```
+
+クエリからは、次のような結果が返されます。
+
+:::image type="content" source="./media/update-management/example-query-updates-table.png" alt-text="Updates テーブルのログ クエリの結果を示す例。":::
+
+次のログ クエリを実行して、**UpdatesRunProgress** テーブルの KB2267602 の生成時刻、バージョン、更新プログラム ID を取得します。 このクエリは、Update Management からインストールされたのか、Microsoft Update からマシンに自動インストールされたのかを把握するのに役立ちます。 *CorrelationId* の値を更新プログラムの Runbook ジョブの GUID (つまり、**Patch-MicrosoftOMSComputer** Runbook ジョブの **MasterJOBID** プロパティの値) に置き換え、*SourceComputerId* をマシンの GUID に置き換える必要があります。
+
+```kusto
+UpdateRunProgress
+| where OSType!="Linux" and CorrelationId=="<master job id>" and SourceComputerId=="<source computer id>"
+| summarize arg_max(TimeGenerated, Title, InstallationStatus) by UpdateId
+| project TimeGenerated, id=UpdateId, displayName=Title, InstallationStatus
+```
+
+クエリからは、次のような結果が返されます。
+
+:::image type="content" source="./media/update-management/example-query-updaterunprogress-table.png" alt-text="UpdatesRunProgress テーブルのログ クエリの結果を示す例。":::
+
+**Updates** テーブルのログ クエリの結果の **TimeGenerated** の値が、マシンに更新プログラムをインストールした時点のタイムスタンプまたは **UpdateRunProgress** テーブルのログ クエリの結果のタイムスタンプ (つまり、**TimeGenerated** 値) よりも前である場合は、次の評価を待ちます。 その後、**Updates** テーブルに対してログ クエリを再度実行します。 KB2267602 の更新プログラムが表示されないか、新しいバージョンで表示されます。 最新の評価の後もなお **Updates** テーブルに同じバージョンが **Needed** と表示されるにもかかわらず、それが既にインストールされている場合は、Azure サポート インシデントを開く必要があります。
 
 ## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>シナリオ:Linux 更新プログラムが保留中として表示され、インストールされる更新プログラムが異なる
 
@@ -290,7 +338,17 @@ Azure portal には、ユーザーが特定のスコープで書き込みアク�
 
 4. そのマシンにハイブリッド worker が存在することを確認します。
 
-5. マシンがシステム Hybrid Runbook Worker として設定されていない場合は、「Update Management の概要」の記事の「[Update Management の有効化](../update-management/overview.md#enable-update-management)」セクションで、マシンを有効にする方法をご確認ください。 有効にする方法は、マシンが実行されている環境に基づいています。
+5. マシンがシステム Hybrid Runbook Worker として設定されていない場合は、次のいずれかの方法を使用して有効にする方法を確認してください。
+
+   - 1 台以上の Azure マシンと Azure 以外のマシン (Arc 対応サーバーを含む) に対しては、お使いの [Automation アカウント](../update-management/enable-from-automation-account.md)から。
+
+   - **Enable-AutomationSolution** [Runbook](../update-management/enable-from-runbook.md) を使用した Azure VM のオンボードの自動化。
+
+   - [選択した Azure VM](../update-management/enable-from-vm.md) に対しては、Azure portal の **[仮想マシン]** ページから。 このシナリオは、Linux VM 用と Windows VM 用があります。
+
+   - [複数の Azure VM](../update-management/enable-from-portal.md) に対しては、Azure portal の **[仮想マシン]** ページからそれらを選択することで。
+
+   有効にする方法は、マシンが実行されている環境に基づいています。
 
 6. プレビューに表示されないすべてのマシンに対して上記の手順を繰り返します。
 
@@ -326,7 +384,7 @@ Update
 
 #### <a name="communication-with-automation-account-blocked"></a>Automation アカウントとの通信がブロックされる
 
-[ネットワークの計画](../update-management/overview.md#ports)に関する記事にアクセスし、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
+[ネットワークの計画](../update-management/plan-deployment.md#ports)に関する記事にアクセスし、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
 
 #### <a name="duplicate-computer-name"></a>コンピューター名の重複
 
@@ -416,7 +474,7 @@ REST API を使用することで、プログラミングによりさらに多�
 
 該当する場合は、更新プログラムの展開に[動的グループ](../update-management/configure-groups.md)を使用します。 さらに、次の手順を実行できます。
 
-1. コンピューターまたはサーバーが[要件](../update-management/overview.md#system-requirements)を満たしていることを確認します。
+1. コンピューターまたはサーバーが[要件](../update-management/operating-system-requirements.md)を満たしていることを確認します。
 2. Hybrid Runbook Worker エージェントのトラブルシューティングツールを使用して、Hybrid Runbook Worker への接続を確認します。 このトラブルシューティング ツールの詳細については、[更新エージェントの問題のトラブルシューティング](update-agent-issues.md)に関する記事を参照してください。
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>シナリオ:展開なしで更新プログラムがインストールされる
@@ -514,7 +572,7 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 正常に開始した後、更新プログラムの実行中にこれが発生した理由を理解するには、実行で影響を受けたマシンからの[ジョブ出力を確認](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。  
 
-REST API を使用することで、プログラミングによりさらに多くの詳細を取得できます。 ソフトウェア更新プログラムの構成マシン実行の一覧を取得する方法か、ソフトウェア更新プログラムの構成マシン実行を 1 つ ID 別に取得する方法については、「[ソフトウェア更新プログラムの構成マシン実行](https://docs.microsoft.com/rest/api/automation/softwareupdateconfigurationmachineruns)」を参照してください。
+REST API を使用することで、プログラミングによりさらに多くの詳細を取得できます。 ソフトウェア更新プログラムの構成マシン実行の一覧を取得する方法か、ソフトウェア更新プログラムの構成マシン実行を 1 つ ID 別に取得する方法については、「[ソフトウェア更新プログラムの構成マシン実行](/rest/api/automation/softwareupdateconfigurationmachineruns)」を参照してください。
 
 スケジュール済みの更新プログラムの展開で失敗したものがあれば編集し、メンテナンス期間を延長します。
 
@@ -549,7 +607,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 |例外  |解決策または対策  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | [Windows Update エラー コード一覧](https://support.microsoft.com/help/938205/windows-update-error-code-list)で該当するエラー コードを検索して、例外の原因に関する詳細を確認します。        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | これらはネットワーク接続の問題を示しています。 マシンが Update Management にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、「[ネットワークの計画](../update-management/overview.md#ports)」セクションを参照してください。        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | これらはネットワーク接続の問題を示しています。 マシンが Update Management にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、「[ネットワークの計画](../update-management/plan-deployment.md#ports)」セクションを参照してください。        |
 |`0x8024001E`| サービスまたはシステムがシャットダウン中のため、更新操作が完了しませんでした。|
 |`0x8024002E`| Windows Update サービスが無効です。|
 |`0x8024402C`     | WSUS サーバーを使用している場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` の下の `WUServer` と `WUStatusServer` のレジストリ値で正しい WSUS サーバーが指定されていることを確認します。        |
@@ -615,7 +673,7 @@ WSUS と SCCM 用にマシンが構成されているかどうかを確認する
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Linux での更新プログラムの分類別インストール
 
-分類 ([緊急更新プログラムとセキュリティ更新プログラム]) 別に Linux に更新プログラムを展開する場合、特に CentOS に関する重要な注意事項があります。 これらの制限事項は、[Update Management の概要に関するページ](../update-management/overview.md#linux)に記載されています。
+分類 ([緊急更新プログラムとセキュリティ更新プログラム]) 別に Linux に更新プログラムを展開する場合、特に CentOS に関する重要な注意事項があります。 これらの制限事項は、[Update Management の概要に関するページ](../update-management/overview.md#update-classifications)に記載されています。
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 が常に欠落している
 

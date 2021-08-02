@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 035215bf9350243f667c4883786a923a172cb89c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 42326cd4080fe6737fd14f8dc2c5a2028c20077f
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126563"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854542"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>Connect Health を使用した Azure AD での AD FS サインイン - プレビュー
 
@@ -28,7 +28,7 @@ AD FS サインインは、Connect Health を使用して Azure Active Directory
 Connect Health for AD FS エージェントでは、要求とエラーの詳細 (要求が失敗した場合) に関する情報を提供するために、サーバーのバージョンに依存する AD FS の複数のイベント ID を関連付けます。 これらの情報は Azure AD サインイン レポート スキーマに関連付けられ、Azure AD サインイン レポート UX に表示されます。 このレポートと共に、新しい Log Analytics ストリームが AD FS データや新しい Azure Monitor ブック テンプレートで使用できます。 このテンプレートは、AD FS アカウントのロックアウト、不適切なパスワードの試行、予期しないサインイン試行のスパイクなどのシナリオに関する詳細な分析のために使用したり、変更したりできます。
 
 ## <a name="prerequisites"></a>前提条件
-* インストールされて最新バージョンにアップグレードされた Azure AD Connect Health for AD FS。
+* インストールされて最新バージョン (3.1.95.0 以降) にアップグレードされた Azure AD Connect Health for AD FS。
 * Azure AD サインインを表示するためのグローバル管理者またはレポート閲覧者ロール
 
 ## <a name="what-data-is-displayed-in-the-report"></a>レポートに表示されるデータ
@@ -52,7 +52,7 @@ Connect Health for AD FS エージェントでは、要求とエラーの詳細 
 |-----|-----|
 |フォーム|ユーザー名/パスワード認証|
 |Windows|Windows 統合認証|
-|Certificate|スマート カードまたは VirtualSmart 証明書による認証|
+|証明書|スマート カードまたは VirtualSmart 証明書による認証|
 |WindowsHelloForBusiness|このフィールドは、Windows Hello for Business での認証のためのものです。 (Microsoft Passport 認証)|
 |Device | デバイス認証がイントラネットまたはエクストラネットからの "プライマリ" 認証として選択されており、デバイス認証が実行された場合に表示されます。  このシナリオでは、別のユーザー認証はありません。| 
 |フェデレーション|AD FS では認証は行われませんでしたが、それがサードパーティの ID プロバイダーに送信されました|

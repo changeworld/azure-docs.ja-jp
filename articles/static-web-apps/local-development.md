@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: d279ae82d85fd877320e95c92446481c43aac40b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: feb6462fef89a73a8e7a1d0df6808f0c58817b35
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125645"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982162"
 ---
-# <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビュー用にローカル開発環境を設定する
+# <a name="set-up-local-development-for-azure-static-web-apps"></a>Azure Static Web Apps 用にローカル開発環境を設定する
 
 Azure Static Web Apps サイトには、クラウドに発行されると、同じアプリケーションであるかのように連携して動作する多くのサービスがあります。 次のようなサービスがあります。
 
@@ -35,6 +35,9 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 - API エンドポイントへのプロキシ (Azure Functions Core Tools を通じて利用可能)
 - モックの認証と承認サーバー
 - ローカル ルートと構成設定の適用
+
+> [!NOTE]
+> 多くの場合、フロントエンド フレームワークを使用して構築されたサイトでは、`api` ルートで要求を正しく処理するためにプロキシ構成設定が必要です。 Azure Static Web Apps CLI を使用する場合、プロキシの場所の値は `/api` になり、CLI を使用しない場合、この値は `http://localhost:7071/api` になります。
 
 ## <a name="how-it-works"></a>しくみ
 
