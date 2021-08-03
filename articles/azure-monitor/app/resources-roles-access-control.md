@@ -70,11 +70,11 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 | Role | In the resource group |
 | --- | --- |
-| [所有者](../../role-based-access-control/built-in-roles.md#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
+| [Owner](../../role-based-access-control/built-in-roles.md#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
 | [Contributor](../../role-based-access-control/built-in-roles.md#contributor) |すべてのリソースを含め、あらゆるものを編集できます。 |
 | [Application Insights コンポーネントの共同作成者](../../role-based-access-control/built-in-roles.md#application-insights-component-contributor) |Application Insights リソースを編集できます。 |
 | [Reader](../../role-based-access-control/built-in-roles.md#reader) |表示はできますが、何も変更することはできません。 |
-| [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガー機能を使用するためのアクセス許可をユーザーに付与します。 このロールは、所有者ロールにも共同作成者ロールにも含まれていないことに注意してください。 |
+| [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガー機能を使用するためのアクセス許可をユーザーに付与します。 このロールは、Owner ロールにも共同作成者ロールにも含まれていないことに注意してください。 |
 | Azure Service Deploy リリース管理の共同作成者 | Azure Service Deploy を使用してデプロイするサービスの共同作成者ロール。 |
 | [Data Purger](../../role-based-access-control/built-in-roles.md#data-purger) | 個人データを消去するための特殊なロール。 詳細については、[個人データに関するガイダンス](../logs/personal-data-mgmt.md)についての記事をご覧ください。   |
 | ExpressRoute 管理者 | Express Route を作成、削除、管理できます。|
