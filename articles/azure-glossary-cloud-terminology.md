@@ -96,11 +96,11 @@ Azure サービスのデプロイと管理に使用される、セキュリテ�
 
 ## <a name="resource"></a>resource
 Azure ソリューションの一部であるアイテム。 各 Azure サービスを通じて、データベースや仮想マシンなど、さまざまなリソースをデプロイできます。   
-「[Azure リソース マネージャーの概要](azure-resource-manager/management/overview.md)」をご覧ください。
+「[Azure Resource Manager の概要](azure-resource-manager/management/overview.md)」をご覧ください。
 
 ## <a name="resource-group"></a>resource group
 1 つのアプリケーションの関連リソースが保持される Resource Manager 内のコンテナーです。 リソース グループには、アプリケーションのすべてのリソースか、論理的にグループ化されたリソースのみを含めることができます。 組織のニーズに合わせてリソースをリソース グループに割り当てる方法を指定できます。  
-「[Azure リソース マネージャーの概要](azure-resource-manager/management/overview.md)」をご覧ください。
+「[Azure Resource Manager の概要](azure-resource-manager/management/overview.md)」をご覧ください。
 
 ## <a name="resource-manager-template"></a><a name="arm-template"></a>Resource Manager テンプレート
 1 つ以上の Azure リソースを宣言により定義すると共に、デプロイされるリソース間の依存関係を定義する JSON ファイル。 このテンプレートを使えば、リソースを一貫性のある形で繰り返しデプロイできます。  
@@ -108,7 +108,7 @@ Azure ソリューションの一部であるアイテム。 各 Azure サービ
 
 ## <a name="resource-provider"></a>リソース プロバイダー
 Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure Portal、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
-「[Azure リソース マネージャーの概要](azure-resource-manager/management/overview.md)」をご覧ください。
+「[Azure Resource Manager の概要](azure-resource-manager/management/overview.md)」をご覧ください。
 
 ## <a name="role"></a>role
 ユーザー、グループ、サービスに割り当てることのできるアクセスを制御する手段。 ロールは、Azure リソースの作成、管理、読み取りなどのアクションを実行できます。  
