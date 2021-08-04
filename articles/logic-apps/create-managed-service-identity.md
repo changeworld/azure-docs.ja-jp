@@ -80,7 +80,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 ユーザー割り当て ID とは異なり、システム割り当て ID を手動で作成する必要はありません。 ロジック アプリ用のシステム割り当て ID を設定する際は、次のオプションを使用できます。
 
 * [Azure Portal](#azure-portal-system-logic-app)
-* [Azure リソース マネージャーのテンプレート](#template-system-logic-app)
+* [Azure Resource Manager テンプレート](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -158,7 +158,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 ロジック アプリにユーザー割り当てのマネージド ID を設定するには、最初にその ID を別のスタンドアロン Azure リソースとして作成する必要があります。 次に、使用できるオプションを示します。
 
 * [Azure Portal](#azure-portal-user-identity)
-* [Azure リソース マネージャーのテンプレート](#template-user-identity)
+* [Azure Resource Manager テンプレート](#template-user-identity)
 * Azure PowerShell
   * [ユーザー割り当て ID を作成する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [ロールの割り当てを追加する](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
@@ -591,7 +591,7 @@ ARM テンプレートを使用したデプロイを自動化し、マネージ�
 ロジック アプリのマネージド ID の使用を停止する場合は、次のオプションがあります。
 
 * [Azure Portal](#azure-portal-disable)
-* [Azure リソース マネージャーのテンプレート](#template-disable)
+* [Azure Resource Manager テンプレート](#template-disable)
 * Azure PowerShell
   * [ロールの割り当てを削除する](../role-based-access-control/role-assignments-powershell.md)
   * [ユーザー割り当て ID を削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
