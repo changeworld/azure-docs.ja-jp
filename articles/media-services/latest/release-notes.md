@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1b3d13402e18659d0deba723eaf52d4eb5959253
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7eff89301fa54312ffef323023100660237185a4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379253"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955343"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -28,6 +28,12 @@ ms.locfileid: "110379253"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="availability-zones-default-support-in-media-services"></a>Media Services 内での Availability Zones の既定のサポート
+
+Media Services が [Availability Zones](concept-availability-zones.md) をサポートすることで、同じ Azure リージョン内で、障害から分離された場所を提供するようになりました。  Media Services アカウントは既定でゾーン冗長になりました。追加の構成や設定は必要ありません。 これは、[Availability Zones をサポート](../../availability-zones/az-region.md#azure-regions-with-availability-zones)するリージョンにのみ適用されます
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -498,7 +504,7 @@ CMAF と 'cbcs' 暗号化のサポート。Apple HLS (iOS 11+) および、CMAF 
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Video Indexer GA のリリースは 8 月に発表されました。 現在サポートされている機能に関する新しい情報については、「[Video Indexer とは](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json)」をご覧ください。 
+Video Indexer GA のリリースは 8 月に発表されました。 現在サポートされている機能に関する新しい情報については、「[Video Indexer とは](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md?bc=%2fazure%2fmedia-services%2fvideo-indexer%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fmedia-services%2fvideo-indexer%2ftoc.json)」をご覧ください。 
 
 ### <a name="plans-for-changes"></a>変更の計画
 

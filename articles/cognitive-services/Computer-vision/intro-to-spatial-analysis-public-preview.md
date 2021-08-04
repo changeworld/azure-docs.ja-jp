@@ -9,13 +9,13 @@ ms.author: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 03/29/2021
-ms.openlocfilehash: d19a080ef596975dd3377207b84bade6ef0d3b12
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 06/21/2021
+ms.openlocfilehash: 02249fc08dc661a31a461116dab3ab08e230cbc6
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537587"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112520917"
 ---
 # <a name="what-is-spatial-analysis"></a>空間分析とは
 
@@ -43,9 +43,7 @@ ms.locfileid: "111537587"
 
 ## <a name="get-started"></a>作業開始
 
-### <a name="follow-a-quickstart"></a>クイックスタートの実施
-
-空間分析へのアクセスが許可されたら、[クイックスタート](spatial-analysis-container.md)に従って、コンテナーを設定し、ビデオの分析を開始します。
+[クイックスタート](spatial-analysis-container.md)に従って、コンテナーを設定し、ビデオの分析を開始します。
 
 ## <a name="responsible-use-of-spatial-analysis-technology"></a>責任を持って空間分析テクノロジを使用する
 

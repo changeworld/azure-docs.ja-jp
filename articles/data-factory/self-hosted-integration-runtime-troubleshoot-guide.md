@@ -4,14 +4,14 @@ description: Azure Data Factory でセルフホステッド統合ランタイム
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/25/2021
+ms.date: 05/12/2021
 ms.author: lle
-ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da88e679359b13bbecd2d2562be2ed01e4becc2e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376464"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089702"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -289,6 +289,61 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
     ```
     certutil -importpfx FILENAME.pfx AT_KEYEXCHANGE
     ```
+
+### <a name="self-hosted-integration-runtime-nodes-out-of-the-sync-issue"></a>セルフホステッド統合ランタイム ノードの同期が取れない問題
+
+#### <a name="symptoms"></a>現象
+
+セルフホステッド統合ランタイム ノードによってノード間での資格情報の同期が試みられますが、プロセスが停止し、しばらくすると次のエラー メッセージが表示されます。
+
+"Integration Runtime (セルフホステッド) ノードは、ノード間で資格情報を同期しようとしています。 これには数分かかることがあります。"
+
+>[!Note]
+>このエラーが 10 分以上発生する場合は、ディスパッチャー ノードとの接続を確認してください。
+
+#### <a name="cause"></a>原因
+
+理由は、ワーカー ノードに秘密キーへのアクセス許可がないためです。 これは、次のセルフホステッド統合ランタイムのログから確認できます。
+
+`[14]0460.3404::05/07/21-00:23:32.2107988 [System] A fatal error occurred when attempting to access the TLS server credential private key. The error code returned from the cryptographic module is 0x8009030D. The internal error state is 10001.`
+
+ADF リンク サービスでサービス プリンシパル認証を使用しているときは、同期処理に問題が発生していません。 しかし、認証タイプをアカウント キーに変更すると、同期の問題が発生しました。 これは、セルフホステッド統合ランタイム サービスがサービス アカウント (NT SERVICE\DIAHostService) で実行され、秘密キーのアクセス許可に追加される必要があるためです。
+ 
+
+#### <a name="resolution"></a>解決方法
+
+この問題を解決するには、セルフホステッド統合ランタイムのサービス アカウント (NT SERVICE\DIAHostService) を秘密キーのアクセス許可に追加する必要があります。 次の手順を適用できます。
+
+1. Microsoft 管理コンソール (MMC) の実行コマンドを開きます。
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/management-console-run-command.png" alt-text="MMC の実行コマンドを示すスクリーンショット":::
+
+1. MMC ウィンドウで、次の手順を適用します。
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-1.png" alt-text="プライベートキーのアクセス許可にセルフホステッド IR サービス アカウントを追加する 2 番目の手順を示すスクリーンショット。" lightbox="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-1-expanded.png":::
+
+    1. **[ファイル]** を選択します。
+    1. ドロップダウン メニューで **[スナップインの追加と削除]** を選択します。
+    1. "利用できるスナップイン" ウィンドウで、 **[証明書]** を選択します。
+    1. **[追加]** を選択します。
+    1. ポップアップの "証明書スナップイン" ウィンドウで、 **[コンピューター アカウント]** を選択します。
+    1. **[次へ]** を選択します。
+    1. "コンピューターの選択" ウィンドウで **[ローカル コンピューター: (このコンソールを実行しているコンピューター)]** を選択します。
+    1. **[完了]** を選択します。
+    1. "スナップインの追加と削除" ウィンドウで **[OK]** を選択します。
+
+1. MMC のウィンドウで、次の手順に進みます。
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-2.png" alt-text="プライベートキーのアクセス許可にセルフホステッド IR サービス アカウントを追加する 3 番目の手順を示すスクリーンショット。" lightbox="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-2-expanded.png":::
+
+    1. 左のフォルダーの一覧から、 **[コンソール ルート] -> [証明書 (ローカル コンピューター)] > [個人] > [証明書]** を選択します。
+    1. **Microsoft Intune Beta MDM** を右クリックします。
+    1. ドロップダウン リストで **[すべてのタスク]** を選択します。
+    1. **[プライベート キーの管理]** を選択します。
+    1. "グループ名またはユーザー名" の下の **[追加]** を選択します。
+    1. **NT SERVICE\DIAHostService** を選択して、この証明書へのフル コントロール アクセス許可を付与し、適用して保存します。 
+    1. **[名前の確認]** を選択し、 **[OK]** を選択します。
+    1. "アクセス許可" ウィンドウで、 **[適用]** を選択してから **[OK]** を選択します。
 
 ## <a name="self-hosted-ir-setup"></a>セルフホステッド IR の設定
 

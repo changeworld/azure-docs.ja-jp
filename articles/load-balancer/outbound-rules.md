@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: cbc5ff51a576cf2c784192bc33b06018c6f116c8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375867"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472095"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Azure Load Balancer のアウトバウンド規則
 
@@ -45,6 +45,9 @@ ms.locfileid: "107375867"
      * キープアライブを使用した長期の接続がある場合は、長期の接続用にアイドル ポートを最大 120 分間予約します。 古い接続が破棄され、新しい接続用にポートが 4 分以内に解放されることを想定します 
 * **アイドル タイムアウト時に TCP リセットを送信するかどうか。**
      * アイドル状態の接続がタイムアウトになった場合は、フローが破棄されていることがわかるように TCP RST をクライアントとサーバーに送信しますか?
+
+>[!Important]
+> バックエンド プールが IP アドレス別に構成されている場合、既定の送信が有効な Basic ロード バランサーとして動作します。 既定でセキュリティで保護された構成の場合と、送信のニーズが厳しいアプリケーションの場合は、バックエンド プールを NIC 別に構成します。
 
 ## <a name="outbound-rule-definition"></a>アウトバウンド規則の定義
 

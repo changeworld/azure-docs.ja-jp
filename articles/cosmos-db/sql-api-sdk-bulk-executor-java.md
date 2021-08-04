@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 2d3c7026fd221b1a17b8efe56b03b2a26358c7ab
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 09fa626e77e20feff55f7b17807754ac1d2b873f
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364403"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568848"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java Bulk Executor ライブラリ:ダウンロード情報
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -49,6 +49,26 @@ ms.locfileid: "107364403"
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="2123"></a><a name="2.12.3"></a>2.12.3
+
+* `GoneException` が `IllegalStateException` にラップされている場合の再試行ポリシーを修正します - この変更は、Gateway キャッシュが 410 上で確実に更新されるようにして、Spark コネクタ (Spark 2.4 の場合) がカスタム再試行ポリシーを使用して、パーティション分割中にクエリを成功させるために必要です
+
+### <a name="2122"></a><a name="2.12.2"></a>2.12.2
+
+* 一時的なエラーが発生しても、ドキュメントが常にインポートされるわけではない問題を修正しました。
+
+### <a name="2121"></a><a name="2.12.1"></a>2.12.1
+
+* 最新の Cosmos Core SDK バージョンを使用するようにアップグレードしてください。
+
+### <a name="2120"></a><a name="2.12.0"></a>2.12.0
+
+* Bulk 操作のために Spark コネクタを介して提供される RU の予算の処理を改善します。 最初の1回限りの一括インポートは、baseBatchSize を使用した Spark コネクタから実行され、上記の一括インポートの RU 消費量が収集されます。
+  MiniBatchSizeAdjustmentFactor は、上記の RU 消費量に基づいて計算され、ミニバッチ サイズはこれに基づいて調整されます。 各一括インポートにおける経過時間と使用された RU に基づいて、スリープ時間は 1 秒あたりの RU 消費量を制限するために計算され、次の一括インポートの前にスレッドを一時停止するために使用されます。
+
+### <a name="2110"></a><a name="2.11.0"></a>2.11.0
+
+* 入れ子になったパーティション キーを使用する場合の一括更新を防止するバグを修正します
 
 ### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b6e600fcaf32a115af14be2444144fee099d635
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: a362e99e9da7cf4c41f042364792a05a27b1aa6a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075340"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892690"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service および Azure Functions での認証と承認
 
@@ -138,7 +138,7 @@ App Service または [Azure Functions](../azure-functions/functions-overview.md
 
 詳しくは、「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください。
 
-現時点では、現在のユーザーに Authentication/Authorization 機能を設定することは ASP.NET Core ではサポートされていません。 ただし、このギャップを埋めるのに役立つ[サードパーティのオープン ソースのミドルウェア コンポーネント](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)は存在します。
+.NET Core の場合、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) では、現在のユーザーへの認証および承認機能の設定がサポートされています。 詳細については、[、Microsoft.Identity.Web の Wiki](https://github.com/AzureAD/microsoft-identity-web/wiki/1.2.0#integration-with-azure-app-services-authentication-of-web-apps-running-with-microsoftidentityweb) を参照するか、[Microsoft Graph にアクセスする Web アプリに関するこちらのチュートリアル](./scenario-secure-app-access-microsoft-graph-as-user.md?tabs=command-line#install-client-library-packages)を参照してください。
 
 #### <a name="token-store"></a>トークン ストア
 

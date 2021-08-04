@@ -1,18 +1,18 @@
 ---
 title: 適格な認可を作成する
 description: 顧客を Azure Lighthouse にオンボードする際に、管理テナント内のユーザーに Just-In-Time ベースでロールを昇格させることができます。
-ms.date: 05/25/2021
+ms.date: 06/11/2021
 ms.topic: how-to
-ms.openlocfilehash: f220574a2fb84fcf4e7a6e4933bcfbf61d882091
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 938b0ae8f2d105d79237164287b00ec4fdf4d607
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387632"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060753"
 ---
 # <a name="create-eligible-authorizations"></a>適格な認可を作成する
 
-顧客を Azure Lighthouse にオンボードする際に、管理テナント内のユーザーに、指定された Azure 組み込みロールを付与するための認可を作成します。 また、[Azure Active Directory (Azure AD) Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-configure) を使用する適格な認可を作成して、管理テナント内のユーザーがロールを一時的に昇格できるようにすることもできます。 これにより、追加のアクセス許可を Just-In-Time ベースで付与することで、ユーザーがある時に設定された期間だけ、それらのアクセス許可を持つようにすることができます。
+顧客を Azure Lighthouse にオンボードする際に、管理テナント内のユーザーに、指定された Azure 組み込みロールを付与するための認可を作成します。 また、[Azure Active Directory (Azure AD) Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) を使用する適格な認可を作成して、管理テナント内のユーザーがロールを一時的に昇格できるようにすることもできます。 これにより、追加のアクセス許可を Just-In-Time ベースで付与することで、設定された期間だけユーザーがそれらのアクセス許可を持つことができます。
 
 適格な認可を作成すると、特権ロールへのユーザーの永続的な割り当ての数を最小限に抑えることができ、テナント内のユーザーによる特権アクセスに関連するセキュリティ リスクを軽減するのに役立ちます。
 
@@ -31,7 +31,7 @@ EMS E5 または Azure AD Premium P2 ライセンスは、顧客テナントで�
 
 適格なロールに関連付けられている追加コストは、ユーザーがそのロールにアクセス権を昇格する期間中にのみ適用されます。
 
-ユーザーのライセンスについては、「[Privileged Identity Management を使用するためのライセンスの要件](/azure/active-directory/privileged-identity-management/subscription-requirements)」を参照してください。
+ユーザーのライセンスについては、「[Privileged Identity Management を使用するためのライセンスの要件](../../active-directory/privileged-identity-management/subscription-requirements.md)」を参照してください。
 
 ## <a name="how-eligible-authorizations-work"></a>適格な認可のしくみ
 
@@ -45,7 +45,7 @@ EMS E5 または Azure AD Premium P2 ライセンスは、顧客テナントで�
 
 適格な認可を作成する場合は、ユーザー、ロール、およびアクセス ポリシーという 3 つの要素を定義します。
 
-- **ユーザー** は、管理テナントの個々のユーザー、または管理テナントの Azure AD グループのいずれかになります。 グループが定義されている場合、そのグループのすべてのメンバーは、自分の個人のアクセス権を、アクセス ポリシーに従ってそのロールに昇格させることができます。 適格な認可をサービス プリンシパルで使用することはできません。
+- **ユーザー** は、個々のユーザー、または管理テナントの Azure AD グループのいずれかになります。 グループが定義されている場合、そのグループのすべてのメンバーは、自分の個人のアクセス権を、アクセス ポリシーに従ってそのロールに昇格させることができます。 適格な認可をサービス プリンシパルで使用することはできません。
 - **ロール** には、ユーザー アクセス管理者を除く、Azure の委任されたリソース管理でサポートされている任意の Azure 組み込みロールを指定できます。
 - **アクセス ポリシー** では、多要素認証 (MFA) の要件と、ユーザーがロールでアクティブ化される有効期限の時間の長さを定義します。 任意のロールに対して指定できる最大の時間は 8 時間です。
 
@@ -59,7 +59,6 @@ EMS E5 または Azure AD Premium P2 ライセンスは、顧客テナントで�
 > Azure Marketplace の管理サービス オファーを使用して顧客をオンボードすることもできますが、現時点ではこれらのオファーに適格な認可を含めることはできません。
 
 顧客をオンボードするときに適格な認可を含めるには、[サンプル レポジトリの delegated-resource-management-eligible-authorizations セクション](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-eligible-authorizations)のいずれかのテンプレートを使用します。
-
 
 |オンボード対象 (適格な認可付き)  |使用する Azure Resource Manager テンプレート  |変更するパラメーター ファイル |
 |---------|---------|---------|
@@ -233,7 +232,7 @@ EMS E5 または Azure AD Premium P2 ライセンスは、顧客テナントで�
 > [!IMPORTANT]
 > 閲覧者 (または閲覧者アクセス権を含む別の Azure 組み込みロール) など、適格な認可とは異なるロールを使用して、テンプレートの `authorizations` セクションに同じ `principalId` を含める必要があります。 そうしない場合、ユーザーは Azure portal で自身のロールを昇格できなくなります。
 
-`roleDefinitionId` には、ユーザーが Just-In-Time ベースで使用できる [Azure 組み込みロール](/azure/role-based-access-control/built-in-roles)のロール定義 ID が含まれています。
+`roleDefinitionId` には、ユーザーが Just-In-Time ベースで使用できる [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)のロール定義 ID が含まれています。
 
 `justInTimeAccessPolicy` は次の 2 つの要素を指定します。
 
@@ -247,12 +246,14 @@ EMS E5 または Azure AD Premium P2 ライセンスは、顧客テナントで�
 
 顧客を Azure Lighthouse にオンボードすると、指定したユーザー (または指定したグループのユーザー) は、含まれている適格なロールを使用できるようになります。
 
-各ユーザーは、Azure portal の **[マイ カスタマー]** ページにアクセスし、委任を選択し、 **[資格のあるロールの管理]** ボタンを選択することで、アクセス権をいつでも昇格できます。 その後、Azure AD Privileged Identity Management の[ロールをアクティブ化する手順](/azure/active-directory/privileged-identity-management/pim-how-to-activate-role)に従うことができます。
+各ユーザーが、Azure portal の **[マイ カスタマー]** ページにアクセスし、委任を選択し、 **[資格のあるロールの管理]** を選択することで、アクセス権をいつでも昇格できます。 その後、Azure AD Privileged Identity Management の[ロールをアクティブ化する手順](../../active-directory/privileged-identity-management/pim-how-to-activate-role.md)に従うことができます。
+
+:::image type="content" source="../media/manage-eligible-roles.png" alt-text="Azure portal 内の [資格あるロールの管理] ボタンを示すスクリーンショット。":::
 
 適格なロールがアクティブ化されると、ユーザーは、適格な認可に指定されている期間全体でそのロールを持つことになります。 その期間が過ぎると、昇格プロセスを繰り返して再びアクセス権を昇格しない限り、そのロールを使用できなくなります。
 
 ## <a name="next-steps"></a>次の手順
 
 - [ARM テンプレートを使用して顧客を Azure Lighthouse にオンボードする](onboard-customer.md)方法について学習します。
-- [Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-configure) について詳しく学習します。
+- [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) について詳しく学習します。
 - [Azure Lighthouse のテナント、ユーザー、ロール](../concepts/tenants-users-roles.md)について詳しく学習します。

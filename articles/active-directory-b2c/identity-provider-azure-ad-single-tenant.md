@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 05/26/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9a31fe8046e6bb0a933ade78ee2c7f4b208767a7
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: a6952679ad2497a059b6ad043ef5e1e23fea0236
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028351"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744073"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -64,7 +64,7 @@ Azure Active Directory B2C (Azure AD B2C) で、特定の Azure AD 組織の Azu
 
 Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
+1. 組織の Azure AD テナントを使用して [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
 1. **[管理]** セクションで、 **[アプリの登録]** を選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
 1. **[管理]** セクションで、 **[トークン構成]** を選択します。
@@ -114,7 +114,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[ソーシャル ID プロバイダー]** から、 **[Contoso Azure AD]** を選択します。
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
-1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。 
 1. **[ユーザー フローを実行します]** ボタンを選択します。
 1. サインアップまたはサインイン ページで、 **[Contoso Azure AD]** を選択し、Azure AD Contoso アカウントでサインインします。
 

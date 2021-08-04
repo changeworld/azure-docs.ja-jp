@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのネットワークの分離
 description: Azure DevTest Labs でのネットワークの分離について説明します。
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7a46d242d16cf1c84495fbd2f2f10911cf4f1e9
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96352934"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111809520"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>DevTest Labs でのネットワークの分離
 
@@ -75,6 +75,10 @@ ms.locfileid: "96352934"
 また、これらの手順を自動化して、複数のラボに対してこの設定を構成することもできます。 
 
 [PowerShell と CLI を使用して Azure Storage の既定のネットワーク アクセス ルールを管理する方法の詳細を確認する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
+
+## <a name="network-isolation-for-an-existing-lab"></a>既存のラボのネットワーク分離
+
+ラボの所有者は、既存のラボのネットワークを分離することを選択できます。 [このサンプルスクリプト](https://github.com/Azure/azure-devtestlab/blob/master/Tools/ConvertDtlLabToIsolatedNetwork/Convert-DtlLabToIsolatedNetwork.ps1)では、既存のラボおよび関連するラボ リソースを分離されたネットワーク モードに変換する方法を示します。 
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>ネットワーク分離モードでラボを使用するときに覚えておくべきこと
 

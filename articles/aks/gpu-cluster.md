@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5e36465c307443c8e6f135c5937bddbbb079b60e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 95400d75442ba0d61b0d24aef6e67bbea397a240
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783163"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790456"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 
@@ -400,6 +400,12 @@ Apache Spark ジョブを実行するには、[AKS での Apache Spark ジョブ
 
 Kubernetes での機械学習 (ML) ワークロードの実行に関する詳細については、[Kubeflow ラボ][kubeflow-labs]を参照してください。
 
+Azure Machine Learning での Azure Kubernetes Service の使用方法の詳細については、次の記事を参照してください。
+
+* [Azure Kubernetes Service にモデルをデプロイする][azureml-aks]。
+* [GPU を使用した推論のためのディープ ラーニング モデルをデプロイする][azureml-gpu]。
+* [Triton 推論サーバーを使用した高パフォーマンスのサービス][azureml-triton]。
+
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -419,3 +425,6 @@ Kubernetes での機械学習 (ML) ワークロードの実行に関する詳細
 [aks-spark]: spark-job.md
 [gpu-skus]: ../virtual-machines/sizes-gpu.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[azureml-aks]: ../machine-learning/how-to-deploy-azure-kubernetes-service.md
+[azureml-gpu]: ../machine-learning/how-to-deploy-inferencing-gpus.md
+[azureml-triton]: ../machine-learning/how-to-deploy-with-triton.md

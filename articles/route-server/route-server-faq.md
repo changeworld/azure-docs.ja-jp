@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 04/22/2021
+ms.date: 06/07/2021
 ms.author: duau
-ms.openlocfilehash: 77b9cd7590b381a29fc0dc19b2a80b72afceca0a
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 848134fec184febcdc5cde722fbec8e55d149d14
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930301"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747997"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (プレビュー) に関する FAQ
 
@@ -71,6 +71,12 @@ Azure Route Server では、Border Gateway Protocol (BGP) のみがサポート�
 ### <a name="can-i-use-32-bit-4-byte-asns"></a>32 ビット (4 バイト) の ASN を使用できますか。
 
 いいえ。Azure Route Server でサポートされる ASN は、16 ビット (2 バイト) のみです。
+
+### <a name="can-i-peer-two-route-servers-in-two-peered-virtual-networks-and-enable-the-nvas-connected-to-the-route-servers-to-talk-to-each-other"></a>2 つのピアリングされた仮想ネットワーク内の 2 つのルート サーバーをピアリングし、ルート サーバーに接続されている NVA が互いに通信可能となるようにできますか? 
+
+***トポロジ: NVA1 -> RouteServer1 -> (VNet ピアリング経由) -> RouteServer2 -> NVA2***
+
+いいえ。Azure Route Server では、データ トラフィックは転送されません。 NVA を介したトランジット接続を有効にするには、NVA 間の直接接続 (IPsec トンネルなど) を設定し、ルート サーバーを利用して動的なルート伝達を行います。 
 
 ## <a name="route-server-limits"></a><a name = "limitations"></a>Route Server の制限
 

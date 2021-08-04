@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f0085695d810a2e6c30da410ca4d11fe4d5f490
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880137"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556012"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -77,12 +77,12 @@ POST https://localhost:7071/api/analyze-form
 }
 ```
 
-ここでは、トレーニングを行ったフォームと同じ種類のフォームの URL を指定する必要があります。 テスト目的で、トレーニング フォームのいずれかを使用できます。 cURL クイックスタートに従っている場合、フォームは Azure BLOB ストレージ アカウントに配置されます。 Azure Storage Explorer を開き、フォーム ファイルを見つけて右クリックし、 **[Shared Access Signature の取得]** を選択します。 次のダイアログ ウィンドウには、URL と SAS トークンが表示されます。 これらの文字列は、要求本文の `"formUrl"` と `"formSasToken"` の各フィールドにそれぞれ入力します。
+ここでは、トレーニングを行ったフォームと同じ種類のフォームの URL を指定する必要があります。 テスト目的で、トレーニング フォームのいずれかを使用できます。 cURL クイックスタートに従っている場合、フォームは Azure Blob Storage アカウントに配置されます。 Azure Storage Explorer を開き、フォーム ファイルを見つけて右クリックし、 **[Shared Access Signature の取得]** を選択します。 次のダイアログ ウィンドウには、URL と SAS トークンが表示されます。 これらの文字列は、要求本文の `"formUrl"` と `"formSasToken"` の各フィールドにそれぞれ入力します。
 
 > [!div class="mx-imgBorder"]
 > ![Azure Storage Explorer で pdf ドキュメントが選択されています](media/cognitive-search-skill-form/form-sas.png)
 
-Azure BLOB ストレージにないリモート ドキュメントを分析する場合は、`"formUrl"` フィールドに URL を貼り付け、`"formSasToken"` フィールドは空白のままにします。
+Azure Blob Storage にないリモート ドキュメントを分析する場合は、`"formUrl"` フィールドに URL を貼り付け、`"formSasToken"` フィールドは空白のままにします。
 
 > [!NOTE]
 > スキルがスキルセットに統合されると、 Cognitive Search によって URL とトークンが提供されます。

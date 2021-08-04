@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 7e225f3f58e6e24d21c3100fd182934f9caae40b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 775cb6f7cfc19b0009fc92cc5afbd3ac383b3ea3
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108210221"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663861"
 ---
 # <a name="virtual-machines-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の仮想マシン
 
@@ -78,7 +78,7 @@ VM イメージの作成に使用するイメージは、一般化または特�
 
 詳細については、[デバイスで実行されている VM へのカスタム スクリプト拡張機能のデプロイ](azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md)に関するページを参照してください。
 
-GPU VM のプロビジョニング時に GPU ドライバーをインストールする場合、GPU 拡張機能を VM に使用することもできます。 詳細については、「[GPU VM の作成](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#create-gpu-vms)」および「[GPU 拡張機能のインストール](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#install-gpu-extension)」を参照してください。
+GPU VM のプロビジョニング時に GPU ドライバーをインストールする場合、GPU 拡張機能を VM に使用することもできます。 詳細については、「[GPU VM の作成](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#create-gpu-vms)」および「[GPU 拡張機能のインストール](azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md)」を参照してください。
 
 ## <a name="create-a-vm"></a>VM の作成
 

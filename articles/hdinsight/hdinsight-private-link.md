@@ -4,12 +4,12 @@ description: Azure Private Link を使用して、仮想ネットワーク内の
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: bc7834a0f8272da3f8954c7dd9f3e18163795cba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe3b9617db20f445d4139c006c283bbfe537d544
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98939353"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616481"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Private Link を使用して Azure HDInsight クラスターを保護および分離する (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Resource Manager (ARM) テンプレートで特定のネットワーク �
 
 `resourceProviderConnection` を [送信] に構成すると、プライベート エンドポイントを使用してクラスター固有のリソース (Azure Data Lake Storage Gen2 や外部メタストアなど) にアクセスすることもできます。 これらのリソースにプライベート エンドポイントを使用することは必須ではありませんが、これらのリソースでプライベート エンドポイントを使用する予定がある場合は、HDInsight クラスターを作成する前 `before` に、プライベート エンドポイントと DNS エントリを構成する必要があります。 クラスターの作成時は、必要な外部 SQL データベース (Apache Ranger、Ambari、Oozie、Hive メタストアなど) をすべて作成して、提供することが推奨されています。 これらのすべてのリソースが、独自のプライベート エンドポイントを介して、またはそれ以外の方法で、クラスター サブネット内からアクセスできる必要があることが要件です。
 
-Azure Key Vault のプライベート エンドポイントの使用はサポートされていません。 保存時の CMK 暗号化に Azure Key Vault を使用している場合は、プライベート エンドポイントを使用せずに、HDInsight サブネット内から Azure Key Vault エンドポイントにアクセスできる必要があります。
+プライベート エンドポイント経由で Azure Data Lake Storage Gen2 に接続するときは、Gen2 ストレージ アカウントに "blob" と "dfs" の両方のエンドポイントが設定されていることを確認してください。 詳細については、[プライベート エンドポイントの作成](../storage/common/storage-private-endpoints.md)に関するページを参照してください。
 
 次の図は、`resourceProviderConnection` が [送信] に設定されている場合に考えられる HDInsight 仮想ネットワーク アーキテクチャを示しています。
 

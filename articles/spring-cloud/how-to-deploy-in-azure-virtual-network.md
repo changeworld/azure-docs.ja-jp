@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
-ms.openlocfilehash: 50d60621c1d6b08ded5a2fdb6f6137281e9dee78
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0921c3d9bf254e3d486ec381c3243a8035bb6f50
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462269"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750355"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>仮想ネットワークに Azure Spring Cloud をデプロイする
 
@@ -88,9 +88,7 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 
     ![[アクセス制御] 画面を示すスクリーンショット。](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. [管理グループ | サブスクリプション | リソース グループ | リソース] スコープで [[所有者]](../role-based-access-control/built-in-roles.md#owner) ロールを [ユーザー | グループ | サービス プリンシパル | マネージド ID] に割り当てます。
-
-    詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+1. **Azure Spring Cloud リソース プロバイダー** に *所有者* ロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 この手順は、次の Azure CLI コマンドを実行して行うこともできます。
 
@@ -189,7 +187,7 @@ Azure Spring Cloud では、既存のサブネットとルート テーブルの
 
 * Azure Spring Cloud サービス インスタンスの作成時のみ、Azure ルート テーブルを vnet に関連付けることができます。 Azure Spring Cloud の作成後は、別のルート テーブルを使用するように変更することはできません。
 * マイクロサービス アプリケーション サブネットとサービス ランタイム サブネットは、異なるルート テーブルに関連付けるか、どちらもルート テーブルに関連付けないでおく必要があります。
-* インスタンスの作成前にアクセス許可を割り当てる必要があります。 ルート テーブルには、必ず Azure "*Spring Cloud 所有者*" のアクセス許可を付与してください。
+* インスタンスの作成前にアクセス許可を割り当てる必要があります。 ルート テーブルには、必ず **Azure Spring Cloud リソース プロバイダー** に *所有者* のアクセス許可を付与してください。
 * クラスターを作成した後で、関連付けられているルート テーブル リソースを更新することはできません。 ルート テーブル リソースは更新できませんが、カスタム ルールはルート テーブルで変更できます。
 * ルーティング規則が競合する可能性があるため、複数のインスタンスでルート テーブルを再利用することはできません。
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 8824ea38121b8f440f1b0ef1f07737f46e8b7295
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: d1bb111bbaa909c52261a0dbafe6d6e0a24390ac
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732886"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007264"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 
@@ -63,7 +63,7 @@ Azure 専用ホストは、1 つの Azure サブスクリプションに対し�
 
 両方の機能を一緒に使用して、より高い障害の分離を実現できます。 この場合は、各ホスト グループに対して可用性ゾーンと障害ドメインの数を指定し、グループ内の各ホストに対して障害ドメインを割り当てて、各 VM に可用性ゾーンを割り当てます。
 
-[こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)にある Resource Manager のサンプル テンプレートでは、ゾーンと障害ドメインを使用して、リージョン内の回復性を最大にするためにホストが分散されます。
+[Resource Manager のサンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)では、ゾーンと障害ドメインを使用して、リージョン内の回復性を最大にするためにホストが分散されます。
 
 
 ## <a name="manual-vs-automatic-placement"></a>手動配置と自動配置
@@ -176,6 +176,6 @@ Azure では、ホストの正常性状態が監視および管理されます�
 
 - [Azure PowerShell](./windows/dedicated-hosts-powershell.md)、[ポータル](./dedicated-hosts-portal.md)、[Azure CLI](./linux/dedicated-hosts-cli.md) を使用して専用ホストをデプロイできます。
 
-- [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。
+- リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用する[サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)があります。
 
 - また、[Azure Dedicated Host](prepay-dedicated-hosts-reserved-instances.md)の予約インスタンスを使用してコストを節約することもできます。

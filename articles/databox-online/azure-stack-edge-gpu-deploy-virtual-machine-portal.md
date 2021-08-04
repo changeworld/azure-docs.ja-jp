@@ -1,25 +1,25 @@
 ---
-title: Azure portal を使用して Azure Stack Edge Pro に VM をデプロイする
-description: Azure portal を使用して Azure Stack Edge Pro に VM を作成して管理する方法について説明します。
+title: Azure portal を使用して Azure Stack Edge Pro GPU に VM をデプロイする
+description: Azure portal を使用して Azure Stack Edge Pro GPU に VM を作成して管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 05/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 68f0ee86d0882f0a8e44f5af926af4a92d824082
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 79cc482d5bbd32cd4ba4efbce692d32ecc0cad8e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758298"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081319"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Azure portal を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Azure portal、テンプレート、Azure PowerShell コマンドレット、および Azure CLI または Python のスクリプトを使用して、Azure Stack Edge デバイス上に仮想マシン (VM) を作成および管理できます。 この記事では、Azure portal を使用して、Azure Stack Edge デバイスに VM を作成し、それを管理する方法について説明します。 
+Azure portal、テンプレート、Azure PowerShell コマンドレット、および Azure CLI または Python のスクリプトを使用して、Azure Stack Edge Pro GPU デバイス上に仮想マシン (VM) を作成および管理できます。 この記事では、Azure portal を使用して、Azure Stack Edge Pro GPU デバイスに VM を作成し、それを管理する方法について説明します。 
 
 > [!IMPORTANT] 
 > クラウドからデバイスにデプロイされた VM を管理するユーザーに対して、多要素認証を有効にすることをお勧めします。
@@ -48,28 +48,30 @@ Azure portal、テンプレート、Azure PowerShell コマンドレット、お
 
 Azure portal を使用してデバイスで VM の作成と管理を開始する前に、次のことを確認してください。
 
-1. 「[手順 1: Azure Stack Edge Pro デバイスを構成する](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)」の説明に従って Azure Stack Edge Pro デバイスでネットワーク設定を完了していること。
+1. 「[手順 1: Azure Stack Edge Pro GPU デバイスを構成する](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)」の説明に従って Azure Stack Edge Pro GPU デバイスでネットワーク設定を完了していること。
 
     1. コンピューティング用のネットワーク インターフェイスを有効にしていること。 このネットワーク インターフェイスの IP を使用して、VM デプロイ用の仮想スイッチを作成します。 デバイスのローカル UI で、 **[Compute]\(コンピューティング\)** に移動します。 仮想スイッチの作成に使用するネットワーク インターフェイスを選択します。
 
         > [!IMPORTANT] 
         > コンピューティング用に構成できるポートは 1 つだけです。
 
-    1. そのネットワーク インターフェイスでコンピューティングを有効にします。 そのネットワーク インターフェイスに対応する仮想スイッチが Azure Stack Edge Pro によって作成、管理されます。
+    1. そのネットワーク インターフェイスでコンピューティングを有効にします。 そのネットワーク インターフェイスに対応する仮想スイッチが Azure Stack Edge Pro GPU によって作成、管理されます。
 
 1. 作成する仮想マシンの VM イメージを作成するために使用する Windows または Linux VHD にアクセスできること。
 
 ## <a name="deploy-a-vm"></a>VM をデプロイする
 
-Azure Stack Edge デバイスに仮想マシンを作成するには、次の手順に従います。
+Azure Stack Edge Pro GPU デバイスに仮想マシンを作成するには、次の手順に従います。
 
 ### <a name="add-a-vm-image"></a>VM イメージを追加する
 
-1. VHD を Azure Storage アカウントにアップロードします。 「[Azure Storage Explorer を使用して VHD をアップロードする](../devtest-labs/devtest-lab-upload-vhd-using-storage-explorer.md)」の手順に従います。
+1. VHD を Azure Storage アカウントにアップロードします。 「[アップロードに Storage Explorer を使用する](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload)」の手順に従います。
 
-1. Azure portal で、Azure Stack Edge デバイスの Azure Stack Edge リソースに移動します。 **[Edge コンピューティング]**  >  **[仮想マシン]** に移動します。
+   VHD の準備の詳細については、[Windows VHD からの一般化されたイメージの準備](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)に関するページを参照してください。
 
-    ![エッジ コンピューティングと仮想マシンを示すスクリーンショット。](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
+1. Azure portal で、デバイスの Azure Stack Edge リソースに移動します。 **[エッジ サービス]**  >  **[仮想マシン]** に移動します。
+
+    ![エッジ サービスと仮想マシンを示すスクリーンショット。](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
 
 1. **[仮想マシン]** を選択して **[概要]** ページに移動します。 **[有効]** を選択して、仮想マシンのクラウド管理を有効にします。
 
@@ -131,7 +133,7 @@ VM イメージを作成した後に VM を作成するには、次の手順に�
     |サイズ     | [サポートされる VM のサイズ](azure-stack-edge-gpu-virtual-machine-sizes.md)から選択します。        |
     |ユーザー名     | 管理者が VM にサインインするには、既定のユーザー名 **azureuser** を使用します。        |
     |認証の種類    | SSH 公開キーまたはユーザー定義のパスワードから選択します。       |
-    |Password     | VM にサインインするためのパスワードを入力します。 パスワードは 12 文字以上で、定義された[複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。        |
+    |Password     | VM にサインインするためのパスワードを入力します。 パスワードは 12 文字以上で、定義された[複雑さの要件](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)を満たす必要があります。        |
     |[パスワードの確認入力]    | パスワードをもう一度入力します。        |
 
 
@@ -189,9 +191,11 @@ VM イメージを作成した後に VM を作成するには、次の手順に�
 
     ![新しい VM の選択を示すスクリーンショット。](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
 
-    VM を選択すると、詳細が表示されます。 
+    VM を選択すると、詳細が表示されます。
 
     ![VM の詳細を示すスクリーンショット。](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
+
+    VM に接続するネットワーク インターフェイスの IP アドレスを使用します。
 
 ## <a name="connect-to-a-vm"></a>VM への接続
 
@@ -211,4 +215,4 @@ Windows VM に接続するには、これらの手順に従います。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Stack Edge Pro デバイスを管理する方法については、[ローカル Web UI を使用して Azure Stack Edge Pro を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)方法に関する記事を参照してください。
+Azure Stack Edge Pro GPU デバイスを管理する方法については、[ローカル Web UI を使用して Azure Stack Edge Pro GPU を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)方法に関する記事を参照してください。

@@ -1,17 +1,17 @@
 ---
 title: リモート デスクトップでグラフィックスのパフォーマンスの問題を診断する - Azure
-description: この記事では、リモート デスクトップ プロトコル セッションで RemoteFX グラフィックス カウンターを使用して、Windows Virtual Desktop のグラフィックスに関するパフォーマンスの問題を診断する方法について説明します。
+description: この記事では、リモート デスクトップ プロトコル セッションで RemoteFX グラフィックス カウンターを使用して、Azure Virtual Desktop のグラフィックスに関するパフォーマンスの問題を診断する方法について説明します。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: fc1bb9d6dbdb024fba6544c25951ba94384132b0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 86d5aa82aaf51d0d2407799050f92a04a12c4a58
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445738"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752929"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>リモート デスクトップでグラフィックスのパフォーマンスの問題を診断する
 
@@ -100,6 +100,6 @@ RDP は 33 ミリ秒の [Average Encoding Time]\(平均エンコード時間\) �
 
 ## <a name="next-steps"></a>次のステップ
 
-- GPU が最適化された Azure 仮想マシンを作成するには、「[Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する](configure-vm-gpu.md)」を参照してください。
+- GPU が最適化された Azure 仮想マシンを作成するには、「[Azure Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する](configure-vm-gpu.md)」を参照してください。
 - トラブルシューティングとエスカレーション トラックの概要については、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
 - サービスの詳細については、[Windows Desktop の環境](environment-setup.md)に関する記事を参照してください。

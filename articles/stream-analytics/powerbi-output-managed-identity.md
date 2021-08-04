@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
-ms.date: 3/10/2020
-ms.openlocfilehash: 7c1ddbbbd8198cf769e89cfa824de370184a992c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: f0dfc7c77ce0eeedc6a85760627988e3eddc838e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589686"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784921"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する
 
@@ -209,6 +209,13 @@ POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
     "principalType": "App"
 }
 ```
+
+### <a name="use-a-service-principal-to-grant-permission-for-an-asa-jobs-managed-identity"></a>サービス プリンシパルを使用して ASA ジョブのマネージド Id にアクセス許可を付与する
+
+自動化されたデプロイでは、対話型ログインを使用して、ASA ジョブに Power BI ワークスペースへのアクセス権を付与することはできません。 サービス プリンシパルを使用して ASA ジョブのマネージド Id にアクセス許可を付与する これは PowerShell を使用して行うことができます。
+
+Connect-PowerBIServiceAccount -ServicePrincipal -TenantId "<tenant-id>" -CertificateThumbprint "<thumbprint>" -ApplicationId "<app-id>" Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+
 
 ## <a name="remove-managed-identity"></a>マネージド ID の削除
 

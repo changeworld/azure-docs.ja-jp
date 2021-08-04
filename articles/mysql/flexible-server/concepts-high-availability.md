@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 5b5e1491d7f76cd4cff76d0c9a1af4daa49fa483
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: e25412e502f10c80a55aeab215fddfd0cfc3f41b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813004"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471923"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) での高可用性の概念
 
@@ -59,6 +59,9 @@ HA の正常性は、概要ページで継続的に監視され、報告され�
 
 ## <a name="failover-process"></a>フェールオーバー プロセス 
 ビジネス継続性を確保するには、計画イベントと予定外のイベントのためのフェールオーバー プロセスが必要です。 
+
+>[!NOTE]
+> 常に完全修飾ドメイン名 (FQDN) を使用してプライマリ サーバーに接続し、接続に IP アドレスを使用しないようにします。 フェールオーバーが発生した場合、プライマリおよびスタンバイ サーバーの役割が切り替えられると、DNS A レコードも変更される可能性があります。これにより、接続文字列で IP アドレスが使用されている場合に、アプリケーションが新しいプライマリ サーバーに接続できなくなる可能性があります。 
 
 ### <a name="planned-events"></a>計画イベント
 

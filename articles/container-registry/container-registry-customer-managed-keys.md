@@ -2,14 +2,14 @@
 title: カスタマー マネージド キーを使用してレジストリを暗号化する
 description: Azure コンテナー レジストリの保存時の暗号化、および Azure Key Vault に格納されているカスタマー マネージド キーを使用して Premium レジストリを暗号化する方法について説明します。
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 05/27/2021
 ms.custom: ''
-ms.openlocfilehash: 9ec32e32d187a3db07f023c78efbd301ef578cbc
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 84a949e26bbf5677888185741e06139ed2d35db2
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817037"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412747"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを暗号化する
 
@@ -26,7 +26,7 @@ ms.locfileid: "107817037"
 
 ## <a name="things-to-know"></a>注意事項
 
-* 現在カスタマー マネージド キーを有効にできるのは、レジストリを作成するときだけです。 キーを有効にするときは、"*ユーザー割り当て*" マネージド ID を構成して、キー コンテナーにアクセスします。
+* 現在カスタマー マネージド キーを有効にできるのは、レジストリを作成するときだけです。 キーを有効にするときは、"*ユーザー割り当て*" マネージド ID を構成して、キー コンテナーにアクセスします。 後で、必要に応じて、キー コンテナーへのアクセスに対してレジストリのシステム マネージド ID を有効にできます。
 * レジストリでカスタマー マネージド キーを使用して暗号化を有効にすると、この暗号化は無効にできなくなります。  
 * Azure Container Registry でサポートされているのは、RSA または RSA HSM キーのみです。 楕円曲線キーは現在サポートされていません。
 * 現在、カスタマー マネージド キーで暗号化されたレジストリでは、[コンテンツの信頼](container-registry-content-trust.md)はサポートされていません。
@@ -516,11 +516,14 @@ az keyvault delete-policy \
   --object-id $identityPrincipalID
 ```
 
-キーを取り消すと、レジストリは暗号化キーにアクセスできないため、すべてのレジストリ データへのアクセスが実質的にブロックされます。 キーへのアクセスを有効にするか、削除したキーを復元すると、レジストリによってキーが取得されるので、暗号化されたレジストリ データに再びアクセスできるようになります。
+キーを取り消すと、レジストリは暗号化キーにアクセスできないため、すべてのレジストリ データへのアクセスが実質的にブロックされます。 キーへのアクセスを有効にするか、削除したキーを復元すると、レジストリによってキーが取得されるので、暗号化されたレジストリ データに再びアクセスできるようになります。 
 
 ## <a name="advanced-scenario-key-vault-firewall"></a>高度なシナリオ: Key Vault ファイアウォール
 
-パブリック アクセスを拒否してプライベート エンドポイントまたは選択した仮想ネットワークのみを許可する、[Key Vault ファイアウォール](../key-vault/general/network-security.md)で構成された既存の Azure Key Vault を使用して暗号化キーを保存することもできます。 
+> [!IMPORTANT]
+> 現時点では、レジストリのデプロイ時に、レジストリの *ユーザー割り当て* ID は、 [Key Vault ファイアウォール](../key-vault/general/network-security.md)で構成されているのではなく、パブリック アクセスを許可するキー コンテナー内の暗号化キーにアクセスするようにのみ構成できます。 
+> 
+> Key Vault ファイアウォールで保護されたキー コンテナーにアクセスするには、レジストリで *システム管理* の ID を使用してファイアウォールをバイパスする必要があります。 現時点では、これらの設定は、レジストリが展開された後でのみ構成できます。 
 
 このシナリオでは、まず、[Azure CLI](#enable-customer-managed-key---cli)、[ポータル](#enable-customer-managed-key---portal)、または[テンプレート](#enable-customer-managed-key---template)を使用して、新しいユーザー割り当て ID、キー コンテナー、およびカスタマー マネージド キーで暗号化されたコンテナー レジストリを作成します。 詳細な手順については、この記事の前のセクションをご覧ください。
    > [!NOTE]

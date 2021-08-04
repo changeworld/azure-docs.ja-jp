@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7b2e6ee4b54427f33ba9701ae13f139341a1941
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026174"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030955"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -43,7 +43,7 @@ ms.locfileid: "105026174"
 
 | | Azure Monitor エージェント (プレビュー) | 診断<br>拡張機能 (LAD) | Telegraf<br>エージェント | Log Analytics<br>エージェント | 依存関係<br>エージェント |
 |:---|:---|:---|:---|:---|:---|
-| **サポートされている環境** | Azure<br>その他のクラウド (Azure Arc)<br>オンプレミス (Azure Arc) | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス |
+| **サポートされている環境** (サポートされているオペレーティング システムについては、以下の表を参照) | Azure<br>その他のクラウド (Azure Arc)<br>オンプレミス (Azure Arc) | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス |
 | **エージェントの要件**  | なし | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | syslog<br>パフォーマンス | syslog<br>パフォーマンス | パフォーマンス | syslog<br>パフォーマンス| プロセスの依存関係<br>ネットワーク接続のメトリック |
 | **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
@@ -140,8 +140,9 @@ Telegraf エージェントは、次のような場合に使用します。
 | オペレーティング システム | Azure Monitor エージェント | Log Analytics エージェント | 依存関係エージェント | 診断拡張機能 | 
 |:---|:---:|:---:|:---:|:---:|
 | Windows Server 2019                                      | X | X | X | X |
+| Windows Server 2019 Core                                 | X |   |   |   |
 | Windows Server 2016                                      | X | X | X | X |
-| Windows Server 2016 Core                                 |   |   |   | X |
+| Windows Server 2016 Core                                 | X |   |   | X |
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2 SP1                               | X | X | X | X |
@@ -168,13 +169,16 @@ Telegraf エージェントは、次のような場合に使用します。
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
+| Red Hat Enterprise Linux Server 8.3                         | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 8                           | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 以降                        |   | X | X | X |
 | SUSE Linux Enterprise Server 15.2                           | X <sup>3</sup> |   |   |   |
 | SUSE Linux Enterprise Server 15.1                           | X <sup>3</sup> | X |   |   |
+| SUSE Linux Enterprise Server 15 SP1                         | X | X | X |   |
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
+| SUSE Linux Enterprise Server 12 SP5                         | X | X | X | X |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
 | Ubuntu 20.04 LTS                                            | X | X | X |   |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
@@ -183,9 +187,7 @@ Telegraf エージェントは、次のような場合に使用します。
 
 <sup>1</sup> マシンに Python (2 または 3) がインストールされている必要があります。
 
-<sup>2</sup> マシンに Python 2 がインストールされている必要があります。
-
-<sup>3</sup> Syslog イベントの収集に関する既知の問題。 現在、パフォーマンス データのみがサポートされています。
+<sup>3</sup> 1.9.0 より前のバージョンでの Syslog イベントの収集に関する既知の問題
 #### <a name="dependency-agent-linux-kernel-support"></a>依存関係エージェントの Linux カーネル サポート
 
 依存関係エージェントはカーネル レベルで動作するため、サポートもカーネルのバージョンに依存します。 次の表は、Linux OS のメジャーおよびマイナー リリースと依存関係エージェントでサポートされているカーネル バージョンの一覧です。

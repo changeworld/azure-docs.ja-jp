@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/08/2021
+ms.date: 06/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e1753391c7b61b6e9bd9e6ac0d142b4ee94502d8
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: a970fdf041b0a946f959eeb8c1f3adac1c7ce32e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363973"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784783"
 ---
 # <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
@@ -62,7 +62,7 @@ ID トークンは、Web サイトとネイティブ クライアントに渡さ
 
 ## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>更新トークンとセッション トークンのトークン有効期間ポリシー
 
-更新トークンとセッション トークンに対してトークン有効期間ポリシーを設定することはできません。
+更新トークンとセッション トークンに対してトークン有効期間ポリシーを設定することはできません。 更新トークンの有効期間、タイムアウト、および失効情報については、「[Refresh tokens](refresh-tokens.md) (更新トークン)」を参照してください。
 
 > [!IMPORTANT]
 > 2021 年 1 月 30 日の時点で、更新およびセッション トークンの有効期間は構成できません。 Azure Active Directory では、既存のポリシーの更新およびセッション トークンの構成が考慮されなくなくなりました。  既存のトークンの有効期限が切れた後に発行される新しいトークンは、[既定の構成](#configurable-token-lifetime-properties)に設定されるようになりました。 更新およびセッション トークンの構成の廃止後も、アクセス、SAML、ID の各トークンの有効期間を構成することはできます。

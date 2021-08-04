@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9346cc79943676f4dc3fe99f111002b8e7bee9d6
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99807599"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586529"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する
 
@@ -27,6 +27,7 @@ AWS コネクタを使用して、AWS CloudTrail 管理イベントを Azure Sen
 
 > [!NOTE]
 > AWS CloudTrail には、LookupEvents API に[組み込まれている制限](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)があります。 アカウントごとに 2 つ以上のトランザクション (TPS) が許可され、各クエリでは最大 50 のレコードを返すことができます。 したがって、単一のテナントで、1 つのリージョン内で秒あたり 100 を超えるレコードが継続的に生成される場合、データ インジェストでバックログと遅延が発生します。
+> 現在、Azure Sentinel に接続できるのは AWS Commercial CloudTrail のみであり、AWS GovCloud CloudTrail は接続できません。
 
 ## <a name="prerequisites"></a>前提条件
 

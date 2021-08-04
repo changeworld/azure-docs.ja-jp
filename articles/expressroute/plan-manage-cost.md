@@ -6,35 +6,31 @@ ms.author: duau
 ms.custom: subject-cost-optimization
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: de8405477611d62b8a46e8b6b645887cc4d30099
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/18/2021
+ms.openlocfilehash: c4a2113a5aa95c1bacf7be0f4b376b9377412371
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98784243"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971699"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>Azure ExpressRoute のコストを計画および管理する
 
-この記事では、ExpressRoute のコストを計画および管理する方法について説明します。 コストを見積もるサービスに対してリソースを追加する前に、まず、ExpressRoute のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 
+この記事では、Azure ExpressRoute のコストを計画および管理する方法について説明します。 コストを見積もるサービスに対してリソースを追加する前に、まず、ExpressRoute のコストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 
 
-ExpressRoute リソースの使用を開始したら、Cost Management 機能を使用して、予算の設定とコストの監視を行います。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。 
+Azure ExpressRoute リソースの使用を開始したら、Cost Management 機能を使用して、予算の設定とコストの監視を行います。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Azure ExpressRoute のコストは、Azure の請求に記載された月額料金の一部でしかありません。 この記事では、Azure ExpressRoute のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
 
-ExpressRoute のコストは、Azure の請求にある月額料金の一部でしかないことにご注意ください。 この記事では、ExpressRoute のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="prerequisites"></a>[前提条件]
-
-Cost Management のコスト分析では、ほとんどの種類の Azure アカウントがサポートされますが、すべてではありません。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 
-
-Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
+Cost Management のコスト分析では、ほとんどの種類の Azure アカウントがサポートされますが、すべてではありません。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
 
 ## <a name="local-vs-standard-vs-premium"></a>Local と Standard と Premium
 
-ExpressRoute には、次の 3 種類の回線 SKU があります。[*Local*](./expressroute-faqs.md#expressroute-local)、*Standard*、[*Premium*](./expressroute-faqs.md#expressroute-premium)。 ExpressRoute の使用量に対して課金される方法は、この 3 つの SKU の種類によって異なります。 Local SKU では、無制限データ プランで自動的に課金されます。 Standard および Premium SKU では、従量制または無制限データ プランを選択できます。 Global Reach アドオンを使用する場合を除き、すべてのイングレス データの料金は無料です。 コストと予算を最適化するために、実際のワークロードに最適な SKU の種類とデータ プランを理解しておくことが重要です。
+Azure ExpressRoute には、次の 3 種類の回線 SKU があります: [*Local*](./expressroute-faqs.md#expressroute-local)、*Standard*、[*Premium*](./expressroute-faqs.md#expressroute-premium)。 ExpressRoute の使用量に対して課金される方法は、この 3 つの SKU の種類によって異なります。 Local SKU では、無制限データ プランで自動的に課金されます。 Standard および Premium SKU では、従量制または無制限データ プランを選択できます。 Global Reach アドオンを使用する場合を除き、すべてのイングレス データの料金は無料です。 コストと予算を最適化するために、実際のワークロードに最適な SKU の種類とデータ プランを理解しておくことが重要です。
 
-## <a name="estimate-costs"></a>コストの見積もり
+## <a name="estimate-costs-before-using-azure-expressroute"></a>Azure ExpressRoute を使用する前にコストを見積もる
 
-ExpressRoute 回線を作成する前に、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用してコストを見積もります。 
+Azure ExpressRoute 回線を作成する前に、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用してコストを見積もります。 
 
 1. 左側で、 **[ネットワーク]** を選択し、 **[Azure ExpressRoute]** を選択して開始します。 
 
@@ -66,12 +62,24 @@ ExpressRoute ゲートウェイを使用して仮想ネットワークを Expres
 
 ## <a name="understand-the-full-billing-model-for-expressroute"></a>ExpressRoute の詳細な課金モデルを理解する
 
-ExpressRoute は、新しいリソースをデプロイするときに ExpressRoute と共にコストが発生する Azure インフラストラクチャ上で実行されます。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 デプロイされたリソースに変更を加える場合は、このコストを管理する必要があります。 
+Azure ExpressRoute は、新しいリソースをデプロイするときに ExpressRoute と共にコストが発生する Azure インフラストラクチャ上で実行されます。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 デプロイされたリソースに変更を加える場合は、このコストを管理する必要があります。 
 
 ### <a name="costs-that-typically-accrue-with-expressroute"></a>ExpressRoute で通常発生するコスト
 
-ExpressRoute 回線を作成するとき、ExpressRoute ゲートウェイを作成して、仮想ネットワークを回線にリンクすることができます。 ゲートウェイは、1 時間あたりの料金と、ExpressRoute 回線のコストを加算して課金されます。 さまざまなゲートウェイ SKU の料金を見るには [ExpressRoute の価格](https://azure.microsoft.com/en-us/pricing/details/expressroute) を参照し、[ExpressRoute ゲートウェイ] を選択してください。
+#### <a name="expressroute"></a>ExpressRoute
+
+ExpressRoute 回線を作成するとき、ExpressRoute ゲートウェイを作成して、仮想ネットワークを回線にリンクすることができます。 ExpressRoute ゲートウェイは、1 時間あたりの料金と、ExpressRoute 回線のコストを加算して課金されます。 さまざまなゲートウェイ SKU の料金を見るには [ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute) を参照し、[ExpressRoute ゲートウェイ] を選択してください。
+
+受信データ転送は、3 つの SKU すべてについて、ExpressRoute 回線の月額料金に含まれます。 送信データ転送は、無制限データ プランにのみ含まれます。 従量制課金接続プランの場合、送信データ転送は、[ピアリングの場所](expressroute-locations-providers.md#partners)のゾーン番号に基づいて使用される GB ごとに課金されます。
+
+#### <a name="expressroute-direct"></a>ExpressRoute Direct
+
+ExpressRoute Direct には、ローカルおよび Standard SKU ExpressRoute 回線の回線料金を含む月額ポート料金があります。 Premium SKU 回線の場合は、追加回線料金が発生します。 送信データ転送は、ピアリングの場所のゾーン番号に応じて、使用された GB ごとに課金されます。 送信データの料金は、Standard SKU と Premium SKU にのみ適用されます。
  
+#### <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
+
+ExpressRoute Global Reach は、ExpressRoute 回線をリンクするために、ExpressRoute と ExpressRoute Direct で有効にできるアドオンです。 受信と送信のデータ転送は、ピアリングの場所のゾーン番号に応じて、使用された GB ごとに課金されます。
+
 ### <a name="costs-might-accrue-after-resource-deletion"></a>リソースの削除後にコストが発生する可能性がある
 
 ExpressRoute 回線を削除した後に ExpressRoute ゲートウェイがある場合、削除するまで料金は課金されます。
@@ -117,7 +125,7 @@ ExpressRoute のコストをコスト分析で表示するには、次の操作�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure ExpressRoute での価格のしくみについて詳しく説明します。 [Azure ExpressRoute の価格の概要](https://azure.microsoft.com/en-us/pricing/details/expressroute/)に関する記事を参照してください。
+- Azure ExpressRoute での価格のしくみについて詳しく説明します。 [Azure ExpressRoute の価格の概要](https://azure.microsoft.com/pricing/details/expressroute/)に関する記事を参照してください。
 - [Azure Cost Management を使用してクラウドへの投資を最適化する](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)方法について説明します。
 - [コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を使用してコストを管理する方法について詳細に説明します。
 - [予期しないコストを回避](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。

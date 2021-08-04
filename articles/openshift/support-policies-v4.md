@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 30579536b8051e9a045c217751871287636a3976
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6f3368619395934dd358536e39f227bc66dfbfd
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454280"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497401"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -35,6 +35,7 @@ Azure Red Hat OpenShift 4 クラスターの一部の構成は、クラスター
 * unsupportedConfigOverrides オプションを設定しないでください。 これらのオプションを設定すると、マイナー バージョンのアップグレードができなくなります。
 * Azure Red Hat OpenShift サービスからはプライベート リンク サービスを介してクラスターにアクセスします。  サービス アクセスを削除または変更しないでください。
 * 非 RHCOS コンピューティング ノードはサポートされていません。 たとえば、RHEL コンピューティング ノードを使用することはできません。
+* ポリシーをサブスクリプションまたは管理グループ内に配置しないでください。これにより、SRE が ARO クラスターに対して通常のメンテナンスを実行できなくなります (ARO RP マネージド クラスター リソース グループにタグが必要など)。
 
 ## <a name="supported-virtual-machine-sizes"></a>サポートされる仮想マシンのサイズ
 

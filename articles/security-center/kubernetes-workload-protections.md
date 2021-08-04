@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 06/14/2021
 ms.author: memildin
-ms.openlocfilehash: 1a6a9080a8957b56d12eca289a500fd45f0e709b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fefbc605702539cb882aba4c7802d284b4291a9c
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310820"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062300"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -33,14 +33,14 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 
 ## <a name="availability"></a>可用性
 
-|側面|詳細|
-|----|:----|
-|リリース状態:|一般提供 (GA)|
-|価格:|Free|
-|必要なロールとアクセス許可:|割り当てを編集するための **所有者** または **セキュリティ管理者**<br>推奨事項を表示するための **閲覧者**|
-|環境要件:|Kubernetes v1.14 以降が必要です。<br>クラスター上の PodSecurityPolicy リソース (古い PSP モデル) はありません。<br>Windows ノードはサポートされていません。|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
-|||
+| 側面                          | 詳細                                                                                                                                      |
+|---------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
+| リリース状態:                  | 一般提供 (GA)                                                                                                                    |
+| 価格:                        | Free                                                                                                                                         |
+| 必要なロールとアクセス許可: | 割り当てを編集するための **所有者** または **セキュリティ管理者**<br>推奨事項を表示するための **閲覧者**                                              |
+| 環境要件:       | Kubernetes v1.14 以降が必要です。<br>クラスター上の PodSecurityPolicy リソース (古い PSP モデル) はありません。<br>Windows ノードはサポートされていません。 |
+| クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov) |
+|                                 |                                                                                                                                              |
 
 
 ## <a name="set-up-your-workload-protection"></a>ワークロード保護を設定する
@@ -69,7 +69,7 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="**Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります** という推奨事項の詳細ページ":::
 
-### <a name="step-2-view-and-configure-the-bundle-of-13-recommendations"></a>手順 2:13 個の推奨事項のバンドルを表示および構成する
+### <a name="step-2-view-and-configure-the-bundle-of-recommendations"></a>ステップ 2: 推奨事項のバンドルを確認、構成する
 
 1. アドオンのインストールが完了してから約 30 分後に、Security Center は、関連する各セキュリティ コントロールに、次の推奨事項についてのクラスターの正常性状態を表示します。
 
@@ -253,5 +253,5 @@ spec:
 その他の関連資料については、次のページを参照してください。 
 
 - [コンピューティングに関する Security Center の推奨事項](recommendations-reference.md#recs-compute)
-- [AKS クラスター レベルのアラート](alerts-reference.md#alerts-akscluster)
+- [AKS クラスター レベルのアラート](alerts-reference.md#alerts-k8scluster)
 - [コンテナー ホスト レベルのアラート](alerts-reference.md#alerts-containerhost)

@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 51e73222233602491b0c8ed3835d032610c68e0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7f8f46cf8d6195df7d47663cae809c7074129e4
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722788"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903943"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する
 
@@ -78,7 +78,7 @@ Shared Access Signature の形式は、次の 2 つのいずれかです。
 共有アクセス署名は、1 つまたは複数のストレージ リソースを指す署名付き URI です。 URI には、特殊なクエリ パラメーター セットを備えたトークンが含まれています。 このトークンは、リソースへのクライアントのアクセス方法を示します。 クエリ パラメーターの 1 つである署名は、SAS パラメーターで作成されており、SAS の作成に使用されたキーで署名されています。 この署名は、ストレージ リソースへのアクセスを承認するために、Azure Storage によって使用されます。
 
 > [!NOTE]
-> SAS トークンの生成は監査できません。 アカウント キーを使用するか、Azure RBAC ロールの割り当てを使用して SAS トークンを生成する特権を持つすべてのユーザーは、ストレージ アカウントの所有者の知識なしでこれを行うことができます。 SAS トークンの生成をユーザーに許可するアクセス許可は慎重に制限してください。 BLOB およびキューのワークロードのアカウント キーで署名された SAS をユーザーが生成できないようにするには、ストレージ アカウントへの共有キーによるアクセスを禁止します。 詳細については、「[共有キーによる承認の防止](shared-key-authorization-prevent.md)」を参照してください。
+> SAS トークンの生成は監査できません。 この作業は、SAS トークンを生成する特権を持つすべてのユーザーが、アカウント キーを使用するか Azure ロールの割り当てを使用して、ストレージ アカウントの所有者の知識なしで行うことができます。 SAS トークンの生成をユーザーに許可するアクセス許可は慎重に制限してください。 BLOB およびキューのワークロードのアカウント キーで署名された SAS をユーザーが生成できないようにするには、ストレージ アカウントへの共有キーによるアクセスを禁止します。 詳細については、「[共有キーによる承認の防止](shared-key-authorization-prevent.md)」を参照してください。
 
 ### <a name="sas-signature-and-authorization"></a>SAS の署名と承認
 

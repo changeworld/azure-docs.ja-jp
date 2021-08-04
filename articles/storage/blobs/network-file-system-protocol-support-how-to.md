@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
-ms.custom: references_regions
-ms.openlocfilehash: 1c71c6b55049d81d5c1ff3e26cba3436f0e2dd23
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: d184569fd28e23b14ff3cb24a0c8e68477b9842d
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890746"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888736"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする
 
-NFS 3.0 プロトコルを使用して、オンプレミスで実行される Linux ベースの Azure 仮想マシン (VM) または Linux システムから BLOB ストレージにコンテナーをマウントすることができます。 この記事では、ステップ バイ ステップ ガイダンスを提供しています。 BLOB ストレージでの NFS 3.0 プロトコルのサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
+NFS 3.0 プロトコルを使用して、オンプレミスで実行される Linux ベースの Azure 仮想マシン (VM) または Linux システムから BLOB ストレージにコンテナーをマウントすることができます。 この記事では、ステップ バイ ステップ ガイダンスを提供しています。 Blob Storage での NFS 3.0 プロトコルのサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>手順 1:NFS 3.0 プロトコル機能をサブスクリプションに登録する
 
@@ -124,10 +124,10 @@ NFS 3.0 を使用してコンテナーをマウントするには、その機能
 
 |設定 | Premium パフォーマンス | Standard パフォーマンス  
 |----|---|---|
-|場所|利用可能なすべてのリージョン |次のいずれかのリージョン: オーストラリア東部、韓国中部、米国東部、米国中南部   
+|場所|利用可能なすべてのリージョン |利用可能なすべてのリージョン    
 |パフォーマンス|Premium| Standard
 |アカウントの種類|BlockBlobStorage| 汎用 v2
-|レプリケーション|ローカル冗長ストレージ (LRS)| ローカル冗長ストレージ (LRS)
+|レプリケーション|ローカル冗長ストレージ (LRS)| ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)
 |接続方法|パブリック エンドポイント (選択されたネットワーク) またはプライベート エンドポイント |パブリック エンドポイント (選択されたネットワーク) またはプライベート エンドポイント
 |安全な転送が必須|無効|無効
 |階層型名前空間|Enabled|Enabled

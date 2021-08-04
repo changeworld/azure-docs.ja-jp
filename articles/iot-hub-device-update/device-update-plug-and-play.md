@@ -6,19 +6,19 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 819e3574a2341d2a9f946e7fa7e008c798bd099f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 768e751f28f9725cab47f100188c318d6b35d667
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756433"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969127"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub 用のデバイス更新と IoT プラグ アンド プレイ
 
 IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検出して管理するために、[IoT プラグ アンド プレイ](../iot-pnp/index.yml)が使用されます。 デバイス更新サービスにより、PnP インターフェイスを使用して、デバイスとの間でプロパティとメッセージが送受信されます。 IoT Hub 用のデバイス更新を使用するには、以下で説明するように、IoT デバイスで次のインターフェイスとモデル ID を実装する必要があります。
 
 概念: 
-* [IoT プラグ アンド プレイ デバイス クライアント](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device?pivots=programming-language-csharp#implement-telemetry,-properties,-and-commands)について理解します。 
+* [IoT プラグ アンド プレイ デバイス クライアント](../iot-pnp/concepts-developer-guide-device.md?pivots=programming-language-csharp#implement-telemetry-properties-and-commands)について理解します。 
 * [デバイス更新エージェントの実装](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)方法を確認します。
 
 ## <a name="adu-core-interface"></a>ADU Core インターフェイス
@@ -56,8 +56,8 @@ IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検
 
 |名前|スキーマ|Direction|説明|
 |----|------|---------|-----------|
-|manufacturer|string|デバイスからクラウド|`deviceProperties` によって報告されたデバイスの製造元。 このプロパティは、2 つの場所のいずれかから読み取られます。最初に "AzureDeviceUpdateCore" インターフェイスによって、[構成ファイル](device-update-configuration-file.md)から "aduc_manufacturer" 値の読み取りが試みられます。  値が構成ファイルに設定されていない場合、ADUC_DEVICEPROPERTIES_MANUFACTURER のコンパイル時の定義が既定で報告されます。 このプロパティは、起動時にのみ報告されます。|
-|model|string|デバイスからクラウド|`deviceProperties` によって報告されたデバイスのデバイス モデル。 このプロパティは、2 つの場所のいずれかから読み取られます。最初に AzureDeviceUpdateCore インターフェイスによって、[構成ファイル](device-update-configuration-file.md)から "aduc_model" 値の読み取りが試みられます。  値が構成ファイルに設定されていない場合、ADUC_DEVICEPROPERTIES_MODEL のコンパイル時の定義が既定で報告されます。 このプロパティは、起動時にのみ報告されます。|
+|manufacturer|string|デバイスからクラウド|`deviceProperties` によって報告されたデバイスの製造元。 このプロパティは、2 つの場所のいずれかから読み取られます。最初に "AzureDeviceUpdateCore" インターフェイスによって、[構成ファイル](device-update-configuration-file.md)から "aduc_manufacturer" 値の読み取りが試みられます。  値が構成ファイルに設定されていない場合、ADUC_DEVICEPROPERTIES_MANUFACTURER のコンパイル時の定義が既定で報告されます。 このプロパティは、起動時にのみ報告されます。 既定値 'Contoso'|
+|model|string|デバイスからクラウド|`deviceProperties` によって報告されたデバイスのデバイス モデル。 このプロパティは、2 つの場所のいずれかから読み取られます。最初に AzureDeviceUpdateCore インターフェイスによって、[構成ファイル](device-update-configuration-file.md)から "aduc_model" 値の読み取りが試みられます。  値が構成ファイルに設定されていない場合、ADUC_DEVICEPROPERTIES_MODEL のコンパイル時の定義が既定で報告されます。 このプロパティは、起動時にのみ報告されます。 既定値 'Video'|
 |aduVer|string|デバイスからクラウド|デバイスで実行されているデバイス更新エージェントのバージョン。 この値は、コンパイル時に ENABLE_ADU_TELEMETRY_REPORTING が 1 (true) に設定されている場合にのみ、ビルドから読み取られます。 お客様は、値を 0 (false) に設定することにより、バージョンの報告をオプトアウトすることができます。 [デバイス更新エージェントのプロパティをカスタマイズする方法](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)。|
 |doVer|string|デバイスからクラウド|デバイスで実行されている配信最適化エージェントのバージョン。 この値は、コンパイル時に ENABLE_ADU_TELEMETRY_REPORTING が 1 (true) に設定されている場合にのみ、ビルドから読み取られます。 お客様は、値を 0 (false) に設定することにより、バージョンの報告をオプトアウトすることができます。[配信最適化エージェントのプロパティをカスタマイズする方法](https://github.com/microsoft/do-client/blob/main/README.md#building-do-client-components)。|
 
@@ -80,7 +80,7 @@ IoT Hub デバイス ツインのサンプル
                             }
 ```
 
-注: この要素からコンポーネントを参照していることを示すために、デバイスまたはモジュールで {"__t": "c"} マーカーを追加する必要があります (詳細は[こちら](https://docs.microsoft.com/azure/iot-pnp/concepts-convention#sample-multiple-components-writable-property))。
+注: この要素からコンポーネントを参照していることを示すために、デバイスまたはモジュールで {"__t": "c"} マーカーを追加する必要があります (詳細は[こちら](../iot-pnp/concepts-convention.md#sample-multiple-components-writable-property))。
 
 ### <a name="service-metadata"></a>サービス メタデータ
 

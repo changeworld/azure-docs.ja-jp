@@ -1,31 +1,31 @@
 ---
-title: Windows Virtual Desktop のセキュリティに関するベスト プラクティス - Azure
-description: Windows Virtual Desktop 環境のセキュリティを確保するためのベスト プラクティス。
+title: Azure Virtual Desktop のセキュリティに関するベスト プラクティス - Azure
+description: Azure Virtual Desktop 環境のセキュリティを確保するためのベスト プラクティス。
 author: heidilohr
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c7d7b5ec4d35cd2bd1be1b6b34c374e949114a16
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e09f3c8f4691eaf978e0b5245626508e4aa2b961
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070338"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746863"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
-Windows Virtual Desktop は、組織の安全を維持するための多くのセキュリティ機能を備えた、管理された仮想デスクトップ サービスです。 Windows Virtual Desktop のデプロイでは、Microsoft がお客様に代わってサービスの一部を管理します。 このサービスには、リモート デスクトップにどこからでもアクセスできるようにした場合に生じるリスクを軽減する、逆接続などの多くの高度なセキュリティ機能が組み込まれています。
+Azure Virtual Desktop は、組織の安全を維持するための多くのセキュリティ機能を備えた、管理された仮想デスクトップ サービスです。 Azure Virtual Desktop のデプロイでは、Microsoft がお客様に代わってサービスの一部を管理します。 このサービスには、リモート デスクトップにどこからでもアクセスできるようにした場合に生じるリスクを軽減する、逆接続などの多くの高度なセキュリティ機能が組み込まれています。
 
-この記事では、顧客の Windows Virtual Desktop のデプロイのセキュリティを維持するために、管理者として実行できる追加の手順について説明します。
+この記事では、顧客の Azure Virtual Desktop のデプロイのセキュリティを維持するために、管理者として実行できる追加の手順について説明します。
 
 ## <a name="security-responsibilities"></a>セキュリティの責任
 
 クラウド サービスが、従来のオンプレミスの仮想デスクトップ インフラストラクチャ (VDI) と異なる点は、セキュリティの責任の扱い方です。 たとえば、従来のオンプレミス VDI では、セキュリティのあらゆる側面の責任を顧客が負うことになります。 しかし、ほとんどのクラウド サービスでは、これらの責任は顧客と会社との間で共有されます。
 
-Windows Virtual Desktop を使用する場合、一部のコンポーネントはご使用環境に合わせて既にセキュリティで保護されていますが、他の領域については、組織のセキュリティ ニーズに適合するように自分で構成する必要があるということを理解しておくことが重要です。
+Azure Virtual Desktop を使用する場合、一部のコンポーネントはご使用環境に合わせて既にセキュリティで保護されていますが、他の領域については、組織のセキュリティ ニーズに適合するように自分で構成する必要があるということを理解しておくことが重要です。
 
-Windows Virtual Desktop のデプロイで、お客様の責任となるセキュリティ ニーズを次に示します。
+Azure Virtual Desktop のデプロイで、お客様の責任となるセキュリティ ニーズを次に示します。
 
 | セキュリティ ニーズ | お客様の責任であるか |
 |---------------|:-------------------------:|
@@ -44,7 +44,7 @@ Windows Virtual Desktop のデプロイで、お客様の責任となるセキ�
 
 ## <a name="azure-security-best-practices"></a>Azure のセキュリティに関するベスト プラクティス
 
-Windows Virtual Desktop は、Azure のサービスです。 Windows Virtual Desktop のデプロイの安全性を最大限に高めるには、必ず周囲の Azure インフラストラクチャと管理プレーンもセキュリティで保護する必要があります。 インフラストラクチャをセキュリティで保護するには、より大規模な Azure エコシステムに Windows Virtual Desktop をどのように適合させるかを検討してください。 Azure エコシステムの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](../security/fundamentals/best-practices-and-patterns.md)」を参照してください。
+Azure Virtual Desktop は、Azure のサービスです。 Azure Virtual Desktop のデプロイの安全性を最大限に高めるには、必ず周囲の Azure インフラストラクチャと管理プレーンもセキュリティで保護する必要があります。 インフラストラクチャをセキュリティで保護するには、より大規模な Azure エコシステムに Azure Virtual Desktop をどのように適合させるかを検討してください。 Azure エコシステムの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](../security/fundamentals/best-practices-and-patterns.md)」を参照してください。
 
 このセクションでは、Azure エコシステムをセキュリティで保護するためのベスト プラクティスについて説明します。
 
@@ -64,27 +64,27 @@ Azure Security Center Standard を使用すると、次のことを実行でき�
 
 セキュア スコアは、全体的なセキュリティを向上させるための推奨事項とベスト プラクティスに関する助言を提供します。 これらの推奨事項には、どれが最も重要かを選択するのに役立つように優先順位が付けられています。また、クイック修正のオプションを使用すると、潜在的な脆弱性に迅速に対処できます。 また、これらの推奨事項は時間の経過とともに更新されるため、環境のセキュリティを維持するための最良の方法について、常に最新の情報を得ることができます。 詳細については、「[Azure Security Center でセキュア スコアを向上する](../security-center/secure-score-security-controls.md)」を参照してください。
 
-## <a name="windows-virtual-desktop-security-best-practices"></a>Windows Virtual Desktop のセキュリティに関するベスト プラクティス
+## <a name="azure-virtual-desktop-security-best-practices"></a>Azure Virtual Desktop のセキュリティに関するベスト プラクティス
 
-Windows Virtual Desktop には、多くの組み込みのセキュリティ コントロールがあります。 このセクションでは、ユーザーとデータの安全性を維持するために使用できるセキュリティ コントロールについて説明します。
+Azure Virtual Desktop には、多くの組み込みのセキュリティ コントロールがあります。 このセクションでは、ユーザーとデータの安全性を維持するために使用できるセキュリティ コントロールについて説明します。
 
 ### <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
-Windows Virtual Desktop のすべてのユーザーと管理者に多要素認証を要求すると、デプロイ全体のセキュリティが向上します。 詳細については、[Windows Virtual Desktop 向け Azure AD Multi-Factor Authentication の有効化](set-up-mfa.md)に関する記事を参照してください。
+Azure Virtual Desktop のすべてのユーザーと管理者に多要素認証を要求すると、デプロイ全体のセキュリティが向上します。 詳細については、[Azure Virtual Desktop 向け Azure AD Multi-Factor Authentication の有効化](set-up-mfa.md)に関する記事を参照してください。
 
 ### <a name="enable-conditional-access"></a>条件付きアクセスを有効にする
 
-[条件付きアクセス](../active-directory/conditional-access/overview.md)を有効にすると、Windows Virtual Desktop 環境へのアクセス権をユーザーに付与する前にリスクを管理できます。 アクセス権を付与するユーザーを決定するときは、そのユーザーが何者か、どのようにサインインするか、どのデバイスが使用されているかについても検討することをお勧めします。
+[条件付きアクセス](../active-directory/conditional-access/overview.md)を有効にすると、Azure Virtual Desktop 環境へのアクセス権をユーザーに付与する前にリスクを管理できます。 アクセス権を付与するユーザーを決定するときは、そのユーザーが何者か、どのようにサインインするか、どのデバイスが使用されているかについても検討することをお勧めします。
 
 ### <a name="collect-audit-logs"></a>監査ログの収集
 
-監査ログの収集を有効にすると、Windows Virtual Desktop に関連するユーザーと管理者のアクティビティを表示できます。 主要な監査ログの例を次に示します。
+監査ログの収集を有効にすると、Azure Virtual Desktop に関連するユーザーと管理者のアクティビティを表示できます。 主要な監査ログの例を次に示します。
 
 -   [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)
 -   [Azure Active Directory アクティビティ ログ](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [セッション ホスト](../azure-monitor/agents/agent-windows.md)
--   [Windows Virtual Desktop 診断ログ](../virtual-desktop/diagnostics-log-analytics.md)
+-   [Azure Virtual Desktop 診断ログ](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Key Vault ログ](../key-vault/general/logging.md)
 
 ### <a name="use-remoteapps"></a>RemoteApp を使用する
@@ -93,11 +93,11 @@ Windows Virtual Desktop のすべてのユーザーと管理者に多要素認�
 
 ### <a name="monitor-usage-with-azure-monitor"></a>Azure Monitor を使用して使用状況を監視する
 
-[Azure Monitor](https://azure.microsoft.com/services/monitor/) を使用して、Windows Virtual Desktop サービスの使用状況と可用性を監視します。 サービスに影響するイベントが発生したときにすぐに通知を受け取れるように、Windows Virtual Desktop サービス用の[サービス正常性アラート](../service-health/alerts-activity-log-service-notifications-portal.md)を作成することを検討してください。
+[Azure Monitor](https://azure.microsoft.com/services/monitor/) を使用して、Azure Virtual Desktop サービスの使用状況と可用性を監視します。 サービスに影響するイベントが発生したときにすぐに通知を受け取れるように、Azure Virtual Desktop サービス用の[サービス正常性アラート](../service-health/alerts-activity-log-service-notifications-portal.md)を作成することを検討してください。
 
 ## <a name="session-host-security-best-practices"></a>セッション ホストのセキュリティに関するベスト プラクティス
 
-セッション ホストは、Azure サブスクリプションと仮想ネットワーク内で実行される仮想マシンです。 Windows Virtual Desktop デプロイの全体的なセキュリティは、セッション ホストに配置するセキュリティ コントロールで決まります。 このセクションでは、セッション ホストのセキュリティを維持するためのベスト プラクティスについて説明します。
+セッション ホストは、Azure サブスクリプションと仮想ネットワーク内で実行される仮想マシンです。 Azure Virtual Desktop デプロイの全体的なセキュリティは、セッション ホストに配置するセキュリティ コントロールで決まります。 このセクションでは、セッション ホストのセキュリティを維持するためのベスト プラクティスについて説明します。
 
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection を有効にする
 
@@ -123,7 +123,7 @@ FSLogix などのプロファイル ソリューションや、VHD ファイル�
 
 ### <a name="set-up-screen-locks-for-idle-sessions"></a>アイドル セッションの画面ロックを設定する
 
-アイドル時間中にマシンの画面をロックし、ロックを解除するためには認証を要求するように Windows Virtual Desktop を構成することによって、望ましくないシステム アクセスを防止することができます。
+アイドル時間中にマシンの画面をロックし、ロックを解除するためには認証を要求するように Azure Virtual Desktop を構成することによって、望ましくないシステム アクセスを防止することができます。
 
 ### <a name="establish-tiered-admin-access"></a>階層化された管理アクセスを確立する
 
@@ -131,7 +131,7 @@ FSLogix などのプロファイル ソリューションや、VHD ファイル�
 
 ### <a name="consider-which-users-should-access-which-resources"></a>どのユーザーがどのリソースにアクセスする必要があるかを検討する
 
-セッション ホストは、既存のデスクトップ デプロイの拡張と考えてください。 ネットワーク リソースへのアクセスは、ネットワークのセグメント化やフィルター処理などを使用して、環境内の他のデスクトップと同じように制御することをお勧めします。 既定では、セッション ホストはインターネット上のあらゆるリソースに接続できます。 Azure Firewall、ネットワーク仮想アプライアンス、またはプロキシーの使用など、トラフィックを制限できるいくつかの方法があります。 トラフィックを制限する必要がある場合は、Windows Virtual Desktop が正常に機能できるように、必ず適切な規則を追加してください。
+セッション ホストは、既存のデスクトップ デプロイの拡張と考えてください。 ネットワーク リソースへのアクセスは、ネットワークのセグメント化やフィルター処理などを使用して、環境内の他のデスクトップと同じように制御することをお勧めします。 既定では、セッション ホストはインターネット上のあらゆるリソースに接続できます。 Azure Firewall、ネットワーク仮想アプライアンス、またはプロキシーの使用など、トラフィックを制限できるいくつかの方法があります。 トラフィックを制限する必要がある場合は、Azure Virtual Desktop が正常に機能できるように、必ず適切な規則を追加してください。
 
 ### <a name="manage-office-pro-plus-security"></a>Office Pro Plus のセキュリティを管理する
 
@@ -151,9 +151,9 @@ FSLogix などのプロファイル ソリューションや、VHD ファイル�
 
 - 不要なソフトウェアがセッション ホストで実行されないようにします。 セッション ホストのセキュリティを強化するために App Locker を有効にできます。これにより、許可したアプリのみをホストで実行できるようになります。
 
-## <a name="windows-virtual-desktop-support-for-trusted-launch"></a>Windows Virtual Desktop でのトラステッド起動のサポート
+## <a name="azure-virtual-desktop-support-for-trusted-launch"></a>Azure Virtual Desktop でのトラステッド起動のサポート
 
-トラステッド起動とは、ルートキット、ブート キット、カーネルレベルのマルウェアなどの攻撃ベクトルによる "スタックの最下部" の脅威から保護することを目的として強化されたセキュリティ機能を提供するものであり、Gen2 Azure VM で利用できます。 トラステッド起動の強化されたセキュリティ機能を以下に示します。これらはすべて、Windows Virtual Desktop でサポートされています。 トラステッド起動の詳細については、「[Azure 仮想マシン用のトラステッド起動 (プレビュー)](../virtual-machines/trusted-launch.md)」を参照してください。
+トラステッド起動とは、ルートキット、ブート キット、カーネルレベルのマルウェアなどの攻撃ベクトルによる "スタックの最下部" の脅威から保護することを目的として強化されたセキュリティ機能を提供するものであり、Gen2 Azure VM で利用できます。 トラステッド起動の強化されたセキュリティ機能を以下に示します。これらはすべて、Azure Virtual Desktop でサポートされています。 トラステッド起動の詳細については、「[Azure 仮想マシン用のトラステッド起動 (プレビュー)](../virtual-machines/trusted-launch.md)」を参照してください。
 
 ### <a name="secure-boot"></a>セキュア ブート
 
@@ -167,7 +167,7 @@ FSLogix などのプロファイル ソリューションや、VHD ファイル�
 
 vTPM は、ハードウェアのトラステッド プラットフォーム モジュール (TPM) の仮想化バージョンであり、VM ごとに TPM の仮想インスタンスがあります。 vTPM により、VM のブート チェーン全体 (UEFI、OS、システム、ドライバー) の整合性測定を実行することで、リモート構成証明が有効になります。 
 
-ご利用の VM 上では、vTPM を有効にしてリモート構成証明を使用することをお勧めします。 vTPM を有効にすると、フルボリューム暗号化を行って保存データを保護する BitLocker 機能を有効にすることもできます。 vTPM を使用するいずれの機能でも、特定の VM にシークレットがバインドされます。 プールされたシナリオでユーザーが Windows Virtual Desktop サービスに接続した場合に、ユーザーをホスト プール内の任意の VM にリダイレクトすることができます。 機能の設計方法によっては、これが影響を及ぼす可能性があります。
+ご利用の VM 上では、vTPM を有効にしてリモート構成証明を使用することをお勧めします。 vTPM を有効にすると、フルボリューム暗号化を行って保存データを保護する BitLocker 機能を有効にすることもできます。 vTPM を使用するいずれの機能でも、特定の VM にシークレットがバインドされます。 プールされたシナリオでユーザーが Azure Virtual Desktop サービスに接続した場合に、ユーザーをホスト プール内の任意の VM にリダイレクトすることができます。 機能の設計方法によっては、これが影響を及ぼす可能性があります。
 
 >[!NOTE]
 >FSLogix プロファイル データを格納している特定のディスクを暗号化する場合は、BitLocker を使用しないでください。
@@ -184,13 +184,13 @@ HVCI は、VBS を使用することで、悪意のあるまたは検証され�
 
 Windows Defender Credential Guard では、VBS を使用してシークレットを分離および保護することで、特権のあるシステム ソフトウェアからのみそれらにアクセスできるようにすることができます。 これにより、それらのシークレットへの不正アクセスや、Pass-the-Hash 攻撃などの資格情報の盗難攻撃が防止されます。
 
-### <a name="deploy-trusted-launch-in-your-windows-virtual-desktop-environment"></a>Windows Virtual Desktop 環境でのトラステッド起動をデプロイする
+### <a name="deploy-trusted-launch-in-your-azure-virtual-desktop-environment"></a>Azure Virtual Desktop 環境でのトラステッド起動をデプロイする
 
-現在、Windows Virtual Desktop では、ホスト プールのセットアップ プロセス中におけるトラステッド起動の自動構成はサポートされていません。 Windows Virtual Desktop 環境でトラステッド起動を使用するには、トラステッド起動を通常どおりにデプロイしてから、目的のホスト プールに手動で仮想マシンを追加する必要があります。
+現在、Azure Virtual Desktop では、ホスト プールのセットアップ プロセス中におけるトラステッド起動の自動構成はサポートされていません。 Azure Virtual Desktop 環境でトラステッド起動を使用するには、トラステッド起動を通常どおりにデプロイしてから、目的のホスト プールに手動で仮想マシンを追加する必要があります。
 
 ## <a name="nested-virtualization"></a>入れ子になった仮想化
 
-次のオペレーティング システムでは、入れ子になった仮想化を Windows Virtual Desktop 上で実行することがサポートされています。
+次のオペレーティング システムでは、入れ子になった仮想化を Azure Virtual Desktop 上で実行することがサポートされています。
 
 - Windows Server 2016
 - Windows Server 2019

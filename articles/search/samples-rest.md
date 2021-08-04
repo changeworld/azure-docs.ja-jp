@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: a7ab48759ac775c1195dedb4143d895bdcdec937
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a903b63ad1da2dbb029fdbeba1106d3090ba3ef
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98956441"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554824"
 ---
 # <a name="rest-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の REST コード サンプル
 
@@ -41,7 +41,7 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [暗号化された BLOB にインデックスを付ける](https://github.com/Azure-Samples/azure-search-postman-samples/commit/f5ebb141f1ff98f571ab84ac59dcd6fd06a46718) | [BLOB インデクサーとスキルセットを使用して暗号化された BLOB にインデックスを付ける方法](search-howto-index-encrypted-blobs.md)に関する記事のソース コード。 この記事では、以前に Azure Key Vault を使用して暗号化されている Azure Blob Storage 内のドキュメントにインデックスを付ける方法について説明します。 |
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> Github で製品、サービス、言語でフィルター処理された Microsoft コード サンプルを検索するために、[サンプル ブラウザー](/samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search)を試してください。
 
 ## <a name="other-samples"></a>その他のサンプル
 

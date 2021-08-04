@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする - Azure
-description: Windows Virtual Desktop で Windows 7 仮想マシンを構成してデプロイする方法。
+title: Azure Virtual Desktop で Windows 7 仮想マシンをデプロイする - Azure
+description: Azure Virtual Desktop で Windows 7 仮想マシンを構成してデプロイする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 65ef7af1247fdb38a7c85c1a8134257942f5ef5b
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4e52594578202046d36e2cbd5a727d4973f26f39
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447031"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751974"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
+# <a name="deploy-a-windows-7-virtual-machine-on-azure-virtual-desktop"></a>Azure Virtual Desktop で Windows 7 仮想マシンをデプロイする
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[記事](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)を参照してください。
 
-Windows Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイするプロセスは、新しいバージョンの Windows を実行している VM の場合とは若干異なります。 このガイドでは、Windows 7 をデプロイする方法について説明します。
+Azure Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイするプロセスは、新しいバージョンの Windows を実行している VM の場合とは若干異なります。 このガイドでは、Windows 7 をデプロイする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,9 +26,9 @@ Windows Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイする
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Windows 7 仮想マシンを構成する
 
-前提条件を完了したら、Windows Virtual Desktop でデプロイするために Windows 7 VM を構成することができます。
+前提条件を満たしたら、Azure Virtual Desktop でデプロイするために Windows 7 VM を構成することができます。
 
-Windows Virtual Desktop で Windows 7 VM を設定するには、次のようにします。
+Azure Virtual Desktop で Windows 7 VM を設定するには、次のようにします。
 
 1. Azure portal にサインインし、Windows 7 Enterprise イメージを検索するか、独自のカスタマイズした Windows 7 Enterprise (x64) イメージをアップロードします。
 2. Windows 7 Enterprise をホスト オペレーティング システムとして使用する 1 つまたは複数の仮想マシンをデプロイします。 仮想マシンでリモート デスクトップ プロトコル (RDP) (TCP/3389 ポート) が許可されていることを確認します。
@@ -50,15 +50,15 @@ Windows Virtual Desktop で Windows 7 VM を設定するには、次のように
 
       - 代わりに Azure portal を使用する場合、VM を追加するホスト プールの [概要] ページに進み、そこでトークンを作成することもできます。
 
-13. [Windows 7 用 Windows Virtual Desktop エージェントをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
-14. [Windows 7 用 Windows Virtual Desktop エージェント マネージャーをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
-15. Windows Virtual Desktop エージェント インストーラーを開き、指示に従います。 メッセージが表示されたら、手順 12 で作成した登録キーを指定します。
-16. Windows Virtual Desktop エージェント マネージャーを開き、指示に従います。
+13. [Windows 7 用 Azure Virtual Desktop エージェントをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
+14. [Windows 7 用 Azure Virtual Desktop エージェント マネージャーをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
+15. Azure Virtual Desktop エージェント インストーラーを開き、指示に従います。 メッセージが表示されたら、手順 12 で作成した登録キーを指定します。
+16. Azure Virtual Desktop エージェント マネージャーを開き、指示に従います。
 17. 必要に応じて、TCP/3389 ポートをブロックし、リモート デスクトップ プロトコルで VM に直接アクセスできないようにします。
 18. 必要に応じて、.NET Framework がバージョン 4.7.2 以降であることを確認します。 フレームワークの更新は、カスタム イメージを作成する場合に特に重要です。
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、Windows Virtual Desktop のデプロイは使用できる状態になりました。 [最新バージョンの Windows Virtual Desktop クライアントをダウンロード](https://aka.ms/wvd/clients/windows)して、使い始めてください。
+これで、Azure Virtual Desktop のデプロイが使用できる状態になりました。 開始するには、[最新バージョンの Azure Virtual Desktop クライアントをダウンロードします](https://aka.ms/wvd/clients/windows)。
 
-Windows Virtual Desktop での Windows 7 に関する既知の問題のリストとトラブルシューティングの手順については、「[Troubleshoot Windows 7 virtual machines in Windows Virtual Desktop](./virtual-desktop-fall-2019/troubleshoot-windows-7-vm.md)」 (Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う) のトラブルシューティングに関する記事を参照してください。
+Azure Virtual Desktop での Windows 7 に関する既知の問題のリストとトラブルシューティングの手順については、[Azure Virtual Desktop での Windows 7 仮想マシンのトラブルシューティング](./virtual-desktop-fall-2019/troubleshoot-windows-7-vm.md)に関する記事を参照してください。

@@ -8,19 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/05/2021
+ms.date: 05/26/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bb2a0cbba9d1aaf4a4465de7d4b994cde45f6df1
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443408"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590182"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
 ページ レイアウト パッケージは定期的に更新され、ページ要素に修正と機能強化が加えられます。 次の変更ログは、各バージョンで導入された変更を示しています。
+
+> [!IMPORTANT]
+> Azure Active Directory B2C では、新しいページ レイアウト バージョンごとに機能強化と修正がリリースされます。 ページ レイアウトのバージョンを最新の状態に保ち、すべてのページ要素に最新のセキュリティの強化、アクセシビリティ標準、フィードバックを反映することを強くお勧めします。
+>
 
 ## <a name="jquery-version"></a>jQuery バージョン
 
@@ -33,6 +37,12 @@ ms.locfileid: "106443408"
 |1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>セルフアサート ページ (selfasserted)
+
+**2.1.6**
+- 別のフィールドにすばやく入力するとパスワード エラーがクリアされる問題を修正しました。
+
+**2.1.5**
+- テキストの中央で編集する際の iOS でのカーソルジャンプの問題を修正しました。
 
 **2.1.4**
 - jQuery のバージョンが 3.5.1 に更新されました。
@@ -93,6 +103,10 @@ ms.locfileid: "106443408"
 
 > [!TIP]
 > 複数のロケールまたはユーザー フローの言語をサポートするようにページをローカライズする場合。 [ローカライズ ID](localization-string-ids.md) に関する記事に、選択したページ バージョンで使用できるローカライズ ID の一覧が記載されています。
+
+**2.1.5**
+- サインイン ページで idp セレクター テンプレートが使用されている場合のタブ オーダーの問題を修正しました。
+- サインイン リンク テキストでのエンコードの問題を修正しました。
 
 **2.1.4**
 - jQuery のバージョンが 3.5.1 に更新されました。

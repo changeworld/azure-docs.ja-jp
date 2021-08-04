@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 76cb2f94c949217c36fdccb8c64a53555bab227c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d3dec6dd3095cb357a6c6b5fa1d18c6d948b782
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606336"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556588"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK バージョン 9 へのアップグレード
 
@@ -41,7 +41,7 @@ Azure Search .NET SDK のバージョン 9 では、Azure Search REST API の 20
 * [AI エンリッチメント](cognitive-search-concept-intro.md)では、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツを充実させて Azure Search インデックスで検索しやすくします。
 * [複合型](search-howto-complex-data-types.md)のサポートにより、Azure Search インデックス内の入れ子になったほとんどすべての JSON 構造をモデル化できます。
 * [オートコンプリート](search-add-autocomplete-suggestions.md)には、自動検索候補の動作を実装するための **サジェスト** API の代替手段が用意されています。 オートコンプリートは、ユーザーが現在入力している単語または語句を "完成" させます。
-* [JsonLines 解析モード](search-howto-index-json-blobs.md)。Azure BLOB インデックスの一部で、JSON エンティティごとに 1 つの検索ドキュメントが新規行として作成されます。
+* [JsonLines 解析モード](search-howto-index-json-blobs.md)。BLOB インデックスの一部で、JSON エンティティごとに 1 つの検索ドキュメントが新規行として作成されます。
 
 ### <a name="new-preview-features-in-version-80-preview"></a>バージョン 8.0-preview での新しいプレビュー機能
 Azure Search .NET SDK のバージョン 8.0-preview は、API バージョン 2017-11-11-Preview を対象とします。 このバージョンには、バージョン 9 と同じ機能が含まれるほか、以下も含まれます。

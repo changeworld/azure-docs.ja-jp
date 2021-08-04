@@ -5,12 +5,12 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 01/06/2021
-ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2395aff1d9174e5a7c99c231b1af8d2997d1926
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935174"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748051"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect のサポートを Debezium と統合する
 
@@ -179,7 +179,7 @@ psql -h my-postgres.postgres.database.azure.com -p 5432 -U testuser@my-postgres 
 **テーブルを作成し、レコードを挿入する**
 
 ```sql
-CREATE TABLE todos (id SERIAL, description VARCHAR(50), todo_status VARCHAR(10), PRIMARY KEY(id));
+CREATE TABLE todos (id SERIAL, description VARCHAR(50), todo_status VARCHAR(12), PRIMARY KEY(id));
 
 INSERT INTO todos (description, todo_status) VALUES ('setup postgresql on azure', 'complete');
 INSERT INTO todos (description, todo_status) VALUES ('setup kafka connect', 'complete');
@@ -187,7 +187,7 @@ INSERT INTO todos (description, todo_status) VALUES ('configure and install conn
 INSERT INTO todos (description, todo_status) VALUES ('start connector', 'pending');
 ```
 
-これでコネクタが動作を開始し、`my-server.public.todos` という名前を持つ Event Hubs トピックに変更データ イベントを送信します。ここで、`my-server` は `database.server.name` の値であり、`public.todos` は (`table.whitelist` 構成に従って) 変更を追跡しているテーブルであるとします。
+これでコネクタが動作を開始し、`my-server.public.todos` という名前を持つ Event Hubs トピックに変更データ イベントを送信します。ここで、`my-server` は `database.server.name` の値であり、`public.todos` は (`table.whitelist` 構成に従って) 変更を追跡しているテーブルであるとします
 
 **Event Hubs トピックを確認する**
 

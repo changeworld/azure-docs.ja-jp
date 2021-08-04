@@ -1,24 +1,24 @@
 ---
-title: MongoDB からデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
+title: MongoDB のデータをコピーする、または MongoDB にデータをコピーする
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから MongoDB にデータをコピーする方法について説明します。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/08/2021
-ms.openlocfilehash: 58a1301205bc299d396644558c14579b1d97378d
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 06/01/2021
+ms.openlocfilehash: c566b3d13a58b1ad6095f9e2443e10d6db33dedb
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484292"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749538"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
+# <a name="copy-data-from-or-to-mongodb-by-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする、または MongoDB にデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB データベースからデータをコピーする、および MongoDB データベースにデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!IMPORTANT]
 >ADF は、MongoDB のネイティブ サポートを向上させる、この新しいバージョンの MongoDB コネクタをリリースします。 旧バージョンとの互換性のため引き続きサポートされている以前の MongoDB コネクタをソリューションで使用している場合は、「[MongoDB コネクタ (レガシ)](connector-mongodb-legacy.md)」の記事を参照してください。
@@ -26,7 +26,7 @@ ms.locfileid: "109484292"
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-MongoDB データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+MongoDB データベースからサポートされる任意のシンク データ ストアにデータをコピーしたり、サポートされる任意のソース データ ストアから MongoDB データベースにデータをコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 具体的には、この MongoDB コネクタでは **4.2 までのバージョン** がサポートされます。
 
@@ -104,7 +104,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、MongoDB ソースでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、MongoDB ソースとシンクでサポートされるプロパティの一覧を示します。
 
 ### <a name="mongodb-as-source"></a>ソースとしての MongoDB
 
@@ -161,15 +161,66 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 ]
 ```
 
+### <a name="mongodb-as-sink"></a>シンクとしての MongoDB
 
-## <a name="export-json-documents-as-is"></a>JSON ドキュメントをそのままエクスポートする
+コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-この MongoDB コネクタを使用すると、JSON ドキュメントを MongoDB コレクションからさまざまなファイル ベースのストアまたは Azure Cosmos DB にそのままエクスポートできます。 このようなスキーマに依存しないコピーを実現するには、データセットの "構造" ("*スキーマ*" とも呼ばれる) のセクションと、コピー アクティビティでのスキーマ マッピングをスキップします。
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | Copy アクティビティのシンクの **type** プロパティには **MongoDbV2Sink** を設定する必要があります。 |はい |
+| writeBehavior |MongoDB データを書き込む方法について説明します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**: 元のドキュメントにも列のマッピングによっても `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBatchSize | **writeBatchSize** プロパティにより、各バッチで書き込むドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。 |いいえ<br />(既定値は **10,000**) |
+| writeBatchTimeout | タイムアウトするまでに一括挿入操作の完了を待つ時間です。許容される値は期間です。 | いいえ<br/>(既定値は **00:30:00** - 30 分) |
+
+>[!TIP]
+>JSON ドキュメントをそのままインポートするには、「[JSON ドキュメントをインポートまたはエクスポートする](#import-and-export-json-documents)」セクションを参照してください。表形式のデータからコピーするには、「[スキーマ マッピング](#schema-mapping)」を参照してください。
+
+**例**
+
+```json
+"activities":[
+    {
+        "name": "CopyToMongoDB",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Document DB output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "MongoDbV2Sink",
+                "writeBehavior": "upsert"
+            }
+        }
+    }
+]
+```
+
+## <a name="import-and-export-json-documents"></a>JSON ドキュメントのインポートとエクスポート
+
+この MongoDB コネクタを使用すると、簡単に次を実行できます。
+
+* 2 つの MongoDB コレクション間でドキュメントをそのままコピーします。
+* Azure Cosmos DB、Azure Blob Storage、Azure Data Lake Store、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースから MongoDB に JSON ドキュメントをインポートします。
+* JSON ドキュメントを MongoDB コレクションからさまざまなファイル ベースのストアにエクスポートします。
+
+このようなスキーマに依存しないコピーを実現するには、データセットの "構造" ("*スキーマ*" とも呼ばれる) のセクションと、コピー アクティビティでのスキーマ マッピングをスキップします。
 
 
 ## <a name="schema-mapping"></a>スキーマ マッピング
 
-MongoDB から表形式のシンクにデータをコピーするには、「[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)」を参照してください。
+MongoDB から表形式のシンクにデータをコピーする、またはシンクから MongoDB にデータをコピーするには、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)に関する記事をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ

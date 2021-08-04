@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 05/02/2021
+ms.date: 06/14/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 49cd718bc0beb5128980e5e25a01cef94e966221
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f7bdadaf8570fe06d7573ff622ed921137229ae1
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754021"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061562"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 - **分析** 。 疑わしいイベント、異常な活動、および傾向を発見できます。
 
 > [!IMPORTANT]
-> Azure SQL Database と Azure Synapse の監査は、可用性とパフォーマンスのために最適化されています。 アクティビティ量が非常に多いか、またはネットワークの負荷が高いときに、Azure SQL Database と Azure Synapse では、操作の続行を可能にするために、一部の監査イベントが記録されない場合があります。
+> Azure SQL Database、Azure Synapse、Azure SQL Managed Instance の監査は、可用性とパフォーマンスのために最適化されています。 アクティビティ量が非常に多いか、またはネットワークの負荷が高いときに、Azure SQL Database、Azure Synapse、Azure SQL Managed Instance では、操作の続行を可能にするために、一部の監査イベントが記録されない場合があります。
 
 ### <a name="auditing-limitations"></a>監査の制限事項
 

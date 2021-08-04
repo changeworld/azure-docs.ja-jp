@@ -4,15 +4,15 @@ description: Azure Data Factory でのコネクタに関する問題のトラブ
 author: jianleishen
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/13/2021
+ms.date: 06/07/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref
-ms.openlocfilehash: c08456b08b6b11745cced97fd92417f07af23dda
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 7407a28c442ce2ddc7fe9df3fdd71c5af4c488bc
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484831"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971899"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -499,7 +499,7 @@ ms.locfileid: "109484831"
   | ソースがフォルダーの場合、指定されたフォルダーの下にあるファイルのスキーマが異なる可能性があります。 | 指定されたフォルダー内のファイルのスキーマが同じであることを確認します。 |
 
 
-## <a name="dynamics-365-common-data-service-and-dynamics-crm"></a>Dynamics 365、Common Data Service、Dynamics CRM
+## <a name="dynamics-365-dataverse-common-data-service-and-dynamics-crm"></a>Dynamics 365、Dataverse (Common Data Service)、および Dynamics CRM
 
 ### <a name="error-code-dynamicscreateserviceclienterror"></a>エラー コード:DynamicsCreateServiceClientError
 
@@ -557,10 +557,21 @@ ms.locfileid: "109484831"
 - **推奨事項**:詳細については、ネットワーク接続または Dynamics サーバーのログを確認してください。 さらに支援が必要な場合は、Dynamics サポートにお問い合わせください。
 
 
-### <a name="error-code--dynamicsfailedtoconnect"></a>エラー コード: DynamicsFailedToConnect 
+### <a name="error-code-dynamicsfailedtoconnect"></a>エラー コード: DynamicsFailedToConnect 
  
  - **メッセージ**: `Failed to connect to Dynamics: %message;` 
  
+ - **原因**: `ERROR REQUESTING ORGS FROM THE DISCOVERY SERVERFCB 'EnableRegionalDisco' is disabled.` が表示されます。あるいはユースケースが次の 3 つの条件の **すべて** に一致する場合は `Unable to Login to Dynamics CRM, message:ERROR REQUESTING Token FROM THE Authentication context - USER intervention required but not permitted by prompt behavior AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access '00000007-0000-0000-c000-000000000000'` が表示されます。
+    - Dynamics 365、Common Data Service、または Dynamics CRM に接続している。
+    - Office365 認証を使用している。
+    - テナントおよびユーザーが Azure Active Directory で[条件付きアクセス](../active-directory/conditional-access/overview.md)に構成されている、あるいは多要素認証が必要である、あるいはその両方 (この Dataverse ドキュメントの[リンク](/powerapps/developer/data-platform/authenticate-office365-deprecation)を参照)。
+    
+    これらの状況下で、接続は 2021 年 6 月 8 日までは成功しました。
+    2021 年 6 月 9 日から、リージョンの Discovery Service の廃止に伴い、接続が失敗し始めます (この[リンク](/power-platform/important-changes-coming#regional-discovery-service-is-deprecated)を参照)。
+ 
+ -  **推奨事項**:  
+    テナントおよびユーザーが Azure Active Directory で[条件付きアクセス](../active-directory/conditional-access/overview.md)に構成されている場合、または多要素認証が必要な場合、およびその両方の場合は、20221 年 6 月 8 日以降は ‘Azure AD サービス プリンシパル’ を使用して認証する必要があります。 詳細な手順についてこちらの[リンク](./connector-dynamics-crm-office-365.md#prerequisites)を参照してください。
+
 
  - **原因**: エラー メッセージに `Office 365 auth with OAuth failed` が表示された場合は、OAuth と互換性のない構成がサーバーに存在している可能性があることを意味します。 
  
@@ -603,7 +614,7 @@ ms.locfileid: "109484831"
  - **推奨事項**: [XrmToolBox](https://www.xrmtoolbox.com/) を使用して接続します。 エラーが引き続き発生する場合は、Dynamics サポート チームに問い合わせてください。 
  
  
-### <a name="error-code--dynamicsoperationfailed"></a>エラー コード: DynamicsOperationFailed 
+### <a name="error-code-dynamicsoperationfailed"></a>エラー コード: DynamicsOperationFailed 
  
 - **メッセージ**: `Dynamics operation failed with error code: %code;, error message: %message;.` 
 
@@ -612,7 +623,7 @@ ms.locfileid: "109484831"
 - **推奨事項**: エラー メッセージ (`Dynamics operation failed with error code: {code}`) から Dynamics 操作のエラー コードを抽出し、「[Web サービス エラー コード](/powerapps/developer/data-platform/org-service/web-service-error-codes)」で詳細を参照してください。 必要に応じて、Dynamics サポート チームに問い合わせることができます。 
  
  
-### <a name="error-code--dynamicsinvalidfetchxml"></a>エラー コード: DynamicsInvalidFetchXml 
+### <a name="error-code-dynamicsinvalidfetchxml"></a>エラー コード: DynamicsInvalidFetchXml 
   
 - **メッセージ**: `The Fetch Xml query specified is invalid.` 
 
@@ -621,7 +632,7 @@ ms.locfileid: "109484831"
 - **推奨事項**: FetchXML でエラーを修正してください。 
  
  
-### <a name="error-code--dynamicsmissingkeycolumns"></a>エラー コード: DynamicsMissingKeyColumns 
+### <a name="error-code-dynamicsmissingkeycolumns"></a>エラー コード: DynamicsMissingKeyColumns 
  
 - **メッセージ**: `Input DataSet must contain keycolumn(s) in Upsert/Update scenario. Missing key column(s): %column;`
  
@@ -630,7 +641,7 @@ ms.locfileid: "109484831"
 - **推奨事項**: ソース データ内にキー列があることを確認するか、ソース列をシンク エンティティのキー列にマップします。 
  
  
-### <a name="error-code--dynamicsprimarykeymustbeguid"></a>エラー コード: DynamicsPrimaryKeyMustBeGuid 
+### <a name="error-code-dynamicsprimarykeymustbeguid"></a>エラー コード: DynamicsPrimaryKeyMustBeGuid 
  
 - **メッセージ**: `The primary key attribute '%attribute;' must be of type guid.` 
  
@@ -639,7 +650,7 @@ ms.locfileid: "109484831"
 - **推奨事項**: ソース データの主キー列が 'Guid' 型であることを確認してください。 
  
 
-### <a name="error-code--dynamicsalternatekeynotfound"></a>エラー コード: DynamicsAlternateKeyNotFound 
+### <a name="error-code-dynamicsalternatekeynotfound"></a>エラー コード: DynamicsAlternateKeyNotFound 
  
 - **メッセージ**: `Cannot retrieve key information of alternate key '%key;' for entity '%entity;'.` 
  
@@ -650,7 +661,7 @@ ms.locfileid: "109484831"
     1. エンティティに対する十分なアクセス許可があることを確認します。 
  
  
-### <a name="error-code--dynamicsinvalidschemadefinition"></a>エラー コード: DynamicsInvalidSchemaDefinition 
+### <a name="error-code-dynamicsinvalidschemadefinition"></a>エラー コード: DynamicsInvalidSchemaDefinition 
  
 - **メッセージ**: `The valid structure information (column name and type) are required for Dynamics source.` 
  
@@ -1003,7 +1014,7 @@ ms.locfileid: "109484831"
 
     低スループットを昇格する場合は、SFTP 管理者に問い合わせて、コンカレント接続数の上限を引き上げるか、次のいずれかを実行できます。
 
-    * セルフホステッド IR を使用している場合は、セルフホステッド IR コンピューターの IP を許可リストに追加します。
+    * セルフホステッド IR を使用している場合は、セルフホステッド IR マシンの IP を許可リストに追加します。
     * Azure IR を使用している場合は、[Azure Integration Runtime IP アドレス](./azure-integration-runtime-ip-addresses.md)を追加します。 SFTP サーバーの許可リストに IP の範囲を追加しない場合は、代わりにセルフホステッド IR を使用してください。
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online リスト

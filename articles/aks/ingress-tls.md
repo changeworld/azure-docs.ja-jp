@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで、自動的に TL
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: 74a44a4f3cb17084c0c2f433ad66a77928e037a6
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 0e592e89e208d8a2ddf1b8fc1d30e53609ac7f41
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006802"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454004"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 
@@ -32,7 +32,9 @@ ms.locfileid: "108006802"
 
 また、この記事では、[カスタム ドメイン][custom-domain]の [DNS ゾーン][dns-zone]が、お使いの AKS クラスターと同じリソース グループにあることも前提としています。
 
-この記事では、[Helm 3][helm] を使用し、NGINX イングレス コントローラーおよび cert-manager をインストールします。 最新リリースの Helm を使用しており、*ingress-nginx* および *jetstack* の Helm リポジトリにアクセスできることを確認します。 アップグレード手順については、[Helm のインストール ドキュメント][helm-install]を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
+この記事では [Helm 3][helm] を使用して、[サポートされているバージョンの Kubernetes][aks-supported versions] に NGINX イングレス コントローラーをインストールします。 最新リリースの Helm を使用しており、*ingress-nginx* および *jetstack* の Helm リポジトリにアクセスできることを確認します。 この記事に記載されている手順は、以前のバージョンの Helm グラフ、NGINX イングレス コントローラー、または Kubernetes と互換性がない可能性があります。
+
+Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。 アップグレード手順については、「[Helm のインストール ドキュメント」を参照してください。Helm の構成と使用について詳しくは、「Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール」を参照してください。][helm-install]
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -464,3 +466,4 @@ kubectl delete namespace ingress-basic
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-supported versions]: supported-kubernetes-versions.md

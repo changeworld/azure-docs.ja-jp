@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 3e9baedafb436bc92f734bf39519918686cec58d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2e54eb0ea8166b32dd4bcc794bfcf401d9196884
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124475"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469247"
 ---
 # <a name="azure-storage-migration-overview"></a>Azure Storage の移行の概要
 
@@ -37,7 +37,9 @@ ms.locfileid: "108124475"
 
 完全な移行は、検出、評価、移行といういくつかの異なるフェーズで構成されています。
 
-![移行の検出、評価、移行の各フェーズを示す図](./media/storage-migration-overview/migration-phases.png)
+| 探索 | 評価 | 移行 |
+| --------- | ---------- | --------- |
+| - 移行するソースを検出する | - 該当する対象のサービスを評価する <br> - 技術的およびコストに関する考慮事項 | - 初期移行 <br> - 再同期 <br> - 最終的な切り替え |
 
 #### <a name="discovery-phase"></a>検出フェーズ
 

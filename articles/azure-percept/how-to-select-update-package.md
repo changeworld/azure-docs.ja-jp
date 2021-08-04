@@ -7,25 +7,25 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 05/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6f32e785af7f302124a11613a40e286fe3b641b9
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 7528e11e24485fecc3e83773d98e119d98ca63cf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488053"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968761"
 ---
 # <a name="how-to-determine-and-download-the-best-update-package-for-ota-and-usb-updates"></a>OTA および USB の更新プログラムに最適な更新パッケージを特定してダウンロードする方法
 
 このページでは、開発キットに最適な更新パッケージを選択する方法と、更新パッケージのダウンロード場所に関するガイダンスを提供します。
 
 デバイスを更新する方法の詳細については、次の記事を参照してください。
-- [Azure Percept DK を無線で更新する](https://docs.microsoft.com/azure/azure-percept/how-to-update-over-the-air)
-- [Azure Percept DK を USB 経由で更新する](https://docs.microsoft.com/azure/azure-percept/how-to-update-via-usb)
+- [Azure Percept DK を無線で更新する](./how-to-update-over-the-air.md)
+- [Azure Percept DK を USB 経由で更新する](./how-to-update-via-usb.md)
 
 
 ## <a name="prerequisites"></a>前提条件
 
-- [設定されて Azure Percept Studio および IoT Hub に接続されている](https://docs.microsoft.com/azure/azure-percept/quickstart-percept-dk-set-up) [Azure Percept DK](https://go.microsoft.com/fwlink/?linkid=2155270)。
+- [設定されて Azure Percept Studio および IoT Hub に接続されている](./quickstart-percept-dk-set-up.md) [Azure Percept DK](https://go.microsoft.com/fwlink/?linkid=2155270)。
 
 ## <a name="identify-the-model-name-and-software-version-of-your-dev-kit"></a>開発キットのモデル名とソフトウェア バージョンを特定する
 正しい更新パッケージを開発キットに適用するには、まず現在実行されているソフトウェア バージョンを確認する必要があります。
@@ -33,28 +33,29 @@ ms.locfileid: "109488053"
 > [!WARNING]
 > 正しくない更新パッケージを適用すると、開発キットが操作不能になる可能性があります。 正しい更新パッケージを適用するには、次の手順に従う必要があります。
 
-1. 開発キットの電源をオンにし、それが Azure Percept Studio に接続されていることを確認します。
-1. Azure Percept Studio で、左側のメニューから **[デバイス]** を選択します。
-1. デバイスの一覧から、現在接続されているデバイスの名前を選択します。 状態は **[接続済み]** と表示されます。
-1. **[デバイスを IoT Hub で開く]** を選択します
-1. 場合によっては Azure アカウントに再びサインインするよう求められることがあります。
-1. **[デバイス ツイン]** を選択します。
-1. デバイス ツインのプロパティをスクロールし、 **"deviceInformation"** の下にある **"model"** と **"swVersion"** を見つけて、その値をメモします。
+オプション 1: 
+1. [Azure Percept Studio](./overview-azure-percept-studio.md) にログインします。
+2. **[デバイス]** で、開発キット デバイスを選択します。
+3. **[全般]** タブで、**モデル** と **SW バージョン** の情報を探します。
+
+オプション 2:
+1. **IoT Hub** サービスの **IoT Edge デバイス** を Microsoft Azure portal から表示します。
+2. デバイスの一覧から開発キット デバイスを選択します。
+3. **[デバイス ツイン]** を選択します。
+4. デバイス ツインのプロパティをスクロールし、 **"deviceInformation"** の下にある **"model"** と **"swVersion"** を見つけて、その値をメモします。
 
 ## <a name="determine-the-correct-update-package"></a>正しい更新パッケージを確認する
 前のセクションで特定した **model** と **swVersion** を使用して、下の表を確認し、ダウンロードする更新パッケージを決定します。
 
 
-|model  |swVersion  |更新方法  |ダウンロード リンク  |
-|---------|---------|---------|---------|
-|PE-101     |2020.108.101.105、 <br>2020.108.114.120、 <br>2020.109.101.122、 <br>2020.109.116.120、 <br>2021.101.106.118        |**USB のみ**         |[USB 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2155734)         |
-|PE-101     |2021.102.108.112、 <br>         |OTA または USB        |[OTA マニフェスト](https://go.microsoft.com/fwlink/?linkid=2155625)<br>[OTA 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2161538)<br>[USB 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2155734)          |
-|APDK-101     |すべての swVersion        |OTA または USB       | [OTA マニフェスト](https://go.microsoft.com/fwlink/?linkid=2162292)<br>[OTA 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2161538)<br>[USB 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2155734)        |
-
+|model  |swVersion  |更新方法  |ダウンロード リンク  |Note  |
+|---------|---------|---------|---------|---------|
+|PE-101     |2020.108.101.105、 <br>2020.108.114.120、 <br>2020.109.101.122、 <br>2020.109.116.120、 <br>2021.101.106.118        |**USB のみ**         |[2021.105.111.112 USB 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2155734)         |5 月リリース (2105)         |
+|PE-101     |2021.102.108.112、 <br>         |OTA または USB        |[2021.105.111.112 OTA マニフェスト (PE-101)](https://go.microsoft.com/fwlink/?linkid=2155625)<br>[2021.105.111.112 OTA 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2161538)<br>[2021.105.111.112 USB 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2155734)          |5 月リリース (2105)         |
+|APDK-101     |すべての swVersion        |OTA または USB       | [2021.105.111.112 OTA マニフェスト (APDK-101)](https://go.microsoft.com/fwlink/?linkid=2163554)<br>[2021.105.111.112 OTA 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2163456)<br>[2021.105.111.112 USB 更新パッケージ](https://go.microsoft.com/fwlink/?linkid=2163555)        |5 月リリース (2105)         |
 
 
 ## <a name="next-steps"></a>次のステップ
 前のセクションで特定した方法と更新パッケージを使用して、開発キットを更新します。
-- [Azure Percept DK を無線で更新する](https://docs.microsoft.com/azure/azure-percept/how-to-update-over-the-air)
-- [Azure Percept DK を USB 経由で更新する](https://docs.microsoft.com/azure/azure-percept/how-to-update-via-usb)
-
+- [Azure Percept DK を無線で更新する](./how-to-update-over-the-air.md)
+- [Azure Percept DK を USB 経由で更新する](./how-to-update-via-usb.md)

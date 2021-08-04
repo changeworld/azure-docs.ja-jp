@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 4a3c48a5be457a7e789c4ce05d4faf8cbb50daab
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 060d09d17bf622af5ca5c062e00d2961a0a2b566
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769779"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572458"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>PowerShell または Az CLI を使用して Azure VM で SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "108769779"
 この記事では PowerShell と Az CLI を使用して可用性グループ環境を構成しますが、 [Azure portal](availability-group-azure-portal-configure.md)から [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
 
 > [!NOTE]
-> これで、Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)に関するページを参照してください。 
+> これで、Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、「[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -189,6 +189,12 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 ```
 
 ---
+
+## <a name="configure-quorum"></a>クォーラムを構成する
+
+ディスク監視は最も回復性の高いクォーラム オプションですが、Azure 共有ディスクが必要で、これにより可用性グループに制限がいくつか適用されます。 そのため、クラウド監視は、Azure VM 上で SQL Server 向け可用性グループをホストするクラスターに推奨されるクォーラム ソリューションです。 
+
+クラスターに多数の投票がある場合は、ビジネス ニーズに最適な[クォーラム ソリューション](hadr-cluster-quorum-configure-how-to.md)を構成します。 詳細については、[SQL Server VM でのクォーラム](hadr-windows-server-failover-cluster-overview.md#quorum)に関する記事をご覧ください。 
 
 
 ## <a name="validate-cluster"></a>クラスターを検証する 
@@ -514,15 +520,11 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次の記事を参照してください。 
+可用性グループがデプロイされたら、[Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)を最適化することを検討します。 
 
-* [SQL Server VM の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [SQL Server VM の FAQ](frequently-asked-questions-faq.md)
-* [SQL Server VM のリリース ノート](../../database/doc-changes-updates-release-notes.md)
-* [SQL Server VM のライセンス モデルの切り替え](licensing-model-azure-hybrid-benefit-ahb-change.md)
-* [Always On 可用性グループの概要 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)   
-* [Always On 可用性グループ用のサーバー インスタンスの構成 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/configuration-of-a-server-instance-for-always-on-availability-groups-sql-server)   
-* [可用性グループの管理 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
-* [可用性グループの監視 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
-* [Always On 可用性グループ用の Transact-SQL ステートメントの概要 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [Always On 可用性グループ用の PowerShell コマンドレットの概要 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)
+
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server の Always On 可用性グループ](availability-group-overview.md)
+- [Always On 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

@@ -8,16 +8,22 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 58377252e163894cdfee83d9c68146a9131f94c5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: c9ee7e475957ca41c9094cab3b149f53e48a3764
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288780"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900911"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Cloud Services (延長サポート) の拡張機能
 
-拡張機能は、ロールでのデプロイ後の構成および自動化タスクを提供する小さなアプリケーションです。 たとえば、リモート デスクトップ拡張機能を使用して、クラウド サービス (延長サポート) のデプロイ中にロールでリモート デスクトップ接続を有効にすることができます。  
+拡張機能は、ロールでのデプロイ後の構成および自動化タスクを提供する小さなアプリケーションです。 たとえば、リモート デスクトップ拡張機能を使用して、クラウド サービス (延長サポート) のデプロイ中にロールでリモート デスクトップ接続を有効にすることができます。 
+
+## <a name="key-vault-extension"></a>Key Vault 拡張機能
+
+Key Vault VM 拡張機能を使用すると、Azure キー コンテナーに保存されている証明書が自動更新されます。 この拡張機能は、具体的には、キー コンテナーに保存されている観察対象の証明書の一覧を監視し、変更が検出されると対応する証明書を取得してインストールします。 また、クラウド サービス (延長サポート) の証明書のリージョン間またはサブスクリプション間の参照も可能です。
+
+詳細については、[「クラウド サービス用 のキー コンテナー拡張機能の構成 (延長サポート)」](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-key-vault-virtual-machine)を参照してください。
 
 ## <a name="remote-desktop-extension"></a>リモート デスクトップ拡張機能
 

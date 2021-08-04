@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 03/17/2021
+ms.date: 06/10/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 32893a29b0fa6a22ca0b9d9a64281f6fb5df1cae
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 668584c7c254c1d1f200050154256621ba220b5a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888622"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111981802"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning ワークスペースをセキュリティで保護する
 
@@ -56,8 +56,8 @@ Azure Private Link では、プライベート エンドポイントを使用し
 
 プライベート リンク ワークスペースの設定の詳細については、「[Private Link を構成する方法](how-to-configure-private-link.md)」を参照してください。
 
-> [!Warning]
-> プライベート エンドポイントを使用してワークスペースをセキュリティで保護しても、エンドツーエンドのセキュリティは保証されません。 ソリューションの個々のコンポーネントをセキュリティで保護するには、この記事の残りの手順と VNet シリーズの手順に従う必要があります。
+> [!WARNING]
+> プライベート エンドポイントを使用してワークスペースをセキュリティで保護しても、エンドツーエンドのセキュリティは保証されません。 ソリューションの個々のコンポーネントをセキュリティで保護するには、この記事の残りの手順と VNet シリーズの手順に従う必要があります。 たとえば、ワークスペースでプライベート エンドポイントを使用していても、Azure Storage アカウントが VNet の内側にない場合、ワークスペースとストレージの間のトラフィックでは、セキュリティのために VNet は使用されません。
 
 ## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Azure のストレージ アカウントをサービス エンドポイントで保護する
 
@@ -94,6 +94,9 @@ Azure Machine Learning では、サービス エンドポイントまたはプ�
 
    [![Azure portal 内の [ファイアウォールと仮想ネットワーク] ウィンドウ](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+> [!TIP]
+> サービス エンドポイントを使用する場合は、パブリック アクセスを無効にすることもできます。 詳細については、[パブリック読み取りアクセスの禁止](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)に関するページをご覧ください。
+
 ## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Azure のストレージ アカウントをプライベート エンドポイントで保護する
 
 Azure Machine Learning では、サービス エンドポイントまたはプライベート エンドポイントを使用するようにストレージ アカウントを構成できます。 ストレージ アカウントでプライベート エンドポイントが使用される場合、既定のストレージ アカウントにプライベート エンドポイントを 2 つ構成する必要があります。
@@ -106,6 +109,8 @@ Azure Machine Learning では、サービス エンドポイントまたはプ�
 
 詳細については、「[Azure Storage のプライベート エンドポイントを使用する](../storage/common/storage-private-endpoints.md)」を参照してください。
 
+> [!TIP]
+> プライベート エンドポイントを使用する場合は、パブリック アクセスを無効にすることもできます。 詳細については、[パブリック読み取りアクセスの禁止](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)に関するページをご覧ください。
 ## <a name="secure-datastores-and-datasets"></a>データストアとデータセットをセキュリティで保護する
 
 このセクションでは、仮想ネットワークの SDK エクスペリエンスでデータストアとデータセットを使用する方法について説明します。 スタジオ エクスペリエンスの詳細については、[仮想ネットワークで Azure Machine Learning スタジオを使用する](how-to-enable-studio-virtual-network.md)方法に関するページを参照してください。
@@ -238,6 +243,8 @@ Azure Machine Learning では、関連付けられた Key Vault インスタン�
     
     詳細については、[update()](/python/api/azureml-core/azureml.core.workspace.workspace#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) メソッド リファレンスを参照してください。
 
+> [!TIP]
+> ACR が VNet の背後にある場合は、その ACR への[パブリック アクセスを無効](../container-registry/container-registry-access-selected-networks.md#disable-public-network-access)にすることもできます。
 ## <a name="next-steps"></a>次のステップ
 
 この記事は、全 5 パートからなる仮想ネットワーク シリーズのパート 2 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。

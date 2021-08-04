@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 04/06/2021
-ms.openlocfilehash: 381ee45bd678ef22222483675ddf001e16970628
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 72cae8aee9b1bcca286696b5685ef69b84167a8e
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552055"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537856"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
@@ -37,12 +37,11 @@ ms.locfileid: "106552055"
 | [**Azure Container**](marketplace-containers.md) | 対象となるソリューションが、Kubernetes ベースの Azure コンテナー サービスとしてプロビジョニングされる Docker コンテナー イメージであるときは、オファーの種類として Azure コンテナーを使用します。 |
 | [**Azure 仮想マシン**](marketplace-virtual-machines.md) | 顧客に関連付けられているサブスクリプションに仮想アプライアンスをデプロイするときは、オファーの種類として仮想マシンを使用します。 |
 | [**コンサルティング サービス**](./plan-consulting-service-offer.md) | コンサルティング サービスは、Azure、Dynamics 365、または Power Suite サービスの使用をサポートし、拡張するために、お客様とサービスを結ぶうえで役立ちます。|
-| [**Dynamics 365**](appsource-offer-publishing-guide.md) | Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps、および Finance and Operations アプリを構築または拡張する AppSource のオファーを公開できます。|
-| [**IoT Edge モジュール**](iot-edge-module.md) | Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービス、独自ソリューション固有のコードのいずれかを含めることができます。 |
-| [**管理されたサービス**](./plan-managed-service-offer.md) | 管理サービス オファーを作成し、[Azure Lighthouse](../lighthouse/overview.md) を使用して顧客が委任したサブスクリプションまたはリソース グループを管理できます。|
-| [**Power BI アプリ**<br/>**Microsoft 365**](appsource-offer-publishing-guide.md) | Power BI と Microsoft 365 上にビルドされる、または拡張する AppSource のオファーを公開できます。|
+| [**Dynamics 365**](marketplace-dynamics-365.md) | Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps、および Finance and Operations アプリを構築または拡張する AppSource のプランを公開します。|
+| [**IoT Edge モジュール**](marketplace-iot-edge.md) | Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービス、独自ソリューション固有のコードのいずれかを含めることができます。 |
+| [**管理されたサービス**](./plan-managed-service-offer.md) | 管理サービス プランを作成し、[Azure Lighthouse](../lighthouse/overview.md) を使用して顧客が委任したサブスクリプションまたはリソース グループを管理します。|
+| [**Power BI アプリ**<br/>**Microsoft 365**](marketplace-dynamics-365.md) | Power BI と Microsoft 365 上に構築または拡張される AppSource のプランを公開します。|
 | [**サービスとしてのソフトウェア**](plan-saas-offer.md) | サービスとしてのソフトウェア (SaaS) ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS を使用します。 SaaS オファーのシングル サインオン要件については、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](azure-ad-saas.md)」を参照してください。 |
-
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 9cf4caf77d14dd1296276ca48827c170ef265e9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4761550c3d08b66fc949c9b6e2950dc08278eea8
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718065"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592234"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor の動的しきい値を使用したメトリック アラート
 
@@ -22,7 +22,7 @@ ms.locfileid: "101718065"
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>動的な条件タイプが推奨される理由とその状況
 
-1. **スケーラブル アラート** – 動的なしきい値の警告ルールは、一度に数百のメトリックシリーズに合わせて調整されたしきい値を作成できますが、1つのメトリックでアラートルールを定義するのと同じくらい簡単です。 作成および管理するアラートの量を減らすことができます。 Azure portal または Azure Resource Manager API を使用して作成できます。 スケーラブルな方法が特に役立つのは、メトリックのディメンションを処理する場合、あるいは、すべてのサブスクリプションのリソースなどの複数のリソースに適用する場合です。  [動的しきい値を使用したメトリック アラートを構成するためにテンプレートを使用する方法はこちらをご覧ください](./alerts-metric-create-templates.md)。
+1. **スケーラブル アラート** – 動的なしきい値の警告ルールは、一度に数百のメトリックシリーズに合わせて調整されたしきい値を作成できますが、1つのメトリックでアラートルールを定義するのと同じくらい簡単です。 作成および管理するアラートの量を減らすことができます。 Azure portal または Azure Resource Manager API を使用して作成できます。 スケーラブルな方法が特に役立つのは、メトリックのディメンションを処理する場合、あるいは、すべてのサブスクリプションのリソースなどの複数のリソースに適用する場合です。 [動的しきい値を使用したメトリック アラートを構成するためにテンプレートを使用する方法はこちらをご覧ください](./alerts-metric-create-templates.md)。
 
 1. **スマート メトリック パターン認識** – MLテクノロジーを使用して、メトリックパターンを自動的に検出し、時間の経過に伴うメトリックの変化に適応できます。これには、季節性（時間/日/週）が含まれることがあります。 時間経過に伴うメトリックの動きに合わせて、パターンからの偏差に基づいてアラートを生成することにより、各メトリックの 「正しい」しきい値を知っておくという負担が軽減されます。 動的しきい値で使用される ML アルゴリズムは、予期されるパターンを含まない、ノイズの多い (低精度) しきい値またはワイドな (低再現率) しきい値を抑制するように設計されています。
 

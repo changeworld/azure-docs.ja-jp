@@ -1,22 +1,22 @@
 ---
-title: 新しいセッション ホストを使用して既存の Windows Virtual Desktop (クラシック) ホスト プールを拡張する - Azure
-description: Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
+title: 新しいセッション ホストを使用して既存の Azure Virtual Desktop (クラシック) ホスト プールを拡張する - Azure
+description: Azure Virtual Desktop で新しいセッション ホストを使用して既存のホスト プールを拡張する方法 (クラシック)。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: e459737db621dfb55b5534e60989437b293e57a9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551953"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745081"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-azure-virtual-desktop-classic"></a>Azure Virtual Desktop で新しいセッション ホストを使用して既存のホスト プールを拡張する (クラシック)。
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../expand-existing-host-pool.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../expand-existing-host-pool.md)を参照してください。
 
 ホスト プール内の使用率を上げた場合、新しいセッション ホストで既存のホスト プールを拡張して、新しい負荷を処理する必要がある場合があります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "106551953"
 ホスト プールとセッション ホスト VM を最初に作成したときから、次の情報も必要になります。
 
 - VM のサイズ、イメージ、および名前のプレフィックス
-- ドメイン参加と Windows Virtual Desktop テナント管理者の資格情報
+- ドメイン参加と Azure Virtual Desktop テナント管理者の資格情報
 - 仮想ネットワーク名とサブネット名
 
 以下の 3 つのセクションは、ホスト プールを拡張するために使用できる 3 つの方法です。 いずれでも使いやすいデプロイ ツールを使用できます。
@@ -83,7 +83,7 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 3.    *[リージョン]* には、既存のホスト プール セッション ホスト VM が配置されている同じリージョンを選択します。
 4.    *[Hostpool name]\(ホストプール名\)* には、既存のホスト プールの名前を入力します。
 5.    *[Desktop type]\(デスクトップの種類\)* では、既存のホスト プールと同じデスクトップの種類を選択します。
-6.    *[Default desktop users]\(既定のデスクトップ ユーザー\)* には、Windows Virtual Desktop クライアントにサインインし、Azure Marketplace のオファリングが終了した後にデスクトップにアクセスできるようにする追加ユーザーのコンマ区切り一覧を入力します。 たとえば、user3@contoso.com と user4@contoso.com に対してアクセス権を割り当てる場合、「user3@contoso.com,user4@contoso.com」と入力します。
+6.    *[既定のデスクトップ ユーザー]* には、Azure Virtual Desktop クライアントにサインインし、Azure Marketplace のオファリングが終了した後にデスクトップにアクセスできるようにする追加ユーザーのコンマ区切り一覧を入力します。 たとえば、user3@contoso.com と user4@contoso.com に対してアクセス権を割り当てる場合、「user3@contoso.com,user4@contoso.com」と入力します。
 7.    **[次へ :Configure virtual machine]\(仮想マシンの構成\)** を選択します。
 
 >[!NOTE]
@@ -109,14 +109,14 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 1. *[イメージ ソース]* と *[Image OS version]\(イメージの OS バージョン\)* には、ホスト プールを最初に作成したときに指定したものと同じ情報を入力します。
 2. *[AD domain join UPN]\(AD ドメイン参加 UPN\)* と関連付けられているパスワードには、VM を Active Directory ドメインに参加させるために最初にホスト プールを作成したときに指定したものと同じ情報を入力します。 これらの資格情報は、仮想マシンでローカル アカウントを作成するために使用されます。 後でこれらのローカル アカウントをリセットして資格情報を変更できます。
 3. 仮想ネットワーク情報については、既存のホスト プール セッション ホスト VM が配置されている同じ仮想ネットワークとサブネットを選択します。
-4. **[次へ :Windows Virtual Desktop information]\(Windows Virtual Desktop 情報\)** を選択します。
+4. **[次 へ: Azure Virtual Desktop 情報を構成する]** を選択します。
 
-### <a name="windows-virtual-desktop-information"></a>Windows Virtual Desktop の情報
+### <a name="azure-virtual-desktop-information"></a>Azure Virtual Desktop の情報
 
 このセクションのすべてのパラメーター値は、ホスト プールとセッション ホスト VM を最初に作成したときに指定したものと一致する必要があります。
 
-1. *[Windows Virtual Desktop tenant group name]\(Windows Virtual Desktop テナント グループ名\)* に、テナントが含まれるテナント グループの名前を入力します。 具体的なテナント グループ名を指定されていないかぎり、既定値のままにしてください。
-2. *[Windows Virtual Desktop tenant name]\(Windows Virtual Desktop テナント名\)* に、このホスト プールの作成先となるテナントの名前を入力します。
+1. *[Azure Virtual Desktop テナント グループ名]* に、テナントが含まれるテナント グループの名前を入力します。 具体的なテナント グループ名を指定されていないかぎり、既定値のままにしてください。
+2. *[Azure Virtual Desktop テナント名]* に、このホスト プールの作成先となるテナントの名前を入力します。
 3. ホスト プールとセッション ホスト VM を最初に作成したときに使用したものと同じ資格情報を指定します。 サービス プリンシパルを使用している場合、サービス プリンシパルが配置されている Azure Active Directory インスタンスの ID を入力します。
 4. **[次へ :確認と作成]** をクリックします。
 
@@ -126,7 +126,7 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 
 ## <a name="next-steps"></a>次のステップ
 
-既存のホスト プールを拡張したので、Windows Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
+既存のホスト プールを拡張したので、Azure Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
 
 - [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10-2019.md)
 - [Web クライアントに接続する](connect-web-2019.md)

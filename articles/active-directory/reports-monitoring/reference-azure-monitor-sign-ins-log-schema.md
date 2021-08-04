@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/12/2021
+ms.date: 05/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bad8ae86827144269e816a6c2e01d6af3f4d88ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa9bc861ffdc2c8671f062bb41499c8ffee1123d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225420"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965622"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Monitor での Azure AD サインイン ログ スキーマを解釈する
 
@@ -151,8 +151,8 @@ ms.locfileid: "103225420"
 | OperationVersion | - | クライアントによって要求された REST API のバージョン。 |
 | カテゴリ | - | サインインの場合、この値は常に *SignIn* です。 | 
 | TenantId | - | ログに関連付けられたテナント GUID。 |
-| ResultType | - | サインイン操作の結果は、*Success* または *Failure* です。 | 
-| ResultSignature | - | サインイン操作にエラーがある場合は、そのエラー コードが含まれます。 |
+| ResultType | - | サインイン操作の結果は、成功した場合は `0`、失敗した場合は "*エラー コード*" です。 | 
+| ResultSignature | - | この値は常に *None* です。 |
 | ResultDescription | 該当なしまたは空白 | サインイン操作のエラーの説明を指定します。 |
 | riskDetail | riskDetail | 危険なユーザー、サインイン、リスク検出の特定の状態の背後にある "理由" を提供します。 値には `none`、`adminGeneratedTemporaryPassword`、`userPerformedSecuredPasswordChange`、`userPerformedSecuredPasswordReset`、`adminConfirmedSigninSafe`、`aiConfirmedSigninSafe`、`userPassedMFADrivenByRiskBasedPolicy`、`adminDismissedAllRiskForUser`、`adminConfirmedSigninCompromised`、`unknownFutureValue` があります。 値 `none` は、ユーザーまたはサインインに対してこれまで何のアクションも行われていないことを意味します。 <br>**注:** このプロパティの詳細には Azure AD Premium P2 ライセンスが必要です。 その他のライセンスからは、値 `hidden` が返されます。 |
 | riskEventTypes | riskEventTypes | サインインに関連するリスク検出の種類。 値には `unlikelyTravel`、`anonymizedIPAddress`、`maliciousIPAddress`、`unfamiliarFeatures`、`malwareInfectedIPAddress`、`suspiciousIPAddress`、`leakedCredentials`、`investigationsThreatIntelligence`、`generic`、`unknownFutureValue` があります。 |
@@ -171,5 +171,5 @@ ms.locfileid: "103225420"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
+* [Azure Monitor で監査ログのスキーマを解釈する](./overview-reports.md)
 * [Azure でのプラットフォーム ログの詳細について読む](../../azure-monitor/essentials/platform-logs-overview.md)

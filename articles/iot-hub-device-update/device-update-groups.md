@@ -6,12 +6,12 @@ ms.author: aysancag
 ms.date: 2/09/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 18388f067ccb5b8a8876aeae685664694c207613
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa3ee7e5b92044c35ac1856309f7265ad06923a1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101678630"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083532"
 ---
 # <a name="device-groups"></a>デバイス グループ
 
@@ -19,11 +19,11 @@ ms.locfileid: "101678630"
 デバイスを整理するために、複数のデバイス グループを作成することも選択できます。 たとえば、Contoso は、テスト ラボ内のデバイスに "Flighting" デバイス グループを使用し、そのフィールド チームがオペレーション センターで使用するデバイスに "Evaluation" デバイス グループを使用する場合があります。 さらに、Contoso は、地域のタイムゾーンと整合するスケジュールでデバイスを更新できるように、地理的地域に基づいて運用デバイスをグループ化することを選択する場合があります。 
 
 
-## <a name="using-device-twin-tag-for-device-group-creation"></a>デバイス グループの作成にデバイス ツイン タグを使用する
+## <a name="using-device-or-module-twin-tag-for-device-group-creation"></a>デバイス グループの作成にデバイスまたはモジュール ツイン タグを使用する
 
-デバイス ツイン タグを使用すると、ユーザーがデバイスをグループ化できます。 デバイスをグループ化できるようにするには、それらに ADUGroup キーとデバイス ツインの値が必要です。
+タグを使用すると、ユーザーがデバイスをグループ化できます。 デバイスをグループ化できるようにするには、それらに ADUGroup キーとデバイスまたはモジュール ツインの値が必要です。
 
-### <a name="device-twin-tag-format"></a>デバイス ツインのタグ形式
+### <a name="device-or-module-twin-tag-format"></a>デバイスまたはモジュール ツイン タグの形式
 
 ```markdown
 "tags": {
@@ -35,8 +35,8 @@ ms.locfileid: "101678630"
 ## <a name="uncategorized-device-group"></a>未分類のデバイス グループ
 
 未分類は、次のようなデバイスをグループ化するために使用される予約語です。
-- ADUGroup デバイス ツイン タグがありません。
-- ADUGroup デバイス ツイン タグはありますが、このグループ名でグループが作成されていません。
+- ADUGroup デバイスまたはモジュール ツイン タグがありません。
+- ADUGroup デバイスまたはモジュール ツイン タグはありますが、このグループ名でグループが作成されていません。
 
 たとえば、次のデバイス ツイン タグを持つデバイスを考えてみます。
 

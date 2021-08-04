@@ -7,12 +7,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: 77735166fafe9d39dff483baa89a4b31db31275d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1ba8ce3e84439a3f9419e0c038b93fb298370b9
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577940"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591334"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search で Cognitive Services リソースをスキルセットにアタッチする
 
@@ -144,7 +144,7 @@ Content-Type: application/json
 
 ## <a name="example-estimate-costs"></a>例: コストの見積もり
 
-コグニティブ検索のインデックス作成に関連するコストを見積もるには、まず、いくつかの試算ができるように、平均的なドキュメントがどのようなものかを把握することから開始します。 たとえば、次のように概算することができます。
+Cognitive Search のインデックス作成に関連するコストを見積もるには、まず、いくつかの試算ができるように、平均的なドキュメントがどのようなものかを把握することから開始します。 たとえば、次のように概算することができます。
 
 + 1000 PDF。
 + それぞれ 6 ページ。

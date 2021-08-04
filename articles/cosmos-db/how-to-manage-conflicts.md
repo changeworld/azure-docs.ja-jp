@@ -1,24 +1,27 @@
 ---
 title: Azure Cosmos DB でリージョン間の競合を管理する
 description: 最終書き込み者優先またはカスタムの競合解決ポリシーを作成して、Azure Cosmos DB での競合を管理する方法について説明します
-author: anfeldma-ms
+author: fsautomata
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
-ms.author: anfeldma
+ms.author: elioda
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd4743657e6ac45b37d1e5eb7b2687ab6fc52270
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339344"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591640"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 マルチリージョン書き込みを使用すると、複数のクライアントが同じ項目に書き込んだときに競合が発生する場合があります。 競合が発生した場合は、さまざまな競合解決ポリシーを使用してその競合を解決できます。 この記事では、競合解決ポリシーを管理する方法について説明します。
+
+> [!TIP]
+> 競合解決ポリシーは、コンテナーの作成時にのみ指定できます。コンテナーの作成後には変更できません。
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>最終書き込み者優先競合解決ポリシーを作成する
 

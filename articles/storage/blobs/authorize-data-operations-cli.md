@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 53ad6dd922c1ccebd79aebcd2966b23b38de00e7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d02d18bec76578ec93d238d6dba284a8447428e9
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776899"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901653"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Azure CLI で BLOB データへのアクセスの承認方法を選択する
 
@@ -46,7 +46,7 @@ BLOB データの読み取りと書き込みのための Azure CLI コマンド�
 
 Azure AD 資格情報で Azure CLI にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが Azure CLI によって自動的に使用され、BLOB または Queue storage に対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
-BLOB データへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[Azure RBAC を使用した Azure Storage データへのアクセス権の管理](../common/storage-auth-aad-rbac-portal.md)に関する記事を参照してください。
+BLOB データへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)」を参照してください。
 
 ### <a name="permissions-for-calling-data-operations"></a>データ操作呼び出しのアクセス許可
 
@@ -58,7 +58,7 @@ Azure Storage 拡張機能は、BLOB データの操作でサポートされて�
 
 次の例では、Azure AD の資格情報を使用して Azure CLI からコンテナーを作成する方法を示しています。 コンテナーを作成するには、Azure CLI にログインする必要があります。また、リソース グループとストレージ アカウントが必要になります。 これらのリソースの作成方法については、次をご覧ください。 [クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、リストする ](../blobs/storage-quickstart-blobs-cli.md)。
 
-1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-portal.md)」を参照してください。
+1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)」を参照してください。
 
     > [!IMPORTANT]
     > Azure ロールの割り当ての反映には数分かかることがあります。
@@ -114,5 +114,5 @@ az storage container create \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure CLI を使用して、BLOB およびキュー データにアクセスするための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-cli.md)
+- [BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)
 - [Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する](../common/storage-auth-aad-msi.md)

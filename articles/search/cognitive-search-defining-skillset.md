@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ec7f9a874bff6eaa0e23f5fb926bf031f2b059d
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935451"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555973"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search で AI エンリッチメント パイプラインにスキルセットを作成する方法 
 
@@ -84,7 +84,7 @@ Content-Type: application/json
       "outputs": [
         {
           "name": "organizations",
-          "targetName": "organizations"
+          "targetName": "orgs"
         }
       ]
     },
@@ -110,11 +110,11 @@ Content-Type: application/json
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/organizations/*",
+      "context": "/document/orgs/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/organizations/*"
+          "source": "/document/orgs/*"
         }
       ],
       "outputs": [
@@ -144,11 +144,11 @@ Content-Type: application/json
 
 ## <a name="add-built-in-skills"></a>組み込みのスキルを追加する
 
-最初のスキルを見てみましょう。組み込みの[エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)です。
+最初のスキルを見てみましょう。組み込みの[エンティティ認識スキル](cognitive-search-skill-entity-recognition-v3.md)です。
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -161,7 +161,7 @@ Content-Type: application/json
       "outputs": [
         {
           "name": "organizations",
-          "targetName": "organizations"
+          "targetName": "orgs"
         }
       ]
     }
@@ -169,19 +169,21 @@ Content-Type: application/json
 
 * どの組み込みのスキルにも、`odata.type`、`input`、および `output` プロパティがあります。 スキル固有のプロパティによって、そのスキルに適用できる追加の情報が提供されます。 エンティティの認識では、`categories` は、事前トレーニング済みモデルが認識できる固定されたエンティティ型セットのうちのエンティティの 1 つです。
 
-* スキルごとに ```"context"``` が必要です。 コンテキストは、操作が実行されるレベルを表します。 上記のスキルでは、コンテキストはドキュメント全体であり、つまり、認識スキルがドキュメントごとに 1 回呼び出されることになります。 出力もそのレベルで生成されます。 具体的には、```"organizations"``` は、```"/document"``` のメンバーとして生成されます。 ダウンストリーム スキルでは、新しく作成されたこの情報を ```"/document/organizations"``` として参照できます。  ```"context"``` フィールドが明示的に設定されていない場合、このドキュメントが既定のコンテキストになります。
+* スキルごとに ```"context"``` が必要です。 コンテキストは、操作が実行されるレベルを表します。 上記のスキルでは、コンテキストはドキュメント全体であり、つまり、認識スキルがドキュメントごとに 1 回呼び出されることになります。 出力もそのレベルで生成されます。 このスキルは、```orgs``` としてキャプチャされる ```organizations``` というプロパティを返します。 具体的には、```"orgs"``` は ```"/document"``` のメンバーとして追加されます。 ダウンストリーム スキルでは、新しく作成されたエンリッチメントを ```"/document/orgs"``` として参照できます。  ```"context"``` フィールドが明示的に設定されていない場合、このドキュメントが既定のコンテキストになります。
 
-* このスキルには、ソースの入力が ```"/document/content"``` に設定されている "text" と呼ばれる入力があります。 このスキル (エンティティ認識) は、各ドキュメントの *content* フィールド (Azure BLOB インデクサーによって作成される標準のフィールドです) 上で動作します。 
+* あるスキルからの出力が、別のスキルからの出力と競合する可能性があります。 ```result``` プロパティを返すスキルが複数ある場合は、スキルの出力の ```targetName``` プロパティを使用して、スキルからの指定された JSON 出力を別のプロパティにキャプチャできます。
 
-* このスキルには、```"organizations"``` と呼ばれる出力があります。 出力は、処理中にのみ存在します。 この出力をダウンストリーム スキルの入力に連結するには、```"/document/organizations"``` としてこの出力を参照します。
+* このスキルには、ソースの入力が ```"/document/content"``` に設定されている "text" と呼ばれる入力があります。 このスキル (エンティティ認識) は、各ドキュメントの *content* フィールド (Azure BLOB インデクサーによって作成される標準のフィールド) で動作します。 
 
-* 特定のドキュメントでは、```"/document/organizations"``` の値は、テキストから抽出された組織の配列になります。 次に例を示します。
+* このスキルには、```orgs``` プロパティでキャプチャされる ```"organizations"``` という 1 つの出力があります。 出力は、処理中にのみ存在します。 この出力をダウンストリーム スキルの入力に連結するには、```"/document/orgs"``` としてこの出力を参照します。
+
+* 特定のドキュメントでは、```"/document/orgs"``` の値は、テキストから抽出された組織の配列になります。 次に例を示します。
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-状況によっては、配列の各要素を別々に参照する必要があります。 たとえば、```"/document/organizations"``` の各要素を別のスキル (カスタム Bing Entity Search エンリッチャーなど) に別々に渡す必要があるとします。 この配列の各要素は、```"/document/organizations/*"``` のようにパスにアスタリスクを追加することで参照できます。 
+状況によっては、配列の各要素を別々に参照する必要があります。 たとえば、```"/document/orgs"``` の各要素を別のスキル (カスタム Bing Entity Search エンリッチャーなど) に別々に渡す必要があるとします。 この配列の各要素は、```"/document/orgs/*"``` のようにパスにアスタリスクを追加することで参照できます。 
 
 2 番目の、センチメント抽出のスキルは、最初のエンリッチャーと同じパターンに従います。 入力として ```"/document/content"``` を受け取り、コンテンツのインスタンスごとにセンチメント スコアを返します。 ```"context"``` フィールドを明示的に設定していないため、出力 (mySentiment) は、```"/document"``` の子になります。
 
@@ -215,11 +217,11 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/organizations/*",
+      "context": "/document/orgs/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/organizations/*"
+          "source": "/document/orgs/*"
         }
       ],
       "outputs": [
@@ -233,9 +235,9 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 この定義は、エンリッチメント プロセスの一環として Web API を呼び出す[カスタム スキル](cognitive-search-custom-skill-web-api.md)です。 このスキルでは、エンティティ認識によって識別される組織ごとに、Web API を呼び出してその組織の説明を検索します。 Web API を呼び出すタイミングと受信した情報を送る方法のオーケストレーションは、エンリッチメント エンジンによって内部的に処理されます。 ただし、このカスタム API を呼び出すために必要な初期化は、JSON (URI、httpHeaders、想定される入力など) で提供する必要があります。 エンリッチメント パイプライン用にカスタム Web API を作成する際のガイダンスについては、[カスタム インターフェイスを定義する方法](cognitive-search-custom-skill-interface.md)に関するページを参照してください。
 
-"context" フィールドが、アスタリスク付きで ```"/document/organizations/*"``` に設定されていることに注目してください。これは、エンリッチメント ステップが```"/document/organizations"``` の下にある組織 "*ごと*" に呼び出されることを意味します。 
+"context" フィールドが、アスタリスク付きで ```"/document/orgs/*"``` に設定されていることに注目してください。これは、エンリッチメント ステップが```"/document/orgs"``` の下にある組織 "*ごと*" に呼び出されることを意味します。 
 
-出力 (ここでは会社の説明) が、特定された組織ごとに生成されます。 ダウンストリームのステップ (キー フレーズの抽出など) で説明を参照するときは、パス ```"/document/organizations/*/description"``` を使用して実行します。 
+出力 (ここでは会社の説明) が、特定された組織ごとに生成されます。 ダウンストリームのステップ (キー フレーズの抽出など) で説明を参照するときは、パス ```"/document/orgs/*/description"``` を使用して実行します。 
 
 ## <a name="add-structure"></a>構造を追加する
 

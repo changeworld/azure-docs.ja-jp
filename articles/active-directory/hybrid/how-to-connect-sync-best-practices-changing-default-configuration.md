@@ -16,12 +16,12 @@ ms.date: 08/29/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70e91ff8fa3666a2dfc5aaad07be7927852b08bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afe4db68b5a5d508aaf9760f4da0a8fd15890e15
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85357700"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614866"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス
 このトピックの目的は、Azure AD Connect Sync に対する、サポートされている変更とサポートされていない変更について説明することです。
@@ -31,7 +31,9 @@ Azure AD Connect で作成された構成は、オンプレミスの Active Dire
 ## <a name="changes-to-the-service-account"></a>サービス アカウントに対する変更
 Azure AD Connect Sync は、インストール ウィザードによって作成されたサービス アカウントで実行されます。 このサービス アカウントは、同期で使用されるデータベースの暗号化キーを保持します。アカウントの作成には 127 文字の長いパスワードが使用され、そのパスワードは無期限に設定されています。
 
-* サービス アカウントのパスワードの変更またはリセットは、 **サポートされていません** 。 サービス アカウントのパスワードを変更またはリセットすると、暗号化キーが破棄され、サービスはデータベースにアクセスすることも、開始することもできません。
+> [!WARNING]
+> ADSync サービス アカウントのパスワードを変更またはリセットすると、暗号化キーを破棄し、ADSync サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。
+> これを行うには、「[ADSync サービス アカウントのパスワードの変更](how-to-connect-sync-change-serviceacct-pass.md)」を参照してください。
 
 ## <a name="changes-to-the-scheduler"></a>スケジューラに対する変更
 ビルド 1.1 (2016 年 2 月) のリリース以降では、既定の 30 分の同期サイクルとは異なる同期サイクルで [スケジューラ](how-to-connect-sync-feature-scheduler.md) を構成できます。

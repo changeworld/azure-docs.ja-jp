@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 06/01/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: fa7d17b208c4a950e82a8bdc4db243ebb44e4c41
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 21ea2dcb6f7ffc70a1ed5db15117b39b5b0016bd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896281"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796561"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium プレビューの機能
 
@@ -54,7 +54,7 @@ Azure Firewall Premium プレビューの中間 CA 証明書の要件に関す�
 
 ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワークを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、必要に応じてそのブロックを試みることができます。 
 
-Azure Firewall Premium プレビューにはシグネチャベースの IDPS が用意され、ネットワーク トラフィック内のバイト シーケンスやマルウェアによって使用される既知の悪意のある命令シーケンスなど、特定のパターンを探すことによって攻撃を迅速に検出できます。 IDPS シグネチャはフル マネージドであり、継続的に更新されます。
+Azure Firewall Premium プレビューにはシグネチャベースの IDPS が用意され、ネットワーク トラフィック内のバイト シーケンスやマルウェアによって使用される既知の悪意のある命令シーケンスなど、特定のパターンを探すことによって攻撃を迅速に検出できます。 IDPS シグネチャはフル マネージドであり、継続的に更新されます。 IDPS は、受信トラフィック、スポークツースポークのトラフィック (東西)、および送信トラフィックに適用できます。
 
 Azure Firewall シグネチャ/ルールセットには次のものが含まれます。
 - 実際のマルウェア、コマンド アンド コントロール、エクスプロイト キット、さらには従来の防止方法では見逃されていた、実害の出ている悪意のあるアクティビティについて、フィンガープリントを重視。

@@ -35,7 +35,7 @@ Media Services を使用すると、クラウドでさまざまなメディア �
 * 顧客 (たとえば映画スタジオ) が独自の著作権所有作品のアクセスや使用を制限する必要がある場合は、サブスクリプション ビデオ サービスを作成して、DRM で保護されたコンテンツをストリーム配信します。
 * 飛行機、列車、自動車で再生するためのオフライン コンテンツを提供します。 顧客は、ネットワークから切断される可能性があるときは、携帯電話やタブレットにコンテンツをダウンロードして再生する必要があります。
 * 音声からのテキスト キャプション作成、多言語への翻訳などのために、Azure Media Services と [Azure Cognitive Services APIs](../../index.yml?pivot=products&panel=ai) で教育用 E ラーニング ビデオ プラットフォームを実装します。
-* Azure Media Services を [Azure Cognitive Services APIs](../../index.yml?pivot=products&panel=ai) と共に使用して、より広範な視聴者 (たとえば、聴覚障碍を持つ人や、別の言語で読みたい人など) に対応できるよう、ビデオに字幕とキャプションを追加します。
+* Azure Media Services を [Azure Cognitive Services APIs](../../index.yml?pivot=products&panel=ai) と共に使用して、より広範な視聴者 (たとえば、聴覚障碍のある人や、別の言語で読みたい人など) に対応できるよう、ビデオに字幕とキャプションを追加します。
 * 瞬間的高負荷 (製品発表イベントの開始時など) を処理しやすくする大規模なスケーリングを Azure CDN が実現できるようにします。
 
 ## <a name="how-can-i-get-started-with-v3"></a>v3 の利用を始める方法

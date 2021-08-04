@@ -11,12 +11,12 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3a388ade2b44260bfa21e22866d85a46e482bc97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08b6e72d6b4cb1352a203008e3f20ae39333ec02
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499953"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592288"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -68,15 +68,16 @@ Linux のスケジュールされたイベントの詳細については、[Linu
 ### <a name="endpoint-discovery"></a>エンドポイントの検出
 VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス `169.254.169.254` から Metadata Service を利用できます。 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2020-07-01`
 
 VM が仮想ネットワーク内で作成されていない場合 (クラウド サービスと従来の VM の既定のケース)、使用する IP アドレスを検出する追加のロジックが必要となります。 [ホスト エンドポイントの検出](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)方法の詳細については、このサンプルを参照してください。
 
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
-スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2019-01-01` です。
+スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2020-07-01` です。
 
 | Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - | 
+| 2020-07-01 | 一般公開 | All | <li> イベント期間のサポートを追加しました |
 | 2019-08-01 | 一般公開 | All | <li> EventSource のサポートを追加しました |
 | 2019-04-01 | 一般公開 | All | <li> イベントの説明のサポートを追加しました |
 | 2019-01-01 | 一般公開 | All | <li> 仮想マシン スケール セットの EventType "Terminate" のサポートが追加されました |
@@ -108,7 +109,7 @@ VM を再起動すると、型 `Reboot` のイベントがスケジュールさ�
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2020-07-01
 ```
 
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
@@ -126,6 +127,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
             "NotBefore": {timeInUTC},       
             "Description": {eventDescription},
             "EventSource" : "Platform" | "User",
+            "DurationInSeconds" : {timeInSeconds},
         }
     ]
 }
@@ -142,6 +144,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | NotBefore| このイベントが開始される時間。 <br><br> 例: <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
 | 説明 | このイベントの説明。 <br><br> 例: <br><ul><li> ホスト サーバーのメンテナンス中です。 |
 | EventSource | イベントのイニシエーター。 <br><br> 例: <br><ul><li> `Platform`:このイベントは、プラットフォームによって開始されています。 <li>`User`:このイベントは、ユーザーによって開始されています。 |
+| DurationInSeconds | イベントによって発生する中断の予想される期間。 <br><br> 例: <br><ul><li> `9`: イベントによって発生する中断は 9 秒間続きます。 <li>`-1`: 影響期間が不明な場合または適用されない場合に使用される既定値。 |
 
 ### <a name="event-scheduling"></a>イベントのスケジューリング
 各イベントは、スケジュールされているイベントの種類に基づいて、将来の最小値の時間でスケジュールされます。 この時間は、イベントの `NotBefore` プロパティに反映されます。 
@@ -178,7 +181,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 #### <a name="bash-sample"></a>Bash のサンプル
 ```
-curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
+curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2020-07-01
 ```
 
 > [!NOTE] 
@@ -195,7 +198,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2020-07-01"
 this_host = socket.gethostname()
 
 

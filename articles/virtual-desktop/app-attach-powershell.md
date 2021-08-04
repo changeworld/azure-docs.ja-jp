@@ -1,17 +1,18 @@
 ---
-title: Windows Virtual Desktop での MSIX アプリのアタッチ PowerShell - Azure
-description: PowerShell を使用して MSIX アプリのアタッチを Windows Virtual Desktop 用に設定する方法。
+title: Azure Virtual Desktop での MSIX アプリのアタッチ PowerShell - Azure
+description: PowerShell を使用して MSIX アプリのアタッチを Azure Virtual Desktop 用に設定する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: ebc403553443a9ea04525323b751fbdb51d23c6e
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 6a5dd53bee4e6ae99559d63441f1240d5905644e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500585"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745423"
 ---
 # <a name="set-up-msix-app-attach-using-powershell"></a>PowerShell を使用して MSIX アプリのアタッチを設定する
 
@@ -21,12 +22,12 @@ Azure portal に加え、PowerShell を使用して手動で MSIX アプリの�
 
 MSIX アプリ アタッチを構成するために必要な項目を次に示します。
 
-- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
-- 少なくとも 1 つのアクティブなセッション ホストが含まれている Windows Virtual Desktop ホスト プール。
+- 機能する Azure Virtual Desktop のデプロイ。 Azure Virtual Desktop (クラシック) のデプロイ方法については、「[Azure Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Azure Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
+- 少なくとも 1 つのアクティブなセッション ホストが含まれている Azure Virtual Desktop ホスト プール。
 - デスクトップ リモート アプリ グループ。
 - MSIX パッケージ化ツール。
 - MSIX のパッケージされたアプリケーションは、ファイル共有にアップロードされる MSIX イメージに展開されます。
-- MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のファイル共有。
+- MSIX パッケージが格納される Azure Virtual Desktop デプロイ内のファイル共有。
 - MSIX イメージをアップロードしたファイル共有には、ホスト プール内のすべての仮想マシン (VM) からアクセスできる必要もあります。 ユーザーには、イメージにアクセスするための読み取り専用アクセス許可が必要になります。
 - PowerShell Core をダウンロードしてインストールします。
 - パブリック プレビュー Azure PowerShell モジュールをダウンロードし、ローカル フォルダーに展開します。
@@ -234,9 +235,9 @@ $grName = "<AppGroupName>"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスして、コミュニティにこの機能に関する質問をします。
+[Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) で、コミュニティにこの機能に関する質問を行うことができます。
 
-また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
+また、Azure Virtual Desktop についてのフィードバックは、[Azure Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
 
 役に立つその他の記事を次に示します。
 

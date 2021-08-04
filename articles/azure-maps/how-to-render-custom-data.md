@@ -3,18 +3,18 @@ title: ラスター マップ上にカスタム データをレンダリング�
 description: ラスター マップにプッシュピン、ラベル、幾何学図形を追加する方法について説明します。 この目的のために Azure Maps で静的画像サービスを使用する方法を確認してください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2020
+ms.date: 05/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 80919473d5d3f4b34ce8d621d82bf4bc458b8b58
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: f5c9bf695dc9eb11f1d44857783a727d7afafe03
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326851"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029713"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -23,21 +23,21 @@ ms.locfileid: "108326851"
 カスタムのプッシュピン、ラベル、ジオメトリをレンダリングするには、Postman アプリケーションを使用できます。 オーバーレイの格納とレンダリングには、Azure Maps [Data Service API](/rest/api/maps/data) を使用できます。
 
 > [!Tip]
-> 多くの場合、静的イメージ サービスを使用するよりも、Azure Maps Web SDK を使用して Web ページ上に単純なマップを表示した方が、ずっとコスト効率に優れています。 Web SDK では、マップタイルを使用します。ユーザーがマップをパンしたりズームしたりしない限り、多くの場合、マップの読み込みごとにトランザクションのごく一部のみが生成されます。 Azure Maps Web SDK には、パンとズームを無効にするオプションがあることに注意してください。 さらに、Azure Maps Web SDK には、静的なマップの Web サービスよりも豊富なデータ視覚化オプションが用意されています。  
+> Web ページ上にシンプルなマップを表示するには、多くの場合、静的イメージ サービスを使用するよりも、Azure Maps Web SDK を使用する方がコスト効率に優れています。 Web SDK では、マップ タイルを使用します。ユーザーがマップをパンしたりズームしたりしない限り、多くの場合、マップの読み込みごとにトランザクションのごく一部のみが生成されます。 Azure Maps Web SDK には、パンとズームを無効にするオプションがあります。 さらに、Azure Maps Web SDK には、静的なマップの Web サービスよりも豊富なデータ視覚化オプションが用意されています。  
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
-この記事の手順を完了するには、まず Azure Maps アカウントを作成し、マップのアカウント キーを取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
-
+このチュートリアルでは [Postman](https://www.postman.com/) アプリケーションを使用していますが、別の API 開発環境を使用することもできます。
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>ラベルとカスタム画像を使ってプッシュピンをレンダリングする
 
 > [!Note]
 > このセクションの手順には、Gen 1 または Gen 2 価格レベルの Azure Maps アカウントが必要です。
 
-Azure Maps アカウント S0 レベルでは、`pins` パラメーターのインスタンスが 1 つだけサポートされます。 カスタム画像を利用し、URL 要求で指定されている最大 5 つのプッシュピンをレンダリングできます。
+Azure Maps アカウント Gen 1 Standard S0 レベルでは、`pins` パラメーターのインスタンスが 1 つだけサポートされます。 カスタム画像を利用し、URL 要求で指定されている最大 5 つのプッシュピンをレンダリングできます。
 
 ラベルとカスタム画像を使ってプッシュピンをレンダリングするには、次の手順を実行します。
 
@@ -52,6 +52,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttps%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzureMapsCodeSamples%2Fmaster%2FAzureMapsCodeSamples%2FCommon%2Fimages%2Ficons%2Fylw-pushpin.png
     ```
+
     結果的に生成される画像:
 
     ![ラベル付きのカスタム プッシュピン](./media/how-to-render-custom-data/render-pins.png)
@@ -62,16 +63,16 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 > [!Note]
 > このセクションの手順には、Gen 1 (S1) または Gen 2 価格レベルの Azure Maps アカウントが必要です。
 
-[Data Upload API](/rest/api/maps/data/uploadpreview) を使用し、パスとピンの場所情報を取得することもできます。 パスとピンのデータをアップロードするには、次の手順を実行します。
+[Data Upload API](/rest/api/maps/data-v2/upload-preview) を使用し、パスとピンの場所情報を取得することもできます。 パスとピンのデータをアップロードするには、次の手順を実行します。
 
 1. Postman アプリで、前のセクションで作成したコレクションの新しいタブを開きます。 [builder]\(ビルダー\) タブで POST HTTP メソッドを選択し、次の URL を入力して POST 要求を行います。
 
     ```HTTP
-    https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
 2. **[パラメーター]** タブに、POST 要求の URL に使用する次のキーと値のペアを入力します。 `subscription-key` 値を自分の Azure Maps サブスクリプション キーに変更します。
-    
+
     ![Postman のキーと値のペアから成るパラメーター](./media/how-to-render-custom-data/postman-key-vals.png)
 
 3. **[本文]** タブで未加工入力形式を選択し、入力形式として JSON をドロップダウン リストから選択します。 アップロードするデータとしてこの JSON を入力します。
@@ -136,19 +137,19 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
     }
     ```
 
-4. **[送信]** を選択し、応答ヘッダーを確認します。 要求が成功すると、Location ヘッダーには、アップロード要求の現在の状態を確認するための状態 URI が格納されます。 状態 URI は次の形式になります。  
+4. **[送信]** を選択し、応答ヘッダーを確認します。 要求が成功すると、*Operation-Location* ヘッダーには、アップロード要求の現在の状態を確認するための `status URL` が格納されます。 `status URL` の形式は次のとおりです。
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
+   https://us.atlas.microsoft.com/mapData/operations/{statusUrl}?api-version=2.0
    ```
 
 5. 自分の状態 URI をコピーし、Azure Maps アカウントのサブスクリプション キーの値を使用してサブスクリプション キー パラメーターを追加します。 データのアップロードに使用したものと同じアカウント サブスクリプション キーを使用します。 状態 URI の形式は次のようになります。
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+     https://us.atlas.microsoft.com/mapData/operations/{statusUrl}?api-version=2.0&subscription-key={Subscription-key}
    ```
 
-6. udId を取得するには、Postman アプリで新しいタブを開きます。 [builder]\(ビルダー\) タブで GET HTTP メソッドを選択します。状態 URI で GET 要求を行います。 データのアップロードが成功した場合は、応答本文で udId が返されます。 udId をコピーします。
+6. `udid` を取得するには、Postman アプリで新しいタブを開きます。 ビルダー タブで GET HTTP メソッドを選択します。`status URL` で GET 要求を行います。 データのアップロードが成功した場合は、応答本文で `udid` が返されます。 `udid` をコピーします。
 
    ```JSON
    {
@@ -156,7 +157,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
    }
    ```
 
-7. マップ上にフィーチャーをレンダリングするには、Data Upload API から受け取った `udId` 値を使用します。 これを行うには、前のセクションで作成したコレクションの新しいタブを開きます。 [ビルダー] タブで GET HTTP メソッドを選択し、{subscription-key} と {udId} を実際の値に置き換えて、次の URL を入力して GET 要求を行います。
+7. マップ上にフィーチャーをレンダリングするには、Data Upload API から受け取った `udid` 値を使用します。 これを行うには、前のセクションで作成したコレクションの新しいタブを開きます。 [ビルダー] タブで GET HTTP メソッドを選択し、{subscription-key} と {udId} を実際の値に置き換えて、次の URL を入力して GET 要求を行います。
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -221,6 +222,5 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 
 ## <a name="next-steps"></a>次の手順
 
-
 * [Azure Maps Get Map Image API](/rest/api/maps/render/getmapimage) のドキュメントを確認します。
-* Azure Maps Data Service (プレビュー) の詳細については、[サービス ドキュメント](/rest/api/maps/data)を参照してください。
+* Azure Maps Data Service の詳細については、[サービスのドキュメント](/rest/api/maps/data)を参照してください。

@@ -1,20 +1,20 @@
 ---
-title: 承認済みのベース (Azure Marketplace) から Azure 仮想マシン (VM) オファーを作成する
-description: 承認済みのベースから Azure 仮想マシン (VM) オファーを作成する方法について説明します。
+title: 承認済みのベースから Azure 仮想マシン (VM) プランを作成する
+description: 承認済みのベース (Azure Marketplace) から Azure 仮想マシン (VM) プランを作成する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 19ae4b929964aaeb971bef75a2a620e40e4667f5
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 23fc6f6f6a62230e2cfc710c1c738eb42d6cc115
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727170"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527544"
 ---
-# <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>承認済みのベースを使用して Azure 仮想マシンを作成する方法
+# <a name="create-a-virtual-machine-using-an-approved-base"></a>承認済みのベースを使用して仮想マシンを作成する
 
 この記事では、Azure を使用して、事前に構成された動作保証済みのオペレーティング システムを含む仮想マシン (VM) を作成する方法について説明します。 これがお使いのソリューションと互換性がない場合は、承認済みのオペレーティング システムを使用して、[オンプレミスの VM を作成して構成する](azure-vm-create-using-own-image.md)ことができます。
 

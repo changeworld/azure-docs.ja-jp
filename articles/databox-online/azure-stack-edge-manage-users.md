@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Edge Pro FPGA のユーザー管理 | Microsoft Docs
+title: Azure Stack Edge Pro FPGA のユーザー管理
 description: Azure portal を使用して Azure Stack Edge Pro のユーザーを管理する方法について説明します。
 services: databox
 author: alkohli
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb7b4ee235d83afd5bdaafe5c7678069c5c864de
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97913328"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460686"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA のユーザーを管理する
 
-この記事では、Azure Stack Edge Pro FPGA デバイスのユーザーを管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
+この記事では、Azure Stack Edge Pro FPGA デバイスのユーザーを管理する方法について説明します。 Azure Stack Edge Pro FPGA の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
 
 この記事では、次のことについて説明します。
 

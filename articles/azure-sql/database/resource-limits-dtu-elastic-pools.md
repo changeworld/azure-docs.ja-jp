@@ -7,16 +7,16 @@ ms.subservice: elastic-pools
 ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
 ms.topic: reference
-author: sachinpMSFT
-ms.author: sachinp
-ms.reviewer: sstein
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
 ms.date: 04/09/2021
-ms.openlocfilehash: 906d34a91736d28f0da4a5ba34b7114fbe410adb
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fbbd345e6b2832d8b992ea42a8a2c1fb33615af7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306638"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689961"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用したエラスティック プールのリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "107306638"
 この記事では、DTU 購入モデルを使用した、エラスティック プール内にある Azure SQL Database のデータベースに対するリソース制限について、詳しく説明します。
 
 * サーバー上の単一データベースに対する DTU 購入モデルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
-* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[単一データベースに対する DTU リソースの制限](resource-limits-dtu-single-databases.md)と[DTU リソースによるエラスティック プールの制限](resource-limits-dtu-elastic-pools.md)に関するページを参照してください。
+* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[単一データベースに対する DTU リソースの制限](resource-limits-dtu-single-databases.md)と [DTU リソースによるエラスティック プールの制限](resource-limits-dtu-elastic-pools.md)に関するページを参照してください。
 * 仮想コア リソースの制限については、[Azure SQL Database に対する仮想コア リソースの制限](resource-limits-vcore-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。
 * さまざまな購入モデルについて詳しくは、[購入モデルとサービス レベル](purchasing-models.md)に関する記事をご覧ください。
 
@@ -57,7 +57,7 @@ DTU の数が同じである場合、エラスティック プールに提供さ
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | プールあたりの付属ストレージ (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | プールあたりの最大ストレージ容量 (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| プールあたりの最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし | 該当なし | 該当なし | 該当なし | 該当なし |
+| プールあたりの最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | N/A | N/A | N/A | N/A | N/A | N/A | 該当なし |
 | プールあたりの最大 DB 数 <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | プールあたりの最大同時実行ワーカー (要求) 数 <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | プールあたりの最大同時セッション数 <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -76,7 +76,7 @@ DTU の数が同じである場合、エラスティック プールに提供さ
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | プールあたりの付属ストレージ (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | プールあたりの最大ストレージ容量 (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
-| プールあたりの最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし | 該当なし | 該当なし |
+| プールあたりの最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | N/A | N/A | N/A | N/A | 該当なし |
 | プールあたりの最大 DB 数 <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | プールあたりの最大同時セッション数 <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -97,7 +97,7 @@ DTU の数が同じである場合、エラスティック プールに提供さ
 |:---|---:|---:|---:| ---: | ---: |
 | プールあたりの付属ストレージ (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
 | プールあたりの最大ストレージ容量 (GB) | 2560 | 3072 | 3584 | 4096 | 4096 |
-| プールあたりの最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし | 該当なし |
+| プールあたりの最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | N/A | N/A | N/A | 該当なし |
 | プールあたりの最大 DB 数 <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
 | プールあたりの最大同時実行ワーカー (要求) 数 <sup>3</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | プールあたりの最大同時セッション数 <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -161,6 +161,8 @@ DTU の数が同じである場合、エラスティック プールに提供さ
 
 > [!NOTE]
 > `tempdb` の制限については、[tempdb の制限](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)に関する記事を参照してください。
+>
+> Premium サービス レベルのストレージの制限事項に関するその他の詳細については、「[ストレージ スペースのガバナンス](resource-limits-logical-server.md#storage-space-governance)」を参照してください。
 
 ### <a name="database-properties-for-pooled-databases"></a>プールされたデータベースのデータベース プロパティ
 

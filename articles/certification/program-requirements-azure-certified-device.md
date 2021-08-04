@@ -1,20 +1,20 @@
 ---
-title: Azure Certified Device の要件
-description: Azure Certified Device プログラムの要件
+title: Azure Certified Device 認定の要件
+description: Azure Certified Device 認定の要件
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Azure Certified Device Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 5acbd4a9cc48841999716cfd9c52d72ccad733b4
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 8e68cf180927e000c93c4c2d73d25d4ae6ccf0f8
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712822"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538140"
 ---
-# <a name="azure-certified-device-requirements"></a>Azure Certified Device の要件 
+# <a name="azure-certified-device-certification-requirements"></a>Azure Certified Device 認定の要件 
 (以前の IoT Hub)
 
 このドキュメントでは、Azure Certified Device カタログで表されるデバイス固有の機能について説明します。 機能とは、ソフトウェアの実装またはソフトウェアとハードウェアの実装の組み合わせである場合がある、単一のデバイス属性です。 

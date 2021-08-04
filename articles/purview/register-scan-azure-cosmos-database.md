@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 91005835a407cd097d7c5de3de02a48959b4cbfd
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 23825bd3ab41891f775f26e2ee2b052e3a041401
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750773"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560123"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Azure Cosmos Database (SQL API) の登録とスキャン
 
@@ -24,7 +24,7 @@ Azure Cosmos Database (SQL API) では、フル スキャンと増分スキャ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。
 - Azure Purview データ ソース管理者である必要があります
 
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
@@ -39,7 +39,7 @@ Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけで
 
 1. Azure Portal で Cosmos DB アカウントに移動します 
 1. **[設定]**  >  **[キー]** を選択します 
-1. "*キー*" をコピーし、次の手順のためにどこかに保存します
+1. "*読み取り/書き込みキー*" または "*読み取り専用キー*" からプライマリまたはセカンダリ キーをコピーし、次の手順のためにどこかに保存します。
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[+ 生成/インポート]** を選択し、Azure Cosmos DB アカウントの "*キー*" として、 **[名前]** と **[値]** を入力します。
@@ -67,11 +67,38 @@ Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけで
 4. コレクションを選択するか、新しいものを作成します (省略可能)。
 5. **[登録]** を選択してデータ ソースを登録します。
 
-
 :::image type="content" source="media/register-scan-azure-cosmos-database/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+
+新しいスキャンを作成して実行するには、次の操作を行います。
+
+1. Purview Studio の左側にあるペインで **[Data Map]** タブを選択します。
+
+1. 登録した Azure Cosmos DB データ ソースを選択します。
+
+1. **[新しいスキャン]** を選択します。
+
+1. 対象のデータ ソースに接続するための資格情報を選択します。 
+
+   :::image type="content" source="media/register-scan-azure-cosmos-database/set-up-scan-cosmos.png" alt-text="スキャンを設定する":::
+
+1. リストから適切な項目を選択することによって、特定のデータベースに対するスキャンの範囲を指定することができます。
+
+   :::image type="content" source="media/register-scan-azure-cosmos-database/cosmos-database-scope-your-scan.png" alt-text="スキャンの範囲を指定する":::
+
+1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
+
+   :::image type="content" source="media/register-scan-azure-cosmos-database/select-scan-rule-set.png" alt-text="スキャン ルール セット":::
+
+1. スキャン トリガーを選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+
+   :::image type="content" source="media/register-scan-azure-cosmos-database/trigger-scan.png" alt-text="trigger":::
+
+1. スキャンを確認し、 **[保存および実行]** を選択します。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

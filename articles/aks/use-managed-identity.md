@@ -3,13 +3,13 @@ title: Azure Kubernetes Service でマネージド ID を使用する
 description: Azure Kubernetes Service (AKS) でマネージド ID を使用する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 12/16/2020
-ms.openlocfilehash: c87b6dbde14c8b736301846faa8471dd518a98a4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 05/12/2021
+ms.openlocfilehash: a5bf71a654afd122aad682df732e5a6c9dcd9538
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289770"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476196"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -21,7 +21,7 @@ ms.locfileid: "108289770"
 
 次のリソースがインストールされている必要があります。
 
-- Azure CLI、バージョン 2.15.1 以降
+- Azure CLI、バージョン 2.23.0 以降
 
 ## <a name="limitations"></a>制限事項
 
@@ -74,32 +74,12 @@ az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 
-## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>AKS クラスターをマネージド ID に更新する (プレビュー)
+## <a name="update-an-aks-cluster-to-managed-identities"></a>AKS クラスターをマネージド ID に更新する
 
 次の CLI コマンドを使用し、マネージド ID と連動するよう、サービス プリンシパルで現在動作している AKS クラスターを更新できるようになりました。
 
-まず、システムによって割り当てられた ID の機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
-```
-
-システム割り当て ID を更新します。
-
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
-```
-
-ユーザーによって割り当てられた ID の機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
-```
-
-ユーザー割り当て ID を更新します。
-
-```azurecli-interactive
-az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
 > システム割り当てまたはユーザー割り当ての ID がマネージド ID に更新されたら、ノードで `az aks nodepool upgrade --node-image-only` を実行し、マネージド ID への更新を完了します。
@@ -223,7 +203,6 @@ kubelet ID を使用すると、クラスターの作成前に、既存の ID �
 ### <a name="limitations"></a>制限事項
 
 - ユーザー割り当てのマネージド クラスターでのみ機能します。
-- Azure Government は現在サポートされていません。
 - Azure China 21Vianet は現在サポートされていません。
 
 まず、Kubelet ID の機能フラグを登録します。

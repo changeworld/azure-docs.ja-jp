@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes に拡張機能をデプロイし、そのライフサイクルを管理する
-ms.openlocfilehash: 34e8f39450b6ac87ccb0e377526e2b2172e21ed7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cd2d0915b173f3621502f22a2d47e25271f87400
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373335"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951680"
 ---
 # <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>Azure Arc 対応 Kubernetes クラスター拡張機能をデプロイして管理する
 
@@ -59,10 +59,11 @@ Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラ�
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターにデプロイされているワークロードのパフォーマンスを可視化します。 コントローラー、ノード、コンテナーからメモリと CPU の使用率メトリックを収集します。 |
 | [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターから監査ログ データなどのセキュリティに関連する情報を収集します。 収集したデータに基づいて、推奨事項と脅威のアラートを提供します。 |
+| [Azure Arc 対応 Open Service Mesh](tutorial-arc-enabled-open-service-mesh.md) | クラスターに Open Service Mesh をデプロイし、mTLS セキュリティ、きめ細かなアクセス制御、トラフィック移行、Azure Monitor または Prometheus および Grafana のオープンソース アドオンによる監視、Jaeger によるトレース、外部認定管理ソリューションとの統合などの機能を有効にします。 |
 | [Azure Arc 対応 Data Services](../../azure-arc/kubernetes/custom-locations.md#create-custom-location) | Kubernetes と任意のインフラストラクチャを使用して、Azure データ サービスをオンプレミス、エッジ、パブリック クラウドで実行できるようになります。 |
 | [Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md) | Azure Arc 対応 Kubernetes クラスター上に App Service Kubernetes 環境をプロビジョニングできるようになります。 |
-| [Kubernetes 上の Event Grid](/azure/event-grid/kubernetes/overview) | Azure Arc 対応 Kubernetes クラスター上で、トピックやイベント サブスクリプションなどのイベント グリッド リソースを作成および管理します。 |
-| [Azure Arc 上の Azure API Management](/azure/api-management/how-to-deploy-self-hosted-gateway-azure-arc) | Azure Arc 対応 Kubernetes クラスターに API Management ゲートウェイをデプロイして管理します。 |
+| [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md) | Azure Arc 対応 Kubernetes クラスター上で、トピックやイベント サブスクリプションなどのイベント グリッド リソースを作成および管理します。 |
+| [Azure Arc 上の Azure API Management](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md) | Azure Arc 対応 Kubernetes クラスターに API Management ゲートウェイをデプロイして管理します。 |
 
 ## <a name="usage-of-cluster-extensions"></a>クラスター拡張機能の使用
 
@@ -264,6 +265,8 @@ Azure Arc 対応 Kubernetes で現在使用できるクラスター拡張機能�
 
 > [!div class="nextstepaction"]
 > [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Azure Arc 対応 Open Service Mesh](tutorial-arc-enabled-open-service-mesh.md)
 > 
 > [!div class="nextstepaction"]
 > [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
@@ -272,7 +275,7 @@ Azure Arc 対応 Kubernetes で現在使用できるクラスター拡張機能�
 > [Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md)
 > 
 > [!div class="nextstepaction"]
-> [Kubernetes 上の Event Grid](/azure/event-grid/kubernetes/overview)
+> [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md)
 > 
 > [!div class="nextstepaction"]
-> [Azure Arc 上の Azure API Management](/azure/api-management/how-to-deploy-self-hosted-gateway-azure-arc)
+> [Azure Arc 上の Azure API Management](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md)

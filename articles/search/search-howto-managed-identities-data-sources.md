@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 95f1c4bf9b599da8285ac69e299549e5aa73c2f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efb7d0a239d31d82b55b5cd5066e6003391ace45
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519590"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558791"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>マネージド ID を使用してデータ ソースへのインデクサー接続を設定する
 
@@ -39,7 +39,7 @@ Azure Cognitive Search の[インデクサー](search-indexer-overview.md)は、
 
 マネージド ID を使用したインデクサー接続の設定は、次のデータ ソースでサポートされています。 
 
-* [Azure BLOB ストレージ、Azure Data Lake Storage Gen2 (プレビュー)、Azure Table Storage](search-howto-managed-identities-storage.md)
+* [Azure Blob Storage、Azure Data Lake Storage Gen2 (プレビュー)、Azure Table Storage](search-howto-managed-identities-storage.md)
 * [Azure Cosmos DB](search-howto-managed-identities-cosmos-db.md)
 * [Azure SQL Database](search-howto-managed-identities-sql.md)
 
@@ -51,6 +51,6 @@ Azure Cognitive Search の[インデクサー](search-indexer-overview.md)は、
 
 マネージド ID を使用してインデクサー接続を設定する方法の詳細については、次を参照してください。
 
-* [Azure BLOB ストレージ、Azure Data Lake Storage Gen2 (プレビュー)、Azure Table Storage](search-howto-managed-identities-storage.md)
+* [Azure Blob Storage、Azure Data Lake Storage Gen2 (プレビュー)、Azure Table Storage](search-howto-managed-identities-storage.md)
 * [Azure Cosmos DB](search-howto-managed-identities-cosmos-db.md)
 * [Azure SQL Database](search-howto-managed-identities-sql.md)

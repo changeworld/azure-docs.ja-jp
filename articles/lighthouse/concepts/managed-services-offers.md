@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace のマネージド サービス オファー
-description: 管理サービス オファーを使用すると、Azure Marketplace の顧客にリソース管理オファーを販売できます。
+description: Azure Marketplace 内でマネージド サービス オファーを使用して、Azure Lighthouse 管理サービスを顧客に提供します。
 ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 056efee8b8bb7a1e32619cc46c0f2665e5463343
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: df3cd76d840e37e711bdd92d93c2499d701afef9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788645"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074775"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 

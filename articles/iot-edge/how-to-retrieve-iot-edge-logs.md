@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 19183da24a3652757626cb37fae96027ed01a8ea
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 51a79058ec4456b173b1f50169198d3ea3ba2e93
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633179"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541863"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
 
@@ -53,6 +53,9 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
 ## <a name="retrieve-module-logs"></a>モジュール ログを取得する
 
 **GetModuleLogs** ダイレクト メソッドを使用して、IoT Edge モジュールのログを取得します。
+
+>[!TIP]
+>Azure portal の IoT Edge のトラブルシューティング ページは、モジュール ログを表示するための簡単なエクスペリエンスを提供します。 詳細については、[「Azure portal から IoT Edge デバイスを監視およびトラブルシューティングする」](troubleshoot-in-portal.md)を参照してください。
 
 このメソッドは、次のスキーマを持つ JSON ペイロードを受け取ります。
 

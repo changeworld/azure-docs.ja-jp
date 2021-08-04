@@ -9,35 +9,29 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/07/2021
-ms.openlocfilehash: 0ad5c432cb9ba5742ae4fa2ee2e41dc2ff2b5936
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.date: 06/08/2021
+ms.openlocfilehash: 01c985b0554fe5955010c1c8c286f81f8de6d3ee
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713502"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006007"
 ---
 # <a name="plan-to-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストの管理を計画する
 
-この記事では、Azure Machine Learning のコストを計画して管理する方法について説明します。 リソースを追加する前に、まず、コストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 最後に、マネージド Azure Machine Learning コンピューティング クラスターでモデルをトレーニングするときに、コスト節約のヒントを使用します。
+この記事では、Azure Machine Learning のコストを計画して管理する方法について説明します。 リソースを追加する前に、まず、コストの計画に役立つ Azure 料金計算ツールを使用します。 次に、Azure リソースを追加するときに、推定コストを確認します。 
 
 Azure Machine Learning リソースを使い始めた後は、コスト管理機能を使用して、予算の設定とコストの監視を行います。 また、予想コストを確認し、支出の傾向を明らかにして、対処した方がよい部分を識別します。
 
 Azure Machine Learning のコストは、Azure の月額請求料金の一部でしかないことを理解してください。 Azure の他のサービスを使用している場合は、サードパーティのサービスを含め、お使いの Azure サブスクリプションで使用されている Azure のすべてのサービスとリソースに対して課金されます。 この記事では、Azure Machine Learning のコストを計画および管理する方法について説明します。 Azure Machine Learning のコスト管理に慣れたら、同様の方法を適用して、サブスクリプションで使用されているすべての Azure サービスのコストを管理します。
 
-機械学習モデルをトレーニングするときは、マネージド Azure Machine Learning コンピューティング クラスターを使用して、さらにコストを節約するためのヒントを活用します。
-
-* 自動スケーリングされるようにトレーニング クラスターを構成する
-* サブスクリプションとワークスペースにクォータを設定する
-* トレーニングの実行に終了ポリシーを設定する
-* 優先順位の低い仮想マシン (VM) を使用する
-* Azure 予約 VM インスタンスを使用する
+コストの最適化の詳細については、[Azure Machine Learning でのコストの管理および最適化方法](how-to-manage-optimize-cost.md)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Cost Management のコスト分析では、ほとんどの種類の Azure アカウントがサポートされますが、すべてではありません。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 
 
-コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
+コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。 Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
 
 ## <a name="estimate-costs-before-using-azure-machine-learning"></a>Azure Machine Learning を使用する前にコストを見積もる
 
@@ -117,7 +111,7 @@ Azure サブスクリプションに使用制限がある場合は、Azure に�
 
 ## <a name="monitor-costs"></a>コストを監視する
 
-Azure Machine Learning で Azure リソースを使用すると、コストが発生します。 Azure リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。Azure Machine Learning の使用が開始されるとすぐにコストが発生し、[コスト分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)でコストを確認できます。
+Azure Machine Learning で Azure リソースを使用すると、コストが発生します。 Azure リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。Azure Machine Learning の使用が開始されるとすぐにコストが発生し、[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)でコストを確認できます。
 
 コスト分析を使用すると、さまざまな期間について、Azure Machine Learning のコストがグラフや表で表示されます。 たとえば、日単位、現在の月、以前の月、年単位などがあります。 予算や予想コストを基準としてコストを表示することもできます。 時間経過を示す、より長い期間のビューに切り替えると、支出の傾向を特定するのに役立ちます。 超過出費が発生した可能性のある時期を確認できます。 予算を作成したら、それを超えた場所も簡単に確認できます。
 
@@ -153,69 +147,24 @@ Azure Machine Learning のみのコストが表示される例を次に示しま
 
 ## <a name="other-ways-to-manage-and-reduce-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストを管理および削減するその他の方法
 
-機械学習のコンピューティング リソースのコストを抑えるには、次のヒントを参考にしてください。
+次のヒントを使用して、コンピューティング リソースのコストを管理して最適化します。
 
-### <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning コンピューティング クラスター (AmlCompute) を使用する
+- 自動スケーリングされるようにトレーニング クラスターを構成する
+- サブスクリプションとワークスペースにクォータを設定する
+- トレーニングの実行に終了ポリシーを設定する
+- 優先順位の低い仮想マシン (VM) を使用する
+- Azure 予約 VM インスタンスを使用する
+- ローカルでトレーニングする
+- トレーニングを並列化する
+- データ保持と削除のポリシーを設定する
+- リソースを同じリージョンにデプロイする
 
-データは絶えず変化するので、モデルのトレーニングと再トレーニングを短時間で実行できるように合理化し、正確なモデルを維持する必要があります。 ただし、継続的にトレーニングを行うとコストがかかり、GPU 上でのディープ ラーニング モデルの場合は特にそうです。 
-
-Azure Machine Learning のユーザーは、マネージド Azure Machine Learning コンピューティング クラスター (AmlCompute とも呼ばれます) を使用できます。 AmlCompute では、GPU と CPU のさまざまなオプションがサポートされています。 AmlCompute は、Azure Machine Learning によってサブスクリプションの代わりに内部でホストされます。 Azure IaaS クラウド スケールで、同じエンタープライズ レベルのセキュリティ、コンプライアンス、ガバナンスが提供されます。
-
-これらのコンピューティング プールは Azure の IaaS インフラストラクチャ内にあるため、インフラストラクチャの他の部分と同じセキュリティ要件とコンプライアンス要件で、トレーニングをデプロイ、スケーリング、管理できます。  これらのデプロイは、お客様のサブスクリプションで実行され、ガバナンス ルールに従います。 詳しくは、「[Azure Machine Learning コンピューティング](how-to-create-attach-compute-cluster.md)」をご覧ください。
-
-### <a name="configure-training-clusters-for-autoscaling"></a>自動スケーリングされるようにトレーニング クラスターを構成する
-
-ワークロードの要件に基づいてクラスターを自動スケーリングすると、必要なものだけが使用されるようにして、コストを削減できます。
-
-AmlCompute クラスターは、ワークロードに基づいて動的にスケーリングするように設計されています。 クラスターは、構成するノードの最大数までスケールアップできます。 実行が完了するたびに、クラスターによってノードが解放され、構成されている最小ノード数にスケーリングされます。
-
-[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
-
-また、スケールダウンまでのノードのアイドル時間を構成することもできます。 既定では、スケールダウンまでのアイドル時間は 120 秒に設定されます。
-
-+ 反復の少ない実験を実行する場合は、この時間を短くしてコストを節約します。
-+ 反復の多い開発またはテストの実験を実行する場合は、トレーニング スクリプトまたは環境を変更するたびに、常にスケールアップとスケールダウンの料金が発生しないように、時間を長くする必要がある場合があります。
-
-AmlCompute クラスターは、[AmlCompute SDK クラス](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)、[AmlCompute CLI](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
-
-```azurecli
-az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
-```
-
-### <a name="set-quotas-on-resources"></a>リソースにクォータを設定する
-
-AmlCompute には、[クォータ (制限) の構成](how-to-manage-quotas.md#azure-machine-learning-compute)が付随します。 このクォータは VM ファミリ (たとえば、Dv2 シリーズ、NCv3 シリーズ) 別であり、各サブスクリプションのリージョンによって異なります。 サブスクリプションは小さい既定値で開始されますが、この設定を使用して、サブスクリプションでのスピンアップに使用できる AmlCompute リソースの量を制御できます。 
-
-また、サブスクリプション内の各ワークスペースに対し、[VM ファミリ別のワークスペース レベル クォータ](how-to-manage-quotas.md#workspace-level-quotas)を構成します。 それにより、各ワークスペースで発生する可能性があるコストをより細かく制御し、特定の VM ファミリを制限できます。 
-
-ワークスペース レベルでクォータを設定するには、[Azure portal](https://portal.azure.com) で始めます。  サブスクリプション内の任意のワークスペースを選択し、左側のペインで **[Usages + quotas]\(使用量 + クォータ\)** を選択します。 次に、 **[クォータの構成]** タブを選択して、クォータを表示します。 このクォータは、複数のワークスペースに影響する設定であるため、設定するにはサブスクリプション スコープの特権が必要です。
-
-### <a name="set-run-autotermination-policies"></a>実行の自動終了ポリシーを設定する 
-
-場合によっては、期間を制限したり、早期に終了したりするようにトレーニングの実行を構成する必要があります。 たとえば、Azure Machine Learning の組み込みのハイパーパラメーターのチューニングや自動機械学習を使用している場合などです。
-
-使用できるオプションを次に示します。
-* 選択したコンピューティング (ローカルまたはリモートのクラウド コンピューティング) で実行を延長できる最長期間を制御するには、RunConfiguration で `max_run_duration_seconds` という名前のパラメーターを定義します。
-* [ハイパーパラメーターのチューニング](how-to-tune-hyperparameters.md#early-termination)の場合は、バンディット ポリシー、中央値の停止ポリシー、または切り捨て選択ポリシーから、早期終了ポリシーを定義します。 ハイパーパラメーター スイープをさらに制御するには、`max_total_runs` や `max_duration_minutes` などのパラメーターを使用します。
-* [自動機械学習](how-to-configure-auto-train.md#exit)の場合は、`enable_early_stopping` フラグを使用して同様の終了ポリシーを設定します。 また、`iteration_timeout_minutes` や `experiment_timeout_minutes` などのプロパティを使用して、実行や実験全体の最長期間を制御します。
-
-### <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> 優先順位の低い VM を使用する
-
-Azure では、仮想マシン スケール セット、Batch、および Machine Learning service 間で、過剰な未使用容量を低優先順位の VM として使用できます。 これらの割り当ては先取り可能ですが、専用の VM と比較して低価格で提供されます。 一般に、Batch ワークロードには優先順位の低い VM を使用することをお勧めします。 また、再送信 (Batch 推論の場合) または再起動 (チェックポイントを使用したディープ ラーニング トレーニングの場合) によって中断を回復できる場合にもそれらを使用します。
-
-低優先順位の VM には、専用のクォータ値とは別に、VM ファミリ別の 1 つのクォータがあります。 詳しくは、[AmlCompute のクォータ](how-to-manage-quotas.md)に関する記事をご覧ください。
-
- コンピューティング インスタンスは、対話型のノートブック エクスペリエンスをサポートする必要があるため、低優先順位の VM では機能しません。
-
-### <a name="use-reserved-instances"></a>予約インスタンスを使用する
-
-コンピューティング リソースのコストを削減するもう 1 つの方法は、Azure 予約 VM インスタンスです。 このオファリングでは、1 年間または 3 年間の契約を結びます。 これらの割引は、従量課金制料金の最大 72% までの範囲で、毎月の Azure の請求に直接適用されます。
-
-Azure Machine Learning コンピューティングでは、予約インスタンスがもともとサポートされています。 1 年間または 3 年間の予約インスタンスを購入すると、Azure Machine Learning のマネージド コンピューティングに自動的に割引が適用されます。
-
+詳細については、[Azure Machine Learning でのコストの管理と最適化](how-to-manage-optimize-cost.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Azure Machine Learning でコストを管理して最適化する](how-to-manage-optimize-cost.md)。
+- [組織規模での Azure Machine Learning の予算、コスト、クォータを管理する](/azure/cloud-adoption-framework/ready/azure-best-practices/optimize-ai-machine-learning-cost)
 - [Azure Cost Management を使用してクラウドへの投資を最適化する](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)方法について説明します。
 - [コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を使用してコストを管理する方法について詳細に説明します。
 - [予期しないコストを回避](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)する方法について説明します。

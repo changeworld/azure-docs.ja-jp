@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 28ac7d0d7079d8ba8c9483e7da816430295941c9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 80e25690e133b348ad5ee180bb5a3e01d4176c90
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027859"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136249"
 ---
 # <a name="vision-solution-troubleshooting"></a>ビジョン ソリューションのトラブルシューティング
 
@@ -58,11 +58,7 @@ ms.locfileid: "112027859"
 
     :::image type="content" source="./media/vision-solution-troubleshooting/vision-delete-device.png" alt-text="IoT Edge ホームページで強調表示されている [削除] ボタンを示すスクリーンショット。":::
 
-## <a name="eye-module-troubleshooting-tips"></a>Eye モジュールのトラブルシューティングのヒント
-
-次のトラブルシューティングするためのヒントは、ビジョン AI のプロトタイプ作成エクスペリエンスで多く見られるいくつかの問題で役立ちます。
-
-### <a name="check-the-runtime-status-of-azureeyemodule"></a>azureeyemodule のランタイムの状態を確認する
+## <a name="check-the-runtime-status-of-azureeyemodule"></a>azureeyemodule のランタイムの状態を確認する
 
 **WebStreamModule** に問題がある場合は、ビジョン モデル推論を処理する **azureeyemodule** が実行されていることを確認してください。 ランタイムの状態を確認するには、次の操作を行います。
 
@@ -76,19 +72,20 @@ ms.locfileid: "112027859"
 
     :::image type="content" source="./media/vision-solution-troubleshooting/firmware-desired-status-stopped.png" alt-text="モジュール設定の構成画面を示すスクリーンショット。":::
 
-### <a name="update-telemetryintervalneuralnetworkms"></a>TelemetryIntervalNeuralNetworkMs を更新する
+## <a name="change-how-often-messages-are-sent-from-the-azureeyemodule"></a>azureeyemodule からのメッセージ送信の頻度を変更する
 
-次のカウント制限エラーが見られた場合は、azureeyemodule モジュール ツイン設定の TelemetryIntervalNeuralNetworkMs 値を更新する必要があります。
+お客様のサブスクリプション レベルでは、お使いのデバイスから IoT Hub に送ることができるメッセージ数が制限されている可能性があります。 たとえば Free レベルでは、メッセージ数が 1 日あたり 8,000 件に制限されます。 その制限に達すると、azureeyemodule の機能が停止し、次のエラーが発生します。
 
 |エラー メッセージ|
 |------|
-|Total number of messages on IotHub 'xxxxxxxxx' exceeded the allocated quota. (IotHub 'xxxxxxxxx' 上のメッセージの合計数が、割り当てられたクォータを超えました。) Max allowed message count: '8000', current message count: 'xxxx'. (許容される最大メッセージ数: '8000'、現在のメッセージ数: 'xxxx'。) Send and Receive operations are blocked for this hub until the next UTC day. (このハブの送信および受信操作は、次の UTC 日までブロックされます。) Consider increasing the units for this hub to increase the quota. (クォータを増やすには、このハブのユニット数を増やすことを検討してください。)|
+|*Total number of messages on IotHub 'xxxxxxxxx' exceeded the allocated quota. Max allowed message count: '8000', current message count: 'xxxx'. Send and Receive operations are blocked for this hub until the next UTC day. Consider increasing the units for this hub to increase the quota. (IotHub 'xxxxxxxxx' のメッセージの総数が割り当てられたクォータを超えました。許可される最大メッセージ数: '8000'、現在のメッセージ数: 'xxxx'。このハブの送受信操作は、次の UTC 日までブロックされます。クォータを増やすには、このハブのユニットの増加を検討してください。)*|
 
-TelemetryIntervalNeuralNetworkMs ではニューラル ネットワークからメッセージを送信する頻度を決定します。 メッセージは、ミリ秒単位で送信されます。 Azure サブスクリプションでは、1 日あたりのメッセージ数が制限されています。
+azureeyemodule モジュール ツインを使用すると、メッセージの送信頻度の間隔を変更できます。 この間隔に入力された値によって、各メッセージが送信される頻度がミリ秒単位で示されます。 数値が大きいほど、各メッセージ間の時間が長くなります。 たとえば、間隔を 12,000 に設定すると、12 秒ごとに 1 つのメッセージが送信されます。 1 日を通して実行されているモデルの場合、この数値では 1 日あたり 7,200 件のメッセージになります。これは、Free レベルの制限以下です。 選択する値は、ビジョン モデルの応答性によって変わります。
 
-メッセージの量は、サブスクリプション レベルに基づいています。 送信されたメッセージが多すぎることが原因でロックアウトされた場合は、この量を大きくします。 12,000 の場合、12 秒ごとに 1 つのメッセージが表示されます。 この量では、1 日あたり 7,200 のメッセージが得られます。これは、無料サブスクリプションの上限である 8,000 メッセージを下回ります。
+> [!NOTE]
+> メッセージ間隔を変更しても、各メッセージのサイズに影響はありません。 メッセージ サイズは、モデルの種類や各メッセージで検出されるオブジェクトの数など、いくつかの異なる要因によって変わります。 そのため、メッセージ サイズを決定するのは困難です。
 
-TelemetryIntervalNeuralNetworkMs 値を更新するには、次を実行します。
+メッセージ間隔を更新するには、こちらの手順に従います。
 
 1. [Azure portal](https://ms.portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod#home) にサインインし、 **[すべてのリソース]** を開きます。
 
@@ -102,11 +99,14 @@ TelemetryIntervalNeuralNetworkMs 値を更新するには、次を実行しま�
 
     :::image type="content" source="./media/vision-solution-troubleshooting/module-page-inline.png" alt-text="モジュール ページのスクリーンショット。" lightbox= "./media/vision-solution-troubleshooting/module-page.png":::
 
-1. 下にスクロールして、**properties** に移動します。 この時点では、**実行中** プロパティと **ログ** プロパティはアクティブではありません。
+1. 下にスクロールして、 **[プロパティ]** に移動します。
+1. **[TelemetryInterval]** を見つけて、それを **[TelemetryIntervalNeuralNetworkMs]** に置き換えます。
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline.png" alt-text="モジュール ツインのプロパティのスクリーンショット。" lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline-02.png" alt-text="モジュール ツインのプロパティのスクリーンショット。" lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
 
-1. 必要に応じて **TelemetryIntervalNeuralNetworkMs** の値を更新し、 **[保存]** アイコンを選択します。
+1. **[TelemetryIntervalNeuralNetworkMs]** の値を必要な値に更新します。
+
+1. **[Save]\(保存\)** アイコンを選択します。
 
 ## <a name="view-device-rtsp-video-stream"></a>デバイスの RTSP ビデオ ストリームを表示する
 

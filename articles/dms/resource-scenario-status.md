@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 5d5706738a0d85beed839d324ae3da055cafe39a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 237de7e75007de85054501ed76b253a6eedf4346
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747523"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528372"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -53,11 +53,16 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL | ✔ |   |
-|   | RDS MySQL | X |   |
+| **Azure DB for MySQL - 単一サーバー** | MySQL | ✔ | パブリック プレビュー  |
+|   | RDS MySQL | ✔ | パブリック プレビュー  |
+|   | Azure DB for MySQL* | ✔ | パブリック プレビュー  |
+| **Azure DB for MySQL - フレキシブル サーバー** | MySQL | ✔ | パブリック プレビュー  |
+|   | RDS MySQL | ✔ | パブリック プレビュー  |
+|   | Azure DB for MySQL* | ✔ | パブリック プレビュー  |
 | **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
-|  | Oracle | X |   |
+| **Azure DB for PostgreSQL - フレキシブル サーバー** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 | **Azure DB for PostgreSQL - Hyperscale (Citus)** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 
@@ -79,12 +84,16 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
 | **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | ✔ | GA |
-|   | Azure DB for PostgreSQL - 単一サーバー | ✔ | GA |
+|   | Azure DB for PostgreSQL - 単一サーバー* | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | X |   |
+| **Azure DB for PostgreSQL - フレキシブル サーバー** | PostgreSQL | ✔ | GA |
+|   | Azure DB for PostgreSQL - 単一サーバー* | ✔ | GA |
+|   | RDS PostgreSQL | ✔ | GA |
 | **Azure DB for PostgreSQL - Hyperscale (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 
+> [!NOTE]
+> ソースデータベースが既に Azure PaaS にある場合 (例: Azure DB for MySQL または Azure DB for PostgreSQL)、移行アクティビティを作成するときに対応するエンジンを選択します。 たとえば、Azure DB for MySQL - 単一サーバーから Azure DB for MySQL フレキシブル サーバーに移行する場合は、シナリオの作成時にソースエンジンとして MySQL を選択します。 Azure DB for PostgreSQL - 単一サーバーから Azure DB for PostgreSQL - フレキシブル サーバーに移行する場合は、シナリオの作成時にソースエンジンとして PostgreSQL を選択します。 
 
 ## <a name="next-steps"></a>次のステップ
 

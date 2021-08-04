@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 82efc1d36176003d11b610fd8e0e669f034dc0a1
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: ab24c9157a82591352e3511e15d4b45c750444db
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786683"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497661"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
 > [!IMPORTANT]
-> この調査グラフは、現在 **一般公開** されています。 
+> この調査グラフは、現在 **一般公開** されています。
 
 このチュートリアルは、Azure Sentinel でインシデントを調査するためのものです。 Azure Sentinel にデータ ソースを接続した後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Azure Sentinel では、割り当てや調査が可能なインシデントを生成する高度なアラート ルールを作成できます。
 
@@ -85,12 +85,14 @@ ms.locfileid: "109786683"
 
 1. インシデントを選択し、 **[調査]** を選択します。 これにより、調査グラフが表示されます。 グラフには、アラートに直接接続されているエンティティと、さらに接続されている各リソースのイラスト マップが示されます。
 
+
+    [ ![マップを表示する。](media/tutorial-investigate-cases/investigation-map.png) ](media/tutorial-investigate-cases/investigation-map.png#lightbox)
+
    > [!IMPORTANT] 
    > - インシデントの調査が可能なのは、分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合のみです。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
    >
    > - 現在、Azure Sentinel では、**過去 30 日間まで** のインシデントの調査がサポートされています。
 
-   ![マップを表示する](media/tutorial-investigate-cases/map1.png)
 
 1. エンティティを選択すると、 **[エンティティ]** ウィンドウが開き、そのエンティティに関する情報を確認できます。
 

@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 33e34e777a78e1c609d2eacdcb501c0bce1f5c9d
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 14660ca026dc51bc6e722559a28ef4a77361100b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714922"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094566"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V の移行のサポート マトリックス
 
@@ -46,7 +46,7 @@ ms.locfileid: "107714922"
 | **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
 | **UEFI ブート**                  | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。  |
 | **UEFI - セキュア ブート**         | 移行はサポートされません。|
-| **ディスク サイズ**                  | OS ディスク (BIOS ブート) 用に 2 TB、OS ディスク (UEFI ブート) 用に 4 TB、データ ディスク用に 4 TB。|
+| **ディスク サイズ**                  | 最大 2 TB の OS ディスク、データ ディスク用に 8 TB。|
 | **ディスクの数** | VM あたり最大で 16 台のディスク。|
 | **暗号化されたディスクまたはボリューム**    | 移行はサポートされません。|
 | **RDM またはパススルー ディスク**      | 移行はサポートされません。|

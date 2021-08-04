@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/15/2021
+ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b1c8bf5cb8944b990737d557326b2741716bab3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a1771dd6f312129d418cac3ddac8ef2411e95c6
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579758"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496136"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -142,7 +142,7 @@ ms.locfileid: "104579758"
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | ユーザー体験のシングル サインオン (SSO) セッション動作の範囲です。 |
 | SessionExpiryType |0:1 | セッションの認証動作です。 指定できる値: `Rolling` または `Absolute`。 `Rolling`値 (既定) では、ユーザーがアプリケーションでアクティブな状態を継続している限り、サインインしたままとなることを示します。 `Absolute`値は、アプリケーションのセッションで指定された期間の後にユーザーの再認証が強制されることを示します。 |
-| SessionExpiryInSeconds | 0:1 | 認証の成功時にユーザーのブラウザーで保存される整数として指定された、Azure AD B2C のセッション Cookie の有効期間です。 |
+| SessionExpiryInSeconds | 0:1 | 認証の成功時にユーザーのブラウザーで保存される整数として指定された、Azure AD B2C のセッション Cookie の有効期間です。 既定は 86,400 秒 (24 時間) です。 最小値は 900 秒 (15 分) です。 最大値は 86,400 秒 (24 時間) です。 |
 | JourneyInsights | 0:1 | 使用される Azure Application Insights のインストルメンテーション キー。 |
 | ContentDefinitionParameters | 0:1 | コンテンツ定義読み込み URI に追加するキー値ペアのリスト。 |
 |ScriptExecution| 0:1| サポートされている [JavaScript](javascript-and-page-layout.md) 実行モード。 指定できる値: `Allow` または `Disallow`(既定値)。
