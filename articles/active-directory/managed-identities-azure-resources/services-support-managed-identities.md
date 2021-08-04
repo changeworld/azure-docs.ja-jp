@@ -289,7 +289,7 @@ Azure Policy のために (それが提供されているリージョンで) マ
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
 - [Azure CLI](/cli/azure/policy/assignment#az_policy_assignment_create)
-- [Azure リソース マネージャーのテンプレート](/azure/templates/microsoft.authorization/policyassignments)
+- [Azure Resource Manager テンプレート](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/policy/policyassignments/create)
 
 
@@ -335,7 +335,7 @@ Azure Virtual Machine Scale Sets のために (それが提供されているリ
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager テンプレート](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 
@@ -352,7 +352,7 @@ Azure Virtual Machines のために (それが提供されているリージョ�
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager テンプレート](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 - [Azure SDK](qs-configure-sdk-windows-vm.md)
 
