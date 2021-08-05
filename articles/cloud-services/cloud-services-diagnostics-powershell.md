@@ -135,4 +135,4 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ## <a name="next-steps"></a>次の手順
 * Azure Diagnostics と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「 [Azure Cloud Services および Virtual Machines の診断機能](cloud-services-dotnet-diagnostics.md)」を参照してください。
 * [診断構成スキーマ](../azure-monitor/agents/diagnostics-extension-schema-windows.md) に関するページでは、診断拡張機能の各種 xml 構成オプションについて説明しています。
-* Virtual Machines の診断拡張機能を有効にする方法については、「 [Create a Windows Virtual machine with monitoring and diagnostics using Azure Resource Manager Template (Azure リソース マネージャー テンプレートを使用した監視および診断機能を備えた Windows 仮想マシンの作成)](../virtual-machines/extensions/diagnostics-template.md)
+* Virtual Machines の診断拡張機能を有効にする方法については、「 [Create a Windows Virtual machine with monitoring and diagnostics using Azure Resource Manager Template (Azure Resource Manager テンプレートを使用した監視および診断機能を備えた Windows 仮想マシンの作成)](../virtual-machines/extensions/diagnostics-template.md)
