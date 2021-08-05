@@ -415,7 +415,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 他のリソース (任意の種類) の作成を自動化するには、サンプルを手動で作成した後、[Azure Resource Manager](https://resources.azure.com/) からそのコードをパラメーター化します。 
 
-1. [Azure リソース マネージャー](https://resources.azure.com/)を開きます。 `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` に移動して、目的のアプリケーション リソースに移動します。 
+1. [Azure Resource Manager](https://resources.azure.com/)を開きます。 `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` に移動して、目的のアプリケーション リソースに移動します。 
    
     ![Azure リソース エクスプローラーのナビゲーション](./media/powershell/01.png)
    
