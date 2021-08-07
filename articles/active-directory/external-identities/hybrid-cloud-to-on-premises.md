@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 以下の両方を行う必要があります。
 
 - 「[SAML ベースのシングル サインオンの構成](../manage-apps/configure-saml-single-sign-on.md)」で説明されているように、SAML を使用してアプリを統合します。 **[サインオン URL]** 値に使用する URL をメモしておきます。
--  Azure AD アプリケーション プロキシを使用して、**Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../manage-apps/application-proxy-add-on-premises-application.md)」を参照してください。 
+-  Azure AD Application Proxy を使用して、**Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD Application Proxy を使用してアプリケーションを発行する](../manage-apps/application-proxy-add-on-premises-application.md)」を参照してください。 
 
    **[内部 URL]** 設定を構成するときは、ギャラリー以外のアプリケーション テンプレートで指定したサインオン URL を使用します。 このような方法で、ユーザーは組織の境界外からアプリにアクセスできるようになります。 アプリケーション プロキシは、オンプレミス アプリの SAML シングル サインオンを実行します。
  
@@ -39,18 +39,18 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 統合 Windows 認証と Kerberos の制約付き委任を使用してセキュリティで保護されたオンプレミス アプリケーションへのアクセス権を B2B ユーザーに付与するには、次のコンポーネントが必要です。
 
-- **Azure AD アプリケーション プロキシを介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](../manage-apps/application-proxy-add-on-premises-application.md)を参照してください。
+- **Azure AD Application Proxy を介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD Application Proxy を介してオンプレミス アプリを発行する必要があります。 詳細については、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](../manage-apps/application-proxy-add-on-premises-application.md)を参照してください。
 - **オンプレミス ディレクトリの B2B ユーザー オブジェクトを介した承認**。 アプリケーションは、ユーザー アクセス チェックを実行し、正しいリソースへのアクセス権を付与できる必要があります。 IWA と KCD がこの承認を完了するには、オンプレミスの Windows Server Active Directory 内のユーザー オブジェクトが必要です。 「[KCD を使ったシングル サインオンのしくみ](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)」で説明されているように、アプリケーション プロキシはこのユーザー オブジェクトを使用してユーザーを偽装し、アプリに対する Kerberos トークンを取得する必要があります。 
 
    > [!NOTE]
-   > Azure AD アプリケーション プロキシを構成する場合は、**委任されたログオン ID** が、統合 Windows 認証 (IWA) に対するシングル サインオン構成で、**ユーザー プリンシパル名** (既定) に確実に設定されているようにします。
+   > Azure AD Application Proxy を構成する場合は、**委任されたログオン ID** が、統合 Windows 認証 (IWA) に対するシングル サインオン構成で、**ユーザー プリンシパル名** (既定) に確実に設定されているようにします。
 
    B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトの作成に使用できる方法が 2 つあります。
 
    - Microsoft Identity Manager (MIM) と Microsoft Graph 用 MIM 管理エージェント。 
    - [PowerShell スクリプト](#create-b2b-guest-user-objects-through-a-script-preview)。 スクリプトの使用は、MIM を必要としない、より軽い解決策です。 
 
-次の図は、Azure AD アプリケーション プロキシと、オンプレミス ディレクトリ内の B2B ユーザー オブジェクトの生成を連携して、B2B ユーザーにオンプレミス IWA および KCD アプリへのアクセス権を付与する方法の概要を示しています。 番号が付いた手順については、図の下の詳細な説明を参照してください。
+次の図は、Azure AD Application Proxy と、オンプレミス ディレクトリ内の B2B ユーザー オブジェクトの生成を連携して、B2B ユーザーにオンプレミス IWA および KCD アプリへのアクセス権を付与する方法の概要を示しています。 番号が付いた手順については、図の下の詳細な説明を参照してください。
 
 ![MIM および B2B スクリプトの解決策の図](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
@@ -71,7 +71,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 ### <a name="create-b2b-guest-user-objects-through-mim"></a>MIM を介した B2B ゲスト ユーザー オブジェクトの作成
 
-MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェントを使用してオンプレミス ディレクトリにゲスト ユーザー オブジェクトを作成する方法については、「[Azure AD business-to-business (B2B) collaboration with Microsoft Identity Manager(MIM) 2016 SP1 with Azure Application Proxy (Public Preview)](/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)」(Azure アプリケーション プロキシを使用した Azure AD B2B (Business-to-Business) と Microsoft Identity Manager (MIM) 2016 SP1 のコラボレーション) をご覧ください。
+MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェントを使用してオンプレミス ディレクトリにゲスト ユーザー オブジェクトを作成する方法については、「[Azure AD business-to-business (B2B) collaboration with Microsoft Identity Manager(MIM) 2016 SP1 with Azure Application Proxy (Public Preview)](/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)」(Azure Application Proxy を使用した Azure AD B2B (Business-to-Business) と Microsoft Identity Manager (MIM) 2016 SP1 のコラボレーション) をご覧ください。
 
 ### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>スクリプトを介した B2B ゲスト ユーザー オブジェクトの作成 (プレビュー)
 
