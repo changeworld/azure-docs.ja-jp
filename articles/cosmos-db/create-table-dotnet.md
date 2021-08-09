@@ -26,7 +26,7 @@ ms.locfileid: "93096939"
 > * [Python](./table-storage-how-to-use-python.md)
 >  
 
-このクイックスタートでは、GitHub から例を複製することで、.NET と Azure Cosmos DB の [Table API](table-introduction.md) を使用してアプリを構築する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal で Azure Cosmos DB アカウントを作成する方法、およびデータ エクスプローラーを使用してテーブルとエンティティを作成する方法も説明します。
+このクイックスタートでは、GitHub から例をクローンすることで、.NET と Azure Cosmos DB の [Table API](table-introduction.md) を使用してアプリを構築する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal で Azure Cosmos DB アカウントを作成する方法、およびデータ エクスプローラーを使用してテーブルとエンティティを作成する方法も説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,9 +46,9 @@ Visual Studio 2019 をまだインストールしていない場合は、**無�
 
 [!INCLUDE [cosmos-db-create-table-add-sample-data](../../includes/cosmos-db-create-table-add-sample-data.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-GitHub で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub で Table アプリのクローンを作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -62,7 +62,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
    cd "C:\git-samples"
    ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
    ```bash
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
@@ -77,7 +77,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-open-solution.png" alt-text="ソリューションを開く"::: 
 
-2. サンプル アプリケーションを複製したフォルダーに移動し、TableStorage.sln ファイルを開きます。
+2. サンプル アプリケーションをクローンしたフォルダーに移動し、TableStorage.sln ファイルを開きます。
 
 ## <a name="review-the-code"></a>コードの確認
 
