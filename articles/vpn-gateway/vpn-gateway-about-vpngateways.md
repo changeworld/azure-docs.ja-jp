@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 04/28/2021
+ms.date: 07/08/2021
 ms.author: cherylmc
 ms.custom:
 - contperf-fy21q1
 - e2e-hybrid
-ms.openlocfilehash: bdaa61aa45c357e95e35196a5be7774f0af95ec0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ae7c9ee5357e09dcf7c33cd2ae3111cce15b6641
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202337"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721199"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 
@@ -27,7 +27,7 @@ VPN ゲートウェイは、特定の種類の仮想ネットワーク ゲート
 
 仮想ネットワーク ゲートウェイを構成するときに、ゲートウェイの種類を指定する設定を構成します。 ゲートウェイの種類により、仮想ネットワーク ゲートウェイの使用方法と、ゲートウェイによって実行されるアクションが決まります。 ゲートウェイの種類 "Vpn" は、作成される仮想ネットワーク ゲートウェイの種類が "VPN ゲートウェイ" であることを示します。 これにより、異なるゲートウェイの種類を使用する ExpressRoute ゲートウェイと区別されます。 仮想ネットワークには、VPN ゲートウェイと ExpressRoute ゲートウェイの 2 つの仮想ネットワーク ゲートウェイを含めることができます。 詳細については、「[ゲートウェイの種類](vpn-gateway-about-vpn-gateway-settings.md#gwtype)」を参照してください。
 
-仮想ネットワーク ゲートウェイの作成は、完了するまでに最大で 45 分かかる場合があります。 仮想ネットワーク ゲートウェイを作成すると、ゲートウェイ VM はゲートウェイ サブネットにデプロイされ、指定した設定で構成されます。 VPN ゲートウェイを作成した後、その VPN ゲートウェイと別の VPN ゲートウェイ間に IPsec/IKE VPN トンネル接続を作成するか (VNet 間)、VPN ゲートウェイとオンプレミスの VPN デバイス間にクロスプレミス IPsec/IKE VPN トンネル接続を作成できます (サイト間)。 また、ポイント対サイト VPN 接続 (OpenVPN、IKEv2、または SSTP 経由の VPN) を作成することもできます。これにより、会議や自宅などの遠隔地から仮想ネットワークに接続できます。
+選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。 仮想ネットワーク ゲートウェイを作成すると、ゲートウェイ VM はゲートウェイ サブネットにデプロイされ、指定した設定で構成されます。 VPN ゲートウェイを作成した後、その VPN ゲートウェイと別の VPN ゲートウェイ間に IPsec/IKE VPN トンネル接続を作成するか (VNet 間)、VPN ゲートウェイとオンプレミスの VPN デバイス間にクロスプレミス IPsec/IKE VPN トンネル接続を作成できます (サイト間)。 また、ポイント対サイト VPN 接続 (OpenVPN、IKEv2、または SSTP 経由の VPN) を作成することもできます。これにより、会議や自宅などの遠隔地から仮想ネットワークに接続できます。
 
 ## <a name="configuring-a-vpn-gateway"></a><a name="configuring"></a>VPN ゲートウェイの構成
 
@@ -82,6 +82,7 @@ RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」を参照してください。
-- [サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関するページを参照してください。
-- Azure のその他の重要な[ネットワーク機能](../networking/fundamentals/networking-overview.md)について参照してください。
+- [チュートリアル: VPN ゲートウェイを作成して管理する](tutorial-create-gateway-portal.md)。
+- [Learn モジュール: VPN Gateway を使用して、ご利用のオンプレミス ネットワークを Azure に接続する](/learn/modules/connect-on-premises-network-with-vpn-gateway/)。
+- [サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
+

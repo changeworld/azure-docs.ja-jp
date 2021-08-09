@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/10/2021
+ms.date: 06/15/2021
 ms.author: aahi
-ms.openlocfilehash: 3fdd5db4abc2b16153f6758827e152337887a095
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 989045e552a42d6ebf06d6c0ecadcb1a1f0bb5ff
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962791"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113549978"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -35,7 +35,7 @@ PII 機能は NER の一部であり、電話番号、メール アドレス、�
 
 ## <a name="named-entity-recognition-features-and-versions"></a>固有表現認識の機能とバージョン
 
-| 機能                                                         | NER v3.0 | NER v3.1-preview.5 |
+| 機能                                                         | NER v3.0 | NER v3.1 |
 |-----------------------------------------------------------------|--------|----------|
 | 単一要求およびバッチ要求のメソッド                          | X      | X        |
 | 複数のカテゴリに対応する拡張されたエンティティの認識           | X      | X        |
@@ -47,8 +47,8 @@ PII 機能は NER の一部であり、電話番号、メール アドレス、�
 
 名前付きエンティティの認識 v3 では、複数の種類に対応する拡張された検出が提供されます。 現在、NER v3.0 は、[一般エンティティ カテゴリ](../named-entity-types.md)に含まれるエンティティを認識できます。
 
-固有表現認識 v3.1-preview.5 には、v3.0 の検出機能と、次のものが含まれています。 
-* `v3.1-preview.5/entities/recognition/pii` エンドポイントを使用して、個人情報 (`PII`) を検出する機能。 
+固有表現認識 v3.1 には、v3.0 の検出機能と、次のものが含まれています。 
+* `v3.1/entities/recognition/pii` エンドポイントを使用して、個人情報 (`PII`) を検出する機能。 
 * 機密性の高い医療情報 (`PHI`) を検出する省略可能な `domain=phi` パラメーター。
 * `/analyze` エンドポイントを使用した[非同期操作](text-analytics-how-to-call-api.md)。
 
@@ -72,40 +72,43 @@ POST 要求を作成します。 次のリンクにある [Postman](text-analyti
 
 ### <a name="request-endpoints"></a>要求エンドポイント
 
-#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
+#### <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-固有表現認識 `v3.1-preview.5` では、NER、PII、およびエンティティ リンク設定の要求に対して個別のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
+固有表現認識 `v3.1` では、NER、PII、およびエンティティ リンク設定の要求に対して個別のエンドポイントを使用します。 要求に応じて、次の URL 形式を使用します。
 
 **エンティティ リンク設定**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/linking`
 
-[`Linking` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesLinking)
+[`Linking` に関する固有表現認識バージョン 3.1 のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesLinking)
 
 **名前付きエンティティの認識**
-* 一般的なエンティティ- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/general`
+* 一般的なエンティティ- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/recognition/general`
 
-[`General` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesRecognitionGeneral)
+[`General` に関する固有表現認識バージョン 3.1 のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesRecognitionGeneral)
 
 **個人を特定できる情報 (PII)**
-* 個人 (`PII`) 情報 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii`
+* 個人 (`PII`) 情報 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/recognition/pii`
 
 また、オプションの `domain=phi` パラメーターを使用すると、テキスト内の医療 (`PHI`) 情報を検出することもできます。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/recognition/pii?domain=phi`
 
-`v3.1-preview.5` 以降では、JSON 応答に `redactedText` プロパティが含まれます。これには、変更された入力テキストが含まれ、検出された PII エンティティは、そのエンティティ内の各文字が `*` に置き換えられます。
+`v3.1` 以降では、JSON 応答に `redactedText` プロパティが含まれます。これには、変更された入力テキストが含まれ、検出された PII エンティティは、そのエンティティ内の各文字が `*` に置き換えられます。
 
-[`PII` に関する固有表現認識バージョン 3.1-preview のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesRecognitionPii)
+[`PII` に関する固有表現認識バージョン 3.1 のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesRecognitionPii)
 
-API は、指定されたドキュメントの言語につい て、[一覧表示さ れたエンティティのカテゴリ](../named-entity-types.md?tabs=personal)を検出しようとします。 検出および返されるエンティティを指定する場合は、オプションの pii-categories パラメーターを適切なエンティティ カテゴリと共に使用します。 このパラメーターを使用すると、ドキュメントの言語に対して既定で有効になっていないエンティティを検出することもできます。 たとえば、英語のテキストで発生する可能性があるフランス語版のドライバーのライセンス番号などです。
+API は、指定されたドキュメントの言語につい て、[一覧表示さ れたエンティティのカテゴリ](../named-entity-types.md?tabs=personal)を検出しようとします。 検出されて返されるエンティティを指定する場合は、オプションの `piiCategories` パラメーターを適切なエンティティ カテゴリと共に使用します。 このパラメーターを使用すると、ドキュメントの言語に対して既定で有効になっていないエンティティを検出することもできます。 次の例では、既定の英語エンティティと一緒に英語のテキストに出現している可能性があるフランスの運転免許証番号を検出しようとしています。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
+> [!TIP]
+> エンティティ カテゴリを指定するときに `default` を含めなかった場合、指定したエンティティ カテゴリのみが返されます。
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/recognition/pii?piiCategories=default,FRDriversLicenseNumber`
 
 **非同期操作**
 
-`v3.1-preview.5` 以降、`/analyze` エンドポイントを使用して、NER とエンティティ リンク設定の要求を非同期的に送信できます。
+`v3.1` 以降、`/analyze` エンドポイントを使用して、NER とエンティティ リンク設定の要求を非同期的に送信できます。
 
-* 非同期操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/analyze`
+* 非同期操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/analyze`
 
 非同期要求の送信の詳細については、[Text Analytics API の呼び出し方法](text-analytics-how-to-call-api.md)に関するページを参照してください。
 
@@ -116,7 +119,7 @@ API は、指定されたドキュメントの言語につい て、[一覧表�
 **エンティティ リンク設定**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
-[`Linking` に関する固有表現認識バージョン 3.0 のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
+[`Linking` に関する固有表現認識バージョン 3.1 のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesRecognitionGeneral)
 
 **名前付きエンティティの認識**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
@@ -129,7 +132,7 @@ API は、指定されたドキュメントの言語につい て、[一覧表�
 
 ## <a name="example-requests"></a>要求例
 
-#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
+#### <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 ### <a name="example-synchronous-ner-request"></a>同期 NER 要求の例 
 
@@ -142,6 +145,22 @@ API は、指定されたドキュメントの言語につい て、[一覧表�
         "id": "1",
         "language": "en",
         "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+```
+
+### <a name="example-synchronous-pii-request"></a>同期 PII 要求の例
+
+次に示す JSON は、テキスト内の PII を検出するために API に送信する内容の例です。
+
+```json
+{
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "You can even pre-order from their online menu at www.contososteakhouse.com, call 312-555-0176 or send email to order@contososteakhouse.com!"
     }
   ]
 }
@@ -170,8 +189,7 @@ API は、指定されたドキュメントの言語につい て、[一覧表�
         "entityRecognitionTasks": [
             {
                 "parameters": {
-                    "model-version": "latest",
-                    "stringIndexType": "TextElements_v8"
+                    "model-version": "latest"
                 }
             }
         ],
@@ -220,7 +238,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 バージョン 3 には、一般的な NER、PII、およびエンティティ リンク設定に対して個別のエンドポイントが用意されています。 Version 3.1-preview には、非同期分析モードが含まれています。 これらの操作の応答を次に示します。 
 
-#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
+#### <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 ### <a name="synchronous-example-results"></a>同期の結果の例
 
@@ -228,53 +246,46 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 ```json
 {
-  "documents": [
-    {
-      "id": "1",
-      "entities": [
+    "documents": [
         {
-          "text": "tour guide",
-          "category": "PersonType",
-          "offset": 4,
-          "length": 10,
-          "confidenceScore": 0.45
-        },
-        {
-          "text": "Space Needle",
-          "category": "Location",
-          "offset": 30,
-          "length": 12,
-          "confidenceScore": 0.38
-        },
-        {
-          "text": "trip",
-          "category": "Event",
-          "offset": 54,
-          "length": 4,
-          "confidenceScore": 0.78
-        },
-        {
-          "text": "Seattle",
-          "category": "Location",
-          "subcategory": "GPE",
-          "offset": 62,
-          "length": 7,
-          "confidenceScore": 0.78
-        },
-        {
-          "text": "last week",
-          "category": "DateTime",
-          "subcategory": "DateRange",
-          "offset": 70,
-          "length": 9,
-          "confidenceScore": 0.8
+            "id": "1",
+            "entities": [
+                {
+                    "text": "tour guide",
+                    "category": "PersonType",
+                    "offset": 4,
+                    "length": 10,
+                    "confidenceScore": 0.94
+                },
+                {
+                    "text": "Space Needle",
+                    "category": "Location",
+                    "offset": 30,
+                    "length": 12,
+                    "confidenceScore": 0.96
+                },
+                {
+                    "text": "Seattle",
+                    "category": "Location",
+                    "subcategory": "GPE",
+                    "offset": 62,
+                    "length": 7,
+                    "confidenceScore": 1.0
+                },
+                {
+                    "text": "last week",
+                    "category": "DateTime",
+                    "subcategory": "DateRange",
+                    "offset": 70,
+                    "length": 9,
+                    "confidenceScore": 0.8
+                }
+            ],
+            "warnings": []
         }
-      ],
-      "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-04-01"
+    ],
+    "errors": [],
+    "modelVersion": "2021-06-01"
 }
 ```
 
@@ -282,38 +293,38 @@ PII の応答の例:
 
 ```json
 {
-  "documents": [
-    {
-    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
-    "id": "0",
-    "entities": [
+    "documents": [
         {
-        "text": "www.contososteakhouse.com",
-        "category": "URL",
-        "offset": 49,
-        "length": 25,
-        "confidenceScore": 0.8
-        }, 
-        {
-        "text": "312-555-0176",
-        "category": "Phone Number",
-        "offset": 81,
-        "length": 12,
-        "confidenceScore": 0.8
-        }, 
-        {
-        "text": "order@contososteakhouse.com",
-        "category": "Email",
-        "offset": 111,
-        "length": 27,
-        "confidenceScore": 0.8
+            "redactedText": "You can even pre-order from their online menu at www.contososteakhouse.com, call ************ or send email to ***************************!",
+            "id": "1",
+            "entities": [
+                {
+                    "text": "312-555-0176",
+                    "category": "PhoneNumber",
+                    "offset": 81,
+                    "length": 12,
+                    "confidenceScore": 0.8
+                },
+                {
+                    "text": "order@contososteakhouse.com",
+                    "category": "Email",
+                    "offset": 111,
+                    "length": 27,
+                    "confidenceScore": 0.8
+                },
+                {
+                    "text": "contososteakhouse",
+                    "category": "Organization",
+                    "offset": 117,
+                    "length": 17,
+                    "confidenceScore": 0.45
+                }
+            ],
+            "warnings": []
         }
-      ],
-    "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-07-01"
+    ],
+    "errors": [],
+    "modelVersion": "2021-01-15"
 }
 ```
 
@@ -321,48 +332,48 @@ PII の応答の例:
 
 ```json
 {
-  "documents": [
-    {
-      "id": "1",
-      "entities": [
+    "documents": [
         {
-          "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e", 
-          "name": "Space Needle",
-          "matches": [
-            {
-              "text": "Space Needle",
-              "offset": 30,
-              "length": 12,
-              "confidenceScore": 0.4
-            }
-          ],
-          "language": "en",
-          "id": "Space Needle",
-          "url": "https://en.wikipedia.org/wiki/Space_Needle",
-          "dataSource": "Wikipedia"
-        },
-        {
-          "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-          "name": "Seattle",
-          "matches": [
-            {
-              "text": "Seattle",
-              "offset": 62,
-              "length": 7,
-              "confidenceScore": 0.25
-            }
-          ],
-          "language": "en",
-          "id": "Seattle",
-          "url": "https://en.wikipedia.org/wiki/Seattle",
-          "dataSource": "Wikipedia"
+            "id": "1",
+            "entities": [
+                {
+                    "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e",
+                    "name": "Space Needle",
+                    "matches": [
+                        {
+                            "text": "Space Needle",
+                            "offset": 30,
+                            "length": 12,
+                            "confidenceScore": 0.4
+                        }
+                    ],
+                    "language": "en",
+                    "id": "Space Needle",
+                    "url": "https://en.wikipedia.org/wiki/Space_Needle",
+                    "dataSource": "Wikipedia"
+                },
+                {
+                    "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+                    "name": "Seattle",
+                    "matches": [
+                        {
+                            "text": "Seattle",
+                            "offset": 62,
+                            "length": 7,
+                            "confidenceScore": 0.25
+                        }
+                    ],
+                    "language": "en",
+                    "id": "Seattle",
+                    "url": "https://en.wikipedia.org/wiki/Seattle",
+                    "dataSource": "Wikipedia"
+                }
+            ],
+            "warnings": []
         }
-      ],
-      "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-02-01"
+    ],
+    "errors": [],
+    "modelVersion": "2021-06-01"
 }
 ```
 
@@ -370,51 +381,83 @@ PII の応答の例:
 
 ```json
 {
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
+    "jobId": "f480e1f9-0b61-4d47-93da-240f084582cf",
+    "lastUpdateDateTime": "2021-07-06T19:03:15Z",
+    "createdDateTime": "2021-07-06T19:02:47Z",
+    "expirationDateTime": "2021-07-07T19:02:47Z",
+    "status": "succeeded",
+    "errors": [],
+    "displayName": "My Job",
+    "tasks": {
+        "completed": 2,
+        "failed": 0,
+        "inProgress": 0,
+        "total": 2,
+        "entityRecognitionTasks": [
+            {
+                "lastUpdateDateTime": "2021-07-06T19:03:15.212633Z",
+                "taskName": "NamedEntityRecognition_latest",
+                "state": "succeeded",
+                "results": {
+                    "documents": [
+                        {
+                            "id": "doc1",
+                            "entities": [],
+                            "warnings": []
+                        },
+                        {
+                            "id": "doc2",
+                            "entities": [
+                                {
+                                    "text": "Pike place market",
+                                    "category": "Location",
+                                    "offset": 0,
+                                    "length": 17,
+                                    "confidenceScore": 0.95
+                                },
+                                {
+                                    "text": "Seattle",
+                                    "category": "Location",
+                                    "subcategory": "GPE",
+                                    "offset": 33,
+                                    "length": 7,
+                                    "confidenceScore": 0.99
+                                }
+                            ],
+                            "warnings": []
+                        }
+                    ],
+                    "errors": [],
+                    "modelVersion": "2021-06-01"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [
+            {
+                "lastUpdateDateTime": "2021-07-06T19:03:03.2063832Z",
+                "taskName": "PersonallyIdentifiableInformation_latest",
+                "state": "succeeded",
+                "results": {
+                    "documents": [
+                        {
+                            "redactedText": "It's incredibly sunny outside! I'm so happy",
+                            "id": "doc1",
+                            "entities": [],
+                            "warnings": []
+                        },
+                        {
+                            "redactedText": "Pike place market is my favorite Seattle attraction.",
+                            "id": "doc2",
+                            "entities": [],
+                            "warnings": []
+                        }
+                    ],
+                    "errors": [],
+                    "modelVersion": "2021-01-15"
+                }
+            }
+        ]
+    }
 }
 ```
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/27/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8118fa0c7a0baf22ca4d04e6e20f972053fdf13
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 9cf0b5b895df6bd1a0849bb1aa5ba05c4de63fca
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110658150"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439714"
 ---
 > [!IMPORTANT]
-> ゲートウェイ サブネットを使用する場合は、ゲートウェイ サブネットにネットワーク セキュリティ グループ (NSG) を関連付けないようにしてください。 このサブネットにネットワーク セキュリティ グループを関連付けると、Virtual Network ゲートウェイ (VPN、Express Route ゲートウェイ) が正常に動作しなくなることがあります。 ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../articles/virtual-network/network-security-groups-overview.md)」を参照してください。
+> ゲートウェイ サブネットを使用する場合は、ゲートウェイ サブネットにネットワーク セキュリティ グループ (NSG) を関連付けないようにしてください。 このサブネットにネットワーク セキュリティ グループを関連付けると、仮想ネットワーク ゲートウェイ (VPN と Express Route ゲートウェイ) が正常に動作しなくなることがあります。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](../articles/virtual-network/network-security-groups-overview.md)に関するページを参照してください。
 > 
 >

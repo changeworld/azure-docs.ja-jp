@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/27/2021
+ms.date: 06/30/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c5741ab0207d5631aab4abd594f5ff557ebfe23b
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 82db4939b6f980e1d9fb9a82a6cd255bb10c04cb
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110658080"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126362"
 ---
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[Search resources, service, and docs (G+/)]\(リソース、サービス、ドキュメントを検索する (G+/)\)** に「*virtual network*」と入力します。
@@ -47,7 +47,7 @@ ms.locfileid: "110658080"
 
 1. 現時点では、 **[セキュリティ]** タブは既定値のままにします。
 
-   - **DDos 防御**:Basic
+   - **DDos 保護**: 無効
    - **ファイアウォール**:無効
 1. **[確認と作成]** を選択して、仮想ネットワークの設定を検証します。
 1. 設定が検証されたら、 **[作成]** を選択します。

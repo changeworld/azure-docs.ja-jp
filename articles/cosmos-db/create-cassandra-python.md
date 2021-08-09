@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ea5a443caba25b7b5e6d843408c12e61a55b9e10
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d6a4feb5f758753ad4750d59f4e7ca379c624844
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047441"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297523"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>クイック スタート:Python SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "105047441"
 
 ドキュメント データベースを作成するには、Azure Cosmos DB を含んだ Cassandra アカウントを事前に作成しておく必要があります。
 
-[!INCLUDE [cosmos-db-create-dbaccount-cassandra](../../includes/cosmos-db-create-dbaccount-cassandra.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-cassandra](includes/cosmos-db-create-dbaccount-cassandra.md)]
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -127,7 +127,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
     
 ## <a name="use-the-x509-certificate"></a>X509 証明書を使う
 
-1. Baltimore CyberTrust Root 証明書を [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) からローカルにダウンロードします。 ファイル拡張子 *.cer* を使用して、ファイルの名前を変更します。
+1. Baltimore CyberTrust Root 証明書の詳細を [https://baltimore-cybertrust-root.chain-demos.digicert.com/info/index.html](https://baltimore-cybertrust-root.chain-demos.digicert.com/info/index.html) からテキスト ファイルにコピーします。 ファイル拡張子 *.cer* を使用して、ファイルを保存します。
 
    証明書のシリアル番号は `02:00:00:b9`、SHA1 フィンガープリントは `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74` です。
 
@@ -142,11 +142,14 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 2. 次のコマンドを実行して、必要なモジュールをインストールします。
 
     ```python
-    python -m pip install cassandra-driver
+    python -m pip install cassandra-driver==3.20.2
     python -m pip install prettytable
     python -m pip install requests
     python -m pip install pyopenssl
     ```
+
+    > [!NOTE]
+    > Cassandra API で使用するとき、Python ドライバー バージョン **3.20.2** を推奨します。 それより新しいバージョンの場合、エラーが発生することがあります。
 
 2. 次のコマンドを実行して、Python アプリケーションを開始します。
 
@@ -166,11 +169,11 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+[!INCLUDE [cosmosdb-delete-resource-group](includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

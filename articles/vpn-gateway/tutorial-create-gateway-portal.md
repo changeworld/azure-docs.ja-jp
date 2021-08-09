@@ -6,13 +6,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 04/28/2021
-ms.openlocfilehash: 29f479444679d1f76dc90eec4546539faea5337f
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.date: 07/21/2021
+ms.openlocfilehash: d0723d4a5e77fe9bcf52f515a1310dfc270338f6
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202571"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721829"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>チュートリアル:Azure portal を使用して VPN ゲートウェイを作成、管理する
 
@@ -50,7 +50,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 
 ## <a name="create-a-vpn-gateway"></a><a name="VNetGateway"></a>VPN ゲートウェイの作成
 
-この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
+この手順では、VNet の仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) を作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
 
 次の値を使用して仮想ネットワーク ゲートウェイを作成します。
 
@@ -58,16 +58,17 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 * **[リージョン]:** 米国東部
 * **ゲートウェイの種類:** VPN
 * **VPN の種類:** ルート ベース
-* **SKU:** VpnGw1
-* **世代:** Generation1
+* **SKU:** VpnGw2
+* **世代:** 第 2 世代
 * **仮想ネットワーク:** VNet1
 * **ゲートウェイ サブネットのアドレス範囲:** 10.1.255.0/27
 * **[パブリック IP アドレス]** : 新規作成
 * **パブリック IP アドレス名:** VNet1GWpip
-* **アクティブ/アクティブ モードの有効化:** 無効
-* **[Configure BGP]\(BGP の構成\):** 無効
 
-[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+ゲートウェイの作成とデプロイが完了するまでに 45 分以上かかることがあります。 デプロイの状態は、ゲートウェイの [概要] ページで確認できます。 ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
