@@ -45,7 +45,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
-1. Visual Studio (または他のコード エディター) を起動し、複製したリポジトリの *src/chat/csharp* フォルダーにあるソリューションを開きます。
+1. Visual Studio (または他のコード エディター) を起動し、クローンしたリポジトリの *src/chat/csharp* フォルダーにあるソリューションを開きます。
 
 1. Azure portal を開いているブラウザーのポータルの上部にある検索ボックスから、以前にデプロイした SignalR Service インスタンスの名前で検索し、インスタンスが正常に作成されたことを確認します。 インスタンスを選択して開きます。
 
