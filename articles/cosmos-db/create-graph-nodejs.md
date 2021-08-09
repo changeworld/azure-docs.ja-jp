@@ -28,7 +28,7 @@ ms.locfileid: "93360141"
 > * [PHP](create-graph-php.md)
 >  
 
-このクイックスタートでは、Azure portal から Azure Cosmos DB の Gremlin (グラフ) API アカウントを作成して管理し、GitHub から複製された Node.js アプリを使用してデータを追加します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
+このクイックスタートでは、Azure portal から Azure Cosmos DB の Gremlin (グラフ) API アカウントを作成して管理し、GitHub からクローンされた Node.js アプリを使用してデータを追加します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
@@ -43,9 +43,9 @@ ms.locfileid: "93360141"
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-GitHub から Gremlin API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub から Gremlin API アプリのクローンを作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -59,7 +59,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
