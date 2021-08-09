@@ -2,14 +2,14 @@
 title: Azure BLOB バックアップのサポート マトリックス
 description: Azure BLOB をバックアップするときのサポート設定と制限の概要について説明します。
 ms.topic: conceptual
-ms.date: 05/05/2021
+ms.date: 05/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: eb923cb38a76e56c1ba60b3863b111aac83eeb7e
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 06e6d193ec929961dd4eeb192045a217aefa4ab2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517678"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475103"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Azure BLOB バックアップのサポート マトリックス
 
@@ -17,7 +17,7 @@ ms.locfileid: "109517678"
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-現在、BLOB の運用バックアップは次のリージョンで利用できます: オーストラリア中部、オーストラリア東部、ブラジル南部、カナダ中部、インド中部、米国中部、東アジア、米国東部、米国東部 2、ドイツ中西部、東日本、西日本、韓国中部、韓国南部、北ヨーロッパ、米国中南部、東南アジア、スイス北部、アラブ首長国連邦北部、英国南部、英国西部、米国中西部、西ヨーロッパ、米国西部、米国西部 2
+BLOB の運用バックアップは、現在、次のリージョンでご利用いただけます。オーストラリア中部、オーストラリア中部 2、オーストラリア東部、オーストラリア南東部、ブラジル南部、ブラジル南東部、カナダ中部、カナダ東部、インド中部、米国中部、東アジア、米国東部、米国東部 2、フランス中部、ドイツ北部、ドイツ中西部、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、ノルウェー東部、ノルウェー西部、南アフリカ北部、米国中南部、東南アジア、インド南部、スイス北部、スイス西部、アラブ首長国連邦中部、アラブ首長国連邦北部、英国南部、英国西部、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2。
 
 ## <a name="limitations"></a>制限事項
 

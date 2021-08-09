@@ -3,12 +3,12 @@ title: Apache Kafka アプリからイベント ハブを使用する - Azure Ev
 description: この記事では、Azure Event Hubs での Apache Kafka のサポートに関する情報を提供します。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 2e6e1defffd012e524044bc427788fc8a1bcc53a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fcc81063ece5ced864cdcd44fe301d5c359106e9
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376086"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613700"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs により、独自の Apache Kafka® クラスターを実行する代わりに、既存のほとんどの Apache Kafka クライアント アプリケーションで使用できる、Apache Kafka プロデューサーおよびコンシューマー API と互換性のあるエンドポイントが提供されます。 Event Hubs によって、Apache Kafka のプロデューサーおよびコンシューマー API クライアントのバージョン 1.0 以降がサポートされています。
@@ -39,7 +39,7 @@ Apache Kafka 機能用の Event Hubs により、Apache Kafka サーバー バ�
 
 Event Hubs と名前空間について詳しくは、「[Event Hubs の機能](event-hubs-features.md#namespace)」をご覧ください。 クラウド サービスとしての Event Hubs は、単一の安定した仮想 IP アドレスをエンドポイントとして使用するため、クライアントは、ブローカーやクラスター内のマシンについて知っておく必要はありません。 Event Hubs によって同じプロトコルが実装されますが、この違いは、すべてのパーティションに対するすべての Kafka トラフィックが、クラスターのすべてのブローカーに対してファイアウォール アクセスを必要とするのではなく、この 1 つのエンドポイント経由で予測どおりにルーティングされることを意味します。   
 
-Event Hubs のスケーリングは、購入する[スループット ユニット](event-hubs-scalability.md#throughput-units)または[処理ユニット](event-hubs-scalability.md#processing-units)の数によって制御されます。各スループット ユニットでは、1 秒あたり 1 メガバイト、またはイングレスでは 1 秒あたり 1,000 イベント、エグレスではその量の 2 倍を利用できます。 [自動インフレ](event-hubs-auto-inflate.md)機能を使用した場合、スループットの上限に達したときに、Event Hubs でスループット ユニットまたは処理ユニットを自動的にスケールアップすることができます。この機能は、Apache Kafka プロトコルのサポートでも動作します。  
+スケールイン Event Hubs、購入した[スループット ユニット (TU)](event-hubs-scalability.md#throughput-units) または[処理ユニット](event-hubs-scalability.md#processing-units)の数によって制御されます。 Standard レベルの名前空間に対して [Auto-Inflate](event-hubs-auto-inflate.md) 機能を有効にした場合、スループットの制限に達すると、Azure Event Hubs が自動的に TU をスケールアップします。 この機能は、Apache Kafka プロトコル サポートでも機能します。 Premier レベルの名前空間の場合は、名前空間に割り当てられた処理ユニットの数を増やします。 
 
 ### <a name="is-apache-kafka-the-right-solution-for-your-workload"></a>Apache Kafka はワークロードに適したソリューションか
 

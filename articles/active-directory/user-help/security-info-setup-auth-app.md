@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/13/2019
+ms.date: 06/10/2021
 ms.author: curtand
-ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e03fe3ca7a66dc361988151b558fef0c4b4f390
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103197472"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982576"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Microsoft Authenticator アプリを検証方法として設定する
 
@@ -129,6 +129,9 @@ ms.locfileid: "103197472"
 ## <a name="change-your-default-security-info-method"></a>既定のセキュリティ情報メソッドを変更する
 
 2 要素検証を使用して職場または学校アカウントにサインインする場合、またはパスワード リセット要求に、認証アプリを既定の方法として使用する場合は、 **[セキュリティ情報]** ページから設定できます。
+
+>[!NOTE]
+>既定のサインイン方法を電話番号に対するテキスト メッセージまたは音声通話にしている場合は、多要素認証時に、SMS コードか音声呼び出しを自動的に発信します。 2021 年 6 月現在、一部のアプリでは、**テキスト メッセージ** と **音声通話** のどちらかを選ぶよう、最初にユーザーに求めます。 このオプションにより、さまざまなアプリに対して必要以上に多くのセキュリティ コードを送信しなくて済みます。 既定のサインイン方法を Microsoft Authenticator アプリにしている場合は ([この方法を強くお勧めします](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752))、アプリから自動的に通知を送信します。
 
 ### <a name="to-change-your-default-security-info-method"></a>既定のセキュリティ情報メソッドを変更するには
 

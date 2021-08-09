@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: afb12328a02a08bfcde4c431ff584a85dc48d31e
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107913"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613649"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -231,7 +231,7 @@ Azure AD Connect により、Azure AD Connect がインストールされてい�
 | 10,000 未満 |1.6 GHz |4 GB |70 GB |
 | 10,000 ～ 50,000 |1.6 GHz |4 GB |70 GB |
 | 50,000 ～ 100,000 |1.6 GHz |16 GB |100 GB |
-| オブジェクトが 100,000 個以上の場合は完全バージョンの SQL Server が必要 | | | |
+| オブジェクトが 100,000 個以上の場合は完全バージョンの SQL Server が必要。 パフォーマンス上の理由から、ローカルでのインストールを推奨。 | | | |
 | 100,000 ～ 300,000 |1.6 GHz |32 GB |300 GB |
 | 300,000 ～ 600,000 |1.6 GHz |32 GB |450 GB |
 | 600,000 を超過 |1.6 GHz |32 GB |500 GB |

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2d89759438cb625a0e220af10ab6b287096f6390
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a31d32a4888e50cdfccf1bf609418fb31ef69e3
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359882"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569595"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>AG VNN リスナーのロード バランサーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,9 +37,9 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 
 この記事の手順を完了するには、次のものが必要です。
 
-- Azure Load Balancer が[お客様の HADR ソリューションに適切な接続オプション](hadr-cluster-best-practices.md#connectivity)であると判断済みであること。
+- Azure Load Balancer が[お客様の可用性グループに適切な接続オプション](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)であると判断済みであること。
 - [可用性グループ リスナー](availability-group-overview.md)が構成済みであること。
-- 最新バージョンの [PowerShell](/powershell/azure/install-az-ps) をインストール済みであること。 
+- 最新バージョンの [PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows) をインストール済みであること。 
 
 
 ## <a name="create-load-balancer"></a>ロード バランサーの作成
@@ -125,7 +125,7 @@ PowerShell でクラスターのプローブ ポート パラメーターを設�
 
 ```powershell
 $ClusterNetworkName = "<Cluster Network Name>"
-$IPResourceName = "<SQL Server FCI / AG Listener IP Address Resource Name>" 
+$IPResourceName = "<Availability group Listener IP Address Resource Name>" 
 $ILBIP = "<n.n.n.n>" 
 [int]$ProbePort = <nnnnn>
 
@@ -152,12 +152,28 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
 
+## <a name="modify-connection-string"></a>接続文字列を変更する 
+
+それをサポートするクライアントの場合は、`MultiSubnetFailover=True` を接続文字列に追加します。 MultiSubnetFailover 接続オプションは必須ではありませんが、サブネットのフェールオーバーが速くなるという利点があります。 これは、クライアント ドライバーが、各 IP アドレスの TCP ソケットを同時に開こうとするためです。 クライアント ドライバーは、最初の IP が正常に応答するのを待ち、応答した場合は、その IP を接続に使用します。
+
+ご自身のクライアントで MultiSubnetFailover パラメーターがサポートされていない場合は、RegisterAllProvidersIP と HostRecordTTL の設定を変更して、フェールオーバー後の接続の遅延を防ぐことができます。 
+
+PowerShell を使用して、RegisterAllProvidersIp と HostRecordTTL の設定を変更します。 
+
+```powershell
+Get-ClusterResource yourListenerName | Set-ClusterParameter RegisterAllProvidersIP 0  
+Get-ClusterResource yourListenerName|Set-ClusterParameter HostRecordTTL 300 
+```
+
+詳細については、SQL Server の[リスナーの接続タイムアウト](/troubleshoot/sql/availability-groups/listener-connection-times-out)に関するドキュメントを参照してください。 
+
+> [!TIP]
+> - 1 つのサブネットの HADR ソリューションでも、接続文字列内で MultiSubnetFailover パラメータ = true を設定することで、今後、接続文字列を変更することなく、複数のサブネットにまたがることができます。  
+> - 既定では、クライアントは 20 分間、クラスター DNS レコードをキャッシュします。 HostRecordTTL を小さくすると、キャッシュするレコードの Time to Live (TTL) が短くなり、レガシ クライアントがより迅速に再接続できるようになります。 このため、HostRecordTTL の設定を小さくすると、DNS サーバーへのトラフィックが増加する可能性があります。
 
 ## <a name="test-failover"></a>[テスト フェールオーバー]
 
-
 クラスター化されたリソースのフェールオーバーをテストして、クラスターの機能を検証します。 
-
 
 次の手順を実行します。
 
@@ -178,7 +194,14 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での SQL Server の HADR 機能について詳しくは、[可用性グループ](availability-group-overview.md)と[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関する記事をご覧ください。 また、高可用性とディザスター リカバリー用に環境を構成するための[ベスト プラクティス](hadr-cluster-best-practices.md)を学習することもできます。 
+VNN が作成されたら、[SQL Server VM のクラスター設定](hadr-cluster-best-practices.md)を最適化することを検討してください。 
+
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
 
 
 

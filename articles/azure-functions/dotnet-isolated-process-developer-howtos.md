@@ -1,15 +1,16 @@
 ---
 title: Azure Functions を使用した .NET 5 関数の開発と発行
 description: .NET 5.0 を使用して C# 関数を作成およびデバッグしてから、Azure Functions でサーバーレス ホスティングにローカル プロジェクトをデプロイする方法について説明します。
-ms.date: 03/03/2021
+ms.date: 05/03/2021
 ms.topic: how-to
+recommendations: false
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: c76fde9a61ca60171ac094ef541e8c5841846aab
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 6521c02686da55142d9a9d9f1faf569d584ef593
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107866271"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111590004"
 ---
 # <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Azure Functions を使用した .NET 5 関数の開発と発行 
 
@@ -17,40 +18,31 @@ ms.locfileid: "107866271"
 
 .NET 5.0 をサポートしたり関数をアウトプロセスで実行したりする必要がない場合は、代わりに [C# クラス ライブラリ関数を作成](functions-create-your-first-function-visual-studio.md)することをお勧めします。
 
->[!NOTE]
->.NET 分離プロセス関数の開発は現在、Azure portal でサポートされていません。 .NET 5.0 アプリのアウトプロセスでの実行をサポートする関数アプリを Azure で作成するには、Azure CLI または Visual Studio Code 発行を使用する必要があります。   
-
 ## <a name="prerequisites"></a>前提条件
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
+::: zone pivot="development-environment-vscode,development-environment-cli"  
 + [.NET 5.0 SDK](https://dotnet.microsoft.com/download)
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.0.3381 以降のバージョン。
 
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.20 移行のバージョン。  
-::: zone pivot="development-environment-vscode"
+::: zone-end  
+::: zone pivot="development-environment-vscode"  
 + [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかにインストールされた [Visual Studio Code](https://code.visualstudio.com/)。  
 
 + Visual Studio Code 用の [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。  
 
 + Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)バージョン 1.3.0 以降。
-::: zone-end
-::: zone pivot="development-environment-vs"
-+ [Visual Studio 2019](https://azure.microsoft.com/downloads/) (**Azure 開発** ワークロードを含む)。  
-.NET 分離関数プロジェクト テンプレートと発行は現在、Visual Studio では使用できません。
-::: zone-end
+::: zone-end  
+::: zone pivot="development-environment-vs"  
++ [Visual Studio 2019](https://azure.microsoft.com/downloads/) バージョン 16.10 以降。 インストールには、**Azure 開発** または **ASP.NET および Web 開発** のいずれかのワークロードを含める必要 があります。  
+::: zone-end  
 
 ## <a name="create-a-local-function-project"></a>ローカル関数プロジェクトを作成する
 
 Azure Functions における関数プロジェクトとは、それぞれが特定のトリガーに応答する個別の関数を 1 つまたは複数含んだコンテナーです。 プロジェクト内のすべての関数は、同じローカル構成とホスティング構成を共有します。 このセクションでは、関数を 1 つだけ含んだ関数プロジェクトを作成します。
-
-::: zone pivot="development-environment-vs"
-
->[!NOTE]  
-> 現時点では、.NET 分離関数プロジェクトの作成をサポートする Visual Studio プロジェクト テンプレートはありません。 この記事では、Core Tools を使用して C# プロジェクトを作成する方法について説明します。このプロジェクトは、Visual Studio でローカル実行してデバッグできます。  
-
-::: zone-end
 
 ::: zone pivot="development-environment-vscode"  
 1. アクティビティ バーの Azure アイコンを選択し、 **[Azure: Functions]** 領域で **[新しいプロジェクトの作成]** アイコンを選択します。
@@ -80,7 +72,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 1. Visual Studio Code は、この情報を使用して、HTTP トリガーによる Azure Functions プロジェクトを生成します。 ローカル プロジェクト ファイルは、エクスプローラーで表示できます。 作成されるファイルの詳細については、「[生成されるプロジェクト ファイル](functions-develop-vs-code.md#generated-project-files)」を参照してください。
 ::: zone-end  
-::: zone pivot="development-environment-cli,development-environment-vs"  
+::: zone pivot="development-environment-cli"  
 
 1. 次のように `func init` コマンドを実行して、*LocalFunctionProj* という名前のフォルダーに関数プロジェクトを作成します。  
 
@@ -108,6 +100,62 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     `func new` によって、HttpExample.cs コード ファイルが作成されます。
 ::: zone-end  
 
+::: zone pivot="development-environment-vs"
+
+1. Visual Studio メニューで、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。
+
+1. **[新しいプロジェクトの作成]** の検索ボックスに「*functions*」と入力し、**Azure Functions** テンプレートを選択してから、 **[次へ]** を選択します。
+
+1. **[新しいプロジェクトの構成]** で、プロジェクトの **プロジェクト名** を入力し、 **[作成]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+
+1. **[新しい Azure Functions アプリケーションの作成]** 設定で、次の表の値を使用します。
+
+    | 設定      | 値  | 説明                      |
+    | ------------ |  ------- |----------------------------------------- |
+    | **.NET のバージョン** | **.NET 5 (Isolated)** | この値により、分離プロセスで .NET 5.0 上で実行される関数プロジェクトが作成されます。   |
+    | **関数テンプレート** | **HTTP トリガー** | この値は、HTTP 要求によってトリガーされる関数を作成します。 |
+    | **ストレージ アカウント (AzureWebJobsStorage)**  | **ストレージ エミュレーター** | Azure の関数アプリにはストレージ アカウントが必要であるため、プロジェクトを Azure に発行する際に割り当てられるか、作成されます。 HTTP トリガーによって、Azure Storage アカウントの接続文字列が使用されることはありません。その他のすべてのトリガーの種類には、有効な Azure Storage アカウントの接続文字列が必要です。  |
+    | **承認レベル** | **Anonymous** | 作成される関数を、すべてのクライアントがキーを使用せずにトリガーできます。 この承認設定により、新しい関数のテストが容易になります。 キーと承認の詳細については、「[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)」と [HTTP と Webhook のバインド](functions-bindings-http-webhook.md)に関するページをご覧ください。 |
+    
+    
+    ![Azure Functions プロジェクトの設定](./media/dotnet-isolated-process-developer-howtos/functions-project-settings.png)
+
+    **[承認レベル]** を **[匿名]** に設定していることを確認します。 **関数** の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)を提示する必要があります。
+
+1. **[作成]** を選択して、関数プロジェクトと HTTP トリガー関数を作成します。
+
+Visual Studio によってプロジェクトとクラスが作成されます。クラスの中には、HTTP トリガー関数型のスケルトン コードが含まれています。 定型コードは、"Welcome to Azure Functions!" を送信します HTTP 応答。 `HttpTrigger`属性は、関数が HTTP 要求によってトリガーされることを指定します。 
+
+## <a name="rename-the-function"></a>フォルダーの名前を変更する
+
+`FunctionName` メソッド属性は、関数の名前を設定します。これは、既定では `Function1` として生成されます。 このツールでは、プロジェクトを作成するときに既定の関数名をオーバーライドすることはできないため、ここで関数クラス、ファイル、およびメタデータに対してより適切な名前を指定します。
+
+1. **エクスプローラー** で Function1.cs ファイルを右クリックし、`HttpExample.cs` という名前に変更します。
+
+1. コードで、Function1 クラスの名前を `HttpExample` に変更します。
+
+1. `Run` という名前 `HttpTrigger` メソッドで、`FunctionName` メソッド属性の名前を `HttpExample`、および `GetLogger` メソッドに渡された値に変更します。
+
+関数の定義は次のコードのようになります。
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-isolated/HttpExample.cs" range="9-15":::
+ 
+関数の名前の変更が済んだので、この関数をローカル コンピューターでテストできるようになりました。
+
+## <a name="run-the-function-locally"></a>関数をローカルで実行する
+
+完全な Azure Functions ランタイムを使用してローカルで関数をテストできるように、Visual Studio は Azure Functions Core Tools と統合されます。  
+
+1. 関数を実行するには、Visual Studio で <kbd>F5</kbd> キーを押します。 ツールで HTTP 要求を処理できるように、ファイアウォールの例外を有効にすることが必要になる場合があります。 承認レベルは、ローカルで関数を実行するときには適用されません。
+
+1. Azure Functions のランタイムの出力から、関数の URL をコピーし、要求を実行します。 関数が正常に実行され、ログがランタイム出力に書き込まれると、Functions へようこそメッセージが表示されます。 
+
+1. デバッグを停止するには、Visual Studio で <kbd>Shift</kbd>+<kbd>F5</kbd> キーを押します。
+
+関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
+
+::: zone-end
+
 ::: zone pivot="development-environment-vscode"  
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
@@ -117,62 +165,6 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
-::: zone-end
-
-::: zone pivot="development-environment-vs"
-
-## <a name="run-the-function-locally"></a>関数をローカルで実行する
-
-この時点で、プロジェクト フォルダーのルートから `func start` コマンドを実行し、C# 分離関数プロジェクトをコンパイルして実行できます。 現在、Visual Studio でアウトプロセス関数コードをデバッグする場合は、次の手順を使用して、実行中の Functions ランタイム プロセスにデバッガーを手動でアタッチする必要があります。  
-
-1. Visual Studio でプロジェクト ファイル (.csproj) を開きます。 プロジェクト コードをレビューして変更したり、コード内で必要なブレーク ポイントを設定したりすることができます。 
-
-1. ルート プロジェクト フォルダーから、ターミナルまたはコマンド プロンプトで次のコマンドを使用して、ランタイム ホストを起動します。
-
-    ```console
-    func start --dotnet-isolated-debug
-    ```
-
-    `--dotnet-isolated-debug` オプションでは、デバッガーがアタッチされるのを待ってから続行するようにプロセスに指示します。 出力の最後に、次のような行が表示されます。 
-    
-    <pre>
-    ...
-    
-    Functions:
-
-        HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
-
-    For detailed output, run func with --verbose flag.
-    [2021-03-09T08:41:41.904Z] Azure Functions .NET Worker (PID: 81720) initialized in debug mode. Waiting for debugger to attach...
-    ...
-    
-    </pre> 
-
-    `PID: XXXXXX` は、実行中の Functions ホストである dotnet.exe プロセスのプロセス ID (PID) を示します。
- 
-1. Azure Functions ランタイムの出力で、デバッガーをアタッチするホスト プロセスのプロセス ID をメモしておきます。 また、ローカル関数の URL もメモしておきます。
-
-1. Visual Studio の **[デバッグ]** メニューから、 **[プロセスにアタッチ]** を選択し、プロセス ID と一致するプロセスを見つけて、 **[アタッチ]** を選択します。 
-    
-    :::image type="content" source="media/dotnet-isolated-process-developer-howtos/attach-to-process.png" alt-text="Functions ホスト プロセスにデバッガーをアタッチする":::    
-
-    デバッガーがアタッチされている状態で、関数コードを通常どおりデバッグできます。
-
-1. ブラウザーのアドレス バーに、次のようなローカル関数の URL を入力し、要求を実行します。 
-
-    `http://localhost:7071/api/HttpExample`
-
-    要求からのトレース出力が実行中のターミナルに書き込まれることを確認できます。 コードの実行は、関数コードで設定したすべてのブレーク ポイントで停止します。
-
-1. 完了したら、ターミナルに移動し、Ctrl + C キーを押してホスト プロセスを停止します。
- 
-関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
-
-> [!NOTE]  
-> 現在、Visual Studio 発行は .NET 分離プロセス アプリでは使用できません。 Visual Studio でのプロジェクト開発が完了したら、Azure CLI を使用して、リモートの Azure リソースを作成する必要があります。 その後、コマンド ラインからもう一度 Azure Functions Core Tools を使用して、プロジェクトを Azure に発行できます。
-::: zone-end
-
-::: zone pivot="development-environment-cli,development-environment-vs" 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>関数用の関連 Azure リソースを作成する
 
 関数コードを Azure にデプロイする前に、3 つのリソースを作成する必要があります。
@@ -224,6 +216,28 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 
 ::: zone-end
+
+:::zone pivot="development-environment-vs"
+
+## <a name="publish-the-project-to-azure"></a>Azure にプロジェクトを発行する
+
+プロジェクトを発行するには、Azure サブスクリプションに関数アプリが存在する必要があります。 初めてプロジェクトを発行するときに、Visual Studio の発行機能によって、関数アプリが自動的に作成されます。
+
+[!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
+
+## <a name="verify-your-function-in-azure"></a>Azure 内で関数を確認する
+
+1. Cloud Explorer では、新しい関数アプリが選択されているはずです。 そうでない場合は、自分のサブスクリプション > **[App Services]** の順に展開して、新しい関数アプリを選択します。
+
+1. 関数アプリを右クリックし、 **[ブラウザーで開く]** を選択します。 これにより、関数アプリのルートが既定の Web ブラウザーで開かれ、関数アプリが実行されていることを示すページが表示されます。 
+
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="実行されている関数アプリ":::
+
+1. ブラウザーのアドレス バー内で、ベース URL にパス `/api/HttpExample` を追加し、要求を実行します。
+
+1. この URL にアクセスすると、ローカルでの実行時と同じ応答がブラウザー内に表示されます。
+
+:::zone-end
 
 ::: zone pivot="development-environment-vscode"
 
@@ -299,19 +313,7 @@ az group delete --name AzureFunctionsQuickstart-rg
 [!INCLUDE [functions-cleanup-resources-vs-code-inner.md](../../includes/functions-cleanup-resources-vs-code-inner.md)]  
 ::: zone-end  
 ::: zone pivot="development-environment-vs"   
-追加コストの発生を避けるために、次の手順に従って関数アプリとその関連リソースを削除してください。
-
-1. Cloud Explorer で、自分のサブスクリプション > **[App Services]** の順に展開し、関数アプリを右クリックして、 **[ポータルで開く]** を選択します。 
-
-1. 関数アプリのページで、 **[概要]** タブを選択してから、 **[リソース グループ]** の下にあるリンクを選択します。
-
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="関数アプリのページで削除するリソース グループを選択する":::
-
-2. **[リソース グループ]** ページで、含まれているリソースの一覧を確認し、削除するものであることを確認します。
- 
-3. **[リソース グループの削除]** を選択し、指示に従います。
-
-   削除には数分かかることがあります。 実行されると、通知が数秒間表示されます。 ページの上部にあるベルのアイコンを選択して、通知を表示することもできます。
+[!INCLUDE [functions-vstools-cleanup](../../includes/functions-vstools-cleanup.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ

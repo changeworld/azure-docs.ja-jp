@@ -7,73 +7,59 @@ ms.author: mathoma
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: virtual-machines-sql
+ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/15/2020
-ms.openlocfilehash: a42457848c2a21889e15ebe5bc5b6ceaba8d6999
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 04/25/2021
+ms.openlocfilehash: 512d502dc5877c15086d69f96643d4251dfc167b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129749"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078692"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) をデプロイできます。 この記事では、[Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) の最新リリースで導入された新機能と機能強化に関連するドキュメントの変更をまとめます。 
 
-## <a name="october-2020"></a>2020 年 10 月
+## <a name="may-2021"></a>2021 年 5 月
 
 | [変更点] | 詳細 |
 | --- | --- |
-| **AG の DNN** | SQL Server 2019 CU8 以降向けに[分散ネットワーク名 (DNN) リスナー](availability-group-distributed-network-name-dnn-listener-configure.md)を構成して、従来の [VNN リスナー](availability-group-overview.md#connectivity)を置き換えることができるようになりました。これにより、Azure Load Balancer が必要なくなります。   | 
-
-## <a name="september-2020"></a>2020 年 9 月
-
-| [変更点] | 詳細 |
-| --- | --- |
-| **自動拡張機能登録** | [自動登録](sql-agent-extension-automatic-registration-all-vms.md)機能を有効にして、サブスクリプションに既にデプロイされているすべての SQL Server VM を、[SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に自動的に登録できるようになりました。 これは既存のすべての VM に適用され、今後追加されるすべての SQL Server VM も自動的に登録されます。   | 
+| **HADR コンテンツの更新** | Microsoft では、高可用性とディザスター リカバリー (HADR) のコンテンツを更新し、強化しました。 ここでは、[Windows Server フェールオーバー クラスターの概要](hadr-windows-server-failover-cluster-overview.md)と、SQL Server VM の[クォーラムの構成方法](hadr-cluster-quorum-configure-how-to.md)について説明します。  さらに、クラウドに採用されているより包括的な設定の推奨事項を使用して、[クラスターのベスト プラクティス](hadr-cluster-best-practices.md)を強化しました。| 
 
 
-## <a name="august-2020"></a>2020 年 8 月
+## <a name="april-2021"></a>2021 年 4 月
 
 | [変更点] | 詳細 |
 | --- | --- |
-| **ポータルでの ag の構成** | [Azure portal を使用して可用性グループを構成する](availability-group-azure-portal-configure.md)ことができるようになりました。 この機能は現在プレビュー段階であり、デプロイの途中です。目的のリージョンで利用できない場合は、後日に再度ご確認ください。 | 
+| **高可用性を VM に移行する** | Azure Migrate では、高可用性ソリューション全体を Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 今すぐ Azure Migrate を使用して、[可用性グループ](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)または[フェールオーバー クラスター インスタンス](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)を SQL Server VM に移行してください。 | 
 
 
-## <a name="july-2020"></a>2020 年 7 月
-
-
-| [変更点] | 詳細 |
-| --- | --- |
-| **Ultra Disk へのログの移行** | ハイ パフォーマンスと低待機時間を活用するために、[ログ ファイルを Ultra Disk に移行する](storage-migrate-to-ultradisk.md)方法について学習します。 | 
-| **Azure PowerShell を使用した AG の作成** | [Azure PowerShell](availability-group-az-commandline-configure.md) と Azure CLI を使用して、可用性グループの作成を簡略化できるようになりました。 | 
-
-
-## <a name="june-2020"></a>2020 年 6 月
+## <a name="march-2021"></a>2021 年 3 月
 
 | [変更点] | 詳細 |
 | --- | --- |
-| **分散ネットワーク名 (DNN)** | Windows Server 2016 以降の SQL Server 2019 では、Azure Load Balancer を使用する代わりに[分散ネットワーク名](./failover-cluster-instance-distributed-network-name-dnn-configure.md)を使用してフェールオーバー クラスター インスタンス (FCI) にトラフィックをルーティングするためのサポートをプレビュー公開しています。 このサポートにより、Azure の高可用性 (HA) ソリューションへの接続が簡素化および合理化されます。 | 
-| **Azure 共有ディスクを使用した FCI** | [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)を使用し、[フェールオーバー クラスター インスタンス (FCI)](failover-cluster-instance-overview.md) をデプロイできるようになりました。 |
-| **再構成された FCI のドキュメント** | 書き直しおよび再構成により、[Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関するドキュメントがわかりやすくなりました。 [クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)、[SQL Server FCI 用の仮想マシン](failover-cluster-instance-prepare-vm.md)を準備する方法、[Azure Load Balancer](./availability-group-vnn-azure-load-balancer-configure.md) を構成する方法など、構成コンテンツの一部が分けられました。 | 
-| &nbsp; | &nbsp; |
+| **パフォーマンスのベスト プラクティスの更新** | パフォーマンスのベスト プラクティスに関するドキュメントを書き換え、更新しました。1 つの記事を一連の記事に分割し、[チェックリスト](performance-guidelines-best-practices-checklist.md)、[VM サイズのガイダンス](performance-guidelines-best-practices-vm-size.md)、[記憶域のガイダンス](performance-guidelines-best-practices-storage.md)、[基本手順](performance-guidelines-best-practices-collect-baseline.md)がそれぞれまとめられています。   | 
 
 
-## <a name="may-2020"></a>2020 年 5 月 
 
-| [変更点] | 詳細 |
-| --- | --- |
-| **Azure SQL ファミリ** | Azure Virtual Machines 上の SQL Server は、[Azure SQL 製品ファミリ](../../azure-sql-iaas-vs-paas-what-is-overview.md)の一部になりました。 [最新の状況](../index.yml)を確認してください。 製品に変更はありませんが、ドキュメントでは Azure SQL 製品に関する決定を容易にすることを目的としています。 | 
-
-
-## <a name="january-2020"></a>2020 年 1 月
+## <a name="2020"></a>2020
 
 | [変更点] | 詳細 |
 | --- | --- |
 | **Azure Government のサポート** | [Azure Government](https://azure.microsoft.com/global-infrastructure/government/) クラウドでホストされている仮想マシンの SQL IaaS Agent 拡張機能に SQL Server 仮想マシンを登録できるようになりました。 | 
+| **Azure SQL ファミリ** | Azure Virtual Machines 上の SQL Server は、[Azure SQL 製品ファミリ](../../azure-sql-iaas-vs-paas-what-is-overview.md)の一部になりました。 [最新の状況](../index.yml)を確認してください。 製品に変更はありませんが、ドキュメントでは Azure SQL 製品に関する決定を容易にすることを目的としています。 | 
+| **分散ネットワーク名 (DNN)** | Windows Server 2016 以降の SQL Server 2019 では、Azure Load Balancer を使用する代わりに[分散ネットワーク名](./failover-cluster-instance-distributed-network-name-dnn-configure.md)を使用してフェールオーバー クラスター インスタンス (FCI) にトラフィックをルーティングするためのサポートをプレビュー公開しています。 このサポートにより、Azure の高可用性 (HA) ソリューションへの接続が簡素化および合理化されます。 | 
+| **Azure 共有ディスクを使用した FCI** | [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)を使用し、[フェールオーバー クラスター インスタンス (FCI)](failover-cluster-instance-overview.md) をデプロイできるようになりました。 |
+| **再構成された FCI のドキュメント** | 書き直しおよび再構成により、[Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関するドキュメントがわかりやすくなりました。 [クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)、[SQL Server FCI 用の仮想マシン](failover-cluster-instance-prepare-vm.md)を準備する方法、[Azure Load Balancer](./availability-group-vnn-azure-load-balancer-configure.md) を構成する方法など、構成コンテンツの一部が分けられました。 | 
+| **Ultra Disk へのログの移行** | ハイ パフォーマンスと低待機時間を活用するために、[ログ ファイルを Ultra Disk に移行する](storage-migrate-to-ultradisk.md)方法について学習します。 | 
+| **Azure PowerShell を使用した AG の作成** | [Azure PowerShell](availability-group-az-commandline-configure.md) と Azure CLI を使用して、可用性グループの作成を簡略化できるようになりました。 | 
+| **ポータルでの ag の構成** | [Azure portal を使用して可用性グループを構成する](availability-group-azure-portal-configure.md)ことができるようになりました。 この機能は現在プレビュー段階であり、デプロイの途中です。目的のリージョンで利用できない場合は、後日に再度ご確認ください。 | 
+| **自動拡張機能登録** | [自動登録](sql-agent-extension-automatic-registration-all-vms.md)機能を有効にして、サブスクリプションに既にデプロイされているすべての SQL Server VM を、[SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に自動的に登録できるようになりました。 これは既存のすべての VM に適用され、今後追加されるすべての SQL Server VM も自動的に登録されます。   | 
+| **AG の DNN** | SQL Server 2019 CU8 以降向けに[分散ネットワーク名 (DNN) リスナー](availability-group-distributed-network-name-dnn-listener-configure.md)を構成して、従来の [VNN リスナー](availability-group-overview.md#connectivity)を置き換えることができるようになりました。これにより、Azure Load Balancer が必要なくなります。   | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2019"></a>2019
@@ -125,5 +111,5 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 
 * [Linux VM における SQL Server の概要](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux 仮想マシンでの SQL Server のプロビジョニング](../linux/sql-vm-create-portal-quickstart.md)
-* [よく寄せられる質問 (Linux)](../linux/frequently-asked-questions-faq.md)
+* [よく寄せられる質問 (Linux)](../linux/frequently-asked-questions-faq.yml)
 * [SQL Server on Linux のドキュメント](/sql/linux/sql-server-linux-overview)

@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 9936d1f9ce99103a2217d4b6adcc1ded6c403811
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 6f732f7c59f76c99d82d5c4f7b062532c60a5a78
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737251"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165008"
 ---
 デバイスにリモート接続する手順は、クライアントのオペレーティング システムによって異なります。
 
@@ -82,7 +82,7 @@ Windows クライアントからリモートで接続するには、次の手順
     [1HXQG13.wdshcsso.com]: PS>
     ```
 
-`-UseSSL` オプションを使用すると、PowerShell を介して *https* 経由でリモート処理が行われます。 PowerShell を介してリモート接続する場合は、常に *https* を使用することをお勧めします。
+`-UseSSL` オプションを使用すると、PowerShell を介して *https* 経由でリモート処理が行われます。 PowerShell を介してリモート接続する場合は、常に *https* を使用することをお勧めします。 信頼されたネットワーク内では、http 経由の PowerShell を介したリモート処理を使用できます。 最初に、ローカル UI で http 経由のリモート PowerShell を有効にします。 その後、`-UseSSL` オプションを指定せずに、前の手順を使用してデバイスの PowerShell インターフェイスに接続できます。
 
 証明書を使用していない場合 (証明書を使用することをお勧めします)、セッション オプション `-SkipCACheck -SkipCNCheck -SkipRevocationCheck` を使用して証明書の妥当性確認をスキップできます。
 

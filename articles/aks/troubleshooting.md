@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 0892f11a79c62669d77cceb2dbc4f9a9f86c623a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 257f3473da4284080d7977021cb97c6dbce0fbde
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765937"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535170"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -214,6 +214,10 @@ Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The
 ## <a name="my-watch-is-stale-or-azure-ad-pod-identity-nmi-is-returning-status-500"></a>ウォッチが古くなっているか、または Azure AD Pod Identity NMI からステータス 500 が返されている
 
 この[例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)のように Azure Firewall を使用している場合は、この問題が発生する可能性があります。その理由は、アプリケーション ルールを使用したファイアウォール経由の有効期間の長い TCP 接続に、ファイアウォール上で Go `keepalives` を終了させるバグ (Q1CY21 で解決される) が存在することにあります。 この問題が解決されるまでは、(アプリケーション ルールではなく) ネットワーク ルールを AKS API サーバー IP に追加することで軽減できます。
+
+## <a name="when-resuming-my-cluster-after-a-stop-operation-why-is-my-node-count-not-in-the-autoscaler-min-and-max-range"></a>停止操作を実行した後でクラスターを再開するときに、ノード数が、自動スケーリングの最小数と最大数の間の範囲にないのはなぜですか。
+
+クラスターの自動スケーリングを使用している場合は、クラスターのバックアップを起動するときに、現在のノード数が、設定した最小数と最大数の間の範囲に収まらない場合があります。 これは正しい動作です。 クラスターは、ワークロードを実行するのに必要な数のノードとともに起動します。このとき、自動スケーリングの設定は反映されません。 クラスターでスケーリング操作が実行されるときに、この最小値と最大値は現在のノード数に反映され、やがて、クラスターのノード数は設定した範囲内に収まります。その後、クラスターを停止するまでこの範囲内にあります。
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage および ASK のトラブルシューティング
 

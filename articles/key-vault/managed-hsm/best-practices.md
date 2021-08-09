@@ -7,14 +7,14 @@ tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 06/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 9ef3b19e5064c8a88bf80eebf57539be72747fe4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a7cccecc47973d372453ce86d0d5d12c8d773b3a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482519"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413971"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>Managed HSM を使用しているときのベスト プラクティス
 
@@ -42,8 +42,8 @@ Managed HSM は、暗号化キーを保護するクラウド サービスです�
 
 ## <a name="turn-on-recovery-options"></a>回復オプションの有効化
 
-- [論理的な削除](../general/soft-delete-overview.md)は、既定で有効になります。
-- 論理的な削除が有効になった後であっても HSM の強制削除から保護する場合は、消去保護を有効にします。
+- [論理的な削除](soft-delete-overview.md)は、既定で有効になります。 7 日間から 90 日間までの保有期間を選択できます。
+- HSM またはキーが直ちに完全に削除されないようにするには、消去保護をオンにします。 消去保護がオンにされている場合、HSM またはキーは、保有日数が経過するまで、キーは削除された状態のままになります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -51,3 +51,4 @@ Managed HSM は、暗号化キーを保護するクラウド サービスです�
 - Azure Monitor を使用してログ記録を構成する方法については、「[Managed HSM のログ記録](logging.md)」を参照してください。
 - キー管理については、[Managed HSM キーの管理](key-management.md)に関するページを参照してください。
 - ロールの割り当ての管理については、「[Managed HSM のロール管理](role-management.md)」を参照してください。
+- 回復オプションについては、「[マネージド HSM の論理的な削除](soft-delete-overview.md)」を参照してください。

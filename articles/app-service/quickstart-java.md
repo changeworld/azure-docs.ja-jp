@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 24a564d836405bf51aacf73af359e987e8c957e1
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7393a8085a2ac597f3fdbcc365608d32956f39b7
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737134"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111665"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
@@ -42,13 +42,13 @@ ms.locfileid: "109737134"
 
 [Spring Boot Getting Started](https://github.com/spring-guides/gs-spring-boot) サンプル プロジェクトをクローンします。
 
-```bash
+```azurecli-interactive
 git clone https://github.com/spring-guides/gs-spring-boot
 ```
 
 完成したプロジェクトにディレクトリを変更します。
 
-```bash
+```azurecli-interactive
 cd gs-spring-boot/complete
 ```
 
@@ -56,15 +56,38 @@ cd gs-spring-boot/complete
 
 Cloud Shell プロンプトで次の Maven コマンドを実行して、`helloworld` という名前の新しいアプリを作成します。
 
-```bash
+```azurecli-interactive
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" "-Dversion=1.0-SNAPSHOT"
 ```
 
 次に、作業ディレクトリをプロジェクト フォルダーに変更します。
 
-```bash
+```azurecli-interactive
 cd helloworld
 ```
+
+# <a name="jboss-eap"></a>[JBoss EAP](#tab/jbosseap)
+
+::: zone pivot="platform-windows"
+
+JBoss EAP は、App Service の Linux バージョンでのみ使用できます。 JBoss EAP 用のクイックスタートの手順を表示するには、この記事の上部にある **[Linux]** ボタンを選択してください。
+
+::: zone-end
+::: zone pivot="platform-linux"
+
+Pet Store デモ アプリケーションを複製します。
+
+```azurecli-interactive
+git clone https://github.com/agoncal/agoncal-application-petstore-ee7.git
+```
+
+複製したプロジェクトへとディレクトリを変更します。
+
+```azurecli-interactive
+cd agoncal-application-petstore-ee7
+```
+
+::: zone-end
 
 ---
 
@@ -74,20 +97,20 @@ Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure
 
 次の Maven コマンドを実行して、デプロイを構成します。 このコマンドは、App Service オペレーティング システム、Java バージョン、および Tomcat バージョンを設定するのに役立ちます。
 
-```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
+```azurecli-interactive
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.0.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. **Subscription** オプションのプロンプトが表示されたら、行頭に番号出力を入力して適切な `Subscription` を選択します。
-1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定のオプションである `<create>` を受け入れるか、既存のアプリを選択します。
-1. **OS** オプションのプロンプトが表示されたら、「`3`」と入力して **Windows** を選択します。
-1. **価格レベル** オプションのプロンプトが表示されたら、「`2`」と入力して **B2** を選択します。
-1. Enter キーを押して、既定の Java バージョンである **Java 8** を使用します。
-1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
+1. **Subscription** オプションのプロンプトが表示されたら、行頭に出力される番号を入力して適切な `Subscription` を選択します。
+2. **Web アプリ** オプションのプロンプトが表示されたら、Enter キーを押して、既定のオプションである `<create>` を選択します。
+3. **OS** オプションのプロンプトが表示されたら、「`2`」と入力して **Windows** を選択します。
+4. **javaVersion** オプションのプロンプトが表示されたら、「`1`」と入力して **Java 8** を選択します。
+5. **価格レベル** オプションのプロンプトが表示されたら、「`7`」と入力して **P1v2** を選択します。
+6. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     要約出力は、次に示すスニペットのようになります。
 
@@ -114,13 +137,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. **Subscription** オプションのプロンプトが表示されたら、行頭に番号出力を入力して適切な `Subscription` を選択します。
-1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定のオプションである `<create>` を受け入れるか、既存のアプリを選択します。
-1. **OS** オプションのプロンプトが表示されたら、「`3`」と入力して **Windows** を選択します。
-1. **価格レベル** オプションのプロンプトが表示されたら、「`2`」と入力して **B2** を選択します。
-1. Enter キーを押して、既定の Java バージョンである **Java 8** を使用します。
-1. Enter キーを押して、既定の Web コンテナーである **Tomcat 8.5** を使用します。
-1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
+1. **Subscription** オプションのプロンプトが表示されたら、行頭に出力される番号を入力して適切な `Subscription` を選択します。
+2. **Web アプリ** オプションのプロンプトが表示されたら、Enter キーを押して、既定のオプションである `<create>` を選択します。
+3. **OS** オプションのプロンプトが表示されたら、「`2`」と入力して **Windows** を選択します。
+4. **javaVersion** オプションのプロンプトが表示されたら、「`1`」と入力して **Java 8** を選択します。
+5. **webContainer** オプションのプロンプトが表示されたら、「`3`」と入力して **Tomcat 8.5** を選択します。
+6. **価格レベル** オプションのプロンプトが表示されたら、「`7`」と入力して **P1v2** を選択します。
+7. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     要約出力は、次に示すスニペットのようになります。
 
@@ -145,19 +168,23 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
     [INFO] ------------------------------------------------------------------------
     ```
 
+# <a name="jboss-eap"></a>[JBoss EAP](#tab/jbosseap)
+
+JBoss EAP は、App Service の Linux バージョンでのみ使用できます。 JBoss EAP 用のクイックスタートの手順を表示するには、この記事の上部にある **[Linux]** ボタンを選択してください。
+
 ---
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
-### <a name="java-se"></a>[Java SE](#tab/javase)
+# <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. **Subscription** オプションのプロンプトが表示されたら、行頭に番号出力を入力して適切な `Subscription` を選択します。
-1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定のオプションである `<create>` を受け入れるか、既存のアプリを選択します。
+1. **Subscription** オプションのプロンプトが表示されたら、行頭に出力される番号を入力して適切な `Subscription` を選択します。
+1. **Web アプリ** オプションのプロンプトが表示されたら、Enter キーを押して、既定のオプションである `<create>` を選択します。
 1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
-1. **価格レベル** オプションのプロンプトが表示されたら、「`2`」と入力して **B2** を選択します。
-1. Enter キーを押して、既定の Java バージョンである **Java 8** を使用します。
-1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
+2. **javaVersion** オプションのプロンプトが表示されたら、「`1`」と入力して **Java 8** を選択します。
+3. **価格レベル** オプションのプロンプトが表示されたら、「`6`」と入力して **P1v2** を選択します。
+4. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     ```
     Please confirm webapp properties
@@ -179,14 +206,14 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
     [INFO] ------------------------------------------------------------------------
     ```
 
-### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. **Subscription** オプションのプロンプトが表示されたら、行頭に番号出力を入力して適切な `Subscription` を選択します。
-1. **Web App** オプションのプロンプトが表示されたら、Enter キーを押して既定のオプションである `<create>` を受け入れるか、既存のアプリを選択します。
+1. **Subscription** オプションのプロンプトが表示されたら、行頭に出力される番号を入力して適切な `Subscription` を選択します。
+1. **Web アプリ** オプションのプロンプトが表示されたら、Enter キーを押して、既定のオプションである `<create>` を選択します。
 1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
-1. **価格レベル** オプションのプロンプトが表示されたら、「`2`」と入力して **B2** を選択します。
-1. Enter キーを押して、既定の Java バージョンである **Java 8** を使用します。
-1. Enter キーを押して、既定の Web コンテナーである **Tomcat 8.5** を使用します。
+1. **javaVersion** オプションのプロンプトが表示されたら、「`1`」と入力して **Java 8** を選択します。
+1. **runtimeStack** オプションのプロンプトが表示されたら、「`3`」と入力して **Tomcat 8.5** を選択します。
+1. **価格レベル** オプションのプロンプトが表示されたら、「`6`」と入力して **P1v2** を選択します。
 1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     ```
@@ -209,6 +236,37 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
     [INFO] ------------------------------------------------------------------------
     ```
 
+# <a name="jboss-eap"></a>[JBoss EAP](#tab/jbosseap)
+
+1. **Subscription** オプションのプロンプトが表示されたら、行頭に出力される番号を入力して適切な `Subscription` を選択します。
+1. **Web アプリ** のオプションが表示されたら、Enter キーを押して、既定のオプションである `<create>` をそのまま使用します。
+1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
+1. **javaVersion** オプションのプロンプトが表示されたら、「`1`」と入力して **Java 8** を選択します。
+1. **runtimeStack** オプションのプロンプトが表示されたら、「`2`」と入力して **Jbosseap 7** を選択します。
+1. **pricingTier** オプションのプロンプトが表示されたら、「`3`」と入力して **P1v3** を選択します。
+1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
+
+    ```
+    Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
+    AppName : petstoreee7-1623451825408
+    ResourceGroup : petstoreee7-1623451825408-rg
+    Region : westeurope
+    PricingTier : P1v3
+    OS : Linux
+    Java : Java 8
+    Web server stack: Jbosseap 7.2
+    Deploy to slot : false
+    Confirm (Y/N) [Y]: y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 01:01 min
+    [INFO] Finished at: 2021-06-11T15:52:25-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
 ---
 
 ::: zone-end
@@ -222,7 +280,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
 `<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
 `<appName>` | true | Web アプリの名前。 | 0.1.0 以降
 `<region>` | true | Web アプリがホストされるリージョンを指定します。既定値は **westeurope** です。 すべての有効なリージョンについては、「[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)」を参照してください。 | 0.1.0 以降
-`<pricingTier>` | false | Web アプリの価格レベル。 運用ワークロードの場合の既定値は **P1V2** ですが、Java Dev/Test の場合は **B2** が推奨される最小構成です。 [詳細情報](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 以降
+`<pricingTier>` | true | Web アプリの価格レベル。 運用ワークロードの場合の既定値は **P1V2** ですが、Java Dev/Test の場合は **B2** が推奨される最小構成です。 [詳細情報](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 以降
 `<runtime>` | true | ランタイム環境の構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
 `<deployment>` | true | デプロイ構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
 
@@ -235,15 +293,22 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
 
 Maven プラグインでは、Azure CLI からのアカウント資格情報を App Services へのデプロイに使用します。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)します。
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
 次のコマンドを使用して、対象の Java アプリを Azure にデプロイできます。
 
-```bash
+```azurecli-interactive
 mvn package azure-webapp:deploy
 ```
+
+::: zone pivot="platform-linux"
+
+> [!NOTE]
+> JBoss EAP の場合、Wildfly をローカルにインストールする必要があるため、`mvn package azure-webapp:deploy -DskipTests` を実行してテストを無効にします。 
+
+::: zone-end
 
 デプロイが完了すると、アプリケーションは `http://<appName>.azurewebsites.net/` で準備が整います (デモでは `http://helloworld-1590394316693.azurewebsites.net`)。 ローカル Web ブラウザーで URL を開くと、次のように表示されます
 

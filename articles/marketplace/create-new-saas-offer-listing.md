@@ -1,6 +1,6 @@
 ---
-title: Microsoft パートナー センターで SaaS オファー登録情報の詳細を構成する方法
-description: Microsoft コマーシャル マーケットプレースでサービスとしてのソフトウェア (SaaS) オファー登録情報の詳細を構成する方法について説明します。
+title: Azure Marketplace で SaaS オファーの登録情報の詳細を構成する
+description: Azure Marketplace でサービスとしてのソフトウェア (SaaS) オファーの登録情報の詳細を構成します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e02fccc2747403076d872fad20db0a4e92d10be4
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746150"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616690"
 ---
-# <a name="how-to-configure-your-saas-offer-listing-details"></a>SaaS オファー登録情報の詳細を構成する方法
+# <a name="configure-saas-offer-listing-details"></a>SaaS オファーの登録情報の詳細を構成する
 
 サービスとしてのソフトウェア (SaaS) オファーの **[Offer listing]\(オファー登録情報\)** ページで入力した情報は、Microsoft コマーシャル マーケットプレースのオンライン ストアに表示されます。 これには、オファーの説明、スクリーンショット、マーケティング資産などが含まれます。
 
@@ -67,7 +67,7 @@ ms.locfileid: "96746150"
 1. 表示される **[名前]** ボックスに、このドキュメントの名前を入力します。 この名前は、オファーの詳細ページで顧客に表示されます。
 1. これらの手順を繰り返して、サポート ドキュメントを追加します。
 
-## <a name="add-your-marketplace-media"></a>マーケットプレース メディアを追加する
+## <a name="add-marketplace-media"></a>マーケットプレース メディアを追加する
 
 ### <a name="add-logos"></a>ロゴを追加する
 
@@ -105,4 +105,4 @@ ms.locfileid: "96746150"
 ## <a name="next-steps"></a>次のステップ
 
 - Microsoft でオファーを販売している場合は、「[SaaS オファーのプレビュー対象ユーザーを追加する方法](create-new-saas-offer-preview.md)」に進んでください。 
-- それ以外の場合は、「[SaaS オファーを販売する方法](create-new-saas-offer-marketing.md)」に進んでください。
+- それ以外の場合は。「[SaaS オファーを販売する方法](create-new-saas-offer-marketing.md)」に進みます。

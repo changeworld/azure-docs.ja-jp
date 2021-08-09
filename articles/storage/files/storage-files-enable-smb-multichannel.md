@@ -4,19 +4,20 @@ description: Azure Premium ファイル共有で SMB マルチチャネルを有
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 05/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a7b6feb2cfb255e231b8c2f9080915195f49d29a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718983"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663449"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>FileStorage アカウントで SMB マルチチャネルを有効にする (プレビュー) 
 
-Azure FileStorage アカウントは、SMB マルチチャネル (プレビュー) をサポートしています。これにより、Premium ファイル共有への複数のネットワーク接続を確立することによって、SMB 3.x クライアントからのパフォーマンスが向上します。 この記事では、既存のストレージ アカウントで SMB マルチチャネルを有効にする手順をわかりやすく説明します。 Azure Files SMB マルチチャネルの詳細については、SMB マルチチャネルのパフォーマンスに関するページを参照してください。
+Azure FileStorage アカウントは、SMB マルチチャネル (プレビュー) をサポートしています。これにより、Premium ファイル共有への複数のネットワーク接続を確立することによって、SMB 3.x クライアントからのパフォーマンスが向上します。 この記事では、既存のストレージ アカウントで SMB マルチチャネルを有効にする手順をわかりやすく説明します。 Azure Files SMB マルチチャネルの詳細については、 [SMB マルチチャネルのパフォーマンス](storage-files-smb-multichannel-performance.md)に関するページを参照してください。
 
 ## <a name="limitations"></a>制限事項
 

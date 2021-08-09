@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 64b84c248a943c8558bf1e5fea646a36046c7f1b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ef51fc0c67c938a2d0933b6032072acc24e42dd3
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740413"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494631"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure Spring Cloud の構造化アプリケーション ログ
 
@@ -20,7 +20,10 @@ ms.locfileid: "108740413"
 
 ## <a name="log-schema-requirements"></a>ログ スキーマの要件
 
-ログ クエリのエクスペリエンスを向上させるには、アプリケーション ログが JSON 形式であり、スキーマに準拠している必要があります。 Azure Spring Cloud では、このスキーマを使用してアプリケーションを解析し、Log Analytics にストリームします。 
+ログ クエリのエクスペリエンスを向上させるには、アプリケーション ログが JSON 形式であり、スキーマに準拠している必要があります。 Azure Spring Cloud では、このスキーマを使用してアプリケーションを解析し、Log Analytics にストリームします。
+
+> [!NOTE]
+> JSON ログ形式を有効にすると、コンソールからのログ ストリーミング出力を読み取るのが困難になります。 人間が判読できる出力を取得するには、 `--format-json` 引数を `az spring-cloud app logs` CLI コマンドに追加します。 「[Format JSON structured logs](./how-to-log-streaming.md#format-json-structured-logs) (JSON の構造化されたログの書式設定)」を参照してください。
 
 **JSON スキーマの要件:**
 

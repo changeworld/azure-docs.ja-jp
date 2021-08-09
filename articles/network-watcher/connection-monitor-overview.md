@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 24c181c17e49fe5b7c3001c1cb2839bc957ef463
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: fe259c3858e798f9bcb72600b680f12c19055884
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490490"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470354"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>接続モニターによるネットワーク接続の監視
 
@@ -97,7 +97,7 @@ Linux マシンの場合、使用する portNumber を手動で変更する必�
 
 仮想ネットワークが含まれるすべてのサブスクリプションは、Network Watcher で有効になります。 サブスクリプションで仮想ネットワークを作成すると、その仮想ネットワークのリージョンとサブスクリプションで、Network Watcher が自動的に有効になります。 この自動有効化により、リソースが影響を受けたり、料金が発生したりすることはありません。 Network Watcher がサブスクリプションで明示的に無効になっていないことを確認してください。 
 
-詳細については、[Network Watcher の有効化](./network-watcher-create.md)に関する記事をご覧ください。
+[リージョンで Network Watcher が使用可能](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher&regions=all)なことを確認します。 詳細については、[Network Watcher の有効化](./network-watcher-create.md)に関する記事をご覧ください。
 
 ## <a name="create-a-connection-monitor"></a>接続モニターを作成する 
 
@@ -281,7 +281,7 @@ Network Watcher から接続モニターに移動したときには、以下の�
 
 #### <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
-接続モニター エクスペリエンスの前に作成された接続モニターでは、次の 4 つのメトリックすべてを使用できます: 失敗したプローブの割合、AverageRoundtripMs、ChecksFailedPercent (プレビュー)、RoundTripTimeMs (プレビュー)。 接続モニター エクスペリエンスで作成された接続モニターでは、データを使用できるのは " *(プレビュー)* " というタグが付いたメトリックについてのみです。
+接続モニター エクスペリエンスの前に作成された接続モニターでは、次の 4 つのメトリックすべてを使用できます: 失敗したプローブの割合、AverageRoundtripMs、ChecksFailedPercent、RoundTripTimeMs。 接続モニター エクスペリエンスで作成された接続モニターでは、データを使用できるのは、ChecksFailedPercent、RoundTripTimeMs、および Test Result メトリックについてのみです。
 
   :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="接続モニターのメトリックを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
@@ -289,11 +289,11 @@ Network Watcher から接続モニターに移動したときには、以下の�
 
 | メトリック | Display name | ユニット | 集計の種類 | 説明 | Dimensions |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent (クラシック) | 失敗したプローブの割合 (クラシック) | パーセント | Average | 失敗した接続監視プローブの割合。 | ディメンションなし |
-| AverageRoundtripMs (クラシック) | Avg.ラウンドトリップ時間 (ms) (クラシック) | ミリ秒 | Average | ソースと接続先の間で送信された接続監視プローブのネットワーク RTT。 |             ディメンションなし |
-| ChecksFailedPercent | 失敗したチェックの割合 | パーセント | Average | テストで失敗したチェックの割合。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
-| RoundTripTimeMs | ラウンド トリップ時間 (ミリ秒) | ミリ秒 | Average | ソースとターゲットの間で送信されたチェックの RTT。 これは平均値ではありません。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
-| TestResult | テスト結果 | Count | Average | 接続モニターのテスト結果 | SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| ProbesFailedPercent (クラシック) | 失敗したプローブの割合 (クラシック) | パーセント | Average | 失敗した接続監視プローブの割合。<br>このメトリックは、接続モニター クラシックでのみ使用できます  | ディメンションなし |
+| AverageRoundtripMs (クラシック) | Avg.ラウンドトリップ時間 (ms) (クラシック) | ミリ秒 | Average | ソースと接続先の間で送信された接続監視プローブのネットワーク RTT。<br>このメトリックは、接続モニター クラシックでのみ使用できます |             ディメンションなし |
+| ChecksFailedPercent | 失敗したチェックの割合 | パーセント | Average | テストで失敗したチェックの割合。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| RoundTripTimeMs | ラウンド トリップ時間 (ミリ秒) | ミリ秒 | Average | ソースとターゲットの間で送信されたチェックの RTT。 これは平均値ではありません。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| TestResult | テスト結果 | Count | Average | 接続モニターのテスト結果 <br>結果の値の解釈は次のとおりです。 <br>0- 不確定 <br>1- 合格 <br>2- 警告 <br>3- 失敗| SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>接続モニターのメトリック ベースのアラート
 
@@ -304,8 +304,8 @@ Network Watcher から接続モニターに移動したときには、以下の�
 1. Azure Monitor から - Azure Monitor でアラートを作成するには: 
     1. 接続モニターで作成した接続モニター リソースを選択します。
     1. 接続モニターの信号の種類として **[メトリック]** が表示されていることを確認します。
-    1. **[条件の追加]** で、 **[シグナル名]** として **[ChecksFailedPercent(Preview)]** または **[RoundTripTimeMs(Preview)]** を選択します。
-    1. **[シグナルの種類]** として、 **[メトリック]** を選択します。 たとえば、 **[ChecksFailedPercent(Preview)]** を選択します。
+    1. **[条件の追加]** で、 **[シグナル名]** として **[ChecksFailedPercent]** または **[RoundTripTimeMs]** を選択します。
+    1. **[シグナルの種類]** として、 **[メトリック]** を選択します。 たとえば、 **[ChecksFailedPercent]** を選択します。
     1. メトリックのすべてのディメンションが一覧表示されます。 ディメンション名とディメンション値を選択します。 たとえば、 **[送信元アドレス]** を選択し、接続モニターのソースの IP アドレスを入力します。
     1. **[アラート ロジック]** に、次の詳細を入力します。
         * **[条件タイプ]** : **静的**。
@@ -364,6 +364,21 @@ Azure ネットワークの問題は、ネットワーク トポロジで確認�
 * システム ルートまたは UDR が原因でトラフィックが停止した。
 * ゲートウェイの接続で BGP が有効になっていない。
 * ロード バランサーで DIP プローブがダウンする。
+
+## <a name="faq"></a>よく寄せられる質問
+
+### <a name="are-classic-vms-supported"></a>クラシック VM はサポートされていますか?
+いいえ。接続モニターでは、クラシック VM はサポートされていません。 従来のリソースが[非推奨](../virtual-machines/classic-vm-deprecation.md)になるため、IaaS リソースを従来のものから Azure Resource Manager に移行することをお勧めします。 [ツールの実行方法](../virtual-machines/migration-classic-resource-manager-overview.md)については、この記事を参照してください。
+
+### <a name="my-topology-is-not-decorated-or-my-hops-have-missing-information"></a>トポロジが装飾されていないか、ホップに情報がないのではないですか?
+Azure 以外から Azure へのトポロジは、宛先の Azure リソースと接続モニター リソースが同じリージョンにある場合にのみ装飾できます。 
+
+### <a name="my-connection-monitor-creation-is-failing-with-error-we-dont-allow-creating-different-endpoints-for-the-same-vm"></a>接続モニターの作成に失敗し、"同じ VM に対して異なるエンドポイントを作成できません" というエラーが表示されます
+同じ Azure VM を、同じ接続モニター内の異なる構成で使用することはできません。 たとえば、同じ接続モニターで、フィルターを使用する構成とフィルターを使用しない構成で同じ VM を使用することはサポートされていません
+
+### <a name="the-test-failure-reason-is-nothing-to-display"></a>テスト エラーの理由に "表示するものがありません" と表示されます
+接続モニター ダッシュボードに表示される問題は、トポロジの検出またはホップ探索中に見つかります。 %loss または RTT に設定されているしきい値に違反したとしても、ホップで問題が見つからない場合があります。
+
 
 ## <a name="next-steps"></a>次の手順
     

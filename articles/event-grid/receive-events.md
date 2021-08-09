@@ -4,19 +4,19 @@ description: HTTP エンドポイントを検証した後、Azure Event Grid か
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93494bc35099c2ef9cbc93ed6713d8a2608f2c4c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023723"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473441"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP エンドポイントへのイベントの受信
 
 この記事では、イベント サブスクリプションからイベントを受信する [HTTP エンドポイントを検証](webhook-event-delivery.md)した後、イベントを逆シリアル化する方法を説明します。 この記事では、デモンストレーション用に Azure 関数を使用しますが、アプリケーションがどこでホストされている場合でも、同じ概念を適用できます。
 
 > [!NOTE]
-> Event Grid で Azure 関数をトリガーするときは、[Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用することを **強く** お勧めします。 ここでの汎用 WebHook トリガーの使用はデモンストレーションが目的です。
+> Event Grid で Azure 関数をトリガーするときは、[Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用することをお勧めします。 それにより、Event Grid と Azure Functions をより簡単で迅速に統合できます。 ただし、Azure Functions の Event Grid トリガーでは、ホストされているコードが Event Grid に返される HTTP 状態コードを制御する必要があるシナリオはサポートされていないことに注意してください。 この制限があるため、Azure 関数で実行されているコードは、たとえば、Event Grid によるイベント配信の再試行を開始するために 5XX エラーを返すことができません。
 
 ## <a name="prerequisites"></a>前提条件
 

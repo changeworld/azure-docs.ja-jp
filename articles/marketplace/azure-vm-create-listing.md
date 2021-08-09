@@ -1,20 +1,20 @@
 ---
 title: Azure Marketplace で仮想マシンのオファー登録情報の詳細を構成する
-description: Azure Marketplace で仮想マシンのオファー登録情報の詳細を構成する方法について説明します。
+description: Azure Marketplace で仮想マシンのオファー登録情報の詳細を構成する
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 7030ffeb49c0a3919894f6dcf81e7252777267c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ce7b1302a290bb4a7fefa3077e0937c7544015a
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629599"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525428"
 ---
-# <a name="how-to-configure-virtual-machine-offer-listing-details"></a>仮想マシンのオファー登録情報の詳細を構成する方法
+# <a name="configure-virtual-machine-offer-listing-details"></a>仮想マシンのオファー登録情報の詳細を構成する
 
 **[オファー登録情報]** ページ (パートナー センターの左側のナビゲーション メニューから選択) で、オファーの名前、説明、リンク、連絡先など、オファーの詳細を定義します。
 
@@ -80,8 +80,6 @@ CSP プログラムの処理担当者 (該当する場合) の **名前**、**�
 ## <a name="marketplace-media"></a>Marketplace メディア
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 画像がぼやけていると、送信が拒否されます。
-
-[!INCLUDE [logo tips](includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターによって使用される https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。

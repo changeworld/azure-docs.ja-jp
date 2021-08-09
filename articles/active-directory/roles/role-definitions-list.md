@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b2988d32c854e4184adee998341ebadcee053
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 00fc768357d80fa22305b3b85e084dc636bd5a7c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467765"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796412"
 ---
 # <a name="list-azure-ad-role-definitions"></a>Azure AD ロールの定義を一覧表示する
 
@@ -32,7 +32,7 @@ ms.locfileid: "103467765"
 
 1. **[ロールと管理者]** を選択して、利用可能なすべてのロールの一覧を表示します。
 
-    ![Azure AD ポータルでのロールの一覧](./media/role-definitions-list/view-roles-in-azure-active-directory.png)
+    ![Azure portal でのロールの一覧](./media/role-definitions-list/view-roles-in-azure-active-directory.png)
 
 1. 右側にある省略記号を選択し、 **[説明]** をクリックすると、ロールのアクセス許可の完全な一覧が表示されます。
 
@@ -43,5 +43,5 @@ ms.locfileid: "103467765"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
-* ロールと管理者ロールの割り当ての詳細については、[管理者ロールの割り当て](permissions-reference.md)に関するページを参照してください。
+* ロールのアクセス許可の詳細については、「[Azure AD の組み込みロール](permissions-reference.md)」を参照してください。
 * 既定のユーザー アクセス許可については、[既定のゲストとメンバー ユーザーのアクセス許可の比較](../fundamentals/users-default-permissions.md)を参照してください。

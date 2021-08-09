@@ -2,14 +2,14 @@
 title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 06/11/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5c74a34efe8075ab7a34fab4570d9513900b3f81
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 2b5700498bd09e24adeb6d1a386e8bb8da6b92c7
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517421"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006727"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -151,8 +151,8 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | マネージドとアンマネージド ディスク両方の Azure VM (暗号化された Azure VM を含む) でサポートされています。 クラシックVM に関してはサポートされていません。 | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部、US Gov アイオワ、US Gov バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
-| SQL/SAP HANA | プレビュー段階                                                      | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部、US Gov アイオワ、US Gov バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
+| Azure VM               | マネージドとアンマネージド ディスク両方の Azure VM (暗号化された Azure VM を含む) でサポートされています。 クラシックVM に関してはサポートされていません。 | UG アイオワと UG バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 |
+| SQL/SAP HANA | 利用可能      | フランス中部、UG アイオワ、UG バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 |
 | MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
 | AFS (Azure ファイル共有)                 | いいえ                                                           | 該当なし               |
 

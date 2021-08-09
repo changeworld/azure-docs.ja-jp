@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: d17577d7e138c4c04b7f386cb166e765c0e2e10c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f3d9d9481821902246721c5c27ed99451f323ba3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733105"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539821"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Cognitive Search のインクリメンタル エンリッチメントとキャッシュ
 
@@ -42,7 +42,7 @@ ms.locfileid: "108733105"
 物理的には、キャッシュはご使用の Azure Storage アカウントの BLOB コンテナーに格納されます。 キャッシュでは、更新処理の内部レコードにテーブル ストレージも使用されます。 インデクサー キャッシュには、Search サービス内のすべてのインデックスが同じストレージ アカウントを共有できます。 それぞれのインデクサーには、使用しているコンテナーに対する一意かつ不変のキャッシュ識別子が割り当てられます。
 
 > [!NOTE]
-> インデクサー キャッシュには汎用ストレージ アカウントが必要です。 詳細については、「[様々なストレージ アカウントの種類](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
+> インデクサー キャッシュには汎用ストレージ アカウントが必要です。 詳細については、「[様々なストレージ アカウントの種類](/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
 
 ## <a name="cache-configuration"></a>キャッシュの構成
 
@@ -118,6 +118,30 @@ PUT https://[search service].search.windows.net/datasources/[data source name]?a
 ### <a name="reset-documents"></a>ドキュメントのリセット
 
 [インデクサーのリセット](/rest/api/searchservice/reset-indexer)を使用すると、検索コーパス内のすべてのドキュメントが再処理されます。 いくつかのドキュメントのみを再処理する必要があり、データ ソースを更新できないシナリオでは、[ドキュメントのリセット (プレビュー)](/rest/api/searchservice/preview-api/reset-documents) を使用して、特定のドキュメントを強制的に再処理します。 ドキュメントがリセットされると、インデクサーによってそのドキュメントのキャッシュが無効にされ、そのドキュメントはデータ ソースから読み取ることによって再処理されます。 詳細については、[インデクサー、スキル、ドキュメントの実行またはリセット](search-howto-run-reset-indexers.md)に関するページを参照してください。
+
+特定のドキュメントをリセットするために、要求ペイロードには、インデックスから読み取られたドキュメント キーのリストが含まれています。 API の呼び出し方法に応じて、要求ではキー リストを追加、上書き、またはキューに登録します。
+
++ 異なるキーを使用して API を複数回呼び出すと、ドキュメント キーのリセットの一覧に新しいキーが追加されます。 
+
++ `overwrite` クエリ文字列パラメーターを true に設定して API を呼び出すと、リセットされるドキュメント キーの現在のリストが要求のペイロードで上書きされます。
+
++ API を呼び出しても、ドキュメント キーはインデクサーによって実行される処理のキューに追加されるだけです。 スケジュールに従ってまたはオンデマンドでインデクサーが次に呼び出されると、データ ソースからの他の変更よりも、リセットされたドキュメント キーの処理が優先されます。
+
+次の例は、ドキュメントのリセット要求を示しています。
+
+```http
+POST https://[search service name].search.windows.net/indexers/[indexer name]/resetdocs?api-version=2020-06-30-Preview
+Content-Type: application/json
+api-key: [admin key]
+
+{
+    "documentKeys" : [
+        "key1",
+        "key2",
+        "key3"
+    ]
+}
+```
 
 ## <a name="change-detection"></a>変更検出
 

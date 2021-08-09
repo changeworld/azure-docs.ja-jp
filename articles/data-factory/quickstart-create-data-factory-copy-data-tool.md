@@ -5,13 +5,13 @@ author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 06/01/2021
-ms.openlocfilehash: a66af648abc0ae48c0a4fcc7eb33ab7c1351c41b
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 06/04/2021
+ms.openlocfilehash: d78b915fc9efffd52f31b75edcb35d91fb529e4a
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371906"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113219791"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>クイック スタート:データのコピー ツールを使用してデータをコピーする
 
@@ -61,9 +61,9 @@ ms.locfileid: "111371906"
     
 ## <a name="start-the-copy-data-tool"></a>データのコピー ツールの起動
 
-1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
+1. Azure Data Factory のホーム ページで、 **[取り込み]** タイルを選択し、データのコピー ツールを起動します。
 
-   ![[データのコピー] タイル](./media/doc-common-process/get-started-page.png)
+   ![Azure Data Factory ホーム ページのスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. データのコピー ツールの **[プロパティ]** ページで、 **[タスクの種類]** に **[組み込みコピー タスク]** を選択して、 **[次へ]** を選択します。
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 904074759d2b8f197a0df0377071e95203fabba9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7825942ce692e83f2305e4c9f9b1a31cdadaea71
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373177"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901609"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -44,7 +44,7 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
     承認済みの IP 範囲は、Standard Load Balancer でのみ機能します。
 
-- AKS クラスターを **アタッチする** 場合、これは Azure Machine Learning ワークスペースと同じ Azure サブスクリプションに含まれている必要があります。
+- > __別の Azure サブスクリプション__ から AKS クラスターをアタッチするには、AKS クラスター上で、ご自身 (ご自身の Azure AD アカウント) に **共同作成者** ロールが許可されている必要があります。 [Azure portal](https://ms.portal.azure.com/) でご自身のアクセス権を確認してください。
 
 - (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
 

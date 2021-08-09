@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: a526edfccda1e4e0e60646989a59d23ad19501ab
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 4e5d239416a14d2d769020283f43f2dbcf150e64
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227112"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539808"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -111,20 +111,37 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 
 Azure Functions の一部の接続は、シークレットの代わりに ID を使用するように構成されています。 サポートは、接続を使用する拡張機能によって異なります。 場合によっては、接続先のサービスで ID ベースの接続がサポートされている場合でも、Functions で接続文字列が必要になることがあります。
 
-> [!IMPORTANT]
-> バインド拡張機能が ID ベースの接続をサポートしている場合でも、その構成は従量課金プランではまだサポートされていない可能性があります。 以下のサポート表を参照してください。
-
-ID ベースの接続は、次のトリガーおよびバインド拡張機能でサポートされています。
-
-| 拡張機能の名前 | 拡張機能のバージョン                                                                                     | 従量課金プランでサポート |
-|----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
-| Azure BLOB     | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | いいえ                                    |
-| Azure Queue    | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | いいえ                                    |
-| Azure Event Hubs    | [バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | いいえ                                    |
-| Azure Service Bus    | [バージョン 5.0.0-beta2 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) | いいえ                                    |
+ID ベースの接続は、すべてのプランにおいて、次のトリガーおよびバインド拡張機能でサポートされています。
 
 > [!NOTE]
-> 主な動作に対して Functions ランタイムによって使用されるストレージ接続では、ID ベースの接続のサポートはまだ利用できません。 これは、`AzureWebJobsStorage` 設定が接続文字列である必要があることを意味します。
+> ID ベースの接続は、Durable Functions ではサポートされません。
+
+| 拡張機能の名前 | 拡張機能のバージョン                                                                                     |
+|----------------|-------------------------------------------------------------------------------------------------------|
+| Azure BLOB     | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  |
+| Azure Queue    | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) |
+| Azure Event Hubs    | [バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) |
+| Azure Service Bus    | [バージョン 5.0.0-beta2 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) |
+
+
+Functions ランタイム (`AzureWebJobsStorage`) によって使用されるストレージ接続は、ID ベースの接続を使用して構成することもできます。 以下の[「ID を使用してホスト ストレージに接続する」](#connecting-to-host-storage-with-an-identity)を参照してください。
+
+Azure Functions サービスでホストされている場合、ID ベースの接続では、[マネージド ID](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json) が使用されます。 既定では、システム割り当て ID が使用されます。 ローカル開発などの他のコンテキストで実行する場合は、代わりに開発者 ID が使用されます。ただし、代替接続パラメーターを使用してカスタマイズすることもできます。
+
+#### <a name="grant-permission-to-the-identity"></a>ID にアクセス許可を付与する
+
+使用されている ID が何であれ、目的のアクションを実行するためのアクセス許可が必要です。 これは通常、接続先のサービスに応じて、Azure RBAC でロールを割り当てるか、アクセスポリシーで ID を指定することによって行われます。 必要なアクセス許可とその設定方法については、各拡張機能のドキュメントを参照してください。
+
+> [!IMPORTANT]
+> すべてのコンテキストに必要ではない一部のアクセス許可がターゲット サービスによって公開される場合があります。 可能であれば、**最小限の特権の原則** に従い、必要な特権だけを ID に付与します。 たとえば、アプリが BLOB からの読み取りのみを必要とする場合、[ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)では読み取り操作に対して過剰なアクセス許可が含まれるため、[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)ロールを使用します。
+次のロールでは、通常の操作で拡張機能別に必要なプライマリ アクセス許可がすべて与えられます。
+
+| サービス     | 組み込みロールの例 |
+|-------------|------------------------|
+| Azure BLOB  | [Storage Blob Data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)、[Storage Blob Data Owner](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)                 |
+| Azure キュー | [Storage Queue Data Reader](../role-based-access-control/built-in-roles.md#storage-queue-data-reader)、[Storage Queue Data Message Processor](../role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)、[Storage Queue Data Message Sender](../role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)、[Storage Queue Data Contributor](../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)             |
+| Event Hubs   |    [Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)、[Azure Event Hubs Data Sender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)、[Azure Event Hubs Data Owner](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)              |
+| Service Bus | [Azure Service Bus Data Receiver](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)、[Azure Service Bus Data Sender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)、[Azure Service Bus Data Owner](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) |
 
 #### <a name="connection-properties"></a>接続のプロパティ
 
@@ -132,12 +149,12 @@ Azure サービスに対する ID ベースの接続では、次のプロパテ�
 
 | プロパティ    | 拡張機能に必要 | 環境変数 | 説明 |
 |---|---|---|---|
-| サービス URI | Azure Blob、Azure キュー | `<CONNECTION_NAME_PREFIX>__serviceUri` |  接続先サービスのデータ プレーン URI。 |
+| サービス URI | Azure Blob<sup>1</sup>、Azure Queue | `<CONNECTION_NAME_PREFIX>__serviceUri` | 接続先サービスのデータ プレーン URI。 |
 | 完全修飾名前空間 | Event Hubs、Service Bus | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Event Hubs と Service Bus の完全修飾名前空間。 |
 
-特定の接続の種類に対して、追加のオプションがサポートされている場合があります。 接続を確立するコンポーネントのドキュメントを参照してください。
+<sup>1</sup> Azure BLOB には、BLOB とキュー サービス URI の両方が必要です。
 
-Azure Functions サービスでホストされている場合、ID ベースの接続では、[マネージド ID](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json) が使用されます。 既定では、システム割り当て ID が使用されます。 ローカル開発などの他のコンテキストで実行する場合は、代わりに開発者 ID が使用されます。ただし、代替接続パラメーターを使用してカスタマイズすることもできます。
+特定の接続の種類に対して、追加のオプションがサポートされている場合があります。 接続を確立するコンポーネントのドキュメントを参照してください。
 
 ##### <a name="local-development"></a>ローカル開発
 
@@ -164,6 +181,7 @@ Azure Functions サービスでホストされている場合、ID ベースの�
 | クライアント シークレット | `<CONNECTION_NAME_PREFIX>__clientSecret` | アプリの登録で生成されたクライアント シークレット。 |
 
 Azure Blob との ID ベースの接続に必要な `local.settings.json` プロパティの例を次に示します。 
+
 ```json
 {
   "IsEncrypted": false,
@@ -176,22 +194,18 @@ Azure Blob との ID ベースの接続に必要な `local.settings.json` プロ
 }
 ```
 
-#### <a name="grant-permission-to-the-identity"></a>ID にアクセス許可を付与する
+#### <a name="connecting-to-host-storage-with-an-identity"></a>ID を使用してホスト ストレージに接続する
 
-使用されている ID が何であれ、目的のアクションを実行するためのアクセス許可が必要です。 これは通常、接続先のサービスに応じて、Azure RBAC でロールを割り当てるか、アクセスポリシーで ID を指定することによって行われます。 必要なアクセス許可とその設定方法については、各サービスのドキュメントを参照してください。
+Azure Functionsでは、タイマー トリガーのシングルトン実行の調整や既定のアプリ キー ストレージなどのコア動作に `AzureWebJobsStorage` 接続が使用されます。 これは、ID を活用するように構成することもできます。
 
-次のロールでは、通常の操作で拡張機能別に必要なプライマリ アクセス許可がすべて与えられます。
+> [!CAUTION]
+> 一部のアプリは、トリガー、バインド、関数コード内のストレージ接続で `AzureWebJobsStorage` を再利用します。 接続文字列からこの接続を変更する前に、`AzureWebJobsStorage` のすべての用途で ID ベースの接続形式を使用できるようにします。
 
-| サービス     | 組み込みロールの例 |
-|-------------|------------------------|
-| Azure BLOB  | [Storage Blob Data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)、[Storage Blob Data Owner](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)                 |
-| Azure キュー | [Storage Queue Data Reader](../role-based-access-control/built-in-roles.md#storage-queue-data-reader)、[Storage Queue Data Message Processor](../role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)、[Storage Queue Data Message Sender](../role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)、[Storage Queue Data Contributor](../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)             |
-| Event Hubs   |    [Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)、[Azure Event Hubs Data Sender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)、[Azure Event Hubs Data Owner](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)              |
-| Service Bus | [Azure Service Bus Data Receiver](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)、[Azure Service Bus Data Sender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)、[Azure Service Bus Data Owner](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) |
+この方法で接続を構成するには、コア ホスト機能をサポートするために、アプリの ID に[ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが含まれる必要があります。 他の目的で "AzureWebJobsStorage" を使用する場合は、追加のアクセス許可が必要な場合があります。
 
-> [!IMPORTANT]
-> すべてのコンテキストに必要ではない一部のアクセス許可がサービスによって公開される場合があります。 可能であれば、**最小限の特権の原則** に従い、必要な特権だけを ID に付与します。 たとえば、アプリが BLOB からの読み取りのみを必要とする場合、[ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)では読み取り操作に対して過剰なアクセス許可が含まれるため、[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)ロールを使用します。
+グローバル Azure の既定の DNS サフィックスとサービス名を使用するストレージ アカウントを使用する場合は、`https://<accountName>.blob/queue/file/table.core.windows.net` 形式に従って、ストレージ アカウントの名前に `AzureWebJobsStorage__accountName` を設定できます。 
 
+代わりにソブリン クラウドまたはカスタム DNS でストレージ アカウントを使用する場合は、`AzureWebJobsStorage__serviceUri` を BLOB サービスの URI に設定します。 他のサービスに "AzureWebJobsStorage" を使用する場合は、代わりに `AzureWebJobsStorage__blobServiceUri`、`AzureWebJobsStorage__queueServiceUri`、および `AzureWebJobsStorage__tableServiceUri` を個別に指定できます。
 
 ## <a name="reporting-issues"></a>問題の報告
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

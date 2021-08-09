@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: ワークスペースが要件に準拠していることを確認するために、Azure Machine Learning の組み込みポリシーを使用するように、Azure Policy を使用する方法について説明します。
 author: aashishb
 ms.author: aashishb
-ms.date: 05/03/2021
+ms.date: 05/10/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 688af6bbc4de786c36011312f64fb6d67e34183f
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 02225a3be02612b9baa0a66aff3d3dcd5ef1bb87
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633809"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067476"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Policy を使用した Azure Machine Learning の監査と管理
 
@@ -28,8 +28,14 @@ ms.locfileid: "109633809"
 | **プライベート エンドポイント** | プライベート エンドポイントを作成する必要がある Azure Virtual Network サブネットを構成します。 |
 | **プライベート DNS ゾーン** | プライベート リンクに使用するプライベート DNS ゾーンを構成します。 |
 | **ユーザー割り当てマネージド ID** | ワークスペースでユーザー割り当てのマネージド ＩＤ が使用されているかどうかを監査または強制します。 |
+| **ローカル認証の無効化** | Azure Machine Learning のコンピューティング リソースでローカル認証方法を無効にすべきかどうかを監査または強制します。 |
+| **ローカル認証の変更または無効化** | ローカル認証方法を無効にするためにコンピューティング リソースを構成します。 |
 
 ポリシーは、サブスクリプション レベルやリソース グループ レベルなど、さまざまなスコープで設定できます。 詳細については、[Azure Policy のドキュメント](../governance/policy/overview.md)を参照してください。
+
+## <a name="conditional-access-policies"></a>条件付きアクセス ポリシー
+
+Azure Machine Learning ワークスペースにアクセスできるユーザーを制御するには、Azure Active Directory の[条件付きアクセス](../active-directory/conditional-access/overview.md)を使用します。
 
 ## <a name="built-in-policies"></a>組み込みのポリシー
 
@@ -79,6 +85,21 @@ Azure Virtual Network の指定したサブネット内にプライベート エ
 このポリシーを構成するには、effect パラメーターを __audit__、__deny__、または __disabled__ に設定します。 __audit__ に設定すると、ユーザー割り当てのマネージド ID を指定せずにワークスペースを作成できます。 システムによって割り当てられた ID が使用され、アクティビティ ログに警告イベントが作成されます。
 
 ポリシーが __deny__ に設定されている場合、作成プロセス中にユーザー割り当ての ID を指定しない限り、ワークスペースを作成することはできません。 ユーザー割り当て ID を指定せずにワークスペースを作成しようとすると、エラーが発生します。 このエラーは、アクティビティ ログにも記録されます。 このエラーの一部としてポリシー識別子が返されます。
+
+## <a name="disable-local-authentication"></a>ローカル認証の無効化
+
+Azure Machine Learning のコンピューティング クラスターまたはインスタンスで、ローカル認証 (SSH) を無効にするかどうかを制御します。
+
+このポリシーを構成するには、effect パラメーターを __audit__、__deny__、または __disabled__ に設定します。 __audit__ に設定すると、SSH が有効なコンピューティングを作成できます。また、アクティビティ ログに警告イベントが作成されます。
+
+ポリシーが __deny__ に設定されている場合、SSH が無効でない限り、コンピューティングを作成できません。 SSH が有効になっているコンピューティングを作成しようとすると、エラーが発生します。 このエラーは、アクティビティ ログにも記録されます。 このエラーの一部としてポリシー識別子が返されます。
+
+
+## <a name="modifydisable-local-authentication"></a>ローカル認証の変更または無効化
+
+Azure Machine Learning のコンピューティング クラスターまたはインスタンスの作成要求を変更して、ローカル認証 (SSH) を無効にします。
+
+このポリシーを構成するには、effect パラメーターを __Modify__ または __Disabled__ に設定します。 __Modify__ に設定すると、このポリシーが適用されるスコープ内にコンピューティング クラスターやインスタンスを作成すると、自動的にローカル認証が無効になります。
 
 ## <a name="next-steps"></a>次のステップ
 

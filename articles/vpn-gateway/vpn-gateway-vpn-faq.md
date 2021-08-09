@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 06/07/2021
 ms.author: yushwang
-ms.openlocfilehash: 2c2730025d39f03824489c6f46ae625de49ea0cf
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 56f10ec6178281deaa529e5c94f1cd4b565a381c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753545"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746611"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -57,6 +57,12 @@ VPN Gateway の接続の詳細については、「[VPN Gateway について](vp
 **ポイント対サイト** (VPN over SSTP) 構成では、任意の場所に存在する 1 台のコンピューターから仮想ネットワーク内に存在する任意のデバイスに接続できます。 この接続では、Windows に組み込み済みの VPN クライアントを使用します。 ポイント対サイト構成の一部として、証明書と VPN クライアント構成パッケージをインストールします。このパッケージには、コンピューターを仮想ネットワーク内の任意の仮想マシンまたはロール インスタンスに接続できるようにする設定が含まれています。 これは仮想ネットワークに接続する場合には適していますが、オンプレミスに存在している場合は適していません。 また、このオプションは VPN ハードウェアにアクセスできない場合や外部に公開された IPv4 アドレスが存在しない場合にも便利ですが、このどちらでもサイト間接続が必須となります。
 
 VPN の種類がルート ベースのゲートウェイを使用してサイト間接続を作成すれば、サイト間接続とポイント対サイト接続の両方を同時に使用するように仮想ネットワークを構成できます。 VPN の種類がルート ベースのゲートウェイは、クラシック デプロイ モデルでは動的ゲートウェイと呼ばれます。
+
+## <a name="privacy"></a><a name="privacy"></a>プライバシー
+
+### <a name="does-the-vpn-service-store-customer-data"></a>VPN サービスによって顧客データは保存されますか?
+
+いいえ。
 
 ## <a name="virtual-network-gateways"></a><a name="gateways"></a>仮想ネットワーク ゲートウェイ
 
@@ -176,17 +182,13 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 その他のソフトウェア VPN ソリューションについては、業界標準の IPsec の実装に準拠していればマイクロソフトのゲートウェイで動作します。 構成とサポートの手順については、ソフトウェアのベンダーにお問い合わせください。
 
-## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>ポイント対サイト接続の認証の種類を変更するにはどうすればよいですか?
-
-ポイント対サイト接続の認証方法を変更するには、VPN ゲートウェイの下にある **[ポイント対サイト構成]** セクションに移動し、目的のオプション ボタンをオンにします。 現在のオプションは、 **[Azure 証明書]、[RADIUS 認証]、[Azure Active Directory]** です。 現在のクライアントは、変更後、新しいプロファイルがダウンロードされ、クライアント上で構成されるまで **接続できない場合がある** ことに注意してください。
-
-## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>ネイティブ Azure 証明書認証を使用したポイント対サイト
+## <a name="point-to-site---certificate-authentication"></a><a name="P2S"></a>ポイント対サイト - 証明書認証
 
 このセクションは、Resource Manager デプロイ モデルに適用されます。
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="point-to-site-using-radius-authentication"></a><a name="P2SRADIUS"></a>RADIUS 認証を使用したポイント対サイト
+## <a name="point-to-site---radius-authentication"></a><a name="P2SRADIUS"></a>ポイント対サイト - RADIUS 認証
 
 このセクションは、Resource Manager デプロイ モデルに適用されます。
 

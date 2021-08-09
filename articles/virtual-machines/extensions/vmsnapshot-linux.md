@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: ea984fdc4abeb08f4b080e913a0c34b99c59d93c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d7ad92e864e3da7860d08e8e3f569dd8ca14399
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561111"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789562"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Azure Backup 用の VM スナップショット Linux 拡張機能
 
@@ -90,6 +90,16 @@ az backup protection enable-for-vm \
     --vault-name myRecoveryServicesVault \
     --vm myVM \
     --policy-name DefaultPolicy
+```
+
+## <a name="azure-powershell-deployment"></a>Azure PowerShell でのデプロイ
+
+Azure PowerShell を使用すると、仮想マシンでバックアップを有効にすることができます。 バックアップが構成されると、スケジュールされた最初のバックアップ ジョブによって、VM 上で VM スナップショット拡張機能がインストールされます。
+
+```azurepowershell
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "myResourceGroup" -Name "myRecoveryServicesVault"
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy Name DefaultPolicy -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "myVM" -ResourceGroupName "myVMResourceGroup" -VaultId $targetVault.ID
 ```
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート

@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/01/2021
+ms.date: 06/08/2021
 ms.author: alkohli
-ms.openlocfilehash: e244c93fbe809c52eff1c42c284ce2e8389bbcc4
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a7400ad48382c88fb1025c03c576daef32543bf6
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553585"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983890"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの Azure Resource Manager に接続する
 
@@ -373,7 +374,7 @@ Azure Resource Manager 環境を設定し、Azure Resource Manager を使用し�
             PS C:\Users\Administrator>
             ```
 
-
+Azure Resource Manager の接続に関する問題が発生した場合、ガイダンスについては、[Azure Resource Manager のトラブルシューティング](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)に関するページをご覧ください。 
 
 > [!IMPORTANT]
 > Azure Stack Edge Pro デバイスが再起動されると、Azure Resource Manager への接続は 1.5 時間ごとに有効期限が切れます。 この場合、実行するすべてのコマンドレットで、Azure に接続されていないことを示すエラー メッセージが返されます。 再度サインインする必要があります。
@@ -460,4 +461,5 @@ ExtendedProperties : {}
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge Pro デバイスに VM をデプロイする](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)。
+- [Azure Resource Manager に関する問題のトラブルシューティング](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)。
+- [Azure Stack Edge Pro デバイスに VM をデプロイする](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)。

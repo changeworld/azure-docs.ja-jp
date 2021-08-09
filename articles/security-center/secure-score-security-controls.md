@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 05/05/2021
 ms.author: memildin
-ms.openlocfilehash: 9879b5154866436e3216243b123b3575e6cd3df4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e6582aedbc8357715f4e49cc8d5a780859ef3929
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754915"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062077"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
@@ -99,7 +99,7 @@ Security Center で用意されている一連のセキュリティ推奨事項�
 > [!TIP]
 > イニシアティブのレビューと編集の詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。 
 
-Security Center の既定のセキュリティ イニシアティブは業界のベスト プラクティスと標準に基づいていますが、下に示す組み込みの推奨事項が組織に完全には適合しない場合があります。 したがって、場合によっては、既定のイニシアティブを組織独自のポリシーに合わせて (セキュリティを損なわずに) 調整する必要があります。 満たす必要がある業界標準、規制標準、ベンチマークがこれに当たります。<br><br>
+Security Center の既定のセキュリティ イニシアティブは業界のベスト プラクティスと標準に基づいていますが、下に示す組み込みの推奨事項が組織に完全には適合しない場合があります。 したがって、場合によっては、既定のイニシアティブを、満たす必要がある組織独自のポリシー、業界標準、規制標準、ベンチマークに合わせて (セキュリティを損なわずに) 調整する必要があります。<br><br>
 <div class="foo">
 
 <style type="text/css"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-cly1{text-align:left;vertical-align:middle} .tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle} </style>
@@ -111,7 +111,7 @@ Security Center の既定のセキュリティ イニシアティブは業界の
 
 
 
-## <a name="secure-score-faq"></a>セキュリティ スコアに関する FAQ
+## <a name="faq---secure-score"></a>FAQ - セキュリティ スコア
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>セキュリティ コントロールの 4 つの推奨事項のうち 3 つだけに対処した場合、セキュリティ スコアは変わりますか。
 いいえ。 1 つのリソースのすべての推奨事項を修復するまでスコアは変更されません。 コントロールの最大スコアを取得するには、すべてのリソースのすべての推奨事項を修復する必要があります。

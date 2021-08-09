@@ -10,16 +10,25 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: 6218715878ec40fecee79f1c93bf2ca1820af007
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 3a1de2f0e35a3ef747818d7dea47ecacb2753cea
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277013"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747277"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge のリリース ノート 
 
 この記事では、Azure SQL Edge の新しいビルドごとに、新機能と変更点について説明します。
+
+## <a name="azure-sql-edge-104"></a>Azure SQL Edge 1.0.4
+
+SQL エンジンのビルド 15.0.2000.1558
+
+### <a name="whats-new"></a>新機能
+
+- ONNX のサポートを予測する 
+    - ONNX の予測における null データの処理の改善
 
 ## <a name="azure-sql-edge-103"></a>Azure SQL Edge 1.0.3
 

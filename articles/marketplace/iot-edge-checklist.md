@@ -1,18 +1,18 @@
 ---
-title: Azure Marketplace での IoT Edge モジュール オファーの認定前チェックリスト
-description: Azure Marketplace で IoT Edge モジュール オファーを発行するための特定の認定要件について説明します。
+title: Azure Marketplace の IoT Edge モジュール オファーの認定前チェックリスト
+description: Azure Marketplace で IoT Edge モジュール オファーを発行するための具体的な認定要件について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: keferna
-ms.author: keferna
-ms.date: 03/01/2021
-ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+author: aarathin
+ms.author: aarathin
+ms.date: 05/21/2021
+ms.openlocfilehash: ec24d4df5a792166812693ad90f21396771ecdd6
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562700"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537899"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge モジュールの認定前チェックリスト
 
@@ -79,5 +79,5 @@ Edge モジュールが、Azure で作成された Edge デバイスにデプロ
 ## <a name="next-steps"></a>次のステップ
 
 - [コマーシャル マーケットプレースからモジュールをデプロイする](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
-- [パートナー センターで Edge モジュールを公開する](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [パートナー センターで Edge モジュールを公開する](./iot-edge-offer-setup.md)
 - [IoT Edge モジュールをデプロイする](../iot-edge/quickstart-linux.md)

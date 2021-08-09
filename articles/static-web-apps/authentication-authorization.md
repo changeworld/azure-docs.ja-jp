@@ -7,26 +7,29 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 8b8f42d75a0d214bdc504c8cc0adb6f234ea036e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0ed20af6b27822f1f437f584e9b73eb416941d6f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751123"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066000"
 ---
-# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの認証と承認
+# <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Azure Static Web Apps の認証と承認
 
-Azure Static Web Apps では、次のプロバイダーでの認証を管理することで、認証エクスペリエンスを効率化しています。
+Azure Static Web Apps は、認証エクスペリエンスが効率化されています。 事前構成済みの一連のプロバイダーに既定でアクセスできるほか、必要に応じて[カスタム プロバイダーを登録](./authentication-custom.md)することもできます。
 
-- Azure Active Directory
-- GitHub
-- Twitter
+- すべてのユーザーは、有効なプロバイダーに対して認証を行うことができます。
+- ユーザーはログイン後、既定では `anonymous` ロールと `authenticated` ロールに属します。
+- 許可されているユーザーは、[staticwebapp.config.json ファイル](./configuration.md)に定義されたルールで、制限された[ルート](configuration.md#routes)にアクセスできます。
+- ユーザーは、プロバイダー固有の[招待](#invitations)または[カスタム Azure Active Directory プロバイダー登録](./authentication-custom.md)を通じてカスタム ロールに参加します。
+- すべての認証プロバイダーは、既定で有効になっています。
+  - 認証プロバイダーを制限するには、カスタム ルート規則によって[アクセスをブロック](#block-an-authorization-provider)します。
+- 事前構成済みのプロバイダーは次のとおりです。
+  - Azure Active Directory
+  - GitHub
+  - Twitter
 
-プロバイダー固有の [招待](#invitations)によってユーザーはロールに関連付けられ、承認されたユーザーには、_staticwebapp.config.json_ ファイルに定義された規則によって [ルート](configuration.md#routes)へのアクセス権が付与されます。
-
-すべての認証プロバイダーは、既定で有効になっています。 認証プロバイダーを制限するには、カスタム ルート規則によって[アクセスをブロック](#block-an-authorization-provider)します。
-
-認証と承認のトピックは、ルーティングの概念とかなり重複します。 この記事と併せて、[構成ガイド](configuration.md#routes)を是非お読みください。
+認証と承認のサブジェクトは、ルーティングの概念とかなり共通点があります。ルーティングの概念については、[アプリケーション構成ガイド](configuration.md#routes)に詳しく説明されています。
 
 ## <a name="roles"></a>ロール
 
@@ -41,7 +44,10 @@ Azure Static Web Apps では、次のプロバイダーでの認証を管理す�
 
 ### <a name="add-a-user-to-a-role"></a>ユーザーをロールに追加する
 
-Web サイトにユーザーを追加するには、特定のロールにユーザーを関連付けできる招待を生成します。 ロールは、_staticwebapp.config.json_ ファイル内で定義および管理されます。
+ユーザーをロールに追加するには、ユーザーを特定のロールに関連付けることができる招待を生成します。 ロールは、_staticwebapp.config.json_ ファイル内で定義および管理されます。
+
+> [!NOTE]
+> グループ管理用の招待の発行を避けたい場合は、[カスタム Azure Active Directory プロバイダーを登録](./authentication-custom.md)してください。
 
 <a name="invitations" id="invitations"></a>
 
@@ -101,9 +107,9 @@ Web サイトにユーザーを追加するには、特定のロールにユー�
 
 ## <a name="remove-personal-identifying-information"></a>個人が特定される情報を削除する
 
-エンドユーザーとしてアプリケーションに同意すると、ID プロバイダーに応じて電子メール アドレスまたはユーザー名に、そのアプリケーションからアクセスできるようになります。 この情報が提供されたら、アプリケーションの所有者は、個人が特定される情報をどのように管理するかを決定します。
+エンド ユーザーとしてアプリケーションに同意すると、ID プロバイダーに応じてメール アドレスまたはユーザー名に、そのアプリケーションからアクセスできるようになります。 この情報が提供されたら、アプリケーションの所有者は、個人が特定される情報をどのように管理するかを決定します。
 
-この情報をシステムから取り消すには、エンドユーザーは、個々の Web アプリの管理者に連絡する必要があります。
+この情報をシステムから取り消すには、エンド ユーザーは、個々の Web アプリの管理者に連絡する必要があります。
 
 Azure Static Web Apps プラットフォームから個人が特定される情報を削除し、今後の要求でプラットフォームからこの情報が提供されないようにするには、以下の URL を使用して要求を送信します。
 
@@ -123,7 +129,7 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 
 ## <a name="login"></a>ログイン
 
-次の表を使用して、プロバイダー固有のログイン ルートを確認します。
+次の表を使用して、プロバイダー固有のルートを確認します。
 
 | 承認プロバイダー | ログイン ルート             |
 | ---------------------- | ----------------------- |
@@ -131,7 +137,7 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 | GitHub                 | `/.auth/login/github`   |
 | Twitter                | `/.auth/login/twitter`  |
 
-たとえば、GitHub にログインするために、次のスニペットのようなログイン リンクを含めることができます。
+たとえば、GitHub にログインするために、次のスニペットのようなリンクを含めることができます。
 
 ```html
 <a href="/.auth/login/github">Login</a>

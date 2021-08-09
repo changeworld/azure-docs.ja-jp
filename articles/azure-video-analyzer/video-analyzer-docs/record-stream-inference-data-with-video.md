@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Video Analyzer を使用�
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 05/12/2021
-ms.openlocfilehash: 38d47ec6f27984eb7cc204b8421cec9016d2db65
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 89aef5db89110ee7e12a313820f8f62d0b010faf
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387839"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755171"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>チュートリアル: ビデオを使用して推論メタデータを記録およびストリーム配信する
   
@@ -93,7 +93,7 @@ src/edge/deployment.yolov3.template.json を開きます。 **modules** セク�
 1. _src/edge/deployment.yolov3.template.json_ ファイルを右クリックし、 **[IoT Edge 配置マニフェストの生成]** を選択します。
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/analyze-live-video-use-your-model-http/generate-deployment-manifest.png" alt-text="[IoT Edge 配置マニフェストの生成] のスクリーンショット":::
+   > :::image type="content" source="./media/analyze-live-video-use-your-model-http/generate-deployment-manifest.png" alt-text="[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\) を示すスクリーンショット":::
 
     * _deployment.yolov3.amd64.json_ マニフェスト ファイルが _src/edge/config_ フォルダーに作成されます。
 1. _src/edge/config/deployment.yolov3.amd64.json_ を右クリックし、 **[単一デバイスのデプロイを作成する]** を選択します。
@@ -101,7 +101,7 @@ src/edge/deployment.yolov3.template.json を開きます。 **modules** セク�
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/analyze-live-video-use-your-model-http/deployment-single-device.png" alt-text= "Screenshot of Create Deployment for Single Device":::
 
-1. IoT Hub デバイスを選択するダイアログが表示されたら、**ava-sample-iot-edge-device** を選択します。
+1. IoT Hub デバイスを選択するように求めるメッセージが表示されたら、 **[ava-sample-iot-edge-device]** を選択します。
 1. 約 30 秒後に、ウィンドウの左下隅で Azure IoT Hub を最新の情報に更新します。 エッジ デバイスには、次のデプロイ済みモジュールが表示されます。
 
    - **avaedge** モジュール。これは Video Analyzer モジュールです。
@@ -132,7 +132,7 @@ src/edge/deployment.yolov3.template.json を開きます。 **modules** セク�
 1. 次に、**livePipelineSet** と **pipelineTopologyDelete** の各ノードで、**topologyName** の値が、上記パイプライン トポロジ内の **name** プロパティの値と一致していることを確認します。
 
     `"pipelineTopologyName" : "CVRHttpExtensionObjectTracking"`
-1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json)を開き、videoName を確認します。これは `sample-cvr-inferencing` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。  
+1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json)を開き、videoName を確認します。これは `sample-cvr-with-inference-metadata` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。  
 
 1. HTTP 拡張ノードの設定を確認します。
 
@@ -215,7 +215,7 @@ src/edge/deployment.yolov3.template.json を開きます。 **modules** セク�
 ## <a name="diagnostics-events"></a>診断イベント
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント
 
-ライブ パイプラインがアクティブ化されると、RTSP ソース ノードによって、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続が試みられます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は、Microsoft.VideoAnalyzer.Diagnostics.MediaSessionEstablished です。
+ライブ パイプラインがアクティブ化されると、RTSP ソース ノードによって、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続が試行されます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は、Microsoft.VideoAnalyzer.Diagnostics.MediaSessionEstablished です。
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [avasample-iot-edge-device/avaedge]:
@@ -300,7 +300,7 @@ HTTP 拡張プロセッサ ノードは、0 番目、15 番目、30 番目、...
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -325,7 +325,7 @@ body セクションには、出力場所に関する情報が含まれていま
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -345,14 +345,14 @@ body セクションには、出力場所に関する情報が含まれていま
 
 ### <a name="recordingstopped-event"></a>RecordingStopped イベント
 
-ライブ パイプラインを非アクティブ化すると、ビデオ シンク ノードによってメディアの録画が停止されます。 種類が **Microsoft.Media.Graph.Operational.RecordingStopped** のこのイベントが出力されます。
+ライブ パイプラインを非アクティブ化すると、ビデオ シンク ノードではメディアの録画が停止されます。 **Microsoft.Media.Graph.Operational.RecordingStopped** の種類のイベントが出力されます。
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [ava-sample-device/avaedge]:
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -377,16 +377,12 @@ body セクションには、出力場所に関する情報が含まれていま
 1. Web ブラウザーを開き、[Azure portal](https://portal.azure.com/) に移動します。 資格情報を入力してポータルにサインインします。 既定のビューはサービス ダッシュボードです。
 1. サブスクリプション内のリソースの中から Video Analyzers アカウントを見つけ、アカウント ペインを開きます。
 1. **[Video Analyzer]** のリストで **[ビデオ]** を選択します。
-1. `sample-cvr-inferencing` という名前で一覧に含まれているビデオが見つかります。 これは、パイプライン トポロジ ファイルで選択された名前です。
+1. `sample-cvr-with-inference-metadata` という名前で一覧に含まれているビデオが見つかります。 これは、パイプライン トポロジ ファイルで選択された名前です。
 1. ビデオを選択します。
 1. ビデオの詳細ページで、 **[再生]** アイコンをクリックします。
-
+1. 推論メタデータを境界ボックスとしてビデオに表示するには、(赤い円で囲まれた) **境界ボックス** アイコンをクリックします。
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/video-playback.png" alt-text="ビデオ再生のスクリーンショット":::
-   
-1. 推論メタデータを境界ボックスとしてビデオに表示するには、**境界ボックス** アイコンをクリックします
-   > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/record-stream-inference-data-with-video/bounding-box.png" alt-text="境界ボックス アイコン":::
 
 > [!NOTE]
 > ビデオのソースはカメラ フィードをシミュレートするコンテナーだったので、ビデオのタイム スタンプは、ライブ パイプラインをアクティブにした時点と、非アクティブ化した時点に関連しています。

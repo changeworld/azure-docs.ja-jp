@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 05/10/2021
+ms.date: 06/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e29aab4db0e568d06ab3d5f0f898b2fec9fee181
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 834aa7643583683f7ee64abdbd1e18e0b76c6ada
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732796"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538817"
 ---
 # <a name="login-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用して Azure 内の Windows 仮想マシンにログインする
 
@@ -32,7 +32,6 @@ Azure AD ベースの認証を使用して、Azure 内の Windows VM にログ�
 - Azure のデプロイと監査ポリシーを使用して、Windows VM に Azure AD ログインを要求し、承認なしでの VM でローカル アカウントの使用をフラグを付けるようにします。
 - Azure Active Directory を使用して Windows VM にログインする機能は、フェデレーション サービスを使用するお客様も使用できます。
 - VDI のデプロイに含まれる Azure Windows VM の Intune を使用して、MDM の自動登録を使用して Azure AD 参加を自動化し、スケーリングします。 自動 MDM 登録には Azure AD P1 ライセンスが必要です。 Windows Server 2019 VM は MDM 登録をサポートしていません。
-
 
 > [!NOTE]
 > この機能を有効にすると、Azure の Windows VM が Azure AD に参加することになります。 オンプレミス AD や Azure AD DS などの他のドメインに参加させることはできません。 この操作が必要な場合は、拡張機能をアンインストールして、Azure AD テナントから VM を切断する必要があります。
@@ -55,8 +54,6 @@ Azure AD ベースの認証を使用して、Azure 内の Windows VM にログ�
 - Azure Government
 - Azure 中国
 
-
-
 ### <a name="network-requirements"></a>ネットワークの要件
 
 Azure 内の Windows VM に対して Azure AD 認証を有効にするには、VM のネットワーク構成で、TCP ポート 443 を経由した次のエンドポイントへの発信アクセスが確実に許可されているようにする必要があります。
@@ -67,20 +64,17 @@ Azure Global の場合
 - `https://login.microsoftonline.com` - 認証フロー用。
 - `https://pas.windows.net` - Azure RBAC フロー用。
 
-
 Azure Government の場合
 - `https://enterpriseregistration.microsoftonline.us` - デバイス登録用。
 - `http://169.254.169.254` - Azure Instance Metadata Service。
 - `https://login.microsoftonline.us` - 認証フロー用。
 - `https://pasff.usgovcloudapi.net` - Azure RBAC フロー用。
 
-
 Azure China の場合
 - `https://enterpriseregistration.partner.microsoftonline.cn` - デバイス登録用。
 - `http://169.254.169.254` - Azure Instance Metadata Service エンドポイント。
 - `https://login.chinacloudapi.cn` - 認証フロー用。
 - `https://pas.chinacloudapi.cn` - Azure RBAC フロー用。
-
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure 内の Windows VM に対して Azure AD ログインを有効にする
 
@@ -258,7 +252,7 @@ VM が Azure AD 参加プロセスを完了するには、AADLoginForWindows 拡
 
    > [!NOTE]
    > 最初の失敗後に拡張機能を再起動すると、デプロイ エラーを含むログが、`CommandExecution_YYYYMMDDHHMMSSSSS.log` として保存されます。 "
-1. VM で PowerShell コマンド プロンプトを開き、Azure ホストで実行されている Instance Metadata Service (IMDS) エンドポイントに対して次のクエリを実行し、返される結果を確認します。
+1. VM で PowerShell ウィンドウを開き、Azure ホストで実行されている Instance Metadata Service (IMDS) エンドポイントに対して次のクエリを実行し、返される結果を確認します。
 
    | 実行するコマンド | 想定される出力 |
    | --- | --- |
@@ -269,7 +263,7 @@ VM が Azure AD 参加プロセスを完了するには、AADLoginForWindows 拡
    > [!NOTE]
    > アクセス トークンは、[calebb.net](http://calebb.net/) などのツールを使用してデコードできます。 アクセス トークンの `appid` と VM に割り当てられたマネージド ID が一致していることを確認します。
 
-1. 次のコマンド ラインを使用して、必要なエンドポイントに VM から確実にアクセスできるようにします。
+1. PowerShell を使用して、必要なエンドポイントが VM からアクセスできることを確認します。
    
    - `curl https://login.microsoftonline.com/ -D -`
    - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
@@ -294,7 +288,7 @@ AADLoginForWindows 拡張機能が特定のエラー コードで失敗した場
 
 1. Azure VM により Instance Metadata Service から TenantID を取得できることを確認します。
 
-   - ローカル管理者として VM に RDP 接続し、VM で管理者特権でのコマンド ラインから次のコマンドを実行して、エンドポイントから有効なテナント ID が返されることを確認します。
+   - ローカル管理者として VM に RDP 接続し、VM で管理者特権での PowerShell ウィンドウから次のコマンドを実行して、エンドポイントから有効なテナント ID が返されることを確認します。
       
       - `curl -H Metadata:true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01`
 
@@ -304,7 +298,7 @@ AADLoginForWindows 拡張機能が特定のエラー コードで失敗した場
 
 拡張機能は `https://enterpriseregistration.windows.net` エンドポイントに到達できないため、この終了コードは `DSREG_AUTOJOIN_DISC_FAILED` に変換されます。
 
-1. 次のコマンド ラインを使用して、必要なエンドポイントに VM からアクセスできることを確認します。
+1. PowerShell を使用して、必要なエンドポイントが VM からアクセスできることを確認します。
 
    - `curl https://login.microsoftonline.com/ -D -`
    - `curl https://login.microsoftonline.com/<TenantID>/ -D -`

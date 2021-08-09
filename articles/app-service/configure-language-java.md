@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: fed4081aaea965e54f229e673718a6d523f82870
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a42db5b6787f56f981ea1afa34958fecf6b2f9fc
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080562"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477016"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -81,7 +81,7 @@ Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/a
 
 .war ファイルを JBoss にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-war-file)を参照してください。
 
-.ear ファイルをデプロイするには、[FTP を使用](deploy-ftp.md)します。
+.ear ファイルをデプロイするには、[FTP を使用](deploy-ftp.md)します。 アプリケーションの構成で定義されているコンテキスト ルートに、.ear アプリケーションがデプロイされます。 たとえば、アプリのコンテキスト ルートが `<context-root>myapp</context-root>` の場合は、`/myapp` パスでサイトを閲覧できます (`http://my-app-name.azurewebsites.net/myapp`)。 Web アプリがルート パスで提供されるようにするには、アプリでコンテキスト ルートがルート パスに設定されていることを確認します (`<context-root>/</context-root>`)。 詳細については、「[Setting the context root of a web application (Web アプリケーションのコンテキスト ルートの設定)](https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html)」を参照してください。
 
 ::: zone-end
 
@@ -361,7 +361,54 @@ App Service への [SSH 接続を開き](configure-linux-open-ssh-session.md)、
 
 ## <a name="configure-apm-platforms"></a>APM プラットフォームを構成する
 
-このセクションでは、NewRelic と AppDynamics アプリケーション パフォーマンスの監視 (APM) プラットフォームで、Linux 上の Azure App Service にデプロイされた Java アプリケーションを接続する方法を示します。
+このセクションでは、Azure App Service にデプロイされた Java アプリケーションを Azure Monitor Application Insights、NewRelic、および AppDynamics アプリケーション パフォーマンスの監視 (APM) プラットフォームと接続する方法を示します。
+
+### <a name="configure-application-insights"></a>Application Insights の構成
+
+Azure Monitor Application Insights は、クラウド ネイティブのアプリケーション監視サービスです。これを使用すると、障害、ボトルネック、および使用パターンを観察して、アプリケーションのパフォーマンスを向上させ、平均解決時間 (MTTR) を短縮できます。 数回のクリックまたは CLI コマンドで、Node.js または Java アプリを監視したり、ログ、メトリック、および分散トレースを自動収集したりすることができ、アプリに SDK を含める必要がなくなります。
+
+#### <a name="azure-portal"></a>Azure portal
+
+Azure portal で Application Insights を有効にするには、左側のメニューの **[Application Insights]** に移動し、 **[Application Insights を有効にする]** を選択します。 既定では、Web アプリと同じ名前の新しい Application Insights リソースが使用されます。 既存の Application Insights リソースを使用することも、名前を変更することもできます。 下部にある **[適用]** をクリックします
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Azure CLI を使用して有効にするには、Application Insights リソースを作成し、Application Insights を Web アプリに接続するために、ポータルでいくつかのアプリ設定を指定する必要があります。
+
+1. Application Insights 拡張機能を有効にする
+
+    ```bash
+    az extension add -n application-insights
+    ```
+
+2. 次の CLI コマンドを使用して、Application Insights リソースを作成します。 プレースホルダーは、任意のリソース名とグループに置き換えます。
+
+    ```bash
+    az monitor app-insights component create --app <resource-name> -g <resource-group> --location westus2  --kind web --application-type web
+    ```
+
+    `connectionString` および `instrumentationKey` の値を書き留めておいてください。これらの値は、次の手順で必要になります。
+
+    > 他の場所の一覧を取得するには、`az account list-locations` を実行します。
+
+::: zone pivot="platform-windows"
+    
+3. インストルメンテーション キー、接続文字列、および監視エージェントのバージョンを、Web アプリのアプリ設定として指定します。 `<instrumentationKey>` と `<connectionString>` は、前の手順で取得した値に置き換えてください。
+
+    ```bash
+    az webapp config appsettings set -n <webapp-name> -g <resource-group> --settings "APPINSIGHTS_INSTRUMENTATIONKEY=<instrumentationKey>" "APPLICATIONINSIGHTS_CONNECTION_STRING=<connectionString>" "ApplicationInsightsAgent_EXTENSION_VERSION=~3" "XDT_MicrosoftApplicationInsights_Mode=default" "XDT_MicrosoftApplicationInsights_Java=1"
+    ```
+
+::: zone-end
+::: zone pivot="platform-linux"
+    
+3. インストルメンテーション キー、接続文字列、および監視エージェントのバージョンを、Web アプリのアプリ設定として指定します。 `<instrumentationKey>` と `<connectionString>` は、前の手順で取得した値に置き換えてください。
+
+    ```bash
+    az webapp config appsettings set -n <webapp-name> -g <resource-group> --settings "APPINSIGHTS_INSTRUMENTATIONKEY=<instrumentationKey>" "APPLICATIONINSIGHTS_CONNECTION_STRING=<connectionString>" "ApplicationInsightsAgent_EXTENSION_VERSION=~3" "XDT_MicrosoftApplicationInsights_Mode=default"
+    ```
+
+::: zone-end
 
 ### <a name="configure-new-relic"></a>New Relic の構成
 
@@ -956,13 +1003,18 @@ xsl ファイルの例は次のとおりです。 この xsl ファイルの例�
 
 ## <a name="choosing-a-java-runtime-version"></a>Java ランタイム バージョンの選択
 
-App Service を使用すると、ユーザーは JVM のメジャー バージョン (Java 8 や Java 11 など) だけでなく、マイナー バージョン (1.8.0_232 や 11.0.5 など) も選択できます。 新しいマイナー バージョンが利用可能になったらマイナー バージョンを自動的に更新するように選択することもできます。 ほとんどの場合、運用サイトにおいては、固定されたマイナー JVM バージョンを使用する必要があります。 これにより、マイナー バージョンの自動更新の間に、予期しない停止が発生するのを防ぐことができます。
+App Service を使用すると、ユーザーは JVM のメジャー バージョン (Java 8 や Java 11 など) だけでなく、マイナー バージョン (1.8.0_232 や 11.0.5 など) も選択できます。 新しいマイナー バージョンが利用可能になったらマイナー バージョンを自動的に更新するように選択することもできます。 ほとんどの場合、運用サイトにおいては、固定されたマイナー JVM バージョンを使用する必要があります。 これにより、マイナー バージョンの自動更新の間に、予期しない停止が発生するのを防ぐことができます。 すべての Java Web アプリは、64 ビットの JVM を使用します。これは構成できません。
 
 マイナー バージョンの固定を選択した場合は、サイトの JVM のマイナー バージョンを定期的に更新する必要があります。 アプリケーションが新しいマイナー バージョンで確実に実行されるようにするには、ステージング スロットを作成し、ステージング サイトでマイナー バージョンをインクリメントします。 新しいマイナー バージョンでアプリケーションが正しく実行されることを確認したら、ステージング スロットと運用スロットを入れ替えることができます。
 
-## <a name="jboss-eap-hardware-options"></a>JBoss EAP のハードウェア オプション
+::: zone pivot="platform-linux"
 
-JBoss EAP は、Premium および Isolated のハードウェア オプションでのみ使用できます。 パブリック プレビュー中に Free、Shared、Basic、または Standard レベルで JBoss EAP サイトを作成したお客様は、予期しない動作を避けるために、Premium または Isolated のハードウェア レベルにスケールアップする必要があります。
+## <a name="jboss-eap-app-service-plans"></a>JBoss EAP App Service プラン
+<a id="jboss-eap-hardware-options"></a>
+
+JBoss EAP は、Premium v3 および Isolated v2 App Service プラン タイプでのみ使用できます。 パブリック プレビュー中に別のレベルで JBoss EAP サイトを作成したお客様は、予期しない動作を避けるために、Premium または Isolated のハードウェア レベルにスケールアップする必要があります。
+
+::: zone-end
 
 ## <a name="java-runtime-statement-of-support"></a>Java ランタイムのサポート ステートメント
 

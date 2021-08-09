@@ -5,14 +5,14 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 05/17/2021
 ms.author: qixwang
-ms.openlocfilehash: 94c22ffd423c32ba5f489298267464ca36abaecd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b25f56b238c7f0c42a1ba589f7da2d68344c915
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101097885"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464393"
 ---
 # <a name="configure-an-azure-front-door-standardpremium-route"></a>Azure Front Door Standard/Premium のルートを構成する
 
@@ -52,7 +52,7 @@ Azure Front Door のルートを構成するには、事前に、現在のエン
 
     :::image type="content" source="../media/how-to-configure-route/add-route-page.png" alt-text="[ルートの追加] ページのスクリーンショット。" lightbox="../media/how-to-configure-route/add-route-page-expanded.png"::: 
 
-    | 設定 | 値 |
+    | 設定 | 説明 |
     | --- | --- |
     | 名前 | 新しいルートの一意の名前を入力します。 |   
     | Domain| 検証済みで、別のルートに関連付けられていないドメインを 1 つ以上選択します。 |
@@ -60,7 +60,7 @@ Azure Front Door のルートを構成するには、事前に、現在のエン
     | 受け入れ済みのプロトコル | クライアントが要求を行う際に、Azure Front Door で受け入れるプロトコルを指定します。 |
     | リダイレクト | HTTP 要求で受信要求に HTTPS を適用するかどうかを指定します。 |
     | 配信元グループ | 配信元に戻る要求が発生したときに、どの配信元グループに転送するかを選択します。 |
-    | 配信元のパス | キャッシュするリソースへのパスを入力します。 ドメインでリソースのキャッシュを許可するには、この設定を空白のままにします。 |
+    | 配信元のパス | このパスは、配信元に転送される要求を構築する際に Azure Front Door で使用される URL を書き換えるために使用されます。 既定では、このパスは指定されていません。 そのため、Azure Front Door から配信元への要求内では、受信 URL パスが使用されます。 また、ワイルドカード パスを指定することもできます。これにより、受信パスの一致する部分が配信元への要求パスにコピーされます。 </br></br>一致させるパターン: `/foo/*`</br>配信元のパス: `/fwd/`</br></br>受信 URL パス: `/foo/a/b/c/`</br>Azure Front Door から配信元への URL: `fwd/a/b/c`。 |
     | 転送プロトコル | 要求の転送に使用するプロトコルを選択します。 |
     | キャッシュ | Azure Front Door で静的コンテンツのキャッシュを有効にするには、このオプションを選択します。 |
     | ルール | このルートに適用されるルール セットを選択します。 ルールを構成する方法の詳細については、[Azure Front Door のルールセットの構成](how-to-configure-rule-set.md)に関する記事を参照してください。 | 

@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0800373919ba95f48d30b9fe6eb5e7f8eb99a82a
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001288"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422068"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway での TLS 終端とエンド ツー エンド TLS の概要
 
@@ -107,7 +107,7 @@ HTTPS の正常性プローブに対しては、Application Gateway v1 SKU で�
 >
 > TLS/SSL 証明書が信頼されるためには、バックエンド サーバーのその証明書が、既知の CA によって発行されている必要があります。 証明書が信頼されている CA によって発行されていなかった場合は、アプリケーション ゲートウェイでは、その発行元 CA の証明書が信頼されている CA によって発行されたかどうかがチェックされます。信頼されている CA が見つかる (この時点で信頼できる安全な接続が確立されます) か、信頼されている CA が見つからない (この時点で、アプリケーション ゲートウェイによってバックエンドが正常でないとマークされます) まで、この操作が続行されます。 そのため、バックエンド サーバーの証明書には、ルート CA と中間 CA の両方を含めることをお勧めします。
 
-- 証明書が自己署名済みの場合、または不明な仲介者によって署名されている場合、v2 SKU でエンド ツー エンド TLS を有効にするには、信頼されるルート証明書を定義する必要があります。 Application Gateway では、サーバー証明書のルート証明書がプールに関連付けられたバックエンドの HTTP 設定にある信頼済みのいずれかのルート証明書の一覧と一致するバックエンドのみと、通信を行います。
+- バックエンド サーバーの証明書が自己署名されている場合、または未知の CA/ 中継局によって署名されている場合、Application Gateway v2 でエンドツーエンドの TLS を有効にするには、信頼できるルート証明書をアップロードする必要があります。 Application Gateway は、サーバー証明書のルート証明書が、プールに関連付けられたバックエンド http 設定の信頼できるルート証明書のリストの 1 つと一致するバックエンドとのみ通信します。
 
 - また、Application Gateway v2 では、ルート証明書の一致に加えて、バックエンドの HTTP 設定に指定されているホスト設定が、バックエンド サーバーの TLS/SSL 証明書によって提示されている共通名 (CN) のホスト設定と一致するかどうかも検証されます。 バックエンドとの TLS 接続を確立しようとする場合、Application Gateway v2 では、Server Name Indication (SNI) 拡張機能がバックエンドの HTTP 設定で指定されているホストに設定されます。
 

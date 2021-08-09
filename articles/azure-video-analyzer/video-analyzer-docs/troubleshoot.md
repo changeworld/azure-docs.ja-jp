@@ -3,12 +3,12 @@ title: Azure Video Analyzer のトラブルシューティング - Azure
 description: この記事では、Azure Video Analyzer のトラブルシューティング手順について説明します。
 ms.topic: how-to
 ms.date: 05/04/2021
-ms.openlocfilehash: f43d959d1f289b76d4a0b8071aba49c01abe3481
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cd54386702c24065cccad4f7ede43c313a44886c
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388135"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613666"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Azure Video Analyzer のトラブルシューティング
 
@@ -26,6 +26,10 @@ Video Analyzer をデプロイする一環として、IoT Hub や IoT Edge の�
 1. [IoT Edge ハブを通過するメッセージを表示する](../../iot-edge/troubleshoot.md#view-the-messages-going-through-the-iot-edge-hub)。
 1. [コンテナーを再起動する](../../iot-edge/troubleshoot.md#restart-containers)。
 1. [ファイアウォール規則とポート構成規則を確認する](../../iot-edge/troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
+
+### <a name="issues-when-using-arm-template"></a>ARM テンプレートを使用するときの問題
+
+ARM テンプレート ([Azure へのデプロイ] ボタン) を使用しているときに問題が発生した場合は、この [クイックスタート](get-started-detect-motion-emit-events-portal.md) の手順に従って、必要なリソースを手動でデプロイしてください。 
 
 ### <a name="pre-deployment-issues"></a>デプロイ前の問題
 

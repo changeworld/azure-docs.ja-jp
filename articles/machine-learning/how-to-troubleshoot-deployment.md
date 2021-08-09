@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4d1bffd39fa474a5c973ca2b6fd45e9f59964e39
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: df2e47b75b4dd01274a2ec2c4f5b5acaac164ca0
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098292"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536277"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>リモートでのモデル デプロイのトラブルシューティング 
 
@@ -84,6 +84,28 @@ print(service.get_logs())
 ## <a name="debug-locally"></a>ローカル デバッグ
 
 モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。 ローカルでのデプロイのトラブルシューティングについては、[ローカルでのトラブルシューティングに関する記事](./how-to-troubleshoot-deployment-local.md)を参照してください。
+
+## <a name="azure-machine-learning-inference-http-server"></a>Azure Machine Learning 推論 HTTP サーバー
+
+ローカル推論サーバーを使用すると、エントリ スクリプト (`score.py`) をすばやくデバッグできます。 基になるスコア スクリプトにバグがある場合、サーバーはモデルの初期化やサービスの提供に失敗します。 代わりに、例外と、問題が発生した場所がスローされます。 [Azure Machine Learning 推論 HTTP サーバーの詳細](how-to-inference-server-http.md)
+
+1. [Pypi](https://pypi.org/) フィードから `azureml-inference-server-http` パッケージをインストールします。
+
+    ```bash
+    python -m pip install azureml-inference-server-http
+    ```
+
+2. サーバーを起動し、エントリ スクリプトとして `score.py` を設定します。
+
+    ```bash
+    azmlinfsrv --entry_script score.py
+    ```
+
+3. `curl` を使用して、スコアリング要求をサーバーに送信します。
+
+    ```bash
+    curl -p 127.0.0.1:5001/score
+    ```
 
 ## <a name="container-cannot-be-scheduled"></a>コンテナーをスケジュールできない
 

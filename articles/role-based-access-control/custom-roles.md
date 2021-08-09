@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/15/2020
+ms.date: 05/19/2021
 ms.author: rolyon
-ms.openlocfilehash: 9779c2a269902d856d1639ce78028d0e658656bb
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c9ab7faebc28354e96cf1c54332fc1d7b19ef196
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479833"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469908"
 ---
 # <a name="azure-custom-roles"></a>Azure カスタム ロール
 
@@ -155,7 +155,7 @@ Azure CLI を使用して表示される同じカスタム ロールを次に示
 
 次の表で、カスタム ロールのプロパティについて説明します。
 
-| プロパティ | 必須 | Type | 説明 |
+| プロパティ | 必須 | 型 | 説明 |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | はい | String | カスタム ロールの表示名。 ロールの定義は、管理グループまたはサブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
 | `Id`</br>`name` | はい | String | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
@@ -185,12 +185,6 @@ Microsoft.CostManagement/exports/run/action
 Microsoft.CostManagement/exports/*
 ```
 
-また、1 つの文字列に複数のワイルドカードを含めることもできます。 たとえば、次の文字列は、Cost Management のすべてのクエリ アクセス許可を表します。
-
-```
-Microsoft.CostManagement/*/query/*
-```
-
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>カスタム ロールを作成、削除、更新、または表示できるユーザー
 
 組み込みロールと同じように、`AssignableScopes` プロパティでは、割り当てにロールを使用できるスコープを指定します。 カスタム ロールの `AssignableScopes` プロパティでは、カスタム ロールを作成、削除、更新、または表示できるユーザーも制御されます。
@@ -210,6 +204,7 @@ Microsoft.CostManagement/*/query/*
 - ルート スコープ (`"/"`) には `AssignableScopes` を設定できません。
 - `AssignableScopes` にワイルドカード (`*`) を使用することはできません。 このワイルドカード制限は、ロール定義を更新することで、ユーザーがスコープにアクセスできないようにするのに役立ちます。
 - カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
+- アクション文字列には、ワイルドカードを 1 つだけ含めることができます。
 - `DataActions` が含まれるカスタム ロールを管理グループのスコープで割り当てることはできません。
 - ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。
 

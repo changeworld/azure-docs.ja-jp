@@ -3,12 +3,12 @@ title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループ、サブスクリプション、またはリージョンに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 5a347a9041423c7e466499cdd65fe27e6623ab98
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3a43ea09dd4986d1f2d0e2679e81f5b25b590f7e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737407"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968328"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -911,7 +911,7 @@ ms.locfileid: "108737407"
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | controllers | はい | はい | いいえ |
-> | AKS クラスター | **保留中** | **保留中** | いいえ<br/><br/> 別リージョンへの移行の[詳細をご覧ください](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region)。
+> | AKS クラスター | **保留中** | **保留中** | いいえ<br/><br/> 別リージョンへの移行の[詳細をご覧ください](../../dev-spaces/index.yml)。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1448,7 +1448,7 @@ ms.locfileid: "108737407"
 > | privateendpointredirectmaps | いいえ | いいえ | いいえ |
 > | privateendpoints | いいえ | いいえ | いいえ |
 > | privatelinkservices | いいえ | いいえ | いいえ |
-> | publicipaddresses | はい - Basic SKU<br>はい - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU | はい<br/><br/> パブリック IP アドレスを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
+> | publicipaddresses | はい - Basic SKU<br>はい - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU | はい<br/><br/> [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用してパブリック IP アドレス構成を移動します (IP アドレスは保持されません)。 |
 > | publicipprefixes | はい | はい | いいえ |
 > | routefilters | いいえ | いいえ | いいえ |
 > | routetables | はい | はい | いいえ |

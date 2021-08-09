@@ -8,13 +8,13 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 04/26/2021
 ms.author: alkohli
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 1233c35df8c8471b91eafdc98616906f76ffe103
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: e9bf7d7d61ad05726ca8dcaad06d63902273f6f8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073174"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085062"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 
@@ -107,6 +107,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 | https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |
 | https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) | 
 | https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             | 
+| https://\*.docker.com              | StorageClass (必須)                             | 
 
 ### <a name="url-patterns-for-monitoring"></a>監視用の URL パターン
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 82a5e90221a77b891df78984c7fddfd63b6532aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1aae5620f32b5680badc073d74d360b70b68a3b
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585419"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579874"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>クロステナント Vnet を Virtual WAN に接続する
 
@@ -54,7 +54,7 @@ ms.locfileid: "104585419"
 1. 次に、リモート テナント サブスクリプションと親テナント サブスクリプションを PowerShell の現在のセッションに追加します。 次のコマンドを実行します。 親にサインインしている場合は、リモート テナントに対してのみコマンドを実行する必要があります。
 
    ```azurepowershell-interactive
-   Add-AzAccount -SubscriptionId "xxxxx-b34a-4df9-9451-4402dcaecc5b"
+   Connect-AzAccount -SubscriptionId "[subscription ID]" -TenantId "[tenant ID]"
    ```
 
 1. 親の資格情報を使用して Azure PowerShell にログインし、次のコマンドを実行することで、ロールの割り当てが成功したことを確認します。
@@ -63,7 +63,7 @@ ms.locfileid: "104585419"
    Get-AzSubscription
    ```
 
-1. アクセス許可が親に正しく伝達され、セッションに追加されている場合は、コマンドの出力に、リモート テナントが所有するサブスクリプションが表示されます。
+1. アクセス許可が親に正しく伝達され、セッションに追加されている場合は、親の **と** リモート テナントが所有するサブスクリプションは、両方ともコマンドの出力に表示されます。
 
 ## <a name="connect-vnet-to-hub"></a><a name="connect"></a>VNet をハブに接続する
 

@@ -1,24 +1,28 @@
 ---
-title: Kubernetes クラスターから認証する
+title: Kubernetes プル シークレットを使用して Azure コンテナー レジストリの認証を行う
 description: サービス プリンシパルを使用してプル シークレットを作成することにより、Kubernetes クラスターに、Azure コンテナー レジストリ内のイメージへのアクセスを提供する方法について説明します
 ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 05/28/2020
-ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/02/2021
+ms.openlocfilehash: 149035de0fc84c75cdcaa73c91d6cd5379c53498
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84309817"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439622"
 ---
-# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Azure コンテナー レジストリから Kubernetes クラスターにイメージをプルする
+# <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster-using-a-pull-secret"></a>プル シークレットを使用して Azure コンテナー レジストリから Kubernetes クラスターにイメージをプルする
 
-[minikube](https://minikube.sigs.k8s.io/) や [kind](https://kind.sigs.k8s.io/) などの "ローカルな" Kubernetes クラスターを含め、任意の Kubernetes クラスターで、Azure コンテナー レジストリをコンテナー イメージのソースとして使用できます。 この記事では、Azure Active Directory サービス プリンシパルに基づいて Kubernetes のプル シークレットを作成する方法を示します。 次に、シークレットを使用して、Kubernetes デプロイ内の Azure コンテナー レジストリからイメージをプルします。
+[minikube](https://minikube.sigs.k8s.io/) や [kind](https://kind.sigs.k8s.io/) などの "ローカルな" Kubernetes クラスターを含め、任意の Kubernetes クラスターで、Azure コンテナー レジストリをコンテナー イメージのソースとして使用できます。 この記事では、Azure コンテナー レジストリの資格情報を使用して Kubernetes プル シークレットを作成する方法について説明します。 次に、シークレットを使用して、ポッド デプロイ内の Azure コンテナー レジストリからイメージをプルします。
 
-> [!TIP]
-> マネージド [Azure Kubernetes Service](../aks/intro-kubernetes.md) を使用している場合は、イメージのプルのために、ターゲットの Azure コンテナー レジストリと[クラスターを統合する](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)こともできます。 
+この例では、Azure Active Directory の[サービス プリンシパルの資格情報](container-registry-auth-service-principal.md)を使用して、プル シークレットを作成します。 また、[リポジトリ スコープのアクセス トークン](container-registry-repository-scoped-permissions.md)など、他の Azure コンテナー レジストリの資格情報を使用して、プル シークレットを構成することもできます。
+
+> [!NOTE]
+> プル シークレットは一般的に使用されますが、追加の管理オーバーヘッドが発生します。 [Azure Kubernetes Service](../aks/intro-kubernetes.md) を使用している場合は、クラスターのマネージド ID やサービス プリンシパルなどの[他のオプション](authenticate-kubernetes-options.md)を使用し、各ポッドで `imagePullSecrets` を追加設定することなく、イメージを安全にプルすることをお勧めします。
+
+## <a name="prerequisites"></a>前提条件
 
 この記事では、プライベート Azure コンテナー レジストリを作成済みであることを前提としています。 また、`kubectl` コマンドラインツールを介して、Kubernetes クラスターを実行し、アクセス可能にする必要があります。
 
@@ -90,4 +94,4 @@ spec:
 [acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
-[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset

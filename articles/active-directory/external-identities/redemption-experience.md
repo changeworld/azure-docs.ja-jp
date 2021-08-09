@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 05/27/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5273d2aedd1382146b83197afb48c5120dcbb11
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 80de2d30055d5a78f4a0105d33f01b4fabfbcd47
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108767745"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955091"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -25,7 +25,7 @@ ms.locfileid: "108767745"
 
    > [!IMPORTANT]
    > - **2021 年の下半期以降**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
-   > - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   > - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様には、一般提供が開始された、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。
 
 ## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>共通のエンドポイントを使用した引き換えとサインイン
 
@@ -59,6 +59,20 @@ ms.locfileid: "108767745"
 2. ゲストは、電子メールで **[招待の承諾]** を選択します。
 3. ゲストは、自分の資格情報を使用してディレクトリにサインインします。 ゲストがディレクトリにフェデレーションできるアカウントを持っておらず、[電子メール ワンタイム パスコード (OTP)](./one-time-passcode.md) 機能が有効になっていない場合、ゲストは個人用 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) または [Azure AD セルフサービス アカウント](../enterprise-users/directory-self-service-signup.md)を作成するように求められます。 詳細については、「[招待の引き換えフロー](#invitation-redemption-flow)」を参照してください。
 4. ゲストには、以下に説明されている[同意エクスペリエンス](#consent-experience-for-the-guest)が示されます。
+
+## <a name="redemption-limitation-with-conflicting-contact-object"></a>連絡先オブジェクトの競合による引き換えの制限
+招待された外部ゲスト ユーザーのメール アドレスルが既存の[連絡先オブジェクト](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)と競合しているために、ゲスト ユーザーが proxyAddress なしで作成される場合があります。 これは既知の制限であり、ゲスト ユーザーは次のことを行えなくなります。 
+- [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation)、[Microsoft アカウント](/azure/active-directory/external-identities/microsoft-account)、[Google フェデレーション](/azure/active-directory/external-identities/google-federation)、または[電子メール ワンタイム パスコード](/azure/active-directory/external-identities/one-time-passcode) アカウントを使用して、直接リンクから招待を引き換える。 
+- [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) および[電子メール ワンタイム パスコード](/azure/active-directory/external-identities/one-time-passcode) アカウントを使用して、招待メールの引き換えリンクから招待を引き換える。
+- [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) および [Google フェデレーション](/azure/active-directory/external-identities/google-federation) アカウントを使用して、引き換え後にアプリケーションにもう一度サインインする。
+
+[連絡先オブジェクト](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)の競合が原因で招待を引き換えることができないユーザーのブロックを解除するには、これらの手順に従います。
+1. 競合する連絡先オブジェクトを削除します。
+2. Azure portal でゲスト ユーザーを削除します (ユーザーの "招待が受け入れられました" プロパティが保留状態である必要があります)。
+3. ゲスト ユーザーを再度招待します。
+4. ユーザーが招待を引き換えるまで待ちます。
+5. ユーザーの連絡先の電子メールを、Exchange と、それらが含まれている必要がある DL に再度追加します。
+
 ## <a name="invitation-redemption-flow"></a>招待の引き換えフロー
 
 ユーザーが [招待メール](invitation-email-elements.md)の **[招待の承諾]** リンクをクリックすると、Azure AD では下の画像のように、引き換えフローに基づいて招待が自動的に引き換えられます。

@@ -6,14 +6,19 @@ author: harelbr
 ms.author: harelbr
 ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: fa14f0dd40a30a4750d9bb102d8e67608f958135
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0937683eaacefc9fe4bbee21802a0f1657918efd
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734504"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536709"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>スマート検出の電子メール通知に関する変更
+
+>[!NOTE]
+>Application Insight リソースをアラートベースのスマート検出 (プレビュー) に移行できます。 移行によって、異なるスマート検出モジュールのアラート ルールが作成されます。 作成されると、これらのルールは、他の Azure Monitor アラート ルールのように管理および構成できます。 これらのルールのアクション グループを構成して、新たな検出時に操作をしたり通知をトリガーしたりする複数の方法を有効にすることもできます。
+>
+> 移行プロセスと移行後のスマート検出の動作の詳細については、[「スマート検出アラートの移行」](../alerts/alerts-smart-detections-migration.md)を参照してください。
 
 お客様からのフィードバックに基づいて、2019 年 4 月 1 日付けで、スマート検出から電子メール通知を受信する既定のロールが変更されます。
 

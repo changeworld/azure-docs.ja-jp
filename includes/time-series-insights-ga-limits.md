@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: e584b6eff16636f0657c586f6c630dbf8bbb99b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9af31fb52a888148f33268a30c37609a5e8f2cd3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96026364"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110486600"
 ---
 次に、Azure Time Series Insights Gen1 の主な制限の概要を示します。
 
@@ -24,13 +24,13 @@ ms.locfileid: "96026364"
 
 | S1 SKU の容量 | イングレス レート | 最大ストレージ容量
 | --- | --- | --- |
-| 1 | 1 日あたり 1 GB (100 万イベント) | 月あたり 30 GB (3,000 万イベント) |
-| 10 | 1 日あたり 10 GB (1,000 万イベント) | 月あたり 300 GB (3 億イベント) |
+| 1 | 1 日あたり 1 GB (100 万イベント) | 30 GB (3,000 万イベント) |
+| 10 | 1 日あたり 10 GB (1,000 万イベント) | 300 GB (3 億イベント) |
 
 | S2 SKU の容量 | イングレス レート | 最大ストレージ容量
 | --- | --- | --- |
-| 1 | 1 日あたり 10 GB (1,000 万イベント) | 月あたり 300 GB (3 億イベント) |
-| 10 | 1 日あたり 100 GB (1 億イベント) | 月あたり 3 TB (30 億イベント) |
+| 1 | 1 日あたり 10 GB (1,000 万イベント) | 300 GB (3 億イベント) |
+| 10 | 1 日あたり 100 GB (1 億イベント) | 3 TB (30 億イベント) |
 
 > [!NOTE]
 > 容量は直線的にスケーリングされるので、容量が 2 の S1 SKU であれば、サポートされるイベント受信レートは 1 日あたり 2 GB (200 万)、1 か月あたり 60 GB (6,000 万イベント) となります。

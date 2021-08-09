@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: c73c6ce641e5e8386d636f87253cb111c17ae69c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 987ab6346788f78316b0682631b7cefde12cad29
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466080"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437692"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>チュートリアル - テナントを使用して検証可能な資格情報を発行して検証する (プレビュー)
 
@@ -66,36 +66,6 @@ Azure AD に ' VC ウォレット アプリ ' という名前のアプリケー�
 
    ![発行者のエンドポイント](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
 
-## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Azure Key Vault にアクセスできるようにノード アプリを設定する
-
-ユーザーの資格情報発行要求を認証する際、発行者の Web サイトでは Azure Key Vault の暗号化キーが使用されます。 Azure Key Vault にアクセスするには、Web サイトには、Azure Key Vault の認証に使用できるクライアント ID とクライアント シークレットが必要です。
-
-1. VC ウォレット アプリの概要ページを表示しているときに、 **[証明書とシークレット]** を選択します。
-    ![証明書とシークレット](media/issue-verify-verifable-credentials-your-tenant/vc-wallet-app-certs-secrets.png)
-1. **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。
-    1. "Node VC クライアント シークレット" のような説明を追加します。
-    1. 有効期限: 1 年。
-  ![1 年間の有効期限が設定されたアプリケーション シークレット](media/issue-verify-verifable-credentials-your-tenant/add-client-secret.png)
-1. シークレットをコピーします。 サンプルのノード アプリを更新するには、この情報が必要です。
-
->[!WARNING]
-> シークレットをコピーできるのは 1 回だけです。 この後、シークレットは一方向にハッシュされます。 ID をコピーしないでください。 
-
-Azure AD でアプリケーションとクライアント シークレットを作成した後、Key Vault で操作を実行するために必要なアクセス許可をアプリケーションに付与する必要があります。 Web サイトからそこに格納されている秘密キーにアクセスして使用できるようにするには、これらのアクセス許可の変更を行う必要があります。
-
-1. Key Vault に移動します。
-2. これらのチュートリアルで使用している Key Vault を選択します。
-3. 左側のナビゲーションで **[アクセス ポリシー]** を選択します
-4. **[アクセス ポリシーの追加]** をクリックします。
-5. **[キーのアクセス許可]** セクションで **[取得]** 、 **[署名]** の順に選択します。
-6. **[プリンシパル]** を選択し、アプリケーション ID を使用して以前に登録したアプリケーションを検索します。 それを選択します。
-7. **[追加]** を選択します。
-8. **[保存]** を選択します。
-
-Key Vault のアクセス許可とアクセス制御の詳細については、[Key Vault RBAC のガイド](../../key-vault/general/rbac-guide.md)を参照してください。
-
-![Key Vault アクセス許可の付与](media/issue-verify-verifable-credentials-your-tenant/key-vault-permissions.png)
-## <a name="make-changes-to-match-your-environment"></a>環境に合わせて変更を加える
 
 ここまでは、サンプル アプリを使用してきました。 このアプリでは [Azure Active Directory B2C](../../active-directory-b2c/overview.md) を使用し、Azure AD を使用するように切り替えているため、実際の環境に合わせて変更を加えるだけでなく、以前は使用していなかった追加のクレームをサポートする必要があります。
 
@@ -160,7 +130,54 @@ Key Vault のアクセス許可とアクセス制御の詳細については、[
 1. [検証可能な資格情報] ページで、古い表示ファイルと新しいルール ファイル (**modified-credentialExpert.json**) を使用して、**modifiedCredentialExpert** という名前の新しい資格情報を作成します。
 1. **[概要]** ページで資格情報の作成プロセスが完了したら、次のセクションで必要になる **資格情報の発行 URL** をコピーして保存します。
 
-## <a name="before-we-continue"></a>続行する前に
+## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Azure Key Vault にアクセスできるようにノード アプリを設定する
+
+ユーザーの資格情報発行要求を認証する際、発行者の Web サイトでは Azure Key Vault の暗号化キーが使用されます。 Azure Key Vault にアクセスするには、Web サイトには、Azure Key Vault の認証に使用できるクライアント ID とクライアント シークレットが必要です。
+
+まず、別のアプリケーションを登録する必要があります。 この登録は Web サイト用です。 以前のウォレット アプリの登録は、ユーザーがウォレット アプリを使用してディレクトリにサインインできる場合のみです。この場合は、同じディレクトリに存在しますが、ウォレット アプリの登録は別のディレクトリでも行われた可能性もあります。 アプリケーションの役割が異なる場合は、アプリの登録を分離する方法が適切です。 この場合は、Web サイトでキー コンテナーへのアクセス権を取得する必要があります。
+
+1. [Azure AD](../develop/quickstart-register-app.md) にアプリケーションを登録するための手順に従ってください。登録時には、以下の値を使用してください。
+
+   - 名前: "VC Website"
+   - サポートされているアカウントの種類: この組織のディレクトリ内のアカウントのみ
+
+   :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-app-registration.png" alt-text="アプリケーションの登録方法を示すスクリーンショット。":::
+
+1. アプリケーションを登録したら、アプリケーション (クライアント) ID を書き留めます。 この値は、後で必要になります。
+
+   :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-app-details.png" alt-text="アプリケーションのクライアント ID を示すスクリーンショット。":::
+
+1. VC Web サイトのアプリの概要ページを表示しているときに、 **[証明書とシークレット]** を選択します。
+
+    :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-certificates-secrets.png" alt-text="[証明書とシークレット] ウィンドウを示すスクリーンショット":::。
+
+1. **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。
+    1. "Node VC クライアント シークレット" のような説明を追加します。
+    1. 有効期限: 1 年。
+
+    ![1 年間の有効期限が設定されたアプリケーション シークレット](media/issue-verify-verifable-credentials-your-tenant/add-client-secret.png)
+
+1. シークレットをコピーします。 サンプルのノード アプリを更新するには、この情報が必要です。
+
+>[!WARNING]
+> シークレットをコピーできるのは 1 回だけです。 この後、シークレットは一方向にハッシュされます。 ID をコピーしないでください。 
+
+Azure AD でアプリケーションとクライアント シークレットを作成した後、Key Vault で操作を実行するために必要なアクセス許可をアプリケーションに付与する必要があります。 Web サイトからそこに格納されている秘密キーにアクセスして使用できるようにするには、これらのアクセス許可の変更を行う必要があります。
+
+1. Key Vault に移動します。
+2. これらのチュートリアルで使用している Key Vault を選択します。
+3. 左側のナビゲーションで **[アクセス ポリシー]** を選択します
+4. **[アクセス ポリシーの追加]** をクリックします。
+5. **[キーのアクセス許可]** セクションで **[取得]** 、 **[署名]** の順に選択します。
+6. **[プリンシパル]** を選択し、アプリケーション ID を使用して以前に登録したアプリケーションを検索します。 それを選択します。
+7. **[追加]** を選択します。
+8. **[保存]** を選択します。
+
+:::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/key-vault-permissions.png" alt-text="アクセス ポリシーの追加を示すスクリーンショット。":::
+
+キー コンテナーのアクセス許可とアクセス制御の詳細については、[キー コンテナー RBAC のガイド](../../key-vault/general/rbac-guide.md)を参照してください。
+
+## <a name="make-changes-to-the-sample-app"></a>サンプル アプリの変更
 
 必要なコード変更を行う前に、いくつかの値をまとめておく必要があります。 次のセクションではこれらの値を使用して、サンプル コードでコンテナーに格納されている独自のキーを使用するようにします。 ここまでで、次の値の準備が整っているはずです。
 
@@ -190,7 +207,7 @@ Key Vault のアクセス許可とアクセス制御の詳細については、[
 2. 検索バーに DID を貼り付けます。
 
 4. 書式設定された応答から **verificationMethod** というセクションを探します。
-5. "VerificationMethod" の配下にある ID をコピーし、kvSigningKeyId というラベルを付けます
+5. "VerificationMethod" の配下にある `id` をコピーし、kvSigningKeyId というラベルを付けます
     
     ```json=
     "verificationMethod": [

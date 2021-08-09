@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a865c1070150b31399b5b738a0a469a07e0b13de
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 55f34ec9416bdca81d025efb0910b10a7fa48736
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122359"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585873"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -59,7 +59,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ�
 完了したら、 **[更新]** をクリックします。 忘れずに **[構成]** ページに戻って **[保存]** をクリックください。
 
 > [!NOTE]
-> 既定の Linux コンテナーまたはカスタム Linux コンテナーでは、`ApplicationInsights:InstrumentationKey` などの、アプリ設定名の中の入れ子になった JSON キー構造はすべて、App Service ではキー名を `ApplicationInsights__InstrumentationKey` として構成する必要があります。 つまり、`:` はすべて `__` (二重アンダースコア) で置き換える必要があります。
+> 既定の Linux App Service またはカスタム Linux コンテナーでは、`ApplicationInsights:InstrumentationKey` などの、アプリ設定名の中の入れ子になった JSON キー構造はすべて、App Service ではキー名を `ApplicationInsights__InstrumentationKey` として構成する必要があります。 つまり、`:` はすべて `__` (二重アンダースコア) で置き換える必要があります。
 >
 
 ### <a name="edit-in-bulk"></a>一括で編集する
@@ -200,7 +200,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
     ![Linux コンテナーの全般設定](./media/configure-common/open-general-linux.png)
 
 - **[プラットフォームの設定]** : ホスティング プラットフォームの設定を構成できます。次のものが含まれます。
-    - **[ビット]** : 32 ビットまたは 64 ビット。
+    - **[ビット]** : 32 ビットまたは 64 ビット。 (ポータルで作成される App Service の既定値は 32 ビットです)。
     - **[WebSocket プロトコル]** : [ASP.NET SignalR] や [socket.io](https://socket.io/) など。
     - **[常時接続]** : トラフィックがない場合も、アプリを読み込まれたままにします。 継続的な Web ジョブや、CRON 式を使用してトリガーされる Web ジョブに対して有効にする必要があります。
       > [!NOTE]

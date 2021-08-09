@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5bcd30c22132bc53ff28fdefcb73f686e08e34ea
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: eda7816050aedc0ff910d975f920d79771f7d0b4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105087"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461624"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -40,7 +40,8 @@ AKS クラスターは、1 つのリージョンにデプロイされます。 �
     * AKS では、継続的に新しいリージョンを展開しています。
 * [**Azure ペア リージョン**](../best-practices-availability-paired-regions.md)
     * 利用する地理的な領域に対してペアになっている 2 つのリージョンを選択します。
-    * ペアになったリージョンでは、プラットフォームの更新が調整され、必要に応じて復旧作業の優先順位が付けられます。
+    * AKS プラットフォームの更新 (計画メンテナンス) は、リージョン ペア間で少なくとも 24 時間の遅れをもってシリアル化されます。 
+    * リージョン ペアの復旧作業は、必要に応じて優先されます。 
 * **サービスの提供状況**
     * ペアになったリージョンを、ホット/ホット、ホット/ウォーム、またはホット/コールドのいずれにするかを決定します。
     * 両方のリージョンを同時に実行する場合、一方のリージョンをトラフィックの提供を開始する "*準備ができた*" 状態にするのか、 または、

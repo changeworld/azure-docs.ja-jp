@@ -1,54 +1,45 @@
 ---
-title: Azure Image Builder (プレビュー) について
+title: Azure Image Builder の概要
 description: Azure の仮想マシンの Azure Image Builder についての詳細を参照してください。
-author: danielsollondon
-ms.author: danis
-ms.date: 03/05/2021
+author: kof-f
+ms.author: kofiforson
+ms.date: 05/24/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7289d9d814385f31a71cbd598889e564958a0140
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604068"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441818"
 ---
-# <a name="preview-azure-image-builder-overview"></a>プレビュー:Azure Image Builder の概要
+# <a name="azure-image-builder-overview"></a>Azure Image Builder の概要
 
 組織で標準化された仮想マシン (VM) イメージを使用すると、クラウドに移行し、デプロイの一貫性を保つことができます。 通常、イメージには、事前に定義されたセキュリティと構成設定と、必要なソフトウェアが含まれています。 独自のイメージング パイプラインを設定するには、時間、インフラストラクチャ、設定が必要ですが、Azure VM Image Builder を使用すると、イメージを説明する構成を用意し、それをサービスに送信するだけで、イメージが構築され、配布されます。
  
 Azure VM Image Builder (Azure Image Builder) を使用すると、Windows または Linux ベースの Azure Marketplace イメージ、既存のカスタム イメージから始めて、独自のカスタマイズを追加することができます。 Image Builder は [HashiCorp Packer](https://packer.io/) 上に構築されているため、いくつかの類似点がありますが、マネージド サービスの利点があります。 [Azure Shared Image Gallery](shared-image-galleries.md) で、イメージのホスト先としてマネージド イメージまたは VHD を指定することもできます。
 
-> [!IMPORTANT]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-## <a name="preview-features"></a>プレビュー機能
+## <a name="features"></a>特徴
 
-プレビューでは、次の機能がサポートされています。
+Azure Image Builder は、次の機能をサポートしています。
 
 - ベースライン イメージの作成。最低限のセキュリティと企業の構成を含み、各部門がさらにカスタマイズできます。
 - コア アプリケーションの統合。これにより、VM は作成後にワークロードを引き受けたり、Windows Virtual Desktop のイメージをサポートする構成を追加したりできます。
 - 既存のイメージへの修正プログラム適用。Image Builder では既存のカスタム イメージに継続的に修正プログラムを適用できます。
 - Image Builder を既存の仮想ネットワークに接続します。それにより、既存の構成サーバー (DSC、Chef、Puppet など)、ファイル共有、またはその他のルーティング可能なサーバー/サービスに接続できます。
 - Azure 共有イメージ ギャラリーとの統合。イメージをグローバルに配布、バージョン管理、およびスケールすることができます。また、イメージ管理システムを利用できます。
-- 既存のイメージ ビルド パイプラインとの統合。パイプラインから Image Builder を呼び出すか、単純な Preview Image Builder Azure DevOps Task を使用するだけです。
+- 既存のイメージ ビルド パイプラインとの統合。パイプラインから Image Builder を呼び出すか、単純な Image Builder Azure DevOps Task を使用するだけです。
 - 既存のイメージ カスタマイズ パイプラインを Azure に移行します。 既存のスクリプト、コマンド、およびプロセスを使用してイメージをカスタマイズします。
 - Azure Stack をサポートするための VHD 形式のイメージの作成。
  
 
 ## <a name="regions"></a>リージョン
-Azure Image Builder Service は、これらのリージョンでプレビューできるようになる予定です。 イメージは、これらのリージョン以外に配布できます。
-- 米国東部
-- 米国東部 2
-- 米国中西部
-- 米国西部
-- 米国西部 2
-- 北ヨーロッパ
-- 西ヨーロッパ
+
+Azure Image Builder サービスは、[これら](./linux/image-builder-json.md#location)のリージョンで利用できます。 イメージは、これらのリージョン以外に配布できます。
 
 ## <a name="os-support"></a>OS のサポート
 AIB は Azure Marketplace のベース OS イメージをサポートします。

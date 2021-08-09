@@ -3,14 +3,14 @@ title: Azure Portal でのアクション グループの作成および管理
 description: Azure Portal でアクション グループを作成および管理する方法について説明します。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: ae170fc500f8682a6c090b654fdfd0325b8eb49e
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 2f5244fd8ef414a1bed6781c702014e805f47a76
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795404"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060320"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -160,6 +160,8 @@ Azure mobile app の構成時にアカウント ID として使用するメー�
 ### <a name="function"></a>機能
 [Azure Functions](../../azure-functions/functions-get-started.md) で既存の HTTP トリガー エンドポイントを呼び出します。 要求を処理するには、エンドポイントで HTTP POST 動詞を処理する必要があります。
 
+Function アクションを定義する際に、Function の httptrigger エンドポイントとアクセス キーがアクション定義に保存されます。 (例: https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key)。 関数のアクセス キーを変更する場合は、アクション グループで Function アクションを削除してから再作成する必要があります。
+
 アクション グループには、限られた数の Function アクションを保持できます。
 
 ### <a name="itsm"></a>ITSM
@@ -304,12 +306,14 @@ Write-Host $myApp.AppRoles
 | 351 | ポルトガル |
 | 1 | プエルトリコ |
 | 40 | ルーマニア |
+| 7  | ロシア  |
 | 65 | シンガポール |
 | 27 | 南アフリカ |
 | 82 | 韓国 |
 | 34 | スペイン |
 | 41 | スイス |
 | 886 | 台湾 |
+| 971 | UAE    |
 | 44 | イギリス |
 | 1 | アメリカ合衆国 |
 

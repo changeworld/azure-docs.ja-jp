@@ -10,26 +10,26 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
-ms.custom: devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: f175e8d5c3dd19b212dfbdd04025d12f549667ed
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
+ms.openlocfilehash: 247b70e195bb17c8983d8012880f77de7bf5884b
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293298"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408733"
 ---
-# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>データ ラングリング用に (Azure Synapse Analytics によって機能する) Apache Spark プールをアタッチする (プレビュー)
+# <a name="data-wrangling-with-apache-spark-pools-preview"></a>Apache Spark プールを使用したデータ ラングリング (プレビュー) 
 
-この記事では、[Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) を使用している Apache Spark プールを [Azure Machine Learning ワークスペース](concept-workspace.md)にアタッチする方法について説明します。これにより、Azure Machine Learning ワークスペースを起動し、データ ラングリングを大規模に実行することができます。 
+この記事では 、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) を使用して Jupyter Notebook で [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) を利用した専用 Synapse セッション内で、データ ラングリング タスクを対話的に実行する方法について説明します。 
 
-この記事には、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) を使用して、Jupyter Notebook の専用 Synapse セッション内で対話形式でデータ ラングリング タスクを実行するためのガイダンスが含まれています。 Azure Machine Learning パイプラインを使用する場合は、「[機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)](how-to-use-synapsesparkstep.md)」を参照してください。
+Azure Machine Learning パイプラインを使用する場合は、「[機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)](how-to-use-synapsesparkstep.md)」を参照してください。
 
-Synapse ワークスペースで Azure Synapse Analytics を使用する方法のガイダンスについては、[「Azure Synapse Analytics の概要」シリーズ](../synapse-analytics/get-started.md)に関するページを参照してください。
+Synapse ワークスペースで Azure Synapse Analytics を使用する方法のガイダンスについては、[Azure Synapse Analytics の概要シリーズ](../synapse-analytics/get-started.md)に関するページを参照してください。
 
 >[!IMPORTANT]
 > Azure Machine Learning と Azure Synapse Analytics の統合はプレビュー段階です。 この記事で紹介している機能には、[試験的](/python/api/overview/azure/ml/#stable-vs-experimental)なプレビュー機能を含んだ `azureml-synapse` パッケージが採用されており、それらは随時変更される可能性があります。
 
-## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure Machine Learning と Azure Synapse Analytics の統合 (プレビュー)
+## <a name="azure-machine-learning-and-azure-synapse-analytics-integration"></a>Azure Machine Learning と Azure Synapse Analytics の統合
 
 Azure Synapse Analytics と Azure Machine Learning の統合 (プレビュー) によって、Azure Synapse によってサポートされる Apache Spark プールをアタッチし、インタラクティブなデータ探索とデータ準備を行うことができます。 この統合により、大規模なデータ ラングリングを行うための専用のコンピューティングが得られ、機械学習モデルのトレーニングにも使用する Python ノートブック内からそのすべてを利用することができます。
 
@@ -41,7 +41,7 @@ Azure Synapse Analytics と Azure Machine Learning の統合 (プレビュー) �
 
 * [Azure portal で Azure Synapse Analytics ワークスペースを作成する](../synapse-analytics/quickstart-create-workspace.md)。
 
-* [Azure portal、Web ツール、Synapse Studio のいずれかを使用して Apache Spark プールを作成](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)します
+* [Azure portal、Web ツール、または Synapse Studio を使用して Apache Spark プールを作成します](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)。
 
 * [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md#create)を使用します。 
 
@@ -51,91 +51,15 @@ Azure Synapse Analytics と Azure Machine Learning の統合 (プレビュー) �
   pip install azureml-synapse
   ```
 
-* [Azure Machine Learning ワークスペースと Azure Synapse Analytics ワークスペースをリンクします](how-to-link-synapse-ml-workspaces.md)。
+* [Azure Machine Learning Python SDK](how-to-link-synapse-ml-workspaces.md#link-sdk) または [Azure Machine Learning スタジオ](how-to-link-synapse-ml-workspaces.md#link-studio)を使用して Azure Machine Learning ワークスペースと Azure Synapse Analytics ワークスペースをリンクさせます
 
-## <a name="get-an-existing-linked-service"></a>既にあるリンクされたサービスを取得する
-データ ラングリング専用のコンピューティングをアタッチする前に、Azure Synapse Analytics ワークスペースにリンクされている ML ワークスペースが必要です。これは、リンクされたサービスと呼ばれます。 
-
-既にあるリンクされたサービスを取得して使用するためには、Azure Synapse Analytics ワークスペースに対する **ユーザーまたは共同作成者** のアクセス許可が必要です。
-
-Machine Learning ワークスペースに関連付けられているリンクされたサービスをすべて表示します。 
-
-```python
-from azureml.core import LinkedService
-
-LinkedService.list(ws)
-```
-
-この例では、[`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) メソッドを使用して、既にあるリンクされたサービス (`synapselink1`) をワークスペース (`ws`) から取得します。
-```python
-from azureml.core import LinkedService
-
-linked_service = LinkedService.get(ws, 'synapselink1')
-```
- 
-## <a name="attach-synapse-spark-pool-as-a-compute"></a>Synapse Spark プールをコンピューティングとしてアタッチする
-
-リンクされたサービスを取得したら、データ ラングリング タスク専用のコンピューティング リソースとして Synapse Apache Spark プールをアタッチします。 
-
-Apache Spark プールは、次の手段でアタッチできます。
-* Azure Machine Learning Studio
-* [Azure Resource Manager (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
-* Azure Machine Learning Python SDK 
-
-### <a name="attach-a-pool-via-the-studio"></a>スタジオを使用してプールをアタッチする
-次の手順に従います。 
-
-1. [Azure Machine Learning スタジオ](https://ml.azure.com/)にサインインします。
-1. 左ペインの **[管理]** セクションにある **[リンクされたサービス]** を選択します。
-1. Synapse ワークスペースを選択します。
-1. 左上の **[Attached Spark pools]\(アタッチされた Spark プール\)** を選択します。 
-1. **[接続]** を選択します。 
-1. Apache Spark プールを一覧から選択し、名前を入力します。  
-    1. コンピューティングにアタッチできる使用可能な Synapse Spark プールが、この一覧によって認識されます。 
-    1. 新しい Synapse Spark プールを作成するには、[Synapse Studio を使用して Apache Spark プールを作成する](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)方法に関するページを参照してください。
-1. **[Attach selected]\(選択されたアタッチ\)** を選択します。 
-
-### <a name="attach-a-pool-with-the-python-sdk"></a>Python SDK を使用してプールをアタッチする
-
-**Python SDK** を使用して Apache Spark プールをアタッチすることもできます。 
-
-以下のコードは、次の処理を実行します。 
-1. 以下を使用して [`SynapseCompute`](/python/api/azureml-core/azureml.core.compute.synapsecompute) を構成します。
-
-   1. 前の手順で作成または取得した [`LinkedService`](/python/api/azureml-core/azureml.core.linkedservice)、`linked_service`。 
-   1. アタッチするコンピューティング先の種類 (`SynapseSpark`)
-   1. Apache Spark プールの名前。 これは、Azure Synapse Analytics ワークスペースにある既存の Apache Spark プールと一致している必要があります。
-   
-1. 次の情報を渡して、機械学習の [`ComputeTarget`](/python/api/azureml-core/azureml.core.computetarget) を作成します。 
-   1. 使用する Machine Learning ワークスペース (`ws`)
-   1. Azure Machine Learning ワークスペース内でコンピューティングを参照する場合の名前。 
-   1. Synapse コンピューティングを構成するときに指定した attach_configuration。
-       1. ComputeTarget.attach() の呼び出しは非同期であるため、このサンプルは、呼び出しが完了するまでブロック状態になります。
-
-```python
-from azureml.core.compute import SynapseCompute, ComputeTarget
-
-attach_config = SynapseCompute.attach_configuration(linked_service, #Linked synapse workspace alias
-                                                    type='SynapseSpark', #Type of assets to attach
-                                                    pool_name=synapse_spark_pool_name) #Name of Synapse spark pool 
-
-synapse_compute = ComputeTarget.attach(workspace= ws,                
-                                       name= synapse_compute_name, 
-                                       attach_configuration= attach_config
-                                      )
-
-synapse_compute.wait_for_completion()
-```
-
-Apache Spark プールがアタッチされていることを確認します。
-
-```python
-ws.compute_targets['Synapse Spark pool alias']
-```
+* [Synapse Spark プール](how-to-link-synapse-ml-workspaces.md#attach-synapse-spark-pool-as-a-compute)をコンピューティング先としてアタッチします。
 
 ## <a name="launch-synapse-spark-pool-for-data-wrangling-tasks"></a>データ ラングリング タスク用に Synapse Spark プールを起動する
 
-Apache Spark プールを使用したデータ準備を開始するには、Apache Spark プールの名前を指定します。
+Apache Spark プールを使用したデータ準備を開始するには、Apache Spark Synapse のコンピューティング名を指定します。 この名前は、 **[アタッチされたコンピューティング]** タブの下の Azure Machine Learning スタジオ を使用して確認できます。 
+
+![get attached compute name](media/how-to-data-prep-synapse-spark-pool/attached-compute.png)
 
 > [!IMPORTANT]
 > 引き続き Apache Spark プールを使用するためには、データ ラングリング タスクで使用するコンピューティング リソースを `%synapse` (1 行のコードの場合) および `%%synapse` (複数行の場合) で指定する必要があります。 
@@ -321,9 +245,9 @@ input1 = train_ds.as_mount()
 
 ## <a name="use-a-scriptrunconfig-to-submit-an-experiment-run-to-a-synapse-spark-pool"></a>`ScriptRunConfig` を使用して Synapse Spark プールに実験の実行を送信する
 
-データ ラングリング タスクを自動化して作成する準備ができたら、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) オブジェクトを使用して、[先ほどアタッチした Synapse Spark プール](#attach-a-pool-with-the-python-sdk)に実験の実行を送信できます。  
+データ ラングリング タスクを自動化して作成する準備ができたら、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) オブジェクトを使用して、[アタッチした Synapse Spark プール](how-to-link-synapse-ml-workspaces.md#attach-a-pool-with-the-python-sdk)に実験の実行を送信できます。  
 
-同様に、Azure Machine Learning パイプラインがある場合は、[SynapseSparkStep を使用して、パイプラインのデータ準備手順のコンピューティング先として Synapse Spark プールを指定](how-to-use-synapsesparkstep.md)できます。
+同様に、Azure Machine Learning パイプラインがある場合は、[SynapseSparkStep を使用して、パイプラインのデータ準備手順のコンピューティング先](how-to-use-synapsesparkstep.md)として Synapse Spark プールを指定できます。
 
 データを Synapse Spark プールで使用できるようにする方法は、データセットの種類によって異なります。 
 
@@ -390,4 +314,4 @@ run
 ## <a name="next-steps"></a>次のステップ
 
 * [モデルをトレーニングします](how-to-set-up-training-targets.md)。
-* [Azure Machine Learning データセットをトレーニングする](how-to-train-with-datasets.md)
+* [Azure Machine Learning データセットをトレーニングします](how-to-train-with-datasets.md)。

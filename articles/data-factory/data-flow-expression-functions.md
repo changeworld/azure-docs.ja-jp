@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2021
-ms.openlocfilehash: 313cca7a0db81502ac68a2cb7e9981f712a82548
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/01/2021
+ms.openlocfilehash: deabcc9170e8b025e91dace47ce9e6a70bd385bb
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933113"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809258"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式
 
@@ -175,12 +175,6 @@ ___
 * ``isNull(concatWS(null, 'dataflow', 'is', 'awesome')) -> true``  
 * ``concatWS(' is ', 'dataflow', 'awesome') -> 'dataflow is awesome'``  
 ___
-### <code>contains</code>
-<code><b>contains(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => boolean</b></code><br/><br/>
-指定された配列内のいずれかの要素が、指定された述語で true と評価される場合に true を返します。 contains は、述語関数の 1 つの要素への参照を #item として予期します。  
-* ``contains([1, 2, 3, 4], #item == 3) -> true``  
-* ``contains([1, 2, 3, 4], #item > 5) -> false``  
-___
 ### <code>cos</code>
 <code><b>cos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 コサイン値を計算します。  
@@ -273,7 +267,7 @@ ___
 ### <code>expr</code>
 <code><b>expr(<i>&lt;expr&gt;</i> : string) => any</b></code><br/><br/>
 結果は文字列からの式です。 これは、非リテラル形式でこの式を記述することと同じです。 これは、文字列表現としてパラメーターを渡すために使用できます。
-*   expr(‘price * discount’) => any ___
+*    expr('price * discount') => any ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 数値の階乗を計算します。  
@@ -351,12 +345,6 @@ ___
 * ``iifNull(null, 20, 40) -> 20``  
 * ``iifNull('azure', 'data', 'factory') -> 'factory'``  
 * ``iifNull(null, 'data', 'factory') -> 'data'``  
-___
-### <code>in</code>
-<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
-項目が配列内にあるかどうかをチェックします。  
-* ``in([10, 20, 30], 10) -> true``  
-* ``in(['good', 'kid'], 'bad') -> false``  
 ___
 ### <code>initCap</code>
 <code><b>initCap(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
@@ -570,7 +558,7 @@ ___
 ### <code>normalize</code>
 <code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/>
 文字列値を個別にアクセント記号が付いた Unicode 文字に正規化します。  
-* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``  
+* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``
 ___
 ### <code>not</code>
 <code><b>not(<i>&lt;value1&gt;</i> : boolean) => boolean</b></code><br/><br/>
@@ -898,16 +886,19 @@ ___
 条件に基づいて、2 つの列の標本共分散を取得します。  
 * ``covarianceSampleIf(region == 'West', sales, profit)``  
 ___
+
 ### <code>first</code>
 <code><b>first(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
 列グループの最初の値を取得します。 2 番目のパラメーター ignoreNulls を省略すると、false であると見なされます。  
 * ``first(sales)``  
 * ``first(sales, false)``  
 ___
+
 ### <code>isDistinct</code>
 <code><b>isDistinct(<i>&lt;value1&gt;</i> : any , <i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
-列または列セットが個別かどうかを検出します。 null は個別の値としてカウントされません。*   ``isDistinct(custId, custName) => boolean``
-*   ___
+列または列セットが個別かどうかを検出します。 null は個別の値としてカウントされません。*    ``isDistinct(custId, custName) => boolean``
+___
+
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 列の尖度を取得します。  
@@ -1061,6 +1052,12 @@ ___
 * ``['Seattle', 'Washington'][1]``
 * ``'Washington'``
 ___
+### <code>contains</code>
+<code><b>contains(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => boolean</b></code><br/><br/>
+指定された配列内のいずれかの要素が、指定された述語で true と評価される場合に true を返します。 contains は、述語関数の 1 つの要素への参照を #item として予期します。  
+* ``contains([1, 2, 3, 4], #item == 3) -> true``  
+* ``contains([1, 2, 3, 4], #item > 5) -> false``  
+___
 ### <code>filter</code>
 <code><b>filter(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => array</b></code><br/><br/>
 指定された述語を満たさない要素を配列から除外します。 filter は、述語関数の 1 つの要素への参照を #item として予期します。  
@@ -1100,14 +1097,19 @@ ___
       )
     ``  
 ___
+### <code>in</code>
+<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/> 項目が配列内にあるかどうかをチェックします。is in the array.  
+* ``in([10, 20, 30], 10) -> true``  
+* ``in(['good', 'kid'], 'bad') -> false``  
+___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/> 指定された式を使用して、配列の各要素を新しい要素にマップします。 map は、式関数の 1 つの要素への参照を #item として予期します。nction as #item.  
 * ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
 ___
 ### <code>mapIf</code>
-<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/> 配列を、同じ長さまたはそれより短い長さの別の配列に条件付きでマップします。 値は、structTypes など、任意のデータ型とすることができます。 配列内のアイテムを #item として、現在のインデックスを #index としてアドレス指定できるマッピング関数を取ります。 深く入れ子になったマップの場合、#item_[n](#item_1, #index_1...) という表記を使用して親マップを参照できます。t maps using the ``#item_[n](#item_1,...)`` notation.
-*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+<code><b>mapIf (<i>\<value1\></i> : array, <i>\<value2\></i> : binaryfunction, \<value3\>: binaryFunction) => any</b></code><br/><br/> 配列を、同じ長さまたはそれより短い長さの別の配列に条件付きでマップします。 値は、structTypes など、任意のデータ型とすることができます。 配列内のアイテムを #item として、現在のインデックスを #index としてアドレス指定できるマッピング関数を取ります。 深く入れ子になったマップの場合、#item_[n](#item_1, #index_1...) という表記を使用して親マップを参照できます。t maps using the ``#item_[n](#item_1,...)`` notation.
+*    ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
 * ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'CAKE']``
 ___
 ### <code>mapIndex</code>
@@ -1115,8 +1117,8 @@ ___
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
 ___
 ### <code>mapLoop</code>
-<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/> 1 から length までループさせてその長さの配列を作成します。 これは、配列内のインデックスを #index としてアドレス指定できるマッピング関数を取ります。 深く入れ子になったマップの場合、#index_n(#index_1, #index_2...) という表記を使用して親マップを参照できます。_2...) notation.
-*   ``mapLoop(3, #index * 10) -> [10, 20, 30]``
+<code><b>mapLoop(<i>\<value1\></i> : integer, <i>\<value2\></i> : unaryfunction) => any</b></code><br/><br/> 1 から length までループさせてその長さの配列を作成します。 これは、配列内のインデックスを #index としてアドレス指定できるマッピング関数を取ります。 深く入れ子になったマップの場合、#index_n(#index_1, #index_2...) という表記を使用して親マップを参照できます。_2...) notation.
+*    ``mapLoop(3, #index * 10) -> [10, 20, 30]``
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/> 配列内の要素を累積します。 reduce は、最初の式関数内のアキュムレータと 1 つの要素への参照を #acc および #item として予期し、結果の値を 2 番目の式関数に使用される #result として予期します。ession function.  
@@ -1149,6 +1151,12 @@ ___
   )
 ``  
 ___
+### <code>in</code>
+<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
+Checks if an item is in the array.  
+* ``in([10, 20, 30], 10) -> true``  
+* ``in(['good', 'kid'], 'bad') -> false``  
+___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>
 Maps each element of the array to a new element using the provided expression. Map expects a reference to one element in the expression function as #item.  
@@ -1156,9 +1164,9 @@ Maps each element of the array to a new element using the provided expression. M
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
 ___
 ### <code>mapIf</code>
-<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/>
+<code><b>mapIf (<i>\<value1\></i> : array, <i>\<value2\></i> : binaryfunction, \<value3\>: binaryFunction) => any</b></code><br/><br/>
 Conditionally maps an array to another array of same or smaller length. The values can be of any datatype including structTypes. It takes a mapping function where you can address the item in the array as #item and current index as #index. For deeply nested maps you can refer to the parent maps using the ``#item_[n](#item_1, #index_1...)`` notation.
-*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+*    ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
 * ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'CAKE']``
 ___
 ### <code>mapIndex</code>
@@ -1167,9 +1175,9 @@ Maps each element of the array to a new element using the provided expression. M
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
 ___
 ### <code>mapLoop</code>
-<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/>
+<code><b>mapLoop(<i>\<value1\></i> : integer, <i>\<value2\></i> : unaryfunction) => any</b></code><br/><br/>
 Loops through from 1 to length to create an array of that length. It takes a mapping function where you can address the index in the array as #index. For deeply nested maps you can refer to the parent maps using the #index_n(#index_1, #index_2...) notation.
-*   ``mapLoop(3, #index * 10) -> [10, 20, 30]``
+*    ``mapLoop(3, #index * 10) -> [10, 20, 30]``
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
@@ -1226,75 +1234,75 @@ ___
 変換関数は、データの変換とデータ型のテストに使用されます
 
 ### <code>isBitSet</code>
-<code><b>isBitSet (<value1> : array, <value2>:integer ) => boolean</b></code><br/><br/>
+<code><b>isBitSet (<i><i>\<value1\></i></i> : array, <i>\<value2\></i>:integer ) => boolean</b></code><br/><br/>
 ビット位置がこのビットセットに設定されているかどうかを確認します。* ``isBitSet(toBitSet([10, 32, 98]), 10) => true``
 ___
 ### <code>setBitSet</code>
-<code><b>setBitSet (<value1> : array, <value2>:array) => array</b></code><br/><br/>
+<code><b>setBitSet (<i>\<value1\></i>: array, <i>\<value2\></i>:array) => array</b></code><br/><br/>
 このビットセットにビット位置を設定します。* ``setBitSet(toBitSet([10, 32]), [98]) => [4294968320L, 17179869184L]``
 ___  
 ### <code>isBoolean</code>
-<code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
+<code><b>isBoolean(<i>\<value1\></i>: string) => boolean</b></code><br/><br/>
 文字列値が ``toBoolean()`` の規則に従ったブール値であるかどうかを確認します 
 * ``isBoolean('true') -> true``
 * ``isBoolean('no') -> true``
 * ``isBoolean('microsoft') -> false``
 ___
 ### <code>isByte</code>
-<code><b>isByte(<value1> : string) => boolean</b></code> <br/><br/>
+<code><b>isByte(<i>\<value1\></i> : string) => boolean</b></code> <br/><br/>
 文字列値が ``toByte()`` の規則に従った省略可能な形式が指定されたバイト値であるかどうかを確認します 
 * ``isByte('123') -> true``
 * ``isByte('chocolate') -> false``
 ___
 ### <code>isDate</code>
-<code><b>isDate (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isDate (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
 入力日付文字列が、省略可能な入力日付形式を使用した日付であるかどうかを確認します。 使用可能な形式については、Java の SimpleDateFormat を参照してください。 入力日付形式が省略されている場合、既定の形式は ``yyyy-[M]M-[d]d`` になります。 許容される形式は ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]`` です 
 * ``isDate('2012-8-18') -> true``
 * ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
 ___
 ### <code>isShort</code>
-<code><b>isShort (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isShort (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
 文字列値が ``toShort()`` の規則に従った省略可能な形式が指定された 短整数型値であることを確認します 
 * ``isShort('123') -> true``
 * ``isShort('$123' -> '$###') -> true``
 * ``isShort('microsoft') -> false``
 ___
 ### <code>isInteger</code>
-<code><b>isInteger (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isInteger (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
 文字列値が ``toInteger()`` の規則に従った省略可能な形式が指定された整数値であることを確認します 
 * ``isInteger('123') -> true``
 * ``isInteger('$123' -> '$###') -> true``
 * ``isInteger('microsoft') -> false``
 ___
 ### <code>isLong</code>
-<code><b>isLong (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isLong (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
 文字列値が ``toLong()`` の規則に従った省略可能な形式が指定された 長整数型値であることを確認します 
 * ``isLong('123') -> true``
 * ``isLong('$123' -> '$###') -> true``
 * ``isLong('gunchus') -> false``
 ___
 ### <code>isFloat</code>
-<code><b>isFloat (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isFloat (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
 文字列値が ``toFloat()`` の規則に従った省略可能な形式が指定された浮動小数点値であることを確認します 
 * ``isFloat('123') -> true``
 * ``isFloat('$123.45' -> '$###.00') -> true``
 * ``isFloat('icecream') -> false``
 ___
 ### <code>isDouble</code>
-<code><b>isDouble (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isDouble (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
 文字列値が ``toDouble()`` の規則に従った省略可能な形式が指定された倍精度値であることを確認します 
 * ``isDouble('123') -> true``
 * ``isDouble('$123.45' -> '$###.00') -> true``
 * ``isDouble('icecream') -> false``
 ___
 ### <code>isDecimal</code>
-<code><b>isDecimal (<value1> : string) => boolean</b></code><br/><br/>
+<code><b>isDecimal (<i>\<value1\></i> : string) => boolean</b></code><br/><br/>
 文字列値が ``toDecimal()`` の規則に従った省略可能な形式が指定された 10 進数値であることを確認します 
 * ``isDecimal('123.45') -> true``
 * ``isDecimal('12/12/2000') -> false``
 ___
 ### <code>isTimestamp</code>
-<code><b>isTimestamp (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isTimestamp (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
 入力日付文字列が、省略可能な入力タイムスタンプ形式を使用したタイムスタンプであるかどうかを確認します。 使用可能な形式については、Java の SimpleDateFormat を参照してください。 タイムスタンプを省略すると、既定のパターンの ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` が使用されます。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 タイムスタンプはミリ秒の精度で 999 の値までサポートされます。使用可能な形式については、Java の SimpleDateFormat を参照してください。
 * ``isTimestamp('2016-12-31 00:12:00') -> true``
 * ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
@@ -1467,13 +1475,13 @@ ___
 * ``hasPath('grandpa.parent.child') => boolean``
 ___
 ### <code>hex</code>
-<code><b>hex(<value1>: binary) => string</b></code><br/><br/>
+<code><b>hex(<i>\<value1\></i>: binary) => string</b></code><br/><br/>
 バイナリ値の 16 進数文字列表記を返します * ``hex(toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])) -> '1fadbe'``
 ___
 ### <code>unhex</code>
-<code><b>unhex(<value1>: string) => binary</b></code><br/><br/>
-バイナリ値を 16 進数文字列表記から数値に変換します。 これは、文字列からバイナリ表記に変換するために、sha2、md5 と組み合わせて使用できます *   ``unhex('1fadbe') -> toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])``
-*   ``unhex(md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))) -> toBinary([toByte(0x4c),toByte(0xe8),toByte(0xa8),toByte(0x80),toByte(0xbd),toByte(0x62),toByte(0x1a),toByte(0x1f),toByte(0xfa),toByte(0xd0),toByte(0xbc),toByte(0xa9),toByte(0x05),toByte(0xe1),toByte(0xbc),toByte(0x5a)])``
+<code><b>unhex(<i>\<value1\></i>: string) => binary</b></code><br/><br/>
+バイナリ値を 16 進数文字列表記から数値に変換します。 これは、文字列からバイナリ表記に変換するために、sha2、md5 と組み合わせて使用できます *    ``unhex('1fadbe') -> toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])``
+*    ``unhex(md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))) -> toBinary([toByte(0x4c),toByte(0xe8),toByte(0xa8),toByte(0x80),toByte(0xbd),toByte(0x62),toByte(0x1a),toByte(0x1f),toByte(0xfa),toByte(0xd0),toByte(0xbc),toByte(0xa9),toByte(0x05),toByte(0xe1),toByte(0xbc),toByte(0x5a)])``
 
 ## <a name="window-functions"></a>ウィンドウ関数
 次の関数は、ウィンドウ変換でのみ使用できます。

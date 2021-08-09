@@ -1,6 +1,6 @@
 ---
 title: 追加専用のテーブルを作成して使用する
-description: Azure SQL Database で追加専用の台帳テーブルを作成して使用する方法
+description: Azure SQL Database で追加専用の台帳テーブルを作成して使用する方法を説明します。
 ms.custom: ''
 ms.date: 05/25/2021
 ms.service: sql-database
@@ -9,43 +9,43 @@ ms.reviewer: vanto
 ms.topic: how-to
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 8b2007b473432a941d617f83cd3cc0a3bd2ce099
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f433e56140a199cdb872bc733343a8cf88c818cb
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388311"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076404"
 ---
 # <a name="create-and-use-append-only-ledger-tables"></a>追加専用のテーブルを作成して使用する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database の台帳は **パブリック プレビュー** 段階にあります。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、米国中西部で使用できます。
 
-この記事では、Azure SQL Database で[追加専用の台帳テーブル](ledger-append-only-ledger-tables.md)を作成する方法、追加専用の台帳テーブルに値を挿入する方法、データの更新を試みる方法、および台帳ビューを使用して結果を表示する方法について説明します。 ここでは、ある施設のカード キー アクセス システムの例を使用します。これは、追加専用システムのパターンです。 この例では、追加専用の台帳テーブルとそれに対応する台帳ビューのリレーションシップを実際に見てみましょう。
+この記事では、Azure SQL Database で[追加専用の台帳テーブル](ledger-append-only-ledger-tables.md)を作成する方法を示します。 次に、追加専用の台帳テーブルに値を挿入した後、データを更新してみます。 最後に、台帳ビューを使用して結果を表示します。 ここでは、ある施設のカード キー アクセス システムの例を使用します。これは、追加専用システムのパターンです。 この例では、追加専用の台帳テーブルとそれに対応する台帳ビューのリレーションシップを実際に見てみましょう。
 
 詳細については、[追加専用の台帳テーブル](ledger-append-only-ledger-tables.md)に関するページを参照してください。
 
-## <a name="prerequisite"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
-- 台帳を有効にした Azure SQL Database を用意します。 Azure SQL Database をまだ作成していない場合は、[クイックスタート: 台帳を有効にした Azure SQL Database の作成](ledger-create-a-single-database-with-ledger-enabled.md)に関する記事をご覧ください。
-- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
+- 台帳が有効になっている Azure SQL Database。 SQL Database でデータベースをまだ作成していない場合は、「[クイックスタート: Azure SQL Database で台帳が有効化されたデータベースを作成する](ledger-create-a-single-database-with-ledger-enabled.md)」を参照してください。
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)。
 
-## <a name="creating-an-append-only-ledger-table"></a>追加専用の台帳テーブルを作成する
+## <a name="create-an-append-only-ledger-table"></a>追加専用の台帳テーブルを作成する
 
-次のスキーマを持つ `KeyCardEvents` テーブルを作成します。  
+次のスキーマを持つ `KeyCardEvents` テーブルを作成します。
 
 | 列名 | データ型 | 説明 |
 |--|--|--|
-| EmployeeID | INT | 建物にアクセスする従業員の一意の ID。 |
-| AccessOperationDescription | nvarchar (MAX) | 従業員のアクセス操作。 |
+| EmployeeID | INT | 建物にアクセスする従業員の一意の ID |
+| AccessOperationDescription | nvarchar (MAX) | 従業員のアクセス操作 |
 | Timestamp | datetime2 | 従業員が建物にアクセスした日時 |
 
 > [!IMPORTANT]
-> 追加専用の台帳テーブルを作成するには、**ENABLE LEDGER** 権限が必要です。 台帳テーブルに関連するアクセス許可の詳細については、[アクセス許可](/sql/relational-databases/security/permissions-database-engine#asdbpermissions)に関するページを参照してください。 
+> 追加専用の台帳テーブルを作成するには、**ENABLE LEDGER** 権限が必要です。 台帳テーブルに関連する権限の詳細については、[権限](/sql/relational-databases/security/permissions-database-engine#asdbpermissions)に関する記事を参照してください。 
 
-1. [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) のいずれかを使用して、新しいスキーマと `[AccessControl].[KeyCardEvents]` という名前のテーブルを作成します。
+1. [SQL Server Management Studio ](/sql/ssms/download-sql-server-management-studio-ssms) または [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) を使用して、新しいスキーマと `[AccessControl].[KeyCardEvents]` という名前のテーブルを作成します。
 
    ```sql
    CREATE SCHEMA [AccessControl] 
@@ -69,7 +69,7 @@ ms.locfileid: "110388311"
    VALUES ('43869', 'Building42', '2020-05-02T19:58:47.1234567')
    ```
 
-1. [追加専用の台帳テーブル](ledger-append-only-ledger-tables.md)に追加された [GENERATED ALWAYS](/sql/t-sql/statements/create-table-transact-sql#generate-always-columns) 列を指定して、KeyCardEvents テーブルの内容を表示します。
+1. KeyCardEvents テーブルの内容を表示し、[追加専用の台帳テーブル](ledger-append-only-ledger-tables.md)に追加された [GENERATED ALWAYS](/sql/t-sql/statements/create-table-transact-sql#generate-always-columns) 列を指定します。
 
    ```sql
    SELECT *
@@ -78,7 +78,7 @@ ms.locfileid: "110388311"
    FROM [AccessControl].[KeyCardEvents]
    ```
 
-   :::image type="content" source="media/ledger/append-only-how-to-keycardevent-table.png" alt-text="KeyCardEvents テーブルに対してクエリを実行した際の結果":::
+   :::image type="content" source="media/ledger/append-only-how-to-keycardevent-table.png" alt-text="KeyCardEvents テーブルのクエリの結果を示すスクリーンショット。":::
 
 1. `EmployeeID` を `43869` から `34184.` に変更して、`KeyCardEvents` テーブルの更新を試みる
 
@@ -88,7 +88,7 @@ ms.locfileid: "110388311"
 
    追加専用台帳テーブルに対する更新が許可されていないことを示すエラー メッセージが表示されます。
 
-   :::image type="content" source="media/ledger/append-only-how-to-1.png" alt-text="追加専用であることを示すエラー メッセージ":::
+   :::image type="content" source="media/ledger/append-only-how-to-1.png" alt-text="追加専用のエラー メッセージを示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次の手順
 
@@ -97,5 +97,5 @@ ms.locfileid: "110388311"
 - [追加専用台帳テーブル](ledger-append-only-ledger-tables.md) 
 - [更新可能な台帳テーブル](ledger-updatable-ledger-tables.md)
 - [更新可能な台帳テーブルを作成して使用する](ledger-how-to-updatable-ledger-tables.md)
-- [Azure Confidential Ledger (ACL) に格納されているダイジェストにアクセスする方法](ledger-how-to-access-acl-digest.md)
-- [台帳テーブルを検証して改ざんを検出する方法](ledger-verify-database.md)
+- [Azure Confidential Ledger (ACL) に格納されているダイジェストにアクセスする](ledger-how-to-access-acl-digest.md)
+- [台帳テーブルを検証して改ざんを検出する](ledger-verify-database.md)

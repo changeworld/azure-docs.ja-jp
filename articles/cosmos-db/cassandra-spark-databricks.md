@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 0a83dd143ae626108fdf8d2645b8cc368a3f3e05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ad08f613fc6f7b712c5443ad935c40c97bfdba4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516568"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464897"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Databricks から Azure Cosmos DB Cassandra API のデータにアクセスする
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -48,9 +48,12 @@ ms.locfileid: "100516568"
 
 * **Cassandra Spark コネクタ:** - Cassandra コネクタは、Spark で Azure Cosmos DB Cassandra API と統合するために、Azure Databricks クラスターに接続する必要があります。 クラスターを接続する方法は以下の通りです。
 
-  * Databricks ランタイム バージョンと Spark のバージョンを確認します。 次に Cassandra Spark コネクタと互換性がある [Maven 座標](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector)を探してから、クラスターに接続します。 コネクタ ライブラリのクラスタへの接続については、「[Maven パッケージまたは Spark パッケージをアップロードする」](https://docs.databricks.com/user-guide/libraries.html)」の記事を参照してください。 たとえば、「Databricks Runtime version 4.3」、「Spark 2.3.1」および「Scala 2.11」の Maven 座標は `spark-cassandra-connector_2.11-2.3.1` です。
+  * Databricks ランタイム バージョンと Spark のバージョンを確認します。 次に Cassandra Spark コネクタと互換性がある [Maven 座標](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector)を探してから、クラスターに接続します。 コネクタ ライブラリのクラスタへの接続については、「[Maven パッケージまたは Spark パッケージをアップロードする」](https://docs.databricks.com/user-guide/libraries.html)」の記事を参照してください。 Spark 3.0 をサポートする Databricks ランタイム バージョン 7.5 を選択することをお勧めします。 Apache Spark Cassandra コネクタをクラスターに追加するには、 **[Libraries]\(ライブラリ\)**  >  **[Install New]\(新規インストール\)**  >  **[Maven]** を選択し、Maven 座標に `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` を追加します。 Spark 2.x を使用する場合は、Spark バージョン 2.4.5 を使用した環境で、maven 座標 `com.datastax.spark:spark-cassandra-connector_2.11:2.4.3` で spark コネクタを使用することをお勧めします。
 
-* **Azure Cosmos DB Cassandra API 固有のライブラリ:** - Cassandra Spark コネクタから Azure Cosmos DB Cassandra api への再試行ポリシーの構成では、カスタムの接続ファクトリが必要です。 ライブラリをクラスタに接続するために、`com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[ の Maven 座標](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)を追加します。
+* **Azure Cosmos DB Cassandra API 固有のライブラリ:** - Spark 2.x を使用している場合は、Cassandra Spark コネクタから Azure Cosmos DB Cassandra api への再試行ポリシーの構成では、カスタムの接続ファクトリが必要です。 ライブラリをクラスタに接続するために、`com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.2.0`[ の Maven 座標](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.2.0/jar)を追加します。
+
+> [!NOTE]
+> Spark 3.0 以上を使用している場合は、上記の Cosmos DB Cassandra API 固有のライブラリをインストールする必要はありません。
 
 ## <a name="sample-notebooks"></a>サンプル ノートブック
 

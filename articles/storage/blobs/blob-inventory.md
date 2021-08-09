@@ -2,24 +2,24 @@
 title: Azure Storage インベントリを使用して BLOB データを管理する (プレビュー)
 description: Azure Storage インベントリは、ストレージ アカウント内のすべての BLOB データの概要を把握するのに役立つツールです。
 services: storage
-author: twooley
+author: normesta
 ms.service: storage
 ms.date: 04/01/2021
 ms.topic: conceptual
-ms.author: twooley
+ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 33d50d1a6b5e84d178b522851795bcc42f5fc169
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 14092e4d6ea63c96b653aaf09160e69a8ad30299
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277268"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753775"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Azure Storage BLOB インベントリを使用して BLOB データを管理する (プレビュー)
 
-Azure Storage BLOB インベントリ機能により、ストレージ アカウント内の BLOB データの概要が提供されます。 インベントリ レポートを使用して、合計データ サイズ、経過期間、暗号化の状態などを把握します。 このレポートには、ビジネス要件とコンプライアンス要件に関するデータの概要が示されます。 有効にすると、インベントリ レポートが毎日自動的に作成されます。
+Azure Storage BLOB インベントリ機能により、ストレージ アカウント内の BLOB データの概要が提供されます。 インベントリ レポートを使用して、合計データ サイズ、経過期間、アクセス層などを把握します。 このレポートには、ビジネス要件とコンプライアンス要件に関するデータの概要が示されます。 有効にすると、インベントリ レポートが毎日自動的に作成されます。
 
 ## <a name="availability"></a>可用性
 
@@ -30,14 +30,7 @@ BLOB インベントリは、汎用バージョン 2 (GPv2) と Premium ブロ�
 
 ### <a name="preview-regions"></a>プレビュー リージョン
 
-BLOB インベントリのプレビューは、次のリージョンのストレージ アカウントで使用できます。
-
-- フランス中部
-- カナダ中部
-- カナダ東部
-- 米国東部
-- 米国東部 2
-- 西ヨーロッパ
+BLOB インベントリ プレビューは、米国西部を除くすべてのパブリック リージョンのストレージ アカウントで使用できます。
 
 ### <a name="pricing-and-billing"></a>価格と課金
 

@@ -1,18 +1,18 @@
 ---
 title: 'Bastion を使用したリモート作業: Azure Bastion'
-description: このページでは、COVID-19 の世界的流行により、Azure Bastion を利用してリモートで作業できるようにする方法について説明します。
+description: COVID-19 の世界的流行により、Azure Bastion を利用してリモートで作業できるようにする方法について説明します。
 services: bastion
 author: mialdrid
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 515a6f7175aee23c6f720258b7fdaefe76b3b5d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60709bf337c945d1ece7ecc5453350b0e126b046
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92077951"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110540352"
 ---
 # <a name="working-remotely-using-azure-bastion"></a>Azure Bastion を使用したリモート作業
 

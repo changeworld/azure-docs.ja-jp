@@ -8,31 +8,36 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 04/02/2021
+ms.date: 05/27/2021
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2
-ms.openlocfilehash: 44468f056cb9e13b8384c86fa5858ef1c3edb44b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 5f8f2c1f6d48a5c1b128643258af083b1811570e
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070031"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854632"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 
 
-お使いの Azure Machine Learning のワークスペースに認証を設定する方法について説明します。 お使いの Azure Machine Learning ワークスペースには、多くの場合、__Azure Active Directory__ (Azure AD) を使用して認証されます。 ワークスペースに接続するときに使用できる認証ワークフローには、一般に次の 3 つがあります。
+お使いの Azure Machine Learning のワークスペースに認証を設定する方法について説明します。 お使いの Azure Machine Learning ワークスペースには、多くの場合、__Azure Active Directory__ (Azure AD) を使用して認証されます。 ワークスペースに接続するときに使用できる認証ワークフローには、一般に次の 4 つがあります。
 
 * __対話型__:Azure Active Directory でアカウントを使用して、直接認証するか、認証に使用されるトークンを取得します。 対話型認証は、"_実験および反復開発_" 時に使用します。 対話型認証では、(Web サービスなどの) リソースへのアクセスを、ユーザーごとに制御できます。
 
 * __サービス プリンシパル__: Azure Active Directory でサービス プリンシパル アカウントを作成し、それを使用して認証を行うか、トークンを取得します。 サービス プリンシパルは、ユーザーが操作をせず、サービスに "_自動認証されるプロセス_" が必要な場合に使用します。 たとえば、トレーニング コードが変更されるたびにモデルをトレーニングおよびテストする継続的インテグレーションとデプロイ スクリプトです。
 
+* __Azure CLIセッション:__ アクティブな Azure CLI セッションを使用して認証します。 Azure CLI 認証は、_実験および反復開発_ 中に使用されます。または、事前に認証されたセッションを使用してサービスに対する _認証を自動化するプロセス_ が必要な場合に使用されます。 Python コードに資格情報を格納したり、ユーザーに認証を求めることなく、ローカル ワークステーションの Azure CLI を使用して Azure にログインできます。 同様に、継続的インテグレーションとデプロイ パイプラインの一部として同じスクリプトを再利用しながら、サービス プリンシパル ID で Azure CLI を認証できます。
+
 * __マネージド ID__:Azure Machine Learning SDK を "_Azure 仮想マシンで_" 使用する場合は Azure のマネージド ID を使用できます。 このワークフローでは、Python コードに資格情報を保存したり、ユーザーに認証を求めずに、マネージド ID を使用して VM をワークスペースに接続したりすることが許可されます。 "_モデルのトレーニング時_" に、Azure Machine Learning コンピューティング クラスターをマネージド ID を使用してワークスペースにアクセスするように構成することもできます。
 
-> [!IMPORTANT]
-> Azure ロールベースのアクセス制御 (Azure RBAC) は、使用する認証のワークフローに関係なく、リソースに対して許可するアクセス レベル (認証) の範囲の設定に使用します。 たとえば、管理者または自動化プロセスには、コンピューティング インスタンスを作成するアクセス権は持っていても、それを使用できない場合があり、それを使用できるデータ サイエンティストが、それを削除または作成できない場合があります。 詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」を参照してください。
+Azure ロールベースのアクセス制御 (Azure RBAC) は、使用する認証のワークフローに関係なく、リソースに対して許可するアクセス レベル (認証) の範囲の設定に使用します。 たとえば、管理者または自動化プロセスには、コンピューティング インスタンスを作成するアクセス権は持っていても、それを使用できない場合があり、それを使用できるデータ サイエンティストが、それを削除または作成できない場合があります。 詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」を参照してください。
+
+Azure AD 条件付きアクセスを使用して、各認証ワークフローのワークスペースへのアクセスをさらに制御または制限できます。 たとえば、管理者はマネージド デバイスからのワークスペース アクセスのみを許可できます。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)を作成します。
 * [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス](concept-azure-machine-learning-architecture.md#compute-instance)を使用します。
@@ -392,6 +397,10 @@ ws = Workspace(subscription_id="your-sub-id",
                 auth=msi_auth
                 )
 ```
+
+## <a name="use-conditional-access"></a>条件付きアクセスを使用する
+
+管理者は、ワークスペースにユーザーがサインインするための [サインイン Azure AD 条件付きアクセス ポリシー](../active-directory/conditional-access/overview.md)を適用できます。 たとえば、2 要素認証を要求したり、マネージド デバイスからのサインインのみを許可したりできます。 Azure Machine Learning ワークスペースに条件付きアクセスを具体的に使用するには、機械学習クラウド アプリに[条件付きアクセス ポリシーを割り当てる](../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

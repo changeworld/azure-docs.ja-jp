@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 743a7e7d34457405aa4be42b196dc994506c6587
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 37a0ac51f5cbc7d3eaa98027b5e8568dfcf208ee
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035806"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747709"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -92,18 +92,21 @@ ms.locfileid: "105035806"
 
 Azure AD テナント内のユーザーのアクセスを有効にした後、API Management に Azure AD グループを追加できます。 その結果、Azure AD グループを使用して製品の可視性を制御できます。
 
-外部 Azure AD グループを APIM に追加するには、先に前のセクションを完了しておく必要があります。 また、登録したアプリケーションには、次の手順に従って、`Directory.Read.All` のアクセス許可で Microsoft Graph API へのアクセスを許可する必要があります。 
+外部 Azure AD グループを APIM に追加するには、先に前のセクションを完了しておく必要があります。 既定では、登録したアプリケーションは、必要な `User.Read` 委任されたアクセス許可 Microsoft Graph API に アクセスできます。 また、次の手順に従って、`Directory.Read.All` アプリケーション許可を持つ Microsoft Graph API と Azure Active Directory Graph API にプリケーション アクセス許可を付与する必要があります。 
 
 1. 前のセクションで作成したアプリの登録に戻ります。
-2. **[API のアクセス許可]** を選択し、 **[アクセス許可の追加]** をクリックします。 
-3. **[API アクセス許可の要求]** ペインで、 **[Microsoft API]** タブを選択し、下にスクロールして **[Azure Active Directory Graph]** タイルを選択します。 **[アプリケーションのアクセス許可]** を選択し、 **[ディレクトリ]** を探して、 **[Directory.Read.All]** アクセス許可を選択します。 
-4. ペインの下部にある **[アクセス許可の追加]** をクリックし、 **[Grant admin consent for {tenantname}]\({テナント名} に対する管理者の同意を与える\)** をクリックして、このディレクトリ内のすべてのユーザーに対するアクセスを許可します。 
+2. **[API のアクセス許可]** を選択してから、 **[アクセス許可の追加]** を選択します。 
+3. **[API アクセス許可の要求]** ペインで、 **[Microsoft API]** タブを選択し、 **[Microsoft Graph]** タイルを選択します。 **[アプリケーションのアクセス許可]** を選択 し、**ディレクトリ** を検索します。 **Directory.Read.All** アクセス許可を選択し、ウィンドウの下部にある **[アクセス許可の追加]** を選択します。
+4. **[アクセス許可の追加]** を選択します。 
+5. **[API アクセス許可の要求]** ペインで、 **[Microsoft API]** タブを選択し、下にスクロールして **[Azure Active Directory Graph]** タイルを選択します。 **[アプリケーションのアクセス許可]** を選択 し、**ディレクトリ** を検索します。 **Directory.Read.All** アクセス許可を選択し、ウィンドウの下部にある **[アクセス許可の追加]** を選択します。 
+6. **[Grant admin consent for {tenantname}]\({テナント名} に対する管理者の同意を与える\)** を選択して、このディレクトリ内のすべてのユーザーに対するアクセスを許可します。 
 
 これで、外部の Azure AD グループを、API Management インスタンスの **[グループ]** タブから追加できるようになります。
 
 1. **[グループ]** タブを選択します。
 2. **[AAD グループの追加]** ボタンを選択します。
-    ![[AAD グループの追加] ボタン](./media/api-management-howto-aad/api-management-with-aad008.png)
+
+   ![[A A D グループの追加] ボタン](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. 追加するグループを選択します。
 4. **[選択]** ボタンを押します。
 

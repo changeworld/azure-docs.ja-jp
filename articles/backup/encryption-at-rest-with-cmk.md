@@ -2,13 +2,14 @@
 title: カスタマー マネージド キーを使用したバックアップ データの暗号化
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: bd51be06e707674f3e35b3478d7f99d096be912a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.date: 05/12/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 48268af7ec4874d0e5c9ad3bb79a95307aba15b7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718775"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672169"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -153,6 +154,9 @@ Recovery Services コンテナーのユーザー割り当てマネージド ID �
 1. 完了したら、 **[追加]** を選択して新しいアクセス ポリシーを追加します。
 
 1. **[保存]** を選択して、Azure キー コンテナーのアクセス ポリシーに加えた変更を保存します。
+
+>[!NOTE] 
+>前述のアクセス許可を含む Recovery Services コンテナーに、 _[Key Vault Crypto Officer](../key-vault/general/rbac-guide.md#azure-built-in-roles-for-key-vault-data-plane-operations)_ 役割など、RBAC の役割を割り当てることもできます。<br><br>これらの役割には、上記で説明したもの以外の追加のアクセス許可を含めることができます。
 
 ## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure キー コンテナーで論理的な削除と消去保護を有効にする
 

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ed1bb0a91504c871cd82777f1759d6dca95f1ab
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521443"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903367"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -31,13 +31,15 @@ Core Tools を使用して、ローカル コンピューターで関数を開�
 
 ## <a name="core-tools-versions"></a>Core Tools のバージョン
 
-Azure Functions Core Tools には、3 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、[選択した言語](supported-languages.md)、および必要なサポートのレベルによって異なります。
+Azure Functions Core Tools には 3 つのバージョンがあります。<sup>*</sup>使用するバージョンは、ローカル開発環境、[言語の選択](supported-languages.md)、必要なサポートのレベルによって異なります。
 
 + [**バージョン 3.x および 2.x**](#v2):[Azure Functions ランタイムのバージョン 3.x または 2.x](functions-versions.md) をサポートします。 これらのバージョンでは [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2)、および [Linux](?tabs=linux#v2) がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
 + **バージョン 1.x**: Azure Functions ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://www.npmjs.com/package/azure-functions-core-tools)からインストールされます。
 
 特定のコンピューターには、1 つのバージョンの Core Tools のみをインストールできます。 特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
+
+<sup>*</sup> .NET 6.0 プレビューで C# 関数を実行できる、Azure Functions の試験的なバージョンが提供されています。 詳細については、[Azure Functions v4 の早期プレビュー](https://aka.ms/functions-dotnet6earlypreview-wiki)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -336,7 +338,7 @@ Functions プロジェクトを実行するには、Functions ホストを実行
 # <a name="c"></a>[C\#](#tab/csharp)
 
 ```
-func start --build
+func start
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -369,11 +371,7 @@ npm start
 ---
 
 >[!NOTE]  
-> Functions ランタイムのバージョン 1.x では、次の例のように `host` コマンドが必要です。
->
-> ```
-> func host start
-> ```
+> Functions ランタイムのバージョン 1.x では、代わりに `func host start` を使用する必要があります。 
 
 `func start` では、次のオプションがサポートされています。
 

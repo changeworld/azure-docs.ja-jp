@@ -3,17 +3,17 @@ title: Azure IaaS VM 用のディスクの種類の選択 - マネージド デ�
 description: Ultra Disks、Premium SSD、Standard SSD、Standard HDD など、仮想マシンで使用できる Azure ディスクの種類について説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 09/30/2020
+ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 782d4d18e9b6ffc16c1d95a995cef806adc42904
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96500769"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083424"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -42,7 +42,7 @@ Ultra ディスクをプロビジョニングするときは、ディスクの�
 Ultra Disk の主な機能は次のとおりです。
 
 - ディスク容量:Ultra Disk の容量の範囲は 4 GiB から最大 64 TiB です。
-- ディスク IOPS: Ultra Disk は、300 IOPS/GiB の IOPS 制限をサポートし、ディスクあたり最大 160 K の IOPS をサポートします。 プロビジョニングした IOPS を達成するには、選択したディスクの IOPS が VM の IOPS 制限未満であることを確認してください。 ディスクあたりに保証されている最小 IOPS は 2 IOPS/GiB で、全体のベースラインの最小値は 100 IOPS です。 たとえば、4 GiB の Ultra Disk が 1 つある場合、最小値は 8 IOPS ではなく 100 IOPS になります。
+- ディスク IOPS: Ultra Disk は、300 IOPS/GiB の IOPS 制限をサポートし、ディスクあたり最大 160 K の IOPS をサポートします。 プロビジョニングした IOPS を達成するには、選択したディスクの IOPS が VM の IOPS 制限未満であることを確認してください。 ディスクあたりに保証されている最小 IOPS は 1 IOPS/GiB で、全体のベースラインの最小値は 100 IOPS です。 たとえば、4 GiB の Ultra Disk が 1 つある場合、最小値は 8 IOPS ではなく 100 IOPS になります。
 - ディスク スループット: Ultra Disk では、1 つのディスクのスループットは、プロビジョニングされた IOPS ごとに 256 KiB/秒に制限され、ディスクあたり最大 2000 MBps に制限されます (MBps = 秒あたり 10^6 バイト)。 各ディスクで保証されている最小スループットは、プロビジョニングされた IOPS ごとに 4 KiB/秒で、全体のベースラインの最小値は 1 MBps です。
 - Ultra Disk では、実行時に、ディスクをデタッチすることなく、仮想マシンから、ディスク パフォーマンス属性 (IOPS とスループット) を調整できます。 ディスクでディスク パフォーマンス サイズ変更操作を実行した場合、変更が実際に有効になるまでに最大で 1 時間かかることがあります。 パフォーマンス サイズ変更操作は、24 時間で 4 回に制限されています。 パフォーマンス帯域幅の容量が不足しているために、パフォーマンス サイズ変更操作が失敗する可能性があります。
 

@@ -1,23 +1,23 @@
 ---
-title: サービス プリンシパルを使用して、Windows Virtual Desktop (クラシック) の管理ツールをデプロイする - Azure
-description: ここでは、PowerShell を使用して Windows Virtual Desktop (クラシック) の管理ツールをデプロイする方法について説明します。
+title: サービス プリンシパルを使用して、Azure Virtual Desktop (クラシック) の管理ツールをデプロイする - Azure
+description: ここでは、PowerShell を使用して Azure Virtual Desktop (クラシック) の管理ツールをデプロイする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 60eec4580e222123795db9554f56e74cb01c5257
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fbd12216cbc81df7f4f9e187c8150f69744eb139
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444447"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744523"
 ---
-# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>PowerShell を使用して Windows Virtual Desktop (クラシック) 管理ツールをデプロイする
+# <a name="deploy-a-azure-virtual-desktop-classic-management-tool-with-powershell"></a>PowerShell を使用して Azure Virtual Desktop (クラシック) 管理ツールをデプロイする
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。
 
 この記事では、PowerShell を使用して管理ツールをデプロイする方法について説明します。
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) テナントの各サブスクリプション�
 - ご使用の Azure サブスクリプション内にリソースを作成するためのアクセス許可を持っている
 - Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
 
-管理ツールをデプロイして構成した後は、管理 UI を起動し、すべてが動作することを確認することを推奨します。 管理 UI を起動するユーザーには、Windows Virtual Desktop テナントを表示/編集できるロールの割り当てが必要です。
+管理ツールをデプロイして構成した後は、管理 UI を起動し、すべてが動作することを確認することを推奨します。 管理 UI を起動するユーザーには、Azure Virtual Desktop テナントを表示/編集できるロールの割り当てが必要です。
 
 ## <a name="set-up-powershell"></a>PowerShell のセットアップ
 
@@ -156,7 +156,7 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 管理ツールの設定が完了したので、今後はいつでもどこでも起動できます。 ツールを起動するには、次の手順を実行します。
 
 1. Web ブラウザーで Web アプリの URL を開きます。 URL を覚えていない場合は、Azure にサインインし、管理ツール用にデプロイしたアプリサービスを見つけて、その URL を選択します。
-2. ご自分の Windows Virtual Desktop 資格情報を使用してサインインします。
+2. ご自分の Azure Virtual Desktop 資格情報を使用してサインインします。
 
    > [!NOTE]
    > 管理ツールの構成時に管理者の同意を与えていない場合、このツールを使用するためには、サインインする各ユーザーがそれぞれ独自にユーザーの同意を提供する必要があります。
@@ -169,7 +169,7 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 
 ## <a name="report-issues"></a>レポートに関する問題
 
-管理ツールまたはその他の Windows Virtual Desktop ツールで問題が発生した場合には、「[Remote Desktop Services のための Azure Resource Manager テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」の指示に従い、GitHub でそれを報告してください。
+管理ツールまたはその他の Azure Virtual Desktop ツールで問題が発生した場合には、「[Remote Desktop Services のための Azure Resource Manager テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」の指示に従い、GitHub でそれを報告してください。
 
 ## <a name="next-steps"></a>次のステップ
 

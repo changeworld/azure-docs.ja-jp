@@ -8,12 +8,13 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: aab67914b1317bc0cc443f333932ecef924176b6
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d813cc32d3b635e6da767e3f04386c0e35ea503c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293028"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949357"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>PowerShell を使用して Azure Cloud Services (延長サポート) に移行する
 
@@ -86,7 +87,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 
 以下を使用して登録の状態を確認します。  
 ```powershell
-Get-AzProviderFeature -FeatureName CloudServices
+Get-AzProviderFeature -FeatureName CloudServices -ProviderNamespace Microsoft.Compute
 ```
 
 両方の RegistrationState が `Registered` であることを確認してから続行します。
@@ -119,6 +120,8 @@ Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 
 
 ## <a name="5-migrate-your-cloud-services"></a>5) クラウド サービスを移行する 
+移行を開始する前に、 [移行手順](./in-place-migration-overview.md#migration-steps)のしくみと各手順について理解しておいてください。 
+
 * [仮想ネットワークにはないクラウド サービスを移行する](#51-option-1---migrate-a-cloud-service-not-in-a-virtual-network)
 * [仮想ネットワークにあるクラウド サービスを移行する](#51-option-2---migrate-a-cloud-service-in-a-virtual-network)
 
@@ -141,17 +144,27 @@ $deployment = Get-AzureDeployment -ServiceName $serviceName
 $deploymentName = $deployment.DeploymentName
 ```
 
-まず、次のコマンドを使用して、クラウド サービスを移行できることを検証します。
+まず、次のコマンドを使用して、クラウド サービスを移行できることを検証します。 コマンドを実行すると、移行をブロックするエラーが表示されます。 
 
 ```powershell
 $validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 $validate.ValidationMessages
  ```
 
-次のコマンドによって、移行をブロックするすべての警告とエラーが表示されます。 検証が成功した場合は、Prepare の手順に進むことができます。
+検証が成功した場合、または警告のみが表示される場合は、準備の手順に進むことができます。 
 
 ```powershell
 Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+```
+
+Azure PowerShell または Azure portal のいずれかを使用して、準備したクラウド サービス (延長サポート) の構成を確認します。 移行の準備ができていない場合に以前の状態に戻すには、移行を中止します。
+```powershell
+Move-AzureService -Abort -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+```
+移行を完了する準備ができたら、移行をコミットします。
+
+```powershell
+Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 ```
 
 ### <a name="51-option-2---migrate-a-cloud-service-in-a-virtual-network"></a>5.1) オプション 2 - 仮想ネットワークにあるクラウド サービスを移行する
@@ -179,7 +192,7 @@ Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 ```
 
-Azure PowerShell または Azure portal のいずれかを使用して、準備したクラウド サービスの構成を確認します。 移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
+Azure PowerShell または Azure portal のいずれかを使用して、準備したクラウド サービス (延長サポート) の構成を確認します。 移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
 
 ```powershell
 Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName

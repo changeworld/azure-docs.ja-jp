@@ -11,16 +11,38 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 05d8e2e9555dbd24a812d626ce4be8900991230a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7fff1380697f1179207b470e803bf6994e32e1e2
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748693"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782378"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [要求のチャレンジ、クレーム要求、およびクライアントの能力](claims-challenge.md)
+- [条件付きアクセス認証コンテキストに関する開発者ガイド](developer-guide-conditional-access-authentication-context.md)
+- [Microsoft ID プラットフォームの更新トークン](refresh-tokens.md)
+- [Microsoft ID プラットフォームと OAuth 2.0 SAML ベアラー アサーション フロー](v2-saml-bearer-assertion.md)
+- [チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、React シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す](tutorial-v2-react.md)
+- [チュートリアル: 認証コード フローを使用して Angular シングルページ アプリケーション (SPA) からユーザーをサインインさせて Microsoft Graph API を呼び出す](tutorial-v2-angular-auth-code.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [条件付きアクセス認証コンテキストに関する開発者ガイド](developer-guide-conditional-access-authentication-context.md)
+- [方法: アプリケーションにアプリ ロールを追加してトークンで受け取る](howto-add-app-roles-in-azure-ad-apps.md)
+- [Node.js アプリを ADAL から MSAL に移行する方法](msal-node-migration.md)
+- [Microsoft ID プラットフォームの ID トークン](id-tokens.md)
+- [クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す](quickstart-v2-android.md)
+- [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
+- [クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](quickstart-v2-dotnet-native-aspnet.md)
+- [チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す](tutorial-v2-android.md)
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -71,24 +93,3 @@ Microsoft ID プラットフォームに関するドキュメントの新着情�
 - [開発者向けのサポート オプションとヘルプ オプション](developer-support-help-options.md)
 - [ユーザーをサインインさせる Web アプリ:コード構成](scenario-web-app-sign-user-app-configuration.md)
 - [ユーザーをサインインさせる Web アプリ:サインインとサインアウト](scenario-web-app-sign-user-sign-in.md)
-
-## <a name="february-2021"></a>2021 年 2 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [クイックスタート: Electron デスクトップ アプリケーションからアクセス トークンを取得して Microsoft Graph API を呼び出す](quickstart-v2-nodejs-desktop.md)
-- [チュートリアル: Electron デスクトップ アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う](tutorial-v2-nodejs-desktop.md)
-- [クイックスタート: トークンを取得し、Node.js コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-nodejs-console.md)
-- [チュートリアル:Node.js コンソール アプリで Microsoft Graph API を呼び出す](tutorial-v2-nodejs-console.md)
-- [チュートリアル: Node.js + Express Web アプリにユーザーをサインインさせる](tutorial-v2-nodejs-webapp-msal.md)
-- [開発するアプリで FIDO2 キーを使用してパスワードレス認証をサポートする](support-fido2-authentication.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [認証の新機能](reference-breaking-changes.md)
-- [MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる](msal-net-aad-b2c-considerations.md)
-- [Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)](sample-v2-code.md)
-- [Microsoft ID プラットフォームのビデオ](identity-videos.md)
-- [クイックスタート: テナントを設定する](quickstart-create-new-tenant.md)
-- [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
-- [クイックスタート: トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-java-daemon.md)

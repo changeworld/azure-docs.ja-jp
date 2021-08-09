@@ -3,16 +3,16 @@ title: Azure IoT Central での REST API を使用したデバイスの管理
 description: IoT Central REST API を使用してアプリケーションでデバイスを制御する方法
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 06/01/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3fe641cef856fccc2df3fc32d25b05ccfa2a392c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 56ee24985da57c6da76638b659e5a07e68d0f516
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776898"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110788949"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>IoT Central REST API を使用してデバイスを制御する方法
 
@@ -29,7 +29,7 @@ IoT Central REST API を使用して、IoT Central アプリケーションと�
 
 すべての IoT Central REST API 呼び出しに承認ヘッダーが必要です。 詳細については、「[IoT Central REST API 呼び出しを認証および承認する方法](howto-authorize-rest-api.md)」を参照してください。
 
-IoT Central REST API のリファレンス ドキュメントについては、「[Azure IoT Central REST API リファレンス](https://docs.microsoft.com/rest/api/iotcentral/)」をご覧ください。
+IoT Central REST API のリファレンス ドキュメントについては、「[Azure IoT Central REST API リファレンス](/rest/api/iotcentral/)」をご覧ください。
 
 ## <a name="components-and-modules"></a>コンポーネントとモジュール
 
@@ -162,6 +162,9 @@ GET https://{your app subdomain}.azureiotcentral.com/api/devices/environmental-s
   }
 }
 ```
+
+> [!TIP]
+> モジュール内のコンポーネントからテレメトリにアクセスするには、`/api/devices/{deviceId}/modules/{moduleName}/components/{componentName}/telemetry/{telemetryName}` を使用します。
 
 ## <a name="read-properties"></a>プロパティの読み取り
 
@@ -297,6 +300,9 @@ GET https://{your app subdomain}.azureiotcentral.com/api/devices/environmental-s
 }
 ```
 
+> [!TIP]
+> モジュール内のコンポーネントからプロパティにアクセスするには、`/devices/{deviceId}/modules/{moduleName}/components/{componentName}/properties` を使用します。
+
 ## <a name="write-properties"></a>プロパティの書き込み
 
 一部のプロパティは書き込み可能です。 たとえば、サーモスタット モデルで、`targetTemperature` プロパティは書き込み可能なプロパティです。
@@ -388,6 +394,20 @@ PUT https://{your app subdomain}.azureiotcentral.com/api/devices/environmental-s
 > [!TIP]
 > モジュール上のすべてのプロパティを更新するには、`PATCH` ではなく、`PUT` を使用します。
 
+### <a name="update-module-properties"></a>モジュールのプロパティを更新する
+
+IoT Edge デバイスを使用している場合、モジュールからプロパティ値を取得するには、次の要求を使用します。
+
+```http
+GET https://{your app subdomain}.azureiotcentral.com/api/devices/{deviceId}/modules/{moduleName}/properties?api-version=1.0
+```
+
+IoT Edge デバイスを使用している場合、モジュールのコンポーネントからプロパティ値を取得するには、次の要求を使用します。
+
+```http
+GET https://{your app subdomain}.azureiotcentral.com/api/devices/{deviceId}/modules/{moduleName}/components/{componentName}/properties?api-version=1.0
+```
+
 ## <a name="call-commands"></a>コマンドの呼び出し
 
 REST API を使用してデバイスのコマンドを呼び出し、デバイスの履歴を取得できます。
@@ -459,6 +479,9 @@ POST https://{your app subdomain}.azureiotcentral.com/api/devices/temperature-co
 ```http
 GET https://{your app subdomain}.azureiotcentral.com/api/devices/temperature-controller-01/components/thermostat2/commands/getMaxMinReport?api-version=1.0
 ```
+
+> [!TIP]
+> モジュール内のコンポーネントのコマンドを呼び出すには、`/devices/{deviceId}/modules/{moduleName}/components/{componentName}/commands/{commandName}` を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

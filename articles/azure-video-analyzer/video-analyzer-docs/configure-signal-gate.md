@@ -3,16 +3,19 @@ title: イベントベースのビデオ記録用にシグナル ゲートを構
 description: この記事では、パイプラインでシグナル ゲートを構成する方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 4/12/2021
-ms.openlocfilehash: e7871f017d416e164a6160336646d8285c3792a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e03524e7e12a0081172918159e9f2d2ed2e4a7d6
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387568"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413431"
 ---
 # <a name="configuring-a-signal-gate-for-event-based-video-recording"></a>イベントベースのビデオ記録用にシグナル ゲートを構成する
 
 パイプライン内の[シグナル ゲート プロセッサ ノード](pipeline.md#signal-gate-processor)を使用すると、イベントによってゲートがトリガーされたときに、あるノードから別のノードにメディアを転送できます。 トリガーされると、ゲートが開き、指定された期間だけメディアがフローできるようになります。 ゲートをトリガーするイベントがない場合、ゲートは閉じ、メディアのフローは停止します。 イベントベースのビデオ記録には、シグナル ゲート プロセッサを使用できます。
+
+> [!NOTE]
+> シグナル ゲート プロセッサ ノードの直後に、ビデオ シンクまたはファイル シンクを配置する必要があります。
 
 この記事では、シグナル ゲート プロセッサを構成する方法について説明します。
 
@@ -71,8 +74,8 @@ ms.locfileid: "110387568"
 
 * **activationEvaluationWindow**: 0 秒から 10 秒
 * **activationSignalOffset**: -1 分から 1 分
-* **minimumActivationTime**: 1 秒から 1 時間
-* **maximumActivationTime**: 1 秒から 1 時間
+* **minimumActivationTime**: 10 秒から 1 時間
+* **maximumActivationTime**: 10 秒から 1 時間
 
 このユース ケースでは、パラメーターを次のように設定します。
 

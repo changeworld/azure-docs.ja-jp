@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 05/17/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: d1d77e508e627520878dcc27b5a643473d11dd1d
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 1495fa3751a77d5dfd26192ded4f35403ed932ef
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800722"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098310"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
-Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータ オブジェクトを WORM (Write Once Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。 保持間隔の間、BLOB の作成と読み取りは可能ですが、変更や削除を行うことはできません。 不変ストレージは、すべての Azure リージョン内の汎用 v1、汎用 V2、BlobStorage、および BlockBlobStorage アカウントで使用できます。
+Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータ オブジェクトを WORM (Write Once Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。 保持間隔の間、BLOB の作成と読み取りは可能ですが、変更や削除を行うことはできません。 不変ストレージは、すべての Azure リージョンの汎用 v1、汎用 v2、Premium ブロック BLOB、およびレガシ BLOB アカウントで使用できます。
 
 Azure portal、PowerShell、または Azure CLI を使用して、訴訟ホールドを設定またはクリアしたり、時間ベースの保持ポリシーを作成したりする方法については、「[BLOB ストレージの不変ポリシーを設定および管理する](storage-blob-immutability-policies-manage.md)」を参照して ください。
 
@@ -140,7 +140,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 **この機能を使用するために、新しいストレージ アカウントを作成する必要がありますか?**
 
-いいえ。既存または新しく作成した汎用 v1、汎用 v2、BlobStorage、または BlockBlobStorage アカウントで不変ストレージを使用できます。 汎用 v1 ストレージ アカウントはサポートされていますが、より多くの機能を利用できるように汎用 v2 にアップグレードすることをお勧めします。 既存の汎用 v1 ストレージ アカウントのアップグレードについては、[ストレージ アカウントのアップグレード](../common/storage-account-upgrade.md)に関する記事を参照してください。
+いいえ。既存または新しく作成した汎用 v1、汎用 v2、Premium ブロック BLOB、およびレガシ BLOB アカウントで不変ストレージを使用できます。 汎用 v1 ストレージ アカウントはサポートされていますが、より多くの機能を利用できるように汎用 v2 にアップグレードすることをお勧めします。 既存の汎用 v1 ストレージ アカウントのアップグレードについては、[ストレージ アカウントのアップグレード](../common/storage-account-upgrade.md)に関する記事を参照してください。
 
 **訴訟ホールドと時間ベースのリテンション ポリシーを両方とも適用することはできますか?**
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 03/25/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 53c6431f6f2d5ac6f5e7a6c28cb843d386c5206d
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 39f1245883c7d296de5b2bad77f1558be9b49910
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203075"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887422"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -52,7 +52,7 @@ Azure Kubernetes Service (AKS) への正常な移行を計画して実行でき�
 
 Azure Migrate により、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データの評価と、Azure へのそれらの移行を行うための統合プラットフォームが提供されます。 AKS には、次のタスクで Azure Migrate を使用できます。
 
-* [ASP.NET アプリケーションのコンテナー化と AKS へのそれらの移行](/azure/aks/tutorial-app-containerization-aspnet-kubernetes)
+* [ASP.NET アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-app-containerization-aspnet-kubernetes.md)
 * [Java Web アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-containerize-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>Standard Load Balancer と Virtual Machine Scale Sets を使用する AKS
@@ -192,7 +192,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 AKS クラスターを、[AKS でサポートされている別のリージョン][region-availability]に移動する必要がある場合があります。 もう一方のリージョンに新しいクラスターを作成し、その新しいクラスターにリソースとアプリケーションをデプロイすることをお勧めします。 
 
-また、AKS クラスターで実行されている [Azure Dev Spaces][azure-dev-spaces] などのサービスがある場合は、新しいリージョンのクラスターにこれらのサービスをインストールして構成する必要があります。
+また、AKS クラスターで実行されているサービスがある場合は、新しいリージョンのクラスターにそれらのサービスをインストールして構成する必要があります。
 
 
 この記事では、次の移行の詳細について説明しました。
@@ -208,4 +208,3 @@ AKS クラスターを、[AKS でサポートされている別のリージョ�
 
 
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[azure-dev-spaces]: ../dev-spaces/index.yml

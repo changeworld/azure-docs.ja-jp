@@ -1,0 +1,70 @@
+---
+title: Azure Sentinel 分析ルールのインポートとエクスポート | Microsoft Docs
+description: デプロイを支援するために ARM テンプレート間で分析ルールをエクスポートおよびインポートします
+services: sentinel
+documentationcenter: na
+author: yelevin
+manager: rkarlin
+editor: ''
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
+ms.devlang: na
+ms.topic: how-to
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/30/2021
+ms.author: yelevin
+ms.openlocfilehash: b5c9b2d6a586d440218cf4740155bc9fa3bdd3d7
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372764"
+---
+# <a name="export-and-import-analytics-rules-to-and-from-arm-templates"></a>ARM テンプレート間で分析ルールをエクスポートおよびインポートします
+
+> [!IMPORTANT]
+>
+> - ルールのエクスポートとインポートは **プレビュー** 中です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+## <a name="introduction"></a>はじめに
+
+Azure Sentinel デプロイをコードとして管理および制御する一環として、分析ルールを Azure Resource Manager (ARM) テンプレート ファイルからエクスポートし、それらのルールを同様のファイルにインポートできます。 エクスポート操作により、ブラウザーのダウンロード場所に JSON ファイル (*Azure_Sentinel_analytic_rule.json* という名前) が作成されます。このファイルは、ファイル名の変更や移動など、他のファイルと同様に処理することができます。
+
+エクスポートされた JSON ファイルはワークスペースに依存しないので、他のワークスペースや他のテナントにもインポートできます。 コードとして、マネージド CI/CD フレームワークでバージョン管理、更新、デプロイすることもできます。
+
+ファイルには、分析ルールで定義されているすべてのパラメーターが含まれます。そのため、**Scheduled** ルールの場合は、基本的なクエリに加え、それに付随するスケジュール設定、重大度、インシデントの作成、イベントとアラートのグループ化設定、割り当てられた MITRE ATT&CK 戦術なども含まれます。 **Scheduled** だけでなく、すべての種類の分析ルールを JSON ファイルにエクスポートできます。
+
+## <a name="export-rules"></a>ルールのエクスポート
+
+1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+
+1. エクスポートするルールを選択し、画面の上部にあるバーから **[エクスポート]** をクリックします。
+
+    :::image type="content" source="./media/import-export-analytics-rules/export-rule.png" alt-text="分析ルールのエクスポート" lightbox="./media/import-export-analytics-rules/export-rule.png":::
+
+    > [!NOTE]
+    > - エクスポートに対して一度に複数の分析ルールを選択するには、ルールの横にあるチェック ボックスをオンにし、最後に **[エクスポート]** をクリックします。
+    >
+    > - **[エクスポート]** をクリックする前に、ヘッダー行 ( **[重大度**] の横) のチェック ボックスをオンにすることで、表示グリッド 1 ページにあるすべてのルールを一度にエクスポートできます。 ただし、一度に複数のページのルールをエクスポートすることはできません。
+    >
+    > - このシナリオでは、1 つのファイル (*Azure_Sentinel_analytic_ **rules**.json* という名前) が作成され、エクスポートされたすべてのルールの JSON コードがそのファイルに書き込まれます。
+
+## <a name="import-rules"></a>ルールのインポート
+
+1. 分析ルールの ARM テンプレート JSON ファイルを準備します。
+
+1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
+
+1. 画面上部にあるバーから **[インポート]** をクリックします。 表示されるダイアログ ボックスで、インポートするルールが含まれる JSON ファイルに移動して選択し、 **[開く]** を選択します。
+
+    :::image type="content" source="./media/import-export-analytics-rules/import-rule.png" alt-text="分析ルールのインポート" lightbox="./media/import-export-analytics-rules/import-rule.png":::
+
+    > [!NOTE]
+    > 1 つの ARM テンプレート ファイルから **最大 50 個** の分析ルールをインポートできます。
+
+## <a name="next-steps"></a>次のステップ
+
+このドキュメントでは、ARM テンプレート間で分析ルールをエクスポートおよびインポートする方法について学習しました。
+- [カスタム スケジュール済みルール](tutorial-detect-threats-custom.md)を含む、[分析ルール](tutorial-detect-threats-built-in.md)の詳細を確認します。
+- [ARM テンプレート](../azure-resource-manager/templates/overview.md)の詳細を確認します。

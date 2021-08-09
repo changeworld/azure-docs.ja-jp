@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 490f94c71611e07e765f5882cb4e3eec13033a6a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df8b4534c6da446bd4ceeb18acf70036cd63f83c
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099337"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061184"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Security Center でのセキュリティ アラートの管理と対応
 
@@ -27,7 +27,7 @@ ms.locfileid: "102099337"
 セキュリティ アラートをトリガーする高度な検出は、Azure Defender でのみ使用できます。 無料試用版が提供されています。 アップグレードするには、「[Azure Defender を有効にする](enable-azure-defender.md)」をご覧ください。
 
 ## <a name="what-are-security-alerts"></a>セキュリティの警告とは何か
-Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。
+Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティ アラートの一覧が、問題を迅速に調査するために必要な情報、および攻撃を修復するために実行する手順と共に表示されます。
 
 さまざまな種類のアラートについては、「[セキュリティ アラート - リファレンス ガイド](alerts-reference.md)」をご覧ください。
 

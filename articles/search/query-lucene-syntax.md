@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/08/2021
+ms.openlocfilehash: c7cc9ba4cddb21dd68af4a4e3253361e1e3e62fd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801589"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754891"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での Lucence クエリ構文
 
@@ -122,14 +122,22 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> ワイルドカード検索
 
-複数 (`*`) または単数 (`?`) の文字のワイルドカード検索で、一般に認識されている構文を使用できます。 たとえば、`search=alpha*` のクエリ式では、"alphanumeric" または "alphabetical" が返されます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
+複数 (`*`) または単数 (`?`) の文字のワイルドカード検索で、一般に認識されている構文を使用できます。 完全な Lucene 構文では、プレフィックス、挿入辞、およびサフィックスの一致がサポートされています。 
 
-完全な Lucene 構文では、プレフィックス、挿入辞、およびサフィックスの一致がサポートされています。 ただし、プレフィックスの一致だけが必要な場合は、単純な構文を使用できます (プレフィックスの一致は両方でサポートされています)。
+Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
 
-文字列の前に `*` や `?` がある場合 (`search=/.*numeric./` など) のサフィックスの一致や挿入辞の一致では、Lucene の完全な構文と正規表現のスラッシュ `/` 区切り記号が必要になります。 検索の最初の文字として * または ? を `/` なしで、用語の最初の文字として、または用語内で使用することはできません。 
+| 接辞型 | 説明と例 |
+|------------|--------------------------|
+| prefix | 用語の断片が `*` または `?` の前にあります。  たとえば、`search=alpha*` のクエリ式では、"alphanumeric" または "alphabetical" が返されます。 プレフィックス一致は、シンプルな構文と完全な構文の両方でサポートされています。 |
+| suffix | 用語の断片が `*` または `?` の後にあります。スラッシュを使用してコンストラクトを区切ります。 たとえば、`search=/.*numeric./` で "alphanumeric" が返されます。 |
+| 挿入辞  | 用語の断片が `*` または `?` を囲みます。  たとえば、`search=/.non*al./` では "nonnumerical" と "nonsensical" が返されます。 |
+
+演算子をひとつの式に結合できます。 たとえば、`980?2*` は "98072-1222" と "98052-1234" に一致します。ここで、`?` が 1 つの (必須) 文字に一致し、`*` がその後に続く任意の長さの文字に一致します。
+
+サフィックスと挿入辞の一致には、正規表現のスラッシュ `/` 区切り記号が必要です。 通常、コードを記述するときに、* や ? を `/` なしで、用語の最初の文字として、または用語内で使用することはできません。 Postman や Azure portal などの特定のツールでは、エスケープ機能が組み込まれているため、多くの場合、区切り記号を使用せずにクエリを実行できます。
 
 > [!NOTE]  
-> 原則として、パターン マッチングは低速であるため、用語内の文字シーケンスのトークンを作成するエッジ n-gram トークン化など、別の方法を検討することもできます。 インデックスのサイズは大きくなりますが、パターンの構成やインデックスを作成する文字列の長さによっては、クエリの実行速度が速くなる場合があります。
+> 原則として、パターン マッチングは低速であるため、用語内の文字シーケンスのトークンを作成するエッジ n-gram トークン化など、別の方法を検討することもできます。 n-gram トークン化では、インデックスのサイズは大きくなりますが、パターンの構成やインデックスを付ける文字列の長さによっては、クエリの実行速度が速くなる場合があります。
 >
 
 ### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>ワイルドカード クエリに対するアナライザーの影響

@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: e5ea7a1abbbd6ab4be32955179227fbd539cf641
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: ccedab6284fd5dac5a3d9f8d221a22803a3571f8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019620"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666673"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Azure Functions 出力
 
@@ -45,6 +45,11 @@ Azure Stream Analytics は、Azure Functions から 413 ("http の要求した�
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
 既定のバッチ サイズは 262,144 バイト (256 KB) です。 バッチごとの既定のイベント数は 100 です。 バッチ サイズは構成可能で、Stream Analytics の出力オプションで増減させることができます。
+
+## <a name="limitation"></a>制限事項
+
+Azure Functions は、HTTP クライアントが 100 秒後にタイムアウトするため、100 秒以内に要求を完了する必要があります。 Azure Functions がデータのバッチ処理に 100 秒以上かかる場合は、再試行をトリガーするタイムアウトがあります。 この再試行によってデータが重複する可能性があります。これは、Azure Functions がデータを再度処理し、前の要求で部分的に出力された可能性があるため、同じ出力が生成される可能性があるためです。
+
 
 ## <a name="next-steps"></a>次のステップ
 

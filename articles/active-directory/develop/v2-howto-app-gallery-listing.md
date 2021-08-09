@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/14/2020
+ms.date: 06/10/2021
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f2a04a341239b62290eecac8c0e1ce70b7c927c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ade77d05e209d65a9d7aa40451362bd66718cf75
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988905"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033333"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -81,7 +81,7 @@ Azure AD ギャラリーにアプリを追加すると、次のような利点�
 
 **開発者向け Azure AD の取得方法**
 
-すべての Premium Azure AD 機能を持つ無料のテスト アカウントを入手できます。90 日間無料で、開発作業を行っている限り、延長することができます: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+すべての Premium Azure AD 機能を持つ無料のテスト アカウントを入手できます。90 日間無料で、開発作業を行っている限り、延長することができます: [Microsoft 365 開発者プログラムに参加する](/office/developer-program/microsoft-365-developer-program)。
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>ステップ 1 - アプリに適したシングル サインオン標準を選択する
 
@@ -287,17 +287,6 @@ OpenID Connect を使用してギャラリー内の一覧にご利用のアプ�
 > [!NOTE]
 > アクセスに問題がある場合は、アカウントの作成に関する前のセクションを確認してください。 それでもうまくいかない場合は、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
-### <a name="list-requests-by-customers"></a>顧客による一覧表示の要求
-
-顧客は、 **[App requests by Customers]\(顧客によるアプリ要求\)**  >  **[新しい要求の送信]** を選択することで、アプリケーションの一覧表示の要求を送信できます。
-
-![顧客が要求したアプリ タイルを示します](./media/howto-app-gallery-listing/customer-submit-request.png)
-
-顧客が要求したアプリケーションのフローは。次のとおりです。
-
-![顧客が要求したアプリ フローを示します](./media/howto-app-gallery-listing/customer-request-2.png)
-
-
 ### <a name="timelines"></a>タイムライン
 
 SAML 2.0 または WS-Fed アプリケーションをギャラリーに一覧表示するプロセスのタイムラインは、7 から 10 営業日です。
@@ -316,7 +305,20 @@ OpenID Connect アプリケーションをギャラリーに一覧表示する�
 ## <a name="step-7---join-the-microsoft-partner-network"></a>ステップ 7 - Microsoft Partner Network に参加する
 Microsoft Partner Network では、排他的なリソース、プログラム、ツール、接続にすばやくアクセスできます。 ネットワークに参加して、市場投入プランを作成するには、「[法人のお客様にリーチする](https://partner.microsoft.com/explore/commercial#gtm)」を参照してください。
 
+## <a name="request-apps-by-sharing-isv-app-team-contact"></a>ISV アプリ チームの連絡先を共有してアプリを要求する
+
+顧客は、[ここ](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/AppRequestsByCustomers.aspx)でアプリケーションと ISV の連絡先の情報を共有することで、アプリケーションを要求できます。
+
+![顧客が要求したアプリ タイルを示します](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+顧客が要求したアプリケーションのフローは。次のとおりです。
+
+![顧客が要求したアプリ フローを示します](./media/howto-app-gallery-listing/customer-request-2.png)
+
+> [!Note]
+> [アクセスに関して問題](#issues-on-logging-into-portal)がある場合は、[Azure AD アプリ統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にメールをお送りください。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [SCIM エンドポイントの構築とユーザー プロビジョニングの構成](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Azure AD の認証シナリオ](authentication-flows-app-scenarios.md)

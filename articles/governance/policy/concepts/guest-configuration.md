@@ -3,12 +3,12 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6ca5990306dd77e59298c7df6a64f463b36be93b
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 80de6651d59b26b596633b8ba775c774dcfea62e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804108"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970341"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -62,17 +62,18 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 
 ## <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-ゲスト構成ポリシー定義には、新しいバージョンが含まれます。 ゲスト構成クライアントに互換性がない場合、Azure Marketplace で入手できる古いバージョンのオペレーティング システムは除外されます。 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
+ゲスト構成ポリシー定義には、新しいバージョンが含まれます。 ゲスト構成クライアントに互換性がない場合、Azure Marketplace で入手できる古いバージョンのオペレーティング システムは除外されます。 次の表に、Azure イメージでサポートされているオペレーティング システムを示します。
+テキスト ".x" は、Linux ディストリビューションの新しいマイナー バージョンを表すシンボルです。
 
 |Publisher|名前|バージョン|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04 - 20.04|
-|Credativ|Debian|8 - 10|
+|Canonical|Ubuntu Server|14.04 - 20.x|
+|Credativ|Debian|8 - 10.x|
 |Microsoft|Windows Server|2012 - 2019|
 |Microsoft|Windows クライアント|Windows 10|
-|OpenLogic|CentOS|7.3 -8|
-|Red Hat|Red Hat Enterprise Linux|7.4 - 8|
-|SUSE|SLES|12 SP3-SP5、15|
+|OpenLogic|CentOS|7.3 -8.x|
+|Red Hat|Red Hat Enterprise Linux|7.4 - 8.x|
+|SUSE|SLES|12 SP3-SP5、15.x|
 
 カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシー定義でサポートされます。
 
@@ -84,7 +85,7 @@ Azure Arc マシンは、オンプレミスのネットワーク インフラス
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>Azure の仮想ネットワークを介して通信する
 
-Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 [サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用することで、Azure データセンターの [IP 範囲の一覧](https://www.microsoft.com/en-us/download/details.aspx?id=56519)を手動で維持することなく、ゲスト構成サービスを参照できます。
+Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 Azure データセンターの [IP 範囲の一覧](https://www.microsoft.com/en-us/download/details.aspx?id=56519)を手動で管理するのではなく、[サービス タグ](../../../virtual-network/service-tags-overview.md) "AzureArcInfrastructure" を使用することでゲスト構成サービスを参照できます。
 
 ### <a name="communicate-over-private-link-in-azure"></a>Azure で Private Link を介して通信する
 
@@ -161,7 +162,7 @@ _[構成]_ で始まる定義を割り当てるとき、 _[前提条件を展開
 
 ## <a name="availability"></a>可用性
 
-ゲスト割り当ては Azure のマシン リソースの拡張機能であるため、高可用性ソリューションを設計しているお客様は、[仮想マシン](../../../virtual-machines/availability.md)の冗長性計画の要件を検討する必要があります。 物理リージョンが Azure で使用できなくなった場合、リージョンが復元されるまで、ゲスト割り当ての履歴レポートを表示することはできません。
+ゲスト割り当ては Azure のマシン リソースの拡張機能であるため、高可用性ソリューションを設計しているお客様は、[仮想マシン](../../../virtual-machines/availability.md)の冗長性計画の要件を検討する必要があります。 [ペアになっている](../../../best-practices-availability-paired-regions.md) Azure リージョンにゲスト割り当てリソースがプロビジョニングされている場合、ペアの少なくとも一方のリージョンが使用可能であれば、ゲスト割り当てレポートを使用できます。 ペアになっていない Azure リージョンが使用できなくなった場合は、リージョンが復元されるまで、ゲスト割り当てのレポートにアクセスすることはできません。
 
 高可用性アプリケーションのアーキテクチャを検討する場合 (特に、高可用性を提供するためにロード バランサーソリューションの背後にある[可用性セット](../../../virtual-machines/availability.md#availability-sets)に仮想マシンがプロビジョニングされている場合)、ソリューション内のすべてのマシンに、同じパラメーターを含む同じポリシー定義を割り当てるのがベスト プラクティスです。 可能であれば、すべてのマシンにまたがる単一のポリシー割り当てを採用することにより、管理オーバーヘッドが最小限に抑えられます。
 

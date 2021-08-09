@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f39e209cf2f01abaf836924fc25dc64275f5fcb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731586"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089814"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR Service のマネージド ID
 
@@ -84,7 +84,7 @@ Azure Active Directory (Azure AD) ミドルウェアには、アクセス トー
 
 関数アプリでのアクセス トークンの検証は、コードを使用せず、簡単かつ効率的に設定できます。
 
-1. **[認証/承認]** ページで、 **[App Service 認証]** を **[オン]** に切り替えます。
+1. **[認証 (クラシック)]** ページで、 **[App Service 認証]** を **[オン]** に切り替えます。
 
 2. **[要求が認証されない場合に実行するアクション]** で、 **[Azure Active Directory でのログイン]** を選択します。
 
@@ -97,6 +97,10 @@ Azure Active Directory (Azure AD) ミドルウェアには、アクセス トー
 6. SignalR Service で **[アップストリームの設定]** にアクセスし、 **[マネージド ID の使用]** を選択して、 **[既存のアプリケーションから選択]** を選択します。 以前に作成したアプリケーションを選択します。
 
 これらの設定の後、Function App では、ヘッダーにアクセス トークンがない要求が拒否されるようになります。
+
+> [!Important] 
+> 認証を通過するには、*発行者の Url* がトークン内の *ISS* 要求と一致している必要があります。 現時点では、v1 エンドポイントのみ ([v1.0 と v2.0](../active-directory/develop/access-tokens.md#v10-and-v20) を参照) をサポートしているので、*発行者の URL* は次のようになります。`https://sts.windows.net/<tenant-id>/` Azure 関数で構成されている *発行者の URL* を確認してください。 **認証** については、 *[ID プロバイダー]*  ->  *[編集]*  ->  *[発行者の URL]* に移動してください。**認証 (クラシック)** については、 *[Azure Active Directory]*  ->  *[詳細]*  ->  *[発行者の URL]* に移動してください
+
 
 ## <a name="use-a-managed-identity-for-key-vault-reference"></a>Key Vault 参照にマネージド ID を使用する
 

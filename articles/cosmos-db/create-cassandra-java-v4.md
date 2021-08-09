@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 6c5371a98900e000b15cde669fcfaea4a7c676b4
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: cda3ad4cd6ecf0c7a72a3dfb05aae2a6541dd43b
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112240209"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710236"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v4 ドライバー)
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -36,6 +36,9 @@ ms.locfileid: "112240209"
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 JDK のインストール先フォルダーを指すように `JAVA_HOME` 環境変数を設定してください。
 - [Maven バイナリ アーカイブ](https://maven.apache.org/download.cgi)。 Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 - [Git](https://www.git-scm.com/downloads). Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
+
+> [!NOTE]
+> これは、Java 用のオープンソース Apache Cassandra ドライバーの[バージョン 4](https://github.com/datastax/java-driver/tree/4.x) を使用する簡単なクイック スタートです。 ほとんどの場合、既存の Apache Cassandra 依存の Java アプリケーションは、既存のコードを変更しなくても Azure Cosmos DB Cassandra API に接続できるはずです。 ただし、全体的なエクスペリエンスを向上するために、[カスタム Java 拡張機能](https://github.com/Azure/azure-cosmos-cassandra-extensions/tree/release/java-driver-4/1.0.1)を追加して、カスタムの再試行ポリシーと負荷分散ポリシー、推奨される接続設定などを含めることをお勧めします。 必要に応じて、Azure Cosmos DB での[レート制限](manage-scale-cassandra.md#handling-rate-limiting-429-errors)とアプリケーション レベルのフェールオーバーを処理するためです。 この拡張機能を実装している包括的なサンプルについては、[こちら](https://github.com/Azure-Samples/azure-cosmos-cassandra-extensions-java-sample-v4)を参照してください。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 

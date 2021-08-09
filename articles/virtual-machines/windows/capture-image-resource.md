@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 9128c44b7f446ab849d2afac055005a1b5fb3fcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1c67f9d4fda2e0ca26d8125f30e2f71213b0749
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562233"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853084"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
@@ -31,7 +31,9 @@ Sysprep はすべての個人アカウント情報とセキュリティ情報を
 > [!IMPORTANT]
 > VM で Sysprep を実行すると、その VM は *一般化されている* と見なされ、再起動できなくなります。 VM の一般化プロセスは元に戻せません。 元の VM の機能を保持する場合は、[VM のコピー](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)を作成し、そのコピーを一般化してください。 
 >
->Sysprep では、ドライブを完全に復号化する必要があります。 VM で暗号化を有効にしている場合は、Sysprep を実行する前に暗号化を無効にしてください。
+>Sysprep では、ドライブを完全に復号化する必要があります。 VM で暗号化を有効にしている場合は、Sysprep を実行する前に Azure からの暗号化を無効にしてください。 
+>
+>PowerShell で Azure Disk Encryption を無効にするには、最初に Disable-AzVMDiskEncryption、次に Remove-AzVMDiskEncryptionExtension を使用します。 暗号化を無効にする前に Remove-AzVMDiskEncryptionExtension を実行すると、失敗します。 高レベルのコマンドでは、VM 内からディスクが復号化されるだけでなく、VM の外部で、重要なプラットフォーム レベルの暗号化の設定と VM に関連する拡張機能の設定が更新されます。 これらの設定が整合していないと、プラットフォームで暗号化の状態を報告することも、VM を適切にプロビジョニングすることもできません。
 >
 > 初めて VHD を Azure に仮想ハード ディスク (VHD) にアップロードする前に Sysprep を実行する予定の場合は、[VM の準備](prepare-for-upload-vhd-image.md)ができていることを確認してください。  
 > 

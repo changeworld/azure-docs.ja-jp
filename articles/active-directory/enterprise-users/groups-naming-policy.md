@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 06/11/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00291907ddea75ba4507779d1226502dc8343aea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fc67b0b038abda37c591162caad9b3b94e6c440
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100365703"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027481"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory での Microsoft 365 グループに対する名前付けポリシーの適用
 
@@ -70,19 +70,19 @@ ms.locfileid: "100365703"
 ### <a name="roles-and-permissions"></a>ロールとアクセス許可
 
 名前付けポリシーを構成するには、次のいずれかのロールが必要です。
-- 全体管理者
+
+- グローバル管理者
 - グループ管理者
 - ディレクトリ ライター
 
+一部の管理者ロールは、すべてのグループ ワークロードとエンドポイントでこれらのポリシーの適用を免除されるので、禁止単語を使用し、自分たちの命名規則に従ってグループを作成できます。 次の管理者ロールは、グループ命名ポリシーの適用を免除されます。
 
-すべてのグループ ワークロードおよびエンドポイントで、選択した管理者をこれらのポリシーから除外できます。これにより、管理者は禁止単語や独自の名前付け規則を使用してグループを作成できます。 グループ名前付けポリシーから除外される管理者ロールを次に示します。
-
-- 全体管理者
+- グローバル管理者
 - ユーザー管理者
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal で名前付けポリシーを構成する
 
-1. グループ管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. Group Administrator アカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]** を選択し、 **[名前付けポリシー]** を選択して [名前付けポリシー] ページを開きます。
 
     ![管理センターで [名前付けポリシー] ページを開く](./media/groups-naming-policy/policy.png)

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 05/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 2546236399853f3ed6fad9e07e031edb568fbfe9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 680563e0688d11e02f79f3c184b38d5a80bafeb0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311534"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480359"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する
 
@@ -86,6 +86,8 @@ ms.locfileid: "107311534"
     Active Directory ユーザーとコンピューター MMC スナップインを使用して、POSIX 属性を管理できます。 次の例は、Active Directory の属性エディターを示しています。  
 
     ![Active Directory の属性エディター](../media/azure-netapp-files/active-directory-attribute-editor.png) 
+
+    詳細については、[Active Directory 属性エディターへのアクセス](create-volumes-dual-protocol.md#access-active-directory-attribute-editor)に関するセクションを参照してください。  
 
 5. LDAP 統合 NFSv4.1 Linux クライアントを構成する場合は、「[Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md)」をご覧ください。
 

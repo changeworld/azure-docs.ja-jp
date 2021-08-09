@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターで証明書をロー
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 6baad681a9d629c397c53ab90057cc5746fc3b85
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b3ab6074dcbf79df8b2b0ff3369b94006343a2a6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776017"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089868"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -80,7 +80,7 @@ kubectl get no
 ```
 
 > [!NOTE]
-> [Azure Dev Spaces][dev-spaces] など、AKS 上で実行されるサービスがある場合は、[それらのサービスに関連する証明書の更新][dev-spaces-rotate]も必要になることがあります。
+> AKS 上で実行されるサービスがある場合は、それらのサービスに関連する証明書の更新も必要になることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -92,5 +92,3 @@ kubectl get no
 [az-extension-add]: /cli/azure/extension#az_extension_add
 [az-extension-update]: /cli/azure/extension#az_extension_update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
-[dev-spaces]: ../dev-spaces/index.yml
-[dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

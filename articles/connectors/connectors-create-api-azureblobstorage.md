@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1703e206bb13aa6f239346f7a724004a00ddfeca
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92677725"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568920"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Azure Blob Storage に BLOB を作成して管理する
 
@@ -180,6 +180,9 @@ Azure Blob Storage コネクタまたは他のソリューションを使用し�
 ### <a name="access-storage-accounts-as-a-trusted-service-with-managed-identities"></a>マネージド ID を使用して、信頼されたサービスとしてストレージ アカウントにアクセスする
 
 Microsoft の信頼されたサービスがファイアウォールを介してストレージ アカウントにアクセスできるようにするには、それらのサービスについてストレージ アカウントで例外を設定します。 この解決策によって、[認証用のマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) をサポートする Azure サービスは、信頼されたサービスとして、ファイアウォールの背後にあるストレージ アカウントにアクセスできます。 具体的には、グローバルなマルチテナント Azure 内のロジック アプリがこれらのストレージ アカウントにアクセスできるよう、まずロジック アプリで[マネージド ID のサポートを有効にします](../logic-apps/create-managed-service-identity.md)。 次に、自分のロジック アプリで HTTP アクションまたはトリガーを使用し、[ロジック アプリのマネージド ID を使用するよう認証の種類を設定します](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 このシナリオでは、HTTP アクションまたはトリガー "*のみ*" を使用できます。
+
+> [!NOTE]
+> ストレージ アカウントへのアクセスを認証するためにマネージド ID 機能を使用している場合、組み込みの Azure Blob Storage 操作は使用できません。 ストレージ アカウントの接続を認証するために、マネージド ID が設定されている HTTP トリガーやアクションを使用する必要があります。 必要なストレージ操作を実行するには、Azure Blob Storage の対応する REST API を呼び出す必要があります。 詳細については、「[Blob service REST API](/rest/api/storageservices/blob-service-rest-api)」をご確認ください。
 
 例外とマネージド ID のサポートを設定するには、これらの一般的な手順に従います。
 

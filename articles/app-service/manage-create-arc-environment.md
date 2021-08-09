@@ -2,13 +2,13 @@
 title: App Service、Functions、および Logic Apps 用に Azure Arc セットアップする
 description: ご使用の Azure Arc 対応 Kubernetes クラスターに対して、App Service アプリ、Functions Apps、Logic Apps を有効にする方法を学習します。
 ms.topic: article
-ms.date: 05/03/2021
-ms.openlocfilehash: 35c58b05a1c5835028e36d8cd1afa878c803612e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/26/2021
+ms.openlocfilehash: e5e1b1ec8dd9a7e7ddf006222d2990bb6c354cd8
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387103"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890134"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
 
@@ -23,7 +23,7 @@ Azure アカウントを持っていない場合は、無料アカウントを[�
 <!-- ## Prerequisites
 
 - Create a Kubernetes cluster in a supported Kubernetes distribution and connect it to Azure Arc in a supported region. See [Public preview limitations](overview-arc-integration.md#public-preview-limitations).
-- [Install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), or use the [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+- [Install Azure CLI](/cli/azure/install-azure-cli), or use the [Azure Cloud Shell](../cloud-shell/overview.md).
 - [Install kubectl](https://kubernetes.io/docs/tasks/tools/). It's also preinstalled in the Azure Cloud Shell.
 
 ## Obtain cluster information
@@ -51,6 +51,8 @@ az extension add --upgrade --yes --name connectedk8s
 az extension add --upgrade --yes --name k8s-extension
 az extension add --upgrade --yes --name customlocation
 az provider register --namespace Microsoft.ExtendedLocation --wait
+az provider register --namespace Microsoft.Web --wait
+az provider register --namespace Microsoft.KubernetesConfiguration --wait
 az extension remove --name appservice-kube
 az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
 ```
@@ -58,11 +60,7 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
 ## <a name="create-a-connected-cluster"></a>接続されているクラスターを作成する
 
 > [!NOTE]
-> App Service Kubernetes 環境に対して検証されている Kubernetes ディストリビューションが増えているため、Azure Arc 対応 Kubernetes クラスターの作成に関する一般的な説明については、[クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する](../azure-arc/kubernetes/quickstart-connect-cluster.md)を参照してください。
-
-<!-- https://github.com/MicrosoftDocs/azure-docs-pr/pull/156618 -->
-
-現在、Arc での App Service は [Azure Kubernetes Service](/azure/aks/) でのみ検証されているため、Azure Arc 対応クラスターは Azure Kubernetes Service 上に作成してください。 
+> このチュートリアルでは、[Azure Kubernetes Service (AKS)](../aks/index.yml) を使用して、環境をゼロから設定するための具体的な手順を説明します。 ただし、運用ワークロードの場合、Azure で既に管理されているため、AKS クラスターで Azure Arc を有効にする必要がない可能性があります。 以下の手順は、このサービスを理解するのに役立ちますが、運用環境のデプロイでは、規範的なものではなく例示と考えてください。 Azure Arc 対応 Kubernetes クラスターを作成する一般的な手順については、「[クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する](../azure-arc/kubernetes/quickstart-connect-cluster.md)」を参照してください。
 
 1. パブリック IP アドレスを使用して、Azure Kubernetes Service でクラスターを作成します。 `<group-name>` は、使用するリソース グループ名に置き換えてください。
 
@@ -162,7 +160,7 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
         --release-train stable \
         --auto-upgrade-minor-version true \
         --scope cluster \
-        --release-namespace '${namespace}' \
+        --release-namespace $namespace \
         --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" \
         --configuration-settings "appsNamespace=${namespace}" \
         --configuration-settings "clusterName=${kubeEnvironmentName}" \
@@ -220,7 +218,7 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
 `kubectl` を使用して、Kubernetes クラスターで作成されたポッドを確認できます。
 
 ```bash
-kubectl get pods -n ${namespace}
+kubectl get pods -n $namespace
 ```
 
 これらのポッドと、システム内でのそれらの役割の詳細については、[App Service 拡張機能によって作成されたポッド](overview-arc-integration.md#pods-created-by-the-app-service-extension)を参照してください。
@@ -246,7 +244,7 @@ Azure の[カスタムの場所](../azure-arc/kubernetes/custom-locations.md)は
         --resource-group $groupName \
         --name $customLocationName \
         --host-resource-id $connectedClusterId \
-        --namespace ${namespace} \
+        --namespace $namespace \
         --cluster-extension-ids $extensionId
     ```
     
@@ -281,7 +279,7 @@ Azure の[カスタムの場所](../azure-arc/kubernetes/custom-locations.md)は
         --resource-group $groupName \
         --name $kubeEnvironmentName \
         --custom-location $customLocationId \
-        --static-ip "$staticIp"
+        --static-ip $staticIp
     ```
     
 2. 次のコマンドを使用して、App Service Kubernetes 環境が正常に作成されたことを確認します。 出力で、`provisioningState` プロパティは `Succeeded` のように表示されるはずです。 そうではない場合、少し時間をおいてからもう一度実行してください。

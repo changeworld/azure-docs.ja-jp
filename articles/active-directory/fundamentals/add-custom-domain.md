@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de370b133e5938d3838f1968691b475e8d6fdd40
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95973900"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478773"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 
@@ -98,7 +98,9 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
 Azure AD でカスタム ドメイン名を検証できない場合は、次の推奨事項を試してください。
 
-- **少なくとも 1 時間待機してから、もう一度試します**。 DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 このプロセスに 1 時間以上かかることがあります。
+- **少なくとも 1 時間待機してから、もう一度試します。** DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。 このプロセスに 1 時間以上かかることがあります。
+ 
+- **子ドメインを確認しようとしている場合は、まず、親ドメインを確認します。** 子ドメインを確認する前に、親ドメインが作成され、確認されていることを調べてください。
 
 - **DNS レコードが正しいことを確認します。** ドメイン名レジストラー サイトに戻ります。 エントリがあること、およびそれが Azure AD によって提供される DNS エントリ情報と一致していることを確認します。
 

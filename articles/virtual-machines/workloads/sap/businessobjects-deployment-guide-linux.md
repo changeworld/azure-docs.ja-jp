@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: faaed05a52708ed1c2563e6476a1e86faa02dcf7
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a97454abdf91ddaaf355283a5bbed99adc184e0d
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946784"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020423"
 ---
-# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
+# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Linux on Azure 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
 この記事では、Azure 上に Linux 向け SAP BusinessObjects BI プラットフォームをデプロイする戦略について説明します。 この例には、Premium SSD マネージド ディスクをインストール ディレクトリとする 2 つの仮想マシンが構成されています。 CMS データベースには Azure Database for MySQL が使用され、ファイル リポジトリ サーバーの Azure NetApp Files は両方のサーバーで共有されます。 既定の Tomcat Java Web アプリケーションと BI プラットフォーム アプリケーションは、両方の仮想マシンに一緒にインストールされます。 ユーザー要求の負荷を分散するために、ネイティブの TLS/SSL オフロード機能を備えた Application Gateway が使用されます。
 
@@ -371,7 +371,7 @@ Azure portal にサインインし、こちらの [Azure Database for MySQL の�
    +----------------------------------------------------------------------------+
    ```
 
-### <a name="install-mysql-c-api-connector-libmysqlclient-on-linux-server"></a>Linux サーバーへの MySQL C API コネクタ (libmysqlclient) のインストール
+### <a name="install-mysql-c-api-connector-libmysqlclient-on-a-linux-server"></a>Linux サーバーへの MySQL C API コネクタ (libmysqlclient) のインストール
 
 SAP BOBI アプリケーション サーバーからデータベースへのアクセスには、データベース クライアントまたはドライバーが必要です。 CMS および監査データベースにアクセスするには、Linux 用 MySQL C API コネクタを使用する必要があります。 CMS データベースへの ODBC 接続はサポートされていません。 このセクションでは、Linux で MySQL C API コネクタを設定する方法について説明します。
 
@@ -518,11 +518,11 @@ select version();
 
 ## <a name="post-installation"></a>インストール後
 
-SAP BOBI プラットフォームの複数インスタンスのインストール後に、アプリケーションの高可用性をサポートするには、追加の構成後手順を行う必要があります。
+SAP BOBI プラットフォームの複数インスタンスのインストール後に、アプリケーションの高可用性をサポートするには、追加の構成後手順を実行する必要があります。
 
 ### <a name="configuring-cluster-name"></a>クラスター名の構成
 
-SAP BOBI プラットフォームの複数インスタンスのデプロイでは、1 つのクラスターで複数の CMS サーバーを一緒に実行します。 1 つのクラスターは、共通の CMS システム データベースに対して連携する 2 つ以上の CMS サーバーで構成されます。 CMS で実行されているノードで障害が発生した場合、別の CMS があるノードで BI プラットフォームの要求の処理が続けられます。 SAP BOBI プラットフォームの既定の設定では、クラスター名に、インストールした最初の CMS のホスト名が反映されます。
+SAP BOBI プラットフォームの複数インスタンスのデプロイでは、1 つのクラスターで複数の CMS サーバーを一緒に実行します。 クラスターは、共通の CMS システム データベースに対して連携する 2 つ以上の CMS サーバーで構成されます。 CMS で実行されているノードで障害が発生した場合、別の CMS があるノードで BI プラットフォームの要求の処理が続けられます。 SAP BOBI プラットフォームの既定の設定では、クラスター名に、インストールした最初の CMS のホスト名が反映されます。
 
 Linux でクラスター名を構成するには、「[SAP Business Intelligence プラットフォーム管理者ガイド](https://help.sap.com/viewer/2e167338c1b24da9b2a94e68efd79c42/4.3)」に記載されている手順に従います。 クラスター名を構成した後、SAP Note [1660440](https://launchpad.support.sap.com/#/notes/1660440) に従って、CMC または BI ラウンチパッドのサインイン ページで既定のシステム エントリを設定します。
 
@@ -613,7 +613,7 @@ Linux 仮想マシン上で実行されている SAP BOBI プラットフォー�
 
 1. Azure Database for MySQL は、Azure の DBaaS オファリングであり、サーバーのバックアップが自動的に作成され、ユーザーが構成したローカル冗長ストレージまたは geo 冗長ストレージに保存されます。 Azure Database for MySQL によって、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) が作成されます。 これらのバックアップを使用すると、サーバーを、構成済みのバックアップ保持期間内の任意の時点に復元できます。 既定のバックアップ保持期間は 7 日間です。これは最大 3 日間まで[必要に応じて構成](../../../mysql/howto-restore-server-portal.md#set-backup-configuration)できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。 これらのバックアップ ファイルはユーザーに公開されておらず、エクスポートできません。 これらのバックアップは、Azure Database for MySQL の復元操作にのみ使用できます。 [mysqldump](../../../mysql/concepts-migrate-dump-restore.md) を使用して、データベースをコピーできます。 詳細については、「[Azure Database for MySQL でのバックアップと復元](../../../mysql/concepts-backup.md)」を参照してください。
 
-2. Azure 仮想マシンにインストールされているデータベースの場合、サポートされているデータベース用の、標準のバックアップ ツールまたは [Azure Backup](../../../backup/sap-hana-db-about.md) サービスを使用できます。 また、Azure のサービスとツールが要件を満たさない場合は、すべての SAP BOBI プラットフォーム コンポーネントのバックアップと回復のためのエージェントが用意されている、サードパーティ製のバックアップ ツールを使用できます。
+2. Azure 仮想マシンにインストールされているデータベースの場合、サポートされているデータベース用の、標準のバックアップ ツールまたは [Azure Backup](../../../backup/sap-hana-db-about.md) サービスを使用できます。 また、Azure のサービスとツールが要件を満たさない場合は、すべての SAP BOBI プラットフォーム コンポーネントのバックアップと復旧のためのエージェントが用意されている、サードパーティ製のバックアップ ツールを使用できます。
 
 ## <a name="high-availability"></a>高可用性
 
@@ -682,7 +682,7 @@ Web サーバー全体でトラフィックを分散するには、Azure Load Ba
 
 ## <a name="disaster-recovery"></a>障害復旧
 
-このセクションの手順では、Linux 上で実行されている SAP BOBI プラットフォームのディザスター リカバリー保護を用意する方法について説明します。 それにより、SAP のディザスター リカバリー アプローチ全体の主要なリソースを表す [SAP のディザスター リカバリー](../../../site-recovery/site-recovery-sap.md) ドキュメントを補完します。 SAP BusinessObjects BI プラットフォームの場合は、SAP Note [2056228](https://launchpad.support.sap.com/#/notes/2056228) を参照してください。ここでは、DR 環境を安全に実装するための方法について説明されています。
+このセクションの手順では、Linux 上で実行されている SAP BOBI プラットフォームのディザスター リカバリー保護を用意する方法について説明します。 それにより、SAP のディザスター リカバリー アプローチ全体の主要なリソースを表す [SAP のディザスター リカバリー](../../../site-recovery/site-recovery-sap.md) ドキュメントを補完します。 SAP BusinessObjects BI プラットフォームの場合は、SAP ノート [2056228](https://launchpad.support.sap.com/#/notes/2056228) を参照してください。ここでは、DR 環境を安全に実装するための方法について説明されています。
 
 - プライマリ システムからコンテンツを昇格および配布するための、ライフサイクル管理 (LCM) またはフェデレーションの完全または選択的な使用。
 - CMS と FRS の内容の定期的なコピー。

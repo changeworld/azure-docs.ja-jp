@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: e56867b66e963239a62a13876fee78f4075ea65b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0592af3d5f73476b1dd479fde2651be07ba8aa33
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744321"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949789"
 ---
 # <a name="np-series"></a>NP シリーズ 
 NP シリーズの仮想マシンでは、機械学習の推論、ビデオのトランスコード、データベースの検索と分析など、ワークロードを加速させるために [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA を利用しています。 また、NP シリーズの VM は Intel Xeon 8171M (Skylake) の CPU を搭載し、全コア ターボ クロック速度は 3.2 GHz です。
@@ -41,15 +41,15 @@ VM 世代サポート: 第 1 世代<br>
 
 **Q:** NP VM のクォータを要求するにはどうすればよいですか?
 
-**A:** [VM シリーズでの制限の引き上げ](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)に関するページの説明に従ってください。 NP VM は、米国東部、米国西部 2、西ヨーロッパ、東南アジアで利用できます。
+**A:** [VM シリーズでの制限の引き上げ](../azure-portal/supportability/per-vm-quota-requests.md)に関するページの説明に従ってください。 NP VM は、米国東部、米国西部 2、西ヨーロッパ、東南アジアで利用できます。
 
 **Q:** 使用すべき Vitis のバージョンを教えてください。 
 
-**A:** Xilinx では [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html) を推奨しています。
+**A:** Xilinx では、[Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html) を推奨しています。開発用 VM マーケットプレース オプション (Ubuntu 18.04 および Centos 7.8 用の Vitis 2020.2 開発用 VM) を使用することもできます。
 
 **Q:** ソリューションを開発するために NP VM を使用する必要がありますか。 
 
-**A:** いいえ。オンプレミスで開発し、クラウドにデプロイできます。 [構成証明のドキュメント](https://docs.microsoft.com/azure/virtual-machines/field-programmable-gate-arrays-attestation)に従って、NP VM にデプロイしてください。 
+**A:** いいえ。オンプレミスで開発し、クラウドにデプロイできます。 [構成証明のドキュメント](./field-programmable-gate-arrays-attestation.md)に従って、NP VM にデプロイしてください。 
 
 **Q:** NP VM で FPGA をプログラミングするとき、構成証明から返されたどのファイルを使用すべきですか。
 
@@ -122,11 +122,22 @@ VM 世代サポート: 第 1 世代<br>
 
 **A:** これは無視しても問題ありません。 
 
-**Q:** XRT に関してオンプレミス と NP の 各VM の違いは何ですか。 
+**Q:** オンプレミス VM と NP VM の違いは何ですか。
 
-**A:** Azure では、XDMA 2.1 プラットフォームは Host_Mem (SB) および DDR データ保有機能のみをサポートします。 
+**A:**  
+<br>
+<b>- XOCL/XCLMGMT について: </b>
+<br>
+Azure NP VM では、XOCL ドライバーを使用するロール エンドポイント (デバイス ID 5005) のみが存在します。
 
-Host_Mem(SB) (1Gb RAM) を有効にするには: sudo xbutil host_mem --enable --size 1g 
+オンプレミス FPGA では、XCLMGMT ドライバーを使用する管理エンドポイント (デバイス ID 5004) と、XOCL ドライバーを使用するロール エンドポイント (デバイス ID 5005) の両方が存在します。
+
+<br>
+<b>- XRT について: </b>
+<br>
+Azure NP VM では、XDMA 2.1 プラットフォームは、Host_Mem(SB) および DDR データ保有機能のみをサポートします。 
+<br>
+Host_Mem(SB) (最大 1Gb RAM) を有効にするには: sudo xbutil host_mem --enable --size 1g 
 
 Host_Mem(SB) を無効にするには: sudo xbutil host_mem --disable 
 

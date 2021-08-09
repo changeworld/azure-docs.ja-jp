@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2020
+ms.date: 06/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 135ca977f19ed44742b1086c7a02a9b89dab1445
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98632184"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422032"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Azure Sentinel に Office 365 のログを接続する
 
-[Office 365](/office/) のログ コネクタは、**Exchange**、**SharePoint** (**OneDrive** を含む)、そして今回追加された **Teams** でユーザーと管理者の実行中のアクティビティに関する情報を Azure Sentinel に取り込みます。 この情報には、ファイルのダウンロード、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作、Teams イベント (チャット イベント、チーム イベント、メンバー イベント、チャンネル イベントなど) などのアクションの詳細と、アクションを実行したユーザーの詳細が含まれます。 Office 365 のログを Azure Sentinel に接続することで、ブックでのこのデータの表示と分析、カスタム アラートの作成のためのこのデータに対するクエリの実行、調査プロセスの改善のためのこのデータの組み込みが可能になり、Office 365 のセキュリティをより深く把握できるようになります。
+[Office 365](/office/) ログ コネクタは、**Exchange** と **SharePoint** (**OneDrive** を含む)、**Teams** における進行中のユーザーと管理者の活動に関する情報を Azure Sentinel に提供します。 この情報には、ファイルのダウンロード、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作、Teams イベント (チャット イベント、チーム イベント、メンバー イベント、チャンネル イベントなど) などのアクションの詳細と、アクションを実行したユーザーの詳細が含まれます。 Office 365 のログを Azure Sentinel に接続することで、ブックでのこのデータの表示と分析、カスタム アラートの作成のためのこのデータに対するクエリの実行、調査プロセスの改善のためのこのデータの組み込みが可能になり、Office 365 のセキュリティをより深く把握できるようになります。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +42,7 @@ ms.locfileid: "98632184"
 
 
    > [!NOTE]
-   > 前述のように、またコネクタ ページの **[データ型]** の下に表示されるように、現在、Azure Sentinel Office 365 コネクタでは、Microsoft Exchange、SharePoint (OneDrive を含む)、**そして今回追加された Teams** からのみ、監査ログの取り込みがサポートされています。 ただし、[他の Office のデータ](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888)を Azure Sentinel に取り込むことに関心をお持ちの場合は、外部ソリューションがいくつか存在します。 
+   > 上述したように、またコネクタ ページの **[データ型]** にもあるように、現在 Azure Sentinel Office 365 コネクタは、Microsoft Exchange、SharePoint (OneDrive を含む)、Teams からの監査ログの取り込みのみをサポートしています。 ただし、[他の Office のデータ](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888)を Azure Sentinel に取り込むことに関心をお持ちの場合は、外部ソリューションがいくつか存在します。 
 
 ## <a name="enable-the-office-365-log-connector"></a>Office 365 ログ コネクタを有効にする
 

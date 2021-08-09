@@ -1,5 +1,5 @@
 ---
-title: Azure Static Web Apps Preview を使用してフロントエンド フレームワークを構成する
+title: Azure Static Web Apps を使用してフロントエンド フレームワークを構成する
 description: Azure Static Web Apps に必要となる、一般的なフロントエンド フレームワークの設定
 services: static-web-apps
 author: craigshoemaker
@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 9f02c9ad10e2b03bddc7c3ca2cfb54932464b69a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 767b20600c8edb2752a87a10c788ee446a8f15b3
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731753"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813976"
 ---
-# <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview を使用してフロントエンド フレームワークとライブラリを構成する
+# <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>Azure Static Web Apps を使用してフロントエンド フレームワークとライブラリを構成する
 
 Azure Static Web Apps を使用するには、フロントエンド フレームワークまたはライブラリの[ビルド構成ファイル](github-actions-workflow.md)内に、適切な構成値が必要です。
 

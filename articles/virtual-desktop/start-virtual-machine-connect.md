@@ -3,15 +3,15 @@ title: 接続時に仮想マシンを起動 - Azure
 description: 接続時に仮想マシンを起動機能を構成する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/23/2021
+ms.date: 05/21/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 05500ded7512b54446d153e37233e4889b3107ff
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7e4ca9a6cfc87844bf74131b145c19aecd964554
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949190"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752137"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>接続時に仮想マシンを起動 (プレビュー)
 
@@ -22,11 +22,11 @@ ms.locfileid: "107949190"
 接続時に仮想マシン (VM) を起動 (プレビュー) 機能を使用すると、エンド ユーザーは必要時にのみ VM をオンにできるため、コストの節約になります。 必要でないときは VM をオフにすることができます。
 
 >[!NOTE]
->Windows Virtual Desktop (クラシック) では、この機能はサポートされていません。
+>Azure Virtual Desktop (クラシック) では、この機能はサポートされていません。
 
 ## <a name="requirements-and-limitations"></a>要件と制限事項
 
-接続時に仮想マシンを起動機能は、個人用ホスト プールに対してのみ有効にできます。 個人用ホスト プールの詳細については、「[Windows Virtual Desktop の環境](environment-setup.md#host-pools)」を参照してください。
+PowerShell と Azure portal を使用して、個人用またはプールされたホスト プールの "接続時に仮想マシンを起動" 機能を有効にすることができます。
 
 次のリモート デスクトップ クライアントでは、接続時に仮想マシンを起動機能がサポートされています。
 
@@ -37,11 +37,9 @@ ms.locfileid: "107949190"
 
 更新プログラムとクライアント サポートに関するお知らせについては、[Tech Community フォーラム](https://aka.ms/wvdtc)のページをご覧ください。
 
-現在、Azure Government クラウドでは、接続時の仮想マシンの起動はサポートしていません。
-
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>接続時に仮想マシンを起動用のカスタム ロールを作成する
 
-接続時に仮想マシンを起動機能を構成する前に、VM にカスタム RBAC (ロールベースのアクセス制御) ロールを割り当てる必要があります。 このロールを使用すると、Windows Virtual Desktop でサブスクリプション内の VM を管理できます。 また、このロールを使用して、VM を有効にしたり、その状態を確認したり、診断情報を報告したりすることもできます。 各ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
+接続時に仮想マシンを起動機能を構成する前に、VM にカスタム RBAC (ロールベースのアクセス制御) ロールを割り当てる必要があります。 このロールを使用すると、Azure Virtual Desktop でサブスクリプション内の VM を管理できるようになります。 また、このロールを使用して、VM を有効にしたり、その状態を確認したり、診断情報を報告したりすることもできます。 各ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
@@ -63,7 +61,7 @@ Azure portal を使用して、接続時に仮想マシンを起動のカスタ�
 
 5. 完了したら、 **[OK]** をクリックします。
 
-その後、ロールを割り当てて Windows Virtual Desktop へのアクセスを許可する必要があります。
+その後、ロールを割り当てて Azure Virtual Desktop へのアクセスを許可する必要があります。
 
 カスタム ロールを割り当てるには、次のようにします。
 
@@ -71,13 +69,13 @@ Azure portal を使用して、接続時に仮想マシンを起動のカスタ�
 
 2. 先ほど作成したロールを選択します。
 
-3. 検索バーに「**Windows Virtual Desktop**」と入力して選択します。
+3. 検索バーに「**Azure Virtual Desktop**」と入力して選択します。
 
       >[!NOTE]
-      >Windows Virtual Desktop (クラシック) をデプロイしている場合は、2 つのアプリが表示されることがあります。 表示される両方のアプリにロールを割り当てます。
+      >Azure Virtual Desktop (クラシック) をデプロイしている場合は、2 つのアプリが表示されることがあります。 表示される両方のアプリにロールを割り当てます。
       >
       > [!div class="mx-imgBorder"]
-      > ![[アクセス制御 (IAM)] タブのスクリーンショット。検索バーでは、Windows Virtual Desktop と Windows Virtual Desktop (クラシック) の両方が赤色で強調表示されています。](media/add-role-assignment.png)
+      > ![[アクセス制御 (IAM)] タブのスクリーンショット。検索バーでは、Azure Virtual Desktop と Azure Virtual Desktop (クラシック) の両方が赤色で強調表示されています。](media/add-role-assignment.png)
 
 ### <a name="create-a-custom-role-with-a-json-file-template"></a>JSON ファイル テンプレートを使用してカスタム ロールを作成する
 
@@ -114,6 +112,8 @@ JSON ファイルを使用してカスタム ロールを作成する場合、�
 
 接続時に仮想マシンを起動は、ホスト プール設定です。 選択したユーザー グループのみがこの機能を使用できるようにするには、必要なロールを、追加したいユーザーのみに割り当てるようにしてください。
 
+個人用デスクトップの場合、この機能では、サービスによって既にユーザーに割り当てられているか、割り当てられる予定の既存の VM のみをオンにします。 プールされたホスト プールのシナリオでは、サービスは、どの VM もオンになっていない場合にのみ VM をオンにします。 この機能では、最初の VM がセッションの制限に達した場合にのみ、追加の VM をオンにします。
+
 >[!IMPORTANT]
 > この機能は、既存のホスト プールにのみ構成できます。 新しいホスト プールを作成するときには、この機能は使用できません。
 
@@ -123,12 +123,9 @@ Azure portal を使用して、接続時に仮想マシンを起動するには�
 
 1. Web ブラウザーを開いて [Azure portal](https://portal.azure.com) に移動します。
 
-2. Azure portal で **[Windows Virtual Desktop]** に移動します。
+2. Azure portal で **[Azure Virtual Desktop]** に移動します。
 
-3. **[ホスト プール]** を選択し、ロールを割り当てた個人用デスクトップを含むホスト プールを検索します。
-
-   >[!NOTE]
-   > この機能を設定したホスト プールには、直接ロールが割り当てられた個人用デスクトップが必要です。 ホスト プール内のデスクトップが正しく構成されていない場合、構成プロセスは機能しません。
+3. **[ホスト プール]** を選択し、設定を有効にするホスト プールに移動します。
 
 4. ホスト プールで **[プロパティ]** を選択します。 **[Start VM on connect]\(接続時に仮想マシンを起動\)** で **[はい]** を選択し、 **[保存]** を選択して設定を直ちに適用します。
 
@@ -161,9 +158,11 @@ PowerShell を使用して接続時に仮想マシンを起動を構成するに
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-この機能で問題が発生した場合は、Windows Virtual Desktop の[診断機能](diagnostics-log-analytics.md)を使用して問題を確認することをお勧めします。 エラー メッセージが表示された場合は、メッセージの内容をよく読み、参照のためにエラー名をどこかにコピーしておいてください。
+この機能で問題が発生した場合は、Azure Virtual Desktop の[診断機能](diagnostics-log-analytics.md)を使用して問題を確認することをお勧めします。 エラー メッセージが表示された場合は、メッセージの内容をよく読み、参照のためにエラー名をどこかにコピーしておいてください。
 
-[Azure Monitor for Windows Virtual Desktop](azure-monitor.md) を使用して、問題の解決方法に関する提案を得ることもできます。
+[Azure Monitor for Azure Virtual Desktop](azure-monitor.md) を使用して、問題の解決方法に関する提案を得ることもできます。
+
+VM がオンにならない場合は、他の操作を行う前に、オンにしようとしていた VM の正常性を確認する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 4ecbee2260da735cd6ba74d3b9ffb55b4a652e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7466a2e620a9489fe7b3b69967388d3ad4b7ab85
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93341998"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065338"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB SQL API のデータベースに標準 (手動) のスループットをプロビジョニングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,8 +31,10 @@ ms.locfileid: "93341998"
 1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいデータベース]** を選択します。 以下の詳細を指定します。
 
    * データベース ID を入力します。
-   * **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** オプションを選択します。
-   * スループットを入力します (例: 1000 RU)。
+   * **[Share throughput across containers]\(コンテナー間でスループットを共有する\)** オプションを選択します。
+   * **自動スケーリング** または **手動** スループットを選択し、必要な **データベース スループット** を入力します (例: 1000 RU/秒)。
+   * **[コンテナー ID]** にコンテナーの名前を入力します。
+   * **パーティション キー** を入力します。
    * **[OK]** を選択します。
 
     :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="[新しいデータベース] ダイアログ ボックスのスクリーンショット":::

@@ -2,13 +2,13 @@
 title: vWAN for Azure VMware Solution でサイト間 VPN を構成する
 description: Azure VMware Solution への VPN (IPsec IKEv1 および IKEv2) サイト間トンネルを確立する方法について説明します。
 ms.topic: how-to
-ms.date: 03/23/2021
-ms.openlocfilehash: 4d410a94b822db8eeed0ba166908c804a1a6eaaa
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.date: 06/11/2021
+ms.openlocfilehash: f3fbd3d9507e0203bc58494c2c1a748f1be7e585
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802777"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021416"
 ---
 # <a name="configure-a-site-to-site-vpn-in-vwan-for-azure-vmware-solution"></a>vWAN for Azure VMware Solution でサイト間 VPN を構成する
 
@@ -17,8 +17,11 @@ ms.locfileid: "108802777"
 :::image type="content" source="media/create-ipsec-tunnel/vpn-s2s-tunnel-architecture.png" alt-text="VPN サイト間トンネル アーキテクチャを示す図。" border="false":::
 
 この記事では、次のことについて説明します。
+
 - Azure Virtual WAN ハブとパブリック IP アドレスがアタッチされた VPN ゲートウェイを作成する。 
+
 - Azure ExpressRoute ゲートウェイを作成し、Azure VMware Solution エンドポイントを確立する。 
+
 - ポリシーベースの VPN のオンプレミス設定を有効にする。 
 
 ## <a name="prerequisites"></a>前提条件
@@ -67,15 +70,22 @@ ms.locfileid: "108802777"
  
 3. **[基本]** タブで、必須フィールドに入力します。 
 
-   :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics2.png" alt-text="新しい VPN サイトの [基本] タブのスクリーンショット。":::  
+   :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics2.png" alt-text="新しい VPN サイトの [基本] タブのスクリーンショット。" lightbox="media/create-ipsec-tunnel/create-vpn-site-basics2.png":::  
 
-   1. **[Border Gateway Protocol]** を **[有効]** に設定します。  有効にすると、Azure VMware Solution とオンプレミス サーバーの両方がトンネルを介してルートをアドバタイズするようになります。 無効にした場合、アドバタイズする必要のあるサブネットは手動で保守する必要があります。 サブネットが欠落している場合、HCX はサービス メッシュの形成に失敗します。 詳細については、「[BGP と Azure VPN Gateway について](../vpn-gateway/vpn-gateway-bgp-overview.md)」を参照してください。
+   1. 一覧から、 **[リージョン]** を選択します。
+
+   1. サイト間 VPN の **[名前]** を指定します。
+
+   1. オンプレミス VPN デバイスの **[デバイス ベンダー]** (Cisco など) を指定します。
    
-   1. **[プライベート アドレス空間]** には、オンプレミスの CIDR ブロックを入力します。 これは、トンネルを介してオンプレミスにバインドされているすべてのトラフィックをルーティングするために使用されます。 CIDR ブロックは、BGP を有効にしない場合にのみ必要です。
+   1. **[プライベート アドレス空間]** を指定します。 オンプレミスの CIDR ブロックを使用し、オンプレミスへのトラフィックをすべてトンネルを介してルーティングします。 CIDR ブロックが必要になるのは、[Azure VPN Gateway でBorder Gateway Protocol (BGP) を構成](../vpn-gateway/bgp-howto.md)しない場合のみです
 
-1. **[次へ: リンク]** を選択し、必須フィールドに入力します。 リンクとプロバイダーの名前を指定すると、ハブの一部として最終的に作成される可能性のあるゲートウェイの数がいくつになっても区別できます。 BGP と自律システム番号 (ASN) は、組織内で一意である必要があります。
+1. **[次へ: リンク]** を選択し、必須フィールドに入力します。 リンクとプロバイダーの名前を指定すると、ハブの一部として最終的に作成される可能性のあるゲートウェイの数がいくつになっても区別できます。  [BGP](../vpn-gateway/vpn-gateway-bgp-overview.md) と自律システム番号 (ASN) は、組織内で一意である必要があります。 BGP は、Azure VMware Solution とオンプレミス サーバーの両方がトンネルを介してルートをアドバタイズするようにします。 無効にした場合、アドバタイズする必要のあるサブネットは手動で保守する必要があります。 サブネットが欠落している場合、HCX はサービス メッシュの形成に失敗します。 
+ 
+   >[!IMPORTANT]
+   >既定では、Azure により、Azure VPN ゲートウェイの Azure BGP IP アドレスとして、GatewaySubnet プレフィックス範囲のプライベート IP アドレスが自動的に割り当てられます。 オンプレミスの VPN デバイスにより、BGP IP として APIPA アドレス (169.254.0.1 から 169.254.255.254) が使用される場合は、カスタム Azure APIPA BGP アドレスが必要です。 対応するローカル ネットワーク ゲートウェイ リソース (オンプレミス ネットワーク) に、BGP ピア IP として APIPA アドレスがある場合、Azure VPN Gateway により、カスタム APIPA アドレスが選択されます。 ローカル ネットワーク ゲートウェイによって (APIPA ではなく) 通常の IP アドレスが使用される場合は、Azure VPN Gateway によって GatewaySubnet 範囲のプライベート IP アドレスに戻されます。
 
-   :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-links.png" alt-text="リンクの詳細を示すスクリーンショット。":::
+   :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-links.png" alt-text="リンクの詳細を示すスクリーンショット。" lightbox="media/create-ipsec-tunnel/create-vpn-site-links.png":::
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 
 
@@ -97,8 +107,11 @@ ms.locfileid: "108802777"
    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="[このハブへの VPN 接続の編集] にアクセスするために選択された省略記号を示している Azure の仮想 WAN ハブ サイト用のページのスクリーンショット。" lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
 
 3. VPN サイトとハブ間の接続を編集し、 **[保存]** を選択します。
+
    - インターネット プロトコル セキュリティ (IPSec) で **[カスタム]** を選択します。
+
    - ポリシーベースのトラフィック セレクターを使用して **[有効にする]** を選択します
+
    - **[IKE フェーズ 1]** と **[IKE フェーズ 2 (ipsec)]** の詳細を指定します。 
  
    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="[VPN 接続を編集する] ページのスクリーンショット。"::: 
@@ -106,7 +119,9 @@ ms.locfileid: "108802777"
    ポリシーベースの暗号化ドメインの一部であるトラフィック セレクターまたはサブネットは、次のようになります。
     
    - Virtual WAN ハブ `/24`
+
    - Azure VMware Solution のプライベート クラウド `/22`
+
    - 接続されている Azure 仮想ネットワーク (存在する場合)
 
 ## <a name="step-5-connect-your-vpn-site-to-the-hub"></a>手順 5. VPN サイトをハブに接続する
@@ -144,8 +159,11 @@ ms.locfileid: "108802777"
       :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="プライベート クラウドの [ExpressRoute] ページで [認可キーを利用する] が選択されているスクリーンショット。":::
 
    1. 認可キーを **[認可キー]** フィールドに貼り付けます。
+
    1. ExpressRoute ID を **[ピア回線の URI]** フィールドに貼り付けます。 
+
    1. **[この ExpressRoute 回線をハブに自動的に関連付けます]** チェック ボックスを選択します。 
+
    1. **[追加]** を選択してリンクを確立します。 
 
 5. 接続をテストするために、[NSX-T セグメントを作成](./tutorial-nsx-t-network-segment.md)してネットワーク上に VM をプロビジョニングします。 オンプレミスと Azure VMware Solution の両方のエンドポイントに ping を実行します。

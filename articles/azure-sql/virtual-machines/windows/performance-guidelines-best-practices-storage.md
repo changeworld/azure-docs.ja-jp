@@ -8,6 +8,7 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
+ms.subservice: performance
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -15,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 9a9cfc444c101b603b5287fa862c36d5befef91a
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: d3a4a8bb54c5bafa9eb50ed4441cd6eebe2acc6c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110189652"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079915"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>ストレージ: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +30,7 @@ ms.locfileid: "110189652"
 
 通常、コストの最適化とパフォーマンスの最適化はトレードオフの関係になっています。 このパフォーマンスに関するベスト プラクティス シリーズでは、Azure Virtual Machines の SQL Server の "*最善の*" パフォーマンスを得ることに重点を置いています。 ワークロードの要求が厳しくない場合は、推奨される最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズ、コスト、およびワークロードのパターンを考慮してください。
 
-詳細については、このシリーズの他の記事、「[パフォーマンス チェックリスト](performance-guidelines-best-practices-checklist.md)」、「[VM サイズ](performance-guidelines-best-practices-vm-size.md)」、および「[ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)」を参照してください。 
+詳しくは、このシリーズ記事 ([チェックリスト](performance-guidelines-best-practices-checklist.md)、[VM のサイズ](performance-guidelines-best-practices-vm-size.md)、[セキュリティ](security-considerations-best-practices.md)、[HADR の構成](hadr-cluster-best-practices.md)、[ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)) の他の記事をご覧ください。 
 
 ## <a name="checklist"></a>チェック リスト
 
@@ -277,10 +278,12 @@ I/O ユニットサイズは IOPS とスループットの能力に影響を及�
 パフォーマンスのベスト プラクティスの詳細については、このシリーズの他の記事を参照してください。
 - [クイック チェックリスト](performance-guidelines-best-practices-checklist.md)
 - [VM サイズ](performance-guidelines-best-practices-vm-size.md)
+- [Security](security-considerations-best-practices.md)
+- [HADR の設定](hadr-cluster-best-practices.md)
 - [ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)
 
 セキュリティのベスト プラクティスについては、「[Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項](security-considerations-best-practices.md)」をご覧ください。
 
 TPC-E および TPC_C ベンチマークによる Azure VM 上の SQL Server のパフォーマンスの詳細なテストについては、[OLTP のパフォーマンスの最適化](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794)に関するブログを参照してください。
 
-SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。

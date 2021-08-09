@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b2acc37efb497748abe5f63bd58e96b16171b21
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519624"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538398"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>ローカルでのモデル デプロイを使用したトラブルシューティング
 
@@ -33,6 +33,31 @@ Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) への�
    * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
    * ローカル システムで動作する Docker インストールを使用します。 
    * Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
+* オプション C - Azure Machine Learning 推論 HTTP サーバーを使用したローカル デバッグを有効にします。
+    * Azure Machine Learning 推論 HTTP サーバー [(プレビュー)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) は、ローカルの開発環境で入力スクリプト (`score.py`) を簡単に検証できる Python のパッケージです。 スコアリング スクリプトに問題がある場合、サーバーからエラーが返されます。 また、エラーが発生した場所も返されます。
+    * サーバーは、継続的インテグレーションとデプロイ パイプラインで検証ゲートを作成するときにも使用できます。 たとえば、候補のスクリプトでサーバーを起動し、ローカル エンドポイントに対してテスト スイートを実行します。
+
+## <a name="azure-machine-learning-inference-http-server"></a>Azure Machine Learning 推論 HTTP サーバー
+
+ローカル推論サーバーを使用すると、エントリ スクリプト (`score.py`) をすばやくデバッグできます。 基になるスコア スクリプトにバグがある場合、サーバーはモデルの初期化やサービスの提供に失敗します。 代わりに、例外と、問題が発生した場所がスローされます。 [Azure Machine Learning 推論 HTTP サーバーの詳細](how-to-inference-server-http.md)
+
+1. [Pypi](https://pypi.org/) フィードから `azureml-inference-server-http` パッケージをインストールします。
+
+    ```bash
+    python -m pip install azureml-inference-server-http
+    ```
+
+2. サーバーを起動し、エントリ スクリプトとして `score.py` を設定します。
+
+    ```bash
+    azmlinfsrv --entry_script score.py
+    ```
+
+3. `curl` を使用して、スコアリング要求をサーバーに送信します。
+
+    ```bash
+    curl -p 127.0.0.1:5001/score
+    ```
 
 ## <a name="debug-locally"></a>ローカル デバッグ
 
@@ -128,6 +153,7 @@ print(ws.webservices['mysvc'].get_logs())
 デプロイの詳細については、以下を参照してください。
 
 * [リモート デプロイのトラブルシューティング方法](how-to-troubleshoot-deployment.md)
+* [Azure Machine Learning 推論 HTTP サーバー](how-to-inference-server-http.md)
 * [デプロイする方法とその場所](how-to-deploy-and-where.md)
 * [チュートリアル:モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)
 * [ローカルで実験を実行およびデバッグする方法](./how-to-debug-visual-studio-code.md)

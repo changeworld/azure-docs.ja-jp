@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/27/2021
   ms.author: kenwith
   ms.reviewer: japere
-  ms.openlocfilehash: 711a72a689238e22d83109c9ea4f16501ff4c205
-  ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+  ms.openlocfilehash: 74ef399240307823ae5291f3c7bd073d2c0e8db0
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/14/2021
-  ms.locfileid: "113727784"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111964819"
 title: Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 summary: このページには、Azure Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問への回答が記載されています。
 sections:
@@ -29,7 +29,7 @@ sections:
   - question: >
       Azure AD アプリケーション プロキシを使用するにはどのライセンスが必要ですか。
     answer: >
-      Azure AD アプリケーション プロキシを使用するには、Azure AD Premium P1 または P2 ライセンスが必要です。 ライセンスの詳細については、[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
+      Azure AD アプリケーション プロキシを使用するには、Azure AD Premium P1 または P2 ライセンスが必要です。 ライセンスの詳細については、[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
   - question: >
       ライセンスの有効期限が切れた場合、自分のテナントの Azure AD アプリケーション プロキシはどうなりますか。
     answer: >

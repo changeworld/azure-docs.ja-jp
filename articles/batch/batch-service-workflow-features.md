@@ -2,13 +2,13 @@
 title: Batch サービスのワークフローとリソース
 description: 開発の観点から、Batch サービスの機能とその高レベルのワークフローについて説明します。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: c525b635bbda4284c876fa092c285e884a33db73
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85965214"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006997"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Batch サービスのワークフローとリソース
 
@@ -17,7 +17,7 @@ ms.locfileid: "85965214"
 [REST API](/rest/api/batchservice/) を直接呼び出す分散コンピューティング アプリケーションまたはサービスを開発する場合も、いずれかの [Batch SDK](batch-apis-tools.md#batch-service-apis) を使う場合も、ここで紹介するさまざまなリソースや機能を活用できます。
 
 > [!TIP]
-> Batch サービスの基本については、「 [Azure Batch の基礎](batch-technical-overview.md)」を参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
+> Batch サービスの基本については、「[Azure Batch とは](batch-technical-overview.md)」を参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
 
 ## <a name="basic-workflow"></a>基本的なワークフロー
 

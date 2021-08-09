@@ -1,25 +1,25 @@
 ---
 title: 'P2S VPN クライアント構成ファイルを作成してインストールする: 証明書認証'
 titleSuffix: Azure VPN Gateway
-description: P2S 証明書認証のために、Windows、Linux、Linux (strongSwan)、および macOS X の VPN クライアント構成ファイルを作成してインストールする方法について説明します。
+description: Windows、Linux (strongSwan)、macOS 用の VPN クライアント構成ファイルを生成してインストールする方法について説明します。 この記事は、証明書認証を使用する VPN Gateway P2S 構成に適用されます。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 06/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: 239166c872578b310fe8eb0393a7a37f4d25129f
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 80425670d40a32c229d6c9cf5aceab9a37072962
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202553"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558834"
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
+# <a name="generate-and-install-vpn-client-configuration-files-for-p2s-certificate-authentication"></a>P2S 証明書認証用の VPN クライアント構成ファイルを生成してインストールする
 
-VPN クライアント構成ファイルは、ZIP ファイルに含まれています。 構成ファイルでは、Windows、Mac IKEv2 VPN、Linux のネイティブ クライアントが、ネイティブ Azure 証明書認証を使用するポイント対サイト接続を介して仮想ネットワークに接続するために必要な設定を提供します。
+ポイント対サイトと証明書認証を使用して Azure VNet に接続する場合は、接続元のオペレーティング システムにネイティブにインストールされている VPN クライアントを使用します。 VPN クライアントに必要なすべての構成設定は、VPN クライアント構成 ZIP ファイルに含まれています。 ZIP ファイル内の設定を使用することで、Windows、Mac IKEv2 VPN、または Linux 用の VPN クライアントを簡単に構成できます。
 
-クライアント構成ファイルは、仮想ネットワークの VPN 構成に固有です。 VPN プロトコルの種類や認証の種類など、VPN クライアント構成ファイルの生成後にポイント対サイト VPN 構成に対する変更があった場合は、ユーザー デバイス用に新しい VPN クライアント構成ファイルを生成してください。
+生成する VPN クライアント構成ファイルは、仮想ネットワークの P2S VPN ゲートウェイ構成に固有です。 ファイルを生成した後に、ポイント対サイト VPN 構成に変更があった場合は (VPN プロトコルの種類や認証の種類の変更など)、新しい VPN クライアント構成ファイルを生成し、接続するすべての VPN クライアントに新しい構成を適用する必要があります。
 
 * ポイント対サイト接続について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
 * OpenVPN の取扱説明については、[P2S 向け OpenVPN を構成する](vpn-gateway-howto-openvpn.md)方法に関するページと [OpenVPN クライアントを構成する](vpn-gateway-howto-openvpn-clients.md)方法に関するページを参照してください。
@@ -30,8 +30,6 @@ VPN クライアント構成ファイルは、ZIP ファイルに含まれてい
 
 ## <a name="generate-vpn-client-configuration-files"></a><a name="generate"></a>VPN クライアント構成ファイルの生成
 
-開始する前に、接続するすべてのユーザーでは、有効な証明書がユーザーのデバイスにインストールされていることを確認してください。 クライアント証明書のインストールの詳細については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページを参照してください。
-
 PowerShell または Azure Portal を使用してクライアント構成ファイルを生成することができます。 どちらの方法でも、同じ zip ファイルが返されます。 そのファイルを解凍して、次のフォルダーを表示します。
 
 * **WindowsAmd64** および **WindowsX86**。Windows の 32 ビットと 64 ビットのインストーラー パッケージがそれぞれに含まれています。 **WindowsAmd64** インストーラー パッケージは、Amd だけでなく、サポートされている 64 ビットの Windows クライアントを対象としています。
@@ -40,11 +38,11 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Azure Portal を使用してルールを生成する
 
 1. Azure Portal で、接続する仮想ネットワークの仮想ネットワーク ゲートウェイに移動します。
-1. 仮想ネットワーク ゲートウェイ ページで、 **[ポイント対サイトの構成]** を選択します。
+1. 仮想ネットワーク ゲートウェイ ページで、 **[ポイント対サイトの構成]** を選択して、[ポイント対サイトの構成] ページを開きます。
+1. [ポイント対サイトの構成] ページの上部で **[VPN クライアントのダウンロード]** を選択します。 これにより、VPN クライアント ソフトウェアがダウンロードされるのではなく、VPN クライアントの構成に使用される構成パッケージが生成されます。 クライアント構成パッケージが生成されるまでに数分かかります。
 
-   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/download-client.png" alt-text="VPN クライアントをダウンロードする":::
-1. [ポイント対サイトの構成] ページの上部で **[VPN クライアントのダウンロード]** を選択します。 クライアント構成パッケージが生成されるまでに数分かかります。
-1. お使いのブラウザーは、クライアント構成の zip ファイルが使用可能なことを示します。 ゲートウェイと同じ名前が付いています。 そのファイルを解凍して、フォルダーを表示します。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/download-client.png" alt-text="VPN クライアント構成のダウンロード。":::
+1. 構成パッケージが生成されると、クライアント構成 ZIP ファイルが使用可能であることがブラウザーに示されます。 ファイルにはゲートウェイと同じ名前が付けられています。 そのファイルを解凍して、フォルダーを表示します。
 
 ### <a name="generate-files-using-powershell"></a><a name="zipps"></a>PowerShell を使用してファイルを生成する
 
@@ -62,9 +60,9 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 [!INCLUDE [Windows instructions](../../includes/vpn-gateway-p2s-client-configuration-windows.md)]
 
-## <a name="mac-os-x"></a><a name="installmac"></a>Mac (OS X)
+## <a name="mac-macos"></a><a name="installmac"></a>Mac (macOS)
 
- Azure に接続するすべての Mac で、ネイティブの IKEv2 VPN クライアントを手動で構成する必要があります。 Azure では、ネイティブの Azure 証明書の認証用の mobileconfig ファイルは提供されません。 **Generic** には、構成に必要な情報がすべて揃っています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 VPN Gateway Basic SKU は IKEv2 をサポートしていないことに注意してください。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。<br>Generic フォルダーには、次のファイルが含まれています。
+ Azure に接続するすべての Mac で、ネイティブの IKEv2 VPN クライアントを手動で構成する必要があります。 Azure では、ネイティブの Azure 証明書の認証用の mobileconfig ファイルは提供されません。 **Generic** フォルダーには、構成に必要なすべての情報が含まれています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 VPN Gateway Basic SKU は IKEv2 をサポートしていないことに注意してください。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。<br>Generic フォルダーには、次のファイルが含まれています。
 
 * **VpnSettings.xml**。サーバー アドレスやトンネルの種類など、重要な設定が含まれています。 
 * **VpnServerRoot.cer**。P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。

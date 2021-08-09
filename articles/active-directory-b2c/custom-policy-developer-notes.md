@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/04/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9c9d5ae5fec9b9258527606d352cef83d5b5a41c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 295dfa5a02ce3f46049805339a4f7918ce20361e
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742825"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565196"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の開発者向けのメモ
 
@@ -37,8 +37,9 @@ Azure Active Directory B2C の[ユーザー フローとカスタム ポリシ�
 | ユーザー名とパスワードによる[サインアップとサインイン](add-sign-up-and-sign-in-policy.md)。| GA | GA | |
 | [プロファイル編集フロー](add-profile-editing-policy.md) | GA | GA | |
 | [セルフサービス パスワード リセット](add-password-reset-policy.md) | GA| GA| |
-| [パスワードの強制的なリセット](force-password-reset.md) | プレビュー | NA | |
+| [パスワードの強制的なリセット](force-password-reset.md) | GA | NA | |
 | [電話によるサインアップとサインイン](phone-authentication-user-flows.md) | GA | GA | |
+| [条件付きアクセスと ID 保護](conditional-access-user-flow.md) | GA | GA | SAML アプリケーションでは使用できません |
 
 ## <a name="oauth-20-application-authorization-flows"></a>OAuth 2.0 アプリケーション認可フロー
 
@@ -83,6 +84,7 @@ Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプ
 | [カスタム メール確認](custom-email-mailjet.md) | NA | GA| |
 | [組み込みテンプレートを使用したユーザー インターフェイスのカスタマイズ](customize-ui.md) | GA| GA| |
 | [カスタム テンプレートを使用したユーザー インターフェイスのカスタマイズ](customize-ui-with-html.md) | GA| GA| HTML テンプレートを使用します。 |
+| [ページ レイアウト バージョン](page-layout.md) | GA | GA | |
 | [JavaScript](javascript-and-page-layout.md) | GA | GA | |
 | [埋め込みサインイン エクスペリエンス](embedded-login.md) | NA |  プレビュー| インライン フレーム要素の `<iframe>` を使用します。 |
 | [パスワードの複雑さ](password-complexity.md) | GA | GA | |

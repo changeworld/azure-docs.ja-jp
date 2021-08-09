@@ -6,16 +6,16 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: MashaMSFT
+author: rajeshsetlem
+ms.author: rsetlem
+ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 489ba57063244d399c9dd0255641568f2db5c6de
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026038"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034573"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>SQL Server から Azure SQL Managed Instance への移行に関する評価ルール
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -56,14 +56,13 @@ Azure Migrate の [影響を受けるオブジェクト] セクションを確�
 ## <a name="assembly-from-file"></a>ファイルからのアセンブリ<a id="AssemblyFromFile"></a>
 
 **タイトル: Azure SQL Managed Instance では、ファイル パラメーターが指定されている 'CREATE ASSEMBLY' および 'ALTER ASSEMBLY' はサポート対象外です。**    
-**カテゴリ**: 警告   
+**カテゴリ**: 問題   
 
 **説明**   
-Azure SQL Managed Instance では、ファイル共有または Windows フォルダーにアクセスできません。 Azure BLOB を参照しない BULK INSERT ステートメントの具体的な使用方法については、[影響を受けるオブジェクト] セクションを参照してください。 Azure Blob Storage をソースとしない 'BULK INSERT' 使用するオブジェクトは、Azure SQL Managed Instance への移行後は機能しません。
-
+Azure SQL Managed Instance は、ファイル パラメーターが指定されている 'CREATE ASSEMBLY' または 'ALTER ASSEMBLY' をサポートしていません。 バイナリ パラメーターはサポートされています。 ファイル パラメーターが使用されている特定のオブジェクトについては、[影響を受けるオブジェクト] セクションを参照してください。
 
 **推奨事項**   
-Azure SQL Managed Instance に移行するときには、BULK INSERT ステートメントでローカル ファイルまたはファイル共有を使用している場合、代わりに Azure Blob Storage のファイルを使用するように変換する必要があります。 または、Azure 仮想マシン上の SQL Server に移行します。 
+ファイル パラメーターが指定されている 'CREATE ASSEMBLY' または 'ALTER ASSEMBLY' を使用するオブジェクトを確認します。 このようなオブジェクトが必要な場合は、ファイル パラメーターをバイナリ パラメーターに変換します。 または、Azure 仮想マシン上の SQL Server に移行します。 
 
 詳細情報: [Azure SQL Managed Instance での CLR の相違点 ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)
 
@@ -386,10 +385,8 @@ ANSI 結合構文を使用してください。
 **説明**   
 OPENROWSET では組み込みの BULK プロバイダーによる一括操作がサポートされ、ファイルのデータを行セットとして読み取り、返すことができます。 Azure Blob Storage 以外のデータ ソースでの OPENROWSET は、Azure SQL Managed Instance ではサポートされていません。 
 
-
-
 **推奨事項**   
-OPENROWSET 関数は、SQL Server インスタンス (マネージド、オンプレミス、または Virtual Machines 内) でのみ、クエリを実行するために使用できます。 プロバイダーとしてサポートされるのは、SQLNCLI、SQLNCLI11、および SQLOLEDB 値のみです。 したがって、推奨されるアクションは、リモートの SQL 以外のサーバーから依存データベースを特定し、これらを移行するデータベースに移動することを検討することです。 または、Azure 仮想マシン上の SQL Server に移行します
+Azure SQL Managed Instance はファイル共有や Windows フォルダーにアクセスできないため、ファイルは Azure BLOB ストレージからインポートする必要があります。 そのため、OPENROWSET 関数でサポートされる BLOB の型は DATASOURCE のみとなります。 または、Azure 仮想マシン上の SQL Server に移行します。
 
 詳細情報: [Azure SQL Managed Instance での BULK INSERT と OPENROWSET の相違点 ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset)
 

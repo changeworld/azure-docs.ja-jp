@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 2b305955dbfcf99bccede041cbfcd18aef065cf1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e8164a6ee56a332528cdce8e81cd85460af0c1db
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770103"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752389"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search でインクリメンタル エンリッチメントのキャッシュを構成する方法
 
@@ -75,7 +75,7 @@ api-key: [YOUR-ADMIN-KEY]
 ```
 
 > [!NOTE]
-> インデクサー キャッシュには汎用 v2 ストレージ アカウントが必要です。 詳細については、「[様々なストレージ アカウントの種類](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
+> インデクサー キャッシュには汎用 v2 ストレージ アカウントが必要です。 詳細については、「[様々なストレージ アカウントの種類](../storage/common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。
 
 ### <a name="step-3-reset-the-indexer"></a>手順 3:インデクサーをリセットする
 
@@ -127,7 +127,7 @@ Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
 
-インデクサーの実行後、Azure BLOB ストレージでキャッシュを見つけることができます。 コンテナー名の形式は `ms-az-search-indexercache-<YOUR-CACHE-ID>` です
+インデクサーを実行すると、Azure Blob Storage にキャッシュが作成されます。 コンテナー名の形式は `ms-az-search-indexercache-<YOUR-CACHE-ID>` です
 
 > [!NOTE]
 > インデクサーをリセットして再実行すると、コンテンツをキャッシュできるように完全な再構築が実行されます。 すべてのコグニティブ エンリッチメントが、すべてのドキュメントで再実行されます。

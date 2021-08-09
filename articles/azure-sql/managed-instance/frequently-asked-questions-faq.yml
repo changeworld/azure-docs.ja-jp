@@ -9,16 +9,16 @@ metadata:
   ms.custom: sqldbrb=1
   ms.devlang: 
   ms.topic: conceptual
-  author: jovanpop-msft
-  ms.author: nnikolic
-  ms.reviewer: mathoma
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: urmilano, danil, nnikolic
   ms.date: 09/21/2020
-  ms.openlocfilehash: 24b4c9ac701167c998caa215e724010a4f953ac3
-  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+  ms.openlocfilehash: 92aa04c2df2b23165afdef39ae39ee95922f19d2
+  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111907888"
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114295111"
 title: Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 summary: >
   [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -77,7 +77,7 @@ sections:
 
       注:Gen4 ハードウェアは段階的に廃止中であり、新しいデプロイでは利用できなくなりました。 すべての新しいデータベースを Gen5 ハードウェアにデプロイする必要があります。 Gen5 から Gen4 への切り替えもできません。
   - question: "パフォーマンス \n"
-    answer: "### <a name=\"how-can-i-compare-managed-instance-performance-to-sql-server-performance\"></a>Managed Instance のパフォーマンスを SQL Server のパフォーマンスと比較するにはどうすればよいですか?\n\nマネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL Managed Instance と SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。\n\n### <a name=\"what-causes-performance-differences-between-managed-instance-and-sql-server\"></a>Managed Instance と SQL Server の間でパフォーマンスの差が生じる原因は何ですか?\n\n「[SQL Managed Instance と SQL Server の間でパフォーマンスの差が生じる主な原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)」を参照してください。 General Purpose Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響の詳細については、「[General Purpose のログ ファイルのサイズの影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」を参照してください。\n\n### <a name=\"how-do-i-tune-performance-of-my-managed-instance\"></a>マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか?\n\n次の方法で、マネージド インスタンスのパフォーマンスを最適化することができます。\n- [自動チューニング](../database/automatic-tuning-overview.md)では、AI と機械学習に基づく継続的なパフォーマンス チューニングによって、最大限のパフォーマンスと安定したワークロードが実現されます。\n-    [インメモリ OLTP](../in-memory-oltp-overview.md) では、トランザクション処理ワークロードのスループットと待機時間が改善され、ビジネスの分析情報がより迅速に提供されます。 \n\nパフォーマンスをさらにチューニングするには、[アプリケーションとデータベースのチューニング](../database/performance-guidance.md#tune-your-database)の *ベスト プラクティス* をいくつか適用することを検討してください。\nワークロードが多数の小さなトランザクションで構成されている場合は、待機時間を短縮しスループットを向上させるために[接続の種類をプロキシからリダイレクト モードに切り替える](connection-types-overview.md#changing-connection-type)ことを検討してください。\n"
+    answer: "### <a name=\"how-can-i-compare-managed-instance-performance-to-sql-server-performance\"></a>Managed Instance のパフォーマンスを SQL Server のパフォーマンスと比較するにはどうすればよいですか?\n\nマネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL Managed Instance と SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。\n\n### <a name=\"what-causes-performance-differences-between-managed-instance-and-sql-server\"></a>Managed Instance と SQL Server の間でパフォーマンスの差が生じる原因は何ですか?\n\n「[SQL Managed Instance と SQL Server の間でパフォーマンスの差が生じる主な原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)」を参照してください。 General Purpose Managed Instance のパフォーマンスに対するログ ファイルのサイズの影響の詳細については、「[General Purpose のログ ファイルのサイズの影響](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)」を参照してください。\n\n### <a name=\"how-do-i-tune-performance-of-my-managed-instance\"></a>マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか?\n\n次の方法で、マネージド インスタンスのパフォーマンスを最適化することができます。\n- [自動チューニング](../database/automatic-tuning-overview.md)では、AI と機械学習に基づく継続的なパフォーマンス チューニングによって、最大限のパフォーマンスと安定したワークロードが実現されます。\n- [インメモリ OLTP](../in-memory-oltp-overview.md) では、トランザクション処理ワークロードのスループットと待機時間が改善され、ビジネスの分析情報がより迅速に提供されます。 \n- [アプリケーションとデータベース チューニングのベスト プラクティス](../database/performance-guidance.md#tune-your-database)のいくつかを適用します。\n- ワークロードが多数の小さなトランザクションで構成されている場合は、待機時間を短縮しスループットを向上させるために[接続の種類をプロキシからリダイレクト モードに切り替えます](connection-types-overview.md#changing-connection-type)。\n\n### <a name=\"how-can-i-further-tune-performance-of-my-general-purpose-managed-instance\"></a>General Purpose マネージド インスタンスのパフォーマンスをさらに調整する方法はありますか?\n\nGeneral Purpose インスタンスのパフォーマンスを向上させるには、[データ ファイルのサイズを大きくする](https://techcommunity.microsoft.com/t5/azure-sql/increase-data-file-size-to-improve-hammerdb-workload-performance/ba-p/823337)することを検討してください。 General Purpose インスタンスでストレージ パフォーマンスを最適化するには、[General Purpose レベルのストレージ ベスト プラクティス ガイドライン](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525)に関するページを参照してください。\n\n### <a name=\"my-query-duration-is-too-long-how-can-i-analyze-wait-statistics-on-my-managed-instance\"></a>クエリ時間が長すぎます。 マネージド インスタンスの待機統計値を分析する方法はありますか?\n\n「[SQL Managed Instance の待機統計値を分析する](/archive/blogs/sqlserverstorageengine/analyzing-wait-statistics-on-managed-instance)」を参照してください。 待機統計値は、クエリ時間が長い理由を理解し、待機中のクエリをデータベース エンジンの中から特定する目的で役立つ情報です。\n     \n"
   - question: >
       監視、メトリック、およびアラート
     answer: >
@@ -85,6 +85,18 @@ sections:
 
 
       SQL Managed Instance の使用状況とパフォーマンスを監視してアラートを生成するためのすべてのオプションについては、「[Azure SQL Managed Instance の監視オプションに関するブログ投稿](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)」を参照してください。 SQL MI のリアルタイムのパフォーマンス監視については、「[Azure SQL DB Managed Instance のリアルタイムによるパフォーマンスの監視](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)」を参照してください。
+
+
+      ### <a name="how-can-i-monitor-performance-of-my-managed-instance"></a>マネージド インスタンスのパフォーマンスを監視する方法はありますか?
+
+
+      「[SQL Insights を使用して SQL のデプロイを監視する](../../azure-monitor/insights/sql-insights-overview.md)」を参照してください。
+
+
+      ### <a name="how-can-i-monitor-the-real-time-performance-of-my-managed-instance"></a>マネージド インスタンスのリアルタイム パフォーマンスを監視する方法はありますか?
+
+
+      「[Azure SQL DB Managed Instance のリアルタイム パフォーマンス監視](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)」を参照してください。
 
 
       ### <a name="can-i-use-sql-profiler-for-performance-tracking"></a>パフォーマンスの追跡に SQL Profiler を使用できますか?
@@ -99,10 +111,16 @@ sections:
       いいえ。サポートされていません。 [DMV](../database/monitoring-with-dmvs.md) と [クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?preserve-view=true&view=sql-server-ver15)を [SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15) と [XEvent](/sql/relational-databases/extended-events/extended-events?preserve-view=true&view=sql-server-ver15) と共に使用して、データベースを監視できます。
 
 
+      ### <a name="how-can-i-monitor-cpu-usage-on-my-managed-instance"></a>マネージド インスタンスの CPU 使用率を監視する方法はありますか?
+
+
+      「[SQL Server と Azure SQL で CPU 使用率を監視する](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)」を参照してください。
+
+
       ### <a name="can-i-create-metric-alerts-on-sql-managed-instance"></a>SQL Managed Instance でメトリック アラートを作成できますか?
 
 
-      はい。 詳細については、[SQL Managed Instance のアラートの作成](alerts-create.md)に関する記事を参照してください。
+      はい。 詳細については、[SQL Managed Instance のアラートの作成](./alerts-create.md)に関する記事を参照してください。 ヒントとテクニックについては、[ブログ](https://techcommunity.microsoft.com/t5/azure-database-support-blog/tips-amp-tricks-1-creating-alerts-for-azure-sql-managed-instance/ba-p/2396044)を参照してください。
 
 
       ### <a name="can-i-create-metric-alerts-on-a-database-in-managed-instance"></a>マネージド インスタンス内のデータベースでメトリック アラートを作成できますか?

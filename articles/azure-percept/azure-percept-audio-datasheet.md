@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: b641691db8dab0c5d166edca90988cbaea279db0
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0785542841754a861d3c29fe02109d321fb434b1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742429"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097248"
 ---
 # <a name="azure-percept-audio-datasheet"></a>Azure Percept Audio のデータシート
 
@@ -29,7 +29,7 @@ ms.locfileid: "108742429"
 |センサー、視覚インジケーター、およびコンポーネント   |4 x MEM Sensing Microsystems Microphones (MSM261D3526Z1CM) <br> 2 x ボタン <br> USB ハブ <br> DAC (DAC) <br> 3 x LED <br> LED ドライバー          |
 |セキュリティ Crypto-Controller      |ST-Microelectronics STM32L462CE       |
 |ポート                           |1 x USB 2.0 Type Micro B <br> 3.5 mm オーディオ出力     |
-|認定                   |FCC <br> IC <br> RoHS <br> REACH <br> UL    |
+|認定資格                   |CE <br> ACMA <br> FCC <br> IC <br> VCCI  <br> NRTL <br> CB  |
 |動作温度           |0 ～ 35°C     |
 |非動作温度       |-40 ～ 85°C     |
 |相対湿度               |10% ～ 95%    |

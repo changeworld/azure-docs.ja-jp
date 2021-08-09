@@ -12,20 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2021
+ms.date: 05/11/2021
 ms.author: yelevin
-ms.openlocfilehash: 64c921f1ad401baaf12b1545bfc2bdda54ab3444
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: a706704365731d5f5ba157837269a90dbcb12e18
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664386"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810302"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
 > [!IMPORTANT]
 >
 > - UEBA およびエンティティ ページ機能は、Azure Sentinel の "**_すべて_**" の地域とリージョンで **一般提供** になりました。
+>
+> - **IP アドレス エンティティ** は現在 **プレビュー** の段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>ユーザーとエンティティの行動分析 (UEBA) の概要
 
@@ -70,14 +72,17 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 
 [Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)に関する詳細と、[サポートされているエンティティと識別子](entities-reference.md)の完全一覧をご覧ください。
 
-検索、アラート、または調査で何らかのエンティティ (現在はユーザーとホストに制限されています) を検出した場合は、そのエンティティを選択して **エンティティ ページ** に移動できます。これは、そのエンティティに関する役立つ情報が豊富に含まれているデータシートです。 このページで見つけることができる情報の種類には、そのエンティティについての基本的な事実、このエンティティに関連した注目すべきイベントのタイムライン、そのエンティティの行動に関する分析情報が含まれます。
+エンティティ検索、アラート、または調査でユーザーまたはホスト エンティティ (IP アドレス エンティティはプレビュー段階です) を検出した場合は、そのエンティティを選択して **エンティティ ページ** に移動できます。これは、そのエンティティに関する役立つ情報が豊富に含まれているデータシートです。 このページで見つけることができる情報の種類には、そのエンティティについての基本的な事実、このエンティティに関連した注目すべきイベントのタイムライン、そのエンティティの行動に関する分析情報が含まれます。
  
 エンティティ ページは、次の 3 つの部分で構成されます。
-- 左側のパネルには、Azure Active Directory、Azure Monitor、Azure Security Center、Microsoft Defender などのデータ ソースから収集された、そのエンティティの識別情報が含まれています。
+- 左側のパネルには、Azure Active Directory、Azure Monitor、Azure Defender、CEF/Syslog、Microsoft 365 Defender などのデータ ソースから収集された、そのエンティティの識別情報が含まれています。
 
-- 中央のパネルには、そのエンティティに関連した注目すべきイベント (アラート、ブックマーク、アクティビティなど) のグラフとテキストの両方のタイムラインが表示されます。 アクティビティは、Log Analytics からの注目すべきイベントの集計です。 これらのアクティビティを検出するクエリは、Microsoft のセキュリティ調査チームによって開発されています。
+- 中央のパネルには、そのエンティティに関連した注目すべきイベント (アラート、ブックマーク、アクティビティなど) のグラフとテキストの両方のタイムラインが表示されます。 アクティビティは、Log Analytics からの注目すべきイベントの集計です。 これらのアクティビティを検出するクエリは、Microsoft のセキュリティリ調査チームによって開発されており、[独自のカスタムクエリを追加して、任意のアクティビティを検出できる](customize-entity-activities.md)ようになりました。 
 
 - 右側のパネルには、エンティティに関する行動分析情報が表示されます。 これらの分析情報は、異常やセキュリティの脅威をすばやく特定するために役立ちます。 この分析情報は Microsoft のセキュリティ調査チームによって開発され、異常検出モデルに基づいています。
+
+> [!NOTE]
+> **IP アドレス エンティティ ページ** (現在はプレビュー段階にあります) には、**Microsoft の脅威インテリジェンス サービス** によって提供される **位置情報データ** が含まれています。 このサービスは、Microsoft ソリューションとサードパーティのベンダーやパートナーが提供する位置情報データを組み合わせたものです。 このデータは、セキュリティ インシデントのコンテキストで分析や調査に利用できます。
 
 ### <a name="the-timeline"></a>タイムライン
 
@@ -93,8 +98,8 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 
 - ブックマーク - ページにその特定のエンティティが表示されているすべてのブックマーク。
 
-- アクティビティ - そのエンティティに関連した注目すべきイベントの集計。 
- 
+- アクティビティ - そのエンティティに関連した注目すべきイベントの集計。 さまざまなアクティビティが自動的に収集され、[任意のアクティビティを追加することで、このセクションをカスタマイズできる](customize-entity-activities.md)ようになりました。
+
 ### <a name="entity-insights"></a>エンティティ分析情報
  
 エンティティ分析情報は、アナリストがより効率的かつ効果的に調査できるようにするために Microsoft のセキュリティ研究者によって定義されたクエリです。 この分析情報はエンティティ ページの一部として表示され、ホストとユーザーに関する重要なセキュリティ情報を表形式データとグラフの両方の形式で提供します。 ここに情報が表示されるため、Log Analytics に迂回する必要はありません。 この分析情報には、サインイン、グループの追加、異常なイベントなどに関連したデータや、異常な行動を検出するための高度な ML アルゴリズムが含まれています。 
@@ -108,6 +113,7 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 - BehaviorAnalytics (Azure Sentinel UEBA)
 - Heartbeat (Azure Monitor Agent)
 - CommonSecurityLog (Azure Sentinel)
+- ThreatIntelligenceIndicators (Azure Sentinel)
 
 ### <a name="how-to-use-entity-pages"></a>エンティティ ページを使用する方法
 
@@ -115,7 +121,7 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="エンティティ ページのユース ケース":::
 
-**[エンティティの行動分析]** テーブルに表示されるデータについて詳しくは、「[Azure Sentinel UEBA エンリッチメント リファレンス](ueba-enrichments.md)」をご覧ください。
+エンティティ ページの情報は、「[Azure Sentinel UEBA エンリッチメント リファレンス](ueba-enrichments.md)」で詳細に説明されているように、**BehaviorAnalytics** テーブルに格納されます。
 
 ## <a name="querying-behavior-analytics-data"></a>行動分析データへのクエリ実行
 

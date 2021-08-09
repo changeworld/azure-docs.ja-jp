@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: この記事では、Azure SQL Database と Azure SQL Managed Instance のデータベース エンジンの機能を比較します
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: bonova, sstein, danil
-ms.date: 03/08/2021
-ms.openlocfilehash: 1a6b6bb8551f9d67b8ec5b1f546a6499fa913021
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.reviewer: bonova, mathoma, danil
+ms.date: 05/18/2021
+ms.openlocfilehash: 1f645b8d62bc3e0acdbdd12a21b335deea3cd53e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736489"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690027"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -35,6 +35,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 違いについてさらに詳しく知りたい場合は、次の各ページで見つけることができます。
 - [Azure SQL Database とSQL Server との相違点](transact-sql-tsql-differences-sql-server.md)
 - [Azure SQL Managed Instance とSQL Server との相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)
+
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance の機能
 
@@ -68,7 +69,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 | [分散トランザクション - MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | いいえ - [エラスティック トランザクション](elastic-transactions-overview.md)に関する記事を参照してください |  いいえ - [リンク サーバーの違い](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers)に関する記事を参照してください。 移行時に、複数の分散 SQL Server インスタンスから 1 つの SQL Managed Instance にデータベースを統合してみてください。 |
 | [DML トリガー](/sql/relational-databases/triggers/create-dml-triggers) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください |  はい |
 | [DMV](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | ほとんどの場合 - 個々の DMV に関する記事を参照してください |  はい - [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関する記事を参照してください |
-| [エラスティック クエリ](elastic-query-overview.md) (パブリック プレビュー) | はい。必要な RDBMS の種類を使用します。 | はい。必要な RDBMS の種類を使用します。 |
+| [エラスティック クエリ](elastic-query-overview.md) (パブリック プレビュー) | はい。必要な RDBMS の種類を使用します。 | いいえ |
 | [イベント通知](/sql/relational-databases/service-broker/event-notifications) | いいえ - [アラート](alerts-insights-configure-portal.md)に関する記事を参照してください | いいえ |
 | [式](/sql/t-sql/language-elements/expressions-transact-sql) |はい | はい |
 | [拡張イベント (XEvent)](/sql/relational-databases/extended-events/extended-events) | 一部 - 「[SQL Database の拡張イベント](xevent-db-diff-from-svr.md)」を参照してください | はい - [拡張イベントの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#extended-events)を参照してください |
@@ -153,6 +154,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | [VNet](../../virtual-network/virtual-networks-overview.md) | 部分的、[VNet エンドポイント](vnet-service-endpoint-rule-overview.md)を使用して制限付きアクセスを有効にします | はい、SQL Managed Instance は顧客の VNet に組み込まれます。 [サブネット](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet)と [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) を参照してください |
 | VNet サービス エンドポイント | [はい](vnet-service-endpoint-rule-overview.md) | いいえ |
 | VNet グローバル ピアリング | はい、[Private IP とサービス エンドポイント](vnet-service-endpoint-rule-overview.md)を使用します。 | はい。[仮想ネットワーク ピアリング](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913)を使用します。 |
+| [プライベート接続](../../private-link/private-link-overview.md) | はい、[Private Link](/database/private-endpoint-overview.md) を使用します | はい、VNet を使用します。 | 
 
 ## <a name="tools"></a>ツール
 
@@ -173,7 +175,7 @@ Azure SQL Database と Azure SQL Managed Instance では、データの管理に
 | [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | はい | はい。[バージョン 18.0 以降](/sql/ssms/download-sql-server-management-studio-ssms)に関するページを参照してください |
 | [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | はい | はい |
 | [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | いいえ - [拡張イベント](xevent-db-diff-from-svr.md)に関する記事を参照してください | はい |
-| [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [はい](https://www.microsoft.com/download/details.aspx?id=38829) | [はい](https://www.microsoft.com/en-us/download/details.aspx?id=101203) |
+| [System Center Operations Manager](/system-center/scom/welcome) | [はい](https://www.microsoft.com/download/details.aspx?id=38829) | [はい](https://www.microsoft.com/en-us/download/details.aspx?id=101203) |
 
 ## <a name="migration-methods"></a>移行の方法
 

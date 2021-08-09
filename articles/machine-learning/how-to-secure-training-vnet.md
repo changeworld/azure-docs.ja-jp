@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/16/2020
+ms.date: 05/14/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 4b3692884da921eeabcafc5a72419278af2d5440
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 8233edd12d4bde5c71d69cfbeab49ebdc8137dbc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888658"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071982"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -61,9 +61,10 @@ ms.locfileid: "107888658"
 > * 複数のコンピューティング インスタンスまたはクラスターを 1 つの仮想ネットワークに配置する場合は、1 つ以上のリソースのクォータの増加を要求することが必要になる場合があります。
 > * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング インスタンスまたはクラスターと同じ仮想ネットワークおよびサブネットに存在する必要があります。 ストレージ ファイア ウォール設定を構成して、仮想ネットワークおよび常駐するサブネット コンピューティングとの通信を許可してください。 [Allow trusted Microsoft services to access this account] (信頼された Microsoft サービスによるこのアカウントに対するアクセスを許可します) チェックボックスをオンにするだけでは、コンピューティングからの通信の許可には不十分なことに注意してください。
 > * コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信が無効になっていないことを確認してください。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。 
-> * コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、仮想ネットワーク内からのみアクセスできます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して `<instance-name>.<region>.instances.azureml.ms` のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md)に関する記事をご覧ください。
+> * コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、仮想ネットワーク内からのみアクセスできます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して `<instance-name>.<region>.instances.azureml.ms` のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md) に関するページを参照してください。
 > * コンピューティング クラスターやインスタンスをデプロイするために使用されるサブネットを、ACI などの他のサービスには委任しないでください。
 > * 仮想ネットワーク サービス エンドポイント ポリシーは、コンピューティング クラスターやインスタンスのシステム ストレージ アカウントに対して機能しません。
+> * ストレージ インスタンスとコンピューティング インスタンスが異なるリージョンに存在する場合、断続的にタイムアウトが発生することがあります。
 
     
 > [!TIP]
@@ -118,7 +119,7 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
    - Azure Storage (__Storage.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
    - Azure Container Registry (__AzureContainerRegistry.RegionName__ の __サービス タグ__ を使用)。 ここで、`{RegionName}` は Azure リージョンの名前です。
    - Azure Machine Learning (__AzureMachineLearning__ の __サービス タグ__ を使用)
-   - Azure Resource Manager (__AzureResourceManager__ の __サービス タグ__ を使用)
+   - Azure Resource Manager (__Azure Resource Manager__ の __サービス タグ__ を使用)
    - Azure Active Directory (__AzureActiveDirectory__ の __サービス タグ__ を使用)
 
 Azure portal 内での NSG 規則の構成は、次の画像に示したとおりです。
@@ -159,11 +160,11 @@ Azure portal 内での NSG 規則の構成は、次の画像に示したとお�
 
 Azure Machine Learning コンピューティングで[強制トンネリング](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)を使用している場合は、コンピューティング リソースを含むサブネットからのパブリック インターネットを使用した通信を許可する必要があります。 この通信は、タスクのスケジュール設定と Azure Storage へのアクセスに使用されます。
 
-これを行うには、次の 2 つの方法があります。
+この通信は、次の 2 とおりの方法で実現できます。
 
 * [Virtual Network NAT](../virtual-network/nat-overview.md) を使用する。 NAT ゲートウェイにより、お使いの仮想ネットワーク内の 1 つ以上のサブネットからの送信インターネット接続が提供されます。 詳細については、「[NAT ゲートウェイ リソースを使用した仮想ネットワークの設計](../virtual-network/nat-gateway-resource.md)」を参照してください。
 
-* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、Azure Machine Learning service の IP アドレスも追加します。 Azure Machine Learning service の IP アドレスを追加する場合は、__プライマリとセカンダリ__ の両方の Azure リージョンに IP を追加する必要があります。 プライマリ リージョンは、ワークスペースが配置されているところです。
+* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスには IP が必要であるため Azure Machine Learning service の IP アドレスも追加します。 Azure Machine Learning service の IP アドレスを追加する場合は、__プライマリとセカンダリ__ の両方の Azure リージョンに IP を追加する必要があります。 プライマリ リージョンは、ワークスペースが配置されているところです。
 
     セカンダリ リージョンを見つけるには、[Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー](../best-practices-availability-paired-regions.md#azure-regional-pairs)に関するページを参照してください。 たとえば、Azure Machine Learning service が米国東部 2 にある場合、セカンダリ リージョンは米国中部です。 
 
@@ -203,20 +204,22 @@ Azure Machine Learning コンピューティングで[強制トンネリング](
 Machine Learning コンピューティング クラスターを作成するには、次の手順を使用します。
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインし、お使いのサブスクリプションとワークスペースを選択します。
+1. 左側の __[Compute]\(コンピューティング\)__ を選択し、中央の __[Compute clusters]\(コンピューティング クラスター\)__ を選択して、 __[+ 新規]__ を選択します。
 
-1. 左側にある __[Compute]__ を選択します。
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster.png" alt-text="クラスター作成画面のスクリーンショット":::
 
-1. 中央から __[トレーニング クラスター]__ を選択し、 __[+]__ を選択します。
+1. __[Create compute cluster]\(コンピューティング クラスターの作成\)__ ダイアログで、必要な VM サイズと構成を選択し、 __[次へ]__ を選択します。
 
-1. __[New Training Cluster]\(新しいトレーニング クラスター\)__ ダイアログで、 __[詳細設定]__ セクションを展開します。
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-vm.png" alt-text="VM 構成の設定画面のスクリーンショット":::
 
-1. このコンピューティング リソースを仮想ネットワークを使用するように構成するには、「__仮想ネットワークを構成する__」セクションの操作を実行します。
+1. __[Configure Settings]\(構成の設定\)__ セクションで、__コンピューティング名__、__仮想ネットワーク__、__サブネット__ を設定します。
 
-    1. __[リソース グループ]__ ボックスの一覧で、目的の仮想ネットワークが含まれているリソース グループを選択します。
-    1. __[仮想ネットワーク]__ ボックスの一覧で、目的のサブネットが含まれている仮想ネットワークを選択します。
-    1. __[サブネット]__ ボックスの一覧で、使用するサブネットを選択します。
+    > [!TIP]
+    > ワークスペースがプライベート エンドポイントを使用して仮想ネットワークに接続する場合、 __[仮想ネットワーク]__ 選択フィールドが灰色表示されます。
 
-   ![Machine Learning コンピューティングの仮想ネットワークの設定](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="仮想ネットワーク設定のスクリーンショット":::
+
+1. __[作成]__ を選択してコンピューティング クラスターを作成します。
 
 また、Azure Machine Learning SDK を使用して Machine Learning コンピューティング クラスターを作成することもできます。 次のコードでは、`mynetwork` という名前の仮想ネットワークの `default` サブネットに新しい Machine Learning コンピューティング クラスターが作成されます。
 
@@ -260,7 +263,7 @@ except ComputeTargetException:
 
 ### <a name="access-data-in-a-compute-instance-notebook"></a>コンピューティング インスタンス ノートブック内のデータにアクセスする
 
-Azure のコンピューティング インスタンスでノートブックを使用している場合は、データと同じ仮想ネットワークおよびサブネットの背後にあるコンピューティング リソースでノートブックが実行されていることを確認する必要があります。 
+Azure Machine Learning のコンピューティング インスタンスでノートブックを使用している場合は、データと同じ仮想ネットワークおよびサブネットの背後にあるコンピューティング リソースでノートブックが実行されていることを確認する必要があります。 
 
 コンピューティング インスタンスが同一の仮想ネットワーク内に存在するようにするには、作成時に **[詳細設定]**  >  **[仮想ネットワークの構成]** で構成する必要があります。 既存のコンピューティング インスタンスを仮想ネットワークに追加することはできません。
 

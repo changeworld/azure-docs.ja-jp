@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/21/2021
+ms.openlocfilehash: aca49982cf6e25e95002c1fab40b46ef05c842e2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94845008"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454945"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>マッピング データ フロー内の列パターンを使用する
 
@@ -33,7 +33,6 @@ ms.locfileid: "94845008"
 
 [式ビルダー](concepts-data-flow-expression-builder.md)を使用して、一致条件を入力します。 列の `name`、`type`、`stream`、`origin`、`position` を基に列と照合するブール式を作成します。 パターンは、条件から true が返される任意の列 (誤差または定義) に影響を及ぼします。
 
-下の 2 つの式ボックスには、影響を受ける列の新しい名前と値を、一致条件によって指定します。 一致したフィールドの既存の値を参照するには、`$$` を使用します。 左側の式ボックスには名前を定義し、右側の式ボックスには値を定義します。
 
 ![スクリーンショットには、[Derived column's settings]\(派生列の設定\) タブが示されています。](media/data-flow/edit-column-pattern.png "列パターン")
 
@@ -85,7 +84,7 @@ ms.locfileid: "94845008"
 
 * `$$` は、実行時に各一致の名前または値に変換されます。 `$$` は `this` と同等と見なされます。
 * `name` は、受信した各列の名前を表します
-* `type` は、受信した各列のデータ型を表します
+* `type` は、受信した各列のデータ型を表します。 データ フロー型システムのデータ型の一覧については、[こちら](concepts-data-flow-overview.md#data-flow-data-types)を参照してください。
 * `stream` は、フロー内の各ストリームまたは変換に関連付けられた名前を表します
 * `position` は、データ フロー内の列の序数位置です
 * `origin` は、列の発生元であるか、最後に更新された場所となる変換です。

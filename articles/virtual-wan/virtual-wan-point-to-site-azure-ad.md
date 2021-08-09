@@ -7,12 +7,13 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: f16a7675805fa2665c25b5d4a9c3847b710ec71b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 59b93327aae8a400b4d1ab6c9ea3f67e5bd9dd03
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164203"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703370"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>ユーザー VPN 用に Azure Active Directory 認証を構成する
 
@@ -88,31 +89,32 @@ ms.locfileid: "108164203"
 
    ![[ユーザー VPN 構成] メニュー項目が選択されていることを示すスクリーンショット。](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. **[+Create user VPN config]\(+ ユーザー VPN 構成の作成\)** をクリックします。
+2. **[+ ユーザー VPN 構成の作成]** をクリックします。
 
    ![[Create user VPN config]\(ユーザー VPN 構成の作成\) リンクを示すスクリーンショット。](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. 情報を入力して **[作成]** をクリックします。
-
+3. **[基本]** で次のパラメーターを指定します
    * **構成名** - ユーザー VPN 構成に付ける名前を入力します。
-   * **トンネルの種類** - OpenVPN を選択します。
+    * **[トンネルの種類]** - ドロップダウン メニューから [OpenVPN] を選択します。
+4. **[Azure Active Directory]** に移動します。 **[Azure Active Directory]** を [はい] に切り替え、テナントの詳細に基づいて次の値を指定します。 
    * **認証方法**: [Azure Active Directory] を選択します。
    * **対象ユーザー** - Azure AD テナントに登録されている [Azure VPN](openvpn-azure-ad-tenant.md) エンタープライズ アプリケーションのアプリケーション ID を入力します。 
    * **発行者** - `https://sts.windows.net/<your Directory ID>/`
    * **AAD テナント** - `https://login.microsoftonline.com/<your Directory ID>`
   
-   ![[Create new user VPN config]\(新しいユーザー VPN 構成の作成\) ウィンドウを示すスクリーンショット。ここでは、値を入力できます。](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
+   ![[Create new user VPN config]\(新しいユーザー VPN 構成の作成\) ウィンドウを示すスクリーンショット。ここでは、値を入力できます。](media/virtual-wan-point-to-site-azure-ad/configure-aad-profile.png)
 
 ## <a name="edit-hub-assignment"></a><a name="hub"></a>ハブの割り当てを編集する
 
 1. 仮想 WAN の下にある **[ハブ]** ブレードに移動します。
 2. VPN サーバーの構成を関連付けるハブを選択し、省略記号 (...) をクリックします。
 
-   ![メニューで [仮想ハブを編集する] が選択されていることを示すスクリーンショット。](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
+   ![メニューで [仮想ハブを編集する] が選択されていることを示すスクリーンショット。](media/virtual-wan-point-to-site-azure-ad/select-hub.png)
 3. **[仮想ハブを編集する]** をクリックします。
 4. **[ポイント対サイト ゲートウェイを含める]** チェック ボックスをオンにし、必要な **[ゲートウェイ スケール ユニット]** を選択します。
 
-   ![[仮想ハブを編集する] ダイアログ ボックスを示すスクリーンショット。ここでは、ゲートウェイのスケール ユニットを選択できます。](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
+   :::image type="content" source="./media/virtual-wan-point-to-site-azure-ad/edit-virtual-hub.png" alt-text="[仮想ハブを編集する] ダイアログ ボックスを示すスクリーンショット。ここでは、ゲートウェイのスケール ユニットを選択できます。"lightbox="./media/virtual-wan-point-to-site-azure-ad/edit-virtual-hub.png":::
+
 5. VPN クライアントの IP アドレスの割り当て元となる **[アドレス プール]** を入力します。
 6. **[Confirm]\(確認\)** をクリックします。
 7. この操作は、完了するまで最大 30 分かかることがあります。

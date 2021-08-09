@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: 444185dc41532bfa55c271e2f0027eb8b71de42f
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 8564f96ad311a07ccf4582f274e44e6ebd1e0c85
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959911"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758523"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの高度な機能
 
@@ -71,13 +71,17 @@ Azure メトリックス エクスプローラーを使用すると、複数の�
 > [!NOTE]
 > 通常、グラフでは、異なる測定単位を使用するメトリックスを混在させることはできません。 たとえば、ミリ秒が使用されているあるメトリックを、キロバイトが使用されている別のメトリックと混在させないようにします。 また、スケールが大きく異なるメトリックスも混在させないようにします。 
 >
-> このような場合は、代わりに複数のグラフを使用することを検討してください。 メトリックス エクスプローラーで **[グラフの追加]** を選択して、新しいグラフを作成します。
+> このような場合は、代わりに複数のグラフを使用することを検討してください。 メトリクス エクスプローラーで **[新規グラフ]** を選択して、新しいグラフを作成します。
+
+![複数のメトリクスを示すスクリーンショット。](./media/metrics-charts/multiple-metrics-chart.png)
 
 ### <a name="multiple-charts"></a>複数のグラフ
 
-異なるメトリックを使用する別のグラフを作成するには、 **[グラフの追加]** を選択します。
+異なるメトリックを使用する別のグラフを作成するには、 **[新規グラフ]** を選択します。
 
 複数のグラフの順序を変更したり削除したりするには、省略記号 ( **...** ) ボタンをクリックして、グラフ メニューを開きます。 その後、 **[上へ移動]** 、 **[下へ移動]** 、または **[削除]** を選択します。
+
+![複数のグラフを示すスクリーンショット。](./media/metrics-charts/multiple-charts.png)
 
 ## <a name="time-range-controls"></a>時間の範囲コントロール
 

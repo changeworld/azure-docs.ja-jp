@@ -6,14 +6,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ca91e7298486cc92ae8a4444869f0b71c91ae2ab
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181025"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034231"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) についてよく寄せられる質問
 
@@ -69,11 +69,11 @@ HTTP/2 プロトコルのサポートを利用できるのは、Azure Front Door
 
 ### <a name="what-regions-is-the-service-available-in"></a>このサービスは、どのリージョンで利用できますか?
 
-Azure Front Door はグローバル サービスであり、特定の Azure リージョンには関連付けられていません。 Front Door を作成するときに指定する必要がある唯一の場所はリソース グループです。 この場所は基本的にはリソース グループのメタデータを格納する場所を指定しています。 Front Door リソース自体はグローバル リソースとして作成され、構成はすべて POP (ポイント オブ プレゼンス) にグローバルにデプロイされます。 
+Azure Front Door はグローバル サービスであり、特定の Azure リージョンには関連付けられていません。 Front Door を作成するときに指定する必要がある唯一の場所はリソース グループです。 この場所は基本的にはリソース グループのメタデータを格納する場所を指定しています。 Front Door リソース自体はグローバル リソースとして作成され、構成はすべてのエッジ ロケーションにグローバルにデプロイされます。 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure Front Door 用の POP の場所とは何ですか?
+### <a name="where-are-the-edge-locations-for-azure-front-door"></a>Azure Front Door のエッジ ローケーションはどこですか?
 
-Azure Front Door には、Microsoft からの Azure CDN と同じ POP (ポイント オブ プレゼンス) の場所のリストがあります。 POP の完全な一覧については、「[Azure CDN POP locations from Microsoft](../../cdn/cdn-pop-locations.md)」(Microsoft 提供の Azure CDN の POP の場所) を参照してください。
+Azure Front Door のエッジ ロケーションの全一覧については、[Azure Front Door のエッジ ロケーション](edge-locations.md)に関する記事を参照してください。
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front Door はアプリケーション専用のデプロイですか、それとも複数の顧客と共有されますか?
 
@@ -138,9 +138,10 @@ Front Door のフロントエンド エニーキャスト IP は、通常は変�
 
 ### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>Azure Front Door のデプロイにはどのくらい時間がかかりますか? Front Door は更新中に動作しますか?
 
-新しい Front Door の作成または既存の Front Door の更新は、グローバル デプロイの場合には約 3 ~ 5 分かかります。 つまり、約 3 ~ 5 分間で、Front Door の構成はすべての POP 間でグローバルにデプロイされます。
+ほとんどのルール エンジン構成の更新は、20 分以内に完了します。 更新が完了するとすぐにルールが有効になります。 
 
-注 - カスタム TLS/SSL 証明書の更新は、グローバルにデプロイされるまでに約 30 分かかります。
+ > [!Note]  
+  > ほとんどのカスタム TLS/SSL 証明書の更新は、グローバルにデプロイされるまでに約 30 分かかります。
 
 ルートやバックエンド プールに対する更新はシームレスであり、ダウンタイムは発生しません (新しい構成が正しい場合)。 また、"Azure Front Door マネージド" から "独自の証明書の使用" に、またはその逆に切り替える場合を除き、証明書の停止が発生することはありません。
 
@@ -157,7 +158,7 @@ Azure Front Door (AFD) には、トラフィックをルーティングするた
 
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Front Door ルール エンジンに追加された後、ルールが有効になるまでにどれくらいの時間がかかりますか?
 
-ルール エンジンの構成は、更新が完了するまでに約 10 分から 15 分かかります。 更新が完了するとすぐにルールが有効になります。 
+ほとんどのルール エンジン構成の更新は、20 分以内に完了します。 更新が完了するとすぐにルールが有効になります。 
 
 ### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-front-door-behind-my-azure-cdn"></a>Azure CDN を Front Door プロファイルの背後に構成したり、Front Door を Azure CDN の背後に構成したりすることはできますか?
 
@@ -249,7 +250,7 @@ Azure portal または [Azure REST API](/rest/api/frontdoorservice/frontdoor/fro
 
 * **証明書のサブジェクト名の不一致**: HTTPS 接続の場合、Front Door では、バックエンドからバックエンドのホスト名と一致するサブジェクト名を持つ有効な CA からの証明書が提示されることを前提としています。 例えば、バックエンドのホスト名が `myapp-centralus.contosonews.net` に設定されており、TLS ハンドシェイク中にバックエンドが提供する証明書のサブジェクト名に `myapp-centralus.contosonews.net` や `*myapp-centralus*.contosonews.net` が含まれていないなどです。 Front Door によって接続が拒否され、エラーが生成されます。 
     * **解決策**: コンプライアンスの観点から推奨はされませんが、Front Door で証明書のサブジェクト名のチェックを無効にすることで、このエラーを回避できます。 このオプションは、Azure portal の [設定]、および API の BackendPoolsSettings にあります。
-* **無効な CA からのバックエンド ホスティング証明書**: Front Door のバックエンドでは、[有効な証明機関](troubleshoot-allowed-certificate-authority.md)からの証明書のみを使用できます。 内部 CA からの証明書または自己署名証明書は許可されません。
+* **無効な CA からのバックエンド ホスティング証明書**: Front Door のバックエンドでは、[有効な証明機関](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)からの証明書のみを使用できます。 内部 CA からの証明書または自己署名証明書は許可されません。
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Azyre Front Door でクライアント/相互認証を使用できますか?
 
@@ -273,6 +274,12 @@ Azure Front Door では監査ログを使用できます。 ポータルで、Fr
 
 はい、Azure Front Door ではアラートがサポートされています。 メトリックに関するアラートが構成されます。 
 
+## <a name="billing"></a>課金
+
+### <a name="will-i-be-billed-for-the-azure-front-door-resources-that-are-disabled"></a>無効になっている Azure Front Door リソースは課金されますか?
+
+Front Door プロファイルなどの Azure Front Door リソースは、無効になっている場合には課金されません。
+
 ## <a name="next-steps"></a>次のステップ
 
-[Front Door Standard/Premium を作成する](create-front-door-portal.md)方法について学習します。
+[Front Door Standard または Premium を作成する](create-front-door-portal.md)方法について学習します。

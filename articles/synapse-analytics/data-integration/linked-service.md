@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6be76878a9a07c5f4a1e2a9348bb7b09cb1b10eb
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: efe404511b725680697c5f6601b8cb13be13910b
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567589"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109808970"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する
 
@@ -31,7 +31,7 @@ ms.locfileid: "107567589"
 
 Azure Synapse Analytics で、リンクされたサービスとは、他のサービスへの接続情報を定義した場所です。 このセクションでは、リンクされたサービスとして Azure Synapse Analytics と Azure Data Lake Gen 2 を追加します。
 
-1. Azure Synapse Studio を開き、 **[管理]** タブに移動します。
+1. Synapse Studio を開き、 **[管理]** タブに移動します。
 1. **[外部接続]** で、 **[リンクされたサービス]** を選択します。
 1. リンクされたサービスを追加するには、 **[新規]** を選択します。
 1. リストから [Azure Data Lake Storage Gen2] タイルを選択し、 **[続行]** を選択します。

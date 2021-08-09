@@ -1,24 +1,24 @@
 ---
-title: Windows Virtual Desktop の必要な URL リスト - Azure
-description: Windows Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧。
+title: Azure Virtual Desktop の必要な URL リスト - Azure
+description: Azure Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 183b956c0ec38101f7875fe01dd7c6ef9c8c8c8f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 7206b035724027f346fe49c8834c2fd35ec83af9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891682"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752965"
 ---
 # <a name="required-url-list"></a>必要な URL リスト
 
-Windows Virtual Desktop をデプロイし、使用するには、仮想マシン (VM) で特定の URL にいつでもアクセスできるよう、URL のブロックを解除する必要があります。 この記事では、Windows Virtual Desktop を正しく機能させるためにブロックを解除する必要がある、必要な URL の一覧を示します。 
+Azure Virtual Desktop をデプロイし、使用するには、仮想マシン (VM) で特定の URL にいつでもアクセスできるよう、URL のブロックを解除する必要があります。 この記事では、Azure Virtual Desktop を正しく機能させるためにブロックを解除する必要がある、必要な URL の一覧を示します。 
 
 >[!IMPORTANT]
->Windows Virtual Desktop では、この記事に含まれていない URL をブロックするデプロイはサポートされていません。
+>Azure Virtual Desktop では、この記事に含まれている URL をブロックするデプロイはサポートされていません。
 
 ## <a name="required-url-check-tool"></a>必要な URL チェック ツール
 
@@ -29,7 +29,7 @@ Windows Virtual Desktop をデプロイし、使用するには、仮想マシ�
 - 必要な URL チェック ツールは、商用クラウドでのデプロイにのみ使用できます。
 - 必要な URL チェック ツールでは、ワイルドカードを含む URL をチェックできないため、必ず最初にそれらの URL のブロックを解除してください。
 
-### <a name="requirements"></a>要件
+### <a name="requirements"></a>必要条件
 
 必要な URL チェック ツールを使用するには、次のものが必要です。
 
@@ -68,7 +68,7 @@ Windows Virtual Desktop をデプロイし、使用するには、仮想マシ�
 
 ## <a name="virtual-machines"></a>仮想マシン
 
-Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure コマーシャル クラウドで次の URL に対するアクセスが必要です。
+Azure Virtual Desktop 用に作成する Azure 仮想マシンには、Azure コマーシャル クラウドで次の URL に対するアクセスが必要です。
 
 |Address|アウトバウンド TCP ポート|目的|サービス タグ|
 |---|---|---|---|
@@ -87,11 +87,11 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure �
 | 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 該当なし |
 
 >[!IMPORTANT]
->Windows Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-windows-virtual-desktop.md)」を参照してください。
+>Azure Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-windows-virtual-desktop.md)」を参照してください。
 >
->サービスの問題を防ぐために、URL ではなく FQDN タグまたはサービス タグを使用することをお勧めします。 記載した URL とタグは、Windows Virtual Desktop のサイトとリソースにのみ対応します。 他のサービス (Azure Active Directory など) の URL は含まれません。
+>サービスの問題を防ぐために、URL ではなく FQDN タグまたはサービス タグを使用することをお勧めします。 記載した URL とタグは、Azure Virtual Desktop のサイトとリソースにのみ対応します。 他のサービス (Azure Active Directory など) の URL は含まれません。
 
-Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure Government クラウドで次の URL に対するアクセスが必要です。
+Azure Virtual Desktop 用に作成する Azure 仮想マシンには、Azure Government クラウドで次の URL に対するアクセスが必要です。
 
 |Address|アウトバウンド TCP ポート|目的|サービス タグ|
 |---|---|---|---|
@@ -123,7 +123,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 |*.azure-dns.net|443|Azure DNS 解決|なし|
 
 >[!NOTE]
->現在、Windows Virtual Desktop には、ネットワーク トラフィックを許可するためにブロックを解除できる IP アドレス範囲の一覧がありません。 現時点では、特定の URL のブロック解除のみがサポートされます。
+>現在、Azure Virtual Desktop には、ネットワーク トラフィックを許可するためにブロックを解除できる IP アドレス範囲の一覧がありません。 現時点では、特定の URL のブロック解除のみがサポートされます。
 >
 >Next Generation Firewall (NGFW) を使用している場合、確実に接続できるよう、Azure IP のために特別に作られた動的リストを使用する必要があります。
 >
@@ -131,7 +131,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 >
 >サービス トラフィックに関係した URL にはワイルドカード文字 (*) を使用する必要があります。 エージェント関連のトラフィックに * を使用したくない場合、ワイルドカードを使わずに URL を見つける方法は次のとおりです。
 >
->1. Windows Virtual Desktop ホスト プールに仮想マシンを登録します。
+>1. Azure Virtual Desktop ホスト プールに仮想マシンを登録します。
 >2. **イベント ビューアー** を開き、 **[Windows ログ]**  >  **[アプリケーション]**  >  **[WVD-Agent]** に移動して、イベント ID 3701 を探します。
 >3. イベント ID 3701 に記載されている URL をブロック解除します。 イベント ID 3701 に記載されている URL はリージョン固有です。 仮想マシンのデプロイ先となるリージョンごとに、適切な URL を使用して、ブロック解除プロセスを繰り返す必要があります。
 

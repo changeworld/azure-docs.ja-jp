@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2571706d3b1341d6eb3751e50b699043b376767
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: f35a32370f2c5aba0ea3c3e0ea84b739942ceb30
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320657"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457945"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -222,7 +222,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |sslProtocol| 使用されている SSL または TLS プロトコル (TLS が有効な場合)。|
 |serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
 |serverStatus| バックエンド サーバーの HTTP 状態コード。|
-|serverResponseLatency| バックエンド サーバーからの応答の待機時間。|
+|serverResponseLatency| バックエンド サーバーからの応答の待機時間 (**秒** 単位)。|
 |host| 要求のホスト ヘッダーに表示されているアドレス。 ヘッダーの書き換えによって書き換えられた場合、このフィールドには更新されたホスト名が含まれます|
 |originalRequestUriWithArgs| このフィールドには元の要求 URL が含まれています |
 |requestUri| このフィールドには、Application Gateway での書き換え操作後の URL が含まれています |
@@ -243,13 +243,13 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
         "httpVersion": "HTTP/1.0",
         "receivedBytes": 65,
         "sentBytes": 553,
-        "timeTaken": 205,
+        "timeTaken": "0.012",
         "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
         "serverStatus": "200",
-        "serverResponseLatency": "0.023",
+        "serverResponseLatency": "0.012",
         "host": "www.contoso.com",
     }
 }

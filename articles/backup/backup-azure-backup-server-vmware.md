@@ -3,12 +3,12 @@ title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12374393d0f94c567a68f1e28b6479e0747f3d40
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002955"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084594"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -308,7 +308,7 @@ Azure Backup Server に vCenter Server を追加します。
 
 6. **[追加]** を選択して、VMware サーバーをサーバーのリストに追加します。 **[次へ]** を選択します。
 
-    ![VMWare サーバーと資格情報を追加する](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
+    ![VMware サーバーと資格情報を追加する](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
 7. **[概要]** ページで、 **[追加]** を選択して VMware サーバーを Azure Backup Server に追加します。 新しいサーバーはすぐに追加され、VMware サーバー上にエージェントは必要ありません。
 
@@ -403,11 +403,11 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 >[!NOTE]
 > この機能は、MABS V3 UR1 に適用されます。
 
-以前のバージョンの MABS では、並列バックアップは保護グループ間でのみ実行されていました。 MABS V3 UR1 では、1 つの保護グループ内のすべての VMware VM バックアップが並列化され、VM のバックアップが高速になります。 すべての VMWare デルタ レプリケーション ジョブが並列で実行されます。 既定では、並列で実行されるジョブの数は 8 に設定されます。
+以前のバージョンの MABS では、並列バックアップは保護グループ間でのみ実行されていました。 MABS V3 UR1 では、1 つの保護グループ内のすべての VMware VM バックアップが並列化され、VM のバックアップが高速になります。 すべての VMware デルタ レプリケーション ジョブが並列で実行されます。 既定では、並列で実行されるジョブの数は 8 に設定されます。
 
 次に示すように、レジストリ キーを使用してジョブの数を変更できます (既定では存在しません。自分で追加する必要があります)。
 
-**キー パス**: `Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**キー パス**: `Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMware`<BR>
 **キーの種類**:DWORD (32 ビット) 値。
 
 > [!NOTE]
@@ -420,7 +420,7 @@ vSphere 6.7 をバックアップするには、次の操作を行います。
 - MABS サーバーで TLS 1.2 を有効にする
 
 >[!NOTE]
->VMWare 6.7 以降では、TLS が通信プロトコルとして有効になっています。
+>VMware 6.7 以降では、TLS が通信プロトコルとして有効になっています。
 
 - 次のようにレジストリ キーを設定します。
 

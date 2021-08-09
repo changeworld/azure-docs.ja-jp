@@ -1,19 +1,19 @@
 ---
-title: Windows Virtual Desktop の MSIX アプリのアタッチ イメージを準備する - Azure
-description: Windows Virtual Desktop ホスト プールの MSIX アプリのアタッチ イメージを作成する方法。
+title: Azure Virtual Desktop の MSIX アプリのアタッチ イメージを準備する - Azure
+description: Azure Virtual Desktop ホスト プールの MSIX アプリのアタッチ イメージを作成する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 443f117907381862639564dfbf9752562f4a3564
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f80d123a96a24ef9e9402cc2b142e94448468ea1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363667"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745639"
 ---
-# <a name="prepare-an-msix-image-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用の MSIX イメージを準備する
+# <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用の MSIX イメージを準備する
 
 MSIX アプリのアタッチはアプリケーション レイヤー ソリューションです。これを使用すると、MSIX パッケージからユーザー セッションにアプリを動的にアタッチできます。 MSIX パッケージ システムは、アプリをオペレーティング システムから分離することで、仮想マシンのイメージを簡単に作成できるようにします。 また、MSIX パッケージを使用すると、ユーザーが自分の仮想マシンでアクセスできるアプリをより細かく制御できます。 アプリをマスター イメージから分離し、後でユーザーに提供することもできます。
 
@@ -99,9 +99,9 @@ MSIX パッケージを作成した後、結果として得られた VHD、VHDX�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) にアクセスして、コミュニティにこの機能に関する質問をします。
+[Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) で、コミュニティにこの機能に関する質問を行うことができます。
 
-また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
+また、Azure Virtual Desktop についてのフィードバックは、[Azure Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。
 
 役に立つその他の記事を次に示します。
 

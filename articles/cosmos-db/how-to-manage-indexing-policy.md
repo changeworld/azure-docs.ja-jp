@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 11/02/2020
+ms.date: 05/25/2021
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a01b826f99b7bbfc864ad2a6f2913f4f4a9f3e54
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8a854e17c8a28b335f8c4e8c67bd5f27cb360789
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072277"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464632"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,8 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
     }
 ```
 
-このインデックス作成ポリシーは、```kind```、```dataType```、```precision``` を既定値に手動で設定する下のポリシーと同じです。 これらのプロパティは明示的に設定する必要がなく、インデックス作成ポリシーから完全に除外する必要があります (上記の例を参照)。
+このインデックス作成ポリシーは、```kind```、```dataType```、```precision``` を既定値に手動で設定する下のポリシーと同じです。 これらのプロパティは明示的に設定する必要がなく、インデックス作成ポリシーから完全に除外する必要があります (上記の例を参照)。 これらのプロパティを設定しようとすると、インデックス作成ポリシーから自動的に削除されます。
+
 
 ```json
     {
@@ -102,7 +103,8 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
     }
 ```
 
-このインデックス作成ポリシーは、```kind```、```dataType```、```precision``` を既定値に手動で設定する下のポリシーと同じです。 これらのプロパティは明示的に設定する必要がなく、インデックス作成ポリシーから完全に除外する必要があります (上記の例を参照)。
+このインデックス作成ポリシーは、```kind```、```dataType```、```precision``` を既定値に手動で設定する下のポリシーと同じです。 これらのプロパティは明示的に設定する必要がなく、インデックス作成ポリシーから完全に除外する必要があります (上記の例を参照)。 これらのプロパティを設定しようとすると、インデックス作成ポリシーから自動的に削除されます。
+
 
 ```json
     {

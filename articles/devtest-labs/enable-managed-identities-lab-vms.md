@@ -3,12 +3,12 @@ title: Azure DevTest Labs のラボ VM でマネージド ID を有効にする
 description: この記事では、ラボ所有者がラボ仮想マシン上でユーザー割り当てのマネージド ID を有効にする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d2c7b944d37160df241e6ca4407c730593f1b62
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88717636"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854038"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs のラボ仮想マシン上でユーザー割り当てのマネージド ID を有効にする
 ラボ所有者は、ラボ仮想マシン (VM) 上の Azure DevTest Labs でユーザー割り当てのマネージド ID を有効にすることができます。
@@ -40,23 +40,22 @@ ms.locfileid: "88717636"
 
 1.  ID を作成したら、この ID のリソース ID をメモしておきます。 これは次のサンプルのようになります。 
 
-    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-2. 次の例に示すように、PUT HTTPS メソッドを実行して、新しい **ServiceRunner** リソースをラボに追加します。 
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`.
+    
+2. ラボ リソースで PUT HTTPS メソッドを実行して、1 つまたは複数のユーザー割り当て ID を **managementIdentities** フィールドに追加します。
 
-    サービス ランナー リソースは、DevTest Labs でマネージド ID を管理および制御するためのプロキシ リソースです。 サービス ランナー名は任意の有効な名前にすることができますが、マネージド ID リソースの名前を使用することをお勧めします。
 
     ```json
     {
-        "identity": {
-            "type": "userAssigned",
-            "userAssignedIdentities": { 
-                "[userAssignedIdentityResourceId]": {}
-            }
-            },
         "location": "southeastasia",
         "properties": {
-            "identityUsageType": "VirtualMachine"
-        }
+        ...
+            "managementIdentities": {
+               "/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}": {}
+        },
+        ...
+        },
+    ...
     }
     ```
 

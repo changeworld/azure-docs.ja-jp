@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: カスタムの場所を使用して、Azure Arc 対応 Kubernetes クラスターに Azure PaaS サービスをデプロイします
-ms.openlocfilehash: 15309599b12b10344b59d46c47c11dfa243726db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 5f25260041fe7d5998d7f1716c9d20e288168e9d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367188"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951652"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes にカスタムの場所を作成および管理する
 
@@ -77,16 +77,29 @@ Azure の場所と同様に、カスタムの場所にアクセスできるテ�
 
 ## <a name="enable-custom-locations-on-cluster"></a>クラスターでカスタムの場所を有効にする
 
-クラスターでこの機能を有効にするには、次のコマンドを実行します。
+Azure AD ユーザーとして Azure CLI にログインしている場合、クラスターでこの機能を有効にするには、次のコマンドを実行します。
 
 ```console
 az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations
 ```
 
+サービス プリンシパルを使用して Azure CLI にログインしている場合、クラスターでこの機能を有効にするには、次の手順を実行します。
+
+1. Azure Arc サービスで使用される Azure AD アプリケーションのオブジェクト ID をフェッチします。
+
+    ```console
+    az ad sp show --id 'bc313c14-388c-4e7d-a58e-70017303ee3b' --query objectId -o tsv
+    ```
+
+1. 上記の手順の `<objectId>` 値を使用して、クラスターでカスタムの場所機能を有効にします。
+
+    ```console
+    az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
+    ```
+
 > [!NOTE]
 > 1. カスタムの場所機能は、クラスター接続機能に依存します。 そのため、カスタムの場所を使用するには、両方の機能が有効になっている必要があります。
 > 2. 機能を有効にするクラスターを指している `kubeconfig` ファイルが存在するマシン上で、`az connectedk8s enable-features` を実行する必要があります。
-> 3. サービス プリンシパルを使用して Azure CLI にログインしている場合は、カスタムの場所機能を有効にする前に、[追加のアクセス許可](troubleshooting.md#enable-custom-locations-using-service-principal)をサービス プリンシパルに付与する必要があります。
 
 ## <a name="create-custom-location"></a>カスタムの場所を作成する
 
@@ -107,7 +120,7 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
         az k8s-extension create --name <extensionInstanceName> --extension-type 'Microsoft.Web.Appservice' --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace appservice-ns --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=appservice-ns" 
         ```
 
-    * [Kubernetes 上の Event Grid](/azure/event-grid/kubernetes/overview)
+    * [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md)
 
         ```azurecli
           az k8s-extension create --name <extensionInstanceName> --extension-type Microsoft.EventGrid --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace eventgrid-ext --configuration-protected-settings-file protected-settings-extension.json --configuration-settings-file settings-extension.json
@@ -135,6 +148,5 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 - [クラスター接続](cluster-connect.md)を使用してクラスターに安全に接続します。
 - 拡張機能のインストール、カスタムの場所の作成、App Service Kubernetes 環境の作成に関するエンドツーエンドの手順についての「[Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md)」に進みます。 
-- [Kubernetes 上の Event Grid](/azure/event-grid/kubernetes/overview) のための Event Grid トピックとイベント サブスクリプションを作成します。
+- [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md) のための Event Grid トピックとイベント サブスクリプションを作成します。
 - 現在使用できる [Azure Arc 対応 Kubernetes 拡張機能](extensions.md#currently-available-extensions)の詳細について確認します。
-

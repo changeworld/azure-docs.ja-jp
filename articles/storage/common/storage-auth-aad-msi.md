@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15d5e1d68dce69b5b2f68a02f8b4832393cdd59c
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 8f99516b0c93dfacfecdfa07f6f72a26effedd44
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713470"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901945"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 
@@ -168,7 +168,7 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure RBAC を使用してストレージ データへのアクセス権を管理する](./storage-auth-aad-rbac-portal.md)。
-- [ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)。
+- [BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)
+- [ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)
 - [Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-data-operations-powershell.md)
 - [チュートリアル: マネージド ID を使用して App Service からストレージにアクセスする](../../app-service/scenario-secure-app-access-storage.md)

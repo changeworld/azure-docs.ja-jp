@@ -1,19 +1,19 @@
 ---
 title: Azure ポイント対サイト VPN 接続について
 titleSuffix: Azure VPN Gateway
-description: ポイント対サイト接続と、どの種類の P2S VPN ゲートウェイ認証を使用するかについて説明します。
+description: ポイント対サイト VPN について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/28/2021
+ms.date: 05/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: c7c9d1ad6aefe9fc05b77925ee6bbf4160b988d8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 1be0ecfe773bfa56900295db8701d9a582389046
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202409"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554680"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -23,11 +23,11 @@ ms.locfileid: "108202409"
 
 ポイント対サイト VPN では、次のいずれかのプロトコルを使用できます。
 
-* SSL/TLS ベースの VPN プロトコルである **OpenVPN® プロトコル**。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
+* SSL/TLS ベースの VPN プロトコルである **OpenVPN® プロトコル**。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (macOS バージョン 10.13 以上) から接続する際に使用できます。
 
 * Secure Socket トンネリング プロトコル (SSTP)。これは、TLS ベースの独自の VPN プロトコルです。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備えたすべてのバージョンの Windows (Windows 7 以降) がサポートされています。
 
-* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
+* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (macOS バージョン 10.11 以上) から接続する際に使用できます。
 
 
 >[!NOTE]
@@ -169,20 +169,28 @@ P2S 構成で必要な手順には、特有のものが非常に多くありま�
 
 ### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>P2S 接続の構成を削除するには
 
-手順については、以下の [FAQ](#removeconfig) を参照してください。
+PowerShell または CLI を使用して、接続の構成を削除できます。 例については、「[FAQ](vpn-gateway-vpn-faq.md#removeconfig)」を参照してください。
+
+## <a name="how-does-p2s-routing-work"></a>P2S ルーティングのしくみ
+
+次の記事をご覧ください。
+
+* [ポイント対サイト VPN ルーティングについて](vpn-gateway-about-point-to-site-routing.md)
+
+* [カスタム ルートを公開するには](vpn-gateway-p2s-advertise-custom-routes.md)
+
+## <a name="faqs"></a>FAQ
+
+認証に基づく P2S の FAQ セクションが複数あります。
+
+* [FAQ - 証明書の認証](vpn-gateway-vpn-faq.md#P2S)
+
+* [FAQ - RADIUS の認証](vpn-gateway-vpn-faq.md#P2SRADIUS)
  
-## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>ネイティブ Azure 証明書認証に関する FAQ
-
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
-
-## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>RADIUS 認証に関する FAQ
-
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
-
 ## <a name="next-steps"></a>次の手順
 
 * [P2S 接続の構成 - RADIUS 認証](point-to-site-how-to-radius-ps.md)
 
-* [P2S 接続の構成 - Azure ネイティブ証明書認証](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S 接続の構成 - Azure 証明書認証](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 **"OpenVPN" は OpenVPN Inc. の商標です。**

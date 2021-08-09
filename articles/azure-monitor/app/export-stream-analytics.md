@@ -3,21 +3,25 @@ title: Azure Application Insights からの Stream Analytics のエクスポー�
 description: Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b54b6045c1def9d87636f4facfe65f8abd056cd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719799"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753919"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
 
-この例では、Application Insights からデータを取得し、一部のフィールドの名前を変更して処理した後、Power BI にパイプするアダプターを作成します。
+この例では、連続エクスポートを使用して Application Insights からデータを取得し、一部のフィールドの名前を変更して処理した後、Power BI にパイプするアダプターを作成します。
 
 > [!WARNING]
 > [Power BI で Application Insights のデータを表示するには、はるかに優れた簡単な方法](./export-power-bi.md)があります。 ここで説明するパスは、エクスポートされたデータを処理する方法を示すための例に過ぎません。
+
+> [!IMPORTANT]
+> 連続エクスポートは非推奨であり、従来の Application Insights リソースに対してのみサポートされます。 テレメトリをエクスポートするために[診断設定](export-telemetry.md#diagnostic-settings-based-export)を使用するには、[ワークスペースベースの Application Insights リソースに移行](convert-classic-resource.md)します。
+
 
 ![SA を介した PBI へのエクスポートのブロック図](./media/export-stream-analytics/020.png)
 
@@ -38,7 +42,7 @@ ms.locfileid: "101719799"
 
 ## <a name="start-continuous-export-to-azure-storage"></a>Azure Storage への連続エクスポートの開始
 
-[連続エクスポート](export-telemetry.md) は、Application Insights から Azure のストレージにデータを移動します。
+[連続エクスポート](export-telemetry.md) は、Application Insights から Azure のストレージにデータを移動します。 
 
 1. Azure ポータルで、アプリケーション用に作成した Application Insights リソースを参照します。
    

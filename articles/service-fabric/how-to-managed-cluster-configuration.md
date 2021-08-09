@@ -3,12 +3,12 @@ title: Service Fabric マネージド クラスターを構成する
 description: OS の自動アップグレード、NSG ルールなどのために Service Fabric マネージド クラスターを構成する方法について説明します。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: 42c8cf75a274ba3b4630caf9ac7e0d194465cfe7
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 5fd2736917517f20d3d093492c6011d6fcf716cf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109735478"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067440"
 ---
 # <a name="service-fabric-managed-cluster-configuration-options"></a>Service Fabric マネージド クラスターの構成オプション
 
@@ -21,6 +21,7 @@ ms.locfileid: "109735478"
 * クラスター ノードに対して[自動 OS アップグレード](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)を有効にする
 * クラスター ノードで [OS とデータ ディスクの暗号化](how-to-enable-managed-cluster-disk-encryption.md)を有効にする
 * クラスターの[マネージド ディスクの種類](how-to-managed-cluster-managed-disk.md)の SKU を選択する
+* ランタイム更新プログラムのクラスター [アップグレード オプション](how-to-managed-cluster-upgrades.md)を構成する
 
 ## <a name="enable-automatic-os-image-upgrades"></a>OS の自動アップグレードを有効にする
 

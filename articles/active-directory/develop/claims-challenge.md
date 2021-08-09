@@ -1,7 +1,7 @@
 ---
-title: クレーム チャレンジとクレーム要求
+title: クレーム チャレンジ、クレーム要求、およびクライアントの機能
 titleSuffix: Microsoft identity platform
-description: Microsoft ID プラットフォーム上のクレーム チャレンジとクレーム要求の説明。
+description: Microsoft ID プラットフォームのクレーム チャレンジ、クレーム要求、およびクライアントの機能についての説明。
 services: active-directory
 author: knicholasa
 manager: martinco
@@ -12,30 +12,30 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: nichola
 ms.reviewer: kkrishna, kylemar
-ms.openlocfilehash: bf3b6db0bcb5478412837a2fa43f610dbf8690d6
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: abce87c8d5c5d88c9edd1303f0a585aa773d2ec8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795504"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471383"
 ---
-# <a name="claims-challenges-and-claims-requests"></a>クレーム チャレンジとクレーム要求
+# <a name="claims-challenges-claims-requests-and-client-capabilities"></a>クレーム チャレンジ、クレーム要求、およびクライアントの機能
 
-**クレーム チャレンジ** とは、API から送信される応答であり、クライアント アプリケーションによって送信されたアクセス トークンのクレームが不十分であることを示します。 これは、トークンがその API に設定された条件付きアクセス ポリシーを満たしていないか、アクセス トークンが取り消されていることが原因である可能性があります。
+*クレーム チャレンジ* とは、API から送信される応答であり、クライアント アプリケーションによって送信されたアクセス トークンのクレームが不十分であることを示します。 これは、トークンがその API に設定された条件付きアクセス ポリシーを満たしていないか、アクセス トークンが取り消されていることが原因である可能性があります。
 
-**クレーム要求** はクライアント アプリケーションによって行われ、ユーザーを ID プロバイダーにリダイレクトして、満たされていない追加の要件を満たすクレームを含む新しいトークンを取得します。
+*クレーム要求* はクライアント アプリケーションによって行われ、ユーザーを ID プロバイダーにリダイレクトして、満たされていない追加の要件を満たすクレームを含む新しいトークンを取得します。
 
 [継続的アクセス評価 (CAE)](../conditional-access/concept-continuous-access-evaluation.md) や[条件付きアクセス認証コンテキスト](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/granular-conditional-access-for-sensitive-data-and-actions/ba-p/1751775)などの強化されたセキュリティ機能を使用するアプリケーションは、クレーム チャレンジを処理できるように準備する必要があります。
 
-アプリケーションは、**クライアント機能** を使用してクレーム チャレンジを処理できると宣言した場合にのみ、クレーム チャレンジを受け取ります。
-
-クライアント アプリケーションがクレーム チャレンジを処理できるかどうかに関する情報を受け取るには、API 実装者は、アプリケーション マニフェストのオプションのクレームとして **xms_cc** を要求する必要があります。
+アプリケーションは、サービスの呼び出しで[クライアントの機能](#client-capabilities)を宣言する場合にのみ、[Microsoft Graph](/graph/overview) などの一般的なサービスからのクレーム チャレンジを受け取ります。
 
 ## <a name="claims-challenge-header-format"></a>クレーム チャレンジ ヘッダーの書式
 
-クレーム チャレンジは、アクセス トークンが承認されておらず、新しいアクセス トークンが必要な場合に、API によって返される www-authenticate ヘッダー内のディレクティブです。 クレーム チャレンジは複数の部分 (応答の HTTP 状態コードと www-authenticate ヘッダー) で構成され、それ自体が複数の部分を持ち、クレーム ディレクティブが含まれている必要があります。
+クレーム チャレンジは、提示された[アクセス トークン](access-tokens.md)が承認されない場合に API によって返される `www-authenticate` ヘッダーとしてのディレクティブであり、代わりに適切な機能がある新しいアクセス トークンが必要です。 クレーム チャレンジは複数の部分 (応答の HTTP 状態コードと `www-authenticate` ヘッダー) で構成されています。このヘッダー自体にも複数の部分があり、クレーム ディレクティブが含まれている必要があります。
 
-``` https
+次に例を示します。
+
+```https
 HTTP 401; Unauthorized
 
 www-authenticate =Bearer realm="", authorization_uri="https://login.microsoftonline.com/common/oauth2/authorize", error="insufficient_claims", claims="eyJhY2Nlc3NfdG9rZW4iOnsiYWNycyI6eyJlc3NlbnRpYWwiOnRydWUsInZhbHVlIjoiYzEifX19"
@@ -53,15 +53,15 @@ www-authenticate =Bearer realm="", authorization_uri="https://login.microsoftonl
 | `error` | 必須 | クレーム チャレンジを生成する必要がある場合は、"insufficient_claims" である必要があります。 | 
 | `claims` | エラーが "insufficient_claims" の場合は必須です。 | Base 64 でエンコードされた[クレーム要求](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter)を含む、引用符で囲まれた文字列。 クレーム要求は、JSON オブジェクトのトップ レベルにある"access_token" のクレームを要求する必要があります。 値 (要求されたクレーム) はコンテキストに依存します。このドキュメントで後ほど指定します。 サイズ上の理由から、証明書利用者アプリケーションは、base64 エンコードの前に JSON のミニファイ処理を行う必要があります。 上記の例の未加工の JSON は、{"access_token":{"acrs":{"essential":true,"value":"cp1"}}} です。 |
 
-401 応答には、複数の www-authenticate ヘッダーが含まれる場合があります。 上記のすべてのフィールドは、同じ www-authenticate ヘッダー内に含まれている必要があります。 クレーム チャレンジを含む www-authenticate ヘッダーには、他のフィールドが含まれる場合があります。 ヘッダー内のフィールドは順序指定されません。 RFC 7235 に従って、各パラメーター名は、認証スキームのチャレンジごとに 1 回だけ出現する必要があります。
+**401** 応答には、複数の `www-authenticate` ヘッダーが含まれる場合があります。 前の表のすべてのフィールドが、同じ `www-authenticate` ヘッダー内に含まれている必要があります。 クレーム チャレンジを含む `www-authenticate` ヘッダーには、他のフィールドを含めることが "*できます*"。 ヘッダー内のフィールドは順序指定されません。 RFC 7235 に従って、各パラメーター名は、認証スキームのチャレンジごとに 1 回だけ出現する必要があります。
 
 ## <a name="claims-request"></a>クレーム要求
 
-アプリケーションでは、以前のアクセス トークンが有効と見なされなくなったことを示すクレーム チャレンジを受け取った場合、ローカル キャッシュまたはユーザー セッションからトークンをクリアする必要があります。 その後、サインインしたユーザーを Azure AD にリダイレクトして、[ OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)と **claims** パラメーターを使用して、満たされなかった追加の要件を満たす新しいトークンを取得する必要があります。
+アプリケーションがクレーム チャレンジを受け取った場合は、以前のアクセス トークンが有効とは見なされなくなったことを示しています。 このシナリオでは、アプリケーションがすべてのローカル キャッシュまたはユーザー セッションでトークンをクリアする必要があります。 その後、サインインしたユーザーを Azure Active Directory (Azure AD) にリダイレクトし、[OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)と *claims* パラメーターを使用して、満たされなかった追加の要件を満たす新しいトークンを取得する必要があります。
 
-以下に例を示します。
+次に例を示します。
 
-``` https
+```https
 GET https://login.microsoftonline.com/14c2f153-90a7-4689-9db7-9543bf084dad/oauth2/v2.0/authorize
 ?client_id=2810aca2-a927-4d26-8bca-5b32c1ef5ea9
 &redirect_uri=https%3A%2F%contoso.com%3A44321%2Fsignin-oidc
@@ -70,7 +70,7 @@ GET https://login.microsoftonline.com/14c2f153-90a7-4689-9db7-9543bf084dad/oauth
 &response_mode=form_post
 &login_hint=kalyan%ccontoso.onmicrosoft.com
 &domain_hint=organizations
-claims=%7B%22access_token%22%3A%7B%22acrs%22%3A%7B%22essential%22%3Atrue%2C%22value%22%3A%22urn%3Amicrosoft%3Areq1%22%7D%7D%7D
+claims=%7B%22access_token%22%3A%7B%22acrs%22%3A%7B%22essential%22%3Atrue%2C%22value%22%3A%22c1%22%7D%7D%7D
 ```
 
 クレーム チャレンジは、トークンが正常に取得され、チャレンジが必要なくなるまで、Azure AD の [/authorize](v2-oauth2-auth-code-flow.md#request-an-authorization-code) エンドポイントに対するすべての呼び出しの一部として渡される必要があります。
@@ -82,9 +82,11 @@ claims=%7B%22access_token%22%3A%7B%22acrs%22%3A%7B%22essential%22%3Atrue%2C%22va
 
 このフローが完了すると、アプリケーションは、ユーザーが必要な条件を満たしていることを証明する追加のクレームを含むアクセス トークンを受け取ります。
 
-## <a name="client-capabilities"></a>クライアント機能
+## <a name="client-capabilities"></a>クライアントの機能
 
-アプリケーションは、**クライアント機能** を使用してクレーム チャレンジを処理できると宣言した場合にのみ、クレーム チャレンジを受け取ります。
+クライアントの機能は、呼び出し元のクライアント アプリケーションがクレーム チャレンジを認識し、それに応じて応答をカスタマイズできるかどうかを Web API のようなリソース プロバイダーが検出するために役立ちます。 この機能は、すべての API クライアントがクレーム チャレンジを処理できるわけではなく、一部の旧バージョンでは別の応答が期待される場合に便利であることがあります。
+
+[Microsoft Graph](/graph/overview) などの一般的なアプリケーションでは、呼び出し元のクライアント アプリが "*クライアントの機能*" を使用してクレーム チャレンジを処理できると宣言している場合にのみ、クレーム チャレンジが送信されます。
 
 余分なトラフィックやユーザー エクスペリエンスへの影響を回避するために、Azure AD では、明示的にオプトインしない限り、チャレンジされたクレームをアプリで処理できるとは想定していません。 アプリケーションは、"cp1" 機能を使用して、それらを処理する準備ができていると宣言しない限り、クレーム チャレンジを受け取りません (また、CAE トークンなどの関連機能を使用できません)。
 
@@ -150,7 +152,7 @@ GET https://login.microsoftonline.com/14c2f153-90a7-4689-9db7-9543bf084dad/oauth
 
 クライアント アプリケーションがクレーム チャレンジを処理できるかどうかに関する情報を受け取るには、API 実装者は、アプリケーション マニフェストのオプションのクレームとして **xms_cc** を要求する必要があります。
 
-アクセス トークン内の値が "cp1" の **xms_cc** クレームは、クライアント アプリケーションがクレーム チャレンジを処理できることを識別するための信頼できる方法です。 **xms_cc** は、省略可能なクレームであり、クライアントが "xms_cc" を使用してクレーム要求を送信した場合でも、アクセス トークンで常に発行されるとは限りません。 アクセス トークンに **xms_cc** クレームを含めるには、リソース アプリケーション (つまり、API 実装者) がアプリケーション マニフェストで[省略可能なクレーム](active-directory-optional-claims.md)として xms_cc を要求する必要があります。 **xms_cc** は、省略可能なクレームとして要求された場合、クライアント アプリケーションがクレーム要求で **xms_cc** を送信した場合にのみアクセス トークンに追加されます。 **xms_cc** クレーム要求の値は、既知の値である場合、アクセス トークンの **xms_cc** クレームの値として含まれます。 現在の既知の値は、**cp1** のみです。
+アクセス トークン内の値が "cp1" の **xms_cc** クレームは、クライアント アプリケーションがクレーム チャレンジを処理できることを識別するための信頼できる方法です。 **xms_cc** は、省略可能なクレームであり、クライアントが "xms_cc" を使用してクレーム要求を送信した場合でも、アクセス トークンで常に発行されるとは限りません。 アクセス トークンに **xms_cc** クレームを含めるには、リソース アプリケーション (つまり、API 実装者) がアプリケーション マニフェストで [省略可能なクレーム](active-directory-optional-claims.md)として xms_cc を要求する必要があります。 **xms_cc** は、省略可能なクレームとして要求された場合、クライアント アプリケーションがクレーム要求で **xms_cc** を送信した場合にのみアクセス トークンに追加されます。 **xms_cc** クレーム要求の値は、既知の値である場合、アクセス トークンの **xms_cc** クレームの値として含まれます。 現在の既知の値は、**cp1** のみです。
 
 値は、大文字と小文字が区別されず、順序指定もされません。 **xms_cc** クレーム要求で複数の値が指定されている場合、それらの値は、 **xms_cc** クレームの値として複数値のコレクションになります。
 

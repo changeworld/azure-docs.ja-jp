@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
-ms.date: 02/16/2020
+ms.date: 05/17/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 971a6474b3e48f70c1e4e96a784bf1d92709cf71
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b8ccc8eb55031f583eba24368fca66e0943124b1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885220"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064848"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
@@ -62,20 +62,6 @@ Triton は、"*推論用に最適化された*" フレームワークです。 G
 
 :::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Python ミドルウェアを使用せずに、Triton のみを使用した Inferenceconfig のデプロイ":::
 
-**Triton を使用した推論構成の展開**
-
-* 受信した要求を同時に処理するために、複数の [Gunicorn](https://gunicorn.org/) ワーカーが開始されています。
-* 要求は **Triton サーバー** に転送されます。 
-* Triton によって、GPU 使用率を最大化するために要求がバッチ処理されます。
-* クライアントは、__Azure ML スコアリング URI__ を使用して要求を行います。 たとえば、「 `https://myservice.azureml.net/score` 」のように入力します。
-
-:::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="Triton と Python ミドルウェアを使用したデプロイ":::
-
-モデルの展開に Triton を使用するワークフローは次のとおりです。
-
-1. Triton を使用してモデルを直接提供します。
-1. Triton によって展開されたモデルに、要求を送信できることを確認します。
-1. (オプション) サーバー側の前および後処理用に Python ミドルウェアのレイヤーを作成します。
 
 ## <a name="deploying-triton-without-python-pre--and-post-processing"></a>Python の前および後処理を使用せずに Triton をデプロイする
 
@@ -118,30 +104,16 @@ az ml model register -n my_triton_model -p models --model-framework=Multi
 
 `az ml model register` に関する詳細については、[リファレンス ドキュメント](/cli/azure/ml/model)を参照してください。
 
-Azure Machine Learning にモデルを登録するときに、`--model-path  -p` パラメーターの値は Triton の親フォルダーの名前である必要があります。  
+Azure Machine Learning にモデルを登録するときは、`--model-path  -p` パラメーターの値を、Triton Model Repository の親フォルダーの名前にする必要があります。
 上記の例では `--model-path` は 'models' です。
 
-この例の `--name  -n` パラメーターの値 'my_triton_model' は、Azure Machine Learning ワークスペースに認識されるモデル名になります。 
+`--name  -n` パラメーターの値は、Azure Machine Learning Workspace で認識しているモデルの名前にします。例では `my_triton_models` となっています。 
 
 # <a name="python"></a>[Python](#tab/python)
 
 
-```python
+[!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=register-model)]
 
-from azureml.core.model import Model
-
-model_path = "models"
-
-model = Model.register(
-    model_path=model_path,
-    model_name="bidaf-9-tutorial",
-    tags={"area": "Natural language processing", "type": "Question-answering"},
-    description="Question answering from ONNX model zoo",
-    workspace=ws,
-    model_framework=Model.Framework.MULTI,  # This line tells us you are registering a Triton model
-)
-
-```
 詳細については、[Model クラス](/python/api/azureml-core/azureml.core.model.model)のドキュメントを参照してください。
 
 ---
@@ -158,29 +130,8 @@ az ml model deploy -n triton-webservice -m triton_model:1 --dc deploymentconfig.
 
 # <a name="python"></a>[Python](#tab/python)
 
-```python
-from azureml.core.webservice import AksWebservice
-from azureml.core.model import InferenceConfig
-from random import randint
+[!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=deploy-webservice)]
 
-service_name = "triton-webservice"
-
-config = AksWebservice.deploy_configuration(
-    compute_target_name="aks-gpu",
-    gpu_cores=1,
-    cpu_cores=1,
-    memory_gb=4,
-    auth_enabled=True,
-)
-
-service = Model.deploy(
-    workspace=ws,
-    name=service_name,
-    models=[model],
-    deployment_config=config,
-    overwrite=True,
-)
-```
 ---
 
 [モデルのデプロイの詳細については、こちらのドキュメントを](how-to-deploy-and-where.md)参照してください。
@@ -191,24 +142,20 @@ service = Model.deploy(
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-
 ```azurecli
 az ml service show --name=triton-webservice
 ```
 # <a name="python"></a>[Python](#tab/python)
 
-```python
-import requests
-
-print(service.scoring_uri)
-print(service.get_keys())
-
-```
+[!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=get-keys)]
 
 ---
 
 サービスが実行されていることを確認するために、次を実行します。 
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
 ```{bash}
 !curl -v $scoring_uri/v2/health/ready -H 'Authorization: Bearer '"$service_key"''
 ```
@@ -227,132 +174,14 @@ print(service.get_keys())
 < HTTP/1.1 200 OK
 HTTP/1.1 200 OK
 ```
-
-正常性チェックを実行したら、推論のために Triton にデータを送信するクライアントを作成できます。 クライアントの作成の詳細については、[クライアントの例](https://aka.ms/nvidia-client-examples)に関する NVIDIA ドキュメントを参照してください。 [Triton GitHub に Python のサンプル](https://aka.ms/nvidia-triton-docs)もあります。
-
-この時点で、デプロイされた webservice に Python の前および後処理を追加ない場合、作業は完了です。 前および後処理用のこのロジックを追加する場合は、そのまま読み進めてください。
-
-## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a>(オプション) 前および後処理用の Python エントリ スクリプトを使用して再デプロイする
-
-Triton がモデルに使用できることを確認した後、"_エントリ スクリプト_" を定義することで、前処理と後処理のコードを追加できます。 このファイルの名前は `score.py` です。 エントリ スクリプトの詳細については、「[エントリ スクリプトを定義する](how-to-deploy-and-where.md#define-an-entry-script)」を参照してください。
-
-主なステップの 2 つは、`init()` メソッドで Triton HTTP クライアントを初期化し、`run()` 関数でそのクライアントを呼び出すことです。
-
-### <a name="initialize-the-triton-client"></a>Triton クライアントを初期化する
-
-次の例のようなコードを `score.py` ファイルに含めます。 Azure Machine Learning の Triton は、localhost のポート 8000 でアドレス指定されることを想定しています。 この場合の localhost は、この展開の Docker イメージ内にあり、ローカル マシン上のポートではありません。
-
-> [!TIP]
-> `tritonhttpclient` pip パッケージは、キュレーションされた `AzureML-Triton` 環境に含まれているので、pip 依存関係として指定する必要はありません。
-
-```python
-import tritonhttpclient
-
-def init():
-    global triton_client
-    triton_client = tritonhttpclient.InferenceServerClient(url="localhost:8000")
-```
-
-### <a name="modify-your-scoring-script-to-call-into-triton"></a>Triton を呼び出すようにスコアリング スクリプトを変更する
-
-次の例は、モデルのメタデータを動的に要求する方法を示しています。
-
-> [!TIP]
-> Triton クライアントの `.get_model_metadata` メソッドを使用して、Triton で読み込まれたモデルのメタデータを動的に要求できます。 使用例については、[サンプル ノートブック](https://aka.ms/triton-aml-sample)を参照してください。
-
-```python
-input = tritonhttpclient.InferInput(input_name, data.shape, datatype)
-input.set_data_from_numpy(data, binary_data=binary_data)
-
-output = tritonhttpclient.InferRequestedOutput(
-         output_name, binary_data=binary_data, class_count=class_count)
-
-# Run inference
-res = triton_client.infer(model_name,
-                          [input]
-                          request_id='0',
-                          outputs=[output])
-
-```
-
-<a id="redeploy"></a>
-
-### <a name="redeploy-with-an-inference-configuration"></a>推論構成を使用した再展開
-
-推論の構成では、エントリ スクリプトと、Python SDK または Azure CLI を使用した Azure Machine Learning 展開プロセスを使用できます。
-
-> [!IMPORTANT]
-> `AzureML-Triton` [がキュレーションされた環境](./resource-curated-environments.md)を指定する必要があります。
->
-> Python コード例では、`AzureML-Triton` を `My-Triton` という名前の別の環境に複製します。 Azure CLI コードでもこの環境が使用されます。 環境の複製の詳細については、[Environment.Clone()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) のリファレンスを参照してください。
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-> [!TIP]
-> 推論構成の作成の詳細については、「[推論構成スキーマ](./reference-azure-machine-learning-cli.md#inference-configuration-schema)」を参照してください。
-
-```azurecli
-az ml model deploy -n triton-densenet-onnx \
--m densenet_onnx:1 \
---ic inference-config.json \
--e My-Triton --dc deploymentconfig.json \
---overwrite --compute-target=aks-gpu
-```
-
 # <a name="python"></a>[Python](#tab/python)
 
-```python
-from azureml.core.webservice import LocalWebservice
-from azureml.core import Environment
-from azureml.core.model import InferenceConfig
-
-
-local_service_name = "triton-bidaf-onnx"
-env = Environment.get(ws, "AzureML-Triton").clone("My-Triton")
-
-for pip_package in ["nltk"]:
-    env.python.conda_dependencies.add_pip_package(pip_package)
-
-inference_config = InferenceConfig(
-    entry_script="score_bidaf.py",  # This entry script is where we dispatch a call to the Triton server
-    source_directory=os.path.join("..", "scripts"),
-    environment=env
-)
-
-local_config = LocalWebservice.deploy_configuration(
-    port=6789
-)
-
-local_service = Model.deploy(
-    workspace=ws,
-    name=local_service_name,
-    models=[model],
-    inference_config=inference_config,
-    deployment_config=local_config,
-    overwrite=True)
-
-local_service.wait_for_deployment(show_output = True)
-print(local_service.state)
-# Print the URI you can use to call the local deployment
-print(local_service.scoring_uri)
-```
+[!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=query-service)]
 
 ---
 
-展開が完了すると、スコアリング URI が表示されます。 今回のローカル展開では、`http://localhost:6789/score` です。 クラウドにデプロイする場合は、[az ml service show](/cli/azure/ml/service#az_ml_service_show) CLI コマンドを使用してスコアリング URI を取得できます。
 
-スコアリング URI に推論要求を送信するクライアントを作成する方法については、[Web サービスとして展開されたモデルの使用](how-to-consume-web-service.md)に関するページを参照してください。
-
-### <a name="setting-the-number-of-workers"></a>worker の数の設定
-
-デプロイ内の worker の数を設定するには、環境変数 `WORKER_COUNT` を設定します。 `env` と呼ばれる [Environment](/python/api/azureml-core/azureml.core.environment.environment) オブジェクトがあると仮定した場合、以下を実行できます。
-
-```{py}
-env.environment_variables["WORKER_COUNT"] = "1"
-```
-
-これにより、指定した数の worker をスピン アップするよう Azure ML が指示されます。
-
+正常性チェックを実行したら、推論のために Triton にデータを送信するクライアントを作成できます。 クライアントの作成の詳細については、[クライアントの例](https://aka.ms/nvidia-client-examples)に関する NVIDIA ドキュメントを参照してください。 [Triton GitHub に Python のサンプル](https://aka.ms/nvidia-triton-docs)もあります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -366,17 +195,14 @@ az ml service delete -n triton-densenet-onnx
 ```
 # <a name="python"></a>[Python](#tab/python)
 
-```python
-local_service.delete()
-```
-
+[!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=delete-service)]
 
 ---
 ## <a name="troubleshoot"></a>トラブルシューティング
 
 * [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md): モデルのデプロイ時に発生する可能性のある一般的なエラーのトラブルシューティングと解決、回避方法について説明します。
 
-* デプロイ ログで **TritonServer を開始できなかった** ことが示されている場合は、[Nvidia のオープンソースのドキュメント](https://github.com/triton-inference-server/server)を参照してください。
+* デプロイしたログに、**TritonServer が起動に失敗した** ことが表示される場合は、[Nvidia のオープン ソース ドキュメント](https://github.com/triton-inference-server/server)を参考にしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

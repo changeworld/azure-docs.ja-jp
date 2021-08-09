@@ -1,22 +1,22 @@
 ---
 title: SMB マルチチャネルのパフォーマンス - Azure Files
 description: SMB マルチチャネルのパフォーマンスについて説明します。
-author: gunjanj
+author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/16/2020
-ms.author: gunjanj
+ms.date: 05/17/2021
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8b2f64b0249cfe3b8a0a2e1bebcf7daabfe94dc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374985"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094620"
 ---
 # <a name="smb-multichannel-performance"></a>SMB マルチチャネルのパフォーマンス
 
-Azure Files SMB マルチチャネル (プレビュー) を使用すると、SMB 3.x クライアントから、FileStorage アカウント内の Premium ファイル共有への複数のネットワーク接続を確立できます。 Windows Server 2012 および Windows 8 クライアントで、SMB 3.0 プロトコルに SMB マルチチャネル機能が導入されました。 これにより、SMB マルチチャネルをサポートしている Azure Files SMB 3.x クライアントから、Azure Premium ファイル共有の機能を利用できます。 ストレージ アカウントで SMB マルチチャネルを有効にするための追加料金は発生しません。
+Azure Files SMB マルチチャネル (プレビュー) を使用すると、SMB 3.x クライアントから、FileStorage アカウント内の Premium ファイル共有への複数のネットワーク接続を確立できます。 Windows Server 2012 および Windows 8 クライアントで、SMB 3.x プロトコルに SMB マルチチャネル機能が導入されました。 これにより、SMB マルチチャネルをサポートしている Azure Files SMB 3.x クライアントから、Azure Premium ファイル共有の機能を利用できます。 ストレージ アカウントで SMB マルチチャネルを有効にするための追加料金は発生しません。
 
 ## <a name="benefits"></a>利点
 

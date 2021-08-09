@@ -3,24 +3,22 @@ title: Azure リソースを管理および監視するための自動化タス�
 description: Azure Logic Apps で実行されるワークフローを作成して、Azure リソースを管理し、コストを監視するための自動化タスクを設定します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
-ms.date: 04/05/2021
-ms.openlocfilehash: 0a98f9e4b108d2498fa19bc0b041f9d52272c7d2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: azla
+ms.topic: how-to
+ms.date: 06/09/2021
+ms.openlocfilehash: bd8ac7857d5be31aafd9a1e91cbd276d79823ed2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774920"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747151"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>自動化タスクを作成して Azure リソースを管理し、コストを監視する (プレビュー)
 
 > [!IMPORTANT]
-> この機能はパブリック プレビュー段階であり、サービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> この機能はプレビュー段階であり、運用環境のワークロードには推奨されず、サービス レベル アグリーメントからは除外されています。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 [Azure リソース](../azure-resource-manager/management/overview.md#terminology)をより簡単に管理できるように、自動化タスク テンプレートを使用して、特定のリソースまたはリソース グループの自動管理タスクを作成することができます。これは、リソースの種類によって可用性が異なります。 たとえば、[Azure ストレージ アカウント](../storage/common/storage-account-overview.md)の場合は、そのストレージ アカウントの月額料金を送信する自動化タスクを設定できます。 [Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/)の場合は、事前に定義したスケジュールでその仮想マシンをオンまたはオフにする自動化タスクを作成できます。
-
-バックグラウンドでは、自動化タスクは実際には [Azure Logic Apps](../logic-apps/logic-apps-overview.md) サービス上で動作するワークフローで、同じ[価格レート](https://azure.microsoft.com/pricing/details/logic-apps/)や[価格モデル](../logic-apps/logic-apps-pricing.md)を使って課金されています。 タスクを作成したら、ロジック アプリ デザイナーでタスクを開いて、基になるワークフローを表示および編集できます。 タスクの実行が少なくとも 1 つ完了した後であれば、各実行の状態、履歴、入力、および出力を確認できます。
 
 現在、このプレビューで使用可能なタスク テンプレートは次のとおりです。
 
@@ -45,9 +43,22 @@ ms.locfileid: "107774920"
 
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>自動化タスクと Azure Automation の違い
 
-現時点では、リソース レベルでのみ自動化タスクを作成し、タスクの実行履歴を表示して、タスクの基になるロジック アプリ ワークフローを編集することができます。これは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) サービスを利用しています。 自動化タスクは、[Azure Automation](../automation/automation-intro.md) よりも基本的で軽量です。
+自動化タスクは、[Azure Automation](../automation/automation-intro.md) よりも基本的で軽量です。 現時点では、自動化タスクを作成できるのは Azure リソース レベルのみです。 内部的には、自動化タスクは実際はワークフローを実行するロジック アプリ リソースであり、["*マルチテナント*" の Azure Logic Apps サービス](../logic-apps/logic-apps-overview.md)で実行されます。 自動化タスクを作成したら、ワークフロー デザイナーでタスクを開いて、基になるワークフローを表示および編集できます。 タスクの実行が少なくとも 1 回完了した後であれば、タスクの各実行の状態、ワークフロー実行履歴、入力、および出力を確認できます。
 
 これに対し、Azure Automation は、Azure および Azure 以外の環境にわたって一貫性のある管理をサポートする、クラウドベースのオートメーションおよび構成のサービスです。 このサービスは、[Runbook](../automation/automation-runbook-execution.md) を使用して[プロセスをオーケストレーションするためのプロセスの自動化](../automation/automation-intro.md#process-automation)、[変更追跡とインベントリ](../automation/change-tracking/overview.md)を含む構成管理、更新管理、共有機能、および異種環境機能で構成されています。 Automation は、ワークロードとリソースのデプロイ、運用、使用停止を完全に制御します。
+
+<a name="pricing"></a>
+
+## <a name="pricing"></a>価格
+
+自動化タスクを作成しただけでは、料金が自動的に発生することはありません。 内部的には、自動化タスクはマルチテナント ベースのロジック アプリであるため、[従量課金モデル](logic-apps-pricing.md)が自動化タスクにも適用されます。 測定と課金は、基になるロジック アプリ ワークフローでのトリガーとアクションの実行に基づきます。
+
+ワークフローが正常に実行されたかどうか、またはワークフローがインスタンス化されたかどうかに関係なく、実行は測定および課金されます。 たとえば、自動化タスクが、エンドポイントへの発信呼び出しを定期的に行うポーリング トリガーを使用するとします。 この送信要求は、トリガーが起動したかスキップされたか (これは、ワークフロー インスタンスが作成されるかどうかに影響します) に関わらず、実行として測定および課金されます。
+
+トリガーとアクションの基準となる[従量課金プランの価格](https://azure.microsoft.com/pricing/details/logic-apps/)は、これらの操作が ["組み込み"](../connectors/built-in.md) であるか["マネージド" (Standard または Enterprise)](../connectors/managed.md) であるかによって異なります。 トリガーとアクションによってストレージ トランザクションも作成されまが、これは[従量課金プランのデータ料金](https://azure.microsoft.com/pricing/details/logic-apps/)を使用します。
+
+> [!TIP]
+> 毎月の特典として、従量課金プランには、"*数千*"の組み込み実行が無料で含まれています。 具体的な情報については、[従量課金プランの料金](https://azure.microsoft.com/pricing/details/logic-apps/)に関する説明を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

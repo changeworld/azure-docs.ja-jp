@@ -1,6 +1,6 @@
 ---
-title: Microsoft パートナー センターで SaaS オファーのプロパティを構成する方法
-description: パートナー センターでサービスとしてのソフトウェア (SaaS) Microsoft コマーシャル マーケットプレース オファーのプロパティを構成する方法について説明します。
+title: Azure Marketplace 内で SaaS オファーのプロパティを構成する
+description: Azure Marketplace 内でサービスとしてのソフトウェア (SaaS) のプロパティを構成します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac4461d01ea020886b83e0f643bbca5c0fba5ab0
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94492125"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614458"
 ---
-# <a name="how-to-configure-your-saas-offer-properties"></a>SaaS オファーのプロパティを構成する方法
+# <a name="configure-saas-offer-properties"></a>SaaS オファーのプロパティの構成
 
 この記事では、Microsoft マーケットプレースでサービスとしてのソフトウェア (SaaS) オファーのプロパティを構成する方法について説明します。
 
@@ -93,4 +93,4 @@ ms.locfileid: "94492125"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SaaS オファー登録情報の詳細を構成する方法](create-new-saas-offer-listing.md)
+- [SaaS オファーの登録情報を構成する](create-new-saas-offer-listing.md)

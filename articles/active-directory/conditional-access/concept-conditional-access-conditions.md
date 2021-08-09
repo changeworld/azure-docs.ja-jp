@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 05/18/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59664a0b5127e9fde8f2890cd396bec120eff29d
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 1e0aaac1c52a2def624f8bc8736219685458ad42
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330659"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070294"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -82,9 +82,9 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
       -  このオプションには、Office デスクトップや Phone アプリケーションなどのアプリケーションが含まれます。
 - レガシ認証クライアント
    - Exchange ActiveSync クライアント
-      - これには Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。
+      - この選択には Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。
       - ポリシーによって Exchange ActiveSync の使用がブロックされると、影響を受けるユーザーには 1 通の検疫電子メールが送信されます。 この電子メールには、ブロックされた理由に関する情報が記載され、可能な場合は修復の手順が含められます。
-      - 管理者は、条件付きアクセス MS Graph API を使用して、サポートされているプラットフォーム (iOS、Android、Windows など) にのみポリシーを適用できます。
+      - 管理者は、条件付きアクセス Microsoft Graph API を使用して、サポートされているプラットフォーム (iOS、Android、Windows など) にのみポリシーを適用できます。
    - その他のクライアント
       - このオプションには、最新の認証をサポートしていない基本またはレガシ認証プロトコルを使用するクライアントが含まれます。
          - 認証済み SMTP - 電子メール メッセージを送信するために POP および IMAP クライアントで使用されます。
@@ -157,7 +157,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | Dynamics CRM アプリ | Dynamics CRM | Windows 10、Windows 8.1、iOS、Android |
 | メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Exchange Online | Windows 10 |
 | アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス | Android および iOS |
-| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
+| Microsoft Teams Services - このクライアント アプリは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
 | Office 2016 アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1、Windows 7 |
 | Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
 | Office 2016 (Word、Excel、PowerPoint、OneNote のみ)。 | SharePoint | macOS |
@@ -195,6 +195,13 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 
 例: *Microsoft Azure の管理* クラウド アプリにアクセスする *すべてのユーザー* について、*アクセス制御* と **ブロック** のために、**すべてのデバイスの状態** を含め、**ハイブリッド Azure AD 参加済みのデバイス** と **デバイスは準拠としてマーク済み** を除外する。 
    - この例では、ハイブリッド Azure AD 参加済みデバイスまたは準拠としてマーク済みのデバイスのいずれかから、Microsoft Azure の管理へのアクセスのみを許可するポリシーが作成されます。
+
+> [!IMPORTANT]
+> デバイス状態とデバイスのフィルターは、条件付きアクセス ポリシーで一緒に使用することはできません。 デバイスのフィルターを使用する方が、`trustType` および `isCompliant` プロパティを介して、対象とするデバイス状態情報のサポートも含め、より詳細に対象設定できます。
+
+## <a name="filters-for-devices-preview"></a>デバイスのフィルター (プレビュー)
+
+条件付きアクセスには、デバイスのフィルターと呼ばれる新しいオプションの条件があります。 組織がデバイスのフィルターを条件として構成する場合、デバイスのプロパティでルール式を使用して、フィルターに基づいてデバイスを含めるか除外するかを選択できます。 デバイスのフィルターのルール式は、ルール ビルダーまたはルール構文を使用して作成できます。 このエクスペリエンスは、グループの動的なメンバーシップの規則に使用されるものと似ています。 詳細については、「[条件付きアクセス: デバイスのフィルター (プレビュー)](concept-condition-filters-for-devices.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

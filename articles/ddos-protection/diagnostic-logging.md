@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8ae9365199edfde078cad39783458fc3f86ebd6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567680"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061500"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS 診断ログの表示と構成
 
@@ -128,9 +128,7 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>すべてのパブリック IP で診断ログを有効にする
 
-この[テンプレート](https://aka.ms/ddosdiaglogs)を使用すると、定義されたスコープ内のすべてのパブリック IP ログに対して診断ログを自動的に有効にする Azure Policy 定義を作成できます。
-
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FPolicy%20-%20DDOS%20Enable%20Diagnostic%20Logging%2FAzure%20Policy%2FDDoSLogs.json)
+この[組み込みポリシー](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648)は、定義されたスコープ内のすべてのパブリック IP ログに対して診断ログを自動的に有効にします。 組み込みポリシーの完全な一覧については、「[Azure DDoS Protection Standard 用 Azure Policy 組み込みポリシー定義](policy-reference.md)」を参照してください。
 
 ## <a name="view-log-data-in-workbooks"></a>ブック内のログ データを表示する
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
-ms.custom: references_regions, synapse-cosmos-db
-ms.openlocfilehash: 5cfe932d4f9ea60a044ce0b594df800fa37af6f1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
+ms.openlocfilehash: bba594a6b0482457acad8bead382099a1e8e3a5b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904930"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968043"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB を構成して使用する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -206,7 +206,7 @@ Azure portal を使用して分析ストアが有効なコンテナーを作成�
 1. 分析ストアが有効になっている既存のコンテナーを選択します。 それを展開し、次の値を変更します。
 
   * **[Scale & Settings]\(スケールと設定\)** ウィンドウを開きます。
-  * **[設定]** で、** Analytical Storage Time to Live** を探します。
+  * **[設定]** で、 **[Analytical Storage Time to Live]\(分析ストレージの有効期限\)** を探します。
   * **[オン (既定値なし)]** または **[オン]** を選択し、TTL 値を設定します
   * **[保存]** をクリックして変更を保存します。
 
@@ -270,7 +270,8 @@ Synapse Spark を使用してクエリを実行する方法については、[Az
 
 ## <a name="use-serverless-sql-pool-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>サーバーレス SQL プールを使用して Power BI のデータを分析して視覚化する
 
-Synapse Link for Azure Cosmos DB 上にサーバーレス SQL プール データベースおよびビューを構築できます。 後で、Azure Cosmos コンテナーのクエリを実行してから、これらのビュー上で Power BI を使用してモデルを構築して、そのクエリを反映させることができます。 詳細については、[Synapse Link でサーバーレス SQL プールを使用して Azure Cosmos DB データを分析する](synapse-link-power-bi.md)方法に関する記事を参照してください。
+Synapse Link for Azure Cosmos DB 上にサーバーレス SQL プール データベースおよびビューを作成できます。 後で、Azure Cosmos コンテナーのクエリを実行してから、これらのビュー上で Power BI を使用してモデルを構築して、そのクエリを反映させることができます。 トランザクション ワークロードへのパフォーマンスやコストの影響はなく、ETL パイプライン管理の複雑さもありません。 [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) または[インポート](/power-bi/connect-data/service-dataset-modes-understand#import-mode)のいずれかのモードを使用できます。 詳細については、[Synapse Link でサーバーレス SQL プールを使用して Azure Cosmos DB データを分析する](synapse-link-power-bi.md)方法に関する記事を参照してください。
+
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 

@@ -7,20 +7,24 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 40e3e804d62bfd0ece669ebd46891f0c72dcb71e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 848ffc1d4352d464a9afb1c65a0a8c60eb3cffa3
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140337"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558892"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Cognitive Search で BLOB のインデックス作成を構成する方法
 
 BLOB インデクサーは、Azure Blob Storage から Cognitive Search インデックスにコンテンツを取り込むために使用されます。 BLOB インデクサーは [AI エンリッチメント](cognitive-search-concept-intro.md)で頻繁に使用されます。アタッチされた[スキルセット](cognitive-search-working-with-skillsets.md)によって、検索可能なコンテンツを作成するためのイメージと自然言語の処理が追加されます。 ただし、AI エンリッチメントを使用せずに BLOB インデクサーを使用して、PDF、Microsoft Office ドキュメント、ファイル形式などのテキストベースのドキュメントからコンテンツを取り込むこともできます。
 
 この記事では、両方のシナリオで BLOB インデクサーを構成する方法について説明します。 インデクサーの概念について理解が不十分な場合は、BLOB のインデックス作成に進む前に、「[Azure Cognitive Search のインデクサー](search-indexer-overview.md)」および[検索インデクサーの作成](search-howto-create-indexers.md)に関するページを先にお読みください。
+
+## <a name="supported-access-tiers"></a>サポートされているアクセス層
+
+Blob Storage の[アクセス層](../storage/blobs/storage-blob-storage-tiers.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。 
 
 <a name="SupportedFormats"></a>
 

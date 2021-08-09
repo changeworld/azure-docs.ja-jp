@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: f111729d7d7707ed4f40ce8f89ce76975fb47400
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 53804e99a3bc341669c0d4943464835cc7d1e531
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536447"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463289"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Management レベルの機能に基づく比較
 
@@ -29,18 +29,19 @@ ms.locfileid: "107536447"
 | 複数リージョンのデプロイ                                                                      | いいえ          | いいえ        | いいえ    | いいえ       | はい     |
 | 可用性ゾーン                                                                           | いいえ          | いいえ        | いいえ    | いいえ       | はい     |
 | 複数のカスタム ドメイン名                                                                 | いいえ          | はい        | いいえ    | いいえ       | はい     |
-| 開発者ポータル<sup>2</sup>                                                                 | いいえ          | はい       | はい   | はい      | はい     |
-| ビルトイン キャッシュ                                                                               | いいえ          | はい       | はい   | はい      | はい     |
-| ビルトイン分析                                                                           | いいえ          | はい       | はい   | はい      | はい     |
+| 開発者ポータル<sup>2</sup>                                                                 | いいえ          | はい       | Yes   | Yes      | はい     |
+| ビルトイン キャッシュ                                                                               | いいえ          | はい       | Yes   | Yes      | はい     |
+| ビルトイン分析                                                                           | いいえ          | はい       | Yes   | Yes      | はい     |
 | [セルフホステッド ゲートウェイ](self-hosted-gateway-overview.md)<sup>3</sup>                           | いいえ          | はい       | いいえ    | いいえ       | はい     |
-| [TLS の設定](api-management-howto-manage-protocols-ciphers.md)                             | はい         | はい       | はい   | はい      | はい     |
-| [外部キャッシュ](./api-management-howto-cache-external.md)                                                    | はい         | はい       | はい   | はい      | はい     |
-| [クライアント証明書認証](api-management-howto-mutual-certificates-for-clients.md) | はい         | はい       | はい   | はい      | はい     |
-| [バックアップと復元](api-management-howto-disaster-recovery-backup-restore.md)               | いいえ          | はい       | はい   | はい      | はい     |
-| [Git による管理](api-management-configuration-repository-git.md)                        | いいえ          | はい       | はい   | はい      | はい     |
-| ダイレクト管理 API                                                                        | いいえ          | はい       | はい   | はい      | はい     |
-| Azure Monitor のログとメトリック                                                               | いいえ          | はい       | はい   | はい      | はい     |
-| 静的 IP                                                                                    | いいえ          | はい       | はい   | はい      | はい     |
+| [TLS の設定](api-management-howto-manage-protocols-ciphers.md)                             | はい         | Yes       | Yes   | Yes      | はい     |
+| [外部キャッシュ](./api-management-howto-cache-external.md)                                                    | はい         | Yes       | Yes   | Yes      | はい     |
+| [クライアント証明書認証](api-management-howto-mutual-certificates-for-clients.md) | はい         | Yes       | Yes   | Yes      | はい     |
+| [バックアップと復元](api-management-howto-disaster-recovery-backup-restore.md)               | いいえ          | はい       | Yes   | Yes      | はい     |
+| [Git による管理](api-management-configuration-repository-git.md)                        | いいえ          | はい       | Yes   | Yes      | はい     |
+| ダイレクト管理 API                                                                        | いいえ          | はい       | Yes   | Yes      | はい     |
+| Azure Monitor のログとメトリック                                                               | いいえ          | はい       | Yes   | Yes      | はい     |
+| 静的 IP                                                                                    | いいえ          | はい       | Yes   | Yes      | Yes     |
+| [WebSocket API (プレビュー)](websocket-api.md)                                                                                    | いいえ          | はい       | Yes   | Yes      | はい     |
 
 <sup>1</sup> ユーザーが開発者ポータルにサインインする際に、ID プロバイダーとして Azure AD (および Azure AD B2C) を使用できます。<br/>
 <sup>2</sup> 関連機能 (例: ユーザー、グループ、問題、アプリケーション、電子メール テンプレートと通知) を含みます。<br/>

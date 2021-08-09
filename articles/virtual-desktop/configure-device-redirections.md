@@ -1,21 +1,21 @@
 ---
 title: デバイスのリダイレクトを構成する - Azure
-description: Windows Virtual Desktop でのデバイスのリダイレクトを構成する方法。
+description: Azure Virtual Desktop でのデバイスのリダイレクトを構成する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f603a4b44b555382e4178d90522ae41fa2388663
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 570983229c16fa9c01d14bd7575d0720a7197191
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947719"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756547"
 ---
 # <a name="configure-device-redirections"></a>デバイスのリダイレクトを構成する
 
-Windows Virtual Desktop 環境でのデバイスのリダイレクトを構成すると、プリンター、USB デバイス、マイク、およびその他の周辺機器をリモート セッションで使用できます。 デバイスのリダイレクトによっては、リモート デスクトップ プロトコル (RDP) のプロパティとグループ ポリシー設定の両方に対する変更が必要になる場合があります。
+Azure Virtual Desktop 環境でのデバイスのリダイレクトを構成すると、プリンター、USB デバイス、マイク、およびその他の周辺機器をリモート セッションで使用できます。 デバイスのリダイレクトによっては、リモート デスクトップ プロトコル (RDP) のプロパティとグループ ポリシー設定の両方に対する変更が必要になる場合があります。
 
 ## <a name="supported-device-redirections"></a>サポートされるデバイスのリダイレクト
 

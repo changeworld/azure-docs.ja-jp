@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 011b50449f0a02b128bc000535f93e1809fd9777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0824a0947318172ec8094787f4fe01058f1a5e7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92673879"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846137"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールを割り当てる
 
@@ -34,6 +34,10 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
 > [!NOTE]
 > Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者サブスクリプション ロールに割り当てられたグループのユーザーまたはメンバー、および Azure AD 全体管理者には、既定でリソース管理者のアクセス許可が与えられます。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソース用 Privileged Identity Management を使用したアクセスの確認ができます。 リソース管理者のアクセス許可がないユーザーは、リソース用 Privileged Identity Management を管理できません。 [Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)の一覧を表示します。
+
+## <a name="role-assignment-conditions"></a>ロールの割り当て条件
+
+Azure ABAC (Azure の属性ベースのアクセス制御) プレビューを使用すると、資格のあるロールの割り当てに対し、Privileged Identity Management (PIM) を使用してリソースの条件を設定できます。 PIM を使用する場合、エンド ユーザーは、資格のあるロールの割り当てをアクティブ化して、特定のアクションを実行するためのアクセス許可を取得する必要があります。 PIM で Azure ABAC の条件を使用すると、きめ細かな条件を使用してリソースに対するユーザーのロールのアクセス許可を制限できるだけでなく、PIM を使用して、期限付きの設定、承認ワークフロー、監査証跡などでロールの割り当てを保護することもできます。 詳細については、[Azure の属性ベースのアクセス制御 (パブリック プレビュー)](../../role-based-access-control/conditions-overview.md) に関するページを参照してください。
 
 ## <a name="assign-a-role"></a>ロールの割り当て
 
@@ -108,6 +112,10 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 1. **[資格のあるロール]** タブまたは **[アクティブなロール]** タブでロールの割り当てを見つけます。
 
     ![ロールの割り当ての更新または削除](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+
+1. Azure リソースへのアクセスを細かく制限するための条件を追加または更新するには、ロールの割り当ての **[条件]** 列で **[追加]** または **[表示/編集]** を選択します。 現在、[Azure の属性ベースのアクセス制御パブリック プレビュー](../../role-based-access-control/conditions-overview.md)でサポートされる Privileged Identity Management のロールは、ストレージ BLOB データ所有者、ストレージ BLOB データ閲覧者、Blob Storage BLOB データ共同作成者のみです。
+
+    ![アクセスの制御に使用される属性を更新または削除する](./media/pim-resource-roles-assign-roles/resources-abac-update-remove.png)
 
 1. **[更新]** または **[削除]** を選択して、ロールの割り当てを更新または削除します。
 

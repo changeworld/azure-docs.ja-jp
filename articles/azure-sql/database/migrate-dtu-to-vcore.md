@@ -3,19 +3,19 @@ title: DTU から仮想コアに移行する
 description: Azure SQL Database 内のデータベースを、DTU モデルから仮想コア モデルに移行します。 仮想コアへの移行は、Standard レベルと Premium レベルの間でのアップグレードまたはダウングレードに似ています。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.topic: conceptual
 ms.custom: sqldbrb=1
-author: stevestein
-ms.author: sstein
-ms.reviewer: sashan, moslake
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma, moslake
 ms.date: 02/09/2021
-ms.openlocfilehash: 332a2273a377268a425619a0cdaa5f4780b46e73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0f2ffbb09929a919f90fdec50fe72173af78606
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361657"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411865"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Azure SQL Database を DTU ベースのモデルから仮想コア ベースのモデルに移行する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,15 +106,15 @@ FROM dtu_vcore_map;
 - 同じハードウェアの世代および同じ数の仮想コアについては、多くの場合、仮想コア データベースの IOPS とトランザクション ログのスループット リソース制限が DTU データベースよりも高くなります。 IO にバインドされたワークロードでは、同じレベルのパフォーマンスを実現するために、仮想コア モデルの仮想コア数を減らせる場合があります。 DTU および仮想コア データベースの絶対値のリソース制限は、[sys. dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューで公開されています。 ほぼ一致するサービス目標を使用する仮想コア データベースと、移行される DTU データベースとの間でのこれらの値の比較は、仮想コア サービスの目標をより正確に選択するのに役立ちます。
 - また、マッピング クエリでは、移行される DTU データベースまたはエラスティック プール、および仮想コア モデルの各ハードウェアの、コアあたりのメモリ量を返します。 十分なパフォーマンスを実現するために大量のメモリ データ キャッシュを必要とするワークロード、またはクエリ処理に大量のメモリ許可を必要とするワークロードでは、仮想コアへの移行後に、同様のあるいはそれ以上の合計メモリを確保することが重要です。 このようなワークロードでは、実際のパフォーマンスに応じて、十分な合計メモリを得るために仮想コアの数を増やすことが必要になる場合があります。
 - 仮想コア サービスの目標を選択する際には、DTU データベースの[リソース使用率の履歴](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)を考慮する必要があります。 CPU リソースの使用率が常に低い DTU データベースでは、マッピング クエリで返されるよりも少ない仮想コアが必要になることがあります。 逆に、CPU 使用率が常に高いためにワークロードのパフォーマンスが不十分になる DTU データベースでは、クエリで返されるよりも多い仮想コアが必要になることがあります。
-- 使用パターンが間欠的または予測できないデータベースを移行する場合は、[サーバーレス](serverless-tier-overview.md) コンピューティング レベルの使用を検討してください。 サーバーレスでの同時実行ワーカー (要求) の最大数は、構成されている同じ最大仮想コア数に対してプロビジョニングされたコンピューティングの上限の 75% であることに注意してください。 また、サーバーレスで使用できる最大メモリは、構成されている最大仮想コア数に 3 GB を乗算したものになります。たとえば、構成されている最大コア数が 40 のとき、最大メモリは 120 GB になります。   
+- 使用パターンが間欠的または予測できないデータベースを移行する場合は、[サーバーレス](serverless-tier-overview.md) コンピューティング レベルの使用を検討してください。 サーバーレスでの同時実行ワーカー (要求) の最大数は、構成されている同じ最大仮想コア数に対してプロビジョニングされたコンピューティングの上限の 75% であることに注意してください。 また、サーバーレスで使用できる最大メモリは、構成されている最大仮想コア数に 3 GB を乗算したものになります。たとえば、構成されている最大仮想コア数が 40 のとき、最大メモリは 120 GB になります。   
 - 仮想コア モデルでは、サポートされるデータベースの最大サイズが、ハードウェアの世代によって異なる場合があります。 大規模なデータベースの場合は、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の仮想コア モデルでサポートされる最大サイズを確認してください。
 - エラスティック プールの場合、[DTU](resource-limits-dtu-elastic-pools.md) および[仮想コア](resource-limits-vcore-elastic-pools.md) モデルでは、プールあたりのデータベースの最大サポート数が異なります。 多くのデータベースがあるエラスティック プールを移行する場合は、このことを考慮する必要があります。
-- ハードウェアの世代によっては、すべてのリージョンで使用できないものもあります。 「[ハードウェアの世代](service-tiers-vcore.md#hardware-generations)」で使用できるかどうかを確認してください。
+- ハードウェアの世代によっては、すべてのリージョンで使用できないものもあります。 [SQL データベースのハードウェアの世代](./service-tiers-sql-database-vcore.md#hardware-generations)、または[SQL Managed Instance のハードウェア世代](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations)の可用性を確認します。
 
 > [!IMPORTANT]
 > 上記の DTU から仮想コアへのサイズ変更のガイドラインは、ターゲット データベース サービス目標の最初の見積もりに役立つように提供されています。
 >
-> ターゲット データベースの最適な構成はワークロードに依存します。 したがって、移行後に価格とパフォーマンスの最適な比率を実現するには、仮想コア モデルの柔軟性を活用し、仮想コアの数、[ハードウェアの世代](service-tiers-vcore.md#hardware-generations)、[サービス](service-tiers-vcore.md#service-tiers)および[コンピューティング](service-tiers-vcore.md#compute-tiers) レベルを調整し、また、[並列処理の最大限度](/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)など、データベース構成のその他のパラメーターを調整する必要がある場合があります。
+> ターゲット データベースの最適な構成はワークロードに依存します。 したがって、移行後に価格とパフォーマンスの最適な比率を実現するには、仮想コアモデルの柔軟性を活用し、仮想コアの数、ハードウェアの世代、サービスおよびコンピューティング層を調整し、また、[並列処理の最大限度](/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)など、データベース構成のその他のパラメーターを調整する必要がある場合があります。
 > 
 
 ### <a name="dtu-to-vcore-migration-examples"></a>DTU から仮想コアへの移行例

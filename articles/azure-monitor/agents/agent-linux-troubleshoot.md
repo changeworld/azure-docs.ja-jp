@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 203baa58e286bd605bf28f511a5c12fcf3dc2033
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d122c9ae2281bde041a15c4f137293f76e0c618c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165067"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475277"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法
 
@@ -52,7 +52,7 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 6. エージェントのカスタム ログが機能してしない
 7. エージェントのログを収集する
 
-詳細については、[Github のドキュメント](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)をご覧ください。
+詳細については、[GitHub のドキュメント](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)をご覧ください。
 
  > [!NOTE]
  > 問題が発生した場合は、ログ コレクター ツールを実行してください。 ログを最初に用意することは、サポート チームが問題を迅速にトラブルシューティングするのに役立ちます。

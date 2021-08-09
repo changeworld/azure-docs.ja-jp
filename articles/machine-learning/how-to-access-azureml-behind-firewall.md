@@ -9,23 +9,25 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/11/2021
+ms.date: 06/03/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: fc04655db898902a93c4e404f51d15393db3d92e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: ff6e4f0a3c2b79f63376a480986f15014d20f9ae
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785261"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565358"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 
 この記事では、Azure Firewall を構成して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御する方法について説明します。 Azure Machine Learning のセキュリティ保護の詳細については、[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)に関するページを参照してください。
 
-> [!WARNING]
-> ファイアウォールの背後にあるデータ ストレージへのアクセスは、コード ファースト エクスペリエンスでのみサポートされます。 [Azure Machine Learning スタジオ](overview-what-is-machine-learning-studio.md)を使用してファイアウォールの背後にあるデータにアクセスすることはサポートされていません。 スタジオを使用してプライベート ネットワーク上のデータ ストレージを操作するには、まず[仮想ネットワークを設定し](../virtual-network/quick-create-portal.md)、[仮想ネットワーク内に格納されているデータへのアクセス権をスタジオに付与する](how-to-enable-studio-virtual-network.md)必要があります。
-
 ## <a name="azure-firewall"></a>Azure Firewall
+
+> [!IMPORTANT]
+> Azure Firewall は、"_Azure 仮想ネットワーク リソース_" にセキュリティを提供する Azure サービスです。 Azure ストレージ アカウントなど、一部の Azure サービスには、"_その特定のサービス インスタンスのパブリック エンドポイントに適用される_" 独自のファイアウォール設定があります。 このドキュメントの情報は、Azure Firewall に固有のものです。
+> 
+> サービス インスタンスのファイアウォール設定については、[仮想ネットワークでのスタジオの使用](how-to-enable-studio-virtual-network.md#firewall-settings)に関する記事を参照してください。
 
 Azure Firewall を使用する場合は、__宛先ネットワーク アドレス変換 (DNAT)__ を使用して受信トラフィックの NAT 規則を作成します。 送信トラフィックの場合は、__ネットワーク__ や __アプリケーション__ の規則を作成します。 これらの規則コレクションの詳細については、「[Azure Firewall の概念をいくつか教えてください](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)」を参照してください。
 
@@ -107,6 +109,18 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
 
 1. Azure Kubernetes Service (AKS) にデプロイされたモデルへのアクセスを制限するには、[Azure Kubernetes Service でのエグレス トラフィックの制限](../aks/limit-egress-traffic.md)に関する記事を参照してください。
 
+### <a name="diagnostics-for-support"></a>サポート用の診断
+
+Microsoft サポートを使用しているときに診断情報を収集する必要がある場合は、次の手順を使用します。
+
+1. `AzureMonitor` タグとの間のトラフィックを許可する __ネットワーク規則__ を追加します。
+1. 次のホストに __アプリケーション規則__ を追加します。 これらのホストの __Protocol:Port__ には、__http、https__ を選択します。
+
+    + **dc.applicationinsights.azure.com**
+    + **dc.applicationinsights.microsoft.com**
+    + **dc.services.visualstudio.com**
+
+    Azure Monitor ホストの IP アドレスの一覧については、「[Azure Monitor で使用される IP アドレス](../azure-monitor/app/ip-addresses.md)」を参照してください。
 ## <a name="other-firewalls"></a>その他のファイアウォール
 
 このセクションのガイダンスは一般的なもので、各ファイアウォールには独自の用語や特定の構成があります。 ファイアウォール経由の通信を許可する方法について不明な点がある場合は、使用しているファイアウォールのドキュメントを参照してください。
@@ -148,7 +162,7 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
 | コンピューティング インスタンス | \*.instances.azureml.ms |  |  |
 
 > [!IMPORTANT]
-> ファイアウォールでは、__TCP__ ポート __18881__ 経由での \*.instances.azureml.ms との通信を許可する必要があります。
+> ファイアウォールでは、__TCP__ ポート __18881、443、8787__ 経由での \*.instances.azureml.ms との通信を許可する必要があります。
 
 **Azure Machine Learning によって使用される関連リソース**
 
@@ -167,6 +181,8 @@ UDR を追加するときに、関連する各 Batch の IP アドレス プレ�
 
 Azure Kubernetes Service (AKS) にデプロイされたモデルへのアクセスの制限については、[Azure Kubernetes Service でのエグレス トラフィックの制限](../aks/limit-egress-traffic.md)に関する記事を参照してください。
 
+> [!TIP]
+> Microsoft サポートと協力して診断情報を収集する場合は、Azure Monitor ホストで使用される IP アドレスへの送信トラフィックを許可する必要があります。 Azure Monitor ホストの IP アドレスの一覧については、「[Azure Monitor で使用される IP アドレス](../azure-monitor/app/ip-addresses.md)」を参照してください。
 ### <a name="python-hosts"></a>Python のホスト
 
 このセクションのホストは、Python パッケージをインストールするために使用されます。 開発、トレーニング、デプロイ時に必要になります。 

@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 1b66397fcc6ed32c7630aea1287c8f6865ebcbc5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3034f117f8efa383a9f7a5e768e8d5627ea32099
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749755"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668407"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 用語集
 
@@ -85,6 +85,10 @@ IoT Hub に組み込まれている[エンドポイント](#endpoint)のタイ�
 ### <a name="cloud-gateway"></a>クラウド ゲートウェイ
 
 クラウド ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 デバイスでローカルに実行される[フィールド ゲートウェイ](#field-gateway)とは異なり、クラウド ゲートウェイはクラウドでホストされます。 クラウド ゲートウェイの一般的なユース ケースは、デバイスにプロトコル変換を実装することです。
+
+### <a name="cloud-property"></a>クラウド プロパティ
+
+IoT Central では、クラウド プロパティは[デバイス テンプレート](#device-model)の一部ですが、[デバイス モデル](#device-model)の一部ではありません。 クラウド プロパティでは、ソリューション開発者が、IoT Central アプリケーションに格納するデバイス メタデータを指定します。 クラウド プロパティは、デバイス モデルを実装するためにデバイス開発者が作成するコードには影響しません。
 
 ### <a name="cloud-to-device"></a>クラウドからデバイスへ
 
@@ -195,6 +199,10 @@ IoT Hub Device Provisioning Service (DPS) は [IoT Hub](#iot-hub) のヘルパ�
 ### <a name="device-rest-api"></a>デバイス REST API
 
 デバイスから [Device REST API](/rest/api/iothub/device) を使用して、デバイスからクラウドへのメッセージを IoT Hub に送信し、[クラウドからデバイスへ](#cloud-to-device)のメッセージを IoT Hub から受信できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[デバイス SDK](#azure-iot-device-sdks) のいずれかを使用する必要があります。
+
+### <a name="device-template"></a>デバイス テンプレート
+
+IoT Central では、[デバイス テンプレート](../iot-central/core/concepts-device-templates.md)とは、アプリケーションに接続するタイプのデバイスの特性や動作を定義したブループリントです。 たとえば、デバイス テンプレートによって、IoT Central が、適切なユニットとデータの種類を使用して視覚化を作成できるように、デバイスが送信するテレメトリが定義されます。 [デバイス モデル](#device-model)は、デバイス テンプレートの一部です。
 
 ### <a name="device-twin"></a>デバイス ツイン
 
@@ -368,7 +376,9 @@ Azure IoT ソリューション アクセラレータは、複数の Azure サ�
 
 ### <a name="job"></a>ジョブ
 
-ソリューションのバックエンドは、[ジョブ](../iot-hub/iot-hub-devguide-jobs.md)を使用して、IoT Hub に登録されたデバイスでのアクティビティのスケジュール設定と追跡を実行できます。 アクティビティには、デバイス ツインの[必要なプロパティ](#desired-properties)の更新、デバイス ツインの[タグ](#tags)の更新、および[ダイレクト メソッド](#direct-method)の呼び出しが含まれます。 [IoT Hub](#iot-hub) は、ジョブを使用して [ID レジストリ](#identity-registry)との間で[インポートおよびエクスポート](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities)も行います。
+[IoT Hub](#iot-hub) では、[ジョブ](../iot-hub/iot-hub-devguide-jobs.md)を使用して、IoT hub に登録されている一連のデバイスでアクティビティのスケジュール設定と追跡を行うことができます。 アクティビティには、デバイス ツインの[必要なプロパティ](#desired-properties)の更新、デバイス ツインの[タグ](#tags)の更新、および[ダイレクト メソッド](#direct-method)の呼び出しが含まれます。 IoT Hub は、ジョブを使用して [ID レジストリ](#identity-registry)との間で[インポートおよびエクスポート](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities)も行います。
+
+IoT Central で[ジョブ](../iot-central/core/howto-run-a-job.md) を使用すると、プロパティを設定してコマンドを呼び出すことによって、接続されているデバイスを一括して管理できます。 また、IoT Central ジョブを使用すると、[クラウド プロパティ](#cloud-property)を一括で更新することもできます。
 
 ## <a name="l"></a>L
 

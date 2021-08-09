@@ -6,15 +6,23 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d9f48de7ef5d9525a995af4ebbd12c5f14f40189
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23bc9f92f405fe29aa43b266c0b18b8620e1d18c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93349139"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463095"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Azure Cache for Redis で Redis のバージョンを設定する (プレビュー)
 この記事では、キャッシュ インスタンスで使用する Redis ソフトウェアのバージョンを構成する方法について説明します。 Azure Cache for Redis には、Redis の最新メジャー バージョンとして、少なくとも 1 つ前のバージョンが用意されています。 新しい Redis ソフトウェアがリリースされると、これらのバージョンは定期的に更新されます。 使用可能な 2 つのバージョンからいずれかを選択できます。 現在使用しているバージョンがサポートされなくなった場合は、キャッシュが自動的に次のバージョンにアップグレードされるため、注意してください。
+
+> [!NOTE]
+> Redis 6 は現在プレビュー版です。 現在 Redis 6 では、クラスタリング、ゾーン冗長、ACL、PowerShell、Azure CLI、Terraform、Redis 4.0 と 6.0 のキャッシュ間の geo レプリケーションをサポートしていません。 キャッシュ作成後に、Redis のバージョンを変更することもできません。 
+>
+
+> [!IMPORTANT]
+> Redis 6.0 の一般公開 (GA) 後は、新しく作成するキャッシュの既定の Redis バージョンは 6.0 になります。 Redis 4.0 のキャッシュも引き続き作成できます。また、 Redis 4.0 のキャッシュをGA で Redis 6.0 のキャッシュにアップグレードすることもできます。 
+>
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)

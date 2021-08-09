@@ -1,23 +1,26 @@
 ---
 title: Azure Cosmos DB コネクタ用 Power BI チュートリアル
 description: この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、Cosmos DB および Power BI コネクタを使用してデータを視覚化する方法を説明します。
-author: SnehaGunda
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
-ms.author: sngun
-ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: rosouz
+ms.openlocfilehash: ccdef9784e96d55615caf640675f98946fcca43d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359865"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959123"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-[Power BI](https://powerbi.microsoft.com/) は、ダッシュボードやレポートを作成して共有できるオンライン サービスです。 Power BI Desktop は、さまざまなデータ ソースからのデータを取得できるレポート作成ツールです。 Azure Cosmos DB は、Power BI Desktop で使用できるデータ ソースの 1 つです。 Power BI 用の Azure Cosmos DB コネクタを使用して、Power BI Desktop を Azure Cosmos DB アカウントに接続できます。  Azure Cosmos DB データを Power BI にインポートした後、それを変換したり、レポートを作成したり、そのレポートを Power BI に発行したりできます。   
+[Power BI](https://powerbi.microsoft.com/) は、ダッシュボードやレポートを作成して共有できるオンライン サービスです。 Power BI Desktop は、さまざまなデータ ソースからのデータを取得できるレポート作成ツールです。 Azure Cosmos DB は、Power BI Desktop で使用できるデータ ソースの 1 つです。 Power BI 用の Azure Cosmos DB コネクタを使用して、Power BI Desktop を Azure Cosmos DB アカウントに接続できます。  Azure Cosmos DB データを Power BI にインポートした後、それを変換したり、レポートを作成したり、そのレポートを Power BI に発行したりできます。
+
+もう 1 つの方法として、[Azure Synapse Link for Azure Cosmos DB](synapse-link.md) で準リアルタイムのレポートを作成できます。 Azure Synapse Link を使用すれば、Power BI を接続して Azure Cosmos DB のデータを分析できます。トランザクションのワークロードに対するパフォーマンスとコストに影響はなく、ETL パイプラインも必要ありません。 [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) または [インポート](/power-bi/connect-data/service-dataset-modes-understand#import-mode) モードを使用できます。 詳細については、[こちら](synapse-link-power-bi.md)をクリックしてください。
+
 
 この記事では、Azure Cosmos DB アカウントを Power BI Desktop に接続するために必要な手順について説明します。 接続した後、コレクションに移動してデータを抽出し、JSON データを表形式に変換して、Power BI にレポートを発行します。
 
@@ -26,6 +29,9 @@ ms.locfileid: "97359865"
 
 > [!NOTE]
 > Power BI コネクタによる Azure Cosmos DB への接続は、現在は Azure Cosmos DB SQL アカウントと Gremlin API アカウントでのみサポートされています。
+
+> [!NOTE]
+> Azure Synapse Link で準リアルタイムの Power BI ダッシュボードを作成する機能は、現在 Azure Cosmos DB SQL API と Azure Cosmos DB API for MongoDB でサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 この Power BI チュートリアルの手順に従う前に、次のリソースにアクセスできることを確認してください。
@@ -96,7 +102,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
     
 8. アカウントが正常に接続されると、 **ナビゲーター** ウィンドウが表示されます。 **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
 
-9. レポート用のデータを取得するデータベースをクリックして展開し、 **[volcanodb]** を選択します (実際のデータベース名は異なる場合があります)。   
+9. レポートの元になるデータが存在するデータベースをクリックして展開し、``volcanodb`` を選択します (ユーザーによってデータベース名は異なります)。   
 
 10. 次に、取得するデータを含むコレクションを選択し、 **[volcano1]** を選択します (実際のコレクション名は異なる場合があります)。
     
@@ -205,26 +211,18 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 
 ダッシュボードを作成する前に、レポートをその場で変更することもできます。 ただし、変更は Power BI Desktop で実行し、変更後のレポートを PowerBI.com にもう一度発行することをお勧めします。
 
-<!-- ## Refresh data in PowerBI.com
-There are two ways to refresh data, ad hoc and scheduled.
+## <a name="refresh-data-in-powerbicom"></a>PowerBI.com でのデータの更新
+データの更新方法には、アドホック更新とスケジュールされている更新の 2 つの方法があります。
 
-For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
+アドホック更新 (臨時更新) を行うには、 **[今すぐ更新]** をクリックしてデータを更新します。
 
-:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
+スケジュールされた更新を実行するには、次の操作を行います。
 
-For a scheduled refresh, do the following.
+1. **[設定]** に移動して **[データセット]** タブを開きます。
 
-1. Click **Schedule Refresh** in the action list. 
+2. **[スケジュールされた更新]** をクリックしてスケジュールを設定します。
 
-    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
-2. In the **Settings** page, expand **Data source credentials**. 
-3. Click on **Edit credentials**. 
-   
-    The Configure popup appears. 
-4. Enter the key to connect to the Azure Cosmos DB account for that data set, then click **Sign in**. 
-5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
-6. Click **Apply** and you are done setting up the scheduled refresh.
--->
+
 ## <a name="next-steps"></a>次のステップ
 * Power BI の詳細については、「 [Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
 * Azure Cosmos DB について詳しくは、[Azure Cosmos DB ドキュメントのランディング ページ](https://azure.microsoft.com/documentation/services/cosmos-db/)をご覧ください。

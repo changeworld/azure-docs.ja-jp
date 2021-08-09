@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9184bf7baa85420e067edb4c0aafccb7e6711225
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cda31ad3bd830112d7be2dbf3370e4130473228
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86512182"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474420"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Firewall ルール処理ロジック
 
@@ -21,6 +21,15 @@ Azure Firewall には、NAT ルール、ネットワーク ルール、および
 ## <a name="network-rules-and-applications-rules"></a>ネットワーク ルールとアプリケーション ルール
 
 ネットワーク ルールが先に適用され、次にアプリケーション ルールが適用されます。 その後、これらのルールが終了します。 そのため、ネットワーク ルールで一致が見つかると、アプリケーション ルールは処理されません。  どのネットワーク ルールも一致せず、パケットのプロトコルが HTTP/HTTPS の場合、パケットはアプリケーション ルールによって評価されます。 一致が見つからない場合、パケットはインフラストラクチャ ルール コレクションに対して評価されます。 それでも一致するものがない場合、パケットは既定で拒否されます。
+
+![一般的なルール処理ロジック](media/rule-processing/rule-logic-processing.png)
+
+### <a name="example-of-processing-logic"></a>処理ロジックの例
+シナリオ例: Azure Firewall ポリシーに、3 つのルール コレクション グループが存在します。  各ルール コレクション グループには、一連のアプリケーションとネットワーク ルールがあります。
+
+![ルールの実行順序](media/rule-processing/rule-execution-order.png)
+
+図では、ネットワーク ルールが最初に実行され、次にアプリケーション ルールが実行されています。これは、Azure Firewall のルール処理ロジックでは、ネットワーク ルールは常にアプリケーション ルールよりも実行優先度が高いと定義されているためです。
 
 ## <a name="nat-rules"></a>NAT 規則
 

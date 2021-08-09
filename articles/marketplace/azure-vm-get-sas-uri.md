@@ -1,5 +1,5 @@
 ---
-title: VM イメージの SAS URI を生成する - Azure Marketplace
+title: VM イメージの SAS URI を生成する
 description: Azure Marketplace で仮想ハード ディスク (VHD) の Shared Access Signature (SAS) URI を生成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,17 +7,17 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 04/21/2021
-ms.openlocfilehash: 0f7d63a1213b6fe6625f16f33f18680b7a9e6bcb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 1935d64db958112a7b6951abb81e3bd4d7119bda
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906838"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525752"
 ---
-# <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>VM イメージの SAS URI を生成する方法
+# <a name="generate-a-sas-uri-for-a-vm-image"></a>VM イメージの SAS URI を生成する
 
 > [!NOTE]
-> VM を発行するために SAS URI は必要ありません。 単に、Parter Center でイメージを共有するだけです。 [承認済みのベースを使用した Azure 仮想マシンの作成](./azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](./azure-vm-create-using-own-image.md)に関するページの手順を参照してください。
+> VM を発行するために SAS URI は必要ありません。 単に、Parter Center でイメージを共有するだけです。 [承認済みのベースを使用した Azure 仮想マシンの作成](azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](azure-vm-create-using-own-image.md)に関するページの手順を参照してください。
 
 VHD の SAS URI の生成には、次の要件があります。
 
@@ -173,6 +173,6 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
 ## <a name="next-steps"></a>次の手順
 
-- 問題が発生した場合は、[VM SAS のエラー メッセージ](azure-vm-sas-failure-messages.md)に関するページを参照してください。
+- 問題が発生した場合は、[VM SAS のエラー メッセージ](azure-vm-sas-failure-messages.md)に関する記事を参照してください
 - [パートナー センターにサインインする](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 - [Azure Marketplace で仮想マシン オファーを作成する](azure-vm-create.md)

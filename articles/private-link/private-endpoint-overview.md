@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 92f9c3baaa8260bdc154f8752b56a63cf1444ebe
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7359dc8199c01bae7f7463b83079193397e40519
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140409"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072894"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -22,7 +22,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
  プライベート エンドポイントでは、次のプロパティを指定します。 
 
 
-|プロパティ  |説明 |
+|プロパティ  |Description |
 |---------|---------|
 |名前    |    リソース グループ内の一意の名前。      |
 |Subnet    |  仮想ネットワークからデプロイしてプライベート IP アドレスを割り当てるサブネット。 サブネットの要件については、この記事の「制限事項」セクションを参照してください。         |
@@ -109,6 +109,12 @@ Azure サービスでプライベート エンドポイントを使用する場�
  
 > [!NOTE]
 > 承認済み状態のプライベート エンドポイントのみが、指定されたプライベート リンク リソースにトラフィックを送信できます。 
+
+### <a name="rbac-permissions"></a>RBAC アクセス許可
+
+以下に示したのは、プライベート エンドポイントを作成するユーザーに必要な具体的な RBAC アクセス許可です。 カスタム ロールの詳細については、「[カスタム ロールの作成手順](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)」を参照してください。
+
+Microsoft.Resources/deployments/* Microsoft.Resources/subscriptions/resourcegroups/resources/read Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/read Microsoft.Network/virtualNetworks/subnets/write Microsoft.Network/virtualNetworks/subnets/join/action Microsoft.Network/privateEndpoints/read Microsoft.Network/privateEndpoints/write Microsoft.Network/locations/availablePrivateEndpointTypes/read
 
 ### <a name="connecting-using-alias"></a>別名を使用した接続
 別名は、サービスの所有者が標準のロード バランサーの背後にプライベート リンク サービスを作成したときに生成される一意のモニカーです。 サービスの所有者は、この別名をオフラインでコンシューマーと共有できます。 コンシューマーは、リソース URI と別名のいずれかを使用して、プライベート リンク サービスへの接続を要求できます。 別名を使用して接続する場合は、手動の接続承認方法を使用してプライベート エンドポイントを作成する必要があります。 手動の接続承認方法を使用するには、プライベート エンドポイント作成フロー中に手動要求パラメーターを true に設定します。 詳細については、「[New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)」および「[az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)」を参照してください。 

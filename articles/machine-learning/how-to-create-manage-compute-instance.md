@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: db6414ecf4b1b5fcbdf52d59c0c79b72998e610a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c678c36ff653d8975f7a0fe1a82395c3093758f6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375218"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458554"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -163,8 +163,19 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 conda 環境や jupyter カーネルのインストールなど、スクリプトで azureuser 固有の処理を行っていた場合は、次のように *sudo -u azureuser* ブロック内に置く必要があります
 
 ```shell
-sudo -u azureuser -i <<'EOF'
+#!/bin/bash
 
+set -e
+
+# This script installs a pip package in compute instance azureml_py38 environment
+
+sudo -u azureuser -i <<'EOF'
+# PARAMETERS
+PACKAGE=numpy
+ENVIRONMENT=azureml_py38 
+conda activate "$ENVIRONMENT"
+pip install "$PACKAGE"
+conda deactivate
 EOF
 ```
 *sudo -u azureuser* を実行すると、現在の作業ディレクトリが */home/azureuser* に変更されることに注意してください。 また、このブロック内のスクリプト引数にアクセスすることはできません。
@@ -208,6 +219,7 @@ Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-
     }
 }
 ```
+上の *scriptData* では、*Users/admin/testscript.sh* などのノートブック ファイル共有作成スクリプトの場所を指定しています。上の *scriptArguments* では作成スクリプトの引数を指定していますが、必須ではありません。
 
 代わりに、Resource Manager テンプレートでスクリプトをインラインで指定することもできます。  shell コマンドを使用して、ノートブック ファイル共有にアップロードされた任意の依存関係を参照できます。  インライン文字列を使用する場合、スクリプトの作業ディレクトリは */mnt/batch/tasks/shared/LS_root/mounts/clusters/**ciname**/code/Users* になります。
 

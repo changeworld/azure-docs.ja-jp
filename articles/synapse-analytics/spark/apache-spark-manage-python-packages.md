@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 1d64233fc477ec25f91bb73c744b10210571df41
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: d440940d98b33ae5906fe5a4a112939682196e57
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588345"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467414"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Python ライブラリを管理する
 
@@ -80,12 +80,12 @@ dependencies:
 )に関するページを参照してください。
 
 #### <a name="update-python-packages"></a>Python パッケージを更新する
-Spark プールにインストールする環境仕様ファイルまたはライブラリのセットを特定したら、Azure Synapse Studio または Azure portal に移動して Spark プール ライブラリを更新できます。 ここでは、環境仕様を指定し、インストールするワークスペース ライブラリを選択することができます。 
+Spark プールにインストールする環境仕様ファイルまたはライブラリのセットを特定したら、Synapse Studio または Azure portal に移動して Spark プール ライブラリを更新できます。 ここでは、環境仕様を指定し、インストールするワークスペース ライブラリを選択することができます。 
 
 変更が保存されると、Spark ジョブによってインストールが実行され、結果として得られた環境は後で再利用するためにキャッシュされます。 ジョブが完了すると、新しい Spark ジョブまたはノートブック セッションで、更新されたプール ライブラリが使用されます。 
 
-##### <a name="manage-packages-from-azure-synapse-studio-or-azure-portal"></a>Azure Synapse Studio または Azure portal からパッケージを管理する
-Spark プール ライブラリは、Azure Synapse Studio または Azure portal から管理できます。 
+##### <a name="manage-packages-from-synapse-studio-or-azure-portal"></a>Synapse Studio または Azure portal からパッケージを管理する
+Spark プール ライブラリは、Synapse Studio または Azure portal から管理できます。 
 
 Spark プールのライブラリを更新または追加するには:
 1. Azure portal から Azure Synapse Analytics ワークスペースに移動します。
@@ -156,7 +156,8 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 ```
 
 >[!WARNING]
-> ファイル パスがない場合、上記の構造に基づいてこれを作成する必要が生じることがあります。 たとえば、```libraries``` フォルダー内に ```python``` フォルダーがまだ存在しない場合は、これを追加する必要があります。
+> - ファイル パスがない場合、上記の構造に基づいてこれを作成する必要が生じることがあります。 たとえば、```libraries``` フォルダー内に ```python``` フォルダーがまだ存在しない場合は、これを追加する必要があります。
+> - カスタム wheel ファイルを管理するこの方法は、Azure Synapse Runtime for Apache Spark 3.0 ではサポートされません。 カスタム wheel ファイルを管理するには、ワークスペース パッケージ機能を参照してください。
 
 > [!IMPORTANT]
 > Azure DataLake Storage メソッドを使用してカスタム ライブラリをインストールするには、Azure Synapse Analytics ワークスペースにリンクされているプライマリ Gen2 ストレージ アカウントに対して、**ストレージ BLOB データ共同作成者** または **ストレージ BLOB データ所有者** のアクセス許可を持っている必要があります。

@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea65011a27b7dab65ea75b5365bdcdf2be67d8b2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048869"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747133"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Cognitive Search で SharePoint Online のインデックス作成を構成する方法 (プレビュー)
 
@@ -49,6 +49,10 @@ SharePoint Online インデクサーは、既定でインデックスの増分�
 
 ## <a name="setting-up-sharepoint-online-indexing"></a>SharePoint Online のインデックス作成の設定
 SharePoint Online インデクサーを設定するには、Azure portal 内でいくつかのアクションを、プレビュー REST API を使用していくつかのアクションを実行する必要があります。 このプレビューは、SDK ではサポートされていません。
+
+ 次のビデオでは、SharePoint Online インデクサーを設定する方法を説明します。
+ 
+> [!VIDEO https://www.youtube.com/embed/QmG65Vgl0JI]
 
 ### <a name="step-1-enable-system-assigned-managed-identity"></a>手順 1: システム割り当てマネージド ID を有効にする
 システム割り当てマネージド ID が有効になると、Azure によって検索サービス用の ID が作成され、インデクサーで使用することができるようになります。
@@ -87,7 +91,7 @@ SharePoint Online インデクサーは、この AAD アプリケーションを
 
 1.  管理者の同意を与えます (特定のテナントに対してのみ必要)。
 
-    一部のテナントはロックダウンされていて、これらの委任された API アクセス許可に管理者の同意が必要です。 その場合は、インデクサーを作成する前に、管理者がこの AAD アプリケーションに管理者の同意を与える必要があります。 
+    一部のテナントはロックダウンされていて、これらの委任された API アクセス許可に管理者の同意が必要です。 その場合は、インデクサーを作成する前に、管理者がこの AAD アプリケーションに管理者の同意を与える必要があります。
 
     すべてのテナントにこの要件があるわけではないため、まずこの手順をスキップして、手順を続行することをお勧めします。 管理者の同意が必要かどうかは、インデクサーを作成するときに、認証が失敗すると、管理者が認証を承認する必要があることを伝えるメッセージが表示されることでわかります。 その場合は、下のボタンを使用して、テナント管理者が同意を与える必要があります。
 

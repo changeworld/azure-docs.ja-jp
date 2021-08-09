@@ -4,13 +4,13 @@ description: サポート リクエストの表示、メッセージの送信、
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 12/14/2020
-ms.openlocfilehash: 4d0c03e0035f6b71a23891ac1691f5421c1bdb76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: bc9edecd918668e76c36308a660c47d3a8fd9e8b
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502520"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496522"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure サポート リクエストを管理する
 
@@ -56,17 +56,17 @@ ms.locfileid: "102502520"
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Azure サポートと診断情報を共有する
 
-サポート リクエストを作成する場合、既定では、 **[診断情報の共有]** オプションが選択されています。 これにより、Azure サポートが Azure リソースから[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を収集できるようになります。
+サポート リクエストを作成する場合、既定では、 **[診断情報の共有]** オプションが選択されています。 このオプションを使用すると、Azureサポートは、問題の解決に役立つ可能性のある[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を Azure リソースから収集できます。
 
-* リクエストが作成された後で、このオプションをオフにすることはできません。
+要求の作成 後に **[診断情報の共有]** の選択を変更するには:
 
-* リクエストの作成時にこのオプションをオフにした場合は、リクエストが作成された後でそれを選択できます。
-
-    1. **[すべてのサポート リクエスト]** ページで、サポート リクエストを選択します。
+1. **[すべてのサポート リクエスト]** ページで、サポート リクエストを選択します。
     
-    1. **[サポート リクエスト]** ページで、 **[アクセス許可の付与]** を選択してから、 **[はい]** と **[OK]** を選択します。
+1. **[サポート要求]** ページで 、 **[診断情報の共有]** を探し、 **[変更]** を選択します。
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="診断情報に対してアクセス許可を付与する":::
+1.  **[はい]** または **[いいえ]** を選択し、 **[OK]** を選択して確定します。
+    
+    :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="診断情報に対してアクセス許可を付与する":::
 
 ## <a name="upload-files"></a>ファイルをアップロードする
 

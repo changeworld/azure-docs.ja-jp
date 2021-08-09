@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro 向け C# IoT Edge モジュール | Microsoft Docs
-description: Azure Stack Edge Pro にデプロイできる C# IoT Edge モジュールの開発方法について学習します。
+title: Azure Stack Edge Pro FPGA C# IoT Edge モジュール
+description: Azure Stack Edge Pro FPGA 用の C# IoT Edge モジュールの開発方法について学習します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,36 +9,36 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4519bc187c4ec53294e5eef15c4ad1954b691224
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cc7b71d644fa26c0262f2304b380827b36b6c193
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870843"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461329"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>Azure Stack Edge Pro を使用してファイルを移動する C# IoT Edge モジュールを開発する
+# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro-fpga"></a>Azure Stack Edge Pro FPGA を使用してファイルを移動する C# IoT Edge モジュールを開発する
 
-この記事では、Azure Stack Edge Pro デバイスにデプロイするために、IoT Edge モジュールを作成する方法を説明します。 Azure Stack Edge Pro は、データを処理してネットワーク経由で Azure に送信できるストレージ ソリューションです。
+この記事では、Azure Stack Edge Pro FPGA デバイスにデプロイするために、IoT Edge モジュールを作成する方法を説明します。 Azure Stack Edge Pro FPGA は、データを処理してネットワーク経由で Azure に送信できるストレージ ソリューションです。
 
-Azure IoT Edge モジュールを Azure Stack Edge Pro と共に使用して、データを変換し、Azure に移動することができます。 この記事で使用されるモジュールによって、Azure Stack Edge Pro デバイス上でファイルをローカル共有からクラウド共有にコピーするロジックが実装されます。
+Azure IoT Edge モジュールを Azure Stack Edge Pro FPGA と共に使用して、データを変換し、Azure に移動することができます。 この記事で使用されるモジュールによって、Azure Stack Edge Pro FPGA デバイス上でファイルをローカル共有からクラウド共有にコピーするロジックが実装されます。
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 >
 > * モジュールを格納して管理するコンテナー レジストリを作成する (Docker イメージ)。
-> * IoT Edge モジュールを作成して Azure Stack Edge Pro デバイスにデプロイする。 
+> * IoT Edge モジュールを作成して Azure Stack Edge Pro FPGA デバイスにデプロイする。 
 
 
 ## <a name="about-the-iot-edge-module"></a>IoT Edge モジュールについて
 
-Azure Stack Edge Pro デバイスでは、IoT Edge モジュールをデプロイして実行できます。 Edge モジュールは基本的には Docker コンテナーであり、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信など、特定のタスクを実行できます。 この記事では、Azure Stack Edge Pro デバイス上でファイルをローカル共有からクラウド共有にコピーするモジュールを作成します。
+Azure Stack Edge Pro FPGA デバイスでは、IoT Edge モジュールをデプロイして実行できます。 Edge モジュールは基本的には Docker コンテナーであり、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信など、特定のタスクを実行できます。 この記事では、Azure Stack Edge Pro FPGA デバイス上でファイルをローカル共有からクラウド共有にコピーするモジュールを作成します。
 
-1. ファイルは、Azure Stack Edge Pro デバイス上のローカル共有に書き込まれます。
+1. ファイルは、Azure Stack Edge Pro FPGA デバイス上のローカル共有に書き込まれます。
 2. ファイル イベント ジェネレーターは、ローカル共有に書き込まれる各ファイルに対して、ファイル イベントを作成します。 ファイル イベントは、ファイルが変更されたときも生成されます。 その後ファイル イベントは (IoT Edge ランタイムの) IoT Edge Hub に送信されます。
 3. IoT Edge のカスタム モジュールは、ファイル イベントを処理して、ファイルへの相対パスも含むファイル イベント オブジェクトを作成します。 モジュールは、相対ファイル パスを使用して絶対パスを生成し、ファイルをローカル共有からクラウド共有にコピーします。 その後、モジュールはファイルをローカル共有から削除します。
 
-![Azure Stack Edge Pro での Azure IoT Edge モジュールのしくみ](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
+![Azure Stack Edge Pro FPGA での Azure IoT Edge モジュールのしくみ](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
 
 ファイルがクラウド共有に移動すると、ユーザーの Azure Storage アカウントに自動的にアップロードされます。
 
@@ -46,11 +46,11 @@ Azure Stack Edge Pro デバイスでは、IoT Edge モジュールをデプロ�
 
 開始する前に、次のものがあることを確認します。
 
-- 実行中の Azure Stack Edge Pro デバイス。
+- 実行中の Azure Stack Edge Pro FPGA デバイス。
 
     - デバイスには、関連付けられた IoT Hub リソースもある。
     - デバイスで Edge コンピューティング ロールが構成されている。
-    詳細については、Azure Stack Edge Pro での「[コンピューティングの構成](azure-stack-edge-deploy-configure-compute.md#configure-compute)」を参照してください。
+    詳細については、ご利用の Azure Stack Edge Pro FPGA での「[コンピューティングの構成](azure-stack-edge-deploy-configure-compute.md#configure-compute)」をご覧ください。
 
 - 次の開発リソース。
 
@@ -278,4 +278,4 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Stack Edge Pro でこのモジュールをデプロイして実行するには、「[モジュールの追加](azure-stack-edge-deploy-configure-compute.md#add-a-module)」の手順を参照してください。
+Azure Stack Edge Pro FPGA でこのモジュールをデプロイして実行するには、「[モジュールの追加](azure-stack-edge-deploy-configure-compute.md#add-a-module)」の手順をご覧ください。

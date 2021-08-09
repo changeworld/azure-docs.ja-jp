@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/11/2018
+ms.date: 06/01/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b38a27788a4bbb25ff0405a54ca5e64258dd135
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 23d568e78027617a57ce8a534511cd052157a11d
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286026"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785950"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Windows Server の AD FS と連携するように Azure Multi-Factor Authentication Server を構成する
 
@@ -98,7 +98,7 @@ Azure Multi-Factor Authentication Server をインストールする際、次の
 Web サービス SDK の構成には、2 つの選択肢があります。 1 つ目はユーザー名とパスワードを使用する方法で、2 つ目はクライアント証明書を使用する方法です。 最初の方法の場合は次の手順に従い、2 つ目の方法の場合はスキップしてください。  
 
 1. **WebServiceSdkUsername** の値を、PhoneFactor Admins セキュリティ グループのメンバーであるアカウントに設定します。 &lt;ドメイン&gt;&#92;&lt;ユーザー名&gt; の形式を使用します。  
-2. **WebServiceSdkPassword** の値を、該当するアカウント パスワードに設定します。
+2. **WebServiceSdkPassword** の値を、該当するアカウント パスワードに設定します。 特殊文字 "&" は、**WebServiceSdkPassword** では使用できません。
 
 ### <a name="configure-the-web-service-sdk-with-a-client-certificate"></a>Web サービス SDK をクライアント証明書を使って構成する
 

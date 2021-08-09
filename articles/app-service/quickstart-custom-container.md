@@ -3,16 +3,16 @@ title: クイック スタート:App Service でカスタム コンテナーを�
 description: 初めてのカスタム アプリをデプロイして、Azure App Service でのコンテナーの使用を開始します。
 author: msangapu-msft
 ms.author: msangapu
-ms.date: 10/21/2019
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d4e22c58fd45edc4beb58b4b1b9ae7c835e8fa9
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745079"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215455"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure でカスタム コンテナーを実行する
 
@@ -91,17 +91,17 @@ ms.locfileid: "96745079"
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
-1. Azure Marketplace リソース一覧の上にある検索ボックスで、 **[Web App for Containers]** を検索して、 **[作成]** を選択します。
+1. **[人気のあるサービス]** の **[Web アプリ]** で、 **[作成]** を選択します。
 
-1. **[Web App Create]\(Web アプリの作成\)** で、サブスクリプションと **リソース グループ** を選択します。 必要な場合は、新しいリソース グループを作成できます。
+1. **[Web アプリの作成]** で、サブスクリプションと **リソース グループ** を選択します。 必要な場合は、新しいリソース グループを作成できます。
 
-1. アプリ名 (例: *win-container-demo*) を入力し、 **[オペレーティング システム]** に **[Windows]** を選択します。 **Docker** を選択して続行します。
+1. アプリ名 (*win-container-demo* など) を指定します。 **[発行]** に **[Docker コンテナー]** 、 **[オペレーティング システム]** に **[Windows]** を選択します。 **Docker** を選択して続行します。
 
-   ![Web App for Containers を作成する](media/quickstart-custom-container/create-web-app-continer.png)
+   ![Web App for Containers を作成する](media/quickstart-custom-container/create-web-app-container.png)
 
 1. **[イメージのソース]** に **[Docker Hub]** を選択し、 **[イメージとタグ]** に、「[Docker Hub に発行する](#publish-to-docker-hub)」でコピーしたリポジトリ名を入力します。
 
-   ![Web App for Containers を構成する](media/quickstart-custom-container/configure-web-app-continer.png)
+   ![Web App for Containers を構成する](media/quickstart-custom-container/configure-web-app-container.png)
 
     [Azure Container Registry](../container-registry/index.yml) や他のプライベート リポジトリなど、どこか他の場所に目的の Web アプリケーションのカスタム イメージがある場合は、ここで構成することができます。
 
@@ -192,44 +192,124 @@ App Service on Linux は、事前定義済みのアプリケーション スタ�
 * [VS Code 用 Azure App Service 拡張情報](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。 この拡張機能を使用して、Azure PaaS (サービスとしてのプラットフォーム) 上に Linux Web Apps を作成、管理、デプロイすることができます。
 * [VS Code 用 Docker 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)。 この拡張機能を使用して、ローカルの Docker イメージと Docker コマンドの管理を簡素化し、作成したアプリ イメージを Azure にデプロイすることができます。
 
-## <a name="create-an-image"></a>イメージを作成する
+## <a name="create-a-container-registry"></a>コンテナー レジストリを作成する
 
-このクイックスタートを完了するには、[Azure Container Registry](../container-registry/index.yml) に格納されている適切な Web アプリ イメージが必要です。 「[クイックスタート: Azure portal を使用したプライベート コンテナー レジストリの作成](../container-registry/container-registry-get-started-portal.md)」の手順に従ってください。ただし、使用するイメージは、`hello-world` ではなく `mcr.microsoft.com/azuredocs/go` となります。 [Azure Samples リポジトリにサンプル Dockerfile があります](https://github.com/Azure-Samples/go-docs-hello-world)。ご参考ください。
+このクイックスタートでは、選択するレジストリとして Azure Container Registry を使用します。 他のレジストリは自由に使用できますが、手順は若干異なる場合があります。
+
+[Azure portal を使用してプライベート コンテナー レジストリを作成するためのクイックスタート](../container-registry/container-registry-get-started-portal.md)の手順に従って、コンテナー レジストリを作成します。
 
 > [!IMPORTANT]
-> コンテナー レジストリを作成するときは必ず、**[管理者ユーザー]** オプションを **[有効]** に設定してください。 Azure portal のレジストリ ページの **[アクセス キー]** セクションから設定することもできます。 App Service にアクセスするためには、この設定が必要となります。
+> Azure コンテナー レジストリを作成するときは必ず、 **[管理者ユーザー]** オプションを **[有効]** に設定してください。 Azure portal のレジストリ ページの **[アクセス キー]** セクションから設定することもできます。 App Service にアクセスするためには、この設定が必要となります。
 
 ## <a name="sign-in"></a>サインイン
 
-次に、VS Code を起動し、App Service 拡張機能を使用して Azure アカウントにログインします。 そのためには、アクティビティ バーで Azure ロゴを選択し、**[APP SERVICE]** エクスプローラーに移動して **[Azure にサインイン]** を選択し、画面の指示に従います。
+1. Visual Studio Code を起動します。 
+1. [アクティビティ バー](https://code.visualstudio.com/docs/getstarted/userinterface)で **[Azure]** ロゴを選択し、 **[APP SERVICE]** エクスプローラーに移動して **[Azure にサインイン]** を選択し、画面の指示に従います。
 
-![Azure にサインイン](./media/quickstart-docker/sign-in.png)
+    ![Azure にサインイン](./media/quickstart-docker/sign-in.png)
+
+1. 下部の[ステータス バー](https://code.visualstudio.com/docs/getstarted/userinterface)で、Azure アカウントのメール アドレスが表示されていることを確認します。 **[APP SERVICE]** エクスプローラーに、サブスクリプションが表示されます。
+
+1. アクティビティ バーで、 **[Docker]** ロゴを選択します。 **[レジストリ]** エクスプローラーで、作成したコンテナー レジストリが表示されていることを確認します。
+
+    ![[Azure] が展開されている [レジストリ] の値を示すスクリーンショット。](./media/quickstart-docker/registries.png)
 
 ## <a name="check-prerequisites"></a>前提条件を確認する
 
-それでは、すべての前提条件がインストールされ、適切に構成されていることを確認しましょう。
-
-VS Code では、ステータス バーに自分の Azure メール アドレスが、**APP SERVICE** エクスプローラーに自分のサブスクリプションが表示されます。
-
-次に、Docker がインストールされ、実行されていることを確認します。 次のコマンドは、Docker が実行されている場合に、そのバージョンを表示するものです。
+Docker がインストールされ、実行されていることを確認します。 次のコマンドは、Docker が実行されている場合に、そのバージョンを表示するものです。
 
 ```bash
 docker --version
 ```
 
-最後に、Azure Container Registry が接続されていることを確認します。 そのためには、アクティビティ バーで Docker ロゴを選択し、**[レジストリ]** に移動します。
+## <a name="create-and-build-image"></a>イメージを作成およびビルドする
 
-![スクリーンショットは、[Azure] が展開された [レジストリ] の値として、ファイル名拡張子 .io を持つファイルを示しています。](./media/quickstart-docker/registries.png)
+1. Visual Studio Code で空のフォルダーを開き、`Dockerfile` という名前のファイルを追加します。 Dockerfile で、目的の言語フレームワークに基づいてコンテンツを貼り付けます。
 
-## <a name="deploy-the-image-to-azure-app-service"></a>Azure App Service にイメージをデプロイする
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-すべての構成が済んだら、Docker 拡張機能エクスプローラーから直接 [Azure App Service](https://azure.microsoft.com/services/app-service/) にイメージをデプロイできます。
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fdotnetcore/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/dotnetcore:lts
 
-**DOCKER** エクスプローラーで **[レジストリ]** ノードからイメージを見つけて展開し、そのタグを表示します。 タグを右クリックし、**[Deploy Image to Azure App Service]\(Azure App Service にイメージをデプロイ\)** を選択します。
+ENV PORT 8080
+EXPOSE 8080
 
-そこからプロンプトに従って、サブスクリプション、グローバルに一意なアプリ名、リソース グループ、App Service プランを選択します。 価格レベルには **[B1 Basic]** を選択し、リージョンを選択してください。
+ENV ASPNETCORE_URLS "http://*:${PORT}"
 
-デプロイ後は、`http://<app name>.azurewebsites.net` でアプリにアクセスできます。
+ENTRYPOINT ["dotnet", "/defaulthome/hostingstart/hostingstart.dll"]
+```
+
+この Dockerfile では、親イメージは App Service の組み込み .NET コンテナーの 1 つです。 そのソース ファイルは、[Azure-App-Service/ImageBuilder GitHub リポジトリの GenerateDockerFiles/dotnetcore](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/dotnetcore) にあります。 その [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/dotnetcore/debian-9/Dockerfile) では、単純な .NET アプリが `/defaulthome/hostingstart` にコピーされます。 Dockerfile により、そのアプリが起動されます。
+
+# <a name="nodejs"></a>[Node.js](#tab/node)
+
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fnode/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/node:10-lts
+
+ENV HOST 0.0.0.0
+ENV PORT 8080
+EXPOSE 8080
+
+ENTRYPOINT ["pm2", "start", "--no-daemon", "/opt/startup/default-static-site.js"]
+```
+
+この Dockerfile では、親イメージは App Service の組み込みの Node.js コンテナーの 1 つです。 そのソース ファイルは、[Azure-App-Service/ImageBuilder GitHub リポジトリの GenerateDockerFiles/node/node-template](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/node/node-template) にあります。 その [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/node/node-template/Dockerfile) では、単純な Node.js アプリが `/opt/startup` にコピーされます。 Dockerfile により、親イメージで既にインストールされている PM2 を使用して、そのアプリが起動されます。
+
+# <a name="python"></a>[Python](#tab/python)
+
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fpython/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/python:latest
+
+ENV PORT 8080
+EXPOSE 8080
+
+ENTRYPOINT ["gunicorn", "--timeout", "600", "--access-logfile", "'-'", "--error-logfile", "'-'", "--chdir=/opt/defaultsite", "application:app"]
+```
+
+この Dockerfile では、親イメージは App Service の組み込み Python コンテナーの 1 つです。 そのソース ファイルは、[Azure-App-Service/ImageBuilder GitHub リポジトリの GenerateDockerFiles/python/template-3.9](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/python/template-3.9) にあります。 その [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/python/template-3.9/Dockerfile) では、単純な Python アプリが `/opt/defaultsite` にコピーされます。 Dockerfile により、親イメージで既にインストールされている Gunicorn を使用して、そのアプリが起動されます。
+
+# <a name="java"></a>[Java](#tab/java)
+
+<!-- https://mcr.microsoft.com/v2/azure-app-service%2Fjava/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/azure-app-service/java:11-java11_stable
+
+ENV PORT 80
+EXPOSE 80
+
+ENTRYPOINT ["java", "-Dserver.port=80", "-jar", "/tmp/appservice/parkingpage.jar"]
+```
+
+この Dockerfile では、親イメージは App Service の組み込み Java コンテナーの 1 つです。 そのソース ファイルは、[Azure-App-Service/java GitHub リポジトリの java/tree/dev/java11-alpine](https://github.com/Azure-App-Service/java/tree/dev/java11-alpine) にあります。 その [Dockerfile](https://github.com/Azure-App-Service/java/blob/dev/java11-alpine/Dockerfile) では、単純な Java アプリが `/tmp/appservice` にコピーされます。 Dockerfile により、そのアプリが起動されます。
+
+-----
+
+2. [コマンド パレット](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette)を開き、「**Docker Images: Build Image**」と入力します。 「**Enter**」と入力して、コマンドを実行します。
+
+3. イメージ タグ ボックスで、目的のタグを `<acr-name>.azurecr.io/<image-name>/<tag>` の形式で指定します。ここで、`<acr-name>` は、作成したコンテナー レジストリの名前です。 **Enter** キーを押します。
+
+4. イメージのビルドが終了したら、 **[イメージ]** エクスプローラーの上部にある **[更新]** をクリックして、イメージが正常にビルドされていることを確認します。
+
+    ![タグ付きのビルド イメージを示すスクリーンショット。](./media/quickstart-docker/built-image.png)
+
+## <a name="deploy-to-container-registry"></a>コンテナー レジストリにデプロイする
+
+1. アクティビティ バーで、 **[Docker]** アイコンをクリックします。 **[イメージ]** エクスプローラーで、先ほどビルドしたイメージを見つけます。
+1. イメージを展開し、目的のタグを右クリックして、 **[プッシュ]** をクリックします。
+1. イメージ タグの先頭が `<acr-name>.azurecr.io` であることを確認し、**Enter** キーを押します。
+1. Visual Studio Code でコンテナー レジストリへのイメージのプッシュが完了したら、 **[レジストリ]** エクスプローラーの上部にある **[更新]** をクリックして、イメージが正常にプッシュされたことを確認します。
+
+    ![Azure コンテナー レジストリにデプロイされたイメージを示すスクリーンショット。](./media/quickstart-docker/image-in-registry.png)
+
+## <a name="deploy-to-app-service"></a>App Service に配置する
+
+1. **[レジストリ]** エクスプローラーでイメージを展開し、タグを右クリックして、 **[Deploy image to Azure App Service]\(Azure App Service にイメージをデプロイする\)** をクリックします。
+1. プロンプトに従って、サブスクリプション、グローバルに一意なアプリ名、リソース グループ、App Service プランを選択します。 価格レベルには **[B1 Basic]** を選択し、現在地に近いリージョンを選択します。
+
+デプロイ後は、`http://<app-name>.azurewebsites.net` でアプリにアクセスできます。
 
 **リソース グループ** は、Azure で利用するすべてのアプリケーションのリソースをまとめた名前付きのコレクションです。 たとえば、Web サイトやデータベース、Azure 関数への参照をリソース グループに含めることができます。
 
@@ -237,7 +317,7 @@ Web サイトをホストするために使用される物理リソースは、*
 
 ## <a name="browse-the-website"></a>Web サイトを閲覧する
 
-デプロイ中は、**[出力]** パネルが開いてデプロイ操作の状態が表示されます。 その操作が完了したら、**APP SERVICE** エクスプローラーで作成したアプリを見つけて右クリックし、**[Web サイトの参照]** を選択して、ブラウザーでサイトを開きます。
+**[出力]** パネルに、デプロイ操作の状態が表示されます。 操作が完了したら、ポップアップ通知の **[サイトを開く]** をクリックして、サイトをブラウザーで開きます。
 
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
@@ -246,18 +326,23 @@ Web サイトをホストするために使用される物理リソースは、*
 
 おめでとうございます。このクイックスタートを正常に完了できました。
 
-次は、他の Azure 拡張機能もチェックしてみましょう。
+App Service アプリでは、起動のたびにコンテナー レジストリからプルされます。 イメージをリビルドする場合は、コンテナー レジストリにプッシュするだけで済み、アプリの再起動時に更新されたイメージが取得されます。 更新されたイメージをすぐにプルするようにアプリに指示するには、アプリを再起動します。
+
+> [!div class="nextstepaction"]
+> [カスタム コンテナーの構成](configure-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [カスタム コンテナーのチュートリアル](tutorial-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [複数コンテナー アプリのチュートリアル](tutorial-multi-container-app.md)
+
+その他の Azure 拡張機能は次のとおりです。
 
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Azure CLI Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
 * [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-
-または、[Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 拡張機能パックをインストールして、これらすべてを入手しましょう。
-
-他のリソースを確認してください。
-
-> [!div class="nextstepaction"]
-> [カスタム コンテナーの構成](configure-custom-container.md)
+* [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 拡張機能パックには、上記のすべての拡張機能が含まれています。
 
 ::: zone-end

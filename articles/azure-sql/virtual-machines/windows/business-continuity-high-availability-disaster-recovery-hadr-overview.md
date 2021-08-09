@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: c55e60627cd2c06c592af0475e84817d284eb6b5
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: f42cb2f3f00c75dea262b7151bef5efad4e9aa92
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634205"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569599"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のビジネス継続性と HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,52 +118,10 @@ Azure の可用性セットを使用すると、高可用性ノードを別個�
 
 高可用性を構成するには、参加する SQL Server 仮想マシンをリージョン内の可用性ゾーンに分散させて配置します。 可用性ゾーン間のネットワーク間転送については、追加料金が発生します。 詳細については、[可用性ゾーン](../../../availability-zones/az-overview.md)に関するページをご覧ください。 
 
-
-### <a name="failover-cluster-behavior-in-azure-networking"></a>Azure ネットワークでのフェールオーバー クラスターの動作
-Azure の RFC に準拠していない DHCP サービスにより、特定のフェールオーバー クラスター構成の作成に失敗する可能性があります。 この失敗は、クラスター ネットワーク名に重複する IP アドレス (クラスター ノードの 1 つと同じ IP アドレスなど) が割り当てられていることが原因で発生します。 これは、Windows フェールオーバー クラスター機能に依存する、可用性グループを使用するときに問題になります。
-
-2 ノード クラスターを作成し、オンラインにするシナリオを考えてみましょう。
-
-1. クラスターがオンラインになると、NODE1 によって、クラスター ネットワーク名のために動的に割り当てられた IP アドレスが要求されます。
-2. DHCP サービスでは要求が NODE1 自体からのものであることが認識されるため、DHCP サービスで NODE1 自体の IP アドレス以外の IP アドレスは提供されません。
-3. NODE1 とフェールオーバー クラスターのネットワーク名の両方に重複するアドレスが割り当てられていることが Windows によって検出されると、既定のクラスター グループはオンラインになることができません。
-4. 既定のクラスター グループは NODE2 に移動されます。 NODE2 によって、NODE1 の IP アドレスはクラスター IP アドレスとして処理され、既定のクラスター グループがオンラインになります。
-5. NODE2 では、NODE1 との接続を確立しようとするときに、NODE1 の IP アドレスがそれ自体に解決されるため、NODE1 宛てのパケットは NODE2 から送信されません。 NODE2 では NODE1 との接続を確立できず、クォーラムが失われ、クラスターがシャットダウンされます。
-6. NODE1 では NODE2 にパケットを送信できますが、NODE2 は応答できません。 NODE1 はクォーラムを失い、クラスターをシャットダウンします。
-
-このシナリオは、クラスター ネットワーク名をオンラインにするために、クラスター ネットワーク名に未使用の静的 IP アドレスを割り当てることによって回避できます。 たとえば、169.254.1.1 のようなリンク ローカル IP アドレスを使用できます。 このプロセスを簡略化するには、[可用性グループのための Azure での Windows フェールオーバー クラスターの構成](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)に関するページを参照してください。
-
-詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](./availability-group-quickstart-template-configure.md)」を参照してください。
-
-### <a name="support-for-availability-group-listeners"></a>可用性グループ リスナーのサポート
-可用性グループ リスナーは、Windows Server 2012 以降を実行している Azure VM でサポートされています。 このサポートは、可用性グループ ノードである Azure VM 上で有効になっている負荷分散エンドポイントを使用して実現されます。 Azure で実行されているクライアント アプリケーションと、オンプレミスで実行されているものの両方に対してリスナーを動作させるには、特別な構成手順に従う必要があります。
-
-リスナーを設定するための主なオプションには、外部 (パブリック) と内部の 2 つがあります。 外部 (パブリック) リスナーでは、インターネットに接続されているロード バランサーを使用し、インターネット経由でアクセスできるパブリック仮想 IP と関連付けられます。 内部リスナーでは、内部ロード バランサーを使用し、同じ仮想ネットワーク内のクライアントのみをサポートします。 どちらのタイプのロード バランサーの場合でも、Direct Server Return を有効にする必要があります。 
-
-可用性グループが複数の Azure サブネットにまたがっている場合 (複数の Azure リージョンにわたるデプロイなど)、クライアント接続文字列には `MultisubnetFailover=True` を含める必要があります。 これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。 リスナーの設定手順については、[Azure での可用性グループの ILB リスナーの構成](availability-group-listener-powershell-configure.md)に関するページを参照してください。
-
-
-この場合でも、サービス インスタンスに直接接続することで、各可用性レプリカに個別に接続できます。 また、可用性グループはデータベース ミラーリング クライアントとの下位互換性があるため、レプリカがデータベース ミラーリングと同様に、次のように構成されていれば、データベース ミラーリング パートナーのように可用性レプリカに接続できます。
-
-* 1 つのプライマリ レプリカと 1 つのセカンダリ レプリカがある。
-* セカンダリ レプリカが読み取り不可として構成されている ( **[読み取り可能なセカンダリ]** オプションが **[いいえ]** に設定されている)。
-
-ADO.NET または SQL Server Native Client を使用する、このデータベース ミラーリングと同様の構成に対応するクライアント接続文字列の例を以下に示します。
-
-```console
-Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=AvailabilityDatabase;
-```
-
-クライアント接続の詳細については、以下を参照してください。
-
-* [SQL Server Native Client での接続文字列キーワードの使用](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
-* [データベース ミラーリング セッションへのクライアントの接続 (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
-* [ハイブリッド IT での可用性グループ リスナーへの接続](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
-* [可用性グループ リスナー、クライアント接続、およびアプリケーションのフェールオーバー (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
-* [可用性グループでのデータベース ミラーリング接続文字列の使用](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
-
 ### <a name="network-latency-in-hybrid-it"></a>ハイブリッド IT でのネットワーク待ち時間
 オンプレミス ネットワークと Azure 間に長いネットワーク待ち時間が生じる期間がある可能性があることを前提として、HADR ソリューションをデプロイします。 レプリカを Azure にデプロイする場合、同期モードでは同期コミットではなく、非同期コミットを使用します。 オンプレミスと Azure の両方にデータベース ミラーリング サーバーをデプロイする場合は、高い安全性モードではなく、高いパフォーマンス モードを使用します。
+
+クラウド環境 に対応するために役立つクラスターと HADR 設定については、[「HADR 構成のベスト プラクティス」](hadr-cluster-best-practices.md)を参照してください。 
 
 ### <a name="geo-replication-support"></a>geo レプリケーション サポート
 Azure ディスク内の geo レプリケーションでは、同じデータベースのデータ ファイルとログ ファイルを別個のディスクに格納することはできません。 GRS は、各ディスク上の変更を個別に非同期的にレプリケートします。 このメカニズムでは、1 つのディスク内の geo レプリケートされたコピーでの書き込み順序は保証されますが、複数のディスクでの geo レプリケートされた各コピーでは保証されません。 データ ファイルとログ ファイルを個別のディスクに格納するようにデータベースを構成すると、障害発生後の復旧されたディスクには、ログ ファイルより新しいデータ ファイルのコピーが含まれる可能性があります。その場合、SQL Server の先書きログとトランザクションの ACID プロパティ (原子性、一貫性、分離性、持続性) が破損します。 

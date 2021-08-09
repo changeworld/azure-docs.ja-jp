@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 25dfad48d3782c50797c855a0a8cbfded6581e0e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 573868d8dc637afcab1970d0e41ed2ed0830808d
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788015"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538846"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを使用してモデルをトレーニングする 
 
@@ -232,9 +232,13 @@ with open(mounted_input_path, 'r') as f:
 
 データセットを **ダウンロード** するとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 
 
+> [!NOTE]
+> ダウンロード パス名は、Windows OS の場合は英数字で 255 文字を超えないようにしてください。 Linux OS の場合、ダウンロード パス名は英数字で 4,096 文字を超えないようにしてください。 また、Linux OS の場合、ファイル名 (ダウンロード パス `/path/to/file/{filename}` の最後のセグメント) は英数字で 255 文字を超えないようにしてください。
+
 データセットによって参照されるファイルのすべてがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。 データ サイズがコンピューティング ディスクのサイズを超えると、ダウンロードできません。 このシナリオでは、処理時にスクリプトで使用されるデータ ファイルのみが読み込まれるため、マウントすることをお勧めします。
 
 次のコードを実行すると、`dataset` が `mounted_path` の一時ディレクトリにマウントされます
+
 
 ```python
 import tempfile
@@ -289,29 +293,45 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-* **データセットの初期化に失敗しました:マウント ポイントの準備が完了するまで待っていましたがタイムアウトになりました**: 
+**データセットの初期化に失敗しました:マウント ポイントの準備が完了するまで待っていましたがタイムアウトになりました**: 
   * アウトバウンド [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)規則がなく、`azureml-sdk>=1.12.0` を使用している場合は、`azureml-dataset-runtime` とその依存関係を更新して、特定のマイナー バージョンの最新版にします。または、それを実行で使用している場合は、修正プログラムを含む最新パッチが適用されるように、お使いの環境を再作成します。 
   * `azureml-sdk<1.12.0` を使用している場合は、最新バージョンにアップグレードします。
   * アウトバウンド NSG 規則がある場合は、サービス タグ `AzureResourceMonitor` のすべてのトラフィックを許可するアウトバウンド規則があることを確認します。
 
-### <a name="overloaded-azurefile-storage"></a>オーバーロードされた AzureFile ストレージ
+### <a name="azurefile-storage"></a>AzureFile ストレージ
 
-エラー `Unable to upload project files to working directory in AzureFile because the storage is overloaded` が発生する場合は、次の回避策を適用してください。
+**Unable to upload project files to working directory in AzureFile because the storage is overloaded (ストレージが過負荷になっているため、プロジェクト ファイルを AzureFile 内の作業ディレクトリにアップロードできません)** :
 
-データ転送などの他のワークロードにファイル共有を使用している場合は、BLOB を使用して、ファイル共有を実行の送信のために自由に使用できるようにすることをお勧めします。 2 つの異なるワークスペース間でワークロードを分割することもできます。
+* データ転送などの他のワークロードにファイル共有を使用している場合は、BLOB を使用して、ファイル共有を実行の送信のために自由に使用できるようにすることをお勧めします。
+
+* もう 1 つの選択肢は、2 つの異なるワークスペース間でワークロードを分割することです。
+
+**ConfigException: Could not create a connection to the AzureFileService due to missing credentials. Either an Account Key or SAS token needs to be linked the default workspace blob store. (ConfigException: 資格情報が見つからないので、AzureFileService への接続を作成できませんでした。アカウント キーまたは SAS トークンを、既定のワークスペース BLOB ストアにリンクする必要があります。)**
+
+ストレージ アクセス資格情報がワークスペースおよび関連するファイル データストアにリンクされていることを確認するには、次の手順を実行します。
+
+1. [Azure portal](https://ms.portal.azure.com) でワークスペースに移動します。
+1. ワークスペースの **[概要]** ページでストレージ リンクを選択 します。
+1. ストレージ ページの左側のメニューで **[アクセス キー]** を選択します。 
+1. キーをコピーします。
+1. ワークスペースの [Azure Machine Learning スタジオ](https://ml.azure.com)に移動します。
+1. スタジオで、認証資格情報を指定するファイル データストアを選択します。 
+1. **[Update authentication]\(認証の更新\)** を選択します。
+1. 前の手順のキーを貼り付けます。 
+1. **[保存]** を選択します。 
 
 ### <a name="passing-data-as-input"></a>入力としてのデータの引き渡し
 
-*  **TypeError:FileNotFound:そのようなファイルまたはディレクトリはありません**:このエラーは、指定したファイル パスにファイルがない場合に発生します。 ファイルを参照する方法が、コンピューティング先でデータセットをマウントした場所と一致していることを確認する必要があります。 確定的な状態を確保するには、データセットをコンピューティング先にマウントするときに抽象パスを使用することをお勧めします。 たとえば、次のコードでは、コンピューティング先のファイルシステムのルート `/tmp` にデータセットをマウントしています。 
+**TypeError:FileNotFound:そのようなファイルまたはディレクトリはありません**:このエラーは、指定したファイル パスにファイルがない場合に発生します。 ファイルを参照する方法が、コンピューティング先でデータセットをマウントした場所と一致していることを確認する必要があります。 確定的な状態を確保するには、データセットをコンピューティング先にマウントするときに抽象パスを使用することをお勧めします。 たとえば、次のコードでは、コンピューティング先のファイルシステムのルート `/tmp` にデータセットをマウントしています。 
     
-    ```python
-    # Note the leading / in '/tmp/dataset'
-    script_params = {
-        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
-    } 
-    ```
+```python
+# Note the leading / in '/tmp/dataset'
+script_params = {
+    '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+} 
+```
 
-    先頭のスラッシュ "/" を含めない場合は、データセットをマウントする場所を示すために、コンピューティング先の作業ディレクトリをプレフィックスとして付ける必要があります (たとえば、`/mnt/batch/.../tmp/dataset`)。
+先頭のスラッシュ "/" を含めない場合は、データセットをマウントする場所を示すために、コンピューティング先の作業ディレクトリをプレフィックスとして付ける必要があります (たとえば、`/mnt/batch/.../tmp/dataset`)。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91ca017bf94f2c9a75a8016fb861cc085dc47ebe
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358373"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556966"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
 
@@ -49,13 +49,13 @@ ms.locfileid: "94358373"
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage.png "ロールの割り当ての追加")
 
 4. インデックスを作成するストレージ アカウントの種類に基づいて、適切なロールを選択します。
-    1. Azure BLOB ストレージでは、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
+    1. Azure Blob Storage では、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
     1. Azure Data Lake Storage Gen2 では、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
-    1. Azure テーブル ストレージでは、**閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
+    1. Azure Table Storage では、**閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
 5.  **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
 6.  検索サービスを検索し、それを選んでから、 **[保存]** を選択します
 
-    Azure Blob storage と Azure Data Lake Storage Gen2 の例を次に示します。
+    Azure Blob Storage と Azure Data Lake Storage Gen2 の例を次に示します。
 
     ![ストレージ BLOB データ閲覧者ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "ストレージ BLOB データ閲覧者ロールの割り当てを追加する")
 

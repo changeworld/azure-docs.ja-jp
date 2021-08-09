@@ -4,16 +4,16 @@ titleSuffix: Azure Storage
 description: Azure Storage のプライマリおよびセカンダリ ストレージ用のカスタマー ソリューションを構築している Microsoft パートナー
 author: beber-msft
 ms.author: beber
-ms.date: 04/12/2021
+ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 8efcc6b9837596175a8bcf9a0a7b159f0560cff0
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 378c7ea828d6e0ff1a08ad5e5888af5b634b94ab
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486091"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838221"
 ---
 # <a name="azure-storage-partners-for-primary-and-secondary-storage"></a>プライマリおよびセカンダリ ストレージの Azure Storage パートナー
 
@@ -28,6 +28,7 @@ ms.locfileid: "109486091"
 | ![Pure Storage](./media/pure-logo.png) |**Pure Storage**<br>Pure によって提供される最新のデータ エクスペリエンスを利用することで、組織は、複数のクラウドでシームレスに、真の自動化されたサービスとしてのストレージ モデルとして、操作を実行することができます。|[パートナー ページ](https://www.purestorage.com/company/technology-partners/microsoft.html)<br>[ソリューション ビデオ](https://azure.microsoft.com/resources/videos/pure-storage-overview)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/purestoragemarketplaceadmin.cbs_license_offer)|
 | ![Scality](./media/scality-logo.png) |**Scality**<br>Scality は、オンプレミス、ハイブリッド、およびマルチクラウド環境向けに設計された、ソフトウェアによるファイルとオブジェクトのプラットフォームを構築しています。 また、Scality と Azure Blob Storage の統合により、企業は、オンプレミス環境と Azure をまたいでデータを管理およびセキュリティ保護し、高パフォーマンスでクラウドベースのファイル ワークロードの要求を満たすことができます。 |[パートナー ページ](https://www.scality.com/partners/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/scality.scalityconnecthourly?tab=Overview)|
 | ![Tiger Technology 社のロゴ](./media/tiger-logo.png) |**Tiger Technology**<br>Tiger Technology 社は、高パフォーマンスで安全なデータ管理ソフトウェア ソリューションを提供しています。 Tiger Technology 社を利用することで、あらゆる規模の組織が、オンプレミスで、任意のパブリック クラウドで、またはハイブリッドのモデルを使用して、デジタル資産を管理できます。 <br><br> Tiger Bridge は、特定の企業が占有する技術ではない、ソフトウェア専用のデータによる、ストレージ管理システムです。 オンプレミスと多層クラウドのストレージが 1 つのスペースに一体化されて、ハイブリッドのワークフローが可能になります。 この透過的なファイル サーバー拡張機能により、従来のアプリケーションとワークフローを維持しながら、Azure のスケールとサービスを活用できます。 Tiger Bridge により、ファイル サーバー拡張機能、ディザスター リカバリー、クラウド移行、バックアップとアーカイブ、リモート コラボレーション、マルチサイト同期など、さまざまなデータ管理の課題が対処されます。また、継続的データ保護も提供されます。 |[パートナー ページ](https://www.tiger-technology.com/partners/microsoft-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tiger-technology.tigerbridge_vm)|
+| ![XenData 企業ロゴ](./media/xendata-logo.png) |**XenData**<br>XenData ソフトウェアは、オンプレミスのストレージと Azure Blob Storage のクラウド全体のファイルとフォルダーを管理する多階層ストレージ システムを作成しています。 XenData Multi-Site Sync ソフトウェアは、分散チーム用のグローバル ファイル システムを作成し、複数の場所でファイルを共有および同期できるようにします。 XenData クラウド ソリューションはビデオ ファイル用に最適化されており、ビデオ ストリーミングと部分的なファイル復元をサポートしています。 これらは、メディアおよびエンタテインメント業界で使用される多くの補完的なソフトウェア製品と統合され、さまざまなワークフローをサポートしています。 XenData ソリューションを使用するその他の業界やアプリケーションには、石油とガス、エンジニアリングと科学データ、ビデオ監視、医療画像などがあります。 |[パートナー ページ](https://xendata.com/tech_partners_cloud/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/xendata-inc.sol-15118-gyy?tab=Overview)|
 
 ストレージ パートナーであるのに、ご自分のソリューションがまだ一覧に表示されていませんか? [こちら](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUQjY4QlJYUzFHQ0ZBVDNYWERaUlNRVU5IMyQlQCN0PWcu)から情報をお送りください。
 ## <a name="next-steps"></a>次のステップ

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: bc7b1a0742e79c3c84bf533e75467b5def2706b4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1ad358c428f80e2e8bebcecf73cc89ddd5c37bc7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277727"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454424"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services での Bring Your Own Key (カスタマー マネージド キー)
 
@@ -42,7 +42,7 @@ Media Services では、Media Services アカウントのマネージド ID を�
 Media Services では、自動的に二重暗号化がサポートされます。 保存データの場合、暗号化の最初のレイヤーでは、アカウント上の `AccountEncryption` 設定に応じて、カスタマー マネージド キーまたは Microsoft マネージド キーが使用されます。  保存データ用の暗号化の 2 番目のレイヤーは、個別の Microsoft マネージド キーを使用して自動的に提供されます。 二重暗号化の詳細については、[Azure の二重暗号化](../../security/fundamentals/double-encryption.md)に関するページを参照してください。
 
 > [!NOTE]
-> Media Services アカウント上で二重暗号化は自動的に有効にされます。 一方、ご利用のストレージ アカウント上では、カスタマー マネージド キーと二重暗号化を別々に構成する必要があります。 [ストレージの暗号化](../../storage/common/storage-service-encryption.md)に関するページを参照してください。
+> Media Services アカウント上で二重暗号化は自動的に有効にされます。 一方、ご利用のストレージ アカウント上では、カスタマー マネージド キーと二重暗号化を別々に構成する必要があります。 詳細については、[ストレージの暗号化](../../storage/common/storage-service-encryption.md)に関するページを参照してください。
 
 ## <a name="tutorials"></a>チュートリアル
 

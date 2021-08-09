@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2021
+ms.date: 05/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 358bddaffc90467d6ff636b0e9c88eeac04a2fed
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cb53bad331e511ea2daacc2a0fbc9c178a193a2f
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742501"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655138"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -41,6 +41,7 @@ ms.locfileid: "108742501"
 
 ### <a name="machine-learning"></a>Machine Learning
 *   [Cloudera Machine Learning](https://docs.cloudera.com/machine-learning/cloud/requirements-azure/topics/ml-requirements-azure.html)
+*   [Azure での分散トレーニング: レーン検出 - ソリューション設計](https://www.netapp.com/media/32427-tr-4896-design.pdf)
 
 ### <a name="education"></a>Education
 * [Azure NetApp Files NFS ストレージ上の Moodle](https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-netapp-files-for-nfs-storage-with-moodle/ba-p/2300630)

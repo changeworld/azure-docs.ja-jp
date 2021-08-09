@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87156914769c2cb76b7509b74ebfeb13b15af95e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384454"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784197"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Synapse で一般的なタスクを実行するために必要なロールについて理解する
 
@@ -116,9 +116,9 @@ Integration Runtime 状態を監視する|Synapse ユーザー|read、pipelines/
 ユーザー、グループ、サービス プリンシパルに対する Synapse RBAC ロールの割り当ての割り当てと削除を行う| ワークスペースまたは特定のワークスペース項目スコープでの Synapse 管理者|roleAssignments/write、delete 
 
 >[!Note]
->別のテナントのゲスト ユーザーは、割り当てられているロールに関係なく、ロールの割り当てを確認、追加、または変更できません。 
+>別のテナントのゲスト ユーザーは、Synapse 管理者として割り当てられた後、ロールの割り当てを確認、追加、変更することができます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Synapse RBAC ロールの割り当てを確認する方法](./how-to-review-synapse-rbac-role-assignments.md)について学習する
 

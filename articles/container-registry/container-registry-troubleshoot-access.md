@@ -3,12 +3,12 @@ title: レジストリに関するネットワークの問題のトラブルシ�
 description: 仮想ネットワークまたはファイアウォールの内側で Azure コンテナー レジストリにアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: dc2110405713791d11fb438565fc091da9c9dd5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d9cfa0aa902fca1afd1033d40b33ccdf5baa56d7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780754"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066678"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
@@ -68,7 +68,7 @@ ContainerRegistryLoginEvents テーブルのレジストリ リソース ログ�
 * [ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)
 * [HTTP/HTTPS プロキシの構成](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
 * [Azure Container Registry の geo レプリケーション](container-registry-geo-replication.md)
-* [診断の評価と監査のための Azure Container Registry ログ](container-registry-diagnostics-audit-logs.md)
+* [Azure Container Registry の監視](monitor-service.md)
 
 ### <a name="configure-public-access-to-registry"></a>レジストリへのパブリック アクセスを構成する
 
@@ -126,11 +126,11 @@ Azure Firewall または同様のソリューションがネットワークに�
 
 ## <a name="advanced-troubleshooting"></a>高度なトラブルシューティング
 
-レジストリで[リソース ログの収集](container-registry-diagnostics-audit-logs.md)が有効になっている場合は、ContainterRegistryLoginEvents ログを確認します。 このログには、受信 ID や IP アドレスを含む、認証イベントと状態が格納されています。 ログで[レジストリ認証エラー](container-registry-diagnostics-audit-logs.md#registry-authentication-failures)のクエリを実行します。 
+レジストリで[リソース ログの収集](monitor-service.md)が有効になっている場合は、ContainterRegistryLoginEvents ログを確認します。 このログには、受信 ID や IP アドレスを含む、認証イベントと状態が格納されています。 ログで[レジストリ認証エラー](monitor-service.md#registry-authentication-failures)のクエリを実行します。 
 
 関連リンク:
 
-* [診断の評価と監査のためのログ](container-registry-diagnostics-audit-logs.md)
+* [Azure Container Registry の監視](monitor-service.md)
 * [Container Registry に関する FAQ](container-registry-faq.md)
 * [Azure Container Registry 用の Azure セキュリティ ベースライン](security-baseline.md)
 * [Azure Container Registry のベスト プラクティス](container-registry-best-practices.md)

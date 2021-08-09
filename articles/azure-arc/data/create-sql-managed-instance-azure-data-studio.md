@@ -4,19 +4,19 @@ description: Azure Data Studio を使用して Azure SQL Managed Instance を作
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: rothja
-ms.author: jroth
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6bc644fc96ba30cb13603edf6a90f357db4fd2f3
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3223ec1a9538228c1b3d9f2cdcb8ea1c051e0e10
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736378"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495966"
 ---
-# <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Azure Data Studio を使用して SQL Managed Instance - Azure Arc を作成する
+# <a name="create-sql-managed-iinstance---azure-arc-using-azure-data-studio"></a>Azure Data Studio を使用して SQL Managed Instance - Azure Arc を作成する
 
 このドキュメントでは、Azure Data Studio を使用して Azure SQL Managed Instance - Azure Arc をインストールする手順について説明します
 
@@ -47,14 +47,14 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 
 - Azure Data Studio を起動する
 - [接続] タブで、左上にある 3 つのドットをクリックし、[新しい展開] を選択します
-- デプロイ オプションで、 **[Azure SQL managed instance - Azure Arc]\(Azure SQL Managed Instance - Azure Arc\)** を選択します 
+- デプロイ オプションで、 **[Azure SQL Managed Instance - Azure Arc]\(Azure SQL Managed Instance - Azure Arc\)** を選択します 
   > [!NOTE]
   > [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] が現在インストールされていない場合は、ここでインストールするように求められることがあります。
 - プライバシーとライセンス条項に同意し、下部にある **[選択]** をクリックします
 
 
 
-- [Deploy Azure SQL managed instance - Azure Arc]\(Azure SQL Managed Instance - Azure Arc のデプロイ\) ブレードで、次の情報を入力します。
+- [Deploy Azure SQL Managed Instance - Azure Arc]\(Azure SQL Managed Instance - Azure Arc のデプロイ\) ブレードで、次の情報を入力します。
   - SQL Server インスタンスの名前を指定します
   - SQL Server インスタンスのパスワードを入力して確認します
   - データに適したストレージ クラスを選択します
@@ -73,7 +73,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 azdata login
 ```
 
-- 次のコマンドを使用して、プロビジョニングされたすべての Azure SQL マネージド インスタンスを表示します。
+- 次のコマンドを使用して、プロビジョニングされたすべての Azure SQL Managed Instances を表示します。
 
 ```console
 azdata arc sql mi list

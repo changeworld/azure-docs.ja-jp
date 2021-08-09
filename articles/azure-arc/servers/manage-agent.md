@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.date: 04/27/2021
+ms.date: 05/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 25cd997bc1b90da07fd9c463f0097c7bdf53b885
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 728e67930366f1b62b405f503a775b6d14a90bd0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076619"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068232"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -234,7 +234,10 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 ## <a name="remove-the-agent"></a>エージェントを削除する
 
-Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Arc 対応サーバーでマシンの登録が解除されたり、インストールしている Azure VM 拡張機能が削除されたりすることはありません。 Azure でマシンを管理する必要がなくなったら、個別にマシンの登録を解除し、インストールした VM 拡張機能を削除します。これらの手順は、エージェントをアンインストールする前に完了しておく必要があります。
+Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Arc 対応サーバーでマシンの登録が解除されたり、インストールしている Azure VM 拡張機能が削除されたりすることはありません。 Azure Arc 対応サーバーで管理する必要がなくなったサーバーまたはマシンについては、次の手順に従って管理を停止する必要があります。 
+
+1. [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) を使用するか、[Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) を使用して、コンピューターに残してきたくない、[Azure portal ](manage-vm-extensions-portal.md#uninstall-extension) からインストールされた VM 拡張機能を削除します。
+1. `azcmagent disconnect` を実行してコンピューターの登録を解除し、Azure で Arc 対応のサーバー リソースを削除します。 それでも失敗する場合は、Azure でリソースを手動で削除できます。 そうでない場合、Azure でリソースが削除された場合は、サーバー上で `azcmagent disconnect --force-local-only` を実行してローカル構成を削除する必要があります。
 
 ### <a name="windows-agent"></a>Windows エージェント
 

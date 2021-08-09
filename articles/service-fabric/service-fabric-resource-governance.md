@@ -3,12 +3,12 @@ title: コンテナーとサービスのリソース ガバナンス
 description: Azure Service Fabric を使用すると、プロセスまたはコンテナーとして実行されているサービスのリソース要求と制限を指定できます。
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2265640346525c6521d7f421c2e589979cceb4ca
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735660"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783409"
 ---
 # <a name="resource-governance"></a>リソース管理
 
@@ -264,14 +264,18 @@ Service Fabric サービスにリソース ガバナンスを適用すると、�
 
 ## <a name="other-resources-for-containers"></a>コンテナー用の他のリソース
 
-CPU とメモリに加え、コンテナー用の他のリソース制限を指定できます。 これらの制限は、コード パッケージ レベルで指定され、コンテナーが開始されたときに適用されます。 CPU とメモリとは異なり、クラスター リソース マネージャーはこれらのリソースを認識せず、それらの容量チェックも負荷分散も実行しません。
+CPU とメモリに加え、[コンテナー用の他のリソース制限](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype)を指定できます。 これらの制限は、コード パッケージ レベルで指定され、コンテナーが開始されたときに適用されます。 CPU とメモリとは異なり、クラスター リソース マネージャーはこれらのリソースを認識せず、それらの容量チェックも負荷分散も実行しません。
 
-* *MemorySwapInMB*:コンテナーが使用できるスワップ メモリの量。
-* *MemoryReservationInMB*:ノードでメモリの競合が検出された場合にのみ適用される、メモリ ガバナンスのソフト制限。
-* *CpuPercent*:コンテナーが使用できる CPU の割合。 サービス パッケージで CPU 要求または制限が指定された場合、このパラメーターは事実上無視されます。
-* *MaximumIOps*:コンテナーが使用できる最大 IOPS (読み取りと書き込み)。
-* *MaximumIOBytesps*:コンテナーが使用できる最大 IO (1 秒あたりのバイト数) (読み取りと書き込み)。
-* *BlockIOWeight*:その他のコンテナーに対する相対的なブロック IO の重み。
+* *MemorySwapInMB*: 使用可能なスワップメモリーの総量を MB で指定します。 正の整数にする必要があります。
+* *MemoryReservationInMB*: ノード上でメモリの競合が検出された場合にのみ適用される、メモリ ガバナンスのソフト制限 (MB単位)。 正の整数にする必要があります。
+* *CpuPercent*: 利用可能な CPU の使用可能な割合 (Windows のみ)。 正の整数にする必要があります。 CpuShares、CpuCores、または CpuCoresLimit と共に使用することはできません。
+* *Cpushares*: 相対的な CPU 重み。 正の整数にする必要があります。 CpuPercent、CpuCores、または CpuCoresLimit と共に使用することはできません。
+* *MaximumIOps*: 使用可能な IOPS に関する最大 IO 量 (読み取りと書き込み)。 正の整数にする必要があります。
+* *MaximumIOBandwidth*: 使用可能な 最大 IO (1 秒あたりのバイト数) (読み取りと書き込み)。 正の整数にする必要があります。
+* *BlockIOWeight*: 他のコード パッケージを基準としたブロック IO の重み。 10 から 1000 までの正の整数である必要があります。
+* *DiskQuotaInMB*: コンテナーのディスク クォータ。 正の整数にする必要があります。
+* *KernelMemoryInMB*: カーネル メモリの制限 (バイト単位)。  正の整数にする必要があります。  これは Linux 固有であり、Windows の Docker で指定されている場合はエラーで終了することに注意してください。
+* *ShmSizeInMB*: */dev/shm* のサイズ (バイト単位)。 省略した場合、システムは 64 MB を使用します。  正の整数にする必要があります。 これは Linux 固有ですが、Docker は指定された場合にのみ無視します (エラー アウトしません)。
 
 これらのリソースは、CPU とメモリと組み合わせることができます。 コンテナー用の追加リソースを指定する方法の例を次に示します。
 

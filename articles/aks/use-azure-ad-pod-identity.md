@@ -4,18 +4,19 @@ description: Azure Kubernetes Service (AKS) で AAD ポッドマネージド ID 
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: f090f5e11688f35ce090bb07ec0d23530bf9d90e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1b1e8ab4e95a0f721f83f933b527cc40b9d5747c
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777853"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592592"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)
 
 Azure Active Directory ポッドマネージド ID では、Kubernetes プリミティブを使用して [Azure リソース用マネージド ID][az-managed-identities] と Azure Active Directory (AAD) の ID をポッドに関連付けます。 管理者は、ID とバインドを Kubernetes プリミティブとして作成し、ID プロバイダーとして AAD に依存する Azure リソースにポッドがアクセスできるようにします。
 
 > [!NOTE]
+>このドキュメントに記載されている機能、ポッドマネージド ID (プレビュー) は、ポッドマネージド ID V2 (プレビュー) に置き換えられます。
 > AADPODIDENTITY が既にインストールされている場合、既存のインストールを削除する必要があります。 この機能を有効にすると、MIC コンポーネントは不要になります。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
@@ -85,7 +86,13 @@ az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --netwo
 
 ## <a name="mitigation"></a>対応策
 
-クラスター レベルで脆弱性を軽減するために、OpenPolicyAgent 受付コントローラーをゲートキーパー検証 Webhook と共に使用できます。 クラスターに既にゲートキーパーがインストールされている場合は、K8sPSPCapabilities タイプの ConstraintTemplate を追加します。
+クラスター レベルでこの脆弱性を緩和するには、Azure の組み込みのポリシー "Kubernetes cluster containers should only use allowed capabilities" (Kubernetes クラスター コンテナーには許可された機能のみを使用する) を使用して、CAP_NET_RAW 攻撃を制限することができます。  
+
+NET_RAW を [必須のドロップ機能] に追加します
+
+![image](https://user-images.githubusercontent.com/50749048/118558790-206b8880-b735-11eb-9e48-236b81116812.png)
+
+Azure Policy を使用していない場合は、OpenPolicyAgent アドミッション コントローラーと Gatekeeper Validating Webhook を併用することができます。 クラスターに既にゲートキーパーがインストールされている場合は、K8sPSPCapabilities タイプの ConstraintTemplate を追加します。
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/template.yaml
@@ -118,7 +125,7 @@ az aks create -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enabl
 
 ## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>Kubernet ネットワーク プラグインを使用して既存の AKS クラスターを更新する
 
-ポッドマネージド ID が含まれるように、Kubnet ネットワーク プラグインを使用して、既存の AKS クラスターを更新します。
+ポッドマネージド ID が含まれるように、Kubenet ネットワーク プラグインを使用して、既存の AKS クラスターを更新します。
 
 ```azurecli-interactive
 az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
@@ -139,12 +146,12 @@ export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n
 
 ## <a name="assign-permissions-for-the-managed-identity"></a>マネージド ID にアクセス許可を割り当てる
 
-*IDENTITY_CLIENT_ID* マネージド ID には、AKS クラスターの仮想マシン スケール セットを含むリソース グループに対する閲覧者のアクセス許可が付与されている必要があります。
+*IDENTITY_CLIENT_ID* マネージド ID には、AKS クラスターの仮想マシン スケール セットを含むリソース グループに対するマネージド ID オペレーターのアクセス許可が付与されている必要があります。
 
 ```azurecli-interactive
 NODE_GROUP=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
 NODES_RESOURCE_ID=$(az group show -n $NODE_GROUP -o tsv --query "id")
-az role assignment create --role "Reader" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
+az role assignment create --role "Managed Identity Operator" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
 ```
 
 ## <a name="create-a-pod-identity"></a>ポッド ID を作成する
@@ -226,10 +233,122 @@ successfully acquired a token, userAssignedID MSI, msiEndpoint(http://169.254.16
 successfully made GET on instance metadata
 ...
 ```
+## <a name="run-an-application-with-multiple-identities"></a>複数の ID を使用してアプリケーションを実行する
 
-## <a name="clean-up"></a>クリーンアップ
+## <a name="create-multiple-identities"></a>複数の ID を作成する
 
-クラスターから AAD ポッドマネージド ID を削除するには、クラスターからサンプル アプリケーションとポッド ID を削除します。 その後、ID を削除します。
+[az identity create][az-identity-create] を使用して ID を作成し、*IDENTITY_CLIENT_ID* および *IDENTITY_RESOURCE_ID* の変数を設定します。
+
+```azurecli-interactive
+az group create --name myIdentityResourceGroup --location eastus
+export IDENTITY_RESOURCE_GROUP="myIdentityResourceGroup"
+export IDENTITY_NAME_1="application-identity_1"
+az identity create --resource-group ${IDENTITY_RESOURCE_GROUP} --name ${IDENTITY_NAME_1}
+export IDENTITY_NAME_2="application-identity_2"
+az identity create --resource-group ${IDENTITY_RESOURCE_GROUP} --name ${IDENTITY_NAME_2}
+export IDENTITY_CLIENT_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME_1} --query clientId -otsv)"
+export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME_1} --query id -otsv)"
+export IDENTITY_CLIENT_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME_2} --query clientId -otsv)"
+export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME_2} --query id -otsv)"
+```
+
+## <a name="assign-permissions-for-the-managed-identities"></a>マネージド ID にアクセス許可を割り当てる
+
+*IDENTITY_CLIENT_ID* マネージド ID には、AKS クラスターの仮想マシン スケール セットを含むリソース グループに対する閲覧者のアクセス許可が付与されている必要があります。
+
+```azurecli-interactive
+NODE_GROUP=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NODES_RESOURCE_ID=$(az group show -n $NODE_GROUP -o tsv --query "id")
+az role assignment create --role "Reader" --assignee "$IDENTITY_CLIENT_ID_1" --scope $NODES_RESOURCE_ID
+az role assignment create --role "Reader" --assignee "$IDENTITY_CLIENT_ID_2" --scope $NODES_RESOURCE_ID
+```
+
+## <a name="create-pod-identities"></a>ポッド ID を作成する
+
+`az aks pod-identity add` を使用してクラスターのポッド ID を作成します。
+
+> [!IMPORTANT]
+> ID とロールのバインドを作成するには、サブスクリプションに対する適切なアクセス許可 (`Owner` など) が必要です。
+
+```azurecli-interactive
+export POD_IDENTITY_NAME="my-pod-identity"
+export POD_IDENTITY_NAMESPACE="my-app"
+az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSCluster --namespace ${POD_IDENTITY_NAMESPACE}  --name ${POD_IDENTITY_NAME} --identity-resource-id ${IDENTITY_RESOURCE_ID_1} --binding-selector foo
+az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSCluster --namespace ${POD_IDENTITY_NAMESPACE}  --name ${POD_IDENTITY_NAME} --identity-resource-id ${IDENTITY_RESOURCE_ID_2} --binding-selector foo
+```
+
+> [!NOTE]
+> AKS クラスターでポッドマネージド ID を有効にすると、*aks-addon-exception* という名前の AzurePodIdentityException が *kube-system* 名前空間に追加されます。 AzurePodIdentityException を使用すると、Node Managed Identity (NMI) サーバーによって傍受されることなく、特定のラベルを持つポッドから Azure Instance Metadata Service (IMDS) エンドポイントにアクセスできます。 *aks-addon-exception* を使用すると、AAD ポッドマネージド ID などの AKS ファーストパーティのアドオンを、AzurePodIdentityException を手動で設定しなくても動作させることができます。 必要に応じて、`az aks pod-identity exception add`、`az aks pod-identity exception delete`、`az aks pod-identity exception update`、または `kubectl` を使用して、AzurePodIdentityException を追加、削除、更新することができます。
+
+## <a name="run-a-sample-application-with-multiple-identities"></a>複数の ID を使用してサンプル アプリケーションを実行する
+
+ポッドで AAD ポッドマネージド ID を使用すには、ポッドに *AzureIdentityBinding* のセレクターと一致する値を持つ *aadpodidbinding* ラベルが必要です。 AAD ポッドマネージド ID を使用してサンプル アプリケーションを実行するには、次の内容を含む `demo.yaml` ファイルを作成します。 *POD_IDENTITY_NAME*、*IDENTITY_CLIENT_ID*、および *IDENTITY_RESOURCE_GROUP* を、前の手順の値に置き換えます。 *SUBSCRIPTION_ID* を実際のサブスクリプション ID に置き換えます。
+
+> [!NOTE]
+> 前の手順では、*POD_IDENTITY_NAME*、*IDENTITY_CLIENT_ID*、および *IDENTITY_RESOURCE_GROUP* の変数を作成しました。 `echo` などのコマンドを使用して、変数に設定した値 (`echo $IDENTITY_NAME` など) を表示できます。
+
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+  labels:
+    aadpodidbinding: foo
+spec:
+  containers:
+  - name: demo
+    image: mcr.microsoft.com/oss/azure/aad-pod-identity/demo:v1.6.3
+    args:
+      - --subscriptionid=SUBSCRIPTION_ID
+      - --clientid=IDENTITY_CLIENT_ID
+      - --resourcegroup=IDENTITY_RESOURCE_GROUP
+    env:
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: MY_POD_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+  nodeSelector:
+    kubernetes.io/os: linux
+```
+
+ポッド定義には、前の手順で実行した `az aks pod-identity add` のポッド ID の名前と一致する値を持つ *aadpodidbinding* ラベルが含まれていることに注目してください。
+
+`kubectl apply` を使用して、ポッド ID と同じ名前空間に `demo.yaml` をデプロイします。
+
+```azurecli-interactive
+kubectl apply -f demo.yaml --namespace $POD_IDENTITY_NAMESPACE
+```
+
+`kubectl logs` を使用して、サンプル アプリケーションが正常に実行されていることを確認します。
+
+```azurecli-interactive
+kubectl logs demo --follow --namespace $POD_IDENTITY_NAMESPACE
+```
+
+ログに、トークンが正常に取得されたこと、および *GET* 操作が正常に完了したことが表示されていることを確認します。
+ 
+```output
+...
+successfully doARMOperations vm count 0
+successfully acquired a token using the MSI, msiEndpoint(http://169.254.169.254/metadata/identity/oauth2/token)
+successfully acquired a token, userAssignedID MSI, msiEndpoint(http://169.254.169.254/metadata/identity/oauth2/token) clientID(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+successfully made GET on instance metadata
+...
+```
+export IDENTITY_CLIENT_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME} --query clientId -otsv)" export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME} --query id -otsv)"
+```
+
+## Clean up
+
+To remove AAD pod-managed identity from your cluster, remove the sample application and the pod identity from the cluster. Then remove the identity.
 
 ```azurecli-interactive
 kubectl delete pod demo --namespace $POD_IDENTITY_NAMESPACE

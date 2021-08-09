@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 52ac3ee4ea2f71e285d21c7b6d082e84fa090da1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 28dc63729a946e7b14b950f5082752d78c5992f4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625910"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452686"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Cognitive Search のクエリにスペル チェックを追加する
 
@@ -25,18 +25,16 @@ ms.locfileid: "105625910"
 
 ## <a name="prerequisites"></a>前提条件
 
-+ 英語のコンテンツを含む既存の検索インデックス。 [[シノニム]](search-synonyms.md) では、現在、スペル修正は機能しません。 いずれのフィールド定義でも、シノニム マップを指定するインデックスでそれを使用しないでください。
++ [サポートされている言語](#supported-languages)のコンテンツを含む既存の検索インデックス。 [[シノニム]](search-synonyms.md) では、現在、スペル修正は機能しません。 いずれのフィールド定義でも、シノニム マップを指定するインデックスでそれを使用しないでください。
 
 + クエリを送信するための検索クライアント
 
   検索クライアントは、クエリ要求でプレビューの REST API をサポートする必要があります。 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md)、または自分で変更したコードを使用して、プレビュー API への REST 呼び出しを行うことができます。
 
-+ スペル修正を使用する[クエリ要求](/rest/api/searchservice/preview-api/search-documents)には、"api-version=2020-06-30-Preview"、"speller=lexicon"、および "queryLanguage=en-us" があります。
-
-  スペル チェックには queryLanguage が必要であり、現在 "en-us" が唯一の有効な値です。
++ スペル修正を呼び出す[クエリ要求](/rest/api/searchservice/preview-api/search-documents)には、"api-version=2020-06-30-Preview"、"speller=lexicon"、および "queryLanguage" が[サポートされている言語](#supported-languages)に設定されている必要があります。
 
 > [!Note]
-> スペル チェック パラメーターは、セマンティック検索を提供するのと同じリージョン内のすべての階層で使用できます。 このプレビュー機能にアクセスするためにサインアップする必要はありません。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
+> スペル チェック パラメーターは、セマンティック検索を提供するのと同じリージョン内のすべての階層で使用できます。 サインアップは必要ですが、料金は発生せず、階層の制限はありません。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
 
 ## <a name="spell-correction-with-simple-search"></a>単純な検索でのスペル修正
 
@@ -92,26 +90,37 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
+## <a name="supported-languages"></a>サポートされる言語
+
+queryLanguage のスペル チェックの有効な値については、次の表を参照してください。 この一覧は、[サポートされている言語 (REST API リファレンス)](/rest/api/searchservice/preview-api/search-documents#queryLanguage) のサブセットです。 スペル チェックなしでセマンティック キャプションと回答を使用している場合は、言語とバリアントのより大きな一覧から選択できます。
+
+| Language | queryLanguage |
+|----------|---------------|
+| 英語 [EN] | EN、EN-US (既定値) |
+| スペイン語 [ES] | ES、ES-ES (既定値)|
+| フランス語 [FR] | FR、FR-FR (既定値) |
+| ドイツ語 [DE] | DE、DE-DE (既定値) |
+
 ## <a name="language-considerations"></a>言語に関する注意点
 
-スペル チェックに必要な queryLanguage パラメーターは、インデックス スキーマのフィールド定義に割り当てられている[言語アナライザー](index-add-language-analyzers.md)と一致している必要があります。 
+スペル チェックに必要な queryLanguage パラメーターは、インデックスのフィールド定義に割り当てられている[言語アナライザー](index-add-language-analyzers.md)と一致している必要があります。 たとえば、フィールドのコンテンツに "fr.microsoft" 言語アナライザーを使用してインデックスが作成された場合、クエリ、スペル チェック、セマンティック キャプション、セマンティック回答はすべて、何らかの形式のフランス語の言語ライブラリを使用する必要があります。
 
-+ queryLanguage により、スペル チェックに使用される辞書が決まります。これは、"queryType=semantic" を使用している場合に[セマンティック ランク付けアルゴリズム](semantic-answers.md)への入力としても使用されます。
+Cognitive Search で言語ライブラリを使用する方法を要約するには
 
-+ 言語アナライザーは、検索インデックスで一致するドキュメントを見つけるために、インデックスの作成時とクエリの実行時に使用されます。 言語アナライザーを使用するフィールド定義の例として `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` があります。
++ 言語アナライザーは、インデックス作成とクエリの実行中に呼び出すことができ、完全な Lucene ("de.lucene" など) または Microsoft ("de.microsoft") のいずれかになります。
 
-スペル チェックの使用時に最良の結果を得るには、queryLanguage が "en-us" の場合、言語アナライザーも英語のバリアント ("en.microsoft" または "en.lucene") である必要があります。
++ スペル チェック中に呼び出される言語辞書は、上の表のいずれかの言語コードを使用して指定されます。
+
+クエリ要求では、queryLanguage がスペル チェック、[回答](semantic-answers.md)、キャプションにも同様に適用されます。 セマンティック応答の個々の部分に対するオーバーライドはありません。 
 
 > [!NOTE]
-> 言語に依存しないアナライザー (keyword、simple、standard、stop、whitespace、`standardasciifolding.lucene` など) は、queryLanguage 設定と競合しません。
-
-クエリ要求では、設定した queryLanguage がスペル チェック、回答、キャプションにも同様に適用されます。 個々のパーツに対するオーバーライドはありません。
+> 言語アナライザーを使用している場合は、さまざまなプロパティ値間の言語の一貫性だけが問題になります。 言語に依存しないアナライザー (keyword、simple、standard、stop、whitespace、`standardasciifolding.lucene` など) を使用している場合は、queryLanguage 値は任意の値にすることができます。
 
 検索インデックスのコンテンツは複数の言語で構成できますが、通常、クエリ入力は 1 つの言語で行われます。 検索エンジンでは、queryLanguage、言語アナライザー、およびコンテンツが構成されている言語の互換性が確認されません。そのため、誤った結果が生成されないように、適切にクエリのスコープを設定してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [セマンティック クエリの作成](semantic-how-to-query-request.md)
++ [セマンティック ランク付けとキャプションの呼び出し](semantic-how-to-query-request.md)
 + [基本的なクエリの作成](search-query-create.md)
 + [完全な Lucene クエリ構文の使用](query-Lucene-syntax.md)
 + [単純なクエリ構文の使用](query-simple-syntax.md)

@@ -4,12 +4,12 @@ description: Azure Application Insights を使用して IP アドレスと位置
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js, devx-track-azurepowershell
-ms.openlocfilehash: d5bacde864d42dfefab9c4b0d5dc90072081a25f
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8115ea2334d0ea90ef0e31bb857f3e76154912ce
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321359"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082542"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -58,7 +58,7 @@ IP の収集と格納を有効にするには、Application Insights コンポ�
 }
 ```
 
-### <a name="portal"></a>ポータル 
+### <a name="portal"></a>ポータル
 
 1 つの Application Insights リソースの動作のみを変更する必要がある場合は、Azure portal を使用します。 
 
@@ -79,15 +79,14 @@ IP の収集と格納を有効にするには、Application Insights コンポ�
     > [!WARNING]
     > 次のようなエラーが発生した場合:"**_リソース グループは、テンプレート内の 1 つ以上のリソースがサポートしていない場所にあります。別のリソース グループを選択してください。_**" 一時的にドロップダウンから別のリソース グループを選択してから、元のリソース グループを再選択してエラーを解決します。
 
-5. **[同意する]**  >  **[購入]** の順に選択します。 
+5. **[確認と作成]**  >  **[作成]** の順に選択します。
 
-    !["購入" の語が赤色で強調表示されたボタンの上に、"上記の使用条件に同意する" の語句が赤色で強調表示されたチェックされたボックス。](media/ip-collection/purchase.png)
-
-    この場合、実際には新しいものは購入されていません。 既存の Application Insights リソースの構成のみを更新しています。
+    > [!NOTE]
+    > "デプロイに失敗しました" と表示されている場合は、"microsoft. insights/components" という種類のデプロイの詳細を確認し、状態を確認します。 成功した場合は、DisableIpMasking に加えられた変更がデプロイされます。
 
 6. デプロイが完了すると、新しいテレメトリ データが記録されます。
 
-    テンプレートをもう一度選択して編集すると、新しく追加されたプロパティを使用せずに既定のテンプレートのみが表示されます。 IP アドレス データが表示されず、`"DisableIpMasking": true` が設定されていることを確認する必要がある場合、次の PowerShell を実行します。 
+    テンプレートをもう一度選択して編集すると、新しく追加されたプロパティを使用せずに既定のテンプレートのみが表示されます。 IP アドレス データが表示されず、`"DisableIpMasking": true` が設定されていることを確認する必要がある場合、次の PowerShell を実行します。
     
     ```powershell
     # Replace `Fabrikam-dev` with the appropriate resource and resource group name.

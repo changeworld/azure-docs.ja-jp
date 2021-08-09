@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jianleishen
-ms.openlocfilehash: 44c60305519c2464df56c3b5a9228161548d4bd6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: c6ce2d796bbe679f73804fef91079db2ca44c28b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482887"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748879"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -217,7 +217,7 @@ SharePoint Online からファイルをコピーするには、**Web アクテ�
     - **メソッド**: POST
     - **Headers**:
         - Content-Type: application/x-www-form-urlencoded
-    - **本文**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]`。 クライアント ID、クライアント シークレット、テナント ID、テナント名は置き換えてください。
+    - **本文**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]`。 クライアント ID (アプリケーション ID)、クライアント シークレット (アプリケーション キー)、テナント ID、テナント名 (SharePoint テナント) を置き換えます。
 
     > [!CAUTION]
     > トークン値がプレーン テキストでログに記録されないようにするには、Web アクティビティで [セキュリティで保護された出力] オプションを true に設定します。 この値を使用するその他のアクティビティでは、[セキュリティで保護された入力] オプションが true に設定されている必要があります。

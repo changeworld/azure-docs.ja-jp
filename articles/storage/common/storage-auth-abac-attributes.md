@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 66b5bb47f68f0731b3c7f5cc3192427b87f7c2db
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 45a0fbac0fbe1bd513717ba1ab1d30b3cffbf78e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489864"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065946"
 ---
 # <a name="actions-and-attributes-for-azure-role-assignment-conditions-in-azure-storage-preview"></a>Azure Storage 内での Azure のロールの割り当て条件のアクションと属性 (プレビュー)
 
@@ -89,6 +89,9 @@ ms.locfileid: "109489864"
 
 > [!NOTE]
 > `Microsoft.Storage/storageAccounts/blobServices/containers/blobs:path` 属性の条件を指定する場合、値にはコンテナー名または前の '/' 文字を含めることはできません。 パス文字は URL エンコードなしで使用してください。
+
+> [!NOTE]
+> BLOB インデックス タグは、[階層型名前空間](../blobs/data-lake-storage-namespace.md) (HNS) を使用する Data Lake Storage Gen2 ストレージ アカウントではサポートされていません。 HNS が有効になっているストレージ アカウントでは、インデックス タグを使用してロール割り当て条件を作成しないでください。
 
 ## <a name="attributes-available-for-each-action"></a>各アクションで使用できる属性
 

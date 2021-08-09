@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 26e1fe78e54b0de1cf7c7a0ddc54c3d792d1deed
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 6aa233e82ca272b9b5b9e4a9bee4ef2b57f2de77
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071174"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070021"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API にコンテナーを作成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,12 +34,12 @@ ms.locfileid: "108071174"
 1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコンテナー]** を選択します。 次に、以下の詳細を指定します。
 
    * 新しいデータベースを作成するか、既存のデータベースを使用するかを指定します。
-   * コンテナー ID を入力します。
-   * パーティション キーを入力します。
-   * プロビジョニングするスループットを入力します (例: 1,000 RU)。
+   * **コンテナー ID** を入力します。
+   * **パーティション キー** の値を入力します (例: `/ItemID`)。
+   * **自動スケーリング** または **手動** スループットを選択し、必要な **コンテナー スループット** を入力します (例: 1000 RU/秒)。 プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="[新しいコンテナー] が強調して示されている [データ エクスプローラー] ウィンドウのスクリーンショット":::
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="[新しいコレクション] が強調表示されている [データ エクスプローラー] のスクリーンショット":::
 
 ## <a name="create-a-container-using-azure-cli"></a><a id="cli-sql"></a>Azure CLI を使用してコンテナーを作成する
 

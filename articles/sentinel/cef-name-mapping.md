@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 04/12/2021
-ms.openlocfilehash: 107d10bec77ea7bb2b67ae86f48d5b88a286869d
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 3d30bb733245c0519b73d66653b8d09cb9a4b4b9
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229506"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528182"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF および CommonSecurityLog フィールドのマッピング
 
@@ -60,7 +60,7 @@ ms.locfileid: "108229506"
 | dproc | DestinationProcessName | イベントの送信先プロセスの名前 (`telnetd` や `sshd.` など)。 |
 | dpt | DestinationPort | 送信先ポート。 <br>有効な値: `*0` - `65535` |
 | dst | DestinationIP | IP ネットワーク内でイベントによって参照されている送信先の IpV4 アドレス。 |
-| dtz | DeviceTimeZon | イベントを生成しているデバイスのタイムゾーン |
+| dtz | DeviceTimeZone | イベントを生成しているデバイスのタイムゾーン |
 | duid |DestinationUserId | ID で宛先ユーザーを識別します。 |
 | duser | DestinationUserName |名前で宛先ユーザーを識別します。|
 | dvc | DeviceAddress | イベントを生成しているデバイスの IPv4 アドレス。 |

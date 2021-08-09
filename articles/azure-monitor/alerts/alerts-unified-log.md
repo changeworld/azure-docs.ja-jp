@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: a72d27584441e853c6eeeb732df2691fd347857e
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: 2744a1dd36751175e7bd421210bdb5b92b53dfe5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664530"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456923"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
@@ -26,7 +26,7 @@ ms.locfileid: "109664530"
 
 ## <a name="prerequisites"></a>前提条件
 
-ログ アラートで、Log Analytics データに対するクエリを実行します。 最初に、[ログ データの収集](../essentials/resource-logs.md)を開始し、ログ データで問題を照会する必要があります。 検出できるものを把握したり、[独自のクエリの記述を開始](../logs/log-analytics-tutorial.md)したりするために、Log Analytics の[アラート　クエリ例に関する記事](../logs/example-queries.md)を使用できます。
+ログ アラートで、Log Analytics データに対するクエリを実行します。 最初に、[ログ データの収集](../essentials/resource-logs.md)を開始し、ログ データで問題を照会する必要があります。 検出できるものを把握したり、[独自のクエリの記述を開始](../logs/log-analytics-tutorial.md)したりするために、Log Analytics の[アラート　クエリ例に関する記事](../logs/queries.md)を使用できます。
 
 [Azure 監視共同作成者](../roles-permissions-security.md)は、ログ アラートの作成、変更、更新に必要な一般的なロールです。 リソース ログに対するアクセスとクエリ実行の権限も必要です。 リソース ログに部分的にアクセスすると、クエリが失敗したり、部分的な結果が返されたりすることがあります。 [Azure でのログ アラートの構成に関する詳細を確認してください](./alerts-log.md)。
 
@@ -180,11 +180,11 @@ requests
 
 ## <a name="state-and-resolving-alerts"></a>アラートの状態と解決
 
-ログ アラートは、ステートレスまたはステートフル (API を使用する場合、現時点ではプレビュー段階) になります。
+ログ アラートは、ステートレスまたはステートフル (現時点ではプレビュー段階) になります。
 
 ステートレス アラートは、前に発生した場合でも、条件が満たされるたびに発生します。 アラート インスタンスが解決されると、[アラートを終了としてマーク](../alerts/alerts-managing-alert-states.md)できます。 また、アクションをミュートして、アラート ルールが発生した後の期間にトリガーされないようにすることもできます。 Log Analytics ワークスペースと Application Insights では、これは **アラートの抑制** と呼ばれます。 他のすべてのリソースの種類では、**アクションのミュート** と呼ばれます。 
 
-このアラートの評価例を参照してください。
+このアラートのステートレス評価例を参照してください。
 
 | Time    | ログ条件の評価 | 結果 
 | ------- | ----------| ----------| ------- 
@@ -193,7 +193,7 @@ requests
 | 00:15 | TRUE  | アラートが発生し、アクション グループが呼び出されます。 新しいアラートの状態はアクティブです。
 | 00:20 | FALSE | アラートは発生しません。 アクションは呼び出されません。 前のアラートの状態はアクティブのままです。
 
-ステートフル アラートは、インシデントごとに 1 回発生し、解決されます。 新しいログ アラート ルールを作成するか既存のものを更新する場合、`properties` セクションに、`Boolean` 型の値 `true` を含む `autoMitigate` フラグを追加します。 この機能は、`2018-04-16` および `2020-05-01-preview` の各 API バージョンで使用できます。
+ステートフル アラートは、インシデントごとに 1 回発生し、解決されます。 この機能は現在、Azure パブリック クラウドでプレビュー段階です。 これを設定するには、「アラートの詳細」セクションの「**アラートを自動的に解決する**」を使用します。
 
 ## <a name="location-selection-in-log-alerts"></a>ログ アラートでの場所の選択
 

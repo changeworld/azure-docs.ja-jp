@@ -3,26 +3,23 @@ title: Microsoft Azure Maps Creator (プレビュー) の Drawing パッケー�
 description: 施設の設計ファイルをマップ データに変換するための Drawing パッケージの要件について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 1/08/2021
+ms.date: 4/16/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a663042cbd8d48d5495d24e5e23db0433f15d55f
+ms.sourcegitcommit: 5c136a01bddfccb2cc9f7e7e7741e2cf2651ddbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98895273"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111352769"
 ---
 # <a name="drawing-package-requirements"></a>Drawing パッケージの要件
 
+[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)を使用することにより、アップロードした Drawing パッケージをマップ データに変換できます。 この記事では、Conversion API の Drawing パッケージの要件について説明します。 サンプル パッケージを表示するには、サンプルの [Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
 
-> [!IMPORTANT]
-> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用することにより、アップロードした Drawing パッケージをマップ データに変換できます。 この記事では、Conversion API の Drawing パッケージの要件について説明します。 サンプル パッケージを表示するには、サンプルの [Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
+描画パッケージを準備する方法のガイドについては、「[Conversion Drawing Package Guide ](drawing-package-guide.md) (変換描画パッケージ ガイド)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +27,7 @@ ms.locfileid: "98895273"
 
 任意の CAD ソフトウェアを選択して、Drawing パッケージで図面を作成することができます。  
 
-[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用すると、Drawing パッケージをマップ データに変換できます。 Conversion サービスは、AutoCAD DWG ファイル形式で機能します。 `AC1032` は、DWG ファイルの内部形式のバージョンです。内部 DWG ファイル形式のバージョンには `AC1032` を選択することをお勧めします。  
+[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)を使用すると、Drawing パッケージをマップ データに変換できます。 Conversion サービスは、AutoCAD DWG ファイル形式で機能します。 `AC1032` は、DWG ファイルの内部形式のバージョンです。内部 DWG ファイル形式のバージョンには `AC1032` を選択することをお勧めします。  
 
 ## <a name="glossary-of-terms"></a>用語集
 
@@ -62,7 +59,7 @@ Drawing パッケージは、.zip 拡張子の付いた 1 つのアーカイブ 
 * 複数の施設の地物を含めることはできません。
 * Drawing パッケージ内の他の DWG ファイルと同じ測定系と測定単位を参照する必要があります。
 
-[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用すると、DWG ファイルから次の地物クラスを抽出できます。
+[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)を使用すると、DWG ファイルから次の地物クラスを抽出できます。
 
 * Levels
 * Units
@@ -79,11 +76,11 @@ DWG レイヤーは、次の条件にも従う必要があります。
 
 * すべての DWG ファイルの図面の原点は、同じ緯度と経度に合わせる必要があります。
 * 各レベルは、他のレベルと同じ向きにする必要があります。
-* 自己交差する多角形は自動的に修復され、[Azure Maps Conversion サービス](/rest/api/maps/conversion)から警告が生成されます。 修復された結果は期待された結果と一致しない可能性があるため、手動で検査することをお勧めします。
+* 自己交差する多角形は自動的に修復され、[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)から警告が生成されます。 修復された結果は期待された結果と一致しない可能性があるため、手動で検査することをお勧めします。
 
 すべてのレイヤー エンティティは、次のいずれかの種類である必要があります。線、ポリライン、多角形、円弧、円、楕円 (閉)、またはテキスト (単一行)。 その他のエンティティの種類は無視されます。
 
-レイヤーごとにサポートされているエンティティの種類と変換されたマップ地物の概要を次の表に示します。 レイヤーにサポートされていないエンティティの種類が含まれている場合、[Azure Maps Conversion サービス](/rest/api/maps/conversion)ではそのエンティティは無視されます。  
+レイヤーごとにサポートされているエンティティの種類と変換されたマップ地物の概要を次の表に示します。 レイヤーにサポートされていないエンティティの種類が含まれている場合、[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)ではそのエンティティは無視されます。  
 
 | レイヤー | エンティティの種類 | 変換された地物 |
 | :----- | :-------------------| :-------
@@ -178,11 +175,11 @@ ZoneLabel レイヤーの例は、[サンプル Drawing パッケージ](https:/
 
 ## <a name="manifest-file-requirements"></a>マニフェスト ファイルの要件
 
-zip フォルダーには、ディレクトリのルート レベルにマニフェスト ファイルが格納されている必要があります。また、ファイル名は **manifest.json** にする必要があります。 これには、[Azure Maps Conversion サービス](/rest/api/maps/conversion)でコンテンツを解析できる DWG ファイルについて記述されています。 マニフェストに指定されたファイルのみが取り込まれます。 zip フォルダー内にあっても、マニフェストに適切に登録されていないファイルは無視されます。
+zip フォルダーには、ディレクトリのルート レベルにマニフェスト ファイルが格納されている必要があります。また、ファイル名は **manifest.json** にする必要があります。 これには、[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)でコンテンツを解析できる DWG ファイルについて記述されています。 マニフェストに指定されたファイルのみが取り込まれます。 zip フォルダー内にあっても、マニフェストに適切に登録されていないファイルは無視されます。
 
 マニフェスト ファイルの `buildingLevels` オブジェクト内のファイル パスは、zip フォルダーのルートからの相対パスにする必要があります。 DWG ファイル名は、施設レベルの名前と正確に一致している必要があります。 たとえば、"Basement" レベルの DWG ファイルは "Basement.dwg" です。 level 2 の DWG ファイルは "level_2.dwg" です。 レベル名にスペースが含まれている場合は、アンダースコアを使用します。
 
-マニフェスト オブジェクトの使用には要件がありますが、すべてのオブジェクトが必要なわけではありません。 [Azure Maps Conversion サービス](/rest/api/maps/conversion) バージョン 1.1 の必須オブジェクトと省略可能なオブジェクトを次の表に示します。
+マニフェスト オブジェクトの使用には要件がありますが、すべてのオブジェクトが必要なわけではありません。 [Azure Maps Conversion サービス](/rest/api/maps/v2/conversion) バージョン 1.1 の必須オブジェクトと省略可能なオブジェクトを次の表に示します。
 
 | Object | 必須 | 説明 |
 | :----- | :------- | :------- |
@@ -198,7 +195,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 ### `directoryInfo`
 
-| プロパティ  | Type | 必須 | 説明 |
+| プロパティ  | 種類 | 必須 | 説明 |
 |-----------|------|----------|-------------|
 | `name`      | string | true   |  建物の名前。 |
 | `streetAddress`|    string |    false    | 建物の住所。 |
@@ -219,7 +216,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 `buildingLevels` オブジェクトには、建物レベルの JSON 配列が含まれています。
 
-| プロパティ  | Type | 必須 | 説明 |
+| プロパティ  | 種類 | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`levelName`    |string    |true |    わかりやすいレベル名。 次に例を示します。フロア 1、ロビー、ブルー パーキング、または地下。|
 |`ordinal` | 整数 (integer) |    true | レベルの垂直方向の順序を決定します。 すべての施設には、ordinal 0 のレベルが必要です。 |
@@ -229,7 +226,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 ### `georeference`
 
-| プロパティ  | Type | 必須 | 説明 |
+| プロパティ  | 種類 | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`lat`    | numeric |    true |    施設図面の原点の緯度を表す 10 進数表現。 起点の座標は WGS84 Web メルカトル (`EPSG:3857`) 内にある必要があります。|
 |`lon`    |numeric|    true|    施設図面の原点の経度を表す 10 進数表現。 起点の座標は WGS84 Web メルカトル (`EPSG:3857`) 内にある必要があります。 |
@@ -237,7 +234,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 ### `dwgLayers`
 
-| プロパティ  | Type | 必須 | 説明 |
+| プロパティ  | 種類 | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`exterior`    |文字列の配列|    true|    外装の建物プロファイルを定義するレイヤーの名前。|
 |`unit`|    文字列の配列|    true|    ユニットを定義するレイヤーの名前。|
@@ -251,7 +248,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 `unitProperties` オブジェクトには、ユニットのプロパティの JSON 配列が含まれています。
 
-| プロパティ  | Type | 必須 | 説明 |
+| プロパティ  | 種類 | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`unitName`    |string    |true    |この `unitProperty` レコードに関連付けるユニットの名前。 このレコードは、`unitName` と一致するラベルが `unitLabel` レイヤーで見つかった場合にのみ有効です。 |
 |`categoryName`|    string|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
@@ -271,7 +268,7 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 `zoneProperties` オブジェクトには、ゾーンのプロパティの JSON 配列が含まれています。
 
-| プロパティ  | Type | 必須 | 説明 |
+| プロパティ  | 種類 | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |zoneName        |string    |true    |`zoneProperty` レコードに関連付けるゾーンの名前。 このレコードは、`zoneName` と一致するラベルがゾーンの `zoneLabel` レイヤーで見つかった場合にのみ有効です。  |
 |categoryName|    string|    false    |カテゴリ名。 カテゴリの完全な一覧については、[categories](https://aka.ms/pa-indoor-spacecategories) を参照してください。 |
@@ -414,13 +411,16 @@ zip フォルダーには、ディレクトリのルート レベルにマニフ
 
 ## <a name="next-steps"></a>次の手順
 
-Drawing パッケージが要件を満たしたら、[Azure Maps Conversion サービス](/rest/api/maps/conversion)を使用してパッケージをマップ データセットに変換することができます。 次に、そのデータセットを使用し、屋内マップ モジュールを使って屋内マップを生成できます。
+Drawing パッケージが要件を満たしたら、[Azure Maps Conversion サービス](/rest/api/maps/v2/conversion)を使用してパッケージをマップ データセットに変換することができます。 次に、そのデータセットを使用し、屋内マップ モジュールを使って屋内マップを生成できます。
 
 > [!div class="nextstepaction"]
->[屋内マップ用の Creator (プレビュー)](creator-indoor-maps.md)
+> [描画パッケージ ガイド](drawing-package-guide.md)
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Creator (プレビュー) の屋内マップを作成する](tutorial-creator-indoor-maps.md)
+>[フロア ガイド用の Creator](creator-indoor-maps.md)
+
+> [!div class="nextstepaction"]
+> [チュートリアル:Creator 屋内マップを作成する](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [屋内マップの動的スタイル設定](indoor-map-dynamic-styling.md)
