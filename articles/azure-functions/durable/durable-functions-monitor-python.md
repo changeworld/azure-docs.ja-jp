@@ -19,7 +19,7 @@ ms.locfileid: "102434765"
 ## <a name="prerequisites"></a>前提条件
 
 * [クイックスタートの記事を完了していること](quickstart-python-vscode.md)
-* [GitHub からサンプル プロジェクトを複製またはダウンロードしていること](https://github.com/Azure/azure-functions-durable-python/tree/main/samples/)
+* [GitHub からサンプル プロジェクトをクローンまたはダウンロードしていること](https://github.com/Azure/azure-functions-durable-python/tree/main/samples/)
 
 
 ## <a name="scenario-overview"></a>シナリオの概要
