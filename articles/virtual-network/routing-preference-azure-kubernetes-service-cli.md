@@ -22,7 +22,7 @@ ms.locfileid: "107776575"
 ---
 # <a name="configure-routing-preference-for-a-kubernetes-cluster-using-azure-cli"></a>Azure CLI を使用して Kubernetes クラスターのルーティング設定を構成する
 
-この記事では、Azure CLI を使用して ISP ネットワーク ( **[インターネット]** オプション) を介して Kubernetes クラスターのルーティング設定を構成する方法について説明します。 ルーティング設定は、ルーティング設定の種類 **インターネット**** のパブリック IP アドレスを作成し、AKS クラスターの作成中にそれを使用することによって設定されます。
+この記事では、Azure CLI を使用して ISP ネットワーク ( **[インターネット]** オプション) を介して Kubernetes クラスターのルーティング設定を構成する方法について説明します。 ルーティング設定は、ルーティング設定の種類 **インターネット** のパブリック IP アドレスを作成し、AKS クラスターの作成中にそれを使用することによって設定されます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
