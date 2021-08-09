@@ -1,5 +1,5 @@
 ---
-title: エンティティ認識の認知スキル
+title: エンティティ認識のコグニティブ スキル
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のエンリッチメント パイプラインのテキストからさまざまな種類のエンティティを抽出します。
 manager: nitinme
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/30/2021
 ms.locfileid: "102547902"
 ---
-#    <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
+#    <a name="entity-recognition-cognitive-skill"></a>エンティティ認識のコグニティブ スキル
 
 **エンティティ認識** スキルによってテキストからさまざまな種類のエンティティが抽出されます。 このスキルでは、Cognitive Services の [Text Analytics](../cognitive-services/text-analytics/overview.md) によって提供される機械学習モデルが使用されます。
 
