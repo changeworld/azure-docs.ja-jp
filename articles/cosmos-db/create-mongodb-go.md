@@ -27,7 +27,7 @@ ms.locfileid: "107765217"
 > * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。 このクイック スタートでは、Azure Cloud Shell を利用して Azure Cosmos DB アカウントを作成し、管理し、GitHub から既存のサンプル アプリケーションを複製し、Azure Cosmos DB と連動するようにそれを構成します。 
+Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。 このクイック スタートでは、Azure Cloud Shell を利用して Azure Cosmos DB アカウントを作成し、管理し、GitHub から既存のサンプル アプリケーションをクローンし、Azure Cosmos DB と連動するようにそれを構成します。 
 
 サンプル アプリケーションは、Go で記述されたコマンドライン ベースの `todo` 管理ツールです。 Azure Cosmos DB の MongoDB 用 API は [MongoDB ワイヤ プロトコルと互換性があり](./mongodb-introduction.md#wire-protocol-compatibility)、あらゆる MongoDB クライアント ドライバーでそれと接続できるようになります。 このアプリケーションでは、Azure Cosmos DB データベースにデータが格納されることがアプリケーションでは意識されないよう、[MongoDB 用 Go ドライバー](https://github.com/mongodb/mongo-go-driver)が使用されます。
 
@@ -37,9 +37,9 @@ Azure Cosmos DB は、マルチモデル データベース サービスです�
 - [Git](https://git-scm.com/downloads).
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-次のコマンドを実行して、サンプル リポジトリを複製します。
+次のコマンドを実行して、サンプル リポジトリをクローンします。
 
 1. コマンド プロンプトを開いて `git-samples` という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -53,7 +53,7 @@ Azure Cosmos DB は、マルチモデル データベース サービスです�
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
 
     ```bash
     git clone https://github.com/Azure-Samples/cosmosdb-go-mongodb-quickstart
@@ -220,7 +220,7 @@ func delete(todoid string) {
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
 
-アプリケーションを複製したディレクトリに移動し、アプリケーションをビルドします (`go build` を使用)。
+アプリケーションをクローンしたディレクトリに移動し、アプリケーションをビルドします (`go build` を使用)。
 
 ```bash
 cd monogdb-go-quickstart

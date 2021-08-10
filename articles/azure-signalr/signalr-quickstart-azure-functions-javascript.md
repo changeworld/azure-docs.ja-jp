@@ -62,7 +62,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
     ![プライマリ接続文字列が強調表示されているスクリーンショット。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. コード エディターで、複製したリポジトリの *src/chat/javascript* フォルダーを開きます。
+1. コード エディターで、クローンしたリポジトリの *src/chat/javascript* フォルダーを開きます。
 
 1. *local.settings.sample.json* を *local.settings.json* に変更します。
 

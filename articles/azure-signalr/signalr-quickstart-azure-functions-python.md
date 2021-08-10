@@ -61,7 +61,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
     ![プライマリ接続文字列を選択してコピーします。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. コード エディターで、複製したリポジトリの *src/chat/python* フォルダーを開きます。
+1. コード エディターで、クローンしたリポジトリの *src/chat/python* フォルダーを開きます。
 
 1. Python 関数をローカルで開発し、テストするには、Python 3.6 または 3.7 環境で作業する必要があります。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
 

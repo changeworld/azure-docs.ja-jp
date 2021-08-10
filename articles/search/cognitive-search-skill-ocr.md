@@ -1,5 +1,5 @@
 ---
-title: OCR 認知スキル
+title: OCR コグニティブ スキル
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のエンリッチメント パイプラインで光学式文字認識 (OCR) を使用して、イメージ ファイルからテキストを抽出します。
 manager: nitinme
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/03/2021
 ms.locfileid: "106285843"
 ---
-# <a name="ocr-cognitive-skill"></a>OCR 認知スキル
+# <a name="ocr-cognitive-skill"></a>OCR コグニティブ スキル
 
 **光学式文字認識 (OCR)** スキルでは、画像ファイルに印字された手書きテキストが認識されます。 このスキルでは、Cognitive Services の [Computer Vision](../cognitive-services/computer-vision/overview.md) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
 
