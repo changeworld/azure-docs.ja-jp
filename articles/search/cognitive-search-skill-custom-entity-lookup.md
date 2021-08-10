@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/01/2021
 ms.locfileid: "106110310"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill"></a>カスタム エンティティの参照認知スキル
+#     <a name="custom-entity-lookup-cognitive-skill"></a>カスタム エンティティの参照コグニティブ スキル
 
 **カスタム エンティティの参照** スキルを使うと、ユーザーが定義したカスタムの単語と語句の一覧からテキストを検索できます。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。  
 

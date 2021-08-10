@@ -33,7 +33,7 @@ C# .NET チャット ボットを Personalizer ループとともに使用して
 
 チャット ボットは会話のターンを管理する必要があります。 チャット ボットは [Bot Framework](https://github.com/microsoft/botframework-sdk) を使用してボットのアーキテクチャと会話を管理し、Cognitive Service の [Language Understanding](../LUIS/index.yml) (LUIS) を使用して、ユーザーからの自然言語の意図を理解します。
 
-チャット ボットは、要求に応答するために使用できる特定のルートを持つ Web サイト `http://localhost:3978/api/messages` です。 ボット エミュレーターを使用すると、ボットをローカルで開発するときに、実行中のチャット ボットと視覚的に対話できます。
+チャット ボットは、要求に応答するために使用できる特定のルートを持つ Web サイト `http://localhost:3978/api/messages` です。 Bot Emulator を使用すると、ボットをローカルで開発するときに、実行中のチャット ボットと視覚的に対話できます。
 
 ### <a name="user-interactions-with-the-bot"></a>ボットとユーザーのやり取り
 
@@ -174,24 +174,24 @@ LUIS を初めて使用する場合は、[サインイン](https://www.luis.ai)�
 このチュートリアルにはボットの動作内容が説明されているため、この Web サイトを実行したままにし、ボットと対話できるようにしてください。
 
 
-## <a name="set-up-the-bot-emulator"></a>ボット エミュレーターをセットアップする
+## <a name="set-up-the-bot-emulator"></a>Bot Emulator をセットアップする
 
 1. Bot Framework Emulator を開き、 **[Open Bot]\(ボットを開く\)** を選択します。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="ボット エミュレーターの起動画面のスクリーンショット。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Bot Emulator の起動画面のスクリーンショット。":::
 
 
 1. 次の **[Bot URL]\(ボット URL\)** を使用してボットを構成し、 **[Connect]\(接続\)** を選択します。
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="ボット エミュレーターのボットを開く設定のスクリーンショット。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Bot Emulator のボットを開く設定のスクリーンショット。":::
 
     エミュレーターはチャット ボットに接続し、ローカル開発に役立つログやデバッグ情報とともに、説明テキストを表示します。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="会話の最初のターンにおけるボット エミュレーターのスクリーンショット。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="会話の最初のターンにおける Bot Emulator のスクリーンショット。":::
 
-## <a name="use-the-bot-in-the-bot-emulator"></a>ボット エミュレーターでボットを使用する
+## <a name="use-the-bot-in-the-bot-emulator"></a>Bot Emulator でボットを使用する
 
 1. `I would like to see the menu` と入力して、メニューを表示するように要求します。 チャット ボットによって項目が表示されます。
 1. `Please suggest a drink for me.` と入力することによって、ボットが項目を提案するようにします。エミュレーターではチャット ウィンドウに順位の要求と応答が表示されるため、完全な JSON を確認できます。 ボットは `How about Latte?` のような提案を行います。

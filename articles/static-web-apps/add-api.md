@@ -30,7 +30,7 @@ Azure Functions との統合を使用して、Azure Static Web Apps にサーバ
 
 ## <a name="create-a-git-repository"></a>Git リポジトリを作成する
 
-次の手順では、新しいリポジトリを作成し、お使いのコンピューターにファイルを複製する方法を示します。
+次の手順では、新しいリポジトリを作成し、お使いのコンピューターにファイルをクローンする方法を示します。
 
 1. GitHub にログインしていることを確認し、[https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate) に移動して新しいリポジトリを作成します。
 1. _[リポジトリ名]_ ボックスに、「**my-vanilla-api**」と入力します。
@@ -38,14 +38,14 @@ Azure Functions との統合を使用して、Azure Static Web Apps にサーバ
 
    :::image type="content" source="media/add-api/create-repository.png" alt-text="vanilla-basic から新しいリポジトリを作成する":::
 
-プロジェクトが作成されたら、ブラウザー内の新しいリポジトリの URL をコピーします。 この URL を Visual Studio Code で使用して、Git リポジトリを複製します。
+プロジェクトが作成されたら、ブラウザー内の新しいリポジトリの URL をコピーします。 この URL を Visual Studio Code で使用して、Git リポジトリをクローンします。
 
 1. コマンド パレットでコマンドを開くには、**F1** キーを押します。
 1. URL を _Git:Clone_ プロンプトに貼り付け、**Enter** キーを押します。
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Visual Studio Code を使用して GitHub プロジェクトを複製する":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Visual Studio Code を使用して GitHub プロジェクトをクローンする":::
 
-    画面の指示に従って、プロジェクトを複製するリポジトリの場所を選択します。
+    画面の指示に従って、プロジェクトをクローンするリポジトリの場所を選択します。
 
 ## <a name="create-the-api"></a>API の作成
 

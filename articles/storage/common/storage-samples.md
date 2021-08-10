@@ -21,7 +21,7 @@ Azure Storage のサンプル コードとアプリケーションを閲覧し�
 
 ## <a name="azure-code-samples-library"></a>Azure のコード サンプル ライブラリ
 
-[Azure のコード サンプル ライブラリ](https://azure.microsoft.com/documentation/samples/?service=storage) には、ダウンロードしてローカルで実行できる Azure Storage のサンプルが用意されています。 コード サンプル ライブラリでは、サンプル コードが .zip 形式で提供されます。 また、各サンプルの GitHub リポジトリを参照して複製することもできます。
+[Azure のコード サンプル ライブラリ](https://azure.microsoft.com/documentation/samples/?service=storage) には、ダウンロードしてローカルで実行できる Azure Storage のサンプルが用意されています。 コード サンプル ライブラリでは、サンプル コードが .zip 形式で提供されます。 また、各サンプルの GitHub リポジトリを参照してクローンすることもできます。
 
 ## <a name="net-samples"></a>.NET のサンプル
 
