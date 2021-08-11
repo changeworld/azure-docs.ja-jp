@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 77d51b2c839a64567838fa4d6308d203a6bb8b82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32391dc2106f0ebab73faaa857a1b53392f0416d
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501143"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903259"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Python)
 
@@ -32,6 +32,8 @@ ms.locfileid: "102501143"
 
 * **FileUpload.py** は、Python デバイス SDK を使用してファイルをストレージにアップロードします。
 
+ファイル アップロード アプリのより高度なバージョンがあります。これについては、GitHub の [https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/upload_to_blob.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/upload_to_blob.py) を参照してください。 このバージョンを実行するには、x.509 証明書、キー、パスフレーズを理解している必要があります。 これはファイルのアップロードには厳密には必要ではないため、次に示すコードでは x.509 を使用しません。
+
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
@@ -41,6 +43,10 @@ ms.locfileid: "102501143"
 [!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
 * ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
+
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 

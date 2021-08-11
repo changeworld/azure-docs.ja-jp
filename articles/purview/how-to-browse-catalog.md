@@ -1,18 +1,18 @@
 ---
 title: '方法: Data Catalog を参照する'
-description: この記事では、資産の種類に基づいて Azure Purview Data Catalog を参照する方法の概要を示します。
-author: chanuengg
-ms.author: csugunan
+description: この記事では、資産の種類により Azure Purview データ カタログを参照する方法の概要を示します
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: dd2fd4fbc9d8aecd9821d668dd02bd4b68659cf6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/21/2021
+ms.openlocfilehash: cf836be45374b881945a80f998d851c95c7a5abd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97695051"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474185"
 ---
 # <a name="browse-the-azure-purview-data-catalog"></a>Azure Purview Data Catalog の参照
 
@@ -26,6 +26,9 @@ ms.locfileid: "97695051"
 
 階層型名前空間を使用したネイティブな参照エクスペリエンスは、対応するデータ ソースごとに提供されます。
 
+> [!NOTE]
+> スキャンが正常に終了した後、新たにスキャンされた資産がブラウズ エクスペリエンスで表示されるまでに、遅延が発生する場合があります。 この遅延は、最大で数時間かかることがあります。
+
 ## <a name="browse-the-data-catalog-by-asset-type"></a>資産の種類での Data Catalog の参照
 
 1. データ資産を参照するには、ホームページで **[Browse by Asset Type]\(資産の種類で参照\)** をクリックします。
@@ -35,6 +38,9 @@ ms.locfileid: "97695051"
 1. **[Browse asset types]\(資産の種類を参照\)** ページでは、データ ソース別にタイルが分類されます。 各データ ソースの資産をさらに調べるには、対応するタイルを選択します。
 
     :::image type="content" source="media/how-to-browse-catalog/browse-asset-types.jpg" alt-text="[Browse asset types]\(資産の種類を参照\) ページ" border="true":::
+
+> [!TIP]
+> 特定のタイルは、データソースのコレクションをグループ化したものです。 たとえば、[Azure Storage アカウント] タイルには、すべての Azure Blob Storage と Azure Data Lake Storage Gen2 アカウントが含まれています。 [Azure SQL Server] タイルには、カタログに取り込まれた Azure SQL Database と Azure 専用 SQL プール インスタンスを含む Azure SQL Server の資産が表示されます。 
 
 1. 次のページには、選択したデータの種類の最上位レベルの資産が一覧表示されます。 資産の 1 つを選択して、その内容を詳しく調べます。
 

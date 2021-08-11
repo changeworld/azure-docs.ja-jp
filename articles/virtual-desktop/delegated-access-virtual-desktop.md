@@ -1,26 +1,27 @@
 ---
-title: Windows Virtual Desktop における委任されたアクセス - Azure
-description: Windows Virtual Desktop のデプロイで管理機能を委任する方法 (例を含む)。
+title: Azure Virtual Desktop における委任されたアクセス - Azure
+description: Azure Virtual Desktop のデプロイで管理機能を委任する方法 (例を含む)。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 6dabdbc34bc1be23ee840dfa2a35eb962a6f9aae
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 2367a2840e64956d3dfca41ce8ee5e31c9f354c7
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447065"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751993"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop"></a>Windows Virtual Desktop における委任されたアクセス
+# <a name="delegated-access-in-azure-virtual-desktop"></a>Azure Virtual Desktop における委任されたアクセス
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)を参照してください。
 
-Windows Virtual Desktop には委任されたアクセス モデルが用意され、これにより特定のユーザーにロールを割り当てることで、それらのユーザーが持つことのできるアクセス数を定義できます。 ロールの割り当てには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つのコンポーネントがあります。 Windows Virtual Desktop の委任されたアクセス モデルは、Azure RBAC モデルに基づいています。 特定のロールの割り当てとそのコンポーネントの詳細については、「[Azure ロールベースのアクセス制御の概要](../role-based-access-control/built-in-roles.md)」を参照してください。
+Azure Virtual Desktop には委任されたアクセス モデルが用意され、これにより特定のユーザーにロールを割り当てることで、それらのユーザーが持つことのできるアクセス数を定義できます。 ロールの割り当てには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つのコンポーネントがあります。 Azure Virtual Desktop の委任されたアクセス モデルは、Azure RBAC モデルに基づいています。 特定のロールの割り当てとそのコンポーネントの詳細については、「[Azure ロールベースのアクセス制御の概要](../role-based-access-control/built-in-roles.md)」を参照してください。
 
-Windows Virtual Desktop の委任されたアクセスでは、ロール割り当ての要素ごとに次の値がサポートされています。
+Azure Virtual Desktop の委任されたアクセスでは、ロール割り当ての要素ごとに次の値がサポートされています。
 
 * セキュリティ プリンシパル
     * ユーザー
@@ -36,9 +37,9 @@ Windows Virtual Desktop の委任されたアクセスでは、ロール割り�
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>ロール割り当てを目的とした PowerShell のコマンドレット
 
-開始する前に、[PowerShell モジュールの設定](powershell-module.md)に関するページの手順に従って、Windows Virtual Desktop PowerShell モジュールを設定してください (まだ設定していない場合)。
+開始する前に、[PowerShell モジュールの設定](powershell-module.md)に関するページの手順に従って、Azure Virtual Desktop PowerShell モジュールを設定してください (まだ設定していない場合)。
 
-Windows Virtual Desktop では、アプリ グループをユーザーまたはユーザー グループに公開するときに、Azure のロールベースのアクセス制御 (Azure RBAC) を使用します。 デスクトップ仮想化ユーザー ロールがユーザーまたはユーザー グループに割り当てられます。そのスコープはアプリ グループになります。 このロールは、アプリ グループに対する特別なデータ アクセスをユーザーに付与します。
+Azure Virtual Desktop では、アプリ グループをユーザーまたはユーザー グループに公開するときに、Azure のロールベースのアクセス制御 (Azure RBAC) を使用します。 デスクトップ仮想化ユーザー ロールがユーザーまたはユーザー グループに割り当てられます。そのスコープはアプリ グループになります。 このロールは、アプリ グループに対する特別なデータ アクセスをユーザーに付与します。
 
 次のコマンドレットを実行して、Azure Active Directory ユーザーをアプリ グループに追加します。
 
@@ -58,4 +59,4 @@ New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop 
 
 Azure RBAC でサポートされているロールの完全な一覧については、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
-Windows Virtual Desktop 環境を設定する方法のガイドについては、「[Windows Virtual Desktop 環境](environment-setup.md)」を参照してください。
+Azure Virtual Desktop 環境を設定する方法のガイドについては、「[Azure Virtual Desktop 環境](environment-setup.md)」を参照してください。

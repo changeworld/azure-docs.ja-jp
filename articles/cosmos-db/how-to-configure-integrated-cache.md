@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: f857d9945cc52aa192838d58066a7fcc005a622d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ddfdd4897a0cd194465828bba4bea0c002a4e434
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386604"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797674"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>Azure Cosmos DB 統合キャッシュを構成する方法 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,6 +65,27 @@ ms.locfileid: "110386604"
 
 > [!NOTE]
 > Python SDK を使用する場合、各要求の整合性レベルを明示的に設定する **必要があります**。 既定のアカウント レベルの設定は、自動的には適用されません。
+
+## <a name="adjust-maxintegratedcachestaleness"></a>MaxIntegratedCacheStaleness の調整
+
+`MaxIntegratedCacheStaleness` を構成します。これは、古いキャッシュされたデータを許容する最大時間です。 `MaxIntegratedCacheStaleness` を可能な限り高く設定することをお勧めします。これは、ポイントの読み取りとクエリが繰り返しキャッシュ ヒットする可能性が高いためです。 `MaxIntegratedCacheStaleness` を 0 に設定した場合、整合性レベルに関係なく、読み取り要求で統合キャッシュは **使用されません**。 構成されていない場合、既定値は `MaxIntegratedCacheStaleness` 5 分です。
+
+**.NET**
+
+```csharp
+FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefinition("SELECT * FROM c"), requestOptions: new QueryRequestOptions
+        {
+            ConsistencyLevel = ConsistencyLevel.Eventual,
+            DedicatedGatewayRequestOptions = new DedicatedGatewayRequestOptions 
+            { 
+                MaxIntegratedCacheStaleness = TimeSpan.FromMinutes(30) 
+            }
+        }
+);
+```
+
+> [!NOTE]
+> 現時点では、最新の .NET と Java プレビュー SDK を使用して MaxIntegratedCacheStaleness のみを調整できます。
 
 ## <a name="verify-cache-hits"></a>キャッシュ ヒット数を確認する
 

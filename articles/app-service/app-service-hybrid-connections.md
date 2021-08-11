@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/05/2021
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: b8425ef0e8d2bdf5caf64bfb2e0c977c63b5a6e1
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: c8b0377207dc811358db14285a7e287cd7c72525
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109628414"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412603"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続
 
@@ -205,6 +205,8 @@ Relay への `Reader` アクセス権限を持つユーザーは誰でも、Azur
 
 * ホストに、ポート 443 での Azure への発信アクセスはありますか? PowerShell コマンド *Test-NetConnection Destination -P Port* を使用して、HCM ホストからテストすることができます。 
 * HCM が正しくない状態である可能性はありますか? ‘Azure ハイブリッド接続マネージャー サービス' ローカル サービスを再起動してみてください。
+
+* 競合するソフトウェアがインストールされていますか? ハイブリッド接続マネージャーは、Biztalk ハイブリッド接続マネージャーまたは Service Bus for Windows Server と共存することはできません。 そのため、HCM をインストールする場合は、これらのパッケージのバージョンを最初に削除する必要があります。
 
 状態に **[接続済み]** と表示されているにもかかわらず、アプリがエンドポイントに接続できない場合は:
 

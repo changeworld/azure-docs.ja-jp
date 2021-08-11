@@ -7,18 +7,18 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 03/16/2020
-ms.openlocfilehash: a7f12891bf394e54ee46c60598536faed1731202
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c82f68ee35ae95a424c0847be9a9cc770185af43
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600885"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005737"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>ホストされた体験版用に Azure Marketplace サブスクリプションを設定する
 
-この記事では、体験版用に Azure Marketplace サブスクリプションと **Dynamics 365 for Customer Engagement** または **Dynamics 365 for Operations** 環境を設定する方法について説明します。
+この記事では、体験版用に Azure Marketplace サブスクリプションと **Dynamics 365 for Customer Engagement & Power Apps** または **Dynamics 365 for Operations** 環境を設定する方法について説明します。
 
-## <a name="set-up-for-dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement の設定
+## <a name="set-up-for-dynamics-365-for-customer-engagement--power-apps"></a>Dynamics 365 for Customer Engagement & Power Apps を設定する
 
 1. 管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 2. 右上隅のアカウント アイコンの上にカーソルを移動して、Dynamics 365 体験版インスタンスに関連付けられたテナント内にいることを確認します。 正しいテナント内でない場合は、アカウント アイコンを選択して正しいテナントに切り替えます。

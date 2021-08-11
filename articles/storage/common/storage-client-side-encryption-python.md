@@ -11,12 +11,12 @@ ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b76a1b8fa3a7d42f8b649adc225af89b4a40f15c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043747"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461813"
 ---
 # <a name="client-side-encryption-with-python"></a>Python によるクライアント側の暗号化
 
@@ -150,7 +150,7 @@ KEK で正常にデータを暗号化するには、次のメソッドを実装�
 ### <a name="blob-service-encryption"></a>Blob service 暗号化
 blockblobservice オブジェクトで暗号化ポリシー フィールドを設定します。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
@@ -182,7 +182,7 @@ blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ### <a name="queue-service-encryption"></a>Queue サービス暗号化
 queueservice オブジェクトで暗号化ポリシー フィールドを設定します。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
@@ -215,7 +215,7 @@ retrieved_message_list = my_queue_service.get_messages(queue_name)
 
 ### <a name="using-the-resolver"></a>リゾルバーの使用
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 
@@ -258,7 +258,7 @@ my_table_service.get_entity(
 ### <a name="using-attributes"></a>属性の使用
 前述のように、プロパティを EntityProperty オブジェクトに格納して暗号化フィールドを設定することで、そのプロパティを暗号化としてマークすることができます。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
 

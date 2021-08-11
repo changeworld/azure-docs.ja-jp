@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: ecd99a21c4d92eeddaa84661424980f6d40d1ae2
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ab209cd3fb598c0c9ad4df359578d956aca7077b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760879"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088734"
 ---
 # <a name="what-are-device-templates"></a>デバイス テンプレートとは
 
@@ -33,7 +33,9 @@ Azure IoT Central のデバイス テンプレートは、アプリケーショ�
 
 ## <a name="device-models"></a>デバイス モデル
 
-デバイス モデルでは、デバイスが IoT Central アプリケーションと対話する方法を定義します。 デバイス開発者は、IoT Central でデバイスを監視、管理できるように、デバイス モデルで定義された動作がデバイスに実装されていることを確認する必要があります。 デバイス モデルは、1 つ以上の "_インターフェイス_" で構成され、各インターフェイスでは、"_テレメトリ_" の種類、"_デバイス プロパティ_"、"_コマンド_" のコレクションを定義できます。 ソリューション開発者は、デバイス モデルを定義する JSON ファイルをデバイス テンプレートにインポートするか、IoT Central の Web UI を使用してデバイス モデルを作成または編集することができます。 Web UI を使用して作成されたデバイス モデルを変更するには、[デバイス テンプレートのバージョン管理する](./howto-version-device-template.md)必要があります。
+デバイス モデルでは、デバイスが IoT Central アプリケーションと対話する方法を定義します。 デバイス開発者は、IoT Central でデバイスを監視、管理できるように、デバイス モデルで定義された動作がデバイスに実装されていることを確認する必要があります。 デバイス モデルは、1 つ以上の "_インターフェイス_" で構成され、各インターフェイスでは、"_テレメトリ_" の種類、"_デバイス プロパティ_"、"_コマンド_" のコレクションを定義できます。 ソリューション開発者は、デバイス モデルを定義する JSON ファイルをデバイス テンプレートにインポートするか、IoT Central の Web UI を使用してデバイス モデルを作成または編集することができます。
+
+デバイス モデルの編集の詳細については、「[既存のデバイス テンプレートの編集](howto-edit-device-template.md)」を参照してください。
 
 ソリューション開発者は、デバイス モデルを含む JSON ファイルをエクスポートすることもできます。 デバイス開発者は、この JSON ドキュメントを使用して、デバイスが IoT Central アプリケーションと通信する方法を理解することができます。
 

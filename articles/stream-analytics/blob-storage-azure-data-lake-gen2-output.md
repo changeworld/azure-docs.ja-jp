@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: 348cd594ae515503c870c1b96eb64aa7117ea26b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98935144"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786756"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの BLOB ストレージと Azure Data Lake Gen2 出力
 
@@ -58,7 +58,12 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
-メッセージの最大サイズについては、[Azure Storage の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)に関する記事を参照してください。 BLOB ブロックの最大サイズは 4 MB で、BLOB の最大ブロック数は 50,000 です。 |
+メッセージの最大サイズについては、[Azure Storage の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)に関する記事を参照してください。 BLOB ブロックの最大サイズは 4 MB で、BLOB の最大ブロック数は 50,000 です。
+
+## <a name="limitations"></a>制限事項
+
+* パス パターンに「/」が使われている場合 (たとえば /folder2/folder3)、空のフォルダーが作成され、Microsoft Azure Storage Explorer には表示されません。
+* 新しい blob ファイルが不要な場合は、Stream Analytics によって同じファイルに追加されます。 Event grid のような azure サービスが blob ファイルの更新でトリガーされるように構成されている場合は、これによって追加のトリガーが生成される可能性があることに注意してください
 
 ## <a name="next-steps"></a>次のステップ
 

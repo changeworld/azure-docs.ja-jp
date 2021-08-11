@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: memildin
 manager: rkarlin
 author: memildin
-ms.date: 03/08/2021
-ms.openlocfilehash: 27f17b3d1060e8b693c2a34cdb4643840f1bfd13
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/07/2021
+ms.openlocfilehash: 12cc4fc1c0aafa148b765f329f0badab127f3644
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452316"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111571003"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender for SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Defender for SQL は、高度な SQL セキュリティ機能のための統合パッケージです。 Azure Defender は、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics で使用可能です。 機密データの検出と分類、データベースの潜在的な脆弱性の検出と軽減、データベースへの脅威を示す可能性がある異常なアクティビティの検出を行う機能が含まれています。 これらの機能を 1 つの場所で有効にして管理できます。
+Azure Defender for SQL は、高度な SQL セキュリティ機能のための統合パッケージです。 Azure Defender は、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics で使用可能です。 これには、データベースの潜在的な脆弱性を検出し、軽減する機能や、データベースに対する脅威を示す異常な行動を検出する機能が含まれています。 これらの機能を 1 つの場所で有効にして管理できます。
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>Azure Defender for SQL の利点
 

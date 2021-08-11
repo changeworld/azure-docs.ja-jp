@@ -4,16 +4,16 @@ description: Azure Files を使ってファイル データを格納する Java 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 05/26/2021
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2fd9ac25d08cf4439278565f90258a230eeedb50
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 76bbc39cc1bb53d51c35b4afde13de15842801e2
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627764"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576009"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 
@@ -40,7 +40,7 @@ Azure Files API を使用するには、Azure Files のアクセス元にする 
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ImportStatements":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 ```java
 // Include the following imports to use Azure Files APIs v11
@@ -60,7 +60,7 @@ Azure Files を使うには、Azure ストレージ アカウントに接続す�
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ConnectionString":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 *your_storage_account_name* と *your_storage_account_key* を自分のストレージ アカウントの実際の値に換えます。
 
@@ -82,7 +82,7 @@ Azure Files にアクセスするため、[ShareClient](/java/api/com.azure.stor
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createClient":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 ストレージ アカウントにアクセスするには、**CloudStorageAccount** オブジェクトを使用し、接続文字列をその **parse** メソッドに渡します。
 
@@ -109,7 +109,7 @@ Azure Files のすべてのファイルとディレクトリは共有という�
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createFileShare":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 共有とそのコンテンツにアクセスするには、Azure Files クライアントを作成します。
 
@@ -147,7 +147,7 @@ if (share.createIfNotExists()) {
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFileShare":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 **CloudFileShare** オブジェクトで **deleteIfExists** メソッドを呼び出して共有を削除します。
 
@@ -183,7 +183,7 @@ try
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createDirectory":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 次のコードは、ルート ディレクトリの下に **sampledir** という名前のサブディレクトリを作成します。
 
@@ -213,7 +213,7 @@ if (sampleDir.createIfNotExists()) {
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteDirectory":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 ```java
 // Get a reference to the root directory for the share.
@@ -238,7 +238,7 @@ if ( containerDir.deleteIfExists() ) {
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_enumerateFilesAndDirs":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 **CloudFileDirectory** 参照で **listFilesAndDirectories** を呼び出すと、ファイルとディレクトリの一覧を取得できます。 このメソッドは、繰り返しできる **ListFileItem** オブジェクトの一覧を返します。 次のコードは、ルート ディレクトリ内のファイルとディレクトリを一覧表示します。
 
@@ -263,7 +263,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 共有オブジェクトで **getRootDirectoryReference** メソッドを呼び出して、ファイルがアップロードされるディレクトリへの参照を取得します。
 
@@ -294,7 +294,7 @@ cloudFile.uploadFromFile(filePath);
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_downloadFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 次の例は、SampleFile.txt をダウンロードし、そのコンテンツを表示します。
 
@@ -324,7 +324,7 @@ Azure Files でのもう 1 つの一般的な操作はファイルの削除で�
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 次のコードは「 **sampledir**」という名前のディレクトリ内に保存されている「SampleFile.txt」という名前のファイルを削除します。
 

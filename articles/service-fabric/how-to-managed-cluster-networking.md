@@ -3,12 +3,12 @@ title: Service Fabric マネージド クラスターのネットワーク設定
 description: NSG ルール、RDP ポート アクセス、負荷分散規則などに関して Service Fabric マネージド クラスターを構成する方法について説明します。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: 67bcdccbd3a54fc0e05b2516aaf5633ddddb1f00
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5164a7e3aeb1e82700bd5c5bc4d44e55de64421b
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060978"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895609"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターのネットワーク設定を構成する
 
@@ -91,7 +91,7 @@ NSG ルールを割り当てるには、*Microsoft.ServiceFabric/managedclusters
 
 ## <a name="rdp-ports"></a>RDP ポート
 
-Service Fabric マネージド クラスターの場合、RDP ポートへのアクセスは既定では許可されません。 Service Fabric マネージド クラスター リソースで次のプロパティを設定することにより、インターネットへの RDP ポートを開くことができます。
+Service Fabric マネージド クラスターを使用して、既定で RDP ポートにアクセスすることはできません。 Service Fabric マネージド クラスター リソースで次のプロパティを設定することにより、インターネットへの RDP ポートを開くことができます。
 
 ```json
 "allowRDPAccess": true
@@ -117,6 +117,28 @@ AllowRDPAccess プロパティを true に設定すると、次の NSG ルール
     }
 }
 ```
+
+Service Fabric マネージド クラスターにより、ノード タイプのインスタンスごとにインバウンド NAT 規則が自動的に作成されます。 特定のインスタンス (クラスター ノード) に到達するためのポート マッピングを見つけるには、次の手順のようにします。
+
+Azure portal を使用して、リモート デスクトップ プロトコル (RDP) 用にマネージド クラスターで作成されたインバウンド NAT 規則を見つけます。
+
+1. サブスクリプション内にある、SFC_{cluster-id} という形式の名前が付けられたマネージド クラスター リソース グループに移動します
+
+2. そのクラスターに対する、LB-{cluster-name} という形式のロード バランサーを選択します
+
+3. ロード バランサーのページで、インバウンド NAT 規則を選択します。 インバウンド NAT 規則を調べて、ノードでのインバウンド フロントエンド ポートからターゲット ポートへのマッピングを確認します。 
+
+   次のスクリーンショットでは、3 つの異なるノード タイプに対するインバウンド NAT 規則が示されています。
+
+   ![受信 NAT 規則][Inbound-NAT-Rules]
+
+   既定では、Windows クラスターの場合、フロントエンド ポートは 50000 以上の範囲で、ターゲット ポートはポート 3389 であり、ターゲット ノードの RDP サービスにマップされます。
+
+4. 特定のノード (スケール セット インスタンス) にリモート接続します。 クラスターまたはその他の構成した資格情報を作成したときに設定したユーザー名とパスワードを使用することができます。
+
+次のスクリーンショットでは、リモート デスクトップ接続を使用した、Windows クラスター内のアプリ (インスタンス 0) ノードへの接続が示されています。
+
+![リモート デスクトップ接続][sfmc-rdp-connect]
 
 ## <a name="clientconnection-and-httpgatewayconnection-ports"></a>ClientConnection ポートと HttpGatewayConnection ポート
 
@@ -151,7 +173,7 @@ AllowRDPAccess プロパティを true に設定すると、次の NSG ルール
 
 ### <a name="nsg-rule-sfmc_allowservicefabricgatewayports"></a>NSG ルール: SFMC_AllowServiceFabricGatewayPorts
 
-これは、インターネットから clientConnectionPort および httpGatewayPort へのアクセスを許可するオプションの NSG ルールです。 このルールにより、お客様は SFX にアクセスしたり、PowerShell を使用してクラスターに接続したり、外部から Service Fabric クラスター API エンドポイントを使用したりすることができます。
+このオプションのルールを使用することで、お客様は、SFX にアクセスしたり、PowerShell を使用してクラスターに接続したり、clientConnectionPort と httpGatewayPort の LB ポートを開いてインターネットから Service Fabric クラスター API エンドポイントを使用したりできます。
 
 >[!NOTE]
 >同じポートに同じアクセス、方向、プロトコルの値を持つカスタム ルールがある場合、このルールは追加されません。 このルールは、カスタム NSG ルールでオーバーライドできます。
@@ -180,7 +202,7 @@ AllowRDPAccess プロパティを true に設定すると、次の NSG ルール
 
 ## <a name="load-balancer-ports"></a>ロード バランサーのポート
 
-Service Fabric マネージド クラスターにより、*ManagedCluster* プロパティの loadBalancingRules セクションで構成されているすべてのロード バランサー (LB) ポートに対する NSG ルールが、既定の優先順位範囲に作成されます。 このルールにより、インターネットからの受信トラフィック用に LB ポートが開かれます。
+Service Fabric マネージド クラスターにより、*ManagedCluster* プロパティの loadBalancingRules セクションで構成されているすべてのロード バランサー (LB) ポートに対する NSG ルールが、既定の優先順位範囲に作成されます。 このルールにより、インターネットからの受信トラフィック用に LB ポートが開かれます。  
 
 >[!NOTE]
 >このルールは、オプションの優先順位範囲に追加され、カスタム NSG ルールを追加することによってオーバーライドできます。
@@ -270,3 +292,8 @@ Service Fabric マネージド クラスターにより、ファブリック ゲ
 [Service Fabric マネージド クラスターの構成オプション](how-to-managed-cluster-configuration.md)
 
 [Service Fabric マネージド クラスターの概要](overview-managed-cluster.md)
+
+<!--Image references-->
+[Inbound-NAT-Rules]: ./media/how-to-managed-cluster-networking/inbound-nat-rules.png
+[sfmc-rdp-connect]: ./media/how-to-managed-cluster-networking/sfmc-rdp-connect.png
+

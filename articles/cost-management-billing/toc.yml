@@ -5,14 +5,14 @@
     - name: Cost Management と Billing の概要
       href: cost-management-billing-overview.md
 - name: クイックスタート
-  expanded: true
   items:
     - name: コストの分析を開始する
-      href: costs/quick-acm-cost-analysis.md
       displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
+      href: costs/quick-acm-cost-analysis.md
     - name: 予算の作成 - Resource Manager テンプレート
-      href: costs/quick-create-budget-template.md
       displayName: 'ARM template, resource manager template'
+      href: costs/quick-create-budget-template.md
+  expanded: true
 - name: チュートリアル
   items:
     - name: 個々のアカウントの請求書を確認する
@@ -26,8 +26,8 @@
     - name: 予算を作成して管理する
       href: costs/tutorial-acm-create-budgets.md
     - name: データのエクスポート
-      href: costs/tutorial-export-acm-data.md
       displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
+      href: costs/tutorial-export-acm-data.md
     - name: レコメンデーションに基づいて対応する
       href: costs/tutorial-acm-opt-recommendations.md
 - name: 概念
@@ -296,6 +296,8 @@
           href: manage/spending-limit.md
         - name: Microsoft 顧客契約のクレジットの追跡
           href: manage/mca-check-azure-credits-balance.md
+        - name: Microsoft Azure の消費コミットメントの追跡
+          href: manage/track-consumption-commitment.md
         - name: EA から MCA API に移行する
           href: costs/migrate-cost-management-api.md
         - name: EA SPN にロールを割り当てる
@@ -366,6 +368,8 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: トラブルシューティング
       items:
+        - name: 請求書を表示できない、または見つからない
+          href: manage/troubleshoot-cant-find-invoice.md
         - name: 使用状況ファイルに関する EA の請求の問題
           href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
         - name: 使用状況ファイルに関する MCA の請求の問題
@@ -453,56 +457,17 @@
 - name: Cloudyn
   items:
     - name: 概要
-      items:
-        - name: Cloudyn とは
-          href: cloudyn/overview.md
     - name: クイックスタート
-      items:
-        - name: コスト データの表示 - CSP
-          href: cloudyn/quick-register-csp.md
     - name: チュートリアル
-      items:
-        - name: 使用状況とコストを確認する
-          href: cloudyn/tutorial-review-usage.md
-        - name: 支出を予測する
-          href: cloudyn/tutorial-forecast-spending.md
-        - name: コストを管理する
-          href: cloudyn/tutorial-manage-costs.md
-        - name: 予約インスタンスを最適化する
-          href: cloudyn/tutorial-optimize-reserved-instances.md
-        - name: データへのアクセスを制御する
-          href: cloudyn/tutorial-user-access.md
     - name: 概念
-      items:
-        - name: コスト レポートについて
-          href: cloudyn/understanding-cost-reports.md
     - name: 操作方法ガイド
-      items:
-        - name: Azure サブスクリプションとアカウントのアクティブ化
-          href: cloudyn/activate-subs-accounts.md
-        - name: VM の拡張メトリックの追加
-          href: cloudyn/azure-vm-extended-metrics.md
-        - name: AWS アカウントの接続
-          href: cloudyn/connect-aws-account.md
-        - name: ストレージ アカウントの構成
-          href: cloudyn/storage-accounts.md
-        - name: Cloudyn レポートの使用
-          href: cloudyn/use-reports.md
-        - name: ダッシュボードの使用
-          href: cloudyn/dashboards.md
-        - name: 予算の管理
-          href: cloudyn/manage-budgets.md
     - name: リソース
       items:
-        - name: Cloudyn の動画
-          href: cloudyn/ref-videos.md
         - name: Azure のロードマップ
           href: 'https://azure.microsoft.com/roadmap/'
         - name: Cloudyn の価格
           href: 'https://azure.microsoft.com/pricing/details/cost-management'
         - name: Cloudyn のリージョン別の提供状況
           href: 'https://azure.microsoft.com/regions/services/'
-        - name: Cloudyn に関する FAQ
-          href: cloudyn/cost-mgt-faq.md
         - name: Cloudyn のサポートに問い合わせる
           href: ./costs/open-support-request.md

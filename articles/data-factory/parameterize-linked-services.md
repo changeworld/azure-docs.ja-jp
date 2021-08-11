@@ -3,15 +3,15 @@ title: Azure Data Factory のリンクされたサービスのパラメーター
 description: Azure Data Factory のリンクされたサービスをパラメーター化し、実行時に動的な値を渡す方法について説明します。
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 06/01/2021
 author: chez-charlie
 ms.author: chez
-ms.openlocfilehash: 48e8c9ff5111b6b67e835676e3bc56e4536248a0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 277f3d9e9d82edf9e93d41808a351528a94f85d7
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091474"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793697"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 
@@ -22,7 +22,7 @@ ms.locfileid: "110091474"
 リンクされたサービスをパラメーター化するには、Azure portal の Data Factory UI か、プログラミング インターフェイスを使用できます。
 
 > [!TIP]
-> パスワードやシークレットはパラメーター化しないようにすることをお勧めします。 接続文字列はすべて Azure Key Vault 内に格納し、*シークレット名* をパラメーター化するようにしてください。
+> パスワードやシークレットはパラメーター化しないようにすることをお勧めします。 シークレットはすべて Azure Key Vault 内に格納し、*シークレット名* をパラメーター化するようにしてください。
 
 > [!Note]
 > パラメーター名に "-" を使用する未解決のバグがあります。バグが解決されるまでは、"-" を含まない名前を使用することをお勧めします。
@@ -33,8 +33,9 @@ ms.locfileid: "110091474"
 
 ## <a name="supported-linked-service-types"></a>サポートされるリンクされたサービスの種類
 
-任意の種類のリンクされたサービスをパラメーター化できます。
-リンクされたサービスを UI で作成する場合、Data Factory は、次の種類のリンクされたサービスに対して組み込みのパラメーター化エクスペリエンスを提供します。 リンクされたサービスの作成/編集ブレードで、新しいパラメーターのオプションを検索し、動的なコンテンツを追加できます。
+すべてのリンクされたサービスの種類は、パラメーター化でサポートされています。
+
+**ADF UI 上でネイティブにサポートされる:** リンクされたサービスを UI で作成する場合、Data Factory は、次の種類のリンクされたサービスに対して組み込みのパラメーター化エクスペリエンスを提供します。 リンクされたサービスの作成/編集ブレードで、新しいパラメーターのオプションを検索し、動的なコンテンツを追加できます。 [Data Factory の UI エクスペリエンス](#data-factory-ui)を参照してください。
 
 - Amazon Redshift
 - Amazon S3
@@ -56,7 +57,7 @@ ms.locfileid: "110091474"
 - Oracle Cloud Storage
 - SQL Server
 
-上記の一覧にないその他のリンクされたサービスの種類では、UI で JSON を編集して、リンクされたサービスをパラメーター化できます。
+**詳細作成:** 上記の一覧にないその他のリンクされたサービスの種類では、UI で JSON を編集して、リンクされたサービスをパラメーター化できます。
 
 - リンクされたサービスの作成/編集ブレードで > 下部にある "詳細" を展開し > "JSON 形式で動的な内容を指定する" ためのチェックボックスをオンにして > リンクされたサービスの JSON ペイロードを指定します。 
 - または、パラメーター化せずにリンクされたサービスを作成した後で、[管理ハブ](author-visually.md#management-hub) > リンクされたサービス > 特定のリンクされたサービスを検索 > "コード" (ボタン {}) をクリックして JSON を編集します。 

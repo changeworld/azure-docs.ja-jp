@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 153e3dd64546dfa713abefcff106652fc061a6a2
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 4eba226fbbe3ef6d9791f2f098a24fdf217debaa
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165823"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575376"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>シナリオ:カスタム設定を使用して NVA 経由でトラフィックをルーティングする
 
-Azure Virtual WAN 仮想ハブのルーティングを使用している場合は、いくつかのオプションを使用できます。 この記事では、仮想ネットワークとブランチの間の通信に対してネットワーク仮想アプライアンス (NVA) 経由でトラフィックをルーティングし、インターネットへのトラフィックに対して別の NVA を使用することに焦点を当てます。 詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+Azure Virtual WAN 仮想ハブのルーティングを使用している場合は、複数のオプションを使用できます。 この記事では、仮想ネットワークとブランチの間の通信に対してネットワーク仮想アプライアンス (NVA) 経由でトラフィックをルーティングし、インターネットへのトラフィックに対して別の NVA を使用することに焦点を当てます。 詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
 ## <a name="design"></a>デザイン
 

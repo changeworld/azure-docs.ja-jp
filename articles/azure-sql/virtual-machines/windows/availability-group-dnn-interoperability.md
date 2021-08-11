@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/08/2020
 ms.author: mathoma
-ms.openlocfilehash: 19b4b7407468b19419e2f85193b1f8fb6ace39c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7ff8eaaca03a2c977311c6469e06714c87ce53f
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359406"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572353"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>AG と DNN リスナーとの機能の相互運用性 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,6 +27,13 @@ ms.locfileid: "97359406"
 
 この記事では、SQL Server 機能と可用性グループ DNN リスナーとの相互運用性について詳しく説明します。 
 
+## <a name="behavior-differences"></a>動作の違い
+
+VNN リスナーと DNN リスナーの機能には、注意が必要な動作の違いがいつくかあります。 
+
+- **フェールオーバー時間**: DNN リスナーを使用すると、ネットワーク ロード バランサーによって障害イベントが検出され、ルーティングが変更されるまで待つ必要がないため、フェールオーバー時間が短縮されます。 
+- **既存の接続**: フェールオーバー可用性グループ内の *特定のデータベース* に対する接続は閉じられますが、フェールオーバー処理中も DNN によってオンライン状態が維持されるため、プライマリ レプリカへの他の接続は開いたままになります。 これは、可用性グループがフェールオーバーすると通常はプライマリ レプリカへのすべての接続が閉じられ、リスナーはオフラインになり、プライマリ レプリカはセカンダリの役割に移行するという従来の VNN 環境とは異なります。 DNN リスナーを使用する場合は、フェールオーバー時に接続が新しいプライマリ レプリカにリダイレクトされるように、必要に応じてアプリケーションの接続文字列を調整します。
+- **開いているトランザクション**: フェールオーバー可用性グループ内のデータベースに対して開かれているトランザクションは、閉じられ、ロールバックされるので、*手動* で再接続する必要があります。 たとえば、SQL Server Management Studio で、クエリ ウィンドウを閉じて、新しいウィンドウを開きます。 
 
 ## <a name="client-drivers"></a>クライアント ドライバー
 
@@ -125,8 +132,10 @@ AG DNN リスナーの名前とポートを使用して、リンク サーバー
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次を参照してください。 
+詳細については、以下をご覧ください。
 
-- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
 

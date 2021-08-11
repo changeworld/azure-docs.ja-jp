@@ -1,5 +1,5 @@
 ---
-title: Azure portal を使用して Azure Stack Edge の順序の問題をトラブルシューティングする | Microsoft Docs
+title: Azure portal を使用した Azure Stack Edge の順序付けに関する問題のトラブルシューティング
 description: Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 0b0c39ba59fe851d04ba4ec538f14051e23b056d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 99d68cc9a801a73680f32c6f4baa46cebff3b4eb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110058584"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460414"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Azure Stack Edge の順序の問題をトラブルシューティングする
 

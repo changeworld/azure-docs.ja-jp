@@ -6,19 +6,19 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 633d62fc69c516b482d5749a07052337dc71f567
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aa058f0de74941a8ac9fe711c7b6de59240680bb
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789485"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536675"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 
 [Azure App Service](overview.md) により、最新の更新プログラムをプルすることで、[GitHub](https://help.github.com/articles/create-a-repo)、[BitBucket](https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html)、[Azure Repos](/azure/devops/repos/git/creatingrepo) のリポジトリからの継続的なデプロイが可能になります。
 
 > [!NOTE]
-> Azure portal の **[開発センター (クラシック)]** ページ (以前のデプロイ エクスペリエンス) は、2021 年 3 月に非推奨となる予定です。 この変更はアプリの既存のデプロイ設定には影響せず、 **[デプロイ センター]** ページで引き続きアプリのデプロイを管理できます。
+> Azure portal の **[開発センター (クラシック)]** ページ (デプロイ エクスペリエンスの以前のバージョン) は、2021 年 3 月に非推奨となりました。 この変更はアプリの既存のデプロイ設定には影響せず、ポータルの **[デプロイ センター]** ページで引き続きアプリのデプロイを管理できます。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "107789485"
 
 1. 初めて GitHub からデプロイする場合は、 **[承認]** をクリックし、承認のプロンプトに従います。 別のユーザーのリポジトリからデプロイする場合は、 **[アカウントの変更]** をクリックします。
 
-1. GitHub で Azure アカウントを承認したら、 **[組織]** 、 **[リポジトリ]** 、 **[ブランチ]** の順に選択して CI/CD を構成します。
+1. GitHub で Azure アカウントを承認したら、 **[組織]** 、 **[リポジトリ]** 、 **[ブランチ]** の順に選択して CI/CD を構成します。 組織またはリポジトリが見つからない場合は、GitHub で追加のアクセス許可を有効にする必要があります。 詳細については、「[組織のリポジトリへのアクセス管理](https://docs.github.com/organizations/managing-access-to-your-organizations-repositories)」を参照してください
 
 1. GitHub Actions が選択したビルド プロバイダーの場合は、 **[ランタイム スタック]** および **[バージョン]** ドロップダウンで目的のワークフロー ファイルを選択できます。 Azure では、選択された GitHub リポジトリにこのワークフロー ファイルをコミットして、ビルドとデプロイのタスクを処理します。 変更を保存する前にこのファイルを確認するには、 **[ファイルのプレビュー]** をクリックします。
 

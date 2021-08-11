@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/06/2021
+ms.date: 05/16/2021
 ms.author: duau
-ms.openlocfilehash: 0a7e81c57552fdc24262522343a08fdabba71bfd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 9910cadfcbb40bbb411c8d07bc73ad2205c085e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552582"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070518"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの負荷分散
 
@@ -74,7 +74,7 @@ Load Balancer は、Azure SDN スタックの重要な構成要素であり、�
 ## <a name="building-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの構築 
 すべての Web サイト、API、サービスに地理的な冗長性を持たせることで、そのユーザーへのトラフィックを、できる限り最も近い場所から配信することをお勧めします。  複数の負荷分散サービスを組み合わせることで、地理的およびゾーンの冗長性を構築し、信頼性とパフォーマンスを最大限に高めることができます。
 
-次の図では、これらすべてのサービスの組み合わせを使用してグローバル Web サービスを構築するアーキテクチャの例について説明します。 設計者は Traffic Manager を使用して、ファイルとオブジェクトの配信のためにトラフィックをグローバル バックエンドにルーティングしていました。 Front Door を使用して、パターン /store/* に一致する URL パスを、App Service に移行したサービスにグローバルにルーティングします。 最後に、他のすべての要求をリージョンの Application Gateway にルーティングします。
+次の図では、これらすべてのサービスの組み合わせを使用してグローバル Web サービスを構築するアーキテクチャの例について説明します。 このアーキテクチャは Traffic Manager を使用して、ファイルやオブジェクトを配信するためにグローバル バックエンドにトラフィックをルーティングします。さらに、Front Door を使用して、App Service に移行されたサービスに対して /store/* のパターンと一致する URL パスをグローバルにルーティングし、その他のすべての要求をリージョンの Application Gateway にルーティングします。
 
 IaaS サービスの各リージョンで、アプリケーション開発者は、/images/* のパターンに一致する URL に VM の専用プールからサービスが提供されることを決定ます。 この VM のプールは、Web ファームの他の部分とは異なります。
 

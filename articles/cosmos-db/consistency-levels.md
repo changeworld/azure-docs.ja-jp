@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 0a203531e026d00b274ac98784076d33b22666d8
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 31c5be9ce48ffea8ebd23e893e2d77e6365d2327
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800144"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467668"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の整合性レベル
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

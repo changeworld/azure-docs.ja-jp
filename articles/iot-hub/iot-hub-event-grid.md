@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4c23859a44f45fc294631dd33da0ab9cad1dd61
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152136"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191239"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -194,11 +194,11 @@ Event Grid 経由でテレメトリ イベントをサブスクライブする�
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
-デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して "D2C テレメトリ送信" または "C2D メッセージ受信" 操作を実行する必要があります。 しかし、AMQP プロトコルを使用して IoT Hub に接続するデバイスについては、"C2D メッセージ受信" 操作を実行することが推奨されます。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP では、Receive Async API (IoT Hub C# SDK) または[デバイス クライアント (AMQP)](iot-hub-amqp-support.md#device-client) を呼び出すことによって、C2D リンクを開くことができます。
+デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して、*device-to-cloud send telemetry* または *cloud-to-device receive message* 操作を呼び出す必要があります。 ただし、デバイスで AMQP プロトコルを使用して IoT Hub に接続する場合は、デバイスで *cloud-to-device receive message* 操作を呼び出すことをお勧めします。そうしないと、接続状態通知が数分遅延する可能性があります。 デバイスで MQTT プロトコルを使用して接続する場合、IoT Hub によって cloud-to-device リンクは開かれたままになります。 AMQP の cloud-to-device リンクを開くには、[Receive Async API](/rest/api/iothub/device/receivedeviceboundnotification) を呼び出します。
 
-テレメトリを送信する場合は、D2C リンクが開いています。 
+device-to-cloud リンクは、デバイスがテレメトリを送信する限り、開いたままになります。
 
-デバイスの接続状態が頻繁に変化する場合、つまりデバイスが頻繁に接続されたり切断されたりする場合は、1 つ 1 つの接続状態が送信されるのではなく、接続状態が変化し続ける間、定期的なスナップショットで取得される最新の接続状態が公開されます。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
+デバイス接続が不安定である (デバイスの接続と切断が頻繁に発生する) 場合、IoT Hub による各接続状態の送信は行われませんが、不安定な状態が終了するまで、60 秒間の定期的なスナップショットで取得された現在の接続状態が発行されます。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
 
 ## <a name="tips-for-consuming-events"></a>イベントの使用に関するヒント
 

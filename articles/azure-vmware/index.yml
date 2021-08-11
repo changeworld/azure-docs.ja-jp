@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 05/11/2021
-  ms.openlocfilehash: 28f73f52b98edba523fd36203d6fef863c4e9d1a
-  ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+  ms.date: 07/02/2021
+  ms.openlocfilehash: 6e221829fae0423ccf9f13970cc6b71136bb10c2
+  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112021485"
+  ms.lasthandoff: 07/06/2021
+  ms.locfileid: "113301890"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -47,23 +47,23 @@ landingContent:
     - text: 全般
       url: ./faq.yml
     - text: 顧客とのコミュニケーション
-      url: /azure/azure-vmware/faq.yml#customer-communication
+      url: /azure/azure-vmware/faq#customer-communication
     - text: 構成とセットアップ
-      url: /azure/azure-vmware/faq.yml#configuration-and-setup
+      url: /azure/azure-vmware/faq#configuration-and-setup
     - text: VMware ソフトウェア
-      url: /azure/azure-vmware/faq.yml#vmware-software
+      url: /azure/azure-vmware/faq#vmware-software
     - text: Compute
-      url: /azure/azure-vmware/faq.yml#compute
+      url: /azure/azure-vmware/faq#compute
     - text: ネットワークと相互接続
-      url: /azure/azure-vmware/faq.yml#networking-and-interconnectivity
+      url: /azure/azure-vmware/faq#networking-and-interconnectivity
     - text: ストレージ
-      url: /azure/azure-vmware/faq.yml#storage
+      url: /azure/azure-vmware/faq#storage
     - text: ホスト、クラスター、およびプライベート クラウド
-      url: /azure/azure-vmware/faq.yml#hosts,-clusters,-and-private-clouds
+      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
     - text: ID 管理
-      url: /azure/azure-vmware/faq.yml#identity-management
+      url: /azure/azure-vmware/faq#identity-management
     - text: 課金とサポート
-      url: /azure/azure-vmware/faq.yml#billing-and-support
+      url: /azure/azure-vmware/faq#billing-and-support
 - title: はじめに
   linkLists:
   - linkListType: deploy
@@ -128,6 +128,8 @@ landingContent:
       url: configure-site-to-site-vpn-gateway.md
     - text: Windows Server フェールオーバー クラスターの構成
       url: configure-windows-server-failover-cluster.md
+    - text: 同じリージョン内の複数のプライベート クラウドを接続する
+      url: connect-multiple-private-clouds-same-region.md
 - title: Azure のネイティブ統合
   linkLists:
   - linkListType: how-to-guide
@@ -144,16 +146,14 @@ landingContent:
       url: deploy-traffic-manager-balance-workloads.md
     - text: アラートを構成してメトリックを使用する
       url: configure-alerts-for-azure-vmware-solution.md
-- title: Azure Backup Server を使用したバックアップと復元
+- title: Azure Backup Server を使用してバックアップする
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: VMware VM のバックアップ
-      url: ../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
-    - text: VMware VM の復元
-      url: ../backup/restore-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
-    - text: Azure Backup ワークロードの監視
-      url: ../backup/backup-azure-monitoring-built-in-monitor.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+    - text: Backup Server の設定
+      url: set-up-backup-server-for-azure-vmware-solution.md
+    - text: Backup Server を使用したプライベート クラウドのバックアップ
+      url: backup-azure-vmware-solution-virtual-machines.md
 - title: VMware ソリューション
   linkLists:
   - linkListType: how-to-guide
@@ -166,6 +166,8 @@ landingContent:
       url: deploy-vm-content-library.md
     - text: VMware HCX を使用してディザスター リカバリーをデプロイする
       url: deploy-disaster-recovery-using-vmware-hcx.md
+    - text: VMware HCX アプライアンスをアップグレードする
+      url: https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html
 - title: VMware のエコシステム
   linkLists:
   - linkListType: reference

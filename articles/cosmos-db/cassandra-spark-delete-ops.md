@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 74581e1f9ff817809325c0a3c95fba1866697480
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 933187662a73e5b9bc2aff255b092d4fc6c2f22d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93092111"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464913"
 ---
 # <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark から Azure Cosmos DB Cassandra API テーブルのデータを削除する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,8 +28,8 @@ import org.apache.spark.sql.cassandra._
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
 
-//CosmosDB library for multiple retry
-import com.microsoft.azure.cosmosdb.cassandra
+//if using Spark 2.x, CosmosDB library for multiple retry
+//import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
 spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
@@ -37,15 +37,21 @@ spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
 spark.conf.set("spark.cassandra.auth.password","YOUR_ACCOUNT_KEY")
-spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+// if using Spark 2.x
+// spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+
 //Throughput-related...adjust as needed
 spark.conf.set("spark.cassandra.output.batch.size.rows", "1")
-spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10")
+//spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10") // Spark 2.x
+spark.conf.set("spark.cassandra.connection.remoteConnectionsPerExecutor", "10") // Spark 3.x
 spark.conf.set("spark.cassandra.output.concurrent.writes", "1000")
 spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
+
+> [!NOTE]
+> Spark 3.0 以降を使用している場合は、Cosmos DB ヘルパーと接続ファクトリをインストールする必要はありません。 また、Spark 3 コネクタの場合は、`connections_per_executor_max` ではなく `remoteConnectionsPerExecutor` を使用する必要があります (上記を参照)。 接続関連のプロパティが、上のノートブック内で定義されていることがわかります。 次の構文を使用すると、クラスター レベル (Spark コンテキストの初期化) で定義しなくても、この方法で接続プロパティを定義できます。 ただし、spark コンテキストを必要とする操作 (次に示す `delete` の `CassandraConnector(sc)` など) を使用する場合は、接続プロパティをクラスター レベルで定義する必要があります。
 
 ## <a name="sample-data-generator"></a>サンプル データ ジェネレーター
 ここでは、次のコード フラグメントを使用してサンプル データを生成します。
@@ -79,7 +85,7 @@ val deleteBooksDF = spark
   .format("org.apache.spark.sql.cassandra")
   .options(Map( "table" -> "books", "keyspace" -> "books_ks"))
   .load
-  .filter("book_pub_year = 1887")
+  .filter("book_id = 'b01001'")
 
 //2) Review execution plan
 deleteBooksDF.explain
@@ -96,7 +102,7 @@ println("2a) Starting delete")
 
 //Reuse connection for each partition
 val cdbConnector = CassandraConnector(sc)
-deleteBooksDF.foreachPartition(partition => {
+deleteBooksDF.foreachPartition((partition: Iterator[Row]) => {
   cdbConnector.withSessionDo(session =>
     partition.foreach{ book => 
         val delete = s"DELETE FROM books_ks.books where book_id='"+book.getString(0) +"';"
@@ -109,6 +115,7 @@ println("==================")
 
 //5) Review table data after delete operation
 println("3) After")
+
 spark
   .read
   .format("org.apache.spark.sql.cassandra")
@@ -173,13 +180,13 @@ println("1) Before")
 deleteBooksDF.show
 println("==================")
 
-//4) Delete records in dataframe
+//4) Delete selected records in dataframe
 println("==================")
 println("2a) Starting delete")
 
 //Reuse connection for each partition
 val cdbConnector = CassandraConnector(sc)
-deleteBooksDF.foreachPartition(partition => {
+deleteBooksDF.foreachPartition((partition: Iterator[Row]) => {
   cdbConnector.withSessionDo(session =>
     partition.foreach{ book => 
         val delete = s"DELETE FROM books_ks.books where book_id='"+book.getString(0) +"';"
@@ -192,6 +199,7 @@ println("==================")
 
 //5) Review table data after delete operation
 println("3) After")
+
 spark
   .read
   .format("org.apache.spark.sql.cassandra")

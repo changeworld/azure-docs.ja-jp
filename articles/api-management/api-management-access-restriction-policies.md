@@ -4,17 +4,16 @@ description: Azure API Management で使用できるアクセス制限ポリシ�
 services: api-management
 documentationcenter: ''
 author: vladvino
-ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 02/26/2021
+ms.date: 06/02/2021
 ms.author: apimpm
-ms.openlocfilehash: 65916782d12a293226a164869264953572d2b04a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 55e87d6f0e2708e94beb1e2f9391bfa7aff44ceb
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760195"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111814082"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -29,6 +28,7 @@ ms.locfileid: "108760195"
 -   [使用量のクォータをサブスクリプション別に設定する](#SetUsageQuota) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用できます。
 -   [使用量のクォータをキー別に設定する](#SetUsageQuotaByKey) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用できます。
 -   [JWT を検証する](#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。
+-  [クライアント証明書の検証](#validate-client-certificate) -クライアントから API Management インスタンスに提示された証明書が、指定された検証規則と要求に一致することを強制します。
 
 > [!TIP]
 > さまざまな目的に応じて異なるスコープでアクセス制限ポリシーを使用できます。 たとえば、API 全体を AAD 認証を使用して保護するには、`validate-jwt` ポリシーを API レベルに適用します。または、これを API 操作レベルに適用して、`claims` を使用してきめ細かい制御を行うこともできます。
@@ -141,7 +141,7 @@ ms.locfileid: "108760195"
 | renewal-period | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                              | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
 | retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
-| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | N/A  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
 | total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
@@ -217,7 +217,7 @@ ms.locfileid: "108760195"
 | renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                           | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
 | retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
-| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | N/A  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
 | total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
@@ -576,6 +576,95 @@ ms.locfileid: "108760195"
 | separator                       | 文字列。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。                                                                                                                                                                                                                                                                                                                                          | いいえ                                                                               | 該当なし                                                                               |
 | url                             | Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 応答は、URL で定義されている仕様に従っている必要があります:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。 | はい                                                                              | 該当なし                                                                               |
 | output-token-variable-name      | 文字列 をオンにします。 成功したトークンの検証において、[`Jwt`](api-management-policy-expressions.md) 型のオブジェクトとしてトークン値を受け取るコンテキスト変数の名前                                                                                                                                                                                                                                                                                     | いいえ                                                                               | 該当なし                                                                               |
+
+### <a name="usage"></a>使用法
+
+このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
+
+-   **ポリシー セクション:** inbound
+-   **ポリシー スコープ:** すべてのスコープ
+
+
+## <a name="validate-client-certificate"></a>クライアント証明書を検証する
+
+`validate-client-certificate` ポリシーを使用して、クライアントから API Management インスタンスに提示された証明書が、1つまたは複数の証明書 ID のサブジェクトや発行者などの指定した検証規則と要求に一致することを強制します。
+
+クライアント証明書は、有効と見なされるために、最上位要素の属性で定義されているすべての検証規則と一致し、定義済みの ID の少なくとも 1 つに対して定義されているすべての要求と一致している必要があります。 
+
+このポリシーを使用して、受信証明書のプロパティと必要なプロパティを確認します。 また、このポリシーを使用して、次のような場合にクライアント証明書の既定の検証を上書きします。
+
+* マネージド ゲートウェイへのクライアント要求を検証するためにカスタム CA 証明書をアップロードした場合
+* セルフマネージド ゲートウェイへのクライアント要求を検証するようにカスタム証明機関を構成した場合
+
+カスタム CA 証明書と証明機関の詳細については、[「Azure API Management でカスタム CA 証明書を追加する方法」](api-management-howto-ca-certificates.md)を参照してください。 
+
+### <a name="policy-statement"></a>ポリシー ステートメント
+
+```xml
+<validate-client-certificate> 
+    validate-revocation="true|false" 
+    validate-trust="true|false" 
+    validate-not-before="true|false" 
+    validate-not-after="true|false" 
+    ignore-error="true|false"> 
+    <identities> 
+        <identity  
+            thumbprint="certificate thumbprint"  
+            serial-number="certificate serial number" 
+            common-name="certificate common name"  
+            subject="certificate subject string"  
+            dns-name="certificate DNS name" 
+            issuer="certificate issuer" 
+            issuer-thumbprint="certificate issuer thumbprint"  
+            issuer-certificate-id="certificate identifier" /> 
+    </identities> 
+</validate-client-certificate> 
+```
+
+### <a name="example"></a>例
+
+次の例では、ポリシーの既定の検証規則に一致するようにクライアント証明書を検証し、サブジェクトと発行者が指定された値に一致するかどうかを確認します。
+
+```xml
+<validate-client-certificate> 
+    validate-revocation="true" 
+    validate-trust="true" 
+    validate-not-before="true" 
+    validate-not-after="true" 
+    ignore-error="false"
+    <identities> 
+        <identity 
+            subject="C=US, ST=Illinois, L=Chicago, O=Contoso Corp., CN=*.contoso.com"
+            issuer="C=BE, O=FabrikamSign nv-sa, OU=Root CA, CN=FabrikamSign Root CA" />
+    </identities> 
+</validate-client-certificate> 
+```
+
+### <a name="elements"></a>要素
+
+| 要素             | 説明                                  | 必須 |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| validate-client-certificate        | ルート要素。      | はい      |
+|   ID      |  クライアント証明書に対して定義されたクレームのある ID の一覧が含まれます。       |    いいえ        |
+
+### <a name="attributes"></a>属性
+
+| 名前                            | 説明      | 必須 |  Default    |
+| ------------------------------- |   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| validate-revocation  | ブール型。 オンライン失効リストに対して証明書を検証するかどうかを指定します。  | Ｘ   | True  |
+| validate-trust | ブール型。 信頼された証明機関にチェーンを正常に構築できない場合に検証が失敗するかどうかを指定します。 | Ｘ | True |
+| validate-not-before | ブール型。 現在の時刻に対して値を検証します。 | Ｘ | True | 
+| validate-not-after  | ブール型。 現在の時刻に対して値を検証します。 | Ｘ | True| 
+| ignore-error  | Boolean です。 ポリシーを次のハンドラーに進めるか、検証に失敗した場合に ON-ERROR にジャンプするかを指定します。 | 番号 | False |  
+| ID | 文字列 をオンにします。 証明書を有効にする証明書要求値の組み合わせ。 | はい | N/A | 
+| thumbprint | 証明書のサムプリント。 | Ｘ | N/A |
+| serial-number | 証明書のシリアル番号。 | Ｘ | N/A |
+| common-name | 証明書の共通名 (サブジェクト文字列の一部)。 | Ｘ | N/A |
+| subject | サブジェクト文字列。 識別名の形式に従う必要があります。 | Ｘ | N/A |
+| dns-name | サブジェクトの代替名要求内の dnsName エントリの値。 | Ｘ | N/A | 
+| 発行者 | 発行者のサブジェクト。 識別名の形式に従う必要があります。 | Ｘ | N/A | 
+| issuer-thumbprint | 発行者の拇印。 | Ｘ | N/A | 
+| issuer-certificate-id | 発行者の公開キーを表す既存の証明書エンティティの識別子。 | Ｘ | 該当なし | 
 
 ### <a name="usage"></a>使用法
 

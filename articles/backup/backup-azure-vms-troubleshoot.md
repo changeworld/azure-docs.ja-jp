@@ -3,13 +3,13 @@ title: Azure VM のバックアップ エラーのトラブルシューティン
 description: この記事では、Azure 仮想マシンのバックアップと復元で発生したエラーをトラブルシューティングする方法について説明します。
 ms.reviewer: srinathv
 ms.topic: troubleshooting
-ms.date: 08/30/2019
-ms.openlocfilehash: 83e6af5737d332bdafbae793286d5ebc0bc09bb8
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 06/02/2021
+ms.openlocfilehash: b604b98410d61d61bdb8a24e81872cb2c1caf1b4
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164887"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410308"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -33,6 +33,8 @@ ms.locfileid: "108164887"
   * Azure Backup が機能している場合は、別のバックアップ ソリューションの問題である可能性があります。
   * Azure Backup は正常に動作したが、"Windows Server バックアップ" が失敗したイベント ビューアー エラー 517 の例を次に示します。![Windows Server バックアップの失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Azure Backup が失敗した場合は、この記事の「一般的な VM バックアップのエラー」セクションの対応するエラー コードを確認してください。
+  * Azure VM で [Azure Backup] オプションがグレー表示されている場合は、無効になっているメニューにマウス ポインターを合わせると、その理由が確認されます。 その理由は、"エフェメラルディスクでは使用できません" または "Ultra Disk では使用できません" です。
+   ![Azure Backup オプションを無効にする理由](media/backup-azure-vms-troubleshoot/azure-backup-disable-reasons.png)
 
 ## <a name="common-issues"></a>一般的な問題
 

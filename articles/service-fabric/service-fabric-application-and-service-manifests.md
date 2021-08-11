@@ -3,12 +3,12 @@ title: Azure Service Fabric のアプリとサービスの記述
 description: マニフェストを使って Service Fabric のアプリケーションとサービスを記述する方法について説明します。
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a04f94dfcd1ee4592e281ebd75efb0a8d0133a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86248222"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476546"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェスト
 この記事では、ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルを使って、Service Fabric のアプリケーションとサービスの定義およびバージョン管理を行う方法について説明します。  詳細な例については、[アプリケーションとサービスのマニフェストの例](service-fabric-manifest-examples.md)を参照してください。  これらのマニフェスト ファイルの XML スキーマについては、「[ServiceFabricServiceModel.xsd スキーマ ドキュメント](service-fabric-service-model-schema.md)」をご覧ください。
@@ -182,6 +182,7 @@ For more information about other features supported by application manifests, re
 
 ## <a name="next-steps"></a>次のステップ
 - [アプリケーションをパッケージ化](service-fabric-package-apps.md)してデプロイできるようにします。
+- [アプリケーションで StartupServices.xml を使用します](service-fabric-startupservices-model.md)。
 - [アプリケーションをデプロイおよび削除](service-fabric-deploy-remove-applications.md)します。
 - [異なるアプリケーション インスタンスのパラメーターおよび環境変数を構成](service-fabric-manage-multiple-environment-app-configuration.md)します。
 - [アプリケーションのセキュリティ ポリシーを構成](service-fabric-application-runas-security.md)します。

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 8315c2fa094f1d12a788d42a336cb01feb58c6c9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967967"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110450278"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -223,19 +223,19 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    ```powershell
    Enable-PSRemoting -Force
-   Set-NetFirewallRule -DisplayName 'Windows Remote Management (HTTP-In)' -Enabled True
+   Set-NetFirewallRule -Name WINRM-HTTP-In-TCP, WINRM-HTTP-In-TCP-PUBLIC -Enabled True
    ```
 
 1. RDP トラフィックを許可するために以下のファイアウォール規則を有効にします。
 
    ```powershell
-   Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+   Set-NetFirewallRule -Group '@FirewallAPI.dll,-28752' -Enabled True
    ```
 
 1. VM が仮想ネットワーク内部の ping 要求に応答できるように、"ファイルとプリンターの共有" 規則を有効にします。
 
    ```powershell
-   Set-NetFirewallRule -DisplayName 'File and Printer Sharing (Echo Request - ICMPv4-In)' -Enabled True
+   Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True
    ```
 
 1. Azure プラットフォーム ネットワークのルールを作成します。
@@ -314,10 +314,23 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 
    リポジトリが破損している場合は、「[WMI:リポジトリが破損しているかどうか](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484)」を参照してください。
 
-1. 他にポート 3389 を使用しているアプリケーションがないことを確認します。 このポートは、Azure の RDP サービスに使用します。 VM で使用されているポートを確認するには、`netstat.exe -anob` を実行します。
+1. TermService 以外のアプリケーションがポート 3389 を使用していないことを確認してください。 このポートは、Azure の RDP サービスに使用します。 VM で使用されているポートを確認するには、`netstat.exe -anob` を実行します。
 
    ```powershell
    netstat.exe -anob
+   ```
+   
+   以下に例を示します。
+
+   ```powershell
+   netstat.exe -anob | findstr 3389
+   TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       4056
+   TCP    [::]:3389              [::]:0                 LISTENING       4056
+   UDP    0.0.0.0:3389           *:*                                    4056
+   UDP    [::]:3389              *:*                                    4056
+
+   tasklist /svc | findstr 4056
+   svchost.exe                   4056 TermService
    ```
 
 1. ドメイン コントローラーである Windows VHD をアップロードするには、次のようにします。
@@ -399,7 +412,7 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726          | 10.0.14393.594 - KB4022715                  | -                          | -                                           | -                                           |
 |                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
 |                         | rdpwd.sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
-| Security                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                           | KB4012606                                   | KB4012606                  | -                                           | -                                           |
+| セキュリティ                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                           | KB4012606                                   | KB4012606                  | -                                           | -                                           |
 |                         |                |                                           | KB4012216                                   |                                     | KB4013198                                   | KB4013198                  | -                                           | -                                           |
 |                         |                | KB4012215                                 | KB4012214                                   | KB4012216                           | KB4013429                                   | KB4013429                  | -                                           | -                                           |
 |                         |                |                                           | KB4012217                                   |                                     | KB4013429                                   | KB4013429                  | -                                           | -                                           |
@@ -462,6 +475,14 @@ Windows ベースのコンピューターにインストールされているロ
 1. Azure の要件を満たすように仮想ディスクのサイズを変更します。
 
    1. Azure のディスクの仮想サイズは、1 MiB にアラインする必要があります。 VHD に 1 MiB の端数がある場合は、1 MiB の倍数になるようにディスクのサイズを変更する必要があります。 MiB の端数があるディスクでは、アップロードした VHD からイメージを作成する際にエラーが発生します。 サイズを確認するには、PowerShell の [Get-VHD](/powershell/module/hyper-v/get-vhd) コマンドレットを使用し、"Size" (Azure で 1 MiB の倍数である必要があります) と "FileSize" ("Size" に VHD フッターの 512 バイトを足した値に等しくなります) を表示します。
+   
+      ```powershell
+      $vhd = Get-VHD -Path C:\test\MyNewVM.vhd
+      $vhd.Size % 1MB
+      0
+      $vhd.FileSize - $vhd.Size
+      512
+      ```
    
    1. 第 1 世代 VM で OS VHD に許容される最大サイズは 2,048 GiB (2 TiB) です。 
    1. データ ディスクの最大サイズは 32,767 GiB (32 TiB) です。

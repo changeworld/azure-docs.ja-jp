@@ -4,12 +4,12 @@ description: ランタイム、SDK、およびツールをインストールし�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6fe551f8371322af8d955b5233e6d9d05741f3d9
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 71fd869ad68164faf883fe148a47c2da4fd133b0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868125"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088431"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -20,15 +20,15 @@ ms.locfileid: "107868125"
 Linux クラスターで実行される Azure Service Fabric アプリケーションを Mac OS X を使用して構築できます。このドキュメントでは、開発用に Mac をセットアップする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-Azure Service Fabric は、Mac OS X ではネイティブに実行されません。ローカルの Service Fabric クラスターを実行できるように、事前に構成済みの Docker コンテナー イメージが用意されています。 作業を開始する前に、以下を行う必要があります。
+Azure Service Fabric は、Mac OS X ではネイティブに実行されません。ローカルの Service Fabric クラスターを実行できるように、事前に構成済みの Docker コンテナー イメージが用意されています。 以降の手順を開始する前に次の要件を満たしておく必要があります。
 
-* 少なくとも 4 GB の RAM。
-* 最新バージョンの [Docker](https://www.docker.com/)。
+* [Mac に Docker Desktop](https://docs.docker.com/docker-for-mac/install/) をインストールする場合のシステム要件
+
+* [Mac に Docker Desktop をインストールして実行する](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-desktop-on-mac)
 
 >[!TIP]
 >
->Mac に Docker をインストールには、[Docker のドキュメント](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install)の手順に従ってください。 インストールの完了後、[インストールを確認](https://docs.docker.com/docker-for-mac/#check-versions-of-docker-engine-compose-and-machine)します。
->
+>Mac に Docker をインストールには、[Docker のドキュメント](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install)の手順に従ってください。 インストール後、Docker Desktop を使用して、[リソースの制限](https://docs.docker.com/docker-for-mac)や[ディスク使用率](https://docs.docker.com/docker-for-mac/space/)などの環境設定を設定できます。
 
 ## <a name="create-a-local-container-and-set-up-service-fabric"></a>ローカル コンテナーを作成し、Service Fabric をセットアップする
 ローカル Docker コンテナーをセットアップし、そこで Service Fabric クラスターを実行するには、次の手順を実行します。

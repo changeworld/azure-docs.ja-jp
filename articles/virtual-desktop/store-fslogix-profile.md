@@ -1,25 +1,25 @@
 ---
-title: Storage FSLogix プロファイル コンテナー Windows Virtual Desktop - Azure
-description: Azure Storage で Windows Virtual Desktop FSLogix プロファイルを保存するためのオプション
+title: Storage FSLogix プロファイル コンテナー Azure Virtual Desktop - Azure
+description: Azure Storage で Azure Virtual Desktop FSLogix プロファイルを保存するためのオプション。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 34be20a1b8768414efa0ea32382dea6eab66035a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ba1ae8c108f02dbd104361e1efe39f5583011124
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073199"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755701"
 ---
-# <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
+# <a name="storage-options-for-fslogix-profile-containers-in-azure-virtual-desktop"></a>Azure Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 
-Azure には、FSLogix プロファイル コンテナーの格納に利用できるさまざまなストレージ ソリューションが用意されています。 この記事では、Windows Virtual Desktop FSLogix ユーザー プロファイル コンテナーのために Azure で用意されているストレージ ソリューションを比較します。 ほとんどのお客様には、Azure Files に FSLogix プロファイル コンテナーを保存することをお勧めします。
+Azure には、FSLogix プロファイル コンテナーの格納に利用できるさまざまなストレージ ソリューションが用意されています。 この記事では、Azure Virtual Desktop FSLogix ユーザー プロファイル コンテナーのために Azure で用意されているストレージ ソリューションを比較します。 ほとんどのお客様には、Azure Files に FSLogix プロファイル コンテナーを保存することをお勧めします。
 
-Windows Virtual Desktop では、推奨されるユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが提供されます。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。
+Azure Virtual Desktop では、推奨されるユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが提供されます。 FSLogix は、Azure Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。
 
-次の表では、Windows Virtual Desktop FSLogix プロファイル コンテナー ユーザー プロファイルのために Azure Storage で用意されているストレージ ソリューションを比較します。
+次の表では、Azure Virtual Desktop FSLogix プロファイル コンテナー ユーザー プロファイルのために Azure Storage で用意されているストレージ ソリューションを比較します。
 
 ## <a name="azure-platform-details"></a>Azure プラットフォームの詳細
 
@@ -43,7 +43,7 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 |セキュリティとコンプライアンス|[Azure でサポートされているあらゆる証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 完了|[Azure でサポートされているあらゆる証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory の統合|[Native Active Directory と Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services と Native Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Native Active Directory または Azure Active Directory Domain Services サポートのみ|
 
-ストレージ方法を選択したら、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」で Microsoft の価格設定に関する情報をご覧ください。
+ストレージ方法を選択したら、[「Azure Virtual Desktop の価格」](https://azure.microsoft.com/pricing/details/virtual-desktop/)で Microsoft の価格設定に関する情報をご覧ください。
 
 ## <a name="azure-files-tiers"></a>Azure Files のレベル
 
@@ -71,8 +71,8 @@ FSLogix プロファイル コンテナー、ユーザー プロファイルデ�
 
 独自の FSLogix プロファイル コンテナーを作成する準備ができたら、次のいずれかのチュートリアルを開始してください。
 
-- [Windows Virtual Desktop で Azure Files の FSLogix プロファイル コンテナーを開始する](create-file-share.md)
+- [Azure Virtual Desktop で Azure Files の FSLogix プロファイル コンテナーを開始する](create-file-share.md)
 - [Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する](create-fslogix-profile-container.md)
 - ユーザー プロファイル ディスクの代わりに FSLogix プロファイル コンテナーを使用するとき、「[Azure での UPD 記憶域用に 2 ノードの記憶域スペース ダイレクト スケールアウト ファイル サーバーを展開する](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)」の指示も適用されます。
 
-「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」で、独自の Windows Virtual Desktop ソリューションを一番最初から始めて設定することもできます。
+「[Azure Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」で、独自の Azure Virtual Desktop ソリューションを一番最初から始めて設定することもできます。

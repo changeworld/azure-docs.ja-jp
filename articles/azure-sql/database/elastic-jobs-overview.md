@@ -3,20 +3,20 @@ title: Elastic Database ジョブ (プレビュー)
 description: Azure SQL Database で 1 つ以上のデータベースのセット間で Transact-SQL (T-SQL) スクリプトを実行するには、エラスティック データベース ジョブ (プレビュー) を構成します
 services: sql-database
 ms.service: sql-database
-ms.subservice: scale-out
+ms.subservice: elastic-jobs
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: srinia
 ms.author: srinia
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35e13b483141e841d9cca5a2e5d3aa3c77ee7b4a
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792176"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017615"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>エラスティック ジョブの作成、構成、および管理 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ ms.locfileid: "92792176"
 
 SQL エラスティック プール内のデータベースにジョブを実行しているときにリソースに対する負荷が大きくなりすぎないようにするために、ジョブを構成して同時にジョブの実行対象とするデータベースの数に制限を設けることができます。
 
-`sp_add_jobstep`ストアド プロシージャの`@max_parallelism`パラメーターを T-SQL または `Add-AzSqlElasticJobStep -MaxParallelism`PowerShell で設定することで、ジョブが実行する同時実行データベースの数を設定します。
+`sp_add_jobstep` ストアド プロシージャの `@max_parallelism` パラメーターを T-SQL で設定することで、ジョブが実行する同時実行データベースの数を設定します。
 
 ## <a name="best-practices-for-creating-jobs"></a>ジョブ作成のベスト プラクティス
 

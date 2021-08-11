@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 61f0f2a71240c0ade13f7cd20b6c411f3df7f278
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 7d1c31c9f8507154056e6e6de0073eeb9ae636b7
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279156"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422014"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning でマネージド ID を使用する (プレビュー)
 
@@ -260,7 +260,7 @@ ws = Workspace.create(name="workspace name",
 > [!IMPORTANT]
 > Azure Machine Learning service で作成するのではなく、関連付けられている独自のリソースを使用する場合は、それらのリソースにマネージド ID ロールを付与する必要があります。 割り当てを行うには、[ロール割り当て ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)を使用します。
 
-(暗号化用のカスタマー マネージド キー) [https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ] があるワークスペースでは、ユーザー割り当てマネージド ID を渡して、ストレージから Key Vault に認証できます。 引数 __user-assigned-identity-for-cmk-encryption__ (CLI) または __user_assigned_identity_for_cmk_encryption__ (SDK) を使用して、マネージド ID を渡します。 このマネージド ID は、ワークスペースのプライマリ ユーザー割り当てのマネージド ID と同じであることも異なることもあります。
+[暗号化のためのカスタマー マネージド キー](concept-data-encryption.md)を持つワークスペースの場合、ストレージから Key Vault への認証のために、ユーザーに割り当てられたマネージド ID を渡すことができます。 引数 __user-assigned-identity-for-cmk-encryption__ (CLI) または __user_assigned_identity_for_cmk_encryption__ (SDK) を使用して、マネージド ID を渡します。 このマネージド ID は、ワークスペースのプライマリ ユーザー割り当てのマネージド ID と同じであることも異なることもあります。
 
 既存のワークスペースがある場合は、```az ml workspace update``` CLI コマンドまたは ```Workspace.update``` Python SDK メソッドを使用して、システム割り当てからユーザー割り当てマネージド ID に更新できます。
 

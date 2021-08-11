@@ -7,25 +7,29 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
-ms.author: juergent
+ms.date: 6/1/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27dc2f6c647308984a02f2cf52dbc0213abad088
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8fc161f83bcdb070ca4be1c1da3be84f1086c93
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676840"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412549"
 ---
-# <a name="sap-hana-large-instances-deployment"></a>SAP HANA (L インスタンス) のデプロイ 
+# <a name="sap-hana-large-instances-deployment"></a>SAP HANA (Large Instance) のデプロイ 
 
-この記事は、読者が SAP HANA on Azure (L インスタンス) を Microsoft から購入済みであることを前提としています。 この記事を読む前に、全般的な背景情報として、[HANA L インスタンスの一般的な用語](hana-know-terms.md)と [HANA L インスタンスの SKU](hana-available-skus.md) に関するページを参照してください。
+この記事では、データベースをデプロイするために必要な情報 (bareMetal インフラストラクチャ SAP HANA on Azure Large Instancesと呼ばれる) を一覧表示します。 最初に、背景については、以下を参照してください。
+- [HANA Large Instances のコンピューティング](hana-know-terms.md)
+-  [HANA ラージ インスタンス SKU](hana-available-skus.md)
 
+## <a name="required-information"></a>必要な情報
 
-HANA L インスタンス ユニットをデプロイするためには、次の情報が必要となります。
+Microsoft から SAP HANA on Azure Large Instances を購入し、デプロイする必要があります。 Microsoft では、お客様から次の情報が必要です。
 
 - お客様名。
 - 会社の連絡先情報 (メール アドレスや電話番号など)。
@@ -36,7 +40,7 @@ HANA L インスタンス ユニットをデプロイするためには、次の
 - Azure デプロイ リージョンごとに次の情報が必要となります。
     - Azure 仮想ネットワークを HANA L インスタンスに接続する ER-P2P 接続の /29 IP アドレス範囲。
     - HANA L インスタンスのサーバー IP プールに使用する /24 CIDR ブロック。
-    - [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) を使用してオンプレミスから HANA L インスタンス ユニットへの直接ルーティング、または異なる Azure リージョン内の HANA L インスタンス ユニット間のルーティングを有効にする場合は省略可能です。別の /29 の IP アドレス範囲を予約する必要があります。 この特定の範囲は、以前に定義した他の IP アドレス範囲と重複しないようにする必要があります。
+    - [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) を 使用する場合のオプション。別の /29 IP アドレス範囲を予約します。 追加された範囲により、オンプレミスから HANA Large Instance ユニットへの直接ルーティングが可能になります。 追加された範囲により、異なる Azure リージョン内の HANA Large Instance ユニット間のルーティングも可能になります。 この特定の範囲は、以前に定義した IP アドレス範囲と重複しないようにする必要があります。
 - HANA L インスタンスに接続するすべての Azure 仮想ネットワークの "仮想ネットワーク アドレス空間" 属性に使用される IP アドレス範囲の値。
 - 各 HANA L インスタンス システムのデータ:
   - 適切なホスト名 (できれば完全修飾ドメイン名を含める)。
@@ -48,8 +52,10 @@ HANA L インスタンス ユニットをデプロイするためには、次の
 
 以上の情報を入力すると、Microsoft によって SAP HANA on Azure (L インスタンス) がプロビジョニングされます。 Microsoft からは、Azure 仮想ネットワークを HANA L インスタンスにリンクさせるための情報が送信されます。 HANA L インスタンス ユニットにアクセスすることもできます。
 
-HANA L インスタンスが Microsoft によってデプロイされたら、次の手順で接続します。
+## <a name="next-steps"></a>次の手順
+
+Microsoft が HANA Large Instances をデプロイした後に HANA Large Instances に接続するには、次の記事を順に参照してください。
 
 1. [HANA L インスタンスへの Azure VM の接続](hana-connect-azure-vm-large-instances.md)
 2. [HANA L インスタンスの ExpressRoute への VNet の接続](hana-connect-vnet-express-route.md)
-3. [追加のネットワーク要件 (オプション)](hana-additional-network-requirements.md)
+3. [その他のネットワーク要件 (オプション)](hana-additional-network-requirements.md)

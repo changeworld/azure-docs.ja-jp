@@ -6,41 +6,44 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/27/2021
-ms.openlocfilehash: 27b1253b2d2808e01e5dae542e82211d96add216
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 09c27d77c80b7c9178fbbe9f7c5e01b3bc67c567
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108281081"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969051"
 ---
 # <a name="onboard-on-premises-servers-in-vmware-virtual-environment-to-azure-arc"></a>VMware 仮想環境内のオンプレミス サーバーを Azure Arc にオンボードする   
 
 この記事では、Azure Migrate: 検出および評価ツールを使用して、オンプレミスの VMware VM を Azure 管理用の Azure Arc にオンボードする方法について説明します。 
 
-Azure Arc を使用すると、移行の対象として最適ではないオンプレミス サーバーに Azure 管理エクスペリエンスを拡張することで、ハイブリッド IT 資産を 1 つのウィンドウで管理できます。 [Azure Arc の詳細情報](https://docs.microsoft.com/azure/azure-arc/servers/overview)を参照してください。 
+Azure Arc を使用すると、移行の対象として最適ではないオンプレミス サーバーに Azure 管理エクスペリエンスを拡張することで、ハイブリッド IT 資産を 1 つのウィンドウで管理できます。 [Azure Arc の詳細情報](../azure-arc/servers/overview.md)を参照してください。 
 
 ## <a name="before-you-get-started"></a>開始する前に
 
-- Azure Migrate: 検出および評価ツールを使用して VMware 環境で実行されているサーバーを検出するための[要件を確認します](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware#prerequisites)。  
-- 使用する [VMware vCenter](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware#prepare-vmware) を準備し、ソフトウェア インベントリを実行するための [VMware の要件](migrate-support-matrix-vmware.md#vmware-requirements)を確認します。 検出されたサーバーの Azure Arc へのオンボードを開始するには、ソフトウェア インベントリが完了している必要があります。   
-- サーバー上でソフトウェア インベントリを開始する前に、[アプリケーションの検出要件](migrate-support-matrix-vmware.md#application-discovery-requirements)を確認します。 Windows サーバーには、PowerShell バージョン 3.0 以降がインストールされている必要があります。
-- [Azure Arc の前提条件](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#prerequisites)を確認し、次の考慮事項を確認してください。
-    - Azure Arc へのオンボードは、vCenter Server の検出とソフトウェア インベントリの完了後にのみ開始できます。 ソフトウェア インベントリをオンにした後、完了するまでに最大 6 時間かかる場合があります
-    -  Arc オンボード プロセス中に、検出されたサーバーに [Azure Arc ハイブリッド接続マシン エージェント](https://docs.microsoft.com/azure/azure-arc/servers/learn/quick-enable-hybrid-vm)がインストールされます。 エージェントをインストールして構成するために、サーバーで管理者権限を持つ資格情報を提供してください。 Linux では root アカウントを提供し、Windows ではローカルの Administrators グループのメンバー アカウントを提供します。 
-    - サーバーで、[サポートされているオペレーティング システム](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#supported-operating-systems)が実行中であることを確認します。
-    - [必要な Azure ロール](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#required-permissions)への割り当てが、Azure アカウントに付与されていることを確認します。
-    - 検出されたサーバーがファイアウォールまたはプロキシ サーバーを介してインターネット経由で通信する場合、[必要な URL](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration) がブロックされていないことを確認します。
-    - Azure Arc が[サポートされているリージョン](https://docs.microsoft.com/azure/azure-arc/servers/overview#supported-regions)を確認します。 
+- Azure Migrate: 検出および評価ツールを使用して VMware 環境で実行されているサーバーを検出するための[要件を確認します](/azure/migrate/tutorial-discover-vmware#prerequisites)。  
+- 使用する [VMware vCenter](/azure/migrate/tutorial-discover-vmware#prepare-vmware) を準備し、ソフトウェア インベントリを実行するための [VMware の要件](migrate-support-matrix-vmware.md#vmware-requirements)を確認します。 検出されたサーバーの Azure Arc へのオンボードを開始するには、ソフトウェア インベントリが完了している必要があります。   
+- サーバー上でソフトウェア インベントリを開始する前に、[アプリケーションの検出要件](migrate-support-matrix-vmware.md#application-discovery-requirements)を確認します。 Windows サーバーには、PowerShell バージョン 3.0 以降がインストールされている必要があります。 
+- ポート アクセス要件を確認して、検出されたサーバーのインベントリへのリモート接続を許可します。 
+    - **Windows:** WinRM ポート 5985 上の受信接続 (HTTP)。 <br/>
+    - **Linux:** ポート 22 上の受信接続 (TCP)。 
+- [Azure Arc の前提条件](/azure/azure-arc/servers/agent-overview#prerequisites)を確認し、次の考慮事項を確認してください。
+    - Azure Arc へのオンボードは、vCenter Server の検出とソフトウェア インベントリの完了後にのみ開始できます。 ソフトウェア インベントリをオンにした後、完了するまでに最大 6 時間かかる場合があります。
+    -  Arc オンボード プロセス中に、検出されたサーバーに [Azure Arc ハイブリッド接続マシン エージェント](/azure/azure-arc/servers/learn/quick-enable-hybrid-vm)がインストールされます。 エージェントをインストールして構成するために、サーバーで管理者権限を持つ資格情報を提供してください。 Linux では root アカウントを提供し、Windows ではローカルの Administrators グループのメンバー アカウントを提供します。 
+    - サーバーで、[サポートされているオペレーティング システム](/azure/azure-arc/servers/agent-overview#supported-operating-systems)が実行中であることを確認します。
+    - [必要な Azure ロール](/azure/azure-arc/servers/agent-overview#required-permissions)への割り当てが、Azure アカウントに付与されていることを確認します。
+    - 検出されたサーバーがファイアウォールまたはプロキシ サーバーを介してインターネット経由で通信する場合、[必要な URL](/azure/azure-arc/servers/agent-overview#networking-configuration) がブロックされていないことを確認します。
+    - Azure Arc が[サポートされているリージョン](/azure/azure-arc/servers/overview#supported-regions)を確認します。 
     - Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5, 000 個のマシン インスタンスがサポートされます。
 
 
 ## <a name="set-up-the-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する  
 
-1. 開始する前に、[Azure ユーザー アカウント](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware#prepare-an-azure-user-account)を準備し、Azure Migrate に必要なリソースを作成するためにサブスクリプション内に[必要なロール](./create-manage-projects.md#verify-permissions)があることを確認します。 
-2. [この記事を使用して](https://docs.microsoft.com/azure/migrate/create-manage-projects)、Azure Migrate: 検出と評価ツールが追加された新しい Azure Migrate プロジェクトを設定します。  
+1. 開始する前に、[Azure ユーザー アカウント](./tutorial-discover-vmware.md#prepare-an-azure-user-account)を準備し、Azure Migrate に必要なリソースを作成するためにサブスクリプション内に[必要なロール](./create-manage-projects.md#verify-permissions)があることを確認します。 
+2. [この記事を使用して](./create-manage-projects.md)、Azure Migrate: 検出と評価ツールが追加された新しい Azure Migrate プロジェクトを設定します。  
 
     > [!Note]
-    > また、既存の Migrate プロジェクトを使用し、検出されたサーバーのインベントリを Azure Arc にオンボードすることもできます。これを行うには、アプライアンス サーバーからアプライアンス構成マネージャーを起動し、サービスが最新バージョンに更新されていることを確認します。 [詳細情報](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-upgrades) <br/> <br/> 次に、[この手順に従って](#onboard-to-azure-arc)サーバーをオンボードします。  
+    > また、既存の Migrate プロジェクトを使用し、検出されたサーバーのインベントリを Azure Arc にオンボードすることもできます。これを行うには、アプライアンス サーバーからアプライアンス構成マネージャーを起動し、サービスが最新バージョンに更新されていることを確認します。 [詳細情報](./migrate-appliance.md#appliance-upgrades) <br/> <br/> 次に、[この手順に従って](#onboard-to-azure-arc)サーバーをオンボードします。  
 
 ## <a name="deploy-and-register-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスをデプロイおよび登録する 
 
@@ -55,12 +58,12 @@ Azure Migrate の検出および評価では、軽量の Azure Migrate アプラ
 
 次に、
 
-- [Azure Migrate アプライアンスを設定する](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware#set-up-the-appliance)ための記事に従い、vCenter Server の検出を開始します。 アプライアンスをデプロイするには、OVA テンプレートをダウンロードして VMware にインポートし、vCenter Server で実行されるサーバーを作成します。  
-- アプライアンスをデプロイした後、検出を開始する前に、プロジェクトに登録する必要があります。 アプライアンスを登録するには、[こちらの手順](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware#register-the-appliance-with-azure-migrate)に従います。 
+- [Azure Migrate アプライアンスを設定する](./tutorial-discover-vmware.md#set-up-the-appliance)ための記事に従い、vCenter Server の検出を開始します。 アプライアンスをデプロイするには、OVA テンプレートをダウンロードして VMware にインポートし、vCenter Server で実行されるサーバーを作成します。  
+- アプライアンスをデプロイした後、検出を開始する前に、プロジェクトに登録する必要があります。 アプライアンスを登録するには、[こちらの手順](./tutorial-discover-vmware.md#register-the-appliance-with-azure-migrate)に従います。 
 
 ## <a name="configure-the-appliance-and-start-discovery"></a>アプライアンスを構成して検出を開始する  
 
-[こちらの記事](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware#start-continuous-discovery)を使用して Azure Migrate アプライアンスを構成し、vCenter Server の検出を開始します。 
+[こちらの記事](./tutorial-discover-vmware.md#start-continuous-discovery)を使用して Azure Migrate アプライアンスを構成し、vCenter Server の検出を開始します。 
 
 検出のためにアプライアンスを構成するときに、アプライアンス構成マネージャーで詳細を指定する必要があります。
 
@@ -85,12 +88,12 @@ vCenter Server の検出が完了すると、ソフトウェア インベント�
 
 3. **[リージョン]** ドロップダウンの一覧で、サーバーのメタデータを格納する Azure リージョンを選択します。
 
-4. 大規模なオンボードの場合は **Azure Active Directory サービス プリンシパル** の詳細を指定します。 [Azure portal または Azure PowerShell を使用してサービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-arc/servers/onboard-service-principal#create-a-service-principal-for-onboarding-at-scale)ためのこちらの記事を参照してください。 <br/>
+4. 大規模なオンボードの場合は **Azure Active Directory サービス プリンシパル** の詳細を指定します。 [Azure portal または Azure PowerShell を使用してサービス プリンシパルを作成する](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)ためのこちらの記事を参照してください。 <br/>
 
     次の入力を行う必要があります。
-    - **ディレクトリ (テナント) ID** - Azure AD の専用インスタンスを表す[一意識別子 (GUID)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in)。 
-    - **アプリケーション (クライアント) ID** - サービス プリンシパルのアプリケーション ID を表す[一意識別子 (GUID)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in)。
-    - **サービス プリンシパルのシークレット (アプリケーション シークレット)** - パスワードベースの認証用の[クライアント シークレット](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret)。 
+    - **ディレクトリ (テナント) ID** - Azure AD の専用インスタンスを表す [一意識別子 (GUID)](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 
+    - **アプリケーション (クライアント) ID** - サービス プリンシパルのアプリケーション ID を表す [一意識別子 (GUID)](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
+    - **サービス プリンシパルのシークレット (アプリケーション シークレット)** - パスワードベースの認証用の [クライアント シークレット](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)。 
     
 5. _省略可能_: 検出されたサーバーがインターネットに接続するためにプロキシ サーバーを必要とする場合は、**プロキシ サーバーの IP アドレス** または名前と **ポート番号** を指定します。 `http://<proxyURL>:<proxyport>` の形式で値を入力します。 検出されたサーバーによって使用されるこのプロキシ サーバーは、(アプライアンス構成マネージャーの前提条件に関するセクションで指定された) インターネットに接続するためにアプライアンス サーバーが必要とするプロキシ サーバーとは異なってもかまいません。   
 
@@ -121,15 +124,16 @@ vCenter Server の検出が完了すると、ソフトウェア インベント�
 
 Azure Migrate アプライアンスを使用して Azure Arc へのオンボード中にエラーが発生した場合は、次のセクションを参考にして、考えられる原因と、問題を解決するための推奨される手順を確認してください。 
 
-以下のエラー コードが表示されない場合、またはエラーコードが **_AZCM_** で始まる場合は、[Azure Arc のトラブルシューティングのためのこちらのガイド](https://docs.microsoft.com/azure/azure-arc/servers/troubleshoot-agent-onboard)を参照してください。
+以下のエラー コードが表示されない場合、またはエラーコードが **_AZCM_** で始まる場合は、[Azure Arc のトラブルシューティングのためのこちらのガイド](../azure-arc/servers/troubleshoot-agent-onboard.md)を参照してください。
 
 ### <a name="error-60001---unabletoconnecttophysicalserver"></a>エラー 60001 - UnableToConnectToPhysicalServer  
 
 **考えられる原因**  
-サーバーに接続するための[前提条件](https://go.microsoft.com/fwlink/?linkid=2134728)が満たされていないか、サーバーへの接続でプロキシ設定などのネットワークの問題が発生しています。
+サーバーに接続するための[前提条件](./migrate-support-matrix-physical.md)が満たされていないか、サーバーへの接続でプロキシ設定などのネットワークの問題が発生しています。
 
 **推奨アクション**   
-- [こちら](https://go.microsoft.com/fwlink/?linkid=2134728)に記載されているように、サーバーが検出と評価の前提条件を満たしていることを確認します。 
+- [こちら](https://go.microsoft.com/fwlink/?linkid=2134728)に記載されている前提条件とポート アクセス要件を、サーバーが満たしていることを確認します。 
+- リモート マシン (検出されたサーバー) の IP アドレスを、Azure Migrate アプライアンス上の WinRM TrustedHosts リストに追加し、操作を再試行します。 
 - アプライアンスでサーバーに接続するための正しい認証方法が選択されていることを確認します。 
    > [!Note] 
    > Azure Migrate では、Linux サーバーに対するパスワードベースと SSH キーベースの両方の認証がサポートされています。
@@ -153,7 +157,7 @@ Azure Migrate アプライアンスを使用して Azure Arc へのオンボー�
 **推奨アクション**  
 - 影響を受けるサーバーに最新のカーネルと OS の更新プログラムがインストールされていることを確認します。
 - アプライアンスとサーバーの間にネットワーク待機時間がないことを確認します。 待機時間の問題を回避するために、アプライアンスとソース サーバーを同じドメインに配置することをお勧めします。
-- 影響を受けるサーバーにアプライアンスから接続し、[こちら](https://go.microsoft.com/fwlink/?linkid=2152600)に記載されているコマンドを実行して、null または空のデータが返されるかどうかを確認します。
+- 影響を受けるサーバーにアプライアンスから接続し、[こちら](./troubleshoot-appliance-discovery.md)に記載されているコマンドを実行して、null または空のデータが返されるかどうかを確認します。
 - 問題が引き続き発生する場合は、Microsoft サポート ケースを提出してください。その際、アプライアンス マシン ID (アプライアンス構成マネージャーのフッターにあります) を指定してください。  
 
 ### <a name="error-60108---softwareinventorycredentialnotassociated"></a>エラー 60108 - SoftwareInventoryCredentialNotAssociated  
@@ -162,7 +166,7 @@ Azure Migrate アプライアンスを使用して Azure Arc へのオンボー�
 - サーバーに関連付けられている資格情報が見つかりませんでした。
 
 **推奨アクション**  
-- 検出されたサーバーの Azure Arc へのオンボードを開始するには、ソフトウェア インベントリが完了している必要があります。[詳細については、こちらを参照してください](https://docs.microsoft.com/azure/migrate/how-to-discover-applications#add-credentials-and-initiate-discovery)
+- 検出されたサーバーの Azure Arc へのオンボードを開始するには、ソフトウェア インベントリが完了している必要があります。[詳細については、こちらを参照してください](./how-to-discover-applications.md#add-credentials-and-initiate-discovery)
 - アプライアンス構成マネージャーで指定された資格情報が有効であること、および資格情報を使用してサーバーにアクセスできることを確認してください。
 - アプライアンス構成マネージャーに戻り、別の資格情報のセットを指定するか、既存の資格情報を編集します。  
 
@@ -172,7 +176,7 @@ Azure Migrate アプライアンスを使用して Azure Arc へのオンボー�
 - サーバーは、Azure Arc のオンボードに対してサポートされていないオペレーティング システムをホストしています。
 
 **推奨アクション**  
-- Azure Arc に対して[サポートされているオペレーティング システムを確認してください](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#supported-operating-systems)。 
+- Azure Arc に対して[サポートされているオペレーティング システムを確認してください](../azure-arc/servers/agent-overview.md#supported-operating-systems)。 
  
 ### <a name="error-10002---scriptexecutiontimedoutonvm"></a>エラー 10002 - ScriptExecutionTimedOutOnVm  
 

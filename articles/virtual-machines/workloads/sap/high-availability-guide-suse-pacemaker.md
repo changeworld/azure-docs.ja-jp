@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2021
+ms.date: 05/13/2021
 ms.author: radeltch
-ms.openlocfilehash: e0ebc527f1eb0aa3ed014957633b89c407952364
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c762f0e04a7079fff72962cafe44b06acfcf0eaf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743203"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100038"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -660,7 +660,7 @@ sudo crm configure property stonith-timeout=900
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure のスケジュール化されたイベントの Pacemaker 構成
 
-Azure では、[スケジュール化されたイベント](../../linux/scheduled-events.md)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
+Azure では、[スケジュール化されたイベント](../../linux/scheduled-events.md)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出され、使用可能なクラスター ノードが他にあるとリソース エージェントが判断した場合、ターゲット クラスター ノードは、azure-events エージェントによってスタンバイ モードになります。これにより、クラスターは、保留中の [Azure のスケジュール化されたイベント](../../linux/scheduled-events.md)を使用して、リソースを VM から強制的に移行することができます。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
 
 1. **[A]** **azure-events** エージェントのパッケージが既にインストールされ、最新であることを確認します。 
 

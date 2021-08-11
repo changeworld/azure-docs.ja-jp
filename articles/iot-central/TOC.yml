@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: 最新の更新
       items:
+        - name: 2021 年 5 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-may-2021/'
         - name: 2021 年 4 月の新機能と更新された機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-april-2021/'
         - name: 2021 年 3 月の新機能と更新された機能
@@ -45,12 +47,10 @@
   items:
     - name: 1. 新しいアプリケーションを作成する
       href: core/quick-deploy-iot-central.md
-    - name: 2. シミュレートされたデバイスの追加
-      href: core/quick-create-simulated-device.md
-    - name: 3. 規則とアクションを構成する
+    - name: 2. 規則とアクションを構成する
       href: core/quick-configure-rules.md
-    - name: 4. デバイスを監視する
-      href: core/quick-monitor-devices.md
+    - name: 3. データのエクスポート
+      href: core/quick-export-data.md
 - name: チュートリアル
   items:
     - name: デバイスの開発と接続
@@ -60,7 +60,7 @@
         - name: ゲートウェイ デバイス テンプレートの作成
           href: core/tutorial-define-gateway-device-type.md
         - name: IoT Edge デバイスの接続
-          href: core/tutorial-add-edge-as-leaf-device.md
+          href: /learn/modules/connect-iot-edge-device-to-iot-central
     - name: 統合されたソリューションの構築
       items:
         - name: デバイス グループを作成する
@@ -197,10 +197,10 @@
       href: core/concepts-best-practices.md
 - name: 操作方法ガイド
   items:
+    - name: アプリケーションの作成
+      href: core/howto-create-iot-central-application.md
     - name: デバイスの開発と接続
       items:
-        - name: アプリケーションの作成
-          href: core/howto-create-iot-central-application.md
         - name: デバイス テンプレートを設定する
           href: core/howto-set-up-template.md
         - name: デバイス テンプレートの編集
@@ -216,21 +216,19 @@
         - name: IoT Edge の透過的なゲートウェイを経由してデバイスを接続する
           href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Azure Sphere DevKit を準備して接続する
-          href: core/howto-connect-sphere.md
+          href: /azure-sphere/app-development/setup-iot-central
         - name: RuuviTag デバイスを準備して接続する
           href: core/howto-connect-ruuvi.md
         - name: Rigado Cascade 500 を準備して接続する
           href: core/howto-connect-rigado-cascade-500.md
     - name: 統合されたソリューションの構築
       items:
-        - name: ダッシュボードへのタイルの追加
-          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: ダッシュボードを作成する
+          href: core/howto-manage-dashboards.md
+        - name: 位置情報データを使用する
+          href: core/howto-use-location-data.md
         - name: ルールを構成する
           href: core/howto-configure-rules.md
-        - name: 規則に基づいて Webhook を作成する
-          href: core/howto-create-webhooks.md
-        - name: 規則に基づいて Azure Monitor アクション グループを接続する
-          href: core/howto-use-action-groups.md
         - name: デバイス データを分析する
           href: core/howto-create-analytics.md
         - name: データをクラウドの宛先にエクスポートする
@@ -259,60 +257,42 @@
           href: core/howto-manage-users-roles-with-rest-api.md
         - name: デバイスを制御する
           href: core/howto-control-devices-with-rest-api.md
+        - name: ジョブの管理
+          href: core/howto-manage-jobs-with-rest-api.md
     - name: デバイスを管理する
       items:
-        - name: デバイスの追加と削除
-          href: core/howto-manage-devices.md
-        - name: ジョブの実行
-          href: core/howto-run-a-job.md
-        - name: IoT Hub からデバイスを移動する
-          href: core/how-to-move-device-to-iot.md
+        - name: デバイスを個別に管理する
+          href: core/howto-manage-devices-individually.md
+        - name: デバイスを一括で管理する
+          href: core/howto-manage-devices-in-bulk.md
     - name: ソリューションの管理
       items:
         - name: アプリケーション設定の変更
           href: core/howto-administer.md
         - name: ユーザーとロールを管理する
           href: core/howto-manage-users-roles.md
-        - name: 請求書の管理
-          href: core/howto-view-bill.md
         - name: アプリケーション UI のカスタマイズ
           href: core/howto-customize-ui.md
-        - name: アプリケーションのエクスポート
-          href: core/howto-use-app-templates.md
         - name: V2 アプリケーションを V3 へ移行する
           href: core/howto-migrate.md
-        - name: アプリケーションの正常性を監視する
-          href: core/howto-monitor-application-health.md
-        - name: アプリケーションに関する情報
-          href: core/howto-get-app-info.md
         - name: ファイルのアップロードの構成と使用
           href: core/howto-configure-file-uploads.md
-        - name: X.509 証明書のロール
-          href: core/how-to-roll-x509-certificates.md
-        - name: Azure portal からの管理
+        - name: Azure portal で管理と監視を行う
           href: core/howto-manage-iot-central-from-portal.md
-        - name: Azure CLI からの管理
+        - name: コマンド ラインから管理する
           href: core/howto-manage-iot-central-from-cli.md
-        - name: Azure PowerShell からの管理
-          href: core/howto-manage-iot-central-from-powershell.md
-        - name: プログラムで管理する
-          href: core/howto-manage-iot-central-programmatically.md
         - name: CSP ポータルからの管理
           href: core/howto-create-and-manage-applications-csp.md
-    - name: ソリューションのカスタマイズ
-      items:
-        - name: 個人用ダッシュボードの作成
-          href: core/howto-create-personal-dashboards.md
-        - name: 個人設定の管理
-          href: core/howto-manage-preferences.md
-        - name: ライブ チャットの切り替え
-          href: core/howto-show-hide-chat.md
     - name: トラブルシューティング
       items:
         - name: デバイスの接続
           href: core/troubleshoot-connection.md
     - name: よく寄せられる質問
       href: core/howto-faq.md
+    - name: 個人設定の管理
+      href: core/howto-manage-preferences.md
+    - name: ライブ チャットの切り替え
+      href: core/howto-show-hide-chat.md
 - name: リファレンス
   items:
     - name: Azure CLI

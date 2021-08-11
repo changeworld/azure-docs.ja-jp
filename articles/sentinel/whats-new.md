@@ -7,22 +7,23 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: 2de9be37b8f5398bc6774e9b55ee96483b29b078
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/13/2021
+ms.openlocfilehash: 210be7199f5f28773c2dbbf913e4914918e7eeeb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759611"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087924"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
 この記事では、Azure Sentinel 用に最近追加された機能と、Azure Sentinel のユーザー エクスペリエンスを向上させる関連サービスの新機能について説明します。
 
-以前に提供された機能については、[Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog/label-name/What's%20New)を参照してください。
+6 か月以上前の項目をお探しの場合は、「[Azure Sentinel の最新情報のアーカイブ](whats-new-archive.md)」を参照してください。 以前に提供された機能については、[Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog/label-name/What's%20New)を参照してください。
 
-記載されている機能は、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
-
+> [!IMPORTANT]
+> 記載されている機能は、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+> 
 
 > [!TIP]
 > Microsoft の脅威ハンティング チームは、クエリ、プレイブック、ブック、およびノートブックを [Azure Sentinel コミュニティ](https://github.com/Azure/Azure-Sentinel) に投稿します。これには、ユーザーのチームが適応して使用できる特定の[ハンティング クエリ](https://github.com/Azure/Azure-Sentinel)などが含まれます。
@@ -32,7 +33,92 @@ ms.locfileid: "108759611"
 
 ## <a name="may-2021"></a>2021 年 5 月
 
+- [Azure Sentinel のソリューション (パブリック プレビュー)](#azure-sentinel-solutions-public-preview)
+- [Continuous Threat Monitoring for SAP ソリューション (パブリック プレビュー)](#continuous-threat-monitoring-for-sap-solution-public-preview)
+- [脅威インテリジェンスの統合 (パブリック プレビュー)](#threat-intelligence-integrations-public-preview)
+- [スケジュールされたアラートに対する Fusion (パブリック プレビュー)](#fusion-over-scheduled-alerts-public-preview)
+- [SOC-ML 異常検知 (パブリック プレビュー)](#soc-ml-anomalies-public-preview)
+- [IP エンティティ ページ (パブリック プレビュー)](#ip-entity-page-public-preview)
+- [アクティビティのカスタマイズ (パブリック プレビュー)](#activity-customization-public-preview)
+- [[Hunting]\(ハンティング\) ダッシュボード (パブリック プレビュー)](#hunting-dashboard-public-preview)
+- [インシデント チーム - Microsoft Teams での共同作業 (パブリック プレビュー)](#azure-sentinel-incident-team---collaborate-in-microsoft-teams-public-preview)
 - [ゼロ トラスト (TIC3.0) ブック](#zero-trust-tic30-workbook)
+
+### <a name="azure-sentinel-solutions-public-preview"></a>Azure Sentinel のソリューション (パブリック プレビュー)
+
+データ コネクタ、ブック、分析ルール、プレイブック、ハンティング クエリ、パーサー、ウォッチリストなど、Azure Sentinel の各種コンポーネントを組み合わせた **パッケージ コンテンツ** [ソリューション](sentinel-solutions-catalog.md)が新たに提供されます。
+
+製品内での見つけやすさや、シングル ステップ デプロイ、エンド ツー エンドの製品シナリオが改良されたソリューションとなっています。 詳細については、「[Azure Sentinel ソリューションの検出とデプロイ](sentinel-solutions-deploy.md)」を参照してください。
+
+### <a name="continuous-threat-monitoring-for-sap-solution-public-preview"></a>Continuous Threat Monitoring for SAP ソリューション (パブリック プレビュー)
+
+Azure Sentinel ソリューションに **Continuous Threat Monitoring for SAP** が加わりました。SAP システムを監視して、ビジネス レイヤーおよびアプリケーション レイヤーにおける高度な脅威に対応することができます。
+
+SAP データ コネクタは、SAP システム ランドスケープ全体から 14 もの多くのアプリケーション ログをストリーム配信し、NetWeaver RFC 呼び出しを介して Advanced Business Application Programming (ABAP) から、また OSSAP 制御インターフェイスを介してファイル ストレージ データからログを収集します。 SAP データ コネクタによって、基になる SAP インフラストラクチャを監視する機能が Azure Sentinels に追加されます。
+
+SAP ログを Azure Sentinel に取り込むには、お使いの SAP 環境に Azure Sentinel SAP データ コネクタがインストールされている必要があります。 SAP データ コネクタをデプロイしたら、SAP ソリューションの多彩なセキュリティ コンテンツをデプロイし、組織の SAP 環境に関する分析情報をスムーズに取得して、関連するセキュリティ運用機能を向上させることができます。
+
+詳細については、[SAP 用 Azure Sentinel ソリューション (パブリック プレビュー) のデプロイに関するチュートリアル](sap-deploy-solution.md)を参照してください。
+
+### <a name="threat-intelligence-integrations-public-preview"></a>脅威インテリジェンスの統合 (パブリック プレビュー)
+
+既知の脅威を検出して優先順位を付けるセキュリティ アナリストの能力を高めるために、Azure Sentinel には、[脅威インテリジェンスのフィードを使用](import-threat-intelligence.md)する方法がいくつか用意されています。
+
+新たに提供されている数多くの統合脅威インテリジェンス プラットフォーム (TIP、Threat Intelligence Platform) 製品の 1 つを使用し、TAXII サーバーに接続して STIX に適合したあらゆる脅威インテリジェンス ソースを活用できるほか、[Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) と直接やり取りするあらゆるカスタム ソリューションを利用できるようになりました。
+
+効果的な調査や対応の措置につながる TI 情報でインシデントをエンリッチメント処理するために、プレイブックから脅威インテリジェンス ソースに接続することもできます。
+
+詳細については、「[Azure Sentinel での脅威インテリジェンスの統合](threat-intelligence-integration.md)」を参照してください。
+
+### <a name="fusion-over-scheduled-alerts-public-preview"></a>スケジュールされたアラートに対する Fusion (パブリック プレビュー)
+
+機械学習の相関分析エンジンである **Fusion** でマルチステージ攻撃を検出できるようになりました。他のデータ ソースからインポートされたアラートに加え、一連の[スケジュール化された分析ルール](tutorial-detect-threats-custom.md)から生成されるアラートが、その相関分析の中で使用されます。
+
+詳細については、「[Azure Sentinel の高度なマルチステージ攻撃の検出](fusion.md)」を参照してください。
+
+### <a name="soc-ml-anomalies-public-preview"></a>SOC-ML 異常検知 (パブリック プレビュー)
+
+Azure Sentinel の SOC-ML 機械学習ベースの異常検知であれば、他の方法では検出の目をかいくぐられてしまうような異常な行動でも特定できます。
+
+SOC-ML では、面倒な設定が要らない分析ルール テンプレートを使用することができます。 異常そのものが悪意のある行動や疑わしい動作を意味しているとは限りませんが、検出、調査、脅威ハンティングの正確さを高める目的で、それらを使用することはできます。
+
+詳細については、「[Azure Sentinel で SOC-ML 異常検知を使用して脅威を検出する](soc-ml-anomalies.md)」を参照してください。
+
+### <a name="ip-entity-page-public-preview"></a>IP エンティティ ページ (パブリック プレビュー)
+
+Azure Sentinel が新たに IP アドレス エンティティに対応しました。新しい IP エンティティ ページで IP エンティティ情報を確認することができます。
+
+ユーザー エンティティ ページとホスト エンティティ ページと同様、IP ページは、IP に関する一般情報のほか、その IP が関係していると判明したアクティビティの一覧など、さまざまな情報を含んでおり、かつてないほど豊富な情報を提供することで、セキュリティ インシデントの調査を強力に支援します。
+
+詳細については、「[エンティティ ページ](identify-threats-with-entity-behavior-analytics.md#entity-pages)」を参照してください。
+
+### <a name="activity-customization-public-preview"></a>アクティビティのカスタマイズ (パブリック プレビュー)
+
+エンティティ ページについては言えば、必要なエンティティのカスタム アクティビティを新たに作成できるようになっています。このアクティビティは、既製のアクティビティと共に、それぞれのエンティティ ページで追跡および表示されます。
+
+詳細については、「[エンティティ ページのタイムラインのアクティビティをカスタマイズする](customize-entity-activities.md)」を参照してください。
+
+### <a name="hunting-dashboard-public-preview"></a>[Hunting]\(ハンティング\) ダッシュボード (パブリック プレビュー)
+
+**[Hunting]\(ハンティング\)** ブレードが更新されました。 新しいダッシュボードではシングルクリックで、すべてのクエリを実行したり特定のサブセットだけを実行したりすることができます。
+
+結果の件数やスパイク、24 時間における件数の変化に着目することによってハンティングの出発点を特定できます。 お気に入りやデータ ソース、MITRE ATT&CK の戦術や手法、結果、結果の差分を基準に並べ替えやフィルタリングを行うこともできます。 まだ必要なデータ ソースが接続されていないクエリを確認すると共に、それらのクエリを有効にする方法についての推奨事項を入手できます。
+
+詳細については、「[Azure Sentinel で脅威を検出する](hunting.md)」を参照してください。
+
+### <a name="azure-sentinel-incident-team---collaborate-in-microsoft-teams-public-preview"></a>Azure Sentinel インシデント チーム - Microsoft Teams でコラボレーションを行う (パブリック プレビュー)
+
+Azure Sentinel が Microsoft Teams との直接統合に対応しました。外部の関係者との間で、また組織の垣根を越えてシームレスにコラボレーションを行うことができます。
+
+意思の疎通や調整において中心的な役割を果たす新しい "*インシデント チーム*" を、Azure Sentinel のインシデントから直接作成できます。
+
+インシデント チームの能力が特に発揮されるのは、重要度が高い進行中のインシデントに特化した会議ブリッジとしての役割を担うときです。 コミュニケーションとコラボレーションに Microsoft Teams を既に使用している組織は、Azure Sentinel の統合を使用して、会話や日常業務に直接セキュリティ データを取り入れることができます。
+
+Microsoft Teams では、最も妥当なデータをチームに提供できるよう、新しいチームの **[Incident page]\(インシデント ページ\)** タブに絶えず Azure Sentinel からの最新のデータが表示されます。
+
+[ ![Microsoft Teams の [インシデント] ページ。](media/collaborate-in-microsoft-teams/incident-in-teams.jpg) ](media/collaborate-in-microsoft-teams/incident-in-teams.jpg#lightbox)
+
+詳細については、「[Microsoft Teams での共同作業 (パブリック プレビュー)](collaborate-in-microsoft-teams.md)」を参照してください。
 
 ### <a name="zero-trust-tic30-workbook"></a>ゼロ トラスト (TIC3.0) ブック
 
@@ -401,42 +487,6 @@ Azure Sentinel では、Log Analytics エージェントを使用して、Window
 > 
 
 詳細については、[Log Analytics のドキュメント](../azure-monitor/agents/log-analytics-agent.md)および [Log Analytics エージェントのリリース ノート](https://github.com/microsoft/OMS-Agent-for-Linux/releases)を参照してください。
-## <a name="november-2020"></a>2020 年 11 月
-
-- [Azure Sentinel でプレイブックの正常性を監視する](#monitor-your-playbooks-health-in-azure-sentinel)
-- [Microsoft 365 Defender コネクタ (パブリック プレビュー)](#microsoft-365-defender-connector-public-preview)
-
-### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>Azure Sentinel でプレイブックの正常性を監視する
-
-Azure Sentinel プレイブックは、[Azure Log Apps](../logic-apps/index.yml) に組み込まれたワークフローに基づいています。これは、タスク、ビジネス プロセス、ワークフローのスケジュール、自動化、オーケストレーションに役立つクラウド サービスです。 プレイブックは、インシデントの作成時、またはインシデントのトリアージおよび操作時に自動的に呼び出すことができます。 
-
-プレイブックの正常性、パフォーマンス、使用状況に関する分析情報を提供するために、**プレイブックの正常性監視** という名前の [ブック](../azure-monitor/visualize/workbooks-overview.md)を追加しました。 
-
-**プレイブックの正常性監視** ブックを使用して、プレイブックの正常性の監視や、成功または失敗した実行量の異常の検出を行います。 
-
-**プレイブックの正常性監視** ブックは、Azure Sentinel テンプレート ギャラリーで入手できるようになりました。
-
-:::image type="content" source="media/whats-new/playbook-monitoring-workbook.gif" alt-text="プレイブックの正常性監視ブックのサンプル":::
-
-詳細については、次を参照してください。
-
-- [Logic Apps のドキュメント](../logic-apps/monitor-logic-apps-log-analytics.md#set-up-azure-monitor-logs)
-
-- [Azure Monitor のドキュメント](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
-
-### <a name="microsoft-365-defender-connector-public-preview"></a>Microsoft 365 Defender コネクタ (パブリック プレビュー)
- 
-Azure Sentinel 用の Microsoft 365 Defender コネクタを使用すると、Microsoft 365 Defender から Azure Sentinel に高度なハンティング ログ (未加工のイベント データの種類) をストリーミングできます。 
-
-[Microsoft Defender for Endpoint (MDATP)](/windows/security/threat-protection/) と [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) セキュリティ保護の統合により、Microsoft 365 Defender コネクタを使用して、Microsoft Defender for Endpoint の高度なハンティング イベントを収集し、Azure Sentinel ワークスペースの新しい用途別のテーブルに直接ストリーミングできるようになりました。 
-
-Azure Sentinel テーブルは、Microsoft 365 Defender ポータルで使用されるものと同じスキーマに基づいて構築されており、高度なハンティング ログの完全なセットに完全にアクセスすることができます。 
-
-詳細については、「[Microsoft 365 Defender から Azure Sentinel にデータを接続する](connect-microsoft-365-defender.md)」を参照してください。
-
-> [!NOTE]
-> Microsoft 365 Defender は、以前は Microsoft Threat Protection または MTP と呼ばれていました。 Microsoft Defender for Endpoint は、以前は Microsoft Defender Advanced Threat Protection または MDATP と呼ばれていました。
-> 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83633b6f107aee995c19e1cda94f4f93a96e84e2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 587dddfde930bb64aa21f2e24c26d815e60ab9b0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076782"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791692"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>VM の開始/停止 (プレビュー) に関する一般的な問題のトラブルシューティング
 
@@ -32,7 +32,7 @@ Azure 共有ダッシュボードを確認することで開始できます。 V
 
 VM の開始/停止 v2 (プレビュー) に使用される Azure ストレージ アカウントの **requestsstoretable** テーブルに書き込まれている、VM 上で実行された操作の詳細を確認できます。 それらのレコードを表示するには、こちらの手順を実行します。
 
-1. Azure portal でストレージ アカウントに移動し、左側のペインの [アカウント] で [**Storage Explorer (プレビュー)] を選択します。
+1. Azure portal でストレージ アカウントに移動し、左側のペインの [アカウント] で **[Storage Explorer (プレビュー)]** を選択します。
 1. **[テーブル]** を選択し、 **[requeststoretable]** を選択します。
 1. テーブル内の各レコードは、ロジック アプリのシナリオで定義されているターゲット スコープに基づいて Azure VM に対して実行された開始/停止アクションを表します。 レコードのプロパティ (TIMESTAMP、ACTION、TARGETTOPLEVELRESOURCENAME など) のいずれか 1 つを使用して結果をフィルター処理できます。
 

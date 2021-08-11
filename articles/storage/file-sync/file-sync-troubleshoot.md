@@ -7,12 +7,13 @@ ms.topic: troubleshooting
 ms.date: 4/20/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 386a95b46bd4787ea9ad2925ea1d2b2a0627a05e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 633926710e4f6b92e2cd19aaf852135c07929966
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796365"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677132"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -36,7 +37,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 
 installer.log をレビューして、インストールが失敗した原因を特定します。
 
-<a id="agent-installation-gpo"></a>**次のエラーにより、エージェントのインストールが失敗しました: エラーが発生したため、ストレージ同期エージェントのセットアップ ウィザードが途中で終了しました**
+<a id="agent-installation-gpo"></a>**次のエラーでエージェントのインストールが失敗する: エラーが発生したため、ストレージ同期エージェントのセットアップ ウィザードが完了しませんでした**
 
 エージェントのインストール ログには、次のエラーが記録されます。
 
@@ -46,9 +47,9 @@ CAQuietExec64:  + FullyQualifiedErrorId : UnauthorizedAccess
 CAQuietExec64:  Error 0x80070001: Command line returned an error.
 ```
 
-この問題は、[PowerShell の実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)がグループ ポリシーを使用して構成され、ポリシー設定が [署名済みスクリプトのみを許可する] である場合に発生します。 Azure File Sync エージェントに含まれるすべてのスクリプトが署名されます。 Azure File Sync エージェントのインストールが失敗するのは、[実行をバイパスする] ポリシー設定を使用してインストーラーでスクリプトが実行されているためです。
+この問題は、[PowerShell の実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)がグループ ポリシーを使用して構成され、ポリシー設定が [署名済みスクリプトのみを許可する] である場合に発生します。 Azure File Sync エージェントに含まれるすべてのスクリプトが署名されます。 Azure File Sync エージェントのインストールが失敗するのは、[実行をバイパスする] ポリシー設定を使用してインストーラーでスクリプトが実行されているためです。
 
-この問題を解決するには、サーバーで [[スクリプト実行を有効にする]](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) グループ ポリシー設定を一時的に無効にします。 エージェントのインストールが完了したら、グループ ポリシー設定を再度有効にすることができます。
+この問題を解決するには、サーバーで [[スクリプト実行を有効にする]](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) グループ ポリシー設定を一時的に無効にします。 エージェントのインストールが完了したら、このグループ ポリシー設定を再度有効にすることができます。
 
 <a id="agent-installation-on-DC"></a>**Active Directory ドメイン コントローラーにエージェントをインストールできない**  
 同期エージェントを Active Directory ドメイン コントローラーにインストールしようとしたが、PDC ロール所有者が Windows Server 2008 R2 (またはそれより前のバージョン) に存在する場合は、同期エージェントのインストールが失敗するという問題が発生することがあります。
@@ -258,7 +259,7 @@ Set-AzStorageSyncServerEndpoint `
 
 ![Azure portal のスクリーンショット](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="server"></a>[サーバー](#tab/server)
+# <a name="server"></a>[[サーバー]](#tab/server)
 イベント ビューアーの `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` にあるテレメトリ ログに移動します。 イベント 9102 は、完了した同期セッションに該当します。同期の最新の状態を調べるには、ID 9102 の最新のイベントを探します。 SyncDirection は、このセッションがアップロードとダウンロードのどちらだったかを示しています。 HResult が 0 の場合、同期セッションは成功しています。 HResult が 0 以外の場合は、同期中にエラーが発生したことを意味します。以下に示す一般的なエラーの一覧を参照してください。 PerItemErrorCount が 0 より大きい場合は、一部のファイルまたはフォルダーが正しく同期されなかったことを意味します。 HResult が 0 であるのに、PerItemErrorCount が 0 より大きい場合もあります。
 
 成功したアップロードの例を次に示します。 簡潔にするために、下の一覧では、各 9102 イベントに含まれる一部の値のみを示しています。 
@@ -293,7 +294,7 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 # <a name="portal"></a>[ポータル](#tab/portal1)
 同期グループ内で、問題のサーバー エンドポイントに移動して [同期アクティビティ] セクションを調べ、現在の同期セッション内のアップロード済みファイルとダウンロード済みファイルの数を確認します。 この状態は約 5 分遅れて表示されるため、この時間内に完了するほど小規模な同期セッションの場合は、ポータルでレポートされない可能性があります。 
 
-# <a name="server"></a>[サーバー](#tab/server)
+# <a name="server"></a>[[サーバー]](#tab/server)
 サーバーのテレメトリ ログ (イベント ビューアーで [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] に移動) で、最新の 9302 イベントを調べます。 このイベントは、現在の同期セッションの状態を示します。 TotalItemCount は同期が必要なファイルの数、AppliedItemCount はこれまでに同期されたファイルの数、PerItemErrorCount は同期が失敗しているファイルの数 (処理方法については後で説明します) を示します。
 
 ```
@@ -315,7 +316,7 @@ PerItemErrorCount: 1006.
 - [同期アクティビティ] フィールドに表示された残りの同期ファイル数が非常に少ないか、0 であること。
 - アップロードとダウンロードの両方で、[Files Not Syncing]\(同期していないファイル数\) フィールドが 0 であること。
 
-# <a name="server"></a>[サーバー](#tab/server)
+# <a name="server"></a>[[サーバー]](#tab/server)
 完了した同期セッションを調べます。これは、各サーバーのテレメトリ イベント ログ (イベント ビューアーで `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` に移動) で 9102 イベントとマークされています。 
 
 1. 特定のサーバー上で、アップロード セッションとダウンロード セッションが正常に完了したことを確認します。 そのためには、アップロードとダウンロードの両方で HResult と PerItemErrorCount が 0 であることを確認します (SyncDirection フィールドは、そのセッションがアップロード セッションとダウンロード セッションのどちらであるかを示します)。 最近完了した同期セッションが表示されていない場合は、同期セッションが現在進行中である可能性があります。この状況は、大量のデータを追加または変更した直後に発生することがあります。
@@ -358,6 +359,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | ファイルまたはディレクトリがスキップされましたが、次の同期セッション中に同期されます。 項目のダウンロード時にこのエラーがレポートされる場合は、ファイルまたはディレクトリの名前が高確率で無効になっています。 | ファイルのアップロード時にこのエラーがレポートされる場合は、必要なアクションはありません。 ファイルのダウンロード時にこのエラーがレポートされる場合は、問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](?tabs=portal1%252cazure-portal#handling-unsupported-characters)」をご覧ください。 |
 | 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | 同期先で項目が既に存在しているのに同期で変更が認識されないため、ファイルまたはディレクトリの作成を同期できません。 | 必要なアクションはありません。 同期先で変更の検出が実行されて、この新しい項目が同期で認識されると、同期によってこのエラーのログ記録が停止されます。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure ファイル共有の制限に達したため、ファイルを同期できません。 | この問題を解決するには、トラブルシューティング ガイドの「[Azure のファイル共有ストレージの上限に到達しました](?tabs=portal1%252cazure-portal#-2134351810)」をご覧ください。 |
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | ファイルは、サポートされていないソリューション (NTFS EFS など) によって暗号化されています。 | ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化](file-sync-planning.md#encryption)」セクションをご覧ください。 |
 | 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | ファイルは、DFS-R 読み取り専用レプリケーション フォルダーにあります。 | ファイルは、DFS-R 読み取り専用レプリケーション フォルダーにあります。 Azure Files Sync は DFS-R 読み取り専用レプリケーション フォルダーにおけるサーバー エンドポイントをサポートしません。 詳細については、[計画ガイド](file-sync-planning.md#distributed-file-system-dfs)を参照してください。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | ファイルは削除保留中の状態です。 | 必要なアクションはありません。 開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | ストレージ アカウントでファイアウォールと仮想ネットワークの設定が有効になっていて、サーバーにそのストレージ アカウントへのアクセス権がないため、ファイルを同期できません。 | デプロイ ガイドの「[ファイアウォールと仮想ネットワークの設定を構成する](file-sync-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings)」セクションに記載されている手順に従い、サーバー IP アドレスまたは仮想ネットワークを追加します。 |

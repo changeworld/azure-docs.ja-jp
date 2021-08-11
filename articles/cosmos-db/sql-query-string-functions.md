@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 05/26/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 4fe60a119626dca51f5dd4f38a81f6a2ef99c83c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6051e659502a9dbccf653a2b5009affe343b9df4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743725"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539191"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>文字列関数 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,9 +22,9 @@ ms.locfileid: "108743725"
 
 ## <a name="functions"></a>関数
 
-次のスカラー関数は、文字列入力値に対して演算を実行し、文字列、数値またはブール値を返します。
-  
-| システム関数                                 | インデックスの使用量        | [スカラー集計関数](index-overview.md#index-utilization-for-scalar-aggregate-functions)を使用したクエリでのインデックスの使用 | 解説                                                      |
+以下のスカラー関数は、文字列入力値に対して演算を実行し、文字列、数値、ブール値のいずれかを返します。 **[インデックスの使用量]** 列は、文字列システム関数と他の値を、等価フィルターで比較していることを前提としています (該当する場合)。
+
+| システム関数                                 | インデックスの使用量        | [スカラー集計関数を使用したクエリでのインデックスの使用](index-overview.md#index-utilization-for-scalar-aggregate-functions) | 解説                                                      |
 | ----------------------------------------------- | ------------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
 | [CONCAT](sql-query-concat.md)                   | フル スキャン          | フル スキャン                                              |                                                              |
 | [CONTAINS](sql-query-contains.md)               | フル インデックス スキャン    | フル スキャン                                              |                                                              |

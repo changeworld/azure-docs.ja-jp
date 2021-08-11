@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c3d80a97b7be3127caaa4ce86dac8435dec1666
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98938473"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438452"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory での統合されたセキュリティ情報の登録の概要
 
-統合された登録の前、ユーザーは Azure AD Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
+統合された登録の前、ユーザーは Azure AD Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Multi-Factor Authentication と SSPR に同様の方法が使用されることに困惑しましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Multi-Factor Authentication と SSPR の両方の利点を得ることができます。 「[Azure AD の SSPR を有効にして構成する方法](https://www.youtube.com/watch?v=rA8TvhNcCvQ)」の動画をぜひご覧ください
 
 > [!NOTE]
 > 2020 年 8 月 15 日以降は、すべての新しい Azure AD テナントで、統合された登録が自動的に有効になります。 

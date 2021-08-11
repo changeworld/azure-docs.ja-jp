@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 541af6d0051d06de5721b22616fbf1e2867b71d6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 27bb3f163dc8f1a2f50e39ca5bbb5708419cb171
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833366"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073902"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限を設定する
 
@@ -200,6 +200,9 @@ PowerShell の例:
     --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
   ```
 
+   > [!NOTE]
+   > Azure CLI でサービス タグ、HTTP ヘッダー、またはマルチソース規則を操作するには、バージョン 2.23.0 以降が必要です。 インストールされているモジュールのバージョンを確認するには、```az version``` を使用します。
+
 * [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule) を使用します。 次に例を示します。
 
 
@@ -208,7 +211,7 @@ PowerShell の例:
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > サービス タグ、HTTP ヘッダー、またはマルチソース規則を操作するには、バージョン 5.7.0 以降が必要です。 インストールされているモジュールのバージョンを確認するには、**Get-InstalledModule -Name Az** を使用します。
+   > Azure PowerShell でサービス タグ、HTTP ヘッダー、またはマルチソース規則を操作するには、バージョン 5.7.0 以降が必要です。 インストールされているモジュールのバージョンを確認するには、```Get-InstalledModule -Name Az``` を使用します。
 
 次のいずれかを行うことにより、手動で値を設定することもできます。
 

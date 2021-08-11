@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 05/19/2021
 ms.author: alkohli
-ms.openlocfilehash: a0e52d64625e8dc9d785a1e6f53db0042de8a1bf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d7dd4a3920e947469c85df0d9ab440d95ab7712d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126167"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466927"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -51,7 +51,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
 1. 次の説明に従って Azure Stack Edge Pro デバイスでネットワーク設定を完了していること。「[手順 1: Azure Stack Edge Pro デバイスを構成する](azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)」
 
-2. コンピューティング用のネットワーク インターフェイスを有効にします。 このネットワーク インターフェイスの IP を使用して、VM デプロイ用の仮想スイッチを作成します。 このプロセスは、次の手順で実行します。
+2. ネットワーク インターフェイスでコンピューティングを有効にしました。 このネットワーク インターフェイスの IP を使用して、VM デプロイ用の仮想スイッチを作成します。 このプロセスは、次の手順で実行します。
 
     1. **[コンピューティング]** に移動します。 仮想スイッチの作成に使用するネットワーク インターフェイスを選択します。
 
@@ -72,14 +72,14 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
 4. 自分の Azure Stack Edge Pro デバイス用に、Base-64 でエンコードされた *.cer* 証明書 (PEM 形式) を作成します。 この証明書が署名チェーンとしてあらかじめデバイスにアップロードされ、クライアントの信頼されたルート ストアにインストールされている必要があります。 また、このクライアントで Python が正しく動作するためには、この証明書が *pem* 形式になっている必要があります。
 
-    `certutil` コマンドを使用して、この証明書を `pem` 形式に変換してください。 このコマンドは、証明書が格納されているディレクトリで実行する必要があります。
+    [certutil](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc732443(v=ws.11)) コマンドでこの証明書を `pem` 形式に変換します。 このコマンドは、証明書が格納されているディレクトリで実行する必要があります。
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
     ```
     コマンドの使用例を次に示します。
 
-    ```powershell
+    ```output
     PS C:\Certificates> certutil.exe -encode aze-root.cer aze-root.pem
     Input Length = 2150
     Output Length = 3014
@@ -113,13 +113,17 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
 6. この手順で使用した [Python スクリプトをダウンロード](https://aka.ms/ase-vm-python)します。
 
+7. Azure CLI の環境を準備する:
+
+   [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
 ## <a name="step-1-set-up-azure-clipython-on-the-client"></a>手順 1:クライアントに Azure CLI と Python を設定する
 
 ### <a name="verify-profile-and-install-azure-cli"></a>プロファイルを確認して Azure CLI をインストールする
 
 <!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
-1. お使いのクライアントに Azure CLI をインストールします。 この例では、Azure CLI 2.0.80 がインストールされています。 Azure CLI のバージョンを確認するには、`az --version` コマンドを実行します。
+1. お使いのクライアントに Azure CLI をインストールします。 この例では、Azure CLI 2.0.80 がインストールされています。 Azure CLI のバージョンを確認するには、[az --version](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true#az_version) コマンドを実行します。
 
     次に示すのは、前述したコマンドのサンプル出力です。
 
@@ -153,7 +157,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
 3. この記事で使用されているサンプル スクリプトを実行するには、次のバージョンの Python ライブラリが必要となります。
 
-    ```powershell
+    ```
     azure-common==1.1.23
     azure-mgmt-resource==2.1.0
     azure-mgmt-network==2.7.0
@@ -163,6 +167,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     haikunator
     msrestazure==0.6.2
     ```
+
     これらのバージョンをインストールするには、次のコマンドを実行します。
 
     ```powershell
@@ -257,9 +262,9 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     
 ### <a name="connect-to-azure-stack-edge-pro"></a>Azure Stack Edge Pro に接続する
 
-1. `az cloud register` コマンドを実行して、自分の Azure Stack Edge Pro 環境を登録します。
+1. [az cloud register](/cli/azure/cloud?view=azure-cli-latest&preserve-view=true#az_cloud_register) コマンドを実行して、Azure Stack Edge Pro 環境を登録します。
 
-    一部のシナリオでは、インターネットへの直接送信接続がプロキシまたはファイアウォール経由でルーティングされ、SSL インターセプトが適用されます。 このような場合は、az cloud register コマンドが、"\"クラウドからエンドポイントを取得できない\"" といったエラーで失敗するおそれがあります。このエラーを回避するには、Windows PowerShell で次の環境変数を設定します。
+    一部のシナリオでは、インターネットへの直接送信接続がプロキシまたはファイアウォール経由でルーティングされ、SSL インターセプトが適用されます。 この場合 “\"クラウドからエンドポイントを取得できません\"” などのエラーが出て、`az cloud register` コマンドが失敗する場合があります。このエラーを回避するには、Windows PowerShell で次の環境変数を設定します。
 
     ```powershell
     $ENV:AZURE_CLI_DISABLE_CONNECTION_VERIFICATION = 1 
@@ -276,31 +281,31 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     $ENV:PRIVATE_IP_ADDRESS = "5.5.174.126"
     ```
 
-3. お客様の環境を登録します。 az cloud register を実行するときに、次のパラメーターを使用します。
+3. お客様の環境を登録します。 次のパラメーターを使用して [az cloud register](/cli/azure/cloud?view=azure-cli-latest&preserve-view=true#az_cloud_register) を実行します。
 
     | 値 | 説明 | 例 |
     | --- | --- | --- |
     | 環境名 | 接続しようとしている環境の名前 | 名前を指定します (例: `aze-environ`)。 |
     | Resource Manager エンドポイント | この URL は `https://Management.<appliancename><dnsdomain>` です。 <br> この URL を取得するには、自分のデバイスのローカル Web UI で **[デバイス]** ページに移動します。 |たとえば、「 `https://management.team3device.teatraining1.com` 」のように入力します。  |
     
-    ```powershell
+    ```azurecli
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.<appliance name>.<DNS domain>"
     ```
     次に示すのは、前述したコマンドの使用例です。
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az cloud register -n az-new-env --endpoint-resource-manager "https://management.team3device.teatraining1.com"
     ```
     
     
-4. 次のコマンドを使用して、アクティブな環境を設定します。
+4. 次のコマンドでアクティブな環境を設定します。
 
-    ```powershell
+    ```azurecli
     az cloud set -n <EnvironmentName>
     ```
     次に示すのは、前述したコマンドの使用例です。
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az cloud set -n az-new-env
     Switched active cloud to 'az-new-env'.
     Use 'az login' to log in to this cloud.
@@ -308,7 +313,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. `az login` コマンドを使用して、Azure Stack Edge Pro 環境にサインインします。 Azure Stack Edge Pro 環境には、ユーザーまたは[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)としてサインインできます。
+4. [az login](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true#az_login) コマンドで Azure Stack Edge Pro 環境にサインインします。 Azure Stack Edge Pro 環境には、ユーザーまたは[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)としてサインインできます。
 
    これらの手順に従い、"*ユーザー*" としてサインインします。
 
@@ -316,7 +321,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
    `az login` の使用例を次に示します。
     
-    ```powershell
+    ```azurecli
     PS C:\Certificates> az login -u EdgeARMuser
     ```
    login コマンドの使用後、パスワードを入力するように求められます。 Azure Resource Manager のパスワードを入力してください。
@@ -353,22 +358,23 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   Azure Resource Manager クライアント ID はハードコーディングされています。 ご利用の Azure Resource Manager テナント ID および Azure Resource Manager サブスクリプション ID はどちらも、以前に実行した `az login` コマンドの出力にあります。 Azure Resource Manager のクライアント シークレットは、自分が設定した Azure Resource Manager のパスワードです。
+   Azure Resource Manager クライアント ID はハードコーディングされています。 Azure Resource Manager Tenant ID と Azure Resource Manager Subscription ID はどちらも、前に実行した `az login` コマンドの出力に表示されます。 Azure Resource Manager のクライアント シークレットは、自分が設定した Azure Resource Manager のパスワードです。
 
    詳細については、[Azure Resource Manager のパスワード](./azure-stack-edge-gpu-set-azure-resource-manager-password.md)に関するページを参照してください。
 
 5. プロファイルをバージョン 2019-03-01-hybrid に変更します。 プロファイルのバージョンを変更するには、次のコマンドを実行します。
 
-    ```powershell
+    ```azurecli
     az cloud update --profile 2019-03-01-hybrid
     ```
 
     `az cloud update` の使用例を次に示します。
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az cloud update --profile 2019-03-01-hybrid
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
+<!--Sample is identical to the preceding sample, with window dressing.-->
 
 ## <a name="step-2-create-a-vm"></a>手順 2:VM の作成
 
@@ -376,14 +382,17 @@ VM を作成するための Python スクリプトが用意されています。
 
 1. Python のインストール先と同じディレクトリから Python スクリプトを実行します。
 
-    `.\python.exe example_dbe_arguments_name_https.py cli`
+```powershell
+.\python.exe example_dbe_arguments_name_https.py cli
+```
+<!--Please verify: This is a PowerShell script? (For consistency, I converted the code-formatted setoff line to a code block.)-->
 
 2. スクリプトの実行時、VHD のアップロードには 20 分から 30 分かかります。 アップロード操作の進行状況を確認するには、Azure Storage Explorer または AzCopy を使用できます。
 
     以下に示すのは、スクリプトの実行に成功した場合のサンプル出力です。 このスクリプトによって、すべてのリソースが 1 つのリソース グループ内に作成され、それらのリソースを使用して VM が作成されます。そして最後に、作成されたすべてのリソースを含むリソース グループが削除されます。
 
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe example_dbe_arguments_name_https.py cli
     
     Create Resource Group
