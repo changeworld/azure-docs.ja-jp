@@ -13,8 +13,12 @@
     - name: Windows Server 用 Automanage
       href: automanage-windows-server.md
       items:
+        - name: Windows Server サービス用 Automanage (プレビュー)
+          href: automanage-windows-server-services-overview.md
         - name: 新しい仮想マシンのホットパッチ
           href: automanage-hotpatch.md
+    - name: Arc 対応サーバー用 Automanage
+      href: automanage-arc.md
     - name: Automanage アカウント
       href: automanage-account.md
 - name: 方法
@@ -36,6 +40,6 @@
   expanded: true
   items:
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
     - name: クラウド導入フレームワーク
       href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'

@@ -7,22 +7,22 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 5/21/2021
-ms.openlocfilehash: d095eddf150990ac5ab76f0753cae2bc44537c88
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ff038a585d1c11c318c3d3225ef6cc45a8865659
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471812"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088550"
 ---
 # <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql"></a>Azure Database for MySQL への移行中または移行後によく発生するエラー
 
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 Azure Database for MySQL は、MySQL のコミュニティ バージョンを利用したフル マネージド サービスです。 マネージド サービス環境での MySQL エクスペリエンスは、独自の環境で MySQL を実行する場合と異なることがあります。 この記事では、初めて Azure Database for MySQL への移行や開発を行うときにユーザーが遭遇する可能性のある一般的なエラーについて説明します。
 
 ## <a name="common-connection-errors"></a>一般的な接続エラー
 
-#### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (エラー 1184 (08S01): db への接続 22 を中止: 'db-name' ユーザー: 'user' ホスト: 'hostIP' (init_connect コマンドに失敗しました))
+### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (エラー 1184 (08S01): db への接続 22 を中止: 'db-name' ユーザー: 'user' ホスト: 'hostIP' (init_connect コマンドに失敗しました))
 
 上記のエラーは、サインインに成功後、セッションが確立されたとき、いずれかのコマンドを実行する前に発生します。 上記のメッセージは、`init_connect` サーバー パラメーターに設定した値に誤りがあり、それが原因でセッションの初期化に失敗していることを示しています。
 
@@ -36,7 +36,7 @@ mysql> show databases; ERROR 2006 (HY000):MySQL server has gone away No connecti
 
 SUPER 権限と DBA ロールはサービスでサポートされていません。 その結果、次のような一般的なエラーが発生する可能性があります。
 
-#### <a name="error-1419-you-do-not-have-the-super-privilege-and-binary-logging-is-enabled-you-might-want-to-use-the-less-safe-log_bin_trust_function_creators-variable"></a>ERROR 1419 (エラー 1419):  (SUPER 権限を持っておらず、バイナリ ログが有効になっています (より安全度の低い log_bin_trust_function_creators 変数を使用 "*することもできます*"))
+### <a name="error-1419-you-do-not-have-the-super-privilege-and-binary-logging-is-enabled-you-might-want-to-use-the-less-safe-log_bin_trust_function_creators-variable"></a>ERROR 1419 (エラー 1419):  (SUPER 権限を持っておらず、バイナリ ログが有効になっています (より安全度の低い log_bin_trust_function_creators 変数を使用 "*することもできます*"))
 
 上記のエラーは、以下のような関数およびトリガーの作成中、またはスキーマのインポート中に発生する可能性があります。 CREATE FUNCTION や CREATE TRIGGER などの DDL ステートメントはバイナリ ログに書き込まれるため、セカンダリ レプリカでそれらを実行することができます。 レプリカ SQL スレッドには完全な特権があり、これを利用して特権を昇格できます。 バイナリ ログが有効になっているサーバーのこの危険を防ぐため、MySQL エンジンでは、ストアド関数の作成者が通常の CREATE ROUTINE 特権に加えて SUPER 特権を保有していることが求められます。
 
@@ -102,7 +102,7 @@ SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN; SET @@SESSION.SQL_LOG_BIN= 
 
 Azure Database for MySQL サーバーが作成されると、サーバー管理者サインインは、サーバーの作成時にエンド ユーザーによって提供されます。 サーバー管理者サインインを使用すると、新しいデータベースの作成、新しいユーザーの追加、アクセス許可の付与を行うことができます。 サーバー管理者サインインが削除された場合、そのアクセス許可が取り消された場合、またはパスワードが変更された場合、接続中にアプリケーションで接続エラーが表示され始める可能性があります。 一般的なエラーの一部を次に示します
 
-#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>ERROR 1045 (28000) (エラー 1045 (28000)): Access denied for user "username"@"IP address" (using password: YES) (次のユーザーのアクセスが拒否されました: "username"@"IP address" (使用したパスワード:Yes))
+### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>ERROR 1045 (28000) (エラー 1045 (28000)): Access denied for user "username"@"IP address" (using password: YES) (次のユーザーのアクセスが拒否されました: "username"@"IP address" (使用したパスワード:Yes))
 
 上記のエラーは、次の場合に発生します。
 

@@ -2,20 +2,20 @@
 title: キーについて - Azure Key Vault
 description: キーに関する Azure Key Vault の REST インターフェイスと開発者の詳細の概要です。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
-ms.author: ambapat
-ms.openlocfilehash: b9565095a40052a940d7a7b31f0fd3a27e0e75c2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.author: mbaldwin
+ms.openlocfilehash: 602c146b014d2c129deb7a6cb4539e2cf9260d0c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814998"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471737"
 ---
 # <a name="about-keys"></a>キーについて
 

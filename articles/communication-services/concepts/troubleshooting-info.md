@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 06ba8675b0d393b85ef5748df6d0250257324808
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 66f2091087ed3602e929b584f7a311f4ebb05f88
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108605"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292517"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Communication Services でのトラブルシューティング
 
@@ -181,7 +181,7 @@ Azure Communication Services の Calling SDK では、通話の問題のトラ�
 
 | エラー コード | 説明 | 実行するアクション |
 | -------- | ---------------| ---------------|
-| 403 | 禁止または認証エラー。 | Communication Services トークンが有効であり、有効期限が切れていないことを確認します。 Teams の相互運用性を使用している場合は、Teams テナントがプレビュー アクセス許可リストに追加されていることを確認します。 [チームのテナント相互運用性](https://docs.microsoft.com/azure/communication-services/concepts/teams-interop)を有効または無効にするには、[このフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)を完成させてください。|
+| 403 | 禁止または認証エラー。 | Communication Services トークンが有効であり、有効期限が切れていないことを確認します。 Teams の相互運用性を使用している場合は、Teams テナントがプレビュー アクセス許可リストに追加されていることを確認します。 [チームのテナント相互運用性](./teams-interop.md)を有効または無効にするには、[このフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)を完成させてください。|
 | 404 | 通話が見つかりません。 | 通話先の番号 (または参加している通話) が存在することを確認します。 |
 | 408 | 通話コントローラーがタイムアウトしました。 | ユーザー エンドポイントからのプロトコル メッセージの待機中に通話コントローラーがタイムアウトしました。 クライアントが接続され、使用可能であることを確認します。 |
 | 410 | ローカル メディア スタックまたはメディア インフラストラクチャ エラー。 | サポートされている環境で最新の SDK を使用していることを確認します。 |

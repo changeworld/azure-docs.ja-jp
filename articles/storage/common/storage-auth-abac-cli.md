@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: a2cf4c19e21ad13a2a79343713e9a0494eff0704
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b05dbeeb69cee8afd3c237b3fbc2c3e59fef238f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489422"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288057"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-cli-preview"></a>チュートリアル: Azure CLI を使用してロールの割り当て条件を追加し、BLOB へのアクセスを制限する (プレビュー)
 
@@ -82,8 +82,6 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     ```azurecli
     subscriptionId="<subscriptionId>"
     ```
-
-1. まだの場合には、BLOB インデックス タグの利用のためにサブスクリプションを登録します。 詳細については、「[サブスクリプションを登録する (プレビュー)](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview)」を参照してください。
 
 ## <a name="step-2-create-a-user"></a>手順 2 - ユーザーを作成する
 

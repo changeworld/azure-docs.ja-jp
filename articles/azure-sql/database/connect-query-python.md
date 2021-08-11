@@ -12,12 +12,12 @@ author: dzsquared
 ms.author: drskwier
 ms.reviewer: mathoma
 ms.date: 12/19/2020
-ms.openlocfilehash: d6926994022400ab806a3604186a22f6357eb795
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: ca6f5b9107daa321f6451ca63100f493aa081ba2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704544"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466994"
 ---
 # <a name="quickstart-use-python-to-query-a-database"></a>クイックスタート: Python を使用してデータベースを照会する
 
@@ -59,10 +59,10 @@ Python と Azure SQL Database のデータベースの詳細については、�
    server = '<server>.database.windows.net'
    database = '<database>'
    username = '<username>'
-   password = '<password>'   
+   password = '{<password>}'   
    driver= '{ODBC Driver 17 for SQL Server}'
    
-   with pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
+   with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
        with conn.cursor() as cursor:
            cursor.execute("SELECT TOP 3 name, collation_name FROM sys.databases")
            row = cursor.fetchone()

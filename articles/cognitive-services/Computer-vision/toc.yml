@@ -93,7 +93,7 @@ items:
           - name: 画像処理アプリの探索
             href: Tutorials/CSharpTutorial.md
           - name: その他のサンプル
-            href: /samples/browse/?products=azure&terms=computer-vision
+            href: /samples/browse/?products=azure&terms=analyze-image
       - name: 攻略ガイド
         items:
           - name: 画像分析 API の呼び出し

@@ -1,19 +1,19 @@
 ---
 title: 'チュートリアル: Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む Java アプリ'
 description: このチュートリアルでは、Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル ユーザー データを読み込む方法を示します。
-author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 05/20/2019
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: ad3dfc8c86d22e58377ebfbdb94b2beb004ded56
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cbc11cae00bcec3ba59b4d0f391458ce6e91f77a
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93092468"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355719"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>チュートリアル: Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]

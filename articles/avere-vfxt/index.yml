@@ -9,12 +9,12 @@ metadata:
   author: ronhogue
   ms.author: rohogue
   ms.date: 03/11/2020
-  ms.openlocfilehash: 9b80c5dae1b9b08a5fc71c321813a28b576e0de4
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 05705e40848eb4af4bb64912ba2416be59987d10
+  ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "79297783"
+  ms.lasthandoff: 07/13/2021
+  ms.locfileid: "113651599"
 landingContent:
 - title: Avere vFXT for Azure について
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: よく寄せられる質問
-      url: avere-vfxt-faq.md
+      url: avere-vfxt-faq.yml
 - title: 計画と準備
   linkLists:
   - linkListType: concept

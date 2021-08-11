@@ -92,7 +92,7 @@
         - name: ロールのスタートアップ エラー
           href: role-startup-failure.md
         - name: よく寄せられる質問
-          href: faq.md
+          href: faq.yml
 - name: サンプル
   items:
     - name: サンプル テンプレート

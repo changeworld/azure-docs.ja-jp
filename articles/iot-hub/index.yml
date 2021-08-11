@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 06950bec1cdc7e5abc08f147417df6f1da8c502e
-  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+  ms.openlocfilehash: 5c4b17d0e725200250b6a01212edb374d3e21ff9
+  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/28/2021
-  ms.locfileid: "108133549"
+  ms.lasthandoff: 07/28/2021
+  ms.locfileid: "114731768"
 landingContent:
 - title: 作業の開始
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
     - text: CLI を使用してデバイスからハブにテレメトリを送信する
       url: quickstart-send-telemetry-cli.md
     - text: ハブに接続されたデバイスを制御する
-      url: quickstart-control-device-node.md
+      url: quickstart-control-device.md
   - linkListType: get-started
     links:
     - text: デバイス管理
@@ -117,7 +117,7 @@ landingContent:
     - text: VS Code 用の IoT ツールを使用する
       url: iot-hub-create-use-iot-toolkit.md
     - text: IoT エクスプローラー
-      url: ../iot-pnp/howto-use-iot-explorer.md
+      url: ../iot-fundamentals/howto-use-iot-explorer.md
 - title: IoT Hub の監視とトラブルシューティング
   linkLists:
   - linkListType: how-to-guide

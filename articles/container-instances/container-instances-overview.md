@@ -4,12 +4,12 @@ description: Azure Container Instances サービスには、仮想マシンを�
 ms.topic: overview
 ms.date: 03/22/2021
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a93bb81fc2d9f3abc9994921ad3ec689737d4588
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 4574802b86e517eac5a908b03759dcca3f17d9b3
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113214499"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292308"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 

@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 06/23/2020
-  ms.openlocfilehash: f76c64156ac36492ca428bb661704feb78ccded4
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.date: 07/23/2021
+  ms.openlocfilehash: 3d6eb1645bec3d6a6da09b0ecefce0f894018280
+  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112060671"
+  ms.lasthandoff: 07/24/2021
+  ms.locfileid: "114667293"
 landingContent:
 - title: Event Hubs について
   linkLists:

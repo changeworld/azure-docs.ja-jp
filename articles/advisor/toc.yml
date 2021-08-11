@@ -21,6 +21,10 @@
   items:
     - name: Advisor の使用を開始する
       href: advisor-get-started.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 操作方法ガイド
   items:
     - name: '[信頼性]'

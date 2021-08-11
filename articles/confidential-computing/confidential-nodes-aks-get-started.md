@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: b7dd9685be5e0928743eaf9a541c88de6a49a36c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 950f6fa47de273534a4636796351dd3640628dda
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891251"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551238"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>クイックスタート: コンフィデンシャル コンピューティング ノードを含む AKS クラスターを Azure CLI を使用してデプロイする
 
@@ -25,8 +25,8 @@ AKS は、開発者またはクラスター オペレーターが迅速にクラ
 
 - Linux コンテナーをサポートする Linux ワーカー ノード。
 - 第 2 世代仮想マシン (VM) と Ubuntu 18.04 の VM ノード。
-- Intel SGX 対応 CPU。EPC (Encrypted Page Cache Memory) を活用し、機密性が保護されたエンクレーブ内でコンテナーを実行するのに役立ちます。 詳細については、「[Azure コンフィデンシャル コンピューティングについてよく寄せられる質問](./faq.md)」を参照してください。
-- コンフィデンシャル コンピューティング ノードと共にプレインストールされた Intel SGX DCAP ドライバー。 詳細については、「[Azure コンフィデンシャル コンピューティングについてよく寄せられる質問](./faq.md)」を参照してください。
+- Intel SGX 対応 CPU。EPC (Encrypted Page Cache Memory) を活用し、機密性が保護されたエンクレーブ内でコンテナーを実行するのに役立ちます。 詳細については、「[Azure コンフィデンシャル コンピューティングについてよく寄せられる質問](./faq.yml)」を参照してください。
+- コンフィデンシャル コンピューティング ノードと共にプレインストールされた Intel SGX DCAP ドライバー。 詳細については、「[Azure コンフィデンシャル コンピューティングについてよく寄せられる質問](./faq.yml)」を参照してください。
 
 > [!NOTE]
 > DCsv2 VM には、より高い価格が適用され、利用可能なリージョンが限られる特殊なハードウェアが使用されます。 詳細については、[利用可能な SKU とサポートされるリージョン](virtual-machine-solutions.md)に関するページを参照してください。

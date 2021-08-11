@@ -7,14 +7,14 @@ ms.author: sujie
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 104dfe7b2ce253d7ae42c7484532cfd5b2993aec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd74787c1e9ad158becf54f4b2b00bb71317e81d
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98014613"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221788"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>クイック スタート:Visual Studio Code で Azure Stream Analytics ジョブを作成する (プレビュー)
+# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code"></a>クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する
 
 このクイックスタートでは、Visual Studio Code 用の Azure Stream Analytics ツール拡張機能を使用して、Azure Stream Analytics ジョブを作成および実行する方法について説明します。 サンプル ジョブでは、Azure IoT Hub デバイスからストリーミング データを読み取ります。 温度が 27 度を超えるときに平均温度を計算し、結果の出力イベントを BLOB ストレージ内の新しいファイルに書き込むジョブを定義します。
 

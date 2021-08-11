@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-java
-ms.openlocfilehash: f49de67504c3d3fea39d4c12ab4b06790693ad68
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 761bbd26ac20b4fad6f6ccb444504e4f2cfd1bac
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351965"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285748"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>クイック スタート:Java と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -33,7 +33,7 @@ ms.locfileid: "96351965"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit(JDK) 7 または 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+* [Java Development Kit(JDK) 7 または 8](/azure/developer/java/fundamentals/java-support-on-azure)。
 * [Gson ライブラリ](https://github.com/google/gson)。
 
 

@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dominicbetts
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/15/2019
-ms.openlocfilehash: 647226091c3e15a19bf8262c23e62d95018488b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4e4d6858ce03c0a7015f6754018c509c738f8da
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831207"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400088"
 ---
 引き続きその他の IoT プラグ アンド プレイの記事に進む場合は、この記事で使用したリソースを保持し、再使用できます。 それ以外の場合、追加料金が発生するのを防ぐために、この記事で作成したリソースは削除してください。
 

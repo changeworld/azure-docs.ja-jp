@@ -9,12 +9,6 @@
     - name: 産業用 IoT
       href: overview-iot-industrial.md
       items:
-        - name: OPC Twin とは
-          href: overview-opc-twin.md
-        - name: OPC Vault とは
-          href: overview-opc-vault.md
-        - name: OPC Publisher とは
-          href: overview-opc-publisher.md
         - name: コネクテッド ファクトリとは
           href: iot-accelerators-connected-factory-features.md
 - name: クイックスタート
@@ -22,14 +16,6 @@
     - name: コネクテッド ファクトリ ソリューションを試す
       href: quickstart-connected-factory-deploy.md
   expanded: true
-- name: 概念
-  items:
-    - name: 産業用 IoT
-      items:
-        - name: OPC Twin のアーキテクチャ
-          href: overview-opc-twin-architecture.md
-        - name: OPC Vault のアーキテクチャ
-          href: overview-opc-vault-architecture.md
 - name: 操作方法ガイド
   items:
     - name: 産業用 IoT
@@ -42,30 +28,6 @@
               href: iot-accelerators-connected-factory-configure.md
             - name: ソリューション アクセラレータのカスタマイズ
               href: iot-accelerators-connected-factory-customize.md
-        - name: OPC Twin
-          items:
-            - name: OPC Twin サービスをデプロイする
-              href: howto-opc-twin-deploy-existing.md
-            - name: IoT Edge に OPC Twin モジュールをデプロイする
-              href: howto-opc-twin-deploy-modules.md
-            - name: OPC Twin の依存関係のみをデプロイする
-              href: howto-opc-twin-deploy-dependencies.md
-        - name: OPC Vault
-          items:
-            - name: OPC Vault サービスをデプロイする
-              href: howto-opc-vault-deploy.md
-            - name: OPC Vault サービスを管理する
-              href: howto-opc-vault-manage.md
-            - name: OPC UA デバイスと OPC Vault の通信をセキュリティで保護する
-              href: howto-opc-vault-secure.md
-            - name: OPC Vault サービスを安全に運用する
-              href: howto-opc-vault-secure-ca.md
-        - name: OPC Publisher
-          items:
-            - name: OPC Publisher の構成
-              href: howto-opc-publisher-configure.md
-            - name: OPC Publisher の実行
-              href: howto-opc-publisher-run.md
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
@@ -85,7 +47,7 @@
         - name: IoT ソリューション アクセラレータ
           href: ./index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights
@@ -108,8 +70,8 @@
     - name: よく寄せられる質問
       items:
         - name: ソリューション アクセラレータに関する FAQ
-          href: iot-accelerators-faq.md
+          href: iot-accelerators-faq.yml
         - name: 接続済みファクトリに関する FAQ
-          href: iot-accelerators-faq-cf.md
+          href: iot-accelerators-faq-cf.yml
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

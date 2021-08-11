@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API の概要
 description: Azure Cosmos DB を使用し、Apache TinkerPop の Gremlin グラフ クエリ言語を使って待ち時間の短い大規模なグラフの格納、クエリの実行、トラバースを行う方法について説明します。
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 03/22/2021
-ms.author: chrande
-ms.openlocfilehash: ffe11fafa6ba217572f9d12d40324a5201b62630
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.date: 07/26/2021
+author: manishmsfte
+ms.author: mansha
+ms.openlocfilehash: 0454fc76b089a3959d522b812177c6ca3a679deb
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801691"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690517"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB での Gremlin API の概要
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

@@ -162,6 +162,6 @@
     - name: 対応リージョン
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
     - name: FAQ
-      href: faq-edge.md
+      href: faq-edge.yml
     - name: クォータと制限
       href: quotas-limitations.md

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2021
+ms.date: 07/08/2021
 ms.author: aahi
 keywords: テキスト マイニング, センチメント分析, テキスト分析
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: dadf293369071ff4f6dd95c3167754f16e952864
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 69026d9abd8e0f3a978d9c327e9cb9c2e0140d04
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026923"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565780"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-and-rest-api"></a>クイックスタート: Text Analytics クライアント ライブラリおよび REST API を使用する
 
@@ -35,7 +35,7 @@ ms.locfileid: "112026923"
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新の安定バージョンは `3.0` です。
+> * Text Analytics API の最新の安定バージョンは `3.1` です。
 >    * 必ず、使用するバージョンの手順にのみ従ってください。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
 > * Text Analytics for Health または非同期操作を使用する場合は、Github で [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)、または [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 用の例を参照してください。
@@ -47,7 +47,7 @@ ms.locfileid: "112026923"
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新の安定バージョンは `3.0` です。
+> * Text Analytics API の最新の安定バージョンは `3.1` です。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
 Text Analytics for Health または非同期操作を使用する場合は、Github で [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)、または [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 用の例を参照してください。
 
@@ -58,7 +58,7 @@ Text Analytics for Health または非同期操作を使用する場合は、Git
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新の安定バージョンは `3.0` です。
+> * Text Analytics API の最新の安定バージョンは `3.1` です。
 >    * 必ず、使用するバージョンの手順にのみ従ってください。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
 > * このバージョンの Text Analytics クライアント ライブラリは、[お使いのブラウザー](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)でも実行できます。
@@ -70,7 +70,7 @@ Text Analytics for Health または非同期操作を使用する場合は、Git
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新の安定バージョンは `3.0` です。
+> * Text Analytics API の最新の安定バージョンは `3.1` です。
 >    * 必ず、使用するバージョンの手順にのみ従ってください。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。 Text Analytics for Health または非同期操作を使用する場合は、Github で [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)、または [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 用の例を参照してください。
 
@@ -81,7 +81,7 @@ Text Analytics for Health または非同期操作を使用する場合は、Git
 ::: zone pivot="rest-api"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新の安定バージョンは `3.0` です。
+> * Text Analytics API の最新の安定バージョンは `3.1` です。
 >    * 必ず、使用するバージョンの手順にのみ従ってください。
 
 [!INCLUDE [REST API quickstart](../includes/quickstarts/rest-api.md)]

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 48a4c23fac5dd6b5d18de7f62bd38c4a78a5ce18
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 655c5d80f1fb4e047a3cd9cc751a853815a70a68
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104194"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114671159"
 ---
 このクイックスタートでは、Speech SDK を使用した Speaker Recognition の基本的な設計パターンについて学習します。これには次のものが含まれます。
 
@@ -61,7 +61,7 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_dependent_verification":::
 
-この関数では、[CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) メソッドを使用して [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) オブジェクトを作成します。 `VoiceProfile` には次の 3 つの[種類](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#enum-voiceprofiletype)があることに注意してください。
+この関数では、[CreateProfileAsync](/cpp/cognitive-services/speech/speaker-voiceprofileclient#createprofileasync) メソッドを使用して [VoiceProfile](/cpp/cognitive-services/speech/speaker-voiceprofile) オブジェクトを作成します。 `VoiceProfile` には次の 3 つの[種類](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#enum-voiceprofiletype)があることに注意してください。
 
 - TextIndependentIdentification
 - TextDependentVerification
@@ -69,7 +69,7 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 この場合は、`VoiceProfileType::TextDependentVerification` を `CreateProfileAsync` に渡します。
 
-その後、次に定義する 2 つのヘルパー関数 `AddEnrollmentsToTextDependentProfile` と `SpeakerVerify` を呼び出します。 最後に、[DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) を呼び出してプロファイルをクリーンアップします。
+その後、次に定義する 2 つのヘルパー関数 `AddEnrollmentsToTextDependentProfile` と `SpeakerVerify` を呼び出します。 最後に、[DeleteProfileAsync](/cpp/cognitive-services/speech/speaker-voiceprofileclient#deleteprofileasync) を呼び出してプロファイルをクリーンアップします。
 
 ### <a name="addenrollmentstotextdependentprofile-function"></a>AddEnrollmentsToTextDependentProfile 関数
 
@@ -77,7 +77,7 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="add_enrollments_dependent":::
 
-この関数では、登録のために、必要となる残りのサンプルの数を追跡する `while` ループにオーディオ サンプルを登録します。 繰り返されるたびに、[EnrollProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) によって、マイクに向かってパスフレーズを読み上げるように求められ、サンプルが音声プロファイルに追加されます。
+この関数では、登録のために、必要となる残りのサンプルの数を追跡する `while` ループにオーディオ サンプルを登録します。 繰り返されるたびに、[EnrollProfileAsync](/cpp/cognitive-services/speech/speaker-voiceprofileclient#enrollprofileasync) によって、マイクに向かってパスフレーズを読み上げるように求められ、サンプルが音声プロファイルに追加されます。
 
 ### <a name="speakerverify-function"></a>SpeakerVerify 関数
 
@@ -85,9 +85,9 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="speaker_verify":::
 
-この関数では、[SpeakerVerificationModel::FromProfile](/cpp/cognitive-services/speech/speakerverificationmodel#fromprofile) メソッドを使用して [SpeakerVerificationModel](/cpp/cognitive-services/speech/speakerverificationmodel) オブジェクトを作成し、先ほど作成した [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) オブジェクトを渡します。
+この関数では、[SpeakerVerificationModel::FromProfile](/cpp/cognitive-services/speech/speaker-speakerverificationmodel#fromprofile) メソッドを使用して [SpeakerVerificationModel](/cpp/cognitive-services/speech/speaker-speakerverificationmodel) オブジェクトを作成し、先ほど作成した [VoiceProfile](/cpp/cognitive-services/speech/speaker-voiceprofile) オブジェクトを渡します。
 
-次に、[SpeechRecognizer::RecognizeOnceAsync](/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) により、パスフレーズをもう一度読み上げるように求められますが、今度は音声プロファイルに対して認証が行われ、0.0 から 1.0 の範囲の類似性スコアが返されます。 また、[SpeakerRecognitionResult](/cpp/cognitive-services/speech/speakerrecognitionresult) オブジェクトでは、パスフレーズが一致するかどうかに基づいて、`Accept` または `Reject` も返されます。
+次に、[SpeechRecognizer::RecognizeOnceAsync](/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) により、パスフレーズをもう一度読み上げるように求められますが、今度は音声プロファイルに対して認証が行われ、0.0 から 1.0 の範囲の類似性スコアが返されます。 また、[SpeakerRecognitionResult](/cpp/cognitive-services/speech/speaker-speakerrecognitionresult) オブジェクトでは、パスフレーズが一致するかどうかに基づいて、`Accept` または `Reject` も返されます。
 
 ## <a name="text-independent-verification"></a>テキストに依存しない認証
 
@@ -102,11 +102,11 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_independent_verification":::
 
-`TextDependentVerification` 関数と同様に、この関数では、[CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) メソッドを使用して [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) オブジェクトを作成します。
+`TextDependentVerification` 関数と同様に、この関数では、[CreateProfileAsync](/cpp/cognitive-services/speech/speaker-voiceprofileclient#createprofileasync) メソッドを使用して [VoiceProfile](/cpp/cognitive-services/speech/speaker-voiceprofile) オブジェクトを作成します。
 
 この場合は、`VoiceProfileType::TextIndependentVerification` を `CreateProfileAsync` に渡します。
 
-その後、2 つのヘルパー関数を呼び出します。1 つは次に定義する `AddEnrollmentsToTextIndependentProfile`、もう 1 つは既に定義した `SpeakerVerify` です。 最後に、[DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) を呼び出してプロファイルをクリーンアップします。
+その後、2 つのヘルパー関数を呼び出します。1 つは次に定義する `AddEnrollmentsToTextIndependentProfile`、もう 1 つは既に定義した `SpeakerVerify` です。 最後に、[DeleteProfileAsync](/cpp/cognitive-services/speech/speaker-voiceprofileclient#deleteprofileasync) を呼び出してプロファイルをクリーンアップします。
 
 ### <a name="addenrollmentstotextindependentprofile"></a>AddEnrollmentsToTextIndependentProfile
 
@@ -114,7 +114,7 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="add_enrollments_independent":::
 
-この関数では、登録のために、必要となる残りのオーディオの秒数を追跡する `while` ループにオーディオ サンプルを登録します。 繰り返されるたびに、[EnrollProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) によって、マイクに向かって話すように求められ、サンプルが音声プロファイルに追加されます。
+この関数では、登録のために、必要となる残りのオーディオの秒数を追跡する `while` ループにオーディオ サンプルを登録します。 繰り返されるたびに、[EnrollProfileAsync](/cpp/cognitive-services/speech/speaker-voiceprofileclient#enrollprofileasync) によって、マイクに向かって話すように求められ、サンプルが音声プロファイルに追加されます。
 
 ## <a name="speaker-identification"></a>話者識別
 
@@ -126,11 +126,11 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_independent_indentification":::
 
-`TextDependentVerification` および `TextIndependentVerification` 関数と同様に、この関数では、[CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) メソッドを使用して [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) オブジェクトを作成します。
+`TextDependentVerification` および `TextIndependentVerification` 関数と同様に、この関数では、[CreateProfileAsync](/cpp/cognitive-services/speech/speaker-voiceprofileclient#createprofileasync) メソッドを使用して [VoiceProfile](/cpp/cognitive-services/speech/speaker-voiceprofile) オブジェクトを作成します。
 
 この場合は、`VoiceProfileType::TextIndependentIdentification` を `CreateProfileAsync` に渡します。
 
-その後、2 つのヘルパー関数を呼び出します。1 つは既に定義した `AddEnrollmentsToTextIndependentProfile`、もう 1 つは次に定義する `SpeakerIdentify` です。 最後に、[DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) を呼び出してプロファイルをクリーンアップします。
+その後、2 つのヘルパー関数を呼び出します。1 つは既に定義した `AddEnrollmentsToTextIndependentProfile`、もう 1 つは次に定義する `SpeakerIdentify` です。 最後に、[DeleteProfileAsync](/cpp/cognitive-services/speech/speaker-voiceprofileclient#deleteprofileasync) を呼び出してプロファイルをクリーンアップします。
 
 ### <a name="speakeridentify-function"></a>SpeakerIdentify 関数
 
@@ -138,7 +138,7 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="speaker_identify":::
 
-この関数では、[SpeakerIdentificationModel::FromProfiles](/cpp/cognitive-services/speech/speakeridentificationmodel#fromprofiles) メソッドを使用して [SpeakerIdentificationModel](/cpp/cognitive-services/speech/speakeridentificationmodel) オブジェクトを作成します。 `SpeakerIdentificationModel::FromProfiles` は、[VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) オブジェクトのリストを受け取ります。 この場合は、先ほど作成した `VoiceProfile` オブジェクトを渡すだけです。 ただし、必要に応じて、それぞれが音声の異なるオーディオ サンプルに登録されている複数の `VoiceProfile` オブジェクトを渡すことができます。
+この関数では、[SpeakerIdentificationModel::FromProfiles](/cpp/cognitive-services/speech/speaker-speakeridentificationmodel#fromprofiles) メソッドを使用して [SpeakerIdentificationModel](/cpp/cognitive-services/speech/speaker-speakeridentificationmodel) オブジェクトを作成します。 `SpeakerIdentificationModel::FromProfiles` は、[VoiceProfile](/cpp/cognitive-services/speech/speaker-voiceprofile) オブジェクトのリストを受け取ります。 この場合は、先ほど作成した `VoiceProfile` オブジェクトを渡すだけです。 ただし、必要に応じて、それぞれが音声の異なるオーディオ サンプルに登録されている複数の `VoiceProfile` オブジェクトを渡すことができます。
 
 次に、[SpeechRecognizer::RecognizeOnceAsync](/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) によって、もう一度話すよう求められます。 今回は、自分の声が登録済みの音声プロファイルと比較され、最も類似した音声プロファイルが返されます。
 
@@ -148,7 +148,7 @@ Speaker Verification では、話者が既知の、または **登録されて�
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="main":::
 
-この関数では、前に定義した関数を呼び出すだけです。 ただし、最初に、[VoiceProfileClient](/cpp/cognitive-services/speech/voiceprofileclient) オブジェクトと [SpeakerRecognizer](/cpp/cognitive-services/speech/speakerrecognizer) オブジェクトを作成します。
+この関数では、前に定義した関数を呼び出すだけです。 ただし、最初に、[VoiceProfileClient](/cpp/cognitive-services/speech/speaker-voiceprofileclient) オブジェクトと [SpeakerRecognizer](/cpp/cognitive-services/speech/speaker-speakerrecognizer) オブジェクトを作成します。
 
 ```
 auto speech_config = GetSpeechConfig();
