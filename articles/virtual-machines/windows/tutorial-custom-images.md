@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: f6b6e53440556fb7b9c0d7a774aa1b6786609461
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d323fd5a3faf5811e88fd924ab767ec20568b917
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668060"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435472"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM イメージを作成する
 
@@ -93,7 +93,7 @@ $gallery = New-AzGallery `
 
 イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](../shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
-イメージの定義は、[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、ギャラリー イメージは *myGalleryImage* という名前で、特殊化されたイメージ用に作成されています。 
+イメージの定義は、[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimagedefinition) を使用して作成します。 この例では、ギャラリー イメージは *myGalleryImage* という名前で、特殊化されたイメージ用に作成されています。 
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `

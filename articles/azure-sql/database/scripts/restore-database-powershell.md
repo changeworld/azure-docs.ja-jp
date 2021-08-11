@@ -7,16 +7,16 @@ ms.subservice: backup-restore
 ms.custom: devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: shkale-msft
-ms.author: shkale
+author: rothja
+ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 03/27/2019
-ms.openlocfilehash: bbb61031c960b1fd096a1875caeee235cdf50212
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 8329878ef56c070dd4f22419e62c1914b29d9633
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708063"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462300"
 ---
 # <a name="use-powershell-to-restore-a-database-to-an-earlier-point-in-time"></a>PowerShell を使用して以前の時点にデータベースを復元する
 

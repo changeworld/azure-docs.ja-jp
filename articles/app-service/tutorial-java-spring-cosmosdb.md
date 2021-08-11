@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fae722934f22503cd37f7d48569fd52667fa5e0c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ec5ad0748b1247450417bde77ecbd3bef50bbe48
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457927"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288246"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>チュートリアル:Azure App Service on Linux と Azure Cosmos DB を使用して Java Spring Boot Web アプリを構築する
 
@@ -35,7 +35,7 @@ ms.locfileid: "110457927"
 
 * 開発コンピューターに [Azure CLI](/cli/azure/overview) がインストールされている。 
 * [Git](https://git-scm.com/)
-* [Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java JDK](/azure/developer/java/fundamentals/java-support-on-azure)
 * [Maven](https://maven.apache.org)
 
 ## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>サンプルの TODO アプリを複製してリポジトリを準備する
@@ -185,7 +185,7 @@ TODO アプリケーションを開始したというメッセージではなく
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.14.0</version>
+        <version>2.0.0</version>
         <configuration>
             <schemaVersion>v2</schemaVersion>
 
@@ -193,7 +193,7 @@ TODO アプリケーションを開始したというメッセージではなく
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
-            <pricingTier>P1V2</princingTier>
+            <pricingTier>P1v2</pricingTier>
             <!-- Java Runtime Stack for Web App on Linux-->
             <runtime>
                  <os>linux</os>
@@ -250,18 +250,16 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building spring-todo-app 2.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.14.0:deploy (default-cli) @ spring-todo-app ---
-[INFO] Auth Type : AZURE_CLI, Auth Files : [C:\Users\testuser\.azure\azureProfile.json, C:\Users\testuser\.azure\accessTokens.json]
-[INFO] Subscription : xxxxxxxxx
-[INFO] Target Web App doesn't exist. Creating a new one...
+[INFO] --- azure-webapp-maven-plugin:2.0.0:deploy (default-cli) @ spring-todo-app ---
+Auth Type: AZURE_CLI
+Default subscription: xxxxxxxxx
+Username: xxxxxxxxx
+[INFO] Subscription: xxxxxxxxx
 [INFO] Creating App Service Plan 'ServicePlanb6ba8178-5bbb-49e7'...
 [INFO] Successfully created App Service Plan.
-[INFO] Successfully created Web App.
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 1 resource to /home/test/e2e-java-experience-in-app-service-linux-part-2/initial/spring-todo-app/target/azure-webapp/spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7
+[INFO] Creating web App spring-todo-app...
+[INFO] Successfully created Web App spring-todo-app.
 [INFO] Trying to deploy artifact to spring-todo-app...
-[INFO] Renaming /home/test/e2e-java-experience-in-app-service-linux-part-2/initial/spring-todo-app/target/azure-webapp/spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7/spring-todo-app-2.0-SNAPSHOT.jar to app.jar
-[INFO] Deploying the zip package spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7718326714198381983.zip...
 [INFO] Successfully deployed the artifact to https://spring-todo-app.azurewebsites.net
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS

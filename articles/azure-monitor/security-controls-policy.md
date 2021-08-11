@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Monitor に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: rboucher
 ms.author: robb
 ms.service: azure-monitor
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 43d0417aae1ea935b67057b49bdd2ff47e778e92
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 3af65a0a425dab5a22515105075f5ff9f78c8dcb
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027347"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404706"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-monitor"></a>Azure Monitor 用の Azure Policy 規制コンプライアンス コントロール
 

@@ -3,14 +3,14 @@ title: 独自のモデルを使用してライブ ビデオを分析する - HTT
 description: このクイック スタートでは、Video Analyzer を使用して独自のモデル (HTTP) でライブ ビデオを分析する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/01/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 1b83fd1e58d719054e2788f641d37b6340bdc0ff
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a587191a0e5fd80174b3d288d1a9a1d8fd1d2e82
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371892"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605224"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>クイック スタート:独自のモデルを使用してライブ ビデオを分析する - HTTP
 
@@ -50,13 +50,13 @@ Azure リソースを設定する際に、高速道路のトラフィックの�
 
 ## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>IoT Edge の配置マニフェストを生成してデプロイする
 
-1. _src/edge/deployment.yolov3.template.json_ ファイルを右クリックし、 **[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\)** を選択します。
+1. _src/edge/deployment.yolov3.template.json_ ファイルを右クリックし、 **[IoT Edge 配置マニフェストの生成]** を選択します。
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/analyze-live-video-use-your-model-http/generate-deployment-manifest.png" alt-text="[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\) を示すスクリーンショット":::
 
 1. _deployment.yolov3.amd64.json_ マニフェスト ファイルが _src/edge/config_ フォルダーに作成されます。
-1. _src/edge/config/deployment.yolov3.amd64.json_ を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
+1. _src/edge/config/deployment.yolov3.amd64.json_ を右クリックし、 **[単一デバイスのデプロイを作成する]** を選択します。
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/analyze-live-video-use-your-model-http/deployment-single-device.png" alt-text= "Screenshot of Create Deployment for Single Device":::
@@ -73,7 +73,13 @@ Azure リソースを設定する際に、高速道路のトラフィックの�
 
 ## <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 
-1. デバッグ セッションを開始するには、F5 キーを押します。 [ターミナル] ウィンドウにメッセージが出力されるのを確認できます。
+1. ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. operations.json コードは、ダイレクト メソッド `pipelineTopologyList` および `livePipelineList` の呼び出しから始まります。 前回のクイックスタートを完了した後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されてから、一時停止します。 続行するには、Enter キーを押します。
 
    ```

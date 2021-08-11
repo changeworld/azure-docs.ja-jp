@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 78b912dd649ff942e0187f9b3602d9213383b8c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e02e042345ad1583eebbde53e85b7cf25dced30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560737"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "114286729"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Windows 仮想マシンを作成する
 
@@ -54,6 +54,8 @@ New-AzVm `
     -PublicIpAddressName "myPublicIpAddress" `
     -OpenPorts 80,3389
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 

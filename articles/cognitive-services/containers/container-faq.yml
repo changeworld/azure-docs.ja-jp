@@ -8,14 +8,14 @@ metadata:
   manager: nitinme
   ms.service: cognitive-services
   ms.topic: conceptual
-  ms.date: 03/02/2021
+  ms.date: 07/21/2021
   ms.author: aahi
-  ms.openlocfilehash: 9a9fd4fd2502971579634ab9581341939037fc91
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: e4bef1836b9faaf8d2315fd296a165988a6a3979
+  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114295748"
+  ms.lasthandoff: 07/24/2021
+  ms.locfileid: "114665748"
 title: Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 summary: ''
 sections:
@@ -98,8 +98,6 @@ sections:
 
       * お客様はご利用の [Azure サポート プラン](https://azure.microsoft.com/support/plans/)で連絡先をご確認ください。
 
-      * 疑問に答え、問題解決に役立てるための [Azure Knowledge Center](https://azure.microsoft.com/resources/knowledge-center/) をお客様は自由に閲覧できます。
-
       * [スタック オーバーフロー](https://en.wikipedia.org/wiki/Stack_Overflow)は、プログラミングのプロフェッショナルや愛好家のための質疑応答サイトです。
         * [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
         * [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
@@ -131,7 +129,7 @@ sections:
 
       * [Speech Service API](../speech-service/speech-container-howto.md#container-requirements-and-recommendations)
 
-      * [Text Analytics](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#container-requirements-and-recommendations)
+      * [Text Analytics](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#host-computer-requirements-and-recommendations)
   - question: これらのコンテナーは Windows で現在サポートされていますか?
     answer: >
       Cognitive Services コンテナーは Linux コンテナーですが、Windows で Linux コンテナーが一部サポートされています。 Windows で Linux コンテナーを実行する方法については、[Docker ドキュメント](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/)を参照してください。

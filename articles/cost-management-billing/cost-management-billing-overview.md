@@ -4,17 +4,17 @@ description: Azure Cost Management と Billing の機能を使用して、請求
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2021
+ms.date: 07/13/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8eb040183f1a207410c5e093009878845a61f261
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050539"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768485"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Azure Cost Management と Billing とは
 
@@ -75,10 +75,6 @@ Cost Management は、コスト分析、予算、推奨事項、コスト管理�
 
 コスト管理データのアクセスや確認のために外部システムを使用する場合は、データを Azure から簡単にエクスポートできます。 日次で CSV 形式でエクスポートするスケジュールを設定し、Azure ストレージにデータ ファイルを保存することもできます。 そうすると、外部システムからデータにアクセスすることができます。
 
-### <a name="cloudyn-deprecation"></a>Cloudyn の非推奨化
-
-Cloudyn は Cost Management に関連した Azure サービスで、2020 年末までに非推奨化されます。 既にある Cloudyn の機能は、可能な限り直接 Azure portal に統合されています。 現在、新しいユーザーはオンボードされていませんが、完全に非推奨化されるまで製品サポートは継続されます。
- 
 ### <a name="additional-azure-tools"></a>その他の Azure ツール
 
 Azure には、Azure Cost Management と Billing の機能セットに含まれていない、その他のツールもあります。 しかし、それらはコスト管理のプロセスにおいて重要な役割を果たしています。 これらのツールの詳細については、次のリンクを参照してください。

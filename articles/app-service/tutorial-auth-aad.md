@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/26/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c0a232dc0541ea8626cdb40a9b3497a686a5ee11
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 475d7d25bf0d4a373fd2cb630ee7f2a643581b04
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074547"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090675"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -313,13 +313,13 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 これでアプリの構成は完了です。 フロントエンドが適切なアクセス トークンを使用してバックエンドにアクセスする準備ができました。
 
-他のプロバイダー用にアクセス トークンを構成する方法については、「[ID プロバイダー トークンの更新](app-service-authentication-how-to.md#refresh-identity-provider-tokens)」を参照してください。
+他のプロバイダー用にアクセス トークンを構成する方法については、「[ID プロバイダー トークンの更新](configure-authentication-oauth-tokens.md#refresh-auth-tokens)」を参照してください。
 
 ## <a name="call-api-securely-from-server-code"></a>サーバー コードから API を安全に呼び出す
 
 この手順では、前に変更したサーバー コードを有効にして、バックエンド API への認証済み呼び出しを行います。
 
-フロントエンド アプリに必要なアクセス許可が付与されていて、バックエンドのクライアント ID もログイン パラメーターに追加されます。 そのため、バックエンド アプリでの認証用のアクセス トークンを取得することができます。 App Service は、認証された各要求に `X-MS-TOKEN-AAD-ACCESS-TOKEN` ヘッダーを挿入することで、このトークンをサーバー コードに提供します (「[Retrieve tokens in app code (アプリ コードでトークンを取得する)](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)」を参照)。
+フロントエンド アプリに必要なアクセス許可が付与されていて、バックエンドのクライアント ID もログイン パラメーターに追加されます。 そのため、バックエンド アプリでの認証用のアクセス トークンを取得することができます。 App Service は、認証された各要求に `X-MS-TOKEN-AAD-ACCESS-TOKEN` ヘッダーを挿入することで、このトークンをサーバー コードに提供します (「[Retrieve tokens in app code (アプリ コードでトークンを取得する)](configure-authentication-oauth-tokens.md#retrieve-tokens-in-app-code)」を参照)。
 
 > [!NOTE]
 > これらのヘッダーは、サポートされているすべての言語用に挿入されます。 言語ごとの標準パターンを使用して、これらにアクセスします。
@@ -357,7 +357,7 @@ git push frontend master
 
 この手順では、フロントエンドの Angular.js アプリをバックエンド API に合わせて設定します。 そのようにして、アクセス トークンを取得し、それを使用してバックエンド アプリへの API 呼び出しを行う方法を学習します。
 
-サーバー コードは要求ヘッダーにアクセスできますが、クライアント コードは `GET /.auth/me` にアクセスして同じアクセス トークンを取得することができます (「[Retrieve tokens in app code (アプリ コードでトークンを取得する)](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)」を参照)。
+サーバー コードは要求ヘッダーにアクセスできますが、クライアント コードは `GET /.auth/me` にアクセスして同じアクセス トークンを取得することができます (「[Retrieve tokens in app code (アプリ コードでトークンを取得する)](configure-authentication-oauth-tokens.md#retrieve-tokens-in-app-code)」を参照)。
 
 > [!TIP]
 > このセクションでは、標準の HTTP メソッドを使用して、セキュリティで保護された HTTP 呼び出しを行います。 ただし、[JavaScript 用 Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-js) を使用すると、Angular.js アプリケーション パターンを簡略化できます。
@@ -437,7 +437,7 @@ git push frontend master
 
 ## <a name="when-access-tokens-expire"></a>アクセス トークンの有効期限が切れたら
 
-アクセス トークンは、しばらくすると有効期限が切れます。 アプリに対する再認証をユーザーに強制することなくアクセス トークンを更新する方法については、「[Refresh identity provider tokens (ID プロバイダー トークンの更新)](app-service-authentication-how-to.md#refresh-identity-provider-tokens)」を参照してください。
+アクセス トークンは、しばらくすると有効期限が切れます。 アプリに対する再認証をユーザーに強制することなくアクセス トークンを更新する方法については、「[Refresh identity provider tokens (ID プロバイダー トークンの更新)](configure-authentication-oauth-tokens.md#refresh-auth-tokens)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

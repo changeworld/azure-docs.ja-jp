@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Resource Manager テ�
 ms.date: 04/28/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 8d7d62c05586032bc73c41ef671862a4aa211334
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: a4905742f2c8f3d325cbe32f35e06d9aab27222d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903174"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450293"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Recovery Services コンテナーを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "111903174"
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
 - [Microsoft.RecoveryServices コンテナー](/azure/templates/microsoft.recoveryservices/vaults): コンテナーを作成します。
-- [Microsoft.RecoveryServices/vaults/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs): コンテナーのバックアップ冗長設定を構成します。
+- [Microsoft.RecoveryServices/vaults/backupstorageconfig](/rest/api/backup/backup-resource-storage-configs): コンテナーのバックアップ冗長設定を構成します。
 
 テンプレートには、コンテナーのバックアップ構成のためのオプション パラメーターが含まれます。 ストレージ冗長設定は、ローカル冗長ストレージ (LRS) または geo 冗長ストレージ (GRS) です。 詳細については、「[ストレージ冗長性の設定](../backup/backup-create-rs-vault.md#set-storage-redundancy)」を参照してください。
 

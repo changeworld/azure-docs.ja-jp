@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 04/26/2021
-ms.custom: seodec18, devx-track-python, contperf-fy21q4
-ms.openlocfilehash: 544b3ac4702f8ecaa66735f8e0b836cc6f004f42
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: d1ad8e4af0d3fdb0abb95fc12ec4a445afabbb1f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028255"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459246"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>チュートリアル: Jupyter Notebook の例を使用して画像分類モデルをトレーニングする 
 
@@ -33,7 +33,7 @@ ms.locfileid: "112028255"
 
 [このチュートリアルのパート 2](tutorial-deploy-models-with-aml.md) では、モデルを選択してデプロイする方法を学習します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 >[!NOTE]
 > この記事のコードは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) バージョン 1.13.0 を使用してテストされています。

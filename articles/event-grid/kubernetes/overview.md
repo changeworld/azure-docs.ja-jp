@@ -6,17 +6,17 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: a958e42f3afab3dccd2a989c9d824a37ed9d9a6c
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: fdc8c60f2c2cae7368a2e35317de2cfb8274a060
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536813"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414955"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>Azure Arc を使用した Kubernetes 上の Event Grid (プレビュー) - 概要
 この記事では、Kubernetes 上の Event Grid の概要、使用方法のユース ケース、提供されている機能、および Azure Event Grid との違いについて説明します。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="what-is-event-grid"></a>Event Grid とは
 Event Grid は、イベント駆動型のアーキテクチャを使用するワークロードを統合するために使用するイベント ブローカーです。 イベント駆動型のアーキテクチャでは、システム状態の変化をイベントを使用して通知します。これは、マイクロサービスなどが使用されている分離されたアーキテクチャにおける、一般的な統合アプローチです。 Event Grid では、イベントがサブスクライバーに送信 (プッシュ) されても、そのサブスクライバーがイベントを送信しているパブリッシャーを認識している必要はない、Pub-Sub (Push-Push とも呼ばれる) という通信モデルが提供されています。 このモデルは、クライアントによってメッセージ ブローカーからメッセージがプルされる、Azure Service Bus または Azure Event Hubs で使用されている従来の Push-Pull 型のモデルとは対照的です。そのため、メッセージ ブローカーと消費クライアント間の結合はより強固です。

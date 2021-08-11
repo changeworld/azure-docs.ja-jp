@@ -89,4 +89,4 @@
     - name: インターネット ピアリングのよくあるご質問
       href: faqs.md
     - name: Peering Service のよくあるご質問
-      href: service-faqs.md
+      href: service-faqs.yml

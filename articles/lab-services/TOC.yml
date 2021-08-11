@@ -6,7 +6,7 @@
       href: lab-services-overview.md
 - name: クイックスタート
   items:
-    - name: 作業開始
+    - name: はじめに
       href: get-started-manage-labs.md
 - name: チュートリアル
   items:
@@ -195,7 +195,7 @@
     - name: Az.LabServices PowerShell モジュール (プレビュー)
       href: reference-powershell-module.md
     - name: Azure CLI
-      href: /cli/azure/hack
+      href: 'https://github.com/Azure/azure-cli-extensions/tree/main/src/hack'
 - name: リソース
   items:
     - name: Azure Lab Services のブログ

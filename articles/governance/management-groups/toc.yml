@@ -66,8 +66,8 @@
       href: /azure/templates/microsoft.management/managementgroups
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: UserVoice

@@ -2,21 +2,21 @@
 title: チュートリアル:Envoy を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Envoy に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/3/2019
-ms.author: Zhchia
-ms.openlocfilehash: b18ec2531b26574357f56c11558f2afd84467495
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/28/2021
+ms.author: thwimmer
+ms.openlocfilehash: f33f9e04781344cd0bb926cecd81f31a2b645bba
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437691"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763944"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>チュートリアル:Envoy を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -52,19 +52,19 @@ ms.locfileid: "102437691"
 
 1. [Envoy 管理コンソール](https://dashboard.envoy.com/login)にサインインします。 **[統合]** をクリックします。
 
-    ![Envoy の統合](media/envoy-provisioning-tutorial/envoy01.png)
+    ![Envoy の統合](media/envoy-provisioning-tutorial/envoy-01.png)
 
 2. **[Microsoft Azure SCIM integration]\(Microsoft Azure SCIM の統合\)** で **[インストール]** をクリックします。
 
-    ![Envoy のインストール](media/envoy-provisioning-tutorial/envoy02.png)
+    ![Envoy のインストール](media/envoy-provisioning-tutorial/integrations.png)
 
 3. **[Sync all users]\(すべてのユーザーを同期\)** で **[保存]** をクリックします。 
 
-    ![Envoy の保存](media/envoy-provisioning-tutorial/envoy03.png)
+    ![Envoy の保存](media/envoy-provisioning-tutorial/microsoft-azure.png)
 
 4. **[OAUTH BEARER TOKEN] (OAUTH ベアラー トークン)** をコピーします。 この値を、Azure portal で Envoy アプリケーションの [プロビジョニング] タブの **[シークレット トークン]** フィールドに入力します。
     
-    ![Envoy の OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
+    ![Envoy の OAUTH](media/envoy-provisioning-tutorial/token.png)
 
 ## <a name="step-3-add-envoy-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Envoy を追加する
 

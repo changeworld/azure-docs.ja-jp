@@ -2,32 +2,32 @@
 title: クイックスタート - Azure Managed HSM をプロビジョニングしてアクティブにする
 description: Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする方法を紹介するクイックスタート。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
-ms.date: 06/01/2021
-ms.author: ambapat
-ms.openlocfilehash: 0b29a292dae570d368f54f65773ce72a54de2e2d
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/21/2021
+ms.author: mbaldwin
+ms.openlocfilehash: be8c28f736e58ebcbe95d4b8a4042b79fa1cf9f7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413989"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443593"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする
 
 Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、**FIPS 140-2 レベル 3** 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 Managed HSM の詳細については、[概要](overview.md)に関するページを参照してください。 
 
-このクイックスタートでは、Azure CLI を使用してマネージド HSM を作成し、アクティブにします。 この作業を完了したら、シークレットを格納します。
+このクイックスタートでは、Azure CLI を使用してマネージド HSM を作成し、アクティブにします。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事の手順を完了するには、次のものが必要です。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
-* Azure CLI バージョン 2.12.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+* Azure CLI バージョン 2.25.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 * お使いのサブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -127,4 +127,5 @@ az group delete --name ContosoResourceGroup
 
 - [Managed HSM の概要](overview.md)に関するページを読む
 - [マネージド HSM におけるキーの管理](key-management.md)について学習する
+- [マネージド HSM のロール管理](role-management.md)について学習する
 - [Managed HSM のベスト プラクティス](best-practices.md)を確認する

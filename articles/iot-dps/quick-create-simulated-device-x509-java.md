@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 2ed458ee0267a65bb7551940fc522509dc310311
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddb95d30fb2aec85da2c6eb0da76d41f96e72725
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966617"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288655"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 
@@ -27,13 +27,13 @@ ms.locfileid: "94966617"
 - [プロビジョニング](about-iot-dps.md#provisioning-process)の概念を理解していること。
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+- [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-support-on-azure)。
 - [Maven](https://maven.apache.org/install.html)。
 - [Git](https://git-scm.com/download/).
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
-1. [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) がマシンにインストールされていることを確認します。
+1. [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-support-on-azure) がマシンにインストールされていることを確認します。
 
 2. [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 

@@ -1,15 +1,15 @@
 ---
 title: 'クイックスタート: 初めての Java クエリ'
 description: このクイックスタートでは、手順に従い、Java 用の Resource Graph Maven パッケージを有効にし、初めてのクエリを実行します。
-ms.date: 03/30/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom: devx-track-java
-ms.openlocfilehash: 04e32a3e147ed68248f7fead488a1f630ffcdb4d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1d6d3dfb309b359e4b999d06671db7dc541d5f32
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751753"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459983"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-java"></a>クイックスタート: Java を使用して初めての Resource Graph クエリを実行する
 
@@ -26,7 +26,7 @@ ms.locfileid: "108751753"
   > [!NOTE]
   > 次の例で、Azure SDK for Java で **CLI ベースの認証** を使用できるようにするには、Azure CLI が必要です。 その他のオプションについては、「[Java 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)」を参照してください。
 
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン
   8.
 
 - [Apache Maven](https://maven.apache.org/)、バージョン 3.6 以降。
@@ -52,7 +52,7 @@ Java で Azure Resource Graph に対してクエリを実行できるように�
     <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-resourcegraph</artifactId>
-        <version>1.0.0-beta.1</version>
+        <version>1.0.0</version>
     </dependency>
    ```
 

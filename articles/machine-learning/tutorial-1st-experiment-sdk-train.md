@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q
-ms.openlocfilehash: 616723e66dceeb3c0de21b36e3af3039dafbe63e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: c96936635898f9173b7eb8e60502ea059420cf0b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028273"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758862"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-2-of-3"></a>チュートリアル: 初めての機械学習モデルをトレーニングする (パート 2/3)
 
@@ -135,10 +135,6 @@ ms.locfileid: "112028273"
 1. フォルダー構造は次のようになります。
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-train/directory-structure.png" alt-text="src サブディレクトリの train.py を示すディレクトリ構造":::
-    
-
-> [!div class="nextstepaction"]
-> [トレーニング スクリプトを作成しました](?success=create-scripts#test-local) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
 
 ## <a name="test-locally"></a><a name="test-local"></a> ローカルでテストする
@@ -148,9 +144,6 @@ ms.locfileid: "112028273"
 スクリプトの完了後、ファイル フォルダーの上にある **[Refresh]\(最新の情報に更新\)** を選択します。 **get-started/data** という新しいデータ フォルダーが表示されます。このフォルダーを展開すると、ダウンロードしたデータが表示されます。  
 
 :::image type="content" source="media/tutorial-1st-experiment-hello-world/directory-with-data.png" alt-text="フォルダーのスクリーンショット。ファイルをローカルで実行することによって作成された新しい data フォルダーが表示されている。":::
-
-> [!div class="nextstepaction"]
-> [コードをローカルで実行しました](?success=test-local#create-local) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=test-local)
 
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> コントロール スクリプトを作成する
@@ -205,10 +198,6 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [コントロール スクリプトを作成しました](?success=control-script#submit) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=control-script)
-
-
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Azure Machine Learning に実行を送信する
 
 **[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択して *run-pytorch.py* スクリプトを実行します。
@@ -245,11 +234,6 @@ Finished Training
 > "`Your total snapshot size exceeds the limit` (合計スナップショット サイズが上限を超えました)" というエラーが表示された場合、`ScriptRunConfig` で使用されている値 `source_directory` に **data** フォルダーが存在します。
 >
 > フォルダーの末尾にある **[...]** を選択し、 **[移動]** を選択して、**data** を **get-started** フォルダーに移動します。  
-
-
-
-> [!div class="nextstepaction"]
-> [実行を送信しました](?success=test-w-environment#log) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> トレーニング メトリックをログする
 
@@ -334,10 +318,6 @@ Azure Machine Learning のメトリックは次のとおりです。
 - UI を備えているため、スタジオでトレーニングのパフォーマンスを視覚化できます。
 - スケーリングするように設計されているため、数百回の実験を実行してもこれらのベネフィットを維持できます。
 
-> [!div class="nextstepaction"]
-> [train.py に変更を加えました](?success=modify-train#log) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=modify-train)
-
-
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Azure Machine Learning に実行を送信する
 
 *run-pytorch.py* スクリプトのタブを選択し、 **[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択して、*run-pytorch.py* スクリプトを再実行します。 
@@ -345,9 +325,6 @@ Azure Machine Learning のメトリックは次のとおりです。
 今回は、スタジオにアクセスしたら、 **[メトリック]** タブに移動します。このタブで、モデル トレーニングの損失に関するライブ更新を確認できます。 トレーニングが開始されるまでに 1 分から 2 分かかる場合があります。  
 
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="[メトリック] タブのトレーニング損失グラフ":::
-
-> [!div class="nextstepaction"]
-> [実行を再送信しました](?success=resubmit-with-logging#next-steps) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
 ## <a name="next-steps"></a>次の手順
 

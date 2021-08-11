@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd71944d0c29b9e796c4e5508f6b5116df99ec2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d7c0c7c5a0fe5ff3100e754c99b476676cab222
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092820"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733378"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory のロールベースのアクセス制御の概要
 
@@ -81,7 +81,7 @@ Azure AD では、2 種類のロールの定義がサポートされています
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
-Azure AD の組み込みロールは無料で使用できますが、カスタム ロールには Azure AD Premium P1 ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+Azure AD の組み込みロールは無料で使用できますが、カスタム ロールには Azure AD Premium P1 ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

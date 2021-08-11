@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a7b85b63804d8276ad0a36caaea4602797bb93cc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0eba0e81899baef684c79bf6b866ea70ad7b4611
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350570"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288745"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>クイック スタート:Java を使用して、Azure Cognitive Services である Bing Web Search REST API で Web を検索する
 
@@ -31,7 +31,7 @@ ms.locfileid: "96350570"
 
 このクイック スタートを実行するには、以下のものが必要です。
 
-* [JDK 7 または 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [JDK 7 または 8](/azure/developer/java/fundamentals/java-support-on-azure)
 * [Gson ライブラリ](https://github.com/google/gson)
 * サブスクリプション キー
 

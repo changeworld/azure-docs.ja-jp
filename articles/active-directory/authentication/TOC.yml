@@ -82,8 +82,6 @@
           href: howto-sspr-windows.md
     - name: Azure AD の Multi-Factor Authentication
       items:
-        - name: 計画ガイド
-          href: concept-mfa-plan.md
         - name: デプロイ ガイド
           href: howto-mfa-getstarted.md
         - name: 設定の構成
@@ -272,7 +270,7 @@
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-active-directory.html
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+      href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
     - name: Stack Overflow

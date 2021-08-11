@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: cc1912deb224324eb3092322a3ca08043c1afbf3
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5e09a3cbeac53393c686ceb298a217e1626442da
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560355"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112536082"
 ---
 ## <a name="setting-up"></a>設定
 
@@ -33,7 +33,7 @@ npm init -y
 
 ```console
 npm install @azure/communication-common --save
-npm install @azure/communication-calling@1.1.0-beta.1 --save
+npm install @azure/communication-calling@1.1.0 --save
 ```
 
 このクイックスタートでは、次のバージョンの webpack をお勧めします。

@@ -2,21 +2,21 @@
 title: 'チュートリアル: Azure Active Directory での自動ユーザー プロビジョニング用に Priority Matrix を構成する | Microsoft Docs'
 description: Priority Matrix に対してユーザー アカウントが自動的にプロビジョニングおよびプロビジョニング解除されるように、Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.author: Zhchia
-ms.openlocfilehash: e79f21300325c6b451dd564bf2c69830f003f55c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: thwimmer
+ms.openlocfilehash: faa893f02f83259e7f13be64aa076d20a0342006
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94357863"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766357"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Priority Matrix を構成する
 

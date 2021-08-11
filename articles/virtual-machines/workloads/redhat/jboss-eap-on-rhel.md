@@ -11,12 +11,12 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: 18cf093adad858f50b2b1fa1c97e38821bd1c949
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 34d0fdb605e81606960e56a3a15f9f41ee078898
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538679"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467421"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の JBoss EAP を使用してエンタープライズ Java アプリケーションを Azure にデプロイする
 
@@ -163,7 +163,7 @@ RHEL OS に BYOS を使用するには、Azure で RHEL OS を使用するため
 
    1. Microsoft Azure で新しい製品の Cloud Access を有効にします。
     
-   1. Azure サブスクリプションの Red Hat Gold Image をアクティブにします。 詳細については、「[Microsoft Azure での Red Hat Gold Image](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)」を参照してください。
+   1. Azure サブスクリプションの Red Hat Gold Image をアクティブにします。 詳細については、「[Microsoft Azure での Red Hat Gold Image](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access#proc_using-gold-images-azure_cloud-access)」を参照してください。
 
    1. Azure サブスクリプションで Red Hat Gold Image が使用できる状態になるまで待ちます。 通常これらのイメージは、申請から 3 時間以内に利用できるようになります。
     

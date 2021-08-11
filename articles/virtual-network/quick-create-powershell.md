@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7ee10327ab95a3e66e5592593ae72d6e5cd8d606
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 76561e0b19d3d42421a73ddc178ad12cd83d5e25
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060603"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "114297604"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>クイック スタート:PowerShell を使用して仮想ネットワークを作成する
 
@@ -127,6 +127,8 @@ New-AzVM @vm2
 
 > [!IMPORTANT]
 > Azure の処理が完了するまで、次の手順に進まないでください。  処理の完了は、PowerShell に出力が返されることでわかります。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 

@@ -3,12 +3,12 @@ title: Azure Arc の概要
 description: Azure Arc とは何か、そしてお客様が Azure の他のサービスや機能を使用してハイブリッド リソースの管理とガバナンスを実現するうえでどのように役立つかについて説明します。
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: b9e3cac865a92023d0079a5face9fbc8a3734c6e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ddab135ffe98675a498c4a364bc9e04ce57b92fe
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967086"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732046"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc の概要
 
@@ -29,7 +29,8 @@ Azure Arc は、マルチクラウドとオンプレミスの管理プラット�
 
 * サーバー - Windows または Linux を実行するマシン (物理マシンと仮想マシンの両方)。
 * Kubernetes クラスター - 複数の Kubernetes ディストリビューションをサポート。
-* Azure データ サービス - Azure SQL Database および PostgreSQL Hyperscale サービス。
+* Azure データ サービス - Azure SQL Managed Instance および PostgreSQL Hyperscale サービス。
+* SQL Server - あらゆる場所からインスタンスを登録します。
 
 ## <a name="what-does-azure-arc-deliver"></a>Azure Arc で実現できること
 
@@ -47,7 +48,7 @@ Azure Arc の主な機能は次のとおりです。
 
 * あたかも Azure で実行しているかのように、Kubernetes 環境で [Azure データ サービス](../azure-arc/kubernetes/custom-locations.md) (具体的には Azure SQL Managed Instance と Azure Database for PostgreSQL Hyperscale) を実行し、アップグレードと更新、セキュリティ、監視などのメリットを活かす。 エラスティック スケールを使用し、Azure への継続的な接続が得られなくても、アプリケーションのダウンタイムを発生させずに更新プログラムを適用する。
 
-* [Azure Arc 対応 Kubernetes](./kubernetes/overview.md) クラスターの上に[カスタムの場所](./kubernetes/custom-locations.md)を作成し、Azure サービス インスタンスをデプロイするためのターゲットの場所として使用する。 [Azure Arc 対応 Data Services](./data/deploy-data-controller-direct-mode.md)、[Azure Arc 上の App Services](../app-service/overview-arc-integration.md) (Web、関数、ロジック アプリを含む) および [Kubernetes 上の Event Grid](../event-grid/kubernetes/overview.md) の Azure サービス クラスター拡張機能をデプロイする。
+* [Azure Arc 対応 Kubernetes](./kubernetes/overview.md) クラスターの上に[カスタムの場所](./kubernetes/custom-locations.md)を作成し、Azure サービス インスタンスをデプロイするためのターゲットの場所として使用する。 [Azure Arc 対応 Data Services](./data/create-data-controller-direct-azure-portal.md)、[Azure Arc 上の App Services](../app-service/overview-arc-integration.md) (Web、関数、ロジック アプリを含む) および [Kubernetes 上の Event Grid](../event-grid/kubernetes/overview.md) の Azure サービス クラスター拡張機能をデプロイする。
 
 * Azure portal、Azure CLI、Azure PowerShell、Azure REST API のどれを使用していても、統合されたエクスペリエンスで Azure Arc 対応リソースを表示する。
 

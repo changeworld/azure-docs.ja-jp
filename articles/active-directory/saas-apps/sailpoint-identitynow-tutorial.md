@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 6b52ca3f7fda8ee696311a2aeea1ccf9767cda35
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7c0d4123de361fe8285213ff6f28e2cffe5e5724
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557614"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466377"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sailpoint-identitynow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SailPoint IdentityNow の統合
 
@@ -31,7 +31,7 @@ ms.locfileid: "111557614"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* SailPoint IdentityNow のアクティブ サブスクリプション。  IdentityNow をお持ちではない場合は [SailPoint IdentityNow サポート チーム](mailto:support@sailpoint.com)にお問い合わせください。
+* SailPoint IdentityNow のアクティブ サブスクリプション。 IdentityNow をお持ちではない場合は [SailPoint IdentityNow サポート チーム](mailto:support@sailpoint.com)にお問い合わせください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

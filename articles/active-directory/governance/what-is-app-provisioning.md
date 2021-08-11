@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/30/2020
-ms.subservice: hybrid
+ms.date: 06/21/2021
+ms.subservice: compliance
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c9f8949fb61f2c152c0fbae09c0da84228908bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbbc5ef8d68a4641764dfdc93764f756a3083a44
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93135016"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112428249"
 ---
 # <a name="what-is-app-provisioning"></a>アプリのプロビジョニングとは
 

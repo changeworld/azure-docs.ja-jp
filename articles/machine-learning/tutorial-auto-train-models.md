@@ -10,13 +10,13 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 06/11/2021
-ms.custom: devx-track-python, automl
-ms.openlocfilehash: 243dd16cc70a77a0d1da0adf190dc92d83ad1ab4
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: devx-track-python, automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 6a909d5742a582776f1467f5053b217876885bf7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033439"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462777"
 ---
 # <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>チュートリアル: AutoML と Python を使用して回帰モデルをトレーニングする
 
@@ -41,7 +41,7 @@ ms.locfileid: "112033439"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版](https://aka.ms/AMLFree)の Azure Machine Learning を今すぐお試しください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版](https://azure.microsoft.com/free/)の Azure Machine Learning を今すぐお試しください。
 
 * まだ Azure Machine Learning ワークスペースまたはコンピューティング インスタンスがない場合は、[Azure Machine Learning の利用開始に関するクイックスタート](quickstart-create-resources.md)を完了します。
 * ウィザードの完了後:
