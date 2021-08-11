@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: aahi
-ms.openlocfilehash: d648acb3ff9a1f7c2076a4b7c1fcf9755a9ea05d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f8913bc75688184d30711e4ee33b5d3601557ee7
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465195"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303672"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR コンテナーへの移行
 
@@ -83,5 +83,5 @@ Read v3.2 コンテナーは、Computer Vision API のバージョン 3 を使�
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
 * [OCR の概要](overview-ocr.md)に関するページを読み、印刷されたテキストと手書きのテキストの認識の詳細について確認する
 * コンテナーでサポートされるメソッドの詳細について、[Read API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) を参照する。
-* [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Computer Vision 機能に関連する問題を解決する。
+* [よく寄せられる質問 (FAQ)](FAQ.yml) を参照して、Computer Vision 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

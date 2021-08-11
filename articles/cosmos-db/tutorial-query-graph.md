@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB でグラフ データのクエリを実行する方法
 description: Gremlin クエリを使用して、Azure Cosmos DB にグラフ データを照会する方法について説明します
-author: christopheranderson
-ms.author: chrande
+author: manishmsfte
+ms.author: mansha
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 545ffd303d2039a3c54088220c1fa74e742c750f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2da9aceee53985219c4f43b11ec91e8e2d70f6a0
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93360770"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354219"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>チュートリアル: Gremlin を使って Azure Cosmos DB Gremlin API を照会する
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -46,7 +46,7 @@ Gremlin の `has` ステップと `hasLabel` ステップを使用してフィ�
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
-## <a name="projection"></a>Projection
+## <a name="projection"></a>プロジェクション
 
 `values` ステップを使用してクエリ結果の特定のプロパティを投影できます。
 

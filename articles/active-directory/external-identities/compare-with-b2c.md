@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 07/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64fd91d3f033c0a04c4936f11d096aa640942a1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 56fd9449e3954f7fe7cf3ab43a62df05869e2112
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743887"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729598"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory の外部 ID とは
 
@@ -44,7 +44,7 @@ Azure AD External Identities は、ユーザーと組織の関係はあまり重
 | **シングル サインオン (SSO)**      | あらゆる Azure AD 接続アプリへの SSO がサポートされています。 たとえば、Microsoft 365 またはオンプレミスのアプリケーションや、Salesforce、Workday などの SaaS アプリへのアクセスを提供できます。    | Azure AD B2C テナント内のお客様所有のアプリへの SSO をサポートします。 Microsoft 365 やその他の Microsoft SaaS アプリへの SSO はサポートされていません。    |
 | **セキュリティ ポリシーとコンプライアンス**        | ホストまたは招待元の組織によって管理されます ([条件付きアクセス ポリシー](conditional-access.md)を使用するなど)。 | 条件付きアクセスと ID 保護を使用して組織によって管理されます。        |
 | **ブランド化**  | ホスト/招待元の組織のブランドが使用されます。    | アプリケーションまたは組織ごとの完全にカスタマイズ可能なブランド。   |
-| **課金モデル** | 月間アクティブ ユーザー (MAU) に基づいた [External Identities の価格](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/)。 <br>(参照: [B2B の設定の詳細](external-identities-pricing.md)) | 月間アクティブ ユーザー (MAU) に基づいた [External Identities の価格](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/)。 <br>(参照: [B2C の設定の詳細](../../active-directory-b2c/billing.md)) |
+| **課金モデル** | 月間アクティブ ユーザー (MAU) に基づいた [External Identities の価格](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)。 <br>(参照: [B2B の設定の詳細](external-identities-pricing.md)) | 月間アクティブ ユーザー (MAU) に基づいた [External Identities の価格](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)。 <br>(参照: [B2C の設定の詳細](../../active-directory-b2c/billing.md)) |
 | **詳細情報** | [ブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[ドキュメント](what-is-b2b.md)                   | [製品ページ](https://azure.microsoft.com/services/active-directory-b2c/)、[ドキュメント](../../active-directory-b2c/index.yml)       |
 
 Azure AD External Identities を使用して、組織の境界を越えて、顧客とパートナーを保護および管理します。

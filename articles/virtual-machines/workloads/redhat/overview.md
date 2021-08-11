@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: bd8f2e5b825f88d1b0e04ed231b85296ac47e998
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4403a45e4bb4383977b68725518317cdf8acbdbc
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676050"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467403"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上の Red Hat ワークロード
 
@@ -36,7 +36,7 @@ Azure には、さまざまな RHEL 従量課金制イメージが用意され�
 ### <a name="red-hat-gold-images"></a>Red Hat Gold Image
 
 Azure には、Red Hat Gold Image (`rhel-byos`) も用意されています。 これらのイメージは、既存の Red Hat サブスクリプションを所有していて、Azure でそれらを使用する必要があるお客様に役立ちます。 既存の Red Hat サブスクリプションを Azure で使用するには、それらを Red Hat Cloud Access に対して有効にしておく必要があります。 これらのイメージへのアクセスは、Red Hat サブスクリプションが Cloud Access に対して有効になっていて、資格要件を満たしたときに自動的に付与されます。 これらのイメージを使用することで、お客様は、従量課金制イメージを使用した場合に発生する可能性のある二重請求を回避できます。
-* [Azure で Cloud Access 用の Red Hat サブスクリプションを有効にする](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)方法を確認する。
+* [Azure で Cloud Access 用の Red Hat サブスクリプションを有効にする](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/red-hat-cloud-access-program-overview_cloud-access#ref_ca-unit-conversion_cloud-access)方法を確認する。
 * [Azure portal、Azure CLI、または PowerShell コマンドレットで Red Hat Gold Image を見つける](./byos.md)方法を確認する。
 
 > [!NOTE]

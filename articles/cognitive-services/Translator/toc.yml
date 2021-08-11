@@ -16,7 +16,7 @@
 - name: Text Translation
   expanded: true
   items:
-    - name: クイック スタート
+    - name: クイックスタート
       href: quickstart-translator.md
     - name: サンプル
       items:
@@ -122,6 +122,8 @@
           href: document-translation/reference/get-translation-status.md
         - name: 翻訳の取り消し
           href: document-translation/reference/cancel-translation.md
+    - name: よく寄せられる質問
+      href: document-translation/faq.md
 - name: Custom Translator
   items:
     - name: Custom Translator とは
@@ -142,7 +144,7 @@
           href: custom-translator/how-to-view-document-details.md
         - name: モデルをトレーニングする
           href: custom-translator/how-to-train-model.md
-        - name: ビューモデルの詳細
+        - name: モデルの詳細の表示
           href: custom-translator/how-to-view-model-details.md
         - name: システムのテスト結果の表示
           href: custom-translator/how-to-view-system-test-results.md

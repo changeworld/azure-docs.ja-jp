@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/14/2020
+ms.date: 07/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9064af6138a3dc02947b9d1de2c935afc0ad99a3
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937204"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113304158"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を使用してデータを転送する
 
@@ -151,4 +151,4 @@ ms.locfileid: "98937204"
 次のチュートリアルに進み、Data Box Gateway を管理する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [ローカル Web UI を使用して Data Box Gateway を管理する](https://aka.ms/dbg-docs)
+> [ローカル Web UI を使用して Data Box Gateway を管理する](data-box-gateway-manage-access-power-connectivity-mode.md)

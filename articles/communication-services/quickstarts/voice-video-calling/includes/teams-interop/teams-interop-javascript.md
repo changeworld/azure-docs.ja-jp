@@ -6,23 +6,22 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a05ebf00b03ee393aac08e89924e9a15b3e488ef
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5cc27cd600d8e8717a70deefc801b3f500792e11
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560609"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536134"
 ---
 このクイックスタートでは、JavaScript 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します。
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-calling-to-teams-meeting) にあります
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-calling-to-teams-meeting) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
 - 実際に動作する [Communication Services 通話 Web アプリ](../../getting-started-with-calling.md)。
 - [Teams のデプロイ](/deployoffice/teams-install)。
-
 
 ## <a name="add-the-teams-ui-controls"></a>Teams の UI コントロールを追加する
 

@@ -3,13 +3,13 @@ title: Azure Relay を使用してオンプレミスの WCF REST サービスを
 description: このチュートリアルでは、Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する方法について説明します。
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
-ms.date: 06/23/2020
-ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: bfdcd59320d965f933fdf367ed60ec80dbfa7122
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710789"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669756"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>チュートリアル: Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
 
@@ -45,7 +45,7 @@ ms.locfileid: "101710789"
 
 最初の手順として、名前空間を作成し、[Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) キーを取得します。 名前空間により、リレー サービスが公開する各アプリケーションにアプリケーション境界が設けられます。 SAS キーは、サービスの名前空間が作成されると、システムによって自動的に生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Azure が認証する資格情報になります。
 
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>WCF サービス コントラクトを定義する
 

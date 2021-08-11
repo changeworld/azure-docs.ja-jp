@@ -192,7 +192,7 @@
                   href: storsimple-8000-manage-volumes-u2.md
                   items:
                     - name: 'よくあるご質問: ローカル固定ボリューム'
-                      href: storsimple-8000-local-volume-faq.md
+                      href: storsimple-8000-local-volume-faq.yml
                 - name: Azure ロールベースのアクセス制御
                   href: storsimple-8000-role-based-access-control.md
                 - name: ACR を管理する

@@ -917,7 +917,7 @@
       href: ./policy-reference.md
 - name: リソース
   items:
-    - name: Service Fabric の管理対象クラスターに関するよくある質問
+    - name: Service Fabric の管理対象クラスターの FAQ
       href: faq-managed-cluster.yml
     - name: 一般的な質問
       href: service-fabric-common-questions.md

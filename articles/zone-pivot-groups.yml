@@ -1216,6 +1216,18 @@ groups:
     title: Python
   - id: programming-language-java
     title: Java
+- id: iot-hub-set1
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
 - id: facility-ontology-schema
   title: Creator Facility Ontology
   prompt: Facility Ontology バージョンの選択
@@ -1261,9 +1273,9 @@ groups:
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
 metadata:
-  ms.openlocfilehash: d6ef125a7b5cd8a3122e9a965eda0f71f99c0d69
-  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+  ms.openlocfilehash: 1e0342c1c36d88218ca7ad9daccb7a9e1ea7e9fa
+  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/10/2021
-  ms.locfileid: "113594663"
+  ms.lasthandoff: 07/28/2021
+  ms.locfileid: "114730994"

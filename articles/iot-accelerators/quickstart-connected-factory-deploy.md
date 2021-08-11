@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: dbb49d990581c6b38d0eff32b01dd9b115e6794c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f65f9ea1778aba1ff60cdb4cc4b4eba3fa7562cf
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057821"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758150"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>クイック スタート: 工業用 IoT デバイスを管理するクラウドベースのソリューションを試す
 
@@ -98,7 +98,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 ### <a name="factory-locations"></a>ファクトリの場所
 
-**[ファクトリの場所]** パネル: ソリューションに接続された工場の状態、場所、および現在の生産構成が表示されます。 ソリューション アクセラレータの初回実行時には、シミュレートされた一連の工場がダッシュボードに表示されます。 各生産ラインのシミュレーションは、シミュレートされたタスクを実行してデータを共有する実際の OPC UA サーバー 3 台で構成されています。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-accelerators-faq-cf.md) を参照してください。
+**[ファクトリの場所]** パネル: ソリューションに接続された工場の状態、場所、および現在の生産構成が表示されます。 ソリューション アクセラレータの初回実行時には、シミュレートされた一連の工場がダッシュボードに表示されます。 各生産ラインのシミュレーションは、シミュレートされたタスクを実行してデータを共有する実際の OPC UA サーバー 3 台で構成されています。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-accelerators-faq-cf.yml) を参照してください。
 
 [![ファクトリの場所](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
 
@@ -116,7 +116,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 ### <a name="map"></a>マップ
 
-お使いのサブスクリプションで [Bing Maps API](iot-accelerators-faq-cf.md) にアクセスできる場合は、"*工場のマップ*" にソリューション内のすべての工場の地理的な場所と状態が表示されます。 その場所の詳細を表示するには、マップに表示されている場所をクリックします。
+お使いのサブスクリプションで [Bing Maps API](iot-accelerators-faq-cf.yml) にアクセスできる場合は、"*工場のマップ*" にソリューション内のすべての工場の地理的な場所と状態が表示されます。 その場所の詳細を表示するには、マップに表示されている場所をクリックします。
 
 [![マップ](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
 

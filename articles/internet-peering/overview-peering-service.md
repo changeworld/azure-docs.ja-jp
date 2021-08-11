@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42e9df30731e40b44142bbacac8bbc7d10588345
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95023447"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687949"
 ---
 # <a name="internet-peering-vs-peering-service"></a>インターネット ピアリングとPeering Service
 
@@ -49,7 +49,7 @@ Microsoft Cloud に接続するときに最も大切なのは、ユーザー サ
 * パートナーは、要件を満たしていれば、その既存のピアリングを利用して Peering Service をサポートできます。
 
 ## <a name="faq"></a>よく寄せられる質問
-よく寄せられる質問については、「[Peering Service に関する FAQ](service-faqs.md)」を参照してください。
+よく寄せられる質問については、「[Peering Service に関する FAQ](service-faqs.yml)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

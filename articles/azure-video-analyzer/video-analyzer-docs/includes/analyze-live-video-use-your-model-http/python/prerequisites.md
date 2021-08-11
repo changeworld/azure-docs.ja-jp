@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: 102248fb5d427df331bf6c915981328ff73cb10b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 60f8968a3377479457cbe0faceae28bc83835453
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371928"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113735338"
 ---
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -18,8 +18,7 @@ ms.locfileid: "110371928"
     * [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能。
         * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-        > [!TIP]
-        > Azure IoT Tools をインストールするときに、Docker のインストールを求められる場合があります。 このメッセージは無視してかまいません。
+        [!INCLUDE [install-docker-prompt](../../common-includes/install-docker-prompt.md)]
         * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
     * [Python 3](https://www.python.org/downloads/) (3.6.9 以降)、[Pip 3](https://pip.pypa.io/en/stable/installing/)、必要に応じて [venv](https://docs.python.org/3/library/venv.html)。
 * 「[モーションの検出とイベントの生成](../../../detect-motion-emit-events-quickstart.md)」クイックスタートを確認する
@@ -34,9 +33,9 @@ ms.locfileid: "110371928"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./../../../media/analyze-live-video-use-your-model-http/overview.png" alt-text="関連付けられている推論イベントを IoT Edge Hub に発行する":::
 
-上の図は、このクイックスタートでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](./../../../pipeline.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[HTTP 拡張プロセッサ](./../../../pipeline.md#http-extension-processor)ノードにビデオ フレームを送信します。
+この図は、このクイックスタートでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](./../../../pipeline.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[HTTP 拡張プロセッサ](./../../../pipeline.md#http-extension-processor)ノードにビデオ フレームを送信します。
 
-HTTP 拡張ノードは、プロキシの役割を果たします。 これは、samplingOptions フィールドによって設定された受信ビデオ フレームをサンプリングし、ビデオ フレームを指定された画像の種類に変換します。 次に、その画像を、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに、REST 経由で転送します。 この例では、そのエッジ モジュールは、さまざまな種類のオブジェクトを検出できる YOLOv3 モデルを使用して構築されています。 HTTP 拡張プロセッサ ノードは、検出結果を収集し、イベントを [IoT Hub メッセージ シンク ノード](./../../../pipeline.md#iot-hub-message-sink)に発行します。 次に、このノードはこれらのイベントを [IoT Edge Hub](../../../../../iot-fundamentals/iot-glossary.md?view=iotedge-2018-06&preserve-view=true#iot-edge-hub) に送信します。
+HTTP 拡張ノードは、プロキシの役割を果たします。 これは、samplingOptions フィールドによって設定された受信ビデオフ レームをサンプリングし、ビデオ フレームを指定された画像の種類に変換します。 次に、その画像を、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに、REST 経由で転送します。 この例では、そのエッジ モジュールは、さまざまな種類のオブジェクトを検出できる YOLOv3 モデルを使用して構築されています。 HTTP 拡張プロセッサ ノードは、検出結果を収集し、イベントを [IoT Hub メッセージ シンク ノード](./../../../pipeline.md#iot-hub-message-sink)に発行します。 次に、このノードはこれらのイベントを [IoT Edge Hub](../../../../../iot-fundamentals/iot-glossary.md?view=iotedge-2018-06&preserve-view=true#iot-edge-hub) に送信します。
 
 このクイックスタートでは次の作業を行います。
 

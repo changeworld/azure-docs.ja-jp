@@ -12,18 +12,18 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 96a9f7c50f3e30d86497c7a612ddda248db3f703
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: beab67a209c177c91a1c4fcfa44934234b6dbc06
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865695"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294801"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブでメトリックとログを設定して使用する
 
 Azure Monitor を使用して、IoT ハブのメトリックとログを収集できます。これらは、ソリューションの操作の監視と、発生した問題のトラブルシューティングに役立ちます。 この記事では、メトリックに基づいてグラフを作成する方法、メトリックに対してトリガーされるアラートを作成する方法、IoT Hub の操作とエラーを Azure Monitor ログに送信する方法、ログでエラーを確認する方法について説明します。
 
-このチュートリアルでは、[.NET でのテレメトリの送信に関するクイックスタート](quickstart-send-telemetry-dotnet.md)の Azure サンプルを使用して、IoT ハブにメッセージを送信します。 デバイスまたは別のサンプルを使用していつでもメッセージを送信できますが、いくつかの手順を適宜変更することが必要な場合があります。
+このチュートリアルでは、[.NET でのテレメトリの送信に関するクイックスタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)の Azure サンプルを使用して、IoT ハブにメッセージを送信します。 デバイスまたは別のサンプルを使用していつでもメッセージを送信できますが、いくつかの手順を適宜変更することが必要な場合があります。
 
 このチュートリアルを開始する前に、Azure Monitor の概念をある程度理解しておくと役立つものと思われます。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。 IoT Hub によって出力されるメトリックとリソース ログの詳細については、[監視データのリファレンス](monitor-iot-hub-reference.md)に関する記事をご覧ください。
 

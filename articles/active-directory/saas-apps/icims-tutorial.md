@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 3ede24767f0355d9b8dcf6cd70d76e7af65aed74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99bb8a65bc8da38a2b823bbf379ed4ee6fbb8f7
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651530"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689778"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-icims"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ICIMS の統合
 
@@ -79,7 +79,7 @@ ICIMS に対する Azure AD SSO を構成してテストするには、次の手
 
     b. **[識別子]** ボックスに、`icims.com` という URL を入力します。
 
-    c. **[応答 URL]** ボックスに、URL として「`https://.icims.com/`」と入力します。
+    c. **[応答 URL]** ボックスに、URL として「`https://*.icims.com/*`」と入力します。
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[ICIMS クライアント サポート チーム](https://www.icims.com/contact-us)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

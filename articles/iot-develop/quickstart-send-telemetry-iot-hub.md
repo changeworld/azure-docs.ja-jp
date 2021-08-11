@@ -8,18 +8,16 @@ ms.topic: quickstart
 ms.date: 05/04/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: dc59905351da364ed23b5cbc59b972feb0497a9e
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 04d7883088a4f8f9c12e384b3dcc3b4c0dfa6edf
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294933"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730804"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>クイックスタート: デバイスから Azure IoT Hub にテレメトリを送信する
 
 **適用対象**: [デバイス アプリケーション開発者](about-iot-develop.md#device-application-development)
-
-このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 Azure CLI を使用して、Azure IoT ハブとデバイスを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それをハブに安全に接続して、テレメトリを送信します。
 
 :::zone pivot="programming-language-ansi-c"
 
@@ -88,7 +86,7 @@ ms.locfileid: "112294933"
 次の手順では、次の記事を参照して、Azure IoT を使用してデバイス ソリューションを構築する方法について確認します。 
 
 > [!div class="nextstepaction"]
-> [IoT ハブに接続されたデバイスを制御する](../iot-hub/quickstart-control-device-dotnet.md)
+> [IoT ハブに接続されたデバイスを制御する](../iot-hub/quickstart-control-device.md)
 > [!div class="nextstepaction"]
 > [テレメトリを IoT Central に送信する](quickstart-send-telemetry-central.md)
 > [!div class="nextstepaction"]

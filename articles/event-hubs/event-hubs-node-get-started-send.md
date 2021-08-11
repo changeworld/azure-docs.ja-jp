@@ -4,12 +4,12 @@ description: この記事では、最新の azure/event-hubs パッケージを�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 8bf0b284a4434b15ae818693276cd04712496116
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 20308c54b7013015b92b013dc74768361660145e
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003196"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296831"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>JavaScript (azure/event-hubs) を使用して Event Hubs との間でイベントを送受信する
 このクイックスタートでは、**azure/event-hubs** JavaScript パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
@@ -96,7 +96,7 @@ npm install @azure/eventhubs-checkpointstore-blob
     [![イベント ハブがメッセージを受信したことを確認する](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > 情報提供を目的とした補足コメントを含む完全なソース コードについては、[GitHub の sendEvents.js ページ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js)にアクセスしてください。
+    > 情報提供を目的とした補足コメントを含む完全なソース コードについては、[GitHub の sendEvents.js ページ](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventhub/event-hubs/samples/v5/javascript/sendEvents.js)にアクセスしてください。
 
 お疲れさまでした。 これで、イベントをイベント ハブに送信できました。
 
@@ -193,5 +193,5 @@ Azure Storage アカウントを作成して、そこに BLOB コンテナーを
 ## <a name="next-steps"></a>次のステップ
 GitHub で次のサンプルを確認します。
 
-- [JavaScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)
-- [TypeScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- [JavaScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/javascript)
+- [TypeScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/typescript)

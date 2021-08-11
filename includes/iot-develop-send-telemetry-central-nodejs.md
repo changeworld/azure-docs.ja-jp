@@ -7,13 +7,17 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 6499ca664e56ef6484a5d83d78fee5e3b6c0e800
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4bb64b6ee52bbf70a13bc1e654322f2f49bd0dee
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776874"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712967"
 ---
+[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
+
+このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 最初に、デバイスをホストするための Azure IoT Central アプリケーションを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それを IoT Central に安全に接続して、テレメトリを送信します。
+
 ## <a name="prerequisites"></a>前提条件
 - [Node.js](https://nodejs.org/) バージョン 6 以降。 バージョンを確認するには、コンソール アプリで `node --version` を実行します。
 - [Git](https://git-scm.com/downloads).

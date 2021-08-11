@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 76d7f4e31934480be57cd5ac133c1c7e6a9dd364
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1e1ff1ea0873bf975067a7a5fe90a5f6a42c0523
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349607"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914285"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>チュートリアル:シングルページ Video Search アプリ
 
@@ -416,4 +416,4 @@ cors-proxy-server
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [Bing Video Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)
+> [Bing Video Search API リファレンス](/rest/api/cognitiveservices/bing-video-api-v7-reference)

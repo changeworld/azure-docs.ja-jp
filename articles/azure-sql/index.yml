@@ -14,12 +14,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 93d0a0f8942d4624bae9e8de93675e7ad2959493
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.openlocfilehash: eda7b4c3f26f09cdbb76a6befd202a0aeb5b3846
+  ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112454728"
+  ms.lasthandoff: 07/26/2021
+  ms.locfileid: "114688573"
 landingContent:
 - title: Azure SQL データベース
   linkLists:
@@ -86,7 +86,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: SQL Server からの移行
-      url: managed-instance/migrate-to-instance-from-sql-server.md
+      url: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
     - text: 高度なセキュリティ
       url: database/security-overview.md
     - text: ビジネス継続性

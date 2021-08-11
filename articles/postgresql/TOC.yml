@@ -459,6 +459,10 @@
         - name: ネットワーク
           href: flexible-server/concepts-networking.md
           displayName: 'virtual networks, vnet, IP address, public access'
+        - name: ファイアウォール規則
+          href: flexible-server/concepts-firewall-rules.md
+        - name: セキュリティ
+          href: flexible-server/concepts-security.md
         - name: 制限
           href: flexible-server/concepts-limits.md
         - name: 拡張機能
@@ -645,6 +649,8 @@
               href: concepts-hyperscale-high-availability.md
         - name: レプリケーション
           href: concepts-hyperscale-read-replicas.md
+        - name: 接続のプール
+          href: concepts-hyperscale-connection-pool.md
         - name: 監視と調整
           items:
             - name: 監視と調整

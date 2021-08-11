@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/19/2021
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 9491a5dd8f4ab90c97d33770de8a3b609a371b50
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 90a2eb4f3171023e041216dfac052905a6319df6
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478228"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112239337"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "110478228"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+  [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Node.js][Node.js] バージョン 6.10 以降。
 * [Express ジェネレーター](https://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によって Express をインストールできます)
@@ -54,9 +54,9 @@ ms.locfileid: "110478228"
 ## <a name="create-an-azure-cosmos-db-account"></a><a name="create-account"></a>Azure Cosmos DB アカウントを作成する
 まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合、またはこのチュートリアルで Azure Cosmos DB Emulator を使用する場合は、「[手順 2: 新しい Node.js アプリケーションを作成する](#create-new-app)」に進むことができます。
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](includes/cosmos-db-create-dbaccount.md)]
 
-[!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
+[!INCLUDE [cosmos-db-keys](includes/cosmos-db-keys.md)]
 
 ## <a name="create-a-new-nodejs-application"></a><a name="create-new-app"></a>新しい Node.js アプリケーションを作成する
 次に、Express フレームワークを使用した基本的な Hello World Node.js プロジェクトの作成について学習しましょう。

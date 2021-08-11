@@ -11,16 +11,14 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 843db24707b8c826fe48e9d50aa7ec5bc135399f
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 27fde7dab5c5f16f941fd223e1e08a58948133ea
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863607"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731892"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信して Azure CLI で監視する
-
-[!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT Hub は、保管や処理のために IoT デバイスから大量のテレメトリをクラウドに取り込むことを可能にする Azure サービスです。 このクイックスタートでは、Azure CLI を使用して、IoT Hub とシミュレートされたデバイスを作成、デバイスのテレメトリをハブに送信、cloud-to-device メッセージを送信します。 また、Azure portal を使用して、デバイス メトリックを視覚化します。 これは、CLI を使用して IoT Hub アプリケーションとやり取りする開発者のための基本的なワークフローです。
 
@@ -200,5 +198,7 @@ Azure portal でメッセージング メトリックを視覚化するには以
 
 デバイス開発者の場合、C 用 Azure IoT Device SDK を使用するテレメトリのクイックスタートを参照することをお勧めします。必要に応じて、Azure IoT Hub テレメトリのクイックスタートに関する利用可能な記事のいずれかをお好みの言語または SDK で参照してください。
 
+バックエンド アプリケーションからシミュレートされたデバイスを制御する方法を学習するには、次のクイック スタートに進んでください。
+
 > [!div class="nextstepaction"]
-> [クイック スタート: デバイスから IoT ハブへの利用統計情報の送信 (C)](quickstart-send-telemetry-c.md)
+> [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device.md)

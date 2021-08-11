@@ -11,12 +11,12 @@ ms.date: 05/14/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: ドキュメントの処理
-ms.openlocfilehash: b30dbd58e0a9c440f51386052529850d9ce9adc4
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 7696a7e1d62aae556d93fa5bccc23376d1ba9a25
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111894076"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461931"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -61,7 +61,7 @@ Form Recognizer の用途:
 
     :::image type="content" source="../media/label-tool/layout-2.jpg" alt-text="Layout Form Recognizer ツールの接続設定。":::
 
-5. ソース URL を選択し、サンプル ドキュメント https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/layout-page-001.jpg の次の URL を貼り付け、[Fetch]\(フェッチ\) ボタンをクリックします。
+5. ソース URL を選択し、サンプル ドキュメント `https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/layout-page-001.jpg` の次の URL を貼り付け、[Fetch]\(フェッチ\) ボタンをクリックします。
 
 1. [Run Layout]\(レイアウトの実行\) をクリックしてください。Form Recognizer サンプル ラベル付けツールにより、Analyze Layout API を呼び出してドキュメントを解析します。
 
@@ -88,7 +88,7 @@ Form Recognizer 事前構築済みモデルを使用して、請求書、領収�
 4. 次のオプションを使用して、分析するファイルを選択します。
 
     * 請求書の画像の URL。 このクイックスタートでは、[サンプル請求書ドキュメント](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)を使用できます。
-    * レシートの画像の URL。 このクイックスタートでは、[サンプル ID ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-us-driver-license-wa.jpg)を使用できます。
+    * レシートの画像の URL。 このクイックスタートでは、[サンプル ID ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)を使用できます。
     * レシートの画像の URL。 このクイックスタートでは、[サンプルの領収書画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)を使用できます。
     * 名刺の画像の URL。 このクイックスタートでは、[サンプル名刺画像](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg)を使用できます。
 

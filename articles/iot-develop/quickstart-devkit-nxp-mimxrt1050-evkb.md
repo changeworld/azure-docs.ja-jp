@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: 69879548be28ec02df8ba958243a97ee1925e3ae
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 7dcba5490d3f341e68b07aa798e9ca0ffa1666e7
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904153"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122094"
 ---
 # <a name="quickstart-connect-an-nxp-mimxrt1050-evkb-evaluation-kit-to-iot-central"></a>クイックスタート: NXP MIMXRT1050-EVKB 評価キットを IoT Central に接続する
 
@@ -37,7 +37,7 @@ ms.locfileid: "111904153"
 
     * [NXP MIMXRT1050-EVKB](https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1050-evaluation-kit:MIMXRT1050-EVK) (NXP EVK)
     * USB 2.0 A male to Micro USB male ケーブル
-    * ワイヤード イーサネット アクセス
+    * ワイヤード (有線) イーサネット アクセス
     * イーサネット ケーブル
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
@@ -115,7 +115,7 @@ NXP EVK を Azure に接続するには、Wi-Fi と Azure IoT の設定の構成
 
     :::image type="content" source="media/quickstart-devkit-nxp-mimxrt1050-evkb/nxp-1050-evkb-board.png" alt-text="NXP EVK ボードの主要コンポーネントを見つける":::
 
-1. マイクロ USB ケーブルを NXP EVK のマイクロ USB ポートに接続し、それをコンピューターに接続します。 デバイスの電源をオンにすると、緑色の LED が点灯して電源の状態が示されます。
+1. マイクロ USB ケーブルを NXP EVK のマイクロ USB ポートに接続し、それからコンピューターに接続します。 デバイスの電源をオンにすると、緑色の LED が点灯して電源の状態が示されます。
 1. イーサネット ケーブルを使用して、NXP EVK をイーサネット ポートに接続します。
 1. エクスプローラーで、前のセクションで作成したバイナリ ファイルを見つけます。
 1. バイナリ ファイル *mimxrt1050_azure_iot.bin* をコピーします。
@@ -131,11 +131,11 @@ NXP EVK を Azure に接続するには、Wi-Fi と Azure IoT の設定の構成
 
 1. **Termite** を開始します。
     > [!TIP]
-    > フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+    > フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 1. **[設定]** を選択します。
 1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
     * **Baud rate\(ボー レート\)** : 115,200
-    * **Port\(ポート\)** : NXP EVK が接続されているポート。 ドロップダウンに複数のポート オプションがある場合は、使用する適切なポートを見つけることができます。 Windows の **デバイス マネージャー** を開き、 **[ポート]** を表示して、使用するポートを特定します。
+    * **Port (ポート)** : NXP EVK が接続されているポート。 ドロップダウンに複数のポート オプションがある場合は、使用する適切なポートを見つけることができます。 Windows の **デバイス マネージャー** を開き、 **[ポート]** を表示して、使用するポートを特定します。
 
     :::image type="content" source="media/quickstart-devkit-nxp-mimxrt1050-evkb/termite-settings.png" alt-text="Termite アプリのシリアル ポート設定のスクリーンショット":::
 
@@ -205,7 +205,7 @@ IoT Central ポータルでテレメトリを表示するには:
 
 ## <a name="call-a-direct-method-on-the-device"></a>デバイス上のダイレクト メソッドを呼び出す
 
-IoT Central を使用して、デバイスに実装したダイレクト メソッドを呼び出すこともできます。 ダイレクト メソッドには名前があり、必要に応じて、JSON ペイロード、構成可能な接続、メソッドのタイムアウトを設定できます。 このセクションでは、LED のオンとオフを切り替えることができるメソッドを呼び出します。
+また、IoT Central を使用して、デバイスに実装したダイレクト メソッドを呼び出すこともできます。 ダイレクト メソッドには名前があり、必要に応じて、JSON ペイロード、構成可能な接続、メソッドのタイムアウトを設定できます。 このセクションでは、LED のオンとオフを切り替えることができるメソッドを呼び出します。
 
 IoT Central ポータルでメソッドを呼び出すには:
 
@@ -226,7 +226,7 @@ IoT Central からデバイス情報を表示できます。
 
 ## <a name="troubleshoot-and-debug"></a>トラブルシューティングとデバッグ
 
-デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 
 アプリケーションのデバッグについては、「[Visual Studio Code を使用したデバッグ](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)」を参照してください。
 
@@ -242,7 +242,7 @@ Azure IoT Central のサンプル アプリケーション全体とそのデバ�
 
 このクイックスタートでは、Azure RTOS サンプル コードを含むカスタム イメージをビルドし、そのイメージを NXP EVK デバイスにフラッシュしました。 また、IoT Central ポータルを使用して、Azure リソースを作成し、NXP EVK を安全に Azure に接続して、テレメトリの表示とメッセージの送信を行いました。
 
-次のステップとして、次の記事を参照し、IoT デバイス SDK を使用してデバイスを Azure IoT に接続する方法の詳細を確認します。 
+次のステップとして、IoT デバイス SDK を使用してデバイスを Azure IoT に接続する方法の詳細について次の記事を確認してください。 
 
 > [!div class="nextstepaction"]
 > [シミュレートされたデバイスを IoT Central に接続する](quickstart-send-telemetry-central.md)

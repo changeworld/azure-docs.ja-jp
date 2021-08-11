@@ -5,12 +5,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 1/20/2021
-ms.openlocfilehash: ac83f455d2af82c3f6970077fccb17f07e53cccc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 876e30eec31918489b174aaf4eec77508b2c5a71
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98901049"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112361756"
 ---
 ## <a name="creating-and-running-a-scan"></a>スキャンの作成と実行
 
@@ -19,11 +19,11 @@ ms.locfileid: "98901049"
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1. **[ソース]** に移動します
+1. Purview Studio の左側にあるペインで **[Data Map]** タブを選択します。
 
 1. 登録したデータ ソースを選択します。
 
-1. **[+ 新しいスキャン]** を選択します
+1. **[新しいスキャン]** を選択します。
 
 1. 対象のデータ ソースに接続するための資格情報を選択します。 
 

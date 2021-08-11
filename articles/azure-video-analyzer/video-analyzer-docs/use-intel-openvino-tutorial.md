@@ -3,14 +3,14 @@ title: Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用し�
 description: このチュートリアルでは、Intel が提供する AI モデル サーバー (トレーニング済みモデルを含む) を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析します。
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 06/01/2021
 titleSuffix: Azure
-ms.openlocfilehash: d9c7beeb75d8a8785f58b1d0b9b3a93dfc6e53f1
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a36de6ac835b3ed9f4188b6f8d2bf3b5178be087
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384084"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604709"
 ---
 # <a name="tutorial-analyze-live-video-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル: Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
 
@@ -18,8 +18,7 @@ ms.locfileid: "110384084"
 
 このチュートリアルでは、IoT Edge デバイスとして Azure VM を使用し、シミュレートされたライブ ビデオ ストリームも使用します。 C# で作成されたサンプル コードをベースにしています。
 
-> [!NOTE]
-> このチュートリアルでは、エッジ デバイスとして x86-64 コンピューターを使用する必要があります。
+[!INCLUDE [use-x86-64](./includes/common-includes/use-x86-64.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

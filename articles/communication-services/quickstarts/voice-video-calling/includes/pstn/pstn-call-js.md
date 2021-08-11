@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: ab5741e12bea83893f871487f92a5495b1dd08c9
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7506f2c42066cb26532f815f2b77b240caea1993
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560358"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535986"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../../includes/emergency-calling-notice-include.md)]
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-phone-calling) にあります
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-phone-calling) にあります
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -22,7 +22,6 @@ ms.locfileid: "111560358"
 - デプロイ済みの Communication Services リソース。 [Communication Services リソースを作成します](../../../create-communication-resource.md)。
 - Communication Services リソースで取得した電話番号。 [電話番号の取得方法](../../../telephony-sms/get-phone-number.md)。
 - 通話クライアントを有効にするための `User Access Token`。 [`User Access Token` を取得する方法](../../../access-tokens.md)についての詳細
-
 
 [!INCLUDE [Calling with JavaScript](../get-started/get-started-javascript-setup.md)]
 
@@ -125,7 +124,6 @@ hangUpPhoneButton.addEventListener("click", () => {
 ## <a name="run-the-code"></a>コードの実行
 
 アプリをビルドして実行するには、`webpack-dev-server` を使用します。 次のコマンドを実行して、ローカルの Web サーバーにアプリケーション ホストをバンドルします。
-
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ffdd6c30e279cc5df7f97e5ab5bb77a87c18dd8b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6038db88610e1fde8d95c2c31a9bcfa2c5ad5ac2
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480505"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Managed User の統合
 
@@ -117,7 +117,7 @@ GitHub Enterprise Managed User に対する Azure AD SSO を構成してテス�
 1. [https://resources.azure.com](https://github.com) に移動します
 1. 右上隅の [サインイン] をクリックします。
 1. 最初の管理者ユーザー アカウントの資格情報を入力します。 ログイン ハンドルの形式は `<your enterprise short code>_admin` にします。
-1. https://github.com/enterprises/ `<your enterprise name>` に移動します。 この情報は、Solutions Engineering 担当者から提供されます。
+1. `https://github.com/enterprises/` `<your enterprise name>` に移動します。 この情報は、Solutions Engineering 担当者から提供されます。
 1. 左側のナビゲーション メニューで、 **[設定]** 、 **[セキュリティ]** の順に選択します。
 1. **[SAML 認証の有効化]** チェックボックスをオンにします。
 1. サインオン URL を入力します。 この URL は、上の AAD からコピーしたログイン URL です。

@@ -11,12 +11,12 @@ author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
 ms.custom: designer
-ms.openlocfilehash: 995979c7fe100637aa8e241489805fb09d6723f7
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 9390fc53f4d10ad770313f1f1459f02fc7e7a998
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814790"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459444"
 ---
 # <a name="tutorial-power-bi-integration---drag-and-drop-to-create-the-predictive-model-part-1-of-2"></a>チュートリアル:Power BI 統合 - ドラッグ アンド ドロップで予測モデルを作成する (パート 1/2)
 
@@ -41,7 +41,7 @@ Power BI で使用するモデルは、3 とおりの方法で作成してデプ
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 まだサブスクリプションをお持ちでない場合は、[無料試用版](https://aka.ms/AMLFree)を使用できます。 
+- Azure サブスクリプション。 まだサブスクリプションをお持ちでない場合は、[無料試用版](https://azure.microsoft.com/free/)を使用できます。 
 - Azure Machine Learning ワークスペース。 ワークスペースがまだない場合は、「[Azure Machine Learning ワークスペースを作成して管理する](./how-to-manage-workspace.md#create-a-workspace)」を参照してください。
 - 機械学習ワークフローの基礎知識。
 

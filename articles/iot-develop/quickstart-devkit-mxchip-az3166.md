@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 4c1c6303727e503bcf5596edcc7b7a6aa5dcdb2c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: d36f400e18566abf0631b5bec24fbfe6801fd299
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904151"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575138"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>クイックスタート: MXCHIP AZ3166 Devkit を IoT Central に接続する
 
@@ -35,13 +35,13 @@ ms.locfileid: "111904151"
 * リポジトリを複製するための [Git](https://git-scm.com/downloads)
 * ハードウェア
 
-    * [MXCHIP AZ3166 IoT DevKit](https://aka.ms/iot-devkit) (MXCHIP DevKit)
+    * [MXCHIP AZ3166 IoT DevKit](https://www.seeedstudio.com/AZ3166-IOT-Developer-Kit.html) (MXCHIP DevKit)
     * Wi-Fi 2.4 GHz
     * USB 2.0 A male to Micro USB male ケーブル
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
-開発環境を設定するには、まず、このクイックスタートに必要なすべての資産を含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
+開発環境を設定するには、まず、このクイックスタートに必要なすべてのアセットを含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>クイックスタート用のリポジトリのクローン
 
@@ -55,7 +55,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>ツールのインストール
 
-複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 組み込みデバイスの別のクイックスタートでこれらのツールをインストールした場合は、もう一度行う必要はありません。
+複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 別の組み込みデバイスのクイックスタートでこれらのツールをインストールしてある場合は、もう一度行う必要はありません。
 
 > [!NOTE]
 > 設定スクリプトでは、次のツールがインストールされます。
@@ -137,7 +137,7 @@ MXCHIP DevKit を Azure に接続するには、Wi-Fi と Azure IoT の設定の
 
 1. **Termite** を開始します。
     > [!TIP]
-    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 1. **[設定]** を選択します。
 1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
     * **Baud rate\(ボー レート\)** : 115,200
@@ -236,19 +236,19 @@ IoT Central からデバイス情報を表示できます。
 
 ## <a name="troubleshoot-and-debug"></a>トラブルシューティングとデバッグ
 
-デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関するページを参照してください。
+デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 
 アプリケーションのデバッグについては、「[Visual Studio Code を使用したデバッグ](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイックスタートで作成した Azure リソースが不要になったら、IoT Central ポータルからそれらを削除することができます。
+このクイックスタートで作成した Azure リソースが不要になったら、IoT Central ポータルからそれらを削除できます。
 
 Azure IoT Central のサンプル アプリケーション全体とそのデバイスおよびリソースをすべて削除するには:
 1. **[管理]**  >  **<自分のアプリケーション>** を選択します。
 1. **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure RTOS サンプル コードを含むカスタム イメージをビルドし、そのイメージを MXCHIP DevKit デバイスにフラッシュしました。 また、IoT Central ポータルを使用して、Azure リソースを作成し、MXCHIP DevKit を安全に Azure に接続し、テレメトリを表示し、メッセージを送信しました。
 

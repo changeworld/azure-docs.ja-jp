@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 910e19137873ed5c34584b3293ebd4248c5fe2f8
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 4923ba6ead6b13f6b919c72304d4f389bac41386
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831908"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287818"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Java 関数を作成する
 
@@ -40,7 +40,7 @@ Maven が好みの開発ツールでない場合は、[Gradle](./functions-creat
 
 + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 または 11。 `JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8 または 11。 `JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 

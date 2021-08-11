@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 10/30/2020
-ms.subservice: hybrid
+ms.subservice: compliance
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4246bc4c62fd8e5e73ff18e383b8bf115d25ede8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84e429310b617002a8c4d2eac414541b288197ca
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643839"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112428564"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>ディレクトリ間のプロビジョニングとは
 
