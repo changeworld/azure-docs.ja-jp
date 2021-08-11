@@ -1,0 +1,88 @@
+- name: Metrics Advisor のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Metrics Advisor とは
+      href: overview.md
+    - name: 価格
+      href: 'https://aka.ms/ma-pricing'
+    - name: 新機能
+      href: whats-new.md
+    - name: Metrics Advisor の FAQ
+      href: faq.yml
+- name: クイックスタート
+  items:
+    - name: Web ポータル
+      href: quickstarts/web-portal.md
+    - name: REST API とクライアント ライブラリ
+      href: quickstarts/rest-api-and-client-library.md
+- name: サンプル
+  href: /samples/browse/?products=azure&terms=metrics-advisor
+- name: 操作方法ガイド
+  items:
+    - name: データをオンボードする
+      href: how-tos/onboard-your-data.md
+    - name: 資格情報エンティティを作成する
+      href: how-tos/credential-entity.md
+    - name: さまざまなデータ ソースを接続する
+      href: data-feeds-from-different-sources.md
+    - name: データ フィードを管理する
+      href: how-tos/manage-data-feeds.md
+    - name: メトリックを構成して検出構成を微調整する
+      href: how-tos/configure-metrics.md
+    - name: フックを使用してアラートを構成し、通知を取得する
+      href: how-tos/alerts.md
+    - name: インシデントを診断する
+      href: how-tos/diagnose-an-incident.md
+    - name: フィードバックを使用して異常検出を調整する
+      href: how-tos/anomaly-feedback.md
+    - name: メトリック グラフを作成する
+      href: how-tos/metrics-graph.md
+    - name: エンタープライズ対応
+      items:
+        - name: カスタマー マネージド キーを使用する
+          href: encryption.md
+- name: 概念
+  items:
+    - name: Metrics Advisor の主な用語
+      href: glossary.md
+    - name: コスト管理
+      href: cost-management.md
+      displayname: 'cost, pricing, price, billing, bill'
+- name: AI の責任ある使用
+  items:
+    - name: 透明性に関するメモ
+      items:
+        - name: Metrics Advisor のユース ケース
+          href: /legal/cognitive-services/anomaly-detector/transparency-note?context=/azure/applied-ai-services/metrics-advisor/context/context
+        - name: 特性と制限
+          href: /legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/applied-ai-services/metrics-advisor/context/context
+    - name: 統合と責任ある使用
+      href: /legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/applied-ai-services/metrics-advisor/context/context
+    - name: データ、プライバシー、セキュリティ
+      href: /legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/applied-ai-services/metrics-advisor/context/context
+- name: チュートリアル
+  items:
+    - name: 別のチャネル経由の通知を有効にする
+      href: tutorials/enable-anomaly-notification.md
+    - name: 有効なクエリを作成する
+      href: tutorials/write-a-valid-query.md
+- name: リファレンス
+  items:
+    - name: Metrics Advisor REST API
+      href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
+    - name: Azure CLI リファレンス
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+    - name: PowerShell リファレンス
+      href: /powershell/module/azurerm.cognitiveservices/
+- name: リソース
+  items:
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
+      href: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/applied-ai-services/metrics-advisor/context/context

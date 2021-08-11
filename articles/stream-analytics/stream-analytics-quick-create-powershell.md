@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 193c8b1f47960b9b42c61a9b0e394e5ebedf7bf7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 9a931790428a138ea926b0408dd236917987c620
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107867585"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285980"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する
 
@@ -90,7 +90,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-3. [az iothub device-identity create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、**MyASAIoTDevice** という名前のデバイスを作成します。
+3. [az iothub device-identity create](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c#create-a-simulated-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、**MyASAIoTDevice** という名前のデバイスを作成します。
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"

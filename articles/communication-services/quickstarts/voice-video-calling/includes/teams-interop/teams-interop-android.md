@@ -6,17 +6,17 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 20226c4c0e750a7a5167f00d5804a5aac76307ce
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: dd8b4872f60b274741808033d73492130710a066
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560607"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536102"
 ---
 このクイックスタートでは、Android 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します。
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/join-call-to-teams-meeting) にあります
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/join-call-to-teams-meeting) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c317987d382ba5e52e99bbd2a775bf080a51b11f
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102423954"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112239451"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>チュートリアル:.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,15 +50,15 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
 
-  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+  [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]
 
-* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]
+* [!INCLUDE [cosmos-db-emulator-vs](includes/cosmos-db-emulator-vs.md)]
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1:Azure Cosmos DB アカウントを作成する
 
 それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、このセクションをスキップします。 Azure Cosmos DB エミュレーターを使用するには、[Azure Cosmos DB エミュレーター](local-emulator.md)に関する記事に記載されている手順に従ってエミュレーターを設定してください。 その後、「[手順 2:Visual Studio プロジェクトをセットアップする](#SetupVS)」に進みます。
 
-[!INCLUDE [create-dbaccount-preview](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [create-dbaccount-preview](includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>手順 2:Visual Studio プロジェクトをセットアップする
 

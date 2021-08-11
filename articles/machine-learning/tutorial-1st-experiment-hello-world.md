@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: ccc28c5a20fd31d3200f6473210150587fd5b4ad
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 40fdfcec5e74c7b86807f5cd1577d12ed4904632
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028633"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765741"
 ---
 # <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>チュートリアル: Azure Machine Learning で Python スクリプトを使ってみる (パート 1/3)
 
@@ -77,9 +77,6 @@ print("Hello world!")
 :::image type="content" source="media/tutorial-1st-experiment-hello-world/save-run-in-terminal.png" alt-text="ツール バーの [Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\) ツールを示すスクリーンショット":::
 
 表示されたターミナル ウィンドウにスクリプトの出力が表示されます。 タブを閉じ、 **[終了]** を選択してセッションを終了します。
-
-> [!div class="nextstepaction"]
-> [スクリプトをローカルで実行しました](?success=run-local#control-script) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=run-local)
 
 ## <a name="create-a-control-script"></a><a name="control-script"></a> コントロール スクリプトを作成する
 
@@ -149,8 +146,6 @@ print(aml_url)
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [コントロール スクリプトを作成しました](?success=create-control-script#submit) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=create-control-script)
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> クラウドでコードを送信して実行する
 
@@ -161,8 +156,6 @@ print(aml_url)
 > [!TIP]
 > コンピューティング クラスターの作成が完了すると、"UserError: Required Docker image not found...(ユーザー エラー: 必要な Docker イメージが見つかりません)" というエラーが表示される場合があります。この場合、5 分ほど待機し、再試行してください。  コンピューティング クラスターでは、ノードを起動する準備が整うまでに、多くの時間が必要になる場合があります。
 
-> [!div class="nextstepaction"]
-> [クラウドでコードを送信しました](?success=submit-to-cloud#monitor) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
 
 ## <a name="monitor-your-code-in-the-cloud-in-the-studio"></a><a name="monitor"></a>スタジオを使用してクラウドでコードを監視する
 
@@ -204,8 +197,6 @@ Docker イメージがコンピューティングにキャッシュされるた�
 
 `70_driver_log.txt` ファイルには、実行からの標準出力が含まれます。 このファイルは、クラウドでのリモート実行をデバッグするときに役立ちます。
 
-> [!div class="nextstepaction"]
-> [スタジオでログを確認しました](?success=monitor-in-studio#next-steps) [問題が発生しました](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>次の手順
 

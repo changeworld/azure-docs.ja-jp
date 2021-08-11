@@ -6,16 +6,16 @@ author: peiliu
 manager: rejooyan
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/11/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: 177c433fcc1fb990a610405c8343340314816966
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 44cf84b1a9a045d1f9ecd6c6aaf3a8224ec273a6
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111429447"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111985"
 ---
 Communication Services C# SMS SDK を使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 

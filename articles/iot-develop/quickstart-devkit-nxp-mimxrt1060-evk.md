@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: 9d843b2a75c5e5dff21c27f3c486c372408719d5
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 58986ee94998dde88f8113449b460a0208156463
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904123"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122039"
 ---
 # <a name="quickstart-connect-an-nxp-mimxrt1060-evk-evaluation-kit-to-iot-central"></a>クイックスタート: NXP MIMXRT1060-EVK Evaluation kit を IoT Central に接続する
 
@@ -42,7 +42,7 @@ ms.locfileid: "111904123"
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
-開発環境を設定するには、まず、このクイックスタートに必要なすべての資産を含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
+開発環境を設定するには、まず、このクイックスタートに必要なすべてのアセットを含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>クイックスタート用のリポジトリのクローン
 
@@ -56,7 +56,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>ツールのインストール
 
-複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 組み込みデバイスの別のクイックスタートでこれらのツールをインストールした場合は、もう一度行う必要はありません。
+複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 別の組み込みデバイスのクイックスタートでこれらのツールをインストールしてある場合は、もう一度行う必要はありません。
 
 > [!NOTE]
 > 設定スクリプトでは、次のツールがインストールされます。
@@ -131,7 +131,7 @@ NXP EVK を Azure に接続するには、Azure IoT の設定の構成ファイ�
 
 1. **Termite** を開始します。
     > [!TIP]
-    > フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+    > フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 1. **[設定]** を選択します。
 1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
     * **Baud rate\(ボー レート\)** : 115,200
@@ -205,7 +205,7 @@ IoT Central ポータルでテレメトリを表示するには:
 
 ## <a name="call-a-direct-method-on-the-device"></a>デバイス上のダイレクト メソッドを呼び出す
 
-IoT Central を使用して、デバイスに実装したダイレクト メソッドを呼び出すこともできます。 ダイレクト メソッドには名前があり、必要に応じて、JSON ペイロード、構成可能な接続、メソッドのタイムアウトを設定できます。 このセクションでは、LED のオンとオフを切り替えることができるメソッドを呼び出します。
+また、IoT Central を使用して、デバイスに実装したダイレクト メソッドを呼び出すこともできます。 ダイレクト メソッドには名前があり、必要に応じて、JSON ペイロード、構成可能な接続、メソッドのタイムアウトを設定できます。 このセクションでは、LED のオンとオフを切り替えることができるメソッドを呼び出します。
 
 IoT Central ポータルでメソッドを呼び出すには:
 
@@ -226,7 +226,7 @@ IoT Central からデバイス情報を表示できます。
 
 ## <a name="troubleshoot-and-debug"></a>トラブルシューティングとデバッグ
 
-デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 
 アプリケーションのデバッグについては、「[Visual Studio Code を使用したデバッグ](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)」を参照してください。
 

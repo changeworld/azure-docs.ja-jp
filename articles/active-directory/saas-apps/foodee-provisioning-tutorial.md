@@ -2,21 +2,21 @@
 title: チュートリアル:Azure Active Directory を使用して Foodee を自動ユーザー プロビジョニング用に構成する | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Foodee に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/30/2019
-ms.author: Zhchia
-ms.openlocfilehash: 8b4bfa7e9bf457d79c6c4a0b5255bce4fe36dff4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 74ebece9d3db5fb1d4781ece16492441c351235e
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358680"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763971"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>チュートリアル:Foodee を構成し、自動ユーザー プロビジョニングに対応させる
 

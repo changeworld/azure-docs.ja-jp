@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 8d634cf7cb5a500e8ff36222419600b6059c9a74
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: d6cb1980c93e5161f02b79b05f1128ba777027c6
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489369"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281955"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-powershell-preview"></a>チュートリアル: Azure PowerShell を使用してロールの割り当て条件を追加し、BLOB へのアクセスを制限する (プレビュー)
 
@@ -110,8 +110,6 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     $context = Get-AzSubscription -SubscriptionId $subscriptionId
     Set-AzContext $context
     ```
-
-1. まだの場合には、BLOB インデックス タグの利用のためにサブスクリプションを登録します。 詳細については、「[サブスクリプションを登録する (プレビュー)](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview)」を参照してください。
 
 ## <a name="step-3-create-a-user"></a>手順 3 - ユーザーを作成する
 
@@ -313,7 +311,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     $testRa.Description = "Read access to blobs with the tag Project=Cascade or Project=Baker"
     ```
 
-1. [Set-AzRoleAssignment](/powershell/module/az.resources/set-azroleassignment) を使用して、ロールの割り当て条件を更新します。
+1. [Set-AzRoleAssignment](/powershell/module/az.resources/set-azroleassignment) を使用して、ロールの割り当ての条件を更新します。
 
     ```azurepowershell
     Set-AzRoleAssignment -InputObject $testRa -PassThru
@@ -354,7 +352,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 
 1. 作成したユーザーを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure のロールの割り当て条件の例](storage-auth-abac-examples.md)
 - [Azure Storage での Azure のロールの割り当て条件のアクションと属性 (プレビュー)](storage-auth-abac-attributes.md)

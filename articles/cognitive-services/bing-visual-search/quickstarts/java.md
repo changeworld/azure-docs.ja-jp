@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.custom: devx-track-java
 ms.author: scottwhi
-ms.openlocfilehash: 8974dbef47938460e5a1b32d4f6004a9fd35f9d2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b92010a1e4ea0cb942d3e3749965a1c4399a97f8
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499086"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286162"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>クイック スタート:Bing Visual Search REST API と Java を使用して画像に関する分析情報を取得する
 
@@ -29,7 +29,7 @@ ms.locfileid: "96499086"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit(JDK) 7 または 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java Development Kit(JDK) 7 または 8](/azure/developer/java/fundamentals/java-support-on-azure)
 * [Gson Java ライブラリ](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 

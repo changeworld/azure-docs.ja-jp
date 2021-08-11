@@ -12,12 +12,12 @@ ms.author: drskwier
 ms.reviewer: mathoma, v-masebo
 ms.date: 05/19/2021
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
-ms.openlocfilehash: 0e0ec8f4cc5106ac0e9a9e72f4d9b6c0186c5fe3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 65b4d70d9b88ec3c4275c5154bf5977bdf5dd59b
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706415"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554678"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Node.js を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -117,29 +117,30 @@ Azure SQL Database のデータベースに接続するために必要な接続�
     
     /* 
         //Use Azure VM Managed Identity to connect to the SQL database
-        const connection = new Connection({
-        server: process.env["db_server"],
-        authentication: {
-            type: 'azure-active-directory-msi-vm',
-        },
-        options: {
-            database: process.env["db_database"],
-            encrypt: true,
-            port: 1433
-        }
-    });
+        const config = {
+            server: process.env["db_server"],
+            authentication: {
+                type: 'azure-active-directory-msi-vm',
+            },
+            options: {
+                database: process.env["db_database"],
+                encrypt: true,
+                port: 1433
+            }
+        };
+        
         //Use Azure App Service Managed Identity to connect to the SQL database
-        const connection = new Connection({
-        server: process.env["db_server"],
-        authentication: {
-            type: 'azure-active-directory-msi-app-service',
-        },
-        options: {
-            database: process.env["db_database"],
-            encrypt: true,
-            port: 1433
-        }
-    });
+        const config = {
+            server: process.env["db_server"],
+            authentication: {
+                type: 'azure-active-directory-msi-app-service',
+            },
+            options: {
+                database: process.env["db_database"],
+                encrypt: true,
+                port: 1433
+            }
+        });
 
     */
 

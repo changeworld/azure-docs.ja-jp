@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ff888cd98cc79f3e2d508b01f092102eaa038c86
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c7e25529803b99adb4ce3a375f041b989dda3fe3
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494762"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "113225608"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>チュートリアル:Azure Cosmos DB バックエンドを使用してセッションやデバイス間で Azure Spatial Anchors を共有する
 
@@ -27,7 +27,7 @@ ms.locfileid: "95494762"
 
 先ほど作成したリソース グループに Azure Cosmos データベースを追加します。
 
-[!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-table](../../cosmos-db/includes/cosmos-db-create-dbaccount-table.md)]
 
 後で必要になるため、`Connection String` をコピーします。
 

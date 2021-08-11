@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - ログ、メトリック、およびトレースを使用した Azure Spring Cloud アプリの監視
 description: ログ ストリーミング、ログ分析、メトリック、およびトレースを使用して、Azure Spring Cloud の PetClinic サンプル アプリを監視します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 04/23/2021
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9275eb9d5f3206a5acd41fa970c4acd1f4663a37
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 424954d18fc719748175c2ad9428bb621d577a70
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321575"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470783"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>クイック スタート:ログ、メトリック、およびトレースを使用した Azure Spring Cloud アプリの監視
 
@@ -228,7 +228,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 前のクイックスタートでは、既定のリソース グループ名も設定しました。 次のクイックスタートに進まない場合は、次の CLI コマンドを実行して、既定値をクリアします。
 
 ```azurecli
-az configure --defaults group=
+az config set defaults.group=
 ```
 
 ## <a name="next-steps"></a>次の手順

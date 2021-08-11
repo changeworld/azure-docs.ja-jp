@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 31ab388d01c9bd589a809bd1c71b455d6d8bf754
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 232a3293d6529955a768ed8d7700289ddbed5177
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984736"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136366"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
@@ -24,7 +24,7 @@ ms.locfileid: "111984736"
 
 機密性の高いデータについては、クライアントで追加のデータ保護レイヤーを検討する必要があります。 たとえば、Key Vault に保存する前に別の保護キーを使用してデータを暗号化します。  
 
-Key Vault では、シークレットの contentType フィールドもサポートされています。 クライアントは、シークレットのコンテンツ タイプを指定して、取得されるときのシークレット データの解釈を支援できます。 このフィールドの最大長は 255 文字です。 定義済みの値はありません。 推奨される使用方法は、シークレット データを解釈するためのヒントです。 たとえば、実装がパスワードと証明書の両方をシークレットとして格納する場合は、このフィールドを使用して区別します。 定義済みの値はありません。  
+Key Vault では、シークレットの contentType フィールドもサポートされています。 クライアントは、シークレットのコンテンツ タイプを指定して、取得されるときのシークレット データの解釈を支援できます。 このフィールドの最大長は 255 文字です。 推奨される使用方法は、シークレット データを解釈するためのヒントです。 たとえば、実装がパスワードと証明書の両方をシークレットとして格納する場合は、このフィールドを使用して区別します。 定義済みの値はありません。  
 
 ## <a name="encryption"></a>暗号化
 

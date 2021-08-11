@@ -9,12 +9,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurecli
 - mode-api
-ms.openlocfilehash: 4d805458d90c73de879a9b87d5b08c98a8f1a250
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9686b99a7c13ef3103513efab759e6295ef052c3
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537301"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288898"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>クイックスタート: Java コンテナー イメージを作成して Azure Container Registry にプッシュする
 
@@ -24,7 +24,7 @@ ms.locfileid: "107537301"
 
 * Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、または[無料の Azure アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
 * [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/overview)。
-* サポートされている Java Development Kit (JDK)。 Azure での開発時に使用可能な JDK の詳細については、<https://aka.ms/azure-jdks> を参照してください。
+* サポートされている Java Development Kit (JDK)。 Azure での開発時に使用可能な JDK の詳細については、「[Java の Azure および Azure Stack に関するサポート](/azure/developer/java/fundamentals/java-support-on-azure)」 を参照してください。
 * Apache の [Maven](http://maven.apache.org) ビルド ツール (バージョン 3 以上)。
 * [Git](https://git-scm.com) クライアント。
 * [Docker](https://www.docker.com) クライアント。
@@ -104,11 +104,11 @@ ms.locfileid: "107537301"
 1. Azure CLI から次のコマンドを使用して Azure Container Registry にログインします。 プレースホルダーは、実際のレジストリ名に置き換えてください。
 
    ```azurecli
-   az configure --defaults acr=<your registry name>
+   az config set defaults.acr=<your registry name>
    az acr login
    ```
 
-   `az acr` コマンドで使用する既定のレジストリ名は、`az configure` コマンドによって設定されます。
+   `az acr` コマンドで使用する既定のレジストリ名は、`az config` コマンドによって設定されます。
 
 1. Spring Boot アプリケーションの完了プロジェクト ディレクトリ ("*C:\SpringBoot\gs-spring-boot-docker\complete*" や " */users/robert/SpringBoot/gs-spring-boot-docker/complete*" など) に移動し、*pom.xml* ファイルをテキスト エディターで開きます。
 

@@ -3,12 +3,12 @@ title: Live Video Analytics を使用して空間分析用の Computer Vision �
 description: このチュートリアルでは、Azure Live Video Analytics を Azure Cognitive Services の Computer Vision 空間分析 AI 機能と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 549c1405e7deb3531da65ff4425befa2d29aaeef
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 824ff93e1411563b07bea9f30bbd2cf4ecad457c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373565"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456138"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-and-live-video-analytics-preview"></a>空間分析用の Computer Vision と Live Video Analytics を使用してライブ ビデオを分析する (プレビュー)
 
@@ -63,7 +63,7 @@ MediaGraphCognitiveServicesVisionExtension ノードは、プロキシの役割�
 
 ## <a name="create-the-computer-vision-resource"></a>Computer Vision リソースを作成する
 
-[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または Azure CLI を使用して、Computer Vision という種類の Azure リソースを作成する必要があります。 コンテナーへのアクセス要求が承認され、Azure サブスクリプション ID が登録されると、リソースを作成できるようになります。  https://aka.ms/csgate にアクセスして、ユース ケースと Azure のサブスクリプション ID を送信します。  アクセス要求フォームに記載されているものと同じ Azure サブスクリプションを使用して、Azure リソースを作成する必要があります。
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または Azure CLI を使用して、Computer Vision という種類の Azure リソースを作成する必要があります。
 
 ### <a name="gathering-required-parameters"></a>必須パラメーターの収集
 

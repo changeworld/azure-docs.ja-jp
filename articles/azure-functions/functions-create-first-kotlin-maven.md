@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 721fbaf1a3b2418677d07e8ac39fa733164c1459
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad52f889cdf3d4d1faaf83ee87154b6a51a2860d
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179563"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287242"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>クイック スタート:Kotlin と Maven を使用して初めての関数を作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "102179563"
 
 Kotlin を使用して関数を開発するには、以下のものがインストールされている必要があります。
 
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8
 - [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
 - [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降

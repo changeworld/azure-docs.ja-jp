@@ -2,14 +2,14 @@
 title: モーションの検出とエッジ デバイス上でのビデオの記録 - Azure
 description: Azure Video Analyzer を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析します。 ここでは、なんらかの動きがあるかどうかを検出し、ある場合には、MP4 ビデオ クリップをエッジ デバイス上のローカル ファイル システムに記録する方法を示します。 このクイックスタートでは、IoT Edge デバイスとして Azure VM を使用するほか、シミュレートされたライブ ビデオ ストリームも使用します。
 ms.topic: quickstart
-ms.date: 04/01/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 38886673f57c4142dc1fd8cd5bd397a375aca4db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e79a2aa9027309838fd0a0fcc79096e27651e7be
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387367"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601639"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>クイック スタート:モーションの検出とエッジ デバイス上でのビデオの記録
 
@@ -68,7 +68,13 @@ ms.locfileid: "110387367"
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/vscode-common-screenshots/verbose-message.png" alt-text= "Show Verbose Message":::
 
-1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウに、いくつかのメッセージが出力されます。
+1.  ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. _operations.json_ コードにより、ダイレクト メソッド `pipelineTopologyList` および `livePipelineList` が呼び出されます。 前回のクイックスタート後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されてから、一時停止します。 Enter キーを押します。
 
    ```
@@ -128,7 +134,7 @@ ms.locfileid: "110387367"
 次の一連の呼び出しによって、リソースがクリーンアップされます。
 
 - `livePipelineDeactivate` への呼び出しによって、ライブ パイプラインが非アクティブ化されます。
-- `livePipelineDelete` への呼び出しによって、ライブ パイプラインが削除されます。
+- `livePipelineDelete` の呼び出しによって、ライブ パイプラインが削除されます。
 - `pipelineTopologyDelete` の呼び出しによって、トポロジが削除されます。
 - `pipelineTopologyList` の最後の呼び出しによって、リストが空になっていることが示されます。
 

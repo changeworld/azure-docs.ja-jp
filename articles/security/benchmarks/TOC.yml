@@ -140,7 +140,7 @@
     - name: Azure Migrate のセキュリティ ベースライン
       href: ../../migrate/security-baseline.md
     - name: Azure Peering Service のセキュリティ ベースライン
-      href: ../../peering-service/security-baseline.md
+      href: /security/benchmark/azure/baselines/peering-service-security-baseline
     - name: Azure Policy のセキュリティ ベースライン
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure Private Link のセキュリティ ベースライン
@@ -206,7 +206,7 @@
     - name: Network Watcher のセキュリティベースライン
       href: ../../network-watcher/security-baseline.md
     - name: Power BI のベースライン
-      href: /power-bi/fundamentals/security-baseline
+      href: /security/benchmark/azure/baselines/power-bi-security-baseline
     - name: Security Center のベースライン
       href: ../../security-center/security-baseline.md
     - name: Service Bus のベースライン

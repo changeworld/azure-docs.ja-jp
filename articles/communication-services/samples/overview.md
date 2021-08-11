@@ -6,15 +6,15 @@ author: probableprime
 manager: chpalm
 services: azure-communication-services
 ms.author: rifox
-ms.date: 03/12/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3c6464ff23b269b738023b8f8e187d9123da70ca
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 6b0239a431e2c5ec8cd516686456ec68cb543b8e
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290454"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107597"
 ---
 # <a name="samples"></a>サンプル
 

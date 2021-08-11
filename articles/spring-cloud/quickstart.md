@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - 初めての Azure Spring Cloud アプリケーションをデプロイする
 description: このクイックスタートでは、Spring Cloud アプリケーションを Azure Spring Cloud にデプロイします。
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: aa4a5ec19f9747014bf1a00c35778af6bfc396c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fafffc6777883209383fd8d20fc9d3ebfa7ab7fb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134665"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470539"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>クイック スタート:初めての Azure Spring Cloud アプリケーションをデプロイする
 
@@ -212,9 +212,9 @@ Visual Studio で API プロジェクト テンプレートを使用して、"he
 
    ![ASC アイコンでの開始](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-1. [Azure Spring Cloud] ページで **[+ 追加]** を選択します。
+1. [Azure Spring Cloud] ページで **[+ 作成]** を選択します。
 
-   ![ASC アイコンでの追加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+   ![ASC アイコンでの追加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-create.png)
 
 1. Azure Spring Cloud の **[作成]** ページで、フォームに入力します。  次のガイドラインを考慮してください。
 
@@ -226,6 +226,8 @@ Visual Studio で API プロジェクト テンプレートを使用して、"he
    ![ASC ポータルの起動](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
 6. **[確認と作成]** を選択します。
+
+7. **［作成］** を選択します
 
 ## <a name="build-and-deploy-the-app"></a>アプリを構築してデプロイする
 
@@ -345,9 +347,9 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 ## <a name="generate-a-spring-cloud-project"></a>Spring Cloud プロジェクトを生成する
 
-[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.10.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) を開始して、Azure Spring Cloud に対して推奨される依存関係があるサンプル プロジェクトを生成します。 次の図は、このサンプル プロジェクトに対して設定された Initializr を示しています。
+[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.12.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) を開始して、Azure Spring Cloud に対して推奨される依存関係があるサンプル プロジェクトを生成します。 次の図は、このサンプル プロジェクトに対して設定された Initializr を示しています。
 ```url
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.10.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.12.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
 この例では、Java バージョン 8 を使用しています。  Java バージョン 11 を使用したい場合は、 **[Project Metadata]\(プロジェクトのメタデータ\)** にあるオプションを変更してください。
 
@@ -383,7 +385,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
 
     ![ASC アイコンでの開始](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Azure Spring Cloud ページで **[+ 追加]** をクリックします。
+4. Azure Spring Cloud ページで **[+ 作成]** をクリックします。
 
     ![ASC アイコンでの追加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
@@ -414,7 +416,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
     az extension add --name spring-cloud
     ```
     
-1. パブリック エンドポイントが割り当てられるアプリを作成します。 Java 11 を使用している場合は、`--runtime-version=Java_11` スイッチを追加してください。
+1. パブリック エンドポイントが割り当てられるアプリを作成します。 Spring Cloud プロジェクトの生成時に Java バージョン 11 を選択した場合、--runtime-version=Java_11 スイッチを含めます。
 
     ```azurecli
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true

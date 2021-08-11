@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e927415e0a1d2ce7d52e602eddfffb0eae5387b5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 77b41a73ca092f36f38d35f525bc381e29848396
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076566"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037960"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする 
 

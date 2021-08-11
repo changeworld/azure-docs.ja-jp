@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: a91d26139fae80b38383e7f65f7ae2f58358e6f6
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 16bb319086792808a912cbb6511897d2a3a12368
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795314"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457629"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Azure SDK を使用して Cloud Services (延長サポート) をデプロイする
 
@@ -153,7 +153,7 @@ ms.locfileid: "108795314"
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
+7. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](/azure/virtual-network/public-ip-addresses#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
 静的 IP を使用する場合は、サービス構成 (.cscfg) ファイルで予約済み IP として参照する必要があります
 
     ```csharp
@@ -336,6 +336,6 @@ ms.locfileid: "108795314"
     ```
 
 ## <a name="next-steps"></a>次のステップ
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用して、Cloud Services (延長サポート) をデプロイします。
 - [Cloud Services (延長サポート) のサンプル リポジトリ](https://github.com/Azure-Samples/cloud-services-extended-support)にアクセスします

@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3026cb66579fc228c890c6649a5fb9253405020a
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: a1dc0e266fc51d9e6ac85578f248b7df5deaadaa
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112511"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451296"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念 
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
 
 Azure Communication Services Chat SDK を使用して、アプリケーションにリアルタイムのテキスト チャットを追加できます。 このページには、チャットの主な概念と機能がまとめられています。    
 

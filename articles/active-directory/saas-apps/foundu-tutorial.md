@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/20/2021
+ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 5237ca5629957f9f0e774aa1ee3f0f78c7a54f73
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 16962c14de7458c69b31d3501d7cd8317ae06f09
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481799"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foundu"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と foundU の統合
 
@@ -129,7 +129,7 @@ foundU に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[Single Sign-on Settings]\(シングル サインオンの設定\)** ページで次の手順を実行します。
 
-    ![foundU SSO 構成のスクリーンショット](./media/foundu-tutorial/configuration.png)
+    ![foundU SSO 構成のスクリーンショット](./media/foundu-tutorial/configuration-1.png)
 
     a. **[識別子 (エンティティ ID)]** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** テキスト ボックスにこの値を貼り付けます。
 

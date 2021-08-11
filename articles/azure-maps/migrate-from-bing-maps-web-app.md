@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8726f6211ef792064e9e180a8c2e34383eeb6d53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389112"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441574"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>チュートリアル:Bing 地図から Web アプリを移行する
 
@@ -33,7 +33,7 @@ Bing 地図が使用される Web アプリでは、多くの場合、Bing 地�
 
 既存の Web アプリケーションを移行する場合は、Cesium、Leaflet、OpenLayers などのオープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 そういったライブラリが使用されていて、使用を継続したい場合は、それを Azure Maps タイル サービス ([道路タイル](/rest/api/maps/render/getmaptile) \| [衛星タイル](/rest/api/maps/render/getmapimagerytile)) に接続することができます。 よく使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法については、以下のリンクから詳しい情報をご覧いただけます。
 
-* [Cesium](https://cesiumjs.org/) - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [プラグイン リポジトリ]()
+* [Cesium](https://www.cesium.com/) - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [プラグイン リポジトリ]()
 * [Leaflet](https://leafletjs.com/) – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [プラグイン リポジトリ]()
 * [OpenLayers](https://openlayers.org/) - プロジェクションをサポートする Web 用の 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [プラグイン リポジトリ]()
 
@@ -1255,7 +1255,7 @@ Bing と Azure のどちらのマップも、マップのパンとズームを�
 
 **前: Bing 地図**
 
-Bing 地図でグラウンド オーバーレイを作成する場合は、オーバーレイする画像の URL と、マップ上の画像をバインドするための境界ボックスを指定する必要があります。 この例では、マップ上に [1922 年のニュージャージー州のニューアーク](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)のマップ イメージをオーバーレイします。
+Bing 地図でグラウンド オーバーレイを作成する場合は、オーバーレイする画像の URL と、マップ上の画像をバインドするための境界ボックスを指定する必要があります。 この例では、マップ上に 1922 年のニュージャージー州のニューアークのマップ イメージをオーバーレイします。
 
 ```html
 <!DOCTYPE html>

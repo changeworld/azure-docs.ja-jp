@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 42547338c0f5f2f3105833b12e499d40b6209b05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fee783d0cf099c6f5545b6f3da47db615921e89f
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184707"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287890"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql"></a>クイックスタート: Azure Database for PostgreSQL で Java と JDBC を使用する
 
@@ -25,7 +25,7 @@ JDBC は、従来のリレーショナル データベースに接続するた�
 
 - Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
 - [Azure Cloud Shell](../cloud-shell/quickstart.md) または [Azure CLI](/cli/azure/install-azure-cli)。 Azure Cloud Shell をお勧めします。これにより、自動的にログインし、必要なすべてのツールにアクセスできるようになります。
-- サポートされている [Java 開発キット](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 (Azure Cloud Shell に含まれます)。
+- サポートされている [Java 開発キット](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8 (Azure Cloud Shell に含まれます)。
 - [Apache Maven](https://maven.apache.org/) ビルド ツール。
 
 ## <a name="prepare-the-working-environment"></a>作業環境を準備する

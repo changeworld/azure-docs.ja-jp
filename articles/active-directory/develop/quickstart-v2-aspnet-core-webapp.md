@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: bb58a86aad4e0298f12c917d475520ee44501c00
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 56b18d27f3048e0e26737294b861a28f7a2be6e5
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494425"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652959"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 
@@ -99,7 +99,7 @@ ms.locfileid: "110494425"
 > 1. *appsettings.json* ファイルを開き、次のコードを変更します。
 >
 >    ```json
->    "Domain": "Enter the domain of your tenant, e.g. contoso.onmicrosoft.com",
+>    "Domain": "[Enter the domain of your tenant, e.g. contoso.onmicrosoft.com]",
 >    "ClientId": "Enter_the_Application_Id_here",
 >    "TenantId": "common",
 >    ```
@@ -138,21 +138,21 @@ ms.locfileid: "110494425"
 *Microsoft.AspNetCore.Authentication* ミドルウェアは、ホスティング プロセスの起動時に実行される `Startup` クラスを使用します。
 
 ```csharp
-  public void ConfigureServices(IServiceCollection services)
-  {
-      services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-          .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+        .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
 
-      services.AddControllersWithViews(options =>
-      {
-          var policy = new AuthorizationPolicyBuilder()
-              .RequireAuthenticatedUser()
-              .Build();
-          options.Filters.Add(new AuthorizeFilter(policy));
-      });
-      services.AddRazorPages()
-          .AddMicrosoftIdentityUI();
-  }
+    services.AddControllersWithViews(options =>
+    {
+        var policy = new AuthorizationPolicyBuilder()
+            .RequireAuthenticatedUser()
+            .Build();
+        options.Filters.Add(new AuthorizeFilter(policy));
+    });
+   services.AddRazorPages()
+        .AddMicrosoftIdentityUI();
+}
 ```
 
 `AddAuthentication()` メソッドは、Cookie ベースの認証を追加するようサービスを構成します。 この認証は、ブラウザーのシナリオで使用されるほか、チャレンジを OpenID Connect に設定する際に使用されます。
@@ -173,14 +173,11 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
     endpoints.MapRazorPages();
 });
-
-// endpoints.MapControllers(); // REQUIRED if MapControllerRoute() isn't called.
 ```
 
 ### <a name="attribute-for-protecting-a-controller-or-methods"></a>コントローラーまたはメソッドを保護するための属性
