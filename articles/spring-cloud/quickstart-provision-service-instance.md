@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - Azure Spring Cloud サービスをプロビジョニングする
 description: アプリのデプロイのための Azure Spring Cloud サービス インスタンスの作成について説明します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 712bac2b0fd7f7fee7f5370c98ecefde0e0e1c36
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 243f176fd906ecfe33c38bebc7e7745a7dc15e1e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119895"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470593"
 ---
 # <a name="quickstart-provision-an-azure-spring-cloud-service"></a>クイックスタート: Azure Spring Cloud サービスをプロビジョニングする
 

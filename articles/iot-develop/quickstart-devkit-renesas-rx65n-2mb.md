@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: cf8f9a8e912c0f75abd4466b9efe532b2dbf622a
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 9a509d878729648ee2768d536d9cca586604662e
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903049"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122025"
 ---
 # <a name="quickstart-connect-a-renesas-starter-kit-for-rx65n-2mb-to-iot-central"></a>クイックスタート: Renesas Starter Kit+ for RX65N-2MB を IoT Central に接続する
 
@@ -44,7 +44,7 @@ ms.locfileid: "111903049"
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
-開発環境を設定するには、まず、このクイックスタートに必要なすべての資産を含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
+開発環境を設定するには、まず、このクイックスタートに必要なすべてのアセットを含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>クイックスタート用のリポジトリのクローン
 
@@ -58,7 +58,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>ツールのインストール
 
-複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 組み込みデバイスの別のクイックスタートでこれらのツールをインストールした場合は、もう一度行う必要はありません。
+複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 別の組み込みデバイスのクイックスタートでこれらのツールをインストールしてある場合は、もう一度行う必要はありません。
 
 > [!NOTE]
 > 設定スクリプトでは、次のツールがインストールされます。
@@ -167,7 +167,7 @@ Renesas RX65N を Azure に接続するには、Wi-Fi と Azure IoT の設定の
 
 **Termite** アプリを使用して、通信を監視し、デバイスが正しく設定されていることを確認できます。
 > [!TIP]
-> フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+> フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 
 1. **Termite** を開始します。
 1. **[設定]** を選択します。
@@ -242,7 +242,7 @@ IoT Central ポータルでテレメトリを表示するには:
 
 ## <a name="call-a-direct-method-on-the-device"></a>デバイス上のダイレクト メソッドを呼び出す
 
-IoT Central を使用して、デバイスに実装したダイレクト メソッドを呼び出すこともできます。 ダイレクト メソッドには名前があり、必要に応じて、JSON ペイロード、構成可能な接続、メソッドのタイムアウトを設定できます。 このセクションでは、LED のオンとオフを切り替えることができるメソッドを呼び出します。
+また、IoT Central を使用して、デバイスに実装したダイレクト メソッドを呼び出すこともできます。 ダイレクト メソッドには名前があり、必要に応じて、JSON ペイロード、構成可能な接続、メソッドのタイムアウトを設定できます。 このセクションでは、LED のオンとオフを切り替えることができるメソッドを呼び出します。
 
 IoT Central ポータルでメソッドを呼び出すには:
 
@@ -263,7 +263,7 @@ IoT Central からデバイス情報を表示できます。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -273,7 +273,7 @@ Azure IoT Central のサンプル アプリケーション全体とそのデバ�
 1. **[管理]**  >  **<自分のアプリケーション>** を選択します。
 1. **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure RTOS サンプル コードを含むカスタム イメージをビルドし、そのイメージを Renesas RX65N デバイスにフラッシュしました。 また、IoT Central ポータルを使用して、Azure リソースを作成し、Renesas RX65N を安全に Azure に接続し、テレメトリを表示し、メッセージを送信しました。
 

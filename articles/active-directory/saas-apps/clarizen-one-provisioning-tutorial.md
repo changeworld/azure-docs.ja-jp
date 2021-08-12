@@ -3,8 +3,8 @@ title: チュートリアル:Clarizen One を構成し、Azure Active Directory 
 description: Azure AD から Clarizen One へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: d8021105-eb5b-4a20-8739-f02e0e22c147
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
-ms.author: Zhchia
-ms.openlocfilehash: f3a19d3c3bf3e4340bb36fd683453541fa15eb6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 1e1ea7a7207486a9fced1cbd330df6b00153a14c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650833"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764264"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>チュートリアル:Clarizen One を構成し、自動ユーザー プロビジョニングに対応させる
 

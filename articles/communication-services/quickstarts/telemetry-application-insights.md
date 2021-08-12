@@ -6,20 +6,20 @@ author: peiliu
 manager: vravikumar
 services: azure-communication-services
 ms.author: peiliu
-ms.date: 06/01/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 8c9468510e68f29816e52e74cb9a311e3834f107
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: cddff62f911339e7b2ddb76535acda09e1793137
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593132"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292436"
 ---
 # <a name="quickstart-using-azure-opentelemetry-exporter-to-export-sdk-telemetry-data-to-application-insights"></a>クイックスタート: Azure OpenTelemetry Exporter を使用して SDK テレメトリ データを Application Insights にエクスポートする
 
-Azure OpenTelemetry Exporter は [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) 内の SDK です。 OpenTelemetry を使用してトレース データをエクスポートし、そのデータを [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) に送信することができます。 OpenTelemetry は、アプリケーションやフレームワークでテレメトリ情報を収集するための標準化された手段となります。
+Azure OpenTelemetry Exporter は [Azure Monitor](../../azure-monitor/index.yml) 内の SDK です。 OpenTelemetry を使用してトレース データをエクスポートし、そのデータを [Application Insights](../../azure-monitor/app/app-insights-overview.md) に送信することができます。 OpenTelemetry は、アプリケーションやフレームワークでテレメトリ情報を収集するための標準化された手段となります。
 
 Azure Application Insights は、実行中のアプリケーションの監視に使用される Azure Monitor の機能です。 Microsoft Azure リソース内のアプリケーションに関するテレメトリ データを表示します。 テレメトリ モデルを標準化して、プラットフォームと言語に依存しない監視を作成できます。
 
@@ -71,4 +71,4 @@ SDK からのテレメトリ データを分析するには、[`Performance`]\(�
 
 次のことも実行できます。
 
-- [Application Insights でのデータ分析について理解を深める](https://docs.microsoft.com/powerapps/maker/canvas-apps/application-insights)
+- [Application Insights でのデータ分析について理解を深める](/powerapps/maker/canvas-apps/application-insights)

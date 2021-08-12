@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dea88bf93000422ce1d832be4a0f60474ff27938
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9664d7976dfc53c8a0217c519a35f622f04efcc6
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629786"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115896"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>クイック スタート: Azure Storage Explorer を使用した Azure ファイル共有の作成および管理
 このガイドでは、[Azure Storage Explorer](storage-files-introduction.md) を使用して Azure ファイル共有を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -20,6 +20,13 @@ ms.locfileid: "94629786"
 Azure Storage Explorer は、Windows、macOS、および Linux で使用できる、広く使用されているクライアント ツールです。 Storage Explorer を使用すると、Azure ファイル共有やその他のストレージ リソースを管理することができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートでは、Storage Explorer がインストールされていることを前提としています。 Azure Storage Explorer をダウンロードしてインストールするには、「[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)」にアクセスしてください。

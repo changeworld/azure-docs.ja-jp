@@ -2,32 +2,33 @@
 title: Azure シングル サインオン (SSO) とは
 description: シングル サインオン (SSO) が Azure Active Directory でどのように機能するかについて説明します。 SSO を使用すると、ユーザーはすべてのアプリケーションのパスワードを記憶する必要がなくなります。 また、SSO を使用すると、アカウント管理の方法が簡略化されます。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: overview
 ms.date: 12/03/2019
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: arvindh, japere
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3bf2be35f1cd0a0622031db53558397e9d86fceb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c446ef5cc64ab981839e932fd77614847c4d435b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079321"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566338"
 ---
 # <a name="what-is-single-sign-on-sso"></a>シングル サインオン (SSO) とは
 
 シングル サインオンを使用すると、使用するアプリケーションにいちいちサインインする必要がなくなります。 ユーザーが一度ログインすると、その資格情報は他のアプリにも使用されます。
 
-エンド ユーザーの場合、SSO の詳細を気にする必要はあまりありません。 パスワードを入力しなくても、生産性を大いに高めるアプリを使用できます。 アプリは次の場所にあります: https://myapps.microsoft.com 。
- 
+エンド ユーザーの場合、SSO の詳細を気にする必要はあまりありません。 パスワードを入力しなくても、生産性を大いに高めるアプリを使用できます。 アプリは次の場所にあります: <https://myapps.microsoft.com> 。
+
 管理者や IT プロフェッショナルの方は、SSO の詳細および Azure における SSO の実装の詳細についてお読みください。
 
 ## <a name="single-sign-on-basics"></a>シングル サインオンの基本
+
 シングル サインオンによって、ユーザーがサインインしてアプリケーションを使用する方法が大きく進歩します。 シングル サインオン ベースの認証システムは、"先進認証" と呼ばれることがよくあります。 先進認証とシングル サインオンは、IAM (Identity and Access Management: ID とアクセス管理) と呼ばれるコンピューティング カテゴリに分類されます。 シングル サインオンが可能になるしくみを理解するには、こちらのビデオをご覧ください。
 
 認証の基礎: 基礎 | Azure Active Directory
@@ -35,6 +36,7 @@ ms.locfileid: "112079321"
 > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
 
 ## <a name="single-sign-on-with-web-applications"></a>Web アプリケーションでのシングル サインオン
+
 Web アプリケーションは想像以上に広く使われています。 さまざまな企業が Web アプリをホストし、サービスとして提供しています。 Web アプリの代表的な例としては Microsoft 365 や GitHub、Salesforce が挙げられますが、他にも膨大な数の Web アプリが存在します。 Web アプリには、コンピューター上の Web ブラウザーからアクセスします。 シングル サインオンを使用すると、何度もサインインしなくてもさまざまな Web アプリを行き来することができます。
 
 Web アプリにおけるシングル サインオンの動作については、次の 2 つのビデオをご覧ください。
@@ -48,10 +50,11 @@ Web アプリにおけるシングル サインオンの動作については、
 > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U]
 
 ## <a name="cloud-versus-on-premises-hosted-apps"></a>クラウドでホストされるアプリとオンプレミスでホストされるアプリ
+
 シングル サインオンの実装方法は、アプリがホストされている場所によって異なります。 ホスティングは、アプリケーションにアクセスするためにネットワーク トラフィックをルーティングする方法に関係するので重要です。 ローカル ネットワークでホストされているアプリ (これはオンプレミスのアプリと呼ばれます) にアクセスする場合、ユーザーはアプリを使用するためにインターネットにアクセスする必要はありません。 別の場所でホストされているアプリ (これはクラウドでホストされるアプリと呼ばれます) の場合、ユーザーはアプリを使用するためにインターネットにアクセスする必要があります。
 
 > [!TIP]
-> クラウドでホストされるアプリは、SaaS (サービスとしてのソフトウェア) アプリとも呼ばれます。 
+> クラウドでホストされるアプリは、SaaS (サービスとしてのソフトウェア) アプリとも呼ばれます。
 
 クラウドでホストされるアプリのシングル サインオンは簡単です。 アプリにそれが使用されていることを ID プロバイダーに伝えます。 そのうえで、ID プロバイダーを信頼するようにアプリを構成します。 アプリの ID プロバイダーとして Azure AD を使用する方法については、[アプリケーション管理に関するクイックスタート シリーズ](add-application-portal.md)を参照してください。
 
@@ -61,13 +64,14 @@ Web アプリにおけるシングル サインオンの動作については、
 シングル サインオンは、オンプレミス ベースのアプリにも使用できます。 オンプレミスで SSO を実現する技術は、アプリケーション プロキシと呼ばれます。 詳細については、「[シングル サインオンのオプション](sso-options.md)」を参照してください。
 
 ## <a name="multiple-identity-providers"></a>複数の ID プロバイダー
+
 複数の ID プロバイダー間で機能するようにシングル サインオンをセットアップすることをフェデレーションといいます。 フェデレーションのしくみについては、こちらのビデオをご覧ください。
 
 認証の基礎: フェデレーション | Azure Active Directory
 
 > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8]
 
-
 ## <a name="next-steps"></a>次のステップ
+
 * [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
 * [シングル サインオンのオプション](sso-options.md)

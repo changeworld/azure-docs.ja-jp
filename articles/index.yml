@@ -230,7 +230,7 @@ productDirectory:
       imageSrc: ./media/index/metrics-advisor.svg
       azureCategories:
         - ai-machine-learning
-      url: cognitive-services/metrics-advisor/index.yml
+      url: applied-ai-services/metrics-advisor/index.yml
     - title: Personalizer
       summary: パーソナライズされたユーザー エクスペリエンスを提供する AI サービス
       imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
@@ -552,11 +552,11 @@ productDirectory:
       url: app-service/index.yml
     - title: Azure Virtual Desktop
       summary: Azure で提供される最適な仮想デスクトップ エクスペリエンス
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/windows-virtual-desktop.svg'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-desktop.svg'
       azureCategories:
         - featured
         - compute
-        - windows-virtual-desktop
+        - azure-virtual-desktop
       url: virtual-desktop/index.yml
     - title: Windows Virtual Machines
       summary: Windows 仮想マシンを数秒でプロビジョニングします
@@ -571,7 +571,7 @@ productDirectory:
       azureCategories:
         - containers
         - developer-tools
-      url: dev-spaces/index.yml
+      url: /previous-versions/azure/dev-spaces/
     - title: Azure Red Hat OpenShift
       summary: Red Hat と連携して動作するフル マネージド OpenShift サービス
       imageSrc: 'https://static.docs.com/ui/media/product/azure/openshift.svg'

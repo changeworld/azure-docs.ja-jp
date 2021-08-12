@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 855ffcaf0a3e48e2b33973b230ca02cbf369e526
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d376dbde310d3abe0521e7ce52c6fe8563142d16
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669861"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117876"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用した Azure ファイル共有の作成および管理 
 このガイドでは、PowerShell を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の サーバー メッセージ ブロック (SMB) プロトコル、ネットワーク ファイル システム (NFS) プロトコル (プレビュー) をサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -23,6 +23,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 PowerShell をインストールしてローカルで使用する場合、このガイドでは Azure PowerShell モジュール Az バージョン 0.7 以降が必要になります。 実行中の Azure PowerShell モジュールのバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合は、`Login-AzAccount` を実行して Azure アカウントにログインする必要もあります。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 まだ Azure リソース グループがない場合は、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して新しいものを作成できます。 

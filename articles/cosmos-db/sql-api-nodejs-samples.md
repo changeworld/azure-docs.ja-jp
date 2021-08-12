@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: e2d8316e0b44593e220a0c9a9358b465ad39c9eb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 243bdf7c3383669b98529622048f14988f0b8ac4
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216838"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112239200"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータを管理する例 (Node.js)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 
 - [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)ことができます。Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+[!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]
 
 [JavaScript SDK](sql-api-sdk-node.md) も必要となります。
    

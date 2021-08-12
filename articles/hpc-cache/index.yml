@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: ekpgh
   ms.author: v-erkel
-  ms.date: 11/07/2019
-  ms.openlocfilehash: d2101ad354a67e79356d6f2fb5a41eecea2f5936
-  ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+  ms.date: 07/08/2021
+  ms.openlocfilehash: bff84eabaf51fbbe8b8435cf5c56a5fd6d4a1e86
+  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/09/2021
-  ms.locfileid: "113587591"
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114294882"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:

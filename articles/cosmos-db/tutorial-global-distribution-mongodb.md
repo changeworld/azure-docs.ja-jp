@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散を設定するチュートリアル
 description: Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散を設定する方法について説明します。
-author: markjbrown
-ms.author: mjbrown
+author: gahl-levy
+ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 89826eab7b1686ae695a2716a03b2f5d03da277f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a68557e02444a7524ee69fc95e9ca66b2aabf7a9
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93099255"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354279"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散型データベースを設定する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "93099255"
 > * Azure Portal を使用してグローバル分散を構成する
 > * [Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用してグローバル分散を構成する
 
-[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
+[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a name="verifying-your-regional-setup"></a>リージョン設定を確認する 
 Cosmos DB の MongoDB 用 API を使用してグローバル構成を確認する簡単な方法として、Mongo シェルから *isMaster()* コマンドを実行する方法があります。

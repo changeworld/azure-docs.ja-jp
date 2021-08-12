@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: jukullam
 ms.custom: github-actions-azure
-ms.openlocfilehash: 5f27a0cbfedd9b5021be2aa54ab5fb021b48d0b2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f8048dab26451fea85b52caa3ffdc27d7e0a677a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103294"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894148"
 ---
 # <a name="tutorial-use-github-actions-to-deploy-to-app-service-for-containers-and-connect-to-a-database"></a>チュートリアル: GitHub Actions を使用して App Service for Containers にデプロイし、データベースに接続する
 
-このチュートリアルでは、GitHub Actions ワークフローを設定して、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) バックエンドでコンテナー化された ASP.NET Core アプリケーションをデプロイする手順について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。 まず、[ARM テンプレート](/azure/azure-resource-manager/templates/overview) の GitHub Actions ワークフローを使用して Azure リソースを作成します。
+このチュートリアルでは、GitHub Actions ワークフローを設定して、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) バックエンドでコンテナー化された ASP.NET Core アプリケーションをデプロイする手順について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。 まず、[ARM テンプレート](../azure-resource-manager/templates/overview.md) の GitHub Actions ワークフローを使用して Azure リソースを作成します。
 
 このチュートリアルでは、次の作業を行う方法について説明します。
 
@@ -85,7 +85,7 @@ https://shell.azure.com で Azure Cloud Shell を開きます。 ローカルに
 
 ## <a name="create-azure-resources"></a>Azure リソースを作成する
 
-Azure リソースの作成ワークフローにより、[ARM テンプレート](/azure/azure-resource-manager/templates/overview)が実行され、リソースが Azure にデプロイされます。 ワークフローは次のようになります。
+Azure リソースの作成ワークフローにより、[ARM テンプレート](../azure-resource-manager/templates/overview.md)が実行され、リソースが Azure にデプロイされます。 ワークフローは次のようになります。
 
 - [Checkout アクション](https://github.com/marketplace/actions/checkout)を使用してソース コードをチェックアウトします。
 - [Azure Login アクション](https://github.com/marketplace/actions/azure-login)を使用して Azure にログインし、環境と Azure リソース情報を収集します。
@@ -119,7 +119,7 @@ Azure リソースの作成ワークフローを実行するには、次のよ�
 
 ## <a name="build-push-and-deploy-your-image"></a>イメージのビルド、プッシュ、デプロイ
 
-ビルド、プッシュ、デプロイのワークフローにより、最新のアプリ変更を含むコンテナーがビルドされ、コンテナーが [Azure コンテナー レジストリ](/azure/container-registry/)にプッシュされ、プッシュされた最新のコンテナーを指す Web アプリケーション ステージング スロットが更新されます。 ワークフローには、ビルド ジョブとデプロイ ジョブを含めます。
+ビルド、プッシュ、デプロイのワークフローにより、最新のアプリ変更を含むコンテナーがビルドされ、コンテナーが [Azure コンテナー レジストリ](../container-registry/index.yml)にプッシュされ、プッシュされた最新のコンテナーを指す Web アプリケーション ステージング スロットが更新されます。 ワークフローには、ビルド ジョブとデプロイ ジョブを含めます。
 
 - ビルド ジョブでは、[Checkout アクション](https://github.com/marketplace/actions/checkout)を使用してソース コードがチェックアウトされます。 次に、[Docker Login アクション](https://github.com/marketplace/actions/docker-login)とカスタム スクリプトを使用して Azure Container Registry で認証し、コンテナー イメージがビルドされ、Azure Container Registry にデプロイされます。
 - デプロイ ジョブでは、[Azure Login アクション](https://github.com/marketplace/actions/azure-login)を使用して Azure にログインし、環境と Azure リソース情報が収集されます。 次に、Web アプリ設定が [Azure App Service Settings アクション](https://github.com/marketplace/actions/azure-app-service-settings)を使用して更新され、[Azure Web Deploy アクション](https://github.com/marketplace/actions/azure-webapp)を使用して App Service ステージング スロットにデプロイされます。 最後に、カスタム スクリプトを実行して SQL データベースが更新され、ステージング スロットが運用に入れ替えられます。

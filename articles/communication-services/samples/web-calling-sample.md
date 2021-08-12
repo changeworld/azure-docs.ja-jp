@@ -6,15 +6,15 @@ author: mariusu-msft
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fb5d16e0aa73b889800d64be310176c5733633a6
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 5ba40f396ba6d9fe255052c0e6cb3b099380b581
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685731"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107579"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 

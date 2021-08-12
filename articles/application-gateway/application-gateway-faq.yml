@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/08/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: f9f6a834239e46c2c0934dd145f8a1193f6a50b2
-  ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+  ms.openlocfilehash: 7bef7a0cbc81f4d72a28d74feb5a526789c0ff59
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/18/2021
-  ms.locfileid: "114404416"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114469718"
 title: Application Gateway に関してよく寄せられる質問
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -242,7 +242,7 @@ sections:
       アクセス ログを確認および分析する方法はいくつかあります。 Azure Monitor ログ、Excel、Power BI などを使用してください。
 
 
-      このほか、Application Gateway のアクセス ログに対応した人気のログ アナライザー [GoAccess](https://goaccess.io/) をインストールして実行する Resource Manager テンプレートも利用できます。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、有益な HTTP トラフィック統計情報を確認できます。 詳細については、GitHub の [Resource Manager テンプレート フォルダーにある Readme ファイル](https://aka.ms/appgwgoaccessreadme)を参照してください。
+      このほか、Application Gateway のアクセス ログに対応した人気のログ アナライザー [GoAccess](https://goaccess.io/) をインストールして実行する Resource Manager テンプレートも利用できます。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、有益な HTTP トラフィック統計情報を確認できます。 詳細については、GitHub の [Resource Manager テンプレート フォルダーにある Readme ファイル](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/application-gateway-logviewer-goaccess)を参照してください。
   - question: バックエンドの正常性として不明な状態が返されるのですが、どのような原因が考えられますか?
     answer: >
       不明な状態が返されるのは通常、アプリケーション ゲートウェイ サブネット上でネットワーク セキュリティ グループ (NSG)、カスタム DNS、またはユーザー定義ルーティング (UDR) により、バックエンドに対するアクセスがブロックされているときです。 詳細については、[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)に関するページを参照してください。

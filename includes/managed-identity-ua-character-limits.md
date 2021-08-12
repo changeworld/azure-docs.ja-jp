@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
-author: daveba
+author: barclayn
 ms.service: msi
 ms.topic: include
-ms.date: 05/29/2018
-ms.author: daveba
+ms.date: 07/20/2021
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: 874dd2613cda70ae96b11fe99ee2944af02c2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a5544d481974a9c9ff176104dda0816950ed970
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95997380"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114594419"
 ---
 > [!IMPORTANT]
-> ユーザー割り当て ID を作成するときは、英数字 (0-9、a-z、A-Z)、下線 (\_)、およびハイフン (-) のみがサポートされます。 さらに、VM/VMSS への割り当てが適切に動作するためには、名前の長さを 3 文字以上 128 文字以下にする必要があります。 アップデートは後ほどご確認ください。 詳細については、[FAQ と既知の問題](../articles/active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
+> ユーザー割り当て済みマネージド ID を作成するときは、英数字 (0-9、a-z、A-Z) とハイフン (-) のみがサポートされます。 仮想マシンまたは仮想マシン スケール セットへの割り当てが適切に動作するように、名前は 24 文字に制限されています。 詳細については、[FAQ と既知の問題](../articles/active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。

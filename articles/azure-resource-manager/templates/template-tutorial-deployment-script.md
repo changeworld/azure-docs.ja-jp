@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/16/2020
+ms.date: 07/02/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 65c94346725123913cc2ea53be9b95a7c1bb0fda
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 2abbcb2d6b6ecd26c1ec44bfdca1f9a995d61e38
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889582"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231361"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する
 
@@ -222,8 +222,6 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
             # private key is added as a secret that can be retrieved in the Resource Manager template
             Add-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName -CertificatePolicy $policy -Verbose
 
-            $newCert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName
-
             # it takes a few seconds for KeyVault to finish
             $tries = 0
             do {
@@ -243,6 +241,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
               }
             } while ($operation.Status -ne 'completed')
 
+            $newCert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName
             $DeploymentScriptOutputs['certThumbprint'] = $newCert.Thumbprint
             $newCert | Out-String
           }

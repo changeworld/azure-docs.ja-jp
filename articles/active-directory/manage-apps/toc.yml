@@ -12,8 +12,6 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: アプリを表示する
-      href: view-applications-portal.md
     - name: アプリを追加する
       href: add-application-portal.md
     - name: アプリを構成する
@@ -24,6 +22,8 @@
       href: add-application-portal-setup-sso.md
     - name: OIDC ベースのシングル サインオンの設定
       href: add-application-portal-setup-oidc-sso.md
+    - name: アプリを表示する
+      href: view-applications-portal.md
     - name: アプリを削除する
       href: delete-application-portal.md
 - name: チュートリアル

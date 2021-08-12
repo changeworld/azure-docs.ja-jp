@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: quickstart
 ms.date: 07/28/2020
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 879e4425d5cbda5cae01ea8acac0f8d6bed79cc7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 739ffeb7c94f6c40481cdabfbe83f006cde5d388
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695305"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457932"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して予算を作成する
 
@@ -24,7 +24,7 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.consumption%2Fcreate-budget%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +68,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/create-budget)からのものです。
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.consumption/create-budget/azuredeploy.json" :::
 
 テンプレートには、1 つの Azure リソースが定義されています。
 
@@ -78,7 +78,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートによって予算が作成されます。
 
-   [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.consumption%2Fcreate-budget%2Fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 
