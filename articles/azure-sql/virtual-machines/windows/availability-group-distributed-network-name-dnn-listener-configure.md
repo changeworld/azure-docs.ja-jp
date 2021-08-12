@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bf5c4c39ea8f5705cc9788fdcf2cddd01dcb4087
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7d637a98a0f250936fa8c9024ae1302d3aaa536
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034709"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572377"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>可用性グループの DNN リスナーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,6 +51,7 @@ DNN リスナーを既存の VNN リスナーの代わりに使用するか、�
 - [Always On 可用性グループ](availability-group-overview.md)を構成済みであること。 
 - 最新バージョンの [PowerShell](/powershell/azure/install-az-ps) をインストール済みであること。 
 - DNN リスナーに使用する一意のポートを特定してあること。 DNN リスナーに使用されるポートは、可用性グループまたはフェールオーバー クラスター インスタンスのすべてのレプリカ間で一意である必要があります。  他の接続で同じポートを共有することはできません。
+- DNN リスナーに接続するクライアントは、接続文字列の `MultiSubnetFailover=True` パラメーターをサポートする必要があります。 
 
 
 
@@ -182,4 +183,12 @@ DNN リスナーは、特定の一意のポートで、すべての IP アドレ
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での SQL Server の HADR 機能について詳しくは、[可用性グループ](availability-group-overview.md)と[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関する記事をご覧ください。 また、高可用性とディザスター リカバリー用に環境を構成するための[ベスト プラクティス](hadr-cluster-best-practices.md)を学習することもできます。 
+可用性グループがデプロイされたら、[Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)を最適化することを検討します。 
+
+
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+

@@ -5,12 +5,12 @@ author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
 ms.date: 02/14/2021
-ms.openlocfilehash: 2ee03a9cde4a6c9905c5a3fbf083b42212dcf6ab
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 43cec44d2ff995d6bb96eb4bfb984bebe09195b0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097410"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797770"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Monitor でクラシック メトリック アラートを使用して Webhook を呼び出す
 
@@ -107,4 +107,4 @@ POST 操作には、すべてのメトリックベースのアラートについ
 * [Azure アラートで Azure Automation スクリプト (Runbook) を実行する](https://go.microsoft.com/fwlink/?LinkId=627081)方法について確認します。
 * [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)方法について確認します。
 * [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-slack-with-logic-app)方法について確認します。
-* [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)方法について確認します。
+* [ロジック アプリを使用して、Azure アラートから Azure Queue にメッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)方法について確認します。

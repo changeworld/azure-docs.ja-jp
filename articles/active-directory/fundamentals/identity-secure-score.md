@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 06/02/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d5c1a1493a7ea2aac0945dae14fc4c547ad86c9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952279"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409921"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory の ID セキュリティ スコアとは
 
@@ -57,6 +57,11 @@ ID セキュリティ スコアは、Azure AD のすべてのエディション�
 各推奨事項は、Azure AD の構成に基づいて測定されます。 ベスト プラクティスの推奨事項を有効にするためにサードパーティ製品を使用している場合は、強化アクションの設定でこの構成を示すことができます。 推奨事項が実際の環境に適用されない場合は、それらの推奨事項が無視されるように設定するオプションも使用できます。 無視された推奨事項は、スコアの計算には使用されません。
 
 ![アクションを無視するか、サード パーティ対象アクションとしてマークする](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
+
+- **対処するには** - 改善アクションが必要であると認識し、将来のどこかの時点で対処する予定です。 この状態は、部分的に検出されたが完全には完了していないアクションにも適用されます。
+- **計画済み** - 改善アクションを完了する具体的な計画が実施されています。
+- **受け入れられるリスク** - セキュリティは常に使いやすさとバランスを取る必要があります。すべての推奨事項が環境に合うとは限りません。 その場合は、リスクまたは残りのリスクを受け入れ、改善アクションを実施しない選択を行います。 ポイントは指定されませんが、アクションは改善アクションの一覧に表示されなくなりました。 このアクションは履歴で表示したり、いつでも元に戻すことができます。
+- **サード パーティを通じて解決され**、**代替の軽減策によって解決済み** - 改善アクションは、サードパーティのアプリケーションまたはソフトウェア、または内部ツールによって既に対処されています。 アクションの価値があるポイントが得られるので、スコアは全体的なセキュリティ態勢をよりよく反映します。 サード パーティまたは内部ツールでコントロールがカバーされなくなった場合は、別の状態を選択できます。 改善アクションがこれらの状態のいずれかとしてマークされている場合、Microsoft は実装の完全性を可視化できない点を忘れないでください。
 
 ## <a name="how-does-it-help-me"></a>それはどのように役立つか
 

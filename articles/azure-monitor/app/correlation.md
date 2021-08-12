@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: beaeb0131a2c9b326d663f6fcbb8273a9b52b412
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 450dd67c272de8ee250f0af66522ab3be26f63e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100969"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077214"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -291,7 +291,7 @@ Application Insights .NET SDK は、`DiagnosticSource` と `Activity` を使用�
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java におけるテレメトリの相関付け
 
-[Java エージェント](./java-in-process-agent.md)および [Java SDK](../../azure-monitor/app/java-get-started.md) バージョン 2.0.0 以降では、テレメトリの自動関連付けがサポートされています。 要求のスコープ内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) に対して `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](../../azure-monitor/app/java-agent.md)が構成されている場合は、HTTP 経由でのサービス間呼び出しのための関連付けヘッダー (前述) が伝達されます。
+[Java エージェント](./java-in-process-agent.md)では、テレメトリの自動関連付けがサポートされています。 要求のスコープ内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) に対して `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](java-2x-agent.md)が構成されている場合は、HTTP 経由でのサービス間呼び出しのための関連付けヘッダー (前述) が伝達されます。
 
 > [!NOTE]
 > Application Insights Java エージェントでは、JMS、Kafka、Netty/Webflux などの要求と依存関係が自動収集されます。 Java SDK については、関連付け機能では、Apache HttpClient を使用して行われた呼び出しのみがサポートされます。 SDK では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 

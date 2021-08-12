@@ -2,13 +2,13 @@
 title: DevTest Labs のコンセプト | Microsoft Docs
 description: DevTest Labs の基本概念と、DevTest Labs を Azure Virtual Machines を簡単に作成、管理、監視するために使用する方法について説明します。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b184f835ee99d47ddb843e5b02136299c26bfcdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: e505ecb8ce4dc070b4ed79cd55514c4ef8ba0ead
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92327860"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954100"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest ラボの概念
 ## <a name="overview"></a>概要
@@ -28,7 +28,7 @@ Azure の要求可能 VM は、アクセス許可を持つあらゆるラボ ユ
 要求可能な VM は最初、特定のユーザーに割り当てられず、"要求可能な仮想マシン" の下のすべてのユーザーの一覧に表示されます。 ユーザーが VM を要求すると、その VM は、"マイ仮想マシン" 領域に挿入され、他のユーザーが要求できなくなります。
 
 ## <a name="environment"></a>環境
-DevTest ラボでは、環境とは、ラボ内の Azure リソースのコレクションを指します。 [このブログ投稿](./devtest-lab-faq.md#blog-post)では、Azure Resource Manager テンプレートから複数 VM の環境を作成する方法について説明します。
+DevTest ラボでは、環境とは、ラボ内の Azure リソースのコレクションを指します。 [こちらの記事](./devtest-lab-create-environment-from-arm.md)では、Azure Resource Manager テンプレートからマルチ VM 環境を作成する方法を説明しています。
 
 ## <a name="base-images"></a>基本イメージ
 基本イメージは、VM をすばやく作成するためのすべてのツールと設定がプレインストールされ、構成されている VM イメージです。 既存のベースを選択し、テスト エージェントをインストールするためのアーティファクトを追加することで、VM をプロビジョニングできます。 次に、プロビジョニング済みの VM をベースとして保存することで、テスト エージェントを VM の各プロビジョニングに再インストールすることなく、ベースを使用できます。
@@ -74,7 +74,7 @@ DevTest Labs にカスタム ロールを作成する方法については、記
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 この記事で取り扱う概念はすべて Azure Resource Manager テンプレートを利用して構成できます。Azure Resource Manager テンプレートを利用すると、Azure ソリューションのインフラストラクチャ/構成を定義し、一貫性のある状態で繰り返しデプロイできます。
 
-「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md#template-format)」では、Azure Resource Manager テンプレートの構造とテンプレートのさまざまなセクションで利用できるプロパティについて説明しています。
+「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/syntax.md#template-format)」では、Azure Resource Manager テンプレートの構造とテンプレートのさまざまなセクションで利用できるプロパティについて説明しています。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

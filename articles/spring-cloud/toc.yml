@@ -25,10 +25,15 @@
           href: quickstart-logs-metrics-tracing.md
         - name: Azure Database for MySQL との統合
           href: quickstart-integrate-azure-database-mysql.md
-        - name: プロビジョニング
-          items:
-            - name: ARM テンプレートを使用したプロビジョニング
-              href: quickstart-deploy-infrastructure-vnet.md
+    - name: プロビジョニング
+      expanded: true
+      items:
+        - name: ARM テンプレートを使用したプロビジョニング
+          href: quickstart-deploy-infrastructure-vnet.md
+        - name: Azure CLI を使用したプロビジョニング
+          href: quickstart-deploy-infrastructure-vnet-azure-cli.md
+        - name: Terraform を使用したプロビジョニング
+          href: quickstart-deploy-infrastructure-vnet-terraform.md
 - name: チュートリアル
   items:
     - name: アラートとアクション グループ
@@ -149,16 +154,6 @@
           href: how-to-enable-end-to-end-tls.md
         - name: Config Server とサービス レジストリにアクセスする
           href: how-to-access-data-plane-azure-ad-rbac.md
-    - name: 統合
-      items:
-        - name: アプリを Azure CosmosDB にバインドする
-          href: how-to-bind-cosmos.md
-        - name: アプリを Azure Cache for Redis にバインドする
-          href: how-to-bind-redis.md
-        - name: アプリを Azure MySQL にバインドする
-          href: how-to-bind-mysql.md
-        - name: Azure 負荷分散ソリューションと統合する
-          href: how-to-integrate-azure-load-balancers.md
     - name: 自動化
       items:
         - name: Azure DevOps を使用した CI/CD

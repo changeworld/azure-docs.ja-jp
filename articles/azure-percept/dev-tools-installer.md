@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f81f7922431f85cfc2a98261a128ba66d23a984f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49d5a6ed7b23169e655a02cdbb14df52a6e82231
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608597"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099787"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Dev Tools Pack Installer の概要
 
@@ -22,29 +22,29 @@ Dev Tools Pack Installer は、高度なインテリジェント エッジ ソ�
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Python 3.6 以降](https://www.python.org/)
-* [Docker 19.03](https://www.docker.com/)
-* [PIP3](https://pip.pypa.io/en/stable/user_guide/)
-* [TensorFlow 1.13](https://www.tensorflow.org/)
-* [Azure Machine Learning SDK 1.1](/python/api/overview/azure/ml/)
+* [Docker 20.10](https://www.docker.com/)
+* [PIP3 21.1](https://pip.pypa.io/en/stable/user_guide/)
+* [TensorFlow 2.0](https://www.tensorflow.org/)
+* [Azure Machine Learning SDK 1.2](/python/api/overview/azure/ml/)
 
 ## <a name="optional-tools"></a>オプションのツール
 
-* [Nvidia DeepStream SDK 5](https://developer.nvidia.com/deepstream-sdk) (Nvidia アクセラレータ用ソリューションを開発するためのツールキット)
-* [Intel OpenVino Toolkit 2020.2](https://docs.openvinotoolkit.org/) (Intel アクセラレータ用ソリューションを開発するためのツールキット)
-* [Lobe.ai](https://lobe.ai/)  
-* [Streamlit](https://www.streamlit.io/)
+* [NVIDIA DeepStream SDK 5](https://developer.nvidia.com/deepstream-sdk) (NVIDIA アクセラレータ用ソリューションを開発するためのツールキット)
+* [Intel OpenVINO Toolkit 2021.3](https://docs.openvinotoolkit.org/) (Intel アクセラレータ用ソリューションを開発するためのツールキット)
+* [Lobe.ai 0.9](https://lobe.ai/)  
+* [Streamlit 0.8](https://www.streamlit.io/)
 * [Pytorch 1.4.0 (Windows) または 1.2.0 (Linux)](https://pytorch.org/)
-* [Miniconda3](https://docs.conda.io/en/latest/miniconda.html)
-* [Chainer 5.2](https://chainer.org/)
-* [Caffe](https://caffe.berkeleyvision.org/)
-* [CUDA Toolkit 10.0.130](https://developer.nvidia.com/cuda-toolkit)
+* [Miniconda 4.5](https://docs.conda.io/en/latest/miniconda.html)
+* [Chainer 7.7](https://chainer.org/)
+* [Caffe 1.0](https://caffe.berkeleyvision.org/)
+* [CUDA Toolkit 11.2](https://developer.nvidia.com/cuda-toolkit)
 * [Microsoft Cognitive Toolkit 2.5.1](https://www.microsoft.com/research/product/cognitive-toolkit/?lang=fr_ca)
 
 ## <a name="known-issues"></a>既知の問題
 
-- Docker が正常に動作していない場合、オプションの Caffe のインストールは失敗する可能性があります。 Caffe をインストールする場合、Dev Tools Pack Installer を使用して Caffe のインストールを試行する前に、Docker がインストールされ、動作していることを確認してください。
+- Docker が正しく実行されていない場合、オプションの Caffe、NVIDIA DeepStream SDK、Intel OpenVINO Toolkit のインストールが失敗する可能性があります。 これらのオプション ツールをインストールするには、Dev Tools Pack Installer を使用してインストールを試行する前に、Docker がインストールされ、実行されていることを確認します。
 
-- 互換性のないシステムでは、オプションの CUDA のインストールは失敗します。 Dev Tools Pack Installer を使用して [CUDA Toolkit 10.0.130](https://developer.nvidia.com/cuda-toolkit) をインストールする前に、システムの互換性を確認してください。
+- Mac にインストールされているオプションの CUDA Toolkit はバージョン 10.0.130 です。 CUDA Toolkit 11 では、macOSity でのアプリケーションの開発や実行はサポートされなくなりました。
 
 ## <a name="docker-minimum-requirements"></a>Docker の最小要件
 

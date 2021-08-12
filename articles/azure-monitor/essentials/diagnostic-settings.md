@@ -5,13 +5,13 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 60ac56cfda026871afa1725bbd54625b7ce7585e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/09/2021
+ms.openlocfilehash: bb820be289aa2ddcec2183094e819083dde8c1d8
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789197"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902789"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](./platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](./data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -199,7 +199,7 @@ Resource Manager テンプレートを使用して診断設定を作成または
 ## <a name="create-using-azure-policy"></a>Azure Policy を使用して作成する
 診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 詳細については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」を参照してください。
 
-## <a name="metric-category-is-not-supported-error"></a>メトリック カテゴリがサポートされないエラー
+## <a name="error-metric-category-is-not-supported"></a>エラー: メトリック カテゴリがサポートされない
 診断設定をデプロイすると、次のエラー メッセージが表示されます。
 
    "メトリック カテゴリ '*xxxx*' はサポートされていません"
@@ -216,7 +216,9 @@ Resource Manager テンプレートを使用して診断設定を作成または
 
 このエラーが発生した場合は、メトリック カテゴリ名をすべて 'AllMetrics' に置き換えるようにデプロイを更新して問題を解決してください。 以前にデプロイで複数のカテゴリを追加していた場合は、'AllMetrics' 参照を持つ 1 つのみを保持する必要があります。 引き続き問題が発生する場合は、Azure portal を通じて Azure サポートにお問い合わせください。 
 
+## <a name="error-setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>エラー: resourceID の ASCII 以外の文字が原因で設定が消える
 
+診断設定では、ASCII 以外の文字 (Preproducción など) を含む resourceID はサポートされていません。 Azure でリソースの名前を変更することはできません。唯一のオプションは、ASCII 以外の文字を使用せずに新しいリソースを作成する方法です。 文字がリソース グループ内にある場合は、その下のリソースを新しいリソースに移動できます。 それ以外の場合は、リソースを再作成する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

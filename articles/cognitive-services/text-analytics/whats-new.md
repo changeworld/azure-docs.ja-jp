@@ -8,29 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 07/12/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 63063ef205b456c368cec2d5c1a8ce1f456aaa59
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f79c9cb7381f2325de2efca5e20b37c60ab72013
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756475"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652456"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
 
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="ga-release-updates"></a>GA リリースの更新
+
+* コンテナーとホスされる API (/health) の両方での [Text Analytics for Health](how-tos/text-analytics-for-health.md?tabs=ner) の一般提供。
+* [オピニオン マイニング](how-tos/text-analytics-how-to-sentiment-analysis.md?tabs=version-3-1#opinion-mining)の一般提供。
+* [PII の抽出と編集](how-tos/text-analytics-how-to-entity-linking.md?tabs=version-3-1#personally-identifiable-information-pii)の一般提供。
+* [非同期 (`/analyze`) エンドポイント](how-tos/text-analytics-how-to-call-api.md?tabs=synchronous#using-the-api-asynchronously)の一般提供。
+* 新しい SDK を追加して[クイック スタート](quickstarts/client-libraries-rest-api.md)の例を更新。 
+
 ## <a name="june-2021"></a>2021 年 6 月
 
 ### <a name="general-api-updates"></a>一般的な API の更新
 
-* キー フレーズ抽出用の新しいモデル バージョン `2021-06-01`。簡体字中国語のサポートが追加されます。
+* トランスフォーマーに基づくキー フレーズ抽出の新しいモデル バージョン `2021-06-01`。 次の機能を提供します。
+  * 10 個の言語 (ラテン文字と CJK) のサポート。 
+  * 強化されたキー フレーズ抽出。
 * [固有表現認識](how-tos/text-analytics-how-to-entity-linking.md) v3.x の `2021-06-01` モデル バージョンでは、次のものが提供されます。 
   * "*スキル*" エンティティ カテゴリの AI 品質が向上し、言語サポートが拡張されました。 
   * "*スキル*" エンティティ カテゴリのスペイン語、フランス語、ドイツ語、イタリア語、ポルトガル語のサポートが追加されました
-* 非同期操作と Text Analytics for Health がすべてのリージョンで利用できるようになりました 
+* 非同期 (/analyze) 操作と Text Analytics for Health (非限定的なプレビュー) がすべてのリージョンで利用できるようになりました。 
 
 ### <a name="text-analytics-for-health-updates"></a>正常性更新プログラムの Text Analytics
 
@@ -40,7 +52,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
     * 14 の新しい関係のタイプ
     * 新しいエンティティ型に対して拡張されたアサーション検出
     * ALLERGEN エンティティ型のリンク サポート
-
+* タグ `3.0.016230002-onprem-amd64` とモデル バージョン `2021-05-15` を指定された Text Analytics for Health コンテナーの新しいイメージ。 このコンテナーは、Microsoft Container Registry からダウンロードできます。
  
 ## <a name="may-2021"></a>2021 年 5 月
 

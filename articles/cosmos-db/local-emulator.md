@@ -7,12 +7,12 @@ author: StefArroyo
 ms.author: esarroyo
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperf-fy21q1
-ms.openlocfilehash: 3c8e2559d1dc8fce27815d498578d352fa9fe498
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 777eeb615596d353770b7abcbe10191707e6fbfe
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372827"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072741"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストのために Azure Cosmos DB Emulator をインストールして使用する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -97,8 +97,7 @@ Azure Cosmos DB Emulator は既定では、ポート 8081 でリッスンして�
 
 ## <a name="use-the-emulator-on-linux-or-macos"></a><a id="run-on-linux-macos"></a>Linux または macOS 上でエミュレーターを使用する
 
-現在、Azure Cosmos DB Emulator は Windows でのみ実行できます。 Linux または macOS を使用している場合、ハイパーバイザー (Parallels や VirtualBox など) でホストされる Windows 仮想マシンでエミュレーターを実行できます。
-
+現在、Azure Cosmos DB Emulator は Windows でのみ実行できます。 Linux または macOS を使用している場合は、[Linux Emulator (プレビュー)](linux-emulator.md) を使用するか、ハイパーバイザー (Parallels や VirtualBox など) でホストされる Windows 仮想マシン内でエミュレーターを実行することをお勧めします。
 > [!NOTE]
 > ハイパーバイザーでホストされている Windows 仮想マシンを再起動するたびに、仮想マシンの IP アドレスは変わるため、証明書を再インポートする必要があります。 IP アドレスを保持するように仮想マシンを構成している場合、証明書をインポートする必要はありません。
 

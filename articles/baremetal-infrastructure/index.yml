@@ -10,12 +10,12 @@ metadata:
   author: Ajayan1008
   ms.author: v-hborys
   ms.date: 04/14/2021
-  ms.openlocfilehash: 4074e3002913bd3ea114611daf08f635deb6ec99
-  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+  ms.openlocfilehash: 5304146a0cf427003e971f794f7a68690c524085
+  ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "109518362"
+  ms.lasthandoff: 07/02/2021
+  ms.locfileid: "113225428"
 landingContent:
 - title: BareMetal インフラストラクチャについて
   linkLists:
@@ -111,7 +111,7 @@ landingContent:
       url: ../virtual-machines/workloads/sap/hana-example-installation.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
   - linkListType: reference
     links:
-    - text: オプションと考慮事項
+    - text: 高可用性とディザスター リカバリー
       url: ../virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: バックアップと復元
       url: ../virtual-machines/workloads/sap/hana-backup-restore.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
@@ -123,6 +123,14 @@ landingContent:
       url: ../virtual-machines/workloads/sap/troubleshooting-monitoring.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: HANA 側からの監視とトラブルシューティング
       url: ../virtual-machines/workloads/sap/hana-monitor-troubleshoot.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Azure Monitor for SAP Solutions の概要
+      url: ../virtual-machines/workloads/sap/azure-monitor-overview.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Azure Monitor for SAP Solutions のプロバイダー
+      url: ../virtual-machines/workloads/sap/azure-monitor-providers.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Azure Monitor for SAP Solutions をデプロイする - Azure portal
+      url: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: Azure Monitor for SAP Solutions をデプロイする - Azure PowerShell
+      url: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart-powershell.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
   - linkListType: how-to-guide
     links:
     - text: STONITH を使用した HA セットアップ

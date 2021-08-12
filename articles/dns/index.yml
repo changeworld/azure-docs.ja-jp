@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: rohinkoul
   ms.author: rohink
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 7276b26944b7eeca90bdc74fa40507688d591c05
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.date: 07/07/2021
+  ms.openlocfilehash: 46aca1ee3209265c7a5749b91516feba9e354e44
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108765276"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113595995"
 landingContent:
 - title: Azure DNS について
   linkLists:
@@ -23,6 +23,10 @@ landingContent:
     links:
     - text: Azure DNS とは
       url: dns-overview.md
+  - linkListType: learn
+    links:
+    - text: Azure DNS でドメインをホストする
+      url: /learn/modules/host-domain-azure-dns/
 - title: Azure DNS ゾーンとレコードの作成
   linkLists:
   - linkListType: quickstart

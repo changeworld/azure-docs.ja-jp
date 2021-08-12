@@ -3,12 +3,12 @@ title: サービス プリンシパルでの認証
 description: Azure Active Directory サービス プリンシパルを使用して、プライベート コンテナー レジストリ内のイメージへのアクセスを提供します。
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: a32538e5fc5354427bafc5098634becdcedd1239
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 7d64f63de3227394d1f69b2049f0a58dda35e6e6
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285537"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440720"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>サービス プリンシパルによる Azure Container Registry 認証
 
@@ -30,8 +30,10 @@ Azure AD サービス プリンシパルを使うことで、スコープを設�
 
 サービス プリンシパルは、**ヘッドレス シナリオ** でレジストリへのアクセスを提供する際に使う必要があります。 つまり、自動的にまたはそれ以外の無人の方法でコンテナー イメージをプッシュまたはプルする必要があるすべてのアプリケーション、サービス、またはスクリプトが対象です。 次に例を示します。
 
-  * *Pull*: レジストリからオーケストレーション システム (Kubernetes、DC/OS、Docker Swarm など) にコンテナーをデプロイします。 また、コンテナー レジストリから、[Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)、[Azure Container Instances](container-registry-auth-aci.md)、[App Service](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](../service-fabric/index.yml) などの関連する Azure サービスにプルすることもできます。
+  * *Pull*: レジストリからオーケストレーション システム (Kubernetes、DC/OS、Docker Swarm など) にコンテナーをデプロイします。 また、コンテナー レジストリから、[Azure Container Instances](container-registry-auth-aci.md)、[App Service](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](../service-fabric/index.yml) などの関連する Azure サービスにプルすることもできます。
 
+    > [!TIP]
+    > Azure コンテナー レジストリからイメージをプルするには、いくつかの [Kubernetes シナリオ](authenticate-kubernetes-options.md)でサービス プリンシパルをお勧めします。 またAzure Kubernetes Service (AKS) を使用して、クラスターの[マネージド ID ](../aks/cluster-container-registry-integration.md)を有効にすることで、自動メカニズムを使用してターゲット レジストリ で認証することもできます。 
   * *Push*: コンテナー イメージを作成し、継続的インテグレーションと Azure Pipelines や Jenkins などのデプロイ ソリューションを使用してレジストリにプッシュします。
 
 コンテナー イメージを開発用ワークステーションに手動でプルするときなど、レジストリへの個別アクセスでは、代わりに各自の [Azure AD ID](container-registry-authentication.md#individual-login-with-azure-ad) を使ってレジストリにアクセスすることをお勧めします ([az acr login][az-acr-login] を使うなど)。
@@ -55,7 +57,7 @@ Azure CLI の以前のサンプル スクリプトを GitHub 上で検索でき�
 各値の形式は `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。 
 
 > [!TIP]
-> [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。
+> [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。
 >
 
 ### <a name="use-credentials-with-azure-services"></a>Azure サービスで資格情報を使用する
@@ -95,6 +97,19 @@ az acr login --name myregistry
 
 CLI では、`az login` を実行したときに作成されたトークンが使用され、セッションがレジストリによる認証を受けます。
 
+## <a name="create-service-principal-for-cross-tenant-scenarios"></a>テナント間シナリオ用のサービス プリンシパルを作成する
+
+サービス プリンシパルは、ある Azure Active Directory (テナント) 内のコンテナー レジストリから別の サービスまたはアプリにイメージをプルする必要がある Azure のシナリオでも使用できます。 たとえば、組織は、テナント B の共有コンテナー レジストリからイメージをプルする必要があるアプリをテナント A で実行する場合があります。
+
+テナント間のシナリオでコンテナー レジストリで認証できるサービス プリンシパルを作成するには、以下を行います。
+
+*  テナント A で[マルチテナント アプリ](../active-directory/develop/single-and-multi-tenant-apps.md) (サービス プリンシパル) を作成する 
+* テナント B でアプリをプロビジョニングする
+* テナント B のレジストリからプルするサービス プリンシパルのアクセス許可を付与する
+* 新しいサービス プリンシパルを使用して認証を行うテナント A のサービスまたはアプリを更新する
+
+手順の例については、[「コンテナー レジストリから別の AD テナント内の AKS クラスターにイメージ をプルする」](authenticate-aks-cross-tenant.md)を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 * Azure コンテナー レジストリによる認証を受けるその他のシナリオについては、[認証の概要](container-registry-authentication.md)に関する記事を参照してください。
@@ -106,6 +121,6 @@ CLI では、`az login` を実行したときに作成されたトークンが�
 [acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-login]: /cli/azure/reference-index#az-login
-[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-login]: /cli/azure/reference-index#az_login
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset

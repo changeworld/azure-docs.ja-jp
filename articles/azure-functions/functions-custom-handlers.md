@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82166ca69db6dc2dc1b7562e23078609b01cb2ed
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578528"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756025"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions のカスタム ハンドラー
 
@@ -20,8 +20,8 @@ ms.locfileid: "100578528"
 
 カスタム ハンドラーは、次のような場合に最適です。
 
-- Go や Rust など、現在サポートされていない言語でFunction App を実装する。
-- Deno など、現在サポートされていないランタイムでFunction App を実装する。
+- Go や Rust など、現在追加設定なしで提供されていない言語で関数アプリを実装します。
+- Deno など、現在既定でrサポートされていないランタイムで関数アプリを実装する。
 
 カスタム ハンドラーを使用すると、[拡張バンドル](./functions-bindings-register.md)を介して、[トリガーと入出力バインド](./functions-triggers-bindings.md)を使用できます。
 

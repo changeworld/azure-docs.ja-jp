@@ -6,35 +6,35 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e70b1450aa7c121c88e508667dc37ad01d212e
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375274"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536885"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートの構成
 
-[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、セキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシーや、アクセスをさらに制限する他の機能も提供されます。 仮想ネットワークを使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、仮想ネットワーク内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワークのサポートを構成する方法について説明します。
+[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、セキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシーや、アクセスをさらに制限する他の機能も提供されます。 Azure Cache for Redis インスタンスが仮想ネットワークで構成された場合、パブリックにアドレスを指定することはできません。 代わりに、インスタンスには仮想ネットワーク内の仮想マシンとアプリケーションからのみアクセスできます。 この記事では、Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワークのサポートを構成する方法について説明します。
 
 > [!NOTE]
 > Azure Cache for Redis では、クラシック デプロイ モデルと Azure Resource Manager 仮想ネットワークの両方がサポートされています。
-> 
+>
 
 ## <a name="set-up-virtual-network-support"></a>仮想ネットワーク サポートの設定
 
 Virtual Network (VNet) のサポートは、キャッシュの作成中に **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ペインで構成します。
 
-1. Premium レベルのキャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 キャッシュは、Azure portal だけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。 Azure Cache for Redis インスタンスを作成する方法の詳細については、「[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」を参照してください。
+1. Premium レベルのキャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。  これらは Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。 Azure Cache for Redis インスタンスを作成する方法の詳細については、「[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」を参照してください。
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="[リソースの作成] を示すスクリーンショット。":::
-   
+
 1. **[新規]** ページで、 **[データベース]** を選択します。 次に **[Azure Cache for Redis]** を選択します。
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="[Azure Cache for Redis] の選択を示すスクリーンショット。":::
 
 1. **[新規 Redis Cache]** ページで、新しい Premium レベルのキャッシュの設定を構成します。
-   
+
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.redis.cache.windows.net* になります。 |
@@ -48,9 +48,9 @@ Virtual Network (VNet) のサポートは、キャッシュの作成中に **[Ne
 1. **[ネットワーク]** タブで、接続方法として **[仮想ネットワーク]** を選択します。 新しい仮想ネットワークを使用するには、まず [Azure portal を使用した仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関するページまたは「[Azure portal を使用した仮想ネットワーク (クラシック) の作成](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)」の手順に従ってそれを作成します。 次に、 **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ペインに戻り、Premium レベルのキャッシュを作成して構成します。
 
    > [!IMPORTANT]
-   > Azure Cache for Redis を Resource Manager 仮想ネットワークにデプロイする場合、キャッシュは、Azure Cache for Redis インスタンス以外のリソースを含まない専用サブネット内に存在する必要があります。 Azure Cache for Redis インスタンスを、他のリソースを含む Resource Manager 仮想ネットワークのサブネットにデプロイしようとすると、そのデプロイは失敗します。
-   > 
-   > 
+   > Azure Cache for Redis を Resource Manager 仮想ネットワークにデプロイする場合、キャッシュは、Azure Cache for Redis インスタンス以外のリソースを含まない専用サブネット内に存在する必要があります。 Azure Cache for Redis インスタンスを、他のリソースを含む、または NAT Gateway が割り当てられた Resource Manager 仮想ネットワークのサブネットにデプロイしようとすると、そのデプロイは失敗します。
+   >
+   >
 
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -60,9 +60,9 @@ Virtual Network (VNet) のサポートは、キャッシュの作成中に **[Ne
 
    > [!IMPORTANT]
    > Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
-   > 
+   >
    > Azure 仮想ネットワーク インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 Azure Cache for Redis インスタンスは、シャードごとに 2 つの IP アドレスと、ロード バランサー用に 1 つの追加 IP アドレスを使用します。 クラスター化されていないキャッシュは、1 つのシャードを持つと見なされます。
-   > 
+   >
 
 1. ページの下部にある **[次へ: 詳細]** タブを選択するか、ページの下部にある **[次へ: 詳細]** ボタンを選択します。
 
@@ -108,6 +108,7 @@ public static ConnectionMultiplexer Connection
 * [Standard または Basic キャッシュで仮想ネットワークを使用できますか?](#can-i-use-virtual-networks-with-a-standard-or-basic-cache)
 * Azure Cache for Redis インスタンスの作成が失敗するサブネットと成功するサブネットがあるのはなぜですか?
 * [サブネット アドレス空間の要件には何がありますか](#what-are-the-subnet-address-space-requirements)
+* [ピアリングされた仮想ネットワークからキャッシュに接続できますか?](#can-i-connect-to-my-cache-from-a-peered-virtual-network)
 * [キャッシュが仮想ネットワークでホストされている場合、すべてのキャッシュ機能が動作しますか?](#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
 
 ### <a name="what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks"></a>Azure Cache for Redis と仮想ネットワークの誤った構成に関してよく見られる問題を教えてください
@@ -116,14 +117,14 @@ Azure Cache for Redis が仮想ネットワークでホストされている場�
 
 >[!IMPORTANT]
 >以下の表に含まれるポートがブロックされている場合、キャッシュが正常に動作しない可能性があります。 仮想ネットワークで Azure Cache for Redis を使用する場合の構成の誤りに関する最も一般的な問題は、これらのポートのうち 1 つ以上がブロックされていることです。
-> 
+>
 
-- [送信ポートの要件](#outbound-port-requirements)
-- [受信ポートの要件](#inbound-port-requirements)
+* [送信ポートの要件](#outbound-port-requirements)
+* [受信ポートの要件](#inbound-port-requirements)
 
 #### <a name="outbound-port-requirements"></a>送信ポートの要件
 
-送信ポートには 9 個の要件があります。 これらの範囲内の送信要求は、キャッシュが機能するために必要な他のサービスに送信されるか、またはノード間通信のために Redis サブネットの内部に送信されます。 geo レプリケーションの場合は、プライマリ キャッシュとレプリカ キャッシュのサブネット間の通信のための追加の送信要件が存在します。
+送信ポートには 9 個の要件があります。 これらの範囲内の送信要求は、a) キャッシュが機能するために必要な他のサービスに送信されるか、または b) ノード間通信のために Redis サブネットの内部に送信されます。 geo レプリケーションの場合は、プライマリ キャッシュとレプリカ キャッシュのサブネット間の通信のためのその他の送信要件が存在します。
 
 | Port | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |
@@ -147,11 +148,11 @@ Azure Cache for Redis が仮想ネットワークでホストされている場�
 
 #### <a name="geo-replication-peer-port-requirements"></a>geo レプリケーション ピア ポートの要件
 
-Azure 仮想ネットワーク内のキャッシュ間で geo レプリケーションを使用している場合は、両方のキャッシュに対して、受信 "*および*" 送信方向の両方で、サブネット全体に対してポート 15000-15999 のブロックを解除します。 この構成を使用すると、将来 geo フェールオーバーが発生しても、サブネット内のすべてのレプリカ コンポーネントが相互に直接通信できます。
+Azure 仮想ネットワーク内のキャッシュ間で geo レプリケーションを使用している場合は、a) 受信 "*および*" 送信方向の両方でサブネット全体に対して、および b) 両方のキャッシュに対して、ポート 15000-15999 のブロックを解除します。 この構成を使用すると、将来 geo フェールオーバーが発生しても、サブネット内のすべてのレプリカ コンポーネントが相互に直接通信できます。
 
 #### <a name="inbound-port-requirements"></a>受信ポートの要件
 
-受信ポートの範囲には、8 個の要件があります。 これらの範囲の受信要件は、同じ仮想ネットワークでホストされている他のサービスからの受信、または Redis サブネット通信への内部の要件です。
+受信ポートの範囲には、8 個の要件があります。 これらの範囲の受信要求は、同じ仮想ネットワークでホストされている他のサービスからの受信のものです。 または、Redis サブネット通信の内部のものです。
 
 | Port | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |
@@ -173,7 +174,7 @@ Azure Cache for Redis のネットワーク接続要件には、仮想ネット�
 * 世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続 Azure Cache for Redis インスタンスと同じリージョン内にあるエンドポイントと、"*他の*" Azure リージョン内にあるストレージ エンドポイントが含まれます。 Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
 * *ocsp.digicert.com*、*crl4.digicert.com*、*ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl3.digicert.com*、*cacerts.digicert.com*、*oneocsp.microsoft.com*、*crl.microsoft.com* への送信ネットワーク接続。 この接続は、TLS/SSL 機能をサポートするために必要です。
 * 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
-* 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net*、*north-prod2.prod2.metrics.nsatc.net*、*azglobal-black.azglobal.metrics.nsatc.net*、*shoebox2-red.shoebox2.metrics.nsatc.net*、*east-prod2.prod2.metrics.nsatc.net*、*azglobal-red.azglobal.metrics.nsatc.net*、*shoebox3.prod.microsoftmetrics.com*、*shoebox3-red.prod.microsoftmetrics.com*、および *shoebox3-black.prod.microsoftmetrics.com*。
+* 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net*、*north-prod2.prod2.metrics.nsatc.net*、*azglobal-black.azglobal.metrics.nsatc.net*、*shoebox2-red.shoebox2.metrics.nsatc.net*、*east-prod2.prod2.metrics.nsatc.net*、*azglobal-red.azglobal.metrics.nsatc.net*、*shoebox3.prod.microsoftmetrics.com*、*shoebox3-red.prod.microsoftmetrics.com*、*shoebox3-black.prod.microsoftmetrics.com*、*azredis-red.prod.microsoftmetrics.com*、および *azredis-black.prod.microsoftmetrics.com*。
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-virtual-network"></a>仮想ネットワークで自分のキャッシュの動作を確認するにはどうすればよいですか?
 
@@ -183,16 +184,15 @@ Azure Cache for Redis のネットワーク接続要件には、仮想ネット�
 
 前のセクションで説明したようにポート要件を構成した後、次の手順に従って、キャッシュが動作していることを確認できます。
 
-- すべてのキャッシュ ノードを[再起動](cache-administration.md#reboot)します。 「[受信ポートの要件](cache-how-to-premium-vnet.md#inbound-port-requirements)」と「[送信ポートの要件](cache-how-to-premium-vnet.md#outbound-port-requirements)」に記載されているように、必要なすべてのキャッシュ依存関係に到達できない場合、キャッシュは正常に再起動できません。
-- キャッシュ ノードが再起動したら (Azure portal のキャッシュの状態で報告されます)、次のテストを実行できます。
-  - [tcping](https://www.elifulkerson.com/projects/tcping.php) を使って、キャッシュと同じ仮想ネットワーク内にあるコンピューターから、ポート 6380 を使用してキャッシュ エンドポイントを ping します。 例:
-    
+* すべてのキャッシュ ノードを[再起動](cache-administration.md#reboot)します。 「[受信ポートの要件](cache-how-to-premium-vnet.md#inbound-port-requirements)」と「[送信ポートの要件](cache-how-to-premium-vnet.md#outbound-port-requirements)」に記載されているように、必要なすべてのキャッシュ依存関係に到達できない場合、キャッシュは正常に再起動できません。
+* キャッシュ ノードが再起動したら (Azure portal のキャッシュの状態で報告されます)、次のテストを実行できます。
+  + [tcping](https://www.elifulkerson.com/projects/tcping.php) を使って、キャッシュと同じ仮想ネットワーク内にあるコンピューターから、ポート 6380 を使用してキャッシュ エンドポイントを ping します。 例:
+
     `tcping.exe contosocache.redis.cache.windows.net 6380`
-    
+
     `tcping` ツールからポートが開いていることがレポートされる場合、キャッシュは仮想ネットワーク内のクライアントからの接続に使用できます。
 
-  - キャッシュに接続してキャッシュのいくつかの項目を追加および取得するテスト キャッシュ クライアント (StackExchange.Redis を使ったシンプルなコンソール アプリケーションにできます) を作成することでテストする方法もあります。 キャッシュと同じ仮想ネットワーク内にある VM にサンプル クライアント アプリケーションをインストールします。 次に、それを実行して、キャッシュへの接続を確認します。
-
+  + 別のテスト方法: キャッシュに接続してキャッシュのいくつかの項目を追加および取得するテスト キャッシュ クライアントを作成します。 テスト キャッシュ クライアントは、StackExchange.Redis を使用するコンソール アプリケーションなどが考えられます。 キャッシュと同じ仮想ネットワーク内にある VM にサンプル クライアント アプリケーションをインストールします。 次に、それを実行して、キャッシュへの接続を確認します。
 
 ### <a name="when-i-try-to-connect-to-my-azure-cache-for-redis-instance-in-a-virtual-network-why-do-i-get-an-error-stating-the-remote-certificate-is-invalid"></a>仮想ネットワークで自分の Azure Cache for Redis インスタンスに接続しようとすると、リモート証明書が無効であるというエラーが表示されるのはなぜですか?
 
@@ -218,7 +218,7 @@ DNS 名を解決できない場合、StackExchange.Redis クライアントに�
 
 ### <a name="why-does-creating-an-azure-cache-for-redis-instance-fail-in-some-subnets-but-not-others"></a>Azure Cache for Redis インスタンスの作成が失敗するサブネットと成功するサブネットがあるのはなぜですか?
 
-Azure Cache for Redis インスタンスを仮想ネットワークにデプロイする場合、キャッシュは、他のリソースの種類が含まれない専用サブネット内に配置する必要があります。 Azure Cache for Redis インスタンスを、他のリソース (Azure Application Gateway インスタンスや送信 NAT など) が含まれる Resource Manager 仮想ネットワーク サブネットにデプロイしようとすると、そのデプロイは通常失敗します。 新しい Azure Cache for Redis インスタンスを作成する前に、他の種類の既存のリソースを削除する必要があります。
+Azure Cache for Redis インスタンスを仮想ネットワークにデプロイする場合、キャッシュは、他のリソースの種類が含まれない専用サブネット内に配置する必要があります。 Azure Cache for Redis インスタンスを、他のリソース (Azure Application Gateway インスタンスや送信 NAT など) が含まれる Resource Manager 仮想ネットワーク サブネットにデプロイしようとすると、そのデプロイは通常失敗します。 新しい Azure Cache for Redis インスタンスを作成する前に、他の種類の既存のリソースを削除してください。
 
 また、十分な数の使用可能な IP アドレスがサブネット内にある必要があります。
 
@@ -226,13 +226,21 @@ Azure Cache for Redis インスタンスを仮想ネットワークにデプロ�
 
 Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-Azure 仮想ネットワーク インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 Azure Cache for Redis インスタンスでは、クラスター シャードごとに 2 つの IP アドレスと、存在する場合追加のレプリカ用に追加 IP アドレスが使用されます。 ロード バランサー用に、追加 IP アドレスが 1 つ使用されます。 クラスター化されていないキャッシュは、1 つのシャードを持つと見なされます。
+Azure 仮想ネットワーク インフラストラクチャによって使用される IP アドレスに加えて、サブネットの各 Azure Cache for Redis インスタンスでは、クラスター シャードごとに 2 つの IP アドレスと、存在する場合は追加のレプリカ用の IP アドレスが使用されます。 ロード バランサー用に IP アドレスが追加で 1 つ使用されます。 クラスター化されていないキャッシュは、1 つのシャードを持つと見なされます。
+
+### <a name="can-i-connect-to-my-cache-from-a-peered-virtual-network"></a>ピアリングされた仮想ネットワークからキャッシュに接続できますか?
+
+仮想ネットワークが同じリージョンに存在する場合は、仮想ネットワーク ピアリングまたは VPN Gateway VNET 間接続を使用してそれらを接続できます。
+
+ピアリングされた Azure 仮想ネットワークが "*異なる*" リージョンにある場合、リージョン 1 のクライアント VM は、負荷分散された IP アドレスを使用してリージョン 2 のキャッシュにアクセスできませんが、これは Basic ロード バランサーによる制約のためです。 つまり、Standard ロード バランサーを使用したキャッシュである場合を除きますが、これは現時点では "*可用性ゾーン*" で作成されたキャッシュに限定されます。
+
+仮想ネットワーク ピアリングの制約の詳細については、Virtual Network - ピアリングの要件と制約に関するページを参照してください。 解決策の 1 つは、仮想ネットワーク ピアリングではなく VPN Gateway VNet 間接続を使用することです。
 
 ### <a name="do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network"></a>キャッシュが仮想ネットワークでホストされている場合、すべてのキャッシュ機能が動作しますか?
 
 キャッシュが仮想ネットワークの一部である場合は、仮想ネットワーク内のクライアントだけがキャッシュにアクセスできます。 そのため、次のキャッシュ管理機能は現時点では動作しません。
 
-* **Redis コンソール**:Redis コンソールはローカル ブラウザーで実行されます。これは通常、仮想ネットワークに接続されていない開発者用コンピューター上にあるため、キャッシュに接続できません。
+* **Redis コンソール**: Redis コンソールはローカル ブラウザーで実行されます。これは通常、仮想ネットワークに接続されていない開発者用コンピューター上にあるため、キャッシュに接続できません。
 
 ## <a name="use-expressroute-with-azure-cache-for-redis"></a>ExpressRoute と Azure Cache for Redis の使用
 

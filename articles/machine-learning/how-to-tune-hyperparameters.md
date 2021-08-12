@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 4154d73cbf7a82c78dcc8ea30f11b8d984dd6af0
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 40c94b367f827d727e1d255f677e26b5b17fd95b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896677"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440936"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning を使用したモデルのハイパーパラメーター調整
 
@@ -430,7 +430,7 @@ Azure Machine Learning スタジオでハイパーパラメーター調整の実
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="ハイパーパラメーター調整のメトリック グラフ":::
 
-- **並列座標グラフ**:この視覚化を使用すると、主要メトリックのパフォーマンスと個々のハイパーパラメーター値の相関関係が示されます。 グラフは、軸を移動する (軸ラベルをクリックしてドラッグする)、および 1 つの軸全体の値を強調表示する (1 つの軸をクリックし、軸に沿って垂直方向にドラッグして、目的の値の範囲を強調表示する) ことで、インタラクティブになります。
+- **並列座標グラフ**:この視覚化を使用すると、主要メトリックのパフォーマンスと個々のハイパーパラメーター値の相関関係が示されます。 グラフは、軸を移動する (軸ラベルをクリックしてドラッグする)、および 1 つの軸全体の値を強調表示する (1 つの軸をクリックし、軸に沿って垂直方向にドラッグして、目的の値の範囲を強調表示する) ことで、インタラクティブになります。 並列座標グラフには、グラフの一番右にある軸が含まれ、その実行インスタンスに設定されているハイパーパラメーターに対応する最適なメトリック値がプロットされます。 この軸は、グラフのグラデーションの凡例を、より読みやすい形式でデータに射影するために用意されています。
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="ハイパーパラメーター調整の並行座標グラフ":::
 
