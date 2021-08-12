@@ -1,13 +1,10 @@
 ---
-title: クイック スタート:Azure IoT からデバイスを制御する (Node.js)
-description: このクイック スタートでは、2 つのサンプル Node.js アプリケーションを実行します。 1 つのアプリケーションは、ハブに接続されたデバイスをリモートで制御できるバックエンド アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
-author: wesmc7777
-manager: philmea
-ms.author: wesmc
+author: philmea
+ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
-ms.topic: quickstart
+ms.topic: include
 ms.custom:
 - mvc
 - seo-javascript-september2019
@@ -17,18 +14,14 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 26a17febf1804a0acc94fd4f484aae34e44af132
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3ffcfdb156f222cf1eb7134b271550eac4c9fcb3
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295322"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114732228"
 ---
-# <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>クイック スタート:Node.js を使用して、Azure IoT ハブに接続されたデバイスを制御する
-
-[!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
-
-このクイックスタートでは、ダイレクト メソッドを使って、Azure IoT Hub に接続されているシミュレートされたデバイスを制御します。 IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバイス テレメトリを格納または処理のためにクラウドに取り込むことができるようにする Azure サービスです。 ダイレクト メソッドを使うと、IoT ハブに接続されたデバイスの動作をリモートで変更できます。 このクイックスタートでは、2 つの Node.js アプリケーションを使用します。バックエンド アプリケーションから呼び出されたダイレクト メソッドに応答するシミュレートされたデバイスのアプリケーションと、シミュレートされたデバイスのダイレクト メソッドを呼び出すバックエンド アプリケーションです。
+このクイックスタートでは、2 つの Node.js アプリケーションを使用します。バックエンド アプリケーションから呼び出されたダイレクト メソッドに応答するシミュレートされたデバイスのアプリケーションと、シミュレートされたデバイスのダイレクト メソッドを呼び出すバックエンド アプリケーションです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,21 +37,21 @@ ms.locfileid: "114295322"
 
 * [サンプル Node.js プロジェクト](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip)。
 
-* ファイアウォールでポート 8883 が開放されていること。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
+* ファイアウォールでポート 8883 が開放されていること。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+[!INCLUDE [iot-hub-cli-version-info](iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-前出の[デバイスから IoT Hub への利用統計情報の送信に関するクイック スタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)を完了した場合は、この手順を省略できます。
+前出の[デバイスから IoT Hub への利用統計情報の送信に関するクイック スタート](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)を完了した場合は、この手順を省略できます。
 
-[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-前の「[クイック スタート: デバイスから IoT Hub への利用統計情報の送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)」を完了した場合は、この手順を省略できます。
+前の「[クイック スタート: デバイスから IoT Hub への利用統計情報の送信](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)」を完了した場合は、この手順を省略できます。
 
 デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
@@ -151,16 +144,3 @@ ms.locfileid: "114295322"
     バックエンド アプリケーションを実行した後、シミュレートされたデバイスを実行しているコンソール ウィンドウにメッセージが表示され、メッセージの送信速度が変わります。
 
     ![シミュレートされたクライアントに変更があったときの出力](./media/quickstart-control-device-node/simulated-device-message-change.png)
-
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
-
-## <a name="next-steps"></a>次のステップ
-
-このクイック スタートでは、バックエンド アプリケーションからデバイス上のダイレクト メソッドを呼び出し、シミュレートされたデバイス アプリケーションでダイレクト メソッド呼び出しに応答しました。
-
-デバイスからクラウドへのメッセージをクラウド内の異なる宛先にルーティングする方法を学習するには、次のチュートリアルに進んでください。
-
-> [!div class="nextstepaction"]
-> [チュートリアル:処理のために利用統計情報を異なるエンドポイントにルーティングする](tutorial-routing.md)

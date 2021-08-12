@@ -2,18 +2,18 @@
 title: Managed HSM のローカル RBAC の組み込みロール - Azure Key Vault | Microsoft Docs
 description: ユーザー、サービス プリンシパル、グループ、マネージド ID に割り当てることのできる Managed HSM 組み込みロールの概要
 services: key-vault
-author: amitbapat
+author: mbaldwin
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.author: ambapat
-ms.openlocfilehash: a9594157349754c7178f3c73cfe9529ad478de4a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: mbaldwin
+ms.openlocfilehash: 58c66ee6a8d21a809206fd1eb7c401c839227d01
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411019"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459663"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Managed HSM のローカル RBAC の組み込みロール
 

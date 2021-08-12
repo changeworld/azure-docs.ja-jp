@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/26/2020
+ms.date: 06/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9852752799fd010ebb069637f55008d9c4f68bf8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9663ee95b8ae9b109016e409855ef171c368793
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732131"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690860"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiGate SSL VPN の統合
 
@@ -76,7 +76,7 @@ FortiGate SSL VPN で Azure AD SSO を構成してテストするには、これ
 
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、次の値を入力します。
 
-    a. **[サイン オン URL]** ボックスに、`https://<FQDN>/remote/login` というパターンの URL を入力します。
+    a. **[サイン オン URL]** ボックスに、`https://<FQDN>/remote/saml/login` というパターンの URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<FQDN>/remote/saml/metadata` というパターンで URL を入力します。
 
@@ -203,6 +203,7 @@ FortiGate SSL VPN で Azure AD SSO を構成してテストするには、これ
    ```console
     config user saml
     edit azure
+    set cert <FortiGate VPN Server Certificate Name>
     set entity-id <Entity ID>
     set single-sign-on-url <Reply URL>
     set single-logout-url <Logout URL>

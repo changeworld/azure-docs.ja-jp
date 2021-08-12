@@ -10,14 +10,17 @@ ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: f4dfd0701c2eeeaa5ba3b2be20b9448ca2093601
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 87a658c077a93d852e2a1e03faedf1fa5064e3dc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111818"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473129"
 ---
 # <a name="call-recording-api-quickstart"></a>Call Recording API クイックスタート
+
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
+
 このクイックスタートで音声通話とビデオ通話の録音を始めることができます。 このクイックスタートは、[呼び出し元のクライアント SDK](get-started-with-video-calling.md) を使用してエンドユーザーの通話エクスペリエンスを既に構築していることを前提としています。 **呼び出し元のサーバーの API と SDK** を使用すると、録音を有効にしたり、管理したりできます。 
 
 ::: zone pivot="programming-language-csharp"

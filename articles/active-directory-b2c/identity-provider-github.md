@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 06/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 442894da23111877f4dd4f67363add0c8e52a4c9
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 921afd13b016e7b03db309623429ee6381058ead
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028980"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525374"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して GitHub アカウントでのサインアップおよびサインインを設定する
 
@@ -28,7 +28,8 @@ ms.locfileid: "107028980"
 
 ::: zone pivot="b2c-custom-policy"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+> [!IMPORTANT]
+> 2021 年 5 月以降、GitHub は Azure AD B2C カスタム ポリシー フェデレーションに影響を与える変更を発表しました。 変更のため、GitHub 技術プロファイルに `<Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>` メタデータを追加します。 詳細については、[「クエリ パラメーターを使用して API 認証を非推奨にする」](https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/)を参照してください。
 
 ::: zone-end
 
@@ -121,6 +122,7 @@ GitHub アカウントをクレーム プロバイダーとして定義するに
             <Item Key="HttpBinding">GET</Item>
             <Item Key="scope">read:user user:email</Item>
             <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>  
             <Item Key="UserAgentForClaimsExchange">CPIM-Basic/{tenant}/{policy}</Item>
             <!-- Update the Client ID below to the Application ID -->
             <Item Key="client_id">Your GitHub application ID</Item>
