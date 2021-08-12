@@ -10,18 +10,18 @@ ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: 45fa5cf4c76577cb5e8ba9bf482f4aab7301e3c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d32058fed80db335086c6ec508441817002feca9
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391492"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900757"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする
 
 Azure Storage には、PowerShell のための拡張機能があります。この機能では、Azure Active Directory (Azure AD) 資格情報でサインインし、スクリプト コマンドを実行できます。 Azure AD 資格情報で PowerShell にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが PowerShell によって自動的に使用され、BLOB ストレージに対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
-BLOB データへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[Azure RBAC を使用した Azure Storage データへのアクセス権の管理](../common/storage-auth-aad-rbac-portal.md)に関する記事を参照してください。
+BLOB データへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)」を参照してください。
 
 ## <a name="supported-operations"></a>サポート対象の操作
 
@@ -71,7 +71,7 @@ Azure PowerShell を使用してサインインし Azure Storage に対する後
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-portal.md)」を参照してください。
+1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)」を参照してください。
 
     > [!IMPORTANT]
     > Azure ロールの割り当ての反映には数分かかることがあります。
@@ -85,5 +85,5 @@ Azure PowerShell を使用してサインインし Azure Storage に対する後
 
 ## <a name="next-steps"></a>次のステップ
 
-- [PowerShell を使用して、BLOB およびキュー データへのアクセスのための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-powershell.md)
+- [BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)
 - [Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する](../common/storage-auth-aad-msi.md)

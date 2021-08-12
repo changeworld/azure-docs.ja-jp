@@ -6,18 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/08/2021
+ms.date: 07/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 75e5737f8ad7b0f40e8480c17e150669220007ff
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: cafea36f45dcc063fadc1562428735ee0ac9fe20
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753689"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652822"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Azure portal で Azure Data Box の自己管理型の発送を使用する
 
 この記事では、Azure Data Box デバイスの注文、受け取り、および返却を行う、自己管理型の発送タスクについて説明します。 Data Box デバイスは、Azure portal を使用して管理できます。
+
+> [!NOTE]
+> Data Box の注文と出荷に関するよくあるご質問の回答については、「[Data Box の FAQ](data-box-faq.yml)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,8 +71,8 @@ Data Box を注文するときに、自己管理型の発送オプションを�
    - Order name
    - Company name
    - Company legal name (if different) 
-   - Tax ID 
-   - Address 
+   - CNPJ (Business Tax ID, format: 00.000.000/0000-00) or CPF (Individual Tax ID, format: 000.000.000-00)
+   - Address
    - Country 
    - Phone number 
    - Contact name of the person who will pick up the Data Box Disk (A government-issued photo ID will be required to validate the contact’s identity upon arrival.)   

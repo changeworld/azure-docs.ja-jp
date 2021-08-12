@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: ae2720c321e701d14e91f8aee7a6dfbfc5f15739
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 03cab112681536708496c35e4440e463d1522406
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071346"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108191"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept Audio の設定
 
@@ -31,7 +31,7 @@ Azure Percept Audio は、Azure Percept DK ですぐに使用できます。 特
 
 1. (省略可能) "Line Out" というラベルの付いたオーディオ ジャックを介して、スピーカーまたはヘッドホンを Azure Percept Audio デバイスに接続します。 これによって音声応答を聴くことができます。
 
-1. 開発キットの電源をオンにします。 LED L02 が白の点滅に変わり、デバイスの電源が入っており、認証が行われていることを示します。
+1. 電源アダプターに接続し、開発キットをオンにします。 LED L02 が白の点滅に変わり、デバイスの電源が入っており、認証が行われていることを示します。
 
 1. 認証プロセスが完了するまで待機します。これには最大 5 分かかることがあります。
 

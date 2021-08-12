@@ -3,13 +3,13 @@ title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 12/09/2019
-ms.openlocfilehash: b37cf33a96452f9f3e86f853d3d87fd3b4b3879c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/19/2021
+ms.openlocfilehash: b3d148bbf6aadaa9ed48d234fdd22d68412f3ec5
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102431851"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789640"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -96,7 +96,7 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 ## <a name="migrating-from-1x-to-later-versions"></a>1\.x からそれ以降のバージョンへの移行
 
-最新のバージョンではなくバージョン 1.x のランタイムを使用するように記述された既存のアプリを移行することができます。 必要な変更の大部分は、.NET Framework 4.7 と .NET Core 間の C# API の変更など、言語ランタイムの変更に関連する変更です。 また、コードとライブラリが、選択した言語ランタイムと互換性があることを確認する必要があります。 最後に、以下で示すトリガー、バインド、および機能での変更にも注意してください。 最適な移行結果を得るために、新しいバージョンで新しい関数アプリを作成し、既存のバージョン 1.x の関数コードを新しいアプリに移植してください。  
+最新のバージョンではなくバージョン 1.x のランタイムを使用するように記述された既存のアプリを移行することができます。 必要な変更の大部分は、.NET Framework 4.8 と .NET Core 間での C# API の変更など、言語ランタイムの変更に関連する変更です。 また、コードとライブラリが、選択した言語ランタイムと互換性があることを確認する必要があります。 最後に、以下で示すトリガー、バインド、および機能での変更にも注意してください。 最適な移行結果を得るために、新しいバージョンで新しい関数アプリを作成し、既存のバージョン 1.x の関数コードを新しいアプリに移植してください。  
 
 アプリ構成を手動で更新することで "インプレース" アップグレードすることが可能ですが、1.x から上位のバージョンへの移行には、いくつかの破壊的変更が含まれます。 たとえば、C# では、デバッグ オブジェクトが `TraceWriter` から `ILogger` に変更されています。 最新のバージョン 3.x のテンプレートに基づいて新しいバージョン 3.x プロジェクトを作成することで、更新された関数から始めます。
 

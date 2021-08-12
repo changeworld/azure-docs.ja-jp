@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5f789baf7467af863c59a44ab9a256c9f6d7fd15
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 84da4c02ec4631e9d9f33ac745c3721894cc5f29
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075246"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル: Azure Active Directory と LearnUpon の統合
 
@@ -83,7 +83,7 @@ LearnUpon に対する Azure AD SSO を構成してテストするには、次�
     **[応答 URL]** ボックスに、`https://<companyname>.learnupon.com/saml/consumer` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[LearnUpon クライアント サポート チーム](https://www.learnupon.com/features/support/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[LearnUpon クライアント サポート チーム](https://www.learnupon.com/contact/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページで、 **[拇印]** を確認します。これが LearnUpon SAML 設定に追加されます。
 
@@ -159,7 +159,7 @@ LearnUpon に対する Azure AD SSO を構成してテストするには、次�
 
 ### <a name="create-learnupon-test-user"></a>LearnUpon テスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを LearnUpon に作成します。 LearnUpon では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 LearnUpon にユーザーがまだ存在していない場合は、認証後に新規に作成されます。 ユーザーを手動で作成する必要がある場合は、[LearnUpon のサポート チーム](https://www.learnupon.com/features/support/)にお問い合わせください。
+このセクションでは、Britta Simon というユーザーを LearnUpon に作成します。 LearnUpon では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 LearnUpon にユーザーがまだ存在していない場合は、認証後に新規に作成されます。 ユーザーを手動で作成する必要がある場合は、[LearnUpon のサポート チーム](https://www.learnupon.com/contact/)にお問い合わせください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

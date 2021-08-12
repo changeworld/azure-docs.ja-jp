@@ -2,21 +2,21 @@
 title: チュートリアル:Infor CloudSuite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Infor CloudSuite に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
-ms.author: Zhchia
-ms.openlocfilehash: cea5b360abc265601a366f73a92a5340713fccac
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.author: thwimmer
+ms.openlocfilehash: 1d52a53798c80d59ffaab86319afdc68eff345a9
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074301"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767085"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>チュートリアル:Infor CloudSuite を構成し、自動ユーザー プロビジョニングに対応させる
 

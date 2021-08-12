@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/21/2021
+ms.date: 05/12/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1d4b6c8d442d1a0d6e9451b314ee95ae50c20ede
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: a95f83dbfa0574aa88b964538f329c7d9075a50b
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891494"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111593399"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。
 
@@ -62,8 +62,8 @@ Ultra ディスクが利用できるリージョンとそれに該当する可�
     - [Dsv4](../articles/virtual-machines/dv4-dsv4-series.md#dsv4-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)
-    - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-    - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+    - [M](../articles/virtual-machines/m-series.md)
+    - [Mv2](../articles/virtual-machines/mv2-series.md)
     - [HBv2](../articles/virtual-machines/hbv2-series.md)
     - [HB](../articles/virtual-machines/hb-series.md)
     - [HC](../articles/virtual-machines/hc-series.md)
@@ -79,7 +79,7 @@ Ultra ディスクが利用できるリージョンとそれに該当する可�
 - データ ディスクとしてのみ使用できます。 
 - 既定で 4k の物理セクター サイズがサポートされます。 512E セクター サイズは一般提供されているオファリングとして利用できます (サインアップは不要です)。 ほとんどのアプリケーションは 4k のセクター サイズと互換性がありますが、512 バイトのセクター サイズが必要になる場合があります。 1 つの例が、Oracle Database です。この場合、4k のネイティブ ディスクをサポートするには、リリース 12.2 以降が必要です。 以前のバージョンの Oracle DB では、512 バイトのセクター サイズが必要となります。
 - 空のディスクとしてのみ作成できます。
-- ディスク スナップショット、VM イメージ、可用性セット、Azure 専用ホスト、Azure Disk Encryption は現在のところサポートされていません。
+- ディスク スナップショット、ディスクのエクスポート、ディスクの種類の変更、VM イメージ、可用性セット、Azure 専用ホスト、Azure Disk Encryption は現在のところサポートされていません。
 - Azure Backup または Azure Site Recovery との統合は現在のところサポートされていません。
 - キャッシュされていない読み取りとキャッシュされていない書き込みのみがサポートされます。
 - GA VM での IOPS の現在の上限は 80,000 です。

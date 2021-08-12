@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 444639d9e36b67f25ed9b82bd68102273c66ae00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec614f74a0b7894be8b8d0d867056d0506d3ef9d
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951234"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596355"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>クイック スタート:Azure Storage アカウントと Azure CDN との統合
 
@@ -78,7 +78,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 ストレージ アカウントの **[Azure CDN]** ページで、一覧から CDN エンドポイントを選んで、CDN エンドポイント構成ページを開きます。
 
-このページから、[圧縮](cdn-improve-performance.md)、[クエリ文字列キャッシュ](cdn-query-string.md)、[geo フィルタリング](cdn-restrict-access-by-country.md)など、配信のその他の CDN 機能を有効にすることができます。 
+このページから、[圧縮](cdn-improve-performance.md)、[クエリ文字列キャッシュ](cdn-query-string.md)、[geo フィルタリング](cdn-restrict-access-by-country-region.md)など、配信のその他の CDN 機能を有効にすることができます。 
     
 ## <a name="enable-sas"></a>SAS を有効にする
 

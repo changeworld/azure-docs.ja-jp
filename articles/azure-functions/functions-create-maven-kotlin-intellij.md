@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: f02643ee28d76d4f90206a1aa2879b4672da2a38
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f2ec995334069dc707c8eb09fae3601f58c6c549
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179458"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287260"
 ---
 # <a name="create-your-first-kotlin-function-in-azure-using-intellij"></a>IntelliJ を使用して Azure で初めての Kotlin 関数を作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "102179458"
 
 IntelliJ を使用して Kotlin 関数を作成し、Azure に発行するには、次のソフトウェアをインストールします。
 
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure) (JDK) バージョン 8
 - [Apache Maven](https://maven.apache.org) バージョン 3.0 以降
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/download)、コミュニティまたは Maven が付属した Ultimate バージョン
 - [Azure CLI](/cli/azure)

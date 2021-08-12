@@ -3,8 +3,8 @@ title: チュートリアル:myday を構成し、Azure Active Directory を使�
 description: Azure AD から myday に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 59b4150a-9530-479b-9f62-a16c3d005dbe
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.author: Zhchia
-ms.openlocfilehash: 3fc1e39bc0a397329ed1bd83c8b9e8184f9961bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 5d8512a050f230b1e730c704f973032dd4f463fc
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181987"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761057"
 ---
 # <a name="tutorial-configure-myday-for-automatic-user-provisioning"></a>チュートリアル:myday を構成し、自動ユーザー プロビジョニングに対応させる
 

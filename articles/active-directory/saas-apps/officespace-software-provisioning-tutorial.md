@@ -2,21 +2,21 @@
 title: 'チュートリアル: Azure Active Directory で自動ユーザー プロビジョニング用に OfficeSpace Software を構成する | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを OfficeSpace Software に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/02/2019
-ms.author: Zhchia
-ms.openlocfilehash: fc67d649e3a7cd094eb2c3d633244077abcab308
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: thwimmer
+ms.openlocfilehash: 5ed5bc1be3c9269e760df3ae7c56518cc3e9ef47
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94359927"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761974"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に OfficeSpace Software を構成する
 

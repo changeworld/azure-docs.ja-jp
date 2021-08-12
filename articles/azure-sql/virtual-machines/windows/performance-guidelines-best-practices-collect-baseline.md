@@ -8,6 +8,7 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
+ms.subservice: performance
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -15,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b1909d5fd5e3c02f104c73acb515740cb6ff65f6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 46dff70c8d1064f05d89af9340b5b07e7adc747e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572262"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079897"
 ---
 # <a name="collect-baseline-performance-best-practices-for-sql-server-on-azure-vm"></a>ベースラインの収集: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -63,7 +64,7 @@ VM には IOPS とスループットに対して異なるスケールの制限�
 OS によって使用される外部メモリと、SQL Server によって内部的に使用されるメモリの両方を追跡します。 どちらかのコンポーネントの負荷を特定すると、仮想マシンのサイズを調整し、チューニングの機会を見極めることができます。 
 
 次の PerfMon カウンターは、SQL Server 仮想マシンのメモリの正常性を検証するのに役立ちます。 
-* [\Memory\Available MBytes](/azure/monitoring/infrastructure-health/vmhealth-windows/winserver-memory-availmbytes)
+* \Memory\Available MBytes
 * [\SQLServer:Memory Manager\Target Server Memory (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
 * [\SQLServer:Memory Manager\Total Server Memory (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
 * [\SQLServer:Buffer Manager\Lazy writes/sec](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
@@ -91,8 +92,10 @@ Azure では、お客様は仮想マシンのリソースをできるだけ多�
 - [クイック チェックリスト](performance-guidelines-best-practices-checklist.md)
 - [VM サイズ](performance-guidelines-best-practices-vm-size.md)
 - [Storage](performance-guidelines-best-practices-storage.md)
+- [Security](security-considerations-best-practices.md)
+- [HADR の設定](hadr-cluster-best-practices.md)
 
 
 セキュリティのベスト プラクティスについては、「[Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項](security-considerations-best-practices.md)」をご覧ください。
 
-SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.yml)に関するページをご覧ください。

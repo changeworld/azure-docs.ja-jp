@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - Azure Spring Cloud 構成サーバーを設定する
 description: アプリのデプロイのための Azure Spring Cloud 構成サーバーの設定について説明します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, fasttrack-edit
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 8c71e76213011beaa63deeaadfa3d6d2dc0d4ce2
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 95f4e7e9dcc8c9f16465d2a577d4bdf425dae4a8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286540"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470557"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>クイック スタート:Azure Spring Cloud の構成サーバーを設定する
 
@@ -79,41 +79,42 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 次のコマンドを実行して、既定のリポジトリを設定します。
 
 ```azurecli
-
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/azure-samples/spring-petclinic-microservices-config
+```
+
 ::: zone-end
 
 > [!TIP]
-> If you are using a private repository for config server, please refer to our [tutorial on setting up authentication](./how-to-config-server.md).
+> 構成サーバーにプライベート リポジトリを使用している場合は、[認証の設定に関するチュートリアル](./how-to-config-server.md)を参照してください。
 
-## Troubleshooting of Azure Spring Cloud config server
+## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server のトラブルシューティング
 
-The following procedure explains how to troubleshoot config server settings.
+次の手順では、Config Server の設定のトラブルシューティングを行う方法について説明します。
 
-1. In the Azure portal, go to the service **Overview** page and select **Logs**. 
-1. Select **Queries** and **Show the application logs that contain the "error" or "exception" terms"**. 
-1. Click **Run**. 
-1. If you find the error **java.lang.illegalStateException** in logs, this indicates that spring cloud service cannot locate properties from config server.
+1. Azure portal でサービスの **[概要]** ページに移動し、 **[ログ]** を選択します。 
+1. **[クエリ]** を選択し、 **[Show the application logs that contain the "error" or "exception" terms"]\("エラー" または "例外" という語句を含むアプリケーション ログを表示する\)** を選択します。 
+1. **[実行]** をクリックします。 
+1. ログで **java.lang.illegalStateException** エラーが見つかった場合、これは Spring Cloud サービスで Config Server からプロパティを見つけることができないことを示します。
 
-    [ ![ASC portal run query](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
+    [ ![ASC ポータルでのクエリの実行](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
 
-1. Go to the service **Overview** page.
-1. Select **Diagnose and solve problems**. 
-1. Select **Config Server** detector.
+1. サービスの **[概要]** ページに移動します。
+1. **[Diagnose and solve prolems]\(問題の診断と解決\)** を選択します。 
+1. **[Config Server]\(Config Server\)** 検出機能を選択します。
 
-    [ ![ASC portal diagnose problems](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
+    [ ![ASC ポータルでの問題の診断](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
 
-3. Click **Config Server Health Check**.
+3. **[Config Server Health Check]\(Config Server の正常性チェック\)** をクリックします。
 
-    [ ![ASC portal genie](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
+    [ ![ASC ポータルでの問題](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
 
-4. Click **Config Server Status** to see more details from the detector.
+4. **[Config Server Status]\(Config Server の状態\)** をクリックして、検出機能の詳細を表示します。
 
-    [ ![ASC portal health status](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
+    [ ![ASC ポータルでの正常性の状態](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 
-## Next steps
+## <a name="next-steps"></a>次のステップ
 
-In this quickstart, you created Azure resources that will continue to accrue charges if they remain in your subscription. If you don't intend to continue on to the next quickstart, see [Clean up resources](./quickstart-logs-metrics-tracing.md#clean-up-resources). Otherwise, advance to the next quickstart:
+このクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進まない場合は、[リソースのクリーンアップ](./quickstart-logs-metrics-tracing.md#clean-up-resources)に関する記事を参照してください。 それ以外の場合は、次のクイックスタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [Build and deploy apps](./quickstart-deploy-apps.md)
+> [アプリをビルドして配置する](./quickstart-deploy-apps.md)

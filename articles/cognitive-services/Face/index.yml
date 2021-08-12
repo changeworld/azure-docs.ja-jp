@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 9/01/2020
-  ms.openlocfilehash: 6cde942b55f3fecb5696b0e9f62702b89131ba31
-  ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+  ms.openlocfilehash: e0acf91225ed90f764aac2e4c17904782ec037d4
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113357985"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114447281"
 landingContent:
 - title: Face サービスについて
   linkLists:
@@ -95,11 +95,11 @@ landingContent:
     - text: .NET SDK
       url: /dotnet/api/overview/azure/cognitiveservices/face-readme
     - text: Python SDK
-      url: /python/api/azure-cognitiveservices-vision-face/
+      url: /python/api/overview/azure/cognitiveservices/face-readme
     - text: Java SDK
       url: /java/api/overview/azure/cognitiveservices/client/faceapi
     - text: Node.js SDK
-      url: /javascript/api/@azure/cognitiveservices-face
+      url: /javascript/api/overview/azure/cognitive-services/face-readme
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face
     - text: Azure PowerShell

@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:初めての Go クエリ
 description: このクイックスタートでは、手順に従って、Go 用の Resource Graph パッケージを有効にし、初めてのクエリを実行します。
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: 42e2ee9b5fc5c34fab2785d32b8b2de55dee0d71
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c6e647682ef7e76c809d93071d483d1b697efedb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751789"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459947"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>クイック スタート:Go を使用して初めての Resource Graph クエリを実行する
 
@@ -41,7 +41,7 @@ Go で Azure Resource Graph のクエリを実行できるようにするには�
 
    ```bash
    # Add the Resource Graph package for Go
-   go get -u github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
+   go get -u github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2021-03-01/resourcegraph
 
    # Add the Azure auth package for Go
    go get -u github.com/Azure/go-autorest/autorest/azure/auth
@@ -61,7 +61,7 @@ Go で Azure Resource Graph のクエリを実行できるようにするには�
       "os"
       "context"
       "strconv"
-      arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
+      arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2021-03-01/resourcegraph"
       "github.com/Azure/go-autorest/autorest/azure/auth"
    )
 
@@ -124,7 +124,7 @@ Go で Azure Resource Graph のクエリを実行できるようにするには�
    ```
 
    > [!NOTE]
-   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを生成する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
+   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
 1. `argQuery` の最初のパラメーターを変更し、まず **Name** プロパティで並べ替え (`order by`)、次に上位 5 件の結果に制限 (`limit`) するようにクエリを変更します。 `<SubID>` をサブスクリプション ID で置き換えます。
 

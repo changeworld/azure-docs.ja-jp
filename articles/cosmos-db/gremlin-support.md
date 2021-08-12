@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB での Gremlin のサポートと、TinkerPop 機能との互換性
 description: Apache TinkerPop の Gremlin 言語について説明します。 Azure Cosmos DB で使用できる機能と手順について説明します。また、TinkerPop Graph エンジンの互換性の違いについても説明します。
-author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 11/11/2020
-ms.author: sngun
-ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/06/2021
+author: manishmsfte
+ms.author: mansha
+ms.openlocfilehash: a2e868fa6054681f37d699bdc469db9ded0b8ee9
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97630753"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356367"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB での Gremlin グラフのサポートと、TinkerPop 機能との互換性
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -102,6 +102,12 @@ JSON 形式で使用される頂点のプロパティを次に説明します。
 | `_partition` | 頂点のパーティション キー。 [グラフのパーティション分割](graph-partitioning.md)に使用されます。 |
 | `outE` | このプロパティには、頂点からの外向きの辺のリストが含まれます。 頂点と共に隣接情報を格納することで、トラバーサルの高速実行が可能になります。 辺はラベルに基づいてグループ化されます。 |
 
+各プロパティでは、配列内に複数の値を格納できます。
+
+| プロパティ | 説明 |
+| --- | --- |
+| `value` | プロパティの値。 |
+
 辺には、グラフの他の部分へのナビゲーションに役立つ次の情報が含まれています。
 
 | プロパティ | 説明 |
@@ -109,13 +115,7 @@ JSON 形式で使用される頂点のプロパティを次に説明します。
 | `id` | 辺の ID。 一意である必要があります (該当する場合は、`_partition` の値との組み合わせにおいて一意である必要があります) |
 | `label` | 辺のラベル。 このプロパティは省略可能です。関係の種類を示すために使用します。 |
 | `inV` | このプロパティには、辺の頂点一覧が含まれています。 辺と共に隣接情報を格納することで、トラバーサルの高速実行が可能になります。 頂点はラベルに基づいてグループ化されます。 |
-| `properties` | 辺に関連付けられているユーザー定義プロパティのバッグ。 各プロパティには複数の値を指定できます。 |
-
-各プロパティでは、配列内に複数の値を格納できます。 
-
-| プロパティ | 説明 |
-| --- | --- |
-| `value` | プロパティの値。
+| `properties` | 辺に関連付けられているユーザー定義プロパティのバッグ。 |
 
 ## <a name="gremlin-steps"></a>Gremlin のステップ
 

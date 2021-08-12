@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: cbb84a4934eed4d258cf07772753315785f98019
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32fbdae5719e2f8e379b39076f8557b3db0d61ca
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99218164"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020027"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の .NET (C#) コード サンプル
 
@@ -46,8 +46,9 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 
 | サンプル | 記事  |
 |---------|-------------|
-| [クイックスタート](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | [クイック スタート:検索インデックスの作成](search-get-started-dotnet.md)に関する記事のソース コード。 この記事では、サンプル データを使用して検索インデックスを作成、読み込み、クエリするための基本的なワークフローについて説明します。 |
-| [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | [.NET クライアント ライブラリの使用方法](search-howto-dotnet-sdk.md)に関する記事のソース コード。 この記事では、基本的なワークフローについて手順を説明しますが、API の使用方法について特に詳しく説明します。  |
+| [クイックスタート](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | [クイック スタート:検索インデックスの作成](search-get-started-dotnet.md)に関する記事のソース コード。 サンプル データを使用して検索インデックスの作成、読み込み、クエリを行うための基本的なワークフローについて説明します。 |
+| [search-website](https://github.com/azure-samples/azure-search-dotnet-samples/tree/master/search-website) | 「[チュートリアル: Web アプリに検索を追加する](tutorial-csharp-overview.md)」のソース コード。 アプリをホストして検索要求を処理するためのリッチ クライアントとコンポーネントを含む、エンドツーエンド検索アプリを示します。|
+| [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | [.NET クライアント ライブラリの使用方法](search-howto-dotnet-sdk.md)に関する記事のソース コード。 基本的なワークフローについて手順を説明しますが、API の使用方法について特に詳しく説明します。  |
 | [DotNetHowToSynonyms](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)  | 「[例:C# での同意語の追加](search-synonyms-tutorial-sdk.md)に関する記事に含まれています。 同意語の一覧は、クエリの拡張に使用され、インデックスの外部にある同等の用語を提供します。 |
 | [DotNetToIndexers](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) | 「[チュートリアル:.NET SDK を使用して Azure SQL データにインデックスを付ける](search-indexer-tutorial.md)」のソースコード。 この記事では、スケジュール、フィールド マッピング、およびパラメーターを含む Azure SQL インデクサーを構成する方法を示します。  |
 | [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)  | [データの暗号化のためにカスタマー マネージド キーを構成する方法](search-security-manage-encryption-keys.md)に関する記事のソース コード。 |
@@ -57,7 +58,7 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [tutorial-ai-enrichment](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/tutorial-ai-enrichment)  | 「[チュートリアル:.NET SDK を使用して Azure BLOB から AI で生成する検索可能なコンテンツ](cognitive-search-tutorial-blob-dotnet.md)」のソース コード。  |
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?languages=csharp&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> GitHub で製品、サービス、言語でフィルター処理された Microsoft コード サンプルを検索するために、[サンプル ブラウザー](/samples/browse/?languages=csharp&products=azure-cognitive-search)をお試しください。
 
 ## <a name="other-samples"></a>その他のサンプル
 

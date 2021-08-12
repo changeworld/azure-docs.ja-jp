@@ -2,15 +2,15 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.author: mikben
 ms.custom: private_preview
-ms.openlocfilehash: e8cd18fe854ae1cba7d902e0e63b591e98081409
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 2b37c4a96484a7aa4c8c8a9b48dcd150b709b712
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961875"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107768"
 ---
 > [!IMPORTANT]
 > このドキュメントで説明されている機能は、現在、パブリック プレビュー段階にあります。

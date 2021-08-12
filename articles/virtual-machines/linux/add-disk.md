@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: disks
 ms.collection: linux
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 05/12/2021
 ms.author: cynthn
-ms.openlocfilehash: adf6198cf12011c77fcf3f93d4b595ea433ddefd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb207b5ece190a4398c7b9ef15472db409ac4d71
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580387"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087798"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 
@@ -71,7 +71,7 @@ sdb     1:0:1:0      14G
 sdc     3:0:0:0      50G
 ```
 
-ここでは、`sdc` は 50 G であるため、これが目的のディスクです。 サイズだけではどのディスクかわからない場合は、ポータルの [VM] ページにアクセスし、 **[ディスク]** を選択して、 **[データ ディスク]** でディスクの LUN 番号を確認します。 
+ここでは、`sdc` は 50 G であるため、これが目的のディスクです。 複数のディスクを追加する場合で、なおかつサイズだけではどのディスクかわからない場合は、ポータルの [VM] ページにアクセスし、 **[ディスク]** を選択して、 **[データ ディスク]** でディスクの LUN 番号を確認します。 ポータルから確認した LUN 番号と、出力の **HTCL** 部分にある最後の番号 (LUN) とを比較してください。
 
 
 ### <a name="format-the-disk"></a>ディスクのフォーマット
@@ -151,16 +151,18 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail  
 > fstab の変更が原因で起動エラーが発生した場合は、VM へのコンソール アクセスに Azure VM シリアル コンソールを使用できます。 詳細については、[シリアル コンソールのドキュメント](/troubleshoot/azure/virtual-machines/serial-console-linux)を参照してください。
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure における Linux の TRIM/UNMAP サポート
+
 一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。 この機能は主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。また、この機能により、サイズの大きいファイルを作成して削除する場合のコストを削減できます。
 
 Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
-* 次のように、 */etc/fstab* で `discard` マウント オプションを使用します。
+- 次のように、 */etc/fstab* で `discard` マウント オプションを使用します。
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,discard   1   2
     ```
-* 場合によっては、`discard` オプションがパフォーマンスに影響する可能性があります。 または、 `fstrim` コマンドを手動でコマンド ラインから実行するか、crontab に追加して定期的に実行することができます。
+
+- 場合によっては、`discard` オプションがパフォーマンスに影響する可能性があります。 または、 `fstrim` コマンドを手動でコマンド ラインから実行するか、crontab に追加して定期的に実行することができます。
 
     **Ubuntu**
 

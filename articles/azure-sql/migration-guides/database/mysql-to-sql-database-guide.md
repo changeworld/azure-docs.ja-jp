@@ -6,15 +6,15 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
+author: cawrites
+ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 6aa6537cefb110662f9fbc535832d8c9423a6f68
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ec117b8f341546deb48510d9b27a43b731d03742
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136591"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970704"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>移行ガイド: MySQL から Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "108136591"
 
 MySQL データベースから SQL データベースへの移行を始める前に、次のことを行います。
 
-- ソース環境がサポートされていることを確認します。 現時点では、MySQL 5.6 および 5.7 がサポートされています。 
+- ソース環境がサポートされていることを確認する。 現時点では、MySQL 5.6 および 5.7 がサポートされています。 
 - [SQL Server Migration Assistant for MySQL](https://www.microsoft.com/download/details.aspx?id=54257) をダウンロードしてインストールします。
 - ソースとターゲットの両方にアクセスするための接続と十分なアクセス許可があることを確認します。
 
@@ -119,7 +119,7 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
    ![データベースのマッピングを確認するための [Synchronize with Database]\(データベースと同期する\) ペインのスクリーンショット。](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
 
-1. データを移行します。 **[MySQL Metadata Explorer]\(MySQL メタデータ エクスプローラー\)** ペインで、移行する MySQL のスキーマを右クリックして、 **[Migrate Data]\(データの移行\)** を選択します。 あるいは、右上にある **[データの移行]** タブを選択することもできます。
+1. データを移行します。 **[MySQL Metadata Explorer]\(MySQL メタデータ エクスプローラー\)** ペインで、移行する MySQL のスキーマを右クリックして、 **[Migrate Data]\(データの移行\)** を選択します。 または、右上にある **[データの移行]** タブを選択することもできます。
 
    データベース全体のデータを移行するには、データベース名の横にあるチェック ボックスをオンにします。 個々のテーブルからデータを移行するには、データベースを展開し、 **[テーブル]** を展開して、テーブルの横にあるチェック ボックスをオンにします。 個々のテーブルのデータを除外するには、このチェック ボックスをオフにします。
 
@@ -166,6 +166,7 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 | タイトル | 説明 |
 | --- | --- |
 | [データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルを提供します。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価の促進に役立ちます。 |
+|[MySQL から SQL DB - データベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|データベース比較ユーティリティは、ソースおよびターゲット プラットフォームの両方でデータが同一であることを確認するために使用できる Windows コンソール アプリケーションです。 このツールを使用すると、すべての、または選択したテーブル、行、および列内の行または列レベルまでデータを効率的に比較できます。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 

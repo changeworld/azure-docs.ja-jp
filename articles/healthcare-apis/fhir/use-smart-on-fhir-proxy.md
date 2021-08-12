@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: zxue
 ms.date: 04/02/2019
-ms.openlocfilehash: 64b46c5becbf3dcd5870481adf07a30022144c13
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
-ms.translationtype: MT
+ms.openlocfilehash: 77f4d9fad9bca4d544277bc719f633779c920606
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112288417"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769155"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>チュートリアル:Azure Active Directory SMART on FHIR プロキシ
 
@@ -39,6 +39,23 @@ SMART on FHIR では、`Audience` の識別子 URI が FHIR サービスの URI 
 
 - rge オーディエンスが `https://MYFHIRAPI.azurehealthcareapis.com` に設定された FHIR サーバー。ここで、`MYFHIRAPI` は Azure API for FHIR インスタンスの名前です。
 - パブリック クライアント アプリケーションの登録。 このクライアント アプリケーションのアプリケーション ID を書き留めておきます。
+
+### <a name="set-admin-consent-for-your-app"></a>アプリの管理者の同意を設定する
+
+SMART on FHIR を使用するには、まずアプリの認証と承認を行う必要があります。 SMART on FHIR を初めて使用する場合は、アプリが FHIR リソースにアクセスできる管理者の同意も得る必要があります。
+
+アプリで所有権ロールを持ってない場合は、アプリの所有者に連絡し、アプリで管理者の同意を与える必要があります。 
+
+管理者特権を持っている場合は、次の手順を実行して、管理者の同意を自分に直接付与します。 (後でアプリでプロンプトが表示されたら、管理者の同意を自分自身に付与することもできます)。同じ手順を実行して、他のユーザーを所有者として追加して、このアプリの登録を表示および編集できます。
+
+自分または別のユーザーをアプリの所有者として追加するには:
+
+1. Azure portal で、[Azure Active Directory] に移動します。
+1. 左側のメニューで、[アプリの登録] **を選択します**。
+1. 作成したアプリの登録を検索し、それを選択します。
+1. 左側のメニューの [管理] で **、[所有者**] を **選択します**。
+1. [ **所有者の追加]** を選択し、自分または管理者の同意を得るユーザーを追加します。
+1. **[保存]** を選択します。
 
 ## <a name="enable-the-smart-on-fhir-proxy"></a>SMART on FHIR プロキシを有効にする
 

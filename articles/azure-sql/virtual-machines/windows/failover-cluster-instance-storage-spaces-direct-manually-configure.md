@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: hadr
-ms.custom: na
+ms.custom: na, devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 9a6b2673694d7290d964302de2a91795c3d9bd3c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4ca8e2285cafee5cabfe884f5214ffacaec95721
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769599"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569167"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>記憶域スペース ダイレクトで FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,37 +87,6 @@ ms.locfileid: "108769599"
 
 次の手順の詳細については、「手順 3: 記憶域スペース ダイレクトを構成する」セクション ([Windows Server 2016 で記憶域スペース ダイレクトを使用するハイパーコンバージド ソリューション](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct)に関する記事) の手順を参照してください。
 
-
-## <a name="validate-the-cluster"></a>クラスターを検証する
-
-UI または PowerShell を使用して、クラスターを検証します。
-
-UI を使用してクラスターを検証するには、いずれかの仮想マシンで次の手順を実行します。
-
-1. **[サーバー マネージャー]** で、 **[ツール]** を選択し、 **[フェールオーバー クラスター マネージャー]** を選択します。
-1. **[フェールオーバー クラスター マネージャー]** で、 **[操作]** を選択し、 **[構成の検証]** を選択します。
-1. **[次へ]** を選択します。
-1. **[サーバーまたはクラスターの選択]** で、両方の仮想マシンの名前を入力します。
-1. **[テスト オプション]** で、 **[選択するテストのみを実行する]** を選択します。 
-1. **[次へ]** を選択します。
-1. 次に示すように、 **[テストの選択]** で、 **[ストレージ]** を除くすべてのテストを選択します。
-
-   ![クラスター検証テストを選択する](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
-
-1. **[次へ]** を選択します。
-1. **[確認]** で、 **[次へ]** を選択します。
-
-    **構成の検証** ウィザードにより、検証テストが実行されます。
-
-PowerShell を使用してクラスターを検証するには、いずれかの仮想マシンの管理者 PowerShell セッションから次のスクリプトを実行します。
-
-   ```powershell
-   Test-Cluster –Node ("<node1>&quot;,&quot;<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
-   ```
-
-クラスターの検証後、フェールオーバー クラスターを作成します。
-
-
 ## <a name="create-failover-cluster"></a>フェールオーバー クラスターを作成する
 
 フェールオーバー クラスターを作成するには、以下が必要です。
@@ -150,7 +119,37 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="configure-quorum"></a>クォーラムを構成する
 
-ビジネス ニーズに最も適したクォーラム ソリューションを構成します。 [ディスク監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)、[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)、または[ファイル共有監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)を構成できます。 詳細については、[SQL Server VM でのクォーラム](hadr-cluster-best-practices.md#quorum)に関する記事をご覧ください。 
+ディスク監視は最も回復力のあるクォーラム オプションですが、記憶域スペース ダイレクトで構成されたフェールオーバー クラスター インスタンスではサポートされていません。 そのため、クラウド監視は、Azure VM 上の SQL Server 向けのこの種類のクラスター構成に推奨されるクォーラム ソリューションです。 そうでない場合、ファイル共有監視を構成します。 
+
+クラスターに多数の投票がある場合は、ビジネス ニーズに最適な[クォーラム ソリューション](hadr-cluster-quorum-configure-how-to.md)を構成します。 詳細については、[SQL Server VM でのクォーラム](hadr-windows-server-failover-cluster-overview.md#quorum)に関する記事をご覧ください。 
+
+## <a name="validate-the-cluster"></a>クラスターを検証する
+
+UI または PowerShell を使用して、クラスターを検証します。
+
+UI を使用してクラスターを検証するには、いずれかの仮想マシンで次の手順を実行します。
+
+1. **[サーバー マネージャー]** で、 **[ツール]** を選択し、 **[フェールオーバー クラスター マネージャー]** を選択します。
+1. **[フェールオーバー クラスター マネージャー]** で、 **[操作]** を選択し、 **[構成の検証]** を選択します。
+1. **[次へ]** を選択します。
+1. **[サーバーまたはクラスターの選択]** で、両方の仮想マシンの名前を入力します。
+1. **[テスト オプション]** で、 **[選択するテストのみを実行する]** を選択します。 
+1. **[次へ]** を選択します。
+1. 次に示すように、 **[テストの選択]** で、 **[ストレージ]** を除くすべてのテストを選択します。
+
+   ![クラスター検証テストを選択する](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
+
+1. **[次へ]** を選択します。
+1. **[確認]** で、 **[次へ]** を選択します。
+
+    **構成の検証** ウィザードにより、検証テストが実行されます。
+
+PowerShell を使用してクラスターを検証するには、いずれかの仮想マシンの管理者 PowerShell セッションから次のスクリプトを実行します。
+
+   ```powershell
+   Test-Cluster –Node ("<node1>&quot;,&quot;<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+   ```
+
 
 ## <a name="add-storage"></a>ストレージを追加する
 
@@ -237,15 +236,14 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>接続の構成 
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を作成できます。あるいは、SQL Server 2019 CU2 (以降) と Windows Server 2016 (以降) を使用している場合、代わりに[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)機能を使用できます。 
-
-クラスター接続オプションの詳細については、[HADR 接続を Azure VM 上の SQL Server にルーティングする方法](hadr-cluster-best-practices.md#connectivity)に関する記事をご覧ください。 
+フェールオーバー クラスター インスタンスに対して、仮想ネットワーク名または分散ネットワーク名を構成できます。 [この 2 つの違いを確認](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)してから、フェールオーバー クラスター インスタンスに対して[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)または[仮想ネットワーク名](failover-cluster-instance-vnn-azure-load-balancer-configure.md)をデプロイします。  
 
 ## <a name="limitations"></a>制限事項
 
 - Azure Virtual Machines では、CSV および [Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上のストレージを備えた Windows Server 2019 で、 Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされています。
 - NTFS でフォーマットされたディスクとして接続されているディスクは、ストレージがクラスターに追加されるときに、ディスク適格性オプションがオフにされている場合にのみ、記憶域スペース ダイレクトで使用できます。 
 - [軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)での SQL IaaS Agent 拡張機能への登録のみがサポートされています。
+- 共有ストレージとして 記憶域スペース ダイレクトを使用するフェールオーバー クラスター インスタンスでは、クラスターのクォーラムに対するディスク監視の使用はサポートされていません。 代わりにクラウド監視を使用してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -253,8 +251,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 記憶域スペース ダイレクトがお客様に適した FCI ストレージ ソリューションでない場合は、代わりに [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)または [Premium ファイル共有](failover-cluster-instance-premium-file-share-manually-configure.md)を使用して FCI を作成することを検討してください。 
 
-詳細については、[Azure VM 上の SQL Server を使用した FCI](failover-cluster-instance-overview.md) および[クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)の概要に関する記事をご覧ください。 
+詳細については、以下をご覧ください。
 
-詳細については、次を参照してください。 
-- [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
+- [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)

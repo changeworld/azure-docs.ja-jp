@@ -179,8 +179,6 @@
               href: storage-files-migration-nas-cloud-databox.md
         - name: ハイブリッド デプロイをターゲットにする
           items:
-            - name: Azure Data Box を使用して Azure File Sync に大量のデータを移行する
-              href: ../file-sync/file-sync-offline-data-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: Azure File Sync を使用して Linux からハイブリッド ファイル サーバーに移行する
               href: storage-files-migration-linux-hybrid.md
             - name: Azure File Sync を使用してオンプレミスの NAS からハイブリッド ファイル サーバーに移行する

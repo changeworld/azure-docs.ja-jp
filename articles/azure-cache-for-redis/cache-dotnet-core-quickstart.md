@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 198580ad41b62cf044ade7b525728c38aabd0f9e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8b2909d608578cf2ceff926bba5f3aa1b569b025
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720981"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136627"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>クイックスタート: .NET Core で Azure Cache for Redis を使用する
 
@@ -360,7 +360,7 @@ static void Main(string[] args)
 
 *Program.cs* を保存します。
 
-Azure Cache for Redis には、Azure Cache for Redis 内のデータを論理的に分離する目的に使用できるデータベースがあります (既定ではデータベースの数が 16 個ですが、設定により変更できます)。 コードは、既定のデータベース DB 0 に接続されます。 詳細については、「[What are Redis databases? (Redis データベースとは)](cache-development-faq.md#what-are-redis-databases)」と「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。
+Azure Cache for Redis には、Azure Cache for Redis 内のデータを論理的に分離する目的に使用できるデータベースがあります (既定ではデータベースの数が 16 個ですが、設定により変更できます)。 コードは、既定のデータベース DB 0 に接続されます。 詳細については、「[What are Redis databases? (Redis データベースとは)](cache-development-faq.yml#what-are-redis-databases-)」と「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。
 
 キャッシュ項目の格納と取得には、`StringSet` および `StringGet`メソッドを使用します。
 
@@ -457,16 +457,16 @@ dotnet run
 クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。 
 
 > [!IMPORTANT]
-> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
+> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホストするためのリソースを、保持するリソースが含まれる既存のリソース グループ内に作成した場合、リソース グループを削除する代わりに、左側で各リソースを個別に削除できます。
 >
 
-[Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+[Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
 ![削除](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** をクリックします。
+リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** を選択します。
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 

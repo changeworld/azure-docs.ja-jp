@@ -6,16 +6,16 @@ author: jbeauregardb
 manager: vravikumar
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 06/01/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: jbeauregardb
-ms.openlocfilehash: b00fc19d811295f9ae29d69c73117d81acff57c9
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 8de03cce67b5eba27d771fbc95d538366724481b
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593148"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292432"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "111593148"
 - [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-install) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - アクティブな Communication Services リソースと接続文字列。 [Communication Services リソースを作成します](../create-communication-resource.md)。
-- Azure portal で、[Application Insights リソース](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)を作成します。
+- Azure portal で、[Application Insights リソース](../../../azure-monitor/app/create-new-resource.md)を作成します。
 
 ## <a name="setting-up"></a>設定
 

@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: c1de8ebbd9ad381628cfeb19413baa295b42b3db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4b2bf97b684ff83b2a4071ca676d30ffb28b87e
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91739835"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721764"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>プライベート エンドポイントおよび VNet 統合と安全に接続された 2 つの Web アプリを作成する
 
@@ -38,8 +38,15 @@ Azure で Terraform を使用する方法については、[Azure のドキュ�
 このファイルを使用するには、frontwebapp および backwebapp リソースの name プロパティを変更する必要があります (Web アプリの名前は、世界全域で一意の DNS 名である必要があります)。 
 
 ```hcl
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "~>2.0"
+    }
+  }
+}
 provider "azurerm" {
-  version = "~>2.0"
   features {}
 }
 

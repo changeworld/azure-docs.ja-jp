@@ -5,15 +5,15 @@ author: alexandra142
 manager: soricos
 services: azure-communication-services
 ms.author: apistrak
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 34c7df2b0e61536c0b5f0bc1e4a97d58d0d9c6a4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 19a031c58219f7369a2969599b13337de238e4c6
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490512"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107423"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,14 +28,14 @@ ms.locfileid: "103490512"
 アクセス キー認証では、共有秘密鍵を使用して、HTTP 要求ごとに HMAC 署名が生成されます。 この署名は SHA256 アルゴリズムを使用して生成され、`HMAC-SHA256` スキームを使用して `Authorization` ヘッダーで送信されます。 次に例を示します。
 
 ```
-Authorization: "HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature=<hmac-sha256-signature>"
+Authorization: "HMAC-SHA256 SignedHeaders=x-ms-date;host;x-ms-content-sha256&Signature=<hmac-sha256-signature>"
 ```
 
 `hmac-sha256-signature` は次の要素で構成されます。
 
 - HTTP 動詞 (たとえば、`GET` または `PUT`)
 - HTTP 要求パス
-- Date
+- x-ms-date
 - Host
 - x-ms-content-sha256
 
@@ -167,7 +167,7 @@ var stringToSign = $"POST\n{requestUri.PathAndQuery}\n{date};{requestUri.Authori
 //Compute the signature.
 var signature = ComputeSignature(stringToSign);
 //Concatenate the string, which will be used in the authorization header.
-var authorizationHeader = $"HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha256&Signature={signature}";
+var authorizationHeader = $"HMAC-SHA256 SignedHeaders=x-ms-date;host;x-ms-content-sha256&Signature={signature}";
 ```
 
 ## <a name="add-headers-to-requestmessage"></a>requestMessage にヘッダーを追加する
@@ -178,7 +178,7 @@ var authorizationHeader = $"HMAC-SHA256 SignedHeaders=date;host;x-ms-content-sha
 //Add a content hash header.
 requestMessage.Headers.Add("x-ms-content-sha256", contentHash);
 //Add a date header.
-requestMessage.Headers.Add("Date", date);
+requestMessage.Headers.Add("x-ms-date", date);
 //Add an authorization header.
 requestMessage.Headers.Add("Authorization", authorizationHeader);
 ```

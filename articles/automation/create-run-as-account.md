@@ -3,14 +3,14 @@ title: Azure Automation の実行アカウントを作成する
 description: この記事では、PowerShell で、または Azure portal から、Azure Automation 実行アカウントを作成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 368bbfd0bc4dd0a3c8c2792487db52e8585c2ea1
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 7ed16e9bbd1071e4831e814e617d69dc4a638510
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277626"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078259"
 ---
 # <a name="how-to-create-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを作成する方法
 
@@ -46,6 +46,13 @@ Azure portal で実行アカウントまたはクラシック実行アカウン�
 * Azure PowerShell 6.2.4 以降。 詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-az-ps)に関するページを参照してください。
 * Automation アカウント。`AutomationAccountName` および `ApplicationDisplayName` パラメーターの値として参照されます。
 * [実行アカウントを構成するために必要なアクセス許可](automation-security-overview.md#permissions)に関する記述で一覧表示されているものに相当するアクセス許可。
+
+エンタープライズまたはサードパーティの証明機関 (CA) の証明書を使用する予定の場合、Automation では証明書に次の構成が必要です。
+
+   * **Microsoft Enhanced RSA and AES Cryptographic Provider** プロバイダーを指定する
+   * エクスポート可能としてマークされている
+   * SHA256 アルゴリズムを使用するように構成されている
+   * `*.pfx` または `*.cer` 形式で保存されている
 
 PowerShell スクリプトの必須パラメーターである `AutomationAccountName`、`SubscriptionId` および `ResourceGroupName`を取得するには、次の手順を行います。
 

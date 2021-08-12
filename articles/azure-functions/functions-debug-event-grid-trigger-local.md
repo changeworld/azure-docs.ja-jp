@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 7483a097b188b9f96221a13964992c7b02332258
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 240b721d71ef53ad6f43f076f1d5db0e29b556a4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107892033"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970911"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions の Event Grid トリガーのローカル デバッグ
 
@@ -19,7 +19,7 @@ ms.locfileid: "107892033"
 ## <a name="prerequisites"></a>前提条件
 
 - 既存の関数アプリを作成または使用する
-- 既存のストレージ アカウントを作成または使用する
+- 既存のストレージ アカウントを作成または使用します。 Event Grid 通知サブスクリプションは、`BlobStorage`、`StorageV2`、または [Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) に対して Azure Storage アカウントで設定できます。
 - [ngrok](https://ngrok.com/) をダウンロードして、Azure でローカル関数を呼び出せるようにする
 
 ## <a name="create-a-new-function"></a>新しい関数を作成する

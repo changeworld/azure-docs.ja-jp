@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: e109c09a70b96e81daad8929fc82b6059b3619b6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ad5475078c515d36a57b7608ab9d363c6f678aa
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060546"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983954"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Azure Stack Edge と Azure Data Box Gateway のサポート チケットを開く
 
-[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-databox-gateway-sku.md)]
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-fpga-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-databox-gateway-sku.md)]
 
 この記事は、どちらも Azure Stack Edge または Azure Data Box Gateway サービスによって管理されている Azure Stack Edge と Azure Data Box Gateway に適用されます。 お使いのサービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
@@ -100,5 +100,6 @@ ms.locfileid: "110060546"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge に関連する問題のトラブルシューティング](azure-stack-edge-troubleshoot.md)方法について説明します。
-[Data Box Gateway に関する問題のトラブルシューティング](../databox-gateway/data-box-gateway-troubleshoot.md)方法を確認します。
+- [Azure Stack Edge FPGA に関連する問題のトラブルシューティング](azure-stack-edge-troubleshoot.md)。
+- [Azure Stack Edge Pro GPU のデバイスに関するの問題のトラブルシューティング](azure-stack-edge-gpu-troubleshoot.md)。
+- [Data Box Gateway に関連する問題のトラブルシューティング](../databox-gateway/data-box-gateway-troubleshoot.md)。

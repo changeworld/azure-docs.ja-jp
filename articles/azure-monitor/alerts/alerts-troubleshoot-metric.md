@@ -4,13 +4,13 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 04/12/2021
-ms.openlocfilehash: fc9af94b07add5728201baaa8fa6992728a60a8c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/03/2021
+ms.openlocfilehash: cbbecb49acf556dc7a8ce6285d4b1b3581c39b3d
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786011"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412902"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -62,7 +62,10 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
     - メトリック グラフで選択されている **集計** が、警告ルールの **[集計の種類]** と同じであること
     - 選択されている **時間粒度** が、警告ルールの **[集約粒度 (期間)]** と同であること (および、"自動" に設定されていないこと)
 
-5. 同じ条件を監視する (まだ解決されていない) 警告がまだ生成されている間に、警告が生成される場合は、警告ルールの構成で *autoMitigate* プロパティが **false** に設定されているかどうかを確認します (このプロパティは、REST、PowerShell、CLI でのみ構成できるので、その警告ルールのデプロイに使用したスクリプトを確認します)。 そうである場合は、生成された警告は警告ルールによって自動的に解決されず、再度生成される前に、生成されている警告が解決される必要はありません。
+5. 同じ条件を監視する (まだ解決されていない) 警告が既にあるのに、警告が生成される場合は、自動的には警告を解決しないように警告ルールが構成されているかどうかを確認します。 このような構成では、警告ルールがステートレスになります。つまり、発生したアラートが警告ルールによって自動解決されず、同じ時系列で警告を再度生成する前に、発生した警告が解決されていることが要求されません。
+    次のいずれかの方法で、警告ルールが自動解決を行わないように構成されているかどうかを確認できます。
+    - Azure portal で警告ルールを編集し、[Automatically resolve alerts]\(警告を自動的に解決する\) チェック ボックス ([アラート ルールの詳細] セクションにあります) がオフになっているかどうかを確認します。
+    - 警告ルールのデプロイに使用されるスクリプトを確認するか、警告ルール定義を取得して、*autoMitigate* プロパティが **false** に設定されているかどうかを確認します。
 
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>警告対象のメトリックが見つからない - 仮想マシンのゲスト メトリック
@@ -107,7 +110,9 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>条件が満たされるたびにメトリック警告が発生するようにする
 
-メトリック警告は既定ではステートフルです。そのため、特定の時系列に対して既に警告が発生している場合、追加の警告は発生しません。 特定のメトリック警告ルールをステートレスにして、警告の条件が満たされるすべての評価で警告を受け取る場合は、プログラムで ([Resource Manager](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert) を使用するなどして) 警告ルールを作成し、*autoMitigate* プロパティを "False" に設定すします。
+メトリック警告は既定ではステートフルです。そのため、特定の時系列に対して既に警告が発生している場合、追加の警告は発生しません。 特定のメトリック警告ルールをステートレスにして、警告の条件が満たされているすべての評価について警告を受け取る場合は、これらのいずれかのオプションに従います。
+- プログラムによって (たとえば、[Resource Manager](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert) を通じて) 警告ルールを作成している場合は、*autoMitigate* プロパティを "False" に設定します。
+- Azure portal を使用して警告ルールを作成している場合は、[Automatically resolve alerts]\(警告を自動的に解決する\) オプション ([アラート ルールの詳細] セクションにあります) をオフにします。
 
 > [!NOTE] 
 > メトリック警告ルールをステートレスにすると、発生した警告は解決されません。そのため、条件が満たされなくなっても、発生した警告は 30 日の保有期間まで発生状態のままになります。
@@ -239,6 +244,7 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 - メトリック警告ルール名はリソース グループ内で一意である必要があります
 - メトリック警告ルール名に次の文字を含めることはできません: * # & +: < >? @ % { } \ / 
 - メトリック警告ルール名の末尾の文字をスペースやピリオドにすることはできません
+- 結合されたリソース グループ名と警告ルール名は、252 文字を超えることはできません
 
 > [!NOTE] 
 > 警告ルール名にアルファベットまたは数字以外の文字 (スペース、句読点、記号など) が含まれている場合、これらの文字は、特定のクライアントによって取得されるときに URL エンコードされることがあります。

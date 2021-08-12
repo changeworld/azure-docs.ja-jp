@@ -6,12 +6,12 @@ ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 2e8a503731cc8e3774b898241140ef1bfaa72619
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: cdf20d65347792af4136ea407dd58e563354301d
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591207"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729226"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT device SDK の概要
 
@@ -125,7 +125,7 @@ Azure IoT にはサービス SDK も用意されており、デバイスの管�
 
 IoT Hub サービス SDK を使用すれば、IoT ハブと容易にやり取りしてデバイスやセキュリティを管理するアプリケーションを構築できます。 これらの SDK を使用して、たとえば cloud-to-device メッセージを送信したり、デバイス上でダイレクト メソッドを呼び出したり、デバイスのプロパティを更新したりすることができます。
 
-[**IoT Hub の詳細情報**](https://azure.microsoft.com/services/iot-hub/) | [**デバイスの制御を試す**](../iot-hub/quickstart-control-device-python.md)
+[**IoT Hub の詳細情報**](https://azure.microsoft.com/services/iot-hub/) | [**デバイスの制御を試す**](../iot-hub/quickstart-control-device.md)
 
 **C# IoT Hub サービス SDK**: [GitHub リポジトリ](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) | [パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Devices/) | [サンプル](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service/samples) | [リファレンス ドキュメント](/dotnet/api/microsoft.azure.devices)
 

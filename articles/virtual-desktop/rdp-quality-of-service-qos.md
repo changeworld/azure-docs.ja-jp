@@ -1,27 +1,27 @@
 ---
-title: Windows Virtual Desktop のサービス品質 (QoS) を実装する (プレビュー)
+title: Azure Virtual Desktop のサービス品質 (QoS) を実装する (プレビュー)
 titleSuffix: Azure
-description: Windows Virtual Desktop の QoS (プレビュー) を設定する方法について説明します。
+description: Azure Virtual Desktop の QoS (プレビュー) を設定する方法について説明します。
 author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: b61faf74d96e2571e91f7bf9d10eac88cdbf8345
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c90811009a38db0874589dc828059277b9ae285c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94639127"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753038"
 ---
-# <a name="implement-quality-of-service-qos-for-windows-virtual-desktop-preview"></a>Windows Virtual Desktop のサービス品質 (QoS) を実装する (プレビュー)
+# <a name="implement-quality-of-service-qos-for-azure-virtual-desktop-preview"></a>Azure Virtual Desktop のサービス品質 (QoS) を実装する (プレビュー)
 
 > [!IMPORTANT]
-> Windows Virtual Desktop のサービス品質 (QoS) ポリシーのサポートは、現在パブリック プレビューの段階にあります。
+> Azure Virtual Desktop のサービス品質 (QoS) ポリシーのサポートは、現在パブリック プレビューの段階にあります。
 > このプレビューはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 [RDP Shortpath](./shortpath.md) は、リモート デスクトップ クライアントとセッション ホスト間の直接 UDP ベースのトランスポートを提供します。 RDP Shortpath を使用すると、RDP データ用のサービス品質 (QoS) ポリシーを構成できます。
-Windows Virtual Desktop の QoS を使用すると、ネットワークの遅延に影響を受けるリアルタイム RDP トラフィックが、トラフィックの前に重要度の低いトラフィックの前に "横入り" することができます。 このような機密性の低いトラフィックの例としては、新しいアプリをダウンロードすることが挙げられます。この場合、ダウンロード時間が少し増えることが大きな問題になることはあまりありません。 QoS は Windows グループ ポリシー オブジェクトを使用してすべてのパケットをリアルタイム ストリームで識別してマークし、ネットワークが帯域幅の専用の部分を RDP トラフィックに提供できるようにします。
+Azure Virtual Desktop の QoS を使用すると、ネットワークの遅延に影響を受けるリアルタイム RDP トラフィックが、トラフィックの前に重要度の低いトラフィックの前に "横入り" することができます。 このような機密性の低いトラフィックの例としては、新しいアプリをダウンロードすることが挙げられます。この場合、ダウンロード時間が少し増えることが大きな問題になることはあまりありません。 QoS は Windows グループ ポリシー オブジェクトを使用してすべてのパケットをリアルタイム ストリームで識別してマークし、ネットワークが帯域幅の専用の部分を RDP トラフィックに提供できるようにします。
 
 大規模なユーザー グループをサポートしており、この記事で説明されている問題のいずれかが発生している場合は、QoS を実装する必要がある可能性があります。 ユーザー数が少ない小規模企業では、QoS を必要としない場合がありますが、その場合でも利便性はあります。
 
@@ -62,7 +62,7 @@ QoS を実装する準備として、次のガイドラインに留意してく�
 
 QoS の実装を検討している場合は、帯域幅の要件と、その他の[ネットワーク要件](/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context)を確認しておく必要があります。
   
-ネットワーク上のトラフィックの輻輳は、メディアの品質に大きく影響します。 帯域幅が不足していると、パフォーマンスが低下し、ユーザー エクスペリエンスが低下します。 Windows Virtual Desktop の導入と使用量が増えるにつれて、[ログ分析](./diagnostics-log-analytics.md)を使用して問題を特定し、QoS と選択的帯域幅の追加機能を使用して調整を行います。
+ネットワーク上のトラフィックの輻輳は、メディアの品質に大きく影響します。 帯域幅が不足していると、パフォーマンスが低下し、ユーザー エクスペリエンスが低下します。 Azure Virtual Desktop の導入と使用量が増えるにつれて、[ログ分析](./diagnostics-log-analytics.md)を使用して問題を特定し、QoS と選択的帯域幅の追加機能を使用して調整を行います。
 
 ### <a name="vpn-considerations"></a>VPN に関する考慮事項
 
@@ -131,5 +131,5 @@ New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" 
 
 ## <a name="next-steps"></a>次のステップ
 
-* Windows Virtual Desktop の帯域幅の要件の詳細については、[Windows Virtual Desktop のリモート デスクトップ プロトコル (RDP) 帯域幅の要件の概要](rdp-bandwidth.md)に関するトピックを参照してください。
-* Windows Virtual Desktop のネットワーク接続の詳細については、「[Windows Virtual Desktop のネットワーク接続について](network-connectivity.md)」を参照してください。
+* Azure Virtual Desktop の帯域幅の要件の詳細については、[Azure Virtual Desktop のリモート デスクトップ プロトコル (RDP) 帯域幅の要件の概要](rdp-bandwidth.md)に関するトピックを参照してください。
+* Azure Virtual Desktop のネットワーク接続の詳細については、「[Azure Virtual Desktop のネットワーク接続について](network-connectivity.md)」を参照してください。
