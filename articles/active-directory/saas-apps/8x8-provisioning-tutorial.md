@@ -2,21 +2,21 @@
 title: チュートリアル:8x8 を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から 8x8 に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
-ms.author: Zhchia
-ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c055b8a0bd11d6f1e1a28e053d64aaf574ca2880
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96558863"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765168"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>チュートリアル:8x8 を構成し、自動ユーザー プロビジョニングに対応させる
 

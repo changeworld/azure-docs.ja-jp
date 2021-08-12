@@ -17,12 +17,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8778e50dcb881647696c6e901bf1058b9d6ac43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 736b43fc860cfe4405b8def97b511d18bb77c599
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720340"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853390"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync サービス アカウントのパスワードの変更
 ADSync サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、ADSync サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
@@ -109,11 +109,14 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 #### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>ADSync サービス アカウントのパスワードを再初期化する
 同期サービスに Azure AD サービス アカウントのパスワードを直接指定することはできません。 代わりに、**Add-ADSyncAADServiceAccount** コマンドレットを使用して、Azure AD サービス アカウントを再初期化する必要があります。 このコマンドレットによりアカウントのパスワードがリセットされ、同期サービスで利用できるようになります。
 
-1. Azure AD Connect サーバーで新しい PowerShell セッションを開始します。
-2. `Add-ADSyncAADServiceAccount` コマンドレットを実行します。
-3. ポップアップ ダイアログで、Azure AD テナントの Azure AD グローバル管理者の資格情報を入力します。
-![Azure AD Connect 同期の暗号化キー破棄ユーティリティ](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
-4. 成功した場合は、PowerShell コマンド プロンプトが表示されます。
+1. Azure AD Connect 同期サーバーにサインインし、PowerShell を開きます。
+2. Azure AD グローバル管理者の資格情報を指定するには、`$credential = Get-Credential` を実行します。
+3. コマンドレット `Add-ADSyncAADServiceAccount -AADCredential $credential` を実行します。
+ 
+   コマンドレットが成功すると、PowerShell コマンド プロンプトが表示されます。 
+   
+このコマンドレットは、Azure AD と同期エンジンの両方で、サービス アカウントのパスワードをリセットして更新します。
+
 
 #### <a name="start-the-synchronization-service"></a>同期サービスを開始する
 これで、同期サービスで必要な暗号化キーとすべてのパスワードにアクセスできるようになったので、Windows サービス コントロール マネージャーでサービスを再起動します。

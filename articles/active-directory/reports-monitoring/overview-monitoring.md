@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763e628183e5f6ad7b7bdbb8ee7ce6db572f44ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e9787b18932b83526dd410aec8024066d312978
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577779"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729509"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Azure Active Directory 監視とは
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 監視を使用すると、Azure AD のアク�
 
 Azure AD サインイン ログにアクセスするには、Azure AD プレミアム ライセンスが必要になります。
 
-機能とライセンスの詳細については、[Azure Active Directory 料金ガイド](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+機能とライセンスの詳細については、[Azure Active Directory 料金ガイド](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
 
 Azure AD の監視とレポートをデプロイするには、Azure AD テナントのグローバル管理者またはセキュリティ管理者であるユーザーが必要になります。
 

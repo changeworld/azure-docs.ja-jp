@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f3cf8303a0667d3479500d6c3956be3b21959c0
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571617"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592252"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob Storage 監視データのリファレンス
 

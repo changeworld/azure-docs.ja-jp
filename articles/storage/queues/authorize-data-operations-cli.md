@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1570906ae036b31dc2e97f35c827385933093f73
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 480798177797ad83ec01f33297d5fc559c7c3e3d
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162205"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900469"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Azure CLI でキュー データへのアクセスの承認方法を選択する
 
@@ -46,7 +46,7 @@ Azure Storage には、キューのデータに対する操作を承認する方
 
 Azure AD 資格情報で Azure CLI にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが Azure CLI によって自動的に使用され、Queue Storage に対するその後のデータ操作が認可されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
-キュー データへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[Azure RBAC を使用した Azure Storage データへのアクセス権の管理](../common/storage-auth-aad-rbac-portal.md)に関する記事を参照してください。
+キュー データへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[Azure RBAC を使用した Azure Storage データへのアクセス権の管理](assign-azure-role-data-access.md)に関する記事を参照してください。
 
 ### <a name="permissions-for-calling-data-operations"></a>データ操作呼び出しのアクセス許可
 
@@ -58,7 +58,7 @@ Azure Storage 拡張機能は、キュー データの操作でサポートさ�
 
 次の例では、Azure AD の資格情報を使用して Azure CLI からキューを作成する方法を示しています。 キューを作成するには、Azure CLI にログインする必要があります。また、リソース グループとストレージ アカウントが必要になります。
 
-1. キューを作成する前に、[ストレージ キュー データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-portal.md)」を参照してください。
+1. キューを作成する前に、[ストレージ キュー データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[キュー データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)」を参照してください。
 
     > [!IMPORTANT]
     > Azure ロールの割り当ての反映には数分かかることがあります。
@@ -111,5 +111,5 @@ az storage queue create \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure CLI を使用して、BLOB およびキュー データにアクセスするための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-cli.md)
+- [キュー データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)
 - [Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する](../common/storage-auth-aad-msi.md)

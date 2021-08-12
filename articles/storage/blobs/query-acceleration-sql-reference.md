@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: ca4fe1410c18357a1fab10cc9c971cf3a81542fd
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: f696a6b071d353c98e87387d5640e35ff579460e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963259"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477812"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>クエリ アクセラレーション SQL 言語リファレンス
 
@@ -38,6 +38,11 @@ JSON 形式のデータの場合、*table* は "テーブル記述子" です。
 ```sql
 SELECT expression [, expression …] FROM table [WHERE expression] [LIMIT limit]
 ```
+
+SELECT 式の一部として、1 つまたは複数の特定の列を指定することができます (例: `SELECT Title, Author, ISBN`)。 
+
+> [!NOTE]
+> SELECT 式で使用できる特定の列の最大数は 49 です。 SELECT 式で 49 を超える列を返す必要がある場合は、SELECT 式にワイルドカード文字 (`*`) を使用します (例: `SELECT *`)。 
 
 次の例では、*expression* によって true が返される行それぞれでの集計計算 (例: 特定の列の平均値) が返されます。 
 
@@ -235,12 +240,12 @@ SELECT ステートメントには、1 つ以上のプロジェクション式�
 
 |式|説明|
 |--|--|
-|[COUNT(\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |述語式と一致したレコードの数を返します。|
-|[COUNT(expression)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |式が null 以外のレコードの数を返します。|
-|[AVERAGE(expression)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql)    |式の null 以外の値の平均を返します。|
-|[MIN(expression)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql)    |式の null 以外の最小値を返します。|
-|[MAX(expression)](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql)    |式の null 以外の最大値を返します。|
-|[SUM(expression)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql)    |式の null 以外のすべての値の合計を返します。|
+|[COUNT(\*)](/sql/t-sql/functions/count-transact-sql)    |述語式と一致したレコードの数を返します。|
+|[COUNT(expression)](/sql/t-sql/functions/count-transact-sql)    |式が null 以外のレコードの数を返します。|
+|[AVERAGE(expression)](/sql/t-sql/functions/avg-transact-sql)    |式の null 以外の値の平均を返します。|
+|[MIN(expression)](/sql/t-sql/functions/min-transact-sql)    |式の null 以外の最小値を返します。|
+|[MAX(expression)](/sql/t-sql/functions/max-transact-sql)    |式の null 以外の最大値を返します。|
+|[SUM(expression)](/sql/t-sql/functions/sum-transact-sql)    |式の null 以外のすべての値の合計を返します。|
 
 ### <a name="missing"></a>MISSING
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: e9e29a091608be54c806a98323b9e485bc7a49a8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/08/2021
+ms.openlocfilehash: 7de89605f86e47b3062ec07160288ab14584f42e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388199"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747421"
 ---
 # <a name="create-parameters-for-values-that-change-in-workflows-across-environments-for-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps で、環境間でワークフローが変わる値のパラメーターを作成する
 
@@ -90,6 +90,16 @@ Azure CLI を使用してパラメーター ファイルを動的に置き換え
 
 ```azurecli
 az functionapp deploy --resource-group MyResourceGroup --name MyLogicApp --src-path C:\parameters.json --type static --target-path parameters.json
+```
+
+NuGet ベースのロジック アプリ プロジェクトがある場合は、プロジェクト ファイル ( **&lt;ロジックアプリ名&gt;.csproj**) を更新し、次のようにビルド出力にパラメーター ファイルを含める作業が必要です。
+  
+```csproj
+<ItemGroup>
+  <None Update="parameters.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
 ```
 
 > [!NOTE]

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 29830357f7899d821d627595a3e533788e788205
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 21d9c4cebfdb22fb694cef8064991572159dcf48
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769851"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569838"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>チュートリアル:Azure Virtual Machines 上の SQL Server に可用性グループを作成するための前提条件
 
@@ -351,7 +351,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 * **ストレージ: Azure Managed Disks**
 
-   仮想マシンのストレージには、Azure Managed Disks を使用します。 SQL Server 仮想マシンには、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、「[Azure Managed Disks の概要](../../../virtual-machines/managed-disks-overview.md)」を参照してください。 可用性セットのマネージド ディスクの詳細は、「[可用性セット内の VM に管理ディスクを使用する](../../../virtual-machines/availability.md)」を参照してください。
+   仮想マシンのストレージには、Azure Managed Disks を使用します。 SQL Server 仮想マシンには、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、[Azure Managed Disks の概要](../../../virtual-machines/managed-disks-overview.md)に関する記事をご覧ください。 可用性セットのマネージド ディスクの詳細は、「[可用性セット内の VM に管理ディスクを使用する](../../../virtual-machines/availability.md)」を参照してください。
 
 * **ネットワーク: 運用中のプライベート IP アドレス**
 
@@ -541,4 +541,11 @@ SQL Server 可用性グループを使用して Azure VM で Windows フェー�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Virtual Machines に SQL Server Always On 可用性グループを作成する](availability-group-manually-configure-tutorial.md)
+前提条件を構成したら、[可用性グループの構成](availability-group-manually-configure-tutorial.md)を開始します
+
+詳細については、以下をご覧ください。
+
+- [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)

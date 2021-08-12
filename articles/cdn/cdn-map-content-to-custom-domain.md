@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/12/2021
 ms.author: yuajia
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3b64efab10a9d52209f04dfd43a43654eb55467a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: ee721a56da41c4a5ff9184c6bc716784f858507d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706942"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467637"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>チュートリアル:カスタム ドメインをエンドポイントに追加する
 
@@ -23,7 +23,7 @@ ms.locfileid: "110706942"
 
 CDN プロファイル内のエンドポイント名は、azureedge.net のサブドメインです。 既定では、コンテンツを配信する際に、CDN プロファイル ドメインが URL 内に追加されます。
 
-たとえば、**https://contoso.azureedge.net/photo.png** です。
+たとえば、`https://contoso.azureedge.net/photo.png` のようにします。
 
 Azure CDN には、カスタム ドメインを CDN エンドポイントと関連付けるオプションが用意されています。 この場合、URL に既定のドメインではなくカスタム ドメインを使用してコンテンツが配信されます。
 

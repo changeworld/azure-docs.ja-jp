@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 2aad13e6263cd4b7133836e80eb9bdc0928c8141
-  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.openlocfilehash: 2a5f8d51f70f7950d0e2d7d4c52cb59e81feb00e
+  ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111901225"
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113729688"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -120,7 +120,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Azure Storage へのアクセスを承認する
-      url: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: ../common/authorize-data-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Data Lake のアクセス制御
       url: data-lake-storage-access-control.md
   - linkListType: how-to-guide

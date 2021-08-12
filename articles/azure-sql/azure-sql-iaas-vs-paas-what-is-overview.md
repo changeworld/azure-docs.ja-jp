@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: dabfe4c3416d1595d8f030d3c671fe2aa0b0c7a3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: b8f55a720583713fad59fc07495dcab070d19fa7
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708920"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378096"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -158,7 +158,7 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 
 多くの IT 部門では、サービス レベル アグリーメント (SLA) の稼働時間に関する義務を果たすことが最優先事項です。 このセクションでは、各データベースのホスト オプションに適用される SLA について説明します。
 
-**Azure SQL Database** と **Azure SQL Managed Instance** の両方について、可用性 99.99% の SLA が提供されます。 最新情報については、[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/sql-database/)に関するページを参照してください。
+**Azure SQL Database** と **Azure SQL Managed Instance** の両方について、可用性 99.99% の SLA が提供されます。 最新情報については、[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/azure-sql-database)に関するページを参照してください。
 
 **Azure VM 上の SQL** では、仮想マシンのみを対象に 99.95% の可用性 SLA が提供されます。 この SLA は VM 上で実行される (SQL Server などの) プロセスは対象としておらず、可用性セットに少なくとも 2 つの VM インスタンスをホストしている必要があります。 最新情報については、 [VM の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)に関するページを参照してください。 VM 内のデータベース高可用性 (HA) を実現するには、[Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)など、SQL Server でサポートされているいずれかの高可用性オプションを構成する必要があります。 サポートされている高可用性オプションを使用した場合、SLA を追加することはできないものの、ほぼ 99.99% のデータベース可用性が実現されます。
 

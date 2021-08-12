@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: 75e87e004190ebe86c983c5956105ec629dcc673
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0fee13de8a1af520564004f029fa616f5ebb1119
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772281"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459480"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "108772281"
 > * パイプラインを作成、実行、発行する
 > * パイプラインの REST エンドポイントを有効にする
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 ## <a name="prerequisites"></a>前提条件
 

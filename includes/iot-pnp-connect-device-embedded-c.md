@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
-ms.openlocfilehash: f37ef6f968542c1f8fc1ef2f328cd2a78c024852
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 813a49cbb2937da19dd0b71029cc172f632e7dab
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278152"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403827"
 ---
 "*制約のあるデバイス*" 向けの開発を行っている場合、IoT プラグ アンド プレイを以下と共に使用できます。
 
@@ -24,7 +24,7 @@ ms.locfileid: "108278152"
 
 ## <a name="use-the-sdk-for-embedded-c"></a>埋め込み C 用の Azure SDK を使用する
 
-埋め込み C 用の SDK には、[IoT プラグ アンド プレイ規則](../articles/iot-pnp/concepts-convention.md)の使用を含め、制約のあるデバイスを Azure IoT サービスに接続するための軽量ソリューションが用意されています。 下記のリンク先には、MCU ベースのデバイス用のサンプルと、教育およびデバッグ目的のサンプルが含まれます。
+埋め込み C 用の SDK には、[IoT プラグ アンド プレイ規則](../articles/iot-develop/concepts-convention.md)の使用を含め、制約のあるデバイスを Azure IoT サービスに接続するための軽量ソリューションが用意されています。 下記のリンク先には、MCU ベースのデバイス用のサンプルと、教育およびデバッグ目的のサンプルが含まれます。
 
 ### <a name="use-an-mcu-based-device"></a>MCU ベースのデバイスを使用する
 

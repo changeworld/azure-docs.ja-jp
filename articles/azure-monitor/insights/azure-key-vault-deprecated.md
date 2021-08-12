@@ -6,17 +6,17 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ab6ca63e76e22fe82cf806da77258e427112d9f1
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: c12cb6c344554f4d18af28dd563b7c96358ea2ee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320153"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095160"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure Key Vault Analytics ソリューション
 
 > [!NOTE]
-> このソリューションは非推奨です。 [Azure Monitor for Key Vault を使用することをお勧めします](./key-vault-insights-overview.md)。
+> このソリューションは非推奨です。 [Key Vault 分析情報の使用をお勧めします](./key-vault-insights-overview.md)。
 
 ![Key Vault のシンボル](media/azure-key-vault/key-vault-analytics-symbol.png)
 

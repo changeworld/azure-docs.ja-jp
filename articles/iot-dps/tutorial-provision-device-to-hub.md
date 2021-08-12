@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 94568eb5d64f07133ebb9992cdae59400830dd5e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: b6dce9f84ff78a7caaf5f5f7ef702053640cee7a
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226890"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112519103"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用した IoT ハブへのデバイスのプロビジョニング
 
@@ -71,8 +71,6 @@ ms.locfileid: "107226890"
 IoT デバイスは、実際のデバイスにすることも、シミュレートされたデバイスにすることもできます。 IoT デバイスが Device Provisioning Service インスタンスに登録されたため、デバイスを起動し、プロビジョニング サービスを呼び出して、構成証明メカニズムを使用して認識されるようにすることができます。 デバイスは、プロビジョニング サービスに認識されると、IoT ハブに割り当てられます。 
 
 TPM と X.509 の両方の構成証明を使用する、シミュレートされたデバイスの例として、C、Java、C#、Node.js、Python などによるものがあります。 たとえば、TPM と [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を使用するシミュレートされたデバイスは、「[デバイスの初回ブート シーケンスのシミュレーション](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device)」セクションで説明されているプロセスに従います。 X.509 証明書構成証明を使用する同じデバイスの場合は、この[ブート シーケンス](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device)についてのセクションを参照してください。
-
-実際のデバイスの例については、[MXChip Iot DevKit のハウツー ガイド](how-to-connect-mxchip-iot-devkit.md)を参照してください。
 
 デバイスを起動して、デバイスのクライアント アプリケーションが Device Provisioning Service への登録を開始できるようにします。  
 

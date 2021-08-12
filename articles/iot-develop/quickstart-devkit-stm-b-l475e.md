@@ -1,27 +1,27 @@
 ---
-title: Azure IoT Central への ST Microelectronics B-L475E-IOT01A または B-L4S5I-IOT01A の接続のクイックスタート
-description: Azure RTOS 組み込みソフトウェアを使用して、ST Microelectronics B-L475E-IOT01A または B-L4S5I-IOT01A デバイスを Azure IoT に接続し、テレメトリを送信します。
+title: Azure IoT Central への STMicroelectronics B-L475E-IOT01A または B-L4S5I-IOT01A の接続のクイックスタート
+description: Azure RTOS 組み込みソフトウェアを使用して、STMicroelectronics B-L475E-IOT01A または B-L4S5I-IOT01A デバイスを Azure IoT に接続し、テレメトリを送信します。
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 9fee4c2642178bfc288396d3e783940e41a0502e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: dd8a214e060f9f4ace9f310fec3ebca33d4619c0
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903979"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109235"
 ---
-# <a name="quickstart-connect-an-st-microelectronics-b-l475e-iot01a-or-b-l4s5i-iot01a-discovery-kit-to-iot-central"></a>クイックスタート: ST Microelectronics B-L475E-IOT01A または B-L4S5I-IOT01A Discovery kit を IoT Central に接続する
+# <a name="quickstart-connect-an-stmicroelectronics-b-l475e-iot01a-or-b-l4s5i-iot01a-discovery-kit-to-iot-central"></a>クイックスタート: STMicroelectronics B-L475E-IOT01A または B-L4S5I-IOT01A Discovery kit を IoT Central に接続する
 
 **適用対象**: [組み込みデバイスの開発](about-iot-develop.md#embedded-device-development)<br>
 **完了までの合計時間**: 30 分
 
 [![コードを参照](media/common/browse-code.svg)](https://github.com/azure-rtos/getting-started/tree/master/STMicroelectronics/STM32L4_L4+)
 
-このクイックスタートでは、Azure RTOS を使用して、ST Microelectronics [B-L475E-IOT01A](https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html) または [B-L4S5I-IOT01A](https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html) Discovery kit (以降、STM DevKit) を Azure IoT に接続します。
+このクイックスタートでは、Azure RTOS を使用して、STMicroelectronics [B-L475E-IOT01A](https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html) または [B-L4S5I-IOT01A](https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html) Discovery kit (以降、STM DevKit) を Azure IoT に接続します。
 
 次のタスクを実行します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "111903979"
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
-開発環境を設定するには、まず、このクイックスタートに必要なすべての資産を含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
+開発環境を設定するには、まず、このクイックスタートに必要なすべてのアセットを含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>クイックスタート用のリポジトリのクローン
 
@@ -55,7 +55,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>ツールのインストール
 
-複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 組み込みデバイスの別のクイックスタートでこれらのツールをインストールした場合は、もう一度行う必要はありません。
+複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 別の組み込みデバイスのクイックスタートでこれらのツールをインストールしてある場合は、もう一度行う必要はありません。
 
 > [!NOTE]
 > 設定スクリプトでは、次のツールがインストールされます。
@@ -145,7 +145,7 @@ STM DevKit を Azure に接続するには、Wi-Fi と Azure IoT の設定の構
 
 1. **Termite** を開始します。
     > [!TIP]
-    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 1. **[設定]** を選択します。
 1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
     * **Baud rate\(ボー レート\)** : 115,200
@@ -248,7 +248,7 @@ IoT Central からデバイス情報を表示できます。
 
 ## <a name="troubleshoot-and-debug"></a>トラブルシューティングとデバッグ
 
-デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 
 アプリケーションのデバッグについては、「[Visual Studio Code を使用したデバッグ](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)」を参照してください。
 

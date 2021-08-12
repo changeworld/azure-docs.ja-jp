@@ -2,21 +2,21 @@
 title: チュートリアル:Peakon を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: ユーザー アカウントを Peakon に自動的にプロビジョニング/プロビジョニング解除するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
-ms.author: zhchia
-ms.openlocfilehash: c04bbd5459690262b484582e807569b965a0439b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 65416e8e0117f91d97374ae10fbc633d1783b823
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96349890"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766505"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>チュートリアル:Peakon を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/05/2021
+ms.date: 05/14/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1c23f5ee8472b889929c513199a46022b6eaa3c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6e43e94b3d813df96befdc9bc2bf802a3da93bd5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776985"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083820"
 ---
 # <a name="how-to-download-logs-in-azure-active-directory"></a>方法: Azure Active Directory でログをダウンロードする
 
@@ -58,6 +58,8 @@ Azure AD では、これらのログに限られた時間の間データが格�
 ## <a name="what-license-do-you-need"></a>必要なライセンス
 
 アクティビティ ログのデータをダウンロードするオプションは、Azure AD のすべてのエディションで使用できます。
+
+Microsoft Graph を使用してアクティビティ ログをダウンロードすることもできます。ただし、ログをプログラムでダウンロードするには、Premium ライセンスが必要です。
 
 
 ## <a name="who-can-do-it"></a>実行できるユーザー

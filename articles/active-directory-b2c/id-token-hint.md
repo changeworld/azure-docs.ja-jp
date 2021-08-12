@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/16/2020
+ms.date: 04/30/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a3f8a0562df4b4eeef338ddf357f37d7d0bc8f5a
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 6477283b3eb96579b943baf0aa34c2737bf43a58
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946639"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059617"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで ID トークン ヒントの技術プロファイルを定義する
 
@@ -94,6 +94,8 @@ id_token_hint は、有効な JWT トークンである必要があります。 
 | METADATA| Yes | トークン発行者の構成ドキュメントを指す URL。これは、OpenID の既知の構成エンドポイントとも呼ばれます。   |
 | 発行者 | No | セキュリティ トークン サービス (トークン発行者) を識別します。 この値は、メタデータで構成されている値を上書きするために使用できます。また、JWT トークン要求内の `iss` 要求と同じである必要があります。 |  
 | IdTokenAudience | No | トークンの受信者を示します。 JWT トークン要求内の `aud` 要求と同じである必要があります。 |  
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -185,7 +187,7 @@ $newClientSecret
 * `/.well-known/openid-configuration` - トークン発行者名、JWK エンドポイントへのリンクなど、トークンに関する関連情報を含む既知の構成エンドポイント。 
 * `/.well-known/keys` - (証明書の秘密キー部分を含む) キーに署名するために使用される公開キーを含む JSON Web キー (JWK) エンドポイント。
 
-[TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .Net MVC コントローラーのサンプルを参照してください。
+[TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC コントローラーのサンプルを参照してください。
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>手順 1. 自己署名証明書を準備する
 
@@ -219,7 +221,7 @@ New-SelfSignedCertificate `
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item>
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>

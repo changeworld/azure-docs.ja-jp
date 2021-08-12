@@ -3,13 +3,13 @@ title: Azure portal でダッシュボードを作成する
 description: この記事では、Azure portal でダッシュボードを作成およびカスタマイズする方法について説明します。
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 05/06/2021
-ms.openlocfilehash: 668aead7b448cd462fab80003e498e956a6484d2
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.date: 05/12/2021
+ms.openlocfilehash: 0de3e30d2a27d131c13b2df94b1462b6e89b48e3
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794917"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846203"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>Azure portal でダッシュボードを作成する
 
@@ -88,6 +88,14 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 このアイコンを選択した場合は、既存のプライベートまたは共有のダッシュボードにタイルをピン留めできます。 **[新規作成]** を選択して、このピンを含む新しいダッシュボードを作成することもできます。
 
 :::image type="content" source="media/azure-portal-dashboards/dashboard-pin-pane.png" alt-text="[ダッシュボードにピン留め] オプションのスクリーンショット。":::
+
+### <a name="copy-a-tile-to-a-new-dashboard"></a>新しいダッシュボードにタイルをコピーする
+
+別のダッシュボードでタイルを再利用したい場合は、他のダッシュボードにタイルをコピーすることができます。 そのためには、右上隅のコンテキスト メニューを選択し、 **[コピー]** を選択します。
+
+:::image type="content" source="media/azure-portal-dashboards/copy-dashboard.png" alt-text="Azure portal でのタイルのコピー方法を示すスクリーンショット。":::
+
+その後、既存のプライベート ダッシュボードや共有ダッシュボードにタイルをコピーしたり、作業中のダッシュボード内にタイルのコピーを作成したりできます。 **[新規作成]** を選択して、タイルのコピーを含む新しいダッシュボードを作成することもできます。
 
 ### <a name="resize-or-rearrange-tiles"></a>タイルのサイズまたは配置を変更する
 

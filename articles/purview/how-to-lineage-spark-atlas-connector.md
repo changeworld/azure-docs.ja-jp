@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/28/2021
-ms.openlocfilehash: 1ba281dfd0accbac486abb00785fbd6c552fff8d
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: aebe227c8f2a278131d38143c43c38ee4687e701
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109520570"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579055"
 ---
 # <a name="how-to-use-apache-atlas-connector-to-collect-spark-lineage"></a>Apache Atlas コネクタを使用して Spark データ系列を収集する方法
 
@@ -88,7 +88,7 @@ Atlas Spark モデル定義が正常に作成されたら、次の手順に従�
 1. GitHub から Spark 型定義を取得します https://github.com/apache/atlas/blob/release-2.1.0-rc3/addons/models/1000-Hadoop/1100-spark_model.json
 
 2. ロールの割り当て:
-    1. Purview 管理センターを開き、[ロールを割り当てる] を選択します
+    1. Purview アカウントに移動し、[アクセス制御 (IAM)] を選択します 
     1. ユーザーを追加し、サービス プリンシパル *Purview データ ソース管理者* ロールを付与します
 3. 認証トークンの取得:
     1. "postman" または同様のツールを開きます 
@@ -97,7 +97,7 @@ Atlas Spark モデル定義が正常に作成されたら、次の手順に従�
         * grant_type: client_credentials
         * client_id: {service principal ID}
         * client_secret: {service principal key}
-        * resource: https://projectbabylon.azure.net
+        * resource: `https://purview.azure.net`
 
         :::image type="content" source="./media/how-to-lineage-spark-atlas-connector/postman-examples.png" alt-text="postman を使用した例を示すスクリーンショット" lightbox="./media/how-to-lineage-spark-atlas-connector/postman-examples.png":::      
 

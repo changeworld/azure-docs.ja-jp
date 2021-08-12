@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップのトラブルシューテ�
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4c934d2295fa702425e8df0a03636b9f9208cfa4
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 86324c80f0df70713c6ea76a43e4b9da50c1fae6
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515075"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555022"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップ中の問題のトラブルシューティング
 
@@ -42,6 +42,7 @@ ms.locfileid: "107515075"
 - 保護しようとしているファイル共有が削除されていないことを確認してください。
 - ストレージ アカウントが、ファイル共有のバックアップ用にサポートされているストレージ アカウントであることを確認してください。 サポートされているストレージ アカウントを見つけるには、「[Azure ファイル共有のバックアップのサポート マトリックス](azure-file-share-support-matrix.md)」を参照してください。
 - ファイル共有が、同じ Recovery Services コンテナー内で既に保護されているかどうかを確認してください。
+- ストレージ アカウントのネットワーク ルーティング設定を確認して、ルーティング設定が Microsoft ネットワーク ルーティング に設定されていることを確認します。
 
 ### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>ファイル共有のバックアップの構成 (または保護ポリシーの構成) が失敗しています
 
@@ -126,6 +127,14 @@ Error Code:ParallelSnapshotRequest
 - ファイル共有のバックアップでは、同じファイル共有に対する並列スナップショット要求はサポートされていません。
 
 - 既存のバックアップ ジョブが完了するのを待ってから、もう一度やり直してください。 Recovery Services コンテナーにバックアップ ジョブが見つからない場合は、同じサブスクリプション内の他の Recovery Services コンテナーを確認してください。
+
+### <a name="usererrorstorageaccountinternetroutingnotsupported--storage-accounts-with-internet-routing-configuration-are-not-supported-by-azure-backup"></a>UserErrorStorageAccountInternetRoutingNotSupported - インターネット ルーティング構成のあるストレージ アカウントは、Azure Backup ではサポートされていません
+
+エラーコード: UserErrorStorageAccountInternetRoutingNotSupported
+
+エラー メッセージ: インターネッ トルーティング構成のストレージア カウントは、Azure Backup ではサポートされていません
+
+バックアップされたファイル共有をホストしているストレージ アカウントのルーティング設定が Microsoft ネットワーク ルーティングであることを確認します。
 
 ### <a name="filesharebackupfailedwithazurerprequestthrottling-filesharerestorefailedwithazurerprequestthrottling--file-share-backup-or-restore-failed-due-to-storage-service-throttling-this-may-be-because-the-storage-service-is-busy-processing-other-requests-for-the-given-storage-account"></a>FileshareBackupFailedWithAzureRpRequestThrottling/ FileshareRestoreFailedWithAzureRpRequestThrottling- ストレージ サービスの調整のため、ファイル共有のバックアップまたは復元に失敗しました。 ストレージ サービスが特定のストレージ アカウントの他の要求を処理中であることが原因である可能性があります
 

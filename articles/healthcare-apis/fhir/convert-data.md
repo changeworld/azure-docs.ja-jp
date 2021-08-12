@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 05/11/2021
 ms.author: ranku
-ms.openlocfilehash: 123916aebd743e0a5d0f40415f3d5eea956c2c3a
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
-ms.translationtype: MT
+ms.openlocfilehash: 7d972139888d45e7e0967f076fd5ed5d8a86e513
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605937"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667101"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>データを FHIR に変換する方法 (プレビュー)
 
@@ -24,7 +24,7 @@ FHIR サービスの $convert データカスタムエンドポイントは、�
 
 ## <a name="use-the-convert-data-endpoint"></a>$convert-data エンドポイントを使用する
 
-操作は、 `$convert-data` サービスの一部として実行するために、FHIR サービスに統合されます。 Fhir server の `$convert-data` `FhirServer__Operations__ConvertData__Enabled` 設定を "true" に設定して、FHIR サーバーのデプロイ中にを有効にする必要があります。 また、この記事で後述するように、マネージ Id が有効になっていることを確認する必要もあります。 次に、サーバーへの API 呼び出しを行って、データを FHIR に変換できます。
+操作は、 `$convert-data` サービスの一部として実行するために、FHIR サービスに統合されます。 サーバーへの API 呼び出しを行って、データを FHIR に変換することができます。
 
 `https://<<FHIR service base URL>>/$convert-data`
 

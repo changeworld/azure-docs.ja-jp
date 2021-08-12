@@ -1,21 +1,19 @@
 ---
-title: セルフホステッド ゲートウェイの概要| Microsoft Docs
+title: 自己ホスト型ゲートウェイの概要 |Azure API Management
 description: 組織がハイブリッド環境やマルチクラウド環境で API を管理するのに、Azure API Management のセルフホステッド ゲートウェイ機能がどのように役立つかを説明します。
 services: api-management
 documentationcenter: ''
 author: vlvinogr
-manager: gwallace
-editor: ''
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
 ms.author: apimpm
-ms.openlocfilehash: 946a2707e68e2f3ce6f78df997d102eeb0c7c450
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2c8688660540f965f25038298c996511901405cb
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376972"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111810129"
 ---
 # <a name="self-hosted-gateway-overview"></a>セルフホステッド ゲートウェイの概要
 
@@ -49,7 +47,7 @@ ms.locfileid: "110376972"
 
 - Azure Monitor ログ
 - アップストリーム (バックエンド側) の TLS バージョンと暗号管理
-- API Management サービスにアップロードされた [CA ルート証明書](api-management-howto-ca-certificates.md)を使用した、サーバーとクライアントの証明書の検証。 詳細については、「[セルフホステッド ゲートウェイでの証明書の検証](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway)」を参照してください。
+- API Management サービスにアップロードされた [CA ルート証明書](api-management-howto-ca-certificates.md)を使用した、サーバーとクライアントの証明書の検証。 自己ホスト型ゲートウェイと[クライアント証明書検証](api-management-access-restriction-policies.md#validate-client-certificate)ポリシーの[カスタム証明機関](api-management-howto-ca-certificates.md#create-custom-ca-for-self-hosted-gateway)を構成して、それらを強制的に適用することができます。
 - [Service Fabric](../service-fabric/service-fabric-api-management-overview.md) との統合
 - TLS セッションの再開
 - クライアント証明書の再ネゴシエーション。 これは、[クライアント証明書の認証](api-management-howto-mutual-certificates-for-clients.md)が動作するには、API コンシューマーが初期 TLS ハンドシェイクの一部として証明書を提示する必要があることを意味します。 これを保証するには、セルフホステッド ゲートウェイのカスタム ホスト名を構成するときに、クライアント証明書のネゴシエート設定を有効にします。

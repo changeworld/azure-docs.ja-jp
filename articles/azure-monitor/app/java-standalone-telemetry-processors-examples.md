@@ -6,17 +6,17 @@ ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5d704ed2213a77873780a005823f25541e6563d0
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734589"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895348"
 ---
 # <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>テレメトリ プロセッサの例 - Azure Monitor Application Insights for Java
 
 この記事では、Application Insights for Java のテレメトリ プロセッサの例を示します。 include と exclude の構成のサンプルを紹介します。 また、属性プロセッサとスパン プロセッサのサンプルも紹介します。
-## <a name="include-and-exclude-samples"></a>include と exclude のサンプル
+## <a name="include-and-exclude-span-samples"></a>include と exclude の Span サンプル
 
 このセクションでは、スパンを含める方法と除外する方法について説明します。 また、複数のスパンを除外し、選択的処理を適用する方法についても説明します。
 ### <a name="include-spans"></a>スパンを含める
@@ -202,11 +202,12 @@ ms.locfileid: "101734589"
   }
 }
 ```
+
 ## <a name="attribute-processor-samples"></a>属性プロセッサのサンプル
 
 ### <a name="insert"></a>挿入
 
-次の例では、キー `attribute1` が存在しないスパンに新しい属性 `{"attribute1": "attributeValue1"}` を挿入します。
+次の例では、キー `attribute1` が存在しないスパンおよびログに新しい属性 `{"attribute1": "attributeValue1"}` を挿入します。
 
 ```json
 {
@@ -230,7 +231,7 @@ ms.locfileid: "101734589"
 
 ### <a name="insert-from-another-key"></a>別のキーから挿入する
 
-次の例では、属性 `anotherkey` からの値を使用して、キー `newKey` が存在しないスパンに新しい属性 `{"newKey": "<value from attribute anotherkey>"}` を挿入します。 属性 `anotherkey` が存在しない場合、新しい属性はスパンに挿入されません。
+次の例では、属性 `anotherkey` からの値を使用して、キー `newKey` が存在しないスパンおよびログに新しい属性 `{"newKey": "<value from attribute anotherkey>"}` を挿入します。 属性 `anotherkey` が存在しない場合、新しい属性はスパンおよびログに挿入されません。
 
 ```json
 {
@@ -254,7 +255,7 @@ ms.locfileid: "101734589"
 
 ### <a name="update"></a>更新
 
-次の例では、属性を `{"db.secret": "redacted"}` に更新します。 属性 `foo` からの値を使用して、属性 `boo` を更新します。 属性 `boo` を持たないスパンは変更されません。
+次の例では、属性を `{"db.secret": "redacted"}` に更新します。 属性 `foo` からの値を使用して、属性 `boo` を更新します。 属性 `boo` を持たないスパンおよびログは変更されません。
 
 ```json
 {
@@ -477,6 +478,66 @@ ms.locfileid: "101734589"
             ]
           }
         }
+      }
+    ]
+  }
+}
+```
+
+
+## <a name="log-processor-samples"></a>スパン プロセッサのサンプル
+
+### <a name="extract-attributes-from-a-log-message-body"></a>ログ メッセージ本文から属性を抽出する
+
+入力ログ メッセージの本文が `Starting PetClinicApplication on WorkLaptop with PID 27984 (C:\randompath\target\classes started by userx in C:\randompath)` であると仮定します。 次の例では、`Starting PetClinicApplication on WorkLaptop with PID {PIDVALUE} (C:\randompath\target\classes started by userx in C:\randompath)` という出力メッセージ本体が生成されます。 ログに新しい属性 `PIDVALUE=27984` が追加されます。
+
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "preview": {
+    "processors": [
+      {
+        "type": "log",
+        "body": {
+          "toAttributes": {
+            "rules": [
+              "^Starting PetClinicApplication on WorkLaptop with PID (?<PIDVALUE>\\d+) .*"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+### <a name="masking-sensitive-data-in-log-message"></a>ログ メッセージ内の機密データのマスキング
+
+次の例は、ログ プロセッサと属性プロセッサの両方を使用して、ログ メッセージ本文の機密データをマスクする方法を示しています。
+入力ログ メッセージの本文が `User account with userId 123456xx failed to login` であると仮定します。 ログ プロセッサは出力メッセージ本文を `User account with userId {redactedUserId} failed to login` に更新し、属性プロセッサは前の手順で追加した新しい `redactedUserId` 属性を削除します。
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "preview": {
+    "processors": [
+      {
+        "type": "log",
+        "body": {
+          "toAttributes": {
+            "rules": [
+              "^User account with userId (?<redactedUserId>\\d+) .*"
+            ]
+          }
+        }
+      },
+      {
+        "type": "attribute",
+        "actions": [
+          {
+            "key": "redactedUserId",
+            "action": "delete"
+          }
+        ]
       }
     ]
   }
