@@ -3,17 +3,17 @@ title: Datadog のトラブルシューティング - Azure パートナー ソ�
 description: この記事では、Azure での Datadog のトラブルシューティングに関する情報を提供します。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 05/28/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 0e3c82f711de4cd9710c9aafe798a986e3403ed4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c23851dc76cb0e012ad8796d361e5c293bc8d99
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563710"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655155"
 ---
-# <a name="troubleshooting-datadog-on-azure"></a>Azure での Datadog のトラブルシューティング
+# <a name="fix-common-errors-for-datadog-on-azure"></a>Azure 上の Datadog の一般的なエラーを修正する
 
 このドキュメントには、Datadog を使用するソリューションのトラブルシューティングに関する情報が含まれています。
 

@@ -2,13 +2,13 @@
 title: 連続録画と再生に関するチュートリアル - Azure Video Analyzer
 description: このチュートリアルでは、Azure Video Analyzer を使用してクラウドに連続録画し、その録画を再生する方法について説明します。
 ms.topic: tutorial
-ms.date: 04/01/2021
-ms.openlocfilehash: d62b9f413f0613d8152d3b0106fd398f89d3b95c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 2f3fc2421a2341974aa7ea7bdafeaf0123ea983e
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384109"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602929"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>チュートリアル: 連続録画と再生
 
@@ -90,7 +90,7 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
 1. **pipelineTopologySet** ノードで、次を編集します。
 
     `"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json" `
-1. 次に、**livePipelineSet** と **pipelineTopologyDelete** の各ノードで、**topologyName** の値が、上のパイプライン トポロジ内の **name** プロパティの値と一致していることを確認します。
+1. 次に、**livePipelineSet** と **pipelineTopologyDelete** の各ノードで、**topologyName** の値が、上記パイプライン トポロジ内の **name** プロパティの値と一致していることを確認します。
 
     `"topologyName" : "CVRToVideoSink"`  
 1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json)を開き、videoName を確認します。これは `sample-cvr-video` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。
@@ -238,7 +238,7 @@ body セクションには、出力場所に関する情報が含まれていま
 }
 ```
 
-このイベントは、プレーヤーまたはクライアントでビデオ再生を開始するのに十分なデータがビデオ リソースに書き込まれたことを示します。
+このイベントは、プレーヤーまたはクライアントでビデオの再生を開始するのに十分なデータがビデオ リソースに書き込まれたことを示します。
 
 applicationProperties の subject セクションでは、このメッセージの生成元となったライブ パイプライン内のビデオ シンク ノードが参照されています。
 
@@ -282,12 +282,11 @@ body セクションには、出力場所に関する情報が含まれていま
 1. ビデオを選択します。
 1. ビデオの詳細ページが開き、自動的に再生が開始されます。
 
-> [!NOTE]
-> ビデオのソースはカメラ フィードをシミュレートするコンテナーだったので、ビデオのタイム スタンプは、ライブ パイプラインをアクティブにした時点と、非アクティブ化した時点に関連しています。
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-他のチュートリアルに取り組む場合は、作成したリソースをそのまま残します。 それ以外の場合は、Azure portal にアクセスして、ご利用のリソース グループに移動し、このチュートリアルで使用したリソース グループを選択して、それらのリソース グループを削除してください。
+[!INCLUDE [prerequisites](./includes/common-includes/clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

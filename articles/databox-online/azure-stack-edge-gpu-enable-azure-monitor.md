@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 24fd0e9765ddbafda0fde0a3b362a4facd99afe7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bbb4ce6442cc38e2554c6c1f745223a193ca793d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460842"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950760"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで Azure Monitor を有効にする
 
@@ -22,6 +22,9 @@ ms.locfileid: "110460842"
 Azure Stack Edge Pro GPU デバイス上のコンテナーの監視は、複数のコンピューティング アプリケーションを実行している場合に特に重要です。 Azure Monitor を使用すると、デバイスで実行されている Kubernetes クラスターからコンテナー ログとメモリおよびプロセッサ メトリックを収集できます。
 
 この記事では、デバイスで Azure Monitor を有効にし、Log Analytics ワークスペースでコンテナー ログを収集するために必要な手順について説明します。 現在、Azure Stack Edge Pro GPU デバイスでは、Azure Monitor メトリック ストアはサポートされていません。 
+
+> [!NOTE]
+> デバイスの Kubernetes クラスターで Azure Arc が有効になっている場合は、[「Azure Arc が有効化された Kubernetes クラスターの Azure モニター コンテナーの分析情報」](../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json)の手順に従ってコンテナーの監視を設定します。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -243,4 +246,4 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
 ## <a name="next-steps"></a>次の手順
 
 - [Kubernetes ダッシュボードを使用して Kubernetes ワークロードを監視する方法](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)を確認します。
-- [デバイス イベントのアラート通知を管理する](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)方法について説明します。 
+- [デバイス イベントのアラート通知を管理する](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)方法について説明します。

@@ -6,18 +6,18 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 2f3472aa495042749410bc0b9635f0924a02e1fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9fcb8567d9f7593a059567df6edc279b6fa701c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98598551"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782947"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>予約容量を使用した計算リソースの Azure Cache for RedisRedis を使用した前払い
 
 Azure Cache for Redis は、従量課金制の料金と比較して、コンピューティング リソースを事前に支払ってコストを節約するのに役立ちます。 予約容量用の Azure Cache for Redis では、1 年分または 3 年分をキャッシュで前払いすることで、計算コストを大幅に節約できます。 予約容量用にAzure Cache for Redis を購入するには、Azure リージョン、サービス レベル、用語を指定する必要があります。
 
-特定の Azure Cache for Redis インスタンスに予約を割り当てる必要はありません。 既に稼働している Azure Cache for Redis または新たにデプロイされた Azure Cache for Redis では、予約済みのキャッシュ サイズまでの予約価格が自動的に得られます。 予約を購入すると、計算コストを 1 年間または 3 年間分前払いすることになります。 予約を購入すると、予約属性に一致する Azure Cache for Redis の計算料金は従量課金制で請求されなくなります。 キャッシュに関連付けられているネットワーキング、またはストレージの料金は、予約の対象になりません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Azure Cache for Redis に適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Cache for Redis の予約容量オファー](https://azure.microsoft.com/pricing/details/cache)に関するページを参照してください。
+特定の Azure Cache for Redis インスタンスに予約を割り当てる必要はありません。 既に稼働している Azure Cache for Redis または新たにデプロイされた Azure Cache for Redis では、予約済みのキャッシュ サイズまでの予約価格が自動的に得られます。 予約を購入すると、計算コストを 1 年または 3 年分前払いすることになります。 予約を購入すると、予約属性に一致する Azure Cache for Redis の計算料金は従量課金制で請求されなくなります。 キャッシュに関連付けられているネットワーキング、またはストレージの料金は、予約の対象になりません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Azure Cache for Redis に適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Cache for Redis の予約容量オファー](https://azure.microsoft.com/pricing/details/cache)に関するページを参照してください。
 
 Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com/) で購入できます。 予約容量を購入するには:
 
@@ -32,7 +32,7 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 
 予約のサイズは、既存のまたはすぐにデプロイされる予定のキャッシュ (特定のリージョン内で同じサービス レベルを使用するもの) で使用されるメモリ サイズの合計に基づいて決める必要があります。
 
-たとえば、2 つのキャッシュを実行しているとします。13 GB で 1 つ、26 GB で 1 つです。 いずれも少なくとも 1 年は必要です。 さらに、季節需要に合わせるため、月あたり既存の 13 GB キャッシュを 26 GB にスケーリングし、その後、元に戻す計画を立てているとします。 この場合は、1 年予約で 1 P2 キャッシュと 1 P3 キャッシュまたは 3 P2 キャッシュを購入することで、最大限に節約できます。 キャッシュ間での配分に関係なく、予約したキャッシュ メモリの合計量に対して割引を受けられます。
+たとえば、2 つのキャッシュを実行しているとします。13 GB で 1 つ、26 GB で 1 つです。 いずれも少なくとも 1 年は必要です。 さらに、季節需要に合わせるため、月あたり既存の 13 GB キャッシュを 26 GB にスケーリングし、その後、元に戻す計画を立てているとします。 この場合は、1 年予約で 1 つの P2 キャッシュと 1 つの P3 キャッシュまたは 3 つの P2 キャッシュを購入することで、最大限に節約できます。 キャッシュ間での配分に関係なく、予約したキャッシュ メモリの合計量に対して割引を受けられます。
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>予約容量用に Azure Cache for Redis を購入する
@@ -42,7 +42,7 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. **[追加]** を選択し、[購入予約] ペインで **[Azure Cache for Redis]** を選択してキャッシュの新しい予約を購入します。
-4. 必須フィールドに入力します。 選択した属性と一致する既存または新規のデータベースが、予約容量の割引を受けられます。 割引を受ける Azure Cache for Redis インスタンスの実際の数は、選択したスコープと数量によって変わります。
+4. 必須フィールドに必要事項を入力します。 選択した属性と一致する既存または新規のデータベースが、予約容量の割引を受けられます。 割引を受ける Azure Cache for Redis インスタンスの実際の数は、選択したスコープと数量によって変わります。
 
 
 ![予約価格の概要](media/cache-reserved-pricing/cache-reserved-price.png)
@@ -57,7 +57,7 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 | リージョン | Azure Cache for Redis 予約容量の予約の対象となる Azure リージョン。
 | Pricing tier | Azure Cache for Redis サーバーのサービス レベル。
 | 期間 | 1 年間または 3 年間
-| Quantity | Azure Cache for Redis の予約容量の予約内で購入される計算リソース数。 この数量は、予約し、請求時に割り引きを受ける、選択された Azure リージョンとパフォーマンス レベルに含まれるキャッシュの数です。 たとえば、米国東部リージョンで、合計キャッシュ容量を 26 GB とする Azure Cache for Redis サーバーを実行している、または実行する予定の場合、すべてのキャッシュを最大限に活用するため、同等の 26 GB になるような量を指定します。 そうなるのは、1 P3 キャッシュまたは 2 P2 キャッシュです。
+| Quantity | Azure Cache for Redis の予約容量の予約内で購入される計算リソース数。 この数量は、予約し、請求時に割り引きを受ける、選択された Azure リージョンとパフォーマンス レベルに含まれるキャッシュの数です。 たとえば、米国東部リージョンで、合計キャッシュ容量を 26 GB とする Azure Cache for Redis サーバーを実行している、または実行する予定の場合、すべてのキャッシュを最大限に活用するため、同等の 26 GB になるような量を指定します。 この数量は、1 つの P3 キャッシュまたは 2 つの P2 キャッシュにすることができます。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 

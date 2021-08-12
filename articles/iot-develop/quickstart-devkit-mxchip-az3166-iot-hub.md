@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/09/2021
-ms.openlocfilehash: a14f00585eede96814627c941050c3179436ab06
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 21e7e54e346d24758711990bfa5f71d387ba4956
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059726"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403918"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-hub"></a>クイックスタート: MXCHIP AZ3166 Devkit を IoT Hub に接続する
 
@@ -23,7 +23,7 @@ ms.locfileid: "112059726"
 
 このクイックスタートでは、Azure RTOS を使用して、MXCHIP AZ3166 IoT DevKit (これ以降、MXCHIP DevKit と呼びます) を Azure IoT に接続します。 
 
-また、IoT エクスプローラーと IoT プラグ アンド プレイを使用して MXCHIP DevKit を管理します。 IoT プラグ アンド プレイは、アプリケーションがプログラムでデバイスの機能を照会して操作できるようにするオープン デバイス モデルを提供します。 デバイスは、このモデルを使用して、機能を IoT プラグ アンド プレイ対応アプリケーションにブロードキャストします。 このモデルを使用することで、デバイスの追加、構成、管理のタスクを効率化および強化できます。 詳細については、[IoT プラグ アンド プレイのドキュメント](/azure/iot-pnp)を参照してください。
+また、IoT エクスプローラーと IoT プラグ アンド プレイを使用して MXCHIP DevKit を管理します。 IoT プラグ アンド プレイは、アプリケーションがプログラムでデバイスの機能を照会して操作できるようにするオープン デバイス モデルを提供します。 デバイスは、このモデルを使用して、機能を IoT プラグ アンド プレイ対応アプリケーションにブロードキャストします。 このモデルを使用することで、デバイスの追加、構成、管理のタスクを効率化および強化できます。 詳細については、[IoT プラグ アンド プレイのドキュメント](../iot-develop/index.yml)を参照してください。
 
 次のタスクを実行します。
 
@@ -38,13 +38,13 @@ ms.locfileid: "112059726"
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料でアカウントを 1 つ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)作成してください。
 * リポジトリを複製するための [Git](https://git-scm.com/downloads)
 * Azure CLI。 このクイックスタートで Azure CLI コマンドを実行するには、2 つのオプションがあります。
-    * ブラウザーで CLI コマンドを実行する対話型シェルである Azure Cloud Shell を使用します。 何もインストールする必要がないため、このオプションをお勧めします。 Cloud Shell を初めて使用する場合は、[Azure portal](https://portal.azure.com) にサインインします。 [Cloud Shell のクイックスタート](/azure/cloud-shell/quickstart)の手順に従って、**Cloud Shell を起動** し、**Bash 環境を選択** します。
+    * ブラウザーで CLI コマンドを実行する対話型シェルである Azure Cloud Shell を使用します。 何もインストールする必要がないため、このオプションをお勧めします。 Cloud Shell を初めて使用する場合は、[Azure portal](https://portal.azure.com) にサインインします。 [Cloud Shell のクイックスタート](../cloud-shell/quickstart.md)の手順に従って、**Cloud Shell を起動** し、**Bash 環境を選択** します。
     * 必要に応じて、お使いのローカル コンピューターで Azure CLI を実行します。 Azure CLI が既にインストールされている場合は、`az upgrade` を実行して、CLI と拡張機能を最新バージョンにアップグレードします。 Azure CLI のインストール方法については、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関する記事を参照してください。
 
 * [Azure IoT エクスプローラー](https://github.com/Azure/azure-iot-explorer/releases): Azure IoT を監視および管理するためのクロスプラットフォーム ユーティリティ 
 * ハードウェア
 
-    * [MXCHIP AZ3166 IoT DevKit](https://aka.ms/iot-devkit) (MXCHIP DevKit)
+    * [MXCHIP AZ3166 IoT DevKit](https://www.seeedstudio.com/AZ3166-IOT-Developer-Kit.html) (MXCHIP DevKit)
     * Wi-Fi 2.4 GHz
     * USB 2.0 A male to Micro USB male ケーブル
 
@@ -243,7 +243,7 @@ MXCHIP DevKit を Azure に接続するには、Wi-Fi と Azure IoT の設定の
 
 1. **Termite** を開始します。
     > [!TIP]
-    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 1. **[設定]** を選択します。
 1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
     * **Baud rate\(ボー レート\)** : 115,200
@@ -426,7 +426,7 @@ Azure CLI を使用してメソッドを呼び出すには:
 
 ## <a name="troubleshoot-and-debug"></a>トラブルシューティングとデバッグ
 
-デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 
 アプリケーションのデバッグについては、「[Visual Studio Code を使用したデバッグ](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)」を参照してください。
 
@@ -466,4 +466,3 @@ Azure CLI を使用してメソッドを呼び出すには:
 
 > [!IMPORTANT]
 > Azure RTOS には、通信をセキュリティで保護し、基になる MCU/MPU ハードウェア保護メカニズムを使用してコードとデータの分離を作成するためのコンポーネントを含む OEM があります。 ただし、各 OEM は最終的に、そのデバイスが進化するセキュリティ要件を確実に満たすようにする役目を負っています。
-

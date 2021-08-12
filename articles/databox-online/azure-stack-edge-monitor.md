@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro デバイスを監視する | Microsoft Docs
-description: Azure portal とローカル Web UI を使用して Azure Stack Edge Pro を監視する方法について説明します。
+title: Azure Stack Edge デバイスを監視する | Microsoft Docs
+description: Azure portal とローカル Web UI を使用して Azure Stack Edge を監視する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: aae64cad3603725a4062d5afb42df974bbf8ac40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 13a11bb23479653ccc88b6e1a2312ff8e6f33609
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438790"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099660"
 ---
-# <a name="monitor-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro を監視する
+# <a name="monitor-your-azure-stack-edge"></a>Azure Stack Edge を監視する 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-mini-r-and-fpga-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-sku.md)]
 
-この記事では、Azure Stack Edge Pro を監視する方法について説明します。 このデバイスは Azure portal またはローカル Web UI を使用して監視できます。 デバイスのイベントを確認したり、アラートを構成して管理したり、メトリックを確認したりするには、Azure portal を使用します。 さまざまなデバイス コンポーネントのハードウェアの状態を確認するには、物理デバイスのローカル Web UI を使用します。
+この記事では、Azure Stack Edge を監視する方法について説明します。 このデバイスは Azure portal またはローカル Web UI を使用して監視できます。 デバイスのイベントを確認したり、アラートを構成して管理したり、メトリックを確認したりするには、Azure portal を使用します。 さまざまなデバイス コンポーネントのハードウェアの状態を確認するには、物理デバイスのローカル Web UI を使用します。
 
 この記事では、次のことについて説明します。
 

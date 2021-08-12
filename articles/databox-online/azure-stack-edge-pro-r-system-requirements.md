@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: ef81494b6c93f2941cc41b367e566332d6bc7cc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6710d8c30d394a3fde3a999b735739307e0dfbb1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831342"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099464"
 ---
 # <a name="azure-stack-edge-pro-r-system-requirements"></a>Azure Stack Edge Pro R のシステム要件
 
@@ -110,6 +110,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 | https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft コンテナー レジストリ (必須)               |
 | https://\*.azure-devices.us              | IoT Hub アクセス (必須)           |
 | https://\*.azurecr.us                    | 個人やサード パーティのコンテナー レジストリ (任意) | 
+| https://\*.docker.com              | StorageClass (必須)                             |
 
 ## <a name="internet-bandwidth"></a>インターネット帯域幅
 

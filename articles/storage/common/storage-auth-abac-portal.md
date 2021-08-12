@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: ce0fab219f49427892f5ffe47c595edb26fea010
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 3e5e46e15a7885eb5e3f4828cb8298355a116fd8
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796014"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300491"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-the-azure-portal-preview"></a>チュートリアル: Azure portal を使用してロールの割り当て条件を追加し、BLOB へのアクセスを制限する (プレビュー)
 
@@ -71,8 +71,6 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 1. ユーザーを作成するか、既存のユーザーを探します。 このチュートリアルでは、例として Chandra を使用しています。
 
 ## <a name="step-2-set-up-storage"></a>手順 2: ストレージを設定する
-
-1. まだの場合には、BLOB インデックス タグの利用のためにサブスクリプションを登録します。 詳細については、「[サブスクリプションを登録する (プレビュー)](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview)」を参照してください。
 
 1. BLOB インデックス タグ機能 (現在はパブリック プレビュー段階) に対応しているストレージ アカウントを作成します。 詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md#regional-availability-and-storage-account-support)」を参照してください。
 

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f10ce3203eb63f7622f41e6838289129026ca73
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791157"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698284"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric でのディザスター リカバリー
 高可用性を実現するうえで欠かせないのは、サービスがあらゆる種類の障害を切り抜けられるようにすることです。 これは、計画外の障害や、制御できない障害に関しては特に重要です。 
@@ -186,14 +186,15 @@ Azure で Service Fabric を実行している場合、障害ドメインおよ�
 
 Azure で実行されているクラスターの場合、「[Azure の状態][azure-status-dashboard]」ページで停止に関する更新情報を確認できます。 極めてまれなことですが、データ センターが物理的に一部または全体が破壊された場合、そこでホストされている Service Fabric クラスター、またはその中のサービスが失われる可能性があります。 この損失には、そのデータセンターやリージョン外でバックアップされていない状態も含まれます。
 
-1 つのデータセンターやリージョンにおける永続的または持続的な障害を切り抜けるための戦略は 2 つあります。 
+1 つのデータセンターやリージョンにおける永続的または持続的な障害を切り抜けるための戦略はいくつかあります。 
 
 - このような複数のリージョンで Service Fabric クラスターをそれぞれ実行し、こうした環境間でのフェールオーバーとフェールバックのメカニズムをいくつか使用します。 このような複数クラスターのアクティブ/アクティブまたはアクティブ/パッシブ モデルには、追加の管理および操作コードが必要です。 また、このモデルには、あるデータセンターやリージョンで障害が発生したときに、その中のサービスを他のデータセンターやリージョンで使用できるように、サービスのバックアップの調整も必要です。 
-- 複数のデータセンターやリージョンにまたがる 1 つの Service Fabric クラスターを実行します。 この戦略がサポートされる最小構成は 3 つのデータ センターまたはリージョンです。 推奨されるリージョンまたはデータセンターの数は 5 つです。 
+- 複数のデータセンターにまたがる 1 つの Service Fabric クラスターを実行します。 この戦略がサポートされる最小構成は 3 つのデータ センターです。 詳細については、「[Deploy a Service Fabric cluster across Availability Zones](service-fabric-cross-availability-zones.md) (Availability Zones をまたがる Service Fabric マネージド クラスターのデプロイ)」を参照してください。
   
-  このモデルには、さらに複雑なクラスター トポロジが必要になります。 ただし、利点は、1 つのデータセンターまたはリージョンの障害が、災害から通常の障害に変換される点です。 こうした障害は、1 つのリージョン内のクラスターに対して有効なメカニズムで処理できます。 障害ドメイン、アップグレード ドメイン、および Service Fabric の配置ルールにより、通常の障害が許容されるようにワークロードが分散されます。 
+  このモデルでは、追加の設定が必要です。 ただし、利点は、1 つのデータセンターの障害が、災害から通常の障害に変換される点です。 こうした障害は、1 つのリージョン内のクラスターに対して有効なメカニズムで処理できます。 障害ドメイン、アップグレード ドメイン、および Service Fabric の配置ルールにより、通常の障害が許容されるようにワークロードが分散されます。
   
   この種類のクラスターにおけるサービス操作に役立つポリシーの詳細については、「[Service Fabric サービスの配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)」を参照してください。
+- スタンドアロン モデルを使用して、複数のリージョンにまたがる単一の Service Fabric クラスターを実行します。 推奨されるリージョン数は 3 つです。 スタンドアロン Service Fabric セットアップの詳細については、「[Create a standalone cluster](service-fabric-cluster-creation-for-windows-server.md) (スタンドアロンクラスターの作成)」を参照してください。
 
 ### <a name="random-failures-that-lead-to-cluster-failures"></a>クラスター障害につながるランダムに発生する障害
 Service Fabric には "*シード ノード*" の概念があります。 これは基になるクラスターの可用性を維持するノードです。 

@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 61bb87d84b96f988ae065a70b85d445fc8b96ccf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 817c3e4a9e3c6226d25e28d1aad378813369d765
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762949"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077736"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure Spot Virtual Machines 
 
@@ -216,6 +216,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ```
 
 `Response Code: 204` は、シミュレートされた削除が成功したことを意味します。 
+
+詳細については、[削除通知のシミュレーション テスト](../virtual-machines/windows/spot-powershell.md#simulate-an-eviction)に関するセクションを参照してください。
 
 ## <a name="faq"></a>よく寄せられる質問
 

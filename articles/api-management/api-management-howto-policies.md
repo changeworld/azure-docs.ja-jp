@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 37ac6369790ed526fd923819558863ae84432aed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c87e436fe7fada8b1e16c18a5fad36c4ef3c872a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358118"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096402"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
 
@@ -76,7 +76,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 ### <a name="apply-policies-specified-at-different-scopes"></a>さまざまなスコープで指定されたポリシーを適用する
 
-グローバル レベルのポリシーと API 向けに構成されたポリシーがある場合、API が使用されるたびに両方のポリシーが適用されます。 API Management では、基本要素を介してポリシー ステートメントの組み合わせの順序を指定できます。 
+グローバル レベルのポリシーと API 向けに構成されたポリシーがある場合、API が使用されるたびに両方のポリシーが適用されます。 API Management では、`base` 要素を介してポリシー ステートメントの組み合わせの順序を指定できます。 
 
 ```xml
 <policies>

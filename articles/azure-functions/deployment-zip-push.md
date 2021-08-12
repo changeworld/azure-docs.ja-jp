@@ -3,12 +3,12 @@ title: Azure Functions の zip プッシュ デプロイ
 description: Kudu デプロイ サービスの .zip ファイル デプロイ機能を使用して、Azure Functions を発行します。
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: fb6867d7719f9650acb00f80ac3a933713ce0e23
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a8a8b6e0ad1cd70ae6fe2f0025afcba6fc9e44a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777653"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465836"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -36,11 +36,11 @@ Azure Functions には、Azure App Service によって提供されている、�
 
 関数アプリには、`wwwroot` ディレクトリ内のすべてのファイルとフォルダーが含まれています。 .zip ファイルの展開には、`wwwroot` ディレクトリの内容が含まれますが、ディレクトリ自体は含まれません。 C# クラス ライブラリ プロジェクトをデプロイするときは、コンパイル済みのライブラリ ファイルと依存関係を .zip パケージの `bin` サブフォルダーに含める必要があります。
 
+ローカル コンピューター上で開発する場合は、組み込みの .zip 圧縮機能またはサードパーティ製のツールを使用して、関数アプリ プロジェクト フォルダーの .zip ファイルを手動で作成できます。
+
 ## <a name="download-your-function-app-files"></a>関数アプリ ファイルをダウンロードする
 
-開発作業をローカル コンピューター上で行う場合は、開発用コンピューター上の関数アプリ プロジェクト フォルダー内に .zip ファイルを作成すると、作業が簡単です。
-
-ただし、Azure Portal 内のエディターを使用して関数を作成した場合、 既存の関数アプリ プロジェクトは、次のいずれかの方法でダウンロードできます。
+Azure portal のエディターを使用して関数を作成した場合は、次のいずれかの方法で、既存の関数アプリ プロジェクトを .zip ファイルとしてダウンロードできます。
 
 + **Azure portal から:**
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: cbaa84c73a5e332dca60286bc35200761e546dd3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 144e9eb84b6add1c10103148b374aeeeca0e6c6d
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864229"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112293421"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight とは
 
@@ -32,7 +32,7 @@ HDInsight で利用可能な Hadoop テクノロジ スタック コンポーネ
 
 |機能  |説明  |
 |---------|---------|
-|クラウド ネイティブ     |     Azure HDInsight を使用すると、Hadoop、Spark、 [Interactive query (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、Kafka、Storm、HBase、ML Services 向けに最適化されたクラスターを Azure 上に作成することができます。 また、HDInsight は、あらゆる運用環境のワークロードについてエンド ツー エンドの SLA を提供します。  |
+|クラウド ネイティブ     |     Azure HDInsight を使用すると、Hadoop、Spark、 [Interactive query (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、Kafka、Storm、HBase 向けに最適化されたクラスターを Azure 上に作成することができます。 また、HDInsight は、あらゆる運用環境のワークロードについてエンド ツー エンドの SLA を提供します。  |
 |低コストでスケーラブル     | ワークロードをスケールアップまたはスケールダウンすることができます。 クラスターをオンデマンドで作成し、実際に使用する分にのみ支払うことでコストを削減できます。 データ パイプラインを作成して、必要なジョブを運用化することもできます。 コンピューティングとストレージが分離され、より高いパフォーマンスと柔軟性が実現されています。 |
 |セキュリティとコンプライアンス    | HDInsight を使用すると、Azure Virtual Network、暗号化、Azure Active Directory との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的なコンプライアンス基準を満たしています。        |
 |監視    | Azure HDInsight と Azure Monitor ログの統合によって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。        |
@@ -81,7 +81,6 @@ HDInsight には、特定のクラスターの種類のほか、コンポーネ�
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|HDFS、YARN によるリソース管理、およびシンプルな MapReduce プログラミング モデルを使用して、バッチ データを同時に処理および分析するフレームワークです。|
 |[Apache Spark](./spark/apache-spark-overview.md)|ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 [HDInsight での Apache Spark の概要](./spark/apache-spark-overview.md)に関する記事を参照してください。|
 |[Apache HBase](./hbase/apache-hbase-overview.md)|Hadoop 上に構築された NoSQL データベースです。数十億行 x 数百万列に達する可能性のある大量の非構造化データや半構造化データへのランダム アクセスと厳密な整合性を実現します。 [HDInsight での HBase の概要](./hbase/apache-hbase-overview.md)に関する記事を参照してください。|
-|[ML サービス](./r-server/r-server-overview.md)|並列分散 R プロセスをホストおよび管理するためのサーバーです。 データ サイエンティスト、統計学者、R プログラマーは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。 [HDInsight の ML サービスの概要](./r-server/r-server-overview.md)に関するページを参照してください。|
 |[Apache Storm](./storm/apache-storm-overview.md)|大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。 Storm は、HDInsight で管理されるクラスターとして提供されます。 「 [HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](./storm/apache-storm-overview.md)」を参照してください。|
 |[Apache 対話型クエリ](./interactive-query/apache-interactive-query-get-started.md)|対話型で高速な Hive クエリのメモリ内キャッシュです。 [HDInsight での対話型クエリの使用](./interactive-query/apache-interactive-query-get-started.md)に関する記事を参照してください。|
 |[Apache Kafka](./kafka/apache-kafka-introduction.md)|ストリーミング データ パイプラインおよびアプリケーションを構築するために使用されるオープンソースのプラットフォームです。 Kafka には、データ ストリームの発行とサブスクライブを可能にするメッセージ キュー機能も用意されています。 「[HDInsight での Apache Kafka の概要](./kafka/apache-kafka-introduction.md)」を参照してください。|

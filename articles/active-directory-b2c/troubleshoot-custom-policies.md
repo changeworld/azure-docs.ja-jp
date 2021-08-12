@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/08/2021
+ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbb3bc0e34ad596c39aebb49124bb72d0b3efe6f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6298c8483c44472fe6f52f3e48b5c529c2d978a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103967"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457495"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>Azure AD B2C カスタム ポリシーのトラブルシューティング
 
@@ -48,7 +48,7 @@ Azure AD B2C トークンに関連付け ID を含めることができます。
 1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
 1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
-1. **ClaimsSchema** 要素に city 要求を追加します。  
+1. **ClaimsSchema** 要素に関連付け ID 要求を追加します。  
 
     ```xml
     <!-- 
@@ -63,7 +63,7 @@ Azure AD B2C トークンに関連付け ID を含めることができます。
     </BuildingBlocks>-->
     ```
 
-1. ポリシーの証明書利用者ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> ファイルです。 ユーザー体験が成功した後、出力要求がトークンに追加され、アプリケーションに送信されます。 証明書利用者セクション内の技術プロファイル要素を変更して、city を出力要求として追加します。
+1. ポリシーの証明書利用者ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> ファイルです。 ユーザー体験が成功した後、出力要求がトークンに追加され、アプリケーションに送信されます。 証明書利用者セクション内の技術プロファイル要素を変更して、`correlationId` を出力要求として追加します。
  
     ```xml
     <RelyingParty>

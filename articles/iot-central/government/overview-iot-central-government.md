@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a903622f698107f7f1a593946f083fca1573d53e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8957db7112363e4245e6610890ed6e4644c4a9dd
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834342"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586475"
 ---
 # <a name="what-are-the-iot-central-government-solutions"></a>IoT Central 政府機関ソリューションとは
 
@@ -27,7 +27,7 @@ Azure IoT Central アプリケーション テンプレートを使用してス�
 ![水質のモニタリング アプリ テンプレート](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
 
 アプリ テンプレートには次が含まれます。
-* オペレーター ダッシュボードのサンプル
+* サンプル ダッシュボード
 * 水質のモニタリング デバイス テンプレートのサンプル
 * シミュレートされた水質のモニタリング デバイス
 * 事前構成済みの規則とジョブ
@@ -45,7 +45,7 @@ Azure IoT Central アプリケーション テンプレートを使用してス�
   ![水消費量のモニタリング アプリ テンプレート](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
 
 水消費量のモニタリング アプリ テンプレートは、事前構成済みの以下の項目で構成されています。
-* オペレーター ダッシュボードのサンプル
+* サンプル ダッシュボード
 * 水質のモニタリング デバイス テンプレートのサンプル
 * シミュレートされた水質のモニタリング デバイス
 * 事前構成済みの規則とジョブ
@@ -61,7 +61,7 @@ Azure IoT Central アプリケーション テンプレートを使用してス�
 
 
 接続された廃棄物管理アプリ テンプレートは、事前構成済みの以下の項目で構成されています。
-* オペレーター ダッシュボードのサンプル
+* サンプル ダッシュボード
 * 接続された廃棄物処理デバイス テンプレートのサンプル
 * シミュレートされた接続された廃棄物処理デバイス
 * 事前構成済みの規則とジョブ

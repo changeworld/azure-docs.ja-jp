@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 4ebc363f29ed8956d10e91f41be1d257cbcc492f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8897e6da3b3d70f9b7d0434dade86e4f2ceb9c50
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703888"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094426"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理サーバーの移行のサポート マトリックス
 
@@ -48,7 +48,7 @@ ms.locfileid: "98703888"
 **UEFI ブート** | サポートされています。 UEFI ベースのマシンは、Azure 第 2 世代 VM に移行されます。  <br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
 **UEFI - セキュア ブート**         | 移行はサポートされません。
 **ターゲット ディスク** | コンピューターは、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
-**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 32 TB。
+**ディスク サイズ** | Gen 1 VM の場合は最大 2 TB の OS ディスク、Gen 2 VM の場合は最大 4 TB の OS ディスク。データ ディスクの場合は 32 TB。
 **ディスクの制限** |  コンピューターあたり最大 63 台のディスク。
 **暗号化されたディスクまたはボリューム** |  移行では、暗号化されたディスク/ボリュームを含むコンピューターはサポートされません。
 **共有ディスク クラスター** | サポートされていません。

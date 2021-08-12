@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 06/21/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: df34d0ad7aa2c8249f013d430cedd72dd86eb6a2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3c644a62dfd48f86fd21a39af57211ff7c20ae36
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451999"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112520622"
 ---
 # <a name="what-is-optical-character-recognition"></a>光学式文字認識とは
 

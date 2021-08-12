@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: d20ade0fdf6262c08a4ae961d17b1ec8a9ba39f2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 68dc83e9954875b5f9b5adab37d7ddd212534eaa
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065805"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359787"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU でストレージ アカウントを使用してデータを転送する 
 
@@ -95,7 +95,7 @@ myasetiered1       myasetiered1      DBELocal StandardLRS Storage            11/
 
 アクセス キーを取得するには、次のコマンドレットを実行します。
 
-`Get-AzureRmStorageAccountAccessKey`
+`Get-AzureRmStorageAccountKey`
 
 サンプル出力を次に示します。
 
@@ -136,7 +136,7 @@ https 経由の Azure Blob Storage REST API への接続では、以下の手順
 
 HTTPS 経由で Blob Storage にアクセスするには、デバイスの SSL 証明書が必要です。 また、この証明書を、秘密キーが添付された *.pfx* ファイルとして、Azure Stack Edge Pro デバイスにアップロードします。 これらの証明書を (テストと開発の目的のみで) 作成して Azure Stack Edge Pro デバイスにアップロードする方法の詳細については、次の記事を参照してください。
 
-- [BLOB エンドポイント証明書を作成する](azure-stack-edge-gpu-manage-certificates.md#create-certificates-optional)。
+- [BLOB エンドポイント証明書を作成する](azure-stack-edge-gpu-create-certificates-powershell.md#create-certificates)。
 - [BLOB エンドポイント証明書をアップロードする](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)。
 - [デバイスにアクセスするクライアントで証明書をインポートする](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)。
 

@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 05/30/2021
 ms.custom: seodec18
-ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91ba1280262a7d13afa71d5dc0e2b7eb0e545ecc
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98014038"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787716"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -62,13 +62,15 @@ REST API を使用すると、その要求に使用される JSON ファイル�
    * cluster1/{date}/{aFieldInMyData}  
    * cluster1/{time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData} 
+   * cluster1/{date}/{time}/{aFieldInMyData}
+
+2. 複数の入力フィールドを使用する場合は、**CONCAT** を使用して、blob 出力のカスタム パスパーティションに対するクエリで複合キーを作成できます。 たとえば、**入力から blobOutput に compositeColumn として [concat (col1, col2)] を選択** します。 次に、BLOB ストレージのカスタム パスとして **compositeColumn** を指定できます。
    
-2. パーティション キーは大文字と小文字が区別されないため、"John" や "john" などのパーティション キーは同等です。 また、式もパーティション キーとして使用できません。 たとえば、 **{columnA + columnB}** は機能しません。  
+3. パーティション キーは大文字と小文字が区別されないため、"John" や "john" などのパーティション キーは同等です。 また、式もパーティション キーとして使用できません。 たとえば、 **{columnA + columnB}** は機能しません。  
 
-3. 入力ストリームが 8000 未満のパーティション キーのカーディナリティを含むレコードで構成されている場合、レコードは既存の BLOB に追加され、新しい BLOB は必要な場合にのみ作成されます。 カーディナリティが 8000 を超える場合、既存の BLOB に書き込まれる保証はなく、同じパーティション キーを含む任意数のレコードに対して新しい BLOB は作成されません。
+4. 入力ストリームが 8000 未満のパーティション キーのカーディナリティを含むレコードで構成されている場合、レコードは既存の BLOB に追加され、新しい BLOB は必要な場合にのみ作成されます。 カーディナリティが 8000 を超える場合、既存の BLOB に書き込まれる保証はなく、同じパーティション キーを含む任意数のレコードに対して新しい BLOB は作成されません。
 
-4. BLOB 出力が[不変として構成されている](../storage/blobs/storage-blob-immutable-storage.md)場合、データが送信されるたびに Stream Analytics によって新しい BLOB が作成されます。
+5. BLOB 出力が[不変として構成されている](../storage/blobs/storage-blob-immutable-storage.md)場合、データが送信されるたびに Stream Analytics によって新しい BLOB が作成されます。
 
 ## <a name="custom-datetime-path-patterns"></a>カスタム DateTime パス パターン
 

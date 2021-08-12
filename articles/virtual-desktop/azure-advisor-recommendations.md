@@ -1,21 +1,21 @@
 ---
-title: Azure Advisor Windows Virtual Desktop のチュートリアル - Azure
-description: Windows Virtual Desktop の Azure Advisor の推奨事項を解決する方法。
+title: Azure Advisor Azure Virtual Desktop のチュートリアル - Azure
+description: Azure Virtual Desktop の Azure Advisor の推奨事項を解決する方法。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 666f882dec6c00b9fe5421485afded1fbd57d961
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b8bc514f495a46e76ad882720c918824aab0aaac
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448306"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745483"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Azure Advisor の推奨事項を解決する方法
 
-この記事では、Windows Virtual Desktop の Azure Advisor に表示される推奨事項を解決する方法について説明します。
+この記事では、Azure Virtual Desktop の Azure Advisor に表示される推奨事項を解決する方法について説明します。
 
 ## <a name="no-validation-environment-enabled"></a>"検証環境が有効になっていません"
 
@@ -24,7 +24,7 @@ ms.locfileid: "106448306"
 
 この推奨事項は、[オペレーショナル エクセレンス] に表示されます。 推奨事項には、次のような警告メッセージも表示されます。
 
-"このサブスクリプションで検証環境が有効になっていません。 お使いのホスト プールの作成時に、[プロパティ] タブの [検証環境] で **[いいえ]** が選択されています。Windows Virtual Desktop サービスのデプロイを通じてビジネスの継続性を確保するには、潜在的な問題をテストできる検証環境を持つホスト プールが少なくとも 1 つあることを確認してください。"
+"このサブスクリプションで検証環境が有効になっていません。 ホスト プールを作成するときに、[プロパティ] タブの [検証環境] で **[いいえ]** を選択しました。Azure Virtual Desktop サービスのデプロイを通じてビジネス継続性を確保するには、潜在的な問題をテストできる検証環境を備えたホスト プールが少なくとも 1 つ確保されている必要があります。
 
 この警告メッセージが表示されないようにするには、いずれかのホスト プールで検証環境を有効にします。
 
@@ -73,6 +73,6 @@ ms.locfileid: "106448306"
 
 この推奨事項を解決するには、「[安全な URL リスト](safe-url-list.md)」のすべての URL のブロックを解除してください。 サービス タグまたは FQDN タグを使用して、URL のブロックを解除することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-一般的な問題の解決方法について詳しく説明しているガイドが必要な場合は、「[Windows Virtual Desktop のトラブルシューティングの概要、フィードバック、およびサポート](troubleshoot-set-up-overview.md)」を参照してください。
+一般的な問題の解決方法について詳しく説明しているガイドが必要な場合は、「[Azure Virtual Desktop のトラブルシューティングの概要、フィードバック、およびサポート](troubleshoot-set-up-overview.md)」を参照してください。

@@ -14,12 +14,12 @@ ms.custom:
 - contentperf:fy21q3
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 95247a1485bac7282ffe95ddcc2ddd37883738dd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8e491e6fc8d0eb93a3d9696f68f045191c2da20b
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783822"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400905"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -106,7 +106,7 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 * MQTT
 * WebSocket 経由の MQTT
 
-IoT Hub とデバイス SDK では、デバイスを接続するための [Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)規則をサポートしています。 IoT プラグ アンド プレイ デバイスは、デバイス モデルを使用して、その機能を IoT プラグ アンド プレイ対応アプリケーションにアドバタイズします。 デバイス モデルにより、ソリューション ビルダーは、手動で構成することなく、独自のソリューションにスマート デバイスを統合することができます。
+IoT Hub とデバイス SDK では、デバイスを接続するための [Azure IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)規則をサポートしています。 IoT プラグ アンド プレイ デバイスは、デバイス モデルを使用して、その機能を IoT プラグ アンド プレイ対応アプリケーションにアドバタイズします。 デバイス モデルにより、ソリューション ビルダーは、手動で構成することなく、独自のソリューションにスマート デバイスを統合することができます。
 
 ソリューションで device ライブラリを使用できない場合、デバイスは MQTT v3.1.1、HTTPS 1.1、または AMQP 1.0 プロトコルを使って、ハブにネイティブに接続できます。
 
@@ -134,7 +134,7 @@ Azure Stack Hub 上の IoT Hub は、パブリック プレビューの間は無
 
 エンド ツー エンドの IoT ソリューションを試すには、IoT Hub のクイック スタートをご覧ください。
 
-* [Quickstart: デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)
+* [Quickstart: デバイスから IoT ハブへのテレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 
 Azure IoT を使用して IoT ソリューションを構築してデプロイする方法の詳細については、以下のページを参照してください。
 

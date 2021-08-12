@@ -2,13 +2,13 @@
 title: Azure メッセージング サービスの比較
 description: Azure イベント Grid、イベント Hubs、および Service Bus の 3 つの Azure メッセージング サービスについて説明します。 さまざまなシナリオでどのサービスを使うべきか、お勧めします。
 ms.topic: overview
-ms.date: 07/01/2021
-ms.openlocfilehash: f4980ca3c3741645af03874c5d75d9ef8da6084b
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.date: 07/22/2021
+ms.openlocfilehash: 91f0eb53421cf61275a09582621dc1b5bbb8d2d1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113218711"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442702"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure メッセージング サービスの中から選択する - Azure Event Grid、Event Hubs、および Service Bus
 
@@ -30,7 +30,7 @@ Azure には、ソリューション全体にわたるイベントまたはメ�
 
 一連のイベントは、状態を報告し、分析可能です。 イベントは、時間順に並べられ、相互に関連付けられています。 処理者は、一連のイベントを分析して、何が起こったかを知る必要があります。
 
-### <a name="message"></a>Message
+### <a name="message"></a>メッセージ
 メッセージは、サービスによって生成される生データで、別の場所で使用または格納されます。 メッセージには、メッセージ パイプラインをトリガーしたデータが含まれています。 メッセージの発行元は、処理者によるメッセージの処理方法を予測しています。 両者の間には協定が存在します。 たとえば、発行元は、メッセージを生データで送信し、処理者がそのデータからファイルを作成し、作業が終わったときに応答を送信すると予測しています。
 
 
@@ -77,7 +77,7 @@ Service Bus はブローカー メッセージング システムです。 使�
 | ------- | ------- | ---- | ----------- |
 | Event Grid | リアクティブ プログラミング | イベントの配信 (個別) | 状態の変更に反応する |
 | Event Hubs | ビッグ データのパイプライン | イベントのストリーミング (シリーズ) | テレメトリと分散データ ストリーミング |
-| Service Bus | 高価値のエンタープライズ メッセージング | Message | 注文処理や金融取引 |
+| Service Bus | 高価値のエンタープライズ メッセージング | メッセージ | 注文処理や金融取引 |
 
 ## <a name="use-the-services-together"></a>サービスを組み合わせて使用する
 場合によっては、異なる役割を実行するために複数のサービスを並行して使用します。 たとえば、eコマース サイトでは、注文の処理に Service Bus、サイトのテレメトリのキャプチャに Event Hubs、イベント (アイテムの出荷など) への応答に Event Grid を使用できます。

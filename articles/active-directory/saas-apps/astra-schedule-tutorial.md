@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 45906fd6199f870b8a5f5fc4087d6dd063e42905
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: f0cf672f98cc01911e8a4a73368ebf7a3a19a419
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110656268"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457291"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-astra-schedule"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Astra Schedule の統合
 
@@ -84,7 +84,7 @@ Astra Schedule に対して Azure AD SSO を構成してテストするには、
     c. **[サインオン URL]** ボックスに、`https://www.aaiscloud.com/<CUSTOMER_INSTANCE>` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Astra Schedule クライアント サポート チーム](mailto:cloudoperations@aais.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Astra Schedule クライアント サポート チーム](https://help.adastra.live)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

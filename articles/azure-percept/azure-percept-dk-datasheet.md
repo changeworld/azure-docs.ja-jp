@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: a8e06e99730388a25f4d00b016f90cd74c336fbe
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 47a9c707dbe0bb4276512cdd364ef679c7c6aa3c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742447"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097194"
 ---
 # <a name="azure-percept-dk-datasheet"></a>Azure Percept DK のデータシート
 
@@ -36,5 +36,5 @@ ms.locfileid: "108742447"
 |動作温度           |0 ～ 35°C     |
 |非動作温度       |-40 ～ 85°C     |
 |相対湿度               |10% ～ 95%    |
-|認定                   |FCC <br> IC <br> RoHS <br> REACH <br> UL   |
+|認定資格                   |CE <br> ACMA <br> FCC <br> IC <br> NCC <br> VCCI + MIC <br> NRTL <br> CB   |
 |電源                    |3\.42A (65 W) で 19 VDC |

@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 6f7e74a4e3a0ad208ea832798748adf7a15dfc89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955e79040f84f395849ab13103fd4c22693a9913
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417726"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165280"
 ---
 圧縮オーディオの処理は、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、Speech SDK では GStreamer バイナリはコンパイルおよびリンクされません。 代わりに、Android では事前構築済みのバイナリを使用する必要があります。 事前構築済みのライブラリをダウンロードするには、「[Android 開発用のインストール](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)」を参照してください。
 
-`libgstreamer_android.so` は必須です。 `libgstreamer_android.so` ですべての GStreamer プラグイン (以下の Android.mk ファイルから) がリンクされていることを確認します。 最新の Speech SDK (1.16.0 以降) を GStreamer バージョン 1.18.3 と共に使用する場合、`libc++_shared.so` は Android NDK にも存在している必要があります。
+`libgstreamer_android.so` は必須です。 `libgstreamer_android.so` ですべての GStreamer プラグイン (以下の Android.mk ファイルから) がリンクされていることを確認します。 最新の Speech SDK (1.16.0 以降) を gstreamer バージョン 1.18.3 と共に使用する場合、android ndk から `libc++_shared.so` も存在している必要があります。
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
