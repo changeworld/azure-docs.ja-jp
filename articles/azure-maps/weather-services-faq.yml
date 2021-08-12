@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-maps
   services: azure-maps
   manager: philmea
-  ms.openlocfilehash: d5942e7f7e027404dd702ecdd8a006dff667625d
-  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+  ms.openlocfilehash: 4f00c96c62b19fba017b655cc8daeefa34051db5
+  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/06/2021
-  ms.locfileid: "113310933"
+  ms.lasthandoff: 07/24/2021
+  ms.locfileid: "114666757"
 title: Azure Maps Weather Service のよくあるご質問 (FAQ)
 summary: >
   この記事では、Azure Maps [Weather Service](/rest/api/maps/weather) のデータや機能に関する一般的な質問への回答を示します。 次のトピックが含まれています。
@@ -95,7 +95,7 @@ sections:
   - question: "レーダーおよび衛星タイルに使用される色はどのように解釈したらよいですか? \n"
     answer: "Azure Maps [Weather の概念に関する記事](./weather-services-concepts.md#radar-and-satellite-imagery-color-scale)には、レーダーおよび衛星タイルに使用される色を解釈するために役立つガイドが含まれています。 この記事では、色のサンプルと 16 進カラー コードについて説明しています。\n \n"
   - question: "レーダーおよび衛星タイルのアニメーションを作成できますか? \n"
-    answer: "はい。 リアルタイムのレーダーおよび衛星タイルに加えて、Azure Maps の顧客は、地図のオーバーレイを使用してデータの視覚化を強化するために過去と将来のタイルを要求できます。 顧客は、[Get Map Tile v2 API](/rest/api/maps/renderv2/getmaptilepreview) を呼び出すことも、Azure Maps Web SDK を介してタイルを要求することもできます。 レーダー タイルを利用可能な時間は、以前は最大 1.5 時間でしたが、将来は最大 2 時間になります。 これらのタイルは 5 分間隔で入手できます。 赤外線タイルは、以前は最大 3 時間提供され、10 分間隔で入手できます。 詳細については、オープンソースの気象タイル アニメーションの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)を参照してください。  \n"
+    answer: "はい。 リアルタイムのレーダーおよび衛星タイルに加えて、Azure Maps の顧客は、地図のオーバーレイを使用してデータの視覚化を強化するために過去と将来のタイルを要求できます。 顧客は、[Get Map Tile v2 API](/rest/api/maps/render-v2/get-map-tile) を呼び出すことも、Azure Maps Web SDK を介してタイルを要求することもできます。 レーダー タイルを利用可能な時間は、以前は最大 1.5 時間でしたが、将来は最大 2 時間になります。 これらのタイルは 5 分間隔で入手できます。 赤外線タイルは、以前は最大 3 時間提供され、10 分間隔で入手できます。 詳細については、オープンソースの気象タイル アニメーションの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)を参照してください。  \n"
   - question: "さまざまな天候のアイコンを提供していますか? \n"
     answer: >
       はい。 アイコンとそれに対応するコードは、[ここ](./weather-services-concepts.md#weather-icons)で見つけることができます。 応答で *iconCode* を返すのは、Weather Service (プレビュー) API の一部 ([Get Current Conditions API](/rest/api/maps/weather/getcurrentconditions) など) だけであることに注意してください。 詳細については、現在の WeatherConditions のオープンソースの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)を参照してください。

@@ -6,16 +6,16 @@ author: ddematheu2
 manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 84bb00b6ef5d0bf68a55b7eba70ccb8eb697a571
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 287c7c2cdc709f4026ddd4dfa744119568b7950c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313479"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201111"
 ---
 Azure Communication Services の **iOS 用のグループ通話のヒーロー サンプル** は、Communication Services Calling iOS SDK を使用して、音声とビデオを含むグループ通話エクスペリエンスを構築する方法を示しています。 このサンプル クイックスタートでは、サンプルを設定して実行する方法について説明します。 背景情報については、サンプルの概要を参照してください。
 
@@ -52,7 +52,7 @@ Azure Communication Services の **iOS 用のグループ通話のヒーロー �
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532) を実行しており、有効な開発者証明書がキーチェーンにインストールされている Mac。
-- Azure Communication Services リソース。 詳細については、[Azure Communication リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。
+- Azure Communication Services リソース。 詳細については、[Azure Communication Services リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。
 - [認証エンドポイント](../../tutorials/trusted-service-tutorial.md)を実行してアクセス トークンをフェッチする Azure 関数。
 
 ## <a name="running-sample-locally"></a>サンプルをローカルで実行する

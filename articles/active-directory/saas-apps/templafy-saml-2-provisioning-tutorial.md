@@ -2,8 +2,8 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニングに対応するように Templafy SAML2 を構成する | Microsoft Docs
 description: Templafy SAML2 に対して、ユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.assetid: 8a966ef5-e364-435b-9e29-3caf27ffb498
 ms.service: active-directory
@@ -11,13 +11,13 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
-ms.author: zhchia
-ms.openlocfilehash: 4cc89c1ad94ae738b25e4ea18d5fe687880969c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c64d487bdf6bca0e4c9dc601e662a4b9419e6a26
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648222"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759099"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Templafy SAML2 を構成する
 

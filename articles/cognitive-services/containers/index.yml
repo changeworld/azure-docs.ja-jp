@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/05/2021
   ms.author: aahi
-  ms.openlocfilehash: 99ec768c5ecbcaff46c974e1cfe683338d76d29d
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 4a0914137ccdebdfe66cb896d01d70b9a491f93f
+  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110374974"
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114284531"
 landingContent:
 - title: Cognitive Services コンテナーについて
   linkLists:
@@ -50,7 +50,7 @@ landingContent:
       text: 空間分析
     - url: ../face/face-how-to-install-containers.md
       text: Face
-    - url: ../form-recognizer/form-recognizer-container-howto.md
+    - url: ../form-recognizer/containers/form-recognizer-container-install-run.md
       text: Form Recognizer
 - title: 言語コンテナー
   linkLists:

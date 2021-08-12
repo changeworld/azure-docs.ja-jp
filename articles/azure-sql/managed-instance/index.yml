@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: 
   ms.date: 05/27/2020
-  ms.openlocfilehash: e9ce725300d96cd713c8c7a726d12c1cdf4973ec
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.openlocfilehash: b9bd353f4018cce48a99567166da352c970df88a
+  ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112467367"
+  ms.lasthandoff: 07/26/2021
+  ms.locfileid: "114688519"
 landingContent:
 - title: Azure SQL Managed Instance
   linkLists:
@@ -44,7 +44,7 @@ landingContent:
     - text: トランザクション レプリケーション
       url: replication-transactional-overview.md
     - text: SQL Server からの移行
-      url: migrate-to-instance-from-sql-server.md
+      url: ../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
     - text: SQL Server の T-SQL との相違点
       url: transact-sql-tsql-differences-sql-server.md
 - title: 高度なセキュリティ

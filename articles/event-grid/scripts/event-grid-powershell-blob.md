@@ -3,13 +3,13 @@ title: Azure PowerShell - BLOB ストレージ アカウントのサブスクラ
 description: この記事では、BLOB ストレージ アカウントの Event Grid イベントをサブスクライブする方法を示したサンプル Azure PowerShell スクリプトを紹介しています。
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 07/08/2020
-ms.openlocfilehash: 15daa9843eb721ebf9caa2ae49e75fadbd0a4be8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: 5a224335f0e8eed4707f8123a92de28a6b5c7c61
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460798"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467364"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>PowerShell を使用した BLOB ストレージ アカウントのイベントのサブスクライブ
 

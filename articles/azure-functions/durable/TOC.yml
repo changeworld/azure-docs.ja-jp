@@ -29,7 +29,7 @@
   items:
     - name: 関数チェーン
       href: durable-functions-sequence.md
-    - name: ファンイン/ファンアウト
+    - name: ファンアウト/ファンイン
       href: durable-functions-cloud-backup.md
     - name: モニター (C#、JavaScript)
       href: durable-functions-monitor.md

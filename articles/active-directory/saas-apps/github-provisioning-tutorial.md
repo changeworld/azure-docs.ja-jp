@@ -2,20 +2,20 @@
 title: チュートリアル:GitHub のユーザー プロビジョニング - Azure AD
 description: Azure Active Directory を構成して、ユーザー アカウントを GitHub に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: Zhchia
+author: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
-ms.author: Zhchia
-ms.openlocfilehash: 9d9699c564476e116654f700c32dd47b7f6d5b81
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.author: thwimmer
+ms.openlocfilehash: f82d8108292404c3efab3a46cf3635cb19e9f5a2
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504568"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733720"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>チュートリアル:GitHub を構成し、自動ユーザー プロビジョニングに対応させる
 

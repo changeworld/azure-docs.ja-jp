@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API でデータのクエリを実行する
 description: Azure Cosmos DB の MongoDB 用 API から MongoDB シェル コマンドを使用してデータを照会する方法について説明します
-author: markjbrown
-ms.author: mjbrown
+author: gahl-levy
+ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f93ec39e7a2e3b5829c0d6205404c6c5c4af6189
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e3604447a5909e7812f5a6acd64468cb0846d12
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93074320"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354234"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用してデータのクエリを実行する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

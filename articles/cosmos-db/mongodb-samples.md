@@ -6,15 +6,15 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: sample
 ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
+author: gahl-levy
+ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: c2117c535cca679d3a7a3b75491bf60ab9567ceb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f852d7e4b54de23fff4064a07d6861cbe2c04e6b
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93098214"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359895"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Node.js および Azure Cosmos DB の MongoDB 用 API を使用してアプリを構築する 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

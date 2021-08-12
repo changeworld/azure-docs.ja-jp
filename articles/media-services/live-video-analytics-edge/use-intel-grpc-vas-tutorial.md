@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: d6d842a59a184470720da50917726eae069c6b02
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c2a704d5e87e5b5813a59f9c5951688f5c3b893a
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368511"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300918"
 ---
 # <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Live Video Analytics と Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
 
@@ -78,7 +78,7 @@ OpenVINO™ DL Streamer – Edge AI Extension モジュールは、OpenVINO™ D
 
 - person_vehicle_bike_tracking のための object_tracking ![人物および車両を対象とするオブジェクト追跡](./media/use-intel-openvino-tutorial/object-tracking.png)
 
-すぐに開始できるように、物体検出、オブジェクト分類、オブジェクト追跡のプリロード済みパイプラインを使用します。 また、プリロード済みの [person-vehicle-bike-detection-crossroad-0078](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/person-vehicle-bike-detection-crossroad-0078/description/person-vehicle-bike-detection-crossroad-0078.md) および [vehicle-attributes-recognition-barrier-0039 モデル](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/vehicle-attributes-recognition-barrier-0039/description/vehicle-attributes-recognition-barrier-0039.md)が用意されています。
+すぐに開始できるように、物体検出、オブジェクト分類、オブジェクト追跡のプリロード済みパイプラインを使用します。 また、プリロード済みの [person-vehicle-bike-detection-crossroad-0078](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/person-vehicle-bike-detection-crossroad-0078/README.md) および [vehicle-attributes-recognition-barrier-0039 モデル](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/vehicle-attributes-recognition-barrier-0039/README.md)が用意されています。
 
 > [!NOTE]
 > エッジ モジュール (Intel の OpenVINO™ DL Streamer – Edge AI Extension とそこに含まれるソフトウェア) をダウンロードして利用したことをもって、ユーザーは[ライセンス契約](https://www.intel.com/content/www/us/en/legal/terms-of-use.html)のご契約条件に同意したものと見なされます。

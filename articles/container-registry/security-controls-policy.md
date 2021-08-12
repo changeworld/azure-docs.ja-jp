@@ -1,18 +1,18 @@
 ---
 title: Azure Container Registry 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Container Registry に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f8a4a900322e808bf7f47118e712f597bde46ed0
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 5927635bc18fc37251622fab0eee45d09c1dad79
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029562"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404830"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Azure Container Registry 用の Azure Policy 規制コンプライアンス コントロール
 

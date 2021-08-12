@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: be49e1b80742fc49a60122de822626ab4c09a1db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: dfedba441cc4df8436f32d3985182c16ef2cbb5e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371967"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465707"
 ---
 前提条件の一環として、サンプル コードをフォルダーにダウンロードしてあります。 サンプル ファイルを確認して編集するには、これらの手順に従います。
 
@@ -27,8 +27,8 @@ ms.locfileid: "110371967"
         * ダイレクト メソッドを呼び出して、リソースをクリーンアップします。
 1. **operations.json** ファイルを編集します。
 
-    * pipelineTopology へのリンクを変更します。<br/>`"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/httpExtension/topology.json"`
-    * livePipelineSet の下で、前のリンクの値と一致するように pipelineTopology の名前を編集します。<br/>`"pipelineTopologyName" : "InferencingWithHttpExtension"`
-    * PipelineTopologyDelete の下で、名前を編集します。<br/>`"name": "InferencingWithHttpExtension"`
+    * pipelineTopology へのリンクを変更します。<br/>`"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/motion-with-httpExtension/topology.json"`
+    * livePipelineSet の下で、前のリンクの値と一致するように pipelineTopology の名前を編集します。<br/>`"pipelineTopologyName" : "EVROnMotionPlusHttpExtension"`
+    * PipelineTopologyDelete で、名前を編集します。<br/>`"name": "EVROnMotionPlusHttpExtension"`
 
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 556bab6d1302aebbc6a6d8c338a42d7bd78e1275
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 5debf0fdd82132ece890f29967e345ab5b134635
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106891"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297586"
 ---
 # <a name="about-azure-cache-for-redis"></a>Azure Cache for Redis について
 
@@ -74,9 +74,9 @@ Azure Cache for Redis は、次のレベルで使用できます。
 Azure Cache for Redis のレベルを選ぶ際は、次のオプションを考慮します。
 
 * **メモリ**:Basic および Standard レベルでは 250 MB から 53 GB、Premium レベルでは 6 GB から 1.2 TB、Enterprise レベルでは 12 GB から 14 TB が提供されます。  120 GB を超える Premium レベルのキャッシュを作成する場合は、Redis OSS クラスタリングを使用できます。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。 詳細については、「[How to configure clustering for a Premium Azure Cache for Redis](cache-how-to-premium-clustering.md)」 (Premium Azure Cache for Redis のクラスタリングの構成方法) を参照してください。
-* **パフォーマンス**: Premium および Enterprise レベルのキャッシュは、高速プロセッサを備えたハードウェアにデプロイされ、Basic レベルや Standard レベルと比べて優れたパフォーマンスを発揮します。 Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。 詳細については、「[Azure Cache for Redis のパフォーマンス](/azure/azure-cache-for-redis/cache-planning-faq#azure-cache-for-redis-performance)」を参照してください。
+* **パフォーマンス**: Premium および Enterprise レベルのキャッシュは、高速プロセッサを備えたハードウェアにデプロイされ、Basic レベルや Standard レベルと比べて優れたパフォーマンスを発揮します。 Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。 詳細については、「[Azure Cache for Redis のパフォーマンス](./cache-planning-faq.yml#azure-cache-for-redis-performance)」を参照してください。
 * **Redis サーバー専用コア**: C0 を除くすべてのキャッシュは、専用の VM コアを実行します。 Redis は設計上、コマンドの処理に使用されるスレッドが 1 つだけです。 Azure Cache for Redis には、I/O 処理に他のコアが使用されます。 使用コア数が増えることで、線形スケーリングは得られないまでも、スループット パフォーマンスは向上します。 加えて、VM サイズが大きくなれば、それよりも小さい VM と比べて、帯域幅の制限も引き上げられるのが一般的です。 これにより、アプリケーションのタイムアウトを引き起こすネットワークの飽和状態を避けることができます。
-* **ネットワーク パフォーマンス**: 高いスループットを必要とするワークロードがある場合、Premium および Enterprise レベルでは、Basic や Standard と比較してより広い帯域幅が提供されます。 また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。 詳細については、「[Azure Cache for Redis のパフォーマンス](/azure/azure-cache-for-redis/cache-planning-faq#azure-cache-for-redis-performance)」を参照してください。
+* **ネットワーク パフォーマンス**: 高いスループットを必要とするワークロードがある場合、Premium および Enterprise レベルでは、Basic や Standard と比較してより広い帯域幅が提供されます。 また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。 詳細については、「[Azure Cache for Redis のパフォーマンス](./cache-planning-faq.yml#azure-cache-for-redis-performance)」を参照してください。
 * **クライアント接続の最大数**: Premium と Enterprise の各レベルにより、Redis に接続できるクライアントの最大数が提供され、キャッシュのサイズが大きいほど、より多くの接続数が提供されます。 クラスタリングにより、クラスター化されたキャッシュに使用できるネットワーク帯域の合計量が増えます。
 * **高可用性**: Azure Cache for Redis には、複数の [高可用性](cache-high-availability.md)オプションが用意されています。 Standard、Premium、または Enterprise キャッシュの可用性は [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) に従って提供されることが保証されています。 SLA は、キャッシュ エンドポイントへの接続のみをカバーします。 SLA は、データ損失からの保護には対応していません。 Premium レベルと Enterprise レベルの Redis データの永続化機能を使用して、データ損失に対する復元性を高めることをお勧めします。
 * **データの永続化**: Premium および Enterprise レベルではそれぞれ、Azure Storage アカウントとマネージド ディスクにキャッシュデータを永続化できます。 基になるインフラストラクチャで問題が発生すると、データが失われる可能性があります。 Redis データの永続化機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、RDB オプションと AOF オプション (プレビュー) の両方が用意されています。 データの永続化は、Azure portal と CLI を使用して有効にすることができます。 Premium レベルについては、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)に関するページを参照してください。

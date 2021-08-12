@@ -2,21 +2,21 @@
 title: チュートリアル:Fuze を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Fuze に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/05/2021
-ms.author: zhchia
-ms.openlocfilehash: 809b32fcf6f39ba9dec2980a79e8824e282b54b7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: thwimmer
+ms.openlocfilehash: ab0bb459ca2119dce115f683c04b6a072ca9c4f6
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450091"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763776"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>チュートリアル:Fuze を構成し、自動ユーザー プロビジョニングに対応させる
 

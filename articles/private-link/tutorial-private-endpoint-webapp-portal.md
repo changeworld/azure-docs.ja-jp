@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 502c48a92f5b41c4434d03139335a0ce05fa451f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67c4b96ebb9e578e6a617b37e5a05084e72c4f56
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896975"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114285068"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>チュートリアル:Azure プライベート エンドポイントを使用して Web アプリに接続する
 
@@ -135,6 +135,8 @@ bastion ホストは、プライベート エンドポイントをテストす�
 5. **[Review + create]\(レビュー + 作成\)** を選択します。 
   
 6. 設定を確認し、 **[作成]** を選択します。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-web-app"></a>Web アプリの作成
 

@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 06/10/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 592affde83e468c409c25204fa389471a77abcce
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: e3b67bee93a0e9a7b823d3a91d6d95e1bccbbe71
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005593"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202826"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>クイック スタート: 3D モデルから Object Anchors モデルを作成する
 
@@ -34,51 +34,7 @@ Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Realit
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-an-object-anchors-account"></a>Object Anchors アカウントを作成する
-
-まず、Object Anchors サービスを使用してアカウントを作成する必要があります。
-
-1. [Azure portal](https://portal.azure.com/) にアクセスし、 **[リソースの作成]** を選択します。
-
-   :::image type="content" source="./media/create-aoa-resource-1.png" alt-text="新しいリソースを作成":::
-
-2. **Object Anchors** リソースを検索します。
-
-   「Object Anchors」を検索します。
-
-   :::image type="content" source="./media/create-aoa-resource-2.png" alt-text="Object Anchors リソースを選択する":::
-
-   検索結果の **Object Anchors** リソースで、 **[作成] -> [Object Anchors]** の順に選択します。
-
-   :::image type="content" source="./media/create-aoa-resource-3.png" alt-text="Object Anchors リソースを作成する":::
-
-3. **[オブジェクト アンカー アカウント]** ダイアログ ボックスで以下を行います。
-    * 一意のリソース名を入力します。
-    * リソースを接続するサブスクリプションを選択します。
-    * リソース グループを作成するか、既存のものを使用します。
-    * リソースが属するリージョンを選択します。
-
-    :::image type="content" source="./media/create-aoa-resource-4.png" alt-text="Object Anchors リソース アカウントの詳細を入力する":::
-
-    **[作成]** を選択して、リソースの作成を開始します。
-
-4. リソースが作成されたら、**[リソースに移動]** を選択します。
-
-   :::image type="content" source="./media/create-aoa-resource-5.png" alt-text="リソースに移動":::
-
-5. 概要ページで、以下を行います。
-
-   **アカウント ドメイン** をメモします。 この情報は後で必要になります。
-
-   :::image type="content" source="./media/create-aoa-resource-6.1.png" alt-text="Object Anchors リソースのアカウント ドメインをコピーする":::
-
-   **アカウント ID** をメモします。 この情報は後で必要になります。
-
-   :::image type="content" source="./media/create-aoa-resource-6.2.png" alt-text="Object Anchors リソースのアカウント ID をコピーする":::
-
-   **[アクセス キー]** ページに移動し、**主キー** をメモします。 この情報は後で必要になります。
-
-   :::image type="content" source="./media/create-aoa-resource-7.png" alt-text="Object Anchors リソースのアカウント キーをコピーする":::
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
 
 ## <a name="get-the-sample-project"></a>サンプル プロジェクトを入手する
 

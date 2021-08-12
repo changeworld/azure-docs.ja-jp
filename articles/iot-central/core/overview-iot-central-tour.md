@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: bf60f512416007137e71119fa7474b1393099ebf
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: cffd8e0347f501e82ca6e62d5c120b232869cbc0
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718883"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653323"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>ツアー: Azure IoT Central の UI
 
@@ -22,7 +22,7 @@ ms.locfileid: "107718883"
 
 ## <a name="iot-central-homepage"></a>IoT Central ホームページ
 
-[IoT Central ホームページ](https://aka.ms/iotcentral-get-started)のページでは、IoT Central で利用できる最新のニュースと機能の詳細を確認したり、新しいアプリケーションを作成したり、既存のアプリケーションを表示および起動したりできます。
+[IoT Central ホームページ](https://apps.azureiotcentral.com/)のページでは、IoT Central で利用できる最新のニュースと機能の詳細を確認したり、新しいアプリケーションを作成したり、既存のアプリケーションを表示および起動したりできます。
 
 :::image type="content" source="media/overview-iot-central-tour/iot-central-homepage.png" alt-text="IoT Central ホームページ":::
 
@@ -36,7 +36,7 @@ ms.locfileid: "107718883"
 
 ### <a name="launch-your-application"></a>アプリケーションの起動
 
-IoT Central アプリケーションを起動するには、アプリの作成時に選択した URL に移動します。 [IoT Central アプリ マネージャー](https://aka.ms/iotcentral-apps)で、アクセス権を持つすべてのアプリケーションの一覧を表示することもできます。
+IoT Central アプリケーションを起動するには、アプリの作成時に選択した URL に移動します。 [IoT Central アプリ マネージャー](https://apps.azureiotcentral.com/myapps)で、アクセス権を持つすべてのアプリケーションの一覧を表示することもできます。
 
 :::image type="content" source="media/overview-iot-central-tour/app-manager.png" alt-text="IoT Central アプリ マネージャー":::
 
@@ -84,7 +84,7 @@ IoT アプリケーション内では、左側のペインを使用してさま�
 
 * デバイスを検索するには、 **[検索]** に値を入力します。
 * UI の言語またはテーマを変更するには、 **[設定]** アイコンを選択します。 詳細については、「[アプリケーションのユーザー設定を管理する](howto-manage-preferences.md)」を参照してください。
-* ヘルプやサポートを利用するには、 **[ヘルプ]** ドロップダウンを選択するとリソースが一覧表示されます。 **[About your app]\(アプリのバージョン情報\)** リンクから [アプリに関する情報を取得する](./howto-get-app-info.md)ことができます。 無料料金プランのアプリケーションでは、サポート リソースに[ライブ チャット](howto-show-hide-chat.md)へのアクセスが含まれています。
+* ヘルプやサポートを利用するには、 **[ヘルプ]** ドロップダウンを選択するとリソースが一覧表示されます。 **[About your app]\(アプリのバージョン情報\)** リンクから [アプリに関する情報を取得する](howto-faq.yml#how-do-i-get-information-about-my-application-)ことができます。 無料料金プランのアプリケーションでは、サポート リソースに[ライブ チャット](howto-show-hide-chat.md)へのアクセスが含まれています。
 * アプリケーションからサインアウトするには、 **[アカウント]** アイコンを選択します。
 
 UI 用に淡色テーマまたは濃色テーマを選ぶことができます。
@@ -98,9 +98,9 @@ UI 用に淡色テーマまたは濃色テーマを選ぶことができます�
 
 :::image type="content" source="Media/overview-iot-central-tour/dashboard.png" alt-text="IoT Central ダッシュボードのスクリーンショット。":::
 
-* **[ダッシュボード]** は、IoT Central アプリケーションにサインインしたときに最初に表示されるページです。 複数のアプリケーション ダッシュボードを作成してカスタマイズすることができます。 詳細については、[ダッシュボードへのタイルの追加](howto-add-tiles-to-your-dashboard.md)に関するページを参照してください。
+* **[ダッシュボード]** は、IoT Central アプリケーションにサインインしたときに最初に表示されるページです。 複数のアプリケーション ダッシュボードを作成してカスタマイズすることができます。 詳細については、[ダッシュボードへのタイルの追加](howto-manage-dashboards.md)に関するページを参照してください。
 
-* 個人用ダッシュボードを作成して、関心のある項目を監視することもできます。 詳細については、ハウツー記事にある [Azure IoT Central の個人用ダッシュボードの作成](howto-create-personal-dashboards.md)に関するページを参照してください。
+* 個人用ダッシュボードを作成して、関心のある項目を監視することもできます。 詳細については、ハウツー記事にある [Azure IoT Central の個人用ダッシュボードの作成](howto-manage-dashboards.md)に関するページを参照してください。
 
 ### <a name="devices"></a>デバイス
 
@@ -110,8 +110,6 @@ UI 用に淡色テーマまたは濃色テーマを選ぶことができます�
 
 * アプリケーションに接続できるデバイスの種類は、デバイス テンプレートによって定義されます。
 * デバイスとは、対象アプリケーションにおける実デバイスまたはシミュレートされたデバイスを表します。
-
-詳細については、クイックスタートの[デバイスの監視](./quick-monitor-devices.md)に関するページを参照してください。 
 
 ### <a name="device-groups"></a>デバイス グループ
 
@@ -134,7 +132,7 @@ UI 用に淡色テーマまたは濃色テーマを選ぶことができます�
 
 :::image type="content" source="Media/overview-iot-central-tour/jobs.png" alt-text="[ジョブ] ページ":::
 
-このページでは、デバイスに対する一括管理操作に使用できるジョブを表示および作成できます。 デバイスのプロパティと設定を更新し、デバイス グループに対してコマンドを実行できます。 詳細については、[ジョブの実行](howto-run-a-job.md)に関するページを参照してください。
+このページでは、デバイスに対する一括管理操作に使用できるジョブを表示および作成できます。 デバイスのプロパティと設定を更新し、デバイス グループに対してコマンドを実行できます。 詳細については、[ジョブの実行](howto-manage-devices-in-bulk.md)に関するページを参照してください。
 
 ### <a name="device-templates"></a>デバイス テンプレート
 

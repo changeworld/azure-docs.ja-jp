@@ -44,7 +44,7 @@
     - name: 承認
       items:
         - name: Azure AD ロール
-          href: pim-how-to-activate-role.md
+          href: azure-ad-pim-approval-workflow.md
         - name: Azure ロール
           href: pim-resource-roles-approval-workflow.md
         - name: 特権アクセス グループ

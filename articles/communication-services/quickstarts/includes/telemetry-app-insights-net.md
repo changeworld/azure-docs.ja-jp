@@ -6,23 +6,23 @@ author: peiliu
 manager: vravikumar
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 06/01/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: fc76538023af79d84becc1662bf2402a3daadff4
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 983ce28f736bd36255e65073b202ff6c5761b059
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593139"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292371"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - お使いのオペレーティング システムに対応した最新バージョンの [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。
 - アクティブな Communication Services リソースと接続文字列。 [Communication Services リソースを作成します](../create-communication-resource.md)。
-- Azure portal で、[Application Insights リソース](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)を作成します。
+- Azure portal で、[Application Insights リソース](../../../azure-monitor/app/create-new-resource.md)を作成します。
 
 ## <a name="setting-up"></a>設定
 
@@ -124,7 +124,7 @@ public static async Task TracedSample()
         activity?.SetTag("Token value", tokenResponse.Value.Token);
         activity?.SetTag("Expires on", tokenResponse.Value.ExpiresOn);
 
-        Console.WriteLine($"\nIssued an access token with 'chat' scope that expires at {expiresOn}:");
+        Console.WriteLine($"\nIssued an access token with 'chat' scope that expires at {tokenResponse.Value.ExpiresOn}:");
     }
 }
 ```

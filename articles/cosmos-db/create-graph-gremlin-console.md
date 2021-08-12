@@ -1,18 +1,18 @@
 ---
 title: TinkerPop Gremlin コンソールを使用して Azure Cosmos DB Gremlin API でクエリを実行する:チュートリアル
 description: Azure Cosmos DB Gremlin API を使用して頂点、辺、およびクエリを作成するための Azure Cosmos DB クイック スタート。
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
-ms.author: chrande
-ms.openlocfilehash: f9e6b8df0acc552970d52cc8fa66d3577577ab77
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+author: manishmsfte
+ms.author: mansha
+ms.openlocfilehash: 0b93b2bf166b1a0d1c1b1c4b6c74e2b05bb2660f
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "113225734"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355153"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

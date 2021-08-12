@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41d1be35d2add24cbbc171c3da3bd4d06bce4337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0102ea602cb6e6778940c77aec444d412fa4ed6d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93359665"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114452646"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Azure SDK で Azure リソースのマネージド ID を使用して VM を構成する
 
@@ -40,8 +40,8 @@ Azure は、一連の [Azure SDK](https://azure.microsoft.com/downloads) によ�
 
 | SDK | サンプル |
 | --- | ------ | 
-| .NET   | [Azure リソースのマネージド ID が有効な VM からリソースを管理する](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [Azure リソースのマネージド ID が有効な VM からストレージを管理する](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| .NET   | [Azure リソースのマネージド ID が有効な VM からリソースを管理する](https://github.com/Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi) |
+| Java   | [Azure リソースのマネージド ID が有効な VM からストレージを管理する](https://github.com/Azure-Samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group)|
 | Node.js| [システム割り当てマネージド ID が有効な VM を作成する](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
 | Python | [システム割り当てマネージド ID が有効な VM を作成する](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
 | Ruby   | [システム割り当て ID が有効な Azure VM を作成する](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |

@@ -149,7 +149,7 @@
         - name: ファイル圧縮
           href: cdn-troubleshoot-compression.md
         - name: 許可された証明機関
-          href: cdn-troubleshoot-allowed-ca.md
+          href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
         - name: サブスクリプション オファーと帯域幅調整
           href: subscription-offerings.md
 - name: リファレンス

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 06/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 71c69ffa91e5841ec03ed836ab2562af2ec01959
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad2345ce6fe014be3e449cb8bea667b66a99379d
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645107"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112553731"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opentext-directory-services"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OpenText Directory Services の統合
 
@@ -76,13 +76,37 @@ OpenText Directory Services に対して Azure AD SSO を構成してテスト�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.opentext.com/<OTDSTENANT>/<TENANTID>/login` の形式で URL を入力します。
+    a. **[識別子]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.opentext.com/<OTDSTENANT>/<TENANTID>/login?authhandler=<HANDLERID>` のパターンを使用して URL を入力します
+    | 識別子 |
+    |------------|
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/<OTDS_TENANT>/<TENANTID>/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/login` |
+    |
+
+    b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
+
+    | [応答 URL] |
+    |------------|
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/<OTDS_TENANT>/<TENANTID>/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/login` |
+    |
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.opentext.com/<OTDSTENANT>/<TENANTID>/login?authhandler=<HANDLERID>` という形式で URL を入力します。
+    **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
+    
+    | [サインオン URL] |
+    |------------|
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/otdsws/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/otdsws/<OTDS_TENANT>/<TENANTID>/login` |
+    | `https://<HOSTNAME.DOMAIN.com>/<OTDS_TENANT>/<TENANTID>/login` |
+    |
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[OpenText Directory Services クライアント サポート チーム](mailto:support@opentext.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
