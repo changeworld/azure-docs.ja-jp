@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 69df3dc8ef9f2ab4519f5bcb8947da221908f5a7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eb9a6e1f3044492b09dac3fb3168a9bd26aeff0f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126743"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494614"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
@@ -75,7 +75,7 @@ SSO プラグインを有効にするプロファイル設定は、各デバイ�
 
 ### <a name="manual-configuration-for-other-mdm-services"></a>他の MDM サービスの手動構成
 
-Intune を MDM に使用しない場合、Apple デバイス用の Microsoft Enterprise SSO プラグインを構成するには、次のパラメーターを使用します。
+MDM に Intune を使用しない場合は、Apple デバイス用に拡張可能なシングル サインオン プロファイル ペイロードを構成できます。 Microsoft Enterprise SSO プラグインとその構成オプションを構成するには、次のパラメーターを使用します。
 
 iOS の設定:
 

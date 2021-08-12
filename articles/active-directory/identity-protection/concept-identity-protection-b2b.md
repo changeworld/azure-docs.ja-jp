@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c00090ec6b63f41a92beb485433d4667fc85860
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 357a9f7e3e498a477d6cadf3742e11696eafa896
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766018"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786556"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection と B2B ユーザー
 
@@ -65,8 +65,8 @@ B2B コラボレーション ユーザーのユーザー リスクは、ホー�
 リソース ディレクトリ内における B2B コラボレーション ユーザーの ID 保護の実装については、複数の制限事項があります。これは、それらのユーザーの ID がホーム ディレクトリに存在するためです。 主な制限事項は次のとおりです。
 
 - ゲスト ユーザーが Identity Protection のユーザー リスク ポリシーをトリガーしてパスワードのリセットを強制した場合、**そのユーザーはブロックされます**。 このブロックは、リソース ディレクトリ内ではパスワードをリセットできないことが原因です。
-- **ゲスト ユーザーは、危険なユーザー レポートには表示されません**。 この可視性の低下は、リスク評価が B2B ユーザーのホーム ディレクトリで実行されることに起因します。
-- 管理者は、リソース ディレクトリ内の **危険な B2B コラボレーション ユーザーを無視したり、修復したりすることはできません**。 この機能低下は、リソース ディレクトリ内の管理者が B2B ユーザーのホーム ディレクトリにアクセスできないことに起因します。
+- **ゲスト ユーザーは、危険なユーザー レポートには表示されません**。 この制限事項は、リスク評価が B2B ユーザーのホーム ディレクトリで実行されることに起因します。
+- 管理者は、リソース ディレクトリ内の **危険な B2B コラボレーション ユーザーを無視したり、修復したりすることはできません**。 この制限事項は、リソース ディレクトリ内の管理者が B2B ユーザーのホーム ディレクトリにアクセスできないことに起因します。
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>ディレクトリ内の危険な B2B コラボレーション ユーザーを修復できないのはなぜですか?
 

@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 7e85df8ae67624a253a9fb617629d7355109c210
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c61f378dd9121c727fc245d177e11921a8a8e26
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019603"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094386"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Azure Synapse Analytics 出力
 
@@ -21,7 +21,8 @@ Azure Stream Analytics ジョブを使用すると、Azure Synapse Analytics 内
 
 Stream Analytics ジョブに出力として専用 SQL プール テーブルを追加するには、事前にそれが存在している必要があります。 テーブルのスキーマを、使用するジョブの出力内のフィールドとその型と一致させる必要があります。 
 
-Azure Synapse を出力として使用するには、ストレージ アカウントが構成されていることを確認する必要があります。 [ストレージ アカウントの設定] に移動し、ストレージ アカウントを構成します。 テーブルをサポートする次のストレージ アカウントの種類のみを使用できます: 汎用 V2 と汎用 V1。 Standard レベルのみ選択してください。 Premium レベルはサポートされていません。
+> [!NOTE] 
+> Azure Synapse Analytics を出力として使用するためには、ストレージ アカウントが出力レベルではなくジョブ レベルで設定されていることを確認してください。 ストレージ アカウントの設定を変更するには、Stream Analytics ジョブの **[構成]** メニューから **[ストレージ アカウントの設定]** に移動します。 必ず、テーブルをサポートするストレージ アカウントの種類 (General Purpose V2 および General Purpose V1) を使用してください。 必ず Standard レベルを選択してください。 Premium レベルは、このシナリオではサポートされません。
 
 ## <a name="output-configuration"></a>出力の構成
 

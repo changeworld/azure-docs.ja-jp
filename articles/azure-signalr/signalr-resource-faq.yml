@@ -1,0 +1,113 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure SignalR Service についてよく寄せられる質問
+  description: トラブルシューティングや一般的な使用シナリオなど、Azure SignalR Service に関してよく寄せられる質問への回答を示します。
+  author: sffamily
+  ms.service: signalr
+  ms.topic: overview
+  ms.custom: devx-track-dotnet
+  ms.date: 11/13/2019
+  ms.author: zhshang
+  ms.openlocfilehash: 1dd5dcc1cc4145efd3310fb9bf8b507ca2d2c2b9
+  ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113021375"
+title: Azure SignalR Service の FAQ
+summary: ''
+sections:
+- name: 無視
+  questions:
+  - question: >
+      Azure SignalR Service は運用環境で利用できますか?
+    answer: >
+      はい。[ASP.NET Core SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) と [ASP.NET SignalR](/aspnet/signalr/overview/getting-started/introduction-to-signalr) のサポートは両方ともすべて一般公開されています。
+  - question: >
+      複数のアプリケーション サーバーが存在する場合、クライアント メッセージはすべてのサーバーに送信されますか? それとも 1 つのサーバーだけに送信されますか?
+    answer: >
+      クライアントとアプリケーション サーバーとの間には 1 対 1 のマッピングが存在します。 クライアントからのメッセージは常に同じアプリケーション サーバーに送信されます。
+
+
+      このマッピングは、クライアントまたはアプリケーション サーバーが切断されるまで保持されます。
+  - question: >
+      いずれかのアプリケーション サーバーがダウンした場合に、それを見つけたり、通知を受け取ったりするにはどうすればよいですか?
+    answer: >
+      Azure SignalR Service によって、アプリケーション サーバーからのハートビートが監視されます。
+
+      指定された期間ハートビートを受信しなかった場合、アプリケーション サーバーはオフラインと見なされます。 このアプリケーション サーバーにマップされているすべてのクライアント接続が切断されます。
+  - question: >
+      ASP.NET Core SignalR SDK から Azure SignalR Service SDK に切り替えると、カスタムの `IUserIdProvider` で例外がスローされるのはなぜですか?
+    answer: >
+      ASP.NET Core SignalR SDK と Azure SignalR Service SDK では、`IUserIdProvider` を呼び出すときのパラメーター `HubConnectionContext context` が異なります。
+
+
+      ASP.NET Core SignalR の場合、`HubConnectionContext context` はすべてのプロパティに有効な値が指定された物理クライアント接続からのコンテキストです。
+
+
+      Azure SignalR Service SDK の場合、`HubConnectionContext context` は論理クライアント接続からのコンテキストです。 物理クライアントは Azure SignalR Service インスタンスに接続されるため、限られた数のプロパティのみが指定されます。
+
+
+      現在のところ、`HubConnectionContext.GetHttpContext()` と `HubConnectionContext.User` のみがアクセス可能です。
+
+      [ソース コードを確認](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs)できます。
+  - question: >
+      ASP.NET Core SignalR を使用して、サーバー側の Azure SignalR Service で使用可能な転送を構成できますか? たとえば、WebSocket 転送を無効にすることはできますか?
+    answer: >
+      いいえ。
+
+
+      Azure SignalR Service は、ASP.NET Core SignalR が既定でサポートする 3 つの転送をすべて提供します。 これは構成できません。 Azure SignalR Service によって、すべてのクライアント接続の接続と転送が処理されます。
+
+
+      「[ASP.NET Core SignalR の構成](/aspnet/core/signalr/configuration#configure-allowed-transports-1)」に記載されているように、クライアント側の転送を構成することができます。
+  - question: >
+      Azure portal に表示されるメッセージ数や接続数などのメトリックの意味を教えてください。 集計の種類としてどれを選べばよいでしょうか?
+    answer: >
+      これらのメトリックの計算の詳細については、「[Azure SignalR Service でのメッセージと接続](signalr-concept-messages-and-connections.md)」を参照してください。
+
+
+      Azure SignalR Service リソースの概要ペインでは、適切な集計の種類が既に選択されています。 メトリック ペインに移動すると、参照として [Azure SignalR Service でのメッセージと接続](../azure-monitor/essentials/metrics-supported.md#microsoftsignalrservicesignalr)に対して集計の種類を使用できます。
+  - question: >
+      `Default`、`Serverless`、`Classic` の各サービス モードの意味を教えてください。 どのように選べばよいでしょうか?
+    answer: >
+      新しいアプリケーションの場合、既定モードとサーバーレス モードのみを使用する必要があります。 主な違いは、サービスへのサーバー接続を確立するアプリケーション サーバー (つまり、`AddAzureSignalR()` を使用してサービスに接続する) があるかどうかです。 はいの場合は既定モードを使用し、それ以外の場合はサーバーレス モードを使用します。
+
+
+      クラシック モードは、既存のアプリケーションの下位互換性のために用意されているため、新しいアプリケーションには使用しないでください。
+
+
+      サービス モードの詳細については、「[Azure SignalR Service のサービス モード](concept-service-mode.md)」を参照してください。
+  - question: >
+      サーバーレス モードでクライアントからメッセージを送信できますか?
+    answer: >
+      SignalR インスタンスでアップストリームを設定すると、クライアントからメッセージを送信できます。 アップストリームは、SignalR Service からメッセージおよび接続イベントを受信できる一連のエンドポイントです。 アップストリームが設定されていない場合、クライアントからのメッセージは無視されます。
+
+
+      アップストリームの詳細については、「[アップストリームの設定](concept-upstream.md)」を参照してください。
+
+
+      アップストリームは現在、パブリック プレビュー段階にあります。
+  - question: >
+      Azure SignalR Service を使用する場合と ASP.NET SignalR を使用する場合で、機能上の違いはありますか?
+    answer: >
+      Azure SignalR Service を使用する場合、ASP.NET SignalR のいくつかの API と機能はサポートされません。
+
+      - クライアントとハブとの間で任意の状態 (一般に `HubState` と呼ばれる) を渡す機能はサポートされません。
+
+      - `PersistentConnection` クラスはサポートされません。
+
+      - "*Forever Frame の転送*" はサポートされません。
+
+      - クライアントがオフラインの場合、Azure SignalR Service ではクライアントに送信されたメッセージが再生されなくなりました。
+
+      - Azure SignalR Service を使用する場合、1 つのクライアント接続のトラフィックは、接続期間中、常に 1 つのアプリ サーバー インスタンスにルーティングされます ("*スティッキー*" ともいう)。
+
+
+      ASP.NET SignalR のサポートは互換性に重点が置かれているため、ASP.NET Core SignalR の一部の新機能はサポートされません。 たとえば、*MessagePack* や *Streaming* は ASP.NET Core SignalR アプリケーションでのみ使用できます。
+
+
+      さまざまなサービス モード (`Classic`、`Default`、`Serverless`) に対して、Azure SignalR Service を構成できます。 ASP.NET では、`Serverless` モードはサポートされません。 また、データプレーンの REST API もサポートされません。
+  - question: >
+      データはどこに存在するか?
+    answer: Azure SignalR Service は、データ プロセッサ サービスとして機能します。 お客様のコンテンツは格納されず、データ所在地は仕様で含まれています。 診断用の Azure Storage など、他の Azure サービスを Azure SignalR Service と併用する場合は、データ所在地を Azure リージョンで維持する方法に関するガイダンスについて、[こちらのホワイト ペーパー](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)をご覧ください。

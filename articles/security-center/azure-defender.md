@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2c8147399f37f5f9fe2b3c01bc2c273ffc59be31
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: cfbb8badd4a0d9a8b9776d810d33f77a051b3a39
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469609"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238964"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender の概要
 
@@ -24,7 +24,7 @@ Azure Security Center の機能は、クラウド セキュリティの 2 つの
 
 Security Center の Azure Defender ダッシュボードにより、環境の CWP 機能を可視化し、制御できます。
 
-:::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender ダッシュボードの例" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
+:::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender ダッシュボードの例。" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
 ## <a name="what-resource-types-can-azure-defender-secure"></a>Azure Defender によって、どのような種類のリソースがセキュリティ保護されますか?
 
@@ -41,7 +41,7 @@ Azure Security Center の **価格と設定** の領域から Azure Defender を
 - [Azure Defender for Key Vault](defender-for-key-vault-introduction.md)
 - [Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)
 - [Azure Defender for DNS](defender-for-dns-introduction.md)
-- [オープンソース リレーショナル データベース用 Azure Defender](defender-for-databases-introduction.md)
+- [オープンソースのリレーショナル データベース用 Azure Defender](defender-for-databases-introduction.md)
 
 これらのプランについてはそれぞれ、Security Center のドキュメントで個別に説明されています。
 

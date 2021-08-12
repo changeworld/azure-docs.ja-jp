@@ -2,18 +2,18 @@
 title: パラメーター ファイルを作成する
 description: Azure Resource Manager テンプレートのデプロイ中に値を渡すためのパラメーター ファイルを作成します
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 05/11/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50404df278da22352344bbd12e139cc86f0a0615
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8b7d9afc91462ec3dc61b25135460e347b121e5c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321647"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960276"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 
-スクリプト内のインライン値としてパラメーターを渡すのではなく、パラメーター値を含む JSON ファイルを使用できます。 この記事では、JSON テンプレートまたは Bicep ファイルで使用するパラメーター ファイルを作成する方法について説明します。
+スクリプト内のインライン値としてパラメーターを渡すのではなく、パラメーター値を含む JSON ファイルを使用できます。 この記事では、JSON テンプレートで使用するパラメーター ファイルを作成する方法について説明します。
 
 ## <a name="parameter-file"></a>パラメーター ファイル
 
@@ -62,9 +62,7 @@ ms.locfileid: "108321647"
 
 ## <a name="define-parameter-values"></a>パラメーター値を定義する
 
-パラメーターの名前と値を定義する方法を決定するには、JSON または Bicep テンプレートを開きます。 テンプレートのパラメーター セクションを確認します。 次の例は、JSON および Bicep の各テンプレートのパラメーターを示しています。
-
-# <a name="json"></a>[JSON](#tab/json)
+パラメーターの名前と値を定義する方法を決定するには、JSON テンプレートを開いて、`parameters` セクションを確認します。 次の例は、JSON テンプレートのパラメーターを示しています。
 
 ```json
 "parameters": {
@@ -84,23 +82,6 @@ ms.locfileid: "108321647"
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-@maxLength(11)
-param storagePrefix string
-
-@allowed([
-  'Standard_LRS'
-  'Standard_GRS'
-  'Standard_ZRS'
-  'Premium_LRS'
-])
-param storageAccountType string = 'Standard_LRS'
-```
-
----
 
 パラメーター ファイルで最初に注目する詳細は、各パラメーターの名前です。 パラメーター ファイル内のパラメーター名は、テンプレート内のパラメーター名と一致する必要があります。
 
@@ -217,7 +198,7 @@ az deployment group create \
   --parameters @storage.parameters.json
 ```
 
-詳細については、[ARM テンプレートと Azure CLI でのリソースのデプロイ](./deploy-cli.md#parameters)に関するページを参照してください。 _.bicep_ ファイルをデプロイするには、Azure CLI バージョン 2.20 以降が必要です。
+詳細については、[ARM テンプレートと Azure CLI でのリソースのデプロイ](./deploy-cli.md#parameters)に関するページを参照してください。
 
 Azure PowerShell からは、`TemplateParameterFile` パラメーターを使用してローカル パラメーター ファイルを渡します。
 
@@ -227,7 +208,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile C:\MyTemplates\storage.parameters.json
 ```
 
-詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](./deploy-powershell.md#pass-parameter-values)」を参照してください。 _.bicep_ ファイルをデプロイするには、Azure PowerShell バージョン 5.6.0 以降が必要です。
+詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](./deploy-powershell.md#pass-parameter-values)」を参照してください。
 
 > [!NOTE]
 > ポータルで、カスタム テンプレート ブレードでパラメーター ファイルを使用することはできません。
@@ -253,5 +234,5 @@ PowerShell コマンドのパラメーターのいずれかと名前が同じで
 
 ## <a name="next-steps"></a>次のステップ
 
-- テンプレートにパラメーターを定義する方法の詳細については、「[ARM テンプレートのパラメーター](template-parameters.md)」を参照してください。
+- テンプレートにパラメーターを定義する方法の詳細については、「[ARM テンプレートのパラメーター](./parameters.md)」を参照してください。
 - キー コンテナーの値の使用に関する詳細は、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](key-vault-parameter.md)」を参照してください。

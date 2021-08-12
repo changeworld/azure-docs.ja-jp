@@ -75,10 +75,6 @@
           href: scenario-route-between-vnets-firewall.md
         - name: Application Gateway とバックエンド プール
           href: scenario-secured-hub-app-gateway.md
-    - name: 監視
-      items:
-        - name: Virtual WAN に関する Azure Monitor の分析情報について
-          href: azure-monitor-insights.md
     - name: サイト間
       items:
         - name: S2S IPsec ポリシーの概要
@@ -185,10 +181,12 @@
           href: howto-private-link.md
         - name: リソースへのアクセス管理 - スポーク VNet P2S
           href: manage-secure-access-resources-spoke-p2s.md
-    - name: 監視
+    - name: 正常性の監視
       items:
-        - name: ログとメトリック
-          href: logs-metrics.md
+        - name: Virtual WAN の監視
+          href: monitor-virtual-wan.md
+        - name: Virtual WAN に関する Azure Monitor の分析情報
+          href: azure-monitor-insights.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

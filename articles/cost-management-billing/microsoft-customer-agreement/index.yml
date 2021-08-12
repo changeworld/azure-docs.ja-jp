@@ -1,22 +1,22 @@
 ### YamlMime:Landing
-title: Microsoft 顧客契約の概要
-summary: Microsoft 顧客契約の下での課金とサブスクリプションの管理に関する概要。 課金環境への安全なアクセスを確保しつつ、コストを理解して最適化する方法について説明します。
+title: Microsoft 顧客契約のドキュメント
+summary: Microsoft 顧客契約 (MCA) の下で課金とサブスクリプションの管理を開始します。 課金環境への安全なアクセスを確保しつつ、コストを理解して最適化する方法について説明します。
 metadata:
-  title: Microsoft 顧客契約の概要
-  description: Microsoft 顧客契約の概要について説明します。
+  title: Microsoft 顧客契約のドキュメント
+  description: Microsoft 顧客契約 (MCA) を開始する方法について説明します。
   ms.service: cost-management-billing
   ms.subservice: billing
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 05/21/2021
-  ms.openlocfilehash: 5c64dcb1c96357128dc7a1cf86847472edf611e3
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.date: 06/16/2021
+  ms.openlocfilehash: b59028a13d3d7dfcbfdebfef803db36a660b5364
+  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110470712"
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112291531"
 landingContent:
 - title: はじめに
   linkLists:
@@ -40,6 +40,10 @@ landingContent:
       url: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - text: EA と MCA 間の API の違い
       url: /rest/api/billing/
+    - text: Cost Management Power BI コネクタ
+      url: /power-bi/connect-data/desktop-connect-azure-cost-management?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Cost Management データをエクスポートする
+      url: ../costs/tutorial-export-acm-data.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - title: 請求の管理
   linkLists:
   - linkListType: concept

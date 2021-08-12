@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 05/26/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 0a97517e524bbd6f13a108562a85037ae9695187
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7555c1a1789cc33a75f78f9f3bf8ff4e5a3e3af2
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768915"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539225"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>型チェック関数 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "108768915"
 
 ## <a name="functions"></a>関数
 
-次の関数は、入力値に対する型チェックをサポートし、それぞれがブール値を返します。
+次の関数は、入力値に対する型チェックをサポートし、それぞれがブール値を返します。 **[インデックスの使用量]** 列は、型チェック関数と他の値を、等価フィルターで比較していることを前提としています (該当する場合)。
 
 | システム関数                           | インデックスの使用量 | [スカラー集計関数を使用したクエリでのインデックスの使用](index-overview.md#index-utilization-for-scalar-aggregate-functions) | 注釈 |
 | ----------------------------------------- | ----------- | ------------------------------------------------------------ | ------- |

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Machine Learning のドキュメント
-summary: Azure Machine Learning を使用して、モデルをトレーニングおよびデプロイし、機械学習のライフサイクルを管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
+summary: Azure Machine Learning を使用してモデルをトレーニングおよびデプロイし、ML のライフサイクル (MLOps) を管理する方法について説明します。 チュートリアル、コード例、API リファレンスなど。
 metadata:
   title: Azure Machine Learning のドキュメント
-  description: Azure Machine Learning を使用して、モデルをトレーニングおよびデプロイし、機械学習のライフサイクルを管理する方法について説明します。 チュートリアル、コード例、API リファレンスなどで方法を紹介します。
+  description: Azure Machine Learning を使用してモデルをトレーニングおよびデプロイし、ML のライフサイクル (MLOps) を管理する方法について説明します。 チュートリアル、コード例、API リファレンスなど。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,55 +11,81 @@ metadata:
   ms.collection: collection
   ms.author: sgilley
   author: sdgilley
-  ms.date: 06/11/2021
+  ms.date: 07/09/21
   ms.custom: jordan-changes
-  ms.openlocfilehash: 8ca3c770daa74b2f9f8f8dfd2edd0e22b6659538
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: a6c9062be083260dd7a492363cb0dd79b2f37cdf
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112030073"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113595905"
 landingContent:
-- title: '概要: モデルのトレーニング'
+- title: 開始
   linkLists:
-  - linkListType: tutorial
+  - linkListType: overview
+    links:
+    - text: Azure Machine Learning とは
+      url: overview-what-is-azure-ml.md
+  - linkListType: quickstart
     links:
     - text: リソースを設定する
       url: quickstart-create-resources.md
+  - linkListType: tutorial
+    links:
     - text: Python SDK でトレーニングする
       url: tutorial-1st-experiment-hello-world.md
     - text: v2 CLI を使用してトレーニングする (プレビュー)
       url: how-to-train-cli.md
-- title: その他のモデル トレーニング オプション
+- title: モデルをトレーニングする
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: ハイパーパラメーター スイープを使用してモデルを最適化する
+    - text: モデルのトレーニングのためにハイパーパラメーターを調整する
       url: how-to-tune-hyperparameters.md
-    - text: マルチステップ ML パイプラインを作成する
+    - text: 再利用可能なコンポーネントからパイプラインを構築する
       url: how-to-create-machine-learning-pipelines.md
+  - linkListType: tutorial
+    links:
     - text: AutoML を使用してトレーニングする
       url: tutorial-first-experiment-automated-ml.md
-    - text: デザイナーを使用してトレーニングする
-      url: tutorial-designer-automobile-price-train-score.md
+    - text: クラウドでトレーニング コードを実行する (v2 CLI プレビュー)
+      url: how-to-train-cli.md
 - title: モデルをデプロイする
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: モデルをデプロイする方法
       url: how-to-deploy-and-where.md
-    - text: マネージド オンライン スコアリング (プレビュー)
+    - text: マネージド エンドポイントを使用したリアルタイム スコアリング (プレビュー)
       url: how-to-deploy-managed-online-endpoints.md
-    - text: マネージド バッチ スコアリング (プレビュー)
+    - text: マネージド エンドポイントを使用したバッチ スコアリング (プレビュー)
       url: how-to-use-batch-endpoint.md
-- title: ML ライフサイクルを管理する
+- title: ML ライフサイクル (MLOps) を管理する
   linkLists:
+  - linkListType: concept
+    links:
+    - text: モデルの管理、系列、および監視
+      url: concept-model-management-and-deployment.md
   - linkListType: how-to-guide
     links:
-    - text: ML 実験を追跡する
+    - text: トレーニング実行を追跡、監視、分析する
       url: how-to-track-monitor-analyze-runs.md
-    - text: ML ライフサイクル管理 (MLOps)
-      url: concept-model-management-and-deployment.md
+    - text: データ インジェスト パイプラインの DevOps
+      url: how-to-cicd-data-ingestion.md
+- title: ML プロジェクトのセキュリティ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: エンタープライズ セキュリティとガバナンス
+      url: concept-enterprise-security.md
+  - linkListType: tutorial
+    links:
+    - text: セキュリティで保護されたワークスペースを作成する
+      url: tutorial-create-secure-workspace.md
+  - linkListType: how-to-guide
+    links:
+    - text: データ ソースに接続する
+      url: how-to-access-data.md
 - title: リファレンス ドキュメント
   linkLists:
   - linkListType: reference
@@ -68,13 +94,21 @@ landingContent:
       url: /python/api/overview/azure/ml/
     - text: REST API
       url: /rest/api/azureml/
-    - text: Machine Learning CLI
+    - text: Machine Learning v2 CLI
       url: /cli/azure/ml
-- title: Studio (クラシック) の探索
+- title: リソース
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Python SDK のコード例
+      url: https://github.com/Azure/azureml-examples/blob/main/python-sdk/README.md
+    - text: v2 CLI のコード例 (プレビュー)
+      url: https://github.com/Azure/azureml-examples/blob/main/cli/README.md
+- title: ML Studio (クラシック) をお探しですか?
   linkLists:
   - linkListType: overview
     links:
-    - text: Studio (クラシック) ランディング
+    - text: ML Studio (クラシック) のドキュメント
       url: classic/index.yml
-    - text: Studio (クラシック) とスタジオの比較
+    - text: Azure Machine Learning と Studio (クラシック)
       url: overview-what-is-machine-learning-studio.md

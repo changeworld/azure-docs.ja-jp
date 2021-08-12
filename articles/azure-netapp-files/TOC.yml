@@ -35,12 +35,20 @@
           href: performance-oracle-single-volumes.md
         - name: Azure NetApp Files のパフォーマンス リファレンス
           items:
+            - name: Linux ダイレクト I/O のベスト プラクティス
+              href: performance-linux-direct-io.md
+            - name: Linux ファイルシステム キャッシュのベスト プラクティス
+              href: performance-linux-filesystem-cache.md
             - name: Linux NFS マウント オプションのベスト プラクティス
               href: performance-linux-mount-options.md
             - name: Linux コンカレンシーのベスト プラクティス
               href: performance-linux-concurrency-session-slots.md
+            - name: Linux NFS 先読みのベスト プラクティス
+              href: performance-linux-nfs-read-ahead.md
             - name: SMB パフォーマンスのベスト プラクティス
               href: azure-netapp-files-smb-performance.md
+            - name: Azure 仮想マシン SKU のベスト プラクティス
+              href: performance-virtual-machine-sku.md
     - name: Azure NetApp Files のコスト モデル
       href: azure-netapp-files-cost-model.md
     - name: ボリューム クォータについて
@@ -211,5 +219,7 @@
       href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: ビデオ
       href: azure-netapp-files-videos.md
+    - name: NFS を使用した Azure Blob Storage、Azure Files、および Azure NetApp Files へのアクセスを比較する
+      href: ../storage/common/nfs-comparison.md?toc=%2fazure%2fazure-netapp-files%2ftoc.json
     - name: Azure Files と Azure NetApp Files の比較
       href: ../storage/files/storage-files-netapp-comparison.md

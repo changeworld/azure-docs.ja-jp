@@ -1,6 +1,6 @@
 ---
-title: Microsoft パートナー センターで貴社の SaaS オファーに技術的な詳細を追加する方法
-description: Microsoft コマーシャル マーケットプレースに、貴社のサービスとしてのソフトウェア (SaaS) オファーの技術的な詳細を指定する方法について説明します。
+title: Azure Marketplace に SaaS オファーの技術的な詳細を追加する
+description: Azure Marketplace でサービスとしてのソフトウェア (SaaS) オファーの技術的な詳細を提供します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 28c0be40387f411286230f94c19fa23a80e650af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 236a7729a8be0fb1ad20be28efd7b45f5796c1dd
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746405"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615165"
 ---
-# <a name="how-to-add-technical-details-for-your-saas-offer"></a>貴社の SaaS オファーの技術的な詳細を追加する方法
+# <a name="add-technical-details-for-a-saas-offer"></a>SaaS オファーの技術的な詳細を追加する
 
 この記事では、Microsoft コマーシャル マーケットプレースから貴社のソリューションに接続する場合の技術的な詳細を入力する方法について説明します。 貴社のオファーを顧客が取得および管理することを選択した場合、Microsoft ではこの接続を使用して、顧客にオファーをプロビジョニングします。 これらの設定の詳細については、[技術情報](plan-saas-offer.md#technical-information)に関するページを参照してください。
 
@@ -44,4 +44,4 @@ ms.locfileid: "96746405"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SaaS オファーのプランを作成する方法](create-new-saas-offer-plans.md)
+- [SaaS オファーのプランを作成する](create-new-saas-offer-plans.md)。
