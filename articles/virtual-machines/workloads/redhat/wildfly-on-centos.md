@@ -11,12 +11,12 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: 7c80634e78a8c37551a57fc8597831898646ef8e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 1f7bc4bcefe7535e531fcd8288a6dce0e93696e0
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900937"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486123"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>クイックスタート: CentOS 8 上の WildFly
 
@@ -104,12 +104,12 @@ Azure CentOS 8 イメージは従量課金制 (PAYG) の VM イメージであ�
 
 サンプル アプリケーションを備えたスタンドアロンの RHEL 仮想マシン
 
-*  <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-standalone-rhel" target="_blank"> JBoss EAP on RHEL (stand-alone VM)</a>
+*  <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-standalone-rhel" target="_blank"> JBoss EAP on RHEL (stand-alone VM)</a>
 
 サンプル アプリケーションを備え、クラスター化された RHEL 仮想マシン
 
-* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-clustered-multivm-rhel" target="_blank"> JBoss EAP on RHEL (clustered, multi-VM)</a>
+* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-clustered-multivm-rhel" target="_blank"> JBoss EAP on RHEL (clustered, multi-VM)</a>
 
 サンプル アプリケーションを備え、クラスター化された RHEL 仮想マシン スケール セット
 
-* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-clustered-vmss-rhel" target="_blank"> JBoss EAP on RHEL (clustered, VMSS)</a>
+* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-clustered-vmss-rhel" target="_blank"> JBoss EAP on RHEL (clustered, VMSS)</a>

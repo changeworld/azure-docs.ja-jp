@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 4d594115139321c8a4ad2b3aa6b065474bd426fa
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: a99595405872ff1b341dfc9277583417564ef6b7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556173"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465081"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのパイプラインとデータセットのサンプル
 
@@ -23,7 +23,7 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は[無料アカウント](https://aka.ms/AMLFree)を作成する
+* Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/)を作成する
 * Azure Machine Learning ワークスペース 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]

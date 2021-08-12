@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/16/2021
-ms.openlocfilehash: 03dbfc96d0df6ac8539b454177cd8f75cda80193
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a412af3020012844a633d01c1b5b928ec4a4758f
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482833"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535049"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake のデータをコピーして変換する
 
@@ -31,7 +31,8 @@ ms.locfileid: "109482833"
 コピー アクティビティの場合、この Snowflake コネクタは次の機能をサポートします。
 
 - Snowflake からのデータのコピー。Snowflake の [COPY into [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) コマンドを利用して、最適なパフォーマンスを実現します。
-- Snowflake へのデータのコピー。Snowflake の [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) コマンドを利用して、最適なパフォーマンスを実現します。 Azure 上の Snowflake がサポートされています。 
+- Snowflake へのデータのコピー。Snowflake の [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) コマンドを利用して、最適なパフォーマンスを実現します。 Azure 上の Snowflake がサポートされています。
+- セルフホステッド Integration Runtime から Snowflake に接続するためにプロキシが必要な場合は、Integration Runtime ホストで HTTP_PROXY と HTTPS_PROXY の環境変数を設定する必要があります。 
 
 ## <a name="get-started"></a>はじめに
 

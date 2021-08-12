@@ -9,18 +9,18 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 5efdfcea7b6d727038bad124368179b9395bfafd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbdfb7e13249de21b890c6f4476cb82a5c91a23e
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97093279"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809906"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics ノートブック
 
 Synapse Studio ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 
 
-Azure Synapse Studio ノートブックでは、次のことができます。
+Synapse Studio ノートブックでは、次のことができます。
 
 * 設定作業をせずに使用を開始する。
 * 組み込みのエンタープライズ セキュリティ機能を使用してデータを安全に保つ。
@@ -46,7 +46,7 @@ Azure Synapse Studio ノートブックでは、次のことができます。
     - [ノートブックをパイプラインに統合する](./spark/../apache-spark-development-using-notebooks.md#integrate-a-notebook)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオでも広く使用されています。 データ分析とビッグ データのシナリオでノートブックを使用する方法の詳細については、次のチュートリアルを参照してください。
   - [ノートブックを作成する](./spark/../../quickstart-apache-spark-notebook.md)
   - [Synapse Studio ノートブックを使用して視覚化を作成する](./spark/../apache-spark-data-visualization-tutorial.md)

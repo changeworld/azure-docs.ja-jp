@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 09d62ea5f2db77c14e8faff44de7fb3ce759c6fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5cb1ec88c96a3e73352e71e81ea3489b5f0918de
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709737"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579003"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最適化済み仮想マシンのサイズ
 
@@ -21,7 +21,7 @@ GPU 最適化済み VM サイズは、単一の GPU、複数の GPU、または�
 
 - [NCv3 シリーズ](ncv3-series.md) と [NC T4_v3 シリーズ](nct4-v3-series.md)のサイズは、コンピューティング集中型 GPU 高速化アプリケーション用に最適化されています。 例としては、CUDA および OpenCL ベースのアプリケーションやシミュレーション、AI、ディープ ラーニングなどが挙げられます。 NC T4 v3 シリーズは、NVIDIA の Tesla T4 GPU と AMD EPYC2 Rome プロセッサを搭載した推論のワークロードにフォーカスしています。 NCv3 シリーズは、NVIDIA の Tesla V100 GPU を搭載した高性能計算と AI のワークロードにフォーカスしています。
 
-- [NDv2 シリーズ](ndv2-series.md)のサイズは、スケールアップとスケールアウトのディープ ラーニング トレーニング アプリケーションにフォーカスしています。 NDv2 シリーズは、Nvidia Volta V100 と Intel Xeon Platinum 8168 (Skylake) プロセッサを使用しています。
+- [ND A100 (v4 シリーズ)](nda100-v4-series.md)は、スケールアップとスケールアウトによるディープ ラーニング トレーニングと高速 HPC アプリケーションに焦点を合わせています。 ND A100 v4 シリーズでは、8 つの NVIDIA A100 を使用します。それぞれが 200 ギガビット Mellanox InfiniBand HDR 接続と 40 GB の GPU メモリで使用できます。
 
 - [NV シリーズ](nv-series.md)と [NVv3 シリーズ](nvv3-series.md)のサイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化および設計されています。 これらの VM は、NVIDIA Tesla M60 GPU によってバックアップされています。
 

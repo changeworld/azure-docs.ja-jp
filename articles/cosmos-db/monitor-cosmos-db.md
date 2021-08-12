@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f18d1850cb6ccf28ff70f826e3d4bfe74ae05c40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 27dd64e510ffe00ce1c3c9f24f60c8c018401ab1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178730"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471041"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB を監視する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -54,9 +54,9 @@ Azure サービスの監視について理解が十分でない場合は、ま�
 
 以下のセクションでは、この記事を基に、Azure Cosmos DB から収集される特定のデータについて説明します。また、Azure のツールを使用してデータの収集を構成し、このデータを分析するための例を示します。
 
-## <a name="azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB
+## <a name="cosmos-db-insights"></a>Cosmos DB 分析情報
 
-Azure Monitor for Azure Cosmos DB は、[Azure Monitor のブック機能](../azure-monitor/visualize/workbooks-overview.md)に基づいており、以下のセクションで説明している、Azure Cosmos DB のために収集されるのと同じ監視データを使用します。 Azure Monitor は、すべての Azure Cosmos DB リソースの全体的なパフォーマンス、障害、容量、および運用の正常性を、一元的な対話型エクスペリエンスで表示するために使用します。また、詳細な分析とアラート生成のために、Azure Monitor のその他の機能を利用します。 詳細については、[Azure Monitor for Azure Cosmos DB の詳細](../azure-monitor/insights/cosmosdb-insights-overview.md)に関するページを参照してください。
+Cosmos DB 分析情報は、[Azure Monitor のブック機能](../azure-monitor/visualize/workbooks-overview.md)に基づいており、以下のセクションで説明する、Azure Cosmos DB 用に収集される監視データと同じものを使用します。 Azure Monitor は、すべての Azure Cosmos DB リソースの全体的なパフォーマンス、障害、容量、および運用の正常性を、一元的な対話型エクスペリエンスで表示するために使用します。また、詳細な分析とアラート生成のために、Azure Monitor のその他の機能を利用します。 詳細については、[Cosmos DB 分析情報を探索する](../azure-monitor/insights/cosmosdb-insights-overview.md)の記事を参照してください。
 
 > [!NOTE]
 > コンテナーを作成するときは、同じ名前で大文字と小文字が異なる 2 つのコンテナーを作成しないようにしてください。 これは、Azure プラットフォームの一部で大文字と小文字が区別されないため、このような名前のコンテナーでテレメトリとアクションの混同や衝突が発生する可能性があるためです。

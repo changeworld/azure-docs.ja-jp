@@ -5,18 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 05/26/2021
 ms.author: victorh
-ms.openlocfilehash: 4692b21333999dfc6fcc8edcbba8af800989ee1d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4543af78b173632e3374567e9a199f182679e8f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325519"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701708"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall の DNS 設定
 
-カスタム DNS サーバーを構成して、Azure Firewall の DNS プロキシを有効にすることができます。 これらの設定は、ファイアウォールをデプロイするときに構成するか、後で **[DNS 設定]** ページから構成します。
+カスタム DNS サーバーを構成して、Azure Firewall の DNS プロキシを有効にすることができます。 これらの設定は、ファイアウォールをデプロイするときに構成するか、後で **[DNS 設定]** ページから構成します。 既定では、Azure Firewall は Azure DNS を使用し、DNS Proxy は無効になっています。
 
 ## <a name="dns-servers"></a>DNS サーバー
 
@@ -29,7 +30,7 @@ DNS サーバーでは、ドメイン名から IP アドレスに管理と解決
 
 1. Azure Firewall の **[設定]** で、 **[DNS 設定]** を選択します。
 2. **[DNS サーバー]** では、仮想ネットワークで以前に指定した既存の DNS サーバーを入力または追加できます。
-3. **[保存]** を選択します。
+3. **[適用]** を選択します。
 
 ファイアウォールによって、名前解決のために、指定された DNS サーバーに DNS トラフィックが送信されるようになりました。
 
@@ -63,7 +64,9 @@ $azFw | Set-AzFirewall
 
 ## <a name="dns-proxy"></a>DNS プロキシ
 
-Azure Firewall が DNS プロキシとして機能するように構成できます。 DNS プロキシは、クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役です。 ネットワーク ルールで FQDN (完全修飾ドメイン名) フィルタリングを有効にする場合は、DNS プロキシを有効にし、ファイアウォールを DNS プロキシとして使用するように仮想マシンの構成を更新します。
+Azure Firewall が DNS プロキシとして機能するように構成できます。 DNS プロキシは、クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役です。
+
+ネットワーク ルールで FQDN (完全修飾ドメイン名) フィルタリングを有効にする場合は、DNS プロキシを有効にし、ファイアウォールを DNS プロキシとして使用するように仮想マシンの構成を更新します。
 
 :::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="カスタム DNS サーバーを使用した DNS プロキシ構成。":::
 
@@ -76,7 +79,13 @@ Azure Firewall が DNS プロキシの場合、次の 2 種類のキャッシュ
 
 - **負のキャッシュ**: DNS 解決が、応答なし、または解決なしという結果になります。 ファイアウォールによって、この情報は 1 時間キャッシュされます。
 
-DNS プロキシによって、すべての解決済み IP アドレスが FQDN からネットワーク ルールに格納されます。 ベスト プラクティスとして、1 つの IP アドレスに解決される FQDN を使用することをお勧めします。  
+DNS プロキシによって、すべての解決済み IP アドレスが FQDN からネットワーク ルールに格納されます。 ベスト プラクティスとして、1 つの IP アドレスに解決される FQDN を使用することをお勧めします。
+
+### <a name="policy-inheritance"></a>ポリシーの継承
+
+ スタンドアロン ファイアウォールに適用されるポリシー DNS 設定は、スタンドアロン ファイアウォールの DNS 設定をオーバーライドします。 子ポリシーは親ポリシーのすべての DNS 設定を継承しますが、親ポリシーをオーバーライドできます。
+
+たとえば、ネットワーク規則で FQDN を使用するには、DNS プロキシを有効にする必要があります。 ただし、親ポリシーで DNS プロキシが有効になって **いない** 場合、この設定をローカルでオーバーライドしない限り、子ポリシーはネットワーク 規則で FQDN をサポートしません。
 
 ### <a name="dns-proxy-configuration"></a>DNS プロキシの構成
 
@@ -163,4 +172,5 @@ $azFw | Set-AzFirewall
 
 ## <a name="next-steps"></a>次のステップ
 
-[ネットワーク ルールでの FQDN フィルタリング](fqdn-filtering-network-rules.md)
+- [Azure Firewall DNS プロキシの詳細](dns-details.md)
+- [ネットワーク ルールでの FQDN フィルタリング](fqdn-filtering-network-rules.md)

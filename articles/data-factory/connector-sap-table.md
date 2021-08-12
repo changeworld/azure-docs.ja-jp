@@ -6,13 +6,13 @@ ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/12/2021
-ms.openlocfilehash: 5a455def13bbf65d01f2f22972c18d39c2b15f3c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 05/26/2021
+ms.openlocfilehash: 6ab548c2b12d36e4b1741042a78c68112a93c8f3
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788124"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580149"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -66,7 +66,7 @@ SAP テーブルから、サポートされている任意のシンク データ
 - Data Factory の SAP テーブル コネクタで使用される SAP ユーザーは、以下のアクセス許可を持っている必要があります。
 
   - Remote Function Call (RFC) の宛先を使用するための認可。
-  - S_SDSAUTH 認可オブジェクトの "実行" アクティビティに対するアクセス許可。 大半の認可オブジェクトについては、SAP Note 40089 を参照できます。 RFC_FUNCTION_SEARCH など、基礎となる NCo コネクタでは特定の RFC が要求されます。 
+  - S_SDSAUTH 認可オブジェクトの "実行" アクティビティに対するアクセス許可。 大半の認可オブジェクトについては、SAP Note 460089 を参照できます。 RFC_FUNCTION_SEARCH など、基礎となる NCo コネクタでは特定の RFC が要求されます。 
 
 ## <a name="get-started"></a>はじめに
 

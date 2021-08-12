@@ -4,22 +4,20 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: 7f82c55260f13c9f9016dcef03f35cded7c4f771
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8b4ce0d6e817546d0517413f967a54aa1e55fdc5
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387375"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113735294"
 ---
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-    > [!NOTE]
-    > [共同作成者](../../../../../role-based-access-control/built-in-roles.md#contributor)ロールと[ユーザー アクセス管理者](../../../../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールの両方にアクセスできる Azureサブスクリプションが必要です。 適切なアクセス許可がない場合は、それらのアクセス許可の付与をアカウント管理者に依頼してください。
+    [!INCLUDE [azure-subscription-permissions](../../common-includes/azure-subscription-permissions.md)]
 * [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能。
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     
-    > [!TIP]
-    > Azure IoT Tools をインストールするときに、Docker のインストールを求められる場合があります。 このメッセージは無視してかまいません。    
+    [!INCLUDE [install-docker-prompt](../../common-includes/install-docker-prompt.md)]   
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。         
 
@@ -31,7 +29,7 @@ ms.locfileid: "110387375"
 ## <a name="overview"></a>概要
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./../../../media/detect-motion-record-video-edge-devices/overview.png" alt-text="関連付けられている推論イベントを IoT Edge Hub に発行する":::
+> :::image type="content" source="./../../../media/detect-motion-record-video-edge-devices/overview.png" alt-text="関連付けられている推論イベントを IoT Edge ハブに発行する":::
 
 上の図は、このクイックスタートでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](./../../../pipeline.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[モーション検出プロセッサ](./../../../pipeline.md#motion-detection-processor) ノードにビデオ フレームを送信します。 RTSP ソースは、同じビデオ フレームを[シグナル ゲート プロセッサ](./../../../pipeline.md#signal-gate-processor) ノードに送信します。このノードは、イベントによってトリガーされるまで閉じたままになっています。
 

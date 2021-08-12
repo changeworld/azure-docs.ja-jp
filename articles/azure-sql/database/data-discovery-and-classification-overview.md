@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6b51d32b691919e0f0947d3ddb58d184424b9ad
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690806"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534412"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "101690806"
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>データの検出と分類とは
 
-データの検出と分類には、Azure の一連の基本的なサービスと新機能が導入されています。 これにより、データベースだけでなくデータの保護も目的として、SQL Database、SQL Managed Instance、および Azure Synapse の新しい情報保護パラダイムが形成されます。 このパラダイムには次のものが含まれます。
+データの検出と分類を使用することで、データベースだけでなくデータの保護も目的として、SQL Database、SQL Managed Instance、および Azure Synapse の新しい情報保護パラダイムを形成することができます。 現在、次の機能がサポートされています。
 
 - **検出と推奨事項:** 分類エンジンは、データベースをスキャンして、機密データが含まれる可能性のある列を識別します。 その後、Azure portal を使って、推奨される分類を確認して適用するための簡単な方法を提供します。
 
@@ -60,7 +60,7 @@ ms.locfileid: "101690806"
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>分類法を定義してカスタマイズする
 
-データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度をお使いの環境に合わせて定義できるようになりました。
+データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度をお使いの環境に合わせて定義できます。
 
 Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行われます。 この処理は、[Azure Security Center](../../security-center/security-center-introduction.md) で、セキュリティ ポリシーの一環として実施されます。 このタスクは、組織のルート管理グループの管理者権限を持つユーザーのみが実行できます。
 

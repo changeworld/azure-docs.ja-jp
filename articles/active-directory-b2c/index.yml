@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: 024c9b54fbbf0a14f8d8ca15862c102d1936bdaa
-  ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+  ms.openlocfilehash: 268d211e2b37b510ceb2d89f4aba62628643ecbb
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/28/2021
-  ms.locfileid: "110613354"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114445335"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -68,11 +68,11 @@ landingContent:
     - text: クイック スタート:Web アプリ
       url: quickstart-web-app-dotnet.md
     - text: ネイティブ/モバイル アプリ
-      url: code-samples.md#mobile-and-desktop-apps
+      url: integrate-with-app-code-samples.md#mobile-and-desktop-apps
     - text: シングルページ アプリ
-      url: code-samples.md#single-page-apps
+      url: integrate-with-app-code-samples.md#single-page-apps
     - text: Web アプリ
-      url: code-samples.md#web-apps-and-apis
+      url: integrate-with-app-code-samples.md#web-apps-and-apis
 - title: Authorization:API の呼出しとセキュリティ保護
   linkLists:
   - linkListType: how-to-guide
@@ -82,7 +82,7 @@ landingContent:
     - text: API の登録とセキュリティ保護
       url: tutorial-web-api-dotnet.md
     - text: サンプル:Web アプリと API
-      url: code-samples.md#web-apps-and-apis
+      url: integrate-with-app-code-samples.md#web-apps-and-apis
     - text: API ゲートウェイとの統合
       url: secure-api-management.md?tabs=app-reg-ga
 - title: セキュリティ、プライバシー、コンプライアンス

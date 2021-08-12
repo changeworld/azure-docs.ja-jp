@@ -2,13 +2,13 @@
 title: Batch アカウントおよび Azure Storage アカウント
 description: Azure Batch アカウントについて、およびそれらがどのように使用されるかについて、開発の観点から説明します。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 3dd071a55e8605b8b5b1cf72c517c9304878e101
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896750"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452051"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch アカウントおよび Azure Storage アカウント
 
@@ -27,7 +27,7 @@ Batch アカウントは、[Azure portal](batch-account-create-portal.md) また
 
 ## <a name="azure-storage-accounts"></a>Azure Storage アカウント
 
-ほとんどの Batch ソリューションでは、リソース ファイルまたは出力ファイルを格納するために Azure Storage を使用します。 たとえば、Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では通常、ストレージ アカウントに存在するリソース ファイルを指定します。 また、ストレージ アカウントでは、処理されるデータと生成される出力データを格納します。
+ほとんどの Batch ソリューションでは、[リソース ファイル](resource-files.md)または出力ファイルを格納するために Azure Storage を使用します。 たとえば、Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では通常、ストレージ アカウントに存在するリソース ファイルを指定します。 また、ストレージ アカウントでは、処理されるデータと生成される出力データを格納します。
 
 Batch では、次の Azure ストレージ アカウントの種類がサポートされます。
 
@@ -38,6 +38,8 @@ Batch では、次の Azure ストレージ アカウントの種類がサポー
 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
 ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
+
+Batch アカウントにストレージ アカウントがリンクされている場合、そのアカウントは "*autostorage アカウント*" とみなされます。 [アプリケーション パッケージ](batch-application-packages.md)の機能を使用する場合は、アプリケーション パッケージの .zip ファイルを保存するために使用されるため、autostorage アカウントが必要です。 これは、[タスク リソース ファイル](resource-files.md#storage-container-name-autostorage)にも使用できます。autostorage アカウントはすでに Batch アカウントにリンクされているため、リソース ファイルにアクセスするための Shared Access Signature (SAS) URL を使用する必要がありません。
 
 ## <a name="next-steps"></a>次のステップ
 

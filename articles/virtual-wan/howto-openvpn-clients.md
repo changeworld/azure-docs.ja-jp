@@ -1,22 +1,22 @@
 ---
 title: Azure Virtual WAN 用に OpenVPN クライアントを構成する
-description: この記事では、Azure Virtual WAN 向け OpenVPN クライアントを構成するときに役立ちます。 Windows、Mac、iOS、Linux のクライアント構成手順が含まれます。
+description: Azure Virtual WAN 用に OpenVPN クライアントを構成する方法について説明します。 このアーティクルには、Windows、Mac、iOS、Linux のクライアント構成手順が含まれます。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 91b4a9a69912f7a5980348cc2b9a874673fa0eb2
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 83c70aca81eaa888186807d43fff5a7bbaccb700
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163393"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579620"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>Azure Virtual WAN 用に OpenVPN クライアントを構成する
 
-この記事では、**OpenVPN &reg; プロトコル** クライアントの構成方法について説明します。 Windows 10 用の Azure VPN クライアントを使用して、OpenVPN プロトコル経由で接続することもできます。 詳しい手順については、[こちら](openvpn-azure-ad-client.md)をご覧ください
+この記事では、**OpenVPN &reg; プロトコル** クライアントの構成方法について説明します。 Windows 10 用の Azure VPN クライアントを使用して、OpenVPN プロトコル経由で接続することもできます。 詳細については、「[Configure a VPN client for P2S OpenVPN connections](openvpn-azure-ad-client.md) (P2S OpenVPN 接続用に VPN クライアントを構成する)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 

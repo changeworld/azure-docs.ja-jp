@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 0a1f4ed46ab9e467a19cfa722a2d345284fdc94a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f31415536e841252686070453c15afab7d574c4
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96463044"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288916"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>クイック スタート:Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -27,7 +27,7 @@ ms.locfileid: "96463044"
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - [TPM デバイスからの暗号化キーの読み取り](quick-create-simulated-device.md#simulatetpm)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。 このクイックスタートの中で、後から [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) をインストールします。 Windows と Linux のどちらでも使用できます。 このクイックスタートでは Windows を使用します。
+- [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-support-on-azure)。 このクイックスタートの中で、後から [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/master/service/) をインストールします。 Windows と Linux のどちらでも使用できます。 このクイックスタートでは Windows を使用します。
 - [Maven 3](https://maven.apache.org/download.cgi)。
 - [Git](https://git-scm.com/download/).
 
@@ -35,7 +35,7 @@ ms.locfileid: "96463044"
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備 
 
-1. [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) がマシンにインストールされていることを確認します。 
+1. [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-support-on-azure) がマシンにインストールされていることを確認します。 
 
 2. Java インストールの環境変数を設定します。 `PATH` 変数には、*jdk1.8.x\bin* ディレクトリの完全なパスを含めます。 初めて Java をインストールするマシンの場合は、`JAVA_HOME` という新しい環境変数を作成し、*jdk1.8.x* ディレクトリの完全なパスに指定します。 Windows マシンでは、このディレクトリは *C:\\Program Files\\Java\\* フォルダーにあります。Windows マシンの **[コントロール パネル]** で **[システム環境変数の編集]** を探し、環境変数を作成または編集することができます。 
 

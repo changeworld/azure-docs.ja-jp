@@ -9,12 +9,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 04/29/2021
-ms.openlocfilehash: 52a431cae26d1d45534abd55f9de5357b31ecbea
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8e8920d2a2ebbf326c9d5d0aba100ad5352ca6c4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749467"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071202"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -34,6 +34,10 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 
 > [!NOTE]
 > SQL Server Developer エディションは、開発およびテスト目的でのみ使用できます。 実稼働環境で実行するには、ライセンスまたはいずれかの SQL Server VM が必要です。
+
+> [!NOTE]
+> Machine Learning Server スタンドアロンのサポートは 2021 年 7 月 1 日に終了します。 これは 6 月 30 日以降、DSVM イメージから削除されます。 既存のデプロイは引き続きソフトウェアにアクセスできますが、サポート終了日に達したため、2021 年 7 月 1 日以降、サポートはなくなります。
+
 
 ### <a name="windows"></a>Windows
 
@@ -62,7 +66,7 @@ SQL Server Management Studio を実行するには、プログラムの一覧か
 
 ### <a name="ubuntu"></a>Ubuntu
 
-Ubuntu DSVM で SQL Server Developer エディションを使用するには、まずそれをインストールする必要があります。 方法については、「[クイック スタート:Ubuntu に SQL Server をインストールし、データベースを作成する](https://docs.microsoft.com/sql/linux/quickstart-install-connect-ubuntu)」で説明しています。
+Ubuntu DSVM で SQL Server Developer エディションを使用するには、まずそれをインストールする必要があります。 方法については、「[クイック スタート:Ubuntu に SQL Server をインストールし、データベースを作成する](/sql/linux/quickstart-install-connect-ubuntu)」で説明しています。
 
 
 

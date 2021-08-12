@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: b10d31cf069bc4f28a1597ec12160fa6ed98b8ce
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 77b35d776b8fcd71f26278a6fda8a102113bd570
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789557"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109844972"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -185,7 +185,7 @@ AKS クラスターを完全に運用するには、次の 2 つのレベルの�
   * `kubeconfig` をプルします。
 * Kubernetes API へのアクセス。 このアクセスは、次のいずれかによって制御されます。
   * [Kubernetes RBAC](#kubernetes-rbac) (従来)。
-  * [Kubernetes の認可のための Azure RBAC と AKS の統合](#azure-rbac-for-kubernetes-authorization-preview)。
+  * [Kubernetes の認可のための Azure RBAC と AKS の統合](#azure-rbac-for-kubernetes-authorization)。
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>AKS リソースへのアクセスを認可するための Azure RBAC
 
@@ -195,7 +195,7 @@ Azure RBAC を使用すると、ユーザー (または ID) に、1 つ以上の
 
 [Azure RBAC を使用して AKS 内の Kubernetes 構成ファイルへのアクセス権を定義します](control-kubeconfig-access.md)。
 
-### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に対する Azure RBAC (プレビュー)
+### <a name="azure-rbac-for-kubernetes-authorization"></a>Kubernetes 認可用 Azure RBAC
 
 Azure RBAC 統合では、AKS で Kubernetes 認可 Webhook サーバーが使用されることにより、Azure ロールの定義とロールの割り当てを使用して、Azure AD と統合された Kubernetes クラスター リソースの権限と割り当てを管理できます。
 
@@ -216,7 +216,7 @@ Azure RBAC 統合では、AKS で Kubernetes 認可 Webhook サーバーが使�
 
 AKS には、次の 4 つの組み込みロールがあります。 これらは、[Kubernetes の組み込みロール](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)に似ていますが、CRD のサポートなど、いくつかの違いがあります。 各 [Azure 組み込みロール](../role-based-access-control/built-in-roles.md)で許可されるアクションの完全な一覧をご覧ください。
 
-| Role                                | 説明  |
+| ロール                                | 説明  |
 |-------------------------------------|--------------|
 | Azure Kubernetes Service RBAC ビューアー  | 名前空間内のほとんどのオブジェクトを表示するための読み取り専用アクセスが許可されます。 <br> ロールまたはロールのバインドを表示することはできません。<br> `Secrets` を表示することはできません。 `Secrets` の内容を読み取ると、名前空間の `ServiceAccount` 資格情報にアクセスでき、それにより名前空間の任意の `ServiceAccount` として API にアクセスできるようになります (特権エスカレーションの一種)。  |
 | Azure Kubernetes Service RBAC ライター | 名前空間内のほとんどのオブジェクトに対する読み取りと書き込みのアクセスが許可されます。 <br> ロールまたはロールのバインドを表示または変更することはできません。 <br> `Secrets` にアクセスし、名前空間内の任意の ServiceAccount としてポッドを実行することが許可されます。そのため、名前空間内の任意の ServiceAccount の API アクセス レベルを取得するために使用できます。 |

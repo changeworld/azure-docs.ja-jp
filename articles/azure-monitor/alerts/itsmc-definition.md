@@ -6,12 +6,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3097023c4b9d19379f44529615a10c100e794700
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601068"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838677"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>IT Service Management ソリューションを使用して Azure を ITSM ツールに接続する
 
@@ -88,7 +88,7 @@ ITSM 接続を作成した後、ITSM を使用して、Azure アラートに基�
 > [!NOTE]
 > ITSM 接続を作成した後、同期プロセスが終了するまで 30 分待機する必要があります。
 
-## <a name="define-a-template"></a>テンプレートを定義する
+### <a name="define-a-template"></a>テンプレートを定義する
 
 特定の作業項目の種類では、ITSM ツールで定義したテンプレートを使用できます。 テンプレートを使用すると、アクション グループの固定値に従って自動的に入力されるフィールドを定義できます。 アクション グループの定義の一部として使用するテンプレートを定義できます。 テンプレートの作成方法については、ServiceNow ドキュメントの情報を参照してください - (こちらに記載されています)[https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html ]。
 
@@ -114,9 +114,7 @@ ITSM 接続を作成した後、ITSM を使用して、Azure アラートに基�
 
 7. **作業項目** の種類を選択します。
 
-8. 標準状態のフィールドに固定値を入力する場合は、 **[カスタム テンプレートを使用する]** を選択します。 それ以外の場合は、 **[テンプレート]** の一覧で既存の [テンプレート](#define-a-template)を選択し、テンプレート フィールドに固定値を入力します。
-
-9. ITSM アクション グループを作成するためのインターフェイスの最後のセクションでは、各アラートに対して作成される作業項目の数を定義できます。
+8. ITSM アクション グループを作成するためのインターフェイスの最後のセクションでは、各アラートに対して作成される作業項目の数を定義できます。
 
    > [!NOTE]
    > このセクションはログ検索アラートのみに関連しています。 その他のすべてのアラートの種類については、アラートごとに 1 つの作業項目を作成します。
@@ -143,6 +141,10 @@ ITSM 接続を作成した後、ITSM を使用して、Azure アラートに基�
      * **[Create individual work items for each Log Entry (Configuration item field is not filled.Can result in large number of work items.)]\(各ログ エントリに対して、個々の作業項目を作成します (構成アイテム フィールドが入力されていません。大量の作業項目が生成される可能性があります)\)** を選んだ場合は、ログ検索アラート クエリの検索結果の各行に対して作業項目が作成されます。 作業項目のペイロードの description プロパティには、検索結果の行が含まれるようになります。
       
      * **[各構成アイテムに対して個々の作業項目を作成する]** を選んだ場合は、すべてのアラートのすべての構成アイテムに新しい作業項目が作成されます。 ITSM システムでは、各構成アイテムに複数の作業項目を含めることができます。 このオプションは、作業項目の種類として **[インシデント]** を選択した後に表示されるチェック ボックスをオンにした場合と同じです。
+9. アクション定義の一部として、ペイロードの一部として定数値を含む定義済みフィールドを定義できます。 作業項目の種類に従って、ペイロードの一部として使用できるオプションが 3 つあります。
+    * **なし**: ServiceNow に対して、追加の事前定義されたフィールドと値なしで、通常のペイロードを使用します。
+    * **既定のフィールドを使用する**: ペイロードの一部として自動的に ServiceNow に送信されるフィールドと値のセットを使用します。 これらのフィールドは柔軟ではなく、値は ServiceNow の一覧に定義されます。
+    * **ServiceNow から保存済みのテンプレートを使用する**: ServiceNow でテンプレート定義の一部として定義されたフィールドと値の事前定義されたセットを使用します。 ServiceNow で既にテンプレートを定義している場合は、**テンプレート** の一覧からテンプレートを使用できます。それ以外の場合は、ServiceNow で定義できます。[詳細情報](#define-a-template)。
 
 10. **[OK]** を選択します。
 

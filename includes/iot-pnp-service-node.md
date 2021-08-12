@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 7ab17f0d34ba7682778120e11aab562e106b5df7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd296000f95ee6a2bb73567a0de46472a7c05492
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95487812"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403591"
 ---
 IoT プラグ アンド プレイを使用すると、基盤となるデバイスの実装に関する知識がなくてもデバイスの機能とやり取りできるので、IoT が簡略化されます。 このクイックスタートでは、Node.js を使用して、ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスに接続して制御する方法について説明します。
 
@@ -59,7 +59,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 ## <a name="run-the-sample-solution"></a>サンプル ソリューションを実行する
 
-「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](../articles/iot-pnp/set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
+「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](../articles/iot-develop/set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
 
 * **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
 * **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。
@@ -156,7 +156,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 このシナリオでは、`Model Id: dtmi:com:example:Thermostat;1`が出力されます。
 
 > [!NOTE]
-> これらのサービス サンプルでは、**IoT Hub サービス クライアント** からの **Registry** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](../articles/iot-pnp/concepts-developer-guide-service.md)を参照してください。
+> これらのサービス サンプルでは、**IoT Hub サービス クライアント** からの **Registry** クラスを使用します。 デジタル ツイン API を含む API の詳細については、[サービス開発者ガイド](../articles/iot-develop/concepts-developer-guide-service.md)を参照してください。
 
 ### <a name="update-a-writable-property"></a>書き込み可能なプロパティを更新する
 

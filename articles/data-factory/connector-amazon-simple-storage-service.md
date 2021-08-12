@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: a8da9960e363e72bd6c108a9d72cfed4cc7769cf
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: f0b7aa98ce9adc49db7739dff00f7784b71c9384
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488719"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066738"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
@@ -39,7 +39,7 @@ ms.locfileid: "109488719"
 具体的には、この Amazon S3 コネクタでは、ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析することをサポートしています。 [コピー時にファイル メタデータを保持する](#preserve-metadata-during-copy)ことも選択できます。 S3 への要求を認証するために、コネクタでは [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) が使用されます。
 
 >[!TIP]
->この Amazon S3 コネクタを使用し、[Google Cloud Storage](connector-google-cloud-storage.md) などの *あらゆる S3 対応プロバイダー* からデータをコピーできます。 リンクされているサービスの構成で、対応するサービスの URL を指定します。
+>*S3 と互換性のあるストレージ プロバイダー* からデータをコピーする場合は、[Amazon S3 と互換性のあるストレージ](connector-amazon-s3-compatible-storage.md)に関する記事をご覧ください。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -66,12 +66,9 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 | accessKeyId | シークレット アクセス キーの ID。 |はい |
 | secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | sessionToken | [一時的なセキュリティ認証情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)の認証を使用する場合に適用されます。 AWS から[一時的なセキュリティ認証情報を要求](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken)する方法について学習します。<br>AWS の一時的な認証情報は、設定に基づいて 15 分から 36 時間で有効期限が切れることにご注意ください。 アクティビティの実行時、特に運用ワークロードの場合に、認証情報が有効であることを確認してください。たとえば、定期的に更新して Azure Key Vault に格納できます。<br>このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ |
-| serviceUrl | 公式の Amazon S3 サービス以外の S3 対応ストレージ プロバイダーからデータをコピーする場合、カスタム S3 エンドポイントを指定します。 たとえば、Google Cloud Storage からデータをコピーするには、`https://storage.googleapis.com` と指定します。 | いいえ |
-| forcePathStyle | 仮想ホスト形式のアクセスではなく、S3 の[パス形式のアクセス](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#path-style-access)を使用するかどうかを示します。 指定できる値は **false** (既定値)、**true** です。<br>公式の Amazon S3 サービス以外の S3 対応ストレージ プロバイダーに接続していて、そのデータ ストアでパス形式のアクセスが必要な場合 ([Oracle Cloud Storage](https://docs.oracle.com/iaas/Content/Object/Tasks/s3compatibleapi.htm) など) は、このプロパティを true に設定します。 パス形式のアクセスが必要かどうかについては、各データ ストアのドキュメントを確認してください。 |いいえ |
+| serviceUrl | カスタム S3 エンドポイント `https://<service url>` を指定します。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
->[!TIP]
->公式の Amazon S3 サービス以外の S3 対応ストレージからデータをコピーする場合、カスタム S3 サービス URL を指定します。
 
 **例: アクセス キー認証の使用**
 

@@ -4,23 +4,23 @@ titleSuffix: Azure Storage
 description: 検討すべき要素の概要と、Veeam Backup and Recovery のストレージ ターゲットおよび回復場所として Azure を使用するために従う手順が示されています
 author: karauten
 ms.author: karauten
-ms.date: 03/15/2021
+ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 0b8bc0defd3314fcff691a049323201732644ff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 334ae28c160a01032d5403e06f40846e8b9d9ed5
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589907"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839187"
 ---
 # <a name="backup-to-azure-with-veeam"></a>Veeam を使用した Azure へのバックアップ
 
 この記事では、Veeam インフラストラクチャと Azure Blob Storage を統合する方法について説明します。 これには前提条件、考慮事項、実装、および運用に関するガイダンスが含まれます。 この記事では、プライマリ サイト内での通常の運用を妨げる障害発生時に、Azure をオフサイト バックアップ ターゲットおよび復元サイトとして使用する方法について説明します。
 
 > [!NOTE]
-> Veeam は、目標復旧時間 (RTO) を短縮するソリューションである Veeam レプリケーションも提供します。 このソリューションでは、Azure 運用環境で障害が発生した場合により迅速に復旧するのに役立つスタンバイ VM を使用できます。 Veeam には、Azure および Office 365 リソースをバックアップするための専用のツールもあります。 これらの機能は、このドキュメントの範囲外です。
+> Veeam からは、より短い目標復旧時間 (RTO) に対応したソリューションとして、Azure VMware Solution ワークロードをサポートする Veeam Backup & Replication も提供されています。 このソリューションでは、Azure 運用環境で障害が発生した場合により迅速に復旧するのに役立つスタンバイ VM を使用できます。 Veeam からは他にも、Direct Restore to Microsoft Azure など、Azure や Office 365 のリソースをバックアップするための専用ツールも提供されています。 これらの機能は、このドキュメントの範囲外です。
 
 ## <a name="reference-architecture"></a>参照アーキテクチャ
 
@@ -39,7 +39,10 @@ ms.locfileid: "104589907"
 | Azure BLOB | v10a | v10a | 該当なし | 10a<sup>*</sup> |
 | Azure Files | v10a | v10a | 該当なし | 10a<sup>*</sup> |
 
-<sup>*</sup>Veeam Backup and Replication では、Azure Data Box に対してのみ REST API がサポートされます。 そのため、Azure Data Box Disk はサポートされません。
+上記の Azure 機能には、以前のバージョンの Veeam 製品でも対応していますが、最良のエクスペリエンスを引き出すためには、最新バージョンの製品を利用することを強くお勧めします。
+
+<sup>*</sup>Veeam Backup and Replication では、Azure Data Box に対してのみ REST API がサポートされます。 そのため、Azure Data Box Disk はサポートされません。 Data Box サポートの詳細については、[こちら](https://helpcenter.veeam.com/docs/backup/hyperv/osr_adding_data_box.html?ver=110)を参照してください。
+
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -96,7 +99,7 @@ Azure をバックアップ ターゲットとして使用する場合は、[Azu
 |**コピーの有効数**     | 3         | 3         | 6         | 6 |
 |**可用性ゾーンの数**     | 1         | 3         | 2         | 4 |
 |**リージョンの数**     | 1         | 1         | 2         | 2 |
-|**セカンダリ リージョンへの手動フェールオーバー**     | 該当なし         | 該当なし         | はい         | はい |
+|**セカンダリ リージョンへの手動フェールオーバー**     | 該当なし         | N/A         | はい         | はい |
 
 **Blob Storage の層:**
 
@@ -114,17 +117,17 @@ Azure をバックアップ ターゲットとして使用する場合は、[Azu
 |コスト係数  |毎月のコスト  |
 |---------|---------|
 |クール ストレージ上の 100 TB のバックアップ データ     |$1556.48         |
-|2 TB (1 日あたりの新しいデータの書き込み量) x 30 日     |$72 (トランザクション内)          |
-|毎月の推定合計     |$1628.48         |
+|2 TB (1 日あたりの新しいデータの書き込み量) x 30 日     |$42 (トランザクション内)          |
+|毎月の推定合計     |$1598.48         |
 |---------|---------|
 |パブリック インターネット経由でのオンプレミスへの 5 TB の 1 回限りの復元   | $527.26         |
 
 > [!Note]
-> この見積額は、米国東部の従量課金制価格を使用して Azure 料金計算ツールで生成されたものであり、Veeam の WAN 転送の既定の 256 kb のチャンク サイズに基づいています。 この例はお客様の要件に当てはまらない場合があります。
+> この見積額は、米国東部の従量課金制価格を使用して Azure 料金計算ツールで生成されたものであり、Veeam の WAN 転送の既定の 512 kb のチャンク サイズに基づいています。 この例はお客様の要件に当てはまらない場合があります。
 
 ## <a name="implementation-guidance"></a>実装ガイダンス
 
-このセクションでは、オンプレミスの Veeam デプロイに Azure Storage を追加する方法についての簡単なガイドを提供します。 詳細なガイダンスと計画に関する考慮事項については、「[Veeam Cloud Connect Backup ガイド](https://helpcenter.veeam.com/docs/backup/cloud/cloud_backup.html?ver=100)」を参照してください。
+このセクションでは、オンプレミスの Veeam デプロイに Azure Storage を追加する方法についての簡単なガイドを提供します。 詳細なガイダンスと計画上の考慮事項については、[キャパシティ層](https://helpcenter.veeam.com/docs/backup/vsphere/capacity_tier.html?ver=110)に関する Veeam のガイダンスを一読することをお勧めします。
 
 1. Azure portal を開き、 **[ストレージ アカウント]** を検索します。 既定のサービス アイコンをクリックすることもできます。
 
@@ -136,11 +139,9 @@ Azure をバックアップ ターゲットとして使用する場合は、[Azu
 
     ![Azure portal 内のストレージ アカウント設定を示します](../media/account-create-1.png)
 
-3. ここでは既定のネットワーク オプションを引き続き使用して、 **[データ保護]** に移ります。 ここで、[論理的な削除] を有効にすることを選択できます。これにより、誤って削除されたバックアップ ファイルを定義された保有期間内に回復し、誤削除または悪意のある削除から保護することができます。
+3. ここではネットワークとデータ保護のオプションを既定値のままにします。 Veeam キャパシティ層の格納先となるストレージ アカウントの論理的な削除を有効に **しない** でください。
 
-    ![ポータルでのデータ保護設定を示します。](../media/account-create-2.png)
-
-4. 次に、Azure へのバックアップ ユース ケースでは **[詳細設定]** 画面の既定の設定を使用することをお勧めします。
+ 4. 次に、Azure へのバックアップ ユース ケースでは **[詳細設定]** 画面の既定の設定を使用することをお勧めします。
 
     ![ポータルの [詳細設定] タブを示します。](../media/account-create-3.png)
 

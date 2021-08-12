@@ -3,13 +3,13 @@ title: Azure Video Analyzer で作業を開始する - Azure
 description: このクイックスタートでは、Azure Video Analyzer の基本的な操作手順について説明します。 IoT Edge デバイスとして Azure VM を使用すると共に、シミュレートしたライブ ビデオ ストリームを使用します。
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/21/2021
-ms.openlocfilehash: 3606442101c8e20173ed3cd18c583fce02a45da1
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 335890f4bb939123290e5dfe9cccbf9f9aef1242
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387087"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605177"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer"></a>クイックスタート: Azure Video Analyzer で作業を開始する
 
@@ -24,14 +24,12 @@ ms.locfileid: "110387087"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-    > [!NOTE]    
-    > [共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールと[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールの両方にアクセスできる Azureサブスクリプションが必要です。 適切なアクセス許可がない場合は、それらのアクセス許可の付与をアカウント管理者に依頼してください。  
+    [!INCLUDE [azure-subscription-permissions](./includes/common-includes/azure-subscription-permissions.md)]
 * [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能。
 
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-> [!TIP] 
-> Azure IoT Tools 拡張機能のインストール中に Docker のインストールを求められる場合があります。 このプロンプトは無視してかまいません。
+[!INCLUDE [install-docker-prompt](./includes/common-includes/install-docker-prompt.md)]
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
@@ -40,7 +38,7 @@ ms.locfileid: "110387087"
 デプロイには約 **20 分** かかります。 完了すると、次のような特定の Azure リソースが Azure サブスクリプションにデプロイされます。
 1. **Video Analyzer アカウント** - この [クラウド サービス](overview.md)は、Video Analyzer エッジ モジュールの登録、録画されたビデオの再生、およびビデオ分析に使用されます。
 1. **ストレージ アカウント** - 録画されたビデオとビデオ分析の格納用です。
-1. **マネージド ID** - これは、上記のストレージ アカウントへのアクセスを管理するために使用されるユーザー割り当て [マネージド ID](/../active-directory/managed-identities-azure-resources/overview.md) です。
+1. **マネージド ID** - これは、上記のストレージ アカウントへのアクセスを管理するために使用されるユーザー割り当て [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) です。
 1. **仮想マシン** - これは、シミュレートされたエッジ デバイスとして機能する仮想マシンです。
 1. **IoT Hub** - IoT アプリケーションと IoT Edge モジュール、さらにそれが管理するデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。
 
@@ -89,11 +87,7 @@ ms.locfileid: "110387087"
 1. **[デバイス]** ノードを展開します。
 1. `avasample-iot-edge-device` を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
-    > [!NOTE]
-    > IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
-        ```
-        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-        ```
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 ## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 

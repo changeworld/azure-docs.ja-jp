@@ -6,13 +6,13 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: a7676dfe6feedc5bb34ab6c96b4c3a03e4feb56c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 05/18/2021
+ms.openlocfilehash: 36fae5b71e9aa5c2c6c252ad1aa306bb64d9aecb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483121"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480082"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) のデータをコピーおよび変換する
 
@@ -39,7 +39,7 @@ ms.locfileid: "109483121"
 
 コピー アクティビティの場合、この Azure Cosmos DB (SQL API) コネクタは次のことをサポートします。
 
-- Azure Cosmos DB [SQL API](../cosmos-db/introduction.md) との間で双方向にデータをコピーします。
+- Azure リソース認証用のキー、サービス プリンシパル、マネージド ID を使用して、Azure Cosmos DB [SQL API](../cosmos-db/introduction.md) との間でデータをコピーします。
 - **挿入** または **upsert** として Azure Cosmos DB に書き込みます。
 - JSON ドキュメントをインポートおよびエクスポートしたり、表形式データセットに、または表形式データセットからデータをコピーしたりします。 例としては、SQL データベースや CSV ファイルなどがあります。 JSON ファイルまたは他の Azure Cosmos DB コレクションをコピー先またはコピー元としてドキュメントをそのままコピーするには、「[JSON ドキュメントのインポートとエクスポート](#import-and-export-json-documents)」を参照してください。
 
@@ -56,7 +56,13 @@ Data Factory は、Azure Cosmos DB に書き込むときに最適なパフォー
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
-Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロパティがサポートされます。
+Azure Cosmos DB (SQL API) コネクタでは、次の認証の種類がサポートされています。 詳細については、対応するセクションをご覧ください。
+
+- [キー認証](#key-authentication)
+- [サービス プリンシパルの認証 (プレビュー)](#service-principal-authentication)
+- [Azure リソース認証用のマネージド ID (プレビュー)](#managed-identity)
+
+### <a name="key-authentication"></a>キー認証
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -99,6 +105,133 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
                 }, 
                 "secretName": "<secretName>" 
             }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="service-principal-authentication-preview"></a><a name="service-principal-authentication"></a>サービス プリンシパルの認証 (プレビュー)
+
+>[!NOTE]
+>現在、サービス プリンシパル認証はデータ フローではサポートされていません。
+
+サービス プリンシパル認証を使用するには、次の手順に従います。
+
+1. 「[アプリケーションを Azure AD テナントに登録する](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)」の手順に従って、Azure Active Directory (Azure AD) にアプリケーション エンティティを登録します。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+
+    - アプリケーション ID
+    - アプリケーション キー
+    - テナント ID
+
+2. サービス プリンシパルに適切なアクセス許可を付与します。 Cosmos DB のアクセス許可の動作例については、「[ファイルとディレクトリのアクセス制御リスト](../cosmos-db/how-to-setup-rbac.md)」を参照してください。 具体的には、ロール定義を作成し、サービス プリンシパル オブジェクト ID を使用してロールをサービス プリンシパルに割り当てます。 
+
+リンクされたサービスでは、次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | type プロパティは **CosmosDb** に設定する必要があります。 |Yes |
+| accountEndpoint | Azure Cosmos DB のアカウント エンドポイントの URL を指定します。 | はい |
+| database | データベースの名前を指定します。 | はい |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
+| servicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類。 使用できる値は **ServicePrincipalKey** と **ServicePrincipalCert** です。 | Yes |
+| servicePrincipalCredential | サービス プリンシパルの資格情報。 <br/> 資格情報の種類として **ServicePrincipalKey** を使用する場合は、アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 <br/> 資格情報として **ServicePrincipalCert** を使用する場合、Azure Key Vault 内の証明書を参照します。 | はい |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、Azure portal の右上隅をマウスでポイントすることで取得できます。 | はい |
+| azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+**例: サービス プリンシパル キー認証の使用**
+
+サービス プリンシパル キーを Azure Key Vault に格納することもできます。
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**例: サービス プリンシパル認証の使用**
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-identities-for-azure-resources-authentication-preview"></a><a name="managed-identity"></a> Azure リソース認証用のマネージド ID (プレビュー)
+
+>[!NOTE]
+>現時点では、マネージド ID 認証はデータ フローではサポートされていません。
+
+データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、Cosmos DB 認証にこのマネージド ID を直接使用できます。 これにより、この指定されたファクトリは、Cosmos DB にアクセスしてデータをコピーできます。
+
+Azure リソースのマネージド ID 認証を使用するには、次の手順に従います。
+
+1. ファクトリと共に生成された **マネージド ID オブジェクト ID** の値をコピーして、[Data Factory のマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
+
+2. マネージド ID に適切なアクセス許可を付与します。 Cosmos DB のアクセス許可の動作例については、「[ファイルとディレクトリのアクセス制御リスト](../cosmos-db/how-to-setup-rbac.md)」を参照してください。 具体的には、ロールの定義を作成し、そのロールをマネージド ID に割り当てる必要があります。
+
+リンクされたサービスでは、次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | type プロパティは **CosmosDb** に設定する必要があります。 |Yes |
+| accountEndpoint | Azure Cosmos DB のアカウント エンドポイントの URL を指定します。 | はい |
+| database | データベースの名前を指定します。 | はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+**例:**
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

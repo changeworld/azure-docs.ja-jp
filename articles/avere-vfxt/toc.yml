@@ -10,7 +10,7 @@
       href: avere-vfxt-deploy-plan.md
     - name: Avere vFXT デプロイの概要
       href: avere-vfxt-deploy-overview.md
-- name: 操作方法ガイド
+- name: 攻略ガイド
   items:
     - name: Avere vFXT の作成を準備する
       href: avere-vfxt-prereqs.md
@@ -37,7 +37,7 @@
     - name: デモ プロジェクト
       href: avere-vfxt-demo-links.md
     - name: Avere vFXT for Azure の FAQ
-      href: avere-vfxt-faq.md
+      href: avere-vfxt-faq.yml
     - name: ディザスター リカバリーの ガイダンス
       href: disaster-recovery.md
     - name: その他のドキュメント

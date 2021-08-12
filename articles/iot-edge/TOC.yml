@@ -292,7 +292,7 @@
         - name: IoT ソリューション アクセラレータ
           href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

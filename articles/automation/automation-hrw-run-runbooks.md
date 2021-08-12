@@ -3,15 +3,15 @@ title: Hybrid Runbook Worker での Azure Automation Runbook の実行
 description: この記事では、Hybrid Runbook Worker を利用し、ローカル データセンターまたはその他のクラウド プロバイダーのコンピューターで Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/10/2021
+ms.date: 05/24/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ab4e623e91987e7fa415b94ff8278a1de4c03700
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: b3f7afde2d681c2516d6915e4edd5c291795224d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945973"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481537"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -339,4 +339,5 @@ Hybrid Runbook Worker で実行している Runbook の問題をトラブルシ�
 
 * Runbook が正常に完了しない場合は、[Runbook の実行エラー](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)に関するトラブルシューティング ガイドを参照してください。
 * PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](/powershell/scripting/overview)を参照してください。
+* Hybrid Runbook Worker で [Azure Policy を使用して Runbook の実行を管理する](enforce-job-execution-hybrid-worker.md)方法について説明します。
 * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

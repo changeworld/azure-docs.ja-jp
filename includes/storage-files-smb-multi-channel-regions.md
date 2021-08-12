@@ -5,16 +5,14 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 04/12/2021
+ms.date: 05/24/2021
 ms.author: rogarana
 ms.custom: references_regions
-ms.openlocfilehash: db04f271c78083bed7e80c507ba22a8911ef2516
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b060752282654644ecf84f1ac9a1f2378f4a3724
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327194"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110487105"
 ---
-Azure ファイル共有の SMB マルチチャネルは、ほとんどのリージョンで広くご利用いただけます。
-- LRS: 政府機関とソブリン リージョンを除くすべてのリージョンで利用できます。
-- ZRS: フランス中部。
+Azure ファイル共有用の SMB マルチチャネルは、Premium ファイル共有 (LRS と ZRS の冗長性) が使用可能なすべてのパブリック クラウド リージョンで使用できます。

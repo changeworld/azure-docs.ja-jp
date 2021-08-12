@@ -1,18 +1,18 @@
 ---
 title: Azure Backup 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Backup に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: v-amallick
 ms.author: v-amallick
 ms.service: backup
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4a3283b4a99a2291149a65394127a3cb91ede4ea
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4530dde1885b508752c49fc4f9aa0638cdfc4389
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029633"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114401903"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-backup"></a>Azure Backup 用の Azure Policy 規制コンプライアンス コントロール
 

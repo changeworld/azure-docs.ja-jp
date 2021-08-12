@@ -2,15 +2,15 @@
 title: 画像リソースを削除する
 description: Azure CLI コマンドを使用してコンテナー イメージ データを削除することによって、レジストリのサイズを効果的に管理する方法について詳しく説明します。
 ms.topic: article
-ms.date: 07/31/2019
-ms.openlocfilehash: af277d0c02960c989b4e9119f2ecbfd8f6d7ce07
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/07/2021
+ms.openlocfilehash: b603645c3b4cef9c4734f1c385bab375a9aec3ff
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783991"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062976"
 ---
-# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLI を使用して Azure Container Registry 内のコンテナー イメージを削除する
+# <a name="delete-container-images-in-azure-container-registry"></a>Azure Container Registry のコンテナー イメージを削除する
 
 Azure コンテナー レジストリのサイズを管理するには、古いイメージ データを定期的に削除する必要があります。 運用環境にデプロイされるコンテナー イメージには、長期間保存する必要があるものと、通常は短期間で削除できるものがあります。 たとえば、ビルドとテストの自動化シナリオでは、デプロイされない可能性のあるイメージでレジストリが短時間のうちにいっぱいになることがあります。このようなイメージは、ビルドとテスト パスが完了したらすぐに消去できるものです。
 
@@ -20,9 +20,10 @@ Azure コンテナー レジストリのサイズを管理するには、古い�
 * [タグ](#delete-by-tag)を指定して削除する:イメージ、タグ、イメージによって参照されている一意のレイヤーすべて、およびイメージに関連付けられている他のすべてのタグが削除されます。
 * [マニフェスト ダイジェスト](#delete-by-manifest-digest)を指定して削除する:イメージ、イメージによって参照されている一意のレイヤーすべて、およびイメージに関連付けられているすべてのタグが削除されます。
 
-削除操作の自動化を支援するために、サンプル スクリプトを用意しています。
-
 これらの概念の概要については、「[レジストリ、リポジトリ、イメージについて](container-registry-concepts.md)」を参照してください。
+
+> [!NOTE]
+> Azure Container Registry は、イメージ データが削除されるとすぐ、関連ストレージに対する課金を停止します。 ただし、関連するストレージ領域は、レジストリにより非同期プロセスを使用して復旧されます。 レジストリがレイヤーをクリーンアップして、ストレージの使用状況の表示が更新されるまでにはしばらく時間がかかります。   
 
 ## <a name="delete-repository"></a>リポジトリを削除する
 
@@ -201,83 +202,19 @@ fi
 
 シーケンスの最後のステップの出力を見るとわかるように、`"tags"` プロパティが空のリストである孤立したマニフェストが存在します。 このマニフェストは、それが参照する一意レイヤーのデータと共に、レジストリ内に依然として存在します。 **このような孤立したイメージとそのレイヤー データを削除するには、マニフェスト ダイジェストを使って削除する必要があります**。
 
-## <a name="delete-all-untagged-images"></a>タグの付いていないイメージをすべて削除する
+## <a name="automatically-purge-tags-and-manifests"></a>タグとマニフェストを自動的に消去する
 
-次の Azure CLI コマンドを使用して、リポジトリ内に存在するタグの付いていないすべてのイメージを一覧表示できます。 `<acrName>` と `<repositoryName>` は、環境に適した値に置き換えます。
+タグとマニフェスト、さらに、そこに関連付けられている一意のレイヤー データを削除する手段として、Azure Container Registry には、次の自動化された方法が用意されています。
 
-```azurecli
-az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
-```
+* 特定の期間よりも古いタグまたは指定の名前フィルターと一致するタグを、`acr purge` コンテナー コマンドを実行してすべて削除する ACR タスクを作成します。 必要に応じて、タグのないマニフェストを削除するよう `acr purge` を構成します。 
 
-スクリプトでこのコマンドを使用すると、リポジトリ内のタグ付けされていないすべてのイメージを削除できます。
+  `acr purge` コンテナーコマンドは現在プレビュー段階です。 詳細については、「[Azure コンテナー レジストリからイメージを自動的に消去する](container-registry-auto-purge.md)」を参照してください。
 
-> [!WARNING]
-> 次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。 (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、これらのスクリプトを実行しないでください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け* スキームの [推奨されるベスト プラクティス](container-registry-image-tag-version.md)を採用することを検討してください。
+* 必要に応じて、タグなしマニフェストを管理するための[アイテム保持ポリシー](container-registry-retention-policy.md)をレジストリごとに設定します。 アイテム保持ポリシーを有効にすると、タグが一切関連付けられておらず、また基になるレイヤー データを持たないイメージのマニフェストが、設定した期間の経過後、レジストリから自動的に削除されます。 
 
-**Bash での Azure CLI**
+  アイテム保持ポリシーは現在、**Premium** コンテナー レジストリのプレビュー機能です。 アイテム保持ポリシーが適用されるのは、ポリシーが有効になった後に作成されたタグなしのマニフェストのみです。 
 
-次の Bash スクリプトは、リポジトリからタグの付いていないイメージをすべて削除します。 Azure CLI と **xargs** が必要です。 既定では、このスクリプトは削除を実行しません。 イメージの削除を有効にするには、`ENABLE_DELETE` の値を `true` に変更します。
-
-```bash
-#!/bin/bash
-
-# WARNING! This script deletes data!
-# Run only if you do not have systems
-# that pull images via manifest digest.
-
-# Change to 'true' to enable image delete
-ENABLE_DELETE=false
-
-# Modify for your environment
-REGISTRY=myregistry
-REPOSITORY=myrepository
-
-# Delete all untagged (orphaned) images
-if [ "$ENABLE_DELETE" = true ]
-then
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags[0]==null].digest" -o tsv \
-    | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
-else
-    echo "No data deleted."
-    echo "Set ENABLE_DELETE=true to enable image deletion of these images in $REPOSITORY:"
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY --query "[?tags[0]==null]" -o tsv
-fi
-```
-
-**PowerShell での Azure CLI**
-
-次の PowerShell スクリプトは、リポジトリからタグの付いていないイメージをすべて削除します。 PowerShell と Azure CLI が必要です。 既定では、このスクリプトは削除を実行しません。 イメージの削除を有効にするには、`$enableDelete` の値を `$TRUE` に変更します。
-
-```powershell
-# WARNING! This script deletes data!
-# Run only if you do not have systems
-# that pull images via manifest digest.
-
-# Change to '$TRUE' to enable image delete
-$enableDelete = $FALSE
-
-# Modify for your environment
-$registry = "myregistry"
-$repository = "myrepository"
-
-if ($enableDelete) {
-    az acr repository show-manifests --name $registry --repository $repository --query "[?tags[0]==null].digest" -o tsv `
-    | %{ az acr repository delete --name $registry --image $repository@$_ --yes }
-} else {
-    Write-Host "No data deleted."
-    Write-Host "Set `$enableDelete = `$TRUE to enable image deletion."
-    az acr repository show-manifests --name $registry --repository $repository --query "[?tags[0]==null]" -o tsv
-}
-```
-
-
-## <a name="automatically-purge-tags-and-manifests-preview"></a>タグとマニフェストの自動消去 (プレビュー)
-
-Azure CLI コマンドのスクリプト作成の代わりに、オンデマンドまたはスケジュールされた ACR タスクを実行して、特定の期間よりも古い、または指定した名前フィルターに一致するすべてのタグを削除します。 詳細については、「[Azure コンテナー レジストリからイメージを自動的に消去する](container-registry-auto-purge.md)」を参照してください。
-
-必要に応じて、タグなしマニフェストを管理するための[アイテム保持ポリシー](container-registry-retention-policy.md)をレジストリごとに設定します。 アイテム保持ポリシーを有効にすると、タグが一切関連付けられておらず、また基になるレイヤー データを持たないイメージのマニフェストが、設定した期間の経過後、レジストリから自動的に削除されます。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Container Registry でのイメージ ストレージの詳細については、「[Azure Container Registry へのコンテナー イメージの保存](container-registry-storage.md)」を参照してください。
 

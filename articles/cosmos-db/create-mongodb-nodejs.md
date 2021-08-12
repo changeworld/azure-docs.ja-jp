@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:Node.js MongoDB アプリを Azure Cosmos DB に接続する
 description: このクイック スタートは、Node.js で記述された既存の MongoDB アプリを Azure Cosmos DB に接続する方法を示します。
-author: markjbrown
-ms.author: mjbrown
+author: gahl-levy
+ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 0240d6e4dc2fcaa4d2009faa9b65aecf2f5b1e02
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 4a0fbc2279b7507c14bf60da0774aa8cf8cad910
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112235439"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354945"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>クイック スタート:既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

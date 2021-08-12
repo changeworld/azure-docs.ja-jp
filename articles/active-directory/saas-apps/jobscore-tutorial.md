@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 275f87163e75c3ded7260229d40a61185877a7d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 932e4db2c7a91c1c6ec6133068741f07d3652c35
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459417"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460776"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>チュートリアル: Azure Active Directory と JobScore の統合
 
@@ -101,7 +101,7 @@ JobScore で Azure AD シングル サインオンを構成するには、次の
 
     ![[JobScore のドメインと URL] のシングル サインオン情報](common/sp-signonurl.png)
 
-    **[サインオン URL]** ボックスに、`https://hire.jobscore.com/auth/adfs/<company name>` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://hire.jobscore.com/auth/adfs/<company id>` という形式で URL を入力します。
 
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[JobScore クライアント サポート チーム](mailto:support@jobscore.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

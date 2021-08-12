@@ -390,11 +390,11 @@ additionalContent:
         - title: プライバシーと GDPR
           links:
             - text: Checklists
-              url: /compliance/regulatory/gdpr-arc-azure-dynamics
+              url: /compliance/regulatory/gdpr-arc-azure-dynamics-windows
             - text: データ主体要求
               url: /compliance/regulatory/gdpr-dsr-Azure
             - text: 侵害通知
-              url: /compliance/regulatory/gdpr-breach-azure-dynamics
+              url: /compliance/regulatory/gdpr-breach-azure-dynamics-windows
             - text: データ保護影響評価
               url: /microsoft-365/compliance/gdpr-dpia-azure
             - text: Azure におけるデータ所在地

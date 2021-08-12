@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eda9b3a65b4db6b058c0279575c0414285216975
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583995"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539966"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java 用 ADAL から MSAL への移行ガイド
 
@@ -34,6 +34,8 @@ MSAL には、次のような利点があります。
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 
 MSAL for Java は、Microsoft ID プラットフォームで使用することをお勧めする認証ライブラリです。 ADAL4J には新しい機能は実装されません。 今後のすべての取り組みは、MSAL の向上に重点が置かれます。
+
+MSAL の詳細と、[Microsoft Authentication Library の概要](msal-overview.md)を確認することができます。
 
 ## <a name="differences"></a>相違点
 

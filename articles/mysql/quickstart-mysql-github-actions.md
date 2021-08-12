@@ -7,14 +7,16 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 807fdbb1844eb6f89f71e639537a65baf8c76ad5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 45fdf924cec8ec236f1285a915946783ae5c5f56
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761765"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113650070"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>クイックスタート: GitHub Actions を使用して Azure MySQL に接続する
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 **適用対象**::::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for MySQL - 単一サーバー :::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for MySQL - フレキシブル サーバー
 
@@ -157,31 +159,30 @@ Azure portal でご自分の Azure Database for MySQL サーバーにアクセ�
     name: MySQL for GitHub Actions
 
     on:
-         push:
-            branches: [ master ]
-        pull_request:
-            branches: [ master ]
+      push:
+          branches: [ master ]
+      pull_request:
+          branches: [ master ]
 
 
-     jobs:
-        build:
-            runs-on: windows-latest
-            steps:
-            - uses: actions/checkout@v1
-            - uses: azure/login@v1
-                with:
-                    creds: ${{ secrets.AZURE_CREDENTIALS }}
+    jobs:
+      build:
+        runs-on: windows-latest
+        steps:
+        - uses: actions/checkout@v1
+        - uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+        - uses: azure/mysql@v1
+          with:
+            server-name: MYSQL_SERVER_NAME
+            connection-string: ${{ secrets.AZURE_MYSQL_CONNECTION_STRING }}
+            sql-file: './data.sql'
 
-            - uses: azure/mysql@v1
-                with:
-                    server-name: MYSQL_SERVER_NAME
-                    connection-string: ${{ secrets.AZURE_MYSQL_CONNECTION_STRING }}
-                    sql-file: './data.sql'
-
-            # Azure logout 
-            - name: logout
-                run: |
-                    az logout
+        # Azure logout 
+        - name: logout
+          run: |
+               az logout
     ```
 
 ## <a name="review-your-deployment"></a>デプロイを確認する

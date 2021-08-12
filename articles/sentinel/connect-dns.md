@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: abecddb6f5469cb4ef463e65d6c74149bf34dca9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b6ad04afce5fb4ead5575d47333525c0f5f8a13
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590235"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075200"
 ---
 # <a name="connect-your-domain-name-server"></a>ドメイン ネーム サーバーへの接続
 
 > [!IMPORTANT]
 > Azure Sentinel の DNS データ コネクタは、現在パブリック プレビューです。
-> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+> [!CAUTION]
+> DNS ソリューションを有効にすると、ターゲット コンピューターで CPU 使用率が高くなる可能性があります。 前述のように、このコネクタは、実稼働設定では使用しないことをお勧めします。 一般提供のために、このコネクタの安定したバージョンに取り組んでいます。
 
 Windows 上で実行されているドメイン ネーム サーバー (DNS) を Azure Sentinel に接続できます。 そのためには、DNS マシンにエージェントをインストールします。 DNS ログを使用すると、分析および監査ログや他の関連データを DNS サーバーから収集し、分析して関連付けることによって、組織の DNS インフラストラクチャに関するセキュリティ、パフォーマンス、および操作に関連する分析情報を得ることができます。
 

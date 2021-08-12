@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.subservice: conditions
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/06/2021
+ms.date: 05/13/2021
 ms.author: rolyon
-ms.openlocfilehash: 93eb1afb061182105766ce4d7c864601883ec0cc
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: df1b585fb0f84dafe26c954386f487e3ceff2bc7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489840"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847330"
 ---
 # <a name="faq-for-azure-role-assignment-conditions-preview"></a>Azure ロール割り当て条件のよくあるご質問 (プレビュー)
 
@@ -38,9 +38,9 @@ ms.locfileid: "109489840"
   
 Azure portal では、管理グループ スコープで条件を編集または表示することはできません。 **条件** 列は、管理グループ スコープに対しては表示されません。 Azure PowerShell と Azure CLI では、管理グループ スコープで条件を追加することができます。
 
-**プレビュー段階で、Azure リソースの Azure AD Privileged Identity Management (PIM) を介して条件はサポートされていますか。**
+**プレビュー段階で、Azure リソースの Privileged Identity Management (PIM) を介して条件はサポートされていますか。**
 
-いいえ。
+はい。 詳細については、「[Privileged Identity Management で Azure リソース ロールを割り当てる](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)」を参照してください。
 
 **従来の管理者には条件がサポートされていますか。**
 

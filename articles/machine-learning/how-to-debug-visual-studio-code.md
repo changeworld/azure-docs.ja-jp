@@ -8,17 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 09/30/2020
-ms.openlocfilehash: 49954224fbdb2d100a809ea5c1d975e1b2e46f56
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/25/2021
+ms.openlocfilehash: 8cabf22e909b5e3e891c0265f952ec6476732ca6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372932"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462699"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
-
-
 
 Visual Studio Code (VS Code) および [debugpy](https://github.com/microsoft/debugpy/) を使用して Azure Machine Learning の実験、パイプライン、およびデプロイを対話形式でデバッグする方法について説明します。
 
@@ -29,21 +27,26 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 ### <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning VS Code 拡張機能 (プレビュー)。 詳しくは、[Azure Machine Learning VS Code 拡張機能の設定](how-to-setup-vs-code.md)に関するページを参照してください。
+
+    > [!IMPORTANT]
+    > Azure Machine Learning VS Code 拡張機能では、既定で 2.0 CLI が使用されます。 このガイドの手順では、1.0 CLI を使用します。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
+
 * [Docker](https://www.docker.com/get-started)
   * Mac および Windows 用の Docker デスクトップ
   * Linux 用 Docker エンジン。
+
+    > [!NOTE]
+    > Windows では、[Linux コンテナーを使用するように Docker を構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)してください。
+
+    > [!TIP]
+    > 必須ではありませんが、Windows の場合は [Linux 用 Windows サブシステム (WSL) 2 で Docker を使用する](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)ことを強くお勧めします。
+
 * [Python 3](https://www.python.org/downloads/)
 
-> [!NOTE]
-> Windows では、[Linux コンテナーを使用するように Docker を構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)してください。
-
-> [!TIP]
-> 必須ではありませんが、Windows の場合は [Linux 用 Windows サブシステム (WSL) 2 で Docker を使用する](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)ことを強くお勧めします。
+### <a name="debug-experiment-locally"></a>ローカルで実験をデバッグする
 
 > [!IMPORTANT]
 > 実験をローカルで実行する前に、Docker が実行されていることを確認してください。
-
-### <a name="debug-experiment-locally"></a>ローカルで実験をデバッグする
 
 1. VS Code で、Azure Machine Learning 拡張機能ビューを開きます。
 1. ワークスペースが含まれているサブスクリプション ノードを展開します。 既存のものがない場合は、拡張機能を使用して [Azure Machine Learning ワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)できます。

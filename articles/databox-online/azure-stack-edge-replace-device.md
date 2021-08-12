@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro デバイスを交換する | Microsoft Docs
-description: Azure Stack Edge Pro デバイスを交換する方法について説明します。
+title: Azure Stack Edge デバイスの交換
+description: Azure Stack Edge デバイスを交換する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2196c9463569dc43092b38de58e0103104efed0c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3c029826ccd4430f935b63b74bc958ad8de4c1e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443473"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460635"
 ---
-# <a name="replace-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスを交換する
+# <a name="replace-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスを交換する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Azure Stack Edge Pro デバイスを交換する方法について説明します。 既存のデバイスにハードウェア障害があるかアップグレードが必要な場合、交換用デバイスが必要です。 
+この記事では、Azure Stack Edge デバイスを交換する方法について説明します。 既存のデバイスにハードウェア障害があるかアップグレードが必要な場合、交換用デバイスが必要です。 
 
 
 この記事では、次の方法について説明します。
@@ -35,7 +35,7 @@ ms.locfileid: "102443473"
 
 既存のデバイスでハードウェア障害が発生した場合は、次の手順に従ってサポート チケットを開きます。
 
-1. デバイスを返却したいことを示して、Microsoft サポートでサポート チケットを開きます。 **Azure Stack Edge Pro のハードウェア** の問題の種類を選択し、 **[ハードウェアの問題]** サブタイプを選択します。  
+1. デバイスを返却したいことを示して、Microsoft サポートでサポート チケットを開きます。 **Azure Stack Edge のハードウェア** の問題の種類を選択し、 **[ハードウェアの問題]** サブタイプを選択します。  
 
     ![サポート チケットを開く](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -67,4 +67,4 @@ ms.locfileid: "102443473"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge Pro デバイスを返却する](azure-stack-edge-return-device.md)方法を確認します。
+- [Azure Stack Edge デバイスを返却する](azure-stack-edge-return-device.md)方法について説明します。

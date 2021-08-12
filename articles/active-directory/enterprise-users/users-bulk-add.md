@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/02/2020
+ms.date: 05/19/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c653f3e8583ef3aadff26cb2b7a3266555d313a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba10cad9db1431d9456120be5e7762ebb24953be
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96547816"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536294"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory でのユーザーの一括作成
 
@@ -36,6 +36,8 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 > [!WARNING]
 > CSV テンプレートを使用してエントリを 1 つだけ追加する場合は、行 3 を保持し、新しいエントリを行 4 に追加する必要があります。
+>
+> 「.csv」ファイル拡張子を追加し、userPrincipalName、passwordProfile、accountEnabled の前に先頭のスペースを削除してください。
 
 ### <a name="csv-template-structure"></a>CSV テンプレートの構造
 

@@ -3,14 +3,14 @@ title: 独自の gRPC モデルを使用してライブ ビデオを分析する
 description: このクイック スタートでは、Video Analyzer を使用して独自の gRPC モデルでライブ ビデオを分析する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/21/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: a9b086f4b2d856e3e534ac2603f61dfbfef31db0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cb901ca96cde0d0a113b07429338464e24720650
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371883"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601683"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---grpc"></a>クイック スタート: 独自のモデルを使用してライブ ビデオを分析する - gRPC
 
@@ -76,7 +76,13 @@ Azure リソースを設定する際に、高速道路のトラフィックの�
 
 ## <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 
-1. デバッグ セッションを開始するには、F5 キーを押します。 [ターミナル] ウィンドウにメッセージが出力されるのを確認できます。
+1. ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. **operations.json** コードは、ダイレクト メソッド pipelineTopologyList と livePipelineList の呼び出しで開始されます。 前回のクイックスタートを完了した後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されてから、一時停止します。 続行するには、Enter キーを押します。
 
    ```

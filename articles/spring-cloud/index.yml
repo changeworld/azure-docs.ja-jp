@@ -8,15 +8,15 @@ metadata:
   ms.service: spring-cloud
   ms.topic: landing-page
   ms.collection: collection
-  author: bmitchell287
-  ms.author: brendm
+  author: karlerickson
+  ms.author: karler
   ms.date: 09/26/2019
-  ms.openlocfilehash: ce74f1020a064b558c647bad488ba0efa8be7620
-  ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+  ms.openlocfilehash: e9a6afd51aa6b4b161e2804b3091692e9e80b1be
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/23/2021
-  ms.locfileid: "104869074"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114455641"
 landingContent:
 - title: Azure Spring Cloud について
   linkLists:

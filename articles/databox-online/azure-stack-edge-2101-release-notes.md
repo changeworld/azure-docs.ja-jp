@@ -1,6 +1,6 @@
 ---
 title: FPGA が組み込まれた Azure Stack Edge Pro 2101 リリース ノート | Microsoft Docs
-description: Azure Stack Edge 2101 リリースの重大な未解決の問題と解決策について説明します。
+description: Azure Stack Edge Pro FPGA 2101 の重要な未解決問題と解決した問題について説明します。
 services: databox
 author: v-dalc
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5c95da8d6ee88786ff983b4963c1cb96394886cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c8882706bdbb6719dbc2550df350096a4970fd8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727551"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461224"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>FPGA が組み込まれた Azure Stack Edge Pro 2101 リリース ノート
 
-次のリリース ノートでは、Field Programmable Gate Array (FPGA) が組み込まれた Azure Stack Edge Pro の 2101 リリースについて、未解決の重大な問題と解決された問題を説明します。
+次のリリース ノートには、Field Programmable Gate Array (FPGA) 組み込みの Azure Stack Edge Pro FPGA の 2101 リリースに関する重要な未解決問題と解決した問題が記載されています。
 
 リリース ノートは、随時更新されます。 回避策を必要とする重大な問題が見つかった場合は、追加されます。 Azure Stack Edge デバイスをデプロイする前に、リリース ノート内の情報を注意深くご確認ください。  
 

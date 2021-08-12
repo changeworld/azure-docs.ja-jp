@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/30/2019
+ms.date: 5/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b84c38b28b51f867160272883465242fc81ff2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cde3940f09d3612ebe6411804fe4780e5bcfc18
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588060"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469200"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 
@@ -38,11 +38,11 @@ ms.locfileid: "100588060"
 
 - サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートを確認する機能が必要ですか。
 
-- ポリシーの影響をデバイスのプラットフォーム、デバイスの状態、クライアント アプリ、サインイン リスク、場所、アプリケーションなどの条件ごとにコンテキスト化できるように、条件ごとのブックの詳細をより深く理解することに関心がありますか。
+- ポリシーの影響をデバイスのプラットフォーム、デバイスの状態、クライアント アプリ、サインイン リスク、場所、アプリケーションなどの条件ごとにコンテキスト化できるように、条件ごとにブックで詳細を確認しながら、条件付きアクセスの理解を深めることに関心がありますか。
 
-- サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートに関するより深い分析情報を取得したいですか。
+- アプリケーション ロールや[アクセス パッケージの割り当てアクティビティ](../governance/entitlement-management-logs-and-reporting.md)に関する 1 年以上の履歴をアーカイブし、レポートを作成したいですか。
 
-- こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](../../azure-monitor/visualize/workbooks-overview.md)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
+こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](../../azure-monitor/visualize/workbooks-overview.md)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
 
 
 
@@ -298,4 +298,5 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/visualize/workbooks-overview.md)
+* [Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/visualize/workbooks-overview.md)
+* [Azure PowerShell を使用してカスタム Azure Monitor クエリを作成する](../governance/entitlement-management-logs-and-reporting.md)。

@@ -68,6 +68,10 @@
       href: tutorial-security-policy.md
     - name: リソースの正常性を調査する
       href: investigate-resource-health.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
     - name: クラウド セキュリティ態勢管理の概念

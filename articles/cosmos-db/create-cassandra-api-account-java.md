@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Java アプリをビルドして Azure Cosmos DB Cassandra API アカウントを作成する
 description: このチュートリアルでは、Java アプリケーションを使用して、Cassandra API アカウントの作成、データベース (キースペースとも呼ばれます) の追加、そのアカウントへのテーブルの追加を行う方法について説明します。
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b17734e83a6a096aedfdfa6aa1485cbddc6642f0
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212707"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355133"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>チュートリアル:Java アプリケーションを使用して Azure Cosmos DB に Cassandra API アカウントを作成し、キーと値のデータを格納する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -41,23 +41,7 @@ ms.locfileid: "102212707"
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成 
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。 
-
-2. **[リソースの作成]**  >  **[データベース]**  >  **[Azure Cosmos DB]** を選択します。 
-
-3. **[新しいアカウント]** ウィンドウで、新しい Azure Cosmos アカウントの設定を入力します。 
-
-   |設定   |推奨値  |説明  |
-   |---------|---------|---------|
-   |id   |   一意の名前を入力します    | この Azure Cosmos アカウントを識別するための一意の名前を入力します。 <br/><br/>指定した ID に cassandra.cosmosdb.azure.com が付加されてコンタクト ポイントが作成されるので、ID は一意であっても識別可能なものを使用してください。         |
-   |API    |  Cassandra   |  API によって、作成するアカウントの種類が決まります。 <br/> **Cassandra** を選択します。この記事では、CQL (Cassandra Query Language) 構文を使用してクエリ可能なワイドカラム データベースを作成するためです。  |
-   |サブスクリプション    |  該当するサブスクリプション        |  お客様がこの Azure Cosmos アカウントに使用したい Azure サブスクリプションを選択します。        |
-   |リソース グループ   | 名前を入力    |  **[新規作成]** を選択し、お客様のアカウントで使用する新しいリソース グループの名前を入力します。 簡略化のため、ID と同じ名前を使用することができます。    |
-   |場所    |  ユーザーに最も近いリージョンを選択    |  お客様の Azure Cosmos アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。    |
-
-   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="ポータルでアカウントを作成する":::
-
-4. **［作成］** を選択します <br/>アカウントの作成には数分かかります。 リソースが作成された後、ポータルの右側に "**デプロイに成功しました**" という通知が表示されます。
+[!INCLUDE [cosmos-db-create-dbaccount-cassandra](includes/cosmos-db-create-dbaccount-cassandra.md)]
 
 ## <a name="get-the-connection-details-of-your-account"></a>アカウントの接続の詳細を取得する  
 

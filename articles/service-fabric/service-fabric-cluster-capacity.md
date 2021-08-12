@@ -4,12 +4,12 @@ description: Service Fabric クラスターの計画時に考慮する必要が�
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 9268dfef15d8302eb31cc1b649c7fd713aab6721
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b04bc99abc2f9864ed22078f809702390d9f547
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732586"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695457"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 
@@ -53,9 +53,9 @@ ms.locfileid: "105732586"
 
 * ***クラスターが複数の Availability Zones にまたがることになるか。***
 
-    Service Fabric では、特定のゾーンに固定されるノード タイプをデプロイすることによって、[Availability Zones](../availability-zones/az-overview.md) にまたがるクラスターをサポートし、アプリケーションの高可用性を確保します。 Availability Zones には追加のノード タイプの計画が必要で、最小要件を満たす必要があります。 詳細については、[複数の Availability Zones にまたがる Azure Service Fabric クラスターのプライマリ ノード タイプに推奨されるトポロジ](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)に関するページを参照してください。 
+    Service Fabric では、特定のゾーンに固定されるノード タイプをデプロイすることによって、[Availability Zones](../availability-zones/az-overview.md) にまたがるクラスターをサポートし、アプリケーションの高可用性を確保します。 Availability Zones には追加のノード タイプの計画が必要で、最小要件を満たす必要があります。 詳細については、「[Availability Zones をまたがる Azure Service Fabric クラスターのプライマリ ノードのタイプに推奨されるトポロジ](service-fabric-cross-availability-zones.md#recommended-topology-for-spanning-a-primary-node-type-across-availability-zones)」を参照してください。
 
-クラスターの最初の作成でノード タイプの数とプロパティを決定するときには、いったんクラスターをデプロイすれば、(プライマリ以外の) ノード タイプをいつでも追加、変更、または削除できることを念頭に置いてください。 実行中のクラスターで[プライマリ ノード タイプを変更することもできます](service-fabric-scale-up-primary-node-type.md) (ただし、運用環境でそうした操作を行うには、非常に多くの計画と注意が必要です)。
+クラスターの最初の作成でノード タイプの数とプロパティを決定するときには、いったんクラスターをデプロイすれば、(プライマリ以外の) ノード タイプをいつでも追加、変更、または削除できることを念頭に置いてください。 実行中のクラスターでも、[プライマリ ノード タイプ](service-fabric-scale-up-primary-node-type.md)はスケールアップまたはスケールダウンできます。ただし、そのためには、新しいノード タイプを作成し、ワークロードを移動してから、元のプライマリ ノード タイプを削除する必要があります。
 
 ノード タイプのプロパティに関するその他の考慮事項は、持続性レベルです。これにより、Azure インフラストラクチャ内でノード タイプの VM が持つ権限が決まります。 次に説明するように、クラスターのために選択した VM のサイズと、個々のノード タイプに割り当てたインスタンス数を参考にすると、ノード タイプごとに適切な耐久性レベルを決定する助けになります。
 

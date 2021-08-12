@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8ae2d31bcb6cd17d020bf1602b5280f1db927f3f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566072"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496200"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -130,6 +130,10 @@ HDInsight は、必要に応じて、HDInsight Enterprise セキュリティ パ
 * `HiveCLI` が `Beeline` に置き換えられます。
 
 その他の変更内容については、[HDInsight 4.0 に関するお知らせ](../hdinsight-version-release.md)を参照してください。
+
+## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+
+「[HDInsight 3.6 to 4.0 troubleshooting guide for Hive workloads](./interactive-query-troubleshoot-migrate-36-to-40.md) (HDInsight 3.6 から 4.0 の Hive ワークロードのトラブルシューティング ガイド)」では、HDInsight 3.6 から HDInsight 4.0 へ Hive ワークロードを移行する際に直面する一般的な問題に対する回答を示しています。
 
 ## <a name="further-reading"></a>関連項目
 

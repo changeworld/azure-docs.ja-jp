@@ -1,19 +1,19 @@
 ---
 title: Azure Site Recovery を使用して Linux VM のフェールバック用にマスター ターゲット サーバーをインストールする
 description: Azure Site Recovery を使用して、VMware VM の Azure へのディザスター リカバリー中に、オンプレミス サイトへのフェールバック用に Linux マスター ターゲット サーバーを設定する方法について説明します。
-author: mayurigupta13
 services: site-recovery
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.author: mayg
-ms.openlocfilehash: 1404b2dd035b7fd4b06c5f959fd9ba45f6be9c75
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: b8264221db1fcfee8d47ac0d8f159d6b7a6140fe
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164977"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577089"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -335,7 +335,16 @@ VMware ツールまたは open-vm-tools は、データストアを検出でき�
 
 ### <a name="upgrade-the-master-target-server"></a>マスター ターゲット サーバーをアップグレードする
 
-インストーラーを実行します。 マスター ターゲットにエージェントがインストールされていることが自動的に検出されます。 アップグレードするには、 **[Y]** を選択します。セットアップが完了した後、次のコマンドを使用して、インストールされているマスター ターゲットのバージョンを確認します。
+インストーラーを実行すると、エージェントがマスター ターゲットにインストールされていることが自動的に検出されます。 次の手順に従って、アップグレードを完了してください。
+1. 構成サーバーから linux マスター ターゲットに tar.gz をコピーします
+2. 次のコマンドを実行して、実行しているバージョンを検証します: cat /usr/local/.vx_version
+3. tar を抽出します: tar -xvf latestlinuxmobsvc.tar.gz
+4. 変更を実行するためのアクセス許可を付与します: chmod 755 ./install
+5. アップグレード スクリプトを実行します: sudo ./install
+6. インストーラーによって、エージェントがマスター ターゲットにインストールされていることが検出されます。 アップグレードするには、**[Y]** を選択します。
+7. 新しいバージョンのエージェントが実行されていることを検証します: cat /usr/local/.vx_version
+
+セットアップが完了した後、次のコマンドを使用して、インストールされているマスター ターゲットのバージョンを確認します。
 
 `cat /usr/local/.vx_version`
 

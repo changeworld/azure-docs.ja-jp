@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ba7892c8afbe8e557c7dcf9aa3bd663f53a5728f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 27aff24abddbca3317e252a76ac11c062f57213a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834752"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071598"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -325,9 +325,9 @@ Java エージェントおよび SDK では、既定ではどのサンプリン�
 }
 ```
 
-#### <a name="configuring-java-sdk"></a>Java SDK の構成
+#### <a name="configuring-java-2x-sdk"></a>Java 2.x SDK の構成
 
-1. 最新の [Application Insights Java SDK](./java-get-started.md) を使用して Web アプリケーションをダウンロードして構成します。
+1. 最新の [Application Insights Java SDK](./java-2x-get-started.md) を使用して Web アプリケーションをダウンロードして構成します。
 
 2. `ApplicationInsights.xml` ファイルに次のスニペットを追加することによって、**固定レート サンプリング モジュールを有効にします**。
 

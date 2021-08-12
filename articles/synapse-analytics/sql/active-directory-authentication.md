@@ -9,16 +9,16 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 92d06a95dcd32501a05dfd50e81f768f59742bd5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c547f3b2657d31e4d25dbb884a5a75c2c8b9c5f2
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674336"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112452586"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory 認証を使用して Synapse SQL での認証を行う
 
-Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して [Azure Synapse Analytics](../overview-faq.md) に接続するメカニズムです。
+Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して [Azure Synapse Analytics](../overview-faq.yml) に接続するメカニズムです。
 
 Azure AD 認証を使用すると、Azure Synapse にアクセスできるユーザーの ID を一元的に管理して、アクセス許可の管理を簡略化できます。 次のような利点があります。
 

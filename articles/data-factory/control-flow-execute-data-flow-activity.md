@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 05/06/2021
-ms.openlocfilehash: 78a40b3a84b0d3df19b1fabc6c3485f12d8c3dbb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 05/20/2021
+ms.openlocfilehash: 3793fb3495ca9df9ab8ed408090a8f285f6488b0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481753"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464649"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -103,6 +103,10 @@ Azure Synapse Analytics をシンクまたはソースとして使用する場�
 データ フローのグループ化機能を使用すると、シンクの実行順序を設定できるほか、同じグループ番号を使用してシンクをグループ化できます。 グループを管理しやすくするため、シンクを同じグループ内で並列で実行するように ADF に要求できます。 また、いずれかのシンクでエラーが発生しても続行するようにシンク グループを設定することもできます。
 
 データ フロー シンクの既定の動作では、各シンクが逐次実行され、シンクでエラーが発生した場合はデータ フローが失敗します。 さらに、データ フロー プロパティでシンクに異なる優先順位を設定しない限り、すべてのシンクは既定で同じグループに設定されます。
+
+### <a name="first-row-only"></a>First row only (先頭行のみ)
+
+このオプションは、"アクティビティへの出力" でキャッシュ シンクが有効になっているデータ フローでのみ使用できます。 パイプラインに直接挿入されるデータ フローからの出力は、2 MB に制限されます。 "最初の行のみ" を設定すると、データ フロー アクティビティの出力をパイプラインに直接挿入する際に、データ フローからのデータ出力を制限することができます。
 
 ![シンクのプロパティ](media/data-flow/sink-properties.png "シンク プロパティの設定")
 

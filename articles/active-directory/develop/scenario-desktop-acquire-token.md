@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 99a36eec959fc3f0c669f50b77d7707011e8dac0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 797b7e376774f0295fa0d7e158cd9ea3df68d25d
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165103"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575975"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -286,7 +286,7 @@ WithParentActivityOrWindow(object parent).
 - ``ForceLogin`` により、このユーザー プロンプトが不要な場合でも、アプリケーション開発者がサービスによってユーザーに資格情報の入力を求めることができます。 このオプションは、トークンの取得に失敗した場合に、ユーザーが再度サインインできるようにするのに役立ちます。 この場合、MSAL から ID プロバイダーに `prompt=login` が送信されます。 これは、アプリケーションの特定の部分にアクセスするたびにユーザーが再度サインインすることが組織のガバナンスで求められる、セキュリティを重視するアプリケーションで使用されることがあります。
 - ``Create`` により、`prompt=create` を ID プロバイダーに送信することで、外部 ID に使用されるサインアップ エクスペリエンスがトリガーされます。 このプロンプトは、Azure AD B2C アプリには送信しないでください。 詳細については、「[セルフサービス サインアップのユーザー フローをアプリに追加する](../external-identities/self-service-sign-up-user-flow.md)」を参照してください。
 - ``Never`` (.NET 4.5 および WinRT の場合のみ) はユーザーに入力を求めませんが、代わりに非表示の埋め込み Web ビューに格納された Cookie の使用を試行します。 詳細については、MSAL.NET の Web ビューを参照してください。 このオプションを使用すると、失敗する場合があります。 その場合、`AcquireTokenInteractive` は、UI 操作が必要であることを通知するために例外をスローします。 別の `Prompt` パラメーターを使用することが必要になります。
-- ``NoPrompt`` は、ID プロバイダーにプロンプトを送信しません。 このオプションは、Azure Active Directory (Azure AD) B2C のプロファイルの編集ポリシーに対してのみ有効です。 詳細については、[Azure AD B2C での詳細](https://aka.ms/msal-net-b2c-specificities)に関するページを参照してください。
+- ``NoPrompt`` では ID プロバイダーにプロンプトは送信されません。そのため、ID プロバイダー側が、ユーザーに提示する最適なサインイン エクスペリエンス (シングル サインオンまたはアカウントの選択) を決定します。 また、このオプションは、Azure Active Directory (Azure AD) B2C のプロファイルの編集ポリシーでは必須です。 詳細については、[Azure AD B2C での詳細](https://aka.ms/msal-net-b2c-specificities)に関するページを参照してください。
 
 #### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
 
@@ -513,7 +513,7 @@ pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
 
 # <a name="python"></a>[Python](#tab/python)
 
-MSAL Python では、対話型のトークン取得メソッドは直接的には提供されません。 代わりに、アプリケーションにユーザー対話フローの実装内で承認要求を送信することを要求して、認証コードを取得します。 このコードは、その後、トークンを取得するために `acquire_token_by_authorization_code` メソッドに渡すことができます。
+MSAL Python 1.7 以降では、対話型のトークン取得メソッドが提供されます。
 
 ```python
 result = None
@@ -524,8 +524,7 @@ if accounts:
     result = app.acquire_token_silent(config["scope"], account=accounts[0])
 
 if not result:
-    result = app.acquire_token_by_authorization_code(
-         request.args['code'],
+    result = app.acquire_token_interactive(  # It automatically provides PKCE protection
          scopes=config["scope"])
 ```
 
@@ -538,7 +537,6 @@ if not result:
 ### <a name="constraints"></a>制約
 
 - 統合 Windows 認証は、"*フェデレーション+* " ユーザー (Active Directory で作成され、Azure AD によってサポートされているユーザー) に対してのみ使用できます。 Azure AD で直接作成され、Active Directory のサポートのないユーザー ("*マネージド*" ユーザーと呼ばれます) はこの認証フローを使用できません。 この制限は、ユーザー名とパスワードのフローには影響しません。
-- IWA は、.NET Framework、.NET Core、およびユニバーサル Windows プラットフォーム (UWP) の各プラットフォーム用に作成されたアプリを対象としています。
 - IWA では[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md) はバイパスされません。 MFA が構成されている状況では、MFA チャレンジが必要な場合に IWA が失敗する可能性があります。これは、MFA でユーザーの操作が必要になるためです。
 
     IWA は非対話型ですが、MFA にはユーザーの操作が必要です。 ID プロバイダーが MFA の実行を要求するタイミングの制御は、ユーザーではなくテナント管理者が行います。 弊社の観測によると、MFA が必要なのは、他の国/地域からサインインする場合と VPN 経由で企業ネットワークに接続されていない場合です。ただし、VPN 経由で接続されている場合であっても MFA が必要になる可能性があります。 確定的なルール セットを想定しないでください。 Azure AD では、AI を使用して、MFA が必要かどうかを継続的に学習します。 IWA が失敗した場合は、対話型認証やデバイス コード フローなどのユーザー プロンプトにフォールバックしてください。

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4bf27ffc888e189f15e1c435309cbeddb1c11fec
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 865d82caebe72a0eba916a9d6d5f2e76ecd552ba
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830342"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536467"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -94,7 +94,7 @@ Runbook では、次のパラメーターが使用されます。
 
 | パラメーター | Status | 説明 |
 | ------- | ----- | ----------- |
-| `Location` | Mandatory | Log Analytics ワークスペースの場所。 |
+| `Location` | Mandatory | スクリプトが実行される Automation アカウントの場所。 |
 | `ResourceGroupName` | Mandatory | Automation アカウントのリソース グループ。 |
 | `AccountName` | Mandatory | Hybrid Run Worker が登録される Automation アカウントの名前。 |
 | `CreateLA` | Mandatory | true の場合、`WorkspaceName` の値を使用して Log Analytics ワークスペースを作成します。 false の場合、`WorkspaceName` の値は既存のワークスペースを参照する必要があります。 |

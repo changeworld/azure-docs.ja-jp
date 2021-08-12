@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) での分離に関するクラスタ
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: e51689d33711f127f775c63c9d7fc8ad4c901604
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3b6295c1f1ae424c77c32876e32609a7d492e07d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105172"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461641"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) でのクラスターの分離に関するベスト プラクティス
 
@@ -72,7 +72,7 @@ Kubernetes では、同じクラスター内のチームとワークロードを
 
 現在、Kubernetes 環境は悪意のあるマルチテナントの使用に対して完全に安全ではありません。 マルチテナント環境では、共通の共有インフラストラクチャ上で複数のテナントが動作しています。 すべてのテナントを信頼できない場合は、テナントが他のテナントのセキュリティやサービスに影響を与えることを防ぐために、追加の計画が必要になります。
 
-*"ポッドのセキュリティ ポリシー"* やノード用の Kubernetes RBAC などの追加のセキュリティ機能により、悪用を効率的にブロックします。 悪意のあるマルチテナント ワークロードを実行する場合の真のセキュリティのために、ハイパーバイザーのみを信頼する必要があります。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 
+ノード用の Kubernetes RBAC などの追加のセキュリティ機能により、悪用を効率的にブロックします。 悪意のあるマルチテナント ワークロードを実行する場合の真のセキュリティのために、ハイパーバイザーのみを信頼する必要があります。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 
 
 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
 
