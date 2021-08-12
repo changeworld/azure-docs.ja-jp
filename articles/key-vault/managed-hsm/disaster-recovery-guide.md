@@ -2,18 +2,18 @@
 title: Managed HSM に影響を与える Azure サービスの中断が発生した場合の対処方法 - Azure Key Vault | Microsoft Docs
 description: Managed HSM に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 8c284e9993002f6e05e41ca00d00b388feef8f82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mbaldwin
+ms.openlocfilehash: 5f2ea76f9c1a27485e31a3e90f27b1d5d4e424cb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376005"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443541"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Managed HSM のディザスター リカバリー
 

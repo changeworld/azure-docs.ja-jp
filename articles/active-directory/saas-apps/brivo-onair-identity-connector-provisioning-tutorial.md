@@ -2,21 +2,21 @@
 title: 'チュートリアル: Azure Active Directory での自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する | Microsoft Docs'
 description: Brivo Onair Identity Connector に対してユーザー アカウントが自動的にプロビジョニングおよびプロビジョニング解除されるように、Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
-ms.author: Zhchia
-ms.openlocfilehash: 4f230a70ae87c7c0ec9db347e7cf975c0252bb18
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: thwimmer
+ms.openlocfilehash: c44b359c520c8b5ccb7274a9c5c1b154586b3e76
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998091"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764527"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する
 

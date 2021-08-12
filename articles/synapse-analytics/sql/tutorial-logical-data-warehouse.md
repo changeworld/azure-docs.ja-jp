@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/28/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: b38b5303f21cb31115a2279648c8d631e31aa8bf
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f0f2e63a32c30c807f865a46154123643809de74
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459316"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442847"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>チュートリアル: サーバーレス SQL プールを使用して論理データ ウェアハウスを作成する
 
@@ -41,7 +41,7 @@ CREATE DATABASE Ldw
 
 データ ソースとは、データの格納場所とデータ ソースに対する認証方法を記述した接続文字列情報のことです。
 
-次に示したのは、パブリックな [ECDC COVID 19 Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/)を参照するデータ ソース定義の一例です。
+次に示したのは、パブリックな [ECDC COVID 19 Azure オープン データセット](/azure/open-datasets/dataset-ecdc-covid-cases)を参照するデータ ソース定義の一例です。
 
 ```sql
 CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
@@ -246,4 +246,3 @@ DENY ADMINISTER DATABASE BULK OPERATIONS TO [CovidAnalyst];
 
 - サーバーレス SQL プールを Power BI Desktop に接続してレポートを作成する方法については、[サーバーレス SQL プールの Power BI Desktop への接続とレポートの作成](tutorial-connect-power-bi-desktop.md)に関する記事をご覧ください。
 - サーバーレス SQL プールで外部テーブルを使用する方法については、「[Synapse SQL で外部テーブルを使用する](develop-tables-external-tables.md?tabs=sql-pool)」をご覧ください。
-

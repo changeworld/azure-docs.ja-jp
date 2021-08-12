@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/31/2020
+ms.date: 07/23/2021
 ms.author: inhenkel
-ms.openlocfilehash: e7c35e079a6f4bf6c40992debace60e10631a8ba
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 9b45671496f114eaf708aad92def220a3b81349e
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962049"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690209"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - .NET
 
@@ -35,9 +35,10 @@ ms.locfileid: "105962049"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Visual Studio がインストールされていない場合は、[Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) を入手できます。
-- [Media Services アカウントを作成する](./account-create-how-to.md)<br/>Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
-- 「[Azure CLI で Azure Media Services API にアクセスする](./access-api-howto.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
+- [Visual Studio Code for Windows/macOS/Linux](https://code.visualstudio.com/)、または [Visual Studio 2019 for Windows/Mac](https://visualstudio.microsoft.com/) をインストールします。
+- [.NET 5.0 SDK](https://dotnet.microsoft.com/download) をインストールします。
+- [Media Services アカウントを作成する](./account-create-how-to.md) **API アクセス** の詳細情報 (JSON 形式) をコピーするか、Media Services アカウントに接続するうえで必要な値をこのサンプルで使用する *.env* ファイルの書式に保存しておくようにしてください。
+- [Azure CLI を使用した Azure Media Services API へのアクセス](./access-api-howto.md)に関するページの手順に従い、資格情報を保存します。 これらは、このサンプルで API にアクセスする際や、 *.env* ファイルの書式に入力する際に必要になります。
 
 ## <a name="download-and-configure-the-sample"></a>サンプルをダウンロードして構成する
 
@@ -49,7 +50,7 @@ ms.locfileid: "105962049"
 
 サンプルは、[EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) フォルダーにあります。
 
-ダウンロードしたプロジェクトに含まれる [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) を開きます。 [API へのアクセス](./access-api-howto.md)に関するページで取得した資格情報の値に置き換えます。
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 サンプルは、次のアクションを実行します。
 

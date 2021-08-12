@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c1ccd2df3a1fd6b2f1f1cb5b2d3250e8bbfcc327
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca04b3bc0a71dfde11fe6c830912d95b7e9f537d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549738"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "114288250"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Linux 仮想マシンを作成する
 
@@ -63,6 +63,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
     ![仮想マシンの IP アドレスのコピー方法を示すスクリーンショット](./media/quick-create-portal/ip-address.png)
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 

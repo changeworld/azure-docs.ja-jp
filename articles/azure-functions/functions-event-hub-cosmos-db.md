@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0d5d285812aa61cf9fe684b268dc07718f6d1a1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce87685977e3a5f15fb02062ab4601593f25ffc3
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708749"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285982"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>チュートリアル:イベント ハブ トリガーと Azure Cosmos DB 出力バインドを使用して Java で関数を作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "101708749"
 
 このチュートリアルを完了するには、以下をインストールする必要があります。
 
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8
 - [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
 - [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) バージョン 2.6.666 以降[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 

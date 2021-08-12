@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: c4126a99b38021ea7399bb486b8942423f0a809c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 62015554f7e8e17e1443cc85812b3f37ee64f0a4
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067116"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551706"
 ---
 # <a name="register-and-scan-sap-ecc-source"></a>SAP ECC ソースを登録してスキャンする
 
@@ -105,6 +105,8 @@ SAP ECC ソースでサポートされている認証は **基本認証** のみ
     e.  **[JCo library path]\(JCo ライブラリ パス\)** : JCo ライブラリが配置されているディレクトリ パス
 
     f.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする SAP ECC ソースのサイズによって異なります。
+    > [!Note] 
+    > 経験則として、テーブル 1,000 個ごとに 1 GB のメモリを用意してください
 
     :::image type="content" source="media/register-scan-sapecc-source/scan-sapecc.png" alt-text="SAPECC をスキャンする" border="true":::
 

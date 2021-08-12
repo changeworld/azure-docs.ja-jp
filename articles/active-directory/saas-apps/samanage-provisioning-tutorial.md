@@ -2,21 +2,21 @@
 title: チュートリアル:Azure Active Directory を使用した自動ユーザー プロビジョニングに対応するように SolarWinds Service Desk (旧称 Samanage) を構成する | Microsoft Docs
 description: Azure AD から SolarWinds Service Desk (旧称 Samanage) にユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
-ms.author: Zhchia
-ms.openlocfilehash: d68811c5e7b92698944d7b1b1736eef864d97d20
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.author: thwimmer
+ms.openlocfilehash: 3999575e13a1bb12478f6a9270dafa7c18c22f35
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802303"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759660"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように SolarWinds Service Desk (旧称 Samanage) を構成する
 
@@ -156,7 +156,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 ## <a name="change-log"></a>ログの変更
 
-* 2020 年 9 月 14 日 - https://github.com/ravitmorales に従い、2 つの SaaS チュートリアルに記載されている会社名を Samanage から SolarWinds Service Desk (旧称 Samanage) に変更しました。
+* 2020 年 9 月 14 日 - `https://github.com/ravitmorales` に従い、2 つの SaaS チュートリアルに記載されている会社名を Samanage から SolarWinds Service Desk (旧称 Samanage) に変更しました。
 * 2020 年 4 月 22 日 - 基本認証から有効期間の長いシークレット トークンへ承認方法を更新しました。
 
 ## <a name="additional-resources"></a>その他のリソース

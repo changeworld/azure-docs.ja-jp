@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: 66b9e6656b7bebd488c6e710f91254ee985d06b8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fc2978bb78f25cae8bf42af255bbc3186082fc72
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486549"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444577"
 ---
 前提条件の一環として、サンプル コードをフォルダーにダウンロードしてあります。 サンプル ファイルを確認して編集するには、これらの手順に従います。
 
@@ -28,7 +28,7 @@ ms.locfileid: "110486549"
         * ダイレクト メソッドを呼び出して、リソースをクリーンアップします。
 1. **operations.json** ファイルを編集します。
 
-    * パイプラインへのリンクを変更します。 <br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-motion-file-sink/topology.json" `
+    * パイプラインへのリンクを変更します。 <br/>`"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-motion-file-sink/topology.json" `
     * livePipelineSet で、前のリンクの値と一致するようにパイプライン トポロジの名前を編集します。 <br/>`"topologyName" : "EVRToFilesOnMotionDetection" `
     * PipelineTopologyDelete の下で、名前を編集します。 <br/>`"name": "EVRToFilesOnMotionDetection" `
 

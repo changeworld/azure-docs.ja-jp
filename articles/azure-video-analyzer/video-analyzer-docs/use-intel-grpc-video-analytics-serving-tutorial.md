@@ -3,13 +3,13 @@ title: Azure Video Analyzer とともに gRPC 経由で Intel OpenVINO™ DL Str
 description: このチュートリアルでは、Intel OpenVINO™ DL Streamer – Edge AI Extension を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.service: azure-video-analyzer
-ms.date: 05/18/2021
-ms.openlocfilehash: 9f3a313b1dc99fd86bc2ee764a78a151e8d88f96
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 06/01/2021
+ms.openlocfilehash: f666ac772d85fb1501c54001511e25cd941ee7c3
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440560"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604778"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
 
@@ -17,8 +17,7 @@ ms.locfileid: "111440560"
 
 このチュートリアルでは、シミュレートされた IoT Edge デバイスとして Azure VM を使用し、シミュレートされたライブ ビデオ ストリームも使用します。 これは、C# で記述されたサンプル コードに基づいており、クイックスタート「[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)」を基に構築されています。
 
-> [!NOTE]
-> このチュートリアルでは、エッジ デバイスとして x86-64 コンピューターを使用する必要があります。
+[!INCLUDE [use-x86-64](./includes/common-includes/use-x86-64.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,7 +63,7 @@ OpenVINO™ DL Streamer – Edge AI Extension モジュールは、OpenVINO™ D
 
 - person_vehicle_bike_tracking のための object_tracking ![人物および車両を対象とするオブジェクト追跡](./media/use-intel-openvino-tutorial/object-tracking.png)
 
-すぐに開始できるように、物体検出、オブジェクト分類、オブジェクト追跡のプリロード済みパイプラインを使用します。 また、プリロード済みの [person-vehicle-bike-detection-crossroad-0078](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/person-vehicle-bike-detection-crossroad-0078/description/person-vehicle-bike-detection-crossroad-0078.md) および [vehicle-attributes-recognition-barrier-0039 モデル](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/vehicle-attributes-recognition-barrier-0039/description/vehicle-attributes-recognition-barrier-0039.md)が用意されています。
+すぐに開始できるように、物体検出、オブジェクト分類、オブジェクト追跡のプリロード済みパイプラインを使用します。 また、プリロード済みの [person-vehicle-bike-detection-crossroad-0078](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/person-vehicle-bike-detection-crossroad-0078/README.md) および [vehicle-attributes-recognition-barrier-0039 モデル](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/vehicle-attributes-recognition-barrier-0039/README.md)が用意されています。
 
 > [!NOTE]
 > エッジ モジュール (Intel の OpenVINO™ DL Streamer – Edge AI Extension とそこに含まれるソフトウェア) をダウンロードして利用したことをもって、ユーザーは[ライセンス契約](https://www.intel.com/content/www/us/en/legal/terms-of-use.html)のご契約条件に同意したものと見なされます。

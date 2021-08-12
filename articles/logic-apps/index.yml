@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 03/24/2021
-  ms.openlocfilehash: 536cb1aac1d2fa309f4530d150ade8f9eb5dc9d2
-  ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+  ms.openlocfilehash: 89a61d7ed018ebfd72a64661da1bad9671a39c53
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112321722"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114456671"
 landingContent:
 - title: Azure Logic Apps について
   linkLists:
@@ -108,7 +108,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: サンプル:統合アカウントに接続し、Azure DevOps を使用してデプロイする
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/
+      url: https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/storage-account-connections
   - linkListType: architecture
     links:
     - text: 基本的なエンタープライズ統合
@@ -143,10 +143,8 @@ landingContent:
     links:
     - text: Resource Manager テンプレートを使って作成およびデプロイする
       url: /learn/modules/create-deploy-logic-apps-using-arm-templates/
-    - text: サンプル:Azure Storage に接続して Azure DevOps でデプロイする
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
-    - text: サンプル:Azure Service Bus に接続して Azure DevOps でデプロイする
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+    - text: サンプル:Azure Logic Apps を使用した Azure Pipelines の調整
+      url: https://github.com/Azure-Samples/azure-logic-apps-pipeline-orchestration
 - title: 詳細情報
   linkLists:
   - linkListType: reference

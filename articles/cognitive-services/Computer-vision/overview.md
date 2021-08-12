@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 06/21/2021
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: 875ef961148668a83e94c116622b5e461d2413fa
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: c78f12d484cb1c0e4cda80867af67bc8af7f6c55
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286136"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460245"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -30,7 +30,7 @@ Azure の Computer Vision サービスを使用すると、関心のある視覚
 
 | サービス|説明|
 |---|---|
-|[光学式文字認識 (OCR)](overview-ocr.md)|光学式文字認識 (OCR) サービスは、画像からテキストを抽出します。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを写真やドキュメントから抽出することができます。 ディープラーニングベースのモデルを使用して、さまざまなサーフェスや背景のテキストを操作します。 たとえば、ビジネス ドキュメント、請求書、レシート、ポスター、名刺、レター、ホワイトボードが対象となります。 OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 使用を開始するには、[OCR クイックスタート](quickstarts-sdk/client-library.md)に従ってください。|
+| [光学式文字認識 (OCR)](overview-ocr.md)|光学式文字認識 (OCR) サービスは、画像からテキストを抽出します。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを写真やドキュメントから抽出することができます。 ディープラーニングベースのモデルを使用して、さまざまなサーフェスや背景のテキストを操作します。 たとえば、ビジネス ドキュメント、請求書、レシート、ポスター、名刺、レター、ホワイトボードが対象となります。 OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 使用を開始するには、[OCR クイックスタート](quickstarts-sdk/client-library.md)に従ってください。|
 |[画像分析](overview-image-analysis.md)| 画像分析サービスは、物、顔、成人向けコンテンツ、自動生成されたテキストの説明など、さまざまな視覚的特徴を画像から抽出します。 使用を開始するには、[画像分析のクイックスタート](quickstarts-sdk/image-analysis-client-library.md)に従ってください。|
 | [空間分析](intro-to-spatial-analysis-public-preview.md)| 空間分析サービスは、ビデオ フィードでの人々の存在と移動を分析し、他のシステムが応答できるイベントを生成します。 使用を開始するには、[空間分析コンテナー](spatial-analysis-container.md)をインストールしてください。|
 

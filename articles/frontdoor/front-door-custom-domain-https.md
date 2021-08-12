@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2021
+ms.date: 07/14/2021
 ms.author: duau
-ms.openlocfilehash: 7f2a5faebb56cfb12a62a8bdae4e6b7e56e88b57
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 97a96d439773d7332fda3fe545d950dfe0077ad1
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004711"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765422"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -152,7 +152,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| 名前            | 種類  | 値                 |
+| 名前            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -181,7 +181,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、admin@digicert.com を許可リストに追加してください。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
+数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、no-reply@digitalcertvalidation.com を許可リストに追加してください。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
 
 承認リンクを選択すると、オンライン承認フォームが表示されます。 フォームの指示に従います。2 つの検証オプションがあります。
 

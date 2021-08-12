@@ -2,21 +2,21 @@
 title: チュートリアル:Druva を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: ユーザー アカウントを Druva に対して自動的にプロビジョニングおよびプロビジョニング解除するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 2ef564ae61aab10e1d100ccaf2547248e4a6a8e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 1781fbca793e855c0755e1e5b8db292c8846284b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96352169"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768072"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>チュートリアル:Druva を構成し、自動ユーザー プロビジョニングに対応させる
 

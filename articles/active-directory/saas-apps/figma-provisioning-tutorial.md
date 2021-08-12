@@ -2,21 +2,21 @@
 title: チュートリアル:Figma を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Figma に対してユーザー アカウントの自動的なプロビジョニングとプロビジョニング解除を実行するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
-ms.author: zhchia
-ms.openlocfilehash: ec509cc04db87602b3e29230253d9b363a5e30d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 98e8e4a0b46834f09f36c27ff3b3b81419effddf
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96353920"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764027"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>チュートリアル:Figma を構成し、自動ユーザー プロビジョニングに対応させる
 

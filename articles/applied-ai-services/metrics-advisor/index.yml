@@ -1,0 +1,80 @@
+### YamlMime:Landing
+title: Azure Metrics Advisor のドキュメント
+summary: Metrics Advisor は、機械学習の知識がなくてもデータ インジェスト、異常検出、診断を行うことができる一連の API を備えた時系列の監視プラットフォームです。
+metadata:
+  title: Azure Metrics Advisor のドキュメント - チュートリアル、API リファレンス - Azure Applied AI Services | Microsoft Docs
+  titleSuffix: Azure Applied AI Services
+  services: cognitive-services
+  description: Metrics Advisor は、機械学習の知識がなくてもデータ インジェスト、異常検出、診断を行うことができる一連の API を備えた時系列の監視プラットフォームです。
+  author: mrbullwinkle
+  manager: nitinme
+  ms.service: applied-ai-services
+  ms.subservice: metrics-advisor
+  ms.topic: landing-page
+  ms.date: 08/13/2020
+  ms.author: mbullwin
+  ms.openlocfilehash: bbd4ba2cb2d310dd8ff6a46576173826a91c17b3
+  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/15/2021
+  ms.locfileid: "114340762"
+landingContent:
+- title: Metrics Advisor について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Metrics Advisor とは
+      url: overview.md
+    - text: Azure Applied AI Services とは
+      url: ../../applied-ai-services/what-are-applied-ai-services.md
+  - linkListType: quickstart
+    links:
+    - text: Web で初めてのメトリックを監視する
+      url: quickstarts/web-portal.md
+    - text: REST API またはクライアント ライブラリを使用する
+      url: quickstarts/rest-api-and-client-library.md
+  - linkListType: video
+    links:
+    - text: Metrics Advisor の紹介
+      url: https://www.youtube.com/watch?v=0Y26cJqZMIM
+    - text: Cognitive Services を初めて使用する
+      url: https://www.youtube.com/watch?v=7tCLJHdBZgM
+- title: ハウツー記事
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: データをオンボードする
+      url: how-tos/onboard-your-data.md
+    - text: さまざまなデータ フィード ソースを接続する
+      url: data-feeds-from-different-sources.md
+    - text: データ フィードを管理する
+      url: how-tos/manage-data-feeds.md
+    - text: メトリックを構成して検出構成を微調整する
+      url: how-tos/configure-metrics.md
+    - text: フックを使用してアラートを構成し、通知を取得する
+      url: how-tos/alerts.md
+    - text: インシデントを診断する
+      url: how-tos/diagnose-an-incident.md
+    - text: フィードバックを使用して異常検出を調整する
+      url: how-tos/anomaly-feedback.md
+    - text: メトリック グラフを作成する
+      url: how-tos/metrics-graph.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 用語集
+      url: glossary.md
+    - text: Metrics Advisor API
+      url: https://go.microsoft.com/fwlink/?linkid=2141634
+    - text: Azure PowerShell
+      url: /powershell/module/az.cognitiveservices
+    - text: Azure CLI
+      url: /cli/azure/cognitiveservices
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context

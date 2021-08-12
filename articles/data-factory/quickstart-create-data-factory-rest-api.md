@@ -5,15 +5,15 @@ author: linda33wj
 ms.service: data-factory
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/18/2021
+ms.date: 05/31/2021
 ms.author: jingwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dfacd98d33e91dd6b8b8be2b8fe2ec294820732f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: afd00c9dbcc9be259ec9e64342ff11d988d45faa
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668338"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416418"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>クイック スタート:REST API を使用して Azure データ ファクトリとパイプラインを作成する
 

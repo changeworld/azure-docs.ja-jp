@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: a061f3afbfb3a114ec22bcfba123aa326b6ac3fd
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a0e6a02aed59cbe968abb0df5c3fb612c8f2d3b0
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067098"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551688"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source"></a>SAP S/4HANA ソースを登録してスキャンする
 
@@ -103,6 +103,8 @@ SAP S/4HANA ソースでサポートされている認証は **基本認証** �
     e.  **[JCo library path]\(JCo ライブラリ パス\)** : JCo ライブラリが配置されているフォルダーへのパスを指定します。
 
     f.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする SAP S/4HANA ソースのサイズによって異なります。
+    > [!Note] 
+    > 経験則として、テーブル 1,000 個ごとに 1 GB のメモリを用意してください
 
     :::image type="content" source="media/register-scan-saps4hana-source/scan-saps-4-hana.png" alt-text="SAP S/4HANA をスキャンする" border="true":::
 

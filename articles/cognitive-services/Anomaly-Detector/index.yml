@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/12/2021
   ms.author: mbullwin
-  ms.openlocfilehash: 4360e47ff4028e5102f851b4ca4ea905e3067a4b
-  ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+  ms.openlocfilehash: 24d5b356a8d546eaec575efec224bb675b91a8ab
+  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/05/2021
-  ms.locfileid: "113296507"
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114286447"
 landingContent:
 - title: Anomaly Detector API について
   linkLists:
@@ -141,10 +141,10 @@ landingContent:
     - text: REST API (多変量)
       url: https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector-v1-1-preview/operations/DetectAnomaly
     - text: .NET SDK (多変量)
-      url: https://go.microsoft.com/fwlink/?linkid=2165601&clcid=0x409
+      url: /dotnet/api/azure.ai.anomalydetector
     - text: Python SDK (多変量)
-      url: https://go.microsoft.com/fwlink/?linkid=2165298&clcid=0x409
+      url: /python/api/azure-ai-anomalydetector/azure.ai.anomalydetector
     - text: Java SDK (多変量)
-      url: https://go.microsoft.com/fwlink/?linkid=2165600&clcid=0x409
+      url: /java/api/com.azure.ai.anomalydetector
     - text: Node.js SDK (多変量)
-      url: https://go.microsoft.com/fwlink/?linkid=2165523&clcid=0x409
+      url: /javascript/api/overview/azure/ai-anomaly-detector-readme

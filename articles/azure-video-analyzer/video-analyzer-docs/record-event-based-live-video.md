@@ -2,13 +2,13 @@
 title: クラウドへのイベントベースのビデオ記録とクラウドからの再生に関するチュートリアル - Azure
 description: このチュートリアルでは、Azure Video Analyzer を使用して、イベントベースのビデオ録画をクラウドに記録し、それをクラウドから再生する方法について説明します。
 ms.topic: tutorial
-ms.date: 04/13/2021
-ms.openlocfilehash: 6ecbaf794530e80837c2d2a5f9f3fca11e3c93ae
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.date: 06/01/2021
+ms.openlocfilehash: 9b5935b9b06a1e48ac106c7736390e39612b0af4
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565664"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602175"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>チュートリアル: イベントベースのビデオ記録と再生
 
@@ -35,8 +35,7 @@ ms.locfileid: "111565664"
 このチュートリアルの前提条件は次のとおりです。
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、無料の[アカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-    > [!NOTE]    
-    > [共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールと[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールの両方にアクセスできる Azure サブスクリプションが必要です。 適切なアクセス許可がない場合は、それらのアクセス許可の付与をアカウント管理者に依頼してください。
+    [!INCLUDE [azure-subscription-permissions](./includes/common-includes/azure-subscription-permissions.md)]
 * マシンに [Docker がインストール](https://docs.docker.com/desktop/#download-and-install)されている。
 * [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能。
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
@@ -136,11 +135,7 @@ Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-d
 
 これが Video Analyzer を使用する最初のチュートリアルである場合は、IoT Hub 接続文字列を入力するように Visual Studio Code から求められます。 これは、appsettings.json ファイルからコピーできます。
 
-> [!NOTE]
-> IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
+[!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 次に、IoT Hub デバイスを選択するように Visual Studio Code から求められます。 IoT Edge デバイス (avasample-iot-edge-device) を選択します。
 
@@ -170,7 +165,7 @@ Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-d
 1. 次に、**livePipelineSet** と **pipelineTopologyDelete** の各ノードで、**topologyName** の値が、上記パイプライン トポロジ内の **name** プロパティの値と一致していることを確認します。
 
     `"pipelineTopologyName" : "EVRtoVideosOnObjDetect"`
-1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-videos/topology.json)を開き、videoName を確認します。これは `sample-evr-video` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。
+1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json)を開き、videoName を確認します。これは `sample-evr-video` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。
 1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウにいくつかのメッセージが出力されます。
 1. operations.json ファイルは、pipelineTopologyList および livePipelineList の呼び出しで開始されます。 前回のクイックスタートまたはチュートリアルの後に、リソースをクリーンアップした場合は、このアクションによって空のリストが返された後、一時停止して、以下のように **Enter** キーの入力待ち状態になります。
     ```
@@ -367,13 +362,11 @@ applicationProperties の subject セクションでは、このメッセージ�
 
     <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
 
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
-> [!NOTE]
-> ビデオのソースはカメラ フィードをシミュレートするコンテナーだったので、ビデオのタイム スタンプは、ライブ パイプラインをアクティブにした時点と、非アクティブ化した時点に関連しています。
-> 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-他のチュートリアルに取り組む場合は、作成したリソースをそのまま残します。 それ以外の場合は、Azure portal にアクセスして、ご利用のリソース グループに移動し、このチュートリアルで使用したリソース グループを選択して、それらのリソース グループを削除してください。
+[!INCLUDE [clean-up-resources](./includes/common-includes/clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

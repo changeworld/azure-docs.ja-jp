@@ -3,19 +3,19 @@ title: 'クイックスタート: Azure Queue Storage クライアント ライ�
 description: Python 用 Azure Queue Storage クライアント ライブラリ v12 を使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って削除する方法について説明します。 キューを削除する方法についても説明します。
 author: twooley
 ms.author: twooley
-ms.date: 12/10/2019
+ms.date: 07/23/2021
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 68f68c32b160757e82d59b1dd5ee4847a06ec698
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cafd9059139dc4ee1d194bd57696ef204921bcd7
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534352"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674378"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>クイックスタート: Python 用 Azure Queue Storage クライアント ライブラリ v12
 
