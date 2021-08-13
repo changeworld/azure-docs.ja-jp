@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: b7b0cfa20257ad07d8418c39af68724d613adf41
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: b858916f9a359994eb04bc79728ede46566114f7
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820952"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403789"
 ---
 このクイックスタートでは、IoT プラグ アンド プレイ デバイス アプリケーションのサンプルをビルドし、それをご利用の IoT ハブに接続し、送信されるテレメトリを Azure IoT エクスプローラー ツールを使用して表示する方法を示します。 このサンプル アプリケーションは C# で記述されており、Azure IoT Samples for C# に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
 
@@ -46,9 +46,9 @@ git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
-    | IOTHUB_DEVICE_DPS_ID_SCOPE | [環境の設定](../articles/iot-pnp/set-up-environment.md)の完了時に書き留めておいた値 |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | [環境の設定](../articles/iot-develop/set-up-environment.md)の完了時に書き留めておいた値 |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
-    | IOTHUB_DEVICE_DPS_DEVICE_KEY | [環境の設定](../articles/iot-pnp/set-up-environment.md)の完了時に書き留めておいた値 |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | [環境の設定](../articles/iot-develop/set-up-environment.md)の完了時に書き留めておいた値 |
 
 これで、Visual Studio でサンプルをビルドし、デバッグ モードで実行できるようになりました。
 
@@ -66,7 +66,7 @@ Windows 上の Visual Studio でコードの実行をトレースするには、
 
 ## <a name="review-the-code"></a>コードの確認
 
-このサンプルにより、単純な IoT プラグ アンド プレイのサーモスタット デバイスが実装されます。 このサンプルにより実装されるモデルによって、IoT プラグ アンド プレイ [コンポーネント](../articles/iot-pnp/concepts-modeling-guide.md)は使用されません。 [サーモスタット デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
+このサンプルにより、単純な IoT プラグ アンド プレイのサーモスタット デバイスが実装されます。 このサンプルにより実装されるモデルによって、IoT プラグ アンド プレイ [コンポーネント](../articles/iot-develop/concepts-modeling-guide.md)は使用されません。 [サーモスタット デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
 
 デバイス コードにより、標準の `CreateFromConnectionString` メソッドが使用され、IoT ハブに接続されます。 デバイスにより、接続要求で実装される DTDL モデルのモデル ID が送信されます。 モデル ID を送信するデバイスは、IoT プラグ アンド プレイ デバイスです。
 

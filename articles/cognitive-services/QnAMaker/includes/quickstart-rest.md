@@ -3,12 +3,12 @@ title: クイック スタート:cURL と REST を使用してナレッジ ベ�
 description: このクイックスタートでは、REST API を使用してナレッジ ベースを作成、公開し、クエリを実行する方法について説明します。
 ms.date: 1/22/2021
 ms.topic: quickstart
-ms.openlocfilehash: 45af4dbe28720a614cc64cb7567ec8f96f3f40cb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0467004b8188f0187fa4e565e3637f5e765a510d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110486828"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993738"
 ---
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "110486828"
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
 * 最新バージョンの [cURL](https://curl.haxx.se/)。 クイックスタートでは、いくつかのコマンド ライン スイッチが使用されています。これらのスイッチについては、[cURL のドキュメント](https://curl.haxx.se/docs/manpage.html)を参照してください。
-* キーとリソース名を使用するには、[QnA Maker リソース](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v1#create-a-new-qna-maker-service)が必要です。 リソースの作成時にリソースの **名前** を入力した後に、キーが作成されています。 リソース名は、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
+* キーとリソース名を使用するには、[QnA Maker リソース](../how-to/set-up-qnamaker-service-azure.md?tabs=v1#create-a-new-qna-maker-service)が必要です。 リソースの作成時にリソースの **名前** を入力した後に、キーが作成されています。 リソース名は、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
@@ -27,7 +27,7 @@ ms.locfileid: "110486828"
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 * 最新バージョンの [cURL](https://curl.haxx.se/)。 クイックスタートでは、いくつかのコマンド ライン スイッチが使用されています。これらのスイッチについては、[cURL のドキュメント](https://curl.haxx.se/docs/manpage.html)を参照してください。
-* カスタム質問と回答には、API キーとエンドポイントを生成するために、カスタム質問と回答の機能を有効にした [Text Analytics リソース](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v2#create-a-new-qna-maker-service)が必要です。 リソースの作成時に選択した **名前** が、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
+* カスタム質問と回答には、API キーとエンドポイントを生成するために、カスタム質問と回答の機能を有効にした [Text Analytics リソース](../how-to/set-up-qnamaker-service-azure.md?tabs=v2#create-a-new-qna-maker-service)が必要です。 リソースの作成時に選択した **名前** が、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2`
 

@@ -6,16 +6,16 @@ author: shahen
 manager: anvalent
 ms.service: Communication Services
 ms.subservice: Communication Services
-ms.date: 05/20/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: shahen
-ms.openlocfilehash: 118aa3bfcc35b0250b13ea3446e41e8f4b9f06d8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0193f80952e7f9ea5878a99de0189eb0b5911b0d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026936"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "114471460"
 ---
 ## <a name="setting-up"></a>設定
 

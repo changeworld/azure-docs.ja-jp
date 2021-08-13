@@ -5,7 +5,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/virtual-machines/windows/'
     - name: よく寄せられる質問
-      href: /azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
+      href: ../../../azure-sql/virtual-machines/windows/frequently-asked-questions-faq.yml?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
 - name: 開始するには
   items:
     - name: Azure portal で VM をプロビジョニングする

@@ -8,12 +8,12 @@ ms.date: 08/28/2020
 ms.topic: quickstart
 ms.service: firewall-manager
 ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 733d0874c72bca32238494e4987ee889c8e2f196
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 01b42b78a8ecb1746bad8aae8adbd8131ec6c80d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700580"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461442"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>クイック スタート:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する - Resource Manager テンプレート
 
@@ -25,7 +25,7 @@ Azure Firewall Manager の詳細については、[Azure Firewall Manager の概
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffwm-docs-qs%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ Azure Firewall Manager の詳細については、[Azure Firewall Manager の概
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/fwm-docs-qs/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
@@ -59,7 +59,7 @@ ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートによって、Azure Firewall、仮想 WAN と仮想ハブ、ネットワーク インフラストラクチャ、2 つの仮想マシンが作成されます。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffwm-docs-qs%2Fazuredeploy.json)
 
 2. ポータルの **[セキュリティ保護付き仮想ハブ]** ページで、次の値を入力または選択します。
    - サブスクリプション:既存のサブスクリプションから選択します 

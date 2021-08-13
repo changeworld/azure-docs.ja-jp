@@ -1,18 +1,18 @@
 ---
 title: Azure RBAC 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure ロールベースのアクセス制御 (Azure RBAC) に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 0c412389deeb9932f881c64fa9be7d1d6a8fce65
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 3150db337ff53123fbf93ee5e9f5b625d90f56f2
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029400"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403892"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-rbac"></a>Azure RBAC 用の Azure Policy 規制コンプライアンス コントロール
 

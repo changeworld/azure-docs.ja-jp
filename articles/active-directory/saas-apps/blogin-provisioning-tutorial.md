@@ -3,8 +3,8 @@ title: チュートリアル:BlogIn を構成し、Azure Active Directory を使
 description: Azure AD から BlogIn へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 4b2ef46c-97a1-450d-bbc8-b2fa76280219
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
-ms.author: Zhchia
-ms.openlocfilehash: 5d75aeb4771d49266e6cb09286b026054319591b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 90a0184029fb9f54977f53fae40a4ee896fba238
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674244"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764669"
 ---
 # <a name="tutorial-configure-blogin-for-automatic-user-provisioning"></a>チュートリアル:BlogIn を構成し、自動ユーザー プロビジョニングに対応させる
 

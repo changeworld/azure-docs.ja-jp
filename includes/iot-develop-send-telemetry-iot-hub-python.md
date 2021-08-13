@@ -7,13 +7,17 @@ ms.topic: include
 ms.date: 05/05/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 4c738b5f230076717b276517ea3f116bd76ce2c0
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: ddb798fe70d58a530210ea74d76f1b0bb4169477
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112041860"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712781"
 ---
+[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
+
+このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 Azure CLI を使用して、Azure IoT ハブとデバイスを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それをハブに安全に接続して、テレメトリを送信します。
+
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料でアカウントを 1 つ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)作成してください。
 - [Git](https://git-scm.com/downloads).
@@ -83,7 +87,7 @@ ms.locfileid: "112041860"
     python temp_controller_with_thermostats.py
     ```
     > [!NOTE]
-    > このコード サンプルでは、Azure IoT プラグ アンド プレイを使用しており、手動構成なしでソリューションにスマート デバイスを統合できます。  既定では、このドキュメントのほとんどのサンプルで IoT プラグ アンド プレイが使用されています。 IoT PnP の利点と、それを使用するケースと使用しないケースについて詳しくは、「[IoT プラグ アンド プレイとは](../articles/iot-pnp/overview-iot-plug-and-play.md)」を参照してください。
+    > このコード サンプルでは、Azure IoT プラグ アンド プレイを使用しており、手動構成なしでソリューションにスマート デバイスを統合できます。  既定では、このドキュメントのほとんどのサンプルで IoT プラグ アンド プレイが使用されています。 IoT PnP の利点と、それを使用するケースと使用しないケースについて詳しくは、「[IoT プラグ アンド プレイとは](../articles/iot-develop/overview-iot-plug-and-play.md)」を参照してください。
 
  Python コードがデバイスから IoT ハブにメッセージを送信すると、イベントを監視している CLI アプリにそのメッセージが表示されます。
 

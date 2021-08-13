@@ -6,19 +6,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 05/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: dedb8faf74ffba7b5846512b4c52eb5a58822f7e
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: c5d4c390110a5b3eef7509508d35c9554f7be984
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895957"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065982"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
-Azure ストレージ アカウントには、すべての Azure Storage データ オブジェクト (BLOB、ファイル、キュー、テーブル、およびディスク) が含まれます。 ストレージ アカウントでは、世界中のどこからでも HTTP または HTTPS 経由でアクセスできる Azure Storage データ用の一意の名前空間が提供されます。 Azure ストレージ アカウント内のデータは、持続性があり、高可用性で、セキュリティ保護されており、非常にスケーラブルです。
+Azure ストレージ アカウントには、すべての Azure Storage データ オブジェクト (BLOB、ファイル共有、キュー、テーブル、およびディスク) が含まれます。 このストレージ アカウントでは、世界中のどこからでも HTTP または HTTPS 経由でアクセスできる Azure Storage データ用の一意の名前空間が提供されます。 ストレージ アカウント内のデータは、持続性があり、高可用性で、セキュリティ保護されており、非常にスケーラブルです。
 
 Azure ストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](storage-account-create.md)」を参照してください。
 
@@ -26,22 +26,20 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 Azure Storage では、数種類のストレージ アカウントが提供されています。 各種類は異なる機能をサポートし、独自の価格モデルがあります。 アプリケーションに最適な種類を判断するために、ストレージ アカウントを作成する前にこれらの違いを検討してください。
 
-次の表では、Microsoft が推奨するストレージアカウントの種類を、ほとんどのシナリオについて説明しています。
+次の表では、Microsoft が推奨するストレージアカウントの種類を、ほとんどのシナリオについて説明しています。 いずれも [Azure Resource Manager](../../azure-resource-manager/management/overview.md) デプロイ モデルが使用されています。
 
-| ストレージ アカウントの種類 | サポートされているサービス | 冗長オプション | デプロイ モデル | 使用 |
-|--|--|--|--|--|
-| Standard 汎用 v2 | Blob、File、Queue、Table、Data Lake Storage<sup>1</sup> | LRS、GRS、RA-GRS<br /><br />ZRS、GZRS、RA-GZRS<sup>2</sup> | Resource Manager<sup>3</sup> | BLOB、ファイル、キュー、およびテーブル用の基本的なストレージ アカウントの種類。 Azure Storage を使用するほとんどのシナリオにお勧めします。 |
-| Premium ブロック BLOB<sup>4</sup> | ブロック BLOB のみ | LRS<br /><br />ZRS<sup>2</sup> | Resource Manager<sup>3</sup> | ブロック BLOB と追加 BLOB の Premium パフォーマンス特性を持つストレージ アカウント。 トランザクション レートが高く、比較的小さなオブジェクトが使用されるシナリオ、またはストレージ待ち時間が一貫して短いことが要求されるシナリオに推奨されます。<br />[詳細情報](../blobs/storage-blob-performance-tiers.md) |
-| Premium ファイル共有<sup>4</sup> | ファイル共有のみ | LRS<br /><br />ZRS<sup>2</sup> | Resource Manager<sup>3</sup> | Premium パフォーマンスの特徴を持つファイル専用ストレージ アカウント。 エンタープライズまたはハイ パフォーマンス スケール アプリケーションにお勧めします。<br />[詳細情報](../files/storage-files-planning.md#management-concepts) |
-| Premium ページ BLOB<sup>4</sup> | ページ BLOB のみ | LRS | Resource Manager<sup>3</sup> | ページ BLOB に特化した Premium Storage アカウントの種類。<br />[詳細情報](../blobs/storage-blob-pageblob-overview.md) |
+| ストレージ アカウントの種類 | サポートされているストレージ サービス | 冗長オプション | 使用 |
+|--|--|--|--|
+| Standard 汎用 v2 | Blob Storage (Data Lake Storage<sup>1</sup> を含む)、Queue Storage、Table Storage、Azure Files  | LRS、GRS、RA-GRS<br /><br />ZRS、GZRS、RA-GZRS<sup>2</sup> | BLOB、ファイル共有、キュー、テーブル用の Standard タイプのストレージ アカウント。 Azure Storage を使用するほとんどのシナリオにお勧めします。 Azure Files の NFS ファイル共有のサポートが必要な場合は、Premium ファイル共有タイプのアカウントを使用してください。 |
+| Premium ブロック BLOB<sup>3</sup> | Blob Storage (Data Lake Storage<sup>1</sup> を含む) | LRS<br /><br />ZRS<sup>2</sup> | ブロック BLOB と追加 BLOB 用の Premium タイプのストレージ アカウント。 トランザクション レートが高く、比較的小さなオブジェクトが使用されるシナリオ、またはストレージ待ち時間が一貫して短いことが要求されるシナリオに推奨されます。 [ワークロードの例に関する詳細情報](../blobs/storage-blob-performance-tiers.md#premium-performance)を参照してください。 |
+| Premium ファイル共有<sup>3</sup> | Azure Files | LRS<br /><br />ZRS<sup>2</sup> | ファイル共有専用の Premium タイプのストレージ アカウント。 エンタープライズまたはハイ パフォーマンス スケール アプリケーションにお勧めします。 SMB ファイル共有と NFS ファイル共有の両方をサポートするストレージアカウントが必要な場合は、このタイプのアカウントを使用します。 |
+| Premium ページ BLOB<sup>3</sup> | ページ BLOB のみ | LRS | ページ BLOB に特化した Premium Storage アカウントの種類。 [ページ BLOB とサンプル ユース ケースの詳細情報](../blobs/storage-blob-pageblob-overview.md)を参照してください。 |
 
-<sup>1</sup> Data Lake Storage は、Azure Blob Storage を基にした、ビッグ データ分析専用の機能のセットです。 詳しくは「[Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)」をご覧ください。
+<sup>1</sup> Data Lake Storage は、Azure Blob Storage を基にした、ビッグ データ分析専用の機能のセットです。 詳細については、[Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)および [Data Lake Storage Gen2 で使用するストレージ アカウントの作成](../blobs/create-data-lake-storage-account.md)に関するページを参照してください。
 
-<sup>2</sup> ゾーン冗長ストレージ (ZRS) と geo ゾーン冗長ストレージ (GZRS、RA-GZRS) は、特定のリージョンの Standard 汎用 v2、Premium ブロック BLOB、Premium ファイル共有の各アカウントでのみ使用できます。 Azure Storage の冗長オプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
+<sup>2</sup> ゾーン冗長ストレージ (ZRS) と geo ゾーン冗長ストレージ (GZRS、RA-GZRS) は、特定のリージョンの Standard 汎用 v2、Premium ブロック BLOB、Premium ファイル共有の各アカウントでのみ使用できます。 詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
 
-<sup>3</sup> Azure リソース (ストレージ アカウントを含む) には、Azure Resource Manager デプロイ モデルが推奨されます。 詳細については、[Resource Manager の概要](../../azure-resource-manager/management/overview.md)に関するページを参照してください。
-
-<sup>4</sup> Premium パフォーマンス レベルのストレージ アカウントは、ソリッド ステート ディスク (SSD) を使用することで、低遅延と高スループットを実現しています。
+<sup>3</sup> Premium パフォーマンス レベルのストレージ アカウントは、ソリッド ステート ドライブ (SSD) を使用することで、低遅延と高スループットを実現しています。
 
 レガシ ストレージ アカウントもサポートされます。 詳細については、「[レガシ ストレージ アカウントの種類](#legacy-storage-account-types)」を参照してください。
 
@@ -70,9 +68,9 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 BLOB 用のカスタム ドメインを使用するようにストレージ アカウントを構成することもできます。 詳細については、「[Azure Storage アカウントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。  
 
-## <a name="migrating-a-storage-account"></a>ストレージ アカウントの移行
+## <a name="migrate-a-storage-account"></a>ストレージ アカウントを移行する
 
-次の表は、ストレージ アカウントの移動、アップグレード、または移行に関するガイダンスをまとめたものです。
+次の表は、ストレージ アカウントの移動、アップグレード、または移行方法に関するガイダンスをまとめたものです。
 
 | 移行シナリオ | 説明 |
 |--|--|
@@ -80,9 +78,9 @@ BLOB 用のカスタム ドメインを使用するようにストレージ ア�
 | ストレージ アカウントを別のリソース グループに移動する | Azure Resource Manager には、リソースを別のリソース グループに移動するためのオプションが用意されています。 詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。 |
 | ストレージ アカウントを別のリージョンに移動する | ストレージ アカウントを移動するには、別のリージョンにストレージ アカウントのコピーを作成します。 その後、AzCopy または選択した他のツールを使用して、そのアカウントにデータを移動します。 詳細については、「[Azure ストレージ アカウントを別のリージョンに移動する](storage-account-move.md)」をご覧ください。 |
 | 汎用 v2 ストレージ アカウントにアップグレードする | 汎用 v1 ストレージ アカウントまたは BLOB ストレージ アカウントは、汎用 v2 ストレージ アカウントにアップグレードすることができます。 この操作は元に戻すことができません。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](storage-account-upgrade.md)」を参照してください。 |
-| クラシック ストレージ アカウントを Azure Resource Manager に移行する | Azure Resource Manager デプロイ モデルは、機能、スケーラビリティ、およびセキュリティに関して、クラシック デプロイ モデルよりも優れています。 クラシック ストレージ アカウントを Azure Resource Manager に移行する方法の詳細については、「**プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行**」の「[ストレージ アカウントの移行](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts)」をご覧ください。 |
+| クラシック ストレージ アカウントを Azure Resource Manager に移行する | Azure Resource Manager デプロイ モデルは、機能、スケーラビリティ、およびセキュリティに関して、クラシック デプロイ モデルよりも優れています。 クラシック ストレージ アカウントを Azure Resource Manager に移行する方法の詳細については、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts)」の「ストレージ アカウントの移行」セクションを参照してください。 |
 
-## <a name="transferring-data-into-a-storage-account"></a>ストレージ アカウントへのデータの転送
+## <a name="transfer-data-into-a-storage-account"></a>ストレージ アカウントへのデータの転送
 
 Microsoft では、オンプレミス ストレージ デバイスまたはサード パーティのクラウド ストレージ プロバイダーからデータをインポートするためのサービスとユーティリティを提供しています。 どのソリューションを使用するかは、転送するデータ量によって決まります。 詳細については、「[Azure Storage の移行の概要](storage-migration-overview.md)」を参照してください。
 
@@ -110,10 +108,10 @@ Azure Storage では、ストレージ アカウントの使用に基づいて�
 
 次の表では、レガシ ストレージ アカウントの種類について説明します。 これらの種類のアカウントは、Microsoft によって推奨されていませんが、特定のシナリオで使用される場合があります。
 
-| レガシ ストレージ アカウントの種類 | サポートされているサービス | 冗長オプション | デプロイ モデル | 使用 |
+| レガシ ストレージ アカウントの種類 | サポートされているストレージ サービス | 冗長オプション | デプロイ モデル | 使用 |
 |--|--|--|--|--|
-| Standard 汎用 v1 | Blob、File、Queue、Table、Data Lake Storage | LRS、GRS、RA-GRS | Resource Manager、クラシック | 汎用 v1 アカウントでは、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 使用が検討されるシナリオは次のとおりです。<br /><ul><li>アプリケーションで、Azure クラシック デプロイ モデルが必要である。</li><li>アプリケーションは、トランザクション集中型であるか、かなり geo レプリケーション帯域幅を使用しますが、大容量は必要ありません。 この場合は、汎用 v1 が最も経済的な選択肢になる可能性があります。</li><li>Azure Storage REST API の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。</li></ul> |
-| Standard Blob Storage | BLOB (ブロック BLOB と追加 BLOB のみ) | LRS、GRS、RA-GRS | リソース マネージャー | 可能であれば、Standard 汎用の v2 アカウントの使用をお勧めします。 |
+| Standard 汎用 v1 | Blob Storage、Queue Storage、Table Storage、Azure Files | LRS、GRS、RA-GRS | Resource Manager、クラシック | 汎用 v1 アカウントでは、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 使用が検討されるシナリオは次のとおりです。<br /><ul><li>アプリケーションで、Azure [クラシック デプロイ モデル](../../azure-portal/supportability/classic-deployment-model-quota-increase-requests.md)が必要である。</li><li>アプリケーションは、トランザクション集中型であるか、かなり geo レプリケーション帯域幅を使用しますが、大容量は必要ありません。 この場合は、汎用 v1 が最も経済的な選択肢になる可能性があります。</li><li>Azure Storage REST API の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。</li></ul> |
+| Standard Blob Storage | Blob Storage (ブロック BLOB および追加 BLOB のみ) | LRS、GRS、RA-GRS | リソース マネージャー | 可能であれば、Standard 汎用の v2 アカウントの使用をお勧めします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

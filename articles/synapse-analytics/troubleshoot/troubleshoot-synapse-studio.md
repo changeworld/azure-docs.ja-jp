@@ -1,6 +1,6 @@
 ---
 title: Synapse Studio のトラブルシューティング
-description: Azure Synapse Studio のトラブルシューティング
+description: Synapse Studio のトラブルシューティング
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.subservice: troubleshooting
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 362b588112c5027b78285a77bbb556f2497b1892
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 16608f77971c3c19836d8f956512f28f945d3667
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143145"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809060"
 ---
-# <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio のトラブルシューティング
+# <a name="synapse-studio-troubleshooting"></a>Synapse Studio のトラブルシューティング
 
 このトラブルシューティング ガイドでは、ネットワーク接続の問題についてサポート チケットを開くときに入力する情報について説明します。 適切な情報があれば、問題をより迅速に解決できる可能性があります。
 
@@ -43,7 +43,7 @@ ms.locfileid: "108143145"
 
 ![診断情報](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
 
-トラブルシューティングを開始するには、実行した操作を Azure Synapse Studio で再試行してください。
+トラブルシューティングを開始するには、実行した操作を Synapse Studio で再試行してください。
 
 - 現象 1 については、[SQL スクリプト] タブの [データベースの使用] ドロップダウンの右側にある [更新] ボタンを選択し、[Serverless SQL pool]\(サーバーレス SQL プール\) が表示されるかどうかを確認します。
 - 現象 2 については、クエリをもう一度実行して、正常に実行されているかどうかを確認してください。
