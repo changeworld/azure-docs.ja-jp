@@ -86,7 +86,7 @@
         - name: Azure の消費コミットメントの登録
           href: azure-consumption-commitment-enrollment.md
         - name: 推奨されるソリューション
-          href: /marketplace/appsource-overview#microsoft-preferred-solutions
+          href: preferred-solution.md
         - name: 統合されたソリューション
           href: integrated-solutions-for-publishers.md
     - name: マーケットプレースの報酬のアクティブ化
@@ -311,13 +311,15 @@
                   href: iot-edge-plan-technical-configuration.md
     - name: 管理サービス オファー
       items:
-        - name: 管理サービス オファーの計画
+        - name: オファーを計画する
           href: plan-managed-service-offer.md
-        - name: 管理サービス オファーの作成
+        - name: オファーを作成する
           href: create-managed-service-offer.md
-        - name: 管理サービスの構成の一覧
+        - name: Properties
+          href: create-managed-service-offer-properties.md
+        - name: オファーのリスト登録
           href: create-managed-service-offer-listing.md
-        - name: プレビュー対象ユーザーの追加
+        - name: プレビュー対象ユーザー
           href: create-managed-service-offer-preview.md
         - name: プランを作成する
           href: create-managed-service-offer-plans.md

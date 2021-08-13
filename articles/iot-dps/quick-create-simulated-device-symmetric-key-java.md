@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2441b64d730064c0678eb9fc85945d956448248
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966702"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288691"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>対称キーを使用してシミュレートされたデバイスを IoT Hub にプロビジョニングする
 
@@ -34,7 +34,7 @@ ms.locfileid: "94966702"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) 以降がマシンにインストールされていることを確認します。
+* [Java SE Development Kit 8](/azure/developer/java/fundamentals/java-support-on-azure) 以降がマシンにインストールされていることを確認します。
 
 * [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 

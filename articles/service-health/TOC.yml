@@ -13,6 +13,10 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: alerts-activity-log-service-notifications-arm.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
     - name: Azure の状態のページ

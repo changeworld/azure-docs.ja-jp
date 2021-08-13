@@ -7,13 +7,17 @@ ms.topic: include
 ms.date: 05/06/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: b82976a3b40a4c927d095c40fe6652613e66274f
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 9ba8a90dcd2043fc0f54278a3f1b807add819c66
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716184"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712949"
 ---
+[![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp/pnp_temperature_controller)
+
+このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 最初に、デバイスをホストするための Azure IoT Central アプリケーションを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それを IoT Central に安全に接続して、テレメトリを送信します。
+
 ## <a name="prerequisites"></a>前提条件
 - このクイックスタートは、Linux または Windows で実行できます。 シェル コマンドでは標準の Linux パス区切り記号 `/` を使用します。 Windows を使用する場合は、これらの区切り記号を Windows パス区切り記号 `\` に置き換えてください。
 
@@ -43,7 +47,7 @@ gcc --version
 
 1. 新しいユーザーの場合は、[Visual Studio (Community、Professional、または Enterprise) 2019](https://visualstudio.microsoft.com/downloads/) をインストールします。 インストールするエディションをダウンロードし、インストーラーを起動します。
     > [!NOTE]
-    > 既存の Visual Studio 2019 ユーザーの場合は、Windows の **[スタート]** を選択し、「"*Visual Studio インストーラー*"」と入力して、インストーラーを開始します。
+    > 既存の Visual Studio 2019 ユーザーの場合は、Windows の **[スタート]** を選択し、「*Visual Studio インストーラー*」と入力して、インストーラーを開始します。
 1. インストーラーの **[ワークロード]** タブで、 **[Desktop Development with C++]\(C++ によるデスクトップ開発\)** ワークロードを選択します。
 1. インストーラーの **[個別のコンポーネント]** タブで、 **[Git for Windows]** を選択します。
 1. インストールを実行します。
@@ -55,7 +59,7 @@ gcc --version
 
 ### <a name="configure-your-environment"></a>環境を構成する
 
-1. コンソールを開き、Azure IoT C device SDK をインストールし、コード サンプルを実行します。 Windows の場合は、 **[スタート]** を選択し、「"*VS 2019 用開発者コマンド プロンプト*"」と入力して、コンソールを開きます。 Linux の場合は、Bash を開きます。 
+1. コンソールを開き、Azure IoT C device SDK をインストールし、コード サンプルを実行します。 Windows の場合は、 **[スタート]** を選択し、「*VS 2019 用開発者コマンド プロンプト*」と入力して、コンソールを開きます。 Linux の場合は、Bash を開きます。 
 
 1. コンソールに適したコマンドを使用して、次の環境変数を設定します。 シミュレートされたデバイスは、これらの値を使用して IoT Central に接続します。 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY`、`IOTHUB_DEVICE_DPS_DEVICE_ID` には、前に保存したデバイス接続の値を使用してください。
 

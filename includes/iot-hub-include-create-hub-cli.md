@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 45a9a0821dec98637ade4940bee915483d5e9aa1
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 324e1d3c9d86f8c17581665507ebe52b946bd006
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112041676"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114407914"
 ---
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 このセクションでは、Azure CLI を使用して IoT ハブとリソース グループを作成します。  Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 IoT ハブは、IoT アプリケーションとデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。
@@ -22,7 +22,7 @@ IoT ハブとリソース グループを作成するには、次のようにし
     - Cloud Shell を使用する場合は、CLI コマンドの **[Try It]\(試してみる\)** ボタンを選択すると、分割されたブラウザー ウィンドウで Cloud Shell が起動します。 また、別のブラウザー タブで [Cloud Shell](https://shell.azure.com/bash) を開くこともできます。
     - Azure CLI をローカルで使用している場合は、CLI コンソール アプリを起動し、Azure CLI にサインインします。
 
-1. [az extension add](/cli/azure/extension?view=azure-cli-latest#az_extension_add) を実行して、*azure-iot* 拡張機能をインストールするか、最新バージョンにアップグレードします。
+1. [az extension add](/cli/azure/extension#az_extension_add) を実行して、*azure-iot* 拡張機能をインストールするか、最新バージョンにアップグレードします。
 
     ```azurecli-interactive
     az extension add --upgrade --name azure-iot
@@ -44,7 +44,7 @@ IoT ハブとリソース グループを作成するには、次のようにし
     az iot hub create --resource-group MyResourceGroup --name {YourIoTHubName}
     ```
     > [!TIP]
-    > IoT ハブを作成したら、このクイックスタートの以降の部分では、引き続き CLI コマンドを使用してハブとやり取りすることができます。 必要に応じて、CLI コマンドの代わりに Azure IoT エクスプローラーを使用することもできます。 IoT エクスプローラーは、既存の IoT ハブに接続し、デバイスの追加、管理、監視を行うことができる GUI アプリケーションです。 詳細については、「[Azure IoT エクスプローラーをインストールして使用する](../articles/iot-pnp/howto-use-iot-explorer.md)」を参照してください。
+    > IoT ハブを作成したら、このクイックスタートの以降の部分では、引き続き CLI コマンドを使用してハブとやり取りすることができます。 必要に応じて、CLI コマンドの代わりに Azure IoT エクスプローラーを使用することもできます。 IoT エクスプローラーは、既存の IoT ハブに接続し、デバイスの追加、管理、監視を行うことができる GUI アプリケーションです。 詳細については、「[Azure IoT エクスプローラーをインストールして使用する](../articles/iot-fundamentals/howto-use-iot-explorer.md)」を参照してください。
 
 ## <a name="create-a-simulated-device"></a>シミュレート対象デバイスを作成します
 このセクションでは、IoT ハブに接続された、シミュレートされた IoT デバイスを作成します。 

@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 98f53e27c1853d4ddce3140aa1d5aaad17ed22c0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 09497bdc72ebc72707a5b0272665620f59484e4b
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063246"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651674"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>App Service 用 Azure Resource Manager テンプレート
 
@@ -28,9 +28,8 @@ App Services リソースの JSON 構文とプロパティについては、「[
 | [カスタム デプロイ スロットを使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-custom-deployment-slots)| カスタム デプロイ スロット/環境を使って App Service アプリをデプロイします。 |
 | [プライベート エンドポイントを持つアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/private-endpoint-webapp)| プライベート エンドポイントを持つ App Service アプリをデプロイします。 |
 |**アプリの構成**| **説明** |
-| [Key Vault からのアプリの証明書](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| App Service アプリの証明書を Azure Key Vault シークレットからデプロイして TLS/SSL バインディングに使用します。 |
-| [カスタム ドメインと SSL を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| カスタム ホスト名を使って App Service アプリをデプロイし、アプリの証明書を Key Vault から取得して TLS/SSL バインディングに使用します。 |
-| [GoLang 拡張機能を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Golang サイト拡張機能を使って App Service アプリをデプロイします。 Golang で開発した Web アプリケーションを Azure で実行することができます。 |
+| [Key Vault からのアプリの証明書](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-certificate-from-key-vault)| App Service アプリの証明書を Azure Key Vault シークレットからデプロイして TLS/SSL バインディングに使用します。 |
+| [カスタム ドメインと SSL を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-custom-domain-and-ssl)| カスタム ホスト名を使って App Service アプリをデプロイし、アプリの証明書を Key Vault から取得して TLS/SSL バインディングに使用します。 |
 | [Java 8 と Tomcat 8 を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-java-tomcat)| Java 8 と Tomcat 8 に対応した App Service アプリをデプロイします。 Java アプリケーションを Azure で実行することができます。 |
 | [リージョン VNet 統合を使用したアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/app-service-regional-vnet-integration)| リージョン VNet 統合が有効になっている App Service アプリをデプロイします。 |
 |**アプリの保護**| **説明** |
@@ -39,14 +38,14 @@ App Services リソースの JSON 構文とプロパティについては、「[
 | [MySQL を使った Linux 上のアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-linux-managed-mysql) | Azure Database for MySQL を使って Linux 上に App Service アプリをデプロイします。 |
 | [PostgreSQL を使った Linux 上のアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-linux-managed-postgresql) | Azure Database for PostgreSQL を使って Linux 上に App Service アプリをデプロイします。 |
 |**接続リソースを使ったアプリ**| **説明** |
-| [MySQL を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql)| Azure Database for MySQL を使って Windows 上に App Service アプリをデプロイします。 |
+| [MySQL を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-managed-mysql)| Azure Database for MySQL を使って Windows 上に App Service アプリをデプロイします。 |
 | [PostgreSQL を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-managed-postgresql)| Azure Database for PostgreSQL を使って Windows 上に App Service アプリをデプロイします。 |
 | [Azure SQL Database のデータベースを使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-sql-database)| App Service アプリと、Azure SQL Database のデータベースを Basic サービス レベルでデプロイします。 |
-| [Blob Storage 接続を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Azure Blob Storage の接続文字列を使って App Service アプリをデプロイします。 その後、そのアプリから BLOB ストレージを使用することができます。 |
-| [Azure Cache for Redis を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Azure Cache for Redis を使用して App Service アプリをデプロイします。 |
+| [Blob Storage 接続を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-blob-connection)| Azure Blob Storage の接続文字列を使って App Service アプリをデプロイします。 その後、そのアプリから BLOB ストレージを使用することができます。 |
+| [Azure Cache for Redis を使ったアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-with-redis-cache)| Azure Cache for Redis を使用して App Service アプリをデプロイします。 |
 | [バックエンド WebApp に接続されているアプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/webapp-privateendpoint-vnet-injection)| VNet インジェクションおよびプライベート エンドポイントと共に安全に接続されている 2 つの Web アプリ (フロントエンドとバックエンド) をデプロイします。 |
 |**App Service 環境**| **説明** |
 | [App Service Environment v2 の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-asev2-create) | App Service Environment v2 を仮想ネットワークに作成します。 |
 | [ILB アドレスを使った App Service Environment v2 の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-asev2-ilb-create) | プライベート内部ロード バランサー アドレスを使って仮想ネットワークに App Service Environment v2 を作成します。 |
-| [ILB App Service Environment または ILB App Service Environment v2 に使用する既定の SSL 証明書の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | ILB App Service Environment または ILB App Service Environment v2 に使用する既定の TLS/SSL 証明書を構成します。 |
+| [ILB App Service Environment または ILB App Service Environment v2 に使用する既定の SSL 証明書の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-ase-ilb-configure-default-ssl) | ILB App Service Environment または ILB App Service Environment v2 に使用する既定の TLS/SSL 証明書を構成します。 |
 | | |

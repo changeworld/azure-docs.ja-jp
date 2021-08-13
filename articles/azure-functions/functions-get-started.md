@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 559703401fa87980a5937e81eeab27ef44769c20
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179257"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651480"
 ---
 # <a name="getting-started-with-azure-functions"></a>Azure Functions の概要
 
@@ -66,7 +66,7 @@ ms.locfileid: "102179257"
 ::: zone pivot="programming-language-python"
 | アクション | リソース |
 | --- | --- |
-| **最初の関数を作成する** | 次のいずれかのツールを使用します。<br><br><li>[Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)<li>[ターミナル/コマンド プロンプト](./create-first-function-cli-csharp.md?pivots=programming-language-python) |
+| **最初の関数を作成する** | 次のいずれかのツールを使用します。<br><br><li>[Visual Studio Code](./create-first-function-vs-code-python.md)<li>[ターミナル/コマンド プロンプト](./create-first-function-cli-python.md) |
 | **実行中の関数を確認する** | <li>[Azure サンプル ブラウザー](/samples/browse/?expanded=azure&languages=python&products=azure-functions)<li>[Azure コミュニティ ライブラリ](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=Python) |
 | **対話型チュートリアルを探索する** | <li>[ビジネス シナリオに最適なサーバーレス テクノロジを選択する](/learn/modules/serverless-fundamentals/)<li>[優れた設計のフレームワーク - パフォーマンス効率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Azure Functions を使用してサーバーレス API をビルドする](/learn/modules/build-api-azure-functions/)<li>[Azure Functions を使用したサーバーレス ロジックの作成](/learn/modules/create-serverless-logic-with-azure-functions/) <br><br>[対話型チュートリアルの完全な一覧](/learn/browse/?expanded=azure&products=azure-functions)については、Microsoft Learn を参照してください。|
 | **ベスト プラクティスを確認する** |<li>[パフォーマンスと信頼性](./functions-best-practices.md)<li>[接続の管理](./manage-connections.md)<li>[エラー処理と関数の再試行](./functions-bindings-error-pages.md?tabs=python)<li>[Security](./security-concepts.md)<li>[スループットのパフォーマンスの向上](./python-scale-performance-reference.md)|

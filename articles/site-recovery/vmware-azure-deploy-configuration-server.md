@@ -2,18 +2,18 @@
 title: Azure Site Recovery で構成サーバーをデプロイする
 description: この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
 services: site-recovery
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
-ms.topic: article
-ms.date: 10/15/2019
-ms.author: ramamill
-ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: conceptual
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 9fd9dd63967dc5fb27b9db6931fdc60d57b405fb
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92359817"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576181"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -185,7 +185,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
     いいえ。 構成サーバーの IP アドレスは変更しないでください。 構成サーバーに割り当てられているすべての IP が DHCP IP ではなく静的 IP であることを確認してください。
 * Azure で構成サーバーを設定できますか?
 
-    v-Center との直接の通信経路を使って、またデータ転送の待機時間を最小限に抑えるために、オンプレミス環境で構成サーバーを設定してください。 [フェールバックの目的](vmware-azure-manage-configuration-server.md#failback-requirements)で、構成サーバーのスケジュールされたバックアップを作成することができます。
+    vCenter との直接の通信経路を使って、またデータ転送の待機時間を最小限に抑えるために、オンプレミス環境で構成サーバーを設定してください。 [フェールバックの目的](vmware-azure-manage-configuration-server.md#failback-requirements)で、構成サーバーのスケジュールされたバックアップを作成することができます。
 
 * 構成サーバーまたはスケールアウト プロセス サーバーでキャッシュ ドライバーを変更できますか。
 

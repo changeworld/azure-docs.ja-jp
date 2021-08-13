@@ -10,13 +10,13 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 06/10/2021
 adobe-target: true
-ms.custom: contperf-fy21q4
-ms.openlocfilehash: d12b9229fdf4b8cfe32a9db375b9c0943ce53507
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 0d4c85ec1075e3925fa5657783ffce618faaa6ea
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033457"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760155"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>クイックスタート: Azure Machine Learning の利用を開始するために必要なワークスペース リソースを作成する
 
@@ -37,10 +37,6 @@ ms.locfileid: "112033457"
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
-> [!div class="nextstepaction"]
-> [ワークスペースを作成しました](?success=create-workspace#instance) [問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-workspace)
-
-
 ## <a name="create-compute-instance"></a><a name="instance"></a> コンピューティング インスタンスを作成する
 
 Azure Machine Learning は、自分のコンピューターにインストールすることもできます。  ただしこのクイックスタートでは、開発環境があらかじめインストールされて使える状態になったオンライン コンピューティング リソースを作成します。  このオンライン マシン ("*コンピューティング インスタンス*") を開発環境に使用し、Python スクリプトと Jupyter ノートブックでコードを記述し、実行します。
@@ -54,9 +50,6 @@ Azure Machine Learning は、自分のコンピューターにインストール
 1. 名前を付けて **[作成]** を選択します。
  
 約 2 分後、コンピューティング インスタンスの **状態** が "*作成中*" から "*実行中*" に変わります。  以上で準備は完了です。  
-
-> [!div class="nextstepaction"]
-> [コンピューティング インスタンスを作成しました](?success=create-instance#cluster)[問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-instance)
 
 ## <a name="create-compute-clusters"></a><a name="cluster"></a> コンピューティング クラスターを作成する
 
@@ -77,9 +70,6 @@ Azure Machine Learning は、自分のコンピューターにインストール
 
 > [!NOTE]
 > クラスターが作成されても、プロビジョニングされるノードは 0 個です。 クラスターでは、ジョブを送信するまでコストは発生 "*しません*"。 このクラスターは、2,400 秒 (40 分) の間、アイドル状態になったときにスケールダウンされます。  その間は、再度スケールアップされるのを待たなくても、必要に応じていくつかのチュートリアルで使い続けることができます。
-
-> [!div class="nextstepaction"]
-> [コンピューティング クラスターを作成しました](?success=create-compute-cluster#clean-up)[問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
 
 ## <a name="quick-tour-of-the-studio"></a><a name="studio"></a> スタジオのクイック ツアー
 

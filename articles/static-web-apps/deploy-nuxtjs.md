@@ -2,18 +2,18 @@
 title: チュートリアル:サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps にデプロイする
 description: Nuxt.js の動的サイトを生成し、Azure Static Web Apps を使用してデプロイします。
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.author: chnwamba
+ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 7654546ba52406aed5659cc736bb9a538a73ac7f
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: a413b5e59ff5d44f9227f5a546232984a7db1ab9
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813238"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454152"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps"></a>サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps にデプロイする
 

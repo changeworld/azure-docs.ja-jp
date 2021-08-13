@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7071d180efe9f7da088f30106c879fd10ed9051
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f0cdaefcc92a1a690ae3e3e222053976c3aa3178
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087114"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730804"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory の管理単位
 
@@ -40,7 +40,7 @@ ms.locfileid: "110087114"
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
-管理単位を使用するには、各管理単位の管理者に Azure AD Premium P1 ライセンスが必要です。また、管理単位のメンバーに Azure AD Free ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+管理単位を使用するには、各管理単位の管理者に Azure AD Premium P1 ライセンスが必要です。また、管理単位のメンバーに Azure AD Free ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)に関するページをご覧ください。
 
 ## <a name="manage-administrative-units"></a>管理単位の管理
 

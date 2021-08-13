@@ -4,12 +4,12 @@ description: Visual Studio Code の Azure Functions 拡張機能を使用して 
 ms.topic: quickstart
 ms.date: 11/03/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 6c84bf4ebc73857fa0280ffbcbf46b68c2da630f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27268e53f86dd5cc25baac11a11f903f0d4c47eb
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031720"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287757"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に Java 関数を作成する
 
@@ -27,7 +27,7 @@ Visual Studio Code が好みの開発ツールでない場合は、[Maven](creat
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 <abbr title="Azure 内のリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 または 11。
++ [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8 または 11。
 
 + [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
 

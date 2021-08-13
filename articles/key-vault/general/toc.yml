@@ -39,6 +39,8 @@
   items:
     - name: Key Vault のコード サンプル
       href: /samples/browse/?expanded=azure&products=azure-key-vault
+    - name: Azure Resource Graph クエリ
+      href: ../resource-graph-samples.md
 - name: 概念
   items:
     - name: 基本的な概念
