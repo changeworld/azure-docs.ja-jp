@@ -48,7 +48,11 @@
     - name: テナントのクリーンアップと削除
       href: tutorial-delete-tenant.md
 - name: サンプル
-  href: code-samples.md
+  items:
+    - name: Azure AD B2C をアプリケーションと統合する
+      href: integrate-with-app-code-samples.md
+    - name: API 接続を使用してユーザー フローを変更する
+      href: api-connector-samples.md
 - name: 概念
   items:
     - name: External Identities のソリューションを比較する
@@ -285,6 +289,8 @@
               href: multi-factor-authentication.md
             - name: パートナー統合
               items:
+                - name: BlokSec
+                  href: partner-bloksec.md
                 - name: HYPR
                   href: partner-hypr.md
                 - name: Keyless
@@ -392,6 +398,8 @@
           href: custom-domain.md
         - name: Web Application Firewall のパートナー
           items:
+            - name: Akamai
+              href: partner-akamai.md
             - name: Cloudflare
               href: partner-cloudflare.md
         - name: Web API ドメインを構成する

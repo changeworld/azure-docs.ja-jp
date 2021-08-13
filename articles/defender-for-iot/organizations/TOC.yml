@@ -1,4 +1,4 @@
-- name: 組織向け Azure Defender for IoT
+- name: エンドユーザー組織向けの Azure Defender for IoT
   items: null
 - name: 概要
   displayName: 'IoT, OT, getting started'
@@ -19,6 +19,11 @@
     - name: Azure Defender for IoT を使用した作業の開始
       displayName: 'getting started, registration, onboarding, activation, threat intelligence'
       href: getting-started.md
+- name: チュートリアル
+  expanded: false
+  items:
+    - name: ServiceNow を統合する
+      href: tutorial-servicenow.md
 - name: 概念
   items:
     - name: 主要な概念
@@ -61,7 +66,7 @@
     - name: ユーザーとユーザー アクセスの管理
       items:
         - name: ユーザーの作成と管理
-          displayName: 'Active Directory, roles, permissions'
+          displayName: 'Active Directory, roles, permissions, password'
           href: how-to-create-and-manage-users.md
         - name: グローバル ユーザー アクセス制御の定義
           href: how-to-define-global-user-access-control.md
@@ -154,7 +159,7 @@
     - name: センサー アクティビティを追跡する
       displayName: 'timeline, time line, time-line, event'
       href: how-to-track-sensor-activity.md
-    - name: 組織向け Defender for IoT を使用して Azure Sentinel を構成する
+    - name: エンドユーザー組織向け Defender for IoT を使用して Azure Sentinel を構成する
       displayName: Sentinel
       href: how-to-configure-with-sentinel.md
     - name: センサーとオンプレミスの管理コンソールのトラブルシューティング
@@ -177,6 +182,8 @@
           href: integration-servicenow.md
         - name: Splunk の統合
           href: integration-splunk.md
+        - name: Qradar の統合
+          href: integration-qradar.md
 - name: 関連項目
   items:
     - name: Defender for IoT の API を操作する
@@ -196,17 +203,25 @@
       href: references-defender-for-iot-glossary.md
 - name: リソース
   items:
-    - name: Microsoft Learn でセキュリティ スキルを身に付ける
-      href: /learn/browse/?term=securityS&terms=securityS
-    - name: Azure Security Center のドキュメント
-      href: ../../security-center/
-    - name: Azure のセキュリティのドキュメント
-      href: ../../security/index.yml
-    - name: Azure IoT のセキュリティ、プライバシー、コンプライアンスのブログ
-      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+    - name: デプロイ前のチェック リスト
+      displayNAme: pre-deployment
+      href: resources-sensor-deployment-checklist.md
+    - name: 技術コミュニティのトレーニング セッション
+      displayName: 'training, videos'
+      href: resources-training-sessions.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
+    - name: セキュリティ リソース
+      items:
+        - name: Microsoft Learn でセキュリティ スキルを身に付ける
+          href: /learn/browse/?term=securityS&terms=securityS
+        - name: Azure Security Center のドキュメント
+          href: ../../security-center/
+        - name: Azure のセキュリティのドキュメント
+          href: ../../security/index.yml
+        - name: Azure IoT のセキュリティ、プライバシー、コンプライアンスのブログ
+          href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'

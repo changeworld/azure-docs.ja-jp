@@ -15,14 +15,14 @@ metadata:
   ms.date: 06/16/2021
 highlightedContent:
   items:
-    - title: 組織向けの Azure Defender for IoT とは
+    - title: エンドユーザー組織向けの Azure Defender for IoT とは
       itemType: overview
       url: organizations/overview.md
     - title: 組織向けの新機能
       itemType: whats-new
       url: organizations/release-notes.md
-    - title: 組織向けのエージェントレス ソリューション
-      itemType: overview
+    - title: 組織向けのエージェントレス ソリューション アーキテクチャ
+      itemType: architecture
       url: organizations/architecture.md
     - title: デバイス ビルダー向けの Azure Defender for IoT とは
       itemType: overview
@@ -30,19 +30,19 @@ highlightedContent:
     - title: デバイス ビルダー向けの新機能
       itemType: whats-new
       url: device-builders/release-notes.md
-    - title: デバイス ビルダー向けのエージェントベースのソリューション
-      itemType: overview
+    - title: デバイス ビルダー向けのエージェントベース ソリューション アーキテクチャ
+      itemType: architecture
       url: device-builders/architecture-agent-based.md
 conceptualContent:
   items:
-    - title: 組織向けの Azure Defender for IoT
+    - title: エンドユーザー組織向けの Azure Defender for IoT
       links:
         - url: organizations/quickstart-system-prerequisites.md
           itemType: quickstart
           text: システムの前提条件
         - url: organizations/getting-started.md
           itemType: quickstart
-          text: 組織向けの Azure Defender for IoT の使用を開始する
+          text: エンドユーザー組織向けの Azure Defender for IoT の使用を開始する
         - url: organizations/concept-key-concepts.md
           itemType: quickstart
           text: 主要な概念

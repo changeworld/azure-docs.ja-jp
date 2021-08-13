@@ -1,0 +1,89 @@
+- name: Azure Germany ドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Germany とは
+      href: germany-welcome.md
+    - name: データ トラスティの原則
+      href: germany-overview-data-trustee.md
+- name: 作業の開始
+  items:
+    - name: 開発者ガイド
+      href: germany-developer-guide.md
+    - name: Azure Germany portal にサインインする
+      href: germany-get-started-connect-with-portal.md
+    - name: Azure PowerShell を使用して接続する
+      href: germany-get-started-connect-with-ps.md
+    - name: CLI を使用して接続する
+      href: germany-get-started-connect-with-cli.md
+    - name: Azure Germany 用に Visual Studio を設定する
+      href: germany-get-started-connect-with-vs.md
+    - name: Web アプリをプロビジョニングする
+      href: germany-howto-deploy-webandmobile.md
+    - name: 利用可能なサービス
+      href: germany-services.md
+- name: 操作方法
+  items:
+    - name: 管理する
+      items:
+        - name: サブスクリプション
+          href: germany-manage-subscriptions.md
+    - name: Migrate
+      href: germany-migration-main.md
+      items:
+        - name: Compute
+          href: germany-migration-compute.md
+        - name: ネットワーク
+          href: germany-migration-networking.md
+        - name: Storage
+          href: germany-migration-storage.md
+        - name: Web
+          href: germany-migration-web.md
+        - name: データベース
+          href: germany-migration-databases.md
+        - name: 分析
+          href: germany-migration-analytics.md
+        - name: モノのインターネット (IoT)
+          href: germany-migration-iot.md
+        - name: 統合
+          href: germany-migration-integration.md
+        - name: ID
+          href: germany-migration-identity.md
+        - name: セキュリティ
+          href: germany-migration-security.md
+        - name: 管理ツール
+          href: germany-migration-management-tools.md
+        - name: メディア
+          href: germany-migration-media.md
+- name: 関連項目
+  items:
+    - name: イメージ
+      href: germany-image-gallery.md
+    - name: サービス
+      items:
+        - name: Compute
+          href: germany-services-compute.md
+        - name: ストレージ
+          href: germany-services-storage.md
+        - name: データベース
+          href: germany-services-database.md
+        - name: ネットワーク
+          href: germany-services-networking.md
+        - name: セキュリティと ID
+          href: germany-services-securityandidentity.md
+        - name: Web とモバイル
+          href: germany-services-webandmobile.md
+        - name: モノのインターネット(IoT)
+          href: germany-services-iot.md
+- name: リソース
+  items:
+    - name: Azure Germany の Web サイト
+      href: 'https://azure.microsoft.com/overview/clouds/germany/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: ブログ
+      href: /archive/blogs/azuregermany/
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: 試用版
+      href: 'https://azure.microsoft.com/free/germany'

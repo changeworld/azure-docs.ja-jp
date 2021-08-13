@@ -67,6 +67,8 @@
       items:
         - name: シングルテナントの概要
           href: single-tenant-overview-compare.md
+        - name: ワークフロー デザイナーについて (シングルテナント)
+          href: designer-overview.md
         - name: シングルテナント ワークフローの作成 - ポータル
           href: create-single-tenant-workflows-azure-portal.md
         - name: シングルテナント ワークフローの作成 - Visual Studio Code
@@ -177,57 +179,70 @@
           href: logic-apps-gateway-connection.md
     - name: B2B シナリオの開発
       items:
-        - name: 統合アカウントを作成する
-          href: logic-apps-enterprise-integration-create-integration-account.md
-          displayName: 'Azure CLI, az logic integration-account create, integration-account'
-        - name: 取引先
-          href: logic-apps-enterprise-integration-partners.md
-        - name: アグリーメント
-          href: logic-apps-enterprise-integration-agreements.md
-        - name: XML 検証用のスキーマ
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: XML 変換用のマップ
-          href: logic-apps-enterprise-integration-maps.md
-        - name: 証明書
-          href: logic-apps-enterprise-integration-certificates.md
-        - name: アーティファクト メタデータ
-          href: logic-apps-enterprise-integration-metadata.md
+        - name: 統合アカウントおよびアーティファクト
+          items:
+            - name: 統合アカウントを作成する
+              href: logic-apps-enterprise-integration-create-integration-account.md
+            - name: 取引先
+              href: logic-apps-enterprise-integration-partners.md
+            - name: アグリーメント
+              href: logic-apps-enterprise-integration-agreements.md
+            - name: XML 検証用のスキーマ
+              href: logic-apps-enterprise-integration-schemas.md
+            - name: XML 変換用のマップ
+              href: logic-apps-enterprise-integration-maps.md
+            - name: 証明書
+              href: logic-apps-enterprise-integration-certificates.md
+            - name: アーティファクト メタデータ
+              href: logic-apps-enterprise-integration-metadata.md
         - name: B2B メッセージの送受信
           href: logic-apps-enterprise-integration-b2b.md
-        - name: AS2 メッセージの交換
-          href: logic-apps-enterprise-integration-as2.md
-        - name: AS2 メッセージの設定
-          href: logic-apps-enterprise-integration-as2-message-settings.md
-        - name: EDIFACT メッセージの交換
-          href: logic-apps-enterprise-integration-edifact.md
+        - name: AS2 メッセージング
           items:
+            - name: AS2 メッセージの交換
+              href: logic-apps-enterprise-integration-as2.md
+            - name: AS2 メッセージの設定
+              href: logic-apps-enterprise-integration-as2-message-settings.md
+        - name: EDIFACT メッセージング
+          items:
+            - name: EDIFACT メッセージの交換
+              href: logic-apps-enterprise-integration-edifact.md
             - name: EDIFACT のエンコード
               href: logic-apps-enterprise-integration-edifact-encode.md
             - name: EDIFACT のデコード
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: UNH2.5 セグメントが含まれた EDIFACT ファイルの処理
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
+        - name: RosettaNet メッセージング
+          items:
             - name: RosettaNet メッセージの交換
               href: logic-apps-enterprise-integration-rosettanet.md
-        - name: X12 メッセージの交換
-          href: logic-apps-enterprise-integration-x12.md
+        - name: X12 メッセージング
           items:
+            - name: X12 メッセージの交換
+              href: logic-apps-enterprise-integration-x12.md
             - name: X12 のエンコード
               href: logic-apps-enterprise-integration-x12-encode.md
             - name: X12 のデコード
               href: logic-apps-enterprise-integration-x12-decode.md
+            - name: X12 TA1 確認
+              href: logic-apps-enterprise-integration-x12-ta1-acknowledgment.md
+            - name: X12 997 確認
+              href: logic-apps-enterprise-integration-x12-997-acknowledgment.md
         - name: EDI メッセージのバッチ処理と送信
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: フラット ファイルの処理
           href: logic-apps-enterprise-integration-flatfile.md
-        - name: XML の変換
-          href: logic-apps-enterprise-integration-transform.md
-        - name: XML の処理
-          href: logic-apps-enterprise-integration-xml.md
-        - name: XML の検証
-          href: logic-apps-enterprise-integration-xml-validation.md
-        - name: JSON の変換
-          href: logic-apps-enterprise-integration-liquid-transform.md
+        - name: XML および JSON の変換
+          items:
+            - name: XML の変換
+              href: logic-apps-enterprise-integration-transform.md
+            - name: XML の処理
+              href: logic-apps-enterprise-integration-xml.md
+            - name: XML の検証
+              href: logic-apps-enterprise-integration-xml-validation.md
+            - name: JSON の変換
+              href: logic-apps-enterprise-integration-liquid-transform.md
         - name: B2B エラーのトラブルシューティング
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: ディザスター リカバリー プランの構築
@@ -391,14 +406,16 @@
           href: logic-apps-data-operations-code-samples.md
         - name: ソーシャル メディアの監視
           href: logic-apps-scenario-social-serverless.md
-        - name: サーバーレス アプリの構築 - Visual Studio
-          href: logic-apps-serverless-get-started-vs.md
+        - name: サーバーレス アプリの作成 - Visual Studio
+          href: create-serverless-apps-visual-studio.md
         - name: エラーと例外の処理の追加
           href: logic-apps-scenario-error-and-exception-handling.md
         - name: B2B の処理
           href: logic-apps-enterprise-integration-b2b.md
 - name: リファレンス
   items:
+    - name: 課金と価格のモデル
+      href: logic-apps-pricing.md
     - name: アーキテクチャのパターン
       items:
         - name: 基本的なエンタープライズ統合
@@ -409,8 +426,6 @@
       href: /connectors/
     - name: サービスの制限と構成
       href: logic-apps-limits-and-config.md
-    - name: 価格モデルと使用量の測定
-      href: logic-apps-pricing.md
     - name: Azure CLI
       href: /cli/azure/logic
     - name: Azure PowerShell
@@ -447,7 +462,7 @@
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 価格
+    - name: Azure Logic Apps の価格
       href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'

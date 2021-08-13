@@ -28,6 +28,12 @@
       items:
         - name: アクセス キーを保護する
           href: howto-secure-rotate-access-key.md
+        - name: Azure プライベート エンドポイントの使用
+          href: howto-secure-private-endpoints.md
+        - name: ネットワーク アクセス制御の管理
+          href: howto-secure-network-access-control.md
+        - name: 共有プライベート エンドポイントを経由する送信トラフィックをセキュリティで保護する
+          href: howto-secure-shared-private-endpoints.md
     - name: トラブルシューティング
       items:
         - name: ネットワーク トレースを収集する

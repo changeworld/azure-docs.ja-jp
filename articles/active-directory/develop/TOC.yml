@@ -137,6 +137,11 @@
         - name: Microsoft Identity Web ライブラリ
           href: microsoft-identity-web.md
           displayName: 'auth, library, .NET Core, msal'
+    - name: 承認の基本
+      displayName: AuthZ basics
+      items:
+        - name: アプリ開発者向けの RBAC
+          href: custom-rbac-for-developers.md
     - name: アプリ シナリオと認証フロー
       displayName: Auth flows
       href: authentication-flows-app-scenarios.md
@@ -149,6 +154,8 @@
       items:
         - name: アプリの最小特権アクセスのベスト プラクティス
           href: secure-least-privileged-access.md
+        - name: Azure AD アプリケーションの登録に関するセキュリティのベスト プラクティス
+          href: security-best-practices-for-app-registration.md
         - name: 条件付きアクセス
           href: v2-conditional-access-dev-guide.md
         - name: 認証コンテキスト
@@ -692,7 +699,7 @@
         - name: 一般的なプロビジョニングのシナリオ
           href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: MS Graph を使用した構成の自動化
-          href: /azure/active-directory/app-provisioning/application-provisioning-configuration-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
+          href: ../app-provisioning/application-provisioning-configuration-api.md?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
 - name: リソース
   items:
     - name: ビデオ

@@ -25,7 +25,7 @@
           href: file-sync-choose-cloud-tiering-policies.md
         - name: クラウドの階層化を監視する
           href: file-sync-monitor-cloud-tiering.md
-    - name: スケーラビリティとパフォーマンスのターゲット
+    - name: スケールとパフォーマンスのターゲット
       href: ../files/storage-files-scale-targets.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
     - name: データの誤削除の防止
       href: ../files/storage-files-prevent-file-share-deletion.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
@@ -70,17 +70,17 @@
         - name: Azure File Sync でのサーバーの登録
           href: file-sync-server-registration.md
         - name: Azure File Sync の Server エンドポイントの追加
-          href: file-sync-server-endpoint.md
+          href: file-sync-server-endpoint-create.md
         - name: Azure の独立したクラウドでのストレージの管理
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
-        - name: アカウントのフェールオーバーを開始する
-          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
         - name: 階層化ファイルの管理
           href: file-sync-how-to-manage-tiered-files.md
         - name: リソースを他のリソース グループ、サブスクリプション、AAD テナントに移動する
           href: file-sync-resource-move.md
-        - name: Azure File Sync サーバー エンドポイントのプロビジョニング解除
-          href: file-sync-deprovision-server-endpoint.md
+        - name: Azure File Sync サーバー エンドポイントを削除する
+          href: file-sync-server-endpoint-delete.md
+        - name: アカウントのフェールオーバーを開始する
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
         - name: Azure File Sync トポロジの変更
           href: file-sync-modify-sync-topology.md
     - name: データ保護
@@ -140,11 +140,11 @@
     - name: 移行
       items:
         - name: Azure ファイル共有への移行
-          href: ../files/storage-files-migration-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+          href: ../files/storage-files-migration-overview.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
         - name: ハイブリッド デプロイをターゲットにする
           items:
             - name: Azure Data Box を使用して Azure File Sync に大量のデータを移行する
-              href: file-sync-offline-data-transfer.md
+              href: ../files/storage-files-migration-server-hybrid-databox.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
             - name: Azure File Sync を使用して Linux からハイブリッド ファイル サーバーに移行する
               href: ../files/storage-files-migration-linux-hybrid.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
             - name: Azure File Sync を使用してオンプレミスの NAS からハイブリッド ファイル サーバーに移行する
@@ -158,7 +158,7 @@
             - name: StorSimple 1200 の移行ガイド
               href: ../files/storage-files-migration-storsimple-1200.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
     - name: 大型ファイル共有を有効にする
-      href: ../files/storage-files-how-to-create-large-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+      href: ../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
     - name: セキュリティで保護
       items:
         - name: ストレージ アカウントの暗号化キーの管理
@@ -194,7 +194,7 @@
         - name: Azure File Sync のトラブルシューティング
           href: file-sync-troubleshoot.md
         - name: Azure ファイル共有の削除に関するトラブルシューティング
-          href: ../files/storage-troubleshoot-cannot-delete-files-azure-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+          href: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json#unable-to-modify-moverename-or-delete-a-file-or-directory
         - name: ファイル共有のバックアップに関するトラブルシューティング
           href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
 - name: リファレンス

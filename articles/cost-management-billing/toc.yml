@@ -4,6 +4,8 @@
   items:
     - name: Cost Management と Billing の概要
       href: cost-management-billing-overview.md
+    - name: 新機能
+      href: 'https://azure.microsoft.com/blog/tag/cost-management/'
 - name: クイックスタート
   items:
     - name: コストの分析を開始する
@@ -112,6 +114,8 @@
           href: understand/mca-understand-your-invoice.md
         - name: Microsoft Customer Agreement の価格シートの用語
           href: manage/mca-understand-pricesheet.md
+        - name: Microsoft 顧客契約の FAQ
+          href: understand/mca-faq.md
         - name: Microsoft Partner Agreement の請求書の用語
           href: understand/mpa-invoice-terms.md
         - name: 更新された従量課金制の課金アカウントに対する変更
@@ -454,20 +458,3 @@
           href: manage/review-enterprise-billing.md
         - name: サブスクリプションの用途の確認
           href: manage/review-subscription-billing.md
-- name: Cloudyn
-  items:
-    - name: 概要
-    - name: クイックスタート
-    - name: チュートリアル
-    - name: 概念
-    - name: 操作方法ガイド
-    - name: リソース
-      items:
-        - name: Azure のロードマップ
-          href: 'https://azure.microsoft.com/roadmap/'
-        - name: Cloudyn の価格
-          href: 'https://azure.microsoft.com/pricing/details/cost-management'
-        - name: Cloudyn のリージョン別の提供状況
-          href: 'https://azure.microsoft.com/regions/services/'
-        - name: Cloudyn のサポートに問い合わせる
-          href: ./costs/open-support-request.md

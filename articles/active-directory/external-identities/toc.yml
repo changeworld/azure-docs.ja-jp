@@ -90,7 +90,7 @@
           items:
             - name: Azure Active Directory
               href: azure-ad-account.md
-            - name: Microsoft アカウント (プレビュー)
+            - name: Microsoft アカウント
               href: microsoft-account.md
             - name: Google のフェデレーション
               href: google-federation.md
@@ -114,6 +114,8 @@
               href: self-service-sign-up-add-api-connector.md
             - name: カスタム承認システムを追加する
               href: self-service-sign-up-add-approvals.md
+            - name: API コネクタのセキュリティ保護
+              href: self-service-sign-up-secure-api-connector.md
         - name: ゲスト ユーザー アカウントを管理する
           items:
             - name: 動的グループと B2B ユーザー
@@ -153,7 +155,7 @@
         - name: Microsoft Q&A 質問ページ
           href: /answers/topics/azure-active-directory.html
         - name: 価格
-          href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+          href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
         - name: 料金計算ツール
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: サービスの更新情報

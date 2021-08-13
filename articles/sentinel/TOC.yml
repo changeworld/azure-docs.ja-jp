@@ -25,6 +25,14 @@
       href: powerbi.md
 - name: 概念
   items:
+    - name: ベスト プラクティス
+      items:
+        - name: デプロイ前のベスト プラクティス
+          href: prerequisites.md
+        - name: 全般的なベスト プラクティス
+          href: best-practices.md
+        - name: データ収集のベスト プラクティス
+          href: best-practices-data.md
     - name: Architecture
       items:
         - name: ロールとアクセス許可
@@ -32,7 +40,7 @@
         - name: コストと課金
           href: azure-sentinel-billing.md
         - name: セキュリティ ベースライン
-          href: 'https://docs.microsoft.com/security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json'
+          href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=%2fazure%2fsentinel%2fTOC.json
     - name: データの収集と分析
       items:
         - name: 正規化と Azure Sentinel 情報モデル (ASIM)
@@ -47,8 +55,8 @@
           href: sentinel-solutions-catalog.md
     - name: 脅威インテリジェンス
       items:
-        - name: 脅威インテリジェンスの Azure Sentinel へのインポート
-          href: import-threat-intelligence.md
+        - name: Azure Sentinel の脅威インテリジェンスについて
+          href: understand-threat-intelligence.md
         - name: 脅威インテリジェンスの統合
           href: threat-intelligence-integration.md
     - name: 脅威の検出
@@ -59,8 +67,6 @@
           href: soc-ml-anomalies.md
         - name: マルチステージ攻撃 (Fusion)
           href: fusion.md
-        - name: ウォッチリスト
-          href: watchlists.md
     - name: 脅威の捜索
       href: hunting.md
     - name: SOAR
@@ -280,7 +286,13 @@
     - name: ソリューションの検出とデプロイ
       href: sentinel-solutions-deploy.md
     - name: 脅威インテリジェンスの接続
-      href: connect-threat-intelligence.md
+      items:
+        - name: 脅威インテリジェンス プラットフォームの接続
+          href: connect-threat-intelligence-tip.md
+        - name: STIX/TAXII フィードへの接続
+          href: connect-threat-intelligence-taxii.md
+    - name: 脅威インジケーターの操作
+      href: work-with-threat-indicators.md
     - name: データの監視と視覚化
       items:
         - name: 収集されたデータを視覚化する
@@ -313,6 +325,8 @@
           href: false-positives.md
         - name: Microsoft セキュリティ アラートからインシデントを作成する
           href: create-incidents-from-alerts.md
+        - name: ウォッチリストを使用する
+          href: watchlists.md
     - name: 脅威の探索
       items:
         - name: Jupyter Notebook を使用して追求する
@@ -385,7 +399,7 @@
               href: ../role-based-access-control/built-in-roles.md#all
             - name: Azure Sentinel のロール
               href: ../role-based-access-control/built-in-roles.md#security
-    - name: データ コネクタ リファレンス
+    - name: データ収集のリファレンス
       items:
         - name: データ ソース スキーマ リファレンス
           href: data-source-schema-reference.md
@@ -425,8 +439,10 @@
               href: hunting-with-rest-api.md
             - name: REST-API を使用してウォッチリストを管理する
               href: watchlist-with-rest-api.md
+            - name: REST API を使用した地理位置情報データによるエンティティの強化
+              href: geolocation-data-api.md
         - name: Microsoft 365 Defender にオンボードされない MCAS アラート
-          href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
+          href: ./microsoft-365-defender-sentinel-integration.md#microsoft-365-defender-incidents-and-microsoft-incident-creation-rules
 - name: リソース
   items:
     - name: 有用なリソース

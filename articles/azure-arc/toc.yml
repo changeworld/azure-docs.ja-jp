@@ -4,11 +4,15 @@
   items:
     - name: Azure Arc について
       href: overview.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: Arc 対応サーバー >
   href: ./servers/overview.md
 - name: Arc 対応 Kubernetes >
   href: ./kubernetes/overview.md
 - name: Arc 対応データ サービス (プレビュー) >
   href: ./data/overview.md
-- name: Arc 対応 SQL Server (プレビュー) >
+- name: Azure Arc 対応サーバーでの SQL Server (プレビュー) >
   href: 'https://docs.microsoft.com/sql/sql-server/azure-arc/overview'

@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: 最新の更新
       items:
+        - name: 2021 年 6 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-june-2021/'
         - name: 2021 年 5 月の新機能と更新された機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-may-2021/'
         - name: 2021 年 4 月の新機能と更新された機能
@@ -247,8 +249,6 @@
           href: core/howto-connect-powerbi.md
         - name: その他の IoT クラウドの接続
           href: core/howto-build-iotc-device-bridge.md
-        - name: Dynamics 365 Field Services を使用してアプリを接続する
-          href: government/how-to-configure-connected-field-services.md
     - name: REST API の使用
       items:
         - name: REST API 呼び出しの認証と承認
@@ -288,7 +288,7 @@
         - name: デバイスの接続
           href: core/troubleshoot-connection.md
     - name: よく寄せられる質問
-      href: core/howto-faq.md
+      href: core/howto-faq.yml
     - name: 個人設定の管理
       href: core/howto-manage-preferences.md
     - name: ライブ チャットの切り替え
@@ -318,7 +318,7 @@
         - name: IoT ソリューション アクセラレータ
           href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

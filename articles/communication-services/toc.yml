@@ -6,7 +6,7 @@ items:
     items:
       - name: Azure Communication Services とは
         href: overview.md
-      - name: サポート オプションとヘルプ オプション
+      - name: ヘルプとサポートのオプション
         href: support.md
   - name: クイックスタート
     expanded: true
@@ -17,10 +17,12 @@ items:
         items:
           - name: アクセス トークンを作成して管理する
             href: quickstarts/access-tokens.md
-          - name: マネージド ID の使用
-            href: quickstarts/managed-identity.md
-          - name: CLI からマネージド ID を設定する
-        href: quickstarts/managed-identity-from-cli.md
+          - name: Azure AD による認証
+            href: quickstarts/identity/service-principal.md
+          - name: Azure AD による認証 (Azure CLI)
+            href: quickstarts/identity/service-principal-from-cli.md
+          - name: テスト用の ID の簡易作成
+            href: quickstarts/identity/quick-create-identity.md
       - name: チャット
         items:
           - name: チャットをアプリに追加する
@@ -29,9 +31,9 @@ items:
             href: quickstarts/chat/meeting-interop.md
       - name: テレフォニーと SMS
         items:
-          - name: 電話番号の取得
+          - name: 電話番号の取得と管理
             href: quickstarts/telephony-sms/get-phone-number.md
-          - name: 電話番号を Azure に移植する
+          - name: 電話番号を Azure に移行する
             href: quickstarts/telephony-sms/port-phone-number.md
           - name: 電話の呼び出しのアプリへの追加
             href: quickstarts/voice-video-calling/pstn-call.md
@@ -51,7 +53,7 @@ items:
             href: quickstarts/voice-video-calling/calling-client-samples.md
           - name: 通話クライアント アプリを Teams の会議に参加させる
             href: quickstarts/voice-video-calling/get-started-teams-interop.md
-          - name: サービスを通話に参加させる
+          - name: Call Automation API を使用する
             href: quickstarts/voice-video-calling/call-automation-api-sample.md
           - name: 通話を記録する
             href: quickstarts/voice-video-calling/call-recording-sample.md
@@ -76,7 +78,7 @@ items:
         href: tutorials/building-app-start.md
       - name: C# を使用して HMAC 署名で HTTP 要求に署名する
         href: tutorials/hmac-header-tutorial.md
-      - name: Postman で ACS の SMS API に署名して要求を行う
+      - name: Postman で SMS API に署名して要求を行う
         href: tutorials/postman-tutorial.md
   - name: 概念
     expanded: false

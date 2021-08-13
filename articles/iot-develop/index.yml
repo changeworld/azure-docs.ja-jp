@@ -9,49 +9,57 @@ metadata:
   ms.topic: landing-page
   author: timlt
   ms.author: timlt
-  ms.date: 01/11/2021
-  ms.openlocfilehash: 14587a7e9748c7df799ef798ff03ee2380b76cdc
-  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113112061"
+  ms.date: 07/15/2021
 landingContent:
-- title: IoT デバイスの開発の概要
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure IoT デバイスの開発とは
-      url: about-iot-develop.md
-    - text: IoT デバイスの種類を確認する
-      url: concepts-iot-device-types.md
-    - text: 使用する SDK
-      url: about-iot-sdks.md
-- title: デバイス アプリケーション開発の概要
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: デバイス テレメトリを IoT Central に送信する
-      url: quickstart-send-telemetry-central.md
-    - text: デバイス テレメトリを IoT Hub に送信する
-      url: quickstart-send-telemetry-iot-hub.md
-- title: 埋め込みデバイス開発の概要
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: MXCHIP AZ3166 を Azure IoT に接続する
-      url: quickstart-devkit-mxchip-az3166.md
-    - text: MXCHIP AZ3166 を Azure IoT Hub に接続する
-      url: quickstart-devkit-mxchip-az3166-iot-hub.md
-    - text: Microchip ATSAME54-XPro を Azure IoT に接続する
-      url: quickstart-devkit-microchip-atsame54-xpro.md
-    - text: NXP MIMXRT1050-EVKB を Azure IoT に接続する
-      url: quickstart-devkit-nxp-mimxrt1050-evkb.md
-    - text: NXP MIMXRT1060-EVK を Azure IoT に接続する
-      url: quickstart-devkit-nxp-mimxrt1060-evk.md
-    - text: Renesas RX65N-2MB を Azure IoT に接続する
-      url: quickstart-devkit-renesas-rx65n-2mb.md
-    - text: Renesas RX65N Cloud Kit を Azure IoT に接続する
-      url: quickstart-devkit-renesas-rx65n-cloud-kit.md
-    - text: STMicroelectronics B-L475E/L4S5I-IOT01A を Azure IoT に接続する
-      url: quickstart-devkit-stm-b-l475e.md
+  - title: IoT デバイスの開発の概要
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Azure IoT デバイスの開発とは
+            url: about-iot-develop.md
+          - text: IoT デバイスの種類を確認する
+            url: concepts-iot-device-types.md
+          - text: IoT プラグ アンド プレイとは
+            url: overview-iot-plug-and-play.md
+  - title: デバイス アプリケーション開発の概要
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: デバイス テレメトリを IoT Central に送信する
+            url: quickstart-send-telemetry-central.md
+          - text: デバイス テレメトリを IoT Hub に送信する
+            url: quickstart-send-telemetry-iot-hub.md
+  - title: 埋め込みデバイス開発の概要
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: MXCHIP AZ3166 を Azure IoT に接続する
+            url: quickstart-devkit-mxchip-az3166.md
+          - text: MXCHIP AZ3166 を Azure IoT Hub に接続する
+            url: quickstart-devkit-mxchip-az3166-iot-hub.md
+          - text: Microchip ATSAME54-XPro を Azure IoT に接続する
+            url: quickstart-devkit-microchip-atsame54-xpro.md
+          - text: STMicroelectronics B-L475E/L4S5I-IOT01A を Azure IoT に接続する
+            url: quickstart-devkit-stm-b-l475e.md
+  - title: デバイス ソリューションを構築する
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: IoT Hub にサンプル デバイスを接続する
+            url: tutorial-connect-device.md
+          - text: IoT デバイスをクラウドに安全に接続する
+            url: /learn/paths/securely-connect-iot-devices/?wt.mc_id=iothub_connect_docs_tutorials
+  - title: デバイス開発フレームワーク
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: デバイスの種類の概要
+            url: concepts-iot-device-types.md
+          - text: 開発者ガイド
+            url: concepts-developer-guide-device.md
+          - text: モデリング ガイド
+            url: concepts-modeling-guide.md
+          - text: IoT プラグ アンド プレイの規則
+            url: concepts-convention.md
+          - text: IoT プラグ アンド プレイ ブリッジ
+            url: concepts-iot-pnp-bridge.md

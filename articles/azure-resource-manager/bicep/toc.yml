@@ -32,6 +32,7 @@
           items:
             - name: リソースの宣言
               href: resource-declaration.md
+              displayName: existing
             - name: 条件付きデプロイ
               href: conditional-resource-deployment.md
               displayName: runtime
@@ -55,7 +56,7 @@
         - name: ループ
           items:
             - name: リソース
-              displayName: 'iteration,copy,multiple,batches,child'
+              displayName: 'iteration,copy,multiple,batches,child,condition,filter'
               href: loop-resources.md
             - name: Properties
               displayName: 'iteration,copy,multiple'
@@ -159,6 +160,8 @@
           href: operators-logical.md
         - name: 数値演算子
           href: operators-numeric.md
+        - name: アクセス演算子
+          href: operators-access.md
     - name: Bicep CLI
       href: bicep-cli.md
       displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'

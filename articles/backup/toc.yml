@@ -324,7 +324,7 @@
       items:
         - name: 保護マトリックス
           items:
-            - name: MABS V3 UR1 の保護マトリックス
+            - name: MABS V3 UR1 (以降) の保護マトリックス
               href: backup-mabs-protection-matrix.md
             - name: MABS V3 RTM の保護マトリックス
               href: microsoft-azure-backup-server-protection-v3.md
@@ -338,12 +338,16 @@
               href: backup-mabs-whats-new-mabs.md
             - name: MABS のリリース ノート
               href: backup-mabs-release-notes-v3.md
+            - name: テレメトリ設定のオン/オフの切り替え
+              href: manage-telemetry.md
             - name: 自動実行インストール
               href: backup-mabs-unattended-install.md
         - name: ワークロードの保護
           items:
             - name: Hyper-V 仮想マシンのバックアップ
               href: back-up-hyper-v-virtual-machines-mabs.md
+            - name: Azure Stack HCI 仮想マシンのバックアップ
+              href: back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md
             - name: VMware サーバー
               href: backup-azure-backup-server-vmware.md
             - name: Exchange

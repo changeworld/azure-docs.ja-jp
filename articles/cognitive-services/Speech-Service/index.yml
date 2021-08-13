@@ -101,6 +101,9 @@ conceptualContent:
         - itemType: how-to-guide
           text: LUIS と C# を使用して音声から意図を認識する
           url: how-to-recognize-intents-from-speech-csharp.md
+        - itemType: how-to-guide
+          text: 単純なパターン マッチング (C++) を使用して音声から意図を認識する
+          url: how-to-use-simple-language-pattern-matching.md
         - itemType: reference
           text: Language Understanding (LUIS) ポータル
           url: 'https://www.luis.ai'

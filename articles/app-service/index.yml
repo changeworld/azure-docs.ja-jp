@@ -7,200 +7,196 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 9ed958c7656d6101824a14ed8e39f41df2ce63e5
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110375235"
 landingContent:
-- title: App Service について
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: App Service とは
-      url: overview.md
-    - text: App Service Environment
-      url: environment/intro.md
-    - text: ホスティング オプションの比較
-      url: /azure/architecture/guide/technology-choices/compute-decision-tree
-  - linkListType: whats-new
-    links:
-    - text: サービスの更新情報
-      url: https://azure.microsoft.com/updates/?product=app-service
-- title: はじめに
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 初めての ASP.NET Web アプリ
-      url: quickstart-dotnetcore.md
-    - text: 初めての Node.js アプリ
-      url: quickstart-nodejs.md
-    - text: 初めての PHP アプリ
-      url: quickstart-php.md
-    - text: 初めての Java アプリ
-      url: quickstart-java.md
-    - text: 初めての Python Flask アプリ (Linux のみ)
-      url: quickstart-python.md
-    - text: 初めての Ruby アプリ (Linux のみ)
-      url: quickstart-ruby.md
-- title: 一般的なタスク
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: カスタム ドメインをアプリにマップする
-      url: app-service-web-tutorial-custom-domain.md
-    - text: SSL バインディングを使用してカスタム ドメインをセキュリティで保護する
-      url: configure-ssl-bindings.md
-    - text: ステージング環境でアプリを実行する
-      url: deploy-staging-slots.md
-    - text: ストレージと Microsoft Graph に安全にアクセスする
-      url: scenario-secure-app-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: SSH 経由で Linux コンテナーに接続する
-      url: configure-linux-open-ssh-session.md
-    - text: アクティブなドメイン名を App Service に移行する
-      url: manage-custom-dns-migrate-domain.md
-- title: カスタム コンテナーを実行する
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: カスタム コンテナーの実行
-      url: quickstart-custom-container.md
-  - linkListType: tutorial
-    links:
-    - text: Docker Compose アプリを実行する (Linux のみ)
-      url: tutorial-multi-container-app.md
-    - text: コンテナーでカスタム ソフトウェアを Azure に移行する
-      url: tutorial-custom-container.md
-  - linkListType: how-to-guide
-    links:
-    - text: カスタム コンテナーへの CI/CD
-      url: deploy-ci-cd-custom-container.md
-    - text: コンテナーをストレージ ファイルに接続する
-      url: configure-connect-to-azure-storage.md
-    - text: GitHub Actions を使用したデプロイ
-      url: deploy-container-github-action.md
-- title: データベースを使用した CRUD アプリ
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: SQL Database を使用した ASP.NET アプリ
-      url: app-service-web-tutorial-dotnet-sqldatabase.md
-    - text: ASP.NET Core アプリと SQL Database
-      url: tutorial-dotnetcore-sqldb-app.md
-    - text: Azure MySQL を使用する PHP (Laravel) アプリ
-      url: tutorial-php-mysql-app.md
-    - text: MongoDB を使用する Node.js (MEAN.js) アプリ
-      url: tutorial-nodejs-mongodb-app.md
-    - text: Cosmos DB を使用する Java (Spring Boot) アプリ
-      url: tutorial-java-spring-cosmosdb.md
-    - text: PostgreSQL を使用する Python (Django) アプリ
-      url: tutorial-python-postgresql-app.md
-    - text: PostgreSQL を使用する Ruby (Rails) アプリ
-      url: tutorial-ruby-postgres-app.md
-- title: 管理と統合
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: App Service プランの管理
-      url: overview-hosting-plans.md
-  - linkListType: tutorial
-    links:
-    - text: マネージド ID を利用してリソースへのアクセスを保護する
-      url: app-service-web-tutorial-connect-msi.md
-    - text: ユーザーを認証する
-      url: tutorial-auth-aad.md
-    - text: CORS を使用して RESTful API をホストする
-      url: app-service-web-tutorial-rest-api.md
-    - text: CDN をアプリケーションに追加する
-      url: ../cdn/cdn-add-to-web-app.md
-  - linkListType: how-to-guide
-    links:
-    - text: Virtual Network との統合
-      url: web-sites-integrate-with-vnet.md
-    - text: オンプレミスへのハイブリッド接続を作成する
-      url: app-service-hybrid-connections.md
-    - text: Traffic Manager を使用する負荷分散
-      url: configure-domain-traffic-manager.md
-    - text: Storage BLOB へのアプリのバックアップ
-      url: manage-backup.md
-- title: コードまたはコンテンツをアップロードする
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: FTP を使用してコンテンツをアップロードする
-      url: deploy-ftp.md
-    - text: Zip パッケージとしてコンテンツをアップロードする
-      url: deploy-zip.md
-    - text: ローカル コンピューターからの Git プッシュ
-      url: deploy-local-git.md
-    - text: OneDrive または Dropbox とのコンテンツの同期
-      url: deploy-content-sync.md
-    - text: GitHub、BitBucket などを使用した CI/CD
-      url: deploy-continuous-deployment.md
-    - text: パッケージから実行
-      url: deploy-run-package.md
-- title: アプリを監視する
-  linkLists:
-  - linkListType: whats-new
-    links:
-    - text: App Service と Azure Monitor の統合 (プレビュー)
-      url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
-    - text: Azure Monitor の統合のログの種類 (プレビュー)
-      url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
-  - linkListType: tutorial
-    links:
-    - text: Azure Monitor を使用したエラーのトラブルシューティング (プレビュー)
-      url: tutorial-troubleshoot-monitor.md
-  - linkListType: how-to-guide
-    links:
-    - text: Traffic Manager で診断ログを有効にする
-      url: troubleshoot-diagnostic-logs.md
-    - text: リソース イベントの取得
-      url: get-resource-events.md
-    - text: 正常性チェック
-      url: monitor-instances-health-check.md
-  - linkListType: reference
-    links:
-    - text: クォータとアラート
-      url: web-sites-monitor.md
-- title: その他のリソース
-  linkLists:
-  - linkListType: video
-    links:
-    - text: App Service のビデオ ライブラリ
-      url: https://azure.microsoft.com/resources/videos/index/?services=app-service
-    - text: Pluralsight ビデオ トレーニング
-      url: https://www.pluralsight.com/search?q=azure%20app%20service
-  - linkListType: sample
-    links:
-    - text: Azure CLI のサンプル
-      url: samples-cli.md
-    - text: Azure PowerShell のサンプル
-      url: samples-powershell.md
-  - linkListType: reference
-    links:
-    - text: Azure CLI
-      url: /cli/azure/appservice
-    - text: Azure PowerShell
-      url: /powershell/module/az.websites/#app_service
-    - text: REST API
-      url: /rest/api/appservice/
-    - text: リソース マネージャー
-      url: /azure/templates/microsoft.web/allversions
-- title: Azure Arc の App Service (プレビュー)
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Azure Arc の App Service、Functions、および Logic Apps (プレビュー)
-      url: overview-arc-integration.md
-  - linkListType: tutorial
-    links:
-    - text: Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
-      url: manage-create-arc-environment.md
-  - linkListType: quickstart
-    links:
-    - text: Azure Arc で App Service アプリを作成する (プレビュー)
-      url: quickstart-arc.md
+  - title: App Service について
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: App Service とは
+            url: overview.md
+          - text: App Service プランとは
+            url: overview-hosting-plans.md
+          - text: App Service Environment
+            url: environment/intro.md
+          - text: Web アプリに対する Azure のホスティング オプションを比較する
+            url: /azure/architecture/guide/technology-choices/compute-decision-tree
+      - linkListType: whats-new
+        links:
+          - text: サービスの更新情報
+            url: 'https://azure.microsoft.com/updates/?product=app-service'
+  - title: はじめに
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: 初めての ASP.NET Web アプリ
+            url: quickstart-dotnetcore.md
+          - text: 初めての Node.js アプリ
+            url: quickstart-nodejs.md
+          - text: 初めての PHP アプリ
+            url: quickstart-php.md
+          - text: 初めての Java アプリ
+            url: quickstart-java.md
+          - text: 初めての Python Flask アプリ (Linux のみ)
+            url: quickstart-python.md
+          - text: 初めての Ruby アプリ (Linux のみ)
+            url: quickstart-ruby.md
+  - title: 一般的なタスク
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: カスタム ドメインをアプリにマップする
+            url: app-service-web-tutorial-custom-domain.md
+          - text: TLS/SSL バインディングを使用してカスタム ドメインをセキュリティで保護する
+            url: configure-ssl-bindings.md
+          - text: ステージング環境でアプリを実行する
+            url: deploy-staging-slots.md
+          - text: ストレージと Microsoft Graph に安全にアクセスする
+            url: scenario-secure-app-overview.md
+      - linkListType: how-to-guide
+        links:
+          - text: SSH 経由で Linux コンテナーに接続する
+            url: configure-linux-open-ssh-session.md
+          - text: アクティブなドメイン名を App Service に移行する
+            url: manage-custom-dns-migrate-domain.md
+  - title: カスタム コンテナーを実行する
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: カスタム コンテナーの実行
+            url: quickstart-custom-container.md
+      - linkListType: tutorial
+        links:
+          - text: Docker Compose アプリを実行する (Linux のみ)
+            url: tutorial-multi-container-app.md
+          - text: コンテナーでカスタム ソフトウェアを Azure に移行する
+            url: tutorial-custom-container.md
+      - linkListType: how-to-guide
+        links:
+          - text: カスタム コンテナーへの CI/CD
+            url: deploy-ci-cd-custom-container.md
+          - text: コンテナーをストレージ ファイルに接続する
+            url: configure-connect-to-azure-storage.md
+          - text: GitHub Actions を使用したデプロイ
+            url: deploy-container-github-action.md
+  - title: データベースを使用した CRUD アプリ
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: SQL Database を使用した ASP.NET アプリ
+            url: app-service-web-tutorial-dotnet-sqldatabase.md
+          - text: ASP.NET Core アプリと SQL Database
+            url: tutorial-dotnetcore-sqldb-app.md
+          - text: Azure MySQL を使用する PHP (Laravel) アプリ
+            url: tutorial-php-mysql-app.md
+          - text: MongoDB を使用する Node.js (MEAN.js) アプリ
+            url: tutorial-nodejs-mongodb-app.md
+          - text: Cosmos DB を使用する Java (Spring Boot) アプリ
+            url: tutorial-java-spring-cosmosdb.md
+          - text: PostgreSQL を使用する Python (Django) アプリ
+            url: tutorial-python-postgresql-app.md
+          - text: PostgreSQL を使用する Ruby (Rails) アプリ
+            url: tutorial-ruby-postgres-app.md
+  - title: 管理と統合
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: App Service プランの管理
+            url: app-service-plan-manage.md
+      - linkListType: tutorial
+        links:
+          - text: マネージド ID を利用してリソースへのアクセスを保護する
+            url: app-service-web-tutorial-connect-msi.md
+          - text: ユーザーを認証する
+            url: tutorial-auth-aad.md
+          - text: CORS を使用して RESTful API をホストする
+            url: app-service-web-tutorial-rest-api.md
+          - text: CDN をアプリケーションに追加する
+            url: ../cdn/cdn-add-to-web-app.md
+      - linkListType: how-to-guide
+        links:
+          - text: Virtual Network との統合
+            url: web-sites-integrate-with-vnet.md
+          - text: オンプレミスへのハイブリッド接続を作成する
+            url: app-service-hybrid-connections.md
+          - text: Traffic Manager を使用する負荷分散
+            url: configure-domain-traffic-manager.md
+          - text: Storage BLOB へのアプリのバックアップ
+            url: manage-backup.md
+  - title: コードまたはコンテンツをアップロードする
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: FTP を使用してコンテンツをアップロードする
+            url: deploy-ftp.md
+          - text: Zip パッケージとしてコンテンツをアップロードする
+            url: deploy-zip.md
+          - text: ローカル コンピューターからの Git プッシュ
+            url: deploy-local-git.md
+          - text: OneDrive または Dropbox とのコンテンツの同期
+            url: deploy-content-sync.md
+          - text: GitHub、BitBucket などを使用した CI/CD
+            url: deploy-continuous-deployment.md
+          - text: パッケージから実行
+            url: deploy-run-package.md
+  - title: アプリを監視する
+    linkLists:
+      - linkListType: whats-new
+        links:
+          - text: App Service と Azure Monitor の統合 (プレビュー)
+            url: 'https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html'
+          - text: Azure Monitor の統合のログの種類 (プレビュー)
+            url: 'https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html'
+      - linkListType: tutorial
+        links:
+          - text: Azure Monitor を使用したエラーのトラブルシューティング (プレビュー)
+            url: tutorial-troubleshoot-monitor.md
+      - linkListType: how-to-guide
+        links:
+          - text: Traffic Manager で診断ログを有効にする
+            url: troubleshoot-diagnostic-logs.md
+          - text: リソース イベントの取得
+            url: get-resource-events.md
+          - text: 正常性チェック
+            url: monitor-instances-health-check.md
+      - linkListType: reference
+        links:
+          - text: クォータとアラート
+            url: web-sites-monitor.md
+  - title: その他のリソース
+    linkLists:
+      - linkListType: video
+        links:
+          - text: App Service のビデオ ライブラリ
+            url: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
+          - text: Pluralsight ビデオ トレーニング
+            url: 'https://www.pluralsight.com/search?q=azure%20app%20service'
+      - linkListType: sample
+        links:
+          - text: Azure CLI のサンプル
+            url: samples-cli.md
+          - text: Azure PowerShell のサンプル
+            url: samples-powershell.md
+      - linkListType: reference
+        links:
+          - text: Azure CLI
+            url: /cli/azure/appservice
+          - text: Azure PowerShell
+            url: /powershell/module/az.websites/#app_service
+          - text: REST API
+            url: /rest/api/appservice/
+          - text: リソース マネージャー
+            url: /azure/templates/microsoft.web/allversions
+  - title: Azure Arc の App Service (プレビュー)
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Azure Arc の App Service、Functions、および Logic Apps (プレビュー)
+            url: overview-arc-integration.md
+      - linkListType: quickstart
+        links:
+          - text: Azure Arc で App Service アプリを作成する (プレビュー)
+            url: quickstart-arc.md
+      - linkListType: tutorial
+        links:
+          - text: Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
+            url: manage-create-arc-environment.md

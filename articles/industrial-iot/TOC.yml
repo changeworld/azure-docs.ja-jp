@@ -1,5 +1,7 @@
 - name: Azure Industrial IoT ドキュメント
   href: index.yml
+- name: Azure Industrial IoT プラットフォームのバージョン
+  href: industrial-iot-platform-versions.md
 - name: 概要
   items:
     - name: 産業用 IoT とは
@@ -55,7 +57,7 @@
         - name: IoT ソリューション アクセラレータ
           href: ./index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

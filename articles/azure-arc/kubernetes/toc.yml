@@ -16,6 +16,10 @@
       href: tutorial-use-gitops-connected-cluster.md
     - name: GitOps を使用して CI/CD を実装する
       href: tutorial-gitops-ci-cd.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
     - name: エージェントのアーキテクチャ

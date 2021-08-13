@@ -24,6 +24,14 @@
 - name: 操作方法ガイド
   expanded: true
   items:
+    - name: 計画と設計
+      items:
+        - name: アーキテクチャの計画の概要
+          href: introduction-to-verifiable-credentials-architecture.md
+        - name: 発行ソリューションの計画
+          href: plan-issuance-solution.md
+        - name: 検証ソリューションの計画
+          href: plan-verification-solution.md
     - name: 資格情報をカスタマイズする方法
       href: credential-design.md
     - name: 資格情報の失効を管理する

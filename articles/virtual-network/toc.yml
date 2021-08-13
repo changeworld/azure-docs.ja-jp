@@ -230,8 +230,10 @@
           items:
             - name: パブリック IP プレフィックスを作成する - Portal
               href: create-public-ip-prefix-portal.md
-            - name: パブリック IPv6 プレフィックスを作成する
-              href: ipv6-reserve-public-ip-address-prefix.md
+            - name: パブリック IP プレフィックスを作成する - PowerShell
+              href: create-public-ip-prefix-powershell.md
+            - name: パブリック IP プレフィックスを作成する - Azure CLI
+              href: create-public-ip-prefix-cli.md
         - name: パブリック IP アドレスをアップグレードする
           items:
             - name: パブリック IP アドレスをアップグレードする - Portal
@@ -256,12 +258,10 @@
               items:
                 - name: IPv6 を使用する Standard 内部ロード バランサー - PowerShell
                   href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
-            - name: Basic パブリック
-              items:
-                - name: IPv6 を使用する Basic パブリック ロード バランサー - PowerShell
-                  href: ipv6-add-to-existing-vnet-powershell.md
-                - name: IPv6 を使用する Basic パブリック ロード バランサー - Azure CLI
-                  href: ipv6-add-to-existing-vnet-cli.md
+            - name: IPv4 アプリケーションに IPv6 を追加する - PowerShell
+              href: ipv6-add-to-existing-vnet-powershell.md
+            - name: IPv4 アプリケーションに IPv6 を追加する - Azure CLI
+              href: ipv6-add-to-existing-vnet-cli.md
         - name: ルーティング設定
           items:
             - name: パブリック IP アドレスの作成

@@ -393,6 +393,9 @@
             - name: 大規模にデプロイする
               displayname: Deploy Azure Monitor agent at scale
               href: deploy-scale.md#azure-monitor-agent
+            - name: レガシ エージェントから移行する
+              displayname: Migrate to Azure Monitor agent
+              href: agents/azure-monitor-agent-migration.md
             - name: よく寄せられる質問
               displayname: Azure Monitor agent FAQ
               href: /azure/azure-monitor/faq#azure-monitor-agent
@@ -804,9 +807,11 @@
           items:
             - name: 概要
               href: app/availability-overview.md
-            - name: URL テスト
+            - name: URL の ping テスト
               displayname: 'ping, ping tests, availability, GSM, up/down'
               href: app/monitor-web-app-availability.md
+            - name: 標準テスト
+              href: app/availability-standard-tests.md
             - name: 複数ステップ テスト
               displayname: 'availability, GSM, visual studio web test, web test'
               href: app/availability-multistep.md
@@ -1159,7 +1164,7 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
-        - name: Azure Data Explorer (プレビュー)
+        - name: Azure Data Explorer
           href: insights/data-explorer.md
         - name: Log Analytics ワークスペース
           href: logs/log-analytics-workspace-insights-overview.md
@@ -1181,7 +1186,7 @@
               href: insights/sql-insights-troubleshoot.md
         - name: ストレージ
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
-          href: insights/storage-insights-overview.md
+          href: ../storage/common/storage-insights-overview.md?toc=/azure/azure-monitor/toc.json
         - name: リソース グループ
           href: insights/resource-group-insights.md
         - name: 分析情報のトラブルシューティング
@@ -1220,7 +1225,7 @@
                         - name: ExpressRoute
                           href: insights/network-performance-monitor-expressroute.md
                         - name: 価格
-                          href: insights/network-performance-monitor-pricing-faq.md
+                          href: insights/network-performance-monitor-pricing-faq.yml
                         - name: よく寄せられる質問
                           href: insights/network-performance-monitor-faq.yml
                 - name: Office 365
@@ -1489,13 +1494,11 @@
               href: visualize/view-designer-filters.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/en-us/updates/?category=management-tools'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
-    - name: ニュース
-      href: 'https://azure.microsoft.com/updates/?product=monitor'

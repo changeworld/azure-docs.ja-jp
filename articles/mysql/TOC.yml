@@ -424,6 +424,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
+            - name: VNET 内のサーバーに接続する
+              href: flexible-server/quickstart-create-connect-server-vnet.md
         - name: TLS/SSL を使用して接続する
           href: flexible-server/how-to-connect-tls-ssl.md
         - name: サーバー パラメーターの構成

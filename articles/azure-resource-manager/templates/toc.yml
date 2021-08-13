@@ -411,10 +411,14 @@
       items:
         - name: ツールキットのテスト
           href: test-toolkit.md
-        - name: テスト ケース
-          href: test-cases.md
+        - name: テンプレートのテスト ケース
+          href: template-test-cases.md
+        - name: パラメーター ファイルのテスト ケース
+          href: parameter-file-test-cases.md
         - name: CreateUiDefinition テスト ケース
           href: createuidefinition-test-cases.md
+        - name: すべてのファイルのテスト ケース
+          href: all-files-test-cases.md
     - name: テンプレート スペック
       items:
         - name: テンプレート スペックの作成とデプロイ

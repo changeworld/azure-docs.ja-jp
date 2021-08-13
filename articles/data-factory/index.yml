@@ -12,148 +12,144 @@ metadata:
   ms.author: jburchel
   ms.date: 06/14/2021
   ms.custom: contperf-fy21q4
-  ms.openlocfilehash: 2cf3843234051d51b681ca8ccb4f0ce88613bd9f
-  ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/16/2021
-  ms.locfileid: "112239606"
 landingContent:
-- title: Azure Data Factory について
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Data Factory とは何ですか。
-      url: ./introduction.md
-  - linkListType: reference
-    links:
-    - text: ホワイトペーパー
-      url: ./whitepapers.md
-    - text: 価格
-      url: https://azure.microsoft.com/pricing/details/data-factory/
-    - text: 例を通じた価格の説明
-      url: ./pricing-concepts.md
-    - text: 最新の機能更新
-      url: https://azure.microsoft.com/updates/?tag=data-factory
-    - text: ADF のブログ
-      url: https://techcommunity.microsoft.com/t5/Azure-Data-Factory/bg-p/AzureDataFactoryBlog
-    - text: 機能をリクエストする
-      url: https://feedback.azure.com/forums/270578-azure-data-factory
-- title: はじめに
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Azure Data Factory のパイプラインとアクティビティ
-      url: ./concepts-pipelines-activities.md
-  - linkListType: quickstart
-    links:
-    - text: Azure Data Factory UI
-      url: ./quickstart-create-data-factory-portal.md
-    - text: データのコピー ツール
-      url: ./quickstart-create-data-factory-copy-data-tool.md
-    - text: Azure PowerShell
-      url: ./quickstart-create-data-factory-powershell.md
-    - text: .NET
-      url: ./quickstart-create-data-factory-dot-net.md
-    - text: Python
-      url: ./quickstart-create-data-factory-python.md
-    - text: REST
-      url: ./quickstart-create-data-factory-rest-api.md
-    - text: Resource Manager テンプレート
-      url: ./quickstart-create-data-factory-resource-manager-template.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Data Factory の式と関数
-      url: ./control-flow-expression-language-functions.md
-  - linkListType: learn
-    links:
-    - text: Azure Data Factory の概要
-      url: /learn/modules/intro-to-azure-data-factory/
-- title: データの移動
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: データ レイクとデータ ウェアハウスの移行
-      url: ./data-migration-guidance-overview.md
-  - linkListType: concept
-    links:
-    - text: コピー アクティビティの概要
-      url: ./copy-activity-overview.md
-    - text: コピー パフォーマンスのチューニング
-      url: ./copy-activity-performance.md
-  - linkListType: tutorial
-    links:
-    - text: クラウドのデータをコピーする
-      url: ./tutorial-copy-data-tool.md
-    - text: オンプレミスのデータをクラウドにコピーする
-      url: ./tutorial-hybrid-copy-data-tool.md
-    - text: データを一括コピーする
-      url: ./tutorial-bulk-copy-portal.md
-    - text: データを増分コピーする
-      url: ./tutorial-incremental-copy-overview.md
-    - text: ADLS Gen2 を読み込む
-      url: ./load-azure-data-lake-storage-gen2.md
-    - text: Azure Synapse Analytics を読み込む
-      url: ./load-azure-sql-data-warehouse.md
-    - text: SAP BW を読み込む
-      url: ./load-sap-bw-data.md
-- title: データの変換
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: データ フローの作成
-      url: ./data-flow-create.md
-    - text: データ フローの式言語
-      url: ./data-flow-expression-functions.md
-    - text: データ フローのデバッグ
-      url: ./concepts-data-flow-debug-mode.md
-    - text: パイプライン内のデータ フロー アクティビティの実行
-      url: ./control-flow-execute-data-flow-activity.md
-    - text: データ フローの監視
-      url: ./concepts-data-flow-monitoring.md
-    - text: データ フローのパフォーマンス
-      url: ./concepts-data-flow-performance.md
-  - linkListType: concept
-    links:
-    - text: マッピング データ フローとは
-      url: ./concepts-data-flow-overview.md
-    - text: マッピング データ フローでのデータ変換式
-      url: ./data-flow-expression-functions.md
-- title: SSIS パッケージのリフトアンドシフト
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: SSIS パッケージを Azure SQL Managed Instance に移行する
-      url: ./scenario-ssis-migration-ssisdb-mi.md
-  - linkListType: concept
-    links:
-    - text: Azure Data Factory の統合ランタイム
-      url: ./concepts-integration-runtime.md
-  - linkListType: tutorial
-    links:
-    - text: Azure での SSIS パッケージの実行
-      url: ./tutorial-deploy-ssis-packages-azure.md
-  - linkListType: how-to-guide
-    links:
-    - text: SSIS Integration Runtime のプロビジョニング
-      url: ./create-azure-ssis-integration-runtime.md
-    - text: 仮想ネットワークへの SSIS IR の参加
-      url: ./join-azure-ssis-integration-runtime-virtual-network.md
-    - text: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
-      url: ./how-to-invoke-ssis-package-ssis-activity.md
-    - text: セルフホステッド統合ランタイムを作成して構成する
-      url: ./create-self-hosted-integration-runtime.md
-- title: 作成、監視、管理
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Data Factory を視覚的に監視する
-      url: ./author-visually.md
-    - text: Azure Data Factory コネクタのトラブルシューティング
-      url: ./connector-troubleshoot-guide.md
-    - text: ソース管理
-      url: ./source-control.md
-    - text: 継続的インテグレーションと配信
-      url: ./continuous-integration-deployment.md
-    - text: Azure Monitor による監視
-      url: ./monitor-using-azure-monitor.md
+  - title: Azure Data Factory について
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Azure Data Factory の概要
+            url: ./introduction.md
+          - text: Azure Data Factory の新機能
+            url: ./whats-new.md
+      - linkListType: reference
+        links:
+          - text: ホワイトペーパー
+            url: ./whitepapers.md
+          - text: 価格
+            url: 'https://azure.microsoft.com/pricing/details/data-factory/'
+          - text: 例を通じた価格の説明
+            url: ./pricing-concepts.md
+          - text: 最新の機能更新
+            url: 'https://azure.microsoft.com/updates/?tag=data-factory'
+          - text: ADF のブログ
+            url: 'https://techcommunity.microsoft.com/t5/Azure-Data-Factory/bg-p/AzureDataFactoryBlog'
+          - text: 機能をリクエストする
+            url: 'https://feedback.azure.com/forums/270578-azure-data-factory'
+  - title: はじめに
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Azure Data Factory のパイプラインとアクティビティ
+            url: ./concepts-pipelines-activities.md
+      - linkListType: quickstart
+        links:
+          - text: Azure Data Factory UI
+            url: ./quickstart-create-data-factory-portal.md
+          - text: データのコピー ツール
+            url: ./quickstart-create-data-factory-copy-data-tool.md
+          - text: Azure PowerShell
+            url: ./quickstart-create-data-factory-powershell.md
+          - text: .NET
+            url: ./quickstart-create-data-factory-dot-net.md
+          - text: Python
+            url: ./quickstart-create-data-factory-python.md
+          - text: REST
+            url: ./quickstart-create-data-factory-rest-api.md
+          - text: Resource Manager テンプレート
+            url: ./quickstart-create-data-factory-resource-manager-template.md
+      - linkListType: how-to-guide
+        links:
+          - text: Azure Data Factory の式と関数
+            url: ./control-flow-expression-language-functions.md
+      - linkListType: learn
+        links:
+          - text: Azure Data Factory の概要
+            url: /learn/modules/intro-to-azure-data-factory/
+  - title: データの移動
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: データ レイクとデータ ウェアハウスの移行
+            url: ./data-migration-guidance-overview.md
+      - linkListType: concept
+        links:
+          - text: コピー アクティビティの概要
+            url: ./copy-activity-overview.md
+          - text: コピー パフォーマンスのチューニング
+            url: ./copy-activity-performance.md
+      - linkListType: tutorial
+        links:
+          - text: クラウドのデータをコピーする
+            url: ./tutorial-copy-data-tool.md
+          - text: オンプレミスのデータをクラウドにコピーする
+            url: ./tutorial-hybrid-copy-data-tool.md
+          - text: データを一括コピーする
+            url: ./tutorial-bulk-copy-portal.md
+          - text: データを増分コピーする
+            url: ./tutorial-incremental-copy-overview.md
+          - text: ADLS Gen2 を読み込む
+            url: ./load-azure-data-lake-storage-gen2.md
+          - text: Azure Synapse Analytics を読み込む
+            url: ./load-azure-sql-data-warehouse.md
+          - text: SAP BW を読み込む
+            url: ./load-sap-bw-data.md
+  - title: データの変換
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: データ フローの作成
+            url: ./data-flow-create.md
+          - text: データ フローの式言語
+            url: ./data-flow-expression-functions.md
+          - text: データ フローのデバッグ
+            url: ./concepts-data-flow-debug-mode.md
+          - text: パイプライン内のデータ フロー アクティビティの実行
+            url: ./control-flow-execute-data-flow-activity.md
+          - text: データ フローの監視
+            url: ./concepts-data-flow-monitoring.md
+          - text: データ フローのパフォーマンス
+            url: ./concepts-data-flow-performance.md
+      - linkListType: concept
+        links:
+          - text: マッピング データ フローとは
+            url: ./concepts-data-flow-overview.md
+          - text: マッピング データ フローでのデータ変換式
+            url: ./data-flow-expression-functions.md
+  - title: SSIS パッケージのリフトアンドシフト
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: SSIS パッケージを Azure SQL Managed Instance に移行する
+            url: ./scenario-ssis-migration-ssisdb-mi.md
+      - linkListType: concept
+        links:
+          - text: Azure Data Factory の統合ランタイム
+            url: ./concepts-integration-runtime.md
+      - linkListType: tutorial
+        links:
+          - text: Azure での SSIS パッケージの実行
+            url: ./tutorial-deploy-ssis-packages-azure.md
+      - linkListType: how-to-guide
+        links:
+          - text: SSIS Integration Runtime のプロビジョニング
+            url: ./create-azure-ssis-integration-runtime.md
+          - text: 仮想ネットワークへの SSIS IR の参加
+            url: ./join-azure-ssis-integration-runtime-virtual-network.md
+          - text: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
+            url: ./how-to-invoke-ssis-package-ssis-activity.md
+          - text: セルフホステッド統合ランタイムを作成して構成する
+            url: ./create-self-hosted-integration-runtime.md
+  - title: 作成、監視、管理
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Azure Data Factory を視覚的に監視する
+            url: ./author-visually.md
+          - text: Azure Data Factory コネクタのトラブルシューティング
+            url: ./connector-troubleshoot-guide.md
+          - text: ソース管理
+            url: ./source-control.md
+          - text: 継続的インテグレーションと配信
+            url: ./continuous-integration-deployment.md
+          - text: Azure Monitor による監視
+            url: ./monitor-using-azure-monitor.md

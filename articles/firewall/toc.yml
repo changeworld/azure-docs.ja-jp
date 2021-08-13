@@ -38,6 +38,8 @@
       href: premium-portal.md
     - name: Azure Firewall Premium の証明書
       href: premium-certificates.md
+    - name: Azure Firewall Web カテゴリ
+      href: web-categories.md
     - name: FQDN のタグ
       href: fqdn-tags.md
     - name: インフラストラクチャ FQDN

@@ -59,6 +59,8 @@
           href: /security/benchmark/azure/baselines/private-link-security-baseline?toc=/azure/private-link/toc.json
 - name: 操作方法
   items:
+    - name: プライベート エンドポイントの DNS レコードをエクスポートする
+      href: private-endpoint-export-dns.md
     - name: プライベート エンドポイントのネットワーク ポリシーを無効にする
       href: disable-private-endpoint-network-policy.md
     - name: Private Link サービスのネットワーク ポリシーを無効にする

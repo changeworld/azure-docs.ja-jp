@@ -10,6 +10,10 @@
       href: whats-new-azure-monitor.md
     - name: Azure Virtual Desktop (クラシック) のドキュメント
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
+- name: クイックスタート
+  items:
+    - name: Azure Virtual Desktop の概要
+      href: getting-started-feature.md
 - name: チュートリアル
   items:
     - name: 1. Azure portal を使用してホスト プールを作成する
@@ -48,6 +52,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: Azure AD 参加済みセッション ホストをデプロイする
+          href: deploy-azure-ad-joined-vm.md
         - name: Windows 7 仮想マシンをデプロイする
           href: deploy-windows-7-virtual-machine.md
         - name: GPU ベースのセッション ホストをデプロイする
@@ -175,7 +181,7 @@
     - name: FSLogix プロファイル コンテナー用のストレージ オプション
       href: store-fslogix-profile.md
     - name: Azure Virtual Desktop に関する FAQ
-      href: faq.md
+      href: faq.yml
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
       href: windows-10-multisession-faq.yml
     - name: MSIX アプリのアタッチ
@@ -185,7 +191,7 @@
         - name: 用語集
           href: app-attach-glossary.md
         - name: よく寄せられる質問
-          href: app-attach-faq.md
+          href: app-attach-faq.yml
     - name: Azure Monitor 用語集
       href: azure-monitor-glossary.md
     - name: データの場所
@@ -204,20 +210,22 @@
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
       href: troubleshoot-vm-configuration.md
-    - name: リモート デスクトップ サービスの接続
-      href: troubleshoot-service-connection.md
-    - name: Azure Virtual Desktop エージェント
-      href: troubleshoot-agent.md
-    - name: リモート デスクトップ クライアントの問題
-      href: troubleshoot-client.md
-    - name: Azure Virtual Desktop PowerShell
-      href: troubleshoot-powershell.md
-    - name: グラフィックスのパフォーマンスの問題の診断
-      href: remotefx-graphics-performance-counters.md
-    - name: Azure Monitor
-      href: troubleshoot-azure-monitor.md
     - name: 管理に関する問題
       href: troubleshoot-management-issues.md
+    - name: Azure Virtual Desktop PowerShell
+      href: troubleshoot-powershell.md
+    - name: Azure Virtual Desktop エージェント
+      href: troubleshoot-agent.md
+    - name: リモート デスクトップ サービスの接続
+      href: troubleshoot-service-connection.md
+    - name: リモート デスクトップ クライアントの問題
+      href: troubleshoot-client.md
+    - name: グラフィックスのパフォーマンスの問題の診断
+      href: remotefx-graphics-performance-counters.md
+    - name: Azure AD 参加済み VM への接続
+      href: troubleshoot-azure-ad-connections.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: リファレンス
   items:
     - name: セキュリティの運用方法

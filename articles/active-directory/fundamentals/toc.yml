@@ -27,6 +27,22 @@
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/aad-security-baseline?toc=/azure/active-directory/fundamentals/toc.json
+        - name: セキュリティ運用ガイド
+          items:
+            - name: セキュリティ運用の概要
+              href: security-operations-introduction.md
+            - name: ユーザー アカウントのためのセキュリティ運用
+              href: security-operations-user-accounts.md
+            - name: 特権アカウントのためのセキュリティ運用
+              href: security-operations-privileged-accounts.md
+            - name: PIM のためのセキュリティ運用
+              href: security-operations-privileged-identity-management.md
+            - name: アプリケーションのためのセキュリティ運用
+              href: security-operations-applications.md
+            - name: デバイスのためのセキュリティ運用
+              href: security-operations-devices.md
+            - name: インフラストラクチャのためのセキュリティ運用
+              href: security-operations-infrastructure.md
         - name: オンプレミスの攻撃から Microsoft 365 を保護する
           href: protect-m365-from-on-premises-attacks.md
         - name: セキュリティで保護された外部コラボレーション
@@ -75,7 +91,7 @@
               href: service-accounts-govern-on-premises.md
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
-        - name: セキュリティの既定値群
+        - name: セキュリティの既定値
           href: concept-fundamentals-security-defaults.md
         - name: レガシ認証をブロックする
           href: concept-fundamentals-block-legacy-authentication.md
@@ -179,6 +195,8 @@
           href: active-directory-deployment-checklist-p2.md
         - name: Azure Active Directory のデプロイ計画
           href: active-directory-deployment-plans.md
+        - name: Azure Active Directory B2C のデプロイ計画
+          href: azure-active-directory-b2c-deployment-plans.md
     - name: データ ストレージ
       items:
         - name: ヨーロッパ向けの ID データ ストレージ
@@ -255,5 +273,3 @@
   items:
     - name: Azure Active Directory のサポートを利用する
       href: active-directory-troubleshooting-support-howto.md
-    - name: Azure Active Directory に関する FAQ
-      href: active-directory-faq.yml

@@ -10,122 +10,116 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 07/07/2021
-  ms.openlocfilehash: 788d1bd8438bd3e732e4f48da95abd7d6d891ab1
-  ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/08/2021
-  ms.locfileid: "113492174"
 landingContent:
-- title: Azure Lighthouse について
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Lighthouse とは
-      url: ./overview.md
-  - linkListType: concept
-    links:
-    - text: アーキテクチャ
-      url: ./concepts/architecture.md
-    - text: テナント間の管理エクスペリエンス
-      url: ./concepts/cross-tenant-management-experience.md
-- title: はじめに
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Lighthouse への顧客のオンボード
-      url: ./how-to/onboard-customer.md
-    - text: Just-In-Time ロール (プレビュー)
-      url: ./how-to/create-eligible-authorizations.md
-    - text: 顧客を表示し、管理する
-      url: ./how-to/view-manage-customers.md
-    - text: パートナー ID をリンクする
-      url: ./how-to/partner-earned-credit.md
-  - linkListType: concept
-    links:
-    - text: 推奨セキュリティ プラクティス
-      url: ./concepts/recommended-security-practices.md
-    - text: テナント、ロール、ユーザー
-      url: ./concepts/tenants-users-roles.md
-    - text: Cloud Solution Provider プログラムの考慮事項
-      url: ./concepts/cloud-solution-provider.md
-    - text: エンタープライズ シナリオ
-      url: ./concepts/enterprise.md
-    - text: ISV のシナリオ
-      url: ./concepts/isv-scenarios.md
-- title: Marketplace のオファー
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: マネージド サービス オファーの公開
-      url: ./how-to/publish-managed-services-offers.md
-  - linkListType: concept
-    links:
-    - text: Azure Marketplace のマネージド サービス オファー
-      url: ./concepts/managed-services-offers.md
-- title: カスタマー エクスペリエンス
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: サービス プロバイダーを表示し、管理する
-      url: ./how-to/view-manage-service-providers.md
-    - text: 管理テナントのアクティビティを表示する
-      url: ./how-to/view-service-provider-activity.md
-- title: サンプルとテンプレート
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: Azure Lighthouse のサンプル リポジトリ (GitHub)
-      url: https://github.com/Azure/Azure-Lighthouse-samples/
-    - text: Azure Lighthouse サンプルのインデックス
-      url: ./samples/index.md
-- title: 大規模な Azure サービスの操作
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Sentinel ワークスペースの管理
-      url: ./how-to/manage-sentinel-workspaces.md
-    - text: Azure Monitor ログを使用する
-      url: ./how-to/monitor-at-scale.md
-    - text: Azure Policy をデプロイする
-      url: ./how-to/policy-at-scale.md
-    - text: Azure Arc を使用してハイブリッド マシンを管理する
-      url: ./how-to/manage-hybrid-infrastructure-arc.md
-    - text: Azure Migrate プロジェクトを管理する
-      url: ./how-to/migration-at-scale.md
-- title: リファレンス - SDK
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Azure PowerShell
-      url: /powershell/module/az.managedservices/
-    - text: Azure CLI
-      url: /cli/azure/managedservices
-    - text: REST
-      url: /rest/api/managedservices/
-    - text: .NET
-      url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
-    - text: Python
-      url: /python/api/azure-mgmt-managedservices
-    - text: Terraform
-      url: https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html
-    - text: Ansible
-      url: https://docs.ansible.com/ansible/latest/collections/azure/azcollection/index.html#plugins-in-azure-azcollection
-- title: リファレンス - ダウンロード
-  linkLists:
-  - linkListType: download
-    links:
-    - text: OpenAPI - 2019-06-01
-      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
-    - text: SDK for .NET - NuGet
-      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
-    - text: Python 用 SDK - PyPi
-      url: https://pypi.org/project/azure-mgmt-managedservices/
-- title: 参加する
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Azure Lighthouse 用の Microsoft Q&A
-      url: /answers/topics/azure-lighthouse.html
-    - text: 製品機能のリクエスト
-      url: https://feedback.azure.com/forums/922753
+  - title: Azure Lighthouse について
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Azure Lighthouse とは
+            url: ./overview.md
+      - linkListType: concept
+        links:
+          - text: アーキテクチャ
+            url: ./concepts/architecture.md
+          - text: テナント間の管理エクスペリエンス
+            url: ./concepts/cross-tenant-management-experience.md
+  - title: はじめに
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Azure Lighthouse への顧客のオンボード
+            url: ./how-to/onboard-customer.md
+          - text: Just-In-Time ロール (プレビュー)
+            url: ./how-to/create-eligible-authorizations.md
+          - text: 顧客を表示し、管理する
+            url: ./how-to/view-manage-customers.md
+          - text: パートナー ID をリンクする
+            url: ./how-to/partner-earned-credit.md
+      - linkListType: concept
+        links:
+          - text: 推奨セキュリティ プラクティス
+            url: ./concepts/recommended-security-practices.md
+          - text: テナント、ロール、ユーザー
+            url: ./concepts/tenants-users-roles.md
+          - text: Cloud Solution Provider プログラムの考慮事項
+            url: ./concepts/cloud-solution-provider.md
+          - text: エンタープライズ シナリオ
+            url: ./concepts/enterprise.md
+          - text: ISV のシナリオ
+            url: ./concepts/isv-scenarios.md
+  - title: Marketplace のオファー
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: マネージド サービス オファーの公開
+            url: ./how-to/publish-managed-services-offers.md
+      - linkListType: concept
+        links:
+          - text: Azure Marketplace のマネージド サービス オファー
+            url: ./concepts/managed-services-offers.md
+  - title: カスタマー エクスペリエンス
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: サービス プロバイダーを表示し、管理する
+            url: ./how-to/view-manage-service-providers.md
+          - text: 管理テナントのアクティビティを監視する
+            url: ./how-to/view-service-provider-activity.md
+  - title: サンプルとテンプレート
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Azure Lighthouse のサンプル リポジトリ (GitHub)
+            url: 'https://github.com/Azure/Azure-Lighthouse-samples/'
+          - text: Azure Lighthouse サンプルのインデックス
+            url: ./samples/index.md
+  - title: 大規模な Azure サービスの操作
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Azure Sentinel ワークスペースの管理
+            url: ./how-to/manage-sentinel-workspaces.md
+          - text: Azure Monitor ログを使用する
+            url: ./how-to/monitor-at-scale.md
+          - text: Azure Policy をデプロイする
+            url: ./how-to/policy-at-scale.md
+          - text: Azure Arc を使用してハイブリッド マシンを管理する
+            url: ./how-to/manage-hybrid-infrastructure-arc.md
+          - text: Azure Migrate プロジェクトを管理する
+            url: ./how-to/migration-at-scale.md
+  - title: リファレンス - SDK
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: Azure PowerShell
+            url: /powershell/module/az.managedservices/
+          - text: Azure CLI
+            url: /cli/azure/managedservices
+          - text: REST
+            url: /rest/api/managedservices/
+          - text: .NET
+            url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
+          - text: Python
+            url: /python/api/azure-mgmt-managedservices
+          - text: Terraform
+            url: 'https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html'
+          - text: Ansible
+            url: 'https://docs.ansible.com/ansible/latest/collections/azure/azcollection/index.html#plugins-in-azure-azcollection'
+  - title: リファレンス - ダウンロード
+    linkLists:
+      - linkListType: download
+        links:
+          - text: OpenAPI - 2019-06-01
+            url: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01'
+          - text: SDK for .NET - NuGet
+            url: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/'
+          - text: Python 用 SDK - PyPi
+            url: 'https://pypi.org/project/azure-mgmt-managedservices/'
+  - title: 参加する
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Azure Lighthouse 用の Microsoft Q&A
+            url: /answers/topics/azure-lighthouse.html
+          - text: 製品機能のリクエスト
+            url: 'https://feedback.azure.com/forums/922753'

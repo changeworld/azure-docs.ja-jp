@@ -6,6 +6,8 @@
   items:
     - name: Data Factory の概要
       href: introduction.md
+    - name: Azure Data Factory の新機能
+      href: whats-new.md
     - name: 現在のバージョンとバージョン 1 の比較
       href: compare-versions.md
       displayName: timeout
@@ -759,7 +761,7 @@
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: Azure-SSIS IR のディザスター リカバリーの構成
           href: configure-bcdr-azure-ssis-integration-runtime.md
-        - name: Elastic Database ジョブで SSISDB のログをクリーンアップする
+        - name: SSISDB ログの自動クリーンアップ
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
         - name: Azure-SSIS IR で Azure SQL Managed Instance を使用する
           href: how-to-use-sql-managed-instance-with-ir.md

@@ -26,6 +26,8 @@
       items:
         - name: Helm を使用した開発
           href: quickstart-helm.md
+    - name: Event Grid で AKS イベントをサブスクライブする (プレビュー)
+      href: quickstart-event-grid.md
 - name: チュートリアル
   items:
     - name: 1 - AKS 用にアプリケーションを準備する

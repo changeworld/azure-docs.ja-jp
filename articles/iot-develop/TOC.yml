@@ -35,22 +35,74 @@
           href: quickstart-devkit-stm-b-l475e.md
 - name: チュートリアル
   items:
+    - name: IoT Hub を使用してデバイス ソリューションを構築する
+      items:
+        - name: 環境を設定する
+          href: set-up-environment.md
+        - name: デバイスを IoT Hub に接続する
+          href: tutorial-connect-device.md
+        - name: ソリューションからのデバイスの操作
+          href: tutorial-service.md
     - name: IoT デバイスをクラウドに安全に接続する
       href: /learn/paths/securely-connect-iot-devices/?wt.mc_id=iothub_connect_docs_tutorials
+    - name: 複数のコンポーネント デバイスを接続する
+      href: tutorial-multiple-components.md
+    - name: MQTT を使用してデバイスを接続する
+      href: tutorial-use-mqtt.md
+    - name: デバイス モジュールを接続する
+      href: tutorial-migrate-device-to-module.md
+    - name: Time Series Insights Gen2 を使用したデータの接続および分析
+      href: tutorial-configure-tsi.md
 - name: 概念
   items:
     - name: デバイス開発者向けの接続オプション
       href: concepts-overview-connection-options.md
     - name: デバイスの種類の概要
       href: concepts-iot-device-types.md
-- name: 方法
+    - name: デバイス認定
+      href: ../certification/program-requirements-pnp.md
+    - name: デバイス モデル
+      items:
+        - name: モデリング ガイド
+          href: concepts-modeling-guide.md
+        - name: ソリューションでのモデルの使用
+          href: concepts-model-discovery.md
+        - name: モデル リポジトリ
+          href: concepts-model-repository.md
+        - name: モデル パーサー
+          href: concepts-model-parser.md
+    - name: IoT プラグ アンド プレイ
+      items:
+        - name: IoT プラグ アンド プレイとは
+          href: overview-iot-plug-and-play.md
+        - name: Architecture
+          href: concepts-architecture.md
+        - name: IoT プラグ アンド プレイ規則
+          href: concepts-convention.md
+        - name: デバイス開発者ガイド
+          href: concepts-developer-guide-device.md
+        - name: サービス開発者ガイド
+          href: concepts-developer-guide-service.md
+        - name: Digital Twins
+          href: concepts-digital-twin.md
+        - name: IoT プラグ アンド プレイ ブリッジ
+          href: concepts-iot-pnp-bridge.md
+- name: 操作方法
   items:
+    - name: IoT エクスプローラーをインストールして使用する
+      href: ../iot-fundamentals/howto-use-iot-explorer.md?toc=/azure/iot-develop/toc.json&bc=/azure/iot-develop/breadcrumb/toc.json
+    - name: デジタル ツインを管理する
+      href: howto-manage-digital-twin.md
+    - name: デバイスを IoT プラグ アンド プレイに変換する
+      href: howto-convert-to-pnp.md
     - name: トラブルシューティング
       items:
         - name: 埋め込みクイックスタートのトラブルシューティング
           href: troubleshoot-embedded-device-quickstarts.md
 - name: リファレンス
   items:
+    - name: ライブラリと SDK
+      href: libraries-sdks.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
@@ -61,6 +113,8 @@
       href: 'https://azure.github.io/azure-sdk-for-c/'
     - name: Azure RTOS ミドルウェア (デバイス)
       href: /azure/rtos/threadx
+    - name: Digital Twin REST API
+      href: /rest/api/iothub/service/digitaltwin
     - name: .NET (デバイス)
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (サービス)
@@ -97,6 +151,10 @@
   items:
     - name: サポート オプションとヘルプ オプション
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-develop/toc.json&bc=/azure/iot-develop/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-develop/toc.json&bc=/azure/iot-develop/breadcrumb/toc.json
+    - name: コード サンプル
+      href: /samples/browse/?expanded=azure&products=azure-iot-pnp
     - name: Azure IoT サンプル
       items:
         - name: C# (.NET)

@@ -11,70 +11,64 @@ metadata:
   ms.author: victorh
   ms.date: 05/03/2021
   ms.custom: e2e-hybrid
-  ms.openlocfilehash: cec6930c8ef68717cfa0685a0b3b4bb585229864
-  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113438604"
 landingContent:
-- title: Azure Firewall について
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Firewall とは
-      url: overview.md
-  - linkListType: concept
-    links:
-    - text: Azure Firewall ルール処理ロジック
-      url: rule-processing.md
-    - text: よく寄せられる質問
-      url: firewall-faq.yml
-  - linkListType: learn
-    links:
-    - text: Azure Firewall の概要
-      url: /learn/modules/introduction-azure-firewall/
-  - linkListType: whats-new
-    links:
-    - text: 新機能
-      url: https://azure.microsoft.com/updates/?category=networking&query=Firewall
-- title: Azure Firewall Premium プレビューの詳細
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Firewall Premium プレビューの機能
-      url: premium-features.md
-  - linkListType: concept
-    links:
-    - text: Azure Firewall Premium プレビューの証明書
-      url: premium-certificates.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Firewall Premium プレビューをデプロイして構成する
-      url: premium-deploy.md
-- title: Azure ファイアウォールのデプロイ
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Azure Portal を使用したデプロイ
-      url: tutorial-firewall-deploy-portal-policy.md
-    - text: ハイブリッド ネットワークでのデプロイ
-      url: tutorial-hybrid-portal-policy.md
-    - text: 受信トラフィックのフィルター処理
-      url: tutorial-firewall-dnat-policy.md
-- title: Load Balancer との統合
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Firewall と Azure Standard Load Balancer を統合する
-      url: integrate-lb.md
-- title: Azure Firewall の監視
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Azure Firewall のログとメトリック
-      url: logs-and-metrics.md
-  - linkListType: tutorial
-    links:
-    - text: Azure Firewall のログとメトリックを監視する
-      url: tutorial-diagnostics.md
+  - title: Azure Firewall について
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Azure Firewall とは
+            url: overview.md
+      - linkListType: concept
+        links:
+          - text: Azure Firewall ルール処理ロジック
+            url: rule-processing.md
+          - text: よく寄せられる質問
+            url: firewall-faq.yml
+      - linkListType: learn
+        links:
+          - text: Azure Firewall の概要
+            url: /learn/modules/introduction-azure-firewall/
+      - linkListType: whats-new
+        links:
+          - text: 新着情報
+            url: 'https://azure.microsoft.com/updates/?category=networking&query=Firewall'
+  - title: Azure Firewall Premium について
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Azure Firewall Premium の機能
+            url: premium-features.md
+      - linkListType: concept
+        links:
+          - text: Azure Firewall Premium の証明書
+            url: premium-certificates.md
+      - linkListType: how-to-guide
+        links:
+          - text: Azure Firewall Premium をデプロイして構成する
+            url: premium-deploy.md
+  - title: Azure ファイアウォールのデプロイ
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Azure Portal を使用したデプロイ
+            url: tutorial-firewall-deploy-portal-policy.md
+          - text: ハイブリッド ネットワークでのデプロイ
+            url: tutorial-hybrid-portal-policy.md
+          - text: 受信トラフィックのフィルター処理
+            url: tutorial-firewall-dnat-policy.md
+  - title: Load Balancer との統合
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Azure Firewall と Azure Standard Load Balancer を統合する
+            url: integrate-lb.md
+  - title: Azure Firewall の監視
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Azure Firewall のログとメトリック
+            url: logs-and-metrics.md
+      - linkListType: tutorial
+        links:
+          - text: Azure Firewall のログとメトリックを監視する
+            url: tutorial-diagnostics.md

@@ -111,10 +111,12 @@
           href: /azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json
         - name: タグを使用する
           href: tag-resources.md
-        - name: ポリシー - コンプライアンス
+        - name: Azure Policy の定義 - コンプライアンス
           href: tag-policies.md
         - name: サポートされているリソースの種類
           href: tag-support.md
+        - name: Azure Resource Graph クエリ
+          href: ./resource-graph-samples.md
     - name: リソース グループの管理
       items:
         - name: Azure portal

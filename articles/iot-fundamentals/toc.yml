@@ -16,9 +16,11 @@
   items:
     - name: スマートフォンのデバイス アプリを使用する
       href: iot-phone-app-how-to.md
+    - name: IoT Explorer を使用する
+      href: howto-use-iot-explorer.md
 - name: セキュリティ
   items:
-    - name: 推奨事項
+    - name: Recommendations
       href: security-recommendations.md
     - name: 徹底的なセキュリティ
       href: iot-security-ground-up.md
@@ -43,7 +45,7 @@
         - name: IoT ソリューション アクセラレータ
           href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

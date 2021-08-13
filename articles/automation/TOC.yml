@@ -68,10 +68,14 @@
           href: quickstart-create-automation-account-template.md
         - name: マネージド ID
           items:
-            - name: マネージド ID の有効化
+            - name: システム割り当てマネージド ID の使用
               href: enable-managed-identity-for-automation.md
-            - name: マネージド ID を無効にする
+            - name: ユーザー割り当てマネージド ID の使用
+              href: add-user-assigned-identity.md
+            - name: システム割り当てマネージド ID を無効にする
               href: disable-managed-identity-for-automation.md
+            - name: ユーザー割り当てマネージド ID の削除
+              href: remove-user-assigned-identity.md
             - name: マネージド ID のトラブルシューティング
               href: troubleshoot/managed-identity.md
         - name: 実行アカウント

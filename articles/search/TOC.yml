@@ -190,7 +190,7 @@
           items:
             - name: カスタマー マネージド キー
               href: search-security-manage-encryption-keys.md
-            - name: 暗号化情報
+            - name: 暗号化されたオブジェクトの検索
               href: search-security-get-encryption-keys.md
         - name: 受信セキュリティ
           items:

@@ -30,6 +30,8 @@
       items:
         - name: Azure AD Connect と Connect Health とは
           href: whatis-azure-ad-connect.md
+        - name: Azure AD Connect V2.0 とは
+          href: whatis-azure-ad-connect-v2.md
         - name: 適切な認証の選択
           href: ./choose-ad-authn.md
         - name: ID 同期と重複属性の回復性
@@ -152,10 +154,8 @@
           href: reference-connect-instances.md
         - name: 移行
           items:
-            - name: フェデレーションから PHS への移行
-              href: plan-migrate-adfs-password-hash-sync.md
-            - name: フェデレーションから PTA への移行
-              href: plan-migrate-adfs-pass-through-authentication.md
+            - name: フェデレーションからクラウド認証に移行する
+              href: migrate-from-federation-to-cloud-authentication.md
             - name: あるフォレストから別のフォレストにグループを移動する
               href: how-to-connect-migrate-groups.md
             - name: 段階的なロールアウトを使用してクラウド認証に移行する
@@ -390,7 +390,5 @@
       href: reference-connect-adconnectivitytools.md
     - name: msExchUserHoldPolicies と cloudMSExchUserHoldPolicies
       href: reference-connect-msexchuserholdpolicies.md
-    - name: Azure AD Connect 1.4.xx.x デバイスの消失について
-      href: reference-connect-device-disappearance.md
     - name: Azure AD Connect のバージョン履歴アーカイブ
       href: reference-connect-version-history-archive.md

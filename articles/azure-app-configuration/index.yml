@@ -9,160 +9,156 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: e840dfb19b868b0e809778a2fb0aa67741f90309
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108748153"
 landingContent:
-- title: Azure App Configuration について
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 'Azure App Configuration とは '
-      url: overview.md
-    - text: よく寄せられる質問
-      url: faq.yml
-    - text: ベスト プラクティス
-      url: howto-best-practices.md
-  - linkListType: video
-    links:
-    - text: Azure App Configuration の概要
-      url: https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration
-    - text: 機能の管理
-      url: https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement
-    - text: 構成の一元管理を容易にする
-      url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210
-    - text: Cloud Native Show の Azure App Configuration
-      url: https://www.youtube.com/watch?v=DJqmA5PcfzE
-    - text: 新機能のロールアウト
-      url: https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553
-  - linkListType: whats-new
-    links:
-    - text: Microsoft のお知らせをフォローする
-      url: https://github.com/Azure/AppConfiguration-Announcements/issues/
-    - text: Azure の更新情報
-      url: https://azure.microsoft.com/updates/?query=%22App%20Configuration%22
-  - linkListType: concept
-    links:
-    - text: キーと値
-      url: concept-key-value.md
-    - text: ポイントインタイム スナップショット
-      url: concept-point-time-snapshot.md
-- title: Azure App Configuration でのコード作成
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: ASP.NET Core アプリをコーディングする
-      url: quickstart-aspnet-core-app.md
-    - text: .NET Core アプリをコーディングする
-      url: quickstart-dotnet-core-app.md
-    - text: .NET Framework アプリをコーディングする
-      url: quickstart-dotnet-app.md
-    - text: C# で Azure Functions アプリをコーディングする
-      url: quickstart-azure-functions-csharp.md
-    - text: Java Spring アプリをコーディングする
-      url: quickstart-java-spring-app.md
-    - text: Python アプリをコーディングする
-      url: quickstart-python.md
-    - text: Azure Resource Manager テンプレート
-      url: quickstart-resource-manager.md
-    - text: Visual Studio で .NET アプリをコーディングする
-      url: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core で動的な構成を使用する
-      url: enable-dynamic-configuration-aspnet-core.md
-    - text: .NET Core で動的な構成を使用する
-      url: enable-dynamic-configuration-dotnet-core.md
-    - text: .NET Framework で動的な構成を使用する
-      url: enable-dynamic-configuration-dotnet.md
-    - text: Azure Functions で動的な構成を使用する
-      url: enable-dynamic-configuration-azure-functions-csharp.md
-    - text: Spring Boot で動的な構成を使用する
-      url: enable-dynamic-configuration-java-spring-app.md
-    - text: プッシュ モデルを使用した動的な構成の統合
-      url: enable-dynamic-configuration-dotnet-core-push-refresh.md
-  - linkListType: tutorial
-    links:
-    - text: Azure Pipelines を使用してデータをプッシュする
-      url: push-kv-devops-pipeline.md
-    - text: Azure Pipelines を使用してデータをプルする
-      url: pull-key-value-devops-pipeline.md
-    - text: GitHub Actions を使用してデータをプッシュする
-      url: concept-github-action.md
-    - text: プロジェクト構成ファイルにエクスポートする
-      url: integrate-ci-cd-pipeline.md
-    - text: Helm を使用して Kubernetes にデプロイする
-      url: integrate-kubernetes-deployment-helm.md
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core アプリで Key Vault 参照を使用する
-      url: use-key-vault-references-dotnet-core.md
-    - text: Spring Boot アプリで Key Vault 参照を使用する
-      url: use-key-vault-references-spring-boot.md
-  - linkListType: sample
-    links:
-    - text: Azure CLI でのキーと値の操作
-      url: scripts/cli-work-with-keys.md
-- title: アプリへの機能フラグの追加
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 機能フラグとは
-      url: concept-feature-management.md
-  - linkListType: quickstart
-    links:
-    - text: ASP.NET Core アプリ
-      url: quickstart-feature-flag-aspnet-core.md
-    - text: .NET Core アプリ
-      url: use-feature-flags-dotnet-core.md
-    - text: .NET Framework アプリ
-      url: quickstart-feature-flag-dotnet.md
-    - text: Spring Boot アプリ
-      url: quickstart-feature-flag-spring-boot.md
-  - linkListType: tutorial
-    links:
-    - text: 機能フラグを管理する
-      url: manage-feature-flags.md
-    - text: ASP.NET Core 内で機能フラグを使用する
-      url: use-feature-flags-dotnet-core.md
-    - text: Spring Boot 内で機能フラグを使用する
-      url: use-feature-flags-spring-boot.md
-    - text: 指定したユーザー/グループの機能を有効にする
-      url: howto-targetingfilter-aspnet-core.md
-  - linkListType: reference
-    links:
-    - text: .NET Core ライブラリ
-      url: /dotnet/api/microsoft.featuremanagement
-    - text: .NET Core フィルター ライブラリ
-      url: /dotnet/api/microsoft.featuremanagement.featurefilters
-- title: 構成 SDK とサンプル
-  linkLists:
-  - linkListType: sample
-    links:
-    - text: Azure CLI のサンプル
-      url: cli-samples.md
-  - linkListType: reference
-    links:
-    - text: Azure CLI
-      url: /cli/azure/appconfig
-    - text: PowerShell
-      url: /powershell/module/az.appconfiguration/
-    - text: Terraform
-      url: https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html
-    - text: .NET Core プロバイダー
-      url: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
-    - text: Spring Boot プロバイダー
-      url: https://github.com/microsoft/spring-cloud-azure/tree/master/
-    - text: Azure SDK for .NET
-      url: https://go.microsoft.com/fwlink/?linkid=2092056
-    - text: Azure SDK for Java
-      url: https://go.microsoft.com/fwlink/?linkid=2098196
-    - text: Azure SDK for Python
-      url: https://go.microsoft.com/fwlink/?linkid=2103727
-    - text: Azure SDK for JavaScript
-      url: https://go.microsoft.com/fwlink/?linkid=2103664
-    - text: データ プレーン REST API
-      url: rest-api.md
+  - title: Azure App Configuration について
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: 'Azure App Configuration とは '
+            url: overview.md
+          - text: よく寄せられる質問
+            url: faq.yml
+          - text: ベスト プラクティス
+            url: howto-best-practices.md
+      - linkListType: video
+        links:
+          - text: Azure App Configuration の概要
+            url: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+          - text: 機能の管理
+            url: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
+          - text: 構成の一元管理を容易にする
+            url: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
+          - text: Cloud Native Show の Azure App Configuration
+            url: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
+          - text: 新機能のロールアウト
+            url: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
+      - linkListType: whats-new
+        links:
+          - text: Microsoft のお知らせをフォローする
+            url: 'https://github.com/Azure/AppConfiguration-Announcements/issues/'
+          - text: Azure の更新情報
+            url: 'https://azure.microsoft.com/updates/?query=%22App%20Configuration%22'
+      - linkListType: concept
+        links:
+          - text: キーと値
+            url: concept-key-value.md
+          - text: ポイントインタイム スナップショット
+            url: concept-point-time-snapshot.md
+  - title: Azure App Configuration でのコード作成
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: ASP.NET Core アプリをコーディングする
+            url: quickstart-aspnet-core-app.md
+          - text: .NET Core アプリをコーディングする
+            url: quickstart-dotnet-core-app.md
+          - text: .NET Framework アプリをコーディングする
+            url: quickstart-dotnet-app.md
+          - text: C# で Azure Functions アプリをコーディングする
+            url: quickstart-azure-functions-csharp.md
+          - text: Java Spring アプリをコーディングする
+            url: quickstart-java-spring-app.md
+          - text: Python アプリをコーディングする
+            url: quickstart-python.md
+          - text: Azure Resource Manager テンプレート
+            url: quickstart-resource-manager.md
+          - text: Visual Studio で .NET アプリをコーディングする
+            url: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
+      - linkListType: tutorial
+        links:
+          - text: ASP.NET Core で動的な構成を使用する
+            url: enable-dynamic-configuration-aspnet-core.md
+          - text: .NET Core で動的な構成を使用する
+            url: enable-dynamic-configuration-dotnet-core.md
+          - text: .NET Framework で動的な構成を使用する
+            url: enable-dynamic-configuration-dotnet.md
+          - text: Azure Functions で動的な構成を使用する
+            url: enable-dynamic-configuration-azure-functions-csharp.md
+          - text: Spring Boot で動的な構成を使用する
+            url: enable-dynamic-configuration-java-spring-app.md
+          - text: .NET Core でプッシュ モデルを使用した動的な構成を統合する
+            url: enable-dynamic-configuration-dotnet-core-push-refresh.md
+          - text: Java Spring でプッシュ モデルを使用した動的な構成を統合する
+            url: enable-dynamic-configuration-java-spring-push-refresh.md
+      - linkListType: tutorial
+        links:
+          - text: Azure Pipelines を使用してデータをプッシュする
+            url: push-kv-devops-pipeline.md
+          - text: Azure Pipelines を使用してデータをプルする
+            url: pull-key-value-devops-pipeline.md
+          - text: GitHub Actions を使用してデータをプッシュする
+            url: concept-github-action.md
+          - text: プロジェクト構成ファイルにエクスポートする
+            url: integrate-ci-cd-pipeline.md
+          - text: Helm を使用して Kubernetes にデプロイする
+            url: integrate-kubernetes-deployment-helm.md
+      - linkListType: tutorial
+        links:
+          - text: ASP.NET Core アプリで Key Vault 参照を使用する
+            url: use-key-vault-references-dotnet-core.md
+          - text: Spring Boot アプリで Key Vault 参照を使用する
+            url: use-key-vault-references-spring-boot.md
+      - linkListType: sample
+        links:
+          - text: Azure CLI でのキーと値の操作
+            url: scripts/cli-work-with-keys.md
+  - title: アプリへの機能フラグの追加
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: 機能フラグとは
+            url: concept-feature-management.md
+      - linkListType: quickstart
+        links:
+          - text: ASP.NET Core アプリ
+            url: quickstart-feature-flag-aspnet-core.md
+          - text: .NET Core アプリ
+            url: use-feature-flags-dotnet-core.md
+          - text: .NET Framework アプリ
+            url: quickstart-feature-flag-dotnet.md
+          - text: Spring Boot アプリ
+            url: quickstart-feature-flag-spring-boot.md
+      - linkListType: tutorial
+        links:
+          - text: 機能フラグを管理する
+            url: manage-feature-flags.md
+          - text: ASP.NET Core 内で機能フラグを使用する
+            url: use-feature-flags-dotnet-core.md
+          - text: Spring Boot 内で機能フラグを使用する
+            url: use-feature-flags-spring-boot.md
+          - text: 指定したユーザー/グループの機能を有効にする
+            url: howto-targetingfilter-aspnet-core.md
+      - linkListType: reference
+        links:
+          - text: .NET Core ライブラリ
+            url: /dotnet/api/microsoft.featuremanagement
+          - text: .NET Core フィルター ライブラリ
+            url: /dotnet/api/microsoft.featuremanagement.featurefilters
+  - title: 構成 SDK とサンプル
+    linkLists:
+      - linkListType: sample
+        links:
+          - text: Azure CLI のサンプル
+            url: cli-samples.md
+      - linkListType: reference
+        links:
+          - text: Azure CLI
+            url: /cli/azure/appconfig
+          - text: PowerShell
+            url: /powershell/module/az.appconfiguration/
+          - text: Terraform
+            url: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+          - text: .NET Core プロバイダー
+            url: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
+          - text: Spring Boot プロバイダー
+            url: 'https://github.com/microsoft/spring-cloud-azure/tree/master/'
+          - text: Azure SDK for .NET
+            url: 'https://go.microsoft.com/fwlink/?linkid=2092056'
+          - text: Azure SDK for Java
+            url: 'https://go.microsoft.com/fwlink/?linkid=2098196'
+          - text: Azure SDK for Python
+            url: 'https://go.microsoft.com/fwlink/?linkid=2103727'
+          - text: Azure SDK for JavaScript
+            url: 'https://go.microsoft.com/fwlink/?linkid=2103664'
+          - text: データ プレーン REST API
+            url: rest-api.md

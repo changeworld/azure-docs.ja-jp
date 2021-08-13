@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: c36c2fd86252f41af0e722445dca78d870c255e2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9a1c0494d14c6bc5dad43e73fbf9a55cc8985445
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969899"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290019"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>チュートリアル: Azure Arc 対応 Kubernetes クラスターを使用して GitOps で CI/CD を実装する
 
@@ -180,7 +180,8 @@ kubectl create secret docker-registry <secret-name> \
 | AZURE_VOTE_IMAGE_REPO | Azure Vote アプリ リポジトリの完全なパス (例: azurearctest.azurecr.io/azvote) |
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
-| MANIFESTS_REPO | GitOps リポジトリの Git 接続文字列 |
+| MANIFESTS_FOLDER | `azure-vote-manifests` |
+| MANIFESTS_REPO | `azure-cicd-demo-gitops` |
 | ORGANIZATION_NAME | Azure DevOps 組織の名前 |
 | PROJECT_NAME | Azure DevOps の GitOps プロジェクトの名前 |
 | REPO_URL | GitOps リポジトリの完全な URL |

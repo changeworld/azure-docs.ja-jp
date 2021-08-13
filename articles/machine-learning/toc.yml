@@ -408,6 +408,8 @@
           href: how-to-train-cli.md
         - name: REST API を使用したトレーニング
           href: how-to-train-with-rest.md
+        - name: ジョブの作成 UI を使用したトレーニング
+          href: how-to-train-with-ui.md
         - name: Python SDK でトレーニングする
           items:
             - name: トレーニングの実行の構成と送信
@@ -585,9 +587,6 @@
               href: how-to-enable-app-insights.md
         - name: Triton を使用した高パフォーマンスのサービス
           href: how-to-deploy-with-triton.md
-        - name: モデルを継続的にデプロイする
-          displayName: ci cd azure devops models
-          href: how-to-deploy-continuously-deploy.md
         - name: 暗号化された推論サービスをデプロイする
           displayName: 'homomorhic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md

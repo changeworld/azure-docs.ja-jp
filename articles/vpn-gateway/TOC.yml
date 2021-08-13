@@ -245,6 +245,22 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'サンプル:Cisco ASA デバイス (IKEv2/BGP なし)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+    - name: 接続に対する IPsec/IKE ポリシーの構成
+      items:
+        - name: Azure portal
+          href: ipsec-ike-policy-howto.md
+        - name: PowerShell
+          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+    - name: アクティブ/ アクティブ ゲートウェイの構成
+      items:
+        - name: Azure portal
+          href: active-active-portal.md
+        - name: PowerShell
+          href: vpn-gateway-activeactive-rm-powershell.md
+    - name: ゾーン冗長ゲートウェイの構成
+      href: create-zone-redundant-vnet-gateway.md
+    - name: パケット キャプチャの構成
+      href: packet-capture.md
     - name: 正常性の監視
       items:
         - name: VPN Gateway の監視
@@ -253,22 +269,6 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: リソース ログに基づいたアラートの設定
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
-    - name: パケット キャプチャの構成
-      href: packet-capture.md
-    - name: ゾーン冗長ゲートウェイ
-      items:
-        - name: ゾーン冗長ゲートウェイの作成
-          href: create-zone-redundant-vnet-gateway.md
-    - name: 接続に対する IPsec/IKE ポリシーの構成
-      items:
-        - name: Azure portal
-          href: ipsec-ike-policy-howto.md
-        - name: PowerShell
-          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: アクティブ/アクティブ接続の構成
-      items:
-        - name: PowerShell
-          href: vpn-gateway-activeactive-rm-powershell.md
     - name: トラブルシューティング
       href: vpn-gateway-troubleshoot.md
       items:

@@ -24,7 +24,7 @@
       href: tutorial-configure-networking.md
     - name: プライベート クラウドを作成する
       href: tutorial-create-private-cloud.md
-    - name: NSX-T ネットワーク セグメントの作成
+    - name: ネットワーク セグメントを作成する
       href: tutorial-nsx-t-network-segment.md
     - name: プライベート クラウドを削除する
       href: tutorial-delete-private-cloud.md
@@ -62,12 +62,14 @@
       href: reserved-instance.md
     - name: ネットワークを構成する
       items:
-        - name: DHCP を構成する
+        - name: DHCP サーバーまたはリレーを構成する
           href: configure-dhcp-azure-vmware-solution.md
-        - name: L2 拡張 VMware HCX ネットワークで DHCP を構成する
+        - name: L2 拡張ネットワークで DHCP を構成する
           href: configure-l2-stretched-vmware-hcx-networks.md
-        - name: Azure を使用して NSX コンポーネントを構成する
-          href: configure-nsx-network-components-azure-portal.md
+        - name: DNS フォワーダーを構成する
+          href: configure-dns-azure-vmware-solution.md
+        - name: ポート ミラーリングの構成
+          href: configure-port-mirroring-azure-vmware-solution.md
         - name: GitHub Enterprise Server を構成する
           href: ./configure-github-enterprise-server.md
         - name: パブリック インターネット アクセスを有効にする
@@ -100,6 +102,8 @@
           href: deploy-traffic-manager-balance-workloads.md
         - name: アラートを構成してメトリックを使用する
           href: configure-alerts-for-azure-vmware-solution.md
+        - name: ディスク プールを Azure VMware Solution ホストにアタッチする
+          href: attach-disk-pools-to-azure-vmware-solution-hosts.md
         - name: Azure Backup Server を使用してバックアップする
           items:
             - name: Backup Server の設定
@@ -130,8 +134,12 @@
           href: azure-vmware-solution-horizon.md
         - name: コンテンツ ライブラリから VM をデプロイする
           href: deploy-vm-content-library.md
-        - name: VMware HCX を使用してディザスター リカバリーをデプロイする
-          href: deploy-disaster-recovery-using-vmware-hcx.md
+        - name: 障害復旧
+          items:
+            - name: VMware SRM を使用してディザスター リカバリーをデプロイする
+              href: disaster-recovery-using-vmware-site-recovery-manager.md
+            - name: VMware HCX を使用してディザスター リカバリーをデプロイする
+              href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: VMware HCX アプライアンスをアップグレードする
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
     - name: VMware のエコシステム
@@ -149,13 +157,13 @@
     - name: トラブルシューティング
       items:
         - name: デプロイの失敗のサポート リクエストをオープンする
-          href: fix-deployment-provisioning-failures.md
+          href: fix-deployment-failures.md
         - name: VMware ツール vix エラー コード = 21009
           href: 'https://kb.vmware.com/s/article/2129927'
     - name: よく寄せられる質問
       items:
         - name: 全般
-          href: ./faq.yml
+          href: /azure/azure-vmware/faq
         - name: 顧客とのコミュニケーション
           href: /azure/azure-vmware/faq#customer-communication
         - name: 構成とセットアップ

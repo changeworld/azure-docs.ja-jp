@@ -744,6 +744,8 @@
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+        - name: Azure Resource Graph クエリ
+          href: database/resource-graph-samples.md
 - name: SQL Managed Instance (SQL MI)
   items:
     - name: ドキュメント
@@ -1067,8 +1069,8 @@
               href: managed-instance/management-endpoint-verify-built-in-firewall.md
         - name: 移行
           items:
-            - name: SQL Managed Instance への移行
-              href: managed-instance/migrate-to-instance-from-sql-server.md
+            - name: SQL Server を Azure SQL Managed Instance に移行するガイド
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: ログ再生サービスを使用してデータベースを移行する
               href: managed-instance/log-replay-service-migrate.md
             - name: TDE 証明書の移行
@@ -1185,12 +1187,12 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 記憶域を UltraSSD に移行する
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: SQL IaaS Agent 拡張機能をインストールする
+                - name: SQL IaaS Agent 拡張機能
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: 自動登録
                       href: virtual-machines/windows/sql-agent-extension-automatic-registration-all-vms.md
-                    - name: 単一の VM
+                    - name: 単一の VM の登録
                       href: virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md
                     - name: 複数の VM の一括登録
                       href: virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md
