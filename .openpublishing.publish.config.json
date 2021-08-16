@@ -349,7 +349,7 @@
     {
       "path_to_root": "samples-cognitive-services-speech-sdk",
       "url": "https://github.com/Azure-Samples/cognitive-services-speech-sdk",
-      "branch": "release-ignite-cogserv-speech-service",
+      "branch": "master",
       "branch_mapping": {}
     },
     {
