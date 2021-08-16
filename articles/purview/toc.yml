@@ -68,8 +68,6 @@ items:
         href: concept-insights.md
       - name: サポートされているブラウザー
         href: supported-browsers.md
-      - name: アセット正規化
-        href: concept-asset-normalization.md
       - name: よく寄せられる質問
         href: frequently-asked-questions.md
   - name: 操作方法ガイド
@@ -106,12 +104,6 @@ items:
               - name: Azure Cosmos DB
                 href: register-scan-azure-cosmos-database.md
                 displayName: Register and scan Azure Cosmos DB
-              - name: Azure Database for MySQL
-                href: register-scan-azure-mysql-database.md
-                displayName: Register and scan an Azure database for MySQL
-              - name: Azure Database for PostgreSQL
-                href: register-scan-azure-postgresql.md
-                displayName: Register and scan an Azure database for PostgreSQL
               - name: Azure Data Explorer
                 href: register-scan-azure-data-explorer.md
                 displayName: Register and scan Azure Data Explorer Kusto
@@ -129,14 +121,8 @@ items:
                 displayName: Register and scan Azure SQL DB Managed Instance
               - name: Azure 専用 SQL プール (以前の SQL DW)
                 href: register-scan-azure-synapse-analytics.md
-              - name: Erwin
-                href: register-scan-erwin-source.md
-              - name: Google BigQuery
-                href: register-scan-google-bigquery-source.md
               - name: Hive メタストア データベース
                 href: register-scan-hive-metastore-source.md
-              - name: Looker
-                href: register-scan-looker-source.md
               - name: オンプレミスの SQL サーバー
                 href: register-scan-on-premises-sql-server.md
               - name: Oracle

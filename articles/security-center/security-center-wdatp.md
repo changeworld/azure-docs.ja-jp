@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 06/10/2021
 ms.author: memildin
-ms.openlocfilehash: 58a616953afd15bd4098eaf7ec96838137d110c5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: df7d3d880161895b6cc883a15f7adf2def839a53
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764785"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062264"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -89,7 +89,7 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 
 ### <a name="enable-the-integration"></a>統合を有効にする
 1. Security Center のメニューで、 **[価格と設定]** を選択し、変更するサブスクリプションを選択します。
-1. **[脅威検出]** を選択します。
+1. **[Integrations]\(統合\)** を選択します。
 1. **[データに Microsoft Defender for Endpoint がアクセスすることを許可する]** を選択し、 **[保存]** を選択します。
 
     :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Azure Security Center および Microsoft の EDR ソリューションの Microsoft Defender for Endpoint 間の統合を有効にする":::
@@ -126,11 +126,25 @@ Microsoft Defender for Endpoint で無害なテスト アラートを生成す�
     > [!TIP]
     > アラートは、 **[情報]** 重要度を使用してトリガーされます。
 
-## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Security Center の統合された Microsoft Defender for Endpoint に関してよくあるご質問
+## <a name="faq---security-centers-integration-with-microsoft-defender-for-endpoint"></a>FAQ - Security Center と Microsoft Defender for Endpoint の連携
 
+- [私のマシンで MDE.Windows という拡張機能が動いていますが、これは何ですか。](#whats-this-mdewindows-extension-running-on-my-machine)
 - [Microsoft Defender for Endpoint のライセンス要件はどのようなものですか?](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
 - [Microsoft Defender for Endpoint のライセンスが既にある場合、Azure Defender の割引を受けることができますか?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [サードパーティ製の EDR ツールから切り替える方法は?](#how-do-i-switch-from-a-third-party-edr-tool)
+
+### <a name="whats-this-mdewindows-extension-running-on-my-machine"></a>私のマシンで MDE.Windows という拡張機能が動いていますが、これは何ですか。
+
+以前、Microsoft Defender for Endpoint は Log Analytics エージェントにより提供されていました。 [Windows Server 2019 にサポートを拡張した](release-notes.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga)とき、Microsoft は、自動でオンボードを実行する拡張機能も追加しました。 
+
+Security Center では、次のものを実行しているマシンに対し、MDE.Windows 拡張機能を自動的にデプロイします。
+
+- Windows Server 2019 
+- Windows 10 Virtual Desktop (WVD)
+- OS のバージョンが Security Center で認識されない場合は、あらゆるバージョンの Windows Server (例えば、カスタム VM イメージを使用している場合)。 この場合、Microsoft Defender for Endpoint は、引き続き Log Analytics エージェントにより提供されます。
+
+> [!TIP]
+> MDE.Windows 拡張機能を削除しても、Microsoft Defender for Endpoint は削除されません。 “オフボード” する方法は「[オフボード Windows サーバー](/microsoft-365/security/defender-endpoint/configure-server-endpoints?view=o365-worldwide)」をご覧ください。
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint のライセンス要件はどのようなものですか?
 Defender for Endpoint は、**Azure Defender for server** に追加料金なしで含まれています。 別の方法として、50 台以上のマシンに対して個別に購入することもできます。
@@ -138,7 +152,9 @@ Defender for Endpoint は、**Azure Defender for server** に追加料金なし�
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Microsoft Defender for Endpoint のライセンスが既にある場合、Azure Defender の割引を受けることができますか?
 Microsoft Defender for Endpoint のライセンスを既に取得している場合は、Azure Defender ライセンスのその部分について料金を支払う必要はありません。
 
-割引を確認するには、Security Center のサポート チームに連絡し、関連するライセンスごとに、関連するワークスペース ID、リージョン、ライセンス情報を提示してください。
+割引を依頼するには、Security Center のサポート チームに連絡し、割引の対象となるワークスペースの ID、リージョン、および、そのワークスペースのマシンに対して申請した Microsoft Defender for Endpoint ライセンスの数をお伝えください。
+
+割引は承認日から適用されます。期間をさかのぼっては適用されません。
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>サードパーティ製の EDR ツールから切り替える方法は?
 Microsoft 以外のエンドポイント ソリューションからの切り替えの詳しい手順については、Microsoft Defender for Endpoint の[移行の概要](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)に関するドキュメントを参照してください。

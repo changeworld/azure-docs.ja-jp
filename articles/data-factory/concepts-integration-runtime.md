@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 455a9b2061dcf92297c99e9d8fa8cee677ca3891
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 27bd310b48be2c20c5014ba9e2f93a98751baae0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483139"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086484"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム 
 
@@ -171,6 +171,8 @@ Azure IR の特定の場所を設定することができます。その場合�
 ![統合ランタイムの場所](media/concepts-integration-runtime/integration-runtime-location.png)
 
 ## <a name="determining-which-ir-to-use"></a>使用する IR の判別
+1 つのデータ ファクトリ アクティビティが複数の種類の統合ランタイムに関連付けられている場合は、そのどちらかに解決されます。 セルフホステッド統合ランタイムは、Azure Data Factory マネージド仮想ネットワーク内の Azure 統合ランタイムよりも優先されます。 また、後者は、パブリック Azure 統合ランタイムよりも優先されます。
+たとえば、ソースからシンクへのデータのコピーには、1 つのコピー アクティビティが使用されます。 パブリック Azure 統合ランタイムは、ソースにリンクされたサービスに関連付けられています。また、Azure Data Factory マネージド仮想ネットワーク内の Azure 統合ランタイムは、シンクのリンクされたサービスに関連付けられています。このため、ソースとシンクの両方のリンクされたサービスによって、Azure Data Factory マネージド仮想ネットワーク内の Azure 統合ランタイムが使用されます。 ただし、セルフホステッド統合ランタイムが、ソースのリンクされたサービスに関連付けられている場合は、ソースとシンクの両方のリンクされたサービスによって、セルフホステッド統合ランタイムが使用されます。
 
 ### <a name="copy-activity"></a>コピー アクティビティ
 

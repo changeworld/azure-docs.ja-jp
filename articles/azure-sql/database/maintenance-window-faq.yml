@@ -1,4 +1,10 @@
-### YamlMime:FAQ
+### YamlMime:Yaml
+ms.openlocfilehash: d67eefeb88752d32518c46ff76ea2127ef968182
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687332"
 metadata:
   title: メンテナンス期間に関する FAQ
   description: Azure SQL Database とマネージド インスタンスのメンテナンス期間を構成する方法についてよく寄せられる質問です。
@@ -11,82 +17,76 @@ metadata:
   ms.reviewer: sstein
   ms.custom: 
   ms.date: 03/23/2021
-  ms.openlocfilehash: 064bca75c65a96a41d2d693dea93a196fc405186
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114458322"
 title: メンテナンス期間に関する FAQ
 summary: この記事では、[Azure SQL データベース](sql-database-paas-overview.md)と [SQL マネージド インスタンス](../managed-instance/sql-managed-instance-paas-overview.md)のメンテナンス期間に関してよく寄せられる質問に回答します。
 sections:
 - name: 全般
   questions:
-  - question: メンテナンス期間機能とは何ですか。
+  - question: What is the maintenance window feature?
     answer: >
-      メンテナンス期間機能では、営業時間外で事前スケジュールされている時間ブロックに Azure SQL リソースをオンボードできます。 詳細については、[メンテナンス期間のスケジュール](maintenance-window.md#gain-more-predictability-with-maintenance-window)に関する記事を参照してください。
-  - question: 特定の期間を選択しなかった場合に既定のメンテナンス ポリシーはどうなりますか。
-    answer: "メンテナンス イベントは、既定の期間である月曜日から日曜日の午後 5 時から午前 8時 (現地時刻) に発生します。 \n"
-  - question: ユーザーが Azure データ センターとは異なるタイム ゾーンで作業しています。 どのタイム ゾーンがローカルですか。
+      The maintenance window feature provides you with the ability to onboard Azure SQL resource to prescheduled time blocks outside of business hours. See [Maintenance window schedules](maintenance-window.md#gain-more-predictability-with-maintenance-window) for more information.
+  - question: What is the default maintenance policy if I do not choose any specific window?
+    answer: "Maintenance events will occur during the default window 5PM to 8AM local time, Monday - Sunday. \n"
+  - question: Users work in a different time zone than the Azure data center. Which time zone is local?
     answer: >
-      現地時刻は、リソースをホストする Azure リージョンの場所によって決定され、ローカル タイム ゾーンの定義に従って夏時間が適用される場合があります。 これは、SQL データベース (常に UTC) またはマネージド インスタンスで構成されているタイム ゾーンによって決まるわけではありません。
-  - question: メンテナンス期間に特定の時刻や日にちを選択できますか。
-    answer: "いいえ。期間は事前にスケジュールされた平日または週末から選択できます。 メンテナンスは、この期間内の任意の時刻または日に実施できます。  \n"
-  - question: メンテナンス期間を選択するとどうなりますか。
+      Local time is determined by the location of Azure region that hosts the resource and may observe daylight saving time in accordance with local time zone definition. It is not determined by the time zone configured on SQL database (always UTC) or managed instance.
+  - question: Can I choose a specific time/day for the maintenance window?
+    answer: "No, you can choose between pre-scheduled weekday or weekend windows. The maintenance can happen any time or day within the window.  \n"
+  - question: What happens once I choose a maintenance window?
     answer: >
-      メンテナンス期間の構成は、Azure SQL リソースのサービス レベルの変更と同様に、時間のかかる非同期操作です。 このプロセス中にリソースを使用できますが、操作の終了時に発生する短い再構成の時間は除きます。これは、実行時間の長いトランザクションが中断される場合でも、通常は最大 8 秒です。 再構成の影響を最小限に抑えるには、ピーク時以外に操作を実行する必要があります。 マネージド インスタンスの場合は、インスタンスの IP アドレスが変更されます。
-  - question: 通常、どのような種類の更新がメンテナンス期間中に実行されますか。
+      Configuring maintenance window is a long running asynchronous operation, similar to changing the service tier of your Azure SQL resource. The resource is available during the process, except a short reconfiguration that happens at the end of the operation and typically lasts up to 8 seconds even in case of interrupted long-running transactions. To minimize the impact of the reconfiguration you should perform the operation outside of the peak hours. In case of managed instance, IP address of the instance will change.
+  - question: What types of updates are typically performed during a maintenance window?
     answer: >
-      メンテナンス イベントには、ハードウェア、ファームウェア、オペレーティング システム、サテライト ソフトウェア コンポーネント、および SQL エンジンの更新が含まれている可能性があります。 これらは通常、メンテナンス イベントの発生を最小限に抑えるために、1 つのバッチに結合されます。
-  - question: メンテナンス イベント中、どのようなことが予想されますか。
+      The maintenance event may contain updates for hardware, firmware, operating system, satelite software components, and SQL engine. They are typically combined into a single batch to minimize the incidence of maintenance events.
+  - question: What can I expect during a maintenance event?
     answer: >
-      メンテナンスの更新中は、データベースは利用可能でアクセスできますが、場合によっては、メンテナンス更新を適用するために少しの間 (通常は数秒間) SQL データベースがオフラインになるため、再構成が必要になります。計画メンテナンスの更新は、平均で 35 日に 1 回 (つまり、Azure SQL Database およびマネージド インスタンスごとに 1 か月あたり約 1 件の計画メンテナンス イベントが予想される)、顧客が選択したメンテナンス期間スロット中に限り実行されます。
-  - question: メンテナンス期間を構成するための前提条件はありますか。
+      During a maintenance update, databases are fully available and accessible but some of the maintenance updates require a reconfiguration as Azure takes SQL Databases offline for a short time to apply the maintenance updates (generally a few seconds in duration). Planned maintenance updates occur once every 35 days on average, which means customer can expect approximately one planned maintenance event per month per Azure SQL Database and managed instance, and only during the maintenance window slots selected by the customer.
+  - question: Are there any prerequisites for configuring maintenance window?
     answer: >
-      マネージド インスタンスの場合は、[追加の IP アドレス](../managed-instance/vnet-subnet-determine-size.md#update-scenarios)が一時的に必要です。これは、対応するサービス レベルの仮想コアのスケーリング シナリオと同様です。
-  - question: どのリージョンでメンテナンス期間の選択ができますか。
+      In case of managed instance [additional IP addresses](../managed-instance/vnet-subnet-determine-size.md#update-scenarios) are needed temporarily, as in scaling vCores scenario for corresponding service tier.
+  - question: In which regions is choosing a maintenance window available?
     answer: >
-      利用可能なリージョンの一覧については、[メンテナンス期間の可用性](maintenance-window.md#availability)に関する記事を参照してください。
-  - question: 利用可能なリージョンの一覧に自分のリージョンが表示されません。どうすればよいですか。
-    answer: "フィードバックを共有し、ご利用のリージョンのプランを確認するために、[azsqlcmfeedback@microsoft.com](mailto:azsqlcmfeedback@microsoft.com) にお問い合わせください。 \n"
-  - question: メンテナンス期間の価格を教えてください。
+      For a list of available regions, see [Maintenance window availability](maintenance-window.md#availability).
+  - question: I don’t see my region in the available regions list, what can I do?
+    answer: "Contact [azsqlcmfeedback@microsoft.com](mailto:azsqlcmfeedback@microsoft.com) to share the feedback and check the plans for your region. \n"
+  - question: What is the pricing for maintenance window?
     answer: >
-      メンテナンス期間の構成と使用は、対象となるすべての Azure サブスクリプションの種類において無料でご利用いただけます。[メンテナンス期間のコスト](maintenance-window.md#cost-and-eligibility)に関する記事を参照してください。
-  - question: メンテナンス期間の通知が届きますか。
+      Configuring and using maintenance window is free of charge to all eligible Azure subscription types, see [Maintenance window cost](maintenance-window.md#cost-and-eligibility).
+  - question: Would I receive a notification of the maintenance window?
     answer: >
-      メンテナンス イベントの 24 時間前、メンテナンスの開始直前、およびメンテナンス期間の完了時に通知を受け取ることをオプトインできます。 詳細については、Resource Health センターをご確認ください。 電子メールを受信するには、事前通知を構成する必要があります。詳細については、「[事前通知](advance-notifications.md)」を参照してください。
-  - question: どのサービス レベル目標 (SLO) でメンテナンス期間を選択できますか。
+      You can opt in to receive notification 24 hours prior to the maintenance event, immediately before maintenance starts, and when the maintenance window is completed. The Resource health center can be checked for more information. To receive emails, advance notification must be configured, for more information see [Advance notifications](advance-notifications.md).
+  - question: In which service level objectives (SLOs) can I choose a maintenance window?
     answer: >
-      メンテナンス期間の選択はほとんどの SLO で可能ですが、いくつかの例外があります。[メンテナンス期間でサポートされるサービス レベル目標](maintenance-window.md#supported-service-level-objectives)に関する記事を参照してください。
-  - question: リソースのメンテナンス期間を選択した後で、メンテナンス期間の選択がサポートされていないサービス レベル目標 (SLO) にスケールダウンした場合、データベースはどうなりますか。
+      Choosing a maintenance window is available in most SLOs with some exceptions, see [maintenance window supported service level objectives](maintenance-window.md#supported-service-level-objectives).
+  - question: If I have selected a maintenance window for a resource, and I downscale to a service level objective (SLO) where choosing a maintenance window is not supported, what happens to my database?
     answer: >
-      この場合、メンテナンス期間は、既定のオプションである午後 5 時から午前 8時 (現地時刻) に戻ります。
-  - question: 受信した通知に基づいて計画メンテナンス イベントを取り消しまたは延期できますか。
+      In this case, the maintenance window would revert to the default option which is 5PM to 8AM local time.
+  - question: Can I cancel or postpone a planned maintenance event based on the received notification?
     answer: >
-      不正解です。 今後予定されているメンテナンス イベントの取り消しや延期はサポートされていません。 通知は、イベントの準備に役立ちます。
-  - question: メンテナンス期間のスケジュール変更を処理するのにどれくらいの時間がかかりますか。
-    answer: "別のメンテナンス期間をいつでも選択できますが、変更が反映されるまでに最大 24 時間かかります。 \n"
-  - question: メンテナンス イベントが失敗した場合はどうなりますか。
-    answer: "まれではありますが、メンテナンス イベント中に障害や中断が発生することがあります。  障害が発生した場合は、変更がロールバックされ、そのメンテナンスは別の時間に再スケジュールされます。    \n"
-  - question: データベースにメンテナンス期間が設定されていることを検証するにはどうすればよいですか。
+      No. Cancelling or postponing an upcoming maintenance event is not supported. Notifications help you to prepare for the event.
+  - question: How long does it take to process a maintenance window schedule change?
+    answer: "You can choose a different maintenance window at any time, but changes may take up to 24 hours to take effect. \n"
+  - question: What happens when a maintenance event fails?
+    answer: "Although rare, failures or interruptions during a maintenance event can occur.  In the event of a failure, changes are rolled back and the maintenance will be rescheduled to another time.    \n"
+  - question: How do I validate that my databases are set up for maintenance window?
     answer: >
-      Azure リソースの [設定] にある [メンテナンス] タブを使用すると、現在のメンテナンス プラン スケジュールを確認および変更できます。 PowerShell、CLI、または Azure API を使用して、複数のリソースのメンテナンス期間スケジュールを確認および設定することもできます。
-  - question: エラスティック プール内の Azure SQL データベースごとに異なるメンテナンス期間を構成できますか。
+      Under settings of the Azure resource, the maintenance tab allows you to review and change the current maintenance plan schedule. You can also review and set the maintenance window schedules for multiple resources via PowerShell, CLI, or Azure API.
+  - question: Can I configure a different maintenance window for each Azure SQL database in an elastic pool?
     answer: >
-      データベースがエラスティック プールの一部である場合は、エラスティック プールのメンテナンス期間の構成が適用されます。 エラスティック プールに含まれないそれぞれのデータベースは、独自のメンテナンス期間を構成できます。
-  - question: 既存の Azure SQL Database または SQL マネージド インスタンスのメンテナンス期間を構成する方法としてサポートされているオプションにはどのようなものがありますか。
+      If the database is part of an elastic pool, the maintenance window configuration of the elastic pool will be applied. Single databases outside of an elastic pool can have their own maintenance window configuration.
+  - question: What are supported options to configure a maintenance window for an existing Azure SQL Database or SQL managed instance?
     answer: >
-      Azure portal、PowerShell、Azure CLI、および REST API です。
-  - question: データベースの復元、復旧、コピー、インポート、または GeoDR のシナリオ中にメンテナンス期間を構成できますか。
+      Azure Portal, PowerShell, Azure CLI, and REST API.
+  - question: Can I configure a maintenance window during database restore, recovery, copy, import, or GeoDR scenarios?
     answer: >
-      現時点ではできません。 メンテナンス期間は、データベースの作成後に構成できます。
+      Not at this moment. The maintenance window can be configured once database is created.
 additionalContent: >-
-  ## <a name="see-also"></a>参照
+  ## See Also
 
-  - [メンテナンス期間](maintenance-window.md)
+  - [Maintenance window](maintenance-window.md)
 
-  - [メンテナンス期間の構成](maintenance-window-configure.md)
+  - [Configure maintenance window](maintenance-window-configure.md)
 
-  - [メンテナンス期間の通知を構成する](advance-notifications.md)
+  - [Configure maintenance window notifications](advance-notifications.md)
 
-  - [Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画](planned-maintenance.md)
+  - [Plan for Azure maintenance events in Azure SQL Database and Azure SQL Managed Instance](planned-maintenance.md)

@@ -1,6 +1,6 @@
 ---
 title: SAP HANA on Azure (L インスタンス) の SKU | Microsoft Docs
-description: SAP HANA on Azure (L インスタンス) のSKU。
+description: SAP HANA on Azure (L インスタンス) で使用可能な SKU について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -8,20 +8,23 @@ manager: juergent
 editor: ''
 keywords: HLI, HANA, SKUs, S896, S224, S448, S672, Optane, SAP
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 4/16/2021
-ms.author: juergent
+ms.date: 5/13/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017, references_regions
-ms.openlocfilehash: 3ecbbe4d477f3e6c3c6606528c51b934b6cf534a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: b9079b242710bee831ebdc0381118da1d0ad80e5
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718739"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577636"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>HANA Large Instances で利用できる SKU
+
+## <a name="baremetal-infrastructure-availability-by-region"></a>リージョン別の BareMetal インフラストラクチャの提供状況
 
 リビジョン 4.2* に基づくベアメタル インフラストラクチャ (SAP HANA ワークロード認定) サービスは、次のリージョンで提供されます。
 - 西ヨーロッパ
@@ -32,19 +35,19 @@ ms.locfileid: "107718739"
 - 米国中南部
 - 米国西部 2 (ゾーンのサポートを含む)
 
-次のリージョンでは、リビジョン 3* に基づくベアメタル インフラストラクチャ (SAP HANA ワークロード認定) サービスが制限付きで提供されます。
+次のリージョンでは、リビジョン 3* に基づく BareMetal インフラストラクチャ (SAP HANA ワークロード認定) サービスが制限付きで提供されます。
 - 米国西部
 - 米国東部 
 - オーストラリア東部 
 - オーストラリア南東部
 - 東日本
 
+## <a name="list-of-available-azure-large-instances"></a>使用可能な Azure Large Instances の一覧
 
-次に示したのは、提供される Azure Large インスタンスの一覧です。
+使用可能な Azure Large Instances (BareMetal インフラストラクチャ インスタンスとも呼ばれる) の一覧を次に示します。
 
 > [!IMPORTANT]
 > リスト内で最初の列は、L インスタンスの種類ごとに HANA 認定の状態を表していることをご承知おきください。 この列は、[SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)の、文字 **S** で始まる Azure SKU と関連するはずです。
-
 
 
 | SAP HANA 認定 | モデル | メモリの合計 | メモリ DRAM | メモリ Optane | ストレージ | 可用性 |
@@ -90,9 +93,9 @@ ms.locfileid: "107718739"
 
 
 > [!IMPORTANT]
-> 次の SKU は、まだサポートされていますが、ご購入いただけなくなりました。S72、S72m、S144、S144m、S192、S192m 
+> 次の SKU は、まだサポートされていますが、ご購入いただけなくなりました。S72、S72m、S144、S144m、S192、S192m。
 
-選択する構成は、ワークロード、CPU リソース、および必要なメモリによって異なります。 OLTP ワークロードでは、OLAP ワークロードに最適化された SKU をご利用いただけます。 
+選択する具体的構成は、ワークロード、CPU リソース、および必要なメモリによって異なります。 OLTP ワークロードでは、OLAP ワークロードに最適化された SKU をご利用いただけます。 
 
 ハードウェアの 2 種類のクラスでは、SKU を次のように分けています。
 
@@ -100,8 +103,9 @@ ms.locfileid: "107718739"
 - その他のすべての SKU は、SKU の "Type II クラス" と呼ばれます。
 - SAP ハードウェア ディレクトリにまだ掲載されていない SKU に関心をお持ちの場合は、Microsoft アカウント チームに問い合わせて、詳細情報を確認してください。 
 
+## <a name="tenant-considerations"></a>テナントに関する考慮事項
 
-完全な HANA L インスタンス スタンプは、1 件のお客様専用に割り当てられるわけではありません。 これは、Azure にデプロイされたネットワーク ファブリック経由で接続されるコンピューティング リソースとストレージ リソースのラックにも当てはまります。 Azure などの HANA L インスタンス インフラストラクチャでは、次の 3 つのレベルで相互に分離されたお客様のさまざまな &quot;テナント&quot; をデプロイします。
+完全な HANA L インスタンス スタンプは、1 件のお客様専用に割り当てられるわけではありません。 これは、Azure にデプロイされたネットワーク ファブリック経由で接続されるコンピューティング リソースとストレージ リソースのラックにも当てはまります。 Azure などの HANA L インスタンス インフラストラクチャでは、次の 3 つのレベルで相互に分離されたお客様のさまざまな "テナント" をデプロイします。
 
 - **ネットワーク**:HANA L インスタンス スタンプ内の仮想ネットワークによって分離します。
 - **ストレージ**: ストレージ ボリュームが割り当てられており、テナント間でストレージ ボリュームを分離するストレージ仮想マシンによって分離します。
@@ -111,6 +115,8 @@ ms.locfileid: "107718739"
 
 L インスタンス スタンプにデプロイされたテナントは、課金のために 1 つの Azure サブスクリプションに割り当てられます。 ネットワークについては、同じ Azure 加入契約内の他の Azure サブスクリプションの仮想ネットワークからアクセスできます。 同じ Azure リージョンの別の Azure サブスクリプションを使用してデプロイする場合は、分離された HANA L インスタンス テナントを要求することもできます。
 
+## <a name="sap-hana-on-hana-large-instances-vs-on-vms"></a>SAP HANA on HANA L インスタンスと VM 上の SAP HANA
+
 HANA L インスタンスで実行される SAP HANA と、Azure にデプロイされた VM で実行される SAP HANA には大きな違いがあります。
 
 - SAP HANA on Azure (L インスタンス) の仮想化層はありません。 基になるベア メタル ハードウェアのパフォーマンスを確保します。
@@ -118,4 +124,7 @@ HANA L インスタンスで実行される SAP HANA と、Azure にデプロイ
 - Azure とは異なり、価格/パフォーマンス比が最も高くなるようにホスト プロセッサの種類を選択する場合は、Intel E7v3 および E7v4 プロセッサ ラインの最もパフォーマンスが高いプロセッサが SAP HANA on Azure (L インスタンス) 用に選択されます。
 
 ## <a name="next-steps"></a>次のステップ
-- [HLI のサイズ設定](hana-sizing.md)に関するページを参照してください。
+HANA L インスタンスのサイズ設定について確認します。
+
+> [!div class="nextstepaction"]
+> [HLI のサイズ設定](hana-sizing.md)

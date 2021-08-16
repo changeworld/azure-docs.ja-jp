@@ -10,12 +10,12 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e951de46b5220e5c2edde2fcd84673c9a16cebc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bdd0c8a3ddacd3a99627bfc29c41e61a165350c6
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477708"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812370"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>論理的に削除された BLOB を管理および復元する
 
@@ -78,7 +78,7 @@ Azure Storage クライアント ライブラリを使用して、論理的に�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
 
-特定のバージョンを復元するには、最初にベースの BLOB またはバージョンに対して **[BLOB の削除の取り消し]** 操作を呼び出し、次に目的のバージョンをベース BLOB にコピーします。 次の例では、ブロック BLOB を最後に保存されたバージョンに復元します。
+論理的に削除された特定のスナップショットを復元するには、最初にベース BLOB に対して **[BLOB の削除の取り消し]** 操作を呼び出し、次に目的のスナップショットをベース BLOB にコピーします。 次の例では、ブロック BLOB を、最後に生成されたスナップショットに復元します。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
@@ -96,7 +96,7 @@ foreach (CloudBlob blob in container.ListBlobs(useFlatBlobListing: true, blobLis
 }
 ```
 
-特定のスナップショットを復元するには、最初にベース BLOB に対して **[BLOB の削除の取り消し]** 操作を呼び出し、次に目的のスナップショットをベース BLOB にコピーします。 次の例では、ブロック BLOB を最後に生成されたスナップショットに復元します。
+論理的に削除された特定のスナップショットを復元するには、最初にベース BLOB に対して **[BLOB の削除の取り消し]** 操作を呼び出し、次に目的のスナップショットをベース BLOB にコピーします。 次の例では、ブロック BLOB を最後に生成されたスナップショットに復元します。
 
 ```csharp
 // Restore the block blob.
@@ -130,6 +130,6 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="next-steps"></a>次のステップ
 
-- [BLOB ストレージの論理的な削除](./soft-delete-blob-overview.md)
+- [BLOB ストレージの論理的な削除](soft-delete-blob-overview.md)
 - [BLOB の論理的な削除の有効化](soft-delete-blob-enable.md)
 - [BLOB のバージョン管理](versioning-overview.md)

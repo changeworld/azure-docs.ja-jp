@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/25/2021
 ms.author: mametcal
 ms.custom: devx-track-java
-ms.openlocfilehash: 86a4d97f387124b7c0043ec49f00b818c8b34a19
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f683f570fe085753f1ebd81b859b86f70b1e9e49
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450586"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037744"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -62,7 +62,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
     <dependency>
         <groupId>com.azure.spring</groupId>
         <artifactId>azure-spring-cloud-appconfiguration-config-web</artifactId>
-        <version>2.0.0</version>
+        <version>2.0.0-beta.2</version>
     </dependency>
     <dependency>
         <groupId>com.azure.spring</groupId>

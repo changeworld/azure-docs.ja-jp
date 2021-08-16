@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/03/2021
+ms.date: 06/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 47947945759faee9f38393f06f7ec9396d9c715b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 17be85bd21a61ced7772786bb1fdaad1c947e4d1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749107"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962260"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントを管理する
 
@@ -29,11 +29,13 @@ Azure AD B2C は、Azure AD プラットフォームに依存しています。 
 
 |機能  |Azure AD  | Azure AD B2C |
 |---------|---------|---------|
-| [グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) | グループを使用して、管理アカウントとユーザー アカウントを管理できます。| グループを使用して、管理アカウントを管理できます。 [コンシューマー アカウント](user-overview.md#consumer-user) はグループをサポートしていません。 |
+| [グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) | グループを使用して、管理アカウントとユーザー アカウントを管理できます。| グループを使用して、管理アカウントを管理できます。 [コンシューマー アカウント](user-overview.md#consumer-user)は、どのグループでもメンバーにすることはできません。 |
 | [外部 ID のゲストの招待](../active-directory//external-identities/add-users-administrator.md)| ゲスト ユーザーを招待し、Facebook と Google のアカウントでのフェデレーションやサインインなどの外部 ID 機能を構成することができます。 | アプリケーションにアクセスしたり、テナントを管理したりするために Azure AD テナントにゲストとして招待できるのは、Microsoft アカウントまたは Azure AD ユーザーのみです。 [コンシューマー アカウント](user-overview.md#consumer-user)の場合は、Azure AD B2C のユーザー フローとカスタム ポリシーを使用して、ユーザーと、Google や Facebook などの外部 ID プロバイダーでのサインアップまたはサインインを管理します。 |
 | [ロールと管理者](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)| 管理アカウントとユーザー アカウントに対して完全にサポートされています。 | ロールは、[コンシューマー アカウント](user-overview.md#consumer-user)ではサポートされていません。 コンシューマー アカウントは、どの Azure リソースにもアクセスできません。|
-| [カスタム ドメイン名](../active-directory/roles/permissions-reference.md#) |  Azure AD カスタム ドメインは管理アカウントにのみ使用できます。 | [コンシューマー アカウント](user-overview.md#consumer-user)は、ユーザー名、電話番号、または任意の電子メール アドレスを使用してサインインできます。 [カスタム ドメイン](custom-domain.md)はリダイレクト URL で使用できます。|
-| [条件付きアクセス](../active-directory/roles/permissions-reference.md#) | 管理アカウントとユーザー アカウントに対して完全にサポートされています。 | [コンシューマー アカウント](user-overview.md#consumer-user)では、Azure AD の条件付きアクセス機能のサブセットがサポートされています。Azure AD B2C [カスタムドメイン](conditional-access-user-flow.md)の構成方法を参照してください。|
+| [カスタム ドメイン名](../active-directory/fundamentals/add-custom-domain.md) |  Azure AD カスタム ドメインは管理アカウントにのみ使用できます。 | [コンシューマー アカウント](user-overview.md#consumer-user)は、ユーザー名、電話番号、または任意の電子メール アドレスを使用してサインインできます。 [カスタム ドメイン](custom-domain.md)はリダイレクト URL で使用できます。|
+| [条件付きアクセス](../active-directory/conditional-access/overview.md) | 管理アカウントとユーザー アカウントに対して完全にサポートされています。 | [コンシューマー アカウント](user-overview.md#consumer-user)では、Azure AD 条件付きアクセス機能のサブセットがサポートされています。Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。|
+| [Premium P1](https://azure.microsoft.com/pricing/details/active-directory) | Azure AD Premium P1 の機能で完全にサポートされています ([パスワード保護](../active-directory/authentication/concept-password-ban-bad.md)、[ハイブリッド ID](../active-directory/hybrid/whatis-hybrid-identity.md)、[条件付きアクセス](../active-directory/roles/permissions-reference.md#)、[動的グループ](../active-directory/enterprise-users/groups-create-rule.md)など)。 | [コンシューマー アカウント](user-overview.md#consumer-user)では、Azure AD 条件付きアクセス機能のサブセットがサポートされています。 Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。|
+| [Premium P2](https://azure.microsoft.com/pricing/details/active-directory.md) | Azure AD Premium P2 の機能で完全にサポートされています ([Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)、[Identity Governance](../active-directory/governance/identity-governance-overview.md) など)。  | コンシューマー アカウントでは、[Azure AD Identity Protection](user-overview.md#consumer-user) 機能のサブセットがサポートされています。 [Identity Protection を使用してリスクを調査](identity-protection-investigate-risk.md)し、Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。 |
 
 ## <a name="other-azure-resources-in-your-tenant"></a>テナント内のその他の Azure リソース
 
@@ -179,7 +181,27 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
 
 [Azure AD セキュリティの既定値](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)を有効にすると、すべての管理アカウントでの MFA の使用を強制することができます。
 
+## <a name="get-your-tenant-name"></a>テナント名を取得する
 
+Azure AD B2C テナント名を取得するには、これらの手順に従います。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **[概要]** で **ドメイン名** をコピーします。
+
+![Azure AD B2C テナント名を取得する方法を示すスクリーンショット。](./media/tenant-management/get-azure-ad-b2c-tenant-name.png)  
+
+## <a name="get-your-tenant-id"></a>テナント ID を取得する
+
+Azure AD B2C テナント ID を取得するには、これらの手順に従います。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
+1. **[概要]** で **テナント ID** をコピーします。
+
+![Azure AD B2C テナント ID を取得する方法を示すスクリーンショット。](./media/tenant-management/get-azure-ad-b2c-tenant-id.png)  
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.author: tilee
 ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: df87b060423aeff9fa5f83f21634395fe30e0bbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af29de06c4b0f82d6c951d54935a93e77e723177
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102486286"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191355"
 ---
 # <a name="connection-strings"></a>Connection strings
 
@@ -25,6 +25,8 @@ ms.locfileid: "102486286"
 > [!IMPORTANT]
 > 接続文字列とインストルメンテーション キーの両方を設定することはお勧めしません。 ユーザーが両方を設定した場合は、最後に設定した方が優先されます。 
 
+> [!TIP]
+> インストルメンテーション キーに対して接続文字列を使用することをお勧めします。
 
 ## <a name="scenario-overview"></a>シナリオの概要 
 
@@ -83,7 +85,7 @@ ms.locfileid: "102486286"
 - applicationinsights.us
 
 
-関連項目: https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+関連項目: [エンドポイントの変更が必要なリージョン](./custom-endpoints.md#regions-that-require-endpoint-modification)
 
 
 ##### <a name="valid-prefixes"></a>有効なプレフィックス
@@ -295,7 +297,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)
-* [Java](./java-get-started.md)
+* [Java](./java-in-process-agent.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
 

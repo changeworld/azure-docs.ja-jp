@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac603cef478b821d1fea72fce22004fc72860914
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743107"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744469"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>アプリ パスワードを使用して、レガシ アプリケーションで Azure AD Multi-Factor Authentication を有効にして使用する
 
@@ -81,7 +81,7 @@ Azure AD では、オンプレミスの Active Directory ドメイン サービ�
 
 ## <a name="allow-users-to-create-app-passwords"></a>ユーザーがアプリ パスワードを作成できるようにする
 
-既定では、ユーザーはアプリ パスワードを作成できません。 アプリ パスワード機能を有効にして、ユーザーがそれらを使えるようにする必要があります。 ユーザーがアプリ パスワードを作成できるようにするには、次の手順を実行します。
+既定では、ユーザーはアプリ パスワードを作成できません。 アプリ パスワード機能を有効にして、ユーザーがそれらを使えるようにする必要があります。 ユーザーがアプリ パスワードを作成できるようにするには、**管理者が次の手順を実行する必要があります**。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]** を探して選択し、次に **[ユーザー]** を選択します。
@@ -101,7 +101,9 @@ Azure AD では、オンプレミスの Active Directory ドメイン サービ�
 
 ユーザーが Azure AD Multi-Factor Authentication の初期登録を完了すると、登録プロセスの最後にアプリ パスワードを作成するオプションがあります。
 
-ユーザーによるアプリ パスワードの作成は、登録後も可能です。 ユーザー向けの情報と詳細な手順については、[Azure AD Multi-Factor Authentication でのアプリ パスワードの概要](../user-help/multi-factor-authentication-end-user-app-passwords.md)に関する記事を参照してください。
+ユーザーによるアプリ パスワードの作成は、登録後も可能です。 詳細情報とユーザー向けの詳細な手順については、次のリソースを参照してください。
+* [Azure AD Multi-Factor Authentication のアプリ パスワードとは](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+* [[セキュリティ情報] ページからアプリ パスワードを作成する](https://docs.microsoft.com/azure/active-directory/user-help/security-info-app-passwords)
 
 ## <a name="next-steps"></a>次のステップ
 

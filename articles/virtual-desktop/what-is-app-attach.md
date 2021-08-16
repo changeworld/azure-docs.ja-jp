@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop の MSIX アプリのアタッチの概要 - Azure
+title: Azure Virtual Desktop の MSIX アプリのアタッチの概要 - Azure
 description: MSIX アプリのアタッチとは この記事をご覧ください。
 services: virtual-desktop
 author: Heidilohr
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cdbb7574f9da5ea6cd0695b74c269d8e1b88b7f4
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3da80de79490ce21ae99a4dd7dd36c08054cd666
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444073"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751579"
 ---
 # <a name="what-is-msix-app-attach"></a>MSIX アプリのアタッチとは
 
 MSIX は、すべての Windows アプリのパッケージ化エクスペリエンスを向上させることを目的とした多くの機能を提供する新しいパッケージ形式です。 MSIX の詳細については、[MSIX の概要](/windows/msix/overview)に関する記事を参照してください。
 
-MSIX アプリのアタッチは、物理マシンと仮想マシンの両方に MSIX アプリケーションを配信する方法です。 ただし、MSIX アプリのアタッチは、通常の MSIX とは異なります。これは、特に Windows Virtual Desktop に対して行われるためです。 この記事では、MSIX アプリのアタッチとその効果について説明します。
+MSIX アプリのアタッチは、物理マシンと仮想マシンの両方に MSIX アプリケーションを配信する方法です。 ただし、MSIX アプリのアタッチは、通常の MSIX とは異なります。これは、特に Azure Virtual Desktop に対して行われるためです。 この記事では、MSIX アプリのアタッチとその効果について説明します。
 
-## <a name="application-delivery-options-in-windows-virtual-desktop"></a>Windows Virtual Desktop でのアプリケーションの配信オプション
+## <a name="application-delivery-options-in-azure-virtual-desktop"></a>Azure Virtual Desktop でのアプリケーションの配信オプション
 
-Windows Virtual Desktop でアプリを配信するには、次のいずれかの方法を使用します。
+Azure Virtual Desktop でアプリを配信するには、次のいずれかの方法を使用します。
 
 - アプリをマスター イメージに配置する
 - SCCM や Intune などのツールを中央管理に使用する
@@ -32,7 +32,7 @@ Windows Virtual Desktop でアプリを配信するには、次のいずれか�
 
 ## <a name="what-does-msix-app-attach-do"></a>MSIX アプリのアタッチの効果
 
-Windows Virtual Desktop のデプロイでは、MSIX アプリのアタッチにより次のことが可能になります。
+Azure Virtual Desktop のデプロイでは、MSIX アプリのアタッチにより次のことが可能になります。
 
 - [MSIX コンテナー](/windows/msix/msix-container)を使用して、ユーザー データ、OS、アプリを分離する。
 - アプリケーションを動的に配信するときに再パッケージ化する必要がなくなる。

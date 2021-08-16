@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/30/2020
   ms.reviewer: jushiman
   ms.custom: mimckitt
-  ms.openlocfilehash: 38037844a12f268d6942e9e78b821f2ec7ba040e
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 2888e704cf124cf37a4ed93dba9a804c1a4da483
+  ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114456305"
+  ms.lasthandoff: 06/14/2021
+  ms.locfileid: "112082223"
 title: Azure Virtual Machine Scale Sets の FAQ
 summary: Azure における仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
 sections:
@@ -31,8 +31,6 @@ sections:
 
 
       * Azure ファイル (SMB 共有ドライブ)
-
-      * Azure 共有ディスク
 
       * OS ドライブ
 
@@ -265,7 +263,7 @@ sections:
       ```
 
 
-      linuxConfiguration の要素名 | 必須 | Type | 説明
+      linuxConfiguration の要素名 | 必須 | 種類 | 説明
 
       --- | --- | --- | ---
 
@@ -406,7 +404,7 @@ sections:
   - question: >
       Azure リソースのマネージド ID は仮想マシン スケール セットで機能しますか。
     answer: >
-      はい。 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi) と [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi) 用の Azure クイック スタート テンプレートで、MSI テンプレートの例をいくつか[ご覧いただけます](../active-directory/managed-identities-azure-resources/overview.md)。
+      はい。 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) と [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 用の Azure クイック スタート テンプレートで、MSI テンプレートの例をいくつか[ご覧いただけます](../active-directory/managed-identities-azure-resources/overview.md)。
 - name: 削除中
   questions:
   - question: >
@@ -496,6 +494,19 @@ sections:
       私の仮想マシン スケール セット拡張機能が、何か再起動を必要とするものをインストールしようとしています。
     answer: >
       仮想マシン スケール セット拡張機能で、再起動を必要とするものをインストールしようとしている場合、Azure Automation Desired State Configuration (Automation DSC) 拡張機能を使用してください。 オペレーティング システムが Windows Server 2012 R2 の場合、Azure は Windows Management Framework (WMF) 5.0 セットアップをプルし、再起動して構成を続行します。
+  - question: >
+      仮想マシン スケール セットでマルウェア対策を有効にするにはどうすればよいですか。
+    answer: >
+      仮想マシン スケール セットでマルウェア対策を有効にするには、次の PowerShell コマンドを使用します。
+
+
+      ```powershell
+
+      $rgname = 'autolap'
+
+      $vmssname = 'autolapbr'
+
+      $location = 'eastus'
   - question: >
       プライベート ストレージ アカウントでホストされているカスタム スクリプトを実行する方法
     answer: >

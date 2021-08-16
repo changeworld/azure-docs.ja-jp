@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 7b986ad444ac62f8e42230df6e994ead1827b0bd
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e9d29b4e71221ca072699967d4af8fbaa7061467
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887765"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754027"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -71,7 +71,7 @@ Azure Migrate プロジェクト内の複数のリージョンに対して評価
 
 ## <a name="can-we-use-the-same-azure-migrate-project-to-migrate-to-multiple-subscriptions"></a>同じ Azure Migrate プロジェクトを使用して複数のサブスクリプションに移行することはできますか? 
 
-はい。1 つの Azure Migrate プロジェクトの同じターゲット リージョン内の複数のサブスクリプションに移行できます。 1 台のマシンまたは一連のマシンのレプリケーションを有効にするときに、ターゲット サブスクリプションを選択することができます。 ターゲット リージョンは、エージェントレスの VMware 移行での最初のレプリケーション後、エージェントベースの移行でのレプリケーション アプライアンスのインストール中、およびエージェントレスの Hyper-V 移行での Hyper-V プロバイダーのインストール中にロックされます。
+はい。1 つの Azure Migrate プロジェクトの同じターゲット リージョン内の複数のサブスクリプション (Azure テナント) に移行できます。 1 台のマシンまたは一連のマシンのレプリケーションを有効にするときに、ターゲット サブスクリプションを選択することができます。 ターゲット リージョンは、エージェントレスの VMware 移行での最初のレプリケーション後、エージェントベースの移行でのレプリケーション アプライアンスのインストール中、およびエージェントレスの Hyper-V 移行での Hyper-V プロバイダーのインストール中にロックされます。
 
 ## <a name="what-are-the-migration-options-in-azure-migrate-server-migration"></a>Azure Migrate: Server Migration にはどのような移行オプションがありますか?
 

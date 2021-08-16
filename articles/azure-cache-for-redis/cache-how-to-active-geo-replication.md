@@ -6,18 +6,21 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 3fe3131263d3cf1984eae1692854d8d6bcd2746a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c3bcfea0e703de28c79048380f8389fa93014b3
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109490"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585342"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Enterprise Azure Cache for Redis インスタンスのアクティブ geo レプリケーションを構成する (プレビュー)
 
 この記事では、Azure portal を使用し、アクティブ geo レプリケートされた Azure Cache を構成する方法について説明します。
 
-アクティブ geo レプリケーションは、2 つ以上の Enterprise Azure Cache for Redis をグループ化して、複数の Azure リージョンにまたがる 1 つのキャッシュにします。 すべてのインスタンスは、ローカルのプライマリとして機能します。 アプリケーションでは、読み取りおよび書き込み要求に使用するインスタンスを決定します。
+アクティブ geo レプリケーションは、2 つの Enterprise Azure Cache for Redis をグループ化して、複数の Azure リージョンにまたがる 1 つのキャッシュにします。 どちらのインスタンスも、ローカルのプライマリとして機能します。 アプリケーションでは、読み取りおよび書き込み要求に使用するインスタンスを決定します。
+
+> [!NOTE]
+> Azure リージョン間のデータ転送は、標準の[帯域幅レート](https://azure.microsoft.com/pricing/details/bandwidth/)で課金されます。
 
 ## <a name="create-or-join-an-active-geo-replication-group"></a>アクティブ geo レプリケーション グループを作成または参加する
 

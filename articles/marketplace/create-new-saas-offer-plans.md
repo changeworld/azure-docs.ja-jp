@@ -1,6 +1,6 @@
 ---
-title: Microsoft パートナー センターで SaaS オファーのプランを作成する方法
-description: パートナー センターで Microsoft コマーシャル マーケットプレース ポータルを使用して、新しい Software As A Service (SaaS) オファーを作成する方法について説明します。
+title: Azure Marketplace 内で SaaS オファーのプランを作成する
+description: Azure Marketplace 内で新しいサービスとしてのソフトウェア (SaaS) オファーのプランを作成します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,28 +8,25 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: fb1514c146dcd352451597e6182c6d99ed8836d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 714197288708691cb35e887975d1fabbe27cb406
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044721"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555382"
 ---
-# <a name="how-to-create-plans-for-your-saas-offer"></a>SaaS オファーのプランを作成する方法
+# <a name="create-plans-for-a-saas-offer"></a>SaaS オファーのプランを作成する
 
 Microsoft のコマーシャル マーケットプレースを通じて販売されるオファーには、少なくとも 1 つのプランが必要です。 同じオファー内でさまざまなオプションを使用して、さまざまなプランを作成できます。 これらのプラン (SKU とも呼ばれる) は、サービスのバージョン、収益化、またはレベルの点で異なる可能性があります。 プランの詳細なガイダンスについては、「[コマーシャル マーケットプレースのオファーのプランと価格](plans-pricing.md)」を参照してください。
 
 > [!NOTE]
-> トランザクションを個別に処理することを選択した場合、このオプションは表示されません。 代わりに、「[SaaS オファーを販売する方法](create-new-saas-offer-marketing.md)」に進んでください。
+> トランザクションを個別に処理することを選択した場合、このオプションは表示されません。 代わりに、「[SaaS オファーを販売する](create-new-saas-offer-marketing.md)」に進みます。
 
 ## <a name="create-a-plan"></a>プランの作成
 
 1. **[プランの概要]** タブの上部にある **[+ 新しいプランの作成]** を選択します。
-
 1. 表示されるダイアログ ボックスの **[プラン ID]** ボックスに、一意のプラン ID を入力します。 最大 50 文字の英小文字、ダッシュ、アンダースコアのみを使用してください。 **[作成]** を選択した後にプラン ID を変更することはできません。
-
 1. **[プラン名]** ボックスに、このプランの一意の名前を入力します。 最大 50 文字を使用します。
-
 1. **［作成］** を選択します
 
 ## <a name="define-the-plan-listing"></a>プランのリストを定義する
@@ -37,7 +34,6 @@ Microsoft のコマーシャル マーケットプレースを通じて販売さ
 **[プランのリスト]** タブでは、必要に応じてプランの名前と説明をコマーシャル マーケットプレースに表示するように定義できます。
 
 1. **[プラン名]** ボックスに、このプランに対して前に指定した名前が表示されます。 これはいつでも変更できます。 この名前は、オファーのソフトウェア プランのタイトルとしてコマーシャル マーケットプレースに表示されます。
-
 1. **[プランの説明]** ボックスで、このソフトウェア プランに固有な点や、オファー内の他のソフトウェア プランとの違いを説明できます。 説明は、最大 500 文字まで許可されます。
 1. **[下書きの保存]** を選択してから、次の **[価格と提供の状況]** タブに進みます。
 
@@ -152,9 +148,9 @@ Microsoft のコマーシャル マーケットプレースを通じて販売さ
 
 ## <a name="before-you-publish-your-offer"></a>プランを公開する前に
 
-実稼働プランを公開する前に、プランをテストするための開発およびテスト (DEV) プランを作成します (まだそうしていない場合)。 詳細については、[開発とテストのプランの作成](create-saas-dev-test-offer.md)に関する記事を参照してください。
+実稼働プランを公開する前に、プランをテストするための開発およびテスト (DEV) プランを作成します (まだそうしていない場合)。 詳細については、[テスト SaaS オファーの作成](create-saas-dev-test-offer.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- **Microsoft との共同販売** および **CSP による再販** プログラムを使用して [SaaS オファーを市場で販売する方法](create-new-saas-offer-marketing.md)について学習します。
-- [SaaS オファーをテストしてコマーシャル マーケットプレースに公開する方法](test-publish-saas-offer.md)。
+- **Microsoft との共同販売** プログラムおよび **CSP による再販** プログラムを使用して [SaaS オファーを販売](create-new-saas-offer-marketing.md)します。
+- [SaaS オファーのテストして、発行します](test-publish-saas-offer.md)。

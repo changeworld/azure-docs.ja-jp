@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.custom: references_regions
-ms.openlocfilehash: 7980ea5811fe77bc80d97e31e3b852766debd31a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: ffff2c1831aab09a1c622ced98cfe180fe0ec5d7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796453"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679203"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -270,6 +270,9 @@ Azure File Sync エージェントは、Azure File Sync REST プロトコルと 
 - Azure Files と Azure のネットワーク機能 (サービス エンドポイント、プライベート エンドポイントなど) の使用。
 - お使いの環境でプロキシをサポートするよう Azure File Sync を構成。
 - Azure File Sync からネットワーク アクティビティを調整。
+
+> [!Important]  
+> Azure File Sync は、インターネット ルーティングをサポートしていません。 既定のネットワーク ルーティング オプションである Microsoft ルーティングは、Azure File Sync でサポートされています。
 
 Azure File Sync とネットワークの詳細については、「[Azure File Sync のネットワークに関する考慮事項](file-sync-networking-overview.md)」を参照してください。
 

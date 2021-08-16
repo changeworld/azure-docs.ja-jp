@@ -40,6 +40,6 @@
   expanded: true
   items:
     - name: よく寄せられる質問
-      href: faq.yml
+      href: faq.md
     - name: クラウド導入フレームワーク
       href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'

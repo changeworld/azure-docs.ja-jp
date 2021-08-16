@@ -7,12 +7,13 @@ ms.subservice: extensions
 author: mgreenegit
 ms.author: migreene
 ms.date: 04/15/2021
-ms.openlocfilehash: 2fda3cc2cf9adc3a734780209a0c9cc06a04e7cf
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d189cf54edfaca13b801e786254eec9fc5aa96f6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368493"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662833"
 ---
 # <a name="overview-of-the-azure-policy-guest-configuration-extension"></a>Azure Policy ゲスト構成拡張機能の概要
 
@@ -45,12 +46,15 @@ ms.locfileid: "107368493"
 
 ## <a name="how-can-i-install-the-extension"></a>拡張機能をインストールするにはどうすればよいですか。
 
-ID 要件を含む大規模な最新バージョンの拡張機能をデプロイするには、Azure Policy 「[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json)」を割り当てます。
-個々のマシンの場合、拡張機能は、Azure CLI、PowerShell、Resource Manager テンプレート、またはサードパーティ製のツールを使用して展開できます。
-
 上記で参照されているポリシーにはこれらの特定の文字列が必要なため、拡張機能のインスタンス名は "AzurePolicyforWindows" または "AzurePolicyforLinux" に設定する必要があります。
 
 既定では、すべてのデプロイが最新バージョンに更新されます。 プロパティ _autoUpgradeMinorVersion_ の値は、特に指定がない限り、既定で "true" に設定されます。 拡張機能の新しいバージョンがリリースされても、コードの更新について心配する必要はありません。
+
+### <a name="azure-policy"></a>Azure Policy
+
+ID 要件を含め、最新バージョンの拡張機能を大規模にデプロイするには、以下の Azure Policy を[割り当てます](../../governance/policy/assign-policy-portal.md)。
+
+[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json)。
 
 ### <a name="azure-cli"></a>Azure CLI
 

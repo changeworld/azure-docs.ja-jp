@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 773ae30cd888e76793bd65f8f31a8c110b128c01
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e4e4701b535e5363d0eb64f377fe4dccc3a3dd7d
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135223"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653598"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -246,6 +246,40 @@ Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュ
 
 **[Config Server]** タブに表示される **[リセット]** ボタンを選択すると、既存の設定を完全に消去できます。 GitHub から Azure DevOps への移動など、Config Server インスタンスを別のソースに接続する場合は、Config Server の設定を削除します。
 
+## <a name="config-server-refresh"></a>Config Server の更新
+プロパティが変更された場合、変更を行う前に、それらのプロパティを使用するサービスに通知する必要があります。 Spring Cloud の既定のソリューションでは、[更新イベント](https://spring.io/guides/gs/centralized-configuration/)を手動でトリガーします。これは、アプリ インスタンスが多数ある場合は実現できない可能性があります。 または Azure Spring Cloud において、構成クライアントが内部更新に基づいて変更をポーリングすることで、構成サーバーから値を自動的に更新できます。
+
+- まず、spring-cloud-starter-azure-spring-cloud-client を、pom.xml の依存関係セクションに含めます。
+
+  ```xml
+  <dependency>
+      <groupId>com.microsoft.azure</groupId>
+      <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+      <version>2.4.0</version>
+  </dependency>
+  ```
+
+- 2 つ目は自動更新を有効にし、application.yml で適切な更新間隔を設定します。 この例では、クライアントは 5 秒ごとに構成変更をポーリングします。これは、更新間隔に設定できる最小値です。
+既定では、自動更新は false に設定され、refresh-interval は 60 秒に設定されます。
+
+  ``` yml
+  spring:
+    cloud:
+      config:
+        auto-refresh: true
+        refresh-interval: 5
+  ```
+
+- 最後に、@refreshScope をコードに追加します。 この例では、変数 connectTimeout は5秒ごとに自動的に更新されます。
+
+  ``` java
+  @RestController
+  @RefreshScope
+  public class HelloController {
+      @Value("${timeout:4000}")
+      private String connectTimeout;    
+  }
+  ```
 
 
 ## <a name="next-steps"></a>次のステップ

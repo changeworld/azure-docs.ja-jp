@@ -1,26 +1,26 @@
 ---
-title: iOS から Windows Virtual Desktop (クラシック) に接続する - Azure
-description: iOS クライアントを使用して Windows Virtual Desktop (クラシック) に接続する方法。
+title: iOS から Azure Virtual Desktop (クラシック) に接続する - Azure
+description: iOS クライアントを使用して Azure Virtual Desktop (クラシック) に接続する方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 297e2967c4e651c5b75ce232d56c51c07c872443
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 5f981e40d82a1f5b4d775832752d4b169ab73db0
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445280"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750031"
 ---
-# <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>iOS クライアントを使用して Windows Virtual Desktop (クラシック) に接続する
+# <a name="connect-to-azure-virtual-desktop-classic-with-the-ios-client"></a>iOS クライアントを使用して Azure Virtual Desktop (クラシック) に接続する
 
 > 適用対象: iOS 13.0 以降。 iPhone、iPad、iPod touch と互換性があります。
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-ios.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-ios.md)を参照してください。
 
-ダウンロード可能なクライアントを使用して、ご使用の iOS デバイスから Windows Virtual Desktop リソースにアクセスできます。 このガイドでは、iOS クライアントを設定する方法について説明します。
+ダウンロード可能なクライアントを使用して、ご使用の iOS デバイスから Azure Virtual Desktop リソースにアクセスできます。 このガイドでは、iOS クライアントを設定する方法について説明します。
 
 ## <a name="install-the-ios-client"></a>iOS クライアントをインストールする
 

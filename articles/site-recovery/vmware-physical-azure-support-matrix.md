@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 374a605e9d1009c9cabeb142bfa818d6f7d98f96
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 30c214e4268f12bad59755ffe92e22686e16e115
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166507"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784800"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -93,7 +93,7 @@ Linux: CentOS | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> </br> 7.0、7.
 Ubuntu | Ubuntu 14.04* LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)<br/>Ubuntu 16.04* LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions) </br> Ubuntu 18.04* LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions) </br> Ubuntu 20.04* LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions) </br> (*すべての 14.04.* x *、16.04.* x *、18.04.* x *、20.04.* x* バージョンのサポートが含まれます)
 Debian | Debian 7/Debian 8 (すべての 7. *x*、8. *x* バージョン)、Debian 9 (9.1 から 9.13 までのサポートが含まれます。 Debian 9.0 はサポートされていません。)、Debian 10 [(サポートされているカーネルのバージョンの確認)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、[SP5](https://support.microsoft.com/help/4570609) [(サポートされているカーネル バージョンの確認)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [(サポートされているカーネル バージョンの確認)](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3。 [構成サーバーに最新のモビリティ エージェント インストーラーをダウンロードしてください](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。 </br> SUSE Linux Enterprise Server 11 SP4 </br> **注**:レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、レプリケーションを無効にし、アップグレードの後に再び有効にします。 <br/>|
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4573888/)、[7.9](https://support.microsoft.com/help/4597409/)、[8.0](https://support.microsoft.com/help/4573888/)、[8.1](https://support.microsoft.com/help/4573888/)、[8.3](https://support.microsoft.com/help/4597409/)  <br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している<br/><br/>8.1<br/>すべての UEK カーネルと RedHat カーネル <= 3.10.0-1062.* での実行は、[9.35](https://support.microsoft.com/help/4573888/) でサポートされます。それ以降の RedHat カーネルは、[9.36](https://support.microsoft.com/help/4578241/) でサポートされます
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4573888/)、[7.9](https://support.microsoft.com/help/4597409/)、[8.0](https://support.microsoft.com/help/4573888/)、[8.1](https://support.microsoft.com/help/4573888/)、[8.2](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)、[8.3](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  <br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している<br/><br/>8.1<br/>すべての UEK カーネルと RedHat カーネル <= 3.10.0-1062.* での実行は、[9.35](https://support.microsoft.com/help/4573888/) でサポートされます。それ以降の RedHat カーネルは、[9.36](https://support.microsoft.com/help/4578241/) でサポートされます
 
 > [!Note]
 >- Windows の各バージョンについては、Azure Site Recovery では [長期サービス チャネル (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) のビルドのみがサポートされます。  現時点では、[半期チャネル](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)のリリースはサポートされていません。
@@ -234,6 +234,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー VMDK | はい
 ゲスト/サーバー共有クラスター ディスク | いいえ
 ゲスト/サーバー暗号化ディスク | いいえ
+FIPS 暗号化 | いいえ
 ゲスト/サーバー NFS | いいえ
 ゲスト/サーバー iSCSI | 移行の場合 - はい<br/>ディザスター リカバリーの場合 - いいえ、iSCSI は接続されたディスクとして VM にフェールバックされます
 ゲスト/サーバー SMB 3.0 | いいえ

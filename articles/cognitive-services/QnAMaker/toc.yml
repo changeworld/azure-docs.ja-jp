@@ -21,7 +21,7 @@
         - name: クライアント ライブラリまたは REST API
           href: Quickstarts/quickstart-sdk.md
 - name: サンプル
-  href: /samples/browse/?products=azure&term=face&terms=qna-maker
+  href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face&terms=qna-maker'
 - name: AI の責任ある使用
   items:
     - name: 透明性に関するメモ

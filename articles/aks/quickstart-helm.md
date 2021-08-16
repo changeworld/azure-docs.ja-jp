@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: e293d0c58f265b25f3df0a218f84888467468f59
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 248b91be60f4da3ce7dd10212a9db69377651ccb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767495"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071544"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>クイック スタート:Helm を使用して Azure Kubernetes Service (AKS) で開発する
 
@@ -88,7 +88,7 @@ Kubernetes クラスターにローカルで接続するには、Kubernetes の�
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
-このクイック スタートでは、[Azure Dev Spaces サンプル リポジトリの Node.js アプリケーションの例][example-nodejs]を使用します。 GitHub からアプリケーションを複製し、`dev-spaces/samples/nodejs/getting-started/webfrontend` ディレクトリに移動します。
+このクイックスタートでは、[Node.js アプリケーションの例][example-nodejs]を使用します。 GitHub からアプリケーションを複製し、`dev-spaces/samples/nodejs/getting-started/webfrontend` ディレクトリに移動します。
 
 ```console
 git clone https://github.com/Azure/dev-spaces

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 05/25/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: f04a0ca4222ec86e793bf935247029fa78f1acf1
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: fed830833e9f68bcf734be65cba16f1cc84c8f89
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627926"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494354"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでのアクセス許可と同意
 
@@ -105,6 +105,13 @@ Microsoft ID プラットフォーム (要求は v2.0 エンドポイントに�
 アクセス トークンの有効期間は短期です。 通常は、1 時間以内に期限切れとなります。 その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい承認コードを取得する必要があります。 このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。
 
 更新トークンの取得方法と使用方法の詳細については、[Microsoft ID プラットフォーム プロトコルのリファレンス](active-directory-v2-protocols.md)を参照してください。
+
+## <a name="incremental-and-dynamic-consent"></a>増分および動的な同意
+Microsoft ID プラットフォーム エンドポイントを使用して、Azure portal のアプリケーション登録情報に定義された静的アクセス許可を無視し、代わりに増分でアクセス許可を要求することができます。  ユーザーが追加のアプリケーション機能を使用する際に、最小限のアクセス許可セットを事前に要求して、時間をかけてより多くを要求することができます。 これを行うために、任意の時点でアプリに必要なスコープを指定できます。その場合、[アクセス トークンの要求](#requesting-individual-user-consent)時に `scope` パラメーターに新しいスコープを含めます。アプリケーションの登録情報で事前に定義する必要はありません。 要求に追加された新しいスコープにユーザーがまだ同意していない場合、新しいアクセス許可のみの同意を求められます。 増分または動的な同意は、委任されたアクセス許可にのみ適用され、アプリケーションのアクセス許可には適用されません。
+
+`scope` パラメーターを使用してアプリからアクセス許可を動的に要求できるため、開発者はユーザーの操作を完全に制御できます。 同意操作を初期段階に組み込み、1 回の初期承認要求ですべてのアクセス許可を求めることもできます。 アプリで多数のアクセス許可が必要な場合は、時間の経過と共に、ユーザーがアプリの特定の機能を使用するときにアクセス許可を集めることができます。
+
+組織に代わって行われる[管理者の同意](#using-the-admin-consent-endpoint)では、引き続き、アプリ用に登録された静的アクセス許可が要求されるため、組織全体に代わり、管理者が同意する必要がある場合は、アプリ登録ポータル内のアプリに対してこれらのアクセス許可を設定するようにしてください。 これにより、アプリケーションを設定するために組織の管理者に必要なサイクルが減ります。
 
 ## <a name="requesting-individual-user-consent"></a>個々のユーザーの同意を要求する
 

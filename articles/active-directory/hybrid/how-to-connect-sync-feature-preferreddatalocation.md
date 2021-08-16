@@ -4,7 +4,7 @@ description: Azure Active Directory Connect 同期を使用して、Microsoft 36
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -12,19 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/11/2019
+ms.date: 06/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c528b61f4d590c0402ac7c89d97f545911d883
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 82ac5d6b6c3424be4e3f012a04c5fc1b149f58d0
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627944"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891898"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect (同期): Microsoft 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Microsoft 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Microsoft 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
+
+## <a name="supported-multi-geo-locations"></a>サポートされている Multi-Geo の場所
+Azure AD Connect でサポートされているすべての地域の一覧については、[「Microsoft 365 Multi-Geo の可用性」](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide#microsoft-365-multi-geo-availability)を参照してください
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>優先されるデータの場所の同期の有効化
 既定では、ユーザーの Microsoft 365 リソースは、Azure AD テナントと同じ geo にあります。 たとえば、テナントが北米にある場合、ユーザーの Exchange メールボックスも北米にあります。 多国籍組織にとっては、これが最適でないことがあります。
@@ -34,31 +37,10 @@ ms.locfileid: "109627944"
 > [!IMPORTANT]
 > Multi-Geo は現在、有効なマイクロソフト エンタープライズ契約と 250 以上の Microsoft 365 サービス サブスクリプションを保有しているお客様が利用できます。 詳細については、Microsoft 担当者にお問い合わせください。
 >
->
+> Azure AD Connect でサポートされているすべての地域の一覧については、[「Microsoft 365 Multi-Geo の可用性」](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide#microsoft-365-multi-geo-availability)を参照してください。
 
-Microsoft 365 向けのすべての geo の一覧については、「[データの保管場所](/microsoft-365/enterprise/o365-data-locations)」を参照してください。
 
-Multi-Geo で使用できる Microsoft 365 の geo を次に示します。
 
-| ジオ (主要地域) | preferredDataLocation 値 |
-| --- | --- |
-| アジア太平洋 | APC |
-| オーストラリア | AUS |
-| Canada | CAN |
-| 欧州連合 | EUR |
-| フランス | FRA |
-| インド | IND |
-| 日本 | JPN |
-| 韓国 | KOR |
-| 南アフリカ | ZAF |
-| スイス | CHE |
-| アラブ首長国連邦 | ARE |
-| イギリス | GBR |
-| United States | NAM |
-
-* この表に掲載されていない geo (南アメリカなど) は、Multi-Geo には使用できません。
-
-* すべての Microsoft 365 ワークロードでユーザーの geo 設定が使用できるわけではありません。
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect の同期のサポート
 

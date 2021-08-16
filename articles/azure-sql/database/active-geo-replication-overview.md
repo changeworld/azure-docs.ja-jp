@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 04/28/2021
-ms.openlocfilehash: 04831c7cb56082854097a2091b3c8099e4d488a6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 820c69135acbecde8c2c918e26a7b8cf9dc69428
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124799"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699895"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>アクティブ geo レプリケーションの作成と使用 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,8 +24,11 @@ ms.locfileid: "108124799"
 アクティブ geo レプリケーションは Azure SQL Database の機能です。これを使用すると、同じデータ センターまたは異なるデータ センター (リージョン) 内のサーバー上に、個々のデータベースの読み取り可能なセカンダリ データベースを作成することができます。
 
 > [!NOTE]
-> Azure SQL Hyperscale のアクティブ geo レプリケーションは[現在、パブリック プレビュー](https://aka.ms/hsgeodr)段階です。 現在、次のような制限があります。geo セカンダリは同じまたは異なるリージョンに 1 つのみです。強制フェールオーバーのみがサポートされています。geo セカンダリからのデータベース復元はサポートされていません。データベース コピーのソース データベースとして、あるいは、別の geo セカンダリのためのプライマリとして geo セカンダリを使用することはサポートされていません。
-
+> Azure SQL Hyperscale のアクティブ geo レプリケーションは[現在、パブリック プレビュー](https://aka.ms/hsgeodr)段階です。 現在、次のような制限があります。geo セカンダリは同じまたは異なるリージョンに 1 つのみです。強制および計画されたフェールオーバーは現在サポートされていません。geo セカンダリからのデータベース復元はサポートされていません。データベース コピーのソース データベースとして、あるいは、別の geo セカンダリのためのプライマリとして geo セカンダリを使用することはサポートされていません。
+> geo セカンダリを書き込み可能にする必要がある場合は、次の手順を使用して geo レプリケーション リンクを解除します。
+> 1. [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) コマンドレットを使用して、セカンダリ データベースを読み取りおよび書き込み可能なスタンドアロンのデータベースにします。 プライマリにコミットされていてもまだセカンダリにレプリケートされていないトランザクションは失われます。 これらの変更は、古いプライマリが使用可能な場合に復旧できます。また、古いプライマリを利用可能な最新の時点に復元することで復旧できる場合があります。
+> 2. 古いプライマリが使用可能な場合はそれを削除し、新しいプライマリの geo レプリケーションを設定します (新しいセカンダリがシードされます)。 
+> 3. これに応じて、アプリケーション内の接続文字列を更新します。
 
 > [!NOTE]
 > アクティブ geo レプリケーションは、 Azure SQL Managed Instance ではサポートされていません。 SQL Managed Instance の地理的なフェールオーバーについては、[自動フェールオーバー グループ](auto-failover-group-overview.md)を使用します。
@@ -144,6 +147,9 @@ ms.locfileid: "108124799"
 SQL Database のコンピューティング サイズの詳細については、[SQL Database サービス レベル](purchasing-models.md)に関するページをご覧ください。
 
 ## <a name="cross-subscription-geo-replication"></a>サブスクリプション間 geo レプリケーション
+
+> [!NOTE]
+> プライマリまたはセカンダリのどちらかの論理サーバー上で [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/support-for-azure-ad-user-creation-on-behalf-of-azure-ad/ba-p/2346849) 認証がアクティブ (有効) になっている場合、別の Azure テナント内の論理サーバー上での geo レプリカの作成はサポートされていません。
 
 (同じテナント下にあるかどうかにかかわらず) 異なるサブスクリプションに属する 2 つのデータベース間でアクティブ geo レプリケーションをセットアップするには、このセクションで説明する特別な手順に従う必要があります。  手順は SQL コマンドに基づいており、次のことが必要です。
 

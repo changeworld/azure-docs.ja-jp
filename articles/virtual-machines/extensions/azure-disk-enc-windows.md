@@ -8,18 +8,18 @@ author: ejarvi
 ms.author: ejarvi
 ms.collection: windows
 ms.date: 03/19/2020
-ms.openlocfilehash: 10268f8041f21f74e8ebcfaee41d207a53618260
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62ad5ca5d3b150aef5a83eaa4d5231e7bb5a6a62
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566245"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100182"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryption)
 
 ## <a name="overview"></a>概要
 
-Azure Disk Encryption は、BitLocker を利用して、Windows を実行している Azure 仮想マシン上で完全なディスク暗号化を提供します。  このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで管理することができます。 
+Azure Disk Encryption は、BitLocker を利用して、Windows を実行している Azure 仮想マシン上で完全なディスク暗号化を提供します。  このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで管理することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ Azure Disk Encryption は、BitLocker を利用して、Windows を実行して�
 
 Azure Disk Encryption (ADE) 用の拡張機能のスキーマには、次の 2 つのバージョンがあります。
 - v2.2 - Azure Active Directory (AAD) のプロパティを使用しない、推奨される新しいスキーマ。
-- v1.1 - Azure Active Directory (AAD) のプロパティを必要とする以前のスキーマ。 
+- v1.1 - Azure Active Directory (AAD) のプロパティを必要とする以前のスキーマ。
 
 ターゲット スキーマを選択するには、`typeHandlerVersion` プロパティを、使用するスキーマのバージョンと同じ値に設定する必要があります。
 
@@ -67,7 +67,7 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
 ```
 
 
-### <a name="schema-v11-with-aad"></a>スキーマ v1.1: AAD を使用 
+### <a name="schema-v11-with-aad"></a>スキーマ v1.1: AAD を使用
 
 1.1 スキーマでは、`aadClientID` と、`aadClientSecret` または `AADClientCertificate` のいずれかを必要とします。新しい VM には推奨されません。
 
@@ -82,7 +82,7 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
   "properties": {
     "protectedSettings": {
       "AADClientSecret": "[aadClientSecret]"
-    },    
+    },
     "publisher": "Microsoft.Azure.Security",
     "type": "AzureDiskEncryption",
     "typeHandlerVersion": "1.1",
@@ -112,7 +112,7 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
   "properties": {
     "protectedSettings": {
       "AADClientCertificate": "[aadClientCertificate]"
-    },    
+    },
     "publisher": "Microsoft.Azure.Security",
     "type": "AzureDiskEncryption",
     "typeHandlerVersion": "1.1",
@@ -140,10 +140,10 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
 | publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryption | string |
 | typeHandlerVersion | 2.2、1.1 | string |
-| (1.1 スキーマ) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (1.1 スキーマ) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid |
 | (1.1 スキーマ) AADClientSecret | password | string |
 | (1.1 スキーマ) AADClientCertificate | thumbprint | string |
-| EncryptionOperation | EnableEncryption | string | 
+| EncryptionOperation | EnableEncryption | string |
 | (省略可能 - 既定値 RSA-OAEP) KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | string |
 | KeyVaultURL | url | string |
 | KeyVaultResourceId | url | string |
@@ -154,12 +154,12 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-スキーマ v2.2 に基づくテンプレートのデプロイの例については、Azure クイックスタート テンプレートの [201-encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad) を参照してください。
+スキーマ v2.2 に基づくテンプレートのデプロイの例については、Azure クイックスタート テンプレートの [encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm-without-aad) を参照してください。
 
 スキーマ v1.1 に基づくテンプレートのデプロイの例については、Azure クイックスタート テンプレートの [201-encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm) を参照してください。
 
 >[!NOTE]
-> また、`VolumeType` パラメーターが All に設定されている場合は、正しくフォーマットされている場合にのみ、データ ディスクが暗号化されます。 
+> また、`VolumeType` パラメーターが All に設定されている場合は、正しくフォーマットされている場合にのみ、データ ディスクが暗号化されます。
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
@@ -169,7 +169,7 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
 
 ### <a name="support"></a>サポート
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/community/)で Azure エキスパートに問い合わせることができます。 
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/community/)で Azure エキスパートに問い合わせることができます。
 
 または、Azure サポート インシデントを送信できます。 [Azure サポート](https://azure.microsoft.com/support/options/)に移動して、[サポートを受ける] を選択します。 Azure サポートの使用方法の詳細については、「 [Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
 

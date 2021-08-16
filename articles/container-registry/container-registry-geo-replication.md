@@ -3,14 +3,14 @@ title: レジストリの geo レプリケーション
 description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。これにより、レジストリからマルチマスター リージョン レプリカを持つ複数のリージョンにサービスを提供できるようになります。 geo レプリケーションは、Premium サービス レベルの機能です。
 author: stevelas
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 06/09/2021
 ms.author: stevelas
-ms.openlocfilehash: d36cf1c5ed8c916962ae0b621548a593d2fe0a97
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: b60de8dd9dc4ba5b66594fe6d75caa43ef0017b5
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331846"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029659"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -25,8 +25,8 @@ geo レプリケートされたレジストリには次の利点があります�
 * リージョンの障害が発生した場合のレジストリの復元
 
 > [!NOTE]
-> コンテナー イメージのコピーを複数の Azure コンテナー レジストリに保持する必要がある場合、Azure Container Registry も[イメージのインポート](container-registry-import-images.md)をサポートします。 たとえば DevOps ワークフローでは、Docker コマンドを使用する必要なしに、開発レジストリから運用レジストリにイメージをインポートできます。
->
+> * コンテナー イメージのコピーを複数の Azure コンテナー レジストリに保持する必要がある場合、Azure Container Registry も[イメージのインポート](container-registry-import-images.md)をサポートします。 たとえば DevOps ワークフローでは、Docker コマンドを使用する必要なしに、開発レジストリから運用レジストリにイメージをインポートできます。
+> * レジストリを geo レプリケートするのではなく、別の Azure リージョンに移動する場合は、「[コンテナー レジストリを別のリージョンに手動で移動する](manual-regional-move.md)」を参照してください。
 
 ## <a name="example-use-case"></a>ユース ケースの例
 Contoso では、米国、カナダ、ヨーロッパにまたがる パブリック プレゼンスの Web サイトを運用しています。 Contoso は、ネットワーク上の近い場所にあるローカルのコンテンツでこれらの市場に対応するために、米国西部、米国東部、カナダ中部、西ヨーロッパで [Azure Kubernetes Service](../aks/index.yml) (AKS) クラスターを実行しています。 Docker イメージとしてデプロイされた Web サイト アプリケーションでは、すべてのリージョンで同じコードとイメージを使用します。 リージョンのローカルのコンテンツは、各リージョンに独自にプロビジョニングされたデータベースから取得されます。 各リージョン デプロイには、ローカル データベースなどのリソースの独自の構成があります。
@@ -58,15 +58,18 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 
 * すべてのリージョンにまたがる 1 つのレジストリ (`contoso.azurecr.io`) を管理すれば済む。
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
-* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
+* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR によって自動管理される。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
 * 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成する。
 * リージョンの障害に対して回復性がある高可用性レジストリを提供します。
 
 Azure Container Registry では、耐障害性と可用性に優れた Azure コンテナー レジストリを Azure リージョンに作成するため、[可用性ゾーン](zone-redundancy.md)もサポートされています。 リージョン内の冗長性のための可用性ゾーンと、複数のリージョンをまたぐ geo レプリケーションを組み合わせることで、レジストリの信頼性とパフォーマンスが強化されます。
 
+> [!IMPORTANT]
+> レジストリのホーム リージョン (つまり、レジストリが最初にデプロイされたリージョン) 内で特定の障害が発生すると、geo レプリケートされたレジストリは使用できなくなる可能性があります。
+
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
 
-geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
+geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/container-registry-geo-replication/)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
 
 geo レプリケーションは、[Premium レジストリ](container-registry-skus.md)の機能です。 レジストリがまだ Premium でない場合は、[Azure Portal](https://portal.azure.com) で Basic および Standard から Premium に変更できます。
 

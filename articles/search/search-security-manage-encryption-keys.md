@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/02/2020
-ms.custom: references_regions
-ms.openlocfilehash: 9679157e7871b043711fff688a8cbb69cf9bb4d8
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 05/28/2021
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 3e45a2ff5db3a3ebbc0f9e2c5d9c66af43915463
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813616"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786841"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Cognitive Search のデータ暗号化のためにカスタマー マネージド キーを構成する
 
@@ -31,15 +31,18 @@ Azure Cognitive Search では、インデックス付きコンテンツの保存
 
 ## <a name="double-encryption"></a>二重暗号化
 
-2020 年 8 月 1 日以降に作成され、特定のリージョン内にあるサービスの場合、カスタマー マネージド キーの暗号化のスコープには、現在以下のリージョンで使用できる[完全な二重暗号化](search-security-overview.md#double-encryption)を実現する一時ディスクが含まれています。 
+二重暗号化は、カスタマー マネージド キー (CMK) の拡張機能です。 これは、(1 回目は CMK、次はサービス マネージド キーによって) 二重に暗号化される、データ ディスクに書き込まれる長期的な保存と一時ディスクに書き込まれる短期的な保存におよぶ、広範囲にわたる暗号化です。 手動で構成する必要はありません。 CMK をオブジェクトに適用すると、二重暗号化が自動的に呼び出されます。
 
-+ 米国西部 2
-+ 米国東部
-+ 米国中南部
-+ US Gov バージニア州
-+ US Gov アリゾナ
+二重暗号化は、すべてのリージョンで使用できます。ただし、サポートは 2 つのフェーズでロール アウトされました。 最初のロール アウトは 2020 年 8 月であり、以下に示す 5 つのリージョンが含まれていました。 2021 年 5 月の 2 回目のロール アウトでは、残りのすべてのリージョンに二重暗号化が拡張されました。 古いサービスで CMK を使用し、二重暗号化が必要な場合は、選択したリージョンに新しい検索サービスを作成する必要があります。
 
-異なるリージョンを使用しているか、8 月 1 日より前に作成されたサービスを使用している場合、マネージド キーの暗号化はデータ ディスクのみに限定されていて、サービスによって使用される一時ディスクは除かれています。
+| リージョン | サービスの作成日 |
+|--------|-----------------------|
+| 米国西部 2 | 2020 年 8 月 1 日以降 |
+| 米国東部 | 2020 年 8 月 1 日以降 |
+| 米国中南部  | 2020 年 8 月 1 日以降 |
+| US Gov バージニア州  | 2020 年 8 月 1 日以降 |
+| US Gov アリゾナ  | 2020 年 8 月 1 日以降 |
+| [サポートされているその他のすべてのリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=search#select-product) | 2021 年 5 月 13 日以降 |
 
 ## <a name="prerequisites"></a>前提条件
 

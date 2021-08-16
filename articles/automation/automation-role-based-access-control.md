@@ -4,15 +4,15 @@ description: この記事では、Azure ロールベースのアクセス制御 
 keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/21/2020
+ms.date: 05/17/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0727d3342c73d9aa4d15e84aacb82bd8fea01d65
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 943fa65f114e46c80c8c1ef576f784f9117c9f79
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833582"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083802"
 ---
 # <a name="manage-role-permissions-and-security"></a>ロールのアクセス許可とセキュリティの管理
 
@@ -262,14 +262,19 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 更新管理は、複数のサービスにまたがってサービスを提供します。 更新管理デプロイを管理するために必要なアクセス許可を次の表に示します。
 
-|**リソース**  |**ロール**  |**スコープ**  |
+|**リソース** |**ロール** |**スコープ** |
 |---------|---------|---------|
-|Automation アカウント     | Log Analytics 共同作成者       | Automation アカウント        |
-|Automation アカウント    | Virtual Machine Contributor        | アカウントのリソース グループ        |
-|Log Analytics ワークスペース     | Log Analytics 共同作成者| Log Analytics ワークスペース        |
-|Log Analytics ワークスペース |Log Analytics 閲覧者| サブスクリプション|
-|解決策     |Log Analytics 共同作成者         | 解決策|
-|仮想マシン     | Virtual Machine Contributor        | 仮想マシン        |
+|Automation アカウント |Log Analytics 共同作成者 |Automation アカウント |
+|Automation アカウント |Virtual Machine Contributor  |アカウントのリソース グループ  |
+|Log Analytics ワークスペース  Log Analytics 共同作成者|Log Analytics ワークスペース |
+|Log Analytics ワークスペース |Log Analytics 閲覧者|サブスクリプション|
+|解決策 |Log Analytics 共同作成者 |解決策|
+|仮想マシン |Virtual Machine Contributor |仮想マシン |
+|**仮想マシン上でのアクション** | | |
+|更新スケジュールの実行履歴の表示 ([ソフトウェア更新プログラムの構成マシン実行](/rest/api/automation/softwareupdateconfigurationmachineruns)) |Reader |Automation アカウント |
+|**仮想マシン上でのアクション** |**権限** | |
+|更新スケジュールの作成 ([ソフトウェア更新プログラムの構成](/rest/api/automation/softwareupdateconfigurations)) |Microsoft.Compute/virtualMachines/write |静的 VM リストとリソース グループの場合 |
+|更新スケジュールの作成 ([ソフトウェア更新プログラムの構成](/rest/api/automation/softwareupdateconfigurations)) |Microsoft.OperationalInsights/workspaces/analytics/query/action |Azure 以外の動的リスト使用時のワークスペース リソース ID の場合。|
 
 ## <a name="configure-azure-rbac-for-your-automation-account"></a>Automation アカウントの Azure RBAC を構成する
 

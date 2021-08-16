@@ -1,0 +1,141 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Media Services FAQ
+  description: Azure Media Services についてよく寄せられる質問について回答します。
+  ms.custom: contperf-fy21q4
+  ms.openlocfilehash: e7689af4dd7824fdc764d56269c1bb6394594ef9
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111949173"
+title: Azure Media Services についてよく寄せられる質問
+summary: この記事では、Azure Media についてよく寄せられる質問に回答します。
+sections:
+- name: トラブルシューティング
+  questions:
+  - question: Media Services のトラブルシューティング情報はどこで確認できますか?
+    answer: >
+      同じ問題が他のユーザーにも発生している可能性があります。  そのような質問の一覧が、[トラブルシューティングの質問のコレクション](./questions-collection.md)に関する記事にあります。 これらの質問は、サポート チケットのよくある問題に基づいて定期的に更新されます。 そこで回答が見つからない場合は、サポート チケットを作成してください。
+  - question: エラー コードの意味を調べるにはどうすればよいですか?
+    answer: >
+      次のリファレンスにエラー コードが記載されています: [ストリーミング エンドポイントに関するエラー コード](./stream-streaming-endpoint-error-codes-reference.md)、[ライブ イベントに関するエラー コード](./live-event-error-codes-reference.md)、[ジョブに関するエラー コード](./job-error-codes-reference.md)。  そこで回答が見つからない場合は、サポート チケットを作成してください。
+  - question: アカウントの資格情報をリセットするにはどうすればよいですか?
+    answer: >
+      CLI を使用して、[アカウントの資格情報をリセットする](./account-reset-account-credentials.md)ことができます。
+- name: 全般
+  questions:
+  - question: Azure Media Services とはどのようなものですか?
+    answer: >
+      クラウドベースのプラットフォームである Azure Media Services では、ブロードキャスト品質のビデオ ストリーミングを実現し、アクセス性と配信を強化し、コンテンツを分析するソリューションを構築できます。 アプリ開発者、コール センター、政府機関、またはエンターテイメント会社のいずれであっても、Media Services を利用すると、今日の最も一般的なモバイル デバイスとブラウザーを使用する多くのユーザーに、優れた品質のメディア エクスペリエンスを提供するアプリを作成できます。 Azure Media Services を使い始めるには、「[Azure Media Services v3 の概要](media-services-overview.md)」を参照してください
+- name: リファレンス
+  questions:
+  - question: Media Services の API と SDK はどこで入手できますか?
+    answer: >
+      次の一覧を参照してください。
+
+      - [OpenAPI の仕様 (Swagger)](https://aka.ms/ams-v3-rest-sdk)
+
+      - [Azure CLI](/cli/azure/install-azure-cli)
+
+      - [.NET](https://aka.ms/ams-v3-dotnet-sdk)
+
+      - [Java](https://aka.ms/ams-v3-java-sdk)
+
+      - [Python](https://aka.ms/ams-v3-python-sdk)
+
+      - [Node.js](https://aka.ms/ams-v3-nodejs-sdk)
+
+      - [Go](https://aka.ms/ams-v3-go-sdk)
+
+      - [Ruby](https://aka.ms/ams-v3-ruby-sdk)
+  - question: Media Services のサンプルはどこにありますか?
+    answer: >
+      サンプルの一覧については、「[Media Services v3 のサンプル](samples-overview.md)」を参照してください。
+  - question: Media Services の価格はいくらですか?
+    answer: >
+      [Media Services 価格ガイド](https://azure.microsoft.com/pricing/details/media-services/)に関する記事を参照してください
+  - question: Media Services にはどのようなクォータと制限がありますか?
+    answer: >
+      [Media Services のクォータと制限](limits-quotas-constraints-reference.md)に関する記事を参照してください
+- name: Media Services の使用
+  questions:
+  - question: Media Services のアセットとは何ですか?
+    answer: >
+      Media Services のアセットは、アップロードする各ビデオ ファイルに使用される Azure ストレージ アカウント コンテナーです。  それには、変換や他の操作に使用される一意の識別子があります。  [Media Service v3 のアセット](assets-concept.md)に関する記事を参照してください。
+  - question: Media Services のアセットを作成するにはどうすればよいですか?
+    answer: >
+      メディア ファイルをアップロードして実行し、エンコードやストリーミングなどの操作を行うたびに、メディア ファイルやそのメディア ファイルに関連付けられている他のファイルを格納するためのアセットを作成します。 Azure portal を使用している場合、アセットは自動的に作成されます。 ポータルを使用しないでファイルをアップロードする場合は、最初にアセットを作成する必要があります。  作成方法については、「[アセットを作成する](asset-create-asset-how-to.md)」を参照してください。
+  - question: Media Services の変換とは何ですか?
+    answer: >
+      変換には、メディア ファイルをエンコードまたは分析するための命令が含まれています。 レシピと考えることができます。 1 つのメディア ファイルに複数のエンコード命令を適用できます。  これは、ファイルを変換するジョブによって使用されます。 変換の詳細については、「[Media Services の Transform と Job](transform-jobs-concept.md#transforms)」の「変換」を参照してください。
+  - question: Media Services の変換を作成するにはどうすればよいですか?
+    answer: >
+      変換は、Media Services に利用できる REST、CLI、または SDK を使用して作成できます。  REST または CLI を使用する場合は、[変換を作成する方法](transform-create-transform-how-to.md)に関する記事を参照してください。  SDK を使用する場合は、Azure Samples リポジトリで入手できる [Media Services のサンプル](https://github.com/Azure-Samples?q=media-services&type=&language=&sort=)を参照してください。
+  - question: Media Services のジョブとは何ですか?
+    answer: >
+      ジョブとは、変換を使用してファイルのエンコードまたは分析を始めるために行う要求です。  入力アセットに含まれているファイルを変換するようそれに指示します。  また、出力アセットを作成するか、または既存の出力アセットを使用するかも指示します。  ジョブが完了すると、変換 (エンコード、分析) されたファイルと、それらのファイルに関連付けられている他のファイルが、出力アセットに格納されています。 ジョブの詳細については、「[Media Services の Transform と Job](transform-jobs-concept.md#jobs)」を参照してください。
+  - question: Media Services のジョブを作成するにはどうすればよいですか?
+    answer: >
+      ジョブは、Azure portal、[CLI](job-create-cli-how-to.md)、REST、またはいずれかの SDK を使用して作成できます。 好みの言語での [Media Services のサンプル](https://github.com/Azure-Samples?q=media-services&type=&language=&sort=)を参照してください。
+  - question: エンコードとは何ですか?
+    answer: >
+      Media Services では、エンコードという用語は、デジタル ビデオやデジタル オーディオを含むファイルをある標準形式から別の標準形式に変換するプロセスを表します。変換の目的は、(a) ファイルのサイズを減らしたり、(b) 広範なデバイスやアプリと互換性のある形式を生成したりすることにあります。 このプロセスは、ビデオ圧縮やコード変換とも呼ばれます。 「[Media Services を使用したビデオとオーディオのエンコード](./encode-concept.md)」を参照してください
+  - question: Media Services で使用できるエンコード形式は何ですか?
+    answer: >
+      Media Services Standard Encoder では、一般的なエンコード形式を使用できます。 すべての形式の一覧については、「[Standard Encoder の形式およびコーデック](encode-media-encoder-standard-formats-reference.md)」を参照してください。
+  - question: Media Services を使用して、自動生成されるビットレート ラダーを作成できますか?
+    answer: >
+      はい。  詳細については、「[自動生成されたビットレート ラダーでエンコードする](./encode-autogen-bitrate-ladder.md)」を参照してください。
+  - question: オーディオまたはビデオ ファイルを分析できますか?
+    answer: >
+      はい、できます。 Azure Media Services v3 を使うと、Video Indexer でビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 Media Services v3 アナライザーのプリセットを使用して、それらの分析情報を抽出できます。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。 どのような場合に Video Indexer や Media Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)をご覧ください。
+  - question: Media Services のライブ イベントとは何ですか?
+    answer: >
+      Media Services のライブ イベントとは、ライブ ビデオ フィードを取り込み、RTMPS プロトコルまたはスムーズ ストリーミング経由でそれをブロードキャストするプロセスです。 Media Services のライブ イベントの詳細については、「[Media Services のライブ イベントとライブ出力](live-event-outputs-concept.md)」を参照してください
+  - question: Media Services のライブ イベントを作成するにはどうすればよいですか?
+    answer: >
+      最初に、オンプレミスのエンコーダーを選択します。  [Wirecast](live-event-wirecast-quickstart.md) と [OBS](live-event-obs-quickstart.md) でライブ イベントを作成する例が用意されています。 Media Services のライブ イベントの概要をまず知りたい場合は、「[ライブ イベントの種類](stream-live-streaming-concept.md#live-event-types)」を参照してください。
+  - question: Media Services のライブ イベントでライブ文字起こしを行うにはどうすればよいですか?
+    answer: >
+      Azure Media Services は、さまざまなプロトコルでビデオやオーディオを配信し、テキストも配信します。 MPEG-DASH や HLS/CMAF を使用してライブ ストリームを発行し、その後、ビデオやオーディオと一緒に発行するときには、Microsoft のサービスにより、IMSC 1.1 互換 TTML で文字起こしされ、テキストが配信されます。 ライブ文字起こしの詳細については、「[ライブ文字起こし](live-event-live-transcription-how-to.md)」を参照してください
+  - question: Media Services のストリーミング エンドポイントとは何ですか?
+    answer: >
+      Media Services のストリーミング エンドポイントは、動的な (Just-In-Time の) パッケージおよび配信元サービスを表し、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアントのプレーヤー アプリに直接配信できます。 さらに、ストリーミング エンドポイントは、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。  ストリーミング エンドポイントの詳細については、「[Azure Media Services のストリーミング エンドポイント (配信元)](stream-streaming-endpoint-concept.md)」を参照してください
+  - question: Media Services のストリーミング ロケーターとは何ですか?
+    answer: >
+      クライアントでビデオを再生できるようにするには、ストリーミング ロケーターを作成した後、ストリーミング URL を作成します。 ストリーミング ロケーターは、メディア ファイルの使用方法に関するルールが含まれるストリーミング ポリシーを適用するためにも使用されます。
+  - question: Media Services のストリーミング ロケーターを作成するにはどうすればよいですか?
+    answer: >
+      ストリーミング URL を作成するには、最初にストリーミング ロケーターを作成する必要があります。 その後、ストリーミング エンドポイントのホスト名とストリーミング ロケーターのパスを連結します。  「[ストリーミング ロケーターの作成と URL の構築](create-streaming-locator-build-url.md)」を参照してください。
+  - question: ストリーミング ポリシーとは何ですか?
+    answer: >
+      ストリーミング ポリシーを使用すると、ストリーミング ロケーターのためのストリーミング プロトコルと暗号化オプションを定義できます。 Media Services v3 には、いくつかの定義済みのストリーミング ポリシーが用意されています。 詳細については、「[ストリーミング ポリシー」](./stream-streaming-policy-concept.md)を参照してください。
+  - question: Media Services のストリーミング ポリシーを作成するにはどうすればよいですか?
+    answer: >
+      最初に使用できる定義済みのポリシーの一覧については、「[ストリーミング ポリシー](./stream-streaming-policy-concept.md)」を参照してください。
+  - question: 動的暗号化を使用してメディア コンテンツを配信するにはどうすればよいですか?
+    answer: >
+      動的暗号化を使用すると、メディアがコンピューターから離れてから、格納、処理、配信されるまでの全過程を、セキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 「[Media Services 動的暗号化を使用してコンテンツを保護する](./drm-content-protection-concept.md)」を参照してください。
+  - question: Media Services のリソースを監視するにはどうすればよいですか?
+    answer: >
+      Media Services のリソースで起きていることを追跡するには、Azure Monitor を使用します。  詳細については、「[Media Services の監視](./monitoring/monitor-media-services.md)」を参照してください。 方法のガイドには、「[Media Services のメトリックを監視する](./monitoring/media-services-metrics-howto.md)」と「[Media Services 診断ログの監視](./monitoring/media-services-diagnostic-logs-howto.md)」が含まれます。
+  - question: Media Services のライブ イベントを監視するにはどうすればよいですか?
+    answer: >
+      サービスをポーリングしないでライブ イベントを監視するには、[Azure Event Grid](./monitoring/reacting-to-media-services-events.md) を使用します。 方法のガイドには、「[Azure portal を使用した Event Grid による Media Services イベントの作成と監視](./monitoring/monitor-events-portal-how-to.md)」と「[Azure CLI を使用した Event Grid による Media Services イベントの作成と監視](./monitoring/job-state-events-cli-how-to.md)」が含まれます。
+  - question: Media Services ではどのビデオ プレーヤーを使用できますか?
+    answer: >
+      Media Services は、Azure Media Player、Shaka、Video.js で動作します。 [Azure Media Player のドキュメント](../azure-media-player/azure-media-player-overview.md)、「[Azure Media Services で Shaka プレーヤーを使用する方法](./player-shaka-player-how-to.md)」、または [Azure Media Services で Video.js プレーヤーを使用する方法](./player-media-players-concept.md)に関する記事を参照してください。
+  - question: 高可用性は Media Services でサポートされますか?
+    answer: >
+      Media Services と高可用性の詳細については、「[Media Services とビデオ オン デマンド(VOD) を使用した高可用性](./architecture-high-availability-encoding-concept.md)」を参照してください。
+  - question: Media Services のサンプル アーキテクチャはどこで見つかりますか?
+    answer: >
+      簡単です。 「[Media Services アーキテクチャ](./architecture-concept.md)」を参照するか、Azure アーキテクチャ センターをご覧ください。
+  - question: Media Services v2 から Media Services v3 に移行するにはどうすればよいですか?
+    answer: >
+      [v2 から v3 への移行に関する包括的なガイド](./migrate-v-2-v-3-migration-introduction.md)が作成されています。  移行のエクスペリエンスとニーズについて非常に関心があるので、GitHub のイシューまたはサポート チケットを使用してフィードバックをお寄せください。
+  - question: マネージド ID を使用して Media Services へのデータを暗号化するにはどうすればよいですか?
+    answer: "Media Services と Key Vault をペアにしてデータを暗号化するために CLI を使用する方法については、「[チュートリアル: Key Vault キーを使用して Media Services アカウントにデータを暗号化する](security-encrypt-data-managed-identity-cli-tutorial.md)」を参照してください。  \n"
+  - question: マネージド ID を使用して、制限されたストレージ アカウントへのアクセス権を Media Services に付与するにはどうすればよいですか?
+    answer: '不明な IP アドレスからの要求をブロックするように構成されているストレージ アカウントにアクセスする必要がある場合は、「[チュートリアル: Media Services マネージド ID を使用してストレージにアクセスする](security-access-storage-managed-identity-cli-tutorial.md)」の手順のようにしてください。'

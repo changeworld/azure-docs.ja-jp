@@ -17,14 +17,14 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f52e0b82b8a5a06aec322456253eb044141b75
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 85c6d8520938ffc859a7116d1dc9e61cb26534e4
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794289"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030559"
 ---
-# <a name="sign-ins-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
+# <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 
 IT 管理者は、IT 環境がどのように動作しているかを知る必要があります。 システムの正常性に関する情報を使用すると、潜在的な問題に対処する必要があるかどうか、およびその方法を評価できます。 
 
@@ -39,7 +39,7 @@ IT 管理者は、IT 環境がどのように動作しているかを知る必�
 
 ## <a name="what-can-you-do-with-it"></a>できること
 
-サインイン ログを見れば、たとえば次のことが分かります。
+サインイン ログを見れば、例えば次のことが分かります。
 
 - ユーザーのサインインにどのようなパターンがあるか。
 
@@ -78,7 +78,7 @@ Azure portal でログにアクセスする方法はいくつかあります。 
 
 ![サインイン ログを開く](./media/concept-sign-ins/sign-ins-logs-menu.png)
 
-こちらのリンク ([https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)) から直接サインイン ログにアクセスすることもできます。
+また、次のリンクからサインイン ログに直接アクセスできます: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
 
 
 ## <a name="what-is-the-default-view"></a>既定の表示項目
@@ -214,7 +214,7 @@ Azure portal でログにアクセスする方法はいくつかあります。 
 
 ## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
 
-**[ダウンロード]** オプションをクリックして、最新の 250,000 件のレコードを含む CSV または JSON ファイルを作成します。 Azure portal の外部で操作する場合は、まず[サインイン データをダウンロード](quickstart-download-sign-in-report.md)します。  
+**[ダウンロード]** オプションをクリックして、最新の 250,000 件のレコードを含む CSV または JSON ファイルを作成します。 Azure portal の外部で操作する場合は、まず[サインイン データをダウンロード](./howto-download-logs.md)します。  
 
 ![ダウンロード](./media/concept-sign-ins/71.png "ダウンロード")
 
@@ -328,7 +328,6 @@ Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理セン�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [サインイン アクティビティ レポートのエラー コード]()
 * [Azure AD のデータ保有ポリシー](reference-reports-data-retention.md)
 * [Azure AD のレポート待機時間](reference-reports-latencies.md)
 * [サインイン レポート中の Microsoft ファースト パーティー アプリケーション](/troubleshoot/azure/active-directory/verify-first-party-apps-sign-in#application-ids-for-commonly-used-microsoft-applications)

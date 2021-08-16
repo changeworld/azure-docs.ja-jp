@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 3a6afa0fadf5a84ad938b0b0cec321c0e17adeff
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e26434ae1ff2f9d8829d3665807f7d9916233833
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317525"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792240"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Azure Migrate: Server Migration を使用して ExpressRoute 経由でデータをレプリケートする
 
@@ -87,7 +87,7 @@ VMware 仮想マシンを Azure に移行するエージェントレス方式で
 1. **[アップグレードの確認]** で、アカウントの名前を入力します。
 1. ページの下部にある **[アップグレード]** を選択します。
 
-   ![ストレージ アカウントのアップグレード方法を示すスクリーンショット。](./media/replicate-using-expressroute/upgrade-storage-account.png)
+   ![ストレージ アカウントのアップグレード方法を示すスクリーンショット。](./media/replicate-using-expressroute/upgrade-storage-account.png) 
 
 ### <a name="create-a-private-endpoint-for-the-storage-account"></a>ストレージ アカウントのプライベート エンドポイントを作成する
 
@@ -148,7 +148,27 @@ VMware 仮想マシンを Azure に移行するエージェントレス方式で
     1. **[レコード セットの追加]** ページで、FQDN とプライベート IP のエントリを A タイプのレコードとして追加します。
 
 > [!Important]
-> ソース環境からストレージ アカウントのプライベート エンドポイントのプライベート IP アドレスを解決するために、追加の DNS 設定が必要になる場合があります。 必要な DNS 構成については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)」を参照してください。
+> ソース環境からストレージ アカウントのプライベート エンドポイントのプライベート IP アドレスを解決するために、追加の DNS 設定が必要になる場合があります。 必要な DNS 構成については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)」を参照してください。  
+
+### <a name="verify-network-connectivity-to-the-storage-account"></a>ストレージ アカウントへのネットワーク接続の検証
+
+プライベート リンク接続を検証するには、Azure Migrate アプライアンスのホストとなるオンプレミス VM からキャッシュ ストレージ アカウントのリソース エンドポイントの DNS 解決を実行し、プライベート IP アドレスに解決されることを確認します。
+
+キャッシュ ストレージ アカウントの DNS 解決の具体的な例 
+
+- nslookup _storageaccountname_.blob.core.windows.net を入力します。 <storage-account-name> は、Azure Migrate で作成するキャッシュ ストレージ アカウントの名前に置き換えてください。  
+
+    このようなメッセージが返されます。  
+
+   ![DNS 解決の例](./media/how-to-use-azure-migrate-with-private-endpoints/dns-resolution-example.png)
+
+- ストレージ アカウントに対応する 10.1.0.5 というプライベート IP アドレスが返されます。 このアドレスは、ストレージ アカウントのプライベート エンドポイントに属している必要があります。 
+
+DNS 解決が正しくない場合は、これらの手順を実行します。  
+
+- **ヒント:** ソース環境の DNS レコードを手動で更新するには、ストレージ アカウントの FQDN リンク _storageaccountname_.blob.core.windows.net および関連付けられているプライベート IP アドレスを使用して、オンプレミス アプライアンス上の DNS ホスト ファイルを編集します。 この方法は、テスト目的でのみ推奨されます。 
+- カスタム DNS を使用している場合は、カスタム DNS の設定を確認し、DNS 構成が正しいことを確認します。 ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](../private-link/private-endpoint-overview.md#dns-configuration)を参照してください。 
+- Azure 提供の DNS サーバーを使用する場合は、このガイドを参考に、[、さらに ](./troubleshoot-network-connectivity.md#validate-the-private-dns-zone) のトラブルシューティングを行います 。   
 
 ## <a name="replicate-data-by-using-an-expressroute-circuit-with-microsoft-peering"></a>ExpressRoute 回線を使用して Microsoft ピアリングでデータをレプリケートする
 
@@ -181,7 +201,7 @@ Microsoft ピアリングまたは既存のパブリック ピアリング ド�
 1. システム ユーザーのコンテキストにアクセスするための [PsExec ツール](/sysinternals/downloads/psexec)をダウンロードします。
 1. 次のコマンド行を実行して、システム ユーザーのコンテキストで Internet Explorer を開きます: `psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`。
 1. Internet Explorer でプロキシの設定を追加します。
-1. バイパスの一覧に、Azure Storage の URL (*.blob.core.windows.net) を追加します。
+1. バイパスの一覧に、*.blob.core.windows.net、*.hypervrecoverymanager.windowsazure.com、*.backup.windowsazure.com という URL を追加します。 
 
 上記のバイパス ルールにより、レプリケーション トラフィックは ExpressRoute を経由し、管理通信はインターネットのプロキシを経由するようになります。
 

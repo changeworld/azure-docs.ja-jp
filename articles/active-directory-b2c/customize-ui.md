@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ecece3a00a788b67f6c831804bf5b00372fef93d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba24afb329b5d588ab7a71976f56f50eb475b04b
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99056824"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575410"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -36,6 +36,9 @@ Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー イン�
 ## <a name="overview"></a>概要
 
 Azure AD B2C にはいくつかの組み込みテンプレートが用意されています。これらを使用すると、ユーザー エクスペリエンスのページにプロフェッショナルな外観を提供できます。 これらのページ テンプレートは、[会社のブランド](#company-branding)機能を使用して、独自のカスタマイズの開始点としても使用できます。
+
+> [!NOTE]
+> クラシック テンプレートでサポートされているブラウザーには、Internet Explorer、Microsoft Edge、Google Chrome、Mozilla Firefox、Safari の現在および以前のバージョンが含まれます。 Ocean Blue テンプレートと Slate Gray テンプレートでは、Internet Explorer 11 や 10 などの古いブラウザー バージョンのサポートが制限される場合があります。サポートするブラウザーでアプリケーションをテストすることをお勧めします。
 
 ### <a name="ocean-blue"></a>オーシャン ブルー
 

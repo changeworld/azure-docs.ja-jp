@@ -17,7 +17,7 @@
 - name: Azure での Red Hat Enterprise Java
   items:
     - name: Azure での JBoss EAP
-      href: /azure/developer/java/ee/jboss-on-azure
+      href: 'https://docs.microsoft.com/azure/developer/java/ee/jboss-on-azure'
     - name: VM での JBoss EAP と RHEL
       href: jboss-eap-on-rhel.md
     - name: JBoss EAP マーケットプレース イメージ
@@ -27,6 +27,6 @@
     - name: JBoss EAP を Azure VM に移行する
       href: jboss-eap-on-azure-migration.md
     - name: JBoss EAP を App Service に移行する
-      href: ./overview.md
+      href: 'https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview'
     - name: VM での WildFly と CentOS
       href: wildfly-on-centos.md

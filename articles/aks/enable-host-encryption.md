@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) でホストベースの暗号化を有効
 description: Azure Kubernetes Service (AKS) クラスターでホストベースの暗号化を構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 04/26/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41f0a9beda1c72b778d4f238cc5aa629e10b6d7e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 03/03/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 3d5009c164ab09d3977bb15d85b166a31c1f1a0b
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094278"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754319"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のホストベースの暗号化
 
@@ -26,9 +26,7 @@ ms.locfileid: "110094278"
 
 ### <a name="prerequisites"></a>前提条件
 
-
-- CLI 拡張機能 v2.23 以降のバージョンがインストールされていることを確認します。
-
+- Azure CLI バージョン 2.23.0 以降
 
 ### <a name="limitations"></a>制限事項
 

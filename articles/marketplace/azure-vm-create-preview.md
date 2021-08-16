@@ -1,20 +1,20 @@
 ---
 title: Azure Marketplace での仮想マシン オファー プレビュー対象ユーザーの追加
-description: Azure Marketplace で、仮想マシン オファーのプレビュー対象ユーザーを追加する方法について説明します。
+description: Azure Marketplace での仮想マシン オファーのプレビュー対象ユーザーを追加します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 854d0fa9b34d495f03a0c3c6203ceb227e4712d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ca53a950aeaaf888dead6c1e134f63fe7cea04c
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629514"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111524960"
 ---
-# <a name="how-to-add-a-preview-audience-for-a-virtual-machine-offer"></a>仮想マシン オファーのプレビュー対象ユーザーを追加する方法
+# <a name="add-a-preview-audience-for-a-virtual-machine-offer"></a>仮想マシン オファーのプレビュー対象ユーザーを追加する
 
 **[プレビュー]** ページ (パートナー センターの左側のナビゲーション メニューから選択) で、コマーシャル マーケットプレースの幅広い対象ユーザーに公開する前にオファーを検証するために、限られた **プレビュー対象ユーザー** を選択します。
 

@@ -3,16 +3,16 @@ title: リソース、サブスクリプション、管理グループ、セキ�
 description: サブスクリプションまたは管理グループからのセキュリティの推奨事項を除外する規則を作成し、セキュリティ スコアに対する影響を防ぐ方法について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 04/21/2021
+ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f125b94725ba9d34aa0962ed38b16fb474dc5b2b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 01be1037b38e2991a2266c37dfd3ca026ca874ff
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140247"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846430"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>セキュリティ スコアからのリソースと推奨事項の除外 
 
@@ -175,6 +175,9 @@ Azure Resource Graph (ARG) を使用すると、堅牢なフィルター処理�
 
 ## <a name="faq---exemption-rules"></a>FAQ - 除外規則
 
+- [複数のポリシー イニシアチブに 1 つの推奨事項がある場合はどうなりますか。](#what-happens-when-one-recommendation-is-in-multiple-policy-initiatives)
+- [除外をサポートしていない推奨事項はありますか。](#are-there-any-recommendations-that-dont-support-exemption)
+
 ### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>複数のポリシー イニシアチブに 1 つの推奨事項がある場合はどうなりますか。
 
 場合によっては、複数のポリシー イニシアチブにセキュリティの推奨事項が表示されることがあります。 同じ推奨事項の複数のインスタンスが同じサブスクリプションに割り当てられていて、その推奨設定の除外対象を作成した場合は、編集権限があるすべてのイニシアチブに影響します。 
@@ -190,6 +193,24 @@ Azure Resource Graph (ARG) を使用すると、堅牢なフィルター処理�
 - 両方のイニシアチブに対する十分なアクセス許可がない場合は、代わりに次のメッセージが表示されます。
 
     *すべてのポリシー イニシアチブに適用の除外を適用するにはアクセス許可が制限されているために、除外は十分なアクセス許可を持つイニシアチブに対してのみ作成されます。*
+
+### <a name="are-there-any-recommendations-that-dont-support-exemption"></a>除外をサポートしていない推奨事項はありますか。
+
+以下の推薦事項では、例外がサポートされていません。
+
+- コンテナーの CPU とメモリの制限を強制する必要がある
+- 特権コンテナーの使用を避ける
+- コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある
+- コンテナーは許可されたポートでのみリッスンする必要がある
+- サービスは許可されたポートでのみリッスンする必要がある
+- コンテナーで最小限の特権を持つ Linux 機能を適用する必要がある
+- コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある
+- 特権エスカレーションを含むコンテナーは避ける必要がある
+- コンテナーをルート ユーザーとして実行しない
+- ホスト ネットワークとポートの使用を制限する必要がある
+- 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある
+- ポッドの HostPath ボリューム マウントの使用を既知のリストに制限して、侵害されたコンテナーからのノード アクセスを制限する必要がある
+- コンテナーの AppArmor プロファイルのオーバーライドまたは無効化を制限する必要がある
 
 
 ## <a name="next-steps"></a>次の手順

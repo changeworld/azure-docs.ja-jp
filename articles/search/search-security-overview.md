@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: d4310c724707548cd55df5591504736d8f3c3857
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 48aa91d4ba68b1a69e46019ced7c5bbb69d9029f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460054"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786793"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure Cognitive Search のセキュリティの概要
 
@@ -146,15 +146,7 @@ Azure Cognitive Search での暗号化は、接続時および転送時に開始
 
 ### <a name="double-encryption"></a>二重暗号化
 
-Azure Cognitive Search における二重暗号化は、CMK の拡張機能です。 これは、(1 回目は CMK、次はサービス マネージド キーによって) 二重に暗号化される、データ ディスクに書き込まれる長期的な保存と一時ディスクに書き込まれる短期的な保存におよぶ、広範囲にわたる暗号化です。 2020 年 8 月 1 日より前と後の CMK では、さらに一時ディスクに保存されているデータも暗号化されるようになったことが異なり、これが Azure Cognitive Search の二重暗号化機能となっています。
-
-二重暗号化は、8 月 1 日より後に作成された、次のリージョンの新しいサービスで使用できます。
-
-+ 米国西部 2
-+ 米国東部
-+ 米国中南部
-+ US Gov バージニア州
-+ US Gov アリゾナ
+Azure Cognitive Search における二重暗号化は、CMK の拡張機能です。 これは、(1 回目は CMK、次はサービス マネージド キーによって) 二重に暗号化される、データ ディスクに書き込まれる長期的な保存と一時ディスクに書き込まれる短期的な保存におよぶ、広範囲にわたる暗号化です。 二重暗号化は、特定の日付より後に作成されたサービスに実装されます。 詳細については、「[Double encryption](search-security-manage-encryption-keys.md#double-encryption) (二重暗号化)」を参照してください。
 
 ## <a name="security-management"></a>セキュリティ管理
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 5e500eca601d21f106dbe31236e9b5c2aa76b0d2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2483a207344894489992f38d08b37126d7eded22
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801929"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652240"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure Virtual Machines のトラステッド起動 (プレビュー)
 
@@ -38,13 +38,17 @@ Azure からは、[第 2 世代](generation-2.md)の VM のセキュリティを
 
 ## <a name="public-preview-limitations"></a>パブリック プレビューの制限事項
 
-**サイズのサポート**: 次のものを除くすべての [第 2 世代](generation-2.md) VM のサイズ。
-
-- Lsv2 シリーズ 
-- M シリーズ 
-- Mv2 シリーズ 
-- NDv4 シリーズ 
-- NVv4 シリーズ
+**サイズのサポート**:
+- B シリーズ
+- Dav4 シリーズ、Dasv4 シリーズ
+- DCsv2 シリーズ
+- Dv4 シリーズ、Dsv4 シリーズ、Dsv3 シリーズ、Dsv2 シリーズ
+- Ddv4 シリーズ、Ddsv4 シリーズ
+- Fsv2 シリーズ
+- Eav4 シリーズ、Easv4 シリーズ
+- Ev4 シリーズ、Esv4 シリーズ、Esv3 シリーズ
+- Edv4 シリーズ、Edsv4 シリーズ
+- Lsv2 シリーズ
 
 **OS のサポート**:
 - Redhat Enterprise Linux 8.3
@@ -58,8 +62,11 @@ Azure からは、[第 2 世代](generation-2.md)の VM のセキュリティを
 - Windows 10 (Enterprise マルチセッション)
 
 **[地域]**: 
+- 米国中部
+- 米国東部 2
 - 米国中南部
 - 北ヨーロッパ
+- 西ヨーロッパ
 
 **価格**: 既存の VM の価格への追加料金はかかりません。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 05/05/2021
 ms.author: allensu
-ms.openlocfilehash: 08064d4d9b08a35fe59673478faa001a13d50d0f
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: f0c8d42538cd437d4817f75552133efca96b8d6e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804486"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451824"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>アウトバウンド接続に送信元ネットワーク アドレス変換 (SNAT) を使用する
 
@@ -46,13 +46,14 @@ ms.locfileid: "108804486"
 
 アウトバウンド規則の詳細については、[アウトバウンド規則](outbound-rules.md)に関するページを参照してください。
 
-
+>[!Important]
+> バックエンド プールが IP アドレス別に構成されている場合、既定のアウトバウンドが有効な Basic ロード バランサーとして動作します。 既定でセキュリティで保護された構成の場合と、アウトバウンドのニーズが厳しいアプリケーションの場合は、バックエンド プールを NIC 別に構成します。
 
 ## <a name="associating-a-vnet-nat-to-the-subnet"></a>サブネットへの VNet NAT の関連付け
 
 Virtual Network NAT を使用すると、仮想ネットワークでアウトバウンド専用のインターネット接続が簡単になります。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 ロード バランサーや、仮想マシンに直接アタッチされたパブリック IP アドレスがなくても、アウトバウンド接続が可能となります。 NAT はフル マネージドで、高い回復性を備えています。
 
-VNet NAT は、拡張性および信頼性が高く、SNAT ポートの枯渇の心配がないため、アウトバウンド接続に最適な方法です。
+VNet NAT は、拡張性および信頼性が高く、SNAT ポートの枯渇に関する同じ心配がないため、アウトバウンド接続に最適な方法です。
 
 Azure Virtual Network NAT の詳細については、「[Azure Virtual Network NAT とは](../virtual-network/nat-overview.md)」を参照してください。
 
@@ -60,7 +61,7 @@ Azure Virtual Network NAT の詳細については、「[Azure Virtual Network N
 
  | Associations | Method | IP プロトコル |
  | ---------- | ------ | ------------ |
- | パブリック ロード バランサーまたはスタンドアロン | [SNAT (送信元ネットワーク アドレス変換)](#snat) </br> は使用されません。 | TCP (伝送制御プロトコル) </br> UDP (ユーザー データグラム プロトコル) </br> ICMP (インターネット制御メッセージ プロトコル) </br> ESP (カプセル化セキュリティ ペイロード) |
+ | VM の NIC 上のパブリック IP | [SNAT (送信元ネットワーク アドレス変換)](#snat) </br> は使用されません。 | TCP (伝送制御プロトコル) </br> UDP (ユーザー データグラム プロトコル) </br> ICMP (インターネット制御メッセージ プロトコル) </br> ESP (カプセル化セキュリティ ペイロード) |
 
  すべてのトラフィックは、仮想マシンのパブリック IP アドレス (インスタンス レベル IP) から要求元のクライアントに戻ります。
  

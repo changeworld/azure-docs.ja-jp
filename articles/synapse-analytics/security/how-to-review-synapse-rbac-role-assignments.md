@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9065ca9c7638f3d2bda36e4831b81963936f4b45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acc1ed8cece087628f6f8deb41696acefe124874
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102157"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784036"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>Synapse RBAC ロールの割り当てを確認する方法
 
@@ -24,7 +24,7 @@ Synapse RBAC ロールを使用してユーザー、グループ、その他の�
 任意の Synapse RBAC ロールを使用して、アクセス権のないオブジェクトの割り当てを含めたすべてのスコープの Synapse RBAC ロールの割り当てを一覧表示できます。 Synapse RBAC アクセスを許可できるのは、Synapse 管理者だけです。  
 
 >[!Note]
->ゲスト ユーザー (別の AD テナントのユーザー) は、Synapse 管理者ロールが割り当てられている場合でも、ロールの割り当てを表示または管理できません。    
+> ゲスト ユーザー (別の AD テナントのユーザー) も、Synapse 管理者ロールが割り当てられた後は、ロールの割り当てを表示または管理できるようになります。    
 
 ## <a name="open-synapse-studio"></a>Synapse Studio を開く  
 

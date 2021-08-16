@@ -14,13 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: deaa7834d4aa69ccf161b58f566dbc82ea71ad78
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: ab57e66ff37fb31a91a1949896a4e7736669d6c6
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755731"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078925"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM に SQL Server の可用性グループを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "108755731"
 この記事では Azure クイックスタート テンプレートを使用して可用性グループ環境を構成しますが、[Azure portal](availability-group-azure-portal-configure.md) を使用して構成するか、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
 
 > [!NOTE]
-> これで Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)に関するページを参照してください。 
+> これで Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、「[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)」を参照してください。 
  
 
 ## <a name="prerequisites"></a>前提条件 
@@ -88,7 +88,11 @@ SQL Server VM を *SqlVirtualMachineGroups* リソース グループに追加�
 >[!NOTE]
 > テンプレートのデプロイ中に指定された資格情報は、デプロイの期間中のみ保存されます。 デプロイが完了した後、これらのパスワードは削除されます。 クラスターに SQL Server VM をさらに追加する場合、それらを再度指定するように求められます。 
 
+## <a name="configure-quorum"></a>クォーラムを構成する
 
+ディスク監視は最も回復性の高いクォーラム オプションですが、Azure 共有ディスクが必要で、これにより可用性グループに制限がいくつか適用されます。 そのため、クラウド監視は、Azure VM 上で SQL Server 向け可用性グループをホストするクラスターに推奨されるクォーラム ソリューションです。 
+
+クラスターに多数の投票がある場合は、ビジネス ニーズに最適な[クォーラム ソリューション](hadr-cluster-quorum-configure-how-to.md)を構成します。 詳細については、[SQL Server VM でのクォーラム](hadr-windows-server-failover-cluster-overview.md#quorum)に関する記事をご覧ください。 
 
 ## <a name="validate-cluster"></a>クラスターを検証する 
 
@@ -223,10 +227,10 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次の記事を参照してください。 
+詳細については、以下をご覧ください。
 
 * [SQL Server VM の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [SQL Server VM の FAQ](frequently-asked-questions-faq.md)
+* [SQL Server VM の FAQ](frequently-asked-questions-faq.yml)
 * [SQL Server VM の価格ガイダンス](pricing-guidance.md)
 * [SQL Server VM のリリース ノート](../../database/doc-changes-updates-release-notes.md)
 * [SQL Server VM のライセンス モデルの切り替え](licensing-model-azure-hybrid-benefit-ahb-change.md)

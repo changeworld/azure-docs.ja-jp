@@ -4,10 +4,6 @@
   items:
     - name: Azure Arc について
       href: overview.md
-- name: サンプル
-  items:
-    - name: Azure Resource Graph クエリ
-      href: ./resource-graph-samples.md
 - name: Arc 対応サーバー >
   href: ./servers/overview.md
 - name: Arc 対応 Kubernetes >

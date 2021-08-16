@@ -2,13 +2,13 @@
 title: Azure Monitor リソース ログでサポートされているサービスとカテゴリ
 description: Azure Monitor のリファレンス - Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
-ms.date: 03/30/2021
-ms.openlocfilehash: b9bac212a8be040349a8d78c64d7beab291e1f9e
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.date: 05/26/2021
+ms.openlocfilehash: b45e478b11290002cb2445b1a57662bacba407dd
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016024"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534429"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
 
@@ -76,6 +76,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
+|Audit|Audit|はい|
 |HttpRequest|HTTP 要求|Yes|
 
 
@@ -202,6 +203,13 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |ChatOperational|運用チャット ログ|いいえ|
 |SMSOperational|運用 SMS ログ|いいえ|
 |使用法|使用法レコード|いいえ|
+
+
+## <a name="microsoftconnectedvehicleplatformaccounts"></a>Microsoft.ConnectedVehicle/platformAccounts
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ログ|MCVP ログ|はい|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
@@ -451,6 +459,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |EventRoutesOperation|EventRoutesOperation|いいえ|
 |ModelsOperation|ModelsOperation|いいえ|
 |QueryOperation|QueryOperation|いいえ|
+|ResourceProviderOperation|ResourceProviderOperation|はい|
 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
@@ -465,6 +474,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |PartitionKeyRUConsumption|PartitionKeyRUConsumption|いいえ|
 |PartitionKeyStatistics|PartitionKeyStatistics|いいえ|
 |QueryRuntimeStatistics|QueryRuntimeStatistics|いいえ|
+|TableApiRequests|TableApiRequests|はい|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
@@ -616,7 +626,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |KeyDeliveryRequests|キー配信要求|いいえ|
 
 
-## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -654,6 +664,14 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |---|---|---|
 |FrontdoorAccessLog|Frontdoor アクセス ログ|いいえ|
 |FrontdoorWebApplicationFirewallLog|Frontdoor Web アプリケーション ファイアウォール ログ|いいえ|
+
+
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|いいえ|
+|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|いいえ|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups
@@ -921,6 +939,19 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |BigDataPoolAppsEnded|ビッグ データ プール アプリケーション終了|いいえ|
 
 
+## <a name="microsoftsynapseworkspaceskustopools"></a>Microsoft.Synapse/workspaces/kustoPools
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|コマンド|コマンド|はい|
+|FailedIngestion|失敗した取り込み操作|はい|
+|IngestionBatching|インジェスト バッチ処理|はい|
+|クエリ|クエリ|はい|
+|SucceededIngestion|成功した取り込み操作|はい|
+|TableDetails|テーブル詳細|はい|
+|TableUsageStatistics|テーブルの使用状況に関する統計情報|はい|
+
+
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -956,7 +987,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |AppServiceEnvironmentPlatformLogs|Azure App Service Environment のプラットフォーム ログ|いいえ|
 
 
-## <a name="microsoftwebsites"></a>microsoft.web/sites
+## <a name="microsoftwebsites"></a>Microsoft.Web/sites
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|

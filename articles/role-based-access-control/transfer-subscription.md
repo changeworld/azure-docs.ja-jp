@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 366692113872856852fd933ca32ab51ca608de14
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a12f3ca25df2d4473361e0a1ef596384813dc6a8
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291282"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854740"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
@@ -94,7 +94,7 @@ ms.locfileid: "108291282"
 
 - [Azure Cloud Shell の Bash](../cloud-shell/overview.md) または [Azure CLI](/cli/azure)
 - ソース ディレクトリ内の移転するサブスクリプションのアカウント管理者
-- ターゲット ディレクトリの[所有者](built-in-roles.md#owner) ロール
+- ディレクトリを変更するユーザーのソース ディレクトリおよびターゲット ディレクトリ内のユーザー アカウント
 
 ## <a name="step-1-prepare-for-the-transfer"></a>手順 1:移転を準備する
 
@@ -252,7 +252,7 @@ ms.locfileid: "108291282"
 1. [az account show](/cli/azure/account#az_account_show) を使用して、サブスクリプション ID を取得します。
 
     ```azurecli
-    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
+    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"//')
     ```
 
 1. [az graph](/cli/azure/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します。

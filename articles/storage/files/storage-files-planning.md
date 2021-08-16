@@ -8,12 +8,12 @@ ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: be7e5b1f9721cc65c2f9b371becf8b4c82fb37b4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7b1e8ba6ed5f3ffe4acebfb5bb3047ebb945e40f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759770"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477501"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -57,7 +57,7 @@ Azure ファイル共有には、ストレージ アカウントのパブリッ�
 
 Azure ファイル共有へのアクセスのブロックを解除するための次の主な 2 つのオプションがあります。
 
-- 組織のオンプレミス ネットワークに対してポート 445 のブロックを解除します。 Azure ファイル共有には、SMB 3.0 や FileREST API などのインターネットで安全なプロトコルを使用して、パブリック エンドポイント経由でのみ外部からアクセスできます。 これが、オンプレミスから Azure ファイル共有にアクセスする最も簡単な方法です。これは、組織の送信ポート規則の変更のほかに、高度なネットワーク構成が必要ではないためです。しかし、SMB のレガシおよび非推奨バージョンの SMB (つまり、SMB 1.0) を削除することをお勧めします。 これを行う方法については、「[Windows/Windows Server のセキュリティ保護](storage-how-to-use-files-windows.md#securing-windowswindows-server)」と「[Linux のセキュリティ保護](storage-how-to-use-files-linux.md#securing-linux)」を参照してください。
+- 組織のオンプレミス ネットワークに対してポート 445 のブロックを解除します。 Azure ファイル共有には、SMB 3.x や FileREST API などのインターネットで安全なプロトコルを使用して、パブリック エンドポイント経由でのみ外部からアクセスできます。 これが、オンプレミスから Azure ファイル共有にアクセスする最も簡単な方法です。これは、組織の送信ポート規則の変更のほかに、高度なネットワーク構成が必要ではないためです。しかし、SMB のレガシおよび非推奨バージョンの SMB (つまり、SMB 1.0) を削除することをお勧めします。 これを行う方法については、「[Windows/Windows Server のセキュリティ保護](storage-how-to-use-files-windows.md#securing-windowswindows-server)」と「[Linux のセキュリティ保護](storage-how-to-use-files-linux.md#securing-linux)」を参照してください。
 
 - ExpressRoute または VPN 接続経由で Azure ファイル共有にアクセスします。 ネットワーク トンネル経由で Azure ファイル共有にアクセスする場合、SMB トラフィックが組織の境界を通過しないため、オンプレミスのファイル共有のように Azure ファイル共有をマウントすることができます。   
 
@@ -66,6 +66,9 @@ Azure ファイル共有へのアクセスのブロックを解除するため�
 - **ExpressRoute、サイト間、またはポイント対サイト VPN を使用したネットワーク トンネリング**:仮想ネットワークへのトンネリングでは、ポート 445 がブロックされている場合でも、オンプレミスから Azure ファイル共有にアクセスできます。
 - **プライベート エンドポイント**:プライベート エンドポイントでは、仮想ネットワークのアドレス空間内から、ストレージ アカウントに専用 IP アドレスが提供されます。 これにより、Azure Storage クラスターによって所有されているすべての IP アドレス範囲に対して、オンプレミスのネットワークを開くことなくネットワーク トンネリングを行うことができます。 
 - **DNS 転送**:オンプレミスの DNS を構成して、ストレージ アカウントの名前 (パブリック クラウド リージョンの `storageaccount.file.core.windows.net`) を解決し、プライベート エンドポイントの IP アドレスに解決するようにします。
+
+> [!Important]  
+> 複数のネットワーク ルーティング オプションが、Azure Files によってサポートされています。 既定のオプションである Microsoft ルーティングは、Azure Files のすべての構成で動作します。 インターネット ルーティング オプションでは、AD ドメイン参加シナリオまたは Azure File Sync はサポートされていません。
 
 Azure ファイル共有のデプロイに関連するネットワークを計画する場合は、「[Azure Files のネットワークに関する考慮事項](storage-files-networking-overview.md)」を参照してください。
 
@@ -77,9 +80,9 @@ Azure Files では、2 種類の暗号化がサポートされています。転
 > [!IMPORTANT]
 > このセクションでは、SMB 共有の転送中の暗号化について詳しく取り上げます。 NFS 共有による転送中の暗号化の詳細については、「[セキュリティ](storage-files-compare-protocols.md#security)」を参照してください。
 
-既定では、すべての Azure ストレージ アカウントで転送中の暗号化が有効になっています。 つまり、SMB 経由でファイル共有をマウントするか、または FileREST プロトコル (Azure portal、PowerShell/CLI、Azure SDK など) 経由でファイル共有にアクセスすると、Azure Files では、暗号化または HTTPS が設定されている SMB 3.0 以上で作成された接続のみが許可されます。 SMB 3.0 をサポートしていないクライアント、または SMB 3.0 をサポートしているが、SMB 暗号化をサポートしていないクライアントは、転送中の暗号化が有効になっている場合は Azure ファイル共有をマウントできません。 どのオペレーティング システムが暗号化付き SMB 3.0 をサポートしているかの詳細については、[Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md)、および [Linux](storage-how-to-use-files-linux.md) に関する当社の詳細なドキュメントを参照してください。 PowerShell、CLI、および SDK の現在のバージョンはすべて HTTPS をサポートしています。  
+既定では、すべての Azure ストレージ アカウントで転送中の暗号化が有効になっています。 つまり、SMB 経由でファイル共有をマウントするか、または FileREST プロトコル (Azure portal、PowerShell/CLI、Azure SDK など) 経由でファイル共有にアクセスすると、Azure Files では、暗号化または HTTPS が設定されている SMB 3.x 以上で作成された接続のみが許可されます。 SMB 3.x をサポートしていないクライアント、または SMB 3.x をサポートしているが、SMB 暗号化をサポートしていないクライアントは、転送中の暗号化が有効になっている場合は Azure ファイル共有をマウントできません。 暗号化付き SMB 3.x がサポートされているオペレーティング システムの詳細については、[Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md)、および [Linux](storage-how-to-use-files-linux.md) に関する詳細なドキュメントを参照してください。 PowerShell、CLI、および SDK の現在のバージョンはすべて HTTPS をサポートしています。  
 
-Azure ストレージ アカウントでの転送中の暗号化を無効にすることができます。 暗号化が無効になっている場合、Azure Files では、SMB 2.1、暗号化なしの SMB 3.0、および HTTP 経由の暗号化されていない FileREST API 呼び出しも許可されます。 転送中の暗号化を無効にする主な理由は、古いオペレーティング システム (Windows Server 2008 R2 や古い Linux ディストリビューションなど) 上で実行する必要のあるレガシ アプリケーションをサポートするためです。 Azure Files では、Azure ファイル共有と同じ Azure リージョン内の SMB 2.1 接続のみが許可されます。Azure ファイル共有の Azure リージョンの外部 (オンプレミスまたは異なる Azure リージョン内など) の SMB 2.1 クライアントは、ファイル共有にアクセスできません。
+Azure ストレージ アカウントでの転送中の暗号化を無効にすることができます。 暗号化が無効になっている場合、Azure Files では、SMB 2.1、暗号化なしの SMB 3.x、および HTTP 経由の暗号化されていない FileREST API 呼び出しも許可されます。 転送中の暗号化を無効にする主な理由は、古いオペレーティング システム (Windows Server 2008 R2 や古い Linux ディストリビューションなど) 上で実行する必要のあるレガシ アプリケーションをサポートするためです。 Azure Files では、Azure ファイル共有と同じ Azure リージョン内の SMB 2.1 接続のみが許可されます。Azure ファイル共有の Azure リージョンの外部 (オンプレミスまたは異なる Azure リージョン内など) の SMB 2.1 クライアントは、ファイル共有にアクセスできません。
 
 転送中のデータの暗号化が有効になっていることを確認することを強くお勧めします。
 

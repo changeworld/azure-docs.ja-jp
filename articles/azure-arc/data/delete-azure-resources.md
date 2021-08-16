@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: ce46b7afe7344fabde03805dc2a0977411be5811
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: bde1b1f84847c3ebf05f14312b89ae8227908948
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107716081"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411181"
 ---
 # <a name="delete-resources-from-azure"></a>Azure からのリソースの削除
 
@@ -22,6 +22,18 @@ ms.locfileid: "107716081"
 
 > [!WARNING]
 > この記事で説明されているように、リソースを削除すると、これらのアクションを元に戻すことはできません。
+
+## <a name="before"></a>以前
+
+Azure Arc SQL マネージド インスタンスや Azure Arc データ コントローラーなどのリソースを削除する前に、「[Azure への課金データのアップロード](view-billing-data-in-azure.md#upload-billing-data-to-azure)」に記載されている手順に従って、使用状況情報をエクスポートし、Azure にアップロードして正確な課金計算を行う必要があります。
+
+## <a name="direct-connectivity-mode"></a>直接接続モード
+
+クラスターが直接接続モードで Azure に接続されている場合は、Microsoft Azure portalを使用してリソースを管理します。 データ コントローラー、マネージド インスタンス、PostgreSQL グループのすべての作成、読み取り、更新、削除 (CRUD) 操作にポータルを使用します。
+
+「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../../azure-resource-manager/management/manage-resources-portal.md)」を参照してください。
+
+## <a name="indirect-connectivity-mode"></a>間接接続モード
 
 間接接続モードでは、Kubernetes からインスタンスを削除しても Azure から削除されることはなく、Azure からインスタンスを削除しても Kubernetes から削除されることはありません。 間接接続モードの場合、リソースの削除は 2 段階のプロセスであり、今後改善される予定です。 Kubernetes が信頼できるソースとなり、Azure はそれを反映するように更新されます。
 

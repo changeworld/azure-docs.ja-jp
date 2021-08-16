@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d061eed42280fffa1ff7f53e43adb7b85a94ae0d
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172742"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813219"
 ---
-# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューにおける実稼働前環境での pull request の確認
+# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps"></a>Azure Static Web Apps における実稼働前環境での pull request の確認
 
 この記事では、[Azure Static Web Apps](overview.md) を使用してデプロイされたアプリケーションに対する変更を、実稼働前環境を使用して確認する方法を示します。
 
@@ -33,7 +33,7 @@ Azure Static Web Apps を使用する場合は、複数の実稼働前環境を�
 - 運用環境にデプロイする前にサニティ チェックを実行する。
 
 > [!NOTE]
-> プレビュー期間中に使用可能な[ステージング環境の数は最大 3 つ](quotas.md)です。
+> 一度に利用できる[ステージング環境の最大数は 3 つ](quotas.md)です。
 
 ## <a name="prerequisites"></a>前提条件
 

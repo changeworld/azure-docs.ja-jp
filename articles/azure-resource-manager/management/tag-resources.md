@@ -4,12 +4,12 @@ description: タグを適用して、課金や管理のために Azure リソー
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0106ae6bda21544629616f2268ccc111c1946b47
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b5278408ac1adf1e12adf8f7facebd26e6d96d6d
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480308"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111813909"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -850,7 +850,11 @@ REST API の操作については、「 [Azure Billing REST API Reference (Azure
    >
    > * Azure Front Door では、タグ名に `#` を使用できません。
    >
-   > * Azure Automation と Azure CDN では、リソースで 15 個のタグのみがサポートされています。
+   > * 次の Azure リソースでは、15 個のタグのみがサポートされています。
+   >     * Azure Automation 
+   >     * Azure CDN
+   >     * Azure DNS (ゾーン レコードと A レコード)
+   >     * Azure プライベート DNS (ゾーン、A レコード、仮想ネットワーク リンク)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -67,40 +67,6 @@
           href: ./windows/tutorial-load-balancer.md
         - name: 8 - ネットワークの管理
           href: ./windows/tutorial-virtual-network.md
-- name: 開発
-  items:
-    - name: REST API
-      href: /rest/api/compute/virtual-machines?context=/azure/virtual-machines/context/context
-    - name: Python
-      items:
-        - name: Python SDK
-          href: 'https://github.com/Azure/azure-sdk-for-python'
-        - name: サンプル
-          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=/azure/virtual-machines/context/context
-    - name: .NET
-      items:
-        - name: .NET SDK
-          href: 'https://github.com/Azure/azure-sdk-for-net'
-        - name: リファレンス
-          href: /dotnet/api/overview/azure/virtualmachines?view=azure-dotnet?context=/azure/virtual-machines/context/context
-    - name: Java
-      items:
-        - name: Java SDK
-          href: 'https://github.com/Azure/azure-sdk-for-java'
-        - name: 関連項目
-          href: /java/api/com.azure.resourcemanager.compute?view=azure-java-stable?context=/azure/virtual-machines/context/context
-    - name: Go
-      items:
-        - name: Go SDK
-          href: 'https://github.com/Azure/azure-sdk-for-go'
-        - name: 関連項目
-          href: /developer/go/azure-sdk-qs-vm?context=/azure/virtual-machines/context/context
-    - name: Azure CLI サンプル リポジトリ
-      href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
-    - name: PowerShell サンプル リポジトリ
-      href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
-    - name: Azure Resource Graph クエリ
-      href: ./resource-graph-samples.md
 - name: ワークロード
   items:
     - name: Red Hat
@@ -834,6 +800,8 @@
               href: 'https://azure.microsoft.com/resources/templates/sig-image-definition-create/'
             - name: Shared Image Gallery にイメージのバージョンを作成する
               href: 'https://azure.microsoft.com/resources/templates/sig-image-version-create/'
+            - name: イメージ バージョンから VM を作成する
+              href: 'https://azure.microsoft.com/resources/templates/vm-from-sig/'
         - name: Ansible
           href: /azure/developer/ansible/vm-configure-from-azure-shared-image-gallery?tabs=ansible
         - name: 共有イメージのトラブルシューティングを行う
@@ -996,29 +964,10 @@
       href: disks-types.md
     - name: ディスク冗長オプション
       href: disks-redundancy.md
-    - name: ZRS ディスクをデプロイする
-      href: disks-deploy-zrs.md
     - name: 共有ディスク
       href: disks-shared.md
     - name: 共有ディスクを有効にする
       href: disks-shared-enable.md
-    - name: ディスク プール
-      items:
-        - name: 概要
-          displayName: Disk pools overview
-          href: disks-pools.md
-        - name: ディスク プールの計画
-          href: disks-pools-planning.md
-        - name: ディスク プールをデプロイする
-          href: disks-pools-deploy.md
-        - name: ディスク プールを別のサブスクリプションに移動する
-          href: disks-pools-move-resource.md
-        - name: ディスク プールを管理する
-          href: disks-pools-manage.md
-        - name: ディスク プールをプロビジョニング解除する
-          href: disks-pools-deprovision.md
-        - name: ディスク プールのトラブルシューティングを行う
-          href: disks-pools-troubleshoot.md
     - name: 暗号化
       items:
         - name: ディスク暗号化の概要
@@ -1357,7 +1306,7 @@
     - name: ネットワーク スループットの最適化
       href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
     - name: ベスト プラクティス
-      href: ../virtual-network/concepts-and-best-practices.md
+      href: /azure/virtual-network/concepts-and-best-practices
     - name: Create virtual network
       href: ../virtual-network/quick-create-cli.md?context=/azure/virtual-machines/context/context
     - name: ネットワーク トラフィックのフィルター処理
@@ -1762,7 +1711,7 @@
               href: ../azure-monitor/vm/vminsights-ga-release-faq.yml?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: よく寄せられる質問
               displayName: Azure monitor for VMs
-              href: ../azure-monitor/faq.yml?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+              href: /azure/azure-monitor/faq?context=/azure/virtual-machines/context/context
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要
@@ -1794,7 +1743,7 @@
               href: ../azure-monitor/vm/vminsights-workbooks.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: アラート ルールの作成
               displayName: 'Azure monitor, monitoring'
-              href: ../azure-monitor/vm/monitor-virtual-machine-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
+              href: ../azure-monitor/vm/vminsights-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 依存関係エージェントのアップグレード
               displayName: 'Azure monitor, monitoring'
               href: ../azure-monitor/vm/vminsights-dependency-agent-maintenance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
@@ -1933,6 +1882,8 @@
       href: /azure/developer/jenkins/
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+- name: サポートとトラブルシューティング
+  href: vm-support-help.md
 - name: リソース
   items:
     - name: クラウド導入フレームワーク
@@ -1955,6 +1906,12 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サンプル
+      items:
+        - name: Azure CLI サンプル リポジトリ
+          href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
+        - name: PowerShell サンプル リポジトリ
+          href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
     - name: 一般的な CLI コマンド
       href: ./linux/cli-manage.md
     - name: 一般的な PowerShell コマンド
@@ -1975,5 +1932,3 @@
           href: ./linux/faq.yml
         - name: Windows
           href: ./windows/faq.yml
-- name: サポートとトラブルシューティング
-  href: vm-support-help.md

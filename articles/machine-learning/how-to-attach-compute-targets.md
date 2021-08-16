@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 00fbf0fe3340dc0c14f8cd55098c1e20990a3207
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9388a6e01885e4a3a0c5aa95c254910c96a4e36a
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368026"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902359"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -26,11 +26,13 @@ Azure Machine Learning ワークスペースに Azure のコンピューティ�
 
 * ユーザーのローカル コンピューター
 * リモート仮想マシン
+* Apache Spark プール (Azure Synapse Analytics によって機能する)
 * Azure HDInsight
 * Azure Batch
 * Azure Databricks
 * Azure Data Lake Analytics
 * Azure Container Instances
+
 
 Azure Machine Learning によって管理されるコンピューティング先を使用するには、以下を参照してください。
 
@@ -128,6 +130,10 @@ Azure Machine Learning では、Azure 仮想マシンのアタッチもサポー
 >
 > Azure Machine Learning によって VM が削除されることはありません。 Azure portal、CLI、または Azure VM 用の SDK を使用して、VM を手動で削除する必要があります。
 
+## <a name="apache-spark-pools"></a><a id="synapse"></a>Apache Spark プール
+
+Azure Synapse Analytics と Azure Machine Learning の統合 (プレビュー) によって、Azure Synapse によってサポートされる Apache Spark プールをアタッチし、インタラクティブなデータ探索とデータ準備を行うことができます。 この統合を使用して、データ ラングリングの専用コンピューティングを大規模にすることができます。 詳細については、[「Apache Spark pools powered by Azure Synapse Analytics をアタッチする方法」](how-to-link-synapse-ml-workspaces.md#attach-synapse-spark-pool-as-a-compute)を参照してください。
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight は、ビッグ データ分析のための一般的なプラットフォームです。 そのプラットフォームでは、モデルのトレーニングに使用できる Apache Spark が提供されます。
@@ -221,11 +227,14 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 > [!WARNING]
 > ワークスペースから同じ Azure Batch に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
-### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
+## <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
 Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境です。 これは、Azure Machine Learning パイプラインでコンピューティング先として使用できます。
 
-> [!重要} Azure Machine Learning によって Azure Databricks コンピューティング先を作成することはできません。 代わりに、ユーザーが Azure Databricks ワークスペースを作成してから、Azure Machine Learning ワークスペースにアタッチする必要があります。 ワークスペース リソースを作成するには、[Azure Databricks での Spark ジョブの実行](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)に関するドキュメントを参照してください。
+> [!IMPORTANT]
+> Azure Machine Learning によって Azure Databricks コンピューティング先を作成することはできません。 代わりに、ユーザーが Azure Databricks ワークスペースを作成してから、Azure Machine Learning ワークスペースにアタッチする必要があります。 ワークスペース リソースを作成するには、[Azure Databricks での Spark ジョブの実行](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)に関するドキュメントを参照してください。
+> 
+> __別の Azure サブスクリプション__ から Azure Databricks ワークスペースをアタッチするには、[Azure Databricks] ワークスペースで、自分 (Azure AD アカウント) に **共同作成者** ロールが付与されている必要があります。 [Azure portal](https://ms.portal.azure.com/) でご自身のアクセス権を確認してください。
 
 コンピューティング先として Azure Databricks をアタッチするには、次の情報を指定します。
 
@@ -233,7 +242,7 @@ Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境�
 * __Databricks ワークスペース名__:Azure Databricks ワークスペースの名前。
 * __Databricks アクセス トークン__:Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](/azure/databricks/dev-tools/api/latest/authentication)に関するドキュメントを参照してください。
 
-次のコードでは、Azure Machine Learning SDK を使用してコンピューティング先として Azure Databricks をアタッチする方法を示します (__Databricks ワークスペースは、AML ワークスペースと同じサブスクリプション内に存在する必要があります__)。
+次のコードでは、Azure Machine Learning SDK を使用してコンピューティング先として Azure Databricks をアタッチする方法を示します。
 
 ```python
 import os
@@ -277,7 +286,7 @@ except ComputeTargetException:
 > [!WARNING]
 > ワークスペースから同じ Azure Databricks に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
-### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
+## <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics は、Azure クラウド内のビッグ データ分析プラットフォームです。 これは、Azure Machine Learning パイプラインでコンピューティング先として使用できます。
 

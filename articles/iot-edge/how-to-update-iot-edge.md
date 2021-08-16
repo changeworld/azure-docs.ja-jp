@@ -9,12 +9,12 @@ ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e5034c228a354c98b5792492d484da9eb10b8cf2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fae824df8c8947198fe0d214cf3db5f71c55c98f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310854"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759583"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge セキュリティ デーモンおよびランタイムの更新
 
@@ -30,7 +30,7 @@ Azure IoT Edge の最新バージョンを見つけるには、[Azure IoT Edge �
 
 IoT Edge セキュリティ デーモンは、IoT Edge デバイス上のパッケージ マネージャーを使用して更新する必要があるネイティブ コンポーネントです。
 
-デバイスで実行されているセキュリティ デーモンのバージョンを確認するには、コマンド `iotedge version` を使用します。
+デバイスで実行されているセキュリティ デーモンのバージョンを確認するには、コマンド `iotedge version` を使用します。 IoT Edge for Linux on Windows を使用している場合は、Linux 仮想マシンに SSH で接続してバージョンを確認する必要があります。
 
 >[!IMPORTANT]
 >デバイスをバージョン 1.0 または 1.1 からバージョン 1.2 に更新する場合、インストールと構成のプロセスに違いがあるため、追加の手順が必要です。 詳細については、この記事で後述する手順「[特殊なケース: 1.0 または 1.1 から 1.2 に更新する](#special-case-update-from-10-or-11-to-12)」を参照してください。
@@ -119,22 +119,41 @@ IoT Edge の最新バージョンに更新する場合は、次のコマンド�
 <!-- end 1.2 -->
 :::moniker-end
 
-# <a name="windows"></a>[Windows](#tab/windows)
-
-<!-- 1.1 -->
-::: moniker range="iotedge-2018-06"
-
-IoT Edge for Linux on Windows では、IoT Edge は Windows デバイスでホストされている Linux 仮想マシンで実行されます。 この仮想マシンは IoT Edge と共にプレインストールされ、コンポーネントを最新の状態に保つために Microsoft Update で管理されます。 自動更新が有効になっている場合は、新しい更新プログラムが利用可能になるたびに、ダウンロードとインストールが行われます。
-
-Windows の IoT Edge では、IoT Edge は Windows デバイスで直接実行されます。 PowerShell スクリプトを使用した更新手順については、「[Azure IoT Edge for Windows をインストールおよび管理する](how-to-install-iot-edge-windows-on-windows.md)」を参照してください。
-:::moniker-end
+# <a name="linux-on-windows"></a>[Linux on Windows](#tab/linuxonwindows)
 
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-現在、Windows デバイス上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
+>[!NOTE]
+>現在、Linux for Windows 仮想マシン上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
 
 :::moniker-end
+<!-- end 1.2 -->
+
+IoT Edge for Linux on Windows では、IoT Edge は Windows デバイスでホストされている Linux 仮想マシンで実行されます。 この仮想マシンは IoT Edge と共にプレインストールされ、コンポーネントを自動的に最新の状態に保つために Microsoft Update で管理されます。
+
+IoT Edge for Linux on Windows の更新プログラムを受信するには、他の Microsoft 製品の更新プログラムを受信するように Windows ホストを構成する必要があります。 このオプションは、次の手順で有効にすることができます。
+
+1. Windows ホストで **[設定]** を開きます。
+
+1. **[更新とセキュリティ]** を選択します。
+
+1. **[詳細オプション]** を選択します。
+
+1. *[Windows の更新時に他の Microsoft 製品の更新プログラムを受け取る]* ボタンを **オン** に切り替えます。
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>現在、Windows デバイス上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+Windows の IoT Edge では、IoT Edge は Windows デバイスで直接実行されます。 PowerShell スクリプトを使用した更新手順については、「[Azure IoT Edge for Windows をインストールおよび管理する](how-to-install-iot-edge-windows-on-windows.md)」を参照してください。
 
 ---
 
@@ -142,7 +161,7 @@ Windows の IoT Edge では、IoT Edge は Windows デバイスで直接実行�
 
 IoT Edge エージェントおよび IoT Edge ハブ コンテナーを更新する方法は、デプロイにローリング タグ (1.1 など) を使用しているか、または特定のタグ (1.1.1 など) を使用しているかによって異なります。
 
-デバイス上の IoT Edge エージェントおよび IoT Edge ハブ モジュールの現在のバージョンを確認するには、コマンド `iotedge logs edgeAgent` または `iotedge logs edgeHub` を使用します。
+デバイス上の IoT Edge エージェントおよび IoT Edge ハブ モジュールの現在のバージョンを確認するには、コマンド `iotedge logs edgeAgent` または `iotedge logs edgeHub` を使用します。 IoT Edge for Linux on Windows を使用している場合は、Linux 仮想マシンに SSH で接続してランタイム モジュールのバージョンを確認する必要があります。
 
   ![ログ内でコンテナー バージョンを検索する](./media/how-to-update-iot-edge/container-version.png)
 
@@ -192,6 +211,9 @@ IoT Edge サービスによって、ランタイム イメージの最新バー�
 1. **[Review + create]\(確認と作成\)** を選択し、デプロイを確認して、 **[作成]** を選択します。
 
 ## <a name="special-case-update-from-10-or-11-to-12"></a>特殊なケース: 1.0 または 1.1 から 1.2 に更新する
+
+>[!NOTE]
+>Windows コンテナーまたは IoT Edge for Linux on Windows を使用している場合は、この特殊なケースのセクションは適用されません。
 
 バージョン 1.2 以降、IoT Edge サービスには新しいパッケージ名が使用されるようになりました。また、インストールと構成のプロセスにいくつかの違いがあります。 バージョン 1.0 または 1.1 を実行している IoT Edge デバイスがある場合、1.2 に更新する方法については、以下の手順を参照してください。
 
@@ -265,6 +287,9 @@ IoT Edge サービスによって、ランタイム イメージの最新バー�
 これで、デバイス上で実行されている IoT Edge サービスが更新されました。次は、この記事の手順に従って、[ランタイム コンテナーを更新](#update-the-runtime-containers)してください。
 
 ## <a name="special-case-update-to-a-release-candidate-version"></a>特殊なケース: リリース候補バージョンに更新する
+
+>[!NOTE]
+>Windows コンテナーまたは IoT Edge for Linux on Windows を使用している場合は、この特殊なケースのセクションは適用されません。
 
 Azure IoT Edge では、定期的に新しいバージョンの IoT Edge サービスをリリースしています。 個々の安定版リリースの前に、1 つ以上のリリース候補 (RC) バージョンがあります。 RC バージョンには、そのリリースで予定されているすべての機能が含まれていますが、テストおよび検証プロセスはまだ進行中です。 早い段階で新しい機能をテストする場合は、GitHub を介して RC バージョンをインストールし、フィードバックを提供できます。
 

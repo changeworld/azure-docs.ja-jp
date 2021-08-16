@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
-ms.date: 04/30/2021
-ms.openlocfilehash: ddd837387de955e04cdf39ec73104dfda98e3cf4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 04/29/2021
+ms.openlocfilehash: cb6ac2143d19cf522f973316c4ef9e1fe7e5c4e0
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470921"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664890"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -134,23 +134,23 @@ ADF UI で高速カスタム セットアップを使用して Azure-SSIS IR を
 
 高速カスタム セットアップで種類として **[ライセンス付与されたコンポーネントのインストール]** を選択した場合は、 **[コンポーネント名]** ドロップダウン リストで、Microsoft の ISV パートナーからの統合コンポーネントを選択できます。
 
-* **[SentryOne's Task Factory]\(SentryOne の Task Factory\)** コンポーネントを選択した場合は、Azure-SSIS IR に SentryOne の [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) という一連のコンポーネントをインストールできます。そのためには、 **[ライセンス キー]** ボックスで購入した製品ライセンス キーを入力します。 現在の統合バージョンは **2020.21.2** です。
+   * **[SentryOne の Task Factory]** コンポーネントを選択した場合は、Azure-SSIS IR に SentryOne の [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) という一連のコンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **2020.1.3** です。
 
-* **[oh22 の HEDDA.IO]** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [HEDDA.IO](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) データ品質またはクレンジング コンポーネントをインストールできます。 これを行うには、事前にサービスを購入する必要があります。 現在の統合バージョンは **1.0.14** です。
+   * **[oh22 の HEDDA.IO]** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [HEDDA.IO](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) データ品質またはクレンジング コンポーネントをインストールできます。 これを行うには、事前にサービスを購入する必要があります。 現在の統合バージョンは **1.0.14** です。
 
-* **[oh22 の SQLPhonetics.NET]** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) データ品質または照合コンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.45** です。
-   
-* **[KingswaySoft's SSIS Integration Toolkit]** \(KingswaySoft の SSIS Integration Toolkit\) コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の KingswaySoft から、購入した製品ライセンス キーを **[ライセンス キー]** ボックスに入力して、Microsoft Dynamics、SharePoint、Project Server、Oracle、Salesforce Marketing Cloud などの CRM、ERP、マーケティング、コラボレーション アプリ用の [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **20.2** です。
+   * **[oh22 の SQLPhonetics.NET]** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) データ品質または照合コンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.45** です。
 
-* **[KingswaySoft's SSIS Productivity Pack]** \(KingswaySoft の SSIS Productivity Pack\) コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の KingswaySoft から、購入した製品ライセンス キーを **[ライセンス キー]** ボックスに入力して [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **20.2** です。
+   * **[KingswaySoft の SSIS Integration Toolkit]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に KingswaySoft から Microsoft Dynamics、SharePoint、Project Server、Oracle、Salesforce Marketing Cloud などの CRM、ERP、マーケティング、コラボレーション アプリ用の [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) という一連のコンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **2020.1** です。
 
-* **Theobald Software の Xtract IS** コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の Theobald Software から、購入した製品ライセンス ファイルを **[ライセンス ファイル]** ボックスにドラッグ アンド ドロップまたはアップロードして SAP システム (ERP、S/4HANA、BW) の [Xtract IS](https://theobald-software.com/en/xtract-is/) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **6.5.13.18** です。
+   * **[KingswaySoft の SSIS Productivity Pack]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に KingswaySoft から [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) という一連のコンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **20.1** です。
 
-* **[AecorSoft の Integration Service]** コンポーネントを選択した場合は、Azure-SSIS IR に AecorSoft から SAP および Salesforce システム用の [Integration Service](https://www.aecorsoft.com/en/products/integrationservice) の一連のコネクタをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **3.0.00** です。
+   * **[Theobald Software の Xtract IS]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に Theobald Software から SAP システム (ERP、S/4HANA、BW) 用の [Xtract IS](https://theobald-software.com/en/xtract-is/) という一連のコンポーネントをインストールできます。 これを行うには、事前に購入した製品ライセンス ファイルを **[ライセンス ファイル]** 入力ボックスにドラッグ アンド ドロップするか、アップロードします。 現在の統合バージョンは **6.1.1.3** です。
 
-* **CData の SSIS 標準パッケージ** コンポーネントを選択する場合は、Microsoft SharePoint コネクタなど、CData からの一般的なコンポーネントの [SSIS 標準パッケージ](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) スイートを Azure-SSIS IR にインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **19.7354** です。
+   * **[AecorSoft の Integration Service]** コンポーネントを選択した場合は、Azure-SSIS IR に AecorSoft から SAP および Salesforce システム用の [Integration Service](https://www.aecorsoft.com/en/products/integrationservice) の一連のコネクタをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **3.0.00** です。
 
-* **CData の SSIS 拡張パッケージ** コンポーネントを選択する場合は、Microsoft Dynamics 365 Business Central コネクタや、**SSIS 標準パッケージ** 内の他のコンポーネントなど、CData からのすべてのコンポーネントの一連の [SSIS 拡張パッケージ](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended)を Azure-SSIS IR にインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **19.7354** です。 サイズが大きいため、インストールのタイムアウトを回避するには、ノード 1 つあたり 4 つの CPU コアが Azure-SSIS IR に存在することを確認してください。
+   * **CData の SSIS 標準パッケージ** コンポーネントを選択する場合は、Microsoft SharePoint コネクタなど、CData からの一般的なコンポーネントの [SSIS 標準パッケージ](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) スイートを Azure-SSIS IR にインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **19.7354** です。
+
+   * **CData の SSIS 拡張パッケージ** コンポーネントを選択する場合は、Microsoft Dynamics 365 Business Central コネクタや、**SSIS 標準パッケージ** 内の他のコンポーネントなど、CData からのすべてのコンポーネントの一連の [SSIS 拡張パッケージ](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended)を Azure-SSIS IR にインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **19.7354** です。 サイズが大きいため、インストールのタイムアウトを回避するには、ノード 1 つあたり 4 つの CPU コアが Azure-SSIS IR に存在することを確認してください。
 
 追加された高速カスタム セットアップは、 **[詳細設定]** ページに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
 

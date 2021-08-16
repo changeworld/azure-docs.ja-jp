@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6644f495f28fb76503948c18354a5af0fcf832e5
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: fcac9eee73f509de5903030b77d567cbe11ee043
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364755"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787562"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,6 +54,13 @@ ms.locfileid: "107364755"
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="263"></a><a name="2.6.3"></a>2.6.3
+* `GoneException` が `IllegalStateException` にラップされている場合の再試行ポリシーを修正しました - この変更は、Gateway キャッシュが 410 上で確実に更新されるようにして、Spark コネクタ (Spark 2.4 の場合) がカスタム再試行ポリシーを使用して、パーティション分割中にクエリを成功させるために必要です
+
+### <a name="262"></a><a name="2.6.2"></a>2.6.2
+* 読み取りタイムアウト時に再試行を行う新しい再試行ポリシーを追加しました
+* 依存関係 `com.fasterxml.jackson.core/jackson-databind` を 2.9.10.8 にアップグレードしました
+* 依存関係 `org.apache.httpcomponents/httpclient` を 4.5.13 にアップグレードしました
 
 ### <a name="261"></a><a name="2.6.1"></a>2.6.1
 * サービスの相互運用を通じてクエリを処理する際のバグを修正しました。

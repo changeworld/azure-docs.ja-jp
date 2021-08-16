@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージの有効期限
 description: この記事では、Azure Service Bus メッセージの有効期限と Time to Live について説明します。 このような期限が過ぎると、メッセージは配信されなくなります。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 5d60d84bdc0d437d97c369296a414d55beda4167
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: d41cb7a5e04753989c0e65e8afb8d74a11cd1af2
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952322"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614883"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 メッセージが受信者に伝えるメッセージ、コマンド、または問い合わせの中のペイロードには、ほとんどの場合、何らかの形式のアプリケーション レベルの有効期限が適用されます。 有効期限が切れると、コンテンツの配信は停止され、要求された操作は実行されなくなります。

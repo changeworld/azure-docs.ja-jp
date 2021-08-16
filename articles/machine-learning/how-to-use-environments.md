@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 22e5a2f648993cbe24266702ce33f81e35bfaea3
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: d4260b5c981c6b4f199fca88894abafbbb02e4a1
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751367"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577859"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
 
@@ -406,7 +406,9 @@ service = Model.deploy(
 
 ## <a name="notebooks"></a>ノートブック
 
-こちらの[記事](./how-to-access-terminal.md#add-new-kernels)では、Conda 環境をカーネルとしてノートブックにインストールする方法についての情報が提供されています。
+この記事のコード例は、[envronments ノートブック の使用](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/using-environments/using-environments.ipynb)にも含まれています。
+
+ ノートブックのカーネルとして Conda 環境をインストールするには、[新しい Jupyter カーネルの追加](./how-to-access-terminal.md#add-new-kernels)に関するページを参照してください。
 
 [カスタム Docker イメージを使用するモデルのデプロイ方法](how-to-deploy-custom-docker-image.md)に関するページでは、カスタム Docker ベース イメージを使用してモデルをデプロイする方法を示します。
 

@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
+- devx-track-azurepowershell
 ms.date: 07/15/2020
-ms.openlocfilehash: dd4e5838c97d6a2e86f67bb40457b797462183d9
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 61b011a7df52b4df29c23a8e443f8bad6d72240a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785477"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677001"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -36,7 +37,13 @@ Azure Data Factory マネージド仮想ネットワーク (VNET) 内に Azure I
 - マネージド仮想ネットワークは、マネージド プライベート エンドポイントと共に、データ流出を防止します。 
 
 > [!IMPORTANT]
->現時点では、マネージド VNet は Azure Data Factory リージョンと同じリージョンでのみサポートされています。
+>現在、マネージド仮想ネットワークは、Azure Data Factory リージョンと同じリージョン内でのみサポートされます。
+
+> [!Note]
+>Azure Data Factory マネージド仮想ネットワークはまだパブリック プレビューの段階にあるため、SLA の保証はありません。
+
+> [!Note]
+>既存のパブリック Azure 統合ランタイムを、Azure Data Factory マネージド仮想ネットワーク内の Azure 統合ランタイムに切り替えることはできません。また、その逆も同様です。
  
 
 ![ADF マネージド仮想ネットワークのアーキテクチャ](./media/managed-vnet/managed-vnet-architecture-diagram.png)
@@ -73,6 +80,11 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 インタラクティブな作成機能は、テスト接続、フォルダー一覧とテーブル リストの参照、スキーマの取得、データのプレビューなどの機能に使用されます。 ADF で管理されている仮想ネットワーク内の Azure Integration Runtime を作成または編集する際に、インタラクティブな作成を有効にすることができます。 バックエンド サービスでは、インタラクティブな作成機能のためにコンピューティングが事前に割り当てられます。 そうしないと、インタラクティブな操作が実行されるたびにコンピューティングが割り当てられ、時間がかかります。 インタラクティブな作成の Time To Live (TTL) は 60 分です。つまり、前回のインタラクティブな作成操作から 60 分が経過すると、この機能が自動的に無効になります。
 
 ![インタラクティブな作成](./media/managed-vnet/interactive-authoring.png)
+
+## <a name="activity-execution-time-using-managed-virtual-network"></a>マネージド仮想ネットワークを使用したアクティビティの実行時間
+設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド仮想ネットワーク内の Azure 統合ランタイムは、パブリック Azure 統合ランタイムよりもキュー時間が長く、各アクティビティが開始されるまでにウォームアップがあります。これは、Azure 統合ランタイムではなく、主に仮想ネットワーク参加で発生します。 パイプライン アクティビティや外部アクティビティを含む非 Copy アクティビティの場合、初めてトリガーするときに、60 分の Time To Live (TTL) があります。 TTL 内では、ノードが既にウォームアップされているため、キュー時間が短くなります。 
+> [!NOTE]
+> Copy アクティビティでは、まだ TTL がサポートされていません。
 
 ## <a name="create-managed-virtual-network-via-azure-powershell"></a>Azure PowerShell を使用したマネージド仮想ネットワークの作成
 ```powershell
@@ -120,7 +132,7 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 ### <a name="supported-data-sources"></a>サポートされるデータ ソース
-次のデータ ソースでは、ADF マネージド仮想ネットワークからのプライベート リンクを介した接続がサポートされています。
+以下のデータ ソースはネイティブ プライベート エンドポイントをサポートしており、ADF マネージド仮想ネットワークからプライベート リンクを介して接続できます。
 - Azure Blob Storage (ストレージ アカウント V1 は含まれません)
 - Azure Table Storage (ストレージ アカウント V1 は含まれません)
 - Azure Files (ストレージ アカウント V1 は含まれません)
@@ -134,6 +146,16 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 - Azure Database for MySQL
 - Azure Database for PostgreSQL
 - Azure Database for MariaDB
+- Azure Machine Learning
+
+> [!Note]
+> 引き続き、パブリック ネットワークを介して、Data Factory でサポートされているすべてのデータ ソースにアクセスできます。
+
+> [!NOTE]
+> 現在、Azure SQL Managed Instance はネイティブ プライベート エンドポイントをサポートしていないため、Private Link サービスと Load Balancer を使用することで、マネージド仮想ネットワークからアクセスできます。 [プライベート エンドポイントを使用して、Data Factory マネージド VNET から SQL Managed Instance にアクセスする方法](tutorial-managed-virtual-network-sql-managed-instance.md)に関するページを参照してください。
+
+### <a name="on-premises-data-sources"></a>オンプレミスのデータ ソース
+プライベート エンドポイントを使用して、マネージド仮想ネットワークからオンプレミスのデータ ソースにアクセスするには、[プライベート エンドポイントを使用して Data Factory マネージド VNET からオンプレミスの SQL Server にアクセスする方法](tutorial-managed-virtual-network-on-premise-sql-server.md)に関するチュートリアルを参照してください。
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory マネージド仮想ネットワークは次の Azure リージョンでご利用いただけます。
 - オーストラリア東部
@@ -143,12 +165,15 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 - カナダ東部
 - インド中部
 - 米国中部
+- 東アジア
 - 米国東部
 - 米国東部 2
 - フランス中部
+- ドイツ中西部
 - 東日本
 - 西日本
 - 韓国中部
+- 米国中北部
 - 北ヨーロッパ
 - ノルウェー東部
 - 南アフリカ北部

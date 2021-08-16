@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: ff56bd488fb1e9d776b99461ae1c40c9941fae0b
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 547152e5c74d8953ae206d9ff3b6076013b0ade1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633935"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091632"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -63,6 +63,28 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 | iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。| いいえ | connectionAuthMethod |
 | dt-dataschema | この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 | いいえ | $dt-dataschema |
 | dt-subject | device-to-cloud メッセージを送信しているコンポーネントの名前。 | はい | $dt-subject |
+
+## <a name="application-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT Hub メッセージのアプリケーション プロパティ
+
+アプリケーション プロパティの一般的な用途として、デバイスからメッセージが送信された日時の記録があります。この場合、`iothub-creation-time-utc` プロパティを使用してデバイスからタイムスタンプを送信します。 このタイムスタンプの形式は、タイムゾーン情報を含まない UTC であることが必要です。 たとえば `2021-04-21T11:30:16Z` は有効ですが、`2021-04-21T11:30:16-07:00` は有効ではありません。
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
+}
+```
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub メッセージのシステム プロパティ
 

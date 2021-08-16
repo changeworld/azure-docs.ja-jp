@@ -22,8 +22,6 @@
           href: quickstarts/get-started-unity-hololens.md
         - name: HoloLens と MRTK
           href: quickstarts/get-started-unity-hololens-mrtk.md
-        - name: 詳細な MRTK チュートリアル
-          href: quickstarts/in-depth-mrtk-walkthrough.md
         - name: Unity 2020 にアップグレードする
           href: quickstarts/upgrade-unity-quickstart-to-2020.md
         - name: 新しい Unity HoloLens アプリの開始

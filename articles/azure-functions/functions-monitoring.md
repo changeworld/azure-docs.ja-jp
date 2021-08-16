@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 908d9492a6eb699c999fe93b92697dc511dca082
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550761"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189292"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -33,7 +33,10 @@ Function App で使用できる Application Insights 機能の完全な一覧に
 
 ## <a name="application-insights-integration"></a>Application Insights の統合
 
-一般に、Function App を作成するときに Application Insights インスタンスを作成します。 この場合、統合に必要なインストルメンテーション キーは、*APPINSIGHTS_INSTRUMENTATIONKEY* という名前のアプリケーション設定として既に設定されています。 何らかの理由でFunction App にインストルメンテーション キーが設定されていない場合は、[Application Insights の統合を有効にする](configure-monitoring.md#enable-application-insights-integration)必要があります。  
+一般に、Function App を作成するときに Application Insights インスタンスを作成します。 この場合、統合に必要なインストルメンテーション キーは、`APPINSIGHTS_INSTRUMENTATIONKEY` という名前のアプリケーション設定として既に設定されています。 何らかの理由でFunction App にインストルメンテーション キーが設定されていない場合は、[Application Insights の統合を有効にする](configure-monitoring.md#enable-application-insights-integration)必要があります。  
+
+> [!IMPORTANT]
+> Azure Government などのソブリン クラウドでは、インストルメンテーション キーではなく、Application Insights 接続文字列 (`APPLICATIONINSIGHTS_CONNECTION_STRING`) を使用する必要があります。 詳細については、「[APPLICATIONINSIGHTS_CONNECTION_STRING](functions-app-settings.md#applicationinsights_connection_string)」リファレンスを参照してください。
 
 ## <a name="collecting-telemetry-data"></a>利用統計情報の収集
 

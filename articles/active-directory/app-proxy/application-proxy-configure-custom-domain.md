@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 01470dac716ea26b36fb8bb13eac312cc8387ae1
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 51194dbcdfd967a40da96842cf58d373fd28f96f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187267"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468290"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -55,6 +55,9 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 ## <a name="set-up-and-use-custom-domains"></a>カスタム ドメインを設定して使用する
 
 カスタム ドメインを使用するようにオンプレミス アプリを構成するには、検証済みの Azure Active Directory カスタム ドメイン、カスタム ドメインの PFX 証明書、および構成するオンプレミス アプリが必要です。 
+
+> [!IMPORTANT]
+> カスタム ドメインを *msappproxy.net* ドメインにリダイレクトする DNS レコードの管理はユーザーが行います。 アプリケーションまたはテナントを後から削除する場合は、使わなくなった DNS レコードが悪用されないよう、それに関連付けられた アプリケーション プロキシ の DNS レコードを削除します。 
 
 ### <a name="create-and-verify-a-custom-domain"></a>カスタム ドメインを作成して検証する
 

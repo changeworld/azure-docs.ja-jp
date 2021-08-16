@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/23/2021
+ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9cb84d15c12ae823462291b2e7008653306b2b55
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e514154b650ec2baaa8ebc547d54ad744ed1971b
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773721"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888484"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
@@ -147,7 +147,7 @@ Azure portal を使用して Azure ストレージ アカウントを作成す�
 | セキュリティ | 安全な転送を有効にする | 省略可能 | セキュリティで保護された転送を有効にして、このストレージ アカウントへの受信要求は HTTPS を介してのみ行われるように要求します (既定)。 最善のセキュリティのためにお勧めします。 詳細については、「[セキュリティで保護された接続を確保するために安全な転送を要求する](storage-require-secure-transfer.md)」を参照してください。 |
 | セキュリティ | インフラストラクチャ暗号化を有効にする | 省略可能 | 既定では、インフラストラクチャの暗号化は有効になっていません。 サービス レベルとインフラストラクチャ レベルの両方でデータを暗号化するには、インフラストラクチャの暗号化を有効にします。 詳細については、「[データの二重暗号化のためにインフラストラクチャ暗号化を有効にしてストレージ アカウントを作成する](infrastructure-encryption-enable.md)」を参照してください。 |
 | セキュリティ | BLOB パブリック アクセスを有効にする | 省略可能 | この設定を有効にすると、適切なアクセス許可を持つユーザーは、ストレージ アカウント内のコンテナーへの匿名パブリック アクセスを有効にすることができます (既定)。 この設定を無効にすると、ストレージ アカウントへのすべての匿名パブリック アクセスが禁止されます。 詳細については、「[コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ](../blobs/anonymous-read-access-prevent.md)」を参照してください。<br> <br> ユーザーが追加の手順によってコンテナーのパブリック アクセスの設定を明示的に構成しない限り、BLOB のパブリック アクセスを有効にしても、パブリック アクセスで BLOB のデータを利用することはできません。 |
-| セキュリティ | ストレージ アカウント キーへのアクセスを有効にする (プレビュー) | 省略可能 | この設定を有効にすると、クライアントは、アカウント アクセス キーまたは Azure Active Directory (Azure AD) アカウントのいずれかを使用して、ストレージ アカウントへの要求を承認できます (既定)。 この設定を無効にすると、アカウント アクセス キーによる承認はできなくなります。 詳細については、「[Azure ストレージ アカウントの共有キーによる承認を禁止する (プレビュー)](shared-key-authorization-prevent.md)」を参照してください。 |
+| セキュリティ | ストレージ アカウント キーへのアクセスを有効にする (プレビュー) | 省略可能 | この設定を有効にすると、クライアントは、アカウント アクセス キーまたは Azure Active Directory (Azure AD) アカウントのいずれかを使用して、ストレージ アカウントへの要求を承認できます (既定)。 この設定を無効にすると、アカウント アクセス キーによる承認はできなくなります。 詳細については、[Azure ストレージ アカウントの共有キーによる認可の禁止](shared-key-authorization-prevent.md)に関するページを参照してください。 |
 | セキュリティ | TLS の最小バージョン | 必須 | ストレージ アカウントへの受信要求に対するトランスポート層セキュリティ (TLS) の最小バージョンを選択します。 既定値は TLS バージョン 1.2 です。 既定値に設定すると、TLS 1.0 または TLS 1.1 を使用して行われた受信要求は拒否されます。 詳細については、「[ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する](transport-layer-security-configure-minimum-version.md)」を参照してください。 |
 | Data Lake Storage Gen2 | 階層型名前空間を有効にする | 省略可能 | このストレージ アカウントを Azure Data Lake Storage Gen2 ワークロードに使用するには、階層型名前空間を構成します。 詳細については、「[Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)」を参照してください。 |
 | BLOB ストレージ | Enable network file share (NFS) v3 (preview) (NFS (ネットワーク ファイル共有) v3 を有効にする (プレビュー)) | 省略可能 | NFS v3 により、オブジェクト ストレージのスケールで Linux ファイル システムの互換性が得られます。また、Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスのコンピューターから Blob Storage にコンテナーをマウントできます。 詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](../blobs/network-file-system-protocol-support.md)」を参照してください。 |
@@ -217,17 +217,17 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2
 ```
 
-ストレージ アカウントの階層型名前空間で [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用できるようにするには、**New-AzStorageAccount** コマンドの呼び出しに `-EnableHierarchicalNamespace $True` パラメーターを含めます。
+ストレージ アカウントの階層型名前空間で [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用できるようにするには、**New-AzStorageAccount** コマンドの呼び出しで `EnableHierarchicalNamespace' parameter to `$True` を設定します。
 
-次の表は、必要な冗長構成で特定の種類のストレージ アカウントを作成するために、`-SkuName` パラメーターと `-Kind` パラメーターに使用する値を示したものです。
+次の表は、必要な冗長構成で特定の種類のストレージ アカウントを作成するために、`SkuName` パラメーターと `Kind` パラメーターに使用する値を示したものです。
 
-| ストレージ アカウントの種類 | サポートされている冗長構成 | -Kind パラメーターの値 | -SkuName パラメーターに指定できる値 | 階層型名前空間のサポート |
+| ストレージ アカウントの種類 | サポートされている冗長構成 | Kind パラメーターでサポートされる値 | SkuName パラメーターでサポートされる値 | 階層型名前空間のサポート |
 |--|--|--|--|--|
 | Standard 汎用 v2 | LRS、GRS、RA-GRS、ZRS、GZRS、RA-GZRS | StorageV2 | Standard_LRS、Standard_GRS、Standard_RAGRS、Standard_ZRS、Standard_GZRS、Standard_RAGZRS | はい |
 | Premium ブロック BLOB | LRS、ZRS | BlockBlobStorage | Premium_LRS、Premium_ZRS | はい |
 | Premium ファイル共有 | LRS、ZRS | FileStorage | Premium_LRS、Premium_ZRS | いいえ |
 | Premium ページ BLOB | LRS | StorageV2 | Premium_LRS | いいえ |
-| レガシ Standard 汎用 v1 | LRS、GRS、RA-GRS | Storage | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
+| レガシ Standard 汎用 v1 | LRS、GRS、RA-GRS | ストレージ | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
 | レガシ BLOB ストレージ | LRS、GRS、RA-GRS | BlobStorage | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -259,22 +259,22 @@ az storage account create \
   --kind StorageV2
 ```
 
-ストレージ アカウントの階層型名前空間で [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用できるようにするには、**az storage account create** コマンドの呼び出しに `--enable-hierarchical-namespace true` パラメーターを含めます。 階層型名前空間を作成するには、Azure CLI バージョン 2.0.79 以降が必要です。
+ストレージ アカウントの階層型名前空間で [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用できるようにするには、**az storage account create** コマンドの呼び出しに `enable-hierarchical-namespace` パラメーターを `true` に設定します。 階層型名前空間を作成するには、Azure CLI バージョン 2.0.79 以降が必要です。
 
-次の表は、必要な冗長構成で特定の種類のストレージ アカウントを作成するために、`-sku` パラメーターと `-kind` パラメーターに使用する値を示したものです。
+次の表は、必要な冗長構成で特定の種類のストレージ アカウントを作成するために、`sku` パラメーターと `kind` パラメーターに使用する値を示したものです。
 
-| ストレージ アカウントの種類 | サポートされている冗長構成 | -kind パラメーターの値 | -sku パラメーターに指定できる値 | 階層型名前空間のサポート |
+| ストレージ アカウントの種類 | サポートされている冗長構成 | kind パラメーターでサポートされる値 | sku パラメーターでサポートされる値 | 階層型名前空間のサポート |
 |--|--|--|--|--|
 | Standard 汎用 v2 | LRS、GRS、RA-GRS、ZRS、GZRS、RA-GZRS | StorageV2 | Standard_LRS、Standard_GRS、Standard_RAGRS、Standard_ZRS、Standard_GZRS、Standard_RAGZRS | はい |
 | Premium ブロック BLOB | LRS、ZRS | BlockBlobStorage | Premium_LRS、Premium_ZRS | はい |
 | Premium ファイル共有 | LRS、ZRS | FileStorage | Premium_LRS、Premium_ZRS | いいえ |
 | Premium ページ BLOB | LRS | StorageV2 | Premium_LRS | いいえ |
-| レガシ Standard 汎用 v1 | LRS、GRS、RA-GRS | Storage | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
+| レガシ Standard 汎用 v1 | LRS、GRS、RA-GRS | ストレージ | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
 | レガシ BLOB ストレージ | LRS、GRS、RA-GRS | BlobStorage | Standard_LRS、Standard_GRS、Standard_RAGRS | いいえ |
 
 # <a name="template"></a>[テンプレート](#tab/template)
 
-Azure PowerShell または Azure CLI を使用して Resource Manager テンプレートをデプロイし、ストレージ アカウントを作成できます。 このハウツー記事で使うテンプレートは、[Azure Resource Manager クイックスタートのテンプレート](https://azure.microsoft.com/resources/templates/101-storage-account-create/)に関する記事からのものです。 スクリプトを実行するには、 **[使ってみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
+Azure PowerShell または Azure CLI を使用して Resource Manager テンプレートをデプロイし、ストレージ アカウントを作成できます。 このハウツー記事で使うテンプレートは、[Azure Resource Manager クイックスタートのテンプレート](https://azure.microsoft.com/resources/templates/storage-account-create/)に関する記事からのものです。 スクリプトを実行するには、 **[使ってみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -306,10 +306,9 @@ az deployment group create --resource-group $resourceGroupName --template-uri "h
 
 ## <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する
 
-ストレージ アカウントを削除すると、アカウント内のすべてのデータを含む、アカウント全体が削除されます。 通常、この操作は元に戻すことができません。 ストレージ アカウントの復旧は、特定の状況下でのみ可能であり、保証されていません。 詳しくは、「[削除されたストレージ アカウントを復旧する](storage-account-recover.md)」をご覧ください。
+ストレージ アカウントを削除すると、アカウント内のすべてのデータを含む、アカウント全体が削除されます。 アカウントを削除する前に、保存する必要のあるすべてのデータを必ずバックアップしてください。
 
-> [!WARNING]
-> アカウントを削除する前に、保存する必要のあるデータを必ずバックアップしてください。 通常、削除したストレージ アカウントを復元することも、削除前にアカウントに含まれていたリソースを取得することもできません。
+特定の状況では、削除したストレージ アカウントを回復できますが、回復は保証されません。 詳しくは、「[削除されたストレージ アカウントを復旧する](storage-account-recover.md)」をご覧ください。
 
 Azure 仮想マシンに関連付けられているストレージ アカウントを削除しようとすると、まだ使用しているストレージ アカウントに関するエラー メッセージが表示されることがあります。 このエラーのトラブルシューティングについては、[ストレージ アカウントを削除する際のエラーのトラブルシューティング](/troubleshoot/azure/virtual-machines/storage-resource-deletion-errors)に関するページを参照してください。
 

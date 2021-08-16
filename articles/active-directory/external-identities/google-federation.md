@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 06/08/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe90455142da55289c053c64390f354668b52bc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c21e03870a53858fe877410a7cd75fdc7e82a83b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766081"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963518"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -61,7 +61,7 @@ Google ゲスト ユーザーは、テナント情報を含むアプリケーシ
 2021 年の下半期以降、Google は[埋め込み Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 用の Google フェデレーションを使用している場合、[Gmail でセルフサービス サインアップ](identity-providers.md)を使用している場合、またはアプリで埋め込みの Web ビューを使用してユーザーを認証している場合は、Google Gmail ユーザーは認証できなくなります。
 
 Gmail ユーザーに影響を与える既知のシナリオを次に示します。
-- [WebView](https://docs.microsoft.com/windows/communitytoolkit/controls/wpf-winforms/webview) コントロール、[WebView2](https://docs.microsoft.com/microsoft-edge/webview2/)、または古い WebBrowser コントロールを認証で使用する Windows アプリ。 これらのアプリは、Web アカウント マネージャー (WAM) フローの使用へ移行する必要があります。
+- [WebView](/windows/communitytoolkit/controls/wpf-winforms/webview) コントロール、[WebView2](/microsoft-edge/webview2/)、または古い WebBrowser コントロールを認証で使用する Windows アプリ。 これらのアプリは、Web アカウント マネージャー (WAM) フローの使用へ移行する必要があります。
 - WebView UI 要素を使用した Android アプリケーション 
 - UIWebView または WKWebview を使用した iOS アプリケーション 
 - ADAL を使用したアプリ
@@ -78,11 +78,15 @@ Gmail ユーザーに影響を与える既知のシナリオを次に示しま�
 
 Microsoft はさまざまなプラットフォームおよびシナリオのテストを継続しており、それに応じてこの記事を更新する予定です。
 ### <a name="action-needed-for-embedded-web-views"></a>埋め込み Web ビューに必要な対応
-サインインにシステム ブラウザーを使用するようにアプリを変更します。 詳細については、MSAL.NET のドキュメントの「[埋め込み Web UI とシステム Web UI の比較](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers#embedded-vs-system-web-ui)」を参照してください。 すべての MSAL SDK が既定でシステム Web ビューを使用します。
+サインインにシステム ブラウザーを使用するようにアプリを変更します。 詳細については、MSAL.NET のドキュメントの「[埋め込み Web UI とシステム Web UI の比較](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui)」を参照してください。 すべての MSAL SDK が既定でシステム Web ビューを使用します。
 ### <a name="what-to-expect"></a>ウィザードの内容
 Google が 2021 年下半期にこれらの変更を実施する前に、Microsoft はまだ埋め込み Web ビューを使用しているアプリのための回避策を配備して、認証がブロックされないようにします。
 
 許可された認証用 Web ビューに移行しているアプリケーションには影響はなく、ユーザーは通常どおり Google 経由で認証することができます。
+
+許可された認証用 Web ビューにアプリケーションが移行されない場合、影響を受ける Gmail ユーザーには次の画面が表示されます。
+
+![アプリがシステム ブラウザーに移行されない場合の Google サインイン エラー](media/google-federation/google-sign-in-error-ewv.png)
 
 このドキュメントは、Google により日付と詳細情報が共有されたら更新される予定です。
 
