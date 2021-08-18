@@ -4,15 +4,15 @@ description: Azure Marketplace で仮想マシンのオファー登録情報の�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: emuench
-ms.author: mingshen
-ms.date: 10/19/2020
-ms.openlocfilehash: 9ce7b1302a290bb4a7fefa3077e0937c7544015a
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 10/20/2020
+ms.openlocfilehash: 32214b9552e7879d5e84012b0e65886ea92187b3
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525428"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601149"
 ---
 # <a name="configure-virtual-machine-offer-listing-details"></a>仮想マシンのオファー登録情報の詳細を構成する
 

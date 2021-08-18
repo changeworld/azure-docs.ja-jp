@@ -8,12 +8,12 @@ ms.date: 05/26/2021
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76bbc39cc1bb53d51c35b4afde13de15842801e2
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 97d774ca0a9b5b18bc10495640d92df0cfde115f
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110576009"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115662"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 
@@ -27,6 +27,13 @@ ms.locfileid: "110576009"
 - ファイルのアップロード、ダウンロード、および削除
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 

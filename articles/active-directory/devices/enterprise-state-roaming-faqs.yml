@@ -12,12 +12,12 @@ metadata:
   manager: daveba
   ms.reviewer: na
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 2c43149c2a15c7ea35c87aca8188a01e6350df77
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 8fa75d1baae917e7e60ca99f4d5c3cc33ff85f0a
+  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "111907503"
+  ms.lasthandoff: 06/16/2021
+  ms.locfileid: "112200750"
 title: 設定とデータのローミングに関する FAQ
 summary: この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。
 sections:
@@ -149,7 +149,7 @@ sections:
   - question: >
       組織が、ローミングを使用した後に Azure Rights Management を含むサブスクリプションを購入するとどうなりますか
     answer: >
-      組織が既に Windows 10 および Azure Rights Management 使用制限付き無料サブスクリプションでローミングを使用している場合は、Azure Rights Management 保護サービスを含む[有料サブスクリプション](https://azure.microsoft.com/pricing/details/information-protection/)を購入してもローミングの機能には影響せず、IT 管理者による構成変更は必要ありません。
+      組織が既に Windows 10 および Azure Rights Management 使用制限付き無料サブスクリプションでローミングを使用している場合は、Azure Rights Management 保護サービスを含む[有料サブスクリプション](https://azure.microsoft.com/services/information-protection/)を購入してもローミングの機能には影響せず、IT 管理者による構成変更は必要ありません。
   - question: >
       既知の問題
     answer: "既知の問題の一覧については、「[troubleshooting](enterprise-state-roaming-troubleshooting.md)」(トラブルシューティング) セクションのドキュメントを参照してください。 \n"

@@ -1,18 +1,18 @@
 ---
 title: IoT Hub の IP アドレスについて | Microsoft Docs
 description: IoT Hub の IP アドレスとそのプロパティにクエリを実行する方法について説明します。 IoT Hub の IP アドレスは、ディザスター リカバリーやリージョン間フェールオーバーなど、特定のシナリオを通じて変更される可能性があります。
-author: philmea
-ms.author: philmea
+author: robinsh
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2021
-ms.openlocfilehash: 7d807a15d358bd621baedbff253f0c731e43ed26
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 053ba5b768e9a09eb50f71a8296d42f85a9e4515
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874173"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861210"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub の IP アドレス
 

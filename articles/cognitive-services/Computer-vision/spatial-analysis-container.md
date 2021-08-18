@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 15ef67fb452b4302cc848b88b3dab89d46fb8793
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2261bf9f52747bee8617b4393c207703a252a1ad
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746467"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005998"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -316,7 +316,10 @@ GPU 搭載の Azure 仮想マシンを使用して、空間分析を実行する
 
 Azure portal で、[[仮想マシンの作成]](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) ウィザードを開きます。
 
-VM に名前を付け、リージョンに [(米国) 米国西部 2] を選択します。 必ず `Availability Options` を [インフラストラクチャ冗長は必要ありません] に設定します。 次の図を参照して全体の構成を確認し、次の手順に従って適切な VM サイズを特定します。 
+VM に名前を付け、リージョンに [(米国) 米国西部 2] を選択します。 
+
+> [!IMPORTANT]
+> 必ず `Availability Options` を [インフラストラクチャ冗長は必要ありません] に設定します。 次の図を参照して全体の構成を確認し、次の手順に従って適切な VM サイズを特定します。 
 
 :::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="仮想マシンの構成の詳細。" lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 

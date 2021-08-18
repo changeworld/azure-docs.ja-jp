@@ -7,14 +7,13 @@ ms.date: 03/01/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 133674e6764e12742f5b238946e943d9b5011cd2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51b301a7b98c4662c22a966343748d9b0e7752ad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92891331"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747704"
 ---
 # <a name="read-and-write-spatial-data"></a>空間データの読み取りと書き込み
 

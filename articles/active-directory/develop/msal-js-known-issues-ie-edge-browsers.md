@@ -3,22 +3,22 @@ title: Internet Explorer および Microsoft Edge での問題 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を Internet Explorer および Microsoft Edge ブラウザーで使用するときの既知の問題について説明します。
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 05/18/2020
-ms.author: mtillman
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9323558aec1cb330cc5253f8d380706854aaeae9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 91ef36a5dbbfb7e0edb7fe1d75d77d2f2dc4870b
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077232"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357609"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーに関する既知の問題 (MSAL.js)
 
@@ -36,7 +36,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **ポップアップ経由のログインを使用して認証するとき、ポップアップ ウィンドウが閉じないか動作が停止する**。 Microsoft Edge または IE (InPrivate) でポップアップ ウィンドウを通じて認証するとき、資格情報を入力してサインインした後、セキュリティ ゾーンをまたぐ複数のドメインがナビゲーションに関係している場合、MSAL.js がポップアップ ウィンドウの制御を失うためポップアップ ウィンドウが閉じなくなります。  
+- **ポップアップ経由のログインを使用して認証するとき、ポップアップ ウィンドウが閉じないか動作が停止する**。 Microsoft Edge または IE (InPrivate) でポップアップ ウィンドウを通じて認証するとき、資格情報を入力してサインインした後、セキュリティ ゾーンをまたぐ複数のドメインがナビゲーションに関係している場合、MSAL.js がポップアップ ウィンドウの制御を失うためポップアップ ウィンドウが閉じなくなります。
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Update: MSAL.js 0.2.3 で使用可能な修正プログラム
 認証のリダイレクト ループの問題に対する修正プログラムが [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) でリリースされました。 この修正プログラムを利用するには、MSAL.js 構成ファイルのフラグ `storeAuthStateInCookie` を有効にします。 既定では、このフラグは false に設定されています。
@@ -49,7 +49,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 以下の回避策を使用してください。
 
 #### <a name="other-workarounds"></a>その他の回避策
-これらの回避策を採用する前に、この問題が Microsoft Edge ブラウザーの特定のバージョンでのみ発生していて、その他のブラウザーは動作することをテストしてください。  
+これらの回避策を採用する前に、この問題が Microsoft Edge ブラウザーの特定のバージョンでのみ発生していて、その他のブラウザーは動作することをテストしてください。
 1. これらの問題を回避する最初の手順として、アプリケーション ドメインと、認証フローのリダイレクトに関与するその他のすべてのサイトが、ブラウザーのセキュリティ設定の信頼済みサイトとして追加されており、これらが同じセキュリティ ゾーンに属していることを確認します。
 これを行うには、次のステップに従います。
     - **Internet Explorer** を開き、右上隅にある **[設定]** (歯車アイコン) をクリックします。

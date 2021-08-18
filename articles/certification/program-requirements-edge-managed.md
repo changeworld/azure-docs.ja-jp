@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Managed Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 7d3cd36dd0f03db7cc701c618b40f58dc9873659
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: b7ca60a674a044e5fa37604eadad7ca5cbbfddf3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982018"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741133"
 ---
 # <a name="edge-managed-certification-requirements"></a>Edge Managed 認定の要件
 
@@ -51,7 +51,7 @@ Edge Managed 管理の認定を受けるには、[Azure Certified Device ベー�
 | **OS**                  | [Tier1 と Tier2 OS](../iot-edge/support.md)                 |
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | AIC では、インストールされている IoT Edge RT のデプロイ機能を検証します。 **1.** ユーザーは特定の OS を指定する必要があります (Tier1/2 の一覧にない OS は使用できません)。**2.** AIC では、config.yaml を生成して、正規の [シミュレートされた一時センサー エッジ モジュール](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-iot.simulated-temperature-sensor?tab=Overview)をデプロイします。**3.** AIC では、Docker 互換コンテナー サブシステム (Moby) がデバイスにインストールされていることを検証します。**4.** テスト結果は、シミュレートされた一時センサー エッジ モジュールと Docker 互換コンテナー サブシステムの機能が正常にデプロイされたかどうかに基づいて判定されます。                                                    |
-| **リソース**           | **a)** [AICS のブログ](https://azure.microsoft.com/en-in/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)、**b)** [認定手順](./overview.md) (すべての追加リソースを含む)、**c)** [要件](./program-requirements-azure-certified-device.md) |
+| **リソース**           | **a)** [AICS のブログ](https://azure.microsoft.com/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)、**b)** [認定手順](./overview.md) (すべての追加リソースを含む)、**c)** [要件](./program-requirements-azure-certified-device.md) |
 | **Azure の推奨事項:**     | 該当なし                                                    |
 
 ### <a name="capability-template"></a>機能テンプレート:
@@ -65,5 +65,5 @@ Edge Managed 管理の認定を受けるには、[Azure Certified Device ベー�
 | **OS**                  | [Tier1 と Tier2 OS](../iot-edge/support.md)                                                     |
 | **検証タイプ**     | 手動/ラボ検証済み                                                    |
 | **検証**          | OEM では、物理デバイスを IoT 管理 (HCL) に発送する必要があります。 HCL では、物理デバイスで手動による検証を実行して、次のことを確認します。**1.** EdgeRT が Moby サブシステムを使用している (許可された再配布バージョン)。 Docker ではない。**2.** エッジをデプロイする機能を検証するための最新のエッジ モジュールを選択します。                                                     |
-| **リソース**           | **a)** [AICS のブログ](https://azure.microsoft.com/en-in/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)、**b)** [認定手順](./overview.md)、**c)** [要件](./program-requirements-azure-certified-device.md) |
+| **リソース**           | **a)** [AICS のブログ](https://azure.microsoft.com/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)、**b)** [認定手順](./overview.md)、**c)** [要件](./program-requirements-azure-certified-device.md) |
 | **Azure の推奨事項:**     | N/A                                                    |

@@ -3,8 +3,8 @@ title: チュートリアル:getAbstract を構成し、Azure Active Directory �
 description: Azure Active Directory から getAbstract に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: bd8898f9-7a01-4e85-9dd4-61ae4b01ab5b
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
-ms.author: Zhchia
-ms.openlocfilehash: 1d1b2417750b917f5b09bb53ee980887218a785c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: e4922e6ea8cd6e92739950300559fe7a6043b8f5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102616130"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763799"
 ---
 # <a name="tutorial-configure-getabstract-for-automatic-user-provisioning"></a>チュートリアル:getAbstract を構成し、自動ユーザー プロビジョニングに対応させる
 

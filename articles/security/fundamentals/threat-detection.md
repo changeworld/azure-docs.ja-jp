@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 19944b336a9140a7133b2f96d7821c56a59abe7e
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101037"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676854"
 ---
 # <a name="azure-threat-protection"></a>Azure 脅威防止
 
@@ -287,7 +287,7 @@ SQL Database の脅威検出機能では、次の検出手法のいずれかが�
 
 異常検出 API は、時系列データ内のさまざまな異常パターンを検出するために役立つ API です。 API は、時系列の各データ ポイントに異常なスコアを割り当てます。これを使用してアラート生成、ダッシュボード内の監視、チケット発行システムとの接続ができます。
 
-[異常検出 API](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) が検出できる時系列の異常のタイプには次のものがあります。
+[異常検出 API](/azure/architecture/data-science-process/apps-anomaly-detection-api) が検出できる時系列の異常のタイプには次のものがあります。
 
 -   **急増と急減**: サービスへのログインの失敗数や電子商取引サイトのチェックアウトの数を監視している場合、急増や急減はセキュリティ攻撃やサービス障害を示している可能性があります。
 

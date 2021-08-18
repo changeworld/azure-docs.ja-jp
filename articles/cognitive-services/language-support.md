@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3a535e1540535c52d4a21684074d81df8b41c4ca
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1fbf548436842f16516554558b74391567a761e0
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950762"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181377"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート
 
@@ -37,7 +37,7 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 
 ## <a name="language"></a>Language
 
-* [Immersive Reader](./immersive-reader/language-support.md)
+* [Immersive Reader](../applied-ai-services/immersive-reader/language-support.md)
 * [Language Understanding (LUIS)](./luis/luis-language-support.md)
 * [QnA Maker](./qnamaker/overview/language-support.md)
 * [Text Analytics](./text-analytics/language-support.md)

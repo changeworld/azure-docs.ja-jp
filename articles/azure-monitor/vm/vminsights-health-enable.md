@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 04/05/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 472700f50175c115305bad332efa6b0e77fb74ce
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: f38172e82b61ce07863614857ab7ef096683f34a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315293"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729292"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー) を有効にする
 VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
@@ -38,6 +38,8 @@ VM insights のゲストの正常性には、パブリック プレビュー段�
 - オーストラリア中部
 - オーストラリア東部
 - オーストラリア南東部
+- ブラジル南部
+- ブラジル南東部
 - カナダ中部
 - インド中部
 - 米国中部
@@ -48,13 +50,17 @@ VM insights のゲストの正常性には、パブリック プレビュー段�
 - フランス中部
 - ドイツ中西部
 - 東日本
+- 西日本
 - 韓国中部
 - 米国中北部
 - 北ヨーロッパ
+- ノルウェー東部
 - 米国中南部
 - 南アフリカ北部
 - 東南アジア
 - スイス北部
+- スイス西部
+- アラブ首長国連邦北部
 - 英国南部
 - 英国西部
 - 米国中西部
@@ -355,13 +361,13 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
         "publisher": "Microsoft.Azure.Monitor", 
         "type": "AzureMonitorWindowsAgent", 
         "typeHandlerVersion": "1.0", 
-        "autoUpgradeMinorVersion": false 
+        "autoUpgradeMinorVersion": true 
       },
       "linux": {
         "publisher": "Microsoft.Azure.Monitor", 
         "type": "AzureMonitorLinuxAgent", 
-        "typeHandlerVersion": "1.5", 
-        "autoUpgradeMinorVersion": false 
+        "typeHandlerVersion": "1.0", 
+        "autoUpgradeMinorVersion": true 
       }
     }
   },

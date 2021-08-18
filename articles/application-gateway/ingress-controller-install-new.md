@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 8be5ac75e2da3eaeae300fd36e152a24c9777e64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95a8f3090fd1599cbf30f783df1c501fa797cdff
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593741"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287949"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>新しい Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする方法
 
@@ -250,7 +250,7 @@ AAD ポッド ID をクラスターにインストールするには、次のよ
     ```
 
    値:
-     - `verbosityLevel`:AGIC ログ インフラストラクチャの詳細レベルを設定します。 使用できる値については、「[ログ レベル](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)」を参照してください。
+     - `verbosityLevel`:AGIC ログ インフラストラクチャの詳細レベルを設定します。 使用できる値については、「[ログ レベル](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.yml#logging-levels)」を参照してください。
      - `appgw.subscriptionId`:Application Gateway が存在する Azure サブスクリプション ID。 例: `a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`:Application Gateway が作成された Azure リソース グループの名前。 例: `app-gw-resource-group`
      - `appgw.name`:Application Gateway の名前。 例: `applicationgatewayd0f0`

@@ -7,13 +7,12 @@ ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31a5a7f37ef61103a0e70b3daca076e62a16eaaf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051653"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742634"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route Service のベスト プラクティス
 

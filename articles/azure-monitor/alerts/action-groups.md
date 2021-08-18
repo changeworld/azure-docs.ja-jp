@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: 2f5244fd8ef414a1bed6781c702014e805f47a76
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 26f6b62ece1fcde8ca69ffbb804d9ab24b3c1ac3
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060320"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112455736"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -160,7 +160,7 @@ Azure mobile app の構成時にアカウント ID として使用するメー�
 ### <a name="function"></a>機能
 [Azure Functions](../../azure-functions/functions-get-started.md) で既存の HTTP トリガー エンドポイントを呼び出します。 要求を処理するには、エンドポイントで HTTP POST 動詞を処理する必要があります。
 
-Function アクションを定義する際に、Function の httptrigger エンドポイントとアクセス キーがアクション定義に保存されます。 (例: https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key)。 関数のアクセス キーを変更する場合は、アクション グループで Function アクションを削除してから再作成する必要があります。
+Function アクションを定義する際に、Function の httptrigger エンドポイントとアクセス キーがアクション定義に保存されます。 (例: `https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key`)。 関数のアクセス キーを変更する場合は、アクション グループで Function アクションを削除してから再作成する必要があります。
 
 アクション グループには、限られた数の Function アクションを保持できます。
 

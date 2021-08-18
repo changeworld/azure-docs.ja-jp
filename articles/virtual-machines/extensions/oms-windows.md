@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aae7366c2dc056285876d9e1b3ae3e6820d788fb
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0a7dc06feed0593c616c62dbb8b10fc58cb063b8
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669583"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280137"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
@@ -99,7 +99,7 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Log Analytics エージェント拡張機能を実行できます。 Log Analytics エージェント VM 拡張機能を含むサンプル テンプレートは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)にあります。 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Log Analytics エージェント拡張機能を実行できます。 Log Analytics エージェント VM 拡張機能を含むサンプル テンプレートは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/oms-extension-windows-vm)にあります。 
 
 >[!NOTE]
 >このテンプレートでは、複数のワークスペースに報告するようにエージェントを構成する場合に複数のワークスペース ID とワークスペース キーを指定することはサポートされていません。 複数のワークスペースに報告するようにエージェントを構成するには、「[ワークスペースの追加または削除](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace)」を参照してください。  

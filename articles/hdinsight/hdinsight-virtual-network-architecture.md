@@ -4,12 +4,12 @@ description: Azure Virtual Network に HDInsight クラスターを作成する�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 511f1b1bba227e58303a47994d7a6f7bd8b14604
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871675"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290991"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 仮想ネットワーク アーキテクチャ
 
@@ -24,7 +24,6 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 | ヘッド ノード |  Apache Storm を除くすべてのクラスターの種類で、ヘッド ノードは、分散アプリケーションの実行を管理するプロセスをホストします。 ヘッド ノードはまた、SSH 接続して、複数のクラスター リソースで実行するように調整されるアプリケーションを実行できるノードでもあります。 ヘッド ノードの数は、すべてのクラスターの種類で 2 台に固定されています。 |
 | ZooKeeper ノード | Zookeeper は、データ処理を実行しているノード間でタスクを調整します。 また、ヘッド ノードのリーダー選定を行って、どのノードが特定のマスター サービスを実行しているかを追跡します。 ZooKeeper ノードの数は、3 台に固定されています。 |
 | ワーカー ノード | データ処理機能をサポートするノードを表します。 ワーカー ノードをクラスターに追加したりクラスターから削除したりすることで、コンピューティング機能をスケーリングしてコストを管理することができます。 |
-| R Server エッジ ノード | R Server エッジ ノードは、SSH 接続して、クラスター リソース全体で実行するように調整されるアプリケーションを実行できるノードを表します。 エッジ ノードは、クラスター内のデータ分析には参加しません。 このノードは R Studio Server もホストしているため、ブラウザーを使用して R アプリケーションを実行することができます。 |
 | リージョン ノード | HBase のクラスターの種類では、リージョン ノード (データ ノードとも呼ばれる) はリージョン サーバーを実行します。 リージョン サーバーは、HBase によって管理されるデータの一部を提供および管理します。 リージョン ノードをクラスターに追加したりクラスターから削除したりすることで、コンピューティング機能をスケーリングしてコストを管理できます。|
 | Nimbus ノード | Storm のクラスターの種類では、Nimbus ノードは、ヘッド ノードと同様の機能を提供します。 Nimbus ノードは、Storm トポロジの実行を調整する Zookeeper を介してクラスター内の他のノードにタスクを割り当てます。 |
 | スーパーバイザー ノード | Storm のクラスターの種類のスーパーバイザー ノードでは、Nimbus ノードによって提供された命令を実行して処理が行われます。 |

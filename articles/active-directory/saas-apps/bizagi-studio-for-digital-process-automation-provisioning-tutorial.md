@@ -3,8 +3,8 @@ title: チュートリアル:Azure Active Directory で自動ユーザー プロ
 description: Azure AD から Bizagi Studio for Digital Process Automation へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 2fbff65a-5345-4c08-a6c7-60b80d867a3e
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
-ms.author: Zhchia
-ms.openlocfilehash: 72e021f47bb8db4dedf0e434d0d94bb2118a4c00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 5fc05ecbd6d4a65062e99fc0773ffedb4c64aeab
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728163"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764713"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Bizagi Studio for Digital Process Automation を構成する
 

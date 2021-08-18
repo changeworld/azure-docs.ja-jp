@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 311f8164803dd12664aa193f08c8a1095ee07e31
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ae4ab2161c4616f58a05e07f0ca273d08435b0bf
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168707"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403469"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>IoT ソリューションを作成するために Azure のどのようなテクノロジとサービスを利用できるか
 
@@ -54,7 +54,7 @@ IoT ソリューションをゼロから作成したり、IoT Central または�
 
 いずれかの [Azure IoT スタート キット](https://devicecatalog.azure.com/kits)を使用して IoT デバイスを開発するか、または使用するデバイスを [Azure Certified for IoT デバイス カタログ](https://devicecatalog.azure.com)から選択します。 オープンソースの[デバイス SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して埋め込みコードを実装します。 デバイス SDK は複数のオペレーティング システム (Linux、Windows など) およびリアルタイム オペレーティング システムをサポートしています。 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp)、[Python](https://github.com/Azure/azure-iot-sdk-python) など、複数のプログラミング言語用の SDK があります。
 
-[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md) サービスを使用することで、デバイスの埋め込みコードの作成方法をさらに簡素化できます。 IoT プラグ アンド プレイを使用することで、ソリューション開発者は埋め込みコードを記述することなく、自分のソリューションにデバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述する "_デバイス機能モデル_" スキーマです。 埋め込みデバイス コードを生成したり、クラウドベースのソリューション (IoT Central アプリケーションなど) を構成したりするには、このデバイス機能モデルを使用します。
+[IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md) サービスを使用することで、デバイスの埋め込みコードの作成方法をさらに簡素化できます。 IoT プラグ アンド プレイを使用することで、ソリューション開発者は埋め込みコードを記述することなく、自分のソリューションにデバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述する "_デバイス機能モデル_" スキーマです。 埋め込みデバイス コードを生成したり、クラウドベースのソリューション (IoT Central アプリケーションなど) を構成したりするには、このデバイス機能モデルを使用します。
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) では、IoT ワークロードの一部を Azure Cloud Services からデバイスにオフロードすることができます。 IoT Edge では、ソリューションでの待ち時間を短縮したり、デバイスとクラウドとの間でやり取りされるデータの量を削減したり、オフラインのシナリオを実現したりすることができます。 IoT Edge デバイスは、IoT Central やいくつかのソリューション アクセラレータから管理することができます。
 

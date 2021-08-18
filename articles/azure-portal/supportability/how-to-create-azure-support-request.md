@@ -3,13 +3,14 @@ title: Azure サポート要求を作成する方法
 description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: 395fc0d5905389ffb8f68d8bbc4c6f8b3a871d36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: support-help-page
+ms.date: 05/25/2021
+ms.openlocfilehash: 4e3f54712830406f04f6c0eec5097d693723db1c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774875"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458775"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -84,7 +85,7 @@ Microsoft は基本的な情報を収集できたら、次にユーザーにソ�
 
 1. 問題に関するすべての情報を記入したら、サポートを受ける方法を選択します。 **[詳細]** の **[サポート方法]** セクションで、影響の重大度を選択します。 最高重大度は[サポート プラン](https://azure.microsoft.com/support/plans)ごとに異なります。
 
-    既定では、 **[診断情報の共有]** オプションが選択されています。 これにより、Azure サポートが Azure リソースから[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を収集できるようになります。 場合によっては、仮想マシンのメモリへのアクセスを要求するなど、既定では選択されていない 2 つ目の質問があります。
+    既定では、 **[診断情報の共有]** オプションが選択されています。 これにより、Azure サポートが Azure リソースから[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を収集できるようになります。 診断情報を共有しない場合は、このオプションをオフにできます。 場合によっては、仮想マシンのメモリへのアクセスを要求するなど、既定では選択されていない 2 つ目の質問があります。
 
 1. ご自分の希望する連絡方法、連絡のための都合のよいタイミング、およびサポート言語を指定します。
 

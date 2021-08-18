@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84934668c36d518e65c8997f72309a5ca3eb8fbe
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519794"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112118502"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB アクセスの Azure Files ID ベース認証オプションの概要
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -20,6 +20,13 @@ ms.locfileid: "102519794"
 Azure ファイル共有に対してオンプレミス Active Directory Domain Services 認証を有効にする方法については、「[SMB を使用して Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証を有効にする](storage-files-identity-auth-active-directory-enable.md)」を参照してください。
 
 Azure ファイル共有に対して Azure AD DS 認証を有効にする方法については、「[Azure Files に対する Azure Active Directory Domain Services 認証を有効にする](storage-files-identity-auth-active-directory-domain-service-enable.md)」をご覧ください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="glossary"></a>用語集 
 SMB を使用した Azure ファイル共有の Azure AD Domain Service 認証に関連するいくつかの重要な用語を理解することをお勧めします。

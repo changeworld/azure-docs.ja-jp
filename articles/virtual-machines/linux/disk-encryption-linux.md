@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: eed40e353531ec6df4ecafad3757845b45a99886
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 779574bd5d4e7b982cac065b2bb79bc7b483cee8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071852"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467709"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -81,7 +81,7 @@ Connect-AzAccount
 複数のサブスクリプションがあり、1 つを指定する場合は、[Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドレットを使用してそれらを一覧表示し、次に [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用します。
 
 ```powershell
-Set-AzContext -Subscription -Subscription <SubscriptionId>
+Set-AzContext -Subscription <SubscriptionId>
 ```
 
 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) コマンドレットを実行すると、正しいサブスクリプションが選択されていることが確認されます。

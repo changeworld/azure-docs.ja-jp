@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の Always Encrypted でクライアントサイド暗号化を行う
 description: Azure Cosmos DB の Always Encrypted でクライアントサイド暗号化を行う方法を知る
-author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: thweiss
-ms.openlocfilehash: d8aaa34fe2e81515866c047c6a171b1bdb58ff3f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+author: ThomasWeiss
+ms.openlocfilehash: 9135e35e74eda1387dc6dee5ba0875c4152439b0
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387064"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356404"
 ---
 # <a name="use-client-side-encryption-with-always-encrypted-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Always Encrypted でクライアントサイド暗号化を行う (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -80,6 +80,8 @@ Azure Cosmos DB サービスでは、Always Encrypted で暗号化したプロ�
 - **決定論的暗号化:** 同一のプレーン テキスト値を同一の暗号化構成で暗号化した場合、常に同じ暗号化値を生成します。 決定論的暗号化では、クエリを使用して、暗号化されたプロパティに等価性のフィルターをかけられます。 ただし、暗号化されたプロパティのパターンを調べることで、暗号化された情報を攻撃者に推測されることがあり得ます。 暗号化される値の候補が少ない場合、たとえば True/False や North/South/East/West などの文脈では、これが特に問題になります。
 
 - **ランダム暗号化:** 推定されにくい方法でデータを暗号化します。 ランダム暗号化は安全性が高いですが、クエリによって、暗号化されたプロパティにフィルターをかけることができません。
+
+Always Encrypted の決定論的暗号化とランダム暗号化に関する詳細は、[初期化ベクター (IV) の生成](/sql/relational-databases/security/encryption/always-encrypted-cryptography#step-1-generating-the-initialization-vector-iv)に関するセクションをご覧ください。
 
 ## <a name="setup-azure-key-vault"></a>Azure Key Vault をセットアップする
 

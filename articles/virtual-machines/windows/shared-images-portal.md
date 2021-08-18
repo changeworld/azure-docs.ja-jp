@@ -4,16 +4,17 @@ description: Azure portal を使用して、仮想マシン イメージを作�
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 11/06/2019
+ms.date: 06/21/2021
 ms.author: cynthn
-ms.openlocfilehash: 7ef48e6eaef441026457e584a302eb3fe515c0a6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 537b6f70534386269bb2ea57815b3dbb21337e48
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079411"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204194"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>ポータルを使用して Azure 共有イメージ ギャラリーを作成する
 
@@ -67,6 +68,5 @@ ms.locfileid: "112079411"
 - [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 共有イメージ ギャラリーの詳細については、[概要](../shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](../troubleshooting-shared-images.md)」を参照してください。

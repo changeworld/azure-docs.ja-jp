@@ -2,17 +2,18 @@
 title: Purview を使用した ADF でのデータの検出と探索
 description: Purview を使用した Azure Data Factory でのデータの検出と探索の方法について説明します
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 author: linda33wj
 ms.author: jingwang
 ms.custom: seo-lt-2019
-ms.date: 01/15/2021
-ms.openlocfilehash: f37d2461a0e9c2db0cb3c7aa911dfb0ff5e049af
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/10/2021
+ms.openlocfilehash: 145f7c50d6fdd2fef5e1f31e029c06434fa2e8e5
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486487"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201688"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Purview を使用した ADF でのデータの検出と探索
 
@@ -26,6 +27,7 @@ ADF では、次のタスクを実行できます。
 - リンクされたサービスまたはデータセットを使用して、これらのデータをデータ ファクトリに接続する 
 
 ## <a name="prerequisites"></a>前提条件 
+
 - [Azure Purview アカウント](../purview/create-catalog-portal.md) 
 - [Data Factory](./quickstart-create-data-factory-portal.md) 
 - [Azure Purview アカウントを Data Factory に接続する](./connect-data-factory-to-azure-purview.md) 
@@ -47,5 +49,8 @@ Azure Purview によって検索したデータに対して、リンクされた
 
 ##  <a name="nextsteps"></a>次のステップ 
 
-- [Azure Purview での Azure Data Factory 資産の登録とスキャン](../purview/register-scan-azure-synapse-analytics.md)
-- [Azure Purview Data Catalog でデータを検索する方法](../purview/how-to-search-catalog.md)
+[チュートリアル: Data Factory 系列データを Azure Purview にプッシュする](turorial-push-lineage-to-purview.md)
+
+[Azure Purview アカウントを Data Factory に接続する](connect-data-factory-to-azure-purview.md) 
+
+[Azure Purview Data Catalog でデータを検索する方法](../purview/how-to-search-catalog.md)

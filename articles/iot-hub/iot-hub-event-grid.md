@@ -2,7 +2,6 @@
 title: Azure IoT Hub と Event Grid | Microsoft Docs
 description: Azure Event Grid を使い、IoT Hub で発生したアクションに基づいてプロセスをトリガーします。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c4c23859a44f45fc294631dd33da0ab9cad1dd61
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: d8ddd49202faac6a9fc5ba34ac5b5e8e92d5b704
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739227"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -194,11 +193,11 @@ Event Grid 経由でテレメトリ イベントをサブスクライブする�
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
-デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して、*device-to-cloud send telemetry* または *cloud-to-device receive message* 操作を呼び出す必要があります。 ただし、デバイスで AMQP プロトコルを使用して IoT Hub に接続する場合は、デバイスで *cloud-to-device receive message* 操作を呼び出すことをお勧めします。そうしないと、接続状態通知が数分遅延する可能性があります。 デバイスで MQTT プロトコルを使用して接続する場合、IoT Hub によって cloud-to-device リンクは開かれたままになります。 AMQP の cloud-to-device リンクを開くには、[Receive Async API](/rest/api/iothub/device/receivedeviceboundnotification) を呼び出します。
+デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して、*device-to-cloud send telemetry* または *cloud-to-device receive message* 操作を呼び出す必要があります。 ただし、デバイスが AMQP プロトコルを使用して IoT Hub に接続する場合は、デバイスで "*cloud-to-device メッセージ受信*" 操作を呼び出すことをお勧めします。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用して接続する場合、IoT Hub は cloud-to-device リンクを開いたままにします。 AMQP の cloud-to-device リンクを開くには、[Receive Async API](/rest/api/iothub/device/receivedeviceboundnotification) を呼び出します。
 
 device-to-cloud リンクは、デバイスがテレメトリを送信する限り、開いたままになります。
 
-デバイス接続が不安定である (デバイスの接続と切断が頻繁に発生する) 場合、IoT Hub による各接続状態の送信は行われませんが、不安定な状態が終了するまで、60 秒間の定期的なスナップショットで取得された現在の接続状態が発行されます。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
+デバイス接続が不安定である場合、つまり、デバイスの接続と切断が頻繁に発生する場合、IoT Hub は各接続状態は送信しませんが、不安定な状態が終了するまで、60 秒間の定期的なスナップショットで取得された現在の接続状態を発行します。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
 
 ## <a name="tips-for-consuming-events"></a>イベントの使用に関するヒント
 

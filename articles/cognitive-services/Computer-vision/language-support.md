@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 9a52020ae09ff454af1d756dbff4041e96b2f798
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 2602dd939affff05fc658efcc3d13b6e99c30653
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901567"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322190"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -29,7 +29,7 @@ Computer Vision の OCR API では複数の言語をサポートしています�
 |:-----|:----:|:-----:|:---:|:---:|
 |アフリカーンス語|`af`|✔ | | |
 |アルバニア語 |`sq`|✔ | | |
-|アラビア語 | `ar`| ✔ | | |
+|アラビア語 | `ar`|  | ✔ | |
 |アストリア語 |`ast`|✔ | | |
 |バスク語  |`eu`| ✔ | | |
 |ビスラマ語   |`bi`|✔ | | |

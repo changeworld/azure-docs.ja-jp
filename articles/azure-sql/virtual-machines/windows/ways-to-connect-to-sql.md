@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 37cb8f5a2ff0916f53ae50f5750664204ab1ba75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11764fffd3323efed9ddb0aebba05cb68076244a
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737491"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435364"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 上にある SQL Server 仮想マシンへの接続
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -93,8 +93,6 @@ Server=mysqlvm;Integrated Security=true
 ```
 
 ## <a name="change-sql-connectivity-settings"></a><a id="change"></a>SQL 接続の設定を変更する
-
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
 Azure Portal で、SQL Server 仮想マシンの接続設定を変更できます。
 

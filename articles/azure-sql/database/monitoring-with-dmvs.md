@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 03/15/2021
-ms.openlocfilehash: 5c0de2c1589bfa495ab6ad287b998c403041674c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68daeddb958a3d009cfb2632c30780d7dfe6ce6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592151"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739656"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>動的管理ビューを使用した Microsoft Azure SQL Database および Azure SQL Managed Instance のパフォーマンスの監視
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -636,11 +636,11 @@ ORDER BY start_time DESC;
 
    ```sql
     SELECT
-        (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent',
-        (COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent',
-        (COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data IO Fit Percent'
+        100*((COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'CPU Fit Percent',
+        100*((COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'Log Write Fit Percent',
+        100*((COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'Physical Data IO Fit Percent'
     FROM sys.resource_stats
-    WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
+    WHERE database_name = 'sample' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
     データベースのサービス レベルに基づき、ワークロードが下位のコンピューティング サイズに適合するかどうかを判断できます。 データベース ワークロード目標が 99.9% で、上記のクエリが 3 つすべてのリソース ディメンションに対して 99.9% を超える値を返す場合、そのワークロードはおそらく下位のコンピューティング サイズに適合します。
@@ -654,12 +654,12 @@ ORDER BY start_time DESC;
     平均 CPU は、コンピューティング サイズの制限の約 4 分の 1 であり、データベースのコンピューティング サイズにうまく適合するでしょう。 ただし最大値は、データベースがコンピューティング サイズの制限に到達することを示しています。 次に上位のコンピューティング サイズに移動する必要がありますか。 ワークロードが 100% に到達する回数を確認し、それをデータベースのワークロード目標と比較します。
 
     ```sql
-    SELECT
-        (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data IO fit percent'
-        FROM sys.resource_stats
-        WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
+     SELECT
+         100*((COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'CPU Fit Percent',
+         100*((COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'Log Write Fit Percent',
+         100*((COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'Physical Data IO Fit Percent'
+     FROM sys.resource_stats
+     WHERE database_name = 'sample' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
     このクエリが 3 つのリソース ディメンションのいずれにも 99.9% 未満の値を返す場合、次の上位のコンピューティング サイズに移行すること、またはアプリケーションの調整手法を使用してデータベースの負荷を減らすことを検討してください。

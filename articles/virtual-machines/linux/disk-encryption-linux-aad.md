@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c3a1e26b8e24c357aa5be914aaa3b8f8c2d91281
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a88fd0cd1e973118cc52456030046b3478d07e7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673229"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741769"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux VM で Azure AD を使用して Azure Disk Encryption を有効にする (以前のリリース)
 
@@ -341,7 +341,7 @@ Azure PowerShell、Azure CLI、または Resource Manager テンプレートを�
      ```azurecli-interactive
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
-- **Resource Manager テンプレートを使用して暗号化を無効にする:** 暗号化を無効にするには、「[Disable encryption on a running Linux VM](https://aka.ms/decrypt-linuxvm)」 (実行中の Linux VM での暗号化を無効にする) テンプレートを使用します。
+- **Resource Manager テンプレートを使用して暗号化を無効にする:** 暗号化を無効にするには、「[Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm)」 (実行中の Linux VM での暗号化を無効にする) テンプレートを使用します。
      1. **[Azure に配置する]** を選択します。
      2. サブスクリプション、リソース グループ、場所、VM、法律条項、および契約を選択します。
      3. **[購入]** をクリックして、実行中の Windows VM でディスク暗号化を無効にします。

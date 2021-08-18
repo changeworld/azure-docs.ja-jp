@@ -2,19 +2,18 @@
 title: Bing Entity Search API を使用したカスタム スキルの例
 titleSuffix: Azure Cognitive Search
 description: Azure コグニティブ検索の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b962282ee4e488d026b6475c63fc32e6a77cee74
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 88ea321087cc8745184249d323895a356cd9dbbc
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591532"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729433"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例: Bing Entity Search API を使用してカスタム スキルを作成する
 
@@ -312,7 +311,7 @@ namespace SampleSkills
 
 Bing Entity Search API にサインアップしたときに取得したキーに基づいて、`key` 定数の独自の *key* 値を確実に入力します。
 
-このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 それと同じスキルでもう少し構造化されたバージョンが、[power skills リポジトリ](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)にあります。
+このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 それと同じスキルでもう少し構造化されたバージョンが、[power skills リポジトリ](https://github.com/Azure-Samples/azure-search-power-skills/tree/main/Text/BingEntitySearch)にあります。
 
 もちろん、ファイル名を `Function1.cs` から `BingEntitySearch.cs` に変更できます。
 

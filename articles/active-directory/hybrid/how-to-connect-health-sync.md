@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a77f9984ee0e08574286f5825cc112c5f9793703
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98016985"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109991"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。
@@ -121,5 +121,5 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
 * [Azure AD Connect Health の操作](how-to-connect-health-operations.md)
 * [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)
 * [AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)
-* [Azure AD Connect Health の FAQ](reference-connect-health-faq.md)
+* [Azure AD Connect Health の FAQ](reference-connect-health-faq.yml)
 * [Azure AD Connect Health のバージョンの履歴](reference-connect-health-version-history.md)

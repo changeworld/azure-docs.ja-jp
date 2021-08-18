@@ -4,12 +4,12 @@ description: Azure Private Link を使用して、仮想ネットワーク内の
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fe3b9617db20f445d4139c006c283bbfe537d544
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 4c5e30bfd7afd8a7cd8974544324f6e610736846
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616481"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438478"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Private Link を使用して Azure HDInsight クラスターを保護および分離する (プレビュー)
 
@@ -53,7 +53,7 @@ Azure Resource Manager (ARM) テンプレートで特定のネットワーク �
 
 `privateLink` が "*有効*" に設定されている場合は、内部 [標準ロード バランサー](../load-balancer/load-balancer-overview.md) (SLB) が作成され、SLB ごとに Azure Private Link サービスがプロビジョニングされます。 Private Link サービスを使用すると、プライベート エンドポイントから HDInsight クラスターにアクセスできます。
 
-標準ロード バランサーでは、[パブリック送信 NAT](../load-balancer/load-balancer-outbound-connections.md) (基本ロードバランサーなど) が自動的に提供されません。 送信依存関係のために、独自の NAT ソリューション ([Virtual Network NAT](../virtual-network/nat-overview.md) や[ファイアウォール](./hdinsight-restrict-outbound-traffic.md)など) を提供する必要があります。 HDInsight クラスターから送信依存関係へのアクセスは引き続き必要です。 このような送信依存関係が許可されていない場合は、クラスターの作成に失敗する可能性があります。
+標準ロード バランサーでは、[パブリック送信 NAT](../load-balancer/load-balancer-outbound-connections.md) (基本ロードバランサーなど) が自動的に提供されません。 送信依存関係のために、独自の NAT ソリューション ([Virtual Network NAT](../virtual-network/nat-gateway/nat-overview.md) や[ファイアウォール](./hdinsight-restrict-outbound-traffic.md)など) を提供する必要があります。 HDInsight クラスターから送信依存関係へのアクセスは引き続き必要です。 このような送信依存関係が許可されていない場合は、クラスターの作成に失敗する可能性があります。
 
 ### <a name="prepare-your-environment"></a>環境を準備する
 

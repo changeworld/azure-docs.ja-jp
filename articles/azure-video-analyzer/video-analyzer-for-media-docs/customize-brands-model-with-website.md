@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) Web サイトを使用してブランド モデルをカスタマイズする
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: Azure Video Analyzer for Media (旧称 Video Indexer) Web サイトを使用してブランド モデルをカスタマイズする方法について説明します。
-services: media-services
+services: azure-video-analyzer
 author: anikaz
 manager: johndeu
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 12/15/2019
 ms.author: kumud
-ms.openlocfilehash: 7efb7d434771f7c4f1e8c40c37fdc3fa9b7a45e6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 5bb1a6317ad946da4e7fc00068a7fac40c45d772
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387143"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121447"
 ---
 # <a name="customize-a-brands-model-with-the-video-analyzer-for-media-website"></a>Video Analyzer for Media Web サイトを使用してブランド モデルをカスタマイズする
 

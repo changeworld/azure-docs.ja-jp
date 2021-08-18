@@ -1,22 +1,23 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) を使用して複数のテナントを管理する - Azure
 description: この記事では、Azure Video Analyzer for Media (旧称 Video Indexer) を使用して複数のテナントを管理するためのさまざまな統合オプションについて説明します。
-services: media-services
+services: azure-video-analyzer
 documentationcenter: ''
 author: ika-microsoft
 manager: femila
 editor: ''
 ms.workload: ''
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 706dee5ad4b675085b481e84dd53aca4f1ba3481
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9211bb420b25a94f44263785505f58446b5ca94c
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387192"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119366"
 ---
 # <a name="manage-multiple-tenants"></a>複数のテナントの管理
 

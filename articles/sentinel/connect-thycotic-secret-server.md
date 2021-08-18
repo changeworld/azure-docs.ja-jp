@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: yelevin
-ms.openlocfilehash: a0056391dddec25511deb7033d37f59db3d835c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b023745d8882d639cf9a39fd483dd7b82d1a782d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98567826"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779225"
 ---
 # <a name="connect-your-thycotic-secret-server-to-azure-sentinel"></a>Thycotic Secret Server を Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Thycotic Secret Server コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、Thycotic Secret Server アプライアンスを Azure Sentinel に接続する方法について説明します。 Thycotic Secret Server データ コネクタを使用すると、Thycotic Secret Server のログを Azure Sentinel に簡単に接続できます。これにより、そのデータをブックで表示したり、カスタム アラートの作成に利用したり、調査の改善のために取り込んだりできます。 Thycotic と Azure Sentinel の統合により、CEF データ コネクタを使用して、Secret Server の Syslog メッセージが適切に解析されて表示されます。
 
@@ -51,7 +53,7 @@ ms.locfileid: "98567826"
 
     1. **[1. Linux Syslog agent configuration]\(Linux Syslog エージェントの構成\)** - ログ フォワーダーをまだ実行していない場合、または別のものが必要な場合は、この手順を実行します。 詳細な手順および説明については、Azure Sentinel のドキュメントの「[手順 1: ログ フォワーダーをデプロイする](connect-cef-agent.md)」を参照してください。
 
-    1. **[2. Forward Common Event Format (CEF) logs to Syslog agent]\(Common Event Format (CEF) のログを Syslog エージェントに転送する\)** - Thycotic の指示に従い [Secret Server を構成します](https://thy.center/ss/link/syslog)。 この構成には、次の要素を含める必要があります。
+    1. **[2. Forward Common Event Format (CEF) logs to Syslog agent]\(Common Event Format (CEF) のログを Syslog エージェントに転送する\)** - Thycotic の指示に従い [Secret Server を構成します](https://docs.thycotic.com/ssi/1.0.0/splunk/splunk-on-prem/config/syslog-events.md)。 この構成には、次の要素を含める必要があります。
         - ログの送信先 – お使いのログ転送サーバーのホスト名、IP アドレス、またはこれらの両方
         - プロトコルとポート – **TCP 514** (これ以外が推奨されている場合は、お使いのログ転送サーバーの syslog デーモンで同様の変更を行ってください)
         - ログの形式 – CEF
@@ -78,6 +80,6 @@ CommonSecurityLog
 
 このドキュメントでは、Thycotic Secret Server を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

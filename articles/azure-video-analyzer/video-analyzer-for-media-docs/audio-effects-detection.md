@@ -5,15 +5,16 @@ description: オーディオ効果検出は、Azure Video Analyzer for Media AI 
 author: Juliako
 manager: femila
 ms.service: azure-video-analyzer
+ms.subservice: azure-video-analyzer-media
 ms.topic: article
 ms.date: 05/12/2021
 ms.author: juliako
-ms.openlocfilehash: 79bcde166be7dac53bc7c7d9d8e3ed5e0fc2f91a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d576408cc0d65cc908a24b27ae2a6a50ed7aa9ee
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388039"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121546"
 ---
 #  <a name="audio-effects-detection-preview"></a>オーディオ効果検出 (プレビュー)
 

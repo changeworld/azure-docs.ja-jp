@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 10/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cce3d219158111d147849e45fb0990f41e2423ab
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 8f87adc97039eda25b29116108069d685fd0a8bd
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756745"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767127"
 ---
 # <a name="azure-virtual-desktop-service-connections"></a>Azure Virtual Desktop サービスの接続
 
@@ -22,7 +22,7 @@ Azure Virtual Desktop クライアントの接続に関する問題を解決す�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-フィードバックを行い、製品チームや [Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) のその他のアクティブなコミュニティメンバーと Azure Virtual Desktop Service について話し合うことができます。
+フィードバックを行い、製品チームや [Azure Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum) のその他のアクティブなコミュニティメンバーと Azure Virtual Desktop Service について話し合うことができます。
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>ユーザーが接続しても何も表示されない (フィードなし)
 

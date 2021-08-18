@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 07/03/2017
-ms.openlocfilehash: 0d82a3cb4c08d47b6827072378b9827037d32412
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0753108df52f0dcaea1d6c79eab266eeb000889a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751816"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747223"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault セキュリティ ワールドと地理的境界
 
-Azure 製品は多くの [Azure 地域](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)で利用でき、各 Azure 地域には 1 つ以上のリージョンが含まれています。 たとえば、ヨーロッパ地域には、北ヨーロッパと西ヨーロッパの 2 つのリージョンが含まれていますが、ブラジル地域の唯一のリージョンはブラジル南部です。
+Azure 製品は多くの [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)で利用でき、各 Azure 地域には 1 つ以上のリージョンが含まれています。 たとえば、ヨーロッパ地域には、北ヨーロッパと西ヨーロッパの 2 つのリージョンが含まれていますが、ブラジル地域の唯一のリージョンはブラジル南部です。
 
 Azure Key Vault は、ハードウェア セキュリティ モジュール (HSM) のプールを使用するマルチ テナント サービスです。 地域内のすべての HSM は、"セキュリティ ワールド" と呼ばれる同じ暗号化境界を共有します。 すべての地域が 1 つのセキュリティ ワールドに対応し、その逆も同様です。
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: e29162b2c64a855eeda6059596ca7859c52598b5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 96515eba928ff53a3ba038b7c97231185a24d0a9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745455"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos Core (SQL) API リソースの管理
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "110059113"
 
 - この記事では、Azure CLI のバージョン 2.22.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-他の API の Azure CLI サンプルについては、[CLI Samples for Cassandra](cli-samples-cassandra.md)、[CLI Samples for MongoDB API](cli-samples-mongodb.md)、[CLI Samples for Gremlin](cli-samples-gremlin.md)、[CLI Samples for Table](cli-samples-table.md) を参照してください。
+他の API の Azure CLI サンプルについては、[CLI Samples for Cassandra](cassandra/cli-samples.md)、[CLI Samples for MongoDB API](mongodb/cli-samples.md)、[CLI Samples for Gremlin](cli-samples-gremlin.md)、[CLI Samples for Table](cli-samples-table.md) を参照してください。
 
 > [!IMPORTANT]
 > Azure Cosmos DB リソースの名前を変更することはできません。これは、Azure Resource Manager とリソース URI が連携する方法に違反するためです。

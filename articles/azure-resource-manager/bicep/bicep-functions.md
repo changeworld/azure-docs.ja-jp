@@ -2,13 +2,13 @@
 title: Bicep 関数
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Bicep ファイルで使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: ac8d9660fa198db3da9c5fd3d9770157efd818d6
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 06/16/2021
+ms.openlocfilehash: 827770c449d144e266022ee1b53c3b10078f605f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026896"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292935"
 ---
 # <a name="bicep-functions"></a>Bicep 関数
 
@@ -83,6 +83,7 @@ Bicep では、データ型の警告に関する問題の解決に役立つ[任�
 次の関数は、リソースの値を取得するために使用できます。
 
 * [extensionResourceId](./bicep-functions-resource.md#extensionresourceid)
+* [getSecret](./bicep-functions-resource.md#getsecret)
 * [listAccountSas](./bicep-functions-resource.md#list)
 * [listKeys](./bicep-functions-resource.md#listkeys)
 * [listSecrets](./bicep-functions-resource.md#list)
@@ -141,6 +142,6 @@ Bicep には、文字列を操作するための次の関数が用意されて�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明については、「[Bicep ファイルの構造と構文について](./file.md)」を参照してください。
+* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、[Bicep でリソースの複数のインスタンスをデプロイする方法](./loop-resources.md)に関するページを参照してください。
 * 作成した Bicep ファイルをデプロイする方法については、「[Bicep ファイルと Azure PowerShell を使用してリソースをデプロイする](./deploy-powershell.md)」を参照してください。

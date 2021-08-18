@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f47833ab0fa36e4f58063640d60e188d850ea73f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98119019"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742147"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
@@ -50,7 +50,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 > [!NOTE]
 > スクリプト バンドルから R パッケージをインストールすることは推奨されて **いません**。 スクリプト エディターで直接、パッケージをインストールすることをお勧めします。
-> `install.packages("zoo",repos = "http://cran.us.r-project.org")` などのパッケージをインストールするときは、CRAN リポジトリを指定します。
+> `install.packages("zoo",repos = "https://cloud.r-project.org")` などのパッケージをインストールするときは、CRAN リポジトリを指定します。
 
 > [!WARNING]
 > R スクリプトの実行モジュールでは、JAVA を必要とする `qdap` パッケージや、C++ を必要とする `drc` パッケージなど、ネイティブ コンパイルを必要とするパッケージのインストールはサポートしていません。 これは、このモジュールが、管理者以外のアクセス許可でプレインストールされた環境で実行されるためです。
@@ -74,7 +74,7 @@ azureml_main <- function(dataframe1, dataframe2){
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
   
-  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")
+  if(!require(zoo)) install.packages("zoo",repos = "https://cloud.r-project.org")
   library(zoo)
   # Return datasets as a Named List
   return(list(dataset1=dataframe1, dataset2=dataframe2))
@@ -99,32 +99,6 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-## <a name="uploading-files"></a>ファイルのアップロード
-R スクリプトの実行モジュールでは、Azure Machine Learning R SDK を使用したファイルのアップロードがサポートされています。
-
-次の例は、R スクリプトの実行でイメージ ファイルをアップロードする方法を示しています。
-```R
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-
-  # Generate a jpeg graph
-  img_file_name <- "rect.jpg"
-  jpeg(file=img_file_name)
-  example(rect)
-  dev.off()
-
-  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
-
-
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
-パイプラインの実行が終了したら、モジュールの右側のパネルでイメージをプレビューできます。
-
-> [!div class="mx-imgBorder"]
-> ![アップロードされたイメージのプレビュー](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>R スクリプトの実行を構成する方法
 
@@ -147,7 +121,7 @@ R スクリプトの実行モジュールには、出発点として利用でき
 1. **[R script]\(R スクリプト\)** テキストボックスに、有効な R スクリプトを入力するか貼り付けます。
 
     > [!NOTE]
-    > スクリプトを記述するときは注意が必要です。 宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことを確認してください。 この記事の最後に記載したプレインストールされているパッケージの一覧には特に注意してください。 一覧に記載されていないパッケージを使用するには、スクリプトでインストールします。 たとえば `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")` です。
+    > スクリプトを記述するときは注意が必要です。 宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことを確認してください。 この記事の最後に記載したプレインストールされているパッケージの一覧には特に注意してください。 一覧に記載されていないパッケージを使用するには、スクリプトでインストールします。 たとえば `install.packages("zoo",repos = "https://cloud.r-project.org")` です。
     
     作業を支援するために、 **[R Script]\(R スクリプト\)** テキスト ボックスにはサンプル コードが事前に入力されており、編集または置換することができます。
     

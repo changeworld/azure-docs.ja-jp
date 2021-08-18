@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: c003b172322892e18fdc7a0e618f00eb526a10a8
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ab706018e7c38e43ae75d5af49c3bd6c0a78d783
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892978"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403487"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -111,7 +111,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 これらのサンプルでは、Eclipse Mosquitto ライブラリを使用して、IoT ハブに実装されている MQTT ブローカーにメッセージを送信します。
 
-[Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)の規則を使用するようにサンプルを調整する方法については、「[チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する](../iot-pnp/tutorial-use-mqtt.md)」を参照してください。
+[Azure IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)の規則を使用するようにサンプルを調整する方法については、「[チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する](../iot-develop/tutorial-use-mqtt.md)」を参照してください。
 
 このリポジトリには、次のものが含まれます。
 
@@ -123,7 +123,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
 
-* PnPMQTTWin32: IoT プラグ アンド プレイのデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 詳細については、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)に関するページをご覧ください
+* PnPMQTTWin32: IoT プラグ アンド プレイのデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 詳細については、[IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)に関するページをご覧ください
 
 **Linux の場合:**
 

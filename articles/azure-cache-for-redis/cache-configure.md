@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82123180ca49510441f3e00228351a16c16bc10f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1d49d222ff26198be0b9b07df900fa4dfac6c07d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087294"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294104"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 
@@ -153,8 +153,6 @@ Azure Cache for Redis の設定の表示と構成は、左側にある **[Azure 
 > [!IMPORTANT]
 > **maxmemory-reserved** と **maxfragmentationmemory-reserved** 設定は、Standard キャッシュと Premium キャッシュにのみ使用可能です。
 >
-> `noeviction` 削除ポリシーは、Enterprise レベルのキャッシュでのみ利用可能なメモリ ポリシーです。
->
 
 #### <a name="keyspace-notifications-advanced-settings"></a>キースペース通知 (詳細設定)
 
@@ -185,18 +183,18 @@ Redis キースペース通知は、左側の **[詳細設定]** で構成しま
 
 ![推奨事項](./media/cache-configure/redis-cache-recommendations.png)
 
-左側の **[Azure Cache for Redis]** にある[監視グラフ](cache-how-to-monitor.md#monitoring-charts) セクションと[使用状況グラフ](cache-how-to-monitor.md#usage-charts) セクションでは、以下のメトリックを監視できます。
+左側の **[Azure Cache for Redis]** にある [監視グラフ](cache-how-to-monitor.md#monitoring-charts) セクションと [使用状況グラフ](cache-how-to-monitor.md#usage-charts) セクションでは、以下のメトリックを監視できます。
 
 各価格レベルには、クライアント接続、メモリ、および帯域幅についてさまざまな制限があります。 長時間にわたり、キャッシュがこれらのメトリックの最大容量に近づいている場合は、推奨項目が作成されます。 **[推奨事項]** ツールで検証されるメトリックと制限の詳細については、次の表をご覧ください。
 
 | Azure Cache for Redis のメトリック | 詳細情報 |
 | --- | --- |
-| ネットワーク帯域幅の使用量 |[キャッシュ パフォーマンス - 使用できる帯域幅](cache-planning-faq.md#azure-cache-for-redis-performance) |
+| ネットワーク帯域幅の使用量 |[キャッシュ パフォーマンス - 使用できる帯域幅](./cache-planning-faq.yml#azure-cache-for-redis-performance) |
 | 接続されているクライアント数 |[既定の Redis サーバー構成 - maxclients](#maxclients) |
 | サーバーの負荷 |[使用状況グラフ -  Redis サーバーの負荷](cache-how-to-monitor.md#usage-charts) |
-| メモリ使用量 |[キャッシュのパフォーマンス - サイズ](cache-planning-faq.md#azure-cache-for-redis-performance) |
+| メモリ使用量 |[キャッシュのパフォーマンス - サイズ](./cache-planning-faq.yml#azure-cache-for-redis-performance) |
 
-キャッシュをアップグレードするには、 **[今すぐアップグレード]** を選択して、価格レベルを変更し、キャッシュの[スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[適切なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)」を参照してください
+キャッシュをアップグレードするには、 **[今すぐアップグレード]** を選択して、価格レベルを変更し、キャッシュの [スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[適切なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)」を参照してください
 
 ### <a name="scale"></a>スケール
 
@@ -345,7 +343,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
 
 ### <a name="redis-metrics"></a>[Redis メトリック]
 
-**[Redis メトリック]** を選択してキャッシュの[メトリックを表示](cache-how-to-monitor.md#view-cache-metrics)します。
+**[Redis メトリック]** を選択してキャッシュの [メトリックを表示](cache-how-to-monitor.md#view-cache-metrics)します。
 
 ### <a name="alert-rules"></a>アラート ルール
 
@@ -353,7 +351,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
 
 ### <a name="diagnostics"></a>診断
 
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/essentials/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、 **[診断]** を選択し、キャッシュ診断の格納に使用する[ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/essentials/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、 **[診断]** を選択し、キャッシュ診断の格納に使用する [ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
 
 >[!NOTE]
 >キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーム配信したり、Azure Monitor ログに送信したり](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)できます。
@@ -424,7 +422,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
   * P4 (53 GB ～ 530 GB) - 最大 64 のデータベース
   * Redis クラスターが有効なすべての Premium キャッシュ - Redis クラスターは、データベース 0 の使用のみをサポートするため、Redis クラスターが有効な Premium キャッシュの `databases` の制限は、実質的に 1 で、 [Select](https://redis.io/commands/select) コマンドは使用できません。 詳細については、「 [クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-データベースの詳細については、「[What are Redis databases? (Redis データベースとは)](cache-development-faq.md#what-are-redis-databases)」を参照してください
+データベースの詳細については、「[What are Redis databases? (Redis データベースとは)](cache-development-faq.yml#what-are-redis-databases-)」を参照してください
 
 > [!NOTE]
 > `databases` の設定は、キャッシュの作成中にのみ構成できます。また、PowerShell、CLI、その他の管理クライアントを使用する必要があります。 PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。
@@ -517,4 +515,4 @@ shard1>get myKey
 
 ## <a name="next-steps"></a>次のステップ
 
-* Redis コマンドの使用の詳細については、「[How can I run Redis commands? (Redis コマンドの実行方法)](cache-development-faq.md#how-can-i-run-redis-commands)」をご覧ください。
+* Redis コマンドの使用の詳細については、「[How can I run Redis commands? (Redis コマンドの実行方法)](cache-development-faq.yml#how-can-i-run-redis-commands-)」をご覧ください。

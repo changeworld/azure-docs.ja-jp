@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: 4ebdb5d092a64213727bd35d923c335c8e82210b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8175fa121828b9c50911fee8bb811115a630e919
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479908"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460542"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code 拡張機能 (プレビュー) を使用して Azure Machine Learning リソースを管理する
 
@@ -25,7 +25,7 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure のサブスクリプション。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) にサインアップしてお試しください。
+- Azure のサブスクリプション。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) にサインアップしてお試しください。
 - Visual Studio Code。 インストールしていない場合は、[インストール](https://code.visualstudio.com/docs/setup/setup-overview)します。
 - Azure Machine Learning 拡張機能。 拡張機能を設定するには、[Azure Machine Learning VS Code 拡張機能のインストール ガイド](how-to-setup-vs-code.md)に従ってください。
 

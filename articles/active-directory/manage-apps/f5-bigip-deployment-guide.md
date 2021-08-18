@@ -2,22 +2,23 @@
 title: F5 を使用した Azure AD のセキュリティで保護されたハイブリッド アクセスのデプロイ ガイド | Microsoft Docs
 description: セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition (VE) VM を Azure IaaS にデプロイするチュートリアル
 services: active-directory
-author: gargi-sinha
+author: davidmu1
 manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 10/12/2020
-ms.author: gasinh
+ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aeb48b5ee2bd3fbb127b3a88e7dda4946e96c163
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: miccohen
+ms.openlocfilehash: f33e9a8207e3b8e6986999b7ea19aedbcb19b4da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108184786"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749209"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition VM を Azure IaaS にデプロイするチュートリアル
 
@@ -244,12 +245,12 @@ BIG-IP の **アクセス ガイド付き構成** を使用して SHA を実装�
 
  |     フィールド   |   値        |
  |:------------|:------------|
- |source| Any|
+ |ソース| Any|
  |Source port ranges| *|
  |送信先 IP アドレス|BIG-IP-VM のすべてのセカンダリ プライベート IP のコンマ区切りリスト|
  |宛先ポート| 80,443|
  |プロトコル| TCP |
- |アクション| 許可|
+ |アクション| Allow|
  |優先度|100 ～ 4096 の範囲の使用可能な最小値|
  |名前 | わかりやすい名前 (たとえば、「`BIG-IP-VM_Web_Services_80_443`」)|
 
@@ -273,7 +274,7 @@ BIG-IP システムは Web 構成 UI を使用して管理します。この UI 
 
 - 内部ネットワーク上の VM から、または VPN 経由で接続する場合は、BIG-IP のプライマリ IP と Web 構成ポートに直接接続します。 たとえば、「 `https://<BIG-IP-VM_Primary_IP:8443` 」のように入力します。 ブラウザーで接続が安全でないことを示すメッセージが表示されますが、BIG-IP が構成されるまで、このメッセージは無視してかまいません。 ブラウザーによってアクセスのブロックが要求される場合は、キャッシュをクリアして、もう一度やり直してください。
 
-- アプリケーション プロキシ経由で Web 構成を公開した場合は、`https://big-ip-vm.contoso.com` のように、ポートを追加せずに、外部から Web 構成にアクセスするために定義された URL を使用します。 内部 URL は、`https://big-ip-vm.contoso.com:8443` のように、Web 構成ポートを使用して定義する必要があります 
+- アプリケーション プロキシ経由で Web 構成を公開した場合は、`https://big-ip-vm.contoso.com` のように、ポートを追加せずに、外部から Web 構成にアクセスするために定義された URL を使用します。 内部 URL は、`https://big-ip-vm.contoso.com:8443` のように、Web 構成ポートを使用して定義する必要があります
 
 また、基になる SSH 環境を介して BIG-IP システムを管理することもできます。これは通常、コマンドライン (CLI) タスクとルートレベルのアクセスに使用されます。 CLI への接続には、次のようにいくつかのオプションがあります。
 
@@ -474,14 +475,14 @@ Get-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 
 ## <a name="additional-resources"></a>その他のリソース
 
--   [Reset BIG-IP VE password in Azure (Azure での BIG-IP VE パスワードのリセット)](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html)
-    -   [Reset the password without using the portal (ポータルを使用せずにパスワードをリセットする)](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html#reset-the-password-without-using-the-portal)
+- [Reset BIG-IP VE password in Azure (Azure での BIG-IP VE パスワードのリセット)](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html)
+- [Reset the password without using the portal (ポータルを使用せずにパスワードをリセットする)](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html#reset-the-password-without-using-the-portal)
 
--   [Change the NIC used for BIG-IP VE management (BIG-IP VE の管理に使用する NIC の変更)](https://clouddocs.f5.com/cloud/public/v1/shared/change_mgmt_nic.html)
+- [Change the NIC used for BIG-IP VE management (BIG-IP VE の管理に使用する NIC の変更)](https://clouddocs.f5.com/cloud/public/v1/shared/change_mgmt_nic.html)
 
--   [About routes in a single NIC configuration (単一 NIC 構成でのルートについて)](https://clouddocs.f5.com/cloud/public/v1/shared/routes.html)
+- [About routes in a single NIC configuration (単一 NIC 構成でのルートについて)](https://clouddocs.f5.com/cloud/public/v1/shared/routes.html)
 
--   [Microsoft Azure:waagent](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_waagent.html)
+- [Microsoft Azure:waagent](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_waagent.html)
 
 ## <a name="next-steps"></a>次の手順
 

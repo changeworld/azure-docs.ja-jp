@@ -4,12 +4,12 @@ description: この記事では、Microsoft.ServiceBus サービス エンドポ
 ms.topic: article
 ms.date: 03/29/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9b5aba6c5ad4e1e6d0c90b99ebcdf441bb35cc39
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 63a2f556739f7f3eaec3874e6d02cc996e2aaec4
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960454"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416724"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>特定の仮想ネットワークから Azure Service Bus 名前空間へのアクセスを許可する
 Service Bus と[仮想ネットワーク (VNet) サービス エンドポイント][vnet-sep]の統合により、メッセージング機能へのアクセスを、仮想ネットワークにバインドされている仮想マシンなどのワークロードから保護し、ネットワーク トラフィック パスを両端で保護できます。
@@ -85,7 +85,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
     > [!NOTE]
     > 特定の IP アドレスまたは範囲からのアクセスを許可する方法については、[特定の IP アドレスまたは範囲からのアクセスの許可](service-bus-ip-filtering.md)に関するページを参照してください。
 
-[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
+[!INCLUDE [service-bus-trusted-services](./includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 次の Resource Manager テンプレートの例では、既存の Service Bus 名前空間に仮想ネットワーク規則を追加します。 ネットワーク規則では、仮想ネットワーク内のサブネットの ID を指定します。 

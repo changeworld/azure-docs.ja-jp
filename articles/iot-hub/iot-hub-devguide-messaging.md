@@ -2,7 +2,6 @@
 title: Azure IoT Hub メッセージについて | Microsoft Docs
 description: 開発者ガイド - IoT Hub でのデバイスからクラウドおよびクラウドからデバイスへのメッセージ。 メッセージ形式とサポートされる通信プロトコルに関する情報が含まれています。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: e25b9d6cbe8446fb2f10150f17f7e2b0ccf85d3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec241eadb43b083905a2fea0fc7a03cf46dd31d1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147628"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727816"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>IoT Hub で device-to-cloud および cloud-to-device メッセージを送信する
 
@@ -43,7 +42,7 @@ IoT Hub のメッセージング機能の中心となる特性は、メッセー
 
 * cloud-to-device メッセージ、必要とされるプロパティ、ダイレクト メソッドのどれを選択するかについては、「[cloud-to-device 通信に関するガイダンス](./iot-hub-devguide-c2d-guidance.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * IoT Hub の[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)について学習する。
 

@@ -15,19 +15,18 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.reviewer: johndeu
-ms.openlocfilehash: 9f147e333e4d1b95a14dd3121d7ab304b6166248
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f815ef68830a55e04bcf5ab23ad70bac07b9584c
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010050"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712238"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-> [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
+[!INCLUDE [v2 deprecation notice](../latest/includes/v2-deprecation-notice.md)]
 
 **Media Services Operations REST** API は、Media Services アカウントで、ジョブ、アセット、ライブ チャネル、およびその他のリソースを作成するときに使用されます。 詳細については、[Media Services Operations REST API リファレンス](/rest/api/media/operations/azure-media-services-rest-api-reference)を参照してください。
 

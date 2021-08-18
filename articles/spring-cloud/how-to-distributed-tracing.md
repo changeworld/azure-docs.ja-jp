@@ -1,19 +1,19 @@
 ---
 title: Azure Spring Cloud で分散トレースを使用する
 description: Azure Application Insights を通じて Spring Cloud の分散トレースを使用する方法について説明します
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 48f80d82c003677f2cacfdef2a57ae1aaa68d59d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8eaac1c68c9cff329fcc7b2c408063f01762169b
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135115"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014569"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
@@ -92,7 +92,7 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
   }
 ```
 
-.NET Core Steeltoe アプリでの分散トレースの詳細については、Steeltoe ドキュメントの[分散トレース](https://steeltoe.io/docs/3/tracing/distributed-tracing)に関するページを参照してください。
+.NET Core Steeltoe アプリでの分散トレースの詳細については、Steeltoe ドキュメントの[分散トレース](https://docs.steeltoe.io/api/v3/tracing/)に関するページを参照してください。
 ::: zone-end
 ::: zone pivot="programming-language-java"
 この記事では、次の方法について説明します。
@@ -170,7 +170,6 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
            </dependency>
       </dependencies>
       ```
-
 
 1. これらの変更を反映するために、Azure Spring Cloud サービスをもう一度ビルドしてデプロイします。
 

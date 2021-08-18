@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: e1d99297c0357039606149bdf7e5a526258fc7c5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4c11a1275b94eebba33819ae6c9ffeb313a3ce0b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054142"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463106"
 ---
 # <a name="add-an-image-layer-to-a-map-android-sdk"></a>マップにイメージ レイヤーを追加する (Android SDK)
 
@@ -30,7 +30,7 @@ ms.locfileid: "102054142"
 
 ## <a name="add-an-image-layer"></a>イメージ レイヤーを追加する
 
-次のコードでは、[1922 年のニュージャージー州ニューアークの地図](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)の画像がマップにオーバーレイされています。 このイメージはプロジェクトの `drawable` フォルダーに追加されます。 イメージ レイヤーは、形式 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` で四隅に画像と座標を設定することで作成されます。 多くの場合、`label` レイヤーの下にイメージ レイヤーを追加することが推奨されます。
+次のコードでは、1922 年のニュージャージー州ニューアークの地図の画像がマップにオーバーレイされています。 このイメージはプロジェクトの `drawable` フォルダーに追加されます。 イメージ レイヤーは、形式 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` で四隅に画像と座標を設定することで作成されます。 多くの場合、`label` レイヤーの下にイメージ レイヤーを追加することが推奨されます。
 
 ::: zone pivot="programming-language-java-android"
 

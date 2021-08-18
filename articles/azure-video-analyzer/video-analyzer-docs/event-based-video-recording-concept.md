@@ -2,13 +2,13 @@
 title: Azure Video Analyzer のイベント ベースのビデオ記録 - Azure
 description: Azure Video Analyzer イベントベースのビデオ レコーディング (EVR) とは、イベントによってトリガーされるビデオの記録プロセスのことです。 問題のイベントは、ビデオ信号自体の処理 (モーションが検出された場合など) が原因で発生する可能性があります。または、独立したソース (ドアが開いているというドア センサー信号など) から発生する可能性があります。 この記事では、 EVR に関連するいくつかのユース ケースについて説明します。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: de6581b60d0cee4c1ac34ffbd60ee22509807e8b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 2386e45c3d2cde881436e86eb267365355d652ba
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387304"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601396"
 ---
 # <a name="event-based-video-recording"></a>イベントベースのビデオ記録  
 
@@ -43,7 +43,7 @@ Video Analyzer を使用すると、次の 2 つの方法で EVR を実行でき
 
 ### <a name="video-recording-based-on-events-from-other-sources"></a>他のソースからのイベントに基づくビデオ記録  
 
-このユース ケースでは、別の IoT センサーからのシグナルを使用して、ビデオの記録をトリガーできます。 次の図は、このユース ケースに対応するパイプラインをグラフィカルに表したものです。 このようなパイプラインのパイプライン トポロジの JSON 表現については、[こちら](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-files/topology.json)を参照してください。
+このユース ケースでは、別の IoT センサーからのシグナルを使用して、ビデオの記録をトリガーできます。 次の図は、このユース ケースに対応するパイプラインをグラフィカルに表したものです。 このようなパイプラインのパイプライン トポロジの JSON 表現については、[こちら](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-file-sink/topology.json)を参照してください。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/event-based-video-recording/other-sources.png" alt-text="外部ソースによって信号が送信された場合のライブ ビデオのイベント ベースの記録。":::

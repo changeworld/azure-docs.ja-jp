@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c66f4bd7e311bdaedefe68327fc34d373fc6fec
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91762426"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301656"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>Power Automate と Power Apps からロジック アプリを呼び出す
 
@@ -24,7 +24,7 @@ Power Automate または Power の代わりに、Logic Apps にフローを移�
 >
 > * Logic Apps に同等のコネクタを持たない Power Automate コネクタを見つけるには、[Power Automate コネクタ](/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
 >
-> * Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
+> * Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

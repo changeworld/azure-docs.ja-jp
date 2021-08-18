@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f773bdedcbcb014e15436732e489f9b15900f58
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cc65a1c0cd72d9da9208e7377eaef7a887119f43
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951793"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730534"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -193,7 +193,7 @@ Error details: Failed to enable the Update solution
    | summarize by Computer, Solutions
    ```
 
-    クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、[エージェントを再インストールする](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows)必要があります。
+    クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、[エージェントを再インストールする](../../azure-monitor/agents/agent-windows.md)必要があります。
 
     コンピューターがクエリ結果に一覧表示されている場合は、**Solutions** プロパティの下に **updates** が一覧表示されていることを確認します。 これにより、Update Management に登録されていることが確認できます。 そうでない場合は、スコープ構成に問題がないかどうかを確認します。 [スコープの構成](../update-management/scope-configuration.md)では、Update Management 用に構成されるマシンが決定されます。 対象のコンピューターのスコープ構成を構成するには、「[ワークスペースでのマシンの有効化](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)」を参照してください。
 

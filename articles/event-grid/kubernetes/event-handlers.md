@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 838084204ed2c1979f618bb2bfe644d1f88cd51e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: b0306002ea8a77e82e0247353489761a24654e0e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536501"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417363"
 ---
 # <a name="event-handlers-destinations-in-event-grid-on-kubernetes"></a>Kubernetes 上の Event Grid でのイベント ハンドラーと送信先
 イベント ハンドラーは、エンドポイントを公開するすべてのシステムであり、Event Grid によって送信されるイベントの送信先です。 イベントを受信するイベント ハンドラーはそれに対して動作し、イベント ペイロードを使用して何らかのロジックを実行します。それにより、新しいイベントが発生することがあります。
@@ -20,7 +20,7 @@ ms.locfileid: "110536501"
 
 一般に、Kubernetes 上の Event Grid からは、**Webhook** を介して任意の送信先にイベントを送信できます。 Webhook は、サービスまたはワークロードによって公開される HTTP エンドポイントであり、Event Grid はそれに対するアクセス権を持っています。 Webhook となるワークロードは、同じクラスター内、同じネットワーク領域内、クラウド上、オンプレミス、または Event Grid が到達できる任意の場所の、どこでホストされていてもかまいません。 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 Event Grid により、Webhook を通して、**Kubernetes クラスターでホストされている** 次の送信先がサポートされます。
 

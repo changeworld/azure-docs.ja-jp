@@ -2,18 +2,17 @@
 title: AI エンリッチメントの設計に関するヒント
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search で AI エンリッチメント パイプラインをセットアップするためのヒントとトラブルシューティング。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: d372c4bff4977ed310d2e84aa255679a9c5ed928
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 254c56d2557692afb4ef9f384612006324268edf
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756457"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731790"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 

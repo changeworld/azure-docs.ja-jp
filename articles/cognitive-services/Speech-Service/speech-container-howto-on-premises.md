@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/30/2020
+ms.date: 07/22/2021
 ms.author: aahi
-ms.openlocfilehash: 78ac9ae4aa8611f50caa94c84d3e6c95e58fc91c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 636ab6e2353c2268c75dfa961987d3e0e79e189c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102200735"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454184"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Kubernetes および Helm と共に Speech サービス コンテナーを使用する
 
@@ -243,6 +243,6 @@ Azure Kubernetes Service (AKS) での Helm を使用したアプリケーショ�
 [ms-helm-hub-speech-chart]: https://hub.helm.sh/charts/microsoft/cognitive-services-speech-onpremise
 
 <!-- LINKS - internal -->
-[speech-container-host-computer]: speech-container-howto.md#the-host-computer
+[speech-container-host-computer]: speech-container-howto.md#host-computer-requirements-and-recommendations
 [installing-helm-apps-in-aks]: ../../aks/kubernetes-helm.md
 [cog-svcs-containers]: ../cognitive-services-container-support.md

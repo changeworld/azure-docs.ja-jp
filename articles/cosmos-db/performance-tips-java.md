@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e7b01ae88645d8b16c3a43e21e40b53d242fdde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b29dd31f418cbd483e061e6327f81dd28396f923
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96549244"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665177"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB Sync Java SDK v2 のパフォーマンスに関するヒント
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -87,7 +87,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
    <a id="max-connection"></a>
 3. **Gateway モードを使うときはホストごとに MaxPoolSize を増やす**
 
-    Gateway モードを使用するときは Azure Cosmos DB の要求は HTTPS/REST を介して行われ、ホスト名または IP アドレスごとの既定の接続数の制限の対象となります。 場合によっては、Azure Cosmos DB に対する複数の同時接続をクライアント ライブラリが活かすためには、MaxPoolSize を 200 ～ 1000 に増やす必要があります。 Azure Cosmos DB Sync Java SDK v2 での [ConnectionPolicy.getMaxPoolSize](/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) の既定値は 100 です。 値を変更するには [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) を使います。
+    Gateway モードを使用するときは Azure Cosmos DB の要求は HTTPS/REST を介して行われ、ホスト名または IP アドレスごとの既定の接続数の制限の対象となります。 場合によっては、Azure Cosmos DB に対する複数の同時接続をクライアント ライブラリが活かすためには、MaxPoolSize を 200 ～ 1000 に増やす必要があります。 Azure Cosmos DB Sync Java SDK v2 での [ConnectionPolicy.getMaxPoolSize](/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) の既定値は 100 です。 値を変更するには [setMaxPoolSize](/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) を使います。
 
 4. **パーティション分割コレクションに対する並列クエリを調整する**
 

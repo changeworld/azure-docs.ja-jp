@@ -4,15 +4,15 @@ description: 非構造化データの移行に使用されるツールの基本�
 author: dukicn
 ms.author: nikoduki
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: a1772179313a2465200fc1d6a2cccef836067dde
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 63796f3e569849227dd4fa9c2396f3b052540586
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146601"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122177826"
 ---
 # <a name="comparison-matrix"></a>比較表
 
@@ -26,8 +26,8 @@ ms.locfileid: "108146601"
 | **Azure Files のサポート (すべてのレベル)** | はい                          | はい                      | はい            | はい                            |
 | **Azure NetApp Files のサポート**      | いいえ                           | はい                      | はい            | はい                            |
 | **Azure Blob ホット/クールのサポート**   | いいえ                           | はい (NFS プレビュー経由)    | はい            | はい                            |
-| **Azure Blob アーカイブ層のサポート** | いいえ                           | ×                       | いいえ             | はい (移行先として) |
-| **Azure Data Lake Storage のサポート** | いいえ                           | ×                       | ×             | いいえ                             |
+| **Azure Blob アーカイブ層のサポート** | いいえ                           | いいえ                       | いいえ             | はい (移行先として) |
+| **Azure Data Lake Storage のサポート** | いいえ                           | いいえ                       | いいえ             | いいえ                             |
 | **サポートされているソース**      | Windows Server 2012 R2 以降 | NAS およびクラウド ファイル システム | 任意の NAS および S3 | NAS、Blob、S3                  |
 
 ## <a name="supported-protocols-source--destination"></a>サポートされているプロトコル (ソース/宛先)
@@ -39,8 +39,8 @@ ms.locfileid: "108146601"
 | **SMB 3.0**       | はい | はい | はい | はい |
 | **SMB 3.1**       | はい | はい | はい | はい |
 | **NFS v3**        | いいえ  | はい | はい | はい |
-| **NFS v4.1**      | いいえ  | はい | ×  | はい |
-| **Blob REST API** | いいえ  | ×  | はい | はい |
+| **NFS v4.1**      | いいえ  | はい | いいえ  | はい |
+| **Blob REST API** | いいえ  | いいえ  | はい | はい |
 | **S3**            | いいえ  | はい | はい | はい |
 
 ## <a name="extended-features"></a>拡張された機能
@@ -49,15 +49,15 @@ ms.locfileid: "108146601"
 |--- |-----------------------------------------|--------------------------------------|---------------------------------------------------|---------------------------------------|
 |  **[ソリューション名]**  | [Azure File Sync](../../../file-sync/file-sync-deployment-guide.md) | [DobiMigrate](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview )              | [Data Mobility and Migration](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_4?tab=PlansAndPrice)      | [Intelligent Data Management](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview)    |
 | **UID / SID の再マッピング**                   | いいえ  | はい                        | はい | いいえ                             |
-| **プロトコル ACL の再マッピング**                | いいえ  | ×                         | ×  | いいえ                             |
+| **プロトコル ACL の再マッピング**                | いいえ  | いいえ                         | いいえ  | いいえ                             |
 | **DFS のサポート**                           | はい | はい                        | はい | はい                            |
 | **調整のサポート**                    | はい | はい                        | はい | はい                            |
 | **ファイル パターンの除外**               | いいえ  | はい                        | はい | はい (コピー機能を使用) |
 | **選択的ファイル属性のサポート** | はい | はい                        | はい | はい (拡張属性の場合)  |
 | **伝達の削除**                   | はい | はい                        | はい | はい                            |
-| **NTFS 接合ポイントの追跡**                 | いいえ  | はい                        | ×  | はい                            |
+| **NTFS 接合ポイントの追跡**                 | いいえ  | はい                        | いいえ  | はい                            |
 | **SMB 所有者とグループ所有者のオーバーライド**    | はい | はい                        | はい | いいえ                             |
-| **証拠保全の一貫性のレポート**            | いいえ  | はい                        | ×  | はい                            |
+| **証拠保全の一貫性のレポート**            | いいえ  | はい                        | いいえ  | はい                            |
 | **代替データ ストリームのサポート**    | いいえ  | はい                        | はい | いいえ                             |
 | **移行のスケジュール設定**              | いいえ  | はい                        | はい | はい                            |
 | **ACL の保持**                        | いいえ  | はい                        | はい | はい                            |
@@ -66,9 +66,9 @@ ms.locfileid: "108146601"
 | **アクセス時刻の保持**                | はい | はい                        | はい | はい                            |
 | **変更時刻の保持**              | はい | はい                        | はい | はい                            |
 | **作成時刻の保持**              | いいえ  | はい                        | はい | はい                            |
-| **Azure Data Box のサポート**       | はい | はい                        | ×  | いいえ                             |
+| **Azure Data Box のサポート**       | はい | はい                        | いいえ  | いいえ                             |
 | **スナップショットの移行**                | いいえ  | マニュアル                     | はい | いいえ                             |
-| **シンボリック リンクのサポート**                 | いいえ  | はい                        | ×  | はい                            |
+| **シンボリック リンクのサポート**                 | いいえ  | はい                        | いいえ  | はい                            |
 | **ハード リンクのサポート**                     | いいえ  | 別個のファイルとして移行 | はい | はい                            |
 | **オープンまたはロックされたファイルのサポート**       | はい | はい                        | はい | はい                            |
 | **段階的な移行**                 | はい | はい                        | はい | はい                            |
@@ -149,4 +149,4 @@ ms.locfileid: "108146601"
 - [Azure ファイル共有に移行する](../../../files/storage-files-migration-overview.md)
 - [WANdisco LiveData Platform for Azure を使用して Data Lake Storage に移行する](../../../blobs/migrate-gen2-wandisco-live-data-platform.md)
 - [AzCopy を使用して Azure Storage にデータをコピーまたは移動する](../../../common/storage-use-azcopy-v10.md)
-- [AzReplicate (サンプル アプリケーション) を使用して大規模なデータセットを Azure Blob Storage に移行する](https://github.com/Azure/AzReplicate/tree/master/)
+- [AzReplicate (サンプル アプリケーション) を使用して大規模なデータセットを Azure Blob Storage に移行する](/samples/azure/azreplicate/azreplicate/)

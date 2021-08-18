@@ -4,12 +4,12 @@ description: データ保持およびプライバシー ポリシー ステー�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 56c86387ab06bf0fe94900e654853e74d3ee2603
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3e37024e4fef3e989977ef76b0508aeb66d93b7a
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059412"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616129"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -39,7 +39,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 ## <a name="what-data-does-it-collect"></a>どのようなデータが収集されますか。
 データ ソースは 3 つあります。
 
-* SDK は[開発時](./asp-net.md)または[実行時](./monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](./javascript.md) もあります。ページと共にエンド ユーザーのブラウザーに読み込まれます。
+* SDK は[開発時](./asp-net.md)または[実行時](./status-monitor-v2-overview.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](./javascript.md) もあります。ページと共にエンド ユーザーのブラウザーに読み込まれます。
   
   * それぞれの SDK にはさまざまな [モジュール](./configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
   * デプロイ時に SDK をインストールする場合、標準のモジュールに加え、その API を利用し、独自の製品利用統計情報を送信できます。 このカスタム製品利用統計情報にあらゆるデータを含め、送信できます。
@@ -314,6 +314,6 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [java]: ./java-in-process-agent.md
 [platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ./monitor-performance-live-website-now.md
+[redfield]: ./status-monitor-v2-overview.md
 [start]: ./app-insights-overview.md
 

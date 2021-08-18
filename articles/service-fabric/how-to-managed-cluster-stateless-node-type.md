@@ -3,12 +3,12 @@ title: ステートレス ノード タイプを使用した Service Fabric マ�
 description: Service Fabric マネージド クラスターでステートレス ノード タイプを作成してデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: a1ea4a9d37ce26ac90c2cbae0420e4dbf8797ee2
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 2e7ebd2ec3098cc90c8fb044472c348c68aed689
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689403"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033715"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-with-stateless-node-types"></a>ステートレス ノード タイプを使用した Service Fabric マネージド クラスターのデプロイ
 
@@ -63,4 +63,4 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 Service Fabric マネージド クラスターについて詳しくは、以下の記事をご覧ください。
 
 > [!div class="nextstepaction"]
-> [Service Fabric マネージド クラスターに関するよく寄せられる質問](./faq-managed-cluster.md)
+> [Service Fabric マネージド クラスターに関するよく寄せられる質問](./faq-managed-cluster.yml)

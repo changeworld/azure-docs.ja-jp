@@ -2,18 +2,17 @@
 title: デバイス グループの自動デプロイ - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge で自動デプロイを使用し、共有タグに基づいてデバイスのグループを管理します
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3989ec4ca2b5c9d7385841604678791b20c1d102
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0461fffa62f46491d5bbb3c2c9f66670b3bd9cba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489984"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732878"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動デプロイについて
 

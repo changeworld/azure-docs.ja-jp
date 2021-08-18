@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: ajetasin
 ms.author: ajetasi
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 11/04/2019
-ms.openlocfilehash: 36a96a1927aeedb5f841083241d487e0c61d6813
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 177c78aa21e946cefcb72ab7ce9c34c4e493acf2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96454028"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722879"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics 統合を使用して Azure SQL Database にデータをストリーム配信する (プレビュー)
 

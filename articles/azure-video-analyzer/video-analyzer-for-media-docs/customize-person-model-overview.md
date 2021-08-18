@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧Video Indexer) で人物モデルをカスタマイズする - Azure
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: この記事では、Azure Video Analyzer for Media (旧 Video Indexer) における人物モデルについて、およびそのカスタマイズ方法について概要を示します。
-services: media-services
+services: azure-video-analyzer
 author: anikaz
 manager: johndeu
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: e9f5e8595f190dfb1d7097514c05ce8237efab39
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e3032e42e4c3e741ee20a113b5f5e0ac34c68876
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387072"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123173"
 ---
 # <a name="customize-a-person-model-in-video-analyzer-for-media"></a>Video Analyzer for Media で人物モデルをカスタマイズする
 

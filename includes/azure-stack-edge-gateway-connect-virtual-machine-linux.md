@@ -2,20 +2,22 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 05/13/2021
+ms.date: 06/24/2021
 ms.author: alkohli
-ms.openlocfilehash: 45a82d85510bd432efa93211ffc9dba8b911c557
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bb863a2a6347b32ffcb60984edf2f08d5737d45d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070749"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113120971"
 ---
 VM の作成時に渡したプライベート IP を使用して、VM に接続します。
 
 1. SSH セッションを開き、IP アドレスを使用して接続します。
 
-   `ssh -l <username> <ip address>`
+    ```powershell
+    ssh -l <username> <ip address>
+    ```
 
 1. プロンプトで、VM の作成時に使用したパスワードを入力します。
 
@@ -25,33 +27,27 @@ VM の作成時に渡したプライベート IP を使用して、VM に接続�
 
    VM に接続するときの出力例を次に示します。
 
-    ```powershell
-    PS C:\07-30-2020\linux> ssh -l Administrator 10.126.68.186
-    Administrator@10.126.68.186's password:
-    Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 5.0.0-1027-azure x86_64)
+    ```output
+    PS C:\WINDOWS\system32> ssh -l myazuser "10.126.76.60"
+    The authenticity of host '10.126.76.60 (10.126.76.60)' can't be established.
+    ECDSA key fingerprint is SHA256:V649Zbo58zAYMKreeP7M6w7Na0Yf9QPg4SM7JZVV0E4.
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+    Warning: Permanently added '10.126.76.60' (ECDSA) to the list of known hosts.
+    myazuser@10.126.76.60's password:
+    Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.18.0-1013-azure x86_64)
     
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
     
-      System information as of Thu Jul 30 22:56:11 UTC 2020
+     System information disabled due to load higher than 1.0
     
-      System load:  0.0               Processes:           105
-      Usage of /:   5.6% of 28.90GB   Users logged in:     0
-      Memory usage: 12%               IP address for eth0: 10.126.68.186
-      Swap usage:   0%
+      Get cloud support with Ubuntu Advantage Cloud Guest:
+        http://www.ubuntu.com/business/services/cloud
     
-     * Are you ready for Kubernetes 1.19? It's nearly here! Try RC3 with
-       sudo snap install microk8s --channel=1.19/candidate --classic
-    
-       https://www.microk8s.io/ has docs and details.
-    
-    68 packages can be updated.
-    0 updates are security updates.
-    
-    
-    *** System restart required ***
-    
+    284 packages can be updated.
+    192 updates are security updates. 
+       
     The programs included with the Ubuntu system are free software;
     the exact distribution terms for each program are described in the
     individual files in /usr/share/doc/*/copyright.
@@ -62,5 +58,6 @@ VM の作成時に渡したプライベート IP を使用して、VM に接続�
     To run a command as administrator (user "root"), use "sudo <command>".
     See "man sudo_root" for details.
     
-    Administrator@mylinuxvm:
+    myazuser@myazvmfriendlyname:~$ client_loop: send disconnect: Connection reset
+    PS C:\WINDOWS\system32>
     ```

@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: autoscale
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 0b0a9cc8032cfd849f053e2d45e05f85e4216a23
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7291078c04ca8eb87c50a4dc59a07dd128e1b74a
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936616"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093753"
 ---
 # <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>PowerShell で Azure Cloud Services (クラシック) をスケーリングする方法
 

@@ -1,27 +1,24 @@
 ---
 title: PowerShell を使用して Azure Cloud Services (延長サポート) に移行する
 description: PowerShell を使用して Azure Cloud Services (クラシック) から Azure Cloud Services (延長サポート) に移行する方法
-author: tanmaygore
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
 ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d813cc32d3b635e6da767e3f04386c0e35ea503c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f7626b2af5f5d8c12a29602e62b38ebef2abfd48
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949357"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434284"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>PowerShell を使用して Azure Cloud Services (延長サポート) に移行する
 
 次の手順では、Azure PowerShell コマンドを使用して [Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) から [Cloud Services (延長サポート)](overview.md) に移行する方法について説明します。
-
-> [!IMPORTANT]
-> 移行ツールを使用した Cloud Services (クラシック) から Cloud Services (延長サポート) への移行は現在、パブリック プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="1-plan-for-migration"></a>1) 移行を計画する
 移行を成功させる上で、計画立案は最も重要な手順です。 移行の手順を開始する前に、[Cloud Services (延長サポート) の概要](overview.md)に関する記事と「[クラシックから Azure Resource Manager への IaaS リソースの移行計画](../virtual-machines/migration-classic-resource-manager-plan.md)」を確認してください。 
@@ -206,4 +203,5 @@ Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 
 
 ## <a name="next-steps"></a>次のステップ
-[移行後の変更](in-place-migration-overview.md#post-migration-changes)に関するセクションを参照し、新しい Cloud Services (延長サポート) のデプロイのデプロイ ファイル、自動化、その他の属性での変更を確認します。
+
+[移行後の変更](post-migration-changes.md)に関するセクションを参照し、新しい Cloud Services (延長サポート) のデプロイのデプロイ ファイル、自動化、その他の属性での変更を確認します。

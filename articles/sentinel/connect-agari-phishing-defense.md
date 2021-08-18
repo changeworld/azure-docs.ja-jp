@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: a60a0291d6669b2a9115dffa8e0d4d63fae4a440
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f356bce141ece3f92e6f482cfa4aff1a914fbb61
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724440"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253040"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Agari のフィッシング対策とブランド保護ソリューションを Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Agari のフィッシング対策とブランド保護コネクタは現在、**プレビュー** の段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Agari のフィッシング対策とブランド保護コネクタを使用すると、ブランド保護とフィッシング対策ソリューションのログを Azure Sentinel に簡単に接続できます。これにより、データをブックで表示すること、データを照会してカスタム アラートを作成すること、データを組み込んで調査を改善することができます。 Agari のソリューションを、Azure Functions と REST API を使用して Azure Sentinel と統合します。
 
@@ -58,7 +60,7 @@ Agari ソリューションは、Azure 関数アプリを使用して Azure Sent
 
 1. **(オプション) セキュリティ グラフ API を有効にします。** 
 
-    Agari 関数アプリを使用すると、セキュリティ グラフ API を介して Azure Sentinel と脅威インテリジェンスを共有できます。 この機能を使用するには、[Sentinel 脅威インテリジェンス プラットフォーム コネクタ](connect-threat-intelligence.md)を有効にし、Azure Active Directory で[アプリケーションを登録する](/graph/auth-register-app-v2)必要があります。
+    Agari 関数アプリを使用すると、セキュリティ グラフ API を介して Azure Sentinel と脅威インテリジェンスを共有できます。 この機能を使用するには、[Sentinel 脅威インテリジェンス プラットフォーム コネクタ](./connect-threat-intelligence-tip.md)を有効にし、Azure Active Directory で[アプリケーションを登録する](/graph/auth-register-app-v2)必要があります。
 
     このプロセスでは、関数アプリをデプロイするときに使用する 3 つの情報 (**Graph テナント ID**、**Graph クライアント ID**、**Graph クライアント シークレット**) が提供されます。
 
@@ -118,6 +120,6 @@ Agari ソリューションのデータに対してクエリを実行するに�
 
 このドキュメントでは、Agari のフィッシング対策とブランド保護ソリューションを Azure Sentinel に接続する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

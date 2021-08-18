@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9fe7ef8e6ccbadd5e78de5bfd5f137132dbe6319
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: a04bf8a1805fa55afac3d51a2d4f3ba353edf03c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567946"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860245"
 ---
 # <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>専用 SQL プール Azure Synapse Analytics にデータを読み込むためのベスト プラクティス
 
@@ -106,7 +106,7 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="create-statistics-after-the-load"></a>読み込み後に統計を作成する
 
-クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の作成は手動で行うか、[auto-create statistics](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を有効にして行うことができます。
+クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の作成は手動で行うか、[auto-create statistics](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?context=/azure/synapse-analytics/context/context) を有効にして行うことができます。
 
 統計の詳細については、 [統計](develop-tables-statistics.md)に関する記事を参照してください。 次の例では、Customer_Speed テーブルの 5 つの列に関する統計を手動で作成する方法を示しています。
 
@@ -144,6 +144,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>次のステップ
 
-- PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[Azure Synapse Analytics の ELT の設計](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。
+- PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[Azure Synapse Analytics の ELT の設計](../sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context)に関するページをご覧ください。
 - 読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage から Azure Synapse Analytics へのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関するページをご覧ください。
-- データの読み込みの監視については、「[DMV を利用してワークロードを監視する](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+- データの読み込みの監視については、「[DMV を利用してワークロードを監視する](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context)」を参照してください。

@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) を使用したアニメーション化されたキャラクターの検出
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer
 description: 'このトピックでは、Azure Video Analyzer for Media (旧称: Video Indexer) を使用して、アニメーション化されたキャラクターを検出する方法について説明します。'
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1ebdd2cfa3e380b6c111c8c8c7edbad252a43c50
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4246bbd679efe9c56d47868beac9b46ab64fda53
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388055"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121537"
 ---
 # <a name="animated-character-detection-preview"></a>アニメーション化されたキャラクターの検出 (プレビュー)
 

@@ -3,12 +3,12 @@ title: Container insights で GPU の監視を構成する | Microsoft Docs
 description: この記事では、Container insights を使用して、NVIDIA および AMD の GPU が有効になっているノードが含まれる Kubernetes クラスターの監視を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 2958b000ac0dabcd7fddf75a58f553b705a95e9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f18628b2814305d8629d3216bb0a0d1bab092fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731869"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734294"
 ---
 # <a name="configure-gpu-monitoring-with-container-insights"></a>Container insights で GPU の監視を構成する
 
@@ -39,7 +39,7 @@ Container insights を使用すると、次のメトリックが 60 秒間隔で
 
 ## <a name="gpu-performance-charts"></a>GPU パフォーマンス グラフ 
 
-Container insights には、すべてのクラスターに対する GPU ブックとして、前の表で示したメトリックの事前構成済みのグラフが含まれています。 Container insights で使用できるブックの説明については、「[Container insights のブック](../insights/container-insights-reports.md)」を参照してください。
+Container insights には、すべてのクラスターに対する GPU ブックとして、前の表で示したメトリックの事前構成済みのグラフが含まれています。 Container insights で使用できるブックの説明については、「[Container insights のブック](container-insights-reports.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

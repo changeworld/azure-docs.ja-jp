@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 584a3503bf736fcf727a169611e6c79e0c374c90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edd82086dba6f603c50edd23c3f3757b95dcdb9d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647933"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468366"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Azure Automanage for VMs でカスタム設定を作成する
 
@@ -115,4 +115,4 @@ Azure Automanage では、リソースを格納するための既定のリソー
 よく寄せられる質問とその回答については、FAQ を参照してください。 
 
 > [!div class="nextstepaction"]
-> [よく寄せられる質問](faq.md)
+> [よく寄せられる質問](faq.yml)

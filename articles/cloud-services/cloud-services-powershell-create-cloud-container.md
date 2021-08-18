@@ -4,16 +4,16 @@ description: この記事では、PowerShell を使用してクラウド サー�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 39fe439e37b1af4e833396ef83205729af8c7ad3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b24e1ea84a907edc2960b6638def84806aaf18d1
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102610418"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092619"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-classic-container"></a>Azure PowerShell コマンドを使用して空のクラウド サービス (クラシック) コンテナーを作成する
 

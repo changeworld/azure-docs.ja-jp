@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 236fcdb27bccf56cfe9bf92784f74cfa7ac3057b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869223"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285447"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 
@@ -97,7 +97,7 @@ Microsoft およびパートナーの監視ソリューションは、[Azure Mar
 コミュニティのメンバーは、Azure クイック スタート テンプレートに管理ソリューションを提出できます。 これらのソリューションを直接インストールするか、または後でインストールするためにテンプレートにダウンロードできます。
 
 1. 「[Log Analytics ワークスペースと Automation アカウント](#log-analytics-workspace-and-automation-account)」で説明されているプロセスに従って、ワークスペースとアカウントをリンクします。
-2. [Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)にアクセスします。
+2. [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)にアクセスします。
 3. 興味のあるソリューションを検索します。
 4. 検索結果のソリューションを選択して、詳細を確認します。
 5. **[Deploy to Azure]** (Azure にデプロイ) ボタンをクリックします。

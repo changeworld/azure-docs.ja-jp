@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: 5a0de772598877029649f8a985c79e28f5264535
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9fc6095cc2961cf494238749b240bd90de1d0eb
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98186177"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032671"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
@@ -41,10 +41,6 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 これらのサイトのツールは DNS 待機時間を測定し、世界各地にあるクライアントの場所の解決された IP アドレスを表示します。 これらのツールのほとんどは DNS の結果をキャッシュに保存しません。 そのため、ツールではテストを実行するたびに完全な DNS lookup が表示されます。 独自のクライアントからテストする場合は、完全な DNS lookup のパフォーマンスを TTL 期間中に 1 回だけテストできます。
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>DNS パフォーマンスを測定するサンプル ツール
-
-* [SolveDNS](https://www.solvedns.com/dns-comparison/)
-
-    SolveDNS には、多くのパフォーマンス ツールが備わっています。 DNS Comparison ツールでは、DNS 名を解決するのにかかる時間と他の DNS サービス プロバイダーとの比較が表示されます。
 
 * [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 

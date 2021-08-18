@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4cbce0bce0b495bee9a2f9c717f21de665f29f7
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945434"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280345"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -154,7 +154,7 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント](..
 
 既定の BLOB コンテナーには、ジョブ履歴やログなどのクラスター固有の情報が格納されます。 既定の BLOB コンテナーと複数の HDInsight クラスターを共有しないでください。 この操作により、ジョブ履歴が破損する場合があります。 各クラスターで別のコンテナーを使用することをお勧めします。 既定のストレージ アカウントではなく、関連するすべてのクラスターに指定された、リンクされているストレージ アカウントに共有データを格納します。 リンクされているストレージ アカウントの構成の詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 ただし、元の HDInsight クラスターを削除した後でも既定のストレージ コンテナーを再利用できます。 HBase クラスターでは、削除された HBase クラスターで使用される既定の BLOB コンテナーを使用して、新しい HBase クラスターを作成することで、HBase テーブルのスキーマとデータを実際に保持できます。
 
-[!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+[!INCLUDE [secure-transfer-enabled-storage-account](includes/hdinsight-secure-transfer.md)]
 
 ## <a name="use-additional-storage-accounts"></a>追加ストレージ アカウントの使用
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 6b9bf8aea031b7dce88fbaa096d8e5996e1d6f57
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 353fdd952ed4b2baa8920f1e15fb0dc0f44264ba
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110189764"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122202072"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -190,7 +190,7 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 ## <a name="disable-local-accounts-preview"></a>ローカル アカウントを無効にする (プレビュー)
 
-AKS クラスターをデプロイすると、既定でローカル アカウントが有効になります。 RBAC または Azure Active Directory 統合を有効にしている場合でも、監査できないバックドア オプションとして、`--admin` アクセスが原則的に存在します。 これを踏まえて、AKS には、`disable-local` フラグを使用してローカル アカウントを無効にする機能が用意されています。 また、機能がクラスターで有効になっているかどうかを示すために、マネージド クラスター API に `properties.disableLocalAccounts` フィールドが追加されています。
+AKS クラスターをデプロイすると、既定でローカル アカウントが有効になります。 RBAC または Azure Active Directory 統合を有効にしている場合でも、監査できないバックドア オプションとして、`--admin` アクセスが原則的に存在します。 これを踏まえて、AKS には、`disable-local-accounts` フラグを使用してローカル アカウントを無効にする機能が用意されています。 また、機能がクラスターで有効になっているかどうかを示すために、マネージド クラスター API に `properties.disableLocalAccounts` フィールドが追加されています。
 
 > [!NOTE]
 > Azure AD 統合が有効になっているクラスターであっても、`aad-admin-group-object-ids` によって指定されたグループに属するユーザーは、管理者以外の資格情報を使用して引き続きアクセスできます。 Azure AD 統合が有効になっておらず、かつ `properties.disableLocalAccounts` が true に設定されていないクラスターでは、ユーザーの資格情報も管理者の資格情報も取得することはできません。
@@ -221,10 +221,10 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="create-a-new-cluster-without-local-accounts"></a>ローカル アカウントを使用せずに新しいクラスターを作成する
 
-ローカル アカウントを使用せずに新しい AKS クラスターを作成するには、`disable-local` フラグを指定して [az aks create][az-aks-create] コマンドを使用します。
+ローカル アカウントを使用せずに新しい AKS クラスターを作成するには、`disable-local-accounts` フラグを指定して [az aks create][az-aks-create] コマンドを使用します。
 
 ```azurecli-interactive
-az aks create -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+az aks create -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local-accounts
 ```
 
 出力で、`properties.disableLocalAccounts` フィールドが true に設定されていることをチェックして、ローカル アカウントが無効になっていることを確認します。
@@ -247,10 +247,10 @@ Operation failed with status: 'Bad Request'. Details: Getting static credential 
 
 ### <a name="disable-local-accounts-on-an-existing-cluster"></a>既存のクラスターでローカル アカウントを無効にする
 
-既存の AKS クラスターでローカル アカウントを無効にするには、`disable-local` フラグを指定して [az aks update][az-aks-update] コマンドを使用します。
+既存の AKS クラスターでローカル アカウントを無効にするには、`disable-local-accounts` フラグを指定して [az aks update][az-aks-update] コマンドを使用します。
 
 ```azurecli-interactive
-az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local-accounts
 ```
 
 出力で、`properties.disableLocalAccounts` フィールドが true に設定されていることをチェックして、ローカル アカウントが無効になっていることを確認します。

@@ -2,18 +2,17 @@
 title: ダウンストリーム デバイスを認証する - Azure IoT Edge | Microsoft Docs
 description: IoT Hub へのダウンストリーム デバイスまたはリーフ デバイスの認証方法、およびこれらの接続を Azure IoT Edge ゲートウェイ デバイスを経由してルーティングする方法。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f8e3541fc3d9ae6fe49af4445402af17a3d3d3e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a451866654df6d73a464124537f410fd8fa94d79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770855"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747289"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
 

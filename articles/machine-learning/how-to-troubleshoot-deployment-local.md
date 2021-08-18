@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 8b2acc37efb497748abe5f63bd58e96b16171b21
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 68742801234696f104de85832353b98ef33b1b2d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538398"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454404"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>ローカルでのモデル デプロイを使用したトラブルシューティング
 
@@ -24,7 +24,7 @@ Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) への�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 * オプション A (**推奨**) - Azure Machine Learning コンピューティング インスタンスでローカルにデバッグする
    * [コンピューティング インスタンス](how-to-deploy-local-container-notebook-vm.md)が実行されている Azure Machine Learning ワークスペース
 * オプション B - お使いのコンピューティングでローカルにデバッグする

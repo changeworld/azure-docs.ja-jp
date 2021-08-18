@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: b39a74bd06f942cf21d201c8cef48bc6dfc57d46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 113f75f548dc3cc71ac8fe430f649422b4cd89f6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96548088"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456762"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>SQL API アカウントで Azure Cosmos DB Async Java SDK v2 を使用する場合の問題のトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -199,7 +199,7 @@ Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()
 ```bash
 mvn dependency:tree
 ```
-詳細については、[maven の依存関係ツリー ガイド](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)を参照してください。
+詳細については、[maven の依存関係ツリー ガイド](https://maven.apache.org/plugins-archives/maven-dependency-plugin-2.10/examples/resolving-conflicts-using-the-dependency-tree.html)を参照してください。
 
 RxJava 1.2.2 のプロジェクトの他の依存関係の過渡的依存関係を識別したら、pom ファイルでその lib に対する依存関係を変更して、それへの RxJava の過渡的依存関係を除外できます。
 

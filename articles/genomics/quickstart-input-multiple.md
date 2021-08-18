@@ -9,12 +9,12 @@ manager: cgronlund
 ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c7a65a2ff58d3191e7b21ecd40a8aa1bc1f4086
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "72248560"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551850"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>同じサンプルに属する複数の入力を使用するワークフローを送信する
 
@@ -156,4 +156,4 @@ output_storage_account_container: outputs
 `msgen submit -f config.txt` という呼び出しを使って、`config.txt` ファイルを送信します。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、複数の BAM ファイルまたは FASTQ ファイルのペアを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページをご覧ください。 
+この記事では、複数の BAM ファイルまたは FASTQ ファイルのペアを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.yml) に関するページをご覧ください。 

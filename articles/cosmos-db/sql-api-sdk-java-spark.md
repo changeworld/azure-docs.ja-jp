@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: fc1927ddf867ab9bfd5b288d57f2c5c9e59b0295
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3bc3a7c4cd6f02fcfae8c92875c09f6c31416c89
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957248"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232083"
 ---
 # <a name="azure-cosmos-db-apache-spark-2-oltp-connector-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Apache Spark 2 OLTP コネクタのリリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -121,7 +121,7 @@ Core (SQL) 用 Azure Cosmos DB Apache Spark 2 OLTP コネクタを使用する�
 * メタデータ呼び出しの数を減らすために、接続管理と接続プーリングを改善。
 
 ## <a name="faq"></a>よく寄せられる質問
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

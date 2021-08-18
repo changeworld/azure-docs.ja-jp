@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d147d2c094923e971e52e1dbfe3f7a19776d38c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 435cc73d9c2a91a9c72bf07258a15dced581d580
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89463279"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110063"
 ---
 # <a name="azure-ad-connect-health-instructions-for-data-retrieval"></a>データ取得のための Azure AD Connect Health 命令
 
@@ -57,5 +57,5 @@ AD FS での不正なパスワードの試行でフラグが設定されたア�
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health の操作](how-to-connect-health-operations.md)
-* [Azure AD Connect Health の FAQ](reference-connect-health-faq.md)
+* [Azure AD Connect Health の FAQ](reference-connect-health-faq.yml)
 * [Azure AD Connect Health のバージョンの履歴](reference-connect-health-version-history.md)

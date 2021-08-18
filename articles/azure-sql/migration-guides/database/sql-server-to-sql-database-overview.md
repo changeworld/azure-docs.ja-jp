@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 06da7175456125cfb65c6007f283da2eb6b93622
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5ad3560cccb0cd87191f103d435776ce401beb90
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786807"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746623"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>移行の概要: SQL Server から Azure SQL Database へ
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -182,18 +182,15 @@ SQL Database のクラウドベースの高度な機能をぜひ活用してく�
 
 |Asset  |説明  |
 |---------|---------|
-|[データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、ワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの対応性、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価を迅速に行うことができます。|
-|[DBLoader ユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader を使用すると、区切りテキスト ファイルから SQL Server にデータを読み込むことができます。 この Windows コンソール ユーティリティでは、SQL Server ネイティブ クライアントの一括読み込みインターフェイスが使用されます。 このインターフェイスは、Azure SQL Database と共に、SQL Server のすべてのバージョンで動作します。|
-|[PowerShell を使用したデータベースの一括作成](https://github.com/Microsoft/DataMigrationTeam/tree/master/Bulk%20Database%20Creation%20with%20PowerShell)|リソース グループ (create_rg.ps1)、[Azure の論理サーバー](../../database/logical-servers.md) (create_sqlserver.ps1)、および SQL データベース (create_sqldb.ps1) を作成する 3 つの PowerShell スクリプト セットを使用できます。 スクリプトにはループ機能が含まれているので、必要に応じて反復処理を行って、必要な数のサーバーとデータベースを作成できます。|
-|[MSSQL-Scripter と PowerShell を使用したスキーマの一括デプロイ](https://github.com/Microsoft/DataMigrationTeam/tree/master/Bulk%20Schema%20Deployment%20with%20MSSQL-Scripter%20&%20PowerShell)|この資産では、リソース グループが作成され、Azure SQL Database をホストする 1 つまたは複数の [Azure 内の論理サーバー](../../database/logical-servers.md)が作成され、オンプレミスの SQL Server インスタンス (または複数の SQL Server (2005 以降) インスタンス) からすべてのスキーマがエクスポートされ、Azure SQL Database にインポートされます。|
-|[SQL Server エージェント ジョブをエラスティック データベース ジョブに変換する](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Convert%20SQL%20Server%20Agent%20Jobs%20into%20Elastic%20Database%20Jobs)|このスクリプトにより、ソースの SQL Server エージェント ジョブがエラスティック データベース ジョブに移行されます。|
+|[データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130)| このツールを使用すると、ワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの対応性、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価を迅速に行うことができます。|
+|[PowerShell を使用したデータベースの一括作成](https://www.microsoft.com/download/details.aspx?id=103107)|リソース グループ (create_rg.ps1)、[Azure の論理サーバー](../../database/logical-servers.md) (create_sqlserver.ps1)、および SQL データベース (create_sqldb.ps1) を作成する 3 つの PowerShell スクリプト セットを使用できます。 スクリプトにはループ機能が含まれているので、必要に応じて反復処理を行って、必要な数のサーバーとデータベースを作成できます。|
+|[MSSQL-Scripter と PowerShell を使用したスキーマの一括デプロイ](https://www.microsoft.com/download/details.aspx?id=103032)|この資産では、リソース グループが作成され、Azure SQL Database をホストする 1 つまたは複数の [Azure 内の論理サーバー](../../database/logical-servers.md)が作成され、オンプレミスの SQL Server インスタンス (または複数の SQL Server (2005 以降) インスタンス) からすべてのスキーマがエクスポートされ、Azure SQL Database にインポートされます。|
+|[SQL Server エージェント ジョブをエラスティック データベース ジョブに変換する](https://www.microsoft.com/download/details.aspx?id=103123)|このスクリプトにより、ソースの SQL Server エージェント ジョブがエラスティック データベース ジョブに移行されます。|
 |[Azure SQL Database から電子メールを送信する](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/AF%20SendMail)|このソリューションは、SendMail 機能に代わるもので、オンプレミスの SQL Server で使用できます。 これは、Azure Functions と SendGrid サービスを使用して Azure SQL Database から電子メールを送信します。|
-|[オンプレミスの SQL Server ログインを Azure SQL Database に移動するユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)|PowerShell スクリプトでは、ログインを再作成し、オンプレミスの SQL Server から Azure SQL Database へのデータベース ユーザーを選択するための T-SQL コマンド スクリプトを作成できます。 このツールを使用すると、Windows Server Active Directory アカウントを Azure AD アカウントに自動的にマッピングできるだけでなく、必要に応じて SQL Server のネイティブ ログインを移行することもできます。|
-|[Logman を使用した Perfmon データ収集の自動化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Logman ツールを使用すると、Perfmon データを収集し (ベースライン パフォーマンスの把握に役立てるため)、移行ターゲットの推奨事項を取得できます。 このツールでは、logman.exe を使用して、リモート SQL Server インスタンスに設定されたパフォーマンス カウンターを作成、開始、停止、削除するコマンドを作成します。|
-|[BACPAC を使用した Azure SQL Database へのデータベースの移行](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20-%20Benchmarks%20and%20Steps%20to%20Import%20to%20Azure%20SQL%20DB%20Single%20Database%20from%20BACPAC.pdf)|このホワイトペーパーには、BACPAC ファイルを使用して SQL Server から Azure SQL Database への移行を加速させるためのガイダンスと手順が示されています。|
+|[オンプレミスの SQL Server ログインを Azure SQL Database に移動するユーティリティ](https://www.microsoft.com/download/details.aspx?id=103111)|PowerShell スクリプトでは、ログインを再作成し、オンプレミスの SQL Server から Azure SQL Database へのデータベース ユーザーを選択するための T-SQL コマンド スクリプトを作成できます。 このツールを使用すると、Windows Server Active Directory アカウントを Azure AD アカウントに自動的にマッピングできるだけでなく、必要に応じて SQL Server のネイティブ ログインを移行することもできます。|
+|[Logman を使用した Perfmon データ収集の自動化](https://www.microsoft.com/download/details.aspx?id=103114)|Logman ツールを使用すると、Perfmon データを収集し (ベースライン パフォーマンスの把握に役立てるため)、移行ターゲットの推奨事項を取得できます。 このツールでは、logman.exe を使用して、リモート SQL Server インスタンスに設定されたパフォーマンス カウンターを作成、開始、停止、削除するコマンドを作成します。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
-
 
 ## <a name="next-steps"></a>次のステップ
 

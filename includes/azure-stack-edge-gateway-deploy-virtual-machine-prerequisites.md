@@ -2,20 +2,29 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 01/15/2021
+ms.date: 06/30/2021
 ms.author: alkohli
-ms.openlocfilehash: f166413507afb9aff814eaddaade099d2e34ae68
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f96012c3ffa587a80d601447d99efc804956096e
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554897"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113120969"
 ---
 Azure Stack Edge デバイスに VM を展開する前に、Azure PowerShell 経由で Azure Resource Manager を介してデバイスに接続するようにクライアントを構成する必要があります。 詳細な手順については、「[Azure Stack Edge デバイスで Azure Resource Manager に接続する](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md)」を参照してください。
 
 次の手順を使用して、クライアントからデバイスにアクセスできることを確認します。 Azure Resource Manager に接続したときに既にこの構成は完了しているため、次はその構成が正常に完了したことを確認します。 
 
+
+
 1. 次のコマンドを実行して、Azure Resource Manager の通信が機能していることを確認します。     
+
+    ### <a name="az"></a>[Az](#tab/Az)
+
+    ```powershell
+    Add-AzEnvironment -Name <Environment Name> -ARMEndpoint "https://management.<appliance name>.<DNSDomain>"
+    ```
+    ### <a name="azurerm"></a>[AzureRM](#tab/AzureRM)
 
     ```powershell
     Add-AzureRmEnvironment -Name <Environment Name> -ARMEndpoint "https://management.<appliance name>.<DNSDomain>"
@@ -23,7 +32,19 @@ Azure Stack Edge デバイスに VM を展開する前に、Azure PowerShell 経
 
 1. ローカル デバイス API を呼び出して認証を行うには、次のように入力します。 
 
-    `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d`
+    ### <a name="az"></a>[Az](#tab/Az)
+
+    ```powershell
+    login-AzAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d
+    ```
+
+    Azure Resource Manager を介して接続するには、ユーザー名 *EdgeArmUser* とパスワードを入力します。
+
+    ### <a name="azurerm"></a>[AzureRM](#tab/AzureRM)
+
+    ```powershell
+    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d
+    ```
 
     Azure Resource Manager を介して接続するには、ユーザー名 *EdgeArmUser* とパスワードを入力します。
 

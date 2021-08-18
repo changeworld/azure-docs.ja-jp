@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2021
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9f952f0bb534ddad767280991ab0829ff9fa1b8
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6010d165b1a66f968c66f52cf3bfac754df47111
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696953"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460036"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 
@@ -251,4 +251,4 @@ Azure のデプロイから電子メールを直接送信する技術的能力�
 ## <a name="next-steps"></a>次のステップ
 
 * 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
-* [Azure DNS で ISP によって割り当てられた IP アドレス範囲の逆引き参照ゾーンをホストする](dns-reverse-dns-for-azure-services.md)方法を学習してください。
+* [Azure DNS で ISP によって割り当てられた IP アドレス範囲の逆引き参照ゾーンをホストする](dns-reverse-dns-hosting.md)方法を学習してください。
