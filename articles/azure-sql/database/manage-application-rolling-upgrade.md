@@ -11,12 +11,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: 30b5d1f7e5fd3a052ecce3c28b75fe020b2257c9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: dd71998eaa3254e31d123a9ca011339d1aaeee10
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739677"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,16 +106,16 @@ Azure SQL Database で[アクティブ geo レプリケーション](auto-failov
 
 ```sql
 -- Set the production database to read-only mode
-ALTER DATABASE <Prod_DB>
-SET (ALLOW_CONNECTIONS = NO)
+ALTER DATABASE [<Prod_DB>]
+SET READ_ONLY
 ```
 
 2. セカンダリを切断して geo レプリケーション を終了します (11)。 この操作により、独立していても完全に同期された運用データベースのコピーが作成されます。 このデータベースがアップグレードされます。 次の例では Transact-SQL を使用していますが、[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary) も使用できます。 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
-ALTER DATABASE <Prod_DB>
-REMOVE SECONDARY ON SERVER <Partner-Server>
+ALTER DATABASE [<Prod_DB>]
+REMOVE SECONDARY ON SERVER [<Partner-Server>]
 ```
 
 3. `contoso-1-staging.azurewebsites.net`、`contoso-dr-staging.azurewebsites.net`、およびステージングのプライマリ データベースに対してアップグレード スクリプトを実行します (12)。 データベースの変更は、ステージングのセカンダリに自動的にレプリケートされます。

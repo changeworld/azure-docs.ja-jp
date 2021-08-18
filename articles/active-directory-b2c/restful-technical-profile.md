@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/03/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 904b4ec201b38a817fe7a84d88878c62629b2625
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 1789f70b0bf649bb4dc25aeace6973a159df1537
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785933"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737362"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -291,5 +291,5 @@ RESTful 技術プロファイルの使用例については、次の記事を参
 
 - [REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](api-connectors-overview.md)
 - [チュートリアル: API コネクタをサインアップ ユーザー フローに追加する](add-api-connector.md)
-- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-exchange.md)
+- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](add-api-connector-token-enrichment.md)
 - [REST API サービスをセキュリティで保護する](secure-rest-api.md)

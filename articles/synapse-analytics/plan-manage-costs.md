@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 7a5b9efce1c24aecb54d3f473b7227357c8fb99f
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 1527888458a494e0b2d7177246c991228440d255
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890188"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860528"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Azure Synapse Analytics のコストを計画して管理する
 
@@ -126,7 +126,7 @@ Azure Synapse のみのコストの表示例を次に示します。
 
 ### <a name="dedicated-sql-pool"></a>専用 SQL プール
 
-リソースが使用されていないときに一時停止することで、専用 SQL プールのコストを制御できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 詳細については、「[Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください
+リソースが使用されていないときに一時停止することで、専用 SQL プールのコストを制御できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 詳細については、「[Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する](./sql-data-warehouse/pause-and-resume-compute-portal.md?context=/azure/synapse-analytics/context/context)」を参照してください
 
 ### <a name="serverless-apache-spark-pool"></a>サーバーレス Apache Spark プール
 

@@ -2,17 +2,17 @@
 title: 接続されていない Azure ディスクを特定する - Azure portal
 description: Azure portal を使用して、接続されていない Azure マネージド ディスクとアンマネージド ディスク (VHD/ページ BLOB) を見つけて削除する方法。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 815e4bd34ecce3e77fafb95520632df6570cebb3
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98898157"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361155"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>接続されていない Azure マネージド ディスクとアンマネージド ディスクを見つけて削除する - Azure portal
 

@@ -2,25 +2,22 @@
 title: 'チュートリアル: Azure Active Directory を使用した自動ユーザー プロビジョニングに対応するように Holmes Cloud を構成する | Microsoft Docs'
 description: Azure AD から Holmes Cloud へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: b1088904-2ea2-4440-b39e-c4b7712b8229
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/07/2021
-ms.author: Zhchia
-ms.openlocfilehash: 9ccd17b045526a57c35d34b47c8c9415eb76d29c
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.author: thwimmer
+ms.openlocfilehash: 82fdfb7621762828a32ad67774e9b0141c6b0464
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111852264"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195319"
 ---
 # <a name="tutorial-configure-holmes-cloud-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように Holmes Cloud を構成する
 

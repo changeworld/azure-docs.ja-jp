@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00518eb91e57efaacb7abc63b6ad4531619be2ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4bd83071e725d68a424642f68680748247a26706
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98012871"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110081"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>アラート "Health サービス データが最新ではありません"
 
@@ -71,4 +71,4 @@ Azure AD Connect Health で監視されているオンプレミスのマシン�
 上記の手順のいずれかで問題が見つかった場合、問題を修正し、アラートが解決するまで待ちます。 アラートのバック グラウンド プロセスは 2 時間ごとに実行されるため、アラートを解決するには最大 2 時間かかります。 
 
 * [Azure AD Connect Health のデータ リテンション期間ポリシー](reference-connect-health-user-privacy.md#data-retention-policy)
-* [Azure AD Connect Health の FAQ](reference-connect-health-faq.md)
+* [Azure AD Connect Health の FAQ](reference-connect-health-faq.yml)

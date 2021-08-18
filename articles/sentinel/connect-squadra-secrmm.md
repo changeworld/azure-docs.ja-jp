@@ -12,16 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: a00b4b1e81c0d644cf1475aa46dda3848fda1365
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd599fbfc712d85ec5fac0a3aa6f9f1cd320d91c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98632903"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253416"
 ---
 # <a name="connect-your-squadra-technologies-secrmm-data-to-azure-sentinel"></a>Squadra Technologies secRMM のデータを Azure Sentinel に接続する 
 
 Squadra Technologies secRMM コネクタを使用すると、Squadra Technologies secRMM セキュリティ ソリューション ログを Azure Sentinel に簡単に接続できます。 ダッシュボードを表示したり、カスタム アラートを作成したり、調査を改善することができます。 このコネクタは、USB リムーバブル ストレージのイベントに関する分析情報を提供します。 Squadra Technologies secRMM と Azure Sentinel との統合には、REST API を使用します。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
@@ -47,6 +49,6 @@ Squadra Technologies secRMM ログを照会するには、クエリ ウィンド
 
 このドキュメントでは、Squadra Technologies secRMM を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

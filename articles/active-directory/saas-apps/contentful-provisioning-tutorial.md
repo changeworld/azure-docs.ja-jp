@@ -3,7 +3,7 @@ title: チュートリアル:Contentful を構成して、Azure Active Directory
 description: Azure Active Directory (Azure AD) から Contentful に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: zchia
+author: twimmers
 manager: beatrizd
 ms.assetid: 3b761984-a9a0-4519-b23e-563438978de5
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2020
-ms.author: zhchia
-ms.openlocfilehash: c9d19624d90b1228b2a44caeff7d103af3172ed9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 81801acb9fe7498c124dedb9bb2d5263d4f53711
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516334"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764017"
 ---
 # <a name="tutorial-configure-contentful-for-automatic-user-provisioning"></a>チュートリアル:Contentful を構成して自動ユーザー プロビジョニングに対応させる
 

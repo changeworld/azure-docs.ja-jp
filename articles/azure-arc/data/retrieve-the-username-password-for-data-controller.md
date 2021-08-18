@@ -7,29 +7,24 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 8cabb48e3620f1a17d1bb9b87e1646ce2793143b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89ba0139409a1ceef37a773403c0b7623f6c6f14
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91761704"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738599"
 ---
 # <a name="retrieve-the-user-name-and-password-to-connect-to-the-arc-data-controller"></a>Arc データ コントローラーに接続するためのユーザー名とパスワードを取得する
 
 データ コントローラーのユーザー名とパスワードを取得する必要がある場合があります。 これらは実行するときに必要なコマンドです。 
-
-```console
-azdata login
-```
 
 クラスターの Kubernetes 管理者である場合。 そのため、Kubernetes シークレット ストアから、Azure Arc がそこで保持している情報を取得するコマンドを実行する特権を持ちます。
 
 > [!NOTE]
 >  データ コントローラーが作成される名前空間に別の名前を使用している場合は、次のコマンドの `-n arc` パラメーターを、データ コントローラーの作成先の名前空間の名前を使用するように変更します。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="linux"></a>Linux
 

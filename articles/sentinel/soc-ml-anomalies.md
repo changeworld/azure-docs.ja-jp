@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2021
 ms.author: yelevin
-ms.openlocfilehash: ef38176db69ea019254ced89e3e18f035633f2d5
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 51bc9923ce01116137b4ff447b94d08262b0c758
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109811829"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734785"
 ---
 # <a name="use-soc-ml-anomalies-to-detect-threats-in-azure-sentinel"></a>Azure Sentinel で SOC-ML 異常検知を使用して脅威を検出する
 
@@ -45,4 +45,4 @@ ms.locfileid: "109811829"
 このドキュメントでは、Azure Sentinel で SOC-ML がどのように異常の検出に役立つかを学びました。
 
 - [異常ルールの表示、作成、管理、微調整](work-with-anomaly-rules.md)の方法をご確認ください。
-- [ほかの種類の分析ルール](tutorial-detect-threats-built-in.md)についてご確認ください。
+- [ほかの種類の分析ルール](detect-threats-built-in.md)についてご確認ください。

@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 28abb9f09e3bca2522b959c6a9b890de5320b17a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 937ea003dea2358f8fd434cd32393d41b038892d
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98567434"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252470"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>Infoblox NIOS を Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Azure Sentinel の Infoblox NIOS データ コネクタは、現在パブリック プレビューです。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、[Infoblox Network Identity Operating System (NIOS) アプライアンス](https://www.infoblox.com/glossary/network-identity-operating-system-nios/)を Azure Sentinel に接続する方法について説明します。 Infoblox NIOS データ コネクタを使用すると、Azure Sentinel に Infoblox のログを簡単に接続し、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 Infoblox NIOS と Azure Sentinel 間の統合には、Syslog を使用します。
 
@@ -54,6 +56,6 @@ Syslog のエージェントを使用してお使いの Azure Sentinel ワーク
 
 このドキュメントでは、Infoblox NIOS を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

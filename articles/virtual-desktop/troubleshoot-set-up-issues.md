@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a18d78fdc6714894a9ce038f1e67e72e0acc0b87
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6eb6dd71ae95b3af4ee913e1ac88d9988d2b23a9
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744541"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762528"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
@@ -23,7 +23,7 @@ ms.locfileid: "111744541"
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-Azure Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Azure Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
+Azure Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Azure Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum)にアクセスしてください。
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise マルチセッションのイメージの入手
 
@@ -283,7 +283,7 @@ the VM.\\\"
 - Azure Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
 - Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md) に関する記事を参照してください。
 - Azure Virtual Desktop エージェントまたはセッション接続に関連する問題のトラブルシューティングについては、「[Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする](troubleshoot-agent.md)」を参照してください。
-- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
+- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、「[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection.md)」を参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。

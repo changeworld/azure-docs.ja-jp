@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d6922eaec624141c8acab2d8d8e133db5becd66d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dacf5814ee487c008e343347f7ab1319fd578597
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950058"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729004"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -378,9 +378,9 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ## <a name="grant-access-from-azure-resource-instances-preview"></a>Azure リソース インスタンスからのアクセスを許可する (プレビュー)
 
-場合によっては、アプリケーションが、仮想ネットワークまたは IP アドレス ルールによって分離できない Azure リソースに依存していることがあります。 しかし、その場合でも、ストレージ アカウントのアクセスをセキュリティで保護してアプリケーションの Azure リソースのみに制限したいことがあります。 リソース インスタンス ルールを作成することによって、一部の Azure サービスの特定のリソース インスタンスにアクセスを許可するよう、ストレージ アカウントを構成できます。 
+場合によっては、アプリケーションが、仮想ネットワークまたは IP アドレス ルールによって分離できない Azure リソースに依存していることがあります。 しかし、その場合でも、ストレージ アカウントのアクセスをセキュリティで保護してアプリケーションの Azure リソースのみに制限したいことがあります。 リソース インスタンス ルールを作成することによって、一部の Azure サービスの特定のリソース インスタンスにアクセスを許可するよう、ストレージ アカウントを構成できます。
 
-リソース インスタンスがストレージ アカウントのデータに対して実行できる操作の種類は、リソース インスタンスの [Azure ロールの割り当て](storage-auth-aad.md#assign-azure-roles-for-access-rights)によって決まります。 リソース インスタンスは、ストレージ アカウントと同じテナントからのものである必要がありますが、テナント内のどのサブスクリプションに属していてもかまいません。
+リソース インスタンスがストレージ アカウントのデータに対して実行できる操作の種類は、リソース インスタンスの Azure ロールの割り当てによって決まります。 リソース インスタンスは、ストレージ アカウントと同じテナントからのものである必要がありますが、テナント内のどのサブスクリプションに属していてもかまいません。
 
 > [!NOTE]
 > この機能はパブリック プレビュー段階であり、すべてのパブリック クラウド リージョンで利用できます。
@@ -586,9 +586,9 @@ az storage account network-rule list \
 
 ### <a name="trusted-access-based-on-system-assigned-managed-identity"></a>システム割り当てマネージド ID に基づく信頼されたアクセス
 
-次の表の一覧で示されているサービスは、それらのサービスのリソース インスタンスに適切なアクセス許可が付与されている場合、ストレージ アカウントのデータにアクセスできます。 
+次の表の一覧で示されているサービスは、それらのサービスのリソース インスタンスに適切なアクセス許可が付与されている場合、ストレージ アカウントのデータにアクセスできます。
 
-アカウントで階層型名前空間機能が有効になっていない場合は、リソースインスタンスごとに[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) への [Azure ロールの割り当て](storage-auth-aad.md#assign-azure-roles-for-access-rights)を明示的に行うことで、アクセス許可を付与できます。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。 
+アカウントで階層型名前空間機能が有効になっていない場合は、リソースインスタンスごとにシステム割り当てマネージド ID への [Azure ロールの割り当て](../../active-directory/managed-identities-azure-resources/overview.md)を明示的に行うことで、アクセス許可を付与できます。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
 
 階層型名前空間機能が有効になっているアカウントにも同じ手法を使用できます。 ただし、ストレージ アカウントに格納されている任意のディレクトリまたは BLOB のアクセス制御リスト (ACL) にシステム割り当てマネージド ID を追加する場合、Azure ロールを割り当てる必要はありません。 この場合、インスタンスのアクセス範囲は、システム割り当てマネージド ID がアクセス権を付与されているディレクトリまたはファイルと一致します。 また、Azure のロールと ACL を組み合わせることもできます。 これらを組み合わせてアクセス権を付与する方法の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御モデル](../blobs/data-lake-storage-access-control-model.md)」を参照してください。
 

@@ -8,12 +8,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: e9f27b5cc3c4cb526dbcf6e6511fcd53e3c2fe67
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: af9f5218b7f7f94ddc73fb67fe82427d1cfbfff2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743072"
 ---
 # <a name="connect-azure-storage-account-diagnostics-logs"></a>Azure Storage アカウント診断ログの接続
 
@@ -68,5 +68,5 @@ Azure Storage アカウントの診断ログを Azure Sentinel に取り込む�
 
 このドキュメントでは、Azure Storage アカウントを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

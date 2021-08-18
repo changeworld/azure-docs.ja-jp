@@ -8,12 +8,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: yelevin
-ms.openlocfilehash: f1ef860f1b84de84c42996a7523af8ce174d5981
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 96068491bd4be59c34d62375db30edad504823a9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779017"
 ---
 # <a name="connect-azure-kubernetes-service-diagnostics-logs"></a>Azure Kubernetes Service 診断ログを接続する
 
@@ -21,7 +21,9 @@ Azure Kubernetes Service (AKS) は、オープンソースのフル マネージ
 
 このコネクタを使用すると、Azure Kubernetes Service (AKS) の診断ログを Azure Sentinel にストリーミングできます。これにより、すべてのインスタンスでのアクティビティを継続的に監視できます。 
 
-詳細については、[Azure Kubernetes Service の監視](../azure-monitor/containers/container-insights-overview.md)と [AKS 診断テレメトリ](../aks/view-control-plane-logs.md)に関する記事を参照してください。
+詳細については、[Azure Kubernetes Service の監視](../azure-monitor/containers/container-insights-overview.md)と [AKS 診断テレメトリ](../aks/monitor-aks-reference.md#resource-logs)に関する記事を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,11 +57,11 @@ AKS ログを Azure Sentinel に取り込むには:
 
 > [!NOTE]
 >
-> この特定のデータ コネクタを使用すると、過去 14 日間のある時点でデータが取り込まれた場合にのみ、接続状態インジケーター (データ コネクタ ギャラリーのカラー ストライプとデータ型の名前の横にある接続アイコン) が "*接続済み*" (緑) と表示されます。 データ インジェストがないまま 14 日間が経過すると、コネクタは切断済みと表示されます。 さらに多くのデータが入ってくると、"*接続済み*" 状態が返されます。
+> この特定のデータ コネクタを使用すると、過去 14 日間のある時点でデータが取り込まれた場合にのみ、接続状態インジケーター (データ コネクタ ギャラリーのカラー ストライプとデータ型の名前の横にある接続アイコン) が "*接続済み*" (緑) と表示されます。 データ インジェストがないまま 14 日が経過すると、コネクタは切断済みと表示されます。 さらに多くのデータが入ってくると、"*接続済み*" 状態が返されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Azure Policy を使用して Azure Kubernetes Service を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

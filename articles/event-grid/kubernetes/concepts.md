@@ -6,17 +6,17 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: e9d7fff98a6d6c062f529528f9f1d3071a038049
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 911a67644ac50906ee7e4b3009658043cfa022d6
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387223"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414577"
 ---
 # <a name="event-grid-on-kubernetes---concepts"></a>Kubernetes 上の Event Grid - 概念
 この記事では、Azure Arc を使用する Kubernetes 上の Event Grid での主要な概念について説明します (プレビュー)。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="events"></a>イベント
 イベントとは、ソフトウェア システムの操作に関する事実を通知するデータ レコードです。 通常は、イベントにより、システムによって発生したシグナルまたはシステムによって検出されたシグナルによる状態の変化が通知されます。 イベントには、次の 2 種類の情報が含まれます。 

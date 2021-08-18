@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 05/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 80f6849bb4989692e8cd29a3288f9b104bf250bb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: devplatv2
+ms.openlocfilehash: 30b378f0ba25579d78118ff82a17689f4bdf56a5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460088"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457783"
 ---
 # <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>Visual Studio Code Azure Machine Learning 拡張機能をセットアップする (プレビュー)
 
@@ -34,7 +35,7 @@ VS Code 用の Azure Machine Learning 拡張機能には、次の作業を行う
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure のサブスクリプション。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) にサインアップしてお試しください。
+- Azure のサブスクリプション。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) にサインアップしてお試しください。
 - Visual Studio Code。 インストールしていない場合は、[インストール](https://code.visualstudio.com/docs/setup/setup-overview)します。
 - [Python](https://www.python.org/downloads/)
 - (省略可) 拡張機能を使用してリソースを作成するには、2.0 CLI をインストールする必要があります。 セットアップ手順については、[2.0 CLI (プレビュー) のインストール、設定、および使用](how-to-configure-cli.md)に関する記事を参照してください。

@@ -2,19 +2,18 @@
 title: Azure IoT Hub のエラー 409002 LinkCreationConflict のトラブルシューティング
 description: エラー 409002 LinkCreationConflict を修正する方法の概要
 author: jlian
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 07/07/2021
 ms.author: jlian
 ms.custom: amqp
-ms.openlocfilehash: c354eed6e7bf9f2147f8b81a82a06e80a9337c84
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5433af10cef6ef4404d61d3b66aedc311d242c71
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061045"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515562"
 ---
 # <a name="409002-linkcreationconflict"></a>409002 LinkCreationConflict
 

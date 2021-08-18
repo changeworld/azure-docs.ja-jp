@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: f42cb2f3f00c75dea262b7151bef5efad4e9aa92
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: a5fe3157d419b199f1e83f44485e507812c0b80c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569599"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434827"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のビジネス継続性と HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -100,7 +100,7 @@ SQL Server の高可用性ソリューションは、Always On 可用性グル�
 
 詳細については、[製品ライセンス条項](https://www.microsoft.com/licensing/product-licensing/products)に関するページを参照してください。 
 
-このベネフィットを有効にするには、[SQL Server の仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)に移動します。 **[設定]** の下にある **[構成]** を選択してから、 **[SQL Server ライセンス]** で **[ディザスター リカバリー]** オプションを選びます。 この SQL Server VM がパッシブ レプリカとして使用されることを確認するためのチェック ボックスをオンにし、 **[適用]** を選択して設定を保存します。 
+このベネフィットを有効にするには、[SQL Server の仮想マシン リソース](manage-sql-vm-portal.md#access-the-resource)に移動します。 **[設定]** の下にある **[構成]** を選択してから、 **[SQL Server ライセンス]** で **[ディザスター リカバリー]** オプションを選びます。 この SQL Server VM がパッシブ レプリカとして使用されることを確認するためのチェック ボックスをオンにし、 **[適用]** を選択して設定を保存します。 
 
 ![Azure でディザスター リカバリー レプリカを構成する](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 

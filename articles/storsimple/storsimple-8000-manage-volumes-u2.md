@@ -4,14 +4,14 @@ description: StorSimple ボリュームを追加、変更、監視、削除す�
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 12/09/2017
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 3d649b54b544c120198963f8094764e9590e20b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5653fdcaa37b1adb728a23454317c6088b9efbc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100547644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750645"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -38,7 +38,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 ローカル固定ボリュームは、完全にプロビジョニングされます。そのため、ボリュームを作成するときに、デバイスに十分な領域が必要です。 プロビジョニングできるローカル固定ボリュームの最大サイズは、StorSimple 8100 デバイスで 8 TB、8600 デバイスで 20 TB です。 StorSimple では、デバイスの残りのローカル領域が、スナップショット、メタデータ、およびデータ処理用に予約されます。 ローカル固定ボリュームのサイズを、使用可能な最大領域のサイズまで拡大することもできますが、一度作成すると、ボリュームのサイズを縮小することはできません。
 
-ローカル固定ボリュームを作成すると、階層化ボリュームの作成に使用可能な領域が減少します。 その逆の場合もあります。階層化ボリュームが既にある場合、ローカル固定ボリュームの作成に使用可能な領域は、上記の上限よりも低くなります。 ローカル ボリュームの詳細については、[ローカル固定ボリュームに関してよく寄せられる質問](storsimple-8000-local-volume-faq.md)のページをご覧ください。
+ローカル固定ボリュームを作成すると、階層化ボリュームの作成に使用可能な領域が減少します。 その逆の場合もあります。階層化ボリュームが既にある場合、ローカル固定ボリュームの作成に使用可能な領域は、上記の上限よりも低くなります。 ローカル ボリュームの詳細については、[ローカル固定ボリュームに関してよく寄せられる質問](storsimple-8000-local-volume-faq.yml)のページをご覧ください。
 
 ### <a name="tiered-volumes"></a>階層化ボリューム
 
@@ -315,7 +315,7 @@ StorSimple ボリュームは、次のいずれかです。
 2. ボリュームの表形式のリストからボリュームを選択し、右クリックしてコンテキスト メニューを開きます。 **[変更]** を選択します。
 3. **[Modify volume]** (ボリュームを変更する) ブレードの **[監視]** で、 **[有効化]** または **[無効化]** を選択して、監視を有効または無効にします。
 
-    ![監視を無効にする](./media/storsimple-8000-manage-volumes-u2/monitor-volume-0 1.png) 
+    ![監視を無効にする](./media/storsimple-8000-manage-volumes-u2/monitor-volume-01.png) 
 
 4. **[保存]** をクリックし、確認を求められたら、 **[はい]** をクリックします。 Azure Portal には、ボリュームの更新についての通知が表示され、その後、ボリュームが正常に更新された後、成功についてのメッセージが表示されます。
 

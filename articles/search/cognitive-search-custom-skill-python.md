@@ -2,19 +2,18 @@
 title: カスタム スキルの例 (Python)
 titleSuffix: Azure Cognitive Search
 description: Python 開発者向けに、Azure Functions と Visual Studio を使用してカスタム スキルを構築するためのツールと手法について説明します。 カスタム スキルには、Azure Cognitive Search で AI によって強化されたインデックス作成パイプラインに追加できるユーザー定義モデルまたはロジックが含まれています。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: effa3aede0c0020a32935ae58b702d234488411e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88936131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737627"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>例:Python を使用してカスタム スキルを作成する
 
@@ -32,9 +31,9 @@ Python でのカスタム スキルの開発に使用されるツールと手法
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [Visual Studio Code 用の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
-  + [Visual Studio Code 用 Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+  + [Visual Studio Code 用の Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
-## <a name="create-an-azure-function"></a>Azure Function の作成
+## <a name="create-an-azure-function"></a>Azure 関数を作成する
 
 この例では、Azure 関数を使用して、Web API をホストするという概念を示していますが、その他の方法も可能です。 [コグニティブ スキルのインターフェイス要件](cognitive-search-custom-skill-interface.md)を満たしていれば、どのような方法を使用してもかまいません。 ただし、Azure Functions を使用すると、カスタム スキルを簡単に作成できます。
 
@@ -56,7 +55,7 @@ Visual Studio Code の Azure Functions プロジェクト テンプレートで�
 1. 認証レベルとして **[関数]** を選択します。 これは、関数の HTTP エンドポイントを呼び出すために[関数キー](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)を指定することを意味します。 
 1. プロジェクトを開く方法を選択します。 この手順では、**[ワークスペースに追加]** を選択して、現在のワークスペースに関数アプリを作成します。
 
-Visual Studio Code によって、新しいワークスペースに関数アプリ プロジェクトが作成されます。 このプロジェクトには、[host.json](../azure-functions/functions-host-json.md) および [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) 構成ファイルと、言語固有のプロジェクト ファイルが含まれています。 
+Visual Studio Code によって、新しいワークスペースに関数アプリ プロジェクトが作成されます。 このプロジェクトには、[host.json](../azure-functions/functions-host-json.md) および [local.settings.json](../azure-functions/functions-develop-local.md#local-settings-file) 構成ファイルと、言語固有のプロジェクト ファイルが含まれています。 
 
 新しい HTTP によってトリガーされる関数は、関数アプリ プロジェクトの **Concatenator** フォルダーにも作成されます。 その中には、次の内容の "\_\_init__.py" というファイルがあります。
 

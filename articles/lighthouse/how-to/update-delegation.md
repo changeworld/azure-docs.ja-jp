@@ -3,12 +3,12 @@ title: 委任を更新する
 description: Azure Lighthouse に以前オンボードされた顧客の委任を更新する方法について説明します。
 ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: bc52790c5652f9571e3a63023314ff8e97fb7e99
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e8044732cd1cb544515bcfe5b2c0ac3b40bf0cfe
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965064"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389257"
 ---
 # <a name="update-a-delegation"></a>委任を更新する
 
@@ -45,14 +45,14 @@ ms.locfileid: "111965064"
 
 :::image type="content" source="../media/update-delegation.jpg" alt-text="mspOfferName を変更し、前の委任を削除するタイミングを示す図。":::
 
-委任へのアクセスの削除は、元の委任で[マネージド サービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)を付与された管理テナントのすべてのユーザーが実行できます。 管理テナントにこのロールを所有しているユーザーがいない場合は、[Azure portal でオファーへのアクセスを削除する](view-manage-service-providers.md#add-or-remove-service-provider-offers)ことを顧客に依頼できます。
+委任へのアクセスの削除は、元の委任で[マネージド サービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)を付与された管理テナントのすべてのユーザーが実行できます。 管理テナントにこのロールを所有しているユーザーがいない場合は、[Azure portal でオファーへのアクセスを削除する](view-manage-service-providers.md#remove-service-provider-offers)ことを顧客に依頼できます。
 
 > [!TIP]
 > 上記の手順に従って前の委任を削除しても、新しい ARM テンプレートをデプロイできない場合は、[登録定義を完全に削除する](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)必要がある場合があります。 これは、`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客テナント内のすべてのユーザーが実行できます。  
 
 ## <a name="deploy-the-arm-template"></a>ARM テンプレートをデプロイする
 
-顧客は、Azure portal、PowerShell、または Azure CLI を使用して、前と同じ方法で[更新されたテンプレートをデプロイ](onboard-customer.md#deploy-the-azure-resource-manager-templates)できます。
+顧客は、Azure portal、PowerShell、または Azure CLI を使用して、前と同じ方法で[更新されたテンプレートをデプロイ](onboard-customer.md#deploy-the-azure-resource-manager-template)できます。
 
 デプロイが完了した後、[それが成功したことを確認](onboard-customer.md#confirm-successful-onboarding)します。 更新された認可が、顧客が委任したサブスクリプションまたはリソース グループに対して有効になります。
 

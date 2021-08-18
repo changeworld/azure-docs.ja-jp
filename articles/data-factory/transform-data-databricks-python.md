@@ -1,18 +1,20 @@
 ---
 title: Databricks Python でデータを変換する
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインで Databricks Python アクティビティを実行して、データを処理または変換する方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
-ms.custom: devx-track-python
-ms.openlocfilehash: 6e25c08554e50311613ac4a79ac40c7efce23ae9
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.custom: devx-track-python, synapse
+ms.openlocfilehash: 24d1ab1860f875201c255e775af151af88585731
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107902986"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182070"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks で Python アクティビティを実行してデータを変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,7 +36,7 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
         "description": "MyActivity description",
         "type": "DatabricksSparkPython",
         "linkedServiceName": {
-            "referenceName": "MyDatabricksLinkedservice",
+            "referenceName": "MyDatabricksLinkedService",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {

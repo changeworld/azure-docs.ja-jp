@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: 437b7bd6e919cd6b462cb8653354631fbeb438ed
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8e044cee9e91c0de16105bc4c954af9e61acea5a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785558"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743676"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>移行ガイド: SQL Server から Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "110785558"
 
 ## <a name="prerequisites"></a>前提条件 
 
-Azure SQL Database に [SQL Server を移行する](https://azure.microsoft.com/en-us/migration/sql-server/)場合は、以下が満たされていることを確認します。 
+Azure SQL Database に [SQL Server を移行する](https://azure.microsoft.com/migration/sql-server/)場合は、以下が満たされていることを確認します。 
 
 - [移行方法](sql-server-to-sql-database-overview.md#compare-migration-options)および対応するツールの選択。
 - ソース SQL Server に接続できるコンピューターへの [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) のインストール。

@@ -4,15 +4,16 @@ description: カスタム クエリを使用して、Microsoft コマーシャ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: b82fb574b134065f3c0f1a7dc5a4742258914ff6
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 8d003980d7a8a1a5a5477a7d22ec547db13b52ad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017417"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748292"
 ---
 # <a name="custom-query-specification"></a>カスタム クエリの仕様
 

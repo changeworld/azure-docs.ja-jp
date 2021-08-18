@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance (プレビュー) で SQL Server トランザクション レプリケーションを使用するについて説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: replication
+ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: ferno-ms
-ms.author: ferno
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: mathoma
 ms.date: 05/10/2020
-ms.openlocfilehash: bad663dd0101a4e42f761256bf5fb9d32ac09320
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 98aa190e85b0c613b4bf2224c0a3cf6637011de4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693955"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733329"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance (プレビュー) でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "110693955"
 
 ![SQL Database を使用したレプリケーション](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL データベース | Azure SQL Managed Instance |
+| Role | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | **発行元** | いいえ | はい |
 | **ディストリビューター** | いいえ | はい|
@@ -72,7 +72,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 さまざまな[レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)があります。
 
-| レプリケーション | Azure SQL データベース | Azure SQL Managed Instance |
+| レプリケーション | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | [**標準トランザクション**](/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい |
 | [**スナップショット**](/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|

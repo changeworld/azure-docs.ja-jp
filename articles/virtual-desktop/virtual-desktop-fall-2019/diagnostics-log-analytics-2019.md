@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5c1bdadf92d72ebec7ffa122b3c49c5878e2d2b8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0be29603225361b2f275f081c1ad52c5c6c394db
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736168"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック) の診断機能でログ分析を使用する
 
@@ -32,7 +32,7 @@ Azure Virtual Desktop では、管理者が単一のインターフェイスを�
 
 ## <a name="before-you-get-started"></a>開始する前に
 
-診断機能で Log Analytics を使用するには、まず[ワークスペースを作成する](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace)必要があります。
+診断機能で Log Analytics を使用するには、まず[ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)必要があります。
 
 ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
 

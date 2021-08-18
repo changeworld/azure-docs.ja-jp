@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fecd1fca22b003892817f8fd33db88b1eea6127
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94651314"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729764"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel でハンティング中にデータを追跡する
 
@@ -30,7 +30,7 @@ ms.locfileid: "94651314"
 
 テーブルでブックマークを表示すると、ブックマークが設定されたデータをフィルター処理、要約、および他のデータ ソースと結合でき、裏付けとなる証拠を簡単に見つけられます。
 
-現在プレビューの段階ですが、ログのハンティング中に緊急に対処する必要があるものが見つかった場合、数回のクリックでブックマークを作成してインシデントにレベルを上げたり、既存のインシデントにブックマークを追加したりできます。 インシデントの詳細については、「チュートリアル: [Azure Sentinel でインシデントを調査する](tutorial-investigate-cases.md)」を参照してください。 
+現在プレビューの段階ですが、ログのハンティング中に緊急に対処する必要があるものが見つかった場合、数回のクリックでブックマークを作成してインシデントにレベルを上げたり、既存のインシデントにブックマークを追加したりできます。 インシデントの詳細については、「チュートリアル: [Azure Sentinel でインシデントを調査する](investigate-cases.md)」を参照してください。 
 
 こちらもプレビュー段階ですが、ブックマークの詳細から **[調査]** をクリックすると、ブックマークが設定されたデータを視覚化できます。 これにより、対話型のエンティティ-グラフ ダイアグラムおよびタイムラインを使用して、調査結果を表示、調査、および視覚的に伝達できる調査エクスペリエンスが開始します。
 
@@ -94,7 +94,7 @@ ms.locfileid: "94651314"
 
 3. 調査グラフのブックマークを表示するには、**[調査]** をクリックします。
 
-調査グラフを使用する手順については、「[調査グラフを使用して詳細を確認する](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive)」を参照してください。
+調査グラフを使用する手順については、「[調査グラフを使用して詳細を確認する](investigate-cases.md#use-the-investigation-graph-to-deep-dive)」を参照してください。
 
 ## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>新規または既存のインシデントにブックマークを追加する
 

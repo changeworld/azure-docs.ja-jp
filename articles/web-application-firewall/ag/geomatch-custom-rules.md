@@ -5,23 +5,20 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 01/31/2020
+ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: b92b7ff4839bf2bf51c281942ed6d15d2dc1f86c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 42fcc0daf7fd494918d04dacf4fb65661c837acf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455508"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729412"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Geomatch カスタム規則 (プレビュー)
+# <a name="geomatch-custom-rules"></a>Geomatch カスタム ルール
 
 カスタム ルールを使うと、実際のアプリケーションのニーズとセキュリティ ポリシーに沿ってカスタマイズしたルールを作成できます。 これで、国や地域ごとに Web アプリケーションへのアクセスを制限できるようになります。 あらゆるカスタム ルールと同様、このロジックは、アプリケーションのニーズに合わせて他のルールと組み合わせることができます。
 
 Azure portal で geo フィルタリング カスタム ルールを作成するには、[一致の種類] として *[geo ロケーション]* を選択し、アプリケーションから許可またはブロックする 1 つまたは複数の国および地域を選択します。 Azure PowerShell または Azure Resource Manager を使用して Geomatch ルールを作成する場合は、一致変数の `RemoteAddr` と演算子の `Geomatch` を使用します。 詳細については、[PowerShell でカスタム ルールを作成する方法](configure-waf-custom-rules.md)に関するページと、その他の[カスタム ルールの例](create-custom-waf-rules.md)に関するページを参照してください。
-
-> [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 ## <a name="countryregion-codes"></a>国/地域コード
 

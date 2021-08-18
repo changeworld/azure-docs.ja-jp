@@ -3,19 +3,19 @@ title: Speech SDK について - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech ソフトウェア開発キット (SDK) には Speech サービスの各種機能が多数含まれており、音声認識対応アプリケーションの開発が容易になります。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: trbye
-ms.openlocfilehash: cc5ed68fa7a26a347f0cb85c94bb0b7b79ccb055
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 3f97558a9efbc9a1cff11baaae6d4d8869e02915
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059175"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067790"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
@@ -48,12 +48,14 @@ Speech SDK は Speech サービスの機能が多数含まれていますが、�
 
 **テキスト読み上げ (TTS)** は、次のプラットフォームで使用できます。
 
-  - C++/Windows および Linux
-  - C#/Windows および UWP および Unity
+  - C++/Windows、Linux、および macOS
+  - C# (Framework および .NET Core)/Windows、UWP、Unity、Xamarin、Linux、および macOS
   - Java (Jre および Android)
+  - JavaScript (ブラウザーと NodeJS)
   - Python
   - Swift
   - Objective-C
+  - Go
   - TTS REST API は他のすべての状況で使用できます。
 
 ### <a name="voice-assistants"></a>音声アシスタント
@@ -135,7 +137,7 @@ Speech サービスは、音声からテキスト、テキストから音声、�
 
 ### <a name="custom-speech-to-text"></a>カスタム音声変換
 
-独自環境での認識と文字起こしに音声テキスト変換を使用する場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 コードを使用しない Custom Speech モデルの作成と管理は、[Custom Speech Portal](https://aka.ms/customspeech) を通じて行うことができます。 Custom Speech モデルが発行されると、Speech SDK で利用できるようになります。
+独自環境での認識と文字起こしに音声テキスト変換を使用する場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 コードを使用しない Custom Speech モデルの作成と管理は、[Custom Speech Portal](./custom-speech-overview.md) を通じて行うことができます。 Custom Speech モデルが発行されると、Speech SDK で利用できるようになります。
 
 ### <a name="custom-text-to-speech"></a>カスタム テキスト読み上げ
 

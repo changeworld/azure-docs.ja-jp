@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9af01ac6e033de79ce4cac22b5b941239eda9e7
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77588146"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253176"
 ---
 # <a name="connect-one-identity-safeguard"></a>One Identity Safeguard を接続する
 One Identity Safeguard データ コネクタは、標準の Common Event Format (CEF) コネクタを Safeguard for Privileged Sessions 固有のダッシュボードで拡張します。 このコネクタを使用して、デバイスによって生成されるイベントを視覚化、アラート、調査などの目的で簡単に使用できます。
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,8 +41,6 @@ One Identity Safeguard データ コネクタは、標準の Common Event Format
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、One Identity Safeguard を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-
-
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

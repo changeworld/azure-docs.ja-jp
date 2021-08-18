@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5abe1755e22ac20e210aece956056ea647393dc1
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: d3fa9b89cb1fa7b0f7fa33025f908ae8ba5af7a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896245"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734552"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Arkose Labs を構成する
 
@@ -157,7 +157,7 @@ Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visual
 
 このサンプルでは、[HTTP 基本認証](https://tools.ietf.org/html/rfc7617)を使用して Web API エンドポイントを保護します。
 
-ユーザー名とパスワードは、リポジトリの一部としてではなく、環境変数として格納されます。 詳細については、[local.settings.js](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) ファイルを参照してください。
+ユーザー名とパスワードは、リポジトリの一部としてではなく、環境変数として格納されます。 詳細については、[local.settings.js](../azure-functions/functions-develop-local.md#local-settings-file) ファイルを参照してください。
 
 1. ルート フォルダー内に local.settings.js ファイルを作成します
 

@@ -7,12 +7,12 @@ ms.date: 09/14/2019
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 24174d7ac9fa33cb1fb3ca6e325537dde346b3c3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d2a1e8df23bca2e57f2d26bd83fc06ad93847903
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752011"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032941"
 ---
 # <a name="customize-the-feed-for-azure-virtual-desktop-users"></a>Azure Virtual Desktop ユーザー用のフィードをカスタマイズする
 
@@ -120,8 +120,8 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 ユーザーに合わせてフィードをカスタマイズしたので、Azure Virtual Desktop クライアントにサインインしてそれを試すことができます。これを行うには、Azure Virtual Desktop への接続方法に関する記事に進みます。
 
- * [Windows 10 または Windows 7 を使用して接続する](connect-windows-7-10.md)
- * [Web クライアントに接続する](connect-web.md)
- * [Android クライアントに接続する](connect-android.md)
- * [iOS クライアントに接続する](connect-ios.md)
- * [macOS クライアントに接続する](connect-macos.md)
+ * [Windows 10 または Windows 7 を使用して接続する](./user-documentation/connect-windows-7-10.md)
+ * [Web クライアントに接続する](./user-documentation/connect-web.md)
+ * [Android クライアントに接続する](./user-documentation/connect-android.md)
+ * [iOS クライアントに接続する](./user-documentation/connect-ios.md)
+ * [macOS クライアントに接続する](./user-documentation/connect-macos.md)

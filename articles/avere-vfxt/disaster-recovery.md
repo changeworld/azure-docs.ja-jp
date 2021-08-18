@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec58e921940be71b0189bcba96596c18b1b8786b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92342248"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751493"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Avere vFXT for Azure のディザスター リカバリーに関するガイダンス
 
@@ -117,7 +117,7 @@ Avere vFXT for Azure クラスターからバックアップ コンテナーに�
 * Avere vFXT for Azure の設定のカスタマイズの詳細については、「[クラスター チューニング](avere-vfxt-tuning.md)」を参照してください。
 * Azure でのディザスター リカバリーと回復性があるアプリケーションの構築の詳細を参照してください。
 
-  * [Azure の回復性技術ガイダンス](/azure/architecture/framework/resiliency/overview)
+  * [Azure の回復性技術ガイダンス](/azure/architecture/reliability/architect)
   * [リージョン全体でのサービスの中断から回復する](/azure/architecture/resiliency/recovery-loss-azure-region)
   * [Azure アプリケーションのディザスター リカバリーと高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

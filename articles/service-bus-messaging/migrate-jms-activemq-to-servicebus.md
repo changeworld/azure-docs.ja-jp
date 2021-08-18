@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: spelluru
 ms.custom: devx-track-java
-ms.openlocfilehash: e00043f1d8dd874e67ed25bd424e869fb7ec8787
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5fcc69a765d0e3690e8b9ff9ee80b2e021810100
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539311"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736262"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>既存の Java Message Service (JMS) 2.0 アプリケーションを Apache ActiveMQ から Azure Service Bus に移行する
 
@@ -46,7 +46,7 @@ Azure Service Bus と Apache ActiveMQ は両方とも、クライアント ア�
 
 ### <a name="current-supported-and-unsupported-features"></a>現在サポートされている機能とサポートされていない機能
 
-[!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
+[!INCLUDE [service-bus-jms-features-list](./includes/service-bus-jms-feature-list.md)]
 
 ### <a name="considerations"></a>考慮事項
 
@@ -96,7 +96,7 @@ Service Bus によって、さまざまなエンタープライズ セキュリ�
 
 Service Bus 名前空間ごとに、Azure Monitor にメトリックを発行します。 これらのメトリックを使用して、名前空間に割り当てられたリソースのアラートと動的スケーリングを行うことができます。
 
-さまざまなメトリックの詳細と、それらに対するアラートの設定方法については、「[Azure Monitor での Service Bus メトリック](monitor-service-bus-reference.md)」をご覧ください。 また、データ操作のクライアント側のトレースについては[こちら](service-bus-end-to-end-tracing.md)を、管理操作の操作/診断ログについては[こちら](service-bus-diagnostic-logs.md)をご覧ください。
+さまざまなメトリックの詳細と、それらに対するアラートの設定方法については、「[Azure Monitor での Service Bus メトリック](monitor-service-bus-reference.md)」をご覧ください。 また、データ操作のクライアント側のトレースについては[こちら](service-bus-end-to-end-tracing.md)を、管理操作の操作/診断ログについては[こちら](monitor-service-bus-reference.md#resource-logs)をご覧ください。
 
 ### <a name="metrics---new-relic"></a>メトリック - New Relic
 

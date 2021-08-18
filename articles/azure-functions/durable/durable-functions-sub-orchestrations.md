@@ -4,12 +4,12 @@ description: Azure Functions の拡張機能である Durable Functions のオ�
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b68f1235c07c5f3548dba1dbd6e46db91804fecc
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 0f27b19b101c997e002f6cf60b7cab988e3cbed4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110189428"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457715"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのサブオーケストレーション
 
@@ -78,7 +78,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     device_id = context.get_input()
 
     # Step 1: Create an installation package in blob storage and return a SAS URL.
-    sas_url = yield context.call_activity"CreateInstallationPackage", device_id)
+    sas_url = yield context.call_activity("CreateInstallationPackage", device_id)
 
     # Step 2: Notify the device that the installation package is ready.
     yield context.call_activity("SendPackageUrlToDevice", { "id": device_id, "url": sas_url })
@@ -160,7 +160,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     provisioning_tasks = []
     id_ = 0
     for device_id in device_IDs:
-        child_id = context.instance_id + ":" + id_
+        child_id = f"{context.instance_id}:{id_}"
         provision_task = context.call_sub_orchestrator("DeviceProvisioningOrchestration", device_id, child_id)
         provisioning_tasks.append(provision_task)
         id_ += 1

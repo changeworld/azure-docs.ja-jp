@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 06f7bfea9a88627733eb9ce9166e05d05790e23a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9571e7692a70d36155f395ec57bdedafe5970ac8
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213064"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369773"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する (CLI)
 
@@ -143,7 +143,7 @@ az ad app permission add \
 
 Azure Active Directory (Azure AD) テナントに登録されたアプリケーションは、既定ではテナントの正常に認証されたすべてのユーザーが利用できます。 Azure AD により、テナントの管理者と開発者が、テナントのユーザーまたはセキュリティ グループの特定のセットにアプリを制限できるようになります。
 
-Azure Active Directory のドキュメントに記載されている手順に従って、[ユーザーとグループをアプリに割り当てます](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)。
+Azure Active Directory のドキュメントに記載されている手順に従って、[ユーザーとグループをアプリに割り当てます](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)。
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID 認証の構成
 

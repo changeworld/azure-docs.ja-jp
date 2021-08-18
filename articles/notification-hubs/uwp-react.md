@@ -7,12 +7,12 @@ ms.service: notification-hubs
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.custom: template-concept
-ms.openlocfilehash: 7158fa486483f1ff26599e47e43ee3219a23045a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 229de776e7e2dace0253d7cc4495663969cb3e62
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082875"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285242"
 ---
 # <a name="send-notifications-to-android-and-ios-applications"></a>Android と iOS のアプリケーションに通知を送信する
 
@@ -53,7 +53,7 @@ GitHub のサンプル アプリケーションには、次のフォルダーが
 
 - **NotificationHub.Sample.API**: バックエンドとして機能する Visual Studio 2019 の ASP.NET Web API ソリューション。
 - **app**: 管理者ログインを使用して通知をディスパッチし、調査ユーザー ログインで通知を受信できるようにする、クロスプラットフォームの React Native アプリケーション。
-- **azure-template**: Azure サブスクリプションでこのデプロイを構成するために必要なすべてのリソースのデプロイに使用できる Azure Resource Manager テンプレート (`parameters.json` と `template.json`)。 Resource Manager テンプレートのデプロイの詳細については、[Azure portal を使用した ARM テンプレートの作成とデプロイ](/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)に関する記事を参照してください。
+- **azure-template**: Azure サブスクリプションでこのデプロイを構成するために必要なすべてのリソースのデプロイに使用できる Azure Resource Manager テンプレート (`parameters.json` と `template.json`)。 Resource Manager テンプレートのデプロイの詳細については、[Azure portal を使用した ARM テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)に関する記事を参照してください。
 
 ## <a name="sample-overview"></a>サンプルの概要
 
@@ -355,9 +355,9 @@ public interface INotificationService
 
 - **[Azure Notification Hubs インスタンス](#create-resource-notification-hub):** Azure で構成された通知ハブ。
 - **[SQL Server データベース インスタンス](#create-resource-sql-database):** Azure でホストされている SQL Server データベース。
-- **ASP.NET アプリバックエンド:** .NET 5.0 で構築された Web API バックエンド。Azure App Service としてホストされている Azure Notification Hubs と接続します。 詳細については、「[クイックスタート: ASP.NET Web アプリをデプロイする](/azure/app-service/quickstart-dotnetcore?tabs=net50&pivots=development-environment-vs)」を参照してください。
+- **ASP.NET アプリバックエンド:** .NET 5.0 で構築された Web API バックエンド。Azure App Service としてホストされている Azure Notification Hubs と接続します。 詳細については、「[クイックスタート: ASP.NET Web アプリをデプロイする](../app-service/quickstart-dotnetcore.md?pivots=development-environment-vs&tabs=net50)」を参照してください。
 
-すべてのリソースを手動でデプロイしたくない場合は、GitHub リポジトリに用意されている Azure Resource Manager の template.json ファイルを使用して、すべての必要なインスタンスを 1 ステップでデプロイできます。 テンプレートファイルは、/azure-template のリポジトリで入手できます。 Resource Manager テンプレートの使用方法の詳細については、「[チュートリアル:Azure クイックスタート テンプレートを使用する](/azure/azure-resource-manager/templates/template-tutorial-quickstart-template?tabs=azure-powershell)」を参照してください。
+すべてのリソースを手動でデプロイしたくない場合は、GitHub リポジトリに用意されている Azure Resource Manager の template.json ファイルを使用して、すべての必要なインスタンスを 1 ステップでデプロイできます。 テンプレートファイルは、/azure-template のリポジトリで入手できます。 Resource Manager テンプレートの使用方法の詳細については、「[チュートリアル:Azure クイックスタート テンプレートを使用する](../azure-resource-manager/templates/template-tutorial-quickstart-template.md?tabs=azure-powershell)」を参照してください。
 
 ### <a name="set-up-notifications-for-android-and-ios"></a>Android と iOS に対する通知を設定する
 
@@ -370,7 +370,7 @@ public interface INotificationService
 
 ### <a name="create-resource-sql-database"></a>リソースを作成する: SQL データベース
 
-Azure portal で [SQL Server データベース インスタンスを作成](/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal)します。 次に例を示します。
+Azure portal で [SQL Server データベース インスタンスを作成](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)します。 次に例を示します。
 
 :::image type="content" source="media/uwp-react/resources-sql.png" alt-text="SQL インスタンス リソース":::
 

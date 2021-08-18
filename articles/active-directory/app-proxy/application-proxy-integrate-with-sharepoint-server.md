@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 45433268a61772f499b5d2672a8b81044c1e3414
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 669b03d0d1d6f5f328cc4af368a756d0bbdab787
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764461"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727834"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを利用し、SharePoint へのリモート アクセスを有効にする
 
@@ -26,7 +26,7 @@ ms.locfileid: "108764461"
 
 構成を実行するには、次のリソースが必要です。
 - SharePoint 2013 以降のファーム。
-- アプリケーション プロキシが含まれるプランを使用する Azure AD テナント。 詳細については、[Azure AD のプランと料金](https://azure.microsoft.com/pricing/details/active-directory/)をご覧ください。
+- アプリケーション プロキシが含まれるプランを使用する Azure AD テナント。 詳細については、[Azure AD のプランと料金](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)をご覧ください。
 - Azure AD テナント内の[カスタム検証済みドメイン](../fundamentals/add-custom-domain.md)。
 - Azure AD Connect と同期されたオンプレミスの Active Directory。これによりユーザーは [Azure にサインイン](../hybrid/plan-connect-user-signin.md)できます。
 - 企業ドメイン内のコンピューターにインストールされて実行されているアプリケーション プロキシ コネクタ。

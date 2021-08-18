@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 7b3266be461af50d74988ad4834f2f8fc548e383
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f90ce603f745937d4d7f6253f54228fb2a20dbff
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934089"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113086156"
 ---
 # <a name="azure-cloud-services-classic-definition-webrole-schema"></a>Azure Cloud Services (クラシック) の定義 WebRole スキーマ
 

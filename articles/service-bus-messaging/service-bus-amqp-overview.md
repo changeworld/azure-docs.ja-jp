@@ -3,12 +3,12 @@ title: Azure Service Bus での AMQP 1.0 の概要
 description: オープン標準プロトコルである Advanced Message Queuing Protocol (AMQP) が Azure Service Bus によってどのようにサポートされているかについて説明します。
 ms.topic: article
 ms.date: 04/08/2021
-ms.openlocfilehash: 006511789bfa93f8e7d578ed21a73a2563fb4c6b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0e976f0cba4a599b64fde57f3a271a1565f93417
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304420"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416909"
 ---
 # <a name="advanced-message-queueing-protocol-amqp-10-support-in-service-bus"></a>Service Bus での Advanced Message Queuing Protocol (AMQP) 1.0 のサポート
 Azure Service Bus クラウド サービスは、主要な通信手段として [AMQP 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) を使用します。 Microsoft は、AMQP を開発および進化させるために、過去 10 年間にわたって、お客様および競合するメッセージング ブローカーのベンダーの両方を含む、業界全体のパートナーと協力して、[OASIS AMQP 技術委員会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)において新しい拡張機能を開発してきました。 AMQP 1.0 は、ISO/IEC 標準です ([ISO 19464:20149](https://www.iso.org/standard/64955.html))。 
@@ -70,7 +70,7 @@ Azure SDK 経由でサポートされているすべての Service Bus クライ
 - [JavaScript および TypeScript 用の Azure Service Bus モジュール](/javascript/api/overview/azure/service-bus?preserve-view=true)
 - [Python 用 Azure Service Bus ライブラリ](/python/api/overview/azure/servicebus?preserve-view=true)
 
-[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+[!INCLUDE [service-bus-websockets-options](./includes/service-bus-websockets-options.md)]
 
 また、AMQP 1.0 準拠の任意のプロトコル スタックから Service Bus を使用することもできます。
 

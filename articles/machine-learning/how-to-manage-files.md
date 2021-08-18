@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: e1868794f7e47ccce3efa36b7954a1a2a704e8d6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 57392991be00d8e34a378309cf8a0f124e988236
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739027"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460560"
 ---
 # <a name="how-to-create-and-manage-files-in-your-workspace"></a>ワークスペース内のファイルを作成および管理する方法
 
@@ -23,7 +23,7 @@ Azure Machine Learning ワークスペース内のファイルを作成および
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://aka.ms/AMLFree) を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
 
 ## <a name="create-files"></a><a name="create"></a>ファイルの作成

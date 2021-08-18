@@ -4,17 +4,16 @@ description: Data Factory 用の Azure Policy 組み込みポリシー定義を�
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
-ms.custom:
-- seo-lt-2019
-- references_regions
-ms.date: 06/11/2021
-ms.openlocfilehash: e3ff681ed09289d4f709ce4518047b3accb78c03
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.custom: seo-lt-2019, references_regions
+ms.date: 08/13/2021
+ms.openlocfilehash: 739b21da993bd220a6884980be886627f699fe6e
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017363"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181505"
 ---
 # <a name="azure-policy-built-in-definitions-for-data-factory-preview"></a>Data Factory 用の Azure Policy 組み込み定義 (プレビュー)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]

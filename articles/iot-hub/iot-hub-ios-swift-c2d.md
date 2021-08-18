@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
-ms.openlocfilehash: 15c0df33b8f09ec71f2be913d72f0785dc766375
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 627342bb4ee7a6192b6dd7b9fdce71a87158ec39
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027535"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287696"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-ios.md)に関するクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md)に関するクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -33,7 +33,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 この記事の最後で、2 つの Swift iOS プロジェクトを実行します。
 
-* **sample-device**: [Send telemetry from a device to an IoT hub](quickstart-send-telemetry-ios.md) (デバイスから IoT ハブへのテレメトリの送信) で作成されたサンプル アプリであり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
+* **sample-device**: [Send telemetry from a device to an IoT hub](../iot-develop/quickstart-send-telemetry-iot-hub.md) (デバイスから IoT ハブへのテレメトリの送信) で作成されたサンプル アプリであり、IoT ハブに接続し、cloud-to-device メッセージを受信します。
 
 * **sample-service**: IoT Hub を介してシミュレート対象デバイス アプリに cloud-to-device メッセージを送信し、その配信確認を受け取ります。
 
@@ -58,7 +58,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 ここでは、Swift アプリケーションを実行して IoT ハブから cloud-to-device メッセージを受信する iOS デバイスをシミュレートします。 
 
-これは、「[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-ios.md)」の記事で作成したサンプル デバイスです。 既に実行中の場合、このセクションはスキップしてかまいません。
+これは、「[デバイスから IoT ハブへのテレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md)」の記事で作成したサンプル デバイスです。 既に実行中の場合、このセクションはスキップしてかまいません。
 
 ### <a name="install-cocoapods"></a>CocoaPods のインストール
 
@@ -106,7 +106,7 @@ pod install
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-ios.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 

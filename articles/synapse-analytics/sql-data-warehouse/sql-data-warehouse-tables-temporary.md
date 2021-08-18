@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9898bc94aa79b374174f80592dc250e660f7f8c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93310673"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734590"
 ---
 # <a name="temporary-tables-in-dedicated-sql-pool"></a>専用 SQL プール内の一時テーブル
 
@@ -30,8 +30,6 @@ ms.locfileid: "93310673"
 一時テーブルは、作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  
 
 一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。
-
-特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 専用 SQL プールでは、一時テーブルはセッション レベルで存在します。  それが作成されたセッションにのみ表示されます。 そのため、そのセッションがログオフされたときに自動的に削除されます。 
 
 ## <a name="temporary-tables-in-dedicated-sql-pool"></a>専用 SQL プール内の一時テーブル
 

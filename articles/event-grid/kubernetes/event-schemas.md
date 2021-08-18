@@ -6,17 +6,17 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 78576362ff3258344b6a340762799dfa1a52f623
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4ec482a0cf8c0b418d2cd6ec11d1afd56273b681
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388232"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415626"
 ---
 # <a name="event-schemas-in-event-grid-on-kubernetes"></a>Kubernetes 上の Event Grid のイベント スキーマ
 Kubernetes 上の Event Grid は、JSON 形式でイベントを受け入れて配信します。 これは [Cloud Events 1.0 スキーマ仕様](https://github.com/cloudevents/spec/blob/v1.0/spec.md)をサポートし、これは Event Grid にイベントを発行するときに使用するスキーマです。 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 

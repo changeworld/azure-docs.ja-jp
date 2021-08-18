@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6aa233e82ca272b9b5b9e4a9bee4ef2b57f2de77
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e9fc377acf528d564411a5c65c5fce9d6282118a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070021"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749935"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API にコンテナーを作成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB SQL API にコンテナーを作成するいくつかの方法について説明します。 Azure portal、Azure CLI、PowerShell、またはサポートされている SDK を使用して、コンテナーを作成する方法が示されます。 この記事では、コンテナーを作成してパーティション キーを指定し、スループットをプロビジョニングする方法を紹介します。
 
-この記事では、Azure Cosmos DB SQL API にコンテナーを作成するいくつかの方法について説明します。 別の API を使用している場合、コンテナーを作成するには、[MongoDB の API](how-to-create-container-mongodb.md)、[Cassandra API](how-to-create-container-cassandra.md)、[Gremlin API](how-to-create-container-gremlin.md)、[Table API](how-to-create-container-table.md) に関する記事を参照してください。
+この記事では、Azure Cosmos DB SQL API にコンテナーを作成するいくつかの方法について説明します。 別の API を使用している場合、コンテナーを作成するには、[MongoDB の API](how-to-create-container-mongodb.md)、[Cassandra API](cassandra/how-to-create-container-cassandra.md)、[Gremlin API](how-to-create-container-gremlin.md)、[Table API](table/how-to-create-container.md) に関する記事を参照してください。
 
 > [!NOTE]
 > コンテナーを作成するときは、同じ名前で大文字と小文字が異なる 2 つのコンテナーを作成しないようにしてください。 これは、Azure プラットフォームの一部で大文字と小文字が区別されないため、このような名前のコンテナーでテレメトリとアクションの混同や衝突が発生する可能性があるためです。
@@ -36,7 +36,7 @@ ms.locfileid: "110070021"
    * 新しいデータベースを作成するか、既存のデータベースを使用するかを指定します。
    * **コンテナー ID** を入力します。
    * **パーティション キー** の値を入力します (例: `/ItemID`)。
-   * **自動スケーリング** または **手動** スループットを選択し、必要な **コンテナー スループット** を入力します (例: 1000 RU/秒)。 プロビジョニングするスループットを入力します (例: 1,000 RU)。
+   * **自動スケーリング** または **手動** スループットを選択し、必要な **コンテナー スループット** を入力します (例: 1,000 RU/秒)。 プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
     :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="[新しいコレクション] が強調表示されている [データ エクスプローラー] のスクリーンショット":::

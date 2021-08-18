@@ -2,19 +2,18 @@
 title: Power Query コネクタを使用してデータのインデックスを付ける (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: Power Query コネクタを使用して、さまざまなデータ ソースからデータをインポートします。
-manager: luisca
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 0b886d195942f5f6334c983e464e812129466640
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e943452a285f943c05982a558c92315428e9829c
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949260"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729535"
 ---
 # <a name="index-data-using-power-query-connectors-preview"></a>Power Query コネクタを使用してデータのインデックスを付ける (プレビュー)
 

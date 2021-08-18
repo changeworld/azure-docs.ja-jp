@@ -3,12 +3,12 @@ title: Azure DevTest Labs から個人データを削除およびエクスポー
 description: Azure DevLast Labs サービスから個人データを削除およびエクスポートして、一般データ保護規則 (GDPR) での義務を果たす方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21c2187b603794f60f736c89d06983f5784730ce
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483518"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282819"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs から個人データをエクスポートまたは削除する
 この記事では、Azure DevTest Labs サービスから個人データを削除およびエクスポートする手順を説明します。 
@@ -71,11 +71,11 @@ Azure portal または PowerShell を使用して個人用およびラボ用の�
 
     ![CSV ファイルのダウンロード](./media/personal-data-delete-export/download-csv-file.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell&quot;></a>Azure PowerShell
 
 ```powershell
 Param (
-    [Parameter (Mandatory=$true, HelpMessage="The storage account name where to store usage data")]
+    [Parameter (Mandatory=$true, HelpMessage=&quot;The storage account name where to store usage data")]
     [string] $storageAccountName,
 
     [Parameter (Mandatory=$true, HelpMessage="The storage account key")]
@@ -207,4 +207,4 @@ else
 次の記事をご覧ください。 
 
 - [ラボのポリシーを設定する](devtest-lab-set-lab-policy.md)
-- [よく寄せられる質問](devtest-lab-faq.md)
+- [よく寄せられる質問](devtest-lab-faq.yml)

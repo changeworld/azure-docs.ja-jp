@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c96dcc2bae03b1bd05fb3d1512dba757f180eed8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa712d3d93c715f37972ac20174f92ffab530e01
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94964917"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085148"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>クラウド ソリューション プロバイダー プログラムの StorSimple とは。
 
@@ -32,7 +32,7 @@ Cloud Solutions Provider (CSP) の StorSimple Virtual Array を用いること�
 
 CSP の StorSimple の詳細については、[Azure CSPの概要](/azure/cloud-solution-provider/overview/azure-csp-overview)のページをご覧ください。
 
-課金、料金、インセンティブ、CSP 内のサポートの詳細については、[CSP の StorSimple についてよく寄せられる質問](storsimple-partner-csp-faq.md)に関するページをご覧ください。 
+課金、料金、インセンティブ、CSP 内のサポートの詳細については、[CSP の StorSimple についてよく寄せられる質問](storsimple-partner-csp-faq.yml)に関するページをご覧ください。 
 
 ## <a name="deploy-and-manage-storsimple-for-csp"></a>CSP の StorSimple のデプロイと管理
 
@@ -42,5 +42,5 @@ CSP の StorSimple は使用量ベースのサービスとして、現在 StorSi
 
 ## <a name="next-steps"></a>次のステップ
 
-- CSP の StorSimple について他に疑問がある場合は、[CSP の StorSimple: よく寄せられる質問](storsimple-partner-csp-faq.md)に関するページに進みます。
+- CSP の StorSimple について他に疑問がある場合は、[CSP の StorSimple: よく寄せられる質問](storsimple-partner-csp-faq.yml)に関するページに進みます。
 - StorSimple をデプロイする準備ができている場合は、[CSP の StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。

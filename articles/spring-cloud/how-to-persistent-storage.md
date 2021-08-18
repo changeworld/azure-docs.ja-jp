@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud で永続的ストレージを使用する方法 | Microsoft Docs
 description: Azure Spring Cloud で永続的ストレージを使用する方法
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 77ccfa08d5e2076a83c5a11df3ce6caf597c2d2f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 925f1d8113f08f1bc8b063623dcc85ac79964047
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134863"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015512"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>Azure Spring Cloud で永続ストレージを使用する
 
@@ -61,6 +61,7 @@ Azure Spring Cloud の既定では、各アプリケーション インスタン
 ```azurecli
 az extension add --name spring-cloud
 ```
+
 その他の操作:
 
 * 永続的ストレージが有効になった状態のアプリを作成するには:

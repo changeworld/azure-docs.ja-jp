@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 77159a099dcc28739457a10afef374502d117b5a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8c0cba39c2fe299a2cc822309b0063d2d4fe2f71
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971155"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431521"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>従量制課金に対する異常検出サービス
 
-[マーケットプレース測定サービス](../marketplace-metering-service-apis-faq.md)を使用すると、標準以外の単位に応じて課金されるコマーシャル マーケットプレース プログラムでプランを作成できます。 従量制課金では、お客様が顧客の使用量について使用状況イベントを Microsoft に送信し、Microsoft がその使用量に基づいて請求を準備します。
+[マーケットプレース測定サービス](../marketplace-metering-service-apis-faq.yml)を使用すると、標準以外の単位に応じて課金されるコマーシャル マーケットプレース プログラムでプランを作成できます。 従量制課金では、お客様が顧客の使用量について使用状況イベントを Microsoft に送信し、Microsoft がその使用量に基づいて請求を準備します。
 
 バグ、使用量追跡の構成ミス、不正行為など、さまざまな原因によって間違った使用量データが発生する可能性があります。 間違った使用量データは、不適当な顧客請求および請求紛争につながる可能性があります。
 
@@ -67,7 +67,7 @@ ms.locfileid: "111971155"
 
 従量制課金の異常に関連するサポート チケットを送信するには、次のようにします。
 
-1. 職場アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にサインインします。
+1. 職場アカウントを使用して[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインします。
 1. ページの右上にあるメニューで **[サポート]** アイコンを選択します。 ページの右側に **[ヘルプとサポート]** ウィンドウが表示されます。
 1. コマーシャル マーケットプレースに関するヘルプの場合は、 **[Commercial Marketplace]\(コマーシャル マーケットプレース\)** を選択します。
    ![サポート ウィンドウを示しています。](../media/support/commercial-marketplace-support-pane.png)

@@ -6,15 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: d01febec3972dcc26c6e9b5aa8d0c4cca5f32d0a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e4945f6013c05135ea906fb813017ca152aa9d62
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606081"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088334"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>EXPLAIN を使用して Azure Database for MySQL でのクエリのパフォーマンスをプロファイリングする方法
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 **EXPLAIN** は、クエリを最適化するための便利なツールです。 EXPLAIN ステートメントを使うと、SQL ステートメントの実行状況に関する情報を取得できます。 EXPLAIN ステートメントを実行したときの出力の例を次に示します。
 
@@ -56,10 +57,11 @@ possible_keys: id
 ```
 
 新しい EXPLAIN では、MySQL がインデックスを使って行数を 1 に制限するようになったため、検索時間が大幅に短縮されたことが示されています。
- 
+
 ## <a name="covering-index"></a>カバリング インデックス
+
 カバリング インデックスは、データ テーブルからの値の取得を減らすため、インデックスのクエリのすべての列で構成されます。 ここでは、次のような **GROUP BY** ステートメントについて説明します。
- 
+
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -78,10 +80,10 @@ possible_keys: NULL
 ```
 
 出力からわかるように、適切なインデックスを利用できないため、MySQL はインデックスを使っていません。 また、*Using temporary; Using file sort* と表示されていますが、これは MySQL が一時テーブルを作成して **GROUP BY** 句を満たしていることを意味します。
- 
+
 **c2** 列だけにインデックスを作成しても違いはなく、MySQL はまだ一時テーブルを作成する必要があります。
 
-```sql 
+```sql
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
 *************************** 1. row ***************************
@@ -122,6 +124,7 @@ possible_keys: covered
 上の EXPLAIN が示すように、MySQL はカバリング インデックスを使うことで、一時テーブルを作成しなくて済むようになっています。 
 
 ## <a name="combined-index"></a>結合インデックス
+
 結合インデックスは、複数の列の値で構成され、インデックス付き列の連結値により並べ替えられた行の配列と見なすことができます。  この方法は、**GROUP BY** ステートメントで役に立ちます。
 
 ```sql
@@ -143,7 +146,7 @@ possible_keys: NULL
 
 MySQL の "*ファイル並べ替え*" 操作の実行はかなり遅く、多くの行を並べ替える必要があるときは特にそうです。 このクエリを最適化するには、並べ替えられる両方の列に対して結合インデックスを作成します。
 
-```sql 
+```sql
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
 *************************** 1. row ***************************
@@ -162,11 +165,11 @@ possible_keys: NULL
 ```
 
 EXPLAIN では、MySQL が結合インデックスを使うようになり、インデックスが既に並べ替えられているので、さらに並べ替えを行う必要がないことが示されています。
- 
+
 ## <a name="conclusion"></a>まとめ
- 
+
 EXPLAIN と異なる種類のインデックスを使うと、パフォーマンスを大幅に向上させることができます。 テーブルにインデックスを作成しても、必ずしも MySQL がそれを使ってクエリを実行できるわけではありません。 常に、EXPLAIN を使って想定を検証し、インデックスを使ってクエリを最適化する必要があります。
 
-
 ## <a name="next-steps"></a>次のステップ
+
 - 最も気になる質問への回答を探したり、新しい質問や回答を投稿したりするには、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。

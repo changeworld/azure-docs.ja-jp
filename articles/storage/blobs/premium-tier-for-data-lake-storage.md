@@ -5,15 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.custom: references_regions
-ms.date: 10/30/2020
+ms.date: 06/21/2021
 ms.author: normesta
-ms.openlocfilehash: a9ed305dbd081486f0b892fcc38ada83e9666bd9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 22ed6d6e4c9280d79027918615a51da305f2457f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143343"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453918"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage の Premium サービス レベル
 
@@ -70,39 +69,6 @@ Azure Data Lake Storage の Premium サービス レベルを使用するには�
 
 > [!div class="mx-imgBorder"]
 > ![階層型名前空間の設定](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
-
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-Azure Data Lake Storage の Premium サービス レベルは次のリージョンで利用できます。
-
-|リージョン|冗長性|
-|--|--|
-|米国東部|LRS、ZRS|
-|米国東部 2|LRS、ZRS|
-|米国中部|LRS|
-|米国西部|LRS|
-|米国西部 2|LRS、ZRS|
-|米国中西部|LRS|
-|米国中南部|LRS|
-|カナダ中部|LRS|
-|カナダ東部|LRS|
-|北ヨーロッパ|LRS、ZRS|
-|西ヨーロッパ|LRS、ZRS|
-|英国南部|LRS|
-|英国西部|LRS|
-|フランス中部|LRS|
-|東アジア|LRS|
-|韓国中部|LRS|
-|韓国南部|LRS|
-|インド中部|LRS|
-|インド西部|LRS|
-|アラブ首長国連邦北部|LRS|
-|東日本|LRS|
-|西日本|LRS|
-|東南アジア|LRS、ZRS|
-|オーストラリア東部|LRS、ZRS|
-|オーストラリア東南部|LRS|
-|ブラジル南部|LRS|
 
 ## <a name="next-steps"></a>次のステップ
 

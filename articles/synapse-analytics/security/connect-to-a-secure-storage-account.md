@@ -1,19 +1,19 @@
 ---
 title: Azure Synapse ワークスペースからセキュリティで保護されたストレージ アカウントに接続する
 description: この記事では、Azure Synapse ワークスペースからセキュリティで保護されたストレージ アカウントに接続する方法を説明します
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 02/10/2021
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11127453c67a41dd4b5f8677d02a10f749f516f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674316"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745040"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>Synapse ワークスペースからセキュリティで保護された Azure ストレージ アカウントに接続する
 

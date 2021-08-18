@@ -1,21 +1,21 @@
 ---
 title: 既定の VNET で Azure Image Builder を使用して Windows VM を作成する
 description: 既定の VNET で Azure Image Builder を使用して Windows VM を作成する
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.reviewer: danis
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 12ec69f3976cb156bc04bf2ed7b79b1fd775b142
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 3ae5fddf35136046fae6d1dff9938700740bee01
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031092"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594699"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Windows VM の Azure Image Builder を使用して既存の Azure VNET へのアクセスを許可する
 

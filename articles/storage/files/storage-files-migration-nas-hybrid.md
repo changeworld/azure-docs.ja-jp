@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 01289345ee6bebc0ab1a4608eb83cb8a2827e924
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: abefaa06cb8d2c0c815d86c6e1386f82e39c52fe
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "108745363"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462269"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用してネットワーク接続ストレージ (NAS) からハイブリッド クラウド デプロイに移行する
 
@@ -27,6 +27,13 @@ ms.locfileid: "108745363"
 
 Azure File Sync は直接接続記憶域 (DAS) の場所で動作し、ネットワーク接続ストレージ (NAS) の場所への同期をサポートしていません。
 このため、ファイルの移行が必要になります。この記事では、そのような移行の計画と実行について説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="migration-goals"></a>移行の目標
 

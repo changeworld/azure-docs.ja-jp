@@ -7,13 +7,12 @@ ms.date: 05/21/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philMea
-ms.openlocfilehash: fd6c20277098d0a2d1909cfb93243dd8e3bbcca0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0a9c69324df0756f7f578e18a0f8acfed428a7b6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793238"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742644"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Drawing Conversion のエラーと警告
 

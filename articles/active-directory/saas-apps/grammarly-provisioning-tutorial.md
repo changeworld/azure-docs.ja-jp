@@ -3,8 +3,8 @@ title: 'チュートリアル: Azure Active Directory による自動ユーザ�
 description: Azure AD から Grammarly に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: cd2dd9d7-4901-40c8-8888-98850557b072
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2021
-ms.author: Zhchia
-ms.openlocfilehash: 39d1e9e439ad1b14b6f6517868c21c682c45a7a3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.author: thwimmer
+ms.openlocfilehash: 4ece3675a0d15821ae7691e85588d0575f13eae3
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130595"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767671"
 ---
 # <a name="tutorial-configure-grammarly-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように Grammarly を構成する
 

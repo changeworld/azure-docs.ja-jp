@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud の geo ディザスター リカバリー | Microsoft Docs
 description: Spring Cloud アプリケーションを地域的な停電から保護する方法について説明します
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 8e3471d778e0589083caaf2dfedbccc4568de471
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 69dbe496745ebbe3fbc9547a1ffc381ec0cae905
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144657"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861338"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud のディザスター リカバリー
 
@@ -26,9 +26,9 @@ Azure Spring Cloud アプリケーションは、特定のリージョンで実�
 
 高可用性と災害からの保護を確保するには、Spring Cloud アプリケーションを複数のリージョンにデプロイする必要があります。  Azure には[ペアになっているリージョン](../best-practices-availability-paired-regions.md)の一覧が用意されているため、Spring Cloud のリージョン ペアへのデプロイを計画できます。  マイクロサービス アーキテクチャを設計する際には、利用可能なリージョン、Azure のペアになっているリージョン、サービスの可用性という 3 つの重要な要素を考慮することをお勧めします。
 
-*  利用可能なリージョン:ネットワークの遅延と転送時間を最小限に抑えるために、ユーザーの近くにある地理的な領域を選択します。
-*  Azure のペアになっているリージョン:選択した地域内でペアになっているリージョンを選択し、プラットフォームの調整された更新を確保し、必要に応じて、優先順位の高い復旧作業を行います。
-*  サービスの可用性: ペアになっているリージョンの動作を、ホット/ホット、ホット/ウォーム、またはホット/コールドのいずれにするかを決定します。
+* 利用可能なリージョン:ネットワークの遅延と転送時間を最小限に抑えるために、ユーザーの近くにある地理的な領域を選択します。
+* Azure のペアになっているリージョン:選択した地域内でペアになっているリージョンを選択し、プラットフォームの調整された更新を確保し、必要に応じて、優先順位の高い復旧作業を行います。
+* サービスの可用性: ペアになっているリージョンの動作を、ホット/ホット、ホット/ウォーム、またはホット/コールドのいずれにするかを決定します。
 
 ## <a name="use-azure-traffic-manager-to-route-traffic"></a>Azure Traffic Manager を使用してトラフィックをルーティングする
 
@@ -39,7 +39,7 @@ Azure Spring Cloud アプリケーションは、特定のリージョンで実�
 ## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Azure Spring Cloud 用の Azure Traffic Manager を作成する
 
 1. 2 つの異なるリージョンで Azure Spring Cloud を作成します。
-2 つの異なるリージョン (米国東部と西ヨーロッパ) にデプロイされた Azure Spring Cloud の 2 つのサービス インスタンスが必要になります。 Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動し、2 つのサービス インスタンスを作成します。 それぞれが Traffic のプライマリとフェールオーバーのエンドポイントとして機能します。 
+2 つの異なるリージョン (米国東部と西ヨーロッパ) にデプロイされた Azure Spring Cloud の 2 つのサービス インスタンスが必要になります。 Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動し、2 つのサービス インスタンスを作成します。 それぞれが Traffic のプライマリとフェールオーバーのエンドポイントとして機能します。
 
 **2 つのサービスインスタンスの情報:**
 
@@ -54,14 +54,14 @@ Azure Spring Cloud アプリケーションは、特定のリージョンで実�
 
 Traffic Manager プロファイルは次のとおりです。
 * Traffic Manager の DNS 名: `http://asc-bcdr.trafficmanager.net`
-* エンドポイント プロファイル: 
+* エンドポイント プロファイル:
 
 | プロファイル | Type | 移行先 | Priority | カスタム ヘッダーの設定 |
 |--|--|--|--|--|
 | エンドポイント A のプロファイル | 外部エンドポイント | service-sample-a.asc-test.net | 1 | host: bcdr-test.contoso.com |
 | エンドポイント B のプロファイル | 外部エンドポイント | service-sample-b.asc-test.net | 2 | host: bcdr-test.contoso.com |
 
-4. DNS ゾーンに CNAME レコードを作成します: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net 
+4. DNS ゾーンに CNAME レコードを作成します: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net
 
 5. これで、環境は完全に設定されました。 お客様は、bcdr-test.contoso.com を介してアプリにアクセスすることができます。
 

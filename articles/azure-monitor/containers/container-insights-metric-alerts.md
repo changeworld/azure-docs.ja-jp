@@ -3,12 +3,12 @@ title: Container insights からのメトリック アラート
 description: この記事では、Container insights から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8280b567adb36511c4eb58d7ec72b775d36feb6a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728894"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734352"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Container insights からの推奨メトリック アラート (プレビュー)
 
@@ -248,6 +248,6 @@ ConfigMap 構成ファイルを構成して、使用率の既定のしきい値�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
+- [ログ クエリの例](container-insights-log-query.md)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 
 - Azure Monitor と、Kubernetes クラスターの他のアスペクトを監視する方法の詳細については、[Kubernetes クラスターのパフォーマンスの監視](container-insights-analyze.md)に関するページをご覧ください。

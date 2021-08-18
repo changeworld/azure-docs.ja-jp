@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: caya
-ms.openlocfilehash: 2329dc7426b223ef2c81dd0e2e607bccf73192e6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 15655ba313a3a3cba23289c6d829523db6735129
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230984"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739906"
 ---
 # <a name="export-a-trusted-client-ca-certificate-chain-to-use-with-client-authentication"></a>クライアント認証で使用する信頼されたクライアント CA 証明書チェーンをエクスポートする
 クライアントまたはクライアント認証との相互認証を構成するには、Application Gateway は、信頼されたクライアント CA 証明書チェーンをゲートウェイにアップロードする必要があります。 複数の証明書チェーンがある場合は、チェーンを個別に作成し、それらを別のファイルとして Application Gateway にアップロードする必要があります。 この記事では、ゲートウェイのクライアント認証構成で使用できる信頼されたクライアント CA 証明書チェーンをエクスポートする方法について説明します。  
@@ -55,7 +55,7 @@ Application Gateway でクライアント認証を許可するには、信頼さ
 6. **[完了]** をクリックして、証明書をエクスポートします。
 
     > [!div class="mx-imgBorder"]
-    > ![ファイル エクスポートの完了後の証明書のエクスポート ウィザードが表示されているスクリーンショット。](./media/certificates-for-backend-authentication/finish.png)
+    > ![ファイル エクスポートの完了後の証明書のエクスポート ウィザードが表示されているスクリーンショット。](./media/certificates-for-backend-authentication/finish-screen.png)
 
 7. 証明書が正常にエクスポートされました。
 

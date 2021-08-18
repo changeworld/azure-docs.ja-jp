@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c24b7ee5154ec7f79bbbf19ffc6c59b8bf6221b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643677"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743320"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -43,7 +43,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
   - **東南アジア**
   - **米国西部 2**
 
-- この記事は、読者が IoT Hub へのテレメトリ メッセージの送信について理解していることを前提としています。 [テレメトリ C の送信のクイックスタート](quickstart-send-telemetry-c.md)に関するページを完了していることを確認してください。
+- この記事は、読者が IoT Hub へのテレメトリ メッセージの送信について理解していることを前提としています。 [テレメトリ C の送信のクイックスタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c)に関するページを完了していることを確認してください。
 
 - IoT Hub にデバイスを登録し (各クイックスタートで使用可能な手順)、接続文字列をメモします。
 
@@ -144,7 +144,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    `connectionString` 定数の値を、[送信テレメトリ C のクイックスタート](./quickstart-send-telemetry-c.md)に関するページの[デバイスの登録](./quickstart-send-telemetry-c.md#register-a-device)セクションでメモしたデバイス接続文字列に置き換えます。
+    `connectionString` 定数の値を、[送信テレメトリ C のクイックスタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c)に関するページの[デバイスの登録](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c#register-a-device)セクションでメモしたデバイス接続文字列に置き換えます。
 
 1. `MESSAGE_COUNT` 定義を `5000` に変更します。
 
@@ -249,7 +249,7 @@ C SDK を使用せずに分散トレース機能をプレビューするのは *
 }
 ```
 
-| 要素名 | 必須 | Type | 説明 |
+| 要素名 | 必須 | 型 | 説明 |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | はい | Integer | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
 | `sampling_rate` | はい | Integer | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |

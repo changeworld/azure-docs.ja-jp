@@ -12,12 +12,12 @@ ms.date: 06/10/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0944dfd177ba82680b315913046ce8a4103f1156
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a8fc74a298450ad2581a8a147eaff9f996dca8dc
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960597"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112198802"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードの強制リセット フローを設定する
 
@@ -31,7 +31,7 @@ ms.locfileid: "111960597"
 
 ![パスワードの強制リセット フロー](./media/force-password-reset/force-password-reset-flow.png)
 
-パスワードのリセット フローは、パスワードが含まれる[電子メール アドレス](identity-provider-local.md#email-sign-in)や[ユーザー名](identity-provider-local.md#username-sign-in)を使ってサインインを行う Azure AD B2C のローカル アカウントに適用されます。
+パスワードのリセット フローは、パスワードが含まれる[電子メール アドレス](sign-in-options.md#email-sign-in)や[ユーザー名](sign-in-options.md#username-sign-in)を使ってサインインを行う Azure AD B2C のローカル アカウントに適用されます。
 
 ::: zone pivot="b2c-user-flow"
 

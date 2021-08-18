@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 73caf848ab5c6f8e973469066ce4612a075a52f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f059e39c97f66d07caa529ec4f6592fd8efe689e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94489320"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284925"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce 用にリード管理を構成する
 
@@ -66,7 +66,7 @@ ms.locfileid: "94489320"
 
 発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、次の手順に従います。
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインします。
 
 1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 

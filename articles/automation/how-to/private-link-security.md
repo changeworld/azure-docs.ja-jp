@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28f4c314b65a27c71c7620ff5941463b1ea68b55
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 547889b63bcaa7e8a43d62c639ac40715949e89d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831458"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730536"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する
 
@@ -64,7 +64,7 @@ Webhook URL に対して POST を行うことで、Runbook を開始できます
 
 Azure Automation のユーザー Hybrid Runbook Worker 機能を使用すると、Azure または Azure 以外のマシン (Azure Arc 対応サーバーに登録されているサーバーを含む) で Runbook を直接実行できます。 ロールをホストしているマシンまたはサーバーで、環境内のリソースに対して Runbook を直接実行して、それらのローカル リソースを管理できます。
 
-JRDS エンドポイントは、Runbook の開始と停止、Runbook の worker へのダウンロード、および Automation サービスへのジョブ ログ ストリームの送信を行うためにハイブリッド worker によって使用されます。 JRDS エンドポイントを有効にすると、URL は `https://<automationaccountID>.jobruntimedata.<region>.azure-automation.net` のようになります。 これにより、Azure Virtual Network に接続されたハイブリッド worker での Runbook の実行により、インターネットへの送信接続を開かなくてもジョブを実行できるようになります。  
+JRDS エンドポイントは、Runbook の開始と停止、Runbook の worker へのダウンロード、および Automation サービスへのジョブ ログ ストリームの送信を行うためにハイブリッド worker によって使用されます。 JRDS エンドポイントを有効にすると、URL は `https://<automationaccountID>.jrds.<region>.privatelink.azure-automation.net` のようになります。 これにより、Azure Virtual Network に接続されたハイブリッド worker での Runbook の実行により、インターネットへの送信接続を開かなくてもジョブを実行できるようになります。  
 
 > [!NOTE]
 >Azure Automation 用のプライベート リンクの現在の実装では、Azure 仮想ネットワークに接続されている Hybrid Runbook Worker でのジョブの実行のみがサポートされており、クラウド ジョブはサポートされていません。
@@ -77,7 +77,7 @@ Update Management の概要と構成方法については、「[Update Managemen
 
 Update Management 用に構成されたマシンを、Private Link チャネルを介して安全な方法で Automation および Log Analytics ワークスペースに接続するには、Private Link を使用して構成された Automation アカウントにリンクされている Log Analytics ワークスペースに対して Private Link を有効にする必要があります。
 
-プライベート リンク スコープの外部から Log Analytics ワークスペースにアクセスする方法を制御するには、「[Log Analytics の構成](../../azure-monitor/logs/private-link-security.md#configure-log-analytics)」に記載されている手順に従います。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンは、このワークスペースにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、このワークスペースのデータにアクセスできません。
+プライベート リンク スコープの外部から Log Analytics ワークスペースにアクセスする方法を制御するには、「[Log Analytics の構成](../../azure-monitor/logs/private-link-configure.md#configure-access-to-your-resources)」に記載されている手順に従います。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンは、このワークスペースにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、このワークスペースのデータにアクセスできません。
 
 **DSCAndHybridWorker** ターゲット サブリソースを使用して、ユーザーおよびシステムのハイブリッド worker に対して Private Link を有効にします。
 

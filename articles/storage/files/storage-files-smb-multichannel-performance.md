@@ -7,16 +7,23 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e8b2f64b0249cfe3b8a0a2e1bebcf7daabfe94dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 995ece7fb5d199a4c403d4512c29eae46fe9fdcb
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094620"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116644"
 ---
 # <a name="smb-multichannel-performance"></a>SMB マルチチャネルのパフォーマンス
 
 Azure Files SMB マルチチャネル (プレビュー) を使用すると、SMB 3.x クライアントから、FileStorage アカウント内の Premium ファイル共有への複数のネットワーク接続を確立できます。 Windows Server 2012 および Windows 8 クライアントで、SMB 3.x プロトコルに SMB マルチチャネル機能が導入されました。 これにより、SMB マルチチャネルをサポートしている Azure Files SMB 3.x クライアントから、Azure Premium ファイル共有の機能を利用できます。 ストレージ アカウントで SMB マルチチャネルを有効にするための追加料金は発生しません。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="benefits"></a>利点
 

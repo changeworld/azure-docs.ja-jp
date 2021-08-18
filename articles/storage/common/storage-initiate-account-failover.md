@@ -10,12 +10,12 @@ ms.date: 05/07/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28f46ec6354f98c11ce68beeb2e3de375c7a0249
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: bd1bbf0d1c5a49bde35d303e6780737fb43ca997
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632333"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726065"
 ---
 # <a name="initiate-a-storage-account-failover"></a>ストレージ アカウントのフェールオーバーを開始する
 
@@ -42,7 +42,7 @@ Azure Storage の冗長性の詳細については、「[Azure Storage の冗長
 - Azure File Sync では、ストレージ アカウントのフェールオーバーはサポートされていません。 Azure File Sync でクラウド エンドポイントとして使用されている Azure ファイル共有を含むストレージ アカウントは、フェールオーバーしないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。
 - 階層型名前空間が有効になっているストレージ アカウント (Data Lake Storage Gen2 など) は、現時点ではサポートされていません。
 - Premium ブロック BLOB 含むストレージ アカウントは、フェールオーバーできません。 現在、Premium ブロック BLOB をサポートするストレージ アカウントでは、geo 冗長がサポートされていません。
-- 任意の [WORM 不変ポリシー](../blobs/storage-blob-immutable-storage.md)対応コンテナーを含むストレージ アカウントをフェール オーバーすることはできません。 ロックされていない、またはロックされている時間ベースのリテンション期間または訴訟ホールド ポリシーでは、コンプライアンスを維持するためにフェール オーバーが防止されます。
+- 任意の [WORM 不変ポリシー](../blobs/immutable-storage-overview.md)対応コンテナーを含むストレージ アカウントをフェール オーバーすることはできません。 ロックされていない、またはロックされている時間ベースのリテンション期間または訴訟ホールド ポリシーでは、コンプライアンスを維持するためにフェール オーバーが防止されます。
 
 ## <a name="initiate-the-failover"></a>フェールオーバーを開始する
 

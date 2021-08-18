@@ -2,17 +2,18 @@
 title: PowerShell を使用して Azure SSIS 統合ランタイムをデプロイする
 description: この PowerShell スクリプトは、クラウドで SSIS パッケージを実行できる Azure-SSIS 統合ランタイムを作成します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: article
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 09/12/2017
-ms.openlocfilehash: f037ef0050a6a9e93e0ae98cbfa1d2b9d68d5939
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8698a5852eb557d5ec8016f1ec8f3181c9d43275
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665522"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750957"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell スクリプト - Azure-SSIS 統合ランタイムのデプロイ
 
@@ -43,7 +44,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | Notes |
+| command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | データ ファクトリを作成します。 |

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 02/18/2020
-ms.openlocfilehash: c3d4b882a83b457527fcf71424357b8a51a86d84
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 345ef497ecb14279c117932bd2c9a1cf7b42ba1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783271"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743660"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>移行の概要: SQL Server から Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -217,11 +217,9 @@ SQL Managed Instance に含まれているクラウドベースの高度な機�
 
 |Asset  |説明  |
 |---------|---------|
-|[データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、ワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの対応性、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価を迅速に行うことができます。|
-|[DBLoader ユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader を使用すると、区切りテキスト ファイルから SQL Server にデータを読み込むことができます。 この Windows コンソール ユーティリティでは、SQL Server ネイティブ クライアントの一括読み込みインターフェイスが使用されます。 このインターフェイスは、Azure SQL Managed Instance と共に、SQL Server のすべてのバージョンで動作します。|
-|[オンプレミスの SQL Server ログインを Azure SQL Managed Instance に移動するユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)|PowerShell スクリプトでは、ログインを再作成し、オンプレミスの SQL Server から Azure SQL Managed Instance にデータベース ユーザーを選択するための T-SQL コマンド スクリプトを作成できます。 このツールを使用すると、Windows Server Active Directory アカウントを Azure AD アカウントに自動的にマッピングできるだけでなく、必要に応じて SQL Server のネイティブ ログインを移行することもできます。|
-|[Logman を使用した Perfmon データ収集の自動化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Logman ツールを使用すると、Perfmon データを収集し (ベースライン パフォーマンスの把握に役立てるため)、移行ターゲットの推奨事項を取得できます。 このツールでは、logman.exe を使用して、リモート SQL Server インスタンスに設定されたパフォーマンス カウンターを作成、開始、停止、削除するコマンドを作成します。|
-|[完全および差分バックアップを復元して Azure SQL Managed Instance にデータベースを移行する](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20to%20Azure%20SQL%20DB%20Managed%20Instance%20-%20%20Restore%20with%20Full%20and%20Differential%20backups.pdf)|このホワイトペーパーでは、完全および差分バックアップのみがある (ログ バックアップ機能はない) 場合に、SQL Server から Azure SQL Managed Instance への移行を加速させるのに役立つガイダンスと手順が提供されています。|
+|[データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130)| このツールを使用すると、ワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの対応性、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価を迅速に行うことができます。|
+|[オンプレミスの SQL Server ログインを Azure SQL Managed Instance に移動するユーティリティ](https://www.microsoft.com/download/details.aspx?id=103111)|PowerShell スクリプトでは、ログインを再作成し、オンプレミスの SQL Server から Azure SQL Managed Instance にデータベース ユーザーを選択するための T-SQL コマンド スクリプトを作成できます。 このツールを使用すると、Windows Server Active Directory アカウントを Azure AD アカウントに自動的にマッピングできるだけでなく、必要に応じて SQL Server のネイティブ ログインを移行することもできます。|
+|[Logman を使用した Perfmon データ収集の自動化](https://www.microsoft.com/download/details.aspx?id=103114)|Logman ツールを使用すると、Perfmon データを収集し (ベースライン パフォーマンスの把握に役立てるため)、移行ターゲットの推奨事項を取得できます。 このツールでは、logman.exe を使用して、リモート SQL Server インスタンスに設定されたパフォーマンス カウンターを作成、開始、停止、削除するコマンドを作成します。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 

@@ -3,12 +3,12 @@ title: Live Video Analytics での監視とログ - Azure
 description: この記事では、Azure Live Video Analytics on IoT Edge での監視とログの概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 4bc69192d0d36d01755d625ee46cd77cd9eec1b9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0eb6f63b139a9a0ca9fc65c80dd6284d1a476f6d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372142"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297092"
 ---
 # <a name="monitoring-and-logging-in-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge での監視とログ - Azure
 
@@ -417,7 +417,7 @@ IoT Edge モジュールでの Live Video Analytics からメトリックを収�
 
 ## <a name="faq"></a>よく寄せられる質問
 
-質問がある場合は、[監視とメトリックに関する FAQ](faq.md#monitoring-and-metrics) を参照してください。
+質問がある場合は、[監視とメトリックに関する FAQ](/azure/media-services/live-video-analytics-edge/faq#monitoring-and-metrics) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

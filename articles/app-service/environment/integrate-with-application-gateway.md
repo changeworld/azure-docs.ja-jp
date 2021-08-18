@@ -4,21 +4,21 @@ description: このエンド ツー エンドのチュートリアルでは、IL
 author: ccompy
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
 ms.topic: article
-ms.date: 03/03/2018
+ms.date: 07/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 839d817001bf4f939bdcacb7e439c7eb8e45b3a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962079"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743922"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する #
 
 [App Service Environment](./intro.md) は、ユーザーの Azure 仮想ネットワークのサブネットに Azure App Service をデプロイしたものです。 これは、アプリにアクセスするためのパブリック エンドポイントまたはプライベート エンドポイントを使用してデプロイできます。 プライベート エンドポイント (つまり、内部ロード バランサー) を使う App Service Environment の展開は、ILB App Service Environment と呼ばれます。  
 
-Web アプリケーション ファイアウォール は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査します。 Azure Marketplace から WAF デバイスを取得することも、[Azure Application Gateway][appgw] を使用することもできます。
+Web アプリケーション ファイアウォール は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 Azure Marketplace から WAF デバイスを取得することも、[Azure Application Gateway][appgw] を使用することもできます。
 
 Azure Application Gateway は、レイヤー 7 負荷分散、TLS/SSL オフロード、および Web アプリケーション ファイアウォール (WAF) 保護を提供する仮想アプライアンスです。 これは、パブリック IP アドレスでリッスンし、トラフィックをアプリケーション エンドポイントにルーティングします。 以下では、WAF で構成されたアプリケーション ゲートウェイを ILB App Service Environment のアプリと統合する方法について説明します。  
 

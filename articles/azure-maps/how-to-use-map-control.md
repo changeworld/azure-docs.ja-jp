@@ -7,14 +7,13 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: b46a0145f1b73520c2416bbc0c20fb3b805c17fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864042"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746632"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 

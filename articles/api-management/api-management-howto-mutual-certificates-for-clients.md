@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/01/2021
 ms.author: apimpm
-ms.openlocfilehash: d000b9db658c76b5d7cdb586599f04d9078dde5d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 6faa78dc75b67afd4c310a94ce4a81129e09cb26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812159"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742750"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management でクライアント証明書認証を使用して API を保護する方法
 
@@ -49,7 +49,7 @@ API Management には、クライアント証明書を使用して API (つま�
 [`context` 変数](api-management-policy-expressions.md#ContextVariables)を使用してポリシー式を作成し、クライアント証明書を確認することもできます。 次のセクションの例では、`context.Request.Certificate` プロパティと他の `context` プロパティを使用した式を示します。
 
 > [!IMPORTANT]
-> 2021 年 5 月以降、`context.Request.Certificate` プロパティで証明書が要求されるのは、API Management インスタンスの [`hostnameConfiguration`](/rest/api/apimanagement/2019-12-01/apimanagementservice/createorupdate#hostnameconfiguration) で `negotiateClientCertificate` プロパティが True に設定されている場合のみとなりました。 既定では、`negotiateClientCertificate` は False に設定されます。
+> 2021 年 5 月以降、`context.Request.Certificate` プロパティで証明書が要求されるのは、API Management インスタンスの [`hostnameConfiguration`](/rest/api/apimanagement/2020-12-01/api-management-service/create-or-update#hostnameconfiguration) で `negotiateClientCertificate` プロパティが True に設定されている場合のみとなりました。 既定では、`negotiateClientCertificate` は False に設定されます。
 
 ### <a name="checking-the-issuer-and-subject"></a>発行者とサブジェクトの確認
 

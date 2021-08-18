@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: bd071fc930420a48a764eff3818580885312fde6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ecccbb4e2741cc7f413e9b2076bd3199b00dd9a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746071"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752082"
 ---
 # <a name="how-to-deploy-a-spatial-analysis-web-application"></a>方法: 空間分析 Web アプリをデプロイする
 
@@ -42,8 +42,6 @@ ms.locfileid: "111746071"
 * 構成済みの[ホスト コンピューター](spatial-analysis-container.md)
 
 ## <a name="deploy-the-spatial-analysis-container"></a>空間分析コンテナーをデプロイする
-
-[要求申請](https://aka.ms/csgate)に入力して、コンテナーを実行するためのアクセス権を取得します。 
 
 [ホスト コンピューターのセットアップ](./spatial-analysis-container.md)に関する記事に従って、ホスト コンピューターを構成し、IoT Edge デバイスを Azure IoT Hub に接続します。 
 
@@ -80,7 +78,7 @@ IoT Edge モジュールのほとんどの **環境変数** は、上記のリ�
 "EULA": { 
     "value": "accept"
 },
-"ENDPOINT":{ 
+"BILLING":{ 
     "value": "<Use a key from your Computer Vision resource>"
 },
 "APIKEY":{

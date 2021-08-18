@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd316ce7a868f639cdfd80293d5d6189e2942f6f
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99226407"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988177"
 ---
 # <a name="test-vm-network-latency"></a>VM ネットワークの待ち時間のテスト
 
@@ -71,7 +71,7 @@ VM 構成を作成するときは、次の推奨事項に留意してくださ�
 
 ### <a name="get-latteexe-onto-the-vms"></a>latte.exe を VM に読み込む
 
-[最新バージョンの Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) をダウンロードします。
+[最新バージョンの Latte.exe](https://github.com/microsoft/latte/releases/download/v0/latte.exe) をダウンロードします。
 
 latte.exe は、別のフォルダー (*c:\tools* など) に入れることを検討してください。
 

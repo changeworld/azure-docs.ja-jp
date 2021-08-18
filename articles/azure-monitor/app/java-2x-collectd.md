@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: eaa064a8a266bb68bacff8e42fd5dd6794c0f682
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 93ab5cf44286a4fcba638f14e1c7b29698a02e55
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110105008"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358023"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd:Application Insights の Linux パフォーマンス メトリック [非推奨]
 
@@ -35,7 +35,7 @@ ms.locfileid: "110105008"
 Linux サーバー コンピューターで、次の操作を行います。
 
 1. [collectd](https://collectd.org/) のバージョン 5.4.0 またはそれ以降をインストールします。
-2. [Application Insights collectd ライター プラグイン](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)をダウンロードします。 バージョン番号をメモしておきます。
+2. [Application Insights collectd ライター プラグイン](https://github.com/microsoft/ApplicationInsights-Java/tree/main/agent/agent-tooling/src/main/java/com/microsoft/applicationinsights/agent/internal)をダウンロードします。 バージョン番号をメモしておきます。
 3. プラグイン JAR を `/usr/share/collectd/java`にコピーします。
 4. `/etc/collectd/collectd.conf`を編集します:
    * [Java プラグイン](https://collectd.org/wiki/index.php/Plugin:Java) が有効になっていることを確認します。

@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 04/23/2021
-ms.openlocfilehash: 443dd0a1172c98b67282b50659ffeb3611470413
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 14b3487a158062e3186b485a8bcbd4584a0f09d2
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163771"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665351"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -158,7 +158,7 @@ Visual Studio で、デプロイの自動化に利用する [Azure リソース 
 ロジック アプリの場所の種類や場所を変更するには、ロジック アプリ デザイナーを利用し、ソリューション エクスプローラーからロジック アプリのワークフロー定義 (.json) ファイルを開く必要があります。 Cloud Explorer を使用してこれらのプロパティを変更することはできません。
 
 > [!IMPORTANT]
-> 場所の種類を **[リージョン]** から [**統合サービス環境**](connect-virtual-network-vnet-isolated-environment-overview.md)に変更すると、課金、[上限](logic-apps-limits-and-config.md#integration-account-limits)、[統合アカウント サポート](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)などに使用されるロジック アプリの [価格設定モデル](logic-apps-pricing.md#fixed-pricing)に影響します。 場所に別の種類を選択する前に、ロジック アプリに与える影響を理解しておいてください。
+> 場所の種類を **[リージョン]** から [**統合サービス環境**](connect-virtual-network-vnet-isolated-environment-overview.md)に変更すると、課金、[上限](logic-apps-limits-and-config.md#integration-account-limits)、[統合アカウント サポート](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)などに使用されるロジック アプリの [価格設定モデル](logic-apps-pricing.md#ise-pricing)に影響します。 場所に別の種類を選択する前に、ロジック アプリに与える影響を理解しておいてください。
 
 1. Visual Studio で、お使いのロジック アプリを含む Azure リソース グループ プロジェクトを開きます。
 
@@ -285,7 +285,7 @@ Cloud Explorer でロジック アプリのショートカット メニューを
 
 * 進行中および保留中の実行があれば、それらのキャンセルを Logic Apps サービスがベスト エフォートで試みます。
 
-  大量のボリュームやバックログがあったとしても、ほとんどの実行は完了前または開始前にキャンセルされます。 ただし、キャンセル プロセスは完了までに時間がかかる場合があります。 その間、ランタイムがキャンセル プロセスに対応している間に、いくつかの実行が実行対象として選択されてしまう場合があります。
+  大量のボリュームやバックログがあったとしても、ほとんどの実行は完了前または開始前にキャンセルされます。 ただし、キャンセル プロセスは完了までに時間がかかる場合があります。 その間、ランタイムがキャンセル プロセスに対処する傍ら、いくつかの実行が実行対象として選択されてしまう可能性があります。
 
 * Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
 

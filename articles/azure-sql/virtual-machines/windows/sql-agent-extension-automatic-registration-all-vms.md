@@ -6,17 +6,17 @@ ms.author: mathoma
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: management
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 187e51d049d965d0fb9cef1af93a5036819e957f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f40e3478a10a1a141e02510d88f4564062ff2ce5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665812"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752180"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>SQL IaaS Agent 拡張機能への自動登録
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -88,7 +88,7 @@ PowerShell を使用すると、複数の Azure サブスクリプションの�
 
 これを行うには、次の手順に従います。
 
-1. [このスクリプト](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/AutoRegTools.psm1)を保存します。
+1. [このスクリプト](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/EnableBySubscription.ps1)を保存します。
 1. 管理コマンド プロンプトまたは PowerShell ウィンドウを使用して、スクリプトを保存した場所に移動します。 
 1. Azure に接続します (`az login`)。
 1. スクリプトを実行し、SubscriptionIds を次のようなパラメーターとして渡します。   

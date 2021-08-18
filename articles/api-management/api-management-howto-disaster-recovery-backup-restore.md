@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c7901dd4a238b27a31f95f1e22ddf9dc1ae5327a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 8148cbd1fa4e34610c4b27609910821323a2acea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813068"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732213"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -135,7 +135,7 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>バックアップおよび復元操作の呼び出し
 
-REST API は [API Management Service - Backup](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) と [API Management Service - Restore](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore) です。
+REST API は [API Management Service - Backup](/rest/api/apimanagement/2020-12-01/api-management-service/backup) と [API Management Service - Restore](/rest/api/apimanagement/2020-12-01/api-management-service/restore) です。
 
 以降のセクションで説明されている "バックアップおよび復元" の操作を呼び出す前に、REST 呼び出しに承認要求ヘッダーを設定します。
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - バックアップ対象の API Management サービスを保持するサブスクリプションの ID
 -   `resourceGroupName` - Azure API Management サービスのリソース グループの名前
 -   `serviceName` - バックアップを作成する API Management サービスの、作成時に指定された名前
--   `api-version` - `2019-12-01` に置き換えます
+-   `api-version` - `2020-12-01` に置き換えます
 
 要求の本文に、ターゲットの Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
 
@@ -186,7 +186,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - バックアップの復元先の API Management サービスを保持するサブスクリプションの ID
 -   `resourceGroupName` - バックアップの復元先の Azure API Management サービスを保持するリソース グループの名前
 -   `serviceName` - 復元先の API Management サービスの、作成時に指定された名前
--   `api-version` - `api-version=2019-12-01` に置き換えます
+-   `api-version` - `api-version=2020-12-01` に置き換えます
 
 要求の本文には、バックアップ ファイルの場所を指定します。 つまり、Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を追加します。
 

@@ -3,12 +3,12 @@ title: テンプレートの概要
 description: リソースのデプロイに Azure Resource Manager テンプレート (ARM テンプレート) を使用する利点について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 62d25d2bd87f9335ac6442a7038f9326b04b36b0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6c576b7e18d60a858f5f29bde0e674160610223b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960360"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727185"
 ---
 # <a name="what-are-arm-templates"></a>ARM テンプレートとは
 
@@ -153,4 +153,4 @@ REQUEST BODY
 * Microsoft Learn のガイド付きモジュール セットを使用して ARM テンプレートを学習するには、「[ARM テンプレートを使用して Azure にリソースをデプロイして管理する」](/learn/paths/deploy-manage-resource-manager-templates/)を参照してください。
 * テンプレート ファイルのプロパティについては、「[ARM テンプレートの構造と構文の詳細](./syntax.md)」を参照してください。
 * テンプレートのエクスポートの詳細については、「[クイックスタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする](quickstart-create-templates-use-the-portal.md)」を参照してください。
-* 一般的な質問に対する回答については、「[ARM テンプレートに関してよく寄せられる質問](frequently-asked-questions.md)」を参照してください。
+* 一般的な質問に対する回答については、「[ARM テンプレートに関してよく寄せられる質問](./frequently-asked-questions.yml)」を参照してください。

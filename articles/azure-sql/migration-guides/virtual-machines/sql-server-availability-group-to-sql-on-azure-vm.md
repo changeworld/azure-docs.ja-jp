@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: 2819a5a927562d92153e5ef08a73a976c91a9363
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 26c068450b93272986a1a3c82af0530adfa30ebb
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954614"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766460"
 ---
 # <a name="migrate-availability-group-to-sql-server-on-azure-vm"></a>Azure VM 上の SQL Server に可用性グループを移行する
 
@@ -351,7 +351,7 @@ Always On 可用性グループの準備が整いました。
     - [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
-    - [Azure Cost Management](../../../cost-management-billing/cloudyn/overview.md) をデプロイして、リソースの使用率と消費量を監視します。
+    - [Azure Cost Management](../../../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 
 
 ## <a name="next-steps"></a>次のステップ

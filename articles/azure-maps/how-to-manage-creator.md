@@ -7,13 +7,12 @@ ms.date: 05/18/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8d916c34443cba6849d329c9f27d68f484957343
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: af01febed5398ecb6750305e6d03352f9bcea727
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782061"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751472"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps Creator を管理する
 

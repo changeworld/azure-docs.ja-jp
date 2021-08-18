@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: d7f8aa990f5a5e64d2d5c59b52457149187acddd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be1d54007017ce9b5abb774e75ddfd799f83c612
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773983"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287296"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java と Gradle を使用して関数を作成し、Azure に発行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "107773983"
 
 Java を使用して関数を開発するには、以下のものがインストールされている必要があります。
 
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure)、バージョン 8
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降
 - [Gradle](https://gradle.org/) バージョン 4.10 以降

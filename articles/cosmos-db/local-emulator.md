@@ -7,12 +7,12 @@ author: StefArroyo
 ms.author: esarroyo
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperf-fy21q1
-ms.openlocfilehash: 777eeb615596d353770b7abcbe10191707e6fbfe
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: b2c6c4dd8d0f7c5b30401f7ef586b7d1be8267ce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072741"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749938"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストのために Azure Cosmos DB Emulator をインストールして使用する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -232,7 +232,7 @@ CosmosClient client = new CosmosClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 
-デスクトップ上で Azure Cosmos DB Emulator が実行中になったら、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用してエミュレーターを操作できます。 [コマンド プロンプト](emulator-command-line-parameters.md)から管理者としてエミュレーターを起動します。その際、一緒に "/EnableMongoDbEndpoint" を指定します。 その後、次の接続文字列を使用して MongoDB API アカウントに接続します。
+デスクトップ上で Azure Cosmos DB Emulator が実行中になったら、[Azure Cosmos DB の MongoDB 用 API](mongodb/mongodb-introduction.md) を使用してエミュレーターを操作できます。 [コマンド プロンプト](emulator-command-line-parameters.md)から管理者としてエミュレーターを起動します。その際、一緒に "/EnableMongoDbEndpoint" を指定します。 その後、次の接続文字列を使用して MongoDB API アカウントに接続します。
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -240,7 +240,7 @@ mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mG
 
 ### <a name="table-api"></a>テーブル API
 
-デスクトップ上で Azure Cosmos DB Emulator が実行中になったら、[Azure Cosmos DB Table API SDK](./tutorial-develop-table-dotnet.md) を使用してエミュレーターを操作できます。 [コマンド プロンプト](emulator-command-line-parameters.md)から管理者としてエミュレーターを起動します。その際、一緒に "/EnableTableEndpoint" を指定します。 続いて、次のコードを実行して Table API アカウントに接続します。
+デスクトップ上で Azure Cosmos DB Emulator が実行中になったら、[Azure Cosmos DB Table API SDK](./table/tutorial-develop-table-dotnet.md) を使用してエミュレーターを操作できます。 [コマンド プロンプト](emulator-command-line-parameters.md)から管理者としてエミュレーターを起動します。その際、一緒に "/EnableTableEndpoint" を指定します。 続いて、次のコードを実行して Table API アカウントに接続します。
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;

@@ -2,21 +2,21 @@
 title: ユーザー定義の復元ポイント
 description: 専用 SQL プール (以前の SQL DW) の復元ポイントを作成する方法。
 services: synapse-analytics
-author: anumjs
+author: rothja
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 07/03/2019
-ms.author: anjangsh
+ms.author: jroth
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: bb536143c518b785a692858c09f0d89f0c1cc4f2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 39f8c336fdddf58d6cfa9cd8162e974d3dbc7c2d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663278"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450949"
 ---
 # <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) のユーザー定義の復元ポイント
 

@@ -4,15 +4,16 @@ description: プログラムによる分析のための API 呼び出しパタ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 907b3020091de1be9a037d149de737c14de125ad
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6ed2be363a9e50184d79c4f9870942030fd485eb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207341"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748276"
 ---
 # <a name="programmatic-access-paradigm"></a>プログラムによるアクセスのパラダイム
 
@@ -283,7 +284,7 @@ ms.locfileid: "108207341"
 
 *Query parameter (クエリ パラメーター)*
 
-| パラメーター名 | 必須 | Type | 説明 |
+| パラメーター名 | 必須 | 型 | 説明 |
 | ------------ | ------------- | ------------- | ------------- |
 | `reportId` | はい | string | この引数で指定された `reportId` を持つレポートのみの実行の詳細を取得するフィルター。 複数の `reportIds` を指定する場合は、セミコロン ";" で区切ります。 |
 | `executionId` | いいえ | string | この引数で指定された `executionId` を持つレポートのみの詳細を取得するフィルター。 複数の `executionIds` を指定する場合は、セミコロン ";" で区切ります。 |

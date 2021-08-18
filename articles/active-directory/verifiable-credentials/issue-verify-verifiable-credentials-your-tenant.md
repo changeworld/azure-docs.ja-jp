@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
-ms.date: 04/01/2021
+ms.date: 07/20/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 987ab6346788f78316b0682631b7cefde12cad29
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: c028e00ac52179ef6130ed01ea648ec9b82385f0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111437692"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448102"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>チュートリアル - テナントを使用して検証可能な資格情報を発行して検証する (プレビュー)
 

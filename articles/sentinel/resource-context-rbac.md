@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 1c4a32e79f54bd2626f2eb4f3a3cc97266d3bab0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 95ff033ab83fee6e9dacbf15b12db33f8b36c3c0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958489"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723503"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>リソースによる Azure Sentinel データへのアクセスを管理する
 
@@ -149,6 +149,7 @@ Azure Sentinel [Logstash 出力プラグイン](connect-logstash.md)を使用し
 [Log Analytics データ コレクター API](../azure-monitor/logs/data-collector-api.md) を使用して収集する場合、HTTP [*x-ms-AzureResourceId*](../azure-monitor/logs/data-collector-api.md#request-headers) 要求ヘッダーを使用して、イベントにリソース ID を割り当てます。
 
 リソースコンテキスト RBAC を使用しており、API によって収集されたイベントを特定のユーザーが使用できるようにする必要がある場合、[ユーザー用に作成した](#explicitly-configure-resource-context-rbac)リソース グループのリソース ID を使用します。
+
 
 
 ## <a name="next-steps"></a>次のステップ

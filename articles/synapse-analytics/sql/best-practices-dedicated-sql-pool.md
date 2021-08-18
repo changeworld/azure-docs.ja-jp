@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 03/17/2021
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b11a76be94fc52285482e13dadbc8c7c92af1374
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d37cabb8b74fea3a72ddafdf3322d20379f8d29
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608824"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860982"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プールのベスト プラクティス
 
@@ -27,7 +27,7 @@ ms.locfileid: "104608824"
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>一時停止とスケールでコストを削減する
 
-一時停止とスケーリングを通じてコストを削減する方法については、[コンピューティングの管理](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。
+一時停止とスケーリングを通じてコストを削減する方法については、[コンピューティングの管理](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?context=/azure/synapse-analytics/context/context)に関する記事をご覧ください。
 
 ## <a name="maintain-statistics"></a>統計を管理する
 
@@ -63,13 +63,13 @@ PolyBase の読み込みは、CTAS または INSERT INTO を使用して実行�
 
 Gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化してください。 全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。 このセクションに関連するトピックの追加情報については、次の記事をご覧ください。
 
-- [データの読み込み](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [データの読み込み](../sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context)
 - [PolyBase の使い方ガイド](data-loading-best-practices.md)
 - [専用 SQL プールの読み込みパターンと戦略](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)
-- [Azure Data Factory を使用してデータを読み込む](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Azure Data Factory を使用したデータ移動](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Factory を使用してデータを読み込む](../../data-factory/load-azure-sql-data-warehouse.md?context=/azure/synapse-analytics/context/context)
+- [Azure Data Factory を使用したデータ移動](../../data-factory/transform-data-using-machine-learning.md?context=/azure/synapse-analytics/context/context)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)
-- [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context)
 
 ## <a name="load-then-query-external-tables"></a>外部テーブルを読み込んで、クエリを実行する
 
@@ -91,7 +91,7 @@ Polybase はクエリには適していません。 専用 SQL プールの Poly
 次に示す記事のリンクでは、分散列を選択してパフォーマンスを向上させる方法について詳しく説明しています。 また、CREATE TABLE ステートメントの WITH 句で分散テーブルを定義する方法についても説明しています。
 
 - [テーブルの概要](develop-tables-overview.md)
-- [テーブルのディストリビューション](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [テーブルのディストリビューション](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)
 - [テーブル分散の選択](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)
 - [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)
 - [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)
@@ -104,7 +104,7 @@ Polybase はクエリには適していません。 専用 SQL プールの Poly
 
 考慮すべき選択肢の 1 つは、SQL Server を使用して実装したものよりも低い粒度を使用することです。 たとえば、日単位ではなく、週単位や月単位のパーティションを使用します。
 
-パーティション分割について詳しくは、[テーブルのパーティション分割](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。
+パーティション分割について詳しくは、[テーブルのパーティション分割](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)に関する記事をご覧ください。
 
 ## <a name="minimize-transaction-sizes"></a>トランザクション サイズを最小限に抑える
 
@@ -119,10 +119,10 @@ INSERT、UPDATE、DELETE の各ステートメントはトランザクション�
 
 このセクションに関連する内容について詳しくは、以下の記事をご覧ください。
 
-- [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context)
 - [トランザクションについて](develop-transactions.md)
-- [トランザクションの最適化](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [テーブル パーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [トランザクションの最適化](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?context=/azure/synapse-analytics/context/context)
+- [テーブル パーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)
 - [TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
@@ -148,7 +148,7 @@ DDL を定義するときは、データをサポートしている最小のデ�
 
 クラスター化列ストア インデックスは、専用 SQL プールにデータを格納する最も効率的な方法の 1 つです。  既定では、専用 SQL プールのテーブルは、クラスター化された ColumnStore として作成されます。  列ストア テーブルに対するクエリのパフォーマンスを最大限に引き出すには、セグメントの質が高いことが重要です。  行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。  
 
-セグメントの品質は、圧縮後の行グループに含まれる行の数を使って判断できます。 クラスター化列ストア テーブルのセグメントの質を検出して向上させる詳細な手順については、[テーブル インデックス](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページの「[列ストア インデックスの品質の低さの原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality)」を参照してください。  
+セグメントの品質は、圧縮後の行グループに含まれる行の数を使って判断できます。 クラスター化列ストア テーブルのセグメントの質を検出して向上させる詳細な手順については、[テーブル インデックス](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)に関するページの「[列ストア インデックスの品質の低さの原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context#causes-of-poor-columnstore-index-quality)」を参照してください。  
 
 列ストア セグメントの質を高めることが非常に重要であるため、中規模または大規模リソース クラスのユーザー ID を使用してデータを読み込むことをお勧めします。 低い[データ ウェアハウス ユニット](resource-consumption-models.md)を使用すると、大きいリソース クラスを読み込みユーザーに割り当てることになります。
 
@@ -162,7 +162,7 @@ DDL を定義するときは、データをサポートしている最小のデ�
 テーブルに 60 億行もない場合は、2 つの主な選択肢があります。 パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。  列ストア テーブルの代わりに、ヒープ テーブルをセカンダリ インデックスとともに使用して、パフォーマンスが向上するかどうかを試してみる価値もあります。
 
 列ストア テーブルに対してクエリを実行する場合は、必要な列のみを選択すると、クエリの実行速度が向上します。  テーブルおよび列ストアのインデックスの詳細については、下の記事を参照してください。
-- [列ストア インデックスの品質の低さの原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [列ストア インデックスの品質の低さの原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)
 - [列ストア インデックス ガイド](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)
 - [列ストア インデックスの再構築](../sql-data-warehouse/sql-data-warehouse-tables-index.md?view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality) 
 - [順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](../sql-data-warehouse/performance-tuning-ordered-cci.md)
@@ -173,7 +173,7 @@ SQL プールでは、クエリにメモリを割り当てる方法としてリ�
 
 大規模な結合やクラスター化列ストア テーブルへの読み込みなど、特定のクエリについては、割り当てるメモリを増やすと効果的です。  純粋なスキャンなどのクエリでは、効果はありません。 より大きなリソース クラスを利用すると、コンカレンシーに影響します。 そのため、すべてのユーザーを大きなリソース クラスに移行する前に、こうした点に注意する必要があります。
 
-リソース クラスについて詳しくは、[ワークロード管理用のリソース クラス](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。
+リソース クラスについて詳しくは、[ワークロード管理用のリソース クラス](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context)に関する記事をご覧ください。
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>小さいリソース クラスを使用して、コンカレンシーを増やす
 
@@ -185,7 +185,7 @@ SQL プールでは、クエリにメモリを割り当てる方法としてリ�
 
 専用 SQL プールには、クエリの実行を監視するために使用できる DMV がいくつか用意されています。  以下の監視に関する記事では、実行中のクエリの詳細を確認する方法について順を追って説明しています。  これらの DMV でクエリをすばやく見つけるには、クエリで LABEL オプションを使用すると便利です。 詳しくは、以下の一覧に記載されている記事をご覧ください。
 
-- [DMV を利用してワークロードを監視する](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [DMV を利用してワークロードを監視する](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context)
 
 - [LABEL](develop-label.md)
 - [OPTION](/sql/t-sql/queries/option-clause-transact-sql?view=azure-sqldw-latest&preserve-view=true)
@@ -199,7 +199,7 @@ SQL プールでは、クエリにメモリを割り当てる方法としてリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-一般的な問題と解決方法については、[トラブルシューティング](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事もご覧ください。
+一般的な問題と解決方法については、[トラブルシューティング](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?context=/azure/synapse-analytics/context/context)に関する記事もご覧ください。
 
 この記事に記載されていない情報が必要な場合は、[Azure Synapse に関する Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)を検索して、他のユーザーや Azure Synapse Analytics 製品グループに質問することができます。  
 

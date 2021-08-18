@@ -5,13 +5,13 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 102b03ad4fe247ae0abc4e2312d7027c6170333f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/07/2021
+ms.openlocfilehash: b236c433e55bb2b702497b42a1b4fc73ce520f00
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019467"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491139"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics でのデータ保護 
 
@@ -94,9 +94,6 @@ Stream Analytics ジョブによって使用される、リソースの接続詳
 
 ## <a name="enables-data-residency"></a>データ所在地を有効にする 
 この機能を使用すると、必要に応じてストレージ アカウントを指定することによって、データ所在地要件を強制的に適用できます。
-
-## <a name="known-issues"></a>既知の問題
-マネージド ID を使用して入力または出力を認証するときに、カスタマー マネージド キーを使用するジョブが失敗するという既知の問題があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

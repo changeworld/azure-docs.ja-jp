@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: 42f840c9237d22638236efb758c9b789501b0ce5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 18827a1c301125b722995d43869f4a4439f36e12
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773433"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301705"
 ---
 # <a name="install-read-ocr-docker-containers"></a>Read OCR Docker コンテナーをインストールする
 
@@ -134,7 +134,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-このコマンドは、次の操作を行います。
+このコマンドでは次のことが行われます。
 
 * コンテナー イメージから Read OCR コンテナーを実行します。
 * 8 つの CPU コアと 18 ギガバイト (GB) のメモリを割り当てます。
@@ -472,5 +472,5 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
 * [OCR の概要](overview-ocr.md)に関するページを読み、印刷および手書きのテキストの認識に関する詳細について確認する
 * コンテナーでサポートされているメソッドの詳細について、[Read API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) を参照する。
-* [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Computer Vision 機能に関連する問題を解決する。
+* [よく寄せられる質問 (FAQ)](FAQ.yml) を参照して、Computer Vision 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

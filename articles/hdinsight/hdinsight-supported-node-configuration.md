@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
-ms.openlocfilehash: d41ee2554d30a56bc2e025bbe2c93aee143d75e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d65f68802f332092fbf2fa3676880d6263b2cab1
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98931650"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291081"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight の既定および推奨のノード構成
 
@@ -50,31 +50,28 @@ ms.locfileid: "98931650"
 > [!Note]
 > PowerShell やその他のスクリプトで使用する SKU 識別子を取得するには、次の表のすべての VM SKU の先頭に `Standard_` を追加します。 たとえば、`D12_v2` は `Standard_D12_v2` になります。
 
-| クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark | ML Server | Kafka |
-|---|---|---|---|---|---|---|---|
-| ヘッド: 既定の VM サイズ | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2、 <br/>D13_v2* | D12_v2 | D3_v2 |
-| ヘッド: 最小推奨 VM サイズ | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2、 <br/>D13_v2* | D12_v2 | D3_v2 |
-| worker: 既定の VM サイズ | D4_v2 | D4_v2 | D14_v2 | D3_v2 | D13_v2 | D4_v2 | 4 D12_v2 (ブローカーあたり 2 S30 ディスク) |
-| ワーカー: 最小推奨 VM サイズ | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 | D3_v2 |
-| ZooKeeper: 既定の VM サイズ |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 | A4_v2 |
-| ZooKeeper: 最小推奨 VM サイズ |  | A4_v2 | A4_v2 | A2_v2 |  | A2_v2 | A4_v2 |
-| ML サービス: 既定の VM サイズ |  |  |  |  |  | D4_v2 |  |
-| ML サービス: 最小推奨 VM サイズ |  |  |  |  |  | D4_v2 |  |
+| クラスターの種類                            | Hadoop | hbase  | Interactive Query | Storm | Spark                | Kafka                                |
+|-----------------------------------------|--------|--------|-------------------|-------|----------------------|--------------------------------------|
+| ヘッド: 既定の VM サイズ                   | D12_v2 | D12_v2 | D13_v2            | A4_v2 | D12_v2、 <br/>D13_v2* | D3_v2                                |
+| ヘッド: 最小推奨 VM サイズ      | D5_v2  | D3_v2  | D13_v2            | A4_v2 | D12_v2、 <br/>D13_v2* | D3_v2                                |
+| worker: 既定の VM サイズ                 | D4_v2  | D4_v2  | D14_v2            | D3_v2 | D13_v2               | 4 D12_v2 (ブローカーあたり 2 S30 ディスク) |
+| ワーカー: 最小推奨 VM サイズ    | D5_v2  | D3_v2  | D13_v2            | D3_v2 | D12_v2               | D3_v2                                |
+| ZooKeeper: 既定の VM サイズ              |        | A4_v2  | A4_v2             | A4_v2 |                      | A4_v2                                |
+| ZooKeeper: 最小推奨 VM サイズ |        | A4_v2  | A4_v2             | A2_v2 |                      | A4_v2                                |
 
 \* = Spark Enterprise セキュリティ パッケージ (ESP) クラスターの VM サイズ
 
 ### <a name="brazil-south-and-japan-west-only"></a>ブラジル南部および西日本のみ
 
-| クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark | ML サービス |
-|---|---|---|---|---|---|---|
-| ヘッド: 既定の VM サイズ | D12 | D12 | D13 | A4_v2 | D12 | D12 |
-| ヘッド: 最小推奨 VM サイズ | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |
-| worker: 既定の VM サイズ | D4 | D4 | D14 | D3 | D13 | D4 |
-| ワーカー: 最小推奨 VM サイズ | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 |
-| ZooKeeper: 既定の VM サイズ |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ZooKeeper: 最小推奨 VM サイズ |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ML サービス: 既定の VM サイズ |  |  |  |  |  | D4 |
-| ML サービス: 最小推奨 VM サイズ |  |  |  |  |  | D4_v2 |
+| クラスターの種類                            | Hadoop | hbase | Interactive Query | Storm | Spark  |
+|-----------------------------------------|--------|-------|-------------------|-------|--------|
+| ヘッド: 既定の VM サイズ                   | D12    | D12   | D13               | A4_v2 | D12    |
+| ヘッド: 最小推奨 VM サイズ      | D5_v2  | D3_v2 | D13_v2            | A4_v2 | D12_v2 |
+| worker: 既定の VM サイズ                 | D4     | D4    | D14               | D3    | D13    |
+| ワーカー: 最小推奨 VM サイズ    | D5_v2  | D3_v2 | D13_v2            | D3_v2 | D12_v2 |
+| ZooKeeper: 既定の VM サイズ              |        | A4_v2 | A4_v2             | A4_v2 |        |
+| ZooKeeper: 最小推奨 VM サイズ |        | A4_v2 | A4_v2             | A4_v2 |        |
+
 
 > [!NOTE]
 > - ヘッドは、Storm クラスター タイプでは *Nimbus* と呼ばれます。

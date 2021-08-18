@@ -4,15 +4,16 @@ description: Azure Data Factory を使用してオンプレミスの Netezza サ
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 36ca7b709e0ec945f1fb4a9a8b745d20e6a58fe1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef86a65a03f27f62de769c599f96e1aa26862984
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367777"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739469"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory を使用してオンプレミスの Netezza サーバーから Azure にデータを移行する 
 

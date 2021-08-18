@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0c91f81c1909819f3a5b8d8475ccdd676132dd13
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a18421163e39fbcf5c1081c79cf06d982613fafb
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477484"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769113"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -81,7 +81,7 @@ Azure ファイル共有の[オンプレミスの Active Directory 認証](stora
 | source | ターゲット: </br>ハイブリッド デプロイ | ターゲット: </br>クラウドのみのデプロイ |
 |:---|:--|:--|
 | | ツールの組み合わせ:| ツールの組み合わせ: |
-| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li><li>Azure File Sync の使用</li></ul> |
+| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](storage-files-migration-server-hybrid-databox.md)</li></ul> | <ul><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li><li>Azure File Sync の使用</li></ul> |
 | Windows Server 2012 以前 | <ul><li>DataBox と Azure File Sync を使用して最近のサーバー OS へ</li><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ、その後アップロード</li></ul> | <ul><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ</li><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |
 | ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[DataBox 経由](storage-files-migration-nas-cloud-databox.md)</li><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |
 | Linux/Samba | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |

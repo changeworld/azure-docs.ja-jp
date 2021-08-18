@@ -1,0 +1,95 @@
+### YamlMime:FAQ
+metadata:
+  title: デプロイに関する FAQ - Azure App Service | Microsoft Docs
+  description: Azure App Service の Web Apps 機能のデプロイに関するよくあるご質問への回答を掲載しています。
+  author: genlin
+  manager: dcscontentpm
+  tags: top-support-issue
+  ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
+  ms.topic: article
+  ms.service: app-service
+  ms.date: 11/01/2018
+  ms.author: genli
+  ms.custom: seodec18
+  ms.openlocfilehash: 58b42f672389a13342d09cf796204906987e48b8
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253229"
+title: Azure の Web Apps のデプロイに関するよくあるご質問
+summary: >
+  この記事では、[Azure App Service の Web Apps 機能](https://azure.microsoft.com/services/app-service/web/)のデプロイの問題に関するよくあるご質問 (FAQ) への回答を掲載しています。
+
+
+  [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+sections:
+- name: 無視
+  questions:
+  - question: >
+      私は App Service の Web Apps を使い始めたばかりです。 コードを発行するにはどうすればよいですか。
+    answer: >
+      Web アプリのコードを発行する方法はいくつかあります。
+
+
+      *   Visual Studio を使用してデプロイする。 Visual Studio ソリューションをお持ちの場合、Web アプリケーション プロジェクトを右クリックして **[発行]** を選択します。
+
+      *   FTP クライアントを使用してデプロイする。 Azure Portal で、コードをデプロイする Web アプリの発行プロファイルをダウンロードします。 次に、同じ発行プロファイルの FTP 資格情報を使用して、\site\wwwroot にファイルをアップロードします。
+
+
+      詳細については、[App Service へのアプリのデプロイ](deploy-local-git.md)に関するページをご覧ください。
+  - question: >
+      Visual Studio からデプロイしようとするとエラー メッセージが表示されます。 このエラーを解決するにはどうすればよいですか?
+    answer: "次のメッセージが表示される場合、古いバージョンの SDK を使用している可能性があります。「リソース グループ 'リソース グループ名' のリソース 'リソース名' の配置の際にエラーが発生しました: 。MissingRegistrationForLocation: サブスクリプションが場所 '米国中部' のリソースの種類 'コンポーネント' に登録されていません。 この場所にアクセスできるようにするには、このプロバイダーに再登録してください。\" \n\nこのエラーを解決するには、[最新の SDK](https://azure.microsoft.com/downloads/) にアップグレードしてください。 このメッセージが表示され、かつ最新の SDK を使用している場合は、サポート リクエストを送信してください。\n"
+  - question: >
+      Visual Studio から App Service に ASP.NET アプリケーションをデプロイするにはどうすればよいですか。
+    answer: >
+      <a id="deployasp"></a>
+
+
+      [5 分で初めての ASP.NET Web アプリを Azure に作成](quickstart-dotnetcore.md)のチュートリアルで、Visual Studio を使用して ASP.NET Web アプリケーションを App Service の Web アプリにデプロイする方法を説明しています。
+  - question: >
+      デプロイ資格情報の種類にはどのようなものがありますか。
+    answer: >
+      App Service では、ローカル Git デプロイと FTP/S デプロイ用の 2 種類の資格情報をサポートしています。 デプロイ資格情報を構成する方法の詳細については、[App Service のデプロイ資格情報の構成](deploy-configure-credentials.md)に関するページをご覧ください。
+  - question: >
+      App Service の Web アプリのファイルまたはディレクトリ構造はどのようなものですか。
+    answer: >
+      App Service アプリのファイル構造については、[Azure でのファイル構造](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure)に関するページをご覧ください。
+  - question: >
+      ファイルを FTP しようとすると「FTP エラー 550 - ディスクに十分な領域がありません」というエラーが発生しますが、解決するにはどうすればよいですか。
+    answer: >
+      このメッセージが表示される場合、Web アプリのサービス プランのディスク クォータに達している可能性があります。 ディスク領域の必要性に応じて、上位のサービス レベルにスケール アップする必要がある場合があります。 料金プランとリソース制限の詳細については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
+  - question: >
+      App Service の Web アプリの継続的デプロイを設定するにはどうすればよいですか。
+    answer: >
+      継続的デプロイは、Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox、およびその他の Git リポジトリなど、複数のリソースから設定できます。 これらのオプションは、ポータルで確認できます。 [App Service への継続的デプロイ](deploy-continuous-deployment.md)に関するチュートリアルで継続的デプロイの設定方法を説明しているので、お役立てください。
+  - question: >
+      GitHub や Bitbucket からの継続的デプロイに関する問題をトラブルシューティングするにはどうすればよいですか。
+    answer: >
+      GitHub や Bitbucket からの継続的デプロイに関する問題の調査については、「[Investigating continuous deployment (継続的デプロイの調査)](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)」をご覧ください。
+  - question: >
+      自分のサイトに FTP できず、コードを発行できません。 この問題を解決するにはどうすればよいですか?
+    answer: >
+      FTP の問題を解決するには、次のことを行います。
+
+
+      1. 正しいホスト名と資格情報を入力していることを確認します。 さまざまな種類の資格情報とその使用方法の詳細については、「[Deployment credentials (デプロイ資格情報)](https://github.com/projectkudu/kudu/wiki/Deployment-credentials)」をご覧ください。
+
+      2. FTP ポートがファイアウォールによってブロックされていないことを確認します。 ポートには次の設定がされている必要があります。
+          * FTP コントロール接続ポート: 21
+          * FTP データ接続ポート: 989、10001-10300
+  - question: >
+      App Service にコードを発行するにはどうすればよいですか。
+    answer: >
+      Azure クイック スタートは、お好きなデプロイ スタックと方法を使用してアプリをデプロイできるように設計されています。 クイック スタートを使うには、Azure portal で App Service に移動し、**[展開]** の **[クイック スタート]** を選択します。
+  - question: >
+      App Service へのデプロイ後にアプリが再起動することがありますが、これはなぜですか。
+    answer: >
+      アプリのデプロイによって再起動が発生する状況については、「[Deployment vs. runtime issues (デプロイとランタイムの問題)](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts")」をご覧ください。 記事で説明しているとおり、App Service は wwwroot フォルダーにファイルをデプロイします。 アプリを直接再起動することはありません。
+  - question: >
+      Azure DevOps のコードを App Service に統合するにはどうすればよいですか。
+    answer: "Azure DevOps で継続的デプロイを使用するには、2 つの方法があります。\n\n*   Git プロジェクトを使用する。 デプロイ センターを使用して、App Service 経由で接続します。\n*   Team Foundation バージョン管理 (TFVC) プロジェクトを使用する。 App Service のビルド エージェントを使用してデプロイします。\n\nどちらの方法でも、コードの継続的デプロイは既存の開発者ワークフローとチェックイン プロシージャに依存します。 詳細と例については、次の記事をご覧ください。 \n\n*   [アプリの継続的デプロイを Azure Web サイトに実装する](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)\n*   [Set up an Azure DevOps organization so it can deploy to a web app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)\\(Web アプリにデプロイできるよう Azure DevOps 組織をセットアップする\\)\n"
+  - question: >
+      FTP または FTPS を使用してアプリを App Service にデプロイするにはどうすればよいですか。
+    answer: FTP または FTPS を使用して Web アプリを App Service にデプロイする方法については、[FTP/S を使用した App Service へのアプリのデプロイ](deploy-ftp.md)に関するページをご覧ください。

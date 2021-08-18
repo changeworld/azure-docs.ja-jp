@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: garyericson
 ms.author: garye
-ms.reviewer: sstein, davidph
+ms.reviewer: mathoma, davidph
 manager: cgronlun
 ms.date: 03/17/2021
-ms.openlocfilehash: a322efdf5ef21912a8e29e9b3dea4bc041c61cca
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 77637dc90bff07c96526fda421e872fc702f0ad9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131893"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751219"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL Managed Instance と SQL Server の Machine Learning Services の主な違い
 

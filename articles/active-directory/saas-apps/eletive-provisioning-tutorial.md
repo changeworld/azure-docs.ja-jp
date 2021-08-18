@@ -3,8 +3,8 @@ title: 'チュートリアル: Eletive を構成し、Azure Active Directory を
 description: Azure AD から Eletive に対してユーザー アカウントを自動的にプロビジョニングしたり、プロビジョニングを解除したりする方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 8a775422-e6d7-4cd5-b8d1-cc8a2db24c4f
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2021
-ms.author: Zhchia
-ms.openlocfilehash: c16e95cde0848debac28e0296277076c1747d654
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.author: thwimmer
+ms.openlocfilehash: a63f4b5d9ebf3df092481fe0a3cd6c669150281c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108148029"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767908"
 ---
 # <a name="tutorial-configure-eletive-for-automatic-user-provisioning"></a>チュートリアル: Eletive を構成し、自動ユーザー プロビジョニングに対応させる
 

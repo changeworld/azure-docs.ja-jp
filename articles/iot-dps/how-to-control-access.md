@@ -2,19 +2,18 @@
 title: IoT Device Provisioning Service におけるセキュリティ エンドポイント | Microsoft Docs
 description: 概念 - バックエンド アプリの IoT Device Provisioning Service (DPS) へのアクセスを制御する方法。 セキュリティ トークンについての情報が含まれています。
 author: wesmc7777
-manager: philmea
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90ba464fa58e248ebea0f6b080461851c69f0ab7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94954326"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745338"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 

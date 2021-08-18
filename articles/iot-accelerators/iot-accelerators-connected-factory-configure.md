@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 863734596861f3116418cb322a1e4a8ae9c8ea40
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645739"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746421"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
 
@@ -32,7 +32,7 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 * テスト ステーション
 * パッケージ化ステーション
 
-これらの OPC UA サーバーは OPC UA ノードを持ち、[OPC Publisher](overview-opc-publisher.md) がこれらのノードの値をコネクテッド ファクトリに送信します。 これには次のものが含まれます
+これらの OPC UA サーバーは OPC UA ノードを持ち、[OPC Publisher](/previous-versions/azure/iot-accelerators/overview-opc-publisher) がこれらのノードの値をコネクテッド ファクトリに送信します。 これには次のものが含まれます
 
 * 現在の電力消費量など、現在の動作状態。
 * 生産された製品数など、生産情報。
@@ -310,7 +310,7 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 
   OPC UA サーバー内のノードの値を識別します。 プロパティの形式は、OPC UA 仕様で指定されているとおりにする必要があります。 取り込まれるメッセージでは、このプロパティは **NodeId** として送信されます。
 
-テレメトリ データをコネクテッド ファクトリに取り込む方法の詳細については、「[OPC Publisher とは](overview-opc-publisher.md)」を参照してください。
+テレメトリ データをコネクテッド ファクトリに取り込む方法の詳細については、「[OPC Publisher とは](/previous-versions/azure/iot-accelerators/overview-opc-publisher)」を参照してください。
 
 ## <a name="example-how-kpi1-is-calculated"></a>例: KPI1 の計算方法
 

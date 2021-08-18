@@ -3,12 +3,12 @@ title: コンテナー グループの静的 IP アドレス
 description: 仮想ネットワーク内にコンテナー グループを作成し、Azure アプリケーション ゲートウェイを使用して、コンテナー化された Web アプリに静的フロントエンド IP アドレスを公開します
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: c0401c0b6ec4aae124ee1954762d22c16cacb994
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46b04534a6beae5a2e102aa0167815da44ae21ed
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084225"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219265"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>コンテナー グループの静的 IP アドレスの公開
 
@@ -31,7 +31,7 @@ ms.locfileid: "110084225"
 
 必要な場合は、Azure リソース グループを作成してください。 次に例を示します。
 
-```azureci
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 

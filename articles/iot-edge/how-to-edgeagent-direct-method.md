@@ -2,19 +2,18 @@
 title: 組み込みの edgeAgent ダイレクト メソッド - Azure IoT Edge
 description: IoT Edge エージェント ランタイム モジュールの組み込みのダイレクト メソッドを使用して IoT Edge デプロイを監視および管理します
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cc580bd1e7b33507f25fdb0ebec3ba38904db8bb
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 35f226962e1c293a3d39e5e4667394a157d3e8a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541854"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722040"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>組み込みのダイレクト メソッドを使用して edgeAgent と通信する
 

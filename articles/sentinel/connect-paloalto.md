@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4963e616b4a24ec502f0c571593e6433dcddb61c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85564554"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253887"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Azure Sentinel に Palo Alto Networks を接続する
 
@@ -28,6 +28,7 @@ ms.locfileid: "85564554"
 
 この記事では、Palo Alto Networks アプライアンスを Azure Sentinel に接続する方法について説明します。 Palo Alto Networks データ コネクタを使用すると、Azure Sentinel に Palo Alto Networks のログを簡単に接続でき、ダッシュ ボードの表示、カスタム アラートの作成、および調査の改善も行うことができます。 Azure Sentinel で Palo Alto Networks を使用すると、組織のインターネットの使用に関する詳細な分析情報を取得できるため、セキュリティ操作機能が強化されます。 
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="forward-palo-alto-networks-logs-to-the-syslog-agent"></a>Palo Alto Networks のログを Syslog エージェントに転送する
 
@@ -52,8 +53,6 @@ Syslog のエージェントを介してお使いの Azure ワークスペース
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Palo Alto Networks アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-
-
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

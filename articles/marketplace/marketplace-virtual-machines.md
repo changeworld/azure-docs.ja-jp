@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 25cfca98857d33a90b2c1f11692d83ae30911bb7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4278a3b0e022015a1e12542cac7699590150b5e4
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480875"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602579"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>仮想マシン オファーの計画
 
@@ -23,7 +23,7 @@ ms.locfileid: "110480875"
 
 ### <a name="technical-fundamentals"></a>技術的基礎
 
-オファーの設計、作成、テストのプロセスには時間がかかり、Azure プラットフォームと、オファーの作成に使用される技術の両方に関する専門知識が必要です。 エンジニアリング チームは、[Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)、[Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)、[Azure ネットワーク](https://azure.microsoft.com/services/?filter=networking#networking)に関する実用的な知識を持ち、[Azure アプリケーションの設計とアーキテクチャ](https://azure.microsoft.com/solutions/architecture/)に習熟している必要があります。 次の追加のテクニカル リソースを参照してください。 
+オファーの設計、作成、テストのプロセスには時間がかかり、Azure プラットフォームと、オファーの作成に使用される技術の両方に関する専門知識が必要です。 エンジニアリング チームは、[Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)、[Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)、[Azure ネットワーク](https://azure.microsoft.com/services/?filter=networking#networking)に関する実用的な知識を持ち、[Azure アプリケーションの設計とアーキテクチャ](https://azure.microsoft.com/solutions/architecture/)に習熟している必要があります。 次の追加のテクニカル リソースを参照してください。
 
 - チュートリアル
   - [Linux VM](../virtual-machines/linux/tutorial-manage-vm.md)

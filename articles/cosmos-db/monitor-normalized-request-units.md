@@ -3,15 +3,15 @@ title: Azure Cosmos コンテナーまたはアカウントの正規化された
 description: Azure Cosmos DB で、操作の正規化された要求ユニットの使用状況を監視する方法について説明します。 Azure Cosmos DB アカウントの所有者は、より多くの要求ユニットを消費している操作を把握できます。
 ms.service: cosmos-db
 ms.topic: how-to
-author: kanshiG
-ms.author: govindk
+ms.author: esarroyo
+author: StefArroyo
 ms.date: 01/07/2021
-ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3fe29f94cf874d7ede2b5d7f85199c2d9df65f2
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98027799"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359661"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Azure Cosmos コンテナーまたはアカウントの正規化された RU/秒を監視する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2813699e082afbc263775821839ed6946e26c1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579913"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724790"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -173,7 +173,7 @@ Windows Virtual Desktop (WVD) を使用して、お客様の VM はユーザー�
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>イマーシブ リーダー SDK の最新バージョンにアップグレードする
 このサブスクリプションのリソースに、古いバージョンのイマーシブ リーダー SDK が使用されていることがわかりました。 イマーシブ リーダー SDK の最新バージョンを使用すると、更新されたセキュリティ、パフォーマンス、および統合エクスペリエンスをカスタマイズおよび強化するための一連の拡張機能が提供されます。
-イマーシブ リーダー SDK の詳細については、[こちら](../cognitive-services/immersive-reader/index.yml)をご覧ください。
+イマーシブ リーダー SDK の詳細については、[こちら](../applied-ai-services/immersive-reader/index.yml)をご覧ください。
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>セッションの上限を変更して VM のパフォーマンスを向上させる
 

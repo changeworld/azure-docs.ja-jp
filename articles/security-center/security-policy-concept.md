@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: eb6369e89066451779d05a97057acbdd451de192
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 240ed5ed7aefb31503047f124d34e99d738da687
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146673"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236861"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>セキュリティ ポリシー、イニシアチブ、および推奨事項とは
 
@@ -71,13 +71,13 @@ Security Center は、選択したイニシアチブに基づいてセキュリ�
 
 推奨事項の詳細を確認するときに、基になるポリシーを確認できると有益な場合が多くあります。 ポリシーでサポートされているすべての推奨事項について、推奨事項の詳細ページの **[ポリシー定義の表示]** リンクを使用して、関連するポリシーの Azure Policy エントリに直接アクセスします。
 
-:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="推奨事項をサポートする特定のポリシーの Azure Policy ページへのリンク":::
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="推奨事項をサポートする特定のポリシーが記載されている Azure Policy ページへのリンク。":::
 
 ポリシー定義を表示し、評価ロジックを確認するには、このリンクを使用します。 
 
 [セキュリティの推奨事項に関するリファレンス ガイド](recommendations-reference.md)に記載されている推奨事項の一覧を確認している場合も、ポリシー定義のページへのリンクが表示されます。
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Azure Security Center 推奨事項のリファレンス ページから、特定のポリシーに関する Azure Policy ページへの直接アクセス":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Azure Security Center 推奨事項のリファレンス ページから、特定のポリシーに関する Azure Policy ページへの直接アクセス。":::
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: how-to, managed online endpoints
+ms.custom: how-to, managed online endpoints, devplatv2
 ms.author: ssambare
 author: shivanissambare
 ms.reviewer: peterlu
 ms.date: 05/25/2021
-ms.openlocfilehash: 96ec383d5110b3acf4ca3b83bd40526443df887a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4f2b69a4a4009784e7943d57b0ec5653528a418e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382811"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448180"
 ---
 # <a name="create-and-use-managed-online-endpoints-preview-in-the-studio"></a>スタジオでマネージド オンライン エンドポイント (プレビュー) を作成および使用する
 
@@ -56,9 +56,9 @@ ms.locfileid: "110382811"
 1. モデル名の横にある円をチェックして、モデルを選択します。
 1. **[デプロイ]**  >  **[Deploy to endpoint (preview)]\(エンドポイント (プレビュー) にデプロイする\)** の順に選択します。
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/models-create-managed-online-endpoint.png" alt-text="[モデル] タブでマネージド オンライン エンドポイントを作成する":::
-
 セットアップ ウィザードに従って、マネージド オンライン エンドポイントを構成します。
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/models-page-deployment-latest.png" alt-text="[モデル] タブでマネージド オンライン エンドポイントを作成する":::
 
 ## <a name="view-managed-online-endpoints-preview"></a>マネージド オンライン エンドポイント (プレビュー) を表示する
 
@@ -167,4 +167,8 @@ ms.locfileid: "110382811"
 
 - [エンドポイントとは何ですか。](concept-endpoints.md)
 - [Azure CLI を使用してマネージド オンライン エンドポイントをデプロイする方法](how-to-deploy-managed-online-endpoints.md)
-- [マネージド オンライン エンドポイントを監視する方法](how-to-monitor-online-endpoints.md)。
+- [REST を使用してモデルをデプロイする (プレビュー)](how-to-deploy-with-rest.md)
+- [マネージド オンライン エンドポイントを監視する方法](how-to-monitor-online-endpoints.md)
+- [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md)
+- [Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する](how-to-view-online-endpoints-costs.md)
+- [Azure Machine Learning を使用するリソースのクォータの管理と引き上げ](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)

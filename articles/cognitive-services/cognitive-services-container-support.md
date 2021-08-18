@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 07/02/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, Kubernetes
-ms.openlocfilehash: 9a0dbba69b6317ab5a3df0b87e5f288d5a95872c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: adc449be1aa1673540e02269d15823b819bc37c1
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752659"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285521"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services コンテナー
 
@@ -78,9 +78,9 @@ Azure Cognitive Services のコンテナーでは、次の Docker コンテナ�
 | サービス |  コンテナー | 説明 | 可用性 |
 |--|--|--|--|
 | [Computer Vision][cv-containers] | **Read OCR** ([イメージ](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Read OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API のドキュメント](./computer-vision/overview-ocr.md)に関する記事を参照してください。 | 限定的なプレビュー。 [アクセスを要求][request-access]してください。 |
-| [空間分析][spa-containers] | **空間分析** ([イメージ](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | リアルタイム ストリーミング ビデオを分析して、ユーザーとその動きの間の空間関係、および物理的な環境内のオブジェクトの相互作用を把握します。 | 限定的なプレビュー。 [アクセスを要求][request-access]してください。 |
+| [空間分析][spa-containers] | **空間分析** ([イメージ](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | リアルタイム ストリーミング ビデオを分析して、ユーザーとその動きの間の空間関係、および物理的な環境内のオブジェクトの相互作用を把握します。 | プレビュー |
 | [Face][fa-containers] | **Face** | Face には、画像中の人の顔を検出し、顔のパーツ (鼻や目など)、性別、年齢のほか、マシンが予測するその他の顔の特徴などの属性を識別します。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認したり、データベースと顏を比較して、似ている顏や同一の顔が既に存在するかどうかを調べたりできます。 また、同じ視覚的特徴を使用して、似た顔をグループに分けて整理することもできます。 | 利用不可 |
-| [Form Recognizer][fr-containers] | **Form Recognizer** | Form Understanding では、機械学習の技術を適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。 | 利用不可 | 
+| [Form Recognizer][fr-containers] | **Form Recognizer** | Form Understanding では、機械学習の技術を適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。 | 限定的なプレビュー。 [アクセスを要求][request-access]してください。 | 
 
 
 <!--
@@ -135,7 +135,7 @@ Azure Cognitive Services のコンテナーによって提供される機能を�
 [ad-containers]: anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: computer-vision/computer-vision-how-to-install-containers.md
 [fa-containers]: face/face-how-to-install-containers.md
-[fr-containers]: form-recognizer/form-recognizer-container-howto.md
+[fr-containers]: ./form-recognizer/containers/form-recognizer-container-install-run.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
 [spa-containers]: ./computer-vision/spatial-analysis-container.md

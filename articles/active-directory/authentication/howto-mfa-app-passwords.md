@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac603cef478b821d1fea72fce22004fc72860914
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 58344a385a8ad4d409748c039f8f1e7807e290b7
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744469"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228381"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>アプリ パスワードを使用して、レガシ アプリケーションで Azure AD Multi-Factor Authentication を有効にして使用する
 
@@ -103,7 +103,7 @@ Azure AD では、オンプレミスの Active Directory ドメイン サービ�
 
 ユーザーによるアプリ パスワードの作成は、登録後も可能です。 詳細情報とユーザー向けの詳細な手順については、次のリソースを参照してください。
 * [Azure AD Multi-Factor Authentication のアプリ パスワードとは](../user-help/multi-factor-authentication-end-user-app-passwords.md)
-* [[セキュリティ情報] ページからアプリ パスワードを作成する](https://docs.microsoft.com/azure/active-directory/user-help/security-info-app-passwords)
+* [[セキュリティ情報] ページからアプリ パスワードを作成する](../user-help/security-info-app-passwords.md)
 
 ## <a name="next-steps"></a>次のステップ
 

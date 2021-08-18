@@ -6,20 +6,15 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/07/2021
-ms.openlocfilehash: 7bf5cc43ca173aa787c1cde4d5727b48206872af
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 08/03/2021
+ms.openlocfilehash: 74c9df5ee9eb6cd6a61104b4c9cce91b284dbb29
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315509"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726139"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---hyperscale-citus-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - Hyperscale (Citus) の読み取りレプリカを作成および管理する
-
-> [!IMPORTANT]
-> Hyperscale (Citus) の読み取りレプリカは、現在プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
->
-> その他の新機能については、[Hyperscale (Citus) のプレビュー機能](hyperscale-preview-features.md)に関するページで全一覧をご覧いただけます。
 
 この記事では、Azure Portal から Hyperscale (Citus) の読み取りレプリカを作成および管理する方法について説明します。 読み取りレプリカの詳細については、[概要](concepts-hyperscale-read-replicas.md)を参照してください。
 

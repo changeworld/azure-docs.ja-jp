@@ -2,25 +2,22 @@
 title: 'チュートリアル: Azure Active Directory を使用した自動ユーザー プロビジョニングのために LimbleCMMS を構成する | Microsoft Docs'
 description: Azure AD から LimbleCMMS へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 5e0d5369-7230-4a16-bc3f-9eac2bc80a8c
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/07/2021
-ms.author: Zhchia
-ms.openlocfilehash: 6866b907f98776d7825567cec36687c44d77e404
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.author: thwimmer
+ms.openlocfilehash: 5ad0ef1911a76b0bc99966e76f66a8b1cd8a0215
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111852142"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195643"
 ---
 # <a name="tutorial-configure-limblecmms-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングのために LimbleCMMS を構成する
 

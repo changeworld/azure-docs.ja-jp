@@ -4,16 +4,16 @@ description: PowerShell で Azure クラウド サービス アプリケーシ�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 5b1650edb575de8fd59ad2495dafcd628a717c02
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cad107051c0811f4de974fc4733e6a683c97907b
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102610401"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092394"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-powershell"></a>PowerShell を使用して Azure Cloud Services (クラシック) のロールでリモート デスクトップ接続を有効にする
 

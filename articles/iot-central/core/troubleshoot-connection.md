@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: fb9b2a13f277c326cdda722398a915941b8c52b3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: faeaf58537da4a40716f0c2e76b205980b727bf9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740971"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459108"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
@@ -52,7 +52,7 @@ az extension add --name azure-iot
 
 ```azurecli
 az login
-az set account --subscription <your-subscription-id>
+az account set --subscription <your-subscription-id>
 ```
 
 デバイスから送信されているテレメトリを監視するには、次のコマンドを使用します。
@@ -216,7 +216,7 @@ GUI を使用する場合は、IoT Central の **生データ** ビューを使�
 
 問題が検出された場合、デバイスのファームウェアを更新するか、以前にモデル化されていないデータをモデル化する新しいデバイス テンプレートを作成することが必要になる場合があります。
 
-データを正しくモデル化する新しいテンプレートの作成を選択した場合は、デバイスを古いテンプレートから新しいテンプレートに移行します。 詳細については、「[Azure IoT Central アプリケーションでデバイスを管理する](howto-manage-devices.md)」を参照してください。
+データを正しくモデル化する新しいテンプレートの作成を選択した場合は、デバイスを古いテンプレートから新しいテンプレートに移行します。 詳細については、「[Azure IoT Central アプリケーションでデバイスを管理する](howto-manage-devices-individually.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

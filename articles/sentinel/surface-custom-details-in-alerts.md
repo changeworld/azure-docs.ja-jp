@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 97cd4d51da70b9b1cca501c7f04a3b0ccfc51305
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 18e176f11da9c8dca86c5f3477cb282c478664cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059682"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748069"
 ---
 # <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>Azure Sentinel でアラートに含まれるカスタム イベントの詳細を表示する 
 
@@ -29,7 +29,7 @@ ms.locfileid: "112059682"
 
 ## <a name="introduction"></a>はじめに
 
-[スケジュールされたクエリ分析ルール](tutorial-detect-threats-custom.md)を使用すると、Azure Sentinel に接続されたデータ ソースの **イベント** を分析し、それらのイベントの内容がセキュリティの観点から重要な場合に **アラート** を生成することができます。 これらのアラートは、Azure Sentinel のさまざまなエンジンを使用してさらに分析、グループ化、フィルター処理が行われ、SOC アナリストにとって注意が必要な **インシデント** へと抽出されます。 ただし、アナリストがインシデントを表示した場合、すぐに表示されるのはコンポーネント アラート自体のプロパティのみです。 実際の内容 (イベントに含まれる情報) を確認するには、さらに調べる必要があります。
+[スケジュールされたクエリ分析ルール](detect-threats-custom.md)を使用すると、Azure Sentinel に接続されたデータ ソースの **イベント** を分析し、それらのイベントの内容がセキュリティの観点から重要な場合に **アラート** を生成することができます。 これらのアラートは、Azure Sentinel のさまざまなエンジンを使用してさらに分析、グループ化、フィルター処理が行われ、SOC アナリストにとって注意が必要な **インシデント** へと抽出されます。 ただし、アナリストがインシデントを表示した場合、すぐに表示されるのはコンポーネント アラート自体のプロパティのみです。 実際の内容 (イベントに含まれる情報) を確認するには、さらに調べる必要があります。
 
 **分析ルール ウィザード** の **カスタムの詳細** 機能を使用すると、それらのイベントから構築されたイベント データをアラートに表示し、イベント データをアラート プロパティの一部にすることができます。 事実上、これにより、インシデントのイベントの内容をすぐに可視化できるため、はるかに高速で効率的なトリアージ、調査、結論の導出、対応が可能になります。
 
@@ -70,5 +70,5 @@ ms.locfileid: "112059682"
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Sentinel 分析ルールを使用してアラートにカスタムの詳細を表示する方法について説明します。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [スケジュールされたクエリ分析ルール](tutorial-detect-threats-custom.md)の完全な画像を取得します。
+- [スケジュールされたクエリ分析ルール](detect-threats-custom.md)の完全な画像を取得します。
 - [Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)について詳しく確認します。

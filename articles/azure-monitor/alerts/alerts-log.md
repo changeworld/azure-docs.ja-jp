@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 03c6697f07f66cd1d12cae55ddc5f4c73db70505
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9fa0e633c92300e0932200725aa1fa82de46f359
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461692"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221477"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -317,7 +317,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 1. 次のコマンドを使用して、ログ アラート ルールを無効にできます。
 
     ```azurecli
-    az monitor scheduled-query update -g {ResourceGroup} -n {AlertRuleName} --enabled false
+    az monitor scheduled-query update -g {ResourceGroup} -n {AlertRuleName} --disabled false
     ```
 
 1. 次のコマンドを使用して、ログ アラート ルールを削除できます。

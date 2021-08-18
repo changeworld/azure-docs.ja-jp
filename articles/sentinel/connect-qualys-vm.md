@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 8e11c4182520e143007b46c8a7907b5e71bfb27d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 111db39a1822e47fb8a14e10d3833fd58153f5b5
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097587"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253434"
 ---
 # <a name="connect-your-qualys-vm-to-azure-sentinel-with-azure-function"></a>Azure Functions を使用して Qualys VM を Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Azure Sentinel の Qualys VM データ コネクタは、現在パブリック プレビュー段階にあります。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Qualys Vulnerability Management (VM) コネクタを使用すると、Azure Sentinel にすべての [Qualys VM](https://www.qualys.com/apps/vulnerability-management/) セキュリティ ソリューションのログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 Qualys VM と Azure Sentinel の統合では、Azure Functions を使用して REST API によりログ データを取得します。
 
@@ -54,6 +56,6 @@ Azure Functions は、Qualys VM から直接イベントとログを統合およ
 
 このドキュメントでは、Azure Functions アプリを使用して Qualys VM を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

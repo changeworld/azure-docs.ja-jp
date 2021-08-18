@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 8e424bd03e69affebac6f9bb614d2449e6ec45c0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 355eaa0c7e907dea1e1fe88e0640d3b09463fa09
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070824"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729022"
 ---
 # <a name="authorize-access-to-blobs-using-azure-role-assignment-conditions-preview"></a>Azure ロールの割り当て条件を使用して BLOB へのアクセスを認可する (プレビュー)
 
@@ -28,7 +28,7 @@ ms.locfileid: "110070824"
 
 ## <a name="overview-of-conditions-in-azure-storage"></a>Azure Storage での条件の概要
 
-Azure Storage では、[Azure Active Directory (Azure AD) を使用](storage-auth-aad.md)して Blob Storage および Queue Storage への要求を認可することができます。 Azure AD は、Azure RBAC を使用して、セキュリティで保護されたリソースへのアクセス権を承認します。 BLOB およびキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure [組み込みロール](../../role-based-access-control/built-in-roles.md#storage)は、Azure Storage によって定義されます。 選択したアクセス許可セットを使用してカスタム ロールを定義することもできます。 Azure Storage では、ストレージ アカウントまたは BLOB コンテナーに対するロールの割り当てがサポートされます。
+Azure Storage では、[Azure Active Directory (Azure AD) を使用](authorize-data-access.md)して Blob Storage および Queue Storage への要求を認可することができます。 Azure AD は、Azure RBAC を使用して、セキュリティで保護されたリソースへのアクセス権を承認します。 BLOB およびキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure [組み込みロール](../../role-based-access-control/built-in-roles.md#storage)は、Azure Storage によって定義されます。 選択したアクセス許可セットを使用してカスタム ロールを定義することもできます。 Azure Storage では、ストレージ アカウントまたは BLOB コンテナーに対するロールの割り当てがサポートされます。
 
 ただし、場合によっては、ストレージ リソースへの詳細に設定されたアクセスを有効にしたり、ストレージ リソースに対する数百件のロールの割り当てを簡素化したりする必要がある場合があります。 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) の[ロールの割り当ての条件](../../role-based-access-control/conditions-overview.md)を構成して、これらのゴールを達成できます。 [カスタム役割](../../role-based-access-control/custom-roles.md)で条件を使用したり、組み込みロールを選択したりすることができます。 [ストレージ リソース プロバイダー](/rest/api/storagerp)を介した管理[アクション](../../role-based-access-control/role-definitions.md#actions)では条件はサポートされていません。
 

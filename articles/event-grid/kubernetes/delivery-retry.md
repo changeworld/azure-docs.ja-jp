@@ -6,22 +6,22 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c62ffc4374a461036d2e766fd57d96ec1906face
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6a37945461a61167e2fee7d7d3ef6a8fbccf3372
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386974"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066755"
 ---
 # <a name="event-grid-on-kubernetes---event-delivery-and-retry"></a>Kubernetes 上の Event Grid - イベント配信と再試行
 Kubernetes 上の Event Grid を Azure Arc で使用すると、一致するサブスクリプションごとに少なくとも 1 回、各メッセージの配信が即座に試行されます。 Kubernetes 上の Event Grid では、サブスクライバーから成功の HTTP 200 応答が返らない場合、または何らかのエラーが発生した場合、固定の再試行スケジュールと再試行ポリシーに基づいて配信が再試行されます。 
 
 既定では、Kubernetes 上の Event Grid によって、サブスクライバーに一度に 1 つのイベントが配信されます。 ただし、配信要求のペイロードは、1 つのイベントを含む配列です。 出力バッチ処理機能を有効にすると、複数のイベントを同時に配信することができます。 この機能の詳細については、[バッチ イベントの配信](batch-event-delivery.md)に関する記事を参照してください。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 > [!NOTE]
-> プレビュー期間中、Kubernetes 上の Event Grid は、API バージョン [2020-10-15-preview](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate) を通じてサポートされます。 
+> プレビュー期間中、Kubernetes 上の Event Grid は、API バージョン [2020-10-15-preview](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update) を通じてサポートされます。 
 
 
 ## <a name="retry-schedule"></a>再試行のスケジュール
@@ -41,7 +41,7 @@ Kubernetes 上の Event Grid では、イベントの配信後、応答を最大
 再試行ポリシーの制限のいずれかに達すると、イベントは削除されます。 これらの制限の構成は、サブスクリプションごとに行われます。 次のセクションでは、それぞれについて詳しく説明します。
 
 ### <a name="configuring-defaults-per-subscriber"></a>サブスクライバーごとの既定値の構成
-また、サブスクリプションごとに再試行ポリシーの制限を指定することもできます。 サブスクライバーごとの既定値構成の詳細については、[API のドキュメント](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate)を参照してください。 サブスクリプション レベルの既定値は、Kubernetes レベルの構成の Event Grid モジュールよりも優先されます。
+また、サブスクリプションごとに再試行ポリシーの制限を指定することもできます。 サブスクライバーごとの既定値構成の詳細については、[API のドキュメント](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update)を参照してください。 サブスクリプション レベルの既定値は、Kubernetes レベルの構成の Event Grid モジュールよりも優先されます。
 
 次の例では、`maxNumberOfAttempts` を 3 分、`eventTimeToLiveInMinutes` を 30 分で Web hook サブスクリプションを設定します。
 

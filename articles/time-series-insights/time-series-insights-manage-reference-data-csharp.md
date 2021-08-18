@@ -3,20 +3,21 @@ title: C# を使用して GA 環境の参照データを管理する - Azure Tim
 description: C# で記述されたカスタム アプリケーションを作成することによって GA 環境の参照データを管理する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2455a6e87e05ee8a926309ff0ca62ad2b8677da
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95020080"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136789"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen 1 環境の参照データを管理する
 

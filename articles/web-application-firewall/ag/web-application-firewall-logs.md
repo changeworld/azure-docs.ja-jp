@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: af7b46d0942b5d1bec1cbe77ec02eec7080597ba
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5cf40434740b1cc531ecf7959058e5c7260364ca
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676962"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458987"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールのリソース ログ
 
@@ -301,7 +301,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 
 #### <a name="analyzing-access-logs-through-goaccess"></a>GoAccess を介してアクセス ログを分析する
 
-Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートを発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://aka.ms/appgwgoaccessreadme)を参照してください。
+Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートを発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/application-gateway-logviewer-goaccess)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

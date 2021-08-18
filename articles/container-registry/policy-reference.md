@@ -1,18 +1,18 @@
 ---
 title: Azure Container Registry 用の組み込みポリシー定義
 description: Azure Container Registry 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: eb4ff4a609b8ab5cd9c479399a1672df62e74f23
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: f08acce277d128f74429ccaeb07bd9b0c1353ca2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020009"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183878"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>Azure Container Registry 用の Azure Policy 組み込み定義
 

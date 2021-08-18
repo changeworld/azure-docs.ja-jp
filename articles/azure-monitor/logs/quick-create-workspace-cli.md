@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 175473f5abd74fa208962fd94852e9ddedfaf7e3
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 4e4cf08f9955e79125e998e2fe0b80a97768554c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105810"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741275"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 
@@ -21,11 +21,6 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
 * Configuration Manager のデバイス コレクション  
 * Azure ストレージからの診断またはログ データ  
 
-環境内の Azure VM、Windows VM、Linux VM などの他のソースについては、次のトピックを参照してください。
-
-* [Azure Virtual Machines に関するデータの収集](../vm/quick-collect-azurevm.md)
-* [ハイブリッド Linux コンピューターからのデータの収集](../vm/quick-collect-linux-computer.md)
-* [ハイブリッド Windows コンピューターからのデータの収集](../vm/quick-collect-windows-computer.md)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

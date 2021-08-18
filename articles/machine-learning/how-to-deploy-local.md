@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: how-to
 ms.custom: deploy
-ms.openlocfilehash: 6e9a53a36403e24fa9573c6e65ae062a23bd9cb6
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: fa5c362db03af7004751e39708553edf79f5827a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889576"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446529"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Azure Machine Learning でトレーニングされたモデルをローカル コンピューターにデプロイする 
 
@@ -101,7 +101,7 @@ Azure Machine Learning によって使用される環境を複製する最も簡
 
 ```python
 from azureml.core.webservice import Webservice
-from azure.core.model import InferenceConfig
+from azureml.core.model import InferenceConfig
 from azureml.core.environment import Environment
 from azureml.core import Workspace
 from azureml.core.model import Model

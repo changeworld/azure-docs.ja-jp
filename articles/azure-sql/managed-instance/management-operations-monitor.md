@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: urosmil
 ms.author: urmilano
-ms.reviewer: sstein, bonova, MashaMSFT
+ms.reviewer: mathoma, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: df11946ccc76e59a858b365ff3fe9b8fac833e92
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 32b27eefb3cf8fe46b932f6e0e39274e67cadb7f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689694"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751229"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作の監視
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

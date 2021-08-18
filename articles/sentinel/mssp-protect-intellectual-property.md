@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2021
 ms.author: bagol
-ms.openlocfilehash: b6ada209d556ae981360661cea4db71219dbba37
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: da901a0beb5a90981293b4cae1f620a0668c7e0e
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124529"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179376"
 ---
 # <a name="protecting-mssp-intellectual-property-in-azure-sentinel"></a>Azure Sentinel で MSSP の知的財産権を保護する
 
@@ -161,5 +161,5 @@ Power BI へのブックのエクスポート:
 - [MSSP 用 Azure Sentinel テクニカル プレイブック](https://cloudpartners.transform.microsoft.com/download?assetname=assets/Azure-Sentinel-Technical-Playbook-for-MSSPs.pdf&download=1)
 - [Azure Sentinel で複数のテナントを MSSP として管理する](multiple-tenants-service-providers.md)
 - [ワークスペースおよびテナント全体での Azure Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)
-- [チュートリアル: データの視覚化と監視](tutorial-monitor-your-data.md)
+- [ データの視覚化と監視](monitor-your-data.md)
 - [チュートリアル:Azure Sentinel で脅威への自動対応を設定する](tutorial-respond-threats-playbook.md)

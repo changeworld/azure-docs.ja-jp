@@ -6,17 +6,17 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: a246ee493b89051ad35436cd9213462a09a5d1b0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 46ae19af49b827af857f5f224ee5f0013d620a43
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386999"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414595"
 ---
 # <a name="event-grid-on-kubernetes---batch-event-delivery"></a>Kubernetes 上の Event Grid - バッチ イベントの配信 
 Azure Arc を使用する Kubernetes 上の Event Grid では、1 つの配信要求での複数のイベントの配信がサポートされています。 この機能により、HTTP の要求ごとのオーバーヘッドを発生させることなく、配信全体のスループットを向上させることができます。 バッチ イベント配信は既定ではオフになっており、イベント サブスクリプション構成を使用してオンにすることができます。 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 > [!WARNING]
 > イベント ハンドラー コードでバッチ処理要求ごとに潜在的により多くの作業を行う必要がある場合でも、各配信要求を処理するために許可される最大期間は変わりません。 配信タイムアウトの既定値は 60 秒です。

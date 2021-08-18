@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f79e436f1fcce346304b2e88f213ff298b27aa04
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047009"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300833"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -25,7 +25,7 @@ Service Map は自動的に Windows および Linux のシステム上のアプ�
 * Windows コンピューターまたは Linux サーバーにインストールされている [Dependency Agent](vminsights-enable-overview.md#agents)。
 
 >[!NOTE]
->Service Map を既にデプロイ済みの場合は、VM insights でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM insights の概要](../vm/vminsights-overview.md)に関するページをご覧ください。 Service Map ソリューションと VM insights のマップ機能の違いについては、次の [FAQ](../faq.md#vm-insights) をご覧ください。
+>Service Map を既にデプロイ済みの場合は、VM insights でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM insights の概要](../vm/vminsights-overview.md)に関するページをご覧ください。 Service Map ソリューションと VM insights のマップ機能の違いについては、次の [FAQ](/azure/azure-monitor/faq#vm-insights) をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

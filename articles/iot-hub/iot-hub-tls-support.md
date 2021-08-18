@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 06/29/2021
 ms.author: jlian
-ms.openlocfilehash: 834ccc850a3099857dc1b88e45b0c0c3ee3a186c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0a9a3bc11bac0dd389c346ccecab7f95d5ffd5d2
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486451"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128032"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT Hub でのトランスポート層セキュリティ (TLS) のサポート
 
@@ -23,10 +23,6 @@ TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定�
 ## <a name="iot-hubs-server-tls-certificate"></a>IoT Hub のサーバー TLS 証明書
 
 TLS ハンドシェイク中には、IoT Hub から RSA キー付きサーバー証明書が接続元のクライアントに提示されます。 そのルートは、Baltimore CyberTrust Root CA です。 最近、Microsoft は TLS サーバー証明書に対する変更をロールアウトしましたので、それは新しい中間証明機関 (ICA) から発行されるようになります。 詳細については、「[IoT Hub TLS 証明書の更新](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)」を参照してください。
-
-### <a name="4kb-size-limit-on-renewal"></a>更新時の 4 KB のサイズ制限
-
-IoT Hub サーバー側の証明書の更新中に、IoT Hub サービス側でチェックが行われ、`Server Hello` のサイズが 4 KB を超えないようにします。 クライアントには、着信 TLS 最大コンテンツ長バッファー用に少なくとも 4 KB の RAM が設定されている必要があります。これにより、4 KB の制限に設定されている既存のデバイスは、証明書の更新後も以前と同じように機能し続けます。 制約のあるデバイスの場合、IoT Hub では、[プレビューでの TLS 最大フラグメント長ネゴシエーション](#tls-maximum-fragment-length-negotiation-preview)がサポートされています。 
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>楕円曲線暗号 (ECC) サーバー TLS 証明書 (プレビュー)
 

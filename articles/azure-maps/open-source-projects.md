@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b00561875d7c8c08061c9fcbe46a88815ef2f32c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 245979140b2d5214dcbb9ba8456cc90d8b8fd864
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784645"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669336"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
@@ -59,7 +59,7 @@ ms.locfileid: "110784645"
 |-|-|
 | [Azure Maps のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web ベースのアプリで Azure Maps を使用するためのコード サンプルのコレクション。 |
 | [Azure Maps Gov Cloud のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Government Cloud 経由で Azure Maps を使用するためのコード サンプルのコレクション。 |
-| [Azure Maps および Azure Active Directory のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure Maps と Azure Active Directory を使用する方法を示すサンプルのコレクション。 | 
+| [Azure Maps および Azure Active Directory のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure Maps と Azure Active Directory を使用する方法を示すサンプルのコレクション。 |
 | [LiveMaps](https://github.com/Azure-Samples/LiveMaps) | Azure Maps Creator を使用して Azure Maps 上に IoT データをライブの室内マップで視覚化するサンプル アプリケーション |
 | [Azure Maps の Jupyter Notebook サンプル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Azure Maps REST サービスを使用した python サンプルのコレクション。 |
 | [Azure Maps .NET UWP IoT リモート コントロール](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | これは、Azure Maps サービスと IoT Hub サービスを使用して、リモートで制御される地図を構築する方法を示すサンプル アプリケーションです。 |
@@ -70,9 +70,9 @@ ms.locfileid: "110784645"
 
 | プロジェクト名 | 説明 |
 |-|-|
-| [Azure Maps Cesium プラグイン](https://github.com/azure-samples/azure-maps-cesium) | [タイル レイヤー](/rest/api/maps/renderv2/getmaptilepreview)や[ジオコーディング サービス](/rest/api/maps/search)など、Azure Maps サービスを簡単に統合できる [Cesium JS](https://cesium.com/cesiumjs/) プラグイン。 |
-| [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet) | [Azure Maps タイル サービス](/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [Leaflet](https://leafletjs.com/) JavaScript プラグイン。 |
- | [Azure Maps OpenLayers プラグイン](https://github.com/azure-samples/azure-maps-openlayers) | [Azure Maps タイル サービス](/rest/api/maps/renderv2/getmaptilepreview)からのタイル レイヤーを簡単にオーバーレイできる [OpenLayers](https://www.openlayers.org/) JavaScript プラグイン。 |
+| [Azure Maps Cesium プラグイン](https://github.com/azure-samples/azure-maps-cesium) | [タイル レイヤー](/rest/api/maps/render-v2/get-map-tile)や[ジオコーディング サービス](/rest/api/maps/search)など、Azure Maps サービスを簡単に統合できる [Cesium JS](https://cesium.com/cesiumjs/) プラグイン。 |
+| [Azure Maps Leaflet プラグイン](https://github.com/azure-samples/azure-maps-leaflet) | [Azure Maps タイル サービス](/rest/api/maps/render-v2/get-map-tile)からのタイル レイヤーを簡単にオーバーレイできる [Leaflet](https://leafletjs.com/) JavaScript プラグイン。 |
+ | [Azure Maps OpenLayers プラグイン](https://github.com/azure-samples/azure-maps-openlayers) | [Azure Maps タイル サービス](/rest/api/maps/render-v2/get-map-tile)からのタイル レイヤーを簡単にオーバーレイできる [OpenLayers](https://www.openlayers.org/) JavaScript プラグイン。 |
 
 **ツールとリソース**
 

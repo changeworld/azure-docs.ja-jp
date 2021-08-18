@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: bdd44bf81e34b60ee648b71c6dc3bde5a96d3deb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ef54d3a252baa8d84588481b2a73d1b365bb8c13
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443014"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721397"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスにおける事前ログ収集
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-事前ログ収集によって Azure Stack Edge デバイス上のシステム正常性インジケーターが収集され、デバイスの問題のトラブルシューティングを効率的に行うことができます。 事前ログ収集は既定で有効になっています。 この記事では、収集されるログ、Microsoft でそのデータが処理される方法、事前ログ収集を無効または有効にする方法について説明します。 
-
-この記事の情報は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、および Azure Stack Edge Mini R デバイスに適用されます。
+事前ログ収集によって Azure Stack Edge デバイス上のシステム正常性インジケーターが収集され、デバイスの問題のトラブルシューティングを効率的に行うことができます。 事前ログ収集は既定で有効になっています。 この記事では、収集されるログ、Microsoft でそのデータが処理される方法、事前ログ収集を無効または有効にする方法について説明します。
 
 ## <a name="about-proactive-log-collection"></a>事前ログ収集について
 

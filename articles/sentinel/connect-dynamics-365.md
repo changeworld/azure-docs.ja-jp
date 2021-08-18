@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 7d2a9c69108211b1342c553731c28785e1f2cc79
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: d8151ac8f0ae26bc3567ec3a2a533703b401a90f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421798"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747154"
 ---
 # <a name="connect-dynamics-365-activity-logs-to-azure-sentinel"></a>Dynamics 365 アクティビティ ログを Azure Sentinel に接続する
 
@@ -67,5 +67,5 @@ ms.locfileid: "111421798"
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Dynamics 365 のアクティビティ データを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [組み込み](tutorial-detect-threats-built-in.md)または[カスタム](tutorial-detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [組み込み](detect-threats-built-in.md)または[カスタム](detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。

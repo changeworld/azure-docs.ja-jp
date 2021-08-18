@@ -4,12 +4,12 @@ description: Java を使用して関数を開発する方法について説明�
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 82e40fbe3be88754ce7196f61c971c7a002998ca
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: fc827c8c03edecbdb10769f7830806ff01596bd1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095106"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742640"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -106,7 +106,7 @@ FunctionsProject
 [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) パッケージに含まれる Java の注釈を使用して、入力と出力をメソッドにバインドします。 詳細については、[Java リファレンス ドキュメント](/java/api/com.microsoft.azure.functions.annotation)に関するページを参照してください。
 
 > [!IMPORTANT] 
-> Azure Blob storage、Azure Queue storage、または Azure Table Storage をローカルで実行するには、[local.settings.json](./functions-run-local.md#local-settings-file) に Azure Storage アカウントを構成する必要があります。
+> Azure Blob storage、Azure Queue storage、または Azure Table Storage をローカルで実行するには、[local.settings.json](./functions-develop-local.md#local-settings-file) に Azure Storage アカウントを構成する必要があります。
 
 例:
 
@@ -132,7 +132,7 @@ public class Function {
       "name": "req",
       "direction": "in",
       "authLevel": "anonymous",
-      "methods": [ "post" ]
+      "methods": [ "GET","POST" ]
     },
     {
       "type": "http",

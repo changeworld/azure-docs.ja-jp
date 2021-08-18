@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, automl
-ms.openlocfilehash: d104ad879919b11152d56a2c9b6b6fd8652c3ddc
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: fc07c5bf61e1ef80fdcb574580f626eb46394564
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903796"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462903"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
@@ -36,7 +36,7 @@ ms.locfileid: "107903796"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://aka.ms/AMLFree)してください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 - Azure Machine Learning 実験は、次のいずれかを使用して作成します。
   - [Azure Machine Learning スタジオ](how-to-use-automated-ml-for-ml-models.md) (コード不要)
   - [Azure Machine Learning Python SDK](how-to-configure-auto-train.md)

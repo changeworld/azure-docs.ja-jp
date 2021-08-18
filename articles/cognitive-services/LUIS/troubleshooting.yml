@@ -1,0 +1,412 @@
+### YamlMime:FAQ
+metadata:
+  title: よく寄せられる質問 (FAQ) - LUIS
+  description: この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
+  ms.service: cognitive-services
+  ms.subservice: language-understanding
+  ms.topic: troubleshooting
+  ms.date: 05/17/2021
+  ms.openlocfilehash: 1a045815865ee35ce946ac3d613217cefafde249
+  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114293837"
+title: Language Understanding についてよくあるご質問 (FAQ)
+summary: >
+  この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
+
+
+  ## <a name="whats-new"></a>新機能
+
+
+  Language Understanding (LUIS) の詳細については、[こちら](./whats-new.md)をご覧ください。
+sections:
+- name: Authoring
+  questions:
+  - question: >
+      LUIS のベスト プラクティスは何ですか?
+    answer: >
+      [作成サイクル](luis-concept-app-iteration.md)で開始してから、[ベスト プラクティス](luis-concept-best-practices.md)を読んでください。
+  - question: >
+      LUIS でアプリ作成を始める最善の方法は何ですか?
+    answer: >
+      アプリ作成の最善の方法は、[増分プロセス](luis-concept-app-iteration.md)です。
+  - question: >
+      アプリの意図をモデル化するよい方法は何ですか? もっと具体的または一般的な意図を作成する必要がありますか?
+    answer: >
+      重複が発生するほど一般的ではなく、かといって LUIS が似た意図を区別するのが難しくなるほど具体的ではないように、意図を選択します。 弁別的に固有の意図を作成するのが、LUIS モデリングのベスト プラクティスの 1 つです。
+  - question: >
+      None 意図をトレーニングすることは重要ですか?
+    answer: >
+      はい、他の意図にラベルを追加しながらより多くの発話で **None** 意図をトレーニングするのはよいことです。 適切な比率は、ある意図に 10 個のラベルが追加されるごとに、**None** 意図に 1 または 2 個のラベルが追加されるようにすることです。 この比率は、LUIS の弁別能力を高めます。
+  - question: >
+      発話のスペル ミスはどのようにして修正できますか?
+    answer: >
+      [Bing Spell Check API V7](luis-tutorial-bing-spellcheck.md) のチュートリアルをご覧ください。 LUIS は、Bing Spell Check API V7 による制限を強制します。
+  - question: >
+      プログラムで LUIS アプリを編集するにはどうすればよいですか?
+    answer: >
+      LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./get-started-get-model-rest-apis.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-how-to-azure-subscription.md)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-how-to-azure-subscription.md)に関するページをご覧ください。
+  - question: >
+      正規表現のマッチングを提供していたパターン機能はどこにありますか?
+    answer: >
+      以前の **パターン機能** は現在は非推奨になっており、 **[パターン](luis-concept-patterns.md)** に置き換えられています。
+  - question: >
+      エンティティを使って正しいデータを取得するにはどうすればよいですか?
+    answer: >
+      [エンティティ](luis-concept-entity-types.md)および[データ抽出](luis-concept-data-extraction.md)に関するページをご覧ください。
+  - question: >
+      発話例のバリエーションは句読点を含む必要がありますか?
+    answer: >
+      次のいずれかのソリューションを使用します。
+
+      * [句読点](luis-reference-application-settings.md#punctuation-normalization)を無視します
+
+      * 発話例として異なるバリエーションを意図に追加します
+
+      * 句読点を[無視する構文](luis-concept-patterns.md#pattern-syntax)を使用して発話例のパターンを追加します。
+  - question: >
+      LUIS は現在 Cortana をサポートしていますか。
+    answer: >
+      Cortana 事前構築済みアプリは 2017 年に非推奨になりました。 これらはサポートされなくなりました。
+  - question: >
+      LUIS アプリの所有権を譲渡するにはどうすればよいですか?
+    answer: >
+      LUIS アプリを別の Azure サブスクリプションに譲渡するには、LUIS アプリをエクスポートした後、新しいアカウントを使用してインポートします。 LUIS アプリを呼び出しているクライアント アプリケーションで、LUIS アプリ ID を更新します。 新しいアプリは、元のアプリとは若干異なる LUIS スコアを返す可能性があります。
+  - question: >
+      発話の例では、自分のカスタム エンティティではなく事前構築済みのエンティティにタグ付けされています。 これをどのように修正すればよいですか?
+    answer: >
+      LUIS ポータルでは、抽出するエンティティのテキストにラベルを付けることができます。 LUIS ポータルに正しいエンティティ予測が表示されない場合は、必要に応じて、さらに発話を追加し、テキスト内でそのエンティティにラベルを付けるか、特徴を追加します。
+  - question: >
+      アプリまたはバージョン ファイルをインポートしようとしましたが、エラーが発生しました。なぜでしょうか?
+    answer: >
+      [バージョン インポート エラー](luis-how-to-manage-versions.md#import-errors)について確認してください。
+
+
+      <a name="luis-collaborating"></a>
+- name: コラボレーションと投稿
+  questions:
+  - question: >
+      Azure Active Directory (Azure AD) または Azure ロールベースのアクセス制御 (Azure RBAC) で、コラボレーターに LUIS へのアクセス権を付与するにはどうすればよいですか?
+    answer: >
+      コラボレーターにアクセス権を付与する方法については、「[Azure Active Directory リソース](luis-how-to-collaborate.md#azure-active-directory-resources)」および「[Azure Active Directory テナント ユーザー](luis-how-to-collaborate.md#azure-active-directory-tenant-user)」を参照してください。
+
+
+      <a name="luis-endpoint"></a>
+- name: エンドポイント
+  questions:
+  - question: >
+      HTTP 403 エラー状態コードを受け取りました。 どのように修正すればよいですか
+    answer: >
+      価格レベルの 1 秒あたりのトランザクション数または 1 か月あたりのトランザクション数を超えると、403 および 429 のエラー状態コードを取得します。 価格レベルを上げるか、Language Understanding [コンテナー](luis-container-howto.md)を使用してください。
+
+
+      無料の 1000 エンドポイント クエリをすべて使用しているか、価格レベルの 1 か月あたりのトランザクションのクォータを超えた場合は、HTTP 403 エラー状態コードが表示されます。
+
+
+      このエラーを解消するには、[価格レベルを上位のレベルに変更する](luis-how-to-azure-subscription.md#change-the-pricing-tier)か、[新しいリソースを作成](luis-get-started-create-app.md#sign-in-to-luis-portal)してアプリに割り当てる必要があります。
+
+
+      このエラーの解決方法は次のとおりです。
+
+
+      * [Azure portal](https://portal.azure.com) で、Language Understanding リソースの **[リソース管理] -> [価格レベル]** で、価格レベルをより高い TP レベルに変更します。 リソースが既に Language Understanding アプリに割り当てられている場合、Language Understanding ポータルでは何もする必要はありません。
+
+      *  使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
+  - question: >
+      HTTP 429 エラー状態コードを受け取りました。 どのように修正すればよいですか
+    answer: >
+      価格レベルの 1 秒あたりのトランザクション数または 1 か月あたりのトランザクション数を超えると、403 および 429 のエラー状態コードを取得します。 価格レベルを上げるか、Language Understanding [コンテナー](luis-container-howto.md)を使用してください。
+
+
+      この状態コードは、1 秒あたりのトランザクションが価格レベルを超えると返されます。
+
+
+      解決方法は次のとおりです。
+
+
+      * 最高レベルではない場合は、[価格レベルを上げる](luis-how-to-azure-subscription.md#change-the-pricing-tier)ことができます。
+
+      * 使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
+
+      * この状態コードが表示された場合は、自分で実装する[再試行ポリシー](/azure/architecture/best-practices/transient-faults#general-guidelines)を使用してクライアント アプリケーションの要求をゲートすることができます。
+  - question: >
+      エンドポイントのクエリで予期していなかった結果が返されました。 どうすればよいですか。
+    answer: >
+      クエリで予期しない予測結果が返される原因は、公開されているモデルの状態にあります。 モデルを修正するには、モデルを変更し、トレーニングしてからもう一度公開することが必要になる場合があります。
+
+
+      モデルの修正は、[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)から始まります。
+
+
+      トレーニング データをすべて使用するために、[アプリケーションのバージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を更新して非決定論的トレーニングを削除することができます。
+
+
+      他のヒントについては、[ベスト プラクティス](luis-concept-best-practices.md)を参照してください。
+  - question: >
+      LUIS がクエリの単語の周りまたは途中にスペースを追加するのはなぜですか?
+    answer: >
+      LUIS は、[カルチャ](luis-language-support.md#tokenization)に基づいて発話を[トークン化](luis-glossary.md#token)します。 元の値とトークン化された値の両方を、[データ抽出](luis-concept-data-extraction.md#tokenized-entity-returned)に使用できます。
+  - question: >
+      LUIS エンドポイント キーを作成して割り当てるにはどうすればよいですか?
+    answer: >
+      Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md)します。 **[[Azure リソース]](luis-how-to-azure-subscription.md)** ページで [キーを割り当て](luis-how-to-azure-subscription.md)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-how-to-azure-subscription.md)必要があります。
+  - question: >
+      LUIS のスコアを解釈するにはどうすればよいですか?
+    answer: >
+      システムは、その値に関係なく、最高のスコアの意図を使用する必要があります。 たとえば、スコアが 0.5 より低くても (50% 未満)、それは必ずしも LUIS の信頼度が低いことを意味するものではありません。 より多くのトレーニング データを提供すると、最も可能性の高い意図の[スコア](luis-concept-prediction-score.md)を上げるのに役立ちます。
+  - question: >
+      アプリのダッシュボードにエンドポイントのヒットが表示されないのはなぜですか?
+    answer: >
+      アプリのダッシュボードの合計エンドポイント ヒット数は定期的に更新されますが、Azure Portal で LUIS エンドポイント キーに関連付けられているメトリックの方がより頻繁に更新されます。
+
+
+      更新されたエンドポイント ヒット数がダッシュボードに表示されない場合は、Azure portal にサインインし、LUIS エンドポイント キーに関連付けられているリソースを検索し、 **[メトリック]** を開いて **[呼び出し合計]** メトリックを選択してください。 エンドポイント キーが複数の LUIS アプリに使用されている場合、Azure Portal のメトリックには、それを使用するすべての LUIS アプリからの呼び出しの集計数が示されます。
+  - question: >
+      エンドポイントのクォータを取得する PowerShell コマンドはありますか?
+    answer: >
+      [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+
+      PowerShell コマンドを使用して、エンドポイントのクォータを確認できます。
+
+
+      ```powershell
+
+      Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+
+      ```
+  - question: >
+      昨日は動いていた LUIS アプリで、今日は 403 エラーが発生します。 アプリは変更していません。 どのように修正すればよいですか
+    answer: >
+      こちらの[説明](#how-do-i-create-and-assign-a-luis-endpoint-key-)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへのクライアント アプリケーションの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-how-to-azure-subscription.md)必要があります。 別のリージョンに新しいリソースを作成した場合、HTTP クライアント要求のリージョンも変更します。
+  - question: >
+      LUIS エンドポイントをセキュリティで保護するにはどうすればよいですか?
+    answer: >
+      「[Securing the endpoint](luis-how-to-azure-subscription.md#securing-the-endpoint)」(エンドポイントのセキュリティ保護) をご覧ください。
+- name: LUIS 制限内での作業
+  questions:
+  - question: >
+      LUIS アプリがサポートできる意図とエンティティの最大数はどれくらいですか?
+    answer: >
+      [境界](luis-limits.md)に関するページをご覧ください。
+  - question: >
+      作成したい LUIS アプリが意図の最大数を超えます。 どうすればよいですか。
+    answer: >
+      [意図のベスト プラクティス](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents)に関するページをご覧ください。
+  - question: >
+      フレーズ リストの数とサイズにはどのような制限がありますか?
+    answer: >
+      [フレーズ リスト](./luis-concept-feature.md)の最大長については、[境界](luis-limits.md)に関するページをご覧ください。
+  - question: >
+      発話の例にはどのような制限がありますか?
+    answer: >
+      [境界](luis-limits.md)に関するページをご覧ください。
+- name: テストとトレーニング
+  questions:
+  - question: >
+      アプリの一部のモデルでバッチ テスト ウィンドウにエラーが表示されます。 この問題を解決するにはどうすればよいですか?
+    answer: >
+      このエラーは、モデルのラベルと予測の間に不一致があることを示します。 この問題を解決するには、次のタスクの一方または両方を行います。
+
+      * LUIS による意図間の区別を向上させるには、さらにラベルを追加します。
+
+      * LUIS による学習速度を上げるには、ドメイン固有のボキャブラリを導入するフレーズ リスト機能を追加します。
+
+
+      [バッチ テスト](./luis-how-to-batch-test.md)に関するチュートリアルをご覧ください。
+  - question: >
+      アプリをエクスポートした後、(新しいアプリ ID を持つ) 新しいアプリに再インポートすると、LUIS の予測スコアが異なります。 なぜこのようになるのですか?
+    answer: >
+      [同じアプリのコピー間での予測の相違](luis-concept-prediction-score.md#review-intents-with-similar-scores)に関するページをご覧ください。
+  - question: >
+      アプリを変更した後、いくつかの発話は、間違った意図になります。 問題は、ランダムに表示されなくなるようです。 どのように修正すればよいですか
+    answer: >
+      「[すべてのデータでトレーニングする](luis-how-to-train.md#train-with-all-data)」を参照してください。
+- name: アプリの発行
+  questions:
+  - question: >
+      [Add a key to your app]\(アプリにキーを追加する\) ウィンドウのテナント ID とは何ですか?
+    answer: >
+      Azure では、テナントはサービスに関連付けられているクライアントまたは組織を表します。 Azure portal でテナント ID を調べるには、 **[Azure Active Directory]**  >  **[管理]**  >  **[プロパティ]** の順に選択して、 **[ディレクトリ ID]** ボックスを確認します。
+
+
+      ![Azure portal でのテナント ID](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
+
+
+      <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+
+      <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+  - question: >
+      割り当てた数より多くのエンドポイント キーがアプリに割り当てられているのはなぜですか?
+    answer: >
+      利便性のため、それぞれの LUIS アプリには、オーサリング/スターター キーがエンドポイント リストにあります。 このキーでは、LUIS を試用できるよう、数個のエンドポイント ヒットのみが許可されます。
+
+
+      LUIS の一般公開 (GA) よりも前からアプリが存在していた場合、お使いのサブスクリプション内のエンドポイント キーが自動的に割り当てられます。 これは、GA の移行を容易にするために行われました。 Azure portal 内の新しい LUIS エンドポイント キーが自動的に LUIS に割り当てられることは _ありません_。
+- name: キー管理
+  questions:
+  - question: >
+      どのキーが必要で、それをどこで取得し、それで何を行うかを知るにはどうすればよいですか?
+    answer: >
+      オーサリング キーと予測ランタイム キーの違いの詳細については、[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-how-to-azure-subscription.md)に関する記事を参照してください。
+  - question: >
+      クォータ不足に関するエラーを受信しました。 どのように修正すればよいですか
+    answer: >
+      詳細については、HTTP 状態コード [403](#i-received-an-http-403-error-status-code--how-do-i-fix-it-) および [429](#i-received-an-http-429-error-status-code--how-do-i-fix-it-) の解決に関する記事を参照してください。
+  - question: >
+      さらに多くのエンドポイント クエリを処理する必要があります。 どうすればよいですか?
+    answer: >
+      詳細については、HTTP 状態コード [403](#i-received-an-http-403-error-status-code--how-do-i-fix-it-) および [429](#i-received-an-http-429-error-status-code--how-do-i-fix-it-) の解決に関する記事を参照してください。
+  - question: >
+      オーサリング キーを作成しましたが、LUIS ポータルに表示されません。 なぜでしょうか?
+    answer: >
+      オーサリング キーは、[オーサリング キーを移行後に](luis-migration-authoring.md) LUIS ポータルで利用できるようになります。
+- name: アプリの管理
+  questions:
+  - question: >
+      ユーザーの発話のログをダウンロードするにはどうすればよいですか?
+    answer: >
+      既定では、LUIS アプリはユーザーからの発話をログに記録します。 ユーザーが LUIS アプリに送信した発話のログをダウンロードするには、 **[マイ アプリ]** に移動し、アプリを選択します。 コンテキストのツールバーで **[Export endpoint logs]\(エンドポイント ログのエクスポート\)** を選択します。 ログは、コンマ区切り値 (CSV) ファイルとして書式設定されています。
+  - question: >
+      発話のログ記録を無効にするにはどうすればよいですか?
+    answer: >
+      クライアント アプリケーションが LUIS のクエリに使用しているエンドポイント URL で `log=false` を設定することにより、ユーザー発話のログ記録をオフにできます。 ただし、ログ記録をオフにすると、[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md#what-is-active-learning)に基づいて発話を提案したりパフォーマンスを向上させたりする LUIS アプリの機能が無効になります。 データのプライバシーを考慮して `log=false` を設定した場合、LUIS からユーザーの発話の記録をダウンロードしたり、発話を使用してアプリの品質を向上させたりすることはできません。
+
+
+      発話が保存されるのはログだけです。
+  - question: >
+      エンドポイントの発話をログに記録する必要がないのはどのような場合ですか?
+    answer: >
+      予測分析にログを使用する場合、テスト用の発話はログにキャプチャしないでください。
+- name: データ管理
+  questions:
+  - question: >
+      LUIS からデータを削除できますか?
+    answer: >
+      * LUIS のトレーニングに使用した発話例はいつでも削除できます。 LUIS アプリから発話の例を削除すると、LUIS Web サービスから削除されて、エクスポートに使用できなくなります。
+
+      * **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで LUIS が提案するユーザー発話のリストから、発話を削除できます。 このリストから削除した発話は提案されなくなりますが、ログからは削除されません。
+
+      * アカウントを削除すると、発話例およびログと共に、すべてのアプリが削除されます。 データは、サーバーに 60 日間保持された後、完全に削除されます。
+  - question: >
+      LUIS に送信されたデータを Microsoft はどのように管理しますか?
+    answer: >
+      Microsoft の取り組みと、Azure サービスでのデータ管理とアクセスに対するお客様のオプションについては、[セキュリティ センター](https://www.microsoft.com/trustcenter)の説明をご覧ください。
+- name: 言語と翻訳のサポート
+  questions:
+  - question: >
+      ある言語で作成されているアプリを、別の言語でも作成する必要があります。 これを行う最も簡単な方法は何ですか?
+    answer: >
+      1. アプリをエクスポートします。
+
+      2. エクスポートされたアプリの JSON ファイルで、ラベルの付いた発話をターゲット言語に翻訳します。
+
+      3. 意図とエンティティの名前を変更する必要がある場合と、そのままにしてもかまわない場合があります。
+
+      4. 最後に、アプリをインポートして、対象言語の LUIS アプリにします。
+- name: アプリの通知
+  questions:
+  - question: >
+      クォータを使い切りそうですというメールを受け取りましたが、なぜですか?
+    answer: >
+      お使いのオーサリング/スターター キーで許可されるのは、1 か月あたり 1,000 エンドポイント クエリだけです。 エンドポイント クエリを実行する場合は、LUIS エンドポイント キー (無料または有料) を作成し、そのキーを使用してください。 ボットまたは別のクライアント アプリケーションからエンドポイントのクエリを行っている場合は、そこで LUIS エンドポイント キーを変更する必要があります。
+- name: ボット
+  questions:
+  - question: >
+      LUIS ボットが機能しません。 どうすればよいですか。
+    answer: >
+      最初に、問題が LUIS に関連するものか、または LUIS ミドルウェアの外で起きているものかを切り分ける必要があります。
+
+      #### <a name="resolve-issue-in-luis"></a>LUIS での問題を解決する
+
+      [LUIS エンドポイント](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)から LUIS に同じ発話を渡します。 エラーが発生する場合は、エラーが返されなくなるまで、LUIS の問題を解決します。 一般的なエラーの理由は、次のとおりです。
+
+
+      * `Out of call volume quota. Quota will be replenished in <time>.` - この問題は、オーサリング キーから[エンドポイント キー](luis-how-to-azure-subscription.md)に変更する必要があること、または[サービス レベル](luis-how-to-azure-subscription.md#change-the-pricing-tier)を変更する必要があることを、示しています。
+
+
+      #### <a name="resolve-issue-in-azure-bot-service"></a>Azure Bot Service で問題を解決する
+
+
+      Azure Bot Service を使用していて、 **[Test in Web Chat]\(Web チャットでのテスト\)** から `Sorry, my bot code is having an issue` が返ることが問題である場合は、ログをチェックします。
+
+
+      1. Azure portal で、お使いのボットの **[ボットの管理]** セクションから **[ビルド]** を選択します。
+
+      1. オンライン コード エディターを開きます。
+
+      1. 上部の青いナビゲーション バーで、ボットの名前 (右側の 2 番目の項目) を選択します。
+
+      1. 結果のドロップダウン リストで、 **[Kudu コンソールを開く]** を選択します。
+
+      1. **LogFiles** を選択し、**Application** を選択します。 すべてのログ ファイルを確認します。 アプリケーション フォルダーにエラーが見あたらない場合は、**LogFiles** ですべてのログ ファイルを確認します。
+
+      1. C# などのコンパイル言語を使用している場合は、プロジェクトを忘れずにリビルドします。
+
+
+      > [!Tip]
+
+      > コンソールでは、パッケージをインストールすることもできます。
+
+
+      #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework を使用してローカル コンピューターでデバッグしながら問題を解決します。
+
+
+      ボットのローカル デバッグについて詳しくは、「[ボットをデバッグする](/azure/bot-service/bot-service-debug-bot)」をご覧ください。
+- name: LUIS の統合
+  questions:
+  - question: >
+      Azure Web アプリ ボット サブスクリプション プロセスの間に、LUIS アプリはどこに作成されますか?
+    answer: >
+      LUIS テンプレートを選択し、テンプレート ウィンドウで **[選択]** を選択した場合、左側のウィンドウが変更されてそのテンプレートの種類が含まれるようになり、LUIS テンプレートを作成するリージョンの指定を求められます。 ただし、Web アプリのボット プロセスでは LUIS サブスクリプションは作成されません。
+
+
+      ![LUIS テンプレートの Web アプリ ボット リージョン](./media/luis-faq/web-app-bot-location.png)
+  - question: >
+      Bot Framework の音声認識の準備がサポートされているのはどの LUIS リージョンですか?
+    answer: >
+      [音声認識の準備](/bot-framework/bot-service-manage-speech-priming)は、米国中部インスタンスの LUIS アプリに対してのみサポートされます。
+- name: API プログラミング戦略
+  questions:
+  - question: >
+      リソースの LUIS リージョンをプログラムで取得するには、どうすればよいですか?
+    answer: >
+      LUIS のサンプルを使用して、プログラムで[リージョンを検索](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region)するには、C# または Node.Js を使用します。
+- name: LUIS サービス
+  questions:
+  - question: >
+      オンプレミスまたはプライベート クラウドで Language Understanding (LUIS) を使用できますか?
+    answer: >
+      はい。使用量を測定するために必要な接続があれば、それらのシナリオで LUIS [コンテナー](luis-container-howto.md)を使用できます。
+- name: 次のバージョンへの移行
+  questions:
+  - question: >
+      V3 API に移行して、プレビューするにはどうすればいいですか?
+    answer: >
+      [LUIS アプリの API v2 から v3 への移行ガイド](luis-migration-api-v3.md)を参照してください
+
+
+      ## <a name="build-2019-conference-announcements"></a>Build 2019 Conference のお知らせ
+
+
+      Build 2019 Conference では、次の機能が公開されました。
+
+
+      * [V3 API 移行ガイドのプレビュー](luis-migration-api-v3.md)
+
+      * [改善された分析ダッシュ ボード](luis-how-to-use-dashboard.md)
+
+      * [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md)
+
+      * [動的なリスト エンティティ](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
+
+      * [外部エンティティ](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+
+
+      ビデオ:
+
+
+      * [How to use Azure Conversational AI to scale your business for the next generation (Azure の対話型 AI を使用して次世代のビジネスを拡大する方法)](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nLUIS の詳細については、次のリソースを参照してください。\n* [LUIS のタグが付いた Stack Overflow での質問](https://stackoverflow.com/questions/tagged/luis)\n* [MSDN Language Understanding Intelligent Services (LUIS) の Microsoft Q&A 質問ページ](/answers/topics/azure-language-understanding.html)"

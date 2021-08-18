@@ -2,18 +2,17 @@
 title: テスト証明書を作成する - Azure IoT Edge | Microsoft Docs
 description: テスト証明書を作成し、それらを Azure IoT Edge デバイスにインストールして運用環境のデプロイの準備をする方法について説明します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 724c02f56b49957934deefe9f4733cda57620987
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 500c7627f36dd1eddfbb12ac26729fd6dbc027aa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019991"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722121"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 

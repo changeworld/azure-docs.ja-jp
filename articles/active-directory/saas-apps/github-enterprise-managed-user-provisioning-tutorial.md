@@ -3,8 +3,8 @@ title: 'チュートリアル: GitHub Enterprise Managed User を構成し、Azu
 description: Azure AD から GitHub Enterprise Managed User に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 6aee39c7-08a1-4110-b936-4c85d129743b
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2021
-ms.author: Zhchia
-ms.openlocfilehash: cbae87a005240c15a2c3c28dcb8ab126d9957ba6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: thwimmer
+ms.openlocfilehash: 69a6bc9137fa5456c7681d2b3e7fae016d04ac0e
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801232"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767798"
 ---
 # <a name="tutorial-configure-github-enterprise-managed-user-for-automatic-user-provisioning"></a>チュートリアル: GitHub Enterprise Managed User を構成し、自動ユーザー プロビジョニングに対応させる
 

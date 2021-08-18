@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ae30f01dd951d2780d8ef4ee31096ce1c02df80a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c468dccd9058125169181c3fc456b71b7ea7ffec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669652"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737422"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Network Watcher 拡張機能を最新バージョンに更新する
 
@@ -34,7 +34,7 @@ ms.locfileid: "110669652"
 
 ## <a name="latest-version"></a>最新バージョン
 
-現在の Network Watcher 拡張機能の最新バージョンは `1.4.1693.1` です。
+現在の Network Watcher 拡張機能の最新バージョンは `1.4.1884.1` です。
 
 ## <a name="update-your-extension-using-a-powershell-script"></a>PowerShell スクリプトを使用して拡張機能を更新する
 一度に複数の VM を更新する必要がある、大規模なデプロイを使用するお客様。 選択した VM を手動で更新するには、次のセクションを参照してください。 

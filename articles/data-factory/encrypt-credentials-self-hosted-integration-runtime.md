@@ -3,16 +3,17 @@ title: Azure Data Factory での資格情報の暗号化
 description: オンプレミスのデータ ストアの資格情報を暗号化して、自己ホスト型の統合ランタイムを備えるコンピューターに格納する方法について説明します。
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lle
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 64d7133432eacbdf9077a6089e927caa679d1c7f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f0cd1fed706ae22c02c6a96e9588d6cd65177e36
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670361"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740982"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する
 

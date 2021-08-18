@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 07/22/2021
 ms.author: aahi
-ms.openlocfilehash: 400770a99e12bfb200b3e480d1546a26ce2aca6c
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: f86de9cbb7bf6235af6d112f9eae396b43a911f8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495248"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441394"
 ---
 # <a name="configure-speech-service-containers"></a>Speech Service コンテナーを構成する
 
@@ -76,7 +76,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 標準的な音声コンテナーでは、トレーニングやサービスのデータを格納するために入力マウントまたは出力マウントが使用されることはありません。 ただし、カスタム音声コンテナーはボリュームのマウントに依存します。
 
-ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](speech-container-howto.md#the-host-computer)のマウント場所にアクセスできないこともあります。
+ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](speech-container-howto.md#host-computer-requirements-and-recommendations)のマウント場所にアクセスできないこともあります。
 
 | 省略可能 | 名前 | データ型 | 説明 |
 | -------- | ---- | --------- | ----------- |

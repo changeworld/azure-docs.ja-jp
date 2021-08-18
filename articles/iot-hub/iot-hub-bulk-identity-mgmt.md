@@ -2,19 +2,18 @@
 title: Azure IoT Hub デバイス ID のインポートとエクスポート | Microsoft Docs
 description: Azure IoT service SDK を使用して ID ジストリに対して一括操作を実行し、デバイス ID のインポートとエクスポートを行う方法について説明します。 インポート操作を実行すると、デバイス ID を一括で作成、更新、および削除できます。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e7de74a75bc0cf2a298b7ff75cf7b6b92eaec9d
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: c7c85b88e2648f41c815d9cd864362f60845116b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716116"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735147"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート
 

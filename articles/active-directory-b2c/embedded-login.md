@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bed0b1e887fd5735077ef66725b267f42be9bbc1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639915"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445370"
 ---
 # <a name="embedded-sign-in-experience"></a>埋め込みサインイン エクスペリエンス
 
@@ -49,7 +49,7 @@ iframe を使用する場合は、次の点を考慮してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
+* 「[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」にある手順を完了する。
 * ポリシーの[カスタム ドメインを有効にする](custom-domain.md)。
 
 ## <a name="configure-your-policy"></a>ポリシーを構成する
@@ -107,7 +107,7 @@ window.parent.postMessage("signUp", '*');
 
 ## <a name="configure-a-web-application"></a>Web アプリケーションを構成する
 
-ユーザーがサインイン ボタンを選択すると、ユーザーを Azure AD B2C サインイン操作に移動する認可要求が [Web アプリ](code-samples.md#web-apps-and-apis)によって生成されます。 サインインが完了すると、Azure AD B2C から、アプリケーション内の構成済みリダイレクト URI に ID トークン (認証コード) が返されます。
+ユーザーがサインイン ボタンを選択すると、ユーザーを Azure AD B2C サインイン操作に移動する認可要求が [Web アプリ](integrate-with-app-code-samples.md#web-apps-and-apis)によって生成されます。 サインインが完了すると、Azure AD B2C から、アプリケーション内の構成済みリダイレクト URI に ID トークン (認証コード) が返されます。
 
 埋め込みログインをサポートするため、iframe **src** プロパティは、`/account/SignUpSignIn` などのサインイン コ ントローラーを指します。これにより、認可要求が生成され、ユーザーが Azure AD B2C ポリシーにリダイレクトされます。
 
@@ -168,6 +168,6 @@ function logOut()
 - [ユーザー インターフェイスのカスタマイズ](customize-ui.md)
 - [RelyingParty](relyingparty.md) 要素のリファレンス
 - [JavaScript のポリシーを有効にする](./javascript-and-page-layout.md)
-- [コード サンプル](code-samples.md)
+- [コード サンプル](integrate-with-app-code-samples.md)
 
 ::: zone-end

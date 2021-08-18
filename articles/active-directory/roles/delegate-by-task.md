@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9869a90c0159a7f60929c1ff9b0cf3319d60d5b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: a65ce79252c25d187ed61de3b637182deaf225db
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439028"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136348"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -55,6 +55,7 @@ ms.locfileid: "111439028"
 > | サインアップ ユーザー フローの作成、読み取り、更新、削除を実行する |外部 ID ユーザー フロー管理者 |  |
 > | ユーザー属性の作成、読み取り、更新、削除を実行する | 外部 ID ユーザー フロー属性管理者 |  |
 > | ユーザーの作成、読み取り、更新、削除を実行する | ユーザー管理者 |  |
+> | B2B 外部コラボレーションの設定を構成する | グローバル管理者 |  |
 > | すべての構成を読み取る | グローバル閲覧者 |  |
 > | B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメントを参照](../../active-directory-b2c/faq.yml)) |  |
 
@@ -165,8 +166,8 @@ ms.locfileid: "111439028"
 > [!div class="mx-tableFixed"]
 > | タスク | 最小特権ロール | その他のロール |
 > | ---- | --------------------- | ---------------- |
-> | カタログにリソースを追加する | ユーザー管理者 | エンタイトルメント管理を使用すると、このタスクをカタログ所有者に委任できます ([ドキュメントを参照](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)) |
-> | カタログに SharePoint Online サイトを追加する | グローバル管理者 |  |
+> | カタログにリソースを追加する | Identity Governance 管理者 | エンタイトルメント管理を使用すると、このタスクをカタログ所有者に委任できます ([ドキュメントを参照](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)) |
+> | カタログに SharePoint Online サイトを追加する | SharePoint 管理者 |  |
 
 ## <a name="groups"></a>グループ
 
@@ -225,7 +226,7 @@ ms.locfileid: "111439028"
 > [!div class="mx-tableFixed"]
 > | タスク | 最小特権ロール | その他のロール |
 > | ---- | --------------------- | ---------------- |
-> | サインイン ログを読み取る | レポート閲覧者 | セキュリティ閲覧者<br/>セキュリティ管理者 |
+> | サインイン ログを読み取る | レポート閲覧者 | セキュリティ閲覧者<br/>セキュリティ管理者<br/> グローバル閲覧者 |
 
 ## <a name="multi-factor-authentication"></a>多要素認証
 

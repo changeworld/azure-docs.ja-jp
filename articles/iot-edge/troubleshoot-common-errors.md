@@ -2,7 +2,6 @@
 title: 一般的なエラー - Azure IoT Edge | Microsoft Docs
 description: この記事では、IoT Edge ソリューションをデプロイするときに発生する一般的な問題を解決する方法について説明します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0d36a51865f3ed4a093998b16aaa174432c5308a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1d90ba4fa9d64bfec1fca62320e09ea53842d569
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275653"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749533"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 

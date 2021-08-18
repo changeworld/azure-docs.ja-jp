@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 7e57cdca1d212e6077d685d95a8f869c12e546a8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 20d5dc867455d46cd7f06f7c436c20430a09b1e5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627950"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486214"
 ---
 # <a name="visualize-data"></a>データの視覚化
 Azure Synapse は、データ ウェアハウスやビッグ データ分析システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 データの視覚化は、ご利用のデータに関する分析情報を取得するうえで重要なコンポーネントです。 大規模および小規模のデータを、人間が理解しやすくするのに役立ちます。 また、データのグループ内のパターン、傾向、および外れ値を容易に検出できるようになります。 
@@ -63,14 +63,14 @@ Azure Synapse Analytics ノートブックでは、```displayHTML``` 関数を�
 上の視覚化を作成するには、次のコードを実行します。
 
 ```python
-displayHTML("&quot;&quot;<!DOCTYPE html>
-<meta charset=&quot;utf-8&quot;>
+displayHTML("""<!DOCTYPE html>
+<meta charset="utf-8">
 
 <!-- Load d3.js -->
-<script src=&quot;https://d3js.org/d3.v4.js&quot;></script>
+<script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
-<div id=&quot;my_dataviz&quot;></div>
+<div id="my_dataviz"></div>
 <script>
 
 // set the dimensions and margins of the graph
@@ -79,7 +79,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 40},
   height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select(&quot;#my_dataviz")
+var svg = d3.select("#my_dataviz")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -200,7 +200,7 @@ tile_provider = get_provider(Vendors.CARTODBPOSITRON)
 
 # range bounds supplied in web mercator coordinates
 p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator&quot;, y_axis_type=&quot;mercator")
+           x_axis_type="mercator", y_axis_type="mercator")
 p.add_tile(tile_provider)
 
 # plot datapoints on the map
@@ -237,6 +237,7 @@ import pandas as pd
 df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
                    dtype={"fips": str})
 
+import plotly
 import plotly.express as px
 
 fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',

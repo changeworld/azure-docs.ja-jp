@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
-ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b8507f29d157cd715d6423c773b01a561a5e181
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94656992"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737565"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>この Azure Sentinel ブックを使用してデータ コネクタの正常性を監視する
 
@@ -66,4 +66,4 @@ ms.locfileid: "94656992"
     :::image type="content" source="media/monitor-data-connector-health/data-health-workbook-3.png" alt-text="データ コネクタの正常性監視ブックのエージェントの情報ページ" lightbox="media/monitor-data-connector-health/data-health-workbook-3.png":::
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Sentinel へのデータのオンボード](quickstart-onboard.md)、[データ ソースの接続](connect-data-sources.md)、および[データや潜在的な脅威の視覚化](quickstart-get-visibility.md)の方法を確認します。
+[Azure Sentinel へのデータのオンボード](quickstart-onboard.md)、[データ ソースの接続](connect-data-sources.md)、および[データや潜在的な脅威の視覚化](get-visibility.md)の方法を確認します。

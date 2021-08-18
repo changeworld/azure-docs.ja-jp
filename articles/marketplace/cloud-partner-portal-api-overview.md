@@ -7,12 +7,12 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 57d3d1c6bb14db3eb2ca499069934a628d2f7fea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5813b08a14a95a8b7bbb51b3d6593fe374a83ba6
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92425787"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282045"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud パートナー ポータルの API リファレンス
 
@@ -36,7 +36,7 @@ API を使用する前に、次の点を確認してください。
 | **API** | **変更の説明** | **影響** |
 | ------- | ---------------------- | ---------- |
 | 公開、GoLive、キャンセル後 | 移行されたオファーの場合、応答ヘッダーは異なる形式になりますが、操作状態を取得する相対パスを示して、引き続き同じように動作します。 | オファーに対応する POST 要求のいずれかを送信する場合、オファーの移行状態に応じて Location ヘッダーは次の 2 つの形式のいずれかになります。<ul><li>移行されていないオファー<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>移行されたオファー<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
-| GET 操作 | 以前に応答の 'notification-email' フィールドをサポートしていたオファーの種類の場合、このフィールドは非推奨になり、移行されたオファーでは返されなくなります。 | 移行されたオファーの場合、要求で指定されたメール アドレスのリストに通知が送信されなくなります。 その代わりに、API サービスとパートナー センターの通知メール プロセスが連携され、メールが送信されます。 具体的には、パートナー センターの [アカウント設定] の [販売元の連絡先情報] セクションに設定されたメール アドレスに通知が送信され、操作の進行状況が通知されます。<br><br>パートナー センターの [[アカウント設定]](https://partner.microsoft.com/dashboard/account/management) の [販売元の連絡先情報] セクションに設定されているメール アドレスを確認し、通知用の正しいメール アドレスが指定されていることを確認します。  |
+| GET 操作 | 以前に応答の 'notification-email' フィールドをサポートしていたオファーの種類の場合、このフィールドは非推奨になり、移行されたオファーでは返されなくなります。 | 移行されたオファーの場合、要求で指定されたメール アドレスのリストに通知が送信されなくなります。 その代わりに、API サービスとパートナー センターの通知メール プロセスが連携され、メールが送信されます。 具体的には、パートナー センターの [アカウント設定] の [販売元の連絡先情報] セクションに設定されたメール アドレスに通知が送信され、操作の進行状況が通知されます。<br><br>パートナー センターの [[アカウント設定]](https://go.microsoft.com/fwlink/?linkid=2165291) の [販売元の連絡先情報] セクションに設定されているメール アドレスを確認し、通知用の正しいメール アドレスが指定されていることを確認します。 |
 
 ## <a name="common-tasks"></a>一般的なタスク
 

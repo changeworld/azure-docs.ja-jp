@@ -4,12 +4,12 @@ description: Azure ストレージ コンテナーに Azure HDInsight のファ�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/21/2019
-ms.openlocfilehash: d256292956b42c65722ea5f9c87d6835297d1d40
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 21fd9d14b2d289a3cf652b553891cc8bdf0d616b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219095"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282225"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Azure ストレージ コンテナーに Azure HDInsight のファイルが多数含まれる場合、Apache Spark ジョブの実行速度が低下する
 
@@ -39,4 +39,4 @@ N % 100 == 0 (100 は単なる例です) である N 番目のマイクロ バ�
 
 ## <a name="next-steps"></a>次の手順
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -6,19 +6,19 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: af18458e0370846a6c34a1728dfd7c98ca1276a5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2eea263517d718effc03382e3d8209a9a11f17e7
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388216"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415860"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-features"></a>Azure Arc を使用した Kubernetes 上の Event Grid の機能
 Kubernetes 上の Event Grid には、Kubernetes ワークロードの統合とハイブリッド アーキテクチャの実現に役立つ豊富な機能セットが用意されています。 同じ [REST API](/rest/api/eventgrid/version2020-10-15-preview/topics) (バージョン 2020-10-15-preview 以降)、[Event Grid CLI](/cli/azure/eventgrid)、Azure portal エクスペリエンス、[管理 SDK](../sdk-overview.md#management-sdks)、[データ プレーン SDK](../sdk-overview.md#data-plane-sdks) が、Azure Event Grid (同じサービスの他のエディション) と共有されます。 イベントを発行する準備ができたら、[各種言語で提供されているデータ プレーン SDK のサンプル](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/)を使用できます。これは、Event Grid の両方のエディションで動作します。
 
 Kubernetes 上の Event Grid と Azure Event Grid は多くの機能を共有しており、目標は同じユーザー エクスペリエンスを提供することですが、それらが満たそうとする固有の要件と、それらが置かれているソフトウェア ライフサイクルの段階にいくつか違いがあります。 たとえば、Kubernetes 上の Event Grid で使用できるトピックの種類は Event Grid トピックのみです。これはカスタム トピックと呼ばれる場合もあります。 その他の種類のトピック (下記参照) は適用できないか、それらのサポートがまだ利用できません。 下の表に、Event Grid の 2 つのエディションの主な相違点を示します。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="event-grid-on-kubernetes-vs-event-grid-on-azure"></a>Kubernetes 上の Event Grid と Azure 上の Event Grid

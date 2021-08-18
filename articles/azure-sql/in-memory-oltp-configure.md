@@ -10,12 +10,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.date: 11/07/2018
-ms.openlocfilehash: 9d878ce051b9986dc17f2154d91a529b7c38d0cd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2d1e00059948b6b3347c41910f8c1f75d9635da5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698954"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752215"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>インメモリ OLTP を使用して Azure SQL Database と Azure SQL Managed Instance のアプリケーション パフォーマンスを向上させる
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -103,8 +103,8 @@ SSMS でこのレポートを生成するには、
 7. INSERT...SELECT * INTO を使用して、このメモリ最適化テーブルにデータをコピーします。
 
 ```sql
-INSERT INTO <new_memory_optimized_table>
-        SELECT * FROM <old_disk_based_table>;
+INSERT INTO [<new_memory_optimized_table>]
+        SELECT * FROM [<old_disk_based_table>];
 ```
 
 ## <a name="step-5-optional-migrate-stored-procedures"></a>手順 5 (省略可能):ストアド プロシージャを移行する

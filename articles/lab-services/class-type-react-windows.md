@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 05/16/2021
 ms.author: enewman
-ms.openlocfilehash: 0fe26d50a7afcb08325396d7c9a22279b01bfd9b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 089ec3d3d4836b4dadb5a0a60023b85ebf9950e0
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483503"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456546"
 ---
 # <a name="set-up-lab-for-react-on-windows"></a>Windows 上の React のラボを設定する
 
@@ -67,14 +67,14 @@ React ベースの Web サイトに必要なその他のコンポーネントは
 .npm install react-jsx
 ```
 
-Visual Studio で初めての React を使用した Node.js アプリを作成するには、「[チュートリアル: Visual Studio で Node.js と React のアプリを作成する](/visualstudio/javascript/tutorial-nodejs-with-react-and-jsx.md?view=vs-2019&preserve-view=true)」を参照してください。
+Visual Studio で初めての React を使用した Node.js アプリを作成するには、「[チュートリアル: Visual Studio で Node.js と React のアプリを作成する](/visualstudio/javascript/tutorial-nodejs-with-react-and-jsx?view=vs-2019&preserve-view=true)」を参照してください。
 
 ### <a name="install-debugger-extensions"></a>デバッガー拡張機能をインストールする
 
-ブラウザー用に React 開発者ツールの拡張機能をインストールして、React コンポーネントの調査とパフォーマンス情報の記録ができるようにします。  
+ブラウザー用に React Developer Tools 拡張機能をインストールして、React コンポーネントの調査とパフォーマンス情報の記録ができるようにします。  
 
-- [React 開発者ツール Edge アドオン](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
-- [React 開発者ツール Chrome 拡張機能](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+- [React Developer Tools Edge アドオン](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
+- [React Developer Tools Chrome 拡張機能](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 - [React 開発者ツール FireFox アドオン](https://addons.mozilla.org/firefox/addon/react-devtools/)
 
 ### <a name="update-firewall-settings"></a>ファイアウォール設定の更新
@@ -90,7 +90,7 @@ New-NetFirewallRule -DisplayName "Allow access to Port 1337" -Direction Inbound 
 
 ## <a name="cost"></a>コスト
 
-このクラスのコスト見積もりの例について説明します。  学生数が 25 名のクラスがあるとします。 各学生には、20 時間の授業時間が予定されています。  予定された授業時間の他に、宿題や課題を行うための時間として、追加の 10 時間が各学生に割り当てられます。  ここで選択した仮想マシンのサイズは、55 ラボ ユニットの **中** です。
+このクラスのコスト見積もりの例について説明します。  クラスの学生数は 25 名とします。 各学生には、20 時間の授業時間が予定されています。  予定された授業時間の他に、宿題や課題を行うための時間として、追加の 10 時間が各学生に割り当てられます。  ここで選択した仮想マシンのサイズは、55 ラボ ユニットの **中** です。
 
 - 25 人の学生 &times; (予定された 20 時間 + 割り当てられた 10 時間) &times; 55 ラボ ユニット &times; 0.01 USD/時間 = 412.50 USD
 

@@ -8,12 +8,12 @@ ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3128b9f7ae628a0a1974bb30cf87014e269ea466
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7cf788c4b11591121254e1712253827462deac35
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130333"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113009544"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
@@ -159,4 +159,4 @@ Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -Gatew
 * [オンプレミス データ ソースへの接続](analysis-services-gateway.md)   
 * [Azure Analysis Services でサポートされるデータ ソース](analysis-services-datasource.md)   
 * [Azure Virtual Network 上のデータソースに対してゲートウェイを使用する](analysis-services-vnet-gateway.md)   
-* [Analysis Services ネットワーク接続についてよく寄せられる質問](analysis-services-network-faq.md) 
+* [Analysis Services ネットワーク接続についてよく寄せられる質問](analysis-services-network-faq.yml) 

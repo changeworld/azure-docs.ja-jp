@@ -2,18 +2,18 @@
 title: Azure Disk Storage の概要
 description: VM を使用するときにストレージ アカウントを管理する Azure マネージド ディスクの概要
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: eea5c800d7aa9c8d1e6c0c507136b86ab8bf21f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 924f7a0d678937e1d50a4ff29fb01b8b0b0580d4
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604034"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358248"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 
@@ -100,7 +100,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./understand-vm-reboots.md)中、または [VM の再デプロイ](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.md)」を参照してください。
+ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./understand-vm-reboots.md)中、または [VM の再デプロイ](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.yml)」を参照してください。
 
 Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 一時ディスクは、ホストで暗号化を有効にしない限り、サーバー側暗号化によって暗号化されません。
 

@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: 8233cc714d977083f4d55716d35c0b7094a069ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: 64c1a42147a55423336c9994246f08046f44adf5
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94557445"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895654"
 ---
 # <a name="firmware-security"></a>ファームウェアのセキュリティ
 この記事では、クラウド ハードウェア エコシステムとサプライ チェーンのセキュリティ保護の取り組みについて説明します。
@@ -50,6 +50,7 @@ Azure のクラウド ハードウェア サプライヤーとベンダーは、
 ## <a name="next-steps"></a>次のステップ
 プラットフォームの整合性とセキュリティを強化する方法の詳細については、次を参照してください。
 
+- [プラットフォーム コードの整合性](code-integrity.md)
 - [セキュア ブート](secure-boot.md)
 - [メジャー ブートとホストの構成証明](measured-boot-host-attestation.md)
 - [プロジェクト Cerberus](project-cerberus.md)

@@ -5,15 +5,15 @@ author: martinekuan
 manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 06/21/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 9fda6f913fcb5325c811671cd6476dcbf2413766
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4fe0b913c003ccf4247833ba1dc12c4ec1e7248a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058019"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730204"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン
 
@@ -43,7 +43,7 @@ Azure 地域とは、少なくとも 1 つの Azure リージョンを含む、�
 
 ## <a name="must-i-use-azure-regional-pairs"></a>Azure リージョン ペアは必ず使用する必要があるのですか?
 
-いいえ。 お客様は Azure サービスを活用して、Azure のリージョン ペアに依存することなく、回復力のあるサービスを設計できます。  ただし、リージョン ペアの間で事業継続とディザスター リカバリー (BCDR) を構成して、[分離](./security/fundamentals/isolation-choices.md)を活用し、[可用性](./availability-zones/az-overview.md)を向上させることをお勧めします。 複数のアクティブなリージョンをサポートするアプリケーションでは、可能な場合はリージョン ペアの両方のリージョンを使用することをお勧めします。 これにより、アプリケーションの最適な可用性が保証され、災害発生時の復旧時間が最小になります。 可能な限り、[最大の回復性](/azure/architecture/framework/resiliency/overview)と[ディザスター リカバリー](/azure/architecture/framework/resiliency/backup-and-recovery)の容易さを実現するようにアプリケーションを設計してください。
+いいえ。 お客様は Azure サービスを活用して、Azure のリージョン ペアに依存することなく、回復力のあるサービスを設計できます。  ただし、リージョン ペアの間で事業継続とディザスター リカバリー (BCDR) を構成して、[分離](./security/fundamentals/isolation-choices.md)を活用し、[可用性](./availability-zones/az-overview.md)を向上させることをお勧めします。 複数のアクティブなリージョンをサポートするアプリケーションでは、可能な場合はリージョン ペアの両方のリージョンを使用することをお勧めします。 これにより、アプリケーションの最適な可用性が保証され、災害発生時の復旧時間が最小になります。 可能な限り、[最大の回復性](/azure/architecture/framework/resiliency/app-design)と[ディザスター リカバリー](/azure/architecture/framework/resiliency/backup-and-recovery)の容易さを実現するようにアプリケーションを設計してください。
 
 ## <a name="azure-regional-pairs"></a>Azure リージョン ペア
 
@@ -68,6 +68,7 @@ Azure 地域とは、少なくとも 1 つの Azure リージョンを含む、�
 | 北米 |米国東部 2 |米国中部 |
 | 北米 |米国中北部 |米国中南部 |
 | 北米 |米国西部 2 |米国中西部 |
+| 北米 |米国西部 3 |米国東部 |
 | ノルウェー | ノルウェー東部 | ノルウェー西部* |
 | 南アフリカ | 南アフリカ北部 |南アフリカ西部* |
 | スイス | スイス北部 |スイス西部* |

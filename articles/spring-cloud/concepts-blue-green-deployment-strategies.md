@@ -1,28 +1,28 @@
 ---
 title: Azure Spring Cloud におけるブルーグリーン デプロイ戦略
 description: このトピックでは、Azure Spring Cloud におけるブルーグリーン デプロイへの 2 つのアプローチについて説明します。
-author: yevster
+author: karlerickson
 ms.author: yebronsh
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 05/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: ca385c2be61e359cc93e40cc42718096606583cf
-ms.sourcegitcommit: 14cd60fe58964acd4bccb6053f36e60d5848edc0
+ms.openlocfilehash: bce33a40933e5c40b5eab0948880d44f4b23edcd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795589"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728555"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Azure Spring Cloud におけるブルーグリーン デプロイ戦略
 
 この記事では、Azure Spring Cloud でのブルーグリーン デプロイのサポートについて説明します。
 
-Azure Spring Cloud (Standard レベル以上) では、すべてのアプリについて 2 つのデプロイが許可されており、いずれか 1 つのみが運用環境のトラフィックを受信します。 このパターンは、通常、「ブルーグリーン デプロイ」と呼ばれます。 Azure Spring Cloud では、ブルーグリーン デプロイが、[継続的デリバリー (CD)](/azure/devops/learn/what-is-continuous-delivery) パイプラインおよび厳格な自動テストと共にサポートされているため、信頼性の高いアジャイル アプリケーション デプロイが可能になります。
+Azure Spring Cloud (Standard レベル以上) では、すべてのアプリについて 2 つのデプロイが許可されており、いずれか 1 つのみが運用環境のトラフィックを受信します。 このパターンは、通常、「ブルーグリーン デプロイ」と呼ばれます。 Azure Spring Cloud では、ブルーグリーン デプロイが、[継続的デリバリー (CD)](/devops/deliver/what-is-continuous-delivery) パイプラインおよび厳格な自動テストと共にサポートされているため、信頼性の高いアジャイル アプリケーション デプロイが可能になります。
 
 ## <a name="alternating-deployments"></a>交互のデプロイ
 
-Azure Spring Cloud でブルーグリーン デプロイを実装する最も簡単な方法は、2 つの固定デプロイを作成し、運用環境のトラフィックを受信していないデプロイに、常にデプロイすることです。 Azure Pipelines の Azure Spring Cloud タスクを使用すると、`UseStagingDeployment` フラグを `true` に設定するだけで、このようなデプロイを実現できます。
+Azure Spring Cloud でブルーグリーン デプロイを実装する最も簡単な方法は、2 つの固定デプロイを作成し、運用環境のトラフィックを受信していないデプロイに、常にデプロイすることです。 [Azure Pipelines の Azure Spring Cloud タスク](/azure/devops/pipelines/tasks/deploy/azure-spring-cloud)を使用すると、`UseStagingDeployment` フラグを `true` に設定するだけで、このようなデプロイを実現できます。
 
 ここでは、交互のデプロイのアプローチが実際にどのように機能するかを示します。
 
@@ -98,3 +98,7 @@ Azure Spring Cloud でブルーグリーン デプロイを実装する最も簡
 デプロイが開始され、ステージング環境のデプロイが削除されるまでの間に、別のデプロイ パイプラインの実行が試みられると、失敗します。 パイプラインによって新しいデプロイの作成が試みられますが、それにより、エラーが発生します。これは、Azure Spring Cloud アプリケーションごとに許可されるデプロイが 2 つのみだからです。
 
 そのため、デプロイ オーケストレーションには、失敗したデプロイ プロセスを後で再試行する手段、または、以前のすべてのバージョンでフローが完了するまで、各バージョンのデプロイ フローをキューに残す手段を持たせる必要があります。
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure Spring Cloud へのアプリケーション デプロイを自動化する](./how-to-cicd.md)

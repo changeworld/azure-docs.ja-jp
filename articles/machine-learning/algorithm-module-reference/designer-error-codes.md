@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/25/2021
-ms.openlocfilehash: 1df93a987348ed54303f2d9118337dbc710bc3bc
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 03ae1ed134f6d25128d9846c5e5c9949a96f36fa
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001425"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679692"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
@@ -1092,9 +1092,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 機械学習での Hive クエリの使用については、次の記事をご覧ください。
 
-+ [Hive テーブルを作成して Azure Blob Storage からデータを読み込む](../team-data-science-process/move-hive-tables.md)
-+ [Hive クエリを使用してテーブルのデータを探索する](../team-data-science-process/explore-data-hive-tables.md)
-+ [Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する](../team-data-science-process/create-features-hive.md)
++ [Hive テーブルを作成して Azure Blob Storage からデータを読み込む](/azure/architecture/data-science-process/move-hive-tables)
++ [Hive クエリを使用してテーブルのデータを探索する](/azure/architecture/data-science-process/explore-data-hive-tables)
++ [Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する](/azure/architecture/data-science-process/create-features-hive)
 + [SQL ユーザー向け Hive のチート シート (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   

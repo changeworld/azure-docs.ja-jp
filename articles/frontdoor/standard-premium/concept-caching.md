@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 24a925b0d16dc1650398e6211aaff42cd47620eb
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564587"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369413"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) でのキャッシュ
 
@@ -37,7 +37,7 @@ Front Door Standard/Premium (プレビュー) では、ファイル サイズの
 
 Front Door 環境に届いたチャンクはキャッシュされ、即座にユーザーに提供されます。 その後、Front Door は並列処理で次のチャンクをプリフェッチします。 このプリフェッチにより、コンテンツはチャンク 1 つ分だけ常にユーザーより先行することになるため、待ち時間が短縮されます。 このプロセスは、ファイル全体がダウンロードされるか (要求された場合)、クライアントが接続を閉じるまで続行されます。
 
-バイト範囲の要求の詳細については、[RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html) を参照してください。
+バイト範囲の要求の詳細については、[RFC 7233](https://www.rfc-editor.org/info/rfc7233) を参照してください。
 Front Door は受け取ったチャンクをそのままキャッシュするため、ファイル全体を Front Door キャッシュにキャッシュする必要はありません。 ファイルまたはバイト範囲に対する後続の要求に対しては、キャッシュの内容が提供されます。 チャンクがすべてキャッシュされていない場合は、プリフェッチを使用してバックエンドにチャンクが要求されます。 この最適化は、配信元サーバーのバイト範囲要求をサポートする配信元の能力に依存します。 配信元がバイト範囲要求をサポートしていない場合、この最適化の効果はありません。
 
 ## <a name="file-compression"></a>ファイル圧縮

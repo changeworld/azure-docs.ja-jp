@@ -7,13 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 7d94a681fa987a4b23dbcda744c2f8516da4437a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 387521e07108aeb101361c3720ea6347ded58c75
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92891667"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735864"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Open Geospatial Consortium (OGC) のマップ レイヤーを追加する
 

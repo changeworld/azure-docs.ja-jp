@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 0220c16d7ea3673f55d57ec4c4e0d29b30672683
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: f97f12f25a6ac9a42e597bcb59496511372d92aa
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017663"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112296283"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Azure App Service で Linux コンテナーへの SSH セッションを開く
 
@@ -127,4 +127,4 @@ Web App for Containers について詳しくは、以下をご覧ください。
 * [VS Code からの Azure App Service 上での Node.js アプリのリモート デバッグの概要](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
 * [クイック スタート: App Service でカスタム コンテナーを実行する](quickstart-custom-container.md?pivots=container-linux)
 * [Azure App Service on Linux で Ruby を使用する](quickstart-ruby.md)
-* [Azure App Service Web App for Containers の FAQ](faq-app-service-linux.md)
+* [Azure App Service Web App for Containers の FAQ](faq-app-service-linux.yml)

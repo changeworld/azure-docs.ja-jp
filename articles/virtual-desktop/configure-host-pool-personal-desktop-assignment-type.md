@@ -7,12 +7,12 @@ ms.date: 07/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 39e4b23b4f007c790dcfe495661628a53a9293d8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e53bcbca2e40ef9a9587e0b571f2798132c2a829
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111743893"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033589"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>個人用デスクトップ ホスト プールの割り当ての種類を構成する
 
@@ -87,8 +87,8 @@ Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -Re
 
 個人用デスクトップ割り当ての種類を構成したので、次は Azure Virtual Desktop クライアントにサインインしてユーザー セッションの一部としてテストすることができます。 次の 2 つの手順では、任意のクライアントを使用してセッションに接続する方法を説明します。
 
-- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10.md)
-- [Web クライアントに接続する](connect-web.md)
-- [Android クライアントに接続する](connect-android.md)
-- [iOS クライアントに接続する](connect-ios.md)
-- [macOS クライアントに接続する](connect-macos.md)
+- [Windows デスクトップ クライアントを使用して接続する](./user-documentation/connect-windows-7-10.md)
+- [Web クライアントに接続する](./user-documentation/connect-web.md)
+- [Android クライアントに接続する](./user-documentation/connect-android.md)
+- [iOS クライアントに接続する](./user-documentation/connect-ios.md)
+- [macOS クライアントに接続する](./user-documentation/connect-macos.md)

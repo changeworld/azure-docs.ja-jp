@@ -12,12 +12,12 @@ ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a56f8339535c64c6eeac1b06c04aa7c89cd38356
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: daee0bc89804b8fe72845c411224b689452fe7d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886390"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723238"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -37,9 +37,9 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid アカウントの作成
 
-まだ用意していない場合、まず、SendGrid アカウントを設定してください (Azure のお客様は毎月、25,000 の無料電子メールをロック解除できます)。 設定方法については、「[SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md)」の「[SendGrid アカウントの作成](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)」セクションをご覧ください。
+まだ用意していない場合、まず、SendGrid アカウントを設定してください (Azure のお客様は毎月、25,000 の無料電子メールをロック解除できます)。 設定方法については、「[SendGrid を使用した Azure での電子メールの送信方法](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account)」の「[SendGrid アカウントの作成](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-sendgrid-account)」セクションをご覧ください。
 
-[SendGrid API キー](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)を作成するセクションを必ず完了してください。 後の手順で使用するために、API キーを記録しておきます。
+[SendGrid API キー](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#to-find-your-sendgrid-api-key)を作成するセクションを必ず完了してください。 後の手順で使用するために、API キーを記録しておきます。
 
 > [!IMPORTANT]
 > SendGrid によって、共有 IP アドレスと[専用 IP アドレス](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/)から電子メールを送信する機能が顧客に提供されます。 専用 IP アドレスを使用する場合は、IP アドレスのウォームアップを使用して、独自の評判を適切に築く必要があります。 詳細については、「[IP アドレスのウォームアップ](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)」を参照してください。

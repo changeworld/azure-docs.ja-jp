@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 3312eed71865508e5e83d37c7ced8cf220f13ca9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18dcd909ef55894e7548129a9b5836b68a30efe0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97835110"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779016"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
 
 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) のコネクタにより、アラートと [Cloud Discovery のログ](/cloud-app-security/tutorial-shadow-it)を MCAS から Azure Sentinel にストリーミングできます。 これにより、クラウド アプリの可視化が可能になり、サイバー脅威を特定して対処するための高度な分析とデータの移動の制御を実行できるようになります。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,5 +61,5 @@ Cloud App Security がデプロイされていてデータを取り込んでい�
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft Cloud App Security を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [組み込み](./tutorial-detect-threats-built-in.md)または[カスタム](tutorial-detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [組み込み](./detect-threats-built-in.md)または[カスタム](detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。

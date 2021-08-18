@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2021
 ms.author: yelevin
-ms.openlocfilehash: 3d478a9ac3cf91f3f6815859b8534efff88f07b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f43607e47e059e6bba9a3ae02c07262ec7309a2
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743556"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252660"
 ---
 # <a name="connect-your-vmware-esxi-to-azure-sentinel"></a>VMware ESXi を Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > VMware ESXi コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、VMware ESXi アプライアンスを Azure Sentinel に接続する方法について説明します。 VMware ESXi データ コネクタを使用すると、VMware ESXi のログを Azure Sentinel に簡単に取り込むことができます。これにより、組織の ESXi アクティビティに関するより詳細な分析情報が得られるので、セキュリティ運用機能の向上に役立ちます。 VMware ESXi と Azure Sentinel の統合では、Log Analytics エージェントがインストールされた Syslog サーバーが使用されます。 また、Kusto 関数に基づくカスタムビルドのログ パーサーも使用されます。
 
@@ -79,6 +81,6 @@ Azure Sentinel にログが表示され始めるまでに、最大 20 分かか�
 
 このドキュメントでは、VMware ESXi を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。
