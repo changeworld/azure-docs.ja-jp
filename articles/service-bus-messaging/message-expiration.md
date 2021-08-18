@@ -2,13 +2,13 @@
 title: Azure Service Bus - メッセージの有効期限
 description: この記事では、Azure Service Bus メッセージの有効期限と Time to Live について説明します。 このような期限が過ぎると、メッセージは配信されなくなります。
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: d41cb7a5e04753989c0e65e8afb8d74a11cd1af2
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.date: 07/09/2021
+ms.openlocfilehash: ac37096b411df0fa1a52286f82ce421dff459239
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614883"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585467"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 メッセージが受信者に伝えるメッセージ、コマンド、または問い合わせの中のペイロードには、ほとんどの場合、何らかの形式のアプリケーション レベルの有効期限が適用されます。 有効期限が切れると、コンテンツの配信は停止され、要求された操作は実行されなくなります。
@@ -27,9 +27,9 @@ ms.locfileid: "110614883"
 キューまたはトピックに送信されたすべてのメッセージには、エンティティ レベルで設定されている既定の有効期限が適用されます。 これは、作成時にポータルで設定し、後で調整することもできます。 既定の有効期限は、time-to-live が明示的に設定されていないエンティティに送信されるすべてのメッセージに使用されます。 既定の有効期限は、time-to-live 値の上限としても機能します。 time-to-live 有効期限が既定値より長いメッセージは、エンキューされる前に既定のメッセージの time-to-live 値に自動的に調整されます。
 
 > [!NOTE]
-> ブローカー メッセージの既定の time-to-live 値は、特に指定されていない場合は、符号付き 64 ビット整数の可能な最大値です。
->
-> メッセージング エンティティ (キューおよびトピック) の既定の有効期限も、Service Bus の Standard と Premium の各レベルでは符号付き 64 ビット整数の可能な最大値です。 **Basic** レベルでは、既定 (かつ最長) の有効期限は **14 日間** です。
+> - ブローカー メッセージの既定の time-to-live 値は、特に指定されていない場合は、符号付き 64 ビット整数の可能な最大値です。
+> - メッセージング エンティティ (キューおよびトピック) の既定の有効期限も、Service Bus の Standard と Premium の各レベルでは符号付き 64 ビット整数の可能な最大値です。 **Basic** レベルでは、既定 (かつ最長) の有効期限は **14 日間** です。
+> - トピックでサブスクリプションよりも短い TTL が指定されている場合、トピックの TTL が適用されます。
 
 有効期限切れのメッセージは、必要に応じて[配信不能キュー](service-bus-dead-letter-queues.md)に移動できます。 この設定は、プログラムによって、または Azure portal を使用して構成できます。 オプションを無効のままにすると、期限切れのメッセージは削除されます。 配信不能キューに移動された期限切れのメッセージは、ユーザー プロパティ セクションにブローカーが保存する [dead-letter reason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) プロパティを評価することで、他の配信不能メッセージと区別できます。 
 

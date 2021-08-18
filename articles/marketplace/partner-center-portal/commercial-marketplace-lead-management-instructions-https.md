@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 05/21/2021
-ms.openlocfilehash: f4ef8d7d29b65af4876912e6dbbd3827693737c6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5b0073f0f6ab3ecfc06d581ab7cf70c6bf27896e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450424"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285168"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS エンドポイントを使用してコマーシャル マーケットプレースのリードを管理する
 
@@ -233,7 +233,7 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 
 発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、次の手順に従います。
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインします。
 
 1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 

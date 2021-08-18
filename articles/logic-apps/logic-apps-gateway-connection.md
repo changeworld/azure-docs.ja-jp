@@ -3,15 +3,15 @@ title: オンプレミスのデータ ソースにアクセスする
 description: Azure でデータ ゲートウェイ リソースを作成することにより、Azure Logic Apps からオンプレミスのデータ ソースに接続します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, logicappspm
+ms.reviewer: arthii, azla
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 490750fecf1634f8d0bbcd92bd71cdf3cb531c71
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 07/14/2021
+ms.openlocfilehash: 4f49e0fbbfa4c2a98b86c96dc3b0e650d6ff6bc9
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888592"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204828"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -35,18 +35,20 @@ ms.locfileid: "111888592"
 
 Azure Logic Apps では、オンプレミス データ ゲートウェイで、これらのデータ ソースの[オンプレミス コネクタ](../connectors/managed.md#on-premises-connectors)がサポートされます。
 
-* BizTalk Server 2016
-* ファイル システム
-* IBM DB2  
-* IBM Informix
-* IBM MQ
-* MySQL
-* Oracle Database
-* PostgreSQL
-* SAP
-* SharePoint Server
-* SQL Server
-* Teradata
+* [Apache Impala](/connectors/impala)
+* [BizTalk Server](/connectors/biztalk)
+* [ファイル システム](/connectors/filesystem)
+* [HTTP with Azure AD](/connectors/webcontents)
+* [IBM DB2](/connectors/db2)
+* [IBM Informix](/connectors/informix)
+* [IBM MQ](/connectors/mq)
+* [MySQL](/connectors/mysql)
+* [Oracle データベース](/connectors/oracle)
+* [PostgreSQL](/connectors/postgresql)
+* [SAP](/connectors/sap)
+* [SharePoint Server](/connectors/sharepointonline)
+* [SQL Server](/connectors/sql)
+* [Teradata](/connectors/teradata)
 
 REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ ソースに接続する[カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成することもできます。 ゲートウェイ自体では追加コストは発生しませんが、これらのコネクタや Azure Logic Apps のその他の操作に [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)が適用されます。
 

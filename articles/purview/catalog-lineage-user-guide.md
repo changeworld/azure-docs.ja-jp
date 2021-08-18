@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/29/2020
-ms.openlocfilehash: 8b08a60d484aa3d52600b8aef2f53d6ca8a04f9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: 4708cdc0a7937749e0df9a65267067f5dc31198d
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952169"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201694"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview Data Catalog の系列のユーザー ガイド
 
@@ -28,10 +28,10 @@ Azure Purview のプラットフォーム機能の 1 つに、データ プロ�
 ### <a name="data-processing-system"></a>データ処理システム
 データ統合と ETL ツールでは、実行時に Azure Purview に系列をプッシュできます。 Data Factory、Data Share、Synapse、Azure Databricks などのツールは、このカテゴリのデータ システムに属します。 データ処理システムでは、さまざまなデータベースおよびストレージ ソリューションからのデータセットをソースとして参照して、ターゲット データセットが作成されます。 系列のために Purview と現在統合されるデータ処理システムの一覧を次の表に示します。
 
-
 | データ処理システム | サポートされるスコープ |
 | ---------------------- | ------------|
-| Azure Data Factory | [コピー アクティビティ](how-to-link-azure-data-factory.md#data-factory-copy-activity-support) <br> [データ フロー アクティビティ](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [SSIS パッケージの実行アクティビティ](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
+| Azure Data Factory | [コピー アクティビティ](how-to-link-azure-data-factory.md#copy-activity-support) <br> [データ フロー アクティビティ](how-to-link-azure-data-factory.md#data-flow-support) <br> [SSIS パッケージの実行アクティビティ](how-to-link-azure-data-factory.md#execute-ssis-package-support) |
+| Azure Synapse Analytics | [コピー アクティビティ](how-to-lineage-azure-synapse-analytics.md#copy-activity-support) |
 | Azure Data Share | [スナップショットの共有](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>データ ストレージ システム

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 03/09/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1dc0c67a173333f2d2bcabd71d92ec88fa5a467d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: fa70be7a890bdfe0bbac9ee7acf2b8ae373e60e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071778"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730737"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
@@ -87,7 +87,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
     "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "0.9.0.0",
     "resources": [{
-        "apiVersion": "2019-01-01",
+        "apiVersion": "2020-01-01",
         "name": "contoso",
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
@@ -200,7 +200,7 @@ API Management インスタンスのシステム割り当て ID を使用して�
         "apimServiceIdentityResourceId": "[concat(resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName')),'/providers/Microsoft.ManagedIdentity/Identities/default')]"
     },
     "resources": [{
-        "apiVersion": "2019-01-01",
+        "apiVersion": "2020-01-01",
         "name": "[variables('apiManagementServiceName')]",
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
@@ -353,7 +353,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
     "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "0.9.0.0",
     "resources": [{
-        "apiVersion": "2019-12-01",
+        "apiVersion": "2020-12-01",
         "name": "contoso",
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",

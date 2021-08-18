@@ -1,21 +1,21 @@
 ---
 title: Gen 2 環境の管理 - Azure Time Series | Microsoft Docs
 description: Azure Time Series Insights Gen 2 環境を管理する方法について説明します。
-author: shipra1mishra
-ms.author: shmishr
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: cbd28bdf5318bdaf932447f5d1f936d2c614a7f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a77e437438fa514d20edf82eb861926db7f7b04e
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461897"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135790"
 ---
 # <a name="manage-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 の管理
 

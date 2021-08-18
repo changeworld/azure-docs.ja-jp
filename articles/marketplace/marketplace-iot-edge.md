@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/30/2021
-ms.openlocfilehash: 70bb18984f5ed3ca6887fd01ec0e98e6f3d41595
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 28017bb8649e748ddf2299748f3d718ae4896a68
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110547751"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416202"
 ---
 # <a name="plan-an-iot-edge-modules-offer"></a>IoT Edge モジュール プランの計画
 
@@ -114,5 +114,4 @@ Azure コンテナー オファーで使用可能なライセンス オプショ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
 - パートナー センターで [IoT Edge モジュール オファーを作成](./iot-edge-offer-setup.md)します。

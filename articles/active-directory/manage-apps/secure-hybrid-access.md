@@ -2,21 +2,22 @@
 title: Azure AD のセキュリティで保護されたハイブリッド アクセス | Microsoft Docs
 description: この記事では、オンプレミス、パブリッククラウド、またはプライベート クラウドにあるレガシ アプリケーションを Azure AD と統合するためのパートナー ソリューションについて説明します。 アプリ デリバリー コントローラーまたはネットワークを Azure AD に接続することで、レガシ アプリをセキュリティで保護します。
 services: active-directory
-author: gargi-sinha
+author: davidmu1
 manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 2/16/2021
-ms.author: gasinh
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3946dcd850a4a3d05f4d28882d08408e39b707
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.reviewer: miccohen
+ms.openlocfilehash: d7cafd5c3586feb99aeade5af7f858659baf6100
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964697"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744097"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全なハイブリッド アクセス:Azure Active Directory を使用してレガシ アプリをセキュリティで保護する
 
@@ -77,7 +78,6 @@ VPN および SDP ソリューションを使用すると、自分の組織の�
 - [Datawiza Access Broker](./add-application-portal-setup-oidc-sso.md)
 
 - [Perimeter 81](../saas-apps/perimeter-81-tutorial.md)
-
 
 - [Silverfort Authentication Platform](./add-application-portal-setup-oidc-sso.md)
 

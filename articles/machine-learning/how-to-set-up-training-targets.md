@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/28/2020
+ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 1b4394c7338aabb63654a1462a97518aaff9ada3
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 875407e07af1059c98a2adb6bb0f7b075d78fe02
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408517"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462725"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
@@ -28,7 +28,7 @@ ms.locfileid: "111408517"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を試してください
+* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を試してください
 * [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/install) (1.13.0 以降)
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)、`ws`
 * コンピューティング先、`my_compute_target`。  [コンピューティング ターゲットを作成する](how-to-create-attach-compute-studio.md) 
@@ -77,7 +77,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 この記事のコード例では、「前提条件」セクションのコンピューティング ターゲット `my_compute_target` が既に作成されていることを前提としています。
 
 >[!Note]
->Azure Databricks は、モデル トレーニングのコンピューティング先としてサポートされていません。 データ準備およびデプロイのタスクには Azure Databricks を使用できます。 
+>Azure Databricks は、モデル トレーニングのコンピューティング先としてサポートされていません。 データ準備およびデプロイのタスクには Azure Databricks を使用できます。
+
+[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 ## <a name="create-an-environment"></a>環境の作成
 Azure Machine Learning [環境](concept-environments.md)は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、Docker イメージ、環境変数、およびソフトウェア設定が指定されます。 また、実行時間 (Python、Spark、または Docker) も指定されます。

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: amsriva
-ms.openlocfilehash: 0ab6dfb61800bba91b52edd5b07fa918c85ba73b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bb7de037f63c8892aa73e357f744b1f25fb0750f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085008"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441031"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリング
 
@@ -65,6 +65,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | BZ | ベリーズ|
 | CA | Canada|
 | CD | コンゴ民主共和国|
+| CG | コンゴ共和国 |
 | CF | 中央アフリカ共和国|
 | CH | スイス|
 | CI | コートジボワール|

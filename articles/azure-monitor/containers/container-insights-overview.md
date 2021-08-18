@@ -3,12 +3,12 @@ title: Container insights の概要 | Microsoft Docs
 description: この記事では、AKS Container insights ソリューションを監視する Container insights と、Azure の AKS クラスターとコンテナー インスタンスの正常性を監視することによって提供される価値について説明します。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3310be54476a9449188c2b7fbfa5bbb6e21cb005
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 56222eb90534537df237ec2c5d29a5969f150e60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177712"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738492"
 ---
 # <a name="container-insights-overview"></a>Container insights の概要
 
@@ -39,7 +39,7 @@ Container insights では、Azure Monitor のさまざまな機能を使用し�
 * ポッドをサポートする標準プロセスと関連のない、ホスト上で実行されているワークロードのリソース使用率を確認します。
 * 平均的な負荷、および最大の負荷がかかったときのクラスターの動作を理解します。 この知識は、容量ニーズを特定し、クラスターが維持できる最大負荷を判断するのに役立ちます。
 * ノードまたはコンテナーの CPU およびメモリの使用率がしきい値を超えた場合や、インフラストラクチャまたはノードの正常性ロールアップで正常性状態の変更がクラスターで発生した場合に、事前に通知または記録するようにアラートを構成します。
-* [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-search.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、分析を作成します。
+* [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-query.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、分析を作成します。
 * オンプレミスの [AKS エンジンにデプロイされた](https://github.com/Azure/aks-engine)コンテナー ワークロードおよび [Azure Stack の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)を監視します。
 * [Azure Red Hat OpenShift にデプロイされた](../../openshift/intro-openshift.md)コンテナー ワークロードを監視します。
 

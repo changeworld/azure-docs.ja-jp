@@ -8,16 +8,16 @@ ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: b9ee3b76b1762034e6c1c5d29654b00d31022ff2
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: dc2c284bf1d44ca4fbdd4ddbea95048c38cdbf55
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838089"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728491"
 ---
 # <a name="azure-storage-archive-backup-and-disaster-recovery-partners"></a>Azure Storage のアーカイブ、バックアップ、ディザスター リカバリーのパートナー
 
-この記事では、アーカイブ、バックアップ、および事業継続とディザスター リカバリー (BCDR) ワークロードに関して Azure Storage に統合されている Microsoft パートナーについて説明します。 これらのパートナーのソリューションは、Azure Storage のスケールとコスト面の利点を利用しています。 これらのソリューションを使用すると、バックアップの課題を解決し、ディザスター リカバリー サイトを作成し、長期保存のために未使用のコンテンツをアーカイブすることができます。 Azure Storage が満たすすべてのコンプライアンス基準、および[不変ストレージ](../../../blobs/storage-blob-immutable-storage.md)や[ライフサイクル管理](../../../blobs/storage-lifecycle-management-concepts.md)などの Azure 機能について、これらのソリューションを使用してテープベースのバックアップを簡単に置き換え、オンデマンドの経済的な回復サイトを提供できます。
+この記事では、アーカイブ、バックアップ、および事業継続とディザスター リカバリー (BCDR) ワークロードに関して Azure Storage に統合されている Microsoft パートナーについて説明します。 これらのパートナーのソリューションは、Azure Storage のスケールとコスト面の利点を利用しています。 これらのソリューションを使用すると、バックアップの課題を解決し、ディザスター リカバリー サイトを作成し、長期保存のために未使用のコンテンツをアーカイブすることができます。 Azure Storage が満たすすべてのコンプライアンス基準、および[不変ストレージ](../../../blobs/immutable-storage-overview.md)や[ライフサイクル管理](../../../blobs/storage-lifecycle-management-concepts.md)などの Azure 機能について、これらのソリューションを使用してテープベースのバックアップを簡単に置き換え、オンデマンドの経済的な回復サイトを提供できます。
 
 ## <a name="verified-partners"></a>検証済みパートナー
 

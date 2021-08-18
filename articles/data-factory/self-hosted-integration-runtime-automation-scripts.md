@@ -2,17 +2,18 @@
 title: ローカル PowerShell スクリプトを使用したセルフホステッド統合ランタイムのインストールの自動化
 description: ローカル コンピューターでのセルフホステッド統合ランタイムのインストールを自動化するには、次の操作を実行します。
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 54699a5641b98cde5bbff1f55add8b8345d6a1ac
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: c64f71e6cdd008efa74d7279e3dc275bd24825f0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488287"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738125"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>ローカル PowerShell スクリプトを使用したセルフホステッド統合ランタイムのインストールの自動化
 ローカル コンピューター (Resource Manager テンプレートを利用できる Azure VM を除く) でのセルフホステッド統合ランタイムのインストールを自動化するために、ローカル PowerShell スクリプトを使用できます。 この記事では、使用できる 2 つのスクリプトについて説明します。

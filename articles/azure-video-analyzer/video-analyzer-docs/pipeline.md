@@ -2,13 +2,13 @@
 title: Azure Video Analyzer パイプライン
 description: Azure Video Analyzer パイプラインを使用すると、入力データのキャプチャ元、処理方法、および結果の配信先を定義できます。 パイプラインは、目的のデータ フローを実現するために接続されているノードで構成されます。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: deed7eec980272dd3dd001219016eee139f22ad6
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 06/01/2021
+ms.openlocfilehash: 5e874cc71752fa6690a4ca3fc9f3cd33665dc381
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591244"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602256"
 ---
 # <a name="pipeline"></a>パイプライン
 

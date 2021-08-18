@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/16/2021
 ms.author: apimpm
-ms.openlocfilehash: 8e8047fc6865bab8f4aac2315b269bf7526b1e42
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: cf4ff32af5b0960d22496512e8d624df0f4cf5e5
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599387"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669248"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -125,7 +125,7 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 * apim-{<*お使いの Azure API Management サービス インスタンス名*>} という名前の、Function App 内のホスト キー。
 * {<*お使いの Azure Function App のインスタンス名*>}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
 
-2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)として渡されます。 この動作は、関数アプリに関連付けられている *Backend* エンティティの `PATCH Backend` [REST API 呼び出し](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)を通じて変更できます。
+2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)として渡されます。 この動作は、関数アプリに関連付けられている *Backend* エンティティの `PATCH Backend` [REST API 呼び出し](/rest/api/apimanagement/2020-12-01/backend/update#backendcredentialscontract)を通じて変更できます。
 
 > [!WARNING]
 > Azure Function App のホスト キーの値または Azure API Management の名前付きの値のいずれかを削除または変更すると、サービス間の通信が失われます。 値は自動的に同期されません。

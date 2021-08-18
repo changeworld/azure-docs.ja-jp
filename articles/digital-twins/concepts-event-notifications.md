@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 8b8205681da7ea24fdafcef337ad903fff06c589
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e403ed4778e87e42ad4abb2e6d45923e420ca0c4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474631"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438635"
 ---
 # <a name="event-notifications"></a>イベント通知
 
@@ -157,7 +157,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 作成イベントの場合、`data` ペイロードには、リソースが作成された後のツインの状態が反映されます。したがって、`GET` 呼び出しと同様に、システムによって生成されたすべての要素が含まれているはずです。
 
-コンポーネントはあるが最上位プロパティがない、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) デバイスのデータの例を次に示します。 デバイスにとって意味のないプロパティ (報告されたプロパティなど) は、省略する必要があります。 これは、ライフサイクル通知メッセージの `data` フィールドに表示される情報です。
+コンポーネントはあるが最上位プロパティがない、[IoT プラグ アンド プレイ (PnP)](../iot-develop/overview-iot-plug-and-play.md) デバイスのデータの例を次に示します。 デバイスにとって意味のないプロパティ (報告されたプロパティなど) は、省略する必要があります。 これは、ライフサイクル通知メッセージの `data` フィールドに表示される情報です。
 
 ```json
 {
@@ -312,4 +312,4 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 ## <a name="next-steps"></a>次のステップ
 
 エンドポイントとルートを使用して、さまざまな宛先にイベントを配信する方法について説明します。
-* “[イベント ルートの概念](concepts-route-events.md)”
+* [イベント ルート](concepts-route-events.md)

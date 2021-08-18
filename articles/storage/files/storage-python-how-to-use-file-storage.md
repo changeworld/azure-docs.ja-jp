@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 8739bfaf1a41758ef3267c71cba883ef2445c39d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 39e3cfb58e5965ac44d1cfe07b605d46037ab5d8
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817794"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117714"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python での Azure Files 用の開発
 
@@ -29,6 +29,13 @@ ms.locfileid: "107817794"
 
 > [!NOTE]
 > Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Python I/O クラスと関数を使って Azure ファイル共有にアクセスする簡単なアプリケーションを作成できます。 この記事では、Azure Storage Python SDK を使用するアプリを記述する方法を説明します。ここでは、Azure Files との通信に [Azure Files REST API](/rest/api/storageservices/file-service-rest-api) が使用されます。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Microsoft Azure Storage SDK for Python をダウンロードしてインストールする
 

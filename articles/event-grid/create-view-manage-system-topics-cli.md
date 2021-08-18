@@ -2,13 +2,13 @@
 title: CLI を使用した Azure Event Grid システム トピックの作成、表示、管理
 description: この記事では、Azure CLI を使用して、システムのトピックを作成、表示、削除する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 34a098406762fd57dc9dc4b58fc375286f5d5b13
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 07/22/2021
+ms.openlocfilehash: e8ea2e1351b5faf93e58d5a96561555050ce05b6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874299"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469419"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Azure CLI を使用した Event Grid システム トピックの作成、表示、管理
 この記事では、Azure CLI を使用してシステム トピックを作成および管理する方法について説明します。 システム トピックの概要については、[システム トピック](system-topics.md)に関するページを参照してください。

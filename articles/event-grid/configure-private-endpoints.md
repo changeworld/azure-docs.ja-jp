@@ -2,14 +2,14 @@
 title: Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する
 description: この記事では Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する方法について説明します。
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 07/22/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: df0c855a50bdb8f617513e635a021032a1ebf7da
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e97883be779d0bea22cc2169754cac3b17d83db7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706066"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469563"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する
 [プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用すると、パブリック インターネットを経由せずに[プライベート リンク](../private-link/private-link-overview.md)上で安全に仮想ネットワークからトピックおよびドメインへ直接、イベントのイングレスを行えるようになります。 プライベート エンドポイントは、トピックまたはドメインの VNet アドレス空間からの IP アドレスを使用します。 概念の詳細については、[ネットワーク セキュリティ](network-security.md)に関する記事をご覧ください。

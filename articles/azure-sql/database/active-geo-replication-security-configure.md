@@ -11,12 +11,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 6dde8aaa676e8045326f7078e1c3fd2a0ada6dc2
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: d6a22f1bab9b24412fe9109fff955d3eeeb0749c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110699845"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747657"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,15 @@ WHERE [type_desc] = 'SQL_USER'
 
 ```sql
 CREATE LOGIN [<login name>]
-WITH PASSWORD = <login password>,
-SID = <desired login SID>
+WITH PASSWORD = '<login password>',
+SID = 0x1234 /*replace 0x1234 with the desired login SID*/
 ```
 
 > [!NOTE]
 > セカンダリへのユーザー アクセスを許可し、プライマリへのアクセスは許可しない場合は、次の構文を使用してプライマリ サーバーでユーザー ログインを変更します。
 >
 > ```sql
-> ALTER LOGIN <login name> DISABLE
+> ALTER LOGIN [<login name>] DISABLE
 > ```
 >
 > DISABLE を実行してもパスワードは変更されないため、必要な場合にいつでも有効にできます。

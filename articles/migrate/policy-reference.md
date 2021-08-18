@@ -1,18 +1,18 @@
 ---
 title: Azure Migrate 用の組み込みポリシー定義
 description: Azure Migrate 用の Azure Policy 組み込みポリシー定義の一覧を示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 ms.service: azure-migrate
 author: rayne-wiselman
 ms.author: raynew
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e20a13c8cefcdcb557362c798d67d4e2cd3b019b
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 0f479e49a1835aea7ed5d81b77f75ca7e55c9817
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018039"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178988"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-migrate"></a>Azure Migrate 用の Azure Policy 組み込み定義
 

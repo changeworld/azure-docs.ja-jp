@@ -1,20 +1,19 @@
 ---
 title: Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 description: Linux で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成します。
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.reviewer: danis
-ms.openlocfilehash: e9508da2002035ee413d557c0cd48474b6e10e0d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 85f41327476ae96af8dcc28eaaa3e49ef3ce80e5
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071247"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596535"
 ---
 # <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>Linux で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 

@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/02/2021
 ms.author: yelevin
-ms.openlocfilehash: 2010b21a3cdb81f2b2aa4180f87857862cd02bf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b10a0c4b1a655d998d9a418dde679c0c6b68b10
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743560"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252926"
 ---
 # <a name="connect-your-nxlog-linuxaudit-to-azure-sentinel"></a>NXLog LinuxAudit を Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > NXLog LinuxAudit コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 [NXLog LinuxAudit](https://nxlog.co/documentation/nxlog-user-guide/im_linuxaudit.html) コネクタを使用すると、Linux セキュリティ イベントを Azure Sentinel にリアルタイムで簡単にエクスポートできるため、組織全体でのドメイン ネーム サーバーの利用状況に関する分析情報を得ることができます。 NXLog LinuxAudit モジュールは、カスタム監査規則をサポートし、auditd やその他のユーザー空間のソフトウェアを使用せずにログを収集します。 IP アドレスとグループ/ユーザー ID はそれぞれの名前に解決されるため、[Linux 監査](https://nxlog.co/documentation/nxlog-user-guide/linux-audit.html)ログはセキュリティ アナリストにとって、より分かりやすくなります。 NXLog LinuxAudit と Azure Sentinel の統合は、REST API を通じて容易に行うことができます。
 
@@ -53,6 +55,6 @@ JSON 形式でイベントを Azure Sentinel に直接送信するように NXLo
 
 このドキュメントでは、NXLog LinuxAudit を使用して Linux のセキュリティ イベントを Azure Sentinel に取り込む方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: df2e47b75b4dd01274a2ec2c4f5b5acaac164ca0
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: cef99e06eaafda41022d4c8937a4a624267b1e1d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536277"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454422"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>リモートでのモデル デプロイのトラブルシューティング 
 
@@ -31,7 +31,7 @@ Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install)。
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。

@@ -4,12 +4,12 @@ description: Azure Policy で Rego および Open Policy Agent を使用して�
 ms.date: 05/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5a479c6f6bf22f416b3508c08dff5d60a8297d1a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 5319504a0e25531ce77ebc06748bb360c0cbc171
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985024"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202780"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -196,8 +196,8 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
    |Domain |Port |
    |---|---|
-   |`gov-prod-policy-data.trafficmanager.net` |`443` |
-   |`raw.githubusercontent.com` |`443` |
+   |`data.policy.core.windows.net` |`443` |
+   |`store.policy.core.windows.net` |`443` |
    |`login.windows.net` |`443` |
    |`dc.services.visualstudio.com` |`443` |
 

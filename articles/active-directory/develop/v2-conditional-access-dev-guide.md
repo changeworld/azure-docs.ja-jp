@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 9e74f35a99bb57fff6d7134fb1fb4b596306a21b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 0492055262ccd627d2e3400f78e5c26db0b2acb2
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072425"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730048"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -36,7 +36,7 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 [シングル](quickstart-register-app.md)および[マルチテナント](howto-convert-app-to-be-multi-tenant.md) アプリおよび[一般的な認証パターン](./authentication-vs-authorization.md)の知識を持っているユーザーを対象とします。
 
 > [!NOTE]
-> この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+> この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」をご覧ください。
 > [Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>条件付きアクセスはどのようにアプリに影響を与えますか?

@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧 Video Indexer) で言語モデルをカスタマイズする - Azure
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: この記事では、Azure Video Analyzer for Media (旧 Video Indexer) における言語モデルについて、およびそのカスタマイズ方法について概要を示します。
-services: media-services
+services: azure-video-analyzer
 author: anikaz
 manager: johndeu
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: afeda546743db40f3b1a966342be5cd7d43a27ba
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ca79d7d541d137a299fd61431df9410c6822be04
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387128"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121374"
 ---
 # <a name="customize-a-language-model-with-video-analyzer-for-media"></a>Video Analyzer for Media で言語モデルをカスタマイズする
 

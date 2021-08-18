@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 674e8036463a317d6e578750bc7ed3802ae776e4
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728639"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181648"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -91,10 +91,10 @@ ms.locfileid: "101728639"
 > ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>Q:組み込みの Azure Sentinel のセキュリティ指向コンテンツを使用するにはどうすればよいですか。
 > Azure Sentinel は、Office 365 および Azure AD ログに基づいた、組み込みのセキュリティ指向のダッシュボード、カスタム アラート クエリ、検索クエリ、調査、および自動応答機能を提供します。 詳細については、Azure Sentinel GitHub とチュートリアルを参照してください。
 >
-> - [難しい設定なしで脅威を検出する](../../sentinel/tutorial-detect-threats-built-in.md)
-> - [疑わしい脅威を検出するカスタム分析ルールを作成する](../../sentinel/tutorial-detect-threats-custom.md)
-> - [データを監視する](../../sentinel/tutorial-monitor-your-data.md)
-> - [Azure Sentinel でインシデントを調査します](../../sentinel/tutorial-investigate-cases.md)
+> - [難しい設定なしで脅威を検出する](/azure/azure-monitor/insights/articles/sentinel/detect-threats-built-in.md)
+> - [疑わしい脅威を検出するカスタム分析ルールを作成する](/azure/azure-monitor/insights/articles/sentinel/detect-threats-custom.md)
+> - [データを監視する](/azure/azure-monitor/insights/articles/sentinel/monitor-your-data.md)
+> - [Azure Sentinel でインシデントを調査します](/azure/azure-monitor/insights/articles/sentinel/investigate-cases.md)
 > - [Azure Sentinel で脅威への自動対応を設定します](../../sentinel/tutorial-respond-threats-playbook.md)
 > - [Azure Sentinel GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
@@ -474,4 +474,4 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 * [Azure Monitor でログ クエリ](../logs/log-query-overview.md)を使用して、詳細な更新プログラムのデータを表示します。
 * [独自のダッシュボードを作成](../visualize/tutorial-logs-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
-* [アラートを作成](../alerts/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  
+* [アラートを作成](../alerts/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。

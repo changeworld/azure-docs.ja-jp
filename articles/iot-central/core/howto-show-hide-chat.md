@@ -7,13 +7,12 @@ ms.date: 08/23/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: f290395f4bd7afccace5067a97e63dda553f183c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd73c1ef16b48340a77ce6a64823465a4f893b05
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91999717"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746407"
 ---
 # <a name="toggle-live-chat"></a>ライブ チャットの切り替え
 
@@ -49,4 +48,4 @@ ms.locfileid: "91999717"
 ここでは、Azure IoT Central でライブチャットを切り替える方法について説明しました。推奨される次の手順は以下のとおりです。
 
 > [!div class="nextstepaction"]
-> [ダッシュボードへのタイルの追加](howto-add-tiles-to-your-dashboard.md)
+> [ダッシュボードへのタイルの追加](howto-manage-dashboards.md)

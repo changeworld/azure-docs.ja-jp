@@ -11,12 +11,12 @@ ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71a3b38da6a63824a42f64052bf16a5fe0e25483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94937129de318bacab129ef115bb03d6aa1c53d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102525438"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723311"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で年齢制限を有効にする
 
@@ -82,7 +82,7 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 
 ## <a name="enable-age-gating-in-your-custom-policy"></a>カスタム ポリシーで年齢制限を有効にする
 
-1. [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/age-gating)の年齢制限ポリシーの例を取得します。
+1. [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies)の年齢制限ポリシーの例を取得します。
 1. 各ファイル内で、文字列 `yourtenant` を、使用している Azure AD B2C テナントの名前に置き換えます。 たとえば、B2C テナントの名前が *contosob2c* であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosob2c.onmicrosoft.com` になります。
 1. ポリシー ファイルをアップロードします。
 
@@ -91,4 +91,3 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 ## <a name="next-steps"></a>次のステップ
 
 - [Active Directory B2C におけるユーザー アクセスの管理](manage-user-access.md)方法を確認します。
-

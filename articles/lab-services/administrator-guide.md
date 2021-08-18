@@ -3,12 +3,12 @@ title: Azure Lab Services - 管理者ガイド | Microsoft Docs
 description: このガイドは、Azure Lab Services を使用してラボ アカウントを作成および管理する管理者に役立ちます。
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 0dd7cb9f23d820cc8a4001d430e8ef446ecc5460
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 567a6ad5cd7eae6fb6963dbcdb781fc2d7667f79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958827"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737698"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 大学のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、学校のラボ アカウントの設定を担当します。 管理者または教師は、ラボ アカウントを設定した後、アカウント内に含まれるラボを作成します。 この記事では、関連する Azure リソースの概要を説明し、それらを作成するためのガイダンスを示します。
@@ -291,7 +291,7 @@ Azure Lab Services では、ラボが配置されている[地域内のターゲ
 * 1 カスタム イメージ (32 GB) &times; 2 バージョン &times; 8 米国リージョン &times; 1.54 ドル = 1 か月あたり 24.64 ドル
 
 > [!NOTE]
-> 上記の計算は、例の目的でのみ使用されます。 これは、Shared Image Gallery の使用に関連するストレージ コストを対象にしており、エグレス コストは含まれて "*いません*"。 ストレージの実際の価格については、「[Managed Disks の価格](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)」を参照してください。
+> 上記の計算は、例の目的でのみ使用されます。 これは、Shared Image Gallery の使用に関連するストレージ コストを対象にしており、エグレス コストは含まれて "*いません*"。 ストレージの実際の価格については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」を参照してください。
 
 #### <a name="cost-management"></a>コスト管理
 
@@ -299,7 +299,7 @@ Azure Lab Services では、ラボが配置されている[地域内のターゲ
 
 共有イメージ ギャラリーには、特定のリージョンへのレプリケーションを削除するオプションがありますが、コストを削減する方法としてレプリケーションを削除しないでください。 レプリケーションを変更すると、Azure Lab Services で、共有イメージ ギャラリー内に保存されたイメージから VM を発行することができなくなるおそれがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ラボの設定と管理の詳細については、以下を参照してください。
 

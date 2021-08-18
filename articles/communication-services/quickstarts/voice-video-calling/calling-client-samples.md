@@ -6,16 +6,16 @@ author: rinarish
 manager: rinarish
 services: azure-communication-services
 ms.author: arturk
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: a4085dc38e47585ac22450311330879b000a8fda
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7757ad502799786a37aa3160933148045368ccca
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560516"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107684"
 ---
 # <a name="quickstart-use-the-communication-services-calling-sdk"></a>クイック スタート: Communication Services 通話 SDK を使用する
 

@@ -3,12 +3,12 @@ title: 接続の問題のトラブルシューティング - Azure Event Hubs | 
 description: この記事では、Azure Event Hubs での接続の問題のトラブルシューティングについて説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48c96cf2e0a142c96e1413bb62730ef2e31aa7ca
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012682"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416653"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>接続に関する問題のトラブルシューティング - Azure Event Hubs
 クライアント アプリケーションがイベント ハブに接続できない理由はさまざまです。 発生した接続の問題は、永続的である場合もあれば、一時的なものである場合もあります。 問題が常に (永続的に) 発生する場合は、接続文字列、組織のファイアウォール設定、IP ファイアウォール設定、ネットワーク セキュリティ設定 (サービス エンドポイント、プライベート エンドポイントなど) などを確認することをお勧めします。 一時的な問題の場合は、SDK の最新バージョンへのアップグレード、ドロップされたパケットを確認するコマンドの実行、ネットワーク トレースの取得によって問題のトラブルシューティングに役立つ場合があります。 
@@ -26,7 +26,7 @@ ms.locfileid: "96012682"
 
 Kafka クライアントの場合、producer.config または consumer.config の各ファイルが正しく構成されていることを確認します。 詳細については、「[Event Hubs で Kafka を使用してメッセージを送受信する](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs)」を参照してください。
 
-[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
+[!INCLUDE [event-hubs-connectivity](./includes/event-hubs-connectivity.md)]
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>ネットワーク セキュリティ グループで AzureEventGrid サービス タグが許可されていることを確認する
 アプリケーションがサブネット内で実行されていて、関連付けられているネットワーク セキュリティ グループがある場合は、インターネット アウトバウンドが許可されているか、または AzureEventGrid サービス タグが許可されているかを確認します。 「[仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md)」を参照し、`EventHub` を検索してください。

@@ -7,14 +7,13 @@ ms.date: 02/28/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: cd64c80acceb1542c080fc45efbce59f287d448a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecafca0e337aa23223ca60e594cd8b2aece5ac57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680695"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751435"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Maps の空間 IO モジュールの使用方法
 

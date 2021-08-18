@@ -2,13 +2,13 @@
 title: Azure Video Analyzer リリース ノート - Azure
 description: このトピックでは、Azure Video Analyzer のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: ef1c395bb10000599f901e62cf77b3573146aeee
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 06/01/2021
+ms.openlocfilehash: f7189e6bda42ad77cb4bb6f426bf73209f46c363
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591226"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601929"
 ---
 # <a name="azure-video-analyzer-release-notes"></a>Azure Video Analyzer リリース ノート
 

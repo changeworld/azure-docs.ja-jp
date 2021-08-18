@@ -3,13 +3,13 @@ title: Azure Functions を使用する C# クラス ライブラリ関数を開�
 description: C# を使用して、クラス ライブラリとしてコードを開発して公開する方法を理解します。これは、Azure Functions ランタイムを使用してインプロセスで実行されます。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 07/24/2020
-ms.openlocfilehash: 60afc79c332385958d9f73ad1e224cab90293e1c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.date: 07/24/2021
+ms.openlocfilehash: 5681a985769f49429e5b92946311c3d10ea8ecf6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903133"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862345"
 ---
 # <a name="develop-c-class-library-functions-using-azure-functions"></a>Azure Functions を使用する C# クラス ライブラリ関数を開発する
 
@@ -48,7 +48,7 @@ Premium または専用 (App Service) プランで Linux 上で実行してい�
 Visual Studio では、**Azure Functions** プロジェクト テンプレートは、次のファイルを含む C# クラス ライブラリ プロジェクトを作成します。
 
 * [host.json](functions-host-json.md) - ローカルまたは Azure 内で実行される場合に、プロジェクト内のすべての関数に影響を及ぼす構成設定を格納します。
-* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)します。
+* [local.settings.json](functions-develop-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)します。
 
 プロジェクトをビルドするときに、次の例のようなフォルダー構造がビルドの出力ディレクトリに作成されます。
 
@@ -465,7 +465,7 @@ namespace functionapp0915
 
 この例では、カスタム メトリック データは、customMetrics テーブルに送信される前にホストによって集計されます。 詳細については、Application Insights で [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) のドキュメントを参照してください。 
 
-ローカルで実行する場合は、Application Insights キーを使用して `APPINSIGHTS_INSTRUMENTATIONKEY` 設定を [local.settings.json](functions-run-local.md#local-settings-file) ファイルに追加する必要があります。
+ローカルで実行する場合は、Application Insights キーを使用して `APPINSIGHTS_INSTRUMENTATIONKEY` 設定を [local.settings.json](functions-develop-local.md#local-settings-file) ファイルに追加する必要があります。
 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)

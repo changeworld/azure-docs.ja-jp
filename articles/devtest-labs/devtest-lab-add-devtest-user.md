@@ -4,12 +4,12 @@ description: Azure Portal または PowerShell を使用した Azure DevTest Lab
 ms.topic: article
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d786af9eeb9b3c01dad2c3954ebe127d3811819f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 36e57cce27ed07da2a17f1fe2af8d3be0186a175
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110703787"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284656"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -51,7 +51,7 @@ Azure DevTest Labs でのアクセスは、[Azure のロール ベースのア�
 > 
 
 ## <a name="add-an-owner-or-user-at-the-lab-level"></a>ラボ レベルでの所有者またはユーザーの追加
-所有者とユーザーは Azure Portal 経由で、ラボレベルで追加できます。 ユーザーには、有効な [Microsoft アカウント (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)を持つ外部ユーザーも可能です。
+所有者とユーザーは Azure Portal 経由で、ラボレベルで追加できます。 ユーザーには、有効な [Microsoft アカウント (MSA)](/azure/devtest-labs/devtest-lab-faq#what-is-a-microsoft-account)を持つ外部ユーザーも可能です。
 次のステップでは、Azure DevTest Labs で所有者またはユーザーをラボに追加するプロセスについて説明します。
 
 1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする

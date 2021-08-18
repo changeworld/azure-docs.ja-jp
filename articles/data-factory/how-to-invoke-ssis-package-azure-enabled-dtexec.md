@@ -2,16 +2,17 @@
 title: Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services (SSIS) パッケージを実行する
 description: Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services (SSIS) パッケージを実行する方法を説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 980e8e3c2f2c1ca1dc716df1e77caaa3fe3181aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f30e48db1cafa7ea132de1e19b7ed45990a75b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740940"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services パッケージを実行する
 

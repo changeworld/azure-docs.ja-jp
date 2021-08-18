@@ -2,13 +2,13 @@
 title: Azure Storage キューと Service Bus キューの比較
 description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 ms.topic: article
-ms.date: 04/12/2021
-ms.openlocfilehash: a63ed276981a692b96b7e7369093af221b3d3a5f
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.date: 06/15/2021
+ms.openlocfilehash: a93123ded873a5020e440c606fcd4f8278baa4aa
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190129"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112120169"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、どちらのソリューションが自分のニーズに最も適しているかについて、より多くの情報に基づいて判断できるようになります。
@@ -203,9 +203,6 @@ Service Bus キューには、次のような多くの高度な機能が用意�
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [キュー Storage Service を使用する方法](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
-* [Azure Service Bus のキューとトピックの概要 (ブログの投稿)](https://www.serverless360.com/blog/azure-service-bus-queues-vs-topics)
-* [The Developer's Guide to Service Bus (Service Bus の開発者向けガイド)](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
-* [Using the Queuing Service in Azure (Azure でのキュー サービスの使用)](https://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 
 [Azure portal]: https://portal.azure.com
 

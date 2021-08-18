@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 161266a69308175637f5967b2ded48621d4d9c53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 685bdc3f67594c51f6ab749c33ab30e940faee34
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102424072"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288286"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
@@ -262,7 +262,7 @@ namespace VisualSearchInsightsToken
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
-* このコードをコンパイルして実行するための、[JDK 7 または 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+* このコードをコンパイルして実行するための、[JDK 7 または 8](/azure/developer/java/fundamentals/java-support-on-azure)。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
 
 
 ## <a name="run-the-java-application"></a>Java アプリケーションを実行する

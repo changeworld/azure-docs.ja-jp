@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
-ms.openlocfilehash: ed1101d75685eb397eb3e45683adb886288ee49b
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 59550287dfa749e22334f9f238efa5be70b70252
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809006"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778961"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>多くのワークスペースのインシデントを一度に操作する 
 
  Azure Sentinel の機能を最大限に活用するために、Microsoft では 1 つのワークスペース環境を使用することをお勧めしています。 ただし、場合によっては、複数のテナントにまたがって複数のワークスペースが必要になるユース ケースがあります。たとえば、[マネージド セキュリティ サービス プロバイダー (MSSP)](./multiple-tenants-service-providers.md) とその顧客の場合が挙げられます。 **[複数ワークスペース ビュー]** を使用すると、複数のワークスペース (場合によってはテナント) 全体のセキュリティ インシデントを同時に表示して操作でき、組織のセキュリティの応答性を完全に可視化して制御できます。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="entering-multiple-workspace-view"></a>[複数ワークスペース ビュー] に入る
 
@@ -54,6 +56,6 @@ Azure Sentinel を開くと、選択したすべてのテナントとサブス�
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、複数の Azure Sentinel ワークスペースのインシデントを同時に表示して操作する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
 

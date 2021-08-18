@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2021
 ms.author: yelevin
-ms.openlocfilehash: b5c9b2d6a586d440218cf4740155bc9fa3bdd3d7
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 60d72bcc687659f27e309942040f46a20aab5d3f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372764"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730984"
 ---
 # <a name="export-and-import-analytics-rules-to-and-from-arm-templates"></a>ARM テンプレート間で分析ルールをエクスポートおよびインポートします
 
@@ -66,5 +66,5 @@ Azure Sentinel デプロイをコードとして管理および制御する一�
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、ARM テンプレート間で分析ルールをエクスポートおよびインポートする方法について学習しました。
-- [カスタム スケジュール済みルール](tutorial-detect-threats-custom.md)を含む、[分析ルール](tutorial-detect-threats-built-in.md)の詳細を確認します。
+- [カスタム スケジュール済みルール](detect-threats-custom.md)を含む、[分析ルール](detect-threats-built-in.md)の詳細を確認します。
 - [ARM テンプレート](../azure-resource-manager/templates/overview.md)の詳細を確認します。

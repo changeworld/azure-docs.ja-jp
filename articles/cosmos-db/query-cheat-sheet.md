@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 2ef8aed7243e8956ad9ca62b630cda0efbd2deb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e62bd96fc21f5cb2cfbf1aca6d3a2187e9b417
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339650"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744654"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB クエリのチート シート
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,6 @@ ms.locfileid: "93339650"
 ## <a name="next-steps"></a>次のステップ
 クエリの記述の詳細については、以下の記事を参照してください。
 * SQL API クエリについては、[SQL API を使用したクエリ](tutorial-query-sql-api.md)、[Azure Cosmos DB のための SQL クエリ](./sql-query-getting-started.md)、および[SQL 構文のリファレンス](./sql-query-getting-started.md)を参照してください
-* MongoDB クエリについては、[Azure Cosmos DB の MongoDB 用 API を使用するクエリ](tutorial-query-mongodb.md)と [Azure Cosmos DB の MongoDB 用 API の機能のサポートと構文](mongodb-feature-support.md)に関するページを参照してください
+* MongoDB クエリについては、[Azure Cosmos DB の MongoDB 用 API を使用するクエリ](mongodb/tutorial-query-mongodb.md)と [Azure Cosmos DB の MongoDB 用 API の機能のサポートと構文](mongodb/feature-support-32.md)に関するページを参照してください
 * Gremlin API クエリについては、[Gremlin API を使用したクエリ](tutorial-query-graph.md)、[Azure Cosmos DB での Gremlin グラフのサポート](gremlin-support.md)を参照してください
-* テーブル API クエリについては、[テーブル API を使用したクエリ](tutorial-query-table.md)を参照してください
+* テーブル API クエリについては、[テーブル API を使用したクエリ](table/tutorial-query-table.md)を参照してください

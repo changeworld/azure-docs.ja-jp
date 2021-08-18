@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: JenCook
-ms.openlocfilehash: 6ad2bbb206d1765d4070e744eeab9708ea0db366
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 72c3f523ebc3cfef43709153c09c416d32e0b1b8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633323"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469602"
 ---
 # <a name="run-an-application-by-using-fortanix-confidential-computing-manager"></a>Fortanix Confidential Computing Manager を使用してアプリケーションを実行する
 
-[Fortanix](https://www.fortanix.com/) の [Fortanix Confidential Computing Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.enclave_manager?tab=Overview) および [Node Agen](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) を使用して Azure Confidential Computing でアプリケーションを実行する方法について説明します。
+[Fortanix](https://www.fortanix.com/) の [Fortanix Confidential Computing Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.em_managed?tab=Overview) および [Node Agen](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) を使用して Azure Confidential Computing でアプリケーションを実行する方法について説明します。
 
 
 Fortanix は、Azure インフラストラクチャで動作する製品とサービスを提供するサード パーティのソフトウェア ベンダーです。 Azure 用の類似したコンフィデンシャル コンピューティング サービスを提供するサード パーティ プロバイダーは他にもあります。

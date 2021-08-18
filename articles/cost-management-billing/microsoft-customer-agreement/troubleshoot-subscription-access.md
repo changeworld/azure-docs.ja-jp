@@ -4,17 +4,17 @@ description: この記事は、新しい Microsoft 顧客契約への署名後�
 author: bandersmsft
 tags: billing
 ms.service: cost-management-billing
-ms.subservice: billing
+ms.subservice: microsoft-customer-agreement
 ms.topic: troubleshooting
 ms.date: 04/07/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: 887c3018c7791fe3e827a7cb974a237cdf2358dd
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dff361bb3413bfc57383a284e5c162c61e7d6212
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129677"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724460"
 ---
 # <a name="troubleshoot-subscription-access-after-you-sign-a-microsoft-customer-agreement"></a>Microsoft 顧客契約への署名後に発生したサブスクリプション アクセスの問題をトラブルシューティングする
 

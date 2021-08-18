@@ -4,12 +4,12 @@ description: Azure Service Bus で Java Message Service (JMS) を使用する方
 ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 894821444f74248b73578595df943cb3a0025360
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b27784e4f70a72ae5b114d2796c2aaeace8068ab
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698401"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414695"
 ---
 # <a name="use-java-message-service-20-api-with-azure-service-bus-premium"></a>Azure Service Bus Premium で Java Message Service 2.0 API を使用する
 
@@ -38,7 +38,7 @@ Java on Azure 用の開発環境を準備する方法について詳しくは、
 
 ## <a name="what-jms-features-are-supported"></a>どのような JMS 機能がサポートされていますか?
 
-[!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
+[!INCLUDE [service-bus-jms-features-list](./includes/service-bus-jms-feature-list.md)]
 
 ## <a name="downloading-the-java-message-service-jms-client-library"></a>Java Message Service (JMS) クライアント ライブラリのダウンロード
 

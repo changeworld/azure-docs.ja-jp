@@ -6,13 +6,13 @@ author: su-jie
 ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 09/10/2020
-ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 06/29/2021
+ms.openlocfilehash: 29105070ea3dfb0a41db194e03095b2611a08393
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036964"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110639"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>CI/CD ツールを使用して Azure Stream Analytics ジョブのビルド、テスト、デプロイを自動化する
 

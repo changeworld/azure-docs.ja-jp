@@ -2,14 +2,14 @@
 title: Event Grid 非同期操作の状態
 description: Azure での Event Grid 非同期操作を追跡する方法について説明します。 長時間実行の操作の状態を取得するために使用する値が表示されます。
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/2/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74fe395a289c8de43cd268e957cc43f7ad359405
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89011686"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466767"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Event Grid 非同期 Azure 操作の追跡
 Azure の REST 操作の中には、操作を迅速に完了できないため、非同期的に実行されるものがあります。 この記事では、応答で返される値を通じて非同期操作の状態を追跡する方法について説明します。  

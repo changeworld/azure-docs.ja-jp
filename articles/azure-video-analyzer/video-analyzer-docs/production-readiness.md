@@ -2,13 +2,13 @@
 title: 運用環境の準備状況とベスト プラクティス
 description: この記事では、運用環境で Azure Video Analyzer モジュールを構成してデプロイする方法について説明します。
 ms.topic: reference
-ms.date: 04/26/2021
-ms.openlocfilehash: af353c6845259f09edf4f1cb6ee4282f0fae6ba9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 1f7477be52d99bdfca91fd0d122d2db63ef27827
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387848"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602127"
 ---
 # <a name="production-readiness-and-best-practices"></a>運用環境の準備状況とベスト プラクティス
 
@@ -123,40 +123,6 @@ sudo chown -R localedgeuser:localedgegroup /var/lib/videoanalyzer
 クイックスタートやチュートリアル (「[継続的なビデオ記録](use-continuous-video-recording.md)」など) のサンプル パイプラインを見るとわかるように、メディア キャッシュ ディレクトリ (`localMediaCachePath`) は `applicationDataDirectory` の下のサブディレクトリを使用します。 キャッシュには一時的なデータが含まれているため、これが推奨される方法です。
 
 また、トラフィックのセキュリティを確保するために TLS 暗号化を使用する運用環境に対して推奨されているように、`allowedUnsecuredEndpoints` は `true` に設定されています。
-
-### <a name="naming-video-or-files"></a>ビデオまたはファイルの名前付け
-
-パイプラインを使用すると、ビデオをクラウドに記録したり、エッジ デバイス上の MP4 ファイルとして記録したりすることができます。 これらは、[継続的なビデオ記録](use-continuous-video-recording.md)、または[イベントベースのビデオ記録](record-event-based-live-video.md)を行うことで生成できます。
-
-クラウドに記録する場合、ビデオ リソースに付ける名前の構造は "<anytext>-${System.TopologyName}-${System.PipelineName}" のようにすることをお勧めします。 特定のライブ パイプラインは 1 つの RTSP 対応 IP カメラにのみ接続できます。また、そのカメラからの入力は 1 つのビデオ リソースに記録する必要があります。 たとえば、次のように `VideoName` を Video Sink 上に設定できます。
-
-```
-"VideoName": "sampleVideo-${System.TopologyName}-${System.PipelineName}"
-```
-置換パターンは、 **${variableName}** のように、`$` 記号の後に中かっこを続けて指定します。
-
-イベント ベースの記録を使用してエッジ デバイス上の MP4 ファイルに記録する場合は、次のコマンドを使用できます。
-
-```
-"fileNamePattern": "sampleFilesFromEVR-${System.TopologyName}-${System.PipelineName}-${fileSinkOutputName}-${System.Runtime.DateTime}"
-```
-
-> [!Note]
-> 上記の例では、変数 **fileSinkOutputName** は、ライブ パイプラインを作成するときに定義するサンプル変数名です。 これは、システム変数では **ありません**。 **DateTime** を使用することで、イベントごとに一意の MP4 ファイル名を付けることができます。
-
-#### <a name="system-variables"></a>システム変数
-
-使用できるシステム定義変数には、次のものがあります。
-
-| システム変数        | 説明                                                  | 例              |
-| :--------------------- | :----------------------------------------------------------- | :------------------- |
-| System.Runtime.DateTime        | ISO8601 ファイルに準拠した形式の UTC 日付時刻 (基本表現 YYYYYMMDDThhmmss)。 | 20200222T173200Z     |
-| System.Runtime.PreciseDateTime | ミリ秒付きの ISO8601 ファイルに準拠した形式の UTC 日付時刻 (基本表現 YYYYMMDDThhmmss.sss)。 | 20200222T173200.123Z |
-| System.TopologyName    | ユーザーが指定した実行中のパイプライン トポロジの名前。          | IngestAndRecord      |
-| System.PipelineName    | ユーザーが指定した実行中のライブ パイプラインの名前。          | camera001            |
-
-> [!Tip]
-> System.Runtime.PreciseDateTime と System.Runtime.DateTime は、クラウド内のビデオに名前を付けるときには使用できません。
 
 ### <a name="tips-about-maintaining-your-edge-device"></a>エッジ デバイスの維持に関するヒント
 

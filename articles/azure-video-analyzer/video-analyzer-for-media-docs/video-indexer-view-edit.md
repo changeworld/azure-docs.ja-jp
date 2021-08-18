@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) の分析情報を表示および編集する - Azure
-titlesuffix: Azure Media Services
+titlesuffix: Azure Video Analyzer for Media
 description: この記事では、Azure Video Analyzer for Media (旧称 Video Indexer) の分析情報を表示および編集する方法について説明します。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 2bf819c89ae20e8a1572526b0f2733ccc420614e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7cbe14a10f18f44831ec360059ae608073ad3a99
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386532"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115228"
 ---
 # <a name="view-and-edit-video-analyzer-for-media-insights"></a>Video Analyzer for Media の分析情報を表示および編集する
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 227b8d9c797a8fec81d8792a48f456bcda6a838c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 70f318c10799c1cf30265373d8971faddfafc072
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958506"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180458"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -68,7 +68,7 @@ ms.locfileid: "111958506"
 
 ## <a name="centralize-identity-management"></a>ID 管理を一元化する
 
-[ハイブリッド ID](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) のシナリオでは、オンプレミスとクラウドのディレクトリを統合することをお勧めします。 この統合により、アカウントの作成場所に関係なく、IT チームが 1 つの場所からアカウントを管理できるようになります。 また、クラウドとオンプレミスの両方のリソースにアクセスするための共通の ID が提供されるので、ユーザーの生産性が向上します。
+ハイブリッド ID のシナリオでは、オンプレミスとクラウドのディレクトリを統合することをお勧めします。 この統合により、アカウントの作成場所に関係なく、IT チームが 1 つの場所からアカウントを管理できるようになります。 また、クラウドとオンプレミスの両方のリソースにアクセスするための共通の ID が提供されるので、ユーザーの生産性が向上します。
 
 **ベスト プラクティス**: 単一の Azure AD インスタンスを確立します。 一貫性と単一の権威ソースにより、明確さが増し、ヒューマン エラーや構成の複雑さによるセキュリティ リスクが軽減されます。
 **詳細**: 1 つの Azure AD ディレクトリを、企業や組織のアカウントに対する権威ソースとして指定します。
@@ -339,7 +339,7 @@ Azure RBAC などの機能を使用したデータ アクセス制御を適用�
 ID システムを能動的に監視しないと、ユーザーの資格情報が侵害されるリスクがあります。 侵害された資格情報を用いた疑わしい活動が行われていることを把握しないと、この種の脅威を緩和することはできません。
 
 ## <a name="use-azure-ad-for-storage-authentication"></a>ストレージの認証に Azure AD を使用する
-[Azure Storage](../../storage/common/storage-auth-aad.md) は、Blob Storage や Queue storage に対する Azure AD での認証と承認をサポートします。 Azure AD 認証では、Azure のロールベースのアクセス制御を使用して、個々の BLOB コンテナーやキューに対する特定のアクセス許可を、ユーザー、グループ、アプリケーションに付与できます。
+[Azure Storage](../../storage/blobs/authorize-access-azure-active-directory.md) は、Blob Storage や Queue storage に対する Azure AD での認証と承認をサポートします。 Azure AD 認証では、Azure のロールベースのアクセス制御を使用して、個々の BLOB コンテナーやキューに対する特定のアクセス許可を、ユーザー、グループ、アプリケーションに付与できます。
 
 [ストレージへのアクセスを認証するには Azure AD](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/) を使用することをお勧めします。
 

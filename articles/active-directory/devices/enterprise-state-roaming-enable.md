@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80a357b58ec7b17cc0da3e8247a668faf7ee413
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b95226ba8eb0d780ee20d761e3132a9c6bfd9e19
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286476"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200764"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
 
-Enterprise State Roaming を有効にすると、組織には、Azure Information Protection の Azure Rights Management 保護を制限付きで無料使用できるライセンスが自動的に付与されます。 この無料サブスクリプションは、Enterprise State Roaming サービスで同期されたエンタープライズ設定データおよびアプリケーション データの暗号化と暗号化の解除に限定されます。 Azure Rights Management サービスのすべての機能を使用するには、[有料サブスクリプション](https://azure.microsoft.com/pricing/details/information-protection/)が必要です。
+Enterprise State Roaming を有効にすると、組織には、Azure Information Protection の Azure Rights Management 保護を制限付きで無料使用できるライセンスが自動的に付与されます。 この無料サブスクリプションは、Enterprise State Roaming サービスで同期されたエンタープライズ設定データおよびアプリケーション データの暗号化と暗号化の解除に限定されます。 Azure Rights Management サービスのすべての機能を使用するには、[有料サブスクリプション](https://azure.microsoft.com/services/information-protection/)が必要です。
 
 > [!NOTE]
 > この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。

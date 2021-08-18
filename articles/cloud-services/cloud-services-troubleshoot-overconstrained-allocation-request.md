@@ -3,17 +3,17 @@ title: Azure にクラウド サービス (クラシック) をデプロイす�
 description: この記事では、Azure にクラウド サービス (クラシック) をデプロイするときの OverconstrainedAllocationRequest 例外を解決する方法について説明します。
 services: cloud-services
 documentationcenter: ''
-author: mamccrea
-ms.author: mamccrea
+author: hirenshah1
+ms.author: hirshah
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 1a5880107aaa414da42fe5e36e0cb3315071d8a0
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 54982085d259ccd678ba66a3f87c9d0bc051528d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877428"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090063"
 ---
 # <a name="troubleshoot-overconstrainedallocationrequest-when-deploying-cloud-services-classic-to-azure"></a>Azure にクラウド サービス (クラシック) をデプロイするときの OverconstrainedAllocationRequest のトラブルシューティング
 

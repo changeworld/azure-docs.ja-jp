@@ -3,19 +3,19 @@ title: Long Audio API - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 長い形式のテキスト読み上げ (オーディオ ブックなど) の非同期合成のために Long Audio API がどのように設計されているか説明します。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.author: trbye
-ms.openlocfilehash: 92a41c3b18b96dc7d12fe7a0cfdae022fcb4d363
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 62546d4f7a1cd93d787faee22132d967bb0def8d
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079158"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067063"
 ---
 # <a name="long-audio-api"></a>Long Audio API
 

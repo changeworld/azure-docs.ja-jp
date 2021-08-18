@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 52a5e60537aaaa9a4fcd7f8345a21854d48a2076
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 120ef18c0796f56b083bcbbc51c82ab0f17afac5
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076118"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285015"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Linux VM 用の Azure Disk Encryption のサンプル スクリプト
 
@@ -65,7 +65,7 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Azure AD アプリを使用せずに VM を暗号化また暗号化解除する
 
-- [既存または実行中の Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)
+- [既存または実行中の Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm-without-aad)
 - [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm)
     - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
 
@@ -74,11 +74,11 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
 - [既存または実行中の Linux VM でディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm)
 
 
--  [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm)
+-  [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm)
     - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
 
 
-- [事前に暗号化された VHD/ストレージ BLOB から、新しい暗号化されたマネージド ディスクを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+- [事前に暗号化された VHD/ストレージ BLOB から、新しい暗号化されたマネージド ディスクを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/create-encrypted-managed-disk)
     - 事前に暗号化された VHD とその対応する暗号化設定がある場合、新しい暗号化されたマネージド ディスクが作成されます
 
 ## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>実行中の Linux VM での OS ドライブの暗号化

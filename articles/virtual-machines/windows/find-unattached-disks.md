@@ -2,18 +2,18 @@
 title: 接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
 description: Azure PowerShell を使用して、接続されていない Azure 管理ディスクおよび非管理対象ディスク (VHD/ページ BLOB) を見つけて削除する方法。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 02/22/2019
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51c3255b3c45ea0d102f3cce96ef7a5d6c31410f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 308ea4042a1b5b72c2cd722928de6a729c3ca372
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670222"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356115"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
 

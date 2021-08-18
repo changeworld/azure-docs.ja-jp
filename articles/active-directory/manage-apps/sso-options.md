@@ -2,21 +2,21 @@
 title: Azure AD のシングル サインオン オプション
 description: Azure Active Directory のシングル サインオン (SSO) で利用できるオプションについて説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: mtillman
-ms.reviewer: arvindh, japere
-ms.openlocfilehash: 965c3898a0175bbf448d8c59b9f7853c8aeb37bd
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 99d478738c8fc7a2e67bb0585b997afe4b42ecb2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082291"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738772"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD のシングル サインオン オプション
 
@@ -32,7 +32,7 @@ ms.locfileid: "112082291"
 
 シングル サインオンのためにアプリケーションを構成する方法はいくつかあります。 シングル サインオンの方法の選択は、そのアプリケーションが認証に関してどのように構成されているかによって異なります。
 
-- クラウド アプリケーションでは、OpenID Connect、OAuth、SAML、パスワードベース、リンク、または無効化の方法をシングル サインオンに使用できます。 
+- クラウド アプリケーションでは、OpenID Connect、OAuth、SAML、パスワードベース、リンク、または無効化の方法をシングル サインオンに使用できます。
 - オンプレミスのアプリケーションでは、シングル サインオンのために、パスワード ベースの統合 Windows 認証、ヘッダー ベースの方法、リンクされる方法、または無効化の方法を使用できます。 オンプレミスの選択肢は、アプリケーションのアプリケーション プロキシが構成されている場合に機能します。
 
 このフローチャートは、実際の状況に最適なシングル サインオンの方法を判断するのに役立ちます。
@@ -132,6 +132,7 @@ Azure AD 管理者が資格情報を管理する場合:
 - 管理者は、この場合も、アプリケーションの新しい資格情報を設定できます。
 
 ## <a name="linked-sign-on"></a>リンクされたサインオン
+
 Azure AD は、リンクされたサインオンによって、既に別のサービスでのシングル サインオンのために構成されているシングル サインオンをアプリケーションに提供できます。 リンクされたアプリケーションは、Office 365 ポータルまたは Azure AD の MyApps ポータルで、エンドユーザーに表示できます。 たとえばユーザーは、Active Directory フェデレーション サービス 2.0 (AD FS) でシングル サインオン用に構成されているアプリケーションを、Office 365 ポータルから起動できます。 Office 365 ポータルまたは Azure AD の MyApps ポータルから起動される、リンクされたアプリケーションについても、追加のレポートが用意されています。 リンクされたサインオン用にアプリケーションを構成するには、「[リンクされたサインオンの構成](configure-linked-sign-on.md)」を参照してください。
 
 ### <a name="linked-sign-on-for-application-migration"></a>アプリケーション移行の場合のリンクされたサインオン
@@ -141,7 +142,7 @@ Azure AD は、リンクされたサインオンによって、既に別のサ�
 リンクされているアプリケーションでいったんユーザーが認証されたら、エンドユーザーにシングル サインオン アクセスが提供される前に、アカウント レコードを作成する必要があります。 このアカウント レコードのプロビジョニングは、自動的に実行することも、管理者が手動で実行することもできます。
 
 >[!NOTE]
->リンクされたアプリケーションに対して条件付きアクセス ポリシーまたは多要素認証を適用することはできません。 これは、リンクされたアプリケーションでは Azure AD によるシングル サインオン機能が提供されないためです。 リンクされたアプリケーションを構成する場合は、単にアプリ起動ツールまたは MyApps ポータルに表示されるリンクを追加するだけです。 
+>リンクされたアプリケーションに対して条件付きアクセス ポリシーまたは多要素認証を適用することはできません。 これは、リンクされたアプリケーションでは Azure AD によるシングル サインオン機能が提供されないためです。 リンクされたアプリケーションを構成する場合は、単にアプリ起動ツールまたは MyApps ポータルに表示されるリンクを追加するだけです。
 
 ## <a name="disabled-sso"></a>無効化 SSO
 
@@ -164,6 +165,7 @@ SP によって開始された SAML ベースのシングル サインオン用�
 IWA のためのオンプレミス アプリの構成については、[アプリケーション プロキシを使用して、アプリケーションに対するシングル サインオンのための Kerberos 制約付き委任を行う](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)ことに関するページを参照してください。
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>KCD を使ったシングル サインオンのしくみ
+
 この図は、IWA を使用するオンプレミス アプリケーションにユーザーがアクセスするときの流れを説明するものです。
 
 ![Microsoft Azure AD 認証フロー図](../app-proxy/media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
@@ -185,8 +187,8 @@ IWA のためのオンプレミス アプリの構成については、[アプ�
 
 ヘッダーベースの認証の詳細については、[ヘッダーベースの SSO](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md) に関する記事をご覧ください。
 
-
 ## <a name="next-steps"></a>次のステップ
-* [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
-* [シングル サインオンのデプロイを計画する](plan-sso-deployment.md)
-* [オンプレミス アプリでのシングル サインオン](../app-proxy/application-proxy-config-sso-how-to.md)
+
+- [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
+- [シングル サインオンのデプロイを計画する](plan-sso-deployment.md)
+- [オンプレミス アプリでのシングル サインオン](../app-proxy/application-proxy-config-sso-how-to.md)

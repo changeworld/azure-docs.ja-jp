@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 4/7/2021
-ms.openlocfilehash: 07b7715935756293467f2a3004109df9bf679661
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 7/7/2021
+ms.openlocfilehash: d3f8bab950af095a457347b825966a0845ef36f6
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030004"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113506783"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Power BI 出力
 
@@ -80,5 +80,5 @@ Datetime | String | String |  Datetime | String
 
 ## <a name="next-steps"></a>次のステップ
 
-* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する (プレビュー)](powerbi-output-managed-identity.md)
+* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](powerbi-output-managed-identity.md)
 * [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)

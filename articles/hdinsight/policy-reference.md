@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 用の組み込みポリシー定義
 description: Azure HDInsight 用の Azure Policy 組み込みポリシー定義の一覧を示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: subject-policy-reference
-ms.openlocfilehash: df4854d51d299583638902e1bfc37d37b01c7906
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 26429ba751f3e5f36cc9600def51a3e50c120d95
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018694"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182809"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-hdinsight"></a>Azure HDInsight 用の Azure Policy 組み込み定義
 

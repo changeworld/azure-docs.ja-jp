@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: a3e21abe2f4ed24726256689af16b48ed6721ce8
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 9166b2fae5943f1ab264d0c69ad91c630337e1cb
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366149"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862588"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Node.js SDK:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "107366149"
 |SDK のダウンロード  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](/javascript/api/%40azure/cosmos/)
 |SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-sdk-for-js)
-|SDK への参加 | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+|SDK への参加 | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/main)
 | サンプル | [Node.js コード サンプル](sql-api-nodejs-samples.md)
 | 概要チュートリアル | [JavaScript SDK の開始](sql-api-nodejs-get-started.md)
 | Web アプリ チュートリアル | [Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](sql-api-nodejs-application.md)
@@ -474,7 +474,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |2020 年 8 月 30 日 |
 
 ## <a name="faq"></a>よく寄せられる質問
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。

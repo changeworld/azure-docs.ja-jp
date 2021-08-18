@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 27a6fcde84f248fa69dd39091a16ac8edf64ddf0
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 011d3092160b21f45f664f2c67245bcc51da5e6b
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143235"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297779"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Azure Synapse Analytics の Synapse Studio とストレージ間の接続のトラブルシューティング
 
@@ -31,7 +31,7 @@ Synapse Studio では、リンクされたストレージにあるデータ リ�
 ストレージ コンテナー ノードで:  
 ![ストレージの接続の問題 1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
-**解決策**:アカウントを適切なロールに割り当てるために、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../../storage/common/storage-auth-aad-rbac-portal.md)」を参照してください。
+**解決策**:アカウントを適切なロールに割り当てるために、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../../storage/blobs/assign-azure-role-data-access.md)」を参照してください。
 
 
 ## <a name="case-2-failed-to-send-the-request-to-storage-server"></a>ケース 2:ストレージ サーバーへの要求の送信が失敗した

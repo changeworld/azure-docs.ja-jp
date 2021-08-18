@@ -2,13 +2,13 @@
 title: Azure Relay の例外とその解決方法 | Microsoft Docs
 description: Azure Relay の例外と、それを解決するための推奨されるアクションの一覧。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: e3f9fe2e8aac826bd63d9842bd3380be10e1b87e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: d9097e58557529a646f3b047f7875ba9fc1b95a2
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313948"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668348"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay の例外
 

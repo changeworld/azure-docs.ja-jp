@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用して、リソースを新しい�
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: fdda54f31fe4a85a5ac62d8ce60fffd03c5a785d
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: ec23b4306f088328bfb72f3cf9071a70f8eb2307
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526642"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586781"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
@@ -234,7 +234,7 @@ az resource move --destination-group newgroup --ids $webapp $plan
 
 ### <a name="validate"></a>検証
 
-[移動の検証操作](/rest/api/resources/resources/moveresources)を使用すると、実際にリソースを移動することなく、必要な移動のシナリオをテストすることができます。 この操作は、正常に移動されるかどうかを確認する目的で使用します。 移動要求を送信すると、検証が自動的に呼び出されます。 この操作は、結果を事前に確認する必要がある場合にのみ使用してください。 この操作を実行するには、次の要件を満たす必要があります。
+[移動の検証操作](/rest/api/resources/resources/validate-move-resources)を使用すると、実際にリソースを移動することなく、必要な移動のシナリオをテストすることができます。 この操作は、正常に移動されるかどうかを確認する目的で使用します。 移動要求を送信すると、検証が自動的に呼び出されます。 この操作は、結果を事前に確認する必要がある場合にのみ使用してください。 この操作を実行するには、次の要件を満たす必要があります。
 
 * 移動元のリソース グループの名前
 * 移動先のリソース グループのリソース ID

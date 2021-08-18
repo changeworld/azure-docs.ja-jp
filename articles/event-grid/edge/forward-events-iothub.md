@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 9dd47981ba3067fefefb7a2360894a1f57ff7a64
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 30fa58a79068a1dc367f4ac330efd01685a4401c
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368043"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415590"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>チュートリアル: イベントを IoTHub に転送する
 
@@ -33,7 +33,7 @@ ms.locfileid: "110368043"
 * **Azure サブスクリプション**: まだお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free)を作成してください。 
 * **Azure IoT Hub および IoT Edge デバイス**: まだお持ちでない場合は、[Linux](../../iot-edge/quickstart-linux.md) または [Windows](../../iot-edge/quickstart.md) デバイスのクイック スタートの手順に従ってください。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-deploy-iot-edge.md)]
 
 ## <a name="create-topic"></a>トピックの作成
 
@@ -81,7 +81,7 @@ ms.locfileid: "110368043"
 
 サブスクライバーは、トピックに発行されたイベントの受信登録ができます。 イベントを受信するには、関心のあるトピックに関する Event Grid サブスクリプションを作成する必要があります。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 次の内容を含む subscription4.json を作成します。 ペイロードの詳細については、[API のドキュメント](api.md)を参照してください。
 

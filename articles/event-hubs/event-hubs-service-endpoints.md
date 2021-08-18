@@ -3,12 +3,12 @@ title: 仮想ネットワーク サービス エンドポイント - Azure Event
 description: この記事では、Microsoft.EventHub サービス エンドポイントを仮想ネットワークに追加する方法について説明します。
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: bc13878be3b596d514ad2ed8ad024064df6e6fb4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 33ae280b49b4f2afca39e8de8954f836737c9d7c
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375339"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416220"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>特定の仮想ネットワークから Azure Event Hubs 名前空間へのアクセスを許可する 
 
@@ -78,7 +78,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
     > [!NOTE]
     > 特定の IP アドレスまたは範囲にアクセスを制限する方法については、[特定の IP アドレスまたは範囲からのアクセスの許可](event-hubs-ip-filtering.md)に関するページを参照してください。
 
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+[!INCLUDE [event-hubs-trusted-services](./includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 次の Resource Manager テンプレートの例では、既存の Event Hubs 名前空間に仮想ネットワーク規則を追加します。 ネットワーク規則では、仮想ネットワーク内のサブネットの ID を指定します。 

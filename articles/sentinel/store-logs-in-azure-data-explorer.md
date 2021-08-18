@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: 584f108ea534b8703b941d91b7d03b6275ea6134
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1f9d0a146c557f50c0cea776c6e3ae6853377df5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958339"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748075"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>長期的なログ保持のために Azure Data Explorer を統合する
 
@@ -31,7 +31,7 @@ ms.locfileid: "111958339"
 
 Azure Data Explorer は、ログおよびデータ分析に高度に最適化されたビッグ データ分析プラットフォームです。 Azure Data Explorer は、Kusto クエリ言語 (KQL) をクエリ言語として使用するため、Azure Sentinel データ ストレージの代替として適しています。 Azure Data Explorer をデータ ストレージに使用することで、Azure Data Explorer と Azure Sentinel の両方で、クロスプラットフォーム クエリを実行し、データを視覚化できます。
 
-詳細については、Azure Data Explorer の[ドキュメント](/azure/data-explorer/)と[ブログ](https://azure.microsoft.com/en-us/blog/tag/azure-data-explorer/)をご覧ください。
+詳細については、Azure Data Explorer の[ドキュメント](/azure/data-explorer/)と[ブログ](https://azure.microsoft.com/blog/tag/azure-data-explorer/)をご覧ください。
 
 ### <a name="when-to-integrate-with-azure-data-explorer"></a>Azure Data Explorer と統合するタイミング
 
@@ -239,5 +239,5 @@ Azure Sentinel データを Azure Data Explorer に格納するときは、次�
 
 詳細については、次をご覧ください。
 
-- [チュートリアル:Azure Sentinel でインシデントを調査する](tutorial-investigate-cases.md)
+- [チュートリアル:Azure Sentinel でインシデントを調査する](investigate-cases.md)
 - [Azure Sentinel で脅威を検出する](hunting.md)

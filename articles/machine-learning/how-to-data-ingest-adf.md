@@ -12,16 +12,16 @@ ms.reviewer: larryfr
 ms.date: 01/26/2021
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 2874878c8b03b6cf63c2a5214a0de68000d51569
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 401b565d69797bc4880729dd5f5c4af3e0012f6f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885634"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736523"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory を使用したデータ インジェスト
 
-この記事では、[Azure Data Factory](../data-factory/introduction.md) を使用したデータ インジェスト パイプラインの作成に使用できるオプションについて説明します。 この Azure Data Factory パイプラインは、[Azure Machine Learning](overview-what-is-azure-ml.md) で使用するデータを取り込むために使用されます。 Data Factory を使用すると、データの抽出、変換、読み込み (ETL) を簡単に実行できます。 変換されてストレージに読み込まれたデータは、Azure Machine Learning での機械学習モデルのトレーニングに使用できます。
+この記事では、[Azure Data Factory](../data-factory/introduction.md) を使用したデータ インジェスト パイプラインの作成に使用できるオプションについて説明します。 この Azure Data Factory パイプラインは、[Azure Machine Learning](overview-what-is-azure-machine-learning.md) で使用するデータを取り込むために使用されます。 Data Factory を使用すると、データの抽出、変換、読み込み (ETL) を簡単に実行できます。 変換されてストレージに読み込まれたデータは、Azure Machine Learning での機械学習モデルのトレーニングに使用できます。
 
 単純なデータ変換は、[データ フロー](../data-factory/control-flow-execute-data-flow-activity.md)などのネイティブ Data Factory アクティビティとインストルメントを使用して処理できます。 より複雑なシナリオについては、何らかのカスタム コードを使用してデータを処理できます。 たとえば、Python や R コードです。
 

@@ -2,17 +2,18 @@
 title: Azure-SSIS Integration Runtime パッケージ ストアを使用したパッケージの管理
 description: Azure-SSIS Integration Runtime パッケージ ストアを使用してパッケージを管理する方法について説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 66fdd20e66360be7cdaa6d918e18ca09c413da07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac2939e8c57b9b630de2fca1800c47cee29652bc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393838"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725413"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Azure-SSIS Integration Runtime パッケージ ストアを使用したパッケージの管理
 

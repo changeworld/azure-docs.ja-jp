@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f9518466aacddee9e31d8bc15f3b89c1f214ab58
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c6b3802add796184714f389b813765945a8d20a4
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738001"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183906"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C と共に BioCatch を構成する
 
@@ -141,7 +141,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
           </ClaimType> 
 
-    <ClaimsSchema> 
+    </ClaimsSchema> 
     ```
 
 5. クライアント セッション ID フィールドに対して、セルフアサート クレーム プロバイダーを構成します。
@@ -175,7 +175,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
               <OutputClaims> 
 
-                <OutputClaim ClaimTypeReferenceId="clientSessionId" Required="false" DefaultValue="100"/> 
+                <OutputClaim ClaimTypeReferenceId="clientSessionId" Required="false" DefaultValue="100"/> 
 
               </OutputClaims> 
 
@@ -195,11 +195,11 @@ document.getElementById("clientSessionId").style.display = 'none';
 
           <DisplayName>Technical profile for BioCatch API to return session information</DisplayName> 
 
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" /> 
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 
           <Metadata> 
 
-            <Item Key="ServiceUrl">https://biocatch-url.com/api/v6/score?customerID=<customerid>&amp;action=getScore&amp;uuid=<uuid>&amp;customerSessionID={clientSessionId}&amp;solution=ATO&amp;activtyType=<activity_type>&amp;brand=<brand></Item> 
+            <Item Key="ServiceUrl">https://biocatch-url.com/api/v6/score?customerID=<customerid>&amp;action=getScore&amp;uuid=<uuid>&amp;customerSessionID={clientSessionId}&amp;solution=ATO&amp;activtyType=<activity_type>&amp;brand=<brand></Item>
 
             <Item Key="SendClaimsIn">Url</Item> 
 
@@ -248,48 +248,47 @@ document.getElementById("clientSessionId").style.display = 'none';
    1. 返されたクレームの "*リスク*" が "*低い*" 場合は、MFA の手順をスキップします。それ以外の場合は、MFA をユーザーに強制します
 
     ```XML
-    <OrchestrationStep Order="8" Type="ClaimsExchange"> 
+    <OrchestrationStep Order="8" Type="ClaimsExchange"> 
 
-              <ClaimsExchanges> 
+          <ClaimsExchanges> 
 
-                <ClaimsExchange Id="clientSessionIdInput" TechnicalProfileReferenceId="login-NonInteractive-clientSessionId" /> 
+            <ClaimsExchange Id="clientSessionIdInput" TechnicalProfileReferenceId="login-NonInteractive-clientSessionId" /> 
 
-              </ClaimsExchanges> 
+          </ClaimsExchanges> 
 
-            </OrchestrationStep> 
+        </OrchestrationStep> 
 
-            <OrchestrationStep Order="9" Type="ClaimsExchange"> 
+        <OrchestrationStep Order="9" Type="ClaimsExchange"> 
 
-              <ClaimsExchanges> 
+          <ClaimsExchanges> 
 
-                <ClaimsExchange Id="BcGetScore" TechnicalProfileReferenceId=" BioCatch-API-GETSCORE" /> 
+            <ClaimsExchange Id="BcGetScore" TechnicalProfileReferenceId=" BioCatch-API-GETSCORE" /> 
 
-              </ClaimsExchanges> 
+          </ClaimsExchanges> 
 
-            </OrchestrationStep> 
+        </OrchestrationStep> 
 
-            <OrchestrationStep Order="10" Type="ClaimsExchange"> 
+        <OrchestrationStep Order="10" Type="ClaimsExchange"> 
 
-              <Preconditions> 
+          <Preconditions> 
 
-                <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
+            <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
 
-                  <Value>riskLevel</Value> 
+              <Value>riskLevel</Value> 
 
-                  <Value>LOW</Value> 
+              <Value>LOW</Value> 
 
-                  <Action>SkipThisOrchestrationStep</Action> 
+              <Action>SkipThisOrchestrationStep</Action> 
 
-                </Precondition> 
+            </Precondition> 
 
-              </Preconditions> 
+          </Preconditions> 
 
-              <ClaimsExchanges> 
+          <ClaimsExchanges> 
 
-                <ClaimsExchange Id="PhoneFactor-Verify" TechnicalProfileReferenceId="PhoneFactor-InputOrVerify" /> 
+            <ClaimsExchange Id="PhoneFactor-Verify" TechnicalProfileReferenceId="PhoneFactor-InputOrVerify" /> 
 
-              </ClaimsExchanges>  
-
+          </ClaimsExchanges>
     ```
 
 8. 証明書利用者の構成を設定します (省略可能)
@@ -299,54 +298,53 @@ document.getElementById("clientSessionId").style.display = 'none';
     ```XML
     <RelyingParty> 
 
-        <DefaultUserJourney ReferenceId="SignUpOrSignInMfa" /> 
+    <DefaultUserJourney ReferenceId="SignUpOrSignInMfa" /> 
 
-        <UserJourneyBehaviors> 
+    <UserJourneyBehaviors> 
 
-          <SingleSignOn Scope="Tenant" KeepAliveInDays="30" /> 
+      <SingleSignOn Scope="Tenant" KeepAliveInDays="30" /> 
 
-          <SessionExpiryType>Absolute</SessionExpiryType> 
+      <SessionExpiryType>Absolute</SessionExpiryType> 
 
-          <SessionExpiryInSeconds>1200</SessionExpiryInSeconds> 
+      <SessionExpiryInSeconds>1200</SessionExpiryInSeconds> 
 
-          <ScriptExecution>Allow</ScriptExecution> 
+      <ScriptExecution>Allow</ScriptExecution> 
 
-        </UserJourneyBehaviors> 
+    </UserJourneyBehaviors> 
 
-        <TechnicalProfile Id="PolicyProfile"> 
+    <TechnicalProfile Id="PolicyProfile"> 
 
-          <DisplayName>PolicyProfile</DisplayName> 
+      <DisplayName>PolicyProfile</DisplayName> 
 
-          <Protocol Name="OpenIdConnect" /> 
+      <Protocol Name="OpenIdConnect" /> 
 
-          <OutputClaims> 
+      <OutputClaims> 
 
-            <OutputClaim ClaimTypeReferenceId="displayName" /> 
+        <OutputClaim ClaimTypeReferenceId="displayName" /> 
 
-            <OutputClaim ClaimTypeReferenceId="givenName" /> 
+        <OutputClaim ClaimTypeReferenceId="givenName" /> 
 
-            <OutputClaim ClaimTypeReferenceId="surname" /> 
+        <OutputClaim ClaimTypeReferenceId="surname" /> 
 
-            <OutputClaim ClaimTypeReferenceId="email" /> 
+        <OutputClaim ClaimTypeReferenceId="email" /> 
 
-            <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" /> 
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" /> 
 
-            <OutputClaim ClaimTypeReferenceId="identityProvider" />                 
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />                 
 
-            <OutputClaim ClaimTypeReferenceId="riskLevel" /> 
+        <OutputClaim ClaimTypeReferenceId="riskLevel" /> 
 
-            <OutputClaim ClaimTypeReferenceId="score" /> 
+        <OutputClaim ClaimTypeReferenceId="score" /> 
 
-            <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" /> 
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" /> 
 
-          </OutputClaims> 
+      </OutputClaims> 
 
-          <SubjectNamingInfo ClaimType="sub" /> 
+      <SubjectNamingInfo ClaimType="sub" /> 
 
-        </TechnicalProfile> 
+    </TechnicalProfile> 
 
-      </RelyingParty> 
-
+  </RelyingParty>
     ```
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Azure AD B2C との統合

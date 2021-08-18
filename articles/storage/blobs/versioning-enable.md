@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 06/07/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 0647a777207d5add66b0480a79a52034ee1c3068
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3437d7711aa2959754fcce84a0bbe30ac384898b
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664912"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378549"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
 

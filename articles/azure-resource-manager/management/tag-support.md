@@ -2,13 +2,13 @@
 title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: b196cae267a8d7dc878f055f6b2d70a3ff6f9313
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/20/2021
+ms.openlocfilehash: 4f15fea365fc242f3c7253a39b6a877dd672deb1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773965"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453291"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -993,7 +993,7 @@ ms.locfileid: "107773965"
 > | ReservationRecommendations | いいえ | いいえ |
 > | ReservationSummaries | いいえ | いいえ |
 > | ReservationTransactions | いいえ | いいえ |
-> | Tags | いいえ | いいえ |
+> | タグ | いいえ | いいえ |
 > | tenants | いいえ | いいえ |
 > | 用語 | いいえ | いいえ |
 > | UsageDetails | いいえ | いいえ |
@@ -1619,7 +1619,7 @@ ms.locfileid: "107773965"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | actionGroups | はい | はい |
+> | actionGroups | はい | いいえ |
 > | activityLogAlerts | はい | はい |
 > | alertrules | はい | はい |
 > | autoscalesettings | はい | はい |
@@ -1962,7 +1962,7 @@ ms.locfileid: "107773965"
 > | ------------- | ----------- | ----------- |
 > | netAppAccounts | はい | いいえ |
 > | netAppAccounts / accountBackups | いいえ | いいえ |
-> | netAppAccounts / capacityPools | はい | いいえ |
+> | netAppAccounts / capacityPools | はい | はい |
 > | netAppAccounts / capacityPools / volumes | はい | いいえ |
 > | netAppAccounts / capacityPools / volumes / snapshots | いいえ | いいえ |
 > | netAppAccounts / volumeGroups | いいえ | いいえ |
@@ -2567,7 +2567,7 @@ ms.locfileid: "107773965"
 > | servers / restorableDroppedDatabases | いいえ | いいえ |
 > | servers / serviceobjectives | いいえ | いいえ |
 > | servers / tdeCertificates | いいえ | いいえ |
-> | virtualClusters | はい | はい |
+> | virtualClusters | いいえ | いいえ |
 
 <a id="sqlnote"></a>
 

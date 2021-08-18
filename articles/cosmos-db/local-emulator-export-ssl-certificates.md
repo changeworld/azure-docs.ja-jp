@@ -4,15 +4,15 @@ description: Java、Python、および Node.js アプリで使用する Azure Co
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/17/2020
-author: deborahc
-ms.author: dech
+ms.author: esarroyo
+author: StefArroyo
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 952be09662c2c74f883d63de72bba2b9cb58d0e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 669361fcc5ba5b79f0ec014b60fe4aa630b7b017
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554005"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361425"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書のエクスポート
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

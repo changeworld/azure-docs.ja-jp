@@ -9,18 +9,18 @@ ms.topic: how-to
 author: cawrites
 ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 3126877833774f0f2e874e2a2dfd6cf5cb6181d8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: bcd9758fe77f2b5623c7aba1e145de07e6396e60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796050"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745754"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>移行ガイド: SAP ASE から Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-このガイドでは、SAP Adapter Server Enterprise 用の [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant を使用して、SAP Adapter Server Enterprise (ASE) データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
+このガイドでは、SAP Adapter Server Enterprise 用の [SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant を使用して、SAP Adapter Server Enterprise (ASE) データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
 
 その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "110796050"
 SAP SE データベースの SQL データベースへの移行を開始する前に、次を実行します。
 
 - ソース環境がサポートされていることを確認します。 
-- [SAP Adaptive Server Enterprise (以前の SAP Sybase ASE) 用の SQL Server Migration Assistant](https://www.microsoft.com/en-us/download/details.aspx?id=54256) をダウンロードしてインストールします。
+- [SAP Adaptive Server Enterprise (以前の SAP Sybase ASE) 用の SQL Server Migration Assistant](https://www.microsoft.com/download/details.aspx?id=54256) をダウンロードしてインストールします。
 - ソースとターゲットの両方にアクセスするための接続と十分なアクセス許可があることを確認します。
 
 ## <a name="pre-migration"></a>移行前
@@ -38,7 +38,7 @@ SAP SE データベースの SQL データベースへの移行を開始する�
 
 ### <a name="assess"></a>アクセス
 
-[SAP Adaptive Server Enterprise (以前の SAP Sybase ASE) 用の SQL Server Migration Assistant (SSMA)](https://www.microsoft.com/en-us/download/details.aspx?id=54256) を使用すると、データベース オブジェクトとデータを確認し、移行のためのデータベースを評価し、Sybase データベース オブジェクトを SQL データベースに移行した後、データを SQL データベースに移行することができます。 詳細については、「[SQL Server Migration Assistant for Sybase (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql)」を参照してください。
+[SAP Adaptive Server Enterprise (以前の SAP Sybase ASE) 用の SQL Server Migration Assistant (SSMA)](https://www.microsoft.com/download/details.aspx?id=54256) を使用すると、データベース オブジェクトとデータを確認し、移行のためのデータベースを評価し、Sybase データベース オブジェクトを SQL データベースに移行した後、データを SQL データベースに移行することができます。 詳細については、「[SQL Server Migration Assistant for Sybase (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql)」を参照してください。
 
 評価を作成するには、次の手順を実行します。 
 

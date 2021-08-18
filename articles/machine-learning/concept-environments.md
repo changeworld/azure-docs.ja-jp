@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 11/16/2020
-ms.openlocfilehash: 648dbe6b8d275c832f219cb6f3119ac0bc518a54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52ba4eaf018c7f738df8c32f4c4cc07717aa1f03
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508471"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291019"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?
 
@@ -78,7 +78,7 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
  1. 基本イメージのダウンロードと、Docker 手順の実行
  2. 環境定義で指定されている Conda の依存関係に従った Conda 環境の構築
 
-[ユーザーが管理する依存関係](/python/api/azureml-core/azureml.core.environment.pythonsection)が指定された場合、2 番目の手順は省略されます。 この場合、ユーザーがすべての Python パッケージをインストールする必要があります。それには、Python パッケージを基本イメージに含めるか、最初の手順でカスタム Docker 手順を指定します。 また、ユーザーは Python 実行可能ファイルの正しい場所を指定する必要もあります。 [カスタム Docker 基本イメージ](how-to-deploy-custom-docker-image.md)を使用することも可能です。
+[ユーザーが管理する依存関係](/python/api/azureml-core/azureml.core.environment.pythonsection)が指定された場合、2 番目の手順は省略されます。 この場合、ユーザーがすべての Python パッケージをインストールする必要があります。それには、Python パッケージを基本イメージに含めるか、最初の手順でカスタム Docker 手順を指定します。 また、ユーザーは Python 実行可能ファイルの正しい場所を指定する必要もあります。 [カスタム Docker 基本イメージ](./how-to-deploy-custom-container.md)を使用することも可能です。
 
 ### <a name="image-caching-and-reuse"></a>イメージのキャッシュと再利用
 
@@ -113,4 +113,3 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
 
 * Azure Machine Learning で[環境を作成および使用する](how-to-use-environments.md)方法を確認します。
 * [環境クラス](/python/api/azureml-core/azureml.core.environment%28class%29)については、Python SDK 参照ドキュメントを参照してください。
-* [環境](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)については、R SDK 参照ドキュメントを参照してください。

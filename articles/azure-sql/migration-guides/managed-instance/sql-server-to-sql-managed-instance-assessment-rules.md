@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 489ba57063244d399c9dd0255641568f2db5c6de
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: abe88555bc7d545e62faa4c22a5e3f02e5eef630
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034573"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743653"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>SQL Server から Azure SQL Managed Instance への移行に関する評価ルール
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Azure SQL Managed Instance に移行するときには、BULK INSERT ステー�
 ## <a name="clr-security"></a>CLR のセキュリティ<a id="ClrStrictSecurity"></a>
 
 **タイトル: SAFE または EXTERNAL_ACCESS とマークされた CLR アセンブリは UNSAFE と見なされる**   
-**カテゴリ**: 問題   
+**カテゴリ**: 警告   
 
 **説明**   
 Azure SQL Managed Instance には CLR Strict Security モードが適用されます。 このモードは既定で有効になり、SAFE または EXTERNAL_ACCESS のいずれかのマークが付けられたユーザー定義の CLR アセンブリを含むデータベースで破壊的変更が発生します。
@@ -202,7 +202,7 @@ FASTFIRSTROW クエリ ヒントの代わりに OPTION (FAST n) を使用しま�
 **推奨事項**   
 構造化されていないファイルを Azure Blob Storage にアップロードし、これらのファイルに関するメタデータ (名前、種類、URL の場所、ストレージ キーなど) を Azure SQL Managed Instance に格納します。 Azure SQL Managed Instance 間で BLOB をストリーミングできるように、アプリケーションを再設計する必要がある場合があります。 または、Azure 仮想マシン上の SQL Server に移行します。
 
-詳細情報: [SQL Azure 間での BLOB のストリーミングに関するブログ](https://azure.microsoft.com/en-in/blog/streaming-blobs-to-and-from-sql-azure/)
+詳細情報: [SQL Azure 間での BLOB のストリーミングに関するブログ](https://azure.microsoft.com/blog/streaming-blobs-to-and-from-sql-azure/)
 
 ## <a name="heterogeneous-ms-dtc"></a>異種 MS DTC<a id="MIHeterogeneousMSDTCTransactSQL"></a>
 
@@ -451,19 +451,6 @@ Azure Migrate の [影響を受けるオブジェクト] セクションを確�
 
 詳細情報: [SQL Server で廃止されたデータベース エンジンの機能](/previous-versions/sql/2014/database-engine/discontinued-database-engine-functionality-in-sql-server-2016#Denali)
 
-## <a name="service-broker"></a>Service Broker<a id="ServiceBrokerWithNonLocalAddress"></a>
-
-**タイトル: Azure SQL Managed Instance では、Service Broker 機能は部分的にサポートされています。**    
-**カテゴリ**: 問題   
-
-**説明**   
-SQL Server Service Broker では、SQL Server データベース エンジンのメッセージングおよびキューイング アプリケーションをネイティブでサポートしています。 このデータベースでは、Azure SQL Managed Instance でサポートされていないクロスインスタンス Service Broker が有効になっています。 
-
-
-**推奨事項**   
-Azure SQL Managed Instance では、クロスインスタンス Service Broker はサポートされていません。つまり、アドレスがローカルではありません。 このデータベースを Azure に移行する前に、`ALTER DATABASE [database_name] SET DISABLE_BROKER` というコマンドを使用して Service Broker を無効にする必要があります。また、メッセージが SQL インスタンスに到着しないようにするために、Service Broker エンドポイントを削除または停止することが必要になる場合もあります。 データベースが Azure に移行されたら、Azure Service Bus の機能を調べ、Service Broker ではなく、クラウドベースの汎用メッセージング システムを実装できます。 または、Azure 仮想マシン上の SQL Server に移行します。 
-
-詳細情報: [Azure SQL Managed Instance での Service Broker の相違点 ](../../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker)
 
 ## <a name="sql-mail"></a>SQL Mail<a id="SqlMail"></a>
 

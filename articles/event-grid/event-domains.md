@@ -3,12 +3,12 @@ title: Azure Event Grid のイベント ドメイン
 description: この記事では、イベント ドメインを使用して、さまざまなビジネス組織、顧客、アプリケーションへのカスタム イベントのフローを管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/13/2021
-ms.openlocfilehash: 78a785d3f1ee0431b11e8c14c3e48f4a156b5fd4
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: a8f9b21b84b2c764d25943af8988e40672dccd31
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537787"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413546"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -26,7 +26,7 @@ ms.locfileid: "110537787"
 イベント ドメインでは、イベントを発行するために Storage や IoT Hub などの Azure サービスで使用されているものと同じアーキテクチャが提供されます。 数千のトピックにイベントを発行できます。 また、ドメインでは、テナントをパーティション分割できるように各トピックの承認と認証を制御できます。
 
 ## <a name="example-use-case"></a>ユース ケースの例
-[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
+[!INCLUDE [event-grid-domain-example-use-case.md](./includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>アクセス管理
 

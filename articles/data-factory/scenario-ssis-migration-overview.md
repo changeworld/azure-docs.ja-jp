@@ -4,14 +4,15 @@ description: ADF でオンプレミスの SSIS ワークロードを SSIS に移
 author: chugugrace
 ms.author: chugu
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: f190d59a95fe71cb17d1bccd220d0a2171aba7e6
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: e165297c0065876185086db39f933b56ff6528b1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228588"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737017"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>ADF でオンプレミスの SSIS ワークロードを SSIS に移行する
 

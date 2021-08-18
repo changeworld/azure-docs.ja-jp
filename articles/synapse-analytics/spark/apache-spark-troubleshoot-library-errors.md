@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 006abf62c605c2ca34fd1adeadee8e29ae0fb8fb
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 1a5e665636e725252b18c2086471b272f40466cd
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588311"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291833"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>ライブラリのインストール エラーのトラブルシューティング 
 サード パーティまたはローカル環境でビルドされたコードをアプリケーションで使用できるようにするには、いずれかのサーバーレス Apache Spark プールにライブラリをインストールできます。 requirements.txt ファイルにリストされているパッケージは、プールの開始時に PyPi からダウンロードされます。 この要件ファイルは、その Spark プールから Spark インスタンスが作成されるたびに使用されます。 Spark プールにインストールされたライブラリは、同じプールを使用するすべてのセッションで使用できるようになります。 
@@ -67,7 +67,7 @@ df = spark.createDataFrame(data=data2,schema=schema)
 df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STORAGE ACCOUNT>>.dfs.core.windows.net/validate_permissions.csv")
 
 ```
-エラーが表示された場合は、必要なアクセス許可が不足している可能性があります。 必要なアクセス許可を取得する方法については、次のドキュメントを参照してください: [ストレージ BLOB データ共同作成者またはストレージ BLOB データ所有者のアクセス許可を割り当てる](../../storage/common/storage-auth-aad-rbac-portal.md#assign-an-azure-built-in-role)。
+エラーが表示された場合は、必要なアクセス許可が不足している可能性があります。 必要なアクセス許可を取得する方法については、次のドキュメントを参照してください: [ストレージ BLOB データ共同作成者またはストレージ BLOB データ所有者のアクセス許可を割り当てる](../../storage/blobs/assign-azure-role-data-access.md)。
 
 また、パイプラインを実行している場合は、ワークスペース MSI にもストレージ BLOB データ所有者またはストレージ BLOB データ共同作成者のアクセス許可が必要です。 ワークスペース ID にこのアクセス許可を付与する方法については、次を参照してください: [ワークスペースのマネージド ID にアクセス許可を付与する](../security/how-to-grant-workspace-managed-identity-permissions.md)。
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 809604439caa6a1a0c20ca7d22fac21dd6c1ab2b
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861342"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913565"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -98,9 +98,9 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 1. Windows PowerShell を管理者特権で起動します。
 2. Azure AD モジュール バージョン [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 以降をインストールします。
 
-```powershell
-    Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
-```
+   ```powershell
+       Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+   ```
 
 構成の最初の手順では、テナントとの接続を確立する必要があります。 テナントへの接続が確立されるとすぐに、ディレクトリに定義されている信頼された証明機関をレビュー、追加、削除、および変更できます。
 
@@ -162,27 +162,25 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 次の手順は、 **StsRefreshTokenValidFrom** フィールドを設定することで認証トークンを更新し、無効にするプロセスを簡単に示したものです。
 
-**失効を構成するには:**
-
 1. 管理者の資格情報で MSOL サービスに接続します。
 
-```powershell
-        $msolcred = get-credential
-        connect-msolservice -credential $msolcred
-```
+   ```powershell
+           $msolcred = get-credential
+            connect-msolservice -credential $msolcred
+   ```
 
 2. ユーザーの現在の StsRefreshTokensValidFrom 値を取得します。
 
-```powershell
-        $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
-        $user.StsRefreshTokensValidFrom
-```
+   ```powershell
+           $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
+           $user.StsRefreshTokensValidFrom
+   ```
 
 3. 現在のタイムスタンプと等しいユーザーの新しい StsRefreshTokensValidFrom 値を構成します。
 
-```powershell
-        Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
-```
+   ```powershell
+           Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+   ```
 
 設定する日付は、現在より後の日付にする必要があります。 日付を現在より後の日付にしないと、 **StsRefreshTokensValidFrom** プロパティは設定されません。 日付を現在より後の日付にすると、 **StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。
 
@@ -199,11 +197,9 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="testing-office-mobile-applications"></a>Office モバイル アプリケーションのテスト
 
-**Office モバイル アプリケーションで証明書ベースの認証をテストするには:**
-
 1. テスト デバイス上で、Office モバイル アプリケーション (OneDrive など) をインストールします。
-3. アプリケーションを起動します。
-4. ユーザー名を入力し、使用するユーザー証明書を選択します。
+1. アプリケーションを起動します。
+1. ユーザー名を入力し、使用するユーザー証明書を選択します。
 
 正常にサインインします。
 
@@ -220,8 +216,6 @@ EAS プロファイルには次の情報が表示されます。
 EAS プロファイルをデバイス上に構成して配置するには、Intune などのモバイル デバイス管理 (MDM) を使用するか、EAS プロファイルの証明書をデバイス上に手動で配置します。
 
 ### <a name="testing-eas-client-applications-on-android"></a>Android の EAS クライアント アプリケーションのテスト
-
-**証明書の認証をテストするには:**
 
 1. 前のセクションの要件を満たすアプリケーションで EAS プロファイルを構成します。
 2. アプリケーションを開き、メールが同期されていることを確認します。

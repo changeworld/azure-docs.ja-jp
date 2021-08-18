@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 8f0ebeebb47885d12529a7f09041af9bc3eb12f2
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 847cd81886a12d5a8d414181e2919b43aa607228
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656706"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732923"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS Rapid Response
 
@@ -49,7 +49,7 @@ ms.locfileid: "109656706"
 
 5. 追加の詳細情報を入力して、サポート リクエストを送信します。
 
-DRR は、Azure Rapid Response サポート モデルに従います。 Rapid Response の詳細については、「[サポート内容と応答性](https://azure.microsoft.com/en-us/support/plans/response/)」を参照してください。
+DRR は、Azure Rapid Response サポート モデルに従います。 Rapid Response の詳細については、「[サポート内容と応答性](https://azure.microsoft.com/support/plans/response/)」を参照してください。
 
 詳細については、[Azure DDoS Protection Standard のドキュメント](./ddos-protection-overview.md)を参照してください。
 

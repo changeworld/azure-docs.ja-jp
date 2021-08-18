@@ -3,12 +3,12 @@ title: Azure VMware Solution の cloudadmin 資格情報のローテーション
 description: Azure VMware Solution プライベート クラウドの vCenter Server および NSX-T Manager の資格情報をローテーションする方法について説明します。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 305447f8eac40a08564b9b57d82709f223f6086d
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 27d6c75046010d680734018d65f54eacbb520ae3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112021503"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747588"
 ---
 # <a name="rotate-the-cloudadmin-credentials-for-azure-vmware-solution"></a>Azure VMware Solution の cloudadmin 資格情報のローテーション
 
@@ -61,6 +61,5 @@ HCX、vRealize Orchestrator、vRealize Operations Manager、VMware Horizon な�
 
 Azure VMware Solution の vCenter Server と NSX-T Manager の資格情報のリセットについて理解したので、次の事項の学習に進むことができます。
 
-- [Azure VMware Solution で NSX ネットワーク コンポーネントを構成する](configure-nsx-network-components-azure-portal.md)
 - [Azure ネイティブのサービスを Azure VMware Solution と連携させる](integrate-azure-native-services.md)
 - [VMware HCX で、Azure VMware Solution のワークロードに対するディザスター リカバリーをデプロイする](deploy-disaster-recovery-using-vmware-hcx.md)

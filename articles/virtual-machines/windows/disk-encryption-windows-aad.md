@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 72c210ae08ad794267433891aa5bf498d70bf464
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c40dd2b6b5abd4173f1f1e042768725ed11bb651
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669207"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283305"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows VM における Azure AD を使用した Azure Disk Encryption (以前のリリース)
 
@@ -32,7 +32,7 @@ ms.locfileid: "110669207"
 ## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>Marketplace から作成された新しい IaaS VM で暗号化を有効にする
 Azure の Marketplace から作成された新しい IaaS Windows VM でのディスク暗号化を有効にするには、Resource Manager テンプレートを使用します。 このテンプレートでは、Windows Server 2012 ギャラリー イメージを使用して、新しい暗号化された Windows VM を作成します。
 
-1. [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)で、**[Azure に配置する]** をクリックします。
+1. [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-create-new-vm-gallery-image)で、**[Azure に配置する]** をクリックします。
 
 2. サブスクリプション、リソース グループ、リソース グループの場所、パラメーター、法律条項、契約を選択します。 **[購入]** をクリックして、暗号化が有効になっている新しい IaaS VM をデプロイします。
 
@@ -64,7 +64,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
 | subnetName | VM NIC が属している必要がある VNet のサブネットの名前。 |
 | AADClientID | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント ID。 |
 | AADClientSecret | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント シークレット。 |
-| keyVaultURL | BitLocker キーのアップロード先となる Key Vault の URL。 これは、コマンドレット `(Get-AzKeyVault -VaultName "MyKeyVault&quot; -ResourceGroupName &quot;MyKeyVaultResourceGroupName").VaultURI` または Azure CLI `az keyvault show --name "MySecureVault" --query properties.vaultUri` を使用して取得できます。 |
+| keyVaultURL | BitLocker キーのアップロード先となる Key Vault の URL。 これは、コマンドレット `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` または Azure CLI `az keyvault show --name "MySecureVault" --query properties.vaultUri` を使用して取得できます。 |
 | keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL (省略可能)。 </br> </br>KeyEncryptionKeyURL は省略可能なパラメーターです。 独自の KEK を使用して、Key Vault でデータ暗号化キー (パスフレーズ シークレット) の保護を強化することができます。 |
 | keyVaultResourceGroup | Key Vault のリソース グループ。 |
 | vmName | 暗号化操作が実行される VM の名前。 |
@@ -96,7 +96,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
      ```azurepowershell
      $KVRGname = 'MyKeyVaultResourceGroup';
      $VMRGName = 'MyVirtualMachineResourceGroup';
-     $vmName = ‘MyExtraSecureVM’;
+     $vmName = 'MyExtraSecureVM';
      $aadClientID = 'My-AAD-client-ID';
      $aadClientSecret = 'My-AAD-client-secret';
      $KeyVaultName = 'MySecureVault';
@@ -154,7 +154,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
 
 
 ### <a name="using-the-resource-manager-template"></a><a name="bkmk_RunningWinVMwRM"> </a>Resource Manager テンプレートの使用
-[実行中の Windows VM を暗号化するための Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)を使用して、Azure で既存または実行中の IaaS Windows VM に対してディスク暗号化を有効にすることができます。
+[実行中の Windows VM を暗号化するための Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm)を使用して、Azure で既存または実行中の IaaS Windows VM に対してディスク暗号化を有効にすることができます。
 
 
 1. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
@@ -260,7 +260,7 @@ KEK の有無に関係なく、クライアント証明書認証を使用する�
 ### <a name="enable-encryption-using-certificate-based-authentication-with-azure-powershell"></a>Azure PowerShell で証明書ベースの認証を使用して暗号化を有効にする
 
 ```powershell
-## Fill in 'MyVirtualMachineResourceGroup', 'MyKeyVaultResourceGroup', 'My-AAD-client-ID', 'MySecureVault, and ‘MySecureVM’.
+## Fill in 'MyVirtualMachineResourceGroup', 'MyKeyVaultResourceGroup', 'My-AAD-client-ID', 'MySecureVault, and 'MySecureVM'.
 
 $VMRGName = 'MyVirtualMachineResourceGroup'
 $KVRGname = 'MyKeyVaultResourceGroup';
@@ -286,7 +286,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -Aa
 ### <a name="enable-encryption-using-certificate-based-authentication-and-a-kek-with-azure-powershell"></a>Azure PowerShell で証明書ベースの認証と KEK を使用して暗号化を有効にする
 
 ```powershell
-# Fill in 'MyVirtualMachineResourceGroup', 'MyKeyVaultResourceGroup', 'My-AAD-client-ID', 'MySecureVault,, 'MySecureVM’, and "KEKName.
+# Fill in 'MyVirtualMachineResourceGroup', 'MyKeyVaultResourceGroup', 'My-AAD-client-ID', 'MySecureVault,, 'MySecureVM', and "KEKName.
 
 $VMRGName = 'MyVirtualMachineResourceGroup';
 $KVRGname = 'MyKeyVaultResourceGroup';
@@ -325,7 +325,7 @@ Azure PowerShell、Azure CLI、または Resource Manager テンプレートを�
      ```
 - **Resource Manager テンプレートを使用して暗号化を無効にする:** 
 
-    1. [実行中の Windows VM でディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm)ためのテンプレートで **[Azure に配置する]** をクリックします。
+    1. [実行中の Windows VM でディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-windows-vm)ためのテンプレートで **[Azure に配置する]** をクリックします。
     2. サブスクリプション、リソース グループ、場所、VM、法律条項、および契約を選択します。
     3.  **[購入]** をクリックして、実行中の Windows VM でディスク暗号化を無効にします。 
 

@@ -8,17 +8,17 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 99cad194317a2dfc7a5924635aef7484d83f8ba0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f892bd439424fdd35110dfa704e0bf319d85a0c5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969287"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745451"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-429-exceptions"></a>Azure Cosmos DB の要求率が大きすぎる (429) 例外を診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-この記事には、SQL API のさまざまな 429 状態コード エラーの既知の原因と解決策が記載されています。 MongoDB 用 API を使用する場合、状態コード 16500 をデバッグする方法について、[MongoDB 用 API での一般的な問題のトラブルシューティング](mongodb-troubleshoot.md)に関するページを参照してください。
+この記事には、SQL API のさまざまな 429 状態コード エラーの既知の原因と解決策が記載されています。 MongoDB 用 API を使用する場合、状態コード 16500 をデバッグする方法について、[MongoDB 用 API での一般的な問題のトラブルシューティング](mongodb/error-codes-solutions.md)に関するページを参照してください。
 
 "要求率が大きすぎる" という例外 (エラー コード 429) は、Azure Cosmos DB に対する要求がレート制限されていることを示します。
 

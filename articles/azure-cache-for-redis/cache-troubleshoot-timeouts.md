@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: d00ec82b5b66b2c413337f0c4efe803fc1013ab9
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: b4549978925f2e7016b54ce3004eabadaa8e985f
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847873"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113134350"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis のタイムアウトのトラブルシューティング
 
@@ -50,7 +50,7 @@ StackExchange.Redis は、同期操作のために `synctimeout` という名前
 | wr |アクティブなライターが存在します (6 個の未送信要求は無視されていないことを示します)。バイト数/アクティブなライター数 |
 | in |アクティブなリーダーはなく、NIC で読み取ることができるバイト数はゼロです。これは、"バイト数/アクティブなリーダー数" で表されます。 |
 
-前の例外の例では、`IOCP` セクションと `WORKER` セクションのそれぞれに、`Min` 値より大きい `Busy` 値が含まれています。 この違いは、`ThreadPool` の設定を調整する必要があることを意味します。 スレッド プールがバースト時にすばやくスケールアップするように、[ThreadPool 設定を構成できます](cache-management-faq.md#important-details-about-threadpool-growth)。
+前の例外の例では、`IOCP` セクションと `WORKER` セクションのそれぞれに、`Min` 値より大きい `Busy` 値が含まれています。 この違いは、`ThreadPool` の設定を調整する必要があることを意味します。 スレッド プールがバースト時にすばやくスケールアップするように、[ThreadPool 設定を構成できます](cache-management-faq.yml#important-details-about-threadpool-growth)。
 
 次の手順を使用して、考えられる根本原因を調査できます。
 
@@ -123,5 +123,5 @@ StackExchange.Redis は、同期操作のために `synctimeout` という名前
 
 - [Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング](cache-troubleshoot-client.md)
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
-- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)
 - [Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)

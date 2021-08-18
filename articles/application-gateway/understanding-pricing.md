@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
-ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c6afc21ce2dd4ba08a29d2a1c19e680b838c9ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96601613"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737238"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Azure Application Gateway と Web アプリケーション ファイアウォールの価格について
 
@@ -392,4 +392,4 @@ WAF_V2 をプロビジョニングし、1 か月全体の最小許容値を 1 �
 Azure Application Gateway での課金のしくみの詳細については、以下の記事を参照してください。
 
 * [Application Gateway の価格のページ](https://azure.microsoft.com/pricing/details/application-gateway/)
-* [Azure Application Gateway 料金計算ツール](https://azure.microsoft.com/en-us/pricing/calculator/?service=application-gateway)
+* [Azure Application Gateway 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=application-gateway)

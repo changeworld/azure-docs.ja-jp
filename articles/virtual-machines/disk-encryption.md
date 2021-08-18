@@ -2,18 +2,18 @@
 title: Azure Managed Disks のサーバー側暗号化
 description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。また、マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。
 author: roygara
-ms.date: 04/15/2021
+ms.date: 06/29/2021
 ms.topic: conceptual
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4607778c78b8b062b265a5754337c09c41ba83f1
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 48b7fb11f3f0127358ee92ddea9262b805264500
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531532"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738999"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
 
@@ -21,7 +21,7 @@ ms.locfileid: "107531532"
 
 Azure マネージド ディスク内のデータは、利用できる最も強力なブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使って透過的に暗号化され、FIPS 140-2 に準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:次世代](/windows/desktop/seccng/cng-portal)」を参照してください。
 
-Azure Storage の暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 Azure Storage の暗号化の詳細については、「[Azure Storage の暗号化](/azure/storage/common/storage-service-encryption)」をご参照ください。
+Azure Storage の暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 Azure Storage の暗号化の詳細については、「[Azure Storage の暗号化](../storage/common/storage-service-encryption.md)」をご参照ください。
 
 > [!NOTE]
 > 一時ディスクはマネージド ディスクではなく、ホストで暗号化を有効にしない限り、SSE によって暗号化されません。
@@ -51,17 +51,6 @@ Azure Storage の暗号化は、マネージド ディスクのパフォーマ�
 #### <a name="supported-regions"></a>サポートされているリージョン
 
 カスタマー マネージド キーは、マネージド ディスクが使用可能なすべてのリージョンで利用できます。
-
-自動キー ローテーションはプレビュー段階であり、次のリージョンでのみご利用いただけます。
-
-- 米国東部
-- 米国東部 2
-- 米国中南部
-- 米国西部
-- 米国西部 2
-- 北ヨーロッパ
-- 西ヨーロッパ
-- フランス中部
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 カスタマー マネージド キーを構成すると、内部でマネージド ID がリソースに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはマネージド ディスクを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのマネージド ディスクに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure AD ディレクトリ間のサブスクリプションの転送](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」を参照してください。

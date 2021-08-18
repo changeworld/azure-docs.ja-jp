@@ -1,19 +1,20 @@
 ---
 title: v2 API によって生成された Azure Video Analyzer for Media (旧称 Video Indexer) 出力を調べる - Azure
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: このトピックでは、v2 API によって生成された Azure Video Analyzer for Media (旧称 Video Indexer) 出力を調べます。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 7e805aee76bf60733d3d010cf330b90debdfb2be
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 11fcc36ec8ad6d5feb030d00be4fbf470237634f
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386492"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115265"
 ---
 # <a name="examine-the-video-analyzer-for-media-output"></a>Video Analyzer for Media の出力を調べる
 

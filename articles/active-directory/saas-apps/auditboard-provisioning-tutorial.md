@@ -3,8 +3,8 @@ title: 'チュートリアル: AuditBoard を構成し、Azure Active Directory 
 description: Azure AD から AuditBoard に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: e6ab736b-2bb7-4a5a-9f01-67c33f0ff97d
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2021
-ms.author: Zhchia
-ms.openlocfilehash: a5b31646044f61029f15a2636dd918aaaf4e67ea
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.author: thwimmer
+ms.openlocfilehash: 04c9114b850959b5c7ade00f94803d8423f57d88
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956647"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764827"
 ---
 # <a name="tutorial-configure-auditboard-for-automatic-user-provisioning"></a>チュートリアル: AuditBoard を構成し、自動ユーザー プロビジョニングに対応させる
 

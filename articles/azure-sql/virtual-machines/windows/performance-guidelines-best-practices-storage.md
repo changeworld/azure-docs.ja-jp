@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: d3a4a8bb54c5bafa9eb50ed4441cd6eebe2acc6c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: d7d33fe4bc94de3d1fdca3d2b2e99d0663e39c97
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079915"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289857"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>ストレージ: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,7 +87,7 @@ Azure 仮想マシンには、一時ディスクと呼ばれる別の種類の�
 
 一時ストレージ ドライブはリモート ストレージに保存されないため、ユーザー データベース ファイル、トランザクション ログ ファイル、および保存する必要があるものはここに保存しないでください。 
 
-ローカル キャッシュの使用に懸念がある場合を除き、tempdb は、SQL Server ワークロード用のローカル一時 SSD の `D:\` ドライブに配置してください。 [一時ディスクがない](../../../virtual-machines/azure-vms-no-temp-disk.md)仮想マシンを使用している場合は、キャッシュを読み取り専用に設定して、独自の分離ディスクまたは記憶域プールに tempdb を配置することをお勧めします。 詳細については、「[tempdb データ キャッシュ ポリシー](performance-guidelines-best-practices-storage.md#data-file-caching-policies)」を参照してください。
+ローカル キャッシュの使用に懸念がある場合を除き、tempdb は、SQL Server ワークロード用のローカル一時 SSD の `D:\` ドライブに配置してください。 [一時ディスクがない](../../../virtual-machines/azure-vms-no-temp-disk.yml)仮想マシンを使用している場合は、キャッシュを読み取り専用に設定して、独自の分離ディスクまたは記憶域プールに tempdb を配置することをお勧めします。 詳細については、「[tempdb データ キャッシュ ポリシー](performance-guidelines-best-practices-storage.md#data-file-caching-policies)」を参照してください。
 
 ### <a name="data-disks"></a>データ ディスク
 

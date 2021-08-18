@@ -3,6 +3,7 @@ title: 事業継続とディザスター リカバリー (BCDR) のために Azu
 description: この記事では、事業継続とディザスター リカバリー (BCDR) のために、Azure Data Factory で Azure SQL Database または Managed Instance フェールオーバー グループを使用して Azure-SSIS 統合ランタイムを構成する方法について説明します。
 services: data-factory
 ms.service: data-factory
+ms.subservice: integration-services
 ms.workload: data-services
 ms.devlang: powershell
 author: swinarko
@@ -12,12 +13,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: a426ee39ba3c0f50b9a6c1fb9c7de1ef8e7291b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 453f1db3e0f80a63c058c7e0ea21ab9282295de6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735419"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>事業継続とディザスター リカバリー (BCDR) のために Azure-SSIS 統合ランタイムを構成する 
 

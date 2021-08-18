@@ -2,17 +2,19 @@
 title: HDInsight の ML サービスの運用化 - Azure
 description: Azure HDInsight で ML Services を使用して、データ モデルを運用化し、予測を行う方法について説明します。
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ROBOTS: NOINDEX
+ms.openlocfilehash: eb8114da913347309e6e8ad263c0bb7fcf56790f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869472"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299287"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 HDInsight で ML サービス クラスターを使用して、ご自身のデータ モデリングが完了したら、モデルを運用化して予測を行うことができます。 この記事では、このタスクを実行する方法について説明します。
 
@@ -164,7 +166,7 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 * ワーカー ノードの選択を解除し、ヘッド ノードを選択します。
 * **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]** の順に選択し、 **[Restart All Components]\(すべてのコンポーネントを再起動\)** をクリックします。
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>手順 2: 使用停止状態の各 worker ノードでコンピューティング ノードを構成する
+###    <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>手順 2: 使用停止状態の各 worker ノードでコンピューティング ノードを構成する
 
 1. 使用停止されたワーカー ノードに SSH 接続します。
 

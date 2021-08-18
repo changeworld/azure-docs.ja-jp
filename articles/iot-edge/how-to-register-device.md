@@ -2,19 +2,18 @@
 title: 新しいデバイスを登録する - Azure IoT Edge | Microsoft Docs
 description: IoT Hub に 1 つの IoT Edge デバイスを登録して、対称キーまたは X.509 証明書を使用して手動でプロビジョニングする
 author: kgremban
-manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: b5d761cfa947b3fd4e5f718e603219c650e8dd72
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c617b4c3558be2409c8bf2272e805a8b8cb9d349
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481873"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725319"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>IoT Edge デバイスを IoT Hubに登録する
 

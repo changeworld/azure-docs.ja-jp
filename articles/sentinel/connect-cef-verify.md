@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 3ce83de7f876bbd67120bf511d29860b71cd2227
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98d97bd7c8ffab685475f50130d68668fe1c9f8b
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771279"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253289"
 ---
 # <a name="step-3-validate-connectivity"></a>手順 3:接続の検証
 
-ログ フォワーダーをデプロイし (手順 1)、CEF メッセージを送信するようにセキュリティ ソリューションを構成したら (手順 2)、以下の手順に従って、セキュリティ ソリューションと Azure Sentinel との間の接続を検証します。 
+ログ フォワーダーをデプロイし (手順 1)、CEF メッセージを送信するようにセキュリティ ソリューションを構成したら (手順 2)、以下の手順に従って、セキュリティ ソリューションと Azure Sentinel との間の接続を検証します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,9 +37,9 @@ ms.locfileid: "104771279"
 ## <a name="how-to-validate-connectivity"></a>接続を検証する方法
 
 1. Azure Sentinel ナビゲーション メニューから **[ログ]** を開きます。 **CommonSecurityLog** スキーマを使用して、セキュリティ ソリューションからログが届いているかどうかを確認するクエリを実行します。<br>
-ログが **Log Analytics** に表示され始めるまで、約 20 分かかる場合があります。 
+ログが **Log Analytics** に表示され始めるまで、約 20 分かかる場合があります。
 
-1. クエリの結果がまったく表示されない場合は、セキュリティ ソリューションからイベントが生成されていることを確認するか、なんらかのイベントを生成してみてください。それらのイベントが、指定した Syslog フォワーダー マシンに転送されていることを確認します。 
+1. クエリの結果がまったく表示されない場合は、セキュリティ ソリューションからイベントが生成されていることを確認するか、なんらかのイベントを生成してみてください。それらのイベントが、指定した Syslog フォワーダー マシンに転送されていることを確認します。
 
 1. ログ フォワーダーで次のスクリプトを実行し (プレースホルダーをワークスペース ID に置き換えます)、セキュリティ ソリューション、ログ フォワーダー、および Azure Sentinel 間の接続を確認します。 デーモンが適切なポートでリッスンしていること、転送が適切に構成されていること、デーモンと Log Analytics エージェントとの間の通信がブロックされていないことが、このスクリプトによって確認されます。 また、モック メッセージ "TestCommonEventFormat" を送信することで、エンドツーエンドの接続が確認されます。 <br>
 
@@ -81,20 +81,20 @@ ms.locfileid: "104771279"
     </filter>
     ```
 
-1. 次のコマンドを使用して、Cisco ASA ファイアウォール イベントの解析が想定どおりに構成されていることを確認します。 
+1. 次のコマンドを使用して、Cisco ASA ファイアウォール イベントの解析が想定どおりに構成されていることを確認します。
 
     ```bash
     grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
     - <a name="parsing-command"></a>解析に問題がある場合は、**次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しい解析が確認され、エージェントが再起動されます。
-    
+
         ```bash
         # Cisco ASA parsing fix
         sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
-1. 次のコマンドを使用して、Syslog ソースの "*コンピューター*" フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。 
+1. 次のコマンドを使用して、Syslog ソースの "*コンピューター*" フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。
 
     ```bash
     grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
@@ -114,7 +114,7 @@ ms.locfileid: "104771279"
     - 構成ファイル: `/etc/rsyslog.d/security-config-omsagent.conf`
 
         ```bash
-        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
         ```
 
 1. Syslog デーモンと Log Analytics エージェントを再起動します。
@@ -174,20 +174,20 @@ ms.locfileid: "104771279"
     </filter>
     ```
 
-1. 次のコマンドを使用して、Cisco ASA ファイアウォール イベントの解析が想定どおりに構成されていることを確認します。 
+1. 次のコマンドを使用して、Cisco ASA ファイアウォール イベントの解析が想定どおりに構成されていることを確認します。
 
     ```bash
     grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
     - <a name="parsing-command"></a>解析に問題がある場合は、**次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドによって、正しい解析が確認され、エージェントが再起動されます。
-    
+
         ```bash
         # Cisco ASA parsing fix
         sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
-1. 次のコマンドを使用して、Syslog ソースの "*コンピューター*" フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。 
+1. 次のコマンドを使用して、Syslog ソースの "*コンピューター*" フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。
 
     ```bash
     grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
@@ -243,11 +243,12 @@ ms.locfileid: "104771279"
     ```
 ---
 
+
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
 - [Cef および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

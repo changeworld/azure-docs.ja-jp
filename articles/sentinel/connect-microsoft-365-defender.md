@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 16cf1b89c2660d2505685fa931cc8b97ccb42a9b
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 536a9b0fe4cacdc48f4429e1b85b5a47c4dbd449
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992292"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779346"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Microsoft 365 Defender から Azure Sentinel にデータを接続する
 
@@ -30,6 +30,8 @@ ms.locfileid: "107992292"
 > **Microsoft Defender for Endpoint** は、以前は **Microsoft Defender Advanced Threat Protection** または **MDATP** と呼ばれていました。
 >
 > 以前の名前がしばらくの間使用されることがあります。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="background"></a>背景
 
@@ -131,5 +133,5 @@ let Now = now();
 
 このドキュメントでは、Microsoft 365 Defender コネクタを使用して、Microsoft 365 Defender インシデントと Microsoft Defender for Endpoint からの詳細な捜索イベント データを Azure Sentinel に統合する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

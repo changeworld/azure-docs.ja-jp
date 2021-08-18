@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 06/14/2021
-ms.openlocfilehash: f8a9706fac53ad5ea44a53f44317b18956f57504
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 0fa4491f9d4fa955dfc9be7033e4eab9137b5672
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078871"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294982"
 ---
 # <a name="cognitive-services-docs-whats-new-for-may-1-2021---may-31-2021"></a>Cognitive Services ドキュメント: 2021 年 5 月 1 日から 2021 年 5 月 31 日までの更新情報
 
@@ -30,20 +30,20 @@ ms.locfileid: "112078871"
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Azure Cognitive Services コンテナー イメージ タグとリリース ノート](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure Cognitive Services コンテナー イメージ タグとリリース ノート](./containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="new-articles"></a>新しい記事
 
-- [リファレンス: Azure Form Recognizer クライアント ライブラリ v3.0.0 および REST API v2.0](/azure/cognitive-services/form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
+- [リファレンス: Azure Form Recognizer クライアント ライブラリ v3.0.0 および REST API v2.0](./form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Form Recognizer の事前構築済みの名刺モデル](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
-- [クイックスタート: クライアント ライブラリ SDK または REST API の概要](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
-- [Form Recognizer の新機能](/azure/cognitive-services/form-recognizer/whats-new.md)
-- [Form Recognizer のランディング ページ](/azure/cognitive-services/form-recognizer/form-recognizer.md)
+- [Form Recognizer の事前構築済みの名刺モデル](./form-recognizer/concept-business-cards.md)
+- [クイックスタート: クライアント ライブラリ SDK または REST API の概要](./form-recognizer/quickstarts/client-library.md)
+- [Form Recognizer の新機能](./form-recognizer/whats-new.md)
+- [Form Recognizer のランディング ページ](./form-recognizer/index.yml)
 
 ## <a name="translator"></a>Translator
 
@@ -60,18 +60,18 @@ ms.locfileid: "112078871"
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Personalizer の新機能](/azure/cognitive-services/personalizer/whats-new.md)
+- [Personalizer の新機能](./personalizer/whats-new.md)
 
 ## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [チュートリアル:Power BI を Text Analytics Cognitive Service と統合する](/azure/cognitive-services/text-analytics/tutorials/tutorial-power-bi-key-phrases.md)
-- [Text Analytics と Power Automate を使用して Excel 内の情報を抽出する](/azure/cognitive-services/text-analytics/tutorials/extract-excel-information.md)
-- [Text Analytics REST API を呼び出す方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [チュートリアル:Power BI を Text Analytics Cognitive Service と統合する](./text-analytics/tutorials/tutorial-power-bi-key-phrases.md)
+- [Text Analytics と Power Automate を使用して Excel 内の情報を抽出する](./text-analytics/tutorials/extract-excel-information.md)
+- [Text Analytics REST API を呼び出す方法](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
 - [Text Analytics で固有表現抽出
-を使用する方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Text Analytics API の新機能](/azure/cognitive-services/text-analytics/whats-new.md)
+を使用する方法](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Text Analytics API の新機能](./text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>コミュニティの共同作成者
 

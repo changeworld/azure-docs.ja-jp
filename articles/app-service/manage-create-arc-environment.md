@@ -3,12 +3,12 @@ title: App Service、Functions、および Logic Apps 用に Azure Arc セット
 description: ご使用の Azure Arc 対応 Kubernetes クラスターに対して、App Service アプリ、Functions Apps、Logic Apps を有効にする方法を学習します。
 ms.topic: article
 ms.date: 05/26/2021
-ms.openlocfilehash: e5e1b1ec8dd9a7e7ddf006222d2990bb6c354cd8
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: a219b0e12deaca30c2c046e4e99cf38672dc46c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890134"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723031"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
 
@@ -64,6 +64,8 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
 
 1. パブリック IP アドレスを使用して、Azure Kubernetes Service でクラスターを作成します。 `<group-name>` は、使用するリソース グループ名に置き換えてください。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```azurecli-interactive
     aksClusterGroupName="<group-name>" # Name of resource group for the AKS cluster
     aksName="${aksClusterGroupName}-aks" # Name of the AKS cluster
@@ -75,6 +77,22 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
     az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
     staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $aksClusterGroupName="<group-name>" # Name of resource group for the AKS cluster
+    $aksName="${aksClusterGroupName}-aks" # Name of the AKS cluster
+    $resourceLocation="eastus" # "eastus" or "westeurope"
+
+    az group create -g $aksClusterGroupName -l $resourceLocation
+    az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad --generate-ssh-keys
+    $infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --output tsv --query nodeResourceGroup)
+    az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
+    $staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
+    ```
+
+    ---
     
 2. [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) ファイルを取得し、クラスターへの接続をテストします。 既定では、kubeconfig ファイルは `~/.kube/config` に保存されます。
 
@@ -86,19 +104,44 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
     
 3. Azure Arc リソースを含むリソース グループを作成します。 `<group-name>` は、使用するリソース グループ名に置き換えてください。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```azurecli-interactive
     groupName="<group-name>" # Name of resource group for the connected cluster
 
     az group create -g $groupName -l $resourceLocation
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $groupName="<group-name>" # Name of resource group for the connected cluster
+
+    az group create -g $groupName -l $resourceLocation
+    ```
+
+    ---
     
 4. 作成したクラスターを Azure Arc に接続します。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     clusterName="${groupName}-cluster" # Name of the connected cluster resource
 
     az connectedk8s connect --resource-group $groupName --name $clusterName
     ```
+    
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+
+    ```powershell
+    $clusterName="${groupName}-cluster" # Name of the connected cluster resource
+
+    az connectedk8s connect --resource-group $groupName --name $clusterName
+    ```
+
+    ---
     
 5. 次のコマンドを使用して、接続を検証します。 `provisioningState` プロパティは `Succeeded` のように表示されるはずです。 そうではない場合、少し時間をおいてから、もう一度コマンドを実行してください。
 
@@ -112,6 +155,8 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
 
 1. わかりやすくするために、この時点でワークスペースを作成します。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```azurecli-interactive
     workspaceName="$groupName-workspace" # Name of the Log Analytics workspace
     
@@ -119,8 +164,22 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
         --resource-group $groupName \
         --workspace-name $workspaceName
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $workspaceName="$groupName-workspace"
+
+    az monitor log-analytics workspace create `
+        --resource-group $groupName `
+        --workspace-name $workspaceName
+    ```
+
+    ---
     
 2. 次のコマンドを実行して、既存の Log Analytics ワークスペース用の、エンコードされたワークスペース ID と共有キーを取得します。 これらは、次のステップで必要になります。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show \
@@ -137,18 +196,52 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
     logAnalyticsKeyEncWithSpace=$(printf %s $logAnalyticsKey | base64)
     logAnalyticsKeyEnc=$(echo -n "${logAnalyticsKeyEncWithSpace//[[:space:]]/}") # Needed for the next step
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show `
+        --resource-group $groupName `
+        --workspace-name $workspaceName `
+        --query customerId `
+        --output tsv)
+    $logAnalyticsWorkspaceIdEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsWorkspaceId))# Needed for the next step
+    $logAnalyticsKey=$(az monitor log-analytics workspace get-shared-keys `
+        --resource-group $groupName `
+        --workspace-name $workspaceName `
+        --query primarySharedKey `
+        --output tsv)
+    $logAnalyticsKeyEncWithSpace=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
+    $logAnalyticsKeyEnc=$(echo -n "${logAnalyticsKeyEncWithSpace//[[:space:]]/}") # Needed for the next step
+    ```
     
+    ---
+
 ## <a name="install-the-app-service-extension"></a>App Service 拡張機能をインストールする
 
 1. [App Service 拡張機能](overview-arc-integration.md)の目的の名前、リソースをプロビジョニングするクラスター名前空間、App Service Kubernetes 環境の名前について、次の環境変数を設定します。 App Service Kubernetes 環境で作成されたアプリのドメイン名の一部になるため、`<kube-environment-name>` に一意の名前を選択します。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```bash
     extensionName="appservice-ext" # Name of the App Service extension
     namespace="appservice-ns" # Namespace in your cluster to install the extension and provision resources
     kubeEnvironmentName="<kube-environment-name>" # Name of the App Service Kubernetes environment resource
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $extensionName="appservice-ext" # Name of the App Service extension
+    $namespace="appservice-ns" # Namespace in your cluster to install the extension and provision resources
+    $kubeEnvironmentName="<kube-environment-name>" # Name of the App Service Kubernetes environment resource
+    ```
+
+    ---
     
 2. Log Analytics を有効にして、Azure Arc に接続されたクラスターに App Service 拡張機能をインストールします。 ここでも、Log Analytics は必要ありませんが、後で拡張機能に追加することはできないため、この時点で追加するほうが簡単です。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     az k8s-extension create \
@@ -175,6 +268,35 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
         --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.sharedKey=${logAnalyticsKeyEnc}"
     ```
 
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    az k8s-extension create `
+        --resource-group $groupName `
+        --name $extensionName `
+        --cluster-type connectedClusters `
+        --cluster-name $clusterName `
+        --extension-type 'Microsoft.Web.Appservice' `
+        --release-train stable `
+        --auto-upgrade-minor-version true `
+        --scope cluster `
+        --release-namespace $namespace `
+        --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" `
+        --configuration-settings "appsNamespace=${namespace}" `
+        --configuration-settings "clusterName=${kubeEnvironmentName}" `
+        --configuration-settings "loadBalancerIp=${staticIp}" `
+        --configuration-settings "keda.enabled=true" `
+        --configuration-settings "buildService.storageClassName=default" `
+        --configuration-settings "buildService.storageAccessMode=ReadWriteOnce" `
+        --configuration-settings "customConfigMap=${namespace}/kube-environment-config" `
+        --configuration-settings "envoy.annotations.service.beta.kubernetes.io/azure-load-balancer-resource-group=${aksClusterGroupName}" `
+        --configuration-settings "logProcessor.appLogs.destination=log-analytics" `
+        --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.customerId=${logAnalyticsWorkspaceIdEnc}" `
+        --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.sharedKey=${logAnalyticsKeyEnc}"
+    ```
+
+    ---
+
     > [!NOTE]
     > Log Analytics を統合せずに拡張機能をインストールするには、コマンドから最後の 3 つの `--configuration-settings` パラメーターを削除します。
     >
@@ -199,6 +321,8 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
         
 3. 後で使用できるように、App Service 拡張機能の `id` プロパティを保存します。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```azurecli-interactive
     extensionId=$(az k8s-extension show \
         --cluster-type connectedClusters \
@@ -208,6 +332,20 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
         --query id \
         --output tsv)
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $extensionId=$(az k8s-extension show `
+        --cluster-type connectedClusters `
+        --cluster-name $clusterName `
+        --resource-group $groupName `
+        --name $extensionName `
+        --query id `
+        --output tsv)
+    ```
+
+    ---
 
 4. 拡張機能が完全にインストールされるまで待ってから、処理を進めてください。 次のコマンドを実行して、この処理が完了するまでターミナル セッションを待機することができます。
 
@@ -231,13 +369,27 @@ Azure の[カスタムの場所](../azure-arc/kubernetes/custom-locations.md)は
 
 1. カスタムの場所の目的の名前と、Azure Arc 接続クラスターの ID に次の環境変数を設定します。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```bash
     customLocationName="my-custom-location" # Name of the custom location
     
     connectedClusterId=$(az connectedk8s show --resource-group $groupName --name $clusterName --query id --output tsv)
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $customLocationName="my-custom-location" # Name of the custom location
     
-3. カスタムの場所を作成する:
+    $connectedClusterId=$(az connectedk8s show --resource-group $groupName --name $clusterName --query id --output tsv)
+    ```
+
+    ---
+    
+2. カスタムの場所を作成する:
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     az customlocation create \
@@ -247,18 +399,31 @@ Azure の[カスタムの場所](../azure-arc/kubernetes/custom-locations.md)は
         --namespace $namespace \
         --cluster-extension-ids $extensionId
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```azurecli-interactive
+    az customlocation create `
+        --resource-group $groupName `
+        --name $customLocationName `
+        --host-resource-id $connectedClusterId `
+        --namespace $namespace `
+        --cluster-extension-ids $extensionId
+    ```
+
+    ---
     
     <!-- --kubeconfig ~/.kube/config # needed for non-Azure -->
 
-4. 次のコマンドを使用して、カスタムの場所が正常に作成されたことを確認します。 出力で、`provisioningState` プロパティは `Succeeded` のように表示されるはずです。 そうではない場合、少し時間をおいてからもう一度実行してください。
+3. 次のコマンドを使用して、カスタムの場所が正常に作成されたことを確認します。 出力で、`provisioningState` プロパティは `Succeeded` のように表示されるはずです。 そうではない場合、少し時間をおいてからもう一度実行してください。
 
     ```azurecli-interactive
-    az customlocation show \
-        --resource-group $groupName \
-        --name $customLocationName
+    az customlocation show --resource-group $groupName --name $customLocationName
     ```
     
-5. 次の手順用にカスタムの場所の ID を保存します。
+4. 次の手順用にカスタムの場所の ID を保存します。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     customLocationId=$(az customlocation show \
@@ -267,12 +432,26 @@ Azure の[カスタムの場所](../azure-arc/kubernetes/custom-locations.md)は
         --query id \
         --output tsv)
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```azurecli-interactive
+    $customLocationId=$(az customlocation show `
+        --resource-group $groupName `
+        --name $customLocationName `
+        --query id `
+        --output tsv)
+    ```
+
+    ---
     
 ## <a name="create-the-app-service-kubernetes-environment"></a>App Service Kubernetes 環境を作成する
 
 カスタムの場所にアプリを作成するには、[App Service Kubernetes 環境](overview-arc-integration.md#app-service-kubernetes-environment)が必要です。
 
 1. App Service Kubernetes 環境を作成する:
+    
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     az appservice kube create \
@@ -281,13 +460,23 @@ Azure の[カスタムの場所](../azure-arc/kubernetes/custom-locations.md)は
         --custom-location $customLocationId \
         --static-ip $staticIp
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```azurecli-interactive
+    az appservice kube create `
+        --resource-group $groupName `
+        --name $kubeEnvironmentName `
+        --custom-location $customLocationId `
+        --static-ip $staticIp
+    ```
+
+    ---
     
 2. 次のコマンドを使用して、App Service Kubernetes 環境が正常に作成されたことを確認します。 出力で、`provisioningState` プロパティは `Succeeded` のように表示されるはずです。 そうではない場合、少し時間をおいてからもう一度実行してください。
 
     ```azurecli-interactive
-    az appservice kube show \
-        --resource-group $groupName \
-        --name $kubeEnvironmentName
+    az appservice kube show --resource-group $groupName --name $kubeEnvironmentName
     ```
     
 

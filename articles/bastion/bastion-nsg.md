@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 06/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: 84f32755a4838fbcb29b3d85d8308b5288d746ea
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: e3772f3583e4487c8c508136537ab213413865e7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537907"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112464763"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
@@ -48,7 +48,7 @@ Azure Bastion は、***AzureBastionSubnet*** に対して明示的にデプロ�
    * **Azure Load Balancer からのイングレス トラフィック:** 正常性プローブの場合は、**AzureLoadBalancer** サービス タグからのポート 443 受信を有効にします。 これにより、Azure Load Balancer は接続を検出できます
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Azure Bastion 接続のインバウンド セキュリティ規則のスクリーンショット。":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Azure Bastion 接続のインバウンド セキュリティ規則のスクリーンショット。" lightbox="./media/bastion-nsg/inbound.png":::
 
 * **エグレス トラフィック:**
 
@@ -58,7 +58,7 @@ Azure Bastion は、***AzureBastionSubnet*** に対して明示的にデプロ�
    * **インターネットへのエグレス トラフィック:** Azure Bastion は、セッションと証明書の検証のためにインターネットと通信できる必要があります。 そのため、ポート 80 で **インターネット** への送信を有効にすることをお勧めします。
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Azure Bastion 接続のアウトバウンド セキュリティ規則のスクリーンショット。":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Azure Bastion 接続のアウトバウンド セキュリティ規則のスクリーンショット。" lightbox="./media/bastion-nsg/outbound.png":::
 
 ### <a name="target-vm-subnet"></a>ターゲット VM サブネット
 これは、RDP/SSH で接続するターゲット仮想マシンを含むサブネットです。

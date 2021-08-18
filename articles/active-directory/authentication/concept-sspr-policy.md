@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 06/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff0e43570b9bf30b84538cfeca841a69d025b26b
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918045"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090387"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーとアカウント制限
 
@@ -51,7 +51,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 
 | プロパティ | 必要条件 |
 | --- | --- |
-| 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ' , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
+| 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ' , . ? / \` ~ " ( ) ; < ></li> <li>空白</li></ul> |
 | 使用できない文字 | Unicode 文字。 |
 | パスワードの制限 |<ul><li>8 文字以上 256 文字以下。</li><li>次の 4 つのうち、3 つが必要です。<ul><li>小文字。</li><li>大文字。</li><li>数字 (0-9)。</li><li>記号 (上述のパスワード制限を参照してください)。</li></ul></li></ul> |
 | パスワードの有効期間 (パスワードの最大有効期間) |<ul><li>既定値:**90** 日。</li><li>値を構成するには、Windows PowerShell 用 Azure Active Directory モジュールから `Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
@@ -69,30 +69,32 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 2 ゲート ポリシーには、電子メール アドレス、認証アプリ、電話番号など、2 つの認証データが必要です。 2 ゲート ポリシーは次のような状況で適用されます。
 
 * 次のすべての Azure 管理者ロールが影響を受けます。
-  * ヘルプデスク管理者
-  * サービス サポート管理者
+  * アプリケーション管理者
+  * アプリケーション プロキシ サービス管理者
+  * 認証管理者
+  * Azure AD 参加済みデバイスのローカル管理者
   * 課金管理者
+  * コンプライアンス管理者
+  * デバイス管理者
+  * ディレクトリ同期アカウント
+  * ディレクトリ ライター
+  * Dynamics 365 管理者
+  * Exchange 管理者
+  * グローバル管理者または会社の管理者
+  * ヘルプデスク管理者
+  * Intune 管理者
+  * メールボックス管理者
   * パートナー レベル 1 のサポート
   * パートナー レベル 2 のサポート
-  * Exchange 管理者
-  * メールボックス管理者
+  * パスワード管理者
+  * Power BI サービス管理者
+  * 特権認証管理者
+  * 特権ロール管理者
+  * SharePoint 管理者
+  * セキュリティ管理者
+  * サービス サポート管理者
   * Skype for Business 管理者
   * ユーザー管理者
-  * ディレクトリ ライター
-  * グローバル管理者または会社の管理者
-  * SharePoint 管理者
-  * コンプライアンス管理者
-  * アプリケーション管理者
-  * セキュリティ管理者
-  * 特権ロール管理者
-  * Intune 管理者
-  * Azure AD 参加済みデバイスのローカル管理者
-  * アプリケーション プロキシ サービス管理者
-  * Dynamics 365 管理者
-  * Power BI サービス管理者
-  * 認証管理者
-  * パスワード管理者
-  * 特権認証管理者
 
 * 試用版サブスクリプションで 30 日が経過している、または
 * Azure AD テナント用に、*contoso.com* のようなカスタム ドメインが構成されている、または
@@ -117,7 +119,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
 このガイダンスは、Intune や Microsoft 365 などの他のプロバイダーに適用され、これらは ID およびディレクトリ サービスについては Azure AD にも依存します。 パスワード有効期限が、ポリシーの変更できる唯一の部分です。
 
 > [!NOTE]
-> Azure AD Connect を介して同期されていないユーザー アカウントのパスワードのみ、期限切れにならないように構成できます。 ディレクトリ同期の詳細については、[AD と Azure AD の接続](../hybrid/whatis-hybrid-identity.md)に関するページをご覧ください。
+> 既定では、Azure AD Connect を介して同期されていないユーザー アカウントのパスワードのみ、期限切れにならないように構成できます。 ディレクトリ同期の詳細については、[AD と Azure AD の接続](../hybrid/how-to-connect-password-hash-synchronization.md#password-expiration-policy)に関するページをご覧ください。
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell を使用したパスワード ポリシーの設定または確認
 

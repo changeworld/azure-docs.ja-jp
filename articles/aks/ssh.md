@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/17/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 7ca318a21e4b3f764060757e1102e6e4665aec3e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8deba37750c6e498e87b87ab2c49e4aa54561475
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467830"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743962"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -128,7 +128,7 @@ azureuser@aksnpwin000000 C:\Users\azureuser>
 
 <!-- INTERNAL LINKS -->
 [view-kubelet-logs]: kubelet-logs.md
-[view-master-logs]: ./view-control-plane-logs.md
+[view-master-logs]: monitor-aks-reference.md#resource-logs
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

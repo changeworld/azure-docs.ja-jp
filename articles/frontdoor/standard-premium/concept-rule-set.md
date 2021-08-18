@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: e3e5333b339101676582cec03dbb960148d59b56
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 47f69c72fdd7b3890d22d56de3a530135cf6fcc3
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067556"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437632"
 ---
 # <a name="what-is-a-rule-set-for-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard または Premium (プレビュー) のルール セットとは
 
@@ -60,7 +60,7 @@ Azure Front Door のルール セットを使用すると、それぞれが一�
 
 クォータ制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
-* "*ルール セット*": 1 つまたは複数の[ルート](concept-route.md)に関連付けられる一連のルール。
+* "*ルール セット*": 1 つまたは複数の [ルート](concept-route.md)に関連付けられる一連のルール。
 
 * "*ルール セット ルール*": 最大 10 個の一致条件と 5 個のアクションで構成されるルール。 ルールは 1 つのルール セットに対してローカルであり、ルール セット間で使用するためにエクスポートすることはできません。 ユーザーは、複数のルール セット内に同じルールを作成できます。
 
@@ -70,7 +70,7 @@ Azure Front Door のルール セットを使用すると、それぞれが一�
 
 ## <a name="arm-template-support"></a>ARM テンプレートのサポート
 
-ルール セットは Azure Resource Manager テンプレートを使用して構成できます。 [テンプレートの例を参照してください](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set)。 この動作をカスタマイズするには、[一致条件](concept-rule-set-match-conditions.md)と[アクション](concept-rule-set-actions.md)のドキュメントの例に含まれている JSON または Bicep スニペットを使用します。
+ルール セットは Azure Resource Manager テンプレートを使用して構成できます。 [テンプレートの例を参照してください](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-rule-set)。 この動作をカスタマイズするには、[一致条件](concept-rule-set-match-conditions.md)と[アクション](concept-rule-set-actions.md)のドキュメントの例に含まれている JSON または Bicep スニペットを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

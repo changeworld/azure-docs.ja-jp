@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 262c2fb1b3d19fcb2e95d0e0aed3cbe620a529f2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a6943d2a26075c0671ad7c631e8d0d8f46c5b47e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677755"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732462"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell を使用して Windows VM にデータ ディスクを接続する
 
@@ -106,7 +106,6 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
 $vmName = "myVM"
-$location = "East US"
 $dataDiskName = "myDisk"
 $disk = Get-AzDisk -ResourceGroupName $rgName -DiskName $dataDiskName
 

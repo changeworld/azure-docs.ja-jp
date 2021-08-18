@@ -2,17 +2,19 @@
 title: R Tools for Visual Studio からのジョブの送信 - Azure HDInsight
 description: ローカルの Visual Studio マシンから HDInsight クラスターに R ジョブを送信します。
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: ee984de22052076618728fbacfc31b73c18c073a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8cc2cdfc123d0a02008859d2c6ecf8d20b763495
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864688"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295978"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。 RTVS は[Visual Studio 2019](/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?preserve-view=true&view=vs-2019) では利用できません。
 

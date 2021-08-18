@@ -7,14 +7,13 @@ ms.date: 04/23/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32ad3bb4f9a845ded60694d42d0b2708a61aea6a
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: ac4a35b5a73cb87e3e7962729fdccd89c5f82c57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483301"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729852"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 

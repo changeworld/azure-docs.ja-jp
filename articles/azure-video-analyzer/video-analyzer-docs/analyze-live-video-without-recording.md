@@ -2,13 +2,13 @@
 title: 記録を行わないライブ ビデオの分析 - Azure
 description: パイプライン技術は、ライブ ビデオ ストリームから分析を単に抽出するためだけに使用できます。これをエッジやクラウドに記録する必要はありません。 この記事ではこの概念について説明します。
 ms.topic: conceptual
-ms.date: 03/27/2021
-ms.openlocfilehash: af3c1438814a77a4687c2fdd58e3a6e6f9589b32
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: da9134d3fd86185c9606b297de48e843c76d4909
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386467"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604125"
 ---
 # <a name="analyzing-live-videos-without-recording"></a>記録を行わないライブ ビデオの分析
 

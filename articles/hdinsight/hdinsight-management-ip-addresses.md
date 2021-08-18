@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 002e224fc64943ab29876ca47d7f5d337bc1230d
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 617624fe3ae3ea5c0dc7bb3f34145f0aadf4ac4b
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020225"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113219215"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
@@ -84,7 +84,7 @@ Azure で提供される DNS サービスを使用している場合は、TCP �
 | &nbsp; | 米国中西部 | 52.161.23.15<br>52.161.10.167 | \*:443 | 受信 |
 | &nbsp; | 米国西部 | 13.64.254.98<br>23.101.196.19 | \*:443 | 受信 |
 | &nbsp; | 米国西部 2 | 52.175.211.210<br>52.175.222.222 | \*:443 | 受信 |
-| &nbsp; | アラブ首長国連邦北部 | 65.52.252.96<br>65.52.252.97 | \*:443 | 受信 |
+| アラブ首長国連邦 | アラブ首長国連邦北部 | 65.52.252.96<br>65.52.252.97 | \*:443 | 受信 |
 | &nbsp; | アラブ首長国連邦中部 | 20.37.76.96<br>20.37.76.99 | \*:443 | 受信 |
 
 Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](../azure-government/compare-azure-government-global-azure.md)」をご覧ください。

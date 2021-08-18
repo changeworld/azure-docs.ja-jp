@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d93854d47c65b500f280107e0bf6d0af3f80681
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100096856"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252592"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>Azure Sentinel に Apache HTTP Server を接続する
 
 > [!IMPORTANT]
 > Apache HTTP Server コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、Apache HTTP Server を Azure Sentinel に接続する方法について説明します。 Apache HTTP Server コネクタを使用すると、Apache HTTP Server のログを Azure Sentinel に簡単に取り込むことができます。これにより、そのデータをブックで表示したり、カスタム アラートの作成のためにクエリを実行したり、調査の改善のために取り込んだりできます。 Apache HTTP Server と Azure Sentinel の統合には、Log Analytics エージェントによるローカル ファイル処理が使用されます。
 
@@ -60,6 +62,6 @@ Apache HTTP Server のログ ファイルを読み取るように Log Analytics 
 
 このドキュメントでは、Apache HTTP Server を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

@@ -5,12 +5,12 @@ services: automation
 ms.date: 01/25/2021
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: da7c0ea670b4c4201930ce5d0f01e7bd9d9835e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fdfa1541e928491aecc039d51338f7ef1f1ef3d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100581036"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181415"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Update エージェントに関する問題のトラブルシューティング
 
@@ -62,7 +62,7 @@ Azure マシンの場合は、ポータルの **[Update Agent Readiness]\(Update
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
 
-このチェックでは、Linux 用 Log Analytics エージェントがインストールされているかが確認されます。 インストールする方法については、「[Linux 用エージェントのインストール](../../azure-monitor/vm/quick-collect-linux-computer.md#install-the-agent-for-linux)」をご覧ください。
+このチェックでは、Linux 用 Log Analytics エージェントがインストールされているかが確認されます。 インストールする方法については、「[Linux 用エージェントのインストール](../../azure-monitor/vm/monitor-virtual-machine.md#agents)」をご覧ください。
 
 ### <a name="log-analytics-agent-status"></a>Log Analytics エージェントの状態
 

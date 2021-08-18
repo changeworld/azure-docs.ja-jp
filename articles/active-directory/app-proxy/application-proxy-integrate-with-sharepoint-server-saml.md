@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e23d8871b50827e76bb383c4a49475627a9ca4a9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9ef88340c7bac7f09a532c12ba5a2ab69248046e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764443"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727870"
 ---
 # <a name="integrate-azure-active-directory-application-proxy-with-sharepoint-saml"></a>Azure Active Directory アプリケーション プロキシと SharePoint を統合する (SAML)
 
@@ -37,7 +37,7 @@ ms.locfileid: "108764443"
 
 この構成を完了するには、次のリソースが必要です。
  - SharePoint 2013 以降のファーム。 SharePoint ファームは、[Azure AD と統合](../saas-apps/sharepoint-on-premises-tutorial.md)されている必要があります。
- - アプリケーション プロキシが含まれるプランを使用する Azure AD テナント。 詳細については、[Azure AD のプランと料金](https://azure.microsoft.com/pricing/details/active-directory/)をご覧ください。
+ - アプリケーション プロキシが含まれるプランを使用する Azure AD テナント。 詳細については、[Azure AD のプランと料金](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)をご覧ください。
  - Azure AD テナント内の[カスタム検証済みドメイン](../fundamentals/add-custom-domain.md)。 検証済みのドメインは、SharePoint の URL サフィックスと一致している必要があります。
  - SSL 証明書が必要です。 詳細については、[カスタム ドメインでの発行](./application-proxy-configure-custom-domain.md)に関するページを参照してください。
  - オンプレミスの Active Directory ユーザーを Azure AD Connect と同期し、[Azure にサインイン](../hybrid/plan-connect-user-signin.md)するように構成する必要があります。 

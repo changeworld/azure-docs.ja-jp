@@ -2,7 +2,6 @@
 title: Azure IoT プロトコル ゲートウェイ | Microsoft Docs
 description: Azure IoT プロトコル ゲートウェイを使用して IoT Hub の機能およびプロトコルのサポートを拡張し、IoT Hub ではネイティブでサポートされていないプロトコルを使用してデバイスとハブの接続を有効にする方法。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -13,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 315d76715973b79a971f3ca15bcc5186d20135a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1f95ab34e8bfccdd4be017b2fa5ca49d93fc0b6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87325034"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750742"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>IoT Hub に対するその他のプロトコルのサポート
 

@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 1f0085695d810a2e6c30da410ca4d11fe4d5f490
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: eb7c36a67d5ac6ab7ccc0aa5ddceab84dfc67bce
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556012"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113138749"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "111556012"
 
 ## <a name="set-up-the-custom-skill"></a>カスタム スキルを設定する
 
-このチュートリアルでは、[Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) GitHub リポジトリで [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) プロジェクトを使用します。 このリポジトリをローカル コンピューターに複製し、**Vision/AnalyzeForm/** に移動して、プロジェクトにアクセスします。 次に、Visual Studio で _AnalyzeForm.csproj_ を開きます。 このプロジェクトでは、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)を満たし、Azure Cognitive Search の強化に使用できる Azure 関数リソースを作成します。 フォーム ドキュメントを入力として受け取り、指定したキー/値ペアを (テキストとして) 出力します。
+このチュートリアルでは、[Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) GitHub リポジトリで [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/main/Vision/AnalyzeForm) プロジェクトを使用します。 このリポジトリをローカル コンピューターに複製し、**Vision/AnalyzeForm/** に移動して、プロジェクトにアクセスします。 次に、Visual Studio で _AnalyzeForm.csproj_ を開きます。 このプロジェクトでは、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)を満たし、Azure Cognitive Search の強化に使用できる Azure 関数リソースを作成します。 フォーム ドキュメントを入力として受け取り、指定したキー/値ペアを (テキストとして) 出力します。
 
 まず、プロジェクト レベルの環境変数を追加します。 左側のウィンドウで **AnalyzeForm** プロジェクトを見つけ、右クリックして **[プロパティ]** を選択します。 **[プロパティ]** ウィンドウで **[デバッグ]** タブをクリックし、 **[環境変数]** フィールドを見つけます。 **[追加]** をクリックして以下の変数を追加します。
 * `FORMS_RECOGNIZER_ENDPOINT_URL`、エンドポイント URL に設定されている値を含む。

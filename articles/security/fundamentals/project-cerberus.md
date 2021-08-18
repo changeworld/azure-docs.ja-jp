@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: f085858a9d550623704efd4f051ed525e55a37e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: cda9aacfc3a207aa43c63cc26189da64fac87e85
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94557424"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893926"
 ---
 # <a name="project-cerberus"></a>プロジェクト Cerberus
 
@@ -45,6 +45,7 @@ Cerberus の機能は、Host Attestation Service と組み合わせることで�
 プラットフォームの整合性とセキュリティを強化する方法の詳細については、次を参照してください。
 
 - [ファームウェアのセキュリティ](firmware.md)
+- [プラットフォーム コードの整合性](code-integrity.md)
 - [セキュア ブート](secure-boot.md)
 - [メジャー ブートとホストの構成証明](measured-boot-host-attestation.md)
 - [保存時の暗号化](encryption-atrest.md)

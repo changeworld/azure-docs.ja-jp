@@ -4,15 +4,15 @@ description: Azure Marketplace のクラウド ソリューション プロバ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: mingshen-ms
-ms.author: mingshen
-ms.date: 11/05/2020
-ms.openlocfilehash: fd02ae6a9c58979c9d4747e67948df69748f3f1a
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 11/06/2020
+ms.openlocfilehash: 92ed0e98d0e3d626ffc40785eaaf6a6d820f3d95
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525068"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601112"
 ---
 # <a name="resell-your-offer-through-csp"></a>CSP を通してプランを再販する
 

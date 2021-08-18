@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
-ms.openlocfilehash: 7c1a6623883cbee46ba98982808f3c392dc50ffa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d31270d47637542c7b37b7273ad1fd25d6137560
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946648"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285874"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する
 
@@ -18,7 +18,7 @@ Apache Maven を使用して Java ベースの MapReduce アプリケーショ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Developer キット](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
+* [Java Developer キット](/azure/developer/java/fundamentals/java-support-on-azure) (JDK) バージョン 8
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 

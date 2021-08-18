@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/21/2021
 ms.author: aahi
-ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae3a147b64c1355700398371206c3da39597ad9b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "83590556"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451314"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics の docker コンテナーの構成
 
@@ -75,7 +75,7 @@ Text Analytics ではコンテナーごとに一般的な構成フレームワ�
 
 Text Analytics コンテナーでは、トレーニングやサービスのデータを格納するために入力マウントまたは出力マウントが使用されることはありません。 
 
-ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
+ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](how-tos/text-analytics-how-to-install-containers.md#host-computer-requirements-and-recommendations)のマウント場所にアクセスできないこともあります。 
 
 |省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|

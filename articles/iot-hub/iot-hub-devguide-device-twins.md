@@ -2,7 +2,6 @@
 title: Azure IoT Hub デバイス ツインについて | Microsoft Docs
 description: 開発者ガイド - デバイス ツインを使用して、IoT Hub とデバイス間で状態と構成を同期する
 author: nehsin
-manager: philmea
 ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
@@ -11,12 +10,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: cc1f9aaa0409300f99535b0b64f5719f8e8c97ad
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 1bea2bab5a930d16ebc7675a14bfa4486dc35951
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484615"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728786"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -43,7 +42,7 @@ ms.locfileid: "109484615"
 
 必要なプロパティ、ダイレクト メソッド、cloud-to-device メッセージの使用に関する指針については、「[cloud-to-device 通信に関するガイダンス](iot-hub-devguide-c2d-guidance.md)」を参照してください。
 
-デバイス ツインが Azure IoT プラグ アンドプレイ デバイスで使用されるデバイス モデルとどのように関連しているかについては、「[IoT プラグ アンド プレイのデジタル ツインを理解する](../iot-pnp/concepts-digital-twin.md)」を参照してください。
+デバイス ツインが Azure IoT プラグ アンドプレイ デバイスで使用されるデバイス モデルとどのように関連しているかについては、「[IoT プラグ アンド プレイのデジタル ツインを理解する](../iot-develop/concepts-digital-twin.md)」を参照してください。
 
 ## <a name="device-twins"></a>デバイス ツイン
 

@@ -3,19 +3,19 @@ title: Speech Devices SDK のマイク配列の推奨事項
 titleSuffix: Azure Cognitive Services
 description: Speech Devices SDK のマイク配列の推奨事項。 Microsoft Audio Stack での使用には、次の配列のジオメトリをお勧めします。
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
-ms.author: erhopf
-ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 13ee7f12ad6fe170d846128c72a60d20a59e3054
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95015343"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071960"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Speech Devices SDK のマイク配列の推奨事項
 

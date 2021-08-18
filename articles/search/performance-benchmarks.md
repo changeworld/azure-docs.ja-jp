@@ -3,17 +3,16 @@ title: パフォーマンス ベンチマーク
 titleSuffix: Azure Cognitive Search
 description: さまざまなパフォーマンス ベンチマークによる Azure Cognitive Search のパフォーマンスについて説明します
 author: dereklegenzoff
-manager: luisca
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 2da5a39710e7bbce2e610ef7850b9284bc5c4309
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 03276e72224c8ddefa80358c4214893fd3363c96
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441471"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178135"
 ---
 # <a name="azure-cognitive-search-performance-benchmarks"></a>Azure Cognitive Search のパフォーマンス ベンチマーク
 

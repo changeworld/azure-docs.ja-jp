@@ -1,19 +1,19 @@
 ---
 title: Synapse RBAC ロール
 description: この記事では、組み込みの Synapse RBAC ロールについて説明します。
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35f66732fa9cb48b94f80bab203534c9d04b7a7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 386045fef1081034c5a1c31904107b6537873eb8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102123"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726042"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC ロール
 

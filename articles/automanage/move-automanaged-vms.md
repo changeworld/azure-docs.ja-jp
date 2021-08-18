@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: alsin
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 99371b8618756c196b75858288c5c4785272a7e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e9fba5ff9dc10e0691423da689024af3e2b72bc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650467"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468349"
 ---
 # <a name="move-an-azure-automanage-virtual-machine-to-a-different-region"></a>Azure Automanage 仮想マシンの別のリージョンへの移動
 この記事では、仮想マシン (VM) を別のリージョンに移動するときに、Automanage を有効にしたままにする方法について説明します。 さまざまな理由で、お使いの仮想マシンを別のリージョンに移動することが必要な場合があります。 たとえば、新しい Azure リージョンを利用するため、内部ポリシーとガバナンスの要件を満たすため、または容量計画の要件に応じるためです。 移動する VM を現在 Automanage で管理しており、移動後も Automanage で管理し続けたいと考えている場合です。
@@ -33,4 +33,4 @@ ms.locfileid: "101650467"
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Automanage の詳細情報](./automanage-virtual-machines.md)
-* [Azure Automanage のよく寄せられる質問を参照](./faq.md)します
+* [Azure Automanage のよく寄せられる質問を参照](./faq.yml)します

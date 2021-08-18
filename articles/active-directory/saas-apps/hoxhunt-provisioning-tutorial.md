@@ -2,25 +2,22 @@
 title: チュートリアル:Hoxhunt を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Hoxhunt へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 24fbe0a4-ab2d-4e10-93a6-c87d634ffbcf
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/28/2021
-ms.author: Zhchia
-ms.openlocfilehash: db33cc43419b4228ca270d3a69c0e88de2c05638
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.author: thwimmer
+ms.openlocfilehash: f2f03976ad6be9260b9b32291eef35c5ecbc86cf
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752050"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195322"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>チュートリアル:Hoxhunt を構成し、自動ユーザー プロビジョニングに対応させる
 

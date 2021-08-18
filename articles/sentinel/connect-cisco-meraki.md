@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2021
 ms.author: yelevin
-ms.openlocfilehash: dc2d2a0724f18a02a5b667eb1004963a326ec360
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 64828011cc92145e6635c995294f234754999a8b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101743997"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179379"
 ---
 # <a name="connect-your-cisco-meraki-to-azure-sentinel"></a>Azure Sentinel に Cisco Meraki を接続する
 
 > [!IMPORTANT]
 > Cisco Meraki コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、Cisco Meraki (MX/MS/MR) アプライアンスを Azure Sentinel に接続する方法について説明します。 Cisco Meraki データ コネクタを使用すると、Azure Sentinel に Cisco Meraki のログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、および調査の改善も行うことができます。 Cisco Meraki と Azure Sentinel の統合では、Log Analytics エージェントがインストールされた Syslog サーバーが使用されます。 また、Kusto 関数に基づくカスタムビルドのログ パーサーも使用されます。
 
@@ -73,6 +75,6 @@ Azure Sentinel にログが表示され始めるまでに、最大 20 分かか�
 
 このドキュメントでは、Cisco Meraki を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

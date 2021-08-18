@@ -4,12 +4,12 @@ description: Linux VM に対する Azure Policy のゲスト構成ポリシー�
 ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b28d7f0ccd2f4b8cca7bdb5015dce6e8ee8f2f17
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 89f4e64f6448f93a4b746ae4301450707f832cde
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762985"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287013"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -17,7 +17,7 @@ ms.locfileid: "108762985"
 
 Windows のゲスト構成ポリシーを作成する方法の詳細については、[Windows 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create.md)に関するページを参照してください。
 
-Linux を監査する場合、ゲスト構成では [Chef InSpec](https://www.inspec.io/) を使用します。 InSpec プロファイルでは、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは **非準拠** と見なされます。
+Linux を監査する場合、ゲスト構成では [Chef InSpec](https://community.chef.io/tools/chef-inspec) を使用します。 InSpec プロファイルでは、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは **非準拠** と見なされます。
 
 [Azure Policy のゲスト構成](../concepts/guest-configuration.md)は、マシン内の設定を監査するためにのみ使用できます。 マシン内の設定の修復はまだ利用できません。
 
@@ -94,7 +94,7 @@ PowerShell コマンドレットは、パッケージの作成に役立ちます
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux でのカスタム ゲスト構成の構成
 
-Linux でのゲスト構成では、`ChefInSpecResource` リソースを使って、エンジンに [InSpec プロファイル](https://www.inspec.io/docs/reference/profiles/)の名前を設定します。 **Name** は、唯一必要なリソース プロパティです。 下で説明するように、YAML ファイルと Ruby スクリプト ファイルを作成します。
+Linux でのゲスト構成では、`ChefInSpecResource` リソースを使って、エンジンに [InSpec プロファイル](https://docs.chef.io/inspec/profiles/)の名前を設定します。 **Name** は、唯一必要なリソース プロパティです。 下で説明するように、YAML ファイルと Ruby スクリプト ファイルを作成します。
 
 最初に、InSpec によって使用される YAML ファイルを作成します。 ファイルは、環境に関する基本的な情報を提供します。 次に例を示します。
 
@@ -401,7 +401,7 @@ New-GuestConfigurationPolicy -ContentUri $uri `
 
 Linux マシンで使用する GPG キーの作成については、GitHub の[新しい GPG キーの生成](https://help.github.com/en/articles/generating-a-new-gpg-key)に関する記事に優れたリファレンスが提供されています。
 
-GuestConfiguration エージェントにより、Linux マシンの場合はパス `/usr/local/share/ca-certificates/extra` に、証明書の公開キーが存在していることが求められます。 署名されたコンテンツをノードで検証するには、カスタム ポリシーを適用する前に、マシンに証明書の公開キーをインストールします。 このプロセスは、VM 内で任意の方法を使うか、Azure Policy を使って、行うことができます。 テンプレートの例は、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)で提供されています。
+GuestConfiguration エージェントにより、Linux マシンの場合はパス `/usr/local/share/ca-certificates/extra` に、証明書の公開キーが存在していることが求められます。 署名されたコンテンツをノードで検証するには、カスタム ポリシーを適用する前に、マシンに証明書の公開キーをインストールします。 このプロセスは、VM 内で任意の方法を使うか、Azure Policy を使って、行うことができます。 テンプレートの例は、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-push-certificate-windows)で提供されています。
 Key Vault のアクセス ポリシーでは、デプロイ中にコンピューティング リソース プロバイダーが証明書にアクセスできるようにする必要があります。 詳しい手順については、[Azure Resource Manager の仮想マシンの Key Vault を設定する](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)に関する記事をご覧ください。
 
 コンテンツを発行した後、コード署名が必要なすべての仮想マシンに、名前が `GuestConfigPolicyCertificateValidation` で値が `enabled` のタグを追加します。 Azure Policy を使用して大規模にタグを配信する方法については、[タグのサンプル](../samples/built-in-policies.md#tags)に関する記事を参照してください。 このタグを配置すると、`New-GuestConfigurationPolicy` コマンドレットを使って生成されるポリシー定義では、ゲスト構成拡張による要件が有効になります。

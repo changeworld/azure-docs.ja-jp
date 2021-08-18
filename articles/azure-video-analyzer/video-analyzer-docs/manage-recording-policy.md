@@ -3,13 +3,13 @@ title: Azure Video Analyzer を使用してレコーディング ポリシーを
 description: このトピックでは、Azure Video Analyzer を使用してレコーディング ポリシーを管理する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 04/04/2021
-ms.openlocfilehash: a85f56dde890b5bf587c81bb5fb71407e46986f8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 31b9d4f14a9c60687b9a6e8f32fcc3a1fba82856
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388152"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601580"
 ---
 # <a name="manage-recording-policy-with-video-analyzer"></a>Video Analyzer を使用してレコーディング ポリシーを管理する
 

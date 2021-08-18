@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: depadia
-ms.openlocfilehash: f520bc6615d9c7ea40612e7d52fb201d04c246e9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: bd65c77d8be0cef06a81f0f7699b04134e0e1706
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408121"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747961"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-windows-on-azure"></a>Azure の Windows 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -445,7 +445,7 @@ Filestore とは、レポート、ユニバース、接続などの内容が格�
 
 Windows で実行されている SAP BOBI プラットフォームの場合、高可用性と高耐久性を実現するように設計された [Azure Premium Files](../../../storage/files/storage-files-introduction.md) または [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) をファイルストアのために選択できます。 Azure Premium Files では、ZRS をサポートしています。これは、SAP BOBI プラットフォームのクロスゾーン デプロイに役立つことがあります。 詳細については、Azure Files の「[冗長性](../../../storage/files/storage-files-planning.md#redundancy)」セクションを参照してください。
 
-ファイル共有サービスはすべてのリージョンで使用できるわけではないため、最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/global-infrastructure/services/)」の一覧を確認してください。 お使いのリージョンでサービスを利用できない場合は、NFS サーバーを作成し、そのファイル システムを SAP BOBI アプリケーションと共有できます。 しかし、高可用性を考慮する必要もあります。
+ファイル共有サービスはすべてのリージョンで使用できるわけではないため、最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」の一覧を確認してください。 お使いのリージョンでサービスを利用できない場合は、NFS サーバーを作成し、そのファイル システムを SAP BOBI アプリケーションと共有できます。 しかし、高可用性を考慮する必要もあります。
 
 ### <a name="high-availability-for-the-load-balancer"></a>ロード バランサーの高可用性
 
@@ -501,7 +501,7 @@ Load Balancer は、SAP BOBI プラットフォームの Web アプリケーシ�
 - **Azure Premium Files** では、LRS と ZRS のみがサポートされています。 Azure Premium Files の DR 戦略を使用する場合、[AzCopy](../../../storage/common/storage-use-azcopy-v10.md) または [Azure PowerShell](/powershell/module/az.storage/?preserve-view=true&view=azps-5.8.0) を使用して、異なるリージョンの別のストレージ アカウントにファイルをコピーすることができます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](../../../storage/common/storage-disaster-recovery-guidance.md)」を参照してください。
 - **Azure NetApp Files** によって NFS および SMB ボリュームが提供されるため、ファイルベースの任意のコピー ツールを使用して、Azure リージョン間でデータをレプリケートできます。 別のリージョンにある Azure NetApp Files ボリュームをコピーする方法の詳細については、「[Azure NetApp Files についての FAQ](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region)」を参照してください。
 
-  Azure NetApp Files リージョン間レプリケーションを使用できます。これは現在[プレビュー](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)段階であり、NetApp SnapMirror テクノロジが活用されています。 このテクノロジでは、変更されたブロックだけが、圧縮された効率的な形式でネットワークを介して送信されます。 この独自のテクノロジによってリージョン間でのレプリケーションに必要なデータ量が最小化されることで、データ転送コストが削減されます。 また、レプリケーションにかかる時間が短縮されるため、より小さい RPO を実現できます。 詳細については、「[リージョン間レプリケーションを使用するための要件と考慮事項](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)」を参照してください。
+  Azure NetApp Files リージョン間レプリケーションを使用できます。これは現在[プレビュー](https://azure.microsoft.com/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)段階であり、NetApp SnapMirror テクノロジが活用されています。 このテクノロジでは、変更されたブロックだけが、圧縮された効率的な形式でネットワークを介して送信されます。 この独自のテクノロジによってリージョン間でのレプリケーションに必要なデータ量が最小化されることで、データ転送コストが削減されます。 また、レプリケーションにかかる時間が短縮されるため、より小さい RPO を実現できます。 詳細については、「[リージョン間レプリケーションを使用するための要件と考慮事項](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)」を参照してください。
 
 ### <a name="cms-database"></a>CMS データベース
 

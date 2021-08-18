@@ -7,14 +7,13 @@ ms.date: 05/18/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 454c34ce5cf45c293e62464dc67b8bb5576752be
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: da61d170d0a4829ec7dede05d33fc3f70644cc61
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110192256"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725597"
 ---
 # <a name="creator-long-running-operation-api-v2"></a>Creator の実行時間の長い操作 API V2
 

@@ -3,12 +3,12 @@ title: Azure Container Registry でのリポジトリに対するアクセス許
 description: イメージのプルやプッシュまたは他のアクションを実行するための、Premium レジストリ内の特定のリポジトリをスコープとするアクセス許可を持つトークンを作成します。
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 8cdcd3e09603f24c37ad7323a273ca97f76fcd0c
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 796d98173a5ec850af2f8dbec3e8bfd1db902ca0
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930499"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220436"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "107930499"
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
 * 現在、リポジトリ スコープのアクセス許可を、サービス プリンシパルやマネージド ID などの Azure Active Directory ID に割り当てることはできません。
-* [匿名プル アクセス](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)に対して有効になっているレジストリにスコープ マップを作成することはできません。
+* [匿名プル アクセス](container-registry-faq.yml#how-do-i-enable-anonymous-pull-access-)に対して有効になっているレジストリにスコープ マップを作成することはできません。
 
 ## <a name="concepts"></a>概念
 

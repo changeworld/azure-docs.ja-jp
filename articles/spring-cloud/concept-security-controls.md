@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud Service のセキュリティ コントロール
 description: Azure Spring Cloud Service に組み込まれているセキュリティ コントロールを使用します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: faa278b60f3b120fc6f1aad14cd6f8b6dbfb1e21
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dbd544a3b8a2a55b6eafa51115277f6ef142b41c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129191"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861773"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud Service のセキュリティ コントロール
 
@@ -20,7 +20,7 @@ ms.locfileid: "108129191"
 
 セキュリティ コントロールは、Azure Spring Cloud Service に組み込まれています。
 
-セキュリティ コントロールとは、セキュリティの脆弱性の防止、検出、および対処を行う Azure サービスの能力に寄与する、そのサービスの品質または機能です。  各コントロールについて、 *[はい]* または *[いいえ]* を使用して、サービスに現在設定されているかどうかを示します。  サービスに適用されないコントロールには *[N/A]* を使用します。 
+セキュリティ コントロールとは、セキュリティの脆弱性の防止、検出、および対処を行う Azure サービスの能力に寄与する、そのサービスの品質または機能です。  各コントロールについて、 *[はい]* または *[いいえ]* を使用して、サービスに現在設定されているかどうかを示します。  サービスに適用されないコントロールには *[N/A]* を使用します。
 
 **データ保護のセキュリティ コントロール**
 

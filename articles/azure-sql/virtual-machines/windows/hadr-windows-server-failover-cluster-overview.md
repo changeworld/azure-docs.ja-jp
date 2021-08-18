@@ -11,14 +11,14 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/25/2021
+ms.date: 06/01/2021
 ms.author: mathoma
-ms.openlocfilehash: edfd8e09ed44134637a33a065de0f2e7b812e8a1
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: f85c603f7bfa4113edaeaed1eb92d907d06fe09d
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111573251"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581927"
 ---
 # <a name="windows-server-failover-cluster-with-sql-server-on-azure-vms"></a>Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

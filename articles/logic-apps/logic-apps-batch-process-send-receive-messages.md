@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b67003db0953a8246a49ec8551d6e0fab4dc8251
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87458253"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362957"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps でのメッセージの送信、受信、バッチ処理
 
@@ -215,5 +215,4 @@ ms.locfileid: "87458253"
 
 * [EDI メッセージのバッチ処理と送信](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [JSON を使用してロジック アプリの定義に基づいて構築する](../logic-apps/logic-apps-author-definitions.md)
-* [Azure Logic Apps と関数を使用して Visual Studio でサーバーレス アプリを構築する](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [ロジック アプリの例外処理とエラーのログ記録](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

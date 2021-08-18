@@ -1,21 +1,20 @@
 ---
 title: Azure CLI 向けの IoT 拡張機能を使用した Azure IoT デバイス管理 | Microsoft Docs
 description: Azure IoT Hub デバイス管理用の Azure CLI ツール向けの IoT 拡張機能を使用します。ダイレクト メソッドのほか、ツインの必要なプロパティを管理するためのオプションが備わっています。
-author: chrissie926
+author: robinsh
 manager: ''
 keywords: Azure IoT デバイス管理, Azure IoT Hubデバイス管理, デバイス管理 IoT, IoT Hub デバイス管理
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
-ms.author: menchi
-ms.openlocfilehash: a6bf14691e583190c4485ae854de78b187d95211
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.author: robinsh
+ms.openlocfilehash: c67e9fc7cb6a2530c752efee760b2fb7fcb7f277
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773901"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727102"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
@@ -43,7 +42,7 @@ ms.locfileid: "108773901"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページや、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページや、[テレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
 
   * 有効な Azure サブスクリプション
   * サブスクリプションの Azure IoT Hub。

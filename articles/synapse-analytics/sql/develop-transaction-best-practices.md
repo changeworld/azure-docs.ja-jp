@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b47342a0013eafe9444c30ced4d00a96500ccdab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d309e2786a1ec56a5e34f2594520e7e36bbcf6b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592984"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861807"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでトランザクションを最適化する 
 
@@ -44,7 +44,7 @@ ms.locfileid: "104592984"
 
 次の操作は、最小ログ記録が可能です。
 
-* CREATE TABLE AS SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json))
+* CREATE TABLE AS SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context))
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
@@ -84,7 +84,7 @@ CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 た
 
 ## <a name="optimize-deletes"></a>削除の最適化
 
-DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
+DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -177,11 +177,11 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 大きなテーブルを作成し直す場合は、専用 SQL プールのワークロード管理機能を使用することが役立ちます。 詳細については、[「ワークロード管理用のリソース クラス](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+> 大きなテーブルを作成し直す場合は、専用 SQL プールのワークロード管理機能を使用することが役立ちます。 詳細については、[「ワークロード管理用のリソース クラス](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context)」を参照してください。
 
 ## <a name="optimize-with-partition-switching"></a>パーティション切り替えを使用した最適化
 
-[テーブル パーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)内で大規模な変更を加える場合は、パーティション切り替えパターンを使用すると効率的です。 データが大幅に変更されていて、複数のパーティションにまたがっている場合は、それらのパーティションを反復処理すると同じ結果を得られます。
+[テーブル パーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)内で大規模な変更を加える場合は、パーティション切り替えパターンを使用すると効率的です。 データが大幅に変更されていて、複数のパーティションにまたがっている場合は、それらのパーティションを反復処理すると同じ結果を得られます。
 
 パーティション切り替えを実行する手順は次のとおりです。
 
@@ -406,7 +406,7 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>一時停止とスケールのガイダンス
 
-Azure Synapse Analytics を使用して、必要に応じて専用 SQL プールの[一時停止、再開、およびスケーリング](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)を実行できます。 
+Azure Synapse Analytics を使用して、必要に応じて専用 SQL プールの[一時停止、再開、およびスケーリング](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?context=/azure/synapse-analytics/context/context)を実行できます。 
 
 専用 SQL プールの一時停止またはスケーリングを実行すると、実行中のトランザクションは直ちに終了し、開いているトランザクションはすべてロールバックされることを理解しておくことが重要です。 
 

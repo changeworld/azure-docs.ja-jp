@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 49dc71dac6d246907de3498ed0a39541a3caf522
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: e7d0515262fc06d850b61f257e7cd577797bcf39
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888430"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742748"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した API Management 用の CI/CD
 
@@ -67,7 +67,7 @@ API 開発者は、Resource Manager テンプレートの操作中に次のよ�
 
 * API 発行者は、プル要求を検証し、変更が安全で準拠していることを確認できます。 たとえば、API との通信が HTTPS だけに許可されているかどうかを確認できます。 ほとんどの検証は、CI/CD パイプラインでの手順として自動化できます。
 
-* 変更が承認され、正常にマージされたら、API 発行者はスケジュールに基づいて、または必要に応じて、それらを運用インスタンスにデプロイすることを選択できます。 テンプレートのデプロイは、[GitHub Actions](https://github.com/Azure/apimanagement-devops-samples)、[Azure Pipelines](/azure/devops/pipelines)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) などのツールを使用して自動化できます。
+* 変更が承認され、正常にマージされたら、API 発行者はスケジュールに基づいて、または必要に応じて、それらを運用インスタンスにデプロイすることを選択できます。 テンプレートのデプロイは、[GitHub Actions](https://docs.github.com/en/actions)、[Azure Pipelines](/azure/devops/pipelines)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) などのツールを使用して自動化できます。
 
 
 この方法で、組織は API の変更を API Management インスタンスにデプロイする処理を自動化できるため、ある環境から別の環境に変更を簡単に昇格できます。 異なる API 開発チームが異なる API テンプレートやファイルのセットに取り組むことになるため、これにより異なるチーム間の干渉を防ぐことができます。

@@ -3,20 +3,20 @@ title: チュートリアル:Speech SDK を使用してボットを音声対応�
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Microsoft Bot Framework を使用してエコー ボットを作成し、それを Azure にデプロイし、Bot Framework Direct Line Speech チャネルに登録します。 その後、Windows 用のサンプル クライアント アプリを構成します。これにより、ボットに話しかけて、応答を聞くことができます。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fa449ad3d9a0e26bd0754a67581c8d63fa025e55
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: de0653ecae4c46345d961fc9c6b17930ed5b2627
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552310"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122072356"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -330,7 +330,7 @@ Windows 音声アシスタント クライアントには、ボットへの接�
 |エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1002。 エラーの詳細:サーバーが状態コード '101' を返すはずが、状態コード '503' を返しました | [[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\) ボックスをオンにした](#register-the-direct-line-speech-channel)か、[ **[Web ソケット]** を [オン] に切り替えた](#enable-web-sockets)ことを確認します。<br>Azure App Service が実行されていることを確認します。 その場合は、App Service を再起動してみてください。|
 |エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:応答状態コードは成功を示していません:500 (InternalServerError)| ボットによって、出力アクティビティ [[音声入力]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドにニューラル音声が指定されましたが、Speech サブスクリプション キーに関連付けられている Azure リージョンではニューラル音声がサポートされていません。 「[標準およびニューラル音声](./regions.md#neural-and-standard-voices)」を参照してください。|
 
-発生している問題が表に記載されていない場合は、「[音声アシスタント: よく寄せられる質問](faq-voice-assistants.md)」をご覧ください。 このチュートリアルのすべての手順を実行しても問題が解決しない場合は、[Voice Assistant の GitHub ページ](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)で新しい問題を入力してください。
+発生している問題が表に記載されていない場合は、「[音声アシスタント: よく寄せられる質問](faq-voice-assistants.yml)」をご覧ください。 このチュートリアルのすべての手順を実行しても問題が解決しない場合は、[Voice Assistant の GitHub ページ](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)で新しい問題を入力してください。
 
 #### <a name="a-note-on-connection-time-out"></a>接続タイムアウトに関する注意事項
 

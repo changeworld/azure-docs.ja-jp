@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: f2f99ad89b1fd0c62b329d314e897ee95fc3520b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 07055d8a8cb3d4957a3dcb934f951afc943773fc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539751"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751873"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search の AI エンリッチメントのドキュメント リソース
 
@@ -44,7 +44,7 @@ AI エンリッチメントは、インデクサーベースのインデクス�
 + [REST と Postman を使用してナレッジ ストアを作成する](knowledge-store-create-rest.md)
 + [Storage Explorer でナレッジ ストアを表示する](knowledge-store-view-storage-explorer.md)
 + [Power BI を使用してナレッジ ストアに接続する](knowledge-store-connect-power-bi.md)
-+ [プロジェクションの例 (エンリッチメントを整形してエクスポートする方法)](knowledge-store-projections-examples.md)
++ [ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)
 
 ## <a name="custom-skills-advanced"></a>カスタム スキル (上級)
 

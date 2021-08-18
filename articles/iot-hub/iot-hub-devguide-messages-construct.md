@@ -2,21 +2,20 @@
 title: Azure IoT Hub メッセージの形式について | Microsoft Docs
 description: 開発者ガイド - IoT Hub メッセージの形式と予期される内容について説明します。
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 07/01/2021
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 547152e5c74d8953ae206d9ff3b6076013b0ade1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 40cbc1c5046c944a8915f1db38805cacb95b2889
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091632"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294777"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -151,4 +150,4 @@ D2C メッセージでのデバイスのなりすましを回避するために�
 
 * IoT Hub でのメッセージ サイズの制限については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページをご覧ください。
 
-* IoT Hub メッセージをさまざまなプログラミング言語で作成し、読み取る方法については、[クイック スタート](quickstart-send-telemetry-node.md)をご覧ください。
+* IoT Hub メッセージをさまざまなプログラミング言語で作成し、読み取る方法については、[クイック スタート](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)をご覧ください。

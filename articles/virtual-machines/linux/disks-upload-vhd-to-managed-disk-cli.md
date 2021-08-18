@@ -4,16 +4,16 @@ description: Azure CLI を使用して、直接アップロードによって Az
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 06/15/2020
+ms.date: 06/29/2021
 ms.topic: how-to
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 0f48856f085737040ca16afcca1e56be1da4843e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 4928cb098990a0f91fd0d6a4fbde4844a81ed338
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816748"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358383"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
 

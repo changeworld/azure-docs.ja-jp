@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96e055205c5c016504cd6246b9c1b6d1533ad6ac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594965"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736180"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ネットワーク ポリシーの概要
 
@@ -154,7 +154,7 @@ Azure portal を開きます。 クラスターの [分析情報] で、[ブッ�
 ブック (下の図) を表示するだけでなく、[分析情報] セクションの [ログ] で Prometheus メトリックを直接照会することもできます。 たとえば、次のクエリでは、収集されるすべてのメトリックが返されます。
 | where TimeGenerated > ago(5h) | where Name contains "npm_"
 
-また、Log Analytics でメトリックを直接照会することもできます。 詳細については、[Log Analytics クエリの使用方法](../azure-monitor/containers/container-insights-log-search.md)に関する記事を参照してください。 
+また、Log Analytics でメトリックを直接照会することもできます。 詳細については、[Log Analytics クエリの使用方法](../azure-monitor/containers/container-insights-log-query.md)に関する記事を参照してください。 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Grafana ダッシュボードでの表示
 [ここ](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)に説明されているように、Grafana サーバーを設定し、Log Analytics データ ソースを構成します。 次に、[Log Analytics バックエンドを含む Grafana ダッシュボード](https://grafana.com/grafana/dashboards/10956)を Grafana Labs にインポートします。

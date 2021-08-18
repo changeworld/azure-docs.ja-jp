@@ -3,8 +3,8 @@ title: 'チュートリアル: Segment を構成し、Azure Active Directory を
 description: Azure AD から Segment へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 20939a92-5f48-4ef7-ab95-042e70ec1e0e
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2021
-ms.author: Zhchia
-ms.openlocfilehash: 17b0359ca7d988860429f2ae77bbd0aa40347513
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.author: thwimmer
+ms.openlocfilehash: 39a79f8fdaf111a3eb9c6ff6978c3b3bd1907838
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207665"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759514"
 ---
 # <a name="tutorial-configure-segment-for-automatic-user-provisioning"></a>チュートリアル: Segment を構成し、自動ユーザー プロビジョニングに対応させる
 

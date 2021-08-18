@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/30/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 38a1c975df578b32ec2d6cac9ff5c6ad4acb3687
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 56ee5afdb907f660079fd1ac853ccbd80258b30b
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759193"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416598"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
 
@@ -62,7 +62,7 @@ Service Bus には、ブローカー メッセージングをサポートする�
 
 最初の手順では、*名前空間* を作成して、その [Shared Access Signature (SAS)](service-bus-sas.md) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。 名前空間名と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+[!INCLUDE [service-bus-create-namespace-portal](./includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>Web ロールを作成する
 
@@ -399,12 +399,6 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 * [Service Bus キューの使用][sbacomqhowto]
 * [Service Bus サービス ページ][sbacom]  
 
-多層のシナリオの詳細については、次のページを参照してください。  
-
-* [ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーション][mutitierstorage]  
-
-
 
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
-[mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

@@ -3,21 +3,21 @@ title: シングルページ アプリのサインインとサインアウト
 titleSuffix: Microsoft identity platform
 description: シングルページ アプリケーション (サインイン) を構築する方法を学習する
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/11/2020
-ms.author: mtillman
+ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: e20d9f2ed0060cf28f73e107ca95017d3b30418b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: fd160749fef327efa21094ba69daf2db88449918
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075135"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357483"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 
@@ -219,7 +219,7 @@ import { MsalAuthenticationTemplate, useMsal } from "@azure/msal-react";
 function WelcomeUser() {
     const { accounts } = useMsal();
     const username = accounts[0].username;
-    
+
     return <p>Welcome, {username}</p>
 }
 
@@ -254,7 +254,7 @@ function SignInButton() {
 function WelcomeUser() {
     const { accounts } = useMsal();
     const username = accounts[0].username;
-    
+
     return <p>Welcome, {username}</p>
 }
 
@@ -306,7 +306,7 @@ function handleResponse(response) {
     } else {
         // In case multiple accounts exist, you can select
         const currentAccounts = myMsal.getAllAccounts();
-    
+
         if (currentAccounts.length === 0) {
             // no accounts signed-in, attempt to sign a user in
             myMsal.loginRedirect(loginRequest);
@@ -396,7 +396,7 @@ import { MsalAuthenticationTemplate, useMsal } from "@azure/msal-react";
 function WelcomeUser() {
     const { accounts } = useMsal();
     const username = accounts[0].username;
-    
+
     return <p>Welcome, {username}</p>
 }
 
@@ -431,7 +431,7 @@ function SignInButton() {
 function WelcomeUser() {
     const { accounts } = useMsal();
     const username = accounts[0].username;
-    
+
     return <p>Welcome, {username}</p>
 }
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs で別のラボから仮想マシンをインポート
 description: この記事では、Azure DevTest Labs の現在のラボに、別のラボから仮想マシンをインポートする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0f664a0ae399575ee936565adaf7364fd1c5ce5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e2cce7a364254798c88697d942041c1503af193
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85475936"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300437"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で別のラボから仮想マシンをインポートする
 この記事では、別のラボから自分のラボに仮想マシンをインポートする方法について説明します。
@@ -77,4 +77,4 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 次の記事をご覧ください。
 
 - [ラボのポリシーを設定する](devtest-lab-set-lab-policy.md)
-- [よく寄せられる質問](devtest-lab-faq.md)
+- [よく寄せられる質問](devtest-lab-faq.yml)

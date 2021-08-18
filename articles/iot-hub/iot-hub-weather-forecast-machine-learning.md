@@ -2,20 +2,18 @@
 title: Azure Machine Learning Studio (classic) で IoT Hub データを使用して行う天気予報
 description: Azure Machine Learning Studio (classic) を使用して、IoT Hub がセンサーから収集した気温と湿度のデータに基づき、降水確率を予測します。
 author: robinsh
-manager: philmea
 keywords: 機械学習を使用した天気予報
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 455d78ed21403952046448dd4447b5ec54f77c00
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: f9b683d08a5b1fde172efa5a769a605d3d1862da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566981"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742228"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で IoT ハブからのセンサー データを使用して天気予報を行う
 
@@ -27,7 +25,7 @@ ms.locfileid: "107566981"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関する記事や、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
+- [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページや、[テレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。

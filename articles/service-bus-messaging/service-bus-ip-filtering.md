@@ -3,12 +3,12 @@ title: Azure Service Bus の IP ファイアウォール規則を構成する
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Service Bus への接続を許可する方法です。
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: 747e15e912033c5bc6a1f64ab389f1ab03f40c0b
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 84ba9f71d3d1da590d8ec43bfe1cfefb91b7c8ae
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962324"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415717"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>特定の IP アドレスまたは範囲から Azure Service Bus への接続を許可します
 既定では、要求が有効な認証と承認を受けている限り、Service Bus 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -55,7 +55,7 @@ ms.locfileid: "105962324"
     > [!NOTE]
     > 特定の仮想ネットワークへのアクセスを制限するには、[特定のネットワークからのアクセスの許可](service-bus-service-endpoints.md)に関する記事をご覧ください。
 
-[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
+[!INCLUDE [service-bus-trusted-services](./includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 このセクションには、Service Bus 名前空間に仮想ネットワークとファイアウォール規則を追加するサンプルの Azure Resource Manager テンプレートが含まれています。

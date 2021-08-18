@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0d78cc9d99bd7ace2d214c2a2a1d7f75a74df098
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3c163f34ecec0eae1467b375928eab95ce70d374
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785055"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292845"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
@@ -44,9 +44,9 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 
 | Template | 説明 |
 | --- | --- |
-| [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure の BLOB ストレージから Azure SQL Database にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます |
-| [Salesforce から Azure Blob Storage にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |このテンプレートをデプロイすると、指定した Salesforce アカウントから Azure Blob Storage にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
-| [Azure HDInsight クラスターで Hive スクリプトを実行してデータを変換する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |このテンプレートをデプロイすると、Azure HDInsight Hadoop クラスター上でサンプル Hive スクリプトを実行することによりデータ変換を行うパイプラインを持つ Azure データ ファクトリが作成されます。 |
+| [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure の BLOB ストレージから Azure SQL Database にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます |
+| [Salesforce から Azure Blob Storage にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-salesforce-to-blob-copy) |このテンプレートをデプロイすると、指定した Salesforce アカウントから Azure Blob Storage にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
+| [Azure HDInsight クラスターで Hive スクリプトを実行してデータを変換する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-hive-transformation) |このテンプレートをデプロイすると、Azure HDInsight Hadoop クラスター上でサンプル Hive スクリプトを実行することによりデータ変換を行うパイプラインを持つ Azure データ ファクトリが作成されます。 |
 
 ## <a name="samples-in-azure-portal"></a>Azure Portal のサンプル
 データ ファクトリのホーム ページにある **[サンプル パイプライン]** タイルを使用して、パイプラインのサンプルおよび関連付けられているエンティティ (データセットおよびリンクされたサービス) をデータ ファクトリにデプロイできます。

@@ -7,14 +7,13 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 08966549d2c4d2bf701ee0dbfc5ed24f202396fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed77cc8d0e7bdbd67f1bc38d326438c7e5adc5bd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92891378"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745860"
 ---
 # <a name="core-io-operations"></a>コア IO 操作
 

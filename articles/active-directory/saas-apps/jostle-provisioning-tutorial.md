@@ -2,25 +2,22 @@
 title: 'チュートリアル: Azure Active Directory を使用した自動ユーザー プロビジョニングに対応するよう Jostle を構成する | Microsoft Docs'
 description: Azure AD から Jostle に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 6dbb744f-8b8e-4988-b293-ebe079c8c5c5
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/05/2021
-ms.author: Zhchia
-ms.openlocfilehash: c302f7731c111c0718ac7c4d5889208020cc09a8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: thwimmer
+ms.openlocfilehash: 5fe843fb735aecda1eff51d3e52392a79bf8c1dd
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067593"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195529"
 ---
 # <a name="tutorial-configure-jostle-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するよう Jostle を構成する
 

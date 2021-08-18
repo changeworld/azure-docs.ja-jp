@@ -8,12 +8,12 @@ ms.date: 03/29/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 6c2ea063e37660767d266c15dcfc471ee5d73a02
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7f12ca1530b40885dea456763bd231d487ba5cb
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732110"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004630"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Analysis Services データベースのバックアップと復元
 
@@ -25,7 +25,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 > 
 
 > [!NOTE]
-> ストレージ アカウントが別のリージョンにある場合は、ストレージ アカウントのファイアウォール設定を構成して、 **[選択されたネットワーク]** からのアクセスを許可します。 ファイアウォールの **[アドレス範囲]** に、Analysis Services サーバーがあるリージョンの IP アドレスの範囲を指定します。 すべてのネットワークからのアクセスを許可するようにストレージ アカウントのファイアウォール設定を構成することはできますが、[選択されたネットワーク] を選択して IP アドレス範囲を指定することをお勧めします。 詳細については、[ネットワーク接続に関する FAQ](analysis-services-network-faq.md#backup-and-restore)に関するページを参照してください。
+> ストレージ アカウントが別のリージョンにある場合は、ストレージ アカウントのファイアウォール設定を構成して、 **[選択されたネットワーク]** からのアクセスを許可します。 ファイアウォールの **[アドレス範囲]** に、Analysis Services サーバーがあるリージョンの IP アドレスの範囲を指定します。 すべてのネットワークからのアクセスを許可するようにストレージ アカウントのファイアウォール設定を構成することはできますが、[選択されたネットワーク] を選択して IP アドレス範囲を指定することをお勧めします。 詳細については、[ネットワーク接続に関する FAQ](/azure/analysis-services/analysis-services-network-faq#backup-and-restore)に関するページを参照してください。
 
 バックアップは、.abf という拡張子で保存されます。 インメモリの表形式モデルの場合、モデル データとメタデータの両方が保存されます。 DirectQuery 表形式モデルの場合、モデルのメタデータのみが保存されます。 バックアップは、オプションの選択によって、圧縮したり暗号化したりすることができます。
 
@@ -109,4 +109,4 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 [Azure ストレージ アカウント](../storage/common/storage-account-create.md)  
 [高可用性](analysis-services-bcdr.md)      
-[Analysis Services のネットワーク接続に関する FAQ](analysis-services-network-faq.md)
+[Analysis Services のネットワーク接続に関する FAQ](analysis-services-network-faq.yml)

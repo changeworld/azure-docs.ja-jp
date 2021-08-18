@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: chadam
 ms.date: 11/06/2020
-ms.openlocfilehash: f330fb4886a04a1bc861b63e5dd70e3ba1286351
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: bf7cf597d97f1316d43546382cbac140c3ba6fff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794893"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746608"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>移行の概要: SQL Server から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -136,12 +136,10 @@ SQL Server データベースを Azure VM 上の SQL Server に移行する準�
 
 |Asset  |説明  |
 |---------|---------|
-|[データ ワークロード評価モデルとツール](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
-|[Logman を使用した Perfmon データ収集の自動化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|ベースライン パフォーマンスを把握するための Perfmon データを収集して、移行ターゲットの推奨に役立てるツール。 このツールは、リモート SQL Server で設定されたパフォーマンス カウンターを作成、開始、停止、削除するコマンドを作成するために、logman.exe を使用します。|
-|[Azure での SQL Server のデプロイ](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|このガイダンス ホワイトペーパーは、SQL Server ワークロードを Azure に移行するためのさまざまなオプションを確認するのに役立ちます (機能の比較、高可用性やバックアップ/ストレージの考慮事項など)。 |
-|[オンプレミスの SQL Server から Azure 仮想マシンへ](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|このホワイトペーパーでは、サンプル スクリプトを使用して、オンプレミスの SQL Server から Azure 仮想マシン上の SQL Server へデータベースをバックアップし、復元する手順について説明しています。|
-|[Multiple-SQL-VM-VNet-ILB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|このホワイトペーパーでは、SQL Server Always On 可用性グループの構成で複数の Azure 仮想マシンをセットアップする手順について説明しています。|
-|[リージョンごとの Ultra SSD 対応 Azure 仮想マシン](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|これらの PowerShell スクリプトは、Ultra SSD に対応した Azure 仮想マシンをサポートしているリージョンの一覧を取得するための、プログラムによるオプションを提供するものです。|
+|[データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
+|[Logman を使用した Perfmon データ収集の自動化](https://www.microsoft.com/download/details.aspx?id=103114)|ベースライン パフォーマンスを把握するための Perfmon データを収集して、移行ターゲットの推奨に役立てるツール。 このツールは、リモート SQL Server で設定されたパフォーマンス カウンターを作成、開始、停止、削除するコマンドを作成するために、logman.exe を使用します。|
+|[Multiple-SQL-VM-VNet-ILB](https://www.microsoft.com/download/details.aspx?id=103104)|このホワイトペーパーでは、SQL Server Always On 可用性グループの構成で複数の Azure 仮想マシンをセットアップする手順について説明しています。|
+|[リージョンごとの Ultra SSD 対応 Azure 仮想マシン](https://www.microsoft.com/download/details.aspx?id=103105)|これらの PowerShell スクリプトは、Ultra SSD に対応した Azure 仮想マシンをサポートしているリージョンの一覧を取得するための、プログラムによるオプションを提供するものです。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 

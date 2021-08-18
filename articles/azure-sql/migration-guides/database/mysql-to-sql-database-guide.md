@@ -9,17 +9,17 @@ ms.topic: how-to
 author: cawrites
 ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: ec117b8f341546deb48510d9b27a43b731d03742
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3b9f286796a832d075977cda2eda54f990bbb3c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970704"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743719"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>移行ガイド: MySQL から Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-このガイドでは、[SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for MySQL (SSMA for MySQL) を使用して、MySQL データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
+このガイドでは、[SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant for MySQL (SSMA for MySQL) を使用して、MySQL データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
 
 その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
@@ -165,7 +165,7 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
 | タイトル | 説明 |
 | --- | --- |
-| [データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルを提供します。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価の促進に役立ちます。 |
+| [データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130) | 特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルを提供します。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価の促進に役立ちます。 |
 |[MySQL から SQL DB - データベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|データベース比較ユーティリティは、ソースおよびターゲット プラットフォームの両方でデータが同一であることを確認するために使用できる Windows コンソール アプリケーションです。 このツールを使用すると、すべての、または選択したテーブル、行、および列内の行または列レベルまでデータを効率的に比較できます。|
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。

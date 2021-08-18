@@ -3,22 +3,22 @@ title: シングル サインオン (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を使用したシングル サインオン エクスペリエンスのビルドについて説明します。
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: mtillman
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 86df7b35987fcc0081aca4e7e33f4da72f08e452
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c8da247219a2228ef4effdf94485fef990e2bcaa
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077142"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359535"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js でのシングル サインオン
 
@@ -47,7 +47,7 @@ const myMSALObj = new UserAgentApplication(config);
 
 ## <a name="sso-between-apps"></a>アプリ間の SSO
 
-ユーザーが認証を行うと、ブラウザーの Azure AD ドメインでセッション Cookie が設定されます。 MSAL.js では、このセッション Cookie に依存して、ユーザーに異なるアプリケーション間の SSO が提供されます。 また、MSAL.js では、アプリケーション ドメインごとに、ユーザーの ID トークンとアクセス トークンがブラウザーのストレージにキャッシュされます。 その結果、SSO の動作は場合によって異なります。  
+ユーザーが認証を行うと、ブラウザーの Azure AD ドメインでセッション Cookie が設定されます。 MSAL.js では、このセッション Cookie に依存して、ユーザーに異なるアプリケーション間の SSO が提供されます。 また、MSAL.js では、アプリケーション ドメインごとに、ユーザーの ID トークンとアクセス トークンがブラウザーのストレージにキャッシュされます。 その結果、SSO の動作は場合によって異なります。
 
 ### <a name="applications-on-the-same-domain"></a>同じドメイン上のアプリケーション
 
@@ -76,7 +76,7 @@ var request = {
 userAgentApplication.acquireTokenSilent(request).then(function(response) {
         const token = response.accessToken
     }
-).catch(function (error) {  
+).catch(function (error) {
         //handle error
 });
 ```
@@ -132,14 +132,14 @@ var request = {
 userAgentApplication.acquireTokenSilent(request).then(function(response) {
         const token = response.accessToken
     }
-).catch(function (error) {  
+).catch(function (error) {
         //handle error
 });
 ```
 
 ## <a name="sso-in-adaljs-to-msaljs-update"></a>MSAL.js の更新に対する ADAL.js での SSO
 
-MSAL.js には、Azure AD の認証シナリオに対する ADAL.js での機能パリティがあります。 ADAL.js から MSAL.js への移行を容易にし、ユーザーにサインインを繰り返し要求しなくて済むように、ライブラリは ADAL.js キャッシュ内にあるユーザーのセッションを表す ID トークンを読み取り、ユーザーを MSAL.js にシームレスにサインインさせます。  
+MSAL.js には、Azure AD の認証シナリオに対する ADAL.js での機能パリティがあります。 ADAL.js から MSAL.js への移行を容易にし、ユーザーにサインインを繰り返し要求しなくて済むように、ライブラリは ADAL.js キャッシュ内にあるユーザーのセッションを表す ID トークンを読み取り、ユーザーを MSAL.js にシームレスにサインインさせます。
 
 ADAL.js から更新するときにシングル サインオン (SSO) の動作を利用するには、ライブラリでトークンのキャッシュ用に `localStorage` が使用されるようにする必要があります。 次のように、初期化時に、MSAL.js と ADAL.js 両方の構成で、`cacheLocation` を `localStorage` に設定します。
 

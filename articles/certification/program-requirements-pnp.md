@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bec37c72d8db3e0891cb2cd375084465950ea5f5
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 54ef14a3851d656d81d9b0ec194f6b8127eba5b3
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541951"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114402760"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT プラグ アンド プレイ認定の要件
 
@@ -25,7 +25,7 @@ IoT プラグ アンド プレイ プレビューにより、ソリューショ�
 IoT プラグ アンド プレイ認定では次のことが保証されます。
 
 1.  定義済みのデバイス モデルとインターフェイスは、[デジタル ツイン定義言語](https://github.com/Azure/opendigitaltwins-dtdl)に準拠している  
-1.  [デジタル ツイン API](../iot-pnp/concepts-digital-twin.md) を使用した Azure IoT ベースのソリューションとの簡単な統合: Azure IoT Hub と Azure IoT Central
+1.  [デジタル ツイン API](../iot-develop/concepts-digital-twin.md) を使用した Azure IoT ベースのソリューションとの簡単な統合: Azure IoT Hub と Azure IoT Central
 1.  認定デバイスで検証された製品の真実性
 1.  [Azure Certified Device](./program-requirements-azure-certified-device.md) のすべての要件を満たす
 
@@ -52,7 +52,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | [ポータルのワークフロー](https://certify.azure.com)では、次のことが検証されます。 **1.** モデル ID のアナウンスと、デバイスが MQTT または MQTT over WebSockets プロトコルを使用して接続されていることを確認する **2.** モデルは DTDL v2 に準拠している **3.** テレメトリ、プロパティ、およびコマンドが正しく実装され、デバイス上の IoT Hub デジタル ツインとデバイス ツインの間で対話する |
-| **リソース**           | [パブリック プレビュー更新版の更新内容](../iot-pnp/overview-iot-plug-and-play.md) |
+| **リソース**           | [パブリック プレビュー更新版の更新内容](../iot-develop/overview-iot-plug-and-play.md) |
 
 **[必須] デバイス モデルはパブリック モデル リポジトリに発行されます**
 
@@ -63,7 +63,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | すべてのデバイス モデルは、パブリック リポジトリに発行される必要があります。 デバイス モデルは、パブリック リポジトリで利用可能なモデルを使用して解決されます **1.** ユーザーは、証明書を送信する前に、モデルをパブリック リポジトリに手動で発行する必要があります。 **2.** モデルは一度発行されると変更できないことに注意してください。 モデルと埋め込みデバイス コードが完成した場合にのみ発行することを強くお勧めします。*1 *1 ユーザーは、モデル リポジトリに発行された後に、Microsoft サポートに連絡してモデルを取り消す必要があります **3.** [ポータル ワークフロー](https://certify.azure.com) は、デバイスが証明書サービスに接続されている場合に、パブリック リポジトリ内のモデルの存在を確認します |
-| **リソース**           | [モデル リポジトリ](../iot-pnp/overview-iot-plug-and-play.md) |
+| **リソース**           | [モデル リポジトリ](../iot-develop/overview-iot-plug-and-play.md) |
 
 **[必須] GSG を使用した物理デバイスの検証**
 
@@ -75,7 +75,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **検証タイプ**                       | マニュアル                                                       |
 | **検証**                            | パートナーは、 物理デバイスに対して追加の検証を実行するための手配を行うために、Microsoft Contact ([iotcert@microsoft.com](mailto:iotcert@microsoft.com)) と提携する必要があります。 COVID-19 の状況のため、デバイスを Microsoft に出荷せずに、物理的なデバイスの検証を実行するさまざまな方法を模索しています。 |
 | **リソース**                             | 詳細は後日お知らせします                                 |
-| **Azure の推奨事項**       | N/A    |
+| **Azure の推奨事項**       | 該当なし    |
 
 **[実装されている場合] デバイス情報インターフェイス: テストの目的は、デバイス情報インターフェイスがデバイス コードに適切に実装されていることを検証することです**
 
@@ -86,8 +86,8 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | [ポータル ワークフロー](https://certify.azure.com)により、デバイス コードがデバイス情報インターフェイスを実装していることが検証されます **1.** デバイス コードによって IoT Hub に値が出力されることを確認します **2.** インターフェイスが DCM に実装されていることを確認します (この実装は DTDL v2 で変更されます) **3.** チェック プロパティが書き込み可能ではありません (読み取り専用) **4.** スキーマの種類が文字列または long であり、null ではないことを確認します |
-| **リソース**           | [Microsoft によって定義されたインターフェイス](../iot-pnp/overview-iot-plug-and-play.md) |
-| **Azure の推奨事項**  | N/A                                                          |
+| **リソース**           | [Microsoft によって定義されたインターフェイス](../iot-develop/overview-iot-plug-and-play.md) |
+| **Azure の推奨事項**  | 該当なし                                                          |
 
 **[実装されている場合] クラウドからデバイス: テストの目的は、メッセージがクラウドからデバイスに送信されることを確認することです**
 

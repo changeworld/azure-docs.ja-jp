@@ -2,13 +2,13 @@
 title: Azure Service Bus トピック フィルター | Microsoft Docs
 description: この記事では、どのメッセージをトピックから受信するかを、フィルターを指定することによってサブスクライバーが定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: f28b26ee112b47b9782823f6c79670dee9a3f082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/19/2021
+ms.openlocfilehash: f813c9a635fde70e2f72ab3dab0d2e01197c6fff
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651665"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448664"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -52,7 +52,7 @@ Service Bus は、次の 3 つのフィルター条件をサポートします�
 
 ## <a name="actions"></a>Actions
 
-SQL フィルター条件を使用すると、プロパティとその値を追加、削除、または置き換えることによってメッセージに注釈を付けることができるアクションを定義できます。 アクションでは、SQL UPDATE ステートメントの構文を基にした [SQL に似た式を使用](service-bus-messaging-sql-filter.md)します。 アクションは、メッセージが照合された後にサブスクリプションへと選択される前に、メッセージに対して実行されます。 メッセージのプロパティへの変更は、サブスクリプションにコピーされたメッセージにのみ有効です。
+SQL フィルター条件を使用すると、プロパティとその値を追加、削除、または置き換えることによってメッセージに注釈を付けることができるアクションを定義できます。 アクションでは、SQL UPDATE ステートメントの構文を基にした [SQL に似た式を使用](service-bus-messaging-sql-rule-action.md)します。 アクションは、メッセージが照合された後にサブスクリプションへと選択される前に、メッセージに対して実行されます。 メッセージのプロパティへの変更は、サブスクリプションにコピーされたメッセージにのみ有効です。
 
 ## <a name="usage-patterns"></a>使用パターン
 

@@ -5,14 +5,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 95fcca289b0776cc19464b13eb7d243ca4f8d5ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: dc58b73a317bdab85b63c947f07d2755b96f2fcd
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945519"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280435"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
+
+[!INCLUDE [retirement banner](includes/ml-services-retirement.md)]
 
 このドキュメントは、**ScaleR** ロジスティック回帰モデルを使用して、フライト到着遅延の予測方法を示しています。 例では **SparkR** を使用してフライト遅延や気象データを組合せて使用しています。
 
@@ -533,8 +536,6 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ## <a name="next-steps-and-more-information"></a>次のステップと詳細情報
 
 - Apache Spark での ML Server の使用について詳しくは、[概要のガイダンス](/machine-learning-server/r/how-to-revoscaler-spark)を参照してください。
-
-- HDInsight での ML Services については、[HDInsight での ML Services の概要](r-server/r-server-overview.md)に関するページをご覧ください。
 
 SparkR の使い方について詳しくは、次のドキュメントをご覧ください。
 

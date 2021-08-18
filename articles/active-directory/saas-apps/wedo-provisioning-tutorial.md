@@ -2,25 +2,22 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニング用に WEDO を構成する | Microsoft Docs
 description: Azure AD から WEDO に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 3088D3EB-CED5-45A5-BD7E-E20B1D7C40F6
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/24/2020
-ms.author: Zhchia
-ms.openlocfilehash: 05ca559478276cf64d8097c2d066054c8fa4fc9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 95cadaa71b9fc3f33ff89425cb564d08e6f0992e
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734476"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122196013"
 ---
 # <a name="tutorial-configure-wedo-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に WEDO を構成する
 

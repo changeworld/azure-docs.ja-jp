@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67b472d1629c2b59f80d36aaf43df1e783d2ffa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b63dc024124665e76e27241101de9b70e62fa17
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666807"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486249"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>SAP NetWeaver のための高可用性 Azure Virtual Machines
 
@@ -142,11 +142,11 @@ ms.locfileid: "101666807"
 [sap-ha-guide-figure-6003]:./media/virtual-machines-shared-sap-high-availability-guide/6003-sap-multi-sid-full-landscape.png
 
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
@@ -171,7 +171,7 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> 前提条件
 始める前に、次のセクションで説明されている前提条件が満たされていることを確認してください。 また、「[リソース][sap-ha-guide-2]」セクションに一覧表示されているすべてのリソースをご確認ください。
 
-この記事では、[Managed Disks を使用した 3 層 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/) 用の Azure Resource Manager テンプレートを使用します。 SAP Azure Resource Manager テンプレートの概要については、「[Running SAP Applications on the Microsoft Platform](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap)」(Microsoft プラットフォームでの SAP アプリケーションの実行) を参照してください。
+この記事では、[Managed Disks を使用した 3 層 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-marketplace-image-md/) 用の Azure Resource Manager テンプレートを使用します。 SAP Azure Resource Manager テンプレートの概要については、「[Running SAP Applications on the Microsoft Platform](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap)」(Microsoft プラットフォームでの SAP アプリケーションの実行) を参照してください。
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> リソース
 Azure での SAP のデプロイについては、以下の記事で説明されています。
@@ -398,9 +398,9 @@ Azure Resource Manager の 3 層テンプレートは、2 つのクラスター�
 この記事で説明しているサンプル シナリオの Azure Resource Manager テンプレートは、以下で入手できます。
 
 * [Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/)  
-* [Managed Disks を使用した Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
+* [Managed Disks を使用した Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-marketplace-image-md)  
 * [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/)
-* [Managed Disks を使用したカスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
+* [Managed Disks を使用したカスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-user-image-md)
 
 Architectural Template 1 のインフラストラクチャを準備するには
 
@@ -491,9 +491,9 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 このデプロイ シナリオの Azure Resource Manager テンプレートは以下で入手できます。
 
 * [Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/)  
-* [Managed Disks を使用した Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
+* [Managed Disks を使用した Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-marketplace-image-converged-md)  
 * [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/)
-* [Managed Disks を使用したカスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
+* [Managed Disks を使用したカスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-user-image-converged-md)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Architectural Template 3 のインフラストラクチャを準備する

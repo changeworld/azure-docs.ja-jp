@@ -8,12 +8,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.openlocfilehash: 453b7558ac4f26395186a6aabc54ce831b5ef9b5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 10695c20bc177abd084d6a3724ae3d379d4ca74a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071886"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284561"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure での Ubuntu Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -326,7 +326,7 @@ rattle()
 > [!NOTE]
 > DSVM に Rattle をインストールする必要はありません。 ただし、Rattle を開いたときに、追加のパッケージをインストールするように求められる場合があります。
 
-Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、 [Team Data Science Process](../team-data-science-process/index.yml) に関する記事の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 最後のタブには、Rattle で実行された R コマンドのログが含まれます。
+Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、 [Team Data Science Process](/azure/architecture/data-science-process/overview) に関する記事の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 最後のタブには、Rattle で実行された R コマンドのログが含まれます。
 
 データセットを読み込んで構成するには:
 

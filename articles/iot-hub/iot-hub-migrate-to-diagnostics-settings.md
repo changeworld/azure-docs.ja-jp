@@ -2,18 +2,17 @@
 title: Azure IoT Hub 操作監視を Azure Monitor の IoT Hub リソース ログに移行する | Microsoft Docs
 description: IoT ハブに対する操作の状態をリアルタイムで監視するために、操作監視の代わりに Azure Monitor を使用するように Azure IoT Hub を更新する方法。
 author: kgremban
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c41b3298e265fb3dab41a6fc1af51e3ff0829489
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591843"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733820"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>IoT Hub を操作監視から Azure Monitor リソース ログに移行する
 

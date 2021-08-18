@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 16379380fc35bb2355c496dc857e9de3b41347f9
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: df7af81b51428f53beb7722c7f224dc7afdd28cb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096906"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728643"
 ---
 # <a name="the-azure-defender-dashboard"></a>Azure Defender ダッシュボード
 
@@ -27,7 +27,7 @@ Azure Defender ダッシュボードにアクセスするには、Security Cente
 
 ## <a name="whats-shown-on-the-dashboard"></a>ダッシュボードに表示される内容
 
-:::image type="content" source="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png" alt-text="Azure Defender ダッシュボードの例" lightbox="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png":::
+:::image type="content" source="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png" alt-text="Azure Defender ダッシュボードの例。" lightbox="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png":::
 
 ダッシュボードには次のセクションがあります。
 
@@ -46,7 +46,7 @@ Azure Defender ダッシュボードにアクセスするには、Security Cente
 
 この記事では、Azure Defender ダッシュボードについて説明しました。 
 
-Azure Defender の詳細については、[Azure Defender の概要](azure-defender.md)に関する記事をご覧ください。
-
 > [!div class="nextstepaction"]
 > [Azure Defender を有効にする](enable-azure-defender.md)
+
+Azure Defender の詳細については、[Azure Defender の概要](azure-defender.md)に関する記事をご覧ください。

@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 7a26091d4985b6fdb17120c6fd70476a750c94a9
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: c7dea620058fa91945448e9966120db514eb286b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714127"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121780909"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Microsoft Defender for Identity (旧称 Azure Advanced Threat Protection) からデータを接続する
 
 > [!IMPORTANT]
 > Azure Sentinel での Microsoft Defender for Identity データ コネクタは、現在パブリック プレビューです。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 
 この記事では、[Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) から Azure Sentinel にセキュリティ アラートをストリーミングする方法について説明します。 
 
@@ -57,5 +60,5 @@ Microsoft Defender for Identity がデプロイされ、データの取り込み
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft Defender for Identity を Azure Sentinel に接続する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-azurepowershell
-ms.openlocfilehash: d9179872562ea048fe713d9535c4ff2994bcd223
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5c652696d825b6dae4665de1d8afdd9bae6848a4
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666794"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183526"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics メトリックを有効にして管理する (クラシック)
 
 [Azure Storage Analytics](storage-analytics.md) では、すべてのストレージ サービスについて、BLOB、キュー、テーブルのメトリックが提供されます。 [Azure portal](https://portal.azure.com) を使用すると、アカウントに対して記録するメトリックと、そのメトリック データを視覚的に表現するグラフを構成できます。 この記事では、メトリックを有効にして管理する方法を示します。 ログを有効にする方法については、「[Azure Storage Analytics ログを有効にして管理する (クラシック)](manage-storage-analytics-logs.md)」を参照してください。
 
-[Azure Monitor for Storage](../../azure-monitor/insights/storage-insights-overview.md) (プレビュー) を確認することをお勧めします。 これは、Azure Storage サービスのパフォーマンス、容量、可用性の統合されたビューが提供されることで、Azure Storage アカウントを包括的に監視できる Azure Monitor の機能です。 何も有効にしたり構成したりする必要はありません。これらのメトリックは、あらかじめ定義されている対話型のグラフやその他の含まれている視覚エフェクトからすぐに表示できます。
+[Azure Monitor for Storage](./storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) (プレビュー) を確認することをお勧めします。 これは、Azure Storage サービスのパフォーマンス、容量、可用性の統合されたビューが提供されることで、Azure Storage アカウントを包括的に監視できる Azure Monitor の機能です。 何も有効にしたり構成したりする必要はありません。これらのメトリックは、あらかじめ定義されている対話型のグラフやその他の含まれている視覚エフェクトからすぐに表示できます。
 
 > [!NOTE]
 > Azure Portal で監視データを調査するとコストがかかります。 詳細については、「[Storage Analytics](storage-analytics.md)」を参照してください。

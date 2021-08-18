@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: d513c19eed36d4a1cc5c620bff9dd2e8deb533e0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 24bdbb37a2ec88d930752f728acecd23eb2896b7
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949552"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106931"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -131,7 +131,7 @@ Access Control によって発行されたトークンを受け入れる各 Micr
 | ------- | -------- |
 | Azure Service Bus | [Shared Access Signatures への移行](../../service-bus-messaging/service-bus-sas.md) |
 | Azure Service Bus Relay | [Shared Access Signatures への移行](../../azure-relay/relay-migrate-acs-sas.md) |
-| Azure Managed Cache | [Azure Cache for Redis への移行](../../azure-cache-for-redis/cache-faq.md) |
+| Azure Managed Cache | [Azure Cache for Redis への移行](../../azure-cache-for-redis/cache-faq.yml) |
 | Azure DataMarket | [Cognitive Services APIs への移行](https://azure.microsoft.com/services/cognitive-services/) |
 | BizTalk Services | [Azure App Service の Logic Apps 機能への移行](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Azure AD 認証への移行](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |

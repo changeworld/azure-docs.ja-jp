@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: c28514490b77917f16ae4687a62d3a8963d57537
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: cf65fcfe297cfbff60490b165771095e6d3b402a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887404"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733652"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -137,7 +137,7 @@ az aks update \
 az aks show \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --query apiServerAccessProfile.authorizedIpRanges'
+    --query apiServerAccessProfile.authorizedIpRanges
 ```
 
 ## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Azure portal を使用して、許可された IP 範囲の更新、無効化、検索を行う
@@ -161,7 +161,7 @@ CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 ```
 
->> [!NOTE]
+> [!NOTE]
 > 上の例では、クラスター上の API サーバーの許可された IP 範囲が追加されます。 許可された IP 範囲を無効にするには、az aks update を使用し、空の範囲 "" を指定します。 
 
 もう 1 つのオプションは、Windows システムで次のコマンドを使用して、パブリック IPv4 アドレスを取得することです。または、「[IP アドレスを確認する](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)」の手順を使用することもできます。
@@ -180,7 +180,7 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[dev-spaces-ranges]: ../dev-spaces/index.yml#aks-cluster-network-requirements
+[dev-spaces-ranges]: /previous-versions/azure/dev-spaces/#aks-cluster-network-requirements
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

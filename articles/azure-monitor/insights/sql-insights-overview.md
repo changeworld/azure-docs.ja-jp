@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: ca403a5fdbdaaa8b2922647d832a23e120840c6b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e69520f53cea9c6cd6eb662f4cc1acce2cab00f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142479"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752266"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>SQL insights を使用して SQL デプロイを監視する (プレビュー)
 SQL Insights は、[Azure SQL ファミリ](../../azure-sql/index.yml)のあらゆる製品を監視するための包括的なソリューションです。 SQL Insights では、[動的管理ビュー](../../azure-sql/database/monitoring-with-dmvs.md)を使用して、正常性の監視、問題の診断、パフォーマンスの調整に必要なデータを公開します。  
@@ -22,7 +22,7 @@ SQL Insights には直接コストはかかりません。 すべてのコスト
 
 **仮想マシン**
 
-仮想マシンについては、[仮想マシンの価格ページ](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)で公開されている料金に基づいて課金されます。 必要な仮想マシンの数は、監視する接続文字列の数によって異なります。 100 接続文字列ごとに Standard_B2s サイズの仮想マシンを 1 つ割り当てることをお勧めします。 詳細については、「[Azure 仮想マシンの要件](sql-insights-enable.md#azure-virtual-machine-requirements)」を参照してください。
+仮想マシンについては、[仮想マシンの価格ページ](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)で公開されている料金に基づいて課金されます。 必要な仮想マシンの数は、監視する接続文字列の数によって異なります。 100 接続文字列ごとに Standard_B2s サイズの仮想マシンを 1 つ割り当てることをお勧めします。 詳細については、「[Azure 仮想マシンの要件](sql-insights-enable.md#azure-virtual-machine-requirements)」を参照してください。
 
 **Log Analytics ワークスペース**
 
@@ -123,4 +123,4 @@ Azure SQL Database、Azure SQL Managed Instance、および SQL Server 用の、
 ## <a name="next-steps"></a>次のステップ
 
 - SQL Insights を有効にする手順について、「[SQL insights を有効にする](sql-insights-enable.md)」を参照してください。
-- SQL Insights に関してよく寄せられる質問について、「[よく寄せられる質問](../faq.md#sql-insights-preview)」を参照してください。
+- SQL Insights に関してよく寄せられる質問について、「[よく寄せられる質問](/azure/azure-monitor/faq#sql-insights-preview)」を参照してください。

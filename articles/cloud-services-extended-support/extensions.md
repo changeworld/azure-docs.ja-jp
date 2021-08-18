@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c9ee7e475957ca41c9094cab3b149f53e48a3764
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 84b27bc4ae30e28a1d97fb8e9931602a1eb14504
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900911"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444788"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Cloud Services (延長サポート) の拡張機能
 
@@ -23,7 +23,7 @@ ms.locfileid: "111900911"
 
 Key Vault VM 拡張機能を使用すると、Azure キー コンテナーに保存されている証明書が自動更新されます。 この拡張機能は、具体的には、キー コンテナーに保存されている観察対象の証明書の一覧を監視し、変更が検出されると対応する証明書を取得してインストールします。 また、クラウド サービス (延長サポート) の証明書のリージョン間またはサブスクリプション間の参照も可能です。
 
-詳細については、[「クラウド サービス用 のキー コンテナー拡張機能の構成 (延長サポート)」](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-key-vault-virtual-machine)を参照してください。
+詳細については、[「クラウド サービス用 のキー コンテナー拡張機能の構成 (延長サポート)」](./enable-key-vault-virtual-machine.md)を参照してください。
 
 ## <a name="remote-desktop-extension"></a>リモート デスクトップ拡張機能
 
@@ -54,5 +54,5 @@ Azure のマルウェア対策の詳細については、[こちら](../security
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。

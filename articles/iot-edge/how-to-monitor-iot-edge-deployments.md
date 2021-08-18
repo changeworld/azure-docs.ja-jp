@@ -2,20 +2,18 @@
 title: IoT Edge デプロイの監視 - Azure IoT Edge
 description: edgeHub および edgeAgent に報告されたプロパティと自動デプロイ メトリックを含む高レベルの監視。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/21/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
-ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 39e7bb5c151d490e79ef111589f52f260c3e6c7a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 834208d1499e83b1de5cd276a5de65c00f25e4f7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483165"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722009"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge デプロイの監視
 

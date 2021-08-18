@@ -3,20 +3,20 @@ title: 問題の診断、トラブルシューティング、解決 - Azure Time
 description: この記事では、Azure Time Series Insights 環境内の一般的な問題を診断、トラブルシューティング、解決する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
-ms.reviewer: v-mamcge
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48d42430f26bcbf8f4afa58d7285c5e8b636fdb9
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95023277"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112370439"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 環境の問題を診断して解決する
 

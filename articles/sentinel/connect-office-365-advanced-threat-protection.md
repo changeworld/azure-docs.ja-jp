@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: yelevin
-ms.openlocfilehash: d5140bcd85606213f00185d4ba1f50dbe70dba63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c4482f788014aec45f7c2e2ca9c4820bd80bb33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655496"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779345"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-office-365"></a>Microsoft Defender for Office 365 からアラートに接続する 
 
@@ -31,6 +31,8 @@ ms.locfileid: "94655496"
 >
 > - Microsoft Defender for Office 365 アラートのインジェストは、現在パブリック プレビュー段階です。 この機能は、サービス レベル アグリーメントなしで提供されており、運用環境のワークロード用には推奨されていません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
  
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 [Microsoft Defender for Office 365](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) は、電子メール メッセージ、悪意のある URL リンク、コラボレーション ツール内の不明なマルウェアによってもたらされるゼロデイその他の高度な脅威から組織を保護します。 Microsoft Defender for Office 365 アラートを Azure Sentinel に取り込むことにより、電子メール、ファイル共有、URL ベースの脅威に関する情報をセキュリティ操作で利用できるようになります。 これにより、組織全体のセキュリティ イベントをより包括的に分析し、効果的かつ迅速に対応するためのプレイブックを構築できます。
 
 コネクタによって、次のアラートがインポートされます。
@@ -76,5 +78,5 @@ Microsoft Defender for Office 365 がデプロイされていて、ポリシー�
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Microsoft Defender for Office 365 を Azure Sentinel に接続する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

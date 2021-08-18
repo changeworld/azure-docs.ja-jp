@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: ae041bd8780524d24c360412232ec77ae60aa3c4
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ddac4588009d495ac64c607e97780eca5aceb54b
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884716"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112515458"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
@@ -34,7 +34,7 @@ ms.locfileid: "107884716"
 
 必要なものは次のとおりです。
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 - [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
 
@@ -169,14 +169,6 @@ dataprep_step = PythonScriptStep(
     compute_target=cluster,
     arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
     )
-```
-
-実行の終わりに `OutputFileDatasetConfig` オブジェクトのコンテンツをアップロードすることを選択できます。 その場合、`OutputFileDatasetConfig` オブジェクトと共に `as_upload()` 関数を使用し、アップロード先で既存のファイルを上書きするかどうかを指定します。 
-
-```python
-#get blob datastore already registered with the workspace
-blob_store= ws.datastores['my_blob_store']
-OutputFileDatasetConfig(name="clean_data", destination=(blob_store, 'outputdataset')).as_upload(overwrite=False)
 ```
 
 > [!NOTE]

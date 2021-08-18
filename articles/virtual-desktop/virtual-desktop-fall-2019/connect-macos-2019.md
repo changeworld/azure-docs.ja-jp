@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 3a372e09c575f1805050af6ea427f7650c614aff
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 914d52c91920aa5f76bdb9d1e738919f8f4aedef
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749977"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031195"
 ---
 # <a name="connect-to-azure-virtual-desktop-classic-with-the-macos-client"></a>macOS クライアントを使用して Azure Virtual Desktop (クラシック) に接続する
 
 > 適用対象: macOS 10.12 以降
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-macos.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../user-documentation/connect-macos.md)を参照してください。
 
 ダウンロード可能なクライアントを使用して、ご使用の macOS デバイスから Azure Virtual Desktop リソースにアクセスできます。 このガイドでは、クライアントを設定する方法について説明します。
 

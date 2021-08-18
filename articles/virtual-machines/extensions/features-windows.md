@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c6a96c1716f34b7bb27e8632a547cbafa432db1
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c4f2da1bd955f9a0b47519c913f656aa6e8bdce4
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663108"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179652"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -29,7 +29,7 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Windows 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](dsc-overview.md)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Log Analytics エージェント VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../azure-monitor/vm/quick-collect-azurevm.md)に関するページを参照してください。
+- Log Analytics エージェント VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../azure-monitor/vm/monitor-virtual-machine.md)に関するページを参照してください。
 - Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](/azure/developer/chef/windows-vm-configure)」を参照してください。
 - Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 

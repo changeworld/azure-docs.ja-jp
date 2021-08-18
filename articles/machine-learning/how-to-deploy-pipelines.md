@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f8ed4a498029b00922219ffdc22ec2db3a1490e8
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: d5cfd3e6df8b42789462447b552c49137c12e2cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889396"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751955"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>機械学習パイプラインを発行して追跡する
 
@@ -302,7 +302,7 @@ class AuthenticationBody {
 ```python
 from azureml.pipeline.core import PipelineEndpoint
 
-published_pipeline = PipelineEndpoint.get(workspace=ws, name="My_Published_Pipeline")
+published_pipeline = PublishedPipeline.get(workspace=ws, name="My_Published_Pipeline")
 pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpointTest",
                                             pipeline=published_pipeline, description="Test description Notebook")
 ```

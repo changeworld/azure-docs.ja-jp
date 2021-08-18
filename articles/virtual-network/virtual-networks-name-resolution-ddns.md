@@ -3,7 +3,7 @@ title: 動的 DNS を使用して Azure にホスト名を登録する | Microso
 description: 動的 DNS を使用して独自の DNS サーバーにホスト名を登録する方法を説明します。
 services: dns
 documentationcenter: na
-author: subsarma
+author: KumudD
 manager: vitinnan
 editor: ''
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
-ms.author: subsarma
-ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: 0f688e3ea61dc550571c8f6d3b7009ba2cf06ab4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98220424"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746160"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>動的 DNS を使用して独自の DNS サーバーでホスト名を登録する
 

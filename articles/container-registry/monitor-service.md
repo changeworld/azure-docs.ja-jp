@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-monitoring
 ms.service: container-registry
 ms.date: 03/19/2021
-ms.openlocfilehash: 21cc4aeb5b8a643fcee85cfd60e2958ed0c72c72
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 1b7f8a13a7d372fe67e5ca7c235febfa52294432
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060968"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294948"
 ---
 # <a name="monitor-azure-container-registry"></a>Azure Container Registry を監視する
 
@@ -91,7 +91,7 @@ Azure Container Registry のメトリックに関する情報をプログラム�
 
 Azure Monitor ログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。  
 
-Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](/azure/azure-monitor/essentials/resource-logs-schema#top-level-resource-logs-schema)に関する記事をご覧ください。 Azure Container Registry のリソース ログのスキーマについては、[Azure Container Registry データ リファレンス](monitor-service-reference.md#schemas)に関する記事を参照してください。 
+Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)に関する記事をご覧ください。 Azure Container Registry のリソース ログのスキーマについては、[Azure Container Registry データ リファレンス](monitor-service-reference.md#schemas)に関する記事を参照してください。 
 
 [アクティビティ ログ](../azure-monitor/essentials/activity-log.md)は、Azure のプラットフォーム ログであり、サブスクリプション レベルのイベントの分析情報が提供されます。 個別に表示できるほか、Azure Monitor ログにルーティングして、Log Analytics を使用してより複雑なクエリを実行することもできます。  
 

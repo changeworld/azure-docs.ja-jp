@@ -7,16 +7,16 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3f933393b331d24e5de05a00d1abdc7302282308
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 571f338345a8fe87c47609e9d50cef7b9e0f5711
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684147"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071652"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central データを Power BI ダッシュボードに視覚化する
 
-> [!Note] 
+> [!Important]
 > このソリューションは、[従来のデータ エクスポート機能](./howto-export-data-legacy.md)を使用します。 最新のデータ エクスポートを使用して Power BI に接続する方法の最新のガイダンスについては、しばらくお待ちください。
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI ソリューションのパイプライン":::
@@ -85,4 +85,4 @@ Microsoft AppSource サイトの「[Azure IoT Central V3 向け Power BI ソリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Power BI でデータを視覚化する方法について学習したので、次は、[デバイスを管理する方法](howto-manage-devices.md)について学習することをお勧めします。
+Power BI でデータを視覚化する方法について学習したので、次は、[デバイスを管理する方法](howto-manage-devices-individually.md)について学習することをお勧めします。

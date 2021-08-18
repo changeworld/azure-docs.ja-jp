@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 4b72de537f573d03f37a9b1de4341a14830479e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 70c019858908ae3684470a5fb4e5aaf98a976777
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748441"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298210"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>App Configuration ストアを自動的にバックアップする
 
@@ -199,7 +199,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-次のコマンドまたは [Azure portal](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) を使用して、関数アプリのマネージド ID にキューへのアクセス権を付与します。 キューに `Storage Queue Data Contributor` ロールを割り当てます。
+次のコマンドまたは [Azure portal](../storage/blobs/assign-azure-role-data-access.md#assign-an-azure-role) を使用して、関数アプリのマネージド ID にキューへのアクセス権を付与します。 キューに `Storage Queue Data Contributor` ロールを割り当てます。
 
 ```azurecli-interactive
 az role assignment create \

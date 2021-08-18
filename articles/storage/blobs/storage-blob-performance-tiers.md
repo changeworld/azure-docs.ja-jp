@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: faf26ce78e0d6137c93e150d31bd49b9e72b6b8b
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: e701ac76672712f98930d0a2d87e3da5b2afdc51
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655104"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181429"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -82,7 +82,7 @@ Premium のブロック BLOB ストレージ アカウントに格納されて�
 
 GPv2 および BLOB ストレージ アカウントでホット、クール、アーカイブを評価します。
 
-- [アーカイブ層から BLOB データをリハイドレートする方法を確認する](storage-blob-rehydration.md)
+- [アーカイブ層から BLOB データをリハイドレートする方法を確認する](archive-rehydrate-overview.md)
 - [Azure Storage のメトリックを有効にして現在のストレージ アカウントの使用状況を評価する](./monitor-blob-storage.md)
 - [BLOB ストレージ アカウントと GPv2 アカウントのホット、クール、アーカイブのリージョンごとの料金を確認する](https://azure.microsoft.com/pricing/details/storage/)
 - [データ転送の価格を確認する](https://azure.microsoft.com/pricing/details/data-transfers/)

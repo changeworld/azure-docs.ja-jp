@@ -3,18 +3,18 @@ title: Event Grid ソースとしての Azure Service Bus
 description: Azure Event Grid で Service Bus イベント用に提供されているプロパティについて説明します
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: d3e14788d49697a1f86624bbe8d6d0ec2eb072c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f872ffeb0bab2369aca24e202f8e756406a89c76
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363247"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415430"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Service Bus
 
 この記事では、Service Bus イベントのプロパティとスキーマについて説明します。  イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
-[!INCLUDE [event-grid-service-bus.md](../../includes/event-grid-service-bus.md)]
+[!INCLUDE [event-grid-service-bus.md](../service-bus-messaging/includes/event-grid-service-bus.md)]
 
 ## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
 |タイトル  |説明  |

@@ -3,19 +3,20 @@ title: パラメーター化 URL を使用してカスタム ビューを共有�
 description: パラメーター化 URL を作成して、カスタマイズしたエクスプローラー ビューを Azure Time Series Insights で簡単に共有できるようにする方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: narmeens
+ms.author: narsam
+manager: cnovak
+ms.reviewer: orspodek
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 395420c61e2cc3f4167590f81e625bf7e67cbfac
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91665329"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371231"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -78,12 +79,12 @@ Azure Time Series Insights Explorer では、そのエクスペリエンスの�
 | **useSum** | `true` | メジャーの合計を使用することを指定する省略可能なパラメーター。 |
 
 > [!NOTE]
-> 選択された **useSum** メジャーが `Events` である場合、既定で count が選択されます。  
+> 選択された **useSum** メジャーが `Events` である場合、既定で count が選択されます。
 > `Events` が選択されていない場合、既定で average が選択されます。 |
 
 * `multiChartStack=<true/false>` キー/値ペアでは、グラフの積み重ねが有効になります。
-* `multiChartSameScale=<true/false>` キー/値ペアでは、オプションのパラメーター内の期間全体で同じ Y 軸のスケールが有効になります。  
-* `timeBucketUnit=<Unit>&timeBucketSize=<integer>` を使用すると、間隔スライダーを調整して、グラフの集計表示を細かく、または滑らかにできます。  
+* `multiChartSameScale=<true/false>` キー/値ペアでは、オプションのパラメーター内の期間全体で同じ Y 軸のスケールが有効になります。
+* `timeBucketUnit=<Unit>&timeBucketSize=<integer>` を使用すると、間隔スライダーを調整して、グラフの集計表示を細かく、または滑らかにできます。
 * `timezoneOffset=<integer>` パラメーターを使用すると、UTC のオフセットとして表示されるグラフのタイムゾーンを設定できます。
 
 | ペア | 説明 |
