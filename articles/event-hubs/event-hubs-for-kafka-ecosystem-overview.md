@@ -3,17 +3,16 @@ title: Apache Kafka アプリからイベント ハブを使用する - Azure Ev
 description: この記事では、Azure Event Hubs での Apache Kafka のサポートに関する情報を提供します。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: fcc81063ece5ced864cdcd44fe301d5c359106e9
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 5402769b00a142551672098829dcf8f3ef6ea670
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613700"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321775"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs により、独自の Apache Kafka® クラスターを実行する代わりに、既存のほとんどの Apache Kafka クライアント アプリケーションで使用できる、Apache Kafka プロデューサーおよびコンシューマー API と互換性のあるエンドポイントが提供されます。 Event Hubs によって、Apache Kafka のプロデューサーおよびコンシューマー API クライアントのバージョン 1.0 以降がサポートされています。
 
-> [!VIDEO https://www.youtube.com/embed/UE1WgB96_fc]
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>Kafka 用 Event Hubs で提供されるもの
 
