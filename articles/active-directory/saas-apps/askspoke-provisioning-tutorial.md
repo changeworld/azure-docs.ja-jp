@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/02/2021
 ms.author: thwimmer
-ms.openlocfilehash: c006290003d7f41320b009649157574dd2bb7c26
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: d458ad311b5338e7e559e7df89d9fcb8615648ee
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229423"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321838"
 ---
 # <a name="tutorial-configure-askspoke-for-automatic-user-provisioning"></a>チュートリアル: askSpoke を構成し、自動ユーザー プロビジョニングに対応させる
 

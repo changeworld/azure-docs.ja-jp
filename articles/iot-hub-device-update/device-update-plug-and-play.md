@@ -6,19 +6,19 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8d8d397dd81e6a7d30bd2877483dde1c3ab8de5a
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 0431f28a23b9fcae8e34e7c163e9628d3d503255
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114404192"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396985"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub 用のデバイス更新と IoT プラグ アンド プレイ
 
 IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検出して管理するために、[IoT プラグ アンド プレイ](../iot-develop/index.yml)が使用されます。 デバイス更新サービスにより、PnP インターフェイスを使用して、デバイスとの間でプロパティとメッセージが送受信されます。 IoT Hub 用のデバイス更新を使用するには、以下で説明するように、IoT デバイスで次のインターフェイスとモデル ID を実装する必要があります。
 
 概念: 
-* [IoT プラグ アンド プレイ デバイス クライアント](../iot-develop/concepts-developer-guide-device.md?pivots=programming-language-csharp#implement-telemetry-properties-and-commands)について理解します。 
+* [IoT プラグ アンド プレイ デバイス クライアント](../iot-develop/concepts-developer-guide-device.md?pivots=programming-language-csharp)について理解します。 
 * [デバイス更新エージェントの実装](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)方法を確認します。
 
 ## <a name="adu-core-interface"></a>ADU Core インターフェイス

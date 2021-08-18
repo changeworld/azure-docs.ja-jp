@@ -3,14 +3,17 @@ title: ホストのディスク機能
 description: クラスターの構築またはスケーリングに使用されるホストは、ホストの分離プールから取得されます。
 ms.topic: include
 ms.date: 04/23/2021
-ms.openlocfilehash: 7ee15fbfd668d5db24282a6e4de8e4dfc6639c3e
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 847f69950a47208b27976972da8dc3427727e774
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945761"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747627"
 ---
-<!-- Used in production-ready-deployment-steps.md and concepts-private-cloud-clusters.md -->
+<!-- Used in plan-private-cloud-deployment.md and concepts-private-cloud-clusters.md -->
 
 
 Azure VMware Solution クラスターは、ハイパーコンバージド ベアメタル インフラストラクチャに基づいています。 ホストの RAM、CPU、ディスク容量を次の表に示します。
