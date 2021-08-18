@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 7825942ce692e83f2305e4c9f9b1a31cdadaea71
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: f623a5012ebd02ddf55b41541bb66cc34eaa4de8
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901609"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461235"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -128,7 +128,7 @@ Result
 1.16.13
 ```
 
-**利用可能なバージョンをプログラムで確認する** には、[Container Service Client - List Orchestrators](/rest/api/container-service/container%20service%20client/listorchestrators) REST API を使用します。 使用可能なバージョンを見つけるには、`orchestratorType` が `Kubernetes` になっているエントリを確認します。 関連付けられている `orchestrationVersion` エントリには、ワークスペースに **アタッチ** できるバージョンが含まれています。
+**利用可能なバージョンをプログラムで確認する** には、[Container Service Client - List Orchestrators](/rest/api/container-service/container-service-client/list-orchestrators) REST API を使用します。 使用可能なバージョンを見つけるには、`orchestratorType` が `Kubernetes` になっているエントリを確認します。 関連付けられている `orchestrationVersion` エントリには、ワークスペースに **アタッチ** できるバージョンが含まれています。
 
 Azure Machine Learning を使用してクラスターを **作成** するときに使用される既定のバージョンを見つけるには、`orchestratorType` が `Kubernetes`、`default` が `true` になっているエントリを見つけます。 関連付けられている `orchestratorVersion` 値が既定のバージョンです。 次の JSON スニペットは、エントリの例を示しています。
 
@@ -198,7 +198,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-詳細については、[az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) に関するリファレンスを参照してください。
+詳細については、[az ml computetarget create aks](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_aks) に関するリファレンスを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -225,7 +225,7 @@ Azure CLI または portal を使用した AKS クラスターの作成の詳細
 
 * [AKS クラスターの作成 (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az_aks_create)
 * [AKS クラスターの作成 (ポータル)](../aks/kubernetes-walkthrough-portal.md)
-* [AKS クラスターの作成 (Azure クイックスタート テンプレートでの ARM テンプレート)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
+* [AKS クラスターの作成 (Azure クイックスタート テンプレートでの ARM テンプレート)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aks-azml-targetcompute)
 
 次の例では、既存の AKS クラスターをワークスペースにアタッチする方法を示します。
 
@@ -275,7 +275,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-詳細については、[az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks) に関するリファレンスをご覧ください。
+詳細については、[az ml computetarget attach aks](/cli/azure/ml(v1)/computetarget/attach#az_ml_computetarget_attach_aks) に関するリファレンスをご覧ください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

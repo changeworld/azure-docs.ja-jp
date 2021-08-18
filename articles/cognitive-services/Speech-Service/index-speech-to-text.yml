@@ -5,18 +5,18 @@ metadata:
   title: 音声テキスト変換のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: trevorbye
+  author: laujan
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/19/2020
-  ms.author: trbye
-  ms.openlocfilehash: c4a765c14815015bcf70a4718fe8d189fe0d0c49
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.author: lajanuar
+  ms.openlocfilehash: d11c03b5a5a025a568f4bf1dd239c25d1fbc506a
+  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/30/2021
-  ms.locfileid: "96620965"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "122069658"
 landingContent:
 - title: 音声テキスト変換について
   linkLists:
@@ -67,7 +67,7 @@ landingContent:
     - text: 言語のサポート
       url: language-support.md#speech-to-text
     - text: 音声テキスト変換のよくあるご質問
-      url: faq-stt.md
+      url: faq-stt.yml
     - text: 音声テキスト変換の価格
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
 - title: ヘルプとフィードバック

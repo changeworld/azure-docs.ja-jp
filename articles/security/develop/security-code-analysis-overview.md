@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4443bdbc134f222256c6af8bb1f52c684cdb4624
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a661f2f79da1ecc519516c1f7dd34291c057d650
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801198"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115995"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Microsoft Security Code Analysis について
 
@@ -113,4 +113,4 @@ Microsoft Security Code Analysis をオンボードしてインストールす�
 
 ビルド タスクの構成の詳細については、[構成ガイド](security-code-analysis-customize.md)または [YAML の構成ガイド](yaml-configuration.md)を参照してください。
 
-この拡張機能と提供されるツールについてご不明な点がある場合は、[FAQ ページ](security-code-analysis-faq.md)を参照してください。
+この拡張機能と提供されるツールについてご不明な点がある場合は、[FAQ ページ](security-code-analysis-faq.yml)を参照してください。

@@ -3,12 +3,12 @@ title: Azure Event Hubs 名前空間を別のリージョンに移動する | Mi
 description: この記事では、Azure Event Hubs 名前空間を現在のリージョンから別のリージョンに移動する方法について説明します。
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 9e10cd220a18849336fdc520b269c8af2cb257bd
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 92267ee0486823a9d6f241bb10934ca2e9aceacc
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111811608"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288975"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs 名前空間を別のリージョンに移動する
 この記事では、既存の Event Hubs 名前空間の Azure Resource Manager テンプレートをエクスポートし、そのテンプレートを使用して、別のリージョンに同じ構成設定で名前空間を作成する方法について説明します。 ただし、このプロセスでは、まだ処理されていないイベントは移動されません。 元の名前空間のイベントは、削除する前に処理する必要があります。
@@ -19,7 +19,7 @@ Event Hubs 名前空間を含む Azure リソース グループに他のリソ�
 
 - お使いのアカウントで使用されるサービスと機能が、ターゲット リージョンでサポートされていることを確認してください。
 - 名前空間のイベント ハブに対して **キャプチャ機能** を有効にしている場合は、Event Hubs 名前空間を移動する前に、[Azure Storage または Azure Data Lake Store Gen 2](../storage/common/storage-account-move.md) アカウントまたは [Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-migration-cross-region.md) アカウントを移動します。 この記事で説明されている内容と同様の手順に従って、Storage と Event Hubs の両方の名前空間を含むリソース グループを他のリージョンに移動することもできます。 
-- Event Hubs 名前空間が **Event Hubs クラスター** にある場合は、この記事の手順を行う前に、**ターゲット リージョン** に [専用クラスターを移動](move-cluster-across-regions.md)します。 [GitHub 上のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/)を使用して Event Hubs クラスターを作成することもできます。 このテンプレートから JSON の名前空間の部分を削除して、クラスターのみを作成します。 
+- Event Hubs 名前空間が **Event Hubs クラスター** にある場合は、この記事の手順を行う前に、**ターゲット リージョン** に [専用クラスターを移動](move-cluster-across-regions.md)します。 [GitHub 上のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventhub/eventhubs-create-cluster-namespace-eventhub/)を使用して Event Hubs クラスターを作成することもできます。 このテンプレートから JSON の名前空間の部分を削除して、クラスターのみを作成します。 
 
 ## <a name="prepare"></a>準備
 まず、Resource Manager テンプレートをエクスポートします。 このテンプレートには、Event Hubs 名前空間を説明する設定が含まれています。

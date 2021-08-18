@@ -3,8 +3,8 @@ title: チュートリアル:GitHub AE を構成し、Azure Active Directory を
 description: Azure AD から GitHub AE に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: d9818c05-e279-45b4-8aad-0fa156abd74e
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
-ms.author: Zhchia
-ms.openlocfilehash: 6971b2e04455a6424d70db2512363911f7cd7d86
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: thwimmer
+ms.openlocfilehash: 0ed88aad79029d67e259bff12d4ec2fd68905d72
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473942"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767863"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>チュートリアル:GitHub AE を構成し、自動ユーザー プロビジョニングに対応させる
 

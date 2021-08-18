@@ -3,12 +3,12 @@ title: 障害と災害に対する Azure Service Bus アプリケーションの
 description: この記事では、発生する可能性がある Azure Service Bus の障害からアプリケーションを保護するために使用できる手法について説明します。
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 376885e68111082eb8a7cd0dc8f30ef955543899
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374594"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742988"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -92,6 +92,6 @@ Standard メッセージング価格レベルが使用されているときに�
 [BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Geo-replication with Service Bus Standard Tier]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]:../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md
-[Azure resiliency technical guidance]: /azure/architecture/resiliency
+[Azure resiliency technical guidance]: /azure/architecture/framework/resiliency/app-design
 
 [1]: ./media/service-bus-outages-disasters/az.png

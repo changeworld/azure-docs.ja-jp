@@ -2,13 +2,13 @@
 title: HTTP 拡張プロトコル - Azure
 description: Azure Video Analyzer を使用すると、パイプライン拡張ノードを通じて処理機能を強化できます。 HTTP 拡張プロセッサでは、HTTP プロトコルを使用して拡張性シナリオを実現します。この場合、パフォーマンスや最適なリソース使用率が主要な懸念事項ではありません。
 ms.topic: reference
-ms.date: 03/30/2021
-ms.openlocfilehash: 1f000ffd6368578ba9a6b5206af4b8ae5bf6cf00
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 0c87bf83692798fd416f9d416d1f2a217c99d40a
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387231"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604846"
 ---
 # <a name="use-the-http-extension-protocol"></a>HTTP 拡張プロトコルの使用 
 

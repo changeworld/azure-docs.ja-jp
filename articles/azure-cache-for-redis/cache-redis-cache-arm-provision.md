@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/28/2021
-ms.openlocfilehash: 66630d10c5b79927c8388138c3ab639134909d26
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: e9c804868c64d84b8cbe98093f75c4a45d568ec3
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888538"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458760"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure Cache for Redis を作成する
 
@@ -43,10 +43,10 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 新しい [Premium レベル](cache-overview.md#service-tiers)の Resource Manager テンプレートも利用できます。
 
 * [クラスタリングを使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/resources/templates/redis-premium-cluster-diagnostics/)
-* [データの永続化を使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/resources/templates/redis-premium-persistence/)
+* [データの永続化を使用する Premium Azure Cache for Redis の作成](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [仮想ネットワークにデプロイされる Premium Redis Cache の作成](https://azure.microsoft.com/resources/templates/redis-premium-vnet/)
 
-最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で _Azure Cache for Redis_ を検索してください。
+最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)」で _Azure Cache for Redis_ を検索してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

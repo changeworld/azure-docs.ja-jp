@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 80912d86833b0820bb946594d347427d24dcd487
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 3ddcd99257eb7605322fe81f1002123d4876456b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191615"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435418"
 ---
 # <a name="configure-storage-for-sql-server-vms"></a>SQL Server VM のストレージを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -82,8 +82,8 @@ Azure portal で SQL Server VM を作成する詳しい手順については、[
 次の Resource Manager テンプレートを使用する場合、既定では、2 つ Premium データ ディスクが記憶域プール構成なしで接続されます。 ただし、仮想マシンに接続される Premium データ ディスクの数は、次のテンプレートをカスタマイズすることで変更できます。
 
 * [自動バックアップを備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-sql-full-autobackup)
-* [自動修正を備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
-* [AKV 統合を備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
+* [自動修正を備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-sql-full-autopatching)
+* [AKV 統合を備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-sql-full-keyvault)
 
 ### <a name="quickstart-template"></a>クイック スタート テンプレート
 
@@ -94,9 +94,7 @@ Azure portal で SQL Server VM を作成する詳しい手順については、[
 
 ## <a name="existing-vms"></a>既存の VM
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
-既存の SQL Server VM については、Azure ポータルで一部のストレージ設定を変更できます。 [SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)を開き、 **[概要]** を選択します。 SQL Server の概要ページに、VM の現在のストレージ使用量が表示されます。 このグラフには、VM 上のすべてのドライブが示されており、 ドライブごとに、次の 4 つのセクションの記憶域スペースが表示されます。
+既存の SQL Server VM については、Azure ポータルで一部のストレージ設定を変更できます。 [SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-resource)を開き、 **[概要]** を選択します。 SQL Server の概要ページに、VM の現在のストレージ使用量が表示されます。 このグラフには、VM 上のすべてのドライブが示されており、 ドライブごとに、次の 4 つのセクションの記憶域スペースが表示されます。
 
 * SQL data
 * SQL ログ
@@ -158,7 +156,7 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 Azure portal でキャッシュ ポリシーを変更するには、次の手順に従います。
 
 1. SQL Server サービスを停止します。
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 仮想マシンに移動し、 **[設定]** で **[ディスク]** を選択します。
 
    ![Azure portal の VM ディスク構成ブレードを示すスクリーンショット。](./media/storage-configuration/disk-in-portal.png)
@@ -181,7 +179,7 @@ Azure portal でキャッシュ ポリシーを変更するには、次の手順
 Azure portal を使用して書き込みアクセラレーションを有効にするには、次の手順を実行します。
 
 1. SQL Server サービスを停止します。 ディスクがストライピングされている場合は、仮想マシンをシャットダウンします。
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 仮想マシンに移動し、 **[設定]** で **[ディスク]** を選択します。
 
    ![Azure portal の VM ディスク構成ブレードを示すスクリーンショット。](./media/storage-configuration/disk-in-portal.png)

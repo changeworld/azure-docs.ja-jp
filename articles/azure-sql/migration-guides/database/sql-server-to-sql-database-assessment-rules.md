@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 7046ac7852585a51174c774a0ef2f1150a72ae1f
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 011420abfbd6bf5994aa65024651f2bbd34e1bf4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591964"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743688"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>SQL Server から Azure SQL Database に移行するための評価ルール
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -65,21 +65,6 @@ GROUP BY SalesOrderID, UnitPrice, UnitPriceDiscount WITH ROLLUP;
 
 詳細情報: [SQL Server で廃止されたデータベース エンジンの機能](/previous-versions/sql/2014/database-engine/discontinued-database-engine-functionality-in-sql-server-2016#Denali)
 
-## <a name="change-data-capture-cdc"></a>CDC (変更データ キャプチャ)<a id="CDC"></a>
-
-**タイトル: Azure SQL Database では、CDC (変更データ キャプチャ) はサポートされていません**   
-**カテゴリ**: 問題   
-
-
-**説明**   
-Azure SQL Database では、CDC (変更データ キャプチャ) はサポートされていません。 代わりに Change Tracking を使用できるか評価します。  または、Azure SQL Managed Instance か、Azure Virtual Machines 上の SQL Server に移行します。 
-
-
-**推奨事項**   
-Azure SQL Database では、CDC (変更データ キャプチャ) はサポートされていません。 代わりに Change Tracking を使用できるかどうか評価するか、Azure SQL Managed Instance に移行することを検討します。
-
-詳細情報: [Azure SQL で Change Tracking を有効にする](https://social.technet.microsoft.com/wiki/contents/articles/2976.azure-sql-how-to-enable-change-tracking.aspx)
-
 ## <a name="clr-assemblies"></a>CLR アセンブリ<a id="ClrAssemblies"></a>
 
 **タイトル: Azure SQL Database では SQL CLR アセンブリはサポートされていません**   
@@ -93,7 +78,7 @@ Azure SQL Database では、SQL CLR アセンブリはサポートされてい�
 **推奨事項**   
 現在、Azure SQL Database でこれを実現する方法はありません。 代替の解決策として、Azure SQL Database でサポートされるアセンブリのみを使用するようアプリケーション コードとデータベースを変更することが推奨されます。 あるいは、Azure SQL Managed Instance、または Azure Virtual Machines 上の SQL Server に移行します
 
-詳細情報: [SQL Database でサポートされていない Transact-SQL の相違点](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+詳細情報: [SQL Database でサポートされていない Transact-SQL の相違点](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 ## <a name="cryptographic-provider"></a>CRYPTOGRAPHIC PROVIDER<a id="CryptographicProvider"></a>
 
@@ -249,7 +234,7 @@ Azure Migrate の [影響を受けるオブジェクト] セクションを確�
 **推奨事項**   
 Azure SQL Database はファイル共有と Windows フォルダーにはアクセスできないので、Azure Blob Storage からファイルをインポートする必要があります。 そのため、OPENROWSET 関数でサポートされる BLOB の型は DATASOURCE のみとなります。 または、Azure 仮想マシン上の SQL Server に移行します
 
-詳細情報: [SQL Database への移行時に Transact-SQL の相違点を解決する](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+詳細情報: [SQL Database への移行時に Transact-SQL の相違点を解決する](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="openrowset-provider"></a>OPENROWSET (プロバイダー)<a id="OpenRowsetWithSQLAndNonSQLProvider"></a>
@@ -264,7 +249,7 @@ SQL または SQL 以外のプロバイダーでの OpenRowSet は、リンク �
 **推奨事項**   
 Azure SQL Database では、OPENROWSET を Azure BLOB Storage からのインポートのみでサポートしています。 または、Azure 仮想マシン上の SQL Server に移行します
 
-詳細情報: [SQL Database への移行時に Transact-SQL の相違点を解決する](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+詳細情報: [SQL Database への移行時に Transact-SQL の相違点を解決する](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="non-ansi-left-outer-join"></a>ANSI 以外での左外部結合<a id="NonANSILeftOuterJoinSyntax"></a>
@@ -374,7 +359,7 @@ Azure SQL Database では、Service Broker 機能はサポートされていま�
 **推奨事項**   
 代わりにデータベース レベルのトリガーを使用します。 あるいは、Azure SQL Managed Instance、または Azure Virtual Machines 上の SQL Server に移行します
 
-詳細情報: [SQL Database への移行時に Transact-SQL の相違点を解決する](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+詳細情報: [SQL Database への移行時に Transact-SQL の相違点を解決する](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="sql-agent-jobs"></a>SQL エージェント ジョブ<a id="AgentJobs"></a>
@@ -444,7 +429,7 @@ Azure SQL Database で削除されたサポート対象外のシステム プロ
 **推奨事項**   
 Azure Migrate の [影響を受けるオブジェクト] セクションを確認し、Azure SQL Database でサポートされていないすべてのトレース フラグを確認し、それらを削除できるかどうかを評価します。 また、限られた数のグローバル トレース フラグをサポートする Azure SQL Managed Instance や、Azure 仮想マシン上の SQL Server に移行することもできます。
 
-詳細情報: [SQL Database への移行時に Transact-SQL の相違点を解決する](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+詳細情報: [SQL Database への移行時に Transact-SQL の相違点を解決する](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="windows-authentication"></a>Windows 認証<a id="WindowsAuthentication"></a>

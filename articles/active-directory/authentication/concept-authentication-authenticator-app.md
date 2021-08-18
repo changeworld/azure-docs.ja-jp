@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3175b1292a7e69506b9193d1182e184e257ebda3
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 45663b7a2229de0600e60ec2e40c5b721440b997
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530494"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738933"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory の認証方法 - Microsoft Authenticator アプリ
 
 Microsoft Authenticator アプリは、Azure AD の職場または学校アカウント、または Microsoft アカウントに対する追加のセキュリティ レベルとして機能し、[Android](https://go.microsoft.com/fwlink/?linkid=866594) と [iOS](https://go.microsoft.com/fwlink/?linkid=866594) で使用できます。 Microsoft Authenticator アプリを使用すると、ユーザーはサインイン時にパスワードなしの方法で認証したり、セルフサービス パスワード リセット (SSPR) または Azure AD Multi-Factor Authentication イベントの際に追加の検証オプションとして認証したりすることができます。
 
-ユーザーは、モバイル アプリから通知を受け取って承認または拒否することも、Authenticator アプリを使用してサインイン インターフェイスに入力できる OAUTH 確認コードを生成することもできます。 通知コードと確認コードの両方を有効にすると、Authenticator アプリを登録したユーザーはいずれかの方法を使用して本人確認を行うことができます。
+ユーザーは、モバイル アプリから通知を受け取って承認または拒否することも、Authenticator アプリを使用してサインイン インターフェイスに入力できる OATH 確認コードを生成することもできます。 通知コードと確認コードの両方を有効にすると、Authenticator アプリを登録したユーザーはいずれかの方法を使用して本人確認を行うことができます。
 
 ユーザー名とパスワードの組み合わせではなく、サインイン プロンプトで Authenticator アプリを使用する方法については、「[Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする](howto-authentication-passwordless-phone.md)」を参照してください。
 

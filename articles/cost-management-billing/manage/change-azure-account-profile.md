@@ -9,13 +9,13 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: banders
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 43b3332629922bb60eefb68782b84e996b692848
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 72b1429ac93defd32510ab973697a0f2d5492999
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461484"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289767"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Azure 課金アカウントの連絡先情報を変更する
 

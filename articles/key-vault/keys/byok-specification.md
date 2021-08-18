@@ -2,21 +2,21 @@
 title: Bring Your Own Key の仕様 - Azure Key Vault | Microsoft Docs
 description: このドキュメントでは、Bring Your Own Key の仕様について説明します。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 manager: devtiw
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.author: ambapat
+ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1005176576e2c0db8450dda8ea15d7b3d6934c88
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5dd1e284080f95f961a17e775e8ccf37debc6a62
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665108"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471720"
 ---
 # <a name="bring-your-own-key-specification"></a>Bring Your Own Key の仕様
 

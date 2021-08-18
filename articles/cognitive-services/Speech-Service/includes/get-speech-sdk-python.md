@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: trbye
-ms.openlocfilehash: ecc8fa0d6660d76f20451cf98e927e7efb2c30d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 821dda612ad552cdefec7b32137a60bc82e4487f
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434547"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067792"
 ---
 :::row:::
     :::column span="3":::

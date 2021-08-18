@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5999e8da5dffce85dd12ecd01cd5991ea4abc098
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ea85c1ae1533ffe231e57ecc95f345b37c77499
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748099"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack Hub 仮想マシンを Azure Sentinel に接続する
 
@@ -74,6 +74,6 @@ Azure の Azure Sentinel ポータルの **[Virtual Machines]** に、すべて�
 
 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
 - [一般的なイベント形式のアプライアンス](connect-common-event-format.md)から Azure Sentinel へのデータのストリーム配信。

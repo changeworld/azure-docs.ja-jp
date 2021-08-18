@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49a337d106bab7f33c8f51149c2151c21d78f40b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036735"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178551"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Syslog データ ソースを収集する
 Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
@@ -56,7 +56,7 @@ Log Analytics ワークスペースの [[エージェント構成] メニュー]
 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。 各 Linux エージェントで Syslog を手動で構成する場合は、*[下の構成をコンピューターに適用する]* チェック ボックスをオフにします。
 
 ### <a name="configure-syslog-on-linux-agent"></a>Linux エージェントでの Syslog の構成
-[Linux クライアントに Log Analytics エージェントがインストールされている](../vm/quick-collect-linux-computer.md)場合は、収集されるメッセージのファシリティと重大度を定義する既定の syslog 構成ファイルがインストールされます。 このファイルを修正して、構成を変更することができます。 クライアントにインストールされている Syslog デーモンによって、構成ファイルは異なります。
+[Linux クライアントに Log Analytics エージェントがインストールされている](../vm/monitor-virtual-machine.md)場合は、収集されるメッセージのファシリティと重大度を定義する既定の syslog 構成ファイルがインストールされます。 このファイルを修正して、構成を変更することができます。 クライアントにインストールされている Syslog デーモンによって、構成ファイルは異なります。
 
 > [!NOTE]
 > syslog 構成を編集した場合、変更を有効にするには、syslog デーモンを再起動する必要があります。
@@ -231,4 +231,4 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 ## <a name="next-steps"></a>次のステップ
 * [ログ クエリ](../logs/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
 * [カスタム フィールド](../logs/custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
-* [Linux エージェントを構成](../vm/quick-collect-linux-computer.md) して、他の種類のデータを収集します。
+* [Linux エージェントを構成](../vm/monitor-virtual-machine.md) して、他の種類のデータを収集します。

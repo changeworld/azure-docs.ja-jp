@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 94827916f28c9028d46bf7b5461a4fbd941b2a96
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: bb441ebac4208afa4d9024787dd14256f36777ed
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773404"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445060"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>リモート デスクトップ拡張機能を Azure Cloud Services (延長サポート) に適用する
 
@@ -50,5 +50,5 @@ Azure portal では、アプリケーションをデプロイした後でもリ�
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。

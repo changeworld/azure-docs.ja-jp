@@ -4,12 +4,12 @@ description: Azure Event Hubs を Azure Private Link サービスと統合する
 ms.date: 05/10/2021
 ms.topic: article
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 76f205d97c7c77ff75f0143181631319c6a23b97
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 48688c9f16330830111aff5dd26292825370fcb9
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706040"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415573"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>プライベート エンドポイント経由での Azure Event Hubs 名前空間へのアクセスを許可する 
 Azure Private Link サービスを使用すると、仮想ネットワーク内の **プライベート エンドポイント** 経由で、Azure サービス (Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
@@ -92,7 +92,7 @@ Event Hubs の名前空間が既にある場合は、次の手順に従ってプ
 
     ![作成されたプライベート エンドポイント](./media/private-link-service/private-endpoint-created.png)
 
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+[!INCLUDE [event-hubs-trusted-services](./includes/event-hubs-trusted-services.md)]
 
 信頼できるサービスが自分の名前空間にアクセスすることを許可するには、 **[ネットワーク]** ページで **[ファイアウォールと仮想ネットワーク]** タブに切り替え、 **[信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可しますか?]** に **[はい]** を選択します。 
 

@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 06/27/2021
 ms.author: banders
-ms.openlocfilehash: e334a423fd11aa3a357d52099a792dcc905aedeb
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 0ae80689b8250d81a4ffdb83614a5b1743f1bc45
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011665"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652180"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure での Microsoft 顧客契約の管理ロールを理解する
 

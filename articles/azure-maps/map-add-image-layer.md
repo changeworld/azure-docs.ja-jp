@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f0c24940e606020dc45e5a000cfcb030fd806d4b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 67a564b813014ffc25049f0694ef05977d65efe6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047487"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463055"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>イメージ レイヤーをマップに追加する
 
@@ -38,7 +38,7 @@ ms.locfileid: "102047487"
 
 ## <a name="add-an-image-layer"></a>イメージ レイヤーを追加する
 
-次のコードでは、[1922 年のニュージャージー州ニューアークの地図](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)の画像がマップにオーバーレイされています。 画像の URL と四隅の座標を `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 形式で渡すことによって、[ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) が作成されています。
+次のコードでは、1922 年のニュージャージー州ニューアークの地図の画像がマップにオーバーレイされています。 画像の URL と四隅の座標を `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 形式で渡すことによって、[ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) が作成されています。
 
 ```javascript
 //Create an image layer and add it to the map.

@@ -4,16 +4,16 @@ description: クラウド サービス ロールでは、TEMP フォルダー用
 ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 4afe520a747fb7f14c82f7163dd62c4b84067178
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 32bf4af753cb511739448e6e35a6399bcd2ae8ad
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108735913"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090081"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-classic-webworker-role"></a>クラウド サービス (クラシック) の Web/worker ロールに対する既定のTEMP フォルダーのサイズが小さすぎる
 

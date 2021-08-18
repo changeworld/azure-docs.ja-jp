@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 05/10/2021
 ms.author: alkohli
-ms.openlocfilehash: bd54b662e48ef6f66ea2bfef10863e2d7627289f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c1d1fd5a15d889ead669a5c7c880ed59f5a66ba8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966433"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750918"
 ---
 # <a name="review-copy-errors-in-uploads-from-azure-data-box-and-azure-data-box-heavy-devices"></a>Azure Data Box および Azure Data Box Heavy デバイスからのアップロードのコピー エラーを確認する
 
@@ -110,7 +110,7 @@ Azure portal に、次の通知が表示されます。 エラーはデータ �
 
 **エラーの説明:** Blob ストレージ コンテナーが Write Once Read Many (WORM) として構成されている場合、コンテナーに既に格納されている BLOB のアップロードは失敗します。
 
-**補足情報:** 現在のアップロードでは、このエラーを修正することはできません。 アップロードは完了しましたが、エラーが発生しました。 ネットワーク転送を実行したり、新しいインポート注文を開始する前に、一覧表示されている BLOB が不変なストレージ コンテナーに含まれていないことを確認してください。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](../storage/blobs/storage-blob-immutable-storage.md)」を参照してください。
+**補足情報:** 現在のアップロードでは、このエラーを修正することはできません。 アップロードは完了しましたが、エラーが発生しました。 ネットワーク転送を実行したり、新しいインポート注文を開始する前に、一覧表示されている BLOB が不変なストレージ コンテナーに含まれていないことを確認してください。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](../storage/blobs/immutable-storage-overview.md)」を参照してください。
 
 
 ### <a name="the-total-provisioned-capacity-of-the-shares-cannot-exceed-the-account-maximum-size-limit"></a>The total provisioned capacity of the shares cannot exceed the account maximum size limit (共有のプロビジョニングされた容量の合計は、アカウントの最大サイズ制限を超えることはできません)

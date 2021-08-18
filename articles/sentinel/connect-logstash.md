@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 328dd2145cb72de929c421e8688cd35db435ca30
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 37b09e09207b91e966fef7249cc38a2f13fe4e68
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075306"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747145"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Logstash を使用して Azure Sentinel にデータ ソースを接続する
 
@@ -181,5 +181,5 @@ Azure Sentinel 出力プラグインの接続とアクティビティを監視�
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Logstash を使用して外部データ ソースを Azure Sentinel に接続する方法について説明します。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [組み込み](tutorial-detect-threats-built-in.md)または[カスタム](tutorial-detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [組み込み](detect-threats-built-in.md)または[カスタム](detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。

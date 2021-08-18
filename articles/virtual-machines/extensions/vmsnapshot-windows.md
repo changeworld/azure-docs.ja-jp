@@ -11,12 +11,12 @@ ms.collection: windows
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 6dc2fb12ebd166f62f04a1ecb9833edaad18f539
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 9749cb2e01950c05daf88bae831500c27033d31d
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789613"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112279759"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup 用の VM スナップショットの Windows 拡張機能
 
@@ -75,7 +75,7 @@ VMSnapshot 拡張機能は、Azure portal で、非マネージド VM に対し�
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 ただし、VM スナップショット拡張機能を仮想マシンに追加するための推奨される方法は、仮想マシンでバックアップを有効化することです。 これは、Resource Manager テンプレートを使って実現できます。  仮想マシンでのバックアップを有効にする Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/)にあります。
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 ただし、VM スナップショット拡張機能を仮想マシンに追加するための推奨される方法は、仮想マシンでバックアップを有効化することです。 これは、Resource Manager テンプレートを使って実現できます。  仮想マシンでのバックアップを有効にする Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/recovery-services-backup-vms/)にあります。
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ

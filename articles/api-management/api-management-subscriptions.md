@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: cdc7668b06308bd5532f4885d0e1365fc34ae989
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 288f82d55749e50c9e9520784497ade2c9387f78
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511248"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199360"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API Management のサブスクリプション
 
@@ -64,4 +64,4 @@ API Management の詳細情報:
 
 + API Management の他の[概念](api-management-terminology.md)を確認します。
 + [チュートリアル](import-and-publish.md)に従って API Management の詳細を確認します。
-+ [FAQ ページ](api-management-faq.md)で一般的な質問を確認します。
++ [FAQ ページ](api-management-faq.yml)で一般的な質問を確認します。

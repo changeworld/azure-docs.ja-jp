@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: bbcfe4935843a00bc5274273e79f4ffc72dc25ed
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7e24a8ffb6ab473547708c9094481b0cb2431a71
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051057"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665581"
 ---
 # <a name="add-controls-to-a-map"></a>マップにコントロールを追加する
 
@@ -53,7 +53,7 @@ map.controls.add(new atlas.control.PitchControl(), {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ピッチ コントロールの追加' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Adding a pitch control (ピッチ コントロールの追加)</a>」を参照してください。
+<iframe height='500' scrolling='no' title='ピッチ コントロールの追加' src='//codepen.io/azuremaps/embed/xJrwaP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Adding a pitch control (ピッチ コントロールの追加)</a>」を参照してください。
 </iframe>
 
 ## <a name="add-compass-control"></a>コンパス コントロールを追加する
@@ -71,7 +71,7 @@ map.controls.add(new atlas.control.CompassControl(), {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='回転コントロールの追加' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/GBEoRb/'>Adding a rotate control (回転コントロールの追加)</a>」を参照してください。
+<iframe height='500' scrolling='no' title='回転コントロールの追加' src='//codepen.io/azuremaps/embed/GBEoRb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/GBEoRb/'>Adding a rotate control (回転コントロールの追加)</a>」を参照してください。
 </iframe>
 
 ## <a name="a-map-with-all-controls"></a>すべてのコントロールを含むマップ
@@ -93,7 +93,7 @@ map.controls.add([
 
 <br/>
 
-<iframe height='500' scrolling='no' title='すべてのコントロールを含むマップ' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/qyjbOM/'>A map with all the controls (すべてのコントロールを含むマップ)</a>」を参照してください。
+<iframe height='500' scrolling='no' title='すべてのコントロールを含むマップ' src='//codepen.io/azuremaps/embed/qyjbOM/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/qyjbOM/'>A map with all the controls (すべてのコントロールを含むマップ)</a>」を参照してください。
 </iframe>
 
 スタイルの選択ツール コントロールは、[StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) クラスによって定義されます。 スタイルの選択ツール コントロールの使用方法の詳細については、[マップ スタイルの選択](choose-map-style.md)に関する記事を参照してください。
@@ -108,7 +108,7 @@ map.controls.add([
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>Navigation control options (ナビゲーション コントロールのオプション)</a>」Pen を表示します。
 </iframe>
 
-カスタマイズされたナビゲーション コントロールを作成する場合は、`atlas.Control` クラスから拡張するクラスを作成するか、HTML 要素を作成してマップの div の上に配置します。 この UI コントロールで、マップを移動するためのマップの `setCamera` 関数を呼び出します。 
+カスタマイズされたナビゲーション コントロールを作成する場合は、`atlas.Control` クラスから拡張するクラスを作成するか、HTML 要素を作成してマップの div の上に配置します。 この UI コントロールで、マップを移動するためのマップの `setCamera` 関数を呼び出します。
 
 ## <a name="next-steps"></a>次のステップ
 

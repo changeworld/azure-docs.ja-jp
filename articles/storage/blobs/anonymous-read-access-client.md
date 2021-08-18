@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2437c5b3272163b3931d7417c84e761c591aec85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e112d9b6cc55a898c77026c1982e2a7c19b6840c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90088818"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731762"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>.NET を使用してパブリックのコンテナーと BLOB に匿名でアクセスする
 
@@ -109,4 +109,4 @@ public static void DownloadBlobAnonymously()
 
 - [コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する](anonymous-read-access-configure.md)
 - [コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ](anonymous-read-access-prevent.md)
-- [Azure Storage へのアクセスを承認する](../common/storage-auth.md)
+- [Azure Storage へのアクセスを承認する](../common/authorize-data-access.md)

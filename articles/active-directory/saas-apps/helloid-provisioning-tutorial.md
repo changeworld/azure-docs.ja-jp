@@ -2,25 +2,22 @@
 title: チュートリアル:HelloID を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から HelloID へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: ffd450a5-03ec-4364-8921-5c468e119c4d
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/15/2021
-ms.author: Zhchia
-ms.openlocfilehash: 58de459002b449ecc50840ee7e217c6a01b9676e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 7f9342f6843259605598f0a4ec09ce7f0190e046
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643900"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195732"
 ---
 # <a name="tutorial-configure-helloid-for-automatic-user-provisioning"></a>チュートリアル:HelloID を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -7,12 +7,12 @@ ms.service: cloud-services-extended-support
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 7e918b02304058e043dcd0507a33fa8ba172b9bc
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 836811e721a586ca9dcc25d16f27d7393ff8f82b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969486"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463072"
 ---
 # <a name="support-and-troubleshooting-for-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) のサポートとトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "111969486"
     <img alt='Self help content' src='./media/logos/doc-logo.png'>
 </div>
 
-一般的な問題と回避策については、[Azure Cloud Services (延長サポート) ロール開始エラーのトラブルシューティング](role-startup-failure.md)に関するページと[よく寄せられる質問](faq.md)に関するページをご覧ください。
+一般的な問題と回避策については、[Azure Cloud Services (延長サポート) ロール開始エラーのトラブルシューティング](role-startup-failure.md)に関するページと[よく寄せられる質問](faq.yml)に関するページをご覧ください。
 
 
 
@@ -37,7 +37,7 @@ Service Fabric に関する質問については、Microsoft のエンジニア�
 
 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) は、Azure のコミュニティ サポートの推奨される情報源です。
 
-Microsoft Q&A を検索しても問題に対する回答が見つからない場合は、新しい質問を送信します。 [**azure-cloud-services-extended-support** ](/answers/topics/azure-cloud-services-extended-support.html)タグを使用して、質問を投稿してください。 ここでは、[上手な質問](/answers/articles/24951/how-to-write-a-quality-question.html)を作成するための Microsoft Q&A のヒントをいくつかを紹介します。
+Microsoft Q&A を検索しても問題に対する回答が見つからない場合は、新しい質問を送信します。 [**azure-cloud-services-extended-support**](/answers/topics/azure-cloud-services-extended-support.html)タグを使用して、質問を投稿してください。 ここでは、[上手な質問](/answers/articles/24951/how-to-write-a-quality-question.html)を作成するための Microsoft Q&A のヒントをいくつかを紹介します。
 
 ## <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 

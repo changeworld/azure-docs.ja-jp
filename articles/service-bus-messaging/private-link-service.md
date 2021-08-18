@@ -6,12 +6,12 @@ ms.author: spelluru
 ms.date: 03/29/2021
 ms.topic: article
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f735bb7803ccbccafe86df4426690f365f9c864b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 867e9b77b2986bbabfc7ead4d791e805ad3cd768
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688712"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417039"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>プライベート エンドポイント経由での Azure Service Bus 名前空間へのアクセスを許可する
 Azure Private Link サービスを使用すると、自分の仮想ネットワーク内の **プライベート エンドポイント** 経由で、Azure サービス (Azure Service Bus、Azure Storage、Azure Cosmos DB など) と、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
@@ -105,7 +105,7 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 
     ![作成されたプライベート エンドポイント](./media/private-link-service/private-endpoint-created.png)
 
-[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
+[!INCLUDE [service-bus-trusted-services](./includes/service-bus-trusted-services.md)]
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>PowerShell を使用してプライベート エンドポイントを追加する
 次の例では、Azure PowerShell を使用して、Service Bus 名前空間へのプライベート エンドポイント接続を作成する方法を示します。

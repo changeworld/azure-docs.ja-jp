@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 08/04/2021
 ms.author: phjensen
-ms.openlocfilehash: 86a670602f448f59decbc64d8a12278697c43596
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: eb41e1ebda2e5a14bc2987dded8948221ee93452
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929851"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729234"
 ---
 # <a name="test-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールをテストする
 
@@ -80,16 +80,6 @@ PASSED: Task#2/2 Storage test successful for Volume
 PASSED: Task#1/2 Storage test successful for Volume
 END   : Storage tests complete
 END   : Test process complete for 'storage'
-```
-
-> [!NOTE]
-> Azure Large Instance の場合、`azacsnap -c test --test storage` コマンドを実行して、ストレージの世代と HLI SKU を推定します。  この情報に基づいて、"ブート" スナップショットの構成に関するガイダンスが提供されます (`Action:` 出力で始まる行を参照してください)。
-
-```output
-SID1   : Generation 4
-Storage: ams07-a700s-saphan-1-01v250-client25-nprod
-HLI SKU: S96
-Action : Configure the 'boot' snapshots on ALL the servers.
 ```
 
 ## <a name="next-steps"></a>次のステップ

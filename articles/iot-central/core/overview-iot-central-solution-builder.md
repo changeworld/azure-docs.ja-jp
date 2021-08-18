@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: dc8ca48d11f31f69ca9db5dce53cce4d9d6e8f25
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5c8ef9fae7e0fa26de6a0d568e88a80a9a8cf989
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772335"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459155"
 ---
 # <a name="iot-central-solution-builder-guide"></a>IoT Central ソリューション ビルダーのガイド
 
@@ -30,17 +30,16 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 IoT Central アプリケーションでは、オペレーターがアプリケーションを表示および操作するために使用する 1 つ以上のダッシュボードを利用できます。 ソリューション ビルダーは、既定のダッシュボードをカスタマイズしたり、特殊なダッシュボードを作成したりできます。
 
 - カスタマイズされたダッシュボードの例については、「[特定業界に焦点を合わせたテンプレート](concepts-app-templates.md#industry-focused-templates)」を参照してください。
-- ダッシュボードの詳細については、「[複数のダッシュボードの作成と管理](howto-create-personal-dashboards.md)」と「[アプリケーション ダッシュボードの構成](howto-add-tiles-to-your-dashboard.md)」を参照してください。
+- ダッシュボードの詳細については、「[複数のダッシュボードの作成と管理](howto-manage-dashboards.md)」と「[アプリケーション ダッシュボードの構成](howto-manage-dashboards.md)」を参照してください。
 
-デバイスが IoT Central に接続されると、デバイスは、そのデバイスの種類用のデバイス テンプレートに関連付けられます。 デバイス テンプレートには、オペレーターが個々のデバイスを管理するために使用するカスタマイズ可能なビューがあります。 ソリューション開発者は、デバイスの種類で使用可能なビューを作成およびカスタマイズできます。 詳細については、「[ビューの追加](howto-set-up-template.md#add-views)」を参照してください。
+デバイスが IoT Central に接続されると、デバイスは、そのデバイスの種類用のデバイス テンプレートに関連付けられます。 デバイス テンプレートには、オペレーターが個々のデバイスを管理するために使用するカスタマイズ可能なビューがあります。 ソリューション開発者は、デバイスの種類で使用可能なビューを作成およびカスタマイズできます。 詳細については、「[ビューの追加](howto-set-up-template.md#views)」を参照してください。
 
 ## <a name="use-built-in-rules-and-analytics"></a>組み込みのルールと分析を使用する
 
 ソリューション開発者は、IoT Central アプリケーションに、カスタマイズ可能なアクションを実行するルールを追加できます。 ルールにより、デバイスからのデータに基づいて条件が評価され、アクションを実行するタイミングが決定されます。 詳細については、次を参照してください。
 
 - [チュートリアル:Azure IoT Central アプリケーションで規則を作成して通知を設定する](tutorial-create-telemetry-rules.md)
-- [Azure IoT Central でルールに対する Webhook アクションを作成する](howto-create-webhooks.md)
-- [1 つまたは複数のルールから実行する複数のアクションをグループ化する](howto-use-action-groups.md)
+- [ルールを構成する](howto-configure-rules.md)
 
 IoT Central には、オペレーターが、接続されているデバイスからのデータを分析するために使用できる組み込みの分析機能があります。 詳細については、「[分析を使用してデバイス データを分析する方法](howto-create-analytics.md)」を参照してください。
 

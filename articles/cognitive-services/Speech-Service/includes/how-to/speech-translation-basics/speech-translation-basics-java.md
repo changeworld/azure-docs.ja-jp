@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
-ms.author: trbye
-ms.openlocfilehash: e030e6466570d3fc2abf809ca09d46c9f596b765
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: lajanuar
+ms.openlocfilehash: 601ca39b1d2eadb014b657cfcea1d6002aa2c162
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105104704"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071113"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
 

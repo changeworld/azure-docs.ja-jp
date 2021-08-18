@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: bc854669c5d724da92c19c19a01f56ebe91f78ee
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b6162657520f91168f46c43c1d6d7f5cbfbe6d38
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757789"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031737"
 ---
 # <a name="azure-virtual-desktop-environment"></a>Azure Virtual Desktop 環境
 
@@ -61,8 +61,8 @@ Azure Virtual Desktop ホスト プールを設定する方法については、
 
 Azure Virtual Desktop に接続する方法については、次のいずれかの記事をご覧ください。
 
-- [Windows 10 または Windows 7 を使用して接続する](connect-windows-7-10.md)
-- [Web ブラウザーを使用して接続する](connect-web.md)
-- [Android クライアントに接続する](connect-android.md)
-- [macOS クライアントに接続する](connect-macos.md)
-- [iOS クライアントに接続する](connect-ios.md)
+- [Windows 10 または Windows 7 を使用して接続する](./user-documentation/connect-windows-7-10.md)
+- [Web ブラウザーを使用して接続する](./user-documentation/connect-web.md)
+- [Android クライアントに接続する](./user-documentation/connect-android.md)
+- [macOS クライアントに接続する](./user-documentation/connect-macos.md)
+- [iOS クライアントに接続する](./user-documentation/connect-ios.md)

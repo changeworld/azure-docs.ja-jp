@@ -2,19 +2,18 @@
 title: モジュール ツインの監視 - Azure IoT Edge
 description: デバイス ツインとモジュール ツインを解釈して、接続性と正常性を判断する方法。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 05/29/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a0d8bcce8e036cf7fc0efc1fe3956006f276f9e
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 1bb022737c3c6f228e741681561867414c118592
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633899"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742250"
 ---
 # <a name="monitor-module-twins"></a>モジュール ツインの監視
 

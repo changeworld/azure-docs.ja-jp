@@ -2,22 +2,22 @@
 title: ユーザーと管理者のアクセス許可を管理する - Azure Active Directory | Microsoft Docs
 description: Azure AD でアプリケーションのアクセス許可を確認および管理する方法について説明します。 たとえば、アプリケーションに付与されているすべてのアクセス許可を取り消します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 7/10/2020
-ms.author: mtillman
-ms.reviewer: luleonpla
+ms.author: davidmu
+ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa8611fb932fadcdf8cd7c8a361fb840babf16b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7585ad6816a8d9fd0a331ae9fcb1e1cea81ddbac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075882"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742883"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する
 
@@ -72,10 +72,10 @@ PowerShell スクリプトを使用すると、このアプリケーションに
 **[ユーザー割り当て]** の設定を有効にすることによってアプリケーションへのアクセスを制限することをお勧めします。 その後、ユーザーと管理者がアプリケーションに付与したアクセス許可を確認します。
 
 1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-3. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
-5. アクセスを制限するアプリケーションを選択します。
-6. **[プロパティ]** を選択し、 **[User requirement required] (ユーザー要件が必須)** を **[はい]** に設定します。
-7. **[アクセス許可]** を選択し、管理者とユーザーによって同意されたアクセス許可を確認します。
+2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
+3. アクセスを制限するアプリケーションを選択します。
+4. **[プロパティ]** を選択し、 **[User requirement required] (ユーザー要件が必須)** を **[はい]** に設定します。
+5. **[アクセス許可]** を選択し、管理者とユーザーによって同意されたアクセス許可を確認します。
 
 必要に応じて、PowerShell を使用して、次のことを実行できます。
 

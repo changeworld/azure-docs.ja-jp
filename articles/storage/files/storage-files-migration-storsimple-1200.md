@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 67ddcf5fd7d3ef3c1def12a325eb19980176a8ba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 96cc983cba992452882a8f3307974e83683c39a9
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756217"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462194"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行
 
@@ -20,7 +20,14 @@ StorSimple 1200 シリーズは、オンプレミスのデータ センターで
 
 StorSimple 1200 シリーズは 2022 年 12 月に[サポート終了](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series)となります。  できるだけ早く移行の計画を開始することが重要です。 この記事では、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。 
 
-## <a name="azure-file-sync"></a>Azure File Sync
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
+## <a name="azure-file-sync&quot;></a>Azure File Sync
 
 > [!IMPORTANT]
 > Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、または移行中のサポートについては、AzureFilesMigration@microsoft .com にメールをお送りください。
@@ -32,7 +39,7 @@ Azure File Sync は、次の 2 つの主要なコンポーネントに基づく 
 
 この記事では、移行手順を中心に説明します。 移行前に Azure File Sync について詳しく知りたい場合は、次の記事をお勧めします。
 
-* [Azure File Sync - 概要](../file-sync/file-sync-planning.md "概要")
+* [Azure File Sync - 概要](../file-sync/file-sync-planning.md &quot;概要")
 * [Azure File Sync - デプロイ ガイド](../file-sync/file-sync-deployment-guide.md)
 
 ## <a name="migration-goals"></a>移行の目標

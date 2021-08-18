@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: a6cc1cae640b97ecb3d95ee1e4f8ec34750e32d2
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: bc60c8663a3d546f785fc905da17ddefcec64575
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833008"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378270"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 
@@ -140,7 +140,7 @@ App Service Environment の使用を開始するには、「[App Service Environ
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-create/
+[quickstartilbasecreate]: https://azure.microsoft.com/resources/templates/web-app-ase-ilb-create/
 [examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
-[configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/ 
+[configuringDefaultSSLCertificate]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/
 

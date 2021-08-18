@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b1afcdfa74245eb566663d5dec6ce2e2276fbdc8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: c6abbecfa7bc2946dc68b5acb530c5d2bbd2e700
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568235"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540476"
 ---
 # <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールに Contoso Retail データを読み込む
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>データを新しいテーブルに読み込む
 
-Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用します。 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。 新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの CTAS ステートメントを使用してください。
+Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用します。 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。 新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの CTAS ステートメントを使用してください。
 
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 

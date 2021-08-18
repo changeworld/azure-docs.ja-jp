@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 75a2762a0937efbceaa168f8a2d6409e2e3a7ae4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aed9a608dd8a958a298b3a7f502dac6d587b2a2e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967229"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466750"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -39,9 +39,9 @@ Device Provisioning Service は、登録と登録レコードを保持してい�
 
 REST API を使って、登録と登録レコードの削除操作を実行することもできます。
 
-* 1 台のデバイスの登録情報を削除するには、「[Device Enrollment - Delete](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment)」(デバイス登録 - 削除) の API を使うことができます。
-* デバイスのグループの登録情報を削除するには、「[Device Enrollment Group - Delete](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup)」(デバイス登録グループ - 削除) の API を使うことができます。
-* プロビジョニングされたデバイスに関する情報を削除するには、「[Registration State - Delete Registration State](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate)」(登録状態 - 登録状態の削除) の API を使うことができます。
+* 1 台のデバイスの登録情報を削除するには、「[Device Enrollment - Delete](/rest/api/iot-dps/service/individual-enrollment/delete)」(デバイス登録 - 削除) の API を使うことができます。
+* デバイスのグループの登録情報を削除するには、「[Device Enrollment Group - Delete](/rest/api/iot-dps/service/enrollment-group/delete)」(デバイス登録グループ - 削除) の API を使うことができます。
+* プロビジョニングされたデバイスに関する情報を削除するには、「[Registration State - Delete Registration State](/rest/api/iot-dps/service/device-registration-state/delete)」(登録状態 - 登録状態の削除) の API を使うことができます。
 
 ## <a name="exporting-customer-data"></a>顧客データのエクスポート
 
@@ -53,9 +53,9 @@ Device Provisioning Service は、登録と登録レコードを保持してい�
 
 REST API を使って、登録と登録レコードのエクスポート操作を実行することもできます。
 
-* 1 台のデバイスの登録情報をエクスポートするには、「[Device Enrollment - Get](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment)」(デバイス登録 - 取得) の API を使うことができます。
-* デバイスのグループの登録情報をエクスポートするには、「[Device Enrollment Group - Get](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup)」(デバイス登録グループ - 取得) の API を使うことができます。
-* プロビジョニングされたデバイスに関する情報をエクスポートするには、「[Registration State - Get Registration State](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate)」(登録状態 - 登録状態の取得) の API を使うことができます。
+* 1 台のデバイスの登録情報をエクスポートするには、「[Device Enrollment - Get](/rest/api/iot-dps/service/individual-enrollment/get)」(デバイス登録 - 取得) の API を使うことができます。
+* デバイスのグループの登録情報をエクスポートするには、「[Device Enrollment Group - Get](/rest/api/iot-dps/service/enrollment-group/get)」(デバイス登録グループ - 取得) の API を使うことができます。
+* プロビジョニングされたデバイスに関する情報をエクスポートするには、「[Registration State - Get Registration State](/rest/api/iot-dps/service/device-registration-state/get)」(登録状態 - 登録状態の取得) の API を使うことができます。
 
 > [!NOTE]
 > Microsoft のエンタープライズ サービスを使うと、システム生成ログと呼ばれる情報がいくつか生成されます。 Device Provisioning Service システムによって生成されたログの一部は、テナント管理者がアクセスしたりエクスポートしたりすることはできません。 これらのログは、個々のデバイスに関連するサービスと診断データ内で実行された実際のアクションで構成されています。

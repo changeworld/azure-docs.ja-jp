@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28bd7af9722bd76d6580257ffaf0446c79522502
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595499"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461551"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -177,15 +177,15 @@ DevOps を導入すれば、各チームが連携し、より安全で高品質�
 
 Microsoft Azure などのクラウド プラットフォームでは、従来のボトルネックが除去されるため、インフラストラクチャの商品化に役に立ちます。 ソフトウェアは、ビジネスの成果における重要な差別化要因および要素としてすべてのビジネスに君臨します。 どの組織、開発者、IT worker も、DevOps の動きを回避できず、回避する必要もありません。
 
-成熟した DevOps 実践者は、次のプラクティスのいくつかを採用します。 これらのプラクティスには、ビジネス シナリオに基づいて戦略を形作る[ユーザーが関係します](/azure/devops/learn/what-is-devops-culture)。 ツールは、さまざまなプラクティスの自動化に役立ちます。
+成熟した DevOps 実践者は、次のプラクティスのいくつかを採用します。 これらのプラクティスには、ビジネス シナリオに基づいて戦略を形作る[ユーザーが関係します](/devops/what-is-devops)。 ツールは、さまざまなプラクティスの自動化に役立ちます。
 
 - [アジャイル計画およびプロジェクト管理](https://www.visualstudio.com/learn/what-is-agile/)手法を使用して、作業の計画とスプリントへの分離、チームのキャパシティの管理、チームがビジネス ニーズの変化にすばやく適応するための支援を行います。
-- [通常は Git を使用したバージョン コントロール](/azure/devops/learn/git/what-is-git)により、チームは世界中のどこにいてもソースを共有でき、ソフトウェア開発ツールと統合してリリース パイプラインを自動化できます。
-- [継続的インテグレーション](/azure/devops/learn/what-is-continuous-integration)は、実行中のコードのマージとテストを推進します。これにより、障害を早期に検出できるようになります。  その他のメリットとして、マージの問題への取り組みや開発チームへの迅速なフィードバックに浪費される時間が短縮されます。
-- 環境の保護とテストのためのソフトウェア ソリューションの[継続的デリバリー](/azure/devops/learn/what-is-continuous-delivery)により、組織はバグを迅速に修正し、絶えず変化するビジネス要件に対応できます。
-- 実行中のアプリケーションの[監視](/azure/devops/learn/what-is-monitoring) (運用環境でのアプリケーションの正常性や顧客の使用状況など) は、組織が仮説を形成し、戦略を迅速に検証または誤りを証明するのに役立ちます。  豊富なデータがキャプチャされ、さまざまなログ形式で格納されます。
-- [コードとしてのインフラストラクチャ (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) は、ネットワークや仮想マシンの作成と切断の自動化と妥当性確認を有効にして、セキュリティで保護された、安定したアプリケーション ホスティング プラットフォームの提供を支援するプラクティスです。
-- [マイクロサービス](/azure/devops/learn/what-are-microservices) アーキテクチャを使用して、ビジネス ユース ケースを小規模の再利用可能なサービスに分離します。  このアーキテクチャでは、スケーラビリティと効率性が実現されます。
+- [通常は Git を使用したバージョン コントロール](/devops/develop/git/what-is-git)により、チームは世界中のどこにいてもソースを共有でき、ソフトウェア開発ツールと統合してリリース パイプラインを自動化できます。
+- [継続的インテグレーション](/devops/develop/what-is-continuous-integration)は、実行中のコードのマージとテストを推進します。これにより、障害を早期に検出できるようになります。  その他のメリットとして、マージの問題への取り組みや開発チームへの迅速なフィードバックに浪費される時間が短縮されます。
+- 環境の保護とテストのためのソフトウェア ソリューションの[継続的デリバリー](/devops/deliver/what-is-continuous-delivery)により、組織はバグを迅速に修正し、絶えず変化するビジネス要件に対応できます。
+- 実行中のアプリケーションの[監視](/devops/operate/what-is-monitoring) (運用環境でのアプリケーションの正常性や顧客の使用状況など) は、組織が仮説を形成し、戦略を迅速に検証または誤りを証明するのに役立ちます。  豊富なデータがキャプチャされ、さまざまなログ形式で格納されます。
+- [コードとしてのインフラストラクチャ (IaC)](/devops/deliver/what-is-infrastructure-as-code) は、ネットワークや仮想マシンの作成と切断の自動化と妥当性確認を有効にして、セキュリティで保護された、安定したアプリケーション ホスティング プラットフォームの提供を支援するプラクティスです。
+- [マイクロサービス](/devops/deliver/what-are-microservices) アーキテクチャを使用して、ビジネス ユース ケースを小規模の再利用可能なサービスに分離します。  このアーキテクチャでは、スケーラビリティと効率性が実現されます。
 
 ## <a name="next-steps"></a>次の手順
 

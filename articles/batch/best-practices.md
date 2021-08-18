@@ -3,12 +3,12 @@ title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
 ms.date: 04/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 181f8f8ced4113521c8791fd9e1b5d651776783e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: db67f91257db1ddb44f7dfb103ac02e49febe562
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773343"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126466"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -197,7 +197,7 @@ Batch ソリューションの接続に関する次のガイダンスを確認�
 
 ### <a name="testing-connectivity-with-cloud-services-configuration"></a>Cloud Services 構成を使用した接続のテスト
 
-Azure ロード バランサー経由の ICMP プロトコルは許可されていないため、クラウド サービスに通常の "ping" や ICMP プロトコルを使用することはできません。 詳細については、[Azure Cloud Services の接続とネットワーク](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service)に関するページを参照してください。
+Azure ロード バランサー経由の ICMP プロトコルは許可されていないため、クラウド サービスに通常の "ping" や ICMP プロトコルを使用することはできません。 詳細については、[Azure Cloud Services の接続とネットワーク](../cloud-services/cloud-services-connectivity-and-networking-faq.yml#can-i-ping-a-cloud-service-)に関するページを参照してください。
 
 ## <a name="batch-node-underlying-dependencies"></a>Batch ノードの基になる依存関係
 

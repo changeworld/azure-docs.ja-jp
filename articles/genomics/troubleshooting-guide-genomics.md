@@ -10,18 +10,18 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00b81e57a656afbfce13027a8855104faf889146
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96023825"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551742"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
 Microsoft Genomics サービス MSGEN の使用時に直面する可能性がある一般的な問題のトラブルシューティングのヒントをいくつか以下に示します。
 
- トラブルシューティングに関連しない FAQ については、[よく寄せられる質問](frequently-asked-questions-genomics.md)のページを参照してください。
+ トラブルシューティングに関連しない FAQ については、[よく寄せられる質問](frequently-asked-questions-genomics.yml)のページを参照してください。
 ## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>手順 1: ワークフローに関連付けられたエラー コードを見つける
 
 次を行うことによって、ワークフローに関連付けられたエラー メッセージを見つけることができます。
@@ -142,4 +142,4 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Microsoft Genomics サービスに関する一般的な問題のトラブルシューティングと解決方法を学びました。 詳細情報とその他の一般的な FAQ については、「[よく寄せられる質問](frequently-asked-questions-genomics.md)」を参照してください。 
+この記事では、Microsoft Genomics サービスに関する一般的な問題のトラブルシューティングと解決方法を学びました。 詳細情報とその他の一般的な FAQ については、「[よく寄せられる質問](frequently-asked-questions-genomics.yml)」を参照してください。 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7cee2be3c1d7a97b87560873d6cef07ec361ee99
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d9d817077b1bdfb0bd53ec18f25def1c9615d2fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605180"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736409"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の制限
 次のセクションでは、データベース サービス容量と機能の制限について説明します。 リソース (コンピューティング、メモリ、ストレージ) 層の詳細については、[価格レベル](concepts-pricing-tiers.md)の記事を参照してください。
@@ -65,7 +65,7 @@ PostgreSQL 接続はアイドル状態でも、約 10 MB のメモリを占有�
 - 削除されたサーバーへの復元はサポートされていません。
 
 ### <a name="utf-8-characters-on-windows"></a>Windows での UTF-8 文字
-- 一部のシナリオにおいて、Windows 上のオープン ソース PostgreSQL では UTF-8 文字が完全にはサポートされません。これは、Azure Database for PostgreSQL に影響するためです。 詳細については、[PostgreSQL アーカイブ内の Bug #15476](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) のスレッドを参照してください。
+- 一部のシナリオにおいて、Windows 上のオープン ソース PostgreSQL では UTF-8 文字が完全にはサポートされません。これは、Azure Database for PostgreSQL に影響するためです。 詳細については、[PostgreSQL アーカイブ内の Bug #15476](https://www.postgresql.org/message-id/2101.1541220270%40sss.pgh.pa.us) のスレッドを参照してください。
 
 ### <a name="gss-error"></a>GSS エラー
 **GSS** に関連するエラーが表示される場合は、Azure Postgres Single Server でまだ完全にサポートされていない新しいクライアントまたはドライバーのバージョンを使用している可能性があります。 このエラーは、[JDBC ドライバー バージョン 42.2.15 および 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868) に影響することがわかっています。

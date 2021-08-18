@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 07/13/2021
 ms.author: baselden
 author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e7792546531d7f443a44b127620d508816edcb
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 272eaf3a21992cb5fecf1c02e5ab1000af149bcc
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285774"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687841"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -62,7 +62,7 @@ Azure Active Directory はユーザーごとのライセンスであり、機能
 
 エディションと機能を比較し、グループベースまたはユーザーベースのライセンスを有効にする場合は、「[Azure AD のセルフサービス パスワード リセットのライセンス要件](./concept-sspr-licensing.md)」をご覧ください。
 
-価格の詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
+価格の詳細については、「[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 

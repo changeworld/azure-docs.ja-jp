@@ -2,22 +2,22 @@
 title: Azure AD を使用してエンド ユーザーがアプリケーションに同意する方法を構成する
 description: 組織のデータにアクセスするアプリケーションにユーザーがいつどのように同意できるかについて管理する方法を説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59a7799ce7c0c1fd8261324351f425e76e3b4d44
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: ecf463ed332299f20ef1d34f0c3158db31f52e8d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075972"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568048"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -185,4 +185,5 @@ Microsoft によってリスクが検出された場合に必要となる管理�
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
+
 * [Microsoft Q&A の Azure AD。](/answers/topics/azure-active-directory.html)

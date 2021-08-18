@@ -2,18 +2,18 @@
 title: Azure portal を利用して Azure マネージド ディスクのパフォーマンスを変更する
 description: Azure portal を利用し、新規と既存のマネージド ディスクのパフォーマンス レベルを変更する方法について説明します。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37069bb17e0ce6a104ae3c1b79714da160737fe8
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97901035"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356277"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Azure portal を利用してパフォーマンス レベルを変更する
 
@@ -43,6 +43,42 @@ ms.locfileid: "97901035"
 次の手順では、既存のディスクのパフォーマンス レベルを変更する方法を説明しています。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. 変更するディスクが含まれる VM に移動します。
+1. VM の割り当てを解除するか、ディスクをデタッチします。
+1. ディスクを選択します
+1. **[Size + Performance]\(サイズおよびパフォーマンス\)** を選択します。
+1. **[パフォーマンス レベル]** ドロップダウンで、ディスクの現在のパフォーマンス レベル以外のレベルを選択します。
+1. **[サイズ変更]** を選択します。
+
+:::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="[Size + Performance]\(サイズおよびパフォーマンス\) ブレードのスクリーンショット。パフォーマンス レベルが強調表示されています。" lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::
+
+### <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>ダウンタイムなしでディスクのパフォーマンス レベルを変更する (プレビュー)
+
+ダウンタイムなしでパフォーマンス レベルを変更することもできるため、レベルを変更するために VM の割り当てを解除したり、ディスクをデタッチしたりする必要はありません。
+
+### <a name="prerequisites"></a>前提条件
+
+ご使用のディスクが「[ダウンタイムなしでパフォーマンス レベルを変更する (プレビュー)](#change-performance-tier-without-downtime-preview)」セクションに記載されている要件を満たしている必要があります。そうでない場合は、パフォーマンス レベルを変更するとダウンタイムが発生します。
+
+ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、お使いのサブスクリプションに対してこの機能を有効にしてください。
+
+1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name LiveTierChange
+    ```
+ 
+1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name LiveTierChange
+    ```
+
+### <a name="change-performance-tier"></a>パフォーマンス レベルを変更する
+
+機能が登録されたら、関連するディスクのパフォーマンス レベルをダウンタイムなしで変更することができます。
+
+1. このリンク ([https://aka.ms/diskPerfTiersPreview](https://aka.ms/diskPerfTiersPreview)) から Azure portal にサインインします。
 1. 変更するディスクが含まれる VM に移動します。
 1. VM の割り当てを解除するか、ディスクをデタッチします。
 1. ディスクを選択します

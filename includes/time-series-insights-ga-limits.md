@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 9af31fb52a888148f33268a30c37609a5e8f2cd3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f2f5ef1ff77ccbae4170b84c325f97f2cb7dc390
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486600"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122263745"
 ---
 次に、Azure Time Series Insights Gen1 の主な制限の概要を示します。
 
@@ -60,4 +60,4 @@ Gen1 プロパティの制限は、選択されている SKU 環境によって�
 
 ### <a name="api-limits"></a>API の制限
 
-Azure Time Series Insights Gen1 の REST API の制限については、[REST API リファレンス ドキュメント](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)を参照してください。
+Azure Time Series Insights Gen1 の REST API の制限については、[REST API リファレンス ドキュメント](/rest/api/time-series-insights/gen1-reference-data-api#current-limits)を参照してください。

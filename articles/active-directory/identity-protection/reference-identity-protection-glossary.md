@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9adb0f453aebb47c939b1ab0ead601b05145f217
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88949176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727631"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
 
@@ -35,7 +35,7 @@ ms.locfileid: "88949176"
 ### <a name="credentials"></a>資格情報
 ID およびローカル リソースとネットワーク リソースへのアクセス権を取得するために使用する ID の証明を含む情報です。 資格情報には、ユーザー名とパスワード、スマート カードおよび証明書などがあります。
 
-### <a name="event"></a>Event
+### <a name="event"></a>イベント
 Azure Active Directory 内のアクティビティのレコードです。
 
 ### <a name="false-positive-risk-detection"></a>誤検知 (リスク検出)
@@ -89,7 +89,7 @@ Azure Active Directory に 1 つ以上のリソースへの永続的または一
 ### <a name="remediated-risk-detection"></a>修復済み (リスク検出)
 Identity Protection から自動的に設定されるリスク検出の状態です。この種類のリスク検出に対する標準的な修復アクションを使用して、リスク検出が修復されたことを示します。 たとえば、ユーザーのパスワードがリセットされると、以前のパスワードが侵害されたことを示す多くのリスク検出は自動的に修復されます。
 
-### <a name="remediation"></a>Remediation
+### <a name="remediation"></a>修復
 以前に侵害の疑いがある、または侵害を検知した ID またはデバイスをセキュリティで保護するアクションです。 修復アクションで、ID やデバイスが安全な状態に復元され、ID またはデバイスに関連する以前のリスク検出が解決します。
 
 ### <a name="resolved-risk-detection"></a>解決済み (リスク検出)

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/30/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 944eff6e76f4e5759f70105fe9d09aa61093917f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 046911fef537f91e1b1d6c5f6c1ca351d2cc171f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028300"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "121778805"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して SAML ID プロバイダーでのサインアップとサインインを設定する
 
@@ -56,7 +56,8 @@ Azure Active Directory B2C (Azure AD B2C) では、SAML 2.0 ID プロバイダ�
 * Azure AD B2C から SAML 要求を受信、デコード、応答する機能を持つ SAML **ID プロバイダー**。
 * お使いの ID プロバイダー向けに公開されている SAML **メタデータ エンドポイント**。
 * [Azure AD B2C テナント](tutorial-create-tenant.md)。
- 
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 

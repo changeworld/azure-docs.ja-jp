@@ -10,12 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.openlocfilehash: ee4e8f3abad2a4da924e42f81004c86691a1bc8a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 6f99ce0f0229de5423a6dde4472b5b11b992f7e8
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792513"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422716"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -86,7 +86,7 @@ OWASP の上位 10 件は、Web アプリケーションに対する重大なセ
 これらのセキュリティ リスクを認識することが、アプリケーションでこれらのリスクを最小限に抑える要件と設計についての決定を下す際に役立ちます。
 
 侵害防止のためのセキュリティ制御について検討することは重要です。
-ただし、[侵害を当然](/azure/devops/learn/devops-at-microsoft/security-in-devops)発生するものと考えることもできます。 侵害を想定することで、セキュリティに関する重要な質問に事前に答えを出すことができるため、次のような質問の答えを緊急時に出さなくても済みます。
+ただし、[侵害を当然](/devops/operate/security-in-devops)発生するものと考えることもできます。 侵害を想定することで、セキュリティに関する重要な質問に事前に答えを出すことができるため、次のような質問の答えを緊急時に出さなくても済みます。
 
   - どのように攻撃を検出するのか?
 

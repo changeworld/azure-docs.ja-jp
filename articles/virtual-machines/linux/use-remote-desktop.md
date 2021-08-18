@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 309b106d2141c8257c5163efe7ff45a7bae5d5c3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1a7e656cb1f20c05073a9fe80ee64af51268a8c7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759653"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178620"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>xrdp をインストールして、Ubuntu でリモート デスクトップを使用するように構成する
 
@@ -49,6 +49,7 @@ Windows を使用し、SSH の使用に関する詳細が必要な場合は、[W
 ```bash
 sudo apt-get update
 sudo apt-get -y install xfce4
+sudo apt install xfce4-session
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>リモート デスクトップ サーバーをインストールして構成する

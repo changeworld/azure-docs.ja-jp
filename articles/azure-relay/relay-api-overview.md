@@ -3,13 +3,13 @@ title: Azure リレー API の概要 | Microsoft Docs
 description: この記事では、使用可能な Azure Relay API (.NET Standard、.NET Framework、Node.js など) の概要について説明します。
 ms.topic: article
 ms.custom: devx-track-dotnet
-ms.date: 06/23/2020
-ms.openlocfilehash: 391bd74f2bce8721b6d6359f3990af494277aa45
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: 3c49ec625469782fa13a2dee056f51242665a7de
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312996"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666236"
 ---
 # <a name="available-relay-apis"></a>使用可能なリレー API
 

@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: a37abf369d1f34dc8f4a27802dfad88dab79be44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6f68b249b9bedd638594bf6956e909ee8d792e5
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698435"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253516"
 ---
 # <a name="connect-your-imperva-waf-gateway-appliance-to-azure-sentinel"></a>Imperva WAF Gateway アプライアンスを Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Imperva WAF Gateway コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、Imperva WAF Gateway アプライアンスを Azure Sentinel に接続する方法について説明します。 Imperva WAF Gateway データ コネクタを使用すると、Imperva WAF Gateway ログを Azure Sentinel に簡単に接続できます。これにより、そのデータをブックで表示したり、カスタム アラートの作成に利用したり、調査の改善のために取り込んだりできます。 Imperva WAF Gateway と Azure Sentinel の統合には、CEF 形式の Syslog、Linux ベースのログ フォワーダー、および Log Analytics エージェントを使用します。
 
@@ -77,6 +79,6 @@ CommonSecurityLog
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Imperva WAF Gateway を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

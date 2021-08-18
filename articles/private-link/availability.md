@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 17b3b74bc6879d54577492a13eb93e0e0ab58373
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: ec1911911653b8c176d92ad3216c64f7fd1a836e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486379"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295581"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link の可用性
 
@@ -58,7 +58,7 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 
 |サポートされているサービス  |対応リージョン | その他の考慮事項 | Status  |
 |:-------------------|:-----------------|:----------------|:--------|
-|  Azure SQL データベース         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン      |  プロキシの[接続ポリシー](../azure-sql/database/connectivity-architecture.md#connection-policy)についてサポートされます | GA <br/> [Azure SQL のプライベート エンドポイントを作成する方法を確認します](create-private-endpoint-portal.md)      |
+|  Azure SQL データベース         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン      |  プロキシの[接続ポリシー](../azure-sql/database/connectivity-architecture.md#connection-policy)についてサポートされます | GA <br/> [Azure SQL のプライベート エンドポイントを作成する方法を確認します](./tutorial-private-endpoint-sql-portal.md)      |
 |Azure Cosmos DB|  すべてのパブリック リージョン<br/> すべての Government リージョン</br> すべての中国リージョン | |GA <br/> [Cosmos DB のプライベート エンドポイントを作成する方法を確認します。](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン     | General Purpose とメモリ最適化の価格レベルでサポートされます | GA <br/> [Azure Database for PostgreSQL のプライベート エンドポイントを作成する方法を確認します。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン      |  | GA <br/> [Azure Database for MySQL のプライベート エンドポイントを作成する方法を確認します。](../mysql/concepts-data-access-security-private-link.md)     |

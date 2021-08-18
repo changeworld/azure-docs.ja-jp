@@ -8,16 +8,16 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 1ed37ebd798f7ebef59ea48ce7e2084b331d2bba
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ed43f73de5296a465d1878647a80135aa95c065a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065414"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724270"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Open Datasets から Azure Machine Learning データセットを作成する
 
-この記事では、[Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) データセットと [Azure Open Datasets](./index.yml) を使用して、ローカルまたはリモートの機械学習の実験にキュレーションされたエンリッチメント データを取り込む方法について説明します。 
+この記事では、[Azure Machine Learning](../machine-learning/overview-what-is-azure-machine-learning.md) データセットと [Azure Open Datasets](./index.yml) を使用して、ローカルまたはリモートの機械学習の実験にキュレーションされたエンリッチメント データを取り込む方法について説明します。 
 
 [Azure Machine Learning データセット](../machine-learning/how-to-create-register-datasets.md)を作成すると、データ ソースの場所への参照とそのメタデータのコピーを作成できます。 データセットは遅延評価され、データは既存の場所に残るため:
 * 追加のストレージ コストは発生しません。
@@ -26,7 +26,7 @@ ms.locfileid: "106065414"
 
 Azure Machine Learning のデータ アクセス ワークフロー全体におけるデータ セットの位置付けの詳細については、[データへの安全なアクセス](../machine-learning/concept-data.md#data-workflow)に関するページを参照してください。
 
-Azure Open Datasets は、シナリオ固有の機能を追加して予測ソリューションを強化し、精度を向上させるために使用できる、キュレーションされたパブリック データセットです。 機械学習モデルのトレーニングに役立つパブリック ドメイン データについては、[Open Datasets カタログ](https://azure.microsoft.com/en-in/services/open-datasets/catalog/)を参照してください。次に例を示します。
+Azure Open Datasets は、シナリオ固有の機能を追加して予測ソリューションを強化し、精度を向上させるために使用できる、キュレーションされたパブリック データセットです。 機械学習モデルのトレーニングに役立つパブリック ドメイン データについては、[Open Datasets カタログ](https://azure.microsoft.com/services/open-datasets/catalog/)を参照してください。次に例を示します。
 
 * [気象](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [国勢調査](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)

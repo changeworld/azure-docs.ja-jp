@@ -7,13 +7,12 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: 689c1fc223a7853ad63c5187eccd503767cdb897
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 02c3dde025ccd8bb02b3ba5535a21cacfa8e6dbe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760807"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732890"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central の UI をカスタマイズする
 
@@ -76,4 +75,4 @@ ms.locfileid: "108760807"
 ここでは、IoT Central アプリケーションの UI をカスタマイズする方法について説明しました。推奨される次の手順は以下のとおりです。
 
 - [アプリケーションを管理する](./howto-administer.md)
-- [ダッシュボードへのタイルの追加](howto-add-tiles-to-your-dashboard.md)
+- [ダッシュボードへのタイルの追加](howto-manage-dashboards.md)

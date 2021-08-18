@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9df8679079d4d3496ceeff4ac8a4acd9142ba867
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6b823fbcc124a67980fcd1f0440ae107de01fc20
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206567"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690409"
 ---
 # <a name="secure-group-managed-service-accounts"></a>グループ管理サービス アカウントをセキュリティで保護する
 
@@ -95,7 +95,7 @@ Get-ADServiceAccount -Filter *
 
 # To filter results to only gMSAs:
 
-Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount"}
+Get-ADServiceAccount –Filter * | where-object {$_.ObjectClass -eq "msDS-GroupManagedServiceAccount"}
 ```
 
 ## <a name="manage-gmsas"></a>gMSA を管理する

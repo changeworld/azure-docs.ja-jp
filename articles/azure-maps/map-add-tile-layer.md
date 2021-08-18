@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: e0fda77be23f6ea16d5e64b5d4796813c53f0e94
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c28eb1bdbb0069a831f397150d6479380df8b3a3
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608104"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665160"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 
@@ -69,7 +69,7 @@ Web マッピング サービス (WMTS) は、Open Geospatial Consortium (OGC) �
 
 <br/>
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="WMS タイル レイヤー" src="https://codepen.io/azuremaps/embed/BapjZqr?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="WMS タイル レイヤー" src="https://codepen.io/azuremaps/embed/BapjZqr?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/BapjZqr'>WMS タイル レイヤー</a>」Pen を表示します。
 </iframe>
 

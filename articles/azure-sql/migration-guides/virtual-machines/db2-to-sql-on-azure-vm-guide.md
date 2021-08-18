@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: chadam
 ms.date: 05/14/2021
-ms.openlocfilehash: ebe8c40f6e86c96fb4af49d261ce00d2364d0180
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d82d423051af6a0cea8ab8b8fa5646ee80accf51
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957672"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746617"
 ---
 # <a name="migration-guide-ibm-db2-to-sql-server-on-azure-vm"></a>移行ガイド: IBM Db2 から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -148,7 +148,7 @@ SSMA for Db2 を使用して、データベース オブジェクトとデータ
 
 |Asset  |説明  |
 |---------|---------|
-|[データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
+|[データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
 |[Db2 zOS データ資産の検出および評価パッケージ](https://www.microsoft.com/download/details.aspx?id=103108)|データベース上で SQL スクリプトを実行した後、結果をファイル システム上のファイルにエクスポートできます。 スプレッドシートなど、外部ツールで結果を取り込めるように、\*.csv などの複数のファイル形式がサポートされています。 この方法を使用すると、ワークベンチをインストールしていないチームと結果を簡単に共有することができます。|
 |[IBM Db2 LUW インベントリ スクリプトと成果物](https://www.microsoft.com/download/details.aspx?id=103109)|この資産には、IBM Db2 LUW バージョン 11.1 システム テーブルを照会する SQL クエリが含まれます。このクエリでは、スキーマおよびオブジェクトの種類ごとのオブジェクトの数、各スキーマの "生データ" の概算値、および各スキーマのテーブルのサイズを取得し、結果を CSV 形式で格納します。|
 |[IBM Db2 から SQL Server へのデータベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|データベース比較ユーティリティは、ソースおよびターゲット プラットフォームの両方でデータが同一であることを確認するために使用できる Windows コンソール アプリケーションです。 このツールを使用すると、すべての、または選択したテーブル、行、および列内の行または列レベルまでデータを効率的に比較できます。|

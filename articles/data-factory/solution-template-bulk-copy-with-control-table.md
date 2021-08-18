@@ -4,15 +4,16 @@ description: Azure Data Factory で、ソース テーブルのパーティシ�
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: eed7a304bdd57846cd038cc9bf9a67e8150ca505
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba4d84a6d3eda01f3d9192aef521d7d45a811083
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392461"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737010"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>制御テーブルを使用してデータベースから一括コピーを行う
 

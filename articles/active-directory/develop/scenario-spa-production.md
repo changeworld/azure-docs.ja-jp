@@ -3,21 +3,21 @@ title: シングルページ アプリを運用環境に移行する
 titleSuffix: Microsoft identity platform
 description: シングルページ アプリケーションを構築する方法について説明します (運用環境への移行)
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: mtillman
+ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 48f9b90ef72d79510747cba82a59386d4f3a4372
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4f4821dc48650c14b6d9736a7238dc44c500c259
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075171"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357555"
 ---
 # <a name="single-page-application-move-to-production"></a>シングルページ アプリケーション：運用環境に移行する
 
@@ -27,7 +27,7 @@ Web API を呼び出すためにトークンを取得する方法について説
 
 ## <a name="deploy-your-app"></a>アプリのデプロイ
 
-Azure Storage サービスと Azure App Service でそれぞれ SPA プロジェクトおよび Web API プロジェクトをデプロイする方法については、[デプロイのサンプル](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3)を確認してください。 
+Azure Storage サービスと Azure App Service でそれぞれ SPA プロジェクトおよび Web API プロジェクトをデプロイする方法については、[デプロイのサンプル](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3)を確認してください。
 
 ## <a name="code-samples"></a>コード サンプル
 

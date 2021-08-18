@@ -3,16 +3,16 @@ title: Azure IoT 用語集 | Microsoft Docs
 description: 開発者ガイド - Azure IoT の記事で使用される一般的な用語の一部について説明した用語集です。
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-hub
-services: iot-hub
+ms.service: iot-fundamentals
+services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 3034f117f8efa383a9f7a5e768e8d5627ea32099
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 91604758ad2e53b3715a5b5c746959b3fe124ba6
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668407"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403399"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 用語集
 
@@ -182,7 +182,7 @@ IoT プラグ アンド プレイ デバイス認定プログラムは、IoT プ
 
 ### <a name="device-model"></a>デバイスのモデル
 
-デバイス モデルは、[Digital Twins Definition Language](#digital-twins-definition-language-dtdl) を使用して IoT プラグ アンド プレイ デバイスの機能を記述する[モデル](#model)の一種です。 単純なデバイス モデルでは、デバイスの機能を記述するために 1 つのインターフェイスが使用されます。 より複雑なデバイス モデルには複数のコンポーネントが含まれており、それぞれに一連の機能が記述されています。 詳細については、[モデル内の IoT プラグ アンド プレイ コンポーネント](../iot-pnp/concepts-modeling-guide.md)に関する記事を参照してください。
+デバイス モデルは、[Digital Twins Definition Language](#digital-twins-definition-language-dtdl) を使用して IoT プラグ アンド プレイ デバイスの機能を記述する[モデル](#model)の一種です。 単純なデバイス モデルでは、デバイスの機能を記述するために 1 つのインターフェイスが使用されます。 より複雑なデバイス モデルには複数のコンポーネントが含まれており、それぞれに一連の機能が記述されています。 詳細については、[モデル内の IoT プラグ アンド プレイ コンポーネント](../iot-develop/concepts-modeling-guide.md)に関する記事を参照してください。
 
 ### <a name="device-modeling"></a>デバイス モデリング
 
@@ -214,7 +214,7 @@ IoT Central では、[デバイス テンプレート](../iot-central/core/conce
 
 ### <a name="digital-twin"></a>デジタル ツイン
 
-デジタル ツインは、物理オブジェクトを表すデジタル データのコレクションです。 物理オブジェクトでの変更は、デジタル ツインに反映されます。 状況によっては、デジタル ツインを使用して物理オブジェクトを操作できます。 [Azure Digital Twins サービス](../digital-twins/index.yml)では、[Digital Twins Definition Language (DTDL)](#digital-twins-definition-language-dtdl) で記述された[モデル](#model)を使用して、物理デバイスのデジタル ツインまたはそれ以上のレベルの抽象的なビジネス概念を表現することで、クラウドベースの多様なデジタル ツイン ソリューションを実現します。 [IoT プラグ アンド プレイ](../iot-pnp/index.yml) デバイスには、DTDL [デバイス モデル](#device-model)によって記述されたデジタル ツインがあります。
+デジタル ツインは、物理オブジェクトを表すデジタル データのコレクションです。 物理オブジェクトでの変更は、デジタル ツインに反映されます。 状況によっては、デジタル ツインを使用して物理オブジェクトを操作できます。 [Azure Digital Twins サービス](../digital-twins/index.yml)では、[Digital Twins Definition Language (DTDL)](#digital-twins-definition-language-dtdl) で記述された[モデル](#model)を使用して、物理デバイスのデジタル ツインまたはそれ以上のレベルの抽象的なビジネス概念を表現することで、クラウドベースの多様なデジタル ツイン ソリューションを実現します。 [IoT プラグ アンド プレイ](../iot-develop/index.yml) デバイスには、DTDL [デバイス モデル](#device-model)によって記述されたデジタル ツインがあります。
 
 ### <a name="digital-twin-change-events"></a>デジタル ツインの変更イベント
 
@@ -378,7 +378,7 @@ Azure IoT ソリューション アクセラレータは、複数の Azure サ�
 
 [IoT Hub](#iot-hub) では、[ジョブ](../iot-hub/iot-hub-devguide-jobs.md)を使用して、IoT hub に登録されている一連のデバイスでアクティビティのスケジュール設定と追跡を行うことができます。 アクティビティには、デバイス ツインの[必要なプロパティ](#desired-properties)の更新、デバイス ツインの[タグ](#tags)の更新、および[ダイレクト メソッド](#direct-method)の呼び出しが含まれます。 IoT Hub は、ジョブを使用して [ID レジストリ](#identity-registry)との間で[インポートおよびエクスポート](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities)も行います。
 
-IoT Central で[ジョブ](../iot-central/core/howto-run-a-job.md) を使用すると、プロパティを設定してコマンドを呼び出すことによって、接続されているデバイスを一括して管理できます。 また、IoT Central ジョブを使用すると、[クラウド プロパティ](#cloud-property)を一括で更新することもできます。
+IoT Central で[ジョブ](../iot-central/core/howto-manage-devices-in-bulk.md) を使用すると、プロパティを設定してコマンドを呼び出すことによって、接続されているデバイスを一括して管理できます。 また、IoT Central ジョブを使用すると、[クラウド プロパティ](#cloud-property)を一括で更新することもできます。
 
 ## <a name="l"></a>L
 
@@ -400,7 +400,7 @@ Azure Digital Twins では、データ項目 (デジタル ツイン、リレー
 
 モデルは、物理環境におけるエンティティのタイプ (そのプロパティやテレメトリ、コンポーネント、場合によってはその他の情報も含む) を定義します。 モデルを使用して、そのタイプの特定の物理オブジェクトを表す[デジタル ツイン](#digital-twin)が作成されます。 モデルは、[Digital Twins Definition Language](#digital-twins-definition-language-dtdl) で記述されます。
 
-[Azure Digital Twins サービス](../digital-twins/index.yml)では、デバイスまたはそれ以上のレベルの抽象的なビジネス概念をモデルで定義することができます。 [IoT プラグ アンド プレイ](../iot-pnp/index.yml)では、[デバイス モデル](#device-model)を使用して、デバイスが具体的に記述されます。
+[Azure Digital Twins サービス](../digital-twins/index.yml)では、デバイスまたはそれ以上のレベルの抽象的なビジネス概念をモデルで定義することができます。 [IoT プラグ アンド プレイ](../iot-develop/index.yml)では、[デバイス モデル](#device-model)を使用して、デバイスが具体的に記述されます。
 
 ### <a name="model-id"></a>モデル ID
 

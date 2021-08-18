@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 4bc901f441de060bac3cd7d61f883c9d4e572f80
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 395a1f320ac46d56f8de06e81f7d7721000895c4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771579"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092367"
 ---
 # <a name="sizes-for-cloud-services-classic"></a>Cloud Services (クラシック) のサイズ
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 03099ad5282f526b83bdb8ee187ef8fd6238e21e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: eb8e18f25f1cc6413744dbc2d15f14f29da10543
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460720"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731482"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA の共有を管理する 
 
@@ -54,7 +54,7 @@ ms.locfileid: "110460720"
 5. ドロップダウン リストのブロック BLOB、ページ BLOB、またはファイルから **[ストレージ サービス]** を選択します。 選択されるサービスの種類は、Azure に存在するデータの形式によって変わります。 たとえば、このインスタンスでは、ブロック BLOB として Azure にデータを配置するため、 **[ブロック BLOB]** を選択します。 **[ページ BLOB]** を選択する場合は、データに 512 バイトが確実に割り当てられているようにする必要があります。 常に 512 バイトが割り当てられる VHD または VHDX には **[ページ BLOB]** を使用します。
 
    > [!IMPORTANT]
-   > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
+   > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/immutable-policy-configure-version-scope.md)」を参照してください。
 
 6. この手順は、SMB 共有と NFS 共有のどちらを作成するかに応じて変わります。
    - **SMB 共有を作成する場合** - **[すべての権限を持つローカル ユーザー]** フィールドで、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、**ユーザー名**、**パスワード** を指定し、パスワードの確認を入力します。 これで、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
@@ -72,7 +72,7 @@ ms.locfileid: "110460720"
 
 ## <a name="add-a-local-share"></a>ローカル共有を追加する
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[クラウド ストレージ ゲートウェイ] > [共有]** の順に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
 
    ![[共有の追加] を選択する 2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "110460720"
 
 Azure Stack Edge デバイス上でコンピューティングを構成する前に共有を作成した場合、その共有をマウントする必要があります。 共有をマウントするには、次の手順を行います。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[クラウド ストレージ ゲートウェイ] > [共有]** の順に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に **無効** と表示されます。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に **無効** と表示されます。
 
    ![共有を選択する 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 

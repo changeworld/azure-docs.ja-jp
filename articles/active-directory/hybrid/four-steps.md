@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eabb6e657db7ea39bf0fb746bb596f496bc5efaf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e24ea1fa02a70e63c8eaab21acff1d1c7b625e9a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958313"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727723"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -117,7 +117,7 @@ Azure AD でオンプレミス ディレクトリ オブジェクトのクラウ
 
 PHS または PTA のどちらを選択する場合も、[シームレス シングル サインオン](./how-to-connect-sso.md)を忘れずに有効にしてください。これにより、社内のネットワークで Windows 7 と 8 のデバイスを使用しているときに、ユーザーがアプリにユーザー名とパスワードを繰り返し入力せずにクラウド アプリにアクセスできるようになります。 シングル サインオンを使用しない場合、ユーザーはアプリケーション固有のパスワードを覚えて、各アプリケーションにサインインする必要があります。 同様に、IT スタッフは、Microsoft 365、Box、Salesforce などのアプリケーションごとにユーザー アカウントを作成し、更新する必要があります。 ユーザーはパスワードを覚えておくことに加え、各アプリケーションにサインインするのに時間を費やす必要があります。 標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。
 
-既に AD FS または別のオンプレミス認証プロバイダーを使用している組織では、ID プロバイダーを Azure AD に移行することで、複雑さが軽減されて、可用性が向上します。 フェデレーションを使用する具体的なユース ケースがない限りは、フェデレーション認証から、PHS とシームレス SSO または PTA とシームレス SSO のいずれかに移行して、オンプレミスのフットプリントの削減と、向上したユーザー エクスペリエンスと共にクラウドで提供される柔軟性の利点を得られるようにすることをお勧めします。 詳細については、「[Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する](./plan-migrate-adfs-password-hash-sync.md)」を参照してください。
+既に AD FS または別のオンプレミス認証プロバイダーを使用している組織では、ID プロバイダーを Azure AD に移行することで、複雑さが軽減されて、可用性が向上します。 フェデレーションを使用する具体的なユース ケースがない限りは、フェデレーション認証から、PHS とシームレス SSO または PTA とシームレス SSO のいずれかに移行して、オンプレミスのフットプリントの削減と、向上したユーザー エクスペリエンスと共にクラウドで提供される柔軟性の利点を得られるようにすることをお勧めします。 詳細については、「[Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する](./migrate-from-federation-to-cloud-authentication.md)」を参照してください。
 
 ### <a name="enable-automatic-deprovisioning-of-accounts"></a>アカウントの自動プロビジョニング解除を有効にする
 

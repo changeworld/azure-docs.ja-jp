@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 68b7300219953b0f80bd40522c3f4ec961ec5262
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 5c57b5574df3da9d581aafb49e9ba69b1b032509
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613546"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653510"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -150,7 +150,7 @@ MSAL は、次のものを初めとする多くのアプリケーション シ�
 
 | 必要な要求ヘッダー | 説明 |
 | --- | --- |
-| 承認 | Azure Time Series Insights で認証を行うには、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)内で渡す必要があります。 |
+| 承認 | Azure Time Series Insights で認証を行うには、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2020-12-01/authorization-server/create-or-update)内で渡す必要があります。 |
 
 > [!TIP]
 > チャートやグラフと共に [JavaScript クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用して、プログラムによって Azure Time Series Insights API で認証を行う方法については、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://tsiclientsample.azurewebsites.net/)に関する記事を参照してください。

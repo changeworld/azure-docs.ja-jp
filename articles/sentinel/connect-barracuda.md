@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: e1462246b95da67591cbdfd1f9ed819220de5764
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 187df87b841fdab877181ed6c381bd0d018660b4
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98633063"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252675"
 ---
 # <a name="connect-your-barracuda-waf-appliance"></a>Barracuda WAF アプライアンスの接続 
 
 Barracuda Web Application Firewall (WAF) コネクタを使用すると、Azure Sentinel に Barracuda のログを簡単に接続でき、ダッシュ ボードの表示、カスタム アラートの作成、および調査の改善も行うことができます。 これにより、組織のネットワークに関するより詳しい分析情報が得られ、セキュリティ運用機能が向上します。 Azure Sentinel では、**Barracuda** と Log Analytics エージェントの間のネイティブ統合を活用して、シームレスな統合を提供します。 
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
@@ -49,8 +51,6 @@ Barracuda Web アプリケーション ファイアウォールでは、Log Anal
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Barracuda アプライアンスを Azure Sentinel に接続する方法について学びました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-
-
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

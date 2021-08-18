@@ -8,12 +8,12 @@ author: mgreenegit
 ms.author: migreene
 ms.date: 04/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d189cf54edfaca13b801e786254eec9fc5aa96f6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e12bcc3a1c1589baf5ab8fcc0f2b3e264d1953eb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662833"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751665"
 ---
 # <a name="overview-of-the-azure-policy-guest-configuration-extension"></a>Azure Policy ゲスト構成拡張機能の概要
 
@@ -54,7 +54,7 @@ ms.locfileid: "110662833"
 
 ID 要件を含め、最新バージョンの拡張機能を大規模にデプロイするには、以下の Azure Policy を[割り当てます](../../governance/policy/assign-policy-portal.md)。
 
-[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json)。
+[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json)。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -101,7 +101,7 @@ Linux 用の拡張機能をデプロイするには、次のようにします�
   "properties": {
     "publisher": "Microsoft.GuestConfiguration",
     "type": "ConfigurationforLinux",
-    "typeHandlerVersion": "1.0"
+    "typeHandlerVersion": "1.0",
     "autoUpgradeMinorVersion": true,
     "settings": {},
     "protectedSettings": {}
@@ -123,7 +123,7 @@ Windows 用の拡張機能をデプロイするには、次のようにします
   "properties": {
     "publisher": "Microsoft.GuestConfiguration",
     "type": "ConfigurationforWindows",
-    "typeHandlerVersion": "1.0"
+    "typeHandlerVersion": "1.0",
     "autoUpgradeMinorVersion": true,
     "settings": {},
     "protectedSettings": {}
@@ -137,11 +137,12 @@ Linux 用の拡張機能をデプロイするには、次のようにします�
 
 ```terraform
 resource "azurerm_virtual_machine_extension" "gc" {
-  name                  = "AzurePolicyforLinux"
-  virtual_machine_id    = "myVMID"
-  publisher             = "Microsoft.GuestConfiguration"
-  type                  = "ConfigurationforLinux"
-  type_handler_version  = "1.0"
+  name                       = "AzurePolicyforLinux"
+  virtual_machine_id         = "myVMID"
+  publisher                  = "Microsoft.GuestConfiguration"
+  type                       = "ConfigurationforLinux"
+  type_handler_version       = "1.0"
+  auto_upgrade_minor_version = "true"
 }
 ```
 
@@ -149,11 +150,12 @@ Windows 用の拡張機能をデプロイするには、次のようにします
 
 ```terraform
 resource "azurerm_virtual_machine_extension" "gc" {
-  name                  = "AzurePolicyforWindows"
-  virtual_machine_id    = "myVMID"
-  publisher             = "Microsoft.GuestConfiguration"
-  type                  = "ConfigurationforWindows"
-  type_handler_version  = "1.0"
+  name                       = "AzurePolicyforWindows"
+  virtual_machine_id         = "myVMID"
+  publisher                  = "Microsoft.GuestConfiguration"
+  type                       = "ConfigurationforWindows"
+  type_handler_version       = "1.0"
+  auto_upgrade_minor_version = "true"
 }
 ```
 

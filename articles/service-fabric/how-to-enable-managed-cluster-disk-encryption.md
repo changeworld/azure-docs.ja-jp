@@ -4,12 +4,12 @@ description: ARM テンプレートを使用して、Windows の Azure Service F
 ms.topic: how-to
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 800ebb11c1d191ca68222b1fa473cebbca0e8912
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2b10c5fbade903ec9eb5786fc33eaaddff212956
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671325"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284126"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-managed-cluster-nodes"></a>Service Fabric 管理対象クラスター ノードのディスク暗号化を有効にする
 
@@ -37,7 +37,7 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 
 ### <a name="create-key-vault-with-disk-encryption-enabled"></a>ディスク暗号化を有効にして Key Vault を作成する
 
-ディスク暗号化用の新しい Key Vault を作成するには、次のコマンドを実行します。 Key Vault のリージョンが [Service Fabric 管理対象クラスターでサポート](faq-managed-cluster.md#what-regions-are-supported)されていて、ご自身のクラスターと同じリージョンにあることを確認します。
+ディスク暗号化用の新しい Key Vault を作成するには、次のコマンドを実行します。 Key Vault のリージョンが [Service Fabric 管理対象クラスターでサポート](./faq-managed-cluster.yml#what-regions-are-supported-)されていて、ご自身のクラスターと同じリージョンにあることを確認します。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

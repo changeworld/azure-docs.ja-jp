@@ -3,13 +3,13 @@ title: Azure Video Analyzer の用語
 description: この記事では、Azure Video Analyzer の用語について概説します。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 05/10/2021
-ms.openlocfilehash: b29e2c788654a5445c0e14c00ad64690c405b003
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 59ed8f85f1196328b6ab477faae77ed35d054223
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387816"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601866"
 ---
 # <a name="azure-video-analyzer-terminology"></a>Azure Video Analyzer の用語
 

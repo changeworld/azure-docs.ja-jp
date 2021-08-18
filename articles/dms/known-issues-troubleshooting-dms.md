@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: ce53e8a77186f96801879e5c9d8f8c65809470d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5c10b4830a1bba5ff4db07b81ee447e5d33b731
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639792"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750833"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 
@@ -45,16 +45,6 @@ Azure SQL Database または Azure SQL Managed Instance に移動するための
 | 原因         | 解決方法 |
 | ------------- | ------------- |
 | このエラーは、1 つの移行アクティビティに対して 4 つを超えるデータベースを選択したときに表示されます。 現在、各移行アクティビティのデータベース数は 4 つまでに制限されます。 | 移行アクティビティごとに、4 つ以下のデータベースを選択してください。 4 つを超えるデータベースを並列で移行する必要がある場合は、Azure Database Migration Service のインスタンスをもう 1 つプロビジョニングします。 現在、各サブスクリプションでサポートされる Azure Database Migration Service インスタンスは最大 2 つです。<br><br> |
-
-## <a name="errors-for-mysql-migration-to-azure-mysql-with-recovery-failures"></a>MySQL から Azure MySQL への移行で回復に失敗した場合のエラー
-
-Azure Database Migration Service を使用して MySQL から Azure Database for MySQL に移行すると、移行アクティビティが次のエラーで失敗します。
-
-* **Error**: Database migration error - Task 'TaskID' was suspended due to [n] successive recovery failures. (データベースの移行エラー - タスク 'TaskID' は、[n] 回連続で回復に失敗したため中断されました。)
-
-| 原因         | 解決方法 |
-| ------------- | ------------- |
-| このエラーは、移行を行っているユーザーに ReplicationAdmin ロール、または REPLICATION CLIENT、REPLICATION REPLICA、SUPER (MySQL 5.6.6 より前のバージョン) の特権がない場合に発生することがあります。<br><br><br><br><br><br><br><br><br><br><br><br><br> | ユーザー アカウントの[前提条件の特権](./tutorial-mysql-azure-mysql-online.md#prerequisites)が Azure Database for MySQL インスタンスで正確に構成されていることを確認してください。 たとえば、必要な特権を持つ "migrateuser" という名前のユーザーを作成するには、次の手順に従います。<br>1.CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2."secret" で特定された "migrateuser'@'%'" に、db_name.* のすべての権限を付与します; //他のデータベースにもアクセス権を付与するには、この手順を繰り返します <br>3. *.* でレプリケーション スレーブを付与します to 'migrateuser'@'%' identified by 'secret';<br>4. *.* でレプリケーション クライアントを付与します to 'migrateuser'@'%' identified by 'secret';<br>5.権限をフラッシュします |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure Database Migration Service を停止しようとしたときのエラー
 
@@ -127,7 +117,6 @@ Azure Database Migration Service を、名前付きインスタンスまたは�
 ## <a name="additional-known-issues"></a>その他の既知の問題
 
 * [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](./index.yml)
-* [Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-mysql-online.md)
 * [Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>次のステップ
@@ -135,4 +124,4 @@ Azure Database Migration Service を、名前付きインスタンスまたは�
 * [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration#data_migration) に関する記事を確認する。
 * 「[Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](../mysql/howto-server-parameters.md)」を確認する。
 * 「[Azure Database Migration Service を使用するための前提条件の概要](./pre-reqs.md)」を確認する。
-* 「[Azure Database Migration Service の使用に関する FAQ](./faq.md)」を確認する。
+* 「[Azure Database Migration Service の使用に関する FAQ](./faq.yml)」を確認する。

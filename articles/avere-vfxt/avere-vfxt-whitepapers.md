@@ -6,12 +6,12 @@ author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 485374e50f86ad1c4e9fa451d046b99d3987e257
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76152971"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113650949"
 ---
 # <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure vFXT for Azure のホワイトペーパーとその他のリソース
 
@@ -38,4 +38,4 @@ ms.locfileid: "76152971"
 ## <a name="next-steps"></a>次のステップ
 
 * Avere vFXT for Azure デプロイの計画を続行するには、「[Avere vFXT システムの計画](avere-vfxt-deploy-plan.md)」をお読みください。
-* 特定の質問に対する回答については、「[Avere vFXT for Azure の FAQ](avere-vfxt-faq.md)」をご覧ください。
+* 特定の質問に対する回答については、「[Avere vFXT for Azure の FAQ](avere-vfxt-faq.yml)」をご覧ください。

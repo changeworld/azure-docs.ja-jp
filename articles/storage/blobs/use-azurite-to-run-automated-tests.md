@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: ikivanc
-ms.openlocfilehash: c4e8a11e0c46cb9a138a1a66060d9fdcc72c192e
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7ad2fb4a808f2fef794a904287c25bd0643a085f
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111120"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378603"
 ---
 # <a name="run-automated-tests-by-using-azurite"></a>Azurite を使用して自動テストを実行する
 
@@ -61,7 +61,7 @@ Azurite ストレージ エミュレーターを使用して Azure Blob Storage 
    python -m venv .venv
    ```
 
-1. コンテナーを作成し、環境変数を初期化します。 テストを生成するには、[PyTest](https://docs.pytest.org/) [conftest.py](https://docs.pytest.org/en/2.1.0/plugins.html) ファイルを使用します。 以下に、conftest.py ファイルの例を示します。
+1. コンテナーを作成し、環境変数を初期化します。 テストを生成するには、[PyTest](https://docs.pytest.org/) [conftest.py](https://docs.pytest.org/en/latest/how-to/writing_plugins.html#conftest-py-plugins) ファイルを使用します。 以下に、conftest.py ファイルの例を示します。
 
    ```python
    from azure.storage.blob import BlobServiceClient

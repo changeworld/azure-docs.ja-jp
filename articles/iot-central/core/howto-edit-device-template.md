@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: fd6fb0cebe33d8511185c396c95faa8927941e6e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5108949527f0f63cd6aa7048eccf83c95927c8bd
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110104582"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113516389"
 ---
 # <a name="edit-an-existing-device-template"></a>既存のデバイス テンプレートを編集する
 
@@ -116,6 +116,6 @@ IoT Central UI でこの情報を表示するには、デバイス テンプレ�
 
 ## <a name="next-steps"></a>次のステップ
 
-オペレーターまたはソリューション ビルダーの場合は、次の手順として、[デバイスを管理する方法](./howto-manage-devices.md)を学習することをお勧めします。
+オペレーターまたはソリューション ビルダーの場合は、次の手順として、[デバイスを管理する方法](./howto-manage-devices-individually.md)を学習することをお勧めします。
 
 デバイス開発者にお勧めする次の手順は、[Azure IoT Edge デバイスと Azure IoT Central](./concepts-iot-edge.md) に関する記事を読むことです。

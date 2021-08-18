@@ -4,15 +4,16 @@ description: Azure Data Factory を使用してオンプレミスの Hadoop ク�
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 9959a37d9b68d756437a3b4f0d75a2d63385758e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f0242840e856a1ab78f6f6c5b89db3794ee206b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100367794"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726884"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory を使用してオンプレミスの Hadoop クラスターから Azure Storage にデータを移行する 
 

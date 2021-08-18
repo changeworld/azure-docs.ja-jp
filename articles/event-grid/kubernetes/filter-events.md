@@ -6,12 +6,12 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 814c703a2db23088fc959501d3f0266ff19b6f49
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e4dbdbb2f46546391b6e749a94bfa655bb9de45e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388208"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417345"
 ---
 # <a name="event-grid-on-kubernetes---event-filtering-for-subscriptions"></a>Kubernetes 上の Event Grid - サブスクリプションのイベント フィルター処理
 Kubernetes 上の Event Grid では、json ペイロードの任意のプロパティに対してフィルターを指定できます。 これらのフィルターは一連の AND 条件としてモデル化されており、外側の各条件には省略可能な内側の OR 条件があります。 AND 条件ごとに、次の値を指定します。
@@ -20,7 +20,7 @@ Kubernetes 上の Event Grid では、json ペイロードの任意のプロパ�
 - Key - フィルターを適用するプロパティへの json パス。
 - Value - フィルターの実行対象となる参照値 (または) Values - フィルターの実行対象となる一連の参照値。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 

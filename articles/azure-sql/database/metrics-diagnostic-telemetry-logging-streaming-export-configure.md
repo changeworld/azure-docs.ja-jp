@@ -5,18 +5,17 @@ services: sql-database
 ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019, devx-track-azurepowershell
-ms.devlang: sqldbrb=2
 ms.topic: how-to
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
 ms.date: 04/06/2020
-ms.openlocfilehash: 0c719eb8cec894fda35dd81aa65668feedd72e65
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 058e602568083471cc5e0053dea0ed77b0b9474f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590650"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741251"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

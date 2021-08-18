@@ -9,12 +9,13 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 99be94db2dd904db09b8b265b74442d5ba31b629
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9cec61df061c7a504da412851349064273507173
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845602"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678858"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault と DigiCert 証明機関の統合
 

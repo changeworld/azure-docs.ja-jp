@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: yelevin
-ms.openlocfilehash: 84846aacb435cfef861acf046b7f623697445da2
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 43af18f508a0e9b4239dedb793a3de9565ee5f03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059654"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747128"
 ---
 # <a name="work-with-anomaly-detection-analytics-rules-in-azure-sentinel"></a>Azure Sentinel で異常検出分析ルールを使用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "112059654"
 
 ## <a name="view-soc-ml-anomaly-rule-templates"></a>SOC-ML 異常ルール テンプレートを表示する
 
-Azure Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミディエイト値にすぐに使用できる[組み込みの異常テンプレート](tutorial-detect-threats-built-in.md#anomaly)が提供されます。 これらの異常テンプレートは、数千のデータ ソースと数百万のイベントを使用して堅牢になるように開発されましたが、この機能を使用すると、ユーザー インターフェイス内で異常のしきい値とパラメーターを簡単に変更することもできます。 異常ルールによって異常が生成 ( **[ログ]** セクションの **[異常]** テーブルに表示) されるようにするには、事前にアクティブにする必要があります。
+Azure Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミディエイト値にすぐに使用できる[組み込みの異常テンプレート](detect-threats-built-in.md#anomaly)が提供されます。 これらの異常テンプレートは、数千のデータ ソースと数百万のイベントを使用して堅牢になるように開発されましたが、この機能を使用すると、ユーザー インターフェイス内で異常のしきい値とパラメーターを簡単に変更することもできます。 異常ルールによって異常が生成 ( **[ログ]** セクションの **[異常]** テーブルに表示) されるようにするには、事前にアクティブにする必要があります。
 
 1. Azure Sentinel のナビゲーション メニューから **[分析]** を選択します。
 
@@ -150,4 +150,4 @@ Azure Sentinel の [SOC-ML 異常機能](soc-ml-anomalies.md)により、イミ�
 このドキュメントでは、Azure Sentinel で SOC-ML 異常検出分析ルールを使用する方法を学習しました。
 
 - [SOC-ML](soc-ml-anomalies.md) に関する背景情報をさらに取得します。
-- その他の[分析ルールの種類](tutorial-detect-threats-built-in.md)を確認します。
+- その他の[分析ルールの種類](detect-threats-built-in.md)を確認します。

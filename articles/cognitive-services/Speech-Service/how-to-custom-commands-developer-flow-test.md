@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d97ab241120ddc4c8e7434591b866312ea7708ae
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: fa9f9ec8d7a8f60d6c72cb6c4f669ef511cc0068
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890116"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456879"
 ---
 # <a name="test-your-custom-commands-application"></a>カスタム コマンド アプリケーションをテストする
 
@@ -27,7 +27,7 @@ ms.locfileid: "111890116"
 ポータルでのテストは、カスタム コマンド アプリケーションが期待どおりに動作するかどうかを確認する最もシンプルかつ迅速な方法です。 アプリが正常にトレーニングされたら、[`Test`] ボタンをクリックしてテストを開始します。
 
 > [!div class="mx-imgBorder"]
-> ![ポータルでのテスト](media/custom-commands/create-basic-test-chat.png)
+> ![ポータルでのテスト](media/custom-commands/create-basic-test-chat-no-mic.png)
 
 ## <a name="test-with-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントを使用してテストする
 

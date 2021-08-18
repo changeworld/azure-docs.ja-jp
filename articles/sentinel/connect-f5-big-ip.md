@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 17c31bbe54326962c26ab53f702cbd28d1e36c6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aae69e8ff7cb0c3002bb9333f6d7685b9e247a28
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100092793"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254113"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP アプライアンスを接続する 
 
 F5 BIG-IP コネクタを使用すると、すべての F5 BIG-IP のログを簡単に Azure Sentinel に接続して、ワークブックの表示、カスタム アラートの作成、調査の改善を行うことができます。 これにより、組織のネットワークに関するより詳しい分析情報が得られ、セキュリティ運用機能が向上します。 F5 BIG-IP と Azure Sentinel の統合には、REST API を使用します。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
@@ -48,8 +50,6 @@ F5 BIG-IP では、ログを統合して、Azure Sentinel に直接エクスポ�
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、F5 BIG IP を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-
-
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

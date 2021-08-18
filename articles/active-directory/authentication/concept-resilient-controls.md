@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/08/2020
+ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db90d49034fb61c26bf4528045d2b3f54d7a30fc
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fe5f9987cb99aa90d1452b4f442e326d4e95bcee
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963840"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687805"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -72,7 +72,7 @@ ms.locfileid: "111963840"
 5. Azure AD MFA NPS 拡張機能を使用して VPN アクセスを保護している場合は、VPN ソリューションを [SAML アプリ](../manage-apps/view-applications-portal.md)としてフェデレーションすることを検討し、以下に推奨されるようにアプリのカテゴリを決定します。 
 
 >[!NOTE]
-> リスクに基づくポリシーを使用するには、[Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
+> リスクに基づくポリシーを使用するには、[Azure AD Premium P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) ライセンスが必要です。
 
 次の例では、アプリやリソースにアクセスするユーザーに対して回復性があるアクセス制御を提供するために作成する必要があるポリシーについて説明します。 この例では、アクセス提供対象のユーザーを含むセキュリティ グループ **AppUsers**、コア管理者を含むグループ **CoreAdmins**、緊急アクセス用アカウントを含むグループ **EmergencyAccess** が必要です。
 この例のポリシー セットでは、**AppUsers** で選択されているユーザーが、信頼済みデバイスから接続している場合、または MFA などの強力な認証を提供した場合に、選択されたアプリへのアクセス権をユーザーに付与します。 緊急アカウントとコア管理者は除外されます。

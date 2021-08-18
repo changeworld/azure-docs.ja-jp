@@ -4,15 +4,15 @@ description: Microsoft Azure Marketplace レビュー チームからの Azure �
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 07/01/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 06127505c992c842bde27508b69132b62c145cf0
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 56e6de0faeeba6824f17bbe179e7c9b5421163d8
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542828"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231325"
 ---
 # <a name="handle-review-feedback-for-azure-application-offers"></a>Azure アプリケーション オファーのレビュー フィードバックの処理
 

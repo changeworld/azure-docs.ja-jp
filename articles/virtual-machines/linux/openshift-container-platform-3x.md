@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: ce3f56530a7bad6eecd4c2edd3b21debe8c75a24
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 177cbeb76433fb43094822989cfc5c6a3abfadfd
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214152"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390669"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>OpenShift Container Platform 3.11 を Azure へデプロイする
 
@@ -23,7 +23,7 @@ Azure で OpenShift Container Platform 3.11 をデプロイするには、次の
 
 - [OpenShift Container Platform のドキュメント](https://docs.openshift.com/container-platform)の手順を実行するには、事前に必要な Azure インフラストラクチャ コンポーネントを手動でデプロイする必要があります。
 - また、OpenShift Container Platform クラスターのデプロイを簡略化する既存の [Resource Manager テンプレート](https://github.com/Microsoft/openshift-container-platform/)を使用することもできます。
-- 別のオプションとして、[Azure Marketplace プラン](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)の使用があります。
+- 別のオプションとして、Azure Marketplace プランの使用があります。
 
 どのオプションでも、Red Hat サブスクリプションが必要です。 デプロイ中に、Red Hat Enterprise Linux インスタンスは Red Hat サブスクリプションに登録され、OpenShift Container Platform の資格を含むプール ID に接続されます。
 有効な Red Hat Subscription Manager (RHSM) のユーザー名、パスワード、およびプール ID があることを確認してください。 アクティブ化キー、組織 ID、およびプール ID を使用できます。 これらの情報は、 https://access.redhat.com にサインインして確認できます。

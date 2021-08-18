@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: d21a9b91a7030deb805c80034ca0515e2b226b16
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27b0841e601fb7d2eaa7712495b7440a0b886d7c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954593"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769267"
 ---
 # <a name="migrate-failover-cluster-instance-to-sql-server-on-azure-vms"></a>フェールオーバー クラスター インスタンスを Azure VM 上の SQL Server に移行する
 
@@ -379,7 +379,7 @@ SQL Server のフェールオーバー クラスター インスタンスの準�
     - [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
-    - [Azure Cost Management](../../../cost-management-billing/cloudyn/overview.md) をデプロイして、リソースの使用率と消費量を監視します。
+    - [Azure Cost Management](../../../cost-management-billing/cost-management-billing-overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 
 
 ## <a name="next-steps"></a>次のステップ

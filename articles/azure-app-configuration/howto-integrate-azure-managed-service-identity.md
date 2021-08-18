@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 2aefa7ed7ce63b1ecbe735f21d372133ba4c7825
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: ff7c2b6ced87c8254283923a9163e51f06ae6ef6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592414"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298176"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -164,9 +164,9 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
 ## <a name="deploy-your-application"></a>アプリケーションをデプロイする
 
-マネージド ID を使用するには、アプリを Azure サービスにデプロイする必要があります。 マネージド ID は、ローカルで実行されているアプリの認証には使用できません。 「[Create an ASP.NET Core app with App Configuration](./quickstart-aspnet-core-app.md) (App Configuration を使用して ASP.NET Core アプリを作成する)」クイックスタートで作成し、マネージド ID を使用するように修正した .NET Core アプリを展開するには、「[Publish your web app](/azure/app-service/quickstart-dotnetcore?tabs=netcore31&pivots=development-environment-vs#publish-your-web-app) (Web アプリを発行する)」ガイダンスに従います。
+マネージド ID を使用するには、アプリを Azure サービスにデプロイする必要があります。 マネージド ID は、ローカルで実行されているアプリの認証には使用できません。 「[Create an ASP.NET Core app with App Configuration](./quickstart-aspnet-core-app.md) (App Configuration を使用して ASP.NET Core アプリを作成する)」クイックスタートで作成し、マネージド ID を使用するように修正した .NET Core アプリを展開するには、「[Publish your web app](../app-service/quickstart-dotnetcore.md?pivots=development-environment-vs&tabs=netcore31#publish-your-web-app) (Web アプリを発行する)」ガイダンスに従います。
 
-App Service の他にも、多くの Azure サービスがマネージド ID をサポートしています。 詳細については、「[Azure リソースのマネージド ID をサポートするサービス](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)」を参照してください。
+App Service の他にも、多くの Azure サービスがマネージド ID をサポートしています。 詳細については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -2,13 +2,13 @@
 title: Azure Event Grid - パートナー イベント
 description: Azure Event Grid を使用して、サードパーティの Event Grid SaaS および PaaS パートナーから直接 Azure サービスにイベントを送信します。
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/15/2021
+ms.openlocfilehash: 5a215d8d007f411066d25d8751299ae6a73038dc
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94506148"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183990"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Azure Event Grid でのパートナー イベント (プレビュー)
 **パートナー イベント** 機能を使用すると、サードパーティの SaaS プロバイダーはそのサービスからイベントを発行でき、コンシューマーがそれらのイベントをサブスクライブできるようになります。 この機能は、[トピック](concepts.md#topics)の種類 (**パートナー トピック**) を公開することにより、ファーストパーティのエクスペリエンスをサードパーティのイベント ソースに提供します。 サブスクライバーは、このトピックに対するサブスクリプションを作成し、イベントを使用します。 また、イベントの発行元とサブスクライバーによって使用されるリソースの懸念事項と所有権を分離することによって、クリーンな Pub/Sub モデルも提供します。
@@ -48,12 +48,10 @@ ms.locfileid: "94506148"
 ## <a name="available-third-party-event-publishers"></a>利用可能なサードパーティのイベント発行元
 サードパーティのイベント発行元は、[オンボード プロセス](partner-onboarding-overview.md)を行ってからでないと、サブスクライバーでそのイベントの使用を開始できません。 
 
-サブスクライバーが、サードパーティのサービスにより Event Grid を通じてそのイベントが発行されることを望む場合。 
 
 ### <a name="auth0"></a>Auth0
 **Auth0** は、使用可能な最初のパートナー発行元です。 [Auth0 パートナー トピック](auth0-overview.md)を作成して、Auth0 アカウントと Azure アカウントを接続できます。 この統合により、リアルタイムで Auth0 イベントに対する対応、ログ記録、監視を行うことができます。 試してみるには、「[Azure Event Grid と Auth0 を統合する](auth0-how-to.md)」を参照してください
 
-サードパーティのサービスにより Event Grid を通じてそのイベントが発行されることを望む場合は、[ユーザーの声ポータル](https://feedback.azure.com/forums/909934-azure-event-grid)でそのアイデアをお送りください。
  
 ## <a name="resources-managed-by-event-publishers"></a>イベント発行元によって管理されるリソース
 イベント発行元は、次のリソースを作成して管理します。

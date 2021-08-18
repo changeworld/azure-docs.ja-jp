@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 926ee1d44d0f0ce523e883c36203fb278023e6c4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fdf3b12c3449fc9b2219442d65bae9a0ccdefdfb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753067"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730076"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -16,7 +16,7 @@ Azure Policy によってリソースの規則が確立されます。 ポリシ
 
 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、リソースに特定のタグを付けることを必須にすることもできます。 ポリシー割り当ては、子リソースによって継承されます。 リソース グループにポリシー割り当てが適用されると、そのリソース グループ内のすべてのリソースに適用されます。
 
-ポリシー定義の _policyRule_ スキーマは、[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json) にあります
+ポリシー定義の _policyRule_ スキーマは、[https://schema.management.azure.com/schemas/2020-10-01/policyDefinition.json](https://schema.management.azure.com/schemas/2020-10-01/policyDefinition.json) にあります
 
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 

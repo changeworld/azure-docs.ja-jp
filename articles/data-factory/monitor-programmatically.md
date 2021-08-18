@@ -2,17 +2,18 @@
 title: Azure Data Factory をプログラムで監視する
 description: さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法を説明します。
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: minhe-msft
 ms.author: hemin
 ms.custom: devx-track-python
-ms.openlocfilehash: 4c6c54138f7966c505ec0cdea2a90d2a8c1655f8
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 93187bd3f46fc85375289e911a816e2cb3e3da12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005521"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749902"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 
@@ -37,7 +38,7 @@ Data Factory では、パイプラインの実行データを 45 日間だけ格
 * 成功
 * 失敗
 * Canceling
-* Canceled
+* キャンセル
 
 ## <a name="net"></a>.NET
 .NET SDK を使用して、パイプラインを作成し監視する完全なチュートリアルについては、[.NET を使用したデータ ファクトリとパイプラインの作成](quickstart-create-data-factory-dot-net.md)に関する記事をご覧ください。

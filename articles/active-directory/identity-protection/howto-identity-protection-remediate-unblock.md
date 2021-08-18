@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e322f78468c89a549955a01f73952e8cde7a13c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cc03e619903ae3fb4065dfa1d7f1478c8e08942
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98872826"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727647"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>リスクを修復してユーザーをブロック解除する
 

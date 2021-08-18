@@ -2,14 +2,14 @@
 title: Shared Access Signature を使用して Azure Event Hubs へのアクセスを認証する
 description: この記事では、Shared Access Signature を使用して Event Hubs リソースへのアクセスを認証する方法を示します。
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 12e129686bdde9b03e1c284e0f54cb31e32469c3
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: f647dd21db2920bff01ac5929c527e66f8d7350b
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903007"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708535"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 
@@ -222,7 +222,7 @@ Event Hubs プロデューサーによって生成されたデータから消費
 次の記事をご覧ください。
 
 - [SAS を使用して承認する](authenticate-shared-access-signature.md)
-- [Azure ロールベースのアクセス制御 (Azure RBAC) を使用して認可する](authenticate-shared-access-signature.md)
+- [Azure ロールベースのアクセス制御 (Azure RBAC) を使用して認可する](authorize-access-azure-active-directory.md)
 - [Event Hubs についてさらに学習する](event-hubs-about.md)
 
 次の関連記事を参照してください。

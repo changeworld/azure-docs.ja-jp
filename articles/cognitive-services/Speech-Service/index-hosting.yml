@@ -5,18 +5,18 @@ metadata:
   title: ホスティングのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: trevorbye
+  author: laujan
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/23/2020
-  ms.author: trbye
-  ms.openlocfilehash: 7ea71d7a65970e1a3b666cb46567f1d3e7bdca18
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.author: lajanuar
+  ms.openlocfilehash: e91e1431eb719ef794da0adb4ecacc9d3ef078b9
+  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/30/2021
-  ms.locfileid: "101739448"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "122067132"
 landingContent:
 - title: ホスティングについて
   linkLists:

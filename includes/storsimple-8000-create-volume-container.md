@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: fd9b3b501d6efbe6a74d350a678494e8254dbb32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad58078207a90966134ec4d6cf8815f614e4341
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545402"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449879"
 ---
 #### <a name="to-create-a-volume-container"></a>ボリューム コンテナーを作成するには
 
@@ -28,7 +28,7 @@ ms.locfileid: "100545402"
    3. **[クラウド ストレージの暗号化を有効にする]** を選択して、デバイス からクラウドに送信されるデータの暗号化を有効にします。
    4. 8 ～ 32 文字の **[クラウド ストレージ暗号化キー]** を指定し、確定します。 このキーは、デバイス が暗号化されたデータにアクセスするために使用されます。
    5. このボリューム コンテナーに関連付ける **[ストレージ アカウント]** を選択します。 既存のストレージ アカウントか、サービス作成時に生成される既定のアカウントを選択できます。 **[新規追加]** オプションを使用して、このサービス サブスクリプションにリンクしないストレージ アカウントを指定することもできます。
-   6. 利用可能な帯域幅をすべて使用する場合は、 **[帯域幅の指定]** ボックスの一覧で **[無制限]** を選択します。 このオプションを **[カスタム]** に設定して帯域幅の制御を利用し、1 ～ 1,000 Mbps の範囲の値を指定することもできます。
+   6. 利用可能な帯域幅をすべて使用する場合は、 **[帯域幅の指定]** ボックスの一覧で **[無制限]** を選択します。
    
       帯域幅の使用状況に関する情報がある場合は、 **[帯域幅テンプレートの選択]** を指定して、スケジュールに基づいて帯域幅を割り当てることもできます。 詳細な手順については、[帯域幅テンプレートの追加](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template)に関する記事をご覧ください。
 

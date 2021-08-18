@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: c92b55d3ac7f4476b7b74d25b40150a74c6ea1cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 020ef7750d0ee93931d44b8781fd170f5f34984f
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98930148"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112370241"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
 
@@ -70,7 +70,7 @@ HDInsight Spark クラスターは、Spark-Phoenix コネクターをサポー�
 
 **対応策:**
 
-代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)に関するページをご覧ください。
+代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](/archive/blogs/azuredatalake/hdinsight-how-to-use-spark-hbase-connector)に関するページをご覧ください。
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter Notebook に関連する問題
 

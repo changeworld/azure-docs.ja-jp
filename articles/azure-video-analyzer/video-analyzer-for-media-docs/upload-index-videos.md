@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) を使用してビデオのアップロードとインデックスの作成を行う
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: このトピックでは、Azure Video Analyzer for Media (旧称 Video Indexer) で API を使用して、ビデオのアップロードとインデックスの作成を行う方法を示します。
 author: Juliako
 manager: femila
 ms.service: azure-video-analyzer
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 05/12/2021
 ms.author: juliako
-ms.openlocfilehash: aef9cb4c99385e82f86818cc106c8dc62f0fd6cf
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ce8804d1f057bc8f67331211c7ed4b734750aa19
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538172"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119079"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 

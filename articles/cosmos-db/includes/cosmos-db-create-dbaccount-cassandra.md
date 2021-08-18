@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: fe9d735955d0a83b5959035f0c51faeab26fd4f7
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 8f9bf2d231e09c5d2aa636ab8cf03cef42bc58d1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113590527"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733243"
 ---
 1. Azure portal のメニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "113590527"
    | サブスクリプション|該当するサブスクリプション|この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。 |
    | リソース グループ|新規作成<br><br>アカウント名と同じ名前を入力します|**[新規作成]** を選択します。 その後、自分のアカウントの新しいリソース グループの名前を入力します。 簡略化のため、Azure Cosmos アカウント名と同じ名前を使用します。 |
    | アカウント名|一意の名前を入力します|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 アカウント URI は、一意のアカウント名に *cassandra.cosmos.azure.com* が追加されたものになります。<br><br>アカウント名に使用できるのは、小文字、数字、ハイフン (-) のみで、長さは 3 文字から 31 文字の範囲にする必要があります。|
-   | API|Cassandra|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB には、5 種類の API が用意されています。ドキュメント データベース用の Core (SQL)、グラフ データベース用の Gremlin、ドキュメント データベース用の MongoDB、Azure Table、Cassandra です。 API ごとに別のアカウントを作成する必要があります。 <br><br>このクイック スタートでは Cassandra API で動作するテーブルを作成しているため、**Cassandra** を選択します。 <br><br>[Cassandra API に関する詳細を参照する](../cassandra-introduction.md)|
+   | API|Cassandra|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB には、5 種類の API が用意されています。ドキュメント データベース用の Core (SQL)、グラフ データベース用の Gremlin、ドキュメント データベース用の MongoDB、Azure Table、Cassandra です。 API ごとに別のアカウントを作成する必要があります。 <br><br>このクイック スタートでは Cassandra API で動作するテーブルを作成しているため、**Cassandra** を選択します。 <br><br>[Cassandra API に関する詳細を参照する](../cassandra/cassandra-introduction.md)|
    |場所|ユーザーに最も近いリージョン|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。|
    |容量モード|プロビジョニング スループットまたはサーバーレス|[プロビジョニング スループット](../set-throughput.md) モードでアカウントを作成するには、 **[Provisioned throughput]\(プロビジョニング スループット\)** を選択します。 [サーバーレス](../serverless.md) モードでアカウントを作成するには、 **[サーバーレス]** を選択します。|
    |Apply Azure Cosmos DB free tier discount (Azure Cosmos DB Free レベル割引を適用する)|**[適用]** または **[適用しない]**|Azure Cosmos DB Free レベルのアカウントでは、最初の 1000 RU/s と 25 GB のストレージを無料でご利用いただけます。 [Free レベル](https://azure.microsoft.com/pricing/details/cosmos-db/)の詳細を確認してください。|
@@ -54,7 +54,7 @@ ms.locfileid: "113590527"
 1. 必要に応じて、次のタブで追加の詳細を構成できます。
 
    * **[ネットワーク]** - [仮想ネットワークからのアクセス](../how-to-configure-vnet-service-endpoint.md)を構成します。
-   * **[バックアップ ポリシー]** - [定期的](../configure-periodic-backup-restore.md)または [継続的](../continuous-backup-restore-portal.md)のいずれかのバックアップ ポリシーを構成します。
+   * **[バックアップ ポリシー]** - [定期的](../configure-periodic-backup-restore.md)または [継続的](../provision-account-continuous-backup.md)のいずれかのバックアップ ポリシーを構成します。
    * **[暗号化]** - サービス マネージド キーまたは [カスタマー マネージド キー](../how-to-setup-cmk.md#create-a-new-azure-cosmos-account)のいずれかを使用します。
    * **[タグ]** - タグは名前と値のペアで、同じタグを複数のリソースやリソース グループに適用することでリソースを分類したり、統合した請求を表示したりできるようにします。
 

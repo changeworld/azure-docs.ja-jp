@@ -4,12 +4,12 @@ description: ノードの自動修復機能と壊れたワーカー ノードを
 services: container-service
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 95783000739fd42e39ef1bbce88c3b8e62d4a8dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6ca726445e7593898609c39e0a503405852098fc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073200"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748911"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Azure Kubernetes Service (AKS) ノードの自動修復
 
@@ -40,7 +40,6 @@ AKS により 10 分間異常な状態にある異常なノードが識別され
 
 1. ノードを再起動します。
 1. 再起動に失敗した場合は、ノードを再イメージ化します。
-1. 再イメージ化に失敗した場合は、新しいノードを作成して再イメージ化します。
 
 自動修復に失敗した場合、AKS エンジニアによって代替の修復が調査されます。 
 

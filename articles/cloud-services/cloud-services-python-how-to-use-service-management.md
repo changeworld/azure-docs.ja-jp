@@ -4,16 +4,16 @@ description: Python から一般的なサービス管理タスクをプログラ
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df08dfb9cdf5ab8345956131766bcd49a4dc6b3c
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741402"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092475"
 ---
 # <a name="use-service-management-from-python"></a>Python からサービス管理を使用する
 

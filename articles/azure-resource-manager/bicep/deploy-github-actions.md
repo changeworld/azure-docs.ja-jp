@@ -6,12 +6,12 @@ ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: e2c1ffce703646389318dba289d20ab0084759a4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 808c196ba5ae58e37889ef4b23da64be0eea4d81
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026728"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371448"
 ---
 # <a name="deploy-bicep-files-by-using-github-actions"></a>GitHub Actions を使用したBicep ファイルのデプロイ
 
@@ -128,6 +128,7 @@ Bicep ファイルは **storagePrefix** と呼ばれる 1 つのパラメータ�
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.bicep
             parameters: storagePrefix=mystore
+            failOnStdErr: false
     ```
 
     **mystore** を独自のストレージ アカウント名プレフィックスに置き換えます。

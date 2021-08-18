@@ -2,19 +2,18 @@
 title: Azure IoT Hub ジョブについて | Microsoft Docs
 description: 開発者ガイド - IoT Hub に接続されている複数のデバイスで実行するジョブのスケジュール設定。 ジョブはタグと必要なプロパティを更新でき、複数のデバイス上でダイレクト メソッドを呼び出すことができます。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
-ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53c237df8592e51eed18c2976fee90e1e2fa6937
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81730103"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727813"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 

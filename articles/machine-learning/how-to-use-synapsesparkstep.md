@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: how-to
 ms.custom: synapse-azureml
-ms.openlocfilehash: 046a38da67db86592e91f103f3139b425e59f6a0
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 01ac58f4c462861ba422a869f38b9fbf53690886
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578900"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112377280"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)
 
@@ -38,7 +38,7 @@ Apache Spark プールは、Azure Synapse Analytics ワークスペースで作�
 Azure Machine Learning ワークスペースと Azure Synapse Analytics ワークスペースをリンクさせたら、以下を経由で Apache Synapse Spark プールをアタッチできます。 
 * [Azure Machine Learning Studio](how-to-link-synapse-ml-workspaces.md#attach-a-pool-via-the-studio)
 * Python SDK ([以下で詳しく説明します](#attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning))
-* Azure Resource Manager (ARM) テンプレート (この [ARM テンプレートの例](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)を参照してください)。 
+* Azure Resource Manager (ARM) テンプレート (この [ARM テンプレートの例](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-linkedservice-create/azuredeploy.json)を参照してください)。 
     * コマンド ラインを使用して、ARM テンプレートに従い、リンクされたサービスを追加し、次のコードを使用して Apache Spark プールをアタッチできます。
     ```azurecli
     az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6367b6ed7fdd599047d5fc62391a8cfc743e96dd
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c6f572ad472bcafe0ca1ff301f2d32a34a924424
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076206"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291819"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Azure Resource Manager を使用して仮想マシン スケール セットを暗号化する
 
@@ -26,11 +26,11 @@ Linux 仮想マシン スケール セットの暗号化と暗号化解除は、
 
 - [実行中の Linux 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-vmss-linux)
 
-- [実行中の Windows 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+- [実行中の Windows 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-vmss-windows)
 
   - [ジャンプボックスで Linux VM の仮想マシン スケール セットをデプロイし、Linux 仮想マシン スケール セットで暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-vmss-linux-jumpbox)
 
-  - [ジャンプボックスで Windows VM の仮想マシン スケール セットをデプロイし、Windows 仮想マシン スケール セットで暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [ジャンプボックスで Windows VM の仮想マシン スケール セットをデプロイし、Windows 仮想マシン スケール セットで暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-vmss-windows-jumpbox)
 
 - [実行中の Linux 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-vmss-linux)
 

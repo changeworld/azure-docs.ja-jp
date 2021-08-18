@@ -4,12 +4,12 @@ description: Azure HDInsight での認証の問題
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
-ms.openlocfilehash: b5a55b3b5f9affcd9f34e1c0d4c439a7ada8c0b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c421626f62a4759ee7840b8c6d46f10d96b3d7c
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99095126"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291441"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight での認証の問題
 
@@ -211,4 +211,4 @@ kinit が `Preauthentication` エラーで失敗します。
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -3,12 +3,12 @@ title: Azure Event Hubs のファイアウォール ルール | Microsoft Docs
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Event Hubs への接続を許可します。
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: e0cefa24db8728ebe9d268c00718c2276ed7cee4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: eb8f83d03fffe514fcd34a394943d4a0fef27c0c
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375009"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417120"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>特定の IP アドレスまたは範囲から Azure Event Hubs 名前空間へのアクセスを許可します
 既定では、要求が有効な認証と承認を受けている限り、Event Hubs 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -53,7 +53,7 @@ IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用
     > [!NOTE]
     > 特定の仮想ネットワークへのアクセスを制限するには、[特定のネットワークからのアクセスの許可](event-hubs-service-endpoints.md)に関する記事をご覧ください。
 
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+[!INCLUDE [event-hubs-trusted-services](./includes/event-hubs-trusted-services.md)]
 
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用

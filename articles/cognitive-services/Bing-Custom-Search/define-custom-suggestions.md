@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.author: maheshb
-ms.openlocfilehash: 986a7c8f1282b76c2ae94eebcc2c31dc3b3e7cad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: aahill
+ms.openlocfilehash: ea98d945ba50c7cca37bdf9c5d11e7ab982df3d3
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96352016"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652086"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>カスタム自動提案エクスペリエンスを構成する
 

@@ -7,13 +7,12 @@ ms.date: 09/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 11c1938c3c1ccba533f52336fad81ebeaae53b24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88ad940dfbb079b358cc36d5f1fc4a38275cd957
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895479"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738507"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps Search Service のベスト プラクティス
 

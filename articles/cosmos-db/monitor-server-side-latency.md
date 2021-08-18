@@ -3,15 +3,15 @@ title: Azure Cosmos DB での操作のサーバー側の待機時間を監視す
 description: Azure Cosmos DB アカウントまたはコンテナーでの操作に対するサーバー待機時間を監視する方法について説明します。 Azure Cosmos DB アカウントの所有者は、Azure Cosmos アカウントでのサーバー側の待機時間の問題を把握できます。
 ms.service: cosmos-db
 ms.topic: how-to
-author: kanshiG
-ms.author: govindk
+ms.author: esarroyo
+author: StefArroyo
 ms.date: 04/07/2020
-ms.openlocfilehash: af58b0810ef45a9fff766b73188f66555ba6bc6c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 883552a556ce0cde191cb3dfeccca0ac09c96a10
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470990"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359625"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Azure Cosmos DB のコンテナーまたはアカウントでの操作に対するサーバー側の待機時間を監視する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

@@ -2,13 +2,13 @@
 title: Azure Event Grid を使用した Auth0 パートナー トピック
 description: Azure Event Grid を使用して Auth0 から Azure サービスにイベントを送信します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 340403111c094540ba7e66faf71ebf3cfe24fe7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: 0837bee13a1da3bcab7875aa43aa7b9972ccfd17
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93101291"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466801"
 ---
 # <a name="auth0-partner-topics"></a>Auth0 パートナー トピック
 ![Auth0 ロゴ](./media/auth0-overview/auth0-logo.png)

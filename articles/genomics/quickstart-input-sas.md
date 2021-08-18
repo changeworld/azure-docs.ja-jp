@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 82f5e8b4a0c06517381857f0d914bcb65ba41d35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b85fae82a6faf08fa45a659a216818d77fc747e9
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93394613"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551922"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを Microsoft Genomics に送信する 
 
@@ -86,4 +86,4 @@ msgen submit -f [full path to your config file]
 ```
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、アカウント キーの代わりに SAS トークンを使用して、`msgen` Python クライアントを介して Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページを参照してください。
+この記事では、アカウント キーの代わりに SAS トークンを使用して、`msgen` Python クライアントを介して Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.yml) に関するページを参照してください。

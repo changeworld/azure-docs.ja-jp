@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova
+ms.reviewer: mathoma, bonova
 ms.date: 12/13/2018
-ms.openlocfilehash: 69ff59812245d1765b4824c0fa0ce156f1a58d20
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 76391ab62852c4c3d3fa6ef3ae5dc25c1e70ad57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697404"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722838"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance を使用してネットワーク構成を Azure App Service のホスティング プラン用に同期する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

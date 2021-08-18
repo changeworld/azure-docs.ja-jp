@@ -15,20 +15,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: e912cabd27bac52792ffb2d71027170f4e53f310
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 839d235412b70669dd3cb9b9942509ef9af7b3c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784523"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121781025"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>独自の機械学習 (ML) を Azure Sentinel に持ち込む
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 機械学習 (ML) は Azure Sentinel の主要な基盤の 1 つであり、Azure Sentinel を個別に設定する主要な属性の 1 つです。 Azure Sentinel はいくつかのエクスペリエンスで ML を提供します。これらは、[Fusion](fusion.md) 相関関係エンジンと Jupyter Notebook、新しく使用可能な独自の ML の構築 (BYO ML) プラットフォームに組み込まれています。 
 
 ML 検出モデルでは、個々の環境とユーザー動作の変化に適応して[誤検知](false-positives.md)を減らし、従来のアプローチでは検出されない脅威を特定することができます。 多くのセキュリティ組織がセキュリティに対する ML の価値を理解していますが、セキュリティと ML の両方の専門知識を持っているプロフェッショナルは多くはありません。 ここで紹介するフレームワークは、セキュリティ組織とプロフェッショナルが ML の取り組みの中で成長できるように設計されています。 ML を初めて使用する組織、または必要な専門知識がない組織は、Azure Sentinel の組み込み ML 機能から大幅な保護価値を得ることができます。
 
 :::image type="content" source="./media/bring-your-own-ml/machine-learning-framework.png" alt-text="機械学習フレームワーク":::
+
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>独自の機械学習 (BYO-ML) プラットフォームとは
 
@@ -163,7 +166,7 @@ Azure Sentinel の外部から Blob Storage またはイベント ハブにデ�
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>ML の結果を使用してカスタム分析ルールを作成する
 
-ML の結果がカスタム ログ テーブルにあり、スコアの忠実度が満たされていることを確認したら、結果に基づいて検出を作成できます。 Azure Sentinel ポータルから **Analytics** にアクセスし、[新しい検出ルールを作成します](tutorial-detect-threats-custom.md)。 検出の作成に使用されるクエリの例を次に示します。
+ML の結果がカスタム ログ テーブルにあり、スコアの忠実度が満たされていることを確認したら、結果に基づいて検出を作成できます。 Azure Sentinel ポータルから **Analytics** にアクセスし、[新しい検出ルールを作成します](detect-threats-custom.md)。 検出の作成に使用されるクエリの例を次に示します。
 
 :::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="B Y O M L 検出のためのカスタム分析ルールを作成する":::
 

@@ -3,8 +3,8 @@ title: チュートリアル:Gtmhub を構成し、Azure Active Directory を使
 description: Azure AD から Gtmhub へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 10b68d00-a544-480b-9bd6-f6ac291a90d0
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2020
-ms.author: Zhchia
-ms.openlocfilehash: 0e160def31a43bc94e4f6151b46efe72e585e953
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: bc18ab7d46675f4f53e55e5579ac91cf9ebbb1d7
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735726"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763654"
 ---
 # <a name="tutorial-configure-gtmhub-for-automatic-user-provisioning"></a>チュートリアル:Gtmhub を構成し、自動ユーザー プロビジョニングに対応させる
 

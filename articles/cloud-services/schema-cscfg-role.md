@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
-ms.reviewer: mimckitt
+author: hirenshah1
+ms.author: hirshah
+ms.reviewer: mimtckit
 ms.custom: ''
-ms.openlocfilehash: dd46a37ada1fb96797faee6c8491359561e065d7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dfa38c706dc9e847665a8791bae1e898e1eb26b3
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934157"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088234"
 ---
 # <a name="azure-cloud-services-classic-config-role-schema"></a>Azure Cloud Services (クラシック) 構成のロール スキーマ
 

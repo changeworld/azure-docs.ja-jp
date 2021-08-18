@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスター用のサービス �
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 08a52f68ffdaa3305fbbeefffeeac78a59f3903b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 128e2d38b002369381c860dbd94dbd93b278682d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949148"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743927"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の資格情報を更新またはローテーションする
 
@@ -41,7 +41,7 @@ AKS クラスターの資格情報を更新するときは、以下のどちら�
 ```azurecli
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
-az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
+az ad sp credential list --id "$SP_ID" --query "[].endDate" -o tsv
 ```
 
 ### <a name="reset-the-existing-service-principal-credential"></a>既存のサービス プリンシパルの資格情報をリセットする
@@ -59,7 +59,7 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
 サービス プリンシパル ID を含む変数セットを指定し、[az ad sp credential reset][az-ad-sp-credential-reset] を使用して資格情報をリセットします。 以下の例では、Azure プラットフォームがサービス プリンシパルの新しいセキュア シークレットを生成できます。 この新しいセキュア シークレットは、変数としても保管されます。
 
 ```azurecli-interactive
-SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
+SP_SECRET=$(az ad sp credential reset --name "$SP_ID" --query password -o tsv)
 ```
 
 次に、[新しいサービス プリンシパル資格情報での AKS クラスターの更新](#update-aks-cluster-with-new-service-principal-credentials)に進みます。 このステップは、サービス プリンシパルの変更を AKS クラスターに反映させるために必要です。
@@ -106,8 +106,8 @@ az aks update-credentials \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --reset-service-principal \
-    --service-principal $SP_ID \
-    --client-secret $SP_SECRET
+    --service-principal "$SP_ID" \
+    --client-secret "$SP_SECRET"
 ```
 
 小規模および中規模のクラスターの場合は、AKS でサービス プリンシパルの資格情報の更新にかかる時間はそれほど長くありません。

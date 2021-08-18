@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43388c2750c7f82d407d59b6923258046fa00c7
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: b746b1f7d35668759108580d4d695787ac8fa3bc
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175876"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733108"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -32,7 +32,7 @@ ms.locfileid: "108175876"
 
 ライセンスに関する追加の情報については、以下のページをご覧ください。
 
-* [Azure AD のライセンス](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure AD のライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Azure AD External Identities の価格](../external-identities/external-identities-pricing.md)
@@ -99,7 +99,7 @@ ms.locfileid: "108175876"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure AD のライセンスと価格の詳細](https://azure.microsoft.com/pricing/details/active-directory/)
+[Azure AD のライセンスと価格の詳細](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)
 
 [ID とデバイスのアクセスの構成](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a9aecec9e11a41b22b3f1639f653c14a6e7fce
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491077"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285087"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Marketo を使用してコマーシャル マーケットプレースのリードを管理する
 
@@ -67,7 +67,7 @@ ms.locfileid: "94491077"
 
 発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、次の手順に従います。 
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインします。
 
 1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 

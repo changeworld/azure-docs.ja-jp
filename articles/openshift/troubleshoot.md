@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: azure-redhat-openshift
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: af66abff3507279dd1954fd83627900578229866
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b68a84b599f8dab071b54f566721ecd7118294e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100632953"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090603"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift のトラブルシューティング
 
@@ -36,4 +36,4 @@ ms.locfileid: "100632953"
 
 - OpenShift のトラブルシューティングについて詳しくは、[Red Hat OpenShift Help Center](https://help.openshift.com/) の使用をお試しください。
 
-- [Azure Red Hat OpenShift についてよく寄せられる質問](openshift-faq.md)とその回答をご確認ください。
+- [Azure Red Hat OpenShift についてよく寄せられる質問](openshift-faq.yml)とその回答をご確認ください。

@@ -2,18 +2,17 @@
 title: Azure IoT Hub のカスタム エンドポイントについて | Microsoft Docs
 description: 開発者ガイド - ルーティング クエリを使用して、カスタム エンドポイントに device-to-cloud メッセージのルーティングします。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 4ad57473e0950f031fbeadee2302f85557ed526f
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: ebc9240e75e5b30b9159f15f4ec1825c1d2b03ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388263"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740500"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 

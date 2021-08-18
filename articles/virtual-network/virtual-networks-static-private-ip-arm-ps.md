@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71d8c9b30923f6b3fd79a42542cac43cbfa09964
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6b6361aa197076db3e36a36d5b770ccc2d6e0e4f
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678632"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431944"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell を使用して静的プライベート IP アドレスを持つ仮想マシンを作成する
 
-静的プライベート IP アドレスを持つ仮想マシン (VM) を作成できます。 サブネットのどのアドレスを VM に割り当てるかを選択する場合は、動的アドレスではなく、静的プライベート IP アドレスを割り当てます。 [静的プライベート IP アドレス](./public-ip-addresses.md#allocation-method)の詳細を参照してください。 既存の VM に割り当てられたプライベート IP アドレスの動的から静的への変更、またはパブリック IP アドレスの操作については、[IP アドレスの追加、変更、または削除](virtual-network-network-interface-addresses.md)に関する記事を参照してください。
+静的プライベート IP アドレスを持つ仮想マシン (VM) を作成できます。 サブネットのどのアドレスを VM に割り当てるかを選択する場合は、動的アドレスではなく、静的プライベート IP アドレスを割り当てます。 [静的プライベート IP アドレス](./public-ip-addresses.md#ip-address-assignment)の詳細を参照してください。 既存の VM に割り当てられたプライベート IP アドレスの動的から静的への変更、またはパブリック IP アドレスの操作については、[IP アドレスの追加、変更、または削除](virtual-network-network-interface-addresses.md)に関する記事を参照してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

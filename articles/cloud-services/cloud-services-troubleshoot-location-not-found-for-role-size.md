@@ -2,18 +2,18 @@
 title: Azure にクラウド サービス (クラシック) をデプロイするときの LocationNotFoundForRoleSize のトラブルシューティング | Microsoft Docs
 description: この記事では、Azure にクラウド サービス (クラシック) をデプロイするときの LocationNotFoundForRoleSize 例外を解決する方法について説明します。
 services: cloud-services
-author: mamccrea
-ms.author: mamccrea
+author: hirenshah1
+ms.author: hirshah
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7938dcb3e66bc618832171668e392e4fff0cf5a9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 971fffc02241a841ebbb1bc0855e8484579252e4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706171"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090117"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Azure にクラウド サービス (クラシック) をデプロイするときの LocationNotFoundForRoleSize のトラブルシューティング
 

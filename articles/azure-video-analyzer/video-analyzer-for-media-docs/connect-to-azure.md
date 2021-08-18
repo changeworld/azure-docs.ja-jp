@@ -1,19 +1,20 @@
 ---
 title: Azure に接続された Azure Video Analyzer for Media (旧 Video Indexer) アカウントを作成する
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: Azure に接続された Azure Video Analyzer for Media (旧 Video Indexer) アカウントを作成する方法について説明します。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 28f8bb6a610e13aa0e7cf76adf52f13972215365
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7bc5188c5987d393d63049a0a87a84605e4fa372
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387752"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121591"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>メディア アカウント用の Video Analyzer を作成する
 
@@ -241,6 +242,10 @@ Video Analyzer for Media アカウントを削除する場合は、Video Analyze
 アカウントを選択し、 **[設定]**  ->  **[このアカウントを削除する]** の順にクリックします。 
 
 アカウントは 90 日後に完全に削除されます。
+
+## <a name="firewall"></a>ファイアウォール
+
+[ファイアウォールの内側にあるストレージ アカウント](faq.md#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions , devx-track-azurepowershell
-ms.openlocfilehash: 2b698ffaddb4bc818eaabda34022ab58ff05fe5f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9fb994968835d6fb609c079f008f87d4b37ef85b
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786353"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004882"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services を別のリージョンに移動する
 
@@ -40,7 +40,7 @@ ms.locfileid: "107786353"
 > クライアント アプリケーションと接続文字列は、完全なサーバー名 (サーバーが存在するリージョンが含まれる URI) を使用して Analysis Services に接続します。 たとえば、「 `asazure://westcentralus.asazure.windows.net/advworks01` 」のように入力します。 サーバーを別のリージョンに移動する場合は、別のリージョンに新しいサーバー リソースを作成するのが効果的です。別のリージョンがそのサーバー名の URI に含まれるようになります。 スクリプトで使用するクライアント アプリケーションと接続文字列は、新しいサーバー名の URI を使用して新しいサーバーに接続される必要があります。 [サーバー名のエイリアス](analysis-services-server-alias.md)を使用すると、サーバー名の URI を変更する必要がある場所を減らすことができますが、リージョン移動の前に実装する必要があります。
 
 > [!IMPORTANT]
-> Azure リージョンにより、異なる IP アドレス範囲が使用されます。 サーバーやストレージ アカウントが含まれているリージョンに対してファイアウォールの例外が構成されている場合は、別の IP アドレス範囲の構成が必要になる場合があります。 詳細については、「[Analysis Services ネットワーク接続についてよく寄せられる質問](analysis-services-network-faq.md)」を参照してください。
+> Azure リージョンにより、異なる IP アドレス範囲が使用されます。 サーバーやストレージ アカウントが含まれているリージョンに対してファイアウォールの例外が構成されている場合は、別の IP アドレス範囲の構成が必要になる場合があります。 詳細については、「[Analysis Services ネットワーク接続についてよく寄せられる質問](analysis-services-network-faq.yml)」を参照してください。
 
 > [!NOTE]
 > この記事では、ソース サーバーのリージョンにあるストレージ コンテナーからターゲット サーバーへのデータベース バックアップの復元について説明します。 場合によっては、別のリージョンからバックアップを復元すると、特に大規模なデータベースの場合にパフォーマンスが低下することがあります。 データベースの復元中に最適なパフォーマンスを得るには、ターゲット サーバー リージョンに新しいストレージ コンテナーを移行または作成します。 ターゲット サーバーにデータベースを復元する前に、ソース リージョンのストレージ コンテナーからターゲット リージョンのストレージ コンテナーに .abf バックアップ ファイルをコピーします。 この記事の範囲からは外れますが、特に非常に大規模なデータベースでは、ソース サーバーからデータベースをスクリプト化し、再作成した後、ターゲット サーバーで処理して、データベース データを読み込む方が、バックアップまたは復元を使用するよりもコスト効率が向上する場合があります。

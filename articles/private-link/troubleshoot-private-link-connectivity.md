@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f44962f1dfdfe3a55272aa19d9399542cb28d736
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95544311"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736380"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Private Link 接続に関する問題のトラブルシューティングを行う
 
@@ -47,7 +47,7 @@ Private Link で使用できる接続シナリオを次に示します。
 
 1. リソースを参照して Private Link の構成を確認します。
 
-    a. **[プライベート リンク センター]** に移動します。
+    a. [[プライベート リンク センター]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/overview) に移動します。
 
       ![プライベート リンク センター](./media/private-link-tsg/private-link-center.png)
 

@@ -6,19 +6,19 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/26/2021
 ms.topic: how-to
-ms.openlocfilehash: d77d2c0c378d57c26f1496dc712c736a79c0c2ae
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 149f46d96e7e723c89eb473aa5faea2301bc9d5f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614547"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179244"
 ---
 # <a name="install-event-grid-extension-on-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc 対応 Kubernetes クラスターに Event Grid 拡張機能をインストールする
 この記事では、[Azure Arc 対応 Kubernetes](../../azure-arc/kubernetes/overview.md) クラスターに Event Grid をインストールする手順について説明します。
 
 簡潔にするため、この記事では "Kubernetes 拡張機能の Event Grid" のことを "Kubernetes の Event Grid" または単に "Event Grid" と表記しています。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="supported-kubernetes-distributions"></a>サポートされている Kubernetes ディストリビューション
@@ -27,7 +27,6 @@ Event Grid のデプロイと実行がサポートされている Kubernetes デ
 1. Azure AKS で[サポートされている Kubernetes ディストリビューション](../../aks/supported-kubernetes-versions.md)。
 1. RedHat [OpenShift Container Platform](https://www.openshift.com/products/container-platform)。
 
-今後、[ユーザーからのフィードバック](https://feedback.azure.com/forums/909934-azure-event-grid)や、[Azure Arc 対応 Kubernetes のサポート状況](../../azure-arc/kubernetes/validation-program.md)に応じて、さらに多くのディストリビューションがオンボードされる予定です。
 
 ## <a name="event-grid-extension"></a>Event Grid 拡張機能
 Kubernetes クラスターに Event Grid サービス インスタンスをインストールするには、Azure Arc クラスター拡張機能を作成します。これにより、**Event Grid ブローカー** と **Event Grid 演算子** の両方がデプロイされます。 ブローカーと演算子の関数の詳細については、[Kubernetes コンポーネントの Event Grid](concepts.md#event-grid-on-kubernetes-components) を参照してください。 [Azure Arc クラスター拡張](../../azure-arc/kubernetes/conceptual-extensions.md)機能を使用すると、Azure Arc 対応の Kubernetes クラスターにデプロイされた Event Grid で、Azure Resource Manager (ARM) のコントロール プレーン操作を用いたライフサイクル管理を行うことができるようになります。
@@ -39,7 +38,7 @@ Kubernetes クラスターに Event Grid サービス インスタンスをイ�
 Event Grid のインストールに進む前に、次の前提条件が満たされていることを確認してください。 
 
 1. [サポートされている Kubernetes ディストリビューション](#supported-kubernetes-distributions)のいずれかで実行されているクラスター。
-1. [Azure サブスクリプション](https://azure.microsoft.com/en-us/free/)。
+1. [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 1. Event Grid ブローカーとの HTTPS 接続を確立するために使用する [PKI 証明書](#pki-certificate-requirements)。
 1. [Azure Arc にクラスターを接続する](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。
 
@@ -117,7 +116,7 @@ Event Grid ブローカーおよび Event Grid 演算子との間で、セキュ
         :::image type="content" source="./media/install-k8s-extension/monitoring-page.png" alt-text="Event Grid 拡張機能のインストール - 監視ページ":::    
     1. **[次へ: タグ]** を選択して、 **[タグ]** ページに移動します。 
 1. **[タグ]** ページで、次の手順を行います。
-    1. 必要に応じて、[タグ](/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)を定義します。
+    1. 必要に応じて、[タグ](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)を定義します。
 
         :::image type="content" source="./media/install-k8s-extension/tags-page.png" alt-text="Event Grid 拡張機能のインストール - タグ ページ":::
     1. ページ下部にある **[確認と作成]** を選択します。

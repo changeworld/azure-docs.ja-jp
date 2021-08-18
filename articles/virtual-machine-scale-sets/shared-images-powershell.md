@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
-ms.openlocfilehash: dbb7e07c9abc11e25e4fd46c185b413f51cec147
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 351d905b45d6c1bae6e4fa52aa34d22df9de82f9
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026239"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204092"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Azure PowerShell を使用した仮想マシン スケール セットの共有イメージの作成および使用
 
@@ -50,6 +50,5 @@ ms.locfileid: "112026239"
 - [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 共有イメージ ギャラリーの詳細については、[概要](../virtual-machines/shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](../virtual-machines/troubleshooting-shared-images.md)」を参照してください。

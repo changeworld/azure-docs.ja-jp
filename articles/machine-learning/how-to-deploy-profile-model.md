@@ -12,12 +12,12 @@ ms.topic: how-to
 zone_pivot_groups: aml-control-methods
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 4583d65a38b4d1f3400d58c69e3615e9cb50556f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: c222eebc1c2705cc2a5a65b5e11eb12b9a014d6e
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885166"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296351"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>モデルをプロファイルしてリソース使用状況を判断する
 
@@ -137,9 +137,8 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
 * [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
 * [モデル デプロイのイベント アラートおよびトリガーを作成する](how-to-use-event-grid.md)
-

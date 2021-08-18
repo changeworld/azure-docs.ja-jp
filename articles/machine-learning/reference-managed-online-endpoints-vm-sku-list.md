@@ -9,13 +9,14 @@ ms.topic: reference
 ms.reviewer: laobri
 ms.author: seramasu
 author: rsethur
+ms.custom: devplatv2
 ms.date: 05/10/2021
-ms.openlocfilehash: 8cdc688af7a9ce57200b817576fe9746793ff19c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a3e50cfa68a22e41a4bcb0bdc4d503775ac8bf3b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466618"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447585"
 ---
 # <a name="managed-online-endpoints-sku-list-preview"></a>マネージド オンライン エンドポイント SKU の一覧 (プレビュー)
 

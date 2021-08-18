@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: fe80a71125d43220e408eab7b07aeedcafa0a526
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32494c60e3189c9369bafe37289d01e248e4a678
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102473875"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122262067"
 ---
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 以降
 
@@ -40,7 +40,7 @@ ms.locfileid: "102473875"
 |initialOffsetOptions/type<sup>1</sup>|fromStart|チェックポイントがストレージに存在しない場合に処理を開始するイベント ストリーム内の位置。 `fromStart`、`fromEnd`、`fromEnqueuedTime` のいずれかを選択できます。 `fromEnd` は、関数アプリが実行を開始した後にエンキューされた新しいイベントを処理します。 すべてのパーティションに適用されます。  詳細については、[EventProcessorOptions のドキュメント](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider)を参照してください。|
 |initialOffsetOptions/enqueuedTimeUtc<sup>1</sup>|該当なし| ストリームにエンキューされたイベントの処理を開始する時刻を指定します。 `initialOffsetOptions/type` が `fromEnqueuedTime` として構成されている場合、この設定は必須です。 [DateTime.Parse()](/dotnet/standard/base-types/parsing-datetime) でサポートされている形式の時刻がサポートされます (`2020-10-26T20:31Z` など)。 明確にするためには、タイムゾーンも指定する必要があります。 タイムゾーンが指定されなかった場合は、関数アプリを実行しているマシンのローカル タイムゾーン (Azure で実行されている場合は UTC) が使用されます。 詳細については、[EventProcessorOptions のドキュメント](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider)を参照してください。|
 
-<sup>1</sup> `intitialOffsetOptions` は、[EventHubs v4.2.0](https://github.com/Azure/azure-functions-eventhubs-extension/releases/tag/v4.2.0) 以降でサポートされます。
+<sup>1</sup> `initialOffsetOptions` は、[EventHubs v4.2.0](https://github.com/Azure/azure-functions-eventhubs-extension/releases/tag/v4.2.0) 以降でサポートされます。
 
 > [!NOTE]
 > Azure Functions 2.x 以降の host.json のリファレンスについては、[Azure Functions の host.json のリファレンス](../articles/azure-functions/functions-host-json.md)に関する記事を参照してください。

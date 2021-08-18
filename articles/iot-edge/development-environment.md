@@ -2,18 +2,17 @@
 title: Azure IoT Edge 開発環境 | Microsoft Docs
 description: サポートされているシステムと、IoT Edge モジュールを作成するのに役立つファースト パーティの開発ツールについて説明します
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1070a5ddf298ad88100e7803635e970f9a314e52
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: d420f9b7950e1b6324b7d7dc47cef4bfeb43248e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869583"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727827"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
 
@@ -60,7 +59,7 @@ IoT Edge 拡張機能に加えて、開発用のその他の拡張機能をイ�
 | Azure Functions | [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) |
 | C | [Git](https://git-scm.com/) |
 | C# | [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) |
-| Java | <ul><li>[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) <li> [JAVA_HOME 環境変数の設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
+| Java | <ul><li>[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-support-on-azure) <li> [JAVA_HOME 環境変数の設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js モジュール ジェネレーター](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 

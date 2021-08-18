@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3474d14b84e41fdf808b5a5b5c612b3a872f2c6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5e35f88ef38367a9c25da6a77b556f4009880af0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753505"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737313"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>段階的なロールアウトを使用してクラウド認証に移行する
 
@@ -87,7 +87,7 @@ ms.locfileid: "111753505"
 
 - 段階的なロールアウトで、セキュリティ グループを初めて追加する時点では、UX タイムアウトを回避するために、200 ユーザーに制限されます。グループを追加した後、必要に応じて、そのグループにさらにユーザーを直接追加できます。
 
-- ユーザーが段階的にロールアウトしている間、EnforceCloudPasswordPolicyForPasswordSyncedUsers が有効な場合、パスワードの有効期限ポリシーは 90 日に設定され、これをカスタマイズするオプションはありません。 
+- ユーザーが段階的にロールアウトされている間は、パスワードの有効期限ポリシーが 90 日に設定されます。これをカスタマイズするオプションはありません。 
 
 - 1903 より前の Windows 10 バージョンの、Windows 10 ハイブリッド参加または Azure AD 参加のプライマリ更新トークンの取得。 このシナリオは、ユーザーのサインインが段階的なロールアウトのスコープ内にある場合でも、フェデレーション サーバーの WS-Trust エンドポイントにフォールバックします。
 
@@ -98,7 +98,7 @@ ms.locfileid: "111753505"
 - 登録機関またはスマートカード ユーザーとして機能するフェデレーション サーバーを介して発行された証明書と共に Windows Hello for Business のハイブリッド証明書を信頼している場合、このシナリオは段階的なロールアウトではサポートされません。 
 
   >[!NOTE]
-  >それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的ロールアウトによって、ドメインがフェデレーションからマネージドに切り替えられることはありません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)方法および[フェデレーションからパススルー認証に移行する](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso)方法に関する記事を参照してください。
+  >それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的ロールアウトによって、ドメインがフェデレーションからマネージドに切り替えられることはありません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](./migrate-from-federation-to-cloud-authentication.md)方法および[フェデレーションからパススルー認証に移行する](./migrate-from-federation-to-cloud-authentication.md)方法に関する記事を参照してください。
   
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる
 
@@ -266,7 +266,6 @@ A:はい。 PowerShell を使用して段階的なロールアウトを実行す
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Active Directory 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
-- [サインイン方法をパスワード ハッシュ同期に変更する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
-- [サインイン方法をパススルー認証に変更する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [サインイン方法をパスワード ハッシュ同期に変更する](./migrate-from-federation-to-cloud-authentication.md)
+- [サインイン方法をパススルー認証に変更する](./migrate-from-federation-to-cloud-authentication.md)
 - [段階的ロールアウトの対話型ガイド](https://mslearn.cloudguides.com/en-us/guides/Test%20migration%20to%20cloud%20authentication%20using%20staged%20rollout%20in%20Azure%20AD)
-

@@ -4,12 +4,12 @@ description: この記事では、Azure Resource Manager を使用した Azure S
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b98a1dccb20849ef299b0fff2fce2a70eb1e6314
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 69f05fab624fd4ad1eb2257adb200bd39bb04bd1
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677390"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295252"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデル
 
@@ -55,7 +55,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 クラスター内のリソースは、パブリック アクセス レベルを **[プライベート]** に設定することで、セキュリティで保護することができます。 アクセス権は、次の複数の方法で付与できます。
 
 * [Azure Active Directory](../storage/common/storage-auth-aad-app.md) を使用して BLOB とキューへのアクセスを承認する。
-* [Azure portal で Azure RBAC](../storage/common/storage-auth-aad-rbac-portal.md) を使用して Azure BLOB とキューのデータへのアクセスを付与する。
+* [Azure portal で Azure RBAC](../storage/blobs/assign-azure-role-data-access.md) を使用して Azure BLOB とキューのデータへのアクセスを付与する。
 * [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature) を使用してアクセスを委任する。
 
 次のスクリーンショットの例では、BLOB の匿名読み取りアクセスを使用しています。

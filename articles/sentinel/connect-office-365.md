@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 135ca977f19ed44742b1086c7a02a9b89dab1445
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: c451becdd6b0ae53b459d15b69f7241f84d3730d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422032"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731024"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Azure Sentinel に Office 365 のログを接続する
 
@@ -66,5 +66,5 @@ ms.locfileid: "111422032"
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Office 365 を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [組み込み](tutorial-detect-threats-built-in.md)または[カスタム](tutorial-detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [組み込み](detect-threats-built-in.md)または[カスタム](detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。

@@ -6,21 +6,16 @@ author: Heidilohr
 manager: lizross
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/28/2021
+ms.date: 06/30/2021
 ms.author: helohr
-ms.openlocfilehash: c85186d8338918dbcf2af56abd959f5cbff6ad56
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3c6e61754d9332cbdfbea6b971363c1b0d6cb4fe
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967289"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289423"
 ---
 # <a name="configure-ad-fs-single-sign-on-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用に AD FS シングル サインオンを構成する
-
-> [!IMPORTANT]
-> AD FS シングル サインオンは現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、Azure Virtual Desktop 用に Active Directory フェデレーション サービス (AD FS) シングル サインオン (SSO) を構成するプロセスについて説明します。
 
@@ -29,15 +24,12 @@ ms.locfileid: "111967289"
 
 ## <a name="requirements"></a>必要条件
 
-> [!IMPORTANT]
-> パブリック プレビュー中は、[検証環境](create-validation-host-pool.md)にホスト プールを構成する必要があります。
-
 AD FS シングルサインオンを構成する前に、ご自分の環境で次のセットアップを実行しておく必要があります。
 
 * **Active Directory 証明書サービス (CA)** 役割をデプロイする必要があります。 この役割を実行しているすべてのサーバーは、ドメインに参加しており、最新の Windows 更新プログラムをインストールしており、[エンタープライズ証明機関](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731183%28v%3dws.10%29)として構成されている必要があります。
 * **Active Directory フェデレーション サービス (AD FS)** 役割をデプロイする必要があります。 この役割を実行しているすべてのサーバーは、ドメインに参加しており、最新の Windows 更新プログラムをインストールしており、Windows Server 2016 以降を実行している必要があります。 この役割の設定を開始するには、[フェデレーションのチュートリアル](../active-directory/hybrid/tutorial-federation.md)に関するページを参照してください。
 * ご使用環境から AD FS サーバーへの接続をセキュリティで保護するために、**Web アプリケーション プロキシ** 役割を設定することをお勧めします。 この役割を実行しているすべてのサーバーでは、最新の Windows 更新プログラムがインストールされており、Windows Server 2016 以降が実行されている必要があります。 この役割の設定を開始するには、こちらの [Web アプリケーション プロキシ ガイド](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383662(v=ws.11))に関するページを参照してください。
-* Azure AD にユーザーを同期するには、**Azure AD Connect** をデプロイする必要があります。 Azure AD Connect は、[フェデレーション モード](../active-directory/connect/active-directory-aadconnect-get-started-custom.md)で構成する必要があります。
+* Azure AD にユーザーを同期するには、**Azure AD Connect** をデプロイする必要があります。 Azure AD Connect は、[フェデレーション モード](../active-directory/hybrid/how-to-connect-install-custom.md)で構成する必要があります。
 * AD FS サーバー上で Azure Virtual Desktop 用に [PowerShell 環境を設定](powershell-module.md)します。
 * Windows 10 20H1 または 20H2 を使用して Azure Virtual Desktop に接続する場合、シングル サインオンを正常に機能させるには、**Windows 10 の 2021-04 Cumulative Update (累積的な更新プログラム) (KB5001330)** またはそれ以降をインストールする必要があります。
 
@@ -48,8 +40,8 @@ AD FS シングルサインオンを構成する前に、ご自分の環境で�
 
 次の Azure Virtual Desktop クライアントでは、この機能がサポートされています。
 
-* [Windows デスクトップ クライアント](connect-windows-7-10.md)
-* [Web クライアント](connect-web.md)
+* [Windows デスクトップ クライアント](./user-documentation/connect-windows-7-10.md)
+* [Web クライアント](./user-documentation/connect-web.md)
 
 ## <a name="configure-the-certificate-authority-to-issue-certificates"></a>証明書を発行するように証明機関を構成する
 
@@ -232,9 +224,6 @@ Windows にサインインするためのトークンの生成に使用される
 
 ## <a name="configure-your-azure-virtual-desktop-host-pool"></a>Azure Virtual Desktop ホスト プールを構成する
 
-> [!IMPORTANT]
-> パブリック プレビュー中は、[検証環境](create-validation-host-pool.md)にホスト プールを構成する必要があります。
-
 ここでは、Azure Virtual Desktop ホスト プールに AD FS SSO パラメーターを構成します。 これを行うには、まだアカウントに接続していない場合は、Azure Virtual Desktop 用に [PowerShell 環境を設定](powershell-module.md)します。
 
 その後、AD FS VM の同じ PowerShell ウィンドウで次の 2 つのコマンドレットのいずれかを実行して、ホスト プールの SSO 情報を更新します。
@@ -291,5 +280,5 @@ UnConfigureWVDSSO.ps1 -WvdWebAppAppIDUri "<WVD Web App URI>" -WvdClientAppApplic
 
 シングル サインオンを構成したので、サポートされている Azure Virtual Desktop クライアントにサインインし、ユーザー セッションの一部としてテストできます。 新しい資格情報を使用してセッションに接続する方法については、こちらの記事を参照してください。
 
-* [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10.md)
-* [Web クライアントに接続する](connect-web.md)
+* [Windows デスクトップ クライアントを使用して接続する](./user-documentation/connect-windows-7-10.md)
+* [Web クライアントに接続する](./user-documentation/connect-web.md)

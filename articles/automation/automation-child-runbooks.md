@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 101ff9affe43dcc97de6cf5a535c82559aafeced
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: eeca2c5ed3e1d428d7ab521160604f588e5b0b4a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834914"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725697"
 ---
 # <a name="create-modular-runbooks"></a>モジュラー Runbook を作成する
 
@@ -96,7 +96,7 @@ $output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 Disable-AzContextAutosave -Scope Process
 
 # Connect to Azure with Run As account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+$ServicePrincipalConnection = Get-AzAutomationConnection -Name 'AzureRunAsConnection'
 
 Connect-AzAccount `
     -ServicePrincipal `

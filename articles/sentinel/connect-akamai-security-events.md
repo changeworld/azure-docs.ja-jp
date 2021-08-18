@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 8aa5a52a06713b4f00b43205a57148049a8ef8da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df17c8abca5333f23c26ab63479f398ba766aed6
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711962"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253935"
 ---
 # <a name="connect-your-akamai-security-events-collector-to-azure-sentinel"></a>Azure Sentinel に Akamai セキュリティ イベント コレクターを接続する
 
 > [!IMPORTANT]
 > Akamai セキュリティ イベント コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、Azure Sentinel に Akamai セキュリティ イベント コレクターを接続する方法について説明します。 Akamai セキュリティ イベント データ コネクタを使用すると、Akamai ログを Azure Sentinel に簡単に接続できます。これにより、そのデータをブックで表示したり、カスタム アラートの作成のためにクエリを実行したり、調査の改善のために取り込んだりできます。 Akamai セキュリティ イベント コレクターと Azure Sentinel の統合には、CEF 形式の Syslog、Linux ベースのログ フォワーダー、Log Analytics エージェントを使用します。 また、Kusto 関数に基づくカスタムビルドのログ パーサーも使用されます。
 
@@ -180,6 +182,6 @@ ms.locfileid: "101711962"
 
 このドキュメントでは、Akamai セキュリティ イベントを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

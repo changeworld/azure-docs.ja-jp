@@ -2,7 +2,6 @@
 title: IoT Edge ログを取得する - Azure IoT Edge
 description: IoT Edge モジュール ログの取得と Azure Blob Storage へのアップロードを行います。
 author: v-tcassi
-manager: philmea
 ms.author: v-tcassi
 ms.date: 11/12/2020
 ms.topic: conceptual
@@ -10,12 +9,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 51a79058ec4456b173b1f50169198d3ea3ba2e93
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 53ea8657535cb353b2da0f2a5b35398aa972128a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541863"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745336"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
 
@@ -35,7 +34,7 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Timestamp}` は `yyyy-MM-dd hh:mm:ss.fff zzz` のように書式設定する必要があり、`{Log Level}` は次の表に従って指定する必要があります。この表にある重大度レベルは、[Syslog 標準の重大度コード](https://wikipedia.org/wiki/Syslog#Severity_level)に基づいたものです。
+`{Timestamp}` は `yyyy-MM-dd HH:mm:ss.fff zzz` のように書式設定する必要があり、`{Log Level}` は次の表に従って指定する必要があります。この表にある重大度レベルは、[Syslog 標準の重大度コード](https://wikipedia.org/wiki/Syslog#Severity_level)に基づいたものです。
 
 | 値 | Severity |
 |-|-|
@@ -79,7 +78,7 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | 型 | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | items | JSON 配列 | `id` および `filter` の組を含む配列。 |
@@ -188,7 +187,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | 型 | 説明 |
 |-|-|-|
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)。 |
 
@@ -202,7 +201,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | 型 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -305,7 +304,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | 型 | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -326,7 +325,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | 型 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -384,7 +383,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | 型 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |

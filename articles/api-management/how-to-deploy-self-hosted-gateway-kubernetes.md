@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 05/25/2021
-ms.openlocfilehash: fa62dc3470ef4d4ab79045379a8b76b057b44628
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 645fce68e408b65299090e4661b36690f7ca140c
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379219"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690500"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Kubernetes にセルフホステッド ゲートウェイをデプロイする
 
@@ -68,13 +68,13 @@ ms.locfileid: "110379219"
 ### <a name="access-token"></a>アクセス トークン
 有効なアクセス トークンがない場合、セルフホステッド ゲートウェイで、関連付けられている API Management サービスのエンドポイントから構成データにアクセスしてダウンロードすることができません。 アクセス トークンは最大で 30 日間有効です。 有効期限が切れる前に再生成し、手動か自動化により、新しいトークンでクラスターを構成する必要があります。
 
-トークンの更新を自動化する場合、この管理 API [操作](/rest/api/apimanagement/2019-12-01/gateway/generatetoken)を使用して新しいトークンを生成します。 Kubernetes シークレットの管理の詳細については、[Kubernetes Web サイト](https://kubernetes.io/docs/concepts/configuration/secret)を参照してください。
+トークンの更新を自動化する場合、この管理 API [操作](/rest/api/apimanagement/2020-12-01/gateway/generate-token)を使用して新しいトークンを生成します。 Kubernetes シークレットの管理の詳細については、[Kubernetes Web サイト](https://kubernetes.io/docs/concepts/configuration/secret)を参照してください。
 
 ### <a name="namespace"></a>名前空間
 Kubernetes [名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)を使用すると、1 つのクラスターを複数のチーム、プロジェクト、またはアプリケーションに分割する際に役立ちます。 名前空間からはリソースと名前の範囲が与えられます。 リソース クォータとアクセス制御ポリシーに関連付けることができます。
 
 Azure portal からは、**既定** の名前空間でセルフホステッド ゲートウェイ リソースを作成するコマンドが与えられます。 この名前空間は自動的に作成され、あらゆるクラスターに存在します。削除できません。
-運用環境の別の名前空間にセルフホステッド ゲートウェイを[作成およびデプロイ](https://kubernetesbyexample.com/ns/)することを検討してください。
+運用環境の別の名前空間にセルフホステッド ゲートウェイを[作成およびデプロイ](https://www.kubernetesbyexample.com/)することを検討してください。
 
 ### <a name="number-of-replicas"></a>レプリカの数
 運用環境に適したレプリカの最小数は 2 です。

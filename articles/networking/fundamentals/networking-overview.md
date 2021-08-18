@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 072c26444c3a3fe84cfc9a0690571a524f7db6dc
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107705"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436048"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要
 
@@ -67,7 +67,7 @@ Azure Bastion サービスは、お使いの仮想ネットワーク内でプロ
 :::image type="content" source="./media/networking-overview/architecture.png" alt-text="Azure Bastion のアーキテクチャ":::
 
 ### <a name="virtual-network-nat-gateway"></a><a name="nat"></a>Virtual Network NAT Gateway
-Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネットワーク用のアウトバウンドのみのインターネット接続を簡単に行えるようにするものです。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 ロード バランサーや、仮想マシンに直接アタッチされたパブリック IP アドレスがなくても、アウトバウンド接続が可能となります。 詳細については、[仮想ネットワーク NAT ゲートウェイの概要](../../virtual-network/nat-overview.md)に関するページを参照してください。
+Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネットワーク用のアウトバウンドのみのインターネット接続を簡単に行えるようにするものです。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 ロード バランサーや、仮想マシンに直接アタッチされたパブリック IP アドレスがなくても、アウトバウンド接続が可能となります。 詳細については、[仮想ネットワーク NAT ゲートウェイの概要](../../virtual-network/nat-gateway/nat-overview.md)に関するページを参照してください。
 
 :::image type="content" source="./media/networking-overview/flow-map.png" alt-text="Virtual Network NAT Gateway":::
 

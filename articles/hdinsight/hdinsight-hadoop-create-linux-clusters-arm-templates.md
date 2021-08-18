@@ -5,20 +5,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/07/2020
-ms.openlocfilehash: 7d39163fa2890eb16a455d505baa0a6bbeddd42e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b0b75ac30ec0dfccb059222709f71bc74ae0b940
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950623"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282387"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する
 
-[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-create-linux-cluster-selector.md)]
 
 この記事では、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/deploy-powershell.md)を使用して Azure HDInsight クラスターを作成するさまざまな方法について説明します。 その他のクラスター作成ツールと機能を確認するには、このページの上部にあるタブ セレクターをクリックしてください。 「[クラスターの作成方法](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)」も参照してください。
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
 

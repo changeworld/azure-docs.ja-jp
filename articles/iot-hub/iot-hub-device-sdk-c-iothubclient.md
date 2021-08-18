@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa264c0254ad2b91df0493a439f4dae2456079da
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92149133"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295547"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
 
@@ -273,7 +273,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 このシリーズの 2 番目の記事は「[C 用 Azure IoT device SDK - シリアライザー](iot-hub-device-sdk-c-serializer.md)」です。よく似ている **シリアライザー** ライブラリについて詳しく説明します。
+この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 
 
 IoT Hub 用の開発の詳細については、「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 

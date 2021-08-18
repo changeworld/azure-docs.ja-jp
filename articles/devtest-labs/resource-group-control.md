@@ -3,12 +3,12 @@ title: Azure DevTest Labs で VM のリソース グループを指定する | M
 description: Azure DevTest Labs でラボの VM に対するリソース グループを指定する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c6f576a20fc8fada9dd515e8ba2a266761a3e586
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 8b7b331f505864edb5fd2b2cca2f56d9d6349db3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377490"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282747"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボの仮想マシンのリソース グループを指定する
 
@@ -112,4 +112,4 @@ Azure Resource Manager テンプレートを使用してラボを作成する場
 次の記事をご覧ください。 
 
 - [ラボのポリシーを設定する](devtest-lab-set-lab-policy.md)
-- [よく寄せられる質問](devtest-lab-faq.md)
+- [よく寄せられる質問](devtest-lab-faq.yml)

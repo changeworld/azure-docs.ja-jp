@@ -2,25 +2,22 @@
 title: 'チュートリアル: Olfeo SAAS を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure AD から Olfeo SAAS へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 5f6b0320-dfe7-451c-8cd8-6ba7f2e40434
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/26/2021
-ms.author: Zhchia
-ms.openlocfilehash: 0afd2e2420868e40847ff1243fc61fb5b15c4853
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.author: thwimmer
+ms.openlocfilehash: 0646bf63bc0b178a5df5f3d1544bc8d6b34f6051
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144093"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122196022"
 ---
 # <a name="tutorial-configure-olfeo-saas-for-automatic-user-provisioning"></a>チュートリアル: Olfeo SAAS を構成し、自動ユーザー プロビジョニングに対応させる
 

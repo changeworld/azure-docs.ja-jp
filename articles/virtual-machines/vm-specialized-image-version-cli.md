@@ -10,12 +10,12 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: da5060cebd086935c80a19c846a16c74def44279
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: ad4ac7d8ac45f8d0c673c43416b68a790f0e3020
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032611"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204177"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI を使用して、特殊化されたイメージ バージョンから VM を作成する
 
@@ -58,4 +58,3 @@ az vm create --resource-group myResourceGroup \
 - [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/vm-from-sig/)

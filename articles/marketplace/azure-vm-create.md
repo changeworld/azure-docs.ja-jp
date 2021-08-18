@@ -4,15 +4,15 @@ description: Azure Marketplace で仮想マシン オファーを作成します
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: mingshen-ms
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/08/2021
-ms.openlocfilehash: 626ee3d9fb7ec193e1384712a03c23feefef67af
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 6565fff19d68b42aa102431c6e1afe7bb4b3b4d7
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525032"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601068"
 ---
 # <a name="create-a-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で仮想マシン オファーを作成する
 

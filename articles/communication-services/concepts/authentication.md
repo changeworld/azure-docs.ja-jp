@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 9edfb63f5ce43ed325b4c4a1fa67e0e9ca52dc89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 339c455b4301012a8aee7a5d5113647c4bc31a3f
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110867"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652489"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Communication Services に対する認証
 
@@ -48,7 +48,7 @@ ms.locfileid: "105110867"
 
 マネージド ID は、他の認可オプションよりも優れたセキュリティと使いやすさを提供します。 たとえば、Azure AD を使用すると、アクセス キーの認証と同様に、アカウント アクセス キーをコードに保存する必要がなくなります。 通信サービス アプリケーションでは引き続きアクセス キー認証を使用できますが、Microsoft では、可能な限り Azure AD に移行することをお勧めします。 
 
-マネージド ID を設定するには、 [Azure CLI から登録済みアプリケーションを作成します](../quickstarts/managed-identity-from-cli.md)。 次に、エンドポイントと資格情報を使用して、SDK を認証できます。 [マネージド ID](../quickstarts/managed-identity.md)の使用例を参照してください。
+マネージド ID を設定するには、 [Azure CLI から登録済みアプリケーションを作成します](../quickstarts/identity/service-principal-from-cli.md)。 次に、エンドポイントと資格情報を使用して、SDK を認証できます。 [マネージド ID](../quickstarts/identity/service-principal.md)の使用例を参照してください。
 
 ### <a name="user-access-tokens"></a>ユーザー アクセス トークン
 
@@ -58,7 +58,7 @@ ms.locfileid: "105110867"
 
 > [!div class="nextstepaction"]
 > [Communication Services のリソースを作成して管理する](../quickstarts/create-communication-resource.md)
-> [Azure CLI から Azure Active Directory マネージド ID アプリケーションを作成する](../quickstarts/managed-identity-from-cli.md) 
+> [Azure CLI から Azure Active Directory マネージド ID アプリケーションを作成する](../quickstarts/identity/service-principal-from-cli.md) 
 > [ユーザー アクセス トークンを作成する](../quickstarts/access-tokens.md)
 
 詳細については、次の記事を参照してください。

@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: e70bfd12b018e785e7b3b91e098c99fea1101c04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07c850cf98ffddf01cb4479affdb62d30a5bb522
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100093099"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253884"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>Perimeter 81 アクティビティ ログを Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Azure Sentinel の Perimeter 81 データ コネクタは、現在パブリック プレビュー段階にあります。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、[Perimeter 81 アクティビティ ログ](https://www.perimeter81.com/) アプライアンスを Azure Sentinel に接続する方法について説明します。 Perimeter 81 アクティビティ ログ コネクタを使用すると、Perimeter 81 データを Azure Sentinel に簡単に取り込むことができます。これにより、ブック内で表示し、これを利用してカスタム アラートを作成し、調査を向上させる目的で組み入れることができます。
 
@@ -62,6 +64,6 @@ Perimeter 81 アクティビティ ログでは、ログを統合して、Azure 
 
 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

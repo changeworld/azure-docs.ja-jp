@@ -12,12 +12,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 05/10/2021
-ms.openlocfilehash: ea50d8f4fd614d450685c7efa3004c8853eb8643
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1bbbf7266fdcac552972f563e0d958bf035de984
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966877"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751348"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -170,9 +170,6 @@ ms.locfileid: "111966877"
 
 1 つまたは複数のフェールオーバー グループを異なるリージョンの 2 つのサーバー (プライマリおよびセカンダリ サーバー) 間に作成できます。 各グループには、プライマリ リージョンに発生した機能停止によりすべてまたは一部のプライマリ データベースが使用できなくなった際にユニットとして復元できる、1 つまたは複数のデータベースを含めることができます。 フェールオーバー グループは、プライマリと同じサービスの目的を共有する geo セカンダリ データベースを作成します。 既にある geo レプリケーションのリレーションシップをこのフェールオーバー グループに追加する場合は、その geo セカンダリが、プライマリと同じサービス レベルおよびコンピューティング サイズで構成されていることを確認してください。
   
-> [!IMPORTANT]
-> 異なるサブスクリプションにある 2 つのサーバー間でのフェールオーバー グループの作成は、現在、Azure SQL Database ではサポートされていません。 フェールオーバー グループを作成した後で、プライマリ サーバーまたはセカンダリ サーバーを別のサブスクリプションに移動した場合、フェールオーバー要求やその他の操作が失敗する可能性があります。
-
 ### <a name="using-read-write-listener-for-oltp-workload"></a>OLTP ワークロードに読み取り/書き込みのリスナーを使用する
 
 OLTP 操作を実行するときに、サーバー URL として `<fog-name>.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。
@@ -374,7 +371,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL Managed Instance のインスタンスによって使用される仮想ネットワークは、[VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) または [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 経由で接続されている必要があります。 2 つの仮想ネットワークがオンプレミスのネットワーク経由で接続されている場合、ポート 5022 および 11000-11999 をブロックするファイアウォール規則がないことを確認します。 グローバル VNet ピアリングはサポート対象ですが、次の注記で説明する制限事項があります。
 
    > [!IMPORTANT]
-   > [2020 年 9 月 22 日に、新しく作成された仮想クラスターに対するグローバル仮想ネットワーク ピアリングのサポートが発表されました](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 つまり、この発表日の後に空のサブネット内に作成された SQL Managed Instance のほか、これらのサブネット内に作成されたそれ以降のすべてのマネージド インスタンスでグローバル仮想ネットワーク ピアリングがサポートされます。 その他のすべての SQL Managed Instance では、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)のために、ピアリングのサポートが同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 この発表日の前に作成された仮想クラスターの SQL Managed Instance でグローバル仮想ネットワーク ピアリングを使用できるようにするには、そのインスタンス上で[メンテナンス期間](./maintenance-window.md)を構成することを検討してください。それにより、そのインスタンスが、グローバル仮想ネットワーク ピアリングをサポートする新しい仮想クラスターに移動されます。
+   > [2020 年 9 月 22 日に、新しく作成された仮想クラスターに対するグローバル仮想ネットワーク ピアリングのサポートが発表されました](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 つまり、この発表日の後に空のサブネット内に作成された SQL Managed Instance のほか、これらのサブネット内に作成されたそれ以降のすべてのマネージド インスタンスでグローバル仮想ネットワーク ピアリングがサポートされます。 その他のすべての SQL Managed Instance では、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)のために、ピアリングのサポートが同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 この発表日の前に作成された仮想クラスターの SQL Managed Instance でグローバル仮想ネットワーク ピアリングを使用できるようにするには、そのインスタンス上で[メンテナンス期間](./maintenance-window.md)を構成することを検討してください。それにより、そのインスタンスが、グローバル仮想ネットワーク ピアリングをサポートする新しい仮想クラスターに移動されます。
 
 - 2 つの SQL Managed Instance VNet に、重複する IP アドレスを含めることはできません。
 - 他のマネージド インスタンスのサブネットからの接続では、インバウンドおよびアウトバウンドでポート 5022 およびその範囲の 11000 から 12000 を開くように、ネットワーク セキュリティ グループ (NSG) を設定する必要があります。 これで、インスタンス間のレプリケーション トラフィックを許可します。

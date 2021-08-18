@@ -4,12 +4,12 @@ description: Shared Access Signature を使用して Service Bus のアクセス
 ms.topic: article
 ms.date: 04/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 622a1dd877be98053fdb9b21bfbb40a81c749f02
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5659e159604c80ffe19cbc4b57dea5d99c1acb98
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760627"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379818"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -68,7 +68,7 @@ Shared Access Signature の使用に関する次の推奨事項に従うと、�
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Shared Access Signature 認証の構成
 
-共有アクセス承認ポリシーは、Service Bus の名前空間、キュー、トピックに構成できます。 Service Bus サブスクリプションにおける構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。 この手順を示す作業サンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) に関するサンプルを参照してください。
+共有アクセス承認ポリシーは、Service Bus の名前空間、キュー、トピックに構成できます。 Service Bus サブスクリプションにおける構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。 
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 

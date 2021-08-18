@@ -3,12 +3,12 @@ title: Azure Event Hubs のイベントにカスタム データを追加する
 description: この記事では、Azure Event Hubs のイベントにカスタム データを追加する方法について説明します。
 ms.topic: how-to
 ms.date: 03/19/2021
-ms.openlocfilehash: 3362b6ac4b0d624969aa3ba36d2ebc83b8777cf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e3f94228c6f2fbe5d533635a01062c701aa9664
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104893401"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297534"
 ---
 # <a name="add-custom-data-to-events-in-azure-event-hubs"></a>Azure Event Hubs のイベントにカスタム データを追加する
 イベントは主に不透明なバイトのセットで構成されるため、その処理方法について、これらのイベントのコンシューマーが、情報に基づいた決定を行うことが困難な場合があります。 イベントの発行元がより優れたコンテキストをコンシューマーに提供できるようにするために、イベントに、一連のキーと値のペアの形式でカスタム メタデータを含めることもできます。 メタデータを含める一般的なシナリオの 1 つは、イベントに含まれるデータの種類に関するヒントを提供して、コンシューマーがその形式を理解し、適切に逆シリアル化できるようにすることです。
@@ -62,4 +62,4 @@ let eventData = { body: "First event", properties: { "event-type": "com.microsof
 次のクイック スタートおよびサンプルを参照してください。 
 
 - クイックスタート: [.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md)
-- GitHub のサンプル: [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)、[Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples)、[Python](https://github.com/Azure/azure-sdk-for-python/blob/azure-eventhub_5.3.1/sdk/eventhub/azure-eventhub/samples)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)、[TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- GitHub のサンプル: [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)、[Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples)、[Python](https://github.com/Azure/azure-sdk-for-python/blob/azure-eventhub_5.3.1/sdk/eventhub/azure-eventhub/samples)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/javascript)、[TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/typescript)

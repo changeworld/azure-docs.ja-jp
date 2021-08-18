@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 42bddf07ed4ac4c539ba832b54ec20216533d16e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 19b69e688936f0e0bfe1ed69938e17fe8a514ea9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110487244"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801009"
 ---
 #### <a name="windows"></a>[Windows](#tab/windows/)
 ```json
@@ -57,20 +57,25 @@ ms.locfileid: "110487244"
         "sku": "2019-Datacenter",
         "storageProfile": {
             "dataDisks": [{
+                "bytesPerSecondThrottle": "979202048",
                 "caching": "None",
                 "createOption": "Empty",
+                "diskCapacityBytes": "274877906944",
                 "diskSizeGB": "1024",
                 "image": {
-                    "uri": ""
+                  "uri": ""
                 },
+                "isSharedDisk": "false",
+                "isUltraDisk": "true",
                 "lun": "0",
                 "managedDisk": {
-                    "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
-                    "storageAccountType": "Standard_LRS"
+                  "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                  "storageAccountType": "Standard_LRS"
                 },
                 "name": "exampledatadiskname",
+                "opsPerSecondThrottle": "65280",
                 "vhd": {
-                    "uri": ""
+                  "uri": ""
                 },
                 "writeAcceleratorEnabled": "false"
             }],
@@ -183,20 +188,25 @@ ms.locfileid: "110487244"
         "sku": "18.04-LTS",
         "storageProfile": {
             "dataDisks": [{
+                "bytesPerSecondThrottle": "979202048",
                 "caching": "None",
                 "createOption": "Empty",
+                "diskCapacityBytes": "274877906944",
                 "diskSizeGB": "1024",
                 "image": {
-                    "uri": ""
+                  "uri": ""
                 },
+                "isSharedDisk": "false",
+                "isUltraDisk": "true",
                 "lun": "0",
                 "managedDisk": {
-                    "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
-                    "storageAccountType": "Standard_LRS"
+                  "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                  "storageAccountType": "Standard_LRS"
                 },
                 "name": "exampledatadiskname",
+                "opsPerSecondThrottle": "65280",
                 "vhd": {
-                    "uri": ""
+                  "uri": ""
                 },
                 "writeAcceleratorEnabled": "false"
             }],

@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
-manager: philmea
-ms.openlocfilehash: 5ac209dc898c2d30f8d50a8989b188ef5a9f5046
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 15308fa003bdfaa2912f3be0892674907af5d409
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257672"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745857"
 ---
 # <a name="azure-maps-weather-services-coverage"></a>Azure Maps Weather Service の対象範囲
 

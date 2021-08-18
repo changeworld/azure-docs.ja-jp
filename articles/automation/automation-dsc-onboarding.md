@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: c310003bb7c9120211e3cf74e240e51d4a10b20c
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 8d35eee9d0c205e2d55093d1a6bcec1d762c78a8
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891772"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651640"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Azure Automation State Configuration を有効にする
 
@@ -47,7 +47,7 @@ Azure Automation State Configuration では、Azure portal、Azure Resource Mana
 
 ### <a name="enable-a-vm-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して VM を有効化する
 
-Azure Resource Manager テンプレートを使用して State Configuration に対して VM を有効化してインストールできます。 State Configuration に対して既存の VM を有効化する例のテンプレートについては、「[Desired State Configuration サービスによって管理されるサーバー](https://azure.microsoft.com/resources/templates/automation-configuration/)」を参照してください。 仮想マシン スケール セットを管理する場合のテンプレートの例については、「[Azure Automation によって管理される仮想マシンスケール セットの構成](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)」を参照してください。
+Azure Resource Manager テンプレートを使用して State Configuration に対して VM を有効化してインストールできます。 State Configuration に対して既存の VM を有効化する例のテンプレートについては、「[Desired State Configuration サービスによって管理されるサーバー](https://azure.microsoft.com/resources/templates/automation-configuration/)」を参照してください。 仮想マシン スケール セットを管理する場合のテンプレートの例については、「[Azure Automation によって管理される仮想マシンスケール セットの構成](https://azure.microsoft.com/resources/templates/vmss-automation-dsc/)」を参照してください。
 
 ### <a name="enable-machines-using-powershell"></a>PowerShell を使用してマシンを有効化する
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: f716245d93727a0447bd1c67924ce7577c70b503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c11e6804b507fcaa838a83cf9eba102cbca381f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201293"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727907"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API で実行された操作の要求ユニット使用量の確認
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB では、多くの API (SQL、MongoDB、Cassandra、Gremlin、Ta
 
 すべてのデータベース操作のコストは Azure Cosmos DB によって正規化され、要求ユニット (RU) によって表されます。 要求の料金は、すべてのデータベース操作で使用される要求ユニットです。 RU は、Azure Cosmos DB によってサポートされるデータベース操作を実行するために必要な CPU、IOPS、メモリなどのシステム リソースを抽象化する、パフォーマンスの通貨と考えることができます。 Azure Cosmos コンテナーの操作にどの API 使用するかに関係なく、コストは RU によって測定されます。 データベース操作が書き込み、ポイント読み取り、またはクエリのいずれの場合でも、コストは常に RU で測定されます。 詳細については、[要求ユニットとその考慮事項](request-units.md)に関する記事を参照してください。
 
-この記事では、Azure Cosmos DB SQL API のコンテナーに対して実行された任意の操作の[要求ユニット](request-units.md) (RU) 消費量を確認するさまざまな方法を紹介します。 別の API を使用している場合は、RU の使用量を確認する方法について、[MongoDB の API](find-request-unit-charge-mongodb.md)、[Cassandra API](find-request-unit-charge-cassandra.md)、[Gremlin API](find-request-unit-charge-gremlin.md)、[Table API](find-request-unit-charge-table.md) の記事を参照してください。
+この記事では、Azure Cosmos DB SQL API のコンテナーに対して実行された任意の操作の[要求ユニット](request-units.md) (RU) 消費量を確認するさまざまな方法を紹介します。 別の API を使用している場合は、RU の使用量を確認する方法について、[MongoDB の API](mongodb/find-request-unit-charge-mongodb.md)、[Cassandra API](cassandra/find-request-unit-charge-cassandra.md)、[Gremlin API](find-request-unit-charge-gremlin.md)、[Table API](table/find-request-unit-charge.md) の記事を参照してください。
 
 この消費量は現在、Azure portal を使用するか、いずれかの SDK を通じて Azure Cosmos DB から返された応答を調べることによってのみ測定できます。 SQL API を使用している場合、Azure Cosmos コンテナーに対する操作の RU 消費量をいくつかの方法で確認できます。
 

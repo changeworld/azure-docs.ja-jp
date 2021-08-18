@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69e5aeff345bdf66d1b171738a2fbf14c7f8b15c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94365569"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453486"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>報酬スコアは、パーソナル化の成功を示します
 
-報酬スコアは、パーソナル化の選択肢である [RewardActionID](/rest/api/cognitiveservices/personalizer/rank/rank#response) がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。
+報酬スコアは、パーソナル化の選択肢である [RewardActionID](/rest/api/personalizer/1.0/rank/rank#response) がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。
 
 Personalizer は、報酬を評価することにより、機械学習モデルをトレーニングします。
 
@@ -22,7 +22,7 @@ Azure portal で Personalizer リソースの既定の報酬スコアを構成�
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Reward API を使用した Personalizer への報酬スコアの送信
 
-報酬は [Reward API](/rest/api/cognitiveservices/personalizer/events/reward) によって Personalizer に送信されます。 通常、報酬は、0 から 1 の数値です。 特定のシナリオでは負の報酬 (-1) を使用することができますが、強化学習 (RL) に馴染みがある場合にのみ使用してください。 Personalizer は、時間の経過に伴って報酬の合計が最大限可能な値に到達するようにモデルをトレーニングします。
+報酬は [Reward API](/rest/api/personalizer/1.0/events/reward) によって Personalizer に送信されます。 通常、報酬は、0 から 1 の数値です。 特定のシナリオでは負の報酬 (-1) を使用することができますが、強化学習 (RL) に馴染みがある場合にのみ使用してください。 Personalizer は、時間の経過に伴って報酬の合計が最大限可能な値に到達するようにモデルをトレーニングします。
 
 報酬は、ユーザーの動作が行われた後に送信されます。これは数日後になることがあります。 イベントに報酬がない、または既定の報酬しかないと見なされるまで Personalizer が待機する最大の時間は、Azure portal の[報酬の待機時間](#reward-wait-time)で構成されます。
 

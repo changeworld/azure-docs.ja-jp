@@ -2,22 +2,22 @@
 title: サインイン後、アプリのページでエラーが発生する | Microsoft Docs
 description: アプリがエラーを返すときに Azure AD サインインで問題を解決する方法。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mtillman
-ms.reviewer: asteen
+ms.author: davidmu
+ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ca0589da8cfa03553916755c4eb56ab74324501
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1c1910eb106e7a3e405f58ba672c38fa108544d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081751"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738898"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>ユーザーがサインインした後、アプリのページにエラー メッセージが表示される
 
@@ -25,11 +25,11 @@ ms.locfileid: "112081751"
 
 アプリが Azure AD からの応答を受け入れなかったいくつかの理由が考えられます。 エラー メッセージで、応答に不足しているものを明確に識別できない場合、次の手順を試してください。
 
--   アプリが Azure AD ギャラリーの場合は、[Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](./debug-saml-sso-issues.md)に関するページの手順に従ったことを確認します。
+- アプリが Azure AD ギャラリーの場合は、[Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](./debug-saml-sso-issues.md)に関するページの手順に従ったことを確認します。
 
--   [Fiddler](https://www.telerik.com/fiddler) などのツールを使用して、SAML の要求、応答、およびトークンをキャプチャします。
+- [Fiddler](https://www.telerik.com/fiddler) などのツールを使用して、SAML の要求、応答、およびトークンをキャプチャします。
 
--   SAML 応答をアプリのベンダーに送信し、不足しているものを確認します。
+- SAML 応答をアプリのベンダーに送信し、不足しているものを確認します。
 
 ## <a name="attributes-are-missing-from-the-saml-response"></a>SAML 応答に属性が不足している
 
@@ -58,7 +58,7 @@ Azure AD 応答で送信される属性を Azure AD の構成に追加するに�
 
    1. **[属性の追加]** を選択します。 **[名前]** を入力し、ドロップダウン リストから **[値]** を選択します。
 
-   1.  **[保存]** を選択します。 テーブルに新しい属性が表示されます。
+   1. **[保存]** を選択します。 テーブルに新しい属性が表示されます。
 
 9. 構成を保存します。
 
@@ -124,9 +124,9 @@ Azure AD によってデジタル署名される SAML トークンの部分を�
 
 9. 次のオプションの中から、アプリが期待する **[署名オプション]** を選択します。
 
-   * **SAML 応答の署名**
-   * **SAML 応答とアサーションへの署名**
-   * **SAML アサーションへの署名**
+   - **SAML 応答の署名**
+   - **SAML 応答とアサーションへの署名**
+   - **SAML アサーションへの署名**
 
    次回ユーザーがアプリにサインインするときに、Azure AD は選択した SAML 応答の部分に署名します。
 
@@ -160,4 +160,5 @@ Azure AD によってデジタル署名される SAML トークンの部分を�
    次回ユーザーがアプリにサインインするときに、Azure AD は SHA-1 アルゴリズムを使用して SAML トークンに署名します。
 
 ## <a name="next-steps"></a>次のステップ
+
 [Azure AD のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](./debug-saml-sso-issues.md)。

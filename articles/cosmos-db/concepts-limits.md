@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 0e954b06afb9e1db09aefc77d9c9b85204f6fe28
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: a33b7fb26b06b9a89b7e4f16699441fd9a5bbd0b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615235"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738375"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -229,7 +229,7 @@ Cosmos DB は、[SQL](./sql-query-getting-started.md) を使用した項目の�
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API に固有の制限
 
-Cosmos DB は、MongoDB に対して記述されたアプリケーションのための MongoDB ワイヤ プロトコルをサポートしています。 サポートされるコマンドおよびプロトコル バージョンは、[サポートされる MongoDB の機能と構文](mongodb-feature-support.md)に関するページで見つけることができます。
+Cosmos DB は、MongoDB に対して記述されたアプリケーションのための MongoDB ワイヤ プロトコルをサポートしています。 サポートされるコマンドおよびプロトコル バージョンは、[サポートされる MongoDB の機能と構文](mongodb/feature-support-32.md)に関するページで見つけることができます。
 
 次の表は、MongoDB 機能のサポートに固有の制限の一覧を示しています。 SQL (コア) API に関して説明されているその他のサービス制限も MongoDB API に適用されます。
 
@@ -280,10 +280,10 @@ Cosmos DB の中心概念である[グローバル分散](distribute-data-global
 以下のクイック スタートのいずれかに従って、実際に Azure Cosmos DB を使ってみましょう。
 
 * [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
-* [Azure Cosmos DB の MongoDB 用 API の概要](create-mongodb-nodejs.md)
-* [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
+* [Azure Cosmos DB の MongoDB 用 API の概要](mongodb/create-mongodb-nodejs.md)
+* [Azure Cosmos DB Cassandra API を使ってみる](cassandra/manage-data-dotnet.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
-* [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
+* [Azure Cosmos DB Table API を使ってみる](table/create-table-dotnet.md)
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)

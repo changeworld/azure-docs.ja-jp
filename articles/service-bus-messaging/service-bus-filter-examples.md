@@ -3,12 +3,12 @@ title: Azure Service Bus でサブスクリプション フィルターを設定
 description: この記事では、Azure Service Bus トピック サブスクリプションでフィルターとアクションを定義する例を示します。
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: bcbb72901ed8e2dfe0932163ee18683e0011ce70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8146e1be1af354b820ea0d3fed7ba9434a4d4e1d
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100656391"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302610"
 ---
 # <a name="set-subscription-filters-azure-service-bus"></a>サブスクリプション フィルターを設定する (Azure Service Bus)
 この記事では Service Bus トピック サブスクリプションでフィルターを設定する例をいくつか紹介します。 フィルターに関する概念情報については、[フィルター](topic-filters.md)に関する記事を参照してください。
@@ -62,7 +62,7 @@ DateTimeMp2-DateTimeMp1 <= @timespan
 ## <a name="using-in-and-not-in"></a>IN と NOT IN の使用
 
 ```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
+StoreId IN('Store1', 'Store2', 'Store3')
 
 sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
 

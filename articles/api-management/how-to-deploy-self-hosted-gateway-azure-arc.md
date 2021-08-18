@@ -6,12 +6,12 @@ ms.author: v-hhunter
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
-ms.openlocfilehash: 25a647df5d1afcb5212b4e717e1a70f9a68f4ac5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 71abc9acdcf8796591e7241a7fcfeded1cd3139a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387119"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283125"
 ---
 # <a name="deploy-an-azure-api-management-gateway-on-azure-arc-preview"></a>Azure API Management ゲートウェイを Azure Arc にデプロイする (プレビュー)
 
@@ -48,14 +48,15 @@ API Management ゲートウェイを Arc 対応 Kubernetes クラスターにデ
 1. プロビジョニング済みのゲートウェイ リソースで、サイド ナビゲーション メニューから **[デプロイ]** をクリックします。
 1. 次の手順のために、 **[トークン]** と **[構成 URL]** の値をメモします。
 1. Azure CLI で、`az k8s-extension create` コマンドを使用してゲートウェイ拡張機能をデプロイします。 `token` と `configuration URL` の値を入力します。
-    * 次の例では、`service.Type='NodePort'` 拡張機能構成を使用しています。 その他の[使用可能な拡張機能構成](#available-extension-configurations)も参照してください。
+    * 次の例では、`service.type='LoadBalancer'` 拡張機能構成を使用しています。 その他の[使用可能な拡張機能構成](#available-extension-configurations)も参照してください。
 
     ```azurecli
     az k8s-extension create --cluster-type connectedClusters --cluster-name <cluster-name> \
       --resource-group <rg-name> --name <extension-name> --extension-type Microsoft.ApiManagement.Gateway \
       --scope namespace --target-namespace <namespace> \
       --configuration-settings gateway.endpoint='<Configuration URL>' \
-      --configuration-protected-settings gateway.authKey='<token>' --release-train preview
+      --configuration-protected-settings gateway.authKey='<token>' \
+      --configuration-settings service.type='LoadBalancer' --release-train preview
     ```
 
     > [!TIP]
@@ -92,7 +93,7 @@ API Management ゲートウェイを Arc 対応 Kubernetes クラスターにデ
 | ------- | ----------- | 
 | `gateway.endpoint` | ゲートウェイ エンドポイントの構成 URL。 |
 | `gateway.authKey` | ゲートウェイにアクセスするためのトークン。 | 
-| `service.Type` | ゲートウェイのための Kubernetes サービス構成: `LoadBalancer`、`NodePort`、または `ClusterIP`。 |
+| `service.type` | ゲートウェイのための Kubernetes サービス構成: `LoadBalancer`、`NodePort`、または `ClusterIP`。 |
 
 ### <a name="log-analytics-settings"></a>Log Analytics の設定
 

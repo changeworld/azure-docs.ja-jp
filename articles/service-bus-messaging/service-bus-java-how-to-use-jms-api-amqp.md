@@ -4,12 +4,12 @@ description: Java Message Service (JMS) を Azure Service Bus と Advanced Messa
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 97031abaedaa3e5595e290fa0292646feb744d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6225f83cde584dae3cd5633584249c24a2e475e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90086693"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742973"
 ---
 # <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus と AMQP 1.0 で Java Message Service を使用する
 
@@ -150,7 +150,7 @@ Context context = new InitialContext(hashtable);
 
 package com.microsoft.azure.servicebus.samples.jmsqueuequickstart;
 
-import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
+import com.azure.core.amqp.implementation.ConnectionStringProperties;
 import org.apache.commons.cli.*;
 import org.apache.log4j.*;
 
@@ -177,10 +177,10 @@ public class JmsQueueQuickstart {
 
     public void run(String connectionString) throws Exception {
 
-        // The connection string builder is the only part of the azure-servicebus SDK library
+        // The connection string properties is the only part of the azure-servicebus SDK library
         // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
         // connection string. 
-        ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
+        ConnectionStringProperties csb = new ConnectionStringProperties(connectionString);
         
         // Set up JNDI context
         Hashtable<String, String> hashtable = new Hashtable<>();
@@ -197,7 +197,7 @@ public class JmsQueueQuickstart {
         // again to show the receive side separately with minimal clutter.
         {
             // Create connection
-            Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
+            Connection connection = cf.createConnection(csb.getSharedAccessKeyName(), csb.getSharedAccessKey());
             // Create session, no transaction, client ack
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
@@ -220,7 +220,7 @@ public class JmsQueueQuickstart {
 
         {
             // Create connection
-            Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
+            Connection connection = cf.createConnection(csb.getSharedAccessKeyName(), csb.getSharedAccessKey());
             connection.start();
             // Create session, no transaction, client ack
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ea9ed2c74651a7719533340a24c4741d4e25b805
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9d7606a259f46981f672cba114410f84d395615c
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605724"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091791"
 ---
 # <a name="display-feature-information"></a>機能情報を表示する
 
@@ -201,9 +201,8 @@ map.events.add((OnFeatureClick)(feature) -> {
     TextView tv = customView.findViewById(R.id.message);
     tv.setText(props.get("title").getAsString());
 
-    //Get the coordinates from the clicked feature and create a position object.
-    List<Double> c = ((Point)(f.geometry())).coordinates();
-    Position pos = new Position(c.get(0), c.get(1));
+    //Get the position of the clicked feature.
+    Position pos = MapMath.getPosition((Point)cluster.geometry());
 
     //Set the options on the popup.
     popup.setOptions(
@@ -218,6 +217,9 @@ map.events.add((OnFeatureClick)(feature) -> {
 
         //Optionally, hide the close button of the popup.
         //, closeButton(false)
+            
+        //Optionally offset the popup by a specified number of pixels.
+        //pixelOffset(new Pixel(10, 10))
     );
 
     //Open the popup.
@@ -249,9 +251,8 @@ map.events.add(OnFeatureClick { feature: List<Feature> ->
     val tv: TextView = customView.findViewById(R.id.message)
     tv.text = props!!["title"].asString
 
-    //Get the coordinates from the clicked feature and create a position object.
-    val c: List<Double> = (f.geometry() as Point?).coordinates()
-    val pos = Position(c[0], c[1])
+    //Get the position of the clicked feature.
+    val pos = MapMath.getPosition(f.geometry() as Point?);
 
     //Set the options on the popup.
     popup.setOptions( 
@@ -266,13 +267,16 @@ map.events.add(OnFeatureClick { feature: List<Feature> ->
 
         //Optionally, hide the close button of the popup.
         //, closeButton(false)
+            
+        //Optionally offset the popup by a specified number of pixels.
+        //pixelOffset(Pixel(10, 10))
     )
 
     //Open the popup.
     popup.open()
 
     //Return a boolean indicating if event should be consumed or continue bubble up.
-    return false
+    false
 })
 ```
 

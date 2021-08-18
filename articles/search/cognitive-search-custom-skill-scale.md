@@ -2,18 +2,17 @@
 title: カスタム スキルの拡張と管理
 titleSuffix: Azure Cognitive Search
 description: カスタム スキルを効率的にスケールアウトしてスループットを最大限に高めるためのツールと手法について説明します。 カスタム スキルでは、Azure Cognitive Search で AI によって強化されたインデックス作成パイプラインに追加できるカスタム AI モデルまたはロジックが呼び出されます。
-manager: luisca
-author: vkurpad
-ms.author: vikurpad
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: f80e78da5c7d226c704c8b13fc496e416f5d0f0d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6b44cc3bde1a2e36cdd902a7366df8841795891a
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125591"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728435"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>カスタム スキルを効率的にスケールアウトする
 

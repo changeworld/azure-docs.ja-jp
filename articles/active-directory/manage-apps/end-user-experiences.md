@@ -2,21 +2,21 @@
 title: アプリケーションのエンドユーザー エクスペリエンス - Azure Active Directory
 description: Azure Active Directory (Azure AD) には、組織内のエンド ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法が複数用意されています。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: mtillman
-ms.reviewer: arvindh
-ms.openlocfilehash: 9280cf669bb766ea82f2e668a56d2b3f743315fb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: lenalepa
+ms.openlocfilehash: 5cf4fe927d7079d866e90a789bb210730a6c4867
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081409"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738782"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
 
@@ -31,9 +31,9 @@ Azure Active Directory (Azure AD) には、組織内のエンド ユーザーに
 
 ## <a name="azure-ad-my-apps"></a>Azure AD のマイ アプリ
 
-マイ アプリ (https://myapps.microsoft.com ) は Web ベースのポータルで、Azure Active Directory の組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたアプリケーションを表示および起動することができます。 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) のエンド ユーザーの場合、マイ アプリを介してセルフサービスのグループ管理機能を利用することもできます。
+マイ アプリ (<https://myapps.microsoft.com> ) は Web ベースのポータルで、Azure Active Directory の組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたアプリケーションを表示および起動することができます。 [Azure Active Directory Premium](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) のエンド ユーザーの場合、マイ アプリを介してセルフサービスのグループ管理機能を利用することもできます。
 
-既定では、すべてのアプリケーションが 1 つのページにまとめて表示されます。 しかし、コレクションを使用して関連するアプリケーションをグループ化し、別々のタブで表示すれば、アプリケーションが見つけやすくなります。 たとえば、コレクションを使用して、特定の担当業務、タスク、プロジェクトなどに関連したアプリケーションの論理グループを作成することができます。 詳細については、「[マイ アプリ ポータルでコレクションを作成する](access-panel-collections.md)」を参照してください。 
+既定では、すべてのアプリケーションが 1 つのページにまとめて表示されます。 しかし、コレクションを使用して関連するアプリケーションをグループ化し、別々のタブで表示すれば、アプリケーションが見つけやすくなります。 たとえば、コレクションを使用して、特定の担当業務、タスク、プロジェクトなどに関連したアプリケーションの論理グループを作成することができます。 詳細については、「[マイ アプリ ポータルでコレクションを作成する](access-panel-collections.md)」を参照してください。
 
 マイ アプリは Azure portal から独立しているため、ユーザーが Azure サブスクリプションや Microsoft 365 サブスクリプションを持っている必要はありません。
 

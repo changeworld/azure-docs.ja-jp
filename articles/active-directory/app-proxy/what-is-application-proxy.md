@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: eecefae1c1bc2317038a519044a1b3bc10e8012f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6d2259dc066b1d4c1bc91418ad6f29616aaee259
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952085"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727771"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -109,7 +109,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 * **条件付きアクセス**。 ネットワークへの接続が確立される前に、多数のポリシー制御を適用できます。 条件付きアクセスを使用すると、自分のバックエンド アプリケーションにアクセスできるトラフィックの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成します。 条件付きアクセスの進化に伴い、Microsoft Cloud App Security (MCAS) との統合など、追加のセキュリティを提供するさまざまなコントロールが追加されています。 MCAS の統合により、条件付きアクセス ポリシーに基づいてセッションをリアルタイムで監視および制御する条件付きアクセスを活用して、[リアルタイム監視](./application-proxy-integrate-with-microsoft-cloud-application-security.md)用にオンプレミス アプリケーションを構成することができます。
 * **トラフィックの終了**。 バックエンド アプリケーションへのトラフィックはすべて、クラウド上のアプリケーション プロキシ サービスで終了し、セッションはバックエンド サーバーで再確立されます。 この接続戦略では、HTTP トラフィックを送信するためにバックエンド サーバーが公開されることはありません。 ファイアウォールが攻撃を受けないため、標的型 DoS (サービス拒否) 攻撃に対して優れた保護を実現します。
 * **すべてのアクセスが外向き**。 アプリケーション プロキシ コネクタは、ポート 80 と 443 を経由する、クラウド上のアプリケーション プロキシ サービスへのアウトバウンド接続のみを使用します。 インバウンド接続がないので、DMZ で着信接続またはコンポーネント用にファイアウォール ポートを開く必要はありません。 すべての接続は外向きであり、セキュリティで保護されたチャネル経由で行われます。
-* **セキュリティ分析と機械学習 (ML) ベースのインテリジェンス**。 アプリケーション プロキシは、Azure Active Directory の一部であるため、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) ([Premium P2 ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)が必要です) を利用できます。 Azure AD Identity Protection は、Microsoft の [Digital Crimes Unit](https://news.microsoft.com/stories/cybercrime/index.html) および [Microsoft Security Response Center](https://www.microsoft.com/msrc) からのデータ フィードと機械学習セキュリティ インテリジェンスを組み合わせて、侵害されたアカウントをプロアクティブに特定します。 Identity Protection は、危険度の高いサインインからリアルタイムで保護します。感染したデバイスからのアクセス、匿名ネットワークを通じたアクセス、通常とは異なる場所からのアクセスなどの要因も考慮して、セッションのリスク プロファイルを拡大します。 このリスク プロファイルが、リアルタイムの保護に使用されます。 これらのレポートとイベントの多くは、お客様の SIEM システムとの統合を可能にする API を通じて既に使用可能です。
+* **セキュリティ分析と機械学習 (ML) ベースのインテリジェンス**。 アプリケーション プロキシは、Azure Active Directory の一部であるため、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) ([Premium P2 ライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)が必要です) を利用できます。 Azure AD Identity Protection は、Microsoft の [Digital Crimes Unit](https://news.microsoft.com/stories/cybercrime/index.html) および [Microsoft Security Response Center](https://www.microsoft.com/msrc) からのデータ フィードと機械学習セキュリティ インテリジェンスを組み合わせて、侵害されたアカウントをプロアクティブに特定します。 Identity Protection は、危険度の高いサインインからリアルタイムで保護します。感染したデバイスからのアクセス、匿名ネットワークを通じたアクセス、通常とは異なる場所からのアクセスなどの要因も考慮して、セッションのリスク プロファイルを拡大します。 このリスク プロファイルが、リアルタイムの保護に使用されます。 これらのレポートとイベントの多くは、お客様の SIEM システムとの統合を可能にする API を通じて既に使用可能です。
 
 * **サービスとしてのリモート アクセス**。 リモート アクセスを可能にするために、オンプレミス サーバーの保守やパッチの適用について心配する必要がありません。 アプリケーション プロキシは Microsoft によるインターネット規模のサービスであるため、常に最新のセキュリティ パッチとアップグレードを取得できます。 パッチの適用されていないソフトウェアは、依然として多数の攻撃の的となっています。 国土安全保障省によれば、[標的型攻撃の 85% は可避することができます](https://www.us-cert.gov/ncas/alerts/TA15-119A)。 このサービス モデルを使用すれば、エッジ サーバーの管理という重荷から解放され、必要に迫られてパッチを適用する必要もなくなります。
 

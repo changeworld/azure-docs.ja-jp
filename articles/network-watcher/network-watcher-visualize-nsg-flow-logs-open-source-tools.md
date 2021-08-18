@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: aca8c75f262e472cbc770c052b86d6e760ee449a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4bf819a415f20b6f2b1c5ec4d29b50860e0e4fbf
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026473"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288520"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 
@@ -41,7 +41,7 @@ NSG のフロー ログを Elastic Stack に接続すると、Kibana ダッシ�
 
 #### <a name="install-elasticsearch"></a>Elasticsearch のインストール
 
-1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Azure でサポートされている JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) に関するドキュメントを参照してください。
+1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Azure でサポートされている JDK](/azure/developer/java/fundamentals/java-support-on-azure) に関するドキュメントを参照してください。
 2. お使いのシステムに適合するバイナリ パッケージをダウンロードします。
 
    ```bash

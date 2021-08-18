@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 81a0f0e01827c48518f2eb1fba062e9e6536d9df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 632b55b699df409049f77abecfca4c3cf75d3e73
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655699"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252672"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>F5 ASM を Azure Sentinel に接続する
 
 この記事では、F5 ASM データ コネクタを使用して、F5 ASM ログを Azure Sentinel に簡単にプルする方法について説明します。 これにより、ブックに F5 ASM データを表示し、それを使用してカスタムアラートを作成して組み込むことで、調査を向上させることができます。 Azure Sentinel に F5 ASM データがあることで、組織で使用している Web アプリケーションのセキュリティに関するより多くの分析情報が得られ、セキュリティ操作機能が強化されます。 
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="configure-your-f5-asm-to-send-cef-messages"></a>CEF メッセージを送信するように F5 ASM を構成する
 
@@ -42,6 +44,6 @@ ms.locfileid: "94655699"
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、F5 ASM を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

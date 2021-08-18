@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e91a6a8d17d9f5fe05b4e471d2f0b44577eef578
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1959c87043c4bce932070556556a6ba447802854
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669292"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652564"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell:Packer を使用して Azure に仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Windows ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどの OS およびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
@@ -23,7 +23,7 @@ Azure の各仮想マシン (VM) は、Windows ディストリビューション
 この記事は、2020 年 8 月 5 日に [Packer](https://www.packer.io/docs/install) バージョン 1.6.1 を使用して最後にテストされました。
 
 > [!NOTE]
-> Azure では、お客様独自のカスタム イメージを定義して作成できるサービス (Azure Image Builder (プレビュー)) が提供されるようになっています。 Azure Image Builder は Packer が基になっているため、既存の Packer シェル プロビジョナー スクリプトを使うこともできます。 Azure Image Builder の概要については、「[Azure Image Builder で Windows VM を作成する](image-builder.md)」をご覧ください。
+> Azure では、お客様独自のカスタム イメージを定義および作成するためのサービスである Azure Image Builder が提供されるようになりました。 Azure Image Builder は Packer が基になっているため、既存の Packer シェル プロビジョナー スクリプトを使うこともできます。 Azure Image Builder の概要については、「[Azure Image Builder で Windows VM を作成する](image-builder.md)」をご覧ください。
 
 ## <a name="create-azure-resource-group"></a>Azure リソース グループを作成する
 ビルド プロセス中、Packer はソース VM をビルドする際に一時的な Azure リソースを作成します。 イメージとして使用するためにそのソース VM をキャプチャするには、リソース グループを定義する必要があります。 Packer のビルド プロセスからの出力は、このリソース グループに格納されます。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/13/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1910a9c62b1d1ab6de130ace3d759243d9ff36d6
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652022"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687859"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Azure Active Directory パスワード保護を使用して不適切なパスワードを排除する
 
@@ -220,7 +220,7 @@ Azure AD パスワード保護は、パスワード スプレー攻撃で使用�
 > [!NOTE]
 > Azure AD に同期されていないオンプレミスの AD DS ユーザーも、同期されたユーザーに対する既存のライセンスに基づく Azure AD パスワード保護の利点を受けることができます。
 
-追加のライセンス情報 (コストを含む) については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
+追加のライセンス情報 (コストを含む) については、「[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

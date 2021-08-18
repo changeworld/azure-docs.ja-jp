@@ -3,15 +3,15 @@ title: Azure Cosmos DB での操作のスループットの使用状況を監視
 description: Azure Cosmos DB で、操作のスループットまたは要求ユニットの使用状況を監視する方法について説明します。 Azure Cosmos DB アカウントの所有者は、より多くの要求ユニットを使用している操作を把握できます。
 ms.service: cosmos-db
 ms.topic: how-to
-author: kanshiG
-ms.author: govindk
+ms.author: esarroyo
+author: StefArroyo
 ms.date: 04/09/2020
-ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35968a21f0d3143b089cb8418f614e2c776da8cb
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93098248"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359643"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Azure Cosmos DB で操作のスループットまたは要求ユニットの使用状況を監視する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

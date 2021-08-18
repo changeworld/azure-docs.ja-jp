@@ -2,14 +2,14 @@
 title: サービスのクォータと制限
 description: 既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 07/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: 6e17a90cc573205bcb964a0428e0b7320323b8a6
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ad5701c65f9f2068a1a68084b755f8d0a013b8c8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553551"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465576"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -63,7 +63,7 @@ Batch によってサポートされる各 VM シリーズに対してコア ク
 | **リソース** | **上限** |
 | --- | --- |
 | [同時実行タスク数](batch-parallel-node-tasks.md) | ノードのコア数 x 4 |
-| [アプリケーション](batch-application-packages.md) 数 | 20 |
+| [アプリケーション](batch-application-packages.md) 数 | 200 |
 | アプリケーションあたりのアプリケーション パッケージ数 | 40 |
 | プールあたりのアプリケーション パッケージ数 | 10 |
 | タスクの最長有効期間 | 180 日<sup>1</sup> |

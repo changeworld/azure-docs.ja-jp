@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 4080fc274f03cbc4e5ba48b3c3e2ac5699886c96
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d965d5a65fa6f5015b1e39b22238f3aa6fd1d7b7
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377211"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413536"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>チュートリアル: ローカルでイベントを発行してサブスクライブする
 
@@ -58,7 +58,7 @@ ms.locfileid: "110377211"
    * **[イメージの URI]** : `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **[コンテナーの作成オプション]** :
 
-   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+   [!INCLUDE [event-grid-edge-module-version-update](../includes/event-grid-edge-module-version-update.md)]
 
     ```json
         {
@@ -160,7 +160,7 @@ ms.locfileid: "110377211"
 
 サブスクライバーは、トピックに発行されたイベントの受信登録ができます。 イベントを受信するには、関心のあるトピックの Event Grid サブスクリプションを作成する必要があります。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 次の内容を含む subscription.json を作成します。 ペイロードの詳細については、[API のドキュメント](api.md)を参照してください
 

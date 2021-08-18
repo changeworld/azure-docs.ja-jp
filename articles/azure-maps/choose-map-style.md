@@ -7,14 +7,13 @@ ms.date: 04/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: ec79f1427e4561447b80f500adabfa8e8400d7f5
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 9ea39da9b509d89ee431e9aa992e7312c86558d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325195"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747762"
 ---
 # <a name="change-the-style-of-the-map"></a>マップのスタイルを変更する
 

@@ -3,13 +3,13 @@ title: Azure Windows Communication Foundation (WCF) Relay ハイブリッド オ
 description: Azure Relay を使用してオンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する方法について説明します。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 06/23/2020
-ms.openlocfilehash: 6f12133277d60560a19f35dead3a30be7c934adf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 06/23/2021
+ms.openlocfilehash: 2b332db84d3350b04a0ac4adfb94639c5f167c39
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137709"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669809"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Azure Relay を使用してオンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する
 
@@ -70,7 +70,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 最初の手順として、名前空間を作成し、[Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) キーを取得します。 名前空間により、リレー サービスが公開する各アプリケーションにアプリケーション境界が設けられます。 SAS キーは、サービスの名前空間が作成されると、システムによって自動的に生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Azure が認証する資格情報になります。
 
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 ## <a name="create-an-on-premises-server"></a>オンプレミスのサーバーを作成する
 

@@ -2,21 +2,22 @@
 title: アクティビティ レポートを使用して AD FS アプリを Azure Active Directory に移行する | Microsoft Docs
 description: Active Directory フェデレーション サービス (AD FS) のアプリケーション アクティビティ レポートを使用すると、AD FS から Azure Active Directory (Azure AD) にアプリケーションをすばやく移行できます。 AD FS 用のこの移行ツールでは、Azure AD との互換性を識別して、移行に関するガイダンスを得られます。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 01/14/2019
-ms.author: mtillman
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5baf0ea07369ad8029c0f556ced16de1f2209dbc
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: alamaral
+ms.openlocfilehash: 6b60479d1205acdd0d18311791adfc4924913c4e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079231"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738774"
 ---
 # <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポートを使用してアプリケーションを Azure AD に移行する
 
@@ -36,15 +37,15 @@ AD FS アプリケーション アクティビティ データは、グローバ
 * アプリケーションにアクセスするには、自分の組織で現在 AD FS が使用されている必要があります。
 * 自分の Azure AD テナントで Azure AD Connect Health が有効になっている必要があります。
 * Azure AD Connect Health for AD FS エージェントがインストールされている必要があります。
-   * [Azure AD Connect Health の詳細を確認する](../hybrid/how-to-connect-health-adfs.md)
-   * [Azure AD Connect Health のセットアップと AD FS エージェントのインストールを開始する](../hybrid/how-to-connect-health-agent-install.md)
+* [Azure AD Connect Health の詳細を確認する](../hybrid/how-to-connect-health-adfs.md)
+* [Azure AD Connect Health のセットアップと AD FS エージェントのインストールを開始する](../hybrid/how-to-connect-health-agent-install.md)
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 >Azure AD Connect Health をインストールした後、いくつかの理由により、想定しているアプリケーションの一部が表示されません。 AD FS アプリケーション アクティビティ レポートには、過去 30 日間にユーザー ログインがあった AD FS 証明書利用者のみが表示されます。 また、レポートには、Office 365 などの Microsoft 関連の証明書利用者は表示されません。
 
-## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>移行可能な AD FS アプリケーションを検出する 
+## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>移行可能な AD FS アプリケーションを検出する
 
-AD FS アプリケーション アクティビティ レポートは、Azure portal の Azure AD の **[使用状況と分析情報]** レポートで取得できます。 AD FS アプリケーション アクティビティ レポートでは、各 AD FS アプリケーションを分析して、そのままの状態で移行できるかどうか、または追加のレビューが必要かどうかを判断します。 
+AD FS アプリケーション アクティビティ レポートは、Azure portal の Azure AD の **[使用状況と分析情報]** レポートで取得できます。 AD FS アプリケーション アクティビティ レポートでは、各 AD FS アプリケーションを分析して、そのままの状態で移行できるかどうか、または追加のレビューが必要かどうかを判断します。
 
 1. AD FS アプリケーション アクティビティ データにアクセスできる管理者ロール (グローバル管理者、レポート閲覧者、セキュリティ閲覧者、アプリケーション管理者、またはクラウド アプリケーション管理者) を使用して [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -62,7 +63,7 @@ AD FS アプリケーション アクティビティ レポートは、Azure por
 
    * **[追加の手順が必要です]** は、アプリケーションの設定の一部が Azure AD でサポートされていないため、現在の状態ではアプリケーションを移行できないことを意味します。
 
-## <a name="evaluate-the-readiness-of-an-application-for-migration"></a>移行に向けたアプリケーションの準備状況を評価する 
+## <a name="evaluate-the-readiness-of-an-application-for-migration"></a>移行に向けたアプリケーションの準備状況を評価する
 
 1. AD FS アプリケーション アクティビティの一覧で、 **[移行の状態]** 列の状態をクリックして、移行の詳細を開きます。 合格した構成テストの概要のほか、移行の潜在的な問題が表示されます。
 
@@ -129,16 +130,12 @@ AD FS でアプリケーションの要求規則を構成している場合は�
 ### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>一部の AD FS アプリケーションがレポートに表示されません
 
  Azure AD Connect Health がインストールされているにも関わらずインストールを求めるメッセージが引き続き表示される場合、または、一部の AD FS アプリケーションがレポートに表示されない場合は、アクティブな AD FS アプリケーションがないか、AD FS アプリケーションが Microsoft アプリケーションである可能性があります。
- 
+
  AD FS アプリケーション アクティビティ レポートには、過去 30 日間にアクティブなユーザー サインインがあった、組織内のすべての AD FS アプリケーションが一覧表示されます。 また、レポートには、Office 365 など、AD FS 内の Microsoft 関連の証明書利用者は表示されません。 たとえば、"urn:federation:MicrosoftOnline"、"microsoftonline"、" microsoft:winhello:cert:prov:server" といった名前の証明書利用者は一覧に表示されません。
-
-
-
-
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ビデオ: AD FS アクティビティ レポートを使用してアプリケーションを移行する方法](https://www.youtube.com/watch?v=OThlTA239lU)
-- [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)
-- [アプリへのアクセスを管理する](what-is-access-management.md)
-- [Azure AD Connect フェデレーション](../hybrid/how-to-connect-fed-whatis.md)
+* [ビデオ: AD FS アクティビティ レポートを使用してアプリケーションを移行する方法](https://www.youtube.com/watch?v=OThlTA239lU)
+* [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)
+* [アプリへのアクセスを管理する](what-is-access-management.md)
+* [Azure AD Connect フェデレーション](../hybrid/how-to-connect-fed-whatis.md)

@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2020
+ms.date: 06/30/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 936351dd9f2b19fab4ea95012b118d00d0c87299
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548752"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749057"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management の Azure AD ロールのための PowerShell
 
 この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して Privileged Identity Management (PIM) で Azure AD ロールを管理する手順について説明します。 また、Azure AD PowerShell のモジュールを使用して設定する方法についても説明します。
-
-> [!Note]
-> Microsoft の公式 PowerShell は、Azure AD Privileged Identity Management の新しいバージョンを使用している場合にのみサポートされます。 Privileged Identity Management にアクセスして、[クイック スタート] ブレードに次のバナーが表示されていることを確認してください。
-> [![お使いの Privileged Identity Management のバージョンを確認する](media/pim-how-to-add-role-to-user/pim-new-version.png "[Azure AD] > [Privileged Identity Management] を選択する")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) このバナーが表示されていない場合は、更新されたエクスペリエンスを現在数週間かけて提供するプロセスが進行中のため、しばらくお待ちください。
-> Privileged Identity Management PowerShell コマンドレットは、Azure AD Preview モジュールでサポートされています。 別のモジュールを使用していて、そのモジュールがエラー メッセージを返すようになった場合は、この新しいモジュールの使用を開始してください。 異なるモジュール上に構築された実稼働システムがある場合は、[pim_preview@microsoft.com](mailto:pim_preview@microsoft.com) にご連絡ください。
 
 ## <a name="installation-and-setup"></a>インストールとセットアップ
 
@@ -159,7 +154,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD のカスタム ロールを割り当てる](azure-ad-custom-roles-assign.md)
-- [Azure AD のカスタム ロールの割り当てを削除または更新する](azure-ad-custom-roles-update-remove.md)
-- [Azure AD のカスタム ロールの割り当てを構成する](azure-ad-custom-roles-configure.md)
 - [Azure AD のロールの定義](../roles/permissions-reference.md)

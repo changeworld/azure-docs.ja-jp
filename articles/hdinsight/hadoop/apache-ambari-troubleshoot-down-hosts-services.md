@@ -4,12 +4,12 @@ description: Azure HDInsight でダウンしたホストとサービスが表示
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/02/2019
-ms.openlocfilehash: 0d3a393dc1cbd51b83edc0b6989bb5e7a5670a29
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b8cd9c4e00eb3dc454098dbd127622342bc690f7
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943270"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291459"
 ---
 # <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で Apache Ambari UI にダウンしたホストとサービスが表示される
 
@@ -36,4 +36,4 @@ $>telnet headnodehost 8440
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

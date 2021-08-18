@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d66b9cb314ee9cf200a18949f774ff8a8b4a1f6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699081"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725301"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
@@ -169,7 +169,7 @@ SNAT ポートの使用状況と割り当てを確認するには:
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>サービスに対する受信/送信接続の試行を確認する方法
 <details>
   <summary>expand</summary>
-SYN パケット メトリックは、特定のフロントエンドに関連付けられている、到着した TCP SYN パケットまたは送信された TCP SYN パケット ([送信フロー](./load-balancer-outbound-connections.md)の場合) の量を示します。 このメトリックを使用して、サービスへの TCP 接続の試行を把握できます。
+SYN パケット メトリックは、特定のフロントエンドに関連付けられている、到着した TCP SYN パケットまたは送信された TCP SYN パケット ([送信フロー](../load-balancer-outbound-connections.md)の場合) の量を示します。 このメトリックを使用して、サービスへの TCP 接続の試行を把握できます。
 
 ほとんどのシナリオでは、集計として **Sum** を使用します。
 

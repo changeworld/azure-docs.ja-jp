@@ -3,8 +3,8 @@ title: 'チュートリアル: AWS Single Sign-On を構成して Azure Active D
 description: Azure AD から AWS Single Sign-On へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 54a9f704-7877-4ade-81af-b8d3f7fb9255
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2021
-ms.author: Zhchia
-ms.openlocfilehash: 25a2a370e4a88348c2acac931e5f3e1a6f247d1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 97359ee9b4475f06bc1f09635f9fdb788fcbc19b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599682"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764846"
 ---
 # <a name="tutorial-configure-aws-single-sign-on-for-automatic-user-provisioning"></a>チュートリアル: AWS Single Sign-On を構成して自動ユーザー　プロビジョニングに対応させる
 

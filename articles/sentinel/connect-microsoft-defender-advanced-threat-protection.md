@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 0db4e0fe0472c75f1eae392980ae697f53007244
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc8b7fc5d1df60295bb047abc5168a434ca5c6c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98623368"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121780885"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Microsoft Defender for Endpoint (以前の Microsoft Defender ATP) からアラートを接続する
 
@@ -28,6 +28,8 @@ ms.locfileid: "98623368"
 > - **Microsoft Defender for Endpoint** は、以前は **Microsoft Defender Advanced Threat Protection** または **MDATP** と呼ばれていました。
 >
 >     一定の期間は、古い名前が製品 (Azure Sentinel のデータ コネクタなど)で引き続き使用される場合があります。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 [Microsoft Defender for Endpoint](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) コネクタを使用すると、Microsoft Defender for Endpoint から Azure Sentinel にアラートをストリーム配信できます。 これにより、組織全体のセキュリティ イベントをより包括的に分析し、効果的かつ迅速に対応するためのプレイブックを構築することができます。
 
@@ -53,5 +55,5 @@ Microsoft Defender for Endpoint がデプロイされ、データの取り込み
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Microsoft Defender for Endpoint を Azure Sentinel に接続する方法を学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

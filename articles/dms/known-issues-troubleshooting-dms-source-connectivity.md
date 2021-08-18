@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: edc420cb1e79ed6d99a55524764cb164bd2edaf5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e3dcc8f6bba6830eec9f20732da9e42f03d5b28e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641352"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724419"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>ソース データベースへの接続時の DMS エラーのトラブルシューティング
 
@@ -86,7 +86,6 @@ ms.locfileid: "105641352"
 ## <a name="known-issues"></a>既知の問題
 
 * [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](./index.yml)
-* [Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-mysql-online.md)
 * [Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>次のステップ
@@ -94,4 +93,4 @@ ms.locfileid: "105641352"
 * [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0&preserve-view=true#data_migration) に関する記事を確認する。
 * 「[Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](../mysql/howto-server-parameters.md)」を確認する。
 * 「[Azure Database Migration Service を使用するための前提条件の概要](./pre-reqs.md)」を確認する。
-* 「[Azure Database Migration Service の使用に関する FAQ](./faq.md)」を確認する。
+* 「[Azure Database Migration Service の使用に関する FAQ](./faq.yml)」を確認する。

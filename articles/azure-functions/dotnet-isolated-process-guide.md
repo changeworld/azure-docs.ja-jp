@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 06/01/2021
 ms.custom: template-concept
 recommendations: false
-ms.openlocfilehash: 34a4a37d351f144d00d926de0544c8ae56e9a314
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 5f8d78f7080c1505db4a82d9393801ad8418beed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901465"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751477"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure において関数を .NET 5.0 で実行するためのガイド
 
@@ -44,7 +44,7 @@ ms.locfileid: "111901465"
 .NET 分離関数プロジェクトとは、基本的には .NET 5.0 を対象とする .NET コンソール アプリ プロジェクトです。 以下は、.NET 分離プロジェクトで必要となる基本的なファイルです。
 
 + [host.json](functions-host-json.md) ファイル
-+ [local.settings.json](functions-run-local.md#local-settings-file) ファイル
++ [local.settings.json](functions-develop-local.md#local-settings-file) ファイル
 + プロジェクトと依存関係を定義する C# プロジェクト ファイル (.csproj)
 + アプリのエントリ ポイントである Program.cs ファイル。
 
@@ -142,7 +142,7 @@ HTTP トリガーの場合、要求と応答のデータにアクセスするに
 
 ### <a name="output-bindings"></a>出力バインディング
 
-出力バインディングに書き込むには、関数メソッドに、バインドされたサービスへの書き込み方法を定義した出力バインディング属性を適用する必要があります。 メソッドによって返される値は、出力バインディングに書き込まれます。 たとえば、次の例では、出力バインディングを使用して、`functiontesting2` という名前のメッセージ キューに文字列値を書き込みます。
+出力バインディングに書き込むには、関数メソッドに、バインドされたサービスへの書き込み方法を定義した出力バインディング属性を適用する必要があります。 メソッドによって返される値は、出力バインディングに書き込まれます。 たとえば、次の例では、出力バインディングを使用して、`myqueue-output` という名前のメッセージ キューに文字列値を書き込みます。
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 

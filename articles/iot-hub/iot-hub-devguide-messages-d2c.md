@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub メッセージ ルーティングについて | Microsoft Docs
 description: 開発者ガイド - メッセージ ルーティングを使用して、device-to-cloud メッセージを送信する方法。 テレメトリ データとそれ以外のデータの両方の送信についても説明します。
-author: ash2017
-manager: briz
+author: nehsin
+manager: mehmet.kucukgoz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.author: asrastog
+ms.date: 05/14/2021
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: c9c0b2807962aaddc2f3b6cef6a261084b21714c
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: b460c906806cc9c9beb9c9e037d1096feea098a3
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715774"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404404"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -24,7 +24,7 @@ ms.locfileid: "109715774"
 
 メッセージ ルーティングを使用すると、自動化された、スケーラブルで信頼性の高い方法で、デバイスからクラウド サービスにメッセージを送信することができます。 メッセージ ルーティングは、次の目的で使用できます。 
 
-* **デバイスのテレメトリ メッセージだけでなくイベント** (デバイス ライフサイクル イベント、デバイス ツイン変更イベント、デジタル ツイン変更イベント) を組み込みのエンドポイントとカスタム エンドポイントに送信する。 [ルーティング エンドポイント](#routing-endpoints)について確認してください。 IoT プラグ アンド プレイ デバイスから送信されるイベントの詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](../iot-pnp/concepts-digital-twin.md)」を参照してください。
+* **デバイスのテレメトリ メッセージだけでなくイベント** (デバイス ライフサイクル イベント、デバイス ツイン変更イベント、デジタル ツイン変更イベント、およびデバイス接続状態イベント) を組み込みのエンドポイントとカスタム エンドポイントに送信する。 [ルーティング エンドポイント](#routing-endpoints)について確認してください。 IoT プラグ アンド プレイ デバイスから送信されるイベントの詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](../iot-develop/concepts-digital-twin.md)」を参照してください。
 
 * リッチ クエリを適用して、**さまざまなエンドポイントにルーティングする前にデータをフィルター処理** する。 メッセージ ルーティングでは、メッセージ プロパティとメッセージ本文に基づいてクエリを実行できるほか、デバイス ツインのタグとプロパティに基づいてクエリを実行することもできます。 [メッセージ ルーティングでクエリ](iot-hub-devguide-routing-query-syntax.md)を使用する方法の詳細について確認してください。
 
@@ -107,7 +107,7 @@ IoT Hub エンドポイントとして使用される Service Bus のキュー�
 
 エンドポイントからメッセージを読み取る方法については、以下のチュートリアルを参照してください。
 
-* [組み込みのエンドポイント](quickstart-send-telemetry-node.md)からの読み取り
+* [組み込みのエンドポイント](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)からの読み取り
 
 * [BLOB ストレージ](../storage/blobs/storage-blob-event-quickstart.md)からの読み取り
 
@@ -120,15 +120,24 @@ IoT Hub エンドポイントとして使用される Service Bus のキュー�
 
 ## <a name="fallback-route"></a>フォールバック ルート
 
-フォールバック ルートを通じて、既存のいずれのルートのクエリ条件も満たさないすべてのメッセージが、[Event Hubs](../event-hubs/index.yml) との互換性がある組み込みのイベント ハブ (**messages/events**) に送信されます。 メッセージ ルーティングが有効になっている場合は、フォールバック ルート機能を有効にすることができます。 ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。 組み込みのエンドポイントへのルートがなく、フォールバック ルートが有効になっている場合は、ルートのどのクエリ条件とも一致しないメッセージのみが組み込みのエンドポイントに送信されます。 また、既存のすべてのルートを削除する場合は、組み込みのエンドポイントですべてのデータを受信するために、フォールバック ルートを有効にする必要があります。
+フォールバック ルートを通じて、既存のいずれのルートのクエリ条件も満たさないすべてのメッセージが、[Event Hubs](../event-hubs/index.yml) との互換性がある組み込みのイベント ハブ (**messages/events**) に送信されます。 メッセージ ルーティングが有効になっている場合は、フォールバック ルート機能を有効にすることができます。 ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。 組み込みのエンドポイントへのルートがなく、フォールバック ルートが有効になっている場合は、ルートのどのクエリ条件とも一致しないメッセージのみが組み込みのエンドポイントに送信されます。 また、既存のすべてのルートを削除する場合は、組み込みのエンドポイントですべてのデータを受信するために、フォールバック ルートを有効にする必要があります。 
 
 Azure portal の [メッセージ ルーティング] ブレードで、フォールバック ルートを有効または無効にすることができます。 また、Azure Resource Manager で [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) を使用して、フォールバック ルート用にカスタム エンドポイントが使用されるようにすることもできます。
 
 ## <a name="non-telemetry-events"></a>非テレメトリ イベント
 
-メッセージ ルーティングでは、デバイス テレメトリのほかに、デバイス ツイン変更イベント、デバイス ライフサイクル イベント、およびデバイス ツイン変更イベントの送信を有効にすることもできます。 たとえば、データ ソースを **デバイス ツイン変更イベント** に設定してルートを作成した場合、IoT Hub は、デバイス ツインの変更が含まれているメッセージをエンドポイントに送信します。 同様に、データ ソースを **デバイス ライフサイクル イベント** に設定してルートを作成した場合、IoT Hub は、デバイスが削除または作成されたかどうかを示すメッセージを送信します。 最後に、[Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)の一部として、開発者は、データ ソースを **デジタル ツイン変更イベント** に設定したルートを作成できます。IoT Hub では、デジタル ツインのプロパティが設定または変更されたとき、デジタル ツインが置き換えられたとき、または基になるデバイス ツインで変更イベントが発生したときに、メッセージを送信します。
+メッセージ ルーティングでは、デバイス テレメトリの他に、デバイス ツイン変更イベント、デバイス ライフサイクル イベント、デバイス ツイン変更イベント、およびデバイス接続状態イベントの送信を有効にすることもできます。 たとえば、データ ソースを **デバイス ツイン変更イベント** に設定してルートを作成した場合、IoT Hub は、デバイス ツインの変更が含まれているメッセージをエンドポイントに送信します。 同様に、データ ソースを **デバイス ライフサイクル イベント** に設定してルートを作成した場合、IoT Hub は、デバイスが削除または作成されたかどうかを示すメッセージを送信します。 [Azure IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)の一部として、開発者は、データ ソースを **デジタル ツイン変更イベント** に設定したルートを作成できます。IoT Hub では、デジタル ツインのプロパティが設定または変更されたとき、デジタル ツインが置き換えられたとき、または基になるデバイス ツインで変更イベントが発生したときに、メッセージを送信します。 最後に、データ ソースを **デバイス接続状態イベント** に設定してルートを作成した場合、IoT Hub は、デバイスが接続または接続解除されたかどうかを示すメッセージを送信します。
+
 
 [IoT Hub は Azure Event Grid とも統合](iot-hub-event-grid.md)されているため、デバイス イベントを発行して、それらのイベントに基づくワークフローのリアルタイムの統合と自動化をサポートできます。 ご自分のシナリオにどれが最適かについては、[メッセージ ルーティングと Event Grid の主な違い](iot-hub-event-grid-routing-comparison.md)に関するページを参照してください。
+
+## <a name="limitations-for-device-connection-state-events"></a>デバイス接続状態イベントの制限
+
+デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して、*device-to-cloud テレメトリ送信* または *cloud-to-device メッセージ受信* 操作を呼び出す必要があります。 ただし、デバイスが AMQP プロトコルを使用して IoT Hub に接続する場合は、デバイスで "*cloud-to-device メッセージ受信*" 操作を呼び出すことをお勧めします。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用して接続する場合、IoT Hub は cloud-to-device リンクを開いたままにします。 AMQP の cloud-to-device リンクを開くには、[Receive Async API](/rest/api/iothub/device/receivedeviceboundnotification) を呼び出します。
+
+device-to-cloud リンクは、デバイスがテレメトリを送信する限り、開いたままになります。
+
+デバイス接続が不安定である場合、つまり、デバイスの接続と切断が頻繁に発生する場合、IoT Hub は各接続状態は送信しませんが、不安定な状態が終了するまで、60 秒間の定期的なスナップショットで取得された現在の接続状態を発行します。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
 
 ## <a name="testing-routes"></a>ルートのテスト
 
@@ -158,6 +167,6 @@ REST API の [GetEndpointHealth](/rest/api/iothub/iothubresource/getendpointheal
 
 * メッセージ ルートの作成方法については、[ルートを使用した IoT Hub の device-to-cloud メッセージの処理](tutorial-routing.md)に関するページをご覧ください。
 
-* [device-to-cloud メッセージを送信する方法](quickstart-send-telemetry-node.md)
+* [device-to-cloud メッセージを送信する方法](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 
 * device-to-cloud メッセージの送信に使用できる SDK については、[Azure IoT SDK](iot-hub-devguide-sdks.md) に関するページを参照してください。

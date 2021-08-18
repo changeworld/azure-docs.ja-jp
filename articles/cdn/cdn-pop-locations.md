@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: e58ce2b4fa016a79050425dad4e4dd0b784f0c9c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f51ca01988a090c4c61b821c16ec67f20d2c679f
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472366"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417003"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>都市別の Azure CDN のカバレッジ 
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ ms.locfileid: "110472366"
 | アフリカ | ヨハネスバーグ (南アフリカ) <br/> ナイロビ (ケニア) | 南アフリカ |
 | 中東 | マスカット (オマーン)<br />フジャイラ (アラブ首長国連邦) | カタール<br />アラブ首長国連邦 |
 | インド | ベンガルール (バンガロール) (インド)<br />チェンナイ (インド)<br />ムンバイ (インド)<br />ニュー デリー (インド)<br /> | インド |
-| アジア | 香港特別行政区<br />ジャカルタ (インドネシア)<br />大阪 (日本)<br />東京 (日本)<br />シンガポール<br />ソウル (韓国)<br />高雄 (台湾)<br />台北 (台湾) <br />マニラ ( フィリピン) | 香港特別行政区<br />インドネシア<br />イスラエル<br />日本<br />マカオ<br />マレーシア<br />フィリピン<br />シンガポール<br />韓国<br />台湾<br />タイ<br />トルコ<br />ベトナム |
+| アジア | 香港特別行政区<br />ジャカルタ (インドネシア)<br />大阪 (日本)<br />東京 (日本)<br />シンガポール<br />高雄 (台湾)<br />台北 (台湾) <br />マニラ ( フィリピン) | 香港特別行政区<br />インドネシア<br />イスラエル<br />日本<br />マカオ<br />マレーシア<br />フィリピン<br />シンガポール<br />韓国<br />台湾<br />タイ<br />トルコ<br />ベトナム |
 | オーストラリアとニュージーランド | メルボルン (オーストラリア)<br />シドニー (オーストラリア)<br />オークランド (ニュージーランド) | オーストラリア<br />ニュージーランド |
 
 ## <a name="next-steps"></a>次のステップ

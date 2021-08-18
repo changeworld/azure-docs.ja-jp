@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2021
 ms.custom: seodec18
-ms.openlocfilehash: 91ba1280262a7d13afa71d5dc0e2b7eb0e545ecc
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 59226a105df2a05e693c7d83f2488a43143914b6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787716"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122177832"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -70,7 +70,7 @@ REST API を使用すると、その要求に使用される JSON ファイル�
 
 4. 入力ストリームが 8000 未満のパーティション キーのカーディナリティを含むレコードで構成されている場合、レコードは既存の BLOB に追加され、新しい BLOB は必要な場合にのみ作成されます。 カーディナリティが 8000 を超える場合、既存の BLOB に書き込まれる保証はなく、同じパーティション キーを含む任意数のレコードに対して新しい BLOB は作成されません。
 
-5. BLOB 出力が[不変として構成されている](../storage/blobs/storage-blob-immutable-storage.md)場合、データが送信されるたびに Stream Analytics によって新しい BLOB が作成されます。
+5. BLOB 出力が[不変として構成されている](../storage/blobs/immutable-storage-overview.md)場合、データが送信されるたびに Stream Analytics によって新しい BLOB が作成されます。
 
 ## <a name="custom-datetime-path-patterns"></a>カスタム DateTime パス パターン
 

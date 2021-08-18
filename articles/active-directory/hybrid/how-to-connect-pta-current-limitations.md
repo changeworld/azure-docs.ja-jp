@@ -16,17 +16,14 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7db9a12a65cf127cb4c65e24128181ab6c0cb485
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89280198"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135034"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
-
->[!IMPORTANT]
->Azure Active Directory (Azure AD) のパススルー認証は無料の機能で、使用するために Azure AD の有料エディションは必要ありません。 パススルー認証は、Azure AD のワールドワイド インスタンスでのみ使用できます。[Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)や [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)では使用できません。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -58,7 +55,7 @@ ms.locfileid: "89280198"
 - [AD FS からパススルー認証への移行](https://aka.ms/ADFSTOPTADPDownload) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにご利用のテナント上でスマート ロックアウト機能を構成する方法について説明します。
 - [技術的な詳細](how-to-connect-pta-how-it-works.md): パススルー認証機能のしくみについて説明します。
-- [よく寄せられる質問](how-to-connect-pta-faq.md): パススルー認証機能に関してよく寄せられる質問への回答を見つけます。
+- [よく寄せられる質問](how-to-connect-pta-faq.yml): パススルー認証機能に関してよく寄せられる質問への回答を見つけます。
 - [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法について説明します。
 - [セキュリティの詳細](how-to-connect-pta-security-deep-dive.md): パススルー認証機能に関する詳細な技術情報を取得します。
 - [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細について説明します。

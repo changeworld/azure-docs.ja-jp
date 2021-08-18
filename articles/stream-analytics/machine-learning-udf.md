@@ -7,16 +7,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: c35d5d2f63f4a7abe80a0ff19e5994013355c386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9856b3b6c44c293c77582ba9c6fba9891d897a5d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020521"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742958"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
-機械学習モデルをユーザー定義関数 (UDF) として Azure Stream Analytics ジョブに実装し、ストリーミング入力データに対してリアルタイムのスコアリングと予測を行うことができます。 [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) では、Tensorflow、scikit-learn、PyTorch などの一般的なオープンソース ツールを使用して、モデルの準備、トレーニング、およびデプロイを行うことができます。
+機械学習モデルをユーザー定義関数 (UDF) として Azure Stream Analytics ジョブに実装し、ストリーミング入力データに対してリアルタイムのスコアリングと予測を行うことができます。 [Azure Machine Learning](../machine-learning/overview-what-is-azure-machine-learning.md) では、Tensorflow、scikit-learn、PyTorch などの一般的なオープンソース ツールを使用して、モデルの準備、トレーニング、およびデプロイを行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 

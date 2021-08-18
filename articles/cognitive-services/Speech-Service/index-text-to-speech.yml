@@ -5,18 +5,18 @@ metadata:
   title: テキスト読み上げのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: trevorbye
+  author: laujan
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: trbye
-  ms.openlocfilehash: 96ae0980a3962c07372a97c38af8f6f2256c4184
-  ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+  ms.author: lajanuar
+  ms.openlocfilehash: 5bee75a36528253f584257849000f2b34427f581
+  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/09/2021
-  ms.locfileid: "107226656"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "122066115"
 landingContent:
 - title: テキスト読み上げについて
   linkLists:

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a6d4c5811c08aa8c4de2eeea5f5f53967c3006b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8fa3c329afe26979e6f557d075aff478e79d10e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025358"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727225"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用
 
@@ -22,7 +22,7 @@ Log Analytics は、さまざまなシナリオで Azure Storage に依存しま
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Diagnostics 拡張機能ログ (WAD/LAD) の取り込み
 Azure Diagnostics 拡張機能エージェント (Windows エージェントの場合は WAD、Linux エージェントの場合は LAD とも呼ばれます) により、さまざまなオペレーティング システム ログが収集されて、カスタマー マネージド ストレージ アカウントに格納されます。 その後、これらのログを Log Analytics に取り込み、それらを確認したり分析したりすることができます。
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>ストレージ アカウントから Azure Diagnostics 拡張機能ログを収集する方法
-[Azure portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) を使用するか、[Storage Insights API](/rest/api/loganalytics/storage%20insights/createorupdate) を呼び出して、ストレージ アカウントをストレージ データ ソースとして Log Analytics ワークスペースに接続します。
+[Azure portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) を使用するか、[Storage Insights API](/rest/api/loganalytics/storage-insights/create-or-update) を呼び出して、ストレージ アカウントをストレージ データ ソースとして Log Analytics ワークスペースに接続します。
 
 サポートされるデータ型:
 * syslog
@@ -100,7 +100,7 @@ Azure portal で、ワークスペースのメニューを開き、 *[リンク�
 独自のストレージ アカウントを使用する場合、保持期間はユーザーが設定します。 Log Analytics により、プライベート ストレージに格納されているログは削除されません。 代わりに、ユーザー設定に従って負荷を処理するポリシーを設定する必要があります。
 
 #### <a name="consider-load"></a>負荷を考慮する
-ストレージ アカウントでは、要求の調整を開始する前に、読み取りおよび書き込み要求の特定の負荷を処理することができます (詳細については、[BLOB ストレージのスケーラビリティおよびパフォーマンス ターゲット](../../storage/common/scalability-targets-standard-account.md)に関するページを参照してください)。 調整が行われると、ログの取り込みに要する時間に影響します。 ストレージ アカウントが過負荷になっている場合は、追加のストレージ アカウントを登録し、負荷をアカウント間で分散します。 ストレージ アカウントの容量とパフォーマンスを監視するには、[Azure portal でその分析情報]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview)を確認します。
+ストレージ アカウントでは、要求の調整を開始する前に、読み取りおよび書き込み要求の特定の負荷を処理することができます (詳細については、[BLOB ストレージのスケーラビリティおよびパフォーマンス ターゲット](../../storage/common/scalability-targets-standard-account.md)に関するページを参照してください)。 調整が行われると、ログの取り込みに要する時間に影響します。 ストレージ アカウントが過負荷になっている場合は、追加のストレージ アカウントを登録し、負荷をアカウント間で分散します。 ストレージ アカウントの容量とパフォーマンスを監視するには、[Azure portal でその分析情報](../../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)を確認します。
 
 ### <a name="related-charges"></a>関連料金
 ストレージ アカウントは、格納されているデータの量、ストレージの種類、冗長性の種類に応じて課金されます。 詳細については、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs)」と「[Table Storage の料金](https://azure.microsoft.com/pricing/details/storage/tables)」に関するページを参照してください。

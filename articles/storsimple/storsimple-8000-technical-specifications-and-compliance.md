@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89f4172b08d56a0ec139f18519a3a9bcd081e08b
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "68965283"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688525"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple デバイスの技術的仕様とコンプライアンス
 
@@ -83,7 +83,7 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | 合計の使用可能な容量* |～ 15 TB |～ 38 TB |
 | ソリューションの最大容量 (クラウドを含む) |200 TB |500 TB |
 
-<sup>* </sup>- *使用可能な容量の合計には、データ、メタデータ、およびバッファーに使用できる容量が含まれています。8100 デバイスには最大 8.5 TB、より大きな 8600 デバイスには最大 22.5 TB のローカル固定ボリュームをプロビジョニングできます。詳細については、[StorSimple のローカル固定ボリューム](storsimple-8000-local-volume-faq.md)に関するページを参照してください。*
+<sup>* </sup>- *使用可能な容量の合計には、データ、メタデータ、およびバッファーに使用できる容量が含まれています。8100 デバイスには最大 8.5 TB、より大きな 8600 デバイスには最大 22.5 TB のローカル固定ボリュームをプロビジョニングできます。詳細については、[StorSimple のローカル固定ボリューム](storsimple-8000-local-volume-faq.yml)に関するページを参照してください。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>エンクロージャの寸法と重量
 

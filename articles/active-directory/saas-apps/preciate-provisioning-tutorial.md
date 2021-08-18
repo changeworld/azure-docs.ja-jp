@@ -2,25 +2,22 @@
 title: チュートリアル:Preciate を構成して、Azure Active Directory による自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Preciate へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: fa640971-87e7-49f2-933b-bc7c95fe51e2
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/09/2020
-ms.author: Zhchia
-ms.openlocfilehash: ab6b17d2db2fd45578f74da9750d3f50dba2636f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: fae7b82a218f6f6e6480d5cdb29126e60f66a6a7
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645656"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195646"
 ---
 # <a name="tutorial-configure-preciate-for-automatic-user-provisioning"></a>チュートリアル:Preciate を構成し、自動ユーザー プロビジョニングに対応させる
 

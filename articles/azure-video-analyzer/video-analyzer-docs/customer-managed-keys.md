@@ -4,13 +4,13 @@ description: Azure Video Analyzer ではカスタマー マネージド キー (
 author: anilmur
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 05/04/2021
-ms.openlocfilehash: 6e41b4d411f4f0101c160e48a10abd12385e7c8d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: d24ddd090f9acffc3dd19643d4004dbb58fc344d
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387448"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603844"
 ---
 # <a name="customer-managed-keys-with-azure-video-analyzer"></a>カスタマー マネージド キーと Azure Video Analyzer
 

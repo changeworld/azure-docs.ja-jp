@@ -12,12 +12,12 @@ ms.date: 06/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 17be85bd21a61ced7772786bb1fdaad1c947e4d1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8aeb818104e1424d96374bf535d4c02a870f4705
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962260"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453882"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントを管理する
 
@@ -35,7 +35,7 @@ Azure AD B2C は、Azure AD プラットフォームに依存しています。 
 | [カスタム ドメイン名](../active-directory/fundamentals/add-custom-domain.md) |  Azure AD カスタム ドメインは管理アカウントにのみ使用できます。 | [コンシューマー アカウント](user-overview.md#consumer-user)は、ユーザー名、電話番号、または任意の電子メール アドレスを使用してサインインできます。 [カスタム ドメイン](custom-domain.md)はリダイレクト URL で使用できます。|
 | [条件付きアクセス](../active-directory/conditional-access/overview.md) | 管理アカウントとユーザー アカウントに対して完全にサポートされています。 | [コンシューマー アカウント](user-overview.md#consumer-user)では、Azure AD 条件付きアクセス機能のサブセットがサポートされています。Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。|
 | [Premium P1](https://azure.microsoft.com/pricing/details/active-directory) | Azure AD Premium P1 の機能で完全にサポートされています ([パスワード保護](../active-directory/authentication/concept-password-ban-bad.md)、[ハイブリッド ID](../active-directory/hybrid/whatis-hybrid-identity.md)、[条件付きアクセス](../active-directory/roles/permissions-reference.md#)、[動的グループ](../active-directory/enterprise-users/groups-create-rule.md)など)。 | [コンシューマー アカウント](user-overview.md#consumer-user)では、Azure AD 条件付きアクセス機能のサブセットがサポートされています。 Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。|
-| [Premium P2](https://azure.microsoft.com/pricing/details/active-directory.md) | Azure AD Premium P2 の機能で完全にサポートされています ([Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)、[Identity Governance](../active-directory/governance/identity-governance-overview.md) など)。  | コンシューマー アカウントでは、[Azure AD Identity Protection](user-overview.md#consumer-user) 機能のサブセットがサポートされています。 [Identity Protection を使用してリスクを調査](identity-protection-investigate-risk.md)し、Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。 |
+| [Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) | Azure AD Premium P2 の機能で完全にサポートされています ([Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)、[Identity Governance](../active-directory/governance/identity-governance-overview.md) など)。  | コンシューマー アカウントでは、[Azure AD Identity Protection](user-overview.md#consumer-user) 機能のサブセットがサポートされています。 [Identity Protection を使用してリスクを調査](identity-protection-investigate-risk.md)し、Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。 |
 
 ## <a name="other-azure-resources-in-your-tenant"></a>テナント内のその他の Azure リソース
 
@@ -206,4 +206,3 @@ Azure AD B2C テナント ID を取得するには、これらの手順に従い
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Portal で Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)
-

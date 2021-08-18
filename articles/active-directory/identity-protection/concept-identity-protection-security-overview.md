@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 111271ffd94d1fdebc1d06a2e68e5683684adee5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93098469"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727650"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - セキュリティの概要
 

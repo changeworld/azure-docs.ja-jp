@@ -6,18 +6,18 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 4/30/2020
-author: anumjs
-ms.author: anjangsh
+author: rothja
+ms.author: jroth
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f6431328a0969ced0d98cbc7ff047cc0673ecb91
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: cf9b1f07c763f79be6dd284f2b81770f62e9ed1c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074558"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457490"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のリリース ノート
 

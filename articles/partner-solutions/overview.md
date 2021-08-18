@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 05/25/2021
 ms.author: tomfitz
-ms.openlocfilehash: 208f8d4e8d0fc8b688f45af5e8164b41c3eba768
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b41f3f10863b7902feb1964cfe96c8507c9d8c57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464096"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736412"
 ---
 # <a name="extend-azure-with-solutions-from-partners"></a>パートナーのソリューションを使用して Azure を拡張する
 
@@ -24,3 +24,4 @@ ms.locfileid: "110464096"
 | [Apache Kafka for Confluent Cloud](./apache-kafka-confluent-cloud/overview.md) | Apache Kafka が提供するフル マネージドのイベント ストリーミング プラットフォーム |
 | [Datadog](./datadog/overview.md) | サーバー、クラウド、メトリック、アプリを 1 か所で監視します。 |
 | [Elastic](./elastic/overview.md) | Azure 環境の正常性とパフォーマンスを監視します。 |
+| [Logz.io](./logzio/overview.md)  | Azure 環境の正常性とパフォーマンスを監視します。 |

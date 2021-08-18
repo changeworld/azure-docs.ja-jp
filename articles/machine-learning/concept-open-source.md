@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 01/14/2020
-ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ec9aaf2222924718ad21cf0654d138be22c2d19
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98223076"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293391"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>オープンソースと Azure Machine Learning プロジェクトとの統合
 
@@ -89,7 +89,7 @@ ONNX と ONNX モデルの使用方法の詳細については、次の記事を
 
 ### <a name="package-and-deploy-models-as-containers"></a>モデルをコンテナーとしてパッケージ化してデプロイする
 
-Docker などのコンテナー テクノロジは、モデルを Web サービスとしてデプロイするための 1 つの方法です。 コンテナーによって、再現性のあるソフトウェア環境を構築して調整するためのプラットフォームとリソースに依存しない方法が提供されます。 これらのコア テクノロジで、[事前構成済みの環境](./how-to-use-environments.md)、[事前構成済みのコンテナー イメージ](./how-to-deploy-custom-docker-image.md)、またはカスタム設定を使用して、機械学習モデルを [Kubernetes クラスター](./how-to-deploy-azure-kubernetes-service.md?tabs=python)などにデプロイできます。 GPU の負荷が高いワークフローでは、NVIDIA Triton 推論サーバーなどのツールを使用して、[GPU の使用予測を行う](how-to-deploy-with-triton.md?tabs=python)ことができます。
+Docker などのコンテナー テクノロジは、モデルを Web サービスとしてデプロイするための 1 つの方法です。 コンテナーによって、再現性のあるソフトウェア環境を構築して調整するためのプラットフォームとリソースに依存しない方法が提供されます。 これらのコア テクノロジで、[事前構成済みの環境](./how-to-use-environments.md)、[事前構成済みのコンテナー イメージ](./how-to-deploy-custom-container.md)、またはカスタム設定を使用して、機械学習モデルを [Kubernetes クラスター](./how-to-deploy-azure-kubernetes-service.md?tabs=python)などにデプロイできます。 GPU の負荷が高いワークフローでは、NVIDIA Triton 推論サーバーなどのツールを使用して、[GPU の使用予測を行う](how-to-deploy-with-triton.md?tabs=python)ことができます。
 
 ### <a name="secure-deployments-with-homomorphic-encryption"></a>準同型暗号を使用したセキュリティで保護されたデプロイ
 
@@ -101,4 +101,4 @@ Docker などのコンテナー テクノロジは、モデルを Web サービ�
 
 継続的インテグレーション (CI) や継続的デプロイ (CD) などの DevOps プラクティスを使用することで、エンドツーエンドの機械学習ライフサイクルを自動化し、その周囲のガバナンス データを把握できます。 [機械学習の CI/CD パイプラインを GitHub アクション](./how-to-github-actions-machine-learning.md)で定義して、Azure Machine Learning のトレーニングとデプロイのタスクを実行できます。 
 
-ソフトウェアの依存関係、メトリック、メタデータ、データ、およびモデルのバージョンを把握することは、透明性、再現可能性、および監査可能性を備えたパイプラインを構築するための MLOps プロセスの重要な部分です。 このタスクのために、[Azure Machine Learning の MLFlow](how-to-use-mlflow.md) を使用できます。[Azure Databricks で機械学習モデルをトレーニングする](./how-to-use-mlflow-azure-databricks.md)ときにも、それを使用できます。 また、[MLflow モデルを Azure Web サービスとしてデプロイ](how-to-deploy-mlflow-models.md)することもできます。 
+ソフトウェアの依存関係、メトリック、メタデータ、データ、およびモデルのバージョンを把握することは、透明性、再現可能性、および監査可能性を備えたパイプラインを構築するための MLOps プロセスの重要な部分です。 このタスクのために、[Azure Machine Learning の MLFlow](how-to-use-mlflow.md) を使用できます。[Azure Databricks で機械学習モデルをトレーニングする](./how-to-use-mlflow-azure-databricks.md)ときにも、それを使用できます。 また、[MLflow モデルを Azure Web サービスとしてデプロイ](how-to-deploy-mlflow-models.md)することもできます。

@@ -4,15 +4,16 @@ description: この PowerShell スクリプトでは、Azure Blob Storage 内の
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: article
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 03/12/2020
-ms.openlocfilehash: b14d0eae07715f6979210f0608fd1b91848afd26
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 4377f2bb3c17d5d41acc1e6f6fbe7c30d4251ca2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665556"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750967"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>PowerShell を使用して、クラウド内のデータをコピーするための Data Factory パイプラインを作成する
 
@@ -51,7 +52,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | Notes |
+| command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | データ ファクトリを作成します。 |

@@ -2,13 +2,13 @@
 title: Azure portal を使用して Azure Video Analyzer 用のダイレクト メソッドを呼び出す方法
 description: この記事では、Azure portal を使用して Azure Video Analyzer 用のダイレクト メソッドを呼び出す方法の概要を示します。
 ms.topic: how-to
-ms.date: 03/31/2021
-ms.openlocfilehash: c41c1b3c901a1ca3a83695994d7c9570e723f8a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 944819e70d94b365a8f7c3e885ffc0175d84eca7
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388111"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603862"
 ---
 # <a name="use-azure-portal-to-invoke-direct-methods-for-azure-video-analyzer"></a>Azure portal を使用して Azure Video Analyzer 用のダイレクト メソッドを呼び出す
 

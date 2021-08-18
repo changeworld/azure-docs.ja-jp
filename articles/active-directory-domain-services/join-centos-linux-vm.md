@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 06/17/2021
 ms.author: justinha
-ms.openlocfilehash: 76fc11384b55337f581a74239d4a40b90b284f32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d78416308647af62bac1e44366b0ea978670889b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619659"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284439"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>CentOS Linux 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる
 
@@ -79,7 +79,7 @@ sudo vi /etc/hosts
 VM をマネージド ドメインに参加させるには、VM にいくつかの追加パッケージが必要です。 これらのパッケージをインストールして構成するには、`yum` を使用してドメイン参加ツールを更新およびインストールします。
 
 ```console
-sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
+sudo yum install adcli realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
 ```
 
 ## <a name="join-vm-to-the-managed-domain"></a>VM をマネージド ドメインに参加させる
@@ -109,7 +109,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 1. 最後に、`realm join` コマンドを使用して、VM をマネージド ドメインに参加させます。 前の `kinit` コマンドで指定した、マネージド ドメインの一部である同じユーザー アカウントを使用します (`contosoadmin@AADDSCONTOSO.COM` など)。
 
     ```console
-    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
+    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --membership-software=adcli
     ```
 
 VM をマネージド ドメインに参加させるにはしばらくかかります。 次の出力例では、VM がマネージド ドメインに正常に参加したことが示されています。

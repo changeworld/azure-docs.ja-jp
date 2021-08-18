@@ -1,20 +1,19 @@
 ---
 title: カスタム分析を使用して Azure IoT Central を拡張する |Microsoft Docs
 description: ソリューション開発者は、カスタムの分析と視覚化を実行するために IoT Central アプリケーションを構成します。 このソリューションでは、Azure Databricks を使用します。
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: philmea
-ms.openlocfilehash: 3e3ce75adde26d1392bff143ad38ff857e14f6d6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ce4c526408f4aae1d4814a1c523c668e79e32c3a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750115"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861816"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する
 

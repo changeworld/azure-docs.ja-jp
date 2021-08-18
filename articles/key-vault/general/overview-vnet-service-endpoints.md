@@ -2,18 +2,18 @@
 title: Azure Key Vault の仮想ネットワーク サービス エンドポイント
 description: Azure Key Vault の仮想ネットワーク サービス エンドポイントを使用すると、使用シナリオなど、指定した仮想ネットワークに対するアクセスを制限できます。その方法について説明します。
 services: key-vault
-author: amitbapat
-ms.author: ambapat
+author: mbaldwin
+ms.author: mbaldwin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 1bb2b8bc7e55dde7c6fa9098640109f85bebce23
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 4ee06e1eed38a1fbb524695cb4835534604f01a7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065423"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461783"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 

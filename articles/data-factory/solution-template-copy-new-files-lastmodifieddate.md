@@ -5,15 +5,16 @@ author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 94d09dc96d017dba3b16cc5fe113272a9393741d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77ff6024605c56f0ef74dd51936aed19efdb8a75
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100362082"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739426"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory で LastModifiedDate に基づいて新規および変更済みのファイルをコピーする
 

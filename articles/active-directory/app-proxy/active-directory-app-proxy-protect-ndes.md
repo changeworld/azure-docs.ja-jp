@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.openlocfilehash: 3fa8b81a1dbd13c8570783b354696c8af81e7e7f
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 3c55bdb003f16539061bcbeae0f8cf7ed5cc660d
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187379"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728284"
 ---
 # <a name="integrate-with-azure-active-directory-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>ネットワーク デバイス登録サービス (NDES) サーバー上の Azure Active Directory アプリケーション プロキシとの統合
 
@@ -25,7 +25,7 @@ Azure AD アプリケーション プロキシを使用したことがなく、�
 
 Azure AD アプリケーション プロキシは Azure 上に構築されています。 これは、分散型サービス拒否 (DDOS) 攻撃に対するより強力な保護と優れた可用性を実現するために、大量のネットワーク帯域幅とサーバー インフラストラクチャを提供します。 さらに、オンプレミスのネットワークに対して外部ファイアウォール ポートを開く必要がなく、DMZ サーバーは必要ありません。 すべてのトラフィックは内向きに発信されます。 送信ポートの完全な一覧については、「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)を参照してください。
 
-> Azure AD アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションを使用している場合にのみ利用できる機能です。 詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。 
+> Azure AD アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションを使用している場合にのみ利用できる機能です。 詳細については、「[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」をご覧ください。 
 > Enterprise Mobility Suite (EMS) ライセンスを所有している場合は、このソリューションを使用することができます。
 > Azure AD アプリケーション プロキシ コネクタは、Windows Server 2012 R2 以降にのみインストールされます。 これは、NDES サーバーの要件でもあります。
 

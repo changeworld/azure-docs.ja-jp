@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
-ms.openlocfilehash: 7d54b4b048632324a58708f893a4778a56137916
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cfcfe5eb29923de02c07a34a5bd6d70d0b002116
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876081"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286072"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -42,7 +42,7 @@ ms.locfileid: "107876081"
 
 Java 開発の場合は、以下の前提条件をインストールする必要があります。
 
-* [Java SDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) (バージョン 1.8)
+* [Java SDK](/azure/developer/java/fundamentals/java-support-on-azure) (バージョン 1.8)
 * [Gradle](https://gradle.org/install/)
 * [Debugger for Java VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Java サービスのデバッグに必要です。 Java のデバッグ サービスは Linux 上でのみサポートされています。 VS Code の **アクティビティ バー** にある [拡張機能] アイコンをクリックし、拡張機能を検索してインストールするか、VS Code Marketplace からインストールすることができます。
 

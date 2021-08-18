@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 30a0269b5729516d8e8e378c700c493262e77f10
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 18438400054a8f7aa4d718efdff4ef2e116b3bf3
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "108756181"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462426"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
 
@@ -28,6 +28,13 @@ ms.locfileid: "108756181"
 Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux クライアント、リモート Server Message Block (SMB) 共有、Network File System (NFS) 共有との間の同期はサポートされていません。
 
 そのため、ファイル サービスをハイブリッド デプロイに変換するには、Windows Server に移行する必要があります。 この記事では、そのような移行の計画と実行について説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="migration-goals"></a>移行の目標
 

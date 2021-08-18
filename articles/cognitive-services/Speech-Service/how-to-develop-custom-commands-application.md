@@ -3,19 +3,19 @@ title: '方法: Custom Commands アプリケーションの開発 - Speech Servi
 titleSuffix: Azure Cognitive Services
 description: Custom Commands アプリケーションを開発およびカスタマイズする方法について説明します。 これらの音声コマンド アプリは、タスクの完了やコマンドとコントロールのシナリオに最適です。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
-ms.author: trbye
-ms.openlocfilehash: 84253f897e8b85029ea4425a7919be4bf71028ed
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: lajanuar
+ms.openlocfilehash: cb97e41740997e35445cdf6dfb7281e54c3a5c16
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451947"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069021"
 ---
 # <a name="develop-custom-commands-applications"></a>Custom Commands アプリケーションを開発する
 
@@ -153,7 +153,7 @@ ms.locfileid: "110451947"
 - 予期される応答:Ok, setting an alarm for 9 am tomorrow (はい、明日の午前 9 時にアラームを設定します)
 
 > [!div class="mx-imgBorder"]
-> ![Web チャットのインターフェイスに表示されているテストのスクリーンショット。](media/custom-commands/create-basic-test-chat.png)
+> ![Web チャットのインターフェイスに表示されているテストのスクリーンショット。](media/custom-commands/create-basic-test-chat-no-mic.png)
 
 > [!TIP]
 > テスト ペインの **[Turn details]\(ターンの詳細\)** を選択すると、この音声入力またはテキスト入力がどのように処理されたかについての情報を得ることができます。

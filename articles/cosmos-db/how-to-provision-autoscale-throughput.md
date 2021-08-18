@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/18/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: ce17b54905861759c437c2df735dd5515991b507
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 95f201a7809184b511c3187cf3fcf5fadd233168
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456619"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727032"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB - SQL API のデータベースまたはコンテナーで、自動スケーリングのスループットをプロビジョニングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB SQL API のデータベースまたはコンテナー (コレクション、グラフ、またはテーブル) で、自動スケーリングのスループットをプロビジョニングする方法について説明します。 自動スケーリングは、単一のコンテナーを対象に有効にできるほか、データベースを対象に自動スケーリングのスループットをプロビジョニングして、それをデータベースのすべてのコンテナーで共有することもできます。
 
-別の API を使用している場合は、[MongoDB 用 API](how-to-provision-throughput-mongodb.md)、[Cassandra API](how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) のスループット プロビジョニングに関する記事を参照してください。
+別の API を使用している場合は、[MongoDB 用 API](mongodb/how-to-provision-throughput-mongodb.md)、[Cassandra API](cassandra/how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) のスループット プロビジョニングに関する記事を参照してください。
 
 ## <a name="azure-portal"></a>Azure portal
 

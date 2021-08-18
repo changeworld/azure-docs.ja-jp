@@ -2,19 +2,18 @@
 title: IoT Hub における Event Grid とルーティングの比較 | Microsoft Docs
 description: IoT Hub には独自のメッセージ ルーティング サービスが用意されていますが、イベントの発行のために Event Grid とも統合します。 2 つの機能を比較します。
 author: kgremban
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5d2b0e096c1432b8130ca43a91d277aec93d630f
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 5a5a1ac59a3399fff09db8e7d7fe8739476ca8d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191271"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740472"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>IoT Hub のメッセージ ルーティングと Event Grid の比較
 

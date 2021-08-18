@@ -3,19 +3,19 @@ title: Custom Speech モデルのトレーニングとデプロイ - 音声サ�
 titleSuffix: Azure Cognitive Services
 description: Custom Speech モデルをトレーニングおよびデプロイする方法について説明します。 音声テキスト変換モデルをトレーニングすると、Microsoft のベースライン モデルまたはカスタム モデルの認識精度を向上できます。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: trbye
-ms.openlocfilehash: 4ba046b5461c3b734d54ad3694f0ceea2e5127c6
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.author: lajanuar
+ms.openlocfilehash: a174848cf8a08942b9aa3777fc25bb0a0fcb8684
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387045"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066498"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Custom Speech モデルのトレーニングとデプロイ
 

@@ -4,17 +4,17 @@ description: Cloud Services (クラシック) から Cloud Services (延長サ�
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
-author: tanmaygore
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 2e56e3d6b5f29996d8fe9606ac9a1b3778201803
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: cdfb7dd5d09d6925de23be70df18037165776a18
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288726"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751118"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) に移行するときの一般的なエラーと既知の問題
 
@@ -48,7 +48,7 @@ ms.locfileid: "108288726"
 | クラウド サービス <クラウド サービス名> でのデプロイ <デプロイ名> の移行は、リージョン <リージョン名> 内にあるため、サポートされていません。 許可されたリージョン: <使用可能なリージョンの一覧>。 | 移行はリージョンでまだサポートされていません。 | 
 | ロール <ロール名> に関連付けられているサブネットがないため、クラウド サービス <クラウド サービス名> のデプロイ <デプロイ名> を移行できません。 すべてのロールをサブネットに関連付けてから、クラウド サービスの移行をもう一度お試しください。 | 移行の前にサブネットに配置することで、Cloud Services (クラシック) のデプロイを更新します。 |  
 | デプロイに必要な 1 つ以上の機能が Azure Resource Manager でサブスクリプションに登録されていないため、クラウド サービス <クラウド サービス名> のデプロイ <デプロイ名> を移行できません。 このデプロイを移行するには、すべての必要な機能を登録してください。 不足している機能: <不足している機能の一覧>。 | 機能フラグの登録を、サポートに依頼してください。 | 
-| このデプロイのクラウド サービスには占有されているスロットが 2 つあるため、デプロイを移行できません。 クラウド サービスの移行は、そのクラウド サービス内の唯一のデプロイであるデプロイでのみサポートされています。 このデプロイの移行を続行するには、クラウド サービス内のもう一方のデプロイを削除してください。 | 詳細については、[サポートされていないシナリオ](in-place-migration-overview.md#unsupported-configurations--migration-scenarios)の一覧を参照してください。 | 
+| このデプロイのクラウド サービスには占有されているスロットが 2 つあるため、デプロイを移行できません。 クラウド サービスの移行は、そのクラウド サービス内の唯一のデプロイであるデプロイでのみサポートされています。 このデプロイの移行を続行するには、クラウド サービス内のもう一方のデプロイを削除してください。 | 詳細については、[サポートされていないシナリオ](in-place-migration-technical-details.md#unsupported-configurations--migration-scenarios)の一覧を参照してください。 | 
 | HostedService <クラウド サービス名> のデプロイ <デプロイ名> は中間の状態 <状態> にあります。 移行することはできません。 | デプロイは、作成中、削除中、または更新中です。 操作が完了するまで待ってから、再試行します。 | 
 | ホストされるサービス <クラウド サービス名> 内のデプロイ <デプロイ名> には予約済み IP がありますが、予約済み IP 名がありません。 この問題を解決するには、予約済み IP 名を更新するか、Microsoft Azure サービス デスクにお問い合わせください。 | クラウド サービスのデプロイを更新します。 | 
 | ホストされるサービス <クラウド サービス名> 内のデプロイ <デプロイ名> には予約済み IP <予約済み IP 名> がありますが、予約済み IP 上にエンドポイントがありません。 この問題を解決するには、予約済み IP に少なくとも 1 つのエンドポイントを追加してください。 | 予約済み IP にエンドポイントを追加します。 | 

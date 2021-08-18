@@ -3,12 +3,12 @@ title: Azure DevTest Labs 内のラボへの Git レポジトリの追加 | Micr
 description: Azure DevTest Labs でカスタム アーティファクト ソースの GitHub または Azure DevOps Services Git リポジトリを追加する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2024c94c433559f067874fa852478a37e41eb53d
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483144"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539891"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
 
@@ -19,7 +19,7 @@ Microsoft では、そのままデプロイすることも、ラボ用にカス�
 VM を作成したときに、Resource Manager テンプレートを保存し、必要に応じてカスタマイズできます。このテンプレートを後で使用して、他の VM を作成できます。 カスタム Resource Manager テンプレートを格納する独自のプライベート リポジトリを作成する必要があります。  
 
 * GitHub リポジトリを作成する方法については、「 [GitHub Bootcamp (GitHub ブートキャンプ)](https://help.github.com/categories/bootcamp/)」を参照してください。
-* Git リポジトリを含む Azure DevOps Services プロジェクトを作成する方法については、[Azure DevOps Services への接続](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)に関する記事をご覧ください。
+* Git リポジトリを含む Azure DevOps Services プロジェクトを作成する方法については、[Azure DevOps Services への接続](https://azure.microsoft.com/services/devops/)に関する記事をご覧ください。
 
 次の図は、アーティファクトを含むリポジトリの GitHub での表示例を示しています。  
 

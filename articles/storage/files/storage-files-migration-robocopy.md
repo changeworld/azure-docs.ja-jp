@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 53c0ad42e51e8ffc562827e9a67e01b132dafd89
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 76fb327eaf2f95bd96513f6382a00e29a54fe893
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108777049"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462248"
 ---
 # <a name="use-robocopy-to-migrate-to-azure-file-shares"></a>RoboCopy を使用して Azure ファイル共有に移行する
 
@@ -23,6 +23,13 @@ ms.locfileid: "108777049"
 > * 移行経路: ソース ストレージ &rArr; Windows マシン (RoboCopy 使用) &rArr; Azure ファイル共有
 
 ソースとデプロイのさまざまな組み合わせに応じて、異なる多数の移行経路があります。 [移行ガイドの表](storage-files-migration-overview.md#migration-guides)を参照して、ご自身のニーズに最適な移行を見つけてください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="azcopy-vs-robocopy"></a>AzCopy と RoboCopy
 AzCopy と RoboCopy の 2 つは、基本的に異なるファイル コピー ツールです。 RoboCopy には、任意のバージョンの SMB プロトコルが使用されます。 AzCopy は、ターゲットが Azure Storage 内にある場合に限ってデータの移動に使用できる "クラウド内で生まれた" ツールです。 AzCopy は REST プロトコルに依存します。

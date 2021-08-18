@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8eca44fa7e5a23b38c8cfa7368aace1ea0a942eb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6d840893de2c516137e54d015123fa9249b93d54
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080059"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434626"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure で SQL 仮想マシンのライセンス モデルを変更する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,11 +61,9 @@ SQL Server VM のライセンスモデルを変更するには、次の要件が
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
 ライセンス モデルは、ポータルから直接変更できます。 
 
-1. [Azure portal](https://portal.azure.com) を開き、ご利用の SQL Server VM 用の [SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)を開きます。 
+1. [Azure portal](https://portal.azure.com) を開き、ご利用の SQL Server VM 用の [SQL 仮想マシン リソース](manage-sql-vm-portal.md#access-the-resource)を開きます。 
 1. **[設定]** の **[構成]** を選択します。 
 1. **[Azure ハイブリッド特典]** オプションを選択し、ソフトウェア アシュアランス付きの SQL Server ライセンスがあることを確認するチェックボックスをオンにします。 
 1. **[構成]** ページの下部にある **[適用]** を選択します。 

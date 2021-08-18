@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) を使用してビデオ内の正確な場面を検索する
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: Azure Video Analyzer for Media (旧称 Video Indexer) を使用してビデオ内の正確な場面を検索する方法について説明します。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 11/23/2019
 ms.author: juliako
-ms.openlocfilehash: 0377dc991e532508d3cb0c4c7d48fe10801ef244
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 27d25793dfec24a5eac847fae89bc0a01a32e909
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387984"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115286"
 ---
 # <a name="search-for-exact-moments-in-videos-with-video-analyzer-for-media"></a>Azure Video Analyzer for Media を使用してビデオ内の正確な場面を検索する
 

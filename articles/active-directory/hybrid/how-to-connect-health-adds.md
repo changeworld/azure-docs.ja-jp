@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0686a4dafae17bafc65a03c985a65aecba70e60c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dcb07968f4b077694d71b36e443c8fe9a7c258b
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98017019"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109343"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>AD DS での Azure AD Connect Health の使用
 次のドキュメントは、Azure AD Connect Health を使用した Active Directory Domain Services の監視について記述しています。 AD DS のサポートされているバージョンは、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、および Windows Server 2016 です。
@@ -62,5 +62,5 @@ Azure AD Connect Health for AD DS 内の [アラート] セクションには、
 * [Azure AD Connect Health の操作](how-to-connect-health-operations.md)
 * [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)
-* [Azure AD Connect Health の FAQ](reference-connect-health-faq.md)
+* [Azure AD Connect Health の FAQ](reference-connect-health-faq.yml)
 * [Azure AD Connect Health のバージョンの履歴](reference-connect-health-version-history.md)

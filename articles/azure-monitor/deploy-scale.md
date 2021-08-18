@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: 422ba2ecaed8803a49c0a82b85d821d3f55c9bbd
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 63da1c8f36f9e2db9593256a071d71ac70ea18bd
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071998"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380034"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Policy を使用して大規模に Azure Monitor をデプロイする
 Azure Monitor の一部の機能は構成を 1 回または限られた回数行うだけで済みますが、それ以外の機能については監視するリソースごとに繰り返す必要があります。 この記事では、Azure Policy を使用して Azure Monitor を大規模に実装し、監視がすべての Azure リソースに対して確実に一貫して正確に構成されるようにする方法について説明します。
@@ -42,7 +42,7 @@ Azure Policy には、Azure Monitor に関連するいくつかの定義があ�
 
   ![監視カテゴリおよび組み込みの種類のポリシー定義の一覧を示す Azure portal 内の [Azure Policy Definitions]\(Azure Policy 定義\) ページのスクリーンショット。](media/deploy-scale/builtin-policies.png)
 
-## <a name="azure-monitor-agent-preview"></a>Azure Monitor エージェント (プレビュー)
+## <a name="azure-monitor-agent"></a>Azure Monitor エージェント
 [Azure Monitor エージェント](agents/azure-monitor-agent-overview.md) は、Azure 仮想マシンのゲスト オペレーティング システムから監視データを収集し、Azure Monitor に送ります。 [データ収集ルール](agents/data-collection-rule-overview.md) を使用することで、各エージェントからどのデータを収集するかを構成し、大規模な収集を管理できます。また、全体のマシンのうち一部だけに対し、スコープ別に独自の構成を行うこともできます。  
 下のポリシーとポリシー イニシアチブにより、仮想マシンを作成するたびに自動的にエージェントをインストールし、それをデータ収集ルールに関連付けることができます。
 

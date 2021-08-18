@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 30c20974513d5e52661fed16f671ca672950c054
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 62adc6a4424a439fc104e5366c272f3ec42c37fa
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331792"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232306"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -249,7 +249,7 @@ function async_sample() {
                     if (err) reject(err);
                     resolve({ feed, options });
                 });
-                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "queryDocuments was not accepted."));
             });
         },
 

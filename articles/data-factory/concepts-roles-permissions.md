@@ -4,14 +4,15 @@ description: データ ファクトリの作成および子リソースの操作
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
+ms.subservice: security
 author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: 7bc386e17cef3bfc6b2c4db83c1edcb04d2d9178
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: e5c598555cdfabbb250216b9e6a97e7222410c49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906766"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739549"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 

@@ -4,12 +4,12 @@ description: Azure HDInsight での Apache Ambari の使用方法について説
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2021
-ms.openlocfilehash: 35338cad4364abbf233e3da81b05ba912959ed65
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 2a630d8cebf0c683a94e809269dcaef1df55c06e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064492"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112293466"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight での Apache Ambari の使用法
 
@@ -77,4 +77,4 @@ Property Value: environment|env|dl_data_dt
 * [Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari-rest-api.md)
 
-[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](includes/hdinsight-troubleshooting-next-steps.md)]

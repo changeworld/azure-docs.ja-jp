@@ -2,19 +2,18 @@
 title: Azure IoT Hub デバイス管理の開始 (Node) | Microsoft Docs
 description: IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT SDK for Node.js を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8d551de4e467d602c40fc40889bfc36e5cf69a1d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: da842509c7adbf1cc576c42d229e3934bb74251d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075603"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733796"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>デバイス管理の開始 (Node.js)
 

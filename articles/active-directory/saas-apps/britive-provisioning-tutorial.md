@@ -2,25 +2,22 @@
 title: 'チュートリアル: Britive を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure AD から Britive へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 622688b3-9d20-482e-aab9-ce2a1f01e747
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/05/2021
-ms.author: Zhchia
-ms.openlocfilehash: 8bebcb49bc7bf31614a161c08d33d5910679b614
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: thwimmer
+ms.openlocfilehash: 78d1f387af64505c4d7e05ca133ccacd09e2d1e4
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225672"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195847"
 ---
 # <a name="tutorial-configure-britive-for-automatic-user-provisioning"></a>チュートリアル: Britive を構成し、自動ユーザー プロビジョニングに対応させる
 

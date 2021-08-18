@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure 仮想マシン
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: da6b4cd6134f0cd1fd3d6e04e814bbf8aec9b07d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4789285f4cc95f1885dbf9121bc5189fce02d6de
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452154"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460938"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -19,7 +19,7 @@ Azure Backup を使用した Azure 仮想マシンのバックアップが完了
 
 ## <a name="select-recovery-point"></a>Select Recovery point
 
-バックアップ項目の使用可能な復旧ポイントの一覧は、[復旧ポイント一覧取得 REST API](/rest/api/backup/recoverypoints/list) を使用して取得できます。 関連するすべての値を含む簡単な *GET* 操作です。
+バックアップ項目の使用可能な復旧ポイントの一覧は、[復旧ポイント一覧取得 REST API](/rest/api/backup/recovery-points/list) を使用して取得できます。 関連するすべての値を含む簡単な *GET* 操作です。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -31,9 +31,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Responses
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
-|200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       [OK]  |
+|200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points/list#recoverypointresourcelist)      |       [OK]  |
 
 #### <a name="example-response"></a>応答の例
 
@@ -144,7 +144,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -216,7 +216,7 @@ X-Powered-By: ASP.NET
 
 Azure VM バックアップからのディスクの復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -246,7 +246,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 ### <a name="restore-disks-selectively"></a>選択的にディスクを復元する
 
-[選択的にディスクをバックアップ](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)している場合は、現在バックアップされているディスク リストが、[回復ポイントの概要](#select-recovery-point)および[詳細な応答](/rest/api/backup/recoverypoints/get)に記されます。 ディスクを選択的に復元することもできます。詳細については[こちら](selective-disk-backup-restore.md#selective-disk-restore)を参照してください。 バックアップ ディスクの一覧からディスクを選択的に復元するには、回復ポイントの応答からディスクの LUN を探し、次に示すように、[上記の要求本文](#example-request)に **restoreDiskLunList** プロパティを追加します。
+[選択的にディスクをバックアップ](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)している場合は、現在バックアップされているディスク リストが、[回復ポイントの概要](#select-recovery-point)および[詳細な応答](/rest/api/backup/recovery-points/get)に記されます。 ディスクを選択的に復元することもできます。詳細については[こちら](selective-disk-backup-restore.md#selective-disk-restore)を参照してください。 バックアップ ディスクの一覧からディスクを選択的に復元するには、回復ポイントの応答からディスクの LUN を探し、次に示すように、[上記の要求本文](#example-request)に **restoreDiskLunList** プロパティを追加します。
 
 ```json
 {
@@ -278,7 +278,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 Azure VM バックアップからのディスク交換をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |Type  |説明  |
+|名前  |型  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -332,6 +332,7 @@ Azure VM バックアップからのディスク交換をトリガーする場�
           "originalStorageAccountOption": false,
           "encryptionDetails": {
             "encryptionEnabled": false
+          }
      }
  }
 ```

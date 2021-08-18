@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 558610a23098a64f0f36ccb5c04ee71e8a7343cb
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 7652f1562050b3253b0df7ee16c4eff5dd6f8e85
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408463"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376866"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-and-attach-apache-spark-poolspreview"></a>Azure Synapse Analytics と Azure Machine Learning ワークスペースをリンクして Apache Spark プールをアタッチする (プレビュー)
 
@@ -26,7 +26,7 @@ Azure Machine Learning ワークスペースを Azure Synapse ワークスペー
 
 ML ワークスペースと Synapse ワークスペースのリンクは、[Python SDK](#link-sdk) または [Azure Machine Learning スタジオ](#link-studio)から行うことができます。
 
-また、複数のワークスペースをリンクし、1 つの [Azure Resource Manager (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)を使用して Synapse Spark プールをアタッチすることもできます。
+また、複数のワークスペースをリンクし、1 つの [Azure Resource Manager (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-linkedservice-create/azuredeploy.json)を使用して Synapse Spark プールをアタッチすることもできます。
 
 >[!IMPORTANT]
 > Azure Machine Learning と Azure Synapse の統合はパブリック プレビュー段階です。 `azureml-synapse` パッケージから提供される機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
@@ -134,7 +134,7 @@ linked_service = LinkedService.get(ws, 'synapselink1')
 
 Apache Spark プールは、次の手段でアタッチできます。
 * Azure Machine Learning Studio
-* [Azure Resource Manager (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
+* [Azure Resource Manager (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-linkedservice-create/azuredeploy.json)
 * Azure Machine Learning Python SDK 
 
 ### <a name="attach-a-pool-via-the-studio"></a>スタジオを使用してプールをアタッチする

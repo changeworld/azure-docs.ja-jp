@@ -7,14 +7,13 @@ ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: daaa7a2fa0c25c49a1a6d404edb8ab0765d8c36a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0533ebb6a771329731590007f24426eec2e4398f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784009"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727289"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Azure Maps にデータのフィードバックを提供する
 

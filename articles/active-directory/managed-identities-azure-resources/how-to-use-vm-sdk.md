@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/07/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85629f53cdd2753eca5574d627a01dd06ea49510
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5ca24bb127c3149372eaf7ed2748fb252a17b3ef
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749509"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474075"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Azure SDK を使用して Azure VM で Azure リソースのマネージド ID を使用する方法 
 
@@ -41,7 +41,7 @@ ms.locfileid: "111749509"
 | .NET            | [Azure リソースのマネージド ID を使用して、Windows VM から Azure Resource Manager テンプレートをデプロイする](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
 | .NET Core       | [Azure リソースのマネージド ID を使用して、Linux VM から Azure サービスを呼び出す](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
 | Go              | [Go 用 Azure ID クライアント モジュール](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/azidentity#ManagedIdentityCredential)
-| Node.js         | [Azure リソースのマネージド ID を使用して、リソースを管理する](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
+| Node.js         | [Azure リソースのマネージド ID を使用して、リソースを管理する](https://github.com/Azure-Samples/resources-node-manage-resources-with-msi) |
 | Python          | [Azure リソースのマネージド ID を使用して、VM 内から単純に認証する](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
 | Ruby            | [Azure リソースのマネージド ID が有効になっている VM からリソースを管理する](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 

@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 00765a51ad07cd53fde403ed1cfabb73c5692026
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 5035515c843db2ce7feb06090029c7e5995769cc
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076871"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287962"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -28,7 +28,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 * データベース内のコレクション。 「[コレクションの追加](../cosmos-db/create-sql-api-java.md#add-a-container)」の手順を参照してください。 コレクションを作成するときに、パーティション キーに `/id` を使用します。
 
-* Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](./quickstart-send-telemetry-dotnet.md)」のチュートリアルをご覧ください。
+* Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)」のチュートリアルをご覧ください。
 
 ## <a name="create-a-stored-procedure"></a>ストアド プロシージャの作成
 

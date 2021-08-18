@@ -3,16 +3,16 @@ title: Azure IoT Central ソリューションで位置データを使用する
 description: IoT Central アプリケーションに接続されているデバイスから送信された位置データを使用する方法について説明します。 マップ上に位置データをプロットするか、ジオフェンシング規則を作成します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/08/2021
+ms.date: 06/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e93da2bec3753ba6efda2b4eb16d6ef78b42234b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 57f1bb47ceaa0552053cb61321dc54a3d2b19293
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747217"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964515"
 ---
 # <a name="use-location-data-in-an-azure-iot-central-solution"></a>Azure IoT Central ソリューションで位置データを使用する
 

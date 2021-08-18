@@ -3,12 +3,12 @@ title: Azure Event Grid イベントに対するイベント ハンドラーと�
 description: Azure Event Grid のイベントに対するイベント ハンドラーとして Service Bus のキューとトピックを使用する方法を説明します。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a13662f39410ee6a24644963dbfb3fc1f20d747
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97399861"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416562"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしての Service Bus のキューとトピック
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Service Bus** はその 1 つです。 
@@ -16,6 +16,10 @@ ms.locfileid: "97399861"
 Event Grid からのイベントに対するハンドラーとして、Service Bus のキューまたはトピックを使用できます。 
 
 ## <a name="service-bus-queues"></a>Service Bus キュー
+
+> [!NOTE]
+> セッションで有効なキューは、Azure Event Grid イベントのイベント ハンドラーとしてはサポートされません
+ 
 エンタープライズ アプリケーションでのバッファー処理または音声コマンドのシナリオで使用するために、Event Grid のイベントを Service Bus キューに直接ルーティングすることができます。
 
 Azure portal で、イベント サブスクリプションを作成するときに、エンドポイントの種類として **[Service Bus キュー]** を選択し、 **[エンドポイントの選択]** をクリックして Service Bus キューを選択します。
@@ -50,7 +54,7 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
-[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
+[!INCLUDE [event-grid-message-headers](./includes/event-grid-message-headers.md)]
 
 ブローカー メッセージとして Service Bus のキューまたはトピックにイベントを送信する場合、ブローカー メッセージの `messageid` は内部システム ID です。
 
