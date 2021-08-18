@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
-ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18
+ms.openlocfilehash: 447ebaac46235d551236b0b354acbacb67df0d07
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96348655"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397144"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure Cosmos DB リソースを管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
