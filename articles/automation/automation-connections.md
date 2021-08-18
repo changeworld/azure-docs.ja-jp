@@ -5,13 +5,13 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: 4b5983d6ea4ea9065d1292a2c5ee0c094cea093b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0ede006b48646e9ddb0fd6b6a8f36cf5e9697fbf
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834896"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397321"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Automation の接続を管理する
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: eb6ae05b0e3c296a1ca56d3ea6085b8cd4586c23
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 08e20a497c7fddfe00e70fcf1d9d4c6e5f76054f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165697"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321841"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Azure Virtual WAN を使用した SD-WAN 接続アーキテクチャ
 
@@ -42,7 +42,7 @@ SD-WAN CPE パートナーは、それぞれの CPE デバイスからの、通�
 
 Virtual WAN では、ユーザーは Azure パス選択を利用できます。これは、ブランチ CPE から Virtual WAN VPN ゲートウェイへの複数の ISP リンクでのポリシーベースのパス選択です。 Virtual WAN では、同じ SD-WAN ブランチ CPE から複数のリンク (パス) を設定できます。各リンクは、SD-WAN CPE の一意のパブリック IP から Azure Virtual WAN VPN ゲートウェイの 2 つの異なるインスタンスへのデュアル トンネル接続を表します。 SD-WAN ベンダーは、CPE リンク上のポリシー エンジンによって設定されたトラフィック ポリシーに基づいて、Azure への最適なパスを実装できます。 Azure エンドでは、すべての受信接続が同等に扱われます。
 
-## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>NVA-in-VWAN-hub による直接相互接続モデル
+## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct-nva"></a>NVA-in-VWAN-hub による直接相互接続モデル
 
 :::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="NVA-in-VWAN-hub による直接相互接続モデル":::
 

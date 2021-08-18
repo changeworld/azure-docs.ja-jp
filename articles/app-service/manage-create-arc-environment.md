@@ -2,13 +2,13 @@
 title: App Service、Functions、および Logic Apps 用に Azure Arc セットアップする
 description: ご使用の Azure Arc 対応 Kubernetes クラスターに対して、App Service アプリ、Functions Apps、Logic Apps を有効にする方法を学習します。
 ms.topic: article
-ms.date: 05/26/2021
-ms.openlocfilehash: a219b0e12deaca30c2c046e4e99cf38672dc46c9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/17/2021
+ms.openlocfilehash: f6d917a9bd18c16e283f8c61e6cb6d15fcd4882f
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723031"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396979"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
 
@@ -211,8 +211,7 @@ Azure Arc で App Service を実行するために [Log Analytic ワークスペ
         --workspace-name $workspaceName `
         --query primarySharedKey `
         --output tsv)
-    $logAnalyticsKeyEncWithSpace=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
-    $logAnalyticsKeyEnc=$(echo -n "${logAnalyticsKeyEncWithSpace//[[:space:]]/}") # Needed for the next step
+    $logAnalyticsKeyEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
     ```
     
     ---
