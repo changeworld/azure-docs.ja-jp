@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/26/2021
 ms.author: yelevin
-ms.openlocfilehash: c66205ffd9bd5a742d645cbf2f9251a44329a16e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f16c76c6a29bed37fb21ebaf420b0c6c92f6ada7
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743557"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253981"
 ---
 # <a name="connect-your-sophos-cloud-optix-to-azure-sentinel"></a>Azure Sentinel に Sophos Cloud Optix を接続する
 
 > [!IMPORTANT]
 > Sophos Cloud Optix コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Sophos Cloud Optix コネクタを使用すると、Azure Sentinel にすべての Sophos Cloud Optix セキュリティ ソリューションのログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。  この機能により、組織のクラウド セキュリティとコンプライアンス体制に関するより詳細な分析情報が得られ、クラウド セキュリティの運用機能が改善されます。 Sophos Cloud Optix と Azure Sentinel との統合には、REST API を使用します。
 
@@ -57,6 +59,6 @@ Sophos Cloud Optix データを照会するには、クエリ ウィンドウに
 
 このドキュメントでは、Sophos Cloud Optix を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

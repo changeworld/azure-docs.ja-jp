@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 136853182e353ad5cd71981db5935fc3babe162e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 927711efc4469d26b3aaf00d38c11ad24466dfe5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339605"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733180"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB SQL API アカウントにデータを移行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -199,6 +199,6 @@ Azure の Striim ソリューションを使用することにより、Oracle、
 
 ## <a name="next-steps"></a>次のステップ
 
-* データを Azure Cosmos DB SQL API に移行する場合は、[Striim を使用して Cassandra API アカウントにデータを移行する方法](cosmosdb-cassandra-api-migrate-data-striim.md)に関するページを参照してください。
+* データを Azure Cosmos DB SQL API に移行する場合は、[Striim を使用して Cassandra API アカウントにデータを移行する方法](cassandra/migrate-data-striim.md)に関するページを参照してください。
 
 * [Azure Cosmos DB メトリックを使用したデータの監視とデバッグ](use-metrics.md)

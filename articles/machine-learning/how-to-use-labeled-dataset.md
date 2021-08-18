@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 7fc4a36cc8fedaa5de704f668f8b15aecac98cd7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e46d088180666523c27d86a98d740fa49f5214f2
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140517"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460488"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
 
@@ -26,7 +26,7 @@ ms.locfileid: "108140517"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLFree)を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 * [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
     * [azure-contrib-dataset](/python/api/azureml-contrib-dataset/) パッケージをインストールする
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。

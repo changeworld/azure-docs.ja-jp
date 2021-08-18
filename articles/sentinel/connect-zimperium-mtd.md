@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 7cbf1c52af1d2902ae0726fc0dd98dbf12cecc44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 840d87fe1bf14e60cdfdd2438189763bcc548c3a
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097451"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252467"
 ---
 # <a name="connect-your-zimperium-mobile-threat-defense-to-azure-sentinel"></a>Zimperium Mobile Threat Defense を Azure Sentinel に接続する
 
@@ -26,6 +26,7 @@ ms.locfileid: "100097451"
 > Azure Sentinel の Zimperium Mobile Threat Defense データ コネクタは、現在パブリック プレビューです。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 
 Zimperium Mobile Threat Defense コネクタを使用すると、Zimperium の脅威ログを Azure Sentinel に接続して、ダッシュボードを表示し、カスタム アラートを作成し、調査を向上させることができます。 これにより、組織のモバイル脅威のランドスケープにより詳細な分析情報が提供され、セキュリティ運用機能が向上します。
@@ -64,11 +65,11 @@ Zimperium Mobile Threat Defense のために Log Analytics で関連するスキ
 
 このドキュメントでは、Zimperium Mobile Threat Defense を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
 
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
 
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。
 
 Zimperium の詳細については、以下を参照してください。
 
@@ -77,4 +78,3 @@ Zimperium の詳細については、以下を参照してください。
 - [Zimperium モバイル セキュリティ ブログ](https://blog.zimperium.com)
 
 - [Zimperium カスタマー サポート ポータル](https://support.zimperium.com)
-

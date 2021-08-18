@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09853e6dd96f41f966ff4344f886f1e6323b6c2c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92789677"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733648"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする
 
@@ -28,7 +28,7 @@ Microsoft からは、Azure Storage リソースを操作する 2 つの REST AP
 
 BLOB データを読み取りまたは書き込みを行う要求には、管理操作を実行する要求とは異なるアクセス許可が必要です。 Azure RBAC を使うと、両方の種類のリソースへのアクセス許可をきめ細かく制御できます。 Azure ロールをセキュリティ プリンシパルに割り当てる場合は、必ずそのプリンシパルに付与されるアクセス許可を理解してください。 各 Azure 組み込みロールに関連付けられているアクションが説明された詳細なリファレンスについては、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-Azure Storage は、Azure AD を使用して Blob および Queue ストレージに対する要求を承認する処理をサポートしています。 BLOB およびキュー データ操作の Azure ロールの詳細については、「[Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
+Azure Storage は、Azure AD を使用して Blob および Queue ストレージに対する要求を承認する処理をサポートしています。 BLOB およびキュー データ操作の Azure ロールの詳細については、「[Active Directory を使用して BLOB とキューへのアクセスを承認する](authorize-data-access.md)」を参照してください。
 
 ## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC) を使用して管理アクセス許可を割り当てる
 

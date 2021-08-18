@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: df42925b50cba4d32ea554ae54dbcb09a5e04377
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 5748b68940027269acaafe27148f0c4819cefc0a
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205955"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720322"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Azure VPN Gateway で BGP を構成する方法
 
@@ -90,7 +90,7 @@ Azure サブスクリプションを持っていることを確認します。 A
    > * Azure VPN ゲートウェイで APIPA アドレスが使用されている場合、そのゲートウェイによって、APIPA の発信元 IP アドレスで BGP ピアリング セッションが開始されることはありません。 BGP ピアリング接続の開始は、オンプレミスの VPN デバイスによって行われる必要があります。
    >
 
-1. **[確認と作成]** を選択して検証を実行します。 検証に合格したら、 **[作成]** を選択して VPN ゲートウェイをデプロイします。 ゲートウェイを完全に作成してデプロイするには最大で 45 分かかることがあります。 デプロイの状態は、ゲートウェイの [概要] ページで確認できます。
+1. **[確認と作成]** を選択して検証を実行します。 検証に合格したら、 **[作成]** を選択して VPN ゲートウェイをデプロイします。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。 デプロイの状態は、ゲートウェイの [概要] ページで確認できます。
 
 ### <a name="3-obtain-the-azure-bgp-peer-ip-addresses"></a>3.Azure BGP ピア IP アドレスを取得する
 

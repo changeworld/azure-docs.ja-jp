@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 5eb5d73d6820260702f9b0190cf4e190b10f2c54
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f076e942ac578a138fb75843bb9a7d3654f68c5a
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030001"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114387744"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -124,4 +124,4 @@ DNS 管理者用に開発されたこのソリューションは、DNS ログの
 
 ## <a name="miscellaneous"></a>その他
 
-* [新しい価格](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)
+* [新しい価格](../azure-monitor/insights/network-performance-monitor-pricing-faq.yml)

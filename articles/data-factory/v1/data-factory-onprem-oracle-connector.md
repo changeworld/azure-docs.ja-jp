@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a590082acee1a3382ef51ce2361eb2c9b5fb2636
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 087afa7425d1244c38514c5388e242281bdab3dc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741547"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736788"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
@@ -122,7 +122,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 **例: ODP ドライバーを使用する**
 
-使用できる形式の詳細については、[.NET ODP 用の Oracle データ プロバイダー](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)に関するページを参照してください。
+使用できる形式の詳細については、[.NET ODP 用の Oracle データ プロバイダー](https://www.oracle.com/in/database/technologies/appdev/dotnet/odp.html)に関するページを参照してください。
 
 ```json
 {

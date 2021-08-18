@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 49122421f04ee6eef8828ca305cfb235aceee3fb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dea5a005815e551edfe5fbea8f65c7b3a23171e8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035695"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735807"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -145,4 +145,4 @@ Heartbeat
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* Azure Monitor の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/en-us/support/legal/sla/monitor/v1_3/) をお読みください。
+* Azure Monitor の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/monitor/v1_3/) をお読みください。

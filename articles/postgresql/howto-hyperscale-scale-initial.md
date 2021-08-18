@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/07/2021
-ms.openlocfilehash: 8b87cfc8276d13ccc7e12a4901489ea0b1e770a5
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 22a0fb4d06194138d5169df5005d5a23b3580569
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012508"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726142"
 ---
 # <a name="pick-initial-size-for-hyperscale-citus-server-group"></a>Hyperscale (Citus) サーバー グループの初期サイズを選択する
 
@@ -36,11 +36,6 @@ Hyperscale (Citus) は、次の方法で多く使用されます。
 ワーカー RAM: 最適なケースは、ワーキング セットのほとんどがメモリに収まる十分なメモリを提供することです。 アプリケーションによって使用されるクエリの種類は、メモリ要件に影響します。 クエリで EXPLAIN ANALYZE を実行して、必要なメモリの量を確認できます。 [Hyperscale (Citus) 構成オプション](concepts-hyperscale-configuration-options.md)に関する記事で説明されているように、仮想コアと RAM はまとめてスケーリングされることに注意してください。
 
 ## <a name="choosing-a-hyperscale-citus-tier"></a>Hyperscale (Citus) レベルを選択する
-
-> [!IMPORTANT]
-> Hyperscale (Citus) Basic レベルは現在プレビュー段階です。  このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
->
-> その他の新機能については、[Hyperscale (Citus) のプレビュー機能](hyperscale-preview-features.md)に関するページで全一覧をご覧いただけます。
 
 上記のセクションでは、各ユース ケースに必要な仮想コア数と RAM 容量について説明しています。 これらの要求を満たすには、Basic レベルと Standard レベルの 2 つの Hyperscale (Citus) レベルのいずれかを選択します。
 

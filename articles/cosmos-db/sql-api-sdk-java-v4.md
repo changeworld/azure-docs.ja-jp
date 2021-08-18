@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: c8b1297d69de920e29cba4dba14b3d5f79c01427
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 1671b5104d8a211ba29a4fbd17345ecaed426de4
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535581"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232317"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Java SDK v4: リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -75,7 +75,7 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos/CHANGELOG.md)]
 
 ## <a name="faq"></a>よく寄せられる質問
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)] 
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)] 
 
 ## <a name="next-steps"></a>次のステップ
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。

@@ -9,17 +9,19 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
-ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd1ec5d11083c21511b39ba08fa2bfcf159bfc54
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655903"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121781257"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF) からデータを接続する
 
 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の標的になるケースが増えています。 Azure Web アプリケーション ファイアウォール (WAF) には、コード インジェクションやクロスサイトスクリプティングなどの一般的な悪用や脅威から Web アプリケーションを一元的に保護する機能があります。 Azure WAF は、[Azure Content Delivery Network (CDN)](../web-application-firewall/cdn/cdn-overview.md) WAF ポリシーを介して、[Azure Application Gateway](../web-application-firewall/ag/ag-overview.md) サービスと [Azure Front Door](../web-application-firewall/afds/afds-overview.md) サービスにデプロイできます (後者は現在パブリック プレビュー段階です)。
 Azure WAF ログを Azure Sentinel に接続すると、ブック内でログ データを表示し、それを使用してカスタム アラートを作成し、組み込んで、調査を改善することができます。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,5 +68,5 @@ Azure WAF ログを Azure Sentinel に接続すると、ブック内でログ �
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure WAF ログを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

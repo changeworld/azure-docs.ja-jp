@@ -12,18 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 62ed3915dcaf596d144a2f59817626cdf8ec47e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56ed14cf3010b967965eddf0605d36bafebdbb57
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100092776"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253540"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>Forcepoint DLP を Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Azure Sentinel の Forcepoint Data Loss Prevention (DLP) データ コネクタは、現在パブリック プレビューです。 この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 
 Forcepoint DLP コネクタを使用すると、DLP インシデント データを Azure Sentinel に自動的にエクスポートできます。 これを使用すると、ユーザー アクティビティやデータ損失のインシデントを可視化できます。 また、Azure ワークロードやその他のフィードのデータとの相関関係も有効になり、Azure Sentinel 内の Workbooks での監視機能が向上します。
@@ -52,6 +53,6 @@ Forcepoint DLP の Log Analytics で関連するスキーマを使用するに�
 
 このドキュメントでは、Forcepoint DLP を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

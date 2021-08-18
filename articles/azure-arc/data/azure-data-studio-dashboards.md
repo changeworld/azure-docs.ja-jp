@@ -7,20 +7,19 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94e7b6b351d13a85a516b4a4bc6c54c31754bc12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92107574"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741480"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio ダッシュボード
 
 [Azure Data Studio](/sql/azure-data-studio/what-is) では、Azure Arc リソースに関する情報を表示するために、Azure portal と同様のエクスペリエンスが提供されます。  これらのビューは **ダッシュボード** と呼ばれ、レイアウトとオプションは、Azure portal 内の特定のリソースについて見られるものと似ていますが、Azure に接続できない場合に環境内の情報がローカルに表示される柔軟性があります。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="connecting-to-a-data-controller"></a>データ コントローラーに接続する
 

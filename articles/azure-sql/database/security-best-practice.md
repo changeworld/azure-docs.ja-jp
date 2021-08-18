@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: c16764d1ce985755b6a3042873cc18b09b697bcf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ef8c2756d6e11dc38ac488abb0ed6d8ae8e9a78b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551613"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745852"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,7 +112,7 @@ ID の中央管理には、次のような利点があります。
 > - Azure AD アクセス トークンはクライアント側にキャッシュされ、その有効期間はトークンの構成によって異なります。 「[Azure Active Directory における構成可能なトークンの有効期間](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)」という記事を参照してください。
 > - Azure AD Authentication の問題のトラブルシューティングのガイダンスについては、次のブログを参照してください。[Azure AD のトラブルシューティング](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
 > 次で言及されています: OSA プラクティス #2、ISO アクセス制御 (AC)
 
@@ -682,7 +682,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 **実装方法**:
 
 - 監査ログを Azure Storage に保存するときは、ストレージ アカウントへのアクセスが最小限のセキュリティ原則に合わせて制限されていることを確認します。 ストレージ アカウントにアクセスできるユーザーを制御します。
-- 詳細については、[Azure Storage へのアクセスの承認](../../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関する記事を参照してください。
+- 詳細については、[Azure Storage へのアクセスの承認](../../storage/common/authorize-data-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関する記事を参照してください。
 
 **ベスト プラクティス**:
 

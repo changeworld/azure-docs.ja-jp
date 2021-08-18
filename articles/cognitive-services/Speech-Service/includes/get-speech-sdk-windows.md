@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fc4cc5063f72ff3f0db62cde79f7908add86166e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d25d88f3c58310d1f1d1b9d4077355784ed7bc03
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434584"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067791"
 ---
 :::row:::
     :::column span="3":::

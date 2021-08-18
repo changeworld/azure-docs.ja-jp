@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ecdb23eddcb47f8a50c2d10cab601787354a81b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97631994"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745653"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>音声コンテナー用のバッチ処理キット
 
@@ -38,6 +38,8 @@ ms.locfileid: "97631994"
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、最新のバッチ キット コンテナーをダウンロードします。
+
+[!INCLUDE [pull-image-include](../../../includes/pull-image-include.md)]
 
 ```bash
 docker pull docker.io/batchkit/speech-batch-kit:latest

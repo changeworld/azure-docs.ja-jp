@@ -3,20 +3,20 @@ title: 言語サポート - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声サービスでは、音声翻訳に加え、音声からテキストへの変換とテキストから音声への変換のためのさまざまな言語がサポートされます。 この記事では、サービス機能によってサポートされている言語の包括的な一覧を示します。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: references_regions
-ms.openlocfilehash: 2879ecbc6b50c3cd2bd7541357886f5d6dfe483b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f718ba81cf122b747652bf66d840dd8935897019
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752497"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253819"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -58,15 +58,15 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | アラビア語 (イエメン)                     | `ar-YE` | テキスト                                   |                           |                          |
 | ブルガリア語 (ブルガリア)               | `bg-BG` | テキスト                                   |                           |                          |
 | カタルニア語 (スペイン)                    | `ca-ES` | Text                                   | はい                          |                          |
-| 中国語 (繁体字)   | `zh-HK` | オーディオ (20201015)<br>Text                 |        はい                   |                          |
+| 中国語 (繁体字)   | `zh-HK` | オーディオ (20201015)<br>テキスト                 |        はい                   |                          |
 | 中国語 (標準、簡体字)     | `zh-CN` | オーディオ (20200910)<br>Text                 |     はい                      | はい                         |
 | 中国語 (台湾標準中国語)       | `zh-TW` | オーディオ (20190701、20201015)<br>Text                 |           はい                |                          |
 | クロアチア語 (クロアチア)                 | `hr-HR` | テキスト                                   |                           |                          |
 | チェコ語 (チェコ共和国)             | `cs-CZ` | テキスト                                   |                           |                          |
 | デンマーク語 (デンマーク)                   | `da-DK` | Text                                   | はい                          |                          |
 | オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>テキスト<br>発音|    はい                       |                          |
-| 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>Text                 | はい                          |                          |
-| 英語 (カナダ)                   | `en-CA` | オーディオ (20201019)<br>Text                 | はい                          |                          |
+| 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>テキスト                 | はい                          |                          |
+| 英語 (カナダ)                   | `en-CA` | オーディオ (20201019)<br>テキスト                 | はい                          |                          |
 | 英語 (ガーナ)                    | `en-GH` | テキスト                                   |                           |                          |
 | 英語 (香港)                | `en-HK` | テキスト                                   |                           |                          |
 | 英語 (インド)                    | `en-IN` | オーディオ (20200923)<br>Text                 |                          |                          |
@@ -97,18 +97,19 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | アイルランド語 (アイルランド)                     | `ga-IE` | テキスト                                   |                           |                          |
 | イタリア語 (イタリア)                    | `it-IT` | オーディオ (20201016)<br>テキスト<br>発音|      はい                     |                          |
 | 日本語 (日本)                   | `ja-JP` | Text                                   |      はい                     |                          |
-| 韓国語 (韓国)                     | `ko-KR` | オーディオ (20201015)<br>Text                 |      はい                     |                          |
+| 韓国語 (韓国)                     | `ko-KR` | オーディオ (20201015)<br>テキスト                 |      はい                     |                          |
 | ラトビア語 (ラトビア)                   | `lv-LV` | テキスト                                   |                           |                          |
 | リトアニア語 (リトアニア)             | `lt-LT` | テキスト                                   |                           |                          |
 | マレー語 (マレーシア)                   | `ms-MY` | テキスト                                   |                           |                          |
 | マルタ語 (マルタ)                    | `mt-MT` | テキスト                                   |                           |                          |
 | マラーティー語 (インド)                    | `mr-IN` | テキスト                                   |                           |                          |
 | ノルウェー語 (ブークモール、ノルウェー)         | `nb-NO` | Text                                   |     はい                      |                          |
+| ペルシア語 (イラン)                     | `fa-IR` | テキスト                                   |                           |                          |
 | ポーランド語 (ポーランド)                    | `pl-PL` | Text                                   |       はい                    |                          |
 | ポルトガル語 (ブラジル)                | `pt-BR` | オーディオ (20190620、20201015)<br>テキスト<br>発音|          はい                 |                          |
 | ポルトガル語 (ポルトガル)              | `pt-PT` | テキスト<br>発音                  |             はい              |                          |
 | ルーマニア語 (ルーマニア)                 | `ro-RO` | テキスト                                   |  はい                         |                          |
-| ロシア語 (ロシア)                   | `ru-RU` | オーディオ (20200907)<br>Text                 |                はい           |                          |
+| ロシア語 (ロシア)                   | `ru-RU` | オーディオ (20200907)<br>テキスト                 |                はい           |                          |
 | スロバキア語 (スロバキア)                  | `sk-SK` | テキスト                                   |                           |                          |
 | スロベニア語 (スロベニア)               | `sl-SI` | テキスト                                   |                           |                          |
 | スペイン語 (アルゼンチン)                | `es-AR` | テキスト<br>発音                  |                           |                          |
@@ -133,6 +134,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | スペイン語 (ウルグアイ)                  | `es-UY` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (米国)                      | `es-US` | テキスト<br>発音                  |                           |                          |
 | スペイン語 (ベネズエラ)                | `es-VE` | テキスト<br>発音                  |                           |                          |
+| スワヒリ語 (ケニア)                    | `sw-KE` | テキスト<br>発音                  |                           |                          |
 | スウェーデン語 (スウェーデン)                   | `sv-SE` | Text                                   |   はい                        |                          |
 | タミール語 (インド)                      | `ta-IN` | テキスト                                   |                           |                          |
 | テルグ語 (インド)                     | `te-IN` | テキスト                                   |                           |                          |
@@ -217,8 +219,19 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` | 全般 |
 | 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
-| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | 全般 |
-| 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
+| 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
+| 英語 (米国) | `en-US` | Female | `en-US-AmberNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-AshleyNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-CoraNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-ElizabethNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-MichelleNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-MonicaNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Kid | `en-US-AnaNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-BrandonNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-ChristopherNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-JacobNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-EricNeural` <sup>[新規作成]</sup> | 全般 |
 | エストニア語 (エストニア) | `et-EE` | Female | `et-EE-AnuNeural` | 全般 |
 | エストニア語 (エストニア) | `et-EE` | Male | `et-EE-KertNeural` | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-NooraNeural` | 全般 |
@@ -329,18 +342,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 | Language                         | Locale  | 性別 | 音声名                             | スタイルのサポート |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| 英語 (米国) | `en-US` | Female | `en-US-AmberNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-AshleyNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-CoraNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-ElizabethNeural` <sup>[新規作成]</sup> | 全般 |
 | 英語 (米国) | `en-US` | Female | `en-US-JennyMultilingualNeural` <sup>[新規作成]</sup> | [SSML](speech-synthesis-markup.md#create-an-ssml-document)を使用して使用できる一般的な多言語機能 |
-| 英語 (米国) | `en-US` | Female | `en-US-MichelleNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-MonicaNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Kid | `en-US-AnaNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Male | `en-US-BrandonNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Male | `en-US-ChristopherNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Male | `en-US-JacobNeural` <sup>[新規作成]</sup> | 全般 |
-| 英語 (米国) | `en-US` | Male | `en-US-EricNeural` <sup>[新規作成]</sup> | 全般 |
 
 > [!IMPORTANT]
 > パブリック プレビュー段階の音声は、3 つのサービス リージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
@@ -478,6 +480,7 @@ Custom Voice は、ニューラル レベル (カスタム ニューラル音声
 | 韓国語 (韓国) | `ko-KR` | はい | はい |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | はい | いいえ |
 | ポルトガル語 (ブラジル) | `pt-BR` | はい | はい |
+| ロシア語 (ロシア) | `ru-RU` | はい | はい |
 | スペイン語 (メキシコ) | `es-MX` | はい | はい |
 | スペイン語 (スペイン) | `es-ES` | はい | はい |
 

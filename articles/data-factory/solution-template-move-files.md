@@ -5,15 +5,16 @@ author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 270f6e83a7073bf39f4bc7efae8adea1ca56627e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361946"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739422"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Azure Data Factory でファイルを移動する
 

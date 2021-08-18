@@ -1,18 +1,18 @@
 ---
 title: terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
 description: Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングします。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 71dc3de45d2ff7ab1eb6e890b2e57556ce9ef01d
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877541"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014566"
 ---
 # <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
 

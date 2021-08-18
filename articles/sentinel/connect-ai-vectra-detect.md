@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: c57f4a49ac89f1347fc88f8bacddce3abab7e44e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4ab7e43c0fb779eb6bd5f88cc248e5ea8bf9bdc
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87038224"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254159"
 ---
 # <a name="connect-ai-vectra-detect-to-azure-sentinel"></a>Azure Sentinel に AI Vectra 検出を接続する
 
 > [!IMPORTANT]
 > Azure Sentinel の AI Vectra 検出データ コネクタは、現在パブリック プレビュー段階にあります。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 この記事では、Azure Sentinel に [AI Vectra 検出](https://www.vectra.ai/product/cognito-detect)を接続する方法について説明します。 AI Vectra 検出データ コネクタを使用すると、AI Vectra 検出データを Azure Sentinel に簡単に取り込むことができます。これにより、ブック内で表示し、これを利用してカスタム アラートを作成し、調査を向上させる目的で組み入れることができます。
 
@@ -57,6 +59,6 @@ AI Vectra 検出を構成して CEF 形式の Syslog メッセージを Log Anal
 
 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

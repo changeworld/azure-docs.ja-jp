@@ -7,26 +7,23 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: ac260f2fa8cd4f1fd469e3529b7ad6d55a965538
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/10/2021
+ms.openlocfilehash: dce33ff6ea1aef45059cc5535d7e6b5e1dc270ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555719"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736319"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Power BI を使用してナレッジ ストアに接続する
 
 この記事では、Power BI Desktop アプリの Power Query を使用してナレッジ ストアに接続し、探索する方法を説明します。 テンプレートを使用してすぐに作業を開始することも、カスタム ダッシュボードを最初から作成することもできます。 次の短いビデオでは、Azure Cognitive Search を Power BI と組み合わせて使用して、データのエクスペリエンスを向上させる方法を示します。
 
-
-> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=593&end=663]
-
-
-
 + [Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)に関するページか、「[REST を使用して Azure Cognitive Search のナレッジ ストアを作成する](knowledge-store-create-rest.md)」の手順に従って、このチュートリアルに使用されているサンプル ナレッジ ストアを作成します。 ナレッジ ストアの作成に使用した Azure ストレージ アカウントの名前とそのアクセス キー (Azure portal から入手) も必要になります。
 
 + [Power BI Desktop をインストール](https://powerbi.microsoft.com/downloads/)します。
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=593&end=663]
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>サンプル Power BI テンプレート - Azure portal のみ
 

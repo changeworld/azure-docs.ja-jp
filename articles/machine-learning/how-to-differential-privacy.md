@@ -11,12 +11,12 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 01/21/2020
-ms.openlocfilehash: 81c93d33b752a3620163169d0f2b8f900a5b9052
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 58716b6a1d25c52447fc1bf277986787db08ca1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885148"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729800"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning で差分プライバシーを使用する (プレビュー)
 
@@ -27,7 +27,7 @@ SmartNoise Python オープンソース ライブラリを使用して、Azure M
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-smartnoise-python-libraries"></a>SmartNoise Python ライブラリをインストールする
@@ -56,6 +56,8 @@ import opendp.smartnoise.sql
 SmartNoise パッケージを Docker と併用することもできます。
 
 Spark、Jupyter、サンプル コードを含む Docker コンテナー内でライブラリを使用するには、`opendp/smartnoise` イメージをプルします。
+
+[!INCLUDE [pull-image-include](../../includes/pull-image-include.md)]
 
 ```sh
 docker pull opendp/smartnoise:privacy

@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 10/27/2020
+ms.date: 06/30/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 7021367e1230573343ddf57ccd399d998ad5280e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93d86e0fe4a1dac4d9d780e0e14d6736b755f932
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339276"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724467"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,14 +69,11 @@ Azure Functions と同様、変更フィード プロセッサ ライブラリ�
 
 プル モデルでは、"最低 1 回" の配信保証は組み込まれていません。 プル モデルは、エラーの処理方法を決定するための、低レベルな制御を提供するものでます。
 
-> [!NOTE]
-> 変更フィード プル モデルは、現時点では、[Azure Cosmos DB .NET SDK でのみプレビュー](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview)段階です。 このプレビューは、他の SDK バージョンではまだ使用できません。
-
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra と MongoDB の API の変更フィード
 
-変更フィード機能は、MongoDB API では変更ストリームとして表示され、Cassandra API では述語を含むクエリとして表示されます。 MongoDB API の実装の詳細については、[MongoDB 用の Azure Cosmos DB API の変更ストリーム](mongodb-change-streams.md)に関するページを参照してください。
+変更フィード機能は、MongoDB API では変更ストリームとして表示され、Cassandra API では述語を含むクエリとして表示されます。 MongoDB API の実装の詳細については、[MongoDB 用の Azure Cosmos DB API の変更ストリーム](mongodb/change-streams.md)に関するページを参照してください。
 
-ネイティブ Apache Cassandra には、変更データ キャプチャ (CDC) が用意されています。CDC は、特定のテーブルに対してアーカイブのフラグを設定し、CDC ログ用に構成可能なディスク上のサイズに達すると、そのテーブルへの書き込みを拒否するメカニズムです。 Azure Cosmos DB API for Cassandra の変更フィード機能により、CQL を介して述語を使用して変更をクエリする機能が向上します。 実装の詳細については、[Cassandra 用の Azure Cosmos DB API の変更フィード](cassandra-change-feed.md)に関するページを参照してください。
+ネイティブ Apache Cassandra には、変更データ キャプチャ (CDC) が用意されています。CDC は、特定のテーブルに対してアーカイブのフラグを設定し、CDC ログ用に構成可能なディスク上のサイズに達すると、そのテーブルへの書き込みを拒否するメカニズムです。 Azure Cosmos DB API for Cassandra の変更フィード機能により、CQL を介して述語を使用して変更をクエリする機能が向上します。 実装の詳細については、[Cassandra 用の Azure Cosmos DB API の変更フィード](cassandra/cassandra-change-feed.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

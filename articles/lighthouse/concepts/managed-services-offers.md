@@ -3,12 +3,12 @@ title: Azure Marketplace のマネージド サービス オファー
 description: Azure Marketplace 内でマネージド サービス オファーを使用して、Azure Lighthouse 管理サービスを顧客に提供します。
 ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: df3cd76d840e37e711bdd92d93c2499d701afef9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 10b32445fcf6d014219dd8559c9c1ac9b2905044
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074775"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114391678"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 
@@ -37,7 +37,7 @@ ms.locfileid: "112074775"
 必要に応じて、同じオファーにパブリック プランとプライベート プランの両方を含めることができます。
 
 > [!IMPORTANT]
-> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に [委任へのアクセス権を削除](../how-to/remove-delegation.md)できるのは、 その **ロールの定義** セットに「[管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の **承認** を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)するよう依頼することもできます。
+> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に [委任へのアクセス権を削除](../how-to/remove-delegation.md)できるのは、 その **ロールの定義** セットに「[管理されたサービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)」の **承認** を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](../how-to/view-manage-service-providers.md#remove-service-provider-offers)するよう依頼することもできます。
 
 ## <a name="publish-managed-service-offers"></a>マネージド サービス オファーの公開
 

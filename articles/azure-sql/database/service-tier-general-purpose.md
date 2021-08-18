@@ -8,16 +8,16 @@ ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: mathoma
+author: danimir
+ms.author: danil
+ms.reviewer: mathoma, urmilano
 ms.date: 02/07/2019
-ms.openlocfilehash: 9713b1d8635d678e650ec0b4f5aa448507e1da11
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3b3532c74ba49a82d80a27cc656e0016e405dfea
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691526"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121616"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database-and-azure-sql-managed-instance"></a>General Purpose サービス レベル - Azure SQL Database と Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

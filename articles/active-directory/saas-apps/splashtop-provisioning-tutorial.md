@@ -3,8 +3,8 @@ title: チュートリアル:Splashtop を構成し、Azure Active Directory を
 description: Azure AD から Splashtop に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 8d8c3745-aaa9-4dbd-9fbf-92da4ada2a9e
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2021
-ms.author: Zhchia
-ms.openlocfilehash: af76b051350c896d5de3d2827de1f51ef3191f1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 0a08cf41e756298179712780a73b7fb1c4de5a8d
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652659"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759189"
 ---
 # <a name="tutorial-configure-splashtop-for-automatic-user-provisioning"></a>チュートリアル:Splashtop を構成し、自動ユーザー プロビジョニングに対応させる
 

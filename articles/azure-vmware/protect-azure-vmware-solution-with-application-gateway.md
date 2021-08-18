@@ -3,12 +3,12 @@ title: Azure Application Gateway を使用して Azure VMware Solution 上の We
 description: Azure VMware Solution で実行されている Web アプリを安全に公開するために Azure Application Gateway を構成します。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 4d31eb24f1cb4ec1e2ead789174189dc99d5310f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1b9f55386c2900660ddee209d0aea95e7bac610a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771687"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739619"
 ---
 # <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 
@@ -26,7 +26,7 @@ ms.locfileid: "108771687"
 ## <a name="topology"></a>トポロジ
 次の図に、Application Gateway を使用して、Azure IaaS 仮想マシン (VM)、Azure 仮想マシン スケール セット、またはオンプレミスのサーバーを保護する方法を示します。 Application Gateway では、Azure VMware Solution VM がオンプレミス サーバーとして扱われます。 
 
-![Application Gateway で Azure IaaS 仮想マシン (VM)、Azure 仮想マシン スケール セット、またはオンプレミス サーバーがどのように保護されるかを示す図。](media/protect-azure-vmware-solution-with-application-gateway/app-gateway-protects.png)
+:::image type="content" source="media/application-gateway/app-gateway-protects.png" alt-text="Application Gateway で Azure IaaS 仮想マシン (VM)、Azure 仮想マシン スケール セット、またはオンプレミス サーバーがどのように保護されるかを示す図。" border="false":::
 
 > [!IMPORTANT]
 > 現在、Azure Application Gateway は、Azure VMware Solution の VM で実行されている Web アプリを公開する、サポートされている唯一の方法です。
@@ -48,7 +48,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 2. 次の図に示すように、基本的な詳細を入力し、 **[次へ: フロントエンド >]** を選択します。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/create-app-gateway.png" alt-text="Azure portal の [アプリケーション ゲートウェイの作成] ページを示すスクリーンショット。":::
+    :::image type="content" source="media/application-gateway/create-app-gateway.png" alt-text="Azure portal の [アプリケーション ゲートウェイの作成] ページを示すスクリーンショット。":::
 
 3. フロントエンド IP アドレスの種類を選択します。 パブリックの場合は、既存のパブリック IP アドレスを選択するか、新しいものを作成します。 **Next:バックエンド >** を選択します。
 
@@ -92,7 +92,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 1. プライベート クラウドで、VM の 2 つの異なるプールを作成します。 1 つは Contoso、2 つ目は Fabrikam を表します。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="VSphere クライアントでの Web サーバーの詳細の概要を示すスクリーンショット。":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool.png" alt-text="VSphere クライアントでの Web サーバーの詳細の概要を示すスクリーンショット。":::
 
     インターネット インフォメーション サービス (IIS) の役割がインストールされた Windows Server 2016 を使用しています。 VM がインストールされたら、次の PowerShell コマンドを実行して、各 VM で IIS を構成します。 
 
@@ -103,13 +103,13 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 2. 既存のアプリケーション ゲートウェイ インスタンスで、左側のメニューから **[バックエンド プール]** を選択し、 **[追加]** を選択して、新しいプールの詳細を入力します。 右側のペインで **[追加]** を選択します。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="バックエンド プールを追加するための [バックエンド プール] ページのスクリーンショット。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="バックエンド プールを追加するための [バックエンド プール] ページのスクリーンショット。" lightbox="media/application-gateway/app-gateway-multi-backend-pool-02.png":::
 
 3. **[リスナー]** セクションで、各 Web サイトに新しいリスナーを作成します。 各リスナーの詳細を入力し、 **[追加]** を選択します。
 
 4. 左側で **[HTTP 設定]** を選択し、左側のペインで **[追加]** を選択します。 新しい HTTP 設定を作成するための詳細を入力して、 **[保存]** を選択します。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="新しい HTTP 設定を作成するための [HTTP 設定] ページのスクリーンショット。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="新しい HTTP 設定を作成するための [HTTP 設定] ページのスクリーンショット。" lightbox="media/application-gateway/app-gateway-multi-backend-pool-03.png":::
 
 5. 左側のメニューの **[規則]** セクションで規則を作成します。 各規則を対応するリスナーに関連付けます。 **[追加]** を選択します。
 
@@ -117,7 +117,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 7. 接続をテストします。 好みのブラウザーを開き、お使いの Azure VMware Solution 環境でホストされているさまざまな Web サイト (http://www.fabrikam.com など) に移動します。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-07.png" alt-text="接続のテストが成功したことを示すブラウザー ページのスクリーンショット。":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-07.png" alt-text="接続のテストが成功したことを示すブラウザー ページのスクリーンショット。":::
 
 ### <a name="routing-by-url"></a>URL によるルーティング
 
@@ -125,7 +125,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 1. プライベート クラウドで、Web ファームを表す仮想マシン プールを作成します。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool.png" alt-text="別の VM の概要を示す VSphere クライアントのページのスクリーンショット。":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool.png" alt-text="別の VM の概要を示す VSphere クライアントのページのスクリーンショット。":::
 
     このチュートリアルをわかりやすく説明するために、IIS の役割がインストールされた Windows Server 2016 が使用されています。 VM がインストールされたら、次の PowerShell コマンドを実行して、VM チュートリアルごとに IIS を構成します。 
 
@@ -160,31 +160,31 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
    1. **[追加]** を選択します。 
    1. **contoso-images** と **contoso-video** についてもこのプロセスを繰り返し、ターゲットとして一意の VM を 1 つ追加します。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="3 つの新しいバックエンド プールの追加を示す [バックエンド プール] ページのスクリーンショット。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="3 つの新しいバックエンド プールの追加を示す [バックエンド プール] ページのスクリーンショット。" lightbox="media/application-gateway/app-gateway-url-route-backend-pool-02.png":::
 
 3. **[リスナー]** セクションで、ポート 8080 を使用して、[基本] の種類の新しいリスナーを作成します。
 
 4. 左側のナビゲーションで **[HTTP 設定]** を選択し、左側のペインで **[追加]** を選択します。 新しい HTTP 設定を作成するための詳細を入力して、 **[保存]** を選択します。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="HTTP 設定の構成を示す [HTTP 設定の追加] ページのスクリーンショット。":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="HTTP 設定の構成を示す [HTTP 設定の追加] ページのスクリーンショット。":::
 
 5. 左側のメニューの **[規則]** セクションで規則を作成します。 以前に作成したリスナーに各ルールを関連付けます。 次に、メインのバックエンド プールと HTTP 設定を構成します。 **[追加]** を選択します。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="バックエンド ターゲットにルーティング規則を構成するための [ルーティング規則の追加] ページのスクリーンショット。":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="バックエンド ターゲットにルーティング規則を構成するための [ルーティング規則の追加] ページのスクリーンショット。":::
 
 6. 構成をテストします。 Azure portal でアプリケーション ゲートウェイにアクセスし、 **[概要]** セクションで、パブリック IP アドレスをコピーします。 
 
    1. 新しいブラウザー ウィンドウを開き、URL `http://<app-gw-ip-address>:8080` を入力します。 
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-08.png" alt-text="構成のテストが成功したことを示すブラウザー ページのスクリーンショット。":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-08.png" alt-text="構成のテストが成功したことを示すブラウザー ページのスクリーンショット。":::
 
    1. URL を `http://<app-gw-ip-address>:8080/images/test.htm` に変更します。
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-09.png" alt-text="新しい URL で成功した別のテストのスクリーンショット。":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-09.png" alt-text="新しい URL で成功した別のテストのスクリーンショット。":::
 
    1. URL を `http://<app-gw-ip-address>:8080/video/test.htm` に再度変更します。
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-10.png" alt-text="最終的な URL で成功したテストのスクリーンショット。":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-10.png" alt-text="最終的な URL で成功したテストのスクリーンショット。":::
 
 ## <a name="next-steps"></a>次の手順
 

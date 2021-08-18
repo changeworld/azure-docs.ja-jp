@@ -7,13 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 278dae8b3569dd0ff92d3ba12197d1049070167a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91310171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744917"
 ---
 # <a name="supported-data-format-details"></a>サポートされるデータ形式の詳細
 
@@ -76,7 +75,7 @@ ms.locfileid: "91310171"
 | `IconStyle`          | partial | partial | `icon`、`heading`、`colorMode`、`hotspots` の値は解析されますが、`SimpleDataLayer` ではレンダリングされません         |
 | `innerBoundaryIs`    | はい     | はい     |                                                                                                                            |
 | `kml`                | はい     | はい     |                                                                                                                            |
-| `LabelStyle`         | no      | いいえ      |                                                                                                                            |
+| `LabelStyle`         | Ｘ      | いいえ      |                                                                                                                            |
 | `LatLonBox`          | はい     | はい     |                                                                                                                            |
 | `gx:LatLonQuad`      | はい     | はい     |                                                                                                                            |
 | `LinearRing`         | はい     | はい     |                                                                                                                            |
@@ -91,26 +90,26 @@ ms.locfileid: "91310171"
 | `open`               | はい     | はい     |                                                                                                                            |
 | `outerBoundaryIs`    | はい     | はい     |                                                                                                                            |
 | `outline`            | はい     | はい     |                                                                                                                            |
-| `overlayXY`          | no      | いいえ      |                                                                                                                            |
+| `overlayXY`          | Ｘ      | いいえ      |                                                                                                                            |
 | `Pair`               | partial | いいえ      | `StyleMap` では `normal` スタイルのみがサポートされています。 `highlight` はサポートされていません。                                   |
 | `phoneNumber`        | はい     | はい     |                                                                                                                            |
-| `PhotoOverlay`       | no      | いいえ      |                                                                                                                            |
+| `PhotoOverlay`       | Ｘ      | いいえ      |                                                                                                                            |
 | `Placemark`          | はい     | はい     |                                                                                                                            |
 | `Point`              | はい     | はい     |                                                                                                                            |
 | `Polygon`            | はい     | はい     |                                                                                                                            |
 | `PolyStyle`          | はい     | はい     |                                                                                                                            |
 | `Region`             | partial | partial | `LatLongBox` は、ドキュメント レベルでサポートされています。                                                                      |
-| `rotation`           | no      | no      |                                                                                                                            |
-| `rotationXY`         | no      | no      |                                                                                                                            |
-| `scale`              | no      | いいえ      |                                                                                                                            |
+| `rotation`           | no      | Ｘ      |                                                                                                                            |
+| `rotationXY`         | Ｘ      | Ｘ      |                                                                                                                            |
+| `scale`              | Ｘ      | いいえ      |                                                                                                                            |
 | `Schema`             | はい     | はい     |                                                                                                                            |
 | `SchemaData`         | はい     | はい     |                                                                                                                            |
 | `schemaUrl`          | partial | はい     | KMZ に含まれていない外部ドキュメントからのスタイルの読み込みはサポートされていません。                             |
-| `ScreenOverlay`      | no      | no      |                                                                                                                            |
-| `screenXY`           | no      | いいえ      |                                                                                                                            |
+| `ScreenOverlay`      | no      | Ｘ      |                                                                                                                            |
+| `screenXY`           | Ｘ      | いいえ      |                                                                                                                            |
 | `SimpleData`         | はい     | はい     |                                                                                                                            |
 | `SimpleField`        | はい     | はい     |                                                                                                                            |
-| `size`               | no      | いいえ      |                                                                                                                            |
+| `size`               | Ｘ      | いいえ      |                                                                                                                            |
 | `Snippet`            | partial | partial | `maxLines` 属性は無視されます。                                                                                  |
 | `south`              | はい     | はい     |                                                                                                                            |
 | `Style`              | はい     | はい     |                                                                                                                            |

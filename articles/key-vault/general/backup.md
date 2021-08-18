@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 3/18/2021
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 6941054eae0c234fa895012050ad83de50f4a1dd
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 296b2e2a6d006d878036e633c27e9b8c8aec1f95
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890476"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112521372"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault のバックアップ
 
@@ -131,10 +131,10 @@ Connect-AzAccount
 Set-AzContext -Subscription '{AZURE SUBSCRIPTION ID}'
 
 ## Back up a certificate in Key Vault
-Backup-AzKeyVaultCertificate -VaultName '{Certificate Name}' -Name '{Key Vault Name}'
+Backup-AzKeyVaultCertificate -VaultName '{Key Vault Name}' -Name '{Certificate Name}'
 
 ## Back up a key in Key Vault
-Backup-AzKeyVaultKey -VaultName '{Key Name}' -Name '{Key Vault Name}'
+Backup-AzKeyVaultKey -VaultName '{Key Vault Name}' -Name '{Key Name}'
 
 ## Back up a secret in Key Vault
 Backup-AzKeyVaultSecret -VaultName '{Key Vault Name}' -Name '{Secret Name}'

@@ -8,18 +8,18 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ece29b7189f31654056ec357f522b59ccb16587
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 040178a3a38aca6051ce266709f66965d47fb413
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95095357"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113289614"
 ---
 [リファレンス ドキュメント](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-model-with-rest/Model.java)
 
 ## <a name="prerequisites"></a>前提条件
 
-* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Java Development Kit Standard Edition)
+* [JDK SE](/azure/developer/java/fundamentals/java-support-on-azure) (Java Development Kit Standard Edition)
 * [Visual Studio Code](https://code.visualstudio.com/) または任意の IDE。
 
 ## <a name="example-utterances-json-file"></a>発話の例の JSON ファイル

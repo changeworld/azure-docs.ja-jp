@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 46a22b78ade3d137f25b14e5cbdaff3264208228
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c8fde4c233907a8ed1493d7fa8d8c7faee03941d
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868394"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114402356"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする
 
@@ -23,15 +23,14 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 |Application |クラスターのタイプ | 説明 |
 |---|---|---|
 |[AtScale Intelligence Platform](https://aws.amazon.com/marketplace/pp/AtScale-AtScale-Intelligence-Platform/B07BWWHH18) |Hadoop |AtScale では、HDInsight クラスターがスケールアウト OLAP サーバーに変換され、Microsoft Excel、Power BI、Tableau Software、QlikView など、ユーザーが既に所有し慣れ親しんでいる BI ツールを使用して、何十億ものデータ行を対話形式でクエリすることができます。 |
-|[CDAP for HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |hbase |CDAP は、Hadoop の評価時間を加速し、IT によるセルフサービス データの提供を可能にする、史上初の一元管理されたビッグ データ用統合プラットフォームです。 オープン ソースかつ拡張可能な CDAP により、イノベーションへの障壁が取り除かれます。 要件: 4 つのリージョン ノード、D3 v2 以降。 |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |分析用のデータを準備、調査、および管理するための Datameer のセルフサービスかつスケーラブルなプラットフォームでは、複雑なマルチソース データのビジネスに即応できる貴重な情報への転換を加速することにより、エンタープライズ クラスのより迅速で、より高度な洞察が可能になります。 |
-|[Dataiku DSS on HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop、Spark |エンタープライズ データ サイエンス プラットフォームの Dataiku DSS では、データ サイエンティストやデータ アナリストが共同作業を行い、新しいデータ製品およびサービスをより効率的に設計し実行して、生データをインパクトのある予測に変換することができます。 |
+|[Dataiku DSS on HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dataiku-data-science-studio) |Hadoop、Spark |エンタープライズ データ サイエンス プラットフォームの Dataiku DSS では、データ サイエンティストやデータ アナリストが共同作業を行い、新しいデータ製品およびサービスをより効率的に設計し実行して、生データをインパクトのある予測に変換することができます。 |
 |[WANdisco Fusion HDI App](https://community.wandisco.com/s/article/Use-WANdisco-Fusion-for-parallel-operation-of-ADLS-Gen1-and-Gen2) |Hadoop、Spark、HBase、Storm、Kafka |分散環境でデータの一貫性を維持することは、データ操作における非常に重要な課題です。 WANdisco Fusion はエンタープライズクラスのソフトウェア プラットフォームであり、任意の環境全体で非構造化データの整合性を実現することにより、この問題を解決します。 |
 |[H2O SparklingWater for HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Sparkling Water では、次の分散アルゴリズムがサポートされます。GLM、Naïve Bayes、Distributed Random Forest、Gradient Boosting Machine、Deep Neural Networks、Deep learning、K-means、PCA、Generalized Low Rank Models、Anomaly Detection、Autoencoders。 |
 |[Striim for Real-Time Data Integration to HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop、HBase、Storm、Spark、Kafka |Striim (発音は "ストリーム") は、エンド ツー エンドのストリーミング データ統合およびインテリジェンス プラットフォームで、これにより、異種のデータ ストリームの連続した取り込み、処理、および分析が可能になります。 |
 |[Jumbune Enterprise-Accelerating BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop、Spark |大まかに言えば、Jumbune は次のように企業を支援します。1.  Tez、MapReduce および Spark エンジン ベースの Hive、Java、Scala のワークロード パフォーマンスの加速化。 2. プロアクティブな Hadoop クラスターの監視。3.  分散ファイル システムでのデータ品質管理の確立。 |
 |[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence) |Hadoop、HBase、Spark |Kyligence Enterprise では、Apache Kylin を活用して、ビッグ データでの BI を可能にします。 Hadoop 上のエンタープライズ OLAP エンジンである Kyligence Enterprise により、ビジネス アナリストは、業界標準のデータ ウェアハウスと BI 手法を使用して Hadoop で BI を設計することができます。 |
-|[Starburst Presto for Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1579800938563.starburst-presto?tab=Overview) |Hadoop |Presto は、高速でスケーラブルな分散 SQL クエリ エンジンです。 ストレージと計算を分離するように設計された Presto は、Azure Data Lake Storage、Azure Blob Storage、SQL および NoSQL データベース、その他のデータ ソース内のデータのクエリを実行するために最適です。 |
+|[Starburst Presto for Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1582306810515.starburst-enterprise-presto?tab=Overview) |Hadoop |Presto は、高速でスケーラブルな分散 SQL クエリ エンジンです。 ストレージと計算を分離するように設計された Presto は、Azure Data Lake Storage、Azure Blob Storage、SQL および NoSQL データベース、その他のデータ ソース内のデータのクエリを実行するために最適です。 |
 |[StreamSets Data Collector for HDInsight Cloud](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop、HBase、Spark、Kafka |StreamSets Data Collector は、リアルタイムでデータをストリーミングする軽量かつ強力なエンジンです。 Data Collector を使用して、データ ストリーム内のデータをルーティングおよび処理します。 30 日間の試用版ライセンスが付与されています。 |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop、Spark、HBase |Trifacta Wrangler Enterprise for HDInsight では、あらゆる規模のデータに対して、エンタープライズ全体のデータ ラングリングがサポートされています。 Azure で Trifacta を実行するコストは、Trifacta サブスクリプションのコストと、仮想マシン用の Azure インフラストラクチャのコストとの組み合わせになります。 |
 |[Unifi Data Platform](https://www.crunchbase.com/organization/unifi-software) |Hadoop、HBase、Storm、Spark |Unifi Data Platform は、シームレスに統合されたセルフサービス データ ツールのスイートであり、ビジネス ユーザーが増分収益を向上させ、コストや運用の複雑さを軽減するというデータの課題に取り組めるように設計されています。 |

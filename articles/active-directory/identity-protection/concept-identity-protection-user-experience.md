@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4897b9187caab50be4db75bbc0af03e3d35aa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0bbb1df9821879dd34956d1cb16d2b37850d1d6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835987"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734523"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したユーザー エクスペリエンス
 

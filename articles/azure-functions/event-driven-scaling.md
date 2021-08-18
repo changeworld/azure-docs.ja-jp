@@ -4,12 +4,12 @@ description: 従量課金プランと Premium プランの関数アプリのス�
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: azure-functions
-ms.openlocfilehash: 8aca1ab6629f95ef9162e1247434bd3189d5a7d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff7194b5dfda09253526aa79b52be475c131a411
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937511"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752274"
 ---
 # <a name="event-driven-scaling-in-azure-functions"></a>Azure Functions でのイベント ドリブン スケーリング
 
@@ -45,6 +45,12 @@ Azure Functions のスケールの単位は関数アプリです。 関数アプ
 
 ```azurecli
 az resource update --resource-type Microsoft.Web/sites -g <RESOURCE_GROUP> -n <FUNCTION_APP-NAME>/config/web --set properties.functionAppScaleLimit=<SCALE_LIMIT>
+```
+
+```azurepowershell
+$resource = Get-AzResource -ResourceType Microsoft.Web/sites -ResourceGroupName <RESOURCE_GROUP> -Name <FUNCTION_APP-NAME>/config/web
+$resource.Properties.functionAppScaleLimit = <SCALE_LIMIT>
+$resource | Set-AzResource -Force
 ```
 
 ## <a name="best-practices-and-patterns-for-scalable-apps"></a>スケーラブルなアプリのベスト プラクティスとパターン

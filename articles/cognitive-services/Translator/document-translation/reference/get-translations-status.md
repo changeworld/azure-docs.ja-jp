@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 06/22/2021
 ms.author: v-jansk
-ms.openlocfilehash: a7615a8230b03c928d256fae62fbbe3b4e8651fb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5ed4c565ad784bb50ebbc464d4229bfcabb7a5d7
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453391"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540696"
 ---
 # <a name="get-translations-status"></a>翻訳状態の取得
 
@@ -128,24 +128,56 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ```JSON
 {
-  "value": [
-    {
-      "id": "273622bd-835c-4946-9798-fd8f19f6bbf2",
-      "createdDateTimeUtc": "2021-03-23T07:03:30.013631Z",
-      "lastActionDateTimeUtc": "2021-03-26T01:00:00Z",
-      "status": "Succeeded",
-      "summary": {
-        "total": 10,
-        "failed": 1,
-        "success": 9,
-        "inProgress": 0,
-        "notYetStarted": 0,
-        "cancelled": 0,
-        "totalCharacterCharged": 1000
-      }
-    }
-  ]
+    "value": [
+        {
+            "id": "36724748-f7a0-4db7-b7fd-f041ddc75033",
+            "createdDateTimeUtc": "2021-06-18T03:35:30.153374Z",
+            "lastActionDateTimeUtc": "2021-06-18T03:36:44.6155316Z",
+            "status": "Succeeded",
+            "summary": {
+                "total": 3,
+                "failed": 2,
+                "success": 1,
+                "inProgress": 0,
+                "notYetStarted": 0,
+                "cancelled": 0,
+                "totalCharacterCharged": 0
+            }
+        },
+        {
+            "id": "1c7399a7-6913-4f20-bb43-e2fe2ba1a67d",
+            "createdDateTimeUtc": "2021-05-24T17:57:43.8356624Z",
+            "lastActionDateTimeUtc": "2021-05-24T17:57:47.128391Z",
+            "status": "Failed",
+            "summary": {
+                "total": 1,
+                "failed": 1,
+                "success": 0,
+                "inProgress": 0,
+                "notYetStarted": 0,
+                "cancelled": 0,
+                "totalCharacterCharged": 0
+            }
+        },
+        {
+            "id": "daa2a646-4237-4f5f-9a48-d515c2d9af3c",
+            "createdDateTimeUtc": "2021-04-14T19:49:26.988272Z",
+            "lastActionDateTimeUtc": "2021-04-14T19:49:43.9818634Z",
+            "status": "Succeeded",
+            "summary": {
+                "total": 2,
+                "failed": 0,
+                "success": 2,
+                "inProgress": 0,
+                "notYetStarted": 0,
+                "cancelled": 0,
+                "totalCharacterCharged": 21899
+            }
+        }
+    ],
+    ""@nextLink": "https://westus.cognitiveservices.azure.com/translator/text/batch/v1.0/operations/727BF148-F327-47A0-9481-ABAE6362F11E/documents?$top=5&$skip=15"
 }
+
 ```
 
 ### <a name="example-error-response"></a>エラー応答の例

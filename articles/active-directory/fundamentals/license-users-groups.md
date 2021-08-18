@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e8ea30ddfcaeff1a177a14a0b1d911d14b76b4
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 3ba2e88a20106b9344a6d7942d4bc7149a346b7c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526090"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733144"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでのライセンスの割り当てと削除
 
@@ -35,7 +35,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 - Azure AD Premium P2
 
-各ライセンス プランと関連するライセンスの詳細に関する固有の情報については、「[必要なライセンス](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。 Azure AD Premium ライセンス プランにサインアップするには、[こちら](./active-directory-get-started-premium.md)をご覧ください。
+各ライセンス プランと関連するライセンスの詳細に関する固有の情報については、「[必要なライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」をご覧ください。 Azure AD Premium ライセンス プランにサインアップするには、[こちら](./active-directory-get-started-premium.md)をご覧ください。
 
 すべての Microsoft サービスが、すべての場所で利用できるわけではありません。 ライセンスをグループに割り当てる前に、お客様はすべてのメンバーに対して **[利用場所]** を指定しておく必要があります。 この値は Azure AD の **[Azure Active Directory] &gt; [ユーザー] &gt; [プロファイル] &gt; [設定]** 領域で設定できます。 利用場所が指定されていないユーザーは、Azure AD 組織の場所を継承します。
 

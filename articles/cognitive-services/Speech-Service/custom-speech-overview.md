@@ -3,20 +3,20 @@ title: Custom Speech の概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Custom Speech は、ご利用のアプリケーション、ツール、製品に使用する Microsoft の音声テキスト変換の正確性を評価して改善することのできる一連のオンライン ツールです。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: trbye
-ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 2eaf5a6a01b8ed0cb2a82f13c2d4d33ce88d5938
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.custom: contperf-fy21q2, references_regions
+ms.openlocfilehash: 588afaaa95ef871de11583e65d2a9ab831d28fa6
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100417"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069037"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
@@ -26,7 +26,7 @@ Custom Speech では、アプリケーションや製品での Microsoft の音�
 
 Custom Speech で何らかの操作を行うには、Azure アカウントと音声サービスのサブスクリプションが必要です。 アカウントの取得後、データの準備、モデルのトレーニングとテスト、認識品質の調査、正確性の評価を行い、最後にそのカスタム音声テキスト変換モデルをデプロイして使用することができます。
 
-この図は、[Speech Studio の Custom Speech エリア](https://aka.ms/customspeech)を構成する諸要素を示しています。 それぞれのステップの詳細については、下のリンクを使用してください。
+この図は、[Speech Studio の Custom Speech エリア](https://aka.ms/speechstudio/customspeech)を構成する諸要素を示しています。 それぞれのステップの詳細については、下のリンクを使用してください。
 
 ![Speech Studio の Custom Speech エリアを構成する要素を強調表示した図。](./media/custom-speech/custom-speech-overview.png)
 
@@ -43,9 +43,6 @@ Custom Speech で何らかの操作を行うには、Azure アカウントと音
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 
 [Speech Studio](https://speech.microsoft.com/customspeech) を使用してカスタム モデルを作成する前に、Azure アカウントと音声サービス サブスクリプションを用意する必要があります。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](overview.md#try-the-speech-service-for-free)。
-
-> [!NOTE]
-> 必ず Standard (S0) サブスクリプションを作成してください。 Free (F0) サブスクリプションはサポートされていません。
 
 **オーディオ データ** を使用してカスタム モデルをトレーニングする場合は、トレーニングに使用できる専用のハードウェアを備えた次のいずれかのリージョンを選択してください。 これにより、モデルのトレーニングにかかる時間が短縮され、トレーニングにより多くのオーディオを使用できるようになります。 これらのリージョンでは、音声サービスによって最大 20 時間のオーディオがトレーニングに使用されます。他のリージョンでは、最大 8 時間しか使用されません。
 

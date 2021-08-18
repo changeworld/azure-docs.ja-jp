@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB の変更フィードを Azure Functions と共に使用する方法
 description: Azure Functions を使用して、Azure Cosmos DB の変更フィードに接続します。 後で、すべての新しいイベントでトリガーされる対応型の Azure 関数を作成できます。
-author: markjbrown
-ms.author: mjbrown
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7f4903cf29f15132db91e47d78efe5a556efd937
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a751313d5c7f43401a9c031bf502a9a5d7f79612
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93340245"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355323"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレスなイベントベースのアーキテクチャ
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

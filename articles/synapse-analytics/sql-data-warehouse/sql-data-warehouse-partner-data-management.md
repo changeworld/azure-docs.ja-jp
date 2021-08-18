@@ -10,12 +10,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28df246f608369b3bafa9492ddaa4f0a6e5b042d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9556e805b666359546d766c4f761467a0987a540
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061788"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451018"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics データ管理パートナー
 
@@ -28,7 +28,7 @@ ms.locfileid: "110061788"
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation のデータ カタログは、生産性を大幅に向上させ、精度を高め、アナリストが自信を持ってデータ主導の意思決定を行えるようにします。 Alation のデータ カタログを使用すると、組織内のすべてのユーザーがデータの検索、理解、および管理を行うことができます。 |[製品ページ](https://www.alation.com/product/data-catalog/)<br> |
 | ![BI ビルダー (Xpert BI)](./media/sql-data-warehouse-partner-data-integration/bibuilders-logo.png) |**BI ビルダー (Xpert BI)**<br> Xpert BI は、基幹業務ユーザーがデータやレポートを見つけ、信頼し、理解するための直感的で検索可能なカタログを提供します。 このソリューションは、Azure Synapse Analytics、ADLS Gen 2、Azure SQL Database、Analysis Services、Power BI を含むデータ プラットフォーム全体に対応し、エンドツーエンドでのデータ フローとデータ移動にも対応します。 データ スチュワードは、記述を更新したり、データにタグを付けたりして、規制要件に準拠できます。 Xpert BI は、API を介して Azure Purview などの他のカタログに統合できます。 従来のデータ カタログをビジネス ユーザーの視点で補完します。 |[製品ページ](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/bi-builders-as.xpert-bi-vm)<br>|
 | ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing は、クエリ実行システムに特化された設計で、10 年の実績があるツール、Nexus Chameleon を提供しています。 Nexus は、Azure Synapse Analytics の専用 SQL プール用のクエリ ツールとして使用できます。 Nexus を使用することで、社内およびクラウド コンピューターにクエリを実行し、異種プラットフォーム間でデータを結合できます。 ポイントしてクリックするだけでレポートが生成されます。 |[製品ページ](https://coffingdw.com/software/nexus/)<br> |
-| ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Inbrein MicroERD は、精密なデータ モデルの作成、データの冗長性の削減、生産性向上、および標準の遵守に必要なツールを提供します。 広範なユーザー エクスペリエンスに基づいて開発されたこのツールの UI を使用することで、モデル作成者は容易かつ使い勝手よく DB モデルに取り組むことができます。 プロンプト機能の向上と更新により、MicroERD の強化された新機能を途切れることなく利用できます。 |[製品ページ](http://microerd.com/)<br> |
+| ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Inbrein MicroERD は、精密なデータ モデルの作成、データの冗長性の削減、生産性向上、および標準の遵守に必要なツールを提供します。 広範なユーザー エクスペリエンスに基づいて開発されたこのツールの UI を使用することで、モデル作成者は容易かつ使い勝手よく DB モデルに取り組むことができます。 プロンプト機能の向上と更新により、MicroERD の強化された新機能を途切れることなく利用できます。 |製品ページ<br> |
 | ![Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian-logo.png) |**Infolibrarian (メタデータ管理サーバー)**<br>InfoLibrarian は、メタデータをカタログ化、格納、および管理することにより、データ管理に関する重要課題の解決を支援します。 Infolibrarian は、メタデータ管理、データ ガバナンス、および資産管理のソリューションを提供することで、多種多様なツールとテクノロジの組み合わせによってメタデータを管理および公開できるようにします。 |[製品ページ](http://www.infolibcorp.com/metadata-management/software-tools)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Apache Kylin の作成者によって設立された Kyligence は、データの管理、検出、操作、および分析情報生成のすべてを制限なく自動化することによって顧客の生産性を向上させることを使命にしています。 Kyligence Cloud はクラスターのデプロイを可能にし、データ アクセスを拡張し、さらにデータ分析を大幅に高速化します。 Kyligence の AI で拡張されたビッグ データ分析管理プラットフォームは、エンタープライズ クラスのデータ レイクを構築するという、困難なことが多いタスクを高速かつ容易にします。|[製品ページ](https://kyligence.io/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |
 | ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>RedPoint Data Management を使用することで、マーケティング担当者はすべてのデータを適用してクロス チャネルでの顧客とのつながりを促進しながら、構造化および非構造化データの管理を行うことができます。 RedPoint を使用すれば、構造化データと非構造化データの価値を最大化することで、今日のオムニ チャネルの顧客を引き込むために必要な高度にパーソナライズされ、状況に応じたやり取りを実現できます。 ドラッグ アンド ドロップ インターフェイスにより、データ管理プロセスを容易に設計および実行できます。 |[製品ページ](https://www.redpointglobal.com/customer-data-management)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
@@ -39,8 +39,3 @@ ms.locfileid: "110061788"
 
 ## <a name="next-steps"></a>次のステップ
 その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー](sql-data-warehouse-partner-business-intelligence.md)、[データ統合パートナー](sql-data-warehouse-partner-data-integration.md)、および[機械学習と AI のパートナー](sql-data-warehouse-partner-machine-learning-ai.md)に関するページを参照してください。
-
-
-
-
-

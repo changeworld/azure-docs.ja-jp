@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 66f3cc71c27ff80991f3cded1957f90e622f447f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9972a7bcff534f49f0c656dd1a9c3f66389c44b5
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745675"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708786"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 
@@ -133,4 +133,4 @@ CIM ファイルは .CIM という拡張子を持ち、メタデータと、実�
 
 ## <a name="next-steps"></a>次のステップ
 
-MSIX アプリ アタッチの詳細については、[概要](what-is-app-attach.md)と[よくあるご質問](app-attach-faq.md)に関するページを参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。
+MSIX アプリ アタッチの詳細については、[概要](what-is-app-attach.md)と[よくあるご質問](app-attach-faq.yml)に関するページを参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。

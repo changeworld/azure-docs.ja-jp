@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 10/21/2020
+ms.date: 06/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: fac6d5a0b7d7c8817dadead7e2a9269027140991
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5718958076d063d64e9d84626346b3a5491500b7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535306"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112464829"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Windows 仮想マシンに接続する
 

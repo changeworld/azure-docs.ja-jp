@@ -15,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 4828e31b9d15f101740c158ee62c90c95673c9a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3f5c2c2a22dd46d008a002db64c045af8132c8d
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98541512"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252473"
 ---
 # <a name="connect-your-better-mobile-threat-defense-mtd-to-azure-sentinel"></a>BETTER Mobile Threat Defense (MTD) を Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > BETTER Mobile Threat Defense (MTD) コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 BETTER Mobile Threat Defense (MTD) コネクタを使用すると、お使いのBETTER MTD セキュリティ ソリューションのすべてのログを Azure Sentinel に簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 BETTER Mobile Threat Defense と Azure Sentinel の統合には、REST API を使用します。
 
@@ -63,6 +65,6 @@ BETTER MTD では、ログを統合して、Azure Sentinel に直接エクスポ
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、BETTER Mobile Threat Defense (MTD) を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.custom: subject-monitoring
 ms.service: container-registry
 ms.date: 03/19/2021
-ms.openlocfilehash: 86c8047727711655a262425032b7a9fe3daa6dc1
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 99b9206e305e57898a2eb4bc6d0de7dd6fe94473
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059978"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290419"
 ---
 # <a name="monitoring-azure-container-registry-data-reference"></a>Azure Container Registry の監視データのリファレンス
 
@@ -105,4 +105,4 @@ Azure Container Registry のリソース ログでは、次のスキーマが使
 ## <a name="next-steps"></a>次のステップ
 
 - Azure コンテナー レジストリの監視の詳細については、「[Azure Container Registry の監視](monitor-service.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/overview)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/overview.md)」を参照してください。

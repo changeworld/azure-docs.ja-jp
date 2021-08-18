@@ -3,19 +3,19 @@ title: クライアント アプリからコマンドを更新する
 titleSuffix: Azure Cognitive Services
 description: クライアント アプリケーションからコマンドを更新する方法について説明します。
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: nitinme
-ms.openlocfilehash: 08c674a7a7ec060a4273836064cb1c21e979e725
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 1f8607ec7094ecafe69f60e8f8972e04ec813adb
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97560289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067522"
 ---
 # <a name="update-a-command-from-a-client-app"></a>クライアント アプリからコマンドを更新する
 
@@ -68,7 +68,7 @@ Custom Commands ポータルで、このシナリオをテストすることが�
 1. サイド パネルを開き、 **[Activity editor]\(アクティビティ エディター\)** を選択します。
 1. 前のセクションで指定した `RemoteCommand` イベントを入力して送信します。
     > [!div class="mx-imgBorder"]
-    > ![リモート コマンドのイベントを示すスクリーンショット。](media/custom-commands/send-remote-command-activity.png)
+    > ![リモート コマンドのイベントを示すスクリーンショット。](media/custom-commands/send-remote-command-activity-no-mic.png)
 
 音声やテキストではなく、クライアントからのアクティビティを使用して、パラメーター `"OnOff"` の値が `"on"` に設定されていることに注目してください。
 
@@ -140,7 +140,7 @@ Custom Commands ポータルで、このシナリオをテストすることが�
     }
     ```
 1. テキスト `get device info` を送信します。
-   ![クライアント コンテキストを送信するためのアクティビティを示すスクリーンショット。](media/custom-commands/send-client-context-activity.png)
+   ![クライアント コンテキストを送信するためのアクティビティを示すスクリーンショット。](media/custom-commands/send-client-context-activity-no-mic.png)
 
 いくつかの点にご注意ください。
 - このアクティビティを送信する必要があるのは 1 回だけです (理想的には、接続を開始した直後)。

@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 3eb648af60a7be62d08f6b172347778d2358643c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad071118eabafdfeaddcf1e2a4738c646f62986d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102440124"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719999"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>Kubernetes のデプロイのために Azure Stack Edge Pro GPU でコンピューティング アクセラレーションを使用する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Kubernetes のデプロイを使用するときに Azure Stack Edge デバイス上でコンピューティング アクセラレーションを使用する方法について説明します。 この記事は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、および Azure Stack Edge Mini R デバイスに適用されます。
+この記事では、Kubernetes のデプロイを使用するときに Azure Stack Edge デバイス上でコンピューティング アクセラレーションを使用する方法について説明します。 
 
 
 ## <a name="about-compute-acceleration"></a>コンピューティング アクセラレーションについて 

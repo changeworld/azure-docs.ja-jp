@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud のリソース | Microsoft Docs
 description: Azure Spring Cloud のリソース一覧
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 4aa25d27fc413639992de8cf9eec31e1347e0072
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 37fc4c7fbf2908d34ad8ec23347c882f3ddf8c01
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132667"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015576"
 ---
 # <a name="azure-spring-cloud-developer-resources"></a>Azure Spring Cloud の開発者向けリソース
 

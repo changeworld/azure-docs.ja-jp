@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 01/05/2021
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: 97d8da86565db73aa9a3866f39f793aaf0905470
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 820daf5400d60df85973d45840bd7a4a1c553198
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97900163"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463943"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box の制限
 
@@ -51,7 +51,7 @@ Microsoft Azure Data Box をデプロイおよび運用する際には、以下�
 - 入力ファイルに重複するタグがある場合、または同じデータを参照しているタグがある場合、Data Box エクスポートによってこのファイルがスキップまたは上書きされることがあります。 Azure portal に表示されるファイルの数とデータのサイズが、デバイス上の実際のデータのサイズと異なる場合があります。 
 - Data Box では、SMB 経由で Windows ベースのシステムにデータがエクスポートされ、ファイルとフォルダーの SMB 制限によって制限されています。 サポートされていない名前のファイルやフォルダーはエクスポートされません。
 - プレフィックスからコンテナーは、1 対 1 のマッピングがあります。
-- ファイル名の最大サイズは 1024 文字です。 この長さを超えるファイル名はエクスポートされません。
+- ファイル名の最大サイズは 1024 文字です。 この長さを超えるファイル名はエクスポートされません。 
 - *XML* ファイル (注文の作成時にアップロードされます) で重複するプレフィックスはエクスポートされます。 重複するプレフィックスは無視されません。
 - ページ BLOB とコンテナー名では、大文字と小文字が区別されます。 大文字と小文字の区別が一致しない場合、BLOB またはコンテナーは見つかりません。
  

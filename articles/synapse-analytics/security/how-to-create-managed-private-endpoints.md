@@ -1,19 +1,19 @@
 ---
 title: データ ソースの結果に接続するためのマネージド プライベート エンドポイントを作成します
 description: この記事では、Azure Synapse ワークスペースからデータ ソースへのマネージド プライベート エンドポイントを作成する方法について説明します。
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ca00f185c3bfc0a10a949953dfa0e2b1e7a09a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737441"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source"></a>データ ソースへのマネージド プライベート エンドポイントを作成する
 

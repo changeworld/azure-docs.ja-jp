@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: 8fbcb66be11c7c77a9bfaf0e6ec790622dcbbda7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e2c9d0c2f1cd09b96e953640a1141891b6d784e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98932190"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282668"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 
-[!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
+[!INCLUDE [mapreduce-selector](../includes/hdinsight-selector-use-mapreduce.md)]
 
 この記事では、HDInsight .NET SDK を使用して MapReduce ジョブを送信する方法について説明します。 HDInsight クラスターには、MapReduce サンプルがいくつか含まれた jar ファイルが付属しています。 jar ファイルは `/example/jars/hadoop-mapreduce-examples.jar` です。  そのサンプルの 1 つに、**wordcount** があります。 この記事では、wordcount ジョブを送信する C# コンソール アプリケーションを作成します。  このジョブは `/example/data/gutenberg/davinci.txt` ファイルを読み取り、結果を `/example/data/davinciwordcount` に出力します。  アプリケーションを再実行する場合は、出力フォルダーをクリーンアップする必要があります。
 

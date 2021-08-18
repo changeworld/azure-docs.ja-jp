@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c7b8b400d2f927fa4b5d6f713b29dbda34eec959
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 013dea780c1f5819d9b9caefeec3b66066d1f44c
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757681"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033553"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -101,4 +101,4 @@ Azure Virtual Desktop では、顧客が使用している VM のサイズ、種
 - クラウド内でフル マネージドファイル共有を設定するには、[Azure Files 共有の設定](/azure/storage/files/storage-files-active-directory-enable/)に関するページを参照してください。
 - FSLogix プロファイル コンテナーを構成するには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)」を参照してください。
 - ユーザーをホスト プールに割り当てるには、[Azure Virtual Desktop のアプリ グループの管理](manage-app-groups.md)に関するページを参照してください。
-- Web ブラウザーからご利用の Azure Virtual Desktop にアクセスするには、[Azure Virtual Desktop への接続](connect-web.md)に関するページを参照してください。
+- Web ブラウザーからご利用の Azure Virtual Desktop にアクセスするには、[Azure Virtual Desktop への接続](./user-documentation/connect-web.md)に関するページを参照してください。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 4b6ad04afce5fb4ead5575d47333525c0f5f8a13
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f4e6ddf4e3db0213587a9154a424813c3cc5ca83
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075200"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183138"
 ---
 # <a name="connect-your-domain-name-server"></a>ドメイン ネーム サーバーへの接続
 
@@ -47,7 +47,7 @@ DNS ログ接続を有効にすると、次のことが可能になります。
 | **接続先ソース** | **サポート** | **説明** |
 | --- | --- | --- |
 | [Windows エージェント](../azure-monitor/agents/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
-| [Linux エージェント](../azure-monitor/vm/quick-collect-linux-computer.md) | いいえ | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
+| [Linux エージェント](../azure-monitor/vm/monitor-virtual-machine.md) | いいえ | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
 | [System Center Operations Manager 管理グループ](../azure-monitor/agents/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 | [Azure Storage アカウント](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
 
@@ -88,5 +88,5 @@ Log Analytics で、スキーマ **DnsEvents** を検索し、イベントが存
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、DNS オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

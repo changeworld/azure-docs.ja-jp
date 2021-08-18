@@ -4,12 +4,12 @@ description: 静的接続クライアントを使用して、Azure Functions の
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 6b27639ef8cccefbdec9538d0536db9b297e4039
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: b9a1659fa5d0929c6dfbe0a3c4fd5497666ba2b5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729357"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -146,7 +146,7 @@ module.exports = async function (context) {
 関数コードでは、SQL リレーショナル データベースに接続するために、.NET Framework Data Provider for SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) を使用できます。 これは、ADO.NET に依存するデータ フレームワーク ([Entity Framework](/ef/ef6/) など) の基になるプロバイダーでもあります。 [HttpClient](/dotnet/api/system.net.http.httpclient) や [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) の接続とは異なり、ADO.NET は接続プールを既定で実装します。 ただし、それでも接続を使い果たす可能性があるため、データベースへの接続を最適化する必要があります。 詳しくは、「[SQL Server の接続プール (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)」をご覧ください。
 
 > [!TIP]
-> Entity Framework などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-run-local.md#local-settings-file)の **接続文字列** コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数コードで [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) のインスタンスを作成する場合は、他の接続と共に、接続文字列の値を **アプリケーションの設定** に保存する必要があります。
+> Entity Framework などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-develop-local.md#local-settings-file)の **接続文字列** コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数コードで [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) のインスタンスを作成する場合は、他の接続と共に、接続文字列の値を **アプリケーションの設定** に保存する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

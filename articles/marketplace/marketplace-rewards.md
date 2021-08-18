@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/28/2021
-ms.openlocfilehash: 0be8e50ef500f746d26605048d577c5e806e7b9c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 665f91147bca5ed209d426d3864f5baa68b15d43
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110709356"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289629"
 ---
 # <a name="marketplace-rewards"></a>Marketplace 報酬
 
@@ -36,7 +36,7 @@ Marketplace Rewards プログラムの資格を確認するには、パートナ
 始める手順は簡単です。
 
 1. Microsoft AppSource または Azure Marketplace でオファーを発行します。
-1. ベネフィットの一覧を確認するには、パートナー センターの [[Marketplace Rewards]](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) ページに移動し、 **[Sales and Marketing benefits]\(営業とマーケティングのベネフィット\)** タブを選択します。
+1. ベネフィットの一覧を確認するには、パートナー センターの [[Marketplace Rewards]](https://go.microsoft.com/fwlink/?linkid=2165388) ページに移動し、 **[Sales and Marketing benefits]\(営業とマーケティングのベネフィット\)** タブを選択します。
 1. 営業とマーケティングのベネフィットを有効にするには、最初に会社のマーケティングの連絡先を割り当てる必要があります。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
 1. マーケティングの連絡先情報を追加または更新するには、[Marketplace Rewards] ページの [Sales and Marketing benefits]\(営業とマーケティングのベネフィット\) タブの上部に移動し、 **[Add, update, or change]\(追加、更新、または変更\)** を選択します。  続けて次の作業を行います。
 
@@ -51,6 +51,6 @@ Marketplace Rewards プログラムの資格を確認するには、パートナ
 1. Azure スポンサーのベネフィットを利用する方法は、これらのベネフィットのロックを解除するときにメールで共有されます。
 
 >[!NOTE]
->オファーを発行してから 4 週間経ってもメッセージを受け取らない場合は、パートナー センターに問い合わせて、組織内の誰がオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。 所有者がわからない場合、または所有者が退職した場合は、[サポート チケット](https://aka.ms/marketplacepublishersupport)を開いてください。
+>オファーを発行してから 4 週間経ってもメッセージを受け取らない場合は、パートナー センターに問い合わせて、組織内の誰がオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。 所有者がわからない場合、または所有者が退職した場合は、[サポート チケット](https://go.microsoft.com/fwlink/?linkid=2165533)を開いてください。
 
 マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 リストのすべての項目が、リソースとベスト プラクティスに関するセルフサービスのメールの一部として、基本レベルの最適化に関する推奨事項とプロモーションを受け取ります。

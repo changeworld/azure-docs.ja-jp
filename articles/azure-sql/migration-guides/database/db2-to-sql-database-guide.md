@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 05/14/2021
-ms.openlocfilehash: bf096e8e444ae9fd0832ad446d79db37fa365951
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 14feb78de79e0a9cb137415968dd9b623a4c603f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954801"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725569"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>移行ガイド: IBM Db2 から Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-このガイドでは、[SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for Db2 を使用して、IBM Db2 データベースを Azure SQL Database に[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
+このガイドでは、[SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant for Db2 を使用して、IBM Db2 データベースを Azure SQL Database に[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
 
 その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
@@ -109,7 +109,7 @@ SSMA for Db2 を使用して、データベース オブジェクトとデータ
 
 スキーマを発行し、データを移行するには、次の手順を行います。
 
-1. スキーマを公開します。 **Azure SQL Database メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
+1. スキーマを発行します。 **Azure SQL Database メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
 
    :::image type="content" source="media/db2-to-sql-database-guide/synchronize-with-database.png" alt-text="データベースと同期するオプションを示すスクリーンショット。":::
 
@@ -155,7 +155,7 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
 
 |Asset  |説明  |
 |---------|---------|
-|[データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
+|[データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
 |[Db2 zOS データ資産の検出および評価パッケージ](https://www.microsoft.com/download/details.aspx?id=103108)|データベース上で SQL スクリプトを実行した後、結果をファイル システム上のファイルにエクスポートできます。 スプレッドシートなど、外部ツールで結果を取り込めるように、\*.csv などの複数のファイル形式がサポートされています。 この方法を使用すると、ワークベンチをインストールしていないチームと結果を簡単に共有することができます。|
 |[IBM Db2 LUW インベントリ スクリプトと成果物](https://www.microsoft.com/download/details.aspx?id=103109)|この資産には、IBM Db2 LUW バージョン 11.1 システム テーブルを照会する SQL クエリが含まれます。このクエリでは、スキーマおよびオブジェクトの種類ごとのオブジェクトの数、各スキーマの "生データ" の概算値、および各スキーマのテーブルのサイズを取得し、結果を CSV 形式で格納します。|
 |[IBM Db2 から SQL DB - データベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|データベース比較ユーティリティは、ソースおよびターゲット プラットフォームの両方でデータが同一であることを確認するために使用できる Windows コンソール アプリケーションです。 このツールを使用すると、すべての、または選択したテーブル、行、および列内の行または列レベルまでデータを効率的に比較できます。|
@@ -164,7 +164,7 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - さまざまなデータベースおよびデータ移行シナリオを支援するために使用できる Microsoft とサードパーティのサービスとツールについては、[データ移行のためのサービスとツール](../../../dms/dms-tools-matrix.md)に関するページをご覧ください。
 

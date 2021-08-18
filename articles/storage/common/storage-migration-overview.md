@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 2e54eb0ea8166b32dd4bcc794bfcf401d9196884
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1d0459e8ac0002f69ac0e4d33a921bd64fc385d5
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469247"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178109"
 ---
 # <a name="azure-storage-migration-overview"></a>Azure Storage の移行の概要
 
@@ -125,4 +125,4 @@ ms.locfileid: "110469247"
 - [Azure ファイル共有への移行](../files/storage-files-migration-overview.md)
 - [WANdisco LiveData Platform for Azure を使用して Data Lake Storage に移行する](../blobs/migrate-gen2-wandisco-live-data-platform.md)
 - [AzCopy を使用して Azure Storage にデータをコピーまたは移動する](./storage-use-azcopy-v10.md)
-- [AzReplicate を使用して大規模なデータセットを Azure Blob Storage に移行する](https://github.com/Azure/AzReplicate/tree/master/)
+- [AzReplicate を使用して大規模なデータセットを Azure Blob Storage に移行する](/samples/azure/azreplicate/azreplicate/)

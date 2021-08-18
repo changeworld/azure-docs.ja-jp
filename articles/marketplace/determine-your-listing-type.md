@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 01/14/2021
-ms.openlocfilehash: 8ce06a1279a71840dea90e199f5b9c3ee60bd3d3
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/30/2021
+ms.openlocfilehash: 26897f9c4284ad970d2d662ca444324660064a4d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541087"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731201"
 ---
 # <a name="introduction-to-listing-options"></a>登録情報オプションの概要
 

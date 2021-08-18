@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f0c4f7f70dc186c29ffa5d90c6a7ea2f245f431
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90562521"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298081"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 
@@ -50,7 +50,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 ## <a name="deploying-the-template-using-the-azure-portal"></a>Azure Portal を使用したテンプレートのデプロイ
 
-この記事では、[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) ギャラリーで公開されているテンプレートを参照します。 ギャラリーからテンプレートをダウンロードするか、ギャラリーから直接 Azure のデプロイメントを起動します。 この記事では、ローカル コンピューターにテンプレートをダウンロードしていることを前提としています。
+この記事では、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/load-balancer-ipv6-create/) ギャラリーで公開されているテンプレートを参照します。 ギャラリーからテンプレートをダウンロードするか、ギャラリーから直接 Azure のデプロイメントを起動します。 この記事では、ローカル コンピューターにテンプレートをダウンロードしていることを前提としています。
 
 1. Azure Portal を開き、Azure のサブスクリプション内で VM とネットワーク リソースを作成する権限を持つアカウントでサインインします。 また、既存のリソースを使用している場合を除き、アカウントにはリソース グループとストレージ アカウントを作成する権限が必要です。
 2. メニューで [+ 新規] をクリックして検索ボックス「テンプレート」と入力します。 検索結果から [テンプレートのデプロイ] を選択します。

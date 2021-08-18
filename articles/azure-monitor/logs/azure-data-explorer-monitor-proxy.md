@@ -1,27 +1,23 @@
 ---
-title: Azure Data Explorer を使用して Azure Monitor のデータのクエリを実行する (プレビュー)
+title: Azure Data Explorer を使用して Azure Monitor のデータのクエリを実行する
 description: Azure Data Explorer を使用して、Azure Data Explorer と、Azure Monitor の Log Analytics ワークスペースおよび従来の Application Insights アプリケーション間で製品をまたぐクエリを実行します。
 author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 65dba60a798b1157a44a7a198b8eba7de1e8fe81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9faa9ff9c0635c84ebc5c56a343db0426873f945
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031261"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735837"
 ---
-# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Monitor でデータのクエリを実行する (プレビュー)
+# <a name="query-data-in-azure-monitor-using-azure-data-explorer"></a>Azure Data Explorer を使用して Azure Monitor のデータのクエリを実行する
 
 Azure Data Explorer では、Azure Data Explorer、[Application Insights (AI)](../app/app-insights-overview.md)、[Log Analytics (LA)](./data-platform-logs.md) 間のクロス サービス クエリがサポートされています。 Azure Data Explorer ツールを使用して Log Analytics/Application Insights ワークスペースに対してクエリを実行し、クロス サービス クエリでその内容を参照することができます。 この記事では、クロス サービス クエリを作成する方法と、Azure Data Explorer の Web UI に Log Analytics/Application Insights ワークスペースを追加する方法について説明します。
 
 Azure Data Explorer のクロス サービス クエリのフローは次のとおりです。:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Data Explorer プロキシのフロー":::
-
-> [!NOTE]
-> * Azure Data Explorer クライアント ツールから直接、または Azure Data Explorer クラスターでクエリを実行することによって間接的に、Azure Data Explorer から Azure Monitor データに対してクエリを実行する機能は、プレビュー モードです。
->* 不明な点がある場合は、[クロス サービス クエリ](mailto:adxproxy@microsoft.com) チームにお問い合わせください。
 
 ## <a name="add-a-log-analyticsapplication-insights-workspace-to-azure-data-explorer-client-tools"></a>Azure Data Explorer クライアント ツールに Log Analytics/Application Insights ワークスペースを追加する
 
@@ -89,7 +85,8 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Azure Data Explorer からのクロス サービス クエリ":::
 
-union の代わりに [`join` 演算子](/azure/data-explorer/kusto/query/joinoperator)を使用するには、それを Azure Data Explorer ネイティブ クラスターに対して実行するための [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) が必要になる場合があります。
+>[!TIP]
+>* union の代わりに [`join` 演算子](/azure/data-explorer/kusto/query/joinoperator)を使用するには、それを Azure Data Explorer ネイティブ クラスターに対して実行するための [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) が必要になる場合があります。
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>一方のテナントの Azure Data Explorer クラスターのデータを他方の Azure Monitor リソースと結合する
 

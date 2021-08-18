@@ -8,12 +8,12 @@ ms.date: 06/01/2021
 ms.author: aahi
 author: aahill
 ms.manager: nitinme
-ms.openlocfilehash: 550af8bda0768738dc2162a0dc0bf767d1c54741
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 7079c1ee309db9563142c54eea88ccd4ba6f6e28
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783032"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463641"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUIS DevOps の継続的インテグレーションと継続的デリバリーのワークフロー
 
@@ -30,9 +30,9 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 
 **CI/CD ワークフロー** では、2 つの補完的な開発プロセスを組み合わせます。
 
-* [継続的インテグレーション](/azure/devops/learn/what-is-continuous-integration) (CI) は、共有リポジトリでコードを頻繁にコミットし、それに対して自動ビルドを実行するエンジニアリング手法です。 自動[テスト](luis-concept-devops-testing.md)のアプローチと継続的インテグレーションを組み合わせると、更新のたびに LUDown ソースがまだ有効であり LUIS アプリにインポートできることに加えて、ソリューションに必要な意図とエンティティがトレーニング済みアプリで認識できることを検証する一連のテストにそれが合格することを検証できます。
+* [継続的インテグレーション](/devops/develop/what-is-continuous-integration) (CI) は、共有リポジトリでコードを頻繁にコミットし、それに対して自動ビルドを実行するエンジニアリング手法です。 自動[テスト](luis-concept-devops-testing.md)のアプローチと継続的インテグレーションを組み合わせると、更新のたびに LUDown ソースがまだ有効であり LUIS アプリにインポートできることに加えて、ソリューションに必要な意図とエンティティがトレーニング済みアプリで認識できることを検証する一連のテストにそれが合格することを検証できます。
 
-* [継続的デリバリー](/azure/devops/learn/what-is-continuous-delivery) (CD) では、より詳細なテストを実行できる環境にアプリケーションを自動的にデプロイするために、継続的インテグレーションの概念をさらに取り入れます。 CD を使用すれば、変更によって起きる予期しない問題について、できるだけ早く知ることができ、テスト カバレッジのギャップについても知ることができます。
+* [継続的デリバリー](/devops/deliver/what-is-continuous-delivery) (CD) では、より詳細なテストを実行できる環境にアプリケーションを自動的にデプロイするために、継続的インテグレーションの概念をさらに取り入れます。 CD を使用すれば、変更によって起きる予期しない問題について、できるだけ早く知ることができ、テスト カバレッジのギャップについても知ることができます。
 
 継続的インテグレーションと継続的デリバリーの目標は、"メインはいつでもリリース可能な状態である" ことの保証です。 LUIS アプリの場合、これは、必要であればメイン ブランチの LUIS アプリから任意のバージョンを取得して運用環境にリリースできるという意味です。
 

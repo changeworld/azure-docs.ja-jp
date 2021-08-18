@@ -3,8 +3,8 @@ title: 'チュートリアル: Azure Active Directory を使用した自動ユ�
 description: Azure AD から Bentley - Automatic User Provisioning へのユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 08778fff-f252-45c2-95d4-cc640c288af3
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2021
-ms.author: Zhchia
-ms.openlocfilehash: 99857aab921d1c09de09db04dededef187094ae5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.author: thwimmer
+ms.openlocfilehash: 6daa90e2a70eea20586b8f95967c938f360585cd
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740017"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764736"
 ---
 # <a name="tutorial-configure-bentley---automatic-user-provisioning-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングのために Bentley - Automatic User Provisioning を構成する
 

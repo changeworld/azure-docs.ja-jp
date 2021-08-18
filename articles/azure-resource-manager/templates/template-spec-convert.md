@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 324fcb85bfe1be87dc10736c8b5c233432e07146
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ad0391b91def898d252c429040380eab40522cd8
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026985"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378468"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>ポータルのテンプレート ギャラリーをテンプレート スペックに変換する
 
@@ -22,7 +22,7 @@ Azure portal には、お使いのアカウントに Azure Resource Manager テ�
 
 テンプレート ギャラリー内のテンプレートの変換を簡略化するには、Azure クイックスタート テンプレート リポジトリから PowerShell スクリプトを使用します。 スクリプトを実行するときは、テンプレートごとに新しいテンプレート スペックを作成するか、テンプレート スペックを作成するテンプレートをダウンロードすることができます。このスクリプトでは、テンプレート ギャラリーからテンプレートは削除されません。
 
-1. [移行スクリプト](https://github.com/Azure/azure-quickstart-templates/blob/master/201-templatespec-migrate-create/Migrate-GalleryItems.ps1)をコピーします。 *Migrate-GalleryItems.ps1* という名前でローカル コピーを保存します。
+1. [移行スクリプト](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.resources/templatespec-migrate-create/Migrate-GalleryItems.ps1)をコピーします。 *Migrate-GalleryItems.ps1* という名前でローカル コピーを保存します。
 1. 新しいテンプレート スペックを作成するには、`-ResourceGroupName` および `-Location` の各パラメーターの値を指定します。
 
    テンプレートをエクスポートするには、`ItemsToExport` を `MyGalleryItems` に設定します。 アクセスできるすべてのテンプレートをエクスポートするには、`AllGalleryItems` に設定します。
@@ -41,9 +41,9 @@ Azure portal には、お使いのアカウントに Azure Resource Manager テ�
    .\Migrate-GalleryItems.ps1 -ItemsToExport MyGalleryItems -ExportToFile
    ```
 
-   テンプレート スペックを作成するテンプレートをデプロイする方法については、「[クイック スタート: テンプレート スペックの作成とデプロイ](quickstart-create-template-specs.md)」を参照してください。
+   テンプレート スペックを作成するテンプレートをデプロイする方法については、「[クイックスタート: テンプレート スペックの作成とデプロイ](quickstart-create-template-specs.md)」を参照してください。
 
-スクリプトとそのパラメーターの詳細については、「[テンプレート ギャラリーのテンプレートから TemplateSpecs を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-templatespec-migrate-create)」を参照してください。
+スクリプトとそのパラメーターの詳細については、「[テンプレート ギャラリーのテンプレートから TemplateSpecs を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.resources/templatespec-migrate-create)」を参照してください。
 
 ## <a name="manually-convert-through-portal"></a>ポータルを使用して手動で変換する
 

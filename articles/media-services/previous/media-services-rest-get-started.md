@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: ccf4bc18270dcdbcae02f7b45bea2a05ed663227
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3b07a6d5b8ddc3ca1fb3bc7bbc868d80dfdac23
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008877"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712273"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
-> [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
+[!INCLUDE [v2 deprecation notice](../latest/includes/v2-deprecation-notice.md)]
 
 このクイックスタートでは Azure Media Services (AMS) の REST API を使用するビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について手順を追って説明します。
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fb5d74f0c912db098b5e309793963d5f07fbd58
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725443"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730354"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>外部アクセスに対するセキュリティ体制を決定する 
 
@@ -67,7 +67,7 @@ IT 管理アクセスと委任アクセスでは、目標がそれぞれ異な�
 
 組織の要件とシナリオに応じていずれを採用するにしても、次のことを行う必要があります。 
 
-* **アプリケーション、データ、およびコンテンツ** へのアクセスを制御する。 これは、[Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) と [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans) のバージョンに応じて、さまざまな方法で実現できます。 
+* **アプリケーション、データ、およびコンテンツ** へのアクセスを制御する。 これは、[Azure AD](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) と [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans) のバージョンに応じて、さまざまな方法で実現できます。 
 
 * **攻撃対象領域を減らす**。 [Privileged Identity Management](../privileged-identity-management/pim-configure.md)、[データ損失防止 (DLP)](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)、および[暗号化](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)の機能によって、攻撃対象領域を削減できます。
 

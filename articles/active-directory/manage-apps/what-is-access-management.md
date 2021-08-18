@@ -2,20 +2,21 @@
 title: Azure AD を使用したアプリへのアクセスの管理
 description: Azure Active Directory により、組織が各ユーザーがアクセスするアプリをどのように指定できるかついて説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: mtillman
-ms.openlocfilehash: b50f93dc13eb5fbd5934462b7084c521a6686ae0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 2dc66adcce209b29579bb88184272fd2bda1353c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079393"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738749"
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 
@@ -61,6 +62,7 @@ Azure AD には、組織内のエンド ユーザーに[アプリケーション
 企業アプリに割り当てられているユーザーがマイ アプリや Microsoft 365 アプリケーション起動プログラムでそれを表示できるかどうかを決定できます。
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>例:Azure AD を使用した複雑なアプリケーション割り当て
+
 Salesforce のようなアプリケーションについて考えます。 多くの企業では、Salesforce は主にマーケティング チームや販売チームが使用します。 通常、マーケティング チームのメンバーは Salesforce に対する高い特権アクセスを持つ一方、販売チームのメンバーのアクセス権は制限されます。 多くの場合、インフォメーション ワーカーの占める割合が多いと、アプリケーションへのアクセスも制限されます。 これらのルールに対する例外が、問題を複雑にします。 通常、マーケティングまたは販売の指揮部隊には、これらの一般的なルールとは無関係に、ユーザーにアクセス権を付与したり、そのロールを変更したりする特権があります。
 
 Azure AD では、Salesforce のようなアプリケーションをシングル サインオン (SSO) やプロビジョニングの自動化向けに事前構成できます。 アプリケーションが構成されたら、管理者は 1 回限りの操作を実行して、適切なグループを作成、割り当てることができます。 この例では、管理者は次のような割り当てを実行できます。
@@ -82,16 +84,18 @@ Microsoft アプリケーション (Exchange、SharePoint、Yammer など) の�
 
 Microsoft が公開したアプリケーションにユーザーがアクセスする方法は、主に 3 つあります。
 
-- Microsoft 365 またはその他の有料のスイートのアプリケーションでは、**ライセンスの割り当て** によってユーザーにアクセス権が付与されます。ライセンスの割り当ては、ユーザー アカウントに直接、またはグループ ベースのライセンス割り当て機能を使用してグループを通じて行われます。
-- Microsoft またはサード パーティが誰でも使用できるように無料で公開するアプリケーションでは、[ユーザーの同意](configure-user-consent.md)によってユーザーにアクセス権が付与されます。 つまり、ユーザーは自分の Azure AD 職場または学校アカウントでアプリケーションにサインインし、そのアカウントの限定されたデータ セットにアクセスすることが許可されます。
-- Microsoft またはサード パーティがだれでも使用できるよう無料で公開するアプリケーションでは、[管理者の同意](manage-consent-requests.md)によってユーザーにアクセス権を付与することもできます。 つまり、管理者は組織の全員がそのアプリケーションを使用する可能性があると判断しているため、グローバル管理者アカウントを使用してアプリケーションにサインインし、組織の全員にアクセス権を付与します。
+* Microsoft 365 またはその他の有料のスイートのアプリケーションでは、**ライセンスの割り当て** によってユーザーにアクセス権が付与されます。ライセンスの割り当ては、ユーザー アカウントに直接、またはグループ ベースのライセンス割り当て機能を使用してグループを通じて行われます。
+* Microsoft またはサード パーティが誰でも使用できるように無料で公開するアプリケーションでは、[ユーザーの同意](configure-user-consent.md)によってユーザーにアクセス権が付与されます。 つまり、ユーザーは自分の Azure AD 職場または学校アカウントでアプリケーションにサインインし、そのアカウントの限定されたデータ セットにアクセスすることが許可されます。
+
+* Microsoft またはサード パーティがだれでも使用できるよう無料で公開するアプリケーションでは、[管理者の同意](manage-consent-requests.md)によってユーザーにアクセス権を付与することもできます。 つまり、管理者は組織の全員がそのアプリケーションを使用する可能性があると判断しているため、グローバル管理者アカウントを使用してアプリケーションにサインインし、組織の全員にアクセス権を付与します。
 
 一部のアプリケーションでは、これらのメソッドを組み合わせています。 たとえば、一部の Microsoft アプリケーションは Microsoft 365 サブスクリプションに含まれていますが、同意する必要が依然としてあります。
 
-ユーザーは Office 365 ポータルから Microsoft 365 アプリケーションにアクセスできます。 また、ディレクトリの **[ユーザー設定]** にある [Office 365 表示切り替え機能](hide-application-from-user-portal.md)を利用し、マイ アプリで Microsoft 365 アプリケーションの表示と非表示を切り替えることができます。 
+ユーザーは Office 365 ポータルから Microsoft 365 アプリケーションにアクセスできます。 また、ディレクトリの **[ユーザー設定]** にある [Office 365 表示切り替え機能](hide-application-from-user-portal.md)を利用し、マイ アプリで Microsoft 365 アプリケーションの表示と非表示を切り替えることができます。
 
 企業アプリケーションと同様に、Azure portal から特定の Microsoft アプリケーションに[ユーザーを割り当てる](assign-user-or-group-access-portal.md)ことができます。あるいは、ポータルを利用できない場合、PowerShell を利用してユーザーを割り当てることができます。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [条件付きアクセスを使用したアプリケーションの保護](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [セルフサービス グループの管理/SSAA](../enterprise-users/groups-self-service-management.md)

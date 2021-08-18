@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5f981e40d82a1f5b4d775832752d4b169ab73db0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6dcd14f12b557ef63337890b10e69d6cdf92498a
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750031"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031177"
 ---
 # <a name="connect-to-azure-virtual-desktop-classic-with-the-ios-client"></a>iOS クライアントを使用して Azure Virtual Desktop (クラシック) に接続する
 
 > 適用対象: iOS 13.0 以降。 iPhone、iPad、iPod touch と互換性があります。
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-ios.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../user-documentation/connect-ios.md)を参照してください。
 
 ダウンロード可能なクライアントを使用して、ご使用の iOS デバイスから Azure Virtual Desktop リソースにアクセスできます。 このガイドでは、iOS クライアントを設定する方法について説明します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "111750031"
 
 その後、接続センターにリモート リソースが表示されます。
 
-フィードをサブスクライブすると、フィードのコンテンツが定期的に自動的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
+フィードをサブスクライブすると、フィードのコンテンツが自動で定期的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

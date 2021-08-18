@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: ffff2c1831aab09a1c622ced98cfe180fe0ec5d7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b881b7b87ef704102df7c5d8a9d24542b3d89bb2
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679203"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112118602"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -310,11 +310,6 @@ Azure ストレージ アカウントには、転送中の暗号化を要求す�
 
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>標準ファイル共有を最大 100 TiB にまたげるようにする
-
-既定では、Standard ファイル共有に使用できるのは最大 5 TiB だけですが、共有の制限は 100 TiB に増やすことができます。 共有の上限を引き上げる方法については、「[大きなファイル共有の有効化と作成](../files/storage-files-how-to-create-large-file-share.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)」を参照してください。
-
 
 #### <a name="regional-availability"></a>リージョン別の提供状況
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]

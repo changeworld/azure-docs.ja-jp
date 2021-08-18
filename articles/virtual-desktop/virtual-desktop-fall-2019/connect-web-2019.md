@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e604e5de1a5abd46961c0ec447f7d3fb29aa3b49
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b028635b3b58d8f0a771616dac7036428e7a8fe4
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749959"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031159"
 ---
 # <a name="connect-to-azure-virtual-desktop-classic-with-the-web-client"></a>Web クライアントを使用して Azure Virtual Desktop (クラシック) に接続する
 
 >[!IMPORTANT]
->この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-web.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../user-documentation/connect-web.md)を参照してください。
 
 Web クライアントを使用すると、時間のかかるインストール プロセスなしで Web ブラウザーから Azure Virtual Desktop リソースにアクセスできます。
 

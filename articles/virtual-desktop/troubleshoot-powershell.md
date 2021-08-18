@@ -7,12 +7,12 @@ ms.date: 06/05/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: f92dd750a7238b0784fa12d00606a5b84e7d56c0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: aae1f58eb9fc5e006254f6fdfd620c057e6d6fc3
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755287"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762519"
 ---
 # <a name="azure-virtual-desktop-powershell"></a>Azure Virtual Desktop PowerShell
 
@@ -23,7 +23,7 @@ Azure Virtual Desktop で PowerShell を使用するときに発生するエラ�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-Azure Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Azure Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
+Azure Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Azure Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum)にアクセスしてください。
 
 ## <a name="powershell-commands-used-during-azure-virtual-desktop-setup"></a>Azure Virtual Desktop 設定時に使用される PowerShell コマンド
 
@@ -78,7 +78,7 @@ New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e4
 - Azure Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
 - Azure Virtual Desktop 環境とホスト プールの設定中に発生した問題を解決するには、[環境とホスト プールの作成](troubleshoot-set-up-issues.md)に関するページを参照してください。
 - Azure Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md) に関する記事を参照してください。
-- Azure Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Azure Virtual Desktop サービスの接続](troubleshoot-service-connection.md)に関するページを参照してください。
+- Azure Virtual Desktop クライアント接続の問題のトラブルシューティングを行う場合は、「[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)」を参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
 - 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。

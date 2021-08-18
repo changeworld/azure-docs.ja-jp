@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a6955b7fc4948faaea6db426545f8cc3d1eece35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76363f171ba08c28e7460a988ff72afbf546716b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359899"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434863"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>Azure VM で SQL Server 用に Azure Key Vault 統合を構成する (リソース マネージャー)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -49,9 +49,7 @@ Key Vault 統合はプロビジョニング時に有効にできます。また�
 
 ### <a name="existing-vms"></a>既存の VM
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
-既存の SQL 仮想マシンの場合、[[SQL 仮想マシン リソース]](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) を開き、 **[設定]** の **[セキュリティ]** を選択します。 **[有効にする]** を選択し、Azure Key Vault の統合を有効にします。 
+既存の SQL 仮想マシンの場合、[[SQL 仮想マシン リソース]](manage-sql-vm-portal.md#access-the-resource) を開き、 **[設定]** の **[セキュリティ]** を選択します。 **[有効にする]** を選択し、Azure Key Vault の統合を有効にします。 
 
 ![既存の VM 用の SQL Key Vault 統合](./media/azure-key-vault-integration-configure/azure-sql-rm-akv-existing-vms.png)
 
@@ -62,7 +60,7 @@ Key Vault 統合はプロビジョニング時に有効にできます。また�
 
 
 > [!NOTE]
-> テンプレートを使用して Key Vault 統合を構成することもできます。 詳細については、 [Azure Key Vault 統合用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update)に関するページをご覧ください。
+> テンプレートを使用して Key Vault 統合を構成することもできます。 詳細については、 [Azure Key Vault 統合用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-sql-existing-keyvault-update)に関するページをご覧ください。
 
 
 [!INCLUDE [Key Vault integration next steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]

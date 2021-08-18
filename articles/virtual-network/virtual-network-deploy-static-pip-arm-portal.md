@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: d416af3d3a8eb8ab8057f13cc0d9a133adcb849a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6eeb9f5874bc5379465c8d238f97c4e8f6c50cba
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98221158"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433664"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
@@ -74,6 +74,8 @@ ms.locfileid: "98221158"
   
 6. 設定を確認し、 **[作成]** を選択します。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。
@@ -95,7 +97,7 @@ ms.locfileid: "98221158"
 
 Azure [Public](https://www.microsoft.com/download/details.aspx?id=56519)、[US Government](https://www.microsoft.com/download/details.aspx?id=57063)、[China](https://www.microsoft.com/download/details.aspx?id=57062)、および [Germany](https://www.microsoft.com/download/details.aspx?id=57064) クラウドの範囲 (プレフィックス) の一覧をダウンロードできます。
 
-- [静的パブリック IP アドレス](./public-ip-addresses.md#allocation-method)の詳細を参照してください。
+- [静的パブリック IP アドレス](./public-ip-addresses.md#ip-address-assignment)の詳細を参照してください。
 - Azure での[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。
 - [プライベート IP アドレス](./private-ip-addresses.md)と Azure 仮想マシンへの[静的プライベート IP アドレス](virtual-network-network-interface-addresses.md#add-ip-addresses)の割り当ての詳細を確認します。

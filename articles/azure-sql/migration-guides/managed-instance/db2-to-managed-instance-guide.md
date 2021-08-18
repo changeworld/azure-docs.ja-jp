@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 05/14/2021
-ms.openlocfilehash: e8c7f1f221a71ebb128f5ec25e6d78c388d06394
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 445384b3b9886130d1865a3ece6601cc7055573d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968209"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746628"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-managed-instance"></a>移行ガイド: IBM Db2 から Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -109,7 +109,7 @@ SQL Server Migration Assistant を使用して評価を作成します。
 
 スキーマを発行し、データを移行するには、次の手順を行います。
 
-1. スキーマを公開します。 **Azure SQL Managed Instance メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
+1. スキーマを発行します。 **Azure SQL Managed Instance メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
 
    :::image type="content" source="media/db2-to-managed-instance-guide/synchronize-with-database.png" alt-text="データベースと同期するオプションを示すスクリーンショット。":::
 
@@ -156,7 +156,7 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
 
 |Asset  |説明  |
 |---------|---------|
-|[データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
+|[データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
 |[Db2 zOS データ資産の検出および評価パッケージ](https://www.microsoft.com/download/details.aspx?id=103108)|データベース上で SQL スクリプトを実行した後、結果をファイル システム上のファイルにエクスポートできます。 スプレッドシートなど、外部ツールで結果を取り込めるように、\*.csv などの複数のファイル形式がサポートされています。 この方法を使用すると、ワークベンチをインストールしていないチームと結果を簡単に共有することができます。|
 |[IBM Db2 LUW インベントリ スクリプトと成果物](https://www.microsoft.com/download/details.aspx?id=103109)|この資産には、IBM Db2 LUW バージョン 11.1 システム テーブルを照会する SQL クエリが含まれます。このクエリでは、スキーマおよびオブジェクトの種類ごとのオブジェクトの数、各スキーマの "生データ" の概算値、および各スキーマのテーブルのサイズを取得し、結果を CSV 形式で格納します。|
 |[IBM Db2 から SQL MI へのデータベース比較ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103016)|データベース比較ユーティリティは、ソースおよびターゲット プラットフォームの両方でデータが同一であることを確認するために使用できる Windows コンソール アプリケーションです。 このツールを使用すると、すべての、または選択したテーブル、行、および列内の行または列レベルまでデータを効率的に比較できます。|

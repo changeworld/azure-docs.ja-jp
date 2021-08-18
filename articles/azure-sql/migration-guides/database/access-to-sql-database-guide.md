@@ -10,16 +10,16 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: 37266c7a7692c59efdded9ba3fabe71458a5f674
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8363fb2dbd80f55cdae4c064177bed63ed988559
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788624"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725565"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>移行ガイド: Access から Azure SQL Database
 
-このガイドでは、[SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for Acces (SSMA for Acces) を使用して、Microsoft Access データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
+このガイドでは、[SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant for Acces (SSMA for Acces) を使用して、Microsoft Access データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
 
 その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
@@ -170,7 +170,7 @@ SSMA for Access を使用してスキーマを公開し、データを移行す�
 
 | タイトル | 説明 |
 | --- | --- |
-| [データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルを提供します。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価の促進に役立ちます。 |
+| [データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130) | 特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルを提供します。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な資産評価の促進に役立ちます。 |
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 

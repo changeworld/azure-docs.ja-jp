@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aee3c8213221775e3fde21003055fd9cc973455
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896210"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669353"
 ---
 # <a name="add-a-tile-layer"></a>タイル レイヤーを追加する
 
@@ -57,7 +57,7 @@ Azure Maps ビジュアルでは、次の 3 種類のタイル サービスの�
 -   `{quadkey}` - Bing Maps タイル システムの名前付け規則に基づくタイルの `quadkey` 識別子。
 -   `{bbox-epsg-3857}` - EPSG 3857 空間参照系の `{west},{south},{east},{north}` 形式の境界ボックス文字列。
 
-例として、Azure Maps の[気象レーダー タイル サービス](/rest/api/maps/renderv2/getmaptilepreview)の書式設定済みタイル URL を次に示します。 `[subscription-key]` は、Azure Maps のサブスクリプション キーのプレースホルダーです。
+例として、Azure Maps の[気象レーダー タイル サービス](/rest/api/maps/render-v2/get-map-tile)の書式設定済みタイル URL を次に示します。 `[subscription-key]` は、Azure Maps のサブスクリプション キーのプレースホルダーです。
 
 > `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
 

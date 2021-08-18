@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova
+ms.reviewer: mathoma, bonova
 ms.date: 07/17/2019
-ms.openlocfilehash: deb7c89099a53b77d7c56b68173c071355baea1e
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: adcd6e88973ac9164eebbe57d92050b70f173d61
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707200"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722814"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance のカスタム DNS を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

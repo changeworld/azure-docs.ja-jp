@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 563f4e84bf17f749eb4a02bd9a470984e20aa289
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d9a213ee9889d5e778c2037a67974d3b3da5f4c4
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131442"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183599"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自動機械学習でのデータの特徴量化
 
@@ -32,7 +32,11 @@ Azure Machine Learning では、特徴エンジニアリングを容易にする
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事は、自動 ML の実験を構成する方法についての知識が既にある読者を対象としています。 構成については、次の記事を参照してください。
+この記事は、自動 ML の実験を構成する方法についての知識が既にある読者を対象としています。 
+
+[!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
+
+構成については、次の記事を参照してください。
 
 - コード ファーストのエクスペリエンスについて: [Python 用 Azure Machine Learning SDK を使用して自動 ML の実験を構成する](how-to-configure-auto-train.md)。
 - 少量のコードまたはコードなしのエクスペリエンスについて: [Azure Machine Learning Studio を使用して自動機械学習モデルを作成、確認、デプロイする](how-to-use-automated-ml-for-ml-models.md)。
@@ -253,16 +257,19 @@ def print_model(model, prefix=""):
     for step in model.steps:
         print(prefix + step[0])
         if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
-            pprint({'estimators': list(
-                e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
             print()
             for estimator in step[1].estimators:
-                print_model(estimator[1], estimator[0] + ' - ')
+                print_model(estimator[1], estimator[0]+ ' - ')
+        elif hasattr(step[1], '_base_learners') and hasattr(step[1], '_meta_learner'):
+            print("\nMeta Learner")
+            pprint(step[1]._meta_learner)
+            print()
+            for estimator in step[1]._base_learners:
+                print_model(estimator[1], estimator[0]+ ' - ')
         else:
             pprint(step[1].get_params())
-            print()
-
-print_model(model)
+            print()   
 ```
 
 このヘルパー関数によって、特定のアルゴリズムとして `LogisticRegression with RobustScalar` を使用している特定の実行に対して、次の出力が返されます。

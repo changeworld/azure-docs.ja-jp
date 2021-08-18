@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 02c28282bbf35e2e69cb85149c3a7d1187c5c258
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 8603f026d396316edf9d83e52ef33973ddc8edd7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694007"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751226"
 ---
 # <a name="determine-the-management-endpoint-ip-address---azure-sql-managed-instance"></a>管理エンドポイント IP アドレスを確認する - Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

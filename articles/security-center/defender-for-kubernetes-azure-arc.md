@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 02690da936190b7d868f54c987939c06b91b1a35
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: e11d455238f4a4e8c128a6cda83a145adaf149e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854020"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745104"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>オンプレミスおよびマルチクラウド環境で実行されている Azure Arc 対応 Kubernetes クラスターを防御する
 
@@ -30,7 +30,7 @@ ms.locfileid: "111854020"
 | リリース状態 | **プレビュー**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 | 必要なロールとアクセス許可 | [セキュリティ管理者](../role-based-access-control/built-in-roles.md#security-admin)はアラートを無視できます<br>[セキュリティ閲覧者](../role-based-access-control/built-in-roles.md#security-reader)は、結果を表示できます |
 | 価格 | [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) が必要です |
-| サポートされている Kubernetes ディストリビューション | [Azure Stack HCI の Azure Kubernetes Service](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS エンジン](https://github.com/Azure/aks-engine)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (バージョン 4.6 以降)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
+| サポートされている Kubernetes ディストリビューション | [Azure Stack HCI の Azure Kubernetes Service](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS エンジン](https://github.com/Azure/aks-engine)<br> [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (バージョン 4.6 以降)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
 | 制限事項 | Azure Arc 対応 Kubernetes と Azure Defender 拡張機能では、Google Kubernetes Engine や Elastic Kubernetes Service などのマネージド Kubernetes オファリングがサポートされて **いません**。 [Azure Defender は Azure Kubernetes Service (AKS) に対してネイティブに使用でき](defender-for-kubernetes-introduction.md)、クラスターを Azure Arc に接続する必要はありません。 |
 | 環境とリージョン | この拡張機能の可用性は、[Azure Arc 対応 Kubernetes](../azure-arc/kubernetes/overview.md) と同じです|
 
@@ -105,7 +105,7 @@ Azure Security Center 専用の推奨事項では、次が提供されます。
 
     | プロパティ | 説明 |
     |----------|-------------|
-    | logAnalyticsWorkspaceResourceID | **オプション**。 ご自分の Log Analytics ワークスペースの完全なリソース ID。<br>指定しない場合、リージョンの既定のワークスペースが使用されます。<br><br>完全なリソース ID を入手するには、次のコマンドを実行して、お使いのサブスクリプション内にあるワークスペースのリストを既定の JSON 形式で表示します。<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Log Analytics ワークスペースのリソース ID の構文は次のとおりです。<br>/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.OperationalInsights/workspaces/{your-workspace-name}。 <br>[Log Analytics ワークスペース](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces)の詳細をご確認ください |
+    | logAnalyticsWorkspaceResourceID | **オプション**。 ご自分の Log Analytics ワークスペースの完全なリソース ID。<br>指定しない場合、リージョンの既定のワークスペースが使用されます。<br><br>完全なリソース ID を入手するには、次のコマンドを実行して、お使いのサブスクリプション内にあるワークスペースのリストを既定の JSON 形式で表示します。<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Log Analytics ワークスペースのリソース ID の構文は次のとおりです。<br>/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.OperationalInsights/workspaces/{your-workspace-name}。 <br>[Log Analytics ワークスペース](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces)の詳細をご確認ください |
     | auditLogPath |**オプション**。 監査ログ ファイルへの完全パス。<br>指定しない場合、既定のパス ``/var/log/kube-apiserver/audit.log`` が使用されます。<br>AKS Engine の場合、標準のパスは ``/var/log/kubeaudit/audit.log`` です |
 
     以下のコマンドは、すべての省略可能なフィールドの使用例を示しています。
@@ -118,7 +118,7 @@ Azure Security Center 専用の推奨事項では、次が提供されます。
 
 ### <a name="use-azure-resource-manager-to-deploy-the-azure-defender-extension"></a>Azure Resource Manager を使用して Azure Defender 拡張機能をデプロイする
 
-Azure Resource Manager を使用して Azure Defender 拡張機能をデプロイするには、お使いのサブスクリプションに Log Analytics ワークスペースが必要です。 [Log Analytics ワークスペース](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces)の詳細をご確認ください。
+Azure Resource Manager を使用して Azure Defender 拡張機能をデプロイするには、お使いのサブスクリプションに Log Analytics ワークスペースが必要です。 [Log Analytics ワークスペース](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces)の詳細をご確認ください。
 
 Security Center の [インストール例](https://aka.ms/kubernetes-extension-installation-examples)にある Resource Manager テンプレートの **azure-defender-extension-arm-template.json** を使用できます。
 
@@ -129,7 +129,7 @@ Security Center の [インストール例](https://aka.ms/kubernetes-extension-
 
 ### <a name="use-rest-api-to-deploy-the-azure-defender-extension"></a>REST API を使用して Azure Defender 拡張機能をデプロイする 
 
-REST API を使用して Azure Defender 拡張機能をデプロイするには、お使いのサブスクリプションに Log Analytics ワークスペースが必要です。 [Log Analytics ワークスペース](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces)の詳細をご確認ください。
+REST API を使用して Azure Defender 拡張機能をデプロイするには、お使いのサブスクリプションに Log Analytics ワークスペースが必要です。 [Log Analytics ワークスペース](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces)の詳細をご確認ください。
 
 > [!TIP]
 > API を使用して Azure Defender 拡張機能をデプロイする最も簡単な方法は、Security Center の [インストール例](https://aka.ms/kubernetes-extension-installation-examples)で提供されている **Postman Collection JSON** の例を使用することです。
@@ -141,7 +141,7 @@ REST API を使用して Azure Defender 拡張機能をデプロイするには�
 
     各値の説明:
 
-    | 名前            | /   | 必須 | 種類   | 説明                                  |
+    | 名前            | /   | 必須 | 型   | 説明                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | サブスクリプション ID | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースのサブスクリプション ID |
     | リソース グループ  | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースを含むリソース グループの名前 |
@@ -324,7 +324,7 @@ REST API を使用して拡張機能を削除するには、次の DELETE コマ
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名前            | /   | 必須 | 種類   | 説明                                           |
+| 名前            | /   | 必須 | 型   | 説明                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | サブスクリプション ID | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのサブスクリプション ID |
 | リソース グループ  | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのリソース グループ  |
@@ -340,7 +340,7 @@ az account get-access-token --subscription <your-subscription-id>
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このページでは、Azure Arc 対応 Kubernetes クラスター用の Azure Defender 拡張機能をデプロイする方法について説明しました。 Azure Defender と Azure Security Center のコンテナー セキュリティ機能の詳細については、次のページを参照してください。
 

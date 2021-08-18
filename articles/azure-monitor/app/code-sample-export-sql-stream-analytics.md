@@ -3,12 +3,12 @@ title: Azure Application Insights から SQL へのエクスポート | Microsof
 description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 7627ae6dabb75782549ed17fc6e590b7bc7da77d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4629a99aba45df1ae834ec8236131dd8214b13b5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092748"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767198"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法について説明します。 
@@ -20,6 +20,9 @@ ms.locfileid: "110092748"
 監視対象のアプリが存在していることを想定して説明を始めます。
 
 この例では、ページ ビュー データを使用しますが、同じパターンを簡単に他のデータ型 (カスタム イベントや例外など) に拡張できます。 
+
+> [!IMPORTANT]
+> 連続エクスポートは非推奨であり、従来の Application Insights リソースに対してのみサポートされます。 テレメトリをエクスポートするために[診断設定](export-telemetry.md#diagnostic-settings-based-export)を使用するには、[ワークスペースベースの Application Insights リソースに移行](convert-classic-resource.md)します。
 
 ## <a name="add-application-insights-to-your-application"></a>Application Insights をアプリケーションに追加する
 作業を開始するには:

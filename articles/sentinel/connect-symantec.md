@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 7b32baa23a31342095e542d60745a503b81e89a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22e01d8e7ba82b1be277a967036ac4a2deb4bf81
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100092708"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253580"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Symantec ICDx アプライアンスを接続する 
 
@@ -28,6 +28,7 @@ ms.locfileid: "100092708"
 
 Symantec ICDx コネクタを使用すると、Azure Sentinel にすべての Symantec セキュリティ ソリューションのログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 これにより、組織のネットワークに関するより詳しい分析情報が得られ、セキュリティ運用機能が向上します。 Symantec ICDx と Azure Sentinel との統合には、REST API を使用します。
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
@@ -76,8 +77,6 @@ Symantec ICDx では、ログを統合し、Azure Sentinel に直接エクスポ
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Symantec ICDx を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-
-
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

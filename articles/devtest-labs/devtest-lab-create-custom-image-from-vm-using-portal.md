@@ -3,12 +3,12 @@ title: VM から Azure DevTest Labs カスタム イメージを作成する | M
 description: Azure ポータルを使用して、プロビジョニングされた VM から Azure DevTest Labs にカスタム イメージを作成する方法について説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bc41f267709950a4ec6766b439ec1e6493b25ea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87277029"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740763"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>VM からカスタム イメージを作成する
 
@@ -43,7 +43,7 @@ ms.locfileid: "87277029"
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
 
-- [Custom images or formulas? (カスタム イメージか数式か?)](./devtest-lab-faq.md#blog-post)
+- [Custom images or formulas? (カスタム イメージか数式か?)](/azure/devtest-labs/devtest-lab-faq#blog-post)
 - [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>次のステップ

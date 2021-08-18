@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 3fa167233c5afe7b50b2794f6c0fff5458e9acf7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b04cacb1d2767e152e62bc3fd5902798204f3f60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089058"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734282"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -29,7 +29,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 | [Cosmos DB 分析情報](insights/cosmosdb-insights-overview.md) | すべての Azure Cosmos DB リソースの全体的なパフォーマンス、エラー、容量、操作上の正常性のビューを、統一された対話型エクスペリエンスで提供します。 |
 | [Networks 分析情報 (プレビュー)](insights/network-insights-overview.md) | すべてのネットワーク リソースの正常性とメトリックの包括的ビューを提供します。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。 |
 [リソース グループ分析情報 (プレビュー)](insights/resource-group-insights.md) |  個別のリソースで発生した問題をトリアージおよび診断する一方で、リソース グループ全体の正常性とパフォーマンスに関するコンテキストを提供します。 |
-| [ストレージ分析情報](insights/storage-insights-overview.md) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 |
+| [ストレージ分析情報](../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 |
 | [VM insights](vm/vminsights-overview.md) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 |
 | [Key Vault 分析情報 (プレビュー)](./insights/key-vault-insights-overview.md) | キー コンテナーの要求、パフォーマンス、エラー、および待ち時間の統合ビューを提供することで、キー コンテナーの包括的な監視を実現します。 |
 | [Azure Cache for Redis 分析情報 (プレビュー)](insights/redis-cache-insights-overview.md) |  全体のパフォーマンス、エラー、容量、および操作の正常性を、統一された対話形式で表示できます。 |
@@ -154,7 +154,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |SQL Database | はい | はい | いいえ |  |
 |SQL Server Stretch Database | はい | はい | いいえ |  |
 |スタック | いいえ | いいえ | いいえ |  |
-|ストレージ | はい | いいえ | [はい](insights/storage-insights-overview.md) |  |
+|ストレージ | はい | いいえ | [はい](../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) |  |
 |ストレージ キャッシュ | いいえ | いいえ | いいえ |  |
 |ストレージ同期サービス | いいえ | いいえ | いいえ |  |
 |Stream Analytics | はい | はい | いいえ |  |
@@ -243,4 +243,3 @@ Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリ
 - [Azure リソースの監視に関するチュートリアル](essentials/tutorial-resource-logs.md)を完了してください。
 - [Azure Monitor ログでデータを分析するためのログ クエリの作成に関するチュートリアル](essentials/tutorial-resource-logs.md)を完了してください。
 - [Azure Monitor メトリックでデータを分析するためのメトリック グラフの作成に関するチュートリアル](essentials/tutorial-metrics-explorer.md)を完了してください。
-

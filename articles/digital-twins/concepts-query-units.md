@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7a1ba0ab0759a5c765497aac4346fa7d72dae96c
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 4e588e08e6c4180056bb2e27274154f1c00f0556
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616191"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466186"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure Digital Twins のクエリ ユニット 
 
@@ -41,8 +41,8 @@ Azure Digital Twins の[クエリ API](/rest/api/digital-twins/dataplane/query) 
 
 Azure Digital Twins のクエリの詳細については、次を参照してください。
 
-* [概念:クエリ言語](concepts-query-language.md)
-* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)
+* [クエリ言語](concepts-query-language.md)
+* [ツイン グラフにクエリを実行する](how-to-query-graph.md)
 * [クエリ API リファレンス ドキュメント](/rest/api/digital-twins/dataplane/query/querytwins)
 
 Azure Digital Twins のクエリ関連の制限については、[Azure Digital Twins サービスの制限](reference-service-limits.md)に関する記事をご覧ください。

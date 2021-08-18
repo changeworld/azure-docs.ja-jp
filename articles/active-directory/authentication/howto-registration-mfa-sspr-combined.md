@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 06/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6eba5ac4ed61847596e12f56544e6d07dca8075
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: b82eb6494041ffab4f70eb546d24f8a24729b626
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829577"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090369"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Azure Active Directory での統合されたセキュリティ情報の登録の有効化
 
@@ -47,6 +47,7 @@ ms.locfileid: "107829577"
 Internet Explorer で *サイトとゾーンの割り当て一覧* を構成した場合、以下のサイトは同じゾーン内に存在する必要があります。
 
 * *[https://login.microsoftonline.com](https://login.microsoftonline.com)*
+* *[https://Login.windows.net](https://login.windows.net)*
 * *[https://mysignins.microsoft.com](https://mysignins.microsoft.com)*
 * *[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)*
 

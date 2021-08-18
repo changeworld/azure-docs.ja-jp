@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 7946bc23f766eaf99860fa764ee7b542036b5109
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 452b850f0c5c731c1e5f3bbe0a7f5a28e2b72ecc
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075782"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179762"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -95,7 +95,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[Custom Vision](./custom-vision-service/overview.md)||x||
 |[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
-|[Immersive Reader](./immersive-reader/overview.md)|x|||
+|[Immersive Reader](../applied-ai-services/immersive-reader/overview.md)|x|||
 |[Ink Recognizer](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|○*|○*|x|

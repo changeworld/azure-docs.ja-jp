@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 1dd2768c7541312b68e2a44a35fc4260d67c5655
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d71526fea23e3a440428266addfc497b1a89c63c
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587000"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117153"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>パート 4: ドメインに参加している VM からファイル共有をマウントする
 
@@ -23,6 +23,13 @@ ms.locfileid: "104587000"
 次の図のように、アクセス許可を付与した資格情報を使用してクライアントにサインインします。
 
 ![ユーザー認証のための Azure AD サインイン画面を示すスクリーン ショット](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="mounting-prerequisites"></a>前提条件のマウント
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 5822da267119ab1e0154653c750a3f73e6785b7f
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4a79892669c746121a0699a5696dcb95d55d7572
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032647"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204399"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Azure PowerShell を使用して共有イメージ ギャラリーを作成する 
 
@@ -43,4 +43,3 @@ ms.locfileid: "112032647"
 - [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/vm-from-sig/)

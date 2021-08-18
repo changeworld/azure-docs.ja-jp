@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 43da1af7a3001d7f8e000a878948428a3d63aa4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e92f28d36f9dd4e08338ac90b703f9536cf767
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456184"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726072"
 ---
 # <a name="classify-and-analyze-data-using-entities-in-azure-sentinel"></a>Azure Sentinel でエンティティを使用してデータを分類および分析する
 
@@ -103,7 +103,7 @@ Azure Sentinel は、さまざまな種類のデータ ソースからのアラ�
 
 タイムラインには、次の種類の項目が含まれています。
 
-- アラート - そのエンティティが **[マップされたエンティティ]** として定義されているすべてのアラート。 組織で[分析ルールを使用したカスタム アラート](./tutorial-detect-threats-custom.md)が作成されている場合は、ルールのエンティティ マッピングが正しく実行されていることを確認する必要がある点に注意してください。
+- アラート - そのエンティティが **[マップされたエンティティ]** として定義されているすべてのアラート。 組織で[分析ルールを使用したカスタム アラート](./detect-threats-custom.md)が作成されている場合は、ルールのエンティティ マッピングが正しく実行されていることを確認する必要がある点に注意してください。
 
 - ブックマーク - ページにその特定のエンティティが表示されているすべてのブックマーク。
 

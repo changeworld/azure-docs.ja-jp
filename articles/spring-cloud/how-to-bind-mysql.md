@@ -1,20 +1,20 @@
 ---
 title: Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする方法
 description: Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする方法を説明します
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 71408513e18dc506f2c596d4e05db4fcc98ccea2
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 45ded9214f310f3505cc5d032754333c5cf702d8
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004153"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862541"
 ---
-# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする 
+# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする
 
 **この記事の適用対象:** ✔️ Java
 
@@ -38,6 +38,7 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     ```
+
 1. *application.properties* ファイルから、`spring.datasource.*` プロパティをすべて削除します。
 
 1. `az spring-cloud app deploy` を実行して現在のアプリを更新するか、`az spring-cloud app deployment create` を実行してこの変更のための新しいデプロイを作成します。
@@ -45,20 +46,21 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
 ## <a name="bind-your-app-to-the-azure-database-for-mysql-instance"></a>アプリを Azure Database for MySQL インスタンスにバインドする
 
 #### <a name="service-binding"></a>[サービス バインド](#tab/Service-Binding)
-1. 自分の Azure Database for MySQL アカウントの管理者ユーザー名とパスワードをメモしておきます。 
+1. 自分の Azure Database for MySQL アカウントの管理者ユーザー名とパスワードをメモしておきます。
 
 1. サーバーに接続し、MySQL クライアントから **testdb** という名前のデータベースを作成し、新しい非管理者アカウントを作成します。
 
-1. Azure portal の **Azure Spring Cloud** サービスのページで **アプリケーション ダッシュボード** を探し、Azure Database for MySQL インスタンスにバインドするアプリケーションを選択します。  これは、前の手順で更新またはデプロイしたのと同じアプリケーションです。 
+1. Azure portal の **Azure Spring Cloud** サービスのページで **アプリケーション ダッシュボード** を探し、Azure Database for MySQL インスタンスにバインドするアプリケーションを選択します。  これは、前の手順で更新またはデプロイしたのと同じアプリケーションです。
 
-1. **[サービス バインド]** を選択し、 **[サービス バインドの作成]** ボタンを選択します。 
+1. **[サービス バインド]** を選択し、 **[サービス バインドの作成]** ボタンを選択します。
 
 1. **[バインドの種類]** として **[Azure MySQL]** を選択し、前に使用したのと同じデータベース名を使用し、最初の手順でメモしたのと同じユーザー名とパスワードを使用して、フォームに入力します。
 
 1. アプリを再起動すると、このバインドが機能するようになります。
 
 1. サービス バインドが正しいことを確認するには、バインド名を選択し、その詳細を確認します。 `property` フィールドはこのようになります。
-    ```
+
+    ```properties
     spring.datasource.url=jdbc:mysql://some-server.mysql.database.azure.com:3306/testdb?useSSL=true&requireSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
     spring.datasource.username=admin@some-server
     spring.datasource.password=abc******
@@ -170,6 +172,7 @@ resource "azurerm_spring_cloud_active_deployment" "example" {
   deployment_name     = azurerm_spring_cloud_java_deployment.example.name
 }
 ```
+
 ---
 
 ## <a name="next-steps"></a>次のステップ

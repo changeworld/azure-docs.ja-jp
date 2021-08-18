@@ -10,18 +10,20 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 82ea47037902ce3a9449f71a9edf62cb80863d4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f936208e936bfe65b28816cc373d9ba1190308e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655988"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779019"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection からデータを接続する
 
 > [!IMPORTANT]
 > Azure Sentinel の Azure Information Protection データ コネクタは、現在パブリック プレビューです。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Azure Information Protection データ コネクタを構成することにより、[Azure Information Protection](https://azure.microsoft.com/services/information-protection/) から Azure Sentinel にログ情報をストリーミングできます。 Azure Information Protection は、クラウドとオンプレミスのどちらに保存されているかにかかわらず、機密データを制御し、セキュリティで保護するのに役立ちます。
 
@@ -74,5 +76,5 @@ Azure Information Protection 用に Log Analytics ワークスペースを構成
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Azure Information Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

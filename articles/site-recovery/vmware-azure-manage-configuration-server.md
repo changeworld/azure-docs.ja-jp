@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: e260b9fa7b24a3cb91e107bac6b01537879857c0
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 56389ff2dc936fe1d9a0a922f10c8055de6de1ba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110576898"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729734"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバー ディザスター リカバリー用の構成サーバーを管理する
 
@@ -223,7 +223,7 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
 |/PSIP|必須|レプリケーション データの転送に使用する NIC の IP アドレス。| 任意の有効な IP アドレス|
 |/CSIP|必須|構成サーバーがリッスンする NIC の IP アドレス。| 任意の有効な IP アドレス|
 |/PassphraseFilePath|必須|パスフレーズ ファイルの場所の完全パス。|有効なファイル パス|
-|/BypassProxy|省略可能|構成サーバーがプロキシを介さずに Azure に接続することを指定します。|この値は Venu から取得します。|
+|/BypassProxy|省略可能|構成サーバーがプロキシを介さずに Azure に接続することを指定します。||
 |/ProxySettingsFilePath|省略可能|プロキシ設定 (認証を必要とする既定のプロキシ、またはカスタム プロキシ)。|ファイルは下記の形式である必要があります。|
 |DataTransferSecurePort|省略可能|レプリケーション データに使用する PSIP のポート番号。| 有効なポート番号 (既定値は 9433)|
 |/SkipSpaceCheck|省略可能|キャッシュ ディスクの領域チェックをスキップします。| |

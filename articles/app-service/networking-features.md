@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 33cfd226df9f7620bafe2e404cc43050f176de13
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 85409230565c9311621faa18b5c8834c57c33c99
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892060"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459912"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -218,7 +218,7 @@ App Service のゲートウェイが必要な VNet 統合機能を使用する�
 
 詳細については、[App Service VNet 統合][vnetintegration]に関する記事を参照してください。
 
-### <a name="app-service-environment"></a>App Service Environment 
+### <a name="app-service-environment"></a>App Service 環境 
 
 App Service Environment (ASE) は、仮想ネットワーク内で実行される Azure App Service のシングルテナント デプロイです。 この機能には、次のようなケースがあります。
 

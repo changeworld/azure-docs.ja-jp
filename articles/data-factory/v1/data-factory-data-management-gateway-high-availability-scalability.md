@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a76479a358366591d1c4edef0755dd26ce23cd81
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391730"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289875"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 > [!NOTE]
@@ -99,7 +99,7 @@ ms.locfileid: "100391730"
         ![Data Management Gateway - インストール成功](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
         > [!NOTE]
-        > Azure VM でゲートウェイをプロビジョニングしている場合は、[こちらの Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway)を使用できます。 このスクリプトは、論理ゲートウェイを作成し、Data Management Gateway ソフトウェアがインストールされている VM を設定し、論理ゲートウェイと共に VM を登録します。 
+        > Azure VM でゲートウェイをプロビジョニングしている場合は、[こちらの Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/mutiple-vms-with-data-management-gateway)を使用できます。 このスクリプトは、論理ゲートウェイを作成し、Data Management Gateway ソフトウェアがインストールされている VM を設定し、論理ゲートウェイと共に VM を登録します。 
 6. Azure Portal で、 **[ゲートウェイ]** ページを起動します。 
     1. ポータルにあるデータ ファクトリ ホーム ページで、 **[リンクされたサービス]** をクリックします。
     

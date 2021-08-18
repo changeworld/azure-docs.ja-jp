@@ -3,12 +3,12 @@ title: Azure NetApp Files と Azure VMware Solution との統合
 description: Azure NetApp Files および Azure VMware Solution VM を使用して、オンプレミス サーバー、Azure VMware Solution VM、クラウド インフラストラクチャの間でデータを移行および同期します。
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 3383ee2afe271fbf50def125bd1fd4366b8b6165
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 4c07765bd54e59109f15f8a0cdfd067f48dd14b4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755719"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443783"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files と Azure VMware Solution との統合
 
@@ -27,7 +27,7 @@ Azure NetApp Files が使用されているサービス:
 
 図に示しているのは、Azure ExpressRoute を経由した Azure VMware Solution プライベート クラウドへの接続です。 Azure VMware Solution 環境によって、Azure VMware Solution VM にマウントされた Azure NetApp Files 共有にアクセスされます。
 
-![Azure VMware Solution アーキテクチャのための NetApp Files を示す図。](media/net-app-files/net-app-files-topology.png)
+:::image type="content" source="media/netapp-files/netapp-files-topology.png" alt-text="Azure VMware Solution アーキテクチャのための NetApp Files を示す図。" border="false":::
 
 
 ## <a name="prerequisites"></a>前提条件 
@@ -60,13 +60,13 @@ Azure NetApp Files の Premium サービス レベルで Azure 内に作成さ�
 
 1. Azure portal の **[ストレージ]** で、 **[Azure NetApp Files]** を選択します。 構成されている Azure NetApp Files の一覧が表示されます。 
 
-   :::image type="content" source="media/net-app-files/azure-net-app-files-list.png" alt-text="事前に構成された Azure NetApp Files の一覧を示すスクリーンショット。"::: 
+   :::image type="content" source="media/netapp-files/azure-netapp-files-list.png" alt-text="事前に構成された Azure NetApp Files の一覧を示すスクリーンショット。"::: 
 
 2. 構成された NetApp Files アカウントを選択して、その設定を表示します。 たとえば、 **[Contoso-anf2]** を選択します。 
 
 3. **[容量プール]** を選択して、構成されているプールを確認します。 
 
-   :::image type="content" source="media/net-app-files/net-app-settings.png" alt-text="構成された NetApp Files アカウントの容量プールとボリュームを表示するオプションを示すスクリーンショット。":::
+   :::image type="content" source="media/netapp-files/netapp-settings.png" alt-text="構成された NetApp Files アカウントの容量プールとボリュームを表示するオプションを示すスクリーンショット。":::
 
    容量とサービス レベルを示す [容量プール] ページが開きます。 この例では、記憶域プールは Premium サービス レベルの 4 TiB として構成されています。
 
@@ -74,11 +74,11 @@ Azure NetApp Files の Premium サービス レベルで Azure 内に作成さ�
 
 5. ボリュームを選択して、その構成を表示します。  
 
-   :::image type="content" source="media/net-app-files/azure-net-app-volumes.png" alt-text="容量プールの下に作成されているボリュームを示すスクリーンショット。":::
+   :::image type="content" source="media/netapp-files/azure-netapp-volumes.png" alt-text="容量プールの下に作成されているボリュームを示すスクリーンショット。":::
 
    ボリュームの構成の詳細を示すウィンドウが開きます。
 
-   :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="ボリュームの構成の詳細を示すスクリーンショット。":::
+   :::image type="content" source="media/netapp-files/configuration-of-volume.png" alt-text="ボリュームの構成の詳細を示すスクリーンショット。":::
 
    anfvolume は、200 GiB のサイズで、容量プール anfpool1 にあることがわかります。 10.22.3.4:/ANFVOLUME を使用して NFS ファイル共有としてエクスポートされます。 Azure NetApp Files と、VM にマウントするための NFS パスのために Azure Virtual Network (VNet) から 1 つのプライベート IP が作成されました。
 

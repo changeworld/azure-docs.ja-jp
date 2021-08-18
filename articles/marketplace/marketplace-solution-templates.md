@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 04/22/2020
-ms.openlocfilehash: 2aa524788c447fe706b70a9002b48c3b1c76d71e
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/01/2021
+ms.openlocfilehash: 5090b5e4c34e70146182fbd472b7e24f9f919c15
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539901"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231289"
 ---
 # <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Azure アプリケーション ソリューション テンプレート プランの発行ガイド
 

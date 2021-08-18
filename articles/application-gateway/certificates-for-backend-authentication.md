@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 06/17/2020
+ms.date: 07/30/2021
 ms.author: absha
-ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a06e02df8eed42db3b79fcfb06e44c4bb17db3e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397724"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728067"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway でバックエンドを許可する証明書を作成する
 
@@ -57,7 +57,7 @@ TLS/SSL 証明書から公開キー .cer ファイルをエクスポートしま
 
 6. **[完了]** をクリックして、証明書をエクスポートします。
 
-   ![ファイル エクスポートの完了後の証明書のエクスポート ウィザードが表示されているスクリーンショット。](./media/certificates-for-backend-authentication/finish.png)
+   ![ファイル エクスポートの完了後の証明書のエクスポート ウィザードが表示されているスクリーンショット。](./media/certificates-for-backend-authentication/finish-screen.png)
 
 7. 証明書が正常にエクスポートされました。
 

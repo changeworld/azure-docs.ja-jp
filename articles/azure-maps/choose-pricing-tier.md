@@ -7,13 +7,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 59ed6dea79e1ae827c35bc7ccb60fe1bb7373778
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 98e2e54ee91a398f02da798ef44eeb42c798fbc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794399"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747760"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure Maps での適切な価格レベルの選択
 

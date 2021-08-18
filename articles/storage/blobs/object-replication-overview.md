@@ -10,12 +10,12 @@ ms.date: 05/11/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 39b1ebb4ca0a7daf5654c306382effa44d90c798
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: e65d6097afb6c2b6da1de332304d3b638d2ac081
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845764"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740176"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -68,7 +68,7 @@ ms.locfileid: "109845764"
 
 ### <a name="immutable-blobs"></a>不変 BLOB
 
-オブジェクトのレプリケーションでは、不変 BLOB はサポートされていません。 ソース コンテナーまたは宛先コンテナーに時間ベースの保有ポリシーまたは訴訟ホールドが設定されている場合、オブジェクトのレプリケーションは失敗します。 不変 BLOB の詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)」を参照してください。
+オブジェクトのレプリケーションでは、不変 BLOB はサポートされていません。 ソース コンテナーまたは宛先コンテナーに時間ベースの保有ポリシーまたは訴訟ホールドが設定されている場合、オブジェクトのレプリケーションは失敗します。 不変 BLOB の詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
 
 ## <a name="object-replication-policies-and-rules"></a>オブジェクト レプリケーションのポリシーとルール
 

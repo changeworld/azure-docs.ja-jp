@@ -2,13 +2,13 @@
 title: Azure Resource Manager テンプレートを使用して、Azure Event Grid でシステム トピックを作成する
 description: この記事では、Azure Resource Manager テンプレートを使用して Azure Event Grid でシステム トピックを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: 8420e60dd7336d17845a0a1c6b4e5e6637fe9c8a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86115164"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469463"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して、Azure Event Grid でシステム トピックを作成します
 この記事では、Resource Manager テンプレートを使用してシステム トピックを作成および管理する方法について説明します。 システム トピックの概要については、[システム トピック](system-topics.md)に関するページを参照してください。

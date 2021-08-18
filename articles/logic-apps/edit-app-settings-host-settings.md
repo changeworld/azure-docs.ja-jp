@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: fcc7ac002c9d1024abc17dc26ba0b231213ceb53
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cf1361a531511daf7f249f4e7c7d2acf9207c457
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386548"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743246"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps でロジック アプリのホストとアプリの設定を編集する
 
@@ -45,7 +45,7 @@ ms.locfileid: "110386548"
 
 Visual Studio Code で、ロジック アプリ プロジェクトのルート レベルにある **local.settings.json** ファイルには、ローカル開発環境での実行中にそのロジック アプリ内の "*すべてのワークフロー*" に影響を与える、グローバル構成オプションが含まれています。 ワークフローがローカルで実行されている場合、これらの設定はローカル環境変数としてアクセスされます。それらの値は、多くの場合、ワークフローを実行するさまざまな環境間で変わる可能性があります。 これらの設定を表示および管理するには、「[アプリ設定の管理 - local.settings.json](#manage-app-settings)」をご確認ください。
 
-Azure Logic Apps のアプリ設定は、Azure Functions または Azure Web Apps のアプリ設定と同様に機能します。 以前にこれらの他のサービスを使用したことがある場合は、既にアプリ設定に慣れていることもあるでしょう。 詳細については、「[Azure Functions のアプリ設定のリファレンス](../azure-functions/functions-app-settings.md)」と[「Azure Functions Core Tools の操作」の「ローカル設定ファイル」](../azure-functions/functions-run-local.md#local-settings-file)をご確認ください。
+Azure Logic Apps のアプリ設定は、Azure Functions または Azure Web Apps のアプリ設定と同様に機能します。 以前にこれらの他のサービスを使用したことがある場合は、既にアプリ設定に慣れていることもあるでしょう。 詳細については、「[Azure Functions のアプリ設定のリファレンス](../azure-functions/functions-app-settings.md)」と[「Azure Functions Core Tools の操作」の「ローカル設定ファイル」](../azure-functions/functions-develop-local.md#local-settings-file)をご確認ください。
 
 | 設定 | 既定値 | 説明 |
 |---------|---------------|-------------|

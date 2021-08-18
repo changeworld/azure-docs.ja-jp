@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 442400754d4c103a4f26724ff2ca731c8ae5250f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199898"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178548"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 
@@ -79,7 +79,7 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 - [VM insights](../vm/vminsights-enable-overview.md) には、エージェントを大規模に有効にする複数の方法が用意されています。 これには、Log Analytics エージェントと Dependency Agent のインストールが含まれます。 
 - [Azure Security Center では、Log Analytics エージェントをプロビジョニングできます](../../security-center/security-center-enable-data-collection.md)。セキュリティの脆弱性と脅威を監視するために有効にすれば、サポートされているすべての Azure VM と作成された新しいものを対象にできます。
 - [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能は、Azure portal、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使用してインストールできます。
-- 個別の Azure 仮想マシン用に、[Azure portal から手動で](../vm/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)インストールします。
+- 個別の Azure 仮想マシン用に、[Azure portal から手動で](../vm/monitor-virtual-machine.md?toc=%2fazure%2fazure-monitor%2ftoc.json)インストールします。
 
 ### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>オンプレミスまたは別のクラウド内の Windows 仮想マシン
 
@@ -91,7 +91,7 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>オンプレミスまたは別のクラウド内の Linux 仮想マシン
 
 - [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)を使用し、Log Analytics VM 拡張機能をデプロイし、管理します。
-- GitHub でホストされているラッパー スクリプトを呼び出してエージェントを[手動でインストールします](../vm/quick-collect-linux-computer.md)。
+- GitHub でホストされているラッパー スクリプトを呼び出してエージェントを[手動でインストールします](../vm/monitor-virtual-machine.md)。
 - 収集したデータを管理グループ直属の Windows コンピューターから転送する目的で、[System Center Operations Manager](./om-agents.md) と Azure Monitor を統合します。
 
 ## <a name="workspace-id-and-key"></a>ワークスペース ID とキー

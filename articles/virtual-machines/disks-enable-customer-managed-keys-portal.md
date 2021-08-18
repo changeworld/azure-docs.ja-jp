@@ -2,17 +2,17 @@
 title: Azure portal - SSE でカスタマー マネージド キーを有効にする - マネージド ディスク
 description: Azure portal を使用して、マネージド ディスクでカスタマー マネージド キーを有効にします。
 author: roygara
-ms.date: 08/24/2020
+ms.date: 06/29/2021
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 7fbcf37620f9d6edfb0f312c2eb09ef2d7994232
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 99a6a94405978cf183c717f2fed34f7eb24d9299
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731651"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361371"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Azure portal を使用して、マネージド ディスクでカスタマー マネージド キーを使用し、サーバー側の暗号化を有効にする
 

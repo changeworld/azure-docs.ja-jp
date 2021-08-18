@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 23fc6f6f6a62230e2cfc710c1c738eb42d6cc115
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 46b29bb6a7294d0f6741be4cac7028fe7e42ec95
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527544"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113430271"
 ---
 # <a name="create-a-virtual-machine-using-an-approved-base"></a>承認済みのベースを使用して仮想マシンを作成する
 
@@ -78,5 +78,5 @@ Azure で、指定した仮想マシンのプロビジョニングが開始さ�
 ## <a name="next-steps"></a>次の手順
 
 - 推奨される次の手順:[お使いの VM イメージをテストし](azure-vm-image-test.md)、それが Azure Marketplace の公開要件を満たしていることを確認します。 これは省略可能です。
-- VM イメージをテストしない場合は、 [パートナー センター](https://partner.microsoft.com/)にサインインし、イメージを公開します。
-- お使いの Azure ベースの新しい VHD の作成で問題が発生した場合は、[Azure Marketplace の VM に関する FAQ](azure-vm-create-faq.md) を参照してください。
+- VM イメージをテストしない場合は、 [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165935)にサインインし、イメージを公開します。
+- お使いの Azure ベースの新しい VHD の作成で問題が発生した場合は、[Azure Marketplace の VM に関する FAQ](azure-vm-create-faq.yml) を参照してください。

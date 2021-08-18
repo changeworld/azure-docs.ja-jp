@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 87cd32dcace6fd38180cc09ba999efca76f5ae16
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5d5fb3419a3bdaaef9480c3979cb83e806a97c2
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605469"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093537"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map-android-sdk"></a>マップに多角形浮き出しレイヤーを追加する (Android SDK)
 
@@ -119,16 +119,12 @@ map.layers.add(layer, "labels")
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
-map.sources.add(source);
 
 //Import the geojson data and add it to the data source.
-Utils.importData("https://azuremapscodesamples.azurewebsites.net/Common/data/geojson/US_States_Population_Density.json", this,  (String result) -> {
-    //Parse the data as a GeoJSON Feature Collection.
-    FeatureCollection fc = FeatureCollection.fromJson(result);
+source.importDataFromUrl("https://azuremapscodesamples.azurewebsites.net/Common/data/geojson/US_States_Population_Density.json");
 
-    //Add the feature collection to the data source.
-    source.add(fc);
-});
+//Add data source to the map.
+map.sources.add(source);
 
 //Create and add a polygon extrusion layer to the map below the labels so that they are still readable.
 PolygonExtrusionLayer layer = new PolygonExtrusionLayer(source,
@@ -167,18 +163,12 @@ map.layers.add(layer, "labels");
 ```kotlin
 //Create a data source and add it to the map.
 val source = DataSource()
-map.sources.add(source)
 
 //Import the geojson data and add it to the data source.
-Utils.importData("https://azuremapscodesamples.azurewebsites.net/Common/data/geojson/US_States_Population_Density.json",
-    this
-) { result: String? ->
-    //Parse the data as a GeoJSON Feature Collection.
-    val fc = FeatureCollection.fromJson(result!!)
+source.importDataFromUrl("https://azuremapscodesamples.azurewebsites.net/Common/data/geojson/US_States_Population_Density.json")
 
-    //Add the feature collection to the data source.
-    source.add(fc)
-}
+//Add data source to the map.
+map.sources.add(source)
 
 //Create and add a polygon extrusion layer to the map below the labels so that they are still readable.
 val layer = PolygonExtrusionLayer(

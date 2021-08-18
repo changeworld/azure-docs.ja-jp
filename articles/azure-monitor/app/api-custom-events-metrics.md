@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 75576056162bf869c20706bed22c31785a8ea2a0
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 648c9ee1de00ef638354a287e43fa234610e9dc7
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060302"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291500"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -177,7 +177,7 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 *JavaScript*
 
 ```javascript
-appInsights.trackMetric("queueLength", 42.0);
+appInsights.trackMetric({name: "queueLength", average: 42});
 ```
 
 *C#*
@@ -1087,7 +1087,6 @@ telemetry.Context.Operation.Name = "MyOperationName";
   * **[ID]** :診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
   * **Name**:識別子。通常は HTTP 要求の URL です。
   * **SyntheticSource**:null 値または空ではない場合に、要求元がロボットまたは Web テストとして識別されたことを示す文字列。 既定で、メトリックス エクスプローラーの計算から除外されます。
-* **[プロパティ]** :すべてのテレメトリ データとともに送信されるプロパティ。 個々 の Track* 呼び出しでオーバーライドできます。
 * **セッション**:ユーザーのセッション。 ID は生成された値に設定されますが、ユーザーがしばらくの間アクティブでない場合には変更されます。
 * **[ユーザー]** :ユーザー情報。
 
@@ -1126,4 +1125,4 @@ telemetry.Context.Operation.Name = "MyOperationName";
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 
 * [イベントおよびログを検索する](./diagnostic-search.md)
-* [トラブルシューティング](../faq.md)
+* [トラブルシューティング](../faq.yml)

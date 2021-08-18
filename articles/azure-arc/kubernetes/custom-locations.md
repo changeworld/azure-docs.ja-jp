@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: カスタムの場所を使用して、Azure Arc 対応 Kubernetes クラスターに Azure PaaS サービスをデプロイします
-ms.openlocfilehash: 5f25260041fe7d5998d7f1716c9d20e288168e9d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 5fa255755dd0b78498203624194d081447d70a13
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951652"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730858"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes にカスタムの場所を作成および管理する
 
@@ -105,26 +105,15 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 1. クラスター上で最終的に必要な、Azure サービス インスタンスの Azure サービス クラスター拡張機能をデプロイします。
 
-    * Azure Arc 対応データ サービス
+    * [Azure Arc 対応 Data Services](../data/create-data-controller-direct-cli.md#create-the-arc-data-services-extension)
 
-        ```azurecli
-        az k8s-extension create --name <extensionInstanceName> --extension-type microsoft.arcdataservices --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
-        ```
         > [!NOTE]
         > Arc 対応 Data Services クラスター拡張機能では、認証を使用しない送信プロキシと、基本認証を使用する送信プロキシがサポートされています。 現在、信頼できる証明書が必要な送信プロキシはサポートされていません。
 
 
-    * [Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md)
+    * [Azure Arc 上の Azure App Service](../../app-service/manage-create-arc-environment.md#install-the-app-service-extension)
 
-        ```azurecli
-        az k8s-extension create --name <extensionInstanceName> --extension-type 'Microsoft.Web.Appservice' --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace appservice-ns --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=appservice-ns" 
-        ```
-
-    * [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md)
-
-        ```azurecli
-          az k8s-extension create --name <extensionInstanceName> --extension-type Microsoft.EventGrid --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace eventgrid-ext --configuration-protected-settings-file protected-settings-extension.json --configuration-settings-file settings-extension.json
-        ```
+    * [Kubernetes 上の Event Grid](../../event-grid/kubernetes/install-k8s-extension.md)
 
 1. Azure Arc 対応 Kubernetes クラスターの Azure Resource Manager 識別子を取得します。これは、後の手順で `connectedClusterId` として参照されます。
 

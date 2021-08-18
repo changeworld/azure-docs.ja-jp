@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/02/2021
 ms.author: nitinme
-ms.openlocfilehash: 51001cbe4b4fc7cf3fb7b4fca93906e09fc4f594
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: f4730a963a669af970362542ecf7868b20438f02
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446749"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112296157"
 ---
 # <a name="responsible-use-of-ai-with-cognitive-services"></a>Cognitive Services における AI の責任ある使用
 
@@ -64,3 +64,10 @@ Azure Cognitive Services は、アプリケーションで人工知能を責任�
 * [設計パターンの開示](./speech-service/concepts-disclosure-patterns.md)
 * [倫理規定](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=/azure/cognitive-services/speech-service/context/context)
 * [データ、プライバシー、セキュリティ](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context)
+
+## <a name="anomaly-detector"></a>Anomaly Detector
+
+* [透過性に関するメモとユースケース](/legal/cognitive-services/anomaly-detector/transparency-note?context=/azure/cognitive-services/anomaly-detector/context/context)
+* [特性と制限](/legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/cognitive-services/anomaly-detector/context/context)
+* [統合と責任ある使用](/legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/cognitive-services/anomaly-detector/context/context)
+* [データ、プライバシー、セキュリティ](/legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/cognitive-services/anomaly-detector/context/context)

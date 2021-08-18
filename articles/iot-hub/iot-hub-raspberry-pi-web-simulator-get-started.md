@@ -2,23 +2,22 @@
 title: Raspberry Pi Web シミュレーターの Azure IoT Hub への接続 (Node.js)
 description: Raspberry Pi Web シミュレーターを Azure IoT Hub に接続し、Raspberry Pi で Azure クラウドにデータを送信します。
 author: wesmc7777
-manager: philmea
 keywords: raspberry pi シミュレーター, azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 04/11/2018
+ms.date: 05/27/2021
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: 702dee108577665eded6dd1a92203236d74e866e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b971236c68392cfb724e95802acc34f97a73a293
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91308350"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733799"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry Pi オンライン シミュレーターの Azure IoT Hub への接続 (Node.js)
 

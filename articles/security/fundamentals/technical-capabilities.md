@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 0337a9aec4991dddbf95cf1ac2e2ec6adf7d28ea
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4894971fa6ac26cdfcbd65fb12c71d3ca73b6168
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471592"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422572"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
@@ -182,7 +182,7 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 オンプレミスにある 1 個のワークステーションから Azure へのアクセスをセキュリティ保護する必要がある場合には、[ポイント対サイト VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) を使用します。
 
-大規模なデータ セットは、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) などの専用高速 WAN リンクを利用して移動できます。 ExpressRoute を使用する場合、[SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらにセキュリティを強化できます。
+大規模なデータ セットは、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) などの専用高速 WAN リンクを利用して移動できます。 ExpressRoute を使用する場合、SSL/TLS などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらにセキュリティを強化できます。
 
 Azure portal で Azure Storage を操作する場合、すべてのトランザクションは HTTPS 経由で行われます。 HTTPS 経由の [Storage REST API](/rest/api/storageservices/) も、[Azure Storage](https://azure.microsoft.com/services/storage/) と [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) の操作に使用できます。
 

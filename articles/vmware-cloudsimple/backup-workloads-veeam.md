@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 115cb4203966bdf4cb60373d9c08994b6eb11576
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: d5037a6d236c0071c25e0e4f148c32f67b5e8438
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108182608"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006286"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Veeam B&R を使用して CloudSimple プライベート クラウド上のワークロード VM をバックアップする
 
@@ -222,7 +222,7 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
 5. vCenter で、[Veeam のシステム要件](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)に従って、Veeam のバックアップ サーバーとプロキシ サーバー用の VM を作成します。 Windows 2012 R2 または Linux を使用できます。 詳細については、[Linux バックアップ リポジトリを使用するための要件](https://www.veeam.com/kb2216)に関するページを参照してください。
 6. インストール可能な Veeam ISO を CDROM デバイスとして Veeam バックアップ サーバー VM にマウントします。
 7. Windows 2012 R2 マシン (Veeam インストールのターゲット) への RDP セッションを使用して、Windows 2012 R2 VM に [Veeam B&R 9.5u3 をインストール](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)します。
-8. Veeam バックアップ サーバー VM の内部 IP アドレスを特定し、その IP アドレスが静的となるように DHCP サーバーで構成します。 これを行うために必要とされる厳密な手順は、DHCP サーバーによって異なります。 例として、<a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">静的 DHCP マッピング</a>に関する Netgate の記事では、pfSense ルーターを使用して DHCP サーバーを構成する方法について説明しています。
+8. Veeam バックアップ サーバー VM の内部 IP アドレスを特定し、その IP アドレスが静的となるように DHCP サーバーで構成します。 これを行うために必要とされる厳密な手順は、DHCP サーバーによって異なります。 例として、<a href="https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html" target="_blank">静的 DHCP マッピング</a>に関する Netgate の記事では、pfSense ルーターを使用して DHCP サーバーを構成する方法について説明しています。
 
 ### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam コンソール:Veeam バックアップおよび復旧ソフトウェアをインストールする
 
@@ -302,4 +302,4 @@ Veeam バックアップおよび復旧サーバーのパブリック IP アド�
 
 * [マネージド ディスク上の XFS ボリュームの作成 - RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
 * [CentOS 7 で NFS マウントを設定する方法 - HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
-* [DHCP サーバーの構成 - Netgate](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)
+* [DHCP サーバーの構成 - Netgate](https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html)

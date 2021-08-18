@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: fa0b37c46fd39a1764c356aa910347cafaa7d448
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f50fecfb2675e870025d9e188d5303aacf77f7a2
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787259"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295725"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "109787259"
 ISE を作成する他の方法の詳細については、次の記事を参照してください。
 
 * [Azure portal を使用して ISE を作成する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
-* [サンプルの Azure Resource Manager クイックスタート テンプレートを使用して ISE を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
+* [サンプルの Azure Resource Manager クイックスタート テンプレートを使用して ISE を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/integration-service-environment)
 * [保存データを暗号化するためのカスタマー マネージド キーの使用をサポートする ISE を作成する](customer-managed-keys-integration-service-environment.md)
 
 ## <a name="prerequisites"></a>前提条件

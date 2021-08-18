@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 6aab2d1d681cbfd55cc275b1f647562d54a08f0c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: aebcf680fec069fdb28114ef8a1a0f6fd8547e63
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791333"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458580"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートから NSG フロー ログを構成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "110791333"
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) は、[インフラストラクチャをコードとして](/azure/devops/learn/what-is-infrastructure-as-code)管理する、強力な Azure ネイティブな方法です。
+[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) は、[インフラストラクチャをコードとして](/devops/deliver/what-is-infrastructure-as-code)管理する、強力な Azure ネイティブな方法です。
 
 この記事では、Azure Resource Manager テンプレートと Azure PowerShell を使用して、プログラムで [NSG フロー ログ](./network-watcher-nsg-flow-logging-overview.md)を有効にする方法について説明します。 まず、NSG フロー ログ オブジェクトのプロパティの概要と、いくつかのサンプル テンプレートを提供します。 次に、ローカルの PowerShell インスタンスを使用してテンプレートをデプロイします。
 

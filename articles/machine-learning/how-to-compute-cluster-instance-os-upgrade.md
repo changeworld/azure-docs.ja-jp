@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 863b10f0ff41c1e28a59357f07be983715adbb55
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e6ef72031f000c0b638d47e235b75eccf3f885f8
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131424"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461397"
 ---
 # <a name="upgrade-compute-instance-and-compute-cluster-host-os"></a>コンピューティング インスタンスとコンピューティング クラスター ホスト OS をアップグレードする
 
@@ -40,7 +40,7 @@ __2021 年 3 月 15 日__ より前に作成された既存のコンピューテ
     * __最小ノード数が 0__ でクラスターが構成されている場合、すべてのジョブが完了すると自動的にアップグレードされ、ノード数が 0 になります。
     * __最小ノード数が 0 を超えている__ 場合、最小ノードを一時的に 0 に変更し、クラスター ノード数が 0 になるのを許可します。
 
-    最小ノードの変更の詳細については、[az ml computetarget update amlcompute](/cli/azure/ml/computetarget/update#az_ml_computetarget_update_amlcompute) Azure CLI コマンドまたは [AmlCompute.update()](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#update-min-nodes-none--max-nodes-none--idle-seconds-before-scaledown-none-) SDK リファレンスを参照してください。
+    最小ノードの変更の詳細については、[az ml computetarget update amlcompute](/cli/azure/ml(v1)/computetarget/update#az_ml_computetarget_update_amlcompute) Azure CLI コマンドまたは [AmlCompute.update()](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#update-min-nodes-none--max-nodes-none--idle-seconds-before-scaledown-none-) SDK リファレンスを参照してください。
 
 * __Azure Machine Learning コンピューティング インスタンス__: 新しいコンピューティング インスタンス (Ubuntu 18.04 を使用) を作成し、古いインスタンスを削除します。
 

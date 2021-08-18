@@ -7,13 +7,12 @@ ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fab8c3ffc102717e6542c25ba61b43372e556e8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92897213"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734413"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 

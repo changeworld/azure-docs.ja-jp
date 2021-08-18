@@ -2,17 +2,17 @@
 title: Internet Analyzer クライアントの埋め込み | Microsoft Docs
 description: この記事では、Internet Analyzer JavaScript クライアントをアプリケーションに埋め込む方法について説明します。
 services: internet-analyzer
-author: mattcalder
+author: KumudD
 ms.service: internet-analyzer
 ms.topic: how-to
 ms.date: 10/16/2019
-ms.author: mebeatty
-ms.openlocfilehash: 0d4b27b85ac7bc61e14a79f29e4e26ec4973ced1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: cc05fe0f2e4305fa8c1fc5bd2fe90f365e83c6aa
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84744053"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454818"
 ---
 # <a name="embed-the-internet-analyzer-client"></a>Internet Analyzer クライアントの埋め込み
 

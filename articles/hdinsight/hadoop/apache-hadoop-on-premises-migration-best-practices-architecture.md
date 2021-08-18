@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 519dc53f6373ae1a9c8853d3fa90d137e9fa934b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 91e5effe1cfb948329a784fed06bd2bce0694c3d
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435411"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284098"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
 
@@ -30,7 +30,7 @@ Azure HDInsight クラスターは、特定の種類の計算を利用するた�
 |IoT/ストリーミング|Kafka、Storm、Spark|
 |NoSQL トランザクション処理|hbase|
 |メモリ内キャッシュによる対話型でより高速なクエリ|Interactive Query|
-|データ サイエンス|ML Services、Spark|
+|データ サイエンス| Spark|
 
 次の表は、HDInsight クラスターの作成に使用できる各種方法を示しています。
 

@@ -3,13 +3,13 @@ title: gRPC 推論サーバーを開発およびデプロイする - Azure Video
 description: この記事では、Azure Video Analyzer で使用する gRPC 推論サーバーを開発してデプロイする方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 04/01/2021
-ms.openlocfilehash: 499620dd0fc2f200f0f0a5080b9ab540a07f1df3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 5d0e09bc4d1f542de0e59a7dc6da37248d2e0674
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387320"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601448"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>gRPC 推論サーバーを開発およびデプロイする
 
@@ -42,7 +42,7 @@ Video Analyzer モジュールを IoT Edge デバイスにデプロイして動�
 1. C#、C++、Dart、Go、Java、Node、Objective-C、PHP、Python、Ruby など、gRPC でサポートされている多くの言語からいずれかを選択します。
 1. [proto3 ファイル](https://github.com/Azure/video-analyzer/tree/main/contracts/grpc)を使用して Video Analyzer と通信する gRPC サーバーを実装します。
 
-    :::image type="content" source="./media/develop-deploy-grpc-inference-srv/inference-srv-container-process.png" alt-text="proto3 ファイルを使用して Video Analyzer と通信する gRPC サーバー":::
+    :::image type="content" source="./media/develop-deploy-grpc-inference-srv/inference-srv-container-process.svg" alt-text="proto3 ファイルを使用して Video Analyzer と通信する gRPC サーバー":::
 
     このサービス内:
     1. サーバーとクライアント間のセッション説明メッセージの交換を処理します。

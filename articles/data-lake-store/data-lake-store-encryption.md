@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen1 での暗号化 | Microsoft Docs
 description: Azure Data Lake Storage Gen1 では、暗号化によってデータを保護し、企業のセキュリティ ポリシーを実装できるほか、規制上のコンプライアンス要件を満たすことができます。 この記事では、設計の概要を示すと共に、実装の技術的な側面について取り上げます。
 services: data-lake-store
 documentationcenter: ''
-author: esung22
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: yagupta
-ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: twooley
+ms.openlocfilehash: dda173278f2bb788b0768fc891b951793224bf77
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108946"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006160"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 でのデータの暗号化
 

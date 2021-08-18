@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2020
+ms.date: 06/23/2021
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q4, aaddev
+ms.openlocfilehash: ed3495bb7267c54f9b95f7fc3465d76ddde2faaa
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582028"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581891"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
@@ -28,7 +28,7 @@ Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資�
 
 ## <a name="assertion-format"></a>アサーションの形式
 
-アサーションを計算するには、自分が選択した言語の多数ある JWT ライブラリの中からいずれかを使用できます。[MSAL は、`.WithCertificate()` のこのような使用をサポートしています](msal-net-client-assertions.md)。 この情報は、トークンによって[ヘッダー](#header)、[要求](#claims-payload)、および[署名](#signature)で伝達されます。
+アサーションを計算するには、自分が選択した言語の多数ある JWT ライブラリの中からいずれかを使用できます。[MSAL は、`.WithCertificate()` のこのような使用をサポートしています](msal-net-client-assertions.md)。 この情報は、トークンによってヘッダー、要求、および署名で伝達されます。
 
 ### <a name="header"></a>ヘッダー
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f87c61d5c77d3c355d4536e06eba8619da60e21
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793434"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730447"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

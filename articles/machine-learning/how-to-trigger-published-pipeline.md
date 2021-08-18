@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 53f438fe6ccb1659bde65ffbc8de0acee85c1b28
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 473c6bde1e75070e0103137d9e24849f38c6d684
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884374"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466701"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>機械学習パイプラインをトリガーする
 
@@ -23,7 +23,7 @@ ms.locfileid: "107884374"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://aka.ms/AMLFree)を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 * Azure Machine Learning SDK for Python がインストールされた Python 開発環境。 詳細については、「[Azure Machine Learning を使用してトレーニングとデプロイのための再利用可能な環境を作成および管理します](how-to-use-environments.md)」を参照してください。
 

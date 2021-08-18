@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 499b0f2b7e02dabbde906e0d347a17389b2e5753
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6a73a867d0a204ae4afa0f99c42adae7215b242c
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934106"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087560"
 ---
 # <a name="azure-cloud-services-classic-definition-networktrafficrules-schema"></a>Azure Cloud Services (クラシック) 定義: NetworkTrafficRules スキーマ
 

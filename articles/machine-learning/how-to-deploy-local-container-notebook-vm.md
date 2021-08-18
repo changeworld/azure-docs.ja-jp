@@ -11,12 +11,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 04/22/2021
-ms.openlocfilehash: f9c52307e4d743e32f8771998e2dfaacc6643a35
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c047d89b554bed61f0015235a52927ffda7d1ec7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739009"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446582"
 ---
 # <a name="deploy-a-model-locally"></a>ローカルでモデルをデプロイする
 
@@ -27,6 +27,8 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 
 > [!TIP]
 > コンピューティング インスタンスの Jupyter Notebook から、同じ VM 上の Web サービスへのモデルのデプロイは、"_ローカル デプロイ_" です。 この場合、"ローカル" コンピューターはコンピューティング インスタンスです。 デプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -94,7 +96,7 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98a74903f5472807ff7eb562ea9db9e12ceeb4be
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612832"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108695"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。
@@ -58,7 +58,7 @@ ms.locfileid: "102612832"
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/4.0)から移行スクリプトをダウンロードします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/5.0)から移行スクリプトをダウンロードします。
 ## <a name="use-the-script"></a>スクリプトの使用
 
 ローカルの PowerShell 環境のセットアップと設定に応じて、次の 2 つのオプションがあります。

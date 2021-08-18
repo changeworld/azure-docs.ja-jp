@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 60c15909f542ca4ef3e1f3fb87a98e66c12368ed
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: d20be688ccd13e7f053c4633a91cc5ce7a6cc34f
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792068"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669074"
 ---
 # <a name="create-a-data-source"></a>データ ソースを作成する
 
@@ -83,10 +83,10 @@ source.setShapes(geoJsonData);
 
 Azure Maps は、オープン スタンダードである [Mapbox Vector Tile 仕様](https://github.com/mapbox/vector-tile-spec)に準拠しています。 Azure Maps では、プラットフォームの一部として次のベクター タイル サービスが提供されます。
 
-- Road tiles [ドキュメント](/rest/api/maps/renderv2/getmaptilepreview) | [データ形式の詳細](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- Road tiles [ドキュメント](/rest/api/maps/render-v2/get-map-tile) | [データ形式の詳細](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - Traffic incidents [ドキュメント](/rest/api/maps/traffic/gettrafficincidenttile) | [データ形式の詳細](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - Traffic flow [ドキュメント](/rest/api/maps/traffic/gettrafficflowtile) | [データ形式の詳細](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure Maps Creator では、[Render V2-Get Map Tile API](/rest/api/maps/renderv2/getmaptilepreview) を使用して、カスタム ベクター タイルを作成およびアクセスすることもできます
+- Azure Maps Creator では、[Render V2-Get Map Tile API](/rest/api/maps/render-v2/get-map-tile) を使用して、カスタム ベクター タイルを作成およびアクセスすることもできます
 
 > [!TIP]
 > Web SDK を使用して Azure Maps の Render Service からベクターまたはラスター イメージのタイルを使用する場合、`atlas.microsoft.com` をプレースホルダー `{azMapsDomain}` に置き換えることができます。 このプレースホルダーは、マップによって使用されるのと同じドメインに置き換えられ、同じ認証の詳細も自動的に追加されます。 これにより、Azure Active Directory 認証を使用するときに、Render Service での認証が大幅に簡単になります。

@@ -2,18 +2,18 @@
 title: 保存時の二重暗号化を有効にする - Azure portal - マネージド ディスク
 description: Azure portal を使用して、マネージド ディスク データの保存時の二重暗号化を有効にします。
 author: roygara
-ms.date: 08/24/2020
+ms.date: 06/29/2021
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b5f58b549fc9d879f6c2e5515c679d82c3ff44e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b8ca72b5446c9adf4320b8dfb670238e973c3ea
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560363"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361317"
 ---
 # <a name="use-the-azure-portal-to-enable-double-encryption-at-rest-for-managed-disks"></a>Azure portal を使用して、マネージド ディスクの保存時の二重暗号化を有効にします
 

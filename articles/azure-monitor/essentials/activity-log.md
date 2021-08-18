@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
-ms.openlocfilehash: 7583b4037d350b9190d6eae30c28b907b1d41d86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9628c9d10818b2b7a8a731b14537e4b533af74e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862099"
 ---
 # <a name="azure-activity-log"></a>Azure アクティビティ ログ
 アクティビティ ログは、サブスクリプション レベルのイベントの分析情報を提供する Azure の[プラットフォーム ログ](./platform-logs-overview.md)です。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示したり、PowerShell と CLI を使用してエントリを取得したりできます。 その他の機能を使用するには、診断設定を作成して、[Azure Monitor ログ](../logs/data-platform-logs.md)、Azure Event Hubs (Azure の外部に転送するため)、または Azure Storage (アーカイブのため) にアクティビティログを送信する必要があります。 この記事では、アクティビティ ログの表示と、別の宛先への送信について詳しく説明します。
@@ -63,7 +63,7 @@ Azure portal のほとんどのメニューから、アクティビティ ログ
 - Log Analytics ワークスペースに格納されているアクティビティ ログ データのデータ インジェストの料金は発生しません。
 - Log Analytics ワークスペースに格納されているアクティビティ ログ データのデータ保持の料金は、90 日後まで発生しません。
 
-アクティビティ ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](./diagnostic-settings.md)。 任意の 1 つのサブスクリプションから最大 5 つのワークスペースに、アクティビティ ログを送信できます。 テナント間でログを収集するには [Azure Lighthouse](../../lighthouse/index.yml) が必要です。
+アクティビティ ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](./diagnostic-settings.md)。 任意の 1 つのサブスクリプションから最大 5 つのワークスペースに、アクティビティ ログを送信できます。 
 
 Log Analytics ワークスペースでは、アクティビティ ログのデータは *AzureActivity* という名前のテーブルに格納されます。このテーブルは、[Log Analytics](../logs/log-analytics-tutorial.md) の [ログ クエリ](../logs/log-query-overview.md)で取得できます。 このテーブルの構造は[ログ エントリのカテゴリ](activity-log-schema.md)によって異なります。 テーブルのプロパティの説明については、[Azure Monitor データ リファレンス](/azure/azure-monitor/reference/tables/azureactivity)のページを参照してください。
 

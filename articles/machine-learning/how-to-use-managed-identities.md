@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 7d1c31c9f8507154056e6e6de0073eeb9ae636b7
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: fa41d81192a84b0b5b3c15f2c965c914a1ba42eb
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422014"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294321"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning でマネージド ID を使用する (プレビュー)
 
@@ -218,7 +218,7 @@ from azureml.core.container_registry import RegistryIdentity
 
 identity = RegistryIdentity()
 identity.resource_id= "<UAI resource ID>"
-identity.client_id="<UAI client ID>”
+identity.client_id="<UAI client ID>"
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
@@ -258,7 +258,7 @@ ws = Workspace.create(name="workspace name",
 また、[ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced)を使用して、ユーザー割り当てのマネージド ID を持つワークスペースを作成することもできます。
 
 > [!IMPORTANT]
-> Azure Machine Learning service で作成するのではなく、関連付けられている独自のリソースを使用する場合は、それらのリソースにマネージド ID ロールを付与する必要があります。 割り当てを行うには、[ロール割り当て ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)を使用します。
+> Azure Machine Learning service で作成するのではなく、関連付けられている独自のリソースを使用する場合は、それらのリソースにマネージド ID ロールを付与する必要があります。 割り当てを行うには、[ロール割り当て ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-dependencies-role-assignment)を使用します。
 
 [暗号化のためのカスタマー マネージド キー](concept-data-encryption.md)を持つワークスペースの場合、ストレージから Key Vault への認証のために、ユーザーに割り当てられたマネージド ID を渡すことができます。 引数 __user-assigned-identity-for-cmk-encryption__ (CLI) または __user_assigned_identity_for_cmk_encryption__ (SDK) を使用して、マネージド ID を渡します。 このマネージド ID は、ワークスペースのプライマリ ユーザー割り当てのマネージド ID と同じであることも異なることもあります。
 

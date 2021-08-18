@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 09db85172b3b4e0c848c9763d1e37f32243aefef
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 76026a5773f10ae08c66066b81a34bf2c678384c
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771615"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093681"
 ---
 # <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>クラウド サービス (クラシック) モデルとそれをパッケージ化する方法
 

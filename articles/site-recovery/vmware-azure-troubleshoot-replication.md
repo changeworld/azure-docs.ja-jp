@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 56ee52e25c755af014de220a65ae682ea014ef1b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 549095da87473bfc132b13aa786db6ed9fb44410
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949059"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289517"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -147,7 +147,7 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
 **修正方法**: サポート技術情報の [記事](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)を参照してください
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因 4:Linux サーバーでアプリの整合性が有効になっていない
-**修正方法**: Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性のために Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、[こちら](/azure/site-recovery/site-recovery-faq.yml#replication)をご覧ください。
+**修正方法**: Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性のために Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、[こちら](/azure/site-recovery/site-recovery-faq#replication)をご覧ください。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS 関連の問題に起因するその他の原因:
 

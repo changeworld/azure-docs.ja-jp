@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 07/07/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 29f8e1e3b89ef68c3ead4841cfba7b5e44f09a36
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9c5af374e29e53d65096e2663c3b790fd26a95ab
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744649"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492417"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication と既存のネットワーク ポリシー サーバー (NPS) インフラストラクチャの統合
 
@@ -173,7 +173,7 @@ NPS 拡張機能を展開して使用する前に、Azure AD Multi-Factor Authen
 
 1. テスト アカウントで [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にサインインします。
 2. 表示されたメッセージに従って、確認方法を設定します。
-3. Azure portal で管理者ユーザーとしてテスト アカウントに対して多要素認証を要求するには、[条件付きアクセス ポリシーを作成](howto-mfa-getstarted.md#create-conditional-access-policy)します。
+3. Azure portal で管理者ユーザーとしてテスト アカウントに対して多要素認証を要求するには、[条件付きアクセス ポリシーを作成](howto-mfa-getstarted.md#plan-conditional-access-policies)します。
 
 > [!IMPORTANT]
 >

@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 1fbbb49918ed83bd38e0c1f879ed31386cfb756b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b355131bcb0ca75fcbe8303e284294c6b4e02e8d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934123"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088298"
 ---
 # <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (クラシック) の定義: LoadBalancerProbe スキーマ
 

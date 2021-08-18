@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: d6f3368619395934dd358536e39f227bc66dfbfd
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: b652087db880cf9bd85d5d3eb00b989bc7be18e4
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110497401"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893530"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -30,7 +30,6 @@ Azure Red Hat OpenShift 4 クラスターの一部の構成は、クラスター
 * Azure Red Hat OpenShift サービス ログ (mdsd ポッド) を削除または変更しないでください。
 * 'arosvc.azurecr.io' クラスターのプル シークレットを削除または変更しないでください。
 * すべてのクラスター仮想マシンには、少なくとも Azure Resource Manager (ARM) とサービス ログ (Geneva) エンドポイントへの直接送信インターネット アクセスが必要です。  HTTPS プロキシの形式はサポートされていません。
-* クラスターの仮想ネットワークの DNS 構成は変更しないでください。 既定の Azure DNS リゾルバーを使用する必要があります。
 * クラスターの MachineConfig オブジェクト (kubelet 構成など) は、どのような方法でもオーバーライドしないでください。
 * unsupportedConfigOverrides オプションを設定しないでください。 これらのオプションを設定すると、マイナー バージョンのアップグレードができなくなります。
 * Azure Red Hat OpenShift サービスからはプライベート リンク サービスを介してクラスターにアクセスします。  サービス アクセスを削除または変更しないでください。

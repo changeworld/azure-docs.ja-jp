@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 04/14/2021
-ms.openlocfilehash: 004f99f585ca10d6ef9985b001333b2a301df740
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 845cbf9bcdf021519b6e0ff2064316f3352c2c0d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537038"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463897"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -198,7 +198,7 @@ Moogsoft AIOps は、Azure 環境で実行され、ハイブリッド ファブ�
 
 ![NewRelic のロゴ](./media/partners/newrelic.png)
 
-[Newrelic のドキュメント](https://newrelic.com/azure)
+[Newrelic のドキュメント](https://newrelic.com/solutions/partners/azure)
 
 ## <a name="opsgenie"></a>OpsGenie
 

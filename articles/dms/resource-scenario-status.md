@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 237de7e75007de85054501ed76b253a6eedf4346
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: a57f13b9dc54c69e079e652be94f4b08b716a079
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528372"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112523062"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -53,12 +53,12 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL - 単一サーバー** | MySQL | ✔ | パブリック プレビュー  |
-|   | RDS MySQL | ✔ | パブリック プレビュー  |
-|   | Azure DB for MySQL* | ✔ | パブリック プレビュー  |
-| **Azure DB for MySQL - フレキシブル サーバー** | MySQL | ✔ | パブリック プレビュー  |
-|   | RDS MySQL | ✔ | パブリック プレビュー  |
-|   | Azure DB for MySQL* | ✔ | パブリック プレビュー  |
+| **Azure DB for MySQL - 単一サーバー** | MySQL | ✔ | GA  |
+|   | RDS MySQL | ✔ | GA  |
+|   | Azure DB for MySQL* | ✔ | GA  |
+| **Azure DB for MySQL - フレキシブル サーバー** | MySQL | ✔ | GA  |
+|   | RDS MySQL | ✔ | GA  |
+|   | Azure DB for MySQL* | ✔ | GA  |
 | **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 | **Azure DB for PostgreSQL - フレキシブル サーバー** | PostgreSQL | X |
@@ -81,8 +81,8 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL | ✔ | GA |
-|   | RDS MySQL | ✔ | GA |
+| **Azure DB for MySQL** | MySQL | X |  |
+|   | RDS MySQL | X |  |
 | **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | ✔ | GA |
 |   | Azure DB for PostgreSQL - 単一サーバー* | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |

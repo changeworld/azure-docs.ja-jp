@@ -4,12 +4,12 @@ description: 長期保有を指定した Azure Database for PostgreSQL のバッ
 ms.topic: conceptual
 ms.date: 04/12/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 4f8e44bbaba87581b3c988602a436ed18b1a1a20
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8c3540ee686eb69304f95e31126a1a29a48aeea8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061770"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213905"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -42,6 +42,12 @@ Azure Backup と Azure Database Services を連携させることで、バック
 - リージョン間のバックアップはサポートされていません。 したがって、Azure PostgreSQL サーバーは別のリージョンのコンテナーにバックアップできません。 同様に、バックアップは、コンテナーと同じリージョン内のサーバーにのみ復元できます。
 - 復元時に復旧されるのはデータのみです。 "ロール" は復元されません。
 - プレビューでは、テスト環境でのみソリューションを実行することをお勧めします。
+
+## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>バックアップと復元を構成するための前提条件のアクセス許可
+
+Azure Backup は、厳密なセキュリティ ガイドラインに準拠しています。 ネイティブの Azure サービスでありながら、リソースに対するアクセス許可は想定されておらず、ユーザーが明示的に指定する必要があります。  同様に、データベースに接続するための資格情報は保存されません。 これは、データを保護するために重要です。 代わりに、Azure Active Directory 認証が使用されます。
+
+自動スクリプトと関連する指示を入手するために、[こちらのドキュメントをダウンロード](https://download.microsoft.com/download/7/4/d/74d689aa-909d-4d3e-9b18-f8e465a7ebf5/OSSbkpprep_automated.docx)してください。 これにより、バックアップと復元のために、Azure PostgreSQL サーバーへの適切な一連のアクセス許可が付与されます。
 
 ## <a name="backup-process"></a>バックアップ プロセス
 
@@ -212,11 +218,7 @@ Azure Backup と Azure Database Services を連携させることで、バック
 >[!NOTE]
 >Azure Database for PostgreSQL のアーカイブ サポートは、限定パブリック プレビュー段階です。
 
-## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>バックアップと復元を構成するための前提条件のアクセス許可
 
-Azure Backup は、厳密なセキュリティ ガイドラインに準拠しています。 ネイティブの Azure サービスでありながら、リソースに対するアクセス許可は想定されておらず、ユーザーが明示的に指定する必要があります。  同様に、データベースに接続するための資格情報は保存されません。 これは、データを保護するために重要です。 代わりに、Azure Active Directory 認証が使用されます。
-
-自動スクリプトと関連する指示を入手するために、[こちらのドキュメントをダウンロード](https://download.microsoft.com/download/7/4/d/74d689aa-909d-4d3e-9b18-f8e465a7ebf5/OSSbkpprep_automated.docx)してください。 これにより、バックアップと復元のために、Azure PostgreSQL サーバーへの適切な一連のアクセス許可が付与されます。
 
 ## <a name="manage-the-backed-up-azure-postgresql-databases"></a>バックアップされた Azure PostgreSQL データベースを管理する
 

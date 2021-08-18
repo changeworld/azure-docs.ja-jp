@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 009d40d0120aa21a38f218087e803dd94bbfb9c2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ac0d0af57cdafae611107361ccce9eced62c239
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075036"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733132"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Spring Data Azure Cosmos DB v3:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -82,7 +82,7 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 | コンテンツ | Link |
 |---|---|
 |**SDK のダウンロード**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-cosmos) |
-|**API ドキュメント** | [Java API リファレンス ドキュメント](/java/api/com.azure.spring.data.cosmos) |
+|**API ドキュメント** | [Java API リファレンス ドキュメント](/java/api/overview/azure/spring-data-cosmos-readme?view=azure-java-stable&preserve-view=true) |
 |**SDK への協力** | [GitHub の Azure SDK for Java 中央リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos) | 
 |**開始するには** | [クイックスタート: Spring Data Azure Cosmos DB アプリを構築して Azure Cosmos DB SQL API データを管理する](./create-sql-api-spring-data.md) <br> [クイック スタート コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) | 
 |**基本的なコード サンプル** | [Azure Cosmos DB: SQL API 用の Spring Data Azure Cosmos DB の例](sql-api-spring-data-sdk-samples.md) <br> [サンプル コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples)|
@@ -102,7 +102,7 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 
 ## <a name="faq"></a>よく寄せられる質問
 
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

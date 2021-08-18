@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 06fc48f8e90a0851613b2fe44410557c89862ac5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8100bca5d3628e571dc088de9d47a42e4035f109
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453513"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583610"
 ---
 # <a name="get-supported-document-formats"></a>サポートされるドキュメントの形式の取得
 
@@ -264,9 +264,43 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
                 "application/vnd.oasis.opendocument.spreadsheet"
             ],
             "versions": []
+        },
+        {
+            "format": "Markdown",
+            "fileExtensions": [
+                ".markdown",
+                ".mdown",
+                ".mkdn",
+                ".md",
+                ".mkd",
+                ".mdwn",
+                ".mdtxt",
+                ".mdtext",
+                ".rmd"
+            ],
+            "contentTypes": [
+                "text/markdown",
+                "text/x-markdown",
+                "text/plain"
+            ],
+            "versions": []
+        },
+        {
+            "format": "Mhtml",
+            "fileExtensions": [
+                ".mhtml",
+                ".mht"
+            ],
+            "contentTypes": [
+                "message/rfc822",
+                "application/x-mimearchive",
+                "multipart/related"
+            ],
+            "versions": []
         }
     ]
 }
+
 ```
 
 ### <a name="example-error-response"></a>エラー応答の例

@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 05/20/2021
-ms.openlocfilehash: bfb900dd2be2d83c46663b21773bb14585129be9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e255c88d76d0f9a4a6c1256f36386beedee04683
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110453093"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113601366"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーからの顧客リード
 
@@ -98,4 +98,4 @@ ms.locfileid: "110453093"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [リード管理に関する FAQ とトラブルシューティング](../lead-management-faq.md)
+- [リード管理に関する FAQ とトラブルシューティング](../lead-management-faq.yml)

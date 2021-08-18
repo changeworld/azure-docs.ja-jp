@@ -1,20 +1,20 @@
 ---
 title: PowerShell を使用して Azure Image Builder サービスのアクセス許可を構成する
 description: PowerShell を使用してアクセス許可と特権を含む Azure VM Image Builder サービスの要件を構成する
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/05/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6eb802d560e168d64a1f9abe0301f8038203ee54
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: a7d32bdb2ea1897a0458708425cd7af025818fd8
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028489"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596337"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>PowerShell を使用して Azure Image Builder サービスのアクセス許可を構成する
 

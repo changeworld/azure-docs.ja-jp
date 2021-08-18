@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: daf169a84268a24fd1cc50cd67386d359f9d726a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ffe94b70305fc4516e185f72f87ec7e82f05d3a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097878"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747426"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container---sql-api"></a>Azure Cosmos コンテナーに標準 (手動) のスループットをプロビジョニングする - SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB SQL API のコンテナーに標準 (手動) のスループットをプロビジョニングする方法について説明します。 スループットは、単一のコンテナーを対象にプロビジョニングできるほか、[データベースを対象にプロビジョニング](how-to-provision-database-throughput.md)して、それをデータベース内の複数のコンテナーで共有することもできます。 コンテナーのスループットは、Azure portal、Azure CLI、Azure Cosmos DB SDK のいずれかを使用してプロビジョニングできます。
 
-別の API を使用している場合は、[API for MongoDB](how-to-provision-throughput-mongodb.md)、[Cassandra API](how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) のスループット プロビジョニングに関する記事を参照してください。
+別の API を使用している場合は、[API for MongoDB](mongodb/how-to-provision-throughput-mongodb.md)、[Cassandra API](cassandra/how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) のスループット プロビジョニングに関する記事を参照してください。
 
 ## <a name="azure-portal"></a>Azure portal
 

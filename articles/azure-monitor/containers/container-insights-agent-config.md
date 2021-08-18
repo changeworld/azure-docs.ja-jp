@@ -3,12 +3,12 @@ title: Container insights エージェントのデータ収集を構成する | 
 description: この記事では、Container insights エージェントによる stdout/stderr および環境変数のログ収集の制御を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 1305ddc4417dc294dad865971dcd8970acfb8a2c
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: bd818d03d74042e7f58cbc8889ce862279706bec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847348"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741323"
 ---
 # <a name="configure-agent-data-collection-for-container-insights"></a>Container insights のエージェント データ収集を構成する
 
@@ -146,4 +146,4 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 - AKS またはハイブリッド クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、Container insights を[使用する方法](container-insights-analyze.md)について学習します。
 
-- [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
+- [ログ クエリの例](container-insights-log-query.md)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。

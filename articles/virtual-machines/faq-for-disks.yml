@@ -3,17 +3,17 @@ metadata:
   title: ディスクに関してよく寄せられる質問
   description: Azure IaaS Linux VM ディスクと Premium ディスク (管理および非管理) についてよく寄せられる質問
   author: roygara
-  ms.service: virtual-machines
+  ms.service: storage
   ms.topic: conceptual
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: 750a6e24434d205d5a6d014e1636c43e53be8692
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: 2e3e13f0db5b96d8d1cd8ca3eaa7b900dacb0d72
+  ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112034857"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113358315"
 title: Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 summary: この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 sections:

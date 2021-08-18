@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 247ae926dde9b07b1d627621c456333282f00a42
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 755d6ff3e4b7e82390f6bc2c961883de976f5459
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060062"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734789"
 ---
 # <a name="map-data-fields-to-entities-in-azure-sentinel"></a>データ フィールドを Azure Sentinel のエンティティにマップする 
 
@@ -33,7 +33,7 @@ ms.locfileid: "112060062"
 
 ## <a name="introduction"></a>はじめに
 
-エンティティ マッピングは、[スケジュールされたクエリ分析ルール](tutorial-detect-threats-custom.md)の構成に不可欠な要素です。 これにより、ルールの出力 (アラートとインシデント) が、その後の調査プロセスと修正アクションの構成要素として機能する重要な情報で強化されます。
+エンティティ マッピングは、[スケジュールされたクエリ分析ルール](detect-threats-custom.md)の構成に不可欠な要素です。 これにより、ルールの出力 (アラートとインシデント) が、その後の調査プロセスと修正アクションの構成要素として機能する重要な情報で強化されます。
 
 以下で詳しく説明する手順は、分析ルールの作成ウィザードの一部です。 ここでは、既存の分析ルールでエンティティ マッピングを追加または変更するシナリオに対処するために、個別に扱います。
 
@@ -81,5 +81,5 @@ ms.locfileid: "112060062"
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Azure Sentinel 分析ルールでデータ フィールドをエンティティにマップする方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [スケジュールされたクエリ分析ルール](tutorial-detect-threats-custom.md)の完全な画像を取得します。
+- [スケジュールされたクエリ分析ルール](detect-threats-custom.md)の完全な画像を取得します。
 - [Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)について詳しく確認します。

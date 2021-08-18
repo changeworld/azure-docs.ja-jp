@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 6ded5d4ed8c2a55939bba908a05adbd2dea2ccbf
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 235dc8fa484212a8322b24d32f7516af5441978a
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714778"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652926"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -55,7 +55,7 @@ ms.locfileid: "107714778"
     ![新しいワークスペースの追加](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 > [!Note]
-> プライベート エンドポイント接続用に OMS ワークスペースを構成する方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/logs/private-link-security)をご覧ください。  
+> プライベート エンドポイント接続用に OMS ワークスペースを構成する方法については、[こちら](../azure-monitor/logs/private-link-security.md)をご覧ください。  
 
 ## <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
 
@@ -86,7 +86,7 @@ Windows サーバーにエージェントをインストールするには、次
 4. **[エージェントのセットアップ オプション]** で、 **[Azure Log Analytics]**  >  **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
-エージェントは、コマンド ラインからインストールするか、Configuration Manager または [Intigua](https://www.intigua.com/intigua-for-azure-migration) などの自動化された方法を使用してインストールすることができます。
+エージェントは、コマンド ラインからインストールするか、Configuration Manager または Intigua などの自動化された方法を使用してインストールすることができます。
 - このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/agents/log-analytics-agent.md#installation-options)のページを参照してください。
 - この[スクリプト](https://github.com/brianbar-MSFT/Install-MMA)を使用して、MMA エージェントをインストールすることもできます。
 - MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](../azure-monitor/agents/agents-overview.md#supported-operating-systems)をご覧ください。

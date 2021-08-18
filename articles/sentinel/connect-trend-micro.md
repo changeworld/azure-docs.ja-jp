@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 105948a5dca5e15643aa09fd265726ed5752029e
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77588027"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253161"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Trend Micro Deep Security の接続
 
 Trend Micro Deep Security コネクタを使用すると、Deep Security のログを Azure Sentinel に簡単に接続して、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 これにより、組織のネットワークとシステムに関するより詳細な分析情報が得られ、セキュリティ運用機能が向上します。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -40,8 +42,6 @@ Trend Micro Deep Security コネクタを使用すると、Deep Security のロ�
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Trend Micro Deep Security を Azure Sentinel に接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-
-
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

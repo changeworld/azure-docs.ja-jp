@@ -2,41 +2,42 @@
 title: セルフ サービス アプリケーションの割り当ての構成方法 | Microsoft Docs
 description: セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: mtillman
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 506e29abe9c9a5c1c68fc3c0e53650ec51baf1b9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: phsignor
+ms.openlocfilehash: 98848b4ee117a0c2e34e21b30a920fe22c8e02be
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081157"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749117"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>セルフ サービス アプリケーションの割り当ての構成方法
 
-ユーザーが [マイ アプリ] からアプリケーションを自己検出できるようにするには、ユーザーが自己検出してアクセス権を要求できるようにするアプリケーションへの **セルフサービス アプリケーション アクセス** を有効にする必要があります。 この機能は、[Azure AD ギャラリー](./add-application-portal.md)または [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)から追加されたアプリケーション、および[ユーザーまたは管理者の同意](../develop/application-consent-experience.md)を得て追加されたアプリケーションで利用できます。 
+ユーザーが [マイ アプリ] からアプリケーションを自己検出できるようにするには、ユーザーが自己検出してアクセス権を要求できるようにするアプリケーションへの **セルフサービス アプリケーション アクセス** を有効にする必要があります。 この機能は、[Azure AD ギャラリー](./add-application-portal.md)または [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)から追加されたアプリケーション、および[ユーザーまたは管理者の同意](../develop/application-consent-experience.md)を得て追加されたアプリケーションで利用できます。
 
 この機能は、IT グループとして時間とコストを節約するための優れた方法であり、Azure Active Directory を使用した最新のアプリケーション デプロイの一部として強くお勧めします。
 
 この機能を使用すると、以下のような操作ができます。
 
--   ユーザーが IT グループを煩わせることなく [[マイ アプリ]](https://myapps.microsoft.com/) からアプリケーションを自己検出できるようにします。
+- ユーザーが IT グループを煩わせることなく [[マイ アプリ]](https://myapps.microsoft.com/) からアプリケーションを自己検出できるようにします。
 
--   ユーザーを事前設定されたグループに追加することで、アクセス権を要求したユーザーの表示、アクセス権の削除、およびユーザーに割り当てたロールの管理を実行できます。
+- ユーザーを事前設定されたグループに追加することで、アクセス権を要求したユーザーの表示、アクセス権の削除、およびユーザーに割り当てたロールの管理を実行できます。
 
--   必要に応じて、ビジネス承認者にアプリケーションへのアクセス要求の承認を許可します。これにより、IT グループが承認する必要がなくなります。
+- 必要に応じて、ビジネス承認者にアプリケーションへのアクセス要求の承認を許可します。これにより、IT グループが承認する必要がなくなります。
 
--   必要に応じて、このアプリケーションへのアクセスを承認するユーザーを最大 10 人設定します。
+- 必要に応じて、このアプリケーションへのアクセスを承認するユーザーを最大 10 人設定します。
 
--   必要に応じて、ビジネス承認者が、ユーザーがアプリケーションへのサインインに使用するパスワードを設定できるようにします。設定は、ビジネス承認者の [[マイ アプリ]](https://myapps.microsoft.com/) から直接実行できます。
+- 必要に応じて、ビジネス承認者が、ユーザーがアプリケーションへのサインインに使用するパスワードを設定できるようにします。設定は、ビジネス承認者の [[マイ アプリ]](https://myapps.microsoft.com/) から直接実行できます。
 
--   必要に応じて、セルフ サービス機能が割り当てられたユーザーをアプリケーション ロールに直接割り当てられるように自動的に設定します。
+- 必要に応じて、セルフ サービス機能が割り当てられたユーザーをアプリケーション ロールに直接割り当てられるように自動的に設定します。
 
 > [!NOTE]
 > ユーザーがセルフサービス アプリへの参加を要求し、所有者が要求を承認または拒否するには、Azure Active Directory Premium (P1 または P2) ライセンスが必要です。 Azure Active Directory Premium ライセンスがないと、ユーザーはセルフサービス アプリを追加できません。
@@ -78,4 +79,5 @@ ms.locfileid: "112081157"
 セルフサービス アプリケーションの構成を完了すると、ユーザーは [[マイ アプリ]](https://myapps.microsoft.com/) に移動し、 **[Add self-service apps]\(セルフサービス アプリの追加\)** ボタンをクリックすることで、セルフサービス アクセスが有効になっているアプリを検索できます。 ビジネス承認者にも、[[マイ アプリ]](https://myapps.microsoft.com/) で通知が表示されます。 ユーザーが、承認が必要なアプリケーションへのアクセスを要求した場合、それを通知する電子メールを有効にできます。
 
 ## <a name="next-steps"></a>次のステップ
+
 [セルフサービス グループ管理に必要な Azure Active Directory の設定](../enterprise-users/groups-self-service-management.md)

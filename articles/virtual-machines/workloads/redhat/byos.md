@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af4f9dac30c1e443e9647a5b752cdabf9c094a6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77b55315256de8b2170a40c76006f05431aac267
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676086"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454998"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -213,4 +213,4 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 - Red Hat Update Infrastructure の詳細については、[Azure Red Hat Update Infrastructure](./redhat-rhui.md) に関する記事を参照してください。
 - Azure でのすべての Red Hat イメージの詳細については、[ドキュメントのページ](./redhat-images.md)を参照してください。
 - すべてのバージョンの RHEL の Red Hat サポート ポリシーの詳細については、「[Red Hat Enterprise Linux life cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」を参照してください。
-- RHEL Gold Image に関するその他のドキュメントについては、[Red Hat のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)を参照してください。
+- RHEL Gold Image に関するその他のドキュメントについては、[Red Hat のドキュメント](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access#proc_using-gold-images-azure_cloud-access)を参照してください。

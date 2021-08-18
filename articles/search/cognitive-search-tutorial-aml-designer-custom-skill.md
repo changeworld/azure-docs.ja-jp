@@ -2,18 +2,17 @@
 title: '例: Azure Machine Learning デザイナーを使用してカスタム スキルを作成およびデプロイする'
 titleSuffix: Azure Cognitive Search
 description: この例では、Azure Machine Learning デザイナーを使用して、Azure Cognitive Search の AI エンリッチメント パイプラインのカスタム AML スキルを作成してデプロイする方法について説明します。
-manager: luiscab
-author: vkurpad
-ms.author: vikurpad
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: f6e26d697c97b70770ec0445be8d72bda7269f4f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 5af4110d1092c2e0e916d1404e9177b64e650e0b
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961431"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728112"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning-designer"></a>例: Azure Machine Learning デザイナーを使用してカスタム スキルをビルドおよびデプロイする
 

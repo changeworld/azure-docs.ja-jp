@@ -3,12 +3,12 @@ title: Azure Application Insights の検索の使用 | Microsoft Docs
 description: Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: e9da2acea857f2b295fd2333988507babd967c88
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 020e602ec52c40c66439df09275f7d4936a57229
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059394"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112293079"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 
@@ -148,4 +148,4 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 * [Analytics で複雑なクエリを作成する](../logs/log-analytics-tutorial.md)
 * [Application Insights にログとカスタム テレメトリを送信する](./asp-net-trace-logs.md)
 * [可用性と応答性のテストを設定する](./monitor-web-app-availability.md)
-* [トラブルシューティング](../faq.md)
+* [トラブルシューティング](../faq.yml)

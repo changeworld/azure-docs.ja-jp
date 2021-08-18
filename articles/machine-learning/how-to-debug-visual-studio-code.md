@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/25/2021
-ms.openlocfilehash: 8cabf22e909b5e3e891c0265f952ec6476732ca6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/11/2021
+ms.openlocfilehash: 517577fd7a9383ede62df5403c52ccfa219ba5eb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462699"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751975"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
@@ -462,7 +462,7 @@ ip_address: 10.3.0.5
 
     myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
     myenv.docker.base_image = None
-    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04"
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1"
     inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     package = Model.package(ws, [model], inference_config)
     package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.

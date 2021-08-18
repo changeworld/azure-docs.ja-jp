@@ -7,12 +7,12 @@ ms.topic: how-to
 author: aarathin
 ms.author: aarathin
 ms.date: 05/21/2021
-ms.openlocfilehash: 4804d1b315ce70a3ee145616f9fecbc1edc5e293
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 8ab847eee55eb9f2fc4d0d4ee7de1fa9eef3bcf0
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540574"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294303"
 ---
 # <a name="prepare-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術資産の準備
 
@@ -66,11 +66,11 @@ IoT Edge でサポートされているすべてのレベル 1 プラットフ�
 
 ### <a name="configuration"></a>構成
 
-モジュールには、IoT Edge デバイスへのデプロイをできるだけ簡単にするための既定の構成設定を含める必要があります。 この情報は、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)のプランの「**技術的構成**」ページで指定できます。 コンテナーには、edgeHub や IoT Hub と通信できるようにするため、IoT Edge モジュール SDK が含まれることもあります。
+モジュールには、IoT Edge デバイスへのデプロイをできるだけ簡単にするための既定の構成設定を含める必要があります。 この情報は、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)のプランの「**技術的構成**」ページで指定できます。 コンテナーには、edgeHub や IoT Hub と通信できるようにするため、IoT Edge モジュール SDK が含まれることもあります。
 
 #### <a name="default-configuration"></a>既定の構成
 
-IoT Edge モジュールは、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)の計画の「**技術的構成**」ページで指定された既定の設定で開始できなくてはなりません。 次の既定の設定を使用できます。
+IoT Edge モジュールは、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)の計画の「**技術的構成**」ページで指定された既定の設定で開始できなくてはなりません。 次の既定の設定を使用できます。
 
 - 既定の **ルート**
 - 既定の **モジュール ツインの必要なプロパティ**
@@ -85,7 +85,7 @@ ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 
 #### <a name="configuration-documentation"></a>構成に関するドキュメント
 
-IoT Edge モジュールのすべての構成設定を明確に文書化する必要があります。 たとえば、ルート、ツインが必要なプロパティ、環境変数、createOptions などを使用する方法を文書化する必要があります。 ドキュメントへのリンクを指定するか、ドキュメントをオファーまたはプランの説明の一部に含める必要があります。 この情報は、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)の **オファーの一覧** と **計画の一覧** ページに記載できます。
+IoT Edge モジュールのすべての構成設定を明確に文書化する必要があります。 たとえば、ルート、ツインが必要なプロパティ、環境変数、createOptions などを使用する方法を文書化する必要があります。 ドキュメントへのリンクを指定するか、ドキュメントをオファーまたはプランの説明の一部に含める必要があります。 この情報は、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)の **オファーの一覧** と **計画の一覧** ページに記載できます。
 
 #### <a name="tags-and-versioning"></a>タグとバージョン管理
 
@@ -133,7 +133,7 @@ IoT Module SDK は、実行中のモジュール インスタンスの数に関�
 - IoT Edge ランタイム
 - IoT Edge モジュール認定ガイドライン
 
-パートナーは、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)で再公開することによって、オファーを更新して再認定する必要があります。
+パートナーは、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)で再公開することによって、オファーを更新して再認定する必要があります。
 
 また、オファーを更新すると再認定されます (新しいイメージ タグの追加など)。
 

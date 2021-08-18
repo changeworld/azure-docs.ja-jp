@@ -4,12 +4,12 @@ description: Apache Zeppelin Hive JDBC インタープリターが、Azure HDIns
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: 2d6e660459d9f350cc5c63fb8d312bcbcb300a64
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04288fdde74da705f6127c2444b0dc7ac7a2a8dd
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930755"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290541"
 ---
 # <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で Apache Hive Zeppelin インタープリターから Zookeeper エラーが発生する
 
@@ -39,4 +39,4 @@ The Zeppelin Hive JDBC Interpreter is pointing to the wrong URL. (Zeppelin Hive 
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 91fb5c3bc341adb3485e11f27ef0e362c704bf01
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: fe1003e78aac6085d415378d0069f2f6181b354f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813451"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298351"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのテーブルの統計
 
@@ -132,18 +132,17 @@ on objIdsWithStats.object_id = statsRowCounts.object_id
 left join
 (
     SELECT sm.name [schema] ,
-    tb.name logical_table_name ,
-    tb.object_id object_id ,
-    SUM(rg.row_count) actual_row_count
+        tb.name logical_table_name ,
+        tb.object_id object_id ,
+        SUM(rg.row_count) actual_row_count
     FROM sys.schemas sm
-    INNER JOIN sys.tables tb ON sm.schema_id = tb.schema_id
-    INNER JOIN sys.pdw_table_mappings mp ON tb.object_id = mp.object_id
-    INNER JOIN sys.pdw_nodes_tables nt ON nt.name = mp.physical_name
-    INNER JOIN sys.dm_pdw_nodes_db_partition_stats rg
-    ON rg.object_id = nt.object_id
-    AND rg.pdw_node_id = nt.pdw_node_id
-    AND rg.distribution_id = nt.distribution_id
-    WWHERE rg.index_id = 1
+         INNER JOIN sys.tables tb ON sm.schema_id = tb.schema_id
+         INNER JOIN sys.pdw_table_mappings mp ON tb.object_id = mp.object_id
+         INNER JOIN sys.pdw_nodes_tables nt ON nt.name = mp.physical_name
+         INNER JOIN sys.dm_pdw_nodes_db_partition_stats rg  ON rg.object_id = nt.object_id
+            AND rg.pdw_node_id = nt.pdw_node_id
+            AND rg.distribution_id = nt.distribution_id
+    WHERE rg.index_id = 1
     GROUP BY sm.name, tb.name, tb.object_id
 ) actualRowCounts
 on objIdsWithStats.object_id = actualRowCounts.object_id

@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a380088210d99989dc1b69455898d85343dd1d53
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f70cb9828a9577b8fb51daf3f2321e46f45feade
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032575"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204160"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>特殊化されたイメージを使用して VM を作成する 
 
@@ -132,6 +132,5 @@ Add-AzVMDataDisk `
 - [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 共有イメージ ギャラリーの詳細については、[概要](./shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](troubleshooting-shared-images.md)」を参照してください。

@@ -7,14 +7,13 @@ ms.date: 05/18/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 2a9a6755e7c9785df8d4874fb240996b0655a8b3
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 1cd2c87f919e5dc68d4dfb7dcf6b38da9d9f67a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026825"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725602"
 ---
 # <a name="creator-service-geographic-scope"></a>Creator サービスの地域スコープ
 

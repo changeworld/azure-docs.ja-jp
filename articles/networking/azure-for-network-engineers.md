@@ -1,21 +1,21 @@
 ---
-title: 'Azure ExpressRoute: ネットワーク エンジニア向けの Azure'
+title: ネットワーク エンジニア向けの Azure
 description: このページでは、従来のネットワーク エンジニアに、Azure でのネットワークのしくみについて説明します。
 documentationcenter: na
 services: networking
-author: osamaz
+author: osamazia
 manager: tracsman
 ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c73ea7c9e2f399e479f7d3f8bef5797feabb83ec
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234207"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228812"
 ---
 # <a name="azure-for-network-engineers"></a>ネットワーク エンジニア向けの Azure
 従来のネットワーク エンジニアは、ルーター、スイッチ、ケーブル、ファイアウォールなどの物理的な資産を基盤とするインフラストラクチャの構築に取り組んできました。 論理層には、仮想 LAN (VLAN)、スパニング ツリー プロトコル (STP)、ルーティング プロトコル (RIP、OSPF、BGP) を構成していました。 ネットワークの管理には、管理ツールと CLI を使用していました。 クラウドでのネットワークは、ネットワーク エンドポイントが論理的であり、ルーティング プロトコルの使用が最小である場合とは異なります。 今後、Azure で資産を構成および管理するためには、Azure Resource Manager API、Azure CLI、および PowerShell を使用することになります。 Azure ネットワークの基本的なテナントを理解することで、クラウドでのネットワークの取り組みを開始します。 

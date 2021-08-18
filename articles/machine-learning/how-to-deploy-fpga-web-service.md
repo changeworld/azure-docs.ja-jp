@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 3914c1ce732161828f9c2653edd5c43d86310dae
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: bfb29a00dbef95007eba6ca69f9a38d0f23d2da2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889684"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736514"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning を使用して ML モデルをフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする 
 
-この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-ml.md) の[Hardware Accelerated Models Python パッケージ](/python/api/azureml-accel-models/azureml.accel)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
+この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-machine-learning.md) の[Hardware Accelerated Models Python パッケージ](/python/api/azureml-accel-models/azureml.accel)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
 
 ## <a name="what-are-fpgas"></a>FPGA とは
 FPGA には、プログラミング可能なロジック ブロックの配列と、再構成可能な相互接続の階層が含まれています。 相互接続を使用して、製造後にさまざまな方法でこれらのブロックを構成できます。 他のチップと比較して、FPGA はプログラミング可能であることとパフォーマンスを兼ね備えています。 

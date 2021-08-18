@@ -1,15 +1,15 @@
 ---
 title: Azure Event Hubs 用の組み込みポリシー定義
 description: Azure Event Hubs 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: bbe0a96287eddeb0a294efb40e266b34886cc143
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 91a00d4f063536772988aebfe7e930d79ee7180e
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019138"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179237"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-hubs"></a>Azure Event Hubs 用の Azure Policy 組み込み定義
 

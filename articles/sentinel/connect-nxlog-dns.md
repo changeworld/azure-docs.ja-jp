@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/02/2021
 ms.author: yelevin
-ms.openlocfilehash: 880aad438d98605d11e5a2a7c314d89bd8beb5c5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b80141d79807aea89e328b166d419e583a646ad5
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101743996"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253502"
 ---
 # <a name="connect-your-nxlog-windows-dns-logs-to-azure-sentinel"></a>NXLog Windows DNS ログを Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > NXLog DNS ログ コネクタは現在、**プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 [NXLog DNS ログ](https://nxlog.co/documentation/nxlog-user-guide/windows-dns-server.html) コネクタを使用すると、すべての Windows DNS サーバー イベントを Azure Sentinel にリアルタイムで簡単にエクスポートできるため、組織全体でのドメイン ネーム サーバーの利用状況に関する分析情報を得ることができます。 監査と分析の両方の DNS サーバー イベントをリアルタイムで収集するためにハイ パフォーマンスの [Event Trace for Windows (ETW)](https://nxlog.co/documentation/nxlog-user-guide/windows-dns-server.html#dns_windows_etw) が採用されており、カスタム フィールドを使用したイベントのエンリッチメントがサポートされています。 NXLog DNS ログと Azure Sentinel の統合は、REST API を通じて容易に行うことができます。
 
@@ -53,6 +55,6 @@ NXLog は、JSON 形式でイベントを Azure Sentinel に直接送信する�
 
 このドキュメントでは、NXLog を使用して Azure Sentinel に Windows DNS ログを取り込む方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

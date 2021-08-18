@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 13fb05fe04988320c46755b38bfc952b7265d30d
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 86a998e304755085a9ae1e15e011df3b242c4df8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059906"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725152"
 ---
 # <a name="microsoft-365-defender-integration-with-azure-sentinel"></a>Microsoft 365 Defender と Azure Sentinel の統合
 
@@ -107,4 +107,4 @@ Microsoft 365 Defender コネクタを使用すると、**高度なハンティ�
 このドキュメントでは、Microsoft 365 Defender コネクタを使用して Microsoft 365 Defender を Azure Sentinel と一緒に使用することの利点について学習しました。
 
 - [Microsoft 365 Defender コネクタを有効にする](connect-microsoft-365-defender.md)手順を確認します。
-- [カスタム アラート](tutorial-detect-threats-custom.md)を作成して[インシデントを調査](tutorial-investigate-cases.md)します。
+- [カスタム アラート](detect-threats-custom.md)を作成して[インシデントを調査](investigate-cases.md)します。

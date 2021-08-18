@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 07/12/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d02d18bec76578ec93d238d6dba284a8447428e9
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 513cea632fa9d31231093a775a0269b983e3e42d
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901653"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727169"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Azure CLI で BLOB データへのアクセスの承認方法を選択する
 

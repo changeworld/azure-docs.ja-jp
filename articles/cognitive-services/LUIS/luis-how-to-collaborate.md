@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2021
-ms.openlocfilehash: 044c690688bfc83ce1b4ebc13008ad9a2f37034a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 5a320d6368d4fdecaf4001fc9255c4c0ff3b276c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026887"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285586"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 
@@ -26,7 +26,7 @@ ms.locfileid: "112026887"
 
 LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管理] -> [Azure リソース]** ページのオーサリング リソースに関連付けられている場合は、移行済みです。
 
-Azure portal で、自分の Language Understanding (LUIS) 作成リソースを見つけます。 種類は `LUIS.Authoring` です。 リソースの **[Access Control (IAM)]** ページで、投稿するユーザーの "**共同作成者**" ロールを追加します。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](/azure/role-based-access-control/role-assignments-portal)」を参照してください。
+Azure portal で、自分の Language Understanding (LUIS) 作成リソースを見つけます。 種類は `LUIS.Authoring` です。 リソースの **[Access Control (IAM)]** ページで、投稿するユーザーの "**共同作成者**" ロールを追加します。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="view-the-app-as-a-contributor"></a>アプリに共同作成者として表示する
 

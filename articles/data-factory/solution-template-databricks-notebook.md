@@ -4,15 +4,16 @@ description: Azure Data Factory で Databricks ノートブックを使用する
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: ee663423071458605f37f07293693dbc91f592bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 138e5a377b15f0e43771e71927709532a16d81e5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100362116"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749858"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks による変換
 

@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: linux
 ms.date: 09/21/2018
-ms.openlocfilehash: e316bf9763dd7c2cbbab21992086eac52d108912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4823ea421153b5e95f80b4ebc7cde1f9bcbf64c5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554787"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487563"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux および Windows 用の Chef VM 拡張機能
 
@@ -99,7 +99,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートを使用して、1 つまたは複数の仮想マシンをデプロイし、Chef Client をインストールし、Chef Server に接続し、[実行リスト](https://docs.chef.io/run_lists.html)に定義されているようにサーバー上で初期構成を実行できます。
 
-Chef VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)にあります。
+Chef VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/chef/chef-json-parameters-linux-vm)にあります。
 
 仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/templates/child-resource-name-type.md)に関する記事を参照してください。
 

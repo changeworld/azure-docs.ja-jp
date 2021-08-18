@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6fcb8b3688ea5d2a8866093fd46efb8236db3558
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 004fff41e30ca9c60d51847035e30262e359270e
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982054"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031123"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>Windows デスクトップ (クラシック) クライアントを使用して接続する
 
 > 適用対象:Windows 7、Windows 10、および Windows 10 IoT Enterprise
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-windows-7-10.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Azure Virtual Desktop オブジェクトをサポートしていない Azure Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Azure Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../user-documentation/connect-windows-7-10.md)を参照してください。
 
 Windows デスクトップ クライアントを使用して、Windows 7、Windows 10、Windows 10 IoT Enterprise を使用しているデバイス上の Azure Virtual Desktop リソースにアクセスできます。 このクライアントでは、Windows 8 または Windows 8.1 がサポートされていません。
 

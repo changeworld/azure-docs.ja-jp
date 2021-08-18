@@ -9,19 +9,19 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a95807bc3b209a2b410b205b6d473560b454b2b0
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645751"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758233"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>接続済みファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 
 > [!IMPORTANT]
 > この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
-接続済みファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-accelerators-faq-cf.md) を参照してください。
+接続済みファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-accelerators-faq-cf.yml) を参照してください。
 
 ソリューションの集計データの例には、ダッシュボードで確認できるファクトリ レベル、ライン レベル、およびステーション レベルの総合設備効率 (OEE) と主要業績評価指標 (KPI) が含まれます。 次のスクリーンショットは、**ミュンヘン** ファクトリの **生産ライン 1** にある **アセンブリ** ステーションの OEE 値と KPI 値を示しています。
 
@@ -83,7 +83,7 @@ ms.locfileid: "105645751"
 接続済みファクトリ ソリューション アクセラレータの詳細については、次の記事を参照してください。
 
 * [azureiotsolutions.com サイトでのアクセス許可][lnk-permissions]
-* [接続済みファクトリに関する FAQ](iot-accelerators-faq-cf.md)
+* [接続済みファクトリに関する FAQ](iot-accelerators-faq-cf.yml)
 * [FAQ][lnk-faq]
 
 
@@ -95,4 +95,4 @@ ms.locfileid: "105645751"
 
 
 [lnk-permissions]: iot-accelerators-permissions.md
-[lnk-faq]: iot-accelerators-faq.md
+[lnk-faq]: iot-accelerators-faq.yml

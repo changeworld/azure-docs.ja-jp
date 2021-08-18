@@ -7,14 +7,13 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 75a7da41e4f0d5356ca135eb3cb4cbe5f29e8116
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f50685a2e25d33f7caa614480817ea0040191cf8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92891452"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747707"
 ---
 # <a name="connect-to-a-wfs-service"></a>WFS サービスへの接続
 

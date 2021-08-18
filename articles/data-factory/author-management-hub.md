@@ -2,16 +2,17 @@
 title: 管理ハブ
 description: Azure Data Factory 管理ハブでの接続、ソース管理の構成、およびグローバル作成のプロパティの管理
 ms.service: data-factory
+ms.subservice: authoring
 ms.topic: conceptual
 author: minhe-msft
 ms.author: hemin
 ms.date: 04/27/2021
-ms.openlocfilehash: db87372ab4dd56d8b6a00ca42cb1cf4a8729db69
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 91b19a33df19fd474c9db282fd4467be54f8dd15
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178288"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742433"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory の管理ハブ
 

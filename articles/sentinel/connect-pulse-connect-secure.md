@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 71e1c7787243713b29be9455fee966eff54f6d90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8eeea8f8f0410cb0c0d559cf1816e45e6c60c12e
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097655"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252666"
 ---
 # <a name="connect-your-pulse-connect-secure-to-azure-sentinel"></a>Pulse Connect Secure を Azure Sentinel に接続する
 
@@ -54,6 +54,6 @@ Syslog のエージェントを介して Azure ワークスペースに Syslog �
 
 このドキュメントでは、Pulse Connect Secure を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

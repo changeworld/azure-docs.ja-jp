@@ -11,12 +11,12 @@ author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 2ca7eec3bcc40d5c0f93c43cc32b9395feb1e5d0
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 3552a8191fc5482f8a58cc3365302f44f2f364a3
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790417"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284322"
 ---
 # <a name="connect-to-storage-by-using-identity-based-data-access-preview"></a>ID ベースのデータ アクセスを使用してストレージに接続する (プレビュー)
 
@@ -59,7 +59,7 @@ ID ベースのデータ アクセスを使用すると、データストアに�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 - サポートされている種類のストレージを持つ Azure ストレージ アカウント。 プレビューでは、これらのストレージの種類がサポートされています。 
     - [Azure Blob Storage](../storage/blobs/storage-blobs-overview.md)
@@ -84,7 +84,7 @@ ID ベースのデータ アクセスでは、次のストレージ サービス
 * Azure Data Lake Storage Gen2
 * Azure SQL データベース
 
-これらのストレージ サービスにアクセスするには、少なくとも[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のアクセス権が必要です。 [Azure portal を使用してアクセス レベルを変更](../storage/common/storage-auth-aad-rbac-portal.md)できるのは、ストレージ アカウントの所有者だけです。
+これらのストレージ サービスにアクセスするには、少なくとも[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)のアクセス権が必要です。 [Azure portal を使用してアクセス レベルを変更](../storage/blobs/assign-azure-role-data-access.md)できるのは、ストレージ アカウントの所有者だけです。
 
 リモート コンピューティング先でモデルをトレーニングする場合は、コンピューティング ID にストレージ サービスから「ストレージ BLOB データ閲覧者」以上のロールが付与されている必要があります。 [コンピューティング クラスターでマネージド ID を設定](how-to-create-attach-compute-cluster.md#managed-identity)する方法を参照してください。
 

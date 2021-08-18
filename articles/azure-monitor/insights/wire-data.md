@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2021
-ms.openlocfilehash: c135e33da60bf3ed8603b8fc0d6e59bbfab27b77
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 52bb368ccf19c23c04bc062e7db50c07ecebaceb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142551"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296062"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor-retired"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション (提供終了)
 
@@ -124,7 +124,7 @@ VMConnection
 
 ### <a name="more-examples-queries"></a>その他のクエリの例
 
-その他のクエリの例については、[VM insights のログ検索に関するドキュメント](../vm/vminsights-log-search.md)と [VM insights のアラートに関するドキュメント](../vm/vminsights-alerts.md#sample-alert-queries)を参照してください。
+その他のクエリの例については、[VM insights のログ検索に関するドキュメント](../vm/vminsights-log-search.md)と [VM insights のアラートに関するドキュメント](../vm/monitor-virtual-machine-alerts.md)を参照してください。
 
 ## <a name="uninstall-wire-data-20-solution"></a>Wire Data 2.0 ソリューションのアンインストール
 

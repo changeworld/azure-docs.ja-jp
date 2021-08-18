@@ -4,12 +4,12 @@ description: さまざまな Azure リージョンにある Azure Container Inst
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 26d1bf74656c63f4957df1129746a3f8fd33c554
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 69dc12c0a74855535e173868951c15a3acfcfd75
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959111"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371525"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -32,6 +32,7 @@ ms.locfileid: "111959111"
 | リージョン | Max CPU (最大 CPU) | 最大メモリ (GB) | VNET の最大 CPU | VNET の最大メモリ (GB) | ストレージ (GB) | GPU SKU (プレビュー) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
 | オーストラリア東部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
+| Australia Southeast | 4 | 14 | 該当なし | 該当なし | 50 | 該当なし |
 | ブラジル南部 | 4 | 16 | 2 | 8 | 50 | 該当なし |
 | カナダ中部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
 | カナダ東部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
@@ -47,12 +48,13 @@ ms.locfileid: "111959111"
 | 韓国中部 | 4 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | 米国中北部 | 2 | 3.5 | 4 | 16 | 50 | K80、P100、V100 |
 | 北ヨーロッパ | 4 | 16 | 4 | 16 | 50 | K80 |
+| ノルウェー東部 | 4 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | 米国中南部 | 4 | 16 | 4 | 16 | 50 | V100 |
 | 東南アジア | 4 | 16 | 4 | 16 | 50 | P100、V100 |
 | インド南部 | 4 | 16 | 該当なし | 該当なし | 50 | K80 |
 | スイス北部 | 4 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | 英国南部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
-| 英国西部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
+| 英国西部 | 4 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | アラブ首長国連邦北部 | 4 | 16 | 該当なし | 該当なし | 50 | 該当なし |
 | 米国中西部| 4 | 16 | 4 | 16 | 50 | 該当なし |
 | 西ヨーロッパ | 4 | 16 | 4 | 16 | 50 | K80、P100、V100 |
@@ -75,7 +77,7 @@ ms.locfileid: "111959111"
 
 ## <a name="windows-container-groups"></a>Windows コンテナー グループ
 
-次のリージョンと最大リソースは、[サポートされているかプレビュー](container-instances-faq.md#what-windows-base-os-images-are-supported)の Windows Server コンテナーを含むコンテナー グループで使用できます。
+次のリージョンと最大リソースは、[サポートされているかプレビュー](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)の Windows Server コンテナーを含むコンテナー グループで使用できます。
 
 > [!IMPORTANT]
 > 現時点では、Windows コンテナー グループを使用したデプロイは、Azure 仮想ネットワークのデプロイではサポートされていません。

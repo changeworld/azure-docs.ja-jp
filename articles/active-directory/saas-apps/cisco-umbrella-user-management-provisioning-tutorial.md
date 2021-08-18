@@ -3,8 +3,8 @@ title: 'チュートリアル: Azure Active Directory を使用して、自動�
 description: Azure AD から Cisco Umbrella User Management に対するユーザー アカウントの自動プロビジョニングおよびその解除の方法を学習します。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 1aa20f40-19ec-4213-9a3b-5eb2bcdd9bbd
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2021
-ms.author: Zhchia
-ms.openlocfilehash: becc5010908c810688cfbd969bb12f236b2f127f
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.author: thwimmer
+ms.openlocfilehash: 03bbcd0b3723da68936799040664cc4cff370aad
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111896092"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764357"
 ---
 # <a name="tutorial-configure-cisco-umbrella-user-management-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングを行うように Cisco Umbrella User Management を構成する
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: egeaney
-ms.openlocfilehash: 7c7476a3ab885e9c127cbd571ad723864bf0d898
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c45f7dd7daad911deff3c920222ec18118437692
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534555"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220384"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Cognitive Services 用に Azure Key Vault でカスタマー マネージド キーを構成する
 
@@ -39,7 +39,6 @@ Cognitive Services 用に Azure Key Vault でカスタマー マネージド キ
 
 * [Content Moderator による保存データの暗号化](../Content-Moderator/encrypt-data-at-rest.md)
 * [Personalizer による保存データの暗号化](../personalizer/encrypt-data-at-rest.md)
-* [Metrics Advisor による保存データの暗号化](../metrics-advisor/encryption.md)
 
 ## <a name="next-steps"></a>次のステップ
 

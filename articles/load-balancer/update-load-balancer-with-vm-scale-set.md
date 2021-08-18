@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 983da6c909eb8c7b1e5deb3562aeaec30c747f4d
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 268993dcdd2250037ebcfa1640bc4e54f82c926f
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890440"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575534"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>仮想マシン スケール セットで使用されるロード バランサーを更新または削除する
 
@@ -62,7 +62,7 @@ Azure Load Balancer のインスタンスに[インバウンド NAT プール](/
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
             
   az vmss update-instances
-          -â€“instance-ids *
+          --instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS
 ```
@@ -98,7 +98,7 @@ NAT プールを削除するには、まず、スケール セットから削除
        --name MyVMSS
     az network lb inbound-nat-pool delete
        --resource-group MyResourceGroup
-       -â€“lb-name MyLoadBalancer
+       --lb-name MyLoadBalancer
        --name MyNatPool
 ```
 
@@ -134,7 +134,7 @@ Load Balancer でインバウンド NAT プールを作成し、仮想マシン 
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
             
   az vmss update-instances
-          -â€“instance-ids *
+          --instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS
           
@@ -153,7 +153,7 @@ Load Balancer でインバウンド NAT プールを作成し、仮想マシン 
           --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool2'}"
             
   az vmss update-instances
-          -â€“instance-ids *
+          --instance-ids *
           --resource-group MyResourceGroup
           --name MyVMSS2
 ```

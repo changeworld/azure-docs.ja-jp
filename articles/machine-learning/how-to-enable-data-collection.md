@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: how-to
 ms.custom: data4ml
-ms.openlocfilehash: 4b6ae5668715431875090be999806dc5a9d994c9
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 2319e513cf223118e043ba11702301f8a2796ff3
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885094"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504983"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
 
@@ -57,7 +57,7 @@ ms.locfileid: "107885094"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://aka.ms/AMLFree) を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 - Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、および Azure Machine Learning SDK for Python をインストールする必要があります。 これらのインストール方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するページを参照してください。
 
@@ -99,7 +99,7 @@ ms.locfileid: "107885094"
     data = np.array(data)
     result = model.predict(data)
     inputs_dc.collect(data) #this call is saving our input data into Azure Blob
-    prediction_dc.collect(result) #this call is saving our input data into Azure Blob
+    prediction_dc.collect(result) #this call is saving our prediction data into Azure Blob
     ```
 
 1. AKS にサービスをデプロイしても、データ コレクションは自動的には **true** に設定 "*されません*"。 次の例のように、構成ファイルを更新してください。

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/07/2021
+ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fb2f36e1b51ed5fbb7c3f2c002760d07f3723645
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 12b909b467b7f53d568e80f60c8b30f701820216
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590467"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728518"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -75,7 +75,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 ### <a name="licensing"></a>ライセンス
 
-クラウド人事アプリと Azure AD ユーザー プロビジョニングの統合を構成するには、有効な [Azure AD Premium ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)と、Workday や SuccessFactors などのクラウド人事アプリのライセンスが必要です。
+クラウド人事アプリと Azure AD ユーザー プロビジョニングの統合を構成するには、有効な [Azure AD Premium ライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)と、Workday や SuccessFactors などのクラウド人事アプリのライセンスが必要です。
 
 また、クラウド人事アプリをソースとして Active Directory または Azure AD にプロビジョニングされるすべてのユーザーに対して、Azure AD Premium P1 以上の有効なサブスクリプション ライセンスが必要です。 クラウド人事アプリで所有されているライセンスの数が適切でない場合、ユーザーのプロビジョニング時にエラーが発生する可能性があります。
 

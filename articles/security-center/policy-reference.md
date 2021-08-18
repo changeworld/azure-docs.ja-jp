@@ -1,18 +1,18 @@
 ---
 title: Azure Security Center 用の組み込みポリシー定義
 description: Azure Security Center 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3b816efcbd11b49ac3877b3e3cb795621d1084a4
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 37c207290a48c135f9d7ab5347e6cdb66909b1f0
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018211"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182658"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure Security Center 用の Azure Policy 組み込み定義
 

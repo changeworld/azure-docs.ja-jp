@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/03/2021
+ms.date: 07/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: c663282865e19df0e103e75a7e32d86651232a93
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d240e9bbf657a4336480d1340b8fbd59903a355a
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762553"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730300"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
@@ -137,7 +137,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 - *** アプリ パスワードは、管理者が有効にした場合にのみ、レガシ認証シナリオでのユーザーごとの MFA でのみ使用できます。
 
 > [!WARNING]
-> セキュリティの既定値群を使用している場合は、組織のメソッドを無効にしないでください。 メソッドを無効にすると、ご自分のテナントからロックアウトされる可能性があります。 [MFA サービス設定ポータル](../authentication/howto-mfa-getstarted.md#choose-verification-options)で、 **[ユーザーが使用できる方法]** をすべて有効のままにしておきます。
+> セキュリティの既定値群を使用している場合は、組織のメソッドを無効にしないでください。 メソッドを無効にすると、ご自分のテナントからロックアウトされる可能性があります。 [MFA サービス設定ポータル](../authentication/howto-mfa-getstarted.md#choose-authentication-methods-for-mfa)で、 **[ユーザーが使用できる方法]** をすべて有効のままにしておきます。
 
 ### <a name="disabled-mfa-status"></a>無効な MFA の状態
 
@@ -145,7 +145,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 
 ### <a name="conditional-access"></a>条件付きアクセス
 
-条件付きアクセスを使用して、セキュリティの既定値群に似たポリシーを構成できますが、厳密にはセキュリティの既定値群では利用できないユーザーの除外も含まれます。 条件付きアクセスを使用しており、環境で条件付きアクセス ポリシーを有効にしている場合、セキュリティの既定値群は使用できません。 条件付きアクセスが利用できるライセンスを持っていても、環境で条件付きアクセス ポリシーが有効になっていない場合には、条件付きアクセス ポリシーを有効にしない限り、セキュリティの既定値群を使用できます。 Azure AD ライセンスの詳細については、[Azure AD の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+条件付きアクセスを使用して、セキュリティの既定値群に似たポリシーを構成できますが、厳密にはセキュリティの既定値群では利用できないユーザーの除外も含まれます。 条件付きアクセスを使用しており、環境で条件付きアクセス ポリシーを有効にしている場合、セキュリティの既定値群は使用できません。 条件付きアクセスが利用できるライセンスを持っていても、環境で条件付きアクセス ポリシーが有効になっていない場合には、条件付きアクセス ポリシーを有効にしない限り、セキュリティの既定値群を使用できます。 Azure AD ライセンスの詳細については、[Azure AD の価格に関するページ](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
 
 ![セキュリティ既定値と条件付きアクセスは併用不可であるという警告メッセージ](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2311f3cf2a9418ba3ffef25fc1a8f3b22a3faa5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 4efa767c953d71e5d967f76310a9c163a44aa50c
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961165"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288201"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
 
@@ -79,7 +79,7 @@ GitHub からリポジトリをクローンするか、[servicebus-create-queue]
   "variables": {
     "defaultSASKeyName": "RootManageSharedAccessKey",
     "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), variables('defaultSASKeyName'))]",
-    "sbVersion": "2017-04-01"
+  "sbVersion": "2017-04-01"
   },
   "resources": [
     {
@@ -256,4 +256,4 @@ Azure Resource Manager テンプレートをデプロイする基本のワーク
 
 [Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md
 [Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/templates/deploy-powershell.md
-[Azure Quickstart Templates gallery]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+[Azure Quickstart Templates gallery]: https://azure.microsoft.com/resources/templates/?term=service+bus

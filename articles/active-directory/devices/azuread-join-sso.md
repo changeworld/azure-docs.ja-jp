@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 930fecda6a962c031b3e358fc640a41cc7b85d68
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 05df955e85bf5de12e3cc8892b1a2323947dd66f
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075099"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114227864"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ
 
@@ -42,7 +42,7 @@ Azure AD とオンプレミス AD の両方を使用するハイブリッド環�
 >[!NOTE]
 > Windows Hello for Business では、Azure AD 参加済みデバイスからのオンプレミスの SSO を有効にするために、追加の構成が必要です。 詳細については、「[Configure Azure AD joined devices for On-premises Single-Sign On using Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)」 (Windows Hello for Business を使用してオンプレミス シングル サインオン用に Azure AD 参加済みデバイスを構成する) を参照してください。 
 >
-> Windows 10 での FIDO2 セキュリティ キーに基づくパスワードレス認証には、Azure AD 参加済みデバイスからオンプレミス SSO を有効にするための追加の構成が必要です。 詳細については、「[Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする](/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises)」を参照してください。 
+> Windows 10 での FIDO2 セキュリティ キーに基づくパスワードレス認証には、Azure AD 参加済みデバイスからオンプレミス SSO を有効にするための追加の構成が必要です。 詳細については、「[Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする](../authentication/howto-authentication-passwordless-security-key-on-premises.md)」を参照してください。 
 
 ユーザーのオンプレミス環境で Kerberos または NTLM を要求しているリソースへのアクセスが試行されると、デバイスは次のようになります。
 
@@ -75,4 +75,4 @@ Azure AD 参加済みデバイス上でファイルを他のユーザーと共�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Azure Active Directory のデバイス管理とは](overview.md)」を参照してください。 
+詳細については、「[Azure Active Directory のデバイス管理とは](overview.md)」を参照してください。

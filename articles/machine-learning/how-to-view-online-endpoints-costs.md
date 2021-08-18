@@ -9,13 +9,13 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 05/03/2021
 ms.topic: conceptual
-ms.custom: how-to, deploy
-ms.openlocfilehash: 49b8aa9b89ab56dc5968c72f2ebe22bf1224fd68
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.custom: how-to, deploy, devplatv2
+ms.openlocfilehash: acf8b01a0d1179cb029e0729cbeb57f856b1f11a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382736"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448153"
 ---
 # <a name="view-costs-for-an-azure-machine-learning-managed-online-endpoint-preview"></a>Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する
 
