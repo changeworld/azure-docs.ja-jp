@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: thwimmer
-ms.openlocfilehash: 03bbcd0b3723da68936799040664cc4cff370aad
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 38b4c7cc04e5a9cc0d3dd35875ed94af804ca383
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764357"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325085"
 ---
 # <a name="tutorial-configure-cisco-umbrella-user-management-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングを行うように Cisco Umbrella User Management を構成する
 

@@ -1,14 +1,14 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: fdf3b12c3449fc9b2219442d65bae9a0ccdefdfb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b09d11e6f1c5ea8f4882021530dc4d06d2d2f350
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730076"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324882"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -807,7 +807,7 @@ Azure Policy では、次の種類の効果をサポートしています。
   - `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 
 - `requestContext().apiVersion`
-  - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2019-09-01`)。
+  - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2021-09-01`)。
     この値は、PUT または PATCH 要求で、リソースの作成または更新時の評価に使用された API バージョンになります。 既存のリソースに対するコンプライアンスの評価中は、常に最新バージョンの API が使用されます。
 
 - `policy()`

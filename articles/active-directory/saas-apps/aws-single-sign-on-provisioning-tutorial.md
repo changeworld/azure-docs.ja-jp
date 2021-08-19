@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: thwimmer
-ms.openlocfilehash: 97359ee9b4475f06bc1f09635f9fdb788fcbc19b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 0fa690836fb53db84263155c0a8661f7295f1c50
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764846"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323986"
 ---
 # <a name="tutorial-configure-aws-single-sign-on-for-automatic-user-provisioning"></a>チュートリアル: AWS Single Sign-On を構成して自動ユーザー　プロビジョニングに対応させる
 

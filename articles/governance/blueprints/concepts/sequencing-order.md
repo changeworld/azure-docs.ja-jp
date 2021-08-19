@@ -1,14 +1,14 @@
 ---
 title: デプロイ シーケンス順序について
 description: ブループリントの割り当て中にブループリント アーティファクトがデプロイされる既定の順序と、デプロイ順序をカスタマイズする方法について説明します。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4ac3823f06b4842a464af8b82438335708bb9599
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: aef672d4f32af0300932b8a2c953816b2f861029
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323719"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325025"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 

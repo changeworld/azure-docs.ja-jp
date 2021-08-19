@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b5124a9bfcc0d98f32ae42457c79e9f74308a1e8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 82bf11c530dd9d040fc0f82be570774d543b1987
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108212737"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446191"
 ---
 次の表では、Azure の汎用 v1、v2、BLOB ストレージ、ブロック BLOB ストレージのアカウントに対する既定の制限について説明します。 "*受信*" 制限は、ストレージ アカウントに送信されるすべてのデータを指します。 *送信* 制限は、ストレージ アカウントから受信するすべてのデータを指します。
 
@@ -31,10 +31,8 @@ ms.locfileid: "108212737"
 | 汎用 v2 および BLOB ストレージ アカウントの最大送信速度 (すべてのリージョン) | 50 Gbps |
 | 汎用 v1 ストレージ アカウントの最大送信速度 (米国リージョン) | RA-GRS/GRS が有効な場合は 20 Gbps、LRS/ZRS<sup>2</sup> の場合は 30 Gbps |
 | 汎用 v1 ストレージ アカウントの最大送信速度 (米国以外のリージョン) | RA-GRS/GRS が有効な場合は 10 Gbps、LRS/ZRS<sup>2</sup> の場合は 15 Gbps |
-| ストレージアカウントごとの IP アドレス規則の最大数 | 200 |
 | ストレージアカウントごとの仮想ネットワーク規則の最大数 | 200 |
-| ストレージアカウントごとのリソース インスタンス ルールの最大数 | 200 |
-| ストレージ アカウントごとのプライベート エンドポイントの最大数 | 200 |
+| ストレージアカウントごとの IP アドレス規則の最大数 | 200 |
 
 <sup>1</sup> Azure Storage 標準アカウントは、要求によるより高い容量制限とより高いイングレス制限をサポートします。 アカウント制限の引き上げを希望する場合は、[Azure サポートにお問い合わせください](https://azure.microsoft.com/support/faq/)。
 
@@ -44,3 +42,4 @@ ms.locfileid: "108212737"
 > Microsoft では、ほとんどのシナリオで汎用 v2 ストレージ アカウントを使用することをお勧めしています。 汎用 v1 または Azure BLOB ストレージ アカウントは汎用 v2 アカウントに簡単にアップグレードできます。その際にダウンタイムは発生せず、データをコピーする必要はありません。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](../articles/storage/common/storage-account-upgrade.md)」を参照してください。
 
 すべてのストレージ アカウントは、いつ作成されたかに関係なく、フラット ネットワーク トポロジ上で実行されます。 Azure Storage フラット ネットワークのアーキテクチャとスケーラビリティの詳細については、[Microsoft Azure Storage: 強力な一貫性を備えた高可用性クラウド ストレージ サービス](/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets)を参照してください。
+

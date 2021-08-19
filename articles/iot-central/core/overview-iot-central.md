@@ -7,13 +7,13 @@ ms.date: 04/19/2021
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: ed15d75836f3642622f963ac8c0185c1520bce2b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.custom: mvc, contperf-fy21q2, contperf-fy22q1
+ms.openlocfilehash: eb61a41cb7c7425c336145130cc61c76173f4ceb
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112281307"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652375"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -26,16 +26,16 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 - プロジェクトに関連付けられる一般的なユーザー ロール。
 - アプリケーションを作成する方法。
 - デバイスをアプリケーションに接続する方法。
+- アプリケーションを他のサービスと統合する方法。
 - アプリケーションを管理する方法。
-- IoT Central での Azure IoT Edge 機能。
-- Azure IoT Edge ランタイム搭載デバイスをアプリケーションに接続する方法。
+- 価格オプション。
 
 ## <a name="user-roles"></a>ユーザー ロール
 
 この IoT Central ドキュメントでは、IoT Central アプリケーションと対話する 4 種類のユーザー ロールに言及しています。
 
 - "_ソリューション ビルダー_": [アプリケーションの作成](quick-deploy-iot-central.md)、[ルールとアクションの構成](quick-configure-rules.md)、[他のサービスとの統合の定義](quick-export-data.md)のほか、オペレーターおよびデバイス開発者向けのアプリケーションのカスタマイズを行う役割を担います。
-- "_オペレーター_": アプリケーションに接続される [デバイスを管理](howto-manage-devices.md)します。
+- "_オペレーター_": アプリケーションに接続される [デバイスを管理](howto-manage-devices-individually.md)します。
 - "_管理者_": 管理タスクを担います (アプリケーション内での [ユーザー ロールとアクセス許可](howto-administer.md)の管理など)。
 - "_デバイス開発者_": アプリケーションに接続されるデバイスまたは [IoT Edge モジュール](concepts-iot-edge.md)で [実行するコードを作成](concepts-telemetry-properties-commands.md)します。
 
@@ -70,13 +70,13 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
   - IoT Central から呼び出されるコマンド。
 
 - クラウド プロパティ: これらはデバイスには格納されません。
-- カスタマイズ、ダッシュボード、およびフォーム: ご利用の IoT Central アプリケーションの一部を成します。
+- ご利用の Azure IoT Central アプリケーションの一部を成すカスタマイズ、フォーム、デバイス ビュー。
 
 デバイス テンプレートを作成する場合、いくつかのオプションがあります。
 
 - IoT Central でデバイス テンプレートを設計し、そのデバイス モデルをデバイス コードに実装します。
 - Visual Studio Code を使用してデバイス モデルを作成し、モデルをリポジトリに発行します。 モデルからデバイス コードを実装し、デバイスを IoT Central アプリケーションに接続します。 IoT Central によって、リポジトリからデバイス モデルが検索され、単純なデバイス テンプレートが自動的に作成されます。
-- Visual Studio Code を使用してデバイス モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス モデルを手動でインポートし、IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、ダッシュボードを追加します。
+- Visual Studio Code を使用してデバイス モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の Azure IoT Central アプリケーションにデバイス モデルを手動でインポートし、Azure IoT Central アプリケーションに必要なクラウド プロパティ、カスタマイズ、ビューを追加します。
 
 ### <a name="customize-the-ui"></a>UI のカスタマイズ
 
@@ -88,7 +88,7 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 
 ## <a name="manage-your-devices"></a>デバイスを管理する
 
-オペレーターが IoT Central ソリューションの[デバイスを管理する](howto-manage-devices.md)際は、IoT Central アプリケーションを使用します。 オペレーターは、次のようなタスクを実行します。
+オペレーターが IoT Central ソリューションの[デバイスを管理する](howto-manage-devices-individually.md)際は、IoT Central アプリケーションを使用します。 オペレーターは、次のようなタスクを実行します。
 
 - アプリケーションに接続されたデバイスを監視する。
 - デバイスの問題をトラブルシューティングして修復する。
@@ -100,7 +100,7 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 
 ### <a name="dashboards"></a>ダッシュボード
 
-組み込みの[ダッシュボード](./howto-set-up-template.md#generate-default-views)は、デバイスの正常性とテレメトリを監視するための、カスタマイズ可能な UI を備えています。 [アプリケーション テンプレート](howto-use-app-templates.md)のあらかじめ構築されたダッシュボードを利用して開始するか、オペレーターのニーズに合わせた独自のダッシュボードを作成します。 ダッシュボードは、アプリケーション内のすべてのユーザーと共有することも、非公開に保つこともできます。
+アプリケーション テンプレートのあらかじめ構築されたダッシュボードを利用して開始するか、オペレーターのニーズに合わせた独自のダッシュボードを作成します。 ダッシュボードは、アプリケーション内のすべてのユーザーと共有することも、非公開に保つこともできます。
 
 ### <a name="rules-and-actions"></a>ルールとアクション
 
@@ -108,7 +108,7 @@ Web UI を使用すると、すばやくデバイスを接続し、デバイス�
 
 ### <a name="jobs"></a>ジョブ
 
-[ジョブ](howto-run-a-job.md)を使用すると、プロパティを設定したりコマンドを呼び出したりして、デバイスに単独または一括の更新を実行できます。
+[ジョブ](howto-manage-devices-in-bulk.md)を使用すると、プロパティを設定したりコマンドを呼び出したりして、デバイスに単独または一括の更新を実行できます。
 
 ## <a name="integrate-with-other-services"></a>他のサービスとの統合
 
@@ -136,19 +136,6 @@ IoT Central アプリケーションは、Microsoft によって完全にホス�
 
 - "*無料*" のプランを使用して作成したアプリケーションは 7 日間無料で、最大 5 台のデバイスがサポートされます。 期限切れになるまでは、いつでも標準の料金プランを使用するように変換できます。
 - "*標準*" のプランを使用して作成したアプリケーションは、デバイス単位で課金されます。**Standard 0**、**Standard 1**、**Standard 2** のいずれかの価格プランから選択でき、どちらも最初の 2 つのデバイスが無料となります。 [IoT Central の価格](https://aka.ms/iotcentral-pricing) についての詳細をご覧ください。
-
-## <a name="quotas"></a>Quotas (クォータ)
-
-各 Azure サブスクリプションには既定のクォータが設けられており、IoT ソリューションの範囲に影響する可能性があります。 現在、IoT Central では、サブスクリプションでデプロイできるアプリケーションの数が 10 に制限されています。 この制限を引き上げる必要がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
-
-## <a name="known-issues"></a>既知の問題
-
-- 継続的データ エクスポートで Avro 形式がサポートされていない (互換性がない)。
-- GeoJSON は現在サポートされていない。
-- マップ タイルは現在サポートされていない。
-- 配列スキーマの種類はサポートされていない。
-- C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
-- 現在、IoT Central は、米国、ヨーロッパ、アジア太平洋、オーストラリア、英国、日本で使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,13 +2,13 @@
 title: Azure Video Analyzer を使用してライブ ビデオでオブジェクトを追跡する
 description: このクイックスタートでは、Azure Video Analyzer エッジ モジュールを使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードでオブジェクトを追跡する方法を示します。 コンピューター ビジョン モデルを適用して、ライブ ビデオ フィードのフレームのサブセット内でオブジェクトを検出する方法を示します。 その後、オブジェクト トラッカー ノードを使用して、他のフレーム内でそれらのオブジェクトを追跡できます。
 ms.topic: quickstart
-ms.date: 05/01/2021
-ms.openlocfilehash: 76723d1fb5dfff47e4ad436e1e4bd18fafa7c102
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 211b51660be74d2b2b3b024ead72c93b3a0d8449
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387783"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603919"
 ---
 # <a name="quickstart-track-objects-in-a-live-video"></a>クイックスタート: ライブ ビデオでオブジェクトを追跡する
 
@@ -58,7 +58,7 @@ HTTP 拡張ノードは、プロキシの役割を果たします。 毎回 15 �
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/analyze-live-video-use-your-model-http/generate-deployment-manifest.png" alt-text="IoT Edge 配置マニフェストの生成":::
 1. *deployment.yolov3.amd64.json* マニフェスト ファイルが *src/edge/config* フォルダーに作成されます。
-1. *src/edge/config/deployment.yolov3.amd64.json* を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
+1. *src/edge/config/deployment.yolov3.amd64.json* を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイを作成する\)** を選択します。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/analyze-live-video-use-your-model-http/deployment-single-device.png" alt-text= "Create Deployment for Single Device":::
@@ -105,7 +105,7 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
    }
 ```
 
-ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 ライブ ビデオのフレーム レートが 30 フレーム/秒の場合は、推論のために毎秒少なくとも 2 個のフレームを HTTP サーバーに送信する必要があることを意味します。したがって、`maximumSamplesPerSecond` は 2 に設定されます。
+ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 ライブ ビデオのフレーム レートが 30 フレーム/秒の場合は、推論のために毎秒少なくとも 2 個のフレームを HTTP サーバーに送信する必要があることを意味します。 AI モデルには、処理用の最大 FPS があります。これは、`maximumSamplesPerSecond` に設定する必要がある最高の値です。
     
 ## <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 
@@ -162,19 +162,19 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
     * ライブ パイプラインが実行状態であることを示す `livePipelineList` への 2 回目の呼び出し。
 1. [ターミナル] ウィンドウの出力が、[続行するには Enter キーを押してください] というプロンプトで一時停止されます。 まだ Enter キーを押しないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
 1. Visual Studio Code の [出力] ウィンドウに切り替えます。 Video Analyzer エッジ モジュールから IoT ハブに送信されているメッセージが表示されます。 このクイックスタートの次のセクションでは、これらのメッセージについて説明します。
-1. ライブ パイプラインは引き続き実行され、結果が出力されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 ライブ パイプラインを停止するには、 **[ターミナル]** ウィンドウに戻り、Enter キーを選択します。
+1. ライブ パイプラインは引き続き実行され、結果が出力されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 ライブ パイプラインを停止するには、 **[ターミナル]** ウィンドウに戻り、Enter キーを押します。
 1. 次の一連の呼び出しによって、リソースがクリーンアップされます。
 
-    * `livePipelineDeactivate` への呼び出しによって、ライブ パイプラインが非アクティブ化されます。
-    * `livePipelineDelete` への呼び出しによって、ライブ パイプラインが削除されます。
-    * `pipelineTopologyDelete` への呼び出しによって、パイプライン トポロジが削除されます。
+    * `livePipelineDeactivate` の呼び出しによって、ライブ パイプラインが非アクティブ化されます。
+    * `livePipelineDelete` の呼び出しによって、ライブ パイプラインが削除されます。
+    * `pipelineTopologyDelete` の呼び出しによって、パイプライン トポロジが削除されます。
     * `pipelineTopologyList` の最後の呼び出しによって、リストが空であることが示されます。
     
 ## <a name="interpret-results"></a>結果を解釈する
 
 ライブ パイプラインを実行すると、HTTP 拡張プロセッサ ノードから IoT Hub メッセージ シンク ノードを通過して IoT ハブに結果が渡されます。 **[出力]** ウィンドウに表示されるメッセージには、`body` セクションと `applicationProperties` セクションが含まれています。 詳細については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」を参照してください。
 
-次のメッセージでは、Video Analyzer モジュールによって、アプリケーションのプロパティと body の内容が定義されます。
+次のメッセージでは、Video Analyzer モジュールによって、アプリケーションのプロパティと本文の内容が定義されます。
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント
 
@@ -205,7 +205,7 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
 
 ## <a name="object-tracking-events"></a>オブジェクト追跡イベント
 
-HTTP 拡張プロセッサ ノードでは、0 番目、15 番目、30 番目、... というようにフレームを yolov3 モジュールに送信し、推論結果を受信します。 その後、これらの結果とすべてのビデオ フレームがオブジェクト トラッカー ノードに送信されます。 フレーム 0 でオブジェクトが検出されたとします。すると、オブジェクト トラッカーではそのオブジェクトに一意の `sequenceId` を割り当てます。 次に、フレーム 1、2、...、14 で、そのオブジェクトを追跡できる場合は、同じ `sequenceId` で結果が出力されます。 次の結果のスニペットで、`sequenceId` が繰り返されていますが、オブジェクトが移動するにしたがって、境界ボックスの場所が変化していることに注意してください。
+HTTP 拡張プロセッサ ノードは、0 番目、15 番目、30 番目、... というようにフレームを yolov3 モジュールに送信し、推論結果を受信します。 その後、これらの結果とすべてのビデオ フレームがオブジェクト トラッカー ノードに送信されます。 フレーム 0 でオブジェクトが検出されたとします。すると、オブジェクト トラッカーではそのオブジェクトに一意の `sequenceId` を割り当てます。 次に、フレーム 1、2、...、14 で、そのオブジェクトを追跡できる場合は、同じ `sequenceId` で結果が出力されます。 次の結果のスニペットで、`sequenceId` が繰り返されていますが、オブジェクトが移動するにしたがって、境界ボックスの場所が変化していることに注意してください。
 
 フレーム M から:
 

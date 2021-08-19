@@ -1,17 +1,17 @@
 ---
 title: クイック スタート:初めての JavaScript クエリ
 description: このクイックスタートでは、手順に従って、JavaScript 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: c958d4dc0662756e2f60a62b6a777a8dd031fe53
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 9dc5068232e6ad19715535ba8e41cff213e23311
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324961"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459965"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>クイック スタート:JavaScript を使用して初めての Resource Graph クエリを実行する
 
@@ -65,16 +65,13 @@ JavaScript で Azure Resource Graph にクエリを実行できるようにす�
    const authenticator = require("@azure/ms-rest-nodeauth");
    const resourceGraph = require("@azure/arm-resourcegraph");
 
-   if (argv.query && argv.subs) {
-       const subscriptionList = argv.subs.split(",");
-
+   if (argv.query) {
        const query = async () => {
           const credentials = await authenticator.interactiveLogin();
           const client = new resourceGraph.ResourceGraphClient(credentials);
           const result = await client.resources(
              {
-                 query: argv.query,
-                 subscriptions: subscriptionList,
+                 query: argv.query
              },
              { resultFormat: "table" }
           );
@@ -86,21 +83,22 @@ JavaScript で Azure Resource Graph にクエリを実行できるようにす�
    }
    ```
 
+   > [!NOTE]
+   > このコードでは、テナントベースのクエリを作成します。 クエリを[管理グループ](../management-groups/overview.md)またはサブスクリプションに限定するには、[queryrequest](/javascript/api/@azure/arm-resourcegraph/queryrequest) を定義して `client.resources` 呼び出しに追加し、`managementGroups` または `subscriptions` のいずれかを指定します。
+
 1. ターミナルに次のコマンドを入力します。
 
    ```bash
-   node index.js --query "Resources | project name, type | limit 5" --subs <YOUR_SUBSCRIPTION_ID_LIST>
+   node index.js --query "Resources | project name, type | limit 5"
    ```
-
-   `<YOUR_SUBSCRIPTION_ID_LIST>` プレースホルダーを必ず、ご自分の Azure サブスクリプション ID のコンマ区切りリストと置換してください。
 
    > [!NOTE]
    > このクエリ例では、`order by` などの並べ替え修飾子を指定していません。そのため、このクエリを複数回実行すると、要求ごとに、得られる一連のリソースが異なる可能性があります。
 
-1. `index.js` の最初のパラメーターを変更し、**Name** プロパティで並べ替える (`order by`) ようにクエリを変更します。 `<YOUR_SUBSCRIPTION_ID_LIST>` をサブスクリプション ID で置き換えます。
+1. `index.js` の最初のパラメーターを変更し、**Name** プロパティで並べ替える (`order by`) ようにクエリを変更します。
 
    ```bash
-   node index.js --query "Resources | project name, type | limit 5 | order by name asc" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"
+   node index.js --query "Resources | project name, type | limit 5 | order by name asc"
    ```
 
    スクリプトによって認証が試行されると、次のようなメッセージがターミナルに表示されます。
@@ -112,10 +110,10 @@ JavaScript で Azure Resource Graph にクエリを実行できるようにす�
    > [!NOTE]
    > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを生成する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
-1. `index.js` の最初のパラメーターを変更し、まず **Name** プロパティで並べ替え (`order by`)、次に上位 5 件の結果に制限 (`limit`) するようにクエリを変更します。 `<YOUR_SUBSCRIPTION_ID_LIST>` をサブスクリプション ID で置き換えます。
+1. `index.js` の最初のパラメーターを変更し、まず **Name** プロパティで並べ替え (`order by`)、次に上位 5 件の結果に制限 (`limit`) するようにクエリを変更します。
 
    ```bash
-   node index.js --query "Resources | project name, type | order by name asc | limit 5" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"
+   node index.js --query "Resources | project name, type | order by name asc | limit 5"
    ```
 
 最後のクエリを複数回実行した場合、環境内で何も変更がないと仮定すると、返される結果は変わらず、**Name** プロパティで並べ替えられますが、引き続き上位 5 件の結果に制限されます。

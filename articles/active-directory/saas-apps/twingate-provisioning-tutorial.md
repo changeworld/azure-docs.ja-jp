@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/02/2021
 ms.author: thwimmer
-ms.openlocfilehash: 1cfe5420e651bc3b3dba430efcd671999d225d68
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 593207427058ec4018a24ee40a789543b9317de7
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229432"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323962"
 ---
 # <a name="tutorial-configure-twingate-for-automatic-user-provisioning"></a>チュートリアル: Twingate を構成し、自動ユーザー プロビジョニングに対応させる
 

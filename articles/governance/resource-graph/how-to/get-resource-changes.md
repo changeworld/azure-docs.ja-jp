@@ -1,14 +1,14 @@
 ---
 title: リソースの変更の取得
 description: リソースがいつ変更されたかを見つけ、変更されたプロパティの一覧を取得し、それらの差分を評価する方法について説明します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 103ebf0303ee2b8613ccafd13d9c8916ed7e1fbc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ff82a5c3d2f58ade8637d2f44308f9eeda11d09a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751609"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324581"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 

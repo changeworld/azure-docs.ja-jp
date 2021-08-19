@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/26/2021
+ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: a70f88857bdbff825271793b58b442e6ea78c8ee
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8dc52348967963cbe5fd23b2ce01224c99e913e7
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145989"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル: Azure Active Directory と Greenhouse の統合
 
@@ -79,22 +79,16 @@ Greenhouse に対して Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://<COMPANYNAME>.greenhouse.io` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、値として「`greenhouse.io`」を入力します。
 
-    b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
-    
-    | [応答 URL]|
-    | -------------- |
-    | `https://<COMPANYNAME>.greenhouse.io/users/saml/consume` |
-    | `https://app.greenhouse.io/<ENTITY ID>/users/saml/consume` |
-    |
+    b. **[応答 URL]** ボックスに、`https://<COMPANYNAME>.greenhouse.io/<ENTITY ID>/users/saml/consume` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<COMPANYNAME>.greenhouse.io` という形式で URL を入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://app.greenhouse.io`」と入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Greenhouse クライアント サポート チーム](https://www.greenhouse.io/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Greenhouse クライアント サポート チーム](https://www.greenhouse.io/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

@@ -7,15 +7,15 @@ metadata:
   ms.service: databox
   ms.subservice: pod
   ms.topic: article
-  ms.date: 05/11/2021
+  ms.date: 07/21/2021
   ms.author: alkohli
   ms.custom: references_regions
-  ms.openlocfilehash: 85b2abd58f55e75a4b560b4cdbcc792693d1a2a3
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: 47d941b1c6e6ce7b0f383e977f227db65fa86871
+  ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113094985"
+  ms.lasthandoff: 07/23/2021
+  ms.locfileid: "114653427"
 title: 'Azure Data Box: よく寄せられる質問'
 summary: >
   Microsoft Azure Data Box ハイブリッド ソリューションにより、転送デバイスを使用することで、迅速かつ安価で信頼性の高い方法で、数テラバイトのデータを Azure に送信できます。 この FAQ では、Azure portal で Data Box の使用に関して多く寄せられる質問とその回答を紹介しています。
@@ -234,6 +234,10 @@ sections:
       米国東部で Data Box を注文しましたが、受け取ったデバイスは米国西部にある場所から出荷されていました。 デバイスはどこに戻す必要がありますか?
     answer: >
       できるだけ早く Data Box デバイスをお客様に届けるように努めています。 お客様のストレージ アカウントの場所に最も近いデータセンターから出荷することを優先していますが、デバイスは、使用可能な在庫がある、あらゆる Azure データセンターから発送されます。 Data Box は配送先住所ラベルに表示されたものと同じ出荷場所に返す必要があります。
+  - question: >
+      1 つの Azure Data Box をプエルトリコに発送する必要があります。 特別な要件はありますか?
+    answer: >
+      デバイスをプエルトリコに発送する必要がある場合は、[adbops@microsoft.com](mailto:adbops@microsoft.com) に電子メールでお問い合わせください。 北米の住所を使用して注文を作成し、運用チームにプエルトリコの住所を電子メールで提供するように指示されます。 デバイスをプエルトリコに発送しても、UPS からの追加の配送費用は掛かりません。
   - question: >
       E インク表示が返品ラベルを示していません。 どうすればよいですか。
     answer: "E インク表示が返品ラベルを示していない場合は、次の手順を実行します。\n- 以前の配送から古い配送先住所ラベルとステッカーを取り外します。\n- Azure portal で注文に移動します。 **[概要]** および **[配送先住所ラベルのダウンロード]** に移動します。 詳細については、「[配送先住所ラベルのダウンロード](data-box-portal-admin.md#download-shipping-label)」を参照してください。\n- 配送先住所ラベルを印刷し、デバイスに添付されている透明なプラスチック スリーブに挿入します。 \n- 配送先住所ラベルがはっきりと見えることを確認してください。 \n"
