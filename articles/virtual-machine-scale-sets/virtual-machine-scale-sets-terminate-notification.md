@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想マシン スケール セット インスタンスの通知を終了する
+title: Azure 仮想マシン スケール セット インスタンスの終了通知
 description: Azure 仮想マシン スケール セット インスタンスの終了通知を有効にする方法について説明します
 author: avirishuv
 ms.author: avverma
