@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: Azure Resource Graph を使用して Azure リソースのクエリを実行する際に発生するさまざまな SDK に関する問題をトラブルシューティングする方法について説明します。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 86d60f888dfd702e8895f560258b8ddb02d35827
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e5fecbe4d7cf01c2b2a6247f707b9ad24fb75cdf
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751483"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322884"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Resource Graph 使用時のエラーのトラブルシューティング
 
@@ -30,7 +30,7 @@ Azure Resource Graph を使用して Azure リソースをクエリすると、�
 
 Azure Resource Graph では、タイム ウィンドウに基づいて各ユーザーにクォータ数が割り当てられます。 たとえば、ユーザーは、5 秒間のウィンドウごとに最大 15 のクエリをスロットルなしで送信できます。 クォータ値は多数の要因によって決定され、変更される可能性があります。 詳細については、[Azure Resource Graph のスロットル](../overview.md#throttling)に関する記事をご覧ください。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 
 スロットルされた要求を処理する方法はいくつかあります。
 
@@ -86,7 +86,7 @@ Azure Resource Graph REST API クエリを実行すると、_500_ (内部サー�
 
 Azure Resource Graph REST API では、**application/json** の `Content-Type` のみがサポートされます。 一部の REST ツールまたはエージェントは、既定で **text/plain** に設定されています。これは、REST API ではサポートされていません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 
 Azure Resource Graph のクエリに使用しているツールまたはエージェントの REST API ヘッダー `Content-Type` が **application/json** 用に構成されていることを検証します。
 
@@ -100,7 +100,7 @@ Azure Resource Graph クエリを使用してサブスクリプションの一�
 
 指定されたすべてのサブスクリプションに対する読み取りアクセス許可を持っていない場合は、ユーザーに適切なセキュリティ権限がないため、要求は拒否されます。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 
 そのクエリを実行するユーザーが、少なくとも読み取りアクセス権を持っている 1 つ以上のサブスクリプションを、サブスクリプション一覧に含めます。 詳細については、「[Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)」を参照してください。
 

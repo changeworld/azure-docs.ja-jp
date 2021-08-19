@@ -7,13 +7,13 @@ ms.custom: mvc
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
-ms.date: 04/07/2021
-ms.openlocfilehash: 5f0552e09464a6b571a665cfe3895f48c3aa8c41
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 07/09/2021
+ms.openlocfilehash: 1e0f7c133a0ac0091355cba20d251333e6402212
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258454"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463541"
 ---
 # <a name="preview-features-for-postgresql---hyperscale-citus"></a>PostgreSQL - Hyperscale (Citus) のプレビュー機能
 
@@ -32,9 +32,11 @@ Azure Database for PostgreSQL - Hyperscale (Citus) では、未リリースの�
   選択したテーブルの (行ではなく) 列をディスク上に連続的に格納します。 ディスクの圧縮がサポートされます。 分析とデータ ウェアハウジングのワークロードに適しています。
 * **[読み取りレプリカ](howto-hyperscale-read-replicas-portal.md)** (現在は同一リージョンのみ)。 プライマリ サーバー グループに生じたすべての変更がそのレプリカに反映されます。レプリカに対するクエリによって、元のプライマリ サーバー グループに余分な負荷がかかることはありません。
   レプリカは、読み取り専用ワークロードのパフォーマンスを向上させる効果的な手段です。
-* **[マネージド PgBouncer](concepts-hyperscale-limits.md#managed-pgbouncer-preview)** 。
+* **[マネージド PgBouncer](concepts-hyperscale-connection-pool.md)** 。
   アクティブな接続の数を制限しながら、一度に多数のクライアントがサーバー グループに接続することを可能にする接続プーラーです。 コーディネーター ノードの円滑な実行を維持しながら接続要求を満たします。
 * **[pgAudit](concepts-hyperscale-audit.md)** 。 PostgreSQL の標準的なログ記録機能を使用して、セッションおよびオブジェクトの詳細な監査ログを提供します。 特定の政府、財務、ISO 認定の監査を通過するうえで必要な監査ログが生成されます。
+* **[create_extension() UDF](concepts-hyperscale-extensions.md#use-postgresql-extensions)** 。
+  インストールに管理アクセスが必要な拡張機能を作成できます。
 
 ### <a name="available-regions-for-preview-features"></a>プレビュー機能が提供されるリージョン
 

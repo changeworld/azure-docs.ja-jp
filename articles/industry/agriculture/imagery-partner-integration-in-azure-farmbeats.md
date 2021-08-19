@@ -5,13 +5,13 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.custom: has-adal-ref
-ms.openlocfilehash: adef1cca40ab93555bb6bccb55b8a425689b7e89
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: ''
+ms.openlocfilehash: c4a4b0fa982945b20616d576af4b3e8039d828c0
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768825"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397819"
 ---
 # <a name="imagery-partner-integration"></a>画像パートナーの統合
 

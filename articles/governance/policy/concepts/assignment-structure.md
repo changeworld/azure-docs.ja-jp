@@ -1,14 +1,14 @@
 ---
 title: ポリシー割り当て構造の詳細
 description: ポリシーの定義とパラメーターを評価のためにリソースに関連付けるために Azure Policy によって使用されるポリシー割り当ての定義について説明します。
-ms.date: 04/14/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9de210b17264330e79ab5978a449e7a494054be2
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 1b29becc3324c0d174db2102c4ae7ac15206e567
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535872"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323442"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 

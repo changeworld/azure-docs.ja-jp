@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/02/2021
 ms.author: thwimmer
-ms.openlocfilehash: 083dc852d35a57ab989680acdea81052309c4dad
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 916d4f10e554d671b77112de134f5aa7a0043d05
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764577"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322435"
 ---
 # <a name="tutorial-configure-boxcryptor-for-automatic-user-provisioning"></a>チュートリアル: Boxcryptor を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -1,14 +1,14 @@
 ---
 title: プログラムによるポリシーの作成
 description: この記事では、Azure CLI、Azure PowerShell、および REST API を使用して、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
-ms.date: 03/16/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 04b2e1a2c84320c61d1c1aba7404af47bc03150e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 27e0162c5c169ea506e48d4ced14c9eb5794f73c
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747487"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322992"
 ---
 # <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 
@@ -133,10 +133,10 @@ Resource Manager PowerShell モジュールを使用したリソース ポリシ
 
    ```console
    # For defining a policy in a subscription
-   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
+   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2021-09-01" @<path to policy definition JSON file>
 
    # For defining a policy in a management group
-   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
+   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2021-09-01" @<path to policy definition JSON file>
    ```
 
    前の {subscriptionId} をサブスクリプションの ID と置き換えるか、{managementGroupId} を[管理部グループ](../../management-groups/overview.md)の ID と置き換えます。
@@ -162,7 +162,7 @@ Resource Manager PowerShell モジュールを使用したリソース ポリシ
 1. 次の呼び出しを使用して、ポリシー割り当てを作成します。
 
    ```console
-   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2019-09-01" @<path to Assignment JSON file>
+   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2021-09-01" @<path to Assignment JSON file>
    ```
 
    例の &lt;&gt; 記号内の情報を独自の値に置き換えます。

@@ -3,12 +3,15 @@ title: Azure VMware Solution の DHCP と DNS に関する説明
 description: Azure VMware Solution の DHCP と DNS に関する説明。
 ms.topic: include
 ms.date: 05/28/2021
-ms.openlocfilehash: 585f195c36dd02e28cb744142080bee7dab91f6a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 98f2fd71cc4657a3837278c3b7a761678b8a1005
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788096"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750094"
 ---
 <!-- Used in tutorial-network-checklist.md and configure-dhcp-azure-vmware-solution.md -->
 

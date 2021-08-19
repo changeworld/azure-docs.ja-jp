@@ -1,14 +1,14 @@
 ---
 title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するための Azure Blueprints 内のロック オプションについて説明します。
-ms.date: 04/22/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3ad6bbc80818a1ba749607c44403e3efbdb064c9
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 1f209cb1e350739bfecdf86e125b28dcd4866501
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897759"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324307"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 

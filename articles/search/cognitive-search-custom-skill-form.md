@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: eb7c36a67d5ac6ab7ccc0aa5ddceab84dfc67bce
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: 170d6078863feb76582974e4b1581ea60edca7c2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138749"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322892"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "113138749"
 
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
-[!INCLUDE [create resource](../cognitive-services/form-recognizer/includes/create-resource.md)]
+[!INCLUDE [create resource](../applied-ai-services/form-recognizer/includes/create-resource.md)]
 
 ## <a name="train-your-model"></a>モデルをトレーニングする
 
