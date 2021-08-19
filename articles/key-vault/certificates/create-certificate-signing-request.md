@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a4d079855e5aa05adb84b62d686d9f386608f7bb
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 77a46beceda451d456dfc4f576f855ebf7312e50
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752140"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463515"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Key Vault で CSR を作成、マージする
 
@@ -140,6 +140,8 @@ CSR の作成時にその他の情報を追加したい場合は、それを **S
 
      **SubjectName** に特殊文字が含まれている場合、このエラーが発生することがあります。 Azure portal と PowerShell の手順の「注意」を参照してください。
 
+- エラーの種類 "**The CSR used to get your certificate has already been used. Please try to generate a new certificate with a new CSR.(証明書の取得に使用された CSR は既に使用されています。新しい CSR で新しい証明書を生成してください。)** "
+     証明書の [Advanced Policy]\(詳細ポリシー\) セクションに移動し、 [reuse key on renewal]\(更新時にキーを再利用する\) オプションがオフになっているかどうかを確認します。
 ---
 
 ## <a name="next-steps"></a>次のステップ

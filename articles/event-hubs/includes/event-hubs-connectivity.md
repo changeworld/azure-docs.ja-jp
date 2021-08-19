@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 051dc952381800667fc3b36cdcf32f2aa2f6844c
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 97c3013586e9671d7d9cce55c5e6253cb8a368f4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733891"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
 Azure Event Hubs でイベントを送受信するために、次のプロトコルを使用できます。
@@ -75,7 +75,7 @@ Azure を使用している場合、使用している、または使用しよ�
 ### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>どのクライアント IP によって名前空間からイベントの送信または受信が行われているか
 まず、名前空間で [IP フィルター](../event-hubs-ip-filtering.md)を有効にします。 
 
-次に、「[診断ログを有効にする](../event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」の手順に従って、[Event Hubs 仮想ネットワーク接続イベント](../event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)の診断ログを有効にします。 接続が拒否された IP アドレスが表示されます。
+次に、「[診断ログを有効にする](../../azure-monitor/essentials/diagnostic-settings.md)」の手順に従って、[Event Hubs 仮想ネットワーク接続イベント](../monitor-event-hubs-reference.md#event-hubs-virtual-network-connection-event-schema)の診断ログを有効にします。 接続が拒否された IP アドレスが表示されます。
 
 ```json
 {

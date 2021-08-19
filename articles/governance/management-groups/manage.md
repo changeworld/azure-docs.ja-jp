@@ -1,14 +1,14 @@
 ---
 title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
-ms.date: 06/11/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: a42800bb40f0c94de9b852eb77b3b87b698bdb09
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: cf52f56b59dd1a99bb48807228015d502163fcd7
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020945"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322158"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 

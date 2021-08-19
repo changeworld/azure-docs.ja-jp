@@ -7,15 +7,15 @@ ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/01/2021
+ms.date: 06/21/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: a9df83535bf0ee7a6c484a7682392d2ad0ef59f7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: bccb9427f29f9982ca70f2551c48e462cfa16e00
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815326"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112522071"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm"></a>Azure Key Vault Managed HSM とは
 
@@ -34,6 +34,7 @@ Azure Key Vault Managed HSM は、フル マネージド、高可用性、シン
 
 - **キーの集中管理**: 組織のいたるところにあるきわめて重要で価値の高いキーが一元管理されます。 粒度の細かいキーごとのアクセス許可により、各キーに対するアクセスが "最低特権アクセス" の原則で管理されます。
 - **分離されたアクセスの制御**: Managed HSM の "ローカル RBAC" アクセス制御モデルにより、指定された HSM クラスタ アドミニストレーターには、HSM に対する完全な制御権が与えられます。その権限は、管理グループやサブスクリプション管理者、リソース グループ管理者でもオーバーライドできません。
+- **プライベート エンドポイント**: プライベート エンドポイントを使用して、仮想ネットワークで実行されているアプリケーションから Managed HSM に安全かつプライベートに接続します。
 - **FIPS 140-2 レベル 3 適合の HSM**: FIPS (Federal Information Protection Standard) 140-2 レベル 3 適合の HSM によってデータを保護し、コンプライアンス要件を満たすことができます。 Managed HSM には、Marvell LiquidSecurity の HSM アダプターが使用されます。
 - **監視と監査**: Azure Monitor と完全に統合されます。 すべてのアクティビティの完全なログを Azure Monitor 経由で取得できます。 分析とアラートには Azure Log Analytics を使用できます。
 - **データ所在地**: マネージド HSM では、お客様が HSM インスタンスをデプロイするリージョンの外部で顧客データが格納または処理されることはありません。
@@ -51,6 +52,9 @@ Azure Key Vault Managed HSM は、フル マネージド、高可用性、シン
 
 - HSM で保護されたキーをオンプレミス HSM で生成し、それらを Managed HSM に対して安全にインポートすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM を作成してアクティブにします。
 - [Azure Key Vault Managed HSM を使用しているときのベスト プラクティス](best-practices.md)に関するページを参照してください。
+- [Managed HSM の状態](https://status.azure.com)
+- [Managed HSM のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/key-vault-managed-hsm/v1_0/)
+- [Managed HSM リージョンの可用性](https://azure.microsoft.com/global-infrastructure/services/?products=key-vault)

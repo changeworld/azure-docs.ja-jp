@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/02/2020
 ms.author: thwimmer
-ms.openlocfilehash: f5cc06f639e651164639ea99364e82ade61eb11b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 1806a488eb247ae858e55b564a6023247e157006
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113758517"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323012"
 ---
 # <a name="tutorial-configure-printerlogic-saas-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に PrinterLogic SaaS を構成する
 

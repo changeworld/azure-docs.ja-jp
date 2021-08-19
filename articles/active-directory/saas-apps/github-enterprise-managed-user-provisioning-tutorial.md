@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: thwimmer
-ms.openlocfilehash: 69a6bc9137fa5456c7681d2b3e7fae016d04ac0e
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a2e42e274fb65c06744f838ba4a40b2dc6119d5d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767798"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323353"
 ---
 # <a name="tutorial-configure-github-enterprise-managed-user-for-automatic-user-provisioning"></a>チュートリアル: GitHub Enterprise Managed User を構成し、自動ユーザー プロビジョニングに対応させる
 

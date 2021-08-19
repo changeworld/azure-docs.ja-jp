@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/16/2021
+ms.date: 08/11/2021
 ms.author: aahi
-ms.openlocfilehash: 6c13134ded2ef276520835880f9dda331232709a
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 35af9d16ff5c3e0fdfc4fe2c62abfd232439520e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734082"
 ---
 ### <a name="financial-account-identification"></a>金融アカウント ID
 
@@ -36,7 +36,7 @@ ms.locfileid: "111761644"
 
         米国銀行協会 (ABA) トランジット ルーティング ナンバー。 `domain=phi` でも返されます。
 
-        このエンティティ カテゴリを取得するには、`ABARoutingNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ABARoutingNumber` も API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ABARoutingNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ABARoutingNumber` も API 応答で返されます。
       
     :::column-end:::
     :::column span="2":::
@@ -64,7 +64,7 @@ ms.locfileid: "111761644"
 
         支払指示情報の SWIFT コード。 `domain=phi` でも返されます。
 
-        このエンティティ カテゴリを取得するには、`SWIFTCode` を `pii-categories` パラメーターに追加します。 検出されると、`SWIFTCode` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`SWIFTCode` を `piiCategories` パラメーターに追加します。 検出されると、`SWIFTCode` が API 応答で返されます。
       
     :::column-end:::
     :::column span="2":::
@@ -91,7 +91,7 @@ ms.locfileid: "111761644"
 
         クレジット カード番号。 `domain=phi` でも返されます。
 
-        このエンティティ カテゴリを取得するには、`CreditCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CreditCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CreditCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CreditCardNumber` が API 応答で返されます。
 
     :::column-end:::
     :::column span="2":::
@@ -118,7 +118,7 @@ ms.locfileid: "111761644"
 
         支払指示情報の IBAN コード。 `domain=phi` でも返されます。
 
-        このエンティティ カテゴリを取得するには、`InternationlBankingAccountNumber` を `pii-categories` パラメーターに追加します。 検出されると、`InternationlBankingAccountNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`InternationalBankingAccountNumber` を `piiCategories` パラメーターに追加します。 検出されると、`InternationalBankingAccountNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="2":::
@@ -150,7 +150,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細** `domain=phi` でも返されます。
         
-        このエンティティ カテゴリを取得するには、`ARNationalIdentityNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ARNationalIdentityNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ARNationalIdentityNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ARNationalIdentityNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -174,7 +174,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`ATIdentityCard` を `pii-categories` パラメーターに追加します。 検出されると、`ATIdentityCard` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ATIdentityCard` を `piiCategories` パラメーターに追加します。 検出されると、`ATIdentityCard` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -192,7 +192,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ATTaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ATTaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ATTaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ATTaxIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -209,7 +209,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ATValueAddedTaxNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ATValueAddedTaxNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ATValueAddedTaxNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ATValueAddedTaxNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -233,7 +233,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`AUDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`AUDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`AUDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`AUDriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -252,7 +252,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`AUBusinessNumber` を `pii-categories` パラメーターに追加します。 検出されると、`AUBusinessNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`AUBusinessNumber` を `piiCategories` パラメーターに追加します。 検出されると、`AUBusinessNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -269,7 +269,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`AUCompanyNumber` を `pii-categories` パラメーターに追加します。 検出されると、`AUCompanyNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`AUCompanyNumber` を `piiCategories` パラメーターに追加します。 検出されると、`AUCompanyNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -286,7 +286,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`AUDriversLicense` を `pii-categories` パラメーターに追加します。 検出されると、`AUDriversLicense` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`AUDriversLicense` を `piiCategories` パラメーターに追加します。 検出されると、`AUDriversLicense` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -304,7 +304,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`AUMedicalAccountNumber` を `pii-categories` パラメーターに追加します。 検出されると、`AUMedicalAccountNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`AUMedicalAccountNumber` を `piiCategories` パラメーターに追加します。 検出されると、`AUMedicalAccountNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -322,7 +322,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ATPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ATPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ATPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ATPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -339,7 +339,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ATTaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ATTaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ATTaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ATTaxIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -362,7 +362,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`BENationalNumber` を `pii-categories` パラメーターに追加します。 検出されると、`BENationalNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`BENationalNumber` を `piiCategories` パラメーターに追加します。 検出されると、`BENationalNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -381,7 +381,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`BEValueAddedTaxNumber` を `pii-categories` パラメーターに追加します。 検出されると、`BEValueAddedTaxNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`BEValueAddedTaxNumber` を `piiCategories` パラメーターに追加します。 検出されると、`BEValueAddedTaxNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -406,7 +406,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`BRLegalEntityNumber` を `pii-categories` パラメーターに追加します。 検出されると、`BRLegalEntityNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`BRLegalEntityNumber` を `piiCategories` パラメーターに追加します。 検出されると、`BRLegalEntityNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -425,7 +425,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`BRCPFNumber` を `pii-categories` パラメーターに追加します。 検出されると、`BRCPFNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`BRCPFNumber` を `piiCategories` パラメーターに追加します。 検出されると、`BRCPFNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -443,7 +443,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`BRNationalIDRG` を `pii-categories` パラメーターに追加します。 検出されると、`BRNationalIDRG` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`BRNationalIDRG` を `piiCategories` パラメーターに追加します。 検出されると、`BRNationalIDRG` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -466,7 +466,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`CABankAccountNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CABankAccountNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CABankAccountNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CABankAccountNumber` が API 応答で返されます。
     
         `domain=phi` でも返されます。
     :::column-end:::
@@ -486,7 +486,7 @@ ms.locfileid: "111761644"
 
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`CADriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CADriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CADriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CADriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -507,7 +507,7 @@ ms.locfileid: "111761644"
 
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`CAHealthServiceNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CAHealthServiceNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CAHealthServiceNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CAHealthServiceNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -526,7 +526,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`CAPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CAPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CAPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CAPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -543,7 +543,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`CAPersonalHealthIdentification` を `pii-categories` パラメーターに追加します。 検出されると、`CAPersonalHealthIdentification` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CAPersonalHealthIdentification` を `piiCategories` パラメーターに追加します。 検出されると、`CAPersonalHealthIdentification` が API 応答で返されます。
 
         `domain=phi` でも返されます。
       
@@ -562,7 +562,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`CASocialInsuranceNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CASocialInsuranceNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CASocialInsuranceNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CASocialInsuranceNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -585,7 +585,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`CLIdentityCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CLIdentityCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CLIdentityCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CLIdentityCardNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -609,7 +609,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`CNResidentIdentityCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CNResidentIdentityCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CNResidentIdentityCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CNResidentIdentityCardNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -634,7 +634,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`EUDebitCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`EUDebitCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`EUDebitCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`EUDebitCardNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -653,7 +653,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`EUDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`EUDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`EUDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`EUDriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -671,7 +671,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`EUGPSCoordinates` を `pii-categories` パラメーターに追加します。 検出されると、`EUGPSCoordinates` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`EUGPSCoordinates` を `piiCategories` パラメーターに追加します。 検出されると、`EUGPSCoordinates` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -688,7 +688,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`EUNationalIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`EUNationalIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`EUNationalIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`EUNationalIdentificationNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -706,7 +706,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`EUPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`EUPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`EUPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`EUPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -723,7 +723,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`EUSocialSecurityNumber` を `pii-categories` パラメーターに追加します。 検出されると、`EUSocialSecurityNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`EUSocialSecurityNumber` を `piiCategories` パラメーターに追加します。 検出されると、`EUSocialSecurityNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -741,7 +741,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`EUTaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`EUTaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`EUTaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`EUTaxIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -763,7 +763,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`FRDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`FRDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`FRDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`FRDriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -782,7 +782,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`FRHealthInsuranceNumber` を `pii-categories` パラメーターに追加します。 検出されると、`FRHealthInsuranceNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`FRHealthInsuranceNumber` を `piiCategories` パラメーターに追加します。 検出されると、`FRHealthInsuranceNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -799,7 +799,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`FRNationalID` を `pii-categories` パラメーターに追加します。 検出されると、`FRNationalID` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`FRNationalID` を `piiCategories` パラメーターに追加します。 検出されると、`FRNationalID` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -817,7 +817,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`FRPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`FRPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`FRPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`FRPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -834,7 +834,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`FRSocialSecurityNumber` を `pii-categories` パラメーターに追加します。 検出されると、`FRSocialSecurityNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`FRSocialSecurityNumber` を `piiCategories` パラメーターに追加します。 検出されると、`FRSocialSecurityNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -852,7 +852,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`FRTaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`FRTaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`FRTaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`FRTaxIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -869,7 +869,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`FRValueAddedTaxNumber` を `pii-categories` パラメーターに追加します。 検出されると、`FRValueAddedTaxNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`FRValueAddedTaxNumber` を `piiCategories` パラメーターに追加します。 検出されると、`FRValueAddedTaxNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -891,7 +891,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`DEDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`DEDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`DEDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`DEDriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -910,7 +910,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`DEIdentityCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`DEIdentityCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`DEIdentityCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`DEIdentityCardNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -928,7 +928,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`DEPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`DEPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`DEPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`DEPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -945,7 +945,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`DETaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`DETaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`DETaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`DETaxIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -963,7 +963,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`DEValueAddedNumber` を `pii-categories` パラメーターに追加します。 検出されると、`DEValueAddedNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`DEValueAddedNumber` を `piiCategories` パラメーターに追加します。 検出されると、`DEValueAddedNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -985,7 +985,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`HKIdentityCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`HKIdentityCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`HKIdentityCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`HKIdentityCardNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1009,7 +1009,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`HUPersonalIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`HUPersonalIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`HUPersonalIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`HUPersonalIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1027,7 +1027,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`HUTaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`HUTaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`HUTaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`HUTaxIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1044,7 +1044,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`HUValueAddedNumber` を `pii-categories` パラメーターに追加します。 検出されると、`HUValueAddedNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`HUValueAddedNumber` を `piiCategories` パラメーターに追加します。 検出されると、`HUValueAddedNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1066,7 +1066,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`INPermanentAccount` を `pii-categories` パラメーターに追加します。 検出されると、`INPermanentAccount` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`INPermanentAccount` を `piiCategories` パラメーターに追加します。 検出されると、`INPermanentAccount` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1086,7 +1086,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`INUniqueIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`INUniqueIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`INUniqueIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`INUniqueIdentificationNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1111,7 +1111,7 @@ ms.locfileid: "111761644"
 
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`IDIdentityCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`IDIdentityCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`IDIdentityCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`IDIdentityCardNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1135,7 +1135,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`IEPersonalPublicServiceNumber` を `pii-categories` パラメーターに追加します。 検出されると、`IEPersonalPublicServiceNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`IEPersonalPublicServiceNumber` を `piiCategories` パラメーターに追加します。 検出されると、`IEPersonalPublicServiceNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1154,7 +1154,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`IEPersonalPublicServiceNumberV2` を `pii-categories` パラメーターに追加します。 検出されると、`IEPersonalPublicServiceNumberV2` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`IEPersonalPublicServiceNumberV2` を `piiCategories` パラメーターに追加します。 検出されると、`IEPersonalPublicServiceNumberV2` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1177,7 +1177,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`ILNationalID` を `pii-categories` パラメーターに追加します。 検出されると、`ILNationalID` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ILNationalID` を `piiCategories` パラメーターに追加します。 検出されると、`ILNationalID` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1195,7 +1195,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ILBankAccountNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ILBankAccountNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ILBankAccountNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ILBankAccountNumber` が API 応答で返されます。
     
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1218,7 +1218,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`ITDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ITDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ITDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ITDriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1237,7 +1237,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ITFiscalCode` を `pii-categories` パラメーターに追加します。 検出されると、`ITFiscalCode` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ITFiscalCode` を `piiCategories` パラメーターに追加します。 検出されると、`ITFiscalCode` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1254,7 +1254,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ITValueAddedTaxNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ITValueAddedTaxNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ITValueAddedTaxNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ITValueAddedTaxNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1277,7 +1277,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`JPBankAccountNumber` を `pii-categories` パラメーターに追加します。 検出されると、`JPBankAccountNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`JPBankAccountNumber` を `piiCategories` パラメーターに追加します。 検出されると、`JPBankAccountNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1296,7 +1296,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`JPDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`JPDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`JPDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`JPDriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1314,7 +1314,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`JPMyNumberPersonal` を `pii-categories` パラメーターに追加します。 検出されると、`JPMyNumberPersonal` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`JPMyNumberPersonal` を `piiCategories` パラメーターに追加します。 検出されると、`JPMyNumberPersonal` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1331,7 +1331,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`JPMyNumberCorporate` を `pii-categories` パラメーターに追加します。 検出されると、`JPMyNumberCorporate` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`JPMyNumberCorporate` を `piiCategories` パラメーターに追加します。 検出されると、`JPMyNumberCorporate` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1348,7 +1348,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ITValueAddedTaxNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ITValueAddedTaxNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ITValueAddedTaxNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ITValueAddedTaxNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1366,7 +1366,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`JPResidenceCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`JPResidenceCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`JPResidenceCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`JPResidenceCardNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1384,7 +1384,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`JPSocialInsuranceNumber` を `pii-categories` パラメーターに追加します。 検出されると、`JPSocialInsuranceNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`JPSocialInsuranceNumber` を `piiCategories` パラメーターに追加します。 検出されると、`JPSocialInsuranceNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1402,7 +1402,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`JPPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`JPPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`JPPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`JPPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1424,7 +1424,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`LUNationalIdentificationNumberNatural` を `pii-categories` パラメーターに追加します。 検出されると、`LUNationalIdentificationNumberNatural` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`LUNationalIdentificationNumberNatural` を `piiCategories` パラメーターに追加します。 検出されると、`LUNationalIdentificationNumberNatural` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1442,7 +1442,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`LUNationalIdentificationNumberNonNatural` を `pii-categories` パラメーターに追加します。 検出されると、`LUNationalIdentificationNumberNonNatural` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`LUNationalIdentificationNumberNonNatural` を `piiCategories` パラメーターに追加します。 検出されると、`LUNationalIdentificationNumberNonNatural` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1464,7 +1464,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`MTIdentityCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`MTIdentityCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`MTIdentityCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`MTIdentityCardNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1482,7 +1482,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`MTTaxIDNumber` を `pii-categories` パラメーターに追加します。 検出されると、`MTTaxIDNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`MTTaxIDNumber` を `piiCategories` パラメーターに追加します。 検出されると、`MTTaxIDNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1505,7 +1505,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`NZBankAccountNumber` を `pii-categories` パラメーターに追加します。 検出されると、`NZBankAccountNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`NZBankAccountNumber` を `piiCategories` パラメーターに追加します。 検出されると、`NZBankAccountNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1523,7 +1523,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`NZDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`NZDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`NZDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`NZDriversLicenseNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1540,7 +1540,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`NZInlandRevenueNumber` を `pii-categories` パラメーターに追加します。 検出されると、`NZInlandRevenueNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`NZInlandRevenueNumber` を `piiCategories` パラメーターに追加します。 検出されると、`NZInlandRevenueNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1557,7 +1557,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`NZMinistryOfHealthNumber` を `pii-categories` パラメーターに追加します。 検出されると、`NZMinistryOfHealthNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`NZMinistryOfHealthNumber` を `piiCategories` パラメーターに追加します。 検出されると、`NZMinistryOfHealthNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1575,7 +1575,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`NZSocialWelfareNumber` を `pii-categories` パラメーターに追加します。 検出されると、`NZSocialWelfareNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`NZSocialWelfareNumber` を `piiCategories` パラメーターに追加します。 検出されると、`NZSocialWelfareNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1598,7 +1598,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`PHUnifiedMultiPurposeIDNumber` を `pii-categories` パラメーターに追加します。 検出されると、`PHUnifiedMultiPurposeIDNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`PHUnifiedMultiPurposeIDNumber` を `piiCategories` パラメーターに追加します。 検出されると、`PHUnifiedMultiPurposeIDNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1622,7 +1622,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`PTCitizenCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`PTCitizenCardNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`PTCitizenCardNumber` を `piiCategories` パラメーターに追加します。 検出されると、`PTCitizenCardNumber` が API 応答で返されます。
           
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1641,7 +1641,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`PTTaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`PTTaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`PTTaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`PTTaxIdentificationNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1664,7 +1664,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`PTTaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`PTTaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`PTTaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`PTTaxIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1688,7 +1688,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`ZAIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ZAIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ZAIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ZAIdentificationNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1713,7 +1713,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`KRResidentRegistrationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`KRResidentRegistrationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`KRResidentRegistrationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`KRResidentRegistrationNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1737,7 +1737,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`ESDNI` を `pii-categories` パラメーターに追加します。 検出されると、`ESDNI` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ESDNI` を `piiCategories` パラメーターに追加します。 検出されると、`ESDNI` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1755,7 +1755,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ESSocialSecurityNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ESSocialSecurityNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ESSocialSecurityNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ESSocialSecurityNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1773,7 +1773,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`ESTaxIdentificationNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ESTaxIdentificationNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`ESTaxIdentificationNumber` を `piiCategories` パラメーターに追加します。 検出されると、`ESTaxIdentificationNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1795,7 +1795,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`CHSocialSecurityNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CHSocialSecurityNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`CHSocialSecurityNumber` を `piiCategories` パラメーターに追加します。 検出されると、`CHSocialSecurityNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1819,7 +1819,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`TWNationalID` を `pii-categories` パラメーターに追加します。 検出されると、`TWNationalID` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`TWNationalID` を `piiCategories` パラメーターに追加します。 検出されると、`TWNationalID` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1838,7 +1838,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`TWResidentCertificate` を `pii-categories` パラメーターに追加します。 検出されると、`TWResidentCertificate` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`TWResidentCertificate` を `piiCategories` パラメーターに追加します。 検出されると、`TWResidentCertificate` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1856,7 +1856,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`TWPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`TWPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`TWPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`TWPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1878,7 +1878,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`UKDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`UKDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`UKDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`UKDriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1898,7 +1898,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`UKNationalInsuranceNumber` を `pii-categories` パラメーターに追加します。 検出されると、`UKNationalInsuranceNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`UKNationalInsuranceNumber` を `piiCategories` パラメーターに追加します。 検出されると、`UKNationalInsuranceNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1916,7 +1916,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`UKNationalHealthNumber` を `pii-categories` パラメーターに追加します。 検出されると、`UKNationalHealthNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`UKNationalHealthNumber` を `piiCategories` パラメーターに追加します。 検出されると、`UKNationalHealthNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1934,7 +1934,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`UKNationalInsuranceNumber` を `pii-categories` パラメーターに追加します。 検出されると、`UKNationalInsuranceNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`UKNationalInsuranceNumber` を `piiCategories` パラメーターに追加します。 検出されると、`UKNationalInsuranceNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -1952,7 +1952,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`USUKPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`USUKPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`USUKPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`USUKPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1969,7 +1969,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`UKUniqueTaxpayerNumber` を `pii-categories` パラメーターに追加します。 検出されると、`UKUniqueTaxpayerNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`UKUniqueTaxpayerNumber` を `piiCategories` パラメーターに追加します。 検出されると、`UKUniqueTaxpayerNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -1992,7 +1992,7 @@ ms.locfileid: "111761644"
     :::column span="2":::
         **詳細**
 
-        このエンティティ カテゴリを取得するには、`USSocialSecurityNumber` を `pii-categories` パラメーターに追加します。 検出されると、`USSocialSecurityNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`USSocialSecurityNumber` を `piiCategories` パラメーターに追加します。 検出されると、`USSocialSecurityNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -2011,7 +2011,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`USDriversLicenseNumber` を `pii-categories` パラメーターに追加します。 検出されると、`USDriversLicenseNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`USDriversLicenseNumber` を `piiCategories` パラメーターに追加します。 検出されると、`USDriversLicenseNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -2029,7 +2029,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`USUKPassportNumber` を `pii-categories` パラメーターに追加します。 検出されると、`USUKPassportNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`USUKPassportNumber` を `piiCategories` パラメーターに追加します。 検出されると、`USUKPassportNumber` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -2046,7 +2046,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`USIndividualTaxpayerIdentification` を `pii-categories` パラメーターに追加します。 検出されると、`USIndividualTaxpayerIdentification` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`USIndividualTaxpayerIdentification` を `piiCategories` パラメーターに追加します。 検出されると、`USIndividualTaxpayerIdentification` が API 応答で返されます。
       
     :::column-end:::
     :::column span="":::
@@ -2063,7 +2063,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`DrugEnforcementAgencyNumber` を `pii-categories` パラメーターに追加します。 検出されると、`DrugEnforcementAgencyNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`DrugEnforcementAgencyNumber` を `piiCategories` パラメーターに追加します。 検出されると、`DrugEnforcementAgencyNumber` が API 応答で返されます。
       
         `domain=phi` でも返されます。
     :::column-end:::
@@ -2081,7 +2081,7 @@ ms.locfileid: "111761644"
     :::column-end:::
     :::column span="2":::
 
-        このエンティティ カテゴリを取得するには、`USBankAccountNumber` を `pii-categories` パラメーターに追加します。 検出されると、`USBankAccountNumber` が API 応答で返されます。
+        このエンティティ カテゴリを取得するには、`USBankAccountNumber` を `piiCategories` パラメーターに追加します。 検出されると、`USBankAccountNumber` が API 応答で返されます。
         
         `domain=phi` でも返されます。
     :::column-end:::

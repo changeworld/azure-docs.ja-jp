@@ -1,14 +1,14 @@
 ---
 title: リソース階層を保護する方法 - Azure のガバナンス
 description: 既定の管理グループの設定を含む階層設定を使用して、リソース階層を保護する方法について説明します。
-ms.date: 04/09/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c87603510d036efded1331a5c08a7aae17326d09
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4315160030657b5aca0b293677ec0ec44d19adab
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765163"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323153"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>リソース階層を保護する方法
 
@@ -55,7 +55,7 @@ REST API を使用してこの設定を構成するために、[階層設定](/r
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-02-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-05-01
   ```
 
 - 要求本文
@@ -96,7 +96,7 @@ REST API を使用してこの設定を構成するために、[階層設定](/r
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-02-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-05-01
   ```
 
 - 要求本文
@@ -128,7 +128,7 @@ $body = '{
 
 $token = (Get-AzAccessToken).Token
 $headers = @{"Authorization"= "Bearer $token"; "Content-Type"= "application/json"}
-$uri = "https://management.azure.com/providers/Microsoft.Management/managementGroups/$root_management_group_id/settings/default?api-version=2020-02-01"
+$uri = "https://management.azure.com/providers/Microsoft.Management/managementGroups/$root_management_group_id/settings/default?api-version=2020-05-01"
 
 Invoke-RestMethod -Method PUT -Uri $uri -Headers $headers -Body $body
 ```

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/22/2021
 ms.author: thwimmer
-ms.openlocfilehash: 5f5b517bea97302e4be49659349acfff51dd0cf0
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 107211b71189b99991e517184e5cac781590b213
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766077"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322916"
 ---
 # <a name="tutorial-configure-securelogin-for-automatic-user-provisioning"></a>チュートリアル: SecureLogin を構成し、自動ユーザー プロビジョニングに対応させる
 
