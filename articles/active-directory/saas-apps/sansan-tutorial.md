@@ -102,6 +102,10 @@ Sansan で Azure AD SSO を構成してテストするには、次の構成要�
 
    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
+   ```Logout URL
+    https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0
+    ```
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal で Britta Simon というテスト ユーザーを作成します。
