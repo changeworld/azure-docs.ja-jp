@@ -4,19 +4,19 @@ titleSuffix: Azure Automation
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して Automation アカウントを作成する方法について説明します。
 services: automation
 ms.author: magoedte
-ms.date: 01/07/2021
+ms.date: 07/20/2021
 ms.topic: quickstart
 ms.workload: infrastructure-services
 ms.custom:
 - mvc
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: effdb8ec511a6060fffb571864273a1f84901ab6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 17183bffcfe9607a774d1205180c284d49cd7503
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081300"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652012"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する
 
@@ -95,6 +95,18 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.automation%2F101-automation%2Fazuredeploy.json)
 
 2. 値を入力します。
+
+    PowerShell、CLI から ARM テンプレート、またはテンプレート機能をポータルで実行しようとすると、`_artifactsLocation` パラメーターが正しく設定されていない場合は、次のようなエラー メッセージが表示されます。
+
+    `"message": "Deployment template validation failed: 'The template resource '_artifactsLocation' at line '96' and column '31' is not valid: The language expression property 'templateLink' doesn't exist, available properties are 'template, templateHash, parameters, mode, debugSetting, provisioningState'.. Please see https://aka.ms/arm-template-expressions for usage details.'."`
+
+    これを防ぐには、ポータルのテンプレート機能から実行するときに、`_artifactsLocation` パラメーターに `https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json` を指定します。
+
+    PowerShell から実行するときは、このパラメーターとその値 `-TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json` を含めます。
+
+    Azure CLI から実行するときは、このパラメーターとその値 `--template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json` を含めます。
+
+    PowerShell または CLI の詳細については、「**テンプレートを使用する**」セクションの「[Azure Automation アカウントを作成する (microsoft.com)](https://azure.microsoft.com/resources/templates/101-automation/)」を参照してください。
 
 3. デプロイが完了するまでに数分かかる場合があります。 完了すると、次のように出力されます。
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: thwimmer
-ms.openlocfilehash: bc18ab7d46675f4f53e55e5579ac91cf9ebbb1d7
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 29daa8d65fceec441a197e6240fcf0c40f108f36
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113763654"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323830"
 ---
 # <a name="tutorial-configure-gtmhub-for-automatic-user-provisioning"></a>チュートリアル:Gtmhub を構成し、自動ユーザー プロビジョニングに対応させる
 

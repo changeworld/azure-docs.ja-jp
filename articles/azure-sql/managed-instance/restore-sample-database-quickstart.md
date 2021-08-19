@@ -8,16 +8,16 @@ ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: danimir
-ms.author: danil
+author: misliplavo
+ms.author: mlazic
 ms.reviewer: mathoma
 ms.date: 12/14/2018
-ms.openlocfilehash: 492f7b505d87c56a8ec41d6ee7c31a12795b1ca7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 31cdd093db7f687ecf1e35e655cff469a03a8fec
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692878"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690379"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>クイック スタート:SSMS を使用して Azure SQL Managed Instance にデータベースを復元する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,8 +27,8 @@ ms.locfileid: "110692878"
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> Azure Database Migration Service を使用した移行の詳細については、[Database Migration Service を使用した SQL Managed Instance の移行](../../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。
-> 各種の移行方法の詳細については、[Azure SQL Managed Instance への SQL Server の移行](migrate-to-instance-from-sql-server.md)に関するページを参照してください。
+> Azure Database Migration Service を使用した移行の詳細については、[チュートリアル: Azure Database Migration Service を使用した SQL Server の Azure SQL Database Managed Instance への移行](../../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。
+> 各種の移行方法の詳細については、[Azure SQL Managed Instance への SQL Server](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md) に関するガイドを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

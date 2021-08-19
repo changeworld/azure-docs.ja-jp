@@ -1,22 +1,22 @@
 ---
 title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
-ms.date: 05/11/2021
+ms.date: 07/13/2021
 ms.topic: overview
-ms.openlocfilehash: 3f8b09584a5f025e22543a65eefd50dbfa7bb894
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 2da14a65f146a181af39a8c06a8089fee9010467
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785909"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666566"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 
-Azure Lighthouse により、クロステナントおよびマルチテナントの管理が実現し、リソースやテナント間での自動化やスケーラビリティの向上と統制機能の強化が可能になります。
+Azure Lighthouse により、マルチテナントの管理が実現し、リソース間でのスケーラビリティや自動化の向上と統制機能の強化が可能になります。
 
-Azure Lighthouse を使用すれば、Azure プラットフォームに組み込まれた包括的かつ信頼性の高い管理ツールを使用して、サービス プロバイダーがマネージド サービスを提供できるようになります。 お客様は、自社のテナントにアクセスできるユーザー、そのユーザーがアクセスできるリソース、および実行可能な操作の制御を維持できます。 [企業の IT 組織](concepts/enterprise.md)が複数のテナントにまたがってリソースを管理する場合にも有益なオファリングとなっています。
+Azure Lighthouse を使用すれば、[Azure プラットフォームに組み込まれた包括的かつ信頼性の高いツール](concepts/architecture.md)を使用して、サービス プロバイダーがマネージド サービスを提供できるようになります。 お客様は、自社のテナントにアクセスできるユーザー、そのユーザーがアクセスできるリソース、および実行可能な操作の制御を維持できます。 [企業の IT 組織](concepts/enterprise.md)が複数のテナントにまたがってリソースを管理する場合にも有益なオファリングとなっています。
 
-[テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)により、Azure Policy、Azure Security Center などの Azure 管理サービスで、より効率的に作業を行うことができます。 サービス プロバイダーのすべてのアクティビティがアクティビティ ログに追跡され、顧客のテナントに格納されます (管理テナントのユーザーが表示できます)。 ユーザーは、どのような変更がだれによって行われたかを確認できます。
+[テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)により、[Azure Policy](how-to/policy-at-scale.md)、[Azure Sentinel](how-to/manage-sentinel-workspaces.md)、[Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) などの Azure サービスで、より効率的に作業を行うことができます。 ユーザーは[アクティビティ ログ](how-to/view-service-provider-activity.md)から他のユーザーが加えた変更と誰が実行したかを参照できます。これらは顧客のテナントに格納されます (管理テナントのユーザーが表示できます)。
 
 ![Azure Lighthouse の概要図](media/azure-lighthouse-overview.jpg)
 
@@ -25,8 +25,8 @@ Azure Lighthouse を使用すれば、Azure プラットフォームに組み込
 Azure Lighthouse は、サービス プロバイダーがマネージド サービスを効率的に構築および提供するのに役立ちます。 利点は次のとおりです。
 
 - **大規模な管理**: 顧客エンゲージメントとライフサイクル操作によって顧客リソースの管理が容易になり、スケーラビリティが向上します。 既存の API、管理ツール、およびワークフローを、配置されているリージョンにかかわらず、Azure の外部でホストされているマシンを含む委任されたリソースと共に使用できます。
-- **顧客から見た可視性と制御の向上**: 顧客は、管理のために委任するスコープと許可されるアクセス許可を細かく制御できます。 顧客は、サービス プロバイダーのアクションを監査し、必要に応じてアクセス権を完全に削除できます。
-- **包括的で一元化されたプラットフォーム ツール**: Microsoft のツールエクスペリエンスは、EA、CSP、従量課金制などの複数のライセンス モデルを含む、サービス プロバイダーの主要なシナリオに対応しています。 Azure Lighthouse は、既存のツールと API、ライセンス モデル、[Azure マネージド アプリケーション](concepts/managed-applications.md)、[クラウド ソリューション プロバイダー プログラム (CSP)](/partner-center/csp-overview) などのパートナー プログラムと連動します。 Azure Lighthouse を既存のワークフローとアプリケーションに統合し、[パートナー ID をリンクする](./how-to/partner-earned-credit.md)ことで、顧客エンゲージメントへの影響を追跡できます。
+- **顧客から見た可視性と制御の向上**: 顧客は、管理のために委任するスコープと許可されるアクセス許可を細かく制御できます。 顧客は、[サービス プロバイダーのアクションを監査](how-to/view-service-provider-activity.md)し、必要に応じてアクセス権を完全に削除できます。
+- **包括的で一元化されたプラットフォーム ツール**: Azure Lighthouse は、既存のツールと API、[Azure Managed Applications](concepts/managed-applications.md)、および[クラウド ソリューション プロバイダー プログラム (CSP)](concepts/cloud-solution-provider.md) などのパートナー プログラムと連動します。 この柔軟性によって、EA、CSP、従量課金制などの複数のライセンス モデルを含む、サービス プロバイダーの主要なシナリオに対応します。 Azure Lighthouse を既存のワークフローとアプリケーションに統合し、[パートナー ID をリンクする](how-to/partner-earned-credit.md)ことで、顧客エンゲージメントへの影響を追跡できます。
 
 ## <a name="capabilities"></a>機能
 
@@ -38,7 +38,7 @@ Azure Lighthouse には、エンゲージメントと管理を効率化するさ
 - **Azure Marketplace のマネージド サービス オファー**:プライベート プランまたはパブリック プランを通じて [貴社のサービスを顧客に提供し](concepts/managed-services-offers.md)、Azure Lighthouse に顧客を自動的にオンボードすることができます。
 
 > [!TIP]
-> IT パートナーは、同様のプラン ([Microsoft 365 Lighthouse](https://techcommunity.microsoft.com/t5/small-and-medium-business-blog/announcing-microsoft-365-lighthouse-for-managed-service/ba-p/1698181)) を利用して、Microsoft 365 ユーザーのオンボード、監視、管理を大規模に行うことができます。 Microsoft 365 Lighthouse は現在プライベート プレビュー段階です。
+> サービス プロバイダーは、同様のプラン ([Microsoft 365 Lighthouse](/microsoft-365/lighthouse/m365-lighthouse-overview)) を利用して、Microsoft 365 ユーザーのオンボード、監視、管理を大規模に行うことができます。 Microsoft 365 Lighthouse は現在プレビュー段階です。
 
 ## <a name="pricing-and-availability"></a>価格と可用性
 
@@ -50,11 +50,11 @@ Azure Lighthouse は、リージョンの境界を越えたサービスです。
 
 ## <a name="support-for-azure-lighthouse"></a>Azure Lighthouse のサポート
 
-Azure Lighthouse の使用についてご不明な点があれば、Azure portal からサポート リクエストを送信してください。 **[問題の種類]** では、 **[技術]** を選択します。 サブスクリプションを選択し、 **[Lighthouse]** ( **[管理と監視]** の下) を選択します。
+Azure Lighthouse の使用についてご不明な点があれば、Azure portal から[サポート リクエスト](..//azure-portal/supportability/how-to-create-azure-support-request.md)を送信してください。 **[問題の種類]** では、 **[技術]** を選択します。 サブスクリプションを選択し、 **[Lighthouse]** ( **[管理と監視]** の下) を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [技術レベルでの Azure Lighthouse のしくみ](concepts/architecture.md)について理解を深めます。
+- [技術レベルでの Azure Lighthouse のしくみ](concepts/architecture.md)について参照してください。
 - [テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)について調査します。
 - [エンタープライズ内で Azure Lighthouse を使用する](concepts/enterprise.md)方法を確認します。
 - Azure Lighthouse の[提供状況](https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all)と [FedRAMP および DoD CC SRG 監査スコープ](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)の詳細を確認します。

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/16/2021
 ms.author: thwimmer
-ms.openlocfilehash: 4ece3675a0d15821ae7691e85588d0575f13eae3
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: b0b880f2625f5893fe2b82111ab6f57d6af1b111
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767671"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323122"
 ---
 # <a name="tutorial-configure-grammarly-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように Grammarly を構成する
 

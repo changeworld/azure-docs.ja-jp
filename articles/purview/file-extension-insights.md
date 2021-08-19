@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: 5cbfb41d50e055f745864e4d5f8bc15a55d925e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f581594e6830efcf849f4ba51b218ce849bf3f9c
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668571"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396955"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関するファイル拡張子の分析情報 
 
@@ -34,7 +34,7 @@ Purview の分析情報の使用を開始する前に、次の手順を完了し
 
 - 各データ ソースのテスト データに対するスキャンを設定して完了している。 詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」および「[スキャン ルール セットを作成する](create-a-scan-rule-set.md)」を参照してください。
 
-- [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)を持つアカウントを使用して Purview にサインインします。
+- [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#roles)を持つアカウントを使用して Purview にサインインします。
 
 
 詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」を参照してください。

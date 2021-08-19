@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 04/29/2021
+ms.date: 06/21/2021
 ms.author: victorh
-ms.openlocfilehash: a9f63b41afebc12566c8cc2e04664850203f1e5a
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: c5ba8ed36bc59b9b26dc854a0c1a1757f1c47266
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279930"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595329"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Firewall Manager とは
 
@@ -82,7 +82,6 @@ Azure Firewall Manager には、次の既知の問題があります。
 |セキュリティ保護付き仮想ハブがリージョンごとに 1 つである|1 つのリージョンで複数のセキュリティ保護付き仮想ハブを使用することはできません。|1 つのリージョンに複数の仮想 WAN を作成します。|
 |基本ポリシーがローカル ポリシーと同じリージョンにある必要がある|基本ポリシーと同じリージョンにすべてのローカル ポリシーを作成します。 セキュリティ保護付きハブ上の 1 つのリージョンで作成されたポリシーを、別のリージョンから適用することもできます。|調査中|
 |セキュリティで保護された仮想ハブ デプロイでのハブ間トラフィックのフィルター処理|セキュリティ保護付き仮想ハブからセキュリティ保護付き仮想ハブへの通信のフィルター処理は、まだサポートされていません。 ただし、Azure Firewall によるプライベート トラフィックのフィルター処理が有効になっていない場合は、ハブからハブへの通信は引き続き機能します。|調査中|
-|仮想ハブとは異なるリージョンにあるスポーク|仮想ハブとは異なるリージョンにあるスポークはサポートされていません。|調査中<br><br>リージョンごとにハブを作成し、ハブと同じリージョンの VNet をピアリングします。|
 |プライベート トラフィック フィルターが有効になっている場合のブランチ間のトラフィック|プライベート トラフィック フィルターが有効になっている場合、ブランチ間のトラフィックはサポートされていません。 |調査中。<br><br>ブランチ間の接続が重要である場合は、プライベート トラフィックをセキュリティで保護しないでください。|
 |同じ Virtual WAN を共有するすべてのセキュリティ保護付き仮想ハブは同じリソース グループに存在する必要がある|この動作は、今日の Virtual WAN ハブに合わせたものです。|複数の異なるリソース グループにセキュリティ保護付き仮想ハブを作成できるようにするには、複数の Virtual WAN を作成します。|
 |一括 IP アドレス追加が失敗する|複数のパブリック IP アドレスを追加すると、セキュリティで保護されたハブ ファイアウォールがエラー状態になります。|より少ない増分のパブリック IP アドレスを追加します。 たとえば、一度に 10 個を追加します。|
@@ -91,5 +90,6 @@ Azure Firewall Manager には、次の既知の問題があります。
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Learn モジュール: Azure Firewall Manager の概要](/learn/modules/intro-to-azure-firewall-manager/)。
 - [Azure Firewall Manager のデプロイ概要](deployment-overview.md)を確認する
 - [セキュリティで保護された仮想ハブ](secured-virtual-hub.md)について学習します。

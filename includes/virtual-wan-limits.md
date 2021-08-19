@@ -8,16 +8,15 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8671c9d8551d148df84e05e2d7d8ebc4cbdf9aca
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: c0af087c68056b1719355956c30b5e2c7f971531
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110631297"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113094655"
 ---
 | リソース |  制限 |
 | --- | --- |
-| 仮想 WAN あたりの Virtual WAN ハブ |Azure Azure リージョン |
 | ハブあたりの VPN (ブランチ) 接続 | 1,000 |
 | Virtual WAN のサイト間 VPN ゲートウェイあたりのスループットの合計 | 20 Gbps |
 | Virtual WAN の VPN 接続あたりのスループット (2 トンネル) | 2 Gbps (1 Gbps/IPsec トンネル) |

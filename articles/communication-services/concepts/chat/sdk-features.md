@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1f01d6efc29d4d275762ce7f5699c036ee885ba9
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 36b528d7899b2b5cda7c05752a7cbb42dec6adbc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112691"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459298"
 ---
 # <a name="chat-sdk-overview"></a>Chat SDK の概要 
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
 
 Azure Communication Services Chat SDK を使用して、アプリケーションに高度なリアルタイム チャットを追加できます。
     
@@ -43,6 +41,8 @@ Azure Communication Services Chat SDK を使用して、アプリケーション
 |                   | 参加者がチャット スレッドにメッセージを入力中であることを示す通知を受け取る                                         | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 |                   | チャット スレッド内のすべてのメッセージを取得する                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | メッセージ コンテンツの一部として Unicode の絵文字を送信する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|                   | チャット メッセージにメタデータを追加する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
+|                   | 入力インジケーター通知に表示名を追加する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |リアルタイムの通知 (独自のシグナリング パッケージで対応**)|  チャット クライアントは、受信メッセージや、チャット スレッドで発生しているその他の操作のリアルタイム更新を取得するためにサブスクライブできます。 リアルタイム通知でサポートされている更新の一覧を確認するには、「[チャットに関する概念](concepts.md#real-time-notifications)」をご覧ください                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 | Azure Event Grid との統合             | Azure Event Grid で使用可能なチャット イベントを使用して、カスタム通知サービスを接続する、またはそのイベントを Webhook に投稿して、チャットの完了後に CRM レコードを更新するなどのビジネス ロジックを実行する   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 | レポート </br>(この情報は、Azure portal のお使いの Communication Services リソースの [監視] タブにあります)      | Azure メトリックス エクスプローラーで公開されたメトリックを監視してチャット アプリからの API トラフィックを理解し、アラートを設定して異常を検出する     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  

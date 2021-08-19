@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 08868a6ab3a3755d7bc9c2e7af4ab6c9116831d0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ac364950b78aeb61bd74fcc918a4dae2a31a6ffa
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791811"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690315"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用
 
@@ -58,9 +58,9 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 * Visual Studio Code または Visual Studio をインストールします。
 * [このクイックスタート](./account-create-how-to.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
 * [API へのアクセス](./access-api-howto.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。
-* アプリの構成ファイル (appsettings.json) に適切な値を設定します。
+* アプリの構成ファイル (appsettings.json または .env ファイル) に適切な値を設定します。
 
-## <a name="download-code"></a>コードをダウンロードする
+## <a name="download-the-code-and-configure-the-sample"></a>コードのダウンロードとサンプルの構成
 
 次のコマンドを使用して、この記事で紹介した完全な .NET サンプルが含まれる GitHub リポジトリを、お使いのマシンに複製します。
 
@@ -69,6 +69,8 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
  ```
  
 "DRM を使用した暗号化" のサンプルは、[EncryptWithDRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM) フォルダーにあります。
+
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 > [!NOTE]
 > このサンプルでは、アプリを実行するたびに一意のリソースが作成されます。 通常は、変換やポリシーなどの既存のリソースを再利用します (既存のリソースが必要な構成を備えている場合)。
