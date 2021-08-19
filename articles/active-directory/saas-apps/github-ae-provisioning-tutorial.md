@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: thwimmer
-ms.openlocfilehash: 0ed88aad79029d67e259bff12d4ec2fd68905d72
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a39b7d63fa80be8ca80e8fba349d602e9df3c9f1
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767863"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322101"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>チュートリアル:GitHub AE を構成し、自動ユーザー プロビジョニングに対応させる
 

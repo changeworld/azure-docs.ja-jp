@@ -6,16 +6,16 @@ author: lakshmans
 manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/11/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 86f26e7fbe96284dee5eb606ede22ae63701f309
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 9e44cc1f631a56d1948c744a1ecb912208bad11e
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111431063"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659393"
 ---
 Communication Services Python SMS SDK を使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -84,8 +84,7 @@ Python 用 Azure Communication Services SMS SDK が備える主な機能のい�
 # Create the SmsClient object which will be used to send SMS messages
 sms_client = SmsClient.from_connection_string(<connection_string>)
 ```
-このクイックスタートでは、簡潔にするために接続文字列を使用していますが、運用環境では、[マネージド ID](../../../quickstarts/managed-identity.md) の使用をお勧めします。大規模に使用する際には、その方がセキュリティが高く、管理が容易です。
-
+このクイックスタートでは、簡潔にするために接続文字列を使用していますが、運用環境では、[サービス プリンシパル](../../../quickstarts/identity/service-principal.md)の使用をお勧めします。
 
 ## <a name="send-a-11-sms-message"></a>1:1 の SMS メッセージを送信する
 

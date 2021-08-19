@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0f4f2ff4fdd2d33e1ac1b56b02fb185203aee39
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595472"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252589"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog を使用して Linux ベースのソースからデータを収集する
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Linux 用 Log Analytics エージェント (旧称 OMS エージェント) を使用して、Linux ベースの Syslog 対応マシンまたはアプライアンスから Azure Sentinel にイベントをストリーミングできます。 この操作は、Log Analytics エージェントをマシンに直接インストールできる任意のマシンに対して行うことができます。 マシンのネイティブ Syslog デーモンは、指定された種類のローカル イベントを収集し、それらをローカルでエージェントに転送します。これで、ローカル イベントが Log Analytics ワークスペースにストリーミングされます。
 
@@ -131,7 +133,8 @@ Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Syslog オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。
 
+{"mode":"full","isActive":false}
