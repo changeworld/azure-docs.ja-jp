@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/22/2021
 ms.author: thwimmer
-ms.openlocfilehash: 5744c3df69fd595d5fc7a576d9503f7d5b0caf70
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 44fb6342a8910a1edb27ea8e3a9f0ff12415ea2b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113761339"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324770"
 ---
 # <a name="tutorial-configure-travelperk-for-automatic-user-provisioning"></a>チュートリアル: 自動的にユーザーをプロビジョニングするように TravelPerk を構成する
 

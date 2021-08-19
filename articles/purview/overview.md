@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4ca7c318dc1ac9d135c43c6d063a0f8a45276fe
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419934"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729762"
 ---
 # <a name="what-is-azure-purview"></a>Azure Purview とは
 
@@ -71,7 +71,7 @@ Azure Purview には、データ ソースを登録できるクラウドベー�
 同時に、ユーザーは、登録されているデータ ソースに対してタグ付けやドキュメント作成、注釈付けを行うことで、カタログを充実させることができます。 ユーザーは新しいデータ ソースを登録することもできます。それらはカタログ ユーザーのコミュニティで検出され、解釈され、利用されます。
 
 ## <a name="in-region-data-residency"></a>リージョンのデータ所在地
-Azure Purview によって、顧客データがデプロイされているリージョン外に移動されたり格納されたりすることはありません。
+Azure Purview では、特定のテーブル名、ファイル パス、およびオブジェクト パス情報が北米に格納されます。 前述の例外に従って、すべてのその他の顧客データを 1 つのリージョンに格納できるようにする機能は、現在すべての地域で利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

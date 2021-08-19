@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/21/2021
+ms.date: 07/26/2021
 ms.author: justinha
-ms.openlocfilehash: e381c80dddc4484d541f5f81de6b5df712cff69b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 027217ab5963f084fca7678c9e51f7188d39a191
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673470"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707883"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>チュートリアル:Azure Active Directory Domain Services で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-このチュートリアルでは、Azure portal を使用して Azure AD DS からの送信フォレストの信頼を作成して構成します。 最初に、[Azure portal](https://portal.azure.com) にサインインします。
+このチュートリアルでは、Azure portal を使用して Azure AD DS からの送信フォレストの信頼を作成して構成します。 最初に、[Azure portal](https://portal.azure.com) にサインインします。 Microsoft Azure Active Directory Domain Services インスタンスを変更するには、グローバル管理者の権限が必要です。 
 
 ## <a name="networking-considerations"></a>ネットワークに関する考慮事項
 
