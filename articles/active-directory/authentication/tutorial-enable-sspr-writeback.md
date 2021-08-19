@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/19/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e6d89bdfca268a02c1f58bdceb4e4485dc3851a6
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: ff3c052e2e9e745c59947cda43d12b46786fbd62
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438380"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707581"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
@@ -109,6 +109,7 @@ SSPR のライトバックを有効にするには、まず、Azure AD Connect �
 
     ![パスワード ライトバック用に Azure AD Connect を構成する](media/tutorial-enable-sspr-writeback/enable-password-writeback.png)
 
+1. **[ディレクトリ拡張機能]** ページで、 **[次へ]** を選択します。
 1. **[構成の準備完了]** ページで **[構成]** を選び、処理が完了するまで待ちます。
 1. 構成の完了が表示されたら、 **[終了]** を選びます。
 

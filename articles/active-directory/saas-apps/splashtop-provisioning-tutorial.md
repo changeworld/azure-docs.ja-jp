@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: thwimmer
-ms.openlocfilehash: 0a08cf41e756298179712780a73b7fb1c4de5a8d
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 9f07310b7dd0fe92c7053e1190b67527ac6525b8
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759189"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323984"
 ---
 # <a name="tutorial-configure-splashtop-for-automatic-user-provisioning"></a>チュートリアル:Splashtop を構成し、自動ユーザー プロビジョニングに対応させる
 

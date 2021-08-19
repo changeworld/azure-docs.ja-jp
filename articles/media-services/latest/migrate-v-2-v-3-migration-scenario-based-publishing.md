@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0a0052fa3d78a3b77094cfccbd4c011321ac5925
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d8cba5c69802828a0bd486d902d85199f3ae1d00
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279019"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322155"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>パッケージ化と配信のシナリオ ベースの移行ガイダンス
 
@@ -26,14 +26,14 @@ ms.locfileid: "106279019"
 
 この記事では、Azure Media Services v2 から v3 への移行に役立つパッケージ化と配信のシナリオ ベースのガイダンスを示します。
 
-v3 API でコンテンツが発行される方法への主な変更点。 新しい発行モデルは簡略化されており、より少ないエンティティを使用してストリーミング ロケーターを作成します。 API がわずか 2 つのエンティティに縮小されましたが、以前は 4 つのエンティティが必要でした。 コンテンツ キー ポリシーとストリーミング ロケーターにより、`ContentKeyAuthoriationPolicy`、`AssetDeliveyPolicy`、`ContentKey`、`AccessPolicy` の必要性がなくなっています。
+v3 API でコンテンツが発行される方法への主な変更点。 新しい発行モデルは簡略化されており、より少ないエンティティを使用してストリーミング ロケーターを作成します。 API がわずか 2 つのエンティティに縮小されましたが、以前は 4 つのエンティティが必要でした。 コンテンツ キー ポリシーとストリーミング ロケーターにより、`ContentKeyAuthorizationPolicy`、`AssetDeliveryPolicy`、`ContentKey`、`AccessPolicy` の必要性がなくなっています。
 
 ## <a name="packaging-and-delivery-in-v3"></a>v3 でのパッケージ化と配信
 
 1. [コンテンツ キー ポリシー](drm-content-key-policy-concept.md)を作成します。
 1. [ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成します。
 1. [ストリーミング パス](create-streaming-locator-build-url.md)を取得します。 
-    1. それを [DASH](encode-dynamic-packaging-concept.md#mpeg-dash-protocol) または [HLS](encode-dynamic-packaging-concept.md#hls-protocol) プレーヤー用に構成します。
+    1. それを [DASH](encode-dynamic-packaging-concept.md#deliver-dash) または [HLS](encode-dynamic-packaging-concept.md#deliver-hls) プレーヤー用に構成します。
 
 具体的な手順については、次の「概念、チュートリアル、ハウツー ガイドの発行」を参照してください。
 

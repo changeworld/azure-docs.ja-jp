@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: thwimmer
-ms.openlocfilehash: d555db3b38f726a014ed1ad0347f68eb2bcb3add
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c3de4133e8cb3d769918cf98525a7090d4b30e28
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113763283"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321969"
 ---
 # <a name="tutorial-configure-logicgate-for-automatic-user-provisioning"></a>チュートリアル: LogicGate を構成し、自動ユーザー プロビジョニングに対応させる
 

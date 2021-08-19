@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: thwimmer
-ms.openlocfilehash: a990ab3a38c066ac13ff68ddde94a17fa9940bbd
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 5e3d33775fbf342f328cb4260607a540930ff22d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764461"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322314"
 ---
 # <a name="tutorial-configure-browserstack-single-sign-on-for-automatic-user-provisioning"></a>チュートリアル: BrowserStack Single Sign-on を構成して自動ユーザー プロビジョニングに対応させる
 

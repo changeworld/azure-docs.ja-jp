@@ -3,16 +3,16 @@ title: Azure Database for PostgreSQL - フレキシブル サーバー
 description: Azure Database for PostgreSQL - フレキシブル サーバー の概要を説明します。
 author: sunilagarwal
 ms.author: sunila
-ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 04/22/2021
-ms.openlocfilehash: efa5502c89a68be05ef8f7dc1d3d57c57e732caa
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 06/14/2021
+ms.custom: mvc, references_regions
+ms.openlocfilehash: 25b2788591c44cb4b75c89ca020825d16884224b
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987076"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116165"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -92,24 +92,32 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
-Azure でワークロードを実行する利点の 1 つは、グローバルに展開できることです。 フレキシブル サーバーは、現在、次の Azure リージョンで提供されています。
+Azure でワークロードを実行する利点の 1 つは、グローバルに展開できることです。 フレキシブル サーバーは現在、次の Azure リージョンでご利用いただけます。
 
 | Region | 可用性 | ゾーン冗長 HA | 
 | --- | --- | --- |
-| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
-| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
-| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
-| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | 
+| オーストラリア南東部 | :heavy_check_mark: | :x: | 
+| Brazil South | :heavy_check_mark: | :x: |
+| カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 米国中部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 米国東部 | :heavy_check_mark: | :heavy_check_mark: | 
-| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
-| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
-| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | 
-| カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | フランス中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
+| 韓国中部 | :heavy_check_mark: | :x: | 
+| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| ノルウェー東部 | :heavy_check_mark: | :x: |
+| 南アフリカ北部 | :heavy_check_mark: | :x: |
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| スイス北部 | :heavy_check_mark: | :x: |
+| アラブ首長国連邦北部 | :heavy_check_mark: | :x: |
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| 米国西部 | :heavy_check_mark: | :x: |
+| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
 
-フレキシブル サーバー対応リージョンは今後さらに増える予定です。
+<!-- We continue to add more regions for flexible server. -->
 
 ## <a name="migration"></a>移行
 
