@@ -4,17 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8f8849d61a814903d1b5bb9d971196af3f87ca28
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: be7eee7c8de5cae201660b4d165ca51bb40b3c19
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560702"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339782"
 ---
 Communication Services 通話クライアント ライブラリを使用して 1 対 1 のビデオ通話をアプリに追加することによって、Azure Communication Services の使用を開始します。 このクイックスタートでは、Android 用の Azure Communication Services Calling SDK を使用して、ビデオ通話を開始および応答する方法について説明します。
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart) にあります
+## <a name="sample-code"></a>サンプル コード
+
+最後までスキップする場合は、[GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart) からサンプル アプリをダウンロードします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -228,6 +229,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -298,6 +300,8 @@ public class MainActivity extends AppCompatActivity {
         startVideo.setOnClickListener(l -> turnOnLocalVideo());
         Button stopVideo = findViewById(R.id.hide_preview);
         stopVideo.setOnClickListener(l -> turnOffLocalVideo());
+        
+        setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
     }
 
     /**
@@ -385,7 +389,9 @@ Azure Communication Services Calling SDK の主な機能のいくつかは、次
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>ユーザー アクセス トークンからエージェントを作成する
 
-認証された通話エージェントは、ユーザー トークンを使用してインスタンス化できます。 通常このトークンは、アプリケーション固有の認証を使用してサービスから生成されます。 ユーザー アクセス トークンの詳細については、[ユーザー アクセス トークン](../../../access-tokens.md)のガイドを参照してください。 クイック スタートでは、`<User_Access_Token>` を Azure Communication Service リソース用に生成されたユーザー アクセス トークンに置き換えます。
+認証された呼び出しエージェントを作成するには、ユーザー トークンが必要です。 通常このトークンは、アプリケーション固有の認証を使用してサービスから生成されます。 ユーザー アクセス トークンの詳細については、[ユーザー アクセス トークン](../../../access-tokens.md)のガイドを参照してください。 
+
+クイック スタートでは、`<User_Access_Token>` を Azure Communication Service リソース用に生成されたユーザー アクセス トークンに置き換えます。
 
 ```java
 /**
@@ -641,7 +647,3 @@ private void hangUp() {
 ## <a name="run-the-code"></a>コードの実行
 
 Android Studio のツール バーの [`Run 'App'`]\(アプリの実行\) ボタンを使用してアプリを起動できるようになりました。 
-
-## <a name="sample-code"></a>サンプル コード
-
-サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart) からダウンロードできます

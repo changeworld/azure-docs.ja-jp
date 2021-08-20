@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 05/26/2021
+ms.date: 07/15/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2752d437800840181062f7a9c07d37620e06677a
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 8fb3734e1975254442fa2aff57ba60847bbfac04
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578311"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362270"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -23,6 +23,7 @@ ms.locfileid: "110578311"
 > [!div class="checklist"]
 > * 仮想 WAN を作成する
 > * ハブを作成する
+> * サイト間 VPN ゲートウェイを作成する
 > * サイトを作成する
 > * サイトをハブに接続する
 > * VPN サイトをハブに接続する
@@ -48,9 +49,13 @@ ms.locfileid: "110578311"
 
 ## <a name="create-a-hub"></a><a name="hub"></a>ハブを作成する
 
-ハブは、サイト間、ExpressRoute、またはポイント対サイト機能のためのゲートウェイを含めることができる仮想ネットワークです。 ハブが作成されると、サイトをアタッチしていない場合でも、ハブに対して課金されます。 仮想ハブ内にサイト間 VPN ゲートウェイを作成するには 30 分かかります。
+ハブは、サイト間、ExpressRoute、またはポイント対サイト機能のためのゲートウェイを含めることができる仮想ネットワークです。 ハブが作成されると、サイトをアタッチしていない場合でも、ハブに対して課金されます。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
+
+## <a name="create-a-site-to-site-vpn-gateway"></a><a name="gateway"></a>サイト間 VPN ゲートウェイを作成する
+
+[!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
 ## <a name="create-a-site"></a><a name="site"></a>サイトを作成する
 

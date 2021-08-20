@@ -1,6 +1,6 @@
 ---
 title: クイックスタート - Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Spring Cloud をプロビジョニングする
-description: このクイックスタートでは、Spring Cloud クラスターを既存の仮想ネットワークにデプロイする方法について説明します。
+description: このクイックスタートでは、ARM テンプレートを使用し、Spring Cloud クラスターを既存の仮想ネットワークにデプロイする方法について説明します。
 services: azure-resource-manager
 author: ryhud
 ms.service: spring-cloud
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-java
 ms.author: rhudson
 ms.date: 05/27/2021
-ms.openlocfilehash: f57e3d6d1f3f562e35d38e45a3e0ca1703730d04
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 73c24f62e2c4333cb1e8ea826792626591aa1c68
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949214"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895888"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure Spring Cloud をプロビジョニングする
 
@@ -103,8 +103,8 @@ Write-Host "Press [ENTER] to continue..."
 このクイックスタートでは、ARM テンプレートを使用して Azure Spring Cloud インスタンスを既存の仮想ネットワークにデプロイし、デプロイを検証しました。 Azure Spring Cloud と Azure Resource Manager の詳細については、以下のリソースに進んでください。
 
 - 次のサンプル アプリケーションの 1 つを、次の場所からデプロイします。
-   * [MySQL 統合を使用した Pet Clinic アプリ](https://github.com/azure-samples/spring-petclinic-microservices) (MySQL バックエンドを使用したマイクロサービス)。
-   * [シンプルな Hello World](./quickstart.md?pivots=programming-language-java&tabs=Azure-CLI)。
+   - [MySQL 統合を使用した Pet Clinic アプリ](https://github.com/azure-samples/spring-petclinic-microservices) (MySQL バックエンドを使用したマイクロサービス)。
+   - [シンプルな Hello World](./quickstart.md?pivots=programming-language-java&tabs=Azure-CLI)。
 - [カスタム ドメイン](tutorial-custom-domain.md)と Azure Spring Cloud を併用します。
 - [Azure Application Gateway](expose-apps-gateway-azure-firewall.md) を使用して Azure Spring Cloud アプリケーションをインターネットに公開します。
 - [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/) に基づいた、セキュリティで保護されたエンドツーエンドの [Azure Spring Cloud の参照アーキテクチャ](reference-architecture.md)を参照してください。

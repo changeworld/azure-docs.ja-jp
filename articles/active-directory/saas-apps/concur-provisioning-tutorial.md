@@ -10,16 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca9585ab1b6d02cec5e9addbbd8ca230745a5838
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358214"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114370893"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>チュートリアル:Concur を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Concur にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Concur と Azure AD で実行する必要がある手順について説明します。
+
+> [!WARNING]
+> このプロビジョニング統合のサポートは終了しています。 結果的に、SAP Concur アプリケーションのプロビジョニング機能は、間もなく Azure Active Directory エンタープライズ アプリ ギャラリーから削除されます。 アプリケーションの SSO 機能はそのまま維持されます。 Microsoft は SAP Concur と連携して、最新式のプロビジョニング統合を構築するために取り組んでいますが、現在ではその実現時期は未定です。
 
 ## <a name="prerequisites"></a>前提条件
 

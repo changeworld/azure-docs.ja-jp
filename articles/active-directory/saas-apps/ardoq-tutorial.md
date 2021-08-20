@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 525a15e90b77a06a3a64a244b46010664767ff18
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b515fb22a81952794ac0914076fec67724759863
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964670"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457356"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ardoq"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Ardoq の統合
 
@@ -83,9 +83,7 @@ Ardoq に対して Azure AD SSO を構成してテストするには、次の手
     |------------|
     | `https://<CustomerName>.us.ardoq.com/saml/v2` |
     | `https://<CustomerName>.ardoq.com/saml/v2` |
-    |
-
-
+    
     b. **[応答 URL]** ボックスに、`https://<CustomerName>.ardoq.com/saml/v2` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
@@ -96,7 +94,6 @@ Ardoq に対して Azure AD SSO を構成してテストするには、次の手
     |-------------|
     | `https://<CustomerName>.ardoq.com/saml/v2` |
     | `https://<CustomerName>.us.ardoq.com/saml/v2` |
-    |
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Ardoq クライアント サポート チーム](mailto:support@ardoq.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -113,10 +110,11 @@ Ardoq に対して Azure AD SSO を構成してテストするには、次の手
     | assignedroles | user.assignedroles |
     | mail | User.mail |
 
-    > [!NOTE]
-    > Ardoq では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)を参照してください。
-
-
+  > [!NOTE]
+  > Ardoq では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを必ず設定します。 ロールは値 ("admin"、"writer"、"reader"、"contributor") で設定してください。
+  >
+  > [Azure AD でロールを構成する](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)方法をご確認ください。    
+ 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)

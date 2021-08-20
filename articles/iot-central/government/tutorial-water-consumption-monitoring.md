@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 959289de2fa10e9ce31ce71c8ea3fcb9e33d0951
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: df5752760dcb9968b44243fb4c2d2412698267df
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789299"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588995"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>チュートリアル:Azure IoT Central によって水消費量のモニタリング アプリケーションを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "109789299"
 
 > [!div class="checklist"]
 > * Azure IoT Central の水消費量のモニタリング テンプレートを使用して、水消費量のモニタリング アプリケーションを作成する。
-> * オペレーター ダッシュボードを探索してカスタマイズします。
+> * ダッシュボードをいろいろ試してみてからカスタマイズします。
 > * デバイス テンプレートを探索します。
 > * シミュレートされたデバイスを探索します。
 > * ルールを探索して構成します。
@@ -49,7 +49,7 @@ ms.locfileid: "109789299"
   
 
 1. **Water consumption monitoring (水消費量のモニタリング)** アプリケーション テンプレートを選択します。
-このテンプレートには、サンプルの水消費デバイス テンプレート、シミュレートされたデバイス、オペレーター ダッシュボード、事前構成済みのモニタリング ルールが含まれています。
+このテンプレートには、サンプルの水消費デバイス テンプレート、シミュレートされたデバイス、ダッシュボード、事前構成済みのモニタリング ルールが含まれています。
 
 1. **[アプリの作成]** を選択すると、次のフィールドがある **[新しいアプリケーション]** 作成フォームが開きます。
     * **アプリケーション名**:既定で、アプリケーションでは、*Water consumption monitoring* と、その後に Azure IoT Central が生成する一意の ID 文字列が使われます。 必要に応じて、わかりやすいアプリケーション名を選択します。 後でアプリケーション名を変更することもできます。
@@ -66,7 +66,7 @@ ms.locfileid: "109789299"
 
 水消費量のモニタリング アプリケーションでは、以下が事前に構成されています。
 
-* オペレーター ダッシュボードのサンプル。
+* サンプル ダッシュボード。
 * 定義済みの水流量とバルブ デバイス テンプレートのサンプル。
 * シミュレートされた水流量とスマート バルブ デバイス。
 * ルールおよびジョブ。
@@ -74,7 +74,7 @@ ms.locfileid: "109789299"
 
 これは自分のアプリケーションであるため、いつでも変更できます。 次に、アプリケーションを調べて、いくつかのカスタマイズを行います。
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>オペレーター ダッシュボードの探索とカスタマイズ
+## <a name="explore-and-customize-the-dashboard"></a>ダッシュボードをいろいろ試してみてからカスタマイズします
 
 アプリケーションを作成した後、サンプルの **[Wide World water consumption dashboard]\(Wide World の水消費量ダッシュボード\)** が開きます。
   
@@ -92,7 +92,7 @@ ms.locfileid: "109789299"
 * **Average water flow KPI (平均水流量 KPI) タイル**:この KPI タイルは、たとえば *過去 30 分間の平均* を表示するように構成されています。 KPI タイルをカスタマイズし、別の種類や時間の範囲に設定できます。
 * **デバイス コマンド タイル**:これらのタイルには、 **[Close valve]\(バルブを閉じる\)** 、 **[Open valve]\(バルブを開く\)** 、 **[Set valve position]\(バルブ位置の設定\)** タイルがあります。 コマンドを選択すると、シミュレートされたデバイスのコマンド ページに移動します。 Azure IoT Central では、"*コマンド*" は "*デバイス機能*" の種類です。 この概念については、このチュートリアルの[デバイス テンプレート](../government/tutorial-water-consumption-monitoring.md#explore-the-device-template)に関するセクションで後ほど説明します。
 
-* **Water distribution area map (配水域マップ)** :このマップでは Azure Maps が使用されており、Azure IoT Central で直接構成できます。 マップ タイルにデバイスの場所が表示されます。 マップの上にポインターを置いて、マップ上で "*ズームイン*"、"*ズームアウト*"、"*展開*" などのコントロールを試してみてください。
+* **Water distribution area map (配水域マップ)** :このマップでは Azure Maps が使用されており、Azure IoT Central で直接構成できます。 マップ タイルにデバイスの[場所](../core/howto-use-location-data.md)が表示されます。 マップの上にポインターを置いて、マップ上で "*ズームイン*"、"*ズームアウト*"、"*展開*" などのコントロールを試してみてください。
 
     :::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-dashboard-map.png" alt-text="水消費量のモニタリング ダッシュボードのマップ":::
 
@@ -109,7 +109,7 @@ ms.locfileid: "109789299"
 
     :::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-edit-dashboard.png" alt-text="ダッシュボードの編集":::
 
-詳細については、[ダッシュボードの作成とカスタマイズ](../core/howto-create-personal-dashboards.md)に関する記事をご覧ください。
+詳細については、[ダッシュボードの作成とカスタマイズ](../core/howto-manage-dashboards.md)に関する記事をご覧ください。
 
 ## <a name="explore-the-device-template"></a>デバイス テンプレートを探索する
 
@@ -146,7 +146,7 @@ Water consumption monitoring (水消費量のモニタリング) アプリケー
     Azure IoT Central では、デバイスに関連するプロパティを追加できます。 たとえば、クラウドのプロパティは、設置区域に固有のアラートしきい値、アセット情報、その他のメンテナンス情報などになります。
 1. **[保存]** を選択してすべての変更を保存します。
 
-詳細については、[クラウドのプロパティ](../core/quick-create-simulated-device.md#add-cloud-properties)に関する記事をご覧ください。
+詳細については、[クラウドのプロパティ](../core/concepts-device-templates.md#cloud-properties)に関する記事をご覧ください。
 
 
 ### <a name="views"></a>ビュー
@@ -155,20 +155,20 @@ Water consumption monitoring (水消費量のモニタリング) アプリケー
 
   ![デバイス テンプレートのビュー](./media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-device-template-views.png)
 
-詳細については、「[ビュー](../core/quick-create-simulated-device.md#views)」を参照してください。
+詳細については、「[ビュー](../core/concepts-device-templates.md#views)」を参照してください。
 
 ### <a name="publish-the-device-template"></a>デバイス テンプレートを公開する
 
 デバイス テンプレート ページに移動し、 **[公開]** を選択して、デバイス テンプレートに加えたすべての変更を保存します。
 
-詳細については、[テンプレートを公開する方法](../core/quick-create-simulated-device.md#publish-device-template)に関する記事をご覧ください。
+詳細については、[テンプレートを公開する方法](../core/howto-set-up-template.md#publish-a-device-template)に関する記事をご覧ください。
 
 ### <a name="create-a-new-device-template"></a>新しいデバイス テンプレートの作成
 
 新しいデバイス テンプレートを作成するには、 **[+ 新規]** を選択し、作成プロセスに従います。
 カスタム デバイス テンプレートを最初から作成することも、Azure デバイス カタログからデバイス テンプレートを選択することもできます。
 
-詳細については、[デバイス テンプレートを追加する方法](../core/quick-create-simulated-device.md#add-a-device-template)に関する記事をご確認ください。
+詳細については、[デバイス テンプレートを追加する方法](../core/howto-set-up-template.md)に関する記事をご確認ください。
 
 ## <a name="explore-simulated-devices"></a>シミュレートされたデバイスを探索する
 
@@ -195,7 +195,7 @@ Azure IoT Central では、シミュレートされたデバイスを作成し�
 
 新しいデバイスを追加するには、 **[デバイス]** タブの **[+ 新規]** を選択します。
 
-詳細については、[新しいデバイスを追加する方法](../core/quick-create-simulated-device.md#add-a-simulated-device)に関する記事をご覧ください。
+詳細については、「[デバイスの管理](../core/howto-manage-devices-individually.md)」を参照してください。
 
 ## <a name="explore-rules"></a>ルールを確認する
 
@@ -243,7 +243,7 @@ Azure IoT Central では、ジョブを使用して、複数のデバイスで�
 1. 左側のペインで、 **[ジョブ]** を選択します。
 1. **[+ 新規]** を選択し、1 つまたは複数のジョブを構成します。
 
-詳細については、[ジョブの実行方法](../core/howto-run-a-job.md)に関する記事をご覧ください。
+詳細については、[ジョブの実行方法](../core/howto-manage-devices-in-bulk.md)に関する記事をご覧ください。
 
 ## <a name="customize-your-application"></a>アプリケーションのカスタマイズ
 

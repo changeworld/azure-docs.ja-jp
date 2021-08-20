@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 03/11/2021
-ms.openlocfilehash: 573e0dc028391c2eea9d412bfe68c07a2e95aec3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 43d702f3294d728b196de69790f543dc67491400
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963134"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433946"
 ---
 # <a name="quickstart-create-a-serverless-simple-chat-application-with-azure-functions-and-azure-web-pubsub-service"></a>クイックスタート: Azure Functions と Azure Web PubSub サービスを使用してシンプルなサーバーレス チャット アプリケーションを作成する 
 
@@ -27,6 +27,12 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
    > サポートされているバージョンの Node.js の詳細については、[Azure Functions ランタイム バージョンのドキュメント](../azure-functions/functions-versions.md#languages)を参照してください。
 
 Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 2.7.1505 以降) をインストールします。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+コード エディター ([Visual Studio Code](https://code.visualstudio.com/) など) をインストールします。
+
+Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 3 以降) をインストールします。
 
 ---
 
@@ -51,6 +57,8 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 - ブラウザーで **Azure portal** を開き、先ほどデプロイした Web PubSub サービス インスタンスが正常に作成されていることを確認します。 そのインスタンスに移動します。
 - **[キー]** を選択し、接続文字列をコピーします。
 
+:::image type="content" source="media/quickstart-serverless/copy-connection-string.png" alt-text="Web PubSub 接続文字列のコピーのスクリーンショット。":::
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 - 関数の構成を更新する。
@@ -59,7 +67,7 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
   これらの変更を *local.settings.json* に加えたら、ファイルを保存します。
     - プレース ホルダー *<connection-string>* は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
     - **`AzureWebJobsStorage`** の設定には、これが必須となります。[Azure Functions には Azure ストレージ アカウントが必要](../azure-functions/storage-considerations.md)であるためです。
-        - Azure ストレージ エミュレーターがローカルで実行されている場合、"UseDevelopmentStorage=true" という元の設定を維持します。
+        - [Azure ストレージ エミュレーター](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)がローカルで実行されている場合、"UseDevelopmentStorage=true" という元の設定を維持します。
         - Azure ストレージの接続文字列がある場合は、その値に置き換えます。
  
 - フォルダーに JavaScript 関数が編成されます。 各フォルダーには、関数で使用されるバインディングを定義する `function.json` と、関数の本体である `index.js` という 2 つのファイルがあります。 この関数アプリには、トリガーによって作動する関数がいくつかあります。
@@ -76,11 +84,39 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
     func start
     ```
 
+# <a name="c"></a>[C#](#tab/csharp)
+
+- 関数の構成を更新する。
+
+  クローンしたリポジトリで */samples/functions/csharp/simplechat* フォルダーを開きます。 *local.settings.json* を編集して、サービスの接続文字列を追加します。
+  これらの変更を *local.settings.json* に加えたら、ファイルを保存します。
+    - プレース ホルダー *<connection-string>* は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
+    - **`AzureWebJobsStorage`** の設定には、これが必須となります。[Azure Functions には Azure ストレージ アカウントが必要](../azure-functions/storage-considerations.md)であるためです。
+        - [Azure ストレージ エミュレーター](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)がローカルで実行されている場合、"UseDevelopmentStorage=true" という元の設定を維持します。
+        - Azure ストレージの接続文字列がある場合は、その値に置き換えます。
+
+- C# 関数はファイル Functions.cs で整理されます。 この関数アプリには、トリガーによって作動する関数がいくつかあります。
+
+    - **login** - これは HTTP によってトリガーされる関数です。 *webPubSubConnection* 入力バインディングを使用して、有効なサービス接続情報を生成して返します。
+    - **connected** - これは `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、接続されているすべてのクライアント アプリケーションにメッセージを、複数のタスクでブロードキャストします。
+    - **broadcast** - これは `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、接続されているすべてのクライアント アプリケーションにメッセージを、1 つのタスクでブロードキャストします。
+    - **connect** と **disconnect** - これらは `WebPubSubTrigger` によってトリガーされる関数です。 接続を処理し、イベントを切断します。
+
+- ターミナルで、現在のフォルダーが */samples/functions/csharp/simplechat* であることを確認します。 拡張機能をインストールし、関数アプリを実行します。
+
+    ```bash
+    func extensions install
+
+    func start
+    ```
+
+---
+
 - ローカル関数では、`local.settings.json` ファイルに定義されているポートが使用されます。 それを公衆ネットワークから利用できるようにするためには、[ngrok](https://ngrok.com) を使用して、このエンドポイントを公開する必要があります。 次のコマンドを実行すると、転送エンドポイント (例: http://{ngrok-id}.ngrok.io -> http://localhost:7071 ) が返されます。
 
     ```bash
     ngrok http 7071
-    ```    
+    ``` 
 
 - Azure Web PubSub サービスに `Event Handler` を設定します。 **Azure portal** に移動して、自分の Web PubSub リソースを見つけ、 **[設定]** に移動します。 次のように、新しいハブ設定と使用中の 1 つの関数とのマッピングを追加します。 {ngrok-id} は、実際の文字列に置き換えてください。
 
@@ -89,7 +125,7 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
    - ユーザー イベント パターン: *
    - システム イベント: connect、connected、disconnected
 
----
+:::image type="content" source="media/quickstart-serverless/set-event-hanlder.png" alt-text="イベント ハンドラーの設定のスクリーンショット。":::
 
 ## <a name="run-the-web-application"></a>Web アプリケーションの実行
 
@@ -114,3 +150,16 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 1. 表示されたウィンドウでリソース グループを選択し、 **[リソース グループの削除]** を選択します。
 
 1. 新しいウィンドウで、削除するリソース グループの名前を入力し、 **[削除]** を選択します。
+
+## <a name="next-steps"></a>次のステップ
+
+このクイックスタートでは、サーバーレスのシンプルなチャット アプリケーションを実行する方法について説明しました。 これで、独自のアプリケーションの作成を始められます。 
+
+> [!div class="nextstepaction"]
+> [クイックスタート: Azure Web PubSub で簡単なチャットルームを作成する](https://azure.github.io/azure-webpubsub/getting-started/create-a-chat-app/js-handle-events)
+
+> [!div class="nextstepaction"]
+> [Azure Functions の Azure Web PubSub バインディング](https://azure.github.io/azure-webpubsub/references/functions-bindings)
+
+> [!div class="nextstepaction"]
+> [Azure Web PubSub のサンプルをさらに確認する](https://github.com/Azure/azure-webpubsub/tree/main/samples)
