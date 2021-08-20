@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 06a42629df1f22eeb7a90ef5ce4da2ef53162391
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 970329753d6dd6c6175c26da4288c304e27e3982
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123161"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237607"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 
@@ -51,17 +51,17 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     画面の上部に、コンプライアンスの状態の概要と、サポートされる一連のコンプライアンス規制を示すダッシュボードが表示されます。 お客様の全体的なコンプライアンス スコアのほか、それぞれの標準に関連した合否評価の件数を確認できます。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード。" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. お客様に関連するコンプライアンス標準のタブを選択します (1)。 標準が適用されているサブスクリプション (2) と、その標準に関するすべての制御の一覧 (3) が表示されます。 該当する制御について、その制御に関連付けられた合否評価の詳細 (4) と、影響を受けたリソースの数 (5) を確認できます。 一部の制御は淡色表示されます。それらの制御には、Security Center の評価が関連付けられていません。 それらの要件を確認し、実際の環境でそれらを評価してください。 そうしたものの中には、技術的なものではなくプロセスに関連したものがあります。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="特定の標準に対するコンプライアンスの詳細を調べる":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="特定の標準に対するコンプライアンスの詳細を調べる。":::
 
 1. 特定の標準について、現在のコンプライアンスの状態をまとめた PDF レポートを生成するには、 **[レポートのダウンロード]** を選択します。
 
     このレポートは、Security Center の評価データに基づいて、選択した標準のコンプライアンス状態の概要を提供します。 レポートは、その特定の標準の制御に従って編成されています。 レポートは直接の利害関係者と共有することができ、内部および外部の監査員に対する証拠を提供するために利用できます。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="コンプライアンス レポートのダウンロード":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="コンプライアンス レポートのダウンロード。":::
 
 ## <a name="improve-your-compliance-posture"></a>コンプライアンス体制を強化する
 
@@ -71,11 +71,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1.  特定のリソースを選択すると、そのリソースの情報がさらに詳しく表示され、推奨事項を解決することができます。 <br>たとえば、**Azure CIS 1.1.0** 標準では、**仮想マシンでディスク暗号化を適用する必要がある** という推奨事項を選択できます。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="標準から推奨事項を選択すると、推奨事項の詳細ページに直接移動します":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="標準から推奨事項を選択すると、推奨事項の詳細ページに直接移動します。":::
 
 1. この例では、推奨事項の詳細ページから **[アクションの実行]** を選択すると、Azure portal の Azure Virtual Machine ページが表示されます。ここで、 **[セキュリティ]** タブから暗号化を有効にすることができます。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="推奨事項の詳細ページにある [アクションの実行] ボタンをクリックすると、修復オプションが表示されます":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="推奨事項の詳細ページにある [アクションの実行] ボタンをクリックすると、修復オプションが表示されます。":::
 
     レコメンデーションの適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 
@@ -93,15 +93,15 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 - **連続したストリーム** として、規制コンプライアンス データをエクスポートします。
 
-    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-stream.png" alt-text="規制コンプライアンス データのストリームを連続的にエクスポートする" lightbox="media/security-center-compliance-dashboard/export-compliance-data-stream.png":::
+    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-stream.png" alt-text="規制コンプライアンス データのストリームを継続的にエクスポートする。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-stream.png":::
 
 - 規制コンプライアンス データの **週単位のスナップショット** をエクスポートします。
 
-    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="規制コンプライアンス データの週単位のスナップショットを連続的にエクスポートする" lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
+    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="規制コンプライアンス データの週単位のスナップショットを継続的にエクスポートする。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
 
 コンプライアンス データの **PDF または CSV レポート** を、規制コンプライアンス ダッシュボードから直接エクスポートすることもできます。
 
-:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="規制コンプライアンス データを PDF または CSV レポートとしてエクスポートする" lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
+:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="規制コンプライアンス データを PDF または CSV レポートとしてエクスポートする。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
 
 詳細については、「[Security Center のデータを連続的にエクスポートする](continuous-export.md)」を参照してください。
 
@@ -112,7 +112,7 @@ Security Center のワークフロー自動化機能を使用すると、規制�
 
 たとえば、コンプライアンス評価が失敗したときに Security Center から特定のユーザーにメールが送信されるようにすることができます。 まず、ロジック アプリを作成する必要があります ([Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用)。次に、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」で説明されているように、新しいワークフロー自動化でトリガーを設定します。
 
-:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="規制コンプライアンス評価の変更を使用した、ワークフロー自動化のトリガー" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="規制コンプライアンス評価の変更を使用した、ワークフロー自動化のトリガー。" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 
@@ -168,7 +168,7 @@ Azure CIS 1.3.0、NIST SP 800-53、NIST SP 800-171、SWIFT CSP CSCF-v2020、UK O
 ### <a name="how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard"></a>ダッシュボードの標準ごとの成功および失敗した制御を示すレポートを表示する方法はありますか?
 メイン ダッシュボードでは、(1) ダッシュボード内でコンプライアンス対応の最も低い標準の "上位 4 件" について成功および失敗した制御のレポートを表示できます。 成功および失敗したすべての制御の状態を表示するには、(2) **[Show all *x*]\(x 件をすべて表示\)** を選択します (x は、追跡している標準の数です)。 コンテキスト プレーンに、追跡しているすべての標準のそれぞれについてコンプライアンス状態が表示されます。
 
-:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="規制コンプライアンス ダッシュボードの概要セクション":::
+:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="規制コンプライアンス ダッシュボードの概要セクション。":::
 
 
 ### <a name="how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf"></a>PDF 以外の形式でコンプライアンス データを含むレポートをダウンロードする方法はありますか?

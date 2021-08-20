@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: daveba
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 06/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de1cc69b3cfdac307edf6dfe999a5d538c2cb811
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 202cbca5795ef877794c42f1fcc57c51835e5118
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89263180"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966394"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
 
@@ -85,14 +86,18 @@ ms.locfileid: "89263180"
 このセクションでは、Azure Storage コンテナーへのアクセスを VM に許可する方法を説明します。 VM のシステム割り当てマネージド ID を使用して、Azure Storage Blob のデータを取得できます。
 
 1. 新たに作成したストレージ アカウントに戻ります。
-2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。
-3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します。
-4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者]** を選択します。
-5. 次のドロップダウンで、 **[アクセスの割り当て先]** として **[仮想マシン]** を選択します。
-6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、 **[リソース グループ]** を **[すべてのリソース グループ]** に設定します。
-7. **[選択]** で、VM を選択し、 **[保存]** をクリックします。
+1. **[アクセス制御 (IAM)]** をクリックします。
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ページを開きます。
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | ストレージ BLOB データ閲覧者 |
+    | アクセスの割り当て先 | マネージド ID |
+    | システム割り当て | 仮想マシン |
+    | Select | &lt;お使いの仮想マシン&gt; |
 
-    ![アクセス許可の割り当て](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ## <a name="access-data"></a>データにアクセスする 
 

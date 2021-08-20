@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: ecbad0a8c23bd2781373923ffa470a06509ee852
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 29a7865a06fd96ce4d27892775fb5af728633a02
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038744"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982476"
 ---
 # <a name="microsoft-news-recommendation"></a>Microsoft News Recommendation
 
@@ -102,7 +102,7 @@ entity_embedding.vec と relation_embedding.vec の各ファイルには、Trans
 
 ## <a name="storage-location"></a>保存先
 
-データは、米国西部または米国東部データ センターにある BLOB の、次の BLOB コンテナーに格納されます: https://mind201910small.blob.core.windows.net/release/。
+データは、米国西部または米国東部データ センターにある BLOB の、次の BLOB コンテナーに格納されます: "https://mind201910small.blob.core.windows.net/release/"。
 
 コンテナー内には、トレーニング セットと検証セットがそれぞれ MINDlarge_train.zip と MINDlarge_dev.zip に圧縮されています。
 

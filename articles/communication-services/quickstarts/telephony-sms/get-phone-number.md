@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Azure Communication Services を使用して電話番号を管理する
+title: クイックスタート - Azure Communication Services を使用して電話番号を取得して管理する
 description: Azure Communication Services を使用して電話番号を管理する方法について説明します
 author: prakulka
 manager: nmurav
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 zone_pivot_groups: acs-azp-java-net-python-csharp-js
-ms.openlocfilehash: fb5aafa3146c2935a3092ec1660aec86d1e086a7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: c03633425a962b1d67b61fc32be89d88fe08ef7b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110933"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448584"
 ---
-# <a name="quickstart-manage-phone-numbers"></a>クイックスタート: 電話番号を管理する
+# <a name="quickstart-get-and-manage-phone-numbers"></a>クイックスタート: 電話番号の取得と管理
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 

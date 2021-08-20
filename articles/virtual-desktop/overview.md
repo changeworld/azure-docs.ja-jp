@@ -3,15 +3,15 @@ title: Azure Virtual Desktop とは - Azure
 description: Azure Virtual Desktop の概要。
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/14/2020
+ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 76d6574be61b7d1cd92733496d335c64d64bf7a1
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 773e0053512026f6a92a2981d43340b68e708186
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031393"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113757704"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>Azure Virtual Desktop とは
 
@@ -38,7 +38,7 @@ Azure Virtual Desktop に関するその他のビデオについては、[プレ
 
 Azure Virtual Desktop を使用すると、スケーラブルで柔軟な環境を設定することができます。
 
-* ゲートウェイ サーバーを追加で稼働させることなく、Azure サブスクリプション内に完全な仮想デスクトップ環境を作成できます。
+* ゲートウェイ サーバーを一切稼働させることなく、Azure サブスクリプション内に完全な仮想デスクトップ環境を作成できます。
 * 多種多様なワークロードに対応するうえで必要なホスト プールをいくつでも公開できます。
 * Azure ギャラリーから独自のイメージを取得して運用ワークロードに使用したり、テストしたりできます。
 * プールしたマルチセッション リソースを使ってコストを節約できます。 Azure Virtual Desktop 限定の新しい Windows 10 Enterprise マルチセッション機能と、Windows Server 上のリモート デスクトップ セッション ホスト (RDSH) ロールを併用すれば、ユーザーにこれまでと同じリソースを提供しつつ、仮想マシンの数やオペレーティング システム (OS) のオーバーヘッドを大幅に削減できます。
@@ -85,7 +85,7 @@ Azure Virtual Desktop に接続するためのユーザー要件は次のとお�
 
 Azure Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
-* [標準ドメイン参加済み](../active-directory-domain-services/compare-identity-solutions.md)または [Hybrid AD 参加済み](../active-directory/devices/hybrid-azuread-join-plan.md)であること。 仮想マシンを Azure AD に参加させることはできません。
+* [標準ドメイン参加済み](../active-directory-domain-services/compare-identity-solutions.md)または [Hybrid AD 参加済み](../active-directory/devices/hybrid-azuread-join-plan.md)であること。 [Azure AD 参加済み](deploy-azure-ad-joined-vm.md)の仮想マシンがプレビューでご利用いただけます。
 * 次のいずれかの[サポート対象となる OS イメージ](#supported-virtual-machine-os-images)を実行していること。
 
 >[!NOTE]
@@ -93,7 +93,7 @@ Azure Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件
 
 Azure Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧については、「[必要な URL リスト](safe-url-list.md)」を参照してください。
 
-Azure Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 デスクトップとアプリは任意の Azure リージョン内の仮想マシン (VM) にデプロイでき、これらの VM の管理ソリューションとデータは米国に配置されます。 このため、米国を宛先とするデータ転送が発生することがあります。
+Azure Virtual Desktop には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションが含まれています。 デスクトップとアプリは任意の Azure リージョン内の仮想マシン (VM) にデプロイでき、これらの VM の管理ソリューションとデータは米国に配置されます。 このため、米国を宛先とするデータ転送が発生することがあります。
 
 最適なパフォーマンスを実現するために、お使いのネットワークが次の要件を満たしていることを確認してください。
 
@@ -130,7 +130,7 @@ Azure Virtual Desktop は、[Microsoft ライフサイクル ポリシー](/life
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Azure Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、Windows 10 LTSB、Windows 10 LTSC、Windows 10 Pro、または Windows 10 Enterprise KN オペレーティング システム イメージはサポートされていません。 また、Windows 7 では、セクター サイズの制限により、マネージド Azure Storage でホストされている VHD または VHDX ベースのプロファイル ソリューションもサポートされていません。
+Azure Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、Windows 10 LTSB、Windows 10 LTSC、Windows 10 Pro、および Windows 10 Enterprise KN のオペレーティング システム イメージはサポートされていません。 また、Windows 7 では、セクター サイズの制限により、マネージド Azure Storage でホストされている VHD または VHDX ベースのプロファイル ソリューションもサポートされていません。
 
 利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。
 

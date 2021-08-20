@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 05/08/2021
-ms.openlocfilehash: 3ead96a49e2bacca526cd9ee3b8c8e00abbba426
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 655314720975738ebdbddb009d6d31ad7a322e72
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656292"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552255"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の登録とスキャン
 
@@ -25,10 +25,6 @@ Azure SQL Database Managed Instance データ ソースでは、以下の機能�
 - Azure SQL Database Managed Instance のメタデータと分類をキャプチャする **完全および増分スキャン**。
 
 - ADF コピーとデータフロー アクティビティのためのデータ アセット間の **系列**。
-
-### <a name="known-limitations"></a>既知の制限事項
-
-Azure Purview では、Azure SQL Managed Instance の[ビュー](/sql/relational-databases/views/views?view=azuresqldb-mi-current&preserve-view=true)のスキャンはサポートされていません。
 
 ## <a name="prerequisites"></a>必須コンポーネント
 
@@ -97,7 +93,7 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) で自分のサービス プリンシパルに移動します
-1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
+1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
@@ -125,7 +121,35 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 
     例: `foobar.public.123.database.windows.net,3342`
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+
+新しいスキャンを作成して実行するには、次の操作を行います。
+
+1. Purview Studio の左側にあるペインで **[Data Map]** タブを選択します。
+
+1. 自分が登録した Azure SQL Database Managed Instance ソースを選択します。
+
+1. **[新しいスキャン]** を選択します。
+
+1. 対象のデータ ソースに接続するための資格情報を選択します。
+
+   :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/set-up-scan-sql-mi.png" alt-text="スキャンを設定する":::
+
+1. リストから適切な項目を選択することによって、特定のテーブルに対するスキャンの範囲を指定することができます。
+
+   :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/scope-your-scan.png" alt-text="スキャンの範囲を指定する":::
+
+1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
+
+   :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/scan-rule-set.png" alt-text="スキャン ルール セット":::
+
+1. スキャン トリガーを選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+
+   :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/trigger-scan.png" alt-text="trigger":::
+
+1. スキャンを確認し、 **[保存および実行]** を選択します。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 > [!NOTE]
 > スキャンを削除しても、以前の Azure SQL Database Managed Instance スキャンからアセットは削除されません。

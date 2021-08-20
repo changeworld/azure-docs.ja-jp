@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 8e7d024d4d5b1e058e7a0b895faae5d2e7425f44
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f2e6918e6cdc6eb87fe80e9110183ed5a0a3693b
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472129"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106715"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>チュートリアル:登録グループを使って複数の X.509 デバイスをプロビジョニングする
 
@@ -248,6 +248,10 @@ Azure IoT Device Provisioning Service では、デバイスのプロビジョニ
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>ルート証明書の所有権を検証する
 
+> [!NOTE]
+> 2021 年 7 月 1 日より、[自動検証](how-to-verify-certificates.md#automatic-verification-of-intermediate-or-root-ca-through-self-attestation)による証明書の自動検証を実行できます。
+>
+
 1. 「[X.509 証明書のパブリック部分を登録して確認コードを取得する](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)」の説明に従ってルート証明書 (`./certs/azure-iot-test-only.root.ca.cert.pem`) をアップロードし、DPS から確認コードを取得します。
 
 2. DPS からルート証明書の確認コードを取得したら、証明書スクリプトの作業ディレクトリから次のコマンドを実行し、検証証明書を生成します。
@@ -328,7 +332,7 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
     | **構成証明の種類** | **[証明書]** を選択します。 |
     | **IoT Edge デバイス** | **[偽]** を選択します。 |
     | **証明書の種類** | **[中間証明書]** を選択します。 |
-    | **プライマリ証明書の .pem ファイルまたは .cer ファイル** | 既に作成した中間証明書 ( *./certs/azure-iot-test-only.intermediate.cert.pem*) の場所を指定します。 |
+    | **プライマリ証明書の .pem ファイルまたは .cer ファイル** | 既に作成した中間証明書 ( *./certs/azure-iot-test-only.intermediate.cert.pem*) の場所を指定します。 この中間証明書は、既にアップロードして検証したルート証明書によって署名されています。 DPS は、検証の済んだルートを信頼します。 DPS は、この登録グループに用意されている中間が信頼されたルートによって本当に署名されていることを確認できます。 DPS は、そのルート証明書によって真に署名された各中間証明書を信頼するため、中間者によって署名されたリーフ証明書を検証および信頼できます。  |
 
 
 ## <a name="configure-the-provisioning-device-code"></a>デバイスのプロビジョニング コードを構成する
