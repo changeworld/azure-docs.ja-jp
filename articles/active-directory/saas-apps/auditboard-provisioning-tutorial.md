@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/21/2021
 ms.author: thwimmer
-ms.openlocfilehash: 04c9114b850959b5c7ade00f94803d8423f57d88
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 8050b5352658412aaa156b1e48290810e45a5894
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764827"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323439"
 ---
 # <a name="tutorial-configure-auditboard-for-automatic-user-provisioning"></a>チュートリアル: AuditBoard を構成し、自動ユーザー プロビジョニングに対応させる
 
