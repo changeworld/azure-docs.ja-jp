@@ -1,25 +1,28 @@
 ---
 title: Azure SignalR Service サーバーレス クイックスタート - Python
-description: Python から Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
+description: Azure SignalR Service と Azure Functions で Python を使用して、GitHub のスターの数を表示するアプリを作成するクイックスタート。
 author: anthonychu
 ms.author: antchu
-ms.date: 12/14/2019
+ms.date: 06/09/2021
 ms.topic: quickstart
 ms.service: signalr
 ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: bfaf0463f1ee4904562a5d7b3dd565c9d149ff35
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 46c15f932f55883be66745d415820767089ae0f1
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124835"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462003"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>クイック スタート:Python を使用した Azure Functions と SignalR Service によるチャット ルームの作成
+# <a name="quickstart-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service-using-python"></a>クイック スタート: Azure Functions と SignalR Service で Python を使用して、GitHub のスターの数を表示するアプリを作成する
 
-Azure SignalR Service を使用すると、アプリケーションにリアルタイム機能を簡単に追加できます。 Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このクイック スタートでは、SignalR Service および Functions を使用して、サーバーレスかつリアルタイムのチャット アプリケーションを構築する方法を説明します。
+Azure SignalR Service を使用すると、アプリケーションにリアルタイム機能を簡単に追加できます。 Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このクイックスタートでは、SignalR Service と Azure Functions を使用して、Python を用いてサーバーレス アプリケーションを構築し、クライアントにメッセージをブロードキャストする方法について説明します。
+
+> [!NOTE]
+> この記事に記載されているコードはすべて、[GitHub](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/QuickStartServerless/python) で入手することができます
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,68 +48,190 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
 
-[!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
+## <a name="setup-and-run-the-azure-function-locally"></a>Azure Functions をローカルで設定して実行する
 
-## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
-
-1. Azure portal を開いているブラウザーのポータルの上部にある検索ボックスから、以前にデプロイした SignalR Service インスタンスの名前で検索し、インスタンスが正常に作成されたことを確認します。 インスタンスを選択して開きます。
-
-    ![SignalR Service インスタンスの検索](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
-
-1. **[Key]\(キー\)** を選択し、SignalR Service インスタンスの接続文字列を表示します。
-
-1. プライマリ接続文字列を選択してコピーします。
-
-    ![プライマリ接続文字列を選択してコピーします。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
-
-1. コード エディターで、複製したリポジトリの *src/chat/python* フォルダーを開きます。
-
-1. Python 関数をローカルで開発し、テストするには、Python 3.6 または 3.7 環境で作業する必要があります。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
-
-    **Linux または macOS:**
+1. Azure Function Core Tools がインストールされていることを確認します。 空のディレクトリを作成し、コマンド ラインを使用してディレクトリに移動します。
 
     ```bash
-    python3.7 -m venv .venv
-    source .venv/bin/activate
+    # Initialize a function project
+    func init --worker-runtime python
     ```
 
-    **Windows:**
+2. プロジェクトを初期化した後、関数を作成する必要があります。 このサンプルでは、3 つの関数を作成する必要があります。
 
-    ```powershell
-    py -3.7 -m venv .venv
-    .venv\scripts\activate
+    1. 以下のコマンドを実行して、クライアント用の Web ページをホストする `index` 関数を作成します。
+
+        ```bash
+        func new -n index -t HttpTrigger
+        ```
+        
+        `index/__init__.py` を開いて次のコードをコピーします。
+
+        ```javascript
+        import os
+    
+        import azure.functions as func
+        
+        
+        def main(req: func.HttpRequest) -> func.HttpResponse:
+            f = open(os.path.dirname(os.path.realpath(__file__)) + '/../content/index.html')
+            return func.HttpResponse(f.read(), mimetype='text/html')
+        ```
+    
+    2. クライアントでアクセス トークンを取得するための `negotiate` 関数を作成します。
+    
+        ```bash
+        func new -n negotiate -t SignalRNegotiateHTTPTrigger
+        ```
+        
+        `negotiate/function.json` を開いて次の JSON コードをコピーします。
+    
+        ```json
+        {
+          "scriptFile": "__init__.py",
+          "bindings": [
+            {
+              "authLevel": "function",
+              "type": "httpTrigger",
+              "direction": "in",
+              "name": "req",
+              "methods": [
+                "post"
+              ]
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "$return"
+            },
+            {
+              "type": "signalRConnectionInfo",
+              "name": "connectionInfo",
+              "hubName": "serverless",
+              "connectionStringSetting": "AzureSignalRConnectionString",
+              "direction": "in"
+            }
+          ]
+        }
+        ```
+
+        次に `negotiate/__init__.py` を開いて次のコードをコピーします。
+
+        ```python
+        import azure.functions as func
+    
+        
+        def main(req: func.HttpRequest, connectionInfo) -> func.HttpResponse:
+            return func.HttpResponse(connectionInfo)
+        ```
+    
+    3. すべてのクライアントにメッセージをブロードキャストするための `broadcast` 関数を作成します。 このサンプルでは、時間トリガーを使用してメッセージを定期的にブロードキャストします。
+    
+        ```bash
+        func new -n broadcast -t TimerTrigger
+        # install requests
+        pip install requests
+        ```
+    
+        `broadcast/function.json` を開いて次のコードをコピーします。
+    
+        ```json
+        {
+          "scriptFile": "__init__.py",
+          "bindings": [
+            {
+              "name": "myTimer",
+              "type": "timerTrigger",
+              "direction": "in",
+              "schedule": "*/5 * * * * *"
+            },
+            {
+              "type": "signalR",
+              "name": "signalRMessages",
+              "hubName": "serverless",
+              "connectionStringSetting": "AzureSignalRConnectionString",
+              "direction": "out"
+            }
+          ]
+        }
+        ```
+    
+        `broadcast/__init__.py` を開いて次のコードをコピーします。
+    
+        ```python
+        import requests
+        import json
+        
+        import azure.functions as func
+        
+        
+        def main(myTimer: func.TimerRequest, signalRMessages: func.Out[str]) -> None:
+            headers = {'User-Agent': 'serverless'}
+            res = requests.get('https://api.github.com/repos/azure/azure-signalr', headers=headers)
+            jres = res.json()
+        
+            signalRMessages.set(json.dumps({
+                'target': 'newMessage',
+                'arguments': [ 'Current star count of https://github.com/Azure/azure-signalr is: ' + str(jres['stargazers_count']) ]
+            }))
+        ```
+
+3. このサンプルのクライアント インターフェイスは Web ページです。 `index` 関数の `content/index.html` から HTML コンテンツを読み込むと考え、`content` ディレクトリに `index.html` というファイルを新規に作成します。 そして、次の内容をコピーします。
+
+    ```html
+    <html>
+    
+    <body>
+      <h1>Azure SignalR Serverless Sample</h1>
+      <div id="messages"></div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+      <script>
+        let messages = document.querySelector('#messages');
+        const apiBaseUrl = window.location.origin;
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl(apiBaseUrl + '/api')
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+          connection.on('newMessage', (message) => {
+            document.getElementById("messages").innerHTML = message;
+          });
+    
+          connection.start()
+            .catch(console.error);
+      </script>
+    </body>
+    
+    </html>
     ```
+    
+4. もう少しで完了です。 最後の手順では、Azure Functions の設定に SignalR Service の接続文字列を設定します。
 
-1. *local.settings.sample.json* を *local.settings.json* に変更します。
+    1. Azure portal を開いているブラウザーのポータルの上部にある検索ボックスから、以前にデプロイした SignalR Service インスタンスの名前で検索し、インスタンスが正常に作成されたことを確認します。 インスタンスを選択して開きます。
 
-1. **local.settings.json** で、**AzureSignalRConnectionString** 設定に接続文字列の値を貼り付けます。 ファイルを保存します。
+        ![SignalR Service インスタンスの検索](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. フォルダーに Python 関数が編成されます。 各フォルダーには、関数で使用されるバインディングを定義する *function.json* と、関数の本体である *\_\_init\_\_.py* という 2 つのファイルがあります。 この関数アプリには、HTTP によってトリガーされる関数が 2 つあります。
+    1. **[Key]\(キー\)** を選択し、SignalR Service インスタンスの接続文字列を表示します。
+    
+        ![プライマリ接続文字列が強調表示されているスクリーンショット。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-    - **negotiate** - *SignalRConnectionInfo* 入力バインディングを使用し、有効な接続情報を生成して返却します。
-    - **messages** - 要求本文でチャット メッセージを受信し、*SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
-
-1. 仮想環境がアクティブになっているターミナルで、*src/chat/python* フォルダーにいることを確認します。 PIP を使用して、必要な Python パッケージをインストールします。
-
-    ```bash
-    python -m pip install -r requirements.txt
-    ```
-
-1. 関数アプリを実行します。
+    1. プライマリ接続文字列をコピーします。 そして、以下のコマンドを実行します。
+    
+        ```bash
+        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        ```
+    
+5. Azure Functions をローカルで実行します:
 
     ```bash
     func start
     ```
 
-    ![関数アプリを実行する](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
-    
-問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
+    その後、Azure Functions がローカルで実行されます。 ブラウザーから `http://localhost:7071/api/index` にアクセスすると、現在の開始カウントを確認できます。 また、GitHub でスターを付けたり外したりすると、数秒ごとにスターのカウントが更新されます。
 
-[!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
-
-問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qspython)。
+    > [!NOTE]
+    > SignalR のバインディングには Azure Storage が必要ですが、Function がローカルで動作している場合は、ローカル ストレージ エミュレーターを使用することができます。
+    > `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` のようなエラーが発生した場合は、[Storage Emulator](../storage/common/storage-use-emulator.md) をダウンロードして有効にする必要があります
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -114,7 +239,14 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、VS Code でリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次は、VS Code から Azure Functions をデプロイする方法を詳しく学びます。
+このクイックスタートでは、リアルタイムのサーバーレス アプリケーションを構築してローカルで実行しました。 Azure Functions で SignalR Service のバインディングを使用する方法について確認します。
+次に、SignalR Service を使用して、クライアントと Azure Functions の間で双方向通信を行う方法について詳しく説明します。
+
+> [!div class="nextstepaction"]
+> [Azure Functions における SignalR サービスのバインド](../azure-functions/functions-bindings-signalr-service.md)
+
+> [!div class="nextstepaction"]
+> [サーバーレスでの双方向通信](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/BidirectionChat)
 
 > [!div class="nextstepaction"]
 > [VS Code で Azure Functions をデプロイする](/azure/developer/javascript/tutorial-vscode-serverless-node-01)

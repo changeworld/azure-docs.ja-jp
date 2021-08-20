@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/07/2020
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 8e88fb2f6f2fc9ad50911bfda2245cd95ae33236
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: fe1397b2853e95af715e4feb8423f7db3cf548f0
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058750"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219970"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro をアクティブにする
 
@@ -92,6 +92,26 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 デバイスのアクティブ化は完了しました。 これで、デバイスで共有を追加できます。
 
 アクティベーション中に問題が発生した場合は、[アクティベーションと Azure Key Vault のエラーのトラブルシューティング](azure-stack-edge-gpu-troubleshoot-activation.md#activation-errors)に関する記事を参照してください。
+
+
+
+## <a name="deploy-workloads"></a>ワークロードのデプロイ
+
+デバイスをアクティブ化したら、次のステップはワークロードのデプロイです。
+
+- VM ワークロードをデプロイするには、[Azure Stack Edge 上の VM に関する記事](azure-stack-edge-gpu-virtual-machine-overview.md)と、関連する VM デプロイのドキュメントを参照してください。
+- ネットワーク関数をマネージド アプリケーションとしてデプロイするには:
+    - Azure Stack Edge リソースにリンクされた Azure Network Function Manager (NFM) のデバイス リソースを作成していることを確認してください。 デバイス リソースには、Azure Stack Edge デバイスにデプロイされたすべてのネットワーク機能が集約されています。 詳細な手順については、[チュートリアル: Network Function Manager Device リソースを作成する (プレビュー)](../network-function-manager/create-device.md) に関する記事を参照してください。 
+    - その後、[チュートリアル: Azure Stack Edge でネットワーク関数をデプロイする (プレビュー)](../network-function-manager/deploy-functions.md) の手順に従って、Network Function Manager をデプロイします。
+- IoT Edge と Kubernetes ワークロードをデプロイするには:
+    - まずは、[チュートリアル: Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)の説明に従って、コンピューティングを構成する必要があります。 この手順では、デバイス上の IoT Edge でホスト プラットフォームとして機能する Kubernetes クラスターを作成します。 
+    - ご利用の Azure Stack Edge デバイスに Kubernetes クラスターが作成されたら、次のいずれかの方法を使用して、このクラスター上にアプリケーション ワークロードをデプロイできます。
+
+        - `kubectl` を介したネイティブ アクセス
+        - IoT Edge
+        - Azure Arc
+        
+        ワークロードのデプロイに関する詳細については、[Azure Stack Edge デバイスでの Kubernetes ワークロード管理](azure-stack-edge-gpu-kubernetes-workload-management.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

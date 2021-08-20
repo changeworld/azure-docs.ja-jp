@@ -5,18 +5,18 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: db1650c61ae9e70955fd945527ff049e2663a174
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 333f9572e9bf5a24e7c9ac230b10f74adf5be7de
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018065"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963800"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
 この記事では、[Azure App Service](overview.md) で Python アプリが実行される方法、既存のアプリを Azure に移行する方法、および必要に応じて App Service の動作をカスタマイズする方法について説明します。 Python アプリは、必要なすべての [pip](https://pypi.org/project/pip/) モジュールと共にデプロイする必要があります。
 
-App Service デプロイ エンジンでは、[Git リポジトリ](deploy-local-git.md) (または [ZIP パッケージ](deploy-zip.md)) のデプロイ時に自動的に仮想環境をアクティブ化し、`pip install -r requirements.txt` を実行します。
+App Service の展開エンジンは、[Git リポジトリ](deploy-local-git.md)や[ビルド オートメーションが有効な](deploy-zip.md#enable-build-automation) [ZIP パッケージ](deploy-zip.md)をデプロイする際に、自動的に仮想環境を起動し、`pip install -r requirements.txt` を実行します。
 
 このガイドでは、App Service の組み込み Linux コンテナーを使用する Python 開発者のために、主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、まず [Python クイックスタート](quickstart-python.md)と [PostgreSQL を使った Python のチュートリアル](tutorial-python-postgresql-app.md)に従ってください。
 
@@ -65,7 +65,7 @@ App Service デプロイ エンジンでは、[Git リポジトリ](deploy-local
 
 ## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-Oryx と呼ばれる App Service のビルド システムでは、Git または ZIP パッケージを使用してアプリをデプロイする際に、次のステップを実行します。
+Oryx と呼ばれる App Service のビルド システムでは、アプリの設定 `SCM_DO_BUILD_DURING_DEPLOYMENT` が `1` に設定されていると、アプリをデプロイする際に次のステップが実行されます。
 
 1. `PRE_BUILD_COMMAND` 設定を指定した場合は、カスタムのビルド前スクリプトを実行します。 このスクリプトはそれ自体で、他の Python スクリプトや Node.js スクリプト、pip コマンド、npm コマンド、さらに、yarn など Node ベースのツール (例: `yarn install`、`yarn build`) を実行できます。
 
@@ -326,7 +326,7 @@ db_server = os.environ['DATABASE_SERVER']
 
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
-App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
+App Service では、[TLS/SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) がネットワーク ロード バランサーで発生するため、すべての HTTP 要求は暗号化されていない HTTP 要求としてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
@@ -440,4 +440,4 @@ Django アプリを使用してデータベースの移行を実行しようと�
 > [チュートリアル:プライベート コンテナー リポジトリからデプロイする](tutorial-custom-container.md?pivots=container-linux)
 
 > [!div class="nextstepaction"]
-> [App Service Linux の FAQ](faq-app-service-linux.md)
+> [App Service Linux の FAQ](faq-app-service-linux.yml)

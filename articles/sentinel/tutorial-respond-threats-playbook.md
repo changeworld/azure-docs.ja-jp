@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/18/2021
+ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: af5e0e6a8f019d0b35d73b49f6efb45c2195d62d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: a9411d044a8c176387d8b9900ca56a7512c4a0de
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072633"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458328"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する
 
@@ -123,7 +123,15 @@ Azure Sentinel に新しいプレイブックを作成するには、これら�
 
    作成するプレイブックの種類に一致するトリガーを選択します。
 
+    > [!NOTE]
+    > オートメーション ルールで呼び出すことができるのは、**インシデント トリガー** に基づくプレイブックだけであることに注意してください。 **アラート トリガー** に基づくプレイブックは、[分析ルール](tutorial-detect-threats-custom.md#set-automated-responses-and-create-the-rule)で直接実行されるように定義する必要があります。また、手動で実行することもできます。
+    > 
+    > 使用するトリガーの詳細については、[**Azure Sentinel プレイブックでのトリガーとアクションの使用**](playbook-triggers-actions.md)に関するページを参照してください
+
     :::image type="content" source="./media/tutorial-respond-threats-playbook/choose-trigger.png" alt-text="プレイブックのトリガーを選択する":::
+
+> [!NOTE]
+> トリガーまたはそれ以降のアクションを選択すると、操作しているリソース プロバイダーに対する認証を求めるメッセージが表示されます。 今回の場合、プロバイダーは Azure Sentinel です。 認証は、いくつかの異なる方法を使用して行うことができます。 詳細と手順については、[**Azure Sentinel に対してプレイブックを認証する**](authenticate-playbooks-to-sentinel.md)方法に関する記事を参照してください。
 
 ### <a name="add-actions"></a>アクションの追加
 

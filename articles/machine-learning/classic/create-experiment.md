@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 843845e6099bdf43f7cd37b0f3e6f82d3ed50b4c
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 68741d273cc0461bc2c0d362c1a859146d696cad
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520614"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582476"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>クイック スタート:Machine Learning Studio (classic) で初めてのデータ サイエンス実験を作成する
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは x 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-このクイック スタートでは、[Azure Machine Learning Studio (クラシック)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) で、製造仕様や技術仕様などのさまざまな変数に基づいて自動車の価格を予測する、機械学習の実験を作成します。
+このクイック スタートでは、[Machine Learning Studio (クラシック)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) で、製造仕様や技術仕様などのさまざまな変数に基づいて自動車の価格を予測する、機械学習の実験を作成します。
 
 機械学習を初めて学ぶ場合は、ビデオ シリーズ「[Data Science for Beginners (データ サイエンス入門)](data-science-for-beginners-the-5-questions-data-science-answers.md)」をご覧になることをお勧めします。日常的な言語と概念を使用して、機械学習について説明しています。
 

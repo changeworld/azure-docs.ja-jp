@@ -4,26 +4,33 @@ description: Azure portal を使用して Azure Virtual Desktop ホスト プー
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 03/10/2021
+ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 96e5fbf825c0550001ae9b0a38517e753b3a8d0f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 34faa055eb14841d1b35d81e62c74fef92c80bac
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756259"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707076"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
 >[!IMPORTANT]
 >この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)を参照してください。 Azure Virtual Desktop (クラシック) を使用して作成したオブジェクトは、Azure portal では管理できません。
 
-ホスト プールは、Azure Virtual Desktop 環境内にある 1 つ以上の同一の仮想マシン (VM) をまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
+ホスト プールは、Azure Virtual Desktop 環境内にある、1 つまたは複数の同一の仮想マシン (VM) (''セッション ホスト'' ともいう) をまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。 デプロイ アーキテクチャの詳細については、「[Azure Virtual Desktop 環境](environment-setup.md)」を参照してください。 あなたが Azure Virtual Desktop 用のリモート アプリ ストリーミングを使用しているアプリ開発者である場合、顧客またはユーザーは、物理デバイス上のローカル アプリと同じようにあなたのアプリを使用できます。 アプリ開発者として Azure Virtual Desktop を使用する方法の詳細については、「[Azure Virtual Desktop リモート アプリ ストリーミング](./remote-app-streaming/custom-apps.md)」のドキュメントを参照してください。
 
-この記事では、Azure portal を使用して Azure Virtual Desktop 環境のホスト プールを作成するためのセットアップ プロセスについて説明します。 この方法では、ブラウザーベースのユーザー インターフェイスを使って Azure Virtual Desktop にホスト プールを作成し、Azure サブスクリプション内の VM を使用してリソース グループを作成し、それらの VM を Azure Active Directory (AD) ドメインに参加させて、VM を Azure Virtual Desktop に登録します。
+>[!NOTE]
+>あなたが Azure Virtual Desktop 用のリモート アプリ ストリーミングを使用しているアプリ開発者で、あなたのアプリのユーザーがあなたのデプロイと同じ組織内にいる場合は、既存の Azure テナントを使用してホスト プールを作成できます。 ユーザーが組織外にいる場合は、セキュリティ上の理由から、組織ごとに少なくとも 1 つのホスト プールがある個別の Azure テナントを作成する必要があります。 デプロイのセキュリティを維持するために従うことが推奨される運用方法について詳しくは、「[アーキテクチャに関する推奨事項](./remote-app-streaming/architecture-recs.md)」を参照してください。
+
+この記事では、Azure portal を使用して Azure Virtual Desktop 環境のホスト プールを作成するためのセットアップ プロセスについて説明します。 この方法では、ブラウザーベースのユーザー インターフェイスを使って Azure Virtual Desktop にホスト プールを作成し、Azure サブスクリプション内の VM を使用してリソース グループを作成し、それらの VM を Active Directory (AD) ドメインまたは Azure Active Directory (Azure AD) テナントに参加させて、VM を Azure Virtual Desktop に登録します。
 
 ## <a name="prerequisites"></a>前提条件
+
+組織のデプロイを設定する IT プロフェッショナルであるか、アプリケーションを顧客に提供するアプリ開発者であるかによって、異なる 2 つの要件セットがあります。
+
+### <a name="requirements-for-it-professionals"></a>IT プロフェッショナル向けの要件
 
 ホスト プールを作成するには、次のパラメーターを入力する必要があります。
 
@@ -37,11 +44,21 @@ ms.locfileid: "111756259"
 - 使用するイメージのソースがある場所。 Azure ギャラリーから取得したものか。それともカスタム イメージか。
 - ドメイン参加資格情報。
 
-さらに、Microsoft.DesktopVirtualization リソースプロバイダーが登録されていることを確認します。 まだ行っていない場合は、 **[サブスクリプション]** に移動し、お使いのサブスクリプションの名前を選択して、 **[リソース プロバイダー]** を選択します。 DesktopVirtualization を検索し、[Microsoft.DesktopVirtualization] を選択して、[登録] を選択します。
+### <a name="requirements-for-app-developers"></a>アプリ開発者向けの要件
 
-Azure Resource Manager テンプレートを使用して Azure Virtual Desktop ホスト プールを作成するときに、Azure ギャラリー、マネージド イメージ、またはアンマネージド イメージから仮想マシンを作成できます。 VM イメージの作成方法については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」、および「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」をご覧ください。
+あなたが Azure Virtual Desktop 用のリモート アプリ ストリーミングを使用して顧客にアプリを提供するアプリ開発者である場合は、次の作業を開始する必要があります。
 
-Azure サブスクリプションをまだお持ちでない場合は、これらの手順に従う前に、必ず[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+- 組織のアプリをエンドユーザーに提供する予定の場合は、実際にそのアプリの準備ができていることを確認してください。 詳細については、「[Azure Virtual Desktop を使用してカスタム アプリをホストする方法](./remote-app-streaming/custom-apps.md)」を参照してください。
+- 既存の Azure ギャラリー イメージ オプションがご自分のニーズに合わない場合は、セッション ホスト VM 用に独自のカスタム イメージを作成する必要もあります。 VM イメージの作成方法については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」、および「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」をご覧ください。
+- ドメイン参加資格情報。 Azure Virtual Desktop と互換性のある ID 管理システムをまだお持ちでない場合は、ホスト プールの ID 管理を設定する必要があります。
+
+### <a name="final-requirements"></a>最終的な要件
+
+最後に、Microsoft.DesktopVirtualization リソース プロバイダーが登録されていることを確認します。 まだ行っていない場合は、 **[サブスクリプション]** に移動し、お使いのサブスクリプションの名前を選択して、 **[リソース プロバイダー]** を選択します。 **[DesktopVirtualization]** を検索し、 **[Microsoft.DesktopVirtualization]** を選んでから、 **[登録]** を選択します。
+
+あなたがネットワークを作成する IT プロフェッショナルである場合は、Azure Resource Manager テンプレートを使用して Azure Virtual Desktop ホスト プールを作成するときに、Azure ギャラリー、マネージド イメージ、またはアンマネージド イメージから仮想マシンを作成することができます。 VM イメージの作成方法については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」、および「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」をご覧ください。 (アプリ開発者である場合は、この部分について心配する必要はありません)。
+
+最後になりましたが、Azure サブスクリプションをまだお持ちでない場合は、これらの手順に従い始める前に、必ず[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
 ## <a name="begin-the-host-pool-setup-process"></a>ホスト プールのセットアップ プロセスの開始
 
@@ -51,6 +68,8 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
    
    >[!NOTE]
    > US Gov ポータルにサインインする場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
+   > 
+   >Azure China ポータルにアクセスする場合は、[https://portal.azure.cn/](https://portal.azure.cn/) に移動してください。
 
 2. 検索バーに「**Azure Virtual Desktop**」と入力し、[サービス] にある **[Azure Virtual Desktop]** を見つけて選択します。
 
@@ -82,7 +101,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 9.  **[Pooled]\(プール\)** を選択した場合は、次の情報を入力します。
 
      - **[Max session limit]\(最大セッション数\)** で、1 つのセッション ホストに負荷分散するユーザーの最大数を入力します。
-     - **[負荷分散アルゴリズム]** には、使用パターンに応じて [breadth-first]\(幅優先\) と [depth-first]\(深さ優先\) のいずれかを選択します。
+     - **[負荷分散アルゴリズム]** には、使用パターンに応じて [breadth-first]\(幅優先\) と [depth-first]\(深さ優先\) のいずれかを選択します。 これらの各オプションの詳細については、「[ホスト プールの負荷分散方法](host-pool-load-balancing.md)」を参照してください。
 
        > [!div class="mx-imgBorder"]
        > ![[Pooled]\(プール\) が選択された [割り当ての種類] フィールドのスクリーンショット。 ユーザーは負荷分散のドロップダウン メニューの [breadth-first]\(幅優先\) にカーソルを合わせています。](media/pooled-assignment-type.png)
@@ -103,12 +122,12 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
 2. その後、**名前のプレフィックス** を指定して、セットアップ プロセスで作成される仮想マシンの名前を指定します。 サフィックスは、`-` に 0 から始まる番号が付いた形式になります。
 
-3. 仮想マシンを作成する **仮想マシンの場所** を選択します。 これらは、ホスト プール用に選択したリージョンと同じでも、異なっていてもかまいません。
+3. 仮想マシンを作成する **仮想マシンの場所** を選択します。 これらは、ホスト プール用に選択したリージョンと同じでも、異なっていてもかまいません。 VM の価格はリージョンによって異なることに注意してください。また、可能であれば VM の場所をユーザーの近くにして、パフォーマンスを最大限に高めることをお勧めします。 詳細については、「[Azure Virtual Desktop のデータの場所](data-locations.md)」を参照してください。
    
-4. 次に、実際のニーズに最も合った可用性オプションを選択します。 どのオプションが適しているかの詳細については、「[Azure の仮想マシンの可用性オプション](../virtual-machines/availability.md)」と [FAQ](faq.md#which-availability-option-is-best-for-me) ご覧ください。
+4. 次に、実際のニーズに最も合った可用性オプションを選択します。 どのオプションが適しているかの詳細については、「[Azure の仮想マシンの可用性オプション](../virtual-machines/availability.md)」と [FAQ](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me) ご覧ください。
    
    > [!div class="mx-imgBorder"]
-   > [可用性ゾーンのドロップダウン メニューのスクリーンショット。[可用性ゾーン] オプションが強調表示されています。](media/availability-zone.png)
+   > ![可用性ゾーンのドロップダウン メニューのスクリーンショット。 可用性ゾーン オプションが強調表示されています。](media/availability-zone.png)
 
 5. 次に、仮想マシンを作成するために使用する必要があるイメージを選択します。 **[ギャラリー]** または **[ストレージ BLOB]** を選択できます。
 
@@ -123,7 +142,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
       目的のイメージが表示されない場合は、 **[すべてのイメージを表示]** を選択すると、ギャラリー内の別のイメージ、または Microsoft や他の発行元から提供されたイメージを選択できます。 選択したイメージが、[サポートされている OS イメージ](overview.md#supported-virtual-machine-os-images)のいずれかであることを確認します。
 
       > [!div class="mx-imgBorder"]
-      > ![Microsoft 提供のイメージが一覧表示されたマーケットプレースのスクリーンショット。](media/marketplace-images.png)
+      > ![Microsoft 提供のイメージが一覧表示された Azure portal のスクリーンショット。](media/marketplace-images.png)
 
       また、 **[マイ アイテム]** に移動して、既にアップロード済みのカスタム イメージを選択することもできます。
 
@@ -132,9 +151,9 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
     - **[Storage Blob]\(ストレージ BLOB\)** を選択した場合は、Hyper-V または Azure VM で独自のイメージ ビルドを利用できます。 ストレージ BLOB 内のイメージの場所を URI として入力するだけでかまいません。
    
-   イメージの場所は可用性オプションに依存しませんが、イメージのゾーンの回復性によって、そのイメージを可用性ゾーンで使用できるかどうかが決まります。 イメージの作成中に可用性ゾーンを選択する場合は、ゾーンの回復性が有効になっているギャラリーのイメージを使用していることを確認してください。 ゾーンの回復性オプションのどれを使用すべきかの詳細については、[FAQ](faq.md#which-availability-option-is-best-for-me) をご覧ください。
+   イメージの場所は可用性オプションに依存しませんが、イメージのゾーンの回復性によって、そのイメージを可用性ゾーンで使用できるかどうかが決まります。 イメージの作成中に可用性ゾーンを選択する場合は、ゾーンの回復性が有効になっているギャラリーのイメージを使用していることを確認してください。 ゾーンの回復性オプションのどれを使用すべきかの詳細については、[FAQ](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me) をご覧ください。
 
-6. その後、使用する **仮想マシンのサイズ** を選択します。 既定のサイズのままにすることも、 **[サイズの変更]** を選択してサイズを変更することもできます。 **[サイズの変更]** を選択した場合は、表示されるウィンドウで、ワークロードに適した仮想マシンのサイズを選択してください。
+6. その後、使用する **仮想マシンのサイズ** を選択します。 既定のサイズのままにすることも、 **[サイズの変更]** を選択してサイズを変更することもできます。 **[サイズの変更]** を選択した場合は、表示されるウィンドウで、ワークロードに適した仮想マシンのサイズを選択してください。 仮想マシンのサイズと選択する必要があるサイズの詳細については、「[仮想マシンのサイズ設定ガイドライン](/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context)」を参照してください。
 
 7. **[Number of VMs]\(VM の数\)** で、ホスト プール用に作成する VM の数を指定します。
 
@@ -157,11 +176,17 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
     **[高度]** を選択した場合は、既に構成が済んでいる既存のネットワーク セキュリティ グループを選択します。
 
-11. その後、特定のドメインと組織単位に仮想マシンを参加させるかどうかを選択します。 **[はい]** を選択した場合は、参加するドメインを指定します。 必要に応じて、仮想マシンの配置先にする特定の組織単位を追加できます。 **[いいえ]** を選択した場合、VM は **AD ドメイン参加 UPN** のサフィックスと一致するドメインに参加します。
+11. その後、**Active Directory** と **Azure Active Directory** (プレビュー) のどちらに仮想マシンを参加させるかを選択します。
 
-    - 組織単位を指定するときは、必ず完全なパス (識別名) を引用符なしで使用してください。
+    - Active Directory の場合は、ドメインに参加するためのアカウントを指定し、特定のドメインと組織単位に参加するかどうかを選択します。
 
-12. [ドメイン管理者アカウント] で、選択した仮想ネットワークの Active Directory ドメイン管理者の資格情報を入力します。 このアカウントでは、多要素認証 (MFA) を有効にすることはできません。 Azure Active Directory Domain Services (Azure AD DS) ドメインに参加する場合、アカウントは Azure AD DC 管理者グループに属している必要があり、アカウント パスワードは Azure AD DS で機能する必要があります。
+        - [AD ドメイン参加 UPN] では、選択した仮想ネットワークの Active Directory ドメイン管理者の資格情報を入力します。 使用するアカウントで多要素認証 (MFA) を有効にすることはできません。 Azure Active Directory Domain Services (Azure AD DS) ドメインに参加する場合、使用するアカウントは Azure AD DC 管理者グループに属している必要があり、アカウント パスワードは Azure AD DS で機能する必要があります。
+
+        - ドメインを指定するには、 **[はい]** を選択してから、参加するドメインの名前を入力します。 必要な場合は、完全なパス (識別名) を入力し、引用符を付けずに、仮想マシンを配置する特定の組織単位を追加することもできます。 ドメインを指定しない場合は、 **[いいえ]** を選択します。 VM は、 **[AD ドメイン参加 UPN]** のサフィックスと一致するドメインに自動的に参加します。
+  
+    - Azure Active Directory の場合、 **[VM を Intune に登録する]** を選択し、デプロイ後に VM を自動的に管理することができます。
+
+12. **[仮想マシン管理者アカウント]** で、VM の作成時に追加するローカル管理者アカウントの資格情報を入力します。 このアカウントは、AD と Azure AD 参加済み VM の両方で管理目的で使用できます。
 
 13. **[Next:ワークスペース >]** を選択します。
 
@@ -170,6 +195,9 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 ## <a name="workspace-information"></a>ワークスペース情報
 
 ホスト プールのセットアップ プロセスでは、既定でデスクトップ アプリケーション グループが作成されます。 ホスト プールを意図したとおりに機能させるには、このアプリ グループをユーザーまたはユーザー グループに発行する必要があります。また、アプリ グループをワークスペースに登録する必要があります。
+
+>[!NOTE]
+>あなたが組織のアプリを発行しようとしているアプリ開発者である場合は、MSIX アプリをユーザー セッションに動的にアタッチしたり、アプリ パッケージをカスタム VM イメージに追加したりできます。 詳細については、Azure Virtual Desktop でカスタム アプリを提供する方法を参照してください。
 
 デスクトップ アプリ グループをワークスペースに登録するには:
 
@@ -195,7 +223,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
      - ワークスペース (作成を選択した場合)。
      - デスクトップ アプリ グループの登録を選択した場合は、登録が完了します。
      - 仮想マシン (作成することを選択した場合)。これらはドメインに参加させられ、新しいホスト プールに登録されます。
-     - ご自分の構成に基づいた Azure リソース管理テンプレートのダウンロード リンク。
+     - ご自分の構成に基づいた Azure Resource Manager テンプレートのダウンロード リンク。
 
 これですべて完了しました。
 

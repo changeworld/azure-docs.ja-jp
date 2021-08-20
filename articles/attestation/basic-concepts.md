@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 3cd7d2541cb980fc5ca6a1a9c42a430eac1ecb1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47231ecab14ab9d1705d1015c0de4a035a10a02e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99429281"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417309"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -129,10 +129,25 @@ SGX エンクレーブに対して生成された JWT の例:
   "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
   "x-ms-sgx-product-id": 1, 
   "x-ms-sgx-svn": 1,
-  "x-ms-ver": "1.0"
+  "x-ms-ver": "1.0",
+  "x-ms-sgx-config-id": "000102030405060708090a0b0c0d8f99000102030405060708090a0b0c860e9a000102030405060708090a0b7d0d0e9b000102030405060708090a740c0d0e9c",
+  "x-ms-sgx-config-svn": 3451,
+  "x-ms-sgx-isv-extended-product-id": "8765432143211234abcdabcdef123456",
+  "x-ms-sgx-isv-family-id": "1234567812344321abcd1234567890ab"
 }.[Signature]
 ```
+
 上で使用されている要求のいくつかは、非推奨と見なされてはいますが、完全にサポートされています。  今後作成するすべてのコードおよびツールには、非推奨となっていない要求名の使用をお勧めします。 詳細については、[Azure Attestation によって発行される要求](claim-sets.md)に関するページを参照してください。
+
+以下のクレームは、Intel® Xeon® スケーラブル プロセッサ ベースのサーバー プラットフォーム用に生成された構成証明トークンにのみ表示されます。 SGX エンクレーブに対して[キーの分離と共有のサポート](https://github.com/openenclave/openenclave/issues/3054)が構成されていない場合、このクレームは表示されません。
+
+**x-ms-sgx-config-id**
+
+**x-ms-sgx-config-svn**
+
+**x-ms-sgx-isv-extended-product-id**
+
+**x-ms-sgx-isv-family-id**
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 

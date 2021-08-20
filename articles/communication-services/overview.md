@@ -5,24 +5,32 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6dae6e7ef5a442392972a39f75bbea8046b4beff
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 12e0c9c277bbf162797d52692add208ce921569b
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324727"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360921"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure Communication Services とは
 
-Azure Communication Services を使用すると、リアルタイムの音声、ビデオ、テレフォニー通信をアプリケーションに簡単に追加できます。 また、Communication Services SDK を使用して、自分の通信ソリューションに SMS 機能を追加することもできます。 Azure Communication Services はユーザー情報を選ばないため、エンド ユーザーの本人確認と認証の方法を完全に自分で制御することができます。 通信のデータ プレーンまたはサービス (ボット) に対して人を結び付けることができます。
+Azure Communication Services はクラウドベースのサービスです。用意されている REST API およびクライアント ライブラリ SDK を利用することで、通信を手軽にアプリケーションに組み込むことができます。 通信技術 (メディアのエンコードやリアルタイム ネットワークなど) の専門家でなくても、アプリケーションに通信機能を追加できます。 Azure Communication Services では、さまざまな通信形式がサポートされています。
 
-アプリケーションとして、次のものがあります。
+1. 音声およびビデオによる通話
+1. リッチ テキスト チャット
+1. sms
 
-- **企業-消費者間 (B2C)。** 企業の従業員やサービスは、カスタム ブラウザーまたはモバイル アプリケーションから、音声、ビデオ、リッチ テキストによるチャットを使用して消費者と対話します。 組織は、Azure を通じて取得した電話番号を使用して、携帯ショートメール (SMS) メッセージを送受信したり、対話型音声応答 (IVR) システムを運用したりすることができます。 [Microsoft Teams と統合](./quickstarts/voice-video-calling/get-started-teams-interop.md)すれば、従業員によってホストされた Teams 会議に消費者が参加できます。これはリモート医療やリモート バンキング、リモート製品サポートで、従業員が既に Teams に習熟しているようなシナリオに最適です。
-- **消費者-消費者間。** 音声、ビデオ、リッチ テキストによるチャットを使用して、消費者と消費者が対話するための魅力的なソーシャル空間を構築します。 Azure Communication Services SDK では、あらゆるタイプのユーザー インターフェイスを構築できますが、すぐに始めることができるよう、完成したアプリケーション サンプルおよび UI アセットが用意されています。
+カスタム クライアント エンドポイント、カスタム サービス、公衆交換電話網 (PSTN) を通信アプリケーションに接続することができます。 電話番号は、Azure Communication Services REST API、SDK、または Azure portal を通じて直接取得でき、これらの番号を SMS や通話アプリケーションに使用できます。 Azure Communication Services ダイレクト ルーティングを使用すると、SIP およびセッション ボーダー コントローラーを使用して、独自の PSTN 通信事業者に接続し、独自の電話番号を持ち込むことができます。
+
+REST API に加えて、[Azure Communication Services クライアント ライブラリ](./concepts/sdk-options.md)は、さまざまなプラットフォームと言語で利用できます (Web ブラウザー (JavaScript)、iOS (Swift)、Java (Android)、Windows (.NET) など)。 [Web ブラウザーの UI ライブラリ](https://aka.ms/acsstorybook)を使用すると、モバイルおよびデスクトップ ブラウザーの開発を加速させることができます。 Azure Communication Services は ID に依存しないため、お客様はエンド ユーザーの本人確認と認証の方法を自分で制御することができます。
+
+Azure Communication Services のシナリオは次のとおりです。
+
+- **企業-消費者間 (B2C)。** 企業の従業員やサービスは、カスタム ブラウザーまたはモバイル アプリケーションから、音声、ビデオ、リッチ テキストによるチャットを使用してコンシューマーとやりとりします。 組織は、Azure を通じて取得した電話番号を使用して、携帯ショートメール (SMS) メッセージを送受信したり、[対話型音声応答 (IVR) システムを運用](https://github.com/microsoft/botframework-telephony/blob/main/EnableTelephony.md)したりすることができます。 [Microsoft Teams との統合](./quickstarts/voice-video-calling/get-started-teams-interop.md)を使用すれば、従業員によってホストされた Teams 会議にコンシューマーを接続できます。これはリモート医療やリモート バンキング、リモート製品サポートで、従業員が既に Teams に習熟しているようなシナリオに最適です。
+- **コンシューマー to コンシューマー (C2C)。** 音声、ビデオ、リッチ テキストによるチャットを使用して、消費者と消費者が対話するための魅力的なソーシャル空間を構築します。 任意の種類のユーザー インターフェイスを Azure Communication Services SDK で構築することも、完全なアプリケーション サンプルとオープンソースの UI ツールキットを使用して楽にすばやく開始することもできます。
 
 詳細については、[Microsoft Mechanics の動画](https://www.youtube.com/watch?v=apBX7ASurgM)、または以下のリンクからアクセスできるリソースをご覧ください。
 
@@ -33,18 +41,20 @@ Azure Communication Services を使用すると、リアルタイムの音声、
 | リソース                               |説明                           |
 |---                                    |---                                   |
 |**[Communication Services リソースを作成する](./quickstarts/create-communication-resource.md)**|Azure Communication Services の使用を開始するには、Azure portal または Communication Services SDK を使用して、最初の Communication Services リソースをプロビジョニングします。 Communication Services リソースの接続文字列を取得したら、最初のユーザー アクセス トークンをプロビジョニングできます。|
-|**[電話番号を取得する](./quickstarts/telephony-sms/get-phone-number.md)**|Azure Communication Services を使用して、電話番号のプロビジョニングとリリースを行うことができます。 これらの電話番号を使用して、通話を発呼または着呼したり、SMS ソリューションを構築したりすることができます。|
-|**[アプリから SMS を送信する](./quickstarts/telephony-sms/send.md)**|Azure Communication Services SMS SDK を使用すると、サービス アプリケーションから SMS メッセージを送受信できます。|
+|**[電話番号を取得する](./quickstarts/telephony-sms/get-phone-number.md)**|Azure Communication Services を使用して、電話番号のプロビジョニングとリリースを行います。 これらの電話番号を使用して、通話を発呼または着呼したり、SMS ソリューションを構築したりすることができます。|
+|**[アプリから SMS を送信する](./quickstarts/telephony-sms/send.md)**| Azure Communication Services SMS REST API および SDK を使用すると、サービス アプリケーションから SMS メッセージを送受信できます。|
 
 Communication Services リソースを作成した後は、音声通話やビデオ通話、テキスト チャットなどのクライアント シナリオの作成を開始できます。
 
 | リソース                               |説明                           |
 |---                                    |---                                   |
-|**[最初のユーザー アクセス トークンを作成する](./quickstarts/access-tokens.md)**|ユーザー アクセス トークンは、Azure Communication Services リソースに対してクライアントを認証するために使用されます。 これらのトークンは、Communication Services SDK を使用してプロビジョニングされ、再発行されます。|
+|**[最初のユーザー アクセス トークンを作成する](./quickstarts/access-tokens.md)**|ユーザー アクセス トークンでは、Azure Communication Services リソースに対してクライアントを認証します。 これらのトークンは、Communication Services Identity API および SDK を使用してプロビジョニングされ、再発行されます。|
 |**[音声およびビデオ通話の使用を開始する](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Communication Services を使用すると、Calling SDK を使用して自分のブラウザー アプリまたはネイティブ アプリに音声およびビデオ通話を追加できます。 |
 |**[テレフォニー通話をアプリに追加する](./quickstarts/voice-video-calling/pstn-call.md)**|Azure Communication Services を使用すると、アプリケーションにテレフォニー通話機能を追加できます。|
 |**[通話アプリを Teams の会議に参加させる](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Communication Services を使用すると、Microsoft Teams と対話するカスタム会議エクスペリエンスを作成できます。 Communication Services ソリューションのユーザーは、音声、ビデオ、チャット、画面共有を通じて、Teams の参加者と対話することができます。|
 |**[チャットの使用を開始する](./quickstarts/chat/get-started.md)**|Azure Communication Services Chat SDK を使用して、アプリケーションにリアルタイムのリッチ テキスト チャットを追加できます。|
+|**[Microsoft Bot を電話番号に接続する](https://github.com/microsoft/botframework-telephony)**|テレフォニー チャネルは Microsoft Bot Framework 内のチャネルです。これにより、電話を介してボットとユーザーのやりとりを実現することができます。 この場合、Microsoft Bot Framework の機能と Azure Communication Services および Azure Speech Services を組み合わせて活用します。  |
+
 
 ## <a name="samples"></a>サンプル
 

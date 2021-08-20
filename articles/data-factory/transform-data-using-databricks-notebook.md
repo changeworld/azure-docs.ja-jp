@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.author: abnarain
 author: nabhishek
 ms.custom: seo-lt-2019
-ms.date: 03/12/2018
-ms.openlocfilehash: 20253954035798187f28c18c8207c114d27bc9c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: e9b4d075832fde6aec81a7f8440756b4d6f32834
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374084"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215993"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks Notebook を実行する
 
@@ -82,9 +82,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-an-azure-databricks-linked-service"></a>Azure Databricks のリンクされたサービスを作成する
 
-1.  **[Let's get started]\(始めましょう\)** ページで、左側のパネルで **[編集]** タブに切り替えます。
+1.  ホーム ページの左側のパネルで **[管理]** タブに切り替えます。
 
-    ![新しいリンクされたサービスを編集する](media/transform-data-using-databricks-notebook/get-started-page.png)
+    ![新しいリンクされたサービスを編集する](media/doc-common-process/get-started-page-manage-button.png)
 
 1.  ウィンドウの下部にある **[接続]** を選択して、 **[+ 新規]** を選択します。
     

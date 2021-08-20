@@ -1,7 +1,7 @@
 ---
-title: 'クイックスタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加 | Azure'
+title: 'クイック スタート: ユーザーをサインインさせる ASP.NET Web アプリ'
 titleSuffix: Microsoft identity platform
-description: このクイックスタートでは、OpenID Connect を使用して、ASP.NET Web アプリに Microsoft サインインを実装する方法について説明します。
+description: ASP.NET Web アプリで Azure AD ユーザーをサインインさせる方法を示すコード サンプルをダウンロードして実行します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 87948ed04f7b50820d94993d4c4fbcf2dfd94b31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08c53f816b151026c03068451aa440f12a2cbc15
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578687"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112677806"
 ---
-# <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する
+# <a name="quickstart-aspnet-web-app-that-signs-in-azure-ad-users"></a>クイック スタート: Azure AD ユーザーをサインインさせる ASP.NET Web アプリ
 
-このクイックスタートでは、ASP.NET Web アプリで Azure Active Directory (Azure AD) 組織のユーザーをサインインする方法を示すコード サンプルをダウンロードして実行します。 
+このクイックスタートでは、ASP.NET Web アプリケーションで Azure Active Directory (Azure AD) アカウントを持つユーザーをサインインさせる方法を示すコード サンプルをダウンロードして実行します。
 
 > [!div renderon="docs"]
 > 次の図は、サンプル アプリの動作を示しています。
