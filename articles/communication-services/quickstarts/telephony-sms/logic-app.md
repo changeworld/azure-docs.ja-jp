@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 9f25e7ce9580ab967d1625a6ab1550bd3f535225
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 2764eede3aebd0110e2cc2de8a1813bc1f28cb86
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109015"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444347"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>クイックスタート: Azure Communication Services を使用して Azure Logic Apps で携帯ショートメール (SMS) メッセージを送信する
 
@@ -52,14 +52,40 @@ Azure Communication Services SMS コネクタを使用して、ワークフロ�
    :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="ロジック アプリ デザイナーと Azure Communication Services コネクタが示されているスクリーンショット。携帯ショートメール (SMS) 送信アクションが選択されている。":::
 
 1. Communication Services リソースとの接続を作成します。
+    1. 同じサブスクリプション内で次のように実行します。
 
-   1. 接続の名前を入力します。
+       1. 接続の名前を入力します。
 
-   1. Azure Communication Services リソースを選択します。
+       1. Azure Communication Services リソースを選択します。
 
-   1. **［作成］** を選択します
+       1. **［作成］** を選択します
 
-   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="携帯ショートメール (SMS) 送信アクションの構成が示されているスクリーンショット。サンプル情報が入力されている。":::
+       :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="携帯ショートメール (SMS) 送信アクションの構成が示されているスクリーンショット。サンプル情報が入力されている。":::
+
+    1. お使いの Azure Communication Services リソースの接続文字列を使用します。
+        
+        1. 接続の名前を入力します。
+        
+        1. ドロップダウン オプションから [ConnectionString 認証] を選択します。
+        
+        1. Azure Communication Services リソースの接続文字列を入力します。
+        
+        1. **[作成]** を選択します。
+        
+        :::image type="content" source="./media/logic-app/connection-string-auth.png" alt-text="Connection String 認証の構成を示すスクリーンショット。":::
+        
+    1. サービス プリンシパルの使用 (「[サービス プリンシパルの作成](../identity/service-principal-from-cli.md)」を参照してください)。
+        1. 接続の名前を入力します。
+        
+        1. ドロップダウン オプションから [サービス プリンシパル (Azure AD アプリケーション) 認証] を選択します。
+        
+        1. サービス プリンシパルの [テナント ID]、[クライアント ID]、[クライアント シークレット] を入力します。
+        
+        1. Azure Communication Services リソースの Azure Communication Services エンドポイント URL の値を入力します。
+        
+        1. **[作成]** を選択します。
+        
+        :::image type="content" source="./media/logic-app/service-principal-auth.png" alt-text="サービス プリンシパル認証の構成を示すスクリーンショット。":::     
 
 1. **携帯ショートメール (SMS) 送信** アクションで、次の情報を入力します。 
 
